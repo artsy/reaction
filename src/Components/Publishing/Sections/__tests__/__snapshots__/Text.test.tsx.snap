@@ -83,13 +83,13 @@ exports[`Text Snapshots renders classic text properly 1`] = `
 
 .c0 h1:before {
   content: "";
-  width: 15px;
-  height: 15px;
+  width: 8px;
+  height: 8px;
   background: black;
   border-radius: 50%;
   position: absolute;
   top: 69px;
-  right: calc(50% - 7.5px);
+  right: calc(50% - 4px);
 }
 
 .c0 h2 {
@@ -119,10 +119,6 @@ exports[`Text Snapshots renders classic text properly 1`] = `
   letter-spacing: 1px;
   font-size: 13px;
   line-height: 1.65em;
-  -webkit-letter-spacing: 1px;
-  -moz-letter-spacing: 1px;
-  -ms-letter-spacing: 1px;
-  letter-spacing: 1px;
   font-weight: normal;
   padding-top: 23px;
   margin: 0;
@@ -156,11 +152,12 @@ exports[`Text Snapshots renders classic text properly 1`] = `
 .c0 .content-end {
   display: inline-block;
   content: "";
-  width: 12px;
-  height: 12px;
+  width: 8px;
+  height: 8px;
   background: black;
   border-radius: 50%;
   margin-left: 12px;
+  margin-bottom: 1px;
 }
 
 .c0 .artist-follow {
@@ -229,10 +226,6 @@ exports[`Text Snapshots renders classic text properly 1`] = `
     letter-spacing: 1px;
     font-size: 11px;
     line-height: 1.65em;
-    -webkit-letter-spacing: 1px;
-    -moz-letter-spacing: 1px;
-    -ms-letter-spacing: 1px;
-    letter-spacing: 1px;
   }
 
   .c0 blockquote {
@@ -345,13 +338,13 @@ exports[`Text Snapshots renders feature text properly 1`] = `
 
 .c0 h1:before {
   content: "";
-  width: 15px;
-  height: 15px;
+  width: 8px;
+  height: 8px;
   background: black;
   border-radius: 50%;
   position: absolute;
   top: 69px;
-  right: calc(50% - 7.5px);
+  right: calc(50% - 4px);
 }
 
 .c0 h2 {
@@ -409,11 +402,12 @@ exports[`Text Snapshots renders feature text properly 1`] = `
 .c0 .content-end {
   display: inline-block;
   content: "";
-  width: 12px;
-  height: 12px;
+  width: 8px;
+  height: 8px;
   background: black;
   border-radius: 50%;
   margin-left: 12px;
+  margin-bottom: 1px;
 }
 
 .c0 .artist-follow {
@@ -597,13 +591,13 @@ exports[`Text Snapshots renders news text properly 1`] = `
 
 .c0 h1:before {
   content: "";
-  width: 15px;
-  height: 15px;
+  width: 8px;
+  height: 8px;
   background: black;
   border-radius: 50%;
   position: absolute;
   top: 69px;
-  right: calc(50% - 7.5px);
+  right: calc(50% - 4px);
 }
 
 .c0 h2 {
@@ -669,11 +663,12 @@ exports[`Text Snapshots renders news text properly 1`] = `
 .c0 .content-end {
   display: inline-block;
   content: "";
-  width: 12px;
-  height: 12px;
+  width: 8px;
+  height: 8px;
   background: black;
   border-radius: 50%;
   margin-left: 12px;
+  margin-bottom: 1px;
 }
 
 .c0 .artist-follow {
@@ -857,13 +852,13 @@ exports[`Text Snapshots renders standard text properly 1`] = `
 
 .c0 h1:before {
   content: "";
-  width: 15px;
-  height: 15px;
+  width: 8px;
+  height: 8px;
   background: black;
   border-radius: 50%;
   position: absolute;
   top: 69px;
-  right: calc(50% - 7.5px);
+  right: calc(50% - 4px);
 }
 
 .c0 h2 {
@@ -921,11 +916,12 @@ exports[`Text Snapshots renders standard text properly 1`] = `
 .c0 .content-end {
   display: inline-block;
   content: "";
-  width: 12px;
-  height: 12px;
+  width: 8px;
+  height: 8px;
   background: black;
   border-radius: 50%;
   margin-left: 12px;
+  margin-bottom: 1px;
 }
 
 .c0 .artist-follow {

@@ -1,13 +1,14 @@
+import { Sans } from "@artsy/palette"
 import { unica } from "Assets/Fonts"
 import React from "react"
 import { Col, Grid, Row } from "react-styled-flexboxgrid"
-import styled, { css, StyledFunction } from "styled-components"
+import styled from "styled-components"
 import { Responsive } from "../../../Utils/Responsive"
 import { track } from "../../../Utils/track"
-import { pMedia as breakpoint } from "../../Helpers"
 import { pMedia } from "../../Helpers"
-import { Share, ShareContainer as ShareContainerStyles } from "../Byline/Share"
-import { getArticleFullHref, getAuthorByline, getDate } from "../Constants"
+import { Byline, BylineContainer } from "../Byline/Byline"
+import { ShareContainer as ShareContainerStyles } from "../Byline/Share"
+import { VerticalOrSeriesTitle } from "../Sections/VerticalOrSeriesTitle"
 
 import {
   CoverImage,
@@ -21,7 +22,7 @@ interface Props {
   article: any
   isMobile?: any
   date?: string
-  leadParagraph?: any
+  deck?: any
   layout?: any
   title: any
   vertical?: any
@@ -38,7 +39,7 @@ export class BasicHeader extends React.Component<Props, State> {
   }
 
   // TODO: Waiting for final values
-  @track(props => ({
+  @track(() => ({
     action: "Click",
     label: "Track Basic feature video click ",
     impression_type: "sa_basic_feature_video",
@@ -51,13 +52,14 @@ export class BasicHeader extends React.Component<Props, State> {
 
   render() {
     const {
-      article: { authors, hero_section, lead_paragraph, published_at, slug },
+      article,
       date,
       isMobile: passedIsMobile,
       title,
       vertical,
+      deck,
     } = this.props
-
+    const { hero_section, published_at } = article
     const { url } = hero_section
     const hasVideo = url && isValidVideoUrl(url)
 
@@ -75,7 +77,10 @@ export class BasicHeader extends React.Component<Props, State> {
               )}
               <Row>
                 <Col xs sm md lg>
-                  <Vertical>{vertical}</Vertical>
+                  <VerticalOrSeriesTitle
+                    article={article}
+                    vertical={vertical}
+                  />
                 </Col>
               </Row>
               <Row>
@@ -88,33 +93,14 @@ export class BasicHeader extends React.Component<Props, State> {
                   <Col xs={12} sm={12} md={12} lg={12}>
                     <Row>
                       <Col xs sm md lg>
-                        <LeadParagraph
-                          dangerouslySetInnerHTML={{
-                            __html: lead_paragraph,
-                          }}
-                        />
+                        <Deck size="3t" weight="medium">
+                          {deck}
+                        </Deck>
                       </Col>
                     </Row>
                     <Row>
-                      <Col
-                        xs={12}
-                        sm={12}
-                        md={12}
-                        lg={12}
-                        className="Byline__Container"
-                      >
-                        <Author>By {getAuthorByline(authors)}</Author>
-                        <Date>
-                          {getDate(
-                            date ? date : published_at,
-                            isMobile ? "condensed" : "default"
-                          )}
-                        </Date>
-                        <Share
-                          title={title}
-                          url={getArticleFullHref(slug)}
-                          className="share"
-                        />
+                      <Col xs={12} sm={12} md={12} lg={12}>
+                        <Byline article={article} date={date || published_at} />
                       </Col>
                     </Row>
                   </Col>
@@ -133,14 +119,7 @@ const Description = styled.div`
   margin: auto;
 `
 
-const defaults = css`
-  ${unica("s16", "medium")} line-height: 1.1em;
-  margin-bottom: 10px;
-`
-
-const div: StyledFunction<{ hasVideo: boolean }> = styled.div
-
-const Container = div`
+const Container = styled.div.attrs<{ hasVideo: boolean }>({})`
   text-align: center;
   margin-top: 70px;
 
@@ -156,34 +135,33 @@ const Container = div`
     @media screen and (min-width: 1250px) {
       height: ${1100 * VIDEO_RATIO}px;
     }
-    ${breakpoint.xl`
+    ${pMedia.xl`
       height: ${1100 * VIDEO_RATIO}px;
     `}
-    ${breakpoint.lg`
+    ${pMedia.lg`
       height: ${950 * VIDEO_RATIO}px;
     `}
-    ${breakpoint.md`
+    ${pMedia.md`
       height: ${800 * VIDEO_RATIO}px;
     `}
-    ${breakpoint.sm`
+    ${pMedia.sm`
       height: ${620 * VIDEO_RATIO}px;
     `}
-    ${breakpoint.xs`
+    ${pMedia.xs`
       height: ${340 * VIDEO_RATIO}px;
       margin-top: 25px;
       margin-bottom: -25px;
     `}
   }
 
-  .Byline__Container {
-    display: inherit;
+  ${BylineContainer} {
     justify-content: center;
 
     div {
       padding-right: 30px;
     }
 
-    ${breakpoint.xs`
+    ${pMedia.xs`
       display: flex;
       flex-flow: row wrap;
       align-items: center;
@@ -203,55 +181,22 @@ const Container = div`
   }
 `
 
-const Vertical = styled.div`
-  ${defaults};
-  ${breakpoint.xs`
-    ${unica("s14", "medium")}
-  `};
-`
-
 const Title = styled.div`
-  ${unica("s80", "regular")} line-height: 1.1em;
+  line-height: 1.1em;
   letter-spacing: -0.035em;
   max-width: 1250px;
   margin: 0 auto 27px auto;
-  ${breakpoint.md`
+  ${unica("s80", "regular")}
+
+  ${pMedia.md`
     font-size: 60px;
-  `} ${breakpoint.xs`
+  `}
+  ${pMedia.xs`
     font-size: 40px;
     margin-bottom: 15px;
-  `};
+  `}
 `
 
-const LeadParagraph = styled.div`
-  ${defaults};
-  ${breakpoint.xs`
-    ${unica("s14", "medium")}
-  `};
-`
-
-const Author = styled.div`
-  ${defaults};
-  &:before {
-    content: "";
-    display: inline-block;
-    min-width: 10px;
-    min-height: 10px;
-    border-radius: 50%;
-    margin-right: 10px;
-    background-color: black;
-  }
-
-  ${breakpoint.xs`
-    ${unica("s14", "medium")}
-  `};
-`
-
-const Date = styled.div`
-  ${defaults};
-  white-space: nowrap;
-
-  ${breakpoint.xs`
-    ${unica("s14", "medium")}
-  `};
+const Deck = Sans.extend`
+  margin-bottom: 10px;
 `

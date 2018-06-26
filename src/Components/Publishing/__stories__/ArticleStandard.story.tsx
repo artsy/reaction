@@ -121,8 +121,8 @@ story.add(`Multiple articles`, () => {
   }
 
   return (
-    <div>
-      <ContextProvider>
+    <ContextProvider>
+      <div>
         <Article
           article={article}
           display={Display("slideshow")}
@@ -146,8 +146,8 @@ story.add(`Multiple articles`, () => {
           relatedArticlesForCanvas={RelatedCanvas}
           emailSignupUrl="#"
         />
-      </ContextProvider>
-    </div>
+      </div>
+    </ContextProvider>
   )
 })
 

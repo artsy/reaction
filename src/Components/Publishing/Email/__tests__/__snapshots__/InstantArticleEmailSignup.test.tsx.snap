@@ -88,10 +88,6 @@ exports[`EmailSignup renders an email signup 1`] = `
   letter-spacing: 1px;
   font-size: 11px;
   line-height: 1.65em;
-  -webkit-letter-spacing: 1px;
-  -moz-letter-spacing: 1px;
-  -ms-letter-spacing: 1px;
-  letter-spacing: 1px;
   margin-bottom: 10px;
 }
 
@@ -105,10 +101,6 @@ exports[`EmailSignup renders an email signup 1`] = `
   letter-spacing: 1px;
   font-size: 13px;
   line-height: 1.65em;
-  -webkit-letter-spacing: 1px;
-  -moz-letter-spacing: 1px;
-  -ms-letter-spacing: 1px;
-  letter-spacing: 1px;
   background: #e5e5e5;
   color: black;
   display: -webkit-inline-box;
@@ -150,10 +142,6 @@ exports[`EmailSignup renders an email signup 1`] = `
   letter-spacing: 1px;
   font-size: 11px;
   line-height: 1.65em;
-  -webkit-letter-spacing: 1px;
-  -moz-letter-spacing: 1px;
-  -ms-letter-spacing: 1px;
-  letter-spacing: 1px;
 }
 
 .c5:hover:not(:disabled) {

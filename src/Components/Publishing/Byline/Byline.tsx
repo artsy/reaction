@@ -1,41 +1,42 @@
+import { TypeSizes } from "@artsy/palette/dist/elements/Typography"
 import React from "react"
-import styled, { StyledFunction } from "styled-components"
+import styled from "styled-components"
 import { getArticleFullHref } from "../Constants"
 import { ArticleData, BylineLayout } from "../Typings"
-import { Author, Date } from "./AuthorDate"
+import { Author } from "./Author"
+import { Date } from "./Date"
 import { Share } from "./Share"
 
 interface BylineProps {
   article: ArticleData
+  color?: string
   date?: string
   layout?: BylineLayout
-  color?: string
-}
-
-interface BylineContainerProps {
-  color: string
+  size?: keyof TypeSizes["sans"]
 }
 
 export const Byline: React.SFC<BylineProps> = props => {
-  const { article, color, date, layout } = props
-  const { authors, published_at } = article
-  const title = article.social_title || article.thumbnail_title
-  const url = getArticleFullHref(article.slug)
+  const {
+    article: { authors, published_at, slug, social_title, thumbnail_title },
+    color,
+    date,
+    layout,
+    size,
+  } = props
   const textColor = layout === "fullscreen" ? "white" : color
 
   return (
     <BylineContainer className="Byline" color={textColor}>
-      <Author
-        authors={authors}
-        color={textColor}
-        layout={layout}
-        articleLayout={article.layout}
-      />
+      <Author authors={authors} color={textColor} layout={layout} size={size} />
 
-      <Date date={date || published_at} layout={layout} />
+      <Date date={date || published_at} layout={layout} size={size} />
 
       {layout !== "condensed" && (
-        <Share url={url} title={title} color={textColor} />
+        <Share
+          url={getArticleFullHref(slug)}
+          title={social_title || thumbnail_title}
+          color={textColor}
+        />
       )}
     </BylineContainer>
   )
@@ -45,15 +46,9 @@ Byline.defaultProps = {
   color: "black",
 }
 
-const Div: StyledFunction<
-  BylineContainerProps & React.HTMLProps<HTMLDivElement>
-> =
-  styled.div
-
-const BylineContainer = Div`
+export const BylineContainer = styled.div.attrs<{ color: string }>({})`
   display: flex;
   flex-wrap: wrap;
-  display: flex;
   align-items: flex-end;
   color: ${props => props.color};
 `

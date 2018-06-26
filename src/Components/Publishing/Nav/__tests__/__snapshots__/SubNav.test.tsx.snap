@@ -11,10 +11,6 @@ exports[`SubNav renders SubNav 1`] = `
   letter-spacing: 1px;
   font-size: 13px;
   line-height: 1.65em;
-  -webkit-letter-spacing: 1px;
-  -moz-letter-spacing: 1px;
-  -ms-letter-spacing: 1px;
-  letter-spacing: 1px;
   background: #e5e5e5;
   color: black;
   display: -webkit-inline-box;
@@ -52,10 +48,6 @@ exports[`SubNav renders SubNav 1`] = `
   letter-spacing: 1px;
   font-size: 11px;
   line-height: 1.65em;
-  -webkit-letter-spacing: 1px;
-  -moz-letter-spacing: 1px;
-  -ms-letter-spacing: 1px;
-  letter-spacing: 1px;
   height: 30px;
   width: 80px;
   border-radius: 2px;
@@ -77,10 +69,6 @@ exports[`SubNav renders SubNav 1`] = `
   letter-spacing: 1px;
   font-size: 13px;
   line-height: 1.65em;
-  -webkit-letter-spacing: 1px;
-  -moz-letter-spacing: 1px;
-  -ms-letter-spacing: 1px;
-  letter-spacing: 1px;
   background: #e5e5e5;
   color: black;
   display: -webkit-inline-box;
@@ -118,10 +106,6 @@ exports[`SubNav renders SubNav 1`] = `
   letter-spacing: 1px;
   font-size: 11px;
   line-height: 1.65em;
-  -webkit-letter-spacing: 1px;
-  -moz-letter-spacing: 1px;
-  -ms-letter-spacing: 1px;
-  letter-spacing: 1px;
   height: 30px;
   width: 80px;
   background-color: white;

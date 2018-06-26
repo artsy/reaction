@@ -483,13 +483,13 @@ exports[`Sections snapshots renders properly 1`] = `
 
 .c2 h1:before {
   content: "";
-  width: 15px;
-  height: 15px;
+  width: 8px;
+  height: 8px;
   background: black;
   border-radius: 50%;
   position: absolute;
   top: 69px;
-  right: calc(50% - 7.5px);
+  right: calc(50% - 4px);
 }
 
 .c2 h2 {
@@ -547,11 +547,12 @@ exports[`Sections snapshots renders properly 1`] = `
 .c2 .content-end {
   display: inline-block;
   content: "";
-  width: 12px;
-  height: 12px;
+  width: 8px;
+  height: 8px;
   background: black;
   border-radius: 50%;
   margin-left: 12px;
+  margin-bottom: 1px;
 }
 
 .c2 .artist-follow {

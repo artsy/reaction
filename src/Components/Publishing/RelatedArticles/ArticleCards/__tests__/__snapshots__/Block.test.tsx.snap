@@ -1,186 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ArticleCard renders properly 1`] = `
-.c17 {
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
+.c7 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
   font-size: 14px;
-  line-height: 1.4em;
-  margin: 10px 30px 0 0;
-}
-
-.c17.date {
-  white-space: nowrap;
+  line-height: 20px;
+  color: black;
 }
 
 .c16 {
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
   font-size: 14px;
-  line-height: 1.4em;
-  margin: 10px 30px 0 0;
+  line-height: 20px;
 }
 
-.c16.date {
-  white-space: nowrap;
-}
-
-.c16:before {
-  content: "";
-  display: inline-block;
-  min-width: 10px;
-  min-height: 10px;
-  border-radius: 50%;
-  margin: 6px 10px 1px 0;
-  background-color: black;
-}
-
-.c16:before {
-  min-width: 8px;
-  min-height: 8px;
-  margin: 0 5px 1px 0;
-}
-
-.c15 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
+.c6 a {
   color: black;
-}
-
-.c23 {
-  width: 32px;
-  height: 32px;
-}
-
-.c21 {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  -webkit-transition: opacity 0.15s;
-  transition: opacity 0.15s;
-  display: block;
-}
-
-.c19 {
-  position: relative;
-  width: 50%;
-  height: inherit;
-  margin-left: 30px;
-}
-
-.c10 {
-  display: block;
-  border: 1px solid;
-  border-radius: 2px;
-  color: black;
-  cursor: pointer;
   -webkit-text-decoration: none;
   text-decoration: none;
-  padding: 30px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c10 .c20 {
-  opacity: 1;
-}
-
-.c10:hover .c20 {
-  opacity: 0.7;
-}
-
-.c10 .c18 {
-  background: white;
-}
-
-.c11 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  width: 50%;
-  margin-bottom: 5px;
-}
-
-.c11 .author,
-.c11 .date {
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-.c13 {
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 45px;
-  line-height: 1.2em;
-  margin-bottom: 30px;
-}
-
-.c12 {
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-  margin-bottom: 10px;
-}
-
-.c14 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 23px;
-  line-height: 1.5em;
-  -webkit-font-smoothing: antialiased;
-}
-
-.c22 {
-  position: absolute;
-  left: 20px;
-  bottom: 20px;
-  right: 20px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-.c22 svg {
-  width: 40px;
 }
 
 .c3 {
@@ -211,7 +50,7 @@ exports[`ArticleCard renders properly 1`] = `
   padding-left: 0.5rem;
 }
 
-.c8 {
+.c9 {
   box-sizing: border-box;
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
@@ -220,31 +59,154 @@ exports[`ArticleCard renders properly 1`] = `
   padding-left: 0.5rem;
 }
 
-.c6 {
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
+.c17 {
+  margin: 10px 20px 0 0;
+}
+
+.c17:before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin: 0 5px 1px 0;
+  background-color: black;
+}
+
+.c18 {
+  margin: 5px 20px 0 0;
+  white-space: nowrap;
+}
+
+.c15 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
   color: black;
 }
 
-.c6 a {
+.c24 {
+  width: 32px;
+  height: 32px;
+}
+
+.c22 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  -webkit-transition: opacity 0.15s;
+  transition: opacity 0.15s;
+  display: block;
+}
+
+.c20 {
+  position: relative;
+  width: 50%;
+  height: inherit;
+  margin-left: 30px;
+}
+
+.c11 {
+  display: block;
+  border: 1px solid;
+  border-radius: 2px;
   color: black;
+  cursor: pointer;
   -webkit-text-decoration: none;
   text-decoration: none;
+  padding: 30px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c11 .c21 {
+  opacity: 1;
+}
+
+.c11:hover .c21 {
+  opacity: 0.7;
+}
+
+.c11 .c19 {
+  background: white;
+}
+
+.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 50%;
+  margin-bottom: 5px;
+}
+
+.c13 {
+  font-family: Unica77LLWebRegular,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 45px;
+  line-height: 1.2em;
+  margin-bottom: 30px;
+}
+
+.c14 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 23px;
+  line-height: 1.5em;
+  -webkit-font-smoothing: antialiased;
+}
+
+.c23 {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  right: 20px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+}
+
+.c23 svg {
+  width: 40px;
 }
 
 .c2 {
   max-width: 1200px;
-  margin: 0px auto;
-  padding: 0px 12px;
+  margin: 0 auto;
+  padding: 0 12px;
 }
 
-.c7 {
+.c8 {
   color: black;
 }
 
-.c7 .c9 {
+.c8 .c10 {
   margin-bottom: 60px;
 }
 
@@ -273,43 +235,18 @@ exports[`ArticleCard renders properly 1`] = `
   margin: 60px 0 100px 0;
 }
 
-@media (max-width:720px) {
-  .c17 {
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 12px;
-    line-height: 1.4em;
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c16 {
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 12px;
-    line-height: 1.4em;
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    margin: 10px 20px 0 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c16:before {
-    min-width: 8px;
-    min-height: 8px;
+@media only screen and (min-width:0em) {
+  .c9 {
+    -webkit-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    max-width: 100%;
+    display: block;
   }
 }
 
 @media (max-width:900px) {
-  .c19 {
+  .c20 {
     width: 100%;
     margin-left: 0;
     margin-bottom: 10px;
@@ -317,7 +254,7 @@ exports[`ArticleCard renders properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c10 {
+  .c11 {
     -webkit-flex-direction: column-reverse;
     -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
@@ -326,7 +263,7 @@ exports[`ArticleCard renders properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c11 {
+  .c12 {
     width: 100%;
     margin-bottom: 0;
   }
@@ -352,32 +289,13 @@ exports[`ArticleCard renders properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c22 svg {
+  .c23 svg {
     width: 30px;
   }
 }
 
-@media only screen and (min-width:0em) {
-  .c8 {
-    -webkit-flex-basis: 100%;
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
-    max-width: 100%;
-    display: block;
-  }
-}
-
-@media (max-width:720px) {
-  .c6 {
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-  }
-}
-
 @media (max-width:64em) {
-  .c7 .c9 {
+  .c8 .c10 {
     margin-bottom: 40px;
   }
 }
@@ -405,37 +323,39 @@ exports[`ArticleCard renders properly 1`] = `
       className="c4"
     >
       <div
-        className="c5 c6"
+        className="c5 c6 c7"
         color="black"
+        fontFamily={
+          Object {
+            "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "fontWeight": 500,
+          }
+        }
+        fontSize={14}
       >
-        More In 
+        More in 
         <span>
           Art Market
         </span>
       </div>
     </div>
     <div
-      className="c7"
+      className="c8"
       color="black"
     >
       <div
-        className="c8"
+        className="c9"
       >
         <a
-          className="ArticleCard c9 c10"
+          className="ArticleCard c10 c11"
           color="black"
           href="new-yorks-next-art-district"
           onClick={[Function]}
         >
           <div
-            className="c11"
+            className="c12"
           >
             <div>
-              <div
-                className="c12"
-              >
-                <div />
-              </div>
               <div
                 className="c13"
               >
@@ -452,47 +372,63 @@ exports[`ArticleCard renders properly 1`] = `
               color="black"
             >
               <div
-                className="author c16"
-                color="black"
+                className="c16"
+                fontFamily={
+                  Object {
+                    "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                    "fontWeight": 500,
+                  }
+                }
+                fontSize={14}
               >
-                By 
-                Casey Lesser
+                <div
+                  className="c17"
+                  color="black"
+                >
+                  Casey Lesser
+                </div>
               </div>
               <div
-                className="date c17"
+                className="c18"
               >
-                May 19, 2017
+                <div
+                  className="c16"
+                  fontFamily={
+                    Object {
+                      "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                      "fontWeight": 500,
+                    }
+                  }
+                  fontSize={14}
+                >
+                  May 19, 2017
+                </div>
               </div>
             </div>
           </div>
           <div
-            className="c18 c19"
+            className="c19 c20"
           >
             <img
-              className="c20 c21"
+              className="c21 c22"
               src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=95"
             />
           </div>
         </a>
       </div>
       <div
-        className="c8"
+        className="c9"
       >
         <a
-          className="ArticleCard c9 c10"
+          className="ArticleCard c10 c11"
           color="black"
           href="joanne-artman-gallery-poetry-naturerefinement-form"
           onClick={[Function]}
         >
           <div
-            className="c11"
+            className="c12"
           >
             <div>
-              <div
-                className="c12"
-              >
-                <div />
-              </div>
               <div
                 className="c13"
               >
@@ -505,23 +441,34 @@ exports[`ArticleCard renders properly 1`] = `
               </div>
             </div>
             <div
-              className="date c17"
+              className="c18"
             >
-              Aug 28, 2017
+              <div
+                className="c16"
+                fontFamily={
+                  Object {
+                    "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                    "fontWeight": 500,
+                  }
+                }
+                fontSize={14}
+              >
+                Aug 28, 2017
+              </div>
             </div>
           </div>
           <div
-            className="c18 c19"
+            className="c19 c20"
           >
             <img
-              className="c20 c21"
+              className="c21 c22"
               src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
             />
             <div
-              className="c22"
+              className="c23"
             >
               <svg
-                className="c23"
+                className="c24"
                 version="1.1"
                 viewBox="0 0 40 56"
                 x="0px"
@@ -540,7 +487,18 @@ exports[`ArticleCard renders properly 1`] = `
                   />
                 </g>
               </svg>
-              02:28
+              <div
+                className="c16"
+                fontFamily={
+                  Object {
+                    "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                    "fontWeight": 500,
+                  }
+                }
+                fontSize={14}
+              >
+                02:28
+              </div>
             </div>
           </div>
         </a>
