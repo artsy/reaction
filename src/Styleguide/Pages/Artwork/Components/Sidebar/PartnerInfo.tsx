@@ -1,21 +1,14 @@
 import { Serif } from "@artsy/palette"
 import { Location } from "Assets/Icons/Location"
 import React from "react"
+import { createFragmentContainer, graphql } from "react-relay"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 
+import { PartnerInfo_artwork } from "__generated__/PartnerInfo_artwork.graphql"
+
 export interface PartnerInfoProps {
-  artwork: {
-    readonly collecting_institution?: string
-    partner: {
-      readonly __id: string
-      readonly name: string
-      readonly href?: string
-      readonly locations: Array<{
-        readonly city: string
-      }>
-    }
-  }
+  artwork: PartnerInfo_artwork
 }
 
 const PartnerInfoContainer = Box
@@ -85,3 +78,20 @@ export class PartnerInfo extends React.Component<PartnerInfoProps> {
     )
   }
 }
+
+export const PartnerInfoFragmentContainer = createFragmentContainer(
+  PartnerInfo,
+  graphql`
+    fragment PartnerInfo_artwork on Artwork {
+      collecting_institution
+      partner {
+        __id
+        name
+        href
+        locations {
+          city
+        }
+      }
+    }
+  `
+)

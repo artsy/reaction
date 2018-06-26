@@ -28,6 +28,7 @@ const PartnerWithLocations = {
 }
 const ArtworkFromPartnerWithLocations = {
   _id: "artwork_from_partner_with_locations",
+  collecting_institution: null,
   partner: PartnerWithLocations,
 }
 
@@ -39,6 +40,7 @@ const PartnerWithoutLocations = {
 }
 const ArtworkFromPartnerWithoutLocations = {
   __id: "artwork_from_partner_without_locations",
+  collecting_institution: null,
   partner: PartnerWithoutLocations,
 }
 

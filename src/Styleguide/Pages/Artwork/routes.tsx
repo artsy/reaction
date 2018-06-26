@@ -10,8 +10,8 @@ export const routes = [
     Component: ArtworkApp,
     query: graphql`
       query routes_ArtworkQuery($artworkID: String!) {
-        viewer {
-          ...ArtworkApp_viewer
+        artwork(id: $artworkID) {
+          ...ArtworkApp_artwork
         }
       }
     `,

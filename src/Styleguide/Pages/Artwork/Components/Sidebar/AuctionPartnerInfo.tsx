@@ -1,21 +1,12 @@
 import { Serif } from "@artsy/palette"
 import React from "react"
+import { createFragmentContainer, graphql } from "react-relay"
 import { Box } from "Styleguide/Elements/Box"
 
+import { AuctionPartnerInfo_artwork } from "__generated__/AuctionPartnerInfo_artwork.graphql"
+
 export interface AuctionPartnerInfoProps {
-  artwork: {
-    readonly is_biddable: boolean
-    readonly partner: {
-      readonly __id: string
-      readonly name: string
-    }
-    readonly sale_artwork?: {
-      readonly estimate?: string
-    }
-    readonly sale?: {
-      readonly is_with_buyers_premium?: boolean
-    }
-  }
+  artwork: AuctionPartnerInfo_artwork
 }
 
 const AuctionPartnerInfoContainer = Box
@@ -49,3 +40,22 @@ export class AuctionPartnerInfo extends React.Component<
     )
   }
 }
+
+export const AuctionPartnerInfoFragmentContainer = createFragmentContainer(
+  AuctionPartnerInfo,
+  graphql`
+    fragment AuctionPartnerInfo_artwork on Artwork {
+      is_biddable
+      partner {
+        __id
+        name
+      }
+      sale_artwork {
+        estimate
+      }
+      sale {
+        is_with_buyers_premium
+      }
+    }
+  `
+)

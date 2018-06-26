@@ -1,17 +1,12 @@
 import { Sans } from "@artsy/palette"
 import React from "react"
+import { createFragmentContainer, graphql } from "react-relay"
 import { Box } from "Styleguide/Elements/Box"
 
+import { ExtraLinks_artwork } from "__generated__/ExtraLinks_artwork.graphql"
+
 export interface ExtraLinksProps {
-  artwork: {
-    readonly __id: string
-    readonly is_biddable: boolean
-    readonly is_for_sale: boolean
-    artists: Array<{
-      readonly __id: string
-      readonly is_consignable: boolean
-    }>
-  }
+  artwork: ExtraLinks_artwork
 }
 
 const ExtraLinksContainer = Box
@@ -51,3 +46,18 @@ export class ExtraLinks extends React.Component<ExtraLinksProps> {
     )
   }
 }
+
+export const ExtraLinksFragmentContainer = createFragmentContainer(
+  ExtraLinks,
+  graphql`
+    fragment ExtraLinks_artwork on Artwork {
+      __id
+      is_biddable
+      is_for_sale
+      artists {
+        __id
+        is_consignable
+      }
+    }
+  `
+)

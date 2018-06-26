@@ -1,29 +1,14 @@
 import { Serif } from "@artsy/palette"
 import { Sans } from "@artsy/palette"
 import React from "react"
+import { createFragmentContainer, graphql } from "react-relay"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 
+import { CurrentBidInfo_artwork } from "__generated__/CurrentBidInfo_artwork.graphql"
+
 export interface CurrentBidinfoProps {
-  artwork: {
-    readonly sale?: {
-      readonly is_open: boolean
-      readonly is_closed: boolean
-    }
-    readonly sale_artwork: {
-      readonly lot_label: string
-      readonly estimate: string
-      readonly is_with_reserve: boolean
-      readonly reserve_message: string
-      readonly reserve_status: string
-      readonly current_bid: {
-        readonly display: string
-      }
-      readonly counts: {
-        readonly bidder_positions: number
-      }
-    }
-  }
+  artwork: CurrentBidInfo_artwork
 }
 
 const CurrentBidInfoContainer = Box
@@ -78,3 +63,28 @@ export class CurrentBidInfo extends React.Component<CurrentBidinfoProps> {
     )
   }
 }
+
+export const CurrentBidInfoFragmentContainer = createFragmentContainer(
+  CurrentBidInfo,
+  graphql`
+    fragment CurrentBidInfo_artwork on Artwork {
+      sale {
+        is_open
+        is_closed
+      }
+      sale_artwork {
+        lot_label
+        estimate
+        is_with_reserve
+        reserve_message
+        reserve_status
+        current_bid {
+          display
+        }
+        counts {
+          bidder_positions
+        }
+      }
+    }
+  `
+)

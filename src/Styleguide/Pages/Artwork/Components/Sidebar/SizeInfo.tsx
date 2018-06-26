@@ -1,15 +1,12 @@
 import { Serif } from "@artsy/palette"
 import React from "react"
+import { createFragmentContainer, graphql } from "react-relay"
 import { Box } from "Styleguide/Elements/Box"
 
+import { SizeInfo_artwork } from "__generated__/SizeInfo_artwork.graphql"
+
 export interface SizeInfoProps {
-  artwork: {
-    readonly dimensions?: {
-      readonly in: string
-      readonly cm: string
-    }
-    readonly edition_of?: string
-  }
+  artwork: SizeInfo_artwork
 }
 
 const SizeInfoContainer = Box
@@ -29,3 +26,16 @@ export class SizeInfo extends React.Component<SizeInfoProps> {
     )
   }
 }
+
+export const SizeInfoFragmentContainer = createFragmentContainer(
+  SizeInfo,
+  graphql`
+    fragment SizeInfo_artwork on Artwork {
+      dimensions {
+        in
+        cm
+      }
+      edition_of
+    }
+  `
+)

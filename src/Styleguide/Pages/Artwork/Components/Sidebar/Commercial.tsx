@@ -1,25 +1,15 @@
 import { Serif } from "@artsy/palette"
 import React from "react"
+import { createFragmentContainer, graphql } from "react-relay"
 import { Box } from "Styleguide/Elements/Box"
 import { Button } from "Styleguide/Elements/Button"
 import { Separator } from "Styleguide/Elements/Separator"
-import { SizeInfo } from "./SizeInfo"
+import { SizeInfoFragmentContainer as SizeInfo } from "./SizeInfo"
+
+import { Commercial_artwork } from "__generated__/Commercial_artwork.graphql"
 
 export interface CommercialProps {
-  artwork: {
-    readonly __id: string
-    readonly sale_message: string | null
-    readonly is_inquireable: boolean
-    readonly is_price_range?: boolean | null
-    readonly edition_sets: Array<{
-      readonly __id: string
-      readonly dimensions: {
-        readonly in: string
-        readonly cm: string
-      }
-      readonly edition_of?: string
-    }>
-  }
+  artwork: Commercial_artwork
 }
 
 const CommercialContainer = Box
@@ -72,3 +62,18 @@ export class Commercial extends React.Component<CommercialProps> {
     )
   }
 }
+
+export const CommercialFragmentContainer = createFragmentContainer(
+  Commercial,
+  graphql`
+    fragment Commercial_artwork on Artwork {
+      __id
+      sale_message
+      is_inquireable
+      edition_sets {
+        __id
+        ...SizeInfo_artwork
+      }
+    }
+  `
+)

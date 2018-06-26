@@ -15,7 +15,7 @@ storiesOf("Styleguide/Artwork/Sidebar", module).add("TitleInfo", () => {
       <Section title="Artwork with Title Date and Medium present">
         <TitleInfo artwork={ArtworkWithTitleDateAndMedium} />
       </Section>
-      <Section title="Artwork with Title onlyt">
+      <Section title="Artwork with Title only">
         <TitleInfo artwork={ArtworkWithTitleOnly} />
       </Section>
       <Section title="Artwork with Title and Date">

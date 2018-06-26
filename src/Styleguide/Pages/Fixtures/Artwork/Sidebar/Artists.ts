@@ -14,6 +14,7 @@ export const SingleNonFollowedArtist = [
     id: "francesca-dimattio",
     name: "Francesca DiMattio",
     is_followed: false,
+    href: "https://www.artsy.net/artist/francesca-dimattio",
   },
 ]
 
@@ -23,6 +24,7 @@ export const MultipleArtists = [
     id: "francesca-dimattio",
     name: "Francesca DiMattio",
     is_followed: false,
+    href: "https://www.artsy.net/artist/francesca-dimattio",
   },
   {
     __id: "sol-lewitt-piramidi-c",

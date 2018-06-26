@@ -1,13 +1,12 @@
 import { Serif } from "@artsy/palette"
 import React from "react"
+import { createFragmentContainer, graphql } from "react-relay"
 import { Box } from "Styleguide/Elements/Box"
 
+import { TitleInfo_artwork } from "__generated__/TitleInfo_artwork.graphql"
+
 export interface TitleInfoProps {
-  artwork: {
-    readonly title: string
-    readonly date?: string
-    readonly medium?: string
-  }
+  artwork: TitleInfo_artwork
 }
 
 const TitleInfoContainer = Box
@@ -30,3 +29,14 @@ export class TitleInfo extends React.Component<TitleInfoProps> {
     )
   }
 }
+
+export const TitleInfoFragmentContainer = createFragmentContainer(
+  TitleInfo,
+  graphql`
+    fragment TitleInfo_artwork on Artwork {
+      title
+      date
+      medium
+    }
+  `
+)
