@@ -18,16 +18,6 @@ interface Props {
 const PAGE_SIZE = 10
 
 class Artworks extends React.Component<Props> {
-  loadPrev = () => {
-    const {
-      startCursor,
-      hasPreviousPage,
-    } = this.props.filtered_artworks.artworks.pageInfo
-    if (hasPreviousPage) {
-      this.loadBefore(startCursor)
-    }
-  }
-
   loadNext = () => {
     const {
       hasNextPage,
@@ -36,24 +26,6 @@ class Artworks extends React.Component<Props> {
     if (hasNextPage) {
       this.loadAfter(endCursor)
     }
-  }
-
-  loadBefore(cursor) {
-    this.props.relay.refetch(
-      {
-        first: null,
-        before: cursor,
-        filteredArtworksNodeID: this.props.filtered_artworks.__id,
-        after: null,
-        last: PAGE_SIZE,
-      },
-      null,
-      error => {
-        if (error) {
-          console.error(error)
-        }
-      }
-    )
   }
 
   loadAfter = cursor => {
@@ -95,7 +67,6 @@ class Artworks extends React.Component<Props> {
                   }
                   onClick={this.loadAfter}
                   onNext={this.loadNext}
-                  onPrev={this.loadPrev}
                   scrollTo="#jump--artistArtworkGrid"
                 />
               </Flex>
@@ -121,8 +92,6 @@ export default createRefetchContainer(
           pageInfo {
             hasNextPage
             endCursor
-            startCursor
-            hasPreviousPage
           }
           pageCursors {
             ...Pagination_pageCursors

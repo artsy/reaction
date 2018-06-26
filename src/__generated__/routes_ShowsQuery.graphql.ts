@@ -39,8 +39,6 @@ fragment ShowsRefetchContainer_artist_4FmGs3 on Artist {
   showsConnection(first: 4, sort: end_at_asc, status: "running") {
     pageInfo {
       hasNextPage
-      hasPreviousPage
-      startCursor
       endCursor
     }
     pageCursors {
@@ -82,8 +80,6 @@ fragment ShowsRefetchContainer_artist_4b9uba on Artist {
   showsConnection(first: 4, sort: start_at_asc, status: "upcoming") {
     pageInfo {
       hasNextPage
-      hasPreviousPage
-      startCursor
       endCursor
     }
     pageCursors {
@@ -125,8 +121,6 @@ fragment ShowsRefetchContainer_artist_21vaQg on Artist {
   showsConnection(first: 4, sort: end_at_desc, status: "closed") {
     pageInfo {
       hasNextPage
-      hasPreviousPage
-      startCursor
       endCursor
     }
     pageCursors {
@@ -179,6 +173,9 @@ fragment Pagination_pageCursors on PageCursors {
     page
     isCurrent
   }
+  previous {
+    cursor
+  }
 }
 */
 
@@ -212,14 +209,15 @@ v3 = {
   "value": 4,
   "type": "Int"
 },
-v4 = [
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "cursor",
-    "args": null,
-    "storageKey": null
-  },
+v4 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "cursor",
+  "args": null,
+  "storageKey": null
+},
+v5 = [
+  v4,
   {
     "kind": "ScalarField",
     "alias": null,
@@ -235,24 +233,24 @@ v4 = [
     "storageKey": null
   }
 ],
-v5 = {
+v6 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__id",
   "args": null,
   "storageKey": null
 },
-v6 = {
+v7 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "name",
   "args": null,
   "storageKey": null
 },
-v7 = [
-  v6
-],
 v8 = [
+  v7
+],
+v9 = [
   {
     "kind": "LinkedField",
     "alias": null,
@@ -266,20 +264,6 @@ v8 = [
         "kind": "ScalarField",
         "alias": null,
         "name": "hasNextPage",
-        "args": null,
-        "storageKey": null
-      },
-      {
-        "kind": "ScalarField",
-        "alias": null,
-        "name": "hasPreviousPage",
-        "args": null,
-        "storageKey": null
-      },
-      {
-        "kind": "ScalarField",
-        "alias": null,
-        "name": "startCursor",
         "args": null,
         "storageKey": null
       },
@@ -309,7 +293,7 @@ v8 = [
         "args": null,
         "concreteType": "PageCursor",
         "plural": true,
-        "selections": v4
+        "selections": v5
       },
       {
         "kind": "LinkedField",
@@ -319,7 +303,7 @@ v8 = [
         "args": null,
         "concreteType": "PageCursor",
         "plural": false,
-        "selections": v4
+        "selections": v5
       },
       {
         "kind": "LinkedField",
@@ -329,7 +313,19 @@ v8 = [
         "args": null,
         "concreteType": "PageCursor",
         "plural": false,
-        "selections": v4
+        "selections": v5
+      },
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "previous",
+        "storageKey": null,
+        "args": null,
+        "concreteType": "PageCursor",
+        "plural": false,
+        "selections": [
+          v4
+        ]
       }
     ]
   },
@@ -367,20 +363,20 @@ v8 = [
                 "args": null,
                 "storageKey": null
               },
-              v5,
+              v6,
               {
                 "kind": "InlineFragment",
                 "type": "Partner",
-                "selections": v7
+                "selections": v8
               },
               {
                 "kind": "InlineFragment",
                 "type": "ExternalPartner",
-                "selections": v7
+                "selections": v8
               }
             ]
           },
-          v6,
+          v7,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -444,7 +440,7 @@ v8 = [
             "args": null,
             "storageKey": null
           },
-          v5
+          v6
         ]
       }
     ]
@@ -455,7 +451,7 @@ return {
   "operationKind": "query",
   "name": "routes_ShowsQuery",
   "id": null,
-  "text": "query routes_ShowsQuery(\n  $artistID: String!\n) {\n  viewer {\n    ...Shows_viewer\n  }\n}\n\nfragment Shows_viewer on Viewer {\n  artist_currentShows: artist(id: $artistID) {\n    ...ShowsRefetchContainer_artist_4FmGs3\n    __id\n  }\n  artist_upcomingShows: artist(id: $artistID) {\n    ...ShowsRefetchContainer_artist_4b9uba\n    __id\n  }\n  artist_pastShows: artist(id: $artistID) {\n    ...ShowsRefetchContainer_artist_21vaQg\n    __id\n  }\n}\n\nfragment ShowsRefetchContainer_artist_4FmGs3 on Artist {\n  id\n  showsConnection(first: 4, sort: end_at_asc, status: \"running\") {\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        href\n        exhibition_period\n        cover_image {\n          cropped(width: 800, height: 600) {\n            url\n          }\n        }\n        city\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment ShowsRefetchContainer_artist_4b9uba on Artist {\n  id\n  showsConnection(first: 4, sort: start_at_asc, status: \"upcoming\") {\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        href\n        exhibition_period\n        cover_image {\n          cropped(width: 800, height: 600) {\n            url\n          }\n        }\n        city\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment ShowsRefetchContainer_artist_21vaQg on Artist {\n  id\n  showsConnection(first: 4, sort: end_at_desc, status: \"closed\") {\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        href\n        exhibition_period\n        cover_image {\n          cropped(width: 800, height: 600) {\n            url\n          }\n        }\n        city\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n}\n",
+  "text": "query routes_ShowsQuery(\n  $artistID: String!\n) {\n  viewer {\n    ...Shows_viewer\n  }\n}\n\nfragment Shows_viewer on Viewer {\n  artist_currentShows: artist(id: $artistID) {\n    ...ShowsRefetchContainer_artist_4FmGs3\n    __id\n  }\n  artist_upcomingShows: artist(id: $artistID) {\n    ...ShowsRefetchContainer_artist_4b9uba\n    __id\n  }\n  artist_pastShows: artist(id: $artistID) {\n    ...ShowsRefetchContainer_artist_21vaQg\n    __id\n  }\n}\n\nfragment ShowsRefetchContainer_artist_4FmGs3 on Artist {\n  id\n  showsConnection(first: 4, sort: end_at_asc, status: \"running\") {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        href\n        exhibition_period\n        cover_image {\n          cropped(width: 800, height: 600) {\n            url\n          }\n        }\n        city\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment ShowsRefetchContainer_artist_4b9uba on Artist {\n  id\n  showsConnection(first: 4, sort: start_at_asc, status: \"upcoming\") {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        href\n        exhibition_period\n        cover_image {\n          cropped(width: 800, height: 600) {\n            url\n          }\n        }\n        city\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment ShowsRefetchContainer_artist_21vaQg on Artist {\n  id\n  showsConnection(first: 4, sort: end_at_desc, status: \"closed\") {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        href\n        exhibition_period\n        cover_image {\n          cropped(width: 800, height: 600) {\n            url\n          }\n        }\n        city\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -528,9 +524,9 @@ return {
                 ],
                 "concreteType": "ShowConnection",
                 "plural": false,
-                "selections": v8
+                "selections": v9
               },
-              v5
+              v6
             ]
           },
           {
@@ -565,9 +561,9 @@ return {
                 ],
                 "concreteType": "ShowConnection",
                 "plural": false,
-                "selections": v8
+                "selections": v9
               },
-              v5
+              v6
             ]
           },
           {
@@ -602,9 +598,9 @@ return {
                 ],
                 "concreteType": "ShowConnection",
                 "plural": false,
-                "selections": v8
+                "selections": v9
               },
-              v5
+              v6
             ]
           }
         ]

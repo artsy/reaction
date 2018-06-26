@@ -31,8 +31,6 @@ fragment ArtworkFilterArtworks_filtered_artworks_2HEEH6 on FilterArtworks {
     pageInfo {
       hasNextPage
       endCursor
-      startCursor
-      hasPreviousPage
     }
     pageCursors {
       ...Pagination_pageCursors
@@ -61,6 +59,9 @@ fragment Pagination_pageCursors on PageCursors {
     cursor
     page
     isCurrent
+  }
+  previous {
+    cursor
   }
 }
 
@@ -195,14 +196,15 @@ v2 = {
   "args": null,
   "storageKey": null
 },
-v3 = [
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "cursor",
-    "args": null,
-    "storageKey": null
-  },
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "cursor",
+  "args": null,
+  "storageKey": null
+},
+v4 = [
+  v3,
   {
     "kind": "ScalarField",
     "alias": null,
@@ -218,14 +220,14 @@ v3 = [
     "storageKey": null
   }
 ],
-v4 = {
+v5 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "href",
   "args": null,
   "storageKey": null
 },
-v5 = [
+v6 = [
   {
     "kind": "Literal",
     "name": "shallow",
@@ -233,14 +235,14 @@ v5 = [
     "type": "Boolean"
   }
 ],
-v6 = {
+v7 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "name",
   "args": null,
   "storageKey": null
 },
-v7 = {
+v8 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "display",
@@ -252,7 +254,7 @@ return {
   "operationKind": "query",
   "name": "ArtworkFilterArtworksQuery",
   "id": null,
-  "text": "query ArtworkFilterArtworksQuery(\n  $filteredArtworksNodeID: ID!\n  $first: Int!\n  $after: String\n) {\n  node(__id: $filteredArtworksNodeID) {\n    __typename\n    ...ArtworkFilterArtworks_filtered_artworks_2HEEH6\n    __id\n  }\n}\n\nfragment ArtworkFilterArtworks_filtered_artworks_2HEEH6 on FilterArtworks {\n  __id\n  artworks: artworks_connection(first: $first, after: $after) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      startCursor\n      hasPreviousPage\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    ...ArtworkGrid_artworks\n    edges {\n      node {\n        __id\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
+  "text": "query ArtworkFilterArtworksQuery(\n  $filteredArtworksNodeID: ID!\n  $first: Int!\n  $after: String\n) {\n  node(__id: $filteredArtworksNodeID) {\n    __typename\n    ...ArtworkFilterArtworks_filtered_artworks_2HEEH6\n    __id\n  }\n}\n\nfragment ArtworkFilterArtworks_filtered_artworks_2HEEH6 on FilterArtworks {\n  __id\n  artworks: artworks_connection(first: $first, after: $after) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    ...ArtworkGrid_artworks\n    edges {\n      node {\n        __id\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n  }\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -363,20 +365,6 @@ return {
                         "name": "endCursor",
                         "args": null,
                         "storageKey": null
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "name": "startCursor",
-                        "args": null,
-                        "storageKey": null
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "name": "hasPreviousPage",
-                        "args": null,
-                        "storageKey": null
                       }
                     ]
                   },
@@ -397,7 +385,7 @@ return {
                         "args": null,
                         "concreteType": "PageCursor",
                         "plural": true,
-                        "selections": v3
+                        "selections": v4
                       },
                       {
                         "kind": "LinkedField",
@@ -407,7 +395,7 @@ return {
                         "args": null,
                         "concreteType": "PageCursor",
                         "plural": false,
-                        "selections": v3
+                        "selections": v4
                       },
                       {
                         "kind": "LinkedField",
@@ -417,7 +405,19 @@ return {
                         "args": null,
                         "concreteType": "PageCursor",
                         "plural": false,
-                        "selections": v3
+                        "selections": v4
+                      },
+                      {
+                        "kind": "LinkedField",
+                        "alias": null,
+                        "name": "previous",
+                        "storageKey": null,
+                        "args": null,
+                        "concreteType": "PageCursor",
+                        "plural": false,
+                        "selections": [
+                          v3
+                        ]
                       }
                     ]
                   },
@@ -447,7 +447,7 @@ return {
                             "storageKey": null
                           },
                           v2,
-                          v4,
+                          v5,
                           {
                             "kind": "ScalarField",
                             "alias": null,
@@ -481,13 +481,13 @@ return {
                             "alias": null,
                             "name": "artists",
                             "storageKey": "artists(shallow:true)",
-                            "args": v5,
+                            "args": v6,
                             "concreteType": "Artist",
                             "plural": true,
                             "selections": [
                               v2,
-                              v4,
-                              v6
+                              v5,
+                              v7
                             ]
                           },
                           {
@@ -534,12 +534,12 @@ return {
                             "alias": null,
                             "name": "partner",
                             "storageKey": "partner(shallow:true)",
-                            "args": v5,
+                            "args": v6,
                             "concreteType": "Partner",
                             "plural": false,
                             "selections": [
-                              v6,
-                              v4,
+                              v7,
+                              v5,
                               v2,
                               {
                                 "kind": "ScalarField",
@@ -622,7 +622,7 @@ return {
                                 "concreteType": "SaleArtworkHighestBid",
                                 "plural": false,
                                 "selections": [
-                                  v7,
+                                  v8,
                                   {
                                     "kind": "ScalarField",
                                     "alias": "__id",
@@ -641,7 +641,7 @@ return {
                                 "concreteType": "SaleArtworkOpeningBid",
                                 "plural": false,
                                 "selections": [
-                                  v7
+                                  v8
                                 ]
                               },
                               {
