@@ -10,6 +10,7 @@ interface Props {
   exhibitionInfo: string
   partner: string
   href: string
+  city?: string
   // FIXME: Fix container directly by making responsive
   pr?: number
   pb?: number
@@ -21,8 +22,10 @@ export const ShowBlockItem = (props: Props) => {
     <Box
       maxWidth="460px"
       width={props.blockWidth}
-      height="auto" // FIXME
-      pr={props.pr}
+      height="auto"
+      pr={
+        props.pr // FIXME
+      }
       pb={props.pb}
     >
       <a href={FIXME_DOMAIN + props.href} className="noUnderline">
@@ -35,6 +38,7 @@ export const ShowBlockItem = (props: Props) => {
         </a>
       </Serif>
       <Serif size="1" color="black60">
+        {props.city && `${props.city}, `}
         {props.exhibitionInfo}
       </Serif>
     </Box>

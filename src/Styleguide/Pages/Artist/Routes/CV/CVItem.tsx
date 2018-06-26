@@ -68,7 +68,8 @@ export const CVPaginationContainer = createPaginationContainer(
             </a>
           ) : (
             <span>{node.partner.name}</span>
-          )}, {node.city}
+          )}
+          {node.city && `, ${node.city}`}
         </Show>
       )
     }

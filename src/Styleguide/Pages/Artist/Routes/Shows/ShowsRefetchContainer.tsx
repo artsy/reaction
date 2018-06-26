@@ -128,6 +128,7 @@ export const ShowsRefetchContainer = createRefetchContainer(
                                   pr={pr}
                                   pb={pb}
                                   href={node.href}
+                                  city={node.city}
                                 />
                               )
                             }
