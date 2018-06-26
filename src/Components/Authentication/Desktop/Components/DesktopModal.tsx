@@ -13,6 +13,8 @@ export interface DesktopModalProps extends ModalProps {
   onTypeChange?: (options: ModalOptions) => void
   onClose: () => void
   tracking?: any
+  show?: boolean
+  blurContainerSelector?: string
 }
 
 @track({}, { dispatch: data => Events.postEvent(data) })
