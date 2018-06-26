@@ -1,6 +1,6 @@
 import React from "react"
 import { ArtistCard } from "Styleguide/Components/ArtistCard"
-import { PaginationFragmentContainer } from "Styleguide/Components/Pagination"
+import { PaginationFragmentContainer as Pagination } from "Styleguide/Components/Pagination"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
@@ -57,10 +57,7 @@ export const RelatedArtists = () => {
             <Row>
               <Col>
                 <Flex justifyContent="flex-end">
-                  <PaginationFragmentContainer
-                    pageCursors={cursor}
-                    {...callbacks}
-                  />
+                  <Pagination pageCursors={cursor} {...callbacks} />
                 </Flex>
               </Col>
             </Row>

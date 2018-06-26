@@ -8,7 +8,7 @@ export const Artist = () => {
     <Boot>
       <StorybooksRouter
         routes={routes}
-        initialRoute="/andy-warhol/auction-results"
+        initialRoute="/andy-warhol/related-artists"
       />
     </Boot>
   )
