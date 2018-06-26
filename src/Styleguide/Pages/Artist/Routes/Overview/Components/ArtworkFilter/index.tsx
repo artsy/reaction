@@ -1,5 +1,4 @@
-import { ArtworkFilterContainer_artist } from "__generated__/ArtworkFilterContainer_artist.graphql"
-
+import { ArtworkFilter_artist } from "__generated__/ArtworkFilter_artist.graphql"
 import * as React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
@@ -7,35 +6,36 @@ import { Toggle } from "Styleguide/Components/Toggle"
 import { Box } from "Styleguide/Elements/Box"
 import { Checkbox } from "Styleguide/Elements/Checkbox"
 import { Flex } from "Styleguide/Elements/Flex"
-import { Select } from "Styleguide/Elements/Select"
-
 import { Radio } from "Styleguide/Elements/Radio"
+import { Select } from "Styleguide/Elements/Select"
 import { Spacer } from "Styleguide/Elements/Spacer"
+import { FilterState } from "Styleguide/Pages/Artist/Routes/Overview/state"
 import { Responsive } from "Styleguide/Utils/Responsive"
 import { Subscribe } from "unstated"
-import ArtworksContent from "./ArtworkFilterArtworks"
-import { FilterState } from "./ArtworkFilterState"
+import ArtworksContent from "./ArtworkFilterArtworkGrid"
 
 interface Props {
-  artist: ArtworkFilterContainer_artist
+  artist: ArtworkFilter_artist
+  filters: any // FIXME
 }
-
-const ArtworkBrowser = styled(Flex)``
-const ArtworkGridArea = styled(Flex)``
-const Sidebar = Box
 
 class Filter extends React.Component<Props> {
   renderCurrentlySelected(filter, state) {
+    let selectedFilter = null
+
     if (
       (filter === "institution" || filter === "gallery") &&
       state.partner_id
     ) {
-      return state.partner_id
+      selectedFilter = state.partner_id
     }
     if (filter === "major_period" && state.major_periods) {
-      return state.major_periods[0]
+      selectedFilter = state.major_periods[0]
+    } else {
+      selectedFilter = state[filter]
     }
-    return state[filter]
+
+    return selectedFilter
   }
 
   renderFilters(filters) {
@@ -226,9 +226,9 @@ class Filter extends React.Component<Props> {
   }
 }
 
-export const ArtworkFilterContainer = createFragmentContainer(Filter, {
+export const ArtworkFilterFragmentContainer = createFragmentContainer(Filter, {
   artist: graphql`
-    fragment ArtworkFilterContainer_artist on Artist
+    fragment ArtworkFilter_artist on Artist
       @argumentDefinitions(
         medium: { type: "String", defaultValue: "*" }
         major_periods: { type: "[String]" }
@@ -256,8 +256,12 @@ export const ArtworkFilterContainer = createFragmentContainer(Filter, {
             id
           }
         }
-        ...ArtworkFilterArtworks_filtered_artworks
+        ...ArtworkFilterArtworkGrid_filtered_artworks
       }
     }
   `,
 })
+
+const ArtworkBrowser = styled(Flex)``
+const ArtworkGridArea = styled(Flex)``
+const Sidebar = Box

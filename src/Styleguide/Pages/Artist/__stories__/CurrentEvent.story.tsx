@@ -1,10 +1,11 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
+
 import {
   CurrentEvent,
   LargeCurrentEvent,
-} from "../Routes/Overview/CurrentEvent"
+} from "Styleguide/Pages/Artist/Routes/Overview/Components/CurrentEvent"
 
 storiesOf("Styleguide/Artist/CurrentEvent", module).add("Current Event", () => {
   return (

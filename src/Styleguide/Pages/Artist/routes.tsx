@@ -4,7 +4,7 @@ import { ArtistApp } from "./ArtistApp"
 import { ArticlesRouteFragmentContainer as ArticlesRoute } from "./Routes/Articles"
 import { AuctionResultsRouteFragmentContainer as AuctionResultsRoute } from "./Routes/AuctionResults"
 import { CVRouteFragmentContainer as CVRoute } from "./Routes/CV"
-import { Overview } from "./Routes/Overview"
+import { OverviewRoute } from "./Routes/Overview"
 import { RelatedArtistsRouteFragmentContainer as RelatedArtistsRoute } from "./Routes/RelatedArtists"
 import { ShowsRouteFragmentContainer as ShowsRoute } from "./Routes/Shows"
 
@@ -17,6 +17,8 @@ import { AuctionResultProps } from "./Routes/AuctionResults"
 // @ts-ignore
 import { CVRouteProps } from "./Routes/CV"
 // @ts-ignore
+import { OverviewProps } from "./Routes/Overview"
+// @ts-ignore
 import { RelatedArtistsProps } from "./Routes/RelatedArtists"
 // @ts-ignore
 import { Props as ShowProps } from "./Routes/Shows"
@@ -26,7 +28,7 @@ export const routes = [
     path: ":artistID",
     Component: ArtistApp,
     query: graphql`
-      query routes_OverviewQueryRendererQuery($artistID: String!) {
+      query routes_ArtistTopLevelQuery($artistID: String!) {
         artist(id: $artistID) {
           ...ArtistHeader_artist
         }
@@ -35,7 +37,20 @@ export const routes = [
     children: [
       {
         path: "/",
-        Component: Overview,
+        Component: OverviewRoute,
+        query: graphql`
+          query routes_OverviewQueryRendererQuery(
+            $artistID: String!
+            $medium: String
+            $major_periods: [String]
+            $partner_id: ID
+            $for_sale: Boolean
+          ) {
+            artist(id: $artistID) {
+              ...Overview_artist
+            }
+          }
+        `,
       },
       {
         path: "cv",
