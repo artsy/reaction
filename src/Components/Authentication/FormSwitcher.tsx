@@ -98,7 +98,7 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
     const { isMobile, isStatic, handleTypeChange, options } = this.props
 
     if (isMobile || isStatic) {
-      window.location.href = `/${newType}?${qs.stringify(options)}`
+      window.location.assign(`/${newType}?${qs.stringify(options)}`)
     } else {
       this.setState({ type: newType })
       if (handleTypeChange) {

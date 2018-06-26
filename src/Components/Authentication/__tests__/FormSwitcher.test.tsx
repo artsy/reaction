@@ -1,5 +1,6 @@
 import { mount } from "enzyme"
 import React from "react"
+import { SmallTextLink } from "../commonElements"
 import { ForgotPasswordForm } from "../Desktop/ForgotPasswordForm"
 import { LoginForm } from "../Desktop/LoginForm"
 import { SignUpForm } from "../Desktop/SignUpForm"
@@ -30,6 +31,8 @@ describe("FormSwitcher", () => {
           triggerSeconds: 1,
         }}
         isMobile={props.isMobile || false}
+        isStatic={props.isStatic || false}
+        handleTypeChange={jest.fn()}
       />
     )
 
@@ -64,6 +67,41 @@ describe("FormSwitcher", () => {
     it("forgot password form", () => {
       const wrapper = getWrapper({ type: ModalType.forgot, isMobile: true })
       expect(wrapper.find(MobileForgotPasswordForm).length).toEqual(1)
+    })
+  })
+
+  describe("#handleTypeChange", () => {
+    beforeEach(() => {
+      window.location.assign = jest.fn()
+    })
+    it("redirects to a url if static or mobile", () => {
+      const wrapper = getWrapper({
+        type: ModalType.login,
+        isMobile: true,
+      })
+
+      wrapper
+        .find(SmallTextLink)
+        .at(2)
+        .simulate("click")
+
+      expect(window.location.assign.mock.calls[0][0]).toEqual(
+        "/signup?contextModule=Header&copy=Foo%20Bar&destination=%2Fcollect&intent=follow%20artist&redirectTo=%2Ffoo&trigger=timed&triggerSeconds=1"
+      )
+    })
+
+    it("sets type and notifies parent component when type is changed", () => {
+      const wrapper = getWrapper({
+        type: ModalType.login,
+      })
+
+      wrapper
+        .find(SmallTextLink)
+        .at(3)
+        .simulate("click")
+
+      expect(wrapper.state().type).toMatch("signup")
+      expect(wrapper.props().handleTypeChange).toBeCalled()
     })
   })
 

@@ -64,7 +64,7 @@ export class ModalManager extends Component<
   closeModal = () => {
     this.setState({
       currentType: null,
-      options: null,
+      options: {},
     })
     document.body.style.overflowY = "auto"
   }
