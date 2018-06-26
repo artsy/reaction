@@ -1,7 +1,7 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Share } from "../Share"
 import { Flex } from "Styleguide/Elements/Flex"
+import { Share } from "../Share"
 
 storiesOf("Styleguide/Artwork", module).add("Share", () => {
   return (
