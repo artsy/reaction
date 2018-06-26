@@ -1,4 +1,5 @@
 import { Sans } from "@artsy/palette"
+import { TypeSizes } from "@artsy/palette/dist/elements/Typography"
 import React from "react"
 import styled from "styled-components"
 import { getDate } from "../Constants"
@@ -8,23 +9,8 @@ interface DateProps {
   date?: string
   format?: DateFormat
   layout?: BylineLayout
-  size?:
-    | "1"
-    | "2"
-    | "3"
-    | "3t"
-    | "4"
-    | "4t"
-    | "5"
-    | "5t"
-    | "6"
-    | "8"
-    | "10"
-    | "12"
-    | "14"
-    | "16"
+  size?: keyof TypeSizes["sans"]
 }
-// TODO: replace size with interface from palette
 
 export const Date: React.SFC<DateProps> = props => {
   const { date, format, layout, size } = props
