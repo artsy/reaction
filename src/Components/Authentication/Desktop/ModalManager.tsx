@@ -6,6 +6,7 @@ import {
   SubmitHandler,
 } from "Components/Authentication/Types"
 import { FormikProps } from "formik"
+import { cloneDeep } from "lodash"
 import React, { Component } from "react"
 import { FormSwitcher } from "../FormSwitcher"
 import { DesktopModal } from "./Components/DesktopModal"
@@ -64,6 +65,16 @@ export class ModalManager extends Component<
     document.body.style.overflowY = "auto"
   }
 
+  handleTypeChange = type => {
+    const newOptions = Object.assign(cloneDeep(this.state.options), {
+      mode: type,
+    })
+    this.setState({
+      currentType: type,
+      options: newOptions,
+    })
+  }
+
   setError = err => this.setState({ error: err })
 
   render() {
@@ -81,6 +92,7 @@ export class ModalManager extends Component<
         onTypeChange={this.openModal}
         onClose={this.closeModal}
         subtitle={options.copy}
+        type={currentType}
       >
         <FormSwitcher
           type={currentType}
@@ -95,6 +107,7 @@ export class ModalManager extends Component<
               submitUrls.twitter + "?redirect-to=" + options.redirectTo)
           }
           options={options}
+          handleTypeChange={this.handleTypeChange}
         />
       </DesktopModal>
     )

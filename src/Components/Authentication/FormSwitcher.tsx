@@ -26,6 +26,7 @@ export interface FormSwitcherProps {
   onFacebookLogin?: (e: Event) => void
   onTwitterLogin?: (e: Event) => void
   isMobile?: boolean
+  handleTypeChange?: (e: string) => void
 }
 
 export interface State {
@@ -91,8 +92,16 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
     }
   }
 
-  presentModal = (newType: ModalType) => {
-    this.setState({ type: newType })
+  handleTypeChange = (newType: ModalType) => {
+    if (this.props.isMobile) {
+      // TODO stringify options
+      window.location.href = `/${newType}`
+    } else {
+      this.setState({ type: newType })
+      if (this.props.handleTypeChange) {
+        this.props.handleTypeChange(newType)
+      }
+    }
   }
 
   render() {
@@ -125,7 +134,7 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
       <Form
         error={error}
         values={defaultValues}
-        handleTypeChange={this.presentModal}
+        handleTypeChange={this.handleTypeChange}
         handleSubmit={handleSubmit}
         onFacebookLogin={onFacebookLogin}
         onTwitterLogin={onTwitterLogin}

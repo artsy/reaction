@@ -1,13 +1,15 @@
 import { storiesOf } from "@storybook/react"
 import Colors from "Assets/Colors"
-import React from "react"
+import React, { Component, Fragment } from "react"
 import styled from "styled-components"
+import Button from "../Buttons/Default"
 
 import {
   Footer,
   TermsOfServiceCheckbox,
 } from "../Authentication/commonElements"
 import { DesktopModal } from "../Authentication/Desktop/Components/DesktopModal"
+import { ModalManager } from "../Authentication/Desktop/ModalManager"
 import { FormSwitcher } from "../Authentication/FormSwitcher"
 import { ModalType } from "../Authentication/Types"
 
@@ -22,14 +24,40 @@ const close = () => {
   return
 }
 
+class ModalContainer extends Component<any> {
+  private manager: ModalManager | null
+
+  componentDidMount() {
+    setTimeout(this.onClick, 500)
+  }
+
+  onClick = () => {
+    const options = this.props.options
+    this.manager.openModal(options)
+  }
+
+  render() {
+    return (
+      <Fragment>
+        <Button onClick={this.onClick}>Open Modal</Button>
+        <ModalManager
+          ref={ref => (this.manager = ref)}
+          submitUrls={{
+            login: "/login",
+            signup: "/signup",
+            forgot: "/forgot",
+          }}
+          handleSubmit={submit}
+        />
+      </Fragment>
+    )
+  }
+}
+
 storiesOf("Components/Authentication/Desktop", module)
-  .add("Login", () => (
-    <DesktopModal show onClose={close}>
-      <FormSwitcher type={ModalType.login} handleSubmit={submit} options={{}} />
-    </DesktopModal>
-  ))
+  .add("Login", () => <ModalContainer options={{ mode: ModalType.login }} />)
   .add("Forgot Password", () => (
-    <DesktopModal show onClose={close}>
+    <DesktopModal show onClose={close} type={ModalType.forgot}>
       <FormSwitcher
         type={ModalType.forgot}
         handleSubmit={submit}
@@ -38,7 +66,7 @@ storiesOf("Components/Authentication/Desktop", module)
     </DesktopModal>
   ))
   .add("Sign Up", () => (
-    <DesktopModal show onClose={close}>
+    <DesktopModal show onClose={close} type={ModalType.signup}>
       <FormSwitcher
         type={ModalType.signup}
         handleSubmit={submit}
