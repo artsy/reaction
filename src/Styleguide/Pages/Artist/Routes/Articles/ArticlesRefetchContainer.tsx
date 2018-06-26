@@ -2,11 +2,9 @@ import { ArticlesRefetchContainer_artist } from "__generated__/ArticlesRefetchCo
 import React from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import styled from "styled-components"
-import { PaginationFragmentContainer } from "Styleguide/Components/Pagination"
-import { Box } from "Styleguide/Elements/Box"
+import { PaginationFragmentContainer as Pagination } from "Styleguide/Components/Pagination"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
-import { Separator } from "Styleguide/Elements/Separator"
 import { ArticleItem } from "./ArticleItem"
 
 const PAGE_SIZE = 10
@@ -74,24 +72,10 @@ export const ArticlesRefetchContainer = createRefetchContainer(
       )
     }
 
-    renderPagination() {
-      return (
-        <div>
-          <PaginationFragmentContainer
-            pageCursors={
-              this.props.artist.articlesConnection.pageCursors as any
-            }
-            onClick={this.loadAfter}
-            onNext={this.loadNext}
-            onPrev={this.loadPrev}
-          />
-        </div>
-      )
-    }
-
     render() {
       return (
-        <div>
+        <React.Fragment>
+          <span id="jumpto--artistArticles" />
           <Row>
             <Col>
               <ArticleList>
@@ -110,18 +94,22 @@ export const ArticlesRefetchContainer = createRefetchContainer(
             </Col>
           </Row>
 
-          <Box my={2}>
-            <Separator />
-          </Box>
-
           <Row>
             <Col>
               <Flex mb={2} justifyContent="flex-end">
-                {this.renderPagination()}
+                <Pagination
+                  pageCursors={
+                    this.props.artist.articlesConnection.pageCursors as any
+                  }
+                  onClick={this.loadAfter}
+                  onNext={this.loadNext}
+                  onPrev={this.loadPrev}
+                  scrollTo="#jumpto-RouteTabs"
+                />
               </Flex>
             </Col>
           </Row>
-        </div>
+        </React.Fragment>
       )
     }
   },

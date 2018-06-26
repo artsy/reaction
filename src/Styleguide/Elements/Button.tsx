@@ -53,7 +53,7 @@ export const Button = styled(
         case ButtonSize.small:
           return { height: "26px", size: 2, px: 1 }
         case ButtonSize.medium:
-          return { height: "40px", size: "3t", px: 2 }
+          return { height: "41px", size: "3t", px: 2 }
         case ButtonSize.large:
           return { height: "50px", size: "3t", px: 3 }
         default:

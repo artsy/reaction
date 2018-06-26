@@ -3,8 +3,10 @@ import React from "react"
 import styled, { css } from "styled-components"
 import { themeGet } from "styled-system"
 import { Arrow } from "Styleguide/Elements/Arrow"
+import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Responsive } from "Styleguide/Utils/Responsive"
+import { ScrollIntoView } from "Styleguide/Utils/ScrollIntoView"
 
 import { Pagination_pageCursors } from "__generated__/Pagination_pageCursors.graphql"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -14,6 +16,7 @@ interface Props {
   onNext?: () => void
   onPrev?: () => void
   pageCursors: Pagination_pageCursors
+  scrollTo?: string
 }
 
 export class Pagination extends React.Component<Props> {
@@ -21,16 +24,19 @@ export class Pagination extends React.Component<Props> {
     onClick: _cursor => ({}),
     onNext: () => ({}),
     onPrev: () => ({}),
+    scrollTo: null,
   }
 
   render() {
     return (
-      <Responsive>
-        {({ xs }) => {
-          if (xs) return <SmallPagination {...this.props} />
-          return <LargePagination {...this.props} />
-        }}
-      </Responsive>
+      <ScrollIntoView selector={this.props.scrollTo}>
+        <Responsive>
+          {({ xs }) => {
+            if (xs) return <SmallPagination {...this.props} />
+            return <LargePagination {...this.props} />
+          }}
+        </Responsive>
+      </ScrollIntoView>
     )
   }
 }
@@ -61,8 +67,10 @@ export const LargePagination = (props: Props) => {
         </div>
       )}
 
-      <PrevButton onClick={() => props.onPrev()} />
-      <NextButton onClick={() => props.onNext()} />
+      <Box ml={4}>
+        <PrevButton onClick={() => props.onPrev()} />
+        <NextButton onClick={() => props.onNext()} />
+      </Box>
     </Flex>
   )
 }
@@ -94,16 +102,9 @@ export const SmallPagination = (props: Props) => {
   )
 }
 
-const scrollToTop = clickHandler => {
-  return () => {
-    window.scrollTo(0, 0)
-    clickHandler()
-  }
-}
-
 const Page = ({ num, onClick, ...props }) => {
   return (
-    <Button {...props} onClick={() => scrollToTop(onClick)()}>
+    <Button {...props} onClick={() => onClick()}>
       <Sans size="3" weight="medium" display="inline">
         {num}
       </Sans>
@@ -122,7 +123,7 @@ const PageSpan = ({ mx }) => {
 const PrevButton = props => {
   return (
     <Sans size="3" weight="medium" display="inline" mx={0.5}>
-      <a onClick={() => scrollToTop(props.onClick)()} className="noUnderline">
+      <a onClick={() => props.onClick()} className="noUnderline">
         <Arrow direction="left" /> Prev
       </a>
     </Sans>
@@ -132,7 +133,7 @@ const PrevButton = props => {
 const NextButton = props => {
   return (
     <Sans size="3" weight="medium" display="inline" mx={0.5}>
-      <a onClick={() => scrollToTop(props.onClick)()} className="noUnderline">
+      <a onClick={() => props.onClick()} className="noUnderline">
         Next <Arrow direction="right" />
       </a>
     </Sans>

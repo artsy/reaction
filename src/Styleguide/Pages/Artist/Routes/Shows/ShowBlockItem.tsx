@@ -9,13 +9,23 @@ interface Props {
   name: string
   exhibitionInfo: string
   partner: string
+  // FIXME: Fix container directly by making responsive
+  pr?: number
+  pb?: number
 }
 
 export const ShowBlockItem = (props: Props) => {
   return (
-    <Box maxWidth="460px" width={props.blockWidth} height="auto" p={1}>
+    <Box
+      maxWidth="460px"
+      width={props.blockWidth}
+      height="auto"
+      // FIXME
+      pr={props.pr}
+      pb={props.pb}
+    >
       <a href="#" className="noUnderline">
-        <ResponsiveImage src={props.imageUrl} />
+        <ResponsiveImage src={props.imageUrl} my={-30} />
         <Serif size="3t">{props.name}</Serif>
       </a>
       <Serif size="2" color="black60">

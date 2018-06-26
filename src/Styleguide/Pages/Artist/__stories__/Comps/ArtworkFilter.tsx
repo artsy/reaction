@@ -41,7 +41,12 @@ export const ArtworkFilter = () => {
               alignItems="flex-end"
             >
               <Flex pb={2} justifyContent="flex-end">
-                <Select options={[{ value: "percy", text: "Cat" }]} />
+                <Select
+                  options={[
+                    { value: "RECENTLY_UPDATED", text: "Recently updated" },
+                    { value: "RECENTLY_ADDED", text: "Recently added" },
+                  ]}
+                />
               </Flex>
               <ArtworkGrid
                 artistID="pablo-picasso"

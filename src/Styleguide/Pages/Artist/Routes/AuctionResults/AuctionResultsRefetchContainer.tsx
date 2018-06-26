@@ -126,6 +126,7 @@ export const AuctionResultsRefetchContainer = createRefetchContainer(
                         onClick={this.loadAfter}
                         onNext={this.loadNext}
                         onPrev={this.loadPrev}
+                        scrollTo="#jumpto-RouteTabs"
                       />
                     </Flex>
                   </Col>
