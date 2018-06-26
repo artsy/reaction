@@ -1,6 +1,6 @@
 import { cloneDeep, extend, includes, map } from "lodash"
 import React from "react"
-import styled, { StyledFunction } from "styled-components"
+import styled from "styled-components"
 import Events from "../../../Utils/Events"
 import track from "../../../Utils/track"
 import { ArticleProps } from "../Article"
@@ -112,11 +112,6 @@ export class ArticleWithFullScreen extends React.Component<
   }
 }
 
-const ArticleDiv: StyledFunction<
-  ArticleContainerProps & React.HTMLProps<HTMLDivElement>
-> =
-  styled.div
-
-const ArticleContainer = ArticleDiv`
+const ArticleContainer = styled.div.attrs<ArticleContainerProps>({})`
   margin-top: ${props => props.marginTop || "50px"};
 `

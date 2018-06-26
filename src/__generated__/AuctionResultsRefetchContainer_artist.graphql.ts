@@ -6,8 +6,6 @@ export type AuctionResultsRefetchContainer_artist = {
     readonly auctionResults: ({
         readonly pageInfo: {
             readonly hasNextPage: boolean;
-            readonly hasPreviousPage: boolean;
-            readonly startCursor: string | null;
             readonly endCursor: string | null;
         };
         readonly pageCursors: ({}) | null;
@@ -131,20 +129,6 @@ return {
             {
               "kind": "ScalarField",
               "alias": null,
-              "name": "hasPreviousPage",
-              "args": null,
-              "storageKey": null
-            },
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "startCursor",
-              "args": null,
-              "storageKey": null
-            },
-            {
-              "kind": "ScalarField",
-              "alias": null,
               "name": "endCursor",
               "args": null,
               "storageKey": null
@@ -201,5 +185,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '3eb7a1b8003fe0c15c7c90fbee9964d2';
+(node as any).hash = '61d336b4a3513e35911de8afd24c4eeb';
 export default node;

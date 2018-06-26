@@ -229,7 +229,7 @@ type Artist implements Node {
     sort: PartnerShowSorts
   ): [PartnerShow] @deprecated(reason: "Prefer to use shows attribute")
   public: Boolean @deprecated(reason: "Favor `is_`-prefixed boolean attributes")
-  related: RelatedArtists
+  related: ArtistRelatedData
   sales(
     live: Boolean
     is_auction: Boolean
@@ -486,7 +486,7 @@ type ArtistItem implements Node {
     sort: PartnerShowSorts
   ): [PartnerShow] @deprecated(reason: "Prefer to use shows attribute")
   public: Boolean @deprecated(reason: "Favor `is_`-prefixed boolean attributes")
-  related: RelatedArtists
+  related: ArtistRelatedData
   sales(
     live: Boolean
     is_auction: Boolean
@@ -536,6 +536,39 @@ type ArtistItem implements Node {
 type ArtistMeta {
   description: String
   title: String
+}
+
+type ArtistRelatedData {
+  genes(after: String, first: Int, before: String, last: Int): GeneConnection
+  artists(exclude_artists_without_artworks: Boolean = true, kind: RelatedArtistsKind, after: String, first: Int, before: String, last: Int): ArtistConnection
+
+  # A list of the current user’s suggested artists, based on a single artist
+  suggested(
+    # The slug or ID of an artist
+    artist_id: String
+
+    # Exclude artists without for sale works
+    exclude_artists_without_forsale_artworks: Boolean
+
+    # Exclude artists without any artworks
+    exclude_artists_without_artworks: Boolean
+
+    # Exclude artists the user already follows
+    exclude_followed_artists: Boolean
+
+    # Exclude these ids from results, may result in all artists being excluded.
+    exclude_artist_ids: [String]
+
+    # Pagination, need I say more?
+    page: Int
+
+    # Amount of artists to return
+    size: Int
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): ArtistConnection
 }
 
 enum ArtistSorts {
@@ -3952,6 +3985,7 @@ type PageCursors {
 
   # Always includes current page
   around: [PageCursor!]!
+  previous: PageCursor
 }
 
 # Information about pagination in a connection.
@@ -4807,38 +4841,6 @@ type RecordArtworkViewPayload {
   clientMutationId: String
 }
 
-type RelatedArtists {
-  artists(exclude_artists_without_artworks: Boolean = true, kind: RelatedArtistsKind, after: String, first: Int, before: String, last: Int): ArtistConnection
-
-  # A list of the current user’s suggested artists, based on a single artist
-  suggested(
-    # The slug or ID of an artist
-    artist_id: String
-
-    # Exclude artists without for sale works
-    exclude_artists_without_forsale_artworks: Boolean
-
-    # Exclude artists without any artworks
-    exclude_artists_without_artworks: Boolean
-
-    # Exclude artists the user already follows
-    exclude_followed_artists: Boolean
-
-    # Exclude these ids from results, may result in all artists being excluded.
-    exclude_artist_ids: [String]
-
-    # Pagination, need I say more?
-    page: Int
-
-    # Amount of artists to return
-    size: Int
-    after: String
-    first: Int
-    before: String
-    last: Int
-  ): ArtistConnection
-}
-
 enum RelatedArtistsKind {
   MAIN
   CONTEMPORARY
@@ -5353,6 +5355,9 @@ type Show implements Node {
   counts: ShowCounts
   description: String
   displayable: Boolean @deprecated(reason: "Prefix Boolean returning fields with `is_`")
+
+  # Either fair, show, or partner location
+  display_city: String
   end_at(
     convert_to_utc: Boolean
     format: String

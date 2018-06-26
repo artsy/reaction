@@ -120,13 +120,13 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
 
 .c6 h1:before {
   content: "";
-  width: 15px;
-  height: 15px;
+  width: 8px;
+  height: 8px;
   background: black;
   border-radius: 50%;
   position: absolute;
   top: 69px;
-  right: calc(50% - 7.5px);
+  right: calc(50% - 4px);
 }
 
 .c6 h2 {
@@ -184,11 +184,12 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
 .c6 .content-end {
   display: inline-block;
   content: "";
-  width: 12px;
-  height: 12px;
+  width: 8px;
+  height: 8px;
   background: black;
   border-radius: 50%;
   margin-left: 12px;
+  margin-bottom: 1px;
 }
 
 .c6 .artist-follow {
@@ -524,13 +525,13 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
 
 .c6 h1:before {
   content: "";
-  width: 15px;
-  height: 15px;
+  width: 8px;
+  height: 8px;
   background: black;
   border-radius: 50%;
   position: absolute;
   top: 69px;
-  right: calc(50% - 7.5px);
+  right: calc(50% - 4px);
 }
 
 .c6 h2 {
@@ -588,11 +589,12 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
 .c6 .content-end {
   display: inline-block;
   content: "";
-  width: 12px;
-  height: 12px;
+  width: 8px;
+  height: 8px;
   background: black;
   border-radius: 50%;
   margin-left: 12px;
+  margin-bottom: 1px;
 }
 
 .c6 .artist-follow {
@@ -921,13 +923,13 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
 
 .c6 h1:before {
   content: "";
-  width: 15px;
-  height: 15px;
+  width: 8px;
+  height: 8px;
   background: black;
   border-radius: 50%;
   position: absolute;
   top: 69px;
-  right: calc(50% - 7.5px);
+  right: calc(50% - 4px);
 }
 
 .c6 h2 {
@@ -985,11 +987,12 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
 .c6 .content-end {
   display: inline-block;
   content: "";
-  width: 12px;
-  height: 12px;
+  width: 8px;
+  height: 8px;
   background: black;
   border-radius: 50%;
   margin-left: 12px;
+  margin-bottom: 1px;
 }
 
 .c6 .artist-follow {
@@ -1347,13 +1350,13 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
 
 .c10 h1:before {
   content: "";
-  width: 15px;
-  height: 15px;
+  width: 8px;
+  height: 8px;
   background: black;
   border-radius: 50%;
   position: absolute;
   top: 69px;
-  right: calc(50% - 7.5px);
+  right: calc(50% - 4px);
 }
 
 .c10 h2 {
@@ -1411,11 +1414,12 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
 .c10 .content-end {
   display: inline-block;
   content: "";
-  width: 12px;
-  height: 12px;
+  width: 8px;
+  height: 8px;
   background: black;
   border-radius: 50%;
   margin-left: 12px;
+  margin-bottom: 1px;
 }
 
 .c10 .artist-follow {

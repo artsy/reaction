@@ -7,8 +7,6 @@ export type RelatedArtistsRefetchContainer_artist = {
         readonly artists: ({
             readonly pageInfo: {
                 readonly hasNextPage: boolean;
-                readonly hasPreviousPage: boolean;
-                readonly startCursor: string | null;
                 readonly endCursor: string | null;
             };
             readonly pageCursors: ({}) | null;
@@ -80,7 +78,7 @@ return {
       "name": "related",
       "storageKey": null,
       "args": null,
-      "concreteType": "RelatedArtists",
+      "concreteType": "ArtistRelatedData",
       "plural": false,
       "selections": [
         {
@@ -136,20 +134,6 @@ return {
                   "kind": "ScalarField",
                   "alias": null,
                   "name": "hasNextPage",
-                  "args": null,
-                  "storageKey": null
-                },
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "hasPreviousPage",
-                  "args": null,
-                  "storageKey": null
-                },
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "startCursor",
                   "args": null,
                   "storageKey": null
                 },
@@ -214,5 +198,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '170bbaab50b87acfb48c1c3e7b88361b';
+(node as any).hash = 'bdc694fe9b80f6e91bad1576502aabeb';
 export default node;

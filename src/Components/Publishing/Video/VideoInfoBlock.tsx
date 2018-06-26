@@ -1,3 +1,4 @@
+import { Sans } from "@artsy/palette"
 import { unica } from "Assets/Fonts"
 import React, { Component } from "react"
 import { Row } from "react-styled-flexboxgrid"
@@ -20,11 +21,11 @@ export class VideoInfoBlock extends Component<Props, null> {
       <div>
         <Row>
           {subTitle && (
-            <SubTitle>
+            <SubTitle size="3t">
               {subTitleLink ? <a href={subTitleLink}>{subTitle}</a> : subTitle}
             </SubTitle>
           )}
-          <MediaDuration>{formatTime(media.duration)}</MediaDuration>
+          <Sans size="3t">{formatTime(media.duration)}</Sans>
         </Row>
         <Row>
           <MediaTitle>{editTitle || title}</MediaTitle>
@@ -34,9 +35,8 @@ export class VideoInfoBlock extends Component<Props, null> {
   }
 }
 
-const SubTitle = styled.span`
-  ${unica("s16")};
-  margin-right: 35px;
+const SubTitle = Sans.extend`
+  margin-right: 20px;
 
   a {
     color: white;
@@ -47,8 +47,4 @@ const SubTitle = styled.span`
 const MediaTitle = styled.span`
   position: relative;
   ${unica("s45")};
-`
-
-const MediaDuration = styled.span`
-  ${unica("s16")};
 `

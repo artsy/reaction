@@ -6,8 +6,6 @@ export type ShowsRefetchContainer_artist = {
     readonly showsConnection: ({
         readonly pageInfo: {
             readonly hasNextPage: boolean;
-            readonly hasPreviousPage: boolean;
-            readonly startCursor: string | null;
             readonly endCursor: string | null;
         };
         readonly pageCursors: ({}) | null;
@@ -166,20 +164,6 @@ return {
             {
               "kind": "ScalarField",
               "alias": null,
-              "name": "hasPreviousPage",
-              "args": null,
-              "storageKey": null
-            },
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "startCursor",
-              "args": null,
-              "storageKey": null
-            },
-            {
-              "kind": "ScalarField",
-              "alias": null,
               "name": "endCursor",
               "args": null,
               "storageKey": null
@@ -317,5 +301,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '223cc4d995c26ac8ebab1a46dfeef911';
+(node as any).hash = '2285a363dbd197351e374b8d2b08dcac';
 export default node;

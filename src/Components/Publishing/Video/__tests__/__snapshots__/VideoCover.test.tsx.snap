@@ -54,16 +54,18 @@ exports[`Video Cover matches the snapshot 1`] = `
 
 .c8 {
   max-width: 1200px;
-  margin: 0px auto;
-  padding: 0px 12px;
+  margin: 0 auto;
+  padding: 0 12px;
+}
+
+.c15 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 20px;
 }
 
 .c14 {
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-  margin-right: 35px;
+  margin-right: 20px;
 }
 
 .c14 a {
@@ -78,13 +80,6 @@ exports[`Video Cover matches the snapshot 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 45px;
   line-height: 1.2em;
-}
-
-.c15 {
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
 }
 
 .c2 {
@@ -279,16 +274,20 @@ exports[`Video Cover matches the snapshot 1`] = `
           <div
             className="c9"
           >
-            <span
-              className="c14"
+            <div
+              className="c14 c15"
+              fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+              fontSize={14}
             >
               Future of Art
-            </span>
-            <span
+            </div>
+            <div
               className="c15"
+              fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+              fontSize={14}
             >
               02:28
-            </span>
+            </div>
           </div>
           <div
             className="c9"
@@ -369,16 +368,18 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
 
 .c8 {
   max-width: 1200px;
-  margin: 0px auto;
-  padding: 0px 12px;
+  margin: 0 auto;
+  padding: 0 12px;
+}
+
+.c15 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 20px;
 }
 
 .c14 {
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-  margin-right: 35px;
+  margin-right: 20px;
 }
 
 .c14 a {
@@ -393,13 +394,6 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
   -webkit-font-smoothing: antialiased;
   font-size: 45px;
   line-height: 1.2em;
-}
-
-.c15 {
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
 }
 
 .c2 {
@@ -594,16 +588,20 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
           <div
             className="c9"
           >
-            <span
-              className="c14"
+            <div
+              className="c14 c15"
+              fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+              fontSize={14}
             >
               Future of Art
-            </span>
-            <span
+            </div>
+            <div
               className="c15"
+              fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+              fontSize={14}
             >
               02:28
-            </span>
+            </div>
           </div>
           <div
             className="c9"

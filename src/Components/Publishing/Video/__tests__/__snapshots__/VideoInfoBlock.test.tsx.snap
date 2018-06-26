@@ -1,6 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Video Info Block matches the snapshot 1`] = `
+.c2 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+}
+
 .c0 {
   box-sizing: border-box;
   display: -webkit-box;
@@ -21,11 +27,7 @@ exports[`Video Info Block matches the snapshot 1`] = `
 }
 
 .c1 {
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-  margin-right: 35px;
+  margin-right: 20px;
 }
 
 .c1 a {
@@ -42,27 +44,24 @@ exports[`Video Info Block matches the snapshot 1`] = `
   line-height: 1.2em;
 }
 
-.c2 {
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
 <div>
   <div
     className="c0"
   >
-    <span
-      className="c1"
+    <div
+      className="c1 c2"
+      fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+      fontSize={14}
     >
       The Future of Art
-    </span>
-    <span
+    </div>
+    <div
       className="c2"
+      fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+      fontSize={14}
     >
       02:28
-    </span>
+    </div>
   </div>
   <div
     className="c0"
@@ -77,6 +76,12 @@ exports[`Video Info Block matches the snapshot 1`] = `
 `;
 
 exports[`Video Info Block matches the snapshot with edit props 1`] = `
+.c2 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+}
+
 .c0 {
   box-sizing: border-box;
   display: -webkit-box;
@@ -97,11 +102,7 @@ exports[`Video Info Block matches the snapshot with edit props 1`] = `
 }
 
 .c1 {
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-  margin-right: 35px;
+  margin-right: 20px;
 }
 
 .c1 a {
@@ -118,27 +119,24 @@ exports[`Video Info Block matches the snapshot with edit props 1`] = `
   line-height: 1.2em;
 }
 
-.c2 {
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
 <div>
   <div
     className="c0"
   >
-    <span
-      className="c1"
+    <div
+      className="c1 c2"
+      fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+      fontSize={14}
     >
       The Future of Art
-    </span>
-    <span
+    </div>
+    <div
       className="c2"
+      fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+      fontSize={14}
     >
       02:28
-    </span>
+    </div>
   </div>
   <div
     className="c0"

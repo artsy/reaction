@@ -36,8 +36,6 @@ fragment RelatedArtistsRefetchContainer_artist_hdyd3 on Artist {
     artists(first: 6, kind: MAIN) {
       pageInfo {
         hasNextPage
-        hasPreviousPage
-        startCursor
         endCursor
       }
       pageCursors {
@@ -60,8 +58,6 @@ fragment RelatedArtistsRefetchContainer_artist_UhOGO on Artist {
     artists(first: 6, kind: CONTEMPORARY) {
       pageInfo {
         hasNextPage
-        hasPreviousPage
-        startCursor
         endCursor
       }
       pageCursors {
@@ -93,6 +89,9 @@ fragment Pagination_pageCursors on PageCursors {
     cursor
     page
     isCurrent
+  }
+  previous {
+    cursor
   }
 }
 
@@ -138,14 +137,15 @@ v3 = {
   "value": 6,
   "type": "Int"
 },
-v4 = [
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "cursor",
-    "args": null,
-    "storageKey": null
-  },
+v4 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "cursor",
+  "args": null,
+  "storageKey": null
+},
+v5 = [
+  v4,
   {
     "kind": "ScalarField",
     "alias": null,
@@ -161,14 +161,14 @@ v4 = [
     "storageKey": null
   }
 ],
-v5 = {
+v6 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__id",
   "args": null,
   "storageKey": null
 },
-v6 = [
+v7 = [
   {
     "kind": "LinkedField",
     "alias": null,
@@ -182,20 +182,6 @@ v6 = [
         "kind": "ScalarField",
         "alias": null,
         "name": "hasNextPage",
-        "args": null,
-        "storageKey": null
-      },
-      {
-        "kind": "ScalarField",
-        "alias": null,
-        "name": "hasPreviousPage",
-        "args": null,
-        "storageKey": null
-      },
-      {
-        "kind": "ScalarField",
-        "alias": null,
-        "name": "startCursor",
         "args": null,
         "storageKey": null
       },
@@ -225,7 +211,7 @@ v6 = [
         "args": null,
         "concreteType": "PageCursor",
         "plural": true,
-        "selections": v4
+        "selections": v5
       },
       {
         "kind": "LinkedField",
@@ -235,7 +221,7 @@ v6 = [
         "args": null,
         "concreteType": "PageCursor",
         "plural": false,
-        "selections": v4
+        "selections": v5
       },
       {
         "kind": "LinkedField",
@@ -245,7 +231,19 @@ v6 = [
         "args": null,
         "concreteType": "PageCursor",
         "plural": false,
-        "selections": v4
+        "selections": v5
+      },
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "previous",
+        "storageKey": null,
+        "args": null,
+        "concreteType": "PageCursor",
+        "plural": false,
+        "selections": [
+          v4
+        ]
       }
     ]
   },
@@ -323,7 +321,7 @@ v6 = [
             "args": null,
             "storageKey": null
           },
-          v5
+          v6
         ]
       }
     ]
@@ -334,7 +332,7 @@ return {
   "operationKind": "query",
   "name": "routes_RelatedArtistsQuery",
   "id": null,
-  "text": "query routes_RelatedArtistsQuery(\n  $artistID: String!\n) {\n  viewer {\n    ...RelatedArtists_viewer\n  }\n}\n\nfragment RelatedArtists_viewer on Viewer {\n  mainArtists: artist(id: $artistID) {\n    ...RelatedArtistsRefetchContainer_artist_hdyd3\n    __id\n  }\n  contemporaryArtists: artist(id: $artistID) {\n    ...RelatedArtistsRefetchContainer_artist_UhOGO\n    __id\n  }\n}\n\nfragment RelatedArtistsRefetchContainer_artist_hdyd3 on Artist {\n  id\n  related {\n    artists(first: 6, kind: MAIN) {\n      pageInfo {\n        hasNextPage\n        hasPreviousPage\n        startCursor\n        endCursor\n      }\n      pageCursors {\n        ...Pagination_pageCursors\n      }\n      edges {\n        node {\n          ...ArtistCard_artist\n          __id\n        }\n      }\n    }\n  }\n  __id\n}\n\nfragment RelatedArtistsRefetchContainer_artist_UhOGO on Artist {\n  id\n  related {\n    artists(first: 6, kind: CONTEMPORARY) {\n      pageInfo {\n        hasNextPage\n        hasPreviousPage\n        startCursor\n        endCursor\n      }\n      pageCursors {\n        ...Pagination_pageCursors\n      }\n      edges {\n        node {\n          ...ArtistCard_artist\n          __id\n        }\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n}\n\nfragment ArtistCard_artist on Artist {\n  name\n  image {\n    cropped(width: 400, height: 300) {\n      url\n    }\n  }\n  formatted_nationality_and_birthday\n  __id\n}\n",
+  "text": "query routes_RelatedArtistsQuery(\n  $artistID: String!\n) {\n  viewer {\n    ...RelatedArtists_viewer\n  }\n}\n\nfragment RelatedArtists_viewer on Viewer {\n  mainArtists: artist(id: $artistID) {\n    ...RelatedArtistsRefetchContainer_artist_hdyd3\n    __id\n  }\n  contemporaryArtists: artist(id: $artistID) {\n    ...RelatedArtistsRefetchContainer_artist_UhOGO\n    __id\n  }\n}\n\nfragment RelatedArtistsRefetchContainer_artist_hdyd3 on Artist {\n  id\n  related {\n    artists(first: 6, kind: MAIN) {\n      pageInfo {\n        hasNextPage\n        endCursor\n      }\n      pageCursors {\n        ...Pagination_pageCursors\n      }\n      edges {\n        node {\n          ...ArtistCard_artist\n          __id\n        }\n      }\n    }\n  }\n  __id\n}\n\nfragment RelatedArtistsRefetchContainer_artist_UhOGO on Artist {\n  id\n  related {\n    artists(first: 6, kind: CONTEMPORARY) {\n      pageInfo {\n        hasNextPage\n        endCursor\n      }\n      pageCursors {\n        ...Pagination_pageCursors\n      }\n      edges {\n        node {\n          ...ArtistCard_artist\n          __id\n        }\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n  }\n}\n\nfragment ArtistCard_artist on Artist {\n  name\n  image {\n    cropped(width: 400, height: 300) {\n      url\n    }\n  }\n  formatted_nationality_and_birthday\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -391,7 +389,7 @@ return {
                 "name": "related",
                 "storageKey": null,
                 "args": null,
-                "concreteType": "RelatedArtists",
+                "concreteType": "ArtistRelatedData",
                 "plural": false,
                 "selections": [
                   {
@@ -410,11 +408,11 @@ return {
                     ],
                     "concreteType": "ArtistConnection",
                     "plural": false,
-                    "selections": v6
+                    "selections": v7
                   }
                 ]
               },
-              v5
+              v6
             ]
           },
           {
@@ -433,7 +431,7 @@ return {
                 "name": "related",
                 "storageKey": null,
                 "args": null,
-                "concreteType": "RelatedArtists",
+                "concreteType": "ArtistRelatedData",
                 "plural": false,
                 "selections": [
                   {
@@ -452,11 +450,11 @@ return {
                     ],
                     "concreteType": "ArtistConnection",
                     "plural": false,
-                    "selections": v6
+                    "selections": v7
                   }
                 ]
               },
-              v5
+              v6
             ]
           }
         ]

@@ -20,7 +20,7 @@ export const TermsOfServiceCheckbox = ({
         target="_blank"
         color={error ? Colors.redMedium : Colors.graySemibold}
       >
-        Terms Of Use
+        Terms of Use
       </A>
       {" and "}
       <A

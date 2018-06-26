@@ -94,13 +94,13 @@ exports[`renders column_width properly 1`] = `
 
 .c1 h1:before {
   content: "";
-  width: 15px;
-  height: 15px;
+  width: 8px;
+  height: 8px;
   background: black;
   border-radius: 50%;
   position: absolute;
   top: 69px;
-  right: calc(50% - 7.5px);
+  right: calc(50% - 4px);
 }
 
 .c1 h2 {
@@ -158,11 +158,12 @@ exports[`renders column_width properly 1`] = `
 .c1 .content-end {
   display: inline-block;
   content: "";
-  width: 12px;
-  height: 12px;
+  width: 8px;
+  height: 8px;
   background: black;
   border-radius: 50%;
   margin-left: 12px;
+  margin-bottom: 1px;
 }
 
 .c1 .artist-follow {
@@ -376,13 +377,13 @@ exports[`renders fillwidth properly 1`] = `
 
 .c1 h1:before {
   content: "";
-  width: 15px;
-  height: 15px;
+  width: 8px;
+  height: 8px;
   background: black;
   border-radius: 50%;
   position: absolute;
   top: 69px;
-  right: calc(50% - 7.5px);
+  right: calc(50% - 4px);
 }
 
 .c1 h2 {
@@ -440,11 +441,12 @@ exports[`renders fillwidth properly 1`] = `
 .c1 .content-end {
   display: inline-block;
   content: "";
-  width: 12px;
-  height: 12px;
+  width: 8px;
+  height: 8px;
   background: black;
   border-radius: 50%;
   margin-left: 12px;
+  margin-bottom: 1px;
 }
 
 .c1 .artist-follow {
@@ -658,13 +660,13 @@ exports[`renders overflow_fillwidth properly 1`] = `
 
 .c1 h1:before {
   content: "";
-  width: 15px;
-  height: 15px;
+  width: 8px;
+  height: 8px;
   background: black;
   border-radius: 50%;
   position: absolute;
   top: 69px;
-  right: calc(50% - 7.5px);
+  right: calc(50% - 4px);
 }
 
 .c1 h2 {
@@ -722,11 +724,12 @@ exports[`renders overflow_fillwidth properly 1`] = `
 .c1 .content-end {
   display: inline-block;
   content: "";
-  width: 12px;
-  height: 12px;
+  width: 8px;
+  height: 8px;
   background: black;
   border-radius: 50%;
   margin-left: 12px;
+  margin-bottom: 1px;
 }
 
 .c1 .artist-follow {

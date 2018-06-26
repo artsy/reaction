@@ -1,28 +1,24 @@
+import { mount } from "enzyme"
 import "jest-styled-components"
 import { defer } from "lodash"
-import { mount } from "enzyme"
 import PropTypes from "prop-types"
 import React from "react"
-import { wrapperWithContext } from "../../Fixtures/Helpers"
-import { Artists, Genes } from "../../Fixtures/Components"
 import { ContextProvider } from "../../../Artsy"
-import { Link, LinkWithTooltip, PrimaryLink, Background } from "../LinkWithTooltip"
+import { Artists, Genes } from "../../Fixtures/Components"
+import { wrapperWithContext } from "../../Fixtures/Helpers"
+import {
+  Background,
+  Link,
+  LinkWithTooltip,
+  PrimaryLink,
+} from "../LinkWithTooltip"
 import { ToolTip } from "../ToolTip"
 
 jest.mock("../../../../Utils/track.ts", () => ({
-  track: () => jest.fn(c => c)
+  track: () => jest.fn(c => c),
 }))
 
 describe("LinkWithTooltip", () => {
-  let context = {
-    activeTooltip: null,
-    tooltipsData: {
-      artists: { "nick-mauss": Artists[0].artist },
-      genes: { "capitalist-realism": Genes[0].gene },
-    },
-    onTriggerToolTip: jest.fn(),
-  }
-
   const getWrapper = (context, props) => {
     const { activeToolTip, tooltipsData, onTriggerToolTip } = context
     const { text, url, tracking } = props
@@ -50,6 +46,15 @@ describe("LinkWithTooltip", () => {
     )
   }
 
+  let context = {
+    activeTooltip: null,
+    tooltipsData: {
+      artists: { "nick-mauss": Artists[0].artist },
+      genes: { "capitalist-realism": Genes[0].gene },
+    },
+    onTriggerToolTip: jest.fn(),
+  }
+
   let props
   let position
   const window = {
@@ -62,8 +67,8 @@ describe("LinkWithTooltip", () => {
       url: "https://www.artsy.net/artist/nick-mauss",
       text: "Nick Mauss",
       tracking: {
-        trackEvent: jest.fn()
-      }
+        trackEvent: jest.fn(),
+      },
     }
 
     position = {
@@ -244,7 +249,9 @@ describe("LinkWithTooltip", () => {
         .childAt(0)
         .instance()
       wrapper.setState({ position })
-      expect(wrapper.getToolTipPosition("artist").toolTipLeft).toBe(-116.3203125)
+      expect(wrapper.getToolTipPosition("artist").toolTipLeft).toBe(
+        -116.3203125
+      )
     })
 
     it("Returns tooltip position for gene links", () => {

@@ -7,8 +7,6 @@ export type ArtworkFilterArtworks_filtered_artworks = {
         readonly pageInfo: {
             readonly hasNextPage: boolean;
             readonly endCursor: string | null;
-            readonly startCursor: string | null;
-            readonly hasPreviousPage: boolean;
         };
         readonly pageCursors: ({}) | null;
         readonly edges: ReadonlyArray<({
@@ -94,20 +92,6 @@ return {
               "name": "endCursor",
               "args": null,
               "storageKey": null
-            },
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "startCursor",
-              "args": null,
-              "storageKey": null
-            },
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "hasPreviousPage",
-              "args": null,
-              "storageKey": null
             }
           ]
         },
@@ -160,5 +144,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '50e96f30293bf86c71283b2146c9d9de';
+(node as any).hash = 'b80f0f6c38952ca4d141712826394da0';
 export default node;

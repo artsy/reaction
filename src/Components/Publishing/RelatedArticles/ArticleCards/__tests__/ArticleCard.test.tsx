@@ -8,6 +8,7 @@ import {
   StandardArticle,
   VideoArticle,
 } from "../../../Fixtures/Articles"
+import { Date } from "../../../Byline/Date"
 import { EditableChild } from "../../../Fixtures/Helpers"
 import { IconVideoPlay } from "../../../Icon/IconVideoPlay"
 import { ArticleCard, ArticleCardContainer } from "../ArticleCard"
@@ -103,8 +104,8 @@ describe("ArticleCard", () => {
       <ArticleCard article={videoArticle} series={SeriesArticle} />
     )
     const renderedDate = component
-      .find(".date")
-      .first()
+      .find(Date)
+      .at(0)
       .text()
     const formattedDate = getDate(videoArticle.media.release_date, "monthYear")
 
@@ -117,8 +118,8 @@ describe("ArticleCard", () => {
       <ArticleCard article={videoArticle} series={SeriesArticle} />
     )
     const renderedDate = component
-      .find(".date")
-      .first()
+      .find(Date)
+      .at(0)
       .text()
     const formattedDate = getDate(videoArticle.published_at, "monthYear")
 

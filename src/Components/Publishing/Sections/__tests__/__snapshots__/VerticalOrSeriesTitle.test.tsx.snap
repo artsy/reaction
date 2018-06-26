@@ -1,12 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders properly for a feature article 1`] = `
-.c0 {
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-  color: black;
+.c1 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
 }
 
 .c0 a {
@@ -15,18 +14,16 @@ exports[`renders properly for a feature article 1`] = `
   text-decoration: none;
 }
 
-@media (max-width:720px) {
-  .c0 {
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-  }
-}
-
 <div
-  className="c0"
+  className="c0 c1"
   color={undefined}
+  fontFamily={
+    Object {
+      "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+      "fontWeight": 500,
+    }
+  }
+  fontSize={14}
 >
   <span>
     Creativity
@@ -35,12 +32,11 @@ exports[`renders properly for a feature article 1`] = `
 `;
 
 exports[`renders properly for a standard article 1`] = `
-.c0 {
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-  color: black;
+.c1 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
 }
 
 .c0 a {
@@ -49,18 +45,16 @@ exports[`renders properly for a standard article 1`] = `
   text-decoration: none;
 }
 
-@media (max-width:720px) {
-  .c0 {
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-  }
-}
-
 <div
-  className="c0"
+  className="c0 c1"
   color={undefined}
+  fontFamily={
+    Object {
+      "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+      "fontWeight": 500,
+    }
+  }
+  fontSize={14}
 >
   <span>
     Creativity

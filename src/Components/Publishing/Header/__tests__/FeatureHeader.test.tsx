@@ -1,17 +1,17 @@
-import { clone } from "lodash"
 import { mount } from "enzyme"
 import "jest-styled-components"
+import { clone } from "lodash"
 import _ from "lodash"
 import React from "react"
 import renderer from "react-test-renderer"
 import {
   FeatureArticle,
-  SuperArticle,
   SeriesArticleSponsored,
+  SuperArticle,
 } from "../../Fixtures/Articles"
 import { HeroSections } from "../../Fixtures/Components"
-import { Header } from "../Header"
 import { VerticalOrSeriesTitle } from "../../Sections/VerticalOrSeriesTitle"
+import { Header } from "../Header"
 
 jest.mock("react-sizeme", () => jest.fn(c => d => d))
 

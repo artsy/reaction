@@ -36,8 +36,6 @@ fragment AuctionResultsRefetchContainer_artist_2TjZs4 on Artist {
   auctionResults(first: $first, after: $after, before: $before, last: $last, sort: $sort) {
     pageInfo {
       hasNextPage
-      hasPreviousPage
-      startCursor
       endCursor
     }
     pageCursors {
@@ -68,6 +66,9 @@ fragment Pagination_pageCursors on PageCursors {
     cursor
     page
     isCurrent
+  }
+  previous {
+    cursor
   }
 }
 
@@ -148,14 +149,15 @@ v2 = {
   "args": null,
   "storageKey": null
 },
-v3 = [
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "cursor",
-    "args": null,
-    "storageKey": null
-  },
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "cursor",
+  "args": null,
+  "storageKey": null
+},
+v4 = [
+  v3,
   {
     "kind": "ScalarField",
     "alias": null,
@@ -171,7 +173,7 @@ v3 = [
     "storageKey": null
   }
 ],
-v4 = {
+v5 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "display",
@@ -183,7 +185,7 @@ return {
   "operationKind": "query",
   "name": "AuctionResultsRefetchContainerQuery",
   "id": null,
-  "text": "query AuctionResultsRefetchContainerQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $sort: AuctionResultSorts\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...AuctionResultsRefetchContainer_artist_2TjZs4\n    __id\n  }\n}\n\nfragment AuctionResultsRefetchContainer_artist_2TjZs4 on Artist {\n  id\n  auctionResults(first: $first, after: $after, before: $before, last: $last, sort: $sort) {\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        ...AuctionResultItem_auctionResult\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n}\n\nfragment AuctionResultItem_auctionResult on AuctionResult {\n  title\n  dimension_text\n  organization\n  images {\n    thumbnail {\n      url\n    }\n  }\n  description\n  date_text\n  sale_date_text\n  price_realized {\n    display\n    cents_usd\n  }\n  estimate {\n    display\n  }\n  __id\n}\n",
+  "text": "query AuctionResultsRefetchContainerQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $sort: AuctionResultSorts\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...AuctionResultsRefetchContainer_artist_2TjZs4\n    __id\n  }\n}\n\nfragment AuctionResultsRefetchContainer_artist_2TjZs4 on Artist {\n  id\n  auctionResults(first: $first, after: $after, before: $before, last: $last, sort: $sort) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        ...AuctionResultItem_auctionResult\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n  }\n}\n\nfragment AuctionResultItem_auctionResult on AuctionResult {\n  title\n  dimension_text\n  organization\n  images {\n    thumbnail {\n      url\n    }\n  }\n  description\n  date_text\n  sale_date_text\n  price_realized {\n    display\n    cents_usd\n  }\n  estimate {\n    display\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -322,20 +324,6 @@ return {
                   {
                     "kind": "ScalarField",
                     "alias": null,
-                    "name": "hasPreviousPage",
-                    "args": null,
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "startCursor",
-                    "args": null,
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
                     "name": "endCursor",
                     "args": null,
                     "storageKey": null
@@ -359,7 +347,7 @@ return {
                     "args": null,
                     "concreteType": "PageCursor",
                     "plural": true,
-                    "selections": v3
+                    "selections": v4
                   },
                   {
                     "kind": "LinkedField",
@@ -369,7 +357,7 @@ return {
                     "args": null,
                     "concreteType": "PageCursor",
                     "plural": false,
-                    "selections": v3
+                    "selections": v4
                   },
                   {
                     "kind": "LinkedField",
@@ -379,7 +367,19 @@ return {
                     "args": null,
                     "concreteType": "PageCursor",
                     "plural": false,
-                    "selections": v3
+                    "selections": v4
+                  },
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "previous",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "PageCursor",
+                    "plural": false,
+                    "selections": [
+                      v3
+                    ]
                   }
                 ]
               },
@@ -481,7 +481,7 @@ return {
                         "concreteType": "AuctionResultPriceRealized",
                         "plural": false,
                         "selections": [
-                          v4,
+                          v5,
                           {
                             "kind": "ScalarField",
                             "alias": null,
@@ -500,7 +500,7 @@ return {
                         "concreteType": "AuctionLotEstimate",
                         "plural": false,
                         "selections": [
-                          v4
+                          v5
                         ]
                       },
                       v2

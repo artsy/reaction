@@ -30,8 +30,6 @@ fragment ArticlesRefetchContainer_artist on Artist {
   articlesConnection(first: 10, sort: PUBLISHED_AT_DESC, in_editorial_feed: true) {
     pageInfo {
       hasNextPage
-      hasPreviousPage
-      startCursor
       endCursor
     }
     pageCursors {
@@ -74,6 +72,9 @@ fragment Pagination_pageCursors on PageCursors {
     page
     isCurrent
   }
+  previous {
+    cursor
+  }
 }
 */
 
@@ -101,14 +102,15 @@ v2 = {
   "args": null,
   "storageKey": null
 },
-v3 = [
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "cursor",
-    "args": null,
-    "storageKey": null
-  },
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "cursor",
+  "args": null,
+  "storageKey": null
+},
+v4 = [
+  v3,
   {
     "kind": "ScalarField",
     "alias": null,
@@ -129,7 +131,7 @@ return {
   "operationKind": "query",
   "name": "routes_ArticlesQuery",
   "id": null,
-  "text": "query routes_ArticlesQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...Articles_artist\n    __id\n  }\n}\n\nfragment Articles_artist on Artist {\n  ...ArticlesRefetchContainer_artist\n  __id\n}\n\nfragment ArticlesRefetchContainer_artist on Artist {\n  id\n  articlesConnection(first: 10, sort: PUBLISHED_AT_DESC, in_editorial_feed: true) {\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        href\n        thumbnail_title\n        author {\n          name\n          __id\n        }\n        published_at(format: \"MMM d, YYYY\")\n        thumbnail_image {\n          resized(width: 300) {\n            url\n          }\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n}\n",
+  "text": "query routes_ArticlesQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...Articles_artist\n    __id\n  }\n}\n\nfragment Articles_artist on Artist {\n  ...ArticlesRefetchContainer_artist\n  __id\n}\n\nfragment ArticlesRefetchContainer_artist on Artist {\n  id\n  articlesConnection(first: 10, sort: PUBLISHED_AT_DESC, in_editorial_feed: true) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        href\n        thumbnail_title\n        author {\n          name\n          __id\n        }\n        published_at(format: \"MMM d, YYYY\")\n        thumbnail_image {\n          resized(width: 300) {\n            url\n          }\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -225,20 +227,6 @@ return {
                   {
                     "kind": "ScalarField",
                     "alias": null,
-                    "name": "hasPreviousPage",
-                    "args": null,
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "startCursor",
-                    "args": null,
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
                     "name": "endCursor",
                     "args": null,
                     "storageKey": null
@@ -262,7 +250,7 @@ return {
                     "args": null,
                     "concreteType": "PageCursor",
                     "plural": true,
-                    "selections": v3
+                    "selections": v4
                   },
                   {
                     "kind": "LinkedField",
@@ -272,7 +260,7 @@ return {
                     "args": null,
                     "concreteType": "PageCursor",
                     "plural": false,
-                    "selections": v3
+                    "selections": v4
                   },
                   {
                     "kind": "LinkedField",
@@ -282,7 +270,19 @@ return {
                     "args": null,
                     "concreteType": "PageCursor",
                     "plural": false,
-                    "selections": v3
+                    "selections": v4
+                  },
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "previous",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "PageCursor",
+                    "plural": false,
+                    "selections": [
+                      v3
+                    ]
                   }
                 ]
               },

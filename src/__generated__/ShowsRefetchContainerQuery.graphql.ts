@@ -38,8 +38,6 @@ fragment ShowsRefetchContainer_artist_1Q1mII on Artist {
   showsConnection(first: $first, after: $after, before: $before, last: $last, sort: $sort, status: $status) {
     pageInfo {
       hasNextPage
-      hasPreviousPage
-      startCursor
       endCursor
     }
     pageCursors {
@@ -91,6 +89,9 @@ fragment Pagination_pageCursors on PageCursors {
     cursor
     page
     isCurrent
+  }
+  previous {
+    cursor
   }
 }
 */
@@ -155,14 +156,15 @@ v2 = {
   "args": null,
   "storageKey": null
 },
-v3 = [
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "cursor",
-    "args": null,
-    "storageKey": null
-  },
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "cursor",
+  "args": null,
+  "storageKey": null
+},
+v4 = [
+  v3,
   {
     "kind": "ScalarField",
     "alias": null,
@@ -178,22 +180,22 @@ v3 = [
     "storageKey": null
   }
 ],
-v4 = {
+v5 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "name",
   "args": null,
   "storageKey": null
 },
-v5 = [
-  v4
+v6 = [
+  v5
 ];
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "ShowsRefetchContainerQuery",
   "id": null,
-  "text": "query ShowsRefetchContainerQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $artistID: String!\n  $sort: PartnerShowSorts\n  $status: String!\n) {\n  artist(id: $artistID) {\n    ...ShowsRefetchContainer_artist_1Q1mII\n    __id\n  }\n}\n\nfragment ShowsRefetchContainer_artist_1Q1mII on Artist {\n  id\n  showsConnection(first: $first, after: $after, before: $before, last: $last, sort: $sort, status: $status) {\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        href\n        exhibition_period\n        cover_image {\n          cropped(width: 800, height: 600) {\n            url\n          }\n        }\n        city\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n}\n",
+  "text": "query ShowsRefetchContainerQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $artistID: String!\n  $sort: PartnerShowSorts\n  $status: String!\n) {\n  artist(id: $artistID) {\n    ...ShowsRefetchContainer_artist_1Q1mII\n    __id\n  }\n}\n\nfragment ShowsRefetchContainer_artist_1Q1mII on Artist {\n  id\n  showsConnection(first: $first, after: $after, before: $before, last: $last, sort: $sort, status: $status) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        href\n        exhibition_period\n        cover_image {\n          cropped(width: 800, height: 600) {\n            url\n          }\n        }\n        city\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -344,20 +346,6 @@ return {
                   {
                     "kind": "ScalarField",
                     "alias": null,
-                    "name": "hasPreviousPage",
-                    "args": null,
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "startCursor",
-                    "args": null,
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
                     "name": "endCursor",
                     "args": null,
                     "storageKey": null
@@ -381,7 +369,7 @@ return {
                     "args": null,
                     "concreteType": "PageCursor",
                     "plural": true,
-                    "selections": v3
+                    "selections": v4
                   },
                   {
                     "kind": "LinkedField",
@@ -391,7 +379,7 @@ return {
                     "args": null,
                     "concreteType": "PageCursor",
                     "plural": false,
-                    "selections": v3
+                    "selections": v4
                   },
                   {
                     "kind": "LinkedField",
@@ -401,7 +389,19 @@ return {
                     "args": null,
                     "concreteType": "PageCursor",
                     "plural": false,
-                    "selections": v3
+                    "selections": v4
+                  },
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "previous",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "PageCursor",
+                    "plural": false,
+                    "selections": [
+                      v3
+                    ]
                   }
                 ]
               },
@@ -443,16 +443,16 @@ return {
                           {
                             "kind": "InlineFragment",
                             "type": "Partner",
-                            "selections": v5
+                            "selections": v6
                           },
                           {
                             "kind": "InlineFragment",
                             "type": "ExternalPartner",
-                            "selections": v5
+                            "selections": v6
                           }
                         ]
                       },
-                      v4,
+                      v5,
                       {
                         "kind": "ScalarField",
                         "alias": null,

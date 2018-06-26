@@ -136,10 +136,6 @@ exports[`snapshot renders the canvas in overlay layout 1`] = `
   letter-spacing: 1px;
   font-size: 11px;
   line-height: 1.65em;
-  -webkit-letter-spacing: 1px;
-  -moz-letter-spacing: 1px;
-  -ms-letter-spacing: 1px;
-  letter-spacing: 1px;
   color: #cccccc;
   margin: 10px 0;
   text-align: center;
@@ -453,10 +449,6 @@ exports[`snapshot renders the canvas in slideshow layout 1`] = `
   letter-spacing: 1px;
   font-size: 11px;
   line-height: 1.65em;
-  -webkit-letter-spacing: 1px;
-  -moz-letter-spacing: 1px;
-  -ms-letter-spacing: 1px;
-  letter-spacing: 1px;
   color: #cccccc;
   margin: 10px 0;
   text-align: center;
@@ -872,10 +864,6 @@ exports[`snapshot renders the canvas in standard layout with image 1`] = `
   letter-spacing: 1px;
   font-size: 11px;
   line-height: 1.65em;
-  -webkit-letter-spacing: 1px;
-  -moz-letter-spacing: 1px;
-  -ms-letter-spacing: 1px;
-  letter-spacing: 1px;
   color: #cccccc;
   margin: 10px 0;
   text-align: center;
@@ -1249,10 +1237,6 @@ exports[`snapshot renders the canvas in standard layout with video 1`] = `
   letter-spacing: 1px;
   font-size: 11px;
   line-height: 1.65em;
-  -webkit-letter-spacing: 1px;
-  -moz-letter-spacing: 1px;
-  -ms-letter-spacing: 1px;
-  letter-spacing: 1px;
   color: #cccccc;
   margin: 10px 0;
   text-align: center;

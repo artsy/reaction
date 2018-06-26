@@ -1,7 +1,9 @@
 import { storiesOf } from "@storybook/react"
 import { extend } from "lodash"
 import React from "react"
+import { Author } from "../Byline/Author"
 import { Byline } from "../Byline/Byline"
+import { Date } from "../Byline/Date"
 import { NewsByline } from "../Byline/NewsByline"
 import { Share } from "../Byline/Share"
 import { ShareDate } from "../Byline/ShareDate"
@@ -9,6 +11,30 @@ import { NewsArticle, StandardArticle } from "../Fixtures/Articles"
 import { Authors } from "../Fixtures/Components"
 import { EditableChild } from "../Fixtures/Helpers"
 import { Authors as AuthorInfo } from "../Sections/Authors"
+
+storiesOf("Publishing/Byline/Author", module)
+  .add("Author", () => {
+    return <Author authors={[{ name: "Molly Gottschalk" }]} />
+  })
+  .add("Multiple Authors", () => {
+    return (
+      <Author
+        authors={[
+          { name: "Molly Gottschalk" },
+          { name: "Casey Lesser" },
+          { name: "Anna Louie Sussman" },
+        ]}
+      />
+    )
+  })
+
+storiesOf("Publishing/Byline/Date", module)
+  .add("Date", () => {
+    return <Date date="2017-05-19T13:09:18.567Z" />
+  })
+  .add("Condensed", () => {
+    return <Date date="2017-05-19T13:09:18.567Z" layout="condensed" />
+  })
 
 storiesOf("Publishing/Byline/Share", module)
   .add("Share", () => {

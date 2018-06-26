@@ -1,4 +1,4 @@
-import { unica } from "Assets/Fonts"
+import { Serif } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
 import { crop } from "../../../Utils/resizer"
@@ -48,7 +48,7 @@ export class RelatedArticleFigure extends React.Component<
       <ArticleFigure href={href} onClick={this.onClick}>
         <ImageTitle>
           <BlockImage src={imageSrc} alt={article.thumbnail_title} />
-          <ArticleTitle>{article.thumbnail_title}</ArticleTitle>
+          <Serif size="3t">{article.thumbnail_title}</Serif>
         </ImageTitle>
 
         <Byline article={bylineArticle} layout="condensed" />
@@ -62,10 +62,6 @@ const ImageTitle = styled.div`
   flex-direction: column;
   color: black;
   text-decoration: none;
-  min-height: 270px;
-  ${pMedia.sm`
-    min-height: 235px;
-  `};
 `
 
 const ArticleFigure = styled.a`
@@ -74,15 +70,7 @@ const ArticleFigure = styled.a`
   width: 278px;
   text-decoration: none;
   color: black;
-  ${pMedia.sm`
-    width: 225px;
-  `};
-`
-
-const ArticleTitle = styled.div`
-  ${unica("s16")} ${pMedia.sm`
-    ${unica("s14")}
-  `};
+  ${pMedia.sm`width: 225px;`};
 `
 
 const BlockImage = styled.img`
