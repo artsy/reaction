@@ -1,10 +1,13 @@
 import { mount } from "enzyme"
 import React from "react"
-import { ForgotPasswordForm } from "../../Desktop/ForgotPasswordForm"
-import { FormSwitcher } from "../../Desktop/FormSwitcher"
-import { LoginForm } from "../../Desktop/LoginForm"
-import { SignUpForm } from "../../Desktop/SignUpForm"
-import { ModalType } from "../../Types"
+import { ForgotPasswordForm } from "../Desktop/ForgotPasswordForm"
+import { LoginForm } from "../Desktop/LoginForm"
+import { SignUpForm } from "../Desktop/SignUpForm"
+import { FormSwitcher } from "../FormSwitcher"
+import { MobileForgotPasswordForm } from "../Mobile/ForgotPasswordForm"
+import { MobileLoginForm } from "../Mobile/LoginForm"
+import { MobileSignUpForm } from "../Mobile/SignUpForm"
+import { ModalType } from "../Types"
 
 jest.mock("Utils/track.ts", () => ({
   track: () => jest.fn(c => c),
@@ -26,6 +29,7 @@ describe("FormSwitcher", () => {
           trigger: "timed",
           triggerSeconds: 1,
         }}
+        isMobile={props.isMobile || false}
       />
     )
 
@@ -43,6 +47,23 @@ describe("FormSwitcher", () => {
     it("forgot password form", () => {
       const wrapper = getWrapper({ type: ModalType.forgot })
       expect(wrapper.find(ForgotPasswordForm).length).toEqual(1)
+    })
+  })
+
+  describe("renders mobile states correctly", () => {
+    it("login form", () => {
+      const wrapper = getWrapper({ type: ModalType.login, isMobile: true })
+      expect(wrapper.find(MobileLoginForm).length).toEqual(1)
+    })
+
+    it("signup form", () => {
+      const wrapper = getWrapper({ type: ModalType.signup, isMobile: true })
+      expect(wrapper.find(MobileSignUpForm).length).toEqual(1)
+    })
+
+    it("forgot password form", () => {
+      const wrapper = getWrapper({ type: ModalType.forgot, isMobile: true })
+      expect(wrapper.find(MobileForgotPasswordForm).length).toEqual(1)
     })
   })
 

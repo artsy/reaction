@@ -6,12 +6,9 @@ import styled from "styled-components"
 import {
   Footer,
   TermsOfServiceCheckbox,
-} from "../../Components/Authentication/commonElements"
-import { MobileForgotPasswordForm } from "../../Components/Authentication/Mobile/ForgotPasswordForm"
-import { MobileLoginForm } from "../../Components/Authentication/Mobile/LoginForm"
-import { MobileSignUpForm } from "../../Components/Authentication/Mobile/SignUpForm"
+} from "../Authentication/commonElements"
 import { DesktopModal } from "../Authentication/Desktop/Components/DesktopModal"
-import { FormSwitcher } from "../Authentication/Desktop/FormSwitcher"
+import { FormSwitcher } from "../Authentication/FormSwitcher"
 import { ModalType } from "../Authentication/Types"
 
 const submit = (values, actions) => {
@@ -53,28 +50,31 @@ storiesOf("Components/Authentication/Desktop", module)
 storiesOf("Components/Authentication/Mobile", module)
   .add("Login", () => (
     <MobileContainer>
-      <MobileLoginForm
-        values={{}}
-        handleSubmit={() => null}
-        handleTypeChange={() => mode => null}
+      <FormSwitcher
+        type={ModalType.login}
+        handleSubmit={submit}
+        isMobile
+        options={{}}
       />
     </MobileContainer>
   ))
   .add("Forgot Password", () => (
     <MobileContainer>
-      <MobileForgotPasswordForm
-        values={{}}
-        handleSubmit={() => null}
-        handleTypeChange={() => mode => null}
+      <FormSwitcher
+        type={ModalType.forgot}
+        handleSubmit={submit}
+        isMobile
+        options={{}}
       />
     </MobileContainer>
   ))
   .add("Sign Up", () => (
     <MobileContainer>
-      <MobileSignUpForm
-        values={{}}
-        handleSubmit={() => null}
-        handleTypeChange={() => mode => null}
+      <FormSwitcher
+        type={ModalType.signup}
+        handleSubmit={submit}
+        isMobile
+        options={{}}
       />
     </MobileContainer>
   ))

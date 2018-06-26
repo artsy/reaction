@@ -1,16 +1,20 @@
 import React from "react"
 import Events from "Utils/Events"
 import { track } from "Utils/track"
+
+import { ForgotPasswordForm } from "Components/Authentication/Desktop/ForgotPasswordForm"
+import { LoginForm } from "Components/Authentication/Desktop/LoginForm"
+import { SignUpForm } from "Components/Authentication/Desktop/SignUpForm"
+import { MobileForgotPasswordForm } from "Components/Authentication/Mobile/ForgotPasswordForm"
+import { MobileLoginForm } from "Components/Authentication/Mobile/LoginForm"
+import { MobileSignUpForm } from "Components/Authentication/Mobile/SignUpForm"
 import {
   FormComponentType,
   InputValues,
   ModalOptions,
   ModalType,
   SubmitHandler,
-} from "../Types"
-import { ForgotPasswordForm } from "./ForgotPasswordForm"
-import { LoginForm } from "./LoginForm"
-import { SignUpForm } from "./SignUpForm"
+} from "./Types"
 
 export interface FormSwitcherProps {
   handleSubmit: SubmitHandler
@@ -21,6 +25,7 @@ export interface FormSwitcherProps {
   error?: string
   onFacebookLogin?: (e: Event) => void
   onTwitterLogin?: (e: Event) => void
+  isMobile?: boolean
 }
 
 export interface State {
@@ -91,24 +96,24 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
   }
 
   render() {
-    const { error, onFacebookLogin, onTwitterLogin } = this.props
+    const { error, isMobile, onFacebookLogin, onTwitterLogin } = this.props
 
     let Form: FormComponentType
     switch (this.state.type) {
       case ModalType.login:
-        Form = LoginForm
+        Form = isMobile ? MobileLoginForm : LoginForm
         break
       case ModalType.signup:
-        Form = SignUpForm
+        Form = isMobile ? MobileSignUpForm : SignUpForm
         break
       case ModalType.forgot:
-        Form = ForgotPasswordForm
+        Form = isMobile ? MobileForgotPasswordForm : ForgotPasswordForm
         break
       default:
         return null
     }
 
-    const { values } = this.props
+    const { handleSubmit, values } = this.props
     const defaultValues = {
       email: values.email || "",
       password: values.password || "",
@@ -121,7 +126,7 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
         error={error}
         values={defaultValues}
         handleTypeChange={this.presentModal}
-        handleSubmit={this.props.handleSubmit}
+        handleSubmit={handleSubmit}
         onFacebookLogin={onFacebookLogin}
         onTwitterLogin={onTwitterLogin}
       />

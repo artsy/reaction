@@ -7,8 +7,8 @@ import {
 } from "Components/Authentication/Types"
 import { FormikProps } from "formik"
 import React, { Component } from "react"
+import { FormSwitcher } from "../FormSwitcher"
 import { DesktopModal } from "./Components/DesktopModal"
-import { FormSwitcher } from "./FormSwitcher"
 
 export interface ModalManagerProps {
   submitUrls?: { [P in ModalType]: string } & {
