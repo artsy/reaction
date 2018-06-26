@@ -1,15 +1,15 @@
-import { ArtworkFilterArtworks_filtered_artworks } from "__generated__/ArtworkFilterArtworks_filtered_artworks.graphql"
+import { ArtworkFilterArtworkGrid_filtered_artworks } from "__generated__/ArtworkFilterArtworkGrid_filtered_artworks.graphql"
 import ArtworkGrid from "Components/ArtworkGrid"
 import * as React from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { PaginationFragmentContainer as Pagination } from "Styleguide/Components/Pagination"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Spacer } from "Styleguide/Elements/Spacer"
+import { FilterState } from "Styleguide/Pages/Artist/Routes/Overview/state"
 import { Subscribe } from "unstated"
-import { FilterState } from "./ArtworkFilterState"
 
 interface Props {
-  filtered_artworks: ArtworkFilterArtworks_filtered_artworks
+  filtered_artworks: ArtworkFilterArtworkGrid_filtered_artworks
   relay: RelayRefetchProp
   artistID: string
   columnCount: number
@@ -82,7 +82,7 @@ export default createRefetchContainer(
   Artworks,
   {
     filtered_artworks: graphql`
-      fragment ArtworkFilterArtworks_filtered_artworks on FilterArtworks
+      fragment ArtworkFilterArtworkGrid_filtered_artworks on FilterArtworks
         @argumentDefinitions(
           first: { type: "Int", defaultValue: 10 }
           after: { type: "String", defaultValue: "" }
@@ -107,13 +107,13 @@ export default createRefetchContainer(
     `,
   },
   graphql`
-    query ArtworkFilterArtworksQuery(
+    query ArtworkFilterArtworkGridQuery(
       $filteredArtworksNodeID: ID!
       $first: Int!
       $after: String
     ) {
       node(__id: $filteredArtworksNodeID) {
-        ...ArtworkFilterArtworks_filtered_artworks
+        ...ArtworkFilterArtworkGrid_filtered_artworks
           @arguments(first: $first, after: $after)
       }
     }
