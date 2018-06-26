@@ -7,6 +7,7 @@ type HistoryProtocol = "browser" | "hash" | "memory"
 
 export interface AppConfig {
   historyProtocol?: HistoryProtocol
+  initialRoute?: string
   routes: RouteConfig
   url?: string
   user?: User

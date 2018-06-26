@@ -12,10 +12,12 @@ export type CVItem_artist = {
                 readonly __id: string;
                 readonly partner: ({
                     readonly name?: string | null;
+                    readonly href?: string | null;
                 }) | null;
                 readonly name: string | null;
                 readonly start_at: string | null;
                 readonly city: string | null;
+                readonly href: string | null;
             }) | null;
         }) | null> | null;
     }) | null;
@@ -38,9 +40,13 @@ v1 = {
   "args": null,
   "storageKey": null
 },
-v2 = [
-  v1
-];
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "href",
+  "args": null,
+  "storageKey": null
+};
 return {
   "kind": "Fragment",
   "name": "CVItem_artist",
@@ -206,12 +212,17 @@ return {
                     {
                       "kind": "InlineFragment",
                       "type": "Partner",
-                      "selections": v2
+                      "selections": [
+                        v1,
+                        v2
+                      ]
                     },
                     {
                       "kind": "InlineFragment",
                       "type": "ExternalPartner",
-                      "selections": v2
+                      "selections": [
+                        v1
+                      ]
                     }
                   ]
                 },
@@ -237,6 +248,7 @@ return {
                   "args": null,
                   "storageKey": null
                 },
+                v2,
                 {
                   "kind": "ScalarField",
                   "alias": null,
@@ -261,5 +273,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'e3d362d88348a0f2e333d9009714b43f';
+(node as any).hash = 'daf2fd11df1cfc9f450256aea6a2238f';
 export default node;

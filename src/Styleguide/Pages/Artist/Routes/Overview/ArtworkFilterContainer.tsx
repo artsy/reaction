@@ -105,15 +105,6 @@ class Filter extends React.Component<Props> {
     })
   }
 
-  renderArtworks() {
-    return (
-      <ArtworksContent
-        artistID={this.props.artist.id}
-        filtered_artworks={this.props.artist.filtered_artworks as any}
-      />
-    )
-  }
-
   renderCategory(filters, category, counts) {
     return counts.slice(0, 10).map(count => {
       return (
@@ -204,9 +195,24 @@ class Filter extends React.Component<Props> {
                     >
                       <Flex pb={2} justifyContent="flex-end">
                         {/* TODO: Implement sorting */}
-                        <Select options={[{ value: "percy", text: "Cat" }]} />
+                        <Select
+                          options={[
+                            {
+                              value: "RECENTLY_UPDATED",
+                              text: "Recently updated",
+                            },
+                            { value: "RECENTLY_ADDED", text: "Recently added" },
+                          ]}
+                        />
                       </Flex>
-                      {this.renderArtworks()}
+
+                      <ArtworksContent
+                        artistID={this.props.artist.id}
+                        columnCount={xs ? 2 : 3}
+                        filtered_artworks={
+                          this.props.artist.filtered_artworks as any
+                        }
+                      />
                       <Spacer mb={3} />
                     </ArtworkGridArea>
                   </ArtworkBrowser>

@@ -113,7 +113,7 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
       email: values.email || "",
       password: values.password || "",
       name: values.name || "",
-      acceptedTermsOfService: values.acceptedTermsOfService || false,
+      accepted_terms_of_service: values.acceptedTermsOfService || false,
     }
 
     return (

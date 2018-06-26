@@ -1,9 +1,13 @@
 import { Sans, Serif } from "@artsy/palette"
 import { CVItem_artist } from "__generated__/CVItem_artist.graphql"
+// FIXME: Implement
+// import Spinner from "Components/Spinner"
 import { groupBy } from "lodash"
 import React from "react"
 import styled from "styled-components"
+import { themeGet } from "styled-system"
 import { Box } from "Styleguide/Elements/Box"
+import { Button } from "Styleguide/Elements/Button"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Spacer } from "Styleguide/Elements/Spacer"
@@ -37,29 +41,34 @@ export const CVPaginationContainer = createPaginationContainer(
       }
     }
 
-    renderPagination() {
-      return (
-        <div
-          onClick={() => {
-            this.loadMore()
-          }}
-        >
-          Load More
-        </div>
-      )
+    get hasMore() {
+      const hasMore = this.props.artist.showsConnection.pageInfo.hasNextPage
+      return hasMore
     }
 
+    // FIXME: Check for null links
+    // FIXME: Figure out how to always point to artsy.net env? how to handle urls?
     renderShow(node, index) {
+      const FIXME_DOMAIN = "https://artsy.net/"
+
       return (
         <Show size="3" key={index}>
           <Serif size="3" display="inline" italic>
-            <a href="#" className="noUnderline">
-              {node.name}
-            </a>
+            {node.href ? (
+              <a href={FIXME_DOMAIN + node.href} className="noUnderline">
+                {node.name}
+              </a>
+            ) : (
+              <span>{node.name}</span>
+            )}
           </Serif>,{" "}
-          <a href="#" className="noUnderline">
-            {node.partner.name}
-          </a>, {node.city}
+          {node.partner.href ? (
+            <a href={FIXME_DOMAIN + node.partner.href} className="noUnderline">
+              {node.partner.name}
+            </a>
+          ) : (
+            <span>{node.partner.name}</span>
+          )}, {node.city}
         </Show>
       )
     }
@@ -71,6 +80,7 @@ export const CVPaginationContainer = createPaginationContainer(
           return show.start_at
         }
       )
+
       return (
         <Responsive>
           {({ xs }) => {
@@ -78,7 +88,7 @@ export const CVPaginationContainer = createPaginationContainer(
               <React.Fragment>
                 <Row>
                   <Col>
-                    <CVItems>
+                    <CVItems mb={3} pb={4}>
                       <CVItem>
                         <Row>
                           <Col sm={2}>
@@ -108,8 +118,26 @@ export const CVPaginationContainer = createPaginationContainer(
                                 )
                               })}
 
-                            <Spacer my={1} />
-                            {this.renderPagination()}
+                            {/* FIXME: Implement loading spinner */}
+                            {/* {this.props.relay.isLoading() && (
+                              <Box position="relative" pt={4} pb={0}>
+                                <Spinner />
+                              </Box>
+                            )} */}
+
+                            <Spacer mb={2} />
+
+                            {this.hasMore && (
+                              <Button
+                                width={xs ? "100%" : ""}
+                                variant="secondaryOutline"
+                                onClick={() => {
+                                  this.loadMore()
+                                }}
+                              >
+                                Show more
+                              </Button>
+                            )}
                           </Col>
                         </Row>
                       </CVItem>
@@ -157,11 +185,13 @@ export const CVPaginationContainer = createPaginationContainer(
                 }
                 ... on Partner {
                   name
+                  href
                 }
               }
               name
               start_at(format: "YYYY")
               city
+              href
             }
           }
         }
@@ -214,7 +244,9 @@ export const CVPaginationContainer = createPaginationContainer(
   }
 )
 
-const CVItems = styled.div``
+const CVItems = styled(Box)`
+  border-bottom: 1px solid ${themeGet("colors.black10")};
+`
 const CVItem = Box
 const YearGroup = styled(Flex)``
 const Year = Serif

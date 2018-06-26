@@ -70,7 +70,7 @@ const SmallShowListItem = (props: Props) => {
       <Serif size="1" color="black60">
         {props.exhibitionInfo}
       </Serif>
-      <Box pt={3} pb={1}>
+      <Box pt={2} pb={0}>
         <Separator />
       </Box>
     </React.Fragment>

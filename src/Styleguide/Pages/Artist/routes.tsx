@@ -1,25 +1,29 @@
+import React from "react"
 import { graphql } from "react-relay"
 import { ArtistApp } from "./ArtistApp"
-import { ArticlesRoute } from "./Routes/Articles"
+import { ArticlesRouteFragmentContainer as ArticlesRoute } from "./Routes/Articles"
 import { AuctionResultsRouteFragmentContainer as AuctionResultsRoute } from "./Routes/AuctionResults"
 import { CVRouteFragmentContainer as CVRoute } from "./Routes/CV"
 import { Overview } from "./Routes/Overview"
 import { RelatedArtistsRouteFragmentContainer as RelatedArtistsRoute } from "./Routes/RelatedArtists"
-import { ShowsRoute } from "./Routes/Shows"
-import { ShowsQuery } from "./Routes/Shows/ShowsQuery"
+import { ShowsRouteFragmentContainer as ShowsRoute } from "./Routes/Shows"
 
 // @ts-ignore
 import { ComponentClass, StatelessComponent } from "react"
+// @ts-ignore
+import { Props as ArticleProps } from "./Routes/Articles"
 // @ts-ignore
 import { AuctionResultProps } from "./Routes/AuctionResults"
 // @ts-ignore
 import { CVRouteProps } from "./Routes/CV"
 // @ts-ignore
 import { RelatedArtistsProps } from "./Routes/RelatedArtists"
+// @ts-ignore
+import { Props as ShowProps } from "./Routes/Shows"
 
 export const routes = [
   {
-    path: "/",
+    path: ":artistID",
     Component: ArtistApp,
     query: graphql`
       query routes_OverviewQueryRendererQuery($artistID: String!) {
@@ -28,10 +32,6 @@ export const routes = [
         }
       }
     `,
-    prepareVariables: params => ({
-      artistID: "pablo-picasso",
-    }),
-
     children: [
       {
         path: "/",
@@ -47,38 +47,28 @@ export const routes = [
             }
           }
         `,
-        prepareVariables: params => ({
-          artistID: "pablo-picasso",
-        }),
       },
       {
         path: "articles",
         Component: ArticlesRoute,
         query: graphql`
-          query routes_ArticlesQueryRendererQuery(
-            $artistID: String!
-            $first: Int!
-          ) {
+          query routes_ArticlesQuery($artistID: String!) {
             artist(id: $artistID) {
-              ...ArticlesRefetchContainer_artist @arguments(first: $first)
+              ...Articles_artist
             }
           }
         `,
-        prepareVariables: params => ({
-          artistID: "pablo-picasso",
-          first: 10,
-        }),
       },
       {
         path: "shows",
         Component: ShowsRoute,
-        query: ShowsQuery,
-        prepareVariables: params => ({
-          artistID: "pablo-picasso",
-          status: "running",
-          sort: "end_at_asc",
-          first: 10,
-        }),
+        query: graphql`
+          query routes_ShowsQuery($artistID: String!) {
+            viewer {
+              ...Shows_viewer
+            }
+          }
+        `,
       },
       {
         path: "auction-results",
@@ -90,9 +80,6 @@ export const routes = [
             }
           }
         `,
-        prepareVariables: params => ({
-          artistID: "pablo-picasso",
-        }),
       },
       {
         path: "related-artists",
@@ -104,9 +91,13 @@ export const routes = [
             }
           }
         `,
-        prepareVariables: params => ({
-          artistID: "pablo-picasso",
-        }),
+      },
+      {
+        path: "*",
+        Component: props => {
+          console.warn("Route not found: ", props)
+          return <div>Page not found</div>
+        },
       },
     ],
   },

@@ -14,7 +14,7 @@ import {
   MobileContainer,
   MobileHeader,
   MobileInnerWrapper,
-  MobileSubmitButton,
+  SubmitButton,
 } from "../commonElements"
 import { FormComponentType } from "../Types"
 import { MobileLoginValidator } from "../Validators"
@@ -115,12 +115,12 @@ export const MobileLoginForm: FormComponentType = props => {
               <MobileHeader>Log in</MobileHeader>
               {currentStep}
               {status && !status.success && <Error show>{status.error}</Error>}
-              <MobileSubmitButton
+              <SubmitButton
                 disabled={!wizard.shouldAllowNext}
                 onClick={handleSubmit as any}
               >
                 Next
-              </MobileSubmitButton>
+              </SubmitButton>
               <Footer
                 mode="login"
                 handleTypeChange={type => (window.location.href = "/" + type)}

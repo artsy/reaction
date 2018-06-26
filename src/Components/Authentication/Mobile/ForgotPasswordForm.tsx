@@ -5,7 +5,7 @@ import {
   MobileContainer,
   MobileHeader,
   MobileInnerWrapper,
-  MobileSubmitButton,
+  SubmitButton,
 } from "Components/Authentication/commonElements"
 import Input from "Components/Input"
 import { Formik, FormikProps } from "formik"
@@ -50,9 +50,7 @@ export const MobileForgotPasswordForm: FormComponentType = props => {
                 />
                 {status &&
                   !status.success && <Error show>{status.error}</Error>}
-                <MobileSubmitButton disabled={isSubmitting}>
-                  Next
-                </MobileSubmitButton>
+                <SubmitButton disabled={isSubmitting}>Next</SubmitButton>
                 <Footer
                   handleTypeChange={type => (window.location.href = "/" + type)}
                   mode="forgot"

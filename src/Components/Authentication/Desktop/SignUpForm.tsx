@@ -1,11 +1,11 @@
 import { Formik, FormikProps } from "formik"
 import React, { Component } from "react"
-import styled from "styled-components"
 
 import {
   Error,
   Footer,
   FormContainer as Form,
+  SubmitButton,
   TermsOfServiceCheckbox,
 } from "Components/Authentication/commonElements"
 import {
@@ -14,15 +14,7 @@ import {
   ModalType,
 } from "Components/Authentication/Types"
 import { SignUpValidator } from "Components/Authentication/Validators"
-import Button from "Components/Buttons/Inverted"
 import Input from "Components/Input"
-
-const SignUpButton = styled(Button).attrs({
-  type: "submit",
-  block: true,
-})`
-  margin-top: auto;
-`
 
 export interface SignUpFormState {
   error?: string
@@ -110,7 +102,7 @@ export class SignUpForm extends Component<FormProps, SignUpFormState> {
                 onBlur={handleBlur}
               />
               {status && !status.success && <Error show>{status.error}</Error>}
-              <SignUpButton disabled={isSubmitting}>Sign Up</SignUpButton>
+              <SubmitButton disabled={isSubmitting}>Sign Up</SubmitButton>
               <Footer
                 handleTypeChange={() =>
                   this.props.handleTypeChange(ModalType.login)

@@ -79,6 +79,7 @@ export const Overview = () => {
 
       <Row>
         <Col>
+          <span id="jump--artistArtworkGrid" />
           <ArtworkFilterQueryRenderer artistID="pablo-picasso" />
         </Col>
       </Row>

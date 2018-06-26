@@ -1,13 +1,12 @@
 import { Formik, FormikProps } from "formik"
 import React, { Component } from "react"
-import styled from "styled-components"
 
 import {
   Error,
   Footer,
   FormContainer as Form,
+  SubmitButton,
 } from "Components/Authentication/commonElements"
-import Button from "Components/Buttons/Inverted"
 import Input from "Components/Input"
 import { FormProps, InputValues, ModalType } from "../Types"
 import { ForgotPasswordValidator } from "../Validators"
@@ -79,10 +78,3 @@ export class ForgotPasswordForm extends Component<
     )
   }
 }
-
-const SubmitButton = styled(Button).attrs({
-  type: "submit",
-  block: true,
-})`
-  margin: auto 0 10px 0;
-`

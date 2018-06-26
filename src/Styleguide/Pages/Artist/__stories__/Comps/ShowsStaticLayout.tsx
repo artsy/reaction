@@ -6,11 +6,11 @@ import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
+import { ShowBlockItem } from "Styleguide/Pages/Artist/Routes/Shows/ShowBlockItem"
+import { ShowListItem } from "Styleguide/Pages/Artist/Routes/Shows/ShowListItem"
 import { paginationProps } from "Styleguide/Pages/Fixtures/Pagination"
 import { showBlockProps, showListProps } from "Styleguide/Pages/Fixtures/Show"
 import { Responsive } from "Styleguide/Utils/Responsive"
-import { ShowBlockItem } from "./ShowBlockItem"
-import { ShowListItem } from "./ShowListItem"
 
 const ShowBlocks = Flex
 const ShowList = Box

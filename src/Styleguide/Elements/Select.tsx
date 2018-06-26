@@ -92,9 +92,9 @@ const LargeSelectContainer = styled.div.attrs<SelectProps>({})`
 
   select {
     width: 100%;
-    font-family: ${themeGet("fontFamily.garamond.regular")};
-    font-size: ${themeGet("typeSizes.serif4.fontSize")}px;
-    line-height: ${themeGet("typeSizes.serif4.lineHeight")}px;
+    font-family: ${themeGet("fontFamily.serif.regular")};
+    font-size: ${themeGet("typeSizes.serif.3.fontSize")}px;
+    line-height: ${themeGet("typeSizes.serif.3.lineHeight")}px;
 
     ${hideDefaultSkin};
 
@@ -118,8 +118,8 @@ const SmallSelectContainer = styled.div.attrs<SelectProps>({})`
   position: relative;
 
   select {
-    font-size: ${themeGet("typeSizes.sans2.fontSize")}px;
-    line-height: ${themeGet("typeSizes.sans2.lineHeight")}px;
+    font-size: ${themeGet("typeSizes.sans.2.fontSize")}px;
+    line-height: ${themeGet("typeSizes.sans.2.lineHeight")}px;
     font-weight: bold;
 
     ${hideDefaultSkin};
