@@ -31,7 +31,10 @@ const LargeShowListItem = (props: Props) => {
     <React.Fragment>
       <Row>
         <Col sm={3}>
-          <Serif size="2">{props.exhibitionInfo}</Serif>
+          <Serif size="2">
+            {props.city && `${props.city}, `}
+            {props.exhibitionInfo}
+          </Serif>
         </Col>
         <Col sm={6}>
           <Serif size="4">
@@ -71,6 +74,7 @@ const SmallShowListItem = (props: Props) => {
         </a>
       </Serif>
       <Serif size="1" color="black60">
+        {props.city && `${props.city}, `}
         {props.exhibitionInfo}
       </Serif>
       <Box pt={2} pb={0}>

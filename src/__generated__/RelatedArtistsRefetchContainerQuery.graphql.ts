@@ -253,7 +253,7 @@ return {
             "name": "related",
             "storageKey": null,
             "args": null,
-            "concreteType": "RelatedArtists",
+            "concreteType": "ArtistRelatedData",
             "plural": false,
             "selections": [
               {
