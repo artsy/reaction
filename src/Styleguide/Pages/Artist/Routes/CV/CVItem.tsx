@@ -1,5 +1,7 @@
 import { Sans, Serif } from "@artsy/palette"
 import { CVItem_artist } from "__generated__/CVItem_artist.graphql"
+// FIXME: Implement
+// import Spinner from "Components/Spinner"
 import { groupBy } from "lodash"
 import React from "react"
 import styled from "styled-components"
@@ -78,6 +80,7 @@ export const CVPaginationContainer = createPaginationContainer(
           return show.start_at
         }
       )
+
       return (
         <Responsive>
           {({ xs }) => {
@@ -115,10 +118,18 @@ export const CVPaginationContainer = createPaginationContainer(
                                 )
                               })}
 
+                            {/* FIXME: Implement loading spinner */}
+                            {/* {this.props.relay.isLoading() && (
+                              <Box position="relative" pt={4} pb={0}>
+                                <Spinner />
+                              </Box>
+                            )} */}
+
                             <Spacer mb={2} />
 
                             {this.hasMore && (
                               <Button
+                                width={xs ? "100%" : ""}
                                 variant="secondaryOutline"
                                 onClick={() => {
                                   this.loadMore()
@@ -171,7 +182,6 @@ export const CVPaginationContainer = createPaginationContainer(
               partner {
                 ... on ExternalPartner {
                   name
-                  href
                 }
                 ... on Partner {
                   name

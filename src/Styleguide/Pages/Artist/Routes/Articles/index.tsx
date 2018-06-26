@@ -8,10 +8,8 @@ export interface Props {
   artist: Articles_artist
 }
 
-export class ArticlesRoute extends React.Component<Props> {
-  render() {
-    return <Articles artist={this.props.artist as any} />
-  }
+export const ArticlesRoute: React.SFC<Props> = props => {
+  return <Articles artist={props.artist as any} />
 }
 
 export const ArticlesRouteFragmentContainer = createFragmentContainer(

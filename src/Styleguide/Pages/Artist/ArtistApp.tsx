@@ -37,6 +37,8 @@ export class ArtistApp extends React.Component<Props> {
 
         <Row>
           <Col>
+            <span id="jumpto-RouteTabs" />
+
             <RouteTabs>
               <RouteTab to={`/${artistID}`} exact>
                 Overview

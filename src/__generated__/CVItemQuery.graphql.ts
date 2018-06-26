@@ -53,6 +53,7 @@ fragment CVItem_artist_2utmRv on Artist {
           }
           ... on Partner {
             name
+            href
           }
           ... on Node {
             __id
@@ -151,15 +152,19 @@ v4 = {
   "args": null,
   "storageKey": null
 },
-v5 = [
-  v4
-];
+v5 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "href",
+  "args": null,
+  "storageKey": null
+};
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "CVItemQuery",
   "id": null,
-  "text": "query CVItemQuery(\n  $count: Int\n  $cursor: String\n  $artistID: String!\n  $sort: PartnerShowSorts\n  $at_a_fair: Boolean\n  $solo_show: Boolean\n  $is_reference: Boolean\n  $visible_to_public: Boolean\n) {\n  artist(id: $artistID) {\n    ...CVItem_artist_2utmRv\n    __id\n  }\n}\n\nfragment CVItem_artist_2utmRv on Artist {\n  id\n  showsConnection(first: $count, after: $cursor, sort: $sort, at_a_fair: $at_a_fair, solo_show: $solo_show, is_reference: $is_reference, visible_to_public: $visible_to_public) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __id\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        start_at(format: \"YYYY\")\n        city\n        href\n        __typename\n      }\n      cursor\n    }\n  }\n  __id\n}\n",
+  "text": "query CVItemQuery(\n  $count: Int\n  $cursor: String\n  $artistID: String!\n  $sort: PartnerShowSorts\n  $at_a_fair: Boolean\n  $solo_show: Boolean\n  $is_reference: Boolean\n  $visible_to_public: Boolean\n) {\n  artist(id: $artistID) {\n    ...CVItem_artist_2utmRv\n    __id\n  }\n}\n\nfragment CVItem_artist_2utmRv on Artist {\n  id\n  showsConnection(first: $count, after: $cursor, sort: $sort, at_a_fair: $at_a_fair, solo_show: $solo_show, is_reference: $is_reference, visible_to_public: $visible_to_public) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __id\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n            href\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        start_at(format: \"YYYY\")\n        city\n        href\n        __typename\n      }\n      cursor\n    }\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -361,12 +366,17 @@ return {
                           {
                             "kind": "InlineFragment",
                             "type": "Partner",
-                            "selections": v5
+                            "selections": [
+                              v4,
+                              v5
+                            ]
                           },
                           {
                             "kind": "InlineFragment",
                             "type": "ExternalPartner",
-                            "selections": v5
+                            "selections": [
+                              v4
+                            ]
                           }
                         ]
                       },
@@ -392,13 +402,7 @@ return {
                         "args": null,
                         "storageKey": null
                       },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "name": "href",
-                        "args": null,
-                        "storageKey": null
-                      },
+                      v5,
                       v3
                     ]
                   },

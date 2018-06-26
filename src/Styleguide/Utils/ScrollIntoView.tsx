@@ -1,24 +1,31 @@
 import React from "react"
 import styled from "styled-components"
+import { media } from "Styleguide/Elements/Grid"
 
 interface ScrollIntoViewProps {
   selector: string
-  smooth?: boolean
+  offset?: number
 }
 export class ScrollIntoView extends React.Component<ScrollIntoViewProps> {
   static defaultProps = {
-    smooth: false,
+    offset: 20,
+  }
+
+  getElementPosition = $element => {
+    const rect = $element.getBoundingClientRect()
+    return {
+      left: rect.left + window.scrollX,
+      top: rect.top + window.scrollY,
+    }
   }
 
   scrollIntoView = event => {
-    const { smooth, selector } = this.props
-    const $selector = document.querySelector(selector)
+    const { selector, offset } = this.props
+    const $element = document.querySelector(selector)
 
-    if ($selector) {
-      $selector.scrollIntoView({
-        block: "start",
-        smooth: smooth ? "smooth" : "instant",
-      } as ScrollIntoViewOptions)
+    if ($element) {
+      const { top } = this.getElementPosition($element)
+      window.scrollTo(0, top - offset)
     }
   }
 
@@ -30,6 +37,10 @@ export class ScrollIntoView extends React.Component<ScrollIntoViewProps> {
 }
 
 const ClickArea = styled.div`
-  display: inline-block;
-  width: 100%;
+  display: block;
+
+  /* FIXME: Style this right so width isn't needed */
+  ${media.xs`
+    width: 100%;
+  `};
 `
