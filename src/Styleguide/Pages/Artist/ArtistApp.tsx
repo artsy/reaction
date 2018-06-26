@@ -1,6 +1,7 @@
 import { ArtistHeader_artist } from "__generated__/ArtistHeader_artist.graphql"
 import React from "react"
 import { Footer } from "Styleguide/Components/Footer"
+import { RecentlyViewed } from "Styleguide/Components/RecentlyViewed"
 import { RouteTab, RouteTabs } from "Styleguide/Components/RouteTabs"
 import { Box } from "Styleguide/Elements/Box"
 import { Col, Row } from "Styleguide/Elements/Grid"
@@ -57,6 +58,14 @@ export class ArtistApp extends React.Component<Props> {
             {this.props.children}
           </Col>
         </Row>
+
+        <Box mb={4}>
+          <Separator />
+        </Box>
+
+        <Box my={3}>
+          <RecentlyViewed />
+        </Box>
 
         <Box my={3}>
           <Separator />

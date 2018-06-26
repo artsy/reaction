@@ -103,16 +103,15 @@ const SliderContainer = styled.div`
 `
 
 const ArrowButton = styled(Flex).attrs<LeftProps & RightProps>({})`
-  height: 100%;
   position: relative;
   cursor: pointer;
   display: flex;
   align-items: center;
-  height: 300px;
   user-select: none;
   opacity: 0.1;
 
   transition: opacity 0.25s;
+  min-height: 200px;
 
   &:hover {
     opacity: 1;
