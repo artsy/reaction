@@ -1,3 +1,9 @@
+import { FormikProps } from "formik"
+import { cloneDeep } from "lodash"
+import React, { Component } from "react"
+
+import { DesktopModal } from "Components/Authentication/Desktop/Components/DesktopModal"
+import { FormSwitcher } from "Components/Authentication/FormSwitcher"
 import { handleSubmit as defaultHandleSubmit } from "Components/Authentication/helpers"
 import {
   InputValues,
@@ -5,11 +11,6 @@ import {
   ModalType,
   SubmitHandler,
 } from "Components/Authentication/Types"
-import { FormikProps } from "formik"
-import { cloneDeep } from "lodash"
-import React, { Component } from "react"
-import { FormSwitcher } from "../FormSwitcher"
-import { DesktopModal } from "./Components/DesktopModal"
 
 export interface ModalManagerProps {
   submitUrls?: { [P in ModalType]: string } & {
@@ -33,6 +34,7 @@ export interface ModalManagerState {
   currentType?: ModalType
   options?: ModalOptions
   error?: string
+  switchedForms: boolean
 }
 
 export class ModalManager extends Component<
@@ -45,6 +47,7 @@ export class ModalManager extends Component<
       copy: null,
       redirectTo: "/",
     },
+    switchedForms: false,
   }
 
   openModal = (options: ModalOptions) => {
@@ -61,6 +64,7 @@ export class ModalManager extends Component<
   closeModal = () => {
     this.setState({
       currentType: null,
+      options: null,
     })
     document.body.style.overflowY = "auto"
   }
@@ -69,17 +73,38 @@ export class ModalManager extends Component<
     const newOptions = Object.assign(cloneDeep(this.state.options), {
       mode: type,
     })
+
     this.setState({
       currentType: type,
       options: newOptions,
+      switchedForms: true,
     })
   }
 
   setError = err => this.setState({ error: err })
 
+  getSubtitle = () => {
+    const { options, switchedForms, currentType } = this.state
+
+    if (switchedForms) {
+      switch (currentType) {
+        case ModalType.login:
+          return "Log in"
+        case ModalType.signup:
+          return "Sign up"
+        case ModalType.forgot:
+          return "Forgot Password"
+        default:
+          return "The art world online"
+      }
+    } else {
+      return options.copy || "The art world online"
+    }
+  }
+
   render() {
     const { blurContainerSelector, csrf, submitUrls, redirectTo } = this.props
-    const { currentType, options, error } = this.state
+    const { currentType, error, options } = this.state
 
     const handleSubmit: SubmitHandler = !!this.props.handleSubmit
       ? this.props.handleSubmit.bind(this, currentType, options)
@@ -91,7 +116,7 @@ export class ModalManager extends Component<
         show={!!currentType}
         onTypeChange={this.openModal}
         onClose={this.closeModal}
-        subtitle={options.copy}
+        subtitle={this.getSubtitle()}
         type={currentType}
       >
         <FormSwitcher
