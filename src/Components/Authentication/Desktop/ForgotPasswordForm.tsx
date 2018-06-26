@@ -1,23 +1,15 @@
 import { Formik, FormikProps } from "formik"
 import React from "react"
-import styled from "styled-components"
 
 import {
   Error,
   Footer,
   FormContainer as Form,
+  SubmitButton,
 } from "Components/Authentication/commonElements"
-import Button from "Components/Buttons/Inverted"
 import Input from "Components/Input"
 import { FormComponentType, InputValues, ModalType } from "../Types"
 import { ForgotPasswordValidator } from "../Validators"
-
-const SubmitButton = styled(Button).attrs({
-  type: "submit",
-  block: true,
-})`
-  margin: auto 0 10px 0;
-`
 
 export const ForgotPasswordForm: FormComponentType = props => {
   return (
@@ -54,12 +46,8 @@ export const ForgotPasswordForm: FormComponentType = props => {
               onBlur={handleBlur}
             />
             {status && !status.success && <Error show>{status.error}</Error>}
-            <SubmitButton
-              block
-              type="submit"
-              disabled={isSubmitting || hasErrors}
-            >
-              Send Reset Instructions
+            <SubmitButton disabled={isSubmitting || hasErrors}>
+              Send reset instructions
             </SubmitButton>
             <Footer
               handleTypeChange={() => props.handleTypeChange(ModalType.login)}
