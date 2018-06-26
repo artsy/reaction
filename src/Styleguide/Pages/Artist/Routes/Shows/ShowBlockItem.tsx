@@ -19,7 +19,6 @@ export const ShowBlockItem = (props: Props) => {
   const FIXME_DOMAIN = "https://www.artsy.net"
   return (
     <Box
-      maxWidth="460px"
       width={props.blockWidth}
       height="auto" // FIXME
       pr={props.pr}
