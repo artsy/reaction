@@ -46,7 +46,8 @@ const ClassicHeaderContainer = styled.div`
     ${garamond("s19")};
   }
 
-  ${pMedia.xl`padding: 0 20px;`} ${pMedia.xs`
+  ${pMedia.xl`padding: 0 20px;`};
+  ${pMedia.xs`
     text-align: left;
     p, > p {
       line-height: 1.35em;
@@ -56,7 +57,8 @@ const ClassicHeaderContainer = styled.div`
 `
 const Title = styled.div`
   margin-bottom: 30px;
-  ${garamond("s37")} ${pMedia.xs`
+  ${garamond("s37")};
+  ${pMedia.xs`
     ${garamond("s34")}
   `};
 `

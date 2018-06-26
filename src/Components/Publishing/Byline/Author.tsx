@@ -24,6 +24,7 @@ interface AuthorProps {
     | "14"
     | "16"
 }
+// TODO: replace size with interface from palette
 
 export const Author: React.SFC<AuthorProps> = props => {
   const { color, layout, size } = props

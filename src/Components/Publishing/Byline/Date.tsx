@@ -24,6 +24,7 @@ interface DateProps {
     | "14"
     | "16"
 }
+// TODO: replace size with interface from palette
 
 export const Date: React.SFC<DateProps> = props => {
   const { date, format, layout, size } = props

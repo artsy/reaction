@@ -27,6 +27,7 @@ interface BylineProps {
     | "14"
     | "16"
 }
+// TODO: replace size with interface from palette
 
 export const Byline: React.SFC<BylineProps> = props => {
   const {
