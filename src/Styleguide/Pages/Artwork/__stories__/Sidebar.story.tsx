@@ -7,6 +7,7 @@ import {
   ClosedAuctionArtwork,
   CollecingInstitutionArtwork,
   LiveAuctionArtwork,
+  MoctionArtwork,
   MultipleArtistsArtwork,
   OpenAuctionArtwork,
   RegularArtwork2Editions,
@@ -18,6 +19,9 @@ import {
 storiesOf("Styleguide/Artwork/", module).add("Sidebar", () => {
   return (
     <React.Fragment>
+      <Section title="Moction artwork">
+        <Sidebar artwork={MoctionArtwork} />
+      </Section>
       <Section title="Artwork with collectiing_institution attribute set">
         <Sidebar artwork={CollecingInstitutionArtwork} />
       </Section>

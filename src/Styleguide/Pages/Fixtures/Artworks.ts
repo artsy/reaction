@@ -579,3 +579,60 @@ export const ClosedAuctionArtwork = {
   is_price_range: false,
   is_for_sale: false,
 }
+
+export const MoctionArtwork = {
+  __id: "QXJ0d29yazphbGlzdGFpci1tY2NseW1vbnQtc3VycmVhbGlzbQ==",
+  sale: {
+    is_open: true,
+    is_closed: false,
+    is_live_open: false,
+    is_with_buyers_premium: null,
+  },
+  sale_artwork: {
+    lot_label: "1",
+    estimate: "CHF 12,000–CHF 18,000",
+    is_with_reserve: true,
+    reserve_message: "Reserve met",
+    reserve_status: "reserve_met",
+    current_bid: {
+      display: "CHF 11,000",
+    },
+    counts: {
+      bidder_positions: 3,
+    },
+  },
+  artists: [
+    {
+      __id: "QXJ0aXN0OmFsaXN0YWlyLW1jY2x5bW9udA==",
+      id: "alistair-mcclymont",
+      name: "Alistair McClymont",
+      is_followed: false,
+      href: "/artist/alistair-mcclymont",
+      is_consignable: false,
+    },
+  ],
+  partner: {
+    __id: "UGFydG5lcjptb2NrdGlvbi1kZW1vLXBhcnRuZXItb2tzYW5hLW1vY3Rpb24=",
+    name: "Mocktion Demo Partner Oksana moction",
+    href: "/auction/mocktion-demo-partner-oksana-moction",
+    locations: [],
+  },
+  is_in_auction: true,
+  is_biddable: true,
+  is_sold: false,
+  title: "Surrealism",
+  date: "",
+  medium: "4-color screenprint on paper-backed wood veneer",
+  dimensions: {
+    in: "20 1/8 × 27 in",
+    cm: "51.1 × 68.6 cm",
+  },
+  collecting_institution: null,
+  edition_of: null,
+  attribution_class: null,
+  edition_sets: [],
+  sale_message: "Contact For Price",
+  is_inquireable: true,
+  is_price_range: false,
+  is_for_sale: true,
+}
