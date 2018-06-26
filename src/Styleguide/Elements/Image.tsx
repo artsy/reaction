@@ -5,6 +5,10 @@ import styled from "styled-components"
 import {
   height,
   HeightProps,
+  maxWidth,
+  MaxWidthProps,
+  ratio,
+  RatioProps,
   space,
   SpaceProps,
   width,
@@ -33,17 +37,20 @@ export const Image = styled.img.attrs<ImageProps>({})`
 export interface ResponsiveImageProps
   extends BaseImageProps,
     SpaceProps,
-    WidthProps {}
+    WidthProps,
+    RatioProps,
+    MaxWidthProps {}
 export const ResponsiveImage = styled.div.attrs<ResponsiveImageProps>({})`
-  height: auto;
-  padding-top: 100%;
   background: url(${props => props.src});
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  ${ratio};
   ${space};
   ${width};
+  ${maxWidth};
 `
 ResponsiveImage.defaultProps = {
   width: "100%",
+  ratio: 1,
 }
