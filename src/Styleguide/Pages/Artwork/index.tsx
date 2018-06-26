@@ -8,7 +8,7 @@ export const Artwork = () => {
     <Boot>
       <StorybooksRouter
         routes={routes}
-        initialRoute="pablo-picasso-david-et-bethsabee"
+        initialRoute="/pablo-picasso-david-et-bethsabee"
       />
     </Boot>
   )
