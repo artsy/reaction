@@ -4,11 +4,15 @@ import React from "react"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 
+import { LoosingBid } from "Assets/Icons/LoosingBid"
+import { WinningBid } from "Assets/Icons/WinningBid"
+
 export interface CurrentBidinfoProps {
-  artwork: {
+  readonly artwork: {
     readonly sale?: {
       readonly is_open: boolean
       readonly is_closed: boolean
+      readonly is_live_open: boolean
     }
     readonly sale_artwork: {
       readonly lot_label: string
@@ -24,13 +28,32 @@ export interface CurrentBidinfoProps {
       }
     }
   }
+  readonly me?: {
+    readonly bidder_status: {
+      readonly active_bid?: {
+        readonly max_bid?: {
+          readonly display: string
+        }
+        readonly is_winning: boolean
+      }
+    }
+  }
 }
 
 const CurrentBidInfoContainer = Box
+const BidStatusIconContainer = Box
 
 export class CurrentBidInfo extends React.Component<CurrentBidinfoProps> {
+  renderBidStatusIcon() {
+    return this.props.me.bidder_status.active_bid.is_winning ? (
+      <WinningBid />
+    ) : (
+      <LoosingBid />
+    )
+  }
+
   render() {
-    const { artwork } = this.props
+    const { artwork, me } = this.props
     if (artwork.sale && artwork.sale.is_closed) {
       return (
         <CurrentBidInfoContainer pb={2}>
@@ -59,20 +82,39 @@ export class CurrentBidInfo extends React.Component<CurrentBidinfoProps> {
     artwork.sale_artwork.reserve_message &&
       bidTextParts.push(artwork.sale_artwork.reserve_message)
     const bidText = bidTextParts.join(", ")
+
+    const myBidPresent = me && me.bidder_status && me.bidder_status.active_bid
     return (
       <CurrentBidInfoContainer pb={2}>
         <Flex width="100%" flexDirection="row" justifyContent="space-between">
           <Serif size="5t" weight="semibold" pr={1}>
             {bidPrompt}
           </Serif>
-          <Serif size="5t" weight="semibold" pl={0.5}>
-            {artwork.sale_artwork.current_bid.display}
-          </Serif>
+          <Flex
+            flexDirection="row"
+            justifyContent="right"
+            alignContent="baseline"
+          >
+            {myBidPresent && (
+              <BidStatusIconContainer pt={0.5}>
+                {this.renderBidStatusIcon()}
+              </BidStatusIconContainer>
+            )}
+            <Serif size="5t" weight="semibold" pl={0.5}>
+              {artwork.sale_artwork.current_bid.display}
+            </Serif>
+          </Flex>
         </Flex>
         <Flex width="100%" flexDirection="row" justifyContent="space-between">
           <Sans size="2" color={bidColor} pr={1}>
             {bidText}
           </Sans>
+          {myBidPresent &&
+            me.bidder_status.active_bid.max_bid && (
+              <Sans size="2" color="black60" pl={1}>
+                Your max: {me.bidder_status.active_bid.max_bid.display}
+              </Sans>
+            )}
         </Flex>
       </CurrentBidInfoContainer>
     )

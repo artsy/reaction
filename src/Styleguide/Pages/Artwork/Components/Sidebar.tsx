@@ -101,7 +101,10 @@ export class Sidebar extends Component<ArtworkSidebarProps> {
           <React.Fragment>
             <AuctionPartnerInfo artwork={artwork} />
             <Separator />
-            <CurrentBidInfo artwork={artwork} />
+            {artwork.sale &&
+              !artwork.sale.is_live_open && (
+                <CurrentBidInfo artwork={artwork} />
+              )}
           </React.Fragment>
         ) : (
           <React.Fragment>

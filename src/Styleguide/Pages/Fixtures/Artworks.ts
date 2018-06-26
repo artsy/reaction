@@ -583,12 +583,16 @@ export const ClosedAuctionArtwork = {
 export const MoctionArtwork = {
   __id: "QXJ0d29yazphbGlzdGFpci1tY2NseW1vbnQtc3VycmVhbGlzbQ==",
   sale: {
-    is_open: true,
+    id: "oksana-moction",
+    is_preview: true,
+    is_registration_closed: false,
+    is_open: false,
     is_closed: false,
     is_live_open: false,
     is_with_buyers_premium: null,
   },
   sale_artwork: {
+    id: "alistair-mcclymont-surrealism",
     lot_label: "1",
     estimate: "CHF 12,000–CHF 18,000",
     is_with_reserve: true,
@@ -618,7 +622,7 @@ export const MoctionArtwork = {
     locations: [],
   },
   is_in_auction: true,
-  is_biddable: true,
+  is_biddable: false,
   is_sold: false,
   title: "Surrealism",
   date: "",
@@ -631,8 +635,8 @@ export const MoctionArtwork = {
   edition_of: null,
   attribution_class: null,
   edition_sets: [],
-  sale_message: "Contact For Price",
+  sale_message: null,
   is_inquireable: true,
   is_price_range: false,
-  is_for_sale: true,
+  is_for_sale: false,
 }
