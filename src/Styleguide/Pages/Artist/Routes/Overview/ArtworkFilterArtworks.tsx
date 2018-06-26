@@ -1,16 +1,18 @@
+import { ArtworkFilterArtworks_filtered_artworks } from "__generated__/ArtworkFilterArtworks_filtered_artworks.graphql"
 import ArtworkGrid from "Components/ArtworkGrid"
 import * as React from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
-import { PaginationFragmentContainer } from "Styleguide/Components/Pagination"
+import { PaginationFragmentContainer as Pagination } from "Styleguide/Components/Pagination"
+import { Flex } from "Styleguide/Elements/Flex"
+import { Spacer } from "Styleguide/Elements/Spacer"
 import { Subscribe } from "unstated"
 import { FilterState } from "./ArtworkFilterState"
-
-import { ArtworkFilterArtworks_filtered_artworks } from "__generated__/ArtworkFilterArtworks_filtered_artworks.graphql"
 
 interface Props {
   filtered_artworks: ArtworkFilterArtworks_filtered_artworks
   relay: RelayRefetchProp
   artistID: string
+  columnCount: number
 }
 
 const PAGE_SIZE = 10
@@ -72,17 +74,6 @@ class Artworks extends React.Component<Props> {
     )
   }
 
-  renderPagination(filters) {
-    return (
-      <PaginationFragmentContainer
-        pageCursors={this.props.filtered_artworks.artworks.pageCursors as any}
-        onClick={this.loadAfter}
-        onNext={this.loadNext}
-        onPrev={this.loadPrev}
-      />
-    )
-  }
-
   render() {
     return (
       <Subscribe to={[FilterState]}>
@@ -91,10 +82,23 @@ class Artworks extends React.Component<Props> {
             <div>
               <ArtworkGrid
                 artworks={this.props.filtered_artworks.artworks as any}
-                columnCount={4}
+                columnCount={this.props.columnCount}
                 itemMargin={40}
               />
-              {this.renderPagination(filters)}
+
+              <Spacer mb={4} />
+
+              <Flex justifyContent="flex-end">
+                <Pagination
+                  pageCursors={
+                    this.props.filtered_artworks.artworks.pageCursors as any
+                  }
+                  onClick={this.loadAfter}
+                  onNext={this.loadNext}
+                  onPrev={this.loadPrev}
+                  scrollTo="#jump--artistArtworkGrid"
+                />
+              </Flex>
             </div>
           )
         }}

@@ -3,6 +3,7 @@ import { buildClientApp } from "Router"
 
 interface Props {
   routes: any // FIXME
+  initialRoute?: string
 }
 
 export class StorybooksRouter extends React.Component<Props> {
@@ -10,11 +11,16 @@ export class StorybooksRouter extends React.Component<Props> {
     ClientApp: null,
   }
 
+  static defaultProps = {
+    initialRoute: "/",
+  }
+
   async componentDidMount() {
     try {
       const { ClientApp } = await buildClientApp({
         routes: this.props.routes,
         historyProtocol: "memory",
+        initialRoute: this.props.initialRoute,
       })
 
       this.setState({

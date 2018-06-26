@@ -13,6 +13,7 @@ interface ShowProps {
   relay: RelayRefetchProp
   artist: RelatedArtistsRefetchContainer_artist
   kind: string
+  scrollTo: string
 }
 
 export const PAGE_SIZE = 6
@@ -47,6 +48,7 @@ export const RelatedArtistsRefetchContainer = createRefetchContainer(
           artistID: this.props.artist.id,
           after: null,
           last: PAGE_SIZE,
+          kind: this.props.kind,
         },
         null,
         error => {
@@ -65,6 +67,7 @@ export const RelatedArtistsRefetchContainer = createRefetchContainer(
           artistID: this.props.artist.id,
           before: null,
           last: null,
+          kind: this.props.kind,
         },
         null,
         error => {
@@ -109,7 +112,7 @@ export const RelatedArtistsRefetchContainer = createRefetchContainer(
                       {this.props.artist.related.artists.edges.map(
                         ({ node }) => {
                           return (
-                            <Box p={1} width={width}>
+                            <Box pr={1} pb={1} width={width}>
                               <ArtistCardFragmentContainer
                                 artist={node as any}
                               />
@@ -135,6 +138,7 @@ export const RelatedArtistsRefetchContainer = createRefetchContainer(
                         onClick={this.loadAfter}
                         onNext={this.loadNext}
                         onPrev={this.loadPrev}
+                        scrollTo={this.props.scrollTo}
                       />
                     </Flex>
                   </Col>
@@ -150,7 +154,7 @@ export const RelatedArtistsRefetchContainer = createRefetchContainer(
     artist: graphql`
       fragment RelatedArtistsRefetchContainer_artist on Artist
         @argumentDefinitions(
-          first: { type: "Int" }
+          first: { type: "Int", defaultValue: 6 }
           last: { type: "Int" }
           after: { type: "String" }
           before: { type: "String" }

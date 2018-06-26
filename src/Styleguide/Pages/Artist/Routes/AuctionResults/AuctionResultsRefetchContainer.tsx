@@ -52,6 +52,7 @@ export const AuctionResultsRefetchContainer = createRefetchContainer(
           artistID: this.props.artist.id,
           after: null,
           last: PAGE_SIZE,
+          sort: "PRICE_AND_DATE_DESC",
         },
         null,
         error => {
@@ -70,6 +71,7 @@ export const AuctionResultsRefetchContainer = createRefetchContainer(
           artistID: this.props.artist.id,
           before: null,
           last: null,
+          sort: "PRICE_AND_DATE_DESC",
         },
         null,
         error => {
@@ -124,6 +126,7 @@ export const AuctionResultsRefetchContainer = createRefetchContainer(
                         onClick={this.loadAfter}
                         onNext={this.loadNext}
                         onPrev={this.loadPrev}
+                        scrollTo="#jumpto-RouteTabs"
                       />
                     </Flex>
                   </Col>
@@ -139,8 +142,11 @@ export const AuctionResultsRefetchContainer = createRefetchContainer(
     artist: graphql`
       fragment AuctionResultsRefetchContainer_artist on Artist
         @argumentDefinitions(
-          sort: { type: "AuctionResultSorts" }
-          first: { type: "Int" }
+          sort: {
+            type: "AuctionResultSorts"
+            defaultValue: "PRICE_AND_DATE_DESC"
+          }
+          first: { type: "Int", defaultValue: 10 }
           last: { type: "Int" }
           after: { type: "String" }
           before: { type: "String" }

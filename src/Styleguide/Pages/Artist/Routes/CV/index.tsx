@@ -1,57 +1,60 @@
-import { Serif } from "@artsy/palette"
-import { ArtistHeader_artist } from "__generated__/ArtistHeader_artist.graphql"
+import { CV_viewer } from "__generated__/CV_viewer.graphql"
 import React from "react"
-import { Col, Row } from "Styleguide/Elements/Grid"
+import { createFragmentContainer, graphql } from "react-relay"
 import { Spacer } from "Styleguide/Elements/Spacer"
-import { CVPaginationContainer as CV } from "./CVPaginationContainer"
-import { CVQueryRenderer } from "./CVQueryRenderer"
+import { CVPaginationContainer as CVItem } from "./CVItem"
 
-interface Props {
-  artist: ArtistHeader_artist
-  category: string
+export interface CVRouteProps {
+  viewer: CV_viewer
 }
 
-export class CVRoute extends React.Component<Props> {
+export class CVRoute extends React.Component<CVRouteProps> {
   render() {
-    const { artist, category } = this.props
+    const { viewer } = this.props
 
     return (
       <React.Fragment>
-        <CV category={category} artist={artist as any} />
-
+        <CVItem category="Solo shows" artist={viewer.artist_soloShows as any} />
         <Spacer my={1} />
 
-        <CVQueryRenderer
-          artistID="pablo-picasso"
-          filters={{
-            at_a_fair: false,
-            solo_show: false,
-            sort: "start_at_desc",
-            is_reference: true,
-            visible_to_public: false,
-          }}
-          category="Group Shows"
+        <CVItem
+          category="Group shows"
+          artist={viewer.artist_groupShows as any}
         />
-
         <Spacer my={1} />
 
-        <CVQueryRenderer
-          artistID="pablo-picasso"
-          filters={{ at_a_fair: true, sort: "start_at_desc" }}
-          category="Fair Booths"
+        <CVItem
+          category="Fair booths"
+          artist={viewer.artist_fairBooths as any}
         />
-
-        <Spacer my={1} />
-
-        <Row>
-          <Col smOffset={2}>
-            <Serif size="2" color="black60">
-              Artist CVs are assembled using only exhibition data available on
-              Artsy.
-            </Serif>
-          </Col>
-        </Row>
       </React.Fragment>
     )
   }
 }
+
+export const CVRouteFragmentContainer = createFragmentContainer(
+  CVRoute,
+  graphql`
+    fragment CV_viewer on Viewer
+      @argumentDefinitions(
+        soloShows_at_a_fair: { type: "Boolean", defaultValue: false }
+        soloShows_solo_show: { type: "Boolean", defaultValue: true }
+        groupShows_at_a_fair: { type: "Boolean", defaultValue: false }
+        fairBooths_at_a_fair: { type: "Boolean", defaultValue: true }
+      ) {
+      artist_soloShows: artist(id: $artistID) {
+        ...CVItem_artist
+          @arguments(
+            at_a_fair: $soloShows_at_a_fair
+            solo_show: $soloShows_solo_show
+          )
+      }
+      artist_groupShows: artist(id: $artistID) {
+        ...CVItem_artist @arguments(at_a_fair: $groupShows_at_a_fair)
+      }
+      artist_fairBooths: artist(id: $artistID) {
+        ...CVItem_artist @arguments(at_a_fair: $fairBooths_at_a_fair)
+      }
+    }
+  `
+)
