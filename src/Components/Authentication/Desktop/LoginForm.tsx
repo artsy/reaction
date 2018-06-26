@@ -7,6 +7,7 @@ import {
   Footer,
   ForgotPassword,
   FormContainer as Form,
+  SubmitButton,
 } from "Components/Authentication/commonElements"
 import {
   FormComponentType,
@@ -14,20 +15,12 @@ import {
   ModalType,
 } from "Components/Authentication/Types"
 import { LoginValidator } from "Components/Authentication/Validators"
-import Button from "Components/Buttons/Inverted"
 import Input from "Components/Input"
 
 const Row = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-`
-
-const LoginButton = styled(Button).attrs({
-  type: "submit",
-  block: true,
-})`
-  margin: auto 0 10px 0;
 `
 
 export const LoginForm: FormComponentType = props => {
@@ -84,9 +77,9 @@ export const LoginForm: FormComponentType = props => {
               />
             </Row>
             {globalError && <Error show>{globalError}</Error>}
-            <LoginButton disabled={isSubmitting || hasErrors || !dirty}>
-              Log In
-            </LoginButton>
+            <SubmitButton disabled={isSubmitting || hasErrors || !dirty}>
+              Log in
+            </SubmitButton>
             <Footer
               handleTypeChange={() => props.handleTypeChange(ModalType.signup)}
               mode="login"

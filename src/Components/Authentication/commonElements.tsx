@@ -1,6 +1,8 @@
+import { Sans } from "@artsy/palette"
 import { growAndFadeIn } from "Assets/Animations"
 import Colors from "Assets/Colors"
 import { garamond, unica } from "Assets/Fonts"
+import { ButtonProps } from "Components/Buttons/Default"
 import Button from "Components/Buttons/Inverted"
 import React from "react"
 import styled from "styled-components"
@@ -88,9 +90,13 @@ export const ForgotPassword = props => (
   <ForgotPasswordLink {...props}>Forgot Password?</ForgotPasswordLink>
 )
 
-export const MobileSubmitButton = styled(Button).attrs({
-  type: "submit",
-  block: true,
-})`
+export const SubmitButton = styled((props: ButtonProps) => (
+  <Button type="submit" block {...props}>
+    <Sans size="3t" weight="medium">
+      {props.children}
+    </Sans>
+  </Button>
+))`
   margin: auto 0 10px 0;
+  text-transform: inherit;
 `

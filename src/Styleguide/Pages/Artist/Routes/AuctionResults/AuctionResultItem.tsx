@@ -2,10 +2,11 @@ import { Serif } from "@artsy/palette"
 import { AuctionResultItem_auctionResult } from "__generated__/AuctionResultItem_auctionResult.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import styled from "styled-components"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
-import { ResponsiveImage } from "Styleguide/Elements/Image"
+import { Image } from "Styleguide/Elements/Image"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Responsive } from "Styleguide/Utils/Responsive"
@@ -50,14 +51,15 @@ const LargeAuctionItem: React.SFC<Props> = (props: Props) => {
         return (
           <React.Fragment>
             <Col sm={1}>
-              <Box maxWidth="70px" width="70px" height="auto">
-                <ResponsiveImage
+              <Box height="auto" pr={2}>
+                <Image
+                  width="70px"
                   src={props.auctionResult.images.thumbnail.url}
                 />
               </Box>
             </Col>
             <Col sm={4}>
-              <Box pl={1} pr={2}>
+              <Box pl={1} pr={6}>
                 <Serif size="2" italic>
                   {props.auctionResult.title && props.auctionResult.title + ","}
                   {props.auctionResult.date_text}
@@ -70,15 +72,15 @@ const LargeAuctionItem: React.SFC<Props> = (props: Props) => {
               </Box>
             </Col>
             <Col sm={3}>
-              <Box pt={1} pr={2}>
+              <Box pr={2}>
                 <Serif size="2">{props.auctionResult.organization}</Serif>
                 <Serif size="2" color="black60">
                   {props.auctionResult.sale_date_text}
                 </Serif>
                 <Serif size="2" color="black60">
-                  <span onClick={() => showDetailsModal(props)}>
+                  <FullDescriptionLink onClick={() => showDetailsModal(props)}>
                     Full description
-                  </span>
+                  </FullDescriptionLink>
                 </Serif>
               </Box>
             </Col>
@@ -103,13 +105,16 @@ const SmallAuctionItem: React.SFC<Props> = props => {
     <React.Fragment>
       <Col sm={6}>
         <Flex>
-          <Box maxWidth="70px" width="70px" height="auto">
-            <ResponsiveImage src={props.auctionResult.images.thumbnail.url} />
+          <Box height="auto">
+            <Image
+              width="70px"
+              src={props.auctionResult.images.thumbnail.url}
+            />
           </Box>
 
           <Spacer mr={2} />
 
-          <Box pr={6}>
+          <Box pr={4}>
             <Serif size="2" italic>
               {props.auctionResult.title && props.auctionResult.title + ","}
               {props.auctionResult.date_text}
@@ -140,8 +145,11 @@ const ExtraSmallAuctionItem: React.SFC<Props> = props => {
     <React.Fragment>
       <Col>
         <Flex>
-          <Box maxWidth="30px" width="30px" height="auto">
-            <ResponsiveImage src={props.auctionResult.images.thumbnail.url} />
+          <Box height="auto">
+            <Image
+              width="70px"
+              src={props.auctionResult.images.thumbnail.url}
+            />
           </Box>
 
           <Spacer mr={2} />
@@ -200,6 +208,11 @@ export const AuctionResultItemFragmentContainer = createFragmentContainer(
   `
 )
 
+const FullDescriptionLink = styled.span`
+  cursor: pointer;
+  text-decoration: underline;
+`
+
 // Helpers
 
 const getSalePrice = price_realized => {
@@ -210,5 +223,5 @@ const getSalePrice = price_realized => {
 
 const getDescription = (fullDescription: string) => {
   const truncatedDescription = fullDescription.substr(0, 200)
-  return truncatedDescription
+  return truncatedDescription + "..."
 }

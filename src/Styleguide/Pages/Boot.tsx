@@ -5,7 +5,12 @@ import { Grid } from "Styleguide/Elements/Grid"
 import { ResponsiveProvider } from "Styleguide/Utils/Responsive"
 import { Provider as StateProvider } from "unstated"
 
-injectGlobalCSS()
+// FIXME: move inner css to Palette
+injectGlobalCSS(`
+  *:focus {
+    outline: none;
+  }
+`)
 
 export const Boot = ({ children }) => {
   return (

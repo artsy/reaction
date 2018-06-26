@@ -54,6 +54,7 @@ export const Flex = styled.div.attrs<FlexProps>({})`
   ${alignItems};
   ${flexBasis};
   ${flexDirection};
+  ${flexGrow};
   ${flexWrap};
   ${justifyContent};
   ${space};
@@ -61,5 +62,4 @@ export const Flex = styled.div.attrs<FlexProps>({})`
   ${maxHeight};
   ${width};
   ${maxWidth};
-  ${flexGrow};
 `
