@@ -17,19 +17,23 @@ export type Pagination_pageCursors = {
         readonly page: number;
         readonly isCurrent: boolean;
     }) | null;
+    readonly previous: ({
+        readonly cursor: string;
+    }) | null;
 };
 
 
 
 const node: ConcreteFragment = (function(){
-var v0 = [
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "cursor",
-    "args": null,
-    "storageKey": null
-  },
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "cursor",
+  "args": null,
+  "storageKey": null
+},
+v1 = [
+  v0,
   {
     "kind": "ScalarField",
     "alias": null,
@@ -60,7 +64,7 @@ return {
       "args": null,
       "concreteType": "PageCursor",
       "plural": true,
-      "selections": v0
+      "selections": v1
     },
     {
       "kind": "LinkedField",
@@ -70,7 +74,7 @@ return {
       "args": null,
       "concreteType": "PageCursor",
       "plural": false,
-      "selections": v0
+      "selections": v1
     },
     {
       "kind": "LinkedField",
@@ -80,10 +84,22 @@ return {
       "args": null,
       "concreteType": "PageCursor",
       "plural": false,
-      "selections": v0
+      "selections": v1
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "previous",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "PageCursor",
+      "plural": false,
+      "selections": [
+        v0
+      ]
     }
   ]
 };
 })();
-(node as any).hash = '268f47c07cd530d3e2ca7106acf756ad';
+(node as any).hash = '338e4e1baf2ed6b45e9a542dab473bb8';
 export default node;

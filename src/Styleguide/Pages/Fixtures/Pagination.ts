@@ -8,15 +8,13 @@ export const paginationProps = {
       { page: 8, cursor: "Y3Vyc29yMw==", isCurrent: false },
       { page: 9, cursor: "Y3Vyc29yMw==", isCurrent: false },
     ],
+    previous: { page: 5, cursor: "Y3Vyc29yMw==", isCurrent: false },
   },
   callbacks: {
     onClick: () => {
       /* */
     },
     onNext: () => {
-      /* */
-    },
-    onPrev: () => {
       /* */
     },
   },

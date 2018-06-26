@@ -14,7 +14,6 @@ import { createFragmentContainer, graphql } from "react-relay"
 interface Props {
   onClick?: (cursor: string) => void
   onNext?: () => void
-  onPrev?: () => void
   pageCursors: Pagination_pageCursors
   scrollTo?: string
 }
@@ -23,7 +22,6 @@ export class Pagination extends React.Component<Props> {
   static defaultProps = {
     onClick: _cursor => ({}),
     onNext: () => ({}),
-    onPrev: () => ({}),
     scrollTo: null,
   }
 
@@ -47,6 +45,7 @@ const renderPage = (pageCursor, onClick: (cursor: string) => void) => {
 }
 
 export const LargePagination = (props: Props) => {
+  const { previous } = props.pageCursors
   return (
     <Flex flexDirection="row">
       {props.pageCursors.first && (
@@ -68,7 +67,13 @@ export const LargePagination = (props: Props) => {
       )}
 
       <Box ml={4}>
-        <PrevButton onClick={() => props.onPrev()} />
+        <PrevButton
+          onClick={() => {
+            if (previous) {
+              props.onClick(previous.cursor)
+            }
+          }}
+        />
         <NextButton onClick={() => props.onNext()} />
       </Box>
     </Flex>
@@ -76,6 +81,7 @@ export const LargePagination = (props: Props) => {
 }
 
 export const SmallPagination = (props: Props) => {
+  const { previous } = props.pageCursors
   return (
     <Flex flexDirection="row" width="100%">
       <Flex width="50%" pr={0.5}>
@@ -83,7 +89,11 @@ export const SmallPagination = (props: Props) => {
           alignItems="center"
           justifyContent="flex-start"
           pl={1}
-          onClick={() => props.onPrev()}
+          onClick={() => {
+            if (previous) {
+              props.onClick(previous.cursor)
+            }
+          }}
         >
           <Arrow direction="left" />
         </ButtonWithBorder>
@@ -189,6 +199,9 @@ export const PaginationFragmentContainer = createFragmentContainer(
         cursor
         page
         isCurrent
+      }
+      previous {
+        cursor
       }
     }
   `

@@ -16,16 +16,6 @@ interface ArticlesProps {
 
 export const ArticlesRefetchContainer = createRefetchContainer(
   class extends React.Component<ArticlesProps> {
-    loadPrev = () => {
-      const {
-        startCursor,
-        hasPreviousPage,
-      } = this.props.artist.articlesConnection.pageInfo
-      if (hasPreviousPage) {
-        this.loadBefore(startCursor)
-      }
-    }
-
     loadNext = () => {
       const {
         hasNextPage,
@@ -34,24 +24,6 @@ export const ArticlesRefetchContainer = createRefetchContainer(
       if (hasNextPage) {
         this.loadAfter(endCursor)
       }
-    }
-
-    loadBefore(cursor) {
-      this.props.relay.refetch(
-        {
-          first: null,
-          before: cursor,
-          artistID: this.props.artist.id,
-          after: null,
-          last: PAGE_SIZE,
-        },
-        null,
-        error => {
-          if (error) {
-            console.error(error)
-          }
-        }
-      )
     }
 
     loadAfter = cursor => {
@@ -103,7 +75,6 @@ export const ArticlesRefetchContainer = createRefetchContainer(
                   }
                   onClick={this.loadAfter}
                   onNext={this.loadNext}
-                  onPrev={this.loadPrev}
                   scrollTo="#jumpto-RouteTabs"
                 />
               </Flex>
@@ -133,8 +104,6 @@ export const ArticlesRefetchContainer = createRefetchContainer(
         ) {
           pageInfo {
             hasNextPage
-            hasPreviousPage
-            startCursor
             endCursor
           }
           pageCursors {

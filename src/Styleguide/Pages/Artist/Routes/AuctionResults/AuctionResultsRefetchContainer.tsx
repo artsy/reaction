@@ -22,17 +22,6 @@ interface AuctionResultsProps {
 
 export const AuctionResultsRefetchContainer = createRefetchContainer(
   class extends React.Component<AuctionResultsProps> {
-    loadPrev = () => {
-      const {
-        startCursor,
-        hasPreviousPage,
-      } = this.props.artist.auctionResults.pageInfo
-
-      if (hasPreviousPage) {
-        this.loadBefore(startCursor)
-      }
-    }
-
     loadNext = () => {
       const {
         hasNextPage,
@@ -42,25 +31,6 @@ export const AuctionResultsRefetchContainer = createRefetchContainer(
       if (hasNextPage) {
         this.loadAfter(endCursor)
       }
-    }
-
-    loadBefore(cursor) {
-      this.props.relay.refetch(
-        {
-          first: null,
-          before: cursor,
-          artistID: this.props.artist.id,
-          after: null,
-          last: PAGE_SIZE,
-          sort: "PRICE_AND_DATE_DESC",
-        },
-        null,
-        error => {
-          if (error) {
-            console.error(error)
-          }
-        }
-      )
     }
 
     loadAfter = cursor => {
@@ -125,7 +95,6 @@ export const AuctionResultsRefetchContainer = createRefetchContainer(
                         }
                         onClick={this.loadAfter}
                         onNext={this.loadNext}
-                        onPrev={this.loadPrev}
                         scrollTo="#jumpto-RouteTabs"
                       />
                     </Flex>
@@ -161,8 +130,6 @@ export const AuctionResultsRefetchContainer = createRefetchContainer(
         ) {
           pageInfo {
             hasNextPage
-            hasPreviousPage
-            startCursor
             endCursor
           }
           pageCursors {

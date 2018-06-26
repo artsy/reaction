@@ -22,16 +22,6 @@ export const PAGE_SIZE = 4
 
 export const ShowsRefetchContainer = createRefetchContainer(
   class extends React.Component<ShowProps> {
-    loadPrev = () => {
-      const {
-        startCursor,
-        hasPreviousPage,
-      } = this.props.artist.showsConnection.pageInfo
-      if (hasPreviousPage) {
-        this.loadBefore(startCursor)
-      }
-    }
-
     loadNext = () => {
       const {
         hasNextPage,
@@ -40,26 +30,6 @@ export const ShowsRefetchContainer = createRefetchContainer(
       if (hasNextPage) {
         this.loadAfter(endCursor)
       }
-    }
-
-    loadBefore(cursor) {
-      this.props.relay.refetch(
-        {
-          first: null,
-          before: cursor,
-          artistID: this.props.artist.id,
-          after: null,
-          last: PAGE_SIZE,
-          status: this.props.status,
-          sort: this.props.sort,
-        },
-        null,
-        error => {
-          if (error) {
-            console.error(error)
-          }
-        }
-      )
     }
 
     loadAfter = cursor => {
@@ -155,7 +125,6 @@ export const ShowsRefetchContainer = createRefetchContainer(
                           }
                           onClick={this.loadAfter}
                           onNext={this.loadNext}
-                          onPrev={this.loadPrev}
                           scrollTo={this.props.scrollTo}
                         />
                       </Flex>
@@ -191,8 +160,6 @@ export const ShowsRefetchContainer = createRefetchContainer(
         ) {
           pageInfo {
             hasNextPage
-            hasPreviousPage
-            startCursor
             endCursor
           }
           pageCursors {

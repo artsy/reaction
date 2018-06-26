@@ -6,8 +6,6 @@ export type ArticlesRefetchContainer_artist = {
     readonly articlesConnection: ({
         readonly pageInfo: {
             readonly hasNextPage: boolean;
-            readonly hasPreviousPage: boolean;
-            readonly startCursor: string | null;
             readonly endCursor: string | null;
         };
         readonly pageCursors: ({}) | null;
@@ -137,20 +135,6 @@ return {
               "kind": "ScalarField",
               "alias": null,
               "name": "hasNextPage",
-              "args": null,
-              "storageKey": null
-            },
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "hasPreviousPage",
-              "args": null,
-              "storageKey": null
-            },
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "startCursor",
               "args": null,
               "storageKey": null
             },
@@ -291,5 +275,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'fa224d10052acb977ce0a328b85bb986';
+(node as any).hash = '97cfd0699ae2b8f386089395e4339497';
 export default node;
