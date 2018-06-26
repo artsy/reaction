@@ -15,6 +15,7 @@ interface ShowProps {
   artist: ShowsRefetchContainer_artist
   status: string
   sort: string
+  scrollTo: string
 }
 
 export const PAGE_SIZE = 4
@@ -81,24 +82,6 @@ export const ShowsRefetchContainer = createRefetchContainer(
       )
     }
 
-    renderShowBlocks(blockWidth: string, blockDirection: any) {
-      return (
-        <ShowBlocks flexDirection={blockDirection} flexWrap={"true" as any}>
-          {this.props.artist.showsConnection.edges.map(({ node }) => {
-            return (
-              <ShowBlockItem
-                blockWidth={blockWidth}
-                imageUrl={node.cover_image.cropped.url}
-                partner={node.partner.name}
-                name={node.name}
-                exhibitionInfo={node.exhibition_period}
-              />
-            )
-          })}
-        </ShowBlocks>
-      )
-    }
-
     renderShowList() {
       return (
         <ShowList>
@@ -122,15 +105,35 @@ export const ShowsRefetchContainer = createRefetchContainer(
           {({ xs }) => {
             const blockWidth = xs ? "100%" : "50%"
             const blockDirection = xs ? "column" : "row"
+            const pr = xs ? 0 : 2
+            const pb = pr
 
             return (
               <Row>
                 <Col>
                   <Row>
                     <Col>
-                      {this.props.status === "running"
-                        ? this.renderShowBlocks(blockWidth, blockDirection)
-                        : this.renderShowList()}
+                      {this.props.status === "running" ? (
+                        <ShowBlocks flexDirection={blockDirection} flexWrap>
+                          {this.props.artist.showsConnection.edges.map(
+                            ({ node }) => {
+                              return (
+                                <ShowBlockItem
+                                  blockWidth={blockWidth}
+                                  imageUrl={node.cover_image.cropped.url}
+                                  partner={node.partner.name}
+                                  name={node.name}
+                                  exhibitionInfo={node.exhibition_period}
+                                  pr={pr}
+                                  pb={pb}
+                                />
+                              )
+                            }
+                          )}
+                        </ShowBlocks>
+                      ) : (
+                        this.renderShowList()
+                      )}
                     </Col>
                   </Row>
 
@@ -150,6 +153,7 @@ export const ShowsRefetchContainer = createRefetchContainer(
                           onClick={this.loadAfter}
                           onNext={this.loadNext}
                           onPrev={this.loadPrev}
+                          scrollTo={this.props.scrollTo}
                         />
                       </Flex>
                     </Col>
