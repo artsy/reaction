@@ -8,7 +8,6 @@ import {
   Footer,
   TermsOfServiceCheckbox,
 } from "../Authentication/commonElements"
-import { DesktopModal } from "../Authentication/Desktop/Components/DesktopModal"
 import { ModalManager } from "../Authentication/Desktop/ModalManager"
 import { FormSwitcher } from "../Authentication/FormSwitcher"
 import { ModalType } from "../Authentication/Types"
@@ -20,8 +19,11 @@ const submit = (values, actions) => {
   }, 1000)
 }
 
-const close = () => {
-  return
+const boundedSubmit = (type, options, values, actions) => {
+  setTimeout(() => {
+    alert(JSON.stringify(values, null, 1))
+    actions.setSubmitting(false)
+  }, 1000)
 }
 
 class ModalContainer extends Component<any> {
@@ -32,8 +34,7 @@ class ModalContainer extends Component<any> {
   }
 
   onClick = () => {
-    const options = this.props.options
-    this.manager.openModal(options)
+    this.manager.openModal(this.props.options)
   }
 
   render() {
@@ -47,7 +48,7 @@ class ModalContainer extends Component<any> {
             signup: "/signup",
             forgot: "/forgot",
           }}
-          handleSubmit={submit}
+          handleSubmit={boundedSubmit}
         />
       </Fragment>
     )
@@ -57,23 +58,9 @@ class ModalContainer extends Component<any> {
 storiesOf("Components/Authentication/Desktop", module)
   .add("Login", () => <ModalContainer options={{ mode: ModalType.login }} />)
   .add("Forgot Password", () => (
-    <DesktopModal show onClose={close} type={ModalType.forgot}>
-      <FormSwitcher
-        type={ModalType.forgot}
-        handleSubmit={submit}
-        options={{}}
-      />
-    </DesktopModal>
+    <ModalContainer options={{ mode: ModalType.forgot }} />
   ))
-  .add("Sign Up", () => (
-    <DesktopModal show onClose={close} type={ModalType.signup}>
-      <FormSwitcher
-        type={ModalType.signup}
-        handleSubmit={submit}
-        options={{}}
-      />
-    </DesktopModal>
-  ))
+  .add("Sign Up", () => <ModalContainer options={{ mode: ModalType.signup }} />)
 
 storiesOf("Components/Authentication/Mobile", module)
   .add("Login", () => (
