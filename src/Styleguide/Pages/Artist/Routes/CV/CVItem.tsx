@@ -49,7 +49,7 @@ export const CVPaginationContainer = createPaginationContainer(
     // FIXME: Check for null links
     // FIXME: Figure out how to always point to artsy.net env? how to handle urls?
     renderShow(node, index) {
-      const FIXME_DOMAIN = "https://artsy.net/"
+      const FIXME_DOMAIN = "https://www.artsy.net"
 
       return (
         <Show size="3" key={index}>

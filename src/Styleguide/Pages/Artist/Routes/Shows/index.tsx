@@ -18,7 +18,7 @@ export const ShowsRoute = (props: Props) => {
         Currently on view
       </Sans>
       <Shows
-        sort="end_at_desc"
+        sort="end_at_asc"
         status="running"
         artist={viewer.artist_currentShows as any}
         scrollTo="#jumpto-RouteTabs"
@@ -80,7 +80,7 @@ export const ShowsRouteFragmentContainer = createFragmentContainer(
         currentShowsStatus: { type: "String", defaultValue: "running" }
         currentShowsSort: {
           type: "PartnerShowSorts"
-          defaultValue: "end_at_desc"
+          defaultValue: "end_at_asc"
         }
         upcomingShowsStatus: { type: "String", defaultValue: "upcoming" }
         upcomingShowsSort: {

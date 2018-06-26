@@ -10,7 +10,10 @@ interface Props {
   name: string
   partner: string
   city: string
+  href: string
 }
+
+const FIXME_DOMAIN = "https://www.artsy.net"
 
 export const ShowListItem = (props: Props) => {
   return (
@@ -32,12 +35,12 @@ const LargeShowListItem = (props: Props) => {
         </Col>
         <Col sm={6}>
           <Serif size="4">
-            <a href="#" className="noUnderline">
+            <a href={FIXME_DOMAIN + props.href} className="noUnderline">
               {props.name}
             </a>
           </Serif>
           <Serif size="2" color="black60">
-            <a href="#" className="noUnderline">
+            <a href={FIXME_DOMAIN + props.href} className="noUnderline">
               {props.partner}
             </a>
           </Serif>
@@ -58,12 +61,12 @@ const SmallShowListItem = (props: Props) => {
   return (
     <React.Fragment>
       <Serif size="3">
-        <a href="#" className="noUnderline">
+        <a href={FIXME_DOMAIN + props.href} className="noUnderline">
           {props.name}
         </a>
       </Serif>
       <Serif size="2" color="black60">
-        <a href="#" className="noUnderline">
+        <a href={FIXME_DOMAIN + props.href} className="noUnderline">
           {props.partner}
         </a>
       </Serif>
