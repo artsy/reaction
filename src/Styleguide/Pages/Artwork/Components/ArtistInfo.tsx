@@ -10,6 +10,7 @@ import {
   SelectedExhibitionsProps,
 } from "Styleguide/Components/SelectedExhibitions"
 import { Box } from "Styleguide/Elements/Box"
+import { artistResponse } from "Styleguide/Pages/Fixtures/MarketInsights"
 import { Responsive } from "Styleguide/Utils/Responsive"
 
 interface ArtistInfoProps
@@ -33,7 +34,7 @@ export class ArtistInfo extends React.Component<ArtistInfoProps> {
           }}
         </Responsive>
         <Box mb={1}>
-          <MarketInsights insights={this.props.insights} />
+          <MarketInsights artist={artistResponse} />
         </Box>
         <Box mb={2}>
           <SelectedExhibitions exhibitions={this.props.exhibitions} />
