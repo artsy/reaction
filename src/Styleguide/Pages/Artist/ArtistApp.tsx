@@ -29,7 +29,7 @@ export class ArtistApp extends React.Component<Props> {
       params: { artistID },
     } = this.props
 
-    const route = path => `/${artistID}/${path}`
+    const route = (path = "") => `/${artistID}${path}`
 
     return (
       <React.Fragment>
@@ -46,14 +46,18 @@ export class ArtistApp extends React.Component<Props> {
             <span id="jumpto-RouteTabs" />
 
             <RouteTabs>
-              <RouteTab to={route("/")} exact>
+              <RouteTab to={route()} exact>
                 Overview
               </RouteTab>
-              <RouteTab to={route("cv")}>CV</RouteTab>
-              <RouteTab to={route("articles")}>Articles</RouteTab>
-              <RouteTab to={route("shows")}>Shows</RouteTab>
-              <RouteTab to={route("auction-results")}>Auction results</RouteTab>
-              <RouteTab to={route("related-artists")}>Related artists</RouteTab>
+              <RouteTab to={route("/cv")}>CV</RouteTab>
+              <RouteTab to={route("/articles")}>Articles</RouteTab>
+              <RouteTab to={route("/shows")}>Shows</RouteTab>
+              <RouteTab to={route("/auction-results")}>
+                Auction results
+              </RouteTab>
+              <RouteTab to={route("/related-artists")}>
+                Related artists
+              </RouteTab>
             </RouteTabs>
 
             <Spacer mb={3} />
