@@ -37,6 +37,18 @@ storiesOf("Styleguide/Components", module).add("Tabs", () => {
           <Tab name="You?">You?</Tab>
         </Tabs>
       </Section>
+      <Section title="With arbitrary data and onChange handler">
+        <Tabs
+          onChange={activeTab => {
+            // tslint:disable-next-line
+            console.log(activeTab.data)
+          }}
+        >
+          <Tab data={{ target: "#about" }} name="About" />
+          <Tab data={{ target: "#pricing" }} name="Pricing" />
+          <Tab data={{ target: "#condition" }} name="Condition" />
+        </Tabs>
+      </Section>
     </React.Fragment>
   )
 })

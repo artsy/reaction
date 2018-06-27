@@ -15,6 +15,9 @@ export interface TabInfo {
 
   /** Index of the newly selected Tab */
   tabIndex: number
+
+  /** Data associated with the newly selected Tab */
+  data: object
 }
 
 export interface TabsProps extends WidthProps {
@@ -53,6 +56,7 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
       this.props.onChange({
         tabIndex: activeTabIndex,
         name: this.props.children[activeTabIndex].props.name,
+        data: this.props.children[activeTabIndex].props.data,
       })
     }
   }
@@ -85,6 +89,13 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
 interface TabProps {
   /** Display name of the Tab */
   name: string
+
+  /**
+   * Arbitrary data that can be associated with a Tab.
+   *
+   * Will be passed to the parent <Tabs>'s onChange handler.
+   */
+  data?: object
 }
 
 export class Tab extends React.Component<TabProps> {
