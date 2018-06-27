@@ -426,10 +426,12 @@ export const OpenAuctionArtwork = {
     locations: [],
   },
   sale: {
+    is_preview: false,
     is_open: true,
     is_closed: false,
     is_live_open: false,
     is_with_buyers_premium: true,
+    is_registration_closed: false,
   },
   sale_artwork: {
     lot_label: "2",
@@ -482,10 +484,12 @@ export const LiveAuctionArtwork = {
     locations: [],
   },
   sale: {
+    is_preview: false,
     is_open: true,
     is_closed: false,
     is_live_open: true,
     is_with_buyers_premium: true,
+    is_registration_closed: true,
   },
   sale_artwork: {
     lot_label: "14002",
@@ -545,10 +549,12 @@ export const ClosedAuctionArtwork = {
     locations: [],
   },
   sale: {
+    is_preview: false,
     is_open: false,
     is_closed: true,
     is_live_open: false,
     is_with_buyers_premium: true,
+    is_registration_closed: true,
   },
   sale_artwork: {
     lot_label: "2",

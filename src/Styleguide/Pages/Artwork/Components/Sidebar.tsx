@@ -5,6 +5,7 @@ import { Separator } from "Styleguide/Elements/Separator"
 import { Artists } from "./Sidebar/Artists"
 import { ArtworkMetadata } from "./Sidebar/ArtworkMetadata"
 import { AuctionPartnerInfo } from "./Sidebar/AuctionPartnerInfo"
+import { BidAction } from "./Sidebar/BidAction"
 import { Commercial } from "./Sidebar/Commercial"
 import { CurrentBidInfo } from "./Sidebar/CurrentBidInfo"
 import { ExtraLinks } from "./Sidebar/ExtraLinks"
@@ -30,10 +31,12 @@ export interface ArtworkSidebarProps {
       }>
     }
     readonly sale: {
+      readonly is_preview: boolean
       readonly is_open: boolean
       readonly is_closed: boolean
       readonly is_live_open: boolean
-      readonly is_with_buyers_premium?: boolean
+      readonly is_with_buyers_premium: boolean
+      readonly is_registration_closed: boolean
     }
     readonly sale_artwork: {
       readonly lot_label: string
@@ -105,6 +108,8 @@ export class Sidebar extends Component<ArtworkSidebarProps> {
               !artwork.sale.is_live_open && (
                 <CurrentBidInfo artwork={artwork} />
               )}
+            {artwork.sale &&
+              !artwork.sale.is_closed && <BidAction artwork={artwork} />}
           </React.Fragment>
         ) : (
           <React.Fragment>
