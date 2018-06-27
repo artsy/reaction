@@ -36,6 +36,7 @@ export const routes = [
       query routes_ArtistTopLevelQuery($artistID: String!) {
         artist(id: $artistID) {
           ...ArtistHeader_artist
+          ...NavigationTabs_artist
         }
         me {
           ...RecentlyViewed_me
