@@ -591,7 +591,7 @@ type ArtistStatuses {
   shows: Boolean
 }
 
-type Artwork implements Node & Saleable {
+type Artwork implements Node & Sellable {
   # A globally unique ID.
   __id: ID!
 
@@ -1212,7 +1212,7 @@ type ArtworkInquiryEdge {
   cursor: String!
 }
 
-type ArtworkItem implements Node & Saleable {
+type ArtworkItem implements Node & Sellable {
   # A globally unique ID.
   __id: ID!
 
@@ -2227,7 +2227,7 @@ input EditableLocation {
   state_code: String
 }
 
-type EditionSet implements Saleable {
+type EditionSet implements Sellable {
   # A globally unique ID.
   __id: ID!
 
@@ -4994,19 +4994,6 @@ type Sale implements Node {
   symbol: String
 }
 
-# A piece that can be sold
-interface Saleable {
-  dimensions: dimensions
-  edition_of: String
-
-  # Whether a piece can be purchased through e-commerce
-  is_acquireable: Boolean
-  is_for_sale: Boolean
-  is_sold: Boolean
-  price: String
-  sale_message: String
-}
-
 type SaleArtwork {
   # A globally unique ID.
   __id: ID!
@@ -5292,6 +5279,19 @@ type SaveArtworkPayload {
   clientMutationId: String
 }
 
+# A piece that can be sold
+interface Sellable {
+  dimensions: dimensions
+  edition_of: String
+
+  # Whether a piece can be purchased through e-commerce
+  is_acquireable: Boolean
+  is_for_sale: Boolean
+  is_sold: Boolean
+  price: String
+  sale_message: String
+}
+
 input SendConversationMessageMutationInput {
   # The id of the conversation to be updated
   id: String!
@@ -5368,9 +5368,6 @@ type Show implements Node {
   counts: ShowCounts
   description: String
   displayable: Boolean @deprecated(reason: "Prefix Boolean returning fields with `is_`")
-
-  # Either fair, show, or partner location
-  display_city: String
   end_at(
     convert_to_utc: Boolean
     format: String

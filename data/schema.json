@@ -5130,7 +5130,7 @@
             },
             {
               "kind": "INTERFACE",
-              "name": "Saleable",
+              "name": "Sellable",
               "ofType": null
             }
           ],
@@ -5139,7 +5139,7 @@
         },
         {
           "kind": "INTERFACE",
-          "name": "Saleable",
+          "name": "Sellable",
           "description": "A piece that can be sold",
           "fields": [
             {
@@ -9030,18 +9030,6 @@
               },
               "isDeprecated": true,
               "deprecationReason": "Prefix Boolean returning fields with `is_`"
-            },
-            {
-              "name": "display_city",
-              "description": "Either fair, show, or partner location",
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
             },
             {
               "name": "end_at",
@@ -21877,7 +21865,7 @@
           "interfaces": [
             {
               "kind": "INTERFACE",
-              "name": "Saleable",
+              "name": "Sellable",
               "ofType": null
             }
           ],
@@ -36747,7 +36735,7 @@
             },
             {
               "kind": "INTERFACE",
-              "name": "Saleable",
+              "name": "Sellable",
               "ofType": null
             }
           ],

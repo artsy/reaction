@@ -14,7 +14,7 @@ export type ArtworkSidebarSizeInfo_piece = {
 const node: ConcreteFragment = {
   "kind": "Fragment",
   "name": "ArtworkSidebarSizeInfo_piece",
-  "type": "Saleable",
+  "type": "Sellable",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
@@ -59,5 +59,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'ce7c15a9be709b43eabdc97fc11d2860';
+(node as any).hash = '0b7abbfbf9eeaea9d739a6744e2c2403';
 export default node;
