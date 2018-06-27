@@ -60,4 +60,36 @@ describe("ModalManager", () => {
 
     expect(document.body.style.overflowY).toEqual("hidden")
   })
+
+  it("handles type changes", () => {
+    const wrapper = getWrapper()
+    let manager = wrapper.instance() as ModalManager
+
+    manager.openModal({
+      mode: "login",
+    })
+
+    manager.handleTypeChange("signup")
+
+    expect(manager.state.currentType).toEqual("signup")
+    expect(manager.state.switchedForms).toEqual(true)
+    expect(manager.state.options.mode).toEqual("signup")
+  })
+
+  it("returns the right subtitle", () => {
+    const wrapper = getWrapper()
+    let manager = wrapper.instance() as ModalManager
+
+    manager.openModal({
+      mode: "login",
+      copy: "Foobar",
+    })
+    expect(manager.getSubtitle()).toEqual("Foobar")
+
+    manager.handleTypeChange("signup")
+    expect(manager.getSubtitle()).toEqual("Sign up")
+
+    manager.handleTypeChange("forgot")
+    expect(manager.getSubtitle()).toEqual("Forgot Password")
+  })
 })
