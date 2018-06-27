@@ -12,8 +12,6 @@ export interface ArtistsProps {
 
 type Artist = ArtworkSidebarArtists_artwork["artists"][0]
 
-const ArtistsContainer = Box
-
 export class ArtworkSidebarArtists extends React.Component<ArtistsProps> {
   renderArtistName(artist: Artist) {
     return artist.href ? (
@@ -55,11 +53,11 @@ export class ArtworkSidebarArtists extends React.Component<ArtistsProps> {
       artwork: { artists },
     } = this.props
     return (
-      <ArtistsContainer pb={2}>
+      <Box pb={2}>
         {artists.length === 1
           ? this.renderSingleArtist(artists[0])
           : this.renderMultipleArtists()}
-      </ArtistsContainer>
+      </Box>
     )
   }
 }

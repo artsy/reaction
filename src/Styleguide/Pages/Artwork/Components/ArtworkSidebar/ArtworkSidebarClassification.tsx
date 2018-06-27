@@ -9,8 +9,6 @@ export interface ArtworkSidebarClassificationProps {
   artwork: ArtworkSidebarClassification_artwork
 }
 
-const ArtworkSidebarClassificationContainer = Box
-
 export class ArtworkSidebarClassification extends React.Component<
   ArtworkSidebarClassificationProps
 > {
@@ -20,15 +18,11 @@ export class ArtworkSidebarClassification extends React.Component<
       return null
     }
     return (
-      <ArtworkSidebarClassificationContainer
-        pt={2}
-        color="black60"
-        textAlign="left"
-      >
+      <Box pt={2} color="black60" textAlign="left">
         <Serif size="2">
           <a href="#">{artwork.attribution_class.short_description}</a>.
         </Serif>
-      </ArtworkSidebarClassificationContainer>
+      </Box>
     )
   }
 }
