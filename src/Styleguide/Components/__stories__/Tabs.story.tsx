@@ -49,6 +49,13 @@ storiesOf("Styleguide/Components", module).add("Tabs", () => {
           <Tab data={{ target: "#condition" }} name="Condition" />
         </Tabs>
       </Section>
+      <Section title="With custom justification">
+        <Tabs justifyContent="center">
+          <Tab name="About" />
+          <Tab name="Pricing" />
+          <Tab name="Condition" />
+        </Tabs>
+      </Section>
     </React.Fragment>
   )
 })

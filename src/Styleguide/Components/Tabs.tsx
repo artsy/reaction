@@ -1,7 +1,12 @@
 import { Sans } from "@artsy/palette"
 import React from "react"
 import styled, { css } from "styled-components"
-import { borders, themeGet, WidthProps } from "styled-system"
+import {
+  borders,
+  JustifyContentProps,
+  themeGet,
+  WidthProps,
+} from "styled-system"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 
@@ -20,7 +25,7 @@ export interface TabInfo {
   data: object
 }
 
-export interface TabsProps extends WidthProps {
+export interface TabsProps extends WidthProps, JustifyContentProps {
   /** Function that will be called when a new Tab is selected */
   onChange?: (tabInfo?: TabInfo) => void
 
@@ -73,11 +78,11 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
   }
 
   render() {
-    const { children = [] } = this.props
+    const { children = [], justifyContent = "left" } = this.props
 
     return (
       <React.Fragment>
-        <TabsContainer mb={0.5} width="100%">
+        <TabsContainer mb={0.5} width="100%" justifyContent={justifyContent}>
           {children.map(this.renderTab)}
         </TabsContainer>
         <Box pt={3}>{children[this.state.activeTabIndex]}</Box>
