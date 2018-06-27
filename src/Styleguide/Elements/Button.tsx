@@ -1,4 +1,5 @@
 import { Sans } from "@artsy/palette"
+import Spinner from "Components/Spinner"
 import { pick } from "lodash/fp"
 import React, { Component, ReactNode } from "react"
 import styled, { css } from "styled-components"
@@ -144,6 +145,7 @@ export const Button = styled(
       const buttonProps = {
         ...this.props,
         ...this.getSize(),
+        buttonSize: this.props.size,
         variantStyles: this.getVariant(),
       }
 
@@ -161,8 +163,10 @@ export interface ButtonBaseProps
     TextAlignProps,
     WidthProps,
     HeightProps {
-  variantStyles?: any // FIXME
+  buttonSize?: any // FIXME
+  loading?: boolean
   onClick?: () => void
+  variantStyles?: any // FIXME
 }
 
 export class ButtonBase extends Component<ButtonBaseProps> {
@@ -172,11 +176,14 @@ export class ButtonBase extends Component<ButtonBaseProps> {
   }
 
   render() {
-    const { children, ...rest } = this.props
+    const { children, loading, ...rest } = this.props
     const textProps = pick(["color", "size", "weight"], rest)
+    const loadingClass = loading ? "loading" : ""
 
     return (
-      <Container {...rest}>
+      <Container {...rest} className={loadingClass}>
+        {loading && <Spinner spinnerSize={this.props.buttonSize} />}
+
         <Sans weight="medium" {...textProps} pt="1px">
           {children}
         </Sans>
@@ -186,6 +193,8 @@ export class ButtonBase extends Component<ButtonBaseProps> {
 }
 
 const Container = styled.button.attrs<ButtonBaseProps>({})`
+  position: relative;
+
   ${borders};
   ${borderRadius};
   ${space};
@@ -194,7 +203,21 @@ const Container = styled.button.attrs<ButtonBaseProps>({})`
   ${height};
 
   cursor: pointer;
-  transition: 0.25s ease;
 
-  ${p => p.variantStyles};
+  ${props => {
+    if (!props.loading) {
+      return `
+        transition: 0.25s ease;
+      `
+    }
+  }};
+
+  ${props => props.variantStyles};
+
+  &.loading {
+    transition: none;
+    background-color: transparent;
+    color: transparent;
+    border: 0;
+  }
 `
