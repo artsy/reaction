@@ -79,6 +79,11 @@ return {
     },
     {
       "kind": "FragmentSpread",
+      "name": "Genes_artist",
+      "args": null
+    },
+    {
+      "kind": "FragmentSpread",
       "name": "ArtworkFilter_artist",
       "args": [
         {
@@ -111,5 +116,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '6fc171060ec9987d2b32e50661b275c8';
+(node as any).hash = '9a40bd00010afae4e885a266518afee6';
 export default node;
