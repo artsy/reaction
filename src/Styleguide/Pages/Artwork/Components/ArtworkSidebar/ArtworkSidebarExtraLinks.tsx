@@ -61,7 +61,6 @@ export const ArtworkSidebarExtraLinksFragmentContainer = createFragmentContainer
         is_consignable
       }
       sale {
-        __id
         is_closed
       }
     }

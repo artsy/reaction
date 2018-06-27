@@ -56,7 +56,6 @@ export const ArtworkFromLiveAuction = {
     { __id: "consign_artist", is_consignable: true },
   ],
   sale: {
-    __id: "live_sale",
     is_closed: false,
   },
 }

@@ -10,7 +10,6 @@ export type ArtworkSidebarExtraLinks_artwork = {
         readonly is_consignable: boolean | null;
     }) | null> | null;
     readonly sale: ({
-        readonly __id: string;
         readonly is_closed: boolean | null;
     }) | null;
 };
@@ -75,18 +74,18 @@ return {
       "concreteType": "Sale",
       "plural": false,
       "selections": [
-        v0,
         {
           "kind": "ScalarField",
           "alias": null,
           "name": "is_closed",
           "args": null,
           "storageKey": null
-        }
+        },
+        v0
       ]
     }
   ]
 };
 })();
-(node as any).hash = '0cb1c7e71c450843f1c94bcf93e8f8bf';
+(node as any).hash = '617f85197a2af859fd4e83f20c962f54';
 export default node;
