@@ -165,6 +165,7 @@ export interface ButtonBaseProps
     HeightProps {
   buttonSize?: any // FIXME
   loading?: boolean
+  disabled?: boolean
   onClick?: () => void
   variantStyles?: any // FIXME
 }
@@ -176,12 +177,13 @@ export class ButtonBase extends Component<ButtonBaseProps> {
   }
 
   render() {
-    const { children, loading, ...rest } = this.props
+    const { children, loading, disabled, ...rest } = this.props
     const textProps = pick(["color", "size", "weight"], rest)
     const loadingClass = loading ? "loading" : ""
+    const disabledClass = disabled ? "disabled" : ""
 
     return (
-      <Container {...rest} className={loadingClass}>
+      <Container {...rest} className={[loadingClass, disabledClass].join(" ")}>
         {loading && <Spinner spinnerSize={this.props.buttonSize} />}
 
         <Sans weight="medium" {...textProps} pt="1px">
@@ -219,5 +221,18 @@ const Container = styled.button.attrs<ButtonBaseProps>({})`
     background-color: transparent;
     color: transparent;
     border: 0;
+  }
+
+  &.disabled {
+    ${props => {
+      const { colors } = props.theme
+
+      return `
+        background-color: ${colors.black10};
+        border-color: ${colors.black10};
+        color: ${colors.white100};
+        pointer-events: none;
+      `
+    }};
   }
 `
