@@ -5,7 +5,7 @@ export const ArtworkNoEstimateNoPremium = {
     __id: "phillips",
     name: "Phillips",
   },
-  sale_artwork: {},
+  sale_artwork: { estimate: null },
   sale: {
     is_with_buyers_premium: false,
   },

@@ -1,6 +1,6 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { ExtraLinks } from "Styleguide/Pages/Artwork/Components/Sidebar/ExtraLinks"
+import { ArtworkSidebarExtraLinks as ExtraLinks } from "Styleguide/Pages/Artwork/Components/ArtworkSidebar/ArtworkSidebarExtraLinks"
 import {
   ArtworkFromLiveAuction,
   ArtworkNotForSaleWithMultipleConsignableArtist,

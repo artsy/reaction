@@ -1,31 +1,26 @@
 import { Sans } from "@artsy/palette"
 import React from "react"
+import { createFragmentContainer, graphql } from "react-relay"
 import { Box } from "Styleguide/Elements/Box"
 
-export interface ExtraLinksProps {
-  artwork: {
-    readonly __id: string
-    readonly is_biddable: boolean
-    readonly is_for_sale: boolean
-    artists: Array<{
-      readonly __id: string
-      readonly is_consignable: boolean
-    }>
-  }
+import { ArtworkSidebarExtraLinks_artwork } from "__generated__/ArtworkSidebarExtraLinks_artwork.graphql"
+
+export interface ArtworkSidebarExtraLinksProps {
+  artwork: ArtworkSidebarExtraLinks_artwork
 }
 
-const ExtraLinksContainer = Box
-
-export class ExtraLinks extends React.Component<ExtraLinksProps> {
+export class ArtworkSidebarExtraLinks extends React.Component<
+  ArtworkSidebarExtraLinksProps
+> {
   render() {
     if (this.props.artwork.is_biddable) {
       return (
-        <ExtraLinksContainer pb={3} pt={1}>
+        <Box pb={3} pt={1}>
           <Sans size="2" color="black60">
             Have a question? <a href="#">Read our FAQ</a> or{" "}
             <a href="#">ask a specialist</a>.
           </Sans>
-        </ExtraLinksContainer>
+        </Box>
       )
     }
     const isForSaleArtwork = this.props.artwork.is_for_sale
@@ -36,7 +31,7 @@ export class ExtraLinks extends React.Component<ExtraLinksProps> {
       return null
     }
     return (
-      <ExtraLinksContainer pb={3} pt={1}>
+      <Box pb={3} pt={1}>
         {isForSaleArtwork && (
           <Sans size="2" color="black60">
             Questions about buying art on Artsy? <a href="#">Read our FAQ</a>.
@@ -47,7 +42,22 @@ export class ExtraLinks extends React.Component<ExtraLinksProps> {
             Want to sell a work by this artist? <a href="#">Lean more</a>.
           </Sans>
         )}
-      </ExtraLinksContainer>
+      </Box>
     )
   }
 }
+
+export const ArtworkSidebarExtraLinksFragmentContainer = createFragmentContainer(
+  ArtworkSidebarExtraLinks,
+  graphql`
+    fragment ArtworkSidebarExtraLinks_artwork on Artwork {
+      __id
+      is_biddable
+      is_for_sale
+      artists {
+        __id
+        is_consignable
+      }
+    }
+  `
+)

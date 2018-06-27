@@ -1,6 +1,6 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { TitleInfo } from "Styleguide/Pages/Artwork/Components/Sidebar/TitleInfo"
+import { ArtworkSidebarTitleInfo as TitleInfo } from "Styleguide/Pages/Artwork/Components/ArtworkSidebar/ArtworkSidebarTitleInfo"
 import {
   ArtworkWithTitlAndDate,
   ArtworkWithTitleAndMedium,
@@ -15,7 +15,7 @@ storiesOf("Styleguide/Artwork/Sidebar", module).add("TitleInfo", () => {
       <Section title="Artwork with Title Date and Medium present">
         <TitleInfo artwork={ArtworkWithTitleDateAndMedium} />
       </Section>
-      <Section title="Artwork with Title onlyt">
+      <Section title="Artwork with Title only">
         <TitleInfo artwork={ArtworkWithTitleOnly} />
       </Section>
       <Section title="Artwork with Title and Date">

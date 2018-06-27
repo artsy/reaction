@@ -1,22 +1,19 @@
 import { Serif } from "@artsy/palette"
 import React from "react"
+import { createFragmentContainer, graphql } from "react-relay"
 import { Box } from "Styleguide/Elements/Box"
 import { FollowIcon } from "Styleguide/Elements/FollowIcon"
 
+import { ArtworkSidebarArtists_artwork } from "__generated__/ArtworkSidebarArtists_artwork.graphql"
+
 export interface ArtistsProps {
-  artists: Array<{
-    readonly __id: string
-    readonly id: string
-    readonly name: string
-    readonly is_followed: boolean | null
-    readonly href?: string
-  }>
+  artwork: ArtworkSidebarArtists_artwork
 }
 
-const ArtistsContainer = Box
+type Artist = ArtworkSidebarArtists_artwork["artists"][0]
 
-export class Artists extends React.Component<ArtistsProps> {
-  renderArtistName(artist) {
+export class ArtworkSidebarArtists extends React.Component<ArtistsProps> {
+  renderArtistName(artist: Artist) {
     return artist.href ? (
       <Serif size="5t" display="inline-block" weight="semibold">
         <a href={artist.href}>{artist.name}</a>
@@ -28,7 +25,7 @@ export class Artists extends React.Component<ArtistsProps> {
     )
   }
 
-  renderSingleArtist(artist) {
+  renderSingleArtist(artist: Artist) {
     return (
       <React.Fragment>
         {this.renderArtistName(artist)}
@@ -38,7 +35,9 @@ export class Artists extends React.Component<ArtistsProps> {
   }
 
   renderMultipleArtists() {
-    const { artists } = this.props
+    const {
+      artwork: { artists },
+    } = this.props
     return artists.map((artist, index) => {
       return (
         <React.Fragment key={artist.__id}>
@@ -50,13 +49,30 @@ export class Artists extends React.Component<ArtistsProps> {
   }
 
   render() {
-    const { artists } = this.props
+    const {
+      artwork: { artists },
+    } = this.props
     return (
-      <ArtistsContainer pb={2}>
+      <Box pb={2}>
         {artists.length === 1
           ? this.renderSingleArtist(artists[0])
           : this.renderMultipleArtists()}
-      </ArtistsContainer>
+      </Box>
     )
   }
 }
+
+export const ArtworkSidebarArtistsFragmentContainer = createFragmentContainer(
+  ArtworkSidebarArtists,
+  graphql`
+    fragment ArtworkSidebarArtists_artwork on Artwork {
+      artists {
+        __id
+        id
+        name
+        is_followed
+        href
+      }
+    }
+  `
+)

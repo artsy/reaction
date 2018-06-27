@@ -1,31 +1,20 @@
 import { Serif } from "@artsy/palette"
 import React from "react"
+import { createFragmentContainer, graphql } from "react-relay"
 import { Box } from "Styleguide/Elements/Box"
 import { Button } from "Styleguide/Elements/Button"
 import { Separator } from "Styleguide/Elements/Separator"
-import { SizeInfo } from "./SizeInfo"
+import { ArtworkSidebarSizeInfoFragmentContainer as SizeInfo } from "./ArtworkSidebarSizeInfo"
 
-export interface CommercialProps {
-  artwork: {
-    readonly __id: string
-    readonly sale_message: string | null
-    readonly is_inquireable: boolean
-    readonly is_price_range?: boolean | null
-    readonly edition_sets: Array<{
-      readonly __id: string
-      readonly dimensions: {
-        readonly in: string
-        readonly cm: string
-      }
-      readonly edition_of?: string
-    }>
-  }
+import { ArtworkSidebarCommercial_artwork } from "__generated__/ArtworkSidebarCommercial_artwork.graphql"
+
+export interface ArtworkSidebarCommercialProps {
+  artwork: ArtworkSidebarCommercial_artwork
 }
 
-const CommercialContainer = Box
-const PricingInfoContainer = Box
-
-export class Commercial extends React.Component<CommercialProps> {
+export class ArtworkSidebarCommercial extends React.Component<
+  ArtworkSidebarCommercialProps
+> {
   renderSaleMessage() {
     return (
       <Serif size="5t" weight="semibold">
@@ -39,10 +28,10 @@ export class Commercial extends React.Component<CommercialProps> {
     return editions.map((edition, index) => {
       return (
         <React.Fragment key={edition.__id}>
-          <PricingInfoContainer pb={2}>
+          <Box pb={2}>
             {this.renderSaleMessage()}
-            <SizeInfo artwork={edition} />
-          </PricingInfoContainer>
+            <SizeInfo piece={edition as any} />
+          </Box>
           {index !== editions.length - 1 && <Separator />}
         </React.Fragment>
       )
@@ -55,11 +44,11 @@ export class Commercial extends React.Component<CommercialProps> {
       return null
     }
     return (
-      <CommercialContainer pb={3} textAlign="left">
+      <Box pb={3} textAlign="left">
         {artwork.edition_sets.length < 2 && artwork.sale_message ? (
-          <PricingInfoContainer pb={2} pt={1}>
+          <Box pb={2} pt={1}>
             {this.renderSaleMessage()}
-          </PricingInfoContainer>
+          </Box>
         ) : (
           this.renderEditions()
         )}
@@ -68,7 +57,22 @@ export class Commercial extends React.Component<CommercialProps> {
             Contact Gallery
           </Button>
         )}
-      </CommercialContainer>
+      </Box>
     )
   }
 }
+
+export const ArtworkSidebarCommercialFragmentContainer = createFragmentContainer(
+  ArtworkSidebarCommercial,
+  graphql`
+    fragment ArtworkSidebarCommercial_artwork on Artwork {
+      __id
+      sale_message
+      is_inquireable
+      edition_sets {
+        __id
+        ...ArtworkSidebarSizeInfo_piece
+      }
+    }
+  `
+)

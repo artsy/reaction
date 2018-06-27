@@ -593,7 +593,7 @@ type ArtistStatuses {
   shows: Boolean
 }
 
-type Artwork implements Node {
+type Artwork implements Node & Sellable {
   # A globally unique ID.
   __id: ID!
 
@@ -647,7 +647,7 @@ type Artwork implements Node {
   image_title: String
   images(size: Int): [Image]
 
-  # Whether work can be purchased through e-commerce
+  # Whether a work can be purchased through e-commerce
   is_acquireable: Boolean
 
   # Is this artwork part of an auction that is currently running?
@@ -1214,7 +1214,7 @@ type ArtworkInquiryEdge {
   cursor: String!
 }
 
-type ArtworkItem implements Node {
+type ArtworkItem implements Node & Sellable {
   # A globally unique ID.
   __id: ID!
 
@@ -1268,7 +1268,7 @@ type ArtworkItem implements Node {
   image_title: String
   images(size: Int): [Image]
 
-  # Whether work can be purchased through e-commerce
+  # Whether a work can be purchased through e-commerce
   is_acquireable: Boolean
 
   # Is this artwork part of an auction that is currently running?
@@ -2236,7 +2236,7 @@ input EditableLocation {
   state_code: String
 }
 
-type EditionSet {
+type EditionSet implements Sellable {
   # A globally unique ID.
   __id: ID!
 
@@ -5286,6 +5286,19 @@ input SaveArtworkInput {
 type SaveArtworkPayload {
   artwork: Artwork
   clientMutationId: String
+}
+
+# A piece that can be sold
+interface Sellable {
+  dimensions: dimensions
+  edition_of: String
+
+  # Whether a piece can be purchased through e-commerce
+  is_acquireable: Boolean
+  is_for_sale: Boolean
+  is_sold: Boolean
+  price: String
+  sale_message: String
 }
 
 input SendConversationMessageMutationInput {

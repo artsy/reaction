@@ -1,43 +1,28 @@
 import { Serif } from "@artsy/palette"
 import { Sans } from "@artsy/palette"
 import React from "react"
+import { createFragmentContainer, graphql } from "react-relay"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 
-export interface CurrentBidinfoProps {
-  artwork: {
-    readonly sale?: {
-      readonly is_open: boolean
-      readonly is_closed: boolean
-    }
-    readonly sale_artwork: {
-      readonly lot_label: string
-      readonly estimate: string
-      readonly is_with_reserve: boolean
-      readonly reserve_message: string
-      readonly reserve_status: string
-      readonly current_bid: {
-        readonly display: string
-      }
-      readonly counts: {
-        readonly bidder_positions: number
-      }
-    }
-  }
+import { ArtworkSidebarCurrentBidInfo_artwork } from "__generated__/ArtworkSidebarCurrentBidInfo_artwork.graphql"
+
+export interface ArtworkSidebarCurrentBidInfoProps {
+  artwork: ArtworkSidebarCurrentBidInfo_artwork
 }
 
-const CurrentBidInfoContainer = Box
-
-export class CurrentBidInfo extends React.Component<CurrentBidinfoProps> {
+export class ArtworkSidebarCurrentBidInfo extends React.Component<
+  ArtworkSidebarCurrentBidInfoProps
+> {
   render() {
     const { artwork } = this.props
     if (artwork.sale && artwork.sale.is_closed) {
       return (
-        <CurrentBidInfoContainer pb={2}>
+        <Box pb={2}>
           <Serif size="5t" weight="semibold" color="black100">
             Bidding closed
           </Serif>
-        </CurrentBidInfoContainer>
+        </Box>
       )
     }
     const bidsPresent = artwork.sale_artwork.counts.bidder_positions > 0
@@ -60,7 +45,7 @@ export class CurrentBidInfo extends React.Component<CurrentBidinfoProps> {
       bidTextParts.push(artwork.sale_artwork.reserve_message)
     const bidText = bidTextParts.join(", ")
     return (
-      <CurrentBidInfoContainer pb={2}>
+      <Box pb={2}>
         <Flex width="100%" flexDirection="row" justifyContent="space-between">
           <Serif size="5t" weight="semibold" pr={1}>
             {bidPrompt}
@@ -74,7 +59,32 @@ export class CurrentBidInfo extends React.Component<CurrentBidinfoProps> {
             {bidText}
           </Sans>
         </Flex>
-      </CurrentBidInfoContainer>
+      </Box>
     )
   }
 }
+
+export const ArtworkSidebarCurrentBidInfoFragmentContainer = createFragmentContainer(
+  ArtworkSidebarCurrentBidInfo,
+  graphql`
+    fragment ArtworkSidebarCurrentBidInfo_artwork on Artwork {
+      sale {
+        is_open
+        is_closed
+      }
+      sale_artwork {
+        lot_label
+        estimate
+        is_with_reserve
+        reserve_message
+        reserve_status
+        current_bid {
+          display
+        }
+        counts {
+          bidder_positions
+        }
+      }
+    }
+  `
+)
