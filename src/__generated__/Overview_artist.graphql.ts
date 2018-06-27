@@ -59,6 +59,11 @@ return {
       "args": null
     },
     {
+      "kind": "FragmentSpread",
+      "name": "MarketInsightsArtistPage_artist",
+      "args": null
+    },
+    {
       "kind": "LinkedField",
       "alias": null,
       "name": "exhibition_highlights",
@@ -121,5 +126,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'cfe97bc7c38690363887dd42dcfebbce';
+(node as any).hash = '94976fdad7738a0c57af5710f70c9b11';
 export default node;

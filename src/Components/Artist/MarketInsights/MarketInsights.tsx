@@ -60,6 +60,27 @@ const CategoryTooltipContent = {
     "Top emerging dealers participate in curated, up-and-coming art fairs.",
 }
 
+const groupedByCategories = edges => {
+  return groupBy(edges, ({ node: partner }) => {
+    let category
+    Object.keys(Categories).forEach(key => {
+      partner.categories.forEach(partnerCategory => {
+        if (partnerCategory.id === key) {
+          category = key
+        }
+      })
+    })
+    return category
+  })
+}
+
+export const highestCategory = edges => {
+  const groups = groupedByCategories(edges)
+  return orderedCategories.filter(
+    category => groups[category] && groups[category].length > 0
+  )[0]
+}
+
 export class MarketInsights extends React.Component<Props, null> {
   renderGalleryCategory(categorySlug, partnerCount) {
     let introSentence
@@ -117,28 +138,11 @@ export class MarketInsights extends React.Component<Props, null> {
     const { highlights } = this.props.artist
     const { partners } = highlights
     if (partners && partners.edges && partners.edges.length > 0) {
-      const groupedByCategory = groupBy(partners.edges, ({ node: partner }) => {
-        let category
-        Object.keys(Categories).forEach(key => {
-          partner.categories.forEach(partnerCategory => {
-            if (partnerCategory.id === key) {
-              category = key
-            }
-          })
-        })
-        return category
-      })
-
-      const highestCategory = orderedCategories.filter(
-        category =>
-          groupedByCategory[category] && groupedByCategory[category].length > 0
-      )[0]
-
       return (
         <div>
           {this.renderGalleryCategory(
-            highestCategory,
-            groupedByCategory[highestCategory].length
+            highestCategory(partners.edges),
+            groupedByCategories(partners.edges).length
           )}
         </div>
       )

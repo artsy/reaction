@@ -3,14 +3,13 @@ import { Overview_artist } from "__generated__/Overview_artist.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { ArtistBioFragmentContainer as ArtistBio } from "Styleguide/Components/ArtistBio"
-import { MarketInsights } from "Styleguide/Components/MarketInsights"
+import { MarketInsightsFragmentContainer as MarketInsights } from "Styleguide/Components/MarketInsights"
 import { SelectedExhibitionFragmentContainer as SelectedExhibitions } from "Styleguide/Components/SelectedExhibitions"
 import { Box } from "Styleguide/Elements/Box"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { ArtworkFilterFragmentContainer as ArtworkFilter } from "Styleguide/Pages/Artist/Routes/Overview/Components/ArtworkFilter"
 import { GenesFragmentContainer as Genes } from "Styleguide/Pages/Artist/Routes/Overview/Components/Genes"
-import { insights } from "Styleguide/Pages/Fixtures/MarketInsights"
 import { Subscribe } from "unstated"
 import { CurrentEventFragmentContainer as CurrentEvent } from "./Components/CurrentEvent"
 import { FilterState } from "./state"
@@ -29,7 +28,7 @@ const OverviewRoute = (props: OverviewRouteProps) => {
           <React.Fragment>
             <Row>
               <Col sm={9}>
-                <MarketInsights insights={insights} />
+                <MarketInsights artist={props.artist as any} />
                 <Spacer mb={1} />
 
                 <SelectedExhibitions
@@ -84,6 +83,7 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
       ...ArtistHeader_artist
       ...ArtistBio_bio
       ...CurrentEvent_artist
+      ...MarketInsightsArtistPage_artist
 
       exhibition_highlights(size: 15) {
         ...SelectedExhibitions_exhibitions
