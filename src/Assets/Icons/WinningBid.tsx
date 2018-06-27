@@ -4,9 +4,9 @@ export const WinningBid = props => (
   <svg width="17" height="17" viewBox="0 0 17 17">
     <g
       fill="none"
-      fill-rule="evenodd"
+      fillRule="evenodd"
       stroke="#0FDB83"
-      stroke-width="2"
+      strokeWidth="2"
       transform="translate(1 1)"
     >
       <circle cx="7.5" cy="7.5" r="7.5" fill="#FFF" />
