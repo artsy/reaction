@@ -20,8 +20,13 @@ export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
 
       const relayEnvironment = createEnvironment({
         cache: relayBootstrap,
-        user: (sd as any).CURRENT_USER, // FIXME: https://github.com/artsy/reaction/pull/704#pullrequestreview-12508005
+        user: {
+          id: process.env.USER_ID,
+          accessToken: process.env.USER_ACCESS_TOKEN,
+        },
       })
+
+      console.warn("SD----", sd)
 
       const getHistoryProtocol = () => {
         switch (historyProtocol) {

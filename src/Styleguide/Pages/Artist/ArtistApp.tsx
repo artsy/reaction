@@ -1,6 +1,8 @@
 import { ArtistHeader_artist } from "__generated__/ArtistHeader_artist.graphql"
+import { RecentlyViewed_me } from "__generated__/RecentlyViewed_me.graphql"
 import React from "react"
 import { Footer } from "Styleguide/Components/Footer"
+import { RecentlyViewedFragmentContainer as RecentlyViewed } from "Styleguide/Components/RecentlyViewed"
 import { RouteTab, RouteTabs } from "Styleguide/Components/RouteTabs"
 import { Box } from "Styleguide/Elements/Box"
 import { Col, Row } from "Styleguide/Elements/Grid"
@@ -14,6 +16,7 @@ import { ArtistHeaderQueryRenderer as ArtistHeader } from "./Components/ArtistHe
 
 interface Props {
   artist: ArtistHeader_artist
+  me: RecentlyViewed_me
   params: {
     artistID: string
   }
@@ -22,6 +25,7 @@ interface Props {
 export class ArtistApp extends React.Component<Props> {
   render() {
     const {
+      me,
       params: { artistID },
     } = this.props
 
@@ -57,6 +61,14 @@ export class ArtistApp extends React.Component<Props> {
             {this.props.children}
           </Col>
         </Row>
+
+        <Box mb={4}>
+          <Separator />
+        </Box>
+
+        <Box my={3}>
+          <RecentlyViewed me={me} />
+        </Box>
 
         <Box my={3}>
           <Separator />
