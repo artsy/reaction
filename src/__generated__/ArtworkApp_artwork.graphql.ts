@@ -14,7 +14,7 @@ const node: ConcreteFragment = {
   "selections": [
     {
       "kind": "FragmentSpread",
-      "name": "Sidebar_artwork",
+      "name": "ArtworkSidebar_artwork",
       "args": null
     },
     {
@@ -26,5 +26,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '61b33a92c023736ddf0f417b66cc7211';
+(node as any).hash = 'eb39ddb4b6ade84d5070591f00dd80f9';
 export default node;

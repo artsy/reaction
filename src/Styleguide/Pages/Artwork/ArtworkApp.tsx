@@ -11,12 +11,12 @@ import { imageData } from "Styleguide/Pages/Fixtures/Artwork/imageData"
 import { insights } from "Styleguide/Pages/Fixtures/MarketInsights"
 import { AboutTheWork } from "./Components/AboutTheWork"
 import { ArtistInfo } from "./Components/ArtistInfo"
+import { ArtworkSidebarFragmentContainer as ArtworkSidebar } from "./Components/ArtworkSidebar"
 import { Banner } from "./Components/Banner"
 import { Bibliography } from "./Components/Bibliography"
 import { ExhibitionHistory } from "./Components/ExhibitionHistory"
 import { ImageCarousel } from "./Components/ImageCarousel"
 import { OtherWorks } from "./Components/OtherWorks"
-import { SidebarFragmentContainer as Sidebar } from "./Components/Sidebar"
 
 import { ArtworkApp_artwork } from "__generated__/ArtworkApp_artwork.graphql"
 
@@ -53,7 +53,7 @@ export const ArtworkApp: React.SFC<Props> = props => {
           </ArtworkSlider>
         </Col>
         <Col sm={4}>
-          <Sidebar artwork={props.artwork as any} />
+          <ArtworkSidebar artwork={props.artwork as any} />
         </Col>
       </Row>
       <Row mb={6}>
@@ -187,7 +187,7 @@ export const ArtworkAppFragmentContainer = createFragmentContainer(
   ArtworkApp,
   graphql`
     fragment ArtworkApp_artwork on Artwork {
-      ...Sidebar_artwork
+      ...ArtworkSidebar_artwork
     }
   `
 )
