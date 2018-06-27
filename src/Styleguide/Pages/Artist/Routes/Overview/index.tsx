@@ -12,7 +12,7 @@ import { ArtworkFilterFragmentContainer as ArtworkFilter } from "Styleguide/Page
 import { GenesFragmentContainer as Genes } from "Styleguide/Pages/Artist/Routes/Overview/Components/Genes"
 import { insights } from "Styleguide/Pages/Fixtures/MarketInsights"
 import { Subscribe } from "unstated"
-import { CurrentEvent } from "./Components/CurrentEvent"
+import { CurrentEventFragmentContainer as CurrentEvent } from "./Components/CurrentEvent"
 import { FilterState } from "./state"
 
 export interface OverviewRouteProps {
@@ -52,14 +52,7 @@ const OverviewRoute = (props: OverviewRouteProps) => {
               </Col>
               <Col sm={3}>
                 <Box pl={2}>
-                  <CurrentEvent
-                    src="https://picsum.photos/300/200/?random"
-                    label="Currently on view"
-                    title="Brancusi: Pioneer of American Minimalism"
-                    gallery="Paul Kasmin Gallery"
-                    location="Miami"
-                    date="May 3 – 21, 2018"
-                  />
+                  <CurrentEvent artist={props.artist as any} />
                 </Box>
               </Col>
             </Row>
@@ -90,6 +83,7 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
     fragment Overview_artist on Artist {
       ...ArtistHeader_artist
       ...ArtistBio_bio
+      ...CurrentEvent_artist
 
       exhibition_highlights(size: 15) {
         ...SelectedExhibitions_exhibitions

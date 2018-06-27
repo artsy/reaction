@@ -54,6 +54,11 @@ return {
       "args": null
     },
     {
+      "kind": "FragmentSpread",
+      "name": "CurrentEvent_artist",
+      "args": null
+    },
+    {
       "kind": "LinkedField",
       "alias": null,
       "name": "exhibition_highlights",
@@ -116,5 +121,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '9a40bd00010afae4e885a266518afee6';
+(node as any).hash = 'cfe97bc7c38690363887dd42dcfebbce';
 export default node;
