@@ -1,177 +1,281 @@
 import * as Found from "found"
-import { isEmpty, isFunction, isUndefined, pick } from "lodash/fp"
+import { withRouter } from "found"
+import { Link } from "found"
+import { compose, isEmpty, isUndefined, last, pick } from "lodash/fp"
 import PropTypes from "prop-types"
-import React, { Component } from "react"
+import React from "react"
 import { fetchQuery } from "react-relay"
+import { QueryRendererProps } from "react-relay"
+import { Container, Subscribe } from "unstated"
 import { ContextConsumer } from "../Components/Artsy"
 import { PreloadLinkProps, PreloadLinkState } from "./types"
-export { Link } from "found"
 
-export const PreloadLink = Found.withRouter<PreloadLinkProps>(props => {
-  const PreloadLinkWrapper = ContextConsumer(
-    class extends Component<PreloadLinkProps, PreloadLinkState> {
-      static propTypes = {
-        Component: PropTypes.any,
-        immediate: PropTypes.bool, // load route data transparently in the bg
-        onToggleLoading: PropTypes.func,
-        relayEnvironment: PropTypes.object.isRequired,
-        reactionRouter: PropTypes.shape({
-          routes: PropTypes.array.isRequired,
-          resolver: PropTypes.object.isRequired,
-        }).isRequired,
-        replace: PropTypes.string,
-        to: PropTypes.string,
-        name: PropTypes.string,
+/**
+ * Preload link state for use with unstated. If needing to tap into loading
+ * status can use like so:
+ *
+ * @example
+ *
+ * return(
+ *   <Subscribe to={[State]}>
+ *     {({ isFetching }) => {
+ *       return (
+ *         <PreloadLink to='/some-path'>
+ *           Fetching: {isFetching}
+ *         </PreloadLink>
+ *       )
+ *     }}
+ *   </Subscribe>
+ * )
+ */
+export class State extends Container<PreloadLinkState> {
+  state = {
+    isFetching: false,
+  }
+
+  toggleFetching = isFetching => {
+    this.setState({
+      isFetching,
+    })
+  }
+}
+
+/**
+ * PreloadLink is a wrapper around Found's (and found-relay's) <Link> component.
+ * It checks to see if a relay query is attached to a given route and blocks
+ * transitions until after the route has loaded.
+ *
+ * @example
+ *
+ * return (
+ *   <Nav>
+ *     <PreloadLink to='/'>Home</PreloadLink>
+ *     <PreloadLink to='/artworks'>Artworks</PreloadLink>
+ *     <PreloadLink to='/artist/pablo-picasso'>Artist</PreloadLink>
+ *   </Nav>
+ * )
+ *
+ * For UI that requires router-connected <Tabs>, can use the <RouterTabs>
+ * component which wraps PreloadLink:
+ *
+ * @example
+ *
+ * return (
+ *   <RouteTabs>
+ *     <RouteTab to='/'>Home</RouteTab>
+ *     <RouteTab to='/artworks' immediate>Loads immediately in the background</RouteTab>
+ *     <RouteTab to='/artist/pablo-picasso'>Artist</RouteTab>
+ *   </RouteTabs>
+ * )
+ */
+export const PreloadLink = compose(
+  withRouter,
+  ContextConsumer
+)(preloadLinkProps => {
+  /**
+   * Create a Preloader wrapper to perform relay fetches and render out a <Link>
+   */
+  class Preloader extends React.Component<PreloadLinkProps, PreloadLinkState> {
+    static propTypes = {
+      /**
+       * Load route query data transparently in the background on mount
+       */
+      immediate: PropTypes.bool,
+
+      /**
+       * Route to transition to. Uses history.pushState
+       */
+      to: PropTypes.string,
+
+      /**
+       * Route to transition to. Uses history.replaceState. Note that `replace`
+       * and `to` are mutually exclusive.
+       */
+      replace: PropTypes.string,
+
+      /**
+       * Class to add when the link's to / replace route matches current URL
+       */
+      activeClassName: PropTypes.string,
+
+      /**
+       * State handler to toggle fetching
+       */
+      onToggleFetching: PropTypes.func.isRequired,
+
+      /**
+       * Injected props from ContextConsumer
+       */
+      reactionRouter: PropTypes.shape({
+        routes: PropTypes.array.isRequired,
+        resolver: PropTypes.object.isRequired,
+      }).isRequired,
+
+      relayEnvironment: PropTypes.object.isRequired,
+    }
+
+    static defaultProps = {
+      activeClassName: "active",
+      immediate: false,
+      onToggleFetching: x => x,
+    }
+
+    componentDidMount() {
+      if (this.props.immediate) {
+        this.fetchData()
+      }
+    }
+
+    /**
+     * For a given route, check to see if it has a Relay query attached.
+     *
+     * @example
+     *
+     * Given this link:
+     * <PreloadLink to='/home'>Home</PreloadLink>
+     *
+     * Preloader will iterate over the route config and look for a match and
+     * return its `query` value:
+     *
+     * const routes = [
+     *   {
+     *     path: '/home',
+     *     Component: () => <div>Home!</div>
+     *     query: graphql`
+     *       query routes_HomeQuery {
+     *         ...
+     *       }
+     *     `
+     *   }
+     * ]
+     */
+    getRouteQuery(): Partial<QueryRendererProps> {
+      const {
+        relayEnvironment: environment,
+        reactionRouter: { resolver },
+        router,
+        to,
+      } = this.props
+
+      const { getRouteMatches, getRouteValues } = Found.ResolverUtils
+      const location = router.createLocation(to)
+      const match = router.matcher.match(location)
+
+      // Route is missing query, just pass through
+      if (!match) {
+        return
       }
 
-      static defaultProps = {
-        immediate: false,
-        onToggleLoading: x => x,
-      }
+      const routes = router.matcher.getRoutes(match)
+      const augmentedMatch = { ...match, routes }
+      const routeMatches = getRouteMatches(augmentedMatch)
 
-      state = {
-        isLoading: false,
-      }
-
-      componentDidMount() {
-        if (this.props.immediate) {
-          this.fetchData()
-        }
-      }
-
-      toggleLoading(isLoading) {
-        this.props.onToggleLoading(isLoading)
-
-        this.setState({
-          isLoading,
-        })
-      }
-
-      getRouteQuery() {
-        const {
-          reactionRouter: { resolver },
-          router,
-          to,
-        } = this.props
-
-        const { getRouteMatches, getRouteValues } = Found.ResolverUtils
-        const location = router.createLocation(to)
-        const match = router.matcher.match(location)
-
-        if (!match) {
-          return
-        }
-
-        const routes = router.matcher.getRoutes(match)
-        const augmentedMatch = { ...match, routes }
-        const routeMatches = getRouteMatches(augmentedMatch)
-
-        const query = getRouteValues(
+      const query = last(
+        getRouteValues(
           routeMatches,
           route => route.getQuery,
           route => route.query
-        ).find(q => !isUndefined(q))
+        ).filter(q => !isUndefined(q))
+      )
 
-        const cacheConfig = getRouteValues(
+      const cacheConfig = last(
+        getRouteValues(
           routeMatches,
           route => route.getCacheConfig,
           route => route.cacheConfig
-        ).find(caches => !isUndefined(caches))
+        ).filter(caches => !isUndefined(caches))
+      )
 
-        const routeVariables = resolver
+      const variables = last(
+        resolver
           .getRouteVariables(match, routeMatches)
-          .find(variables => !isUndefined(variables) && !isEmpty(variables))
-
-        return {
-          query,
-          cacheConfig,
-          routeVariables,
-        }
-      }
-
-      fetchData() {
-        return new Promise(async (resolve, reject) => {
-          const { relayEnvironment } = this.props
-          const routeQuery = this.getRouteQuery()
-          const missingEnvironmentOrQuery = !(
-            relayEnvironment &&
-            routeQuery &&
-            routeQuery.query
+          .filter(
+            routeVariables =>
+              !isUndefined(routeVariables) && !isEmpty(routeVariables)
           )
+      )
 
-          if (missingEnvironmentOrQuery) {
-            resolve()
-
-            return
-          }
-
-          try {
-            this.toggleLoading(true)
-            const { query, cacheConfig, routeVariables } = routeQuery
-            await fetchQuery(
-              relayEnvironment,
-              query,
-              routeVariables,
-              cacheConfig
-            )
-            resolve()
-
-            // TODO: Pass this error back up
-          } catch (error) {
-            console.error("[Reaction Router/PreloadLink]", error)
-          } finally {
-            this.toggleLoading(false)
-          }
-        })
-      }
-
-      handleClick = event => {
-        event.preventDefault()
-
-        this.fetchData().then(() => {
-          const { router, replace, to } = this.props
-
-          if (replace) {
-            router.replace(replace)
-          } else {
-            router.push(to)
-          }
-        })
-      }
-
-      render() {
-        const { children } = this.props
-        const { isLoading } = this.state
-        const _props = pick(["to", "replace", "Component", "exact"], this.props)
-        const hasRenderProp = isFunction(this.props.children)
-
-        const renderChildren = () => {
-          if (hasRenderProp) {
-            return children({
-              isLoading,
-            })
-          } else {
-            if (children) {
-              return children
-              // TODO: PR back to Found to handle null children
-            } else {
-              return <div />
-            }
-          }
-        }
-
-        return (
-          <Found.Link
-            onClick={this.handleClick}
-            activeClassName="active"
-            {..._props}
-          >
-            {renderChildren()}
-          </Found.Link>
-        )
+      return {
+        environment,
+        query,
+        cacheConfig,
+        variables,
       }
     }
-  )
 
-  return <PreloadLinkWrapper {...props} />
+    fetchData() {
+      return new Promise(async (resolve, reject) => {
+        const {
+          environment,
+          query,
+          variables,
+          cacheConfig,
+        } = this.getRouteQuery()
+
+        const requirementsMet = environment && query
+
+        if (!requirementsMet) {
+          console.warn(
+            "Attempting to use PreloadLink but relayEnvironment or " +
+              "query is missing.",
+            this.props
+          )
+          return resolve()
+        }
+
+        try {
+          await fetchQuery(environment, query, variables, cacheConfig)
+          resolve()
+        } catch (error) {
+          // FIXME: Handle fetch errors
+          // router.push('/404')
+          console.error("[Reaction Router/PreloadLink]", error)
+        }
+      })
+    }
+
+    handleClick = event => {
+      event.preventDefault()
+      this.props.onToggleFetching(true)
+
+      this.fetchData().then(() => {
+        const { router, replace, to } = this.props
+        this.props.onToggleFetching(false)
+
+        if (replace) {
+          router.replace(replace)
+        } else {
+          router.push(to)
+        }
+      })
+    }
+
+    render() {
+      // Under the hood <Link> desugars to an `<a>` tag. Ensure only whitelisted
+      // props pass through to avoid React warnings.
+      const whitelistedProps = pick(
+        ["Component", "activeClassName", "exact", "replace", "to"],
+        this.props
+      )
+
+      return (
+        <Link {...whitelistedProps} onClick={this.handleClick}>
+          {this.props.children}
+        </Link>
+      )
+    }
+  }
+
+  /**
+   * Subscribe to PreloadLink state
+   */
+  return (
+    <Subscribe to={[State]}>
+      {({ toggleFetching }: State) => {
+        return (
+          <Preloader onToggleFetching={toggleFetching} {...preloadLinkProps} />
+        )
+      }}
+    </Subscribe>
+  )
 })

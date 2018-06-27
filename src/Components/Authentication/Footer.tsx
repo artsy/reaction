@@ -20,6 +20,7 @@ export const Footer = props => {
     mode,
     inline,
   } = props
+
   switch (mode) {
     case "login": {
       return (

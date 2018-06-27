@@ -1,7 +1,7 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-export type ArtworkFilterArtworks_filtered_artworks = {
+export type ArtworkFilterArtworkGrid_filtered_artworks = {
     readonly __id: string;
     readonly artworks: ({
         readonly pageInfo: {
@@ -29,7 +29,7 @@ var v0 = {
 };
 return {
   "kind": "Fragment",
-  "name": "ArtworkFilterArtworks_filtered_artworks",
+  "name": "ArtworkFilterArtworkGrid_filtered_artworks",
   "type": "FilterArtworks",
   "metadata": null,
   "argumentDefinitions": [
@@ -144,5 +144,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'b80f0f6c38952ca4d141712826394da0';
+(node as any).hash = '4e1b0947dd686c7d0241e86de768a3dd';
 export default node;

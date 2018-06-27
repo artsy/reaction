@@ -1,26 +1,34 @@
+import qs from "querystring"
 import React from "react"
 import Events from "Utils/Events"
 import { track } from "Utils/track"
+
+import { ForgotPasswordForm } from "Components/Authentication/Desktop/ForgotPasswordForm"
+import { LoginForm } from "Components/Authentication/Desktop/LoginForm"
+import { SignUpForm } from "Components/Authentication/Desktop/SignUpForm"
+import { MobileForgotPasswordForm } from "Components/Authentication/Mobile/ForgotPasswordForm"
+import { MobileLoginForm } from "Components/Authentication/Mobile/LoginForm"
+import { MobileSignUpForm } from "Components/Authentication/Mobile/SignUpForm"
 import {
   FormComponentType,
   InputValues,
   ModalOptions,
   ModalType,
   SubmitHandler,
-} from "../Types"
-import { ForgotPasswordForm } from "./ForgotPasswordForm"
-import { LoginForm } from "./LoginForm"
-import { SignUpForm } from "./SignUpForm"
+} from "./Types"
 
 export interface FormSwitcherProps {
+  error?: string
   handleSubmit: SubmitHandler
+  handleTypeChange?: (e: string) => void
+  isMobile?: boolean
+  isStatic?: boolean
+  onFacebookLogin?: (e: Event) => void
+  onTwitterLogin?: (e: Event) => void
   options: ModalOptions
   tracking?: any
   type: ModalType
   values?: InputValues
-  error?: string
-  onFacebookLogin?: (e: Event) => void
-  onTwitterLogin?: (e: Event) => void
 }
 
 export interface State {
@@ -86,29 +94,38 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
     }
   }
 
-  presentModal = (newType: ModalType) => {
-    this.setState({ type: newType })
+  handleTypeChange = (newType: ModalType) => {
+    const { isMobile, isStatic, handleTypeChange, options } = this.props
+
+    if (isMobile || isStatic) {
+      window.location.assign(`/${newType}?${qs.stringify(options)}`)
+    } else {
+      this.setState({ type: newType })
+      if (handleTypeChange) {
+        handleTypeChange(newType)
+      }
+    }
   }
 
   render() {
-    const { error, onFacebookLogin, onTwitterLogin } = this.props
+    const { error, isMobile, onFacebookLogin, onTwitterLogin } = this.props
 
     let Form: FormComponentType
     switch (this.state.type) {
       case ModalType.login:
-        Form = LoginForm
+        Form = isMobile ? MobileLoginForm : LoginForm
         break
       case ModalType.signup:
-        Form = SignUpForm
+        Form = isMobile ? MobileSignUpForm : SignUpForm
         break
       case ModalType.forgot:
-        Form = ForgotPasswordForm
+        Form = isMobile ? MobileForgotPasswordForm : ForgotPasswordForm
         break
       default:
         return null
     }
 
-    const { values } = this.props
+    const { handleSubmit, values } = this.props
     const defaultValues = {
       email: values.email || "",
       password: values.password || "",
@@ -120,8 +137,8 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
       <Form
         error={error}
         values={defaultValues}
-        handleTypeChange={this.presentModal}
-        handleSubmit={this.props.handleSubmit}
+        handleTypeChange={this.handleTypeChange}
+        handleSubmit={handleSubmit}
         onFacebookLogin={onFacebookLogin}
         onTwitterLogin={onTwitterLogin}
       />

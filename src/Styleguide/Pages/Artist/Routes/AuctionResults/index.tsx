@@ -3,11 +3,11 @@ import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { AuctionResultsRefetchContainer as AuctionResults } from "./AuctionResultsRefetchContainer"
 
-export interface AuctionResultProps {
+export interface AuctionResultsRouteProps {
   artist: AuctionResults_artist
 }
 
-export const AuctionResultsRoute = (props: AuctionResultProps) => {
+export const AuctionResultsRoute = (props: AuctionResultsRouteProps) => {
   return <AuctionResults artist={props.artist as any} />
 }
 

@@ -5,6 +5,7 @@ import { getFarceResult } from "found/lib/server"
 import { getLoadableState } from "loadable-components/server"
 import React from "react"
 import ReactDOMServer from "react-dom/server"
+import { Provider as StateProvider } from "unstated"
 import { createEnvironment } from "../Relay/createEnvironment"
 import { AppShell } from "./AppShell"
 import { AppConfig, ServerResolveProps } from "./types"
@@ -13,7 +14,13 @@ export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
   return new Promise(async (resolve, reject) => {
     try {
       const { routes, url } = config
-      const relayEnvironment = createEnvironment()
+      const relayEnvironment = createEnvironment({
+        // FIXME: Pass in
+        user: {
+          id: process.env.USER_ID,
+          accessToken: process.env.USER_ACCESS_TOKEN,
+        },
+      })
       const historyMiddlewares = [queryMiddleware]
       const resolver = new Resolver(relayEnvironment)
       const render = createRender({})
@@ -64,11 +71,13 @@ export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
 
       resolve({
         ServerApp: props => (
-          <AppContainer
-            data={relayData}
-            loadableState={loadableState}
-            {...props}
-          />
+          <StateProvider>
+            <AppContainer
+              data={relayData}
+              loadableState={loadableState}
+              {...props}
+            />
+          </StateProvider>
         ),
         status,
       })

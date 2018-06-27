@@ -1,7 +1,6 @@
 import { startsWith } from "lodash"
 import React, { Component } from "react"
 import ReactHtmlParser, { convertNodeToElement } from "react-html-parser"
-import LinkWithTooltip from "../ToolTip/LinkWithTooltip"
 import { ArticleLayout } from "../Typings"
 import { StyledText } from "./StyledText"
 
@@ -75,6 +74,10 @@ export class Text extends Component<Props, State> {
   }
 
   transformNode = (node, index) => {
+    // Dont include relay components unless necessary
+    // To avoid 'regeneratorRuntime' error
+    const { LinkWithTooltip } = require("../ToolTip/LinkWithTooltip")
+
     if (node.name === "p") {
       node.name = "div"
       node.attribs.class = "paragraph"

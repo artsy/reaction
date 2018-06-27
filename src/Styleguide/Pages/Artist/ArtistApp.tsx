@@ -1,75 +1,86 @@
 import { ArtistHeader_artist } from "__generated__/ArtistHeader_artist.graphql"
+import { RecentlyViewed_me } from "__generated__/RecentlyViewed_me.graphql"
 import React from "react"
 import { Footer } from "Styleguide/Components/Footer"
+import { RecentlyViewedFragmentContainer as RecentlyViewed } from "Styleguide/Components/RecentlyViewed"
 import { RouteTab, RouteTabs } from "Styleguide/Components/RouteTabs"
 import { Box } from "Styleguide/Elements/Box"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
-import { ArtistHeaderQueryRenderer as ArtistHeader } from "./Components/ArtistHeaderQueryRenderer"
+import { ArtistHeaderFragmentContainer as ArtistHeader } from "./Components/ArtistHeader"
+import { LoadingArea } from "./Components/LoadingArea"
 
 // TODO:
 // Max width 1192
 // Inner content max width 1112
 
-interface Props {
+export interface ArtistAppProps {
   artist: ArtistHeader_artist
+  me: RecentlyViewed_me
   params: {
     artistID: string
   }
 }
 
-export class ArtistApp extends React.Component<Props> {
-  render() {
-    const {
-      params: { artistID },
-    } = this.props
+export const ArtistApp: React.SFC<ArtistAppProps> = props => {
+  const {
+    params: { artistID },
+    artist,
+    children,
+    me,
+  } = props
 
-    return (
-      <React.Fragment>
-        <Row>
-          <Col>
-            <ArtistHeader artistID={artistID} />
-          </Col>
-        </Row>
+  const route = (path = "") => `/${artistID}${path}`
 
-        <Spacer mb={3} />
+  return (
+    <React.Fragment>
+      <Row>
+        <Col>
+          <ArtistHeader artist={artist} />
+        </Col>
+      </Row>
 
-        <Row>
-          <Col>
-            <span id="jumpto-RouteTabs" />
+      <Spacer mb={3} />
 
-            <RouteTabs>
-              <RouteTab to={`/${artistID}`} exact>
-                Overview
-              </RouteTab>
-              <RouteTab to={`/${artistID}/cv`}>CV</RouteTab>
-              <RouteTab to={`/${artistID}/articles`}>Articles</RouteTab>
-              <RouteTab to={`/${artistID}/shows`}>Shows</RouteTab>
-              <RouteTab to={`/${artistID}/auction-results`}>
-                Auction results
-              </RouteTab>
-              <RouteTab to={`/${artistID}/related-artists`}>
-                Related artists
-              </RouteTab>
-            </RouteTabs>
+      <Row>
+        <Col>
+          <span id="jumpto-RouteTabs" />
 
-            <Spacer mb={3} />
+          <RouteTabs>
+            <RouteTab to={route()} exact>
+              Overview
+            </RouteTab>
+            <RouteTab to={route("/cv")}>CV</RouteTab>
+            <RouteTab to={route("/articles")}>Articles</RouteTab>
+            <RouteTab to={route("/shows")}>Shows</RouteTab>
+            <RouteTab to={route("/auction-results")}>Auction results</RouteTab>
+            <RouteTab to={route("/related-artists")}>Related artists</RouteTab>
+          </RouteTabs>
 
-            {this.props.children}
-          </Col>
-        </Row>
+          <Spacer mb={3} />
 
-        <Box my={3}>
-          <Separator />
-        </Box>
+          <LoadingArea>{children}</LoadingArea>
+        </Col>
+      </Row>
 
-        <Row>
-          <Col>
-            <Footer />
-          </Col>
-        </Row>
-      </React.Fragment>
-    )
-  }
+      <Box mb={4}>
+        <Separator />
+      </Box>
+
+      <Box my={3}>
+        <RecentlyViewed me={me} />
+      </Box>
+
+      <Box my={3}>
+        <Separator />
+      </Box>
+
+      <Row>
+        <Col>
+          <Footer />
+        </Col>
+      </Row>
+    </React.Fragment>
+  )
 }

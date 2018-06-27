@@ -44,7 +44,7 @@ export const AuctionResultItem: React.SFC<Props> = (props: Props) => {
 const LargeAuctionItem: React.SFC<Props> = (props: Props) => {
   const salePrice = getSalePrice(props.auctionResult.price_realized)
   const truncatedDescription = getDescription(props.auctionResult.description)
-
+  const estimatedPrice = props.auctionResult.estimate.display
   return (
     <Subscribe to={[AuctionResultsStateContainer]}>
       {({ state, showDetailsModal }: AuctionResultsStateContainer) => {
@@ -86,9 +86,11 @@ const LargeAuctionItem: React.SFC<Props> = (props: Props) => {
             </Col>
             <Col sm={4}>
               {salePrice && <Serif size="2">{`Sale: ${salePrice}`}</Serif>}
-              <Serif size="2" color="black60">
-                Est: {props.auctionResult.estimate.display}
-              </Serif>
+              {estimatedPrice && (
+                <Serif size="2" color="black60">
+                  Est: {estimatedPrice}
+                </Serif>
+              )}
             </Col>
           </React.Fragment>
         )
@@ -100,6 +102,7 @@ const LargeAuctionItem: React.SFC<Props> = (props: Props) => {
 const SmallAuctionItem: React.SFC<Props> = props => {
   const salePrice = getSalePrice(props.auctionResult.price_realized)
   const truncatedDescription = getDescription(props.auctionResult.description)
+  const estimatedPrice = props.auctionResult.estimate.display
 
   return (
     <React.Fragment>
@@ -130,9 +133,11 @@ const SmallAuctionItem: React.SFC<Props> = props => {
       <Col sm={6}>
         {salePrice && <Serif size="2">Sale: {salePrice}</Serif>}
 
-        <Serif size="2" color="black60">
-          Est: {props.auctionResult.estimate.display}
-        </Serif>
+        {estimatedPrice && (
+          <Serif size="2" color="black60">
+            Est: {estimatedPrice}
+          </Serif>
+        )}
       </Col>
     </React.Fragment>
   )
@@ -140,7 +145,7 @@ const SmallAuctionItem: React.SFC<Props> = props => {
 
 const ExtraSmallAuctionItem: React.SFC<Props> = props => {
   const salePrice = getSalePrice(props.auctionResult.price_realized)
-
+  const estimatedPrice = props.auctionResult.estimate.display
   return (
     <React.Fragment>
       <Col>
@@ -172,9 +177,11 @@ const ExtraSmallAuctionItem: React.SFC<Props> = props => {
 
             {salePrice && <Serif size="2">Sale: {salePrice}</Serif>}
 
-            <Serif size="2" color="black60">
-              Est: {props.auctionResult.estimate.display}
-            </Serif>
+            {estimatedPrice && (
+              <Serif size="2" color="black60">
+                Est: {estimatedPrice}
+              </Serif>
+            )}
           </Box>
         </Flex>
       </Col>

@@ -7,16 +7,19 @@ import { Spacer } from "Styleguide/Elements/Spacer"
 import { Responsive } from "Styleguide/Utils/Responsive"
 import { ShowsRefetchContainer as Shows } from "./ShowsRefetchContainer"
 
-export interface Props {
+export interface ShowProps {
   viewer: Shows_viewer
 }
-export const ShowsRoute = (props: Props) => {
+export const ShowsRoute = (props: ShowProps) => {
   const { viewer } = props
   return (
     <React.Fragment>
       <Sans size="3" weight="medium">
         Currently on view
       </Sans>
+
+      <Spacer mb={2} />
+
       <Shows
         sort="end_at_asc"
         status="running"

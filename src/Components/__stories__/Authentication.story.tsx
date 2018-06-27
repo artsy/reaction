@@ -1,17 +1,15 @@
 import { storiesOf } from "@storybook/react"
 import Colors from "Assets/Colors"
-import React from "react"
+import React, { Component, Fragment } from "react"
 import styled from "styled-components"
+import Button from "../Buttons/Default"
 
 import {
   Footer,
   TermsOfServiceCheckbox,
-} from "../../Components/Authentication/commonElements"
-import { MobileForgotPasswordForm } from "../../Components/Authentication/Mobile/ForgotPasswordForm"
-import { MobileLoginForm } from "../../Components/Authentication/Mobile/LoginForm"
-import { MobileSignUpForm } from "../../Components/Authentication/Mobile/SignUpForm"
-import { DesktopModal } from "../Authentication/Desktop/Components/DesktopModal"
-import { FormSwitcher } from "../Authentication/Desktop/FormSwitcher"
+} from "../Authentication/commonElements"
+import { ModalManager } from "../Authentication/Desktop/ModalManager"
+import { FormSwitcher } from "../Authentication/FormSwitcher"
 import { ModalType } from "../Authentication/Types"
 
 const submit = (values, actions) => {
@@ -21,60 +19,77 @@ const submit = (values, actions) => {
   }, 1000)
 }
 
-const close = () => {
-  return
+const boundedSubmit = (type, options, values, actions) => {
+  setTimeout(() => {
+    alert(JSON.stringify(values, null, 1))
+    actions.setSubmitting(false)
+  }, 1000)
+}
+
+class ModalContainer extends Component<any> {
+  private manager: ModalManager | null
+
+  componentDidMount() {
+    setTimeout(this.onClick, 500)
+  }
+
+  onClick = () => {
+    this.manager.openModal(this.props.options)
+  }
+
+  render() {
+    return (
+      <Fragment>
+        <Button onClick={this.onClick}>Open Modal</Button>
+        <ModalManager
+          ref={ref => (this.manager = ref)}
+          submitUrls={{
+            login: "/login",
+            signup: "/signup",
+            forgot: "/forgot",
+          }}
+          handleSubmit={boundedSubmit}
+        />
+      </Fragment>
+    )
+  }
 }
 
 storiesOf("Components/Authentication/Desktop", module)
-  .add("Login", () => (
-    <DesktopModal show onClose={close}>
-      <FormSwitcher type={ModalType.login} handleSubmit={submit} options={{}} />
-    </DesktopModal>
-  ))
+  .add("Login", () => <ModalContainer options={{ mode: ModalType.login }} />)
   .add("Forgot Password", () => (
-    <DesktopModal show onClose={close}>
-      <FormSwitcher
-        type={ModalType.forgot}
-        handleSubmit={submit}
-        options={{}}
-      />
-    </DesktopModal>
+    <ModalContainer options={{ mode: ModalType.forgot }} />
   ))
-  .add("Sign Up", () => (
-    <DesktopModal show onClose={close}>
-      <FormSwitcher
-        type={ModalType.signup}
-        handleSubmit={submit}
-        options={{}}
-      />
-    </DesktopModal>
-  ))
+  .add("Sign Up", () => <ModalContainer options={{ mode: ModalType.signup }} />)
 
 storiesOf("Components/Authentication/Mobile", module)
   .add("Login", () => (
     <MobileContainer>
-      <MobileLoginForm
-        values={{}}
-        handleSubmit={() => null}
-        handleTypeChange={() => mode => null}
+      <FormSwitcher
+        type={ModalType.login}
+        handleSubmit={submit}
+        isMobile
+        options={{}}
       />
     </MobileContainer>
   ))
   .add("Forgot Password", () => (
     <MobileContainer>
-      <MobileForgotPasswordForm
-        values={{}}
-        handleSubmit={() => null}
-        handleTypeChange={() => mode => null}
+      <FormSwitcher
+        type={ModalType.forgot}
+        handleSubmit={submit}
+        isMobile
+        options={{}}
       />
     </MobileContainer>
   ))
   .add("Sign Up", () => (
     <MobileContainer>
-      <MobileSignUpForm
-        values={{}}
-        handleSubmit={() => null}
-        handleTypeChange={() => mode => null}
+      <FormSwitcher
+        type={ModalType.signup}
+        handleSubmit={submit}
+        isMobile
+        options={{}}
       />
     </MobileContainer>
   ))

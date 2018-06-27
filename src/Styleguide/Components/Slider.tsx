@@ -1,22 +1,16 @@
-import React from "react"
+import React, { ReactNode } from "react"
 import Slick from "react-slick"
 import styled from "styled-components"
 import { left, LeftProps, right, RightProps } from "styled-system"
 import { Arrow } from "Styleguide/Elements/Arrow"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
-import { Image } from "Styleguide/Elements/Image"
 import { Responsive } from "Styleguide/Utils/Responsive"
 
 interface Props {
   height?: number
-  images: Array<{
-    resized: {
-      url: string
-      width: number
-      height: number
-    }
-  }>
+  data: Array<object> // This is designed to handle any shape of data passed, as long as its an array
+  render: (slide) => ReactNode
 }
 
 export class Slider extends React.Component<Props> {
@@ -55,13 +49,8 @@ export const LargeSlider = (props: Props) => {
 
       <SliderContainer>
         <Slick {...slickConfig} ref={slider => (slickRef = slider)}>
-          {props.images.map((image, index) => {
-            const { url, width, height } = image.resized
-            return (
-              <Box key={index}>
-                <Image px={5} src={url} width={width} height={height} />
-              </Box>
-            )
+          {props.data.map((slide, index) => {
+            return <Box key={index}>{props.render(slide)}</Box>
           })}
         </Slick>
       </SliderContainer>
@@ -90,13 +79,8 @@ export const SmallSlider = (props: Props) => {
     <Flex justifyContent="space-around" alignItems="center">
       <SliderContainer>
         <Slick {...slickConfig}>
-          {props.images.map((image, index) => {
-            const { url, width, height } = image.resized
-            return (
-              <Box key={index}>
-                <Image px={5} src={url} width={width} height={height} />
-              </Box>
-            )
+          {props.data.map((slide, index) => {
+            return <Box key={index}>{props.render(slide)}</Box>
           })}
         </Slick>
       </SliderContainer>
@@ -119,16 +103,15 @@ const SliderContainer = styled.div`
 `
 
 const ArrowButton = styled(Flex).attrs<LeftProps & RightProps>({})`
-  height: 100%;
   position: relative;
   cursor: pointer;
   display: flex;
   align-items: center;
-  height: 300px;
   user-select: none;
   opacity: 0.1;
 
   transition: opacity 0.25s;
+  min-height: 200px;
 
   &:hover {
     opacity: 1;

@@ -6,6 +6,7 @@ import { Slider } from "Styleguide/Components/Slider"
 import { Box } from "Styleguide/Elements/Box"
 import { Button } from "Styleguide/Elements/Button"
 import { Flex } from "Styleguide/Elements/Flex"
+import { Image } from "Styleguide/Elements/Image"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Responsive } from "Styleguide/Utils/Responsive"
 
@@ -31,7 +32,20 @@ export const LargeArtistHeader = (props: Props) => {
 
   return (
     <Box width="100%">
-      <Slider height={200} images={carousel.images as any} />
+      <Slider
+        height={200}
+        data={carousel.images as any}
+        render={slide => {
+          return (
+            <Image
+              px={5}
+              src={slide.resized.url}
+              width={slide.resized.width}
+              height={slide.resized.height}
+            />
+          )
+        }}
+      />
       <Spacer my={2} />
 
       <Flex justifyContent="space-between">
@@ -55,7 +69,19 @@ export const SmallArtistHeader = (props: Props) => {
   const { carousel } = props.artist
   return (
     <Flex flexDirection="column">
-      <Slider images={carousel.images as any} />
+      <Slider
+        data={carousel.images as any}
+        render={slide => {
+          return (
+            <Image
+              px={5}
+              src={slide.resized.url}
+              width={slide.resized.width}
+              height={slide.resized.height}
+            />
+          )
+        }}
+      />
       <Spacer my={2} />
 
       <Flex flexDirection="column" alignItems="center">
