@@ -138,11 +138,12 @@ export class MarketInsights extends React.Component<Props, null> {
     const { highlights } = this.props.artist
     const { partners } = highlights
     if (partners && partners.edges && partners.edges.length > 0) {
+      const highCategory = highestCategory(partners.edges)
       return (
         <div>
           {this.renderGalleryCategory(
-            highestCategory(partners.edges),
-            groupedByCategories(partners.edges).length
+            highCategory,
+            groupedByCategories(partners.edges)[highCategory].length
           )}
         </div>
       )
