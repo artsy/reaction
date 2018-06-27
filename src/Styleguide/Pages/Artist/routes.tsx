@@ -32,6 +32,9 @@ export const routes = [
         artist(id: $artistID) {
           ...ArtistHeader_artist
         }
+        me {
+          ...RecentlyViewed_me
+        }
       }
     `,
     children: [

@@ -13,7 +13,12 @@ export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
   return new Promise(async (resolve, reject) => {
     try {
       const { routes, url } = config
-      const relayEnvironment = createEnvironment()
+      const relayEnvironment = createEnvironment({
+        user: {
+          id: process.env.USER_ID,
+          accessToken: process.env.USER_ACCESS_TOKEN,
+        },
+      })
       const historyMiddlewares = [queryMiddleware]
       const resolver = new Resolver(relayEnvironment)
       const render = createRender({})

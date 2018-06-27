@@ -1,12 +1,17 @@
 import { Serif } from "@artsy/palette"
+import { RecentlyViewed_me } from "__generated__/RecentlyViewed_me.graphql"
 import { FillwidthItem } from "Components/Artwork/FillwidthItem"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Slider } from "Styleguide/Components/Slider"
 import { Spacer } from "Styleguide/Elements/Spacer"
-import { artworkBricks } from "Styleguide/Pages/Fixtures/Slider"
 
-export const RecentlyViewed = props => {
+export interface RecentlyViewedProps {
+  me: RecentlyViewed_me
+  useRelay?: boolean
+}
+
+export const RecentlyViewed: React.SFC<RecentlyViewedProps> = props => {
   const HEIGHT = 100
 
   return (
@@ -16,7 +21,7 @@ export const RecentlyViewed = props => {
       <Spacer mb={3} />
 
       <Slider
-        data={artworkBricks}
+        data={props.me.recentlyViewedArtworks.edges as any}
         render={artwork => {
           const {
             node: {
@@ -31,7 +36,7 @@ export const RecentlyViewed = props => {
               imageHeight={HEIGHT}
               width={HEIGHT * aspect_ratio}
               margin={10}
-              useRelay={false}
+              useRelay={props.useRelay}
             />
           )
         }}
@@ -40,11 +45,25 @@ export const RecentlyViewed = props => {
   )
 }
 
+RecentlyViewed.defaultProps = {
+  useRelay: true,
+}
+
 export const RecentlyViewedFragmentContainer = createFragmentContainer(
   RecentlyViewed,
   graphql`
     fragment RecentlyViewed_me on Me {
-      recentlyViewedArtworkIds
+      recentlyViewedArtworks(first: 20) {
+        edges {
+          node {
+            __id
+            image {
+              aspect_ratio
+            }
+            ...FillwidthItem_artwork @relay(mask: false)
+          }
+        }
+      }
     }
   `
 )
