@@ -91,6 +91,11 @@ export const SmallSlider = (props: Props) => {
 const SliderContainer = styled.div`
   width: 100%;
 
+  .slick-track {
+    display: inline-flex;
+    width: 100% !important;
+  }
+
   .slick-dots li {
     width: 0;
 
