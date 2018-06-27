@@ -18,6 +18,9 @@ storiesOf("Styleguide/Elements", module).add("Button", () => {
         <Button variant="primaryBlack" size="large" m={0.5}>
           Follow
         </Button>
+        <Button variant="primaryBlack" size="large" m={0.5} loading>
+          Follow
+        </Button>
       </Section>
 
       <Section title="primaryWhite">

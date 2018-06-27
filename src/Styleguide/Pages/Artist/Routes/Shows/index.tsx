@@ -17,6 +17,9 @@ export const ShowsRoute = (props: ShowProps) => {
       <Sans size="3" weight="medium">
         Currently on view
       </Sans>
+
+      <Spacer mb={2} />
+
       <Shows
         sort="end_at_asc"
         status="running"
