@@ -6,11 +6,14 @@ export const ArtworkWithTitleDateAndMedium = {
 
 export const ArtworkWithTitleOnly = {
   title: "The Fox and the Hound",
+  date: null,
+  medium: null,
 }
 
 export const ArtworkWithTitlAndDate = {
   title: "The Fox and the Hound",
   date: " 2013 - 2012 ",
+  medium: null,
 }
 
 export const ArtworkWithTitleAndMedium = {
