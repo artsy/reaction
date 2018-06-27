@@ -8,13 +8,22 @@ import { Flex } from "Styleguide/Elements/Flex"
 export interface TabLike extends JSX.Element {
   props: TabProps
 }
+
 export interface TabInfo {
+  /** Display name of the newly selected Tab */
   name: string
+
+  /** Index of the newly selected Tab */
   tabIndex: number
 }
+
 export interface TabsProps extends WidthProps {
+  /** Function that will be called when a new Tab is selected */
   onChange?: (tabInfo?: TabInfo) => void
+
+  /** Index of the Tab that should be pre-selected */
   initialTabIndex?: number
+
   children: TabLike[]
 }
 
@@ -74,8 +83,10 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
 }
 
 interface TabProps {
+  /** Display name of the Tab */
   name: string
 }
+
 export class Tab extends React.Component<TabProps> {
   render() {
     return this.props.children || null
