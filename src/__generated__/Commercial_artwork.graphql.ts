@@ -51,16 +51,16 @@ return {
       "concreteType": "EditionSet",
       "plural": true,
       "selections": [
-        v0
+        v0,
+        {
+          "kind": "FragmentSpread",
+          "name": "SizeInfo_piece",
+          "args": null
+        }
       ]
-    },
-    {
-      "kind": "FragmentSpread",
-      "name": "SizeInfo_artwork",
-      "args": null
     }
   ]
 };
 })();
-(node as any).hash = '3cd8fd364ed62153088d4883d18440c3';
+(node as any).hash = 'bd7d6d4882749786ae394c06cc863a00';
 export default node;

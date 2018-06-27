@@ -58,7 +58,7 @@ fragment ArtworkMetadata_artwork on Artwork {
     __id
   }
   ...TitleInfo_artwork
-  ...SizeInfo_artwork
+  ...SizeInfo_piece
   ...Classification_artwork
   __id
 }
@@ -109,8 +109,8 @@ fragment Commercial_artwork on Artwork {
   is_inquireable
   edition_sets {
     __id
+    ...SizeInfo_piece
   }
-  ...SizeInfo_artwork
 }
 
 fragment PartnerInfo_artwork on Artwork {
@@ -137,13 +137,18 @@ fragment ExtraLinks_artwork on Artwork {
   }
 }
 
-fragment SizeInfo_artwork on Artwork {
+fragment SizeInfo_piece on Saleable {
   dimensions {
     in
     cm
   }
   edition_of
-  __id
+  ... on Node {
+    __id
+  }
+  ... on EditionSet {
+    __id
+  }
 }
 
 fragment TitleInfo_artwork on Artwork {
@@ -186,16 +191,48 @@ v2 = {
   "storageKey": null
 },
 v3 = {
+  "kind": "LinkedField",
+  "alias": null,
+  "name": "dimensions",
+  "storageKey": null,
+  "args": null,
+  "concreteType": "dimensions",
+  "plural": false,
+  "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "in",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "cm",
+      "args": null,
+      "storageKey": null
+    }
+  ]
+},
+v4 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "name",
   "args": null,
   "storageKey": null
 },
-v4 = {
+v5 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "href",
+  "args": null,
+  "storageKey": null
+},
+v6 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "edition_of",
   "args": null,
   "storageKey": null
 };
@@ -204,7 +241,7 @@ return {
   "operationKind": "query",
   "name": "routes_ArtworkQuery",
   "id": null,
-  "text": "query routes_ArtworkQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...ArtworkApp_artwork\n    __id\n  }\n}\n\nfragment ArtworkApp_artwork on Artwork {\n  ...Sidebar_artwork\n  __id\n}\n\nfragment Sidebar_artwork on Artwork {\n  is_biddable\n  is_in_auction\n  sale_artwork {\n    lot_label\n    __id\n  }\n  ...Artists_artwork\n  ...ArtworkMetadata_artwork\n  ...AuctionPartnerInfo_artwork\n  ...CurrentBidInfo_artwork\n  ...Commercial_artwork\n  ...PartnerInfo_artwork\n  ...ExtraLinks_artwork\n  __id\n}\n\nfragment Artists_artwork on Artwork {\n  artists {\n    __id\n    id\n    name\n    is_followed\n    href\n  }\n  __id\n}\n\nfragment ArtworkMetadata_artwork on Artwork {\n  edition_sets {\n    __id\n  }\n  ...TitleInfo_artwork\n  ...SizeInfo_artwork\n  ...Classification_artwork\n  __id\n}\n\nfragment AuctionPartnerInfo_artwork on Artwork {\n  is_biddable\n  partner {\n    __id\n    name\n  }\n  sale_artwork {\n    estimate\n    __id\n  }\n  sale {\n    is_with_buyers_premium\n    __id\n  }\n  __id\n}\n\nfragment CurrentBidInfo_artwork on Artwork {\n  sale {\n    is_open\n    is_closed\n    __id\n  }\n  sale_artwork {\n    lot_label\n    estimate\n    is_with_reserve\n    reserve_message\n    reserve_status\n    current_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n\nfragment Commercial_artwork on Artwork {\n  __id\n  sale_message\n  is_inquireable\n  edition_sets {\n    __id\n  }\n  ...SizeInfo_artwork\n}\n\nfragment PartnerInfo_artwork on Artwork {\n  collecting_institution\n  partner {\n    __id\n    name\n    href\n    locations {\n      city\n      __id\n    }\n  }\n  __id\n}\n\nfragment ExtraLinks_artwork on Artwork {\n  __id\n  is_biddable\n  is_for_sale\n  artists {\n    __id\n    is_consignable\n  }\n}\n\nfragment SizeInfo_artwork on Artwork {\n  dimensions {\n    in\n    cm\n  }\n  edition_of\n  __id\n}\n\nfragment TitleInfo_artwork on Artwork {\n  title\n  date\n  medium\n  __id\n}\n\nfragment Classification_artwork on Artwork {\n  attribution_class {\n    short_description\n  }\n  __id\n}\n",
+  "text": "query routes_ArtworkQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...ArtworkApp_artwork\n    __id\n  }\n}\n\nfragment ArtworkApp_artwork on Artwork {\n  ...Sidebar_artwork\n  __id\n}\n\nfragment Sidebar_artwork on Artwork {\n  is_biddable\n  is_in_auction\n  sale_artwork {\n    lot_label\n    __id\n  }\n  ...Artists_artwork\n  ...ArtworkMetadata_artwork\n  ...AuctionPartnerInfo_artwork\n  ...CurrentBidInfo_artwork\n  ...Commercial_artwork\n  ...PartnerInfo_artwork\n  ...ExtraLinks_artwork\n  __id\n}\n\nfragment Artists_artwork on Artwork {\n  artists {\n    __id\n    id\n    name\n    is_followed\n    href\n  }\n  __id\n}\n\nfragment ArtworkMetadata_artwork on Artwork {\n  edition_sets {\n    __id\n  }\n  ...TitleInfo_artwork\n  ...SizeInfo_piece\n  ...Classification_artwork\n  __id\n}\n\nfragment AuctionPartnerInfo_artwork on Artwork {\n  is_biddable\n  partner {\n    __id\n    name\n  }\n  sale_artwork {\n    estimate\n    __id\n  }\n  sale {\n    is_with_buyers_premium\n    __id\n  }\n  __id\n}\n\nfragment CurrentBidInfo_artwork on Artwork {\n  sale {\n    is_open\n    is_closed\n    __id\n  }\n  sale_artwork {\n    lot_label\n    estimate\n    is_with_reserve\n    reserve_message\n    reserve_status\n    current_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n\nfragment Commercial_artwork on Artwork {\n  __id\n  sale_message\n  is_inquireable\n  edition_sets {\n    __id\n    ...SizeInfo_piece\n  }\n}\n\nfragment PartnerInfo_artwork on Artwork {\n  collecting_institution\n  partner {\n    __id\n    name\n    href\n    locations {\n      city\n      __id\n    }\n  }\n  __id\n}\n\nfragment ExtraLinks_artwork on Artwork {\n  __id\n  is_biddable\n  is_for_sale\n  artists {\n    __id\n    is_consignable\n  }\n}\n\nfragment SizeInfo_piece on Saleable {\n  dimensions {\n    in\n    cm\n  }\n  edition_of\n  ... on Node {\n    __id\n  }\n  ... on EditionSet {\n    __id\n  }\n}\n\nfragment TitleInfo_artwork on Artwork {\n  title\n  date\n  medium\n  __id\n}\n\nfragment Classification_artwork on Artwork {\n  attribution_class {\n    short_description\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -246,31 +283,7 @@ return {
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "name": "dimensions",
-            "storageKey": null,
-            "args": null,
-            "concreteType": "dimensions",
-            "plural": false,
-            "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "in",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "cm",
-                "args": null,
-                "storageKey": null
-              }
-            ]
-          },
+          v3,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -378,7 +391,7 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v3,
+              v4,
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -386,7 +399,7 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v4,
+              v5,
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -406,7 +419,9 @@ return {
             "concreteType": "EditionSet",
             "plural": true,
             "selections": [
-              v2
+              v2,
+              v3,
+              v6
             ]
           },
           {
@@ -437,10 +452,11 @@ return {
             "args": null,
             "storageKey": null
           },
+          v6,
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "edition_of",
+            "name": "collecting_institution",
             "args": null,
             "storageKey": null
           },
@@ -472,8 +488,8 @@ return {
             "plural": false,
             "selections": [
               v2,
-              v3,
               v4,
+              v5,
               {
                 "kind": "LinkedField",
                 "alias": null,
@@ -539,13 +555,6 @@ return {
             "kind": "ScalarField",
             "alias": null,
             "name": "is_inquireable",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "collecting_institution",
             "args": null,
             "storageKey": null
           },

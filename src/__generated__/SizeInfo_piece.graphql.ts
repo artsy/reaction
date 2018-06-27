@@ -1,7 +1,7 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-export type SizeInfo_artwork = {
+export type SizeInfo_piece = {
     readonly dimensions: ({
         readonly in: string | null;
         readonly cm: string | null;
@@ -13,8 +13,8 @@ export type SizeInfo_artwork = {
 
 const node: ConcreteFragment = {
   "kind": "Fragment",
-  "name": "SizeInfo_artwork",
-  "type": "Artwork",
+  "name": "SizeInfo_piece",
+  "type": "Saleable",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
@@ -59,5 +59,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '6fcd4868f74b2927a73cf4ce7b5722a9';
+(node as any).hash = 'cd91af58255ca71c20e07cdb4a298c3f';
 export default node;

@@ -31,7 +31,7 @@ export class Commercial extends React.Component<CommercialProps> {
         <React.Fragment key={edition.__id}>
           <PricingInfoContainer pb={2}>
             {this.renderSaleMessage()}
-            <SizeInfo artwork={edition} />
+            <SizeInfo piece={edition as any} />
           </PricingInfoContainer>
           {index !== editions.length - 1 && <Separator />}
         </React.Fragment>
@@ -72,7 +72,7 @@ export const CommercialFragmentContainer = createFragmentContainer(
       is_inquireable
       edition_sets {
         __id
-        ...SizeInfo_artwork
+        ...SizeInfo_piece
       }
     }
   `

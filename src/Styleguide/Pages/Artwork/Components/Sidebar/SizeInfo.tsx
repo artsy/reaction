@@ -3,25 +3,27 @@ import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Box } from "Styleguide/Elements/Box"
 
-import { SizeInfo_artwork } from "__generated__/SizeInfo_artwork.graphql"
+import { SizeInfo_piece } from "__generated__/SizeInfo_piece.graphql"
 
 export interface SizeInfoProps {
-  artwork: SizeInfo_artwork
+  piece: SizeInfo_piece
 }
 
 const SizeInfoContainer = Box
 
 export class SizeInfo extends React.Component<SizeInfoProps> {
   render() {
-    const { artwork } = this.props
+    const {
+      piece: { dimensions, edition_of },
+    } = this.props
     return (
       <SizeInfoContainer color="black60" textAlign="left">
         <Serif size="2">
-          {artwork.dimensions &&
-            (artwork.dimensions.in || artwork.dimensions.cm) &&
-            [artwork.dimensions.in, artwork.dimensions.cm].join("; ")}
+          {dimensions &&
+            (dimensions.in || dimensions.cm) &&
+            [dimensions.in, dimensions.cm].join("; ")}
         </Serif>
-        {artwork.edition_of && <Serif size="2">{artwork.edition_of}</Serif>}
+        {edition_of && <Serif size="2">{edition_of}</Serif>}
       </SizeInfoContainer>
     )
   }
@@ -30,7 +32,7 @@ export class SizeInfo extends React.Component<SizeInfoProps> {
 export const SizeInfoFragmentContainer = createFragmentContainer(
   SizeInfo,
   graphql`
-    fragment SizeInfo_artwork on Artwork {
+    fragment SizeInfo_piece on Saleable {
       dimensions {
         in
         cm

@@ -19,9 +19,7 @@ export class ArtworkMetadata extends React.Component<ArtworkMetadataProps> {
     return (
       <ArtworkMetadataContainer pb={3}>
         <TitleInfo artwork={artwork as any} />
-        {artwork.edition_sets.length < 2 && (
-          <SizeInfo artwork={artwork as any} />
-        )}
+        {artwork.edition_sets.length < 2 && <SizeInfo piece={artwork as any} />}
         <Classification artwork={artwork as any} />
       </ArtworkMetadataContainer>
     )
@@ -36,7 +34,7 @@ export const ArtworkMetadataFragmentContainer = createFragmentContainer(
         __id
       }
       ...TitleInfo_artwork
-      ...SizeInfo_artwork
+      ...SizeInfo_piece
       ...Classification_artwork
     }
   `

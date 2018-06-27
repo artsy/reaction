@@ -43,7 +43,7 @@ return {
     },
     {
       "kind": "FragmentSpread",
-      "name": "SizeInfo_artwork",
+      "name": "SizeInfo_piece",
       "args": null
     },
     {
@@ -55,5 +55,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '9d43f215573fd93c5a3460a588e25adc';
+(node as any).hash = '1e94116ec0539d5e7eb57e512e5fe800';
 export default node;
