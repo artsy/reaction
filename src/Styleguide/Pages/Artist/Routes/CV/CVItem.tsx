@@ -173,7 +173,7 @@ export const CVPaginationContainer = createPaginationContainer(
       fragment CVItem_artist on Artist
         @argumentDefinitions(
           count: { type: "Int", defaultValue: 10 }
-          cursor: { type: "String", defaultValue: "" }
+          cursor: { type: "String" }
           sort: { type: "PartnerShowSorts", defaultValue: "start_at_desc" }
           at_a_fair: { type: "Boolean", defaultValue: false }
           solo_show: { type: "Boolean", defaultValue: false }
