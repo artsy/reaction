@@ -38,16 +38,16 @@ export interface AppShellProps {
 
 export interface PreloadLinkProps extends ContextProps {
   children?: any
+  exact?: boolean
   immediate?: boolean
-  onToggleLoading?: (isLoading: boolean) => void
-  router?: any // TODO
-  replace?: string
-  to?: string
   name?: string
   onClick?: () => void
-  exact?: boolean
+  onToggleFetching?: (isLoading: boolean) => void
+  replace?: string
+  router?: any // TODO
+  to?: string
 }
 
 export interface PreloadLinkState {
-  isLoading: boolean
+  isFetching: boolean
 }

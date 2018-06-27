@@ -4,24 +4,29 @@ import { ArtistApp } from "./ArtistApp"
 import { ArticlesRouteFragmentContainer as ArticlesRoute } from "./Routes/Articles"
 import { AuctionResultsRouteFragmentContainer as AuctionResultsRoute } from "./Routes/AuctionResults"
 import { CVRouteFragmentContainer as CVRoute } from "./Routes/CV"
-import { OverviewRoute } from "./Routes/Overview"
+import { OverviewRouteFragmentContainer as OverviewRoute } from "./Routes/Overview"
 import { RelatedArtistsRouteFragmentContainer as RelatedArtistsRoute } from "./Routes/RelatedArtists"
 import { ShowsRouteFragmentContainer as ShowsRoute } from "./Routes/Shows"
 
 // @ts-ignore
 import { ComponentClass, StatelessComponent } from "react"
 // @ts-ignore
-import { Props as ArticleProps } from "./Routes/Articles"
+import { ArtistAppProps } from "./ArtistApp"
 // @ts-ignore
-import { AuctionResultProps } from "./Routes/AuctionResults"
+import { ArticlesRouteProps } from "./Routes/Articles"
+// @ts-ignore
+import { AuctionResultRouteProps } from "./Routes/AuctionResults"
 // @ts-ignore
 import { CVRouteProps } from "./Routes/CV"
 // @ts-ignore
-import { OverviewProps } from "./Routes/Overview"
+import { OverviewRouteProps } from "./Routes/Overview"
 // @ts-ignore
 import { RelatedArtistsProps } from "./Routes/RelatedArtists"
 // @ts-ignore
-import { Props as ShowProps } from "./Routes/Shows"
+import { ShowProps } from "./Routes/Shows"
+
+//
+// ---------
 
 export const routes = [
   {
