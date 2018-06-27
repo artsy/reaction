@@ -22,7 +22,11 @@ If a user forgets their password, they are able to reset it using the Forgot Pas
 Note: In Reaction, we incorrectly use the name ResetPassword.
 
 ### Reset Password
-This is the only form that exists as a coffeescript template in Force. To successfully reset your password, the form must be submitted with a valid token (typically taken from a query param).
+This is the only form that exists as a coffeescript template in Force. To successfully reset your password, the form must be submitted with a valid token (typically taken from a query param). Below are the allowed query params for /reset_password:
+
+- reset_password_token: the token which authorizes you to change your password
+- reset_password_redirect_to: where the user should go after resetting their password
+- set_password: flag to change copy to distinguish between setting a new password entirely and changing the existing password
 
 ## Entry Points
 There are three ways a user can see authentication forms. Note that each of these are using the same underlying form infrastructure which includes validation, form submission, and analytics events.
