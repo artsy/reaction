@@ -84,6 +84,11 @@ return {
     },
     {
       "kind": "FragmentSpread",
+      "name": "Genes_artist",
+      "args": null
+    },
+    {
+      "kind": "FragmentSpread",
       "name": "ArtworkFilter_artist",
       "args": [
         {

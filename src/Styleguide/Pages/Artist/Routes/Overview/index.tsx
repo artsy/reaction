@@ -1,9 +1,7 @@
-import { Sans, Serif } from "@artsy/palette"
+import { Sans } from "@artsy/palette"
 import { Overview_artist } from "__generated__/Overview_artist.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import styled from "styled-components"
-import { space } from "styled-system"
 import { ArtistBioFragmentContainer as ArtistBio } from "Styleguide/Components/ArtistBio"
 import { MarketInsights } from "Styleguide/Components/MarketInsights"
 import { SelectedExhibitionFragmentContainer as SelectedExhibitions } from "Styleguide/Components/SelectedExhibitions"
@@ -11,6 +9,7 @@ import { Box } from "Styleguide/Elements/Box"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { ArtworkFilterFragmentContainer as ArtworkFilter } from "Styleguide/Pages/Artist/Routes/Overview/Components/ArtworkFilter"
+import { GenesFragmentContainer as Genes } from "Styleguide/Pages/Artist/Routes/Overview/Components/Genes"
 import { insights } from "Styleguide/Pages/Fixtures/MarketInsights"
 import { Subscribe } from "unstated"
 import { CurrentEventFragmentContainer as CurrentEvent } from "./Components/CurrentEvent"
@@ -43,37 +42,7 @@ const OverviewRoute = (props: OverviewRouteProps) => {
                   <ArtistBio bio={props.artist as any} />
                 </Box>
 
-                <GeneFamily>
-                  <Sans size="2" weight="medium">
-                    Gene family name
-                  </Sans>
-                  {[
-                    "Silhouettes",
-                    "Intersectionality",
-                    "Trauma and Struggle",
-                    "Identity Politics",
-                    "Racial and Ethnic Identity",
-                    "Allegory",
-                    "Paper Cut-outs",
-                    "Sex",
-                  ].map((gene, index, list) => {
-                    const geneDivider = index < list.length - 1 ? "," : ""
-
-                    return (
-                      <Serif
-                        size="3t"
-                        display="inline-block"
-                        key={index}
-                        mr={0.5}
-                      >
-                        <GeneLink href="#" className="noUnderline">
-                          {gene}
-                          {geneDivider}
-                        </GeneLink>
-                      </Serif>
-                    )
-                  })}
-                </GeneFamily>
+                <Genes artist={props.artist as any} />
 
                 <Spacer mb={1} />
 
@@ -120,6 +89,8 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
         ...SelectedExhibitions_exhibitions
       }
 
+      ...Genes_artist
+
       ...ArtworkFilter_artist
         @arguments(
           medium: $medium
@@ -130,9 +101,3 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
     }
   `
 )
-
-const GeneFamily = styled.div``
-const GeneLink = styled.a`
-  display: inline-block;
-  ${space};
-`
