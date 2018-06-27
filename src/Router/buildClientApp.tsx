@@ -7,7 +7,7 @@ import createInitialFarceRouter from "found/lib/createInitialFarceRouter"
 import createRender from "found/lib/createRender"
 import { loadComponents } from "loadable-components"
 import React from "react"
-import { data as sd } from "sharify"
+import { Provider as StateProvider } from "unstated"
 import { createEnvironment } from "../Relay/createEnvironment"
 import { AppShell } from "./AppShell"
 import { AppConfig, ClientResolveProps } from "./types"
@@ -20,13 +20,12 @@ export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
 
       const relayEnvironment = createEnvironment({
         cache: relayBootstrap,
+        // FIXME: Pass in
         user: {
           id: process.env.USER_ID,
           accessToken: process.env.USER_ACCESS_TOKEN,
         },
       })
-
-      console.warn("SD----", sd)
 
       const getHistoryProtocol = () => {
         switch (historyProtocol) {
@@ -68,9 +67,11 @@ export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
 
       const ClientApp = props => {
         return (
-          <AppShell provide={provide} {...props}>
-            <Router resolver={resolver} />
-          </AppShell>
+          <StateProvider>
+            <AppShell provide={provide} {...props}>
+              <Router resolver={resolver} />
+            </AppShell>
+          </StateProvider>
         )
       }
 

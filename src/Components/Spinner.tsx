@@ -7,7 +7,7 @@ interface Props extends React.HTMLProps<Spinner> {
   height?: number
 }
 
-export class Spinner extends React.Component<Props, null> {
+export class Spinner extends React.Component<Props> {
   render() {
     return <div className={this.props.className} />
   }

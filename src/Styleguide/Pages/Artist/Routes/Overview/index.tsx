@@ -1,4 +1,5 @@
 import { Sans, Serif } from "@artsy/palette"
+import { Overview_artist } from "__generated__/Overview_artist.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
@@ -15,107 +16,107 @@ import { Subscribe } from "unstated"
 import { CurrentEvent } from "./Components/CurrentEvent"
 import { FilterState } from "./state"
 
-export interface OverviewProps {
-  artist: any // FIXME
+export interface OverviewRouteProps {
+  artist: Overview_artist
 }
 
-export const OverviewRoute = createFragmentContainer(
-  (props: OverviewProps) => {
-    return (
-      <Subscribe to={[FilterState]}>
-        {filters => {
-          const { page, ...filtersWithoutPage } = filters.state
-          return (
-            <React.Fragment>
-              <Row>
-                <Col sm={9}>
-                  <MarketInsights insights={insights} />
-                  <Spacer mb={1} />
+const OverviewRoute = (props: OverviewRouteProps) => {
+  return (
+    <Subscribe to={[FilterState]}>
+      {filters => {
+        const { page, ...filtersWithoutPage } = filters.state
 
-                  <SelectedExhibitions
-                    exhibitions={props.artist.exhibition_highlights.slice(
-                      0,
-                      10
-                    )}
-                  />
+        return (
+          <React.Fragment>
+            <Row>
+              <Col sm={9}>
+                <MarketInsights insights={insights} />
+                <Spacer mb={1} />
 
-                  <Spacer mb={3} />
+                <SelectedExhibitions
+                  exhibitions={
+                    props.artist.exhibition_highlights.slice(0, 10) as any
+                  }
+                />
 
+                <Box mt={3} mb={1}>
                   <ArtistBio bio={props.artist as any} />
+                </Box>
 
-                  <Spacer mb={1} />
-
-                  <GeneFamily>
-                    <Sans size="2" weight="medium">
-                      Gene family name
-                    </Sans>
-                    {[
-                      "Silhouettes",
-                      "Intersectionality",
-                      "Trauma and Struggle",
-                      "Identity Politics",
-                      "Racial and Ethnic Identity",
-                      "Allegory",
-                      "Paper Cut-outs",
-                      "Sex",
-                    ].map((gene, index, list) => {
-                      const geneDivider = index < list.length - 1 ? "," : ""
-
-                      return (
-                        <Serif
-                          size="3t"
-                          display="inline-block"
-                          key={index}
-                          mr={0.5}
-                        >
-                          <GeneLink href="#" className="noUnderline">
-                            {gene}
-                            {geneDivider}
-                          </GeneLink>
-                        </Serif>
-                      )
-                    })}
-                  </GeneFamily>
-
-                  <Spacer mb={1} />
-
-                  <Sans size="2" color="black60">
-                    <a href="#">Consign</a> a work by this artist.
+                <GeneFamily>
+                  <Sans size="2" weight="medium">
+                    Gene family name
                   </Sans>
-                </Col>
-                <Col sm={3}>
-                  <Box pl={2}>
-                    <CurrentEvent
-                      src="https://picsum.photos/300/200/?random"
-                      label="Currently on view"
-                      title="Brancusi: Pioneer of American Minimalism"
-                      gallery="Paul Kasmin Gallery"
-                      location="Miami"
-                      date="May 3 – 21, 2018"
-                    />
-                  </Box>
-                </Col>
-              </Row>
+                  {[
+                    "Silhouettes",
+                    "Intersectionality",
+                    "Trauma and Struggle",
+                    "Identity Politics",
+                    "Racial and Ethnic Identity",
+                    "Allegory",
+                    "Paper Cut-outs",
+                    "Sex",
+                  ].map((gene, index, list) => {
+                    const geneDivider = index < list.length - 1 ? "," : ""
 
-              <Spacer mb={4} />
+                    return (
+                      <Serif
+                        size="3t"
+                        display="inline-block"
+                        key={index}
+                        mr={0.5}
+                      >
+                        <GeneLink href="#" className="noUnderline">
+                          {gene}
+                          {geneDivider}
+                        </GeneLink>
+                      </Serif>
+                    )
+                  })}
+                </GeneFamily>
 
-              <Row>
-                <Col>
-                  <span id="jump--artistArtworkGrid" />
+                <Spacer mb={1} />
 
-                  <ArtworkFilter
-                    artist={props.artist as any}
-                    filters={filtersWithoutPage}
+                <Sans size="2" color="black60">
+                  <a href="#">Consign</a> a work by this artist.
+                </Sans>
+              </Col>
+              <Col sm={3}>
+                <Box pl={2}>
+                  <CurrentEvent
+                    src="https://picsum.photos/300/200/?random"
+                    label="Currently on view"
+                    title="Brancusi: Pioneer of American Minimalism"
+                    gallery="Paul Kasmin Gallery"
+                    location="Miami"
+                    date="May 3 – 21, 2018"
                   />
-                  {/* <ArtworkFilterQueryRenderer artistID="pablo-picasso" /> */}
-                </Col>
-              </Row>
-            </React.Fragment>
-          )
-        }}
-      </Subscribe>
-    )
-  },
+                </Box>
+              </Col>
+            </Row>
+
+            <Spacer mb={4} />
+
+            <Row>
+              <Col>
+                <span id="jump--artistArtworkGrid" />
+
+                <ArtworkFilter
+                  artist={props.artist as any}
+                  filters={filtersWithoutPage}
+                />
+                {/* <ArtworkFilterQueryRenderer artistID="pablo-picasso" /> */}
+              </Col>
+            </Row>
+          </React.Fragment>
+        )
+      }}
+    </Subscribe>
+  )
+}
+
+export const OverviewRouteFragmentContainer = createFragmentContainer(
+  OverviewRoute,
   graphql`
     fragment Overview_artist on Artist {
       ...ArtistHeader_artist
