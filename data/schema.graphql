@@ -591,7 +591,7 @@ type ArtistStatuses {
   shows: Boolean
 }
 
-type Artwork implements Node {
+type Artwork implements Node & Saleable {
   # A globally unique ID.
   __id: ID!
 
@@ -645,7 +645,7 @@ type Artwork implements Node {
   image_title: String
   images(size: Int): [Image]
 
-  # Whether work can be purchased through e-commerce
+  # Whether a work can be purchased through e-commerce
   is_acquireable: Boolean
 
   # Is this artwork part of an auction that is currently running?
@@ -1212,7 +1212,7 @@ type ArtworkInquiryEdge {
   cursor: String!
 }
 
-type ArtworkItem implements Node {
+type ArtworkItem implements Node & Saleable {
   # A globally unique ID.
   __id: ID!
 
@@ -1266,7 +1266,7 @@ type ArtworkItem implements Node {
   image_title: String
   images(size: Int): [Image]
 
-  # Whether work can be purchased through e-commerce
+  # Whether a work can be purchased through e-commerce
   is_acquireable: Boolean
 
   # Is this artwork part of an auction that is currently running?
@@ -2227,7 +2227,7 @@ input EditableLocation {
   state_code: String
 }
 
-type EditionSet {
+type EditionSet implements Saleable {
   # A globally unique ID.
   __id: ID!
 
@@ -4992,6 +4992,19 @@ type Sale implements Node {
   status: String
   sale_artwork(id: String!): SaleArtwork
   symbol: String
+}
+
+# A piece that can be sold
+interface Saleable {
+  dimensions: dimensions
+  edition_of: String
+
+  # Whether a piece can be purchased through e-commerce
+  is_acquireable: Boolean
+  is_for_sale: Boolean
+  is_sold: Boolean
+  price: String
+  sale_message: String
 }
 
 type SaleArtwork {
