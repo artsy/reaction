@@ -82,7 +82,14 @@ fragment ArtistCard_artist on Artist {
     }
   }
   formatted_nationality_and_birthday
+  ...FollowArtistButton_artist
   __id
+}
+
+fragment FollowArtistButton_artist on Artist {
+  __id
+  id
+  is_followed
 }
 */
 
@@ -143,12 +150,19 @@ v2 = {
 v3 = {
   "kind": "ScalarField",
   "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v4 = {
+  "kind": "ScalarField",
+  "alias": null,
   "name": "cursor",
   "args": null,
   "storageKey": null
 },
-v4 = [
-  v3,
+v5 = [
+  v4,
   {
     "kind": "ScalarField",
     "alias": null,
@@ -169,7 +183,7 @@ return {
   "operationKind": "query",
   "name": "RelatedArtistsRefetchContainerQuery",
   "id": null,
-  "text": "query RelatedArtistsRefetchContainerQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $artistID: String!\n  $kind: RelatedArtistsKind\n) {\n  artist(id: $artistID) {\n    ...RelatedArtistsRefetchContainer_artist_dxT5s\n    __id\n  }\n}\n\nfragment RelatedArtistsRefetchContainer_artist_dxT5s on Artist {\n  id\n  related {\n    artists(first: $first, after: $after, before: $before, last: $last, kind: $kind) {\n      pageInfo {\n        hasNextPage\n        endCursor\n      }\n      pageCursors {\n        ...Pagination_pageCursors\n      }\n      edges {\n        node {\n          ...ArtistCard_artist\n          __id\n        }\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n  }\n}\n\nfragment ArtistCard_artist on Artist {\n  name\n  image {\n    cropped(width: 400, height: 300) {\n      url\n    }\n  }\n  formatted_nationality_and_birthday\n  __id\n}\n",
+  "text": "query RelatedArtistsRefetchContainerQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $artistID: String!\n  $kind: RelatedArtistsKind\n) {\n  artist(id: $artistID) {\n    ...RelatedArtistsRefetchContainer_artist_dxT5s\n    __id\n  }\n}\n\nfragment RelatedArtistsRefetchContainer_artist_dxT5s on Artist {\n  id\n  related {\n    artists(first: $first, after: $after, before: $before, last: $last, kind: $kind) {\n      pageInfo {\n        hasNextPage\n        endCursor\n      }\n      pageCursors {\n        ...Pagination_pageCursors\n      }\n      edges {\n        node {\n          ...ArtistCard_artist\n          __id\n        }\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n  }\n}\n\nfragment ArtistCard_artist on Artist {\n  name\n  image {\n    cropped(width: 400, height: 300) {\n      url\n    }\n  }\n  formatted_nationality_and_birthday\n  ...FollowArtistButton_artist\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -242,13 +256,7 @@ return {
         "concreteType": "Artist",
         "plural": false,
         "selections": [
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "id",
-            "args": null,
-            "storageKey": null
-          },
+          v3,
           {
             "kind": "LinkedField",
             "alias": null,
@@ -340,7 +348,7 @@ return {
                         "args": null,
                         "concreteType": "PageCursor",
                         "plural": true,
-                        "selections": v4
+                        "selections": v5
                       },
                       {
                         "kind": "LinkedField",
@@ -350,7 +358,7 @@ return {
                         "args": null,
                         "concreteType": "PageCursor",
                         "plural": false,
-                        "selections": v4
+                        "selections": v5
                       },
                       {
                         "kind": "LinkedField",
@@ -360,7 +368,7 @@ return {
                         "args": null,
                         "concreteType": "PageCursor",
                         "plural": false,
-                        "selections": v4
+                        "selections": v5
                       },
                       {
                         "kind": "LinkedField",
@@ -371,7 +379,7 @@ return {
                         "concreteType": "PageCursor",
                         "plural": false,
                         "selections": [
-                          v3
+                          v4
                         ]
                       }
                     ]
@@ -450,7 +458,15 @@ return {
                             "args": null,
                             "storageKey": null
                           },
-                          v2
+                          v2,
+                          v3,
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "is_followed",
+                            "args": null,
+                            "storageKey": null
+                          }
                         ]
                       }
                     ]
