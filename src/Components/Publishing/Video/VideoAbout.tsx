@@ -72,7 +72,7 @@ const Title = styled.div.attrs<{ color: string }>({})`
   `};
 `
 
-const Credits = Col.extend`
+export const Credits = Col.extend`
   flex: 1;
 
   p {
