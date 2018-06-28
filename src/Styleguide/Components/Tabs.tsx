@@ -40,6 +40,10 @@ export interface TabsState {
 }
 
 export class Tabs extends React.Component<TabsProps, TabsState> {
+  public static defaultProps: Partial<TabsProps> = {
+    justifyContent: "left",
+  }
+
   state = {
     activeTabIndex: 0,
   }
@@ -78,7 +82,7 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
   }
 
   render() {
-    const { children = [], justifyContent = "left" } = this.props
+    const { children = [], justifyContent } = this.props
 
     return (
       <React.Fragment>
