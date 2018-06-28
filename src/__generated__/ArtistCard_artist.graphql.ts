@@ -77,6 +77,11 @@ const node: ConcreteFragment = {
       "storageKey": null
     },
     {
+      "kind": "FragmentSpread",
+      "name": "FollowArtistButton_artist",
+      "args": null
+    },
+    {
       "kind": "ScalarField",
       "alias": null,
       "name": "__id",
@@ -85,5 +90,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '62413d4d851391770663d7d6893a90c9';
+(node as any).hash = '713cfe0ac4770a899d6e4869977d3318';
 export default node;
