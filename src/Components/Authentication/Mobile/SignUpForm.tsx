@@ -86,17 +86,18 @@ export const MobileSignUpForm: FormComponentType = props => {
         />
       )}
     </Step>,
-    <Step validationSchema={MobileSignUpValidator.acceptedTermsOfService}>
+    <Step validationSchema={MobileSignUpValidator.accepted_terms_of_service}>
       {({
         wizard,
         form: { errors, touched, values, handleChange, handleBlur, setTouched },
       }) => (
         <TermsOfServiceCheckbox
           error={
-            touched.acceptedTermsOfService && errors.acceptedTermsOfService
+            touched.accepted_terms_of_service &&
+            errors.accepted_terms_of_service
           }
-          checked={values.acceptedTermsOfService}
-          value={values.acceptedTermsOfService}
+          checked={values.accepted_terms_of_service}
+          value={values.accepted_terms_of_service}
           type="checkbox"
           name="accepted_terms_of_service"
           onChange={handleChange}

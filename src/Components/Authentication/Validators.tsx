@@ -36,7 +36,7 @@ export const MobileSignUpValidator = {
   email: Yup.object().shape({ email }),
   name: Yup.object().shape({ name }),
   password: Yup.object().shape({ password }),
-  acceptedTermsOfService: Yup.object().shape({ accepted_terms_of_service }),
+  accepted_terms_of_service: Yup.object().shape({ accepted_terms_of_service }),
 }
 
 export const MobileLoginValidator = {
