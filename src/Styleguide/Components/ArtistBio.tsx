@@ -18,7 +18,11 @@ export class ArtistBio extends React.Component<Props> {
             return <ReadMore>{this.props.bio.biography_blurb.text}</ReadMore>
           return (
             <ReadMore maxLineCount={7}>
-              {this.props.bio.biography_blurb.text}
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: this.props.bio.biography_blurb.text,
+                }}
+              />
             </ReadMore>
           )
         }}

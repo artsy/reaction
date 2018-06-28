@@ -102,7 +102,7 @@
     "conventional-changelog-ember": "^0.3.4",
     "dotenv": "^4.0.0",
     "enzyme": "^3.1.0",
-    "enzyme-adapter-react-16": "^1.0.1",
+    "enzyme-adapter-react-16": "npm:enzyme-react-adapter-future",
     "fork-ts-checker-notifier-webpack-plugin": "^0.2.0",
     "fork-ts-checker-webpack-plugin": "^0.3.0",
     "graphql-config-parser": "^1.2.1",

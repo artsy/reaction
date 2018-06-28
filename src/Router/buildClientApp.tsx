@@ -7,7 +7,7 @@ import createInitialFarceRouter from "found/lib/createInitialFarceRouter"
 import createRender from "found/lib/createRender"
 import { loadComponents } from "loadable-components"
 import React from "react"
-import { Provider as StateProvider } from "unstated"
+import { Boot } from "Styleguide/Pages/Boot"
 import { createEnvironment } from "../Relay/createEnvironment"
 import { AppShell } from "./AppShell"
 import { AppConfig, ClientResolveProps } from "./types"
@@ -15,13 +15,19 @@ import { AppConfig, ClientResolveProps } from "./types"
 export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
   return new Promise(async (resolve, reject) => {
     try {
-      const { routes, historyProtocol = "browser", initialRoute = "/" } = config
+      const {
+        routes,
+        user,
+        historyProtocol = "browser",
+        initialRoute = "/",
+      } = config
+
       const relayBootstrap = JSON.parse(window.__RELAY_BOOTSTRAP__ || "{}")
 
       const relayEnvironment = createEnvironment({
         cache: relayBootstrap,
-        // FIXME: Pass in
-        user: {
+        // FIXME: Might be a better way to do this...
+        user: user || {
           id: process.env.USER_ID,
           accessToken: process.env.USER_ACCESS_TOKEN,
         },
@@ -67,11 +73,11 @@ export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
 
       const ClientApp = props => {
         return (
-          <StateProvider>
+          <Boot>
             <AppShell provide={provide} {...props}>
               <Router resolver={resolver} />
             </AppShell>
-          </StateProvider>
+          </Boot>
         )
       }
 

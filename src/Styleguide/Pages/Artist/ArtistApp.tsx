@@ -51,9 +51,11 @@ export const ArtistApp: React.SFC<ArtistAppProps> = props => {
         <Separator />
       </Box>
 
-      <Box my={3}>
-        <RecentlyViewed me={me} />
-      </Box>
+      {me && (
+        <Box my={3}>
+          <RecentlyViewed me={me} />
+        </Box>
+      )}
 
       <Box my={3}>
         <Separator />
