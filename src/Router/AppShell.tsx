@@ -4,7 +4,15 @@ import { ContextProvider } from "../Components/Artsy"
 import { AppShellProps } from "./types"
 
 export const AppShell: SFC<AppShellProps> = props => {
-  const { loadableState, data, children, provide } = props
+  const { loadableState, data = {}, children, provide } = props
+
+  let hydrationData
+  try {
+    hydrationData = serialize(data, { isJSON: true })
+  } catch (error) {
+    hydrationData = "{}"
+    console.error("reaction/Router/AppShell Error serializing data:", error)
+  }
 
   return (
     <ContextProvider {...provide}>
@@ -17,12 +25,7 @@ export const AppShell: SFC<AppShellProps> = props => {
             ${loadableState ? loadableState.getScriptTag() : ""}
 
             <script>
-              var __RELAY_BOOTSTRAP__ = ${serialize(
-                JSON.stringify(data || {}),
-                {
-                  isJSON: true,
-                }
-              )};
+              var __RELAY_BOOTSTRAP__ = ${serialize(hydrationData)};
             </script>
           `,
           }}

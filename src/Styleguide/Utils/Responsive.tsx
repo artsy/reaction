@@ -12,7 +12,7 @@ const shallowEqual = (a, b) => {
 // TODO: Make this generic on the consumer component when we OSS this separately
 //       and keep this module from where we’ll export our own `Responsive`
 //       wrapper that has these Artsy specific breakpoint typings.
-type Breakpoint = "xs" | "sm" | "md" | "lg" | "xl"
+export type Breakpoint = "xs" | "sm" | "md" | "lg" | "xl"
 type Breakpoints<T> = { [K in Breakpoint]: T }
 
 type BreakpointKeys = Breakpoint[]

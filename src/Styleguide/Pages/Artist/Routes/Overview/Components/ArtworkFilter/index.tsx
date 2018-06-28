@@ -1,7 +1,6 @@
 import { ArtworkFilter_artist } from "__generated__/ArtworkFilter_artist.graphql"
 import * as React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import styled from "styled-components"
 import { Toggle } from "Styleguide/Components/Toggle"
 import { Box } from "Styleguide/Elements/Box"
 import { Checkbox } from "Styleguide/Elements/Checkbox"
@@ -131,6 +130,7 @@ class Filter extends React.Component<Props> {
     const periodAggregation = aggregations.find(
       agg => agg.slice === "MAJOR_PERIOD"
     )
+
     return (
       <Subscribe to={[FilterState]}>
         {filters => {
@@ -138,84 +138,89 @@ class Filter extends React.Component<Props> {
             <Responsive>
               {({ xs, sm, md }) => {
                 return (
-                  <ArtworkBrowser>
-                    {!xs && (
-                      <Sidebar width="30%" mr={2}>
-                        <Toggle label="Purchase type" expanded disabled>
-                          <Flex justifyContent="space-between">
-                            <Checkbox
-                              selected={filters.state.for_sale}
-                              onSelect={value => {
-                                return (filters as any).setFilter(
-                                  "for_sale",
-                                  !value
-                                )
-                              }}
-                            >
-                              For sale
-                            </Checkbox>
-                          </Flex>
-                        </Toggle>
-                        <Toggle label="Medium" expanded>
-                          {this.renderCategory(
-                            filters,
-                            "medium",
-                            mediumAggregation.counts
-                          )}
-                        </Toggle>
-                        <Toggle label="Gallery">
-                          {this.renderCategory(
-                            filters,
-                            "partner_id",
-                            galleryAggregation.counts
-                          )}
-                        </Toggle>
+                  <React.Fragment>
+                    <Flex>
+                      {/* Sidebar Area */}
+                      {!xs && (
+                        <Sidebar width="30%" mr={2}>
+                          <Toggle label="Purchase type" expanded disabled>
+                            <Flex justifyContent="space-between">
+                              <Checkbox
+                                selected={filters.state.for_sale}
+                                onSelect={value => {
+                                  return (filters as any).setFilter(
+                                    "for_sale",
+                                    !value
+                                  )
+                                }}
+                              >
+                                For sale
+                              </Checkbox>
+                            </Flex>
+                          </Toggle>
+                          <Toggle label="Medium" expanded>
+                            {this.renderCategory(
+                              filters,
+                              "medium",
+                              mediumAggregation.counts
+                            )}
+                          </Toggle>
+                          <Toggle label="Gallery">
+                            {this.renderCategory(
+                              filters,
+                              "partner_id",
+                              galleryAggregation.counts
+                            )}
+                          </Toggle>
 
-                        <Toggle label="Institution">
-                          {this.renderCategory(
-                            filters,
-                            "partner_id",
-                            institutionAggregation.counts
-                          )}
-                        </Toggle>
-                        <Toggle label="Time period">
-                          {this.renderCategory(
-                            filters,
-                            "major_period",
-                            periodAggregation.counts
-                          )}
-                        </Toggle>
-                      </Sidebar>
-                    )}
+                          <Toggle label="Institution">
+                            {this.renderCategory(
+                              filters,
+                              "partner_id",
+                              institutionAggregation.counts
+                            )}
+                          </Toggle>
+                          <Toggle label="Time period">
+                            {this.renderCategory(
+                              filters,
+                              "major_period",
+                              periodAggregation.counts
+                            )}
+                          </Toggle>
+                        </Sidebar>
+                      )}
 
-                    <ArtworkGridArea
-                      width={"100%"}
-                      flexDirection="column"
-                      alignItems="flex-end"
-                    >
-                      <Flex pb={2} justifyContent="flex-end">
+                      {/* Artwork Grid */}
+
+                      <Box width={xs ? "100%" : "70%"}>
                         {/* TODO: Implement sorting */}
-                        <Select
-                          options={[
-                            {
-                              value: "RECENTLY_UPDATED",
-                              text: "Recently updated",
-                            },
-                            { value: "RECENTLY_ADDED", text: "Recently added" },
-                          ]}
-                        />
-                      </Flex>
+                        <Flex justifyContent="flex-end">
+                          <Select
+                            options={[
+                              {
+                                value: "RECENTLY_UPDATED",
+                                text: "Recently updated",
+                              },
+                              {
+                                value: "RECENTLY_ADDED",
+                                text: "Recently added",
+                              },
+                            ]}
+                          />
+                        </Flex>
 
-                      <ArtworksContent
-                        artistID={this.props.artist.id}
-                        columnCount={xs ? 2 : 3}
-                        filtered_artworks={
-                          this.props.artist.filtered_artworks as any
-                        }
-                      />
-                      <Spacer mb={3} />
-                    </ArtworkGridArea>
-                  </ArtworkBrowser>
+                        <Spacer mb={2} />
+
+                        <ArtworksContent
+                          artistID={this.props.artist.id}
+                          columnCount={xs || sm || md ? 2 : 3}
+                          filtered_artworks={
+                            this.props.artist.filtered_artworks as any
+                          }
+                        />
+                      </Box>
+                    </Flex>
+                  </React.Fragment>
                 )
               }}
             </Responsive>
@@ -262,6 +267,4 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(Filter, {
   `,
 })
 
-const ArtworkBrowser = styled(Flex)``
-const ArtworkGridArea = styled(Flex)``
 const Sidebar = Box

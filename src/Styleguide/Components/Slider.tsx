@@ -5,6 +5,7 @@ import { left, LeftProps, right, RightProps } from "styled-system"
 import { Arrow } from "Styleguide/Elements/Arrow"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
+import { media } from "Styleguide/Elements/Grid"
 import { Responsive } from "Styleguide/Utils/Responsive"
 
 interface Props {
@@ -91,10 +92,20 @@ export const SmallSlider = (props: Props) => {
 const SliderContainer = styled.div`
   width: 100%;
 
+  ${"" /* FIXME: The below two rules are hacks for SSR to render properly */};
+
   .slick-track {
     display: inline-flex;
     width: 100% !important;
   }
+
+  ${"" /* FIXME: On SSR mobile this shifts the image, must fix */};
+
+  ${media.xs`
+    .slick-list {
+      padding: 0 !important;
+    }
+  `};
 
   .slick-dots li {
     width: 0;

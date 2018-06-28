@@ -13,7 +13,7 @@ import { AppConfig, ServerResolveProps } from "./types"
 export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
   return new Promise(async (resolve, reject) => {
     try {
-      const { routes, url, user } = config
+      const { routes, url, user, boot } = config
       const relayEnvironment = createEnvironment({
         // FIXME: Might be a better way to do this...
         user: user || {
@@ -43,9 +43,8 @@ export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
       }
 
       const AppContainer = props => {
-        // console.log(props)
         return (
-          <Boot>
+          <Boot initialState={boot}>
             <AppShell
               data={props.relayData}
               loadableState={props.loadableState}
