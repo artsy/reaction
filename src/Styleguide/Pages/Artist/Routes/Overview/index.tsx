@@ -66,7 +66,6 @@ const OverviewRoute = (props: OverviewRouteProps) => {
                   artist={props.artist as any}
                   filters={filtersWithoutPage}
                 />
-                {/* <ArtworkFilterQueryRenderer artistID="pablo-picasso" /> */}
               </Col>
             </Row>
           </React.Fragment>
