@@ -3,6 +3,7 @@ import React from "react"
 import { GlobalStyles } from "Styleguide/Elements/GlobalStyles"
 import { Grid } from "Styleguide/Elements/Grid"
 import { ResponsiveProvider } from "Styleguide/Utils/Responsive"
+import { Breakpoint } from "Styleguide/Utils/Responsive"
 import { Provider as StateProvider } from "unstated"
 
 // FIXME: move inner css to Palette
@@ -12,10 +13,19 @@ injectGlobalCSS(`
   }
 `)
 
-export const Boot = ({ children }) => {
+export interface BootProps {
+  initialState?: {
+    breakpoint: Breakpoint
+  }
+}
+
+export const Boot: React.SFC<BootProps> = ({ children, ...props }) => {
   return (
     <StateProvider>
-      <ResponsiveProvider breakpoints={themeProps.mediaQueries}>
+      <ResponsiveProvider
+        initialBreakpoint={props.initialState.breakpoint}
+        breakpoints={themeProps.mediaQueries}
+      >
         <GlobalStyles>
           <Theme>
             <Grid fluid>{children}</Grid>
@@ -24,4 +34,10 @@ export const Boot = ({ children }) => {
       </ResponsiveProvider>
     </StateProvider>
   )
+}
+
+Boot.defaultProps = {
+  initialState: {
+    breakpoint: null,
+  },
 }
