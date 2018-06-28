@@ -19,7 +19,7 @@ describe("FormSwitcher", () => {
     mount(
       <FormSwitcher
         type={props.type || ModalType.login}
-        handleSubmit={null}
+        handleSubmit={jest.fn()}
         tracking={props.tracking}
         options={{
           contextModule: "Header",

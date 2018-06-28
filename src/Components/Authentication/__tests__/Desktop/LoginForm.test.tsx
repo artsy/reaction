@@ -32,7 +32,7 @@ describe("LoginForm", () => {
   })
 
   it("renders errors", done => {
-    const wrapper = mount(<LoginForm />)
+    const wrapper = mount(<LoginForm handleSubmit={jest.fn()} />)
     const input = wrapper.find(`input[name="email"]`)
     input.simulate("blur")
     wrapper.update()
@@ -43,7 +43,9 @@ describe("LoginForm", () => {
   })
 
   it("clears error after input change", done => {
-    const wrapper = mount(<LoginForm error="Some global server error" />)
+    const wrapper = mount(
+      <LoginForm error="Some global server error" handleSubmit={jest.fn()} />
+    )
     const input = wrapper.find(`input[name="email"]`)
     expect(wrapper.state().error).toEqual("Some global server error")
     input.simulate("change")

@@ -42,7 +42,10 @@ describe("ResetPasswordForm", () => {
 
   it("clears error after input change", done => {
     const wrapper = mount(
-      <ForgotPasswordForm error="Some global server error" />
+      <ForgotPasswordForm
+        error="Some global server error"
+        handleSubmit={jest.fn()}
+      />
     )
     const input = wrapper.find(`input[name="email"]`)
     expect(wrapper.state().error).toEqual("Some global server error")
