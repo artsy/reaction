@@ -1,4 +1,4 @@
-export const ArtworkPreviewAuction = {
+export const ArtworkFromAuctionPreview = {
   _id: "artwork_from_preview_auction",
   sale: {
     is_preview: true,
@@ -8,29 +8,66 @@ export const ArtworkPreviewAuction = {
     is_with_buyers_premium: null,
     is_registration_closed: false,
   },
-  sale_artwork: {
-    lot_label: "2",
-    estimate: "CHF 475–CHF 750",
-    is_with_reserve: true,
-    reserve_message: "This work has a reserve",
-    reserve_status: "reserve_not_met",
-    current_bid: {
-      display: "CHF 350",
-    },
-    counts: {
-      bidder_positions: 0,
-    },
+}
+
+export const ArtworkFromTimedAuctionRegistrationOpen = {
+  _id: "artwork_from_open_non_live_auction",
+  sale: {
+    is_preview: false,
+    is_open: true,
+    is_closed: false,
+    is_live_open: false,
+    is_registration_closed: false,
+  },
+}
+
+export const ArtworkFromTimedAuctionRegistrationClosed = {
+  _id: "artwork_from_open_non_live_auction",
+  sale: {
+    is_preview: false,
+    is_open: true,
+    is_closed: false,
+    is_live_open: false,
+    is_registration_closed: true,
+  },
+}
+
+export const ArtworkFromLiveAuctionRegistrationOpen = {
+  _id: "artwork_from_open_non_live_auction",
+  sale: {
+    is_preview: false,
+    is_open: true,
+    is_closed: false,
+    is_live_open: true,
+    is_registration_closed: false,
+  },
+}
+
+export const ArtworkFromLiveAuctionRegistrationClosed = {
+  _id: "artwork_from_open_non_live_auction",
+  sale: {
+    is_preview: false,
+    is_open: true,
+    is_closed: false,
+    is_live_open: true,
+    is_registration_closed: true,
+  },
+}
+
+export const ArtworkFromClosedAuction = {
+  _id: "artwork_from_open_non_live_auction",
+  sale: {
+    is_preview: false,
+    is_open: false,
+    is_closed: true,
+    is_live_open: false,
+    is_registration_closed: true,
   },
 }
 
 export const NotRegisteredToBid = {
   bidder_status: {},
-  bidders: [
-    {
-      id: "bidder_waiting_approval",
-      qualified_for_bidding: false,
-    },
-  ],
+  bidders: [],
 }
 
 export const BidderPendingApproval = {
@@ -51,4 +88,13 @@ export const RegistedBidder = {
       qualified_for_bidding: true,
     },
   ],
+}
+
+export const RegistedBidderWithBids = {
+  bidder_status: {
+    active_bid: {
+      __id: "some bid present",
+    },
+  },
+  bidders: [{ id: "bidder_approved", qualified_for_bidding: true }],
 }

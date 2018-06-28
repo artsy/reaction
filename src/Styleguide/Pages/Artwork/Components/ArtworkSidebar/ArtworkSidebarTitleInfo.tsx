@@ -15,7 +15,7 @@ export class ArtworkSidebarTitleInfo extends React.Component<
   render() {
     const { artwork } = this.props
     return (
-      <Box color="black60" textAlign="left">
+      <Box color="black60">
         <Serif size="2">
           <Serif size="2" display="inline-block" italic>
             {artwork.title}
