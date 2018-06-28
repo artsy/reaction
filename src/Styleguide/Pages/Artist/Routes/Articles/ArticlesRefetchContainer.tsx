@@ -51,17 +51,20 @@ export const ArticlesRefetchContainer = createRefetchContainer(
           <Row>
             <Col>
               <ArticleList>
-                {this.props.artist.articlesConnection.edges.map(({ node }) => {
-                  return (
-                    <ArticleItem
-                      title={node.thumbnail_title}
-                      imageUrl={node.thumbnail_image.resized.url}
-                      date={node.published_at}
-                      author={node.author.name}
-                      href={node.href}
-                    />
-                  )
-                })}
+                {this.props.artist.articlesConnection.edges.map(
+                  ({ node }, index) => {
+                    return (
+                      <ArticleItem
+                        title={node.thumbnail_title}
+                        imageUrl={node.thumbnail_image.resized.url}
+                        date={node.published_at}
+                        author={node.author.name}
+                        href={node.href}
+                        key={index}
+                      />
+                    )
+                  }
+                )}
               </ArticleList>
             </Col>
           </Row>

@@ -38,21 +38,23 @@ class Filter extends React.Component<Props> {
   }
 
   renderFilters(filters) {
-    return this.props.artist.filtered_artworks.aggregations.map(aggregation => {
-      return (
-        <div>
-          <div>
-            {aggregation.slice} -{" "}
-            {this.renderCurrentlySelected(
-              aggregation.slice.toLowerCase(),
-              filters.state
-            )}
-            {this.renderSection(aggregation, filters)}
+    return this.props.artist.filtered_artworks.aggregations.map(
+      (aggregation, index) => {
+        return (
+          <div key={index}>
+            <div>
+              {aggregation.slice} -{" "}
+              {this.renderCurrentlySelected(
+                aggregation.slice.toLowerCase(),
+                filters.state
+              )}
+              {this.renderSection(aggregation, filters)}
+            </div>
+            <br />
           </div>
-          <br />
-        </div>
-      )
-    })
+        )
+      }
+    )
   }
 
   renderForSale(filters) {
@@ -90,9 +92,10 @@ class Filter extends React.Component<Props> {
   }
 
   renderSection(aggregation, filters) {
-    return aggregation.counts.slice(0, 10).map(count => {
+    return aggregation.counts.slice(0, 10).map((count, index) => {
       return (
         <div
+          key={index}
           onClick={() => {
             filters.setFilter(aggregation.slice.toLowerCase(), count.id)
           }}
@@ -105,7 +108,7 @@ class Filter extends React.Component<Props> {
   }
 
   renderCategory(filters, category, counts) {
-    return counts.slice(0, 10).map(count => {
+    return counts.slice(0, 10).map((count, index) => {
       return (
         <Radio
           selected={filters.state[category] === count.id}
@@ -113,6 +116,7 @@ class Filter extends React.Component<Props> {
           onSelect={v => {
             return (filters as any).setFilter(category, v)
           }}
+          key={index}
         >
           {count.name}
         </Radio>

@@ -80,9 +80,9 @@ export const RelatedArtistsRefetchContainer = createRefetchContainer(
                   <Col>
                     <Flex flexWrap>
                       {this.props.artist.related.artists.edges.map(
-                        ({ node }) => {
+                        ({ node }, index) => {
                           return (
-                            <Box pr={1} pb={1} width={width}>
+                            <Box pr={1} pb={1} width={width} key={index}>
                               <ArtistCardFragmentContainer
                                 artist={node as any}
                               />
