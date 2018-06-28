@@ -22,7 +22,7 @@ export interface TabInfo {
   tabIndex: number
 
   /** Data associated with the newly selected Tab */
-  data: object
+  data: any
 }
 
 export interface TabsProps extends WidthProps, JustifyContentProps {
@@ -100,7 +100,7 @@ interface TabProps {
    *
    * Will be passed to the parent <Tabs>'s onChange handler.
    */
-  data?: object
+  data?: any
 }
 
 export class Tab extends React.Component<TabProps> {
