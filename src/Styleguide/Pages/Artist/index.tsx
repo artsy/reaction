@@ -6,10 +6,7 @@ import { routes } from "./routes"
 export const Artist = () => {
   return (
     <Boot>
-      <StorybooksRouter
-        routes={routes}
-        initialRoute="/artist2/andy-warhol/auction-results"
-      />
+      <StorybooksRouter routes={routes} initialRoute="/artist2/andy-warhol" />
     </Boot>
   )
 }

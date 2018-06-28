@@ -52,24 +52,6 @@ export const ShowsRefetchContainer = createRefetchContainer(
       )
     }
 
-    renderShowList() {
-      return (
-        <ShowList>
-          {this.props.artist.showsConnection.edges.map(({ node }) => {
-            return (
-              <ShowListItem
-                city={node.city}
-                partner={node.partner.name}
-                name={node.name}
-                exhibitionInfo={node.exhibition_period}
-                href={node.href}
-              />
-            )
-          })}
-        </ShowList>
-      )
-    }
-
     render() {
       return (
         <Responsive>
@@ -106,7 +88,22 @@ export const ShowsRefetchContainer = createRefetchContainer(
                           )}
                         </ShowBlocks>
                       ) : (
-                        this.renderShowList()
+                        <ShowList>
+                          {this.props.artist.showsConnection.edges.map(
+                            ({ node }, edgeKey) => {
+                              return (
+                                <ShowListItem
+                                  key={edgeKey}
+                                  city={node.city}
+                                  partner={node.partner.name}
+                                  name={node.name}
+                                  exhibitionInfo={node.exhibition_period}
+                                  href={node.href}
+                                />
+                              )
+                            }
+                          )}
+                        </ShowList>
                       )}
                     </Col>
                   </Row>

@@ -41,7 +41,14 @@ export class Pagination extends React.Component<Props> {
 
 const renderPage = (pageCursor, onClick: (cursor: string) => void) => {
   const { cursor, isCurrent, page } = pageCursor
-  return <Page onClick={() => onClick(cursor)} num={page} active={isCurrent} />
+  return (
+    <Page
+      onClick={() => onClick(cursor)}
+      num={page}
+      active={isCurrent}
+      key={cursor}
+    />
+  )
 }
 
 export const LargePagination = (props: Props) => {

@@ -77,7 +77,9 @@ const FullExhibitionList: SFC<FullExhibitionListProps> = props => (
         />
       ))}
     <Sans size="2" color="black60">
-      View all
+      <a href="#" className="noUnderline">
+        View all
+      </a>
     </Sans>
   </React.Fragment>
 )
