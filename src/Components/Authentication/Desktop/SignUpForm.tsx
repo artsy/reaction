@@ -91,13 +91,13 @@ export class SignUpForm extends Component<FormProps, SignUpFormState> {
               />
               <TermsOfServiceCheckbox
                 error={
-                  touched.acceptedTermsOfService &&
-                  errors.acceptedTermsOfService
+                  touched.accepted_terms_of_service &&
+                  errors.accepted_terms_of_service
                 }
-                checked={values.acceptedTermsOfService}
-                value={values.acceptedTermsOfService}
+                checked={values.accepted_terms_of_service}
+                value={values.accepted_terms_of_service}
                 type="checkbox"
-                name="acceptedTermsOfService"
+                name="accepted_terms_of_service"
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
@@ -108,9 +108,9 @@ export class SignUpForm extends Component<FormProps, SignUpFormState> {
                   this.props.handleTypeChange(ModalType.login)
                 }
                 onFacebookLogin={e => {
-                  if (!values.acceptedTermsOfService) {
+                  if (!values.accepted_terms_of_service) {
                     setTouched({
-                      acceptedTermsOfService: true,
+                      accepted_terms_of_service: true,
                     })
                   } else {
                     this.props.onFacebookLogin(e)

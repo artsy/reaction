@@ -103,7 +103,14 @@ fragment ArtistCard_artist on Artist {
     }
   }
   formatted_nationality_and_birthday
+  ...FollowArtistButton_artist
   __id
+}
+
+fragment FollowArtistButton_artist on Artist {
+  __id
+  id
+  is_followed
 }
 */
 
@@ -321,7 +328,15 @@ v7 = [
             "args": null,
             "storageKey": null
           },
-          v6
+          v6,
+          v2,
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "is_followed",
+            "args": null,
+            "storageKey": null
+          }
         ]
       }
     ]
@@ -332,7 +347,7 @@ return {
   "operationKind": "query",
   "name": "routes_RelatedArtistsQuery",
   "id": null,
-  "text": "query routes_RelatedArtistsQuery(\n  $artistID: String!\n) {\n  viewer {\n    ...RelatedArtists_viewer\n  }\n}\n\nfragment RelatedArtists_viewer on Viewer {\n  mainArtists: artist(id: $artistID) {\n    ...RelatedArtistsRefetchContainer_artist_hdyd3\n    __id\n  }\n  contemporaryArtists: artist(id: $artistID) {\n    ...RelatedArtistsRefetchContainer_artist_UhOGO\n    __id\n  }\n}\n\nfragment RelatedArtistsRefetchContainer_artist_hdyd3 on Artist {\n  id\n  related {\n    artists(first: 6, kind: MAIN) {\n      pageInfo {\n        hasNextPage\n        endCursor\n      }\n      pageCursors {\n        ...Pagination_pageCursors\n      }\n      edges {\n        node {\n          ...ArtistCard_artist\n          __id\n        }\n      }\n    }\n  }\n  __id\n}\n\nfragment RelatedArtistsRefetchContainer_artist_UhOGO on Artist {\n  id\n  related {\n    artists(first: 6, kind: CONTEMPORARY) {\n      pageInfo {\n        hasNextPage\n        endCursor\n      }\n      pageCursors {\n        ...Pagination_pageCursors\n      }\n      edges {\n        node {\n          ...ArtistCard_artist\n          __id\n        }\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n  }\n}\n\nfragment ArtistCard_artist on Artist {\n  name\n  image {\n    cropped(width: 400, height: 300) {\n      url\n    }\n  }\n  formatted_nationality_and_birthday\n  __id\n}\n",
+  "text": "query routes_RelatedArtistsQuery(\n  $artistID: String!\n) {\n  viewer {\n    ...RelatedArtists_viewer\n  }\n}\n\nfragment RelatedArtists_viewer on Viewer {\n  mainArtists: artist(id: $artistID) {\n    ...RelatedArtistsRefetchContainer_artist_hdyd3\n    __id\n  }\n  contemporaryArtists: artist(id: $artistID) {\n    ...RelatedArtistsRefetchContainer_artist_UhOGO\n    __id\n  }\n}\n\nfragment RelatedArtistsRefetchContainer_artist_hdyd3 on Artist {\n  id\n  related {\n    artists(first: 6, kind: MAIN) {\n      pageInfo {\n        hasNextPage\n        endCursor\n      }\n      pageCursors {\n        ...Pagination_pageCursors\n      }\n      edges {\n        node {\n          ...ArtistCard_artist\n          __id\n        }\n      }\n    }\n  }\n  __id\n}\n\nfragment RelatedArtistsRefetchContainer_artist_UhOGO on Artist {\n  id\n  related {\n    artists(first: 6, kind: CONTEMPORARY) {\n      pageInfo {\n        hasNextPage\n        endCursor\n      }\n      pageCursors {\n        ...Pagination_pageCursors\n      }\n      edges {\n        node {\n          ...ArtistCard_artist\n          __id\n        }\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n  }\n}\n\nfragment ArtistCard_artist on Artist {\n  name\n  image {\n    cropped(width: 400, height: 300) {\n      url\n    }\n  }\n  formatted_nationality_and_birthday\n  ...FollowArtistButton_artist\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",

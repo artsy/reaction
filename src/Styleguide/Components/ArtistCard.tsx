@@ -1,4 +1,5 @@
 import { Sans, Serif } from "@artsy/palette"
+import FollowArtistButton from "Components/FollowButton/FollowArtistButton"
 import React from "react"
 import { Avatar, Button } from "Styleguide/Elements"
 import { BorderBox } from "Styleguide/Elements/Box"
@@ -42,7 +43,9 @@ export const LargeArtistCard = (props: Props) => (
 
     <Flex flexDirection="column" alignItems="center">
       <Button size="small" variant="secondaryOutline" width="90px">
-        Follow
+        <FollowArtistButton artist={props.artist as any}>
+          Follow
+        </FollowArtistButton>
       </Button>
     </Flex>
   </BorderBox>
@@ -54,7 +57,9 @@ export const SmallArtistCard = (props: Props) => (
       <Serif size="3t">{props.artist.name}</Serif>
       <Sans size="1">{props.artist.formatted_nationality_and_birthday}</Sans>
       <Button size="small" variant="secondaryOutline" width="70px" mt={1}>
-        Follow
+        <FollowArtistButton artist={props.artist as any}>
+          Follow
+        </FollowArtistButton>
       </Button>
     </Flex>
     {props.artist.image && (
@@ -74,6 +79,7 @@ export const ArtistCardFragmentContainer = createFragmentContainer(
         }
       }
       formatted_nationality_and_birthday
+      ...FollowArtistButton_artist
     }
   `
 )

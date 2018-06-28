@@ -25,7 +25,9 @@ export class VideoInfoBlock extends Component<Props, null> {
               {subTitleLink ? <a href={subTitleLink}>{subTitle}</a> : subTitle}
             </SubTitle>
           )}
-          <Sans size="3t">{formatTime(media.duration)}</Sans>
+          {media.duration && (
+            <Sans size="3t">{formatTime(media.duration)}</Sans>
+          )}
         </Row>
         <Row>
           <MediaTitle>{editTitle || title}</MediaTitle>
