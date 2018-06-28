@@ -1,11 +1,15 @@
 import { RouteConfig } from "found"
 import { ComponentType } from "react"
+import { Breakpoint } from "Styleguide/Utils/Responsive"
 import { ContextProps } from "../Components/Artsy"
 
 type ReactComponent = ComponentType<any>
 type HistoryProtocol = "browser" | "hash" | "memory"
 
 export interface AppConfig {
+  boot?: {
+    breakpoint: Breakpoint
+  }
   historyProtocol?: HistoryProtocol
   initialRoute?: string
   routes: RouteConfig

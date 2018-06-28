@@ -11,15 +11,29 @@ export const LoadingArea = props => {
         const loaderClass = isFetching ? "loading" : ""
 
         return (
-          <React.Fragment>
-            <SpinnerToggle className={loaderClass} />
+          <OuterContainer>
+            <SpinnerContainer>
+              <SpinnerToggle className={loaderClass} />
+            </SpinnerContainer>
+
             <Container className={loaderClass}>{props.children}</Container>
-          </React.Fragment>
+          </OuterContainer>
         )
       }}
     </Subscribe>
   )
 }
+
+const OuterContainer = styled.div`
+  position: relative;
+`
+
+const SpinnerContainer = styled.div`
+  position: absolute;
+  top: 100px;
+  width: 100%;
+  z-index: 1;
+`
 
 const Container = styled.div`
   opacity: 1;
@@ -34,8 +48,6 @@ const Container = styled.div`
 
 const SpinnerToggle = styled(Spinner)`
   position: absolute;
-  top: 100px;
-  z-index: 1;
 
   opacity: 0;
   transition: opacity 0.2s;

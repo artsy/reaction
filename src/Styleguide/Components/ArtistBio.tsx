@@ -11,16 +11,22 @@ interface Props {
 
 export class ArtistBio extends React.Component<Props> {
   render() {
+    const blurb = (
+      <div
+        dangerouslySetInnerHTML={{
+          __html: this.props.bio.biography_blurb.text,
+        }}
+      />
+    )
+
     return (
       <Responsive>
         {({ xs }) => {
-          if (xs)
-            return <ReadMore>{this.props.bio.biography_blurb.text}</ReadMore>
-          return (
-            <ReadMore maxLineCount={7}>
-              {this.props.bio.biography_blurb.text}
-            </ReadMore>
-          )
+          if (xs) {
+            return <ReadMore>{blurb}</ReadMore>
+          } else {
+            return <ReadMore maxLineCount={7}>{blurb}</ReadMore>
+          }
         }}
       </Responsive>
     )

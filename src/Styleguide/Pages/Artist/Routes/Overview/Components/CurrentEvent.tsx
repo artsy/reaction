@@ -2,6 +2,7 @@ import { Sans, Serif } from "@artsy/palette"
 import { CurrentEvent_artist } from "__generated__/CurrentEvent_artist.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Image } from "Styleguide/Elements/Image"
 import { Responsive } from "Styleguide/Utils/Responsive"
@@ -28,7 +29,9 @@ export const LargeCurrentEvent = (props: CurrentEventProps) => {
 
   return (
     <Flex flexDirection="column">
-      <Image src={currentEvent.image.resized.url} mb={1} />
+      <Box width="100%" height="auto">
+        <Image src={currentEvent.image.resized.url} width="100%" mb={1} />
+      </Box>
       <Sans size="2" weight="medium" my={0.5}>
         {currentEvent.headline}
       </Sans>

@@ -52,9 +52,14 @@ export const LargeArtistHeader = (props: Props) => {
         <Box>
           <Serif size="10">{props.artist.name}</Serif>
           <Flex>
-            <Serif size="3">Brazilian, 1886-1973</Serif>
+            <Serif size="3">
+              {props.artist.nationality && `${props.artist.nationality}, `}
+              {props.artist.years}
+            </Serif>
             <Spacer mr={2} />
-            <Serif size="3">4,321 followers</Serif>
+            <Serif size="3">
+              {props.artist.counts.follows.toLocaleString()} followers
+            </Serif>
           </Flex>
         </Box>
         <Button variant="primaryBlack" size="medium">
@@ -88,9 +93,14 @@ export const SmallArtistHeader = (props: Props) => {
         <Serif size="5">{props.artist.name}</Serif>
         <Flex>
           <Box mx={1}>
-            <Serif size="2">Brazilian, 1886-1973</Serif>
+            <Serif size="2">
+              {props.artist.nationality && `${props.artist.nationality}, `}
+              {props.artist.years}
+            </Serif>
           </Box>
-          <Serif size="2">4,321 followers</Serif>
+          <Serif size="2">
+            {props.artist.counts.follows.toLocaleString()} followers
+          </Serif>
         </Flex>
       </Flex>
       <Box my={2}>
@@ -107,7 +117,11 @@ export const ArtistHeaderFragmentContainer = createFragmentContainer(
   graphql`
     fragment ArtistHeader_artist on Artist {
       name
-      bio
+      nationality
+      years
+      counts {
+        follows
+      }
       carousel {
         images {
           resized(height: 300) {

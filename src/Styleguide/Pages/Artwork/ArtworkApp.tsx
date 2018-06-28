@@ -8,7 +8,7 @@ import { Boot } from "Styleguide/Pages/Boot"
 import { exhibitions } from "Styleguide/Pages/Fixtures//SelectedExhibitions"
 import { bio } from "Styleguide/Pages/Fixtures/ArtistBio"
 import { imageData } from "Styleguide/Pages/Fixtures/Artwork/imageData"
-import { insights } from "Styleguide/Pages/Fixtures/MarketInsights"
+import { artistResponse } from "Styleguide/Pages/Fixtures/MarketInsights"
 import { AboutTheWork } from "./Components/AboutTheWork"
 import { ArtistInfo } from "./Components/ArtistInfo"
 import { ArtworkSidebarFragmentContainer as ArtworkSidebar } from "./Components/ArtworkSidebar"
@@ -75,7 +75,7 @@ export const ArtworkApp: React.SFC<Props> = props => {
         <Col xl={8} lg={8} md={8} sm={12} xs={12}>
           <ArtistInfo
             name="Francesca DiMattio"
-            insights={insights}
+            artist={artistResponse}
             exhibitions={exhibitions as any}
             bio={bio}
           />

@@ -1,8 +1,7 @@
-import "jest-styled-components"
-import renderer from "react-test-renderer"
-import { cloneDeep, extend } from "lodash"
 import { mount } from "enzyme"
+import "jest-styled-components"
 import React from "react"
+import renderer from "react-test-renderer"
 import { MarketInsightsArtists } from "../../Fixtures/Artists"
 import MarketInsights from "../MarketInsights"
 

@@ -3,7 +3,11 @@
 import { ConcreteFragment } from "relay-runtime";
 export type ArtistHeader_artist = {
     readonly name: string | null;
-    readonly bio: string | null;
+    readonly nationality: string | null;
+    readonly years: string | null;
+    readonly counts: ({
+        readonly follows: any | null;
+    }) | null;
     readonly carousel: ({
         readonly images: ReadonlyArray<({
             readonly resized: ({
@@ -34,9 +38,34 @@ const node: ConcreteFragment = {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "bio",
+      "name": "nationality",
       "args": null,
       "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "years",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "counts",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "ArtistCounts",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "follows",
+          "args": null,
+          "storageKey": null
+        }
+      ]
     },
     {
       "kind": "LinkedField",
@@ -108,5 +137,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'a6bbf080f695c7356986caefbe8140b0';
+(node as any).hash = '33e1cdf6fef602b35735d89346e9f8a2';
 export default node;

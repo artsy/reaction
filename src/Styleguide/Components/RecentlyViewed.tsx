@@ -13,35 +13,37 @@ export interface RecentlyViewedProps {
 
 export const RecentlyViewed: React.SFC<RecentlyViewedProps> = props => {
   const HEIGHT = 100
-
+  const { me } = props
   return (
-    <React.Fragment>
-      <Serif size="6">Recently viewed</Serif>
+    me && (
+      <React.Fragment>
+        <Serif size="6">Recently viewed</Serif>
 
-      <Spacer mb={3} />
+        <Spacer mb={3} />
 
-      <Slider
-        data={props.me.recentlyViewedArtworks.edges as any}
-        render={artwork => {
-          const {
-            node: {
-              image: { aspect_ratio },
-            },
-          } = artwork
+        <Slider
+          data={me.recentlyViewedArtworks.edges as any}
+          render={artwork => {
+            const {
+              node: {
+                image: { aspect_ratio },
+              },
+            } = artwork
 
-          return (
-            <FillwidthItem
-              artwork={artwork.node}
-              targetHeight={HEIGHT}
-              imageHeight={HEIGHT}
-              width={HEIGHT * aspect_ratio}
-              margin={10}
-              useRelay={props.useRelay}
-            />
-          )
-        }}
-      />
-    </React.Fragment>
+            return (
+              <FillwidthItem
+                artwork={artwork.node}
+                targetHeight={HEIGHT}
+                imageHeight={HEIGHT}
+                width={HEIGHT * aspect_ratio}
+                margin={10}
+                useRelay={props.useRelay}
+              />
+            )
+          }}
+        />
+      </React.Fragment>
+    )
   )
 }
 
