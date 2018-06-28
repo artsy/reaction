@@ -10,7 +10,7 @@ export interface InputValues {
   name?: string
   email?: string
   password?: string
-  acceptedTermsOfService?: boolean
+  accepted_terms_of_service?: boolean
 }
 
 export type SubmitHandler = (
