@@ -1,7 +1,7 @@
 import { Sans, Serif } from "@artsy/palette"
 import FollowArtistButton from "Components/FollowButton/FollowArtistButton"
 import React from "react"
-import { Avatar, Button } from "Styleguide/Elements"
+import { Avatar } from "Styleguide/Elements"
 import { BorderBox } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Spacer } from "Styleguide/Elements/Spacer"
@@ -42,11 +42,9 @@ export const LargeArtistCard = (props: Props) => (
     <Spacer mb={1} />
 
     <Flex flexDirection="column" alignItems="center">
-      <Button size="small" variant="secondaryOutline" width="90px">
-        <FollowArtistButton artist={props.artist as any}>
-          Follow
-        </FollowArtistButton>
-      </Button>
+      <FollowArtistButton artist={props.artist as any}>
+        Follow
+      </FollowArtistButton>
     </Flex>
   </BorderBox>
 )
@@ -56,11 +54,9 @@ export const SmallArtistCard = (props: Props) => (
     <Flex flexDirection="column" justifyContent="center">
       <Serif size="3t">{props.artist.name}</Serif>
       <Sans size="1">{props.artist.formatted_nationality_and_birthday}</Sans>
-      <Button size="small" variant="secondaryOutline" width="70px" mt={1}>
-        <FollowArtistButton artist={props.artist as any}>
-          Follow
-        </FollowArtistButton>
-      </Button>
+      <FollowArtistButton artist={props.artist as any}>
+        Follow
+      </FollowArtistButton>
     </Flex>
     {props.artist.image && (
       <Avatar size="small" src={props.artist.image.cropped.url} ml={2} />
