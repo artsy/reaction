@@ -43,10 +43,6 @@ export class Modal extends React.Component<ModalProps, ModalState> {
     }
   }
 
-  shouldComponentUpdate(newProps) {
-    return this.props.show !== newProps.show
-  }
-
   componentWillUnmount() {
     this.removeBlurToContainers()
   }
