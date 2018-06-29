@@ -1,6 +1,6 @@
 import React from "react"
-import { Spring } from "react-spring"
-import styled, { injectGlobal } from "styled-components"
+import styled, { injectGlobal, keyframes } from "styled-components"
+import FadeTransition from "../Animation/FadeTransition"
 
 export interface ModalProps extends React.HTMLProps<Modal> {
   show?: boolean
@@ -37,14 +37,10 @@ export class Modal extends React.Component<ModalProps, ModalState> {
   componentWillReceiveProps(nextProps) {
     if (this.props.show !== nextProps.show) {
       this.setState({
-        isShown: nextProps.show,
         isAnimating: true,
+        isShown: nextProps.show,
       })
     }
-  }
-
-  shouldComponentUpdate(newProps) {
-    return this.props.show !== newProps.show
   }
 
   componentWillUnmount() {
@@ -72,22 +68,7 @@ export class Modal extends React.Component<ModalProps, ModalState> {
 
   render(): JSX.Element {
     const { children } = this.props
-    const { isAnimating, isShown } = this.state
-
-    const animationStates = {
-      from: {
-        opacity: 0,
-        transform: "translate(-50%,-40%)",
-      },
-      to: {
-        opacity: 1,
-        transform: "translate(-50%,-50%)",
-      },
-    }
-
-    const transitions = isShown
-      ? animationStates
-      : { from: animationStates.to, to: animationStates.from }
+    const { isShown, isAnimating } = this.state
 
     if (isShown) {
       this.addBlurToContainers()
@@ -96,57 +77,70 @@ export class Modal extends React.Component<ModalProps, ModalState> {
     }
 
     return (
-      <div>
-        <Spring
-          {...transitions as any}
-          onRest={() => {
+      <ModalWrapper isShown={isShown || isAnimating}>
+        {isShown && <Overlay onClick={this.close} />}
+        <FadeTransition
+          in={isShown}
+          mountOnEnter
+          onExited={() => {
             this.setState({ isAnimating: false })
           }}
+          unmountOnExit
+          timeout={{ enter: 10, exit: 200 }}
         >
-          {(styles: any) =>
-            (isShown || isAnimating) && (
-              <div>
-                <Overlay
-                  style={{ opacity: (styles || {}).opacity }}
-                  onClick={this.close}
-                  show={isShown}
-                />
-                <ModalContainer style={{ ...styles, ...this.props.style }}>
-                  {children}
-                </ModalContainer>
-                <div />
-              </div>
-            )
-          }
-        </Spring>
-      </div>
+          <ModalContainer>{children}</ModalContainer>
+        </FadeTransition>
+      </ModalWrapper>
     )
   }
 }
+
+const slideUp = keyframes`
+  from {
+    transform: translate(-50%,-40%);
+    opacity: 0;
+  },
+
+  to {
+    transform: translate(-50%,-50%);
+    opacity: 1;
+  }
+`
+
+const ModalWrapper = styled.div.attrs<{ isShown?: boolean }>({})`
+  ${props =>
+    props.isShown &&
+    `
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999
+  `};
+`
 
 const ModalContainer = styled.div`
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 9999;
   background: #fff;
   width: 440px;
+  height: min-content;
   border-radius: 4px;
   padding: 20px 40px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  animation: ${slideUp} 250ms linear;
 `
 
-const Overlay = styled.div.attrs<{ show?: boolean }>({})`
+const Overlay = styled.div`
   position: fixed;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
-  z-index: 9998;
   background: rgba(200, 200, 200, 0.5);
-  opacity: 0;
-  pointer-events: ${p => (p.show ? "inherit" : "none")};
 `
 
 export default Modal
