@@ -1,10 +1,38 @@
 import { Display, Sans, Serif } from "@artsy/palette"
+import { injectLayoutBaseCSS } from "styled-bootstrap-grid"
 import styled from "styled-components"
 import { css } from "styled-components"
+import reset from "styled-reset"
 import { themeGet } from "styled-system"
 
 // @ts-ignore
 import { ClassAttributes, HTMLAttributes } from "react"
+
+if (process.env.NODE_ENV !== "test") {
+  injectLayoutBaseCSS(`
+    ${reset};
+
+    *:focus {
+      outline: none;
+    }
+
+    html,
+    body,
+    #root {
+      height: 100%;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      font-family: 'AGaramondPro-Regular';
+      font-size: 16px;
+      line-height: 24px;
+    }
+  `)
+}
 
 // Mixins
 

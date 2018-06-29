@@ -1,5 +1,6 @@
-import { injectGlobalCSS, Theme, themeProps } from "@artsy/palette"
+import { Theme, themeProps } from "@artsy/palette"
 import React from "react"
+import { GridThemeProvider } from "styled-bootstrap-grid"
 import { GlobalStyles } from "Styleguide/Elements/GlobalStyles"
 import { Grid } from "Styleguide/Elements/Grid"
 import { ResponsiveProvider } from "Styleguide/Utils/Responsive"
@@ -7,15 +8,6 @@ import { Provider as StateProvider } from "unstated"
 import { ContextProvider } from "../Components/Artsy"
 import { GlobalState } from "./state"
 import { BootProps } from "./types"
-
-// FIXME: move inner css to Palette
-if (process.env.NODE_ENV !== "test") {
-  injectGlobalCSS(`
-    *:focus {
-      outline: none;
-    }
-  `)
-}
 
 export const Boot: React.SFC<BootProps> = ({ children, ...props }) => {
   const globalState = new GlobalState(props)
@@ -31,7 +23,9 @@ export const Boot: React.SFC<BootProps> = ({ children, ...props }) => {
         >
           <GlobalStyles>
             <Theme>
-              <Grid fluid>{children}</Grid>
+              <GridThemeProvider gridTheme={themeProps.grid}>
+                <Grid fluid>{children}</Grid>
+              </GridThemeProvider>
             </Theme>
           </GlobalStyles>
         </ResponsiveProvider>

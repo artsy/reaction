@@ -179,7 +179,7 @@
     "serialize-javascript": "^1.5.0",
     "sharify": "^0.1.6",
     "styled-bootstrap-grid": "damassi/styled-bootstrap-grid#respect-padding-in-fluid",
-    "styled-reset": "^1.3.4",
+    "styled-reset": "^1.3.5",
     "styled-system": "^2.2.5",
     "superagent": "^3.6.3",
     "unstated": "^2.1.1",
