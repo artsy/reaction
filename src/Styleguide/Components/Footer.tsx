@@ -9,7 +9,7 @@ import { Subscribe } from "unstated"
 
 interface Props {
   mediator?: {
-    trigger: (action: string, config: object) => void
+    trigger: (action: string, config?: object) => void
   }
 }
 
@@ -58,24 +58,14 @@ const FooterContainer: React.SFC<FooterContainerProps> = props => {
         <Serif size="2">
           <Link
             onClick={() => {
-              props.mediator &&
-                props.mediator.trigger("open:auth", {
-                  mode: "register",
-                  // redirectTo:
-                  signupIntent: "register to bid",
-                })
+              props.mediator && props.mediator.trigger("openCollectorFAQModal")
             }}
           >
             Buying from Galleries FAQ
           </Link>
           <Link
             onClick={() => {
-              props.mediator &&
-                props.mediator.trigger("open:auth", {
-                  mode: "register",
-                  // redirectTo:
-                  signupIntent: "register to bid",
-                })
+              props.mediator && props.mediator.trigger("openAuctionFAQModal")
             }}
           >
             Buying from Auctions FAQ
@@ -107,8 +97,14 @@ const FooterContainer: React.SFC<FooterContainerProps> = props => {
           <Link href="https://www.artsy.net/about/jobs">Jobs</Link>
           <Link href="https://artsy.github.com/open-source">Open Source</Link>
           <Link href="https://www.artsy.net/about/press">Press</Link>
-          <Link href="#">Contact</Link>
-          <Link href="#">Send us feedback</Link>
+          <Link href="https://www.artsy.net/contact">Contact</Link>
+          <Link
+            onClick={() => {
+              props.mediator && props.mediator.trigger("openFeedbackModal")
+            }}
+          >
+            Send us feedback
+          </Link>
         </Serif>
       </Flex>
       <Flex flexDirection="column" mb={1}>

@@ -1,11 +1,12 @@
 import { Serif } from "@artsy/palette"
 import { ArtistHeader_artist } from "__generated__/ArtistHeader_artist.graphql"
+import FollowArtistButton from "Components/FollowButton/FollowArtistButton"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { GlobalState } from "Router/state"
 import { Slider } from "Styleguide/Components/Slider"
 import { Box } from "Styleguide/Elements/Box"
-import { Button } from "Styleguide/Elements/Button"
+
 import { Flex } from "Styleguide/Elements/Flex"
 import { Image } from "Styleguide/Elements/Image"
 import { Spacer } from "Styleguide/Elements/Spacer"
@@ -84,20 +85,24 @@ export const LargeArtistHeader = (props: Props) => {
             </Serif>
           </Flex>
         </Box>
-        <Button
-          variant="primaryBlack"
-          size="medium"
-          onClick={() => {
+        <FollowArtistButton
+          artist={props.artist as any}
+          onOpenAuthModal={() => {
             props.mediator &&
               props.mediator.trigger("open:auth", {
-                mode: "register",
-                // redirectTo:
-                signupIntent: "register to bid",
+                mode: "signup",
+                copy: `Sign up to follow ${props.artist.name}`,
+                signupIntent: "follow artist",
+                afterSignUpAction: {
+                  kind: "artist",
+                  action: "follow",
+                  objectId: props.artist.id,
+                },
               })
           }}
         >
           Follow
-        </Button>
+        </FollowArtistButton>
       </Flex>
     </Box>
   )
@@ -137,9 +142,24 @@ export const SmallArtistHeader = (props: Props) => {
         </Flex>
       </Flex>
       <Box my={2}>
-        <Button variant="primaryBlack" size="medium" width="100%">
+        <FollowArtistButton
+          artist={props.artist as any}
+          onOpenAuthModal={() => {
+            props.mediator &&
+              props.mediator.trigger("open:auth", {
+                mode: "signup",
+                copy: `Sign up to follow ${props.artist.name}`,
+                signupIntent: "follow artist",
+                afterSignUpAction: {
+                  kind: "artist",
+                  action: "follow",
+                  objectId: props.artist.id,
+                },
+              })
+          }}
+        >
           Follow
-        </Button>
+        </FollowArtistButton>
       </Box>
     </Flex>
   )
@@ -150,6 +170,7 @@ export const ArtistHeaderFragmentContainer = createFragmentContainer(
   graphql`
     fragment ArtistHeader_artist on Artist {
       name
+      id
       nationality
       years
       counts {
@@ -164,6 +185,7 @@ export const ArtistHeaderFragmentContainer = createFragmentContainer(
           }
         }
       }
+      ...FollowArtistButton_artist
     }
   `
 )

@@ -13,10 +13,14 @@ export const Boot: React.SFC<BootProps> = ({ children, ...props }) => {
   const globalState = new GlobalState(props)
   const relayEnvironment =
     globalState.state.system && globalState.state.system.relayEnvironment
-
+  const currentUser =
+    globalState.state.system && globalState.state.system.currentUser
   return (
     <StateProvider inject={[globalState]}>
-      <ContextProvider relayEnvironment={relayEnvironment}>
+      <ContextProvider
+        relayEnvironment={relayEnvironment}
+        currentUser={currentUser}
+      >
         <ResponsiveProvider
           initialBreakpoint={props.initialBreakpoint}
           breakpoints={themeProps.mediaQueries}
