@@ -12,6 +12,9 @@ import { createFragmentContainer, graphql } from "react-relay"
 
 interface Props {
   artist: ArtistCard_artist
+  mediator?: {
+    trigger: (action: string, config: object) => void
+  }
 }
 
 export class ArtistCard extends React.Component<Props> {
@@ -42,7 +45,22 @@ export const LargeArtistCard = (props: Props) => (
     <Spacer mb={1} />
 
     <Flex flexDirection="column" alignItems="center">
-      <FollowArtistButton artist={props.artist as any}>
+      <FollowArtistButton
+        onOpenAuthModal={() => {
+          props.mediator &&
+            props.mediator.trigger("open:auth", {
+              mode: "signup",
+              copy: `Sign up to follow ${props.artist.name}`,
+              signupIntent: "follow artist",
+              afterSignUpAction: {
+                kind: "artist",
+                action: "follow",
+                objectId: props.artist.id,
+              },
+            })
+        }}
+        artist={props.artist as any}
+      >
         Follow
       </FollowArtistButton>
     </Flex>
@@ -54,7 +72,22 @@ export const SmallArtistCard = (props: Props) => (
     <Flex flexDirection="column" justifyContent="center">
       <Serif size="3t">{props.artist.name}</Serif>
       <Sans size="1">{props.artist.formatted_nationality_and_birthday}</Sans>
-      <FollowArtistButton artist={props.artist as any}>
+      <FollowArtistButton
+        onOpenAuthModal={() => {
+          props.mediator &&
+            props.mediator.trigger("open:auth", {
+              mode: "signup",
+              copy: `Sign up to follow ${props.artist.name}`,
+              signupIntent: "follow artist",
+              afterSignUpAction: {
+                kind: "artist",
+                action: "follow",
+                objectId: props.artist.id,
+              },
+            })
+        }}
+        artist={props.artist as any}
+      >
         Follow
       </FollowArtistButton>
     </Flex>
@@ -69,6 +102,7 @@ export const ArtistCardFragmentContainer = createFragmentContainer(
   graphql`
     fragment ArtistCard_artist on Artist {
       name
+      id
       image {
         cropped(width: 400, height: 300) {
           url

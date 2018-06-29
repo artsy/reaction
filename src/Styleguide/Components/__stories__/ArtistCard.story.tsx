@@ -12,6 +12,7 @@ const artist = {
   },
   name: "Francesca DiMattio",
   formatted_nationality_and_birthday: "American, b. 1979",
+  id: "percy",
 }
 
 storiesOf("Styleguide/Components", module).add("ArtistCard", () => {

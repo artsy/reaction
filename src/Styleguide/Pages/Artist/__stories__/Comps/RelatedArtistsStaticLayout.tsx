@@ -33,6 +33,7 @@ export const RelatedArtists = () => {
                       <Box p={1} width={width}>
                         <ArtistCard
                           artist={{
+                            id: "percy",
                             image: {
                               cropped: {
                                 url: "https://picsum.photos/110/110/?random",
