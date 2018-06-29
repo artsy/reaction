@@ -41,10 +41,11 @@ export interface Router {
 
 export interface BootProps extends GlobalStateContainerState {
   initialBreakpoint?: Breakpoint
+  [x: string]: any // User can pass in any properties on boot
 }
 
 export interface GlobalStateContainerState {
-  reactionRouter: Router
+  system?: Router
 }
 
 export interface PreloadLinkProps

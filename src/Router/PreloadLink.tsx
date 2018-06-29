@@ -77,7 +77,7 @@ export const PreloadLink = compose(
       /**
        * Injected props from ContextConsumer
        */
-      reactionRouter: PropTypes.shape({
+      system: PropTypes.shape({
         relayEnvironment: PropTypes.object.isRequired,
         routes: PropTypes.array.isRequired,
         resolver: PropTypes.object.isRequired,
@@ -121,7 +121,7 @@ export const PreloadLink = compose(
      */
     getRouteQuery(): Partial<QueryRendererProps> {
       const {
-        reactionRouter: { resolver, relayEnvironment },
+        system: { resolver, relayEnvironment },
         router,
         to,
       } = this.props
@@ -245,7 +245,7 @@ export const PreloadLink = compose(
         return (
           <Preloader
             onToggleFetching={preloadLink.toggleFetching}
-            reactionRouter={globalState.state.reactionRouter}
+            system={globalState.state.system}
             {...preloadLinkProps}
           />
         )

@@ -42,19 +42,21 @@ export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
         return
       }
 
-      const router = {
-        relayEnvironment,
-        resolver,
-        routes,
+      const bootProps = {
+        system: {
+          ...config,
+          relayEnvironment,
+          resolver,
+          routes,
+        },
       }
 
       const AppContainer = props => {
         return (
-          <Boot {...config} reactionRouter={router} {...props}>
+          <Boot {...bootProps} {...props}>
             <AppShell
               data={props.relayData}
               loadableState={props.loadableState}
-              {...props}
             >
               {element}
             </AppShell>

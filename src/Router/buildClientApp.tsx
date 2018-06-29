@@ -57,10 +57,13 @@ export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
         render,
       })
 
-      const router = {
-        relayEnvironment,
-        resolver,
-        routes,
+      const bootProps = {
+        system: {
+          ...config,
+          relayEnvironment,
+          resolver,
+          routes,
+        },
       }
 
       try {
@@ -71,7 +74,7 @@ export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
 
       const ClientApp = props => {
         return (
-          <Boot {...config} reactionRouter={router} {...props}>
+          <Boot {...bootProps} {...props}>
             <AppShell>
               <Router resolver={resolver} />
             </AppShell>

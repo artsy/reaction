@@ -9,11 +9,13 @@ import { GlobalState } from "./state"
 import { BootProps } from "./types"
 
 // FIXME: move inner css to Palette
-injectGlobalCSS(`
-  *:focus {
-    outline: none;
-  }
-`)
+if (process.env.NODE_ENV !== "test") {
+  injectGlobalCSS(`
+    *:focus {
+      outline: none;
+    }
+  `)
+}
 
 export const Boot: React.SFC<BootProps> = ({ children, ...props }) => {
   const globalState = new GlobalState(props)
@@ -21,7 +23,7 @@ export const Boot: React.SFC<BootProps> = ({ children, ...props }) => {
   return (
     <StateProvider inject={[globalState]}>
       <ContextProvider
-        relayEnvironment={globalState.state.reactionRouter.relayEnvironment}
+        relayEnvironment={globalState.state.system.relayEnvironment}
       >
         <ResponsiveProvider
           initialBreakpoint={props.initialBreakpoint}

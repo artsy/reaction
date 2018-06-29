@@ -1,9 +1,13 @@
 import { Container } from "unstated"
-import UNSTATED from "unstated-debug"
 import { GlobalStateContainerState, PreloadLinkContainerState } from "./types"
 
-// Log state changes to the console
-UNSTATED.logStateChanges = process.env.NODE_ENV === "development" ? true : false
+const enableLogging =
+  process.env.NODE_ENV === "development" && typeof window !== "undefined"
+
+if (enableLogging) {
+  const logger = require("unstated-debug")
+  logger.logStateChanges = false
+}
 
 /**
  * The following are state containers to be used with unstated. If needing to
@@ -27,15 +31,12 @@ UNSTATED.logStateChanges = process.env.NODE_ENV === "development" ? true : false
 
 export class GlobalState extends Container<GlobalStateContainerState> {
   state = {
-    reactionRouter: null,
+    system: null,
   }
 
   constructor(props: any = {}) {
-    // FIXME
     super()
-    this.state = {
-      reactionRouter: props.reactionRouter,
-    }
+    this.state = props
   }
   s
 }
