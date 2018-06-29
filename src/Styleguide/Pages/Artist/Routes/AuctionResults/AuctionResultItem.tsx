@@ -1,9 +1,12 @@
 import { Serif } from "@artsy/palette"
 import { AuctionResultItem_auctionResult } from "__generated__/AuctionResultItem_auctionResult.graphql"
+import { ContextProps } from "Components/Artsy"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { GlobalState } from "Router/state"
 import styled from "styled-components"
 import { Box } from "Styleguide/Elements/Box"
+import { Button } from "Styleguide/Elements/Button"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Image } from "Styleguide/Elements/Image"
@@ -13,32 +16,61 @@ import { Responsive } from "Styleguide/Utils/Responsive"
 import { Subscribe } from "unstated"
 import { AuctionResultsStateContainer } from "./AuctionResultsState"
 
-export interface Props {
+export interface Props extends ContextProps {
   auctionResult: AuctionResultItem_auctionResult
+  mediator?: {
+    trigger: (action: string, config: object) => void
+  }
 }
 
-export const AuctionResultItem: React.SFC<Props> = (props: Props) => {
-  return (
-    <Row>
-      <Responsive>
-        {({ xs, sm, md }) => {
-          if (xs) {
-            return <ExtraSmallAuctionItem {...props} />
-          } else if (sm || md) {
-            return <SmallAuctionItem {...props} />
-          } else {
-            return <LargeAuctionItem {...props} />
-          }
-        }}
-      </Responsive>
+export class AuctionResultItem extends React.Component<Props> {
+  render() {
+    return (
+      <Subscribe to={[GlobalState]}>
+        {({ state }) => {
+          return (
+            <Row>
+              <Responsive>
+                {({ xs, sm, md }) => {
+                  if (xs) {
+                    return (
+                      <ExtraSmallAuctionItem
+                        mediator={state.force && state.force.mediator}
+                        {...this.props}
+                        currentUser={state.system.currentUser}
+                      />
+                    )
+                  } else if (sm || md) {
+                    return (
+                      <SmallAuctionItem
+                        mediator={state.force && state.force.mediator}
+                        {...this.props}
+                        currentUser={state.system.currentUser}
+                      />
+                    )
+                  } else {
+                    return (
+                      <LargeAuctionItem
+                        mediator={state.force && state.force.mediator}
+                        {...this.props}
+                        currentUser={state.system.currentUser}
+                      />
+                    )
+                  }
+                }}
+              </Responsive>
 
-      <Col>
-        <Box pt={2} pb={1}>
-          <Separator />
-        </Box>
-      </Col>
-    </Row>
-  )
+              <Col>
+                <Box pt={2} pb={1}>
+                  <Separator />
+                </Box>
+              </Col>
+            </Row>
+          )
+        }}
+      </Subscribe>
+    )
+  }
 }
 
 const LargeAuctionItem: React.SFC<Props> = (props: Props) => {
@@ -85,7 +117,21 @@ const LargeAuctionItem: React.SFC<Props> = (props: Props) => {
               </Box>
             </Col>
             <Col sm={4}>
-              {salePrice && <Serif size="2">{`Sale: ${salePrice}`}</Serif>}
+              {props.currentUser && salePrice ? (
+                <Serif size="2">{`Sale: ${salePrice}`}</Serif>
+              ) : (
+                <Button
+                  onClick={() => {
+                    props.mediator &&
+                      props.mediator.trigger("open:auth", {
+                        mode: "register",
+                        copy: "Sign up to see full auction records — for free",
+                      })
+                  }}
+                >
+                  Sign up to see price
+                </Button>
+              )}
               {estimatedPrice && (
                 <Serif size="2" color="black60">
                   Est: {estimatedPrice}
@@ -131,7 +177,11 @@ const SmallAuctionItem: React.SFC<Props> = props => {
         </Flex>
       </Col>
       <Col sm={6}>
-        {salePrice && <Serif size="2">Sale: {salePrice}</Serif>}
+        {props.currentUser && salePrice ? (
+          <Serif size="2">{`Sale: ${salePrice}`}</Serif>
+        ) : (
+          <Button>Sign up to see price</Button>
+        )}
 
         {estimatedPrice && (
           <Serif size="2" color="black60">
@@ -175,7 +225,11 @@ const ExtraSmallAuctionItem: React.SFC<Props> = props => {
 
             <Spacer pb={1} />
 
-            {salePrice && <Serif size="2">Sale: {salePrice}</Serif>}
+            {props.currentUser && salePrice ? (
+              <Serif size="2">{`Sale: ${salePrice}`}</Serif>
+            ) : (
+              <Button>Sign up to see price</Button>
+            )}
 
             {estimatedPrice && (
               <Serif size="2" color="black60">
