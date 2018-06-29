@@ -2,6 +2,7 @@ import { Serif } from "@artsy/palette"
 import { ArtistHeader_artist } from "__generated__/ArtistHeader_artist.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { GlobalState } from "Router/state"
 import { Slider } from "Styleguide/Components/Slider"
 import { Box } from "Styleguide/Elements/Box"
 import { Button } from "Styleguide/Elements/Button"
@@ -9,22 +10,43 @@ import { Flex } from "Styleguide/Elements/Flex"
 import { Image } from "Styleguide/Elements/Image"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Responsive } from "Styleguide/Utils/Responsive"
+import { Subscribe } from "unstated"
 
 interface Props {
   artist: ArtistHeader_artist
+  mediator?: {
+    trigger: (action: string, config: object) => void
+  }
 }
 
-export class ArtistHeader extends React.Component<Props> {
-  render() {
-    return (
-      <Responsive>
-        {({ xs }) => {
-          if (xs) return <SmallArtistHeader {...this.props} />
-          else return <LargeArtistHeader {...this.props} />
-        }}
-      </Responsive>
-    )
-  }
+export const ArtistHeader: React.SFC<Props> = props => {
+  return (
+    <Subscribe to={[GlobalState]}>
+      {({ state }) => {
+        return (
+          <Responsive>
+            {({ xs }) => {
+              if (xs) {
+                return (
+                  <SmallArtistHeader
+                    mediator={state.force.mediator}
+                    {...props}
+                  />
+                )
+              } else {
+                return (
+                  <LargeArtistHeader
+                    mediator={state.force.mediator}
+                    {...props}
+                  />
+                )
+              }
+            }}
+          </Responsive>
+        )
+      }}
+    </Subscribe>
+  )
 }
 
 export const LargeArtistHeader = (props: Props) => {
@@ -62,7 +84,17 @@ export const LargeArtistHeader = (props: Props) => {
             </Serif>
           </Flex>
         </Box>
-        <Button variant="primaryBlack" size="medium">
+        <Button
+          variant="primaryBlack"
+          size="medium"
+          onClick={() => {
+            props.mediator.trigger("open:auth", {
+              mode: "register",
+              // redirectTo:
+              signupIntent: "register to bid",
+            })
+          }}
+        >
           Follow
         </Button>
       </Flex>
