@@ -1,5 +1,5 @@
 import { Container } from "unstated"
-import { GlobalStateContainerState, PreloadLinkContainerState } from "./types"
+import { GlobalStateContainer, PreloadLinkContainer } from "./types"
 
 const enableLogging =
   process.env.NODE_ENV === "development" && typeof window !== "undefined"
@@ -29,7 +29,7 @@ if (enableLogging) {
  * )
  */
 
-export class GlobalState extends Container<GlobalStateContainerState> {
+export class GlobalState extends Container<GlobalStateContainer> {
   state = {
     system: null,
   }
@@ -40,7 +40,7 @@ export class GlobalState extends Container<GlobalStateContainerState> {
   }
 }
 
-export class PreloadLinkState extends Container<PreloadLinkContainerState> {
+export class PreloadLinkState extends Container<PreloadLinkContainer> {
   state = {
     isFetching: false,
   }
