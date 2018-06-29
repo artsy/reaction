@@ -7,9 +7,9 @@ import createInitialFarceRouter from "found/lib/createInitialFarceRouter"
 import createRender from "found/lib/createRender"
 import { loadComponents } from "loadable-components"
 import React from "react"
-import { Boot } from "Styleguide/Pages/Boot"
 import { createEnvironment } from "../Relay/createEnvironment"
 import { AppShell } from "./AppShell"
+import { Boot } from "./Boot"
 import { AppConfig, ClientResolveProps } from "./types"
 
 export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
@@ -57,11 +57,12 @@ export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
         render,
       })
 
-      const provide = {
-        relayEnvironment,
-        reactionRouter: {
-          routes,
+      const bootProps = {
+        system: {
+          ...config,
+          relayEnvironment,
           resolver,
+          routes,
         },
       }
 
@@ -73,15 +74,17 @@ export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
 
       const ClientApp = props => {
         return (
-          <Boot>
-            <AppShell provide={provide} {...props}>
+          <Boot {...bootProps} {...props}>
+            <AppShell>
               <Router resolver={resolver} />
             </AppShell>
           </Boot>
         )
       }
 
-      resolve({ ClientApp })
+      resolve({
+        ClientApp,
+      })
     } catch (error) {
       console.error("[Reaction Router/buildClientApp]", error)
     }

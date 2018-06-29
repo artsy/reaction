@@ -7,10 +7,6 @@ describe("AppShell", () => {
     return mount(<AppShell {...props} />)
   }
 
-  it("sets artsy ContextProvider", () => {
-    expect(getWrapper().find("ContextProvider").length).toEqual(1)
-  })
-
   it("does not inject loadable-components script tags if not provide", () => {
     expect(getWrapper().html()).not.toContain("__LOADABLE_STATE__")
   })

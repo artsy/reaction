@@ -1,20 +1,37 @@
 import { Sans } from "@artsy/palette"
 import React from "react"
 import styled, { css } from "styled-components"
-import { borders, themeGet, WidthProps } from "styled-system"
+import {
+  borders,
+  JustifyContentProps,
+  themeGet,
+  WidthProps,
+} from "styled-system"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 
 export interface TabLike extends JSX.Element {
   props: TabProps
 }
+
 export interface TabInfo {
+  /** Display name of the newly selected Tab */
   name: string
+
+  /** Index of the newly selected Tab */
   tabIndex: number
+
+  /** Data associated with the newly selected Tab */
+  data: any
 }
-export interface TabsProps extends WidthProps {
+
+export interface TabsProps extends WidthProps, JustifyContentProps {
+  /** Function that will be called when a new Tab is selected */
   onChange?: (tabInfo?: TabInfo) => void
+
+  /** Index of the Tab that should be pre-selected */
   initialTabIndex?: number
+
   children: TabLike[]
 }
 
@@ -23,6 +40,10 @@ export interface TabsState {
 }
 
 export class Tabs extends React.Component<TabsProps, TabsState> {
+  public static defaultProps: Partial<TabsProps> = {
+    justifyContent: "left",
+  }
+
   state = {
     activeTabIndex: 0,
   }
@@ -44,6 +65,7 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
       this.props.onChange({
         tabIndex: activeTabIndex,
         name: this.props.children[activeTabIndex].props.name,
+        data: this.props.children[activeTabIndex].props.data,
       })
     }
   }
@@ -60,11 +82,11 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
   }
 
   render() {
-    const { children = [] } = this.props
+    const { children = [], justifyContent } = this.props
 
     return (
       <React.Fragment>
-        <TabsContainer mb={0.5} width="100%">
+        <TabsContainer mb={0.5} width="100%" justifyContent={justifyContent}>
           {children.map(this.renderTab)}
         </TabsContainer>
         <Box pt={3}>{children[this.state.activeTabIndex]}</Box>
@@ -74,8 +96,17 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
 }
 
 interface TabProps {
+  /** Display name of the Tab */
   name: string
+
+  /**
+   * Arbitrary data that can be associated with a Tab.
+   *
+   * Will be passed to the parent <Tabs>'s onChange handler.
+   */
+  data?: any
 }
+
 export class Tab extends React.Component<TabProps> {
   render() {
     return this.props.children || null

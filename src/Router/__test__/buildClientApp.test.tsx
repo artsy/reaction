@@ -37,8 +37,8 @@ describe("buildClientApp", () => {
 
     expect(
       ((await getWrapper())
-        .find("AppShell")
-        .props() as any).provide.relayEnvironment.relaySSRMiddleware.cache.values()
+        .find("Boot")
+        .props() as any).system.relayEnvironment.relaySSRMiddleware.cache.values()
     ).toContain("found window cache")
   })
 })

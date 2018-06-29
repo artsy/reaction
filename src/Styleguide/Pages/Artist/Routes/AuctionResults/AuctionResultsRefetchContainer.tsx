@@ -94,15 +94,17 @@ class AuctionResultsContainer extends React.Component<AuctionResultsProps> {
 
                   <AuctionDetailsModal auctionResult={state.selectedAuction} />
 
-                  {this.props.artist.auctionResults.edges.map(({ node }) => {
-                    return (
-                      <React.Fragment>
-                        <AuctionResultItemFragmentContainer
-                          auctionResult={node as any}
-                        />
-                      </React.Fragment>
-                    )
-                  })}
+                  {this.props.artist.auctionResults.edges.map(
+                    ({ node }, index) => {
+                      return (
+                        <React.Fragment key={index}>
+                          <AuctionResultItemFragmentContainer
+                            auctionResult={node as any}
+                          />
+                        </React.Fragment>
+                      )
+                    }
+                  )}
                 </Col>
               </Row>
 

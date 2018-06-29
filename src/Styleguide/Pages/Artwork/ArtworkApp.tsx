@@ -4,7 +4,6 @@ import styled from "styled-components"
 import { FullArtworkGrid } from "Styleguide/Components/ArtworkGrid"
 import { Tab, Tabs } from "Styleguide/Components/Tabs"
 import { Col, Row } from "Styleguide/Elements/Grid"
-import { Boot } from "Styleguide/Pages/Boot"
 import { exhibitions } from "Styleguide/Pages/Fixtures//SelectedExhibitions"
 import { bio } from "Styleguide/Pages/Fixtures/ArtistBio"
 import { imageData } from "Styleguide/Pages/Fixtures/Artwork/imageData"
@@ -35,7 +34,7 @@ export const ArtworkApp: React.SFC<Props> = props => {
   ]
 
   return (
-    <Boot>
+    <React.Fragment>
       <Row>
         <Col sm={8}>
           <Banner
@@ -179,7 +178,7 @@ export const ArtworkApp: React.SFC<Props> = props => {
           </Footer>
         </Col>
       </Row>
-    </Boot>
+    </React.Fragment>
   )
 }
 

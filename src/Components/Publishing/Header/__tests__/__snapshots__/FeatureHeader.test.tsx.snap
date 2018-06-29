@@ -718,7 +718,7 @@ exports[`feature renders feature full header without a deck properly 1`] = `
   flex-direction: column;
 }
 
-.c0[data-type="split"] .sc-kGXeez {
+.c0[data-type="split"] .sc-cSHVUG {
   margin-bottom: 30px;
 }
 

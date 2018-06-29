@@ -1,4 +1,4 @@
-import { Sans, Theme } from "@artsy/palette"
+import { Sans } from "@artsy/palette"
 import { Truncator } from "Components/Truncator"
 import React from "react"
 import styled from "styled-components"
@@ -63,23 +63,19 @@ const ReadMoreLink = ({ children }) => {
     // TODO: Investigate why <Truncator />, when calling `renderToStaticMarkup`,
     // breaks the context chain requiring us to wrap ReadMore in a <Theme />
 
-    <Theme>
-      <ReadMoreLinkContainer>
-        ...{" "}
-        <Sans size="2" weight="medium">
-          {children}
-        </Sans>
-      </ReadMoreLinkContainer>
-    </Theme>
+    <ReadMoreLinkContainer>
+      ...{" "}
+      <Sans size="2" weight="medium">
+        {children}
+      </Sans>
+    </ReadMoreLinkContainer>
   )
 }
 
 const ReadMoreLinkContainer = styled.span`
-  ${Sans} {
-    cursor: pointer;
-    text-decoration: underline;
-    display: inline-block;
-  }
+  cursor: pointer;
+  text-decoration: underline;
+  display: inline-block;
 `
 
 const Container = styled.div.attrs<ReadMoreState>({})`
