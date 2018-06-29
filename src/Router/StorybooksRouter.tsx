@@ -33,6 +33,8 @@ export class StorybooksRouter extends React.Component<Props> {
 
   render() {
     const { ClientApp } = this.state
-    return <React.Fragment>{ClientApp && <ClientApp />}</React.Fragment>
+    return (
+      <React.Fragment>{ClientApp && <ClientApp foo={"bar!"} />}</React.Fragment>
+    )
   }
 }

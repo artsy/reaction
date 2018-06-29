@@ -147,7 +147,7 @@ const defaultProps = {
       found: {},
     })),
   },
-  reactionRouter: {
+  system: {
     routes: [
       {
         Component: () => <div />,

@@ -2,7 +2,6 @@ import PropTypes from "prop-types"
 import React from "react"
 import { Environment } from "relay-runtime"
 import { createEnvironment } from "../Relay/createEnvironment"
-import { Router } from "../Router/types"
 
 // TODO: Once this PR for `rest` https://github.com/Microsoft/TypeScript/pull/13470 lands
 // we’ll be able to not make this optional and simply remove it from the props that a
@@ -33,12 +32,6 @@ export interface ContextProps {
    * the `currentUser` if available.
    */
   relayEnvironment?: Environment
-
-  /**
-   * Provides top-level route config and route resolution if utilizing routing
-   * features (see src/Router).
-   */
-  reactionRouter?: Router
 }
 
 interface PrivateContextProps extends ContextProps {
@@ -52,10 +45,6 @@ const ContextTypes: React.ValidationMap<PrivateContextProps> = {
   _isNestedInProvider: PropTypes.bool,
   currentUser: PropTypes.object,
   relayEnvironment: PropTypes.object,
-  reactionRouter: PropTypes.shape({
-    routes: PropTypes.array.isRequired,
-    resolver: PropTypes.object.isRequired,
-  }),
 }
 
 /**
@@ -65,13 +54,12 @@ const ContextTypes: React.ValidationMap<PrivateContextProps> = {
  *
  * @see {@link ContextConsumer}
  */
-export class ContextProvider extends React.Component<ContextProps, null>
+export class ContextProvider extends React.Component<ContextProps>
   implements React.ChildContextProvider<PrivateContextProps> {
   static childContextTypes = ContextTypes
 
   private currentUser: User | null
   private relayEnvironment: Environment
-  private reactionRouter: Router
 
   constructor(props: ContextProps & { children?: React.ReactNode }) {
     if (React.Children.count(props.children) > 1) {
@@ -91,8 +79,6 @@ export class ContextProvider extends React.Component<ContextProps, null>
 
     this.relayEnvironment =
       props.relayEnvironment || createEnvironment({ user: this.currentUser })
-
-    this.reactionRouter = props.reactionRouter
   }
 
   getChildContext() {
@@ -100,7 +86,6 @@ export class ContextProvider extends React.Component<ContextProps, null>
       _isNestedInProvider: true,
       currentUser: this.currentUser,
       relayEnvironment: this.relayEnvironment,
-      reactionRouter: this.reactionRouter,
     }
   }
 
@@ -140,12 +125,9 @@ export function ContextConsumer<P>(
     }
 
     render() {
-      const { currentUser, relayEnvironment, reactionRouter } = this.context
+      const { currentUser, relayEnvironment } = this.context
 
-      const props = Object.assign(
-        { currentUser, reactionRouter, relayEnvironment },
-        this.props
-      )
+      const props = Object.assign({ currentUser, relayEnvironment }, this.props)
 
       return <Component {...props} />
     }

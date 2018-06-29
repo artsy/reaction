@@ -1,7 +1,9 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
 import { graphql } from "react-relay"
+import { Subscribe } from "unstated"
 import { PreloadLink } from "../../Router"
+import { GlobalState } from "../state"
 import { StorybooksRouter } from "../StorybooksRouter"
 
 const routes = [
@@ -18,29 +20,35 @@ const routes = [
     prepareVariables: params => ({
       artistID: "andy-warhol",
     }),
-    Component: ({ artist, children }) => {
+    Component: ({ artist, children, ...props }) => {
       return (
-        <div>
-          <h1>Example Relay Router App</h1>
-          <h3>{artist.name}</h3>
-          <p>{artist.bio}</p>
+        <Subscribe to={[GlobalState]}>
+          {globalState => {
+            return (
+              <div>
+                <h1>Example Relay Router App</h1>
+                <h3>{artist.name}</h3>
+                <p>{artist.bio}</p>
 
-          <nav>
-            <ul>
-              <li>
-                <PreloadLink to="/home">Link to Home</PreloadLink>
-              </li>
-              <li>
-                <PreloadLink to="/about">Link to About</PreloadLink>
-              </li>
-              <li>
-                <PreloadLink to="/artist">Link to Artist</PreloadLink>
-              </li>
-            </ul>
-          </nav>
+                <nav>
+                  <ul>
+                    <li>
+                      <PreloadLink to="/home">Link to Home</PreloadLink>
+                    </li>
+                    <li>
+                      <PreloadLink to="/about">Link to About</PreloadLink>
+                    </li>
+                    <li>
+                      <PreloadLink to="/artist">Link to Artist</PreloadLink>
+                    </li>
+                  </ul>
+                </nav>
 
-          {children}
-        </div>
+                {children}
+              </div>
+            )
+          }}
+        </Subscribe>
       )
     },
     children: [
