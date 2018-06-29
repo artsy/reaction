@@ -3,6 +3,7 @@
 import { ConcreteFragment } from "relay-runtime";
 export type Overview_artist = {
     readonly exhibition_highlights: ReadonlyArray<({}) | null> | null;
+    readonly is_consignable: boolean | null;
 };
 
 
@@ -88,6 +89,13 @@ return {
       ]
     },
     {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "is_consignable",
+      "args": null,
+      "storageKey": null
+    },
+    {
       "kind": "FragmentSpread",
       "name": "Genes_artist",
       "args": null
@@ -126,5 +134,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '94976fdad7738a0c57af5710f70c9b11';
+(node as any).hash = 'a7c56ff6cec8a7ab62db4cfbb1ab78fe';
 export default node;

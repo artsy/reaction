@@ -1,27 +1,49 @@
 import { Sans, Serif } from "@artsy/palette"
 import React from "react"
+import { GlobalState } from "Router/state"
 import styled from "styled-components"
 import { FlexDirectionProps } from "styled-system"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Responsive } from "Styleguide/Utils/Responsive"
+import { Subscribe } from "unstated"
 
-export class Footer extends React.Component {
-  render() {
-    return (
-      <Responsive>
-        {({ xs }) => {
-          if (xs) return <SmallFooter />
-          else return <LargeFooter />
-        }}
-      </Responsive>
-    )
+interface Props {
+  mediator?: {
+    trigger: (action: string, config: object) => void
   }
 }
 
-export const LargeFooter = props => <FooterContainer flexDirection="row" />
-export const SmallFooter = props => <FooterContainer flexDirection="column" />
+export const Footer: React.SFC<Props> = props => {
+  return (
+    <Subscribe to={[GlobalState]}>
+      {({ state }) => {
+        return (
+          <Responsive>
+            {({ xs }) => {
+              if (xs)
+                return (
+                  <SmallFooter mediator={state.force && state.force.mediator} />
+                )
+              else
+                return (
+                  <LargeFooter mediator={state.force && state.force.mediator} />
+                )
+            }}
+          </Responsive>
+        )
+      }}
+    </Subscribe>
+  )
+}
 
-export interface FooterContainerProps extends FlexDirectionProps {}
+export const LargeFooter = (props: Props) => (
+  <FooterContainer mediator={props.mediator} flexDirection="row" />
+)
+export const SmallFooter = (props: Props) => (
+  <FooterContainer mediator={props.mediator} flexDirection="column" />
+)
+
+export interface FooterContainerProps extends FlexDirectionProps, Props {}
 const FooterContainer: React.SFC<FooterContainerProps> = props => {
   return (
     <Flex
@@ -34,8 +56,30 @@ const FooterContainer: React.SFC<FooterContainerProps> = props => {
           Buy
         </Sans>
         <Serif size="2">
-          <Link href="https://www.artsy.net/#">Buying from Galleries FAQ</Link>
-          <Link href="https://www.artsy.net/#">Buying from Auctions FAQ</Link>
+          <Link
+            onClick={() => {
+              props.mediator &&
+                props.mediator.trigger("open:auth", {
+                  mode: "register",
+                  // redirectTo:
+                  signupIntent: "register to bid",
+                })
+            }}
+          >
+            Buying from Galleries FAQ
+          </Link>
+          <Link
+            onClick={() => {
+              props.mediator &&
+                props.mediator.trigger("open:auth", {
+                  mode: "register",
+                  // redirectTo:
+                  signupIntent: "register to bid",
+                })
+            }}
+          >
+            Buying from Auctions FAQ
+          </Link>
           <Link href="https://www.artsy.net/consign">Consign with Artsy</Link>
           <Link href="https://www.artsy.net/professional-buyer">
             Artsy for Professional Buyers
@@ -72,10 +116,15 @@ const FooterContainer: React.SFC<FooterContainerProps> = props => {
           Partners
         </Sans>
         <Serif size="2">
-          <Link href="#">Buying from Galleries FAQ</Link>
-          <Link href="#">Buying from Auctions FAQ</Link>
-          <Link href="#">Consign with Artsy</Link>
-          <Link href="#">Artsy for Professional Buyers</Link>
+          <Link href="https://www.artsy.net/gallery-partnerships">
+            Artsy for Galleries
+          </Link>
+          <Link href="https://www.artsy.net/institution-partnerships">
+            Artsy for Museums
+          </Link>
+          <Link href="https://www.artsy.net/auction-partnerships">
+            Artsy for Auctions
+          </Link>
         </Serif>
       </Flex>
     </Flex>
