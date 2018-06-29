@@ -38,7 +38,6 @@ export class GlobalState extends Container<GlobalStateContainerState> {
     super()
     this.state = props
   }
-  s
 }
 
 export class PreloadLinkState extends Container<PreloadLinkContainerState> {
