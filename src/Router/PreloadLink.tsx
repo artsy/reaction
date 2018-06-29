@@ -6,39 +6,10 @@ import PropTypes from "prop-types"
 import React from "react"
 import { fetchQuery } from "react-relay"
 import { QueryRendererProps } from "react-relay"
-import { Container, Subscribe } from "unstated"
+import { GlobalState, PreloadLinkState } from "Router/state"
+import { Subscribe } from "unstated"
 import { ContextConsumer } from "../Components/Artsy"
-import { PreloadLinkProps, PreloadLinkState } from "./types"
-
-/**
- * Preload link state for use with unstated. If needing to tap into loading
- * status can use like so:
- *
- * @example
- *
- * return(
- *   <Subscribe to={[State]}>
- *     {({ isFetching }) => {
- *       return (
- *         <PreloadLink to='/some-path'>
- *           Fetching: {isFetching}
- *         </PreloadLink>
- *       )
- *     }}
- *   </Subscribe>
- * )
- */
-export class State extends Container<PreloadLinkState> {
-  state = {
-    isFetching: false,
-  }
-
-  toggleFetching = isFetching => {
-    this.setState({
-      isFetching,
-    })
-  }
-}
+import { PreloadLinkProps } from "./types"
 
 /**
  * PreloadLink is a wrapper around Found's (and found-relay's) <Link> component.
@@ -75,7 +46,7 @@ export const PreloadLink = compose(
   /**
    * Create a Preloader wrapper to perform relay fetches and render out a <Link>
    */
-  class Preloader extends React.Component<PreloadLinkProps, PreloadLinkState> {
+  class Preloader extends React.Component<PreloadLinkProps> {
     static propTypes = {
       /**
        * Load route query data transparently in the background on mount
@@ -107,11 +78,10 @@ export const PreloadLink = compose(
        * Injected props from ContextConsumer
        */
       reactionRouter: PropTypes.shape({
+        relayEnvironment: PropTypes.object.isRequired,
         routes: PropTypes.array.isRequired,
         resolver: PropTypes.object.isRequired,
       }).isRequired,
-
-      relayEnvironment: PropTypes.object.isRequired,
     }
 
     static defaultProps = {
@@ -151,8 +121,7 @@ export const PreloadLink = compose(
      */
     getRouteQuery(): Partial<QueryRendererProps> {
       const {
-        relayEnvironment: environment,
-        reactionRouter: { resolver },
+        reactionRouter: { resolver, relayEnvironment },
         router,
         to,
       } = this.props
@@ -196,7 +165,7 @@ export const PreloadLink = compose(
       )
 
       return {
-        environment,
+        environment: relayEnvironment,
         query,
         cacheConfig,
         variables,
@@ -226,9 +195,10 @@ export const PreloadLink = compose(
         try {
           await fetchQuery(environment, query, variables, cacheConfig)
           resolve()
-        } catch (error) {
+
           // FIXME: Handle fetch errors
           // router.push('/404')
+        } catch (error) {
           console.error("[Reaction Router/PreloadLink]", error)
         }
       })
@@ -270,10 +240,14 @@ export const PreloadLink = compose(
    * Subscribe to PreloadLink state
    */
   return (
-    <Subscribe to={[State]}>
-      {({ toggleFetching }: State) => {
+    <Subscribe to={[GlobalState, PreloadLinkState]}>
+      {(globalState: GlobalState, preloadLink: PreloadLinkState) => {
         return (
-          <Preloader onToggleFetching={toggleFetching} {...preloadLinkProps} />
+          <Preloader
+            onToggleFetching={preloadLink.toggleFetching}
+            reactionRouter={globalState.state.reactionRouter}
+            {...preloadLinkProps}
+          />
         )
       }}
     </Subscribe>

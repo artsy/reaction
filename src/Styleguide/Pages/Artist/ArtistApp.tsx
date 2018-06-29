@@ -6,7 +6,7 @@ import { Box } from "Styleguide/Elements/Box"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
-import { NavigationTabsFragmentContainer as NavigationTabs } from "Styleguide/Pages/Artist/NavigationTabs"
+import { NavigationTabsFragmentContainer as NavigationTabs } from "Styleguide/Pages/Artist/Components/NavigationTabs"
 import { ArtistHeaderFragmentContainer as ArtistHeader } from "./Components/ArtistHeader"
 import { LoadingArea } from "./Components/LoadingArea"
 

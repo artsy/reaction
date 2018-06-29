@@ -4264,6 +4264,10 @@ deep-is@~0.1.3:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/deep-is/-/deep-is-0.1.3.tgz#b369d6fb5dbc13eecf524f91b070feedc357cf34"
 
+deep-object-diff@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/deep-object-diff/-/deep-object-diff-1.1.0.tgz#d6fabf476c2ed1751fc94d5ca693d2ed8c18bc5a"
+
 default-require-extensions@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/default-require-extensions/-/default-require-extensions-2.0.0.tgz#f5f8fbb18a7d6d50b21f641f649ebb522cfe24f7"
@@ -12950,6 +12954,12 @@ unset-value@^1.0.0:
   dependencies:
     has-value "^0.3.1"
     isobject "^3.0.0"
+
+unstated-debug@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/unstated-debug/-/unstated-debug-0.2.0.tgz#12015d6836ed43e1dbbb7cc6160481a65d2f688e"
+  dependencies:
+    deep-object-diff "^1.1.0"
 
 unstated@^2.1.1:
   version "2.1.1"

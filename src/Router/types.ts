@@ -1,5 +1,6 @@
 import { RouteConfig } from "found"
 import { ComponentType } from "react"
+import { Environment } from "relay-runtime"
 import { Breakpoint } from "Styleguide/Utils/Responsive"
 import { ContextProps } from "../Components/Artsy"
 
@@ -7,10 +8,8 @@ type ReactComponent = ComponentType<any>
 type HistoryProtocol = "browser" | "hash" | "memory"
 
 export interface AppConfig {
-  boot?: {
-    breakpoint: Breakpoint
-  }
   historyProtocol?: HistoryProtocol
+  initialBreakpoint?: Breakpoint
   initialRoute?: string
   routes: RouteConfig
   url?: string
@@ -27,20 +26,30 @@ export interface ServerResolveProps {
   status?: string
 }
 
-export interface Router {
-  routes: RouteConfig
-  resolver: any // FIXME
-}
-
 export interface AppShellProps {
   loadableState?: {
     getScriptTag: () => string
   }
   data?: Array<object>
-  provide?: ContextProps
 }
 
-export interface PreloadLinkProps extends ContextProps {
+export interface Router {
+  relayEnvironment: Environment
+  routes: RouteConfig
+  resolver: any // FIXME
+}
+
+export interface BootProps extends GlobalStateContainerState {
+  initialBreakpoint?: Breakpoint
+}
+
+export interface GlobalStateContainerState {
+  reactionRouter: Router
+}
+
+export interface PreloadLinkProps
+  extends ContextProps,
+    GlobalStateContainerState {
   children?: any
   exact?: boolean
   immediate?: boolean
@@ -48,10 +57,10 @@ export interface PreloadLinkProps extends ContextProps {
   onClick?: () => void
   onToggleFetching?: (isLoading: boolean) => void
   replace?: string
-  router?: any // TODO
+  router?: any // TODO, from found
   to?: string
 }
 
-export interface PreloadLinkState {
+export interface PreloadLinkContainerState {
   isFetching: boolean
 }

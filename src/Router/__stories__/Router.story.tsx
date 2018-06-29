@@ -18,7 +18,7 @@ const routes = [
     prepareVariables: params => ({
       artistID: "andy-warhol",
     }),
-    Component: ({ artist, children }) => {
+    Component: ({ artist, children, ...props }) => {
       return (
         <div>
           <h1>Example Relay Router App</h1>

@@ -1,6 +1,6 @@
 import Spinner from "Components/Spinner"
 import React from "react"
-import { State as PreloadLinkState } from "Router/PreloadLink"
+import { PreloadLinkState } from "Router/state"
 import styled from "styled-components"
 import { Subscribe } from "unstated"
 

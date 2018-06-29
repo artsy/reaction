@@ -5,15 +5,15 @@ import { getFarceResult } from "found/lib/server"
 import { getLoadableState } from "loadable-components/server"
 import React from "react"
 import ReactDOMServer from "react-dom/server"
-import { Boot } from "Styleguide/Pages/Boot"
 import { createEnvironment } from "../Relay/createEnvironment"
 import { AppShell } from "./AppShell"
+import { Boot } from "./Boot"
 import { AppConfig, ServerResolveProps } from "./types"
 
 export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
   return new Promise(async (resolve, reject) => {
     try {
-      const { routes, url, user, boot } = config
+      const { routes, url, user } = config
       const relayEnvironment = createEnvironment({
         // FIXME: Might be a better way to do this...
         user: user || {
@@ -42,19 +42,18 @@ export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
         return
       }
 
+      const router = {
+        relayEnvironment,
+        resolver,
+        routes,
+      }
+
       const AppContainer = props => {
         return (
-          <Boot initialState={boot}>
+          <Boot {...config} reactionRouter={router} {...props}>
             <AppShell
               data={props.relayData}
               loadableState={props.loadableState}
-              provide={{
-                relayEnvironment,
-                reactionRouter: {
-                  resolver,
-                  routes,
-                },
-              }}
               {...props}
             >
               {element}
