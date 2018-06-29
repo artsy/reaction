@@ -45,9 +45,11 @@ const OverviewRoute = (props: OverviewRouteProps) => {
 
                 <Spacer mb={1} />
 
-                <Sans size="2" color="black60">
-                  <a href="#">Consign</a> a work by this artist.
-                </Sans>
+                {props.artist.is_consignable && (
+                  <Sans size="2" color="black60">
+                    <a href="/consign">Consign</a> a work by this artist.
+                  </Sans>
+                )}
               </Col>
               <Col sm={3}>
                 <Box pl={2}>
@@ -87,6 +89,8 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
       exhibition_highlights(size: 15) {
         ...SelectedExhibitions_exhibitions
       }
+
+      is_consignable
 
       ...Genes_artist
 

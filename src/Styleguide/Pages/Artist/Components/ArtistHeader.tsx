@@ -29,14 +29,14 @@ export const ArtistHeader: React.SFC<Props> = props => {
               if (xs) {
                 return (
                   <SmallArtistHeader
-                    mediator={state.force.mediator}
+                    mediator={state.force && state.force.mediator}
                     {...props}
                   />
                 )
               } else {
                 return (
                   <LargeArtistHeader
-                    mediator={state.force.mediator}
+                    mediator={state.force && state.force.mediator}
                     {...props}
                   />
                 )
@@ -88,11 +88,12 @@ export const LargeArtistHeader = (props: Props) => {
           variant="primaryBlack"
           size="medium"
           onClick={() => {
-            props.mediator.trigger("open:auth", {
-              mode: "register",
-              // redirectTo:
-              signupIntent: "register to bid",
-            })
+            props.mediator &&
+              props.mediator.trigger("open:auth", {
+                mode: "register",
+                // redirectTo:
+                signupIntent: "register to bid",
+              })
           }}
         >
           Follow
