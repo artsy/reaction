@@ -3,8 +3,8 @@
 
 
 "@artsy/palette@^2.3.4":
-  version "2.3.4"
-  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-2.3.4.tgz#fbb56c092453786852e9ee10859213dc8b647969"
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-2.4.2.tgz#994967a52e4869192be5fe84b24b6346db6a3ef2"
   dependencies:
     react "^16.3.2"
     react-primitives "^0.5.0"
@@ -9093,6 +9093,10 @@ onetime@^2.0.0:
 opener@^1.4.3, opener@~1.4.3:
   version "1.4.3"
   resolved "https://registry.yarnpkg.com/opener/-/opener-1.4.3.tgz#5c6da2c5d7e5831e8ffa3964950f8d6674ac90b8"
+
+openseadragon@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/openseadragon/-/openseadragon-2.3.1.tgz#efdcfee19d8b3c46d00d7f7dda787c7057f68364"
 
 opn@5.2.0:
   version "5.2.0"

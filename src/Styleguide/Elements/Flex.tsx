@@ -4,6 +4,8 @@ import {
   AlignContentProps,
   alignItems,
   AlignItemsProps,
+  bottom,
+  BottomProps,
   flexBasis,
   FlexBasisProps,
   flexDirection,
@@ -18,6 +20,8 @@ import {
   MaxHeightProps,
   maxWidth,
   MaxWidthProps,
+  position,
+  PositionProps,
   space,
   SpaceProps,
   style,
@@ -44,7 +48,9 @@ export interface FlexProps
     HeightProps,
     WidthProps,
     MaxHeightProps,
-    MaxWidthProps {
+    MaxWidthProps,
+    PositionProps,
+    BottomProps {
   flexGrow?: number | string
 }
 
@@ -62,4 +68,6 @@ export const Flex = styled.div.attrs<FlexProps>({})`
   ${maxHeight};
   ${width};
   ${maxWidth};
+  ${position};
+  ${bottom};
 `
