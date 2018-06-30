@@ -5,6 +5,7 @@ import styled from "styled-components"
 import { Separator } from "Styleguide/Elements/Separator"
 import { ArtworkSidebarArtistsFragmentContainer as Artists } from "./ArtworkSidebarArtists"
 import { ArtworkSidebarAuctionPartnerInfoFragmentContainer as AuctionPartnerInfo } from "./ArtworkSidebarAuctionPartnerInfo"
+import { ArtworkSidebarBidActionFragmentContainer as BidAction } from "./ArtworkSidebarBidAction"
 import { ArtworkSidebarCommercialFragmentContainer as Commercial } from "./ArtworkSidebarCommercial"
 import { ArtworkSidebarCurrentBidInfoFragmentContainer as CurrentBidInfo } from "./ArtworkSidebarCurrentBidInfo"
 import { ArtworkSidebarExtraLinksFragmentContainer as ExtraLinks } from "./ArtworkSidebarExtraLinks"
@@ -40,6 +41,7 @@ export class ArtworkSidebar extends Component<ArtworkSidebarProps> {
             <AuctionPartnerInfo artwork={artwork as any} />
             <Separator />
             <CurrentBidInfo artwork={artwork as any} />
+            <BidAction artwork={artwork as any} />
           </React.Fragment>
         ) : (
           <React.Fragment>
@@ -65,10 +67,14 @@ export const ArtworkSidebarFragmentContainer = createFragmentContainer(
       sale_artwork {
         lot_label
       }
+      sale {
+        is_closed
+      }
       ...ArtworkSidebarArtists_artwork
       ...ArtworkSidebarMetadata_artwork
       ...ArtworkSidebarAuctionPartnerInfo_artwork
       ...ArtworkSidebarCurrentBidInfo_artwork
+      ...ArtworkSidebarBidAction_artwork
       ...ArtworkSidebarCommercial_artwork
       ...ArtworkSidebarPartnerInfo_artwork
       ...ArtworkSidebarExtraLinks_artwork

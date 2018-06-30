@@ -3,6 +3,9 @@ import { storiesOf } from "storybook/storiesOf"
 import { ArtworkSidebarCurrentBidInfo as CurrentBidInfo } from "Styleguide/Pages/Artwork/Components/ArtworkSidebar/ArtworkSidebarCurrentBidInfo"
 import {
   ClosedAuctionArtwork,
+  LiveAuctionInProgeress,
+  MyBidLoosing,
+  MyBidWinning,
   OpenAuctionNoReserveNoBids,
   OpenAuctionNoReserveWithBids,
   OpenAuctionReserveMetWithBids,
@@ -31,6 +34,21 @@ storiesOf("Styleguide/Artwork/Sidebar", module).add("CurrentBidInfo", () => {
       </Section>
       <Section title="Open auction reserve met with bids">
         <CurrentBidInfo artwork={OpenAuctionReserveMetWithBids} />
+      </Section>
+      <Section title="Open auction with my bid winning">
+        <CurrentBidInfo
+          artwork={OpenAuctionReserveNotMetWithBids}
+          me={MyBidWinning}
+        />
+      </Section>
+      <Section title="Open auction with my bid loosing">
+        <CurrentBidInfo
+          artwork={OpenAuctionReserveMetWithBids}
+          me={MyBidLoosing}
+        />
+      </Section>
+      <Section title="Live auction in progress">
+        <CurrentBidInfo artwork={LiveAuctionInProgeress} />
       </Section>
     </React.Fragment>
   )

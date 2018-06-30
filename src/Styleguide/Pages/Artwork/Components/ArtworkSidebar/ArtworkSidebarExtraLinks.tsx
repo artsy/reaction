@@ -13,7 +13,9 @@ export class ArtworkSidebarExtraLinks extends React.Component<
   ArtworkSidebarExtraLinksProps
 > {
   render() {
-    if (this.props.artwork.is_biddable) {
+    const { artwork } = this.props
+
+    if (artwork.is_in_auction && artwork.sale && !artwork.sale.is_closed) {
       return (
         <Box pb={3} pt={1}>
           <Sans size="2" color="black60">
@@ -23,8 +25,8 @@ export class ArtworkSidebarExtraLinks extends React.Component<
         </Box>
       )
     }
-    const isForSaleArtwork = this.props.artwork.is_for_sale
-    const consignableArtists = this.props.artwork.artists.filter(
+    const isForSaleArtwork = artwork.is_for_sale
+    const consignableArtists = artwork.artists.filter(
       artist => artist.is_consignable
     )
     if (!isForSaleArtwork && consignableArtists.length === 0) {
@@ -52,11 +54,14 @@ export const ArtworkSidebarExtraLinksFragmentContainer = createFragmentContainer
   graphql`
     fragment ArtworkSidebarExtraLinks_artwork on Artwork {
       __id
-      is_biddable
+      is_in_auction
       is_for_sale
       artists {
         __id
         is_consignable
+      }
+      sale {
+        is_closed
       }
     }
   `
