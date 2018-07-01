@@ -1,9 +1,8 @@
-import { themeProps } from "@artsy/palette"
+import { color, space } from "@artsy/palette"
 import { bind, once, throttle } from "lodash"
 import React from "react"
 import ReactDOM from "react-dom"
 import styled from "styled-components"
-import { themeGet } from "styled-system"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Slider, SliderProps } from "./LightboxSlider"
 
@@ -17,7 +16,7 @@ const DeepZoomContainer = styled.div`
   left: 0;
   z-index: 1000;
   transition: opacity 0.5s;
-  background-color: ${themeGet("colors.black100")};
+  background-color: ${color("black100")};
 `
 
 export interface LightboxProps {
@@ -72,7 +71,7 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
           position="absolute"
           width="100%"
           justifyContent="center"
-          bottom={themeProps.space["2"]}
+          bottom={space(2)}
         >
           <Slider
             min={slider.min}
