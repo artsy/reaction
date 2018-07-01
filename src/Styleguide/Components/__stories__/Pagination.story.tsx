@@ -1,6 +1,6 @@
+import { paginationProps } from "Apps/__test__/Fixtures/Pagination"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { paginationProps } from "Styleguide/Pages/Fixtures/Pagination"
 import { Section } from "Styleguide/Utils/Section"
 import { LargePagination, Pagination, SmallPagination } from "../Pagination"
 

@@ -1,6 +1,6 @@
+import { artistResponse } from "Apps/__test__/Fixtures/MarketInsights"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { artistResponse } from "Styleguide/Pages/Fixtures/MarketInsights"
 import { Section } from "Styleguide/Utils/Section"
 import { MarketInsights } from "../MarketInsights"
 

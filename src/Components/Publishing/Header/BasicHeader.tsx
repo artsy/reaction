@@ -3,7 +3,7 @@ import { unica } from "Assets/Fonts"
 import React from "react"
 import { Col, Grid, Row } from "react-styled-flexboxgrid"
 import styled from "styled-components"
-import { Responsive } from "../../../Utils/Responsive"
+import { ResponsiveDeprecated } from "../../../Utils/ResponsiveDeprecated"
 import { track } from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
 import { Byline, BylineContainer } from "../Byline/Byline"
@@ -64,7 +64,8 @@ export class BasicHeader extends React.Component<Props, State> {
     const hasVideo = url && isValidVideoUrl(url)
 
     return (
-      <Responsive initialState={{ isMobile: passedIsMobile }}>
+      // FIXME: Replace with latest version of Responsive
+      <ResponsiveDeprecated initialState={{ isMobile: passedIsMobile }}>
         {({ isMobile }) => (
           <Container hasVideo={hasVideo} data-type="basic">
             <Grid fluid>
@@ -109,7 +110,7 @@ export class BasicHeader extends React.Component<Props, State> {
             </Grid>
           </Container>
         )}
-      </Responsive>
+      </ResponsiveDeprecated>
     )
   }
 }

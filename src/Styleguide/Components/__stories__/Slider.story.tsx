@@ -1,10 +1,10 @@
+import { artworkBricks, images } from "Apps/__test__/Fixtures/Slider"
 import { FillwidthItem } from "Components/Artwork/FillwidthItem"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { LargeSlider, Slider, SmallSlider } from "Styleguide/Components/Slider"
 import { Box } from "Styleguide/Elements/Box"
 import { Image } from "Styleguide/Elements/Image"
-import { artworkBricks, images } from "Styleguide/Pages/Fixtures/Slider"
 import { Section } from "Styleguide/Utils/Section"
 
 storiesOf("Styleguide/Components", module).add("Slider", () => {

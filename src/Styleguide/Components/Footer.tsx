@@ -4,8 +4,8 @@ import { GlobalState } from "Router/state"
 import styled from "styled-components"
 import { FlexDirectionProps } from "styled-system"
 import { Flex } from "Styleguide/Elements/Flex"
-import { Responsive } from "Styleguide/Utils/Responsive"
 import { Subscribe } from "unstated"
+import { Responsive } from "Utils/Responsive"
 
 interface Props {
   mediator?: {

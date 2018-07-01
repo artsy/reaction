@@ -1,7 +1,7 @@
 import { RouteConfig } from "found"
 import { ComponentType } from "react"
 import { Environment } from "relay-runtime"
-import { Breakpoint } from "Styleguide/Utils/Responsive"
+import { Breakpoint } from "Utils/Responsive"
 import { ContextProps } from "../Components/Artsy"
 
 type ReactComponent = ComponentType<any>
