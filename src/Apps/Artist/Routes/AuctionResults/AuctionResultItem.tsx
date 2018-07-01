@@ -36,7 +36,7 @@ export class AuctionResultItem extends React.Component<Props> {
                     return (
                       <ExtraSmallAuctionItem
                         {...this.props}
-                        mediator={state.force.mediator}
+                        mediator={state.mediator}
                         currentUser={state.system.currentUser}
                       />
                     )
@@ -44,7 +44,7 @@ export class AuctionResultItem extends React.Component<Props> {
                     return (
                       <SmallAuctionItem
                         {...this.props}
-                        mediator={state.force.mediator}
+                        mediator={state.mediator}
                         currentUser={state.system.currentUser}
                       />
                     )
@@ -52,7 +52,7 @@ export class AuctionResultItem extends React.Component<Props> {
                     return (
                       <LargeAuctionItem
                         {...this.props}
-                        mediator={state.force.mediator}
+                        mediator={state.mediator}
                         currentUser={state.system.currentUser}
                       />
                     )

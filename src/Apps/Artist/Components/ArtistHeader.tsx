@@ -28,17 +28,11 @@ export const ArtistHeader: React.SFC<Props> = props => {
             {({ xs }) => {
               if (xs) {
                 return (
-                  <SmallArtistHeader
-                    mediator={state.force.mediator}
-                    {...props}
-                  />
+                  <SmallArtistHeader mediator={state.mediator} {...props} />
                 )
               } else {
                 return (
-                  <LargeArtistHeader
-                    mediator={state.force.mediator}
-                    {...props}
-                  />
+                  <LargeArtistHeader mediator={state.mediator} {...props} />
                 )
               }
             }}

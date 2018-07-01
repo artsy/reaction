@@ -3,9 +3,7 @@ import { storiesOf as _storiesOf } from "@storybook/react"
 import { Boot } from "Router/Boot"
 
 const bootProps = {
-  force: {
-    mediator: x => x,
-  },
+  mediator: x => x,
 }
 
 export function storiesOf(desc, mod) {

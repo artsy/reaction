@@ -19,9 +19,7 @@ storiesOf("Apps", module)
         routes={artistRoutes}
         initialRoute="/artist2/andy-warhol"
         initialState={{
-          force: {
-            mediator: x => x,
-          },
+          mediator: x => x,
         }}
       />
     )
