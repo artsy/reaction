@@ -1,12 +1,13 @@
 import { themeProps } from "@artsy/palette"
 import { bind, once, throttle } from "lodash"
-import OpenSeaDragon from "openseadragon"
 import React from "react"
 import ReactDOM from "react-dom"
 import styled from "styled-components"
 import { themeGet } from "styled-system"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Slider, SliderProps } from "./LightboxSlider"
+
+const KEYBOARD_EVENT = "keyup"
 
 const DeepZoomContainer = styled.div`
   position: fixed !important;
@@ -41,6 +42,7 @@ export interface LightboxState {
   viewer: any
   deepZoomRef: any
   slider: SliderProps
+  promisedDragon: Promise<any>
 }
 
 export class Lightbox extends React.Component<LightboxProps, LightboxState> {
@@ -55,6 +57,7 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
       step: 0.01,
       value: 0,
     },
+    promisedDragon: import("openseadragon"),
   }
 
   renderLightbox() {
@@ -73,6 +76,7 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
             max={slider.max}
             step={slider.step}
             value={slider.value}
+            onChange={this.onSliderChanged}
           />
         </Flex>
       </React.Fragment>
@@ -87,6 +91,19 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
 
   show = event => {
     this.setState({ shown: true })
+  }
+
+  hide = () => {
+    this.setState({ shown: false })
+    this.state.viewer.destroy()
+    this.state.viewer = null
+    document.removeEventListener(KEYBOARD_EVENT, this.handleKeyPress)
+  }
+
+  handleKeyPress = event => {
+    if (event && event.key === "Escape") {
+      this.hide()
+    }
   }
 
   render() {
@@ -106,41 +123,48 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
   }
 
   initSeaDragon = () => {
-    const viewer = OpenSeaDragon({
-      element: this.state.deepZoomRef.current,
+    this.state.promisedDragon.then(OpenSeaDragon => {
+      const viewer = OpenSeaDragon({
+        element: this.state.deepZoomRef.current,
 
-      debugMode: false,
-      showNavigationControl: false,
-      immediateRender: false,
-      useCanvas: true,
-      constrainDuringPan: false,
-      blendTime: 0.0,
-      animationTime: 1.5,
-      springStiffness: 15.0,
-      maxZoomPixelRatio: 1.0,
-      minZoomImageRatio: 0.9,
-      zoomPerClick: 1.4,
-      zoomPerScroll: 1.4,
-      clickDistThreshold: 5,
-      clickTimeThreshold: 300,
-      visibilityRatio: 1,
-      tileSources: this.props.deepZoom,
+        debugMode: false,
+        showNavigationControl: false,
+        immediateRender: false,
+        useCanvas: true,
+        constrainDuringPan: false,
+        blendTime: 0.0,
+        animationTime: 1.5,
+        springStiffness: 15.0,
+        maxZoomPixelRatio: 1.0,
+        minZoomImageRatio: 0.9,
+        zoomPerClick: 1.4,
+        zoomPerScroll: 1.4,
+        clickDistThreshold: 5,
+        clickTimeThreshold: 300,
+        visibilityRatio: 1,
+        tileSources: this.props.deepZoom,
 
-      gestureSettingsTouch: {
-        scrolltozoom: false,
-        clicktozoom: true,
-        pinchtozoom: true,
-        flickenabled: true,
-        flickminspeed: 20,
-        flickmomentum: 0.4,
-      },
+        gestureSettingsTouch: {
+          scrolltozoom: false,
+          clicktozoom: true,
+          pinchtozoom: true,
+          flickenabled: true,
+          flickminspeed: 20,
+          flickmomentum: 0.4,
+        },
+      })
+      document.addEventListener(KEYBOARD_EVENT, this.handleKeyPress)
+      this.setState({
+        viewer,
+      })
     })
-    this.setState({ viewer })
-    return viewer
   }
 
   postRender = () => {
-    this.state.viewer.addHandler("zoom", bind(throttle(this.onZoom, 50), this))
+    this.state.viewer.addHandler(
+      "zoom",
+      bind(throttle(this.onZoomChanged, 50), this)
+    )
     this.state.viewer.addHandler(
       "tile-drawn",
       once(() => {
@@ -156,10 +180,17 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
     )
   }
 
-  onZoom = () => {
+  onSliderChanged = event => {
+    this.state.viewer.viewport.zoomTo(event.target.value)
+  }
+
+  onZoomChanged = () => {
+    if (!this.state.viewer) return
     this.setState({
       slider: {
         ...this.state.slider,
+        min: this.state.viewer.viewport.getMinZoom(),
+        max: this.state.viewer.viewport.getMaxZoom(),
         value: this.state.viewer.viewport.getZoom(),
       },
     })

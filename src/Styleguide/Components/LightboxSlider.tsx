@@ -10,6 +10,7 @@ const railStyles = css`
 `
 
 const knobStyles = css`
+  user-select: none;
   cursor: pointer;
   width: ${space(2)}px;
   height: ${space(2)}px;
@@ -144,7 +145,13 @@ export const Slider: SFC<SliderProps> = props => (
       alignItems="center"
     >
       <ZoomOutButton onClick={props.onZoomOutClicked} />
-      <StyledSlider onChange={props.onChange} />
+      <StyledSlider
+        min={props.min.toString()}
+        max={props.max.toString()}
+        step={props.step.toString()}
+        onChange={props.onChange}
+        innerRef={element => element && (element.value = props.value)}
+      />
       <ZoomInButton onClick={props.onZoomInClicked} />
     </Flex>
   </SliderContainer>
