@@ -7,15 +7,7 @@ storiesOf("Styleguide/Components", module).add("LightboxSlider", () => {
   return (
     <React.Fragment>
       <Section title="Lightbox Slider">
-        <Slider
-          min={0}
-          max={100}
-          step={1}
-          value={50}
-          onChange={event => console.log(event.target.value)}
-          onZoomInClicked={() => console.log("zoom in")}
-          onZoomOutClicked={() => console.log("zoom out")}
-        />
+        <Slider min={0} max={100} step={1} value={50} />
       </Section>
     </React.Fragment>
   )
