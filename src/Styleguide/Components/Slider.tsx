@@ -92,14 +92,20 @@ export const SmallSlider = (props: Props) => {
 const SliderContainer = styled.div`
   width: 100%;
 
-  ${"" /* FIXME: The below two rules are hacks for SSR to render properly */};
+  ${"" /*
+    FIXME: The below two rules are hacks for SSR to render properly.
+    Might have been fixed in https://github.com/artsy/reaction/pull/929
+  */};
 
   .slick-track {
     display: inline-flex;
     width: 100% !important;
   }
 
-  ${"" /* FIXME: On SSR mobile this shifts the image, must fix */};
+  ${"" /*
+    FIXME: On SSR mobile this shifts the image, must fix
+    Might be fixed in https://github.com/artsy/reaction/pull/929
+  */};
 
   ${media.xs`
     .slick-list {

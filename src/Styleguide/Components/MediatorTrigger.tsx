@@ -1,10 +1,10 @@
 import React from "react"
-import { GlobalState } from "Router/state"
+import { AppState } from "Router/state"
 import { Subscribe } from "unstated"
 
 export const MediatorTrigger = () => {
   return (
-    <Subscribe to={[GlobalState]}>
+    <Subscribe to={[AppState]}>
       {({ state }) => {
         return <span>trigger</span>
       }}

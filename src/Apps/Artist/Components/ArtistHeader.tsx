@@ -3,10 +3,9 @@ import { ArtistHeader_artist } from "__generated__/ArtistHeader_artist.graphql"
 import FollowArtistButton from "Components/FollowButton/FollowArtistButton"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { GlobalState } from "Router/state"
+import { AppState } from "Router/state"
 import { Slider } from "Styleguide/Components/Slider"
 import { Box } from "Styleguide/Elements/Box"
-
 import { Flex } from "Styleguide/Elements/Flex"
 import { Image } from "Styleguide/Elements/Image"
 import { Spacer } from "Styleguide/Elements/Spacer"
@@ -22,7 +21,7 @@ interface Props {
 
 export const ArtistHeader: React.SFC<Props> = props => {
   return (
-    <Subscribe to={[GlobalState]}>
+    <Subscribe to={[AppState]}>
       {({ state }) => {
         return (
           <Responsive>
@@ -30,14 +29,14 @@ export const ArtistHeader: React.SFC<Props> = props => {
               if (xs) {
                 return (
                   <SmallArtistHeader
-                    mediator={state.force && state.force.mediator}
+                    mediator={state.force.mediator}
                     {...props}
                   />
                 )
               } else {
                 return (
                   <LargeArtistHeader
-                    mediator={state.force && state.force.mediator}
+                    mediator={state.force.mediator}
                     {...props}
                   />
                 )
@@ -48,6 +47,12 @@ export const ArtistHeader: React.SFC<Props> = props => {
       }}
     </Subscribe>
   )
+}
+
+ArtistHeader.defaultProps = {
+  mediator: {
+    trigger: x => x,
+  },
 }
 
 export const LargeArtistHeader = (props: Props) => {
@@ -88,17 +93,16 @@ export const LargeArtistHeader = (props: Props) => {
         <FollowArtistButton
           artist={props.artist as any}
           onOpenAuthModal={() => {
-            props.mediator &&
-              props.mediator.trigger("open:auth", {
-                mode: "signup",
-                copy: `Sign up to follow ${props.artist.name}`,
-                signupIntent: "follow artist",
-                afterSignUpAction: {
-                  kind: "artist",
-                  action: "follow",
-                  objectId: props.artist.id,
-                },
-              })
+            props.mediator.trigger("open:auth", {
+              mode: "signup",
+              copy: `Sign up to follow ${props.artist.name}`,
+              signupIntent: "follow artist",
+              afterSignUpAction: {
+                kind: "artist",
+                action: "follow",
+                objectId: props.artist.id,
+              },
+            })
           }}
         >
           Follow
@@ -110,6 +114,7 @@ export const LargeArtistHeader = (props: Props) => {
 
 export const SmallArtistHeader = (props: Props) => {
   const { carousel } = props.artist
+
   return (
     <Flex flexDirection="column">
       <Slider
@@ -145,17 +150,16 @@ export const SmallArtistHeader = (props: Props) => {
         <FollowArtistButton
           artist={props.artist as any}
           onOpenAuthModal={() => {
-            props.mediator &&
-              props.mediator.trigger("open:auth", {
-                mode: "signup",
-                copy: `Sign up to follow ${props.artist.name}`,
-                signupIntent: "follow artist",
-                afterSignUpAction: {
-                  kind: "artist",
-                  action: "follow",
-                  objectId: props.artist.id,
-                },
-              })
+            props.mediator.trigger("open:auth", {
+              mode: "signup",
+              copy: `Sign up to follow ${props.artist.name}`,
+              signupIntent: "follow artist",
+              afterSignUpAction: {
+                kind: "artist",
+                action: "follow",
+                objectId: props.artist.id,
+              },
+            })
           }}
         >
           Follow

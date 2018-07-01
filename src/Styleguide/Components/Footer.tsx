@@ -1,6 +1,6 @@
 import { Sans, Serif } from "@artsy/palette"
 import React from "react"
-import { GlobalState } from "Router/state"
+import { AppState } from "Router/state"
 import styled from "styled-components"
 import { FlexDirectionProps } from "styled-system"
 import { Flex } from "Styleguide/Elements/Flex"
@@ -15,19 +15,13 @@ interface Props {
 
 export const Footer: React.SFC<Props> = props => {
   return (
-    <Subscribe to={[GlobalState]}>
+    <Subscribe to={[AppState]}>
       {({ state }) => {
         return (
           <Responsive>
             {({ xs }) => {
-              if (xs)
-                return (
-                  <SmallFooter mediator={state.force && state.force.mediator} />
-                )
-              else
-                return (
-                  <LargeFooter mediator={state.force && state.force.mediator} />
-                )
+              if (xs) return <SmallFooter mediator={state.force.mediator} />
+              else return <LargeFooter mediator={state.force.mediator} />
             }}
           </Responsive>
         )
@@ -39,12 +33,12 @@ export const Footer: React.SFC<Props> = props => {
 export const LargeFooter = (props: Props) => (
   <FooterContainer mediator={props.mediator} flexDirection="row" />
 )
+
 export const SmallFooter = (props: Props) => (
   <FooterContainer mediator={props.mediator} flexDirection="column" />
 )
 
-export interface FooterContainerProps extends FlexDirectionProps, Props {}
-const FooterContainer: React.SFC<FooterContainerProps> = props => {
+const FooterContainer: React.SFC<FlexDirectionProps & Props> = props => {
   return (
     <Flex
       flexDirection={props.flexDirection}
@@ -56,18 +50,10 @@ const FooterContainer: React.SFC<FooterContainerProps> = props => {
           Buy
         </Sans>
         <Serif size="2">
-          <Link
-            onClick={() => {
-              props.mediator && props.mediator.trigger("openCollectorFAQModal")
-            }}
-          >
+          <Link onClick={() => props.mediator.trigger("openCollectorFAQModal")}>
             Buying from Galleries FAQ
           </Link>
-          <Link
-            onClick={() => {
-              props.mediator && props.mediator.trigger("openAuctionFAQModal")
-            }}
-          >
+          <Link onClick={() => props.mediator.trigger("openAuctionFAQModal")}>
             Buying from Auctions FAQ
           </Link>
           <Link href="https://www.artsy.net/consign">Consign with Artsy</Link>
@@ -98,11 +84,7 @@ const FooterContainer: React.SFC<FooterContainerProps> = props => {
           <Link href="https://artsy.github.com/open-source">Open Source</Link>
           <Link href="https://www.artsy.net/about/press">Press</Link>
           <Link href="https://www.artsy.net/contact">Contact</Link>
-          <Link
-            onClick={() => {
-              props.mediator && props.mediator.trigger("openFeedbackModal")
-            }}
-          >
+          <Link onClick={() => props.mediator.trigger("openFeedbackModal")}>
             Send us feedback
           </Link>
         </Serif>

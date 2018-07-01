@@ -3,7 +3,7 @@ import { AuctionResultItem_auctionResult } from "__generated__/AuctionResultItem
 import { ContextProps } from "Components/Artsy"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { GlobalState } from "Router/state"
+import { AppState } from "Router/state"
 import styled from "styled-components"
 import { Box } from "Styleguide/Elements/Box"
 import { Button } from "Styleguide/Elements/Button"
@@ -26,7 +26,7 @@ export interface Props extends ContextProps {
 export class AuctionResultItem extends React.Component<Props> {
   render() {
     return (
-      <Subscribe to={[GlobalState]}>
+      <Subscribe to={[AppState]}>
         {({ state }) => {
           return (
             <Row>
@@ -35,24 +35,24 @@ export class AuctionResultItem extends React.Component<Props> {
                   if (xs) {
                     return (
                       <ExtraSmallAuctionItem
-                        mediator={state.force && state.force.mediator}
                         {...this.props}
+                        mediator={state.force.mediator}
                         currentUser={state.system.currentUser}
                       />
                     )
                   } else if (sm || md) {
                     return (
                       <SmallAuctionItem
-                        mediator={state.force && state.force.mediator}
                         {...this.props}
+                        mediator={state.force.mediator}
                         currentUser={state.system.currentUser}
                       />
                     )
                   } else {
                     return (
                       <LargeAuctionItem
-                        mediator={state.force && state.force.mediator}
                         {...this.props}
+                        mediator={state.force.mediator}
                         currentUser={state.system.currentUser}
                       />
                     )
@@ -122,11 +122,10 @@ const LargeAuctionItem: React.SFC<Props> = (props: Props) => {
               ) : (
                 <Button
                   onClick={() => {
-                    props.mediator &&
-                      props.mediator.trigger("open:auth", {
-                        mode: "register",
-                        copy: "Sign up to see full auction records — for free",
-                      })
+                    props.mediator.trigger("open:auth", {
+                      mode: "register",
+                      copy: "Sign up to see full auction records — for free",
+                    })
                   }}
                 >
                   Sign up to see price
@@ -196,6 +195,7 @@ const SmallAuctionItem: React.SFC<Props> = props => {
 const ExtraSmallAuctionItem: React.SFC<Props> = props => {
   const salePrice = getSalePrice(props.auctionResult.price_realized)
   const estimatedPrice = props.auctionResult.estimate.display
+
   return (
     <React.Fragment>
       <Col>

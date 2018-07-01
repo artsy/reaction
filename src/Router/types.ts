@@ -39,16 +39,16 @@ export interface Router {
   resolver: any // FIXME
 }
 
-export interface BootProps extends GlobalStateContainer {
+export interface BootProps extends AppStateContainer {
   initialBreakpoint?: Breakpoint
   [x: string]: any // User can pass in any properties on boot
 }
 
-export interface GlobalStateContainer {
+export interface AppStateContainer {
   system?: Router
 }
 
-export interface PreloadLinkProps extends ContextProps, GlobalStateContainer {
+export interface PreloadLinkProps extends ContextProps, AppStateContainer {
   children?: any
   exact?: boolean
   immediate?: boolean

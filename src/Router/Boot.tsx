@@ -6,17 +6,15 @@ import { Grid } from "Styleguide/Elements/Grid"
 import { Provider as StateProvider } from "unstated"
 import { ResponsiveProvider } from "Utils/Responsive"
 import { ContextProvider } from "../Components/Artsy"
-import { GlobalState } from "./state"
+import { AppState } from "./state"
 import { BootProps } from "./types"
 
 export const Boot: React.SFC<BootProps> = ({ children, ...props }) => {
-  const globalState = new GlobalState(props)
-  const relayEnvironment =
-    globalState.state.system && globalState.state.system.relayEnvironment
-  const currentUser =
-    globalState.state.system && globalState.state.system.currentUser
+  const app = new AppState(props)
+  const relayEnvironment = app.state.system && app.state.system.relayEnvironment
+  const currentUser = app.state.system && app.state.system.currentUser
   return (
-    <StateProvider inject={[globalState]}>
+    <StateProvider inject={[app]}>
       <ContextProvider
         relayEnvironment={relayEnvironment}
         currentUser={currentUser}
