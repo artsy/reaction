@@ -3,7 +3,7 @@ import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
 import { Tab, Tabs } from "../Tabs"
 
-storiesOf("Styleguide/Components", module).add("Tabs", () => {
+storiesOf("Styleguide/Components", module).add("Tabs (Simple)", () => {
   return (
     <React.Fragment>
       <Section title="Artist">
@@ -23,7 +23,7 @@ storiesOf("Styleguide/Components", module).add("Tabs", () => {
           <Tab name="Bibliography" />
         </Tabs>
       </Section>
-      <Section title="With renderProps and onChange handler">
+      <Section title="Renders content">
         <Tabs
           initialTabIndex={1}
           onChange={activeTab => {

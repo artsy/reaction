@@ -1,12 +1,11 @@
 import { Serif } from "@artsy/palette"
 import { ArtistHeader_artist } from "__generated__/ArtistHeader_artist.graphql"
 import FollowArtistButton from "Components/FollowButton/FollowArtistButton"
-import React from "react"
+import React, { SFC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { GlobalState } from "Router/state"
+import { AppState } from "Router/state"
 import { Slider } from "Styleguide/Components/Slider"
 import { Box } from "Styleguide/Elements/Box"
-
 import { Flex } from "Styleguide/Elements/Flex"
 import { Image } from "Styleguide/Elements/Image"
 import { Spacer } from "Styleguide/Elements/Spacer"
@@ -20,26 +19,20 @@ interface Props {
   }
 }
 
-export const ArtistHeader: React.SFC<Props> = props => {
+export const ArtistHeader: SFC<Props> = props => {
   return (
-    <Subscribe to={[GlobalState]}>
+    <Subscribe to={[AppState]}>
       {({ state }) => {
         return (
           <Responsive>
             {({ xs }) => {
               if (xs) {
                 return (
-                  <SmallArtistHeader
-                    mediator={state.force && state.force.mediator}
-                    {...props}
-                  />
+                  <SmallArtistHeader mediator={state.mediator} {...props} />
                 )
               } else {
                 return (
-                  <LargeArtistHeader
-                    mediator={state.force && state.force.mediator}
-                    {...props}
-                  />
+                  <LargeArtistHeader mediator={state.mediator} {...props} />
                 )
               }
             }}
@@ -50,7 +43,13 @@ export const ArtistHeader: React.SFC<Props> = props => {
   )
 }
 
-export const LargeArtistHeader = (props: Props) => {
+ArtistHeader.defaultProps = {
+  mediator: {
+    trigger: x => x,
+  },
+}
+
+export const LargeArtistHeader: SFC<Props> = props => {
   const { carousel } = props.artist
 
   return (
@@ -88,17 +87,16 @@ export const LargeArtistHeader = (props: Props) => {
         <FollowArtistButton
           artist={props.artist as any}
           onOpenAuthModal={() => {
-            props.mediator &&
-              props.mediator.trigger("open:auth", {
-                mode: "signup",
-                copy: `Sign up to follow ${props.artist.name}`,
-                signupIntent: "follow artist",
-                afterSignUpAction: {
-                  kind: "artist",
-                  action: "follow",
-                  objectId: props.artist.id,
-                },
-              })
+            props.mediator.trigger("open:auth", {
+              mode: "signup",
+              copy: `Sign up to follow ${props.artist.name}`,
+              signupIntent: "follow artist",
+              afterSignUpAction: {
+                kind: "artist",
+                action: "follow",
+                objectId: props.artist.id,
+              },
+            })
           }}
         >
           Follow
@@ -108,8 +106,9 @@ export const LargeArtistHeader = (props: Props) => {
   )
 }
 
-export const SmallArtistHeader = (props: Props) => {
+export const SmallArtistHeader: SFC<Props> = props => {
   const { carousel } = props.artist
+
   return (
     <Flex flexDirection="column">
       <Slider
@@ -145,17 +144,16 @@ export const SmallArtistHeader = (props: Props) => {
         <FollowArtistButton
           artist={props.artist as any}
           onOpenAuthModal={() => {
-            props.mediator &&
-              props.mediator.trigger("open:auth", {
-                mode: "signup",
-                copy: `Sign up to follow ${props.artist.name}`,
-                signupIntent: "follow artist",
-                afterSignUpAction: {
-                  kind: "artist",
-                  action: "follow",
-                  objectId: props.artist.id,
-                },
-              })
+            props.mediator.trigger("open:auth", {
+              mode: "signup",
+              copy: `Sign up to follow ${props.artist.name}`,
+              signupIntent: "follow artist",
+              afterSignUpAction: {
+                kind: "artist",
+                action: "follow",
+                objectId: props.artist.id,
+              },
+            })
           }}
         >
           Follow

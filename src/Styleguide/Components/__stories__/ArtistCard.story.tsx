@@ -1,6 +1,7 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
+import { RelayStubProvider } from "Utils/RelayStubProvider"
 
 import { ArtistCard, LargeArtistCard, SmallArtistCard } from "../ArtistCard"
 
@@ -15,18 +16,20 @@ const artist = {
   id: "percy",
 }
 
-storiesOf("Styleguide/Components", module).add("ArtistCard", () => {
-  return (
-    <React.Fragment>
-      <Section title="Responsive Artist Card">
-        <ArtistCard artist={artist} />
-      </Section>
-      <Section title="Large Artist Card">
-        <LargeArtistCard artist={artist} />
-      </Section>
-      <Section title="Small Artist Card">
-        <SmallArtistCard artist={artist} />
-      </Section>
-    </React.Fragment>
-  )
-})
+storiesOf("Styleguide/Components", module)
+  .addDecorator(story => <RelayStubProvider>{story()}</RelayStubProvider>)
+  .add("ArtistCard", () => {
+    return (
+      <React.Fragment>
+        <Section title="Responsive Artist Card">
+          <ArtistCard artist={artist} />
+        </Section>
+        <Section title="Large Artist Card">
+          <LargeArtistCard artist={artist} />
+        </Section>
+        <Section title="Small Artist Card">
+          <SmallArtistCard artist={artist} />
+        </Section>
+      </React.Fragment>
+    )
+  })

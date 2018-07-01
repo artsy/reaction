@@ -1,7 +1,7 @@
 import { Articles_artist } from "__generated__/Articles_artist.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { ArticlesRefetchContainer as Articles } from "./ArticlesRefetchContainer"
+import { ArtistArticlesRefetchContainer as Articles } from "./ArtistArticles"
 
 export interface ArticlesRouteProps {
   artist: Articles_artist
@@ -15,7 +15,7 @@ export const ArticlesRouteFragmentContainer = createFragmentContainer(
   ArticlesRoute,
   graphql`
     fragment Articles_artist on Artist {
-      ...ArticlesRefetchContainer_artist
+      ...ArtistArticles_artist
     }
   `
 )

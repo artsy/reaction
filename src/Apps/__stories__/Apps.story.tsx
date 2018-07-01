@@ -1,12 +1,26 @@
 import { storiesOf } from "@storybook/react"
-import { Artist } from "Apps/Artist"
-import { Artwork } from "Apps/Artwork"
+import { routes as artistRoutes } from "Apps/Artist/routes"
+import { routes as artworkRoutes } from "Apps/Artwork/routes"
 import React from "react"
+import { StorybooksRouter } from "Router/StorybooksRouter"
 
 storiesOf("Apps", module)
   .add("Artwork Page", () => {
-    return <Artwork />
+    return (
+      <StorybooksRouter
+        routes={artworkRoutes}
+        initialRoute="/artwork2/pablo-picasso-david-et-bethsabee"
+      />
+    )
   })
   .add("Artist Page", () => {
-    return <Artist />
+    return (
+      <StorybooksRouter
+        routes={artistRoutes}
+        initialRoute="/artist2/andy-warhol/auction-results"
+        initialState={{
+          mediator: x => x,
+        }}
+      />
+    )
   })

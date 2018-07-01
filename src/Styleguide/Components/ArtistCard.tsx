@@ -47,17 +47,16 @@ export const LargeArtistCard = (props: Props) => (
     <Flex flexDirection="column" alignItems="center">
       <FollowArtistButton
         onOpenAuthModal={() => {
-          props.mediator &&
-            props.mediator.trigger("open:auth", {
-              mode: "signup",
-              copy: `Sign up to follow ${props.artist.name}`,
-              signupIntent: "follow artist",
-              afterSignUpAction: {
-                kind: "artist",
-                action: "follow",
-                objectId: props.artist.id,
-              },
-            })
+          props.mediator.trigger("open:auth", {
+            mode: "signup",
+            copy: `Sign up to follow ${props.artist.name}`,
+            signupIntent: "follow artist",
+            afterSignUpAction: {
+              kind: "artist",
+              action: "follow",
+              objectId: props.artist.id,
+            },
+          })
         }}
         artist={props.artist as any}
       >
@@ -74,17 +73,16 @@ export const SmallArtistCard = (props: Props) => (
       <Sans size="1">{props.artist.formatted_nationality_and_birthday}</Sans>
       <FollowArtistButton
         onOpenAuthModal={() => {
-          props.mediator &&
-            props.mediator.trigger("open:auth", {
-              mode: "signup",
-              copy: `Sign up to follow ${props.artist.name}`,
-              signupIntent: "follow artist",
-              afterSignUpAction: {
-                kind: "artist",
-                action: "follow",
-                objectId: props.artist.id,
-              },
-            })
+          props.mediator.trigger("open:auth", {
+            mode: "signup",
+            copy: `Sign up to follow ${props.artist.name}`,
+            signupIntent: "follow artist",
+            afterSignUpAction: {
+              kind: "artist",
+              action: "follow",
+              objectId: props.artist.id,
+            },
+          })
         }}
         artist={props.artist as any}
       >

@@ -36,7 +36,7 @@ export class FollowArtistButton extends React.Component<Props> {
 
   handleFollow = () => {
     const { artist, currentUser, relay, onOpenAuthModal } = this.props
-    if (currentUser && currentUser.id) {
+    if (relay && currentUser && currentUser.id) {
       commitMutation(relay.environment, {
         mutation: graphql`
           mutation FollowArtistButtonMutation($input: FollowArtistInput!) {

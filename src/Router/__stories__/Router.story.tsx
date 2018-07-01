@@ -3,7 +3,7 @@ import React from "react"
 import { graphql } from "react-relay"
 import { Subscribe } from "unstated"
 import { PreloadLink } from "../../Router"
-import { GlobalState } from "../state"
+import { AppState } from "../state"
 import { StorybooksRouter } from "../StorybooksRouter"
 
 const routes = [
@@ -22,8 +22,8 @@ const routes = [
     }),
     Component: ({ artist, children, ...props }) => {
       return (
-        <Subscribe to={[GlobalState]}>
-          {globalState => {
+        <Subscribe to={[AppState]}>
+          {app => {
             return (
               <div>
                 <h1>Example Relay Router App</h1>

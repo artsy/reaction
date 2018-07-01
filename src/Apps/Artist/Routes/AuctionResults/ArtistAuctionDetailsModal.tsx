@@ -1,7 +1,7 @@
 import { Sans, Serif } from "@artsy/palette"
 import Icon from "Components/Icon"
 import { Modal } from "Components/Modal/Modal"
-import React from "react"
+import React, { Component, SFC } from "react"
 import styled from "styled-components"
 import { Box } from "Styleguide/Elements/Box"
 import { Button } from "Styleguide/Elements/Button"
@@ -10,17 +10,28 @@ import { Image } from "Styleguide/Elements/Image"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Subscribe } from "unstated"
-import { AuctionResultsStateContainer } from "./AuctionResultsState"
+import { AuctionResultsState } from "./state"
 
 interface Props {
-  auctionResult: any
+  hideDetailsModal?: () => void
+  auctionResult: {
+    title: string
+    date_text: string
+    dimension_text: string
+    images: {
+      thumbnail: {
+        url: string
+      }
+    }
+    description: string
+  }
 }
 
-export class AuctionDetailsModal extends React.Component<Props> {
+export class ArtistAuctionDetailsModal extends Component<Props> {
   render() {
     return (
-      <Subscribe to={[AuctionResultsStateContainer]}>
-        {({ state, hideDetailsModal }: AuctionResultsStateContainer) => {
+      <Subscribe to={[AuctionResultsState]}>
+        {({ state, hideDetailsModal }: AuctionResultsState) => {
           if (!state.showModal) {
             return null
           }
@@ -46,10 +57,15 @@ export class AuctionDetailsModal extends React.Component<Props> {
   }
 }
 
-const LotDetails = props => {
+const LotDetails: SFC<Props> = props => {
+  const {
+    hideDetailsModal,
+    auctionResult: { title, date_text, dimension_text, images, description },
+  } = props
+
   return (
     <React.Fragment>
-      <CloseButton onClick={() => props.hideDetailsModal()} />
+      <CloseButton onClick={() => hideDetailsModal()} />
 
       <Flex justifyContent="center">
         <Serif size="5t" weight="semibold">
@@ -62,18 +78,18 @@ const LotDetails = props => {
       <Flex>
         <Box>
           <Serif size="2" italic>
-            {props.auctionResult.title && props.auctionResult.title + ","}
-            {props.auctionResult.date_text}
+            {title && title + ","}
+            {date_text}
           </Serif>
           <Serif size="2" color="black60">
-            {props.auctionResult.dimension_text}
+            {dimension_text}
           </Serif>
         </Box>
 
         <Spacer mr={2} />
 
         <Box height="auto">
-          <Image width="100px" src={props.auctionResult.images.thumbnail.url} />
+          <Image width="100px" src={images.thumbnail.url} />
         </Box>
       </Flex>
 
@@ -87,13 +103,13 @@ const LotDetails = props => {
         </Sans>
       </Box>
 
-      <Serif size="2">{props.auctionResult.description}</Serif>
+      <Serif size="2">{description}</Serif>
       <Spacer mb={4} />
 
       <Button
         variant="secondaryOutline"
         width="100%"
-        onClick={() => props.hideDetailsModal()}
+        onClick={() => hideDetailsModal()}
       >
         OK
       </Button>

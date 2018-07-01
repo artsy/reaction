@@ -1,10 +1,14 @@
 import Spinner from "Components/Spinner"
-import React from "react"
+import React, { SFC } from "react"
 import { PreloadLinkState } from "Router/state"
 import styled from "styled-components"
 import { Subscribe } from "unstated"
 
-export const LoadingArea = props => {
+interface Props {
+  children: any
+}
+
+export const LoadingArea: SFC<Props> = props => {
   return (
     <Subscribe to={[PreloadLinkState]}>
       {({ state: { isFetching } }: PreloadLinkState) => {

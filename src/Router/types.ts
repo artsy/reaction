@@ -34,21 +34,23 @@ export interface AppShellProps {
 }
 
 export interface Router {
+  currentUser: User
   relayEnvironment: Environment
   routes: RouteConfig
   resolver: any // FIXME
 }
 
-export interface BootProps extends GlobalStateContainer {
+export interface BootProps extends AppStateContainer {
   initialBreakpoint?: Breakpoint
+  system?: Router
   [x: string]: any // User can pass in any properties on boot
 }
 
-export interface GlobalStateContainer {
+export interface AppStateContainer {
   system?: Router
 }
 
-export interface PreloadLinkProps extends ContextProps, GlobalStateContainer {
+export interface PreloadLinkProps extends ContextProps, AppStateContainer {
   children?: any
   exact?: boolean
   immediate?: boolean

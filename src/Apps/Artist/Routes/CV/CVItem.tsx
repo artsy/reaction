@@ -1,7 +1,7 @@
 import { Sans, Serif } from "@artsy/palette"
 import { CVItem_artist } from "__generated__/CVItem_artist.graphql"
 import { groupBy } from "lodash"
-import React from "react"
+import React, { Component } from "react"
 import styled from "styled-components"
 import { themeGet } from "styled-system"
 import { Box } from "Styleguide/Elements/Box"
@@ -29,7 +29,7 @@ interface CVItemState {
   isLoading: boolean
 }
 
-class CVItem extends React.Component<CVItemProps, CVItemState> {
+class CVItem extends Component<CVItemProps, CVItemState> {
   state = {
     isLoading: false,
   }
@@ -132,13 +132,6 @@ class CVItem extends React.Component<CVItemProps, CVItemState> {
                                 </YearGroup>
                               )
                             })}
-
-                          {/* FIXME: Implement loading spinner */}
-                          {/* {this.props.relay.isLoading() && (
-                            <Box position="relative" pt={4} pb={0}>
-                              <Spinner />
-                            </Box>
-                          )} */}
 
                           <Spacer mb={2} />
 

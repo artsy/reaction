@@ -1,7 +1,7 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-export type AuctionResultItem_auctionResult = {
+export type ArtistAuctionResultItem_auctionResult = {
     readonly title: string | null;
     readonly dimension_text: string | null;
     readonly organization: string | null;
@@ -34,7 +34,7 @@ var v0 = {
 };
 return {
   "kind": "Fragment",
-  "name": "AuctionResultItem_auctionResult",
+  "name": "ArtistAuctionResultItem_auctionResult",
   "type": "AuctionResult",
   "metadata": null,
   "argumentDefinitions": [],
@@ -151,5 +151,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '1d4be571cc01236aafed3f8ea79c1918';
+(node as any).hash = 'e39f2dfa5fe24995539e0e0324ac20be';
 export default node;

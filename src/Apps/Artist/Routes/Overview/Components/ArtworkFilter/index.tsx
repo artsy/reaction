@@ -1,6 +1,6 @@
 import { ArtworkFilter_artist } from "__generated__/ArtworkFilter_artist.graphql"
 import { FilterState } from "Apps/Artist/Routes/Overview/state"
-import * as React from "react"
+import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Toggle } from "Styleguide/Components/Toggle"
 import { Box } from "Styleguide/Elements/Box"
@@ -18,7 +18,7 @@ interface Props {
   filters: any // FIXME
 }
 
-class Filter extends React.Component<Props> {
+class Filter extends Component<Props> {
   renderCurrentlySelected(filter, state) {
     let selectedFilter = null
 
