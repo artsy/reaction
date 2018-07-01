@@ -57,7 +57,10 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
       step: 0.01,
       value: 0,
     },
-    promisedDragon: import("openseadragon"),
+    /**
+     * FIXME: convert to import('openseadragon) once force supports it
+     */
+    promisedDragon: Promise.resolve(require("openseadragon")),
   }
 
   renderLightbox() {
