@@ -10,12 +10,8 @@ import { Spacer } from "Styleguide/Elements/Spacer"
 import { ArtistHeaderFragmentContainer as ArtistHeader } from "./Components/ArtistHeader"
 import { LoadingArea } from "./Components/LoadingArea"
 
-// TODO:
-// Max width 1192
-// Inner content max width 1112
-
 export interface ArtistAppProps {
-  artist: any
+  artist: any // FIXME: ArtistHeader_artist | NavigationTabs_artist
   me: RecentlyViewed_me
   params: {
     artistID: string

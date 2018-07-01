@@ -14,6 +14,7 @@ import { Responsive } from "Utils/Responsive"
 
 interface Props {
   artist: ArtistHeader_artist
+  currentUser?: User
   mediator?: {
     trigger: (action: string, config: object) => void
   }
@@ -23,16 +24,29 @@ export const ArtistHeader: SFC<Props> = props => {
   return (
     <Subscribe to={[AppState]}>
       {({ state }) => {
+        const {
+          mediator,
+          system: { currentUser },
+        } = state
+
         return (
           <Responsive>
             {({ xs }) => {
               if (xs) {
                 return (
-                  <SmallArtistHeader mediator={state.mediator} {...props} />
+                  <SmallArtistHeader
+                    mediator={mediator}
+                    currentUser={currentUser}
+                    {...props}
+                  />
                 )
               } else {
                 return (
-                  <LargeArtistHeader mediator={state.mediator} {...props} />
+                  <LargeArtistHeader
+                    mediator={mediator}
+                    currentUser={currentUser}
+                    {...props}
+                  />
                 )
               }
             }}
@@ -43,14 +57,11 @@ export const ArtistHeader: SFC<Props> = props => {
   )
 }
 
-ArtistHeader.defaultProps = {
-  mediator: {
-    trigger: x => x,
-  },
-}
-
 export const LargeArtistHeader: SFC<Props> = props => {
-  const { carousel } = props.artist
+  const {
+    artist: { carousel },
+    currentUser,
+  } = props
 
   return (
     <Box width="100%">
@@ -85,7 +96,9 @@ export const LargeArtistHeader: SFC<Props> = props => {
           </Flex>
         </Box>
         <FollowArtistButton
+          useDeprecatedButtonStyle={false}
           artist={props.artist as any}
+          currentUser={currentUser}
           onOpenAuthModal={() => {
             props.mediator.trigger("open:auth", {
               mode: "signup",
@@ -107,7 +120,10 @@ export const LargeArtistHeader: SFC<Props> = props => {
 }
 
 export const SmallArtistHeader: SFC<Props> = props => {
-  const { carousel } = props.artist
+  const {
+    artist: { carousel },
+    currentUser,
+  } = props
 
   return (
     <Flex flexDirection="column">
@@ -142,7 +158,9 @@ export const SmallArtistHeader: SFC<Props> = props => {
       </Flex>
       <Box my={2}>
         <FollowArtistButton
+          useDeprecatedButtonStyle={false}
           artist={props.artist as any}
+          currentUser={currentUser}
           onOpenAuthModal={() => {
             props.mediator.trigger("open:auth", {
               mode: "signup",

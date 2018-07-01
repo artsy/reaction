@@ -1,12 +1,12 @@
 import { mount } from "enzyme"
 import "jest-styled-components"
-import renderer from "react-test-renderer"
 import React from "react"
-import { FollowButton } from "../Button"
+import renderer from "react-test-renderer"
+import { FollowButtonDeprecated } from "../ButtonDeprecated"
 
 describe("FollowButton", () => {
   const getWrapper = props => {
-    return mount(<FollowButton {...props} />)
+    return mount(<FollowButtonDeprecated {...props} />)
   }
 
   let props = {
@@ -16,7 +16,9 @@ describe("FollowButton", () => {
 
   describe("snapshots", () => {
     it("Renders FollowButton properly", () => {
-      const component = renderer.create(<FollowButton {...props} />).toJSON()
+      const component = renderer
+        .create(<FollowButtonDeprecated {...props} />)
+        .toJSON()
       expect(component).toMatchSnapshot()
     })
   })

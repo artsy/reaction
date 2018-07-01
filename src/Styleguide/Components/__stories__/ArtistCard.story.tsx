@@ -19,16 +19,21 @@ const artist = {
 storiesOf("Styleguide/Components", module)
   .addDecorator(story => <RelayStubProvider>{story()}</RelayStubProvider>)
   .add("ArtistCard", () => {
+    const props = {
+      artist,
+      currentUser: null,
+    }
+
     return (
       <React.Fragment>
         <Section title="Responsive Artist Card">
-          <ArtistCard artist={artist} />
+          <ArtistCard {...props} />
         </Section>
         <Section title="Large Artist Card">
-          <LargeArtistCard artist={artist} />
+          <LargeArtistCard {...props} />
         </Section>
         <Section title="Small Artist Card">
-          <SmallArtistCard artist={artist} />
+          <SmallArtistCard {...props} />
         </Section>
       </React.Fragment>
     )

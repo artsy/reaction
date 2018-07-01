@@ -154,7 +154,10 @@ export class ResponsiveProvider extends React.Component<
   }
 }
 
-export const Responsive: React.ComponentType<
+export type ResponsiveProps = React.ComponentType<
   React.ConsumerProps<BreakpointState>
-> =
-  ResponsiveContext.Consumer
+> & {
+  children?: any
+}
+
+export const Responsive: ResponsiveProps = ResponsiveContext.Consumer

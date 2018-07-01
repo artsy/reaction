@@ -12,6 +12,7 @@ import { createFragmentContainer, graphql } from "react-relay"
 
 interface Props {
   artist: ArtistCard_artist
+  currentUser: User
   mediator?: {
     trigger: (action: string, config: object) => void
   }
@@ -46,6 +47,13 @@ export const LargeArtistCard = (props: Props) => (
 
     <Flex flexDirection="column" alignItems="center">
       <FollowArtistButton
+        artist={props.artist as any}
+        currentUser={props.currentUser}
+        useDeprecatedButtonStyle={false}
+        buttonProps={{
+          variant: "secondaryOutline",
+          size: "small",
+        }}
         onOpenAuthModal={() => {
           props.mediator.trigger("open:auth", {
             mode: "signup",
@@ -58,7 +66,6 @@ export const LargeArtistCard = (props: Props) => (
             },
           })
         }}
-        artist={props.artist as any}
       >
         Follow
       </FollowArtistButton>
@@ -71,7 +78,15 @@ export const SmallArtistCard = (props: Props) => (
     <Flex flexDirection="column" justifyContent="center">
       <Serif size="3t">{props.artist.name}</Serif>
       <Sans size="1">{props.artist.formatted_nationality_and_birthday}</Sans>
+      <Spacer mb={1} />
       <FollowArtistButton
+        artist={props.artist as any}
+        currentUser={props.currentUser}
+        useDeprecatedButtonStyle={false}
+        buttonProps={{
+          variant: "secondaryOutline",
+          size: "small",
+        }}
         onOpenAuthModal={() => {
           props.mediator.trigger("open:auth", {
             mode: "signup",
@@ -84,7 +99,6 @@ export const SmallArtistCard = (props: Props) => (
             },
           })
         }}
-        artist={props.artist as any}
       >
         Follow
       </FollowArtistButton>
