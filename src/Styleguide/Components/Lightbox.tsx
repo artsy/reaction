@@ -98,8 +98,10 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
 
   hide = () => {
     this.setState({ shown: false })
-    this.state.viewer.destroy()
-    this.state.viewer = null
+    if (this.state.viewer) {
+      this.state.viewer.destroy()
+      this.state.viewer = null
+    }
     document.removeEventListener(KEYBOARD_EVENT, this.handleKeyPress)
   }
 
@@ -203,6 +205,10 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
     this.setState({
       element: document.getElementById("lightbox-container"),
     })
+  }
+
+  componentWillUnmount() {
+    this.hide()
   }
 
   componentDidUpdate(prevProps, prevState) {
