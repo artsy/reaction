@@ -46,7 +46,7 @@ const renderPage = (pageCursor, onClick: (cursor: string) => void) => {
       onClick={() => onClick(cursor)}
       num={page}
       active={isCurrent}
-      key={cursor}
+      key={cursor + page}
     />
   )
 }

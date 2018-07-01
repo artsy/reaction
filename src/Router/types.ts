@@ -34,6 +34,7 @@ export interface AppShellProps {
 }
 
 export interface Router {
+  currentUser: User
   relayEnvironment: Environment
   routes: RouteConfig
   resolver: any // FIXME
@@ -41,6 +42,7 @@ export interface Router {
 
 export interface BootProps extends AppStateContainer {
   initialBreakpoint?: Breakpoint
+  system?: Router
   [x: string]: any // User can pass in any properties on boot
 }
 

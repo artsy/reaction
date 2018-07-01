@@ -30,7 +30,7 @@ export const ExhibitionsHeadline: SFC<ExhibitionsHeadlineProps> = props => (
       {isCollapsed(props) ? ` (${props.exhibitionCount})` : ""}
     </Sans>
     {isCollapsed(props) && (
-      <div onClick={props.onShowClicked}>
+      <div onClick={props.onShowClicked} style={{ cursor: "pointer" }}>
         <Sans size="2" color="black60" ml={2}>
           Show
         </Sans>

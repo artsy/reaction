@@ -20,8 +20,11 @@ export const Footer: React.SFC<Props> = props => {
         return (
           <Responsive>
             {({ xs }) => {
-              if (xs) return <SmallFooter mediator={state.force.mediator} />
-              else return <LargeFooter mediator={state.force.mediator} />
+              if (xs) {
+                return <SmallFooter mediator={state.force.mediator} />
+              } else {
+                return <LargeFooter mediator={state.force.mediator} />
+              }
             }}
           </Responsive>
         )

@@ -10,14 +10,13 @@ import { AppState } from "./state"
 import { BootProps } from "./types"
 
 export const Boot: React.SFC<BootProps> = ({ children, ...props }) => {
-  const app = new AppState(props)
-  const relayEnvironment = app.state.system && app.state.system.relayEnvironment
-  const currentUser = app.state.system && app.state.system.currentUser
+  const appState = new AppState(props)
+
   return (
-    <StateProvider inject={[app]}>
+    <StateProvider inject={[appState]}>
       <ContextProvider
-        relayEnvironment={relayEnvironment}
-        currentUser={currentUser}
+        relayEnvironment={props.relayEnvironment}
+        currentUser={props.currentUser}
       >
         <ResponsiveProvider
           initialBreakpoint={props.initialBreakpoint}
@@ -38,4 +37,6 @@ export const Boot: React.SFC<BootProps> = ({ children, ...props }) => {
 
 Boot.defaultProps = {
   initialBreakpoint: null,
+  relayEnvironment: null,
+  currentUser: null,
 }
