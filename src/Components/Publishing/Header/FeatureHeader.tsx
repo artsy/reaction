@@ -3,7 +3,7 @@ import { unica } from "Assets/Fonts"
 import React from "react"
 import styled from "styled-components"
 import { resize } from "../../../Utils/resizer"
-import { Responsive } from "../../../Utils/Responsive"
+import { ResponsiveDeprecated } from "../../../Utils/ResponsiveDeprecated"
 import { track } from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
 import { Byline } from "../Byline/Byline"
@@ -159,7 +159,8 @@ class FeatureHeaderComponent extends React.Component<FeatureHeaderProps, any> {
       const { super_article } = article
 
       return (
-        <Responsive initialState={{ isMobile: passedIsMobile }}>
+        // FIXME: Replace with new version of Responsive
+        <ResponsiveDeprecated initialState={{ isMobile: passedIsMobile }}>
           {({ isMobile }) => (
             <FeatureHeaderContainer data-type={type} height={height}>
               {renderFeatureAsset(url, type, isMobile, article.title, image)}
@@ -205,7 +206,7 @@ class FeatureHeaderComponent extends React.Component<FeatureHeaderProps, any> {
               </HeaderTextContainer>
             </FeatureHeaderContainer>
           )}
-        </Responsive>
+        </ResponsiveDeprecated>
       )
     }
   }

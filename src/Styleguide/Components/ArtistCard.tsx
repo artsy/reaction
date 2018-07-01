@@ -5,7 +5,7 @@ import { Avatar } from "Styleguide/Elements"
 import { BorderBox } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Spacer } from "Styleguide/Elements/Spacer"
-import { Responsive } from "Styleguide/Utils/Responsive"
+import { Responsive } from "Utils/Responsive"
 
 import { ArtistCard_artist } from "__generated__/ArtistCard_artist.graphql"
 import { createFragmentContainer, graphql } from "react-relay"

@@ -6,7 +6,7 @@ import { SelectedExhibitions_exhibitions } from "__generated__/SelectedExhibitio
 import React, { SFC } from "react"
 import { BorderBox, Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
-import { Responsive } from "Styleguide/Utils/Responsive"
+import { Responsive } from "Utils/Responsive"
 
 const MIN_FOR_SELECTED_EXHIBITIONS = 3
 const MIN_EXHIBITIONS = 2

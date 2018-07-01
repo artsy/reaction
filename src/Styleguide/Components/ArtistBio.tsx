@@ -1,6 +1,6 @@
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Responsive } from "Styleguide/Utils/Responsive"
+import { Responsive } from "Utils/Responsive"
 import { ReadMore } from "./ReadMore"
 
 import { ArtistBio_bio } from "__generated__/ArtistBio_bio.graphql"

@@ -5,7 +5,7 @@ import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { BorderBox, Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
-import { Responsive } from "Styleguide/Utils/Responsive"
+import { Responsive } from "Utils/Responsive"
 
 const wrapper = xs => props =>
   xs ? <Flex flexDirection="column" mb={1} {...props} /> : <Box {...props} />

@@ -1,6 +1,6 @@
+import { exhibitions } from "Apps/__test__/Fixtures/SelectedExhibitions"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { exhibitions } from "Styleguide/Pages/Fixtures/SelectedExhibitions"
 import { Section } from "Styleguide/Utils/Section"
 import {
   SelectedExhibitions,
