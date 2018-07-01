@@ -6,7 +6,7 @@ import { ComponentClass, StatelessComponent } from "react"
 
 export const routes = [
   {
-    path: "/:artworkID",
+    path: "/artwork2/:artworkID",
     Component: ArtworkApp,
     query: graphql`
       query routes_ArtworkQuery($artworkID: String!) {

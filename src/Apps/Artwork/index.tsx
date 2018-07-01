@@ -6,7 +6,7 @@ export const Artwork = () => {
   return (
     <StorybooksRouter
       routes={routes}
-      initialRoute="/pablo-picasso-david-et-bethsabee"
+      initialRoute="/artwork2/pablo-picasso-david-et-bethsabee"
     />
   )
 }
