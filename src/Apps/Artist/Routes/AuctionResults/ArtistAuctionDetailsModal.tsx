@@ -10,17 +10,17 @@ import { Image } from "Styleguide/Elements/Image"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Subscribe } from "unstated"
-import { AuctionResultsStateContainer } from "./AuctionResultsState"
+import { AuctionResultsState } from "./state"
 
 interface Props {
   auctionResult: any
 }
 
-export class AuctionDetailsModal extends React.Component<Props> {
+export class ArtistAuctionDetailsModal extends React.Component<Props> {
   render() {
     return (
-      <Subscribe to={[AuctionResultsStateContainer]}>
-        {({ state, hideDetailsModal }: AuctionResultsStateContainer) => {
+      <Subscribe to={[AuctionResultsState]}>
+        {({ state, hideDetailsModal }: AuctionResultsState) => {
           if (!state.showModal) {
             return null
           }

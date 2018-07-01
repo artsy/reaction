@@ -1,7 +1,7 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-export type RelatedArtistsRefetchContainer_artist = {
+export type RelatedArtistsList_artist = {
     readonly id: string;
     readonly related: ({
         readonly artists: ({
@@ -29,7 +29,7 @@ var v0 = {
 };
 return {
   "kind": "Fragment",
-  "name": "RelatedArtistsRefetchContainer_artist",
+  "name": "RelatedArtistsList_artist",
   "type": "Artist",
   "metadata": null,
   "argumentDefinitions": [
@@ -198,5 +198,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'bdc694fe9b80f6e91bad1576502aabeb';
+(node as any).hash = 'a69f19ee45c45e62ecc0dd0c2e2db8fc';
 export default node;

@@ -1,4 +1,4 @@
-import { AuctionResultsRefetchContainer_artist } from "__generated__/AuctionResultsRefetchContainer_artist.graphql"
+import { ArtistAuctionResults_artist } from "__generated__/ArtistAuctionResults_artist.graphql"
 import React from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { PaginationFragmentContainer } from "Styleguide/Components/Pagination"
@@ -7,9 +7,9 @@ import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Subscribe } from "unstated"
-import { AuctionDetailsModal } from "./AuctionDetailsModal"
-import { AuctionResultItemFragmentContainer } from "./AuctionResultItem"
-import { AuctionResultsStateContainer } from "./AuctionResultsState"
+import { ArtistAuctionDetailsModal } from "./ArtistAuctionDetailsModal"
+import { AuctionResultItemFragmentContainer } from "./ArtistAuctionResultItem"
+import { AuctionResultsState } from "./state"
 import { TableColumns } from "./TableColumns"
 import { TableSidebar } from "./TableSidebar"
 
@@ -17,7 +17,7 @@ const PAGE_SIZE = 10
 
 interface AuctionResultsProps {
   relay: RelayRefetchProp
-  artist: AuctionResultsRefetchContainer_artist
+  artist: ArtistAuctionResults_artist
   sort: string
 }
 
@@ -76,8 +76,8 @@ class AuctionResultsContainer extends React.Component<AuctionResultsProps> {
 
   render() {
     return (
-      <Subscribe to={[AuctionResultsStateContainer]}>
-        {({ state }: AuctionResultsStateContainer) => {
+      <Subscribe to={[AuctionResultsState]}>
+        {({ state }: AuctionResultsState) => {
           return (
             <React.Fragment>
               <Row>
@@ -92,7 +92,9 @@ class AuctionResultsContainer extends React.Component<AuctionResultsProps> {
                     <Separator />
                   </Box>
 
-                  <AuctionDetailsModal auctionResult={state.selectedAuction} />
+                  <ArtistAuctionDetailsModal
+                    auctionResult={state.selectedAuction}
+                  />
 
                   {this.props.artist.auctionResults.edges.map(
                     ({ node }, index) => {
@@ -130,11 +132,11 @@ class AuctionResultsContainer extends React.Component<AuctionResultsProps> {
   }
 }
 
-export const AuctionResultsRefetchContainer = createRefetchContainer(
+export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
   (props: AuctionResultsProps) => {
     return (
-      <Subscribe to={[AuctionResultsStateContainer]}>
-        {({ state }: AuctionResultsStateContainer) => {
+      <Subscribe to={[AuctionResultsState]}>
+        {({ state }: AuctionResultsState) => {
           return <AuctionResultsContainer {...props} sort={state.sort} />
         }}
       </Subscribe>
@@ -142,7 +144,7 @@ export const AuctionResultsRefetchContainer = createRefetchContainer(
   },
   {
     artist: graphql`
-      fragment AuctionResultsRefetchContainer_artist on Artist
+      fragment ArtistAuctionResults_artist on Artist
         @argumentDefinitions(
           sort: {
             type: "AuctionResultSorts"
@@ -170,7 +172,7 @@ export const AuctionResultsRefetchContainer = createRefetchContainer(
           }
           edges {
             node {
-              ...AuctionResultItem_auctionResult
+              ...ArtistAuctionResultItem_auctionResult
             }
           }
         }
@@ -178,7 +180,7 @@ export const AuctionResultsRefetchContainer = createRefetchContainer(
     `,
   },
   graphql`
-    query AuctionResultsRefetchContainerQuery(
+    query ArtistAuctionResultsQuery(
       $first: Int
       $last: Int
       $after: String
@@ -187,7 +189,7 @@ export const AuctionResultsRefetchContainer = createRefetchContainer(
       $artistID: String!
     ) {
       artist(id: $artistID) {
-        ...AuctionResultsRefetchContainer_artist
+        ...ArtistAuctionResults_artist
           @arguments(
             first: $first
             last: $last

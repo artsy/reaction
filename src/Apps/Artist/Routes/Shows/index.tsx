@@ -5,7 +5,7 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Responsive } from "Utils/Responsive"
-import { ShowsRefetchContainer as Shows } from "./ShowsRefetchContainer"
+import { ArtistShowsRefetchContainer as Shows } from "./ArtistShows"
 
 export interface ShowProps {
   viewer: Shows_viewer
@@ -94,15 +94,15 @@ export const ShowsRouteFragmentContainer = createFragmentContainer(
         pastShowsSort: { type: "PartnerShowSorts", defaultValue: "end_at_desc" }
       ) {
       artist_currentShows: artist(id: $artistID) {
-        ...ShowsRefetchContainer_artist
+        ...ArtistShows_artist
           @arguments(sort: $currentShowsSort, status: $currentShowsStatus)
       }
       artist_upcomingShows: artist(id: $artistID) {
-        ...ShowsRefetchContainer_artist
+        ...ArtistShows_artist
           @arguments(sort: $upcomingShowsSort, status: $upcomingShowsStatus)
       }
       artist_pastShows: artist(id: $artistID) {
-        ...ShowsRefetchContainer_artist
+        ...ArtistShows_artist
           @arguments(sort: $pastShowsSort, status: $pastShowsStatus)
       }
     }

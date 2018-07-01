@@ -1,4 +1,4 @@
-import { RelatedArtistsRefetchContainer_artist } from "__generated__/RelatedArtistsRefetchContainer_artist.graphql"
+import { RelatedArtistsList_artist } from "__generated__/RelatedArtistsList_artist.graphql"
 import React from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { ArtistCardFragmentContainer } from "Styleguide/Components/ArtistCard"
@@ -11,7 +11,7 @@ import { Responsive } from "Utils/Responsive"
 
 interface ShowProps {
   relay: RelayRefetchProp
-  artist: RelatedArtistsRefetchContainer_artist
+  artist: RelatedArtistsList_artist
   kind: string
   scrollTo: string
 }
@@ -121,7 +121,7 @@ export const RelatedArtistsRefetchContainer = createRefetchContainer(
   },
   {
     artist: graphql`
-      fragment RelatedArtistsRefetchContainer_artist on Artist
+      fragment RelatedArtistsList_artist on Artist
         @argumentDefinitions(
           first: { type: "Int", defaultValue: 6 }
           last: { type: "Int" }
@@ -156,7 +156,7 @@ export const RelatedArtistsRefetchContainer = createRefetchContainer(
     `,
   },
   graphql`
-    query RelatedArtistsRefetchContainerQuery(
+    query RelatedArtistsListQuery(
       $first: Int
       $last: Int
       $after: String
@@ -165,7 +165,7 @@ export const RelatedArtistsRefetchContainer = createRefetchContainer(
       $kind: RelatedArtistsKind
     ) {
       artist(id: $artistID) {
-        ...RelatedArtistsRefetchContainer_artist
+        ...RelatedArtistsList_artist
           @arguments(
             kind: $kind
             first: $first

@@ -1,5 +1,5 @@
 import { Serif } from "@artsy/palette"
-import { AuctionResultItem_auctionResult } from "__generated__/AuctionResultItem_auctionResult.graphql"
+import { ArtistAuctionResultItem_auctionResult } from "__generated__/ArtistAuctionResultItem_auctionResult.graphql"
 import { ContextProps } from "Components/Artsy"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -14,16 +14,16 @@ import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Subscribe } from "unstated"
 import { Responsive } from "Utils/Responsive"
-import { AuctionResultsStateContainer } from "./AuctionResultsState"
+import { AuctionResultsState } from "./state"
 
 export interface Props extends ContextProps {
-  auctionResult: AuctionResultItem_auctionResult
+  auctionResult: ArtistAuctionResultItem_auctionResult
   mediator?: {
     trigger: (action: string, config: object) => void
   }
 }
 
-export class AuctionResultItem extends React.Component<Props> {
+export class ArtistAuctionResultItem extends React.Component<Props> {
   render() {
     return (
       <Subscribe to={[AppState]}>
@@ -77,9 +77,10 @@ const LargeAuctionItem: React.SFC<Props> = (props: Props) => {
   const salePrice = getSalePrice(props.auctionResult.price_realized)
   const truncatedDescription = getDescription(props.auctionResult.description)
   const estimatedPrice = props.auctionResult.estimate.display
+
   return (
-    <Subscribe to={[AuctionResultsStateContainer]}>
-      {({ state, showDetailsModal }: AuctionResultsStateContainer) => {
+    <Subscribe to={[AuctionResultsState]}>
+      {({ state, showDetailsModal }: AuctionResultsState) => {
         return (
           <React.Fragment>
             <Col sm={1}>
@@ -244,9 +245,9 @@ const ExtraSmallAuctionItem: React.SFC<Props> = props => {
 }
 
 export const AuctionResultItemFragmentContainer = createFragmentContainer(
-  AuctionResultItem,
+  ArtistAuctionResultItem,
   graphql`
-    fragment AuctionResultItem_auctionResult on AuctionResult {
+    fragment ArtistAuctionResultItem_auctionResult on AuctionResult {
       title
       dimension_text
       organization

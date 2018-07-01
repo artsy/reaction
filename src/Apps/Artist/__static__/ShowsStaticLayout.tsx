@@ -1,8 +1,8 @@
 import { Sans } from "@artsy/palette"
 import { paginationProps } from "Apps/__test__/Fixtures/Pagination"
 import { showBlockProps, showListProps } from "Apps/__test__/Fixtures/Show"
-import { ShowBlockItem } from "Apps/Artist/Routes/Shows/ShowBlockItem"
-import { ShowListItem } from "Apps/Artist/Routes/Shows/ShowListItem"
+import { ArtistShowBlockItem } from "Apps/Artist/Routes/Shows/ArtistShowBlockItem"
+import { ArtistShowListItem } from "Apps/Artist/Routes/Shows/ArtistShowListItem"
 import React from "react"
 import { PaginationFragmentContainer } from "Styleguide/Components/Pagination"
 import { Box } from "Styleguide/Elements/Box"
@@ -42,19 +42,19 @@ export const Shows = () => {
                       flexDirection={blockDirection}
                       flexWrap={"true" as any}
                     >
-                      <ShowBlockItem
+                      <ArtistShowBlockItem
                         blockWidth={blockWidth}
                         {...showBlockProps}
                       />
-                      <ShowBlockItem
+                      <ArtistShowBlockItem
                         blockWidth={blockWidth}
                         {...showBlockProps}
                       />
-                      <ShowBlockItem
+                      <ArtistShowBlockItem
                         blockWidth={blockWidth}
                         {...showBlockProps}
                       />
-                      <ShowBlockItem
+                      <ArtistShowBlockItem
                         blockWidth={blockWidth}
                         {...showBlockProps}
                       />
@@ -98,9 +98,9 @@ export const Shows = () => {
                 <Row>
                   <Col>
                     <ShowList>
-                      <ShowListItem {...showListProps} />
-                      <ShowListItem {...showListProps} />
-                      <ShowListItem {...showListProps} />
+                      <ArtistShowListItem {...showListProps} />
+                      <ArtistShowListItem {...showListProps} />
+                      <ArtistShowListItem {...showListProps} />
                     </ShowList>
                   </Col>
                 </Row>
@@ -136,9 +136,9 @@ export const Shows = () => {
                 <Row>
                   <Col>
                     <ShowList>
-                      <ShowListItem {...showListProps} />
-                      <ShowListItem {...showListProps} />
-                      <ShowListItem {...showListProps} />
+                      <ArtistShowListItem {...showListProps} />
+                      <ArtistShowListItem {...showListProps} />
+                      <ArtistShowListItem {...showListProps} />
                     </ShowList>
                   </Col>
                 </Row>

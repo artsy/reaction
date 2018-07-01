@@ -15,7 +15,7 @@ interface Props {
 
 const FIXME_DOMAIN = "https://www.artsy.net"
 
-export const ShowListItem = (props: Props) => {
+export const ArtistShowListItem = (props: Props) => {
   return (
     <Responsive>
       {({ xs }) => {

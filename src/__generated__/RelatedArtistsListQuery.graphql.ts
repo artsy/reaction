@@ -2,7 +2,7 @@
 
 import { ConcreteRequest } from "relay-runtime";
 export type RelatedArtistsKind = "CONTEMPORARY" | "MAIN" | "%future added value";
-export type RelatedArtistsRefetchContainerQueryVariables = {
+export type RelatedArtistsListQueryVariables = {
     readonly first?: number | null;
     readonly last?: number | null;
     readonly after?: string | null;
@@ -10,14 +10,14 @@ export type RelatedArtistsRefetchContainerQueryVariables = {
     readonly artistID: string;
     readonly kind?: RelatedArtistsKind | null;
 };
-export type RelatedArtistsRefetchContainerQueryResponse = {
+export type RelatedArtistsListQueryResponse = {
     readonly artist: ({}) | null;
 };
 
 
 
 /*
-query RelatedArtistsRefetchContainerQuery(
+query RelatedArtistsListQuery(
   $first: Int
   $last: Int
   $after: String
@@ -26,12 +26,12 @@ query RelatedArtistsRefetchContainerQuery(
   $kind: RelatedArtistsKind
 ) {
   artist(id: $artistID) {
-    ...RelatedArtistsRefetchContainer_artist_dxT5s
+    ...RelatedArtistsList_artist_dxT5s
     __id
   }
 }
 
-fragment RelatedArtistsRefetchContainer_artist_dxT5s on Artist {
+fragment RelatedArtistsList_artist_dxT5s on Artist {
   id
   related {
     artists(first: $first, after: $after, before: $before, last: $last, kind: $kind) {
@@ -182,13 +182,13 @@ v5 = [
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "RelatedArtistsRefetchContainerQuery",
+  "name": "RelatedArtistsListQuery",
   "id": null,
-  "text": "query RelatedArtistsRefetchContainerQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $artistID: String!\n  $kind: RelatedArtistsKind\n) {\n  artist(id: $artistID) {\n    ...RelatedArtistsRefetchContainer_artist_dxT5s\n    __id\n  }\n}\n\nfragment RelatedArtistsRefetchContainer_artist_dxT5s on Artist {\n  id\n  related {\n    artists(first: $first, after: $after, before: $before, last: $last, kind: $kind) {\n      pageInfo {\n        hasNextPage\n        endCursor\n      }\n      pageCursors {\n        ...Pagination_pageCursors\n      }\n      edges {\n        node {\n          ...ArtistCard_artist\n          __id\n        }\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n  }\n}\n\nfragment ArtistCard_artist on Artist {\n  name\n  id\n  image {\n    cropped(width: 400, height: 300) {\n      url\n    }\n  }\n  formatted_nationality_and_birthday\n  ...FollowArtistButton_artist\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n}\n",
+  "text": "query RelatedArtistsListQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $artistID: String!\n  $kind: RelatedArtistsKind\n) {\n  artist(id: $artistID) {\n    ...RelatedArtistsList_artist_dxT5s\n    __id\n  }\n}\n\nfragment RelatedArtistsList_artist_dxT5s on Artist {\n  id\n  related {\n    artists(first: $first, after: $after, before: $before, last: $last, kind: $kind) {\n      pageInfo {\n        hasNextPage\n        endCursor\n      }\n      pageCursors {\n        ...Pagination_pageCursors\n      }\n      edges {\n        node {\n          ...ArtistCard_artist\n          __id\n        }\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n  }\n}\n\nfragment ArtistCard_artist on Artist {\n  name\n  id\n  image {\n    cropped(width: 400, height: 300) {\n      url\n    }\n  }\n  formatted_nationality_and_birthday\n  ...FollowArtistButton_artist\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "RelatedArtistsRefetchContainerQuery",
+    "name": "RelatedArtistsListQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -204,7 +204,7 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "RelatedArtistsRefetchContainer_artist",
+            "name": "RelatedArtistsList_artist",
             "args": [
               {
                 "kind": "Variable",
@@ -245,7 +245,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "RelatedArtistsRefetchContainerQuery",
+    "name": "RelatedArtistsListQuery",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -483,5 +483,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'ade51a3cf2f33dbe917e0bf896dceae6';
+(node as any).hash = 'd51cdb705a7629aad9bd32c216683b41';
 export default node;

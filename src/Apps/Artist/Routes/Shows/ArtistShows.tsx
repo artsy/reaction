@@ -1,4 +1,4 @@
-import { ShowsRefetchContainer_artist } from "__generated__/ShowsRefetchContainer_artist.graphql"
+import { ArtistShows_artist } from "__generated__/ArtistShows_artist.graphql"
 import React from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { PaginationFragmentContainer } from "Styleguide/Components/Pagination"
@@ -7,12 +7,12 @@ import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Responsive } from "Utils/Responsive"
-import { ShowBlockItem } from "./ShowBlockItem"
-import { ShowListItem } from "./ShowListItem"
+import { ArtistShowBlockItem } from "./ArtistShowBlockItem"
+import { ArtistShowListItem } from "./ArtistShowListItem"
 
 interface ShowProps {
   relay: RelayRefetchProp
-  artist: ShowsRefetchContainer_artist
+  artist: ArtistShows_artist
   status: string
   sort: string
   scrollTo: string
@@ -20,7 +20,7 @@ interface ShowProps {
 
 export const PAGE_SIZE = 4
 
-export const ShowsRefetchContainer = createRefetchContainer(
+export const ArtistShowsRefetchContainer = createRefetchContainer(
   class extends React.Component<ShowProps> {
     loadNext = () => {
       const {
@@ -71,7 +71,7 @@ export const ShowsRefetchContainer = createRefetchContainer(
                           {this.props.artist.showsConnection.edges.map(
                             ({ node }, edgeKey) => {
                               return (
-                                <ShowBlockItem
+                                <ArtistShowBlockItem
                                   key={edgeKey}
                                   blockWidth={blockWidth}
                                   imageUrl={node.cover_image.cropped.url}
@@ -92,7 +92,7 @@ export const ShowsRefetchContainer = createRefetchContainer(
                           {this.props.artist.showsConnection.edges.map(
                             ({ node }, edgeKey) => {
                               return (
-                                <ShowListItem
+                                <ArtistShowListItem
                                   key={edgeKey}
                                   city={node.city}
                                   partner={node.partner.name}
@@ -138,7 +138,7 @@ export const ShowsRefetchContainer = createRefetchContainer(
   },
   {
     artist: graphql`
-      fragment ShowsRefetchContainer_artist on Artist
+      fragment ArtistShows_artist on Artist
         @argumentDefinitions(
           first: { type: "Int", defaultValue: 4 }
           last: { type: "Int" }
@@ -189,7 +189,7 @@ export const ShowsRefetchContainer = createRefetchContainer(
     `,
   },
   graphql`
-    query ShowsRefetchContainerQuery(
+    query ArtistShowsQuery(
       $first: Int
       $last: Int
       $after: String
@@ -199,7 +199,7 @@ export const ShowsRefetchContainer = createRefetchContainer(
       $status: String!
     ) {
       artist(id: $artistID) {
-        ...ShowsRefetchContainer_artist
+        ...ArtistShows_artist
           @arguments(
             sort: $sort
             first: $first

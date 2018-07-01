@@ -3,7 +3,7 @@ import { RelatedArtists_viewer } from "__generated__/RelatedArtists_viewer.graph
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Spacer } from "Styleguide/Elements/Spacer"
-import { RelatedArtistsRefetchContainer as RelatedArtists } from "./RelatedArtistsRefetchContainer"
+import { RelatedArtistsRefetchContainer as RelatedArtistsList } from "./RelatedArtistsList"
 
 export interface RelatedArtistsProps {
   viewer: RelatedArtists_viewer
@@ -20,14 +20,13 @@ export class RelatedArtistsRoute extends React.Component<RelatedArtistsProps> {
 
         <Spacer mb={2} />
 
-        <RelatedArtists
+        <RelatedArtistsList
           kind={"MAIN"}
           artist={viewer.mainArtists as any}
           scrollTo="#jumpto-RouteTabs"
         />
 
         <Spacer mb={3} />
-
         <span id="jumpto-RelatedArtists-Contemporary" />
 
         <Sans size="3" weight="medium">
@@ -36,7 +35,7 @@ export class RelatedArtistsRoute extends React.Component<RelatedArtistsProps> {
 
         <Spacer mb={3} />
 
-        <RelatedArtists
+        <RelatedArtistsList
           kind={"CONTEMPORARY"}
           artist={viewer.mainArtists as any}
           scrollTo="#jumpto-RelatedArtists-Contemporary"
@@ -60,11 +59,10 @@ export const RelatedArtistsRouteFragmentContainer = createFragmentContainer(
         }
       ) {
       mainArtists: artist(id: $artistID) {
-        ...RelatedArtistsRefetchContainer_artist @arguments(kind: $mainKind)
+        ...RelatedArtistsList_artist @arguments(kind: $mainKind)
       }
       contemporaryArtists: artist(id: $artistID) {
-        ...RelatedArtistsRefetchContainer_artist
-          @arguments(kind: $contemporaryKind)
+        ...RelatedArtistsList_artist @arguments(kind: $contemporaryKind)
       }
     }
   `

@@ -16,7 +16,7 @@ interface Props {
   pb?: number
 }
 
-export const ShowBlockItem = (props: Props) => {
+export const ArtistShowBlockItem = (props: Props) => {
   const FIXME_DOMAIN = "https://www.artsy.net"
   return (
     <Box

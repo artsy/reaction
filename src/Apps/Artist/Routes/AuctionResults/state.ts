@@ -1,13 +1,13 @@
 import { Container } from "unstated"
 
-interface State {
+interface StateContainer {
   selectedAuction?: any
   page?: number
   showModal: boolean
   sort?: string
 }
 
-export class AuctionResultsStateContainer extends Container<State> {
+export class AuctionResultsState extends Container<StateContainer> {
   state = {
     showModal: false,
     sort: "PRICE_AND_DATE_DESC",
