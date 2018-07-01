@@ -1,7 +1,7 @@
 import { Serif } from "@artsy/palette"
 import { ArtistHeader_artist } from "__generated__/ArtistHeader_artist.graphql"
 import FollowArtistButton from "Components/FollowButton/FollowArtistButton"
-import React from "react"
+import React, { SFC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { AppState } from "Router/state"
 import { Slider } from "Styleguide/Components/Slider"
@@ -19,7 +19,7 @@ interface Props {
   }
 }
 
-export const ArtistHeader: React.SFC<Props> = props => {
+export const ArtistHeader: SFC<Props> = props => {
   return (
     <Subscribe to={[AppState]}>
       {({ state }) => {
@@ -49,7 +49,7 @@ ArtistHeader.defaultProps = {
   },
 }
 
-export const LargeArtistHeader = (props: Props) => {
+export const LargeArtistHeader: SFC<Props> = props => {
   const { carousel } = props.artist
 
   return (
@@ -106,7 +106,7 @@ export const LargeArtistHeader = (props: Props) => {
   )
 }
 
-export const SmallArtistHeader = (props: Props) => {
+export const SmallArtistHeader: SFC<Props> = props => {
   const { carousel } = props.artist
 
   return (

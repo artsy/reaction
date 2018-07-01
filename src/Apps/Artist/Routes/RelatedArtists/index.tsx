@@ -1,6 +1,6 @@
 import { Sans } from "@artsy/palette"
 import { RelatedArtists_viewer } from "__generated__/RelatedArtists_viewer.graphql"
-import React from "react"
+import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { RelatedArtistsRefetchContainer as RelatedArtistsList } from "./RelatedArtistsList"
@@ -9,9 +9,10 @@ export interface RelatedArtistsProps {
   viewer: RelatedArtists_viewer
 }
 
-export class RelatedArtistsRoute extends React.Component<RelatedArtistsProps> {
+export class RelatedArtistsRoute extends Component<RelatedArtistsProps> {
   render() {
     const { viewer } = this.props
+
     return (
       <React.Fragment>
         <Sans size="3" weight="medium">

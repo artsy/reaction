@@ -1,17 +1,18 @@
 import { Sans } from "@artsy/palette"
 import { Shows_viewer } from "__generated__/Shows_viewer.graphql"
-import React from "react"
+import React, { SFC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Responsive } from "Utils/Responsive"
 import { ArtistShowsRefetchContainer as Shows } from "./ArtistShows"
 
-export interface ShowProps {
+export interface ArtistShowsProps {
   viewer: Shows_viewer
 }
-export const ShowsRoute = (props: ShowProps) => {
+export const ShowsRoute: SFC<ArtistShowsProps> = props => {
   const { viewer } = props
+
   return (
     <React.Fragment>
       <Sans size="3" weight="medium">

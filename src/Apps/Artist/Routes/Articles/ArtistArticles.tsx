@@ -1,5 +1,5 @@
 import { ArtistArticles_artist } from "__generated__/ArtistArticles_artist.graphql"
-import React from "react"
+import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { PaginationFragmentContainer as Pagination } from "Styleguide/Components/Pagination"
 import { Flex } from "Styleguide/Elements/Flex"
@@ -13,12 +13,15 @@ interface ArticlesProps {
   artist: ArtistArticles_artist
 }
 
-export class ArtistArticles extends React.Component<ArticlesProps> {
+export class ArtistArticles extends Component<ArticlesProps> {
   loadNext = () => {
     const {
-      hasNextPage,
-      endCursor,
-    } = this.props.artist.articlesConnection.pageInfo
+      artist: {
+        articlesConnection: {
+          pageInfo: { hasNextPage, endCursor },
+        },
+      },
+    } = this.props
 
     if (hasNextPage) {
       this.loadAfter(endCursor)
@@ -47,6 +50,7 @@ export class ArtistArticles extends React.Component<ArticlesProps> {
     return (
       <React.Fragment>
         <span id="jumpto--artistArticles" />
+
         <Row>
           <Col>
             {this.props.artist.articlesConnection.edges.map(
@@ -65,7 +69,6 @@ export class ArtistArticles extends React.Component<ArticlesProps> {
             )}
           </Col>
         </Row>
-
         <Row>
           <Col>
             <Flex mb={2} justifyContent="flex-end">

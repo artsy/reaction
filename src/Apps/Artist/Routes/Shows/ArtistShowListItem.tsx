@@ -1,11 +1,11 @@
 import { Serif } from "@artsy/palette"
-import React from "react"
+import React, { SFC } from "react"
 import { Box } from "Styleguide/Elements/Box"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Responsive } from "Utils/Responsive"
 
-interface Props {
+interface ArtistShowListItemProps {
   exhibitionInfo: string
   name: string
   partner: string
@@ -15,7 +15,7 @@ interface Props {
 
 const FIXME_DOMAIN = "https://www.artsy.net"
 
-export const ArtistShowListItem = (props: Props) => {
+export const ArtistShowListItem: SFC<ArtistShowListItemProps> = props => {
   return (
     <Responsive>
       {({ xs }) => {
@@ -26,30 +26,32 @@ export const ArtistShowListItem = (props: Props) => {
   )
 }
 
-const LargeShowListItem = (props: Props) => {
+const LargeShowListItem: SFC<ArtistShowListItemProps> = props => {
+  const { city, exhibitionInfo, href, partner } = props
+
   return (
     <React.Fragment>
       <Row>
         <Col sm={3}>
           <Serif size="2">
-            {props.city && `${props.city}, `}
-            {props.exhibitionInfo}
+            {city && `${city}, `}
+            {exhibitionInfo}
           </Serif>
         </Col>
         <Col sm={6}>
           <Serif size="4">
-            <a href={FIXME_DOMAIN + props.href} className="noUnderline">
-              {props.name}
+            <a href={FIXME_DOMAIN + href} className="noUnderline">
+              {name}
             </a>
           </Serif>
           <Serif size="2" color="black60">
-            <a href={FIXME_DOMAIN + props.href} className="noUnderline">
-              {props.partner}
+            <a href={FIXME_DOMAIN + href} className="noUnderline">
+              {partner}
             </a>
           </Serif>
         </Col>
         <Col sm={3}>
-          <Serif size="2">{props.city}</Serif>
+          <Serif size="2">{city}</Serif>
         </Col>
       </Row>
 
@@ -60,22 +62,24 @@ const LargeShowListItem = (props: Props) => {
   )
 }
 
-const SmallShowListItem = (props: Props) => {
+const SmallShowListItem: SFC<ArtistShowListItemProps> = props => {
+  const { city, exhibitionInfo, href, partner } = props
+
   return (
     <React.Fragment>
       <Serif size="3">
-        <a href={FIXME_DOMAIN + props.href} className="noUnderline">
-          {props.name}
+        <a href={FIXME_DOMAIN + href} className="noUnderline">
+          {name}
         </a>
       </Serif>
       <Serif size="2" color="black60">
         <a href={FIXME_DOMAIN + props.href} className="noUnderline">
-          {props.partner}
+          {partner}
         </a>
       </Serif>
       <Serif size="1" color="black60">
-        {props.city && `${props.city}, `}
-        {props.exhibitionInfo}
+        {city && `${city}, `}
+        {exhibitionInfo}
       </Serif>
       <Box pt={2} pb={0}>
         <Separator />

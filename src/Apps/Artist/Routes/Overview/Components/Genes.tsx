@@ -1,6 +1,6 @@
 import { Sans, Serif } from "@artsy/palette"
 import { Genes_artist } from "__generated__/Genes_artist.graphql"
-import React from "react"
+import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 import { space } from "styled-system"
@@ -15,7 +15,7 @@ interface Props {
   artist: Genes_artist
 }
 
-export class Genes extends React.Component<Props> {
+export class Genes extends Component<Props> {
   render() {
     const { related } = this.props.artist
     const { genes } = related

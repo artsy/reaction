@@ -1,5 +1,5 @@
 import { CV_viewer } from "__generated__/CV_viewer.graphql"
-import React from "react"
+import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { CVPaginationContainer as CVItem } from "./CVItem"
@@ -8,7 +8,7 @@ export interface CVRouteProps {
   viewer: CV_viewer
 }
 
-export class CVRoute extends React.Component<CVRouteProps> {
+export class CVRoute extends Component<CVRouteProps> {
   render() {
     const { viewer } = this.props
 

@@ -1,5 +1,5 @@
 import { Sans, Serif } from "@artsy/palette"
-import React from "react"
+import React, { SFC } from "react"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
@@ -16,7 +16,7 @@ interface ArticleItemProps {
   href: string
 }
 
-export const ArticleItem = (props: ArticleItemProps) => {
+export const ArticleItem: SFC<ArticleItemProps> = props => {
   return (
     <Responsive>
       {({ xs }) => {
@@ -27,31 +27,33 @@ export const ArticleItem = (props: ArticleItemProps) => {
   )
 }
 
-const LargeArticleItem = (props: ArticleItemProps) => {
+const LargeArticleItem: SFC<ArticleItemProps> = props => {
+  const { author, date, href, imageUrl, title } = props
+
   return (
     <React.Fragment>
       <Row>
         <Col sm={2}>
           <Date size="3" weight="medium">
-            {props.date}
+            {date}
           </Date>
         </Col>
         <Col sm={8}>
           <Flex>
             <Box pr={12}>
               <Title size="5">
-                <a href={props.href} className="noUnderline">
-                  {props.title}
+                <a href={href} className="noUnderline">
+                  {title}
                 </a>
               </Title>
               <Credit size="2" color="black60">
-                {props.author}
+                {author}
               </Credit>
             </Box>
           </Flex>
         </Col>
         <Col sm={2}>
-          <Image width="135px" height="85px" src={props.imageUrl} />
+          <Image width="135px" height="85px" src={imageUrl} />
         </Col>
       </Row>
 
@@ -63,26 +65,28 @@ const LargeArticleItem = (props: ArticleItemProps) => {
   )
 }
 
-const SmallArticleItem = (props: ArticleItemProps) => {
+const SmallArticleItem: SFC<ArticleItemProps> = props => {
+  const { author, date, href, imageUrl, title } = props
+
   return (
     <React.Fragment>
       <Flex justifyContent="space-between">
         <Box pr={3}>
           <Date size="1" weight="medium">
-            {props.date}
+            {date}
           </Date>
           <Spacer mb={0.5} />
           <Title size="2">
-            <a href={props.href} className="noUnderline">
-              {props.title}
+            <a href={href} className="noUnderline">
+              {title}
             </a>
           </Title>
           <Spacer mb={0.5} />
           <Credit size="1" color="black60">
-            {props.author}
+            {author}
           </Credit>
         </Box>
-        <Image width="80px" height="50px" src={props.imageUrl} />
+        <Image width="80px" height="50px" src={imageUrl} />
       </Flex>
 
       {/* FIXME: Weird block height issue... */}

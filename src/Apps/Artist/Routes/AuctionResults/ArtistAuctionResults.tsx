@@ -1,7 +1,7 @@
 import { ArtistAuctionResults_artist } from "__generated__/ArtistAuctionResults_artist.graphql"
-import React from "react"
+import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
-import { PaginationFragmentContainer } from "Styleguide/Components/Pagination"
+import { PaginationFragmentContainer as Pagination } from "Styleguide/Components/Pagination"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
@@ -21,9 +21,15 @@ interface AuctionResultsProps {
   sort: string
 }
 
-class AuctionResultsContainer extends React.Component<AuctionResultsProps> {
+class AuctionResultsContainer extends Component<AuctionResultsProps> {
   loadNext = () => {
-    const { hasNextPage, endCursor } = this.props.artist.auctionResults.pageInfo
+    const {
+      artist: {
+        auctionResults: {
+          pageInfo: { hasNextPage, endCursor },
+        },
+      },
+    } = this.props
 
     if (hasNextPage) {
       this.loadAfter(endCursor)
@@ -113,7 +119,7 @@ class AuctionResultsContainer extends React.Component<AuctionResultsProps> {
               <Row>
                 <Col>
                   <Flex justifyContent="flex-end">
-                    <PaginationFragmentContainer
+                    <Pagination
                       pageCursors={
                         this.props.artist.auctionResults.pageCursors as any
                       }

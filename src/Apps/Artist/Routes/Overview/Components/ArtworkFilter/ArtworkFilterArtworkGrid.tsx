@@ -1,7 +1,7 @@
 import { ArtworkFilterArtworkGrid_filtered_artworks } from "__generated__/ArtworkFilterArtworkGrid_filtered_artworks.graphql"
 import { FilterState } from "Apps/Artist/Routes/Overview/state"
 import ArtworkGrid from "Components/ArtworkGrid"
-import * as React from "react"
+import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { PaginationFragmentContainer as Pagination } from "Styleguide/Components/Pagination"
 import { Flex } from "Styleguide/Elements/Flex"
@@ -17,12 +17,16 @@ interface Props {
 
 const PAGE_SIZE = 10
 
-class Artworks extends React.Component<Props> {
+class Artworks extends Component<Props> {
   loadNext = () => {
     const {
-      hasNextPage,
-      endCursor,
-    } = this.props.filtered_artworks.artworks.pageInfo
+      filtered_artworks: {
+        artworks: {
+          pageInfo: { hasNextPage, endCursor },
+        },
+      },
+    } = this.props
+
     if (hasNextPage) {
       this.loadAfter(endCursor)
     }
