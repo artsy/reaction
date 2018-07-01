@@ -4,6 +4,7 @@ import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { PaginationFragmentContainer as Pagination } from "Styleguide/Components/Pagination"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
+import { LoadingArea } from "../../Components/LoadingArea"
 import { ArticleItem } from "./ArtistArticle"
 
 const PAGE_SIZE = 10
@@ -53,20 +54,22 @@ export class ArtistArticles extends Component<ArticlesProps> {
 
         <Row>
           <Col>
-            {this.props.artist.articlesConnection.edges.map(
-              ({ node }, index) => {
-                return (
-                  <ArticleItem
-                    title={node.thumbnail_title}
-                    imageUrl={node.thumbnail_image.resized.url}
-                    date={node.published_at}
-                    author={node.author.name}
-                    href={node.href}
-                    key={index}
-                  />
-                )
-              }
-            )}
+            <LoadingArea isLoading>
+              {this.props.artist.articlesConnection.edges.map(
+                ({ node }, index) => {
+                  return (
+                    <ArticleItem
+                      title={node.thumbnail_title}
+                      imageUrl={node.thumbnail_image.resized.url}
+                      date={node.published_at}
+                      author={node.author.name}
+                      href={node.href}
+                      key={index}
+                    />
+                  )
+                }
+              )}
+            </LoadingArea>
           </Col>
         </Row>
         <Row>

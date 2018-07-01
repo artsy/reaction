@@ -7,6 +7,7 @@ import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Responsive } from "Utils/Responsive"
+import { LoadingArea } from "../../Components/LoadingArea"
 import { ArtistShowBlockItem } from "./ArtistShowBlockItem"
 import { ArtistShowListItem } from "./ArtistShowListItem"
 
@@ -69,45 +70,47 @@ class ArtistShows extends Component<ArtistShowsProps> {
               <Col>
                 <Row>
                   <Col>
-                    {this.props.status === "running" ? (
-                      <ShowBlocks flexDirection={blockDirection} flexWrap>
-                        {this.props.artist.showsConnection.edges.map(
-                          ({ node }, edgeKey) => {
-                            return (
-                              <ArtistShowBlockItem
-                                key={edgeKey}
-                                blockWidth={blockWidth}
-                                imageUrl={node.cover_image.cropped.url}
-                                partner={node.partner.name}
-                                name={node.name}
-                                exhibitionInfo={node.exhibition_period}
-                                pr={pr}
-                                pb={pb}
-                                href={node.href}
-                                city={node.city}
-                              />
-                            )
-                          }
-                        )}
-                      </ShowBlocks>
-                    ) : (
-                      <ShowList>
-                        {this.props.artist.showsConnection.edges.map(
-                          ({ node }, edgeKey) => {
-                            return (
-                              <ArtistShowListItem
-                                key={edgeKey}
-                                city={node.city}
-                                partner={node.partner.name}
-                                name={node.name}
-                                exhibitionInfo={node.exhibition_period}
-                                href={node.href}
-                              />
-                            )
-                          }
-                        )}
-                      </ShowList>
-                    )}
+                    <LoadingArea isLoading>
+                      {this.props.status === "running" ? (
+                        <ShowBlocks flexDirection={blockDirection} flexWrap>
+                          {this.props.artist.showsConnection.edges.map(
+                            ({ node }, edgeKey) => {
+                              return (
+                                <ArtistShowBlockItem
+                                  key={edgeKey}
+                                  blockWidth={blockWidth}
+                                  imageUrl={node.cover_image.cropped.url}
+                                  partner={node.partner.name}
+                                  name={node.name}
+                                  exhibitionInfo={node.exhibition_period}
+                                  pr={pr}
+                                  pb={pb}
+                                  href={node.href}
+                                  city={node.city}
+                                />
+                              )
+                            }
+                          )}
+                        </ShowBlocks>
+                      ) : (
+                        <ShowList>
+                          {this.props.artist.showsConnection.edges.map(
+                            ({ node }, edgeKey) => {
+                              return (
+                                <ArtistShowListItem
+                                  key={edgeKey}
+                                  city={node.city}
+                                  partner={node.partner.name}
+                                  name={node.name}
+                                  exhibitionInfo={node.exhibition_period}
+                                  href={node.href}
+                                />
+                              )
+                            }
+                          )}
+                        </ShowList>
+                      )}
+                    </LoadingArea>
                   </Col>
                 </Row>
 

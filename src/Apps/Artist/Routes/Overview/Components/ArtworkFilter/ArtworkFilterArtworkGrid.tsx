@@ -7,6 +7,7 @@ import { PaginationFragmentContainer as Pagination } from "Styleguide/Components
 import { Flex } from "Styleguide/Elements/Flex"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Subscribe } from "unstated"
+import { LoadingArea } from "../../../../Components/LoadingArea"
 
 interface Props {
   filtered_artworks: ArtworkFilterArtworkGrid_filtered_artworks
@@ -55,7 +56,7 @@ class Artworks extends Component<Props> {
       <Subscribe to={[FilterState]}>
         {filters => {
           return (
-            <div>
+            <LoadingArea isLoading>
               <ArtworkGrid
                 artworks={this.props.filtered_artworks.artworks as any}
                 columnCount={this.props.columnCount}
@@ -74,7 +75,7 @@ class Artworks extends Component<Props> {
                   scrollTo="#jump--artistArtworkGrid"
                 />
               </Flex>
-            </div>
+            </LoadingArea>
           )
         }}
       </Subscribe>

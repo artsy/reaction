@@ -7,6 +7,7 @@ import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Subscribe } from "unstated"
+import { LoadingArea } from "../../Components/LoadingArea"
 import { ArtistAuctionDetailsModal } from "./ArtistAuctionDetailsModal"
 import { AuctionResultItemFragmentContainer } from "./ArtistAuctionResultItem"
 import { AuctionResultsState } from "./state"
@@ -102,17 +103,19 @@ class AuctionResultsContainer extends Component<AuctionResultsProps> {
                     auctionResult={state.selectedAuction}
                   />
 
-                  {this.props.artist.auctionResults.edges.map(
-                    ({ node }, index) => {
-                      return (
-                        <React.Fragment key={index}>
-                          <AuctionResultItemFragmentContainer
-                            auctionResult={node as any}
-                          />
-                        </React.Fragment>
-                      )
-                    }
-                  )}
+                  <LoadingArea isLoading>
+                    {this.props.artist.auctionResults.edges.map(
+                      ({ node }, index) => {
+                        return (
+                          <React.Fragment key={index}>
+                            <AuctionResultItemFragmentContainer
+                              auctionResult={node as any}
+                            />
+                          </React.Fragment>
+                        )
+                      }
+                    )}
+                  </LoadingArea>
                 </Col>
               </Row>
 

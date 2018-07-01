@@ -10,6 +10,7 @@ import { Col, Row } from "Styleguide/Elements/Grid"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Subscribe } from "unstated"
 import { Responsive } from "Utils/Responsive"
+import { LoadingArea } from "../../Components/LoadingArea"
 
 interface ShowProps {
   relay: RelayRefetchProp
@@ -93,21 +94,23 @@ class RelatedArtistsList extends Component<ShowProps> {
                   <React.Fragment>
                     <Row>
                       <Col>
-                        <Flex flexWrap>
-                          {this.props.artist.related.artists.edges.map(
-                            ({ node }, index) => {
-                              return (
-                                <Box pr={1} pb={1} width={width} key={index}>
-                                  <ArtistCard
-                                    artist={node as any}
-                                    mediator={mediator}
-                                    currentUser={currentUser}
-                                  />
-                                </Box>
-                              )
-                            }
-                          )}
-                        </Flex>
+                        <LoadingArea isLoading>
+                          <Flex flexWrap>
+                            {this.props.artist.related.artists.edges.map(
+                              ({ node }, index) => {
+                                return (
+                                  <Box pr={1} pb={1} width={width} key={index}>
+                                    <ArtistCard
+                                      artist={node as any}
+                                      mediator={mediator}
+                                      currentUser={currentUser}
+                                    />
+                                  </Box>
+                                )
+                              }
+                            )}
+                          </Flex>
+                        </LoadingArea>
                       </Col>
                     </Row>
 
