@@ -1,5 +1,5 @@
 export { buildServerApp } from "./buildServerApp"
 export { buildClientApp } from "./buildClientApp"
 export { PreloadLink } from "./PreloadLink"
-export { GlobalState, PreloadLinkState } from "./state"
+export { AppState, PreloadLinkState } from "./state"
 export { Link } from "found"

@@ -1,6 +1,6 @@
 import React from "react"
 import { ArtworkGridExample } from "Styleguide/Components/ArtworkGridExample"
-import { Responsive } from "../Utils/Responsive"
+import { Responsive } from "Utils/Responsive"
 
 export const FullArtworkGrid = props => (
   <Responsive>

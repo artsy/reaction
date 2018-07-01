@@ -1,33 +1,30 @@
 import { Sans, Serif } from "@artsy/palette"
 import React from "react"
-import { GlobalState } from "Router/state"
+import { AppState } from "Router/state"
 import styled from "styled-components"
 import { FlexDirectionProps } from "styled-system"
 import { Flex } from "Styleguide/Elements/Flex"
-import { Responsive } from "Styleguide/Utils/Responsive"
 import { Subscribe } from "unstated"
+import { Responsive } from "Utils/Responsive"
 
 interface Props {
   mediator?: {
-    trigger: (action: string, config: object) => void
+    trigger: (action: string, config?: object) => void
   }
 }
 
 export const Footer: React.SFC<Props> = props => {
   return (
-    <Subscribe to={[GlobalState]}>
+    <Subscribe to={[AppState]}>
       {({ state }) => {
         return (
           <Responsive>
             {({ xs }) => {
-              if (xs)
-                return (
-                  <SmallFooter mediator={state.force && state.force.mediator} />
-                )
-              else
-                return (
-                  <LargeFooter mediator={state.force && state.force.mediator} />
-                )
+              if (xs) {
+                return <SmallFooter mediator={state.mediator} />
+              } else {
+                return <LargeFooter mediator={state.mediator} />
+              }
             }}
           </Responsive>
         )
@@ -39,12 +36,12 @@ export const Footer: React.SFC<Props> = props => {
 export const LargeFooter = (props: Props) => (
   <FooterContainer mediator={props.mediator} flexDirection="row" />
 )
+
 export const SmallFooter = (props: Props) => (
   <FooterContainer mediator={props.mediator} flexDirection="column" />
 )
 
-export interface FooterContainerProps extends FlexDirectionProps, Props {}
-const FooterContainer: React.SFC<FooterContainerProps> = props => {
+const FooterContainer: React.SFC<FlexDirectionProps & Props> = props => {
   return (
     <Flex
       flexDirection={props.flexDirection}
@@ -56,28 +53,10 @@ const FooterContainer: React.SFC<FooterContainerProps> = props => {
           Buy
         </Sans>
         <Serif size="2">
-          <Link
-            onClick={() => {
-              props.mediator &&
-                props.mediator.trigger("open:auth", {
-                  mode: "register",
-                  // redirectTo:
-                  signupIntent: "register to bid",
-                })
-            }}
-          >
+          <Link onClick={() => props.mediator.trigger("openCollectorFAQModal")}>
             Buying from Galleries FAQ
           </Link>
-          <Link
-            onClick={() => {
-              props.mediator &&
-                props.mediator.trigger("open:auth", {
-                  mode: "register",
-                  // redirectTo:
-                  signupIntent: "register to bid",
-                })
-            }}
-          >
+          <Link onClick={() => props.mediator.trigger("openAuctionFAQModal")}>
             Buying from Auctions FAQ
           </Link>
           <Link href="https://www.artsy.net/consign">Consign with Artsy</Link>
@@ -107,8 +86,10 @@ const FooterContainer: React.SFC<FooterContainerProps> = props => {
           <Link href="https://www.artsy.net/about/jobs">Jobs</Link>
           <Link href="https://artsy.github.com/open-source">Open Source</Link>
           <Link href="https://www.artsy.net/about/press">Press</Link>
-          <Link href="#">Contact</Link>
-          <Link href="#">Send us feedback</Link>
+          <Link href="https://www.artsy.net/contact">Contact</Link>
+          <Link onClick={() => props.mediator.trigger("openFeedbackModal")}>
+            Send us feedback
+          </Link>
         </Serif>
       </Flex>
       <Flex flexDirection="column" mb={1}>

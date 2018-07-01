@@ -2,8 +2,9 @@ import React from "react"
 import { buildClientApp } from "Router"
 
 interface Props {
-  routes: any // FIXME
+  routes: Array<object>
   initialRoute?: string
+  initialState?: object
 }
 
 export class StorybooksRouter extends React.Component<Props> {
@@ -33,8 +34,11 @@ export class StorybooksRouter extends React.Component<Props> {
 
   render() {
     const { ClientApp } = this.state
+
     return (
-      <React.Fragment>{ClientApp && <ClientApp foo={"bar!"} />}</React.Fragment>
+      <React.Fragment>
+        {ClientApp && <ClientApp {...this.props.initialState} />}
+      </React.Fragment>
     )
   }
 }

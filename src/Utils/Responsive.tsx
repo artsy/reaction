@@ -1,117 +1,160 @@
-import { each } from "lodash"
 import React from "react"
-import theme from "../Assets/Theme"
 
-// TODO: Docs
-// TODO: Tests
+const ResponsiveContext = React.createContext({})
 
-interface Props {
-  children?: any
-  media: any
-  mobileBreakpoint: any
+const shallowEqual = (a, b) => {
+  for (let key in a) {
+    if (a[key] !== b[key]) return false
+  }
+  return true
 }
 
-interface State {
-  isMobile: boolean
+// TODO: Make this generic on the consumer component when we OSS this separately
+//       and keep this module from where we’ll export our own `Responsive`
+//       wrapper that has these Artsy specific breakpoint typings.
+export type Breakpoint = "xs" | "sm" | "md" | "lg" | "xl"
+type Breakpoints<T> = { [K in Breakpoint]: T }
+
+type BreakpointKeys = Breakpoint[]
+type BreakpointsProp = Breakpoints<string>
+type BreakpointState = Breakpoints<boolean>
+
+export interface ResponsiveProviderProps {
+  initialBreakpoint?: Breakpoint
+  breakpoints: BreakpointsProp
 }
 
-const MOBILE_BREAKPOINT = 600
+export interface ResponsiveProviderState {
+  breakpoints: BreakpointState
+  breakpointKeys: BreakpointKeys
+  mediaMatchers: MediaQueryList[]
+}
 
-class ResponsiveWrapper extends React.Component<Props, State> {
-  static defaultProps = {
-    initialState: {
-      isMobile: false,
-    },
-    media: x => x,
-    mobileBreakpoint: MOBILE_BREAKPOINT,
-  }
-
-  state = {
-    isMobile: false,
-  }
-
-  constructor(props) {
+export class ResponsiveProvider extends React.Component<
+  ResponsiveProviderProps,
+  ResponsiveProviderState
+> {
+  constructor(props: ResponsiveProviderProps) {
     super(props)
+    const breakpointKeys = Object.keys(props.breakpoints) as BreakpointKeys
+
+    // Build initial breakpoint map --> { breakpoint1: false, breakpoint2: false, ...etc}
+    let breakpoints = breakpointKeys
+      .map(breakpoint => ({
+        [breakpoint]: breakpoint === props.initialBreakpoint ? true : false,
+      }))
+      .reduce((acc, curr) => ({ ...acc, ...curr }), {}) as BreakpointState
+
+    let mediaMatchers = []
+    const isClient = typeof window !== "undefined"
+
+    if (isClient) {
+      // Build up the MediaQueryList objects that observe mq changes
+      mediaMatchers = this.setupMatchers(props.breakpoints, breakpointKeys)
+
+      // Perform initial breakpoint check so that first render is correct
+      breakpoints = this.checkBreakpoints(
+        breakpoints,
+        breakpointKeys,
+        mediaMatchers
+      )
+    }
 
     this.state = {
-      ...props.initialState,
+      breakpoints,
+      breakpointKeys,
+      mediaMatchers,
     }
+  }
+
+  /**
+   * Create an array of media matchers that can validate each breakpoint
+   */
+  setupMatchers = (
+    breakpoints: BreakpointsProp,
+    breakpointKeys: BreakpointKeys
+  ): MediaQueryList[] => {
+    return breakpointKeys.map(breakpoint =>
+      window.matchMedia(breakpoints[breakpoint])
+    )
+  }
+
+  /**
+   * Uses the mediaMatchers list to build a map of the states of each breakpoint
+   */
+  checkBreakpoints = (
+    breakpoints: BreakpointState,
+    breakpointKeys: BreakpointKeys,
+    mediaMatchers: MediaQueryList[]
+  ): BreakpointState => {
+    let nextBreakpoints = breakpoints
+    for (let i = 0; i < mediaMatchers.length; ++i) {
+      nextBreakpoints = {
+        ...nextBreakpoints,
+        [breakpointKeys[i]]: mediaMatchers[i].matches,
+      }
+    }
+    return nextBreakpoints
+  }
+
+  /**
+   * The function that will be called any time a breakpoint changes
+   */
+  breakpointChangedCallback = () => {
+    this.setState({
+      breakpoints: this.checkBreakpoints(
+        this.state.breakpoints,
+        this.state.breakpointKeys,
+        this.state.mediaMatchers
+      ),
+    })
+  }
+
+  /**
+   * Creates the event listeners for each breakpoint
+   */
+  setupObservers = () => {
+    const { breakpointChangedCallback } = this
+    this.state.mediaMatchers.forEach(mediaQuery => {
+      mediaQuery.addListener(breakpointChangedCallback)
+    })
+  }
+
+  // Lifecycle methods
+
+  // FIXME: Why doesn’t this get typed automatically?
+  shouldComponentUpdate(
+    nextProps: Readonly<{ children?: React.ReactNode }> &
+      Readonly<ResponsiveProviderProps>,
+    nextState: Readonly<ResponsiveProviderState>
+  ) {
+    if (nextProps.children !== this.props.children) return true
+    if (shallowEqual(this.state.breakpoints, nextState.breakpoints)) {
+      return false
+    }
+    return true
+  }
+
+  componentWillUnmount() {
+    this.state.mediaMatchers.forEach(mediaQuery =>
+      mediaQuery.removeListener(this.breakpointChangedCallback)
+    )
   }
 
   componentDidMount() {
-    this.registerBreakpoints()
-  }
-
-  registerBreakpoints() {
-    const { mobileBreakpoint, media } = this.props
-    const { breakpoints } = theme.publishing
-
-    /**
-     * Iterate over breakpoints in theme file and generate corresponding
-     * handlers for each. Options include xs, sm, md, lg, xl.
-     */
-    const registerMedia = ({ breakpoint, width }) => {
-      const toggle = () =>
-        Object.keys(breakpoints).reduce(
-          (acc, bp) => ({ ...acc, [bp]: false }),
-          {}
-        )
-
-      const breakAt: any = [{ maxWidth: width }, { minWidth: width + 1 }]
-
-      breakAt.forEach(point => {
-        media(point, () => {
-          this.setState({
-            ...toggle(),
-            [breakpoint]: true,
-          })
-        })
-      })
-    }
-
-    each(breakpoints, (width, breakpoint) => {
-      registerMedia({
-        breakpoint,
-        width,
-      })
-    })
-
-    // TODO:
-    // Remove references below in favor of above
-
-    // Mobile
-    media({ maxWidth: mobileBreakpoint }, () => {
-      this.setState({
-        isMobile: true,
-      })
-    })
-
-    // Desktop
-    media({ minWidth: mobileBreakpoint + 1 }, () => {
-      this.setState({
-        isMobile: false,
-      })
-    })
+    this.setupObservers()
   }
 
   render() {
-    return this.props.children(this.state)
+    return (
+      <ResponsiveContext.Provider value={this.state.breakpoints}>
+        {this.props.children}
+      </ResponsiveContext.Provider>
+    )
   }
 }
 
-/**
- * Since Enquire.js requires a DOM, ensure that the environment is correct before
- * returning component.
- */
-const wrapIfClient = Component => {
-  const isClient = typeof window !== "undefined"
-
-  if (isClient) {
-    const makeResponsive = require("react-responsive-decorator")
-    return makeResponsive(Component)
-  } else {
-    return Component
-  }
-}
-
-export const Responsive = wrapIfClient(ResponsiveWrapper)
+export const Responsive: React.ComponentType<
+  React.ConsumerProps<BreakpointState>
+> =
+  ResponsiveContext.Consumer

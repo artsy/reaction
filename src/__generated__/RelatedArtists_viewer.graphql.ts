@@ -60,7 +60,7 @@ return {
       "selections": [
         {
           "kind": "FragmentSpread",
-          "name": "RelatedArtistsRefetchContainer_artist",
+          "name": "RelatedArtistsList_artist",
           "args": [
             {
               "kind": "Variable",
@@ -84,7 +84,7 @@ return {
       "selections": [
         {
           "kind": "FragmentSpread",
-          "name": "RelatedArtistsRefetchContainer_artist",
+          "name": "RelatedArtistsList_artist",
           "args": [
             {
               "kind": "Variable",
@@ -100,5 +100,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'aeaba439733fb00e9c1a9e72ff0e6c1e';
+(node as any).hash = '1ef215da34ad7d1aa05d8a657099f0ed';
 export default node;

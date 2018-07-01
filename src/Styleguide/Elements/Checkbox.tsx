@@ -42,7 +42,15 @@ export class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
   }
 
   toggleSelected = () => {
-    this.setState({ selected: !this.state.selected })
+    const selected = !this.state.selected
+
+    this.setState({
+      selected,
+    })
+
+    if (this.props.onSelect) {
+      this.props.onSelect(selected)
+    }
   }
 
   render() {
@@ -50,13 +58,7 @@ export class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
     const { children } = this.props
 
     return (
-      <Flex
-        my={0.5}
-        onClick={() => {
-          this.props.onSelect && this.props.onSelect(this.state.selected)
-          this.toggleSelected
-        }}
-      >
+      <Flex my={0.5} onClick={() => this.toggleSelected()}>
         <CheckboxButton border={1} mr={1} selected={selected}>
           {selected && (
             <Icon

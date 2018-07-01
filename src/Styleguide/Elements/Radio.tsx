@@ -42,7 +42,15 @@ export class Radio extends React.Component<RadioProps, RadioState> {
   }
 
   toggleSelected = () => {
-    this.setState({ selected: !this.state.selected })
+    const selected = !this.state.selected
+
+    this.setState({
+      selected,
+    })
+
+    if (this.props.onSelect) {
+      this.props.onSelect(selected)
+    }
   }
 
   render() {
@@ -50,13 +58,7 @@ export class Radio extends React.Component<RadioProps, RadioState> {
     const { children } = this.props
 
     return (
-      <Flex
-        my={0.3}
-        onClick={() => {
-          this.props.onSelect && this.props.onSelect(this.props.value)
-          this.toggleSelected()
-        }}
-      >
+      <Flex my={0.3} onClick={() => this.toggleSelected()}>
         <RadioButton border={1} mr={1} selected={selected}>
           {selected && <InnerCircle />}
         </RadioButton>

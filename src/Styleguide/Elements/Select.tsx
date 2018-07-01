@@ -1,7 +1,7 @@
 import { Sans } from "@artsy/palette"
 import React from "react"
 import styled, { css } from "styled-components"
-import { Responsive } from "Styleguide/Utils/Responsive"
+import { Responsive } from "Utils/Responsive"
 
 import { PositionProps, space, SpaceProps, themeGet } from "styled-system"
 
