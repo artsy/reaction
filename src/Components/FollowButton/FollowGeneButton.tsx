@@ -9,7 +9,7 @@ import {
 import { FollowGeneButton_gene } from "../../__generated__/FollowGeneButton_gene.graphql"
 import { track } from "../../Utils/track"
 import * as Artsy from "../Artsy"
-import { FollowButton } from "./Button"
+import { FollowButtonDeprecated } from "./ButtonDeprecated"
 import { FollowTrackingData } from "./Typings"
 
 interface Props extends React.HTMLProps<FollowGeneButton>, Artsy.ContextProps {
@@ -75,7 +75,7 @@ export class FollowGeneButton extends React.Component<Props> {
     const { gene } = this.props
 
     return (
-      <FollowButton
+      <FollowButtonDeprecated
         isFollowed={gene && gene.is_followed}
         handleFollow={this.handleFollow}
       />

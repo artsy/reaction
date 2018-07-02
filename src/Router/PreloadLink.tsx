@@ -6,7 +6,7 @@ import PropTypes from "prop-types"
 import React from "react"
 import { fetchQuery } from "react-relay"
 import { QueryRendererProps } from "react-relay"
-import { GlobalState, PreloadLinkState } from "Router/state"
+import { AppState, PreloadLinkState } from "Router/state"
 import { Subscribe } from "unstated"
 import { ContextConsumer } from "../Components/Artsy"
 import { PreloadLinkProps } from "./types"
@@ -206,11 +206,11 @@ export const PreloadLink = compose(
 
     handleClick = event => {
       event.preventDefault()
-      this.props.onToggleFetching(true)
+      this.props.onToggleLoading(true)
 
       this.fetchData().then(() => {
         const { router, replace, to } = this.props
-        this.props.onToggleFetching(false)
+        this.props.onToggleLoading(false)
 
         if (replace) {
           router.replace(replace)
@@ -240,12 +240,12 @@ export const PreloadLink = compose(
    * Subscribe to PreloadLink state
    */
   return (
-    <Subscribe to={[GlobalState, PreloadLinkState]}>
-      {(globalState: GlobalState, preloadLink: PreloadLinkState) => {
+    <Subscribe to={[AppState, PreloadLinkState]}>
+      {(app: AppState, preloadLink: PreloadLinkState) => {
         return (
           <Preloader
-            onToggleFetching={preloadLink.toggleFetching}
-            system={globalState.state.system}
+            onToggleLoading={preloadLink.toggleLoading}
+            system={app.state.system}
             {...preloadLinkProps}
           />
         )

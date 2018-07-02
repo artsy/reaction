@@ -1681,11 +1681,11 @@ exports[`renders a sponsored series properly 1`] = `
   margin-bottom: 30px;
 }
 
-.dszFxs .c14 {
+.fuwlBz .c14 {
   margin-bottom: 90px;
 }
 
-.dszFxs .c40 {
+.fuwlBz .c40 {
   padding-top: 60px;
 }
 
@@ -1946,7 +1946,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .dszFxs .c40 {
+  .fuwlBz .c40 {
     padding-top: 60px;
   }
 }

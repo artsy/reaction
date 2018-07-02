@@ -5,8 +5,8 @@ import { themeGet } from "styled-system"
 import { Arrow } from "Styleguide/Elements/Arrow"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
-import { Responsive } from "Styleguide/Utils/Responsive"
 import { ScrollIntoView } from "Styleguide/Utils/ScrollIntoView"
+import { Responsive } from "Utils/Responsive"
 
 import { Pagination_pageCursors } from "__generated__/Pagination_pageCursors.graphql"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -46,30 +46,33 @@ const renderPage = (pageCursor, onClick: (cursor: string) => void) => {
       onClick={() => onClick(cursor)}
       num={page}
       active={isCurrent}
-      key={cursor}
+      key={cursor + page}
     />
   )
 }
 
 export const LargePagination = (props: Props) => {
-  const { previous } = props.pageCursors
+  const {
+    pageCursors: { around, first, last, previous },
+    onClick,
+    onNext,
+  } = props
+
   return (
     <Flex flexDirection="row">
-      {props.pageCursors.first && (
+      {first && (
         <div>
-          {renderPage(props.pageCursors.first, props.onClick)}
+          {renderPage(first, onClick)}
           <PageSpan mx={0.5} />
         </div>
       )}
 
-      {props.pageCursors.around.map(pageInfo =>
-        renderPage(pageInfo, props.onClick)
-      )}
+      {around.map(pageInfo => renderPage(pageInfo, onClick))}
 
-      {props.pageCursors.last && (
+      {last && (
         <div>
           <PageSpan mx={0.5} />
-          {renderPage(props.pageCursors.last, props.onClick)}
+          {renderPage(last, onClick)}
         </div>
       )}
 
@@ -81,14 +84,19 @@ export const LargePagination = (props: Props) => {
             }
           }}
         />
-        <NextButton onClick={() => props.onNext()} />
+        <NextButton onClick={() => onNext()} />
       </Box>
     </Flex>
   )
 }
 
 export const SmallPagination = (props: Props) => {
-  const { previous } = props.pageCursors
+  const {
+    pageCursors: { previous },
+    onClick,
+    onNext,
+  } = props
+
   return (
     <Flex flexDirection="row" width="100%">
       <Flex width="50%" pr={0.5}>
@@ -98,7 +106,7 @@ export const SmallPagination = (props: Props) => {
           pl={1}
           onClick={() => {
             if (previous) {
-              props.onClick(previous.cursor)
+              onClick(previous.cursor)
             }
           }}
         >
@@ -107,7 +115,7 @@ export const SmallPagination = (props: Props) => {
       </Flex>
       <Flex width="50%" pl={0.5}>
         <ButtonWithBorder
-          onClick={() => props.onNext()}
+          onClick={() => onNext()}
           alignItems="center"
           justifyContent="flex-end"
           pr={1}
@@ -137,20 +145,20 @@ const PageSpan = ({ mx }) => {
   )
 }
 
-const PrevButton = props => {
+const PrevButton = ({ onClick }) => {
   return (
     <Sans size="3" weight="medium" display="inline" mx={0.5}>
-      <a onClick={() => props.onClick()} className="noUnderline">
+      <a onClick={() => onClick()} className="noUnderline">
         <Arrow direction="left" /> Prev
       </a>
     </Sans>
   )
 }
 
-const NextButton = props => {
+const NextButton = ({ onClick }) => {
   return (
     <Sans size="3" weight="medium" display="inline" mx={0.5}>
-      <a onClick={() => props.onClick()} className="noUnderline">
+      <a onClick={() => onClick()} className="noUnderline">
         Next <Arrow direction="right" />
       </a>
     </Sans>

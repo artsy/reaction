@@ -2,7 +2,7 @@ import { mount } from "enzyme"
 import React from "react"
 import { Subscribe } from "unstated"
 import { Boot } from "../Boot"
-import { GlobalState } from "../state"
+import { AppState } from "../state"
 
 describe("Boot", () => {
   const bootProps: any = {
@@ -24,9 +24,9 @@ describe("Boot", () => {
 
     const SomeOtherComponent = () => {
       return (
-        <Subscribe to={[GlobalState]}>
-          {globalState => {
-            return <div>{globalState.state.welcomeMessage}</div>
+        <Subscribe to={[AppState]}>
+          {app => {
+            return <div>{app.state.welcomeMessage}</div>
           }}
         </Subscribe>
       )

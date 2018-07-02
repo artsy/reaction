@@ -3,6 +3,7 @@
 import { ConcreteFragment } from "relay-runtime";
 export type ArtistCard_artist = {
     readonly name: string | null;
+    readonly id: string;
     readonly image: ({
         readonly cropped: ({
             readonly url: string | null;
@@ -24,6 +25,13 @@ const node: ConcreteFragment = {
       "kind": "ScalarField",
       "alias": null,
       "name": "name",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "id",
       "args": null,
       "storageKey": null
     },
@@ -90,5 +98,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '713cfe0ac4770a899d6e4869977d3318';
+(node as any).hash = '79e87e894b066b328ebf1842e35accc5';
 export default node;

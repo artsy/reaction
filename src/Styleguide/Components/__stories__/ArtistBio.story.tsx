@@ -1,6 +1,6 @@
+import { bio } from "Apps/__test__/Fixtures/ArtistBio"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { bio } from "Styleguide/Pages/Fixtures/ArtistBio"
 import { Section } from "Styleguide/Utils/Section"
 import { ArtistBio } from "../ArtistBio"
 

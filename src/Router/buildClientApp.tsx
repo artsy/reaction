@@ -24,13 +24,14 @@ export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
 
       const relayBootstrap = JSON.parse(window.__RELAY_BOOTSTRAP__ || "{}")
 
+      const currentUser = user || {
+        id: process.env.USER_ID,
+        accessToken: process.env.USER_ACCESS_TOKEN,
+      }
+
       const relayEnvironment = createEnvironment({
         cache: relayBootstrap,
-        // FIXME: Might be a better way to do this...
-        user: user || {
-          id: process.env.USER_ID,
-          accessToken: process.env.USER_ACCESS_TOKEN,
-        },
+        user: currentUser,
       })
 
       const getHistoryProtocol = () => {
@@ -63,6 +64,7 @@ export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
           relayEnvironment,
           resolver,
           routes,
+          currentUser,
         },
       }
 

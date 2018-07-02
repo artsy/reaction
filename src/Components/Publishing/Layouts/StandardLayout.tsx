@@ -2,7 +2,7 @@ import { get, omit } from "lodash"
 import React from "react"
 import styled from "styled-components"
 import Colors from "../../../Assets/Colors"
-import { Responsive } from "../../../Utils/Responsive"
+import { ResponsiveDeprecated } from "../../../Utils/ResponsiveDeprecated"
 import { pMedia } from "../../Helpers"
 import { ArticleProps } from "../Article"
 import { DisplayCanvas } from "../Display/Canvas"
@@ -57,7 +57,8 @@ export class StandardLayout extends React.Component<
     const displayOverflows = display && display.canvas.layout === "slideshow"
 
     return (
-      <Responsive initialState={{ isMobile: this.props.isMobile }}>
+      // FIXME: Update with new version
+      <ResponsiveDeprecated initialState={{ isMobile: this.props.isMobile }}>
         {({ isMobile, xs, sm, md }) => {
           const hasPanel = get(display, "panel", false)
           const isMobileAd = Boolean(isMobile || xs || sm || md)
@@ -151,7 +152,7 @@ export class StandardLayout extends React.Component<
             </div>
           )
         }}
-      </Responsive>
+      </ResponsiveDeprecated>
     )
   }
 }

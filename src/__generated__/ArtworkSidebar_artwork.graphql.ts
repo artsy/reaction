@@ -7,6 +7,9 @@ export type ArtworkSidebar_artwork = {
     readonly sale_artwork: ({
         readonly lot_label: string | null;
     }) | null;
+    readonly sale: ({
+        readonly is_closed: boolean | null;
+    }) | null;
 };
 
 
@@ -58,6 +61,25 @@ return {
       ]
     },
     {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "sale",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Sale",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "is_closed",
+          "args": null,
+          "storageKey": null
+        },
+        v0
+      ]
+    },
+    {
       "kind": "FragmentSpread",
       "name": "ArtworkSidebarArtists_artwork",
       "args": null
@@ -81,6 +103,11 @@ return {
     },
     {
       "kind": "FragmentSpread",
+      "name": "ArtworkSidebarBidAction_artwork",
+      "args": null
+    },
+    {
+      "kind": "FragmentSpread",
       "name": "ArtworkSidebarCommercial_artwork",
       "args": null
     },
@@ -98,5 +125,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'b7477a31ea1e0c72fc6418717b5114dc';
+(node as any).hash = '51e7c9bbf35e04036955a48d82590b4d';
 export default node;

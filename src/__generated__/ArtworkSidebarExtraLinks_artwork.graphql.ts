@@ -3,12 +3,15 @@
 import { ConcreteFragment } from "relay-runtime";
 export type ArtworkSidebarExtraLinks_artwork = {
     readonly __id: string;
-    readonly is_biddable: boolean | null;
+    readonly is_in_auction: boolean | null;
     readonly is_for_sale: boolean | null;
     readonly artists: ReadonlyArray<({
         readonly __id: string;
         readonly is_consignable: boolean | null;
     }) | null> | null;
+    readonly sale: ({
+        readonly is_closed: boolean | null;
+    }) | null;
 };
 
 
@@ -32,7 +35,7 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "is_biddable",
+      "name": "is_in_auction",
       "args": null,
       "storageKey": null
     },
@@ -61,9 +64,28 @@ return {
           "storageKey": null
         }
       ]
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "sale",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Sale",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "is_closed",
+          "args": null,
+          "storageKey": null
+        },
+        v0
+      ]
     }
   ]
 };
 })();
-(node as any).hash = '2a72b88dd8df7b1503b03a4a0e015b7b';
+(node as any).hash = '617f85197a2af859fd4e83f20c962f54';
 export default node;
