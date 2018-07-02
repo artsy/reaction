@@ -1,12 +1,14 @@
 import { RelatedArtistsList_artist } from "__generated__/RelatedArtistsList_artist.graphql"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
-import { ArtistCardFragmentContainer } from "Styleguide/Components/ArtistCard"
-import { PaginationFragmentContainer } from "Styleguide/Components/Pagination"
+import { AppState } from "Router/state"
+import { ArtistCardFragmentContainer as ArtistCard } from "Styleguide/Components/ArtistCard"
+import { PaginationFragmentContainer as Pagination } from "Styleguide/Components/Pagination"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Separator } from "Styleguide/Elements/Separator"
+import { Subscribe } from "unstated"
 import { Responsive } from "Utils/Responsive"
 
 interface ShowProps {
@@ -56,69 +58,85 @@ class RelatedArtistsList extends Component<ShowProps> {
 
   renderPagination() {
     return (
-      <div>
-        <PaginationFragmentContainer
+      <Box>
+        <Pagination
           pageCursors={this.props.artist.related.artists.pageCursors as any}
           onClick={this.loadAfter}
           onNext={this.loadNext}
         />
-      </div>
+      </Box>
     )
   }
 
   render() {
     return (
-      <Responsive>
-        {({ xs, sm, md }) => {
-          let width
-          if (xs) {
-            width = "100%"
-          } else if (sm || md) {
-            width = "33%"
-          } else {
-            width = "25%"
-          }
+      <Subscribe to={[AppState]}>
+        {({ state }) => {
+          const {
+            mediator,
+            system: { currentUser },
+          } = state
 
           return (
-            <React.Fragment>
-              <Row>
-                <Col>
-                  <Flex flexWrap>
-                    {this.props.artist.related.artists.edges.map(
-                      ({ node }, index) => {
-                        return (
-                          <Box pr={1} pb={1} width={width} key={index}>
-                            <ArtistCardFragmentContainer artist={node as any} />
-                          </Box>
-                        )
-                      }
-                    )}
-                  </Flex>
-                </Col>
-              </Row>
+            <Responsive>
+              {({ xs, sm, md }) => {
+                let width
+                if (xs) {
+                  width = "100%"
+                } else if (sm || md) {
+                  width = "33%"
+                } else {
+                  width = "25%"
+                }
 
-              <Box py={2}>
-                <Separator />
-              </Box>
+                return (
+                  <React.Fragment>
+                    <Row>
+                      <Col>
+                        <Flex flexWrap>
+                          {this.props.artist.related.artists.edges.map(
+                            ({ node }, index) => {
+                              return (
+                                <Box pr={1} pb={1} width={width} key={index}>
+                                  <ArtistCard
+                                    artist={node as any}
+                                    mediator={mediator}
+                                    currentUser={currentUser}
+                                  />
+                                </Box>
+                              )
+                            }
+                          )}
+                        </Flex>
+                      </Col>
+                    </Row>
 
-              <Row>
-                <Col>
-                  <Flex justifyContent="flex-end">
-                    <PaginationFragmentContainer
-                      pageCursors={
-                        this.props.artist.related.artists.pageCursors as any
-                      }
-                      onClick={this.loadAfter}
-                      onNext={this.loadNext}
-                      scrollTo={this.props.scrollTo}
-                    />
-                  </Flex>
-                </Col>
-              </Row>
-            </React.Fragment>
+                    <Box py={2}>
+                      <Separator />
+                    </Box>
+
+                    <Row>
+                      <Col>
+                        <Flex justifyContent="flex-end">
+                          <Pagination
+                            pageCursors={
+                              this.props.artist.related.artists
+                                .pageCursors as any
+                            }
+                            onClick={this.loadAfter}
+                            onNext={this.loadNext}
+                            scrollTo={this.props.scrollTo}
+                          />
+                        </Flex>
+                      </Col>
+                    </Row>
+                  </React.Fragment>
+                )
+              }}
+            </Responsive>
           )
         }}
-      </Responsive>
+      </Subscribe>
     )
   }
 }
