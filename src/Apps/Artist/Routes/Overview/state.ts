@@ -13,6 +13,8 @@ export class FilterState extends Container<State> {
     medium: "*",
     for_sale: null,
     page: 1,
+    major_periods: [],
+    partner_id: null,
   }
 
   setMajorPeriods(value) {
@@ -27,8 +29,23 @@ export class FilterState extends Container<State> {
     this.setState({ page })
   }
 
+  unsetFilter(filter) {
+    if (filter === "major_periods") {
+      return this.setState({ page: 1, major_periods: [] })
+    }
+    if (filter === "partner_id") {
+      return this.setState({ page: 1, partner_id: null })
+    }
+    if (filter === "for_sale") {
+      return this.setState({ page: 1, for_sale: null })
+    }
+    if (filter === "medium") {
+      return this.setState({ page: 1, medium: "*" })
+    }
+  }
+
   setFilter(filter, value) {
-    if (filter === "major_period") {
+    if (filter === "major_periods") {
       return this.setMajorPeriods(value)
     }
     if (filter === "gallery" || filter === "institution") {
