@@ -15,7 +15,6 @@ const DeepZoomContainer = styled.div`
   bottom: 0;
   left: 0;
   z-index: 1000;
-  transition: opacity 0.5s;
   background-color: ${color("black100")};
 `
 
@@ -65,8 +64,7 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
   renderLightbox() {
     const { slider } = this.state
     return (
-      <React.Fragment>
-        <DeepZoomContainer innerRef={this.state.deepZoomRef as any} />
+      <DeepZoomContainer innerRef={this.state.deepZoomRef as any}>
         <Flex
           position="absolute"
           width="100%"
@@ -81,7 +79,7 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
             onChange={this.onSliderChanged}
           />
         </Flex>
-      </React.Fragment>
+      </DeepZoomContainer>
     )
   }
 
