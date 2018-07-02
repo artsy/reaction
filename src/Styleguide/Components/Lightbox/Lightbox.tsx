@@ -10,6 +10,7 @@ import { CloseButton } from "./CloseButton"
 import { Slider, SliderProps } from "./LightboxSlider"
 
 const KEYBOARD_EVENT = "keyup"
+const ZOOM_PER_CLICK = 1.4
 
 const DeepZoomContainer = styled.div`
   position: fixed !important;
@@ -55,7 +56,7 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
     slider: {
       min: 0,
       max: 1,
-      step: 0.01,
+      step: 0.001,
       value: 0,
     },
     /**
@@ -95,8 +96,8 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
               step={slider.step}
               value={slider.value}
               onChange={this.onSliderChanged}
-              onZoomInClicked={() => console.log("zoomed in")}
-              onZoomOutClicked={() => console.log("zoomed out")}
+              onZoomInClicked={() => this.zoomIn()}
+              onZoomOutClicked={() => this.zoomOut()}
             />
           </Flex>
         </DeepZoomContainer>
@@ -165,6 +166,21 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
     }
   }
 
+  zoomBy = amount => {
+    if (this.state.viewer.viewport) {
+      this.state.viewer.viewport.zoomBy(amount)
+      this.state.viewer.viewport.applyConstraints()
+    }
+  }
+
+  zoomIn = () => {
+    this.zoomBy(ZOOM_PER_CLICK)
+  }
+
+  zoomOut = () => {
+    this.zoomBy(1 / ZOOM_PER_CLICK)
+  }
+
   initSeaDragon = () => {
     this.state.promisedDragon.then(OpenSeaDragon => {
       const viewer = OpenSeaDragon({
@@ -180,7 +196,7 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
         springStiffness: 15.0,
         maxZoomPixelRatio: 1.0,
         minZoomImageRatio: 0.9,
-        zoomPerClick: 1.4,
+        zoomPerClick: ZOOM_PER_CLICK,
         zoomPerScroll: 1.4,
         clickDistThreshold: 5,
         clickTimeThreshold: 300,

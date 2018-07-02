@@ -92,8 +92,8 @@ interface ZoomButton {
   onClick?: () => void
 }
 
-const ZoomOutButton: SFC<ZoomButton> = () => (
-  <ZoomSymbolContainer>
+const ZoomOutButton: SFC<ZoomButton> = props => (
+  <ZoomSymbolContainer {...props}>
     <line
       x1="0"
       y1="50%"
@@ -105,8 +105,8 @@ const ZoomOutButton: SFC<ZoomButton> = () => (
   </ZoomSymbolContainer>
 )
 
-const ZoomInButton: SFC<ZoomButton> = () => (
-  <ZoomSymbolContainer>
+const ZoomInButton: SFC<ZoomButton> = props => (
+  <ZoomSymbolContainer {...props}>
     <line
       x1="50%"
       y1="0"
