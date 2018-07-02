@@ -1,16 +1,19 @@
 import { extend } from "lodash"
 import React from "react"
+import { FollowArtistButton_artist } from "../../__generated__/FollowArtistButton_artist.graphql"
+import { track } from "../../Utils/track"
+import * as Artsy from "../Artsy"
+import { FollowButton } from "./Button"
+import { FollowButtonDeprecated } from "./ButtonDeprecated"
+import { FollowTrackingData } from "./Typings"
+
 import {
   commitMutation,
   createFragmentContainer,
   graphql,
   RelayProp,
 } from "react-relay"
-import { FollowArtistButton_artist } from "../../__generated__/FollowArtistButton_artist.graphql"
-import { track } from "../../Utils/track"
-import * as Artsy from "../Artsy"
-import { FollowButton } from "./Button"
-import { FollowTrackingData } from "./Typings"
+import { ButtonProps } from "Styleguide/Elements/Button"
 
 interface Props
   extends React.HTMLProps<FollowArtistButton>,
@@ -20,9 +23,25 @@ interface Props
   tracking?: any
   trackingData?: FollowTrackingData
   onOpenAuthModal?: (type: "register" | "login", config?: Object) => void
+
+  /**
+   * FIXME: Default is true due to legacy code. If false, use new @artsy/palette
+   * design system <Button /> style.
+   */
+  useDeprecatedButtonStyle?: boolean
+  /**
+   * FIXME: If useDeprecatedButtonStyle is false pass <Button> style props along
+   * to new design-system buttons.
+   */
+  buttonProps?: Partial<ButtonProps>
 }
 
 export class FollowArtistButton extends React.Component<Props> {
+  static defaultProps = {
+    useDeprecatedButtonStyle: true,
+    buttonProps: {},
+  }
+
   trackFollow = () => {
     const {
       tracking,
@@ -75,12 +94,18 @@ export class FollowArtistButton extends React.Component<Props> {
   }
 
   render() {
-    const { artist } = this.props
+    const { artist, useDeprecatedButtonStyle, buttonProps } = this.props
+
+    // FIXME: Unify design language
+    const Button = useDeprecatedButtonStyle
+      ? FollowButtonDeprecated
+      : FollowButton
 
     return (
-      <FollowButton
+      <Button
         isFollowed={artist && artist.is_followed}
         handleFollow={this.handleFollow}
+        buttonProps={buttonProps}
       />
     )
   }

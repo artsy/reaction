@@ -133,7 +133,7 @@ export class CanvasContainerComponent extends React.Component<
         </CanvasSlideshow>
       )
 
-      // Canvas -- Video / Image
+      // Video / Image
     } else {
       const [asset] = unit.assets
       const isVideo = asset && asset.url.includes("mp4")

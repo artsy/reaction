@@ -3,19 +3,20 @@ import React from "react"
 import { GridThemeProvider } from "styled-bootstrap-grid"
 import { GlobalStyles } from "Styleguide/Elements/GlobalStyles"
 import { Grid } from "Styleguide/Elements/Grid"
-import { ResponsiveProvider } from "Styleguide/Utils/Responsive"
 import { Provider as StateProvider } from "unstated"
+import { ResponsiveProvider } from "Utils/Responsive"
 import { ContextProvider } from "../Components/Artsy"
-import { GlobalState } from "./state"
+import { AppState } from "./state"
 import { BootProps } from "./types"
 
 export const Boot: React.SFC<BootProps> = ({ children, ...props }) => {
-  const globalState = new GlobalState(props)
+  const appState = new AppState(props)
 
   return (
-    <StateProvider inject={[globalState]}>
+    <StateProvider inject={[appState]}>
       <ContextProvider
-        relayEnvironment={globalState.state.system.relayEnvironment}
+        relayEnvironment={props.relayEnvironment}
+        currentUser={props.currentUser}
       >
         <ResponsiveProvider
           initialBreakpoint={props.initialBreakpoint}
@@ -36,4 +37,6 @@ export const Boot: React.SFC<BootProps> = ({ children, ...props }) => {
 
 Boot.defaultProps = {
   initialBreakpoint: null,
+  relayEnvironment: null,
+  currentUser: null,
 }

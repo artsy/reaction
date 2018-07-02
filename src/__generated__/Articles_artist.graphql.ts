@@ -14,7 +14,7 @@ const node: ConcreteFragment = {
   "selections": [
     {
       "kind": "FragmentSpread",
-      "name": "ArticlesRefetchContainer_artist",
+      "name": "ArtistArticles_artist",
       "args": null
     },
     {
@@ -26,5 +26,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'b58861f1b65a42941e00521630825aff';
+(node as any).hash = '98d755e5b63a5214bafae8262897cdab';
 export default node;

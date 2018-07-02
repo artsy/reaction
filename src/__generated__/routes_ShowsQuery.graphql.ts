@@ -21,20 +21,20 @@ query routes_ShowsQuery(
 
 fragment Shows_viewer on Viewer {
   artist_currentShows: artist(id: $artistID) {
-    ...ShowsRefetchContainer_artist_4FmGs3
+    ...ArtistShows_artist_4FmGs3
     __id
   }
   artist_upcomingShows: artist(id: $artistID) {
-    ...ShowsRefetchContainer_artist_4b9uba
+    ...ArtistShows_artist_4b9uba
     __id
   }
   artist_pastShows: artist(id: $artistID) {
-    ...ShowsRefetchContainer_artist_21vaQg
+    ...ArtistShows_artist_21vaQg
     __id
   }
 }
 
-fragment ShowsRefetchContainer_artist_4FmGs3 on Artist {
+fragment ArtistShows_artist_4FmGs3 on Artist {
   id
   showsConnection(first: 4, sort: end_at_asc, status: "running") {
     pageInfo {
@@ -75,7 +75,7 @@ fragment ShowsRefetchContainer_artist_4FmGs3 on Artist {
   __id
 }
 
-fragment ShowsRefetchContainer_artist_4b9uba on Artist {
+fragment ArtistShows_artist_4b9uba on Artist {
   id
   showsConnection(first: 4, sort: start_at_asc, status: "upcoming") {
     pageInfo {
@@ -116,7 +116,7 @@ fragment ShowsRefetchContainer_artist_4b9uba on Artist {
   __id
 }
 
-fragment ShowsRefetchContainer_artist_21vaQg on Artist {
+fragment ArtistShows_artist_21vaQg on Artist {
   id
   showsConnection(first: 4, sort: end_at_desc, status: "closed") {
     pageInfo {
@@ -451,7 +451,7 @@ return {
   "operationKind": "query",
   "name": "routes_ShowsQuery",
   "id": null,
-  "text": "query routes_ShowsQuery(\n  $artistID: String!\n) {\n  viewer {\n    ...Shows_viewer\n  }\n}\n\nfragment Shows_viewer on Viewer {\n  artist_currentShows: artist(id: $artistID) {\n    ...ShowsRefetchContainer_artist_4FmGs3\n    __id\n  }\n  artist_upcomingShows: artist(id: $artistID) {\n    ...ShowsRefetchContainer_artist_4b9uba\n    __id\n  }\n  artist_pastShows: artist(id: $artistID) {\n    ...ShowsRefetchContainer_artist_21vaQg\n    __id\n  }\n}\n\nfragment ShowsRefetchContainer_artist_4FmGs3 on Artist {\n  id\n  showsConnection(first: 4, sort: end_at_asc, status: \"running\") {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        href\n        exhibition_period\n        cover_image {\n          cropped(width: 800, height: 600) {\n            url\n          }\n        }\n        city\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment ShowsRefetchContainer_artist_4b9uba on Artist {\n  id\n  showsConnection(first: 4, sort: start_at_asc, status: \"upcoming\") {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        href\n        exhibition_period\n        cover_image {\n          cropped(width: 800, height: 600) {\n            url\n          }\n        }\n        city\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment ShowsRefetchContainer_artist_21vaQg on Artist {\n  id\n  showsConnection(first: 4, sort: end_at_desc, status: \"closed\") {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        href\n        exhibition_period\n        cover_image {\n          cropped(width: 800, height: 600) {\n            url\n          }\n        }\n        city\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n  }\n}\n",
+  "text": "query routes_ShowsQuery(\n  $artistID: String!\n) {\n  viewer {\n    ...Shows_viewer\n  }\n}\n\nfragment Shows_viewer on Viewer {\n  artist_currentShows: artist(id: $artistID) {\n    ...ArtistShows_artist_4FmGs3\n    __id\n  }\n  artist_upcomingShows: artist(id: $artistID) {\n    ...ArtistShows_artist_4b9uba\n    __id\n  }\n  artist_pastShows: artist(id: $artistID) {\n    ...ArtistShows_artist_21vaQg\n    __id\n  }\n}\n\nfragment ArtistShows_artist_4FmGs3 on Artist {\n  id\n  showsConnection(first: 4, sort: end_at_asc, status: \"running\") {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        href\n        exhibition_period\n        cover_image {\n          cropped(width: 800, height: 600) {\n            url\n          }\n        }\n        city\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment ArtistShows_artist_4b9uba on Artist {\n  id\n  showsConnection(first: 4, sort: start_at_asc, status: \"upcoming\") {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        href\n        exhibition_period\n        cover_image {\n          cropped(width: 800, height: 600) {\n            url\n          }\n        }\n        city\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment ArtistShows_artist_21vaQg on Artist {\n  id\n  showsConnection(first: 4, sort: end_at_desc, status: \"closed\") {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        href\n        exhibition_period\n        cover_image {\n          cropped(width: 800, height: 600) {\n            url\n          }\n        }\n        city\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",

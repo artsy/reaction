@@ -4,7 +4,7 @@ import React from "react"
 import { commitMutation } from "react-relay"
 import renderer from "react-test-renderer"
 import { ContextProvider } from "../../Artsy"
-import { FollowButton } from "../Button"
+import { FollowButtonDeprecated } from "../ButtonDeprecated"
 import FollowArtistButton from "../FollowArtistButton"
 
 jest.mock("react-relay", () => ({
@@ -58,7 +58,7 @@ describe("FollowArtistButton", () => {
   describe("unit", () => {
     it("Calls #onOpenAuthModal if no current user", () => {
       const component = getWrapper(props)
-      component.find(FollowButton).simulate("click")
+      component.find(FollowButtonDeprecated).simulate("click")
       const args = props.onOpenAuthModal.mock.calls[0]
 
       expect(args[0]).toBe("register")
@@ -69,7 +69,7 @@ describe("FollowArtistButton", () => {
 
     it("Follows an artist if current user", () => {
       const component = getWrapper(props, { id: "1234" })
-      component.find(FollowButton).simulate("click")
+      component.find(FollowButtonDeprecated).simulate("click")
       const mutation = commitMutation.mock.calls[0][1].variables.input
 
       expect(mutation.artist_id).toBe("damon-zucconi")
@@ -79,7 +79,7 @@ describe("FollowArtistButton", () => {
     it("Unfollows an artist if current user", () => {
       props.artist.is_followed = true
       const component = getWrapper(props, { id: "1234" })
-      component.find(FollowButton).simulate("click")
+      component.find(FollowButtonDeprecated).simulate("click")
       const mutation = commitMutation.mock.calls[1][1].variables.input
 
       expect(mutation.artist_id).toBe("damon-zucconi")
@@ -88,7 +88,7 @@ describe("FollowArtistButton", () => {
 
     it("Tracks follow click when following", () => {
       const component = getWrapper(props, { id: "1234" })
-      component.find(FollowButton).simulate("click")
+      component.find(FollowButtonDeprecated).simulate("click")
 
       expect(props.tracking.trackEvent.mock.calls[0][0].action).toBe(
         "Followed Artist"
@@ -98,7 +98,7 @@ describe("FollowArtistButton", () => {
     it("Tracks unfollow click when unfollowing", () => {
       props.artist.is_followed = true
       const component = getWrapper(props, { id: "1234" })
-      component.find(FollowButton).simulate("click")
+      component.find(FollowButtonDeprecated).simulate("click")
 
       expect(props.tracking.trackEvent.mock.calls[0][0].action).toBe(
         "Unfollowed Artist"
@@ -110,7 +110,7 @@ describe("FollowArtistButton", () => {
         context_module: "tooltip",
       }
       const component = getWrapper(props, { id: "1234" })
-      component.find(FollowButton).simulate("click")
+      component.find(FollowButtonDeprecated).simulate("click")
 
       expect(props.tracking.trackEvent.mock.calls[0][0].context_module).toBe(
         "tooltip"

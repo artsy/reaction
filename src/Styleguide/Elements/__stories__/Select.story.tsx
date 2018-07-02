@@ -1,6 +1,6 @@
+import { selectProps } from "Apps/__test__/Fixtures/Select"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { selectProps } from "Styleguide/Pages/Fixtures/Select"
 import { Section } from "Styleguide/Utils/Section"
 import { LargeSelect, Select, SmallSelect } from "../Select"
 

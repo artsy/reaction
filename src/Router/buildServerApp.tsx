@@ -14,12 +14,14 @@ export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
   return new Promise(async (resolve, reject) => {
     try {
       const { routes, url, user } = config
+
+      // FIXME: Might be a better way to do this...
+      const currentUser = user || {
+        id: process.env.USER_ID,
+        accessToken: process.env.USER_ACCESS_TOKEN,
+      }
       const relayEnvironment = createEnvironment({
-        // FIXME: Might be a better way to do this...
-        user: user || {
-          id: process.env.USER_ID,
-          accessToken: process.env.USER_ACCESS_TOKEN,
-        },
+        user: currentUser,
       })
       const historyMiddlewares = [queryMiddleware]
       const resolver = new Resolver(relayEnvironment)
@@ -34,21 +36,13 @@ export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
       })
 
       if (redirect) {
-        resolve({
-          redirect,
-          status,
-        })
+        resolve({ redirect, status })
 
         return
       }
 
       const bootProps = {
-        system: {
-          ...config,
-          relayEnvironment,
-          resolver,
-          routes,
-        },
+        system: { ...config, relayEnvironment, resolver, routes, currentUser },
       }
 
       const AppContainer = props => {

@@ -3,7 +3,7 @@ import React from "react"
 import { BorderBox } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Image, ResponsiveImage } from "Styleguide/Elements/Image"
-import { Responsive } from "Styleguide/Utils/Responsive"
+import { Responsive } from "Utils/Responsive"
 
 export interface AuctionCardProps {
   src: string
