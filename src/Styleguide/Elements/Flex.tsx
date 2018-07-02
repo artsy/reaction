@@ -27,6 +27,8 @@ import {
   style,
   width,
   WidthProps,
+  zIndex,
+  ZIndexProps,
 } from "styled-system"
 
 // @ts-ignore
@@ -50,7 +52,8 @@ export interface FlexProps
     MaxHeightProps,
     MaxWidthProps,
     PositionProps,
-    BottomProps {
+    BottomProps,
+    ZIndexProps {
   flexGrow?: number | string
 }
 
@@ -70,4 +73,5 @@ export const Flex = styled.div.attrs<FlexProps>({})`
   ${maxWidth};
   ${position};
   ${bottom};
+  ${zIndex};
 `

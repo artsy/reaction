@@ -1,6 +1,6 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Slider } from "Styleguide/Components/LightboxSlider"
+import { Slider } from "Styleguide/Components/Lightbox/LightboxSlider"
 import { Section } from "Styleguide/Utils/Section"
 
 storiesOf("Styleguide/Components", module).add("LightboxSlider", () => {

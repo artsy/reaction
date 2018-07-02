@@ -75,7 +75,6 @@ StyledSlider.defaultProps = {
 const SliderContainer = styled.div`
   width: 240px;
   height: 50px;
-  z-index: 10001;
   border-radius: 2px;
   background-color: rgba(0, 0, 0, 0.6);
   padding: ${space(1)}px;

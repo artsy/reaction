@@ -1,9 +1,12 @@
 import { color, space } from "@artsy/palette"
+import FadeTransition from "Components/Animation/FadeTransition"
 import { bind, once, throttle } from "lodash"
 import React from "react"
 import ReactDOM from "react-dom"
 import styled from "styled-components"
+import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
+import { CloseButton } from "./CloseButton"
 import { Slider, SliderProps } from "./LightboxSlider"
 
 const KEYBOARD_EVENT = "keyup"
@@ -64,22 +67,40 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
   renderLightbox() {
     const { slider } = this.state
     return (
-      <DeepZoomContainer innerRef={this.state.deepZoomRef as any}>
-        <Flex
-          position="absolute"
-          width="100%"
-          justifyContent="center"
-          bottom={space(2)}
-        >
-          <Slider
-            min={slider.min}
-            max={slider.max}
-            step={slider.step}
-            value={slider.value}
-            onChange={this.onSliderChanged}
-          />
-        </Flex>
-      </DeepZoomContainer>
+      <FadeTransition
+        in={this.state.shown}
+        mountOnEnter
+        unmountOnExit
+        timeout={{ enter: 250, exit: 300 }}
+      >
+        <DeepZoomContainer innerRef={this.state.deepZoomRef as any}>
+          <Box
+            position="absolute"
+            top={space(3) / 2}
+            right={space(3) / 2}
+            zIndex={1001}
+          >
+            <CloseButton onClick={() => this.hide()} />
+          </Box>
+          <Flex
+            position="absolute"
+            width="100%"
+            justifyContent="center"
+            zIndex={1001}
+            bottom={space(2)}
+          >
+            <Slider
+              min={slider.min}
+              max={slider.max}
+              step={slider.step}
+              value={slider.value}
+              onChange={this.onSliderChanged}
+              onZoomInClicked={() => console.log("zoomed in")}
+              onZoomOutClicked={() => console.log("zoomed out")}
+            />
+          </Flex>
+        </DeepZoomContainer>
+      </FadeTransition>
     )
   }
 
@@ -118,7 +139,7 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
     )
     return (
       <React.Fragment>
-        {this.state.shown && this.renderPortal()}
+        {this.renderPortal()}
         {modifiedChildren}
       </React.Fragment>
     )

@@ -3,6 +3,7 @@ import React from "react"
 import styled, { css } from "styled-components"
 import {
   bottom,
+  BottomProps,
   color,
   ColorProps,
   display,
@@ -10,19 +11,24 @@ import {
   height,
   HeightProps,
   left,
+  LeftProps,
   maxWidth,
   MaxWidthProps,
   position,
   PositionProps,
   right,
+  RightProps,
   space,
   SpaceProps,
   textAlign,
   TextAlignProps,
   themeGet,
   top,
+  TopProps,
   width,
   WidthProps,
+  zIndex,
+  ZIndexProps,
 } from "styled-system"
 import { Flex, FlexProps } from "./Flex"
 
@@ -62,7 +68,12 @@ export interface BoxProps
     HeightProps,
     ColorProps,
     TextAlignProps,
-    PositionProps {}
+    PositionProps,
+    TopProps,
+    BottomProps,
+    LeftProps,
+    RightProps,
+    ZIndexProps {}
 export const Box = styled.div.attrs<BoxProps>({})`
   ${space};
   ${display};
@@ -76,4 +87,5 @@ export const Box = styled.div.attrs<BoxProps>({})`
   ${color};
   ${textAlign};
   ${maxWidth};
+  ${zIndex};
 `
