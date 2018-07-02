@@ -11,6 +11,7 @@ import { Slider, SliderProps } from "./LightboxSlider"
 
 const KEYBOARD_EVENT = "keyup"
 const ZOOM_PER_CLICK = 1.4
+const HIDE_ZOOM_SLIDER_AFTER = 2500
 
 const DeepZoomContainer = styled.div`
   position: fixed !important;
@@ -44,7 +45,9 @@ export interface LightboxState {
   viewer: any
   deepZoomRef: any
   slider: SliderProps
+  showZoomSlider: boolean
   promisedDragon: Promise<any>
+  activityTimer?: NodeJS.Timer
 }
 
 export class Lightbox extends React.Component<LightboxProps, LightboxState> {
@@ -52,6 +55,8 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
     element: null,
     viewer: null,
     shown: false,
+    activityTimer: null,
+    showZoomSlider: true,
     deepZoomRef: React.createRef(),
     slider: {
       min: 0,
@@ -74,7 +79,13 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
         unmountOnExit
         timeout={{ enter: 250, exit: 300 }}
       >
-        <DeepZoomContainer innerRef={this.state.deepZoomRef as any}>
+        <DeepZoomContainer
+          onMouseMove={this.detectActivity}
+          onWheel={this.detectActivity}
+          onTouchStart={this.detectActivity}
+          onTouchMove={this.detectActivity}
+          innerRef={this.state.deepZoomRef as any}
+        >
           <Box
             position="absolute"
             top={space(3) / 2}
@@ -90,15 +101,20 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
             zIndex={1001}
             bottom={space(2)}
           >
-            <Slider
-              min={slider.min}
-              max={slider.max}
-              step={slider.step}
-              value={slider.value}
-              onChange={this.onSliderChanged}
-              onZoomInClicked={() => this.zoomIn()}
-              onZoomOutClicked={() => this.zoomOut()}
-            />
+            <FadeTransition
+              in={this.state.showZoomSlider}
+              timeout={{ enter: 50, exit: 150 }}
+            >
+              <Slider
+                min={slider.min}
+                max={slider.max}
+                step={slider.step}
+                value={slider.value}
+                onChange={this.onSliderChanged}
+                onZoomInClicked={() => this.zoomIn()}
+                onZoomOutClicked={() => this.zoomOut()}
+              />
+            </FadeTransition>
           </Flex>
         </DeepZoomContainer>
       </FadeTransition>
@@ -145,10 +161,11 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
         })
       })
     )
+    this.detectActivity()
   }
 
   show = event => {
-    this.setState({ shown: true })
+    this.setState({ shown: true, showZoomSlider: true })
   }
 
   hide = () => {
@@ -158,6 +175,7 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
       this.state.viewer = null
     }
     document.removeEventListener(KEYBOARD_EVENT, this.handleKeyPress)
+    clearTimeout(this.state.activityTimer)
   }
 
   handleKeyPress = event => {
@@ -165,6 +183,18 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
       this.hide()
     }
   }
+
+  detectActivity = throttle(() => {
+    clearTimeout(this.state.activityTimer)
+    this.setState({
+      showZoomSlider: true,
+      activityTimer: setTimeout(() => {
+        this.setState({
+          showZoomSlider: false,
+        })
+      }, HIDE_ZOOM_SLIDER_AFTER),
+    })
+  }, 500) as () => void
 
   zoomBy = amount => {
     if (this.state.viewer.viewport) {
