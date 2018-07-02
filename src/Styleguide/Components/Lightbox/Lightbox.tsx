@@ -110,6 +110,42 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
       : null
   }
 
+  render() {
+    const { children } = this.props
+    const modifiedChildren = React.Children.map(children, child =>
+      React.cloneElement(child as any, {
+        style: { cursor: "zoom-in" },
+        onClick: this.show,
+      })
+    )
+    return (
+      <React.Fragment>
+        {this.renderPortal()}
+        {modifiedChildren}
+      </React.Fragment>
+    )
+  }
+
+  postRender = () => {
+    this.state.viewer.addHandler(
+      "zoom",
+      bind(throttle(this.onZoomChanged, 50), this)
+    )
+    this.state.viewer.addHandler(
+      "tile-drawn",
+      once(() => {
+        this.setState({
+          slider: {
+            ...this.state.slider,
+            min: this.state.viewer.viewport.getMinZoom(),
+            max: this.state.viewer.viewport.getMaxZoom(),
+            value: this.state.viewer.viewport.getHomeZoom(),
+          },
+        })
+      })
+    )
+  }
+
   show = event => {
     this.setState({ shown: true })
   }
@@ -127,22 +163,6 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
     if (event && event.key === "Escape") {
       this.hide()
     }
-  }
-
-  render() {
-    const { children } = this.props
-    const modifiedChildren = React.Children.map(children, child =>
-      React.cloneElement(child as any, {
-        style: { cursor: "zoom-in" },
-        onClick: this.show,
-      })
-    )
-    return (
-      <React.Fragment>
-        {this.renderPortal()}
-        {modifiedChildren}
-      </React.Fragment>
-    )
   }
 
   initSeaDragon = () => {
@@ -181,26 +201,6 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
         viewer,
       })
     })
-  }
-
-  postRender = () => {
-    this.state.viewer.addHandler(
-      "zoom",
-      bind(throttle(this.onZoomChanged, 50), this)
-    )
-    this.state.viewer.addHandler(
-      "tile-drawn",
-      once(() => {
-        this.setState({
-          slider: {
-            ...this.state.slider,
-            min: this.state.viewer.viewport.getMinZoom(),
-            max: this.state.viewer.viewport.getMaxZoom(),
-            value: this.state.viewer.viewport.getHomeZoom(),
-          },
-        })
-      })
-    )
   }
 
   onSliderChanged = event => {
