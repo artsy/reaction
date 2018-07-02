@@ -158,8 +158,11 @@ export const SmallArtistHeader: SFC<Props> = props => {
       </Flex>
       <Box my={2}>
         <FollowArtistButton
-          useDeprecatedButtonStyle={false}
           artist={props.artist as any}
+          useDeprecatedButtonStyle={false}
+          buttonProps={{
+            width: "100%",
+          }}
           currentUser={currentUser}
           onOpenAuthModal={() => {
             props.mediator.trigger("open:auth", {

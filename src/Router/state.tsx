@@ -42,12 +42,12 @@ export class AppState extends Container<AppStateContainer> {
 
 export class PreloadLinkState extends Container<PreloadLinkContainer> {
   state = {
-    isFetching: false,
+    isLoading: false,
   }
 
-  toggleFetching = isFetching => {
+  toggleLoading = isLoading => {
     this.setState({
-      isFetching,
+      isLoading,
     })
   }
 }

@@ -8,6 +8,11 @@ import { Flex } from "Styleguide/Elements/Flex"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Subscribe } from "unstated"
 
+import {
+  LoadingArea,
+  LoadingAreaState,
+} from "Apps/Artist/Components/LoadingArea"
+
 interface Props {
   filtered_artworks: ArtworkFilterArtworkGrid_filtered_artworks
   relay: RelayRefetchProp
@@ -17,7 +22,11 @@ interface Props {
 
 const PAGE_SIZE = 10
 
-class Artworks extends Component<Props> {
+class Artworks extends Component<Props, LoadingAreaState> {
+  state = {
+    isLoading: false,
+  }
+
   loadNext = () => {
     const {
       filtered_artworks: {
@@ -33,6 +42,8 @@ class Artworks extends Component<Props> {
   }
 
   loadAfter = cursor => {
+    this.toggleLoading(true)
+
     this.props.relay.refetch(
       {
         first: PAGE_SIZE,
@@ -43,6 +54,8 @@ class Artworks extends Component<Props> {
       },
       null,
       error => {
+        this.toggleLoading(false)
+
         if (error) {
           console.error(error)
         }
@@ -50,12 +63,18 @@ class Artworks extends Component<Props> {
     )
   }
 
+  toggleLoading = isLoading => {
+    this.setState({
+      isLoading,
+    })
+  }
+
   render() {
     return (
       <Subscribe to={[FilterState]}>
         {filters => {
           return (
-            <div>
+            <LoadingArea isLoading={this.state.isLoading}>
               <ArtworkGrid
                 artworks={this.props.filtered_artworks.artworks as any}
                 columnCount={this.props.columnCount}
@@ -74,7 +93,7 @@ class Artworks extends Component<Props> {
                   scrollTo="#jump--artistArtworkGrid"
                 />
               </Flex>
-            </div>
+            </LoadingArea>
           )
         }}
       </Subscribe>
