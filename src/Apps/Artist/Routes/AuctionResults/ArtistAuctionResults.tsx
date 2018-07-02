@@ -7,12 +7,16 @@ import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Subscribe } from "unstated"
-import { LoadingArea } from "../../Components/LoadingArea"
 import { ArtistAuctionDetailsModal } from "./ArtistAuctionDetailsModal"
 import { AuctionResultItemFragmentContainer } from "./ArtistAuctionResultItem"
 import { AuctionResultsState } from "./state"
 import { TableColumns } from "./TableColumns"
 import { TableSidebar } from "./TableSidebar"
+
+import {
+  LoadingArea,
+  LoadingAreaState,
+} from "Apps/Artist/Components/LoadingArea"
 
 const PAGE_SIZE = 10
 
@@ -22,7 +26,14 @@ interface AuctionResultsProps {
   sort: string
 }
 
-class AuctionResultsContainer extends Component<AuctionResultsProps> {
+class AuctionResultsContainer extends Component<
+  AuctionResultsProps,
+  LoadingAreaState
+> {
+  state = {
+    isLoading: false,
+  }
+
   loadNext = () => {
     const {
       artist: {
@@ -63,6 +74,8 @@ class AuctionResultsContainer extends Component<AuctionResultsProps> {
   }
 
   loadAfter = cursor => {
+    this.toggleLoading(true)
+
     this.props.relay.refetch(
       {
         first: PAGE_SIZE,
@@ -74,11 +87,19 @@ class AuctionResultsContainer extends Component<AuctionResultsProps> {
       },
       null,
       error => {
+        this.toggleLoading(false)
+
         if (error) {
           console.error(error)
         }
       }
     )
+  }
+
+  toggleLoading = isLoading => {
+    this.setState({
+      isLoading,
+    })
   }
 
   render() {
@@ -103,7 +124,7 @@ class AuctionResultsContainer extends Component<AuctionResultsProps> {
                     auctionResult={state.selectedAuction}
                   />
 
-                  <LoadingArea isLoading>
+                  <LoadingArea isLoading={this.state.isLoading}>
                     {this.props.artist.auctionResults.edges.map(
                       ({ node }, index) => {
                         return (

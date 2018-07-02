@@ -4,17 +4,28 @@ import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { PaginationFragmentContainer as Pagination } from "Styleguide/Components/Pagination"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
-import { LoadingArea } from "../../Components/LoadingArea"
 import { ArticleItem } from "./ArtistArticle"
+
+import {
+  LoadingArea,
+  LoadingAreaState,
+} from "Apps/Artist/Components/LoadingArea"
 
 const PAGE_SIZE = 10
 
-interface ArticlesProps {
+interface ArtistArticlesProps {
   relay: RelayRefetchProp
   artist: ArtistArticles_artist
 }
 
-export class ArtistArticles extends Component<ArticlesProps> {
+export class ArtistArticles extends Component<
+  ArtistArticlesProps,
+  LoadingAreaState
+> {
+  state = {
+    isLoading: false,
+  }
+
   loadNext = () => {
     const {
       artist: {
@@ -30,6 +41,8 @@ export class ArtistArticles extends Component<ArticlesProps> {
   }
 
   loadAfter = cursor => {
+    this.toggleLoading(true)
+
     this.props.relay.refetch(
       {
         first: PAGE_SIZE,
@@ -40,11 +53,19 @@ export class ArtistArticles extends Component<ArticlesProps> {
       },
       null,
       error => {
+        this.toggleLoading(false)
+
         if (error) {
           console.error(error)
         }
       }
     )
+  }
+
+  toggleLoading = isLoading => {
+    this.setState({
+      isLoading,
+    })
   }
 
   render() {
@@ -54,7 +75,7 @@ export class ArtistArticles extends Component<ArticlesProps> {
 
         <Row>
           <Col>
-            <LoadingArea isLoading>
+            <LoadingArea isLoading={this.state.isLoading}>
               {this.props.artist.articlesConnection.edges.map(
                 ({ node }, index) => {
                   return (
