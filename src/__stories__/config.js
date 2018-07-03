@@ -1,5 +1,7 @@
 const { configure } = require("@storybook/react")
 const { setDefaults } = require("@storybook/addon-info")
+require("storybook-chromatic")
+
 const Events = require("../Utils/Events").default
 const req = require.context("../", true, /\.story\.tsx$/)
 
