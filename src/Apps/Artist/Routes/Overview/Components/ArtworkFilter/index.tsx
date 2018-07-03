@@ -148,11 +148,7 @@ class Filter extends Component<Props> {
           "INSTITUTION",
           "MAJOR_PERIOD",
         ],
-        medium: this.props.filters.medium,
-        for_sale: this.props.filters.for_sale,
-        major_periods: this.props.filters.major_periods,
-        partner_id: this.props.filters.partner_id,
-        sort: this.props.filters.sort,
+        ...this.props.filters,
       },
       null,
       error => {
@@ -230,10 +226,7 @@ class Filter extends Component<Props> {
                         </Sidebar>
                       )}
 
-                      {/* Artwork Grid */}
-
                       <Box width={xs ? "100%" : "70%"}>
-                        {/* TODO: Implement sorting */}
                         <Flex justifyContent="flex-end">
                           <Select
                             options={[
