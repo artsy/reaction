@@ -10,6 +10,11 @@ import { Responsive } from "Utils/Responsive"
 import { ArtistShowBlockItem } from "./ArtistShowBlockItem"
 import { ArtistShowListItem } from "./ArtistShowListItem"
 
+import {
+  LoadingArea,
+  LoadingAreaState,
+} from "Apps/Artist/Components/LoadingArea"
+
 interface ArtistShowsProps {
   relay: RelayRefetchProp
   artist: ArtistShows_artist
@@ -20,7 +25,11 @@ interface ArtistShowsProps {
 
 export const PAGE_SIZE = 4
 
-class ArtistShows extends Component<ArtistShowsProps> {
+class ArtistShows extends Component<ArtistShowsProps, LoadingAreaState> {
+  state = {
+    isLoading: false,
+  }
+
   loadNext = () => {
     const {
       artist: {
@@ -36,6 +45,8 @@ class ArtistShows extends Component<ArtistShowsProps> {
   }
 
   loadAfter = cursor => {
+    this.toggleLoading(true)
+
     this.props.relay.refetch(
       {
         first: PAGE_SIZE,
@@ -48,11 +59,19 @@ class ArtistShows extends Component<ArtistShowsProps> {
       },
       null,
       error => {
+        this.toggleLoading(false)
+
         if (error) {
           console.error(error)
         }
       }
     )
+  }
+
+  toggleLoading = isLoading => {
+    this.setState({
+      isLoading,
+    })
   }
 
   render() {
@@ -69,45 +88,47 @@ class ArtistShows extends Component<ArtistShowsProps> {
               <Col>
                 <Row>
                   <Col>
-                    {this.props.status === "running" ? (
-                      <ShowBlocks flexDirection={blockDirection} flexWrap>
-                        {this.props.artist.showsConnection.edges.map(
-                          ({ node }, edgeKey) => {
-                            return (
-                              <ArtistShowBlockItem
-                                key={edgeKey}
-                                blockWidth={blockWidth}
-                                imageUrl={node.cover_image.cropped.url}
-                                partner={node.partner.name}
-                                name={node.name}
-                                exhibitionInfo={node.exhibition_period}
-                                pr={pr}
-                                pb={pb}
-                                href={node.href}
-                                city={node.city}
-                              />
-                            )
-                          }
-                        )}
-                      </ShowBlocks>
-                    ) : (
-                      <ShowList>
-                        {this.props.artist.showsConnection.edges.map(
-                          ({ node }, edgeKey) => {
-                            return (
-                              <ArtistShowListItem
-                                key={edgeKey}
-                                city={node.city}
-                                partner={node.partner.name}
-                                name={node.name}
-                                exhibitionInfo={node.exhibition_period}
-                                href={node.href}
-                              />
-                            )
-                          }
-                        )}
-                      </ShowList>
-                    )}
+                    <LoadingArea isLoading={this.state.isLoading}>
+                      {this.props.status === "running" ? (
+                        <ShowBlocks flexDirection={blockDirection} flexWrap>
+                          {this.props.artist.showsConnection.edges.map(
+                            ({ node }, edgeKey) => {
+                              return (
+                                <ArtistShowBlockItem
+                                  key={edgeKey}
+                                  blockWidth={blockWidth}
+                                  imageUrl={node.cover_image.cropped.url}
+                                  partner={node.partner.name}
+                                  name={node.name}
+                                  exhibitionInfo={node.exhibition_period}
+                                  pr={pr}
+                                  pb={pb}
+                                  href={node.href}
+                                  city={node.city}
+                                />
+                              )
+                            }
+                          )}
+                        </ShowBlocks>
+                      ) : (
+                        <ShowList>
+                          {this.props.artist.showsConnection.edges.map(
+                            ({ node }, edgeKey) => {
+                              return (
+                                <ArtistShowListItem
+                                  key={edgeKey}
+                                  city={node.city}
+                                  partner={node.partner.name}
+                                  name={node.name}
+                                  exhibitionInfo={node.exhibition_period}
+                                  href={node.href}
+                                />
+                              )
+                            }
+                          )}
+                        </ShowList>
+                      )}
+                    </LoadingArea>
                   </Col>
                 </Row>
 

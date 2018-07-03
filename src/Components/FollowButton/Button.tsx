@@ -1,7 +1,6 @@
 import React from "react"
 import { Button } from "Styleguide/Elements"
 import { ButtonProps } from "Styleguide/Elements/Button"
-import { Responsive } from "Utils/Responsive"
 
 interface Props {
   handleFollow?: any
@@ -40,20 +39,6 @@ export class FollowButton extends React.Component<Props, State> {
       onMouseLeave: () => this.setState({ showUnfollow: false }),
     }
 
-    return (
-      <Responsive>
-        {({ xs }) => {
-          if (xs) {
-            return (
-              <Button width="100%" {...props}>
-                {text}
-              </Button>
-            )
-          } else {
-            return <Button {...props}>{text}</Button>
-          }
-        }}
-      </Responsive>
-    )
+    return <Button {...props}>{text}</Button>
   }
 }

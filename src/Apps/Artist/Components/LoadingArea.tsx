@@ -1,31 +1,39 @@
 import Spinner from "Components/Spinner"
-import React, { SFC } from "react"
-import { PreloadLinkState } from "Router/state"
+import React, { ReactNode, SFC } from "react"
 import styled from "styled-components"
-import { Subscribe } from "unstated"
 
-interface Props {
-  children: any
+export interface LoadingAreaState {
+  isLoading: boolean
+}
+
+interface Props extends LoadingAreaState {
+  children: ReactNode
+  isLoading: boolean
+  transitionTime?: string
 }
 
 export const LoadingArea: SFC<Props> = props => {
+  const { transitionTime } = props
+  const loaderClass = props.isLoading ? "loading" : ""
+
   return (
-    <Subscribe to={[PreloadLinkState]}>
-      {({ state: { isFetching } }: PreloadLinkState) => {
-        const loaderClass = isFetching ? "loading" : ""
+    <OuterContainer>
+      <SpinnerContainer>
+        <SpinnerToggle
+          transitionTime={transitionTime}
+          className={loaderClass}
+        />
+      </SpinnerContainer>
 
-        return (
-          <OuterContainer>
-            <SpinnerContainer>
-              <SpinnerToggle className={loaderClass} />
-            </SpinnerContainer>
-
-            <Container className={loaderClass}>{props.children}</Container>
-          </OuterContainer>
-        )
-      }}
-    </Subscribe>
+      <Container transitionTime={transitionTime} className={loaderClass}>
+        {props.children}
+      </Container>
+    </OuterContainer>
   )
+}
+
+LoadingArea.defaultProps = {
+  transitionTime: "0.0s",
 }
 
 const OuterContainer = styled.div`
@@ -43,7 +51,7 @@ const Container = styled.div`
   opacity: 1;
   position: relative;
 
-  transition: opacity 0.25s;
+  transition: opacity ${(props: Partial<Props>) => props.transitionTime};
 
   &.loading {
     opacity: 0.1;
@@ -54,7 +62,7 @@ const SpinnerToggle = styled(Spinner)`
   position: absolute;
 
   opacity: 0;
-  transition: opacity 0.2s;
+  transition: opacity ${(props: Partial<Props>) => props.transitionTime};
 
   &.loading {
     opacity: 1;

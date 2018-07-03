@@ -56,12 +56,12 @@ export interface PreloadLinkProps extends ContextProps, AppStateContainer {
   immediate?: boolean
   name?: string
   onClick?: () => void
-  onToggleFetching?: (isLoading: boolean) => void
+  onToggleLoading?: (isLoading: boolean) => void
   replace?: string
   router?: any // TODO, from found
   to?: string
 }
 
 export interface PreloadLinkContainer {
-  isFetching: boolean
+  isLoading: boolean
 }
