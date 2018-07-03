@@ -78,7 +78,7 @@ export class Modal extends React.Component<ModalProps, ModalState> {
 
     return (
       <ModalWrapper isShown={isShown || isAnimating}>
-        {isShown && <Overlay onClick={this.close} />}
+        {isShown && <ModalOverlay onClick={this.close} />}
         <FadeTransition
           in={isShown}
           mountOnEnter
@@ -120,7 +120,7 @@ const ModalWrapper = styled.div.attrs<{ isShown?: boolean }>({})`
   `};
 `
 
-const ModalContainer = styled.div`
+export const ModalContainer = styled.div`
   position: fixed;
   top: 50%;
   left: 50%;
@@ -134,7 +134,7 @@ const ModalContainer = styled.div`
   animation: ${slideUp} 250ms linear;
 `
 
-const Overlay = styled.div`
+export const ModalOverlay = styled.div`
   position: fixed;
   width: 100%;
   height: 100%;
