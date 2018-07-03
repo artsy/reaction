@@ -19,7 +19,7 @@ const knobStyles = css`
 `
 
 const StyledSlider = styled.input`
-  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  appearance: none; /* Hides the slider so that custom slider can be made */
   width: 100%; /* Specific width is required for Firefox. */
   background: transparent; /* Otherwise white in Chrome */
   margin: 0 ${space(1)}px;
@@ -55,12 +55,20 @@ const StyledSlider = styled.input`
     ${railStyles};
   }
 
+  &::-moz-focus-outer {
+    border: 0;
+  }
+
   &::-ms-fill-lower {
     ${railStyles};
   }
 
   &::-ms-fill-upper {
     ${railStyles};
+  }
+
+  &:invalid {
+    box-shadow: none;
   }
 
   &:focus {
