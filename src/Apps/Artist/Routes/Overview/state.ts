@@ -6,6 +6,7 @@ type State = {
   partner_id?: string
   for_sale?: boolean
   page?: number
+  sort?: string
 }
 
 export class FilterState extends Container<State> {
@@ -15,6 +16,7 @@ export class FilterState extends Container<State> {
     page: 1,
     major_periods: [],
     partner_id: null,
+    sort: "-partner_updated_at",
   }
 
   setMajorPeriods(value) {
@@ -27,6 +29,10 @@ export class FilterState extends Container<State> {
 
   setPage(page) {
     this.setState({ page })
+  }
+
+  setSort = sort => {
+    this.setState({ sort })
   }
 
   unsetFilter(filter) {
@@ -51,9 +57,6 @@ export class FilterState extends Container<State> {
     if (filter === "gallery" || filter === "institution") {
       return this.setPartner(value)
     }
-    this.setState({
-      [filter.toLowerCase()]: value,
-      page: 1,
-    })
+    this.setState({ [filter.toLowerCase()]: value, page: 1 })
   }
 }
