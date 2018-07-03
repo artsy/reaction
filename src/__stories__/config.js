@@ -1,6 +1,5 @@
 const { configure } = require("@storybook/react")
 const { setDefaults } = require("@storybook/addon-info")
-require("storybook-chromatic")
 
 const Events = require("../Utils/Events").default
 const req = require.context("../", true, /\.story\.tsx$/)
@@ -13,9 +12,10 @@ setDefaults({
   inline: true,
 })
 
-setTimeout(() => {
-  configure(loadStories, module)
-})
+// setTimeout(() => {
+configure(loadStories, module)
+require("storybook-chromatic")
+// })
 
 Events.onEvent(data => {
   console.log("Tracked event", data)
