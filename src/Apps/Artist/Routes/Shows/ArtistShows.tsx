@@ -91,7 +91,7 @@ class ArtistShows extends Component<ArtistShowsProps, LoadingAreaState> {
 
           return (
             <React.Fragment>
-              <ShowDivider />
+              {this.props.status !== "running" && <ShowDivider />}
 
               <Row>
                 <Col>
