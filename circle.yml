@@ -24,7 +24,8 @@ test:
     - yarn relay
     - yarn lint
     - yarn type-check
-    - yarn test -- --runInBand
+    - yarn test --runInBand
+    - yarn chromatic test --script-name="start-storybook" --storybook-port=9001
 
 deployment:
   release:
