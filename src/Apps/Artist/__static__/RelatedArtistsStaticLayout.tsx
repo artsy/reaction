@@ -32,6 +32,7 @@ export const RelatedArtists = () => {
                     return (
                       <Box p={1} width={width}>
                         <ArtistCard
+                          currentUser={null}
                           artist={{
                             id: "percy",
                             image: {

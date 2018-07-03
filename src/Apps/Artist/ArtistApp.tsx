@@ -1,21 +1,19 @@
 import { RecentlyViewed_me } from "__generated__/RecentlyViewed_me.graphql"
 import { NavigationTabsFragmentContainer as NavigationTabs } from "Apps/Artist/Components/NavigationTabs"
 import React from "react"
+import { PreloadLinkState } from "Router/state"
 import { Footer } from "Styleguide/Components/Footer"
 import { RecentlyViewedFragmentContainer as RecentlyViewed } from "Styleguide/Components/RecentlyViewed"
 import { Box } from "Styleguide/Elements/Box"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
+import { Subscribe } from "unstated"
 import { ArtistHeaderFragmentContainer as ArtistHeader } from "./Components/ArtistHeader"
 import { LoadingArea } from "./Components/LoadingArea"
 
-// TODO:
-// Max width 1192
-// Inner content max width 1112
-
 export interface ArtistAppProps {
-  artist: any
+  artist: any // FIXME: ArtistHeader_artist | NavigationTabs_artist
   me: RecentlyViewed_me
   params: {
     artistID: string
@@ -43,7 +41,16 @@ export const ArtistApp: React.SFC<ArtistAppProps> = props => {
 
           <Spacer mb={3} />
 
-          <LoadingArea>{children}</LoadingArea>
+          {/*
+           When clicking nav links, wait for fetch to complete before
+           transitioning to new route
+         */}
+
+          <Subscribe to={[PreloadLinkState]}>
+            {({ state: { isLoading } }: PreloadLinkState) => {
+              return <LoadingArea isLoading={isLoading}>{children}</LoadingArea>
+            }}
+          </Subscribe>
         </Col>
       </Row>
 

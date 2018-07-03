@@ -1,12 +1,15 @@
 import { ArtworkFilterArtworkGrid_filtered_artworks } from "__generated__/ArtworkFilterArtworkGrid_filtered_artworks.graphql"
-import { FilterState } from "Apps/Artist/Routes/Overview/state"
 import ArtworkGrid from "Components/ArtworkGrid"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { PaginationFragmentContainer as Pagination } from "Styleguide/Components/Pagination"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Spacer } from "Styleguide/Elements/Spacer"
-import { Subscribe } from "unstated"
+
+import {
+  LoadingArea,
+  LoadingAreaState,
+} from "Apps/Artist/Components/LoadingArea"
 
 interface Props {
   filtered_artworks: ArtworkFilterArtworkGrid_filtered_artworks
@@ -17,7 +20,11 @@ interface Props {
 
 const PAGE_SIZE = 10
 
-class Artworks extends Component<Props> {
+class Artworks extends Component<Props, LoadingAreaState> {
+  state = {
+    isLoading: false,
+  }
+
   loadNext = () => {
     const {
       filtered_artworks: {
@@ -33,6 +40,8 @@ class Artworks extends Component<Props> {
   }
 
   loadAfter = cursor => {
+    this.toggleLoading(true)
+
     this.props.relay.refetch(
       {
         first: PAGE_SIZE,
@@ -43,6 +52,8 @@ class Artworks extends Component<Props> {
       },
       null,
       error => {
+        this.toggleLoading(false)
+
         if (error) {
           console.error(error)
         }
@@ -50,34 +61,34 @@ class Artworks extends Component<Props> {
     )
   }
 
+  toggleLoading = isLoading => {
+    this.setState({
+      isLoading,
+    })
+  }
+
   render() {
     return (
-      <Subscribe to={[FilterState]}>
-        {filters => {
-          return (
-            <div>
-              <ArtworkGrid
-                artworks={this.props.filtered_artworks.artworks as any}
-                columnCount={this.props.columnCount}
-                itemMargin={40}
-              />
+      <LoadingArea isLoading={this.state.isLoading}>
+        <ArtworkGrid
+          artworks={this.props.filtered_artworks.artworks as any}
+          columnCount={this.props.columnCount}
+          itemMargin={40}
+        />
 
-              <Spacer mb={4} />
+        <Spacer mb={4} />
 
-              <Flex justifyContent="flex-end">
-                <Pagination
-                  pageCursors={
-                    this.props.filtered_artworks.artworks.pageCursors as any
-                  }
-                  onClick={this.loadAfter}
-                  onNext={this.loadNext}
-                  scrollTo="#jump--artistArtworkGrid"
-                />
-              </Flex>
-            </div>
-          )
-        }}
-      </Subscribe>
+        <Flex justifyContent="flex-end">
+          <Pagination
+            pageCursors={
+              this.props.filtered_artworks.artworks.pageCursors as any
+            }
+            onClick={this.loadAfter}
+            onNext={this.loadNext}
+            scrollTo="#jump--artistArtworkGrid"
+          />
+        </Flex>
+      </LoadingArea>
     )
   }
 }

@@ -1,13 +1,20 @@
 import { RelatedArtistsList_artist } from "__generated__/RelatedArtistsList_artist.graphql"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
-import { ArtistCardFragmentContainer } from "Styleguide/Components/ArtistCard"
-import { PaginationFragmentContainer } from "Styleguide/Components/Pagination"
+import { AppState } from "Router/state"
+import { ArtistCardFragmentContainer as ArtistCard } from "Styleguide/Components/ArtistCard"
+import { PaginationFragmentContainer as Pagination } from "Styleguide/Components/Pagination"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Separator } from "Styleguide/Elements/Separator"
+import { Subscribe } from "unstated"
 import { Responsive } from "Utils/Responsive"
+
+import {
+  LoadingArea,
+  LoadingAreaState,
+} from "Apps/Artist/Components/LoadingArea"
 
 interface ShowProps {
   relay: RelayRefetchProp
@@ -18,7 +25,11 @@ interface ShowProps {
 
 export const PAGE_SIZE = 6
 
-class RelatedArtistsList extends Component<ShowProps> {
+class RelatedArtistsList extends Component<ShowProps, LoadingAreaState> {
+  state = {
+    isLoading: false,
+  }
+
   loadNext = () => {
     const {
       artist: {
@@ -36,6 +47,8 @@ class RelatedArtistsList extends Component<ShowProps> {
   }
 
   loadAfter = cursor => {
+    this.toggleLoading(true)
+
     this.props.relay.refetch(
       {
         first: PAGE_SIZE,
@@ -47,6 +60,8 @@ class RelatedArtistsList extends Component<ShowProps> {
       },
       null,
       error => {
+        this.toggleLoading(false)
+
         if (error) {
           console.error(error)
         }
@@ -54,71 +69,95 @@ class RelatedArtistsList extends Component<ShowProps> {
     )
   }
 
+  toggleLoading = isLoading => {
+    this.setState({
+      isLoading,
+    })
+  }
+
   renderPagination() {
     return (
-      <div>
-        <PaginationFragmentContainer
+      <Box>
+        <Pagination
           pageCursors={this.props.artist.related.artists.pageCursors as any}
           onClick={this.loadAfter}
           onNext={this.loadNext}
         />
-      </div>
+      </Box>
     )
   }
 
   render() {
     return (
-      <Responsive>
-        {({ xs, sm, md }) => {
-          let width
-          if (xs) {
-            width = "100%"
-          } else if (sm || md) {
-            width = "33%"
-          } else {
-            width = "25%"
-          }
+      <Subscribe to={[AppState]}>
+        {({ state }) => {
+          const {
+            mediator,
+            system: { currentUser },
+          } = state
 
           return (
-            <React.Fragment>
-              <Row>
-                <Col>
-                  <Flex flexWrap>
-                    {this.props.artist.related.artists.edges.map(
-                      ({ node }, index) => {
-                        return (
-                          <Box pr={1} pb={1} width={width} key={index}>
-                            <ArtistCardFragmentContainer artist={node as any} />
-                          </Box>
-                        )
-                      }
-                    )}
-                  </Flex>
-                </Col>
-              </Row>
+            <Responsive>
+              {({ xs, sm, md }) => {
+                let width
+                if (xs) {
+                  width = "100%"
+                } else if (sm || md) {
+                  width = "33%"
+                } else {
+                  width = "25%"
+                }
 
-              <Box py={2}>
-                <Separator />
-              </Box>
+                return (
+                  <React.Fragment>
+                    <Row>
+                      <Col>
+                        <LoadingArea isLoading={this.state.isLoading}>
+                          <Flex flexWrap>
+                            {this.props.artist.related.artists.edges.map(
+                              ({ node }, index) => {
+                                return (
+                                  <Box pr={1} pb={1} width={width} key={index}>
+                                    <ArtistCard
+                                      artist={node as any}
+                                      mediator={mediator}
+                                      currentUser={currentUser}
+                                    />
+                                  </Box>
+                                )
+                              }
+                            )}
+                          </Flex>
+                        </LoadingArea>
+                      </Col>
+                    </Row>
 
-              <Row>
-                <Col>
-                  <Flex justifyContent="flex-end">
-                    <PaginationFragmentContainer
-                      pageCursors={
-                        this.props.artist.related.artists.pageCursors as any
-                      }
-                      onClick={this.loadAfter}
-                      onNext={this.loadNext}
-                      scrollTo={this.props.scrollTo}
-                    />
-                  </Flex>
-                </Col>
-              </Row>
-            </React.Fragment>
+                    <Box py={2}>
+                      <Separator />
+                    </Box>
+
+                    <Row>
+                      <Col>
+                        <Flex justifyContent="flex-end">
+                          <Pagination
+                            pageCursors={
+                              this.props.artist.related.artists
+                                .pageCursors as any
+                            }
+                            onClick={this.loadAfter}
+                            onNext={this.loadNext}
+                            scrollTo={this.props.scrollTo}
+                          />
+                        </Flex>
+                      </Col>
+                    </Row>
+                  </React.Fragment>
+                )
+              }}
+            </Responsive>
           )
         }}
-      </Responsive>
+      </Subscribe>
     )
   }
 }

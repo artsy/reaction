@@ -206,11 +206,11 @@ export const PreloadLink = compose(
 
     handleClick = event => {
       event.preventDefault()
-      this.props.onToggleFetching(true)
+      this.props.onToggleLoading(true)
 
       this.fetchData().then(() => {
         const { router, replace, to } = this.props
-        this.props.onToggleFetching(false)
+        this.props.onToggleLoading(false)
 
         if (replace) {
           router.replace(replace)
@@ -244,7 +244,7 @@ export const PreloadLink = compose(
       {(app: AppState, preloadLink: PreloadLinkState) => {
         return (
           <Preloader
-            onToggleFetching={preloadLink.toggleFetching}
+            onToggleLoading={preloadLink.toggleLoading}
             system={app.state.system}
             {...preloadLinkProps}
           />
