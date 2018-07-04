@@ -19,6 +19,9 @@ export class Genes extends Component<Props> {
   render() {
     const { related } = this.props.artist
     const { genes } = related
+    if (genes.edges.length === 0) {
+      return null
+    }
     return (
       <GeneFamily>
         <Sans size="2" weight="medium">
