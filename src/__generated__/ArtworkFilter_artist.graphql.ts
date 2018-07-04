@@ -74,6 +74,12 @@ return {
         "INSTITUTION",
         "MAJOR_PERIOD"
       ]
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "sort",
+      "type": "String",
+      "defaultValue": "-partner_updated_at"
     }
   ],
   "selections": [
@@ -119,6 +125,12 @@ return {
           "name": "size",
           "value": 0,
           "type": "Int"
+        },
+        {
+          "kind": "Variable",
+          "name": "sort",
+          "variableName": "sort",
+          "type": "String"
         }
       ],
       "concreteType": "FilterArtworks",
@@ -181,5 +193,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '596aaff8b7534e0eebe82bc365ae83db';
+(node as any).hash = '05886c38887ec0781f435500021c4f2a';
 export default node;

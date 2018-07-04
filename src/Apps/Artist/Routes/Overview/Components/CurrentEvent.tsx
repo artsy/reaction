@@ -25,6 +25,9 @@ export class CurrentEvent extends Component<CurrentEventProps> {
 }
 
 export const LargeCurrentEvent: SFC<CurrentEventProps> = props => {
+  if (!props.artist.currentEvent) {
+    return null
+  }
   const {
     currentEvent: { image, headline, name, subHeadline },
   } = props.artist
