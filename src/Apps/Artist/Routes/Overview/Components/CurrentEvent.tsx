@@ -29,22 +29,29 @@ export const LargeCurrentEvent: SFC<CurrentEventProps> = props => {
     return null
   }
   const {
-    currentEvent: { image, headline, name, subHeadline },
+    currentEvent: { image, status, name, details, partner, page },
   } = props.artist
 
   return (
-    <Flex flexDirection="column">
-      <Box width="100%" height="auto">
-        <Image src={image.resized.url} width="100%" mb={1} />
-      </Box>
-      <Sans size="2" weight="medium" my={0.5}>
-        {headline}
-      </Sans>
-      <Serif size="3t">{name}</Serif>
-      <Serif size="2" color="black60">
-        {subHeadline}
-      </Serif>
-    </Flex>
+    <a href={page}>
+      <Flex flexDirection="column">
+        <Box width="100%" height="auto">
+          <Image src={image.resized.url} width="100%" mb={1} />
+        </Box>
+        <Sans size="2" weight="medium" my={0.5}>
+          {status}
+        </Sans>
+        <Serif size="3t">{name}</Serif>
+        {partner && (
+          <Serif size="2" color="black60">
+            {partner}
+          </Serif>
+        )}
+        <Serif size="2" color="black60">
+          {details}
+        </Serif>
+      </Flex>
+    </a>
   )
 }
 
@@ -59,8 +66,10 @@ export const CurrentEventFragmentContainer = createFragmentContainer(
           }
         }
         name
-        subHeadline
-        headline
+        status
+        details
+        partner
+        page
       }
     }
   `
