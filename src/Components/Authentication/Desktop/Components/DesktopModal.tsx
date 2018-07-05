@@ -32,7 +32,7 @@ export class DesktopModal extends Component<DesktopModalProps> {
 
   render() {
     return (
-      <Modal {...this.props}>
+      <Modal {...this.props} onClose={this.onClose}>
         <CloseButton name="close" onClick={this.onClose} />
         <DesktopHeader subtitle={this.props.subtitle} />
         <Content>{this.props.children}</Content>
