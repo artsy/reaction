@@ -6,25 +6,25 @@ import { OtherAuctions } from "../OtherAuctions"
 
 const auctions = [
   {
-    src: "https://picsum.photos/200/180/?random",
+    src: "http://via.placeholder.com/200x180?text=+",
     headline: "Sotheby’s",
     subHeadline: "Contemporary Day Sale",
     badge: "In progress",
   },
   {
-    src: "https://picsum.photos/400/180/?random",
+    src: "http://via.placeholder.com/400x180?text=+",
     headline: "Sotheby’s",
     subHeadline: "Contemporary Day Sale",
     badge: "In progress",
   },
   {
-    src: "https://picsum.photos/200/600/?random",
+    src: "http://via.placeholder.com/200x600?text=+",
     headline: "Sotheby’s",
     subHeadline: "Contemporary Day Sale",
     badge: "In progress",
   },
   {
-    src: "https://picsum.photos/200/180/?random",
+    src: "http://via.placeholder.com/200x180?text=+",
     headline: "Sotheby’s",
     subHeadline: "Contemporary Day Sale",
     badge: "In progress",

@@ -7,10 +7,10 @@ storiesOf("Styleguide/Elements", module).add("Avatar", () => {
   return (
     <React.Fragment>
       <Section title="Default Avatar">
-        <Avatar src="https://picsum.photos/110/110/?random" />
+        <Avatar src="http://via.placeholder.com/100x100?text=+" />
       </Section>
       <Section title="Small Avatar">
-        <Avatar size="small" src="https://picsum.photos/110/110/?random" />
+        <Avatar size="small" src="http://via.placeholder.com/70x70?text=+" />
       </Section>
     </React.Fragment>
   )

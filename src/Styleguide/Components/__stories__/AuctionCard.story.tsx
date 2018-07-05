@@ -8,7 +8,7 @@ storiesOf("Styleguide/Components", module).add("AuctionCard", () => {
     <React.Fragment>
       <Section title="Responsive Auction Card">
         <AuctionCard
-          src="https://picsum.photos/200/180/?random"
+          src="http://via.placeholder.com/200x180?text=+"
           headline="Sotheby’s"
           subHeadline="Contemporary Day Sale"
           badge="In progress"
@@ -16,7 +16,7 @@ storiesOf("Styleguide/Components", module).add("AuctionCard", () => {
       </Section>
       <Section title="Large Auction Card">
         <LargeAuctionCard
-          src="https://picsum.photos/200/180/?random"
+          src="http://via.placeholder.com/200x180?text=+"
           headline="Sotheby’s"
           subHeadline="Contemporary Day Sale"
           badge="In progress"
@@ -24,7 +24,7 @@ storiesOf("Styleguide/Components", module).add("AuctionCard", () => {
       </Section>
       <Section title="Small Auction Card">
         <SmallAuctionCard
-          src="https://picsum.photos/200/180/?random"
+          src="http://via.placeholder.com/200x180?text=+"
           headline="Sotheby’s"
           subHeadline="Contemporary Day Sale"
           badge="In progress"

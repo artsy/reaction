@@ -8,18 +8,18 @@ storiesOf("Styleguide/Elements", module).add("Image", () => {
   return (
     <React.Fragment>
       <Section title="Default Image">
-        <Image src="https://picsum.photos/110/110/?random" />
+        <Image src="http://via.placeholder.com/110x110?text=+" />
       </Section>
       <Section title="Custom size">
         <Image
           width="300px"
           height="200px"
-          src="https://picsum.photos/300/300/?random"
+          src="http://via.placeholder.com/300x200?text=+"
         />
       </Section>
       <Section title="Responsive Image">
         <BorderBox maxWidth="400px" width="100%" height="auto" p={0}>
-          <ResponsiveImage src="https://picsum.photos/400/250/?random" />
+          <ResponsiveImage src="http://via.placeholder.com/400x250?text=+" />
         </BorderBox>
       </Section>
     </React.Fragment>

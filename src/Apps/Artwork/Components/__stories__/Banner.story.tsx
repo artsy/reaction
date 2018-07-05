@@ -8,7 +8,7 @@ storiesOf("Styleguide/Artwork", module).add("Banner", () => {
     <React.Fragment>
       <Section title="Responsive">
         <Banner
-          src="https://picsum.photos/110/110/?random"
+          src="http://via.placeholder.com/110x110?text=+"
           badge="In show"
           headline="Francesca DiMattio: Boucherouite"
           subHeadline="Salon 94"
@@ -16,7 +16,7 @@ storiesOf("Styleguide/Artwork", module).add("Banner", () => {
       </Section>
       <Section title="Large Banner">
         <LargeBanner
-          src="https://picsum.photos/110/110/?random"
+          src="http://via.placeholder.com/110x110?text=+"
           badge="In show"
           headline="Francesca DiMattio: Boucherouite"
           subHeadline="Salon 94"
@@ -24,7 +24,7 @@ storiesOf("Styleguide/Artwork", module).add("Banner", () => {
       </Section>
       <Section title="Small Banner">
         <SmallBanner
-          src="https://picsum.photos/110/110/?random"
+          src="http://via.placeholder.com/110x110?text=+"
           badge="In show"
           headline="Francesca DiMattio: Boucherouite"
           subHeadline="Salon 94"

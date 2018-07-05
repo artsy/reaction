@@ -8,7 +8,7 @@ import { ArtistCard, LargeArtistCard, SmallArtistCard } from "../ArtistCard"
 const artist = {
   image: {
     cropped: {
-      url: "https://picsum.photos/110/110/?random",
+      url: "http://via.placeholder.com/100x100?text=+",
     },
   },
   name: "Francesca DiMattio",

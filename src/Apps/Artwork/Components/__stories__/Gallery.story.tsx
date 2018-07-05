@@ -8,21 +8,21 @@ storiesOf("Styleguide/Artwork", module).add("Gallery", () => {
     <React.Fragment>
       <Section title="Responsive">
         <Gallery
-          src="https://picsum.photos/110/110/?random"
+          src="http://via.placeholder.com/110x110?text=+"
           headline="Salon 94"
           subHeadline="New York, London, Beijing, Hong Kong"
         />
       </Section>
       <Section title="Large Gallery">
         <LargeGallery
-          src="https://picsum.photos/110/110/?random"
+          src="http://via.placeholder.com/110x110?text=+"
           headline="Salon 94"
           subHeadline="New York, London, Beijing, Hong Kong"
         />
       </Section>
       <Section title="Small Gallery">
         <SmallGallery
-          src="https://picsum.photos/110/110/?random"
+          src="http://via.placeholder.com/110x110?text=+"
           headline="Salon 94"
           subHeadline="New York, London, Beijing, Hong Kong"
         />
