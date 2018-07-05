@@ -1,6 +1,9 @@
 import { Sans } from "@artsy/palette"
 import { MarketInsightsArtistPage_artist } from "__generated__/MarketInsightsArtistPage_artist.graphql"
-import { highestCategory } from "Components/Artist/MarketInsights/MarketInsights"
+import {
+  hasSections,
+  highestCategory,
+} from "Components/Artist/MarketInsights/MarketInsights"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { BorderBox, Box } from "Styleguide/Elements/Box"
@@ -90,6 +93,9 @@ export class MarketInsights extends React.Component<MarketInsightsProps> {
   }
 
   render() {
+    if (!hasSections(this.props.artist)) {
+      return null
+    }
     return (
       <BorderBox flexDirection="column">
         <Responsive>

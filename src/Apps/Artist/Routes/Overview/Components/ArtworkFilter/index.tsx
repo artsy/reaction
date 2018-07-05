@@ -1,7 +1,7 @@
 import { ArtworkFilter_artist } from "__generated__/ArtworkFilter_artist.graphql"
 import { FilterState } from "Apps/Artist/Routes/Overview/state"
 import React, { Component } from "react"
-import { createFragmentContainer, graphql } from "react-relay"
+import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { Toggle } from "Styleguide/Components/Toggle"
 import { Box } from "Styleguide/Elements/Box"
 import { Checkbox } from "Styleguide/Elements/Checkbox"
@@ -15,7 +15,8 @@ import ArtworksContent from "./ArtworkFilterArtworkGrid"
 
 interface Props {
   artist: ArtworkFilter_artist
-  filters: any // FIXME
+  filters?: any // FIXME
+  relay: RelayRefetchProp
 }
 
 class Filter extends Component<Props> {
@@ -113,8 +114,12 @@ class Filter extends Component<Props> {
         <Radio
           selected={filters.state[category] === count.id}
           value={count.id}
-          onSelect={v => {
-            return (filters as any).setFilter(category, v)
+          onSelect={selected => {
+            if (selected) {
+              return filters.setFilter(category, count.id)
+            } else {
+              return filters.unsetFilter(category)
+            }
           }}
           key={index}
         >
@@ -122,6 +127,36 @@ class Filter extends Component<Props> {
         </Radio>
       )
     })
+  }
+
+  componentDidUpdate(prevProps) {
+    Object.keys(this.props.filters).forEach(key => {
+      if (this.props.filters[key] !== prevProps.filters[key]) {
+        this.fetch()
+      }
+    })
+  }
+
+  fetch = () => {
+    this.props.relay.refetch(
+      {
+        artistID: this.props.artist.id,
+        aggregations: [
+          "MEDIUM",
+          "TOTAL",
+          "GALLERY",
+          "INSTITUTION",
+          "MAJOR_PERIOD",
+        ],
+        ...this.props.filters,
+      },
+      null,
+      error => {
+        if (error) {
+          console.error(error)
+        }
+      }
+    )
   }
 
   render() {
@@ -137,7 +172,7 @@ class Filter extends Component<Props> {
 
     return (
       <Subscribe to={[FilterState]}>
-        {filters => {
+        {(filters: FilterState) => {
           return (
             <Responsive>
               {({ xs, sm, md }) => {
@@ -152,10 +187,7 @@ class Filter extends Component<Props> {
                               <Checkbox
                                 selected={filters.state.for_sale}
                                 onSelect={value => {
-                                  return (filters as any).setFilter(
-                                    "for_sale",
-                                    !value
-                                  )
+                                  return filters.setFilter("for_sale", !value)
                                 }}
                               >
                                 For sale
@@ -187,29 +219,28 @@ class Filter extends Component<Props> {
                           <Toggle label="Time period">
                             {this.renderCategory(
                               filters,
-                              "major_period",
+                              "major_periods",
                               periodAggregation.counts
                             )}
                           </Toggle>
                         </Sidebar>
                       )}
 
-                      {/* Artwork Grid */}
-
                       <Box width={xs ? "100%" : "70%"}>
-                        {/* TODO: Implement sorting */}
                         <Flex justifyContent="flex-end">
                           <Select
                             options={[
                               {
-                                value: "RECENTLY_UPDATED",
+                                value: "-partner_updated_at",
                                 text: "Recently updated",
                               },
                               {
-                                value: "RECENTLY_ADDED",
+                                value: "-published_at",
                                 text: "Recently added",
                               },
                             ]}
+                            selected={filters.state.sort}
+                            onSelect={filters.setSort}
                           />
                         </Flex>
 
@@ -235,40 +266,74 @@ class Filter extends Component<Props> {
   }
 }
 
-export const ArtworkFilterFragmentContainer = createFragmentContainer(Filter, {
-  artist: graphql`
-    fragment ArtworkFilter_artist on Artist
-      @argumentDefinitions(
-        medium: { type: "String", defaultValue: "*" }
-        major_periods: { type: "[String]" }
-        partner_id: { type: "ID" }
-        for_sale: { type: "Boolean" }
-        aggregations: {
-          type: "[ArtworkAggregation]"
-          defaultValue: [MEDIUM, TOTAL, GALLERY, INSTITUTION, MAJOR_PERIOD]
-        }
-      ) {
-      id
-      filtered_artworks(
-        aggregations: $aggregations
-        medium: $medium
-        major_periods: $major_periods
-        partner_id: $partner_id
-        for_sale: $for_sale
-        size: 0
-      ) {
-        aggregations {
-          slice
-          counts {
-            name
-            count
-            id
+export const ArtworkFilterRefetchContainer = createRefetchContainer(
+  (props: Props) => {
+    return (
+      <Subscribe to={[FilterState]}>
+        {filters => {
+          return <Filter {...props} filters={filters.state} />
+        }}
+      </Subscribe>
+    )
+  },
+  {
+    artist: graphql`
+      fragment ArtworkFilter_artist on Artist
+        @argumentDefinitions(
+          medium: { type: "String", defaultValue: "*" }
+          major_periods: { type: "[String]" }
+          partner_id: { type: "ID" }
+          for_sale: { type: "Boolean" }
+          aggregations: {
+            type: "[ArtworkAggregation]"
+            defaultValue: [MEDIUM, TOTAL, GALLERY, INSTITUTION, MAJOR_PERIOD]
           }
+          sort: { type: "String", defaultValue: "-partner_updated_at" }
+        ) {
+        id
+        filtered_artworks(
+          aggregations: $aggregations
+          medium: $medium
+          major_periods: $major_periods
+          partner_id: $partner_id
+          for_sale: $for_sale
+          size: 0
+          sort: $sort
+        ) {
+          aggregations {
+            slice
+            counts {
+              name
+              count
+              id
+            }
+          }
+          ...ArtworkFilterArtworkGrid_filtered_artworks
         }
-        ...ArtworkFilterArtworkGrid_filtered_artworks
+      }
+    `,
+  },
+  graphql`
+    query ArtworkFilterRefetchQuery(
+      $artistID: String!
+      $medium: String
+      $major_periods: [String]
+      $partner_id: ID
+      $for_sale: Boolean
+      $sort: String
+    ) {
+      artist(id: $artistID) {
+        ...ArtworkFilter_artist
+          @arguments(
+            medium: $medium
+            major_periods: $major_periods
+            partner_id: $partner_id
+            for_sale: $for_sale
+            sort: $sort
+          )
       }
     }
-  `,
-})
+  `
+)
 
 const Sidebar = Box

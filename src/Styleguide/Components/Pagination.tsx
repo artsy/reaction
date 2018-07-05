@@ -26,6 +26,9 @@ export class Pagination extends React.Component<Props> {
   }
 
   render() {
+    if (this.props.pageCursors.around.length === 1) {
+      return null
+    }
     return (
       <ScrollIntoView selector={this.props.scrollTo}>
         <Responsive>

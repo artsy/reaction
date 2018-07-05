@@ -81,6 +81,31 @@ export const highestCategory = edges => {
   )[0]
 }
 
+export const hasSections = ({ highlights, auctionResults, collections }) => {
+  const { partners } = highlights
+
+  // Is there a gallery representation section?
+  if (partners && partners.edges && partners.edges.length > 0) {
+    return true
+  }
+
+  // Is there an auction highlights section?
+  if (
+    auctionResults &&
+    auctionResults.edges &&
+    auctionResults.edges.length > 0
+  ) {
+    return true
+  }
+
+  // Is there a permanent collections section?
+  if (collections && collections.length > 0) {
+    return true
+  }
+
+  return false
+}
+
 export class MarketInsights extends React.Component<Props, null> {
   renderGalleryCategory(categorySlug, partnerCount) {
     let introSentence
@@ -104,32 +129,6 @@ export class MarketInsights extends React.Component<Props, null> {
         </TooltipContainer>
       </div>
     )
-  }
-
-  hasSections() {
-    const { highlights, auctionResults, collections } = this.props.artist
-    const { partners } = highlights
-
-    // Is there a gallery representation section?
-    if (partners && partners.edges && partners.edges.length > 0) {
-      return true
-    }
-
-    // Is there an auction highlights section?
-    if (
-      auctionResults &&
-      auctionResults.edges &&
-      auctionResults.edges.length > 0
-    ) {
-      return true
-    }
-
-    // Is there a permanent collections section?
-    if (collections && collections.length > 0) {
-      return true
-    }
-
-    return false
   }
 
   // We group all partners that represent an artist by their relevant category, from the list above.
@@ -188,7 +187,7 @@ export class MarketInsights extends React.Component<Props, null> {
   }
 
   render() {
-    if (this.hasSections()) {
+    if (hasSections(this.props.artist)) {
       return (
         <MarketInsightsContainer>
           <MarketInsightsDataContainer>
