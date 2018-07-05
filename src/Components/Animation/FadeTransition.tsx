@@ -9,8 +9,12 @@ const defaultStyle = {
 }
 
 const transitionStyles = {
-  entering: { opacity: 0 },
-  entered: { opacity: 1 },
+  entering: {
+    opacity: 0,
+  },
+  entered: {
+    opacity: 1,
+  },
 }
 
 export default props => {

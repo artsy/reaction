@@ -9,13 +9,6 @@ jest.mock("Utils/track.ts", () => ({
   track: () => jest.fn(c => c),
 }))
 
-jest.mock("react-spring", () => ({
-  Spring: p => p.children(),
-  animated: {
-    div: c => c,
-  },
-}))
-
 describe("DesktopModal", () => {
   const getWrapper = (props: any = {}) =>
     mount(
