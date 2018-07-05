@@ -1,9 +1,8 @@
-import { Sans, Serif } from "@artsy/palette"
+import { color, Sans, Serif } from "@artsy/palette"
 import { CVItem_artist } from "__generated__/CVItem_artist.graphql"
 import { groupBy } from "lodash"
 import React, { Component } from "react"
 import styled from "styled-components"
-import { themeGet } from "styled-system"
 import { Box } from "Styleguide/Elements/Box"
 import { Button } from "Styleguide/Elements/Button"
 import { Flex } from "Styleguide/Elements/Flex"
@@ -255,7 +254,7 @@ export const CVPaginationContainer = createPaginationContainer(
 )
 
 const CVItems = styled(Box)`
-  border-bottom: 1px solid ${themeGet("colors.black10")};
+  border-bottom: 1px solid ${color("black10")};
 `
 const YearGroup = styled(Flex)``
 const Year = Serif

@@ -4,11 +4,13 @@ import React from "react"
 import styled from "styled-components"
 import { Flex } from "./Flex"
 
+import { color, space } from "@artsy/palette"
+
 import {
   BorderProps,
   borders,
   SizeProps,
-  space,
+  space as styledSpace,
   SpaceProps,
 } from "styled-system"
 
@@ -70,36 +72,20 @@ export class Radio extends React.Component<RadioProps, RadioState> {
 
 const RadioButton = styled.div.attrs<RadioToggleProps>({})`
   ${borders};
-  ${space};
-
-  ${props => {
-    const {
-      selected,
-      theme: {
-        colors: { black100, black10, white100 },
-        space,
-      },
-    } = props
-
-    const backgroundColor = selected ? black100 : white100
-    const borderColor = selected ? black100 : black10
-    const buttonSize = space[2]
-
-    return `
-      background-color: ${backgroundColor};
-      border-color: ${borderColor};
-      width: ${buttonSize}px;
-      height: ${buttonSize}px;
-
-      border-radius: 50%;
-      cursor: pointer;
-    `
-  }};
+  ${styledSpace};
+  background-color: ${({ selected }) =>
+    selected ? color("black100") : color("white100")};
+  border-color: ${({ selected }) =>
+    selected ? color("black100") : color("black10")};
+  width: ${space(2)}px;
+  height: ${space(2)}px;
+  border-radius: 50%;
+  cursor: pointer;
 `
 
 const InnerCircle = styled.div`
-  width: ${props => props.theme.space[1]}px;
-  height: ${props => props.theme.space[1]}px;
+  width: ${space(1)}px;
+  height: ${space(1)}px;
   border-radius: 50%;
   background-color: white;
   position: relative;
