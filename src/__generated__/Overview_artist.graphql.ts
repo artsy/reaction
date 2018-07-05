@@ -21,28 +21,7 @@ return {
   "name": "Overview_artist",
   "type": "Artist",
   "metadata": null,
-  "argumentDefinitions": [
-    {
-      "kind": "RootArgument",
-      "name": "medium",
-      "type": null
-    },
-    {
-      "kind": "RootArgument",
-      "name": "major_periods",
-      "type": null
-    },
-    {
-      "kind": "RootArgument",
-      "name": "partner_id",
-      "type": null
-    },
-    {
-      "kind": "RootArgument",
-      "name": "for_sale",
-      "type": null
-    }
-  ],
+  "argumentDefinitions": [],
   "selections": [
     {
       "kind": "FragmentSpread",
@@ -103,36 +82,11 @@ return {
     {
       "kind": "FragmentSpread",
       "name": "ArtworkFilter_artist",
-      "args": [
-        {
-          "kind": "Variable",
-          "name": "for_sale",
-          "variableName": "for_sale",
-          "type": null
-        },
-        {
-          "kind": "Variable",
-          "name": "major_periods",
-          "variableName": "major_periods",
-          "type": null
-        },
-        {
-          "kind": "Variable",
-          "name": "medium",
-          "variableName": "medium",
-          "type": null
-        },
-        {
-          "kind": "Variable",
-          "name": "partner_id",
-          "variableName": "partner_id",
-          "type": null
-        }
-      ]
+      "args": null
     },
     v0
   ]
 };
 })();
-(node as any).hash = 'a7c56ff6cec8a7ab62db4cfbb1ab78fe';
+(node as any).hash = '7430817ce2329b27331ede3f0648b0ac';
 export default node;
