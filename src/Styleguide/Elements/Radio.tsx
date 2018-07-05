@@ -16,6 +16,7 @@ import {
 
 export interface RadioProps {
   selected?: boolean
+  disabled?: boolean
   onSelect?: any
   value?: string
 }
@@ -57,14 +58,19 @@ export class Radio extends React.Component<RadioProps, RadioState> {
 
   render() {
     const { selected } = this.state
-    const { children } = this.props
+    const { children, disabled } = this.props
 
     return (
-      <Flex my={0.3} onClick={() => this.toggleSelected()}>
-        <RadioButton border={1} mr={1} selected={selected}>
+      <Flex
+        my={0.3}
+        onClick={() => !this.props.disabled && this.toggleSelected()}
+      >
+        <RadioButton border={1} mr={1} selected={selected} disabled={disabled}>
           <InnerCircle />
         </RadioButton>
-        <Label>{children}</Label>
+        <Label style={disabled && { color: color("black10") }}>
+          {children}
+        </Label>
       </Flex>
     )
   }
@@ -82,14 +88,25 @@ const InnerCircle = styled.div`
   position: relative;
   left: 3px;
   top: 3px;
+  background-color: ${color("white100")};
 `
 
-const radioBackgroundColor = ({ selected }) =>
-  selected ? color("black100") : color("black5")
-const radioBorderColor = ({ selected }) =>
-  selected ? color("black100") : color("black10")
-const innerBackgroundColor = ({ selected }) =>
-  selected ? color("white100") : color("black5")
+const radioBackgroundColor = ({ disabled, selected }) => {
+  switch (true) {
+    case disabled:
+      return color("black10")
+    case selected:
+      return color("black100")
+    default:
+      return color("white100")
+  }
+}
+
+const radioBorderColor = ({ disabled, selected }) =>
+  selected && !disabled ? color("black100") : color("black10")
+
+const disabledInnerCircleBackgroundColor = ({ disabled, selected }) =>
+  disabled && !selected && color("black10")
 
 const RadioButton = styled.div.attrs<RadioToggleProps>({})`
   ${borders};
@@ -101,13 +118,10 @@ const RadioButton = styled.div.attrs<RadioToggleProps>({})`
   border-radius: 50%;
   cursor: pointer;
   ${InnerCircle} {
-    background-color: ${innerBackgroundColor};
+    background-color: ${disabledInnerCircleBackgroundColor};
   }
 
   &:hover {
     background-color: ${({ selected }) => !selected && color("black10")};
-    ${InnerCircle} {
-      background-color: ${color("white100")};
-    }
   }
 `
