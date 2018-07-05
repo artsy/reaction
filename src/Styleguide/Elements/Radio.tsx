@@ -1,8 +1,6 @@
-// TODO: This and <Checkbox /> can be shared
-
 import React from "react"
 import styled from "styled-components"
-import { Flex } from "./Flex"
+import { Flex, FlexProps } from "./Flex"
 
 import { color, space } from "@artsy/palette"
 
@@ -61,7 +59,8 @@ export class Radio extends React.Component<RadioProps, RadioState> {
     const { children, disabled } = this.props
 
     return (
-      <Flex
+      <Container
+        disabled={disabled}
         my={0.3}
         onClick={() => !this.props.disabled && this.toggleSelected()}
       >
@@ -71,15 +70,20 @@ export class Radio extends React.Component<RadioProps, RadioState> {
         <Label style={disabled && { color: color("black10") }}>
           {children}
         </Label>
-      </Flex>
+      </Container>
     )
   }
 }
 
-const Label = styled.div`
-  cursor: pointer;
+interface ContainerProps extends FlexProps {
+  disabled: boolean
+}
+const Container = styled(Flex).attrs<ContainerProps>({})`
+  cursor: ${({ disabled }) => !disabled && "pointer"};
   user-select: none;
 `
+
+const Label = styled.div``
 
 const InnerCircle = styled.div`
   width: ${space(1)}px;
@@ -116,7 +120,6 @@ const RadioButton = styled.div.attrs<RadioToggleProps>({})`
   width: ${space(2)}px;
   height: ${space(2)}px;
   border-radius: 50%;
-  cursor: pointer;
   ${InnerCircle} {
     background-color: ${disabledInnerCircleBackgroundColor};
   }
