@@ -9,6 +9,9 @@ storiesOf("Styleguide/Elements", module).add("Radio", () => {
       <Section title="Radio">
         <Radio>Click me</Radio>
       </Section>
+      <Section title="Radio Hover">
+        <Radio hover>Click me</Radio>
+      </Section>
       <Section title="Radio Selected">
         <Radio selected>Selected</Radio>
       </Section>
