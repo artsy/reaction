@@ -63,6 +63,7 @@ export class Radio extends React.Component<RadioProps, RadioState> {
       <Container
         disabled={disabled}
         my={0.3}
+        alignItems="center"
         onClick={() => !this.props.disabled && this.toggleSelected()}
       >
         <RadioButton
