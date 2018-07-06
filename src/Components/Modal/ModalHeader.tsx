@@ -2,6 +2,7 @@ import { Serif } from "@artsy/palette"
 import Icon from "Components/Icon"
 import React, { SFC } from "react"
 import styled from "styled-components"
+import { media } from "../Helpers"
 
 export const ModalHeader: SFC<{
   title?: string
@@ -28,6 +29,9 @@ const Logo = styled(Icon).attrs({
   display: block;
   line-height: 1em;
   margin-bottom: 10px;
+  ${media.sm`
+    display: none;
+  `};
 `
 
 const Header = styled.div`

@@ -162,7 +162,7 @@ const ModalContent = styled.div.attrs<{ cta: CtaProps }>({})`
   width: 100%;
   ${media.sm`
     padding: ${props =>
-      props.cta && props.cta.isFixed ? "20px 20px 120px" : "20px"}
+      props.cta && props.cta.isFixed ? "20px 20px 110px" : "20px"}
   `};
 `
 
@@ -177,7 +177,6 @@ export const ModalContainer = styled.div.attrs<{
   background: #fff;
   width: ${props => (props.isWide || props.image ? "900px" : "440px")};
   height: min-content;
-  max-height: calc(100vh - 80px);
   border-radius: 5px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
   animation: ${slideUp} 250ms linear;
@@ -192,8 +191,6 @@ export const ModalContainer = styled.div.attrs<{
   }
   ${media.sm`
     width: 100%;
-    height: 100vh;
-    min-height: 100vh;
     border-radius: 0;
   `};
 `
@@ -201,6 +198,10 @@ export const ModalContainer = styled.div.attrs<{
 const ModalInner = styled.div`
   overflow: scroll;
   max-height: calc(100vh - 80px);
+  ${media.sm`
+    max-height: 100vh;
+    height: 100vh
+  `};
 `
 
 const Cta = styled.div.attrs<{ isFixed?: boolean; image?: string }>({})`
@@ -219,6 +220,7 @@ const Cta = styled.div.attrs<{ isFixed?: boolean; image?: string }>({})`
     background: white;
     border-top: 1px solid ${Colors.grayRegular};
   `} ${media.sm`
+    padding-bottom: 20px;
     ${props =>
       props.isFixed &&
       `
@@ -256,6 +258,9 @@ const Image = styled.div.attrs<{ image: string }>({})`
   bottom: 0px;
   left: 0;
   right: 50%;
+  ${media.sm`
+    display: none;
+  `};
 `
 
 export default Modal
