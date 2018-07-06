@@ -1,17 +1,11 @@
 import Colors from "Assets/Colors"
-import InvertedButton from "Components/Buttons/Inverted"
 import Icon from "Components/Icon"
 import React from "react"
 import styled, { injectGlobal, keyframes } from "styled-components"
 import FadeTransition from "../Animation/FadeTransition"
 import { media } from "../Helpers"
+import { CtaProps, ModalCta } from "./ModalCta"
 import { ModalHeader } from "./ModalHeader"
-
-export interface CtaProps {
-  isFixed: boolean
-  text: string
-  onClick: () => void
-}
 
 export interface ModalProps extends React.HTMLProps<Modal> {
   blurContainerSelector?: string
@@ -105,18 +99,22 @@ export class Modal extends React.Component<ModalProps, ModalState> {
           <ModalContainer isWide={isWide} image={image}>
             <ModalInner>
               <CloseButton name="close" onClick={this.close} />
+
               {image && <Image image={image} />}
+
               <ModalContent cta={cta}>
                 {(hasLogo || title) && (
                   <ModalHeader title={title} hasLogo={hasLogo} />
                 )}
+
                 <div>{children}</div>
+
                 {cta && (
-                  <Cta isFixed={cta.isFixed} image={image}>
-                    <InvertedButton onClick={cta.onClick || this.close}>
-                      {cta.text}
-                    </InvertedButton>
-                  </Cta>
+                  <ModalCta
+                    cta={cta}
+                    hasImage={image && true}
+                    onClose={this.close}
+                  />
                 )}
               </ModalContent>
             </ModalInner>
@@ -201,32 +199,6 @@ const ModalInner = styled.div`
   ${media.sm`
     max-height: 100vh;
     height: 100vh
-  `};
-`
-
-const Cta = styled.div.attrs<{ isFixed?: boolean; image?: string }>({})`
-  padding: 20px 0 30px 0;
-  button {
-    margin: 0;
-    width: 100%;
-  }
-  ${props =>
-    props.isFixed &&
-    `
-    position: absolute;
-    bottom: 0;
-    right: 40px;
-    left: ${props.image ? "calc(50% + 40px)" : "40px"};
-    background: white;
-    border-top: 1px solid ${Colors.grayRegular};
-  `} ${media.sm`
-    padding-bottom: 20px;
-    ${props =>
-      props.isFixed &&
-      `
-      right: 20px;
-      left: 20px
-    `}
   `};
 `
 

@@ -14,9 +14,9 @@ export const ModalHeader: SFC<{
     <Header>
       {hasLogo && <Logo name="logotype" />}
       {title && (
-        <Serif size="5" weight="semibold">
+        <Title size="5" weight="semibold">
           {title}
-        </Serif>
+        </Title>
       )}
     </Header>
   )
@@ -32,6 +32,10 @@ const Logo = styled(Icon).attrs({
   ${media.sm`
     display: none;
   `};
+`
+
+const Title = Serif.extend`
+  margin-bottom: 10px;
 `
 
 const Header = styled.div`

@@ -29,6 +29,7 @@ export class DesktopModal extends Component<DesktopModalProps> {
 
   render() {
     const title = this.props.subtitle || "The art world online"
+
     return (
       <Modal {...this.props} onClose={this.onClose} title={title} hasLogo>
         <Content>{this.props.children}</Content>
