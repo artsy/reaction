@@ -5,12 +5,12 @@ import Events from "Utils/Events"
 import { track } from "Utils/track"
 
 export interface DesktopModalProps extends ModalProps {
-  subtitle?: string
-  onTypeChange?: (options: ModalOptions) => void
-  onClose: () => void
-  tracking?: any
-  show?: boolean
   blurContainerSelector?: string
+  onClose: () => void
+  onTypeChange?: (options: ModalOptions) => void
+  show?: boolean
+  subtitle?: string
+  tracking?: any
 }
 
 @track({}, { dispatch: data => Events.postEvent(data) })

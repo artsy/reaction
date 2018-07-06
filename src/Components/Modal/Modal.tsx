@@ -160,7 +160,7 @@ const ModalContent = styled.div.attrs<{ cta: CtaProps }>({})`
   width: 100%;
   ${media.sm`
     padding: ${props =>
-      props.cta && props.cta.isFixed ? "20px 20px 110px" : "20px"}
+      props.cta && props.cta.isFixed ? "20px 20px 110px" : "20px"};
   `};
 `
 
