@@ -1,10 +1,7 @@
-import { Sans } from "@artsy/palette"
 import { Shows_viewer } from "__generated__/Shows_viewer.graphql"
 import React, { SFC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
-import { Responsive } from "Utils/Responsive"
 import { ArtistShowsRefetchContainer as Shows } from "./ArtistShows"
 
 export interface ArtistShowsProps {
@@ -15,10 +12,6 @@ export const ShowsRoute: SFC<ArtistShowsProps> = props => {
 
   return (
     <React.Fragment>
-      <Sans size="3" weight="medium">
-        Currently on view
-      </Sans>
-
       <Spacer mb={2} />
 
       <Shows
@@ -26,53 +19,29 @@ export const ShowsRoute: SFC<ArtistShowsProps> = props => {
         status="running"
         artist={viewer.artist_currentShows as any}
         scrollTo="#jumpto-RouteTabs"
+        heading="Currently on View"
       />
 
       <Spacer my={4} id="jumpto-Shows-Upcoming" />
-
-      <Sans size="3" weight="medium">
-        Upcoming
-      </Sans>
-
-      <ShowDivider />
 
       <Shows
         sort="start_at_asc"
         status="upcoming"
         artist={viewer.artist_upcomingShows as any}
         scrollTo="#jumpto-Shows-Upcoming"
+        heading="Upcoming"
       />
 
       <Spacer my={4} id="jumpto-Shows-Past" />
-      <Sans size="3" weight="medium">
-        Past
-      </Sans>
-
-      <ShowDivider />
 
       <Shows
         sort="end_at_desc"
         status="closed"
         artist={viewer.artist_pastShows as any}
         scrollTo="#jumpto-Shows-Past"
+        heading="Past"
       />
     </React.Fragment>
-  )
-}
-
-const ShowDivider = () => {
-  return (
-    <Responsive>
-      {({ xs }) => {
-        return (
-          <div>
-            <Spacer my={1} />
-            <Separator />
-            <Spacer py={xs ? 0 : 1} />
-          </div>
-        )
-      }}
-    </Responsive>
   )
 }
 

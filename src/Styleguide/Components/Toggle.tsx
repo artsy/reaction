@@ -1,7 +1,6 @@
-import { Sans } from "@artsy/palette"
+import { color, Sans } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
-import { themeGet } from "styled-system"
 import { Arrow } from "Styleguide/Elements/Arrow"
 import { Flex } from "Styleguide/Elements/Flex"
 
@@ -62,7 +61,7 @@ export class Toggle extends React.Component<ToggleProps> {
 }
 
 const Header = styled.div.attrs<ToggleProps>({})`
-  border-top: 1px solid ${themeGet("colors.black10")};
+  border-top: 1px solid ${color("black10")};
   cursor: pointer;
   padding-bottom: 16px;
   padding-top: 16px;

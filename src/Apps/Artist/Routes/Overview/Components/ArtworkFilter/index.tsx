@@ -15,7 +15,7 @@ import ArtworksContent from "./ArtworkFilterArtworkGrid"
 
 interface Props {
   artist: ArtworkFilter_artist
-  filters: any // FIXME
+  filters?: any // FIXME
   relay: RelayRefetchProp
 }
 
@@ -116,9 +116,9 @@ class Filter extends Component<Props> {
           value={count.id}
           onSelect={selected => {
             if (selected) {
-              return (filters as any).setFilter(category, count.id)
+              return filters.setFilter(category, count.id)
             } else {
-              return (filters as any).unsetFilter(category)
+              return filters.unsetFilter(category)
             }
           }}
           key={index}
@@ -148,10 +148,7 @@ class Filter extends Component<Props> {
           "INSTITUTION",
           "MAJOR_PERIOD",
         ],
-        medium: this.props.filters.medium,
-        for_sale: this.props.filters.for_sale,
-        major_periods: this.props.filters.major_periods,
-        partner_id: this.props.filters.partner_id,
+        ...this.props.filters,
       },
       null,
       error => {
@@ -175,7 +172,7 @@ class Filter extends Component<Props> {
 
     return (
       <Subscribe to={[FilterState]}>
-        {filters => {
+        {(filters: FilterState) => {
           return (
             <Responsive>
               {({ xs, sm, md }) => {
@@ -190,10 +187,7 @@ class Filter extends Component<Props> {
                               <Checkbox
                                 selected={filters.state.for_sale}
                                 onSelect={value => {
-                                  return (filters as any).setFilter(
-                                    "for_sale",
-                                    !value
-                                  )
+                                  return filters.setFilter("for_sale", !value)
                                 }}
                               >
                                 For sale
@@ -232,22 +226,21 @@ class Filter extends Component<Props> {
                         </Sidebar>
                       )}
 
-                      {/* Artwork Grid */}
-
                       <Box width={xs ? "100%" : "70%"}>
-                        {/* TODO: Implement sorting */}
                         <Flex justifyContent="flex-end">
                           <Select
                             options={[
                               {
-                                value: "RECENTLY_UPDATED",
+                                value: "-partner_updated_at",
                                 text: "Recently updated",
                               },
                               {
-                                value: "RECENTLY_ADDED",
+                                value: "-published_at",
                                 text: "Recently added",
                               },
                             ]}
+                            selected={filters.state.sort}
+                            onSelect={filters.setSort}
                           />
                         </Flex>
 
@@ -295,6 +288,7 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
             type: "[ArtworkAggregation]"
             defaultValue: [MEDIUM, TOTAL, GALLERY, INSTITUTION, MAJOR_PERIOD]
           }
+          sort: { type: "String", defaultValue: "-partner_updated_at" }
         ) {
         id
         filtered_artworks(
@@ -304,6 +298,7 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
           partner_id: $partner_id
           for_sale: $for_sale
           size: 0
+          sort: $sort
         ) {
           aggregations {
             slice
@@ -325,6 +320,7 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
       $major_periods: [String]
       $partner_id: ID
       $for_sale: Boolean
+      $sort: String
     ) {
       artist(id: $artistID) {
         ...ArtworkFilter_artist
@@ -333,6 +329,7 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
             major_periods: $major_periods
             partner_id: $partner_id
             for_sale: $for_sale
+            sort: $sort
           )
       }
     }

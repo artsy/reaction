@@ -76,7 +76,7 @@ class Artworks extends Component<Props, LoadingAreaState> {
           itemMargin={40}
         />
 
-        <Spacer mb={4} />
+        <Spacer mb={3} />
 
         <Flex justifyContent="flex-end">
           <Pagination

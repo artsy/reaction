@@ -1,15 +1,14 @@
+// @ts-ignore
 import React from "react"
-import styled from "styled-components"
-import { space, SpaceProps, themeGet } from "styled-system"
 
-const HR = styled.div.attrs<SpaceProps>({})`
+import { color } from "@artsy/palette"
+import styled from "styled-components"
+import { space, SpaceProps } from "styled-system"
+
+interface SeparatorProps extends SpaceProps {}
+
+export const Separator = styled.div.attrs<SeparatorProps>({})`
   ${space};
-  border-top: 1px solid ${themeGet("colors.black10")};
+  border-top: 1px solid ${color("black10")};
   width: 100%;
 `
-
-export class Separator extends React.Component {
-  render() {
-    return <HR mb={2} />
-  }
-}

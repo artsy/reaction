@@ -1,4 +1,4 @@
-import { Sans, Serif } from "@artsy/palette"
+import { Sans, Serif, space } from "@artsy/palette"
 import React from "react"
 import { AppState } from "Router/state"
 import styled from "styled-components"
@@ -114,7 +114,7 @@ const FooterContainer: React.SFC<FlexDirectionProps & Props> = props => {
 
 const Link = styled.a`
   display: block;
-  margin-top: ${props => props.theme.space[1]}px;
-  margin-bottom: ${props => props.theme.space[1]}px;
+  margin-top: ${space(1)}px;
+  margin-bottom: ${space(1)}px;
   text-decoration: none;
 `
