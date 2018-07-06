@@ -28,14 +28,14 @@ const Logo = styled(Icon).attrs({
 })`
   display: block;
   line-height: 1em;
-  margin-bottom: 10px;
+  padding-bottom: 10px;
   ${media.sm`
     display: none;
   `};
 `
 
 const Title = Serif.extend`
-  margin-bottom: 10px;
+  padding-bottom: 10px;
 `
 
 const Header = styled.div`
