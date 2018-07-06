@@ -1,7 +1,6 @@
 import { ModalOptions } from "Components/Authentication/Types"
 import Modal, { ModalProps } from "Components/Modal/Modal"
 import React, { Component } from "react"
-import styled from "styled-components"
 import Events from "Utils/Events"
 import { track } from "Utils/track"
 
@@ -32,12 +31,8 @@ export class DesktopModal extends Component<DesktopModalProps> {
 
     return (
       <Modal {...this.props} onClose={this.onClose} title={title} hasLogo>
-        <Content>{this.props.children}</Content>
+        {this.props.children}
       </Modal>
     )
   }
 }
-
-const Content = styled.div`
-  box-sizing: border-box;
-`
