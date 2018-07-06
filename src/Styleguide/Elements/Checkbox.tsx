@@ -151,21 +151,21 @@ const CheckboxButton = styled.div.attrs<CheckboxToggleProps>({})`
 const Label = styled.div``
 
 const hoverStyles = ({ selected, hover, disabled }) => {
-  const hoverStyles = `
+  const styles = `
     background-color: ${color("black10")};
     border-color: ${color("black10")};
   `
   if (hover && !selected && !disabled) {
     return css`
       ${CheckboxButton} {
-        ${hoverStyles};
+        ${styles};
       }
     `
   }
   if (!selected && !disabled) {
     return css`
       &:hover ${CheckboxButton} {
-        ${hoverStyles};
+        ${styles};
       }
     `
   }
