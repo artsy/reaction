@@ -55,6 +55,10 @@ export class Radio extends React.Component<RadioProps, RadioState> {
     }
   }
 
+  componentWillReceiveProps() {
+    this.setState({ selected: this.props.selected })
+  }
+
   render() {
     const { selected } = this.state
     const { children, disabled, hover } = this.props
