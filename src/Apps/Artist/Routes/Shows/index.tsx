@@ -19,7 +19,7 @@ export const ShowsRoute: SFC<ArtistShowsProps> = props => {
         status="running"
         artist={viewer.artist_currentShows as any}
         scrollTo="#jumpto-RouteTabs"
-        heading="Currently on View"
+        heading="Currently on view"
       />
 
       <Spacer my={4} id="jumpto-Shows-Upcoming" />
