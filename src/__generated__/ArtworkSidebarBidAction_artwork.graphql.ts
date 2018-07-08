@@ -9,6 +9,11 @@ export type ArtworkSidebarBidAction_artwork = {
         readonly is_closed: boolean | null;
         readonly is_registration_closed: boolean | null;
     }) | null;
+    readonly sale_artwork: ({
+        readonly increments: ReadonlyArray<({
+            readonly display: string | null;
+        }) | null> | null;
+    }) | null;
 };
 
 
@@ -75,9 +80,39 @@ return {
         v0
       ]
     },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "sale_artwork",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "SaleArtwork",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "increments",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "BidIncrementsFormatted",
+          "plural": true,
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "display",
+              "args": null,
+              "storageKey": null
+            }
+          ]
+        },
+        v0
+      ]
+    },
     v0
   ]
 };
 })();
-(node as any).hash = '3fa12d268995bcc65c0da322f42d942b';
+(node as any).hash = 'a2fc9fb9d800ee9087db60bedbf1fc91';
 export default node;

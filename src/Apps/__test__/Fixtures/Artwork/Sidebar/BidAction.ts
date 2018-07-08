@@ -8,6 +8,14 @@ export const ArtworkFromAuctionPreview = {
     is_with_buyers_premium: null,
     is_registration_closed: false,
   },
+  sale_artwork: {
+    increments: [
+      { display: "£750" },
+      { display: "£800" },
+      { display: "£850" },
+      { display: "£900" },
+    ],
+  },
 }
 
 export const ArtworkFromTimedAuctionRegistrationOpen = {
@@ -18,6 +26,14 @@ export const ArtworkFromTimedAuctionRegistrationOpen = {
     is_closed: false,
     is_live_open: false,
     is_registration_closed: false,
+  },
+  sale_artwork: {
+    increments: [
+      { display: "£750" },
+      { display: "£800" },
+      { display: "£850" },
+      { display: "£900" },
+    ],
   },
 }
 
@@ -30,6 +46,14 @@ export const ArtworkFromTimedAuctionRegistrationClosed = {
     is_live_open: false,
     is_registration_closed: true,
   },
+  sale_artwork: {
+    increments: [
+      { display: "£750" },
+      { display: "£800" },
+      { display: "£850" },
+      { display: "£900" },
+    ],
+  },
 }
 
 export const ArtworkFromLiveAuctionRegistrationOpen = {
@@ -40,6 +64,14 @@ export const ArtworkFromLiveAuctionRegistrationOpen = {
     is_closed: false,
     is_live_open: true,
     is_registration_closed: false,
+  },
+  sale_artwork: {
+    increments: [
+      { display: "£750" },
+      { display: "£800" },
+      { display: "£850" },
+      { display: "£900" },
+    ],
   },
 }
 
@@ -52,6 +84,7 @@ export const ArtworkFromLiveAuctionRegistrationClosed = {
     is_live_open: true,
     is_registration_closed: true,
   },
+  sale_artwork: { increments: [] },
 }
 
 export const ArtworkFromClosedAuction = {
@@ -63,6 +96,7 @@ export const ArtworkFromClosedAuction = {
     is_live_open: false,
     is_registration_closed: true,
   },
+  sale_artwork: { increments: [] },
 }
 
 export const NotRegisteredToBid = {
