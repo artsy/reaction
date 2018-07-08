@@ -97,27 +97,33 @@ class ArtistShows extends Component<ArtistShowsProps, LoadingAreaState> {
                 <Col>
                   <Row>
                     <Col>
-                      <Sans size="3" weight="medium">
+                      {/* Negative margin bottom to make space 20px from bottom of 
+                    text to the image below */}
+                      <Sans size="3" weight="medium" mb={-0.5}>
                         {this.props.heading}
                       </Sans>
+                      <Spacer mb={2} />
                       <LoadingArea isLoading={this.state.isLoading}>
                         {this.props.status === "running" ? (
                           <ShowBlocks flexDirection={blockDirection} flexWrap>
                             {this.props.artist.showsConnection.edges.map(
                               ({ node }, edgeKey) => {
                                 return (
-                                  <ArtistShowBlockItem
-                                    key={edgeKey}
-                                    blockWidth={blockWidth}
-                                    imageUrl={node.cover_image.cropped.url}
-                                    partner={node.partner.name}
-                                    name={node.name}
-                                    exhibitionInfo={node.exhibition_period}
-                                    pr={pr}
-                                    pb={pb}
-                                    href={node.href}
-                                    city={node.city}
-                                  />
+                                  <React.Fragment>
+                                    <ArtistShowBlockItem
+                                      key={edgeKey}
+                                      blockWidth={blockWidth}
+                                      imageUrl={node.cover_image.cropped.url}
+                                      partner={node.partner.name}
+                                      name={node.name}
+                                      exhibitionInfo={node.exhibition_period}
+                                      pr={pr}
+                                      pb={pb}
+                                      href={node.href}
+                                      city={node.city}
+                                    />
+                                    {xs && <Spacer mb={3} />}
+                                  </React.Fragment>
                                 )
                               }
                             )}
@@ -127,14 +133,18 @@ class ArtistShows extends Component<ArtistShowsProps, LoadingAreaState> {
                             {this.props.artist.showsConnection.edges.map(
                               ({ node }, edgeKey) => {
                                 return (
-                                  <ArtistShowListItem
-                                    key={edgeKey}
-                                    city={node.city}
-                                    partner={node.partner.name}
-                                    name={node.name}
-                                    exhibitionInfo={node.exhibition_period}
-                                    href={node.href}
-                                  />
+                                  <React.Fragment>
+                                    <ArtistShowListItem
+                                      key={edgeKey}
+                                      city={node.city}
+                                      partner={node.partner.name}
+                                      name={node.name}
+                                      exhibitionInfo={node.exhibition_period}
+                                      href={node.href}
+                                    />
+
+                                    {xs && <Spacer mb={3} />}
+                                  </React.Fragment>
                                 )
                               }
                             )}
