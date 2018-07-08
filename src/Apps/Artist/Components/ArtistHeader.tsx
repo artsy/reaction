@@ -70,12 +70,14 @@ export const LargeArtistHeader: SFC<Props> = props => {
         data={carousel.images as any}
         render={slide => {
           return (
-            <Image
-              px={5}
-              src={slide.resized.url}
-              width={slide.resized.width}
-              height={slide.resized.height}
-            />
+            <a href={slide.href}>
+              <Image
+                px={5}
+                src={slide.resized.url}
+                width={slide.resized.width}
+                height={slide.resized.height}
+              />
+            </a>
           )
         }}
       />
@@ -131,12 +133,14 @@ export const SmallArtistHeader: SFC<Props> = props => {
         data={carousel.images as any}
         render={slide => {
           return (
-            <Image
-              px={5}
-              src={slide.resized.url}
-              width={slide.resized.width}
-              height={slide.resized.height}
-            />
+            <a href={slide.href}>
+              <Image
+                px={5}
+                src={slide.resized.url}
+                width={slide.resized.width}
+                height={slide.resized.height}
+              />
+            </a>
           )
         }}
       />
@@ -197,6 +201,7 @@ export const ArtistHeaderFragmentContainer = createFragmentContainer(
       }
       carousel {
         images {
+          href
           resized(height: 300) {
             url
             width

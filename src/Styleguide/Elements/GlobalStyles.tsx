@@ -1,9 +1,8 @@
-import { Display, Sans, Serif } from "@artsy/palette"
+import { color, Display, Sans, Serif } from "@artsy/palette"
 import { injectLayoutBaseCSS } from "styled-bootstrap-grid"
 import styled from "styled-components"
 import { css } from "styled-components"
 import reset from "styled-reset"
-import { themeGet } from "styled-system"
 
 // @ts-ignore
 import { ClassAttributes, HTMLAttributes } from "react"
@@ -45,7 +44,7 @@ const noUnderline = css`
 `
 
 const colorLink = css`
-  color: ${themeGet("colors.purple100")};
+  color: ${color("purple100")};
 `
 
 export const GlobalStyles = styled.div`
@@ -57,11 +56,11 @@ export const GlobalStyles = styled.div`
     transition: 0.25s;
 
     &:hover {
-      color: ${themeGet("colors.black100")};
+      color: ${color("black100")};
     }
 
     &:active {
-      color: ${themeGet("colors.black100")};
+      color: ${color("black100")};
     }
 
     /* ts-styled-plugin erroniously parses this; see: */
@@ -84,11 +83,11 @@ export const GlobalStyles = styled.div`
       color: inherit;
 
       &:hover {
-        color: ${themeGet("colors.black100")};
+        color: ${color("black100")};
       }
 
       &:active {
-        color: ${themeGet("colors.black100")};
+        color: ${color("black100")};
       }
 
       &.noUnderline {
@@ -109,11 +108,11 @@ export const GlobalStyles = styled.div`
       color: inherit;
 
       &:hover {
-        color: ${themeGet("colors.black100")};
+        color: ${color("black100")};
       }
 
       &:active {
-        color: ${themeGet("colors.black100")};
+        color: ${color("black100")};
       }
 
       &.noUnderline {
@@ -131,7 +130,7 @@ export const GlobalStyles = styled.div`
 
   ${Display} {
     a {
-      color: ${themeGet("colors.black100")};
+      color: ${color("black100")};
       text-decoration: none;
       text-transform: uppercase;
 

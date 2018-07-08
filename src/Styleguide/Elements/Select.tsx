@@ -1,9 +1,14 @@
-import { Sans } from "@artsy/palette"
+import { color, Sans, space } from "@artsy/palette"
 import React from "react"
 import styled, { css } from "styled-components"
 import { Responsive } from "Utils/Responsive"
 
-import { PositionProps, space, SpaceProps, themeGet } from "styled-system"
+import {
+  PositionProps,
+  space as styledSpace,
+  SpaceProps,
+  themeGet,
+} from "styled-system"
 
 interface Option {
   value: string
@@ -95,21 +100,17 @@ const LargeSelectContainer = styled.div.attrs<SelectProps>({})`
     font-family: ${themeGet("fontFamily.serif.regular")};
     font-size: ${themeGet("typeSizes.serif.3.fontSize")}px;
     line-height: ${themeGet("typeSizes.serif.3.lineHeight")}px;
-
     ${hideDefaultSkin};
-
-    border: 1px solid ${themeGet("colors.black10")};
+    border: 1px solid ${color("black10")};
     border-radius: 0;
-
-    ${space};
+    ${styledSpace};
   }
 
-  &:after {
+  &::after {
     content: "";
     position: absolute;
     top: 45%;
-    right: ${props => props.theme.space["1"]}px;
-
+    right: ${space(1)}px;
     ${caretArrow};
   }
 `
@@ -121,17 +122,16 @@ const SmallSelectContainer = styled.div.attrs<SelectProps>({})`
     font-size: ${themeGet("typeSizes.sans.2.fontSize")}px;
     line-height: ${themeGet("typeSizes.sans.2.lineHeight")}px;
     font-weight: bold;
-
     ${hideDefaultSkin};
   }
 
-  &:after {
+  &::after {
     content: "";
     position: absolute;
-    top: ${props => props.theme.space["1"]}px;
-
+    top: ${space(1)}px;
+    margin-left: ${space(0.5)}px;
     ${caretArrow};
   }
 
-  ${space};
+  ${styledSpace};
 `

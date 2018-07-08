@@ -1,12 +1,7 @@
-import { Sans } from "@artsy/palette"
+import { color, Sans } from "@artsy/palette"
 import React from "react"
 import styled, { css } from "styled-components"
-import {
-  borders,
-  JustifyContentProps,
-  themeGet,
-  WidthProps,
-} from "styled-system"
+import { borders, JustifyContentProps, WidthProps } from "styled-system"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 
@@ -132,7 +127,7 @@ const ActiveTabButton = ({ children }) => (
 // Share with <RouterTabs />
 export const styles = {
   tabsContainer: css`
-    border-bottom: 1px solid ${themeGet("colors.black10")};
+    border-bottom: 1px solid ${color("black10")};
   `,
 
   tabContainer: css`
@@ -150,7 +145,7 @@ export const styles = {
     margin-bottom: -1px;
     margin-right: 20px;
     white-space: nowrap;
-    border-bottom: 1px solid ${themeGet("colors.black60")};
+    border-bottom: 1px solid ${color("black60")};
   `,
 }
 

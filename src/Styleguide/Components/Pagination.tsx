@@ -1,7 +1,6 @@
-import { Sans } from "@artsy/palette"
+import { color, Sans, space } from "@artsy/palette"
 import React from "react"
 import styled, { css } from "styled-components"
-import { themeGet } from "styled-system"
 import { Arrow } from "Styleguide/Elements/Arrow"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
@@ -169,7 +168,7 @@ const NextButton = ({ onClick }) => {
 }
 
 const activeButton = css`
-  background: ${themeGet("colors.black5")};
+  background: ${color("black5")};
   border-radius: 2px;
   border: 0;
 `
@@ -192,10 +191,10 @@ const Button = styled.button.attrs<{ active?: boolean }>({})`
 
 const ButtonWithBorder = styled(Flex)`
   border: ${props => props.theme.borders[1]};
-  border-color: ${themeGet("colors.black10")};
+  border-color: ${color("black10")};
   border-radius: 3px;
   width: 100%;
-  height: ${props => props.theme.space[4]}px;
+  height: ${space(4)}px;
   cursor: pointer;
 `
 

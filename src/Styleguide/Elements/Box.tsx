@@ -1,9 +1,10 @@
+import { color } from "@artsy/palette"
 // @ts-ignore
 import React from "react"
 import styled, { css } from "styled-components"
 import {
   bottom,
-  color,
+  color as styledColor,
   ColorProps,
   display,
   DisplayProps,
@@ -19,7 +20,6 @@ import {
   SpaceProps,
   textAlign,
   TextAlignProps,
-  themeGet,
   top,
   width,
   WidthProps,
@@ -28,7 +28,7 @@ import { Flex, FlexProps } from "./Flex"
 
 const hover = css`
   &:hover {
-    border-color: ${themeGet("colors.black60")};
+    border-color: ${color("black60")};
   }
 `
 
@@ -42,7 +42,7 @@ export interface BorderBoxProps
 }
 
 export const BorderBox = styled(Flex).attrs<BorderBoxProps>({})`
-  border: 1px solid ${themeGet("colors.black10")};
+  border: 1px solid ${color("black10")};
   border-radius: 2px;
   ${props => props.hover && hover};
   ${space};
@@ -73,7 +73,7 @@ export const Box = styled.div.attrs<BoxProps>({})`
   ${right};
   ${bottom};
   ${left};
-  ${color};
+  ${styledColor};
   ${textAlign};
   ${maxWidth};
 `
