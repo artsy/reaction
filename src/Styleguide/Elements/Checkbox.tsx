@@ -146,6 +146,7 @@ const CheckboxButton = styled.div.attrs<CheckboxToggleProps>({})`
   border-color: ${checkBorderColor};
   width: ${space(SIZE)}px;
   height: ${space(SIZE)}px;
+  transition: background-color 0.25s, border-color 0.25s;
 `
 
 const Label = styled.div``
@@ -178,5 +179,6 @@ interface ContainerProps extends FlexProps {
 const Container = styled(Flex).attrs<ContainerProps>({})`
   user-select: none;
   cursor: ${({ disabled }) => !disabled && "pointer"};
+  transition: color 0.25s;
   ${hoverStyles};
 `
