@@ -1,4 +1,4 @@
-import { Serif } from "@artsy/palette"
+import { Serif, space } from "@artsy/palette"
 import Icon from "Components/Icon"
 import React, { SFC } from "react"
 import styled from "styled-components"
@@ -28,14 +28,14 @@ const Logo = styled(Icon).attrs({
 })`
   display: block;
   line-height: 1em;
-  padding-bottom: 10px;
+  padding-bottom: ${space(1)}px;
   ${media.sm`
     display: none;
   `};
 `
 
 const Title = Serif.extend`
-  padding-bottom: 10px;
+  padding-bottom: ${space(1)}px;
 `
 
 const Header = styled.div`

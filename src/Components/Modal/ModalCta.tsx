@@ -29,7 +29,7 @@ export const ModalCta: SFC<{
 }
 
 const Cta = styled.div.attrs<{ isFixed?: boolean; hasImage?: boolean }>({})`
-  padding: ${space("2")}px 0 ${space("3")}px 0;
+  padding: ${space(2)}px 0 ${space(3)}px 0;
   button {
     margin: 0;
     width: 100%;
@@ -39,19 +39,19 @@ const Cta = styled.div.attrs<{ isFixed?: boolean; hasImage?: boolean }>({})`
     `
     position: absolute;
     bottom: 0;
-    right: ${space("4")}px;
-    left: ${props.hasImage ? "calc(50% + 40px)" : space("4") + "px"};
+    right: ${space(4)}px;
+    left: ${props.hasImage ? "calc(50% + 40px)" : space(4) + "px"};
     background: white;
     border-top: 1px solid ${color("black10")};
   `};
 
   ${media.sm`
-    padding-bottom: ${space("2")}px;
+    padding-bottom: ${space(2)}px;
     ${props =>
       props.isFixed &&
       `
-      right: ${space("2")}px;
-      left: ${space("2")}px
+      right: ${space(2)}px;
+      left: ${space(2)}px
     `}
   `};
 `
