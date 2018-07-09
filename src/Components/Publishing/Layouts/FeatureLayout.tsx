@@ -1,5 +1,8 @@
+import { once } from "lodash"
 import React from "react"
+import Waypoint from "react-waypoint"
 import styled from "styled-components"
+import { track } from "../../../Utils/track"
 import { Header } from "../Header/Header"
 import { Nav } from "../Nav/Nav"
 import {
@@ -19,9 +22,26 @@ export interface ArticleProps {
   relatedArticlesForCanvas?: any
   showTooltips?: boolean
   showToolTipMarketData?: boolean
+  tracking?: any
 }
 
 export class FeatureLayout extends React.Component<ArticleProps> {
+  public trackRelated
+
+  constructor(props) {
+    super(props)
+    this.trackRelated = once(this.trackRelatedImpression)
+  }
+
+  trackRelatedImpression = () => {
+    const { tracking } = this.props
+
+    tracking.trackEvent({
+      action: "Impression",
+      impression_type: "Further reading",
+    })
+  }
+
   render() {
     const {
       article,
@@ -66,10 +86,13 @@ export class FeatureLayout extends React.Component<ArticleProps> {
         {relatedArticlesForCanvas &&
           !isSuper &&
           !seriesArticle && (
-            <RelatedArticlesCanvas
-              articles={relatedArticlesForCanvas}
-              vertical={article.vertical}
-            />
+            <div>
+              <Waypoint onEnter={this.trackRelated} />
+              <RelatedArticlesCanvas
+                articles={relatedArticlesForCanvas}
+                vertical={article.vertical}
+              />
+            </div>
           )}
         {seriesArticle && <ArticleCardsBlock {...this.props} />}
       </FeatureLayoutContainer>
@@ -92,3 +115,5 @@ const FeatureLayoutContainer = styled.div`
     padding-top: 60px;
   }
 `
+
+export default track()(FeatureLayout)

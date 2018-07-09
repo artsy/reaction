@@ -1,20 +1,27 @@
 import { unica } from "Assets/Fonts"
+import { once } from "lodash"
 import React from "react"
+import Waypoint from "react-waypoint"
 import styled from "styled-components"
 import { track } from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
 import { StandardLayoutParent } from "../Layouts/StandardLayout"
 
-@track()
 export class ReadMore extends React.Component<any, any> {
-  constructor(props) {
-    super(props)
-    this.onClick = this.onClick.bind(this)
+  onClick = () => {
+    const { tracking } = this.props
+
+    tracking.trackEvent({ action: "Clicked read more" })
+    this.props.onClick(...arguments)
   }
 
-  @track({ action: "Clicked read more" })
-  onClick() {
-    this.props.onClick(...arguments)
+  trackImpression = () => {
+    const { tracking } = this.props
+
+    tracking.trackEvent({
+      action: "Impression",
+      impression_type: "Read more button",
+    })
   }
 
   render() {
@@ -23,6 +30,7 @@ export class ReadMore extends React.Component<any, any> {
         <ReadMoreContainer onClick={this.onClick}>
           <ReadMoreButton>Read More</ReadMoreButton>
         </ReadMoreContainer>
+        <Waypoint onEnter={once(this.trackImpression)} />
       </StandardLayoutParent>
     )
   }
@@ -38,7 +46,8 @@ const ReadMoreButton = styled.div`
   background-color: black;
   border: 1px solid black;
   border-radius: 2px;
-  ${unica("s14", "medium")} padding-top: 1px;
+  ${unica("s14", "medium")};
+  padding-top: 1px;
   &:hover {
     cursor: pointer;
     background-color: white;
@@ -64,3 +73,5 @@ const ReadMoreContainer = styled.div`
     padding: 20px;
   `};
 `
+
+export default track()(ReadMore)

@@ -1,38 +1,54 @@
+import { once } from "lodash"
 import React from "react"
+import Waypoint from "react-waypoint"
 import styled from "styled-components"
+import { track } from "../../../../Utils/track"
 import { pMedia } from "../../../Helpers"
 import { EmailPanel } from "../../Email/EmailPanel"
 import { RelatedArticlesPanel } from "../../RelatedArticles/RelatedArticlesPanel"
 
-export interface ArticleProps {
+export interface SidebarProps {
   emailSignupUrl?: string
   DisplayPanel?: any
   relatedArticlesForPanel?: any
+  tracking?: any
 }
 
-export const Sidebar: React.SFC<ArticleProps> = props => {
-  const { emailSignupUrl, DisplayPanel, relatedArticlesForPanel } = props
+export class Sidebar extends React.Component<SidebarProps> {
+  trackRelatedImpression = () => {
+    const { tracking } = this.props
 
-  return (
-    <SidebarContainer>
-      {emailSignupUrl && (
-        <SidebarItem>
-          <EmailPanel signupUrl={emailSignupUrl} />
-        </SidebarItem>
-      )}
+    tracking.trackEvent({
+      action: "Impression",
+      impression_type: "Related articles",
+    })
+  }
 
-      {relatedArticlesForPanel && (
-        <SidebarItem>
-          <RelatedArticlesPanel
-            label={"Related Stories"}
-            articles={relatedArticlesForPanel}
-          />
-        </SidebarItem>
-      )}
+  render() {
+    const { emailSignupUrl, DisplayPanel, relatedArticlesForPanel } = this.props
 
-      {DisplayPanel && <DisplayPanel />}
-    </SidebarContainer>
-  )
+    return (
+      <SidebarContainer>
+        {emailSignupUrl && (
+          <SidebarItem>
+            <EmailPanel signupUrl={emailSignupUrl} />
+          </SidebarItem>
+        )}
+
+        {relatedArticlesForPanel && (
+          <SidebarItem>
+            <RelatedArticlesPanel
+              label={"Related Stories"}
+              articles={relatedArticlesForPanel}
+            />
+            <Waypoint onEnter={once(this.trackRelatedImpression)} />
+          </SidebarItem>
+        )}
+
+        {DisplayPanel && <DisplayPanel />}
+      </SidebarContainer>
+    )
+  }
 }
 
 const SidebarContainer = styled.div`
@@ -50,3 +66,5 @@ const SidebarContainer = styled.div`
 const SidebarItem = styled.div`
   margin-bottom: 40px;
 `
+
+export default track()(Sidebar)

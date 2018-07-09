@@ -30,6 +30,7 @@ export interface ArticleProps {
   showTooltips?: boolean
   showToolTipMarketData?: boolean
   slideIndex?: number
+  tracking?: any
   closeViewer?: () => void
   viewerIsOpen?: boolean
   onOpenAuthModal?: (type: "register" | "login", config: Object) => void
