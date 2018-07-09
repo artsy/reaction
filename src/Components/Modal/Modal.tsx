@@ -1,4 +1,4 @@
-import Colors from "Assets/Colors"
+import { color } from "@artsy/palette"
 import Icon from "Components/Icon"
 import React from "react"
 import styled, { injectGlobal, keyframes } from "styled-components"
@@ -212,7 +212,7 @@ export const ModalOverlay = styled.div`
 `
 
 export const CloseButton = styled(Icon).attrs({
-  color: Colors.graySemibold,
+  color: color("black60"),
   fontSize: "16px",
 })`
   position: absolute;

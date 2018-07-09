@@ -1,4 +1,4 @@
-import Colors from "Assets/Colors"
+import { color } from "@artsy/palette"
 import InvertedButton from "Components/Buttons/Inverted"
 import React, { SFC } from "react"
 import styled from "styled-components"
@@ -42,7 +42,7 @@ const Cta = styled.div.attrs<{ isFixed?: boolean; hasImage?: boolean }>({})`
     right: 40px;
     left: ${props.hasImage ? "calc(50% + 40px)" : "40px"};
     background: white;
-    border-top: 1px solid ${Colors.grayRegular};
+    border-top: 1px solid ${color("black10")};
   `};
 
   ${media.sm`
