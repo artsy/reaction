@@ -1,8 +1,7 @@
-import { Serif } from "@artsy/palette"
+import { color, Serif } from "@artsy/palette"
 import Icon from "Components/Icon"
 import React from "react"
 import styled from "styled-components"
-import { themeGet } from "styled-system"
 import { Flex } from "./Flex"
 
 interface FollowIconProps {
@@ -11,7 +10,7 @@ interface FollowIconProps {
 
 export const FollowIconContainer = styled(Flex)`
   align-items: center;
-  color: ${themeGet("colors.black100")};
+  color: ${color("black100")};
   cursor: pointer;
 `
 
@@ -38,7 +37,7 @@ const FollowingHover = styled.div`
     display: none;
   }
   &:hover {
-    color: ${themeGet("colors.red100")};
+    color: ${color("red100")};
     ${Following} {
       display: none;
     }
@@ -50,7 +49,7 @@ const FollowingHover = styled.div`
 
 const FollowHover = styled.div`
   &:hover {
-    color: ${themeGet("colors.purple100")};
+    color: ${color("purple100")};
   }
 `
 

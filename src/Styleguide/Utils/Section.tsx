@@ -1,17 +1,16 @@
-import { Sans, themeProps } from "@artsy/palette"
+import { color, Sans, themeProps } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
-import { themeGet } from "styled-system"
 import { Flex } from "Styleguide/Elements/Flex"
 
 const Header = styled.div`
   padding: 5px 10px 3px;
-  border-bottom: 1px solid ${themeGet("colors.black10")};
+  border-bottom: 1px solid ${color("black10")};
   user-select: none;
   transition: 0.4s;
 
   &:hover {
-    background-color: ${themeGet("colors.black5")};
+    background-color: ${color("black5")};
   }
 `
 

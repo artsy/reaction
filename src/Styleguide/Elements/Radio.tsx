@@ -1,19 +1,21 @@
-// TODO: This and <Checkbox /> can be shared
-
 import React from "react"
-import styled from "styled-components"
-import { Flex } from "./Flex"
+import styled, { css } from "styled-components"
+import { Flex, FlexProps } from "./Flex"
+
+import { color, space } from "@artsy/palette"
 
 import {
   BorderProps,
   borders,
   SizeProps,
-  space,
+  space as styledSpace,
   SpaceProps,
 } from "styled-system"
 
 export interface RadioProps {
   selected?: boolean
+  disabled?: boolean
+  hover?: boolean
   onSelect?: any
   value?: string
 }
@@ -53,61 +55,97 @@ export class Radio extends React.Component<RadioProps, RadioState> {
     }
   }
 
+  componentWillReceiveProps() {
+    this.setState({ selected: this.props.selected })
+  }
+
   render() {
     const { selected } = this.state
-    const { children } = this.props
+    const { children, disabled, hover } = this.props
 
     return (
-      <Flex my={0.3} onClick={() => this.toggleSelected()}>
-        <RadioButton border={1} mr={1} selected={selected}>
-          {selected && <InnerCircle />}
+      <Container
+        disabled={disabled}
+        my={0.3}
+        alignItems="center"
+        onClick={() => !this.props.disabled && this.toggleSelected()}
+      >
+        <RadioButton
+          border={1}
+          mr={1}
+          selected={selected}
+          disabled={disabled}
+          hover={hover}
+        >
+          <InnerCircle />
         </RadioButton>
-        <Label>{children}</Label>
-      </Flex>
+        <Label style={disabled && { color: color("black10") }}>
+          {children}
+        </Label>
+      </Container>
     )
   }
 }
 
-const RadioButton = styled.div.attrs<RadioToggleProps>({})`
-  ${borders};
-  ${space};
-
-  ${props => {
-    const {
-      selected,
-      theme: {
-        colors: { black100, black10, white100 },
-        space,
-      },
-    } = props
-
-    const backgroundColor = selected ? black100 : white100
-    const borderColor = selected ? black100 : black10
-    const buttonSize = space[2]
-
-    return `
-      background-color: ${backgroundColor};
-      border-color: ${borderColor};
-      width: ${buttonSize}px;
-      height: ${buttonSize}px;
-
-      border-radius: 50%;
-      cursor: pointer;
-    `
-  }};
+interface ContainerProps extends FlexProps {
+  disabled: boolean
+}
+const Container = styled(Flex).attrs<ContainerProps>({})`
+  cursor: ${({ disabled }) => !disabled && "pointer"};
+  user-select: none;
 `
 
+const Label = styled.div``
+
 const InnerCircle = styled.div`
-  width: ${props => props.theme.space[1]}px;
-  height: ${props => props.theme.space[1]}px;
+  width: ${space(1)}px;
+  height: ${space(1)}px;
   border-radius: 50%;
-  background-color: white;
   position: relative;
   left: 3px;
   top: 3px;
+  background-color: ${color("white100")};
 `
 
-const Label = styled.div`
-  cursor: pointer;
-  user-select: none;
+const radioBackgroundColor = ({ disabled, selected }) => {
+  switch (true) {
+    case disabled:
+      return color("black10")
+    case selected:
+      return color("black100")
+    default:
+      return color("white100")
+  }
+}
+
+const radioBorderColor = ({ disabled, selected }) =>
+  selected && !disabled ? color("black100") : color("black10")
+
+const disabledInnerCircleBackgroundColor = ({ disabled, selected }) =>
+  disabled && !selected && color("black10")
+
+const hoverStyles = ({ hover, selected }) => {
+  const styles = `background-color: ${color("black10")};`
+  if (hover && !selected) return styles
+  if (!selected)
+    return css`
+      &:hover {
+        ${styles};
+      }
+    `
+}
+
+const RadioButton = styled.div.attrs<RadioToggleProps>({})`
+  ${borders};
+  ${styledSpace};
+  background-color: ${radioBackgroundColor};
+  border-color: ${radioBorderColor};
+  width: ${space(2)}px;
+  height: ${space(2)}px;
+  border-radius: 50%;
+  ${InnerCircle} {
+    background-color: ${disabledInnerCircleBackgroundColor};
+  }
+
+  ${hoverStyles};
 `

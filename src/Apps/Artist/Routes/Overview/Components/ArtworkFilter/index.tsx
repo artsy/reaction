@@ -20,99 +20,15 @@ interface Props {
 }
 
 class Filter extends Component<Props> {
-  renderCurrentlySelected(filter, state) {
-    let selectedFilter = null
-
-    if (
-      (filter === "institution" || filter === "gallery") &&
-      state.partner_id
-    ) {
-      selectedFilter = state.partner_id
-    }
-    if (filter === "major_period" && state.major_periods) {
-      selectedFilter = state.major_periods[0]
-    } else {
-      selectedFilter = state[filter]
-    }
-
-    return selectedFilter
-  }
-
-  renderFilters(filters) {
-    return this.props.artist.filtered_artworks.aggregations.map(
-      (aggregation, index) => {
-        return (
-          <div key={index}>
-            <div>
-              {aggregation.slice} -{" "}
-              {this.renderCurrentlySelected(
-                aggregation.slice.toLowerCase(),
-                filters.state
-              )}
-              {this.renderSection(aggregation, filters)}
-            </div>
-            <br />
-          </div>
-        )
-      }
-    )
-  }
-
-  renderForSale(filters) {
-    return (
-      <div>
-        <div>
-          Currently selected: {filters.state.for_sale ? "Only for sale" : "All"}
-        </div>
-        <div
-          onClick={() => {
-            filters.setFilter("for_sale", true)
-          }}
-        >
-          For sale
-        </div>
-        <div
-          onClick={() => {
-            filters.setFilter("for_sale", null)
-          }}
-        >
-          All
-        </div>
-        <br />
-      </div>
-    )
-  }
-
-  renderSidebar(filters) {
-    return (
-      <div>
-        {this.renderForSale(filters)}
-        {this.renderFilters(filters)}
-      </div>
-    )
-  }
-
-  renderSection(aggregation, filters) {
-    return aggregation.counts.slice(0, 10).map((count, index) => {
-      return (
-        <div
-          key={index}
-          onClick={() => {
-            filters.setFilter(aggregation.slice.toLowerCase(), count.id)
-          }}
-        >
-          <span>{count.name}</span>
-          <span>({count.count})</span>
-        </div>
-      )
-    })
-  }
-
   renderCategory(filters, category, counts) {
+    const currentFilter =
+      category === "major_periods"
+        ? filters.state.major_periods[0]
+        : filters.state[category]
     return counts.slice(0, 10).map((count, index) => {
       return (
         <Radio
-          selected={filters.state[category] === count.id}
+          selected={currentFilter === count.id}
           value={count.id}
           onSelect={selected => {
             if (selected) {
@@ -187,7 +103,7 @@ class Filter extends Component<Props> {
                               <Checkbox
                                 selected={filters.state.for_sale}
                                 onSelect={value => {
-                                  return filters.setFilter("for_sale", !value)
+                                  return filters.setFilter("for_sale", value)
                                 }}
                               >
                                 For sale
