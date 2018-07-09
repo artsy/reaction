@@ -1,12 +1,12 @@
-import PropTypes from "prop-types"
 import { mount } from "enzyme"
 import "jest-styled-components"
+import PropTypes from "prop-types"
 import React from "react"
-import { wrapperWithContext } from "../../Fixtures/Helpers"
-import { Artists } from "../../Fixtures/Components"
-import { ArtistToolTip, TitleDate } from "../ArtistToolTip"
 import { ContextProvider } from "../../../Artsy"
 import { FollowArtistButton } from "../../../FollowButton/FollowArtistButton"
+import { Artists } from "../../Fixtures/Components"
+import { wrapperWithContext } from "../../Fixtures/Helpers"
+import { ArtistToolTip, TitleDate } from "../ArtistToolTip"
 
 describe("ArtistToolTip", () => {
   const getWrapper = (props, context = {}) => {
@@ -37,7 +37,6 @@ describe("ArtistToolTip", () => {
         trackEvent: jest.fn(),
       },
       artist: Artists[0].artist,
-      showMarketData: false,
     }
   })
 
