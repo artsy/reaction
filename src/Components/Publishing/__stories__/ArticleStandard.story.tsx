@@ -64,7 +64,7 @@ const story = storiesOf("Publishing/Articles/Standard", module)
       </ContextProvider>
     )
   })
-  .add("With tooltips (bio)", () => {
+  .add("With tooltips", () => {
     return (
       <ContextProvider>
         <Article
@@ -73,20 +73,6 @@ const story = storiesOf("Publishing/Articles/Standard", module)
           relatedArticlesForCanvas={RelatedCanvas}
           emailSignupUrl="#"
           showTooltips
-        />
-      </ContextProvider>
-    )
-  })
-  .add("With tooltips (data)", () => {
-    return (
-      <ContextProvider>
-        <Article
-          article={StandardArticle}
-          relatedArticlesForPanel={RelatedPanel}
-          relatedArticlesForCanvas={RelatedCanvas}
-          emailSignupUrl="#"
-          showTooltips
-          showToolTipMarketData
         />
       </ContextProvider>
     )
