@@ -1,6 +1,6 @@
+import Icon from "Components/Icon"
 import { mount } from "enzyme"
 import React from "react"
-import Icon from "../../Icon"
 import { Modal, ModalContainer, ModalOverlay } from "../Modal"
 import { ModalCta } from "../ModalCta"
 import { ModalHeader } from "../ModalHeader"

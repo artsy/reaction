@@ -1,6 +1,6 @@
+import Icon from "Components/Icon"
 import { mount } from "enzyme"
 import React from "react"
-import Icon from "../../Icon"
 import { ModalHeader } from "../ModalHeader"
 
 describe("ModalHeader", () => {
