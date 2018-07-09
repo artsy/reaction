@@ -91,8 +91,6 @@ class ArtistShows extends Component<ArtistShowsProps, LoadingAreaState> {
 
           return (
             <React.Fragment>
-              {this.props.status !== "running" && <ShowDivider />}
-
               <Row>
                 <Col>
                   <Row>
@@ -154,13 +152,8 @@ class ArtistShows extends Component<ArtistShowsProps, LoadingAreaState> {
                     </Col>
                   </Row>
 
-                  {this.props.status === "running" && (
-                    <Box py={2}>
-                      <Separator />
-                    </Box>
-                  )}
-
                   <Row>
+                    <Separator mb={2} />
                     <Col>
                       <Flex justifyContent="flex-end">
                         <PaginationFragmentContainer
@@ -265,19 +258,3 @@ export const ArtistShowsRefetchContainer = createRefetchContainer(
 
 const ShowBlocks = Flex
 const ShowList = Box
-
-const ShowDivider = () => {
-  return (
-    <Responsive>
-      {({ xs }) => {
-        return (
-          <div>
-            <Spacer my={1} />
-            <Separator />
-            <Spacer py={xs ? 0 : 1} />
-          </div>
-        )
-      }}
-    </Responsive>
-  )
-}
