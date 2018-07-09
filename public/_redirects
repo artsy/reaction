@@ -1,2 +1,2 @@
 # Add redirect for netlify builds
-/graphql  https://metaphysics-staging.artsy.net/graphql
+/graphql  https://metaphysics-staging.artsy.net/graphql  200
