@@ -56,6 +56,15 @@ describe("ArtistToolTip", () => {
     expect(component.find("img").length).toBe(2)
   })
 
+  it("Renders genes if no bio present", () => {
+    delete props.artist.blurb
+    const component = getWrapper(props)
+
+    expect(component.text()).toMatch(
+      "United States, Abstract Art, 21st Century"
+    )
+  })
+
   it("Tracks clicks to artist page", () => {
     const component = getWrapper(props)
     component

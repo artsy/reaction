@@ -60,8 +60,8 @@ export class ArtistToolTip extends React.Component<ArtistToolTipProps> {
       onOpenAuthModal,
     } = this.context
     const displayImages = map(carousel.images.slice(0, 2), "resized")
-
     const images = fillwidthDimensions(displayImages, 320, 15, 150)
+    const description = blurb || this.renderArtistGenes()
 
     const trackingData: FollowTrackingData = {
       context_module: "intext tooltip",
@@ -98,7 +98,7 @@ export class ArtistToolTip extends React.Component<ArtistToolTipProps> {
           </Header>
 
           <a href={href} target="_blank" onClick={this.trackClick}>
-            {blurb && <ToolTipDescription text={blurb} />}
+            {description && <ToolTipDescription text={description} />}
           </a>
         </ArtistContainer>
 
