@@ -5,7 +5,7 @@ import styled from "styled-components"
 import { track } from "../../../../Utils/track"
 import { pMedia } from "../../../Helpers"
 import { EmailPanel } from "../../Email/EmailPanel"
-import { RelatedArticlesPanel } from "../../RelatedArticles/RelatedArticlesPanel"
+import RelatedArticlesPanel from "../../RelatedArticles/RelatedArticlesPanel"
 
 export interface SidebarProps {
   emailSignupUrl?: string

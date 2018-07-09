@@ -11,31 +11,31 @@ export interface RelatedArticleFigureData {
   thumbnail_title: string
   thumbnail_image: string
   slug: string
+  id: string
 }
 
 interface RelatedArticleFigureProps extends React.HTMLProps<HTMLDivElement> {
   article: RelatedArticleFigureData
+  tracking?: any
 }
 
-@track()
 export class RelatedArticleFigure extends React.Component<
   RelatedArticleFigureProps,
   null
 > {
-  constructor(props) {
-    super(props)
-    this.onClick = this.onClick.bind(this)
-  }
+  onClick = () => {
+    const { article, tracking } = this.props
+    const href = getArticleHref(article.slug)
 
-  @track((props, [e]) => ({
-    action: "Clicked article impression",
-    article_id: props.article.id,
-    destination_path: e.currentTarget.attributes.href.value,
-    impression_type: "related_articles_canvas",
-    context_type: "article_fixed",
-  }))
-  onClick(e) {
-    // noop
+    tracking.trackEvent({
+      action: "Clicked article impression",
+      destination_path: href,
+      entity_id: article.id,
+      entity_type: "article",
+      flow: "article",
+      type: "thumbnail",
+      label: "Further reading",
+    })
   }
 
   render() {
@@ -84,3 +84,5 @@ const BlockImage = styled.img`
     height: 150px;
   `};
 `
+
+export default track()(RelatedArticleFigure)

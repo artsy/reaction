@@ -3,8 +3,7 @@ import _ from "lodash"
 import React from "react"
 import styled from "styled-components"
 import { pMedia } from "../../Helpers"
-import {
-  RelatedArticleFigure,
+import RelatedArticleFigure, {
   RelatedArticleFigureData,
 } from "./RelatedArticleFigure"
 

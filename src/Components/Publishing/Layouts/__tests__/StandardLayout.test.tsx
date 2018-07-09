@@ -1,15 +1,15 @@
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
-import { StandardArticle } from "../../Fixtures/Articles"
-import { Display, RelatedCanvas, RelatedPanel } from "../../Fixtures/Components"
 import { DisplayCanvas } from "../../Display/Canvas"
 import { DisplayPanel } from "../../Display/DisplayPanel"
+import { StandardArticle } from "../../Fixtures/Articles"
+import { Display, RelatedCanvas, RelatedPanel } from "../../Fixtures/Components"
 import { ReadMore } from "../../ReadMore/ReadMoreButton"
 import { RelatedArticlesCanvas } from "../../RelatedArticles/RelatedArticlesCanvas"
 import { RelatedArticlesPanel } from "../../RelatedArticles/RelatedArticlesPanel"
-import { StandardLayout } from "../StandardLayout"
 import { Sidebar } from "../Components/Sidebar"
+import { StandardLayout } from "../StandardLayout"
 
 jest.mock("../../Sections/FullscreenViewer/withFullScreen", () => ({
   withFullScreen: x => x,
