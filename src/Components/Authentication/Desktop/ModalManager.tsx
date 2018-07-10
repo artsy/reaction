@@ -1,4 +1,5 @@
 import { FormikProps } from "formik"
+import qs from "querystring"
 import React, { Component } from "react"
 
 import { DesktopModal } from "Components/Authentication/Desktop/Components/DesktopModal"
@@ -110,6 +111,28 @@ export class ModalManager extends Component<
       ? this.props.handleSubmit.bind(this, currentType, options)
       : defaultHandleSubmit(submitUrls[currentType], csrf, redirectTo)
 
+    const queryData = Object.assign(
+      {},
+      options,
+      {
+        accepted_terms_of_service: true,
+        agreed_to_receive_emails: true,
+        "signup-referer": options.signupReferer || location.href,
+      },
+      options.redirectTo
+        ? {
+            "redirect-to": options.redirectTo,
+          }
+        : null,
+      options.intent
+        ? {
+            "signup-intent": options.intent,
+          }
+        : null
+    )
+
+    const authQueryData = qs.stringify(queryData)
+
     return (
       <DesktopModal
         blurContainerSelector={blurContainerSelector}
@@ -124,12 +147,10 @@ export class ModalManager extends Component<
           error={error}
           handleSubmit={handleSubmit}
           onFacebookLogin={() =>
-            (window.location.href =
-              submitUrls.facebook + "?redirect-to=" + options.redirectTo)
+            (window.location.href = submitUrls.facebook + `?${authQueryData}`)
           }
           onTwitterLogin={() =>
-            (window.location.href =
-              submitUrls.twitter + "?redirect-to=" + options.redirectTo)
+            (window.location.href = submitUrls.twitter + `?${authQueryData}`)
           }
           options={options}
           handleTypeChange={this.handleTypeChange}

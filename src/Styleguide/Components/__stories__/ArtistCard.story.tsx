@@ -11,6 +11,7 @@ const artist = {
       url: "http://via.placeholder.com/100x100?text=+",
     },
   },
+  href: "/artist/francesca-dimattio",
   name: "Francesca DiMattio",
   formatted_nationality_and_birthday: "American, b. 1979",
   id: "percy",

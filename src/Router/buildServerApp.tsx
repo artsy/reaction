@@ -15,11 +15,14 @@ export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
     try {
       const { routes, url, user } = config
 
-      // FIXME: Might be a better way to do this...
-      const currentUser = user || {
-        id: process.env.USER_ID,
-        accessToken: process.env.USER_ACCESS_TOKEN,
+      let currentUser = user
+      if (process.env.USER_ID && process.env.USER_ACCESS_TOKEN) {
+        currentUser = currentUser || {
+          id: process.env.USER_ID,
+          accessToken: process.env.USER_ACCESS_TOKEN,
+        }
       }
+
       const relayEnvironment = createEnvironment({
         user: currentUser,
       })

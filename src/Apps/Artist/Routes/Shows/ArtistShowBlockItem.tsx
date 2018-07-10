@@ -24,7 +24,7 @@ export const ArtistShowBlockItem: SFC<ArtistShowBlockItemProps> = props => {
     <Box width={props.blockWidth} height="auto" pr={pr} pb={pb}>
       <a href={FIXME_DOMAIN + href} className="noUnderline">
         <Image width="100%" src={imageUrl} />
-        <Serif size="3t">{name}</Serif>
+        <Serif size="3">{props.name}</Serif>
       </a>
       <Serif size="2" color="black60">
         <a href={FIXME_DOMAIN + href} className="noUnderline">

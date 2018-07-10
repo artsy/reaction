@@ -4,7 +4,6 @@ import React from "react"
 import { PreloadLinkState } from "Router/state"
 import { Footer } from "Styleguide/Components/Footer"
 import { RecentlyViewedFragmentContainer as RecentlyViewed } from "Styleguide/Components/RecentlyViewed"
-import { Box } from "Styleguide/Elements/Box"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
@@ -54,19 +53,11 @@ export const ArtistApp: React.SFC<ArtistAppProps> = props => {
         </Col>
       </Row>
 
-      <Box mb={4}>
-        <Separator />
-      </Box>
+      <Separator my={6} />
 
-      {me && (
-        <Box my={3}>
-          <RecentlyViewed me={me} />
-        </Box>
-      )}
+      {me && <RecentlyViewed me={me} />}
 
-      <Box my={3}>
-        <Separator />
-      </Box>
+      <Separator mt={6} mb={3} />
 
       <Row>
         <Col>
