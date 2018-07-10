@@ -72,6 +72,10 @@ jobs:
         command: |
           set +e             
           curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+
+          echo $BASH_ENV
+          echo 'export NVM_DIR="$HOME/.nvm"' >> $BASH_ENV
+          echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
     - run: nvm install && nvm use
     - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
     - restore_cache:
@@ -87,7 +91,7 @@ jobs:
         - ./.cache-loader
         - ~/.cache/yarn
         - ~/.nvm
-        - ~/.bash_profile
+        - ~/.bashrc
 workflows:
   version: 2
   build_and_verify:
