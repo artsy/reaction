@@ -40,6 +40,7 @@ export const RelatedArtists = () => {
                                 url: "https://picsum.photos/110/110/?random",
                               },
                             },
+                            href: "/artist/francesca-dimattio",
                             name: "Francesca DiMattio",
                             formatted_nationality_and_birthday:
                               "American, b. 1979",
