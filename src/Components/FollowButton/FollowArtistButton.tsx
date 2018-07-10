@@ -57,10 +57,10 @@ export class FollowArtistButton extends React.Component<Props> {
   handleFollow = () => {
     const { artist, currentUser, relay, onOpenAuthModal } = this.props
 
-    const newFollowCount = artist.is_followed
-      ? artist.counts.follows - 1
-      : artist.counts.follows + 1
     if (currentUser && currentUser.id) {
+      const newFollowCount = artist.is_followed
+        ? artist.counts.follows - 1
+        : artist.counts.follows + 1
       commitMutation(relay.environment, {
         mutation: graphql`
           mutation FollowArtistButtonMutation($input: FollowArtistInput!) {
