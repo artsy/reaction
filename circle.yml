@@ -26,6 +26,7 @@ test:
     - yarn type-check
     - yarn test --runInBand
     - yarn deploy-storybook-pr
+    - yarn deploy-storybook-review
 
 deployment:
   release:
