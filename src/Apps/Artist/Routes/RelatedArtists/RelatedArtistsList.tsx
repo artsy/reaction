@@ -117,7 +117,12 @@ class RelatedArtistsList extends Component<ShowProps, LoadingAreaState> {
                             {this.props.artist.related.artists.edges.map(
                               ({ node }, index) => {
                                 return (
-                                  <Box pr={2} mb={4} width={width} key={index}>
+                                  <Box
+                                    pr={2}
+                                    mb={xs ? 1 : 4}
+                                    width={width}
+                                    key={index}
+                                  >
                                     <ArtistCard
                                       artist={node as any}
                                       mediator={mediator}
