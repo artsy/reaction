@@ -50,7 +50,10 @@ export class SocialEmbed extends React.Component<
     if (html) {
       return (
         <StyledEmbedContainer markup={html}>
-          <div dangerouslySetInnerHTML={{ __html: html }} />
+          <div
+            className="chromatic-ignore"
+            dangerouslySetInnerHTML={{ __html: html }}
+          />
         </StyledEmbedContainer>
       )
     } else {
