@@ -42,7 +42,6 @@ export class ArticleWithFullScreen extends React.Component<
     article: {},
     isTruncated: false,
     showTooltips: false,
-    showToolTipMarketData: false,
   }
 
   constructor(props) {

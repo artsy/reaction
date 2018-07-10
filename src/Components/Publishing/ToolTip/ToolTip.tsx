@@ -9,7 +9,6 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
   entity: object
   orientation?: string
   model: string
-  showMarketData?: boolean
   onMouseEnter?: any
   onMouseLeave?: any
   positionLeft?: number
@@ -17,16 +16,11 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
 
 export class ToolTip extends React.Component<Props> {
   getToolTip = () => {
-    const { entity, model, showMarketData } = this.props
+    const { entity, model } = this.props
 
     switch (model) {
       case "artist": {
-        return (
-          <ArtistTooltipContainer
-            showMarketData={showMarketData}
-            artist={entity as any}
-          />
-        )
+        return <ArtistTooltipContainer artist={entity as any} />
       }
       case "gene": {
         return <GeneToolTipContainer gene={entity as any} />

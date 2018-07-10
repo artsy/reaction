@@ -8,8 +8,8 @@ import React from "react"
 
 const tracking = { trackEvent: x => x }
 
-storiesOf("Publishing/ToolTips/Artist", module)
-  .add("With Bio", () => {
+storiesOf("Publishing/ToolTips/", module)
+  .add("Artist", () => {
     return (
       <div style={{ maxWidth: 580, margin: "50px auto 0 auto" }}>
         <ContextProvider>
@@ -41,34 +41,24 @@ storiesOf("Publishing/ToolTips/Artist", module)
       </div>
     )
   })
-  .add("With Market data", () => {
+  .add("Gene", () => {
     return (
-      <div style={{ maxWidth: 580, margin: "50px auto 0 auto" }}>
+      <div style={{ maxWidth: 580, margin: "50px auto" }}>
         <ContextProvider>
           <TooltipsData article={StandardArticle}>
             <StyledText layout="standard">
               <LinkWithTooltip
-                url="https://artsy.net/artist/fra-angelico"
-                showMarketData
+                url="https://artsy.net/gene/art-nouveau"
                 tracking={tracking}
               >
-                Fra Angelico
+                Art Nouveau
               </LinkWithTooltip>
-              {`, `}
+              {` and `}
               <LinkWithTooltip
-                url="https://artsy.net/artist/judy-chicago"
-                showMarketData
+                url="https://artsy.net/gene/art-deco"
                 tracking={tracking}
               >
-                Judy Chicago
-              </LinkWithTooltip>
-              {`, and `}
-              <LinkWithTooltip
-                url="https://artsy.net/artist/alfred-stieglitz"
-                showMarketData
-                tracking={tracking}
-              >
-                Alfred Stieglitz
+                Art Deco
               </LinkWithTooltip>
             </StyledText>
           </TooltipsData>
@@ -76,28 +66,3 @@ storiesOf("Publishing/ToolTips/Artist", module)
       </div>
     )
   })
-storiesOf("Publishing/ToolTips/Gene", module).add("Gene", () => {
-  return (
-    <div style={{ maxWidth: 580, margin: "50px auto" }}>
-      <ContextProvider>
-        <TooltipsData article={StandardArticle}>
-          <StyledText layout="standard">
-            <LinkWithTooltip
-              url="https://artsy.net/gene/art-nouveau"
-              tracking={tracking}
-            >
-              Art Nouveau
-            </LinkWithTooltip>
-            {` and `}
-            <LinkWithTooltip
-              url="https://artsy.net/gene/art-deco"
-              tracking={tracking}
-            >
-              Art Deco
-            </LinkWithTooltip>
-          </StyledText>
-        </TooltipsData>
-      </ContextProvider>
-    </div>
-  )
-})
