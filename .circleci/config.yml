@@ -1,32 +1,4 @@
 version: 2
-workflows:
-  version: 2
-  build_and_verify:
-    jobs:
-      - build
-      - relay:
-        requires:
-          - build
-      - lint:
-        requires:
-          - build
-      - type-check:
-        requires:
-          - build
-          - relay
-      - test:
-        requires:
-          - build
-          - relay
-          - lint
-          - type-check
-      - deploy:
-        filters:
-          branches:
-            only:
-              - master
-        requires:
-          - test
 jobs:
   relay:
     working_directory: ~/artsy/reaction
@@ -110,3 +82,31 @@ jobs:
         - ./.cache-loader
         - ~/.cache/yarn
         - ~/.nvm
+workflows:
+  version: 2
+  build_and_verify:
+    jobs:
+      - build
+      - relay:
+          requires:
+            - build
+      - lint:
+          requires:
+            - build
+      - type-check:
+          requires:
+            - build
+            - relay
+      - test:
+          requires:
+            - build
+            - relay
+            - lint
+            - type-check
+      - deploy:
+          filters:
+            branches:
+              only:
+                - master
+          requires:
+            - test
