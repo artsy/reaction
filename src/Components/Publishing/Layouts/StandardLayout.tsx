@@ -54,7 +54,7 @@ export class StandardLayout extends React.Component<
     const { tracking } = this.props
 
     tracking.trackEvent({
-      action: "Impression",
+      action: "article_impression",
       impression_type: "Further reading",
     })
   }

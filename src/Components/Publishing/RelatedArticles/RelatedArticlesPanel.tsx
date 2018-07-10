@@ -34,8 +34,8 @@ export class RelatedArticlesPanel extends React.Component<
       entity_id: article.id,
       entity_type: "article",
       flow: "article",
+      impression_type: "Related article",
       type: "link",
-      label: "Related article",
     })
   }
 
