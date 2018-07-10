@@ -5,6 +5,9 @@ export type FollowArtistButton_artist = {
     readonly __id: string;
     readonly id: string;
     readonly is_followed: boolean | null;
+    readonly counts: ({
+        readonly follows: any | null;
+    }) | null;
 };
 
 
@@ -36,8 +39,26 @@ const node: ConcreteFragment = {
       "name": "is_followed",
       "args": null,
       "storageKey": null
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "counts",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "ArtistCounts",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "follows",
+          "args": null,
+          "storageKey": null
+        }
+      ]
     }
   ]
 };
-(node as any).hash = '872d90fb3feb3ba8549b783b1b5b5643';
+(node as any).hash = '3d95f3ba8843502253efacc9c5d3d5f9';
 export default node;

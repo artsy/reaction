@@ -63,6 +63,9 @@ export class FollowArtistButton extends React.Component<Props> {
             followArtist(input: $input) {
               artist {
                 is_followed
+                counts {
+                  follows
+                }
               }
             }
           }
@@ -78,6 +81,11 @@ export class FollowArtistButton extends React.Component<Props> {
             artist: {
               __id: artist.__id,
               is_followed: !artist.is_followed,
+              counts: {
+                follows: artist.is_followed
+                  ? artist.counts.follows + 1
+                  : artist.counts.follows - 1,
+              },
             },
           },
         },
@@ -119,6 +127,9 @@ export default track()(
         __id
         id
         is_followed
+        counts {
+          follows
+        }
       }
     `
   )
