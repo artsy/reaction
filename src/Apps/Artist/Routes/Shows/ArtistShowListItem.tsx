@@ -1,8 +1,8 @@
 import { Serif } from "@artsy/palette"
 import React, { SFC } from "react"
-import { Box } from "Styleguide/Elements/Box"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Separator } from "Styleguide/Elements/Separator"
+import { Spacer } from "Styleguide/Elements/Spacer"
 import { Responsive } from "Utils/Responsive"
 
 interface ArtistShowListItemProps {
@@ -27,10 +27,11 @@ export const ArtistShowListItem: SFC<ArtistShowListItemProps> = props => {
 }
 
 const LargeShowListItem: SFC<ArtistShowListItemProps> = props => {
-  const { city, exhibitionInfo, href, partner } = props
+  const { name, city, exhibitionInfo, href, partner } = props
 
   return (
     <React.Fragment>
+      <Separator mb={4} />
       <Row>
         <Col sm={3}>
           <Serif size="2">
@@ -55,18 +56,17 @@ const LargeShowListItem: SFC<ArtistShowListItemProps> = props => {
         </Col>
       </Row>
 
-      <Box pt={3} pb={1}>
-        <Separator />
-      </Box>
+      <Spacer mb={4} />
     </React.Fragment>
   )
 }
 
 const SmallShowListItem: SFC<ArtistShowListItemProps> = props => {
-  const { city, exhibitionInfo, href, partner } = props
+  const { name, city, exhibitionInfo, href, partner } = props
 
   return (
     <React.Fragment>
+      <Separator mb={3} />
       <Serif size="3">
         <a href={FIXME_DOMAIN + href} className="noUnderline">
           {name}
@@ -81,9 +81,7 @@ const SmallShowListItem: SFC<ArtistShowListItemProps> = props => {
         {city && `${city}, `}
         {exhibitionInfo}
       </Serif>
-      <Box pt={2} pb={0}>
-        <Separator />
-      </Box>
+      <Spacer mb={3} />
     </React.Fragment>
   )
 }

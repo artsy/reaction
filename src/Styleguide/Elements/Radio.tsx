@@ -68,15 +68,11 @@ export class Radio extends React.Component<RadioProps, RadioState> {
         disabled={disabled}
         my={0.3}
         alignItems="center"
+        selected={selected}
+        hover={hover}
         onClick={() => !this.props.disabled && this.toggleSelected()}
       >
-        <RadioButton
-          border={1}
-          mr={1}
-          selected={selected}
-          disabled={disabled}
-          hover={hover}
-        >
+        <RadioButton border={1} mr={1} selected={selected} disabled={disabled}>
           <InnerCircle />
         </RadioButton>
         <Label style={disabled && { color: color("black10") }}>
@@ -87,12 +83,33 @@ export class Radio extends React.Component<RadioProps, RadioState> {
   }
 }
 
+const hoverStyles = ({ selected, hover }) => {
+  const styles = `background-color: ${color("black10")};`
+  if (hover && !selected) {
+    return css`
+      ${RadioButton} {
+        ${styles};
+      }
+    `
+  }
+  if (!selected) {
+    return css`
+      &:hover ${RadioButton} {
+        ${styles};
+      }
+    `
+  }
+}
+
 interface ContainerProps extends FlexProps {
   disabled: boolean
+  hover: boolean
+  selected: boolean
 }
 const Container = styled(Flex).attrs<ContainerProps>({})`
   cursor: ${({ disabled }) => !disabled && "pointer"};
   user-select: none;
+  ${hoverStyles};
 `
 
 const Label = styled.div``
@@ -124,17 +141,6 @@ const radioBorderColor = ({ disabled, selected }) =>
 const disabledInnerCircleBackgroundColor = ({ disabled, selected }) =>
   disabled && !selected && color("black10")
 
-const hoverStyles = ({ hover, selected }) => {
-  const styles = `background-color: ${color("black10")};`
-  if (hover && !selected) return styles
-  if (!selected)
-    return css`
-      &:hover {
-        ${styles};
-      }
-    `
-}
-
 const RadioButton = styled.div.attrs<RadioToggleProps>({})`
   ${borders};
   ${styledSpace};
@@ -143,9 +149,8 @@ const RadioButton = styled.div.attrs<RadioToggleProps>({})`
   width: ${space(2)}px;
   height: ${space(2)}px;
   border-radius: 50%;
+  transition: background-color 0.25s, border-color 0.25s;
   ${InnerCircle} {
     background-color: ${disabledInnerCircleBackgroundColor};
   }
-
-  ${hoverStyles};
 `

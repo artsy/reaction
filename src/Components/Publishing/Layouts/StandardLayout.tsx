@@ -42,6 +42,11 @@ export class StandardLayout extends React.Component<
   }
 
   removeTruncation = () => {
+    const { tracking } = this.props
+
+    tracking.trackEvent({
+      action: "Clicked read more",
+    })
     this.setState({ isTruncated: false })
   }
 

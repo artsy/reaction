@@ -9,9 +9,6 @@ import { StandardLayoutParent } from "../Layouts/StandardLayout"
 
 export class ReadMore extends React.Component<any, any> {
   onClick = () => {
-    const { tracking } = this.props
-
-    tracking.trackEvent({ action: "Clicked read more" })
     this.props.onClick(...arguments)
   }
 
@@ -27,8 +24,8 @@ export class ReadMore extends React.Component<any, any> {
   render() {
     return (
       <StandardLayoutParent>
-        <ReadMoreContainer onClick={this.onClick}>
-          <ReadMoreButton>Read More</ReadMoreButton>
+        <ReadMoreContainer>
+          <ReadMoreButton onClick={this.onClick}>Read More</ReadMoreButton>
         </ReadMoreContainer>
         <Waypoint onEnter={once(this.trackImpression)} />
       </StandardLayoutParent>
