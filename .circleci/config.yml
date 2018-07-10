@@ -67,6 +67,11 @@ jobs:
     - image: circleci/node:jessie
     steps:
     - checkout
+    - run:
+        name: Install nvm
+        command: |
+          set +e             
+          curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
     - run: nvm install && nvm use
     - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
     - restore_cache:
