@@ -1,5 +1,6 @@
 import { extend } from "lodash"
 import React from "react"
+import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
 import { FollowArtistButton_artist } from "../../__generated__/FollowArtistButton_artist.graphql"
 import { track } from "../../Utils/track"
 import * as Artsy from "../Artsy"
@@ -56,6 +57,9 @@ export class FollowArtistButton extends React.Component<Props> {
   handleFollow = () => {
     const { artist, currentUser, relay, onOpenAuthModal } = this.props
 
+    const newFollowCount = artist.is_followed
+      ? artist.counts.follows - 1
+      : artist.counts.follows + 1
     if (currentUser && currentUser.id) {
       commitMutation(relay.environment, {
         mutation: graphql`
@@ -71,23 +75,23 @@ export class FollowArtistButton extends React.Component<Props> {
           }
         `,
         variables: {
-          input: {
-            artist_id: artist.id,
-            unfollow: artist.is_followed,
-          },
+          input: { artist_id: artist.id, unfollow: artist.is_followed },
         },
         optimisticResponse: {
           followArtist: {
             artist: {
               __id: artist.__id,
               is_followed: !artist.is_followed,
-              counts: {
-                follows: artist.is_followed
-                  ? artist.counts.follows + 1
-                  : artist.counts.follows - 1,
-              },
+              counts: { follows: newFollowCount },
             },
           },
+        },
+        updater: (store: RecordSourceSelectorProxy, data: SelectorData) => {
+          const artistProxy = store.get(data.followArtist.artist.__id)
+
+          artistProxy
+            .getLinkedRecord("counts")
+            .setValue(newFollowCount, "follows")
         },
       })
       this.trackFollow()
