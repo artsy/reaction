@@ -87,6 +87,7 @@ jobs:
         - ./.cache-loader
         - ~/.cache/yarn
         - ~/.nvm
+        - ~/.bash_profile
 workflows:
   version: 2
   build_and_verify:
