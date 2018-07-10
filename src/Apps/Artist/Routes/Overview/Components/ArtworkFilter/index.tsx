@@ -8,6 +8,7 @@ import { Checkbox } from "Styleguide/Elements/Checkbox"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Radio } from "Styleguide/Elements/Radio"
 import { Select } from "Styleguide/Elements/Select"
+import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Subscribe } from "unstated"
 import { Responsive } from "Utils/Responsive"
@@ -143,8 +144,10 @@ class Filter extends Component<Props> {
                       )}
 
                       <Box width={xs ? "100%" : "70%"}>
+                        <Separator mb={2} />
                         <Flex justifyContent="flex-end">
                           <Select
+                            mt="-8px" // Corrective spacing for line-height
                             options={[
                               {
                                 value: "-partner_updated_at",

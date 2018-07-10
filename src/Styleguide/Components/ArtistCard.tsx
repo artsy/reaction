@@ -32,7 +32,7 @@ export class ArtistCard extends React.Component<Props> {
 }
 
 export const LargeArtistCard = (props: Props) => (
-  <BorderBox hover flexDirection="column" width="100%">
+  <BorderBox hover flexDirection="column" width="100%" height="254px">
     <Flex flexDirection="column" flexGrow="0" alignItems="center" pt={1}>
       {props.artist.image && (
         <Avatar src={props.artist.image.cropped.url} mb={1} />
