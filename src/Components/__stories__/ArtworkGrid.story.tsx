@@ -32,13 +32,15 @@ export function ArtworkGridExample(props: {
   )
 }
 
-storiesOf("Components/Artworks/ArtworkGrid", module)
-  .add("A typical grid", () => {
-    return <ArtworkGridExample artistID="banksy" />
-  })
-  .add("Without Relay", () => {
-    return <ArtworkGrid artworks={artworks as any} useRelay={false} />
-  })
+if (!navigator.userAgent.match(/Chromatic/)) {
+  storiesOf("Components/Artworks/ArtworkGrid", module)
+    .add("A typical grid", () => {
+      return <ArtworkGridExample artistID="banksy" />
+    })
+    .add("Without Relay", () => {
+      return <ArtworkGrid artworks={artworks as any} useRelay={false} />
+    })
+}
 
 const artworks = {
   edges: [
