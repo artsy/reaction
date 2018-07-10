@@ -16,6 +16,7 @@ interface Props {
   relay: RelayRefetchProp
   artistID: string
   columnCount: number
+  filters: any
 }
 
 const PAGE_SIZE = 10
@@ -47,13 +48,45 @@ class Artworks extends Component<Props, LoadingAreaState> {
         first: PAGE_SIZE,
         after: cursor,
         filteredArtworksNodeID: this.props.filtered_artworks.__id,
-        before: null,
-        last: null,
       },
       null,
       error => {
         this.toggleLoading(false)
 
+        if (error) {
+          console.error(error)
+        }
+      }
+    )
+  }
+
+  calcNodeIdForFilters = () => {
+    const expandedFilters = {
+      ...this.props.filters,
+      aggregations: ["total"],
+      artist_id: this.props.artistID,
+    }
+    return btoa("FilterArtworks:" + JSON.stringify(expandedFilters))
+  }
+
+  componentDidUpdate(prevProps) {
+    Object.keys(this.props.filters).forEach(key => {
+      if (this.props.filters[key] !== prevProps.filters[key]) {
+        this.loadFilter()
+      }
+    })
+  }
+
+  loadFilter = () => {
+    debugger
+    this.props.relay.refetch(
+      {
+        first: PAGE_SIZE,
+        after: null,
+        filteredArtworksNodeID: this.calcNodeIdForFilters(),
+      },
+      null,
+      error => {
         if (error) {
           console.error(error)
         }
@@ -127,7 +160,7 @@ export default createRefetchContainer(
       $first: Int!
       $after: String
     ) {
-      node(__id: $filteredArtworksNodeID) {
+      filtered_artworks: node(__id: $filteredArtworksNodeID) {
         ...ArtworkFilterArtworkGrid_filtered_artworks
           @arguments(first: $first, after: $after)
       }

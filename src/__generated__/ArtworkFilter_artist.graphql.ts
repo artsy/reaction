@@ -9,7 +9,6 @@ export type ArtworkFilter_artist = {
             readonly slice: ArtworkAggregation | null;
             readonly counts: ReadonlyArray<({
                 readonly name: string | null;
-                readonly count: number | null;
                 readonly id: string;
             }) | null> | null;
         }) | null> | null;
@@ -168,13 +167,6 @@ return {
                   "args": null,
                   "storageKey": null
                 },
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "count",
-                  "args": null,
-                  "storageKey": null
-                },
                 v0,
                 v1
               ]
@@ -193,5 +185,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '05886c38887ec0781f435500021c4f2a';
+(node as any).hash = '89e79bd5a416c78853f57f602864a340';
 export default node;

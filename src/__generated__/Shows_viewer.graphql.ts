@@ -3,6 +3,16 @@
 import { ConcreteFragment } from "relay-runtime";
 export type Shows_viewer = {
     readonly artist_currentShows: ({}) | null;
+    readonly artist_currentShowsPageCount: ({
+        readonly showsConnection: ({
+            readonly pageCursors: ({
+                readonly around: ReadonlyArray<{
+                    readonly page: number;
+                }>;
+            }) | null;
+            readonly totalCount: number | null;
+        }) | null;
+    }) | null;
     readonly artist_upcomingShows: ({}) | null;
     readonly artist_pastShows: ({}) | null;
 };
@@ -106,6 +116,84 @@ return {
     },
     {
       "kind": "LinkedField",
+      "alias": "artist_currentShowsPageCount",
+      "name": "artist",
+      "storageKey": null,
+      "args": v0,
+      "concreteType": "Artist",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "showsConnection",
+          "storageKey": "showsConnection(first:4,sort:\"END_AT_ASC\",status:\"running\")",
+          "args": [
+            {
+              "kind": "Literal",
+              "name": "first",
+              "value": 4,
+              "type": "Int"
+            },
+            {
+              "kind": "Literal",
+              "name": "sort",
+              "value": "END_AT_ASC",
+              "type": "PartnerShowSorts"
+            },
+            {
+              "kind": "Literal",
+              "name": "status",
+              "value": "running",
+              "type": "String"
+            }
+          ],
+          "concreteType": "ShowConnection",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "pageCursors",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "PageCursors",
+              "plural": false,
+              "selections": [
+                {
+                  "kind": "LinkedField",
+                  "alias": null,
+                  "name": "around",
+                  "storageKey": null,
+                  "args": null,
+                  "concreteType": "PageCursor",
+                  "plural": true,
+                  "selections": [
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "page",
+                      "args": null,
+                      "storageKey": null
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "totalCount",
+              "args": null,
+              "storageKey": null
+            }
+          ]
+        },
+        v1
+      ]
+    },
+    {
+      "kind": "LinkedField",
       "alias": "artist_upcomingShows",
       "name": "artist",
       "storageKey": null,
@@ -167,5 +255,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'a5b24380340288a2abae7669e3103624';
+(node as any).hash = '81516cd174d843eda5acd05a54efdc90';
 export default node;

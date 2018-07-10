@@ -1,7 +1,7 @@
 import { ArtworkFilter_artist } from "__generated__/ArtworkFilter_artist.graphql"
 import { FilterState } from "Apps/Artist/Routes/Overview/state"
 import React, { Component } from "react"
-import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
+import { createFragmentContainer, graphql } from "react-relay"
 import { Toggle } from "Styleguide/Components/Toggle"
 import { Box } from "Styleguide/Elements/Box"
 import { Checkbox } from "Styleguide/Elements/Checkbox"
@@ -16,7 +16,6 @@ import ArtworksContent from "./ArtworkFilterArtworkGrid"
 interface Props {
   artist: ArtworkFilter_artist
   filters?: any // FIXME
-  relay: RelayRefetchProp
 }
 
 class Filter extends Component<Props> {
@@ -43,36 +42,6 @@ class Filter extends Component<Props> {
         </Radio>
       )
     })
-  }
-
-  componentDidUpdate(prevProps) {
-    Object.keys(this.props.filters).forEach(key => {
-      if (this.props.filters[key] !== prevProps.filters[key]) {
-        this.fetch()
-      }
-    })
-  }
-
-  fetch = () => {
-    this.props.relay.refetch(
-      {
-        artistID: this.props.artist.id,
-        aggregations: [
-          "MEDIUM",
-          "TOTAL",
-          "GALLERY",
-          "INSTITUTION",
-          "MAJOR_PERIOD",
-        ],
-        ...this.props.filters,
-      },
-      null,
-      error => {
-        if (error) {
-          console.error(error)
-        }
-      }
-    )
   }
 
   render() {
@@ -165,6 +134,7 @@ class Filter extends Component<Props> {
                         <ArtworksContent
                           artistID={this.props.artist.id}
                           columnCount={xs || sm || md ? 2 : 3}
+                          filters={filters.state}
                           filtered_artworks={
                             this.props.artist.filtered_artworks as any
                           }
@@ -182,7 +152,7 @@ class Filter extends Component<Props> {
   }
 }
 
-export const ArtworkFilterRefetchContainer = createRefetchContainer(
+export const ArtworkFilterRefetchContainer = createFragmentContainer(
   (props: Props) => {
     return (
       <Subscribe to={[FilterState]}>
@@ -192,61 +162,37 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
       </Subscribe>
     )
   },
-  {
-    artist: graphql`
-      fragment ArtworkFilter_artist on Artist
-        @argumentDefinitions(
-          medium: { type: "String", defaultValue: "*" }
-          major_periods: { type: "[String]" }
-          partner_id: { type: "ID" }
-          for_sale: { type: "Boolean" }
-          aggregations: {
-            type: "[ArtworkAggregation]"
-            defaultValue: [MEDIUM, TOTAL, GALLERY, INSTITUTION, MAJOR_PERIOD]
-          }
-          sort: { type: "String", defaultValue: "-partner_updated_at" }
-        ) {
-        id
-        filtered_artworks(
-          aggregations: $aggregations
-          medium: $medium
-          major_periods: $major_periods
-          partner_id: $partner_id
-          for_sale: $for_sale
-          size: 0
-          sort: $sort
-        ) {
-          aggregations {
-            slice
-            counts {
-              name
-              count
-              id
-            }
-          }
-          ...ArtworkFilterArtworkGrid_filtered_artworks
-        }
-      }
-    `,
-  },
   graphql`
-    query ArtworkFilterRefetchQuery(
-      $artistID: String!
-      $medium: String
-      $major_periods: [String]
-      $partner_id: ID
-      $for_sale: Boolean
-      $sort: String
-    ) {
-      artist(id: $artistID) {
-        ...ArtworkFilter_artist
-          @arguments(
-            medium: $medium
-            major_periods: $major_periods
-            partner_id: $partner_id
-            for_sale: $for_sale
-            sort: $sort
-          )
+    fragment ArtworkFilter_artist on Artist
+      @argumentDefinitions(
+        medium: { type: "String", defaultValue: "*" }
+        major_periods: { type: "[String]" }
+        partner_id: { type: "ID" }
+        for_sale: { type: "Boolean" }
+        aggregations: {
+          type: "[ArtworkAggregation]"
+          defaultValue: [MEDIUM, TOTAL, GALLERY, INSTITUTION, MAJOR_PERIOD]
+        }
+        sort: { type: "String", defaultValue: "-partner_updated_at" }
+      ) {
+      id
+      filtered_artworks(
+        aggregations: $aggregations
+        medium: $medium
+        major_periods: $major_periods
+        partner_id: $partner_id
+        for_sale: $for_sale
+        size: 0
+        sort: $sort
+      ) {
+        aggregations {
+          slice
+          counts {
+            name
+            id
+          }
+        }
+        ...ArtworkFilterArtworkGrid_filtered_artworks
       }
     }
   `
