@@ -15,71 +15,56 @@ jest.mock("../../Sections/FullscreenViewer/withFullScreen", () => ({
   withFullScreen: x => x,
 }))
 
-it("renders sidebar", () => {
-  const article = mount(
-    <StandardLayout
-      article={StandardArticle}
-      display={Display("standard")}
-      relatedArticlesForCanvas={RelatedCanvas}
-      relatedArticlesForPanel={RelatedPanel}
-    />
-  )
-  expect(article.find(Sidebar).length).toBe(1)
-})
+describe("Standard Article", () => {
+  const getWrapper = props => {
+    return mount(<StandardLayout {...props} />)
+  }
+  let props
+  beforeEach(() => {
+    props = {
+      article: StandardArticle,
+      display: Display("standard"),
+      isTruncated: false,
+      relatedArticlesForCanvas: RelatedCanvas,
+      relatedArticlesForPanel: RelatedPanel,
+      tracking: {
+        trackEvent: jest.fn(),
+      },
+    }
+  })
 
-it("renders related articles", () => {
-  const article = mount(
-    <StandardLayout
-      article={StandardArticle}
-      display={Display("standard")}
-      relatedArticlesForCanvas={RelatedCanvas}
-      relatedArticlesForPanel={RelatedPanel}
-    />
-  )
-  expect(article.find(RelatedArticlesPanel).length).toBe(1)
-  expect(article.find(RelatedArticlesCanvas).length).toBe(1)
-})
+  it("renders sidebar", () => {
+    const article = getWrapper(props)
+    expect(article.find(Sidebar).length).toBe(1)
+  })
 
-it("renders display", () => {
-  const article = mount(
-    <StandardLayout
-      article={StandardArticle}
-      display={Display("standard")}
-      relatedArticlesForCanvas={RelatedCanvas}
-      relatedArticlesForPanel={RelatedPanel}
-    />
-  )
-  expect(article.find(DisplayPanel).length).toBe(1)
-  expect(article.find(DisplayCanvas).length).toBe(1)
-})
+  it("renders related articles", () => {
+    const article = getWrapper(props)
+    expect(article.find(RelatedArticlesPanel).length).toBe(1)
+    expect(article.find(RelatedArticlesCanvas).length).toBe(1)
+  })
 
-it("shows read more if truncated", () => {
-  const article = mount(
-    <StandardLayout
-      article={StandardArticle}
-      display={Display("standard")}
-      relatedArticlesForCanvas={RelatedCanvas}
-      relatedArticlesForPanel={RelatedPanel}
-      isTruncated
-    />
-  )
-  expect(article.find(ReadMore).length).toBe(1)
-})
+  it("renders display", () => {
+    const article = getWrapper(props)
+    expect(article.find(DisplayPanel).length).toBe(1)
+    expect(article.find(DisplayCanvas).length).toBe(1)
+  })
 
-it("Can remove truncation on click", () => {
-  const article = mount(
-    <StandardLayout
-      article={StandardArticle}
-      display={Display("standard")}
-      relatedArticlesForCanvas={RelatedCanvas}
-      relatedArticlesForPanel={RelatedPanel}
-      isTruncated
-    />
-  )
-  article
-    .find(ReadMore)
-    .at(0)
-    .props()
-    .onClick()
-  expect(article.state().isTruncated).toBeFalsy()
+  it("shows read more if truncated", () => {
+    props.isTruncated = true
+    const article = getWrapper(props)
+    expect(article.find(ReadMore).length).toBe(1)
+  })
+
+  it("Can remove truncation on click", () => {
+    props.isTruncated = true
+    const article = getWrapper(props)
+
+    article
+      .find(ReadMore)
+      .at(0)
+      .props()
+      .onClick()
+    expect(article.state().isTruncated).toBeFalsy()
+  })
 })

@@ -1,10 +1,8 @@
 import Colors from "Assets/Colors"
-import { get, omit, once } from "lodash"
+import { get, omit } from "lodash"
 import React from "react"
-import Waypoint from "react-waypoint"
 import styled from "styled-components"
 import { ResponsiveDeprecated } from "../../../Utils/ResponsiveDeprecated"
-import { track } from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
 import { ArticleProps } from "../Article"
 import { DisplayCanvas } from "../Display/Canvas"
@@ -12,7 +10,7 @@ import { DisplayPanel } from "../Display/DisplayPanel"
 import { Header } from "../Header/Header"
 import ReadMore from "../ReadMore/ReadMoreButton"
 import { ReadMoreWrapper } from "../ReadMore/ReadMoreWrapper"
-import { RelatedArticlesCanvas } from "../RelatedArticles/RelatedArticlesCanvas"
+import RelatedArticlesCanvas from "../RelatedArticles/RelatedArticlesCanvas"
 import { Sections } from "../Sections/Sections"
 import Sidebar from "./Components/Sidebar"
 
@@ -30,33 +28,17 @@ export class StandardLayout extends React.Component<
     article: {},
     isTruncated: false,
   }
-  public trackRelated
 
   constructor(props) {
     super(props)
 
-    this.trackRelated = once(this.trackRelatedImpression)
     this.state = {
       isTruncated: props.isTruncated || false,
     }
   }
 
   removeTruncation = () => {
-    const { tracking } = this.props
-
-    tracking.trackEvent({
-      action: "Clicked read more",
-    })
     this.setState({ isTruncated: false })
-  }
-
-  trackRelatedImpression = () => {
-    const { tracking } = this.props
-
-    tracking.trackEvent({
-      action: "article_impression",
-      impression_type: "Further reading",
-    })
   }
 
   render() {
@@ -124,7 +106,6 @@ export class StandardLayout extends React.Component<
                 {relatedArticlesForCanvas && (
                   <div>
                     <LineBreak />
-                    <Waypoint onEnter={this.trackRelated} />
                     <RelatedArticlesCanvas
                       articles={relatedArticlesForCanvas}
                       isMobile={isMobile}
@@ -200,5 +181,3 @@ const FooterContainer = styled.div`
     margin: 0 20px;
   `};
 `
-
-export default track()(StandardLayout)
