@@ -16,8 +16,9 @@ jobs:
     - image: circleci/node:8
     steps: 
       - checkout
-      - attach_workspace:
-          at: ./
+      - restore_cache:
+          keys:
+          - yarn-deps-{{ checksum "yarn.lock" }}
       - run: yarn lint 
   type-check:
     working_directory: ~/artsy/reaction
@@ -25,8 +26,9 @@ jobs:
     - image: circleci/node:8
     steps: 
       - checkout
-      - attach_workspace:
-          at: ./
+      - restore_cache:
+          keys:
+          - yarn-deps-{{ checksum "yarn.lock" }}
       - run: yarn type-check
   deploy:
     working_directory: ~/artsy/reaction
@@ -35,8 +37,9 @@ jobs:
     steps:
       - checkout
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-      - attach_workspace:
-          at: ./
+      - restore_cache:
+          keys:
+          - yarn-deps-{{ checksum "yarn.lock" }}
       - run: yarn semantic-release
       - run: cp .env.oss .env
       - run: yarn deploy-storybook
@@ -46,8 +49,9 @@ jobs:
     - image: circleci/node:8
     steps: 
       - checkout
-      - attach_workspace:
-          at: ./
+      - restore_cache:
+          keys:
+          - yarn-deps-{{ checksum "yarn.lock" }}
       - run: yarn test -w 4
   install:
     working_directory: ~/artsy/reaction
@@ -64,10 +68,6 @@ jobs:
         key: yarn-deps-{{ checksum "yarn.lock" }}
         paths:
         - ./node_modules
-    - persist_to_workspace:
-        root: ./
-        paths:
-          - ./node_modules
 workflows:
   version: 2
   build_and_verify:
