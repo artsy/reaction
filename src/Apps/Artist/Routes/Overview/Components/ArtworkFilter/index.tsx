@@ -111,7 +111,6 @@ class Filter extends Component<Props> {
                           </Toggle>
                         </Sidebar>
                       )}
-
                       <Box width={xs ? "100%" : "70%"}>
                         <Separator mb={2} />
                         <Flex justifyContent="flex-end">
@@ -119,12 +118,24 @@ class Filter extends Component<Props> {
                             mt="-8px" // Corrective spacing for line-height
                             options={[
                               {
+                                value: "-decayed_merch",
+                                text: "Default",
+                              },
+                              {
                                 value: "-partner_updated_at",
                                 text: "Recently updated",
                               },
                               {
                                 value: "-published_at",
                                 text: "Recently added",
+                              },
+                              {
+                                value: "-year",
+                                text: "Artwork Year (desc.)",
+                              },
+                              {
+                                value: "year",
+                                text: "Artwork Year (asc.)",
                               },
                             ]}
                             selected={filters.state.sort}
