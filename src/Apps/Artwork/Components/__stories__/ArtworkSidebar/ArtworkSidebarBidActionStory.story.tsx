@@ -7,10 +7,11 @@ import {
   ArtworkFromTimedAuctionRegistrationOpen,
   BidderPendingApproval,
   NotRegisteredToBid,
-  RegistedBidder,
   RegistedBidderWithBids,
+  RegisteredBidder,
 } from "Apps/__test__/Fixtures/Artwork/Sidebar/BidAction"
 import { ArtworkSidebarBidAction as BidAction } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarBidAction"
+import { merge } from "lodash"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
@@ -21,99 +22,137 @@ storiesOf("Styleguide/Artwork/Sidebar", module).add("BidAction", () => {
       {/* Auction in preview state */}
       <Section title="Auction Preview / Bidder not registered">
         <BidAction
-          artwork={ArtworkFromAuctionPreview}
-          me={NotRegisteredToBid}
+          artwork={merge({}, ArtworkFromAuctionPreview, NotRegisteredToBid)}
         />
       </Section>
       <Section title="Auction preview / Bidder pending approval">
         <BidAction
-          artwork={ArtworkFromAuctionPreview}
-          me={BidderPendingApproval}
+          artwork={merge({}, ArtworkFromAuctionPreview, BidderPendingApproval)}
         />
       </Section>
       <Section title="Auction preview / Registed bidder">
-        <BidAction artwork={ArtworkFromAuctionPreview} me={RegistedBidder} />
+        <BidAction
+          artwork={merge({}, ArtworkFromAuctionPreview, RegisteredBidder)}
+        />
       </Section>
 
       {/* Auction in Open state and live bidding is not started */}
       <Section title="Timed Auction or Prebidding for Live auction / Open registration / Bidder not registered">
         <BidAction
-          artwork={ArtworkFromTimedAuctionRegistrationOpen}
-          me={NotRegisteredToBid}
+          artwork={merge(
+            {},
+            ArtworkFromTimedAuctionRegistrationOpen,
+            NotRegisteredToBid
+          )}
         />
       </Section>
       <Section title="Timed Auction or Prebidding for Live auction / Closed Registration / Bidder not registered">
         <BidAction
-          artwork={ArtworkFromTimedAuctionRegistrationClosed}
-          me={NotRegisteredToBid}
+          artwork={merge(
+            {},
+            ArtworkFromTimedAuctionRegistrationClosed,
+            NotRegisteredToBid
+          )}
         />
       </Section>
       <Section title="Timed Auction or Prebidding for Live auction /  Open registration / Registered bidder">
         <BidAction
-          artwork={ArtworkFromTimedAuctionRegistrationOpen}
-          me={RegistedBidder}
+          artwork={merge(
+            {},
+            ArtworkFromTimedAuctionRegistrationOpen,
+            RegisteredBidder
+          )}
         />
       </Section>
       <Section title="Timed Auction or Prebidding for Live auction /  Closed Registration / Registered bidder">
         <BidAction
-          artwork={ArtworkFromTimedAuctionRegistrationClosed}
-          me={RegistedBidder}
+          artwork={merge(
+            {},
+            ArtworkFromTimedAuctionRegistrationClosed,
+            RegisteredBidder
+          )}
         />
       </Section>
       <Section title="Timed Auction or Prebidding for Live auction /  Open registration / Registered bidder with bids">
         <BidAction
-          artwork={ArtworkFromTimedAuctionRegistrationOpen}
-          me={RegistedBidderWithBids}
+          artwork={merge(
+            {},
+            ArtworkFromTimedAuctionRegistrationOpen,
+            RegistedBidderWithBids
+          )}
         />
       </Section>
       <Section title="Timed Auction or Prebidding for Live auction /  Closed Registration / Registered bidder with bids">
         <BidAction
-          artwork={ArtworkFromTimedAuctionRegistrationClosed}
-          me={RegistedBidderWithBids}
+          artwork={merge(
+            {},
+            ArtworkFromTimedAuctionRegistrationClosed,
+            RegistedBidderWithBids
+          )}
         />
       </Section>
 
       {/* Auction in Open state and live bidding is in progress */}
       <Section title="Live auction / Open registration / Bidder not registered">
         <BidAction
-          artwork={ArtworkFromLiveAuctionRegistrationOpen}
-          me={NotRegisteredToBid}
+          artwork={merge(
+            {},
+            ArtworkFromLiveAuctionRegistrationOpen,
+            NotRegisteredToBid
+          )}
         />
       </Section>
       <Section title="Live auction / Closed registration / Bidder not registered">
         <BidAction
-          artwork={ArtworkFromLiveAuctionRegistrationClosed}
-          me={NotRegisteredToBid}
+          artwork={merge(
+            {},
+            ArtworkFromLiveAuctionRegistrationClosed,
+            NotRegisteredToBid
+          )}
         />
       </Section>
       <Section title="Live auction / Open registration / Bidder pending approval">
         <BidAction
-          artwork={ArtworkFromLiveAuctionRegistrationOpen}
-          me={BidderPendingApproval}
+          artwork={merge(
+            {},
+            ArtworkFromLiveAuctionRegistrationOpen,
+            BidderPendingApproval
+          )}
         />
       </Section>
       <Section title="Live auction / Closed registration / Bidder pending approval">
         <BidAction
-          artwork={ArtworkFromLiveAuctionRegistrationClosed}
-          me={BidderPendingApproval}
+          artwork={merge(
+            {},
+            ArtworkFromLiveAuctionRegistrationClosed,
+            BidderPendingApproval
+          )}
         />
       </Section>
       <Section title="Live auction / Open registration / Registered Bidder">
         <BidAction
-          artwork={ArtworkFromLiveAuctionRegistrationOpen}
-          me={RegistedBidder}
+          artwork={merge(
+            {},
+            ArtworkFromLiveAuctionRegistrationOpen,
+            RegisteredBidder
+          )}
         />
       </Section>
       <Section title="Live auction / Closed registration / Registered Bidder">
         <BidAction
-          artwork={ArtworkFromLiveAuctionRegistrationClosed}
-          me={RegistedBidder}
+          artwork={merge(
+            {},
+            ArtworkFromLiveAuctionRegistrationClosed,
+            RegisteredBidder
+          )}
         />
       </Section>
 
       {/* Auction in Closed */}
       <Section title="Auction closed">
-        <BidAction artwork={ArtworkFromClosedAuction} me={RegistedBidder} />
+        <BidAction
+          artwork={merge({}, ArtworkFromClosedAuction, RegisteredBidder)}
+        />
       </Section>
     </React.Fragment>
   )

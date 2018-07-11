@@ -1,12 +1,23 @@
+import { color } from "@artsy/palette"
+import Icon from "Components/Icon"
 import React from "react"
 import styled, { injectGlobal, keyframes } from "styled-components"
 import FadeTransition from "../Animation/FadeTransition"
+import { media } from "../Helpers"
+import { CtaProps, ModalCta } from "./ModalCta"
+import { ModalHeader } from "./ModalHeader"
 
 export interface ModalProps extends React.HTMLProps<Modal> {
-  show?: boolean
-  onClose?: () => void
   blurContainerSelector?: string
+  cta?: CtaProps
+  onClose?: () => void
+  hasLogo?: boolean
+  image?: string
+  isWide?: boolean
+  show?: boolean
+  title?: string
 }
+
 export interface ModalState {
   isAnimating: boolean
   isShown: boolean
@@ -23,7 +34,6 @@ export class Modal extends React.Component<ModalProps, ModalState> {
   static defaultProps = {
     show: false,
     blurContainerSelector: "",
-    style: {},
   }
 
   state = {
@@ -47,10 +57,8 @@ export class Modal extends React.Component<ModalProps, ModalState> {
     this.removeBlurToContainers()
   }
 
-  close = e => {
-    e.preventDefault()
+  close = () => {
     this.props.onClose()
-
     this.removeBlurToContainers()
   }
 
@@ -67,7 +75,7 @@ export class Modal extends React.Component<ModalProps, ModalState> {
   }
 
   render(): JSX.Element {
-    const { children } = this.props
+    const { children, cta, hasLogo, image, isWide, title } = this.props
     const { isShown, isAnimating } = this.state
 
     if (isShown) {
@@ -88,7 +96,29 @@ export class Modal extends React.Component<ModalProps, ModalState> {
           unmountOnExit
           timeout={{ enter: 10, exit: 200 }}
         >
-          <ModalContainer>{children}</ModalContainer>
+          <ModalContainer isWide={isWide} image={image}>
+            <ModalInner>
+              <CloseButton name="close" onClick={this.close} />
+
+              {image && <Image image={image} />}
+
+              <ModalContent cta={cta}>
+                {(hasLogo || title) && (
+                  <ModalHeader title={title} hasLogo={hasLogo} />
+                )}
+
+                <div>{children}</div>
+
+                {cta && (
+                  <ModalCta
+                    cta={cta}
+                    hasImage={image && true}
+                    onClose={this.close}
+                  />
+                )}
+              </ModalContent>
+            </ModalInner>
+          </ModalContainer>
         </FadeTransition>
       </ModalWrapper>
     )
@@ -120,18 +150,56 @@ const ModalWrapper = styled.div.attrs<{ isShown?: boolean }>({})`
   `};
 `
 
-export const ModalContainer = styled.div`
+const ModalContent = styled.div.attrs<{ cta: CtaProps }>({})`
+  padding: ${props =>
+    props.cta
+      ? props.cta.isFixed
+        ? "20px 40px 100px"
+        : "20px 40px 0"
+      : "20px 40px 40px"};
+  width: 100%;
+  ${media.sm`
+    padding: ${props =>
+      props.cta && props.cta.isFixed ? "20px 20px 110px" : "20px"};
+  `};
+`
+
+export const ModalContainer = styled.div.attrs<{
+  isWide?: boolean
+  image?: string
+}>({})`
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: #fff;
-  width: 440px;
+  width: ${props => (props.isWide || props.image ? "900px" : "440px")};
   height: min-content;
-  border-radius: 4px;
-  padding: 20px 40px;
+  border-radius: 5px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
   animation: ${slideUp} 250ms linear;
+
+  ${ModalContent} {
+    ${props =>
+      props.image &&
+      `
+      width: 50%;
+      margin-left: 50%;
+    `};
+  }
+  ${media.sm`
+    width: 100%;
+    border-radius: 0;
+  `};
+`
+
+const ModalInner = styled.div`
+  overflow: scroll;
+  max-height: calc(100vh - 80px);
+  ${media.sm`
+    max-height: 100vh;
+    height: 100vh
+  `};
 `
 
 export const ModalOverlay = styled.div`
@@ -141,6 +209,30 @@ export const ModalOverlay = styled.div`
   top: 0;
   left: 0;
   background: rgba(200, 200, 200, 0.5);
+`
+
+export const CloseButton = styled(Icon).attrs({
+  color: color("black60"),
+  fontSize: "16px",
+})`
+  position: absolute;
+  top: 15px;
+  right: 12px;
+  cursor: pointer;
+`
+
+const Image = styled.div.attrs<{ image: string }>({})`
+  background-image: url(${props => props.image});
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  bottom: 0px;
+  left: 0;
+  right: 50%;
+  ${media.sm`
+    display: none;
+  `};
 `
 
 export default Modal

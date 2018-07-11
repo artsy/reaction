@@ -1,12 +1,12 @@
-import PropTypes from "prop-types"
 import { mount } from "enzyme"
 import "jest-styled-components"
+import PropTypes from "prop-types"
 import React from "react"
-import { wrapperWithContext } from "../../Fixtures/Helpers"
-import { Artists } from "../../Fixtures/Components"
-import { ArtistToolTip, TitleDate } from "../ArtistToolTip"
 import { ContextProvider } from "../../../Artsy"
 import { FollowArtistButton } from "../../../FollowButton/FollowArtistButton"
+import { Artists } from "../../Fixtures/Components"
+import { wrapperWithContext } from "../../Fixtures/Helpers"
+import { ArtistToolTip, TitleDate } from "../ArtistToolTip"
 
 describe("ArtistToolTip", () => {
   const getWrapper = (props, context = {}) => {
@@ -37,7 +37,6 @@ describe("ArtistToolTip", () => {
         trackEvent: jest.fn(),
       },
       artist: Artists[0].artist,
-      showMarketData: false,
     }
   })
 
@@ -55,6 +54,15 @@ describe("ArtistToolTip", () => {
       "https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FeYGNRMFqIirK-962fSOAsw%2Flarge.jpg"
     )
     expect(component.find("img").length).toBe(2)
+  })
+
+  it("Renders genes if no bio present", () => {
+    delete props.artist.blurb
+    const component = getWrapper(props)
+
+    expect(component.text()).toMatch(
+      "United States, Abstract Art, 21st Century"
+    )
   })
 
   it("Tracks clicks to artist page", () => {
