@@ -1,14 +1,14 @@
 import { Sans, Serif } from "@artsy/palette"
+import { ArtistCard_artist } from "__generated__/ArtistCard_artist.graphql"
 import FollowArtistButton from "Components/FollowButton/FollowArtistButton"
 import React from "react"
+import { createFragmentContainer, graphql } from "react-relay"
+import styled from "styled-components"
 import { Avatar } from "Styleguide/Elements"
 import { BorderBox } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Responsive } from "Utils/Responsive"
-
-import { ArtistCard_artist } from "__generated__/ArtistCard_artist.graphql"
-import { createFragmentContainer, graphql } from "react-relay"
 
 interface Props {
   artist: ArtistCard_artist
@@ -18,15 +18,21 @@ interface Props {
   }
 }
 
+const StyledLink = styled.a`
+  text-decoration: none;
+`
+
 export class ArtistCard extends React.Component<Props> {
   render() {
     return (
-      <Responsive>
-        {({ xs }) => {
-          if (xs) return <SmallArtistCard {...this.props} />
-          else return <LargeArtistCard {...this.props} />
-        }}
-      </Responsive>
+      <StyledLink href={this.props.artist.href}>
+        <Responsive>
+          {({ xs }) => {
+            if (xs) return <SmallArtistCard {...this.props} />
+            else return <LargeArtistCard {...this.props} />
+          }}
+        </Responsive>
+      </StyledLink>
     )
   }
 }
@@ -115,6 +121,7 @@ export const ArtistCardFragmentContainer = createFragmentContainer(
     fragment ArtistCard_artist on Artist {
       name
       id
+      href
       image {
         cropped(width: 400, height: 300) {
           url
