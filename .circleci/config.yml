@@ -4,12 +4,12 @@ defaults: &defaults
     - image: circleci/node:8
   
 setup_job: &setup_job
-  checkout: null
-  restore_cache:
+  - checkout
+  - restore_cache:
       keys:
       - yarn-deps-{{ checksum "yarn.lock" }}
       - yarn-deps-
-  run: yarn --check-files
+  - run: yarn --check-files
 
 version: 2
 jobs:
@@ -17,8 +17,7 @@ jobs:
     <<: *defaults
     docker:
     - image: circleci/node:8
-    steps: 
-      - <<: *setup_job
+    steps: *setup_job
       - run: yarn relay
   lint:
     <<: *defaults
@@ -27,26 +26,22 @@ jobs:
       - run: yarn lint 
   type-check:
     <<: *defaults
-    steps: 
-      - <<: *setup_job
+    steps: *setup_job
       - run: yarn type-check
   deploy:
     <<: *defaults
-    steps:
-      - <<: *setup_job
+    steps: *setup_job
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
       - run: yarn semantic-release
       - run: cp .env.oss .env
       - run: yarn deploy-storybook
   test:
     <<: *defaults
-    steps: 
-      - <<: *setup_job
+    steps: *setup_job
       - run: yarn test -w 4
   update-cache:
     <<: *defaults
-    steps:
-      - <<: *setup_job
+    steps: *setup_job
       - save_cache:
           key: yarn-deps-{{ checksum "yarn.lock" }}
           paths:
