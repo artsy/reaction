@@ -24,7 +24,7 @@ const CATEGORIES = {
 }
 const CATEGORY_LABEL_MAP = {
   "blue-chip": "Represented by internationally recognized galleries.",
-  "top-established": "Represented by industry leading gallerie.s",
+  "top-established": "Represented by industry leading galleries.",
   "top-emerging": "Represented by up-and-coming galleries.",
 }
 
