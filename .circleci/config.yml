@@ -52,7 +52,7 @@ jobs:
       - restore_cache:
           keys:
           - yarn-packages-{{ checksum "yarn.lock" }}
-      - run: yarn test -w 2
+      - run: yarn test -w 3
   install:
     working_directory: ~/artsy/reaction
     docker:
