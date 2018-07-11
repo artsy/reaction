@@ -57,8 +57,6 @@ jobs:
       - <<: *verify_dependencies
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
       - run: yarn semantic-release
-      - run: cp .env.oss .env
-      - run: yarn deploy-storybook
   test:
     <<: *defaults
     steps:
