@@ -54,7 +54,6 @@ jobs:
     steps: 
       - checkout
       - <<: *restore_cache
-      - <<: *verify_dependencies
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
       - run: yarn semantic-release
   test:
