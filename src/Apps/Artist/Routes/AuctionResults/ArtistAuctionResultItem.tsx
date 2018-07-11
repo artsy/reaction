@@ -303,8 +303,12 @@ const getSalePrice = price_realized => {
 }
 
 const getDescription = (fullDescription: string) => {
-  const truncatedDescription = fullDescription.substr(0, 200)
-  return truncatedDescription + "..."
+  let truncatedDescription
+  if (fullDescription) {
+    truncatedDescription = fullDescription.substr(0, 200)
+    return truncatedDescription + "..."
+  }
+  return truncatedDescription
 }
 
 const getProps = props => {
