@@ -8,7 +8,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-          - yarn-packages-{{ checksum "yarn.lock" }}
+          - yarn-deps-{{ checksum "yarn.lock" }}
       - run: yarn relay
   lint:
     working_directory: ~/artsy/reaction
@@ -16,9 +16,8 @@ jobs:
     - image: circleci/node:8
     steps: 
       - checkout
-      - restore_cache:
-          keys:
-          - yarn-packages-{{ checksum "yarn.lock" }}
+      - attach_workspace:
+          at: /tmp/workspace
       - run: yarn lint 
   type-check:
     working_directory: ~/artsy/reaction
@@ -26,9 +25,8 @@ jobs:
     - image: circleci/node:8
     steps: 
       - checkout
-      - restore_cache:
-          keys:
-          - yarn-packages-{{ checksum "yarn.lock" }}
+      - attach_workspace:
+          at: /tmp/workspace
       - run: yarn type-check
   deploy:
     working_directory: ~/artsy/reaction
@@ -37,9 +35,8 @@ jobs:
     steps:
       - checkout
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-      - restore_cache:
-          keys:
-          - yarn-packages-{{ checksum "yarn.lock" }}
+      - attach_workspace:
+          at: /tmp/workspace
       - run: yarn semantic-release
       - run: cp .env.oss .env
       - run: yarn deploy-storybook
@@ -49,9 +46,8 @@ jobs:
     - image: circleci/node:8
     steps: 
       - checkout
-      - restore_cache:
-          keys:
-          - yarn-packages-{{ checksum "yarn.lock" }}
+      - attach_workspace:
+          at: /tmp/workspace
       - run: yarn test -w 4
   install:
     working_directory: ~/artsy/reaction
@@ -61,14 +57,17 @@ jobs:
     - checkout
     - restore_cache:
         keys:
-        - yarn-packages-{{ checksum "yarn.lock" }}
-        - yarn-packages-
-    - run: yarn --prefer-offline
+        - yarn-deps-{{ checksum "yarn.lock" }}
+        - yarn-deps-
+    - run: yarn --check-files
     - save_cache:
-        key: yarn-packages-{{ checksum "yarn.lock" }}
+        key: yarn-deps-{{ checksum "yarn.lock" }}
         paths:
         - ./node_modules
-        - ~/.cache/yarn
+    - persist_to_workspace:
+        root: /tmp/workspace
+        paths:
+          - ./node_modules
 workflows:
   version: 2
   build_and_verify:
