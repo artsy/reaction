@@ -45,6 +45,12 @@ return {
       "name": "for_sale",
       "type": "Boolean",
       "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "sort",
+      "type": "String",
+      "defaultValue": "-decayed_merch"
     }
   ],
   "selections": [
@@ -92,6 +98,12 @@ return {
           "name": "size",
           "value": 0,
           "type": "Int"
+        },
+        {
+          "kind": "Variable",
+          "name": "sort",
+          "variableName": "sort",
+          "type": "String"
         }
       ],
       "concreteType": "FilterArtworks",
@@ -108,5 +120,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'dfc8c181917d199982ba51dfb3d6da10';
+(node as any).hash = '1fe0688c77f1d5e9a202db619415e844';
 export default node;

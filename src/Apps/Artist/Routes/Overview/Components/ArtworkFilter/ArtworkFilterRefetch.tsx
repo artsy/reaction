@@ -54,6 +54,7 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
           major_periods: { type: "[String]" }
           partner_id: { type: "ID" }
           for_sale: { type: "Boolean" }
+          sort: { type: "String", defaultValue: "-decayed_merch" }
         ) {
         __id
         grid: filtered_artworks(
@@ -63,6 +64,7 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
           partner_id: $partner_id
           for_sale: $for_sale
           size: 0
+          sort: $sort
         ) {
           ...ArtworkFilterArtworkGrid_filtered_artworks
         }
@@ -76,6 +78,7 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
       $major_periods: [String]
       $partner_id: ID
       $for_sale: Boolean
+      $sort: String
     ) {
       node(__id: $artistNodeID) {
         ... on Artist {
@@ -85,6 +88,7 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
               major_periods: $major_periods
               partner_id: $partner_id
               for_sale: $for_sale
+              sort: $sort
             )
         }
       }
