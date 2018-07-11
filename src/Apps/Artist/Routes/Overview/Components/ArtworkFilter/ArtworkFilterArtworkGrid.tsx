@@ -16,6 +16,7 @@ interface Props {
   relay: RelayRefetchProp
   artistID: string
   columnCount: number
+  filters: any
 }
 
 const PAGE_SIZE = 10
@@ -47,8 +48,6 @@ class Artworks extends Component<Props, LoadingAreaState> {
         first: PAGE_SIZE,
         after: cursor,
         filteredArtworksNodeID: this.props.filtered_artworks.__id,
-        before: null,
-        last: null,
       },
       null,
       error => {
@@ -93,7 +92,7 @@ class Artworks extends Component<Props, LoadingAreaState> {
   }
 }
 
-export default createRefetchContainer(
+export const ArtworkGridRefetchContainer = createRefetchContainer(
   Artworks,
   {
     filtered_artworks: graphql`
@@ -127,7 +126,7 @@ export default createRefetchContainer(
       $first: Int!
       $after: String
     ) {
-      node(__id: $filteredArtworksNodeID) {
+      filtered_artworks: node(__id: $filteredArtworksNodeID) {
         ...ArtworkFilterArtworkGrid_filtered_artworks
           @arguments(first: $first, after: $after)
       }
