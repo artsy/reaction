@@ -1,7 +1,7 @@
-import PropTypes from "prop-types"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import { extend } from "lodash"
+import PropTypes from "prop-types"
 import React from "react"
 import { StandardArticle } from "../../Fixtures/Articles"
 import {

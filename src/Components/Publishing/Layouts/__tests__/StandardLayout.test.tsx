@@ -19,6 +19,7 @@ describe("Standard Article", () => {
   const getWrapper = props => {
     return mount(<StandardLayout {...props} />)
   }
+
   let props
   beforeEach(() => {
     props = {
@@ -27,9 +28,6 @@ describe("Standard Article", () => {
       isTruncated: false,
       relatedArticlesForCanvas: RelatedCanvas,
       relatedArticlesForPanel: RelatedPanel,
-      tracking: {
-        trackEvent: jest.fn(),
-      },
     }
   })
 

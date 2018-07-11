@@ -1,6 +1,8 @@
 import { Sans } from "@artsy/palette"
 import { garamond } from "Assets/Fonts"
+import { once } from "lodash"
 import React from "react"
+import Waypoint from "react-waypoint"
 import styled from "styled-components"
 import { crop } from "../../../Utils/resizer"
 import { track } from "../../../Utils/track"
@@ -39,6 +41,15 @@ export class RelatedArticlesPanel extends React.Component<
     })
   }
 
+  trackRelatedImpression = () => {
+    const { tracking } = this.props
+
+    tracking.trackEvent({
+      action: "article_impression",
+      impression_type: "Related articles",
+    })
+  }
+
   render() {
     const { articles, label } = this.props
 
@@ -47,7 +58,7 @@ export class RelatedArticlesPanel extends React.Component<
         <Label size="3t" weight="medium">
           {label}
         </Label>
-
+        <Waypoint onEnter={once(this.trackRelatedImpression)} />
         <Collection>
           {articles.map((article, i) => {
             const href = getArticleHref(article.slug)
@@ -86,7 +97,7 @@ const Label = Sans.extend`
   margin-bottom: 10px;
 `
 
-const ArticleLink = styled.a`
+export const ArticleLink = styled.a`
   text-decoration: none;
   display: flex;
   justify-content: left;

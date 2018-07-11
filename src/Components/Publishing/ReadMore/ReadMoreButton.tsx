@@ -7,7 +7,12 @@ import { track } from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
 import { StandardLayoutParent } from "../Layouts/StandardLayout"
 
-export class ReadMore extends React.Component<any, any> {
+interface ReadMoreProps {
+  onClick: () => void
+  tracking?: any
+}
+
+export class ReadMore extends React.Component<ReadMoreProps, any> {
   onClick = () => {
     const { onClick, tracking } = this.props
 
@@ -59,7 +64,8 @@ const ReadMoreButton = styled.div`
     width: 100%;
   `};
 `
-const ReadMoreContainer = styled.div`
+
+export const ReadMoreContainer = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
