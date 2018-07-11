@@ -69,31 +69,6 @@ class Artworks extends Component<Props, LoadingAreaState> {
     return btoa("FilterArtworks:" + JSON.stringify(expandedFilters))
   }
 
-  componentDidUpdate(prevProps) {
-    Object.keys(this.props.filters).forEach(key => {
-      if (this.props.filters[key] !== prevProps.filters[key]) {
-        this.loadFilter()
-      }
-    })
-  }
-
-  loadFilter = () => {
-    debugger
-    this.props.relay.refetch(
-      {
-        first: PAGE_SIZE,
-        after: null,
-        filteredArtworksNodeID: this.calcNodeIdForFilters(),
-      },
-      null,
-      error => {
-        if (error) {
-          console.error(error)
-        }
-      }
-    )
-  }
-
   toggleLoading = isLoading => {
     this.setState({
       isLoading,
@@ -126,7 +101,7 @@ class Artworks extends Component<Props, LoadingAreaState> {
   }
 }
 
-export default createRefetchContainer(
+export const ArtworkGridRefetchContainer = createRefetchContainer(
   Artworks,
   {
     filtered_artworks: graphql`

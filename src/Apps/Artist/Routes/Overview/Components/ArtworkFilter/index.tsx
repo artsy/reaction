@@ -11,7 +11,7 @@ import { Select } from "Styleguide/Elements/Select"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Subscribe } from "unstated"
 import { Responsive } from "Utils/Responsive"
-import ArtworksContent from "./ArtworkFilterArtworkGrid"
+import { ArtworkFilterRefetchContainer } from "./ArtworkFilterRefetch"
 
 interface Props {
   artist: ArtworkFilter_artist
@@ -131,13 +131,11 @@ class Filter extends Component<Props> {
 
                         <Spacer mb={2} />
 
-                        <ArtworksContent
+                        <ArtworkFilterRefetchContainer
+                          artist={this.props.artist as any}
                           artistID={this.props.artist.id}
                           columnCount={xs || sm || md ? 2 : 3}
                           filters={filters.state}
-                          filtered_artworks={
-                            this.props.artist.filtered_artworks as any
-                          }
                         />
                       </Box>
                     </Flex>
@@ -152,7 +150,7 @@ class Filter extends Component<Props> {
   }
 }
 
-export const ArtworkFilterRefetchContainer = createFragmentContainer(
+export const ArtworkFilterFragmentContainer = createFragmentContainer(
   (props: Props) => {
     return (
       <Subscribe to={[FilterState]}>
@@ -173,18 +171,9 @@ export const ArtworkFilterRefetchContainer = createFragmentContainer(
           type: "[ArtworkAggregation]"
           defaultValue: [MEDIUM, TOTAL, GALLERY, INSTITUTION, MAJOR_PERIOD]
         }
-        sort: { type: "String", defaultValue: "-partner_updated_at" }
       ) {
       id
-      filtered_artworks(
-        aggregations: $aggregations
-        medium: $medium
-        major_periods: $major_periods
-        partner_id: $partner_id
-        for_sale: $for_sale
-        size: 0
-        sort: $sort
-      ) {
+      filtered_artworks(aggregations: $aggregations, size: 0) {
         aggregations {
           slice
           counts {
@@ -192,8 +181,8 @@ export const ArtworkFilterRefetchContainer = createFragmentContainer(
             id
           }
         }
-        ...ArtworkFilterArtworkGrid_filtered_artworks
       }
+      ...ArtworkFilterRefetch_artist
     }
   `
 )
