@@ -74,6 +74,7 @@ class Artworks extends Component<Props, LoadingAreaState> {
       <Subscribe to={[AppState]}>
         {({ state }) => {
           const {
+            mediator,
             system: { currentUser },
           } = state
 
@@ -84,6 +85,7 @@ class Artworks extends Component<Props, LoadingAreaState> {
                 columnCount={this.props.columnCount}
                 itemMargin={40}
                 currentUser={currentUser}
+                mediator={mediator}
               />
 
               <Spacer mb={3} />

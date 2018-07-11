@@ -23,6 +23,9 @@ interface Props extends RelayProps, React.HTMLProps<ArtworkGridItemContainer> {
   useRelay?: boolean
   style?: any
   currentUser?: any
+  mediator?: {
+    trigger: (action: string, config: object) => void
+  }
 }
 
 class ArtworkGridItemContainer extends React.Component<Props, null> {
@@ -51,6 +54,7 @@ class ArtworkGridItemContainer extends React.Component<Props, null> {
             style={{ position: "absolute", right: "10px", bottom: "10px" }}
             useRelay={useRelay}
             {...currentUserSpread}
+            mediator={this.props.mediator}
           />
         </Placeholder>
         <MetadataBlock artwork={artwork} useRelay={useRelay} />
