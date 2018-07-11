@@ -136,7 +136,8 @@ const LargeAuctionItem = class extends React.Component<Props> {
                 {renderPricing(
                   salePrice,
                   estimatedPrice,
-                  this.props.currentUser
+                  this.props.currentUser,
+                  this.props.mediator
                 )}
               </Col>
             </React.Fragment>
@@ -180,7 +181,12 @@ const SmallAuctionItem = class extends React.Component<Props> {
           </Flex>
         </Col>
         <Col sm={6}>
-          {renderPricing(salePrice, estimatedPrice, this.props.currentUser)}
+          {renderPricing(
+            salePrice,
+            estimatedPrice,
+            this.props.currentUser,
+            this.props.mediator
+          )}
         </Col>
       </React.Fragment>
     )
@@ -227,7 +233,12 @@ const ExtraSmallAuctionItem = class extends React.Component<Props> {
               </Serif>
 
               <Spacer pb={1} />
-              {renderPricing(salePrice, estimatedPrice, this.props.currentUser)}
+              {renderPricing(
+                salePrice,
+                estimatedPrice,
+                this.props.currentUser,
+                this.props.mediator
+              )}
             </Box>
           </Flex>
         </Col>
@@ -301,7 +312,7 @@ const getProps = props => {
   }
 }
 
-const renderPricing = (salePrice, estimatedPrice, currentUser) => {
+const renderPricing = (salePrice, estimatedPrice, currentUser, mediator) => {
   if (currentUser) {
     return (
       <React.Fragment>
@@ -314,6 +325,18 @@ const renderPricing = (salePrice, estimatedPrice, currentUser) => {
       </React.Fragment>
     )
   } else {
-    return <Button>Sign up to see price</Button>
+    return (
+      <Button
+        onClick={() => {
+          mediator &&
+            mediator.trigger("open:auth", {
+              mode: "register",
+              copy: "Sign up to see full auction records — for free",
+            })
+        }}
+      >
+        Sign up to see price
+      </Button>
+    )
   }
 }
