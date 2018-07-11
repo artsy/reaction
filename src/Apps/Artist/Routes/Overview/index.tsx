@@ -1,6 +1,6 @@
 import { Sans } from "@artsy/palette"
 import { Overview_artist } from "__generated__/Overview_artist.graphql"
-import { ArtworkFilterRefetchContainer as ArtworkFilter } from "Apps/Artist/Routes/Overview/Components/ArtworkFilter"
+import { ArtworkFilterFragmentContainer as ArtworkFilter } from "Apps/Artist/Routes/Overview/Components/ArtworkFilter"
 import { GenesFragmentContainer as Genes } from "Apps/Artist/Routes/Overview/Components/Genes"
 import React, { SFC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"

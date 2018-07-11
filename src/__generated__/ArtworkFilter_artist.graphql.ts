@@ -9,7 +9,6 @@ export type ArtworkFilter_artist = {
             readonly slice: ArtworkAggregation | null;
             readonly counts: ReadonlyArray<({
                 readonly name: string | null;
-                readonly count: number | null;
                 readonly id: string;
             }) | null> | null;
         }) | null> | null;
@@ -74,12 +73,6 @@ return {
         "INSTITUTION",
         "MAJOR_PERIOD"
       ]
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "sort",
-      "type": "String",
-      "defaultValue": "-partner_updated_at"
     }
   ],
   "selections": [
@@ -97,40 +90,10 @@ return {
           "type": "[ArtworkAggregation]"
         },
         {
-          "kind": "Variable",
-          "name": "for_sale",
-          "variableName": "for_sale",
-          "type": "Boolean"
-        },
-        {
-          "kind": "Variable",
-          "name": "major_periods",
-          "variableName": "major_periods",
-          "type": "[String]"
-        },
-        {
-          "kind": "Variable",
-          "name": "medium",
-          "variableName": "medium",
-          "type": "String"
-        },
-        {
-          "kind": "Variable",
-          "name": "partner_id",
-          "variableName": "partner_id",
-          "type": "ID"
-        },
-        {
           "kind": "Literal",
           "name": "size",
           "value": 0,
           "type": "Int"
-        },
-        {
-          "kind": "Variable",
-          "name": "sort",
-          "variableName": "sort",
-          "type": "String"
         }
       ],
       "concreteType": "FilterArtworks",
@@ -168,30 +131,23 @@ return {
                   "args": null,
                   "storageKey": null
                 },
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "count",
-                  "args": null,
-                  "storageKey": null
-                },
                 v0,
                 v1
               ]
             }
           ]
         },
-        {
-          "kind": "FragmentSpread",
-          "name": "ArtworkFilterArtworkGrid_filtered_artworks",
-          "args": null
-        },
         v1
       ]
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "ArtworkFilterRefetch_artist",
+      "args": null
     },
     v1
   ]
 };
 })();
-(node as any).hash = '05886c38887ec0781f435500021c4f2a';
+(node as any).hash = '71971f5ceac417e08f77d9a15d870ecb';
 export default node;

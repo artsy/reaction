@@ -10,31 +10,25 @@ import { ArtworkSidebarBidAction_artwork } from "__generated__/ArtworkSidebarBid
 
 export interface ArtworkSidebarBidActionProps {
   artwork: ArtworkSidebarBidAction_artwork
-  readonly me?: {
-    readonly bidders: Array<{
-      readonly qualified_for_bidding: boolean
-    }>
-    readonly bidder_status: {
-      readonly active_bid?: {
-        readonly __id: string
-      }
-    }
-  }
 }
 
 export class ArtworkSidebarBidAction extends React.Component<
   ArtworkSidebarBidActionProps
 > {
   render() {
-    const { artwork, me } = this.props
-    const registrationAttempted = me && me.bidders && me.bidders.length > 0
+    const { artwork } = this.props
+    const registrationAttempted = !!artwork.sale.registrationStatus
     const registeredToBid =
-      registrationAttempted && me.bidders[0].qualified_for_bidding
-    const hasPreviousBids =
-      me &&
-      me.bidder_status &&
-      me.bidder_status.active_bid &&
-      me.bidder_status.active_bid.__id
+      registrationAttempted &&
+      artwork.sale.registrationStatus.qualified_for_bidding
+
+    /**
+     * NOTE: This is making an incorrect assumption that there could only ever
+     *       be 1 live sale with this work. When we run into that case, there is
+     *       likely design work to be done too, so we can adjust this then.
+     */
+    const bidderStatus = artwork.bidderStatus && artwork.bidderStatus[0]
+    const hasPreviousBids = !!(bidderStatus && bidderStatus.active_bid)
 
     if (artwork.sale.is_preview) {
       return (
@@ -107,7 +101,15 @@ export const ArtworkSidebarBidActionFragmentContainer = createFragmentContainer(
   ArtworkSidebarBidAction,
   graphql`
     fragment ArtworkSidebarBidAction_artwork on Artwork {
+      bidderStatus(live: true) {
+        active_bid {
+          __id
+        }
+      }
       sale {
+        registrationStatus {
+          qualified_for_bidding
+        }
         is_preview
         is_open
         is_live_open
