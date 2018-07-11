@@ -614,6 +614,7 @@ type Artwork implements Node & Sellable {
   artist_names: String
   articles(size: Int): [Article]
   availability: String
+  bidderStatus(live: Boolean = null): [LotStanding!]
   can_share_image: Boolean @deprecated(reason: "Favor `is_`-prefixed boolean attributes")
   category: String
 
@@ -821,6 +822,9 @@ type ArtworkContextAuction implements Node {
     # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
+
+  # A registration for this sale or null
+  registrationStatus: Bidder
   require_bidder_approval: Boolean
   sale_artworks(page: Int = 1, size: Int = 25, all: Boolean = false): [SaleArtwork]
   sale_artworks_connection(after: String, first: Int, before: String, last: Int): SaleArtworkConnection
@@ -1062,6 +1066,9 @@ type ArtworkContextSale implements Node {
     # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
+
+  # A registration for this sale or null
+  registrationStatus: Bidder
   require_bidder_approval: Boolean
   sale_artworks(page: Int = 1, size: Int = 25, all: Boolean = false): [SaleArtwork]
   sale_artworks_connection(after: String, first: Int, before: String, last: Int): SaleArtworkConnection
@@ -1235,6 +1242,7 @@ type ArtworkItem implements Node & Sellable {
   artist_names: String
   articles(size: Int): [Article]
   availability: String
+  bidderStatus(live: Boolean = null): [LotStanding!]
   can_share_image: Boolean @deprecated(reason: "Favor `is_`-prefixed boolean attributes")
   category: String
 
@@ -3384,6 +3392,9 @@ type HomePageModuleContextSale implements Node {
     # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
+
+  # A registration for this sale or null
+  registrationStatus: Bidder
   require_bidder_approval: Boolean
   sale_artworks(page: Int = 1, size: Int = 25, all: Boolean = false): [SaleArtwork]
   sale_artworks_connection(after: String, first: Int, before: String, last: Int): SaleArtworkConnection
@@ -3768,12 +3779,6 @@ type Mutation {
   # Update a conversation.
   updateConversation(input: UpdateConversationMutationInput!): UpdateConversationMutationPayload
 
-  # Update an order
-  updateOrder(input: UpdateOrderInput!): UpdateOrderPayload
-
-  # Submit an order with payment
-  submitOrder(input: SubmitOrderInput!): SubmitOrderPayload
-
   # Appending a message to a conversation thread
   sendConversationMessage(input: SendConversationMessageMutationInput!): SendConversationMessageMutationPayload
 
@@ -3857,56 +3862,113 @@ enum NotificationsFeedItemStatus {
 }
 
 type Order {
-  # A globally unique ID.
-  __id: ID!
+  # ID of the order
+  id: ID
 
-  # A type-specific ID.
-  id: String!
+  # Currency code of this order
+  currencyCode: String
 
-  # A type-specific Gravity Mongo Document ID.
-  _id: String!
+  # State of the order
+  state: String
+
+  # Tracking code of the order
+  code: String
+
+  # A formatted price with various currency formatting options.
+  itemsTotalCents(
+    decimal: String = "."
+
+    # Allows control of symbol position (%v = value, %s = symbol)
+    format: String = "%s%v"
+    precision: Int = 0
+    symbol: String
+    thousand: String = ","
+  ): String
+
+  # A formatted price with various currency formatting options.
+  shippingTotalCents(
+    decimal: String = "."
+
+    # Allows control of symbol position (%v = value, %s = symbol)
+    format: String = "%s%v"
+    precision: Int = 0
+    symbol: String
+    thousand: String = ","
+  ): String
+
+  # A formatted price with various currency formatting options.
+  taxTotalCents(
+    decimal: String = "."
+
+    # Allows control of symbol position (%v = value, %s = symbol)
+    format: String = "%s%v"
+    precision: Int = 0
+    symbol: String
+    thousand: String = ","
+  ): String
+
+  # A formatted price with various currency formatting options.
+  transactionFeeCents(
+    decimal: String = "."
+
+    # Allows control of symbol position (%v = value, %s = symbol)
+    format: String = "%s%v"
+    precision: Int = 0
+    symbol: String
+    thousand: String = ","
+  ): String
+
+  # A formatted price with various currency formatting options.
+  commissionFeeCents(
+    decimal: String = "."
+
+    # Allows control of symbol position (%v = value, %s = symbol)
+    format: String = "%s%v"
+    precision: Int = 0
+    symbol: String
+    thousand: String = ","
+  ): String
 
   # List of order line items
-  line_items: [OrderLineItem]
-  item_total: OrderItemTotal
+  lineItems: OrderLineItemConnection
 
-  # Email associated with the order
-  email: String
+  # Partner of this order
+  partner: Partner
 
-  # Phone number associated with the order
-  telephone: String
+  # User of this order
+  user: User
+  updatedAt(
+    convert_to_utc: Boolean
+    format: String
 
-  # Shipping address associated with the order
-  shipping_address: OrderAddress
+    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    timezone: String
+  ): String
+  createdAt(
+    convert_to_utc: Boolean
+    format: String
+
+    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    timezone: String
+  ): String
 }
 
-type OrderAddress {
-  # A globally unique ID.
-  __id: ID!
+# A connection to a list of items.
+type OrderConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
 
-  # A type-specific ID.
-  id: String!
+  # A list of edges.
+  edges: [OrderEdge]
+}
 
-  # A type-specific Gravity Mongo Document ID.
-  _id: String!
+# An edge in a connection.
+type OrderEdge {
+  # The item at the end of the edge
+  node: Order
 
-  # Name associated with the address
-  name: String
-
-  # Street associated with the address
-  street: String
-
-  # City associated with the address
-  city: String
-
-  # Region associated with the address
-  region: String
-
-  # Postal code associated with the address
-  postal_code: String
-
-  # Country code associated with the address (standard 3-letter code)
-  country: String
+  # A cursor for use in pagination
+  cursor: String!
 }
 
 type OrderedSet {
@@ -3923,9 +3985,18 @@ type OrderedSet {
   name: String
 }
 
-type OrderItemTotal {
+type OrderLineItem {
+  # ID of the order line item
+  id: ID
+
+  # Artwork that is being ordered
+  artwork: Artwork
+
+  # Edition set on the artwork
+  editionSet: EditionSet
+
   # A formatted price with various currency formatting options.
-  amount(
+  price(
     decimal: String = "."
 
     # Allows control of symbol position (%v = value, %s = symbol)
@@ -3934,44 +4005,41 @@ type OrderItemTotal {
     symbol: String
     thousand: String = ","
   ): String
+  updatedAt(
+    convert_to_utc: Boolean
+    format: String
 
-  # An amount of money expressed in cents.
-  cents: Float
+    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    timezone: String
+  ): String
+  createdAt(
+    convert_to_utc: Boolean
+    format: String
 
-  # A pre-formatted price.
-  display: String
+    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    timezone: String
+  ): String
+
+  # Quantity of items in this line item
+  quantity: Int
 }
 
-type OrderLineItem {
-  # A globally unique ID.
-  __id: ID!
+# A connection to a list of items.
+type OrderLineItemConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
 
-  # A type-specific ID.
-  id: String!
+  # A list of edges.
+  edges: [OrderLineItemEdge]
+}
 
-  # A type-specific Gravity Mongo Document ID.
-  _id: String!
+# An edge in a connection.
+type OrderLineItemEdge {
+  # The item at the end of the edge
+  node: OrderLineItem
 
-  # Quantity of this item
-  quantity: Int
-
-  # Artwork that is being ordered
-  artwork: Artwork
-
-  # Edition set on the artwork
-  edition_set: EditionSet
-
-  # Partner being ordered from
-  partner: Partner
-
-  # Location of the partner
-  partner_location: Location
-
-  # Shipping note from the partner
-  shipping_note: String
-
-  # Sale conditions (set by partner)
-  sale_conditions_url: String
+  # A cursor for use in pagination
+  cursor: String!
 }
 
 type organizer {
@@ -4653,6 +4721,9 @@ type Query {
   # Returns a single Order
   order(id: String!): Order
 
+  # Returns list of orders
+  orders(userId: String, partnerId: String, state: String): OrderConnection
+
   # An OrderedSet
   ordered_set(
     # The ID of the OrderedSet
@@ -4987,6 +5058,9 @@ type Sale implements Node {
     # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
+
+  # A registration for this sale or null
+  registrationStatus: Bidder
   require_bidder_approval: Boolean
   sale_artworks(page: Int = 1, size: Int = 25, all: Boolean = false): [SaleArtwork]
   sale_artworks_connection(after: String, first: Int, before: String, last: Int): SaleArtworkConnection
@@ -5324,16 +5398,6 @@ type Services {
   convection: Convection!
 }
 
-input ShippingAddressInput {
-  name: String
-  street: String
-  city: String
-  region: String
-  postal_code: String
-  country: String
-  use_id: String
-}
-
 type Show implements Node {
   # A globally unique ID.
   __id: ID!
@@ -5526,26 +5590,6 @@ enum SubmissionStateAggregation {
   REJECTED
 }
 
-input SubmitOrderInput {
-  # Order to be updated
-  id: String!
-
-  # Third party tokenization of card
-  credit_card_token: String
-
-  # ID of chosen form of payment
-  credit_card_id: String
-
-  # Session ID necessary if there is no user present
-  session_id: String
-  clientMutationId: String
-}
-
-type SubmitOrderPayload {
-  order: Order
-  clientMutationId: String
-}
-
 type Tag implements Node {
   # A globally unique ID.
   __id: ID!
@@ -5710,33 +5754,6 @@ input UpdateMyProfileInput {
 
 type UpdateMyProfilePayload {
   user: User
-  clientMutationId: String
-}
-
-input UpdateOrderInput {
-  # Order to be updated
-  id: String!
-
-  # Email address, required of an unauthenticated user
-  email: String
-
-  # Additional notes
-  notes: String
-
-  # Whether or not to put the order on reserve
-  reserve: Boolean
-
-  # Session ID necessary if there is no user present
-  session_id: String
-  shipping_address: ShippingAddressInput
-
-  # Buyer's telephone
-  telephone: String
-  clientMutationId: String
-}
-
-type UpdateOrderPayload {
-  order: Order
   clientMutationId: String
 }
 
@@ -6062,6 +6079,9 @@ type Viewer {
 
   # Returns a single Order
   order(id: String!): Order
+
+  # Returns list of orders
+  orders(userId: String, partnerId: String, state: String): OrderConnection
 
   # An OrderedSet
   ordered_set(

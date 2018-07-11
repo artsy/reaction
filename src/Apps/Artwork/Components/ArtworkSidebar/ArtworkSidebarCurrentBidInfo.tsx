@@ -11,31 +11,14 @@ import { WinningBid } from "Assets/Icons/WinningBid"
 
 export interface ArtworkSidebarCurrentBidInfoProps {
   artwork: ArtworkSidebarCurrentBidInfo_artwork
-  readonly me?: {
-    readonly bidder_status: {
-      readonly active_bid?: {
-        readonly max_bid?: {
-          readonly display: string
-        }
-        readonly is_winning: boolean
-      }
-    }
-  }
 }
 
 export class ArtworkSidebarCurrentBidInfo extends React.Component<
   ArtworkSidebarCurrentBidInfoProps
 > {
-  renderBidStatusIcon() {
-    return this.props.me.bidder_status.active_bid.is_winning ? (
-      <WinningBid />
-    ) : (
-      <LoosingBid />
-    )
-  }
-
   render() {
-    const { artwork, me } = this.props
+    const { artwork } = this.props
+
     if (artwork.sale && artwork.sale.is_closed) {
       return (
         <Box pb={2}>
@@ -45,6 +28,7 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
         </Box>
       )
     }
+
     const bidsPresent = artwork.sale_artwork.counts.bidder_positions > 0
     const bidPrompt = bidsPresent ? "Current bid" : "Starting Bid"
     const bidColor =
@@ -65,7 +49,14 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
       bidTextParts.push(artwork.sale_artwork.reserve_message)
     const bidText = bidTextParts.join(", ")
 
-    const myBidPresent = me && me.bidder_status && me.bidder_status.active_bid
+    /**
+     * NOTE: This is making an incorrect assumption that there could only ever
+     *       be 1 live sale with this work. When we run into that case, there is
+     *       likely design work to be done too, so we can adjust this then.
+     */
+    const bidderStatus = artwork.bidderStatus && artwork.bidderStatus[0]
+    const activeBid = bidderStatus && bidderStatus.active_bid
+    const myBidPresent = !!activeBid
     return (
       <Box pb={2}>
         <Flex width="100%" flexDirection="row" justifyContent="space-between">
@@ -77,7 +68,11 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
             justifyContent="right"
             alignContent="baseline"
           >
-            {myBidPresent && <Box pt={0.5}>{this.renderBidStatusIcon()}</Box>}
+            {myBidPresent && (
+              <Box pt={0.5}>
+                {activeBid.is_winning ? <WinningBid /> : <LoosingBid />}
+              </Box>
+            )}
             <Serif size="5t" weight="semibold" pl={0.5}>
               {artwork.sale_artwork.current_bid.display}
             </Serif>
@@ -88,9 +83,9 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
             {bidText}
           </Sans>
           {myBidPresent &&
-            me.bidder_status.active_bid.max_bid && (
+            activeBid.max_bid && (
               <Sans size="2" color="black60" pl={1}>
-                Your max: {me.bidder_status.active_bid.max_bid.display}
+                Your max: {activeBid.max_bid.display}
               </Sans>
             )}
         </Flex>
@@ -103,6 +98,14 @@ export const ArtworkSidebarCurrentBidInfoFragmentContainer = createFragmentConta
   ArtworkSidebarCurrentBidInfo,
   graphql`
     fragment ArtworkSidebarCurrentBidInfo_artwork on Artwork {
+      bidderStatus(live: true) {
+        active_bid {
+          is_winning
+          max_bid {
+            display
+          }
+        }
+      }
       sale {
         is_open
         is_closed

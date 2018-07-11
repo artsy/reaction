@@ -2,7 +2,15 @@
 
 import { ConcreteFragment } from "relay-runtime";
 export type ArtworkSidebarBidAction_artwork = {
+    readonly bidderStatus: ReadonlyArray<{
+        readonly active_bid: ({
+            readonly __id: string;
+        }) | null;
+    }> | null;
     readonly sale: ({
+        readonly registrationStatus: ({
+            readonly qualified_for_bidding: boolean | null;
+        }) | null;
         readonly is_preview: boolean | null;
         readonly is_open: boolean | null;
         readonly is_live_open: boolean | null;
@@ -31,12 +39,61 @@ return {
     {
       "kind": "LinkedField",
       "alias": null,
+      "name": "bidderStatus",
+      "storageKey": "bidderStatus(live:true)",
+      "args": [
+        {
+          "kind": "Literal",
+          "name": "live",
+          "value": true,
+          "type": "Boolean"
+        }
+      ],
+      "concreteType": "LotStanding",
+      "plural": true,
+      "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "active_bid",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "BidderPosition",
+          "plural": false,
+          "selections": [
+            v0
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
       "name": "sale",
       "storageKey": null,
       "args": null,
       "concreteType": "Sale",
       "plural": false,
       "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "registrationStatus",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "Bidder",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "qualified_for_bidding",
+              "args": null,
+              "storageKey": null
+            },
+            v0
+          ]
+        },
         {
           "kind": "ScalarField",
           "alias": null,
@@ -79,5 +136,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '3fa12d268995bcc65c0da322f42d942b';
+(node as any).hash = '8017c91cf510b8c46bef24b667d4dc7a';
 export default node;
