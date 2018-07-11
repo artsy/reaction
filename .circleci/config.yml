@@ -4,7 +4,7 @@ defaults: &defaults
     - image: circleci/node:8
   
 setup_job: &setup_job
-  checkout:
+  checkout: null
   restore_cache:
       keys:
       - yarn-deps-{{ checksum "yarn.lock" }}
