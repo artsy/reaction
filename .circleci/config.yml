@@ -3,13 +3,12 @@ jobs:
   relay:
     working_directory: ~/artsy/reaction
     docker:
-    - image: circleci/node:jessie
+    - image: circleci/node:8.4
     steps: 
       - checkout
       - restore_cache:
           keys:
           - v1-dep-{{ .Branch }}-
-      - run: nvm install && nvm use
       - run: yarn relay
       - save_cache:
           key: v1-dep-{{ .Branch }}-{{ epoch }}
@@ -21,18 +20,17 @@ jobs:
   lint:
     working_directory: ~/artsy/reaction
     docker:
-    - image: circleci/node:jessie
+    - image: circleci/node:8.4
     steps: 
       - checkout
       - restore_cache:
           keys:
           - v1-dep-{{ .Branch }}-
-      - run: nvm install && nvm use
       - run: yarn lint 
   type-check:
     working_directory: ~/artsy/reaction
     docker:
-    - image: circleci/node:jessie
+    - image: circleci/node:8.4
     steps: 
       - checkout
       - restore_cache:
@@ -43,13 +41,12 @@ jobs:
   deploy:
     working_directory: ~/artsy/reaction
     docker:
-    - image: circleci/node:jessie
+    - image: circleci/node:8.4
     steps:
       - checkout
       - restore_cache:
           keys:
           - v1-dep-{{ .Branch }}-
-      - run: nvm install && nvm use
       - run: yarn semantic-release
       - run: cp .env.oss .env
       - run: yarn deploy-storybook
@@ -64,18 +61,9 @@ jobs:
   build:
     working_directory: ~/artsy/reaction
     docker:
-    - image: circleci/node:jessie
+    - image: circleci/node:8.4
     steps:
     - checkout
-    - run:
-        name: Install nvm
-        command: |
-          set +e             
-          curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-
-          echo 'export NVM_DIR="$HOME/.nvm"' >> $BASH_ENV
-          echo '[ -s "$NVM_DIR/nvm.sh --no-use" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
-    - run: nvm install && nvm use
     - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
     - restore_cache:
         keys:
