@@ -4,12 +4,12 @@ defaults: &defaults
     - image: circleci/node:8
   
 setup_job: &setup_job
-  - checkout
-  - restore_cache:
+  checkout:
+  restore_cache:
       keys:
       - yarn-deps-{{ checksum "yarn.lock" }}
       - yarn-deps-
-  - run: yarn --check-files
+  run: yarn --check-files
 
 version: 2
 jobs:
