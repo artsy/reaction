@@ -36,6 +36,7 @@ jobs:
     - image: circleci/node:8
     steps:
       - checkout
+      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
       - restore_cache:
           keys:
           - yarn-packages-{{ checksum "yarn.lock" }}
@@ -52,13 +53,12 @@ jobs:
           keys:
           - yarn-packages-{{ checksum "yarn.lock" }}
       - run: yarn test --runInBand
-  build:
+  install:
     working_directory: ~/artsy/reaction
     docker:
     - image: circleci/node:8
     steps:
     - checkout
-    - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
     - restore_cache:
         keys:
         - yarn-packages-{{ checksum "yarn.lock" }}
@@ -73,19 +73,19 @@ workflows:
   version: 2
   build_and_verify:
     jobs:
-      - build
+      - install
       - relay:
           requires:
-            - build
+            - install
       - lint:
           requires:
-            - build
+            - install
       - type-check:
           requires:
-            - build
+            - install
       - test:
           requires:
-            - build
+            - install
       - deploy:
           filters:
             branches:
@@ -93,3 +93,6 @@ workflows:
                 - master
           requires:
             - test
+            - relay
+            - lint
+            - type-check
