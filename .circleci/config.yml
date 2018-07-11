@@ -3,7 +3,7 @@ jobs:
   relay:
     working_directory: ~/artsy/reaction
     docker:
-    - image: circleci/node:8.4
+    - image: circleci/node:8
     steps: 
       - checkout
       - restore_cache:
@@ -16,11 +16,10 @@ jobs:
           - ./node_modules
           - ./.cache-loader
           - ~/.cache/yarn
-          - ~/.nvm
   lint:
     working_directory: ~/artsy/reaction
     docker:
-    - image: circleci/node:8.4
+    - image: circleci/node:8
     steps: 
       - checkout
       - restore_cache:
@@ -30,18 +29,17 @@ jobs:
   type-check:
     working_directory: ~/artsy/reaction
     docker:
-    - image: circleci/node:8.4
+    - image: circleci/node:8
     steps: 
       - checkout
       - restore_cache:
           keys:
           - v1-dep-{{ .Branch }}-
-      - run: nvm install && nvm use
       - run: yarn type-check
   deploy:
     working_directory: ~/artsy/reaction
     docker:
-    - image: circleci/node:8.4
+    - image: circleci/node:8
     steps:
       - checkout
       - restore_cache:
@@ -56,12 +54,11 @@ jobs:
     - image: circleci/node:jessie
     steps: 
       - checkout
-      - run: nvm install && nvm use
       - run: yarn test -- --runInBand
   build:
     working_directory: ~/artsy/reaction
     docker:
-    - image: circleci/node:8.4
+    - image: circleci/node:8
     steps:
     - checkout
     - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
@@ -77,7 +74,6 @@ jobs:
         - ./node_modules
         - ./.cache-loader
         - ~/.cache/yarn
-        - ~/.nvm
         - ~/.bashrc
 workflows:
   version: 2
@@ -93,7 +89,6 @@ workflows:
       - type-check:
           requires:
             - build
-            - relay
       - test:
           requires:
             - build
