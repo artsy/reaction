@@ -14,6 +14,7 @@ export interface ArtworkGridContainerProps
   itemMargin?: number
   onLoadMore?: () => any
   useRelay?: boolean
+  currentUser?: any
 }
 
 export interface ArtworkGridContainerState {
@@ -119,6 +120,7 @@ export class ArtworkGridContainer extends React.Component<
             artwork={artwork as any}
             key={"artwork-" + j + "-" + artwork.__id}
             useRelay={this.props.useRelay}
+            currentUser={this.props.currentUser}
           />
         )
         // Setting a marginBottom on the artwork component didn’t work, so using a spacer view instead.

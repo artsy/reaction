@@ -22,6 +22,7 @@ const Placeholder = styled.div`
 interface Props extends RelayProps, React.HTMLProps<ArtworkGridItemContainer> {
   useRelay?: boolean
   style?: any
+  currentUser?: any
 }
 
 class ArtworkGridItemContainer extends React.Component<Props, null> {
@@ -30,10 +31,14 @@ class ArtworkGridItemContainer extends React.Component<Props, null> {
   }
 
   render() {
-    const { style, className, artwork, useRelay } = this.props
+    const { style, className, artwork, useRelay, currentUser } = this.props
     const SaveButtonBlock = useRelay ? RelaySaveButton : SaveButton
     const MetadataBlock = useRelay ? RelayMetadata : Metadata
 
+    let currentUserSpread = {}
+    if (currentUser) {
+      currentUserSpread = { currentUser }
+    }
     return (
       <div className={className} style={style}>
         <Placeholder style={{ paddingBottom: artwork.image.placeholder }}>
@@ -45,6 +50,7 @@ class ArtworkGridItemContainer extends React.Component<Props, null> {
             artwork={artwork as any}
             style={{ position: "absolute", right: "10px", bottom: "10px" }}
             useRelay={useRelay}
+            {...currentUserSpread}
           />
         </Placeholder>
         <MetadataBlock artwork={artwork} useRelay={useRelay} />
