@@ -9,7 +9,7 @@ export interface ArtistShowsProps {
 }
 export const ShowsRoute: SFC<ArtistShowsProps> = props => {
   const { viewer } = props
-  debugger
+
   return (
     <React.Fragment>
       <Spacer mb={2} />
@@ -66,16 +66,6 @@ export const ShowsRouteFragmentContainer = createFragmentContainer(
       artist_currentShows: artist(id: $artistID) {
         ...ArtistShows_artist
           @arguments(sort: $currentShowsSort, status: $currentShowsStatus)
-      }
-      artist_currentShowsPageCount: artist(id: $artistID) {
-        showsConnection(first: 4, status: "running", sort: END_AT_ASC) {
-          pageCursors {
-            around {
-              page
-            }
-          }
-          totalCount
-        }
       }
       artist_upcomingShows: artist(id: $artistID) {
         ...ArtistShows_artist

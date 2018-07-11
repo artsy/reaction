@@ -111,25 +111,13 @@ story
       </ContextProvider>
     )
   })
-  .add("With tooltips (bio)", () => {
+  .add("With tooltips", () => {
     return (
       <ContextProvider>
         <Article
           article={FeatureArticle}
           relatedArticlesForCanvas={RelatedCanvas}
           showTooltips
-        />
-      </ContextProvider>
-    )
-  })
-  .add("With tooltips (data)", () => {
-    return (
-      <ContextProvider>
-        <Article
-          article={FeatureArticle}
-          relatedArticlesForCanvas={RelatedCanvas}
-          showTooltips
-          showToolTipMarketData
         />
       </ContextProvider>
     )

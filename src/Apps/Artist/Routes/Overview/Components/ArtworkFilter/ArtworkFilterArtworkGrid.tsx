@@ -60,15 +60,6 @@ class Artworks extends Component<Props, LoadingAreaState> {
     )
   }
 
-  calcNodeIdForFilters = () => {
-    const expandedFilters = {
-      ...this.props.filters,
-      aggregations: ["total"],
-      artist_id: this.props.artistID,
-    }
-    return btoa("FilterArtworks:" + JSON.stringify(expandedFilters))
-  }
-
   toggleLoading = isLoading => {
     this.setState({
       isLoading,

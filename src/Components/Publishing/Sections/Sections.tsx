@@ -17,7 +17,6 @@ interface Props {
   article: ArticleData
   isMobile?: boolean
   showTooltips?: boolean
-  showToolTipMarketData?: boolean
 }
 
 interface State {
@@ -142,7 +141,7 @@ export class Sections extends Component<Props, State> {
   }
 
   getSection(section, index) {
-    const { article, showTooltips, showToolTipMarketData } = this.props
+    const { article, showTooltips } = this.props
 
     const sections = {
       image_collection: (
@@ -164,7 +163,6 @@ export class Sections extends Component<Props, State> {
           isContentStart={index === this.getContentStartIndex()}
           isContentEnd={index === this.getContentEndIndex()}
           showTooltips={showTooltips}
-          showToolTipMarketData={showToolTipMarketData}
         />
       ),
       default: false,

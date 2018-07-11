@@ -1,0 +1,92 @@
+defaults: &defaults
+  working_directory: ~/artsy/reaction
+  docker:
+    - image: circleci/node:8
+  
+save_cache: &save_cache
+  save_cache:
+    key: yarn-deps-{{ checksum "yarn.lock" }}
+    paths:
+      - ./node_modules
+
+restore_cache: &restore_cache
+  restore_cache:
+    keys:
+    - yarn-deps-{{ checksum "yarn.lock" }}
+    - yarn-deps-
+      
+verify_dependencies: &verify_dependencies
+  run: yarn --check-files
+  
+filter_master: &filter_master
+  filters:
+    branches:
+      only:
+        - master
+
+version: 2
+jobs:
+  relay:
+    <<: *defaults
+    docker:
+    - image: circleci/node:8
+    steps:
+      - checkout
+      - <<: *restore_cache
+      - <<: *verify_dependencies
+      - run: yarn relay
+  lint:
+    <<: *defaults
+    steps: 
+      - checkout
+      - <<: *restore_cache
+      - <<: *verify_dependencies
+      - run: yarn lint 
+  type-check:
+    <<: *defaults
+    steps:
+      - checkout
+      - <<: *restore_cache
+      - <<: *verify_dependencies
+      - run: yarn type-check
+  deploy:
+    <<: *defaults
+    steps: 
+      - checkout
+      - <<: *restore_cache
+      - <<: *verify_dependencies
+      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+      - run: yarn semantic-release
+      - run: cp .env.oss .env
+      - run: yarn deploy-storybook
+  test:
+    <<: *defaults
+    steps:
+      - checkout
+      - <<: *restore_cache
+      - <<: *verify_dependencies
+      - run: yarn test -w 4
+  update-cache:
+    <<: *defaults
+    steps:
+      - checkout
+      - <<: *restore_cache
+      - <<: *verify_dependencies
+      - <<: *save_cache
+workflows:
+  version: 2
+  build_and_verify:
+    jobs:
+      - update-cache
+      - relay
+      - lint
+      - type-check
+      - test
+      - deploy:
+          <<: *filter_master
+          requires:
+            - test
+            - relay
+            - lint
+            - type-check
+            - update-cache
