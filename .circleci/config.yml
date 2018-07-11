@@ -9,6 +9,8 @@ jobs:
       - restore_cache:
           keys:
           - yarn-deps-{{ checksum "yarn.lock" }}
+          - yarn-deps-
+      - run: yarn --check-files
       - run: yarn relay
   lint:
     working_directory: ~/artsy/reaction
@@ -19,6 +21,8 @@ jobs:
       - restore_cache:
           keys:
           - yarn-deps-{{ checksum "yarn.lock" }}
+          - yarn-deps-
+      - run: yarn --check-files
       - run: yarn lint 
   type-check:
     working_directory: ~/artsy/reaction
@@ -29,6 +33,8 @@ jobs:
       - restore_cache:
           keys:
           - yarn-deps-{{ checksum "yarn.lock" }}
+          - yarn-deps-
+      - run: yarn --check-files
       - run: yarn type-check
   deploy:
     working_directory: ~/artsy/reaction
@@ -40,6 +46,8 @@ jobs:
       - restore_cache:
           keys:
           - yarn-deps-{{ checksum "yarn.lock" }}
+          - yarn-deps-
+      - run: yarn --check-files
       - run: yarn semantic-release
       - run: cp .env.oss .env
       - run: yarn deploy-storybook
@@ -52,8 +60,10 @@ jobs:
       - restore_cache:
           keys:
           - yarn-deps-{{ checksum "yarn.lock" }}
+          - yarn-deps-
+      - run: yarn --check-files
       - run: yarn test -w 4
-  install:
+  update-cache:
     working_directory: ~/artsy/reaction
     docker:
     - image: circleci/node:8
@@ -72,19 +82,11 @@ workflows:
   version: 2
   build_and_verify:
     jobs:
-      - install
-      - relay:
-          requires:
-            - install
-      - lint:
-          requires:
-            - install
-      - type-check:
-          requires:
-            - install
-      - test:
-          requires:
-            - install
+      - update-cache
+      - relay
+      - lint
+      - type-check
+      - test
       - deploy:
           filters:
             branches:
@@ -95,3 +97,4 @@ workflows:
             - relay
             - lint
             - type-check
+            - update-cache
