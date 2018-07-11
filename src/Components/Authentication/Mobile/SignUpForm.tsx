@@ -16,7 +16,7 @@ import Icon from "Components/Icon"
 import Input from "Components/Input"
 import { ProgressIndicator } from "Components/ProgressIndicator"
 import { Step, Wizard } from "Components/Wizard"
-import React from "react"
+import React, { Fragment } from "react"
 
 export const MobileSignUpForm: FormComponentType = props => {
   const steps = [
@@ -30,19 +30,33 @@ export const MobileSignUpForm: FormComponentType = props => {
         wizard,
         form: { errors, touched, values, handleChange, handleBlur, setTouched },
       }) => (
-        <Input
-          block
-          error={errors.email}
-          placeholder="Enter your email address"
-          name="email"
-          label="Email"
-          type="email"
-          value={values.email}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          setTouched={setTouched}
-          quick
-        />
+        <Fragment>
+          <Input
+            block
+            error={touched.email && errors.email}
+            placeholder="Enter your email address"
+            name="email"
+            label="Email"
+            type="email"
+            value={values.email}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            setTouched={setTouched}
+            quick
+          />
+          <TermsOfServiceCheckbox
+            error={
+              touched.accepted_terms_of_service &&
+              errors.accepted_terms_of_service
+            }
+            checked={values.accepted_terms_of_service}
+            value={values.accepted_terms_of_service}
+            type="checkbox"
+            name="accepted_terms_of_service"
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
+        </Fragment>
       )}
     </Step>,
     <Step validationSchema={MobileSignUpValidator.password}>
@@ -52,7 +66,7 @@ export const MobileSignUpForm: FormComponentType = props => {
       }) => (
         <Input
           block
-          error={errors.password}
+          error={touched.password && errors.password}
           name="password"
           label="Password"
           placeholder="Password"
@@ -73,7 +87,7 @@ export const MobileSignUpForm: FormComponentType = props => {
       }) => (
         <Input
           block
-          error={errors.name}
+          error={touched.name && errors.name}
           name="name"
           label="Name"
           placeholder="Name"
@@ -86,31 +100,12 @@ export const MobileSignUpForm: FormComponentType = props => {
         />
       )}
     </Step>,
-    <Step validationSchema={MobileSignUpValidator.accepted_terms_of_service}>
-      {({
-        wizard,
-        form: { errors, touched, values, handleChange, handleBlur, setTouched },
-      }) => (
-        <TermsOfServiceCheckbox
-          error={
-            touched.accepted_terms_of_service &&
-            errors.accepted_terms_of_service
-          }
-          checked={values.accepted_terms_of_service}
-          value={values.accepted_terms_of_service}
-          type="checkbox"
-          name="accepted_terms_of_service"
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
-      )}
-    </Step>,
   ]
   return (
     <Wizard steps={steps} onComplete={props.handleSubmit}>
       {context => {
         const {
-          form: { handleSubmit, status },
+          form: { handleSubmit, status, values, setTouched },
           wizard,
         } = context
         const { currentStep } = wizard
@@ -137,7 +132,17 @@ export const MobileSignUpForm: FormComponentType = props => {
               </SubmitButton>
               <Footer
                 mode="signup"
-                onFacebookLogin={props.onFacebookLogin}
+                onFacebookLogin={e => {
+                  if (!values.accepted_terms_of_service) {
+                    setTouched({
+                      accepted_terms_of_service: true,
+                    })
+                  } else {
+                    if (props.onFacebookLogin) {
+                      props.onFacebookLogin(e)
+                    }
+                  }
+                }}
                 onTwitterLogin={props.onTwitterLogin}
                 handleTypeChange={props.handleTypeChange}
               />
