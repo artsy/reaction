@@ -51,10 +51,10 @@ jobs:
   test:
     working_directory: ~/artsy/reaction
     docker:
-    - image: circleci/node:jessie
+    - image: circleci/node:8
     steps: 
       - checkout
-      - run: yarn test -- --runInBand
+      - run: yarn test --runInBand
   build:
     working_directory: ~/artsy/reaction
     docker:
