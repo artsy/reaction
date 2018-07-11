@@ -10,12 +10,6 @@ jobs:
           keys:
           - v1-dep-{{ .Branch }}-
       - run: yarn relay
-      - save_cache:
-          key: v1-dep-{{ .Branch }}-{{ epoch }}
-          paths:
-          - ./node_modules
-          - ./.cache-loader
-          - ~/.cache/yarn
   lint:
     working_directory: ~/artsy/reaction
     docker:
@@ -64,17 +58,14 @@ jobs:
     - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
     - restore_cache:
         keys:
-        - v1-dep-{{ .Branch }}-
-        - v1-dep-master-
-        - v1-dep-
-    - run: yarn
+        - yarn-packages-{{ checksum "yarn.lock" }}
+        - yarn-packages-
+    - run: yarn --prefer-offline
     - save_cache:
-        key: v1-dep-{{ .Branch }}-{{ epoch }}
+        key: yarn-packages-{{ checksum "yarn.lock" }}
         paths:
         - ./node_modules
-        - ./.cache-loader
         - ~/.cache/yarn
-        - ~/.bashrc
 workflows:
   version: 2
   build_and_verify:
