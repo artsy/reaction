@@ -38,7 +38,7 @@ class ArtworkGridRefetchContainerWrapper extends React.Component<Props> {
     return (
       <ArtworkGridRefetchContainer
         {...this.props}
-        filtered_artworks={this.props.artist.gridStuff as any}
+        filtered_artworks={this.props.artist.grid as any}
       />
     )
   }
@@ -56,7 +56,7 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
           for_sale: { type: "Boolean" }
         ) {
         __id
-        gridStuff: filtered_artworks(
+        grid: filtered_artworks(
           aggregations: [TOTAL]
           medium: $medium
           major_periods: $major_periods

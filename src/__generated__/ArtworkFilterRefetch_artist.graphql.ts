@@ -3,7 +3,7 @@
 import { ConcreteFragment } from "relay-runtime";
 export type ArtworkFilterRefetch_artist = {
     readonly __id: string;
-    readonly gridStuff: ({}) | null;
+    readonly grid: ({}) | null;
 };
 
 
@@ -51,7 +51,7 @@ return {
     v0,
     {
       "kind": "LinkedField",
-      "alias": "gridStuff",
+      "alias": "grid",
       "name": "filtered_artworks",
       "storageKey": null,
       "args": [
@@ -108,5 +108,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '390937604cb9f8e94edc634323b2f33b';
+(node as any).hash = 'dfc8c181917d199982ba51dfb3d6da10';
 export default node;
