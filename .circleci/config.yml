@@ -1,83 +1,56 @@
+defaults: &defaults
+  working_directory: ~/artsy/reaction
+  docker:
+    - image: circleci/node:8
+  
+setup_job: &setup_job
+  - checkout
+  - restore_cache:
+      keys:
+      - yarn-deps-{{ checksum "yarn.lock" }}
+      - yarn-deps-
+  - run: yarn --check-files
+
 version: 2
 jobs:
   relay:
-    working_directory: ~/artsy/reaction
+    <<: *defaults
     docker:
     - image: circleci/node:8
     steps: 
-      - checkout
-      - restore_cache:
-          keys:
-          - yarn-deps-{{ checksum "yarn.lock" }}
-          - yarn-deps-
-      - run: yarn --check-files
+      - <<: *setup_job
       - run: yarn relay
   lint:
-    working_directory: ~/artsy/reaction
-    docker:
-    - image: circleci/node:8
+    <<: *defaults
     steps: 
-      - checkout
-      - restore_cache:
-          keys:
-          - yarn-deps-{{ checksum "yarn.lock" }}
-          - yarn-deps-
-      - run: yarn --check-files
+      - <<: *setup_job
       - run: yarn lint 
   type-check:
-    working_directory: ~/artsy/reaction
-    docker:
-    - image: circleci/node:8
+    <<: *defaults
     steps: 
-      - checkout
-      - restore_cache:
-          keys:
-          - yarn-deps-{{ checksum "yarn.lock" }}
-          - yarn-deps-
-      - run: yarn --check-files
+      - <<: *setup_job
       - run: yarn type-check
   deploy:
-    working_directory: ~/artsy/reaction
-    docker:
-    - image: circleci/node:8
+    <<: *defaults
     steps:
-      - checkout
+      - <<: *setup_job
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-      - restore_cache:
-          keys:
-          - yarn-deps-{{ checksum "yarn.lock" }}
-          - yarn-deps-
-      - run: yarn --check-files
       - run: yarn semantic-release
       - run: cp .env.oss .env
       - run: yarn deploy-storybook
   test:
-    working_directory: ~/artsy/reaction
-    docker:
-    - image: circleci/node:8
+    <<: *defaults
     steps: 
-      - checkout
-      - restore_cache:
-          keys:
-          - yarn-deps-{{ checksum "yarn.lock" }}
-          - yarn-deps-
-      - run: yarn --check-files
+      - <<: *setup_job
       - run: yarn test -w 4
   update-cache:
-    working_directory: ~/artsy/reaction
-    docker:
-    - image: circleci/node:8
+    <<: *defaults
     steps:
-    - checkout
-    - restore_cache:
-        keys:
-        - yarn-deps-{{ checksum "yarn.lock" }}
-        - yarn-deps-
-    - run: yarn --check-files
-    - save_cache:
-        key: yarn-deps-{{ checksum "yarn.lock" }}
-        paths:
-        - ./node_modules
+      - <<: *setup_job
+      - save_cache:
+          key: yarn-deps-{{ checksum "yarn.lock" }}
+          paths:
+            - ./node_modules
 workflows:
   version: 2
   build_and_verify:
