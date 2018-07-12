@@ -9,8 +9,10 @@ export type CurrentEvent_artist = {
             }) | null;
         }) | null;
         readonly name: string | null;
-        readonly subHeadline: string | null;
-        readonly headline: string | null;
+        readonly status: string | null;
+        readonly details: string | null;
+        readonly partner: string | null;
+        readonly href: string | null;
     }) | null;
 };
 
@@ -78,14 +80,28 @@ const node: ConcreteFragment = {
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "subHeadline",
+          "name": "status",
           "args": null,
           "storageKey": null
         },
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "headline",
+          "name": "details",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "partner",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "href",
           "args": null,
           "storageKey": null
         }
@@ -100,5 +116,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '01d406d93a42c61447ada1192b1ca71c';
+(node as any).hash = 'abe3848fb9d4976b259cb44d7156145a';
 export default node;

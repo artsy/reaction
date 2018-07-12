@@ -27,6 +27,17 @@ type AggregationCount {
   sortable_id: String
 }
 
+input ApproveOrderInput {
+  # Order ID
+  orderId: String!
+  clientMutationId: String
+}
+
+type ApproveOrderPayload {
+  result: OrderReturnType
+  clientMutationId: String
+}
+
 type Article implements Node {
   # A globally unique ID.
   __id: ID!
@@ -647,6 +658,9 @@ type Artwork implements Node & Sellable {
   image_rights: String
   image_title: String
   images(size: Int): [Image]
+
+  # Private text field for partner use
+  inventoryId: String
 
   # Whether a work can be purchased through e-commerce
   is_acquireable: Boolean
@@ -1275,6 +1289,9 @@ type ArtworkItem implements Node & Sellable {
   image_rights: String
   image_title: String
   images(size: Int): [Image]
+
+  # Private text field for partner use
+  inventoryId: String
 
   # Whether a work can be purchased through e-commerce
   is_acquireable: Boolean
@@ -2020,6 +2037,26 @@ type CreateGeminiEntryForAssetPayload {
   clientMutationId: String
 }
 
+input CreateOrderInput {
+  # ID of user submitting the order
+  userId: String!
+
+  # ID of partner representing artwork
+  partnerId: String
+
+  # Currency code
+  currencyCode: String!
+
+  # Line items in the order
+  lineItems: [LineItemInput]
+  clientMutationId: String
+}
+
+type CreateOrderPayload {
+  result: OrderReturnType
+  clientMutationId: String
+}
+
 input CreateSubmissionMutationInput {
   # The gravity ID for an Artist
   artist_id: String!
@@ -2134,8 +2171,19 @@ input CreditCardInput {
   clientMutationId: String
 }
 
+type CreditCardMutationFailure {
+  mutationError: GravityMutationError
+}
+
+type CreditCardMutationSuccess {
+  creditCard: CreditCard
+}
+
+union CreditCardMutationType = CreditCardMutationSuccess | CreditCardMutationFailure
+
 type CreditCardPayload {
-  credit_card: CreditCard
+  credit_card: CreditCard @deprecated(reason: "Favor `creditCardOrError`")
+  creditCardOrError: CreditCardMutationType
   clientMutationId: String
 }
 
@@ -2147,9 +2195,21 @@ type CroppedImageUrl {
 
 type CurrentEvent {
   image: Image
-  headline: String
-  subHeadline: String
+
+  # The state of the event
+  status: String
+
+  # Name of the partner associated to the event
+  partner: String
+
+  # Location and date of the event if available
+  details: String
+
+  # Name of the event
   name: String
+
+  # Link to the event
+  href: String
 }
 
 type DaySchedule {
@@ -2422,6 +2482,17 @@ type FilterSaleArtworksCounts {
     format: String
     label: String
   ): FormattedNumber
+}
+
+input FinalizeOrderInput {
+  # Order ID
+  orderId: String!
+  clientMutationId: String
+}
+
+type FinalizeOrderPayload {
+  result: OrderReturnType
+  clientMutationId: String
 }
 
 type FollowArtist {
@@ -2837,6 +2908,13 @@ type GeneItem implements Node {
     last: Int
   ): GeneConnection
   trending_artists(sample: Int): [Artist]
+}
+
+type GravityMutationError {
+  type: String
+  message: String
+  detail: String
+  error: String
 }
 
 type HighestBid {
@@ -3507,6 +3585,17 @@ union Item = ArtistItem | ArtworkItem | FeaturedLinkItem | GeneItem
 # The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 scalar JSON
 
+input LineItemInput {
+  # ID of artwork
+  artworkId: String!
+
+  # quantity of artwork
+  quantity: Int!
+
+  # Price in cents
+  priceCents: Int!
+}
+
 type Location {
   # A globally unique ID.
   __id: ID!
@@ -3622,7 +3711,7 @@ type Me implements Node {
   ): Invoice
 
   # The current user's status relating to bids on artworks
-  lot_standing(artwork_id: String!, sale_id: String!): LotStanding
+  lot_standing(artwork_id: String, sale_id: String, sale_artwork_id: String): LotStanding
 
   # A list of the current user's auction standings for given lots
   lot_standings(
@@ -3637,6 +3726,7 @@ type Me implements Node {
 
     # Only the lot standings for a specific auction
     sale_id: String
+    sale_artwork_id: String
   ): [LotStanding]
   name: String
   initials(length: Int = 3): String
@@ -3778,6 +3868,11 @@ type Mutation {
 
   # Update a conversation.
   updateConversation(input: UpdateConversationMutationInput!): UpdateConversationMutationPayload
+  createOrder(input: CreateOrderInput!): CreateOrderPayload
+  approveOrder(input: ApproveOrderInput!): ApproveOrderPayload
+  finalizeOrder(input: FinalizeOrderInput!): FinalizeOrderPayload
+  rejectOrder(input: RejectOrderInput!): RejectOrderPayload
+  submitOrder(input: SubmitOrderInput!): SubmitOrderPayload
 
   # Appending a message to a conversation thread
   sendConversationMessage(input: SendConversationMessageMutationInput!): SendConversationMessageMutationPayload
@@ -3929,6 +4024,28 @@ type Order {
     thousand: String = ","
   ): String
 
+  # A formatted price with various currency formatting options.
+  subtotalCents(
+    decimal: String = "."
+
+    # Allows control of symbol position (%v = value, %s = symbol)
+    format: String = "%s%v"
+    precision: Int = 0
+    symbol: String
+    thousand: String = ","
+  ): String
+
+  # A formatted price with various currency formatting options.
+  totalCents(
+    decimal: String = "."
+
+    # Allows control of symbol position (%v = value, %s = symbol)
+    format: String = "%s%v"
+    precision: Int = 0
+    symbol: String
+    thousand: String = ","
+  ): String
+
   # List of order line items
   lineItems: OrderLineItemConnection
 
@@ -3945,6 +4062,20 @@ type Order {
     timezone: String
   ): String
   createdAt(
+    convert_to_utc: Boolean
+    format: String
+
+    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    timezone: String
+  ): String
+  stateUpdatedAt(
+    convert_to_utc: Boolean
+    format: String
+
+    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    timezone: String
+  ): String
+  stateExpiresAt(
     convert_to_utc: Boolean
     format: String
 
@@ -4040,6 +4171,11 @@ type OrderLineItemEdge {
 
   # A cursor for use in pagination
   cursor: String!
+}
+
+type OrderReturnType {
+  order: Order
+  errors: [String]
 }
 
 type organizer {
@@ -4868,6 +5004,9 @@ type Query {
     id: String!
   ): Show
   status: Status
+
+  # Fields related to internal systems.
+  system: System
   tag(
     # The slug or ID of the Tag
     id: String!
@@ -4918,6 +5057,17 @@ input RecordArtworkViewInput {
 
 type RecordArtworkViewPayload {
   artwork_id: String!
+  clientMutationId: String
+}
+
+input RejectOrderInput {
+  # Order ID
+  orderId: String!
+  clientMutationId: String
+}
+
+type RejectOrderPayload {
+  result: OrderReturnType
   clientMutationId: String
 }
 
@@ -5102,7 +5252,10 @@ type SaleArtwork {
   high_estimate: SaleArtworkHighEstimate
   high_estimate_cents: Float @deprecated(reason: "Favor `high_estimate")
   highest_bid: SaleArtworkHighestBid
-  increments: [BidIncrementsFormatted]
+  increments(
+    # Whether or not to start the increments at the user's latest bid
+    useMyMaxBid: Boolean
+  ): [BidIncrementsFormatted]
   is_bid_on: Boolean
 
   # Can bids be placed on the artwork?
@@ -5588,6 +5741,40 @@ enum SubmissionStateAggregation {
   SUBMITTED
   APPROVED
   REJECTED
+}
+
+input SubmitOrderInput {
+  # Order ID
+  orderId: String!
+
+  # Credit card ID
+  creditCardId: String!
+  clientMutationId: String
+}
+
+type SubmitOrderPayload {
+  result: OrderReturnType
+  clientMutationId: String
+}
+
+type System {
+  # Gravity system time, necessary for synchronizing device clocks.
+  time: SystemTime
+}
+
+type SystemTime {
+  day: Int
+  wday: Int
+  month: Int
+  year: Int
+  hour: Int
+  min: Int
+  sec: Int
+  dst: Boolean
+  unix: Int
+  utc_offset: Int
+  zone: String
+  iso8601: String
 }
 
 type Tag implements Node {
@@ -6227,6 +6414,9 @@ type Viewer {
     id: String!
   ): Show
   status: Status
+
+  # Fields related to internal systems.
+  system: System
   tag(
     # The slug or ID of the Tag
     id: String!
