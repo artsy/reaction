@@ -1,19 +1,10 @@
 import { mount } from "enzyme"
 import React from "react"
-import {
-  CloseButton,
-  DesktopModal,
-} from "../../../Desktop/Components/DesktopModal"
+import Icon from "../../../../Icon"
+import { DesktopModal } from "../../../Desktop/Components/DesktopModal"
 
 jest.mock("Utils/track.ts", () => ({
   track: () => jest.fn(c => c),
-}))
-
-jest.mock("react-spring", () => ({
-  Spring: p => p.children(),
-  animated: {
-    div: c => c,
-  },
 }))
 
 describe("DesktopModal", () => {
@@ -42,7 +33,11 @@ describe("DesktopModal", () => {
     it("tracks close", () => {
       const tracking = { trackEvent: jest.fn() }
       const wrapper = getWrapper({ tracking })
-      wrapper.find(CloseButton).simulate("click")
+      wrapper
+        .find(Icon)
+        .at(0)
+        .simulate("click")
+
       expect(tracking.trackEvent).toBeCalledWith({
         action: "Click",
         flow: "auth",

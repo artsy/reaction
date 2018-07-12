@@ -1,9 +1,10 @@
 import { Sans } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
-import { themeGet } from "styled-system"
+import { space, SpaceProps } from "styled-system"
 import { Arrow } from "Styleguide/Elements/Arrow"
 import { Flex } from "Styleguide/Elements/Flex"
+import { Separator } from "Styleguide/Elements/Separator"
 
 export interface ToggleProps {
   disabled?: boolean
@@ -39,7 +40,9 @@ export class Toggle extends React.Component<ToggleProps> {
 
     return (
       <Flex width="100%" flexDirection="column">
-        <Header onClick={this.toggleExpand} disabled={disabled}>
+        <Separator mb={2} />
+        {/* mt is for corrective spacing */}
+        <Header mt="-6px" onClick={this.toggleExpand} disabled={disabled}>
           <Flex justifyContent="space-between">
             <Sans size="2" weight="medium" color="black100" mt={0.3}>
               {this.props.label}
@@ -61,11 +64,11 @@ export class Toggle extends React.Component<ToggleProps> {
   }
 }
 
-const Header = styled.div.attrs<ToggleProps>({})`
-  border-top: 1px solid ${themeGet("colors.black10")};
+interface HeaderProps extends ToggleProps, SpaceProps {}
+const Header = styled.div.attrs<HeaderProps>({})`
   cursor: pointer;
   padding-bottom: 16px;
-  padding-top: 16px;
   pointer-events: ${props => (props.disabled ? "none" : "auto")};
   user-select: none;
+  ${space};
 `

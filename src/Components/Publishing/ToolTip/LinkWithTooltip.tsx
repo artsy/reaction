@@ -11,7 +11,6 @@ import { ToolTip } from "./ToolTip"
 
 interface Props {
   url: string
-  showMarketData?: boolean
   tracking?: any
 }
 
@@ -180,7 +179,7 @@ export class LinkWithTooltip extends Component<Props, State> {
   }
 
   render() {
-    const { showMarketData, url } = this.props
+    const { url } = this.props
     const { activeToolTip, waitForFade } = this.context
     const { orientation } = this.state
 
@@ -219,7 +218,6 @@ export class LinkWithTooltip extends Component<Props, State> {
             <ToolTip
               entity={entity}
               model={entityType}
-              showMarketData={showMarketData}
               onMouseLeave={this.hideToolTip}
               onMouseEnter={() => {
                 this.setState({ inToolTip: true })

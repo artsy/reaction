@@ -70,12 +70,14 @@ export const LargeArtistHeader: SFC<Props> = props => {
         data={carousel.images as any}
         render={slide => {
           return (
-            <Image
-              px={5}
-              src={slide.resized.url}
-              width={slide.resized.width}
-              height={slide.resized.height}
-            />
+            <a href={slide.href}>
+              <Image
+                px={5}
+                src={slide.resized.url}
+                width={slide.resized.width}
+                height={slide.resized.height}
+              />
+            </a>
           )
         }}
       />
@@ -90,9 +92,11 @@ export const LargeArtistHeader: SFC<Props> = props => {
               {props.artist.years}
             </Serif>
             <Spacer mr={2} />
-            <Serif size="3">
-              {props.artist.counts.follows.toLocaleString()} followers
-            </Serif>
+            {props.artist.counts.follows > 50 && (
+              <Serif size="3">
+                {props.artist.counts.follows.toLocaleString()} followers
+              </Serif>
+            )}
           </Flex>
         </Box>
         <FollowArtistButton
@@ -131,12 +135,14 @@ export const SmallArtistHeader: SFC<Props> = props => {
         data={carousel.images as any}
         render={slide => {
           return (
-            <Image
-              px={5}
-              src={slide.resized.url}
-              width={slide.resized.width}
-              height={slide.resized.height}
-            />
+            <a href={slide.href}>
+              <Image
+                px={5}
+                src={slide.resized.url}
+                width={slide.resized.width}
+                height={slide.resized.height}
+              />
+            </a>
           )
         }}
       />
@@ -151,9 +157,11 @@ export const SmallArtistHeader: SFC<Props> = props => {
               {props.artist.years}
             </Serif>
           </Box>
-          <Serif size="2">
-            {props.artist.counts.follows.toLocaleString()} followers
-          </Serif>
+          {props.artist.counts.follows > 50 && (
+            <Serif size="2">
+              {props.artist.counts.follows.toLocaleString()} followers
+            </Serif>
+          )}
         </Flex>
       </Flex>
       <Box my={2}>
@@ -197,6 +205,7 @@ export const ArtistHeaderFragmentContainer = createFragmentContainer(
       }
       carousel {
         images {
+          href
           resized(height: 300) {
             url
             width

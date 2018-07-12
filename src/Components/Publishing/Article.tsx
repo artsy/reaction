@@ -28,7 +28,6 @@ export interface ArticleProps {
     canvas: any
   }
   showTooltips?: boolean
-  showToolTipMarketData?: boolean
   slideIndex?: number
   closeViewer?: () => void
   viewerIsOpen?: boolean

@@ -295,14 +295,6 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
   color: black;
 }
 
-.c3 .MarketDataSummary__MarketDataSummaryContainer-vkk0cf-0 {
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 12px;
-  line-height: 1.4em;
-  padding-bottom: 10px;
-}
-
 .c5 {
   display: -webkit-box;
   display: -webkit-flex;

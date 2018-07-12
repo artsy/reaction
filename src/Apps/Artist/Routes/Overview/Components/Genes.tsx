@@ -25,7 +25,7 @@ export class Genes extends Component<Props> {
     return (
       <GeneFamily>
         <Sans size="2" weight="medium">
-          Gene family name
+          Related Categories
         </Sans>
         {genes.edges.map(({ node: gene }, index, list) => {
           const geneDivider = index < list.length - 1 ? "," : ""

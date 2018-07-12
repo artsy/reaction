@@ -113,7 +113,7 @@ export const MobileSignUpForm: FormComponentType = props => {
           form: { handleSubmit, status },
           wizard,
         } = context
-        const { currentStep } = wizard
+        const { currentStep, isLastStep } = wizard
 
         return (
           <MobileContainer>
@@ -126,14 +126,14 @@ export const MobileSignUpForm: FormComponentType = props => {
                   fontSize="16px"
                 />
               </BackButton>
-              <MobileHeader>Sign up</MobileHeader>
+              <MobileHeader>Sign up for Artsy</MobileHeader>
               {currentStep}
               {status && !status.success && <Error show>{status.error}</Error>}
               <SubmitButton
                 disabled={!wizard.shouldAllowNext}
                 onClick={handleSubmit as any}
               >
-                Next
+                {isLastStep ? "Create account" : "Next"}
               </SubmitButton>
               <Footer
                 mode="signup"

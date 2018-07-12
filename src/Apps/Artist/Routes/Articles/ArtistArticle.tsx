@@ -3,7 +3,7 @@ import React, { SFC } from "react"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
-import { Image } from "Styleguide/Elements/Image"
+import { Image, ResponsiveImage } from "Styleguide/Elements/Image"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Responsive } from "Utils/Responsive"
@@ -53,7 +53,7 @@ const LargeArticleItem: SFC<ArticleItemProps> = props => {
           </Flex>
         </Col>
         <Col sm={2}>
-          <Image width="135px" height="85px" src={imageUrl} />
+          <ResponsiveImage src={imageUrl} />
         </Col>
       </Row>
 
@@ -71,7 +71,7 @@ const SmallArticleItem: SFC<ArticleItemProps> = props => {
   return (
     <React.Fragment>
       <Flex justifyContent="space-between">
-        <Box pr={3}>
+        <Box pr={2}>
           <Date size="1" weight="medium">
             {date}
           </Date>
@@ -86,12 +86,13 @@ const SmallArticleItem: SFC<ArticleItemProps> = props => {
             {author}
           </Credit>
         </Box>
-        <Image width="80px" height="50px" src={imageUrl} />
+        <Image width="70px" height="100%" src={imageUrl} />
       </Flex>
 
       {/* FIXME: Weird block height issue... */}
       <Spacer mt={2} />
       <Separator />
+      <Spacer mt={3} />
     </React.Fragment>
   )
 }
