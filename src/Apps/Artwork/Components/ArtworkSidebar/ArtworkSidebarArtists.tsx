@@ -10,7 +10,7 @@ export interface ArtistsProps {
   artwork: ArtworkSidebarArtists_artwork
 }
 
-type Artist = ArtworkSidebarArtists_artwork["artists"][0]
+export type Artist = ArtworkSidebarArtists_artwork["artists"][0]
 
 export class ArtworkSidebarArtists extends React.Component<ArtistsProps> {
   renderArtistName(artist: Artist) {

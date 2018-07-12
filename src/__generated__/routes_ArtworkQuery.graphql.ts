@@ -135,6 +135,12 @@ fragment ArtworkSidebarBidAction_artwork on Artwork {
     is_registration_closed
     __id
   }
+  sale_artwork {
+    increments {
+      display
+    }
+    __id
+  }
   __id
 }
 
@@ -411,6 +417,16 @@ return {
                     "storageKey": null
                   }
                 ]
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "increments",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "BidIncrementsFormatted",
+                "plural": true,
+                "selections": v3
               }
             ]
           },
