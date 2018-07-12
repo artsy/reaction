@@ -11,7 +11,7 @@ const FooterContainer = styled.div`
   display: ${(props: Props) => (props.inline ? "inline" : "flex")};
   flex-direction: column;
 `
-// TODO: Re-enable twitter link when @artsy/passport is twitter-functional
+// TODO: Remove twitter logic once deprecated
 export const Footer = props => {
   const { onFacebookLogin, handleTypeChange, mode, inline } = props
 
