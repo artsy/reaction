@@ -1,5 +1,6 @@
 export const ClosedAuctionArtwork = {
   _id: "artwork_from_closed_auction",
+  bidderStatus: null,
   sale: { is_open: false, is_closed: true, is_live_open: false },
   sale_artwork: {
     lot_label: "2",
@@ -13,6 +14,7 @@ export const ClosedAuctionArtwork = {
 }
 
 export const OpenAuctionNoReserveNoBids = {
+  bidderStatus: null,
   sale: {
     is_open: true,
     is_closed: false,
@@ -35,6 +37,7 @@ export const OpenAuctionNoReserveNoBids = {
 
 export const OpenAuctionNoReserveWithBids = {
   _id: "artwork_from_open_auction",
+  bidderStatus: null,
   sale: { is_open: true, is_closed: false, is_live_open: false },
   sale_artwork: {
     lot_label: "14002",
@@ -48,6 +51,7 @@ export const OpenAuctionNoReserveWithBids = {
 }
 
 export const OpenAuctionReserveNoBids = {
+  bidderStatus: null,
   sale: {
     is_open: true,
     is_closed: false,
@@ -69,6 +73,7 @@ export const OpenAuctionReserveNoBids = {
 }
 
 export const OpenAuctionReserveNotMetWithBids = {
+  bidderStatus: null,
   sale: {
     is_open: true,
     is_closed: false,
@@ -91,6 +96,7 @@ export const OpenAuctionReserveNotMetWithBids = {
 
 export const OpenAuctionReserveMetWithBids = {
   _id: "artwork_from_open_auction",
+  bidderStatus: null,
   sale: {
     is_open: true,
     is_closed: false,
@@ -107,30 +113,37 @@ export const OpenAuctionReserveMetWithBids = {
   },
 }
 
-export const MyBidWinning = {
-  bidder_status: {
-    active_bid: {
-      max_bid: {
-        display: "$15,000",
+export const OpenAuctionReserveMetWithMyWinningBid = {
+  ...OpenAuctionReserveMetWithBids,
+  bidderStatus: [
+    {
+      active_bid: {
+        is_winning: true,
+        max_bid: {
+          display: "$15,000",
+        },
       },
-      is_winning: true,
     },
-  },
+  ],
 }
 
-export const MyBidLoosing = {
-  bidder_status: {
-    active_bid: {
-      max_bid: {
-        display: "$400",
+export const OpenAuctionReserveMetWithMyLoosingBid = {
+  ...OpenAuctionReserveMetWithBids,
+  bidderStatus: [
+    {
+      active_bid: {
+        is_winning: false,
+        max_bid: {
+          display: "$400",
+        },
       },
-      is_winning: false,
     },
-  },
+  ],
 }
 
 export const LiveAuctionInProgeress = {
   _id: "artwork_from_live_auction",
+  bidderStatus: null,
   sale: {
     is_open: true,
     is_closed: false,

@@ -7,16 +7,12 @@ import styled from "styled-components"
 import { ArtistToolTip_artist } from "../../../__generated__/ArtistToolTip_artist.graphql"
 import fillwidthDimensions from "../../../Utils/fillwidth"
 import { track } from "../../../Utils/track"
-import MarketDataSummary, {
-  MarketDataSummaryContainer,
-} from "../../Artist/MarketDataSummary/MarketDataSummary"
 import FollowArtistButton from "../../FollowButton/FollowArtistButton"
 import { FollowTrackingData } from "../../FollowButton/Typings"
 import { ToolTipDescription } from "./Components/Description"
 import { NewFeature } from "./Components/NewFeature"
 
 export interface ArtistToolTipProps {
-  showMarketData?: boolean
   artist: ArtistToolTip_artist
   tracking?: any
 }
@@ -49,7 +45,7 @@ export class ArtistToolTip extends React.Component<ArtistToolTipProps> {
   }
 
   render() {
-    const { showMarketData, artist } = this.props
+    const { artist } = this.props
     const {
       blurb,
       carousel,
@@ -64,8 +60,8 @@ export class ArtistToolTip extends React.Component<ArtistToolTipProps> {
       onOpenAuthModal,
     } = this.context
     const displayImages = map(carousel.images.slice(0, 2), "resized")
-
     const images = fillwidthDimensions(displayImages, 320, 15, 150)
+    const description = blurb || this.renderArtistGenes()
 
     const trackingData: FollowTrackingData = {
       context_module: "intext tooltip",
@@ -102,14 +98,7 @@ export class ArtistToolTip extends React.Component<ArtistToolTipProps> {
           </Header>
 
           <a href={href} target="_blank" onClick={this.trackClick}>
-            {showMarketData ? (
-              <MarketDataSummary
-                artist={artists[id] as any}
-                onEmptyText={this.renderArtistGenes()}
-              />
-            ) : (
-              blurb && <ToolTipDescription text={blurb} />
-            )}
+            {description && <ToolTipDescription text={description} />}
           </a>
         </ArtistContainer>
 
@@ -131,10 +120,6 @@ export const ArtistContainer = styled.div`
     &:hover {
       color: black;
     }
-  }
-  ${MarketDataSummaryContainer} {
-    ${unica("s12")};
-    padding-bottom: 10px;
   }
 `
 

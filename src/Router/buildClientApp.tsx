@@ -24,9 +24,12 @@ export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
 
       const relayBootstrap = JSON.parse(window.__RELAY_BOOTSTRAP__ || "{}")
 
-      const currentUser = user || {
-        id: process.env.USER_ID,
-        accessToken: process.env.USER_ACCESS_TOKEN,
+      let currentUser = user
+      if (process.env.USER_ID && process.env.USER_ACCESS_TOKEN) {
+        currentUser = currentUser || {
+          id: process.env.USER_ID,
+          accessToken: process.env.USER_ACCESS_TOKEN,
+        }
       }
 
       const relayEnvironment = createEnvironment({
