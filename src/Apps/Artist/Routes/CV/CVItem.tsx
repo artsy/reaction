@@ -65,7 +65,7 @@ class CVItem extends Component<CVItemProps, CVItemState> {
     const FIXME_DOMAIN = "https://www.artsy.net"
 
     return (
-      <Show size="3" key={index}>
+      <Show size="3" mb={1} key={index}>
         <Serif size="3" display="inline" italic>
           {node.href ? (
             <a href={FIXME_DOMAIN + node.href} className="noUnderline">
@@ -102,7 +102,7 @@ class CVItem extends Component<CVItemProps, CVItemState> {
             <React.Fragment>
               <Row>
                 <Col>
-                  <CVItems mb={3} pb={4}>
+                  <CVItems pb={1}>
                     <Box>
                       <Row>
                         <Col sm={2}>
@@ -118,7 +118,7 @@ class CVItem extends Component<CVItemProps, CVItemState> {
                             .reverse()
                             .map((year, index) => {
                               return (
-                                <YearGroup mb={1} key={index}>
+                                <YearGroup mb={2} key={index}>
                                   <Year size="3">{year}</Year>
                                   <Spacer mr={xs ? 1 : 4} />
                                   <ShowGroup>
@@ -132,11 +132,12 @@ class CVItem extends Component<CVItemProps, CVItemState> {
                               )
                             })}
 
-                          <Spacer mb={2} />
+                          <Spacer mb={1} />
 
                           {this.hasMore && (
                             <Button
                               width={xs ? "100%" : ""}
+                              mb={3}
                               variant="secondaryOutline"
                               onClick={() => this.loadMore()}
                               loading={this.state.isLoading ? true : false}

@@ -1,3 +1,4 @@
+import { space } from "@artsy/palette"
 import { CV_viewer } from "__generated__/CV_viewer.graphql"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -8,6 +9,9 @@ export interface CVRouteProps {
   viewer: CV_viewer
 }
 
+// Element spacing - correction for lineheight
+const sectionSpace = space(4) - 4
+
 export class CVRoute extends Component<CVRouteProps> {
   render() {
     const { viewer } = this.props
@@ -15,14 +19,12 @@ export class CVRoute extends Component<CVRouteProps> {
     return (
       <React.Fragment>
         <CVItem category="Solo shows" artist={viewer.artist_soloShows as any} />
-        <Spacer my={1} />
-
+        <Spacer mb={sectionSpace} />
         <CVItem
           category="Group shows"
           artist={viewer.artist_groupShows as any}
         />
-        <Spacer my={1} />
-
+        <Spacer mb={sectionSpace} />
         <CVItem
           category="Fair booths"
           artist={viewer.artist_fairBooths as any}
