@@ -3,7 +3,7 @@ import React from "react"
 import { PartnerBlock } from "../Partner/PartnerBlock"
 import { PartnerInline } from "../Partner/PartnerInline"
 
-storiesOf("Publishing/Partner", module)
+storiesOf("Legacy/Publishing/Partner", module)
   .add("Partner Block", () => {
     return (
       <div>

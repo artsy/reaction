@@ -10,7 +10,7 @@ import { Embed } from "../Sections/Embed"
 import { SocialEmbed } from "../Sections/SocialEmbed"
 import { Video } from "../Sections/Video"
 
-storiesOf("Publishing/Sections/Embed", module).add("Embed", () => {
+storiesOf("Legacy/Publishing/Sections/Embed", module).add("Embed", () => {
   return (
     <div style={{ width: "100%" }}>
       <Embed section={Embeds[0]} />
@@ -18,7 +18,7 @@ storiesOf("Publishing/Sections/Embed", module).add("Embed", () => {
   )
 })
 
-storiesOf("Publishing/Sections/Social Embed", module)
+storiesOf("Legacy/Publishing/Sections/Social Embed", module)
   .add("Twitter", () => {
     return (
       <Fragment>
@@ -38,7 +38,7 @@ storiesOf("Publishing/Sections/Social Embed", module)
     )
   })
 
-storiesOf("Publishing/Sections/Video", module)
+storiesOf("Legacy/Publishing/Sections/Video", module)
   .add("Youtube", () => {
     return (
       <div style={{ width: "100vw", position: "relative" }}>

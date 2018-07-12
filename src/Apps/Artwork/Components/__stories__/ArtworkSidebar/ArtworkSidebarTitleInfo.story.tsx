@@ -9,7 +9,7 @@ import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
 
-storiesOf("Styleguide/Artwork/Sidebar", module).add("TitleInfo", () => {
+storiesOf("Legacy/Styleguide/Artwork/Sidebar", module).add("TitleInfo", () => {
   return (
     <React.Fragment>
       <Section title="Artwork with Title Date and Medium present">

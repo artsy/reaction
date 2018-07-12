@@ -16,7 +16,7 @@ import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
 
-storiesOf("Styleguide/Artwork/Sidebar", module).add("BidAction", () => {
+storiesOf("Legacy/Styleguide/Artwork/Sidebar", module).add("BidAction", () => {
   return (
     <React.Fragment>
       {/* Auction in preview state */}

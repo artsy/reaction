@@ -4,7 +4,7 @@ import { routes as artworkRoutes } from "Apps/Artwork/routes"
 import React from "react"
 import { StorybooksRouter } from "Router/StorybooksRouter"
 
-storiesOf("Apps", module)
+storiesOf("Legacy/Apps", module)
   .add("Artwork Page", () => {
     return (
       <StorybooksRouter

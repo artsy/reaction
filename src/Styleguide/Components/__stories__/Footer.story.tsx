@@ -3,7 +3,7 @@ import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
 import { Footer, LargeFooter, SmallFooter } from "../Footer"
 
-storiesOf("Styleguide/Components", module).add("Footer", () => {
+storiesOf("Legacy/Styleguide/Components", module).add("Footer", () => {
   return (
     <React.Fragment>
       <Section title="Responsive Footer">

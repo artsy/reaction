@@ -3,7 +3,7 @@ import React from "react"
 import { FollowArtistButton } from "../FollowButton/FollowArtistButton"
 import { FollowGeneButton } from "../FollowButton/FollowGeneButton"
 
-storiesOf("Components/Follow Button", module)
+storiesOf("Legacy/Components/Follow Button", module)
   .add("Artist", () => {
     return (
       <div style={{ margin: 20 }}>

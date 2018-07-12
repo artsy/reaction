@@ -5,7 +5,7 @@ import { RecentlyViewed } from "Styleguide/Components/RecentlyViewed"
 import { Box } from "Styleguide/Elements/Box"
 import { Section } from "Styleguide/Utils/Section"
 
-storiesOf("Styleguide/Components", module).add("Recently Viewed", () => {
+storiesOf("Legacy/Styleguide/Components", module).add("Recently Viewed", () => {
   return (
     <React.Fragment>
       <Section title="Recently Viewed">

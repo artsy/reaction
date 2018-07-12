@@ -3,7 +3,7 @@ import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
 import { AuctionCard, LargeAuctionCard, SmallAuctionCard } from "../AuctionCard"
 
-storiesOf("Styleguide/Components", module).add("AuctionCard", () => {
+storiesOf("Legacy/Styleguide/Components", module).add("AuctionCard", () => {
   return (
     <React.Fragment>
       <Section title="Responsive Auction Card">

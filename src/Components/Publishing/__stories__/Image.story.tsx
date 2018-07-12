@@ -3,7 +3,7 @@ import React from "react"
 import { Images } from "../Fixtures/Components"
 import { Image } from "../Sections/Image"
 
-storiesOf("Publishing/Image", module)
+storiesOf("Legacy/Publishing/Image", module)
   .add("Image", () => {
     return (
       <div style={{ width: 400 }}>

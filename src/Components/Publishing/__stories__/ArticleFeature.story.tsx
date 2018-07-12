@@ -18,7 +18,7 @@ import { ArticleData } from "Components/Publishing/Typings"
 import { clone, extend } from "lodash"
 import React from "react"
 
-const story = storiesOf("Publishing/Articles/Feature", module)
+const story = storiesOf("Legacy/Publishing/Articles/Feature", module)
 
 story
   .add("Fullscreen", () => {

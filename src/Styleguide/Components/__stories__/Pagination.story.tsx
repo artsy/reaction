@@ -4,7 +4,7 @@ import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
 import { LargePagination, Pagination, SmallPagination } from "../Pagination"
 
-storiesOf("Styleguide/Components", module).add("Pagination", () => {
+storiesOf("Legacy/Styleguide/Components", module).add("Pagination", () => {
   const { cursor, callbacks } = paginationProps
 
   return (

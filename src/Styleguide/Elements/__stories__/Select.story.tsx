@@ -4,7 +4,7 @@ import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
 import { LargeSelect, Select, SmallSelect } from "../Select"
 
-storiesOf("Styleguide/Elements", module).add("Select", () => {
+storiesOf("Legacy/Styleguide/Elements", module).add("Select", () => {
   return (
     <React.Fragment>
       <Section title="Responsive Select">

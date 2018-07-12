@@ -7,7 +7,7 @@ import { VideoPlayer } from "../Video/Player/VideoPlayer"
 import { VideoAbout } from "../Video/VideoAbout"
 import { VideoCover } from "../Video/VideoCover"
 
-storiesOf("Publishing/Video/Player", module).add("Player", () => {
+storiesOf("Legacy/Publishing/Video/Player", module).add("Player", () => {
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
       <VideoPlayer {...Media[0]} />
@@ -15,7 +15,7 @@ storiesOf("Publishing/Video/Player", module).add("Player", () => {
   )
 })
 
-storiesOf("Publishing/Video/Cover", module)
+storiesOf("Legacy/Publishing/Video/Cover", module)
   .add("Cover", () => {
     return <VideoCover article={VideoArticle} media={Media[0]} />
   })
@@ -40,7 +40,7 @@ storiesOf("Publishing/Video/Cover", module)
     )
   })
 
-storiesOf("Publishing/Video/About", module)
+storiesOf("Legacy/Publishing/Video/About", module)
   .add("About", () => {
     return <VideoAbout article={VideoArticle} />
   })

@@ -3,7 +3,7 @@ import { storiesOf } from "storybook/storiesOf"
 import { Col, Grid, Row } from "Styleguide/Elements/Grid"
 import { Section } from "Styleguide/Utils/Section"
 
-storiesOf("Styleguide/Elements", module).add("Grid", () => {
+storiesOf("Legacy/Styleguide/Elements", module).add("Grid", () => {
   return (
     <Section title="Grid">
       <Grid>

@@ -4,7 +4,7 @@ import { Article } from "../Article"
 
 import { NewsArticle } from "../Fixtures/Articles"
 
-storiesOf("Publishing/Articles/News", module)
+storiesOf("Legacy/Publishing/Articles/News", module)
   .add("Expanded", () => {
     return <Article article={NewsArticle} />
   })

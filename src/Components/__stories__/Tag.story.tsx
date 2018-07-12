@@ -4,7 +4,7 @@ import { Contents } from "../Tag"
 
 import { ContextProvider } from "../Artsy"
 
-storiesOf("Components/Pages/Tag/Contents", module).add("Butt", () => {
+storiesOf("Legacy/Components/Pages/Tag/Contents", module).add("Butt", () => {
   return (
     <div>
       <ContextProvider>

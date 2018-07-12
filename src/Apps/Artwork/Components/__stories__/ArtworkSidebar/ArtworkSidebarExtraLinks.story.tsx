@@ -12,7 +12,7 @@ import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
 
-storiesOf("Styleguide/Artwork/Sidebar", module).add("ExtraLinks", () => {
+storiesOf("Legacy/Styleguide/Artwork/Sidebar", module).add("ExtraLinks", () => {
   return (
     <React.Fragment>
       <Section title="Not for sale artwork with no consignable artists">

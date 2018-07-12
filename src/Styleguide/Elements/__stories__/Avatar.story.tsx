@@ -3,7 +3,7 @@ import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
 import { Avatar } from "../Avatar"
 
-storiesOf("Styleguide/Elements", module).add("Avatar", () => {
+storiesOf("Legacy/Styleguide/Elements", module).add("Avatar", () => {
   return (
     <React.Fragment>
       <Section title="Default Avatar">

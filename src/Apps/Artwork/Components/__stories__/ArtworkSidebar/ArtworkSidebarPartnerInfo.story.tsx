@@ -49,7 +49,7 @@ const ArtworkWithCollectingInstitution = {
   partner: PartnerWithLocations,
 }
 
-storiesOf("Styleguide/Artwork/Sidebar", module).add("PartnerInfo", () => {
+storiesOf("Legacy/Styleguide/Artwork/Sidebar", module).add("PartnerInfo", () => {
   return (
     <React.Fragment>
       <Section title="Rartner with locations">

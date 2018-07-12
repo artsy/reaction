@@ -4,7 +4,7 @@ import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
 import { MarketInsights } from "../MarketInsights"
 
-storiesOf("Styleguide/Components", module).add("MarketInsights", () => {
+storiesOf("Legacy/Styleguide/Components", module).add("MarketInsights", () => {
   return (
     <React.Fragment>
       <Section title="Market Insights">

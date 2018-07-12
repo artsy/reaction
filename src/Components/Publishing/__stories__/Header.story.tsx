@@ -14,7 +14,7 @@ import {
   SuperArticle,
 } from "../Fixtures/Articles"
 
-storiesOf("Publishing/Header/Classic", module)
+storiesOf("Legacy/Publishing/Header/Classic", module)
   .add("Classic", () => {
     return (
       <div style={{ width: "100%", height: "400px", position: "relative" }}>
@@ -33,7 +33,7 @@ storiesOf("Publishing/Header/Classic", module)
     )
   })
 
-storiesOf("Publishing/Header/Standard", module)
+storiesOf("Legacy/Publishing/Header/Standard", module)
   .add("Standard", () => {
     return (
       <div style={{ width: "100%", height: "400px", position: "relative" }}>
@@ -52,7 +52,7 @@ storiesOf("Publishing/Header/Standard", module)
     )
   })
 
-storiesOf("Publishing/Header/Feature/Basic", module)
+storiesOf("Legacy/Publishing/Header/Feature/Basic", module)
   .add("Basic", () => {
     const article = _.clone(BasicArticle)
     article.hero_section.url = null
@@ -77,7 +77,7 @@ storiesOf("Publishing/Header/Feature/Basic", module)
       </div>
     )
   })
-storiesOf("Publishing/Header/Feature/Text", module)
+storiesOf("Legacy/Publishing/Header/Feature/Text", module)
   .add("With Image", () => {
     const article = _.extend({}, FeatureArticle, {
       hero_section: HeroSections[0],
@@ -113,7 +113,7 @@ storiesOf("Publishing/Header/Feature/Text", module)
       </div>
     )
   })
-storiesOf("Publishing/Header/Feature/Split", module)
+storiesOf("Legacy/Publishing/Header/Feature/Split", module)
   .add("With Image", () => {
     const article = _.extend({}, FeatureArticle, {
       hero_section: HeroSections[1],
@@ -149,7 +149,7 @@ storiesOf("Publishing/Header/Feature/Split", module)
       </div>
     )
   })
-storiesOf("Publishing/Header/Feature/Fullscreen", module)
+storiesOf("Legacy/Publishing/Header/Feature/Fullscreen", module)
   .add("With Image", () => {
     const article = _.extend({}, FeatureArticle, {
       hero_section: HeroSections[2],

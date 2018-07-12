@@ -5,7 +5,7 @@ import styled from "styled-components"
 import { Section } from "Styleguide/Utils/Section"
 import { ReadMore } from "../ReadMore"
 
-storiesOf("Styleguide/Components", module).add("ReadMore", () => {
+storiesOf("Legacy/Styleguide/Components", module).add("ReadMore", () => {
   return (
     <React.Fragment>
       <Section title="Max lines">

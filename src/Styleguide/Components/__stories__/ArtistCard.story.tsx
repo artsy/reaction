@@ -17,7 +17,7 @@ const artist = {
   id: "percy",
 }
 
-storiesOf("Styleguide/Components", module)
+storiesOf("Legacy/Styleguide/Components", module)
   .addDecorator(story => <RelayStubProvider>{story()}</RelayStubProvider>)
   .add("ArtistCard", () => {
     const props = {

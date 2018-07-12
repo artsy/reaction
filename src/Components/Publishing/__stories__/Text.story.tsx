@@ -9,7 +9,7 @@ import {
 import { TextFromArticle } from "../Fixtures/Helpers"
 import { Text } from "../Sections/Text"
 
-storiesOf("Publishing/Sections/Text", module)
+storiesOf("Legacy/Publishing/Sections/Text", module)
   .add("Classic", () => {
     return (
       <div style={{ maxWidth: 580, margin: "0 auto" }}>

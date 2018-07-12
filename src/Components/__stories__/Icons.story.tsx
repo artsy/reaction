@@ -7,7 +7,7 @@ import { Col, Row } from "../Grid"
 import Icon from "../Icon"
 import Title from "../Title"
 
-storiesOf("Components/Icons", module).add("All Icons", () => {
+storiesOf("Legacy/Components/Icons", module).add("All Icons", () => {
   const iconNames = Object.keys(icons).sort()
 
   return (

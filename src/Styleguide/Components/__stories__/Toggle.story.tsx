@@ -8,7 +8,7 @@ import { Radio } from "Styleguide/Elements/Radio"
 import { Section } from "Styleguide/Utils/Section"
 import { Toggle } from "../Toggle"
 
-storiesOf("Styleguide/Components", module).add("Toggle", () => {
+storiesOf("Legacy/Styleguide/Components", module).add("Toggle", () => {
   return (
     <React.Fragment>
       <Section title="Toggle">

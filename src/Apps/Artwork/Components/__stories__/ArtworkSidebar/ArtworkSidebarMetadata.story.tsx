@@ -12,7 +12,7 @@ import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
 import { RelayStubProvider } from "Utils/RelayStubProvider"
 
-storiesOf("Styleguide/Artwork/Sidebar", module)
+storiesOf("Legacy/Styleguide/Artwork/Sidebar", module)
   .addDecorator(story => <RelayStubProvider>{story()}</RelayStubProvider>)
   .add("Metadata", () => {
     return (

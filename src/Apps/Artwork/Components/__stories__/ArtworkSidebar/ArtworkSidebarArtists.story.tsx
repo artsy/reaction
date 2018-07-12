@@ -8,7 +8,7 @@ import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
 
-storiesOf("Styleguide/Artwork/Sidebar", module).add("Artists", () => {
+storiesOf("Legacy/Styleguide/Artwork/Sidebar", module).add("Artists", () => {
   return (
     <React.Fragment>
       <Section title="Single Followed Artist">

@@ -7,7 +7,7 @@ import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
 
-storiesOf("Styleguide/Artwork/Sidebar", module).add("Classification", () => {
+storiesOf("Legacy/Styleguide/Artwork/Sidebar", module).add("Classification", () => {
   return (
     <React.Fragment>
       <Section title="Artwork with Classification">

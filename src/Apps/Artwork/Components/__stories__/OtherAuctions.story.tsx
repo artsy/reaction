@@ -31,7 +31,7 @@ const auctions = [
   },
 ]
 
-storiesOf("Styleguide/Artwork/OtherAuctions", module).add(
+storiesOf("Legacy/Styleguide/Artwork/OtherAuctions", module).add(
   "Other Auctions",
   () => {
     return (

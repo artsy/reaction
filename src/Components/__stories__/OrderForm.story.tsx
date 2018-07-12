@@ -8,7 +8,7 @@ const submitForm = (values, actions) => () => {
   actions.setSubmitting(false)
 }
 
-storiesOf("Components/Forms/Order Form", module).add("Order Form", () => {
+storiesOf("Legacy/Components/Forms/Order Form", module).add("Order Form", () => {
   return (
     <OrderForm
       onSubmit={(values, actions) => {

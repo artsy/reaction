@@ -55,6 +55,6 @@ function generateStory(imageCount: number) {
   }
 }
 
-storiesOf("Styleguide/Artwork/ImageCarousel", module)
+storiesOf("Legacy/Styleguide/Artwork/ImageCarousel", module)
   .add("With a single image", generateStory(1))
   .add("With multiple images", generateStory(3))
