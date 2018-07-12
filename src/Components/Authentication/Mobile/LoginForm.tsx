@@ -99,7 +99,7 @@ export const MobileLoginForm: FormComponentType = props => {
           wizard,
           form: { handleSubmit, status },
         } = context
-        const { currentStep } = wizard
+        const { currentStep, isLastStep } = wizard
 
         return (
           <MobileContainer>
@@ -119,7 +119,7 @@ export const MobileLoginForm: FormComponentType = props => {
                 disabled={!wizard.shouldAllowNext}
                 onClick={handleSubmit as any}
               >
-                Next
+                {isLastStep ? "Log in" : "Next"}
               </SubmitButton>
               <Footer
                 mode="login"
