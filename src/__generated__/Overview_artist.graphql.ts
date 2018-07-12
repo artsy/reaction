@@ -2,6 +2,7 @@
 
 import { ConcreteFragment } from "relay-runtime";
 export type Overview_artist = {
+    readonly id: string;
     readonly exhibition_highlights: ReadonlyArray<({}) | null> | null;
     readonly is_consignable: boolean | null;
 };
@@ -42,6 +43,13 @@ return {
       "kind": "FragmentSpread",
       "name": "MarketInsightsArtistPage_artist",
       "args": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "id",
+      "args": null,
+      "storageKey": null
     },
     {
       "kind": "LinkedField",
@@ -88,5 +96,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '7430817ce2329b27331ede3f0648b0ac';
+(node as any).hash = '01b9317465c57fa6663fb1a227b484f7';
 export default node;

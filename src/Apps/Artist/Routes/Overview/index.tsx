@@ -27,6 +27,7 @@ const OverviewRoute: SFC<OverviewRouteProps> = props => {
           <Spacer mb={1} />
 
           <SelectedExhibitions
+            artistID={artist.id}
             exhibitions={props.artist.exhibition_highlights.slice(0, 10) as any}
           />
 
@@ -72,7 +73,7 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
       ...ArtistBio_bio
       ...CurrentEvent_artist
       ...MarketInsightsArtistPage_artist
-
+      id
       exhibition_highlights(size: 15) {
         ...SelectedExhibitions_exhibitions
       }

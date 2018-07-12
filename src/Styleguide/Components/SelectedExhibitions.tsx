@@ -1,9 +1,9 @@
 import { Sans } from "@artsy/palette"
-import { groupBy, toPairs } from "lodash"
-import { createFragmentContainer, graphql } from "react-relay"
-
 import { SelectedExhibitions_exhibitions } from "__generated__/SelectedExhibitions_exhibitions.graphql"
+import { groupBy, toPairs } from "lodash"
 import React, { SFC } from "react"
+import { createFragmentContainer, graphql } from "react-relay"
+import { PreloadLink } from "Router/PreloadLink"
 import { BorderBox, Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Responsive } from "Utils/Responsive"
@@ -64,6 +64,7 @@ export const ExhibitionYearList: SFC<ExhibitionYearListProps> = props => (
 
 interface FullExhibitionListProps {
   exhibitions: SelectedExhibitions_exhibitions
+  artistID: string
 }
 const FullExhibitionList: SFC<FullExhibitionListProps> = props => (
   <React.Fragment>
@@ -77,15 +78,14 @@ const FullExhibitionList: SFC<FullExhibitionListProps> = props => (
         />
       ))}
     <Sans size="2" color="black60">
-      <a href="#" className="noUnderline">
-        View all
-      </a>
+      <PreloadLink to={`/artist2/${props.artistID}/cv`}>View all</PreloadLink>
     </Sans>
   </React.Fragment>
 )
 
 export interface SelectedExhibitionsProps {
   exhibitions: SelectedExhibitions_exhibitions
+  artistID: string
 }
 
 export interface SelectedExhibitionsContainerProps
@@ -115,7 +115,10 @@ export class SelectedExhibitionsContainer extends React.Component<
             onShowClicked={() => this.setState({ expanded: true })}
           />
           {!isCollapsed({ expanded: this.state.expanded, ...this.props }) && (
-            <FullExhibitionList exhibitions={this.props.exhibitions} />
+            <FullExhibitionList
+              artistID={this.props.artistID}
+              exhibitions={this.props.exhibitions}
+            />
           )}
         </Flex>
       </BorderBox>
