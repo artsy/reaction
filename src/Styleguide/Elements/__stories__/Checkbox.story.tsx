@@ -3,7 +3,7 @@ import { storiesOf } from "storybook/storiesOf"
 import { Checkbox } from "Styleguide/Elements/Checkbox"
 import { Section } from "Styleguide/Utils/Section"
 
-storiesOf("Styleguide/Elements", module).add("Checkbox", () => {
+storiesOf("Legacy/Styleguide/Elements", module).add("Checkbox", () => {
   return (
     <React.Fragment>
       <Section title="Checkbox">

@@ -9,7 +9,7 @@ import {
   WithAnimationExample,
 } from "./PopoverExamples"
 
-storiesOf("Components/Popover", module)
+storiesOf("Legacy/Components/Popover", module)
   .add("CSS", () => (
     <div style={{ padding: "20px" }}>
       <Popover placement="right">Post to Facebook</Popover>

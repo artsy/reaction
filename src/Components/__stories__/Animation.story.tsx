@@ -36,7 +36,7 @@ class Animator extends React.Component {
   }
 }
 
-storiesOf("Components/Animations", module).add("All Animations", () => (
+storiesOf("Legacy/Components/Animations", module).add("All Animations", () => (
   <div style={{ margin: "40px" }}>
     <Animator />
   </div>

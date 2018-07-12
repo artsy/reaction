@@ -3,7 +3,7 @@ import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
 import { Banner, LargeBanner, SmallBanner } from "../Banner"
 
-storiesOf("Styleguide/Artwork", module).add("Banner", () => {
+storiesOf("Legacy/Styleguide/Artwork", module).add("Banner", () => {
   return (
     <React.Fragment>
       <Section title="Responsive">

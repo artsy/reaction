@@ -34,7 +34,7 @@ import { IconVideoPlay } from "../Icon/IconVideoPlay"
 import { IconVideoUnmute } from "../Icon/IconVideoUnmute"
 import { Typography } from "./TypographyExamples"
 
-storiesOf("Publishing/Typography", module)
+storiesOf("Legacy/Publishing/Typography", module)
   .add("Icons", () => {
     return (
       <div>

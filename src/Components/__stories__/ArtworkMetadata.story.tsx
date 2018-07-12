@@ -22,7 +22,7 @@ function ArtworkExample(props: { artworkID: string }) {
   )
 }
 
-storiesOf("Components/Artwork/Metadata", module)
+storiesOf("Legacy/Components/Artwork/Metadata", module)
   .add("A not-for-sale artwork", () => (
     <ArtworkExample artworkID="andy-warhol-skull" />
   ))

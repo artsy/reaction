@@ -29,7 +29,7 @@ function FillwidthExample(props: { artistID: string }) {
   )
 }
 
-storiesOf("Components/Artworks/Fillwidth", module)
+storiesOf("Legacy/Components/Artworks/Fillwidth", module)
   .add("A typical fillwidth", () => {
     return <FillwidthExample artistID="stephen-willats" />
   })

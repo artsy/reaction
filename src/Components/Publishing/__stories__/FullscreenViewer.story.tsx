@@ -26,6 +26,6 @@ class FullscreenViewerDemo extends React.Component<any, any> {
   }
 }
 
-storiesOf("Publishing/Fullscreen Viewer", module).add("Button", () => {
+storiesOf("Legacy/Publishing/Fullscreen Viewer", module).add("Button", () => {
   return <FullscreenViewerDemo />
 })

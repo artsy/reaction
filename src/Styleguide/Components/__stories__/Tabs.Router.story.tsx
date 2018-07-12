@@ -4,7 +4,7 @@ import { storiesOf } from "storybook/storiesOf"
 import { RouteTab, RouteTabs } from "Styleguide/Components/RouteTabs"
 import { Section } from "Styleguide/Utils/Section"
 
-storiesOf("Styleguide/Components", module).add("Tabs (Router)", () => {
+storiesOf("Legacy/Styleguide/Components", module).add("Tabs (Router)", () => {
   return (
     <React.Fragment>
       <Section title="Route Tabs">

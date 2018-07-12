@@ -24,7 +24,7 @@ function RenderTooltip(
   )
 }
 
-storiesOf("Components/Tooltips", module)
+storiesOf("Legacy/Components/Tooltips", module)
   .add("Right top aligned", () =>
     RenderTooltip("this is a right top aligned tooltip", "right", "top")
   )

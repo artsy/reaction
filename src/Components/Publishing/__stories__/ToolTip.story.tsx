@@ -8,7 +8,7 @@ import React from "react"
 
 const tracking = { trackEvent: x => x }
 
-storiesOf("Publishing/ToolTips/", module)
+storiesOf("Legacy/Publishing/ToolTips/", module)
   .add("Artist", () => {
     return (
       <div style={{ maxWidth: 580, margin: "50px auto 0 auto" }}>

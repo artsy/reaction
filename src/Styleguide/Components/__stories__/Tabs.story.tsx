@@ -3,7 +3,7 @@ import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
 import { Tab, Tabs } from "../Tabs"
 
-storiesOf("Styleguide/Components", module).add("Tabs (Simple)", () => {
+storiesOf("Legacy/Styleguide/Components", module).add("Tabs (Simple)", () => {
   return (
     <React.Fragment>
       <Section title="Artist">

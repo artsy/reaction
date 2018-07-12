@@ -12,7 +12,7 @@ function RenderMarketInsightsFor(artistID: string) {
   )
 }
 
-storiesOf("Components/Artist/MarketInsights", module)
+storiesOf("Legacy/Components/Artist/MarketInsights", module)
   .add("Pablo Picasso", () => RenderMarketInsightsFor("pablo-picasso"))
   .add("Andy Warhol", () => RenderMarketInsightsFor("andy-warhol"))
   .add("Damon Zucconi", () => RenderMarketInsightsFor("damon-zucconi"))

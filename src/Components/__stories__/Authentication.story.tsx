@@ -55,14 +55,14 @@ class ModalContainer extends Component<any> {
   }
 }
 
-storiesOf("Components/Authentication/Desktop", module)
+storiesOf("Legacy/Components/Authentication/Desktop", module)
   .add("Login", () => <ModalContainer options={{ mode: ModalType.login }} />)
   .add("Forgot Password", () => (
     <ModalContainer options={{ mode: ModalType.forgot }} />
   ))
   .add("Sign Up", () => <ModalContainer options={{ mode: ModalType.signup }} />)
 
-storiesOf("Components/Authentication/Mobile", module)
+storiesOf("Legacy/Components/Authentication/Mobile", module)
   .add("Login", () => (
     <MobileContainer>
       <FormSwitcher
@@ -94,7 +94,7 @@ storiesOf("Components/Authentication/Mobile", module)
     </MobileContainer>
   ))
 
-storiesOf("Components/Authentication/Common Elements", module)
+storiesOf("Legacy/Components/Authentication/Common Elements", module)
   .add("Footer - Signup", () => (
     <div>
       <Footer mode="signup" />

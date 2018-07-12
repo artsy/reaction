@@ -32,7 +32,7 @@ export function ArtworkGridExample(props: {
   )
 }
 
-storiesOf("Components/Artworks/ArtworkGrid", module)
+storiesOf("Legacy/Components/Artworks/ArtworkGrid", module)
   .add("A typical grid", () => {
     return <ArtworkGridExample artistID="banksy" />
   })

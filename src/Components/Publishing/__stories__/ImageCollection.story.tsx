@@ -98,7 +98,7 @@ const workWithThreeArtists = {
   credit: "Courtesy of Gary Nader",
 }
 
-storiesOf("Publishing/Sections/Image Collection", module)
+storiesOf("Legacy/Publishing/Sections/Image Collection", module)
   .add("Image Collection", () => {
     return <ImageCollectionDemo />
   })

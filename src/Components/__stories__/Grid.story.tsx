@@ -10,7 +10,7 @@ const boxStyle: React.CSSProperties = {
   textAlign: "center",
 }
 
-storiesOf("Components/Grids", module).add("Basic Usage", () => {
+storiesOf("Legacy/Components/Grids", module).add("Basic Usage", () => {
   return (
     <div style={{ margin: "20px" }}>
       <Row style={{ marginBottom: "20px" }}>

@@ -12,14 +12,14 @@ import {
   ImageSetMiniSansTitle,
 } from "../Fixtures/Components"
 
-storiesOf("Publishing/Sections/Image Set/Classic", module).add(
+storiesOf("Legacy/Publishing/Sections/Image Set/Classic", module).add(
   "Preview",
   () => {
     return <ImageSetPreviewClassic images={Images} />
   }
 )
 
-storiesOf("Publishing/Sections/Image Set/Editorial/Full", module)
+storiesOf("Legacy/Publishing/Sections/Image Set/Editorial/Full", module)
   .add("Full", () => {
     return (
       <FullScreenProvider>
@@ -38,7 +38,7 @@ storiesOf("Publishing/Sections/Image Set/Editorial/Full", module)
       </FullScreenProvider>
     )
   })
-storiesOf("Publishing/Sections/Image Set/Editorial/Mini", module)
+storiesOf("Legacy/Publishing/Sections/Image Set/Editorial/Mini", module)
   .add("Mini", () => {
     return (
       <FullScreenProvider>

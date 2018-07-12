@@ -9,7 +9,7 @@ import styled from "styled-components"
 import { Section } from "Styleguide/Utils/Section"
 import { Flex } from "../Flex"
 
-const stories = storiesOf("Styleguide/Elements", module)
+const stories = storiesOf("Legacy/Styleguide/Elements", module)
 
 function getTypeSizes<T extends FontTypes>(type: T) {
   const typeSizes = themeProps.typeSizes[type] // as TypeSizes[T]

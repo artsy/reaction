@@ -16,7 +16,7 @@ import {
 } from "../Fixtures/Articles"
 import { EditableChild } from "../Fixtures/Helpers"
 
-storiesOf("Publishing/Related Articles/ArticleCards", module)
+storiesOf("Legacy/Publishing/Related Articles/ArticleCards", module)
   .add("Block", () => {
     return (
       <MaxWidthContainer>

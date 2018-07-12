@@ -3,7 +3,7 @@ import { storiesOf } from "storybook/storiesOf"
 import { Radio } from "Styleguide/Elements/Radio"
 import { Section } from "Styleguide/Utils/Section"
 
-storiesOf("Styleguide/Elements", module).add("Radio", () => {
+storiesOf("Legacy/Styleguide/Elements", module).add("Radio", () => {
   return (
     <React.Fragment>
       <Section title="Radio">

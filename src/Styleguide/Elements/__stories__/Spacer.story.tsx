@@ -3,7 +3,7 @@ import { storiesOf } from "storybook/storiesOf"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Section } from "Styleguide/Utils/Section"
 
-storiesOf("Styleguide/Elements", module).add("Spacer", () => {
+storiesOf("Legacy/Styleguide/Elements", module).add("Spacer", () => {
   return (
     <Section title="Spacer">
       <div>A Spacer component...</div>

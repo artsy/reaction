@@ -10,7 +10,7 @@ import {
 } from "../Fixtures/Articles"
 import { EditableChild } from "../Fixtures/Helpers"
 
-storiesOf("Publishing/Series/Title", module)
+storiesOf("Legacy/Publishing/Series/Title", module)
   .add("Title", () => {
     return (
       <div>
@@ -36,7 +36,7 @@ storiesOf("Publishing/Series/Title", module)
     )
   })
 
-storiesOf("Publishing/Series/About", module)
+storiesOf("Legacy/Publishing/Series/About", module)
   .add("About", () => {
     return (
       <div>

@@ -8,7 +8,7 @@ import {
 } from "../Fixtures/Articles"
 import { RelatedCanvas, RelatedPanel } from "../Fixtures/Components"
 
-storiesOf("Publishing/Read More", module).add("Text Article", () => {
+storiesOf("Legacy/Publishing/Read More", module).add("Text Article", () => {
   return (
     <Article
       article={StandardArticle}
@@ -19,7 +19,7 @@ storiesOf("Publishing/Read More", module).add("Text Article", () => {
   )
 })
 
-storiesOf("Publishing/Read More", module).add("Image Heavy Article", () => {
+storiesOf("Legacy/Publishing/Read More", module).add("Image Heavy Article", () => {
   return (
     <Article
       article={ImageHeavyStandardArticle}
@@ -30,7 +30,7 @@ storiesOf("Publishing/Read More", module).add("Image Heavy Article", () => {
   )
 })
 
-storiesOf("Publishing/Read More", module).add("Short Article", () => {
+storiesOf("Legacy/Publishing/Read More", module).add("Short Article", () => {
   return (
     <Article
       article={ShortStandardArticle}

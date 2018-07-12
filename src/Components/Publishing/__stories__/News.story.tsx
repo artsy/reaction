@@ -5,7 +5,7 @@ import { EditableChild } from "../Fixtures/Helpers"
 import { NewsHeadline } from "../News/NewsHeadline"
 import { NewsPanel } from "../News/NewsPanel"
 
-storiesOf("Publishing/News/Headline", module)
+storiesOf("Legacy/Publishing/News/Headline", module)
   .add("Headline", () => {
     return (
       <div>
@@ -24,7 +24,7 @@ storiesOf("Publishing/News/Headline", module)
     )
   })
 
-storiesOf("Publishing/News/Panel", module).add("Panel", () => {
+storiesOf("Legacy/Publishing/News/Panel", module).add("Panel", () => {
   return (
     <div>
       <NewsPanel articles={[NewsArticle, FeatureArticle]} />
