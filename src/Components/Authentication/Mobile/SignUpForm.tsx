@@ -126,7 +126,7 @@ export const MobileSignUpForm: FormComponentType = props => {
                   fontSize="16px"
                 />
               </BackButton>
-              <MobileHeader>Sign up</MobileHeader>
+              <MobileHeader>Sign up for Artsy</MobileHeader>
               {currentStep}
               {status && !status.success && <Error show>{status.error}</Error>}
               <SubmitButton

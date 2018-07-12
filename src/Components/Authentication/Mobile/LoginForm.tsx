@@ -112,7 +112,7 @@ export const MobileLoginForm: FormComponentType = props => {
                   fontSize="16px"
                 />
               </BackButton>
-              <MobileHeader>Log in</MobileHeader>
+              <MobileHeader>Log in to Artsy</MobileHeader>
               {currentStep}
               {status && !status.success && <Error show>{status.error}</Error>}
               <SubmitButton

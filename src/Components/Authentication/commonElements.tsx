@@ -30,6 +30,7 @@ export const SmallText = styled.span`
   margin: 0;
   color: ${Colors.black30};
   ${unica("s12")};
+  line-height: 2.25em;
 `
 
 export const MobileHeader = styled.div`
