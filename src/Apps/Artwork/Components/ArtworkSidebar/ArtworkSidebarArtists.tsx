@@ -10,10 +10,10 @@ export interface ArtistsProps {
   artwork: ArtworkSidebarArtists_artwork
 }
 
-export type Artist = ArtworkSidebarArtists_artwork["artists"][0]
+type Artist = ArtworkSidebarArtists_artwork["artists"][0]
 
 export class ArtworkSidebarArtists extends React.Component<ArtistsProps> {
-  renderArtistName(artist: Artist) {
+  private renderArtistName(artist: Artist) {
     return artist.href ? (
       <Serif size="5t" display="inline-block" weight="semibold">
         <a href={artist.href}>{artist.name}</a>
@@ -25,7 +25,7 @@ export class ArtworkSidebarArtists extends React.Component<ArtistsProps> {
     )
   }
 
-  renderSingleArtist(artist: Artist) {
+  private renderSingleArtist(artist: Artist) {
     return (
       <React.Fragment>
         {this.renderArtistName(artist)}
