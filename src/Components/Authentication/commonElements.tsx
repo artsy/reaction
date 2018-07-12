@@ -1,6 +1,5 @@
-import { Sans } from "@artsy/palette"
+import { color, Sans } from "@artsy/palette"
 import { growAndFadeIn } from "Assets/Animations"
-import Colors from "Assets/Colors"
 import { garamond, unica } from "Assets/Fonts"
 import { ButtonProps } from "Components/Buttons/Default"
 import Button from "Components/Buttons/Inverted"
@@ -20,7 +19,7 @@ export const FormContainer = styled.form`
 `
 
 export const SmallTextLink = styled.a`
-  color: ${Colors.black30};
+  color: ${color("black60")};
   text-decoration: underline;
   cursor: pointer;
   ${unica("s12")};
@@ -28,7 +27,7 @@ export const SmallTextLink = styled.a`
 
 export const SmallText = styled.span`
   margin: 0;
-  color: ${Colors.black30};
+  color: ${color("black60")};
   ${unica("s12")};
   line-height: 2.25em;
 `
@@ -48,7 +47,7 @@ export const Error = styled.div.attrs<{ show: boolean }>({})`
   ${unica("s12")};
   margin-top: ${p => (p.show ? "auto" : "0")};
   margin-bottom: 10px;
-  color: ${Colors.redMedium};
+  color: ${color("red100")};
   visibility: ${p => (p.show ? "visible" : "hidden")};
   transition: visibility 0.2s linear;
   animation: ${p => p.show && growAndFadeIn("16px")} 0.25s linear;
@@ -84,7 +83,7 @@ export const BackButton = styled.div`
 
 const ForgotPasswordLink = styled(SmallTextLink)`
   margin-left: auto;
-  color: ${Colors.graySemibold};
+  color: ${color("black60")};
 `
 
 export const ForgotPassword = props => (

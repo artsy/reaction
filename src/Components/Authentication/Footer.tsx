@@ -11,15 +11,9 @@ const FooterContainer = styled.div`
   display: ${(props: Props) => (props.inline ? "inline" : "flex")};
   flex-direction: column;
 `
-
+// TODO: Remove twitter logic once deprecated
 export const Footer = props => {
-  const {
-    onFacebookLogin,
-    onTwitterLogin,
-    handleTypeChange,
-    mode,
-    inline,
-  } = props
+  const { onFacebookLogin, handleTypeChange, mode, inline } = props
 
   switch (mode) {
     case "login": {
@@ -28,8 +22,6 @@ export const Footer = props => {
           <SmallText>
             {"Log in using "}
             <SmallTextLink onClick={onFacebookLogin}>Facebook</SmallTextLink>
-            {" or "}
-            <SmallTextLink onClick={onTwitterLogin}>Twitter</SmallTextLink>
             {". "}
           </SmallText>
 
