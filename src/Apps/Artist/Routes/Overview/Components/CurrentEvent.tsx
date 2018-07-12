@@ -29,11 +29,11 @@ export const LargeCurrentEvent: SFC<CurrentEventProps> = props => {
     return null
   }
   const {
-    currentEvent: { image, status, name, details, partner, page },
+    currentEvent: { image, status, name, details, partner, href },
   } = props.artist
 
   return (
-    <a href={page}>
+    <a href={href} className="noUnderline">
       <Flex flexDirection="column">
         <Box width="100%" height="auto">
           <Image src={image.resized.url} width="100%" mb={1} />
@@ -69,7 +69,7 @@ export const CurrentEventFragmentContainer = createFragmentContainer(
         status
         details
         partner
-        page
+        href
       }
     }
   `
