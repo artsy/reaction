@@ -33,7 +33,7 @@ export const MobileSignUpForm: FormComponentType = props => {
         <Fragment>
           <Input
             block
-            error={touched.email && errors.email}
+            error={errors.email}
             placeholder="Enter your email address"
             name="email"
             label="Email"
@@ -45,10 +45,7 @@ export const MobileSignUpForm: FormComponentType = props => {
             quick
           />
           <TermsOfServiceCheckbox
-            error={
-              touched.accepted_terms_of_service &&
-              errors.accepted_terms_of_service
-            }
+            error={errors.accepted_terms_of_service}
             checked={values.accepted_terms_of_service}
             value={values.accepted_terms_of_service}
             type="checkbox"
@@ -124,12 +121,7 @@ export const MobileSignUpForm: FormComponentType = props => {
               <MobileHeader>Sign up</MobileHeader>
               {currentStep}
               {status && !status.success && <Error show>{status.error}</Error>}
-              <SubmitButton
-                disabled={!wizard.shouldAllowNext}
-                onClick={handleSubmit as any}
-              >
-                Next
-              </SubmitButton>
+              <SubmitButton onClick={handleSubmit as any}>Next</SubmitButton>
               <Footer
                 mode="signup"
                 onFacebookLogin={e => {
