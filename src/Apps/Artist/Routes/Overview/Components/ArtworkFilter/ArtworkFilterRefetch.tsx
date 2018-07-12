@@ -11,7 +11,14 @@ interface Props {
   artistID: string
 }
 
-class ArtworkGridRefetchContainerWrapper extends React.Component<Props> {
+interface State {
+  loading: boolean
+}
+
+class ArtworkGridRefetchContainerWrapper extends React.Component<Props, State> {
+  state = {
+    loading: false,
+  }
   componentDidUpdate(prevProps) {
     Object.keys(this.props.filters).forEach(key => {
       if (this.props.filters[key] !== prevProps.filters[key]) {
@@ -21,18 +28,23 @@ class ArtworkGridRefetchContainerWrapper extends React.Component<Props> {
   }
 
   loadFilter = () => {
-    this.props.relay.refetch(
-      {
-        ...this.props.filters,
-        artistNodeID: this.props.artist.__id,
-      },
-      null,
-      error => {
-        if (error) {
-          console.error(error)
-        }
-      }
-    )
+    if (!this.state.loading) {
+      this.setState({ loading: true }, () => {
+        this.props.relay.refetch(
+          {
+            ...this.props.filters,
+            artistNodeID: this.props.artist.__id,
+          },
+          null,
+          error => {
+            if (error) {
+              console.error(error)
+            }
+            this.setState({ loading: false })
+          }
+        )
+      })
+    }
   }
   render() {
     return (
