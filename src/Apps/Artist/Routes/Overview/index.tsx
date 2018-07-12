@@ -28,7 +28,8 @@ const OverviewRoute: SFC<OverviewRouteProps> = props => {
 
           <SelectedExhibitions
             artistID={artist.id}
-            exhibitions={props.artist.exhibition_highlights.slice(0, 10) as any}
+            totalExhibitions={props.artist.counts.partner_shows}
+            exhibitions={props.artist.exhibition_highlights as any}
           />
 
           <Box mt={3} mb={1}>
@@ -74,8 +75,11 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
       ...CurrentEvent_artist
       ...MarketInsightsArtistPage_artist
       id
-      exhibition_highlights(size: 15) {
+      exhibition_highlights(size: 3) {
         ...SelectedExhibitions_exhibitions
+      }
+      counts {
+        partner_shows
       }
 
       is_consignable

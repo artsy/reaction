@@ -10,6 +10,7 @@ import {
 const props = {
   exhibitions: exhibitions as any,
   artistID: "andy-warhol",
+  totalExhibitions: 100,
 }
 
 storiesOf("Styleguide/Components", module).add("SelectedExhibitions", () => {
@@ -22,6 +23,7 @@ storiesOf("Styleguide/Components", module).add("SelectedExhibitions", () => {
         <SelectedExhibitions
           exhibitions={exhibitions.slice(1) as any}
           artistID="andy-warhol"
+          totalExhibitions={100}
         />
       </Section>
       <Section title="3 exhibitions full">
@@ -31,6 +33,7 @@ storiesOf("Styleguide/Components", module).add("SelectedExhibitions", () => {
         <SelectedExhibitionsContainer
           exhibitions={exhibitions.slice(1) as any}
           artistID="andy-warhol"
+          totalExhibitions={100}
         />
       </Section>
       <Section title="3 exhibitions collapsed (xs)">
@@ -38,6 +41,7 @@ storiesOf("Styleguide/Components", module).add("SelectedExhibitions", () => {
           collapsible
           exhibitions={exhibitions as any}
           artistID="andy-warhol"
+          totalExhibitions={100}
         />
       </Section>
       <Section title="2 exhibitions collapsed (xs)">
@@ -45,12 +49,14 @@ storiesOf("Styleguide/Components", module).add("SelectedExhibitions", () => {
           collapsible
           exhibitions={exhibitions.slice(1) as any}
           artistID="andy-warhol"
+          totalExhibitions={100}
         />
       </Section>
       <Section title="1 exhibition">
         <SelectedExhibitions
           exhibitions={exhibitions.slice(2) as any}
           artistID="andy-warhol"
+          totalExhibitions={100}
         />
       </Section>
     </React.Fragment>

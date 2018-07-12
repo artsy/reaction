@@ -65,6 +65,7 @@ export const ExhibitionYearList: SFC<ExhibitionYearListProps> = props => (
 interface FullExhibitionListProps {
   exhibitions: SelectedExhibitions_exhibitions
   artistID: string
+  totalExhibitions: number
 }
 const FullExhibitionList: SFC<FullExhibitionListProps> = props => (
   <React.Fragment>
@@ -77,15 +78,18 @@ const FullExhibitionList: SFC<FullExhibitionListProps> = props => (
           exhibitions={exhibitions.reverse()}
         />
       ))}
-    <Sans size="2" color="black60">
-      <PreloadLink to={`/artist2/${props.artistID}/cv`}>View all</PreloadLink>
-    </Sans>
+    {props.totalExhibitions > MIN_FOR_SELECTED_EXHIBITIONS && (
+      <Sans size="2" color="black60">
+        <PreloadLink to={`/artist2/${props.artistID}/cv`}>View all</PreloadLink>
+      </Sans>
+    )}
   </React.Fragment>
 )
 
 export interface SelectedExhibitionsProps {
   exhibitions: SelectedExhibitions_exhibitions
-  artistID: string
+  artistID?: string
+  totalExhibitions?: number
 }
 
 export interface SelectedExhibitionsContainerProps
@@ -114,10 +118,14 @@ export class SelectedExhibitionsContainer extends React.Component<
             exhibitionCount={this.props.exhibitions.length}
             onShowClicked={() => this.setState({ expanded: true })}
           />
-          {!isCollapsed({ expanded: this.state.expanded, ...this.props }) && (
+          {!isCollapsed({
+            expanded: this.state.expanded,
+            ...this.props,
+          }) && (
             <FullExhibitionList
               artistID={this.props.artistID}
               exhibitions={this.props.exhibitions}
+              totalExhibitions={this.props.totalExhibitions}
             />
           )}
         </Flex>
