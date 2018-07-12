@@ -15,13 +15,13 @@ export class CVRoute extends Component<CVRouteProps> {
     return (
       <React.Fragment>
         <CVItem category="Solo shows" artist={viewer.artist_soloShows as any} />
-        <Spacer my={2} />
+        <Spacer my={3} />
 
         <CVItem
           category="Group shows"
           artist={viewer.artist_groupShows as any}
         />
-        <Spacer my={2} />
+        <Spacer my={3} />
 
         <CVItem
           category="Fair booths"
