@@ -1,8 +1,9 @@
 import { ArtistArticles_artist } from "__generated__/ArtistArticles_artist.graphql"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
+import styled from "styled-components"
 import { PaginationFragmentContainer as Pagination } from "Styleguide/Components/Pagination"
-import { Flex } from "Styleguide/Elements/Flex"
+import { Box } from "Styleguide/Elements/Box"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { ArticleItem } from "./ArtistArticle"
 
@@ -12,6 +13,12 @@ import {
 } from "Apps/Artist/Components/LoadingArea"
 
 const PAGE_SIZE = 10
+
+const Container = styled.div`
+  &:last-child {
+    border-bottom: none;
+  }
+`
 
 interface ArtistArticlesProps {
   relay: RelayRefetchProp
@@ -69,6 +76,7 @@ export class ArtistArticles extends Component<
   }
 
   render() {
+    const articlesLength = this.props.artist.articlesConnection.edges.length
     return (
       <React.Fragment>
         <span id="jumpto--artistArticles" />
@@ -76,26 +84,29 @@ export class ArtistArticles extends Component<
         <Row>
           <Col>
             <LoadingArea isLoading={this.state.isLoading}>
-              {this.props.artist.articlesConnection.edges.map(
-                ({ node }, index) => {
-                  return (
-                    <ArticleItem
-                      title={node.thumbnail_title}
-                      imageUrl={node.thumbnail_image.resized.url}
-                      date={node.published_at}
-                      author={node.author.name}
-                      href={node.href}
-                      key={index}
-                    />
-                  )
-                }
-              )}
+              <Container>
+                {this.props.artist.articlesConnection.edges.map(
+                  ({ node }, index) => {
+                    return (
+                      <ArticleItem
+                        title={node.thumbnail_title}
+                        imageUrl={node.thumbnail_image.resized.url}
+                        date={node.published_at}
+                        author={node.author.name}
+                        href={node.href}
+                        key={index}
+                        lastChild={index === articlesLength - 1}
+                      />
+                    )
+                  }
+                )}
+              </Container>
             </LoadingArea>
           </Col>
         </Row>
         <Row>
           <Col>
-            <Flex mb={2} justifyContent="flex-end">
+            <Box>
               <Pagination
                 pageCursors={
                   this.props.artist.articlesConnection.pageCursors as any
@@ -104,7 +115,7 @@ export class ArtistArticles extends Component<
                 onNext={this.loadNext}
                 scrollTo="#jumpto-RouteTabs"
               />
-            </Flex>
+            </Box>
           </Col>
         </Row>
       </React.Fragment>

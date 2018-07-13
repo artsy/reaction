@@ -4,6 +4,7 @@ import styled, { css } from "styled-components"
 import { Arrow } from "Styleguide/Elements/Arrow"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
+import { Separator } from "Styleguide/Elements/Separator"
 import { ScrollIntoView } from "Styleguide/Utils/ScrollIntoView"
 import { Responsive } from "Utils/Responsive"
 
@@ -61,34 +62,37 @@ export const LargePagination = (props: Props) => {
   } = props
 
   return (
-    <Flex flexDirection="row">
-      {first && (
-        <div>
-          {renderPage(first, onClick)}
-          <PageSpan mx={0.5} />
-        </div>
-      )}
+    <React.Fragment>
+      <Separator mb={3} />
+      <Flex flexDirection="row" justifyContent="flex-end">
+        {first && (
+          <div>
+            {renderPage(first, onClick)}
+            <PageSpan mx={0.5} />
+          </div>
+        )}
 
-      {around.map(pageInfo => renderPage(pageInfo, onClick))}
+        {around.map(pageInfo => renderPage(pageInfo, onClick))}
 
-      {last && (
-        <div>
-          <PageSpan mx={0.5} />
-          {renderPage(last, onClick)}
-        </div>
-      )}
+        {last && (
+          <div>
+            <PageSpan mx={0.5} />
+            {renderPage(last, onClick)}
+          </div>
+        )}
 
-      <Box ml={4}>
-        <PrevButton
-          onClick={() => {
-            if (previous) {
-              props.onClick(previous.cursor)
-            }
-          }}
-        />
-        <NextButton onClick={() => onNext()} />
-      </Box>
-    </Flex>
+        <Box ml={4}>
+          <PrevButton
+            onClick={() => {
+              if (previous) {
+                props.onClick(previous.cursor)
+              }
+            }}
+          />
+          <NextButton onClick={() => onNext()} />
+        </Box>
+      </Flex>
+    </React.Fragment>
   )
 }
 

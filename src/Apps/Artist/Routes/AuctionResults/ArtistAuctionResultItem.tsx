@@ -21,10 +21,12 @@ export interface Props extends ContextProps {
   mediator?: {
     trigger: (action: string, config: object) => void
   }
+  lastChild: boolean
 }
 
 export class ArtistAuctionResultItem extends Component<Props> {
   render() {
+    const { lastChild } = this.props
     return (
       <Subscribe to={[AppState]}>
         {({ state }) => {
@@ -67,7 +69,7 @@ export class ArtistAuctionResultItem extends Component<Props> {
 
               <Col>
                 <Box pt={2} pb={1}>
-                  <Separator />
+                  {!lastChild && <Separator />}
                 </Box>
               </Col>
             </Row>

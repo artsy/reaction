@@ -3,7 +3,6 @@ import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { PaginationFragmentContainer as Pagination } from "Styleguide/Components/Pagination"
 import { Box } from "Styleguide/Elements/Box"
-import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Subscribe } from "unstated"
@@ -103,6 +102,7 @@ class AuctionResultsContainer extends Component<
   }
 
   render() {
+    const auctionResultsLength = this.props.artist.auctionResults.edges.length
     return (
       <Subscribe to={[AuctionResultsState]}>
         {({ state }: AuctionResultsState) => {
@@ -131,6 +131,7 @@ class AuctionResultsContainer extends Component<
                           <React.Fragment key={index}>
                             <AuctionResultItemFragmentContainer
                               auctionResult={node as any}
+                              lastChild={index === auctionResultsLength - 1}
                             />
                           </React.Fragment>
                         )
@@ -142,7 +143,7 @@ class AuctionResultsContainer extends Component<
 
               <Row>
                 <Col>
-                  <Flex justifyContent="flex-end">
+                  <Box>
                     <Pagination
                       pageCursors={
                         this.props.artist.auctionResults.pageCursors as any
@@ -151,7 +152,7 @@ class AuctionResultsContainer extends Component<
                       onNext={this.loadNext}
                       scrollTo="#jumpto-RouteTabs"
                     />
-                  </Flex>
+                  </Box>
                 </Col>
               </Row>
             </React.Fragment>

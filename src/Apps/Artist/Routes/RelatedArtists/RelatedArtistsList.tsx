@@ -7,7 +7,6 @@ import { PaginationFragmentContainer as Pagination } from "Styleguide/Components
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
-import { Separator } from "Styleguide/Elements/Separator"
 import { Subscribe } from "unstated"
 import { Responsive } from "Utils/Responsive"
 
@@ -137,13 +136,11 @@ class RelatedArtistsList extends Component<ShowProps, LoadingAreaState> {
                       </Col>
                     </Row>
 
-                    <Box py={2}>
-                      <Separator />
-                    </Box>
+                    <Box py={2} />
 
                     <Row>
                       <Col>
-                        <Flex justifyContent="flex-end">
+                        <Box>
                           <Pagination
                             pageCursors={
                               this.props.artist.related.artists
@@ -153,7 +150,7 @@ class RelatedArtistsList extends Component<ShowProps, LoadingAreaState> {
                             onNext={this.loadNext}
                             scrollTo={this.props.scrollTo}
                           />
-                        </Flex>
+                        </Box>
                       </Col>
                     </Row>
                   </React.Fragment>
