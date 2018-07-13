@@ -1035,12 +1035,12 @@
     react-treebeard "^2.1.0"
 
 "@types/cheerio@*":
-  version "0.22.1"
-  resolved "https://registry.yarnpkg.com/@types/cheerio/-/cheerio-0.22.1.tgz#740c4cd8c4d3f3074f83b9ab62e711eac2c764ce"
+  version "0.22.8"
+  resolved "https://registry.yarnpkg.com/@types/cheerio/-/cheerio-0.22.8.tgz#5702f74f78b73e13f1eb1bd435c2c9de61a250d4"
 
 "@types/enzyme@^3.1.0":
-  version "3.1.6"
-  resolved "https://registry.yarnpkg.com/@types/enzyme/-/enzyme-3.1.6.tgz#5b6fd8c5d23d2e1d06eca528b54df81c3ee4cbbf"
+  version "3.1.11"
+  resolved "https://registry.yarnpkg.com/@types/enzyme/-/enzyme-3.1.11.tgz#0a059d2fe2c686f024ada911d24473cdb2e13903"
   dependencies:
     "@types/cheerio" "*"
     "@types/react" "*"
@@ -1053,13 +1053,13 @@
   version "20.0.7"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-20.0.7.tgz#39cd215db8bda03928dceb933a1e63eb2cbd210e"
 
-"@types/lodash@^4.14.88":
-  version "4.14.91"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.91.tgz#794611b28056d16b5436059c6d800b39d573cd3a"
+"@types/lodash@^4.14.111":
+  version "4.14.111"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.111.tgz#d926250baa9526c0ffe85914dd10363068e7893a"
 
 "@types/node@*":
-  version "10.3.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.3.2.tgz#3840ec6c12556fdda6e0e6d036df853101d732a4"
+  version "10.5.2"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.5.2.tgz#f19f05314d5421fe37e74153254201a7bf00a707"
 
 "@types/prop-types@^15.5.1":
   version "15.5.1"
@@ -1073,8 +1073,8 @@
     "@types/react" "*"
 
 "@types/react-overlays@^0.8.2":
-  version "0.8.2"
-  resolved "https://registry.yarnpkg.com/@types/react-overlays/-/react-overlays-0.8.2.tgz#e31d18e1f7f07c3c5f4023a2b42bf342664c6966"
+  version "0.8.4"
+  resolved "https://registry.yarnpkg.com/@types/react-overlays/-/react-overlays-0.8.4.tgz#45a189df6fb1882f7a9db93b03efe4b976a51916"
   dependencies:
     "@types/react" "*"
     "@types/react-transition-group" "*"
@@ -1092,9 +1092,9 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-test-renderer@^15.4.4":
-  version "15.4.4"
-  resolved "https://registry.yarnpkg.com/@types/react-test-renderer/-/react-test-renderer-15.4.4.tgz#bce97ffa38b8ec3fd522791f779dd0c378d5a995"
+"@types/react-test-renderer@^16.0.1":
+  version "16.0.1"
+  resolved "https://registry.yarnpkg.com/@types/react-test-renderer/-/react-test-renderer-16.0.1.tgz#36ee8c4fe33c61d460ad0e7bc42a2d0ddcc775a1"
   dependencies:
     "@types/react" "*"
 
@@ -1105,12 +1105,12 @@
     "@types/react" "*"
 
 "@types/react-transition-group@*", "@types/react-transition-group@^2.0.7":
-  version "2.0.7"
-  resolved "https://registry.yarnpkg.com/@types/react-transition-group/-/react-transition-group-2.0.7.tgz#2847292d54c5685d982ae5a3ecb6960946689d87"
+  version "2.0.11"
+  resolved "https://registry.yarnpkg.com/@types/react-transition-group/-/react-transition-group-2.0.11.tgz#feb274676a39383fffaa0dff710958d2251abefb"
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^16.0.31":
+"@types/react@*", "@types/react@16.3.17":
   version "16.3.17"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.3.17.tgz#d59d1a632570b0713946ed9c2949d994773633c5"
   dependencies:
@@ -1125,8 +1125,8 @@
   resolved "https://registry.yarnpkg.com/@types/relay-runtime/-/relay-runtime-1.3.2.tgz#eee87232fe1a60fb08183fcb43434ed4b4fe2b83"
 
 "@types/storybook__react@^3.0.5":
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/@types/storybook__react/-/storybook__react-3.0.5.tgz#aea4d67146a59de9cf5bacfe8bd24f7abd6128a6"
+  version "3.0.8"
+  resolved "https://registry.yarnpkg.com/@types/storybook__react/-/storybook__react-3.0.8.tgz#58deb593361b7d5e6a6eca09bc7889b613980925"
   dependencies:
     "@types/react" "*"
     "@types/webpack-env" "*"
@@ -1138,8 +1138,8 @@
     styled-components "^3.3.2"
 
 "@types/webpack-env@*":
-  version "1.13.3"
-  resolved "https://registry.yarnpkg.com/@types/webpack-env/-/webpack-env-1.13.3.tgz#0ecbe70f87341767793774d3683b51aa3246434c"
+  version "1.13.6"
+  resolved "https://registry.yarnpkg.com/@types/webpack-env/-/webpack-env-1.13.6.tgz#128d1685a7c34d31ed17010fc87d6a12c1de6976"
 
 JSONStream@^1.0.4:
   version "1.3.2"
@@ -4134,8 +4134,8 @@ cssom@0.3.x, "cssom@>= 0.3.2 < 0.4.0":
     cssom "0.3.x"
 
 csstype@^2.2.0:
-  version "2.5.3"
-  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.5.3.tgz#2504152e6e1cc59b32098b7f5d6a63f16294c1f7"
+  version "2.5.5"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.5.5.tgz#4125484a3d42189a863943f23b9e4b80fedfa106"
 
 currently-unhandled@^0.4.1:
   version "0.4.1"
@@ -4237,6 +4237,10 @@ deep-is@~0.1.3:
 deep-object-diff@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/deep-object-diff/-/deep-object-diff-1.1.0.tgz#d6fabf476c2ed1751fc94d5ca693d2ed8c18bc5a"
+
+deepmerge@^2.1.0:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-2.1.1.tgz#e862b4e45ea0555072bf51e7fd0d9845170ae768"
 
 default-require-extensions@^2.0.0:
   version "2.0.0"
@@ -7797,10 +7801,6 @@ lodash.memoize@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
 
-lodash.merge@^4.6.0:
-  version "4.6.1"
-  resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.1.tgz#adc25d9cb99b9391c59624f379fbba60d7111d54"
-
 lodash.pick@^4.4.0:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/lodash.pick/-/lodash.pick-4.4.0.tgz#52f05610fff9ded422611441ed1fc123a03001b3"
@@ -10491,11 +10491,12 @@ react-toggle@^4.0.2:
   dependencies:
     classnames "^2.2.5"
 
-react-tracking@^4.2.1:
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/react-tracking/-/react-tracking-4.2.1.tgz#c34619ddd205609ea46281a6c8c8e1243e910e81"
+react-tracking@^5.3.0:
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/react-tracking/-/react-tracking-5.3.0.tgz#6107db448084745bc50604d1f3f1f582c0073def"
   dependencies:
-    lodash.merge "^4.6.0"
+    deepmerge "^2.1.0"
+    hoist-non-react-statics "^2.5.0"
 
 react-transition-group@^2.0.0, react-transition-group@^2.2.0, react-transition-group@^2.3.0:
   version "2.3.1"
