@@ -1,8 +1,6 @@
 import { Sans, Serif } from "@artsy/palette"
-import Icon from "Components/Icon"
 import { Modal } from "Components/Modal/Modal"
 import React, { Component, SFC } from "react"
-import styled from "styled-components"
 import { Box } from "Styleguide/Elements/Box"
 import { Button } from "Styleguide/Elements/Button"
 import { Flex } from "Styleguide/Elements/Flex"
@@ -65,8 +63,6 @@ const LotDetails: SFC<Props> = props => {
 
   return (
     <React.Fragment>
-      <CloseButton onClick={() => hideDetailsModal()} />
-
       <Flex justifyContent="center">
         <Serif size="5t" weight="semibold">
           Lot description
@@ -116,26 +112,3 @@ const LotDetails: SFC<Props> = props => {
     </React.Fragment>
   )
 }
-
-const CloseButton = props => {
-  return (
-    <CloseButtonWrapper {...props}>
-      <Icon name="close" fontSize="16px" color="black" />
-    </CloseButtonWrapper>
-  )
-}
-
-const CloseButtonWrapper = styled.div`
-  cursor: pointer;
-  position: absolute;
-  width: 1vw;
-  right: 30px;
-  top: 15px;
-  opacity: 0.1;
-
-  transition: opacity 0.25s;
-
-  &:hover {
-    opacity: 1;
-  }
-`
