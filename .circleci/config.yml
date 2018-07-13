@@ -80,6 +80,7 @@ workflows:
       - type-check
       - test
       - deploy:
+          context: npm-deploy
           <<: *filter_master
           requires:
             - test
