@@ -116,8 +116,6 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
 
   render() {
     const { error, isMobile, options } = this.props
-    const pageLocation =
-      typeof window !== "undefined" ? window.location.href : ""
 
     const queryData = Object.assign(
       {},
@@ -125,7 +123,7 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
       {
         accepted_terms_of_service: true,
         agreed_to_receive_emails: true,
-        "signup-referer": options.signupReferer || pageLocation,
+        "signup-referer": options.signupReferer,
       },
       options.redirectTo
         ? {
