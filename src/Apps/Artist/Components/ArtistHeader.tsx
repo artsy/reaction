@@ -103,6 +103,7 @@ export const LargeArtistHeader: SFC<Props> = props => {
           useDeprecatedButtonStyle={false}
           artist={props.artist as any}
           currentUser={currentUser}
+          buttonProps={{ variant: "secondaryOutline" }}
           onOpenAuthModal={() => {
             props.mediator.trigger("open:auth", {
               mode: "signup",
