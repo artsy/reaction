@@ -42,7 +42,8 @@ const OverviewRoute: SFC<OverviewRouteProps> = props => {
 
           {artist.is_consignable && (
             <Sans size="2" color="black60">
-              <a href="/consign">Consign</a> a work by this artist.
+              Want to sell a work by this artist?{" "}
+              <a href="/consign">Learn more</a>.
             </Sans>
           )}
         </Col>
