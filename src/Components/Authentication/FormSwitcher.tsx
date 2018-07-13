@@ -116,6 +116,8 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
 
   render() {
     const { error, isMobile, options } = this.props
+    const pageLocation =
+      typeof window !== "undefined" ? window.location.href : ""
 
     const queryData = Object.assign(
       {},
@@ -123,7 +125,7 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
       {
         accepted_terms_of_service: true,
         agreed_to_receive_emails: true,
-        "signup-referer": options.signupReferer || location.href,
+        "signup-referer": options.signupReferer || pageLocation,
       },
       options.redirectTo
         ? {
@@ -176,10 +178,12 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
             })
           }
 
-          window.location.href =
-            this.props.submitUrls.facebook +
-            `?${authQueryData}` +
-            "&service=facebook"
+          if (typeof window !== "undefined") {
+            window.location.href =
+              this.props.submitUrls.facebook +
+              `?${authQueryData}` +
+              "&service=facebook"
+          }
         }}
         onTwitterLogin={() => {
           if (this.props.onSocialAuthEvent) {
@@ -189,8 +193,10 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
             })
           }
 
-          window.location.href =
-            this.props.submitUrls + `?${authQueryData}` + "&service=twitter"
+          if (typeof window !== "undefined") {
+            window.location.href =
+              this.props.submitUrls + `?${authQueryData}` + "&service=twitter"
+          }
         }}
       />
     )
