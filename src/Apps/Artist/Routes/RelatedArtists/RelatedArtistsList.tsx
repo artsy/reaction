@@ -23,7 +23,7 @@ interface ShowProps {
   scrollTo: string
 }
 
-export const PAGE_SIZE = 6
+export const PAGE_SIZE = 8
 
 class RelatedArtistsList extends Component<ShowProps, LoadingAreaState> {
   state = {
@@ -173,7 +173,7 @@ export const RelatedArtistsRefetchContainer = createRefetchContainer(
     artist: graphql`
       fragment RelatedArtistsList_artist on Artist
         @argumentDefinitions(
-          first: { type: "Int", defaultValue: 6 }
+          first: { type: "Int", defaultValue: 8 }
           last: { type: "Int" }
           after: { type: "String" }
           before: { type: "String" }
