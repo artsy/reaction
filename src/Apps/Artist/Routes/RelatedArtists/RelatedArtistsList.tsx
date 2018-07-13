@@ -78,6 +78,7 @@ class RelatedArtistsList extends Component<ShowProps, LoadingAreaState> {
     return (
       <Box>
         <Pagination
+          hasNextPage={this.props.artist.related.artists.pageInfo.hasNextPage}
           pageCursors={this.props.artist.related.artists.pageCursors as any}
           onClick={this.loadAfter}
           onNext={this.loadNext}
@@ -142,6 +143,10 @@ class RelatedArtistsList extends Component<ShowProps, LoadingAreaState> {
                       <Col>
                         <Box>
                           <Pagination
+                            hasNextPage={
+                              this.props.artist.related.artists.pageInfo
+                                .hasNextPage
+                            }
                             pageCursors={
                               this.props.artist.related.artists
                                 .pageCursors as any

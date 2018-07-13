@@ -145,6 +145,9 @@ class AuctionResultsContainer extends Component<
                 <Col>
                   <Box>
                     <Pagination
+                      hasNextPage={
+                        this.props.artist.auctionResults.pageInfo.hasNextPage
+                      }
                       pageCursors={
                         this.props.artist.auctionResults.pageCursors as any
                       }

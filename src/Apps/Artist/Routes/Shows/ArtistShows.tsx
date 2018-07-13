@@ -155,6 +155,10 @@ class ArtistShows extends Component<ArtistShowsProps, LoadingAreaState> {
                     <Col>
                       <Box>
                         <Pagination
+                          hasNextPage={
+                            this.props.artist.showsConnection.pageInfo
+                              .hasNextPage
+                          }
                           pageCursors={
                             this.props.artist.showsConnection.pageCursors as any
                           }

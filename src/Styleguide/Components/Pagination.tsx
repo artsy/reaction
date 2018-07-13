@@ -15,6 +15,7 @@ interface Props {
   onClick?: (cursor: string) => void
   onNext?: () => void
   pageCursors: Pagination_pageCursors
+  hasNextPage: boolean
   scrollTo?: string
 }
 
@@ -59,6 +60,7 @@ export const LargePagination = (props: Props) => {
     pageCursors: { around, first, last, previous },
     onClick,
     onNext,
+    hasNextPage,
   } = props
 
   return (
@@ -83,13 +85,14 @@ export const LargePagination = (props: Props) => {
 
         <Box ml={4}>
           <PrevButton
+            disabled={!previous}
             onClick={() => {
               if (previous) {
                 props.onClick(previous.cursor)
               }
             }}
           />
-          <NextButton onClick={() => onNext()} />
+          <NextButton disabled={!hasNextPage} onClick={() => onNext()} />
         </Box>
       </Flex>
     </React.Fragment>
@@ -101,11 +104,16 @@ export const SmallPagination = (props: Props) => {
     pageCursors: { previous },
     onClick,
     onNext,
+    hasNextPage,
   } = props
 
   return (
     <Flex flexDirection="row" width="100%">
-      <Flex width="50%" pr={0.5}>
+      <PrevNextFlex
+        className={!previous ? "disabled" : null}
+        width="50%"
+        pr={0.5}
+      >
         <ButtonWithBorder
           alignItems="center"
           justifyContent="flex-start"
@@ -118,8 +126,12 @@ export const SmallPagination = (props: Props) => {
         >
           <Arrow direction="left" />
         </ButtonWithBorder>
-      </Flex>
-      <Flex width="50%" pl={0.5}>
+      </PrevNextFlex>
+      <PrevNextFlex
+        className={!hasNextPage ? "disabled" : null}
+        width="50%"
+        pl={0.5}
+      >
         <ButtonWithBorder
           onClick={() => onNext()}
           alignItems="center"
@@ -128,7 +140,7 @@ export const SmallPagination = (props: Props) => {
         >
           <Arrow direction="right" />
         </ButtonWithBorder>
-      </Flex>
+      </PrevNextFlex>
     </Flex>
   )
 }
@@ -151,23 +163,39 @@ const PageSpan = ({ mx }) => {
   )
 }
 
-const PrevButton = ({ onClick }) => {
+const PrevNextContainer = styled.span`
+  &.disabled {
+    opacity: 0.1;
+  }
+`
+
+const PrevNextFlex = styled(Flex)`
+  &.disabled {
+    opacity: 0.1;
+  }
+`
+
+const PrevButton = ({ onClick, disabled }) => {
   return (
-    <Sans size="3" weight="medium" display="inline" mx={0.5}>
-      <a onClick={() => onClick()} className="noUnderline">
-        <Arrow direction="left" /> Prev
-      </a>
-    </Sans>
+    <PrevNextContainer className={disabled ? "disabled" : null}>
+      <Sans size="3" weight="medium" display="inline" mx={0.5}>
+        <a onClick={() => onClick()} className="noUnderline">
+          <Arrow direction="left" /> Prev
+        </a>
+      </Sans>
+    </PrevNextContainer>
   )
 }
 
-const NextButton = ({ onClick }) => {
+const NextButton = ({ onClick, disabled }) => {
   return (
-    <Sans size="3" weight="medium" display="inline" mx={0.5}>
-      <a onClick={() => onClick()} className="noUnderline">
-        Next <Arrow direction="right" />
-      </a>
-    </Sans>
+    <PrevNextContainer className={disabled ? "disabled" : null}>
+      <Sans size="3" weight="medium" display="inline" mx={0.5}>
+        <a onClick={() => onClick()} className="noUnderline">
+          Next <Arrow direction="right" />
+        </a>
+      </Sans>
+    </PrevNextContainer>
   )
 }
 

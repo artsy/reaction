@@ -91,6 +91,9 @@ class Artworks extends Component<Props, LoadingAreaState> {
 
               <Box>
                 <Pagination
+                  hasNextPage={
+                    this.props.filtered_artworks.artworks.pageInfo.hasNextPage
+                  }
                   pageCursors={
                     this.props.filtered_artworks.artworks.pageCursors as any
                   }
