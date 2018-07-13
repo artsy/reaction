@@ -1,6 +1,26 @@
 import _track, { Track as _Track, TrackingInfo } from "react-tracking"
 import Events from "Utils/Events"
 import * as Schema from "./Schema"
+import { ActionableTypes } from "./Schema"
+
+/**
+ * This function transforms properties in the new schema to the old one, because
+ * the analytics team does not have the bandwidth right now to deal with partial
+ * old and new analytics coming from Force. This allows us to use the new schema
+ * in our Reaction code and be in sync with Emission.
+ *
+ * TODO: Remove this once the analytics team has the bandwidth to transform on
+ *       their end _or_ we have fully switched over.
+ */
+function postEvent(data: Schema.Global) {
+  const { action_type, action_name, ...properties } = data as Schema.Global & {
+    action: string
+    label: string
+  }
+  if (action_type) properties.action = action_type
+  if (action_name) properties.label = action_name
+  Events.postEvent(properties)
+}
 
 /**
  * Use this interface to augment the `track` function with props, state, or custom tracking-info schema.
@@ -50,7 +70,7 @@ import * as Schema from "./Schema"
 export interface Track<
   P = any,
   S = null,
-  T extends Schema.Global = Schema.Entity
+  T extends Schema.Global = ActionableTypes
 > extends _Track<T, P, S> {} // tslint:disable-line:no-empty-interface
 
 /**
@@ -136,7 +156,7 @@ export function screenTrack<P>(
   trackingInfo: TrackingInfo<Schema.PageView, P, null>
 ) {
   return _track(trackingInfo as any, {
-    dispatch: data => Events.postEvent(data),
+    dispatch: postEvent,
     dispatchOnMount: true,
   })
 }

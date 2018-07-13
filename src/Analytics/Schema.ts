@@ -14,6 +14,7 @@ export interface Global {
    * This is how we distinguish the two type of events in Eigen
    * Track data inherits the screen view (called "context_screen") properties
    *
+   * NOTE: In the old Force schema, this was the event name.
    */
   action_type: ActionTypes
 
@@ -21,6 +22,8 @@ export interface Global {
    * The discription of an event
    *
    * E.g. Conversation artwork attachment tapped
+   *
+   * NOTE: In the old Force schema, this was the `label` field.
    */
   action_name: ActionNames
 
@@ -28,24 +31,44 @@ export interface Global {
    * OPTIONAL: Additional properties of the action
    */
   additional_properties?: object
+
+  /*****************************************************************************
+   * Old schema
+   *
+   * TODO: Figure out if any of these should actually have new names in the new
+   *       schema.
+   ****************************************************************************/
+
+  type: string
+  context_module?: string
 }
 
-export interface Entity extends Global {
-  /**
-   * The ID of the entity in its database. E.g. the Mongo ID for entities that reside in Gravity.
-   */
-  owner_id: string
+// export interface GlobalOld {
+//   type: "Link" | "thumbnail" | "dismiss"
+//   label?: string
+//   // TODO: If this were a union of whole payload types, then this wouldn’t need
+//   //       to be optional in case of e.g. a Link
+//   destination_path?: string
+//   context_module: string
+// }
 
-  /**
-   * The public slug for this entity.
-   */
-  owner_slug: string
+// export interface Artist extends Global {
+//   context_module: "carousel" | "Artist header"
+//   tab?: string
+// }
 
-  /**
-   * The type of entity, e.g. Artwork, Artist, etc.
-   */
-  owner_type: OwnerEntityTypes
+export interface Link extends Global {
+  type: "Link"
+  destination_path: string
 }
+
+export interface ArtistTabs extends Link {
+  // TODO Use enum defined in tabs component?
+  tab: string
+}
+
+// TODO Rename once this file is split up
+export type ActionableTypes = Global | Link | ArtistTabs
 
 export interface PageView {
   /**
@@ -71,43 +94,14 @@ export interface PageView {
   context_screen_owner_type: OwnerEntityTypes
 }
 
-export enum PageNames {
-  ArtistPage = "Artist",
-  BidFlowMaxBidPage = "YourMaxBid",
-  BidFlowConfirmBidPage = "ConfirmYourBid",
-  BidFlowBillingAddressPage = "YourBillingAddress",
-  BidFlowRegistration = "Registration",
-  BidFlowRegistrationResultConfirmed = "RegistrationConfirmed",
-  BidFlowRegistrationResultPending = "RegistrationPending",
-  BidFlowRegistrationResultError = "RegistrationError",
-  ConversationPage = "Conversation",
-  ConsignmentsWelcome = "ConsignmentsWelcome",
-  ConsignmentsOverView = "ConsignmentsOverview",
-  ConsignmentsSubmission = "ConsignmentsSubmit",
-  GenePage = "Gene",
-  InboxPage = "Inbox",
-  InquiryPage = "Inquiry",
-  HomeArtistsWorksForYou = "HomeArtistsWorksForYou",
-  HomeForYou = "HomeForYou",
-  HomeAuctions = "HomeAuctions",
-  SavesAndFollows = "SavesAndFollows",
-}
-
-export enum OwnerEntityTypes {
-  Artist = "Artist",
-  Artwork = "Artwork",
-  Conversation = "Conversation",
-  Gene = "Gene",
-  Show = "Show",
-  Invoice = "Invoice",
-  Consignment = "ConsignmentSubmission",
-}
-
 export enum ActionTypes {
   /**
    * User actions
+   *
+   * TODO: Check if Emission’s ‘tap’ and this can be combined.
    */
-  Tap = "tap",
+  // Tap = "tap",
+  Click = "Click",
 
   /**
    * Events / results
@@ -128,6 +122,8 @@ export enum ActionNames {
   ArtistUnfollow = "artistUnfollow",
   ArtistWorks = "artistWorks",
   ArtistShows = "artistShows",
+  ArtistTab = "Clicked artist page tab", // TODO: Old schema
+  ArtistCarousel = "Clicked artist page carousel image", // TODO: Old schema
 
   /**
    * Gene Page Events
@@ -168,6 +164,7 @@ export enum ActionNames {
    */
   ConsignmentDraftCreated = "consignmentDraftCreated",
   ConsignmentSubmitted = "consignmentSubmitted",
+  ConsignmentInterest = "Interested in selling a work learn more", // TODO: Old schema
 
   /**
    * Bid flow
@@ -175,4 +172,43 @@ export enum ActionNames {
   BidFlowAddBillingAddress = "addBillingAddress",
   BidFlowPlaceBid = "placeBid",
   BidFlowSaveBillingAddress = "saveBillingAddress",
+
+  /**
+   * Generic
+   */
+  ReadMoreExpanded = "readMoreExpanded", // TODO: This differs from old event
+  InSale = "In current auction", // TODO: Old schema
+  InShow = "In featured show", // TODO: Old schema
+}
+
+export enum OwnerEntityTypes {
+  Artist = "Artist",
+  Artwork = "Artwork",
+  Conversation = "Conversation",
+  Gene = "Gene",
+  Show = "Show",
+  Invoice = "Invoice",
+  Consignment = "ConsignmentSubmission",
+}
+
+export enum PageNames {
+  ArtistPage = "Artist",
+  BidFlowMaxBidPage = "YourMaxBid",
+  BidFlowConfirmBidPage = "ConfirmYourBid",
+  BidFlowBillingAddressPage = "YourBillingAddress",
+  BidFlowRegistration = "Registration",
+  BidFlowRegistrationResultConfirmed = "RegistrationConfirmed",
+  BidFlowRegistrationResultPending = "RegistrationPending",
+  BidFlowRegistrationResultError = "RegistrationError",
+  ConversationPage = "Conversation",
+  ConsignmentsWelcome = "ConsignmentsWelcome",
+  ConsignmentsOverView = "ConsignmentsOverview",
+  ConsignmentsSubmission = "ConsignmentsSubmit",
+  GenePage = "Gene",
+  InboxPage = "Inbox",
+  InquiryPage = "Inquiry",
+  HomeArtistsWorksForYou = "HomeArtistsWorksForYou",
+  HomeForYou = "HomeForYou",
+  HomeAuctions = "HomeAuctions",
+  SavesAndFollows = "SavesAndFollows",
 }
