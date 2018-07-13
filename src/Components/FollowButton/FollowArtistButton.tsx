@@ -54,7 +54,8 @@ export class FollowArtistButton extends React.Component<Props> {
     tracking.trackEvent(extend({ action }, trackingData))
   }
 
-  handleFollow = () => {
+  handleFollow = e => {
+    e.preventDefault() // If this button is part of a link, we _probably_ dont want to actually follow the link.
     const { artist, currentUser, relay, onOpenAuthModal } = this.props
 
     if (currentUser && currentUser.id) {
