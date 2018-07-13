@@ -1,4 +1,4 @@
-import { color, Sans, Serif } from "@artsy/palette"
+import { Sans, Serif } from "@artsy/palette"
 import { CVItem_artist } from "__generated__/CVItem_artist.graphql"
 import { groupBy } from "lodash"
 import React, { Component } from "react"
@@ -15,8 +15,19 @@ import {
   graphql,
   RelayPaginationProp,
 } from "react-relay"
+import { ShowEntry } from "./ShowEntry"
 
 export const PAGE_SIZE = 10
+
+// width={xs || sm ? "100%" : ""}
+// mb={3}
+// onClick={() => this.loadMore()}
+// loading={this.state.isLoading ? true : false}
+const ShowMoreButton = props => (
+  <Button variant="secondaryOutline" {...props}>
+    Show more
+  </Button>
+)
 
 export interface CVItemProps {
   relay: RelayPaginationProp
@@ -59,34 +70,6 @@ class CVItem extends Component<CVItemProps, CVItemState> {
     return hasMore
   }
 
-  // FIXME: Check for null links
-  // FIXME: Figure out how to always point to artsy.net env? how to handle urls?
-  renderShow(node, index) {
-    const FIXME_DOMAIN = "https://www.artsy.net"
-
-    return (
-      <Show size="3" mb={1} key={index}>
-        <Serif size="3" display="inline" italic>
-          {node.href ? (
-            <a href={FIXME_DOMAIN + node.href} className="noUnderline">
-              {node.name}
-            </a>
-          ) : (
-            <span>{node.name}</span>
-          )}
-        </Serif>,{" "}
-        {node.partner.href ? (
-          <a href={FIXME_DOMAIN + node.partner.href} className="noUnderline">
-            {node.partner.name}
-          </a>
-        ) : (
-          <span>{node.partner.name}</span>
-        )}
-        {node.city && `, ${node.city}`}
-      </Show>
-    )
-  }
-
   render() {
     const groupedByYear = groupBy(
       this.props.artist.showsConnection.edges,
@@ -97,7 +80,7 @@ class CVItem extends Component<CVItemProps, CVItemState> {
 
     return (
       <Responsive>
-        {({ xs }) => {
+        {({ xs, sm }) => {
           return (
             <React.Fragment>
               <Row>
@@ -105,14 +88,14 @@ class CVItem extends Component<CVItemProps, CVItemState> {
                   <CVItems pb={1}>
                     <Box>
                       <Row>
-                        <Col sm={2}>
+                        <Col md={2}>
                           <Box mb={1}>
                             <Category size="3" weight="medium">
                               {this.props.category}
                             </Category>
                           </Box>
                         </Col>
-                        <Col sm={10}>
+                        <Col sm={12}>
                           {Object.keys(groupedByYear)
                             .sort()
                             .reverse()
@@ -120,12 +103,12 @@ class CVItem extends Component<CVItemProps, CVItemState> {
                               return (
                                 <YearGroup mb={2} key={index}>
                                   <Year size="3">{year}</Year>
-                                  <Spacer mr={xs ? 1 : 4} />
+                                  <Spacer mr={xs || sm ? 1 : 4} />
                                   <ShowGroup>
                                     {groupedByYear[year].map(
-                                      ({ node }, key) => {
-                                        return this.renderShow(node, key)
-                                      }
+                                      ({ node }, key) => (
+                                        <ShowEntry node={node} key={key} />
+                                      )
                                     )}
                                   </ShowGroup>
                                 </YearGroup>
@@ -134,17 +117,7 @@ class CVItem extends Component<CVItemProps, CVItemState> {
 
                           <Spacer mb={1} />
 
-                          {this.hasMore && (
-                            <Button
-                              width={xs ? "100%" : ""}
-                              mb={3}
-                              variant="secondaryOutline"
-                              onClick={() => this.loadMore()}
-                              loading={this.state.isLoading ? true : false}
-                            >
-                              Show more
-                            </Button>
-                          )}
+                          {this.hasMore && <ShowMoreButton />}
                         </Col>
                       </Row>
                     </Box>
@@ -254,11 +227,8 @@ export const CVPaginationContainer = createPaginationContainer(
   }
 )
 
-const CVItems = styled(Box)`
-  border-bottom: 1px solid ${color("black10")};
-`
+const CVItems = Box
 const YearGroup = styled(Flex)``
 const Year = Serif
 const ShowGroup = styled.div``
-const Show = Serif
 const Category = Sans
