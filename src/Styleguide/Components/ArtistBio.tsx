@@ -1,18 +1,30 @@
 import { Serif } from "@artsy/palette"
+import { ArtistBio_bio } from "__generated__/ArtistBio_bio.graphql"
+import { track } from "Analytics"
+import * as Schema from "Analytics/Schema"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Responsive } from "Utils/Responsive"
 import { ReadMore } from "./ReadMore"
-
-import { ArtistBio_bio } from "__generated__/ArtistBio_bio.graphql"
 
 interface Props {
   bio: ArtistBio_bio
   onReadMoreClicked?: () => void
 }
 
+@track({ context_module: "Artist bio" })
 export class ArtistBio extends React.Component<Props> {
+  @track({
+    action_type: Schema.ActionTypes.Click,
+    action_name: Schema.ActionNames.ReadMoreExpanded,
+  })
+  handleReadMoreClicked() {
+    this.props.onReadMoreClicked && this.props.onReadMoreClicked()
+  }
+
   render() {
+    const onReadMoreClicked = this.handleReadMoreClicked.bind(this)
+
     const blurb = (
       <div
         dangerouslySetInnerHTML={{
@@ -26,16 +38,13 @@ export class ArtistBio extends React.Component<Props> {
         {({ xs }) => {
           if (xs) {
             return (
-              <ReadMore onReadMoreClicked={this.props.onReadMoreClicked}>
+              <ReadMore onReadMoreClicked={onReadMoreClicked}>
                 <Serif size="3">{blurb}</Serif>
               </ReadMore>
             )
           } else {
             return (
-              <ReadMore
-                onReadMoreClicked={this.props.onReadMoreClicked}
-                maxLineCount={7}
-              >
+              <ReadMore onReadMoreClicked={onReadMoreClicked} maxLineCount={7}>
                 <Serif size="3">{blurb}</Serif>
               </ReadMore>
             )

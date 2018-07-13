@@ -1,5 +1,7 @@
 import { Sans } from "@artsy/palette"
 import { Overview_artist } from "__generated__/Overview_artist.graphql"
+import { Track, track as _track } from "Analytics"
+import * as Schema from "Analytics/Schema"
 import { ArtworkFilterFragmentContainer as ArtworkFilter } from "Apps/Artist/Routes/Overview/Components/ArtworkFilter"
 import { GenesFragmentContainer as Genes } from "Apps/Artist/Routes/Overview/Components/Genes"
 import React from "react"
@@ -20,10 +22,28 @@ interface State {
   isReadMoreExpanded: boolean
 }
 
+const track: Track<OverviewRouteProps> = _track
+
+@track({ context_module: "Artist overview" })
 class OverviewRoute extends React.Component<OverviewRouteProps, State> {
   state = {
     isReadMoreExpanded: false,
   }
+
+  // FIXME: Something must be wrong with the typings, because if I leave out the
+  //        _state parameter TS selects a different function signature.
+  @track((props, _state) => ({
+    action_type: Schema.ActionTypes.Click,
+    action_name: Schema.ActionNames.ConsignmentInterest,
+    type: "Link",
+    // TODO: This is no longer in the header
+    // context_module: "Artist header",
+    destination_path: props.artist.href,
+  }))
+  handleConsignClick() {
+    // no-op
+  }
+
   render() {
     const { artist } = this.props
 
@@ -56,7 +76,9 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
             {artist.is_consignable && (
               <Sans size="2" color="black60">
                 Want to sell a work by this artist?{" "}
-                <a href="/consign">Learn more</a>.
+                <a href="/consign" onClick={this.handleConsignClick.bind(this)}>
+                  Learn more
+                </a>.
               </Sans>
             )}
           </Col>
@@ -104,6 +126,7 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
         partner_shows
       }
 
+      href
       is_consignable
 
       ...Genes_artist

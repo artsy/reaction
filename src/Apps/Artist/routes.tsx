@@ -2,7 +2,7 @@ import { FilterState } from "Apps/Artist/Routes/Overview/state"
 import React from "react"
 import { graphql } from "react-relay"
 import { Provider } from "unstated"
-import { ArtistApp } from "./ArtistApp"
+import { ArtistAppFragmentContainer as ArtistApp } from "./ArtistApp"
 import { ArticlesRouteFragmentContainer as ArticlesRoute } from "./Routes/Articles"
 import { AuctionResultsRouteFragmentContainer as AuctionResultsRoute } from "./Routes/AuctionResults"
 import { CVRouteFragmentContainer as CVRoute } from "./Routes/CV"
@@ -37,11 +37,10 @@ export const routes = [
     query: graphql`
       query routes_ArtistTopLevelQuery($artistID: String!) {
         artist(id: $artistID) {
-          ...ArtistHeader_artist
-          ...NavigationTabs_artist
+          ...ArtistApp_artist
         }
         me {
-          ...RecentlyViewed_me
+          ...ArtistApp_me
         }
       }
     `,
