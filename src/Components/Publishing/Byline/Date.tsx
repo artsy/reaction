@@ -1,5 +1,5 @@
 import { Sans } from "@artsy/palette"
-import { TypeSizes } from "@artsy/palette/dist/elements/Typography"
+import { SansSizes } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
 import { getDate } from "../Constants"
@@ -9,7 +9,7 @@ interface DateProps {
   date?: string
   format?: DateFormat
   layout?: BylineLayout
-  size?: keyof TypeSizes["sans"]
+  size?: SansSizes
 }
 
 export const Date: React.SFC<DateProps> = props => {
