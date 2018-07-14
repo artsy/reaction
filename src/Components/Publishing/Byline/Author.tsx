@@ -1,5 +1,5 @@
 import { Sans } from "@artsy/palette"
-import { SansSizes } from "@artsy/palette"
+import { SansSize } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
 import { getAuthorByline } from "../Constants"
@@ -9,7 +9,7 @@ interface AuthorProps {
   authors?: any
   color?: string
   layout?: BylineLayout
-  size?: SansSizes
+  size?: SansSize
 }
 
 export const Author: React.SFC<AuthorProps> = props => {
