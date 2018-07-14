@@ -28,8 +28,6 @@ version: 2
 jobs:
   relay:
     <<: *defaults
-    docker:
-    - image: circleci/node:8
     steps:
       - checkout
       - <<: *restore_cache
