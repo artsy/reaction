@@ -3,8 +3,8 @@
 
 
 "@artsy/palette@^2.3.4":
-  version "2.6.1"
-  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-2.6.1.tgz#629db4002c1b08a6853865b2ddb5734b7219d8da"
+  version "2.6.2"
+  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-2.6.2.tgz#7cc6e7df1ea64c27cb45b295c9fafb4bbdd51121"
   dependencies:
     react "^16.3.2"
     styled-system "^2.2.5"
