@@ -2,11 +2,10 @@ import { Sans } from "@artsy/palette"
 import { ArtistShows_artist } from "__generated__/ArtistShows_artist.graphql"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
-import { PaginationFragmentContainer } from "Styleguide/Components/Pagination"
+import { PaginationFragmentContainer as Pagination } from "Styleguide/Components/Pagination"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
-import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Responsive } from "Utils/Responsive"
 import { ArtistShowBlockItem } from "./ArtistShowBlockItem"
@@ -129,11 +128,11 @@ class ArtistShows extends Component<ArtistShowsProps, LoadingAreaState> {
                         ) : (
                           <ShowList>
                             {this.props.artist.showsConnection.edges.map(
-                              ({ node }, edgeKey) => {
+                              ({ node }, index) => {
                                 return (
                                   <React.Fragment>
                                     <ArtistShowListItem
-                                      key={edgeKey}
+                                      key={index}
                                       city={node.city}
                                       partner={node.partner.name}
                                       name={node.name}
@@ -153,10 +152,13 @@ class ArtistShows extends Component<ArtistShowsProps, LoadingAreaState> {
                   </Row>
 
                   <Row>
-                    <Separator mb={2} />
                     <Col>
-                      <Flex justifyContent="flex-end">
-                        <PaginationFragmentContainer
+                      <Box>
+                        <Pagination
+                          hasNextPage={
+                            this.props.artist.showsConnection.pageInfo
+                              .hasNextPage
+                          }
                           pageCursors={
                             this.props.artist.showsConnection.pageCursors as any
                           }
@@ -164,7 +166,7 @@ class ArtistShows extends Component<ArtistShowsProps, LoadingAreaState> {
                           onNext={this.loadNext}
                           scrollTo={this.props.scrollTo}
                         />
-                      </Flex>
+                      </Box>
                     </Col>
                   </Row>
                 </Col>

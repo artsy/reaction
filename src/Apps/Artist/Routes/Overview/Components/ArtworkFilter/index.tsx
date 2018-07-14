@@ -68,18 +68,23 @@ class Filter extends Component<Props> {
                       {/* Sidebar Area */}
                       {!xs && (
                         <Sidebar width="30%" mr={2}>
-                          <Toggle label="Purchase type" expanded disabled>
-                            <Flex justifyContent="space-between">
-                              <Checkbox
-                                selected={filters.state.for_sale}
-                                onSelect={value => {
-                                  return filters.setFilter("for_sale", value)
-                                }}
-                              >
-                                For sale
-                              </Checkbox>
-                            </Flex>
-                          </Toggle>
+                          <Flex
+                            flexDirection="column"
+                            alignItems="left"
+                            mt={-1}
+                            mb={1}
+                          >
+                            <Separator mb={1} />
+                            <Checkbox
+                              selected={filters.state.for_sale}
+                              onSelect={value => {
+                                return filters.setFilter("for_sale", value)
+                              }}
+                            >
+                              For sale
+                            </Checkbox>
+                          </Flex>
+
                           <Toggle label="Medium" expanded>
                             {this.renderCategory(
                               filters,
@@ -115,29 +120,25 @@ class Filter extends Component<Props> {
                         <Separator mb={2} />
                         <Flex justifyContent="flex-end">
                           <Select
-                            mt="-8px" // Corrective spacing for line-height
-                            options={[
-                              {
-                                value: "-decayed_merch",
-                                text: "Default",
-                              },
-                              {
-                                value: "-partner_updated_at",
-                                text: "Recently updated",
-                              },
-                              {
-                                value: "-published_at",
-                                text: "Recently added",
-                              },
-                              {
-                                value: "-year",
-                                text: "Artwork Year (desc.)",
-                              },
-                              {
-                                value: "year",
-                                text: "Artwork Year (asc.)",
-                              },
-                            ]}
+                            mt="-8px"
+                            options={
+                              [
+                                { value: "-decayed_merch", text: "Default" },
+                                {
+                                  value: "-partner_updated_at",
+                                  text: "Recently updated",
+                                },
+                                {
+                                  value: "-published_at",
+                                  text: "Recently added",
+                                },
+                                {
+                                  value: "-year",
+                                  text: "Artwork Year (desc.)",
+                                },
+                                { value: "year", text: "Artwork Year (asc.)" },
+                              ] // Corrective spacing for line-height
+                            }
                             selected={filters.state.sort}
                             onSelect={filters.setSort}
                           />

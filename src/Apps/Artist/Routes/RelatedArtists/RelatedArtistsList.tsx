@@ -7,7 +7,6 @@ import { PaginationFragmentContainer as Pagination } from "Styleguide/Components
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
-import { Separator } from "Styleguide/Elements/Separator"
 import { Subscribe } from "unstated"
 import { Responsive } from "Utils/Responsive"
 
@@ -23,7 +22,7 @@ interface ShowProps {
   scrollTo: string
 }
 
-export const PAGE_SIZE = 6
+export const PAGE_SIZE = 8
 
 class RelatedArtistsList extends Component<ShowProps, LoadingAreaState> {
   state = {
@@ -79,6 +78,7 @@ class RelatedArtistsList extends Component<ShowProps, LoadingAreaState> {
     return (
       <Box>
         <Pagination
+          hasNextPage={this.props.artist.related.artists.pageInfo.hasNextPage}
           pageCursors={this.props.artist.related.artists.pageCursors as any}
           onClick={this.loadAfter}
           onNext={this.loadNext}
@@ -137,14 +137,16 @@ class RelatedArtistsList extends Component<ShowProps, LoadingAreaState> {
                       </Col>
                     </Row>
 
-                    <Box py={2}>
-                      <Separator />
-                    </Box>
+                    <Box py={2} />
 
                     <Row>
                       <Col>
-                        <Flex justifyContent="flex-end">
+                        <Box>
                           <Pagination
+                            hasNextPage={
+                              this.props.artist.related.artists.pageInfo
+                                .hasNextPage
+                            }
                             pageCursors={
                               this.props.artist.related.artists
                                 .pageCursors as any
@@ -153,7 +155,7 @@ class RelatedArtistsList extends Component<ShowProps, LoadingAreaState> {
                             onNext={this.loadNext}
                             scrollTo={this.props.scrollTo}
                           />
-                        </Flex>
+                        </Box>
                       </Col>
                     </Row>
                   </React.Fragment>
@@ -173,7 +175,7 @@ export const RelatedArtistsRefetchContainer = createRefetchContainer(
     artist: graphql`
       fragment RelatedArtistsList_artist on Artist
         @argumentDefinitions(
-          first: { type: "Int", defaultValue: 6 }
+          first: { type: "Int", defaultValue: 8 }
           last: { type: "Int" }
           after: { type: "String" }
           before: { type: "String" }

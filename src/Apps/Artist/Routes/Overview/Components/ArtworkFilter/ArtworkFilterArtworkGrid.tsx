@@ -4,7 +4,7 @@ import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { AppState } from "Router/state"
 import { PaginationFragmentContainer as Pagination } from "Styleguide/Components/Pagination"
-import { Flex } from "Styleguide/Elements/Flex"
+import { Box } from "Styleguide/Elements/Box"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Subscribe } from "unstated"
 
@@ -89,8 +89,11 @@ class Artworks extends Component<Props, LoadingAreaState> {
 
               <Spacer mb={3} />
 
-              <Flex justifyContent="flex-end">
+              <Box>
                 <Pagination
+                  hasNextPage={
+                    this.props.filtered_artworks.artworks.pageInfo.hasNextPage
+                  }
                   pageCursors={
                     this.props.filtered_artworks.artworks.pageCursors as any
                   }
@@ -98,7 +101,7 @@ class Artworks extends Component<Props, LoadingAreaState> {
                   onNext={this.loadNext}
                   scrollTo="#jump--artistArtworkGrid"
                 />
-              </Flex>
+              </Box>
             </LoadingArea>
           )
         }}
