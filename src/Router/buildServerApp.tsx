@@ -13,7 +13,7 @@ import { AppConfig, ServerResolveProps } from "./types"
 export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
   return new Promise(async (resolve, reject) => {
     try {
-      const { routes, url, user } = config
+      const { routes, url, user, initialBreakpoint } = config
 
       let currentUser = user
       if (process.env.USER_ID && process.env.USER_ACCESS_TOKEN) {
@@ -45,6 +45,7 @@ export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
       }
 
       const bootProps = {
+        initialBreakpoint,
         system: { ...config, relayEnvironment, resolver, routes, currentUser },
       }
 
