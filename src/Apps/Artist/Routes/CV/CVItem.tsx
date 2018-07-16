@@ -23,7 +23,7 @@ export const PAGE_SIZE = 10
 // onClick={() => this.loadMore()}
 // loading={this.state.isLoading ? true : false}
 const ShowMoreButton = props => (
-  <Button variant="secondaryOutline" {...props}>
+  <Button variant="secondaryOutline" size="medium" {...props}>
     Show more
   </Button>
 )
@@ -87,13 +87,13 @@ class CVItem extends Component<CVItemProps, CVItemState> {
         {({ xs, sm, md }) => {
           return (
             <CVItems pb={1}>
-              {(xs || sm) && (
+              {(xs || sm || md) && (
                 <Row>
                   <Col>
-                    <Category size={sm ? "3" : "2"} weight="medium">
+                    <Category size={xs ? "2" : "3"} weight="medium">
                       {this.props.category}
                     </Category>
-                    <Spacer mb={sm ? 0.5 : 1} />
+                    <Spacer mb={xs ? 0.5 : 1} />
                   </Col>
                 </Row>
               )}
@@ -112,17 +112,18 @@ class CVItem extends Component<CVItemProps, CVItemState> {
                     </Flex>
                   ) : (
                     <Row key={index}>
-                      {!sm && (
-                        <Col xl={2} lg={2} md={2}>
-                          {isFirst && (
-                            <Category size="3" weight="medium">
-                              {this.props.category}
-                            </Category>
-                          )}
-                        </Col>
-                      )}
+                      {!sm &&
+                        !md && (
+                          <Col xl={2} lg={2}>
+                            {isFirst && (
+                              <Category size="3" weight="medium">
+                                {this.props.category}
+                              </Category>
+                            )}
+                          </Col>
+                        )}
                       <Col lg={1} md={2} sm={2}>
-                        <Year textAlign={md ? "right" : null} mr={2} size="3">
+                        <Year mr={2} size="3">
                           {year}
                         </Year>
                       </Col>
@@ -133,9 +134,16 @@ class CVItem extends Component<CVItemProps, CVItemState> {
                   )
                 })}
 
-              <Spacer mb={1} />
+              <Spacer mb={xs ? 3 : 4} />
 
-              {this.hasMore && <ShowMoreButton />}
+              {this.hasMore && (
+                <Row>
+                  {/* <Col xs={0} sm={0} md={0} lg={2} xl={2} /> */}
+                  <Col lgOffset={2} xlOffset={2} lg={10} xs={10}>
+                    <ShowMoreButton width={xs ? "100%" : ""} mb={xs ? 3 : 4} />
+                  </Col>
+                </Row>
+              )}
             </CVItems>
           )
         }}
