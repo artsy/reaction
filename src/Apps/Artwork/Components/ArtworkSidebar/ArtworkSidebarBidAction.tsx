@@ -28,8 +28,8 @@ export class ArtworkSidebarBidAction extends React.Component<
      *       be 1 live sale with this work. When we run into that case, there is
      *       likely design work to be done too, so we can adjust this then.
      */
-    const bidderStatus = artwork.bidderStatus && artwork.bidderStatus[0]
-    const hasPreviousBids = !!(bidderStatus && bidderStatus.active_bid)
+    const myLotStanding = artwork.myLotStanding && artwork.myLotStanding[0]
+    const hasPreviousBids = !!(myLotStanding && myLotStanding.active_bid)
 
     if (artwork.sale.is_preview) {
       return (
@@ -112,7 +112,7 @@ export const ArtworkSidebarBidActionFragmentContainer = createFragmentContainer(
   ArtworkSidebarBidAction,
   graphql`
     fragment ArtworkSidebarBidAction_artwork on Artwork {
-      bidderStatus(live: true) {
+      myLotStanding(live: true) {
         active_bid {
           __id
         }

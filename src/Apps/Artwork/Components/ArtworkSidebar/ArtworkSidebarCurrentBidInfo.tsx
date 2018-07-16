@@ -21,7 +21,7 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
 
     if (artwork.sale && artwork.sale.is_closed) {
       return (
-        <Box pb={2}>
+        <Box pt={2} pb={2}>
           <Serif size="5t" weight="semibold" color="black100">
             Bidding closed
           </Serif>
@@ -54,11 +54,11 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
      *       be 1 live sale with this work. When we run into that case, there is
      *       likely design work to be done too, so we can adjust this then.
      */
-    const bidderStatus = artwork.bidderStatus && artwork.bidderStatus[0]
-    const activeBid = bidderStatus && bidderStatus.active_bid
+    const myLotStanding = artwork.myLotStanding && artwork.myLotStanding[0]
+    const activeBid = myLotStanding && myLotStanding.active_bid
     const myBidPresent = !!activeBid
     return (
-      <Box pb={2}>
+      <Box pt={2} pb={2}>
         <Flex width="100%" flexDirection="row" justifyContent="space-between">
           <Serif size="5t" weight="semibold" pr={1}>
             {bidPrompt}
@@ -98,7 +98,7 @@ export const ArtworkSidebarCurrentBidInfoFragmentContainer = createFragmentConta
   ArtworkSidebarCurrentBidInfo,
   graphql`
     fragment ArtworkSidebarCurrentBidInfo_artwork on Artwork {
-      bidderStatus(live: true) {
+      myLotStanding(live: true) {
         active_bid {
           is_winning
           max_bid {

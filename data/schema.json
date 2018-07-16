@@ -4104,7 +4104,7 @@
               "deprecationReason": null
             },
             {
-              "name": "bidderStatus",
+              "name": "myLotStanding",
               "description": null,
               "args": [
                 {
@@ -36666,7 +36666,7 @@
               "deprecationReason": null
             },
             {
-              "name": "bidderStatus",
+              "name": "myLotStanding",
               "description": null,
               "args": [
                 {

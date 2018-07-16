@@ -2,7 +2,7 @@
 
 import { ConcreteFragment } from "relay-runtime";
 export type ArtworkSidebarBidAction_artwork = {
-    readonly bidderStatus: ReadonlyArray<{
+    readonly myLotStanding: ReadonlyArray<{
         readonly active_bid: ({
             readonly __id: string;
         }) | null;
@@ -44,8 +44,8 @@ return {
     {
       "kind": "LinkedField",
       "alias": null,
-      "name": "bidderStatus",
-      "storageKey": "bidderStatus(live:true)",
+      "name": "myLotStanding",
+      "storageKey": "myLotStanding(live:true)",
       "args": [
         {
           "kind": "Literal",
@@ -171,5 +171,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'e4c7e5fbf41588faaff9bdb2f8a2969c';
+(node as any).hash = '0c13eb232a51adf1298a9db92aedd3fb';
 export default node;

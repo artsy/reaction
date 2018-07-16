@@ -100,14 +100,14 @@ export const ArtworkFromClosedAuction = {
 }
 
 export const NotRegisteredToBid = {
-  bidderStatus: null,
+  myLotStanding: null,
   sale: {
     registrationStatus: null,
   },
 }
 
 export const BidderPendingApproval = {
-  bidderStatus: null,
+  myLotStanding: null,
   sale: {
     registrationStatus: {
       id: "bidder_pending_approval",
@@ -117,27 +117,15 @@ export const BidderPendingApproval = {
 }
 
 export const RegisteredBidder = {
-  bidderStatus: null,
+  myLotStanding: null,
   sale: {
-    registrationStatus: {
-      id: "bidder_approved",
-      qualified_for_bidding: true,
-    },
+    registrationStatus: { id: "bidder_approved", qualified_for_bidding: true },
   },
 }
 
 export const RegistedBidderWithBids = {
-  bidderStatus: [
-    {
-      active_bid: {
-        __id: "some bid present",
-      },
-    },
-  ],
+  myLotStanding: [{ active_bid: { __id: "some bid present" } }],
   sale: {
-    registrationStatus: {
-      id: "bidder_approved",
-      qualified_for_bidding: true,
-    },
+    registrationStatus: { id: "bidder_approved", qualified_for_bidding: true },
   },
 }
