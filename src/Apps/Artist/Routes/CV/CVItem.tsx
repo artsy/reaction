@@ -135,7 +135,7 @@ class CVItem extends Component<CVItemProps, CVItemState> {
               {this.hasMore && (
                 <Row>
                   <Col xs={0} sm={0} md={0} lg={2} xl={2} />
-                  <Col lgOffset={2} xlOffset={2} lg={10} xs={10}>
+                  <Col lgOffset={2} xlOffset={2} lg={10} xl={10}>
                     <ShowMoreButton
                       onClick={() => this.loadMore()}
                       loading={this.state.isLoading ? true : false}
