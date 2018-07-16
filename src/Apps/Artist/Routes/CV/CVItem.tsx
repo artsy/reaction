@@ -2,10 +2,8 @@ import { Sans, Serif } from "@artsy/palette"
 import { CVItem_artist } from "__generated__/CVItem_artist.graphql"
 import { groupBy } from "lodash"
 import React, { Component } from "react"
-import styled from "styled-components"
 import { Box } from "Styleguide/Elements/Box"
 import { Button } from "Styleguide/Elements/Button"
-import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Responsive } from "Utils/Responsive"
@@ -15,6 +13,7 @@ import {
   graphql,
   RelayPaginationProp,
 } from "react-relay"
+import { Flex } from "Styleguide/Elements/Flex"
 import { ShowEntry } from "./ShowEntry"
 
 export const PAGE_SIZE = 10
@@ -70,6 +69,11 @@ class CVItem extends Component<CVItemProps, CVItemState> {
     return hasMore
   }
 
+  renderEntries = (entries, size = undefined) =>
+    entries.map(({ node }, key) => (
+      <ShowEntry node={node} key={key} size={size} />
+    ))
+
   render() {
     const groupedByYear = groupBy(
       this.props.artist.showsConnection.edges,
@@ -80,51 +84,59 @@ class CVItem extends Component<CVItemProps, CVItemState> {
 
     return (
       <Responsive>
-        {({ xs, sm }) => {
+        {({ xs, sm, md }) => {
           return (
-            <React.Fragment>
-              <Row>
-                <Col>
-                  <CVItems pb={1}>
-                    <Box>
-                      <Row>
-                        <Col md={2}>
-                          <Box mb={1}>
+            <CVItems pb={1}>
+              {(xs || sm) && (
+                <Row>
+                  <Col>
+                    <Category size={sm ? "3" : "2"} weight="medium">
+                      {this.props.category}
+                    </Category>
+                    <Spacer mb={sm ? 0.5 : 1} />
+                  </Col>
+                </Row>
+              )}
+              {Object.keys(groupedByYear)
+                .sort()
+                .reverse()
+                .map((year, index) => {
+                  const isFirst = index === 0
+                  const yearGroup = groupedByYear[year]
+                  return xs ? (
+                    <Flex key={index}>
+                      <Year size="2" mr={1}>
+                        {year}
+                      </Year>
+                      <Box>{this.renderEntries(yearGroup, "2")}</Box>
+                    </Flex>
+                  ) : (
+                    <Row key={index}>
+                      {!sm && (
+                        <Col xl={2} lg={2} md={2}>
+                          {isFirst && (
                             <Category size="3" weight="medium">
                               {this.props.category}
                             </Category>
-                          </Box>
+                          )}
                         </Col>
-                        <Col sm={12}>
-                          {Object.keys(groupedByYear)
-                            .sort()
-                            .reverse()
-                            .map((year, index) => {
-                              return (
-                                <YearGroup mb={2} key={index}>
-                                  <Year size="3">{year}</Year>
-                                  <Spacer mr={xs || sm ? 1 : 4} />
-                                  <ShowGroup>
-                                    {groupedByYear[year].map(
-                                      ({ node }, key) => (
-                                        <ShowEntry node={node} key={key} />
-                                      )
-                                    )}
-                                  </ShowGroup>
-                                </YearGroup>
-                              )
-                            })}
+                      )}
+                      <Col lg={1} md={2} sm={2}>
+                        <Year textAlign={md ? "right" : null} mr={2} size="3">
+                          {year}
+                        </Year>
+                      </Col>
+                      <Col md={8} lg={9} xl={9} sm={10}>
+                        {this.renderEntries(yearGroup)}
+                      </Col>
+                    </Row>
+                  )
+                })}
 
-                          <Spacer mb={1} />
+              <Spacer mb={1} />
 
-                          {this.hasMore && <ShowMoreButton />}
-                        </Col>
-                      </Row>
-                    </Box>
-                  </CVItems>
-                </Col>
-              </Row>
-            </React.Fragment>
+              {this.hasMore && <ShowMoreButton />}
+            </CVItems>
           )
         }}
       </Responsive>
@@ -228,7 +240,5 @@ export const CVPaginationContainer = createPaginationContainer(
 )
 
 const CVItems = Box
-const YearGroup = styled(Flex)``
 const Year = Serif
-const ShowGroup = styled.div``
 const Category = Sans

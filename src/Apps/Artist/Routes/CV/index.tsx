@@ -21,7 +21,7 @@ export class CVRoute extends Component<CVRouteProps> {
     return (
       <Responsive>
         {({ sm, xs }) => (
-          <Join separator={!sm && !xs && <Separator mb={sectionSpace} />}>
+          <Join separator={!xs && <Separator mb={sectionSpace} />}>
             <CVItem
               category="Solo shows"
               artist={viewer.artist_soloShows as any}

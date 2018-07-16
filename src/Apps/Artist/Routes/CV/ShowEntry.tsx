@@ -1,13 +1,18 @@
-import { Serif } from "@artsy/palette"
-import React from "react"
+import { Serif, SerifSize } from "@artsy/palette"
+import React, { SFC } from "react"
 
 const FIXME_DOMAIN = "https://www.artsy.net"
 
+interface ShowEntryProps {
+  node: any
+  size?: SerifSize
+}
+
 // FIXME: Check for null links
 // FIXME: Figure out how to always point to artsy.net env? how to handle urls?
-export const ShowEntry = ({ node }) => (
-  <Serif size="3" mb={1}>
-    <Serif size="3" display="inline" italic>
+export const ShowEntry: SFC<ShowEntryProps> = ({ node, size = "3" }) => (
+  <Serif size={size} mb={1}>
+    <Serif size={size} display="inline" italic>
       {node.href ? (
         <a href={FIXME_DOMAIN + node.href} className="noUnderline">
           {node.name}

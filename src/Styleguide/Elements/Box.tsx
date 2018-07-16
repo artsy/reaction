@@ -4,6 +4,7 @@ import React from "react"
 import styled, { css } from "styled-components"
 import {
   bottom,
+  BottomProps,
   color as styledColor,
   ColorProps,
   display,
@@ -11,16 +12,19 @@ import {
   height,
   HeightProps,
   left,
+  LeftProps,
   maxWidth,
   MaxWidthProps,
   position,
   PositionProps,
   right,
+  RightProps,
   space,
   SpaceProps,
   textAlign,
   TextAlignProps,
   top,
+  TopProps,
   width,
   WidthProps,
 } from "styled-system"
@@ -62,6 +66,10 @@ export interface BoxProps
     HeightProps,
     ColorProps,
     TextAlignProps,
+    TopProps,
+    RightProps,
+    LeftProps,
+    BottomProps,
     PositionProps {}
 export const Box = styled.div.attrs<BoxProps>({})`
   ${space};
