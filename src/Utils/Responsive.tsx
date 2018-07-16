@@ -2,13 +2,6 @@ import React from "react"
 
 const ResponsiveContext = React.createContext({})
 
-const shallowEqual = (a, b) => {
-  for (let key in a) {
-    if (a[key] !== b[key]) return false
-  }
-  return true
-}
-
 // TODO: Make this generic on the consumer component when we OSS this separately
 //       and keep this module from where we’ll export our own `Responsive`
 //       wrapper that has these Artsy specific breakpoint typings.
