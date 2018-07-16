@@ -14,7 +14,7 @@ import { AppConfig, Router, ServerResolveProps } from "./types"
 export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
   return new Promise(async (resolve, reject) => {
     try {
-      const { routes, url, user } = config
+      const { initialBreakpoint, initialState = [], routes, url, user } = config
 
       let currentUser = user
       if (process.env.USER_ID && process.env.USER_ACCESS_TOKEN) {
@@ -51,7 +51,8 @@ export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
         return (
           <Boot
             system={system}
-            initialState={[new AppState({ ...props, system })]}
+            initialBreakpoint={initialBreakpoint}
+            initialState={[new AppState({ ...props, system }), ...initialState]}
           >
             <AppShell
               data={props.relayData}

@@ -1,8 +1,9 @@
 import { mount } from "enzyme"
 import React from "react"
-import { Subscribe } from "unstated"
+import { Container, Subscribe } from "unstated"
 import { Boot } from "../Boot"
-import { AppState } from "../state"
+
+class WelcomeState extends Container<{ welcomeMessage: string }> {}
 
 describe("Boot", () => {
   const system: any = {
@@ -13,15 +14,12 @@ describe("Boot", () => {
 
   it("injects global state", () => {
     const App = () => {
+      const welcome = new WelcomeState()
+      welcome.state = {
+        welcomeMessage: "Found global state",
+      }
       return (
-        <Boot
-          system={system}
-          initialState={[
-            new AppState({
-              welcomeMessage: "Found global state",
-            } as any),
-          ]}
-        >
+        <Boot system={system} initialState={[welcome]}>
           <SomeOtherComponent />
         </Boot>
       )
@@ -29,7 +27,7 @@ describe("Boot", () => {
 
     const SomeOtherComponent = () => {
       return (
-        <Subscribe to={[AppState]}>
+        <Subscribe to={[WelcomeState]}>
           {app => {
             return <div>{app.state.welcomeMessage}</div>
           }}

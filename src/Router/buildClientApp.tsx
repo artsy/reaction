@@ -17,10 +17,12 @@ export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
   return new Promise(async (resolve, reject) => {
     try {
       const {
+        historyProtocol = "browser",
+        initialBreakpoint,
+        initialRoute = "/",
+        initialState = [],
         routes,
         user,
-        historyProtocol = "browser",
-        initialRoute = "/",
       } = config
 
       const relayBootstrap = JSON.parse(window.__RELAY_BOOTSTRAP__ || "{}")
@@ -79,7 +81,8 @@ export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
         return (
           <Boot
             system={system}
-            initialState={[new AppState({ ...props, system })]}
+            initialBreakpoint={initialBreakpoint}
+            initialState={[new AppState({ ...props, system }), ...initialState]}
           >
             <AppShell>
               <Router resolver={resolver} />
