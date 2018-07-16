@@ -1,10 +1,12 @@
 import React from "react"
 import { buildClientApp } from "Router"
+import { Container } from "unstated"
 
 interface Props {
   routes: Array<object>
   initialRoute?: string
-  initialState?: object
+  initialState?: Array<Container<any>>
+  initialAppState?: object
 }
 
 export class StorybooksRouter extends React.Component<Props> {
@@ -22,6 +24,8 @@ export class StorybooksRouter extends React.Component<Props> {
         routes: this.props.routes,
         historyProtocol: "memory",
         initialRoute: this.props.initialRoute,
+        initialAppState: this.props.initialAppState,
+        initialState: this.props.initialState,
       })
 
       this.setState({
@@ -35,10 +39,6 @@ export class StorybooksRouter extends React.Component<Props> {
   render() {
     const { ClientApp } = this.state
 
-    return (
-      <React.Fragment>
-        {ClientApp && <ClientApp {...this.props.initialState} />}
-      </React.Fragment>
-    )
+    return <React.Fragment>{ClientApp && <ClientApp />}</React.Fragment>
   }
 }

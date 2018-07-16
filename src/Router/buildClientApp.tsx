@@ -18,6 +18,7 @@ export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
     try {
       const {
         historyProtocol = "browser",
+        initialAppState = {},
         initialBreakpoint,
         initialRoute = "/",
         initialState = [],
@@ -82,7 +83,10 @@ export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
           <Boot
             system={system}
             initialBreakpoint={initialBreakpoint}
-            initialState={[new AppState({ ...props, system }), ...initialState]}
+            initialState={[
+              new AppState({ ...initialAppState, system }),
+              ...initialState,
+            ]}
           >
             <AppShell>
               <Router resolver={resolver} />

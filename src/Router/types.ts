@@ -13,6 +13,7 @@ export interface AppConfig {
   initialBreakpoint?: Breakpoint
   initialRoute?: string
   initialState?: Array<Container<any>>
+  initialAppState?: object // TODO: Deprecated
   routes: RouteConfig
 
   // TODO: What is this used for?
