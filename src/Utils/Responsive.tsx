@@ -121,20 +121,6 @@ export class ResponsiveProvider extends React.Component<
   }
 
   // Lifecycle methods
-
-  // FIXME: Why doesn’t this get typed automatically?
-  shouldComponentUpdate(
-    nextProps: Readonly<{ children?: React.ReactNode }> &
-      Readonly<ResponsiveProviderProps>,
-    nextState: Readonly<ResponsiveProviderState>
-  ) {
-    if (nextProps.children !== this.props.children) return true
-    if (shallowEqual(this.state.breakpoints, nextState.breakpoints)) {
-      return false
-    }
-    return true
-  }
-
   componentWillUnmount() {
     this.state.mediaMatchers.forEach(mediaQuery =>
       mediaQuery.removeListener(this.breakpointChangedCallback)
