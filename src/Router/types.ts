@@ -1,11 +1,9 @@
 import { RouteConfig } from "found"
-import { ComponentType } from "react"
 import { Environment } from "relay-runtime"
-import { Container } from "unstated"
+import { Container, SubscribeProps } from "unstated"
 import { Breakpoint } from "Utils/Responsive"
 import { ContextProps } from "../Components/Artsy"
 
-type ReactComponent = ComponentType<any>
 type HistoryProtocol = "browser" | "hash" | "memory"
 
 export interface AppConfig {
@@ -21,21 +19,22 @@ export interface AppConfig {
   user?: User
 }
 
+export interface AppProps {
+  subscribeTo?: SubscribeProps["to"]
+  // Copied to change return type
+  children?: (...instances: Array<Container<any>>) => void
+}
+
+export type App = React.SFC<AppProps>
+
 export interface ClientResolveProps {
-  ClientApp: ReactComponent
+  ClientApp: App
 }
 
 export interface ServerResolveProps {
-  ServerApp?: ReactComponent
+  ServerApp?: App
   redirect?: string
   status?: string
-}
-
-export interface AppShellProps {
-  loadableState?: {
-    getScriptTag: () => string
-  }
-  data?: Array<object>
 }
 
 export interface Router {

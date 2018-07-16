@@ -7,11 +7,12 @@ import createInitialFarceRouter from "found/lib/createInitialFarceRouter"
 import createRender from "found/lib/createRender"
 import { loadComponents } from "loadable-components"
 import React from "react"
+import { Subscribe } from "unstated"
 import { createEnvironment } from "../Relay/createEnvironment"
 import { AppShell } from "./AppShell"
 import { Boot } from "./Boot"
 import { AppState } from "./state"
-import { AppConfig, ClientResolveProps, Router } from "./types"
+import { App, AppConfig, ClientResolveProps, Router } from "./types"
 
 export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
   return new Promise(async (resolve, reject) => {
@@ -78,7 +79,7 @@ export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
         currentUser,
       }
 
-      const ClientApp = props => {
+      const ClientApp: App = props => {
         return (
           <Boot
             system={system}
@@ -88,6 +89,15 @@ export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
               ...initialState,
             ]}
           >
+            {props.subscribeTo &&
+              props.children && (
+                <Subscribe to={props.subscribeTo}>
+                  {(...args) => {
+                    props.children(...args)
+                    return null
+                  }}
+                </Subscribe>
+              )}
             <AppShell>
               <Router resolver={resolver} />
             </AppShell>

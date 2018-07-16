@@ -1,6 +1,12 @@
 import React, { SFC } from "react"
 import serialize from "serialize-javascript"
-import { AppShellProps } from "./types"
+
+export interface AppShellProps {
+  loadableState?: {
+    getScriptTag: () => string
+  }
+  data?: Array<object>
+}
 
 export const AppShell: SFC<AppShellProps> = props => {
   const { loadableState, data = {}, children } = props

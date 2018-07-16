@@ -5,11 +5,12 @@ import { getFarceResult } from "found/lib/server"
 import { getLoadableState } from "loadable-components/server"
 import React from "react"
 import ReactDOMServer from "react-dom/server"
+import { Subscribe } from "../../node_modules/unstated"
 import { createEnvironment } from "../Relay/createEnvironment"
-import { AppShell } from "./AppShell"
+import { AppShell, AppShellProps } from "./AppShell"
 import { Boot } from "./Boot"
 import { AppState } from "./state"
-import { AppConfig, Router, ServerResolveProps } from "./types"
+import { AppConfig, AppProps, Router, ServerResolveProps } from "./types"
 
 export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
   return new Promise(async (resolve, reject) => {
@@ -54,7 +55,7 @@ export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
 
       const system: Router = { relayEnvironment, resolver, routes, currentUser }
 
-      const AppContainer = props => {
+      const AppContainer: React.SFC<AppProps & AppShellProps> = props => {
         return (
           <Boot
             system={system}
@@ -64,10 +65,16 @@ export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
               ...initialState,
             ]}
           >
-            <AppShell
-              data={props.relayData}
-              loadableState={props.loadableState}
-            >
+            {props.subscribeTo &&
+              props.children && (
+                <Subscribe to={props.subscribeTo}>
+                  {(...args) => {
+                    props.children(...args)
+                    return null
+                  }}
+                </Subscribe>
+              )}
+            <AppShell data={props.data} loadableState={props.loadableState}>
               {element}
             </AppShell>
           </Boot>

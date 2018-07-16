@@ -1,19 +1,20 @@
 import React from "react"
 import { buildClientApp } from "Router"
 import { Container } from "unstated"
+import { App, AppProps } from "./types"
 
-interface Props {
+interface Props extends Partial<AppProps> {
   routes: Array<object>
   initialRoute?: string
   initialState?: Array<Container<any>>
   initialAppState?: object
 }
 
-export class StorybooksRouter extends React.Component<Props> {
-  state = {
-    ClientApp: null,
-  }
+interface State {
+  ClientApp: App
+}
 
+export class StorybooksRouter extends React.Component<Props, State> {
   static defaultProps = {
     initialRoute: "/",
   }
@@ -37,8 +38,16 @@ export class StorybooksRouter extends React.Component<Props> {
   }
 
   render() {
-    const { ClientApp } = this.state
+    const ClientApp = this.state && this.state.ClientApp
 
-    return <React.Fragment>{ClientApp && <ClientApp />}</React.Fragment>
+    return (
+      <React.Fragment>
+        {ClientApp && (
+          <ClientApp subscribeTo={this.props.subscribeTo}>
+            {this.props.children}
+          </ClientApp>
+        )}
+      </React.Fragment>
+    )
   }
 }
