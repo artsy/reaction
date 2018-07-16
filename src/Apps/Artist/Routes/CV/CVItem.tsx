@@ -18,10 +18,6 @@ import { ShowEntry } from "./ShowEntry"
 
 export const PAGE_SIZE = 10
 
-// width={xs || sm ? "100%" : ""}
-// mb={3}
-// onClick={() => this.loadMore()}
-// loading={this.state.isLoading ? true : false}
 const ShowMoreButton = props => (
   <Button variant="secondaryOutline" size="medium" {...props}>
     Show more
@@ -138,9 +134,14 @@ class CVItem extends Component<CVItemProps, CVItemState> {
 
               {this.hasMore && (
                 <Row>
-                  {/* <Col xs={0} sm={0} md={0} lg={2} xl={2} /> */}
+                  <Col xs={0} sm={0} md={0} lg={2} xl={2} />
                   <Col lgOffset={2} xlOffset={2} lg={10} xs={10}>
-                    <ShowMoreButton width={xs ? "100%" : ""} mb={xs ? 3 : 4} />
+                    <ShowMoreButton
+                      onClick={() => this.loadMore()}
+                      loading={this.state.isLoading ? true : false}
+                      width={xs ? "100%" : ""}
+                      mb={xs ? 3 : 4}
+                    />
                   </Col>
                 </Row>
               )}
