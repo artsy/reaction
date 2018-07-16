@@ -99,7 +99,7 @@ export class FollowArtistButton extends React.Component<Props> {
     } else {
       onOpenAuthModal &&
         onOpenAuthModal("register", {
-          context_module: "intext tooltip",
+          contextModule: "intext tooltip",
           intent: "follow artist",
           copy: "Sign up to follow artists",
         })

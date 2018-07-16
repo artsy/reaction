@@ -31,7 +31,7 @@ export class ArtistToolTip extends React.Component<ArtistToolTipProps> {
       action: "Click",
       flow: "tooltip",
       type: "artist stub",
-      context_module: "intext tooltip",
+      contextModule: "intext tooltip",
       destination_path: href,
     })
   }
@@ -64,7 +64,7 @@ export class ArtistToolTip extends React.Component<ArtistToolTipProps> {
     const description = blurb || this.renderArtistGenes()
 
     const trackingData: FollowTrackingData = {
-      context_module: "intext tooltip",
+      contextModule: "intext tooltip",
       entity_id: _id,
       entity_slug: id,
       entity_type: "artist",

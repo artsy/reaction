@@ -65,7 +65,7 @@ describe("FollowArtistButton", () => {
       const args = props.onOpenAuthModal.mock.calls[0]
 
       expect(args[0]).toBe("register")
-      expect(args[1].context_module).toBe("intext tooltip")
+      expect(args[1].contextModule).toBe("intext tooltip")
       expect(args[1].intent).toBe("follow artist")
       expect(args[1].copy).toBe("Sign up to follow artists")
     })
@@ -110,12 +110,12 @@ describe("FollowArtistButton", () => {
 
     it("Tracks with custom trackingData if provided", () => {
       props.trackingData = {
-        context_module: "tooltip",
+        contextModule: "tooltip",
       }
       const component = getWrapper(props, { id: "1234" })
       component.find(FollowButtonDeprecated).simulate("click")
 
-      expect(props.tracking.trackEvent.mock.calls[0][0].context_module).toBe(
+      expect(props.tracking.trackEvent.mock.calls[0][0].contextModule).toBe(
         "tooltip"
       )
     })
