@@ -4,6 +4,7 @@ import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Join } from "Styleguide/Elements/Join"
 import { Separator } from "Styleguide/Elements/Separator"
+import { Spacer } from "Styleguide/Elements/Spacer"
 import { Responsive } from "Utils/Responsive"
 import { CVPaginationContainer as CVItem } from "./CVItem"
 
@@ -21,7 +22,9 @@ export class CVRoute extends Component<CVRouteProps> {
     return (
       <Responsive>
         {({ sm, xs }) => (
-          <Join separator={!xs && <Separator mb={sectionSpace} />}>
+          <Join
+            separator={xs ? <Spacer mt={1} /> : <Separator my={sectionSpace} />}
+          >
             <CVItem
               category="Solo shows"
               artist={viewer.artist_soloShows as any}

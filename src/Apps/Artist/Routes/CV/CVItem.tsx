@@ -130,8 +130,6 @@ class CVItem extends Component<CVItemProps, CVItemState> {
                   )
                 })}
 
-              <Spacer mb={xs ? 3 : 4} />
-
               {this.hasMore && (
                 <Row>
                   <Col xs={0} sm={0} md={0} lg={2} xl={2} />
@@ -140,7 +138,7 @@ class CVItem extends Component<CVItemProps, CVItemState> {
                       onClick={() => this.loadMore()}
                       loading={this.state.isLoading ? true : false}
                       width={xs ? "100%" : ""}
-                      mb={xs ? 3 : 4}
+                      mt={xs ? 1 : 2}
                     />
                   </Col>
                 </Row>
