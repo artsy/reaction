@@ -76,7 +76,7 @@ describe("ArtistToolTip", () => {
     expect(trackingData.action).toBe("Click")
     expect(trackingData.flow).toBe("tooltip")
     expect(trackingData.type).toBe("artist stub")
-    expect(trackingData.context_module).toBe("intext tooltip")
+    expect(trackingData.contextModule).toBe("intext tooltip")
     expect(trackingData.destination_path).toBe("/artist/nick-mauss")
   })
 
@@ -92,7 +92,7 @@ describe("ArtistToolTip", () => {
       const args = context.onOpenAuthModal.mock.calls[0]
 
       expect(args[0]).toBe("register")
-      expect(args[1].context_module).toBe("intext tooltip")
+      expect(args[1].contextModule).toBe("intext tooltip")
       expect(args[1].intent).toBe("follow artist")
     })
   })
