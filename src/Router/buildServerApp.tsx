@@ -8,7 +8,8 @@ import ReactDOMServer from "react-dom/server"
 import { createEnvironment } from "../Relay/createEnvironment"
 import { AppShell } from "./AppShell"
 import { Boot } from "./Boot"
-import { AppConfig, ServerResolveProps } from "./types"
+import { AppState } from "./state"
+import { AppConfig, Router, ServerResolveProps } from "./types"
 
 export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
   return new Promise(async (resolve, reject) => {
@@ -44,13 +45,14 @@ export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
         return
       }
 
-      const bootProps = {
-        system: { ...config, relayEnvironment, resolver, routes, currentUser },
-      }
+      const system: Router = { relayEnvironment, resolver, routes, currentUser }
 
       const AppContainer = props => {
         return (
-          <Boot {...bootProps} {...props}>
+          <Boot
+            system={system}
+            initialState={[new AppState({ ...props, system })]}
+          >
             <AppShell
               data={props.relayData}
               loadableState={props.loadableState}

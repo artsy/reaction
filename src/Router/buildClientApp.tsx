@@ -10,7 +10,8 @@ import React from "react"
 import { createEnvironment } from "../Relay/createEnvironment"
 import { AppShell } from "./AppShell"
 import { Boot } from "./Boot"
-import { AppConfig, ClientResolveProps } from "./types"
+import { AppState } from "./state"
+import { AppConfig, ClientResolveProps, Router } from "./types"
 
 export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
   return new Promise(async (resolve, reject) => {
@@ -61,25 +62,25 @@ export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
         render,
       })
 
-      const bootProps = {
-        system: {
-          ...config,
-          relayEnvironment,
-          resolver,
-          routes,
-          currentUser,
-        },
-      }
-
       try {
         await loadComponents()
       } catch (error) {
         // FIXME: https://github.com/smooth-code/loadable-components/pull/93
       }
 
+      const system: Router = {
+        relayEnvironment,
+        resolver,
+        routes,
+        currentUser,
+      }
+
       const ClientApp = props => {
         return (
-          <Boot {...bootProps} {...props}>
+          <Boot
+            system={system}
+            initialState={[new AppState({ ...props, system })]}
+          >
             <AppShell>
               <Router resolver={resolver} />
             </AppShell>

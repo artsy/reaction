@@ -1,6 +1,7 @@
 import { RouteConfig } from "found"
 import { ComponentType } from "react"
 import { Environment } from "relay-runtime"
+import { Container } from "unstated"
 import { Breakpoint } from "Utils/Responsive"
 import { ContextProps } from "../Components/Artsy"
 
@@ -11,7 +12,10 @@ export interface AppConfig {
   historyProtocol?: HistoryProtocol
   initialBreakpoint?: Breakpoint
   initialRoute?: string
+  initialState?: Array<Container<any>>
   routes: RouteConfig
+
+  // TODO: What is this used for?
   url?: string
   user?: User
 }
@@ -40,14 +44,11 @@ export interface Router {
   resolver: any // FIXME
 }
 
-export interface BootProps extends AppStateContainer {
-  initialBreakpoint?: Breakpoint
-  system?: Router
-  [x: string]: any // User can pass in any properties on boot
-}
-
+// TODO: Neither of these things should be state, they should use the Artsy
+//       context.
 export interface AppStateContainer {
-  system?: Router
+  mediator?: any
+  system: Router
 }
 
 export interface PreloadLinkProps extends ContextProps, AppStateContainer {
@@ -58,8 +59,8 @@ export interface PreloadLinkProps extends ContextProps, AppStateContainer {
   onClick?: () => void
   onToggleLoading?: (isLoading: boolean) => void
   replace?: string
-  router?: any // TODO, from found
   to?: string
+  router?: any // TODO: found
 }
 
 export interface PreloadLinkContainer {

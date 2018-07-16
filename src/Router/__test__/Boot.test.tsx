@@ -5,18 +5,23 @@ import { Boot } from "../Boot"
 import { AppState } from "../state"
 
 describe("Boot", () => {
-  const bootProps: any = {
-    system: {
-      relayEnvironment: false,
-    },
+  const system: any = {
+    relayEnvironment: false,
   }
 
-  const getWrapper = () => mount(<Boot {...bootProps} />)
+  const getWrapper = () => mount(<Boot initialState={[]} system={system} />)
 
   it("injects global state", () => {
     const App = () => {
       return (
-        <Boot welcomeMessage="Found global state" {...bootProps}>
+        <Boot
+          system={system}
+          initialState={[
+            new AppState({
+              welcomeMessage: "Found global state",
+            } as any),
+          ]}
+        >
           <SomeOtherComponent />
         </Boot>
       )
@@ -52,6 +57,6 @@ describe("Boot", () => {
   })
 
   it("injects Grid", () => {
-    expect(mount(<Boot {...bootProps} />).find("Grid").length).toEqual(1)
+    expect(getWrapper().find("Grid").length).toEqual(1)
   })
 })
