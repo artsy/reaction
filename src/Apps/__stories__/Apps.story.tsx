@@ -25,12 +25,13 @@ storiesOf("Apps", module)
         initialRoute="/artist2/andy-warhol"
         initialAppState={{ mediator: { trigger: x => x } }}
         initialState={[filterState]}
-        subscribeTo={[FilterState]}
-      >
-        {x => {
-          // tslint:disable-next-line:no-console
-          console.log(x.state)
+        subscribe={{
+          to: [FilterState],
+          onChange: x => {
+            // tslint:disable-next-line:no-console
+            console.log(x.state)
+          },
         }}
-      </StorybooksRouter>
+      />
     )
   })

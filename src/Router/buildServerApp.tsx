@@ -10,7 +10,7 @@ import { createEnvironment } from "../Relay/createEnvironment"
 import { AppShell, AppShellProps } from "./AppShell"
 import { Boot } from "./Boot"
 import { AppState } from "./state"
-import { AppConfig, AppProps, Router, ServerResolveProps } from "./types"
+import { AppConfig, Router, ServerResolveProps } from "./types"
 
 export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
   return new Promise(async (resolve, reject) => {
@@ -55,7 +55,7 @@ export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
 
       const system: Router = { relayEnvironment, resolver, routes, currentUser }
 
-      const AppContainer: React.SFC<AppProps & AppShellProps> = props => {
+      const AppContainer: React.SFC<AppShellProps> = props => {
         return (
           <Boot
             system={system}
@@ -65,11 +65,12 @@ export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
               ...initialState,
             ]}
           >
-            {props.subscribeTo &&
-              props.children && (
-                <Subscribe to={props.subscribeTo}>
+            {config.subscribe &&
+              config.subscribe.to &&
+              config.subscribe.onChange && (
+                <Subscribe to={config.subscribe.to}>
                   {(...args) => {
-                    props.children(...args)
+                    config.subscribe.onChange(...args)
                     return null
                   }}
                 </Subscribe>

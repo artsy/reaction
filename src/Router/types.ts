@@ -13,19 +13,18 @@ export interface AppConfig {
   initialState?: Array<Container<any>>
   initialAppState?: object // TODO: Deprecated
   routes: RouteConfig
+  user?: User
+
+  subscribe?: {
+    to: SubscribeProps["to"]
+    onChange: (...instances: Array<Container<any>>) => void
+  }
 
   // TODO: What is this used for?
   url?: string
-  user?: User
 }
 
-export interface AppProps {
-  subscribeTo?: SubscribeProps["to"]
-  // Copied to change return type
-  children?: (...instances: Array<Container<any>>) => void
-}
-
-export type App = React.SFC<AppProps>
+export type App = React.ComponentType<{}>
 
 export interface ClientResolveProps {
   ClientApp: App

@@ -79,7 +79,7 @@ export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
         currentUser,
       }
 
-      const ClientApp: App = props => {
+      const ClientApp: App = () => {
         return (
           <Boot
             system={system}
@@ -89,11 +89,12 @@ export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
               ...initialState,
             ]}
           >
-            {props.subscribeTo &&
-              props.children && (
-                <Subscribe to={props.subscribeTo}>
+            {config.subscribe &&
+              config.subscribe.to &&
+              config.subscribe.onChange && (
+                <Subscribe to={config.subscribe.to}>
                   {(...args) => {
-                    props.children(...args)
+                    config.subscribe.onChange(...args)
                     return null
                   }}
                 </Subscribe>

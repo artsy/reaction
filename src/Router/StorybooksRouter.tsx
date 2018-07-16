@@ -1,14 +1,8 @@
 import React from "react"
 import { buildClientApp } from "Router"
-import { Container } from "unstated"
-import { App, AppProps } from "./types"
+import { App, AppConfig } from "./types"
 
-interface Props extends Partial<AppProps> {
-  routes: Array<object>
-  initialRoute?: string
-  initialState?: Array<Container<any>>
-  initialAppState?: object
-}
+interface Props extends AppConfig {}
 
 interface State {
   ClientApp: App
@@ -20,15 +14,12 @@ export class StorybooksRouter extends React.Component<Props, State> {
   }
 
   async componentDidMount() {
+    const { children, ...props } = this.props
     try {
       const { ClientApp } = await buildClientApp({
-        routes: this.props.routes,
         historyProtocol: "memory",
-        initialRoute: this.props.initialRoute,
-        initialAppState: this.props.initialAppState,
-        initialState: this.props.initialState,
+        ...props,
       })
-
       this.setState({
         ClientApp,
       })
@@ -40,14 +31,6 @@ export class StorybooksRouter extends React.Component<Props, State> {
   render() {
     const ClientApp = this.state && this.state.ClientApp
 
-    return (
-      <React.Fragment>
-        {ClientApp && (
-          <ClientApp subscribeTo={this.props.subscribeTo}>
-            {this.props.children}
-          </ClientApp>
-        )}
-      </React.Fragment>
-    )
+    return <React.Fragment>{ClientApp && <ClientApp />}</React.Fragment>
   }
 }
