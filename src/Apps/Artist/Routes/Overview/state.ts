@@ -16,71 +16,72 @@ export class FilterState extends Container<State> {
     page: 1,
     major_periods: [],
     partner_id: null,
-    sort: "-decayed_merch",
+    sort: "-partner_updated_at",
   }
 
-  setMajorPeriods(value) {
-    this.setState({
-      partner_id: null,
-      major_periods: [value],
-      page: 1,
-      medium: "*",
+  setPage(page, mediator) {
+    this.setState({ page }, () => {
+      mediator.trigger("artist:filter:changed", this.state)
     })
   }
 
-  setPartner(value) {
-    this.setState({
-      major_periods: [],
-      partner_id: value,
-      medium: "*",
-      page: 1,
+  setSort = (sort, mediator) => {
+    this.setState({ sort }, () => {
+      mediator.trigger("artist:filter:changed", this.state)
     })
   }
 
-  setPage(page) {
-    this.setState({ page })
-  }
-
-  setSort = sort => {
-    this.setState({ sort })
-  }
-
-  unsetFilter(filter) {
+  unsetFilter(filter, mediator) {
+    let newPartialState
     if (filter === "major_periods") {
-      return this.setState({ page: 1, major_periods: [] })
+      newPartialState = { major_periods: [] }
     }
     if (filter === "partner_id") {
-      return this.setState({ page: 1, partner_id: null })
+      newPartialState = { partner_id: null }
     }
     if (filter === "for_sale") {
-      return this.setState({ page: 1, for_sale: null })
+      newPartialState = { for_sale: null }
     }
     if (filter === "medium") {
-      return this.setState({ page: 1, medium: "*" })
+      newPartialState = { medium: "*" }
     }
+    this.setState({ page: 1, ...newPartialState }, () => {
+      mediator.trigger("artist:filter:changed", this.state)
+    })
   }
 
-  setFilter(filter, value) {
+  setFilter(filter, value, mediator) {
+    let newPartialState
     if (filter === "major_periods") {
-      return this.setMajorPeriods(value)
+      newPartialState = {
+        partner_id: null,
+        major_periods: [value],
+        medium: "*",
+      }
     }
     if (filter === "partner_id") {
-      return this.setPartner(value)
+      newPartialState = {
+        major_periods: [],
+        partner_id: value,
+        medium: "*",
+      }
     }
     if (filter === "for_sale") {
       if (value) {
-        this.setState({ page: 1, for_sale: true })
+        newPartialState = { for_sale: true }
       } else {
-        this.setState({ page: 1, for_sale: null })
+        newPartialState = { for_sale: null }
       }
     }
     if (filter === "medium") {
-      this.setState({
+      newPartialState = {
         medium: value,
-        page: 1,
         partner_id: null,
         major_periods: [],
-      })
+      }
     }
+    this.setState({ page: 1, ...newPartialState }, () => {
+      mediator.trigger("artist:filter:changed", this.state)
+    })
   }
 }
