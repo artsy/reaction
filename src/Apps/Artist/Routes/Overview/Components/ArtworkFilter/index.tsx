@@ -1,7 +1,7 @@
 import { ArtworkFilter_artist } from "__generated__/ArtworkFilter_artist.graphql"
 import { FilterState } from "Apps/Artist/Routes/Overview/state"
 import React, { Component } from "react"
-import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
+import { createFragmentContainer, graphql } from "react-relay"
 import { Toggle } from "Styleguide/Components/Toggle"
 import { Box } from "Styleguide/Elements/Box"
 import { Checkbox } from "Styleguide/Elements/Checkbox"
@@ -12,12 +12,11 @@ import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Subscribe } from "unstated"
 import { Responsive } from "Utils/Responsive"
-import ArtworksContent from "./ArtworkFilterArtworkGrid"
+import { ArtworkFilterRefetchContainer } from "./ArtworkFilterRefetch"
 
 interface Props {
   artist: ArtworkFilter_artist
   filters?: any // FIXME
-  relay: RelayRefetchProp
 }
 
 class Filter extends Component<Props> {
@@ -46,36 +45,6 @@ class Filter extends Component<Props> {
     })
   }
 
-  componentDidUpdate(prevProps) {
-    Object.keys(this.props.filters).forEach(key => {
-      if (this.props.filters[key] !== prevProps.filters[key]) {
-        this.fetch()
-      }
-    })
-  }
-
-  fetch = () => {
-    this.props.relay.refetch(
-      {
-        artistID: this.props.artist.id,
-        aggregations: [
-          "MEDIUM",
-          "TOTAL",
-          "GALLERY",
-          "INSTITUTION",
-          "MAJOR_PERIOD",
-        ],
-        ...this.props.filters,
-      },
-      null,
-      error => {
-        if (error) {
-          console.error(error)
-        }
-      }
-    )
-  }
-
   render() {
     const { aggregations } = this.props.artist.filtered_artworks
     const mediumAggregation = aggregations.find(agg => agg.slice === "MEDIUM")
@@ -99,18 +68,23 @@ class Filter extends Component<Props> {
                       {/* Sidebar Area */}
                       {!xs && (
                         <Sidebar width="30%" mr={2}>
-                          <Toggle label="Purchase type" expanded disabled>
-                            <Flex justifyContent="space-between">
-                              <Checkbox
-                                selected={filters.state.for_sale}
-                                onSelect={value => {
-                                  return filters.setFilter("for_sale", value)
-                                }}
-                              >
-                                For sale
-                              </Checkbox>
-                            </Flex>
-                          </Toggle>
+                          <Flex
+                            flexDirection="column"
+                            alignItems="left"
+                            mt={-1}
+                            mb={1}
+                          >
+                            <Separator mb={1} />
+                            <Checkbox
+                              selected={filters.state.for_sale}
+                              onSelect={value => {
+                                return filters.setFilter("for_sale", value)
+                              }}
+                            >
+                              For sale
+                            </Checkbox>
+                          </Flex>
+
                           <Toggle label="Medium" expanded>
                             {this.renderCategory(
                               filters,
@@ -142,22 +116,29 @@ class Filter extends Component<Props> {
                           </Toggle>
                         </Sidebar>
                       )}
-
                       <Box width={xs ? "100%" : "70%"}>
                         <Separator mb={2} />
                         <Flex justifyContent="flex-end">
                           <Select
-                            mt="-8px" // Corrective spacing for line-height
-                            options={[
-                              {
-                                value: "-partner_updated_at",
-                                text: "Recently updated",
-                              },
-                              {
-                                value: "-published_at",
-                                text: "Recently added",
-                              },
-                            ]}
+                            mt="-8px"
+                            options={
+                              [
+                                { value: "-decayed_merch", text: "Default" },
+                                {
+                                  value: "-partner_updated_at",
+                                  text: "Recently updated",
+                                },
+                                {
+                                  value: "-published_at",
+                                  text: "Recently added",
+                                },
+                                {
+                                  value: "-year",
+                                  text: "Artwork Year (desc.)",
+                                },
+                                { value: "year", text: "Artwork Year (asc.)" },
+                              ] // Corrective spacing for line-height
+                            }
                             selected={filters.state.sort}
                             onSelect={filters.setSort}
                           />
@@ -165,12 +146,11 @@ class Filter extends Component<Props> {
 
                         <Spacer mb={2} />
 
-                        <ArtworksContent
+                        <ArtworkFilterRefetchContainer
+                          artist={this.props.artist as any}
                           artistID={this.props.artist.id}
                           columnCount={xs || sm || md ? 2 : 3}
-                          filtered_artworks={
-                            this.props.artist.filtered_artworks as any
-                          }
+                          filters={filters.state}
                         />
                       </Box>
                     </Flex>
@@ -185,7 +165,7 @@ class Filter extends Component<Props> {
   }
 }
 
-export const ArtworkFilterRefetchContainer = createRefetchContainer(
+export const ArtworkFilterFragmentContainer = createFragmentContainer(
   (props: Props) => {
     return (
       <Subscribe to={[FilterState]}>
@@ -195,62 +175,29 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
       </Subscribe>
     )
   },
-  {
-    artist: graphql`
-      fragment ArtworkFilter_artist on Artist
-        @argumentDefinitions(
-          medium: { type: "String", defaultValue: "*" }
-          major_periods: { type: "[String]" }
-          partner_id: { type: "ID" }
-          for_sale: { type: "Boolean" }
-          aggregations: {
-            type: "[ArtworkAggregation]"
-            defaultValue: [MEDIUM, TOTAL, GALLERY, INSTITUTION, MAJOR_PERIOD]
+  graphql`
+    fragment ArtworkFilter_artist on Artist
+      @argumentDefinitions(
+        medium: { type: "String", defaultValue: "*" }
+        major_periods: { type: "[String]" }
+        partner_id: { type: "ID" }
+        for_sale: { type: "Boolean" }
+        aggregations: {
+          type: "[ArtworkAggregation]"
+          defaultValue: [MEDIUM, TOTAL, GALLERY, INSTITUTION, MAJOR_PERIOD]
+        }
+      ) {
+      id
+      filtered_artworks(aggregations: $aggregations, size: 0) {
+        aggregations {
+          slice
+          counts {
+            name
+            id
           }
-          sort: { type: "String", defaultValue: "-partner_updated_at" }
-        ) {
-        id
-        filtered_artworks(
-          aggregations: $aggregations
-          medium: $medium
-          major_periods: $major_periods
-          partner_id: $partner_id
-          for_sale: $for_sale
-          size: 0
-          sort: $sort
-        ) {
-          aggregations {
-            slice
-            counts {
-              name
-              count
-              id
-            }
-          }
-          ...ArtworkFilterArtworkGrid_filtered_artworks
         }
       }
-    `,
-  },
-  graphql`
-    query ArtworkFilterRefetchQuery(
-      $artistID: String!
-      $medium: String
-      $major_periods: [String]
-      $partner_id: ID
-      $for_sale: Boolean
-      $sort: String
-    ) {
-      artist(id: $artistID) {
-        ...ArtworkFilter_artist
-          @arguments(
-            medium: $medium
-            major_periods: $major_periods
-            partner_id: $partner_id
-            for_sale: $for_sale
-            sort: $sort
-          )
-      }
+      ...ArtworkFilterRefetch_artist
     }
   `
 )

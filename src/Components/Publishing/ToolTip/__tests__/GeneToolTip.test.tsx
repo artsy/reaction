@@ -1,12 +1,12 @@
-import PropTypes from "prop-types"
 import { mount } from "enzyme"
 import "jest-styled-components"
+import PropTypes from "prop-types"
 import React from "react"
-import { wrapperWithContext } from "../../Fixtures/Helpers"
-import { Genes } from "../../Fixtures/Components"
-import { GeneToolTip } from "../GeneToolTip"
 import { ContextProvider } from "../../../Artsy"
 import { FollowGeneButton } from "../../../FollowButton/FollowGeneButton"
+import { Genes } from "../../Fixtures/Components"
+import { wrapperWithContext } from "../../Fixtures/Helpers"
+import { GeneToolTip } from "../GeneToolTip"
 
 describe("GeneTooltip", () => {
   const getWrapper = (props, context = {}) => {
@@ -49,7 +49,7 @@ describe("GeneTooltip", () => {
       const args = context.onOpenAuthModal.mock.calls[0]
 
       expect(args[0]).toBe("register")
-      expect(args[1].context_module).toBe("intext tooltip")
+      expect(args[1].contextModule).toBe("intext tooltip")
       expect(args[1].intent).toBe("follow gene")
     })
   })

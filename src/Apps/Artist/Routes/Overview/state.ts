@@ -16,7 +16,7 @@ export class FilterState extends Container<State> {
     page: 1,
     major_periods: [],
     partner_id: null,
-    sort: "-partner_updated_at",
+    sort: "-decayed_merch",
   }
 
   setMajorPeriods(value) {

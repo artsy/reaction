@@ -14,6 +14,7 @@ interface ArticleItemProps {
   author: string
   title: string
   href: string
+  lastChild: boolean
 }
 
 export const ArticleItem: SFC<ArticleItemProps> = props => {
@@ -28,7 +29,7 @@ export const ArticleItem: SFC<ArticleItemProps> = props => {
 }
 
 const LargeArticleItem: SFC<ArticleItemProps> = props => {
-  const { author, date, href, imageUrl, title } = props
+  const { author, date, href, imageUrl, title, lastChild } = props
 
   return (
     <React.Fragment>
@@ -56,17 +57,16 @@ const LargeArticleItem: SFC<ArticleItemProps> = props => {
           <ResponsiveImage src={imageUrl} />
         </Col>
       </Row>
-
       {/* FIXME: Weird block height issue... */}
       <Spacer mt={2} />
-      <Separator />
+      {!lastChild && <Separator />}
       <Spacer mt={3} />
     </React.Fragment>
   )
 }
 
 const SmallArticleItem: SFC<ArticleItemProps> = props => {
-  const { author, date, href, imageUrl, title } = props
+  const { author, date, href, imageUrl, title, lastChild } = props
 
   return (
     <React.Fragment>
@@ -88,10 +88,9 @@ const SmallArticleItem: SFC<ArticleItemProps> = props => {
         </Box>
         <Image width="70px" height="100%" src={imageUrl} />
       </Flex>
-
       {/* FIXME: Weird block height issue... */}
       <Spacer mt={2} />
-      <Separator />
+      {!lastChild && <Separator />}
       <Spacer mt={3} />
     </React.Fragment>
   )

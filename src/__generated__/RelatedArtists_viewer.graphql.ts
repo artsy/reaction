@@ -3,28 +3,11 @@
 import { ConcreteFragment } from "relay-runtime";
 export type RelatedArtists_viewer = {
     readonly mainArtists: ({}) | null;
-    readonly contemporaryArtists: ({}) | null;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = [
-  {
-    "kind": "Variable",
-    "name": "id",
-    "variableName": "artistID",
-    "type": "String!"
-  }
-],
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ConcreteFragment = {
   "kind": "Fragment",
   "name": "RelatedArtists_viewer",
   "type": "Viewer",
@@ -54,7 +37,14 @@ return {
       "alias": "mainArtists",
       "name": "artist",
       "storageKey": null,
-      "args": v0,
+      "args": [
+        {
+          "kind": "Variable",
+          "name": "id",
+          "variableName": "artistID",
+          "type": "String!"
+        }
+      ],
       "concreteType": "Artist",
       "plural": false,
       "selections": [
@@ -70,35 +60,16 @@ return {
             }
           ]
         },
-        v1
-      ]
-    },
-    {
-      "kind": "LinkedField",
-      "alias": "contemporaryArtists",
-      "name": "artist",
-      "storageKey": null,
-      "args": v0,
-      "concreteType": "Artist",
-      "plural": false,
-      "selections": [
         {
-          "kind": "FragmentSpread",
-          "name": "RelatedArtistsList_artist",
-          "args": [
-            {
-              "kind": "Variable",
-              "name": "kind",
-              "variableName": "contemporaryKind",
-              "type": null
-            }
-          ]
-        },
-        v1
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "__id",
+          "args": null,
+          "storageKey": null
+        }
       ]
     }
   ]
 };
-})();
-(node as any).hash = '1ef215da34ad7d1aa05d8a657099f0ed';
+(node as any).hash = '04f247ee2d035355769aa237e147fe3b';
 export default node;

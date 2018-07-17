@@ -4,6 +4,7 @@ import styled, { css } from "styled-components"
 import { Arrow } from "Styleguide/Elements/Arrow"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
+import { Separator } from "Styleguide/Elements/Separator"
 import { ScrollIntoView } from "Styleguide/Utils/ScrollIntoView"
 import { Responsive } from "Utils/Responsive"
 
@@ -14,6 +15,7 @@ interface Props {
   onClick?: (cursor: string) => void
   onNext?: () => void
   pageCursors: Pagination_pageCursors
+  hasNextPage: boolean
   scrollTo?: string
 }
 
@@ -58,37 +60,42 @@ export const LargePagination = (props: Props) => {
     pageCursors: { around, first, last, previous },
     onClick,
     onNext,
+    hasNextPage,
   } = props
 
   return (
-    <Flex flexDirection="row">
-      {first && (
-        <div>
-          {renderPage(first, onClick)}
-          <PageSpan mx={0.5} />
-        </div>
-      )}
+    <React.Fragment>
+      <Separator mb={3} />
+      <Flex flexDirection="row" justifyContent="flex-end">
+        {first && (
+          <div>
+            {renderPage(first, onClick)}
+            <PageSpan mx={0.5} />
+          </div>
+        )}
 
-      {around.map(pageInfo => renderPage(pageInfo, onClick))}
+        {around.map(pageInfo => renderPage(pageInfo, onClick))}
 
-      {last && (
-        <div>
-          <PageSpan mx={0.5} />
-          {renderPage(last, onClick)}
-        </div>
-      )}
+        {last && (
+          <div>
+            <PageSpan mx={0.5} />
+            {renderPage(last, onClick)}
+          </div>
+        )}
 
-      <Box ml={4}>
-        <PrevButton
-          onClick={() => {
-            if (previous) {
-              props.onClick(previous.cursor)
-            }
-          }}
-        />
-        <NextButton onClick={() => onNext()} />
-      </Box>
-    </Flex>
+        <Box ml={4}>
+          <PrevButton
+            disabled={!previous}
+            onClick={() => {
+              if (previous) {
+                props.onClick(previous.cursor)
+              }
+            }}
+          />
+          <NextButton disabled={!hasNextPage} onClick={() => onNext()} />
+        </Box>
+      </Flex>
+    </React.Fragment>
   )
 }
 
@@ -97,11 +104,16 @@ export const SmallPagination = (props: Props) => {
     pageCursors: { previous },
     onClick,
     onNext,
+    hasNextPage,
   } = props
 
   return (
     <Flex flexDirection="row" width="100%">
-      <Flex width="50%" pr={0.5}>
+      <PrevNextFlex
+        className={!previous ? "disabled" : null}
+        width="50%"
+        pr={0.5}
+      >
         <ButtonWithBorder
           alignItems="center"
           justifyContent="flex-start"
@@ -114,8 +126,12 @@ export const SmallPagination = (props: Props) => {
         >
           <Arrow direction="left" />
         </ButtonWithBorder>
-      </Flex>
-      <Flex width="50%" pl={0.5}>
+      </PrevNextFlex>
+      <PrevNextFlex
+        className={!hasNextPage ? "disabled" : null}
+        width="50%"
+        pl={0.5}
+      >
         <ButtonWithBorder
           onClick={() => onNext()}
           alignItems="center"
@@ -124,7 +140,7 @@ export const SmallPagination = (props: Props) => {
         >
           <Arrow direction="right" />
         </ButtonWithBorder>
-      </Flex>
+      </PrevNextFlex>
     </Flex>
   )
 }
@@ -147,23 +163,39 @@ const PageSpan = ({ mx }) => {
   )
 }
 
-const PrevButton = ({ onClick }) => {
+const PrevNextContainer = styled.span`
+  &.disabled {
+    opacity: 0.1;
+  }
+`
+
+const PrevNextFlex = styled(Flex)`
+  &.disabled {
+    opacity: 0.1;
+  }
+`
+
+const PrevButton = ({ onClick, disabled }) => {
   return (
-    <Sans size="3" weight="medium" display="inline" mx={0.5}>
-      <a onClick={() => onClick()} className="noUnderline">
-        <Arrow direction="left" /> Prev
-      </a>
-    </Sans>
+    <PrevNextContainer className={disabled ? "disabled" : null}>
+      <Sans size="3" weight="medium" display="inline" mx={0.5}>
+        <a onClick={() => onClick()} className="noUnderline">
+          <Arrow direction="left" /> Prev
+        </a>
+      </Sans>
+    </PrevNextContainer>
   )
 }
 
-const NextButton = ({ onClick }) => {
+const NextButton = ({ onClick, disabled }) => {
   return (
-    <Sans size="3" weight="medium" display="inline" mx={0.5}>
-      <a onClick={() => onClick()} className="noUnderline">
-        Next <Arrow direction="right" />
-      </a>
-    </Sans>
+    <PrevNextContainer className={disabled ? "disabled" : null}>
+      <Sans size="3" weight="medium" display="inline" mx={0.5}>
+        <a onClick={() => onClick()} className="noUnderline">
+          Next <Arrow direction="right" />
+        </a>
+      </Sans>
+    </PrevNextContainer>
   )
 }
 

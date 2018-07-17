@@ -1,4 +1,4 @@
-import { Sans, Serif } from "@artsy/palette"
+import { Sans, Serif, space } from "@artsy/palette"
 import { ArtistCard_artist } from "__generated__/ArtistCard_artist.graphql"
 import FollowArtistButton from "Components/FollowButton/FollowArtistButton"
 import React from "react"
@@ -43,7 +43,7 @@ export const LargeArtistCard = (props: Props) => (
       {props.artist.image && (
         <Avatar src={props.artist.image.cropped.url} mb={1} />
       )}
-      <Serif size="3t" weight="semibold">
+      <Serif size="3t" weight="semibold" textAlign="center">
         {props.artist.name}
       </Serif>
       <Sans size="2">{props.artist.formatted_nationality_and_birthday}</Sans>
@@ -59,6 +59,7 @@ export const LargeArtistCard = (props: Props) => (
         buttonProps={{
           variant: "secondaryOutline",
           size: "small",
+          width: space(9),
         }}
         onOpenAuthModal={() => {
           props.mediator.trigger("open:auth", {
@@ -92,6 +93,7 @@ export const SmallArtistCard = (props: Props) => (
         buttonProps={{
           variant: "secondaryOutline",
           size: "small",
+          width: "70px",
         }}
         onOpenAuthModal={() => {
           props.mediator.trigger("open:auth", {

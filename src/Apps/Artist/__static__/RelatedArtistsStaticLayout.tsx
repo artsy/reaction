@@ -60,7 +60,7 @@ export const RelatedArtists = () => {
             <Row>
               <Col>
                 <Flex justifyContent="flex-end">
-                  <Pagination pageCursors={cursor} {...callbacks} />
+                  <Pagination hasNextPage pageCursors={cursor} {...callbacks} />
                 </Flex>
               </Col>
             </Row>
