@@ -92,6 +92,7 @@ fragment Pagination_pageCursors on PageCursors {
   }
   previous {
     cursor
+    page
   }
 }
 */
@@ -163,15 +164,16 @@ v3 = {
   "args": null,
   "storageKey": null
 },
-v4 = [
+v4 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "page",
+  "args": null,
+  "storageKey": null
+},
+v5 = [
   v3,
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "page",
-    "args": null,
-    "storageKey": null
-  },
+  v4,
   {
     "kind": "ScalarField",
     "alias": null,
@@ -180,22 +182,22 @@ v4 = [
     "storageKey": null
   }
 ],
-v5 = {
+v6 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "name",
   "args": null,
   "storageKey": null
 },
-v6 = [
-  v5
+v7 = [
+  v6
 ];
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "ArtistShowsQuery",
   "id": null,
-  "text": "query ArtistShowsQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $artistID: String!\n  $sort: PartnerShowSorts\n  $status: String!\n) {\n  artist(id: $artistID) {\n    ...ArtistShows_artist_1Q1mII\n    __id\n  }\n}\n\nfragment ArtistShows_artist_1Q1mII on Artist {\n  id\n  showsConnection(first: $first, after: $after, before: $before, last: $last, sort: $sort, status: $status) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        href\n        exhibition_period\n        cover_image {\n          cropped(width: 800, height: 600) {\n            url\n          }\n        }\n        city\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n  }\n}\n",
+  "text": "query ArtistShowsQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $artistID: String!\n  $sort: PartnerShowSorts\n  $status: String!\n) {\n  artist(id: $artistID) {\n    ...ArtistShows_artist_1Q1mII\n    __id\n  }\n}\n\nfragment ArtistShows_artist_1Q1mII on Artist {\n  id\n  showsConnection(first: $first, after: $after, before: $before, last: $last, sort: $sort, status: $status) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        href\n        exhibition_period\n        cover_image {\n          cropped(width: 800, height: 600) {\n            url\n          }\n        }\n        city\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -369,7 +371,7 @@ return {
                     "args": null,
                     "concreteType": "PageCursor",
                     "plural": true,
-                    "selections": v4
+                    "selections": v5
                   },
                   {
                     "kind": "LinkedField",
@@ -379,7 +381,7 @@ return {
                     "args": null,
                     "concreteType": "PageCursor",
                     "plural": false,
-                    "selections": v4
+                    "selections": v5
                   },
                   {
                     "kind": "LinkedField",
@@ -389,7 +391,7 @@ return {
                     "args": null,
                     "concreteType": "PageCursor",
                     "plural": false,
-                    "selections": v4
+                    "selections": v5
                   },
                   {
                     "kind": "LinkedField",
@@ -400,7 +402,8 @@ return {
                     "concreteType": "PageCursor",
                     "plural": false,
                     "selections": [
-                      v3
+                      v3,
+                      v4
                     ]
                   }
                 ]
@@ -443,16 +446,16 @@ return {
                           {
                             "kind": "InlineFragment",
                             "type": "Partner",
-                            "selections": v6
+                            "selections": v7
                           },
                           {
                             "kind": "InlineFragment",
                             "type": "ExternalPartner",
-                            "selections": v6
+                            "selections": v7
                           }
                         ]
                       },
-                      v5,
+                      v6,
                       {
                         "kind": "ScalarField",
                         "alias": null,

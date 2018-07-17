@@ -12,7 +12,7 @@ import { Pagination_pageCursors } from "__generated__/Pagination_pageCursors.gra
 import { createFragmentContainer, graphql } from "react-relay"
 
 interface Props {
-  onClick?: (cursor: string) => void
+  onClick?: (cursor: string, page: number) => void
   onNext?: () => void
   pageCursors: Pagination_pageCursors
   hasNextPage: boolean
@@ -43,11 +43,14 @@ export class Pagination extends React.Component<Props> {
   }
 }
 
-const renderPage = (pageCursor, onClick: (cursor: string) => void) => {
+const renderPage = (
+  pageCursor,
+  onClick: (cursor: string, page: number) => void
+) => {
   const { cursor, isCurrent, page } = pageCursor
   return (
     <Page
-      onClick={() => onClick(cursor)}
+      onClick={() => onClick(cursor, page)}
       num={page}
       active={isCurrent}
       key={cursor + page}
@@ -88,7 +91,7 @@ export const LargePagination = (props: Props) => {
             disabled={!previous}
             onClick={() => {
               if (previous) {
-                props.onClick(previous.cursor)
+                props.onClick(previous.cursor, previous.page)
               }
             }}
           />
@@ -120,7 +123,7 @@ export const SmallPagination = (props: Props) => {
           pl={1}
           onClick={() => {
             if (previous) {
-              onClick(previous.cursor)
+              onClick(previous.cursor, previous.page)
             }
           }}
         >
@@ -251,6 +254,7 @@ export const PaginationFragmentContainer = createFragmentContainer(
       }
       previous {
         cursor
+        page
       }
     }
   `

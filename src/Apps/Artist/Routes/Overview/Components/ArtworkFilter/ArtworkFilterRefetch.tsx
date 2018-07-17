@@ -16,7 +16,10 @@ class ArtworkGridRefetchContainerWrapper extends React.Component<Props> {
 
   componentDidUpdate(prevProps) {
     Object.keys(this.props.filters).forEach(key => {
-      if (this.props.filters[key] !== prevProps.filters[key]) {
+      if (
+        key !== "page" &&
+        this.props.filters[key] !== prevProps.filters[key]
+      ) {
         this.loadFilter()
       }
     })
