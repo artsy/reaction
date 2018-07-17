@@ -9,7 +9,8 @@ import RelatedArticleFigure, {
   RelatedArticleFigureData,
 } from "./RelatedArticleFigure"
 
-interface RelatedArticlesCanvasProps extends React.HTMLProps<HTMLDivElement> {
+export interface RelatedArticlesCanvasProps
+  extends React.HTMLProps<HTMLDivElement> {
   vertical?: {
     name: string
     id?: string
@@ -25,7 +26,7 @@ interface ScrollingContainerProps {
 
 export class RelatedArticlesCanvas extends React.Component<
   RelatedArticlesCanvasProps,
-  null
+  any
 > {
   trackRelatedImpression = () => {
     const { tracking } = this.props
@@ -70,7 +71,7 @@ const getTitle = vertical => {
   }
 }
 
-const RelatedArticlesContainer = styled.div`
+export const RelatedArticlesContainer = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 1250px;

@@ -78,7 +78,7 @@ export class DisplayCanvas extends React.Component<DisplayCanvasProps> {
 
 const Div: StyledFunction<DivProps> = styled.div
 
-const DisplayContainer = Div`
+export const DisplayContainer = Div`
   display: flex;
   flex-direction: column;
   width: 100%;
