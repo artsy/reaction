@@ -169,7 +169,7 @@ export class DisplayPanel extends Component<
 
       if (url)
         window.open(
-          replaceWithCacheBuster(url, getCurrentUnixTimestamp()),
+          replaceWithCacheBuster(url, getCurrentUnixTimestamp()) || "",
           "_blank"
         )
     }

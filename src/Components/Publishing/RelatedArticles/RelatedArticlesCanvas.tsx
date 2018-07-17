@@ -9,7 +9,8 @@ import RelatedArticleFigure, {
   RelatedArticleFigureData,
 } from "./RelatedArticleFigure"
 
-interface RelatedArticlesCanvasProps extends React.HTMLProps<HTMLDivElement> {
+export interface RelatedArticlesCanvasProps
+  extends React.HTMLProps<HTMLDivElement> {
   vertical?: {
     name: string
     id?: string
@@ -24,8 +25,7 @@ interface ScrollingContainerProps {
 }
 
 export class RelatedArticlesCanvas extends React.Component<
-  RelatedArticlesCanvasProps,
-  null
+  RelatedArticlesCanvasProps
 > {
   trackRelatedImpression = () => {
     const { tracking } = this.props

@@ -5,17 +5,24 @@ import React, { Component } from "react"
 import styled from "styled-components"
 import { track } from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
+import { DisplayCanvas, DisplayContainer } from "../Display/Canvas"
 import { NewsHeadline } from "../News/NewsHeadline"
 import { NewsSections } from "../News/NewsSections"
+import RelatedArticlesCanvas, {
+  RelatedArticlesCanvasProps,
+} from "../RelatedArticles/RelatedArticlesCanvas"
 import { ArticleData } from "../Typings"
 
 interface Props {
   article: ArticleData
+  display?: any
   isMobile?: boolean
   isHovered?: boolean
   isTruncated?: boolean
   marginTop?: string
   onExpand?: any
+  relatedArticlesForCanvas?: RelatedArticlesCanvasProps
+  renderTime?: any
   tracking?: any
 }
 
@@ -70,43 +77,83 @@ export class NewsLayout extends Component<Props, State> {
   }
 
   render() {
-    const { article, isMobile, marginTop } = this.props
+    const {
+      article,
+      display,
+      isMobile,
+      marginTop,
+      relatedArticlesForCanvas,
+      renderTime,
+    } = this.props
     const { isTruncated, isHovered } = this.state
 
     return (
-      <NewsContainer
-        isTruncated={isTruncated}
-        isHovered={isHovered}
-        marginTop={marginTop}
-        onClick={() => {
-          if (isTruncated) {
-            this.onExpand()
-          }
-        }}
-        onMouseEnter={() => {
-          if (!isMobile) {
-            this.setState({ isHovered: true })
-          }
-        }}
-        onMouseLeave={() => {
-          if (!isMobile) {
-            this.setState({ isHovered: false })
-          }
-        }}
-      >
-        <NewsHeadline article={article} />
-        <NewsSections {...this.props} isTruncated={isTruncated} />
-        <ExpandButton
-          isHovered={isHovered}
+      <NewsContainer>
+        <NewsArticleContainer
           isTruncated={isTruncated}
-          onClick={this.onExpand}
+          isHovered={isHovered}
+          marginTop={marginTop}
+          onClick={() => {
+            if (isTruncated) {
+              this.onExpand()
+            }
+          }}
+          onMouseEnter={() => {
+            if (!isMobile) {
+              this.setState({ isHovered: true })
+            }
+          }}
+          onMouseLeave={() => {
+            if (!isMobile) {
+              this.setState({ isHovered: false })
+            }
+          }}
         >
-          Expand
-        </ExpandButton>
+          <NewsHeadline article={article} />
+          <NewsSections {...this.props} isTruncated={isTruncated} />
+          <ExpandButton
+            isHovered={isHovered}
+            isTruncated={isTruncated}
+            onClick={this.onExpand}
+          >
+            Expand
+          </ExpandButton>
+        </NewsArticleContainer>
+        {relatedArticlesForCanvas && (
+          <RelatedContainer>
+            <RelatedArticlesCanvas
+              articles={relatedArticlesForCanvas as any}
+              isMobile={isMobile}
+            />
+          </RelatedContainer>
+        )}
+        {display && (
+          <DisplayCanvas
+            article={article}
+            unit={display && display.canvas}
+            campaign={display}
+            renderTime={renderTime}
+          />
+        )}
       </NewsContainer>
     )
   }
 }
+
+export const RelatedContainer = styled.div`
+  border-top: 1px solid rgb(229, 229, 229);
+  border-bottom: 1px solid rgb(229, 229, 229);
+  margin: 80px 0 0;
+`
+
+export const NewsContainer = styled.div`
+  ${DisplayContainer} {
+    border-bottom: 1px solid rgb(229, 229, 229);
+    /* TODO: Fix display margins globally */
+    margin-bottom: 0;
+    padding-bottom: 20px;
+  }
+`
 
 export const ExpandButton = styled.button`
   width: 80px;
@@ -147,7 +194,7 @@ export const ExpandButton = styled.button`
   `};
 `
 
-const NewsContainer = styled.div`
+export const NewsArticleContainer = styled.div`
   position: relative;
   max-width: 780px;
   padding: 20px 30px 30px;

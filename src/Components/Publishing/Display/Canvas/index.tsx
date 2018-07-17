@@ -43,7 +43,7 @@ export class DisplayCanvas extends React.Component<DisplayCanvasProps> {
 
   render() {
     const { unit, campaign, article, renderTime } = this.props
-    const url = get(unit, "link.url", "")
+    const url = get(unit, "link.url", "") || ""
     const disclaimer = (
       <Disclaimer layout={unit.layout}>{unit.disclaimer}</Disclaimer>
     )
@@ -78,7 +78,7 @@ export class DisplayCanvas extends React.Component<DisplayCanvasProps> {
 
 const Div: StyledFunction<DivProps> = styled.div
 
-const DisplayContainer = Div`
+export const DisplayContainer = Div`
   display: flex;
   flex-direction: column;
   width: 100%;
