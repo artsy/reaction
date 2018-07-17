@@ -90,6 +90,7 @@ const CheckboxInput = styled.input.attrs<CheckboxProps>({})`
   position: absolute;
   margin: 0;
   left: 0;
+  border: none;
 
   // The after represents the square box
   &::after {
@@ -99,6 +100,7 @@ const CheckboxInput = styled.input.attrs<CheckboxProps>({})`
     width: 20px;
     height: 20px;
     left: 0;
+    top: 0;
     box-sizing: border-box;
     background-color: ${colors.white};
     border: 2px solid

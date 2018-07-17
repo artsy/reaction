@@ -70,6 +70,7 @@ export const Shows = () => {
                   <Col>
                     <Flex justifyContent="flex-end">
                       <PaginationFragmentContainer
+                        hasNextPage
                         pageCursors={cursor}
                         {...callbacks}
                       />
@@ -108,6 +109,7 @@ export const Shows = () => {
                   <Col>
                     <Flex mb={2} justifyContent="flex-end">
                       <PaginationFragmentContainer
+                        hasNextPage
                         pageCursors={cursor}
                         {...callbacks}
                       />
@@ -146,6 +148,7 @@ export const Shows = () => {
                   <Col>
                     <Flex mb={3} justifyContent="flex-end">
                       <PaginationFragmentContainer
+                        hasNextPage
                         pageCursors={cursor}
                         {...callbacks}
                       />

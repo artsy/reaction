@@ -1,40 +1,35 @@
-// import { Serif } from "@artsy/palette"
-// import { Sans } from "@artsy/palette"
+import { Serif } from "@artsy/palette"
+import { Help } from "Assets/Icons/Help"
+import { Tooltip } from "Components/Tooltip"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Box } from "Styleguide/Elements/Box"
 import { Button } from "Styleguide/Elements/Button"
-// import { Flex } from "Styleguide/Elements/Flex"
+import { Flex } from "Styleguide/Elements/Flex"
 
 import { ArtworkSidebarBidAction_artwork } from "__generated__/ArtworkSidebarBidAction_artwork.graphql"
 
 export interface ArtworkSidebarBidActionProps {
   artwork: ArtworkSidebarBidAction_artwork
-  readonly me?: {
-    readonly bidders: Array<{
-      readonly qualified_for_bidding: boolean
-    }>
-    readonly bidder_status: {
-      readonly active_bid?: {
-        readonly __id: string
-      }
-    }
-  }
 }
 
 export class ArtworkSidebarBidAction extends React.Component<
   ArtworkSidebarBidActionProps
 > {
   render() {
-    const { artwork, me } = this.props
-    const registrationAttempted = me && me.bidders && me.bidders.length > 0
+    const { artwork } = this.props
+    const registrationAttempted = !!artwork.sale.registrationStatus
     const registeredToBid =
-      registrationAttempted && me.bidders[0].qualified_for_bidding
-    const hasPreviousBids =
-      me &&
-      me.bidder_status &&
-      me.bidder_status.active_bid &&
-      me.bidder_status.active_bid.__id
+      registrationAttempted &&
+      artwork.sale.registrationStatus.qualified_for_bidding
+
+    /**
+     * NOTE: This is making an incorrect assumption that there could only ever
+     *       be 1 live sale with this work. When we run into that case, there is
+     *       likely design work to be done too, so we can adjust this then.
+     */
+    const myLotStanding = artwork.myLotStanding && artwork.myLotStanding[0]
+    const hasPreviousBids = !!(myLotStanding && myLotStanding.active_bid)
 
     if (artwork.sale.is_preview) {
       return (
@@ -87,9 +82,19 @@ export class ArtworkSidebarBidAction extends React.Component<
             )}
           {(!artwork.sale.is_registration_closed && !registrationAttempted) ||
           registeredToBid ? (
-            <Button width="100%" size="medium" mt={1}>
-              {hasPreviousBids ? "Increase max bid" : "Bid"}
-            </Button>
+            <Box>
+              <Flex width="100%" flexDirection="row">
+                <Serif size="3t" color="black100">
+                  Place max bid
+                </Serif>
+                <Tooltip message="Set the maximum amount you would like Artsy to bid up to on your behalf">
+                  <Help />
+                </Tooltip>
+              </Flex>
+              <Button width="100%" size="medium" mt={1}>
+                {hasPreviousBids ? "Increase max bid" : "Bid"}
+              </Button>
+            </Box>
           ) : (
             <Button width="100%" size="medium" mt={1} disabled>
               Registration closed
@@ -107,12 +112,25 @@ export const ArtworkSidebarBidActionFragmentContainer = createFragmentContainer(
   ArtworkSidebarBidAction,
   graphql`
     fragment ArtworkSidebarBidAction_artwork on Artwork {
+      myLotStanding(live: true) {
+        active_bid {
+          __id
+        }
+      }
       sale {
+        registrationStatus {
+          qualified_for_bidding
+        }
         is_preview
         is_open
         is_live_open
         is_closed
         is_registration_closed
+      }
+      sale_artwork {
+        increments {
+          display
+        }
       }
     }
   `

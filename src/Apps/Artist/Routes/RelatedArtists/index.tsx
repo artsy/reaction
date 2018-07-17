@@ -40,9 +40,6 @@ export const RelatedArtistsRouteFragmentContainer = createFragmentContainer(
       mainArtists: artist(id: $artistID) {
         ...RelatedArtistsList_artist @arguments(kind: $mainKind)
       }
-      contemporaryArtists: artist(id: $artistID) {
-        ...RelatedArtistsList_artist @arguments(kind: $contemporaryKind)
-      }
     }
   `
 )

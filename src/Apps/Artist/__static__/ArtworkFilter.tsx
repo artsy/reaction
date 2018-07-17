@@ -53,7 +53,7 @@ export const ArtworkFilter = () => {
                 columnCount={xs || sm || md ? 2 : 3}
               />
               <Spacer mb={3} />
-              <Pagination pageCursors={paginationProps.cursor} />
+              <Pagination pageCursors={paginationProps.cursor} hasNextPage />
               />
             </ArtworkGridArea>
           </ArtworkBrowser>

@@ -1,6 +1,6 @@
 import { Sans } from "@artsy/palette"
 import { Overview_artist } from "__generated__/Overview_artist.graphql"
-import { ArtworkFilterRefetchContainer as ArtworkFilter } from "Apps/Artist/Routes/Overview/Components/ArtworkFilter"
+import { ArtworkFilterFragmentContainer as ArtworkFilter } from "Apps/Artist/Routes/Overview/Components/ArtworkFilter"
 import { GenesFragmentContainer as Genes } from "Apps/Artist/Routes/Overview/Components/Genes"
 import React, { SFC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -27,7 +27,9 @@ const OverviewRoute: SFC<OverviewRouteProps> = props => {
           <Spacer mb={1} />
 
           <SelectedExhibitions
-            exhibitions={props.artist.exhibition_highlights.slice(0, 10) as any}
+            artistID={artist.id}
+            totalExhibitions={props.artist.counts.partner_shows}
+            exhibitions={props.artist.exhibition_highlights as any}
           />
 
           <Box mt={3} mb={1}>
@@ -40,7 +42,8 @@ const OverviewRoute: SFC<OverviewRouteProps> = props => {
 
           {artist.is_consignable && (
             <Sans size="2" color="black60">
-              <a href="/consign">Consign</a> a work by this artist.
+              Want to sell a work by this artist?{" "}
+              <a href="/consign">Learn more</a>.
             </Sans>
           )}
         </Col>
@@ -72,9 +75,12 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
       ...ArtistBio_bio
       ...CurrentEvent_artist
       ...MarketInsightsArtistPage_artist
-
-      exhibition_highlights(size: 15) {
+      id
+      exhibition_highlights(size: 3) {
         ...SelectedExhibitions_exhibitions
+      }
+      counts {
+        partner_shows
       }
 
       is_consignable

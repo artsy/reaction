@@ -23,6 +23,9 @@ export interface Props
   relay?: RelayProp
   relayEnvironment?: RelayRuntimeTypes.Environment
   useRelay?: boolean
+  mediator?: {
+    trigger: (action: string, config: object) => void
+  }
 }
 
 // TODO: This will be refactored out once Artworks / Grids are full Relay in Force
@@ -122,7 +125,21 @@ export const SaveButtonContainer = Artsy.ContextConsumer(
           },
         })
       } else {
-        window.location.href = "/login"
+        if (this.props.mediator) {
+          this.props.mediator.trigger("open:auth", {
+            mode: "signup",
+            copy: `Sign up to save artworks`,
+            intent: "save artwork",
+            signupIntent: "save artwork",
+            trigger: "click",
+            afterSignUpAction: {
+              action: "save",
+              objectId: this.props.artwork.id,
+            },
+          })
+        } else {
+          window.location.href = "/login"
+        }
       }
     }
 

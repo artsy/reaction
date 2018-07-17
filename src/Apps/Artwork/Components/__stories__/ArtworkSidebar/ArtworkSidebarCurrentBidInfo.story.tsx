@@ -1,11 +1,11 @@
 import {
   ClosedAuctionArtwork,
   LiveAuctionInProgeress,
-  MyBidLoosing,
-  MyBidWinning,
   OpenAuctionNoReserveNoBids,
   OpenAuctionNoReserveWithBids,
   OpenAuctionReserveMetWithBids,
+  OpenAuctionReserveMetWithMyLoosingBid,
+  OpenAuctionReserveMetWithMyWinningBid,
   OpenAuctionReserveNoBids,
   OpenAuctionReserveNotMetWithBids,
 } from "Apps/__test__/Fixtures/Artwork/Sidebar/CurrentBidInfo"
@@ -36,16 +36,10 @@ storiesOf("Styleguide/Artwork/Sidebar", module).add("CurrentBidInfo", () => {
         <CurrentBidInfo artwork={OpenAuctionReserveMetWithBids} />
       </Section>
       <Section title="Open auction with my bid winning">
-        <CurrentBidInfo
-          artwork={OpenAuctionReserveNotMetWithBids}
-          me={MyBidWinning}
-        />
+        <CurrentBidInfo artwork={OpenAuctionReserveMetWithMyWinningBid} />
       </Section>
       <Section title="Open auction with my bid loosing">
-        <CurrentBidInfo
-          artwork={OpenAuctionReserveMetWithBids}
-          me={MyBidLoosing}
-        />
+        <CurrentBidInfo artwork={OpenAuctionReserveMetWithMyLoosingBid} />
       </Section>
       <Section title="Live auction in progress">
         <CurrentBidInfo artwork={LiveAuctionInProgeress} />
