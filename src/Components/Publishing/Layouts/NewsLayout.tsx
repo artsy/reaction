@@ -10,7 +10,6 @@ import { NewsHeadline } from "../News/NewsHeadline"
 import { NewsSections } from "../News/NewsSections"
 import RelatedArticlesCanvas, {
   RelatedArticlesCanvasProps,
-  RelatedArticlesContainer,
 } from "../RelatedArticles/RelatedArticlesCanvas"
 import { ArticleData } from "../Typings"
 
@@ -121,10 +120,12 @@ export class NewsLayout extends Component<Props, State> {
           </ExpandButton>
         </NewsArticleContainer>
         {relatedArticlesForCanvas && (
-          <RelatedArticlesCanvas
-            articles={relatedArticlesForCanvas as any}
-            isMobile={isMobile}
-          />
+          <RelatedContainer>
+            <RelatedArticlesCanvas
+              articles={relatedArticlesForCanvas as any}
+              isMobile={isMobile}
+            />
+          </RelatedContainer>
         )}
         {display && (
           <DisplayCanvas
@@ -139,15 +140,13 @@ export class NewsLayout extends Component<Props, State> {
   }
 }
 
-export const NewsContainer = styled.div`
-  ${RelatedArticlesContainer} {
-    border-top: 1px solid rgb(229, 229, 229);
-    border-bottom: 1px solid rgb(229, 229, 229);
-    padding-top: 40px;
-    padding-bottom: 80px;
-    margin: 80px 0 0;
-  }
+export const RelatedContainer = styled.div`
+  border-top: 1px solid rgb(229, 229, 229);
+  border-bottom: 1px solid rgb(229, 229, 229);
+  margin: 80px 0 0;
+`
 
+export const NewsContainer = styled.div`
   ${DisplayContainer} {
     border-bottom: 1px solid rgb(229, 229, 229);
     /* TODO: Fix display margins globally */

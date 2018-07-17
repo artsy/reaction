@@ -1,5 +1,8 @@
 import { storiesOf } from "@storybook/react"
-import { RelatedCanvas } from "Components/Publishing/Fixtures/Components"
+import {
+  Display,
+  RelatedCanvas,
+} from "Components/Publishing/Fixtures/Components"
 import React from "react"
 import { Article } from "../Article"
 import { NewsArticle } from "../Fixtures/Articles"
@@ -17,6 +20,26 @@ storiesOf("Publishing/Articles/News", module)
         article={NewsArticle}
         isTruncated
         relatedArticlesForCanvas={RelatedCanvas}
+      />
+    )
+  })
+  .add("Has Display", () => {
+    return (
+      <Article
+        article={NewsArticle}
+        isTruncated
+        relatedArticlesForCanvas={RelatedCanvas}
+        display={Display("video")}
+      />
+    )
+  })
+  .add("Related & Display", () => {
+    return (
+      <Article
+        article={NewsArticle}
+        isTruncated
+        relatedArticlesForCanvas={RelatedCanvas}
+        display={Display("image")}
       />
     )
   })

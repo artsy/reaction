@@ -25,8 +25,7 @@ interface ScrollingContainerProps {
 }
 
 export class RelatedArticlesCanvas extends React.Component<
-  RelatedArticlesCanvasProps,
-  any
+  RelatedArticlesCanvasProps
 > {
   trackRelatedImpression = () => {
     const { tracking } = this.props
@@ -71,7 +70,7 @@ const getTitle = vertical => {
   }
 }
 
-export const RelatedArticlesContainer = styled.div`
+const RelatedArticlesContainer = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 1250px;
