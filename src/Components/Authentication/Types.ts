@@ -29,6 +29,7 @@ export interface FormProps {
   handleTypeChange?: (modalType: ModalType) => void
   onFacebookLogin?: (e: Event) => void
   onTwitterLogin?: (e: Event) => void
+  onBackButtonClicked?: (e: Event) => void
 }
 
 export interface ModalOptions {

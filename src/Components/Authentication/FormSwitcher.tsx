@@ -34,6 +34,7 @@ export interface FormSwitcherProps {
   }
   values?: InputValues
   onSocialAuthEvent?: (options) => void
+  onBackButtonClicked?: (e: Event) => void
 }
 
 export interface State {
@@ -154,7 +155,7 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
         return null
     }
 
-    const { handleSubmit, values } = this.props
+    const { handleSubmit, onBackButtonClicked, values } = this.props
     const defaultValues = {
       email: values.email || "",
       password: values.password || "",
@@ -168,6 +169,7 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
         values={defaultValues}
         handleTypeChange={this.handleTypeChange}
         handleSubmit={handleSubmit}
+        onBackButtonClicked={onBackButtonClicked}
         onFacebookLogin={() => {
           if (this.props.onSocialAuthEvent) {
             this.props.onSocialAuthEvent({
