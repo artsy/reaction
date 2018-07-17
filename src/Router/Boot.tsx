@@ -3,6 +3,7 @@ import React from "react"
 import { GridThemeProvider } from "styled-bootstrap-grid"
 import { GlobalStyles } from "Styleguide/Elements/GlobalStyles"
 import { Grid } from "Styleguide/Elements/Grid"
+import { BreakpointVisualizer } from "Styleguide/Utils/BreakpointVisualizer"
 import { Provider as StateProvider } from "unstated"
 import { ResponsiveProvider } from "Utils/Responsive"
 import { ContextProvider } from "../Components/Artsy"
@@ -25,7 +26,12 @@ export const Boot: React.SFC<BootProps> = ({ children, ...props }) => {
           <GlobalStyles>
             <Theme>
               <GridThemeProvider gridTheme={themeProps.grid}>
-                <Grid fluid>{children}</Grid>
+                <Grid fluid>
+                  {children}
+                  {process.env.NODE_ENV === "development" && (
+                    <BreakpointVisualizer />
+                  )}
+                </Grid>
               </GridThemeProvider>
             </Theme>
           </GlobalStyles>
