@@ -12,7 +12,7 @@ interface ReadMoreProps {
   tracking?: any
 }
 
-export class ReadMore extends React.Component<ReadMoreProps, any> {
+export class ReadMore extends React.Component<ReadMoreProps> {
   onClick = () => {
     const { onClick, tracking } = this.props
 

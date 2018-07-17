@@ -20,8 +20,7 @@ interface RelatedArticlesPanelProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 export class RelatedArticlesPanel extends React.Component<
-  RelatedArticlesPanelProps,
-  null
+  RelatedArticlesPanelProps
 > {
   static defaultProps = {
     label: "Related Stories",
