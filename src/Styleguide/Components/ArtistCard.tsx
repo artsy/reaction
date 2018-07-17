@@ -1,14 +1,14 @@
-import { Sans, Serif } from "@artsy/palette"
+import { Sans, Serif, space } from "@artsy/palette"
+import { ArtistCard_artist } from "__generated__/ArtistCard_artist.graphql"
 import FollowArtistButton from "Components/FollowButton/FollowArtistButton"
 import React from "react"
+import { createFragmentContainer, graphql } from "react-relay"
+import styled from "styled-components"
 import { Avatar } from "Styleguide/Elements"
 import { BorderBox } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Responsive } from "Utils/Responsive"
-
-import { ArtistCard_artist } from "__generated__/ArtistCard_artist.graphql"
-import { createFragmentContainer, graphql } from "react-relay"
 
 interface Props {
   artist: ArtistCard_artist
@@ -18,26 +18,32 @@ interface Props {
   }
 }
 
+const StyledLink = styled.a`
+  text-decoration: none;
+`
+
 export class ArtistCard extends React.Component<Props> {
   render() {
     return (
-      <Responsive>
-        {({ xs }) => {
-          if (xs) return <SmallArtistCard {...this.props} />
-          else return <LargeArtistCard {...this.props} />
-        }}
-      </Responsive>
+      <StyledLink href={this.props.artist.href}>
+        <Responsive>
+          {({ xs }) => {
+            if (xs) return <SmallArtistCard {...this.props} />
+            else return <LargeArtistCard {...this.props} />
+          }}
+        </Responsive>
+      </StyledLink>
     )
   }
 }
 
 export const LargeArtistCard = (props: Props) => (
-  <BorderBox hover flexDirection="column" width="100%">
+  <BorderBox hover flexDirection="column" width="100%" height="254px">
     <Flex flexDirection="column" flexGrow="0" alignItems="center" pt={1}>
       {props.artist.image && (
         <Avatar src={props.artist.image.cropped.url} mb={1} />
       )}
-      <Serif size="3t" weight="semibold">
+      <Serif size="3t" weight="semibold" textAlign="center">
         {props.artist.name}
       </Serif>
       <Sans size="2">{props.artist.formatted_nationality_and_birthday}</Sans>
@@ -53,6 +59,7 @@ export const LargeArtistCard = (props: Props) => (
         buttonProps={{
           variant: "secondaryOutline",
           size: "small",
+          width: space(9),
         }}
         onOpenAuthModal={() => {
           props.mediator.trigger("open:auth", {
@@ -86,6 +93,7 @@ export const SmallArtistCard = (props: Props) => (
         buttonProps={{
           variant: "secondaryOutline",
           size: "small",
+          width: "70px",
         }}
         onOpenAuthModal={() => {
           props.mediator.trigger("open:auth", {
@@ -115,6 +123,7 @@ export const ArtistCardFragmentContainer = createFragmentContainer(
     fragment ArtistCard_artist on Artist {
       name
       id
+      href
       image {
         cropped(width: 400, height: 300) {
           url

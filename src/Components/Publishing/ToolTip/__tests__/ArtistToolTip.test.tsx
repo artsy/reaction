@@ -1,12 +1,12 @@
-import PropTypes from "prop-types"
 import { mount } from "enzyme"
 import "jest-styled-components"
+import PropTypes from "prop-types"
 import React from "react"
-import { wrapperWithContext } from "../../Fixtures/Helpers"
-import { Artists } from "../../Fixtures/Components"
-import { ArtistToolTip, TitleDate } from "../ArtistToolTip"
 import { ContextProvider } from "../../../Artsy"
 import { FollowArtistButton } from "../../../FollowButton/FollowArtistButton"
+import { Artists } from "../../Fixtures/Components"
+import { wrapperWithContext } from "../../Fixtures/Helpers"
+import { ArtistToolTip, TitleDate } from "../ArtistToolTip"
 
 describe("ArtistToolTip", () => {
   const getWrapper = (props, context = {}) => {
@@ -37,7 +37,6 @@ describe("ArtistToolTip", () => {
         trackEvent: jest.fn(),
       },
       artist: Artists[0].artist,
-      showMarketData: false,
     }
   })
 
@@ -57,6 +56,15 @@ describe("ArtistToolTip", () => {
     expect(component.find("img").length).toBe(2)
   })
 
+  it("Renders genes if no bio present", () => {
+    delete props.artist.blurb
+    const component = getWrapper(props)
+
+    expect(component.text()).toMatch(
+      "United States, Abstract Art, 21st Century"
+    )
+  })
+
   it("Tracks clicks to artist page", () => {
     const component = getWrapper(props)
     component
@@ -68,7 +76,7 @@ describe("ArtistToolTip", () => {
     expect(trackingData.action).toBe("Click")
     expect(trackingData.flow).toBe("tooltip")
     expect(trackingData.type).toBe("artist stub")
-    expect(trackingData.context_module).toBe("intext tooltip")
+    expect(trackingData.contextModule).toBe("intext tooltip")
     expect(trackingData.destination_path).toBe("/artist/nick-mauss")
   })
 
@@ -84,7 +92,7 @@ describe("ArtistToolTip", () => {
       const args = context.onOpenAuthModal.mock.calls[0]
 
       expect(args[0]).toBe("register")
-      expect(args[1].context_module).toBe("intext tooltip")
+      expect(args[1].contextModule).toBe("intext tooltip")
       expect(args[1].intent).toBe("follow artist")
     })
   })

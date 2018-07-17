@@ -136,25 +136,28 @@ export class CanvasContainerComponent extends React.Component<
       // Video / Image
     } else {
       const [asset] = unit.assets
-      const isVideo = asset && asset.url.includes("mp4")
+      const src = (asset && asset.url) || ""
+      const isVideo = src.includes("mp4")
 
       return (
         <CanvasLink {...linkProps}>
           {isVideo ? (
             <CanvasVideo
               coverUrl={cover_image_url}
-              src={asset.url}
+              src={src}
               campaign={campaign}
               onInit={h => (this.canvasVideoHandlers = h)}
             />
           ) : (
-            <Image
-              src={crop(asset.url, {
-                width: 1200,
-                height: 760,
-                isDisplayAd: true,
-              })}
-            />
+            src && (
+              <Image
+                src={crop(src, {
+                  width: 1200,
+                  height: 760,
+                  isDisplayAd: true,
+                })}
+              />
+            )
           )}
 
           <StandardContainer>

@@ -33,6 +33,7 @@ export class FollowButton extends React.Component<Props, State> {
       : "Follow"
 
     const props = {
+      variant: isFollowed ? "secondaryOutline" : "primaryBlack",
       ...buttonProps,
       onClick: handleFollow,
       onMouseEnter: () => this.setState({ showUnfollow: true }),

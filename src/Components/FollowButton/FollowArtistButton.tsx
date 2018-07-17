@@ -1,5 +1,6 @@
 import { extend } from "lodash"
 import React from "react"
+import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
 import { FollowArtistButton_artist } from "../../__generated__/FollowArtistButton_artist.graphql"
 import { track } from "../../Utils/track"
 import * as Artsy from "../Artsy"
@@ -53,40 +54,52 @@ export class FollowArtistButton extends React.Component<Props> {
     tracking.trackEvent(extend({ action }, trackingData))
   }
 
-  handleFollow = () => {
+  handleFollow = e => {
+    e.preventDefault() // If this button is part of a link, we _probably_ dont want to actually follow the link.
     const { artist, currentUser, relay, onOpenAuthModal } = this.props
 
     if (currentUser && currentUser.id) {
+      const newFollowCount = artist.is_followed
+        ? artist.counts.follows - 1
+        : artist.counts.follows + 1
       commitMutation(relay.environment, {
         mutation: graphql`
           mutation FollowArtistButtonMutation($input: FollowArtistInput!) {
             followArtist(input: $input) {
               artist {
                 is_followed
+                counts {
+                  follows
+                }
               }
             }
           }
         `,
         variables: {
-          input: {
-            artist_id: artist.id,
-            unfollow: artist.is_followed,
-          },
+          input: { artist_id: artist.id, unfollow: artist.is_followed },
         },
         optimisticResponse: {
           followArtist: {
             artist: {
               __id: artist.__id,
               is_followed: !artist.is_followed,
+              counts: { follows: newFollowCount },
             },
           },
+        },
+        updater: (store: RecordSourceSelectorProxy, data: SelectorData) => {
+          const artistProxy = store.get(data.followArtist.artist.__id)
+
+          artistProxy
+            .getLinkedRecord("counts")
+            .setValue(newFollowCount, "follows")
         },
       })
       this.trackFollow()
     } else {
       onOpenAuthModal &&
         onOpenAuthModal("register", {
-          context_module: "intext tooltip",
+          contextModule: "intext tooltip",
           intent: "follow artist",
           copy: "Sign up to follow artists",
         })
@@ -119,6 +132,9 @@ export default track()(
         __id
         id
         is_followed
+        counts {
+          follows
+        }
       }
     `
   )

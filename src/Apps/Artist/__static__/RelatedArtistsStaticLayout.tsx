@@ -40,6 +40,7 @@ export const RelatedArtists = () => {
                                 url: "https://picsum.photos/110/110/?random",
                               },
                             },
+                            href: "/artist/francesca-dimattio",
                             name: "Francesca DiMattio",
                             formatted_nationality_and_birthday:
                               "American, b. 1979",
@@ -59,7 +60,7 @@ export const RelatedArtists = () => {
             <Row>
               <Col>
                 <Flex justifyContent="flex-end">
-                  <Pagination pageCursors={cursor} {...callbacks} />
+                  <Pagination hasNextPage pageCursors={cursor} {...callbacks} />
                 </Flex>
               </Col>
             </Row>

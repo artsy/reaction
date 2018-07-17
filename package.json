@@ -25,7 +25,6 @@
   "scripts": {
     "clean": "rm -rf dist",
     "compile": "babel src --out-dir dist -s --source-map --extensions '.js,.jsx,.ts,.tsx' --ignore src/**/__tests__,src/**/__stories__",
-    "deploy-storybook": "yarn relay && NODE_ENV=production storybook-to-ghpages",
     "deploy-storybook-pr": "yarn relay && NODE_ENV=production build-storybook -s ./public -o storybook_build ",
     "emit-types": "tsc --declaration --emitDeclarationOnly --listEmittedFiles --jsx react --outDir dist",
     "lint": "tslint -c tslint.json --project tsconfig.json",
@@ -72,7 +71,6 @@
     "@storybook/addon-info": "^3.4.6",
     "@storybook/addon-options": "^3.2.1",
     "@storybook/react": "^3.2.12",
-    "@storybook/storybook-deployer": "^2.0.0",
     "@types/enzyme": "^3.1.0",
     "@types/isomorphic-fetch": "^0.0.34",
     "@types/jest": "^20.0.7",

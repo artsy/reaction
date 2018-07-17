@@ -12,6 +12,7 @@ storiesOf("Components/Follow Button", module)
             id: "damon-zucconi",
             __id: "1234",
             is_followed: false,
+            counts: { follows: 100 },
           }}
         />
         <br />
@@ -20,6 +21,7 @@ storiesOf("Components/Follow Button", module)
             id: "damon-zucconi",
             __id: "1234",
             is_followed: true,
+            counts: { follows: 100 },
           }}
         />
       </div>

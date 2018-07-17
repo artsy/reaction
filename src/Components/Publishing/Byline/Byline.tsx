@@ -1,4 +1,4 @@
-import { TypeSizes } from "@artsy/palette/dist/elements/Typography"
+import { SansSize } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
 import { getArticleFullHref } from "../Constants"
@@ -12,7 +12,7 @@ interface BylineProps {
   color?: string
   date?: string
   layout?: BylineLayout
-  size?: keyof TypeSizes["sans"]
+  size?: SansSize
 }
 
 export const Byline: React.SFC<BylineProps> = props => {

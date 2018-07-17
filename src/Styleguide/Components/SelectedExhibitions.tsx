@@ -1,9 +1,9 @@
 import { Sans } from "@artsy/palette"
-import { groupBy, toPairs } from "lodash"
-import { createFragmentContainer, graphql } from "react-relay"
-
 import { SelectedExhibitions_exhibitions } from "__generated__/SelectedExhibitions_exhibitions.graphql"
+import { groupBy, toPairs } from "lodash"
 import React, { SFC } from "react"
+import { createFragmentContainer, graphql } from "react-relay"
+import { PreloadLink } from "Router/PreloadLink"
 import { BorderBox, Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Responsive } from "Utils/Responsive"
@@ -64,6 +64,8 @@ export const ExhibitionYearList: SFC<ExhibitionYearListProps> = props => (
 
 interface FullExhibitionListProps {
   exhibitions: SelectedExhibitions_exhibitions
+  artistID: string
+  totalExhibitions: number
 }
 const FullExhibitionList: SFC<FullExhibitionListProps> = props => (
   <React.Fragment>
@@ -76,16 +78,18 @@ const FullExhibitionList: SFC<FullExhibitionListProps> = props => (
           exhibitions={exhibitions.reverse()}
         />
       ))}
-    <Sans size="2" color="black60">
-      <a href="#" className="noUnderline">
-        View all
-      </a>
-    </Sans>
+    {props.totalExhibitions > MIN_FOR_SELECTED_EXHIBITIONS && (
+      <Sans size="2" color="black60">
+        <PreloadLink to={`/artist2/${props.artistID}/cv`}>View all</PreloadLink>
+      </Sans>
+    )}
   </React.Fragment>
 )
 
 export interface SelectedExhibitionsProps {
   exhibitions: SelectedExhibitions_exhibitions
+  artistID?: string
+  totalExhibitions?: number
 }
 
 export interface SelectedExhibitionsContainerProps
@@ -114,8 +118,15 @@ export class SelectedExhibitionsContainer extends React.Component<
             exhibitionCount={this.props.exhibitions.length}
             onShowClicked={() => this.setState({ expanded: true })}
           />
-          {!isCollapsed({ expanded: this.state.expanded, ...this.props }) && (
-            <FullExhibitionList exhibitions={this.props.exhibitions} />
+          {!isCollapsed({
+            expanded: this.state.expanded,
+            ...this.props,
+          }) && (
+            <FullExhibitionList
+              artistID={this.props.artistID}
+              exhibitions={this.props.exhibitions}
+              totalExhibitions={this.props.totalExhibitions}
+            />
           )}
         </Flex>
       </BorderBox>

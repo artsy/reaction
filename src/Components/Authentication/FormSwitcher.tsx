@@ -28,7 +28,12 @@ export interface FormSwitcherProps {
   options: ModalOptions
   tracking?: any
   type: ModalType
+  submitUrls?: { [P in ModalType]: string } & {
+    facebook?: string
+    twitter?: string
+  }
   values?: InputValues
+  onSocialAuthEvent?: (options) => void
 }
 
 export interface State {
@@ -98,7 +103,9 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
     const { isMobile, isStatic, handleTypeChange, options } = this.props
 
     if (isMobile || isStatic) {
-      window.location.assign(`/${newType}?${qs.stringify(options)}`)
+      if (typeof window !== "undefined") {
+        window.location.assign(`/${newType}?${qs.stringify(options)}`)
+      }
     } else {
       this.setState({ type: newType })
       if (handleTypeChange) {
@@ -108,7 +115,31 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
   }
 
   render() {
-    const { error, isMobile, onFacebookLogin, onTwitterLogin } = this.props
+    const { error, isMobile, options } = this.props
+    const pageLocation =
+      typeof window !== "undefined" ? window.location.href : ""
+
+    const queryData = Object.assign(
+      {},
+      options,
+      {
+        accepted_terms_of_service: true,
+        agreed_to_receive_emails: true,
+        "signup-referer": options.signupReferer || pageLocation,
+      },
+      options.redirectTo
+        ? {
+            "redirect-to": options.redirectTo,
+          }
+        : null,
+      options.intent
+        ? {
+            "signup-intent": options.intent,
+          }
+        : null
+    )
+
+    const authQueryData = qs.stringify(queryData)
 
     let Form: FormComponentType
     switch (this.state.type) {
@@ -139,8 +170,34 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
         values={defaultValues}
         handleTypeChange={this.handleTypeChange}
         handleSubmit={handleSubmit}
-        onFacebookLogin={onFacebookLogin}
-        onTwitterLogin={onTwitterLogin}
+        onFacebookLogin={() => {
+          if (this.props.onSocialAuthEvent) {
+            this.props.onSocialAuthEvent({
+              ...options,
+              service: "facebook",
+            })
+          }
+
+          if (typeof window !== "undefined") {
+            window.location.href =
+              this.props.submitUrls.facebook +
+              `?${authQueryData}` +
+              "&service=facebook"
+          }
+        }}
+        onTwitterLogin={() => {
+          if (this.props.onSocialAuthEvent) {
+            this.props.onSocialAuthEvent({
+              ...options,
+              service: "twitter",
+            })
+          }
+
+          if (typeof window !== "undefined") {
+            window.location.href =
+              this.props.submitUrls + `?${authQueryData}` + "&service=twitter"
+          }
+        }}
       />
     )
   }

@@ -48,13 +48,7 @@ export const routes = [
         path: "/",
         Component: OverviewRoute,
         query: graphql`
-          query routes_OverviewQueryRendererQuery(
-            $artistID: String!
-            $medium: String
-            $major_periods: [String]
-            $partner_id: ID
-            $for_sale: Boolean
-          ) {
+          query routes_OverviewQueryRendererQuery($artistID: String!) {
             artist(id: $artistID) {
               ...Overview_artist
             }

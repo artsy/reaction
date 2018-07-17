@@ -2,11 +2,10 @@ import { Sans } from "@artsy/palette"
 import { ArtistShows_artist } from "__generated__/ArtistShows_artist.graphql"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
-import { PaginationFragmentContainer } from "Styleguide/Components/Pagination"
+import { PaginationFragmentContainer as Pagination } from "Styleguide/Components/Pagination"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
-import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Responsive } from "Utils/Responsive"
 import { ArtistShowBlockItem } from "./ArtistShowBlockItem"
@@ -91,33 +90,37 @@ class ArtistShows extends Component<ArtistShowsProps, LoadingAreaState> {
 
           return (
             <React.Fragment>
-              {this.props.status !== "running" && <ShowDivider />}
-
               <Row>
                 <Col>
                   <Row>
                     <Col>
-                      <Sans size="3" weight="medium">
+                      {/* Negative margin bottom to make space 20px from bottom of 
+                    text to the image below */}
+                      <Sans size="3" weight="medium" mb={-0.5}>
                         {this.props.heading}
                       </Sans>
+                      <Spacer mb={2} />
                       <LoadingArea isLoading={this.state.isLoading}>
                         {this.props.status === "running" ? (
                           <ShowBlocks flexDirection={blockDirection} flexWrap>
                             {this.props.artist.showsConnection.edges.map(
                               ({ node }, edgeKey) => {
                                 return (
-                                  <ArtistShowBlockItem
-                                    key={edgeKey}
-                                    blockWidth={blockWidth}
-                                    imageUrl={node.cover_image.cropped.url}
-                                    partner={node.partner.name}
-                                    name={node.name}
-                                    exhibitionInfo={node.exhibition_period}
-                                    pr={pr}
-                                    pb={pb}
-                                    href={node.href}
-                                    city={node.city}
-                                  />
+                                  <React.Fragment>
+                                    <ArtistShowBlockItem
+                                      key={edgeKey}
+                                      blockWidth={blockWidth}
+                                      imageUrl={node.cover_image.cropped.url}
+                                      partner={node.partner.name}
+                                      name={node.name}
+                                      exhibitionInfo={node.exhibition_period}
+                                      pr={pr}
+                                      pb={pb}
+                                      href={node.href}
+                                      city={node.city}
+                                    />
+                                    {xs && <Spacer mb={3} />}
+                                  </React.Fragment>
                                 )
                               }
                             )}
@@ -125,16 +128,20 @@ class ArtistShows extends Component<ArtistShowsProps, LoadingAreaState> {
                         ) : (
                           <ShowList>
                             {this.props.artist.showsConnection.edges.map(
-                              ({ node }, edgeKey) => {
+                              ({ node }, index) => {
                                 return (
-                                  <ArtistShowListItem
-                                    key={edgeKey}
-                                    city={node.city}
-                                    partner={node.partner.name}
-                                    name={node.name}
-                                    exhibitionInfo={node.exhibition_period}
-                                    href={node.href}
-                                  />
+                                  <React.Fragment>
+                                    <ArtistShowListItem
+                                      key={index}
+                                      city={node.city}
+                                      partner={node.partner.name}
+                                      name={node.name}
+                                      exhibitionInfo={node.exhibition_period}
+                                      href={node.href}
+                                    />
+
+                                    {xs && <Spacer mb={3} />}
+                                  </React.Fragment>
                                 )
                               }
                             )}
@@ -144,16 +151,14 @@ class ArtistShows extends Component<ArtistShowsProps, LoadingAreaState> {
                     </Col>
                   </Row>
 
-                  {this.props.status === "running" && (
-                    <Box py={2}>
-                      <Separator />
-                    </Box>
-                  )}
-
                   <Row>
                     <Col>
-                      <Flex justifyContent="flex-end">
-                        <PaginationFragmentContainer
+                      <Box>
+                        <Pagination
+                          hasNextPage={
+                            this.props.artist.showsConnection.pageInfo
+                              .hasNextPage
+                          }
                           pageCursors={
                             this.props.artist.showsConnection.pageCursors as any
                           }
@@ -161,7 +166,7 @@ class ArtistShows extends Component<ArtistShowsProps, LoadingAreaState> {
                           onNext={this.loadNext}
                           scrollTo={this.props.scrollTo}
                         />
-                      </Flex>
+                      </Box>
                     </Col>
                   </Row>
                 </Col>
@@ -255,19 +260,3 @@ export const ArtistShowsRefetchContainer = createRefetchContainer(
 
 const ShowBlocks = Flex
 const ShowList = Box
-
-const ShowDivider = () => {
-  return (
-    <Responsive>
-      {({ xs }) => {
-        return (
-          <div>
-            <Spacer my={1} />
-            <Separator />
-            <Spacer py={xs ? 0 : 1} />
-          </div>
-        )
-      }}
-    </Responsive>
-  )
-}
