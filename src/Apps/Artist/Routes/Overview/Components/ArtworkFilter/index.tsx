@@ -2,6 +2,7 @@ import { ArtworkFilter_artist } from "__generated__/ArtworkFilter_artist.graphql
 import { FilterState } from "Apps/Artist/Routes/Overview/state"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { AppState } from "Router"
 import { Toggle } from "Styleguide/Components/Toggle"
 import { Box } from "Styleguide/Elements/Box"
 import { Checkbox } from "Styleguide/Elements/Checkbox"
@@ -20,7 +21,7 @@ interface Props {
 }
 
 class Filter extends Component<Props> {
-  renderCategory(filters, category, counts) {
+  renderCategory(filters, category, counts, mediator) {
     const currentFilter =
       category === "major_periods"
         ? filters.state.major_periods[0]
@@ -32,9 +33,9 @@ class Filter extends Component<Props> {
           value={count.id}
           onSelect={selected => {
             if (selected) {
-              return filters.setFilter(category, count.id)
+              return filters.setFilter(category, count.id, mediator)
             } else {
-              return filters.unsetFilter(category)
+              return filters.unsetFilter(category, mediator)
             }
           }}
           key={index}
@@ -57,107 +58,129 @@ class Filter extends Component<Props> {
     )
 
     return (
-      <Subscribe to={[FilterState]}>
-        {(filters: FilterState) => {
+      <Subscribe to={[AppState]}>
+        {({ state: { mediator } }) => {
           return (
-            <Responsive>
-              {({ xs, sm, md }) => {
+            <Subscribe to={[FilterState]}>
+              {(filters: FilterState) => {
                 return (
-                  <React.Fragment>
-                    <Flex>
-                      {/* Sidebar Area */}
-                      {!xs && (
-                        <Sidebar width="30%" mr={2}>
-                          <Flex
-                            flexDirection="column"
-                            alignItems="left"
-                            mt={-1}
-                            mb={1}
-                          >
-                            <Separator mb={1} />
-                            <Checkbox
-                              selected={filters.state.for_sale}
-                              onSelect={value => {
-                                return filters.setFilter("for_sale", value)
-                              }}
-                            >
-                              For sale
-                            </Checkbox>
+                  <Responsive>
+                    {({ xs, sm, md }) => {
+                      return (
+                        <React.Fragment>
+                          <Flex>
+                            {/* Sidebar Area */}
+                            {!xs && (
+                              <Sidebar width="30%" mr={2}>
+                                <Flex
+                                  flexDirection="column"
+                                  alignItems="left"
+                                  mt={-1}
+                                  mb={1}
+                                >
+                                  <Separator mb={1} />
+                                  <Checkbox
+                                    selected={filters.state.for_sale}
+                                    onSelect={value => {
+                                      return filters.setFilter(
+                                        "for_sale",
+                                        value,
+                                        mediator
+                                      )
+                                    }}
+                                  >
+                                    For sale
+                                  </Checkbox>
+                                </Flex>
+
+                                <Toggle label="Medium" expanded>
+                                  {this.renderCategory(
+                                    filters,
+                                    "medium",
+                                    mediumAggregation.counts,
+                                    mediator
+                                  )}
+                                </Toggle>
+                                <Toggle label="Gallery">
+                                  {this.renderCategory(
+                                    filters,
+                                    "partner_id",
+                                    galleryAggregation.counts,
+                                    mediator
+                                  )}
+                                </Toggle>
+
+                                <Toggle label="Institution">
+                                  {this.renderCategory(
+                                    filters,
+                                    "partner_id",
+                                    institutionAggregation.counts,
+                                    mediator
+                                  )}
+                                </Toggle>
+                                <Toggle label="Time period">
+                                  {this.renderCategory(
+                                    filters,
+                                    "major_periods",
+                                    periodAggregation.counts,
+                                    mediator
+                                  )}
+                                </Toggle>
+                              </Sidebar>
+                            )}
+                            <Box width={xs ? "100%" : "70%"}>
+                              <Separator mb={2} />
+                              <Flex justifyContent="flex-end">
+                                <Select
+                                  mt="-8px"
+                                  options={
+                                    [
+                                      {
+                                        value: "-decayed_merch",
+                                        text: "Default",
+                                      },
+                                      {
+                                        value: "-partner_updated_at",
+                                        text: "Recently updated",
+                                      },
+                                      {
+                                        value: "-published_at",
+                                        text: "Recently added",
+                                      },
+                                      {
+                                        value: "-year",
+                                        text: "Artwork year (desc.)",
+                                      },
+                                      {
+                                        value: "year",
+                                        text: "Artwork year (asc.)",
+                                      },
+                                    ] // Corrective spacing for line-height
+                                  }
+                                  selected={filters.state.sort}
+                                  onSelect={sort => {
+                                    return filters.setSort(sort, mediator)
+                                  }}
+                                />
+                              </Flex>
+
+                              <Spacer mb={2} />
+
+                              <ArtworkFilterRefetchContainer
+                                artist={this.props.artist as any}
+                                artistID={this.props.artist.id}
+                                columnCount={xs || sm || md ? 2 : 3}
+                                filters={filters.state}
+                              />
+                            </Box>
                           </Flex>
-
-                          <Toggle label="Medium" expanded>
-                            {this.renderCategory(
-                              filters,
-                              "medium",
-                              mediumAggregation.counts
-                            )}
-                          </Toggle>
-                          <Toggle label="Gallery">
-                            {this.renderCategory(
-                              filters,
-                              "partner_id",
-                              galleryAggregation.counts
-                            )}
-                          </Toggle>
-
-                          <Toggle label="Institution">
-                            {this.renderCategory(
-                              filters,
-                              "partner_id",
-                              institutionAggregation.counts
-                            )}
-                          </Toggle>
-                          <Toggle label="Time period">
-                            {this.renderCategory(
-                              filters,
-                              "major_periods",
-                              periodAggregation.counts
-                            )}
-                          </Toggle>
-                        </Sidebar>
-                      )}
-                      <Box width={xs ? "100%" : "70%"}>
-                        <Separator mb={2} />
-                        <Flex justifyContent="flex-end">
-                          <Select
-                            mt="-8px"
-                            options={
-                              [
-                                { value: "-decayed_merch", text: "Default" },
-                                {
-                                  value: "-partner_updated_at",
-                                  text: "Recently updated",
-                                },
-                                {
-                                  value: "-published_at",
-                                  text: "Recently added",
-                                },
-                                {
-                                  value: "-year",
-                                  text: "Artwork year (desc.)",
-                                },
-                                { value: "year", text: "Artwork year (asc.)" },
-                              ] // Corrective spacing for line-height
-                            }
-                            selected={filters.state.sort}
-                            onSelect={filters.setSort}
-                          />
-                        </Flex>
-
-                        <Spacer mb={2} />
-
-                        <ArtworkFilterRefetchContainer
-                          artist={this.props.artist as any}
-                          artistID={this.props.artist.id}
-                          columnCount={xs || sm || md ? 2 : 3}
-                          filters={filters.state}
-                        />
-                      </Box>
-                    </Flex>
-                  </React.Fragment>
+                        </React.Fragment>
+                      )
+                    }}
+                  </Responsive>
                 )
               }}
-            </Responsive>
+            </Subscribe>
           )
         }}
       </Subscribe>

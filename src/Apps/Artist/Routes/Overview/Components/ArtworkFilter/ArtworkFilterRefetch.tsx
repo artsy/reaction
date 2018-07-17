@@ -61,7 +61,7 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
           major_periods: { type: "[String]" }
           partner_id: { type: "ID" }
           for_sale: { type: "Boolean" }
-          sort: { type: "String", defaultValue: "-decayed_merch" }
+          sort: { type: "String", defaultValue: "-partner_updated_at" }
         ) {
         __id
         grid: filtered_artworks(

@@ -51,38 +51,40 @@ export class BreakpointVisualizer extends React.Component<
   render() {
     return (
       <React.Fragment>
-        {!navigator.userAgent.match(/Chromatic/) && (
-          <Responsive>
-            {breakpoints => {
-              if (!isEqual(breakpoints, this.state.breakpoints)) {
-                this.setState({ breakpoints })
-              }
-              return (
-                <Transition
-                  in={this.state.changed}
-                  onEntered={() => this.setState({ changed: false })}
-                  mountOnEnter
-                  unmountOnExit
-                  timeout={2500}
-                >
-                  {state => {
-                    return (
-                      <StyledBox
-                        top={0}
-                        left={0}
-                        py={1}
-                        px={2}
-                        style={{ opacity: state === "exiting" ? 0 : 1 }}
-                      >
-                        <BreakpointText {...breakpoints} />
-                      </StyledBox>
-                    )
-                  }}
-                </Transition>
-              )
-            }}
-          </Responsive>
-        )}
+        {typeof window !== "undefined" &&
+          window.navigator &&
+          !window.navigator.userAgent.match(/Chromatic/) && (
+            <Responsive>
+              {breakpoints => {
+                if (!isEqual(breakpoints, this.state.breakpoints)) {
+                  this.setState({ breakpoints })
+                }
+                return (
+                  <Transition
+                    in={this.state.changed}
+                    onEntered={() => this.setState({ changed: false })}
+                    mountOnEnter
+                    unmountOnExit
+                    timeout={2500}
+                  >
+                    {state => {
+                      return (
+                        <StyledBox
+                          top={0}
+                          left={0}
+                          py={1}
+                          px={2}
+                          style={{ opacity: state === "exiting" ? 0 : 1 }}
+                        >
+                          <BreakpointText {...breakpoints} />
+                        </StyledBox>
+                      )
+                    }}
+                  </Transition>
+                )
+              }}
+            </Responsive>
+          )}
       </React.Fragment>
     )
   }
