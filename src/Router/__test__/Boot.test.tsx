@@ -1,22 +1,25 @@
 import { mount } from "enzyme"
 import React from "react"
-import { Subscribe } from "unstated"
+import { Container, Subscribe } from "unstated"
 import { Boot } from "../Boot"
-import { AppState } from "../state"
+
+class WelcomeState extends Container<{ welcomeMessage: string }> {}
 
 describe("Boot", () => {
-  const bootProps: any = {
-    system: {
-      relayEnvironment: false,
-    },
+  const system: any = {
+    relayEnvironment: false,
   }
 
-  const getWrapper = () => mount(<Boot {...bootProps} />)
+  const getWrapper = () => mount(<Boot initialState={[]} system={system} />)
 
   it("injects global state", () => {
     const App = () => {
+      const welcome = new WelcomeState()
+      welcome.state = {
+        welcomeMessage: "Found global state",
+      }
       return (
-        <Boot welcomeMessage="Found global state" {...bootProps}>
+        <Boot system={system} initialState={[welcome]}>
           <SomeOtherComponent />
         </Boot>
       )
@@ -24,7 +27,7 @@ describe("Boot", () => {
 
     const SomeOtherComponent = () => {
       return (
-        <Subscribe to={[AppState]}>
+        <Subscribe to={[WelcomeState]}>
           {app => {
             return <div>{app.state.welcomeMessage}</div>
           }}
@@ -52,6 +55,6 @@ describe("Boot", () => {
   })
 
   it("injects Grid", () => {
-    expect(mount(<Boot {...bootProps} />).find("Grid").length).toEqual(1)
+    expect(getWrapper().find("Grid").length).toEqual(1)
   })
 })

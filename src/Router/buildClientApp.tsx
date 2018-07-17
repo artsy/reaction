@@ -7,19 +7,24 @@ import createInitialFarceRouter from "found/lib/createInitialFarceRouter"
 import createRender from "found/lib/createRender"
 import { loadComponents } from "loadable-components"
 import React from "react"
+import { Subscribe } from "unstated"
 import { createEnvironment } from "../Relay/createEnvironment"
 import { AppShell } from "./AppShell"
 import { Boot } from "./Boot"
-import { AppConfig, ClientResolveProps } from "./types"
+import { AppState } from "./state"
+import { App, AppConfig, ClientResolveProps, Router } from "./types"
 
 export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
   return new Promise(async (resolve, reject) => {
     try {
       const {
+        historyProtocol = "browser",
+        initialAppState = {},
+        initialBreakpoint,
+        initialRoute = "/",
+        initialState = [],
         routes,
         user,
-        historyProtocol = "browser",
-        initialRoute = "/",
       } = config
 
       const relayBootstrap = JSON.parse(window.__RELAY_BOOTSTRAP__ || "{}")
@@ -61,25 +66,39 @@ export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
         render,
       })
 
-      const bootProps = {
-        system: {
-          ...config,
-          relayEnvironment,
-          resolver,
-          routes,
-          currentUser,
-        },
-      }
-
       try {
         await loadComponents()
       } catch (error) {
         // FIXME: https://github.com/smooth-code/loadable-components/pull/93
       }
 
-      const ClientApp = props => {
+      const system: Router = {
+        relayEnvironment,
+        resolver,
+        routes,
+        currentUser,
+      }
+
+      const ClientApp: App = () => {
         return (
-          <Boot {...bootProps} {...props}>
+          <Boot
+            system={system}
+            initialBreakpoint={initialBreakpoint}
+            initialState={[
+              new AppState({ ...initialAppState, system }),
+              ...initialState,
+            ]}
+          >
+            {config.subscribe &&
+              config.subscribe.to &&
+              config.subscribe.onChange && (
+                <Subscribe to={config.subscribe.to}>
+                  {(...args) => {
+                    config.subscribe.onChange(...args)
+                    return null
+                  }}
+                </Subscribe>
+              )}
             <AppShell>
               <Router resolver={resolver} />
             </AppShell>

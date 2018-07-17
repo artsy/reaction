@@ -5,15 +5,24 @@ import { getFarceResult } from "found/lib/server"
 import { getLoadableState } from "loadable-components/server"
 import React from "react"
 import ReactDOMServer from "react-dom/server"
+import { Subscribe } from "../../node_modules/unstated"
 import { createEnvironment } from "../Relay/createEnvironment"
-import { AppShell } from "./AppShell"
+import { AppShell, AppShellProps } from "./AppShell"
 import { Boot } from "./Boot"
-import { AppConfig, ServerResolveProps } from "./types"
+import { AppState } from "./state"
+import { AppConfig, Router, ServerResolveProps } from "./types"
 
 export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
   return new Promise(async (resolve, reject) => {
     try {
-      const { routes, url, user } = config
+      const {
+        initialAppState = {},
+        initialBreakpoint,
+        initialState = [],
+        routes,
+        url,
+        user,
+      } = config
 
       let currentUser = user
       if (process.env.USER_ID && process.env.USER_ACCESS_TOKEN) {
@@ -44,17 +53,29 @@ export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
         return
       }
 
-      const bootProps = {
-        system: { ...config, relayEnvironment, resolver, routes, currentUser },
-      }
+      const system: Router = { relayEnvironment, resolver, routes, currentUser }
 
-      const AppContainer = props => {
+      const AppContainer: React.SFC<AppShellProps> = props => {
         return (
-          <Boot {...bootProps} {...props}>
-            <AppShell
-              data={props.relayData}
-              loadableState={props.loadableState}
-            >
+          <Boot
+            system={system}
+            initialBreakpoint={initialBreakpoint}
+            initialState={[
+              new AppState({ ...initialAppState, system }),
+              ...initialState,
+            ]}
+          >
+            {config.subscribe &&
+              config.subscribe.to &&
+              config.subscribe.onChange && (
+                <Subscribe to={config.subscribe.to}>
+                  {(...args) => {
+                    config.subscribe.onChange(...args)
+                    return null
+                  }}
+                </Subscribe>
+              )}
+            <AppShell data={props.data} loadableState={props.loadableState}>
               {element}
             </AppShell>
           </Boot>

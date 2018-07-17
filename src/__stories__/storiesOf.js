@@ -1,13 +1,29 @@
+// @ts-check
+
 import React from "react"
 import { storiesOf as _storiesOf } from "@storybook/react"
-import { Boot } from "Router/Boot"
+import { Boot } from "../Router/Boot"
+import { AppState } from "../Router/state"
 
-const bootProps = {
-  mediator: x => x,
-}
+/**
+ * @type {any}
+ */
+const system = {}
 
 export function storiesOf(desc, mod) {
   return _storiesOf(desc, mod).addDecorator(storyFn => {
-    return <Boot {...bootProps}>{storyFn()}</Boot>
+    return (
+      <Boot
+        system={system}
+        initialState={[
+          new AppState({
+            system,
+            mediator: x => x,
+          }),
+        ]}
+      >
+        {storyFn()}
+      </Boot>
+    )
   })
 }

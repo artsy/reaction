@@ -1,29 +1,25 @@
 import React from "react"
 import { buildClientApp } from "Router"
+import { App, AppConfig } from "./types"
 
-interface Props {
-  routes: Array<object>
-  initialRoute?: string
-  initialState?: object
+interface Props extends AppConfig {}
+
+interface State {
+  ClientApp: App
 }
 
-export class StorybooksRouter extends React.Component<Props> {
-  state = {
-    ClientApp: null,
-  }
-
+export class StorybooksRouter extends React.Component<Props, State> {
   static defaultProps = {
     initialRoute: "/",
   }
 
   async componentDidMount() {
+    const { children, ...props } = this.props
     try {
       const { ClientApp } = await buildClientApp({
-        routes: this.props.routes,
         historyProtocol: "memory",
-        initialRoute: this.props.initialRoute,
+        ...props,
       })
-
       this.setState({
         ClientApp,
       })
@@ -33,12 +29,8 @@ export class StorybooksRouter extends React.Component<Props> {
   }
 
   render() {
-    const { ClientApp } = this.state
+    const ClientApp = this.state && this.state.ClientApp
 
-    return (
-      <React.Fragment>
-        {ClientApp && <ClientApp {...this.props.initialState} />}
-      </React.Fragment>
-    )
+    return <React.Fragment>{ClientApp && <ClientApp />}</React.Fragment>
   }
 }

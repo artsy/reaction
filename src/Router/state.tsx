@@ -34,7 +34,7 @@ export class AppState extends Container<AppStateContainer> {
     system: null,
   }
 
-  constructor(props: any = {}) {
+  constructor(props: AppStateContainer) {
     super()
     this.state = props
   }
