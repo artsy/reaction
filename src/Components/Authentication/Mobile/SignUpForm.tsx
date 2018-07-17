@@ -98,6 +98,7 @@ export const MobileSignUpForm: FormComponentType = props => {
       )}
     </Step>,
   ]
+
   return (
     <Wizard steps={steps} onComplete={props.handleSubmit}>
       {context => {
@@ -111,7 +112,13 @@ export const MobileSignUpForm: FormComponentType = props => {
           <MobileContainer>
             <ProgressIndicator percentComplete={wizard.progressPercentage} />
             <MobileInnerWrapper>
-              <BackButton onClick={wizard.previous as any}>
+              <BackButton
+                onClick={e =>
+                  props.onBackButtonClicked && wizard.currentStepIndex === 0
+                    ? props.onBackButtonClicked(e as any)
+                    : wizard.previous(e as any, values)
+                }
+              >
                 <Icon
                   name="chevron-left"
                   color={Colors.graySemibold}

@@ -34,6 +34,7 @@ export interface FormSwitcherProps {
   }
   values?: InputValues
   onSocialAuthEvent?: (options) => void
+  onBackButtonClicked?: (e: Event) => void
 }
 
 export interface State {
@@ -116,8 +117,6 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
 
   render() {
     const { error, isMobile, options } = this.props
-    const pageLocation =
-      typeof window !== "undefined" ? window.location.href : ""
 
     const queryData = Object.assign(
       {},
@@ -125,7 +124,7 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
       {
         accepted_terms_of_service: true,
         agreed_to_receive_emails: true,
-        "signup-referer": options.signupReferer || pageLocation,
+        "signup-referer": options.signupReferer,
       },
       options.redirectTo
         ? {
@@ -156,7 +155,7 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
         return null
     }
 
-    const { handleSubmit, values } = this.props
+    const { handleSubmit, onBackButtonClicked, values } = this.props
     const defaultValues = {
       email: values.email || "",
       password: values.password || "",
@@ -170,6 +169,7 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
         values={defaultValues}
         handleTypeChange={this.handleTypeChange}
         handleSubmit={handleSubmit}
+        onBackButtonClicked={onBackButtonClicked}
         onFacebookLogin={() => {
           if (this.props.onSocialAuthEvent) {
             this.props.onSocialAuthEvent({
