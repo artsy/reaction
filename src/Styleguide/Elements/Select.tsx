@@ -1,5 +1,4 @@
 import { color, Sans, space } from "@artsy/palette"
-import { capitalize } from "lodash"
 import React from "react"
 import styled, { css } from "styled-components"
 import { Responsive } from "Utils/Responsive"
@@ -44,7 +43,7 @@ export const LargeSelect = (props: SelectProps) => {
       <select onChange={event => props.onSelect(event.target.value)}>
         {props.options.map(({ value, text }) => (
           <option selected={value === props.selected} value={value} key={value}>
-            {capitalize(text)}
+            {text}
           </option>
         ))}
       </select>
@@ -67,7 +66,7 @@ export const SmallSelect = props => {
               value={value}
               key={value}
             >
-              {capitalize(text)}
+              {text}
             </option>
           ))}
         </select>

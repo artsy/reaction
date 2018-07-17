@@ -134,9 +134,9 @@ class Filter extends Component<Props> {
                                 },
                                 {
                                   value: "-year",
-                                  text: "Artwork Year (desc.)",
+                                  text: "Artwork year (desc.)",
                                 },
-                                { value: "year", text: "Artwork Year (asc.)" },
+                                { value: "year", text: "Artwork year (asc.)" },
                               ] // Corrective spacing for line-height
                             }
                             selected={filters.state.sort}
