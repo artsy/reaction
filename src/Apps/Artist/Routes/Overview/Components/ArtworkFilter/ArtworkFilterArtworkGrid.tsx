@@ -1,4 +1,5 @@
 import { ArtworkFilterArtworkGrid_filtered_artworks } from "__generated__/ArtworkFilterArtworkGrid_filtered_artworks.graphql"
+import { FilterState } from "Apps/Artist/Routes/Overview/state"
 import ArtworkGrid from "Components/ArtworkGrid"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
@@ -28,7 +29,7 @@ class Artworks extends Component<Props, LoadingAreaState> {
     isLoading: false,
   }
 
-  loadNext = () => {
+  loadNext = (filters, mediator) => {
     const {
       filtered_artworks: {
         artworks: {
@@ -38,11 +39,11 @@ class Artworks extends Component<Props, LoadingAreaState> {
     } = this.props
 
     if (hasNextPage) {
-      this.loadAfter(endCursor)
+      this.loadAfter(endCursor, filters.state.page + 1, filters, mediator)
     }
   }
 
-  loadAfter = cursor => {
+  loadAfter = (cursor, page, filters, mediator) => {
     this.toggleLoading(true)
 
     this.props.relay.refetch(
@@ -54,7 +55,7 @@ class Artworks extends Component<Props, LoadingAreaState> {
       null,
       error => {
         this.toggleLoading(false)
-
+        filters.setPage(page, mediator)
         if (error) {
           console.error(error)
         }
@@ -76,33 +77,44 @@ class Artworks extends Component<Props, LoadingAreaState> {
             mediator,
             system: { currentUser },
           } = state
-
           return (
-            <LoadingArea isLoading={this.state.isLoading}>
-              <ArtworkGrid
-                artworks={this.props.filtered_artworks.artworks as any}
-                columnCount={this.props.columnCount}
-                itemMargin={40}
-                currentUser={currentUser}
-                mediator={mediator}
-              />
+            <Subscribe to={[FilterState]}>
+              {(filters: FilterState) => {
+                return (
+                  <LoadingArea isLoading={this.state.isLoading}>
+                    <ArtworkGrid
+                      artworks={this.props.filtered_artworks.artworks as any}
+                      columnCount={this.props.columnCount}
+                      itemMargin={40}
+                      currentUser={currentUser}
+                      mediator={mediator}
+                    />
 
-              <Spacer mb={3} />
+                    <Spacer mb={3} />
 
-              <Box>
-                <Pagination
-                  hasNextPage={
-                    this.props.filtered_artworks.artworks.pageInfo.hasNextPage
-                  }
-                  pageCursors={
-                    this.props.filtered_artworks.artworks.pageCursors as any
-                  }
-                  onClick={this.loadAfter}
-                  onNext={this.loadNext}
-                  scrollTo="#jump--artistArtworkGrid"
-                />
-              </Box>
-            </LoadingArea>
+                    <Box>
+                      <Pagination
+                        hasNextPage={
+                          this.props.filtered_artworks.artworks.pageInfo
+                            .hasNextPage
+                        }
+                        pageCursors={
+                          this.props.filtered_artworks.artworks
+                            .pageCursors as any
+                        }
+                        onClick={(cursor, page) => {
+                          this.loadAfter(cursor, page, filters, mediator)
+                        }}
+                        onNext={() => {
+                          this.loadNext(filters, mediator)
+                        }}
+                        scrollTo="#jump--artistArtworkGrid"
+                      />
+                    </Box>
+                  </LoadingArea>
+                )
+              }}
+            </Subscribe>
           )
         }}
       </Subscribe>

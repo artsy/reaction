@@ -19,6 +19,7 @@ export type Pagination_pageCursors = {
     }) | null;
     readonly previous: ({
         readonly cursor: string;
+        readonly page: number;
     }) | null;
 };
 
@@ -32,15 +33,16 @@ var v0 = {
   "args": null,
   "storageKey": null
 },
-v1 = [
+v1 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "page",
+  "args": null,
+  "storageKey": null
+},
+v2 = [
   v0,
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "page",
-    "args": null,
-    "storageKey": null
-  },
+  v1,
   {
     "kind": "ScalarField",
     "alias": null,
@@ -64,7 +66,7 @@ return {
       "args": null,
       "concreteType": "PageCursor",
       "plural": true,
-      "selections": v1
+      "selections": v2
     },
     {
       "kind": "LinkedField",
@@ -74,7 +76,7 @@ return {
       "args": null,
       "concreteType": "PageCursor",
       "plural": false,
-      "selections": v1
+      "selections": v2
     },
     {
       "kind": "LinkedField",
@@ -84,7 +86,7 @@ return {
       "args": null,
       "concreteType": "PageCursor",
       "plural": false,
-      "selections": v1
+      "selections": v2
     },
     {
       "kind": "LinkedField",
@@ -95,11 +97,12 @@ return {
       "concreteType": "PageCursor",
       "plural": false,
       "selections": [
-        v0
+        v0,
+        v1
       ]
     }
   ]
 };
 })();
-(node as any).hash = '338e4e1baf2ed6b45e9a542dab473bb8';
+(node as any).hash = '72b4f72005e64de70ab045755aaaec79';
 export default node;

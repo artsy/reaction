@@ -74,6 +74,7 @@ fragment Pagination_pageCursors on PageCursors {
   }
   previous {
     cursor
+    page
   }
 }
 */
@@ -109,15 +110,16 @@ v3 = {
   "args": null,
   "storageKey": null
 },
-v4 = [
+v4 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "page",
+  "args": null,
+  "storageKey": null
+},
+v5 = [
   v3,
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "page",
-    "args": null,
-    "storageKey": null
-  },
+  v4,
   {
     "kind": "ScalarField",
     "alias": null,
@@ -131,7 +133,7 @@ return {
   "operationKind": "query",
   "name": "routes_ArticlesQuery",
   "id": null,
-  "text": "query routes_ArticlesQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...Articles_artist\n    __id\n  }\n}\n\nfragment Articles_artist on Artist {\n  ...ArtistArticles_artist\n  __id\n}\n\nfragment ArtistArticles_artist on Artist {\n  id\n  articlesConnection(first: 10, sort: PUBLISHED_AT_DESC, in_editorial_feed: true) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        href\n        thumbnail_title\n        author {\n          name\n          __id\n        }\n        published_at(format: \"MMM d, YYYY\")\n        thumbnail_image {\n          resized(width: 300) {\n            url\n          }\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n  }\n}\n",
+  "text": "query routes_ArticlesQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...Articles_artist\n    __id\n  }\n}\n\nfragment Articles_artist on Artist {\n  ...ArtistArticles_artist\n  __id\n}\n\nfragment ArtistArticles_artist on Artist {\n  id\n  articlesConnection(first: 10, sort: PUBLISHED_AT_DESC, in_editorial_feed: true) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        href\n        thumbnail_title\n        author {\n          name\n          __id\n        }\n        published_at(format: \"MMM d, YYYY\")\n        thumbnail_image {\n          resized(width: 300) {\n            url\n          }\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -250,7 +252,7 @@ return {
                     "args": null,
                     "concreteType": "PageCursor",
                     "plural": true,
-                    "selections": v4
+                    "selections": v5
                   },
                   {
                     "kind": "LinkedField",
@@ -260,7 +262,7 @@ return {
                     "args": null,
                     "concreteType": "PageCursor",
                     "plural": false,
-                    "selections": v4
+                    "selections": v5
                   },
                   {
                     "kind": "LinkedField",
@@ -270,7 +272,7 @@ return {
                     "args": null,
                     "concreteType": "PageCursor",
                     "plural": false,
-                    "selections": v4
+                    "selections": v5
                   },
                   {
                     "kind": "LinkedField",
@@ -281,7 +283,8 @@ return {
                     "concreteType": "PageCursor",
                     "plural": false,
                     "selections": [
-                      v3
+                      v3,
+                      v4
                     ]
                   }
                 ]
