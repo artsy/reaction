@@ -1,7 +1,7 @@
 import React from "react"
 import Events from "../../Utils/Events"
 import track from "../../Utils/track"
-import { ArticleWithFullScreen } from "./Layouts/ArticleWithFullScreen"
+import ArticleWithFullScreen from "./Layouts/ArticleWithFullScreen"
 import { NewsLayout } from "./Layouts/NewsLayout"
 import { SeriesLayout } from "./Layouts/SeriesLayout"
 import { VideoLayout } from "./Layouts/VideoLayout"
@@ -29,6 +29,7 @@ export interface ArticleProps {
   }
   showTooltips?: boolean
   slideIndex?: number
+  tracking?: any
   closeViewer?: () => void
   viewerIsOpen?: boolean
   onOpenAuthModal?: (type: "register" | "login", config: Object) => void

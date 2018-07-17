@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders the related articles panel 1`] = `
+exports[`RelatedArticlesPanel renders the related articles panel 1`] = `
 .c2 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
@@ -73,12 +73,20 @@ exports[`renders the related articles panel 1`] = `
   >
     Related Stories
   </div>
+  <span
+    style={
+      Object {
+        "fontSize": 0,
+      }
+    }
+  />
   <div
     className="c3"
   >
     <a
       className="c4"
       href="/article/artsy-editorial-15-top-art-schools-united-states"
+      onClick={[Function]}
     >
       <img
         className="c5"
@@ -93,6 +101,7 @@ exports[`renders the related articles panel 1`] = `
     <a
       className="c4"
       href="/article/artsy-editorial-four-years-walter-de-marias-death-final-work-complete"
+      onClick={[Function]}
     >
       <img
         className="c5"
@@ -107,6 +116,7 @@ exports[`renders the related articles panel 1`] = `
     <a
       className="c4"
       href="/article/artsy-editorial-french-art-history-in-a-nutshell"
+      onClick={[Function]}
     >
       <img
         className="c5"

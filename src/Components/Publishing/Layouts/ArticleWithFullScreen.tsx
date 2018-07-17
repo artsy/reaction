@@ -1,7 +1,6 @@
 import { cloneDeep, extend, includes, map } from "lodash"
 import React from "react"
 import styled from "styled-components"
-import Events from "../../../Utils/Events"
 import track from "../../../Utils/track"
 import { ArticleProps } from "../Article"
 import { FullscreenViewer } from "../Sections/FullscreenViewer/FullscreenViewer"
@@ -10,6 +9,7 @@ import { TooltipsData } from "../ToolTip/TooltipsDataLoader"
 import { ArticleData } from "../Typings"
 import { FeatureLayout } from "./FeatureLayout"
 import { StandardLayout } from "./StandardLayout"
+
 interface ArticleState {
   fullscreenImages: any
   article: ArticleData
@@ -19,18 +19,6 @@ interface ArticleContainerProps {
   marginTop?: string
 }
 
-@track(
-  props => {
-    return {
-      page: "Article",
-      entity_type: "article",
-      entity_id: props.article.id,
-    }
-  },
-  {
-    dispatch: data => Events.postEvent(data),
-  }
-)
 @withFullScreen
 export class ArticleWithFullScreen extends React.Component<
   ArticleProps,
@@ -114,3 +102,5 @@ export class ArticleWithFullScreen extends React.Component<
 const ArticleContainer = styled.div.attrs<ArticleContainerProps>({})`
   margin-top: ${props => props.marginTop || "50px"};
 `
+
+export default track()(ArticleWithFullScreen)

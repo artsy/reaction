@@ -1,16 +1,16 @@
+import Colors from "Assets/Colors"
 import { get, omit } from "lodash"
 import React from "react"
 import styled from "styled-components"
-import Colors from "../../../Assets/Colors"
 import { ResponsiveDeprecated } from "../../../Utils/ResponsiveDeprecated"
 import { pMedia } from "../../Helpers"
 import { ArticleProps } from "../Article"
 import { DisplayCanvas } from "../Display/Canvas"
 import { DisplayPanel } from "../Display/DisplayPanel"
 import { Header } from "../Header/Header"
-import { ReadMore } from "../ReadMore/ReadMoreButton"
+import ReadMore from "../ReadMore/ReadMoreButton"
 import { ReadMoreWrapper } from "../ReadMore/ReadMoreWrapper"
-import { RelatedArticlesCanvas } from "../RelatedArticles/RelatedArticlesCanvas"
+import RelatedArticlesCanvas from "../RelatedArticles/RelatedArticlesCanvas"
 import { Sections } from "../Sections/Sections"
 import { Sidebar } from "./Components/Sidebar"
 
@@ -31,6 +31,7 @@ export class StandardLayout extends React.Component<
 
   constructor(props) {
     super(props)
+
     this.state = {
       isTruncated: props.isTruncated || false,
     }

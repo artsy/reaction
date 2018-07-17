@@ -2,15 +2,15 @@ import React from "react"
 import styled from "styled-components"
 import { pMedia } from "../../../Helpers"
 import { EmailPanel } from "../../Email/EmailPanel"
-import { RelatedArticlesPanel } from "../../RelatedArticles/RelatedArticlesPanel"
+import RelatedArticlesPanel from "../../RelatedArticles/RelatedArticlesPanel"
 
-export interface ArticleProps {
+export interface SidebarProps {
   emailSignupUrl?: string
   DisplayPanel?: any
   relatedArticlesForPanel?: any
 }
 
-export const Sidebar: React.SFC<ArticleProps> = props => {
+export const Sidebar: React.SFC<SidebarProps> = props => {
   const { emailSignupUrl, DisplayPanel, relatedArticlesForPanel } = props
 
   return (

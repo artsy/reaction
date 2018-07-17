@@ -1,10 +1,11 @@
 import { Sans } from "@artsy/palette"
-import _ from "lodash"
+import { map, once } from "lodash"
 import React from "react"
+import Waypoint from "react-waypoint"
 import styled from "styled-components"
+import { track } from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
-import {
-  RelatedArticleFigure,
+import RelatedArticleFigure, {
   RelatedArticleFigureData,
 } from "./RelatedArticleFigure"
 
@@ -15,32 +16,46 @@ interface RelatedArticlesCanvasProps extends React.HTMLProps<HTMLDivElement> {
   }
   articles: RelatedArticleFigureData[]
   isMobile?: boolean
+  tracking?: any
 }
 
 interface ScrollingContainerProps {
   isMobile?: boolean
 }
 
-export const RelatedArticlesCanvas: React.SFC<
-  RelatedArticlesCanvasProps
-> = props => {
-  const { articles, isMobile, vertical } = props
+export class RelatedArticlesCanvas extends React.Component<
+  RelatedArticlesCanvasProps,
+  null
+> {
+  trackRelatedImpression = () => {
+    const { tracking } = this.props
 
-  return (
-    <RelatedArticlesContainer>
-      {getTitle(vertical)}
-      <ArticlesWrapper isMobile={isMobile}>
-        {_.map(articles, (article, i) => {
-          return (
-            <RelatedArticleFigure
-              article={article}
-              key={`related-article-figure-${i}`}
-            />
-          )
-        })}
-      </ArticlesWrapper>
-    </RelatedArticlesContainer>
-  )
+    tracking.trackEvent({
+      action: "article_impression",
+      impression_type: "Further reading",
+    })
+  }
+
+  render() {
+    const { articles, isMobile, vertical } = this.props
+
+    return (
+      <RelatedArticlesContainer>
+        {getTitle(vertical)}
+        <Waypoint onEnter={once(this.trackRelatedImpression)} />
+        <ArticlesWrapper isMobile={isMobile}>
+          {map(articles, (article, i) => {
+            return (
+              <RelatedArticleFigure
+                article={article}
+                key={`related-article-figure-${i}`}
+              />
+            )
+          })}
+        </ArticlesWrapper>
+      </RelatedArticlesContainer>
+    )
+  }
 }
 
 const getTitle = vertical => {
@@ -104,3 +119,5 @@ const ArticlesWrapper = styled.div.attrs<ScrollingContainerProps>({})`
   }
   ${props => props.isMobile && "-webkit-overflow-scrolling: touch;"};
 `
+
+export default track()(RelatedArticlesCanvas)
