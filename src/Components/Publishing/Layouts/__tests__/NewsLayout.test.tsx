@@ -1,13 +1,19 @@
+import { DisplayCanvas } from "Components/Publishing/Display/Canvas"
+import {
+  Display,
+  RelatedCanvas,
+} from "Components/Publishing/Fixtures/Components"
+import RelatedArticlesCanvas from "Components/Publishing/RelatedArticles/RelatedArticlesCanvas"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
 import { NewsArticle } from "../../Fixtures/Articles"
 import { NewsSectionContainer } from "../../News/NewsSections"
-import { ExpandButton, NewsLayout } from "../NewsLayout"
+import { ExpandButton, NewsArticleContainer, NewsLayout } from "../NewsLayout"
 
 jest.mock("../../../../Utils/track.ts", () => ({
-  track: () => jest.fn(c => c)
+  track: () => jest.fn(c => c),
 }))
 
 describe("News Layout", () => {
@@ -47,9 +53,34 @@ describe("News Layout", () => {
     expect(onExpand).toBeCalled()
   })
 
+  it("Can render related articles if provided", () => {
+    const component = mount(
+      <NewsLayout
+        article={NewsArticle}
+        isTruncated
+        relatedArticlesForCanvas={RelatedCanvas}
+      />
+    )
+    expect(component.find(RelatedArticlesCanvas)).toHaveLength(1)
+  })
+
+  it("Can render display units if provided", () => {
+    const component = mount(
+      <NewsLayout
+        article={NewsArticle}
+        isTruncated
+        display={Display("image")}
+      />
+    )
+    expect(component.find(DisplayCanvas)).toHaveLength(1)
+  })
+
   it("sets a hover state onMouseEnter if desktop", () => {
     const component = mount(<NewsLayout article={NewsArticle} isTruncated />)
-    component.simulate("mouseenter")
+    component
+      .find(NewsArticleContainer)
+      .at(0)
+      .simulate("mouseenter")
     expect(component.state("isHovered")).toBe(true)
   })
 

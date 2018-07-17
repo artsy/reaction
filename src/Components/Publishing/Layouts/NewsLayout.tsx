@@ -194,7 +194,7 @@ export const ExpandButton = styled.button`
   `};
 `
 
-const NewsArticleContainer = styled.div`
+export const NewsArticleContainer = styled.div`
   position: relative;
   max-width: 780px;
   padding: 20px 30px 30px;
