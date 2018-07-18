@@ -78,7 +78,7 @@ export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
       resolve({
         ServerApp: props => (
           <AppContainer
-            data={relayData}
+            relayData={relayData}
             loadableState={loadableState}
             {...props}
           />
