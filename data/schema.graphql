@@ -600,7 +600,10 @@ type ArtistStatuses {
   auction_lots: Boolean
   biography: Boolean
   contemporary: Boolean
-  cv: Boolean
+  cv(
+    # Suppress the cv tab when artist show count is less than this.
+    minShowCount: Int = 15
+  ): Boolean
   shows: Boolean
 }
 
@@ -2038,9 +2041,6 @@ type CreateGeminiEntryForAssetPayload {
 }
 
 input CreateOrderInput {
-  # ID of user submitting the order
-  userId: String!
-
   # ID of partner representing artwork
   partnerId: String
 
@@ -2194,6 +2194,7 @@ type CroppedImageUrl {
 }
 
 type CurrentEvent {
+  event: UnderlyingCurrentEvent!
   image: Image
 
   # The state of the event
@@ -3868,10 +3869,23 @@ type Mutation {
 
   # Update a conversation.
   updateConversation(input: UpdateConversationMutationInput!): UpdateConversationMutationPayload
+
+  # Creates an order with payment
   createOrder(input: CreateOrderInput!): CreateOrderPayload
+
+  # Sets payment information on an order
+  setOrderPayment(input: SetOrderPaymentInput!): SetOrderPaymentPayload
+
+  # Approves an order with payment
   approveOrder(input: ApproveOrderInput!): ApproveOrderPayload
+
+  # Finalizes an order
   finalizeOrder(input: FinalizeOrderInput!): FinalizeOrderPayload
+
+  # Rejects an order
   rejectOrder(input: RejectOrderInput!): RejectOrderPayload
+
+  # Submits an order
   submitOrder(input: SubmitOrderInput!): SubmitOrderPayload
 
   # Appending a message to a conversation thread
@@ -3892,7 +3906,7 @@ type Mutation {
   # Create a new consignment submission using Convection
   createConsignmentSubmission(input: CreateSubmissionMutationInput!): CreateSubmissionMutationPayload
 
-  # Update a consigment using Convection
+  # Update a consignment using Convection
   updateConsignmentSubmission(input: UpdateSubmissionMutationInput!): UpdateSubmissionMutationPayload
 
   # Attach an gemini asset to a consignment submission
@@ -4025,7 +4039,7 @@ type Order {
   ): String
 
   # A formatted price with various currency formatting options.
-  subtotalCents(
+  buyerTotalCents(
     decimal: String = "."
 
     # Allows control of symbol position (%v = value, %s = symbol)
@@ -4036,7 +4050,7 @@ type Order {
   ): String
 
   # A formatted price with various currency formatting options.
-  totalCents(
+  sellerTotalCents(
     decimal: String = "."
 
     # Allows control of symbol position (%v = value, %s = symbol)
@@ -5551,6 +5565,20 @@ type Services {
   convection: Convection!
 }
 
+input SetOrderPaymentInput {
+  # Order ID
+  orderId: String!
+
+  # Gravity Credit Card Id
+  creditCardId: String!
+  clientMutationId: String
+}
+
+type SetOrderPaymentPayload {
+  result: OrderReturnType
+  clientMutationId: String
+}
+
 type Show implements Node {
   # A globally unique ID.
   __id: ID!
@@ -5746,9 +5774,6 @@ enum SubmissionStateAggregation {
 input SubmitOrderInput {
   # Order ID
   orderId: String!
-
-  # Credit card ID
-  creditCardId: String!
   clientMutationId: String
 }
 
@@ -5850,6 +5875,8 @@ enum TrendingMetrics {
   # Base time period: 2 weeks
   ARTIST_SEARCH
 }
+
+union UnderlyingCurrentEvent = Show | Sale
 
 input UpdateCollectorProfileInput {
   loyalty_applicant: Boolean

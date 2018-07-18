@@ -41,7 +41,7 @@ export const NavigationTabsFragmentContainer = createFragmentContainer(
         artists
         contemporary
         articles
-        cv
+        cv(minShowCount: 0)
         auction_lots
       }
     }
