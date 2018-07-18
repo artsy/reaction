@@ -54,11 +54,15 @@ const LargeArticleItem: SFC<ArticleItemProps> = props => {
           </Flex>
         </Col>
         <Col sm={2}>
-          <ResponsiveImage src={imageUrl} />
+          <a href={href}>
+            <ResponsiveImage
+              style={{ backgroundPosition: "center top" }}
+              src={imageUrl}
+            />
+          </a>
         </Col>
       </Row>
       {/* FIXME: Weird block height issue... */}
-      <Spacer mt={2} />
       {!lastChild && <Separator />}
       <Spacer mt={3} />
     </React.Fragment>
