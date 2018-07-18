@@ -82,11 +82,7 @@ export const MobileLoginForm: FormComponentType = props => {
             quick
           />
           <Row>
-            <ForgotPassword
-              handleForgotPasswordChange={() =>
-                (window.location.href = "/forgot")
-              }
-            />
+            <ForgotPassword onClick={() => (location.href = "/forgot")} />
           </Row>
         </Fragment>
       )}
