@@ -32,6 +32,7 @@ export interface Props
 // and intermediate local state becomes unnecessary
 interface State {
   is_saved: boolean
+  isHovered: boolean
 }
 
 export const SaveButtonContainer = Artsy.ContextConsumer(
@@ -42,6 +43,7 @@ export const SaveButtonContainer = Artsy.ContextConsumer(
 
     state = {
       is_saved: null,
+      isHovered: false,
     }
 
     get isSaved() {
@@ -145,18 +147,30 @@ export const SaveButtonContainer = Artsy.ContextConsumer(
 
     render() {
       const { style } = this.props
+      const saveStyle = this.isSaved ? { opacity: 1.0 } : {}
+      const fullStyle = { ...style, ...saveStyle }
+      const iconName =
+        this.isSaved && this.state.isHovered ? "remove-small" : "heart"
+      const iconFontSize = iconName === "heart" ? "24px" : "16px"
 
       return (
         <div
           className={this.props.className}
-          style={style}
+          style={fullStyle}
           onClick={() => this.handleSave()}
           data-saved={this.isSaved}
+          onMouseEnter={() => {
+            this.setState({ isHovered: true })
+          }}
+          onMouseLeave={() => {
+            this.setState({ isHovered: false })
+          }}
         >
           <Icon
-            name="heart"
+            name={iconName}
             height={SIZE}
             color="white"
+            fontSize={iconFontSize}
             style={{ verticalAlign: "middle" }}
           />
         </div>
@@ -183,7 +197,7 @@ export const SaveButton = styled(SaveButtonContainer)`
   &[data-saved="true"] {
     background-color: ${colors.purpleRegular};
     &:hover {
-      background-color: ${colors.redBold};
+      background-color: ${colors.redMedium};
     }
   }
 `
