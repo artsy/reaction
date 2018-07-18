@@ -70,8 +70,15 @@ const node: ConcreteFragment = {
           "kind": "ScalarField",
           "alias": null,
           "name": "cv",
-          "args": null,
-          "storageKey": null
+          "args": [
+            {
+              "kind": "Literal",
+              "name": "minShowCount",
+              "value": 0,
+              "type": "Int"
+            }
+          ],
+          "storageKey": "cv(minShowCount:0)"
         },
         {
           "kind": "ScalarField",
@@ -91,5 +98,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '0ce2e970181f978004c5782354ae9b42';
+(node as any).hash = 'a4c56169f4ee753901b394e67f4de300';
 export default node;
