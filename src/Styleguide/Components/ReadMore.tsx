@@ -7,6 +7,7 @@ import { DisplayProps } from "styled-system"
 export interface ReadMoreProps extends DisplayProps {
   isExpanded?: boolean
   maxLineCount?: number
+  onReadMoreClicked?: () => void
 }
 
 export interface ReadMoreState {
@@ -32,9 +33,14 @@ export class ReadMore extends React.Component<ReadMoreProps, ReadMoreState> {
   }
 
   expandText = () => {
-    this.setState({
-      isExpanded: true,
-    })
+    this.setState(
+      {
+        isExpanded: true,
+      },
+      () => {
+        this.props.onReadMoreClicked && this.props.onReadMoreClicked()
+      }
+    )
   }
 
   render() {

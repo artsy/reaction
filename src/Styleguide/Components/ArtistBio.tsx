@@ -7,6 +7,7 @@ import { ArtistBio_bio } from "__generated__/ArtistBio_bio.graphql"
 
 interface Props {
   bio: ArtistBio_bio
+  onReadMoreClicked?: () => void
 }
 
 export class ArtistBio extends React.Component<Props> {
@@ -23,9 +24,20 @@ export class ArtistBio extends React.Component<Props> {
       <Responsive>
         {({ xs }) => {
           if (xs) {
-            return <ReadMore>{blurb}</ReadMore>
+            return (
+              <ReadMore onReadMoreClicked={this.props.onReadMoreClicked}>
+                {blurb}
+              </ReadMore>
+            )
           } else {
-            return <ReadMore maxLineCount={7}>{blurb}</ReadMore>
+            return (
+              <ReadMore
+                onReadMoreClicked={this.props.onReadMoreClicked}
+                maxLineCount={7}
+              >
+                {blurb}
+              </ReadMore>
+            )
           }
         }}
       </Responsive>
