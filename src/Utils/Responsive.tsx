@@ -2,13 +2,6 @@ import React from "react"
 
 const ResponsiveContext = React.createContext({})
 
-const shallowEqual = (a, b) => {
-  for (let key in a) {
-    if (a[key] !== b[key]) return false
-  }
-  return true
-}
-
 // TODO: Make this generic on the consumer component when we OSS this separately
 //       and keep this module from where we’ll export our own `Responsive`
 //       wrapper that has these Artsy specific breakpoint typings.
@@ -121,20 +114,6 @@ export class ResponsiveProvider extends React.Component<
   }
 
   // Lifecycle methods
-
-  // FIXME: Why doesn’t this get typed automatically?
-  shouldComponentUpdate(
-    nextProps: Readonly<{ children?: React.ReactNode }> &
-      Readonly<ResponsiveProviderProps>,
-    nextState: Readonly<ResponsiveProviderState>
-  ) {
-    if (nextProps.children !== this.props.children) return true
-    if (shallowEqual(this.state.breakpoints, nextState.breakpoints)) {
-      return false
-    }
-    return true
-  }
-
   componentWillUnmount() {
     this.state.mediaMatchers.forEach(mediaQuery =>
       mediaQuery.removeListener(this.breakpointChangedCallback)
