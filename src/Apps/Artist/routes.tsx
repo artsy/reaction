@@ -47,10 +47,27 @@ export const routes = [
       {
         path: "/",
         Component: OverviewRoute,
+        prepareVariables: (params, props) => {
+          return { ...props.location.query, ...params }
+        },
         query: graphql`
-          query routes_OverviewQueryRendererQuery($artistID: String!) {
+          query routes_OverviewQueryRendererQuery(
+            $artistID: String!
+            $medium: String
+            $major_periods: [String]
+            $partner_id: ID
+            $for_sale: Boolean
+            $sort: String
+          ) {
             artist(id: $artistID) {
               ...Overview_artist
+                @arguments(
+                  medium: $medium
+                  major_periods: $major_periods
+                  partner_id: $partner_id
+                  for_sale: $for_sale
+                  sort: $sort
+                )
             }
           }
         `,

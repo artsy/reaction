@@ -209,6 +209,7 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(
           type: "[ArtworkAggregation]"
           defaultValue: [MEDIUM, TOTAL, GALLERY, INSTITUTION, MAJOR_PERIOD]
         }
+        sort: { type: "String", defaultValue: "-partner_updated_at" }
       ) {
       id
       filtered_artworks(aggregations: $aggregations, size: 0) {
@@ -221,6 +222,13 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(
         }
       }
       ...ArtworkFilterRefetch_artist
+        @arguments(
+          medium: $medium
+          major_periods: $major_periods
+          partner_id: $partner_id
+          for_sale: $for_sale
+          sort: $sort
+        )
     }
   `
 )

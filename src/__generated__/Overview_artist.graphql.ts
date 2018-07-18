@@ -25,7 +25,38 @@ return {
   "name": "Overview_artist",
   "type": "Artist",
   "metadata": null,
-  "argumentDefinitions": [],
+  "argumentDefinitions": [
+    {
+      "kind": "LocalArgument",
+      "name": "medium",
+      "type": "String",
+      "defaultValue": "*"
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "major_periods",
+      "type": "[String]",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "partner_id",
+      "type": "ID!",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "for_sale",
+      "type": "Boolean",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "sort",
+      "type": "String",
+      "defaultValue": "-partner_updated_at"
+    }
+  ],
   "selections": [
     {
       "kind": "LinkedField",
@@ -111,11 +142,42 @@ return {
     {
       "kind": "FragmentSpread",
       "name": "ArtworkFilter_artist",
-      "args": null
+      "args": [
+        {
+          "kind": "Variable",
+          "name": "for_sale",
+          "variableName": "for_sale",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "major_periods",
+          "variableName": "major_periods",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "medium",
+          "variableName": "medium",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "partner_id",
+          "variableName": "partner_id",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "sort",
+          "variableName": "sort",
+          "type": null
+        }
+      ]
     },
     v0
   ]
 };
 })();
-(node as any).hash = '1c01b7541f53768bcccbdd6bb2d29cd2';
+(node as any).hash = 'f76e35dafdaf17427243681d6cdad9f5';
 export default node;

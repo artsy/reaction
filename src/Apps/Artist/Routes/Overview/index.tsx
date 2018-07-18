@@ -70,7 +70,14 @@ const OverviewRoute: SFC<OverviewRouteProps> = props => {
 export const OverviewRouteFragmentContainer = createFragmentContainer(
   OverviewRoute,
   graphql`
-    fragment Overview_artist on Artist {
+    fragment Overview_artist on Artist
+      @argumentDefinitions(
+        medium: { type: "String", defaultValue: "*" }
+        major_periods: { type: "[String]" }
+        partner_id: { type: "ID!" }
+        for_sale: { type: "Boolean" }
+        sort: { type: "String", defaultValue: "-partner_updated_at" }
+      ) {
       ...ArtistHeader_artist
       ...ArtistBio_bio
       ...CurrentEvent_artist
@@ -88,6 +95,13 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
       ...Genes_artist
 
       ...ArtworkFilter_artist
+        @arguments(
+          medium: $medium
+          major_periods: $major_periods
+          partner_id: $partner_id
+          for_sale: $for_sale
+          sort: $sort
+        )
     }
   `
 )

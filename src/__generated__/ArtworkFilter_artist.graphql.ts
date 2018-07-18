@@ -73,6 +73,12 @@ return {
         "INSTITUTION",
         "MAJOR_PERIOD"
       ]
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "sort",
+      "type": "String",
+      "defaultValue": "-partner_updated_at"
     }
   ],
   "selections": [
@@ -143,11 +149,42 @@ return {
     {
       "kind": "FragmentSpread",
       "name": "ArtworkFilterRefetch_artist",
-      "args": null
+      "args": [
+        {
+          "kind": "Variable",
+          "name": "for_sale",
+          "variableName": "for_sale",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "major_periods",
+          "variableName": "major_periods",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "medium",
+          "variableName": "medium",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "partner_id",
+          "variableName": "partner_id",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "sort",
+          "variableName": "sort",
+          "type": null
+        }
+      ]
     },
     v1
   ]
 };
 })();
-(node as any).hash = '71971f5ceac417e08f77d9a15d870ecb';
+(node as any).hash = '7aea3b086ed388df1c218fe0c117f3ca';
 export default node;

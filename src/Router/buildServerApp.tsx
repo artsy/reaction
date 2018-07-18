@@ -46,7 +46,13 @@ export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
 
       const bootProps = {
         initialBreakpoint,
-        system: { ...config, relayEnvironment, resolver, routes, currentUser },
+        system: {
+          ...config,
+          relayEnvironment,
+          resolver,
+          routes,
+          currentUser,
+        },
       }
 
       const AppContainer = props => {
