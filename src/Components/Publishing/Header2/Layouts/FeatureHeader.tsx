@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import FeatureBasicHeader from "./Components/FeatureBasicHeader"
 import { FeatureFullscreenHeader } from "./Components/FeatureFullscreenHeader"
 import { FeatureSplitHeader } from "./Components/FeatureSplitHeader"
 import { FeatureTextHeader } from "./Components/FeatureTextHeader"
@@ -20,6 +21,9 @@ export const FeatureHeader: React.SFC<FeatureHeaderProps> = props => {
   const type = hero_section && hero_section.type
 
   switch (type) {
+    case "basic": {
+      return <FeatureBasicHeader {...props} />
+    }
     case "fullscreen": {
       return <FeatureFullscreenHeader {...props} />
     }

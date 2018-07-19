@@ -669,6 +669,29 @@ export const FeatureArticle: ArticleData = {
   slug: "artsy-editorial-path-winning-art-prize",
 }
 
+export const FeatureBasicVideoArticle: ArticleData = {
+  ...FeatureArticle,
+  hero_section: {
+    type: "basic",
+    title: "What’s the Path to Winning an Art Prize?",
+    url: "https://vimeo.com/238843720",
+    deck:
+      "Created by graphic designer Kati Forner for a Los Angeles-based fashion retailer",
+    cover_image_url:
+      "https://artsy-media-uploads.s3.amazonaws.com/ditbyaUgdcl6mHin07TfKA%2FMassimilianoGioni_0581.jpg",
+  },
+}
+
+export const FeatureBasicArticle: ArticleData = {
+  ...FeatureArticle,
+  hero_section: {
+    type: "basic",
+    title: "What’s the Path to Winning an Art Prize?",
+    deck:
+      "Created by graphic designer Kati Forner for a Los Angeles-based fashion retailer",
+  },
+}
+
 export const SponsoredArticle = extend(cloneDeep(FeatureArticle), Sponsor)
 
 export const SuperArticle = extend(cloneDeep(FeatureArticle), {

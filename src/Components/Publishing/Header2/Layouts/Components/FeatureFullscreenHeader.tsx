@@ -1,3 +1,4 @@
+import { space } from "@artsy/palette"
 import { PartnerInline } from "Components/Publishing/Partner/PartnerInline"
 import React from "react"
 import styled from "styled-components"
@@ -76,7 +77,7 @@ const HeaderTextContainer = styled.div.attrs<{ hasLogos?: boolean }>({})`
     position: relative;
   }
   ${pMedia.xs`
-    padding: 20px;
+    padding: ${space(2)}px;
   `};
 `
 

@@ -5,6 +5,8 @@ import {
   ClassicArticle,
   ClassicArticleManyAuthors,
   FeatureArticle,
+  FeatureBasicArticle,
+  FeatureBasicVideoArticle,
   MissingVerticalStandardArticle,
   SeriesArticle,
   SponsoredArticle,
@@ -63,6 +65,29 @@ storiesOf("Publishing/Header2/Feature/Text", module)
   })
   .add("Editable", () => {
     const article = extend({}, FeatureArticle, {
+      vertical: null,
+    })
+    return (
+      <Header
+        article={article}
+        date="2015-06-19T13:09:18.567Z"
+        editDeck={EditableChild("Deck")}
+        editImage={EditableChild("Image")}
+        editTitle={EditableChild("Title")}
+        editVertical={EditableChild("Vertical")}
+      />
+    )
+  })
+
+storiesOf("Publishing/Header2/Feature/Basic", module)
+  .add("Text", () => {
+    return <Header article={FeatureBasicArticle} />
+  })
+  .add("Video", () => {
+    return <Header article={FeatureBasicVideoArticle} />
+  })
+  .add("Editable", () => {
+    const article = extend({}, FeatureBasicVideoArticle, {
       vertical: null,
     })
     return (
