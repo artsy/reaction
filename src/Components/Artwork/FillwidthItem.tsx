@@ -4,6 +4,7 @@ import { ComponentRef, createFragmentContainer, graphql } from "react-relay"
 // @ts-ignore
 import styled, { StyledComponentClass } from "styled-components"
 
+import { ContextProps } from "Components/Artsy"
 import RelayMetadata, { Metadata } from "./Metadata"
 import RelaySaveButton, { SaveButton } from "./Save"
 
@@ -25,12 +26,17 @@ const Placeholder = styled.div`
 
 export interface FillwidthItemContainerProps
   extends RelayProps,
+    ContextProps,
     React.HTMLProps<FillwidthItemContainer> {
   targetHeight?: number
   imageHeight?: number
   width?: number
   margin?: number
   useRelay?: boolean
+
+  mediator?: {
+    trigger: (action: string, config: object) => void
+  }
 }
 
 export class FillwidthItemContainer extends React.Component<
@@ -48,8 +54,14 @@ export class FillwidthItemContainer extends React.Component<
       targetHeight,
       imageHeight,
       useRelay,
+      currentUser,
+      mediator,
     } = this.props
 
+    let currentUserSpread = {}
+    if (currentUser) {
+      currentUserSpread = { currentUser }
+    }
     const SaveButtonBlock = useRelay ? RelaySaveButton : SaveButton
     const MetadataBlock = useRelay ? RelayMetadata : Metadata
 
@@ -60,6 +72,8 @@ export class FillwidthItemContainer extends React.Component<
             <Image src={artwork.image.url} height={imageHeight} />
           </ImageLink>
           <SaveButtonBlock
+            {...currentUserSpread}
+            mediator={mediator}
             className="artwork-save"
             artwork={artwork as any}
             style={{ position: "absolute", right: "5px", bottom: "5px" }}
