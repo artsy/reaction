@@ -53,9 +53,12 @@ export const ArtistApp: React.SFC<ArtistAppProps> = props => {
         </Col>
       </Row>
 
-      <Separator my={6} />
-
-      {me && <RecentlyViewed me={me} />}
+      {me && (
+        <React.Fragment>
+          <Separator my={6} />
+          <RecentlyViewed me={me} />
+        </React.Fragment>
+      )}
 
       <Separator mt={6} mb={3} />
 

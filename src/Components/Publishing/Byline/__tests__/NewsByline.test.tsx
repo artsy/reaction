@@ -6,6 +6,15 @@ import { NewsArticle } from "../../Fixtures/Articles"
 import { NewsByline } from "../NewsByline"
 
 describe("News Byline", () => {
+  const dateNow = Date.now
+
+  beforeAll(() => {
+    Date.now = () => Date.parse("01 Jan 2009 00:00:00 EST")
+  })
+
+  afterAll(() => {
+    Date.now = dateNow
+  })
   it("renders properly", () => {
     const byline = renderer.create(<NewsByline article={NewsArticle} />)
     expect(byline).toMatchSnapshot()
