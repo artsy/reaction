@@ -6,7 +6,10 @@ import {
   ClassicArticleManyAuthors,
   FeatureArticle,
   MissingVerticalStandardArticle,
+  SeriesArticle,
+  SponsoredArticle,
   StandardArticle,
+  SuperArticle,
 } from "../Fixtures/Articles"
 import { HeroSections } from "../Fixtures/Components"
 import { EditableChild } from "../Fixtures/Helpers"
@@ -57,6 +60,42 @@ storiesOf("Publishing/Header2/Feature/Text", module)
   })
   .add("Video", () => {
     return <Header article={FeatureArticle} />
+  })
+  .add("Editable", () => {
+    const article = extend({}, FeatureArticle, {
+      vertical: null,
+    })
+    return (
+      <Header
+        article={article}
+        date="2015-06-19T13:09:18.567Z"
+        editDeck={EditableChild("Deck")}
+        editImage={EditableChild("Image")}
+        editTitle={EditableChild("Title")}
+        editVertical={EditableChild("Vertical")}
+      />
+    )
+  })
+
+storiesOf("Publishing/Header2/Feature/Fullscreen", module)
+  .add("Image", () => {
+    const article = extend({}, FeatureArticle, {
+      hero_section: HeroSections[2],
+    })
+    return <Header article={article} />
+  })
+  .add("Video", () => {
+    return <Header article={FeatureArticle} />
+  })
+  .add("In Series", () => {
+    const article = extend({}, SponsoredArticle, {
+      hero_section: HeroSections[2],
+      seriesArticle: SeriesArticle,
+    })
+    return <Header article={article} />
+  })
+  .add("SuperArticle", () => {
+    return <Header article={SuperArticle} />
   })
   .add("Editable", () => {
     const article = extend({}, FeatureArticle, {

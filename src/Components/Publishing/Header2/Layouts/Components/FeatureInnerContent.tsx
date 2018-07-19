@@ -1,24 +1,29 @@
 import { Sans, space } from "@artsy/palette"
 import { unica } from "Assets/Fonts"
 import { Byline } from "Components/Publishing/Byline/Byline"
-import React from "react"
-import styled from "styled-components"
-import { pMedia } from "../../../../Helpers"
 import {
   Vertical,
   VerticalOrSeriesTitle,
-} from "../../../Sections/VerticalOrSeriesTitle"
+} from "Components/Publishing/Sections/VerticalOrSeriesTitle"
+import React from "react"
+import styled from "styled-components"
+import { pMedia } from "../../../../Helpers"
 import { FeatureHeaderProps } from "../FeatureHeader"
 
 export const FeatureInnerContent: React.SFC<FeatureHeaderProps> = props => {
   const { article, editTitle, editVertical } = props
-  const { title } = article
+  const { title, hero_section } = article
   const vertical = (article.vertical && article.vertical.name) || editVertical
+  const isFullscreen = hero_section && hero_section.type === "fullscreen"
 
   return (
     <TextContainer>
       <div>
-        <VerticalOrSeriesTitle article={article} vertical={vertical} />
+        <VerticalOrSeriesTitle
+          article={article}
+          color={isFullscreen ? "white" : undefined}
+          vertical={vertical}
+        />
         <Title>{editTitle || title}</Title>
       </div>
       <FeatureInnerSubContent {...props} />
@@ -54,6 +59,7 @@ export const FeatureInnerSubContent: React.SFC<FeatureHeaderProps> = props => {
   const { article, date, editDeck } = props
   const { hero_section } = article
   const deck = editDeck || (hero_section && hero_section.deck)
+  const isFullscreen = hero_section && hero_section.type === "fullscreen"
 
   return (
     <SubContentContainer>
@@ -62,7 +68,11 @@ export const FeatureInnerSubContent: React.SFC<FeatureHeaderProps> = props => {
           {deck}
         </Deck>
       )}
-      <Byline article={article} date={date && date} />
+      <Byline
+        article={article}
+        color={isFullscreen ? "white" : undefined}
+        date={date && date}
+      />
     </SubContentContainer>
   )
 }

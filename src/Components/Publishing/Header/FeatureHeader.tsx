@@ -199,6 +199,7 @@ class FeatureHeaderComponent extends React.Component<FeatureHeaderProps, any> {
                       article={article}
                       layout={type}
                       date={date && date}
+                      color={type === "fullscreen" ? "white" : undefined}
                     />
                   </SubHeader>
                 </HeaderText>
