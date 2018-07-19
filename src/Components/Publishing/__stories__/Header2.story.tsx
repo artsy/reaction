@@ -73,3 +73,33 @@ storiesOf("Publishing/Header2/Feature/Text", module)
       />
     )
   })
+
+storiesOf("Publishing/Header2/Feature/Split", module)
+  .add("Image", () => {
+    const article = extend({}, FeatureArticle, {
+      hero_section: HeroSections[1],
+    })
+    return <Header article={article} />
+  })
+  .add("Video", () => {
+    const article = extend({}, FeatureArticle, {
+      hero_section: HeroSections[3],
+    })
+    return <Header article={article} />
+  })
+  .add("Editable", () => {
+    const article = extend({}, FeatureArticle, {
+      vertical: null,
+      hero_section: HeroSections[3],
+    })
+    return (
+      <Header
+        article={article}
+        date="2015-06-19T13:09:18.567Z"
+        editDeck={EditableChild("Deck")}
+        editImage={EditableChild("Image")}
+        editTitle={EditableChild("Title")}
+        editVertical={EditableChild("Vertical")}
+      />
+    )
+  })

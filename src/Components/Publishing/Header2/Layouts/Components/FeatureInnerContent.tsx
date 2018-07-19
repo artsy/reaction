@@ -56,18 +56,18 @@ export const FeatureInnerSubContent: React.SFC<FeatureHeaderProps> = props => {
   const deck = editDeck || (hero_section && hero_section.deck)
 
   return (
-    <SubHeader>
+    <SubContentContainer>
       {deck && (
         <Deck size="3t" weight="medium">
           {deck}
         </Deck>
       )}
       <Byline article={article} date={date && date} />
-    </SubHeader>
+    </SubContentContainer>
   )
 }
 
-export const SubHeader = styled.div`
+export const SubContentContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
