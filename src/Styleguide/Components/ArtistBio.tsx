@@ -1,3 +1,4 @@
+import { Serif } from "@artsy/palette"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Responsive } from "Utils/Responsive"
@@ -26,7 +27,7 @@ export class ArtistBio extends React.Component<Props> {
           if (xs) {
             return (
               <ReadMore onReadMoreClicked={this.props.onReadMoreClicked}>
-                {blurb}
+                <Serif size="3">{blurb}</Serif>
               </ReadMore>
             )
           } else {
@@ -35,7 +36,7 @@ export class ArtistBio extends React.Component<Props> {
                 onReadMoreClicked={this.props.onReadMoreClicked}
                 maxLineCount={7}
               >
-                {blurb}
+                <Serif size="3">{blurb}</Serif>
               </ReadMore>
             )
           }
