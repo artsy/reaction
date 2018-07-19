@@ -30,7 +30,7 @@ import { ShowProps } from "./Routes/Shows"
 
 export const routes = [
   {
-    path: "/artist2/:artistID",
+    path: "/artist/:artistID",
     Component: ArtistApp,
     query: graphql`
       query routes_ArtistTopLevelQuery($artistID: String!) {
@@ -48,7 +48,8 @@ export const routes = [
         path: "/",
         Component: OverviewRoute,
         prepareVariables: (params, props) => {
-          return { ...props.location.query, ...params }
+          const initialQueryParams = props.location ? props.location.query : {}
+          return { ...initialQueryParams, ...params }
         },
         query: graphql`
           query routes_OverviewQueryRendererQuery(

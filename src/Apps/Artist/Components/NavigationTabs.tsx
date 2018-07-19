@@ -9,7 +9,7 @@ interface Props {
 
 export const NavigationTabs: React.SFC<Props> = props => {
   const { statuses } = props.artist
-  const route = (path = "") => `/artist2/${props.artist.id}${path}`
+  const route = (path = "") => `/artist/${props.artist.id}${path}`
 
   return (
     <RouteTabs>

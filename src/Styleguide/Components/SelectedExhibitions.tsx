@@ -80,7 +80,7 @@ const FullExhibitionList: SFC<FullExhibitionListProps> = props => (
       ))}
     {props.totalExhibitions > MIN_FOR_SELECTED_EXHIBITIONS && (
       <Sans size="2" color="black60">
-        <PreloadLink to={`/artist2/${props.artistID}/cv`}>View all</PreloadLink>
+        <PreloadLink to={`/artist/${props.artistID}/cv`}>View all</PreloadLink>
       </Sans>
     )}
   </React.Fragment>
