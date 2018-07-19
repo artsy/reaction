@@ -149,6 +149,23 @@ export const ClassicArticle: ArticleData = {
   ],
 }
 
+export const ClassicArticleManyAuthors = extend({}, ClassicArticle, {
+  contributing_authors: [
+    {
+      id: "523783258b3b815f7100055a",
+      name: "First Author",
+    },
+    {
+      id: "523783258b3b815f7100055a",
+      name: "Second Author",
+    },
+    {
+      id: "523783258b3b815f7100055a",
+      name: "Third Author",
+    },
+  ],
+})
+
 export const StandardArticle: ArticleData = {
   id: "594a7e2254c37f00177c0ea9",
   title: "New York's Next Art District",
