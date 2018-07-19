@@ -1,6 +1,7 @@
 import { Sans, Serif, space } from "@artsy/palette"
 import { ArtistCard_artist } from "__generated__/ArtistCard_artist.graphql"
 import FollowArtistButton from "Components/FollowButton/FollowArtistButton"
+import { Truncator } from "Components/Truncator"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
@@ -44,7 +45,7 @@ export const LargeArtistCard = (props: Props) => (
         <Avatar src={props.artist.image.cropped.url} mb={1} />
       )}
       <Serif size="3t" weight="semibold" textAlign="center">
-        {props.artist.name}
+        <Truncator maxLineCount={2}>{props.artist.name}</Truncator>
       </Serif>
       <Sans size="2">{props.artist.formatted_nationality_and_birthday}</Sans>
     </Flex>
@@ -83,7 +84,9 @@ export const LargeArtistCard = (props: Props) => (
 export const SmallArtistCard = (props: Props) => (
   <BorderBox hover width="100%" justifyContent="space-between">
     <Flex flexDirection="column" justifyContent="center">
-      <Serif size="3t">{props.artist.name}</Serif>
+      <Serif size="3t">
+        <Truncator maxLineCount={2}>{props.artist.name}</Truncator>
+      </Serif>
       <Sans size="1">{props.artist.formatted_nationality_and_birthday}</Sans>
       <Spacer mb={1} />
       <FollowArtistButton
