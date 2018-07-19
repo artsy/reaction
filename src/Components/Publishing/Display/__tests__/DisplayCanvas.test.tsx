@@ -2,13 +2,13 @@ import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
+import { track } from "../../../../Utils/track"
+import { getCurrentUnixTimestamp } from "../../Constants"
 import { DisplayCanvas } from "../Canvas"
+import { CanvasLink } from "../Canvas/CanvasContainer"
 import { CanvasSlideshow } from "../Canvas/CanvasSlideshow"
 import { CanvasText } from "../Canvas/CanvasText"
 import { CanvasVideo } from "../Canvas/CanvasVideo"
-import { CanvasLink } from "../Canvas/CanvasContainer"
-import { track } from "../../../../Utils/track"
-import { getCurrentUnixTimestamp } from "../../Constants"
 
 import {
   Campaign,
@@ -25,10 +25,6 @@ jest.mock("react-slick", () => {
 })
 
 jest.mock("react-sizeme", () => jest.fn(c => d => d))
-
-jest.mock("../../../../Utils/track.ts", () => ({
-  track: jest.fn(),
-}))
 
 describe("snapshot", () => {
   it("renders the canvas in standard layout with image", () => {

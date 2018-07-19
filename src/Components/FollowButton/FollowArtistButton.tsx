@@ -124,7 +124,7 @@ export class FollowArtistButton extends React.Component<Props> {
   }
 }
 
-export default track()(
+export default track({})(
   createFragmentContainer(
     Artsy.ContextConsumer(FollowArtistButton),
     graphql`

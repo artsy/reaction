@@ -49,13 +49,15 @@ export class CanvasSlideshow extends React.Component<
     })
   }
 
-  @track(props => ({
-    action: "Click",
-    label: "Display ad carousel arrow",
-    entity_type: "display_ad",
-    campaign_name: props.campaign.name,
-    unit_layout: "canvas_slideshow",
-  }))
+  @track(props => {
+    return {
+      action: "Click",
+      label: "Display ad carousel arrow",
+      entity_type: "display_ad",
+      campaign_name: props.campaign.name,
+      unit_layout: "canvas_slideshow",
+    }
+  })
   onChangeSlide(slide) {
     this.slider.slickGoTo(slide)
   }

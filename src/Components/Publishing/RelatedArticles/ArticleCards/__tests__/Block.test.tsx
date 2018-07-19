@@ -14,10 +14,6 @@ import { SeriesAbout } from "../../../Series/SeriesAbout"
 import { ArticleCard } from "../ArticleCard"
 import { ArticleCardsBlock } from "../Block"
 
-jest.mock("../../../../../Utils/track.ts", () => ({
-  track: () => jest.fn(c => c),
-}))
-
 describe("ArticleCard", () => {
   it("renders properly", () => {
     const component = renderer

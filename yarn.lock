@@ -1098,9 +1098,9 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-tracking@^5.0.1":
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/@types/react-tracking/-/react-tracking-5.0.1.tgz#31a3d0206c1381be7e259b1588942293f534dae4"
+"@types/react-tracking@^5.0.2":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@types/react-tracking/-/react-tracking-5.0.2.tgz#8fbdecf6a6b4b8611893f20eb085120e123f7f64"
   dependencies:
     "@types/react" "*"
 

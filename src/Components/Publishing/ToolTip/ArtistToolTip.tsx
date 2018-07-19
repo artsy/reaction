@@ -158,7 +158,7 @@ const Images = styled.a`
   }
 `
 
-export const ArtistTooltipContainer = track()(
+export const ArtistTooltipContainer = track({})(
   createFragmentContainer(
     ArtistToolTip,
     graphql`
