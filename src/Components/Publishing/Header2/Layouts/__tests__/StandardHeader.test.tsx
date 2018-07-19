@@ -1,19 +1,20 @@
 import { mount } from "enzyme"
 import "jest-styled-components"
+import { cloneDeep } from "lodash"
 import React from "react"
 import renderer from "react-test-renderer"
 import {
-  ClassicArticle,
-  ClassicArticleManyAuthors,
+  MissingVerticalStandardArticle,
+  StandardArticle,
 } from "../../../Fixtures/Articles"
 import { EditableChild } from "../../../Fixtures/Helpers"
-import { ClassicHeader } from "../ClassicHeader"
+import { StandardHeader } from "../StandardHeader"
 
-describe("Classic Header", () => {
+describe("Standard Header", () => {
   describe("Snapshots", () => {
     it("renders properly", () => {
       const snapshot = renderer
-        .create(<ClassicHeader article={ClassicArticle} />)
+        .create(<StandardHeader article={StandardArticle} />)
         .toJSON()
       expect(snapshot).toMatchSnapshot()
     })
@@ -21,11 +22,11 @@ describe("Classic Header", () => {
     it("renders editable props properly", () => {
       const snapshot = renderer
         .create(
-          <ClassicHeader
-            article={ClassicArticle}
+          <StandardHeader
+            article={MissingVerticalStandardArticle}
             date="2015-06-19T13:09:18.567Z"
-            editLeadParagraph={EditableChild("Lead Paragraph")}
             editTitle={EditableChild("Title")}
+            editVertical={EditableChild("Vertical")}
           />
         )
         .toJSON()
@@ -35,38 +36,50 @@ describe("Classic Header", () => {
 
   describe("Unit", () => {
     const getWrapper = props => {
-      return mount(<ClassicHeader {...props} />)
+      return mount(<StandardHeader {...props} />)
     }
+
     let props
     beforeEach(() => {
       props = {
-        article: ClassicArticle,
+        article: cloneDeep(StandardArticle),
       }
+    })
+
+    it("Renders vertical", () => {
+      const component = getWrapper(props)
+      expect(component.text()).toMatch(StandardArticle.vertical.name)
+    })
+
+    it("Can handle missing vertical", () => {
+      props.article = MissingVerticalStandardArticle
+      const component = getWrapper(props)
+      expect(component.text()).toMatch(StandardArticle.title)
     })
 
     it("Renders title", () => {
       const component = getWrapper(props)
-      expect(component.text()).toMatch(ClassicArticle.title)
-      expect(component.text()).toMatch(ClassicArticle.author.name)
-    })
-
-    it("Renders lead paragraph", () => {
-      const component = getWrapper(props)
-      expect(component.text()).toMatch("Critics were skeptical of Bambi")
+      expect(component.text()).toMatch(StandardArticle.title)
     })
 
     it("Renders author", () => {
       const component = getWrapper(props)
-      expect(component.text()).toMatch(ClassicArticle.author.name)
+      expect(component.text()).toMatch("Casey Lesser")
     })
 
-    it("Renders contributing authors", () => {
-      props.article = ClassicArticleManyAuthors
+    it("Handles missing author", () => {
+      delete props.article.authors
       const component = getWrapper(props)
-      expect(component.text()).toMatch(ClassicArticle.author.name)
-      expect(component.text()).toMatch(
-        "By First Author, Second Author and Third Author"
-      )
+      expect(component.text()).toMatch("Artsy Editors")
+    })
+
+    it("Renders multiple authors", () => {
+      props.article.authors.push({
+        id: "523783258b3b815f7100055a",
+        name: "Molly Gottshalk",
+      })
+      const component = getWrapper(props)
+      expect(component.text()).toMatch("Casey Lesser and Molly Gottshalk")
     })
 
     describe("Editing", () => {
@@ -76,10 +89,11 @@ describe("Classic Header", () => {
         expect(component.text()).toMatch("Child Title")
       })
 
-      it("Renders lead paragraph", () => {
-        props.editLeadParagraph = EditableChild("Lead Paragraph")
+      it("Renders vertical", () => {
+        props.article = MissingVerticalStandardArticle
+        props.editVertical = EditableChild("Vertical")
         const component = getWrapper(props)
-        expect(component.text()).toMatch("Child Lead Paragraph")
+        expect(component.text()).toMatch("Vertical")
       })
 
       it("Renders a custom date", () => {

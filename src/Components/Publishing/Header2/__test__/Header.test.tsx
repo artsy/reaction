@@ -1,10 +1,10 @@
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
+import { ClassicArticle, StandardArticle } from "../../Fixtures/Articles"
 import { Header } from "../Header"
 import { ClassicHeader } from "../Layouts/ClassicHeader"
-
-import { ClassicArticle } from "../../Fixtures/Articles"
+import { StandardHeader } from "../Layouts/StandardHeader"
 
 describe("Header", () => {
   const getWrapper = props => {
@@ -28,5 +28,11 @@ describe("Header", () => {
     delete props.article.layout
     const component = getWrapper(props)
     expect(component.find(ClassicHeader)).toHaveLength(1)
+  })
+
+  it("Renders standard header if standard layout", () => {
+    props.article = StandardArticle
+    const component = getWrapper(props)
+    expect(component.find(StandardHeader)).toHaveLength(1)
   })
 })
