@@ -100,11 +100,11 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
   font-size: 50px;
   line-height: 1.1em;
   -webkit-font-smoothing: antialiased;
-  margin-bottom: 50px;
+  padding-bottom: 50px;
 }
 
 .c2 {
-  margin-bottom: 10px;
+  padding-bottom: 10px;
 }
 
 @media (max-width:720px) {
@@ -388,11 +388,11 @@ exports[`Standard Header Snapshots renders properly 1`] = `
   font-size: 50px;
   line-height: 1.1em;
   -webkit-font-smoothing: antialiased;
-  margin-bottom: 50px;
+  padding-bottom: 50px;
 }
 
 .c2 {
-  margin-bottom: 10px;
+  padding-bottom: 10px;
 }
 
 @media (max-width:720px) {

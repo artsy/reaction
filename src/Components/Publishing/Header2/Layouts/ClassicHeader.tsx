@@ -1,3 +1,4 @@
+import { space } from "@artsy/palette"
 import { garamond } from "Assets/Fonts"
 import React from "react"
 import styled from "styled-components"
@@ -35,11 +36,11 @@ const ClassicHeaderContainer = styled.div`
   flex-direction: column;
   max-width: 900px;
   width: 100%;
-  margin: 40px auto;
+  margin: ${space(4)}px auto;
   box-sizing: border-box;
   text-align: center;
 
-  ${pMedia.xl`padding: 0 20px;`};
+  ${pMedia.xl`padding: 0 ${space(2)}px;`};
 
   ${pMedia.xs`
     text-align: left;
@@ -47,7 +48,7 @@ const ClassicHeaderContainer = styled.div`
 `
 
 export const Title = styled.div`
-  margin-bottom: 30px;
+  padding-bottom: ${space(3)}px;
   ${garamond("s37")};
 
   ${pMedia.xs`
@@ -62,7 +63,7 @@ export const LeadParagraph = styled.div`
   max-width: 580px;
   width: 100%;
   margin: 0 auto;
-  padding-bottom: 30px;
+  padding-bottom: ${space(3)}px;
 
   p {
     margin: 0;

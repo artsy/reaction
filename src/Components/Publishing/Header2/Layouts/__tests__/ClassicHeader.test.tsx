@@ -1,5 +1,6 @@
 import { mount } from "enzyme"
 import "jest-styled-components"
+import { cloneDeep } from "lodash"
 import React from "react"
 import renderer from "react-test-renderer"
 import {
@@ -40,7 +41,7 @@ describe("Classic Header", () => {
     let props
     beforeEach(() => {
       props = {
-        article: ClassicArticle,
+        article: cloneDeep(ClassicArticle),
       }
     })
 

@@ -43,7 +43,7 @@ exports[`Classic Header Snapshots renders editable props properly 1`] = `
 }
 
 .c1 {
-  margin-bottom: 30px;
+  padding-bottom: 30px;
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 37px;
   line-height: 1.2em;
@@ -174,7 +174,7 @@ exports[`Classic Header Snapshots renders properly 1`] = `
 }
 
 .c1 {
-  margin-bottom: 30px;
+  padding-bottom: 30px;
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 37px;
   line-height: 1.2em;

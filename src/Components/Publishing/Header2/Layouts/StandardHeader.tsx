@@ -1,3 +1,4 @@
+import { space } from "@artsy/palette"
 import { garamond } from "Assets/Fonts"
 import React from "react"
 import styled from "styled-components"
@@ -26,17 +27,17 @@ export const StandardHeader: React.SFC<StandardHeaderProps> = props => {
           </Vertical>
         )}
         <Title>{editTitle || article.title}</Title>
-        <Byline article={article} layout="standard" date={date && date} />
+        <Byline article={article} date={date && date} />
       </StandardHeaderContainer>
     </StandardHeaderParent>
   )
 }
 
 const StandardHeaderParent = styled.div`
-  margin: 0 40px;
+  margin: 0 ${space(4)}px;
 
   ${pMedia.sm`
-    margin: 0 20px;
+    margin: 0 ${space(2)}px;
   `};
 `
 
@@ -45,17 +46,17 @@ const StandardHeaderContainer = styled.div`
   flex-direction: column;
   width: 100%;
   max-width: 1250px;
-  margin: 40px auto;
+  margin: ${space(4)}px auto;
   box-sizing: border-box;
 
   ${pMedia.sm`
-    margin: 30px auto;
+    margin: ${space(3)}px auto;
   `};
 `
 
 const Title = styled.div`
   ${garamond("s50")};
-  margin-bottom: 50px;
+  padding-bottom: 50px;
 
   ${pMedia.sm`
     ${garamond("s34")}
@@ -63,5 +64,5 @@ const Title = styled.div`
 `
 
 const Vertical = styled.div`
-  margin-bottom: 10px;
+  padding-bottom: ${space(1)}px;
 `

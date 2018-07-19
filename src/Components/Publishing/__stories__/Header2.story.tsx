@@ -1,14 +1,16 @@
 import { storiesOf } from "@storybook/react"
+import { extend } from "lodash"
 import React from "react"
-import { EditableChild } from "../Fixtures/Helpers"
-import { Header } from "../Header2/Header"
-
 import {
   ClassicArticle,
   ClassicArticleManyAuthors,
+  FeatureArticle,
   MissingVerticalStandardArticle,
   StandardArticle,
 } from "../Fixtures/Articles"
+import { HeroSections } from "../Fixtures/Components"
+import { EditableChild } from "../Fixtures/Helpers"
+import { Header } from "../Header2/Header"
 
 storiesOf("Publishing/Header2/Classic", module)
   .add("Classic", () => {
@@ -40,6 +42,32 @@ storiesOf("Publishing/Header2/Standard", module)
       <Header
         article={MissingVerticalStandardArticle}
         date="2015-06-19T13:09:18.567Z"
+        editTitle={EditableChild("Title")}
+        editVertical={EditableChild("Vertical")}
+      />
+    )
+  })
+
+storiesOf("Publishing/Header2/Feature/Text", module)
+  .add("Image", () => {
+    const article = extend({}, FeatureArticle, {
+      hero_section: HeroSections[0],
+    })
+    return <Header article={article} />
+  })
+  .add("Video", () => {
+    return <Header article={FeatureArticle} />
+  })
+  .add("Editable", () => {
+    const article = extend({}, FeatureArticle, {
+      vertical: null,
+    })
+    return (
+      <Header
+        article={article}
+        date="2015-06-19T13:09:18.567Z"
+        editDeck={EditableChild("Deck")}
+        editImage={EditableChild("Image")}
         editTitle={EditableChild("Title")}
         editVertical={EditableChild("Vertical")}
       />
