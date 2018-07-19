@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a news date header properly 1`] = `
+exports[`NewsDateDivider renders a news date header properly 1`] = `
 .c1 {
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -42,7 +42,7 @@ exports[`renders a news date header properly 1`] = `
   <div
     className="c1"
   >
-    Jul 19
+    Jul 19, 2018
   </div>
 </div>
 `;

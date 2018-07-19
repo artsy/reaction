@@ -17,6 +17,15 @@ jest.mock("../../../../Utils/track.ts", () => ({
 }))
 
 describe("News Layout", () => {
+  const dateNow = Date.now
+
+  beforeAll(() => {
+    Date.now = () => Date.parse("01 Jan 2009 00:00:00 EST")
+  })
+
+  afterAll(() => {
+    Date.now = dateNow
+  })
   it("renders the news layout properly", () => {
     const series = renderer
       .create(<NewsLayout article={NewsArticle} />)
