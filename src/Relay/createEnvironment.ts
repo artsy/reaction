@@ -38,6 +38,14 @@ export function createEnvironment(config: Config = {}) {
     "User-Agent": "Reaction",
   }
 
+  let timeZone
+  try {
+    timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
+    headers["X-TIMEZONE"] = timeZone
+  } catch (error) {
+    console.warn("Browser does not support i18n API, not setting TZ header.")
+  }
+
   const url = isServer
     ? process.env.METAPHYSICS_ENDPOINT
     : sd.METAPHYSICS_ENDPOINT
