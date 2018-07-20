@@ -1,8 +1,8 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
 import { RelatedCanvas, RelatedPanel } from "../Fixtures/Components"
-import { RelatedArticlesCanvas } from "../RelatedArticles/RelatedArticlesCanvas"
-import { RelatedArticlesPanel } from "../RelatedArticles/RelatedArticlesPanel"
+import RelatedArticlesCanvas from "../RelatedArticles/RelatedArticlesCanvas"
+import RelatedArticlesPanel from "../RelatedArticles/RelatedArticlesPanel"
 
 storiesOf("Publishing/Related Articles/Canvas", module)
   .add("With vertical", () => {
