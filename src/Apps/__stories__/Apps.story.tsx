@@ -24,5 +24,5 @@ storiesOf("Apps", module)
     )
   })
   .add("Order Page", () => (
-    <StorybooksRouter routes={orderRoutes} initialRoute="/order2/1234" />
+    <StorybooksRouter routes={orderRoutes} initialRoute="/order2/22/shipping" />
   ))

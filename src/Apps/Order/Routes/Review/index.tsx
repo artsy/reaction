@@ -1,27 +1,27 @@
-import { Shipping_order } from "__generated__/Shipping_order.graphql"
+import { Review_order } from "__generated__/Review_order.graphql"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Link } from "Router"
 import { Button } from "Styleguide/Elements/Button"
 import { Spacer } from "Styleguide/Elements/Spacer"
 
-export interface ShippingProps {
-  order: Shipping_order
+export interface ReviewProps {
+  order: Review_order
 }
 
-export class ShippingRoute extends Component<ShippingProps> {
+export class ReviewRoute extends Component<ReviewProps> {
   render() {
     const { order } = this.props
 
     return (
       <React.Fragment>
-        Shipping page
+        Review Page
         <Spacer mb={1} />
         {`Order #${order.id}`}
         <Spacer mb={2} />
-        <Link to={`/order2/${order.id}/payment`}>
+        <Link to={`/order2/${order.id}/submission`}>
           <Button variant="primaryBlack" size="medium" m={0.5}>
-            Go to payment page
+            Go to submission page
           </Button>
         </Link>
       </React.Fragment>
@@ -29,10 +29,10 @@ export class ShippingRoute extends Component<ShippingProps> {
   }
 }
 
-export const ShippingFragmentContainer = createFragmentContainer(
-  ShippingRoute,
+export const ReviewFragmentContainer = createFragmentContainer(
+  ReviewRoute,
   graphql`
-    fragment Shipping_order on Order {
+    fragment Review_order on Order {
       id
     }
   `

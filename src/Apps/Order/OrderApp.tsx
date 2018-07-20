@@ -18,20 +18,12 @@ export const OrderApp: SFC<OrderAppProps> = ({ me, children, order }) => {
     <React.Fragment>
       <Row>
         <Col>
-          <div>This is the Order App!</div>
+          <div>Order App</div>
         </Col>
       </Row>
 
       <Spacer mb={3} />
       {children}
-
-      <Row>
-        <Col>
-          <span id="jumpto-RouteTabs" />
-
-          <Spacer mb={3} />
-        </Col>
-      </Row>
 
       {me && (
         <React.Fragment>
