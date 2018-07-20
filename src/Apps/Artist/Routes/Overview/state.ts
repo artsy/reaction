@@ -19,6 +19,23 @@ export class FilterState extends Container<State> {
     sort: "-partner_updated_at",
   }
 
+  constructor(props: State) {
+    super()
+    if (props) {
+      Object.keys(this.state).forEach(filter => {
+        if (props[filter]) {
+          if (filter === "major_periods") {
+            this.state[filter] = [props[filter]]
+          } else if (filter === "for_sale") {
+            this.state.for_sale = props[filter] ? true : null
+          } else {
+            this.state[filter] = props[filter]
+          }
+        }
+      })
+    }
+  }
+
   setPage(page, mediator) {
     this.setState({ page }, () => {
       mediator.trigger("artist:filter:changed", this.state)
