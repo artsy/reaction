@@ -99,8 +99,14 @@ const FeatureAssetContainer = Col.extend`
   margin: 0 ${space(2)}px;
   padding-left: 0;
   padding-right: 0;
+  img {
+    display: none;
+  }
   ${pMedia.sm`
     height: fit-content;
+    img {
+      display: block;
+    }
   `};
 `
 
@@ -129,6 +135,7 @@ const FeatureSplitHeaderContainer = Row.extend.attrs<{ hasNav?: boolean }>({})`
   margin-left: 0;
   margin-right: 0;
   height: ${props => (props.hasNav ? "100vh" : "calc(100vh - 50px)")};
+  min-height: fit-content;
   justify-content: space-between;
   ${props =>
     !props.hasNav &&

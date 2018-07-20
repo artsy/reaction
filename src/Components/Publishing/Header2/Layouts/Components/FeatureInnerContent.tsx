@@ -47,9 +47,11 @@ export const Title = styled.div`
   letter-spacing: -0.035em;
   ${pMedia.xl`
     ${unica("s80")}
-  `} ${pMedia.md`
+  `};
+  ${pMedia.lg`
     ${unica("s65")}
-  `} ${pMedia.xs`
+  `};
+  ${pMedia.xs`
     ${unica("s45")}
   `};
 `

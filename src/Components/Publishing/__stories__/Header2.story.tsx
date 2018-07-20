@@ -142,6 +142,8 @@ storiesOf("Publishing/Header2/Feature/Split", module)
   .add("Image", () => {
     const article = extend({}, FeatureArticle, {
       hero_section: HeroSections[1],
+      title:
+        "Bodys Isek Kingelez, Maker of Utopian Cities, Finally Gets the Retrospective He Deserves",
     })
     return <Header article={article} />
   })
