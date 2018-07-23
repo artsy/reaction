@@ -6,7 +6,6 @@ export type NavigationTabs_artist = {
     readonly statuses: ({
         readonly shows: boolean | null;
         readonly artists: boolean | null;
-        readonly contemporary: boolean | null;
         readonly articles: boolean | null;
         readonly cv: boolean | null;
         readonly auction_lots: boolean | null;
@@ -55,13 +54,6 @@ const node: ConcreteFragment = {
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "contemporary",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
           "name": "articles",
           "args": null,
           "storageKey": null
@@ -98,5 +90,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'a4c56169f4ee753901b394e67f4de300';
+(node as any).hash = '95e1b703a032fa3383b88b9aac52289f';
 export default node;

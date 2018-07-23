@@ -34,7 +34,7 @@ export const NavigationTabs: React.SFC<Props> = props => {
                 Auction results
               </RouteTab>
             )}
-            {(statuses.artists || statuses.contemporary) && (
+            {statuses.artists && (
               <RouteTab to={route("/related-artists")}>
                 Related artists
               </RouteTab>
@@ -54,7 +54,6 @@ export const NavigationTabsFragmentContainer = createFragmentContainer(
       statuses {
         shows
         artists
-        contemporary
         articles
         cv(minShowCount: 0)
         auction_lots
