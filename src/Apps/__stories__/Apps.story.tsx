@@ -18,11 +18,13 @@ storiesOf("Apps", module)
     return (
       <StorybooksRouter
         routes={artistRoutes}
-        initialRoute="/artist/andy-warhol"
-        initialState={{ mediator: { trigger: x => x } }}
+        initialRoute="/artist2/andy-warhol?medium=photography"
+        initialState={{
+          mediator: { trigger: x => x },
+        }}
       />
     )
   })
   .add("Order Page", () => (
-    <StorybooksRouter routes={orderRoutes} initialRoute="/order2/1234" />
+    <StorybooksRouter routes={orderRoutes} initialRoute="/order2/22/shipping" />
   ))

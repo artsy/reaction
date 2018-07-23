@@ -1,4 +1,4 @@
-import { color, Sans } from "@artsy/palette"
+import { color, Sans, space } from "@artsy/palette"
 import React from "react"
 import styled, { css } from "styled-components"
 import { borders, JustifyContentProps, WidthProps } from "styled-system"
@@ -134,16 +134,20 @@ export const styles = {
     cursor: pointer;
     padding-bottom: 13px;
     margin-bottom: -1px;
-    margin-right: 20px;
+    margin-right: ${space(2)}px;
     white-space: nowrap;
     ${borders};
+
+    &:last-child {
+      padding-right: ${space(4)}px;
+    }
   `,
 
   activeTabContainer: css`
     pointer-events: none;
     padding-bottom: 13px;
     margin-bottom: -1px;
-    margin-right: 20px;
+    margin-right: ${space(2)}px;
     white-space: nowrap;
     border-bottom: 1px solid ${color("black60")};
   `,

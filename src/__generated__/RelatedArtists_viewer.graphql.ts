@@ -20,12 +20,6 @@ const node: ConcreteFragment = {
       "defaultValue": "MAIN"
     },
     {
-      "kind": "LocalArgument",
-      "name": "contemporaryKind",
-      "type": "RelatedArtistsKind",
-      "defaultValue": "CONTEMPORARY"
-    },
-    {
       "kind": "RootArgument",
       "name": "artistID",
       "type": "String!"
@@ -71,5 +65,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '04f247ee2d035355769aa237e147fe3b';
+(node as any).hash = 'fd196510acb3d183e6e2383a7af6cb7f';
 export default node;
