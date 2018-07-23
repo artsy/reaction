@@ -3,8 +3,10 @@ import { get, omit } from "lodash"
 import React from "react"
 import styled from "styled-components"
 import { ResponsiveDeprecated } from "../../../Utils/ResponsiveDeprecated"
+import { track } from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
 import { ArticleProps } from "../Article"
+import { getFullEditorialHref } from "../Constants"
 import { DisplayCanvas } from "../Display/Canvas"
 import { DisplayPanel } from "../Display/DisplayPanel"
 import { Header } from "../Header/Header"
@@ -38,6 +40,25 @@ export class StandardLayout extends React.Component<
   }
 
   removeTruncation = () => {
+    const {
+      article: { layout, slug, title },
+      tracking,
+      infiniteScrollEntrySlug,
+    } = this.props
+
+    tracking.trackEvent({
+      action: "Click read more",
+    })
+
+    // Manually trigger pageview on expand
+    tracking.trackEvent({
+      event: "pageview",
+      path: `/article/${slug}`,
+      referrer: `/article/${infiniteScrollEntrySlug}`,
+      title,
+      url: getFullEditorialHref(layout, slug),
+    })
+
     this.setState({ isTruncated: false })
   }
 
@@ -181,3 +202,5 @@ const FooterContainer = styled.div`
     margin: 0 20px;
   `};
 `
+
+export default track()(StandardLayout)

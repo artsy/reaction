@@ -13,15 +13,6 @@ interface ReadMoreProps {
 }
 
 export class ReadMore extends React.Component<ReadMoreProps> {
-  onClick = () => {
-    const { onClick, tracking } = this.props
-
-    tracking.trackEvent({
-      action: "Clicked read more",
-    })
-    onClick()
-  }
-
   trackImpression = () => {
     const { tracking } = this.props
 
@@ -32,9 +23,11 @@ export class ReadMore extends React.Component<ReadMoreProps> {
   }
 
   render() {
+    const { onClick } = this.props
+
     return (
       <StandardLayoutParent>
-        <ReadMoreContainer onClick={this.onClick}>
+        <ReadMoreContainer onClick={onClick}>
           <ReadMoreButton>Read More</ReadMoreButton>
         </ReadMoreContainer>
         <Waypoint onEnter={once(this.trackImpression)} />
