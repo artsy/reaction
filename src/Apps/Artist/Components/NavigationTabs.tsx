@@ -1,5 +1,5 @@
 import { NavigationTabs_artist } from "__generated__/NavigationTabs_artist.graphql"
-import { Track, track as _track } from "Analytics"
+import { track } from "Analytics"
 import * as Schema from "Analytics/Schema"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -10,17 +10,12 @@ interface Props {
   artist: NavigationTabs_artist
 }
 
-const track: Track<Props> = _track
-
-@track()
+@track({ context_module: "NavigationTabs" })
 export class NavigationTabs extends React.Component<Props> {
   @track((_props, _state, [tab, destination_path]: string[]) => ({
-    action_type: Schema.ActionTypes.Click,
-    action_name: Schema.ActionNames.ArtistTab,
-    context_module: "NavigationTabs",
-    type: "Link",
+    action_type: Schema.ActionType.Click,
+    subject: tab,
     destination_path,
-    tab,
   }))
   handleClick(tab: string, destination_path: string) {
     // no-op

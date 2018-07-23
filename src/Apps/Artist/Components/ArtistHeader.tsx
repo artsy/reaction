@@ -1,9 +1,9 @@
 import { Serif } from "@artsy/palette"
 import { ArtistHeader_artist } from "__generated__/ArtistHeader_artist.graphql"
-import { Track, track as _track } from "Analytics"
+import { track, Track } from "Analytics"
 import * as Schema from "Analytics/Schema"
 import FollowArtistButton from "Components/FollowButton/FollowArtistButton"
-import React, { Component, SFC } from "react"
+import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { AppState } from "Router/state"
 import { Slider } from "Styleguide/Components/Slider"
@@ -24,53 +24,58 @@ interface Props {
 
 type Image = Props["artist"]["carousel"]["images"][0]
 
-const track: Track<Props> = _track
+const carouselSlideTrack: Track<null, null, [Image]> = track
 
-export const ArtistHeader: SFC<Props> = props => {
-  return (
-    <Subscribe to={[AppState]}>
-      {({ state }) => {
-        const {
-          mediator,
-          system: { currentUser },
-        } = state
+@track({ context_module: "ArtistHeader" })
+export class ArtistHeader extends Component<Props> {
+  render() {
+    const props = this.props
+    return (
+      <Subscribe to={[AppState]}>
+        {({ state }) => {
+          const {
+            mediator,
+            system: { currentUser },
+          } = state
 
-        return (
-          <Responsive>
-            {({ xs }) => {
-              if (xs) {
-                return (
-                  <SmallArtistHeader
-                    mediator={mediator}
-                    currentUser={currentUser}
-                    {...props}
-                  />
-                )
-              } else {
-                return (
-                  <LargeArtistHeader
-                    mediator={mediator}
-                    currentUser={currentUser}
-                    {...props}
-                  />
-                )
-              }
-            }}
-          </Responsive>
-        )
-      }}
-    </Subscribe>
-  )
+          return (
+            <Responsive>
+              {({ xs }) => {
+                if (xs) {
+                  return (
+                    <SmallArtistHeader
+                      mediator={mediator}
+                      currentUser={currentUser}
+                      {...props}
+                    />
+                  )
+                } else {
+                  return (
+                    <LargeArtistHeader
+                      mediator={mediator}
+                      currentUser={currentUser}
+                      {...props}
+                    />
+                  )
+                }
+              }}
+            </Responsive>
+          )
+        }}
+      </Subscribe>
+    )
+  }
 }
 
 @track()
 export class LargeArtistHeader extends Component<Props> {
-  @track((_props, _state, [slide]: [Image]) => {
+  @carouselSlideTrack((_props, _state, [slide]) => {
     return {
-      action_type: Schema.ActionTypes.Click,
-      action_name: Schema.ActionNames.ArtistCarousel,
-      type: "thumbnail",
-      context_module: "carousel",
+      action_type: Schema.ActionType.Click,
+      // TODO: Or keep using ‘thumbnail’ as per old Force schema
+      subject: "carouselSlide",
+      // TODO: Are you sure this is no longer needed? Like, do we not need to
+      //       identify the specific slide?
       destination_path: slide.href,
     }
   })
@@ -148,12 +153,13 @@ export class LargeArtistHeader extends Component<Props> {
 
 @track()
 export class SmallArtistHeader extends Component<Props> {
-  @track((_props, _state, [slide]: [Image]) => {
+  @carouselSlideTrack((_props, _state, [slide]) => {
     return {
-      action_type: Schema.ActionTypes.Click,
-      action_name: Schema.ActionNames.ArtistCarousel,
-      type: "thumbnail",
-      context_module: "carousel",
+      action_type: Schema.ActionType.Click,
+      // TODO: Or keep using ‘thumbnail’ as per old Force schema
+      subject: "carouselSlide",
+      // TODO: Are you sure this is no longer needed? Like, do we not need to
+      //       identify the specific slide?
       destination_path: slide.href,
     }
   })

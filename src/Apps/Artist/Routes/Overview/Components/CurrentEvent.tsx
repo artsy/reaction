@@ -1,6 +1,6 @@
 import { Sans, Serif } from "@artsy/palette"
 import { CurrentEvent_artist } from "__generated__/CurrentEvent_artist.graphql"
-import { Track, track as _track } from "Analytics"
+import { track } from "Analytics"
 import * as Schema from "Analytics/Schema"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -26,17 +26,17 @@ export class CurrentEvent extends Component<CurrentEventProps> {
   }
 }
 
-const track: Track<CurrentEventProps> = _track
+// const track: Track<CurrentEventProps> = _track
 
 @track()
 export class LargeCurrentEvent extends Component<CurrentEventProps> {
-  @track(props => ({
-    action_type: Schema.ActionTypes.Click,
-    action_name:
+  @track<CurrentEventProps>(props => ({
+    action_type: Schema.ActionType.Click,
+    subject:
       props.artist.currentEvent.event.__typename === "Sale"
-        ? Schema.ActionNames.InSale
-        : Schema.ActionNames.InShow,
-    type: "Link",
+        ? // TODO: These are not action names!
+          Schema.ActionName.InSale
+        : Schema.ActionName.InShow,
     destination_path: props.artist.currentEvent.href,
   }))
   handleClick() {

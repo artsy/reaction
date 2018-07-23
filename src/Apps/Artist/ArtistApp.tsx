@@ -1,6 +1,6 @@
 import { ArtistApp_artist } from "__generated__/ArtistApp_artist.graphql"
 import { ArtistApp_me } from "__generated__/ArtistApp_me.graphql"
-import { screenTrack } from "Analytics"
+import { track } from "Analytics"
 import * as Schema from "Analytics/Schema"
 import { NavigationTabsFragmentContainer as NavigationTabs } from "Apps/Artist/Components/NavigationTabs"
 import React from "react"
@@ -23,12 +23,11 @@ export interface ArtistAppProps {
   }
 }
 
-// TODO: Do we even really want a ‘page view’ event?
-@screenTrack<ArtistAppProps>(props => ({
-  context_screen: Schema.PageNames.ArtistPage,
-  context_screen_owner_id: props.artist._id,
-  context_screen_owner_slug: props.artist.id,
-  context_screen_owner_type: Schema.OwnerEntityTypes.Artist,
+@track<ArtistAppProps>(props => ({
+  context_page: Schema.PageName.ArtistPage,
+  context_page_owner_id: props.artist._id,
+  context_page_owner_slug: props.artist.id,
+  context_page_owner_type: Schema.OwnerType.Artist,
 }))
 export class ArtistApp extends React.Component<ArtistAppProps> {
   render() {

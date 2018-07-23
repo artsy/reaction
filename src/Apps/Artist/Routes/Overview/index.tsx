@@ -1,6 +1,6 @@
 import { Sans } from "@artsy/palette"
 import { Overview_artist } from "__generated__/Overview_artist.graphql"
-import { Track, track as _track } from "Analytics"
+import { track } from "Analytics"
 import * as Schema from "Analytics/Schema"
 import { ArtworkFilterFragmentContainer as ArtworkFilter } from "Apps/Artist/Routes/Overview/Components/ArtworkFilter"
 import { GenesFragmentContainer as Genes } from "Apps/Artist/Routes/Overview/Components/Genes"
@@ -22,22 +22,16 @@ interface State {
   isReadMoreExpanded: boolean
 }
 
-const track: Track<OverviewRouteProps> = _track
-
-@track({ context_module: "Artist overview" })
+@track({ context_module: "ArtistOverview" })
 class OverviewRoute extends React.Component<OverviewRouteProps, State> {
   state = {
     isReadMoreExpanded: false,
   }
 
-  // FIXME: Something must be wrong with the typings, because if I leave out the
-  //        _state parameter TS selects a different function signature.
-  @track((props, _state) => ({
-    action_type: Schema.ActionTypes.Click,
-    action_name: Schema.ActionNames.ConsignmentInterest,
-    type: "Link",
-    // TODO: This is no longer in the header
-    // context_module: "Artist header",
+  @track<OverviewRouteProps>(props => ({
+    action_type: Schema.ActionType.Click,
+    // TODO: Feel like these should become enums too
+    subject: "Learn more about consignment",
     destination_path: props.artist.href,
   }))
   handleConsignClick() {

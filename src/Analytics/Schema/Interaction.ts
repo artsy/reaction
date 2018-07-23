@@ -27,4 +27,11 @@ export interface Interaction {
    * This is e.g. the label of the UI element.
    */
   subject: string
+
+  /**
+   * In case of a link, the location that it points to.
+   *
+   * NOTE: This is old Force schema.
+   */
+  destination_path?: string
 }
