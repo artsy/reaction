@@ -194,7 +194,6 @@ export const ModalContainer = styled.div.attrs<{
 `
 
 const ModalInner = styled.div`
-  overflow: scroll;
   max-height: calc(100vh - 80px);
   ${media.sm`
     max-height: 100vh;
