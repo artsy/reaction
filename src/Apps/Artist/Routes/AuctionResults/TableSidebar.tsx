@@ -25,71 +25,81 @@ const SORTS = [
   },
 ]
 
-export const TableSidebar = () => {
+interface Props {
+  count: number
+}
+
+export const TableSidebar = (props: Props) => {
+  return (
+    <Responsive>
+      {({ xs }) => {
+        if (xs) return <SmallTableSidebar {...props} />
+        else return <LargeTableSidebar {...props} />
+      }}
+    </Responsive>
+  )
+}
+
+const LargeTableSidebar = (props: Props) => {
   return (
     <Subscribe to={[AuctionResultsState]}>
-      {filters => {
+      {(filters: AuctionResultsState) => {
         return (
-          <Responsive>
-            {({ xs }) => {
-              if (xs) return <SmallTableSidebar filters={filters} />
-              else return <LargeTableSidebar filters={filters} />
-            }}
-          </Responsive>
+          <React.Fragment>
+            <Col sm={2} pr={2}>
+              <Row>
+                <Col>{renderCount(props.count)}</Col>
+              </Row>
+
+              <Box pt={0.5}>
+                <Separator />
+              </Box>
+
+              <Row>
+                <Col>
+                  <LargeSelect
+                    options={SORTS}
+                    selected={filters.state.sort}
+                    onSelect={filters.setSort}
+                  />
+                </Col>
+              </Row>
+            </Col>
+          </React.Fragment>
         )
       }}
     </Subscribe>
   )
 }
 
-const LargeTableSidebar = props => {
+const SmallTableSidebar = (props: Props) => {
   return (
-    <React.Fragment>
-      <Col sm={2} pr={2}>
-        <Row>
+    <Subscribe to={[AuctionResultsState]}>
+      {(filters: AuctionResultsState) => {
+        return (
           <Col>
-            <Sans size="2" weight="medium">
-              939 Results
-            </Sans>
-          </Col>
-        </Row>
+            <Flex flexDirection="column" alignItems="center">
+              <Box mb={2}>{renderCount(props.count)}</Box>
 
-        <Box pt={0.5}>
-          <Separator />
-        </Box>
+              <LargeSelect
+                options={SORTS}
+                selected={filters.state.sort}
+                onSelect={filters.setSort}
+              />
 
-        <Row>
-          <Col>
-            <LargeSelect
-              options={SORTS}
-              selected={props.filters.state.sort}
-              onSelect={(props.filters as any).setSort}
-            />
+              <Spacer mb={2} />
+            </Flex>
           </Col>
-        </Row>
-      </Col>
-    </React.Fragment>
+        )
+      }}
+    </Subscribe>
   )
 }
 
-const SmallTableSidebar = props => {
+const renderCount = (count: number) => {
   return (
-    <Col>
-      <Flex flexDirection="column" alignItems="center">
-        <Box mb={2}>
-          <Sans size="2" weight="medium">
-            939 Results
-          </Sans>
-        </Box>
-
-        <LargeSelect
-          options={SORTS}
-          selected={props.filters.state.sort}
-          onSelect={(props.filters as any).setSort}
-        />
-
-        <Spacer mb={2} />
-      </Flex>
-    </Col>
+    <Sans size="2" weight="medium">
+      {`${count.toLocaleString()} Results`}
+    </Sans>
   )
 }
