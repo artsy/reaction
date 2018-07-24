@@ -19,7 +19,7 @@ export interface ContextProps {
   /**
    * The currently signed-in user.
    *
-   * Unless explicitely set to `null`, this will default to use the `USER_ID`
+   * Unless explicitly set to `null`, this will default to use the `USER_ID`
    * and `USER_ACCESS_TOKEN` environment variables if available.
    */
   currentUser?: User | null

@@ -26,7 +26,7 @@
     "clean": "rm -rf dist",
     "compile": "babel src --out-dir dist -s --source-map --extensions '.js,.jsx,.ts,.tsx' --ignore src/**/__tests__,src/**/__stories__",
     "deploy-storybook-pr": "yarn relay && NODE_ENV=production build-storybook -s ./public -o storybook_build ",
-    "deploy-storybook-review": "chromatic test --script-name=start-storybook --storybook-port=9001",
+    "deploy-storybook-review": "USER_ACCESS_TOKEN=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6ImFydHN5IiwiZXhwIjoxNTMyOTg1NzU5LCJpYXQiOjE1MzIzODA5NTksImF1ZCI6IjRlMzZlZmE0ZGI0ZTMyMDAwMTAwMDM1OSIsImlzcyI6IkdyYXZpdHkiLCJqdGkiOiI1YjU2NDcxZmUwNWZjYzA5MjQ3OTgzNWUifQ.4Ay0uqAfeJLzjl7guJoOnlAaYZ3JeHnH_a2L5fQxVL8 USER_ID=5b577654cca24f372d9fe3a2 chromatic test --script-name=start-storybook --storybook-port=9001",
     "emit-types": "tsc --declaration --emitDeclarationOnly --listEmittedFiles --jsx react --outDir dist",
     "lint": "tslint -c tslint.json --project tsconfig.json",
     "prepare": "patch-package",
