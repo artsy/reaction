@@ -1,6 +1,6 @@
 import { space } from "@artsy/palette"
 import { garamond } from "Assets/Fonts"
-import React from "react"
+import React, { ReactElement } from "react"
 import styled from "styled-components"
 import { pMedia } from "../../../Helpers"
 import { ClassicByline } from "../../Byline/ClassicByline"
@@ -9,8 +9,8 @@ import { ArticleData } from "../../Typings"
 interface ClassicHeaderProps {
   article?: ArticleData
   date?: string
-  editLeadParagraph?: any
-  editTitle?: any
+  editLeadParagraph?: ReactElement<any>
+  editTitle?: ReactElement<any>
 }
 
 export const ClassicHeader: React.SFC<ClassicHeaderProps> = props => {

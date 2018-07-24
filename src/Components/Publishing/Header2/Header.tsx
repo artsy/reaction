@@ -1,4 +1,4 @@
-import React from "react"
+import React, { ReactElement } from "react"
 import { ArticleData } from "../Typings"
 import { ClassicHeader } from "./Layouts/ClassicHeader"
 import { FeatureHeader } from "./Layouts/FeatureHeader"
@@ -7,11 +7,11 @@ import { StandardHeader } from "./Layouts/StandardHeader"
 interface HeaderProps {
   article: ArticleData
   date?: string
-  editDeck?: any
-  editImage?: any
-  editLeadParagraph?: any
-  editTitle?: any
-  editVertical?: any
+  editDeck?: ReactElement<any>
+  editImage?: ReactElement<any>
+  editLeadParagraph?: ReactElement<any>
+  editTitle?: ReactElement<any>
+  editVertical?: ReactElement<any>
 }
 
 export const Header: React.SFC<HeaderProps> = props => {

@@ -9,8 +9,8 @@ import {
   VIDEO_RATIO,
 } from "Components/Publishing/Sections/Video"
 import React from "react"
+import track from "react-tracking"
 import styled from "styled-components"
-import { track } from "../../../../../Utils/track"
 import { pMedia } from "../../../../Helpers"
 import { EditImage, FeatureHeaderProps } from "../FeatureHeader"
 import {
@@ -24,18 +24,24 @@ interface State {
   isPlaying: boolean
 }
 
+@track()
 export class FeatureBasicHeader extends React.Component<
-  FeatureHeaderProps & { tracking?: any },
+  FeatureHeaderProps,
   State
 > {
-  trackVideoPlay = () => {
-    const { tracking } = this.props
-    tracking.trackEvent({
-      action: "Click",
-      label: "Track Basic feature video click",
-      impression_type: "sa_basic_feature_video",
-      context_type: "article_fixed",
-    })
+  constructor(props: FeatureHeaderProps) {
+    super(props)
+    this.trackVideoPlay = this.trackVideoPlay.bind(this)
+  }
+
+  @track(props => ({
+    action: "Click",
+    label: "Basic feature video click",
+    impression_type: "sa_basic_feature_video",
+    context_type: "article_fixed",
+  }))
+  trackVideoPlay() {
+    // noop
   }
 
   render() {
@@ -143,5 +149,3 @@ const BasicHeaderContainer = styled.div.attrs<{ hasVideo: boolean }>({})`
     `}
   }
 `
-
-export default track()(FeatureBasicHeader)

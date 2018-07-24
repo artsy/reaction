@@ -1,17 +1,18 @@
-import React from "react"
+import React, { ReactElement } from "react"
 import styled from "styled-components"
-import FeatureBasicHeader from "./Components/FeatureBasicHeader"
+import { ArticleData } from "../../Typings"
+import { FeatureBasicHeader } from "./Components/FeatureBasicHeader"
 import { FeatureFullscreenHeader } from "./Components/FeatureFullscreenHeader"
 import { FeatureSplitHeader } from "./Components/FeatureSplitHeader"
 import { FeatureTextHeader } from "./Components/FeatureTextHeader"
 
 export interface FeatureHeaderProps {
-  article?: any
+  article?: ArticleData
   date?: string
-  editDeck?: any
-  editImage?: any
-  editTitle?: any
-  editVertical?: any
+  editDeck?: ReactElement<any>
+  editImage?: ReactElement<any>
+  editTitle?: ReactElement<any>
+  editVertical?: ReactElement<any>
 }
 
 export const FeatureHeader: React.SFC<FeatureHeaderProps> = props => {

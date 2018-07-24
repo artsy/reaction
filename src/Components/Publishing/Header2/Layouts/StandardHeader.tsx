@@ -1,6 +1,6 @@
 import { space } from "@artsy/palette"
 import { garamond } from "Assets/Fonts"
-import React from "react"
+import React, { ReactElement } from "react"
 import styled from "styled-components"
 import { pMedia } from "../../../Helpers"
 import { Byline } from "../../Byline/Byline"
@@ -10,8 +10,8 @@ import { ArticleData } from "../../Typings"
 interface StandardHeaderProps {
   article?: ArticleData
   date?: string
-  editTitle?: any
-  editVertical?: any
+  editTitle?: ReactElement<any>
+  editVertical?: ReactElement<any>
 }
 
 export const StandardHeader: React.SFC<StandardHeaderProps> = props => {
