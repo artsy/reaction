@@ -37,6 +37,11 @@ export interface LightboxProps {
       }
     }
   }
+  /**
+   * Id of the element to render the lightbox in
+   * Defaults to lightbox-container
+   */
+  lightboxId?: string
 }
 
 export interface LightboxState {
@@ -51,6 +56,9 @@ export interface LightboxState {
 }
 
 export class Lightbox extends React.Component<LightboxProps, LightboxState> {
+  static defaultProps = {
+    lightboxId: "lightbox-container",
+  }
   state = {
     element: null,
     viewer: null,
@@ -267,7 +275,7 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
 
   componentDidMount() {
     this.setState({
-      element: document.getElementById("lightbox-container"),
+      element: document.getElementById(this.props.lightboxId),
     })
   }
 
