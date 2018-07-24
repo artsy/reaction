@@ -2,6 +2,7 @@ import React from "react"
 import track from "react-tracking"
 import Events from "../../Utils/Events"
 import ArticleWithFullScreen from "./Layouts/ArticleWithFullScreen"
+import { ClassicLayout } from "./Layouts/ClassicLayout"
 import { NewsLayout } from "./Layouts/NewsLayout"
 import { SeriesLayout } from "./Layouts/SeriesLayout"
 import { VideoLayout } from "./Layouts/VideoLayout"
@@ -53,6 +54,9 @@ export class Article extends React.Component<ArticleProps> {
     const { article } = this.props
 
     switch (article.layout) {
+      case "classic": {
+        return <ClassicLayout {...this.props} />
+      }
       case "series": {
         return <SeriesLayout {...this.props} />
       }
