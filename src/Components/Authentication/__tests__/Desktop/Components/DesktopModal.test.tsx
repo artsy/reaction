@@ -1,11 +1,10 @@
 import { mount } from "enzyme"
 import React from "react"
+import Events from "Utils/Events"
 import Icon from "../../../../Icon"
 import { DesktopModal } from "../../../Desktop/Components/DesktopModal"
 
-jest.mock("Utils/track.ts", () => ({
-  track: () => jest.fn(c => c),
-}))
+jest.mock("Utils/Events")
 
 describe("DesktopModal", () => {
   const getWrapper = (props: any = {}) =>

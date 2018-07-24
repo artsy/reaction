@@ -55,17 +55,18 @@ xdescribe("PreloadLink", () => {
     global.console.error = jest.fn()
     const onToggleLoading = jest.fn()
     const wrapper = getWrapper({ onToggleLoading })
-    const instance = wrapper.find("PreloadLink").instance()
+    // TODO: Appropriately type
+    const instance: any = wrapper.find("PreloadLink").instance()
     expect(instance.state.isLoading).toEqual(true)
     expect(onToggleLoading).toBeCalledWith(true)
     setTimeout(() => {
       expect(onToggleLoading).toBeCalledWith(false)
-      expect(
-        wrapper
-          .find("PreloadLink")
-          .first()
-          .instance().state.isLoading
-      ).toEqual(false)
+      // TODO: Appropriately type
+      const newInstance: any = wrapper
+        .find("PreloadLink")
+        .first()
+        .instance()
+      expect(newInstance.state.isLoading).toEqual(false)
       done()
     })
   })

@@ -2,21 +2,17 @@ import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
+import track from "react-tracking"
 import * as FullscreenHelpers from "../FullscreenHelpers"
 import { VideoPlayer } from "../VideoPlayer"
-import { track } from "../../../../../Utils/track"
-
-jest.mock("../../../../../Utils/track.ts", () => ({
-  track: jest.fn(),
-}))
 
 jest.useFakeTimers()
 
 describe("VideoPlayer", () => {
   const trackEvent = jest.fn()
 
-  const getWrapper = props => {
-    return mount(
+  const getWrapper = () => {
+    return mount<VideoPlayer>(
       <VideoPlayer
         url="http://files.artsy.net/videos/placeholder.mp4"
         tracking={{

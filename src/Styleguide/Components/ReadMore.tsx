@@ -1,4 +1,6 @@
 import { Sans } from "@artsy/palette"
+import { track } from "Analytics"
+import * as Schema from "Analytics/Schema"
 import { Truncator } from "Components/Truncator"
 import React from "react"
 import styled from "styled-components"
@@ -14,6 +16,7 @@ export interface ReadMoreState {
   isExpanded: boolean
 }
 
+@track()
 export class ReadMore extends React.Component<ReadMoreProps, ReadMoreState> {
   state = {
     isExpanded: false,
@@ -32,7 +35,11 @@ export class ReadMore extends React.Component<ReadMoreProps, ReadMoreState> {
     }
   }
 
-  expandText = () => {
+  @track({
+    action_type: Schema.ActionType.Click,
+    subject: "Read more",
+  })
+  expandText() {
     this.setState(
       {
         isExpanded: true,
@@ -48,7 +55,7 @@ export class ReadMore extends React.Component<ReadMoreProps, ReadMoreState> {
     const { maxLineCount } = this.props
 
     return (
-      <Container onClick={this.expandText} isExpanded>
+      <Container onClick={this.expandText.bind(this)} isExpanded>
         {isExpanded ? (
           this.props.children
         ) : (
