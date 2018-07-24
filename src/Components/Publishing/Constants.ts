@@ -51,7 +51,7 @@ export const getFullArtsyHref = slug => `https://www.artsy.net/${slug}`
  * ByLine helpers
  * TODO: Move this into some kind of utils folder
  */
-export const getAuthorByline = authors => {
+export const getAuthorByline = (authors, isEditoral = true) => {
   const authorCount = Number(authors && authors.length)
 
   if (authorCount === 1) {
@@ -72,7 +72,7 @@ export const getAuthorByline = authors => {
     return names
 
     // No Author
-  } else {
+  } else if (isEditoral) {
     return "Artsy Editors"
   }
 }
