@@ -139,7 +139,6 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
     >
       <div
         className="c3 c4"
-        color={undefined}
         fontFamily={
           Object {
             "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -427,7 +426,6 @@ exports[`Standard Header Snapshots renders properly 1`] = `
     >
       <div
         className="c3 c4"
-        color={undefined}
         fontFamily={
           Object {
             "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",

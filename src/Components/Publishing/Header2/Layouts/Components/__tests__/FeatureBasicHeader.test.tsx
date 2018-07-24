@@ -8,8 +8,11 @@ import { mount } from "enzyme"
 import "jest-styled-components"
 import { cloneDeep } from "lodash"
 import React from "react"
+import { mockTracking } from "../../../../../../Analytics"
 import { FeatureBasicHeader, VideoContainer } from "../FeatureBasicHeader"
 import { FeatureInnerContent } from "../FeatureInnerContent"
+
+jest.unmock("react-tracking")
 
 describe("FeatureBasicHeader", () => {
   const getWrapper = props => {
@@ -38,18 +41,19 @@ describe("FeatureBasicHeader", () => {
   })
 
   it("Tracks video clicks", () => {
-    props.article = FeatureBasicVideoArticle
-    const component = getWrapper(props)
+    const { Component, dispatch } = mockTracking(FeatureBasicHeader)
+    const component = mount(<Component article={FeatureBasicVideoArticle} />)
     component
       .find(VideoContainer)
       .at(0)
       .simulate("click")
-    const trackingData = props.tracking.trackEvent.mock.calls[0][0]
 
-    expect(trackingData.action).toBe("Click")
-    expect(trackingData.label).toBe("Track Basic feature video click")
-    expect(trackingData.impression_type).toBe("sa_basic_feature_video")
-    expect(trackingData.context_type).toBe("article_fixed")
+    expect(dispatch).toBeCalledWith({
+      action: "Click",
+      label: "Basic feature video click",
+      impression_type: "sa_basic_feature_video",
+      context_type: "article_fixed",
+    })
   })
 
   it("Renders editImage", () => {
