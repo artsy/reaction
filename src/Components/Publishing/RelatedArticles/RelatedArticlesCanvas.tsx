@@ -1,4 +1,5 @@
 import { Sans } from "@artsy/palette"
+import * as Schema from "Analytics/Schema"
 import { map, once } from "lodash"
 import React from "react"
 import track from "react-tracking"
@@ -25,16 +26,16 @@ interface ScrollingContainerProps {
   isMobile?: boolean
 }
 
+@track()
 export class RelatedArticlesCanvas extends React.Component<
   RelatedArticlesCanvasProps
 > {
-  trackRelatedImpression = () => {
-    const { tracking } = this.props
-
-    tracking.trackEvent({
-      action: "article_impression",
-      impression_type: "Further reading",
-    })
+  @track(() => ({
+    action: Schema.ActionName.ArticleImpression,
+    subject: "Further reading",
+  }))
+  trackRelatedImpression() {
+    // noop
   }
 
   render() {
@@ -43,7 +44,7 @@ export class RelatedArticlesCanvas extends React.Component<
     return (
       <RelatedArticlesContainer>
         {getTitle(vertical)}
-        <Waypoint onEnter={once(this.trackRelatedImpression)} />
+        <Waypoint onEnter={once(this.trackRelatedImpression.bind(this))} />
         <ArticlesWrapper isMobile={isMobile}>
           {map(articles, (article, i) => {
             return (
@@ -120,5 +121,3 @@ const ArticlesWrapper = styled.div.attrs<ScrollingContainerProps>({})`
   }
   ${props => props.isMobile && "-webkit-overflow-scrolling: touch;"};
 `
-
-export default track()(RelatedArticlesCanvas)

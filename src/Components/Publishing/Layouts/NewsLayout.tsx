@@ -8,7 +8,8 @@ import { pMedia } from "../../Helpers"
 import { DisplayCanvas, DisplayContainer } from "../Display/Canvas"
 import { NewsHeadline } from "../News/NewsHeadline"
 import { NewsSections } from "../News/NewsSections"
-import RelatedArticlesCanvas, {
+import {
+  RelatedArticlesCanvas,
   RelatedArticlesCanvasProps,
 } from "../RelatedArticles/RelatedArticlesCanvas"
 import { ArticleData } from "../Typings"

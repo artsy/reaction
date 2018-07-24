@@ -10,7 +10,7 @@ import { DisplayPanel } from "../Display/DisplayPanel"
 import { Header } from "../Header/Header"
 import { ReadMore } from "../ReadMore/ReadMoreButton"
 import { ReadMoreWrapper } from "../ReadMore/ReadMoreWrapper"
-import RelatedArticlesCanvas from "../RelatedArticles/RelatedArticlesCanvas"
+import { RelatedArticlesCanvas } from "../RelatedArticles/RelatedArticlesCanvas"
 import { Sections } from "../Sections/Sections"
 import { Sidebar } from "./Components/Sidebar"
 

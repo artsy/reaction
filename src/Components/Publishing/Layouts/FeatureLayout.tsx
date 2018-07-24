@@ -6,7 +6,7 @@ import {
   ArticleCardsBlock,
   ArticleCardsContainer,
 } from "../RelatedArticles/ArticleCards/Block"
-import RelatedArticlesCanvas from "../RelatedArticles/RelatedArticlesCanvas"
+import { RelatedArticlesCanvas } from "../RelatedArticles/RelatedArticlesCanvas"
 import { Sections } from "../Sections/Sections"
 import { ArticleData } from "../Typings"
 

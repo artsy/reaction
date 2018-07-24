@@ -1,4 +1,5 @@
 import { Sans } from "@artsy/palette"
+import * as Schema from "Analytics/Schema"
 import { garamond } from "Assets/Fonts"
 import { once } from "lodash"
 import React from "react"
@@ -10,7 +11,6 @@ import { getArticleHref } from "../Constants"
 
 interface RelatedArticlesPanelProps extends React.HTMLProps<HTMLDivElement> {
   label?: string
-  tracking?: any
   articles: Array<{
     thumbnail_title: string
     thumbnail_image: string
@@ -19,34 +19,35 @@ interface RelatedArticlesPanelProps extends React.HTMLProps<HTMLDivElement> {
   }>
 }
 
+@track()
 export class RelatedArticlesPanel extends React.Component<
   RelatedArticlesPanelProps
 > {
   static defaultProps = {
     label: "Related Stories",
   }
-  onClick = article => {
-    const { tracking } = this.props
-    const href = getArticleHref(article.slug)
 
-    tracking.trackEvent({
-      action: "Clicked article impression",
-      destination_path: href,
-      entity_id: article.id,
-      entity_type: "article",
-      flow: "article",
-      impression_type: "Related article",
-      type: "thumbnail",
-    })
+  @track(props => ({
+    action: Schema.ActionType.Click,
+    action_name: Schema.ActionName.ArticleImpression,
+    subject: "Related article",
+    destination_path: getArticleHref(props.article.slug),
+    owner_id: props.article.id,
+    owner_type: Schema.OwnerType.Article,
+    // TODO: Check where type & flow fit into new schema
+    // flow: "article",
+    // type: "thumbnail"
+  }))
+  onClick(e) {
+    // noop
   }
 
-  trackRelatedImpression = () => {
-    const { tracking } = this.props
-
-    tracking.trackEvent({
-      action: "article_impression",
-      impression_type: "Related articles",
-    })
+  @track(() => ({
+    action: Schema.ActionName.ArticleImpression,
+    subject: "Related articles",
+  }))
+  trackRelatedImpression() {
+    // noop
   }
 
   render() {
@@ -57,7 +58,7 @@ export class RelatedArticlesPanel extends React.Component<
         <Label size="3t" weight="medium">
           {label}
         </Label>
-        <Waypoint onEnter={once(this.trackRelatedImpression)} />
+        <Waypoint onEnter={once(this.trackRelatedImpression.bind(this))} />
         <Collection>
           {articles.map((article, i) => {
             const href = getArticleHref(article.slug)
@@ -70,7 +71,7 @@ export class RelatedArticlesPanel extends React.Component<
               <ArticleLink
                 href={href}
                 key={`relatedArticles-${i}`}
-                onClick={() => this.onClick(article)}
+                onClick={this.onClick.bind(this)}
               >
                 <ArticleImage src={articleImageSrc} />
                 <ArticleTitle>{article.thumbnail_title}</ArticleTitle>
@@ -117,5 +118,3 @@ const ArticleTitle = styled.span`
   ${garamond("s17")};
   color: black;
 `
-
-export default track()(RelatedArticlesPanel)
