@@ -107,4 +107,80 @@ export interface Track<PP = {}, SS = null, AA extends Array<any> = Array<any>> {
   ): Decorator
 }
 
+/**
+ * This is the regular `track` function, but pre-typed using our schema.
+ *
+ * For its normal usage see the docs https://github.com/NYTimes/react-tracking
+ *
+ * One important gotcha that is easily overlooked is that you always need to
+ * ‘enable’ tracking on a component before you can use it inside a component.
+ *
+ * @example
+ *
+ *     ```ts
+ *     import React from "react"
+ *     import { track } from "Analytics"
+ *
+ *     // This is what enables tracking for further use inside the component.
+ *     @track()
+ *     class Artist extends React.Component {
+ *       // This only works with the above line that enables tracking.
+ *       @track({ … })
+ *       handleClick() { … }
+ *     }
+ */
 export const track: Track = _track
+
+/**
+ * ## Writing tests for your tracked code
+ *
+ * By default we mock `react-tracking`, so it's not possible to test the code
+ * easily.
+ *
+ * A good pattern for testing analytics code is to have a completely separate
+ * file for the tests. For example: `__tests__/DateSource-analytics-tests.tsx`.
+ * Jest has each test file run in a unique environment, so in that file we can
+ * unmock `react-tracking`.
+ *
+ * Here's a full example:
+ *
+ * @example
+ *
+ *     ```ts
+ *     import { mount } from "enzyme"
+ *     import React from "react"
+ *     import { mockTracking } from "../../../../Analytics"
+ *     import { DateSource } from "../DateSource"
+ *
+ *     jest.unmock("react-tracking")
+ *
+ *     const NewsArticle = { news_source: { url: "http://nytimes.com" }}
+ *
+ *     describe("DateSource analytics", () => {
+ *       it("tracks news source link", () => {
+ *         const { Component, dispatch } = mockTracking(DateSource)
+ *         const component = mount(<Component article={NewsArticle} />)
+ *         component
+ *           .find("a")
+ *           .at(0)
+ *           .simulate("click")
+ *         expect(dispatch).toBeCalledWith({
+ *           action: "Click",
+ *           type: "external link",
+ *           label: "news source",
+ *           destination_path: "http://nytimes.com",
+ *         })
+ *       })
+ *     })
+ *     ```
+ */
+export function mockTracking<P>(
+  Subject: React.ComponentType<P>
+): {
+  Component: React.ComponentType<P>
+  dispatch: jest.Mock<(trackedData: Trackables) => void>
+} {
+  const dispatch = jest.fn() as jest.Mock<() => void>
+  const Component = _track({}, { dispatch })(Subject)
+  return { Component, dispatch }
+}
