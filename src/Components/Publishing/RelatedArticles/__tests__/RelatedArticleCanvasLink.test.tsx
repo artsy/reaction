@@ -1,13 +1,15 @@
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
-import renderer from "react-test-renderer"
+import { mockTracking } from "../../../../Analytics"
 import { RelatedCanvas } from "../../Fixtures/Components"
-import { RelatedArticleFigure } from "../RelatedArticleFigure"
+import { RelatedArticleCanvasLink } from "../RelatedArticleCanvasLink"
 
-describe("RelatedArticlesCanvas", () => {
+jest.unmock("react-tracking")
+
+describe("RelatedArticleCanvasLink", () => {
   const getWrapper = props => {
-    return mount(<RelatedArticleFigure {...props} />)
+    return mount(<RelatedArticleCanvasLink {...props} />)
   }
 
   let props
@@ -32,18 +34,18 @@ describe("RelatedArticlesCanvas", () => {
   })
 
   it("Tracks link clicks", () => {
-    const component = getWrapper(props)
+    const { Component, dispatch } = mockTracking(RelatedArticleCanvasLink)
+    const component = mount(<Component article={RelatedCanvas[0]} />)
     component.simulate("click")
-    const trackCall = props.tracking.trackEvent.mock.calls[0][0]
 
-    expect(trackCall.action).toBe("Clicked article impression")
-    expect(trackCall.destination_path).toBe(
-      "/article/artsy-editorial-15-top-art-schools-united-states"
-    )
-    expect(trackCall.entity_id).toBe("52d99185cd530e581300006c")
-    expect(trackCall.entity_type).toBe("article")
-    expect(trackCall.flow).toBe("article")
-    expect(trackCall.impression_type).toBe("Further reading")
-    expect(trackCall.type).toBe("thumbnail")
+    expect(dispatch).toBeCalledWith({
+      action: "Click",
+      action_name: "articleImpression",
+      subject: "Further reading",
+      destination_path:
+        "/article/artsy-editorial-15-top-art-schools-united-states",
+      flow: "article",
+      type: "thumbnail",
+    })
   })
 })

@@ -59,6 +59,14 @@ export enum ActionType {
    * TODO: Check if this should be camelCase to conform to other namings
    */
   ArticleImpression = "article_impression",
+
+  /**
+   * A placeholder for an article pageview, not sent directly to segment
+   * this is intercepted in Force to trigger a page event
+   *
+   * TODO: Investigate sending page events from Reaction
+   */
+  ArticlePageview = "articlePageview",
 }
 
 /**

@@ -2,45 +2,48 @@ import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
 import Waypoint from "react-waypoint"
-import { ReadMore, ReadMoreContainer } from "../ReadMoreButton"
+import { mockTracking } from "../../../../Analytics"
+import { ReadMoreButton, ReadMoreContainer } from "../ReadMoreButton"
 
-describe("RelatedArticlesPanel", () => {
-  const getWrapper = props => {
-    return mount(<ReadMore {...props} />)
-  }
+jest.unmock("react-tracking")
 
+describe("ReadMoreButton", () => {
   let props
   beforeEach(() => {
     props = {
-      tracking: {
-        trackEvent: jest.fn(),
-      },
       onClick: jest.fn(),
+      referrer: "/article/this-cool-content",
     }
   })
 
   it("Calls onClick and tracking event on click", () => {
-    const component = getWrapper(props)
+    const { Component, dispatch } = mockTracking(ReadMoreButton)
+    const component = mount(<Component {...props} />)
+
     component
       .find(ReadMoreContainer)
       .at(0)
       .simulate("click")
 
-    expect(props.onClick).toHaveBeenCalled()
-    expect(props.tracking.trackEvent).toBeCalledWith({
-      action: "Clicked read more",
+    expect(dispatch).toBeCalledWith({
+      action_type: "articlePageview",
+      subject: "Read more",
+      referrer: "/article/this-cool-content",
     })
   })
 
   it("Calls a tracking impression", () => {
-    const component = getWrapper(props)
+    const { Component, dispatch } = mockTracking(ReadMoreButton)
+    const component = mount(<Component {...props} />)
+
     component
       .find(Waypoint)
       .getElement()
       .props.onEnter()
-    const trackCall = props.tracking.trackEvent.mock.calls[0][0]
 
-    expect(trackCall.action).toBe("article_impression")
-    expect(trackCall.impression_type).toBe("Read more button")
+    expect(dispatch).toBeCalledWith({
+      action: "article_impression",
+      subject: "Read more",
+    })
   })
 })

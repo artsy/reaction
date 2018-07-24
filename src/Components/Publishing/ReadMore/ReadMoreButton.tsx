@@ -10,10 +10,11 @@ import { StandardLayoutParent } from "../Layouts/StandardLayout"
 
 interface ReadMoreProps {
   onClick: () => void
+  referrer: string
 }
 
 @track()
-export class ReadMore extends React.Component<ReadMoreProps> {
+export class ReadMoreButton extends React.Component<ReadMoreProps> {
   @track({
     action: Schema.ActionType.ArticleImpression,
     subject: "Read more",
@@ -22,10 +23,11 @@ export class ReadMore extends React.Component<ReadMoreProps> {
     // noop
   }
 
-  @track({
-    action_type: Schema.ActionType.Click,
+  @track(props => ({
+    action_type: Schema.ActionType.ArticlePageview,
     subject: "Read more",
-  })
+    referrer: props.referrer,
+  }))
   onClick() {
     this.props.onClick()
   }
@@ -34,7 +36,7 @@ export class ReadMore extends React.Component<ReadMoreProps> {
     return (
       <StandardLayoutParent>
         <ReadMoreContainer onClick={this.onClick.bind(this)}>
-          <ReadMoreButton>Read More</ReadMoreButton>
+          <Button>Read More</Button>
         </ReadMoreContainer>
         <Waypoint onEnter={once(this.trackImpression.bind(this))} />
       </StandardLayoutParent>
@@ -42,7 +44,7 @@ export class ReadMore extends React.Component<ReadMoreProps> {
   }
 }
 
-const ReadMoreButton = styled.div`
+const Button = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;

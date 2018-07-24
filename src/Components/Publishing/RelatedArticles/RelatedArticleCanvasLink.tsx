@@ -15,25 +15,23 @@ export interface RelatedArticleFigureData {
   id: string
 }
 
-export interface RelatedArticleFigureProps
+export interface RelatedArticleCanvasLinkProps
   extends React.HTMLProps<HTMLDivElement> {
   article: RelatedArticleFigureData
 }
 
 @track()
-export class RelatedArticleFigure extends React.Component<
-  RelatedArticleFigureProps
+export class RelatedArticleCanvasLink extends React.Component<
+  RelatedArticleCanvasLinkProps
 > {
   @track(props => ({
     action: Schema.ActionType.Click,
     action_name: Schema.ActionName.ArticleImpression,
     subject: "Further reading",
     destination_path: getArticleHref(props.article.slug),
-    owner_id: props.article.id,
-    owner_type: Schema.OwnerType.Article,
     // TODO: Check where type & flow fit into new schema
-    // flow: "article",
-    // type: "thumbnail"
+    flow: "article",
+    type: "thumbnail",
   }))
   onClick() {
     // noop

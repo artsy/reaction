@@ -8,22 +8,11 @@ exports[`RelatedArticlesPanel renders the related articles panel 1`] = `
   line-height: 20px;
 }
 
-.c0 {
-  max-width: 360px;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c1 {
-  margin-bottom: 10px;
+.c6 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 18px;
+  line-height: 22px;
+  color: #000;
 }
 
 .c4 {
@@ -40,22 +29,28 @@ exports[`RelatedArticlesPanel renders the related articles panel 1`] = `
   margin-bottom: 20px;
 }
 
-.c4:last-child {
-  margin-bottom: 0;
-}
-
 .c5 {
   min-width: 80px;
   height: 55px;
   margin-right: 10px;
 }
 
-.c6 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 17px;
-  line-height: 1.1em;
-  -webkit-font-smoothing: antialiased;
-  color: black;
+.c0 {
+  max-width: 360px;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c1 {
+  margin-bottom: 10px;
 }
 
 <div
@@ -92,11 +87,14 @@ exports[`RelatedArticlesPanel renders the related articles panel 1`] = `
         className="c5"
         src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F4Tq-iYkN8dOpshFoKRXyYw%252Fcustom-Custom_Size___PoetterHall_Exterior%2Bcopy.jpg&width=160&height=110&quality=95"
       />
-      <span
+      <div
         className="c6"
+        color="#000"
+        fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
+        fontSize={18}
       >
         The 15 Top Art Schools in the United States
-      </span>
+      </div>
     </a>
     <a
       className="c4"
@@ -107,11 +105,14 @@ exports[`RelatedArticlesPanel renders the related articles panel 1`] = `
         className="c5"
         src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F6IqxBTQCkExip2auQ7ZWCA%252FDEMAR-2011.0006-B.jpg&width=160&height=110&quality=95"
       />
-      <span
+      <div
         className="c6"
+        color="#000"
+        fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
+        fontSize={18}
       >
         Four Years after Walter De Maria’s Death, His Final Work Is Complete
-      </span>
+      </div>
     </a>
     <a
       className="c4"
@@ -122,11 +123,14 @@ exports[`RelatedArticlesPanel renders the related articles panel 1`] = `
         className="c5"
         src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FlEcCm2XbfZ7bPAVgLlM21w%252Flarger-21.jpg&width=160&height=110&quality=95"
       />
-      <span
+      <div
         className="c6"
+        color="#000"
+        fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
+        fontSize={18}
       >
         French Art History in a Nutshell
-      </span>
+      </div>
     </a>
   </div>
 </div>

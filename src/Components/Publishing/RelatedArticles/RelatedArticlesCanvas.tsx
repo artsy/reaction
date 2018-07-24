@@ -7,9 +7,9 @@ import Waypoint from "react-waypoint"
 import styled from "styled-components"
 import { pMedia } from "../../Helpers"
 import {
-  RelatedArticleFigure,
+  RelatedArticleCanvasLink,
   RelatedArticleFigureData,
-} from "./RelatedArticleFigure"
+} from "./RelatedArticleCanvasLink"
 
 export interface RelatedArticlesCanvasProps
   extends React.HTMLProps<HTMLDivElement> {
@@ -48,7 +48,7 @@ export class RelatedArticlesCanvas extends React.Component<
         <ArticlesWrapper isMobile={isMobile}>
           {map(articles, (article, i) => {
             return (
-              <RelatedArticleFigure
+              <RelatedArticleCanvasLink
                 article={article}
                 key={`related-article-figure-${i}`}
               />

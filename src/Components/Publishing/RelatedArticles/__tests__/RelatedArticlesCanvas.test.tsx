@@ -3,8 +3,12 @@ import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
 import Waypoint from "react-waypoint"
+import { mockTracking } from "../../../../Analytics"
 import { RelatedCanvas } from "../../Fixtures/Components"
+import { RelatedArticleCanvasLink } from "../RelatedArticleCanvasLink"
 import { RelatedArticlesCanvas } from "../RelatedArticlesCanvas"
+
+jest.unmock("react-tracking")
 
 describe("RelatedArticlesCanvas", () => {
   const getWrapper = props => {
@@ -16,9 +20,6 @@ describe("RelatedArticlesCanvas", () => {
     props = {
       articles: RelatedCanvas,
       vertical: { name: "Art Market" },
-      tracking: {
-        trackEvent: jest.fn(),
-      },
     }
   })
 
@@ -40,15 +41,22 @@ describe("RelatedArticlesCanvas", () => {
     expect(component.html()).toMatch("More from Artsy Editorial")
   })
 
-  it("Calls a tracking impression", () => {
+  it("renders article links", () => {
     const component = getWrapper(props)
+    expect(component.find(RelatedArticleCanvasLink)).toHaveLength(4)
+  })
+
+  it("Calls a tracking impression", () => {
+    const { Component, dispatch } = mockTracking(RelatedArticlesCanvas)
+    const component = mount(<Component articles={RelatedCanvas} />)
     component
       .find(Waypoint)
       .getElement()
       .props.onEnter()
-    const trackCall = props.tracking.trackEvent.mock.calls[0][0]
 
-    expect(trackCall.action).toBe("article_impression")
-    expect(trackCall.impression_type).toBe("Further reading")
+    expect(dispatch).toBeCalledWith({
+      action: "articleImpression",
+      subject: "Further reading",
+    })
   })
 })

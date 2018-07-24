@@ -8,7 +8,7 @@ import { ArticleProps } from "../Article"
 import { DisplayCanvas } from "../Display/Canvas"
 import { DisplayPanel } from "../Display/DisplayPanel"
 import { Header } from "../Header/Header"
-import { ReadMore } from "../ReadMore/ReadMoreButton"
+import { ReadMoreButton } from "../ReadMore/ReadMoreButton"
 import { ReadMoreWrapper } from "../ReadMore/ReadMoreWrapper"
 import { RelatedArticlesCanvas } from "../RelatedArticles/RelatedArticlesCanvas"
 import { Sections } from "../Sections/Sections"
@@ -45,6 +45,7 @@ export class StandardLayout extends React.Component<
       article,
       display,
       emailSignupUrl,
+      infiniteScrollEntrySlug,
       relatedArticlesForCanvas,
       relatedArticlesForPanel,
       renderTime,
@@ -114,10 +115,12 @@ export class StandardLayout extends React.Component<
                 )}
               </ReadMoreWrapper>
 
-              {/*
-                Read More Button
-              */}
-              {isTruncated && <ReadMore onClick={this.removeTruncation} />}
+              {isTruncated && (
+                <ReadMoreButton
+                  onClick={this.removeTruncation}
+                  referrer={`/article/${infiniteScrollEntrySlug}`}
+                />
+              )}
 
               {/*
                 Footer
