@@ -637,7 +637,6 @@ exports[`News Layout renders the news layout on mobile 1`] = `
         >
           <div
             className="c7"
-            width={undefined}
           >
             <div
               className="article-image"
@@ -1549,7 +1548,6 @@ exports[`News Layout renders the news layout properly 1`] = `
         >
           <div
             className="c7"
-            width={undefined}
           >
             <div
               className="article-image"

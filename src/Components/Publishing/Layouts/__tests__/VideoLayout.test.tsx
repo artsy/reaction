@@ -1,6 +1,6 @@
-import { clone } from "lodash"
 import { mount } from "enzyme"
 import "jest-styled-components"
+import { clone } from "lodash"
 import React from "react"
 import renderer from "react-test-renderer"
 import {
@@ -11,14 +11,10 @@ import {
 import { Nav } from "../../Nav/Nav"
 import { ArticleCard } from "../../RelatedArticles/ArticleCards/ArticleCard"
 import { SeriesAbout } from "../../Series/SeriesAbout"
+import { ArticleData } from "../../Typings"
 import { VideoPlayer } from "../../Video/Player/VideoPlayer"
 import { VideoAbout } from "../../Video/VideoAbout"
 import { VideoLayout } from "../VideoLayout"
-import { ArticleData } from "../../Typings"
-
-jest.mock("../../../../Utils/track.ts", () => ({
-  track: () => jest.fn(c => c)
-}))
 
 describe("Video Layout", () => {
   const VideoSeriesArticle = clone({

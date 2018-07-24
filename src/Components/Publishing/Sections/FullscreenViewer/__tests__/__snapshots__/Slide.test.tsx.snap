@@ -248,7 +248,6 @@ exports[`renders properly 1`] = `
       >
         <div
           className="fullscreen-viewer__caption-toggle c5"
-          onClick={undefined}
         >
           <span>
             View Caption
@@ -256,7 +255,6 @@ exports[`renders properly 1`] = `
         </div>
         <div
           className="c6"
-          open={undefined}
         >
           <div>
             <div
