@@ -27,6 +27,8 @@ import {
   TopProps,
   width,
   WidthProps,
+  zIndex,
+  ZIndexProps,
 } from "styled-system"
 import { Flex, FlexProps } from "./Flex"
 
@@ -66,11 +68,12 @@ export interface BoxProps
     HeightProps,
     ColorProps,
     TextAlignProps,
+    PositionProps,
     TopProps,
-    RightProps,
-    LeftProps,
     BottomProps,
-    PositionProps {}
+    LeftProps,
+    RightProps,
+    ZIndexProps {}
 export const Box = styled.div.attrs<BoxProps>({})`
   ${space};
   ${display};
@@ -84,4 +87,5 @@ export const Box = styled.div.attrs<BoxProps>({})`
   ${styledColor};
   ${textAlign};
   ${maxWidth};
+  ${zIndex};
 `
