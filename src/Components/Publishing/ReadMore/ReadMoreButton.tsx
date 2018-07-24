@@ -1,3 +1,4 @@
+import * as Schema from "Analytics/Schema"
 import { unica } from "Assets/Fonts"
 import { once } from "lodash"
 import React from "react"
@@ -9,28 +10,33 @@ import { StandardLayoutParent } from "../Layouts/StandardLayout"
 
 interface ReadMoreProps {
   onClick: () => void
-  tracking?: any
 }
 
+@track()
 export class ReadMore extends React.Component<ReadMoreProps> {
-  trackImpression = () => {
-    const { tracking } = this.props
+  @track({
+    action: Schema.ActionType.ArticleImpression,
+    subject: "Read more",
+  })
+  trackImpression() {
+    // noop
+  }
 
-    tracking.trackEvent({
-      action: "article_impression",
-      impression_type: "Read more button",
-    })
+  @track({
+    action_type: Schema.ActionType.Click,
+    subject: "Read more",
+  })
+  onClick() {
+    this.props.onClick()
   }
 
   render() {
-    const { onClick } = this.props
-
     return (
       <StandardLayoutParent>
-        <ReadMoreContainer onClick={onClick}>
+        <ReadMoreContainer onClick={this.onClick.bind(this)}>
           <ReadMoreButton>Read More</ReadMoreButton>
         </ReadMoreContainer>
-        <Waypoint onEnter={once(this.trackImpression)} />
+        <Waypoint onEnter={once(this.trackImpression.bind(this))} />
       </StandardLayoutParent>
     )
   }
@@ -74,5 +80,3 @@ export const ReadMoreContainer = styled.div`
     padding: 20px;
   `};
 `
-
-export default track()(ReadMore)

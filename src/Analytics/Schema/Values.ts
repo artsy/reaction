@@ -2,6 +2,7 @@
  * Pages that the user can view.
  */
 export enum PageName {
+  ArticlePage = "Article",
   ArtistPage = "Artist",
 }
 
@@ -14,6 +15,7 @@ export enum PageName {
  * @see {PageView.owner}
  */
 export enum OwnerType {
+  Article = "Article",
   Artist = "Artist",
   Artwork = "Artwork",
   Conversation = "Conversation",
@@ -26,7 +28,7 @@ export enum OwnerType {
 /**
  * User actions, which can be active or passive ones.
  *
- * TODO: Distinguishin between Click and Tap is a little confusing. Do we always
+ * TODO: Distinguishing between Click and Tap is a little confusing. Do we always
  *       use Click on Force or do we use Tap when browsing from a mobile device?
  */
 export enum ActionType {
@@ -50,6 +52,13 @@ export enum ActionType {
    * continuous hover mode.
    */
   Hover = "Hover",
+
+  /**
+   * A UI element was rendered in the viewport
+   *
+   * TODO: Check if this should be camelCase to conform to other namings
+   */
+  ArticleImpression = "article_impression",
 }
 
 /**
