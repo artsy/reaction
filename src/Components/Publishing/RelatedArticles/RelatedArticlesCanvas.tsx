@@ -5,7 +5,8 @@ import track from "react-tracking"
 import Waypoint from "react-waypoint"
 import styled from "styled-components"
 import { pMedia } from "../../Helpers"
-import RelatedArticleFigure, {
+import {
+  RelatedArticleFigure,
   RelatedArticleFigureData,
 } from "./RelatedArticleFigure"
 

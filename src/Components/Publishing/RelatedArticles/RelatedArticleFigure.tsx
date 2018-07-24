@@ -1,4 +1,5 @@
 import { Serif } from "@artsy/palette"
+import * as Schema from "Analytics/Schema"
 import React from "react"
 import track from "react-tracking"
 import styled from "styled-components"
@@ -14,28 +15,28 @@ export interface RelatedArticleFigureData {
   id: string
 }
 
-interface RelatedArticleFigureProps extends React.HTMLProps<HTMLDivElement> {
+export interface RelatedArticleFigureProps
+  extends React.HTMLProps<HTMLDivElement> {
   article: RelatedArticleFigureData
-  tracking?: any
 }
 
+@track()
 export class RelatedArticleFigure extends React.Component<
-  RelatedArticleFigureProps,
-  null
+  RelatedArticleFigureProps
 > {
-  onClick = () => {
-    const { article, tracking } = this.props
-    const href = getArticleHref(article.slug)
-
-    tracking.trackEvent({
-      action: "Clicked article impression",
-      destination_path: href,
-      entity_id: article.id,
-      entity_type: "article",
-      flow: "article",
-      impression_type: "Further reading",
-      type: "thumbnail",
-    })
+  @track(props => ({
+    action: Schema.ActionType.Click,
+    action_name: Schema.ActionName.ArticleImpression,
+    subject: "Further reading",
+    destination_path: getArticleHref(props.article.slug),
+    owner_id: props.article.id,
+    owner_type: Schema.OwnerType.Article,
+    // TODO: Check where type & flow fit into new schema
+    // flow: "article",
+    // type: "thumbnail"
+  }))
+  onClick() {
+    // noop
   }
 
   render() {
@@ -45,7 +46,7 @@ export class RelatedArticleFigure extends React.Component<
     const bylineArticle = { ...article, id: article.slug }
 
     return (
-      <ArticleFigure href={href} onClick={this.onClick}>
+      <ArticleFigure href={href} onClick={this.onClick.bind(this)}>
         <ImageTitle>
           <BlockImage src={imageSrc} alt={article.thumbnail_title} />
           <Serif size="3t">{article.thumbnail_title}</Serif>
@@ -84,5 +85,3 @@ const BlockImage = styled.img`
     height: 150px;
   `};
 `
-
-export default track()(RelatedArticleFigure)

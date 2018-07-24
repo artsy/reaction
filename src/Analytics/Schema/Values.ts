@@ -66,6 +66,13 @@ export enum ActionType {
  */
 export enum ActionName {
   /**
+   * Article Page
+   *
+   * TODO: Confirm ArticleImpression as replacement for "clicked article impression"
+   */
+  ArticleImpression = "articleImpression",
+
+  /**
    * Artist Page
    */
   ArtistFollow = "artistFollow",
