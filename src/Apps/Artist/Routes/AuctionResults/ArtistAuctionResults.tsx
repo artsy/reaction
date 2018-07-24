@@ -103,13 +103,14 @@ class AuctionResultsContainer extends Component<
 
   render() {
     const auctionResultsLength = this.props.artist.auctionResults.edges.length
+    const { totalCount } = this.props.artist.auctionResults
     return (
       <Subscribe to={[AuctionResultsState]}>
         {({ state }: AuctionResultsState) => {
           return (
             <React.Fragment>
               <Row>
-                <TableSidebar />
+                <TableSidebar count={totalCount} />
 
                 <Col sm={10}>
                   <Row>
@@ -201,6 +202,7 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
           pageCursors {
             ...Pagination_pageCursors
           }
+          totalCount
           edges {
             node {
               ...ArtistAuctionResultItem_auctionResult

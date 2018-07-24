@@ -102,7 +102,6 @@ exports[`Artwork renders correctly 1`] = `
         <strong>
           <a
             className="c5"
-            href={undefined}
             target="_self"
           >
             Mikael Olson
@@ -128,7 +127,6 @@ exports[`Artwork renders correctly 1`] = `
       >
         <a
           className="c5"
-          href={undefined}
           target="_self"
         >
           Gallery 1261

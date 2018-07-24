@@ -10,10 +10,6 @@ import {
 import { ArticleCard } from "../ArticleCard"
 import { ArticleCards } from "../ArticleCards"
 
-jest.mock("../../../../../Utils/track.ts", () => ({
-  track: jest.fn(),
-}))
-
 describe("ArticleCard", () => {
   it("renders properly", () => {
     const component = renderer

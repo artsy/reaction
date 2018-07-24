@@ -1,9 +1,8 @@
 import { Sans } from "@artsy/palette"
+import { SansProps } from "@artsy/palette/dist/elements/Typography"
 import Spinner from "Components/Spinner"
-import { pick } from "lodash/fp"
 import React, { Component, ReactNode } from "react"
 import styled, { css } from "styled-components"
-
 import {
   BorderProps,
   borderRadius,
@@ -47,12 +46,12 @@ export const Button = styled(
       variant: ButtonVariant.default,
     }
 
-    getSize() {
+    getSize(): { height: string; size: "2" | "3t"; px: number } {
       const { size } = this.props
 
       switch (size) {
         case ButtonSize.small:
-          return { height: "26px", size: 2, px: 1 }
+          return { height: "26px", size: "2", px: 1 }
         case ButtonSize.medium:
           return { height: "41px", size: "3t", px: 2 }
         case ButtonSize.large:
@@ -170,15 +169,22 @@ export interface ButtonBaseProps
   variantStyles?: any // FIXME
 }
 
-export class ButtonBase extends Component<ButtonBaseProps> {
+export class ButtonBase extends Component<ButtonBaseProps & SansProps> {
   static defaultProps = {
     border: 1,
     borderRadius: 3,
   }
 
   render() {
-    const { children, loading, disabled, ...rest } = this.props
-    const textProps = pick(["color", "size", "weight"], rest)
+    const {
+      children,
+      loading,
+      disabled,
+      color,
+      size,
+      weight,
+      ...rest
+    } = this.props
     const loadingClass = loading ? "loading" : ""
     const disabledClass = disabled ? "disabled" : ""
 
@@ -186,7 +192,7 @@ export class ButtonBase extends Component<ButtonBaseProps> {
       <Container {...rest} className={[loadingClass, disabledClass].join(" ")}>
         {loading && <Spinner spinnerSize={this.props.buttonSize} />}
 
-        <Sans weight="medium" {...textProps} pt="1px">
+        <Sans pt="1px" weight={weight || "medium"} color={color} size={size}>
           {children}
         </Sans>
       </Container>

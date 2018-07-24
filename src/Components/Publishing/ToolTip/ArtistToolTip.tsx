@@ -3,10 +3,10 @@ import { map } from "lodash"
 import PropTypes from "prop-types"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import track from "react-tracking"
 import styled from "styled-components"
 import { ArtistToolTip_artist } from "../../../__generated__/ArtistToolTip_artist.graphql"
 import fillwidthDimensions from "../../../Utils/fillwidth"
-import { track } from "../../../Utils/track"
 import FollowArtistButton from "../../FollowButton/FollowArtistButton"
 import { FollowTrackingData } from "../../FollowButton/Typings"
 import { ToolTipDescription } from "./Components/Description"
@@ -158,7 +158,7 @@ const Images = styled.a`
   }
 `
 
-export const ArtistTooltipContainer = track()(
+export const ArtistTooltipContainer = track({})(
   createFragmentContainer(
     ArtistToolTip,
     graphql`

@@ -23,19 +23,17 @@ export const Byline: React.SFC<BylineProps> = props => {
     layout,
     size,
   } = props
-  const textColor = layout === "fullscreen" ? "white" : color
 
   return (
-    <BylineContainer className="Byline" color={textColor}>
-      <Author authors={authors} color={textColor} layout={layout} size={size} />
-
+    <BylineContainer className="Byline" color={color}>
+      <Author authors={authors} color={color} layout={layout} size={size} />
       <Date date={date || published_at} layout={layout} size={size} />
 
       {layout !== "condensed" && (
         <Share
           url={getArticleFullHref(slug)}
           title={social_title || thumbnail_title}
-          color={textColor}
+          color={color}
         />
       )}
     </BylineContainer>

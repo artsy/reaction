@@ -1,8 +1,8 @@
 import { ModalOptions } from "Components/Authentication/Types"
 import Modal, { ModalProps } from "Components/Modal/Modal"
 import React, { Component } from "react"
+import track from "react-tracking"
 import Events from "Utils/Events"
-import { track } from "Utils/track"
 
 export interface DesktopModalProps extends ModalProps {
   blurContainerSelector?: string

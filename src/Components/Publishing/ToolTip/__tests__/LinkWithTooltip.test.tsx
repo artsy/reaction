@@ -14,10 +14,6 @@ import {
 } from "../LinkWithTooltip"
 import { ToolTip } from "../ToolTip"
 
-jest.mock("../../../../Utils/track.ts", () => ({
-  track: () => jest.fn(c => c),
-}))
-
 describe("LinkWithTooltip", () => {
   const getWrapper = (context, props) => {
     const { activeToolTip, tooltipsData, onTriggerToolTip } = context

@@ -1,8 +1,8 @@
 import React from "react"
 import { Redirect, Route } from "react-router"
 
+import track from "react-tracking"
 import Events from "../../Utils/Events"
-import { track } from "../../Utils/track"
 import { ProgressIndicator } from "../ProgressIndicator"
 
 import Artists from "./Steps/Artists"
@@ -72,7 +72,8 @@ export class Wizard extends React.Component<Props, State> {
             <CollectorIntent
               {...props}
               onNextButtonPressed={(increaseBy = 1) =>
-                this.onNextButtonPressed(increaseBy, props.history)}
+                this.onNextButtonPressed(increaseBy, props.history)
+              }
             />
           )}
         />
@@ -82,7 +83,8 @@ export class Wizard extends React.Component<Props, State> {
             <Artists
               {...props}
               onNextButtonPressed={(increaseBy = 1) =>
-                this.onNextButtonPressed(increaseBy, props.history)}
+                this.onNextButtonPressed(increaseBy, props.history)
+              }
             />
           )}
         />
@@ -92,7 +94,8 @@ export class Wizard extends React.Component<Props, State> {
             <Genes
               {...props}
               onNextButtonPressed={(increaseBy = 1) =>
-                this.onNextButtonPressed(increaseBy, props.history)}
+                this.onNextButtonPressed(increaseBy, props.history)
+              }
             />
           )}
         />
@@ -104,7 +107,9 @@ export class Wizard extends React.Component<Props, State> {
         />
 
         {new RegExp(
-          `^/personalize(?!(/${CollectorIntentComponent.slug}|/${Artists.slug}|/${Genes.slug}|/${BudgetComponent.slug})).*$`
+          `^/personalize(?!(/${CollectorIntentComponent.slug}|/${
+            Artists.slug
+          }|/${Genes.slug}|/${BudgetComponent.slug})).*$`
         ).exec(location.pathname) && (
           <Redirect to={`/personalize/${CollectorIntentComponent.slug}`} />
         )}

@@ -32,10 +32,6 @@ export const RelatedArtistsRouteFragmentContainer = createFragmentContainer(
     fragment RelatedArtists_viewer on Viewer
       @argumentDefinitions(
         mainKind: { type: "RelatedArtistsKind", defaultValue: "MAIN" }
-        contemporaryKind: {
-          type: "RelatedArtistsKind"
-          defaultValue: "CONTEMPORARY"
-        }
       ) {
       mainArtists: artist(id: $artistID) {
         ...RelatedArtistsList_artist @arguments(kind: $mainKind)

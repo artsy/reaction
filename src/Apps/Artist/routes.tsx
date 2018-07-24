@@ -1,6 +1,8 @@
+import { FilterState } from "Apps/Artist/Routes/Overview/state"
 import React from "react"
 import { graphql } from "react-relay"
-import { ArtistApp } from "./ArtistApp"
+import { Provider } from "unstated"
+import { ArtistAppFragmentContainer as ArtistApp } from "./ArtistApp"
 import { ArticlesRouteFragmentContainer as ArticlesRoute } from "./Routes/Articles"
 import { AuctionResultsRouteFragmentContainer as AuctionResultsRoute } from "./Routes/AuctionResults"
 import { CVRouteFragmentContainer as CVRoute } from "./Routes/CV"
@@ -35,11 +37,10 @@ export const routes = [
     query: graphql`
       query routes_ArtistTopLevelQuery($artistID: String!) {
         artist(id: $artistID) {
-          ...ArtistHeader_artist
-          ...NavigationTabs_artist
+          ...ArtistApp_artist
         }
         me {
-          ...RecentlyViewed_me
+          ...ArtistApp_me
         }
       }
     `,
@@ -47,8 +48,22 @@ export const routes = [
       {
         path: "/",
         Component: OverviewRoute,
+        render: ({ props, Component }) => {
+          if (!props) {
+            return null
+          }
+
+          return (
+            <Provider inject={[new FilterState(props.location.query)]}>
+              <Component artist={props.artist} />
+            </Provider>
+          )
+        },
         prepareVariables: (params, props) => {
-          return { ...props.location.query, ...params }
+          // FIXME: The initial render includes `location` in props, but subsequent
+          // renders (such as tabbing back to this route in your browser) will not.
+          const initialFilterState = props.location ? props.location.query : {}
+          return { ...initialFilterState, ...params }
         },
         query: graphql`
           query routes_OverviewQueryRendererQuery(

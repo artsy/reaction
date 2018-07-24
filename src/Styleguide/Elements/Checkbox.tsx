@@ -21,11 +21,7 @@ export interface CheckboxProps {
    * Used to force the checkbox into the visual hover state. Useful for testing.
    */
   hover?: boolean
-  onSelect?: any
-}
-
-export interface CheckboxState {
-  selected: boolean
+  onSelect?: (selected: boolean) => void
 }
 
 export interface CheckboxToggleProps
@@ -34,31 +30,7 @@ export interface CheckboxToggleProps
     SizeProps,
     SpaceProps {}
 
-export class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
-  state = {
-    selected: false,
-  }
-
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      selected: props.selected || this.state.selected,
-    }
-  }
-
-  toggleSelected = () => {
-    const selected = !this.state.selected
-
-    this.setState({
-      selected,
-    })
-
-    if (this.props.onSelect) {
-      this.props.onSelect(selected)
-    }
-  }
-
+export class Checkbox extends React.Component<CheckboxProps> {
   labelColor = () => {
     const { disabled, error } = this.props
     if (disabled) return { color: color("black10") }
@@ -76,14 +48,13 @@ export class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
   }
 
   render() {
-    const { selected } = this.state
-    const { children, error, disabled, hover } = this.props
+    const { selected, children, error, disabled, hover } = this.props
 
     return (
       <Container
         className={hover && "hover"}
         my={0.5}
-        onClick={() => this.toggleSelected()}
+        onClick={() => this.props.onSelect && this.props.onSelect(!selected)}
         selected={selected}
         hover={hover}
         disabled={disabled}

@@ -2,10 +2,10 @@ import { Sans } from "@artsy/palette"
 import { garamond } from "Assets/Fonts"
 import { once } from "lodash"
 import React from "react"
+import track from "react-tracking"
 import Waypoint from "react-waypoint"
 import styled from "styled-components"
 import { crop } from "../../../Utils/resizer"
-import { track } from "../../../Utils/track"
 import { getArticleHref } from "../Constants"
 
 interface RelatedArticlesPanelProps extends React.HTMLProps<HTMLDivElement> {

@@ -122,7 +122,6 @@ exports[`renders properly 1`] = `
       <span>
         <a
           href="https://artsy.net/abigail"
-          title={undefined}
         >
           Abigail Cain
         </a>
@@ -158,7 +157,6 @@ exports[`renders properly 1`] = `
       <span>
         <a
           href="https://artsy.net/molly"
-          title={undefined}
         >
           Molly Gottschalk
         </a>
@@ -190,7 +188,6 @@ exports[`renders properly 1`] = `
       <span>
         <a
           href="https://artsy.net/molly"
-          title={undefined}
         >
           Halley Johnson
         </a>

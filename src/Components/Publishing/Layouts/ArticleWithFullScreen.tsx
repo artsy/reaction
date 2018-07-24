@@ -1,7 +1,7 @@
 import { cloneDeep, extend, includes, map } from "lodash"
 import React from "react"
+import track from "react-tracking"
 import styled from "styled-components"
-import track from "../../../Utils/track"
 import { ArticleProps } from "../Article"
 import { FullscreenViewer } from "../Sections/FullscreenViewer/FullscreenViewer"
 import { withFullScreen } from "../Sections/FullscreenViewer/withFullScreen"

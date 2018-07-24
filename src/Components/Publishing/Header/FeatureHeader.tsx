@@ -1,10 +1,10 @@
 import { Sans } from "@artsy/palette"
 import { unica } from "Assets/Fonts"
 import React from "react"
+import track from "react-tracking"
 import styled from "styled-components"
 import { resize } from "../../../Utils/resizer"
 import { ResponsiveDeprecated } from "../../../Utils/ResponsiveDeprecated"
-import { track } from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
 import { Byline } from "../Byline/Byline"
 import { PartnerInline } from "../Partner/PartnerInline"
@@ -199,6 +199,7 @@ class FeatureHeaderComponent extends React.Component<FeatureHeaderProps, any> {
                       article={article}
                       layout={type}
                       date={date && date}
+                      color={type === "fullscreen" ? "white" : undefined}
                     />
                   </SubHeader>
                 </HeaderText>

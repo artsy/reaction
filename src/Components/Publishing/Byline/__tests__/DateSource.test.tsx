@@ -1,15 +1,13 @@
 import { mount } from "enzyme"
 import "jest-styled-components"
-import React from "react"
 import { cloneDeep, extend } from "lodash"
+import React from "react"
+import { mockTracking } from "../../../../Analytics"
 import { NewsArticle } from "../../Fixtures/Articles"
 import { EditableChild } from "../../Fixtures/Helpers"
 import { DateSource } from "../DateSource"
-import { track } from "../../../../Utils/track"
 
-jest.mock("../../../../Utils/track.ts", () => ({
-  track: jest.fn(),
-}))
+jest.unmock("react-tracking")
 
 describe("DateSource", () => {
   it("Renders children if present", () => {
@@ -29,10 +27,12 @@ describe("DateSource", () => {
   })
 
   it("Renders a source with title only", () => {
-    const article = extend(cloneDeep(NewsArticle), { news_source: { title: "The New York Times" } })
+    const article = extend(cloneDeep(NewsArticle), {
+      news_source: { title: "The New York Times" },
+    })
     const component = mount(<DateSource article={article} />)
 
-    expect(component.find('a').length).toBe(0)
+    expect(component.find("a").length).toBe(0)
     expect(component.text()).toContain("via The New York Times")
   })
 
@@ -45,25 +45,18 @@ describe("DateSource", () => {
 
   describe("Analytics", () => {
     it("tracks news source link", () => {
-      const component = mount(<DateSource article={NewsArticle} />)
+      const { Component, dispatch } = mockTracking(DateSource)
+      const component = mount(<Component article={NewsArticle} />)
       component
         .find("a")
         .at(0)
         .simulate("click")
-      expect(
-        track.mock.calls[0][0]({
-          article: {
-            news_source: { url: "http://artsy.net" },
-          },
-        })
-      ).toEqual(
-        expect.objectContaining({
-          action: "Click",
-          type: "external link",
-          label: "news source",
-          destination_path: "http://artsy.net",
-        })
-      )
+      expect(dispatch).toBeCalledWith({
+        action: "Click",
+        type: "external link",
+        label: "news source",
+        destination_path: "http://nytimes.com",
+      })
     })
   })
 })

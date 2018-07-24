@@ -1,7 +1,9 @@
 import { Serif } from "@artsy/palette"
 import { ArtistHeader_artist } from "__generated__/ArtistHeader_artist.graphql"
+import { track, Track } from "Analytics"
+import * as Schema from "Analytics/Schema"
 import FollowArtistButton from "Components/FollowButton/FollowArtistButton"
-import React, { SFC } from "react"
+import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { AppState } from "Router/state"
 import { Slider } from "Styleguide/Components/Slider"
@@ -20,176 +22,220 @@ interface Props {
   }
 }
 
-export const ArtistHeader: SFC<Props> = props => {
-  return (
-    <Subscribe to={[AppState]}>
-      {({ state }) => {
-        const {
-          mediator,
-          system: { currentUser },
-        } = state
+type Image = Props["artist"]["carousel"]["images"][0]
 
-        return (
-          <Responsive>
-            {({ xs }) => {
-              if (xs) {
-                return (
-                  <SmallArtistHeader
-                    mediator={mediator}
-                    currentUser={currentUser}
-                    {...props}
-                  />
-                )
-              } else {
-                return (
-                  <LargeArtistHeader
-                    mediator={mediator}
-                    currentUser={currentUser}
-                    {...props}
-                  />
-                )
-              }
-            }}
-          </Responsive>
-        )
-      }}
-    </Subscribe>
-  )
-}
+const carouselSlideTrack: Track<null, null, [Image]> = track
 
-export const LargeArtistHeader: SFC<Props> = props => {
-  const {
-    artist: { carousel },
-    currentUser,
-  } = props
+@track({ context_module: "ArtistHeader" })
+export class ArtistHeader extends Component<Props> {
+  render() {
+    const props = this.props
+    return (
+      <Subscribe to={[AppState]}>
+        {({ state }) => {
+          const {
+            mediator,
+            system: { currentUser },
+          } = state
 
-  return (
-    <Box width="100%">
-      <Slider
-        height={200}
-        data={carousel.images as any}
-        render={slide => {
           return (
-            <a href={slide.href}>
-              <Image
-                px={5}
-                src={slide.resized.url}
-                width={slide.resized.width}
-                height={slide.resized.height}
-              />
-            </a>
+            <Responsive>
+              {({ xs }) => {
+                if (xs) {
+                  return (
+                    <SmallArtistHeader
+                      mediator={mediator}
+                      currentUser={currentUser}
+                      {...props}
+                    />
+                  )
+                } else {
+                  return (
+                    <LargeArtistHeader
+                      mediator={mediator}
+                      currentUser={currentUser}
+                      {...props}
+                    />
+                  )
+                }
+              }}
+            </Responsive>
           )
         }}
-      />
-      <Spacer my={2} />
+      </Subscribe>
+    )
+  }
+}
 
-      <Flex justifyContent="space-between">
-        <Box>
-          <Serif size="10">{props.artist.name}</Serif>
-          <Flex>
-            <Serif size="3">
-              {props.artist.nationality && `${props.artist.nationality}, `}
-              {props.artist.years}
-            </Serif>
-            <Spacer mr={2} />
-            {props.artist.counts.follows > 50 && (
+@track()
+export class LargeArtistHeader extends Component<Props> {
+  @carouselSlideTrack((_props, _state, [slide]) => {
+    return {
+      action_type: Schema.ActionType.Click,
+      // TODO: Or keep using ‘thumbnail’ as per old Force schema
+      subject: "carouselSlide",
+      // TODO: Are you sure this is no longer needed? Like, do we not need to
+      //       identify the specific slide?
+      destination_path: slide.href,
+    }
+  })
+  onClickSlide(slide) {
+    // no-op
+  }
+
+  render() {
+    const props = this.props
+    const {
+      artist: { carousel },
+      currentUser,
+    } = props
+
+    return (
+      <Box width="100%">
+        <Slider
+          height={200}
+          data={carousel.images as any}
+          render={(slide: Image) => {
+            return (
+              <a href={slide.href} onClick={() => this.onClickSlide(slide)}>
+                <Image
+                  px={5}
+                  src={slide.resized.url}
+                  width={slide.resized.width}
+                  height={slide.resized.height}
+                />
+              </a>
+            )
+          }}
+        />
+        <Spacer my={2} />
+
+        <Flex justifyContent="space-between">
+          <Box>
+            <Serif size="10">{props.artist.name}</Serif>
+            <Flex>
               <Serif size="3">
+                {props.artist.nationality && `${props.artist.nationality}, `}
+                {props.artist.years}
+              </Serif>
+              <Spacer mr={2} />
+              {props.artist.counts.follows > 50 && (
+                <Serif size="3">
+                  {props.artist.counts.follows.toLocaleString()} followers
+                </Serif>
+              )}
+            </Flex>
+          </Box>
+          <FollowArtistButton
+            useDeprecatedButtonStyle={false}
+            artist={props.artist as any}
+            currentUser={currentUser}
+            onOpenAuthModal={() => {
+              props.mediator.trigger("open:auth", {
+                mode: "signup",
+                copy: `Sign up to follow ${props.artist.name}`,
+                signupIntent: "follow artist",
+                afterSignUpAction: {
+                  kind: "artist",
+                  action: "follow",
+                  objectId: props.artist.id,
+                },
+              })
+            }}
+          >
+            Follow
+          </FollowArtistButton>
+        </Flex>
+      </Box>
+    )
+  }
+}
+
+@track()
+export class SmallArtistHeader extends Component<Props> {
+  @carouselSlideTrack((_props, _state, [slide]) => {
+    return {
+      action_type: Schema.ActionType.Click,
+      // TODO: Or keep using ‘thumbnail’ as per old Force schema
+      subject: "carouselSlide",
+      // TODO: Are you sure this is no longer needed? Like, do we not need to
+      //       identify the specific slide?
+      destination_path: slide.href,
+    }
+  })
+  onClickSlide(slide) {
+    // no-op
+  }
+
+  render() {
+    const props = this.props
+    const {
+      artist: { carousel },
+      currentUser,
+    } = props
+
+    return (
+      <Flex flexDirection="column">
+        <Slider
+          data={carousel.images as any}
+          render={slide => {
+            return (
+              <a href={slide.href} onClick={() => this.onClickSlide(slide)}>
+                <Image
+                  px={5}
+                  src={slide.resized.url}
+                  width={slide.resized.width}
+                  height={slide.resized.height}
+                />
+              </a>
+            )
+          }}
+        />
+        <Spacer my={2} />
+
+        <Flex flexDirection="column" alignItems="center">
+          <Serif size="5">{props.artist.name}</Serif>
+          <Flex>
+            <Box mx={1}>
+              <Serif size="2">
+                {props.artist.nationality && `${props.artist.nationality}, `}
+                {props.artist.years}
+              </Serif>
+            </Box>
+            {props.artist.counts.follows > 50 && (
+              <Serif size="2">
                 {props.artist.counts.follows.toLocaleString()} followers
               </Serif>
             )}
           </Flex>
-        </Box>
-        <FollowArtistButton
-          useDeprecatedButtonStyle={false}
-          artist={props.artist as any}
-          currentUser={currentUser}
-          onOpenAuthModal={() => {
-            props.mediator.trigger("open:auth", {
-              mode: "signup",
-              copy: `Sign up to follow ${props.artist.name}`,
-              signupIntent: "follow artist",
-              afterSignUpAction: {
-                kind: "artist",
-                action: "follow",
-                objectId: props.artist.id,
-              },
-            })
-          }}
-        >
-          Follow
-        </FollowArtistButton>
-      </Flex>
-    </Box>
-  )
-}
-
-export const SmallArtistHeader: SFC<Props> = props => {
-  const {
-    artist: { carousel },
-    currentUser,
-  } = props
-
-  return (
-    <Flex flexDirection="column">
-      <Slider
-        data={carousel.images as any}
-        render={slide => {
-          return (
-            <a href={slide.href}>
-              <Image
-                px={5}
-                src={slide.resized.url}
-                width={slide.resized.width}
-                height={slide.resized.height}
-              />
-            </a>
-          )
-        }}
-      />
-      <Spacer my={2} />
-
-      <Flex flexDirection="column" alignItems="center">
-        <Serif size="5">{props.artist.name}</Serif>
-        <Flex>
-          <Box mx={1}>
-            <Serif size="2">
-              {props.artist.nationality && `${props.artist.nationality}, `}
-              {props.artist.years}
-            </Serif>
-          </Box>
-          {props.artist.counts.follows > 50 && (
-            <Serif size="2">
-              {props.artist.counts.follows.toLocaleString()} followers
-            </Serif>
-          )}
         </Flex>
+        <Box my={2}>
+          <FollowArtistButton
+            artist={props.artist as any}
+            useDeprecatedButtonStyle={false}
+            buttonProps={{
+              width: "100%",
+            }}
+            currentUser={currentUser}
+            onOpenAuthModal={() => {
+              props.mediator.trigger("open:auth", {
+                mode: "signup",
+                copy: `Sign up to follow ${props.artist.name}`,
+                signupIntent: "follow artist",
+                afterSignUpAction: {
+                  kind: "artist",
+                  action: "follow",
+                  objectId: props.artist.id,
+                },
+              })
+            }}
+          >
+            Follow
+          </FollowArtistButton>
+        </Box>
       </Flex>
-      <Box my={2}>
-        <FollowArtistButton
-          artist={props.artist as any}
-          useDeprecatedButtonStyle={false}
-          buttonProps={{
-            width: "100%",
-          }}
-          currentUser={currentUser}
-          onOpenAuthModal={() => {
-            props.mediator.trigger("open:auth", {
-              mode: "signup",
-              copy: `Sign up to follow ${props.artist.name}`,
-              signupIntent: "follow artist",
-              afterSignUpAction: {
-                kind: "artist",
-                action: "follow",
-                objectId: props.artist.id,
-              },
-            })
-          }}
-        >
-          Follow
-        </FollowArtistButton>
-      </Box>
-    </Flex>
-  )
+    )
+  }
 }
 
 export const ArtistHeaderFragmentContainer = createFragmentContainer(
