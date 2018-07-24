@@ -29,19 +29,11 @@ export const MobileLoginForm: FormComponentType = props => {
     >
       {({
         wizard,
-        form: {
-          errors,
-          touched,
-          values,
-          handleChange,
-          handleSubmit,
-          handleBlur,
-          setTouched,
-        },
+        form: { errors, touched, values, handleChange, handleBlur, setTouched },
       }) => (
         <Input
           block
-          error={errors.email}
+          error={touched.email && errors.email}
           placeholder="Enter your email address"
           name="email"
           label="Email"
@@ -50,6 +42,7 @@ export const MobileLoginForm: FormComponentType = props => {
           onChange={handleChange}
           onBlur={handleBlur}
           setTouched={setTouched}
+          touchedOnChange={false}
           quick
         />
       )}
@@ -57,20 +50,12 @@ export const MobileLoginForm: FormComponentType = props => {
     <Step validationSchema={MobileLoginValidator.password}>
       {({
         wizard,
-        form: {
-          errors,
-          touched,
-          values,
-          handleChange,
-          handleSubmit,
-          handleBlur,
-          setTouched,
-        },
+        form: { errors, touched, values, handleChange, handleBlur, setTouched },
       }) => (
         <Fragment>
           <Input
             block
-            error={errors.password}
+            error={touched.password && errors.password}
             name="password"
             label="Password"
             placeholder="Password"
@@ -79,6 +64,7 @@ export const MobileLoginForm: FormComponentType = props => {
             onChange={handleChange}
             onBlur={handleBlur}
             setTouched={setTouched}
+            touchedOnChange={false}
             quick
           />
           <Row>
@@ -93,7 +79,7 @@ export const MobileLoginForm: FormComponentType = props => {
       {context => {
         const {
           wizard,
-          form: { handleSubmit, status },
+          form: { handleSubmit, status, values },
         } = context
         const { currentStep, isLastStep } = wizard
 
@@ -101,7 +87,13 @@ export const MobileLoginForm: FormComponentType = props => {
           <MobileContainer>
             <ProgressIndicator percentComplete={wizard.progressPercentage} />
             <MobileInnerWrapper>
-              <BackButton onClick={wizard.previous as any}>
+              <BackButton
+                onClick={e =>
+                  props.onBackButtonClicked && wizard.currentStepIndex === 0
+                    ? props.onBackButtonClicked(e as any)
+                    : wizard.previous(e as any, values)
+                }
+              >
                 <Icon
                   name="chevron-left"
                   color={Colors.graySemibold}
@@ -111,10 +103,7 @@ export const MobileLoginForm: FormComponentType = props => {
               <MobileHeader>Log in to Artsy</MobileHeader>
               {currentStep}
               {status && !status.success && <Error show>{status.error}</Error>}
-              <SubmitButton
-                disabled={!wizard.shouldAllowNext}
-                onClick={handleSubmit as any}
-              >
+              <SubmitButton onClick={handleSubmit as any}>
                 {isLastStep ? "Log in" : "Next"}
               </SubmitButton>
               <Footer

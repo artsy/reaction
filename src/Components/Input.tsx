@@ -19,6 +19,7 @@ export interface InputProps extends React.HTMLProps<HTMLInputElement> {
   showPasswordMessage?: boolean
   title?: string
   quick?: boolean
+  touchedOnChange?: boolean
 }
 
 export interface InputState {
@@ -58,6 +59,7 @@ export class Input extends React.Component<InputProps, InputState> {
     focused: false,
     value: (this.props.value as string) || "",
     showPassword: false,
+    touchedOnChange: true,
   }
 
   componentWillReceiveProps(newProps) {
@@ -79,6 +81,9 @@ export class Input extends React.Component<InputProps, InputState> {
   }
 
   onBlur = e => {
+    if (this.props.setTouched) {
+      this.props.setTouched({ [this.props.name]: true })
+    }
     this.setState({
       focused: false,
     })
@@ -89,7 +94,7 @@ export class Input extends React.Component<InputProps, InputState> {
   }
 
   onChange = e => {
-    if (this.props.setTouched) {
+    if (this.props.touchedOnChange && this.props.setTouched) {
       this.props.setTouched({ [this.props.name]: true })
     }
     this.setState({
@@ -211,12 +216,12 @@ const InputComponent = styled.input.attrs<{ showLabel: boolean }>({})`
   left: 0;
   width: 100%;
   height: 100%;
-  padding: 0 12px;
+  padding: 0 10px;
 
   ${props =>
     props.showLabel &&
     `
-    padding: 10px 12px 0 12px;
+    padding: 10px 10px 0 10px;
   `} &::placeholder {
     color: ${Colors.grayMedium};
   }
