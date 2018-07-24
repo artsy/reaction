@@ -16,12 +16,8 @@ export interface RadioProps {
   selected?: boolean
   disabled?: boolean
   hover?: boolean
-  onSelect?: any
+  onSelect?: (selected: boolean) => void
   value?: string
-}
-
-export interface RadioState {
-  selected: boolean
 }
 
 export interface RadioToggleProps
@@ -30,38 +26,9 @@ export interface RadioToggleProps
     SizeProps,
     SpaceProps {}
 
-export class Radio extends React.Component<RadioProps, RadioState> {
-  state = {
-    selected: false,
-  }
-
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      selected: props.selected || this.state.selected,
-    }
-  }
-
-  toggleSelected = () => {
-    const selected = !this.state.selected
-
-    this.setState({
-      selected,
-    })
-
-    if (this.props.onSelect) {
-      this.props.onSelect(selected)
-    }
-  }
-
-  componentWillReceiveProps() {
-    this.setState({ selected: this.props.selected })
-  }
-
+export class Radio extends React.Component<RadioProps> {
   render() {
-    const { selected } = this.state
-    const { children, disabled, hover } = this.props
+    const { selected, children, disabled, hover } = this.props
 
     return (
       <Container
@@ -70,7 +37,7 @@ export class Radio extends React.Component<RadioProps, RadioState> {
         alignItems="center"
         selected={selected}
         hover={hover}
-        onClick={() => !this.props.disabled && this.toggleSelected()}
+        onClick={() => !this.props.disabled && this.props.onSelect(!selected)}
       >
         <RadioButton border={1} mr={1} selected={selected} disabled={disabled}>
           <InnerCircle />

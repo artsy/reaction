@@ -3,8 +3,10 @@ import { RecentlyViewed_me } from "__generated__/RecentlyViewed_me.graphql"
 import { FillwidthItem } from "Components/Artwork/FillwidthItem"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { AppState } from "Router/state"
 import { Slider } from "Styleguide/Components/Slider"
 import { Spacer } from "Styleguide/Elements/Spacer"
+import { Subscribe } from "unstated"
 
 export interface RecentlyViewedProps {
   me: RecentlyViewed_me
@@ -15,35 +17,47 @@ export const RecentlyViewed: React.SFC<RecentlyViewedProps> = props => {
   const HEIGHT = 100
   const { me } = props
   return (
-    me && (
-      <React.Fragment>
-        <Serif size="6">Recently viewed</Serif>
+    <Subscribe to={[AppState]}>
+      {({ state }) => {
+        const {
+          mediator,
+          system: { currentUser },
+        } = state
+        return (
+          me && (
+            <React.Fragment>
+              <Serif size="6">Recently viewed</Serif>
 
-        <Spacer mb={3} />
+              <Spacer mb={3} />
 
-        <Slider
-          data={me.recentlyViewedArtworks.edges as any}
-          render={artwork => {
-            const {
-              node: {
-                image: { aspect_ratio },
-              },
-            } = artwork
+              <Slider
+                data={me.recentlyViewedArtworks.edges as any}
+                render={artwork => {
+                  const {
+                    node: {
+                      image: { aspect_ratio },
+                    },
+                  } = artwork
 
-            return (
-              <FillwidthItem
-                artwork={artwork.node}
-                targetHeight={HEIGHT}
-                imageHeight={HEIGHT}
-                width={HEIGHT * aspect_ratio}
-                margin={10}
-                useRelay={props.useRelay}
+                  return (
+                    <FillwidthItem
+                      artwork={artwork.node}
+                      targetHeight={HEIGHT}
+                      imageHeight={HEIGHT}
+                      width={HEIGHT * aspect_ratio}
+                      margin={10}
+                      useRelay={props.useRelay}
+                      currentUser={currentUser}
+                      mediator={mediator}
+                    />
+                  )
+                }}
               />
-            )
-          }}
-        />
-      </React.Fragment>
-    )
+            </React.Fragment>
+          )
+        )
+      }}
+    </Subscribe>
   )
 }
 

@@ -6,9 +6,9 @@ import {
   QueryRenderer,
   RelayProp,
 } from "react-relay"
+import track from "react-tracking"
 import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
 import Events from "../../../../Utils/Events"
-import { track } from "../../../../Utils/track"
 import ReplaceTransition from "../../../Animation/ReplaceTransition"
 import { ContextConsumer, ContextProps } from "../../../Artsy"
 import ItemLink, { LinkContainer } from "../../ItemLink"

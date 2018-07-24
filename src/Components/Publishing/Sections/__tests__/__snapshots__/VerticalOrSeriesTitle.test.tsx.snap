@@ -16,7 +16,6 @@ exports[`renders properly for a feature article 1`] = `
 
 <div
   className="c0 c1"
-  color={undefined}
   fontFamily={
     Object {
       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -47,7 +46,6 @@ exports[`renders properly for a standard article 1`] = `
 
 <div
   className="c0 c1"
-  color={undefined}
   fontFamily={
     Object {
       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",

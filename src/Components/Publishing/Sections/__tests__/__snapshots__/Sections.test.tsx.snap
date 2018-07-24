@@ -1582,7 +1582,6 @@ exports[`Sections snapshots renders properly 1`] = `
     >
       <div
         className="c23"
-        width={undefined}
       >
         <div
           className="article-image"
@@ -2105,7 +2104,6 @@ exports[`Sections snapshots renders properly 1`] = `
     >
       <div
         className="c23"
-        width={undefined}
       >
         <div
           className="article-image"
@@ -2227,7 +2225,6 @@ exports[`Sections snapshots renders properly 1`] = `
           <span>
             <a
               href="http://artsy.net"
-              title={undefined}
             >
               Casey Lesser
             </a>

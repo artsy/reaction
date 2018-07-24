@@ -1,7 +1,7 @@
 import React, { Component } from "react"
+import track from "react-tracking"
 import styled from "styled-components"
 import Events from "../../../Utils/Events"
-import { track } from "../../../Utils/track"
 import { media } from "../../Helpers"
 import { getEditorialHref } from "../Constants"
 import { Nav } from "../Nav/Nav"

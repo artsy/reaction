@@ -8,7 +8,7 @@ import Modal from "../Modal/Modal"
 class ModalDemo extends React.Component<any, any> {
   constructor(props) {
     super(props)
-    this.state = { isModalOpen: false }
+    this.state = { isModalOpen: true }
     this.openModal = this.openModal.bind(this)
     this.closeModal = this.closeModal.bind(this)
   }

@@ -8,6 +8,7 @@ import styled, { StyledComponentClass } from "styled-components"
 const DEBUG = false
 
 export const Grid = styled(StyledGrid.Container)`
+  overflow: hidden;
   ${space};
 `
 export const Row = styled(StyledGrid.Row)`

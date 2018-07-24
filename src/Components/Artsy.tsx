@@ -107,7 +107,9 @@ export class ContextProvider extends React.Component<ContextProps>
  * @param Component The component that needs Artsy specific context props.
  */
 export function ContextConsumer<P>(
-  Component: React.ComponentClass<P> | React.StatelessComponent<P>
+  Component:
+    | React.ComponentClass<P & ContextProps>
+    | React.StatelessComponent<P & ContextProps>
 ): React.ComponentClass<P> {
   const name = Component.displayName || Component.name
   return class extends React.Component<P, null> {

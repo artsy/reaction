@@ -1,5 +1,7 @@
 import { Sans } from "@artsy/palette"
 import { Overview_artist } from "__generated__/Overview_artist.graphql"
+import { track } from "Analytics"
+import * as Schema from "Analytics/Schema"
 import { ArtworkFilterFragmentContainer as ArtworkFilter } from "Apps/Artist/Routes/Overview/Components/ArtworkFilter"
 import { GenesFragmentContainer as Genes } from "Apps/Artist/Routes/Overview/Components/Genes"
 import React from "react"
@@ -20,10 +22,22 @@ interface State {
   isReadMoreExpanded: boolean
 }
 
+@track({ context_module: "ArtistOverview" })
 class OverviewRoute extends React.Component<OverviewRouteProps, State> {
   state = {
     isReadMoreExpanded: false,
   }
+
+  @track<OverviewRouteProps>(props => ({
+    action_type: Schema.ActionType.Click,
+    // TODO: Feel like these should become enums too
+    subject: "Learn more about consignment",
+    destination_path: props.artist.href,
+  }))
+  handleConsignClick() {
+    // no-op
+  }
+
   render() {
     const { artist } = this.props
 
@@ -56,7 +70,9 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
             {artist.is_consignable && (
               <Sans size="2" color="black60">
                 Want to sell a work by this artist?{" "}
-                <a href="/consign">Learn more</a>.
+                <a href="/consign" onClick={this.handleConsignClick.bind(this)}>
+                  Learn more
+                </a>.
               </Sans>
             )}
           </Col>
@@ -104,6 +120,7 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
         partner_shows
       }
 
+      href
       is_consignable
 
       ...Genes_artist

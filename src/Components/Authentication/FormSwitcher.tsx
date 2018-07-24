@@ -1,7 +1,7 @@
 import qs from "querystring"
 import React from "react"
+import track from "react-tracking"
 import Events from "Utils/Events"
-import { track } from "Utils/track"
 
 import { ForgotPasswordForm } from "Components/Authentication/Desktop/ForgotPasswordForm"
 import { LoginForm } from "Components/Authentication/Desktop/LoginForm"

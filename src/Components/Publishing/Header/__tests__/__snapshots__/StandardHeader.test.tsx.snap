@@ -139,7 +139,6 @@ exports[`Standard Header renders standard header properly 1`] = `
     >
       <div
         className="c3 c4"
-        color={undefined}
         fontFamily={
           Object {
             "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -421,7 +420,6 @@ exports[`Standard Header renders standard header with children properly 1`] = `
     >
       <div
         className="c3 c4"
-        color={undefined}
         fontFamily={
           Object {
             "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
