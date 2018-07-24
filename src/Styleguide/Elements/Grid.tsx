@@ -9,6 +9,7 @@ const DEBUG = false
 
 export const Grid = styled(StyledGrid.Container)`
   overflow: hidden;
+  max-width: ${props => props.theme.grid.breakpoints.xl}px;
   ${space};
 `
 export const Row = styled(StyledGrid.Row)`

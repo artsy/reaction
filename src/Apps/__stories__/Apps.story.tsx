@@ -3,7 +3,6 @@ import React from "react"
 import { StorybooksRouter } from "Router/StorybooksRouter"
 import { routes as artistRoutes } from "../Artist/routes"
 import { routes as artworkRoutes } from "../Artwork/routes"
-import { routes as orderRoutes } from "../Order/routes"
 
 storiesOf("Apps", module)
   .add("Artwork Page", () => {
@@ -25,6 +24,3 @@ storiesOf("Apps", module)
       />
     )
   })
-  .add("Order Page", () => (
-    <StorybooksRouter routes={orderRoutes} initialRoute="/order2/22/shipping" />
-  ))

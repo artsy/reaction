@@ -3,6 +3,8 @@ import { color } from "@artsy/palette"
 import React from "react"
 import styled, { css } from "styled-components"
 import {
+  background,
+  BackgroundProps,
   bottom,
   BottomProps,
   color as styledColor,
@@ -19,7 +21,7 @@ import {
   PositionProps,
   right,
   RightProps,
-  space,
+  space as styledSpace,
   SpaceProps,
   textAlign,
   TextAlignProps,
@@ -51,7 +53,7 @@ export const BorderBox = styled(Flex).attrs<BorderBoxProps>({})`
   border: 1px solid ${color("black10")};
   border-radius: 2px;
   ${props => props.hover && hover};
-  ${space};
+  ${styledSpace};
   ${maxWidth};
   ${width};
   ${height};
@@ -73,9 +75,13 @@ export interface BoxProps
     BottomProps,
     LeftProps,
     RightProps,
+    LeftProps,
+    BottomProps,
+    PositionProps,
+    BackgroundProps,
     ZIndexProps {}
 export const Box = styled.div.attrs<BoxProps>({})`
-  ${space};
+  ${styledSpace};
   ${display};
   ${width};
   ${height};
@@ -87,5 +93,6 @@ export const Box = styled.div.attrs<BoxProps>({})`
   ${styledColor};
   ${textAlign};
   ${maxWidth};
+  ${background};
   ${zIndex};
 `
