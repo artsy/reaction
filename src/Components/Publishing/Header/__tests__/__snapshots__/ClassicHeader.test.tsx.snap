@@ -382,7 +382,6 @@ exports[`Classic Header renders classic header with children properly 1`] = `
     >
       <div
         className="c3 c4"
-        color={undefined}
         fontFamily={
           Object {
             "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",

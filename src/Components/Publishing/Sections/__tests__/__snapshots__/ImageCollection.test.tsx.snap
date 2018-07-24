@@ -157,7 +157,6 @@ exports[`renders a single image properly 1`] = `
 >
   <div
     className="c1"
-    width={undefined}
   >
     <div
       className="c2"
