@@ -1,10 +1,10 @@
 import React from "react"
 import sizeMe from "react-sizeme"
+import track from "react-tracking"
 import styled, { StyledFunction } from "styled-components"
 import urlParser from "url"
 import Events from "../../../Utils/Events"
 import { resize } from "../../../Utils/resizer"
-import track from "../../../Utils/track"
 import { pMedia as breakpoint } from "../../Helpers"
 import { SIZE_ME_REFRESH_RATE } from "../Constants"
 import { ArticleLayout } from "../Typings"
@@ -105,7 +105,7 @@ class VideoComponent extends React.Component<VideoProps, VideoState> {
           <CoverImage
             className="VideoCover"
             src={src}
-            height={width * VIDEO_RATIO}
+            height={width && width * VIDEO_RATIO}
             onClick={this.playVideo}
             hidden={this.state.hidden}
           >
@@ -117,7 +117,7 @@ class VideoComponent extends React.Component<VideoProps, VideoState> {
           src={this.state.src}
           frameBorder="0"
           allowFullScreen
-          height={width * VIDEO_RATIO}
+          height={width && width * VIDEO_RATIO}
         />
 
         {showCaption && (
@@ -171,7 +171,7 @@ const iframe: StyledFunction<React.HTMLProps<HTMLIFrameElement>> = styled.iframe
 
 export const IFrame = iframe`
   width: 100%;
-  height: ${props => props.height + "px"};
+  height: ${props => (props.height ? `${props.height}px` : "100%")};
 `
 
 interface CoverImageProps {
@@ -212,7 +212,7 @@ export const CoverImage = Div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: ${props => props.height + "px"};
+  height: ${props => (props.height ? `${props.height}px` : "100%")};
   position: absolute;
   background: url(${props => props.src || ""}) no-repeat center center;
   background-size: cover;

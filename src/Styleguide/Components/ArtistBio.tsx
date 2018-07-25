@@ -1,16 +1,17 @@
 import { Serif } from "@artsy/palette"
+import { ArtistBio_bio } from "__generated__/ArtistBio_bio.graphql"
+import { track } from "Analytics"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Responsive } from "Utils/Responsive"
 import { ReadMore } from "./ReadMore"
-
-import { ArtistBio_bio } from "__generated__/ArtistBio_bio.graphql"
 
 interface Props {
   bio: ArtistBio_bio
   onReadMoreClicked?: () => void
 }
 
+@track({ context_module: "ArtistBio" })
 export class ArtistBio extends React.Component<Props> {
   render() {
     const blurb = (

@@ -443,6 +443,14 @@ exports[`Video Layout matches the snapshot 1`] = `
   padding-left: 1em;
 }
 
+.c50 ul {
+  list-style: disc;
+}
+
+.c50 ol {
+  list-style: decimal;
+}
+
 .c50 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
@@ -619,6 +627,14 @@ exports[`Video Layout matches the snapshot 1`] = `
 .c61 ul,
 .c61 ol {
   padding-left: 1em;
+}
+
+.c61 ul {
+  list-style: disc;
+}
+
+.c61 ol {
+  list-style: decimal;
 }
 
 .c61 li {

@@ -1,6 +1,9 @@
+import { mount } from "enzyme"
 import "jest-styled-components"
+import { cloneDeep } from "lodash"
 import React from "react"
 import renderer from "react-test-renderer"
+import track from "react-tracking"
 import {
   Campaign,
   UnitPanel,
@@ -8,41 +11,18 @@ import {
   UnitPanelVideo,
 } from "../../Fixtures/Components"
 import { DisplayPanel } from "../DisplayPanel"
-import { cloneDeep } from "lodash"
-import { mount } from "enzyme"
-import { track } from "../../../../Utils/track"
-
-jest.mock("../../../../Utils/track.ts", () => ({
-  track: jest.fn(),
-}))
 
 describe("snapshots", () => {
   it("renders the display panel with an image", () => {
     const displayPanel = renderer
-      .create(
-        <DisplayPanel
-          unit={UnitPanel}
-          campaign={Campaign}
-          tracking={{
-            trackEvent: jest.fn(),
-          }}
-        />
-      )
+      .create(<DisplayPanel unit={UnitPanel} campaign={Campaign} />)
       .toJSON()
     expect(displayPanel).toMatchSnapshot()
   })
 
   it("renders the display panel with video", () => {
     const displayPanel = renderer
-      .create(
-        <DisplayPanel
-          unit={UnitPanelVideo}
-          campaign={Campaign}
-          tracking={{
-            trackEvent: jest.fn(),
-          }}
-        />
-      )
+      .create(<DisplayPanel unit={UnitPanelVideo} campaign={Campaign} />)
       .toJSON()
     expect(displayPanel).toMatchSnapshot()
   })
@@ -62,9 +42,6 @@ describe("units", () => {
       <DisplayPanel
         unit={unit}
         campaign={Campaign}
-        tracking={{
-          trackEvent: jest.fn(),
-        }}
         renderTime="12345"
         {...rest}
       />

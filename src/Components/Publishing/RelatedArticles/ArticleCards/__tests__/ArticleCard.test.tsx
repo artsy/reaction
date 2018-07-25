@@ -2,20 +2,16 @@ import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
+import { Date } from "../../../Byline/Date"
 import { getDate } from "../../../Constants"
 import {
   SeriesArticle,
   StandardArticle,
   VideoArticle,
 } from "../../../Fixtures/Articles"
-import { Date } from "../../../Byline/Date"
 import { EditableChild } from "../../../Fixtures/Helpers"
 import { IconVideoPlay } from "../../../Icon/IconVideoPlay"
 import { ArticleCard, ArticleCardContainer } from "../ArticleCard"
-
-jest.mock("../../../../../Utils/track.ts", () => ({
-  track: jest.fn(),
-}))
 
 describe("ArticleCard", () => {
   let standardArticle

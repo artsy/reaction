@@ -3,9 +3,9 @@ import { garamond } from "Assets/Fonts"
 import { compact, map } from "lodash"
 import React from "react"
 import Slider from "react-slick"
+import track from "react-tracking"
 import styled, { StyledFunction } from "styled-components"
 import { crop } from "../../../../Utils/resizer"
-import { track } from "../../../../Utils/track"
 import { pMedia } from "../../../Helpers"
 import Icon from "../../../Icon"
 import { maxAssetSize } from "./CanvasContainer"
@@ -49,13 +49,15 @@ export class CanvasSlideshow extends React.Component<
     })
   }
 
-  @track(props => ({
-    action: "Click",
-    label: "Display ad carousel arrow",
-    entity_type: "display_ad",
-    campaign_name: props.campaign.name,
-    unit_layout: "canvas_slideshow",
-  }))
+  @track(props => {
+    return {
+      action: "Click",
+      label: "Display ad carousel arrow",
+      entity_type: "display_ad",
+      campaign_name: props.campaign.name,
+      unit_layout: "canvas_slideshow",
+    }
+  })
   onChangeSlide(slide) {
     this.slider.slickGoTo(slide)
   }

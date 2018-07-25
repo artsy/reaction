@@ -1,19 +1,19 @@
 import { unica } from "Assets/Fonts"
 import React, { Component, Fragment } from "react"
+import track from "react-tracking"
 import styled from "styled-components"
 import colors from "../../../Assets/Colors"
-import { track } from "../../../Utils/track"
 import { pMedia } from "../../Helpers"
 import { getDate } from "../Constants"
 import { NewsBylineProps } from "./NewsByline"
 
-interface Props {
+interface Props extends NewsBylineProps {
   editSource?: any
 }
 
 @track()
-export class DateSource extends Component<NewsBylineProps & Props, null> {
-  constructor(props) {
+export class DateSource extends Component<Props> {
+  constructor(props: Props) {
     super(props)
 
     this.onClick = this.onClick.bind(this)

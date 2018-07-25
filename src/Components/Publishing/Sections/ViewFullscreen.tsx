@@ -1,7 +1,7 @@
 import PropTypes from "prop-types"
 import React from "react"
+import track from "react-tracking"
 import styled from "styled-components"
-import { track } from "../../../Utils/track"
 import { IconExpand } from "../Icon/IconExpand"
 import { withFullScreen } from "../Sections/FullscreenViewer/withFullScreen"
 

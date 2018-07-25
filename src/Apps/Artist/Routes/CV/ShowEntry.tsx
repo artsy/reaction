@@ -20,14 +20,28 @@ export const ShowEntry: SFC<ShowEntryProps> = ({ node, size = "3" }) => (
       ) : (
         <span>{node.name}</span>
       )}
-    </Serif>,{" "}
-    {node.partner.href ? (
-      <a href={FIXME_DOMAIN + node.partner.href} className="noUnderline">
-        {node.partner.name}
-      </a>
-    ) : (
-      <span>{node.partner.name}</span>
-    )}
+    </Serif>
+    {node.partner && " ,"} {renderPartnerInfoSafely(node.partner)}
     {node.city && `, ${node.city}`}
   </Serif>
 )
+
+interface PartnerProps {
+  href?: string
+  name: string
+}
+const renderPartnerInfoSafely = (partner: PartnerProps) => {
+  if (!partner) {
+    return null
+  }
+
+  if (partner.href) {
+    return (
+      <a href={FIXME_DOMAIN + partner.href} className="noUnderline">
+        {partner.name}
+      </a>
+    )
+  }
+
+  return <span>{partner.name}</span>
+}

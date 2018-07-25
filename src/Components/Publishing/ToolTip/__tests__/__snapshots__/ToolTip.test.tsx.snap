@@ -147,13 +147,9 @@ exports[`ToolTip snapshots Renders a gene properly 1`] = `
 
 <div
   className="c0"
-  onMouseEnter={undefined}
-  onMouseLeave={undefined}
-  orientation={undefined}
 >
   <div
     className="c1"
-    orientation={undefined}
   >
     <div
       className="c2"
@@ -385,13 +381,9 @@ exports[`ToolTip snapshots Renders an artist properly 1`] = `
 
 <div
   className="c0"
-  onMouseEnter={undefined}
-  onMouseLeave={undefined}
-  orientation={undefined}
 >
   <div
     className="c1"
-    orientation={undefined}
   >
     <div
       className="c2"
