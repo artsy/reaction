@@ -1,17 +1,15 @@
-import Colors from "Assets/Colors"
 import { get, omit } from "lodash"
 import React from "react"
 import styled from "styled-components"
 import { ResponsiveDeprecated } from "../../../Utils/ResponsiveDeprecated"
 import { pMedia } from "../../Helpers"
 import { ArticleProps } from "../Article"
-import { DisplayCanvas } from "../Display/Canvas"
 import { DisplayPanel } from "../Display/DisplayPanel"
 import { Header } from "../Header/Header"
 import ReadMore from "../ReadMore/ReadMoreButton"
 import { ReadMoreWrapper } from "../ReadMore/ReadMoreWrapper"
-import RelatedArticlesCanvas from "../RelatedArticles/RelatedArticlesCanvas"
 import { Sections } from "../Sections/Sections"
+import { CanvasFooter } from "./Components/CanvasFooter"
 import { Sidebar } from "./Components/Sidebar"
 
 interface ArticleState {
@@ -54,7 +52,7 @@ export class StandardLayout extends React.Component<
     const { isTruncated } = this.state
 
     const campaign = omit(display, "panel", "canvas")
-    const displayOverflows = display && display.canvas.layout === "slideshow"
+    // const displayOverflows = display && display.canvas.layout === "slideshow"
 
     return (
       // FIXME: Update with new version
@@ -99,54 +97,17 @@ export class StandardLayout extends React.Component<
                     />
                   </StandardLayoutContainer>
                 </StandardLayoutParent>
-
-                {/*
-                  Canvas: Related Articles
-                */}
-                {relatedArticlesForCanvas && (
-                  <div>
-                    <LineBreak />
-                    <RelatedArticlesCanvas
-                      articles={relatedArticlesForCanvas}
-                      isMobile={isMobile}
-                      vertical={article.vertical}
-                    />
-                  </div>
-                )}
               </ReadMoreWrapper>
 
-              {/*
-                Read More Button
-              */}
               {isTruncated && <ReadMore onClick={this.removeTruncation} />}
 
-              {/*
-                Footer
-              */}
-              {display && (
-                <div>
-                  <LineBreak />
-
-                  {displayOverflows ? (
-                    <div>
-                      <DisplayCanvas
-                        unit={display.canvas}
-                        campaign={campaign}
-                        article={article}
-                        renderTime={renderTime}
-                      />
-                    </div>
-                  ) : (
-                    <FooterContainer>
-                      <DisplayCanvas
-                        unit={display.canvas}
-                        campaign={campaign}
-                        article={article}
-                        renderTime={renderTime}
-                      />
-                    </FooterContainer>
-                  )}
-                </div>
+              {(relatedArticlesForCanvas || display) && (
+                <CanvasFooter
+                  article={article}
+                  display={display}
+                  relatedArticles={relatedArticlesForCanvas}
+                  renderTime={renderTime}
+                />
               )}
             </div>
           )
@@ -168,16 +129,4 @@ const StandardLayoutContainer = styled.div`
   display: flex;
   margin: auto;
   justify-content: space-between;
-`
-
-const LineBreak = styled.div`
-  border-top: 1px solid ${Colors.grayRegular};
-  width: 100%;
-`
-
-const FooterContainer = styled.div`
-  margin: 0 40px;
-  ${pMedia.sm`
-    margin: 0 20px;
-  `};
 `

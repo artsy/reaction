@@ -6,27 +6,29 @@ import {
   ArticleCardsBlock,
   ArticleCardsContainer,
 } from "../RelatedArticles/ArticleCards/Block"
-import RelatedArticlesCanvas from "../RelatedArticles/RelatedArticlesCanvas"
 import { Sections } from "../Sections/Sections"
 import { ArticleData } from "../Typings"
 
+import { CanvasFooter } from "./Components/CanvasFooter"
+
 export interface ArticleProps {
   article: ArticleData
-  headerHeight?: string
+  display?: any
   isMobile?: boolean
   isSuper?: boolean
-  marginTop?: string
   relatedArticlesForCanvas?: any
+  renderTime?: any
   showTooltips?: boolean
-  tracking?: any
 }
 
 export const FeatureLayout: React.SFC<ArticleProps> = props => {
   const {
     article,
+    display,
     isMobile,
     isSuper,
     relatedArticlesForCanvas,
+    renderTime,
     showTooltips,
   } = props
   const { seriesArticle } = article
@@ -61,10 +63,12 @@ export const FeatureLayout: React.SFC<ArticleProps> = props => {
 
       {seriesArticle && <ArticleCardsBlock {...props} />}
 
-      {hasRelated && (
-        <RelatedArticlesCanvas
-          articles={relatedArticlesForCanvas}
-          vertical={article.vertical}
+      {(hasRelated || display) && (
+        <CanvasFooter
+          article={article}
+          display={display}
+          relatedArticles={relatedArticlesForCanvas}
+          renderTime={renderTime}
         />
       )}
     </FeatureLayoutContainer>

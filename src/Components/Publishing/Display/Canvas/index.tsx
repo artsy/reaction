@@ -82,17 +82,13 @@ export const DisplayContainer = Div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  min-height: fit-content;
   max-width: ${props => (props.layout === "slideshow" ? "100%;" : "1250px;")}
   margin: 0 auto;
-  margin-bottom: -44px; // Offset default force margin; FIXME: This kind of stuff needs to be globally addressed
   box-sizing: border-box;
   a {
     text-decoration: none;
   }
-  ${pMedia.sm`
-    margin-bottom: 0;
-    min-height: 400px;
-  `}
 `
 const SponsoredBy = styled.div`
   ${avantgarde("s11")} color: ${Colors.grayMedium};

@@ -1,17 +1,15 @@
-import Colors from "Assets/Colors"
+import { color } from "@artsy/palette"
 import { unica } from "Assets/Fonts"
 import { once } from "lodash"
 import React, { Component } from "react"
 import track from "react-tracking"
 import styled from "styled-components"
 import { pMedia } from "../../Helpers"
-import { DisplayCanvas, DisplayContainer } from "../Display/Canvas"
 import { NewsHeadline } from "../News/NewsHeadline"
 import { NewsSections } from "../News/NewsSections"
-import RelatedArticlesCanvas, {
-  RelatedArticlesCanvasProps,
-} from "../RelatedArticles/RelatedArticlesCanvas"
+import { RelatedArticlesCanvasProps } from "../RelatedArticles/RelatedArticlesCanvas"
 import { ArticleData } from "../Typings"
+import { CanvasFooter, CanvasFooterContainer } from "./Components/CanvasFooter"
 
 interface Props {
   article: ArticleData
@@ -19,7 +17,6 @@ interface Props {
   isMobile?: boolean
   isHovered?: boolean
   isTruncated?: boolean
-  marginTop?: string
   onExpand?: any
   relatedArticlesForCanvas?: RelatedArticlesCanvasProps
   renderTime?: any
@@ -81,7 +78,7 @@ export class NewsLayout extends Component<Props, State> {
       article,
       display,
       isMobile,
-      marginTop,
+      // marginTop,
       relatedArticlesForCanvas,
       renderTime,
     } = this.props
@@ -92,7 +89,7 @@ export class NewsLayout extends Component<Props, State> {
         <NewsArticleContainer
           isTruncated={isTruncated}
           isHovered={isHovered}
-          marginTop={marginTop}
+          // marginTop={marginTop}
           onClick={() => {
             if (isTruncated) {
               this.onExpand()
@@ -119,19 +116,12 @@ export class NewsLayout extends Component<Props, State> {
             Expand
           </ExpandButton>
         </NewsArticleContainer>
-        {relatedArticlesForCanvas && (
-          <RelatedContainer>
-            <RelatedArticlesCanvas
-              articles={relatedArticlesForCanvas as any}
-              isMobile={isMobile}
-            />
-          </RelatedContainer>
-        )}
-        {display && (
-          <DisplayCanvas
+
+        {(relatedArticlesForCanvas || display) && (
+          <CanvasFooter
             article={article}
-            unit={display && display.canvas}
-            campaign={display}
+            display={display}
+            relatedArticles={relatedArticlesForCanvas}
             renderTime={renderTime}
           />
         )}
@@ -139,19 +129,9 @@ export class NewsLayout extends Component<Props, State> {
     )
   }
 }
-
-export const RelatedContainer = styled.div`
-  border-top: 1px solid rgb(229, 229, 229);
-  border-bottom: 1px solid rgb(229, 229, 229);
-  margin: 80px 0 0;
-`
-
-export const NewsContainer = styled.div`
-  ${DisplayContainer} {
-    border-bottom: 1px solid rgb(229, 229, 229);
-    /* TODO: Fix display margins globally */
-    margin-bottom: 0;
-    padding-bottom: 20px;
+const NewsContainer = styled.div`
+  ${CanvasFooterContainer} {
+    border-bottom: 1px solid ${color("black10")};
   }
 `
 
@@ -178,7 +158,7 @@ export const ExpandButton = styled.button`
   }
 
   &:hover {
-    color: ${Colors.grayRegular};
+    color: ${color("black10")};
   }
 
   ${(props: NewsContainerProps) =>
@@ -213,7 +193,7 @@ export const NewsArticleContainer = styled.div`
     props.isHovered &&
     `
     border-radius: 4px;
-    border: 1px solid ${Colors.grayRegular};
+    border: 1px solid ${color("black10")};
     cursor: pointer;
   `};
 
