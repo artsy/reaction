@@ -26,7 +26,16 @@ type Image = Props["artist"]["carousel"]["images"][0]
 
 const carouselSlideTrack: Track<null, null, [Image]> = track
 
-@track({ context_module: "ArtistHeader" })
+@track<Props>(
+  props =>
+    ({
+      context_module: "Header",
+      // TODO: Old schema for the Follow button
+      modelName: "artist",
+      entity_slug: props.artist.id,
+      entity_id: props.artist._id,
+    } as Schema.ContextModule & Schema.Old)
+)
 export class ArtistHeader extends Component<Props> {
   render() {
     const props = this.props
@@ -242,8 +251,9 @@ export const ArtistHeaderFragmentContainer = createFragmentContainer(
   ArtistHeader,
   graphql`
     fragment ArtistHeader_artist on Artist {
-      name
+      _id
       id
+      name
       nationality
       years
       counts {

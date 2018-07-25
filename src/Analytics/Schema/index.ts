@@ -24,3 +24,16 @@ export type Trackables =
   | Interaction
   | Success
   | Failure
+
+/**
+ * A sentinel type used to signal that anything goes in order to be able to
+ * support old Force schema.
+ *
+ * @example
+ *
+ *     ```ts
+ *     import * as Schema from "Analytics/Schema"
+ *
+ *     @track({ … } as Schema.Old)
+ */
+export type Old = any
