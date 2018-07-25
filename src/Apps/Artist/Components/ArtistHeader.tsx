@@ -119,6 +119,7 @@ export class LargeArtistHeader extends Component<Props> {
         />
         <Spacer my={2} />
 
+        <span id="jumpto-ArtistHeader" />
         <Flex justifyContent="space-between">
           <Box>
             <Serif size="10">{props.artist.name}</Serif>
@@ -202,6 +203,7 @@ export class SmallArtistHeader extends Component<Props> {
         />
         <Spacer my={2} />
 
+        <span id="jumpto-ArtistHeader" />
         <Flex flexDirection="column" alignItems="center">
           <Serif size="5">{props.artist.name}</Serif>
           <Flex>
@@ -222,9 +224,7 @@ export class SmallArtistHeader extends Component<Props> {
           <FollowArtistButton
             artist={props.artist as any}
             useDeprecatedButtonStyle={false}
-            buttonProps={{
-              width: "100%",
-            }}
+            buttonProps={{ width: "100%" }}
             currentUser={currentUser}
             onOpenAuthModal={() => {
               props.mediator.trigger("open:auth", {

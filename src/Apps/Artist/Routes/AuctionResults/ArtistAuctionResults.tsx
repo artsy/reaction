@@ -154,7 +154,7 @@ class AuctionResultsContainer extends Component<
                       }
                       onClick={this.loadAfter}
                       onNext={this.loadNext}
-                      scrollTo="#jumpto-RouteTabs"
+                      scrollTo="#jumpto-ArtistHeader"
                     />
                   </Box>
                 </Col>
