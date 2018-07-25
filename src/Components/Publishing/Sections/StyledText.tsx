@@ -81,6 +81,12 @@ export const StyledText = div`
   ul, ol {
     padding-left: 1em;
   }
+  ul {
+    list-style: disc;
+  }
+  ol {
+    list-style: decimal;
+  }
   li {
     ${props => (props.layout === "classic" ? garamond("s19") : garamond("s23"))}
     padding-top: .5em;

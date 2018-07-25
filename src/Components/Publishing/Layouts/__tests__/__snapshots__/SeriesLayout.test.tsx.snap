@@ -382,6 +382,14 @@ exports[`renders a series properly 1`] = `
   padding-left: 1em;
 }
 
+.c40 ul {
+  list-style: disc;
+}
+
+.c40 ol {
+  list-style: decimal;
+}
+
 .c40 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
@@ -1500,6 +1508,14 @@ exports[`renders a sponsored series properly 1`] = `
 .c47 ul,
 .c47 ol {
   padding-left: 1em;
+}
+
+.c47 ul {
+  list-style: disc;
+}
+
+.c47 ol {
+  list-style: decimal;
 }
 
 .c47 li {
