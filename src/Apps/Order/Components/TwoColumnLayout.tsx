@@ -8,11 +8,11 @@ export const TwoColumnLayout = props => (
   </Responsive>
 )
 
-const DefaultLayout = ({ Content, Sidebar }) => (
+const DefaultLayout = ({ Content, Sidebar, contentSpan, sidebarSpan }) => (
   <Row>
-    <Col col={7}>{Content}</Col>
+    <Col col={contentSpan}>{Content}</Col>
     <Col col={1} />
-    <Col col={4}>{Sidebar}</Col>
+    <Col col={sidebarSpan}>{Sidebar}</Col>
   </Row>
 )
 
