@@ -1,6 +1,36 @@
 import React from "react"
+import { Box } from "Styleguide/Elements/Box"
+import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
+import { Spacer } from "Styleguide/Elements/Spacer"
 import { Responsive } from "Utils/Responsive"
+
+const CONTENT_SPAN = 7
+const SIDEBAR_SPAN = 4
+const ROW_SPACE = 2
+const COL_SPACE = 2
+
+const columnRatioWidth = (spans, size) => Math.round((spans / size) * 100) + "%"
+
+export const TwoColumnSplit = ({ children, ...props }) => {
+  let [firstColumn, secondColumn] = React.Children.toArray(children)
+
+  return (
+    <Responsive>
+      {({ xs }) => (
+        <Flex flexDirection={xs ? "column" : "row"} {...props}>
+          <Box width={xs ? "100%" : columnRatioWidth(4, CONTENT_SPAN)}>
+            {firstColumn}
+          </Box>
+          <Spacer mr={xs ? null : COL_SPACE} mb={xs ? ROW_SPACE : null} />
+          <Box width={xs ? "100%" : columnRatioWidth(3, CONTENT_SPAN)}>
+            {secondColumn}
+          </Box>
+        </Flex>
+      )}
+    </Responsive>
+  )
+}
 
 export const TwoColumnLayout = props => (
   <Responsive>
@@ -8,11 +38,11 @@ export const TwoColumnLayout = props => (
   </Responsive>
 )
 
-const DefaultLayout = ({ Content, Sidebar, contentSpan, sidebarSpan }) => (
+const DefaultLayout = ({ Content, Sidebar }) => (
   <Row>
-    <Col col={contentSpan}>{Content}</Col>
+    <Col col={CONTENT_SPAN}>{Content}</Col>
     <Col col={1} />
-    <Col col={sidebarSpan}>{Sidebar}</Col>
+    <Col col={SIDEBAR_SPAN}>{Sidebar}</Col>
   </Row>
 )
 
