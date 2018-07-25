@@ -102,13 +102,12 @@ class ArtistShows extends Component<ArtistShowsProps, LoadingAreaState> {
                       <Spacer mb={2} />
                       <LoadingArea isLoading={this.state.isLoading}>
                         {this.props.status === "running" ? (
-                          <ShowBlocks flexDirection={blockDirection} flexWrap>
+                          <Flex flexDirection={blockDirection} flexWrap>
                             {this.props.artist.showsConnection.edges.map(
-                              ({ node }, edgeKey) => {
+                              ({ node }, index) => {
                                 return (
-                                  <React.Fragment>
+                                  <React.Fragment key={index}>
                                     <ArtistShowBlockItem
-                                      key={edgeKey}
                                       blockWidth={blockWidth}
                                       imageUrl={node.cover_image.cropped.url}
                                       partner={node.partner.name}
@@ -124,13 +123,13 @@ class ArtistShows extends Component<ArtistShowsProps, LoadingAreaState> {
                                 )
                               }
                             )}
-                          </ShowBlocks>
+                          </Flex>
                         ) : (
-                          <ShowList>
+                          <Box>
                             {this.props.artist.showsConnection.edges.map(
                               ({ node }, index) => {
                                 return (
-                                  <React.Fragment>
+                                  <React.Fragment key={index}>
                                     <ArtistShowListItem
                                       key={index}
                                       city={node.city}
@@ -145,7 +144,7 @@ class ArtistShows extends Component<ArtistShowsProps, LoadingAreaState> {
                                 )
                               }
                             )}
-                          </ShowList>
+                          </Box>
                         )}
                       </LoadingArea>
                     </Col>
@@ -257,6 +256,3 @@ export const ArtistShowsRefetchContainer = createRefetchContainer(
     }
   `
 )
-
-const ShowBlocks = Flex
-const ShowList = Box

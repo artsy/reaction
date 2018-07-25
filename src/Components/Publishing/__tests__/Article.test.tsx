@@ -15,12 +15,6 @@ import { NewsLayout } from "../Layouts/NewsLayout"
 import { SeriesLayout } from "../Layouts/SeriesLayout"
 import { VideoLayout } from "../Layouts/VideoLayout"
 
-jest.mock("react-slick", () => {
-  const React = require("react")
-  return props => <div>{props.children}</div>
-})
-jest.mock("react-sizeme", () => jest.fn(c => d => d))
-jest.mock("react-tracking", () => jest.fn(c => d => d))
 jest.mock("../ToolTip/TooltipsDataLoader", () => ({
   TooltipsData: props => props.children,
 }))

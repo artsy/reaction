@@ -1,13 +1,12 @@
+import { mount } from "enzyme"
 import "jest-styled-components"
+import { cloneDeep } from "lodash"
 import React from "react"
 import renderer from "react-test-renderer"
-import { Sections } from "../Sections"
-import { StandardArticle, FeatureArticle } from "../../Fixtures/Articles"
+import { FeatureArticle, StandardArticle } from "../../Fixtures/Articles"
 import { WrapperWithFullscreenContext } from "../../Fixtures/Helpers"
-import { cloneDeep } from "lodash"
-import { mount } from "enzyme"
+import { Sections } from "../Sections"
 
-jest.mock("react-sizeme", () => jest.fn(c => d => d))
 jest.mock("react-lines-ellipsis/lib/html", () => {
   const React = require("react")
   return () => <div />
@@ -18,28 +17,23 @@ jest.mock("react-dom/server", () => ({
 }))
 
 const renderSnapshot = props => {
-  return renderer.create(
-    WrapperWithFullscreenContext(
-      <Sections {...props} />
-    )
-  ).toJSON()
+  return renderer
+    .create(WrapperWithFullscreenContext(<Sections {...props} />))
+    .toJSON()
 }
 
 const mountWrapper = props => {
-  return mount(
-    WrapperWithFullscreenContext(
-      <Sections {...props} />
-    )
-  )
+  return mount(WrapperWithFullscreenContext(<Sections {...props} />))
 }
 
 describe("Sections", () => {
   let props
-  beforeEach(() => props = {
-    article: StandardArticle,
-    DisplayPanel: () => <div>hi!</div>,
-    isMobile: true
-  })
+  beforeEach(() =>
+    (props = {
+      article: StandardArticle,
+      DisplayPanel: () => <div>hi!</div>,
+      isMobile: true,
+    }))
 
   describe("snapshots", () => {
     it("renders properly", () => {
@@ -51,20 +45,25 @@ describe("Sections", () => {
 
   describe("units", () => {
     it("doesnt throw an error on invalid markup", () => {
-      const spy = jest.spyOn(global.console, "error")
+      const originalConsoleError = console.error
+      try {
+        console.error = jest.fn()
 
-      expect(() => {
-        const article = cloneDeep(StandardArticle)
-        article.sections = [
-          {
-            type: "text",
-            body: "<p>busted",
-          },
-        ]
-        props.article = article
-        mountWrapper(props)
-        expect(spy).toHaveBeenCalled()
-      }).not.toThrowError()
+        expect(() => {
+          const article = cloneDeep(StandardArticle)
+          article.sections = [
+            {
+              type: "text",
+              body: "<p>busted",
+            },
+          ]
+          props.article = article
+          mountWrapper(props)
+          expect(console.error).toHaveBeenCalled()
+        }).not.toThrowError()
+      } finally {
+        console.error = originalConsoleError
+      }
     })
 
     it("does not inject if feature", () => {
@@ -72,7 +71,9 @@ describe("Sections", () => {
       article.layout = "feature"
       const spy = jest.spyOn(Sections.prototype, "mountDisplayToMarker")
       props.article = article
-      const wrapper = mountWrapper(props).childAt(0).instance()
+      const wrapper = mountWrapper(props)
+        .childAt(0)
+        .instance()
       expect(wrapper.state.shouldInjectMobileDisplay).toEqual(false)
       expect(spy).not.toHaveBeenCalled()
     })
@@ -80,7 +81,9 @@ describe("Sections", () => {
     it("does not inject if desktop", () => {
       const spy = jest.spyOn(Sections.prototype, "mountDisplayToMarker")
       props.isMobile = false
-      const wrapper = mountWrapper(props).childAt(0).instance()
+      const wrapper = mountWrapper(props)
+        .childAt(0)
+        .instance()
       expect(wrapper.state.shouldInjectMobileDisplay).toEqual(false)
       expect(spy).not.toHaveBeenCalled()
     })
@@ -91,7 +94,9 @@ describe("Sections", () => {
       document.getElementById = () => element
       const spy = jest.spyOn(Sections.prototype, "mountDisplayToMarker")
 
-      const wrapper = mountWrapper(props).childAt(0).instance()
+      const wrapper = mountWrapper(props)
+        .childAt(0)
+        .instance()
       expect(wrapper.state.shouldInjectMobileDisplay).toEqual(true)
       expect(spy).toHaveBeenCalled()
     })
@@ -114,13 +119,17 @@ describe("Sections", () => {
 
     it("#getContentStartIndex returns the index of first text section if feature", () => {
       props.article = FeatureArticle
-      const wrapper = mountWrapper(props).childAt(0).instance()
+      const wrapper = mountWrapper(props)
+        .childAt(0)
+        .instance()
       expect(wrapper.getContentStartIndex()).toBe(0)
     })
 
     it("#getContentEndIndex returns the index of last text section", () => {
       props.article = FeatureArticle
-      const wrapper = mountWrapper(props).childAt(0).instance()
+      const wrapper = mountWrapper(props)
+        .childAt(0)
+        .instance()
       expect(wrapper.getContentEndIndex()).toBe(11)
     })
   })
