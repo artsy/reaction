@@ -5,6 +5,7 @@ import { borders, JustifyContentProps, WidthProps } from "styled-system"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { media } from "Styleguide/Elements/Grid"
+import { Join } from "Styleguide/Elements/Join"
 
 export interface TabLike extends JSX.Element {
   props: TabProps
@@ -27,6 +28,8 @@ export interface TabsProps extends WidthProps, JustifyContentProps {
 
   /** Index of the Tab that should be pre-selected */
   initialTabIndex?: number
+
+  separator?: JSX.Element
 
   children: TabLike[]
 }
@@ -78,12 +81,12 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
   }
 
   render() {
-    const { children = [], justifyContent } = this.props
+    const { children = [], justifyContent, separator } = this.props
 
     return (
       <React.Fragment>
         <TabsContainer mb={0.5} width="100%" justifyContent={justifyContent}>
-          {children.map(this.renderTab)}
+          <Join separator={separator}>{children.map(this.renderTab)}</Join>
         </TabsContainer>
         <Box pt={3}>{children[this.state.activeTabIndex]}</Box>
       </React.Fragment>
