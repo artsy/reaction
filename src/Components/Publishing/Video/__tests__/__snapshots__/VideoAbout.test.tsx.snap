@@ -135,6 +135,14 @@ exports[`Video About matches the snapshot 1`] = `
   padding-left: 1em;
 }
 
+.c4 ul {
+  list-style: disc;
+}
+
+.c4 ol {
+  list-style: decimal;
+}
+
 .c4 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
@@ -908,6 +916,14 @@ exports[`Video About matches the snapshot with editable props 1`] = `
 .c4 ul,
 .c4 ol {
   padding-left: 1em;
+}
+
+.c4 ul {
+  list-style: disc;
+}
+
+.c4 ol {
+  list-style: decimal;
 }
 
 .c4 li {

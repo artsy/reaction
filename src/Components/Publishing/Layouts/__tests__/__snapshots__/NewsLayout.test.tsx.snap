@@ -237,6 +237,14 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   padding-left: 1em;
 }
 
+.c13 ul {
+  list-style: disc;
+}
+
+.c13 ol {
+  list-style: decimal;
+}
+
 .c13 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
@@ -1152,6 +1160,14 @@ exports[`News Layout renders the news layout properly 1`] = `
 .c13 ul,
 .c13 ol {
   padding-left: 1em;
+}
+
+.c13 ul {
+  list-style: disc;
+}
+
+.c13 ol {
+  list-style: decimal;
 }
 
 .c13 li {
