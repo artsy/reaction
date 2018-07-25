@@ -13,8 +13,6 @@ import { HeroSections } from "../../Fixtures/Components"
 import { VerticalOrSeriesTitle } from "../../Sections/VerticalOrSeriesTitle"
 import { Header } from "../Header"
 
-jest.mock("react-sizeme", () => jest.fn(c => d => d))
-
 describe("feature", () => {
   it("renders feature text header properly", () => {
     const article = _.extend({}, FeatureArticle, {

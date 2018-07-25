@@ -3,11 +3,17 @@ import { extend } from "lodash"
 import React from "react"
 import { Author } from "../Byline/Author"
 import { Byline } from "../Byline/Byline"
+import { ClassicByline } from "../Byline/ClassicByline"
 import { Date } from "../Byline/Date"
 import { NewsByline } from "../Byline/NewsByline"
 import { Share } from "../Byline/Share"
 import { ShareDate } from "../Byline/ShareDate"
-import { NewsArticle, StandardArticle } from "../Fixtures/Articles"
+import {
+  ClassicArticle,
+  ClassicArticleManyAuthors,
+  NewsArticle,
+  StandardArticle,
+} from "../Fixtures/Articles"
 import { Authors } from "../Fixtures/Components"
 import { EditableChild } from "../Fixtures/Helpers"
 import { Authors as AuthorInfo } from "../Sections/Authors"
@@ -113,6 +119,21 @@ storiesOf("Publishing/Byline/ShareDate", module).add("Share Date", () => {
     </div>
   )
 })
+storiesOf("Publishing/Byline/ClassicByline", module)
+  .add("Byline", () => {
+    return (
+      <div>
+        <ClassicByline article={ClassicArticle} />
+      </div>
+    )
+  })
+  .add("Many authors", () => {
+    return (
+      <div>
+        <ClassicByline article={ClassicArticleManyAuthors} />
+      </div>
+    )
+  })
 storiesOf("Publishing/Byline/NewsByline", module)
   .add("Byline", () => {
     return (

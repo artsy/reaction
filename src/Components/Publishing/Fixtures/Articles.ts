@@ -149,6 +149,23 @@ export const ClassicArticle: ArticleData = {
   ],
 }
 
+export const ClassicArticleManyAuthors = extend({}, ClassicArticle, {
+  contributing_authors: [
+    {
+      id: "523783258b3b815f7100055a",
+      name: "First Author",
+    },
+    {
+      id: "523783258b3b815f7100055a",
+      name: "Second Author",
+    },
+    {
+      id: "523783258b3b815f7100055a",
+      name: "Third Author",
+    },
+  ],
+})
+
 export const StandardArticle: ArticleData = {
   id: "594a7e2254c37f00177c0ea9",
   title: "New York's Next Art District",
@@ -650,6 +667,29 @@ export const FeatureArticle: ArticleData = {
     "https://artsy-media-uploads.s3.amazonaws.com/wU7ase6M0zWv6MLcC8-L5A%2Fd7hftxdivxxvm.cloudfront.jpg",
   published_at: "2017-06-29T15:00:00.000Z",
   slug: "artsy-editorial-path-winning-art-prize",
+}
+
+export const FeatureBasicVideoArticle: ArticleData = {
+  ...FeatureArticle,
+  hero_section: {
+    type: "basic",
+    title: "What’s the Path to Winning an Art Prize?",
+    url: "https://vimeo.com/238843720",
+    deck:
+      "Created by graphic designer Kati Forner for a Los Angeles-based fashion retailer",
+    cover_image_url:
+      "https://artsy-media-uploads.s3.amazonaws.com/ditbyaUgdcl6mHin07TfKA%2FMassimilianoGioni_0581.jpg",
+  },
+}
+
+export const FeatureBasicArticle: ArticleData = {
+  ...FeatureArticle,
+  hero_section: {
+    type: "basic",
+    title: "What’s the Path to Winning an Art Prize?",
+    deck:
+      "Created by graphic designer Kati Forner for a Los Angeles-based fashion retailer",
+  },
 }
 
 export const SponsoredArticle = extend(cloneDeep(FeatureArticle), Sponsor)

@@ -1,30 +1,31 @@
-// Type definitions for react-tracking 4.2
+// Type definitions for react-tracking 5.0
 // Project: https://github.com/NYTimes/react-tracking
 // Definitions by: Eloy Durán <https://github.com/alloy>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
+// TypeScript Version: 2.6
 
 declare module "react-tracking" {
-  import React from "react"
+  import * as React from "react"
 
   export interface TrackingProp {
-    trackEvent: ({}) => any
+    trackEvent({}): any
 
     /**
      * This method returns all of the contextual tracking data up until this point in the component hierarchy.
      */
-    getTrackingData: () => {}
+    getTrackingData(): {}
   }
 
   type Falsy = false | null | undefined | ""
 
-  interface Options<T> {
+  export interface Options<T> {
     /**
      * By default, data tracking objects are pushed to `window.dataLayer[]`. This is a good default if you use Google
      * Tag Manager. You can override this by passing in a dispatch function as a second parameter to the tracking
      * decorator `{ dispatch: fn() }` on some top-level component high up in your app (typically some root-level
      * component that wraps your entire app).
      */
-    dispatch?: (data: T) => any
+    dispatch?(data: T): any
 
     /**
      * To dispatch tracking data when a component mounts, you can pass in `{ dispatchOnMount: true }` as the second
@@ -47,20 +48,24 @@ declare module "react-tracking" {
      * A common use case for this is to dispatch a `pageview` event for every component in the application that has a
      * `page` property on its `trackingData`.
      */
-    process?: (ownTrackingData: T) => T | Falsy
+    process?(ownTrackingData: T): T | Falsy
   }
 
-  export type TrackingInfo<T, P> = T | ((props: P, args: any[]) => T)
+  export type TrackingInfo<T, P, S> =
+    | T
+    | ((props: P, state: S, args: any[any]) => T)
 
   // Duplicated from ES6 lib to remove the `void` typing, otherwise `track` can’t be used as a HOC function that passes
-  // through a JSX component that be used wihtout casting.
-  type ClassDecorator = <TFunction extends Function>(target: TFunction) => TFunction
+  // through a JSX component that be used without casting.
+  type ClassDecorator = <TFunction extends Function>(
+    target: TFunction
+  ) => TFunction
   type MethodDecorator = <T>(
-    target: Object,
+    target: object,
     propertyKey: string | symbol,
     descriptor: TypedPropertyDescriptor<T>
   ) => TypedPropertyDescriptor<T>
-  type Decorator = ClassDecorator & MethodDecorator
+  export type Decorator = ClassDecorator & MethodDecorator
 
   /**
    * This is the type of the `track` function. It’s declared as an interface so that consumers can extend the typing and
@@ -68,8 +73,11 @@ declare module "react-tracking" {
    *
    * For examples of such extensions see: https://github.com/artsy/reaction/blob/master/src/utils/track.ts
    */
-  export interface Track<T = {}, P = {}> {
-    (trackingInfo?: TrackingInfo<Partial<T>, P>, options?: Options<Partial<T>>): Decorator
+  export interface Track<T = any, P = any, S = any> {
+    (
+      trackingInfo?: TrackingInfo<T, P, S>,
+      options?: Options<Partial<T>>
+    ): Decorator
   }
 
   export const track: Track

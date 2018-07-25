@@ -184,7 +184,6 @@ exports[`renders an artwork caption properly 1`] = `
   >
     <div
       className="fullscreen-viewer__caption-toggle c2"
-      onClick={undefined}
     >
       <span>
         Hide
@@ -378,7 +377,6 @@ exports[`renders an image caption properly 1`] = `
   >
     <div
       className="fullscreen-viewer__caption-toggle c2"
-      onClick={undefined}
     >
       <span>
         Hide

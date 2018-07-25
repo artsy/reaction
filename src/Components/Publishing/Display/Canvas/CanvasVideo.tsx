@@ -1,7 +1,7 @@
 import { memoize, once } from "lodash"
 import React, { Component } from "react"
+import track from "react-tracking"
 import styled, { StyledFunction } from "styled-components"
-import { track } from "../../../../Utils/track"
 import { pMedia } from "../../../Helpers"
 import { VideoControls } from "../../Sections/VideoControls"
 
@@ -55,7 +55,7 @@ export class CanvasVideo extends Component<CanvasVideoProps, any> {
   trackProgress = () => {
     const secondsComplete = Math.floor(this.video.currentTime)
     const percentComplete = Math.floor(
-      this.video.currentTime / this.video.duration * 100
+      (this.video.currentTime / this.video.duration) * 100
     )
     const percentCompleteInterval = Math.floor(percentComplete / 25) * 25
 

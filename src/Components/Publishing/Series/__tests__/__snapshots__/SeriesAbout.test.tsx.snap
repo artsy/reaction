@@ -96,6 +96,14 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   padding-left: 1em;
 }
 
+.c6 ul {
+  list-style: disc;
+}
+
+.c6 ol {
+  list-style: decimal;
+}
+
 .c6 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
@@ -501,6 +509,14 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   padding-left: 1em;
 }
 
+.c6 ul {
+  list-style: disc;
+}
+
+.c6 ol {
+  list-style: decimal;
+}
+
 .c6 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
@@ -897,6 +913,14 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
 .c6 ul,
 .c6 ol {
   padding-left: 1em;
+}
+
+.c6 ul {
+  list-style: disc;
+}
+
+.c6 ol {
+  list-style: decimal;
 }
 
 .c6 li {
@@ -1324,6 +1348,14 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
 .c10 ul,
 .c10 ol {
   padding-left: 1em;
+}
+
+.c10 ul {
+  list-style: disc;
+}
+
+.c10 ol {
+  list-style: decimal;
 }
 
 .c10 li {

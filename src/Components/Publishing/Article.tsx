@@ -1,7 +1,8 @@
 import React from "react"
+import track from "react-tracking"
 import Events from "../../Utils/Events"
-import track from "../../Utils/track"
 import ArticleWithFullScreen from "./Layouts/ArticleWithFullScreen"
+import { ClassicLayout } from "./Layouts/ClassicLayout"
 import { NewsLayout } from "./Layouts/NewsLayout"
 import { SeriesLayout } from "./Layouts/SeriesLayout"
 import { VideoLayout } from "./Layouts/VideoLayout"
@@ -37,7 +38,7 @@ export interface ArticleProps {
 }
 
 @track(
-  props => {
+  (props: ArticleProps) => {
     return {
       page: "Article",
       entity_type: "article",
@@ -53,6 +54,9 @@ export class Article extends React.Component<ArticleProps> {
     const { article } = this.props
 
     switch (article.layout) {
+      case "classic": {
+        return <ClassicLayout {...this.props} />
+      }
       case "series": {
         return <SeriesLayout {...this.props} />
       }

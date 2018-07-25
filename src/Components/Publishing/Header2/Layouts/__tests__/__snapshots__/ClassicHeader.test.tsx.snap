@@ -1,0 +1,260 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Classic Header Snapshots renders editable props properly 1`] = `
+.c4 {
+  font-family: 'ITC Avant Garde Gothic W04','AvantGardeGothicITCW01D 731075',AvantGardeGothicITCW01Dm,Helvetica,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-size: 11px;
+  line-height: 1.65em;
+  color: #666;
+}
+
+.c3 {
+  display: block;
+  font-family: 'ITC Avant Garde Gothic W04','AvantGardeGothicITCW01D 731075',AvantGardeGothicITCW01Dm,Helvetica,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-size: 13px;
+  line-height: 1.65em;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  max-width: 900px;
+  width: 100%;
+  margin: 40px auto;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.c1 {
+  padding-bottom: 30px;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 37px;
+  line-height: 1.2em;
+  -webkit-font-smoothing: antialiased;
+}
+
+.c2 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 19px;
+  line-height: 1.5em;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.35em;
+  text-align: left;
+  max-width: 580px;
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: 30px;
+}
+
+.c2 p {
+  margin: 0;
+}
+
+@media (max-width:1280px) {
+  .c0 {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width:600px) {
+  .c0 {
+    text-align: left;
+  }
+}
+
+@media (max-width:600px) {
+  .c1 {
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-size: 34px;
+    line-height: 1.1em;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@media (max-width:600px) {
+  .c2 {
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-size: 17px;
+    line-height: 1.1em;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.35em;
+  }
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1"
+  >
+    <div>
+      Child 
+      Title
+    </div>
+  </div>
+  <div
+    className="c2"
+  >
+    <div>
+      Child 
+      Lead Paragraph
+    </div>
+  </div>
+  <div
+    className="c3"
+  >
+    Joanne Artman Gallery
+    <div
+      className="c4"
+      color="#666"
+    >
+      Jun 19, 2015 9:09 am
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Classic Header Snapshots renders properly 1`] = `
+.c4 {
+  font-family: 'ITC Avant Garde Gothic W04','AvantGardeGothicITCW01D 731075',AvantGardeGothicITCW01Dm,Helvetica,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-size: 11px;
+  line-height: 1.65em;
+  color: #666;
+}
+
+.c3 {
+  display: block;
+  font-family: 'ITC Avant Garde Gothic W04','AvantGardeGothicITCW01D 731075',AvantGardeGothicITCW01Dm,Helvetica,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-size: 13px;
+  line-height: 1.65em;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  max-width: 900px;
+  width: 100%;
+  margin: 40px auto;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.c1 {
+  padding-bottom: 30px;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 37px;
+  line-height: 1.2em;
+  -webkit-font-smoothing: antialiased;
+}
+
+.c2 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 19px;
+  line-height: 1.5em;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.35em;
+  text-align: left;
+  max-width: 580px;
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: 30px;
+}
+
+.c2 p {
+  margin: 0;
+}
+
+@media (max-width:1280px) {
+  .c0 {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width:600px) {
+  .c0 {
+    text-align: left;
+  }
+}
+
+@media (max-width:600px) {
+  .c1 {
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-size: 34px;
+    line-height: 1.1em;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@media (max-width:600px) {
+  .c2 {
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-size: 17px;
+    line-height: 1.1em;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.35em;
+  }
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1"
+  >
+    New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple
+  </div>
+  <div
+    className="c2"
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "<p>Critics were skeptical of Bambi when it was first released in 1942—what was the point, they wondered, of a cartoon that ignored fantasy in favor of naturalistic forest landscapes?</p>",
+      }
+    }
+  />
+  <div
+    className="c3"
+  >
+    Joanne Artman Gallery
+    <div
+      className="c4"
+      color="#666"
+    >
+      Jul 28, 2017 4:38 pm
+    </div>
+  </div>
+</div>
+`;

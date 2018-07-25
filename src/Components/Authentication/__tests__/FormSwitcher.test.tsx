@@ -10,10 +10,6 @@ import { MobileLoginForm } from "../Mobile/LoginForm"
 import { MobileSignUpForm } from "../Mobile/SignUpForm"
 import { ModalType } from "../Types"
 
-jest.mock("Utils/track.ts", () => ({
-  track: () => jest.fn(c => c),
-}))
-
 describe("FormSwitcher", () => {
   const getWrapper = (props: any = {}) =>
     mount(

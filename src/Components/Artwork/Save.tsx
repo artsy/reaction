@@ -1,3 +1,6 @@
+import { Save_artwork } from "__generated__/Save_artwork.graphql"
+import { track } from "Analytics"
+import * as Schema from "Analytics/Schema"
 import { isNull } from "lodash"
 import React from "react"
 import {
@@ -7,7 +10,6 @@ import {
   RelayProp,
 } from "react-relay"
 import * as RelayRuntimeTypes from "relay-runtime"
-
 import styled from "styled-components"
 import colors from "../../Assets/Colors"
 import * as Artsy from "../../Components/Artsy"
@@ -16,9 +18,9 @@ import Icon from "../Icon"
 const SIZE = 40
 
 export interface Props
-  extends RelayProps,
-    Artsy.ContextProps,
+  extends Artsy.ContextProps,
     React.HTMLProps<React.ComponentType> {
+  artwork: Save_artwork
   style?: any
   relay?: RelayProp
   relayEnvironment?: RelayRuntimeTypes.Environment
@@ -35,149 +37,157 @@ interface State {
   isHovered: boolean
 }
 
-export const SaveButtonContainer = Artsy.ContextConsumer(
-  class extends React.Component<Props, State> {
-    static defaultProps = {
-      useRelay: true,
-    }
+@track()
+class SaveButtonContainer extends React.Component<Props, State> {
+  static defaultProps = {
+    useRelay: true,
+  }
 
-    state = {
-      is_saved: null,
-      isHovered: false,
-    }
+  state = {
+    is_saved: null,
+    isHovered: false,
+  }
 
-    get isSaved() {
-      const isSaved = isNull(this.state.is_saved)
-        ? this.props.artwork.is_saved
-        : this.state.is_saved
+  get isSaved() {
+    const isSaved = isNull(this.state.is_saved)
+      ? this.props.artwork.is_saved
+      : this.state.is_saved
 
-      return isSaved
-    }
+    return isSaved
+  }
 
-    handleSave() {
-      const {
-        currentUser,
-        artwork,
-        relay,
-        relayEnvironment,
-        useRelay,
-      } = this.props
-      const environment = (relay && relay.environment) || relayEnvironment
+  @track<Props>(
+    props =>
+      ({
+        action_type: props.artwork.is_saved
+          ? "Removed Artwork"
+          : "Saved Artwork",
+        entity_slug: props.artwork.id,
+      } as Schema.Old)
+  )
+  handleSave() {
+    const {
+      currentUser,
+      artwork,
+      relay,
+      relayEnvironment,
+      useRelay,
+    } = this.props
+    const environment = (relay && relay.environment) || relayEnvironment
 
-      if (environment && currentUser && currentUser.id) {
-        // Optimistic update for environments that don't have typical access to
-        // Relay, e.g., where new ArtworkGrids are used in old code via Stitch. Note
-        // that the prop `useRelay` refers to outer HOC wrappers. In cases where
-        // Save UI components are used it is possible to piggyback on ContextProvider
-        // environment for mutations, but since the component exists outside of a
-        // Relay HOC props are not updated when successful mutations occur -- hence
-        // the need for setState.
-        //
-        // TODO:
-        // Refactor out `useRelay` prop when Force artwork Grids have been moved
-        // completely over to Relay
+    if (environment && currentUser && currentUser.id) {
+      // Optimistic update for environments that don't have typical access to
+      // Relay, e.g., where new ArtworkGrids are used in old code via Stitch. Note
+      // that the prop `useRelay` refers to outer HOC wrappers. In cases where
+      // Save UI components are used it is possible to piggyback on ContextProvider
+      // environment for mutations, but since the component exists outside of a
+      // Relay HOC props are not updated when successful mutations occur -- hence
+      // the need for setState.
+      //
+      // TODO:
+      // Refactor out `useRelay` prop when Force artwork Grids have been moved
+      // completely over to Relay
 
-        if (!useRelay) {
-          this.setState({
-            is_saved: !this.isSaved,
-          })
-        }
+      if (!useRelay) {
+        this.setState({
+          is_saved: !this.isSaved,
+        })
+      }
 
-        commitMutation(environment, {
-          mutation: graphql`
-            mutation SaveArtworkMutation($input: SaveArtworkInput!) {
-              saveArtwork(input: $input) {
-                artwork {
-                  id
-                  is_saved
-                }
+      commitMutation(environment, {
+        mutation: graphql`
+          mutation SaveArtworkMutation($input: SaveArtworkInput!) {
+            saveArtwork(input: $input) {
+              artwork {
+                id
+                is_saved
               }
             }
-          `,
-          variables: {
-            input: {
-              artwork_id: artwork.id,
-              remove: this.isSaved,
+          }
+        `,
+        variables: {
+          input: {
+            artwork_id: artwork.id,
+            remove: this.isSaved,
+          },
+        },
+        optimisticResponse: {
+          saveArtwork: {
+            artwork: {
+              __id: artwork.__id,
+              is_saved: !this.isSaved,
             },
           },
-          optimisticResponse: {
-            saveArtwork: {
-              artwork: {
-                __id: artwork.__id,
-                is_saved: !this.isSaved,
-              },
-            },
-          },
-          onError: error => {
-            // Revert optimistic update
-            if (!useRelay) {
-              this.setState({
-                is_saved: this.isSaved,
-              })
-            }
+        },
+        onError: error => {
+          // Revert optimistic update
+          if (!useRelay) {
+            this.setState({
+              is_saved: this.isSaved,
+            })
+          }
 
-            console.error("Artwork/Save Error saving artwork: ", error)
-          },
-          onCompleted: ({ saveArtwork }) => {
-            if (!useRelay) {
-              this.setState({
-                is_saved: saveArtwork.artwork.is_saved,
-              })
-            }
+          console.error("Artwork/Save Error saving artwork: ", error)
+        },
+        onCompleted: ({ saveArtwork }) => {
+          if (!useRelay) {
+            this.setState({
+              is_saved: saveArtwork.artwork.is_saved,
+            })
+          }
+        },
+      })
+    } else {
+      if (this.props.mediator) {
+        this.props.mediator.trigger("open:auth", {
+          mode: "signup",
+          copy: `Sign up to save artworks`,
+          intent: "save artwork",
+          signupIntent: "save artwork",
+          trigger: "click",
+          afterSignUpAction: {
+            action: "save",
+            objectId: this.props.artwork.id,
           },
         })
       } else {
-        if (this.props.mediator) {
-          this.props.mediator.trigger("open:auth", {
-            mode: "signup",
-            copy: `Sign up to save artworks`,
-            intent: "save artwork",
-            signupIntent: "save artwork",
-            trigger: "click",
-            afterSignUpAction: {
-              action: "save",
-              objectId: this.props.artwork.id,
-            },
-          })
-        } else {
-          window.location.href = "/login"
-        }
+        window.location.href = "/login"
       }
     }
-
-    render() {
-      const { style } = this.props
-      const saveStyle = this.isSaved ? { opacity: 1.0 } : {}
-      const fullStyle = { ...style, ...saveStyle }
-      const iconName =
-        this.isSaved && this.state.isHovered ? "remove-small" : "heart"
-      const iconFontSize = iconName === "heart" ? "24px" : "16px"
-
-      return (
-        <div
-          className={this.props.className}
-          style={fullStyle}
-          onClick={() => this.handleSave()}
-          data-saved={this.isSaved}
-          onMouseEnter={() => {
-            this.setState({ isHovered: true })
-          }}
-          onMouseLeave={() => {
-            this.setState({ isHovered: false })
-          }}
-        >
-          <Icon
-            name={iconName}
-            height={SIZE}
-            color="white"
-            fontSize={iconFontSize}
-            style={{ verticalAlign: "middle" }}
-          />
-        </div>
-      )
-    }
   }
-)
+
+  render() {
+    const { style } = this.props
+    const saveStyle = this.isSaved ? { opacity: 1.0 } : {}
+    const fullStyle = { ...style, ...saveStyle }
+    const iconName =
+      this.isSaved && this.state.isHovered ? "remove-small" : "heart"
+    const iconFontSize = iconName === "heart" ? "24px" : "16px"
+
+    return (
+      <div
+        className={this.props.className}
+        style={fullStyle}
+        onClick={() => this.handleSave()}
+        data-saved={this.isSaved}
+        onMouseEnter={() => {
+          this.setState({ isHovered: true })
+        }}
+        onMouseLeave={() => {
+          this.setState({ isHovered: false })
+        }}
+      >
+        <Icon
+          name={iconName}
+          height={SIZE}
+          color="white"
+          fontSize={iconFontSize}
+          style={{ verticalAlign: "middle" }}
+        />
+      </div>
+    )
+  }
+}
 
 export const SaveButton = styled(SaveButtonContainer)`
   display: block;
@@ -212,11 +222,3 @@ export default createFragmentContainer(
     }
   `
 )
-
-interface RelayProps {
-  artwork: {
-    __id: string
-    id: string
-    is_saved: boolean | null
-  }
-}

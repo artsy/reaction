@@ -3,6 +3,9 @@
 import { ConcreteFragment } from "relay-runtime";
 export type CurrentEvent_artist = {
     readonly currentEvent: ({
+        readonly event: {
+            readonly __typename: string;
+        };
         readonly image: ({
             readonly resized: ({
                 readonly url: string | null;
@@ -18,7 +21,15 @@ export type CurrentEvent_artist = {
 
 
 
-const node: ConcreteFragment = {
+const node: ConcreteFragment = (function(){
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
+};
+return {
   "kind": "Fragment",
   "name": "CurrentEvent_artist",
   "type": "Artist",
@@ -34,6 +45,25 @@ const node: ConcreteFragment = {
       "concreteType": "CurrentEvent",
       "plural": false,
       "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "event",
+          "storageKey": null,
+          "args": null,
+          "concreteType": null,
+          "plural": false,
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "__typename",
+              "args": null,
+              "storageKey": null
+            },
+            v0
+          ]
+        },
         {
           "kind": "LinkedField",
           "alias": null,
@@ -107,14 +137,9 @@ const node: ConcreteFragment = {
         }
       ]
     },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
-    }
+    v0
   ]
 };
-(node as any).hash = 'abe3848fb9d4976b259cb44d7156145a';
+})();
+(node as any).hash = '3e83a9a09afbd679fe1cac057ff044cc';
 export default node;

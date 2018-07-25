@@ -1,9 +1,8 @@
 import { Shipping_order } from "__generated__/Shipping_order.graphql"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Link } from "Router"
-import { Button } from "Styleguide/Elements/Button"
-import { Spacer } from "Styleguide/Elements/Spacer"
+import { Placeholder } from "Styleguide/Utils/Placeholder"
+import { TwoColumnLayout } from "../../Components/TwoColumnLayout"
 
 export interface ShippingProps {
   order: Shipping_order
@@ -11,20 +10,12 @@ export interface ShippingProps {
 
 export class ShippingRoute extends Component<ShippingProps> {
   render() {
-    const { order } = this.props
-
+    // const { order } = this.props
     return (
-      <React.Fragment>
-        Shipping page
-        <Spacer mb={1} />
-        {`Order #${order.id}`}
-        <Spacer mb={2} />
-        <Link to={`/order2/${order.id}/payment`}>
-          <Button variant="primaryBlack" size="medium" m={0.5}>
-            Go to payment page
-          </Button>
-        </Link>
-      </React.Fragment>
+      <TwoColumnLayout
+        Content={<Placeholder height="460px" name="Content" />}
+        Sidebar={<Placeholder height="390px" name="Sidebar" />}
+      />
     )
   }
 }

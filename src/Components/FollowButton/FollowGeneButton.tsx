@@ -6,8 +6,8 @@ import {
   graphql,
   RelayProp,
 } from "react-relay"
+import track from "react-tracking"
 import { FollowGeneButton_gene } from "../../__generated__/FollowGeneButton_gene.graphql"
-import { track } from "../../Utils/track"
 import * as Artsy from "../Artsy"
 import { FollowButtonDeprecated } from "./ButtonDeprecated"
 import { FollowTrackingData } from "./Typings"

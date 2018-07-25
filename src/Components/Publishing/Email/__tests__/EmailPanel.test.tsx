@@ -5,10 +5,6 @@ import renderer from "react-test-renderer"
 import request from "superagent"
 import { EmailPanel } from "../EmailPanel"
 
-jest.mock("../../../../Utils/track.ts", () => ({
-  track: jest.fn(),
-}))
-
 jest.mock("superagent", () => {
   const end = jest.fn()
   const set = jest.fn().mockReturnValue({ end })

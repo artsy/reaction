@@ -1,48 +1,32 @@
 import * as Found from "found"
 import { withRouter } from "found"
 import { Link } from "found"
-import { compose, isEmpty, isUndefined, last, pick } from "lodash/fp"
+import { isEmpty, isUndefined, last, pick } from "lodash/fp"
 import PropTypes from "prop-types"
 import React from "react"
 import { fetchQuery } from "react-relay"
 import { QueryRendererProps } from "react-relay"
 import { AppState, PreloadLinkState } from "Router/state"
 import { Subscribe } from "unstated"
-import { ContextConsumer } from "../Components/Artsy"
-import { PreloadLinkProps } from "./types"
+import { ContextConsumer, ContextProps } from "../Components/Artsy"
+import { AppStateContainer } from "./types"
 
-/**
- * PreloadLink is a wrapper around Found's (and found-relay's) <Link> component.
- * It checks to see if a relay query is attached to a given route and blocks
- * transitions until after the route has loaded.
- *
- * @example
- *
- * return (
- *   <Nav>
- *     <PreloadLink to='/'>Home</PreloadLink>
- *     <PreloadLink to='/artworks'>Artworks</PreloadLink>
- *     <PreloadLink to='/artist/pablo-picasso'>Artist</PreloadLink>
- *   </Nav>
- * )
- *
- * For UI that requires router-connected <Tabs>, can use the <RouterTabs>
- * component which wraps PreloadLink:
- *
- * @example
- *
- * return (
- *   <RouteTabs>
- *     <RouteTab to='/'>Home</RouteTab>
- *     <RouteTab to='/artworks' immediate>Loads immediately in the background</RouteTab>
- *     <RouteTab to='/artist/pablo-picasso'>Artist</RouteTab>
- *   </RouteTabs>
- * )
- */
-export const PreloadLink = compose(
-  withRouter,
-  ContextConsumer
-)(preloadLinkProps => {
+export interface PreloadLinkProps extends AppStateContainer {
+  children?: any
+  exact?: boolean
+  immediate?: boolean
+  // FIXME: This doesn’t seem used anywhere?
+  name?: string
+  onClick?: () => void
+  onToggleLoading?: (isLoading: boolean) => void
+  replace?: string
+  router?: any // TODO, from found
+  to?: string
+}
+
+const _PreloadLink: React.SFC<
+  PreloadLinkProps & ContextProps & Found.WithRouter
+> = preloadLinkProps => {
   /**
    * Create a Preloader wrapper to perform relay fetches and render out a <Link>
    */
@@ -139,7 +123,8 @@ export const PreloadLink = compose(
       const augmentedMatch = { ...match, routes }
       const routeMatches = getRouteMatches(augmentedMatch)
 
-      const query = last(
+      // FIXME: This should result in a GraphQLTaggedNode type
+      const query: any = last(
         getRouteValues(
           routeMatches,
           route => route.getQuery,
@@ -206,8 +191,12 @@ export const PreloadLink = compose(
 
     handleClick = event => {
       event.preventDefault()
-      this.props.onToggleLoading(true)
 
+      if (this.props.onClick) {
+        this.props.onClick()
+      }
+
+      this.props.onToggleLoading(true)
       this.fetchData().then(() => {
         const { router, replace, to } = this.props
         this.props.onToggleLoading(false)
@@ -223,7 +212,10 @@ export const PreloadLink = compose(
     render() {
       // Under the hood <Link> desugars to an `<a>` tag. Ensure only whitelisted
       // props pass through to avoid React warnings.
-      const whitelistedProps = pick(
+      //
+      // FIXME: Not really clear if these indeed should all be passed through
+      //        and not all of them are in the public props either.
+      const whitelistedProps: any = pick(
         ["Component", "activeClassName", "exact", "replace", "to"],
         this.props
       )
@@ -252,4 +244,6 @@ export const PreloadLink = compose(
       }}
     </Subscribe>
   )
-})
+}
+
+export const PreloadLink = withRouter(ContextConsumer(_PreloadLink))

@@ -16,47 +16,25 @@ query routes_ArtistTopLevelQuery(
   $artistID: String!
 ) {
   artist(id: $artistID) {
-    ...ArtistHeader_artist
-    ...NavigationTabs_artist
+    ...ArtistApp_artist
     __id
   }
   me {
-    ...RecentlyViewed_me
+    ...ArtistApp_me
     __id
   }
 }
 
-fragment ArtistHeader_artist on Artist {
-  name
+fragment ArtistApp_artist on Artist {
+  _id
   id
-  nationality
-  years
-  counts {
-    follows
-  }
-  carousel {
-    images {
-      href
-      resized(height: 300) {
-        url
-        width
-        height
-      }
-    }
-  }
-  ...FollowArtistButton_artist
+  ...ArtistHeader_artist
+  ...NavigationTabs_artist
   __id
 }
 
-fragment NavigationTabs_artist on Artist {
-  id
-  statuses {
-    shows
-    artists
-    articles
-    cv(minShowCount: 0)
-    auction_lots
-  }
+fragment ArtistApp_me on Me {
+  ...RecentlyViewed_me
   __id
 }
 
@@ -149,6 +127,41 @@ fragment Contact_artwork on Artwork {
   __id
 }
 
+fragment ArtistHeader_artist on Artist {
+  _id
+  id
+  name
+  nationality
+  years
+  counts {
+    follows
+  }
+  carousel {
+    images {
+      href
+      resized(height: 300) {
+        url
+        width
+        height
+      }
+    }
+  }
+  ...FollowArtistButton_artist
+  __id
+}
+
+fragment NavigationTabs_artist on Artist {
+  id
+  statuses {
+    shows
+    artists
+    articles
+    cv(minShowCount: 0)
+    auction_lots
+  }
+  __id
+}
+
 fragment FollowArtistButton_artist on Artist {
   __id
   id
@@ -186,7 +199,7 @@ v2 = {
 v3 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "name",
+  "name": "_id",
   "args": null,
   "storageKey": null
 },
@@ -200,11 +213,18 @@ v4 = {
 v5 = {
   "kind": "ScalarField",
   "alias": null,
+  "name": "name",
+  "args": null,
+  "storageKey": null
+},
+v6 = {
+  "kind": "ScalarField",
+  "alias": null,
   "name": "href",
   "args": null,
   "storageKey": null
 },
-v6 = [
+v7 = [
   {
     "kind": "Literal",
     "name": "shallow",
@@ -212,7 +232,7 @@ v6 = [
     "type": "Boolean"
   }
 ],
-v7 = {
+v8 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "display",
@@ -224,7 +244,7 @@ return {
   "operationKind": "query",
   "name": "routes_ArtistTopLevelQuery",
   "id": null,
-  "text": "query routes_ArtistTopLevelQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...ArtistHeader_artist\n    ...NavigationTabs_artist\n    __id\n  }\n  me {\n    ...RecentlyViewed_me\n    __id\n  }\n}\n\nfragment ArtistHeader_artist on Artist {\n  name\n  id\n  nationality\n  years\n  counts {\n    follows\n  }\n  carousel {\n    images {\n      href\n      resized(height: 300) {\n        url\n        width\n        height\n      }\n    }\n  }\n  ...FollowArtistButton_artist\n  __id\n}\n\nfragment NavigationTabs_artist on Artist {\n  id\n  statuses {\n    shows\n    artists\n    articles\n    cv(minShowCount: 0)\n    auction_lots\n  }\n  __id\n}\n\nfragment RecentlyViewed_me on Me {\n  recentlyViewedArtworks(first: 20) {\n    edges {\n      node {\n        __id\n        image {\n          aspect_ratio\n          placeholder\n          url(version: \"large\")\n        }\n        href\n        ...Metadata_artwork\n        ...Save_artwork\n      }\n    }\n  }\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n",
+  "text": "query routes_ArtistTopLevelQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...ArtistApp_artist\n    __id\n  }\n  me {\n    ...ArtistApp_me\n    __id\n  }\n}\n\nfragment ArtistApp_artist on Artist {\n  _id\n  id\n  ...ArtistHeader_artist\n  ...NavigationTabs_artist\n  __id\n}\n\nfragment ArtistApp_me on Me {\n  ...RecentlyViewed_me\n  __id\n}\n\nfragment RecentlyViewed_me on Me {\n  recentlyViewedArtworks(first: 20) {\n    edges {\n      node {\n        __id\n        image {\n          aspect_ratio\n          placeholder\n          url(version: \"large\")\n        }\n        href\n        ...Metadata_artwork\n        ...Save_artwork\n      }\n    }\n  }\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n\nfragment ArtistHeader_artist on Artist {\n  _id\n  id\n  name\n  nationality\n  years\n  counts {\n    follows\n  }\n  carousel {\n    images {\n      href\n      resized(height: 300) {\n        url\n        width\n        height\n      }\n    }\n  }\n  ...FollowArtistButton_artist\n  __id\n}\n\nfragment NavigationTabs_artist on Artist {\n  id\n  statuses {\n    shows\n    artists\n    articles\n    cv(minShowCount: 0)\n    auction_lots\n  }\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -244,12 +264,7 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "ArtistHeader_artist",
-            "args": null
-          },
-          {
-            "kind": "FragmentSpread",
-            "name": "NavigationTabs_artist",
+            "name": "ArtistApp_artist",
             "args": null
           },
           v2
@@ -266,7 +281,7 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "RecentlyViewed_me",
+            "name": "ArtistApp_me",
             "args": null
           },
           v2
@@ -290,6 +305,7 @@ return {
         "selections": [
           v3,
           v4,
+          v5,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -340,7 +356,7 @@ return {
                 "concreteType": "Image",
                 "plural": true,
                 "selections": [
-                  v5,
+                  v6,
                   {
                     "kind": "LinkedField",
                     "alias": null,
@@ -498,7 +514,7 @@ return {
                         "storageKey": null
                       },
                       v2,
-                      v5,
+                      v6,
                       {
                         "kind": "ScalarField",
                         "alias": null,
@@ -532,13 +548,13 @@ return {
                         "alias": null,
                         "name": "artists",
                         "storageKey": "artists(shallow:true)",
-                        "args": v6,
+                        "args": v7,
                         "concreteType": "Artist",
                         "plural": true,
                         "selections": [
                           v2,
-                          v5,
-                          v3
+                          v6,
+                          v5
                         ]
                       },
                       {
@@ -585,12 +601,12 @@ return {
                         "alias": null,
                         "name": "partner",
                         "storageKey": "partner(shallow:true)",
-                        "args": v6,
+                        "args": v7,
                         "concreteType": "Partner",
                         "plural": false,
                         "selections": [
-                          v3,
                           v5,
+                          v6,
                           v2,
                           {
                             "kind": "ScalarField",
@@ -641,13 +657,7 @@ return {
                           v2
                         ]
                       },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "name": "_id",
-                        "args": null,
-                        "storageKey": null
-                      },
+                      v3,
                       {
                         "kind": "ScalarField",
                         "alias": null,
@@ -673,7 +683,7 @@ return {
                             "concreteType": "SaleArtworkHighestBid",
                             "plural": false,
                             "selections": [
-                              v7,
+                              v8,
                               {
                                 "kind": "ScalarField",
                                 "alias": "__id",
@@ -692,7 +702,7 @@ return {
                             "concreteType": "SaleArtworkOpeningBid",
                             "plural": false,
                             "selections": [
-                              v7
+                              v8
                             ]
                           },
                           {
@@ -737,5 +747,5 @@ return {
   }
 };
 })();
-(node as any).hash = '1050acf742b923f909b527812e4341b3';
+(node as any).hash = '785226cb9fb82a4ad581f65afaaee9c6';
 export default node;

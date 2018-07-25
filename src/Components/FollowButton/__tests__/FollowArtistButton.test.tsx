@@ -12,10 +12,6 @@ jest.mock("react-relay", () => ({
   createFragmentContainer: component => component,
 }))
 
-jest.mock("../../../Utils/track.ts", () => ({
-  track: () => jest.fn(c => c),
-}))
-
 describe("FollowArtistButton", () => {
   const getWrapper = (props = {}, currentUser = {}) => {
     return mount(

@@ -459,6 +459,14 @@ exports[`Sections snapshots renders properly 1`] = `
   padding-left: 1em;
 }
 
+.c2 ul {
+  list-style: disc;
+}
+
+.c2 ol {
+  list-style: decimal;
+}
+
 .c2 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
@@ -1582,7 +1590,6 @@ exports[`Sections snapshots renders properly 1`] = `
     >
       <div
         className="c23"
-        width={undefined}
       >
         <div
           className="article-image"
@@ -2105,7 +2112,6 @@ exports[`Sections snapshots renders properly 1`] = `
     >
       <div
         className="c23"
-        width={undefined}
       >
         <div
           className="article-image"
@@ -2227,7 +2233,6 @@ exports[`Sections snapshots renders properly 1`] = `
           <span>
             <a
               href="http://artsy.net"
-              title={undefined}
             >
               Casey Lesser
             </a>

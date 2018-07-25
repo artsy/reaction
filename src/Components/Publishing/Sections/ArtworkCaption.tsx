@@ -23,13 +23,16 @@ interface StyledArtworkCaptionProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
-  joinParts(children, delimiter = ", ") {
+  joinParts(children, key, delimiter = ", ") {
     const compacted = _.compact(children)
-    const delimSpan = <span>{delimiter}</span>
 
     if (compacted.length) {
-      const reduced = compacted.reduce((prev, curr) => {
-        return [prev, delimSpan, curr]
+      const reduced = compacted.reduce((prev, curr, i) => {
+        return [
+          prev,
+          <span key={`joinParts-${key}-${i}`}>{delimiter}</span>,
+          curr,
+        ]
       })
       return reduced
     } else {
@@ -41,11 +44,13 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
     if (names.length === 0) {
       return []
     }
-    const delimSpan = <span>{delimiter}</span>
 
     return names.slice(1).reduce(
       (prev, curr, i) => {
-        return prev.concat([delimSpan, curr])
+        return prev.concat([
+          <span key={`joinArtistNames-${i}`}>{delimiter}</span>,
+          curr,
+        ])
       },
       [names[0]]
     )
@@ -59,7 +64,7 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
     // Multiple artists
     if (artists && artists.length > 1) {
       const names = artists.map((a, i) => {
-        const artistName = this.renderArtistName(a, i)
+        const artistName = this.renderArtistName(a, `renderArtists-${i}`)
         return artistName
       })
 
@@ -68,12 +73,12 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
 
       // Single artist
     } else if (artist) {
-      const artistName = this.renderArtistName(artist, 0)
+      const artistName = this.renderArtistName(artist, "renderArtists-single")
       return artistName
     }
   }
 
-  renderArtistName(artist, i) {
+  renderArtistName(artist, key: string) {
     const { linked } = this.props
     const { name, slug } = artist
     const createTextLink = linked && slug
@@ -82,20 +87,24 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
       const href = `/artist/${slug}`
 
       return (
-        <ArtistName key={`artist-${i}`}>
+        <ArtistName key={`renderArtistName-${key}`}>
           <TextLink href={href} color="#999">
             {name}
           </TextLink>
         </ArtistName>
       )
     } else {
-      return <span className="name">{name}</span>
+      return (
+        <span key={`renderArtistName-${key}`} className="name">
+          {name}
+        </span>
+      )
     }
   }
 
   renderTitleDate() {
     const children = [this.renderTitle(), this.renderDate()]
-    const titleDate = this.joinParts(children)
+    const titleDate = this.joinParts(children, "renderTitleDate")
     return titleDate
   }
 
@@ -110,7 +119,7 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
         const href = `/artwork/${slug}`
 
         return (
-          <span key={0} className="title">
+          <span key="renderTitle" className="title">
             <TextLink href={href} color="#999">
               {title}
             </TextLink>
@@ -118,7 +127,7 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
         )
       } else {
         return (
-          <span key={0} className="title">
+          <span key="renderTitle" className="title">
             {title}
           </span>
         )
@@ -133,7 +142,7 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
 
     if (date && date.length) {
       return (
-        <span key={1} className="date">
+        <span key="renderDate" className="date">
           {date}
         </span>
       )
@@ -153,7 +162,7 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
 
       if (createTextLink) {
         return (
-          <TextLink key={2} href={`/${slug}`} color="#999">
+          <TextLink key="renderPartner" href={`/${slug}`} color="#999">
             {name}
           </TextLink>
         )
@@ -170,7 +179,7 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
 
     if (credit && credit.length) {
       return (
-        <span key={3} className="credit">
+        <span key="renderCredit" className="credit">
           {credit}
         </span>
       )
@@ -180,7 +189,7 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
   renderPartnerCredit = () => {
     const children = [this.renderPartner(), this.renderCredit()]
 
-    const joined = this.joinParts(children, ". ")
+    const joined = this.joinParts(children, "renderPartnerCredit", ". ")
     return joined
   }
 
