@@ -7,6 +7,8 @@ import _track from "react-tracking"
 const track = _track as jest.Mock<typeof _track>
 track.mockImplementation(y => x => x)
 
+jest.mock("react-sizeme", () => jest.fn(c => d => d))
+
 Enzyme.configure({ adapter: new Adapter() })
 
 if (typeof window !== "undefined") {

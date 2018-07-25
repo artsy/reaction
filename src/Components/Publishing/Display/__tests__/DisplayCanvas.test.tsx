@@ -18,8 +18,6 @@ import {
   UnitCanvasVideo,
 } from "../../Fixtures/Components"
 
-jest.mock("react-sizeme", () => jest.fn(c => d => d))
-
 describe("snapshot", () => {
   it("renders the canvas in standard layout with image", () => {
     const displayPanel = renderer

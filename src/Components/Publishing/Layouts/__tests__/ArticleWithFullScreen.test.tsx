@@ -9,8 +9,6 @@ import { ArticleWithFullScreen } from "../ArticleWithFullScreen"
 import { FeatureLayout } from "../FeatureLayout"
 import { StandardLayout } from "../StandardLayout"
 
-jest.mock("react-sizeme", () => jest.fn(c => d => d))
-jest.mock("react-tracking", () => jest.fn(c => d => d))
 jest.mock("../../Sections/FullscreenViewer/withFullScreen", () => ({
   withFullScreen: x => x,
 }))

@@ -8,7 +8,6 @@ import { Article } from "../Article"
 import { getArticleFullHref } from "../Constants"
 import { StandardArticle } from "../Fixtures/Articles"
 
-jest.mock("react-sizeme", () => jest.fn(c => d => d))
 jest.mock("../ToolTip/TooltipsDataLoader", () => ({
   TooltipsData: props => props.children,
 }))
