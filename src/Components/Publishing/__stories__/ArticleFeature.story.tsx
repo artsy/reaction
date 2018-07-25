@@ -93,7 +93,6 @@ story
           display={Display("image")}
           relatedArticlesForPanel={RelatedPanel}
           relatedArticlesForCanvas={RelatedCanvas}
-          emailSignupUrl="#"
           isTruncated
         />
       </ContextProvider>

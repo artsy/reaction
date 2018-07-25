@@ -24,7 +24,6 @@ export interface ArticleProps {
 export const FeatureLayout: React.SFC<ArticleProps> = props => {
   const {
     article,
-    headerHeight,
     isMobile,
     isSuper,
     relatedArticlesForCanvas,
@@ -38,7 +37,7 @@ export const FeatureLayout: React.SFC<ArticleProps> = props => {
     article.hero_section &&
     article.hero_section.type === "fullscreen"
   const sponsor = (seriesArticle && seriesArticle.sponsor) || article.sponsor
-  const height = hasNav ? "100vh" : headerHeight
+  const hasRelated = relatedArticlesForCanvas && !isSuper && !seriesArticle
 
   return (
     <FeatureLayoutContainer>
@@ -50,9 +49,9 @@ export const FeatureLayout: React.SFC<ArticleProps> = props => {
           transparent
         />
       )}
-      <Header article={article} height={height} isMobile={isMobile} />
+      <Header article={article} />
 
-      <FeatureLayoutContent className="article-content">
+      <FeatureLayoutContent>
         <Sections
           article={article}
           isMobile={isMobile}
@@ -60,17 +59,14 @@ export const FeatureLayout: React.SFC<ArticleProps> = props => {
         />
       </FeatureLayoutContent>
 
-      {relatedArticlesForCanvas &&
-        !isSuper &&
-        !seriesArticle && (
-          <div>
-            <RelatedArticlesCanvas
-              articles={relatedArticlesForCanvas}
-              vertical={article.vertical}
-            />
-          </div>
-        )}
       {seriesArticle && <ArticleCardsBlock {...props} />}
+
+      {hasRelated && (
+        <RelatedArticlesCanvas
+          articles={relatedArticlesForCanvas}
+          vertical={article.vertical}
+        />
+      )}
     </FeatureLayoutContainer>
   )
 }

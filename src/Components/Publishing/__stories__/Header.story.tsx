@@ -1,198 +1,171 @@
 import { storiesOf } from "@storybook/react"
-import _ from "lodash"
+import { extend } from "lodash"
 import React from "react"
-
-import { HeroSections } from "../Fixtures/Components"
-import { Header } from "../Header/Header"
-
 import {
-  BasicArticle,
   ClassicArticle,
+  ClassicArticleManyAuthors,
   FeatureArticle,
+  FeatureBasicArticle,
+  FeatureBasicVideoArticle,
   MissingVerticalStandardArticle,
+  SeriesArticle,
+  SponsoredArticle,
   StandardArticle,
   SuperArticle,
 } from "../Fixtures/Articles"
+import { HeroSections } from "../Fixtures/Components"
+import { EditableChild } from "../Fixtures/Helpers"
+import { Header } from "../Header/Header"
 
 storiesOf("Publishing/Header/Classic", module)
   .add("Classic", () => {
-    return (
-      <div style={{ width: "100%", height: "400px", position: "relative" }}>
-        <Header article={ClassicArticle} />
-      </div>
-    )
+    return <Header article={ClassicArticle} />
   })
-  .add("With children", () => {
+  .add("Many Authors", () => {
+    return <Header article={ClassicArticleManyAuthors} />
+  })
+  .add("Editable", () => {
     return (
-      <div style={{ width: "100%", height: "400px", position: "relative" }}>
-        <Header article={ClassicArticle}>
-          <div>Child 0: Title</div>
-          <p>Child 1: Lead Paragraph</p>
-        </Header>
-      </div>
+      <Header
+        article={ClassicArticle}
+        date="2015-06-19T13:09:18.567Z"
+        editLeadParagraph={EditableChild("Lead Paragraph")}
+        editTitle={EditableChild("Title")}
+      />
     )
   })
 
 storiesOf("Publishing/Header/Standard", module)
   .add("Standard", () => {
+    return <Header article={StandardArticle} />
+  })
+  .add("Missing Vertical", () => {
+    return <Header article={MissingVerticalStandardArticle} />
+  })
+  .add("Editable", () => {
     return (
-      <div style={{ width: "100%", height: "400px", position: "relative" }}>
-        <Header article={StandardArticle} />
-      </div>
+      <Header
+        article={MissingVerticalStandardArticle}
+        date="2015-06-19T13:09:18.567Z"
+        editTitle={EditableChild("Title")}
+        editVertical={EditableChild("Vertical")}
+      />
     )
   })
-  .add("With Children", () => {
+
+storiesOf("Publishing/Header/Feature/Text", module)
+  .add("Image", () => {
+    const article = extend({}, FeatureArticle, {
+      hero_section: HeroSections[0],
+    })
+    return <Header article={article} />
+  })
+  .add("Video", () => {
+    return <Header article={FeatureArticle} />
+  })
+  .add("Editable", () => {
+    const article = extend({}, FeatureArticle, {
+      vertical: null,
+    })
     return (
-      <div style={{ width: "100%", height: "400px", position: "relative" }}>
-        <Header article={MissingVerticalStandardArticle}>
-          <div>Child 0: Vertical</div>
-          <div>Child 1: Title</div>
-        </Header>
-      </div>
+      <Header
+        article={article}
+        date="2015-06-19T13:09:18.567Z"
+        editDeck={EditableChild("Deck")}
+        editImage={EditableChild("Image")}
+        editTitle={EditableChild("Title")}
+        editVertical={EditableChild("Vertical")}
+      />
     )
   })
 
 storiesOf("Publishing/Header/Feature/Basic", module)
-  .add("Basic", () => {
-    const article = _.clone(BasicArticle)
-    article.hero_section.url = null
+  .add("Text", () => {
+    return <Header article={FeatureBasicArticle} />
+  })
+  .add("Video", () => {
+    return <Header article={FeatureBasicVideoArticle} />
+  })
+  .add("Editable", () => {
+    const article = extend({}, FeatureBasicVideoArticle, {
+      vertical: null,
+    })
+    return (
+      <Header
+        article={article}
+        date="2015-06-19T13:09:18.567Z"
+        editDeck={EditableChild("Deck")}
+        editImage={EditableChild("Image")}
+        editTitle={EditableChild("Title")}
+        editVertical={EditableChild("Vertical")}
+      />
+    )
+  })
 
-    return (
-      <div>
-        <div style={{ width: "100%", position: "relative" }}>
-          <Header article={BasicArticle} />
-        </div>
-      </div>
-    )
-  })
-  .add("With Embed", () => {
-    const article = _.clone(BasicArticle)
-    article.hero_section.url = "https://vimeo.com/238843720"
-
-    return (
-      <div>
-        <div style={{ width: "100%", position: "relative" }}>
-          <Header article={BasicArticle} />
-        </div>
-      </div>
-    )
-  })
-storiesOf("Publishing/Header/Feature/Text", module)
-  .add("With Image", () => {
-    const article = _.extend({}, FeatureArticle, {
-      hero_section: HeroSections[0],
-    })
-    return (
-      <div style={{ width: "100%", position: "relative" }}>
-        <Header article={article} />
-      </div>
-    )
-  })
-  .add("With Video", () => {
-    const article = _.extend({}, FeatureArticle, {
-      hero_section: HeroSections[5],
-    })
-    return (
-      <div style={{ width: "100%", position: "relative" }}>
-        <Header article={article} />
-      </div>
-    )
-  })
-  .add("With children", () => {
-    const article = _.extend({}, FeatureArticle, {
-      hero_section: HeroSections[5],
-    })
-    return (
-      <div style={{ width: "100%", position: "relative" }}>
-        <Header article={article}>
-          <div>Child 0: Vertical</div>
-          <div>Child 1: Title</div>
-          <div>Child 2: Deck</div>
-          <div>Child 3: Image</div>
-        </Header>
-      </div>
-    )
-  })
-storiesOf("Publishing/Header/Feature/Split", module)
-  .add("With Image", () => {
-    const article = _.extend({}, FeatureArticle, {
-      hero_section: HeroSections[1],
-    })
-    return (
-      <div style={{ width: "100%", height: "100vh", position: "relative" }}>
-        <Header article={article} />
-      </div>
-    )
-  })
-  .add("With Video", () => {
-    const article = _.extend({}, FeatureArticle, {
-      hero_section: HeroSections[3],
-    })
-    return (
-      <div style={{ width: "100%", height: "100vh", position: "relative" }}>
-        <Header article={article} />
-      </div>
-    )
-  })
-  .add("With children", () => {
-    const article = _.extend({}, FeatureArticle, {
-      hero_section: HeroSections[3],
-    })
-    return (
-      <div style={{ width: "100%", position: "relative" }}>
-        <Header article={article}>
-          <div>Child 0: Vertical</div>
-          <div>Child 1: Title</div>
-          <div>Child 2: Deck</div>
-          <div>Child 3: Image</div>
-        </Header>
-      </div>
-    )
-  })
 storiesOf("Publishing/Header/Feature/Fullscreen", module)
-  .add("With Image", () => {
-    const article = _.extend({}, FeatureArticle, {
+  .add("Image", () => {
+    const article = extend({}, FeatureArticle, {
       hero_section: HeroSections[2],
     })
-    return (
-      <div style={{ width: "100%", height: "100vh", position: "relative" }}>
-        <Header article={article} />
-      </div>
-    )
+    return <Header article={article} />
   })
-  .add("With Video", () => {
-    const article = _.extend({}, FeatureArticle, {
-      hero_section: HeroSections[4],
-    })
-    return (
-      <div style={{ width: "100%", height: "100vh", position: "relative" }}>
-        <Header article={article} />
-      </div>
-    )
+  .add("Video", () => {
+    return <Header article={FeatureArticle} />
   })
-  .add("With Children", () => {
-    const article = _.extend({}, FeatureArticle, {
-      hero_section: HeroSections[4],
-    })
-    return (
-      <div style={{ width: "100%", position: "relative" }}>
-        <Header article={article}>
-          <div>Child 0: Vertical</div>
-          <div>Child 1: Title</div>
-          <div>Child 2: Deck</div>
-          <div>Child 3: Image</div>
-        </Header>
-      </div>
-    )
-  })
-  .add("Super Article", () => {
-    const article = _.extend({}, SuperArticle, {
+  .add("In Series", () => {
+    const article = extend({}, SponsoredArticle, {
       hero_section: HeroSections[2],
+      seriesArticle: SeriesArticle,
     })
+    return <Header article={article} />
+  })
+  .add("SuperArticle", () => {
+    return <Header article={SuperArticle} />
+  })
+  .add("Editable", () => {
+    const article = extend({}, FeatureArticle, {
+      vertical: null,
+    })
+    return (
+      <Header
+        article={article}
+        date="2015-06-19T13:09:18.567Z"
+        editDeck={EditableChild("Deck")}
+        editImage={EditableChild("Image")}
+        editTitle={EditableChild("Title")}
+        editVertical={EditableChild("Vertical")}
+      />
+    )
+  })
 
+storiesOf("Publishing/Header/Feature/Split", module)
+  .add("Image", () => {
+    const article = extend({}, FeatureArticle, {
+      hero_section: HeroSections[1],
+      title:
+        "Bodys Isek Kingelez, Maker of Utopian Cities, Finally Gets the Retrospective He Deserves",
+    })
+    return <Header article={article} />
+  })
+  .add("Video", () => {
+    const article = extend({}, FeatureArticle, {
+      hero_section: HeroSections[3],
+    })
+    return <Header article={article} />
+  })
+  .add("Editable", () => {
+    const article = extend({}, FeatureArticle, {
+      vertical: null,
+      hero_section: HeroSections[3],
+    })
     return (
-      <div style={{ width: "100%", height: "100vh", position: "relative" }}>
-        <Header article={article} />
-      </div>
+      <Header
+        article={article}
+        date="2015-06-19T13:09:18.567Z"
+        editDeck={EditableChild("Deck")}
+        editImage={EditableChild("Image")}
+        editTitle={EditableChild("Title")}
+        editVertical={EditableChild("Vertical")}
+      />
     )
   })

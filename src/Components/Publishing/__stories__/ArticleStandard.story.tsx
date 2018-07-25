@@ -21,7 +21,6 @@ const story = storiesOf("Publishing/Articles/Standard", module)
           article={StandardArticle}
           relatedArticlesForPanel={RelatedPanel}
           relatedArticlesForCanvas={RelatedCanvas}
-          emailSignupUrl="#"
         />
       </ContextProvider>
     )
@@ -33,20 +32,6 @@ const story = storiesOf("Publishing/Articles/Standard", module)
           article={MissingVerticalStandardArticle}
           relatedArticlesForPanel={RelatedPanel}
           relatedArticlesForCanvas={RelatedCanvas}
-          emailSignupUrl="#"
-        />
-      </ContextProvider>
-    )
-  })
-  .add("With top margin", () => {
-    return (
-      <ContextProvider>
-        <Article
-          article={ImageHeavyStandardArticle}
-          relatedArticlesForPanel={RelatedPanel}
-          relatedArticlesForCanvas={RelatedCanvas}
-          emailSignupUrl="#"
-          marginTop="100px"
         />
       </ContextProvider>
     )
@@ -58,7 +43,6 @@ const story = storiesOf("Publishing/Articles/Standard", module)
           article={ImageHeavyStandardArticle}
           relatedArticlesForPanel={RelatedPanel}
           relatedArticlesForCanvas={RelatedCanvas}
-          emailSignupUrl="#"
           isTruncated
         />
       </ContextProvider>
@@ -71,7 +55,6 @@ const story = storiesOf("Publishing/Articles/Standard", module)
           article={StandardArticle}
           relatedArticlesForPanel={RelatedPanel}
           relatedArticlesForCanvas={RelatedCanvas}
-          emailSignupUrl="#"
           showTooltips
         />
       </ContextProvider>
@@ -88,7 +71,6 @@ displays.forEach(displayType => {
           display={Display(displayType)}
           relatedArticlesForPanel={RelatedPanel}
           relatedArticlesForCanvas={RelatedCanvas}
-          emailSignupUrl="#"
         />
       </ContextProvider>
     )
