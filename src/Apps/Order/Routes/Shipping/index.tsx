@@ -2,6 +2,7 @@ import { Shipping_order } from "__generated__/Shipping_order.graphql"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Placeholder } from "Styleguide/Utils/Placeholder"
+import { Summary } from "../../Components/Summary"
 import { TwoColumnLayout } from "../../Components/TwoColumnLayout"
 
 export interface ShippingProps {
@@ -14,7 +15,7 @@ export class ShippingRoute extends Component<ShippingProps> {
     return (
       <TwoColumnLayout
         Content={<Placeholder height="460px" name="Content" />}
-        Sidebar={<Placeholder height="390px" name="Sidebar" />}
+        Sidebar={<Summary />}
       />
     )
   }
