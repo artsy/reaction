@@ -19,7 +19,7 @@ export class ShippingRoute extends Component<ShippingProps> {
     return (
       <TwoColumnLayout
         Content={
-          <React.Fragment>
+          <>
             <Placeholder height="180px" name="Radio Group" mb={3} />
             <Join separator={<Spacer mb={2} />}>
               <Placeholder height="68px" name="Full Name" />
@@ -37,7 +37,7 @@ export class ShippingRoute extends Component<ShippingProps> {
               </TwoColumnSplit>
             </Join>
             <Spacer mb={3} />
-          </React.Fragment>
+          </>
         }
         Sidebar={<Placeholder height="390px" name="Sidebar" />}
       />
