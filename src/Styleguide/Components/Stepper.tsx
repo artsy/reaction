@@ -7,8 +7,10 @@ import { Flex } from "Styleguide/Elements/Flex"
 interface StepperProps extends TabsProps {
   initialTabIndex: number
 
-  /* the step user currently is at */
+  /* the step user currently is at (e.g. previous steps completed) */
   currentStepIndex: number
+
+  disableNavigation?: boolean
 }
 
 const transformTabBtn = (
@@ -16,27 +18,28 @@ const transformTabBtn = (
   tabIndex: number,
   props: any
 ): JSX.Element => {
-  const { currentStepIndex } = props
+  const { currentStepIndex, disableNavigation } = props
+  const elementWithoutNav = React.cloneElement(element, {
+    ...element.props,
+    onClick: () => {
+      null
+    },
+  })
   if (tabIndex > currentStepIndex) {
     // don't allow users to jump ahead
-    const newElement = React.cloneElement(element, {
-      ...element.props,
-      onClick: () => {
-        null
-      },
-    })
-    return newElement
+
+    return elementWithoutNav
   } else if (currentStepIndex && tabIndex < currentStepIndex) {
     return (
       <Flex>
         <CheckMarkWrapper>
           <CheckMark />
         </CheckMarkWrapper>
-        {element}
+        {disableNavigation ? elementWithoutNav : element}
         <div /> {/* hack for getting rid of last-child in Tabs.tsx */}
       </Flex>
     )
-  } else return element
+  } else return disableNavigation ? elementWithoutNav : element
 }
 
 export const Stepper = (props: StepperProps) => {

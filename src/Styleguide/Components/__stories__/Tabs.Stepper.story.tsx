@@ -48,6 +48,13 @@ storiesOf("Styleguide/Components", module).add("Stepper", () => {
           <Step name="Pay" />
         </Stepper>
       </Section>
+      <Section title="Stepper (disabled navigation)">
+        <Stepper initialTabIndex={1} currentStepIndex={2} disableNavigation>
+          <Step name="Review" />
+          <Step name="Confirm" />
+          <Step name="Pay" />
+        </Stepper>
+      </Section>{" "}
     </React.Fragment>
   )
 })
