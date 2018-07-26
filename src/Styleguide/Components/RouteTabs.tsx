@@ -17,7 +17,6 @@ export const RouteTabs: any /* FIXME */ = styled(Flex)`
       `
     }
   }};
-
   a {
     ${styles.tabContainer};
     color: ${color("black30")};
