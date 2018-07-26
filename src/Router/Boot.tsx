@@ -27,7 +27,7 @@ export class Boot extends React.Component<BootProps> {
     const { children, ...props } = this.props
     const appState = new AppState(props)
 
-    // FIXME: Type properly
+    // FIXME: Type properly, move out of system
     if (props.system && (props.system as any).initialBreakpoint === "xs") {
       // FIXME: Initial padding is set in @artsy/palette -- we should consider
       // moving here.

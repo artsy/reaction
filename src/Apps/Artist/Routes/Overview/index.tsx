@@ -40,6 +40,8 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
 
   render() {
     const { artist } = this.props
+    const showGenes =
+      this.state.isReadMoreExpanded || !artist.biography_blurb.text
 
     return (
       <React.Fragment>
@@ -63,7 +65,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
               />
             </Box>
 
-            {this.state.isReadMoreExpanded && <Genes artist={artist as any} />}
+            {showGenes && <Genes artist={artist as any} />}
 
             <Spacer mb={1} />
 
@@ -118,6 +120,11 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
       }
       counts {
         partner_shows
+      }
+
+      biography_blurb(format: HTML, partner_bio: true) {
+        text
+        credit
       }
 
       href

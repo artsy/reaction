@@ -120,6 +120,7 @@ export class LargeArtistHeader extends Component<Props> {
         <Spacer my={2} />
 
         <span id="jumpto-ArtistHeader" />
+
         <Flex justifyContent="space-between">
           <Box>
             <Serif size="10">{props.artist.name}</Serif>
@@ -139,6 +140,14 @@ export class LargeArtistHeader extends Component<Props> {
           <FollowArtistButton
             useDeprecatedButtonStyle={false}
             artist={props.artist as any}
+            buttonProps={
+              {
+                width: "100px",
+                // FIXME: Hack to get around fixed with and centered text
+                paddingLeft: 0,
+                paddingRight: 0,
+              } as any
+            }
             currentUser={currentUser}
             onOpenAuthModal={() => {
               props.mediator.trigger("open:auth", {
