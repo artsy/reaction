@@ -62,6 +62,7 @@ export class FilterState extends Container<State> {
     if (filter === "medium") {
       newPartialState = { medium: "*" }
     }
+
     this.setState({ page: 1, ...newPartialState }, () => {
       mediator.trigger("artist:filter:changed", this.state)
     })
@@ -97,6 +98,7 @@ export class FilterState extends Container<State> {
         major_periods: [],
       }
     }
+
     this.setState({ page: 1, ...newPartialState }, () => {
       mediator.trigger("artist:filter:changed", this.state)
     })
