@@ -1,20 +1,19 @@
 import { mount } from "enzyme"
 import "jest-styled-components"
-import React from "react"
 import { cloneDeep, extend } from "lodash"
+import React from "react"
 import {
   FeatureArticle,
   SeriesArticle,
   SeriesArticleSponsored,
 } from "../../Fixtures/Articles"
 import { RelatedCanvas } from "../../Fixtures/Components"
-import { RelatedArticlesCanvas } from "../../RelatedArticles/RelatedArticlesCanvas"
+import { Nav } from "../../Nav/Nav"
 import { ArticleCardsBlock } from "../../RelatedArticles/ArticleCards/Block"
+import { RelatedArticlesCanvas } from "../../RelatedArticles/RelatedArticlesCanvas"
 import { SeriesAbout } from "../../Series/SeriesAbout"
 import { FeatureLayout } from "../FeatureLayout"
-import { Nav } from "../../Nav/Nav"
 
-jest.mock("react-sizeme", () => jest.fn(c => d => d))
 jest.mock("../../Sections/FullscreenViewer/withFullScreen", () => ({
   withFullScreen: x => x,
 }))

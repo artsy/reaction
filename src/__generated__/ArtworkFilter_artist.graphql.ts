@@ -4,6 +4,9 @@ import { ConcreteFragment } from "relay-runtime";
 export type ArtworkAggregation = "COLOR" | "DIMENSION_RANGE" | "FOLLOWED_ARTISTS" | "GALLERY" | "INSTITUTION" | "MAJOR_PERIOD" | "MEDIUM" | "MERCHANDISABLE_ARTISTS" | "PARTNER_CITY" | "PERIOD" | "PRICE_RANGE" | "TOTAL" | "%future added value";
 export type ArtworkFilter_artist = {
     readonly id: string;
+    readonly counts: ({
+        readonly for_sale_artworks: any | null;
+    }) | null;
     readonly filtered_artworks: ({
         readonly aggregations: ReadonlyArray<({
             readonly slice: ArtworkAggregation | null;
@@ -83,6 +86,24 @@ return {
   ],
   "selections": [
     v0,
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "counts",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "ArtistCounts",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "for_sale_artworks",
+          "args": null,
+          "storageKey": null
+        }
+      ]
+    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -186,5 +207,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '7aea3b086ed388df1c218fe0c117f3ca';
+(node as any).hash = '7aa8463969ba2cec97c26499dfe486b1';
 export default node;

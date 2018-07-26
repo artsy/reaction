@@ -54,7 +54,9 @@ export class Checkbox extends React.Component<CheckboxProps> {
       <Container
         className={hover && "hover"}
         my={0.5}
-        onClick={() => this.props.onSelect && this.props.onSelect(!selected)}
+        onClick={() =>
+          !disabled && this.props.onSelect && this.props.onSelect(!selected)
+        }
         selected={selected}
         hover={hover}
         disabled={disabled}

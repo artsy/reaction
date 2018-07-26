@@ -1,4 +1,4 @@
-import { Display } from "@artsy/palette"
+import { Sans } from "@artsy/palette"
 import React from "react"
 import { Flex } from "Styleguide/Elements/Flex"
 
@@ -10,8 +10,8 @@ export const Placeholder = ({ name, ...props }) => (
     alignItems="center"
     {...props}
   >
-    <Display size="5t" color="white">
+    <Sans size="5t" color="white" textAlign="center">
       {name}
-    </Display>
+    </Sans>
   </Flex>
 )

@@ -55,6 +55,7 @@ class Filter extends Component<Props> {
     const periodAggregation = aggregations.find(
       agg => agg.slice === "MAJOR_PERIOD"
     )
+    const hasForSaleArtworks = this.props.artist.counts.for_sale_artworks > 0
     return (
       <Subscribe to={[AppState, FilterState]}>
         {({ state: { mediator } }, filters: FilterState) => {
@@ -76,6 +77,7 @@ class Filter extends Component<Props> {
                             <Separator mb={1} />
                             <Checkbox
                               selected={filters.state.for_sale}
+                              disabled={!hasForSaleArtworks}
                               onSelect={value => {
                                 return filters.setFilter(
                                   "for_sale",
@@ -139,10 +141,7 @@ class Filter extends Component<Props> {
                             mt="-8px"
                             options={
                               [
-                                {
-                                  value: "-decayed_merch",
-                                  text: "Default",
-                                },
+                                { value: "-decayed_merch", text: "Default" },
                                 {
                                   value: "-partner_updated_at",
                                   text: "Recently updated",
@@ -155,10 +154,7 @@ class Filter extends Component<Props> {
                                   value: "-year",
                                   text: "Artwork year (desc.)",
                                 },
-                                {
-                                  value: "year",
-                                  text: "Artwork year (asc.)",
-                                },
+                                { value: "year", text: "Artwork year (asc.)" },
                               ] // Corrective spacing for line-height
                             }
                             selected={filters.state.sort}
@@ -205,6 +201,9 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(
         sort: { type: "String", defaultValue: "-partner_updated_at" }
       ) {
       id
+      counts {
+        for_sale_artworks
+      }
       filtered_artworks(aggregations: $aggregations, size: 0) {
         aggregations {
           slice

@@ -14,7 +14,7 @@ export class ReviewRoute extends Component<ReviewProps> {
     const { order } = this.props
 
     return (
-      <React.Fragment>
+      <>
         Review Page
         <Spacer mb={1} />
         {`Order #${order.id}`}
@@ -24,7 +24,7 @@ export class ReviewRoute extends Component<ReviewProps> {
             Go to submission page
           </Button>
         </Link>
-      </React.Fragment>
+      </>
     )
   }
 }

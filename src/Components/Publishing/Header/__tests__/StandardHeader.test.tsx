@@ -5,8 +5,6 @@ import renderer from "react-test-renderer"
 import { StandardArticle } from "../../Fixtures/Articles"
 import { Header } from "../Header"
 
-jest.mock("react-sizeme", () => jest.fn(c => d => d))
-
 describe("Standard Header", () => {
   it("renders standard header properly", () => {
     const header = renderer

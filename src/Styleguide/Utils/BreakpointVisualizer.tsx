@@ -57,7 +57,9 @@ export class BreakpointVisualizer extends React.Component<
             <Responsive>
               {breakpoints => {
                 if (!isEqual(breakpoints, this.state.breakpoints)) {
-                  this.setState({ breakpoints })
+                  setImmediate(() => {
+                    this.setState({ breakpoints })
+                  })
                 }
                 return (
                   <Transition

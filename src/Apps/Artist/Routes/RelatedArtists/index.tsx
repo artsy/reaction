@@ -17,7 +17,7 @@ export class RelatedArtistsRoute extends Component<RelatedArtistsProps> {
         <RelatedArtistsList
           kind={"MAIN"}
           artist={viewer.mainArtists as any}
-          scrollTo="#jumpto-RouteTabs"
+          scrollTo="#jumpto-ArtistHeader"
         />
 
         <Spacer mb={1} />

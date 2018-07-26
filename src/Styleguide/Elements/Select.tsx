@@ -40,9 +40,12 @@ export class Select extends React.Component<SelectProps> {
 export const LargeSelect = (props: SelectProps) => {
   return (
     <LargeSelectContainer {...props} p={1}>
-      <select onChange={event => props.onSelect(event.target.value)}>
+      <select
+        value={props.selected}
+        onChange={event => props.onSelect(event.target.value)}
+      >
         {props.options.map(({ value, text }) => (
-          <option selected={value === props.selected} value={value} key={value}>
+          <option value={value} key={value}>
             {text}
           </option>
         ))}
@@ -59,13 +62,12 @@ export const SmallSelect = props => {
           Sort:
         </Sans>
 
-        <select onChange={event => props.onSelect(event.target.value)}>
+        <select
+          value={props.selected}
+          onChange={event => props.onSelect(event.target.value)}
+        >
           {props.options.map(({ value, text }) => (
-            <option
-              selected={value === props.selected}
-              value={value}
-              key={value}
-            >
+            <option value={value} key={value}>
               {text}
             </option>
           ))}
