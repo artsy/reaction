@@ -45,8 +45,6 @@ export class ArtistApp extends React.Component<ArtistAppProps> {
 
         <Row>
           <Col>
-            <span id="jumpto-RouteTabs" />
-
             <NavigationTabs artist={artist as any} />
 
             <Spacer mb={3} />
