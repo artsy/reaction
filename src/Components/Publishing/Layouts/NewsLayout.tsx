@@ -7,7 +7,7 @@ import styled from "styled-components"
 import { pMedia } from "../../Helpers"
 import { NewsHeadline } from "../News/NewsHeadline"
 import { NewsSections } from "../News/NewsSections"
-import { RelatedArticlesCanvasProps } from "../RelatedArticles/RelatedArticlesCanvas"
+import { RelatedArticleFigureData } from "../RelatedArticles/RelatedArticleFigure"
 import { ArticleData } from "../Typings"
 import { CanvasFooter, CanvasFooterContainer } from "./Components/CanvasFooter"
 
@@ -18,7 +18,7 @@ interface Props {
   isHovered?: boolean
   isTruncated?: boolean
   onExpand?: any
-  relatedArticlesForCanvas?: RelatedArticlesCanvasProps
+  relatedArticlesForCanvas?: RelatedArticleFigureData[]
   renderTime?: any
   tracking?: any
 }
@@ -78,7 +78,6 @@ export class NewsLayout extends Component<Props, State> {
       article,
       display,
       isMobile,
-      // marginTop,
       relatedArticlesForCanvas,
       renderTime,
     } = this.props
@@ -89,7 +88,6 @@ export class NewsLayout extends Component<Props, State> {
         <NewsArticleContainer
           isTruncated={isTruncated}
           isHovered={isHovered}
-          // marginTop={marginTop}
           onClick={() => {
             if (isTruncated) {
               this.onExpand()

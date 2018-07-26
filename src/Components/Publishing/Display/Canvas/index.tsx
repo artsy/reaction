@@ -1,10 +1,10 @@
+import { color } from "@artsy/palette"
 import { avantgarde, garamond } from "Assets/Fonts"
 import { get } from "lodash"
 import React from "react"
 import track from "react-tracking"
 import Waypoint from "react-waypoint"
 import styled, { StyledFunction } from "styled-components"
-import Colors from "../../../../Assets/Colors"
 import { ErrorBoundary } from "../../../ErrorBoundary"
 import { pMedia } from "../../../Helpers"
 import { getCurrentUnixTimestamp } from "../../Constants"
@@ -43,7 +43,7 @@ export class DisplayCanvas extends React.Component<DisplayCanvasProps> {
 
   render() {
     const { unit, campaign, article, renderTime } = this.props
-    const url = get(unit, "link.url", "") || ""
+    const url = unit.link ? get(unit, "link.url", "") : ""
     const disclaimer = (
       <Disclaimer layout={unit.layout}>{unit.disclaimer}</Disclaimer>
     )
@@ -91,13 +91,14 @@ export const DisplayContainer = Div`
   }
 `
 const SponsoredBy = styled.div`
-  ${avantgarde("s11")} color: ${Colors.grayMedium};
+  ${avantgarde("s11")};
+  color: ${color("black30")};
   margin: 10px 0;
   text-align: center;
 `
 const Disclaimer = Div`
   ${garamond("s11")}
-  color: ${Colors.grayMedium};
+  color: ${color("black30")};
   margin: 15px 0 0 0;
   ${props => props.layout === "overlay" && "text-align: center;"}
   ${pMedia.sm`

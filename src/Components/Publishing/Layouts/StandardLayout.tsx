@@ -1,3 +1,4 @@
+import { color, space } from "@artsy/palette"
 import { get, omit } from "lodash"
 import React from "react"
 import styled from "styled-components"
@@ -75,7 +76,7 @@ export class StandardLayout extends React.Component<
             )
           }
           return (
-            <div>
+            <ArticleWrapper isInfiniteScroll={this.props.isTruncated}>
               <ReadMoreWrapper
                 isTruncated={isTruncated}
                 hideButton={this.removeTruncation}
@@ -109,7 +110,7 @@ export class StandardLayout extends React.Component<
                   renderTime={renderTime}
                 />
               )}
-            </div>
+            </ArticleWrapper>
           )
         }}
       </ResponsiveDeprecated>
@@ -121,6 +122,15 @@ export const StandardLayoutParent = styled.div`
   margin: 0 40px 100px 40px;
   ${pMedia.sm`
     margin: 0 0 100px 0;
+  `};
+`
+
+const ArticleWrapper = styled.div.attrs<{ isInfiniteScroll?: boolean }>({})`
+  ${props =>
+    props.isInfiniteScroll &&
+    `
+    padding-top: ${space(4)}px;
+    border-top: 1px solid ${color("black10")};
   `};
 `
 
