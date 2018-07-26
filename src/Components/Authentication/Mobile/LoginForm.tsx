@@ -94,7 +94,7 @@ export class MobileLoginForm extends Component<FormProps> {
         {context => {
           const {
             wizard,
-            form: { handleSubmit, status, values, setTouched },
+            form: { handleSubmit, status, values },
           } = context
           const { currentStep, isLastStep } = wizard
 
