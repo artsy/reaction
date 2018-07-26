@@ -1,3 +1,4 @@
+import { space } from "@artsy/palette"
 import { fadeIn, fadeOut, growAndFadeIn } from "Assets/Animations"
 import Colors from "Assets/Colors"
 import { garamond, unica } from "Assets/Fonts"
@@ -216,7 +217,7 @@ const InputComponent = styled.input.attrs<{ showLabel: boolean }>({})`
   left: 0;
   width: 100%;
   height: 100%;
-  padding: 0 10px;
+  padding: 0 ${space(1)}px;
 
   ${props =>
     props.showLabel &&
