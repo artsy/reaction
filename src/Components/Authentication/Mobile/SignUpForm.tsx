@@ -21,7 +21,10 @@ import React, { Component, Fragment } from "react"
 export interface MobileSignUpFormState {
   isSocialSignUp: boolean
 }
-export class MobileSignUpForm extends Component<FormProps> {
+export class MobileSignUpForm extends Component<
+  FormProps,
+  MobileSignUpFormState
+> {
   state = {
     isSocialSignUp: false,
   }
@@ -86,7 +89,7 @@ export class MobileSignUpForm extends Component<FormProps> {
         }) => (
           <Input
             block
-            error={touched.password && errors.password}
+            error={errors.password}
             name="password"
             label="Password"
             placeholder="Password"
@@ -115,7 +118,7 @@ export class MobileSignUpForm extends Component<FormProps> {
         }) => (
           <Input
             block
-            error={touched.name && errors.name}
+            error={errors.name}
             name="name"
             label="Name"
             placeholder="Name"
