@@ -8,12 +8,12 @@ import {
 } from "../RelatedArticles/ArticleCards/Block"
 import { RelatedArticleFigureData } from "../RelatedArticles/RelatedArticleFigure"
 import { Sections } from "../Sections/Sections"
-import { ArticleData } from "../Typings"
+import { ArticleData, Display } from "../Typings"
 import { CanvasFooter } from "./Components/CanvasFooter"
 
 export interface ArticleProps {
   article: ArticleData
-  display?: any
+  display?: Display
   isMobile?: boolean
   isSuper?: boolean
   relatedArticlesForCanvas?: RelatedArticleFigureData[]

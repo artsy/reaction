@@ -65,3 +65,25 @@ export type SectionData = {
   mobile_height?: number
   height?: number
 }
+
+export type Display = {
+  name?: string
+  canvas?: any
+  panel?: any
+}
+
+export type DisplayUnit = {
+  assets?: {
+    url: string
+  }
+  body?: string
+  disclaimer?: string
+  headline?: string
+  layout?: string
+  link?: {
+    text: string
+    url: string
+  }
+  logo?: string
+  name?: string
+}

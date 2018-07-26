@@ -1,5 +1,5 @@
 import { color } from "@artsy/palette"
-import { ArticleData } from "Components/Publishing//Typings"
+import { ArticleData, Display } from "Components/Publishing//Typings"
 import { DisplayCanvas } from "Components/Publishing/Display/Canvas"
 import { RelatedArticleFigureData } from "Components/Publishing/RelatedArticles/RelatedArticleFigure"
 import { RelatedArticlesCanvas } from "Components/Publishing/RelatedArticles/RelatedArticlesCanvas"
@@ -7,7 +7,7 @@ import React from "react"
 import styled from "styled-components"
 
 export interface CanvasFooterProps {
-  display?: any
+  display?: Display
   relatedArticles?: RelatedArticleFigureData[]
   article: ArticleData
   renderTime?: any
