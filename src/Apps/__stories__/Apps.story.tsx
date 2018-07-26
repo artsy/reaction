@@ -17,7 +17,7 @@ storiesOf("Apps", module)
     return (
       <StorybooksRouter
         routes={artistRoutes}
-        initialRoute="/artist2/pablo-picasso/auction-results"
+        initialRoute="/artist2/pablo-picasso"
         initialState={{
           mediator: { trigger: x => x },
         }}

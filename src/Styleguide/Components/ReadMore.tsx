@@ -1,4 +1,3 @@
-import { Sans } from "@artsy/palette"
 import { track } from "Analytics"
 import * as Schema from "Analytics/Schema"
 import { Truncator } from "Components/Truncator"
@@ -77,10 +76,7 @@ const ReadMoreLink = ({ children }) => {
     // breaks the context chain requiring us to wrap ReadMore in a <Theme />
 
     <ReadMoreLinkContainer>
-      ...{" "}
-      <Sans size="2" weight="medium">
-        {children}
-      </Sans>
+      ... <ReadMoreLinkText>{children}</ReadMoreLinkText>
     </ReadMoreLinkContainer>
   )
 }
@@ -89,6 +85,17 @@ const ReadMoreLinkContainer = styled.span`
   cursor: pointer;
   text-decoration: underline;
   display: inline-block;
+`
+
+// NOTE: Couldn't use @artsy/palette / Sans due to root element being a `div`;
+// as html content from CMS comes through as a p tag, markup is rendered invalid.
+const ReadMoreLinkText = styled.span`
+  display: inline;
+  font-family: Unica77LLWebMedium, "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
 `
 
 const Container = styled.div.attrs<ReadMoreState>({})`
