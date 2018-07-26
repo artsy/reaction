@@ -50,9 +50,9 @@ export class ArtistApp extends React.Component<ArtistAppProps> {
             <Spacer mb={3} />
 
             {/*
-           When clicking nav links, wait for fetch to complete before
-           transitioning to new route
-         */}
+              When clicking nav links, wait for fetch to complete before
+              transitioning to new route
+            */}
 
             <Subscribe to={[PreloadLinkState]}>
               {({ state: { isLoading } }: PreloadLinkState) => {

@@ -53,7 +53,7 @@ export const GlobalStyles = styled.div`
   a {
     cursor: pointer;
     color: inherit;
-    transition: 0.25s;
+    transition: color 0.25s;
 
     &:hover {
       color: ${color("black100")};
