@@ -17,7 +17,16 @@ const transformTabBtn = (
   props: any
 ): JSX.Element => {
   const { currentStepIndex } = props
-  if (currentStepIndex && tabIndex < currentStepIndex) {
+  if (tabIndex > currentStepIndex) {
+    // don't allow users to jump ahead
+    const newElement = React.cloneElement(element, {
+      ...element.props,
+      onClick: () => {
+        null
+      },
+    })
+    return newElement
+  } else if (currentStepIndex && tabIndex < currentStepIndex) {
     return (
       <Flex>
         <CheckMarkWrapper>
