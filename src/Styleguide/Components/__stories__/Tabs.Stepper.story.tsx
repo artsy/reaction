@@ -7,7 +7,7 @@ storiesOf("Styleguide/Components", module).add("Stepper", () => {
   return (
     <React.Fragment>
       <Section title="Artist">
-        <Stepper>
+        <Stepper initialTabIndex={1} currentStepIndex={2}>
           <Step name="Review" />
           <Step name="Confirm" />
           <Step name="Pay" />
