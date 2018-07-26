@@ -414,10 +414,8 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   font-weight: 600;
 }
 
-.c0 .sc-jTzLTM {
-  border-bottom: 1px solid rgb(229,229,229);
-  margin-bottom: 0;
-  padding-bottom: 20px;
+.c0 .CanvasFooter__CanvasFooterContainer-s1tuekop-0 {
+  border-bottom: 1px solid #E5E5E5;
 }
 
 .c23 {
@@ -448,7 +446,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 }
 
 .c23:hover {
-  color: #e5e5e5;
+  color: #E5E5E5;
 }
 
 .c1 {
@@ -1339,10 +1337,8 @@ exports[`News Layout renders the news layout properly 1`] = `
   font-weight: 600;
 }
 
-.c0 .sc-jTzLTM {
-  border-bottom: 1px solid rgb(229,229,229);
-  margin-bottom: 0;
-  padding-bottom: 20px;
+.c0 .CanvasFooter__CanvasFooterContainer-s1tuekop-0 {
+  border-bottom: 1px solid #E5E5E5;
 }
 
 .c23 {
@@ -1373,7 +1369,7 @@ exports[`News Layout renders the news layout properly 1`] = `
 }
 
 .c23:hover {
-  color: #e5e5e5;
+  color: #E5E5E5;
 }
 
 .c1 {
