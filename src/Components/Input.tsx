@@ -218,6 +218,7 @@ const InputComponent = styled.input.attrs<{ showLabel: boolean }>({})`
   width: 100%;
   height: 100%;
   padding: 0 ${space(1)}px;
+  line-height: initial;
 
   ${props =>
     props.showLabel &&
