@@ -56,7 +56,7 @@ export const Stepper = (props: StepperProps) => {
 export const Step = props => <Tab {...props} />
 
 const ChevronWrapper = styled.span`
-  margin: 0 ${space(1)}px;
+  margin: 0 ${space(2)}px;
   line-height: normal;
 `
 

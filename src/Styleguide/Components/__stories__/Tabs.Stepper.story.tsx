@@ -6,10 +6,38 @@ import { Section } from "Styleguide/Utils/Section"
 storiesOf("Styleguide/Components", module).add("Stepper", () => {
   return (
     <React.Fragment>
-      <Section title="Stepper">
+      <Section title="Stepper (1st step)">
+        <Stepper
+          initialTabIndex={0}
+          currentStepIndex={0}
+          onChange={activeTab => {
+            // tslint:disable-next-line
+            console.log(activeTab)
+          }}
+        >
+          <Step name="Review" />
+          <Step name="Confirm" />
+          <Step name="Pay" />
+        </Stepper>
+      </Section>
+      <Section title="Stepper (2nd step)">
         <Stepper
           initialTabIndex={1}
           currentStepIndex={1}
+          onChange={activeTab => {
+            // tslint:disable-next-line
+            console.log(activeTab)
+          }}
+        >
+          <Step name="Review" />
+          <Step name="Confirm" />
+          <Step name="Pay" />
+        </Stepper>
+      </Section>
+      <Section title="Stepper (all steps done currently on second)">
+        <Stepper
+          initialTabIndex={1}
+          currentStepIndex={3}
           onChange={activeTab => {
             // tslint:disable-next-line
             console.log(activeTab)
