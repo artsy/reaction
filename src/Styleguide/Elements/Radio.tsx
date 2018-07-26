@@ -30,7 +30,14 @@ export interface RadioToggleProps
 export const Radio = styled(
   class Radio extends React.Component<RadioProps> {
     render() {
-      const { selected, children, disabled, hover, ...others } = this.props
+      const {
+        selected,
+        children,
+        disabled,
+        hover,
+        onSelect,
+        ...others
+      } = this.props
 
       return (
         <Container
@@ -38,7 +45,7 @@ export const Radio = styled(
           alignItems="center"
           selected={selected}
           hover={hover}
-          onClick={() => !this.props.disabled && this.props.onSelect(!selected)}
+          onClick={() => !disabled && onSelect && onSelect(!selected)}
           {...others}
         >
           <RadioButton
@@ -55,9 +62,7 @@ export const Radio = styled(
             name={name}
             checked={selected}
             disabled={disabled}
-            onChange={() =>
-              !this.props.disabled && this.props.onSelect(!selected)
-            }
+            onChange={() => !disabled && onSelect && onSelect(!selected)}
           />
           <Label htmlFor={name} style={disabled && { color: color("black10") }}>
             {children}
