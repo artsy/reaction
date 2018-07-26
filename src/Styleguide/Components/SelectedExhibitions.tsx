@@ -106,7 +106,7 @@ export class SelectedExhibitionsContainer extends React.Component<
   render() {
     if (
       !this.props.exhibitions ||
-      this.props.exhibitions.length < MIN_EXHIBITIONS
+      this.props.totalExhibitions < MIN_EXHIBITIONS
     )
       return null
     return (
