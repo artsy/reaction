@@ -7,19 +7,18 @@ import styled from "styled-components"
 import { pMedia } from "../../Helpers"
 import { NewsHeadline } from "../News/NewsHeadline"
 import { NewsSections } from "../News/NewsSections"
-import { RelatedArticleFigureData } from "../RelatedArticles/RelatedArticleFigure"
-import { ArticleData } from "../Typings"
+import { ArticleData, DisplayData, RelatedArticleData } from "../Typings"
 import { CanvasFooter, CanvasFooterContainer } from "./Components/CanvasFooter"
 
 interface Props {
   article: ArticleData
-  display?: any
+  display?: DisplayData
   isMobile?: boolean
   isHovered?: boolean
   isTruncated?: boolean
-  onExpand?: any
-  relatedArticlesForCanvas?: RelatedArticleFigureData[]
-  renderTime?: any
+  onExpand?: () => void
+  relatedArticlesForCanvas?: RelatedArticleData[]
+  renderTime?: number
   tracking?: any
 }
 

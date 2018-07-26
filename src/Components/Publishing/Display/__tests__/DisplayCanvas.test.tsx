@@ -58,7 +58,7 @@ describe("unit", () => {
         tracking={{
           trackEvent,
         }}
-        renderTime="12345"
+        renderTime={12345}
       />
     )
   }

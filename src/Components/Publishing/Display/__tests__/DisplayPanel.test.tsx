@@ -42,7 +42,7 @@ describe("units", () => {
       <DisplayPanel
         unit={unit}
         campaign={Campaign}
-        renderTime="12345"
+        renderTime={12345}
         {...rest}
       />
     )

@@ -66,17 +66,21 @@ export type SectionData = {
   height?: number
 }
 
-export type Display = {
-  name?: string
-  canvas?: any
-  panel?: any
+export type DisplayData = {
+  name: string
+  canvas: DisplayUnitData
+  panel: DisplayUnitData
 }
 
-export type DisplayUnit = {
-  assets?: {
-    url: string
-  }
+export type DisplayUnitAssetData = {
+  caption?: string
+  url?: string
+}
+
+export type DisplayUnitData = {
+  assets?: DisplayUnitAssetData[]
   body?: string
+  cover_image_url?: string
   disclaimer?: string
   headline?: string
   layout?: string
@@ -86,4 +90,12 @@ export type DisplayUnit = {
   }
   logo?: string
   name?: string
+  pixel_tracking_code?: string
+}
+
+export interface RelatedArticleData {
+  thumbnail_title: string
+  thumbnail_image: string
+  slug: string
+  id: string
 }

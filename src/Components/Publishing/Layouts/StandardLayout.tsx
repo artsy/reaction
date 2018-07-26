@@ -51,9 +51,7 @@ export class StandardLayout extends React.Component<
       showTooltips,
     } = this.props
     const { isTruncated } = this.state
-
     const campaign = omit(display, "panel", "canvas")
-    // const displayOverflows = display && display.canvas.layout === "slideshow"
 
     return (
       // FIXME: Update with new version

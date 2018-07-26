@@ -16,7 +16,7 @@ interface DisplayCanvasProps {
   unit: any
   campaign: any
   article?: any
-  renderTime?: string
+  renderTime?: number
 }
 
 interface DivProps extends React.HTMLProps<HTMLDivElement> {
