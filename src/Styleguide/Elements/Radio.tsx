@@ -12,12 +12,13 @@ import {
   SpaceProps,
 } from "styled-system"
 
-export interface RadioProps {
+export interface RadioProps extends FlexProps {
   selected?: boolean
   disabled?: boolean
   hover?: boolean
   onSelect?: (selected: boolean) => void
   value?: string
+  name?: string
 }
 
 export interface RadioToggleProps
@@ -26,29 +27,48 @@ export interface RadioToggleProps
     SizeProps,
     SpaceProps {}
 
-export class Radio extends React.Component<RadioProps> {
-  render() {
-    const { selected, children, disabled, hover } = this.props
+export const Radio = styled(
+  class Radio extends React.Component<RadioProps> {
+    render() {
+      const { selected, children, disabled, hover, ...others } = this.props
 
-    return (
-      <Container
-        disabled={disabled}
-        my={0.3}
-        alignItems="center"
-        selected={selected}
-        hover={hover}
-        onClick={() => !this.props.disabled && this.props.onSelect(!selected)}
-      >
-        <RadioButton border={1} mr={1} selected={selected} disabled={disabled}>
-          <InnerCircle />
-        </RadioButton>
-        <Label style={disabled && { color: color("black10") }}>
-          {children}
-        </Label>
-      </Container>
-    )
+      return (
+        <Container
+          disabled={disabled}
+          alignItems="center"
+          selected={selected}
+          hover={hover}
+          onClick={() => !this.props.disabled && this.props.onSelect(!selected)}
+          {...others}
+        >
+          <RadioButton
+            role="presentation"
+            border={1}
+            mr={1}
+            selected={selected}
+            disabled={disabled}
+          >
+            <InnerCircle />
+          </RadioButton>
+          <HiddenInput
+            type="radio"
+            name={name}
+            checked={selected}
+            disabled={disabled}
+            onChange={() =>
+              !this.props.disabled && this.props.onSelect(!selected)
+            }
+          />
+          <Label htmlFor={name} style={disabled && { color: color("black10") }}>
+            {children}
+          </Label>
+        </Container>
+      )
+    }
   }
-}
+).attrs<RadioProps>({})`
+  cursor: pointer;
+`
 
 const hoverStyles = ({ selected, hover }) => {
   const styles = `background-color: ${color("black10")};`
@@ -79,7 +99,16 @@ const Container = styled(Flex).attrs<ContainerProps>({})`
   ${hoverStyles};
 `
 
-const Label = styled.div``
+const Label = styled.label`
+  display: block;
+  cursor: pointer;
+`
+
+const HiddenInput = styled.input`
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+`
 
 const InnerCircle = styled.div`
   width: ${space(1)}px;

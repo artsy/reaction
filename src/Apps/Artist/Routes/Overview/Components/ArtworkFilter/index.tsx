@@ -28,6 +28,7 @@ class Filter extends Component<Props> {
     return counts.slice(0, 10).map((count, index) => {
       return (
         <Radio
+          my={0.3}
           selected={currentFilter === count.id}
           value={count.id}
           onSelect={selected => {
