@@ -55,6 +55,8 @@ const LargeTableSidebar = (props: Props) => {
                 <Separator />
               </Box>
 
+              <Spacer mt={3} />
+
               <Row>
                 <Col>
                   <LargeSelect

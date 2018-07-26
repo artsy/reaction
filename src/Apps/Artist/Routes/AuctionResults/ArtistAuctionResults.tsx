@@ -7,7 +7,7 @@ import { Col, Row } from "Styleguide/Elements/Grid"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Subscribe } from "unstated"
 import { ArtistAuctionDetailsModal } from "./ArtistAuctionDetailsModal"
-import { AuctionResultItemFragmentContainer } from "./ArtistAuctionResultItem"
+import { AuctionResultItemFragmentContainer as AuctionResultsItem } from "./ArtistAuctionResultItem"
 import { AuctionResultsState } from "./state"
 import { TableColumns } from "./TableColumns"
 import { TableSidebar } from "./TableSidebar"
@@ -16,6 +16,7 @@ import {
   LoadingArea,
   LoadingAreaState,
 } from "Apps/Artist/Components/LoadingArea"
+import { Spacer } from "Styleguide/Elements/Spacer"
 
 const PAGE_SIZE = 10
 
@@ -125,12 +126,14 @@ class AuctionResultsContainer extends Component<
                     auctionResult={state.selectedAuction}
                   />
 
+                  <Spacer mt={3} />
+
                   <LoadingArea isLoading={this.state.isLoading}>
                     {this.props.artist.auctionResults.edges.map(
                       ({ node }, index) => {
                         return (
                           <React.Fragment key={index}>
-                            <AuctionResultItemFragmentContainer
+                            <AuctionResultsItem
                               auctionResult={node as any}
                               lastChild={index === auctionResultsLength - 1}
                             />

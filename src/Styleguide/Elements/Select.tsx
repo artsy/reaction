@@ -110,9 +110,12 @@ const LargeSelectContainer = styled.div.attrs<SelectProps>({})`
 
   &::after {
     content: "";
+    cursor: poniter;
+    pointer-events: none;
     position: absolute;
     top: 45%;
     right: ${space(1)}px;
+
     ${caretArrow};
   }
 `
