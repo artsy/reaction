@@ -1,12 +1,12 @@
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
-import { RelatedPanel } from "../../Fixtures/Components"
-import { RelatedArticlesPanel } from "../../RelatedArticles/RelatedArticlesPanel"
-import { EmailPanel } from "../../Email/EmailPanel"
-import { Sidebar } from "../Components/Sidebar"
+import { EmailPanel } from "../../../Email/EmailPanel"
+import { RelatedPanel } from "../../../Fixtures/Components"
+import { RelatedArticlesPanel } from "../../../RelatedArticles/RelatedArticlesPanel"
+import { Sidebar } from "../Sidebar"
 
-jest.mock("../../Sections/FullscreenViewer/withFullScreen", () => ({
+jest.mock("../../../Sections/FullscreenViewer/withFullScreen", () => ({
   withFullScreen: x => x,
 }))
 

@@ -70,6 +70,7 @@ export type DisplayData = {
   name: string
   canvas: DisplayUnitData
   panel: DisplayUnitData
+  renderTime?: number
 }
 
 export type DisplayUnitAssetData = {
