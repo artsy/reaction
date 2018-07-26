@@ -113,7 +113,7 @@ export class ArtistArticles extends Component<
                 }
                 onClick={this.loadAfter}
                 onNext={this.loadNext}
-                scrollTo="#jumpto-RouteTabs"
+                scrollTo="#jumpto-ArtistHeader"
                 hasNextPage={
                   this.props.artist.articlesConnection.pageInfo.hasNextPage
                 }

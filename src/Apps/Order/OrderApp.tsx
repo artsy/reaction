@@ -16,7 +16,7 @@ export interface OrderAppProps {
 // @ts-ignore
 export const OrderApp: SFC<OrderAppProps> = ({ me, children, order }) => {
   return (
-    <React.Fragment>
+    <>
       <Row>
         <Col>
           <Placeholder name="Subheader" height="46px" />
@@ -28,11 +28,11 @@ export const OrderApp: SFC<OrderAppProps> = ({ me, children, order }) => {
       {children}
 
       {me && (
-        <React.Fragment>
+        <>
           <Separator my={6} />
           {me.name}
-        </React.Fragment>
+        </>
       )}
-    </React.Fragment>
+    </>
   )
 }

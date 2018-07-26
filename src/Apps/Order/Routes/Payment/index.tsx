@@ -14,7 +14,7 @@ export class PaymentRoute extends Component<PaymentProps> {
     const { order } = this.props
 
     return (
-      <React.Fragment>
+      <>
         Payment Page
         <Spacer mb={1} />
         {`Order #${order.id}`}
@@ -24,7 +24,7 @@ export class PaymentRoute extends Component<PaymentProps> {
             Go to review page
           </Button>
         </Link>
-      </React.Fragment>
+      </>
     )
   }
 }

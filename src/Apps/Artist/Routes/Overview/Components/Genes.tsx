@@ -17,6 +17,7 @@ interface Props {
 
 export class Genes extends Component<Props> {
   render() {
+    const FIXME_DOMAIN = "https://www.artsy.net"
     const { related } = this.props.artist
     const { genes } = related
     if (genes.edges.length === 0) {
@@ -32,7 +33,7 @@ export class Genes extends Component<Props> {
 
           return (
             <Serif size="3t" display="inline-block" key={index} mr={0.5}>
-              <GeneLink href={gene.href} className="noUnderline">
+              <GeneLink href={FIXME_DOMAIN + gene.href} className="noUnderline">
                 {gene.name}
                 {geneDivider}
               </GeneLink>
