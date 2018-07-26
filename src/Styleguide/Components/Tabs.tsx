@@ -51,6 +51,7 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
   public static defaultProps: Partial<TabsProps> = {
     justifyContent: "left",
     transformTabBtn: Button => Button,
+    separator: <Box ml={2} />,
   }
 
   state = {
@@ -149,12 +150,10 @@ export const styles = {
   tabsContainer: css`
     border-bottom: 1px solid ${color("black10")};
   `,
-
   tabContainer: css`
     cursor: pointer;
     padding-bottom: 13px;
     margin-bottom: -1px;
-    margin-right: ${space(3)}px;
     white-space: nowrap;
     ${borders};
 
@@ -166,12 +165,10 @@ export const styles = {
       }
     `};
   `,
-
   activeTabContainer: css`
     pointer-events: none;
     padding-bottom: 13px;
     margin-bottom: -1px;
-    margin-right: ${space(3)}px;
     white-space: nowrap;
     border-bottom: 1px solid ${color("black60")};
 
