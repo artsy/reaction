@@ -12,6 +12,9 @@ import {
 
 export interface ShippingProps {
   order: Shipping_order
+  mediator?: {
+    trigger: (action: string, config: object) => void
+  }
 }
 
 export class ShippingRoute extends Component<ShippingProps> {
@@ -40,7 +43,7 @@ export class ShippingRoute extends Component<ShippingProps> {
             <Spacer mb={3} />
           </>
         }
-        Sidebar={<Summary />}
+        Sidebar={<Summary mediator={this.props.mediator} />}
       />
     )
   }
