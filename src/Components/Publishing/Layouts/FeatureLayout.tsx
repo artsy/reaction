@@ -6,28 +6,28 @@ import {
   ArticleCardsBlock,
   ArticleCardsContainer,
 } from "../RelatedArticles/ArticleCards/Block"
-import RelatedArticlesCanvas from "../RelatedArticles/RelatedArticlesCanvas"
 import { Sections } from "../Sections/Sections"
-import { ArticleData } from "../Typings"
+import { ArticleData, DisplayData, RelatedArticleData } from "../Typings"
+import { CanvasFooter } from "./Components/CanvasFooter"
 
 export interface ArticleProps {
   article: ArticleData
-  headerHeight?: string
+  display?: DisplayData
   isMobile?: boolean
   isSuper?: boolean
-  marginTop?: string
-  relatedArticlesForCanvas?: any
+  relatedArticlesForCanvas?: RelatedArticleData[]
+  renderTime?: number
   showTooltips?: boolean
-  tracking?: any
 }
 
 export const FeatureLayout: React.SFC<ArticleProps> = props => {
   const {
     article,
-    headerHeight,
+    display,
     isMobile,
     isSuper,
     relatedArticlesForCanvas,
+    renderTime,
     showTooltips,
   } = props
   const { seriesArticle } = article
@@ -38,7 +38,7 @@ export const FeatureLayout: React.SFC<ArticleProps> = props => {
     article.hero_section &&
     article.hero_section.type === "fullscreen"
   const sponsor = (seriesArticle && seriesArticle.sponsor) || article.sponsor
-  const height = hasNav ? "100vh" : headerHeight
+  const hasRelated = relatedArticlesForCanvas && !isSuper && !seriesArticle
 
   return (
     <FeatureLayoutContainer>
@@ -50,9 +50,9 @@ export const FeatureLayout: React.SFC<ArticleProps> = props => {
           transparent
         />
       )}
-      <Header article={article} height={height} isMobile={isMobile} />
+      <Header article={article} />
 
-      <FeatureLayoutContent className="article-content">
+      <FeatureLayoutContent>
         <Sections
           article={article}
           isMobile={isMobile}
@@ -60,17 +60,16 @@ export const FeatureLayout: React.SFC<ArticleProps> = props => {
         />
       </FeatureLayoutContent>
 
-      {relatedArticlesForCanvas &&
-        !isSuper &&
-        !seriesArticle && (
-          <div>
-            <RelatedArticlesCanvas
-              articles={relatedArticlesForCanvas}
-              vertical={article.vertical}
-            />
-          </div>
-        )}
       {seriesArticle && <ArticleCardsBlock {...props} />}
+
+      {(hasRelated || display) && (
+        <CanvasFooter
+          article={article}
+          display={display}
+          relatedArticles={relatedArticlesForCanvas}
+          renderTime={renderTime}
+        />
+      )}
     </FeatureLayoutContainer>
   )
 }

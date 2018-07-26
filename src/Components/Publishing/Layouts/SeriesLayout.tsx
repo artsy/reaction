@@ -25,11 +25,7 @@ export class SeriesLayout extends Component<Props, null> {
       hero_section && hero_section.url ? hero_section.url : ""
 
     return (
-      <SeriesContainer
-        className="Series"
-        color={color}
-        backgroundColor={backgroundColor}
-      >
+      <SeriesContainer color={color} backgroundColor={backgroundColor}>
         <Nav transparent sponsor={sponsor} canFix={false} />
 
         <FixedBackground

@@ -1,7 +1,6 @@
 import { storiesOf } from "@storybook/react"
 import { Article } from "Components/Publishing/Article"
 import React from "react"
-import styled from "styled-components"
 
 import {
   ImageHeavyStandardArticle,
@@ -21,7 +20,6 @@ const story = storiesOf("Publishing/Articles/Standard", module)
           article={StandardArticle}
           relatedArticlesForPanel={RelatedPanel}
           relatedArticlesForCanvas={RelatedCanvas}
-          emailSignupUrl="#"
         />
       </ContextProvider>
     )
@@ -33,20 +31,6 @@ const story = storiesOf("Publishing/Articles/Standard", module)
           article={MissingVerticalStandardArticle}
           relatedArticlesForPanel={RelatedPanel}
           relatedArticlesForCanvas={RelatedCanvas}
-          emailSignupUrl="#"
-        />
-      </ContextProvider>
-    )
-  })
-  .add("With top margin", () => {
-    return (
-      <ContextProvider>
-        <Article
-          article={ImageHeavyStandardArticle}
-          relatedArticlesForPanel={RelatedPanel}
-          relatedArticlesForCanvas={RelatedCanvas}
-          emailSignupUrl="#"
-          marginTop="100px"
         />
       </ContextProvider>
     )
@@ -58,7 +42,6 @@ const story = storiesOf("Publishing/Articles/Standard", module)
           article={ImageHeavyStandardArticle}
           relatedArticlesForPanel={RelatedPanel}
           relatedArticlesForCanvas={RelatedCanvas}
-          emailSignupUrl="#"
           isTruncated
         />
       </ContextProvider>
@@ -71,7 +54,6 @@ const story = storiesOf("Publishing/Articles/Standard", module)
           article={StandardArticle}
           relatedArticlesForPanel={RelatedPanel}
           relatedArticlesForCanvas={RelatedCanvas}
-          emailSignupUrl="#"
           showTooltips
         />
       </ContextProvider>
@@ -88,7 +70,6 @@ displays.forEach(displayType => {
           display={Display(displayType)}
           relatedArticlesForPanel={RelatedPanel}
           relatedArticlesForCanvas={RelatedCanvas}
-          emailSignupUrl="#"
         />
       </ContextProvider>
     )
@@ -114,31 +95,22 @@ story.add(`Multiple articles`, () => {
           display={Display("slideshow")}
           relatedArticlesForPanel={RelatedPanel}
           relatedArticlesForCanvas={RelatedCanvas}
-          emailSignupUrl="#"
         />
-        <Break />
         <Article
           article={article}
           display={Display("video")}
           relatedArticlesForPanel={RelatedPanel}
           relatedArticlesForCanvas={RelatedCanvas}
-          emailSignupUrl="#"
+          isTruncated
         />
-        <Break />
         <Article
           article={article}
           display={Display("image")}
           relatedArticlesForPanel={RelatedPanel}
           relatedArticlesForCanvas={RelatedCanvas}
-          emailSignupUrl="#"
+          isTruncated
         />
       </div>
     </ContextProvider>
   )
 })
-
-const Break = styled.div`
-  border-top: 1px solid #ccc;
-  width: 100%;
-  margin-top: 80px;
-`

@@ -1,7 +1,6 @@
 import { cloneDeep, extend, includes, map } from "lodash"
 import React from "react"
 import track from "react-tracking"
-import styled from "styled-components"
 import { ArticleProps } from "../Article"
 import { FullscreenViewer } from "../Sections/FullscreenViewer/FullscreenViewer"
 import { withFullScreen } from "../Sections/FullscreenViewer/withFullScreen"
@@ -13,10 +12,6 @@ import { StandardLayout } from "./StandardLayout"
 interface ArticleState {
   fullscreenImages: any
   article: ArticleData
-}
-
-interface ArticleContainerProps {
-  marginTop?: string
 }
 
 @withFullScreen
@@ -67,7 +62,6 @@ export class ArticleWithFullScreen extends React.Component<
     const { article, fullscreenImages } = this.state
     const {
       closeViewer,
-      marginTop,
       slideIndex,
       viewerIsOpen,
       onOpenAuthModal,
@@ -81,26 +75,20 @@ export class ArticleWithFullScreen extends React.Component<
         shouldFetchData={this.props.showTooltips}
         onOpenAuthModal={onOpenAuthModal}
       >
-        <ArticleContainer marginTop={marginTop}>
-          {article.layout === "feature" ? (
-            <FeatureLayout {...articleProps} />
-          ) : (
-            <StandardLayout {...articleProps} />
-          )}
-          <FullscreenViewer
-            onClose={closeViewer}
-            show={viewerIsOpen}
-            slideIndex={slideIndex}
-            images={fullscreenImages}
-          />
-        </ArticleContainer>
+        {article.layout === "feature" ? (
+          <FeatureLayout {...articleProps} />
+        ) : (
+          <StandardLayout {...articleProps} />
+        )}
+        <FullscreenViewer
+          onClose={closeViewer}
+          show={viewerIsOpen}
+          slideIndex={slideIndex}
+          images={fullscreenImages}
+        />
       </TooltipsData>
     )
   }
 }
-
-const ArticleContainer = styled.div.attrs<ArticleContainerProps>({})`
-  margin-top: ${props => props.marginTop || "50px"};
-`
 
 export default track()(ArticleWithFullScreen)

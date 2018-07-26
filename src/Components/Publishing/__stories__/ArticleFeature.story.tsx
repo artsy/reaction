@@ -5,14 +5,13 @@ import {
   BasicArticle,
   FeatureArticle,
   SeriesArticle,
-  SponsoredArticle,
+  SeriesArticleSponsored,
   SuperArticle,
 } from "Components/Publishing/Fixtures/Articles"
 import {
   Display,
   HeroSections,
   RelatedCanvas,
-  RelatedPanel,
 } from "Components/Publishing/Fixtures/Components"
 import { ArticleData } from "Components/Publishing/Typings"
 import { clone, extend } from "lodash"
@@ -26,21 +25,36 @@ story
       <ContextProvider>
         <Article
           article={FeatureArticle}
+          display={Display("image")}
           relatedArticlesForCanvas={RelatedCanvas}
+          showTooltips
         />
       </ContextProvider>
     )
   })
-  .add("Fullscreen (series)", () => {
+  .add("In series", () => {
     const article = clone({
-      ...SponsoredArticle,
+      ...FeatureArticle,
       seriesArticle: SeriesArticle,
       relatedArticles: [BasicArticle, SuperArticle],
     } as ArticleData)
 
     return (
       <ContextProvider>
-        <Article article={article} />
+        <Article article={article} showTooltips />
+      </ContextProvider>
+    )
+  })
+  .add("In sponsored series", () => {
+    const article = clone({
+      ...FeatureArticle,
+      seriesArticle: SeriesArticleSponsored,
+      relatedArticles: [BasicArticle, SuperArticle],
+    } as ArticleData)
+
+    return (
+      <ContextProvider>
+        <Article article={article} showTooltips />
       </ContextProvider>
     )
   })
@@ -55,7 +69,7 @@ story
 
     return (
       <ContextProvider>
-        <Article article={article} />
+        <Article article={article} showTooltips />
       </ContextProvider>
     )
   })
@@ -70,7 +84,7 @@ story
 
     return (
       <ContextProvider>
-        <Article article={article} />
+        <Article article={article} showTooltips />
       </ContextProvider>
     )
   })
@@ -91,10 +105,9 @@ story
         <Article
           article={article}
           display={Display("image")}
-          relatedArticlesForPanel={RelatedPanel}
           relatedArticlesForCanvas={RelatedCanvas}
-          emailSignupUrl="#"
           isTruncated
+          showTooltips
         />
       </ContextProvider>
     )
@@ -106,16 +119,6 @@ story
         <Article
           article={article}
           isSuper
-          relatedArticlesForCanvas={RelatedCanvas}
-        />
-      </ContextProvider>
-    )
-  })
-  .add("With tooltips", () => {
-    return (
-      <ContextProvider>
-        <Article
-          article={FeatureArticle}
           relatedArticlesForCanvas={RelatedCanvas}
           showTooltips
         />

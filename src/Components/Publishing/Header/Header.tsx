@@ -1,101 +1,64 @@
-import React from "react"
-import { ClassicHeader } from "./ClassicHeader"
-import { FeatureHeader } from "./FeatureHeader"
-import { StandardHeader } from "./StandardHeader"
+import React, { ReactElement } from "react"
+import { ArticleData } from "../Typings"
+import { ClassicHeader } from "./Layouts/ClassicHeader"
+import { FeatureHeader } from "./Layouts/FeatureHeader"
+import { StandardHeader } from "./Layouts/StandardHeader"
 
 interface HeaderProps {
-  article: any
+  article: ArticleData
   date?: string
-  isMobile?: boolean
-  height?: string
-}
-
-const getTitle = (article, children) => {
-  if (article.layout === "classic") {
-    return children ? children[0] : article.title
-  } else {
-    return children ? children[1] : article.title
-  }
-}
-
-const getVertical = (article, children) => {
-  const vertical = article.vertical ? article.vertical.name : false
-  const child = children && children[0]
-  if (child) {
-    return vertical && child ? vertical : child
-  } else {
-    return vertical
-  }
-}
-
-const getLeadParagraph = (article, children) => {
-  const leadParagraph = article.lead_paragraph ? (
-    <div dangerouslySetInnerHTML={{ __html: article.lead_paragraph }} />
-  ) : (
-    false
-  )
-  return children ? children[1] : leadParagraph
-}
-
-const getDeck = (article, children) => {
-  const hero = article.hero_section
-  const savedDeck = hero && hero.deck ? hero.deck : false
-  const deck = children && children[2] ? children[2] : savedDeck
-  return deck ? <div className="feature__deck">{deck}</div> : false
+  editDeck?: ReactElement<any>
+  editImage?: ReactElement<any>
+  editLeadParagraph?: ReactElement<any>
+  editTitle?: ReactElement<any>
+  editVertical?: ReactElement<any>
 }
 
 export const Header: React.SFC<HeaderProps> = props => {
-  const { article, children, date, height, isMobile } = props
-  const title = getTitle(article, children)
-  const layout = article.layout
+  const {
+    article,
+    date,
+    editLeadParagraph,
+    editDeck,
+    editImage,
+    editTitle,
+    editVertical,
+  } = props
 
-  // Classic Article
-  if (layout === "classic") {
-    const leadParagraph = getLeadParagraph(article, children)
-    return (
-      <ClassicHeader
-        isMobile={isMobile}
-        article={article}
-        date={date && date}
-        title={title}
-        leadParagraph={leadParagraph}
-      />
-    )
-  }
-
-  const deck = getDeck(article, children)
-  const vertical = getVertical(article, children)
-  const image = children && children[3]
-
-  // tslint:disable-next-line:switch-default
-  switch (layout) {
+  switch (article.layout) {
     case "feature": {
       return (
         <FeatureHeader
           article={article}
-          title={title}
-          vertical={vertical}
           date={date && date}
-          deck={deck}
-          image={image}
-          height={height}
-          isMobile={isMobile}
+          editDeck={editDeck}
+          editImage={editImage}
+          editTitle={editTitle}
+          editVertical={editVertical}
         />
       )
     }
+
     case "standard": {
       return (
         <StandardHeader
           article={article}
           date={date && date}
-          vertical={vertical}
-          title={title}
+          editTitle={editTitle}
+          editVertical={editVertical}
+        />
+      )
+    }
+
+    default: {
+      return (
+        <ClassicHeader
+          article={article}
+          date={date && date}
+          editLeadParagraph={editLeadParagraph}
+          editTitle={editTitle}
         />
       )
     }
   }
-}
-
-Header.defaultProps = {
-  isMobile: false,
 }
