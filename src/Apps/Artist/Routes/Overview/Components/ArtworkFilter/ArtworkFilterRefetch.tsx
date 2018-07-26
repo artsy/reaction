@@ -13,8 +13,12 @@ interface Props {
 
 class ArtworkGridRefetchContainerWrapper extends React.Component<Props> {
   state = {
-    isLoading: false,
+    isLoading: false, // trigger update to children
   }
+
+  // FIXME: Figure out a pattern so that setState can replace this completely
+  // Used to prevent multiple in-flight requests
+  private isLoading = false
 
   componentDidUpdate(prevProps) {
     Object.keys(this.props.filters).forEach(key => {
@@ -28,10 +32,12 @@ class ArtworkGridRefetchContainerWrapper extends React.Component<Props> {
   }
 
   loadFilter = () => {
-    if (!this.state.isLoading) {
+    if (!this.isLoading) {
       this.setState({
         isLoading: true,
       })
+
+      this.isLoading = true
 
       this.props.relay.refetch(
         {
@@ -47,6 +53,8 @@ class ArtworkGridRefetchContainerWrapper extends React.Component<Props> {
           this.setState({
             isLoading: false,
           })
+
+          this.isLoading = false
         }
       )
     }
