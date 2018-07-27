@@ -28,7 +28,9 @@ if (process.env.NODE_ENV !== "test") {
     html, body {
       font-family: 'AGaramondPro-Regular';
       font-size: 16px;
-      line-height: 24px;
+      line-height: 24px;    
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
   `)
 }
