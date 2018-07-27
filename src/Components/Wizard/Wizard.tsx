@@ -155,6 +155,7 @@ export class Wizard extends React.Component<WizardProps, WizardState> {
         initialValues={initialValues}
         validate={validate}
         validationSchema={validationSchema}
+        validateOnChange={false}
         onSubmit={this.handleSubmit}
         render={formikRenderProps => {
           const context: WizardContext = {

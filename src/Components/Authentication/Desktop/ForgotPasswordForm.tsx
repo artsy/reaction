@@ -62,7 +62,7 @@ export class ForgotPasswordForm extends Component<
                 onBlur={handleBlur}
               />
               {status && !status.success && <Error show>{status.error}</Error>}
-              <SubmitButton block type="submit" disabled={isSubmitting}>
+              <SubmitButton disabled={isSubmitting}>
                 Send Reset Instructions
               </SubmitButton>
               <Footer

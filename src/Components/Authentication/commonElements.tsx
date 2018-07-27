@@ -1,13 +1,11 @@
-import { color, Sans } from "@artsy/palette"
+import { color } from "@artsy/palette"
 import { growAndFadeIn } from "Assets/Animations"
 import { garamond, unica } from "Assets/Fonts"
-import { ButtonProps } from "Components/Buttons/Default"
-import Button from "Components/Buttons/Inverted"
 import React from "react"
 import styled from "styled-components"
 export { Footer } from "./Footer"
 export { TermsOfServiceCheckbox } from "./TermsOfServiceCheckbox"
-
+import { Button, ButtonProps } from "Styleguide/Elements/Button"
 interface FormProps {
   height?: number
 }
@@ -90,13 +88,8 @@ export const ForgotPassword = props => (
   <ForgotPasswordLink {...props}>Forgot Password?</ForgotPasswordLink>
 )
 
-export const SubmitButton = styled((props: ButtonProps) => (
-  <Button type="submit" block {...props}>
-    <Sans size="3t" weight="medium">
-      {props.children}
-    </Sans>
+export const SubmitButton = (props: ButtonProps) => (
+  <Button width="100%" size="large" mt={30.0} mb={0.5} {...props}>
+    {props.children}
   </Button>
-))`
-  margin: auto 0 10px 0;
-  text-transform: inherit;
-`
+)
