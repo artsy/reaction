@@ -10778,9 +10778,9 @@ react-lifecycles-compat@^3.0.0, react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
 
-react-lines-ellipsis@alloy/react-lines-ellipsis#dont-setState-on-unmounted-component:
+react-lines-ellipsis@xiaody/react-lines-ellipsis#0cd517ad9079aeb5e6710178d93dd6faa65b924a:
   version "0.13.0"
-  resolved "https://codeload.github.com/alloy/react-lines-ellipsis/tar.gz/ff6a63a8b4b6b625f46fb753c7acb70a2ccc4541"
+  resolved "https://codeload.github.com/xiaody/react-lines-ellipsis/tar.gz/0cd517ad9079aeb5e6710178d93dd6faa65b924a"
 
 react-markdown@^2.5.0:
   version "2.5.1"
