@@ -1,3 +1,4 @@
+import { space } from "@artsy/palette"
 import React from "react"
 import { BorderProps, SizeProps, SpaceProps } from "styled-system"
 
@@ -47,7 +48,6 @@ export class RadioGroup extends React.Component<
   static defaultProps = {
     renderRadio: ({ id, label, selected, onSelect, disabled }) => (
       <StyledRadio
-        p={2}
         key={id}
         selected={selected}
         onSelect={onSelect}
@@ -78,6 +78,8 @@ export class RadioGroup extends React.Component<
 
 const StyledRadio = Radio.extend`
   border: 1px solid #eee;
+  /* offset the vertical padding to account for label line-height */
+  padding: calc(${space(2)}px - 3px) ${space(2)}px;
   :not(:first-child) {
     border-top: 0;
   }
