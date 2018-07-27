@@ -11,6 +11,7 @@ export interface RadioGroupProps {
   options: Array<{ label: React.ReactNode | null; id: string }>
   renderRadio?: (
     props: {
+      id: string
       label: React.ReactNode
       selected: boolean
       onSelect: () => void
@@ -63,8 +64,9 @@ export class RadioGroup extends React.Component<
       <Flex flexDirection="column">
         {options.map(({ id, label }) =>
           renderRadio({
-            onSelect: () => this.onSelectionChange(id),
+            id,
             label,
+            onSelect: () => this.onSelectionChange(id),
             selected: this.state.selectedOption === id,
             disabled,
           })
