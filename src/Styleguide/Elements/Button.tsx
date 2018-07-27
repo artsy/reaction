@@ -1,6 +1,5 @@
 import { Sans, themeProps } from "@artsy/palette"
 import { SansProps } from "@artsy/palette/dist/elements/Typography"
-import { themeProps } from "@artsy/palette/dist/Theme"
 import Spinner from "Components/Spinner"
 import React, { Component, ReactNode } from "react"
 import styled, { css } from "styled-components"

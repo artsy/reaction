@@ -18,7 +18,7 @@ import { BootProps } from "./types"
 })
 export class Boot extends React.Component<BootProps> {
   static defaultProps = {
-    initialBreakpoint: null,
+    initialMatchingMediaQueries: null,
     relayEnvironment: null,
     currentUser: null,
   }
@@ -28,7 +28,10 @@ export class Boot extends React.Component<BootProps> {
     const appState = new AppState(props)
 
     // FIXME: Type properly, move out of system
-    if (props.system && (props.system as any).initialBreakpoint === "xs") {
+    if (
+      props.initialMatchingMediaQueries &&
+      props.initialMatchingMediaQueries.includes("xs")
+    ) {
       // FIXME: Initial padding is set in @artsy/palette -- we should consider
       // moving here.
       themeProps.grid.container.padding = 20
