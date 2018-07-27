@@ -1,4 +1,4 @@
-import { color, Sans } from "@artsy/palette"
+import { color, Sans, space } from "@artsy/palette"
 import React from "react"
 import { PreloadLink, PreloadLinkProps } from "Router/PreloadLink"
 import styled from "styled-components"
@@ -7,7 +7,6 @@ import { styles } from "./Tabs"
 
 export const RouteTabs: any /* FIXME */ = styled(Flex)`
   ${styles.tabsContainer};
-
   ${(props: any) => {
     if (props.size === "xs") {
       return `
@@ -19,6 +18,7 @@ export const RouteTabs: any /* FIXME */ = styled(Flex)`
   }};
   a {
     ${styles.tabContainer};
+    margin-right: ${space(3)}px;
     color: ${color("black30")};
     text-decoration: none;
 
