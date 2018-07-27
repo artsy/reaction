@@ -35,7 +35,7 @@ export class NavigationTabs extends React.Component<Props> {
 
   render() {
     const { id, statuses } = this.props.artist
-    const route = path => `/artist2/${id}${path}`
+    const route = path => `/artist/${id}${path}`
 
     return (
       <Responsive>
