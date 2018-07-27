@@ -52,7 +52,9 @@ export function createResponsiveComponents<M extends string>() {
           mediaQueryMatches = Object.keys(props.mediaQueries).reduce(
             (matches, key: M) => ({
               ...matches,
-              [key]: props.initialMatchingMediaQueries.includes(key),
+              [key]:
+                !!props.initialMatchingMediaQueries &&
+                props.initialMatchingMediaQueries.includes(key),
             }),
             {}
           )
