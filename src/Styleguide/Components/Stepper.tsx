@@ -9,7 +9,7 @@ import { styles } from "./Tabs"
 
 interface StepperProps extends TabsProps {
   /** The initial step stepper renders */
-  initialTabIndex: number
+  initialTabIndex?: number
 
   /** The step user currently is at (e.g. previous steps completed) */
   currentStepIndex: number
@@ -22,7 +22,7 @@ const transformTabBtn = (
   tabIndex: number,
   props: any
 ): JSX.Element => {
-  const { currentStepIndex, initialTabIndex, disableNavigation } = props
+  const { currentStepIndex, initialTabIndex = 0, disableNavigation } = props
   const returnDisabledButton = disableNavigation && tabIndex !== initialTabIndex
   const disabledButton = (
     <DisabledStepButton key={tabIndex}>
