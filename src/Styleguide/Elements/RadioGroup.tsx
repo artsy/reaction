@@ -1,7 +1,7 @@
 import React from "react"
-import { Flex } from "./Flex"
-
 import { BorderProps, SizeProps, SpaceProps } from "styled-system"
+
+import { Flex } from "Styleguide/Elements/Flex"
 import { Radio } from "Styleguide/Elements/Radio"
 
 export interface RadioGroupProps {
