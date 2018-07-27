@@ -8,7 +8,6 @@ export interface RadioGroupProps {
   disabled?: boolean
   onSelect: (selectedOption: string) => void
   defaultValue?: string
-  name?: string
   options: Array<{ label: React.ReactNode | null; id: string }>
   renderRadio?: (
     props: {
