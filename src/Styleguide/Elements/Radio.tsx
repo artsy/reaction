@@ -71,9 +71,7 @@ export const Radio = styled(
       )
     }
   }
-).attrs<RadioProps>({})`
-  cursor: pointer;
-`
+).attrs<RadioProps>({})``
 
 const hoverStyles = ({ selected, hover }) => {
   const styles = `background-color: ${color("black10")};`
