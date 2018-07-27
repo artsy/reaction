@@ -1,7 +1,7 @@
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
-
+import { Responsive } from "Utils/Responsive"
 import colors from "../../Assets/Colors"
 import RelayMetadata, { Metadata } from "./Metadata"
 import RelaySaveButton, { SaveButton } from "./Save"
@@ -48,14 +48,24 @@ class ArtworkGridItemContainer extends React.Component<Props, null> {
           <a href={artwork.href}>
             <Image src={artwork.image.url} />
           </a>
-          <SaveButtonBlock
-            className="artwork-save"
-            artwork={artwork as any}
-            style={{ position: "absolute", right: "10px", bottom: "10px" }}
-            useRelay={useRelay}
-            {...currentUserSpread}
-            mediator={this.props.mediator}
-          />
+          <Responsive>
+            {({ hover }) =>
+              hover && (
+                <SaveButtonBlock
+                  className="artwork-save"
+                  artwork={artwork as any}
+                  style={{
+                    position: "absolute",
+                    right: "10px",
+                    bottom: "10px",
+                  }}
+                  useRelay={useRelay}
+                  {...currentUserSpread}
+                  mediator={this.props.mediator}
+                />
+              )
+            }
+          </Responsive>
         </Placeholder>
         <MetadataBlock artwork={artwork} useRelay={useRelay} />
       </div>
