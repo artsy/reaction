@@ -1,13 +1,16 @@
 import { color } from "@artsy/palette"
 import React from "react"
 
-enum Direction {
+export enum Direction {
   LEFT,
   RIGHT,
 }
 
 interface IconProps {
+  /** default is RIGHT */
   direction?: Direction
+
+  /** default is black10 */
   fill?: string
 }
 
@@ -17,7 +20,7 @@ export const ChevronIcon = ({ direction, fill }: IconProps) => (
     viewBox="0 0 12 12"
     width="8px"
     height="8px"
-    transform={direction === Direction.RIGHT ? "scale(-1, 1)" : ""}
+    transform={direction === Direction.LEFT ? "" : "scale(-1, 1)"}
   >
     <path
       fill={fill ? fill : color("black10")}
