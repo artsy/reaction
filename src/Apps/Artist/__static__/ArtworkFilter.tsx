@@ -26,8 +26,8 @@ export const ArtworkFilter = () => {
                   </Flex>
                 </Toggle>
                 <Toggle label="Medium" expanded>
-                  <Radio>Painting</Radio>
-                  <Radio>Sculpture</Radio>
+                  <Radio my={0.3}>Painting</Radio>
+                  <Radio my={0.3}>Sculpture</Radio>
                 </Toggle>
                 <Toggle label="Gallery" />
                 <Toggle label="Institution" />

@@ -2,6 +2,7 @@ import { Shipping_order } from "__generated__/Shipping_order.graphql"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Join } from "Styleguide/Elements/Join"
+import { RadioGroup } from "Styleguide/Elements/RadioGroup"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Placeholder } from "Styleguide/Utils/Placeholder"
 import { Summary } from "../../Components/Summary"
@@ -24,7 +25,14 @@ export class ShippingRoute extends Component<ShippingProps> {
       <TwoColumnLayout
         Content={
           <>
-            <Placeholder height="180px" name="Radio Group" mb={3} />
+            <RadioGroup
+              onSelect={id => id}
+              options={[
+                { label: "Provide shipping address", id: "SHIP" },
+                { label: "Arrange for pickup", id: "PICKUP" },
+              ]}
+            />
+            <Spacer mb={3} />
             <Join separator={<Spacer mb={2} />}>
               <Placeholder height="68px" name="Full Name" />
               <TwoColumnSplit>
