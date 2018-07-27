@@ -41,8 +41,8 @@ export class Boot extends React.Component<BootProps> {
           currentUser={props.currentUser}
         >
           <ResponsiveProvider
-            initialBreakpoint={props.initialBreakpoint}
-            breakpoints={themeProps.mediaQueries}
+            mediaQueries={themeProps.mediaQueries}
+            initialMatchingMediaQueries={props.initialMatchingMediaQueries}
           >
             <GlobalStyles>
               <Theme>
