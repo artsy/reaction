@@ -13,7 +13,7 @@ import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Subscribe } from "unstated"
 import { Responsive } from "Utils/Responsive"
-import { ArtworkFilterRefetchContainer } from "./ArtworkFilterRefetch"
+import { ArtworkFilterRefetchContainer as ArtworkFilter } from "./ArtworkFilterRefetch"
 
 interface Props {
   artist: ArtworkFilter_artist
@@ -25,6 +25,7 @@ class Filter extends Component<Props> {
       category === "major_periods"
         ? filters.state.major_periods[0]
         : filters.state[category]
+
     return counts.slice(0, 10).map((count, index) => {
       return (
         <Radio
@@ -56,6 +57,7 @@ class Filter extends Component<Props> {
       agg => agg.slice === "MAJOR_PERIOD"
     )
     const hasForSaleArtworks = this.props.artist.counts.for_sale_artworks > 0
+
     return (
       <Subscribe to={[AppState, FilterState]}>
         {({ state: { mediator } }, filters: FilterState) => {
@@ -65,7 +67,10 @@ class Filter extends Component<Props> {
                 return (
                   <React.Fragment>
                     <Flex>
-                      {/* Sidebar Area */}
+                      {/*
+                        Sidebar Area
+                      */}
+
                       {!xs && (
                         <Sidebar width="30%" mr={2}>
                           <Flex
@@ -134,8 +139,14 @@ class Filter extends Component<Props> {
                           </Toggle>
                         </Sidebar>
                       )}
+
+                      {/*
+                        Main Artwork Grid
+                      */}
+
                       <Box width={xs ? "100%" : "70%"}>
-                        <Separator mb={2} />
+                        <Separator mb={2} mt={-1} />
+
                         <Flex justifyContent="flex-end">
                           <Select
                             mt="-8px"
@@ -166,7 +177,7 @@ class Filter extends Component<Props> {
 
                         <Spacer mb={2} />
 
-                        <ArtworkFilterRefetchContainer
+                        <ArtworkFilter
                           artist={this.props.artist as any}
                           artistID={this.props.artist.id}
                           columnCount={xs || sm || md ? 2 : 3}

@@ -1,8 +1,10 @@
 import React from "react"
 import { buildClientApp } from "Router"
+import { Breakpoint } from "Utils/Responsive"
 
 interface Props {
   routes: Array<object>
+  initialBreakpoint?: Breakpoint
   initialRoute?: string
   initialState?: object
 }
@@ -22,6 +24,7 @@ export class StorybooksRouter extends React.Component<Props> {
         routes: this.props.routes,
         historyProtocol: "memory",
         initialRoute: this.props.initialRoute,
+        initialBreakpoint: this.props.initialBreakpoint,
       })
 
       this.setState({

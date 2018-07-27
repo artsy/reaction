@@ -29,7 +29,7 @@ fragment RelatedArtists_viewer on Viewer {
 fragment RelatedArtistsList_artist_hdyd3 on Artist {
   id
   related {
-    artists(first: 8, kind: MAIN) {
+    artists(first: 16, kind: MAIN) {
       pageInfo {
         hasNextPage
         endCursor
@@ -147,7 +147,7 @@ return {
   "operationKind": "query",
   "name": "routes_RelatedArtistsQuery",
   "id": null,
-  "text": "query routes_RelatedArtistsQuery(\n  $artistID: String!\n) {\n  viewer {\n    ...RelatedArtists_viewer\n  }\n}\n\nfragment RelatedArtists_viewer on Viewer {\n  mainArtists: artist(id: $artistID) {\n    ...RelatedArtistsList_artist_hdyd3\n    __id\n  }\n}\n\nfragment RelatedArtistsList_artist_hdyd3 on Artist {\n  id\n  related {\n    artists(first: 8, kind: MAIN) {\n      pageInfo {\n        hasNextPage\n        endCursor\n      }\n      pageCursors {\n        ...Pagination_pageCursors\n      }\n      edges {\n        node {\n          ...ArtistCard_artist\n          __id\n        }\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n\nfragment ArtistCard_artist on Artist {\n  name\n  id\n  href\n  image {\n    cropped(width: 400, height: 300) {\n      url\n    }\n  }\n  formatted_nationality_and_birthday\n  ...FollowArtistButton_artist\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n",
+  "text": "query routes_RelatedArtistsQuery(\n  $artistID: String!\n) {\n  viewer {\n    ...RelatedArtists_viewer\n  }\n}\n\nfragment RelatedArtists_viewer on Viewer {\n  mainArtists: artist(id: $artistID) {\n    ...RelatedArtistsList_artist_hdyd3\n    __id\n  }\n}\n\nfragment RelatedArtistsList_artist_hdyd3 on Artist {\n  id\n  related {\n    artists(first: 16, kind: MAIN) {\n      pageInfo {\n        hasNextPage\n        endCursor\n      }\n      pageCursors {\n        ...Pagination_pageCursors\n      }\n      edges {\n        node {\n          ...ArtistCard_artist\n          __id\n        }\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n\nfragment ArtistCard_artist on Artist {\n  name\n  id\n  href\n  image {\n    cropped(width: 400, height: 300) {\n      url\n    }\n  }\n  formatted_nationality_and_birthday\n  ...FollowArtistButton_artist\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -218,12 +218,12 @@ return {
                     "kind": "LinkedField",
                     "alias": null,
                     "name": "artists",
-                    "storageKey": "artists(first:8,kind:\"MAIN\")",
+                    "storageKey": "artists(first:16,kind:\"MAIN\")",
                     "args": [
                       {
                         "kind": "Literal",
                         "name": "first",
-                        "value": 8,
+                        "value": 16,
                         "type": "Int"
                       },
                       {

@@ -4,6 +4,7 @@ import styled, { css } from "styled-components"
 import { borders, JustifyContentProps, WidthProps } from "styled-system"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
+import { media } from "Styleguide/Elements/Grid"
 
 export interface TabLike extends JSX.Element {
   props: TabProps
@@ -134,22 +135,30 @@ export const styles = {
     cursor: pointer;
     padding-bottom: 13px;
     margin-bottom: -1px;
-    margin-right: ${space(2)}px;
+    margin-right: ${space(3)}px;
     white-space: nowrap;
     ${borders};
 
-    &:last-child {
-      padding-right: ${space(4)}px;
-    }
+    ${media.xs`
+      margin-right: ${space(2)}px;
+
+      &:last-child {
+        padding-right: ${space(4)}px;
+      }
+    `};
   `,
 
   activeTabContainer: css`
     pointer-events: none;
     padding-bottom: 13px;
     margin-bottom: -1px;
-    margin-right: ${space(2)}px;
+    margin-right: ${space(3)}px;
     white-space: nowrap;
     border-bottom: 1px solid ${color("black60")};
+
+    ${media.xs`
+      margin-right: ${space(2)}px;
+    `};
   `,
 }
 

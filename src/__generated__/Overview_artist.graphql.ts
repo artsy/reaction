@@ -7,6 +7,10 @@ export type Overview_artist = {
     readonly counts: ({
         readonly partner_shows: any | null;
     }) | null;
+    readonly biography_blurb: ({
+        readonly text: string | null;
+        readonly credit: string | null;
+    }) | null;
     readonly href: string | null;
     readonly is_consignable: boolean | null;
 };
@@ -129,6 +133,44 @@ return {
       "args": null
     },
     {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "biography_blurb",
+      "storageKey": "biography_blurb(format:\"HTML\",partner_bio:true)",
+      "args": [
+        {
+          "kind": "Literal",
+          "name": "format",
+          "value": "HTML",
+          "type": "Format"
+        },
+        {
+          "kind": "Literal",
+          "name": "partner_bio",
+          "value": true,
+          "type": "Boolean"
+        }
+      ],
+      "concreteType": "ArtistBlurb",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "text",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "credit",
+          "args": null,
+          "storageKey": null
+        }
+      ]
+    },
+    {
       "kind": "ScalarField",
       "alias": null,
       "name": "href",
@@ -187,5 +229,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'ebd529dd908bf794d15b3bc01bba446d';
+(node as any).hash = 'ab374d4d3831f140622a4ec12a7d0fc7';
 export default node;

@@ -41,11 +41,7 @@ export class NavigationTabs extends React.Component<Props> {
       <Responsive>
         {({ xs }) => {
           return (
-            <RouteTabs
-              mx={xs ? -4 : 0}
-              pl={xs ? 4 : 0}
-              style={{ overflow: xs ? "scroll" : "" }}
-            >
+            <RouteTabs mx={xs ? -4 : 0} pl={xs ? 4 : 0} size={xs ? "xs" : null}>
               {this.renderTab("Overview", route(""), true)}
               {statuses.cv && this.renderTab("CV", route("/cv"))}
               {statuses.articles &&

@@ -15,11 +15,12 @@ import {
 } from "Apps/Artist/Components/LoadingArea"
 
 interface Props {
-  filtered_artworks: ArtworkFilterArtworkGrid_filtered_artworks
-  relay: RelayRefetchProp
   artistID: string
   columnCount: number
   filters: any
+  filtered_artworks: ArtworkFilterArtworkGrid_filtered_artworks
+  isLoading?: boolean
+  relay: RelayRefetchProp
 }
 
 const PAGE_SIZE = 10
@@ -81,7 +82,9 @@ class Artworks extends Component<Props, LoadingAreaState> {
             <Subscribe to={[FilterState]}>
               {(filters: FilterState) => {
                 return (
-                  <LoadingArea isLoading={this.state.isLoading}>
+                  <LoadingArea
+                    isLoading={this.state.isLoading || this.props.isLoading}
+                  >
                     <ArtworkGrid
                       artworks={this.props.filtered_artworks.artworks as any}
                       columnCount={this.props.columnCount}

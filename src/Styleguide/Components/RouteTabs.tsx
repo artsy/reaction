@@ -5,9 +5,18 @@ import styled from "styled-components"
 import { Flex } from "Styleguide/Elements/Flex"
 import { styles } from "./Tabs"
 
-export const RouteTabs = styled(Flex)`
+export const RouteTabs: any /* FIXME */ = styled(Flex)`
   ${styles.tabsContainer};
 
+  ${(props: any) => {
+    if (props.size === "xs") {
+      return `
+        -webkit-overflow-scrolling: touch;
+        overflow-x: scroll;
+        overflow-y: hidden;
+      `
+    }
+  }};
   a {
     ${styles.tabContainer};
     color: ${color("black30")};
