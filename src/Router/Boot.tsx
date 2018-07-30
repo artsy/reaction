@@ -27,7 +27,6 @@ export class Boot extends React.Component<BootProps> {
     const { children, ...props } = this.props
     const appState = new AppState(props)
 
-    // FIXME: Type properly, move out of system
     if (
       props.initialMatchingMediaQueries &&
       props.initialMatchingMediaQueries.includes("xs")
