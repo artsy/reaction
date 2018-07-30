@@ -214,6 +214,7 @@ const InputComponent = styled.input.attrs<{ showLabel: boolean }>({})`
   flex: 1;
   transition: all 0.25s;
   position: absolute;
+  top: 0;
   left: 0;
   width: 100%;
   height: 100%;
