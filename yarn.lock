@@ -1505,6 +1505,10 @@
     "@types/cheerio" "*"
     "@types/react" "*"
 
+"@types/graphql@^0.9.0":
+  version "0.9.4"
+  resolved "https://registry.yarnpkg.com/@types/graphql/-/graphql-0.9.4.tgz#cdeb6bcbef9b6c584374b81aa7f48ecf3da404fa"
+
 "@types/isomorphic-fetch@^0.0.34":
   version "0.0.34"
   resolved "https://registry.yarnpkg.com/@types/isomorphic-fetch/-/isomorphic-fetch-0.0.34.tgz#3c3483e606c041378438e951464f00e4e60706d6"
@@ -4743,6 +4747,10 @@ depd@~1.1.1, depd@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/depd/-/depd-1.1.2.tgz#9bcd52e14c097763e749b274c4346ed2e560b5a9"
 
+deprecated-decorator@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/deprecated-decorator/-/deprecated-decorator-0.1.6.tgz#00966317b7a12fe92f3cc831f7583af329b86c37"
+
 des.js@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/des.js/-/des.js-1.0.0.tgz#c074d2e2aa6a8a9a07dbd61f9a15c2cd83ec8ecc"
@@ -6317,6 +6325,15 @@ graphql-language-service-utils@0.0.10:
   dependencies:
     graphql "^0.9.6"
     graphql-language-service-types "0.0.16"
+
+graphql-tools@^1.2.1:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/graphql-tools/-/graphql-tools-1.2.3.tgz#079bf4d157e46c0a0bae9fec117e0eea6e03ba2c"
+  dependencies:
+    deprecated-decorator "^0.1.6"
+    uuid "^3.0.1"
+  optionalDependencies:
+    "@types/graphql" "^0.9.0"
 
 "graphql@0.7.1 - 1.0.0", graphql@0.9.6, graphql@^0.13.0, graphql@^0.13.1, graphql@^0.13.2, graphql@^0.9.5, graphql@^0.9.6:
   version "0.13.2"
@@ -11400,6 +11417,12 @@ relay-compiler-language-typescript@^0.9.0:
     signedsource "^1.0.0"
     yargs "^9.0.0"
 
+relay-mock-network-layer@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/relay-mock-network-layer/-/relay-mock-network-layer-1.2.0.tgz#bcf30aa2d8c9c840f6c5744d008663c2f57a7819"
+  dependencies:
+    graphql-tools "^1.2.1"
+
 relay-runtime@1.5.0-artsy.3, "relay-runtime@https://github.com/alloy/relay/releases/download/v1.5.0-artsy.3/relay-runtime-1.5.0-artsy.3.tgz":
   version "1.5.0-artsy.3"
   resolved "https://github.com/alloy/relay/releases/download/v1.5.0-artsy.3/relay-runtime-1.5.0-artsy.3.tgz#ae6a633ab734d9b393a1d3b1e06a9887b4b6da60"
@@ -13421,6 +13444,10 @@ utila@~0.4:
 utils-merge@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
+
+uuid@^3.0.1:
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
 
 uuid@^3.1.0, uuid@^3.2.1:
   version "3.2.1"

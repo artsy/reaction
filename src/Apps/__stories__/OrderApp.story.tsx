@@ -1,10 +1,18 @@
 import React from "react"
+import { StorybooksRouter } from "Router/StorybooksRouter"
 import { storiesOf } from "storybook/storiesOf"
-import { OrderApp } from "../Order/OrderApp"
-import { ShippingRoute } from "../Order/Routes/Shipping"
+import { routes as orderRoutes } from "../Order/routes"
 
 storiesOf("Apps/Order Page", module).add("Shipping", () => (
-  <OrderApp me={null} params={null}>
-    <ShippingRoute order={null} />
-  </OrderApp>
+  <StorybooksRouter
+    routes={orderRoutes}
+    initialRoute="/order2/123/shipping"
+    mockResolvers={{
+      Query: () => ({
+        me: {
+          name: "Alice Jane",
+        },
+      }),
+    }}
+  />
 ))
