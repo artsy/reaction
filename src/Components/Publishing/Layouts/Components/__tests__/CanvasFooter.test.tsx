@@ -4,7 +4,7 @@ import React from "react"
 import { DisplayCanvas } from "../../../Display/Canvas"
 import { StandardArticle } from "../../../Fixtures/Articles"
 import { Display, RelatedCanvas } from "../../../Fixtures/Components"
-import RelatedArticlesCanvas from "../../../RelatedArticles/RelatedArticlesCanvas"
+import { RelatedArticlesCanvas } from "../../../RelatedArticles/RelatedArticlesCanvas"
 import { CanvasFooter } from "../CanvasFooter"
 
 describe("CanvasFooter", () => {

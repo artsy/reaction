@@ -55,7 +55,8 @@ describe("RelatedArticlesCanvas", () => {
       .props.onEnter()
 
     expect(dispatch).toBeCalledWith({
-      action: "articleImpression",
+      action: "Impression",
+      context_module: "Further reading",
       subject: "Further reading",
     })
   })

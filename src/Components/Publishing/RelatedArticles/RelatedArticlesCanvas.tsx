@@ -17,7 +17,6 @@ export interface RelatedArticlesCanvasProps
   }
   articles: RelatedArticleData[]
   isMobile?: boolean
-  tracking?: any
 }
 
 interface ScrollingContainerProps {
@@ -30,8 +29,9 @@ export class RelatedArticlesCanvas extends React.Component<
 > {
   @track(() => ({
     action: Schema.ActionType.Impression,
-    context_module: "Further reading",
-    subject: "Further reading",
+    // TODO: reevalutate double naming
+    context_module: Schema.Subject.FurtherReading,
+    subject: Schema.Subject.FurtherReading,
   }))
   trackRelatedImpression() {
     // noop

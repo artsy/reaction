@@ -16,9 +16,6 @@ describe("RelatedArticleCanvasLink", () => {
   beforeEach(() => {
     props = {
       article: RelatedCanvas[0],
-      tracking: {
-        trackEvent: jest.fn(),
-      },
     }
   })
 
@@ -44,7 +41,6 @@ describe("RelatedArticleCanvasLink", () => {
       subject: "Further reading",
       destination_path:
         "/article/artsy-editorial-15-top-art-schools-united-states",
-      flow: "article",
       type: "thumbnail",
     })
   })

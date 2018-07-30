@@ -1,14 +1,14 @@
 import { color, Serif, space } from "@artsy/palette"
 import * as Schema from "Analytics/Schema"
+import { RelatedArticleData } from "Components/Publishing/Typings"
 import React from "react"
 import track from "react-tracking"
 import styled from "styled-components"
 import { crop } from "../../../Utils/resizer"
 import { getArticleHref } from "../Constants"
-import { RelatedArticleFigureData } from "./RelatedArticleCanvasLink"
 
 interface RelatedArticlesPanelProps extends React.HTMLProps<HTMLDivElement> {
-  article: RelatedArticleFigureData
+  article: RelatedArticleData
 }
 
 @track()
@@ -23,9 +23,8 @@ export class RelatedArticlesPanelLink extends React.Component<
     action: Schema.ActionType.Click,
     action_name: Schema.ActionName.ArticleImpression,
     subject: "Related article",
+    context_modules: "Related article",
     destination_path: getArticleHref(props.article.slug),
-    // TODO: Check where type & flow fit into new schema
-    flow: "article",
     type: "thumbnail",
   }))
   onClick(e) {
