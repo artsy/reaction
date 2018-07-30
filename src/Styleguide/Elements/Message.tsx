@@ -5,6 +5,7 @@ import { Flex, FlexProps } from "Styleguide/Elements/Flex"
 
 export const StyledFlex = Flex.extend`
   background-color: ${color("black5")};
+  border-radius: 2px;
 `
 
 interface MessageProps extends FlexProps {
