@@ -1,6 +1,5 @@
-import { Sans } from "@artsy/palette"
+import { Sans, themeProps } from "@artsy/palette"
 import { SansProps } from "@artsy/palette/dist/elements/Typography"
-import { themeProps } from "@artsy/palette/dist/Theme"
 import Spinner from "Components/Spinner"
 import React, { Component, ReactNode } from "react"
 import styled, { css } from "styled-components"
@@ -76,10 +75,12 @@ export const Button = styled(
                 border-color: ${colors.black100};
                 color: ${colors.white100};
 
-                &:hover {
-                  background-color: ${colors.purple100};
-                  border-color: ${colors.purple100};
-                  color: ${colors.white100};
+                @media ${themeProps.mediaQueries.hover} {
+                  &:hover {
+                    background-color: ${colors.purple100};
+                    border-color: ${colors.purple100};
+                    color: ${colors.white100};
+                  }
                 }
               `
             }};
@@ -94,10 +95,12 @@ export const Button = styled(
                 border-color: ${colors.white100};
                 color: ${colors.black100};
 
-                &:hover {
-                  background-color: ${colors.purple100};
-                  border-color: ${colors.purple100};
-                  color: ${colors.white100};
+                @media ${themeProps.mediaQueries.hover} {
+                  &:hover {
+                    background-color: ${colors.purple100};
+                    border-color: ${colors.purple100};
+                    color: ${colors.white100};
+                  }
                 }
               `
             }};
@@ -108,16 +111,18 @@ export const Button = styled(
               const { colors } = props.theme
 
               return `
-              background-color: ${colors.black10};
-              border-color: ${colors.black10};
-              color: ${colors.black100};
-
-              &:hover {
-                background-color: ${colors.black30};
-                border-color: ${colors.black30};
+                background-color: ${colors.black10};
+                border-color: ${colors.black10};
                 color: ${colors.black100};
-              }
-            `
+
+                @media ${themeProps.mediaQueries.hover} {
+                  &:hover {
+                    background-color: ${colors.black30};
+                    border-color: ${colors.black30};
+                    color: ${colors.black100};
+                  }
+                }
+              `
             }};
           `
         case ButtonVariant.secondaryOutline:
@@ -127,12 +132,14 @@ export const Button = styled(
               return `
                 background-color: ${colors.white100};
                 border-color: ${colors.black10};
-                color: ${colors.black100};
-
-                &:hover {
-                  background-color: ${colors.white100};
-                  border-color: ${colors.black100};
-                  color: ${colors.black100};
+                color: ${colors.black100};              
+                
+                @media ${themeProps.mediaQueries.hover} {
+                  &:hover {
+                    background-color: ${colors.white100};
+                    border-color: ${colors.black100};
+                    color: ${colors.black100};
+                  }
                 }
               `
             }};
