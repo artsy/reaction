@@ -26,8 +26,9 @@ export class RelatedArticlesPanel extends React.Component<
   }
 
   @track(() => ({
-    action: Schema.ActionName.ArticleImpression,
-    subject: "Related articles",
+    action: Schema.ActionType.Impression,
+    context_module: Schema.Subject.RelatedArticles, // TODO: reevalutate double naming
+    subject: Schema.Subject.RelatedArticles,
   }))
   trackRelatedImpression() {
     // noop

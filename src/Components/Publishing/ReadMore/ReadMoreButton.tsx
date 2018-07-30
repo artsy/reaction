@@ -16,16 +16,16 @@ interface ReadMoreProps {
 @track()
 export class ReadMoreButton extends React.Component<ReadMoreProps> {
   @track({
-    action: Schema.ActionType.ArticleImpression,
-    subject: "Read more",
+    action: Schema.ActionType.Impression,
+    subject: Schema.Subject.ReadMore,
   })
   trackImpression() {
     // noop
   }
 
   @track(props => ({
-    action_type: Schema.ActionType.ArticlePageview,
-    subject: "Read more",
+    action: "Clicked Read More ", // maps to force override
+    subject: Schema.Subject.ReadMore,
     referrer: props.referrer,
   }))
   onClick() {

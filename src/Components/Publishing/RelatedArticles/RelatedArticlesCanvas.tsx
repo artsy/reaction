@@ -31,7 +31,8 @@ export class RelatedArticlesCanvas extends React.Component<
   RelatedArticlesCanvasProps
 > {
   @track(() => ({
-    action: Schema.ActionName.ArticleImpression,
+    action: Schema.ActionType.Impression,
+    context_module: "Further reading",
     subject: "Further reading",
   }))
   trackRelatedImpression() {

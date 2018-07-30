@@ -26,11 +26,8 @@ export class RelatedArticleCanvasLink extends React.Component<
 > {
   @track(props => ({
     action: Schema.ActionType.Click,
-    action_name: Schema.ActionName.ArticleImpression,
-    subject: "Further reading",
+    subject: Schema.Subject.FurtherReading,
     destination_path: getArticleHref(props.article.slug),
-    // TODO: Check where type & flow fit into new schema
-    flow: "article",
     type: "thumbnail",
   }))
   onClick() {

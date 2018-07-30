@@ -55,18 +55,16 @@ export enum ActionType {
 
   /**
    * A UI element was rendered in the viewport
-   *
-   * TODO: Check if this should be camelCase to conform to other namings
    */
+  Impression = "Impression",
+
+  // replace with universal impression
   ArticleImpression = "article_impression",
 
   /**
-   * A placeholder for an article pageview, not sent directly to segment
-   * this is intercepted in Force to trigger a page event
    *
    * TODO: Investigate sending page events from Reaction
    */
-  ArticlePageview = "articlePageview",
 }
 
 /**
@@ -133,4 +131,16 @@ export enum ActionName {
   ReadMoreExpanded = "readMoreExpanded", // TODO: This differs from old event
   InSale = "In current auction", // TODO: Old schema
   InShow = "In featured show", // TODO: Old schema
+}
+
+/**
+ * Identifier of content that was interacted with
+ */
+export enum Subject {
+  /*
+  * Articles
+  */
+  FurtherReading = "Further reading", // TODO: move to camelCase
+  ReadMore = "Read More",
+  RelatedArticles = "RelatedArticles",
 }
