@@ -1,6 +1,6 @@
 import { RouteConfig } from "found"
 import { ComponentType } from "react"
-import { Environment } from "relay-runtime"
+import { Environment, RelayNetwork } from "relay-runtime"
 import { NewResponsiveProviderProps } from "Utils/Responsive"
 
 type ReactComponent = ComponentType<any>
@@ -14,6 +14,7 @@ export interface AppConfig {
   routes: RouteConfig
   url?: string
   user?: User
+  relayNetwork?: RelayNetwork
 }
 
 export interface ClientResolveProps {
