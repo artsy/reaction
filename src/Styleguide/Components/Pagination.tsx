@@ -68,8 +68,8 @@ export const LargePagination = (props: Props) => {
 
   return (
     <React.Fragment>
-      <Separator mb={3} />
-      <Flex flexDirection="row" justifyContent="flex-end">
+      <Separator mb={3} pr={2} />
+      <Flex flexDirection="row" justifyContent="flex-end" mr={-1}>
         {first && (
           <div>
             {renderPage(first, onClick)}

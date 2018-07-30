@@ -2,10 +2,9 @@ import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
 import { Images } from "../../Fixtures/Components"
-import { ImageCollection } from "../ImageCollection"
 import { WrapperWithFullscreenContext } from "../../Fixtures/Helpers"
+import { ImageCollection } from "../ImageCollection"
 
-jest.mock("react-sizeme", () => jest.fn(c => d => d))
 jest.mock("react-lines-ellipsis/lib/html", () => {
   const React = require("react")
   return () => <div />

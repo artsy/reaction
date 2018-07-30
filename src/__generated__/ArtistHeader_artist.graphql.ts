@@ -2,8 +2,9 @@
 
 import { ConcreteFragment } from "relay-runtime";
 export type ArtistHeader_artist = {
-    readonly name: string | null;
+    readonly _id: string;
     readonly id: string;
+    readonly name: string | null;
     readonly nationality: string | null;
     readonly years: string | null;
     readonly counts: ({
@@ -33,7 +34,7 @@ const node: ConcreteFragment = {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "name",
+      "name": "_id",
       "args": null,
       "storageKey": null
     },
@@ -41,6 +42,13 @@ const node: ConcreteFragment = {
       "kind": "ScalarField",
       "alias": null,
       "name": "id",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "name",
       "args": null,
       "storageKey": null
     },
@@ -158,5 +166,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'ea7d3537d88b5012177537dc5d525258';
+(node as any).hash = 'a554c80e5164862b396742ea12072a79';
 export default node;

@@ -13,7 +13,9 @@ import { AppState } from "./state"
 import { BootProps } from "./types"
 
 // TODO: Do we want to let Force explicitly inject the analytics code?
-@track(null, { dispatch: data => Events.postEvent(data) })
+@track(null, {
+  dispatch: data => Events.postEvent(data),
+})
 export class Boot extends React.Component<BootProps> {
   static defaultProps = {
     initialBreakpoint: null,
@@ -24,6 +26,13 @@ export class Boot extends React.Component<BootProps> {
   render() {
     const { children, ...props } = this.props
     const appState = new AppState(props)
+
+    // FIXME: Type properly, move out of system
+    if (props.system && (props.system as any).initialBreakpoint === "xs") {
+      // FIXME: Initial padding is set in @artsy/palette -- we should consider
+      // moving here.
+      themeProps.grid.container.padding = 20
+    }
 
     return (
       <StateProvider inject={[appState]}>

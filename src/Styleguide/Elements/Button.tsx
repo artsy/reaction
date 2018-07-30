@@ -1,5 +1,6 @@
 import { Sans } from "@artsy/palette"
 import { SansProps } from "@artsy/palette/dist/elements/Typography"
+import { themeProps } from "@artsy/palette/dist/Theme"
 import Spinner from "Components/Spinner"
 import React, { Component, ReactNode } from "react"
 import styled, { css } from "styled-components"
@@ -44,6 +45,7 @@ export const Button = styled(
     static defaultProps = {
       size: ButtonSize.default,
       variant: ButtonVariant.default,
+      theme: themeProps,
     }
 
     getSize(): { height: string; size: "2" | "3t"; px: number } {
@@ -122,7 +124,6 @@ export const Button = styled(
           return css`
             ${props => {
               const { colors } = props.theme
-
               return `
                 background-color: ${colors.white100};
                 border-color: ${colors.black10};
@@ -162,10 +163,10 @@ export interface ButtonBaseProps
     TextAlignProps,
     WidthProps,
     HeightProps {
-  buttonSize?: any // FIXME
+  buttonSize?: ButtonSize
   loading?: boolean
   disabled?: boolean
-  onClick?: () => void
+  onClick?: (e) => void
   variantStyles?: any // FIXME
 }
 

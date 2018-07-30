@@ -4,6 +4,8 @@ import styled, { css } from "styled-components"
 import { borders, JustifyContentProps, WidthProps } from "styled-system"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
+import { media } from "Styleguide/Elements/Grid"
+import { Join } from "Styleguide/Elements/Join"
 
 export interface TabLike extends JSX.Element {
   props: TabProps
@@ -27,6 +29,17 @@ export interface TabsProps extends WidthProps, JustifyContentProps {
   /** Index of the Tab that should be pre-selected */
   initialTabIndex?: number
 
+  /** To be able to extend or modify the way tab btns are getting rendered
+   * default value is an identity function
+   */
+  transformTabBtn?: (
+    Button: JSX.Element,
+    tabIndex?: number,
+    props?: any
+  ) => JSX.Element
+
+  separator?: JSX.Element
+
   children: TabLike[]
 }
 
@@ -37,6 +50,8 @@ export interface TabsState {
 export class Tabs extends React.Component<TabsProps, TabsState> {
   public static defaultProps: Partial<TabsProps> = {
     justifyContent: "left",
+    transformTabBtn: Button => Button,
+    separator: <Box ml={2} />,
   }
 
   state = {
@@ -67,22 +82,28 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
 
   renderTab = (tab, index) => {
     const { name } = tab.props
-    return this.state.activeTabIndex === index ? (
-      <ActiveTabButton key={index}>{name}</ActiveTabButton>
-    ) : (
-      <TabButton key={index} onClick={() => this.setActiveTab(index)}>
-        {name}
-      </TabButton>
-    )
+    return this.state.activeTabIndex === index
+      ? this.props.transformTabBtn(
+          <ActiveTabButton key={index}>{name}</ActiveTabButton>,
+          index,
+          this.props
+        )
+      : this.props.transformTabBtn(
+          <TabButton key={index} onClick={() => this.setActiveTab(index)}>
+            {name}
+          </TabButton>,
+          index,
+          this.props
+        )
   }
 
   render() {
-    const { children = [], justifyContent } = this.props
+    const { children = [], justifyContent, separator } = this.props
 
     return (
       <React.Fragment>
         <TabsContainer mb={0.5} width="100%" justifyContent={justifyContent}>
-          {children.map(this.renderTab)}
+          <Join separator={separator}>{children.map(this.renderTab)}</Join>
         </TabsContainer>
         <Box pt={3}>{children[this.state.activeTabIndex]}</Box>
       </React.Fragment>
@@ -129,27 +150,31 @@ export const styles = {
   tabsContainer: css`
     border-bottom: 1px solid ${color("black10")};
   `,
-
   tabContainer: css`
     cursor: pointer;
     padding-bottom: 13px;
     margin-bottom: -1px;
-    margin-right: ${space(2)}px;
     white-space: nowrap;
     ${borders};
 
-    &:last-child {
-      padding-right: ${space(4)}px;
-    }
-  `,
+    ${media.xs`
+      margin-right: ${space(2)}px;
 
+      &:last-child {
+        padding-right: ${space(4)}px;
+      }
+    `};
+  `,
   activeTabContainer: css`
     pointer-events: none;
     padding-bottom: 13px;
     margin-bottom: -1px;
-    margin-right: ${space(2)}px;
     white-space: nowrap;
     border-bottom: 1px solid ${color("black60")};
+
+    ${media.xs`
+      margin-right: ${space(2)}px;
+    `};
   `,
 }
 

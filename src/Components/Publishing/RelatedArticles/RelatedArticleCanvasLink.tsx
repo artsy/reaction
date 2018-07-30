@@ -1,5 +1,6 @@
 import { Serif } from "@artsy/palette"
 import * as Schema from "Analytics/Schema"
+import { RelatedArticleData } from "Components/Publishing/Typings"
 import React from "react"
 import track from "react-tracking"
 import styled from "styled-components"
@@ -8,16 +9,10 @@ import { pMedia } from "../../Helpers"
 import { Byline } from "../Byline/Byline"
 import { getArticleHref } from "../Constants"
 
-export interface RelatedArticleFigureData {
-  thumbnail_title: string
-  thumbnail_image: string
-  slug: string
-  id: string
-}
-
-export interface RelatedArticleCanvasLinkProps
+interface RelatedArticleCanvasLinkProps
   extends React.HTMLProps<HTMLDivElement> {
-  article: RelatedArticleFigureData
+  article: RelatedArticleData
+  tracking?: any
 }
 
 @track()

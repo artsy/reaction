@@ -3,7 +3,7 @@ import React, { SFC } from "react"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
-import { Image, ResponsiveImage } from "Styleguide/Elements/Image"
+import { Image } from "Styleguide/Elements/Image"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Responsive } from "Utils/Responsive"
@@ -33,7 +33,12 @@ const LargeArticleItem: SFC<ArticleItemProps> = props => {
 
   return (
     <React.Fragment>
-      <Row>
+      <Row
+        style={{ cursor: "pointer" }}
+        onClick={() => {
+          window.location.href = href
+        }}
+      >
         <Col sm={2}>
           <Date size="3" weight="medium">
             {date}
@@ -55,9 +60,16 @@ const LargeArticleItem: SFC<ArticleItemProps> = props => {
         </Col>
         <Col sm={2}>
           <a href={href}>
-            <ResponsiveImage
-              style={{ backgroundPosition: "center top" }}
+            <Image
+              style={{
+                height: "100px",
+                width: "auto",
+                maxWidth: 140,
+                maxHeight: 280,
+                objectFit: "fill",
+              }}
               src={imageUrl}
+              mb={2}
             />
           </a>
         </Col>
@@ -74,7 +86,13 @@ const SmallArticleItem: SFC<ArticleItemProps> = props => {
 
   return (
     <React.Fragment>
-      <Flex justifyContent="space-between">
+      <Flex
+        justifyContent="space-between"
+        style={{ cursor: "pointer" }}
+        onClick={() => {
+          window.location.href = href
+        }}
+      >
         <Box pr={2}>
           <Date size="1" weight="medium">
             {date}

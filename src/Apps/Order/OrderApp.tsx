@@ -1,8 +1,8 @@
 import React, { SFC } from "react"
+import { Step, Stepper } from "Styleguide/Components/Stepper"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
-import { Placeholder } from "Styleguide/Utils/Placeholder"
 
 export interface OrderAppProps {
   me: {
@@ -16,10 +16,14 @@ export interface OrderAppProps {
 // @ts-ignore
 export const OrderApp: SFC<OrderAppProps> = ({ me, children, order }) => {
   return (
-    <React.Fragment>
+    <>
       <Row>
         <Col>
-          <Placeholder name="Subheader" height="46px" />
+          <Stepper currentStepIndex={0}>
+            <Step name="Shipping" />
+            <Step name="Payment" />
+            <Step name="Review" />
+          </Stepper>
         </Col>
       </Row>
 
@@ -28,11 +32,11 @@ export const OrderApp: SFC<OrderAppProps> = ({ me, children, order }) => {
       {children}
 
       {me && (
-        <React.Fragment>
+        <>
           <Separator my={6} />
           {me.name}
-        </React.Fragment>
+        </>
       )}
-    </React.Fragment>
+    </>
   )
 }

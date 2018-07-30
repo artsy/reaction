@@ -22,7 +22,7 @@ interface ShowProps {
   scrollTo: string
 }
 
-export const PAGE_SIZE = 8
+export const PAGE_SIZE = 16
 
 class RelatedArtistsList extends Component<ShowProps, LoadingAreaState> {
   state = {
@@ -113,7 +113,7 @@ class RelatedArtistsList extends Component<ShowProps, LoadingAreaState> {
                     <Row>
                       <Col>
                         <LoadingArea isLoading={this.state.isLoading}>
-                          <Flex flexWrap>
+                          <Flex flexWrap mr={-2}>
                             {this.props.artist.related.artists.edges.map(
                               ({ node }, index) => {
                                 return (
@@ -175,7 +175,7 @@ export const RelatedArtistsRefetchContainer = createRefetchContainer(
     artist: graphql`
       fragment RelatedArtistsList_artist on Artist
         @argumentDefinitions(
-          first: { type: "Int", defaultValue: 8 }
+          first: { type: "Int", defaultValue: 16 }
           last: { type: "Int" }
           after: { type: "String" }
           before: { type: "String" }

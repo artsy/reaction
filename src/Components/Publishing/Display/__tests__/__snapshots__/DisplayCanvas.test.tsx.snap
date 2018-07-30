@@ -115,9 +115,11 @@ exports[`snapshot renders the canvas in overlay layout 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   width: 100%;
+  min-height: -webkit-fit-content;
+  min-height: -moz-fit-content;
+  min-height: fit-content;
   max-width: 1250px;
   margin: 0 auto;
-  margin-bottom: -44px;
   box-sizing: border-box;
 }
 
@@ -136,7 +138,7 @@ exports[`snapshot renders the canvas in overlay layout 1`] = `
   letter-spacing: 1px;
   font-size: 11px;
   line-height: 1.65em;
-  color: #cccccc;
+  color: #C2C2C2;
   margin: 10px 0;
   text-align: center;
 }
@@ -146,7 +148,7 @@ exports[`snapshot renders the canvas in overlay layout 1`] = `
   font-size: 11px;
   line-height: 1.1em;
   -webkit-font-smoothing: antialiased;
-  color: #cccccc;
+  color: #C2C2C2;
   margin: 15px 0 0 0;
   text-align: center;
 }
@@ -207,13 +209,6 @@ exports[`snapshot renders the canvas in overlay layout 1`] = `
     -webkit-justify-content: flex-start;
     -ms-flex-pack: start;
     justify-content: flex-start;
-  }
-}
-
-@media (max-width:720px) {
-  .c0 {
-    margin-bottom: 0;
-    min-height: 400px;
   }
 }
 
@@ -304,7 +299,8 @@ exports[`snapshot renders the canvas in slideshow layout 1`] = `
 }
 
 .c3.title-card {
-  max-width: 1250px;
+  max-width: 1190px;
+  margin-left: 40px;
   width: 1250px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -428,9 +424,11 @@ exports[`snapshot renders the canvas in slideshow layout 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   width: 100%;
+  min-height: -webkit-fit-content;
+  min-height: -moz-fit-content;
+  min-height: fit-content;
   max-width: 100%;
   margin: 0 auto;
-  margin-bottom: -44px;
   box-sizing: border-box;
 }
 
@@ -449,7 +447,7 @@ exports[`snapshot renders the canvas in slideshow layout 1`] = `
   letter-spacing: 1px;
   font-size: 11px;
   line-height: 1.65em;
-  color: #cccccc;
+  color: #C2C2C2;
   margin: 10px 0;
   text-align: center;
 }
@@ -459,7 +457,7 @@ exports[`snapshot renders the canvas in slideshow layout 1`] = `
   font-size: 11px;
   line-height: 1.1em;
   -webkit-font-smoothing: antialiased;
-  color: #cccccc;
+  color: #C2C2C2;
   margin: 15px 0 0 0;
 }
 
@@ -592,13 +590,6 @@ exports[`snapshot renders the canvas in slideshow layout 1`] = `
     -webkit-justify-content: flex-start;
     -ms-flex-pack: start;
     justify-content: flex-start;
-  }
-}
-
-@media (max-width:720px) {
-  .c0 {
-    margin-bottom: 0;
-    min-height: 400px;
   }
 }
 
@@ -843,9 +834,11 @@ exports[`snapshot renders the canvas in standard layout with image 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   width: 100%;
+  min-height: -webkit-fit-content;
+  min-height: -moz-fit-content;
+  min-height: fit-content;
   max-width: 1250px;
   margin: 0 auto;
-  margin-bottom: -44px;
   box-sizing: border-box;
 }
 
@@ -864,7 +857,7 @@ exports[`snapshot renders the canvas in standard layout with image 1`] = `
   letter-spacing: 1px;
   font-size: 11px;
   line-height: 1.65em;
-  color: #cccccc;
+  color: #C2C2C2;
   margin: 10px 0;
   text-align: center;
 }
@@ -874,7 +867,7 @@ exports[`snapshot renders the canvas in standard layout with image 1`] = `
   font-size: 11px;
   line-height: 1.1em;
   -webkit-font-smoothing: antialiased;
-  color: #cccccc;
+  color: #C2C2C2;
   margin: 15px 0 0 0;
 }
 
@@ -971,13 +964,6 @@ exports[`snapshot renders the canvas in standard layout with image 1`] = `
     max-width: 100%;
     width: 100%;
     height: auto;
-  }
-}
-
-@media (max-width:720px) {
-  .c0 {
-    margin-bottom: 0;
-    min-height: 400px;
   }
 }
 
@@ -1216,9 +1202,11 @@ exports[`snapshot renders the canvas in standard layout with video 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   width: 100%;
+  min-height: -webkit-fit-content;
+  min-height: -moz-fit-content;
+  min-height: fit-content;
   max-width: 1250px;
   margin: 0 auto;
-  margin-bottom: -44px;
   box-sizing: border-box;
 }
 
@@ -1237,7 +1225,7 @@ exports[`snapshot renders the canvas in standard layout with video 1`] = `
   letter-spacing: 1px;
   font-size: 11px;
   line-height: 1.65em;
-  color: #cccccc;
+  color: #C2C2C2;
   margin: 10px 0;
   text-align: center;
 }
@@ -1247,7 +1235,7 @@ exports[`snapshot renders the canvas in standard layout with video 1`] = `
   font-size: 11px;
   line-height: 1.1em;
   -webkit-font-smoothing: antialiased;
-  color: #cccccc;
+  color: #C2C2C2;
   margin: 15px 0 0 0;
 }
 
@@ -1346,13 +1334,6 @@ exports[`snapshot renders the canvas in standard layout with video 1`] = `
     max-width: 100%;
     width: 100%;
     height: auto;
-  }
-}
-
-@media (max-width:720px) {
-  .c0 {
-    margin-bottom: 0;
-    min-height: 400px;
   }
 }
 

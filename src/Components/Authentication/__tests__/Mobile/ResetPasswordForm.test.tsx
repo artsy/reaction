@@ -1,7 +1,6 @@
 import { mount } from "enzyme"
 import React from "react"
 import Input from "../../../Input"
-import { MobileSubmitButton } from "../../commonElements"
 import { MobileForgotPasswordForm } from "../../Mobile/ForgotPasswordForm"
 
 describe("MobileLoginForm", () => {

@@ -8,10 +8,6 @@ import {
   FullscreenViewerContainer,
 } from "../FullscreenViewer"
 
-jest.mock("react-slick", () => {
-  const React = require("react")
-  return props => <div>{props.children}</div>
-})
 it("renders properly", () => {
   const onClose = jest.fn()
   const viewer = renderer

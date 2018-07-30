@@ -25,12 +25,7 @@ storiesOf("Publishing/Articles/News", module)
   })
   .add("Has Display", () => {
     return (
-      <Article
-        article={NewsArticle}
-        isTruncated
-        relatedArticlesForCanvas={RelatedCanvas}
-        display={Display("video")}
-      />
+      <Article article={NewsArticle} isTruncated display={Display("video")} />
     )
   })
   .add("Related & Display", () => {

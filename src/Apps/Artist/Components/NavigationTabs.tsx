@@ -3,7 +3,9 @@ import { track } from "Analytics"
 import * as Schema from "Analytics/Schema"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { AppState } from "Router/state"
 import { RouteTab, RouteTabs } from "Styleguide/Components/RouteTabs"
+import { Subscribe } from "unstated"
 import { Responsive } from "Utils/Responsive"
 
 interface Props {
@@ -21,12 +23,25 @@ export class NavigationTabs extends React.Component<Props> {
     // no-op
   }
 
-  renderTab(text: string, to: string, exact: boolean = false) {
+  renderTab(
+    text: string,
+    to: string,
+    options: {
+      exact?: boolean
+      mediator: {
+        trigger: (action: string, config: object) => void
+      }
+    }
+  ) {
+    const { exact, mediator } = options
     return (
       <RouteTab
         to={to}
         exact={exact}
-        onClick={() => this.handleClick(text, to)}
+        onClick={() => {
+          mediator && mediator.trigger("artist:tabclick", { to })
+          this.handleClick(text, to)
+        }}
       >
         {text}
       </RouteTab>
@@ -35,30 +50,53 @@ export class NavigationTabs extends React.Component<Props> {
 
   render() {
     const { id, statuses } = this.props.artist
-    const route = path => `/artist2/${id}${path}`
+    const route = path => `/artist/${id}${path}`
 
     return (
-      <Responsive>
-        {({ xs }) => {
+      <Subscribe to={[AppState]}>
+        {({ state }) => {
+          const { mediator } = state
+
           return (
-            <RouteTabs
-              mx={xs ? -4 : 0}
-              pl={xs ? 4 : 0}
-              style={{ overflow: xs ? "scroll" : "" }}
-            >
-              {this.renderTab("Overview", route(""), true)}
-              {statuses.cv && this.renderTab("CV", route("/cv"))}
-              {statuses.articles &&
-                this.renderTab("Articles", route("/articles"))}
-              {statuses.shows && this.renderTab("Shows", route("/shows"))}
-              {statuses.auction_lots &&
-                this.renderTab("Auction results", route("/auction-results"))}
-              {statuses.artists &&
-                this.renderTab("Related artists", route("/related-artists"))}
-            </RouteTabs>
+            <Responsive>
+              {({ xs }) => {
+                return (
+                  <RouteTabs
+                    mx={xs ? -4 : 0}
+                    pl={xs ? 4 : 0}
+                    size={xs ? "xs" : null}
+                  >
+                    {this.renderTab("Overview", route(""), {
+                      exact: true,
+                      mediator,
+                    })}
+                    {statuses.cv &&
+                      this.renderTab("CV", route("/cv"), { mediator })}
+                    {statuses.articles &&
+                      this.renderTab("Articles", route("/articles"), {
+                        mediator,
+                      })}
+                    {statuses.shows &&
+                      this.renderTab("Shows", route("/shows"), { mediator })}
+                    {statuses.auction_lots &&
+                      this.renderTab(
+                        "Auction results",
+                        route("/auction-results"),
+                        { mediator }
+                      )}
+                    {statuses.artists &&
+                      this.renderTab(
+                        "Related artists",
+                        route("/related-artists"),
+                        { mediator }
+                      )}
+                  </RouteTabs>
+                )
+              }}
+            </Responsive>
           )
         }}
-      </Responsive>
+      </Subscribe>
     )
   }
 }

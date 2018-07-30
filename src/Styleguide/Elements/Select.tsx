@@ -40,9 +40,12 @@ export class Select extends React.Component<SelectProps> {
 export const LargeSelect = (props: SelectProps) => {
   return (
     <LargeSelectContainer {...props} p={1}>
-      <select onChange={event => props.onSelect(event.target.value)}>
+      <select
+        value={props.selected}
+        onChange={event => props.onSelect(event.target.value)}
+      >
         {props.options.map(({ value, text }) => (
-          <option selected={value === props.selected} value={value} key={value}>
+          <option value={value} key={value}>
             {text}
           </option>
         ))}
@@ -59,13 +62,12 @@ export const SmallSelect = props => {
           Sort:
         </Sans>
 
-        <select onChange={event => props.onSelect(event.target.value)}>
+        <select
+          value={props.selected}
+          onChange={event => props.onSelect(event.target.value)}
+        >
           {props.options.map(({ value, text }) => (
-            <option
-              selected={value === props.selected}
-              value={value}
-              key={value}
-            >
+            <option value={value} key={value}>
               {text}
             </option>
           ))}
@@ -108,9 +110,12 @@ const LargeSelectContainer = styled.div.attrs<SelectProps>({})`
 
   &::after {
     content: "";
+    cursor: pointer;
+    pointer-events: none;
     position: absolute;
     top: 45%;
     right: ${space(1)}px;
+
     ${caretArrow};
   }
 `
@@ -127,9 +132,11 @@ const SmallSelectContainer = styled.div.attrs<SelectProps>({})`
 
   &::after {
     content: "";
+    cursor: pointer;
+    pointer-events: none;
     position: absolute;
     top: ${space(1)}px;
-    margin-left: ${space(0.5)}px;
+    margin-left: -8px;
     ${caretArrow};
   }
 

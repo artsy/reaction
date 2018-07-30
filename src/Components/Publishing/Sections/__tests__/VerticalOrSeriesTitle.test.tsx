@@ -1,17 +1,15 @@
+import { mount } from "enzyme"
 import "jest-styled-components"
 import { clone } from "lodash"
-import { mount } from "enzyme"
 import React from "react"
 import renderer from "react-test-renderer"
 import { VerticalOrSeriesTitle } from "../../Sections/VerticalOrSeriesTitle"
 
 import {
   FeatureArticle,
-  StandardArticle,
   SeriesArticleSponsored,
+  StandardArticle,
 } from "../../Fixtures/Articles"
-
-jest.mock("react-sizeme", () => jest.fn(c => d => d))
 
 it("renders properly for a feature article", () => {
   const component = renderer

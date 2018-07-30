@@ -12,13 +12,13 @@ export class SubmissionRoute extends Component<SubmissionProps> {
     const { order } = this.props
 
     return (
-      <React.Fragment>
+      <>
         Submission Page
         <Spacer mb={1} />
         {`Order #${order.id}`}
         <Spacer mb={2} />
         Submitted!
-      </React.Fragment>
+      </>
     )
   }
 }

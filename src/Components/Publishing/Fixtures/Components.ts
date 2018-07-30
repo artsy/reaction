@@ -1,3 +1,4 @@
+import { DisplayUnitData } from "Components/Publishing/Typings"
 import { cloneDeep, extend, flatten } from "lodash"
 import { Props as ImageSetPreviewProps } from "../Sections/ImageSetPreview"
 import { SocialEmbedProps } from "../Sections/SocialEmbed"
@@ -132,7 +133,7 @@ export const Campaign = {
   name: "Artsy",
 }
 
-export const UnitCanvasOverlay = {
+export const UnitCanvasOverlay: DisplayUnitData = {
   layout: "overlay",
   headline:
     "Sample copy sed posuere consectetur est at lobortis. Nullam id dolor ultricies vehicula.",
@@ -153,15 +154,18 @@ export const UnitCanvasOverlay = {
     "Donec id elit non mi porta gravida at eget metus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.",
 }
 
-export const UnitCanvasTracked = extend(cloneDeep(UnitCanvasOverlay), {
-  pixel_tracking_code: "https://artsy.net/impression?ord=[timestamp]",
-  link: {
-    text: "",
-    url: "https://artsy.net?ord=[timestamp]",
-  },
-})
+export const UnitCanvasTracked: DisplayUnitData = extend(
+  cloneDeep(UnitCanvasOverlay),
+  {
+    pixel_tracking_code: "https://artsy.net/impression?ord=[timestamp]",
+    link: {
+      text: "",
+      url: "https://artsy.net?ord=[timestamp]",
+    },
+  }
+)
 
-export const UnitCanvasImage = {
+export const UnitCanvasImage: DisplayUnitData = {
   layout: "standard",
   headline: "Commodo Risus Pharetra Fermentum Vehicula Adipiscing",
   body: "",
@@ -180,7 +184,7 @@ export const UnitCanvasImage = {
     "Donec id elit non mi porta gravida at eget metus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.",
 }
 
-export const UnitCanvasVideo = {
+export const UnitCanvasVideo: DisplayUnitData = {
   layout: "standard",
   headline: "Commodo Risus Pharetra Fermentum Vehicula Adipiscing",
   body: "",
@@ -201,7 +205,7 @@ export const UnitCanvasVideo = {
     "Donec id elit non mi porta gravida at eget metus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.",
 }
 
-export const UnitCanvasSlideshow = {
+export const UnitCanvasSlideshow: DisplayUnitData = {
   layout: "slideshow",
   headline:
     "Sample copy sed posuere consectetur est at lobortis. Nullam id dolor ultricies vehicula.",
@@ -235,7 +239,7 @@ export const UnitCanvasSlideshow = {
     "Donec id elit non mi porta gravida at eget metus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.",
 }
 
-export const UnitPanel = {
+export const UnitPanel: DisplayUnitData = {
   headline: "Euismod Inceptos Quam",
   body:
     "Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. <a href='http://artsy.net/articles'>Example Link</a>",
@@ -252,7 +256,7 @@ export const UnitPanel = {
     url: "http://artsy.net",
   },
 }
-export const UnitPanelTracked = extend(cloneDeep(UnitPanel), {
+export const UnitPanelTracked: DisplayUnitData = extend(cloneDeep(UnitPanel), {
   link: {
     text: "",
     url: "https://artsy.net?ord=[timestamp]",
@@ -260,7 +264,7 @@ export const UnitPanelTracked = extend(cloneDeep(UnitPanel), {
   pixel_tracking_code: "https://artsy.net/impression?ord=[timestamp]",
 })
 
-export const UnitPanelVideo = {
+export const UnitPanelVideo: DisplayUnitData = {
   headline: "Euismod Inceptos Quam",
   body:
     "Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. <a href='http://artsy.net/articles'>Example Link</a>",

@@ -1,4 +1,4 @@
-import { mount, shallow } from "enzyme"
+import { mount } from "enzyme"
 import { Formik } from "formik"
 import React from "react"
 import { SignUpForm } from "../../Desktop/SignUpForm"

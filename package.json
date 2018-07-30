@@ -119,6 +119,7 @@
     "react-addons-test-utils": "^15.5.1",
     "react-docgen-typescript-loader": "^2.1.0",
     "react-dom": "^16.2.0",
+    "react-powerplug": "^1.0.0-rc.1",
     "react-select": "^1.2.1",
     "react-test-renderer": "^16.2.0",
     "relay-compiler": "https://github.com/alloy/relay/releases/download/v1.5.0-artsy.3/relay-compiler-1.5.0-artsy.3.tgz",
@@ -139,7 +140,7 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
-    "@artsy/palette": "^2.3.4",
+    "@artsy/palette": "^2.8.0",
     "cheerio": "^1.0.0-rc.2",
     "farce": "^0.2.6",
     "formik": "^0.11.11",
@@ -157,7 +158,7 @@
     "qs": "^6.5.0",
     "react-css-transition-replace": "^3.0.2",
     "react-html-parser": "^2.0.2",
-    "react-lines-ellipsis": "0.11.0",
+    "react-lines-ellipsis": "alloy/react-lines-ellipsis#dont-setState-on-unmounted-component",
     "react-markdown": "^2.5.0",
     "react-oembed-container": "^0.3.0",
     "react-overlays": "^0.8.3",

@@ -1,15 +1,13 @@
 import { Sans } from "@artsy/palette"
 import * as Schema from "Analytics/Schema"
+import { RelatedArticleData } from "Components/Publishing/Typings"
 import { map, once } from "lodash"
 import React from "react"
 import track from "react-tracking"
 import Waypoint from "react-waypoint"
 import styled from "styled-components"
 import { pMedia } from "../../Helpers"
-import {
-  RelatedArticleCanvasLink,
-  RelatedArticleFigureData,
-} from "./RelatedArticleCanvasLink"
+import { RelatedArticleCanvasLink } from "./RelatedArticleCanvasLink"
 
 export interface RelatedArticlesCanvasProps
   extends React.HTMLProps<HTMLDivElement> {
@@ -17,7 +15,7 @@ export interface RelatedArticlesCanvasProps
     name: string
     id?: string
   }
-  articles: RelatedArticleFigureData[]
+  articles: RelatedArticleData[]
   isMobile?: boolean
   tracking?: any
 }

@@ -32,7 +32,7 @@ import { ShowProps } from "./Routes/Shows"
 
 export const routes = [
   {
-    path: "/artist2/:artistID",
+    path: "/artist/:artistID",
     Component: ArtistApp,
     query: graphql`
       query routes_ArtistTopLevelQuery($artistID: String!) {

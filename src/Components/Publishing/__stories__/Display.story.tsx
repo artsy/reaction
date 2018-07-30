@@ -28,7 +28,7 @@ const story = storiesOf("Publishing/Display/Panel", module)
       <DisplayPanel
         unit={UnitPanelTracked}
         campaign={Campaign}
-        renderTime={getCurrentUnixTimestamp().toString()}
+        renderTime={getCurrentUnixTimestamp()}
       />
     )
   })
@@ -71,7 +71,7 @@ storiesOf("Publishing/Display/Canvas", module)
       <DisplayCanvas
         unit={UnitCanvasTracked}
         campaign={Campaign}
-        renderTime={getCurrentUnixTimestamp().toString()}
+        renderTime={getCurrentUnixTimestamp()}
       />
     )
   })

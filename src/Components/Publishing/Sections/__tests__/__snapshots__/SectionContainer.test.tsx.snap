@@ -70,6 +70,14 @@ exports[`renders column_width properly 1`] = `
   padding-left: 1em;
 }
 
+.c1 ul {
+  list-style: disc;
+}
+
+.c1 ol {
+  list-style: decimal;
+}
+
 .c1 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
@@ -353,6 +361,14 @@ exports[`renders fillwidth properly 1`] = `
   padding-left: 1em;
 }
 
+.c1 ul {
+  list-style: disc;
+}
+
+.c1 ol {
+  list-style: decimal;
+}
+
 .c1 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
@@ -634,6 +650,14 @@ exports[`renders overflow_fillwidth properly 1`] = `
 .c1 ul,
 .c1 ol {
   padding-left: 1em;
+}
+
+.c1 ul {
+  list-style: disc;
+}
+
+.c1 ol {
+  list-style: decimal;
 }
 
 .c1 li {

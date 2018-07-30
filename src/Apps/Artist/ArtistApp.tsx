@@ -45,16 +45,14 @@ export class ArtistApp extends React.Component<ArtistAppProps> {
 
         <Row>
           <Col>
-            <span id="jumpto-RouteTabs" />
-
             <NavigationTabs artist={artist as any} />
 
             <Spacer mb={3} />
 
             {/*
-           When clicking nav links, wait for fetch to complete before
-           transitioning to new route
-         */}
+              When clicking nav links, wait for fetch to complete before
+              transitioning to new route
+            */}
 
             <Subscribe to={[PreloadLinkState]}>
               {({ state: { isLoading } }: PreloadLinkState) => {

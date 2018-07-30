@@ -20,7 +20,7 @@ export interface DisplayPanelProps extends React.HTMLProps<HTMLDivElement> {
   isMobile?: boolean
   unit: any
   tracking?: any
-  renderTime?: string
+  renderTime?: number
 }
 
 export interface DisplayPanelState {

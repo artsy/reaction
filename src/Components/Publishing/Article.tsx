@@ -2,18 +2,19 @@ import React from "react"
 import track from "react-tracking"
 import Events from "../../Utils/Events"
 import ArticleWithFullScreen from "./Layouts/ArticleWithFullScreen"
+import { ClassicLayout } from "./Layouts/ClassicLayout"
 import { NewsLayout } from "./Layouts/NewsLayout"
 import { SeriesLayout } from "./Layouts/SeriesLayout"
 import { VideoLayout } from "./Layouts/VideoLayout"
 import { FullScreenProvider } from "./Sections/FullscreenViewer/FullScreenProvider"
-import { ArticleData } from "./Typings"
+import { ArticleData, DisplayData } from "./Typings"
 
 export interface ArticleProps {
   article: ArticleData
   relatedArticles?: any
   relatedArticlesForPanel?: any
   relatedArticlesForCanvas?: any
-  renderTime?: string
+  renderTime?: number
   seriesArticle?: ArticleData
   isHovered?: boolean
   isMobile?: boolean
@@ -23,11 +24,7 @@ export interface ArticleProps {
   emailSignupUrl?: string
   headerHeight?: string
   marginTop?: string | null
-  display?: {
-    name: string
-    panel: object
-    canvas: any
-  }
+  display?: DisplayData
   showTooltips?: boolean
   slideIndex?: number
   tracking?: any
@@ -54,6 +51,9 @@ export class Article extends React.Component<ArticleProps> {
     const { article } = this.props
 
     switch (article.layout) {
+      case "classic": {
+        return <ClassicLayout {...this.props} />
+      }
       case "series": {
         return <SeriesLayout {...this.props} />
       }

@@ -1,8 +1,8 @@
-import React from "react"
 import { mount } from "enzyme"
-import { MobileLoginForm } from "../../Mobile/LoginForm"
+import React from "react"
 import Input from "../../../Input"
-import { MobileSubmitButton } from "../../commonElements"
+import { BackButton, SubmitButton } from "../../commonElements"
+import { MobileLoginForm } from "../../Mobile/LoginForm"
 
 describe("MobileLoginForm", () => {
   const handleSubmit = jest.fn()
@@ -23,7 +23,7 @@ describe("MobileLoginForm", () => {
   })
 
   it("renders errors", done => {
-    const wrapper = getWrapper({})
+    const wrapper = getWrapper({ values: { email: "kanalala" } })
     const button = wrapper.find("button")
     button.simulate("submit")
     wrapper.update()
@@ -31,5 +31,17 @@ describe("MobileLoginForm", () => {
       expect(wrapper.html()).toMatch("Please enter a valid email.")
       done()
     })
+  })
+
+  it("calls onBackButtonClicked if back button is clicked on first page", () => {
+    const onBackButtonClicked = jest.fn()
+    const wrapper = mount(
+      <MobileLoginForm
+        values={{}}
+        handleSubmit={handleSubmit}
+        handleTypeChange={jest.fn()}
+        onBackButtonClicked={onBackButtonClicked}
+      />
+    )
   })
 })

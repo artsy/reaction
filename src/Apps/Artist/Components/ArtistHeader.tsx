@@ -26,7 +26,16 @@ type Image = Props["artist"]["carousel"]["images"][0]
 
 const carouselSlideTrack: Track<null, null, [Image]> = track
 
-@track({ context_module: "ArtistHeader" })
+@track<Props>(
+  props =>
+    ({
+      context_module: "Header",
+      // TODO: Old schema for the Follow button
+      modelName: "artist",
+      entity_slug: props.artist.id,
+      entity_id: props.artist._id,
+    } as Schema.ContextModule & Schema.Old)
+)
 export class ArtistHeader extends Component<Props> {
   render() {
     const props = this.props
@@ -110,6 +119,8 @@ export class LargeArtistHeader extends Component<Props> {
         />
         <Spacer my={2} />
 
+        <span id="jumpto-ArtistHeader" />
+
         <Flex justifyContent="space-between">
           <Box>
             <Serif size="10">{props.artist.name}</Serif>
@@ -129,6 +140,14 @@ export class LargeArtistHeader extends Component<Props> {
           <FollowArtistButton
             useDeprecatedButtonStyle={false}
             artist={props.artist as any}
+            buttonProps={
+              {
+                width: "100px",
+                // FIXME: Hack to get around fixed with and centered text
+                paddingLeft: 0,
+                paddingRight: 0,
+              } as any
+            }
             currentUser={currentUser}
             onOpenAuthModal={() => {
               props.mediator.trigger("open:auth", {
@@ -193,6 +212,7 @@ export class SmallArtistHeader extends Component<Props> {
         />
         <Spacer my={2} />
 
+        <span id="jumpto-ArtistHeader" />
         <Flex flexDirection="column" alignItems="center">
           <Serif size="5">{props.artist.name}</Serif>
           <Flex>
@@ -213,9 +233,7 @@ export class SmallArtistHeader extends Component<Props> {
           <FollowArtistButton
             artist={props.artist as any}
             useDeprecatedButtonStyle={false}
-            buttonProps={{
-              width: "100%",
-            }}
+            buttonProps={{ width: "100%" }}
             currentUser={currentUser}
             onOpenAuthModal={() => {
               props.mediator.trigger("open:auth", {
@@ -242,8 +260,9 @@ export const ArtistHeaderFragmentContainer = createFragmentContainer(
   ArtistHeader,
   graphql`
     fragment ArtistHeader_artist on Artist {
-      name
+      _id
       id
+      name
       nationality
       years
       counts {

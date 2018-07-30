@@ -1,5 +1,6 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
+import { Box } from "Styleguide/Elements/Box"
 import { Section } from "Styleguide/Utils/Section"
 import { Tab, Tabs } from "../Tabs"
 
@@ -51,6 +52,13 @@ storiesOf("Styleguide/Components", module).add("Tabs (Simple)", () => {
       </Section>
       <Section title="With custom justification">
         <Tabs justifyContent="center">
+          <Tab name="About" />
+          <Tab name="Pricing" />
+          <Tab name="Condition" />
+        </Tabs>
+      </Section>
+      <Section title="With separator">
+        <Tabs justifyContent="center" separator={<Box pr={"20px"}>*</Box>}>
           <Tab name="About" />
           <Tab name="Pricing" />
           <Tab name="Condition" />
