@@ -26,6 +26,7 @@ export class ShippingRoute extends Component<ShippingProps> {
         Content={
           <>
             <RadioGroup
+              defaultValue="SHIP"
               onSelect={id => id}
               options={[
                 { label: "Provide shipping address", id: "SHIP" },
