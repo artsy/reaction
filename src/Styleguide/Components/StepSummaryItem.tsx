@@ -28,7 +28,7 @@ export function StepSummaryItem({
   ...others
 }: StepSummaryItemProps) {
   return (
-    <Wrapper flexDirection="column" {...others}>
+    <Wrapper flexDirection="column" width="100%" maxWidth={542} {...others}>
       <Flex justifyContent="space-between" alignItems="baseline" mb={1}>
         <Serif size="3t" weight="semibold" color="black100">
           {title}
