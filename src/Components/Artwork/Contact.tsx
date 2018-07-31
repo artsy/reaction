@@ -43,9 +43,13 @@ export class Contact extends React.Component<ContactProps, null> {
   }
 
   contactPartnerLine() {
+    const partner =
+      this.props.artwork.partner &&
+      this.props.artwork.partner.type.toLocaleLowerCase()
+
     return (
       <TextLink href={this.props.artwork.href} underline>
-        Contact {this.props.artwork.partner.type.toLowerCase()}
+        Contact {partner}
       </TextLink>
     )
   }
