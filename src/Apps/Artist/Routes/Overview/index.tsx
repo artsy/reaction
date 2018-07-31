@@ -22,7 +22,7 @@ interface State {
   isReadMoreExpanded: boolean
 }
 
-@track({ context_module: "ArtistOverview" })
+@track({ context_module: Schema.Context.ArtistOverview })
 class OverviewRoute extends React.Component<OverviewRouteProps, State> {
   state = {
     isReadMoreExpanded: false,

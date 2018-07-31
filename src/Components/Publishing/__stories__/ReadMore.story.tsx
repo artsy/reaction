@@ -16,6 +16,7 @@ storiesOfPublishing("Publishing/Read More", module).add("Text Article", () => {
         article={StandardArticle}
         relatedArticlesForPanel={RelatedPanel}
         relatedArticlesForCanvas={RelatedCanvas}
+        infiniteScrollEntrySlug="artsy-editorial-this-article"
         isTruncated
       />
     </ContextProvider>

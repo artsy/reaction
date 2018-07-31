@@ -34,13 +34,13 @@ export const getArticleFullHref = slug =>
 /**
  * Relative path to editorial entity
  */
-export const getEditorialHref = (type, slug) => `/${type}/${slug}`
+export const getEditorialHref = (layout, slug) => `/${layout}/${slug}`
 
 /**
  * Absolute path to editorial entity
  */
-export const getFullEditorialHref = (type, slug) =>
-  `https://www.artsy.net/${type}/${slug}`
+export const getFullEditorialHref = (layout, slug) =>
+  `https://www.artsy.net/${layout}/${slug}`
 
 /**
  * Absolute path to artsy entity

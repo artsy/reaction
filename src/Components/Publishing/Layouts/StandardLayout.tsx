@@ -1,6 +1,9 @@
 import { color, space } from "@artsy/palette"
+import * as Schema from "Analytics/Schema"
+import { getEditorialHref } from "Components/Publishing/Constants"
 import { get, omit } from "lodash"
 import React from "react"
+import track from "react-tracking"
 import styled from "styled-components"
 import { ResponsiveDeprecated } from "../../../Utils/ResponsiveDeprecated"
 import { pMedia } from "../../Helpers"
@@ -17,6 +20,7 @@ interface ArticleState {
   isTruncated: boolean
 }
 
+@track()
 export class StandardLayout extends React.Component<
   ArticleProps,
   ArticleState
@@ -35,7 +39,25 @@ export class StandardLayout extends React.Component<
     }
   }
 
-  removeTruncation = () => {
+  @track(props => {
+    // Track here and on ReadMoreButton so pageview & action both fire
+    const {
+      article: { layout, slug },
+      infiniteScrollEntrySlug,
+    } = props
+    const referrer = infiniteScrollEntrySlug
+      ? `/article/${infiniteScrollEntrySlug}`
+      : undefined
+
+    return {
+      action: Schema.ActionType.Click,
+      context_module: Schema.Context.ReadMore,
+      destination_path: getEditorialHref(layout, slug),
+      subject: Schema.Subject.ReadMore,
+      referrer,
+    }
+  })
+  removeTruncation() {
     this.setState({ isTruncated: false })
   }
 
@@ -77,7 +99,7 @@ export class StandardLayout extends React.Component<
             <ArticleWrapper isInfiniteScroll={this.props.isTruncated}>
               <ReadMoreWrapper
                 isTruncated={isTruncated}
-                hideButton={this.removeTruncation}
+                hideButton={() => this.setState({ isTruncated: false })}
               >
                 <Header article={article} />
 
@@ -100,7 +122,7 @@ export class StandardLayout extends React.Component<
 
               {isTruncated && (
                 <ReadMoreButton
-                  onClick={this.removeTruncation}
+                  onClick={this.removeTruncation.bind(this)}
                   referrer={`/article/${infiniteScrollEntrySlug}`}
                 />
               )}

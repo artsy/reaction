@@ -23,11 +23,10 @@ export class ReadMoreButton extends React.Component<ReadMoreProps> {
     // noop
   }
 
-  @track(props => ({
-    action: "Clicked Read More ", // maps to force override
-    subject: Schema.Subject.ReadMore,
-    referrer: props.referrer,
-  }))
+  @track({
+    // maps to force pageview override
+    action: "Clicked read more",
+  })
   onClick() {
     this.props.onClick()
   }

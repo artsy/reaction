@@ -139,8 +139,31 @@ export enum ActionName {
 export enum Subject {
   /*
   * Articles
+  * TODO: Old schema
   */
-  FurtherReading = "Further reading", // TODO: move to camelCase
-  ReadMore = "Read More",
-  RelatedArticles = "RelatedArticles",
+  FurtherReading = "Further reading",
+  ReadMore = "Read more",
+  RelatedArticles = "Related articles",
+}
+
+/**
+ * Identifier of a conceptual module on the page.
+ */
+export enum Context {
+  Header = "Header",
+  NavigationTabs = "NavigationTabs",
+
+  /**
+   * Artist page
+   */
+  ArtistOverview = "ArtistOverview",
+  ArtistBio = "ArtistBio",
+
+  /*
+  * Articles
+  * TODO: Old schema
+  */
+  FurtherReading = "Further reading",
+  ReadMore = "Read more",
+  RelatedArticles = "Related articles",
 }
