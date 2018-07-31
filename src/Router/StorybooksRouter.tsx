@@ -1,4 +1,4 @@
-import { IResolvers } from "graphql-tools/dist/Interfaces"
+import { IMocks } from "graphql-tools/dist/Interfaces"
 import React from "react"
 import { createMockNetworkLayer } from "Relay/createMockNetworkLayer"
 import { buildClientApp } from "Router"
@@ -9,7 +9,7 @@ interface Props {
   initialMatchingMediaQueries?: MatchingMediaQueries
   initialRoute?: string
   initialState?: object
-  mockResolvers?: IResolvers
+  mockResolvers?: IMocks
 }
 
 export class StorybooksRouter extends React.Component<Props> {
