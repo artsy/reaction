@@ -3,6 +3,11 @@ import { Step, Stepper } from "Styleguide/Components/Stepper"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Spacer } from "Styleguide/Elements/Spacer"
 
+const steps = ["Shipping", "Payment", "Review"]
+
+const getStepIndex = pathname =>
+  steps.findIndex(step => pathname.includes(step.toLowerCase()))
+
 export interface OrderAppProps {
   me: {
     name: string
@@ -10,26 +15,22 @@ export interface OrderAppProps {
   params: {
     orderID: string
   }
-  currentStepIndex: number
+  location: any
 }
 
-// @ts-ignore
 export const OrderApp: SFC<OrderAppProps> = ({
   me,
   children,
-  currentStepIndex,
+  location,
+  ...props
 }) => {
+  const stepIndex = getStepIndex(location.pathname)
   return (
     <>
       <Row>
         <Col>
-          <Stepper
-            initialTabIndex={currentStepIndex}
-            currentStepIndex={currentStepIndex}
-          >
-            <Step name="Shipping" />
-            <Step name="Payment" />
-            <Step name="Review" />
+          <Stepper initialTabIndex={stepIndex} currentStepIndex={stepIndex}>
+            {steps.map(step => <Step name={step} key={step} />)}
           </Stepper>
         </Col>
       </Row>
