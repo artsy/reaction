@@ -2,6 +2,7 @@ import { Payment_order } from "__generated__/Payment_order.graphql"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { Link } from "Router"
 import { Button } from "Styleguide/Elements/Button"
 import { Join } from "Styleguide/Elements/Join"
 import { Spacer } from "Styleguide/Elements/Spacer"
@@ -18,6 +19,7 @@ export interface PaymentProps {
 
 export class PaymentRoute extends Component<PaymentProps> {
   render() {
+    const { order } = this.props
     return (
       <Responsive>
         {({ xs }) => (
@@ -28,9 +30,11 @@ export class PaymentRoute extends Component<PaymentProps> {
                   <Placeholder height="68px" name="Credit Card" />
                   <Placeholder height="20px" name="Billing/Shipping Check" />
                   {!xs && (
-                    <Button size="large" width="100%">
-                      Continue
-                    </Button>
+                    <Link to={`/order2/${order.id}/review`}>
+                      <Button size="large" width="100%">
+                        Continue
+                      </Button>
+                    </Link>
                   )}
                 </Join>
                 <Spacer mb={3} />
@@ -41,9 +45,11 @@ export class PaymentRoute extends Component<PaymentProps> {
                 {xs && (
                   <>
                     <Spacer mb={3} />
-                    <Button size="large" width="100%">
-                      Continue
-                    </Button>
+                    <Link to={`/order2/${order.id}/review`}>
+                      <Button size="large" width="100%">
+                        Continue
+                      </Button>
+                    </Link>
                   </>
                 )}
               </Summary>
