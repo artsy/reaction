@@ -34,7 +34,7 @@ const transformTabBtn = (
     return disabledButton
   } else if (currentStepIndex && tabIndex < currentStepIndex) {
     return (
-      <Flex>
+      <Flex key={tabIndex}>
         <CheckMarkWrapper>
           <CheckIcon fill={color("green100")} />
         </CheckMarkWrapper>
@@ -54,6 +54,9 @@ const transformTabBtn = (
 export const Stepper = (props: StepperProps) => {
   return (
     <Tabs
+      // This key is required to ensure the tab state updates with
+      // the currentStepIndex change
+      key={props.currentStepIndex}
       separator={
         <ChevronWrapper>
           <ChevronIcon />
