@@ -44,8 +44,8 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
   private image: HTMLImageElement = null
 
   state = {
-    width: 0,
-    height: 0,
+    width: 1,
+    height: 1,
   }
 
   componentDidMount() {
