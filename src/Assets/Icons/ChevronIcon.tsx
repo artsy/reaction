@@ -2,8 +2,10 @@ import { color } from "@artsy/palette"
 import React from "react"
 
 export enum Direction {
-  LEFT,
-  RIGHT,
+  LEFT = "rotate(0deg)",
+  RIGHT = "rotate(180deg)",
+  UP = "rotate(90deg)",
+  DOWN = "rotate(270deg)",
 }
 
 interface IconProps {
@@ -20,7 +22,7 @@ export const ChevronIcon = ({ direction, fill }: IconProps) => (
     viewBox="0 0 12 12"
     width="8px"
     height="8px"
-    transform={direction === Direction.LEFT ? "" : "scale(-1, 1)"}
+    transform={direction || Direction.RIGHT}
   >
     <path
       fill={fill ? fill : color("black10")}
