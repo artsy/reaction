@@ -7,7 +7,7 @@ import createInitialFarceRouter from "found/lib/createInitialFarceRouter"
 import createRender from "found/lib/createRender"
 import { loadComponents } from "loadable-components"
 import React from "react"
-import { createEnvironment } from "../Relay/createEnvironment"
+import { createEnvironment } from "Relay/createEnvironment"
 import { AppShell } from "./AppShell"
 import { Boot } from "./Boot"
 import { AppConfig, ClientResolveProps } from "./types"
@@ -20,6 +20,7 @@ export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
         user,
         historyProtocol = "browser",
         initialRoute = "/",
+        relayNetwork,
       } = config
 
       const relayBootstrap = JSON.parse(window.__RELAY_BOOTSTRAP__ || "{}")
@@ -35,6 +36,7 @@ export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
       const relayEnvironment = createEnvironment({
         cache: relayBootstrap,
         user: currentUser,
+        relayNetwork,
       })
 
       const getHistoryProtocol = () => {

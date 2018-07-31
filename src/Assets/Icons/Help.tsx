@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 
-export class Help extends Component<null, null> {
+export class Help extends Component {
   render() {
     return (
       <svg

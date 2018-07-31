@@ -54,10 +54,6 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
     separator: <Box ml={2} />,
   }
 
-  state = {
-    activeTabIndex: 0,
-  }
-
   constructor(props) {
     super(props)
 

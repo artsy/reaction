@@ -24,7 +24,7 @@ export const ChevronIcon = ({ direction, fill }: IconProps) => (
   >
     <path
       fill={fill ? fill : color("black10")}
-      fill-rule="evenodd"
+      fillRule="evenodd"
       d="M9.091 10.758l-.788.771-5.832-5.708L8.303.113l.788.771-5.044 4.937 5.044 4.937"
     />
   </svg>

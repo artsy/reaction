@@ -32,6 +32,7 @@ export const Radio = styled(
     render() {
       const {
         selected,
+        name,
         children,
         disabled,
         hover,

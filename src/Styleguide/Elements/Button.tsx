@@ -1,6 +1,5 @@
-import { Sans } from "@artsy/palette"
+import { Sans, themeProps } from "@artsy/palette"
 import { SansProps } from "@artsy/palette/dist/elements/Typography"
-import { themeProps } from "@artsy/palette/dist/Theme"
 import Spinner from "Components/Spinner"
 import React, { Component, ReactNode } from "react"
 import styled, { css } from "styled-components"
@@ -19,32 +18,27 @@ import {
   WidthProps,
 } from "styled-system"
 
-enum ButtonSize {
-  default = "medium",
-  small = "small",
-  medium = "medium",
-  large = "large",
-}
+export type ButtonSize = "small" | "medium" | "large"
+const defaultSize: ButtonSize = "medium"
 
-enum ButtonVariant {
-  default = "primaryBlack",
-  primaryBlack = "primaryBlack",
-  primaryWhite = "primaryWhite",
-  secondaryGray = "secondaryGray",
-  secondaryOutline = "secondaryOutline",
-}
+export type ButtonVariant =
+  | "primaryBlack"
+  | "primaryWhite"
+  | "secondaryGray"
+  | "secondaryOutline"
+const defaultVariant: ButtonVariant = "primaryBlack"
 
 export interface ButtonProps extends ButtonBaseProps {
   children: ReactNode
-  size?: any // FIXME, ButtonSize
-  variant?: any // FIXME, ButtonVariant?
+  size?: ButtonSize
+  variant?: ButtonVariant
 }
 
 export const Button = styled(
   class extends Component<ButtonProps> {
     static defaultProps = {
-      size: ButtonSize.default,
-      variant: ButtonVariant.default,
+      size: defaultSize,
+      variant: defaultVariant,
       theme: themeProps,
     }
 
@@ -52,11 +46,11 @@ export const Button = styled(
       const { size } = this.props
 
       switch (size) {
-        case ButtonSize.small:
+        case "small":
           return { height: "26px", size: "2", px: 1 }
-        case ButtonSize.medium:
+        case "medium":
           return { height: "41px", size: "3t", px: 2 }
-        case ButtonSize.large:
+        case "large":
           return { height: "50px", size: "3t", px: 3 }
         default:
       }
@@ -66,7 +60,7 @@ export const Button = styled(
       const { variant } = this.props
 
       switch (variant) {
-        case ButtonVariant.primaryBlack:
+        case "primaryBlack":
           return css`
             ${props => {
               const { colors } = props.theme
@@ -76,15 +70,17 @@ export const Button = styled(
                 border-color: ${colors.black100};
                 color: ${colors.white100};
 
-                &:hover {
-                  background-color: ${colors.purple100};
-                  border-color: ${colors.purple100};
-                  color: ${colors.white100};
+                @media ${themeProps.mediaQueries.hover} {
+                  &:hover {
+                    background-color: ${colors.purple100};
+                    border-color: ${colors.purple100};
+                    color: ${colors.white100};
+                  }
                 }
               `
             }};
           `
-        case ButtonVariant.primaryWhite:
+        case "primaryWhite":
           return css`
             ${props => {
               const { colors } = props.theme
@@ -94,45 +90,51 @@ export const Button = styled(
                 border-color: ${colors.white100};
                 color: ${colors.black100};
 
-                &:hover {
-                  background-color: ${colors.purple100};
-                  border-color: ${colors.purple100};
-                  color: ${colors.white100};
+                @media ${themeProps.mediaQueries.hover} {
+                  &:hover {
+                    background-color: ${colors.purple100};
+                    border-color: ${colors.purple100};
+                    color: ${colors.white100};
+                  }
                 }
               `
             }};
           `
-        case ButtonVariant.secondaryGray:
+        case "secondaryGray":
           return css`
             ${props => {
               const { colors } = props.theme
 
               return `
-              background-color: ${colors.black10};
-              border-color: ${colors.black10};
-              color: ${colors.black100};
-
-              &:hover {
-                background-color: ${colors.black30};
-                border-color: ${colors.black30};
+                background-color: ${colors.black10};
+                border-color: ${colors.black10};
                 color: ${colors.black100};
-              }
-            `
+
+                @media ${themeProps.mediaQueries.hover} {
+                  &:hover {
+                    background-color: ${colors.black30};
+                    border-color: ${colors.black30};
+                    color: ${colors.black100};
+                  }
+                }
+              `
             }};
           `
-        case ButtonVariant.secondaryOutline:
+        case "secondaryOutline":
           return css`
             ${props => {
               const { colors } = props.theme
               return `
                 background-color: ${colors.white100};
                 border-color: ${colors.black10};
-                color: ${colors.black100};
-
-                &:hover {
-                  background-color: ${colors.white100};
-                  border-color: ${colors.black100};
-                  color: ${colors.black100};
+                color: ${colors.black100};              
+                
+                @media ${themeProps.mediaQueries.hover} {
+                  &:hover {
+                    background-color: ${colors.white100};
+                    border-color: ${colors.black100};
+                    color: ${colors.black100};
+                  }
                 }
               `
             }};

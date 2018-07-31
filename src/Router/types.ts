@@ -1,18 +1,20 @@
 import { RouteConfig } from "found"
 import { ComponentType } from "react"
-import { Environment } from "relay-runtime"
-import { Breakpoint } from "Utils/Responsive"
+import { Environment, RelayNetwork } from "relay-runtime"
+import { NewResponsiveProviderProps } from "Utils/Responsive"
 
 type ReactComponent = ComponentType<any>
 type HistoryProtocol = "browser" | "hash" | "memory"
+export type MatchingMediaQueries = NewResponsiveProviderProps["initialMatchingMediaQueries"]
 
 export interface AppConfig {
   historyProtocol?: HistoryProtocol
-  initialBreakpoint?: Breakpoint
+  initialMatchingMediaQueries?: MatchingMediaQueries
   initialRoute?: string
   routes: RouteConfig
   url?: string
   user?: User
+  relayNetwork?: RelayNetwork
 }
 
 export interface ClientResolveProps {
@@ -44,7 +46,7 @@ export interface AppStateContainer {
 }
 
 export interface BootProps extends AppStateContainer {
-  initialBreakpoint?: Breakpoint
+  initialMatchingMediaQueries?: MatchingMediaQueries
   [x: string]: any // User can pass in any properties on boot
 }
 

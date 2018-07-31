@@ -9,7 +9,7 @@ export const block = (margin: number = 0) => {
   return (props: any = {}) => {
     if (props.block) {
       return css`
-        width: calc(100% - ${margin}px);
+        width: 100%;
         margin: 10px auto;
       `
     }
@@ -36,14 +36,15 @@ const psizes = theme.publishing.breakpoints
 
 type PublishingMedia = { [S in keyof typeof psizes]: typeof css }
 
-export const pMedia: PublishingMedia = Object.keys(
-  psizes
-).reduce((accumulator, label) => {
-  const pxSize = psizes[label]
-  accumulator[label] = (strings, ...args) => css`
-    @media (max-width: ${pxSize}px) {
-      ${css(strings, ...args)};
-    }
-  `
-  return accumulator
-}, {}) as PublishingMedia
+export const pMedia: PublishingMedia = Object.keys(psizes).reduce(
+  (accumulator, label) => {
+    const pxSize = psizes[label]
+    accumulator[label] = (strings, ...args) => css`
+      @media (max-width: ${pxSize}px) {
+        ${css(strings, ...args)};
+      }
+    `
+    return accumulator
+  },
+  {}
+) as PublishingMedia

@@ -40,7 +40,9 @@ describe("Boot", () => {
   })
 
   it("injects ResponsiveProvider", () => {
-    expect(getWrapper().find("ResponsiveProvider").length).toEqual(1)
+    // TODO: Because of our backwards compatible wrapper, there are now 2 nested
+    //       components in the tree by the same name.
+    expect(getWrapper().find("ResponsiveProvider").length).not.toEqual(0)
   })
 
   it("injects GlobalStyles", () => {

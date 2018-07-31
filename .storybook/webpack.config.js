@@ -18,6 +18,7 @@ env.load()
  */
 const {
   WEBPACK_DEVTOOL = "cheap-module-eval-source-map",
+  GEMINI_CLOUDFRONT_URL,
   METAPHYSICS_ENDPOINT,
   USER_ID,
   USER_ACCESS_TOKEN,
@@ -25,6 +26,7 @@ const {
 } = process.env
 
 const sharifyPath = sharify({
+  GEMINI_CLOUDFRONT_URL,
   METAPHYSICS_ENDPOINT,
   XAPP_TOKEN,
 })
@@ -47,9 +49,11 @@ const plugins = [
 if (USER_ID && USER_ACCESS_TOKEN) {
   plugins.push(
     new webpack.DefinePlugin({
-      "process.env.USER_ID": JSON.stringify(USER_ID),
-      "process.env.USER_ACCESS_TOKEN": JSON.stringify(USER_ACCESS_TOKEN),
-      "process.env.XAPP_TOKEN": JSON.stringify(XAPP_TOKEN),
+      "process.env": {
+        USER_ID: JSON.stringify(USER_ID),
+        USER_ACCESS_TOKEN: JSON.stringify(USER_ACCESS_TOKEN),
+        XAPP_TOKEN: JSON.stringify(XAPP_TOKEN),
+      },
     })
   )
 } else {
