@@ -92,7 +92,7 @@ exports[`renders ShareDate properly 1`] = `
     </div>
     <a
       className="c6"
-      href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Fstandard%2Fnew-yorks-next-art-district"
+      href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district"
       onClick={[Function]}
       target="_blank"
     >
@@ -118,7 +118,7 @@ exports[`renders ShareDate properly 1`] = `
     </a>
     <a
       className="c6"
-      href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Fstandard%2Fnew-yorks-next-art-district&text=New York's Next Art District&url=https%3A%2F%2Fwww.artsy.net%2Fstandard%2Fnew-yorks-next-art-district&via=artsy"
+      href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district&text=New York's Next Art District&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district&via=artsy"
       onClick={[Function]}
       target="_blank"
     >
@@ -144,7 +144,7 @@ exports[`renders ShareDate properly 1`] = `
     </a>
     <a
       className="c6"
-      href="mailto:?subject=New York's Next Art District&body=Check out New York's Next Art District on Artsy: https://www.artsy.net/standard/new-yorks-next-art-district"
+      href="mailto:?subject=New York's Next Art District&body=Check out New York's Next Art District on Artsy: https://www.artsy.net/article/new-yorks-next-art-district"
       onClick={[Function]}
       target="_blank"
     >

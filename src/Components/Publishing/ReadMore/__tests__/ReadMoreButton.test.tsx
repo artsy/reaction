@@ -26,9 +26,7 @@ describe("ReadMoreButton", () => {
       .simulate("click")
 
     expect(dispatch).toBeCalledWith({
-      action_type: "articlePageview",
-      subject: "Read more",
-      referrer: "/article/this-cool-content",
+      action: "Clicked read more",
     })
   })
 
@@ -42,7 +40,8 @@ describe("ReadMoreButton", () => {
       .props.onEnter()
 
     expect(dispatch).toBeCalledWith({
-      action: "article_impression",
+      action: "Impression",
+      context_module: "Read more",
       subject: "Read more",
     })
   })

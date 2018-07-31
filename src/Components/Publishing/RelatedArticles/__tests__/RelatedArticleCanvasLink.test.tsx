@@ -37,7 +37,7 @@ describe("RelatedArticleCanvasLink", () => {
 
     expect(dispatch).toBeCalledWith({
       action: "Click",
-      action_name: "articleImpression",
+      context_module: "Further reading",
       subject: "Further reading",
       destination_path:
         "/article/artsy-editorial-15-top-art-schools-united-states",

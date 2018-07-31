@@ -17,6 +17,7 @@ interface ReadMoreProps {
 export class ReadMoreButton extends React.Component<ReadMoreProps> {
   @track({
     action: Schema.ActionType.Impression,
+    context_module: Schema.Context.ReadMore,
     subject: Schema.Subject.ReadMore,
   })
   trackImpression() {

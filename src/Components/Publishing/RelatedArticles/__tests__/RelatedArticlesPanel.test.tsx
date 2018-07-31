@@ -55,11 +55,10 @@ describe("RelatedArticlesPanel", () => {
 
     expect(dispatch).toBeCalledWith({
       action: "Click",
-      action_name: "articleImpression",
-      subject: "Related article",
+      context_module: "Related articles",
+      subject: "Related articles",
       destination_path:
         "/article/artsy-editorial-15-top-art-schools-united-states",
-      flow: "article",
       type: "thumbnail",
     })
   })
@@ -73,7 +72,8 @@ describe("RelatedArticlesPanel", () => {
       .props.onEnter()
 
     expect(dispatch).toBeCalledWith({
-      action: "articleImpression",
+      action: "Impression",
+      context_module: "Related articles",
       subject: "Related articles",
     })
   })

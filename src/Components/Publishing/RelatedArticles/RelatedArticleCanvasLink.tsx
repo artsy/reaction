@@ -1,18 +1,17 @@
 import { Serif } from "@artsy/palette"
 import * as Schema from "Analytics/Schema"
-import { RelatedArticleData } from "Components/Publishing/Typings"
+import { RelatedArticleCanvasData } from "Components/Publishing/Typings"
 import React from "react"
 import track from "react-tracking"
 import styled from "styled-components"
 import { crop } from "../../../Utils/resizer"
 import { pMedia } from "../../Helpers"
 import { Byline } from "../Byline/Byline"
-import { getArticleHref } from "../Constants"
+import { getEditorialHref } from "../Constants"
 
 interface RelatedArticleCanvasLinkProps
   extends React.HTMLProps<HTMLDivElement> {
-  article: RelatedArticleData
-  tracking?: any
+  article: RelatedArticleCanvasData
 }
 
 @track()
@@ -22,8 +21,12 @@ export class RelatedArticleCanvasLink extends React.Component<
   @track(props => ({
     action: Schema.ActionType.Click,
     subject: Schema.Subject.FurtherReading,
-    destination_path: getArticleHref(props.article.slug),
-    type: "thumbnail",
+    context_module: Schema.Context.FurtherReading,
+    destination_path: getEditorialHref(
+      props.article.layout,
+      props.article.slug
+    ),
+    type: "thumbnail", // TODO: add to schema
   }))
   onClick() {
     // noop
@@ -31,7 +34,7 @@ export class RelatedArticleCanvasLink extends React.Component<
 
   render() {
     const { article } = this.props
-    const href = getArticleHref(article.slug)
+    const href = getEditorialHref(article.layout, article.slug)
     const imageSrc = crop(article.thumbnail_image, { width: 510, height: 340 })
     const bylineArticle = { ...article, id: article.slug }
 

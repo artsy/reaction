@@ -116,7 +116,7 @@ exports[`RelatedArticlesPanel renders the related articles panel 1`] = `
     </a>
     <a
       className="c4"
-      href="/article/artsy-editorial-french-art-history-in-a-nutshell"
+      href="/news/artsy-editorial-french-art-history-in-a-nutshell"
       onClick={[Function]}
     >
       <img

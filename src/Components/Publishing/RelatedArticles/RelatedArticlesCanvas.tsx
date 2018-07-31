@@ -1,6 +1,6 @@
 import { Sans } from "@artsy/palette"
 import * as Schema from "Analytics/Schema"
-import { RelatedArticleData } from "Components/Publishing/Typings"
+import { RelatedArticleCanvasData } from "Components/Publishing/Typings"
 import { map, once } from "lodash"
 import React from "react"
 import track from "react-tracking"
@@ -15,7 +15,7 @@ export interface RelatedArticlesCanvasProps
     name: string
     id?: string
   }
-  articles: RelatedArticleData[]
+  articles: RelatedArticleCanvasData[]
   isMobile?: boolean
 }
 

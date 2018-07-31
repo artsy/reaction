@@ -57,27 +57,12 @@ export enum ActionType {
    * A UI element was rendered in the viewport
    */
   Impression = "Impression",
-
-  // replace with universal impression
-  ArticleImpression = "article_impression",
-
-  /**
-   *
-   * TODO: Investigate sending page events from Reaction
-   */
 }
 
 /**
  * The identifier that ties an interaction to a result.
  */
 export enum ActionName {
-  /**
-   * Article Page
-   *
-   * TODO: Confirm ArticleImpression as replacement for "clicked article impression"
-   */
-  ArticleImpression = "articleImpression",
-
   /**
    * Artist Page
    */

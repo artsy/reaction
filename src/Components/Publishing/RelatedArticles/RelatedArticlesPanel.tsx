@@ -1,5 +1,6 @@
 import { Sans } from "@artsy/palette"
 import * as Schema from "Analytics/Schema"
+import { RelatedArticlePanelData } from "Components/Publishing/Typings"
 import { once } from "lodash"
 import React from "react"
 import track from "react-tracking"
@@ -9,12 +10,7 @@ import { RelatedArticlesPanelLink } from "./RelatedArticlesPanelLink"
 
 interface RelatedArticlesPanelProps extends React.HTMLProps<HTMLDivElement> {
   label?: string
-  articles: Array<{
-    thumbnail_title: string
-    thumbnail_image: string
-    slug: string
-    id: string
-  }>
+  articles: RelatedArticlePanelData[]
 }
 
 @track()

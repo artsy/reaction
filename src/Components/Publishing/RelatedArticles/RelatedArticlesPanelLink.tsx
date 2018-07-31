@@ -1,14 +1,14 @@
 import { color, Serif, space } from "@artsy/palette"
 import * as Schema from "Analytics/Schema"
-import { RelatedArticleData } from "Components/Publishing/Typings"
+import { RelatedArticlePanelData } from "Components/Publishing/Typings"
 import React from "react"
 import track from "react-tracking"
 import styled from "styled-components"
 import { crop } from "../../../Utils/resizer"
-import { getArticleHref } from "../Constants"
+import { getEditorialHref } from "../Constants"
 
 interface RelatedArticlesPanelProps extends React.HTMLProps<HTMLDivElement> {
-  article: RelatedArticleData
+  article: RelatedArticlePanelData
 }
 
 @track()
@@ -21,10 +21,13 @@ export class RelatedArticlesPanelLink extends React.Component<
 
   @track(props => ({
     action: Schema.ActionType.Click,
-    action_name: Schema.ActionName.ArticleImpression,
-    subject: "Related article",
-    context_modules: "Related article",
-    destination_path: getArticleHref(props.article.slug),
+    subject: Schema.Subject.RelatedArticles,
+    context_module: Schema.Context.RelatedArticles,
+    destination_path: getEditorialHref(
+      props.article.layout,
+      props.article.slug
+    ),
+    // TODO: add type to schema
     type: "thumbnail",
   }))
   onClick(e) {
@@ -33,7 +36,7 @@ export class RelatedArticlesPanelLink extends React.Component<
 
   render() {
     const { article } = this.props
-    const href = getArticleHref(article.slug)
+    const href = getEditorialHref(article.layout, article.slug)
     const articleImageSrc = crop(article.thumbnail_image, {
       width: 160,
       height: 110,

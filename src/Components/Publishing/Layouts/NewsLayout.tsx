@@ -7,7 +7,7 @@ import styled from "styled-components"
 import { pMedia } from "../../Helpers"
 import { NewsHeadline } from "../News/NewsHeadline"
 import { NewsSections } from "../News/NewsSections"
-import { ArticleData, DisplayData, RelatedArticleData } from "../Typings"
+import { ArticleData, DisplayData, RelatedArticleCanvasData } from "../Typings"
 import { CanvasFooter, CanvasFooterContainer } from "./Components/CanvasFooter"
 
 interface Props {
@@ -17,7 +17,7 @@ interface Props {
   isHovered?: boolean
   isTruncated?: boolean
   onExpand?: () => void
-  relatedArticlesForCanvas?: RelatedArticleData[]
+  relatedArticlesForCanvas?: RelatedArticleCanvasData[]
   renderTime?: number
   tracking?: any
 }

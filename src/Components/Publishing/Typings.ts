@@ -94,9 +94,21 @@ export type DisplayUnitData = {
   pixel_tracking_code?: string
 }
 
-export interface RelatedArticleData {
+export interface RelatedArticlePanelData {
+  id: string
+  layout: ArticleLayout
+  slug: string
   thumbnail_title: string
   thumbnail_image: string
-  slug: string
+}
+
+export interface RelatedArticleCanvasData {
+  authors?: any[]
+  contributing_authors?: any[]
   id: string
+  layout: ArticleLayout
+  published_at: string
+  slug: string
+  thumbnail_title: string
+  thumbnail_image: string
 }
