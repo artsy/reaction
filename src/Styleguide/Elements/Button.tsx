@@ -18,32 +18,27 @@ import {
   WidthProps,
 } from "styled-system"
 
-enum ButtonSize {
-  default = "medium",
-  small = "small",
-  medium = "medium",
-  large = "large",
-}
+export type ButtonSize = "small" | "medium" | "large"
+const defaultSize: ButtonSize = "medium"
 
-enum ButtonVariant {
-  default = "primaryBlack",
-  primaryBlack = "primaryBlack",
-  primaryWhite = "primaryWhite",
-  secondaryGray = "secondaryGray",
-  secondaryOutline = "secondaryOutline",
-}
+export type ButtonVariant =
+  | "primaryBlack"
+  | "primaryWhite"
+  | "secondaryGray"
+  | "secondaryOutline"
+const defaultVariant: ButtonVariant = "primaryBlack"
 
 export interface ButtonProps extends ButtonBaseProps {
   children: ReactNode
-  size?: any // FIXME, ButtonSize
-  variant?: any // FIXME, ButtonVariant?
+  size?: ButtonSize
+  variant?: ButtonVariant
 }
 
 export const Button = styled(
   class extends Component<ButtonProps> {
     static defaultProps = {
-      size: ButtonSize.default,
-      variant: ButtonVariant.default,
+      size: defaultSize,
+      variant: defaultVariant,
       theme: themeProps,
     }
 
@@ -51,11 +46,11 @@ export const Button = styled(
       const { size } = this.props
 
       switch (size) {
-        case ButtonSize.small:
+        case "small":
           return { height: "26px", size: "2", px: 1 }
-        case ButtonSize.medium:
+        case "medium":
           return { height: "41px", size: "3t", px: 2 }
-        case ButtonSize.large:
+        case "large":
           return { height: "50px", size: "3t", px: 3 }
         default:
       }
@@ -65,7 +60,7 @@ export const Button = styled(
       const { variant } = this.props
 
       switch (variant) {
-        case ButtonVariant.primaryBlack:
+        case "primaryBlack":
           return css`
             ${props => {
               const { colors } = props.theme
@@ -85,7 +80,7 @@ export const Button = styled(
               `
             }};
           `
-        case ButtonVariant.primaryWhite:
+        case "primaryWhite":
           return css`
             ${props => {
               const { colors } = props.theme
@@ -105,7 +100,7 @@ export const Button = styled(
               `
             }};
           `
-        case ButtonVariant.secondaryGray:
+        case "secondaryGray":
           return css`
             ${props => {
               const { colors } = props.theme
@@ -125,7 +120,7 @@ export const Button = styled(
               `
             }};
           `
-        case ButtonVariant.secondaryOutline:
+        case "secondaryOutline":
           return css`
             ${props => {
               const { colors } = props.theme

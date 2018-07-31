@@ -1,8 +1,12 @@
 import React, { SFC } from "react"
 import { Step, Stepper } from "Styleguide/Components/Stepper"
 import { Col, Row } from "Styleguide/Elements/Grid"
-import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
+
+const steps = ["Shipping", "Payment", "Review"]
+
+const getStepIndex = pathname =>
+  steps.findIndex(step => pathname.includes(step.toLowerCase()))
 
 export interface OrderAppProps {
   me: {
@@ -11,18 +15,22 @@ export interface OrderAppProps {
   params: {
     orderID: string
   }
+  location: any
 }
 
-// @ts-ignore
-export const OrderApp: SFC<OrderAppProps> = ({ me, children, order }) => {
+export const OrderApp: SFC<OrderAppProps> = ({
+  me,
+  children,
+  location,
+  ...props
+}) => {
+  const stepIndex = getStepIndex(location.pathname)
   return (
     <>
       <Row>
         <Col>
-          <Stepper currentStepIndex={0}>
-            <Step name="Shipping" />
-            <Step name="Payment" />
-            <Step name="Review" />
+          <Stepper initialTabIndex={stepIndex} currentStepIndex={stepIndex}>
+            {steps.map(step => <Step name={step} key={step} />)}
           </Stepper>
         </Col>
       </Row>
@@ -30,13 +38,6 @@ export const OrderApp: SFC<OrderAppProps> = ({ me, children, order }) => {
       <Spacer mb={3} />
 
       {children}
-
-      {me && (
-        <>
-          <Separator my={6} />
-          {me.name}
-        </>
-      )}
     </>
   )
 }
