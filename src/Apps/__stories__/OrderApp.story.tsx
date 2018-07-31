@@ -31,3 +31,17 @@ storiesOf("Apps/Order Page", module)
       mockResolvers={mock}
     />
   ))
+  .add("Review", () => (
+    <StorybooksRouter
+      routes={orderRoutes}
+      initialRoute="/order2/123/review"
+      mockResolvers={mock}
+    />
+  ))
+  .add("Submission", () => (
+    <StorybooksRouter
+      routes={orderRoutes}
+      initialRoute="/order2/123/submission"
+      mockResolvers={mock}
+    />
+  ))
