@@ -15,6 +15,7 @@ declare module "sharify" {
      * These properties are set by Force and configured through environment variables.
      */
     export interface GlobalData {
+      readonly GEMINI_CLOUDFRONT_URL: string
       readonly METAPHYSICS_ENDPOINT: string
       readonly XAPP_TOKEN: string
     }

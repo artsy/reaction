@@ -6,7 +6,7 @@ interface IconProps {
 
 export const CheckIcon = ({ fill }: IconProps) => (
   <svg width="10px" height="8px" viewBox="0 0 10 8" version="1.1">
-    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
       <g transform="translate(-416.000000, -960.000000)" fill="#000000">
         <g transform="translate(416.000000, 918.000000)">
           <polygon

@@ -18,6 +18,7 @@ export class Summary extends Component<SummaryProps> {
     return (
       <>
         <Placeholder height="390px" name="Sidebar" />
+        {this.props.children}
         <Helper mediator={this.props.mediator} />
       </>
     )
