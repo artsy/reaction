@@ -1,4 +1,3 @@
-import React from "react"
 import { graphql } from "react-relay"
 import { OrderApp } from "./OrderApp"
 
@@ -23,10 +22,6 @@ import { ShippingProps } from "./Routes/Shipping"
 // @ts-ignore
 import { SubmissionProps } from "./Routes/Submission"
 
-const renderCurrentStep = step => ({ props, Component }) => (
-  <Component currentStepIndex={step} {...props} />
-)
-
 export const routes = [
   {
     path: "/order2/:orderID",
@@ -42,7 +37,6 @@ export const routes = [
       {
         path: "shipping",
         Component: ShippingRoute,
-        render: renderCurrentStep(0),
         query: graphql`
           query routes_ShippingQuery($orderID: String!) {
             order(id: $orderID) {
@@ -54,7 +48,6 @@ export const routes = [
       {
         path: "payment",
         Component: PaymentRoute,
-        render: renderCurrentStep(1),
         query: graphql`
           query routes_PaymentQuery($orderID: String!) {
             order(id: $orderID) {
@@ -66,7 +59,6 @@ export const routes = [
       {
         path: "review",
         Component: ReviewRoute,
-        render: renderCurrentStep(2),
         query: graphql`
           query routes_ReviewQuery($orderID: String!) {
             order(id: $orderID) {
