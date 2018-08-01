@@ -3,7 +3,7 @@ import { storiesOf } from "storybook/storiesOf"
 import { Step, Stepper } from "Styleguide/Components/Stepper"
 import { Section } from "Styleguide/Utils/Section"
 
-storiesOf("Styleguide/Components", module).add("Stepper", () => {
+storiesOf("Styleguide/Components", module).add("Tabs (Stepper)", () => {
   return (
     <React.Fragment>
       <Section title="Stepper (1st step)">

@@ -2,7 +2,7 @@ import { color, Serif } from "@artsy/palette"
 import Icon from "Components/Icon"
 import React from "react"
 import styled from "styled-components"
-import { Flex } from "./Flex"
+import { Flex } from "Styleguide/Elements/Flex"
 
 interface FollowIconProps {
   readonly is_followed?: boolean | false
@@ -82,3 +82,8 @@ export class FollowIcon extends React.Component<FollowIconProps> {
     )
   }
 }
+
+// Tests
+Follow.displayName = "Follow"
+Following.displayName = "Following"
+Unfollow.displayName = "Unfollow"

@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react"
-import Slick from "react-slick"
+import Slick, { Settings } from "react-slick"
 import styled from "styled-components"
 import { left, LeftProps, right, RightProps } from "styled-system"
 import { Arrow } from "Styleguide/Elements/Arrow"
@@ -9,6 +9,7 @@ import { media } from "Styleguide/Elements/Grid"
 import { Responsive } from "Utils/Responsive"
 
 interface Props {
+  settings?: Settings
   height?: number
   data: Array<object> // This is designed to handle any shape of data passed, as long as its an array
   render: (slide) => ReactNode
@@ -38,6 +39,7 @@ export const LargeSlider = (props: Props) => {
     infinite: true,
     speed: 500,
     variableWidth: true,
+    ...props.settings,
   }
 
   let slickRef = null
@@ -74,6 +76,7 @@ export const SmallSlider = (props: Props) => {
     swipeToSlide: true,
     touchThreshold: 60,
     variableWidth: true,
+    ...props.settings,
   }
 
   return (

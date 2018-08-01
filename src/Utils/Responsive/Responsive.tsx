@@ -105,8 +105,11 @@ export function createResponsiveComponents<M extends string>() {
        * The function that will be called any time a media query status changes
        */
       mediaQueryStatusChangedCallback = () => {
+        const mediaQueryMatches = this.checkMatchers(
+          this.state.mediaQueryMatchers
+        )
         this.setState({
-          mediaQueryMatches: this.checkMatchers(this.state.mediaQueryMatchers),
+          mediaQueryMatches,
         })
       }
 

@@ -11,7 +11,9 @@ interface Props {
   onReadMoreClicked?: () => void
 }
 
-@track({ context_module: "ArtistBio" })
+@track({
+  context_module: "ArtistBio",
+})
 export class ArtistBio extends React.Component<Props> {
   render() {
     const blurb = (

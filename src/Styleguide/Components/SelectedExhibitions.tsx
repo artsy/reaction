@@ -13,6 +13,20 @@ const MIN_EXHIBITIONS = 2
 
 export type Year = string
 
+export interface SelectedExhibitionsProps {
+  exhibitions: SelectedExhibitions_exhibitions
+  artistID?: string
+  totalExhibitions?: number
+}
+export const SelectedExhibitions: SFC<SelectedExhibitionsProps> = props => (
+  <Responsive>
+    {({ xs }) => {
+      if (xs) return <SelectedExhibitionsContainer collapsible {...props} />
+      else return <SelectedExhibitionsContainer {...props} />
+    }}
+  </Responsive>
+)
+
 export const isCollapsed = props => props.collapsible && !props.expanded
 
 export interface ExhibitionsHeadlineProps {
@@ -30,7 +44,11 @@ export const ExhibitionsHeadline: SFC<ExhibitionsHeadlineProps> = props => (
       {isCollapsed(props) ? ` (${props.exhibitionCount})` : ""}
     </Sans>
     {isCollapsed(props) && (
-      <div onClick={props.onShowClicked} style={{ cursor: "pointer" }}>
+      <div
+        onClick={props.onShowClicked}
+        style={{ cursor: "pointer" }}
+        className="showLink"
+      >
         <Sans size="2" color="black60" ml={2}>
           Show
         </Sans>
@@ -86,12 +104,6 @@ const FullExhibitionList: SFC<FullExhibitionListProps> = props => (
   </React.Fragment>
 )
 
-export interface SelectedExhibitionsProps {
-  exhibitions: SelectedExhibitions_exhibitions
-  artistID?: string
-  totalExhibitions?: number
-}
-
 export interface SelectedExhibitionsContainerProps
   extends SelectedExhibitionsProps {
   collapsible?: boolean
@@ -133,15 +145,6 @@ export class SelectedExhibitionsContainer extends React.Component<
     )
   }
 }
-
-export const SelectedExhibitions: SFC<SelectedExhibitionsProps> = props => (
-  <Responsive>
-    {({ xs }) => {
-      if (xs) return <SelectedExhibitionsContainer collapsible {...props} />
-      else return <SelectedExhibitionsContainer {...props} />
-    }}
-  </Responsive>
-)
 
 export const SelectedExhibitionFragmentContainer = createFragmentContainer(
   SelectedExhibitions,

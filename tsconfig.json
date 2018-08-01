@@ -11,11 +11,9 @@
     "moduleResolution": "node",
     "noUnusedLocals": true,
     "outDir": "dist",
-    "plugins": [
-      {
-        "name": "typescript-styled-plugin"
-      }
-    ],
+    "plugins": [{
+      "name": "typescript-styled-plugin"
+    }],
     "pretty": true,
     "rootDir": "src",
     "sourceMap": true,

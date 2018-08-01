@@ -1,8 +1,8 @@
 import { Serif } from "@artsy/palette"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { FollowIcon } from "Styleguide/Components/FollowIcon"
 import { Box } from "Styleguide/Elements/Box"
-import { FollowIcon } from "Styleguide/Elements/FollowIcon"
 
 import { ArtworkSidebarArtists_artwork } from "__generated__/ArtworkSidebarArtists_artwork.graphql"
 

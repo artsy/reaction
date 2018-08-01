@@ -17,40 +17,6 @@ interface StepperProps extends TabsProps {
   disableNavigation?: boolean
 }
 
-const transformTabBtn = (
-  element: JSX.Element,
-  tabIndex: number,
-  props: any
-): JSX.Element => {
-  const { currentStepIndex, initialTabIndex = 0, disableNavigation } = props
-  const returnDisabledButton = disableNavigation && tabIndex !== initialTabIndex
-  const disabledButton = (
-    <DisabledStepButton key={tabIndex}>
-      {element.props.children}
-    </DisabledStepButton>
-  )
-  if (tabIndex > currentStepIndex) {
-    // don't allow users to jump ahead
-    return disabledButton
-  } else if (currentStepIndex && tabIndex < currentStepIndex) {
-    return (
-      <Flex key={tabIndex}>
-        <CheckMarkWrapper>
-          <CheckIcon fill={color("green100")} />
-        </CheckMarkWrapper>
-        {returnDisabledButton && tabIndex !== initialTabIndex
-          ? disabledButton
-          : element}
-        <div /> {/* hack for getting rid of last-child in Tabs.tsx */}
-      </Flex>
-    )
-  } else if (returnDisabledButton) {
-    return disabledButton
-  } else {
-    return element
-  }
-}
-
 export const Stepper = (props: StepperProps) => {
   return (
     <Tabs
@@ -77,6 +43,47 @@ const DisabledStepButton = ({ children }) => (
     </Sans>
   </DisabledStepContainer>
 )
+
+const transformTabBtn = (
+  element: JSX.Element,
+  tabIndex: number,
+  props: any
+): JSX.Element => {
+  const { currentStepIndex, initialTabIndex = 0, disableNavigation } = props
+  const returnDisabledButton = disableNavigation && tabIndex !== initialTabIndex
+
+  const disabledButton = (
+    <DisabledStepButton key={tabIndex}>
+      {element.props.children}
+    </DisabledStepButton>
+  )
+
+  // Don't allow users to jump ahead
+  if (tabIndex > currentStepIndex) {
+    return disabledButton
+
+    // Step done
+  } else if (currentStepIndex && tabIndex < currentStepIndex) {
+    return (
+      <Flex key={tabIndex}>
+        <CheckMarkWrapper>
+          <CheckIcon fill={color("green100")} />
+        </CheckMarkWrapper>
+        {returnDisabledButton && tabIndex !== initialTabIndex
+          ? disabledButton
+          : element}
+        <div /> {/* hack for getting rid of last-child in Tabs.tsx */}
+      </Flex>
+    )
+    // Disabled
+  } else if (returnDisabledButton) {
+    return disabledButton
+
+    // Step
+  } else {
+    return element
+  }
+}
 
 const ChevronWrapper = styled.span`
   margin: 0 ${space(2)}px;

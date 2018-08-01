@@ -3,7 +3,7 @@ import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
 import { FollowIcon } from "../FollowIcon"
 
-storiesOf("Styleguide/Elements", module).add("FollowIcon", () => {
+storiesOf("Styleguide/Components", module).add("FollowIcon", () => {
   return (
     <React.Fragment>
       <Section title="Object is already followed">
