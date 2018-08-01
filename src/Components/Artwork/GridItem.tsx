@@ -57,11 +57,16 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
       return null
     }
 
+    let breakpoint
     if (this.state.isMounted) {
-      const [[match]] = Object.entries(breakpoints).filter(([key, val]) => val)
+      Object.keys(breakpoints).forEach(key => {
+        if (breakpoints[key]) {
+          breakpoint = key
+        }
+      })
 
       const getWidth = () => {
-        switch (match) {
+        switch (breakpoint) {
           case "xs":
           case "sm":
           case "md":
