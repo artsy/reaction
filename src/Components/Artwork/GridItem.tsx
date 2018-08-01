@@ -30,8 +30,7 @@ interface Props extends RelayProps, React.HTMLProps<ArtworkGridItemContainer> {
 }
 
 interface State {
-  width: number
-  height: number
+  isMounted: boolean
 }
 
 const IMAGE_QUALITY = 80
@@ -41,40 +40,50 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
     useRelay: true,
   }
 
-  private image: HTMLImageElement = null
-
   state = {
-    width: 1,
-    height: 1,
+    isMounted: false,
   }
 
   componentDidMount() {
-    const scale = window.devicePixelRatio
-    const width = this.image.width * scale
-    const height =
-      (this.image.width / this.props.artwork.image.aspect_ratio) * scale
-
     this.setState({
-      width,
-      height,
+      isMounted: true,
     })
   }
 
-  get imageURL() {
+  getImageUrl(breakpoints) {
     const imageURL = this.props.artwork.image.url
-    if (imageURL) {
+
+    if (!imageURL) {
+      return null
+    }
+
+    if (this.state.isMounted) {
+      const [[match]] = Object.entries(breakpoints).filter(([key, val]) => val)
+
+      const getWidth = () => {
+        switch (match) {
+          case "xs":
+          case "sm":
+          case "md":
+            return 400
+          case "lg":
+          case "xl":
+          default:
+            return 300
+        }
+      }
+
+      const width = Math.floor(getWidth())
+      const height = Math.floor(width / this.props.artwork.image.aspect_ratio)
+
       // Either scale or crop, based on if an aspect ratio is available.
       const type = this.props.artwork.image.aspect_ratio ? "fit" : "fill"
-      const width = String(this.state.width)
-      const height = String(this.state.height)
       // tslint:disable-next-line:max-line-length
       return `${
         sd.GEMINI_CLOUDFRONT_URL
       }/?resize_to=${type}&width=${width}&height=${height}&quality=${IMAGE_QUALITY}&src=${encodeURIComponent(
         imageURL
       )}`
-    } else {
-      return null
     }
   }
 
@@ -88,32 +97,35 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
       currentUserSpread = { currentUser }
     }
     return (
-      <div className={className} style={style}>
-        <Placeholder style={{ paddingBottom: artwork.image.placeholder }}>
-          <a href={artwork.href}>
-            <Image src={this.imageURL} innerRef={img => (this.image = img)} />
-          </a>
-          <Responsive>
-            {({ hover }) =>
-              hover && (
-                <SaveButtonBlock
-                  className="artwork-save"
-                  artwork={artwork as any}
-                  style={{
-                    position: "absolute",
-                    right: "10px",
-                    bottom: "10px",
-                  }}
-                  useRelay={useRelay}
-                  {...currentUserSpread}
-                  mediator={this.props.mediator}
-                />
-              )
-            }
-          </Responsive>
-        </Placeholder>
-        <MetadataBlock artwork={artwork} useRelay={useRelay} />
-      </div>
+      <Responsive>
+        {({ hover, ...breakpoints }) => {
+          return (
+            <div className={className} style={style}>
+              <Placeholder style={{ paddingBottom: artwork.image.placeholder }}>
+                <a href={artwork.href}>
+                  <Image src={this.getImageUrl(breakpoints)} />
+                </a>
+
+                {hover && (
+                  <SaveButtonBlock
+                    className="artwork-save"
+                    artwork={artwork as any}
+                    style={{
+                      position: "absolute",
+                      right: "10px",
+                      bottom: "10px",
+                    }}
+                    useRelay={useRelay}
+                    {...currentUserSpread}
+                    mediator={this.props.mediator}
+                  />
+                )}
+              </Placeholder>
+              <MetadataBlock artwork={artwork} useRelay={useRelay} />
+            </div>
+          )
+        }}
+      </Responsive>
     )
   }
 }
