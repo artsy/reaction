@@ -40,8 +40,6 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
     useRelay: true,
   }
 
-  private image: HTMLImageElement = null
-
   state = {
     isMounted: false,
   }
@@ -75,11 +73,8 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
         }
       }
 
-      const scale = window.devicePixelRatio
-      const width = String(getWidth() * scale)
-      const height = String(
-        (this.image.width / this.props.artwork.image.aspect_ratio) * scale
-      )
+      const width = Math.floor(getWidth())
+      const height = Math.floor(width / this.props.artwork.image.aspect_ratio)
 
       // Either scale or crop, based on if an aspect ratio is available.
       const type = this.props.artwork.image.aspect_ratio ? "fit" : "fill"
@@ -108,10 +103,7 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
             <div className={className} style={style}>
               <Placeholder style={{ paddingBottom: artwork.image.placeholder }}>
                 <a href={artwork.href}>
-                  <Image
-                    src={this.getImageUrl(breakpoints)}
-                    innerRef={img => (this.image = img)}
-                  />
+                  <Image src={this.getImageUrl(breakpoints)} />
                 </a>
 
                 {hover && (
