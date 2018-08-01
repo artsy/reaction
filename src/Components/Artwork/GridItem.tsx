@@ -1,3 +1,4 @@
+import { pickBy } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
@@ -57,14 +58,8 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
       return null
     }
 
-    let breakpoint
     if (this.state.isMounted) {
-      Object.keys(breakpoints).forEach(key => {
-        if (breakpoints[key]) {
-          breakpoint = key
-        }
-      })
-
+      const breakpoint = Object.keys(pickBy(breakpoints))[0]
       const getWidth = () => {
         switch (breakpoint) {
           case "xs":
