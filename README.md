@@ -30,8 +30,9 @@
         $ open http://localhost:9001/
 
 - When working between Reaction and [Force](https://github.com/artsy/force):
-  $ yarn link && yarn watch
-  $ cd ../force && yarn link @artsy/reaction && yarn start
+
+        $ yarn link && yarn watch
+        $ cd ../force && yarn link @artsy/reaction && yarn start
 
 - Run the tests:
 
