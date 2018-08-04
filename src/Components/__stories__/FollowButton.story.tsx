@@ -8,21 +8,25 @@ storiesOf("Components/Follow Button", module)
     return (
       <div style={{ margin: 20 }}>
         <FollowArtistButton
-          artist={{
-            id: "damon-zucconi",
-            __id: "1234",
-            is_followed: false,
-            counts: { follows: 100 },
-          }}
+          artist={
+            {
+              id: "damon-zucconi",
+              __id: "1234",
+              is_followed: false,
+              counts: { follows: 100 },
+            } as any
+          }
         />
         <br />
         <FollowArtistButton
-          artist={{
-            id: "damon-zucconi",
-            __id: "1234",
-            is_followed: true,
-            counts: { follows: 100 },
-          }}
+          artist={
+            {
+              id: "damon-zucconi",
+              __id: "1234",
+              is_followed: true,
+              counts: { follows: 100 },
+            } as any
+          }
         />
       </div>
     )
@@ -31,19 +35,23 @@ storiesOf("Components/Follow Button", module)
     return (
       <div style={{ margin: 20 }}>
         <FollowGeneButton
-          gene={{
-            id: "brooklyn-artists",
-            __id: "1234",
-            is_followed: false,
-          }}
+          gene={
+            {
+              id: "brooklyn-artists",
+              __id: "1234",
+              is_followed: false,
+            } as any
+          }
         />
         <br />
         <FollowGeneButton
-          gene={{
-            id: "brooklyn-artists",
-            __id: "1234",
-            is_followed: true,
-          }}
+          gene={
+            {
+              id: "brooklyn-artists",
+              __id: "1234",
+              is_followed: true,
+            } as any
+          }
         />
       </div>
     )

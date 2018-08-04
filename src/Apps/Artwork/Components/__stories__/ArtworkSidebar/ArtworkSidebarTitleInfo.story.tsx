@@ -13,16 +13,16 @@ storiesOf("Styleguide/Artwork/Sidebar", module).add("TitleInfo", () => {
   return (
     <React.Fragment>
       <Section title="Artwork with Title Date and Medium present">
-        <TitleInfo artwork={ArtworkWithTitleDateAndMedium} />
+        <TitleInfo artwork={ArtworkWithTitleDateAndMedium as any} />
       </Section>
       <Section title="Artwork with Title only">
-        <TitleInfo artwork={ArtworkWithTitleOnly} />
+        <TitleInfo artwork={ArtworkWithTitleOnly as any} />
       </Section>
       <Section title="Artwork with Title and Date">
-        <TitleInfo artwork={ArtworkWithTitlAndDate} />
+        <TitleInfo artwork={ArtworkWithTitlAndDate as any} />
       </Section>
       <Section title="Artwork with Title and Medium">
-        <TitleInfo artwork={ArtworkWithTitleAndMedium} />
+        <TitleInfo artwork={ArtworkWithTitleAndMedium as any} />
       </Section>
     </React.Fragment>
   )

@@ -21,7 +21,7 @@ storiesOf("Styleguide/Components", module)
   .addDecorator(story => <RelayStubProvider>{story()}</RelayStubProvider>)
   .add("ArtistCard", () => {
     const props = {
-      artist,
+      artist: artist as any,
       currentUser: null,
     }
 
