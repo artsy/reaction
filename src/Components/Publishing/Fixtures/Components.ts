@@ -684,6 +684,7 @@ export const FeatureText = flatten([
 export const Genes: GeneProps[] = [
   {
     gene: {
+      " $refType": null,
       name: "Capitalist Realism",
       id: "capitalist-realism",
       _id: "5955005ceaaedc0017acdd1f",
@@ -701,6 +702,7 @@ export const Genes: GeneProps[] = [
 export const Artists: ArtistToolTipProps[] = [
   {
     artist: {
+      " $refType": null,
       name: "Nick Mauss",
       formatted_nationality_and_birthday: "American, b. 1980",
       href: "/artist/nick-mauss",
@@ -764,6 +766,7 @@ export const Artists: ArtistToolTipProps[] = [
   },
   {
     artist: {
+      " $refType": null,
       name: "Jutta Koether",
       formatted_nationality_and_birthday: "German, b. 1958",
       href: "/artist/jutta-koether",
@@ -804,6 +807,7 @@ export const Artists: ArtistToolTipProps[] = [
   },
   {
     artist: {
+      " $refType": null,
       name: "Diamond Stingily",
       formatted_nationality_and_birthday: "",
       href: "/artist/diamond-stingily",
@@ -843,6 +847,7 @@ export const Artists: ArtistToolTipProps[] = [
   },
   {
     artist: {
+      " $refType": null,
       name: "Anni Albers",
       formatted_nationality_and_birthday: "German-American, 1899–1994",
       href: "/artist/anni-albers",

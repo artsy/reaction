@@ -3,6 +3,7 @@ import { MarketInsights_artist } from "../../../__generated__/MarketInsights_art
 
 export const MarketDataSummaryArtists: MarketDataSummary_artist[] = [
   {
+    " $refType": null,
     _id: "589a6291275b2410d1beb6a5",
     collections: ["Museum of Modern Art (MoMA)"],
     highlights: {
@@ -33,6 +34,7 @@ export const MarketDataSummaryArtists: MarketDataSummary_artist[] = [
     },
   },
   {
+    " $refType": null,
     _id: "551361eb72616903f6d50300",
     collections: null,
     highlights: {
@@ -46,6 +48,7 @@ export const MarketDataSummaryArtists: MarketDataSummary_artist[] = [
 
 export const MarketInsightsArtists: MarketInsights_artist[] = [
   {
+    " $refType": null,
     _id: "4d8b92b34eb68a1b2c0003f4",
     collections: ["Tate", "Museum of Modern Art (MoMA)"],
     highlights: {
@@ -90,6 +93,7 @@ export const MarketInsightsArtists: MarketInsights_artist[] = [
     },
   },
   {
+    " $refType": null,
     _id: "4d8b92b34eb68a1b2c0003f4",
     collections: null,
     highlights: { partners: { edges: [] } },
