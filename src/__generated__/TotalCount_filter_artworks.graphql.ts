@@ -1,10 +1,13 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+declare const _TotalCount_filter_artworks$ref: unique symbol;
+export type TotalCount_filter_artworks$ref = typeof _TotalCount_filter_artworks$ref;
 export type TotalCount_filter_artworks = {
     readonly counts: ({
         readonly total: any | null;
     }) | null;
+    readonly " $refType": TotalCount_filter_artworks$ref;
 };
 
 

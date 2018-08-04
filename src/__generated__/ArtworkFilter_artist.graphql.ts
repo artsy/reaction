@@ -1,7 +1,10 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+import { ArtworkFilterRefetch_artist$ref } from "./ArtworkFilterRefetch_artist.graphql";
 export type ArtworkAggregation = "COLOR" | "DIMENSION_RANGE" | "FOLLOWED_ARTISTS" | "GALLERY" | "INSTITUTION" | "MAJOR_PERIOD" | "MEDIUM" | "MERCHANDISABLE_ARTISTS" | "PARTNER_CITY" | "PERIOD" | "PRICE_RANGE" | "TOTAL" | "%future added value";
+declare const _ArtworkFilter_artist$ref: unique symbol;
+export type ArtworkFilter_artist$ref = typeof _ArtworkFilter_artist$ref;
 export type ArtworkFilter_artist = {
     readonly id: string;
     readonly counts: ({
@@ -16,6 +19,8 @@ export type ArtworkFilter_artist = {
             }) | null> | null;
         }) | null> | null;
     }) | null;
+    readonly " $fragmentRefs": ArtworkFilterRefetch_artist$ref;
+    readonly " $refType": ArtworkFilter_artist$ref;
 };
 
 

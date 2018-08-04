@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
+import { GeneArtworks_gene$ref } from "./GeneArtworks_gene.graphql";
 export type GeneContentsArtworksQueryVariables = {
     readonly geneID: string;
     readonly medium?: string | null;
@@ -10,7 +11,9 @@ export type GeneContentsArtworksQueryVariables = {
     readonly dimension_range?: string | null;
 };
 export type GeneContentsArtworksQueryResponse = {
-    readonly gene: ({}) | null;
+    readonly gene: ({
+        readonly " $fragmentRefs": GeneArtworks_gene$ref;
+    }) | null;
 };
 
 

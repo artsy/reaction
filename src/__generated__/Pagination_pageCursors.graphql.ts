@@ -1,6 +1,8 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+declare const _Pagination_pageCursors$ref: unique symbol;
+export type Pagination_pageCursors$ref = typeof _Pagination_pageCursors$ref;
 export type Pagination_pageCursors = {
     readonly around: ReadonlyArray<{
         readonly cursor: string;
@@ -21,6 +23,7 @@ export type Pagination_pageCursors = {
         readonly cursor: string;
         readonly page: number;
     }) | null;
+    readonly " $refType": Pagination_pageCursors$ref;
 };
 
 

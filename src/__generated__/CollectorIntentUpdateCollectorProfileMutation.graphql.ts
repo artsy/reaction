@@ -2,14 +2,15 @@
 
 import { ConcreteRequest } from "relay-runtime";
 export type Intents = "BUY_ART_AND_DESIGN" | "FIND_ART_EXHIBITS" | "LEARN_ABOUT_ART" | "READ_ART_MARKET_NEWS" | "RESEARCH_ART_PRICES" | "SELL_ART_AND_DESIGN" | "%future added value";
+export type UpdateCollectorProfileInput = {
+    readonly loyalty_applicant?: boolean | null;
+    readonly professional_buyer?: boolean | null;
+    readonly self_reported_purchases?: string | null;
+    readonly intents?: ReadonlyArray<Intents | null> | null;
+    readonly clientMutationId?: string | null;
+};
 export type CollectorIntentUpdateCollectorProfileMutationVariables = {
-    readonly input: {
-        readonly loyalty_applicant: boolean | null;
-        readonly professional_buyer: boolean | null;
-        readonly self_reported_purchases: string | null;
-        readonly intents: ReadonlyArray<Intents | null> | null;
-        readonly clientMutationId: string | null;
-    };
+    readonly input: UpdateCollectorProfileInput;
 };
 export type CollectorIntentUpdateCollectorProfileMutationResponse = {
     readonly updateCollectorProfile: ({

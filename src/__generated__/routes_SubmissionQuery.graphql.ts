@@ -1,11 +1,14 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
+import { Submission_order$ref } from "./Submission_order.graphql";
 export type routes_SubmissionQueryVariables = {
     readonly orderID: string;
 };
 export type routes_SubmissionQueryResponse = {
-    readonly order: ({}) | null;
+    readonly order: ({
+        readonly " $fragmentRefs": Submission_order$ref;
+    }) | null;
 };
 
 

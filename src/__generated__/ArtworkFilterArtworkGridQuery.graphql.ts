@@ -1,13 +1,16 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
+import { ArtworkFilterArtworkGrid_filtered_artworks$ref } from "./ArtworkFilterArtworkGrid_filtered_artworks.graphql";
 export type ArtworkFilterArtworkGridQueryVariables = {
     readonly filteredArtworksNodeID: string;
     readonly first: number;
     readonly after?: string | null;
 };
 export type ArtworkFilterArtworkGridQueryResponse = {
-    readonly filtered_artworks: ({}) | null;
+    readonly filtered_artworks: ({
+        readonly " $fragmentRefs": ArtworkFilterArtworkGrid_filtered_artworks$ref;
+    }) | null;
 };
 
 

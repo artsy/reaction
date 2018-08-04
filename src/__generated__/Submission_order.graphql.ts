@@ -1,9 +1,12 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+declare const _Submission_order$ref: unique symbol;
+export type Submission_order$ref = typeof _Submission_order$ref;
 export type Submission_order = {
     readonly id: string | null;
     readonly code: string | null;
+    readonly " $refType": Submission_order$ref;
 };
 
 

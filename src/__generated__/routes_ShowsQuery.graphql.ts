@@ -1,11 +1,14 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
+import { Shows_viewer$ref } from "./Shows_viewer.graphql";
 export type routes_ShowsQueryVariables = {
     readonly artistID: string;
 };
 export type routes_ShowsQueryResponse = {
-    readonly viewer: ({}) | null;
+    readonly viewer: ({
+        readonly " $fragmentRefs": Shows_viewer$ref;
+    }) | null;
 };
 
 

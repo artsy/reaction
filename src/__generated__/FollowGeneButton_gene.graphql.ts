@@ -1,10 +1,13 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+declare const _FollowGeneButton_gene$ref: unique symbol;
+export type FollowGeneButton_gene$ref = typeof _FollowGeneButton_gene$ref;
 export type FollowGeneButton_gene = {
     readonly __id: string;
     readonly id: string;
     readonly is_followed: boolean | null;
+    readonly " $refType": FollowGeneButton_gene$ref;
 };
 
 

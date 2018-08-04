@@ -1,6 +1,9 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+import { Pagination_pageCursors$ref } from "./Pagination_pageCursors.graphql";
+declare const _ArtistArticles_artist$ref: unique symbol;
+export type ArtistArticles_artist$ref = typeof _ArtistArticles_artist$ref;
 export type ArtistArticles_artist = {
     readonly id: string;
     readonly articlesConnection: ({
@@ -8,7 +11,9 @@ export type ArtistArticles_artist = {
             readonly hasNextPage: boolean;
             readonly endCursor: string | null;
         };
-        readonly pageCursors: ({}) | null;
+        readonly pageCursors: ({
+            readonly " $fragmentRefs": Pagination_pageCursors$ref;
+        }) | null;
         readonly edges: ReadonlyArray<({
             readonly node: ({
                 readonly href: string | null;
@@ -25,6 +30,7 @@ export type ArtistArticles_artist = {
             }) | null;
         }) | null> | null;
     }) | null;
+    readonly " $refType": ArtistArticles_artist$ref;
 };
 
 

@@ -1,8 +1,11 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+declare const _Headline_facet$ref: unique symbol;
+export type Headline_facet$ref = typeof _Headline_facet$ref;
 export type Headline_facet = {
     readonly name?: string | null;
+    readonly " $refType": Headline_facet$ref;
 };
 
 

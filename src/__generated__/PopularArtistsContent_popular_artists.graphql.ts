@@ -1,6 +1,8 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+declare const _PopularArtistsContent_popular_artists$ref: unique symbol;
+export type PopularArtistsContent_popular_artists$ref = typeof _PopularArtistsContent_popular_artists$ref;
 export type PopularArtistsContent_popular_artists = {
     readonly artists: ReadonlyArray<({
         readonly id: string;
@@ -13,6 +15,7 @@ export type PopularArtistsContent_popular_artists = {
             }) | null;
         }) | null;
     }) | null> | null;
+    readonly " $refType": PopularArtistsContent_popular_artists$ref;
 };
 
 

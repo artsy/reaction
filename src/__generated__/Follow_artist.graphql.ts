@@ -1,10 +1,13 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+declare const _Follow_artist$ref: unique symbol;
+export type Follow_artist$ref = typeof _Follow_artist$ref;
 export type Follow_artist = {
     readonly __id: string;
     readonly id: string;
     readonly is_followed: boolean | null;
+    readonly " $refType": Follow_artist$ref;
 };
 
 

@@ -1,6 +1,8 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+declare const _ArtistToolTip_artist$ref: unique symbol;
+export type ArtistToolTip_artist$ref = typeof _ArtistToolTip_artist$ref;
 export type ArtistToolTip_artist = {
     readonly name: string | null;
     readonly id: string;
@@ -20,6 +22,7 @@ export type ArtistToolTip_artist = {
     readonly genes: ReadonlyArray<({
         readonly name: string | null;
     }) | null> | null;
+    readonly " $refType": ArtistToolTip_artist$ref;
 };
 
 

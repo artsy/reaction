@@ -1,7 +1,13 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-export type InquiryArtwork_artwork = {};
+import { Artwork_artwork$ref } from "./Artwork_artwork.graphql";
+declare const _InquiryArtwork_artwork$ref: unique symbol;
+export type InquiryArtwork_artwork$ref = typeof _InquiryArtwork_artwork$ref;
+export type InquiryArtwork_artwork = {
+    readonly " $fragmentRefs": Artwork_artwork$ref;
+    readonly " $refType": InquiryArtwork_artwork$ref;
+};
 
 
 

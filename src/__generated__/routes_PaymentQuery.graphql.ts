@@ -1,11 +1,14 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
+import { Payment_order$ref } from "./Payment_order.graphql";
 export type routes_PaymentQueryVariables = {
     readonly orderID: string;
 };
 export type routes_PaymentQueryResponse = {
-    readonly order: ({}) | null;
+    readonly order: ({
+        readonly " $fragmentRefs": Payment_order$ref;
+    }) | null;
 };
 
 

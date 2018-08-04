@@ -1,11 +1,14 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
+import { ArtistSearchResultsContent_viewer$ref } from "./ArtistSearchResultsContent_viewer.graphql";
 export type ArtistSearchResultsQueryVariables = {
     readonly term: string;
 };
 export type ArtistSearchResultsQueryResponse = {
-    readonly viewer: ({}) | null;
+    readonly viewer: ({
+        readonly " $fragmentRefs": ArtistSearchResultsContent_viewer$ref;
+    }) | null;
 };
 
 

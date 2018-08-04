@@ -1,6 +1,8 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+declare const _ArtworkSidebarPartnerInfo_artwork$ref: unique symbol;
+export type ArtworkSidebarPartnerInfo_artwork$ref = typeof _ArtworkSidebarPartnerInfo_artwork$ref;
 export type ArtworkSidebarPartnerInfo_artwork = {
     readonly collecting_institution: string | null;
     readonly partner: ({
@@ -11,6 +13,7 @@ export type ArtworkSidebarPartnerInfo_artwork = {
             readonly city: string | null;
         }) | null> | null;
     }) | null;
+    readonly " $refType": ArtworkSidebarPartnerInfo_artwork$ref;
 };
 
 

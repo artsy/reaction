@@ -1,9 +1,12 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
+import { SuggestedGenesContent_suggested_genes$ref } from "./SuggestedGenesContent_suggested_genes.graphql";
 export type SuggestedGenesQueryVariables = {};
 export type SuggestedGenesQueryResponse = {
-    readonly suggested_genes: ReadonlyArray<({}) | null> | null;
+    readonly suggested_genes: ReadonlyArray<({
+        readonly " $fragmentRefs": SuggestedGenesContent_suggested_genes$ref;
+    }) | null> | null;
 };
 
 

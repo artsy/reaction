@@ -2,6 +2,8 @@
 
 import { ConcreteFragment } from "relay-runtime";
 export type ArtworkAggregation = "COLOR" | "DIMENSION_RANGE" | "FOLLOWED_ARTISTS" | "GALLERY" | "INSTITUTION" | "MAJOR_PERIOD" | "MEDIUM" | "MERCHANDISABLE_ARTISTS" | "PARTNER_CITY" | "PERIOD" | "PRICE_RANGE" | "TOTAL" | "%future added value";
+declare const _Dropdown_aggregation$ref: unique symbol;
+export type Dropdown_aggregation$ref = typeof _Dropdown_aggregation$ref;
 export type Dropdown_aggregation = {
     readonly slice: ArtworkAggregation | null;
     readonly counts: ReadonlyArray<({
@@ -9,6 +11,7 @@ export type Dropdown_aggregation = {
         readonly id: string;
         readonly count: number | null;
     }) | null> | null;
+    readonly " $refType": Dropdown_aggregation$ref;
 };
 
 
