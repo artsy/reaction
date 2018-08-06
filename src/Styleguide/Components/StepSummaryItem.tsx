@@ -8,7 +8,6 @@ import { media } from "Styleguide/Elements/Grid"
 interface StepSummaryItemProps extends FlexProps {
   title: string
   onChange: () => void
-  children: React.ReactNode | null
 }
 
 const Wrapper = styled(BorderBox)`
@@ -21,12 +20,12 @@ const Wrapper = styled(BorderBox)`
   }
 `
 
-export function StepSummaryItem({
+export const StepSummaryItem: React.SFC<StepSummaryItemProps> = ({
   title,
   onChange,
   children,
   ...others
-}: StepSummaryItemProps) {
+}) => {
   return (
     <Wrapper flexDirection="column" width="100%" maxWidth={542} {...others}>
       <Flex justifyContent="space-between" alignItems="baseline" mb={1}>
