@@ -4,10 +4,25 @@ import { storiesOf } from "storybook/storiesOf"
 import styled from "styled-components"
 import { Section } from "Styleguide/Utils/Section"
 import { ReadMore } from "../ReadMore"
+import { ReadMore as ReadMore2 } from "../ReadMore2"
 
 storiesOf("Styleguide/Components", module).add("ReadMore", () => {
   return (
     <React.Fragment>
+      <Section title="Character cap">
+        <ReadMore2
+          maxChars={30}
+          text="
+            Donald Judd, widely regarded as one of the most significant American
+            artists of <a href='#'>the post-war period</a>, is perhaps best-known for the
+            large-scale outdoor installations and long, spacious interiors he
+            designed in Marfa. Donald Judd, widely regarded as one of the most
+            significant American artists of the post-war period, is perhaps
+            best-known for the large-scale outdoor installations and long,
+            spacious interiors he designed in Marfa.
+            "
+        />
+      </Section>
       <Section title="Max lines">
         <Item>
           <Sans size="3">
@@ -50,11 +65,6 @@ storiesOf("Styleguide/Components", module).add("ReadMore", () => {
             velit esse cillum dolore eu fugiat nulla pariatur.
           </ReadMore>
         </Item>
-      </Section>
-      <Section title="Character cap">
-        <Sans size="3">
-          <ReadMore maxLineCount={2}>TODO</ReadMore>
-        </Sans>
       </Section>
     </React.Fragment>
   )

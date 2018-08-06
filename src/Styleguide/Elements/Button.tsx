@@ -127,8 +127,8 @@ export const Button = styled(
               return `
                 background-color: ${colors.white100};
                 border-color: ${colors.black10};
-                color: ${colors.black100};              
-                
+                color: ${colors.black100};
+
                 @media ${themeProps.mediaQueries.hover} {
                   &:hover {
                     background-color: ${colors.white100};
@@ -188,6 +188,7 @@ export class ButtonBase extends Component<ButtonBaseProps & SansProps> {
       weight,
       ...rest
     } = this.props
+
     const loadingClass = loading ? "loading" : ""
     const disabledClass = disabled ? "disabled" : ""
 

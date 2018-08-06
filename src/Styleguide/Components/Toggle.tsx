@@ -32,7 +32,11 @@ export class Toggle extends React.Component<ToggleProps> {
   }
 
   toggleExpand = () => {
-    this.setState({ expanded: !this.state.expanded })
+    if (!this.props.disabled) {
+      this.setState({
+        expanded: !this.state.expanded,
+      })
+    }
   }
 
   render() {
@@ -64,11 +68,12 @@ export class Toggle extends React.Component<ToggleProps> {
   }
 }
 
-interface HeaderProps extends ToggleProps, SpaceProps {}
-const Header = styled.div.attrs<HeaderProps>({})`
+const Header = styled.div.attrs<ToggleProps & SpaceProps>({})`
   cursor: pointer;
   padding-bottom: 16px;
   pointer-events: ${props => (props.disabled ? "none" : "auto")};
   user-select: none;
   ${space};
 `
+
+Header.displayName = "Header"

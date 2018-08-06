@@ -39,13 +39,7 @@ export class RadioGroup extends React.Component<
   state = {
     selectedOption: this.props.defaultValue || null,
   }
-  onSelectionChange = (id: string) => {
-    if (id !== this.state.selectedOption) {
-      this.setState({ selectedOption: id }, () => {
-        this.props.onSelect(id)
-      })
-    }
-  }
+
   static defaultProps = {
     renderRadio: ({ id, label, selected, onSelect, disabled }) => (
       <StyledRadio
@@ -58,6 +52,15 @@ export class RadioGroup extends React.Component<
       </StyledRadio>
     ),
   }
+
+  onSelectionChange = (id: string) => {
+    if (id !== this.state.selectedOption) {
+      this.setState({ selectedOption: id }, () => {
+        this.props.onSelect(id)
+      })
+    }
+  }
+
   render() {
     const { disabled, options, renderRadio } = this.props
 
@@ -92,3 +95,5 @@ const StyledRadio = Radio.extend`
       }
     `};
 `
+
+StyledRadio.displayName = "StyledRadio"

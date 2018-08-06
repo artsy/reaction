@@ -34,6 +34,7 @@ export class NavigationTabs extends React.Component<Props> {
     }
   ) {
     const { exact, mediator } = options
+
     return (
       <RouteTab
         to={to}

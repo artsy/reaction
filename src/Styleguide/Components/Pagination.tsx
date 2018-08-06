@@ -259,3 +259,5 @@ export const PaginationFragmentContainer = createFragmentContainer(
     }
   `
 )
+
+PrevNextContainer.displayName = "PrevNextContainer"

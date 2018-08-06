@@ -13,9 +13,11 @@ export interface RecentlyViewedProps {
   useRelay?: boolean
 }
 
+const HEIGHT = 100
+
 export const RecentlyViewed: React.SFC<RecentlyViewedProps> = props => {
-  const HEIGHT = 100
   const { me } = props
+
   return (
     <Subscribe to={[AppState]}>
       {({ state }) => {
@@ -23,6 +25,7 @@ export const RecentlyViewed: React.SFC<RecentlyViewedProps> = props => {
           mediator,
           system: { currentUser },
         } = state
+
         return (
           me && (
             <React.Fragment>
@@ -31,6 +34,9 @@ export const RecentlyViewed: React.SFC<RecentlyViewedProps> = props => {
               <Spacer mb={3} />
 
               <Slider
+                settings={{
+                  slidesToScroll: 5,
+                }}
                 data={me.recentlyViewedArtworks.edges as any}
                 render={artwork => {
                   const {

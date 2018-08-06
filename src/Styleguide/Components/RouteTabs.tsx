@@ -7,6 +7,7 @@ import { styles } from "./Tabs"
 
 export const RouteTabs: any /* FIXME */ = styled(Flex)`
   ${styles.tabsContainer};
+
   ${(props: any) => {
     if (props.size === "xs") {
       return `
@@ -16,6 +17,7 @@ export const RouteTabs: any /* FIXME */ = styled(Flex)`
       `
     }
   }};
+
   a {
     ${styles.tabContainer};
     margin-right: ${space(3)}px;
@@ -41,3 +43,6 @@ export const RouteTab: React.SFC<PreloadLinkProps> = ({
     </PreloadLink>
   )
 }
+
+RouteTabs.displayName = "RouteTabs"
+RouteTab.displayName = "RouteTab"

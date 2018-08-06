@@ -159,14 +159,9 @@ const _PreloadLink: React.SFC<
 
     fetchData() {
       return new Promise(async (resolve, reject) => {
-        const {
-          environment,
-          query,
-          variables,
-          cacheConfig,
-        } = this.getRouteQuery()
-
-        const requirementsMet = environment && query
+        const routeQuery = this.getRouteQuery()
+        const requirementsMet =
+          routeQuery && routeQuery.environment && routeQuery.query
 
         if (!requirementsMet) {
           console.warn(
@@ -176,6 +171,8 @@ const _PreloadLink: React.SFC<
           )
           return resolve()
         }
+
+        const { environment, query, variables, cacheConfig } = routeQuery
 
         try {
           await fetchQuery(environment, query, variables, cacheConfig)
