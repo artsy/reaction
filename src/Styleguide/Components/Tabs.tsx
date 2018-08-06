@@ -40,6 +40,9 @@ export interface TabsProps extends WidthProps, JustifyContentProps {
 
   separator?: JSX.Element
 
+  /** selects which property of tab data object to be displayed as superscript */
+  superscriptSelector?: (data: any) => any
+
   children: TabLike[]
 }
 
@@ -58,15 +61,11 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
     super(props)
 
     const activeTabIndex = props.initialTabIndex || 0
-    this.state = {
-      activeTabIndex,
-    }
+    this.state = { activeTabIndex }
   }
 
   setActiveTab = activeTabIndex => {
-    this.setState({
-      activeTabIndex,
-    })
+    this.setState({ activeTabIndex })
     if (this.props.onChange) {
       this.props.onChange({
         tabIndex: activeTabIndex,
@@ -76,17 +75,33 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
     }
   }
 
-  renderTab = (tab, index) => {
-    const { name } = tab.props
+  renderTab = (tab, index, superscriptSelector) => {
+    const { name, data } = tab.props
     return this.state.activeTabIndex === index
       ? this.props.transformTabBtn(
-          <ActiveTabButton key={index}>{name}</ActiveTabButton>,
+          <ActiveTabButton key={index}>
+            {name}
+            {data && superscriptSelector ? (
+              <SuperScript>
+                <Sans size="1" weight="medium" color="black100">
+                  {superscriptSelector(data)}
+                </Sans>
+              </SuperScript>
+            ) : null}
+          </ActiveTabButton>,
           index,
           this.props
         )
       : this.props.transformTabBtn(
           <TabButton key={index} onClick={() => this.setActiveTab(index)}>
             {name}
+            {data && superscriptSelector ? (
+              <SuperScript>
+                <Sans size="1" weight="medium" color="black30">
+                  {superscriptSelector(data)}
+                </Sans>
+              </SuperScript>
+            ) : null}
           </TabButton>,
           index,
           this.props
@@ -94,12 +109,21 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
   }
 
   render() {
-    const { children = [], justifyContent, separator } = this.props
+    const {
+      children = [],
+      justifyContent,
+      separator,
+      superscriptSelector,
+    } = this.props
 
     return (
       <React.Fragment>
         <TabsContainer mb={0.5} width="100%" justifyContent={justifyContent}>
-          <Join separator={separator}>{children.map(this.renderTab)}</Join>
+          <Join separator={separator}>
+            {children.map((tab, index) =>
+              this.renderTab(tab, index, superscriptSelector)
+            )}
+          </Join>
         </TabsContainer>
         <Box pt={3}>{children[this.state.activeTabIndex]}</Box>
       </React.Fragment>
@@ -184,4 +208,10 @@ const TabContainer = styled.div`
 
 const ActiveTabContainer = styled.div`
   ${styles.activeTabContainer};
+`
+
+const SuperScript = styled.div`
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 2px;
 `
