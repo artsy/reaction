@@ -1,7 +1,7 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
 
-import MinimalCtaBanner from "../MinimalCtaBanner"
+import { MinimalCtaBanner } from "../MinimalCtaBanner"
 
 storiesOf("Components/MinimalCtaBanner", module).add(
   "Minimal CTA Banner",
