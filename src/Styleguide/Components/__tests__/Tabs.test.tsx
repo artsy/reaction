@@ -26,7 +26,7 @@ describe("Tabs", () => {
     expect(wrapper.find("ActiveTabButton").html()).toContain("CV")
   })
 
-  it("toggls tab content on click", () => {
+  it("toggles tab content on click", () => {
     const getWrapper = tabIndex =>
       mount(
         <div>
@@ -88,5 +88,17 @@ describe("Tabs", () => {
 
     expect(wrapper.html()).toContain("foundTabSeparator")
     expect(wrapper.html()).toContain("foo|bar")
+  })
+
+  it("renders superscripts after tab text", () => {
+    const wrapper = mount(
+      <Tabs superscriptSelector={d => d.count}>
+        <Tab data={{ count: 2 }} name="Open" />
+        <Tab data={{ count: 3 }} name="Ready to ship" />
+        <Tab data={{ count: 20 }} name="Complete" />
+      </Tabs>
+    )
+
+    expect(wrapper.text()).toContain("Open2Ready to ship3Complete20")
   })
 })

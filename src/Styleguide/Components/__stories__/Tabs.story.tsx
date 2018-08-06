@@ -58,10 +58,17 @@ storiesOf("Styleguide/Components", module).add("Tabs (Simple)", () => {
         </Tabs>
       </Section>
       <Section title="With separator">
-        <Tabs justifyContent="center" separator={<Box pr={"20px"}>*</Box>}>
+        <Tabs justifyContent="center" separator={<Box mx={1}>♞</Box>}>
           <Tab name="About" />
           <Tab name="Pricing" />
           <Tab name="Condition" />
+        </Tabs>
+      </Section>
+      <Section title="With superscript">
+        <Tabs superscriptSelector={d => d.count}>
+          <Tab data={{ count: 2 }} name="Open" />
+          <Tab data={{ count: 3 }} name="Ready to ship" />
+          <Tab data={{ count: 20 }} name="Complete" />
         </Tabs>
       </Section>
     </React.Fragment>
