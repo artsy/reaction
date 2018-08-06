@@ -1,9 +1,9 @@
 import { Sans, Serif, space } from "@artsy/palette"
 import React from "react"
+import { media } from "styled-bootstrap-grid"
 import styled from "styled-components"
 import { BorderBox } from "Styleguide/Elements/Box"
 import { Flex, FlexProps } from "Styleguide/Elements/Flex"
-import { media } from "Styleguide/Elements/Grid"
 
 interface StepSummaryItemProps extends FlexProps {
   title: string
@@ -27,7 +27,7 @@ export const StepSummaryItem: React.SFC<StepSummaryItemProps> = ({
   ...others
 }) => {
   return (
-    <Wrapper flexDirection="column" width="100%" maxWidth={542} {...others}>
+    <Wrapper flexDirection="column" {...others}>
       <Flex justifyContent="space-between" alignItems="baseline" mb={1}>
         <Serif size="3t" weight="semibold" color="black100">
           {title}

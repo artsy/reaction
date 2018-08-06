@@ -12,6 +12,8 @@ storiesOf("Styleguide/Components", module).add("StepSummaryItem", () => {
         <StepSummaryItem
           title="Pick up (New York, NY)"
           onChange={() => console.warn("change")}
+          width="100%"
+          maxWidth={542}
         >
           <Sans size="2" color="black60" maxWidth={391}>
             After you place your order, you’ll be appointed an Artsy specialist
@@ -23,6 +25,8 @@ storiesOf("Styleguide/Components", module).add("StepSummaryItem", () => {
         <StepSummaryItem
           title="Pick up (New York, NY)"
           onChange={() => console.warn("change")}
+          width="100%"
+          maxWidth={542}
         >
           <Sans size="2" color="black60" maxWidth={391}>
             After you place your order, you’ll be appointed an Artsy specialist
@@ -32,6 +36,8 @@ storiesOf("Styleguide/Components", module).add("StepSummaryItem", () => {
         <StepSummaryItem
           title="Shipping Address"
           onChange={() => console.warn("change")}
+          width="100%"
+          maxWidth={542}
         >
           <Responsive>
             {({ xs }) => (
