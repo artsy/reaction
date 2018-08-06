@@ -3,7 +3,7 @@ import { ArtistHeader_artist } from "__generated__/ArtistHeader_artist.graphql"
 import { track, Track } from "Analytics"
 import * as Schema from "Analytics/Schema"
 import FollowArtistButton from "Components/FollowButton/FollowArtistButton"
-import React, { Component } from "react"
+import React, { Component, Fragment } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { AppState } from "Router/state"
 import { Slider } from "Styleguide/Components/Slider"
@@ -93,31 +93,37 @@ export class LargeArtistHeader extends Component<Props> {
   }
 
   render() {
-    const props = this.props
+    const { props } = this
     const {
       artist: { carousel },
       currentUser,
     } = props
 
+    const hasImages = carousel && carousel.images
+
     return (
       <Box width="100%">
-        <Slider
-          height={200}
-          data={carousel.images as any}
-          render={(slide: Image) => {
-            return (
-              <a href={slide.href} onClick={() => this.onClickSlide(slide)}>
-                <Image
-                  px={5}
-                  src={slide.resized.url}
-                  width={slide.resized.width}
-                  height={slide.resized.height}
-                />
-              </a>
-            )
-          }}
-        />
-        <Spacer my={2} />
+        {hasImages && (
+          <Fragment>
+            <Slider
+              height={200}
+              data={carousel.images as any}
+              render={(slide: Image) => {
+                return (
+                  <a href={slide.href} onClick={() => this.onClickSlide(slide)}>
+                    <Image
+                      px={5}
+                      src={slide.resized.url}
+                      width={slide.resized.width}
+                      height={slide.resized.height}
+                    />
+                  </a>
+                )
+              }}
+            />
+            <Spacer my={2} />
+          </Fragment>
+        )}
 
         <span id="jumpto-ArtistHeader" />
 
@@ -193,24 +199,30 @@ export class SmallArtistHeader extends Component<Props> {
       currentUser,
     } = props
 
+    const hasImages = carousel && carousel.images
+
     return (
       <Flex flexDirection="column">
-        <Slider
-          data={carousel.images as any}
-          render={slide => {
-            return (
-              <a href={slide.href} onClick={() => this.onClickSlide(slide)}>
-                <Image
-                  px={5}
-                  src={slide.resized.url}
-                  width={slide.resized.width}
-                  height={slide.resized.height}
-                />
-              </a>
-            )
-          }}
-        />
-        <Spacer my={2} />
+        {hasImages && (
+          <Fragment>
+            <Slider
+              data={carousel.images as any}
+              render={slide => {
+                return (
+                  <a href={slide.href} onClick={() => this.onClickSlide(slide)}>
+                    <Image
+                      px={5}
+                      src={slide.resized.url}
+                      width={slide.resized.width}
+                      height={slide.resized.height}
+                    />
+                  </a>
+                )
+              }}
+            />
+            <Spacer my={2} />
+          </Fragment>
+        )}
 
         <span id="jumpto-ArtistHeader" />
         <Flex flexDirection="column" alignItems="center">

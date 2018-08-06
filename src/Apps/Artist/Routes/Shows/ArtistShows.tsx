@@ -94,7 +94,7 @@ class ArtistShows extends Component<ArtistShowsProps, LoadingAreaState> {
                 <Col>
                   <Row>
                     <Col>
-                      {/* Negative margin bottom to make space 20px from bottom of 
+                      {/* Negative margin bottom to make space 20px from bottom of
                     text to the image below */}
                       <Sans size="3" weight="medium" mb={-0.5}>
                         {this.props.heading}
@@ -110,7 +110,9 @@ class ArtistShows extends Component<ArtistShowsProps, LoadingAreaState> {
                                     <ArtistShowBlockItem
                                       blockWidth={blockWidth}
                                       imageUrl={node.cover_image.cropped.url}
-                                      partner={node.partner.name}
+                                      partner={
+                                        node.partner && node.partner.name
+                                      }
                                       name={node.name}
                                       exhibitionInfo={node.exhibition_period}
                                       pr={pr}
@@ -133,7 +135,9 @@ class ArtistShows extends Component<ArtistShowsProps, LoadingAreaState> {
                                     <ArtistShowListItem
                                       key={index}
                                       city={node.city}
-                                      partner={node.partner.name}
+                                      partner={
+                                        node.partner && node.partner.name
+                                      }
                                       name={node.name}
                                       exhibitionInfo={node.exhibition_period}
                                       href={node.href}

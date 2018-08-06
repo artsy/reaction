@@ -16,6 +16,10 @@ export class ArtworkSidebarPartnerInfo extends React.Component<
 > {
   renderPartnerName() {
     const partner = this.props.artwork.partner
+    if (!partner) {
+      return null
+    }
+
     return partner.href ? (
       <Serif size="5t" display="inline-block" weight="semibold">
         <a href={partner.href}>{partner.name}</a>

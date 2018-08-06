@@ -46,7 +46,9 @@ export interface AppStateContainer {
 }
 
 export interface BootProps extends AppStateContainer {
+  currentUser?: User
   initialMatchingMediaQueries?: MatchingMediaQueries
+  relayEnvironment?: Environment
   [x: string]: any // User can pass in any properties on boot
 }
 

@@ -19,9 +19,11 @@ export class ArtworkSidebarAuctionPartnerInfo extends React.Component<
     }
     return (
       <Box pb={3}>
-        <Serif size="2" weight="semibold" color="black100">
-          {artwork.partner.name}
-        </Serif>
+        {artwork.partner && (
+          <Serif size="2" weight="semibold" color="black100">
+            {artwork.partner.name}
+          </Serif>
+        )}
         {artwork.sale_artwork &&
           artwork.sale_artwork.estimate && (
             <Serif size="2" color="black60">
