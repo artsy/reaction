@@ -71,9 +71,11 @@ export const ExhibitionYearList: SFC<ExhibitionYearListProps> = props => (
             {exhibition.name}
             {", "}
           </Sans>
-          <Sans size="2" display="inline" verticalAlign="top" color="black60">
-            {exhibition.partner.name}
-          </Sans>
+          {exhibition.partner && (
+            <Sans size="2" display="inline" verticalAlign="top" color="black60">
+              {exhibition.partner.name}
+            </Sans>
+          )}
         </Box>
       ))}
     </Flex>
