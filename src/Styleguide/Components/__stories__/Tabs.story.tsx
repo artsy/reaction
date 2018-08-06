@@ -2,7 +2,7 @@ import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Box } from "Styleguide/Elements/Box"
 import { Section } from "Styleguide/Utils/Section"
-import { Tab, Tabs } from "../Tabs"
+import { Tab, Tabs, TabSuperscript } from "../Tabs"
 
 storiesOf("Styleguide/Components", module).add("Tabs (Simple)", () => {
   return (
@@ -58,10 +58,35 @@ storiesOf("Styleguide/Components", module).add("Tabs (Simple)", () => {
         </Tabs>
       </Section>
       <Section title="With separator">
-        <Tabs justifyContent="center" separator={<Box pr={"20px"}>*</Box>}>
+        <Tabs justifyContent="center" separator={<Box mx={1}>♞</Box>}>
           <Tab name="About" />
           <Tab name="Pricing" />
           <Tab name="Condition" />
+        </Tabs>
+      </Section>
+      <Section title="With superscript">
+        <Tabs justifyContent="center">
+          <Tab
+            name={
+              <React.Fragment>
+                Open<TabSuperscript>100</TabSuperscript>
+              </React.Fragment>
+            }
+          />
+          <Tab
+            name={
+              <React.Fragment>
+                Ready to ship<TabSuperscript>4</TabSuperscript>
+              </React.Fragment>
+            }
+          />
+          <Tab
+            name={
+              <React.Fragment>
+                Complete<TabSuperscript />
+              </React.Fragment>
+            }
+          />
         </Tabs>
       </Section>
     </React.Fragment>
