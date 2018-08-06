@@ -2,16 +2,16 @@ import { color } from "@artsy/palette"
 import {
   ArticleData,
   DisplayData,
-  RelatedArticleData,
+  RelatedArticleCanvasData,
 } from "Components/Publishing//Typings"
 import { DisplayCanvas } from "Components/Publishing/Display/Canvas"
-import RelatedArticlesCanvas from "Components/Publishing/RelatedArticles/RelatedArticlesCanvas"
+import { RelatedArticlesCanvas } from "Components/Publishing/RelatedArticles/Canvas/RelatedArticlesCanvas"
 import React from "react"
 import styled from "styled-components"
 
 export interface CanvasFooterProps {
   display?: DisplayData
-  relatedArticles?: RelatedArticleData[]
+  relatedArticles?: RelatedArticleCanvasData[]
   article: ArticleData
   renderTime?: number
 }

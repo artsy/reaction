@@ -12,7 +12,7 @@ interface Props {
   artist: NavigationTabs_artist
 }
 
-@track({ context_module: "NavigationTabs" })
+@track({ context_module: Schema.Context.NavigationTabs })
 export class NavigationTabs extends React.Component<Props> {
   @track((_props, _state, [tab, destination_path]: string[]) => ({
     action_type: Schema.ActionType.Click,

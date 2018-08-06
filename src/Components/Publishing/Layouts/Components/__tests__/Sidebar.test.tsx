@@ -3,7 +3,7 @@ import "jest-styled-components"
 import React from "react"
 import { EmailPanel } from "../../../Email/EmailPanel"
 import { RelatedPanel } from "../../../Fixtures/Components"
-import { RelatedArticlesPanel } from "../../../RelatedArticles/RelatedArticlesPanel"
+import { RelatedArticlesPanel } from "../../../RelatedArticles/Panel/RelatedArticlesPanel"
 import { Sidebar } from "../Sidebar"
 
 jest.mock("../../../Sections/FullscreenViewer/withFullScreen", () => ({

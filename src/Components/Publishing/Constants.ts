@@ -32,15 +32,29 @@ export const getArticleFullHref = slug =>
   `https://www.artsy.net/article/${slug}`
 
 /**
+ * Get the pre-slug part of URL
+ */
+
+export const getPreSlugPath = layout => {
+  return ["standard", "feature"].includes(layout) ? "article" : layout
+}
+
+/**
  * Relative path to editorial entity
  */
-export const getEditorialHref = (type, slug) => `/${type}/${slug}`
+
+export const getEditorialHref = (layout, slug) => {
+  const layoutType = getPreSlugPath(layout)
+  return `/${layoutType}/${slug}`
+}
 
 /**
  * Absolute path to editorial entity
  */
-export const getFullEditorialHref = (type, slug) =>
-  `https://www.artsy.net/${type}/${slug}`
+export const getFullEditorialHref = (layout, slug) => {
+  const layoutType = getPreSlugPath(layout)
+  return `https://www.artsy.net/${layoutType}/${slug}`
+}
 
 /**
  * Absolute path to artsy entity

@@ -18,6 +18,7 @@ export interface ArticleProps {
   seriesArticle?: ArticleData
   isHovered?: boolean
   isMobile?: boolean
+  infiniteScrollEntrySlug?: string
   isSuper?: boolean
   isTruncated?: boolean
   emailSignupUrl?: string

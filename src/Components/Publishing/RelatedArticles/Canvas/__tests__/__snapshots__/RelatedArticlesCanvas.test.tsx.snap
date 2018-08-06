@@ -327,7 +327,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
     </a>
     <a
       className="c5"
-      href="/article/artsy-editorial-french-art-history-in-a-nutshell"
+      href="/series/artsy-editorial-french-art-history-in-a-nutshell"
       onClick={[Function]}
     >
       <div
@@ -387,7 +387,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
     </a>
     <a
       className="c5"
-      href="/article/artsy-editorial-miami-artists-museums-brace-hurricane-irma"
+      href="/news/artsy-editorial-miami-artists-museums-brace-hurricane-irma"
       onClick={[Function]}
     >
       <div

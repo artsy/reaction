@@ -1,45 +1,43 @@
 import { Serif } from "@artsy/palette"
-import { RelatedArticleData } from "Components/Publishing/Typings"
+import { track } from "Analytics"
+import * as Schema from "Analytics/Schema"
+import { RelatedArticleCanvasData } from "Components/Publishing/Typings"
 import React from "react"
-import track from "react-tracking"
 import styled from "styled-components"
-import { crop } from "../../../Utils/resizer"
-import { pMedia } from "../../Helpers"
-import { Byline } from "../Byline/Byline"
-import { getArticleHref } from "../Constants"
+import { crop } from "../../../../Utils/resizer"
+import { pMedia } from "../../../Helpers"
+import { Byline } from "../../Byline/Byline"
+import { getEditorialHref } from "../../Constants"
 
-interface RelatedArticleFigureProps extends React.HTMLProps<HTMLDivElement> {
-  article: RelatedArticleData
-  tracking?: any
+interface RelatedArticleCanvasLinkProps
+  extends React.HTMLProps<HTMLDivElement> {
+  article: RelatedArticleCanvasData
 }
 
-export class RelatedArticleFigure extends React.Component<
-  RelatedArticleFigureProps,
-  null
+@track()
+export class RelatedArticleCanvasLink extends React.Component<
+  RelatedArticleCanvasLinkProps
 > {
-  onClick = () => {
-    const { article, tracking } = this.props
-    const href = getArticleHref(article.slug)
-
-    tracking.trackEvent({
-      action: "Clicked article impression",
-      destination_path: href,
-      entity_id: article.id,
-      entity_type: "article",
-      flow: "article",
-      impression_type: "Further reading",
-      type: "thumbnail",
-    })
+  @track<RelatedArticleCanvasLinkProps>(props => ({
+    action_type: Schema.ActionType.Click,
+    destination_path: getEditorialHref(
+      props.article.layout,
+      props.article.slug
+    ),
+    type: "thumbnail", // TODO: add to schema
+  }))
+  onClick() {
+    // noop
   }
 
   render() {
     const { article } = this.props
-    const href = getArticleHref(article.slug)
+    const href = getEditorialHref(article.layout, article.slug)
     const imageSrc = crop(article.thumbnail_image, { width: 510, height: 340 })
     const bylineArticle = { ...article, id: article.slug }
 
     return (
-      <ArticleFigure href={href} onClick={this.onClick}>
+      <ArticleFigure href={href} onClick={this.onClick.bind(this)}>
         <ImageTitle>
           <BlockImage src={imageSrc} alt={article.thumbnail_title} />
           <Serif size="3t">{article.thumbnail_title}</Serif>
@@ -78,5 +76,3 @@ const BlockImage = styled.img`
     height: 150px;
   `};
 `
-
-export default track()(RelatedArticleFigure)

@@ -1,13 +1,18 @@
+import { Serif } from "@artsy/palette"
 import { Shipping_order } from "__generated__/Shipping_order.graphql"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+
+import Input from "Components/Input"
 import { Link } from "Router"
+import { CountrySelect } from "Styleguide/Components/CountrySelect"
 import { Button } from "Styleguide/Elements/Button"
+import { Flex } from "Styleguide/Elements/Flex"
 import { Join } from "Styleguide/Elements/Join"
 import { RadioGroup } from "Styleguide/Elements/RadioGroup"
 import { Spacer } from "Styleguide/Elements/Spacer"
-import { Placeholder } from "Styleguide/Utils/Placeholder"
 import { Responsive } from "Utils/Responsive"
+
 import { Summary } from "../../Components/Summary"
 import {
   TwoColumnLayout,
@@ -38,34 +43,64 @@ export class ShippingRoute extends Component<ShippingProps> {
                   ]}
                 />
                 <Spacer mb={3} />
+
                 <Join separator={<Spacer mb={2} />}>
-                  <Placeholder height="68px" name="Full Name" />
-                  <TwoColumnSplit>
-                    <Placeholder height="68px" name="Country" />
-                    <Placeholder height="68px" name="Postal Code" />
-                  </TwoColumnSplit>
-                  <TwoColumnSplit>
-                    <Placeholder height="68px" name="Address Line 1" />
-                    <Placeholder
-                      height="68px"
-                      name="Address Line 2 (optional)"
+                  <Flex flexDirection="column">
+                    <Input
+                      placeholder="Add full name"
+                      title="Full name"
+                      block
                     />
+                  </Flex>
+
+                  <TwoColumnSplit>
+                    <Flex flexDirection="column" pb={1}>
+                      <Serif mb={1} size="3t" color="black100" lineHeight={18}>
+                        Country
+                      </Serif>
+                      <CountrySelect selected="US" />
+                    </Flex>
+
+                    <Flex flexDirection="column">
+                      <Input
+                        placeholder="Add postal code"
+                        title="Postal code"
+                        block
+                      />
+                    </Flex>
                   </TwoColumnSplit>
                   <TwoColumnSplit>
-                    <Placeholder height="68px" name="City" />
-                    <Placeholder
-                      height="68px"
-                      name="State, province, or region"
-                    />
+                    <Flex flexDirection="column">
+                      <Input
+                        placeholder="Add street address"
+                        title="Address line 1"
+                        block
+                      />
+                    </Flex>
+
+                    <Flex flexDirection="column">
+                      <Input
+                        placeholder="Add apt, floor, suite, etc."
+                        title="Address line 2 (optional)"
+                        block
+                      />
+                    </Flex>
                   </TwoColumnSplit>
-                  {!xs && (
-                    <Link to={`/order2/${order.id}/payment`}>
-                      <Button size="large" width="100%">
-                        Continue
-                      </Button>
-                    </Link>
-                  )}
+                  <TwoColumnSplit>
+                    <Flex flexDirection="column">
+                      <Input placeholder="Add city" title="City" block />
+                    </Flex>
+
+                    <Flex flexDirection="column">
+                      <Input
+                        placeholder="Add State, province, or region"
+                        title="State, province, or region"
+                        block
+                      />
+                    </Flex>
+                  </TwoColumnSplit>
                 </Join>
+
                 <Spacer mb={3} />
               </>
             }

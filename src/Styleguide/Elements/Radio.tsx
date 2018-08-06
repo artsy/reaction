@@ -65,7 +65,7 @@ export const Radio = styled(
             disabled={disabled}
             onChange={() => !disabled && onSelect && onSelect(!selected)}
           />
-          <Label htmlFor={name} style={disabled && { color: color("black10") }}>
+          <Label htmlFor={name} disabled={disabled}>
             {children}
           </Label>
         </Container>
@@ -106,6 +106,12 @@ const Container = styled(Flex).attrs<ContainerProps>({})`
 const Label = styled.label`
   display: block;
   cursor: pointer;
+  ${({ disabled }: { disabled: boolean }) =>
+    disabled &&
+    css`
+      cursor: inherit;
+      color: ${color("black10")};
+    `};
 `
 
 const HiddenInput = styled.input`

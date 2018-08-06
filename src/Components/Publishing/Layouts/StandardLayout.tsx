@@ -1,4 +1,7 @@
 import { color, space } from "@artsy/palette"
+import { track } from "Analytics"
+import * as Schema from "Analytics/Schema"
+import { getEditorialHref } from "Components/Publishing/Constants"
 import { get, omit } from "lodash"
 import React from "react"
 import styled from "styled-components"
@@ -7,7 +10,7 @@ import { pMedia } from "../../Helpers"
 import { ArticleProps } from "../Article"
 import { DisplayPanel } from "../Display/DisplayPanel"
 import { Header } from "../Header/Header"
-import ReadMore from "../ReadMore/ReadMoreButton"
+import { ReadMoreButton } from "../ReadMore/ReadMoreButton"
 import { ReadMoreWrapper } from "../ReadMore/ReadMoreWrapper"
 import { Sections } from "../Sections/Sections"
 import { CanvasFooter } from "./Components/CanvasFooter"
@@ -17,6 +20,7 @@ interface ArticleState {
   isTruncated: boolean
 }
 
+@track()
 export class StandardLayout extends React.Component<
   ArticleProps,
   ArticleState
@@ -27,7 +31,6 @@ export class StandardLayout extends React.Component<
     article: {},
     isTruncated: false,
   }
-
   constructor(props) {
     super(props)
 
@@ -36,7 +39,25 @@ export class StandardLayout extends React.Component<
     }
   }
 
-  removeTruncation = () => {
+  @track<ArticleProps>(props => {
+    // Track here and on ReadMoreButton so pageview & action both fire
+    const {
+      article: { layout, slug },
+      infiniteScrollEntrySlug,
+    } = props
+    const referrer = infiniteScrollEntrySlug
+      ? `/article/${infiniteScrollEntrySlug}`
+      : undefined
+
+    return {
+      action_type: Schema.ActionType.Click,
+      context_module: Schema.Context.ReadMore,
+      destination_path: getEditorialHref(layout, slug),
+      subject: Schema.Subject.ReadMore,
+      referrer,
+    }
+  })
+  removeTruncation() {
     this.setState({ isTruncated: false })
   }
 
@@ -45,6 +66,7 @@ export class StandardLayout extends React.Component<
       article,
       display,
       emailSignupUrl,
+      infiniteScrollEntrySlug,
       relatedArticlesForCanvas,
       relatedArticlesForPanel,
       renderTime,
@@ -77,7 +99,7 @@ export class StandardLayout extends React.Component<
             <ArticleWrapper isInfiniteScroll={this.props.isTruncated}>
               <ReadMoreWrapper
                 isTruncated={isTruncated}
-                hideButton={this.removeTruncation}
+                hideButton={() => this.setState({ isTruncated: false })}
               >
                 <Header article={article} />
 
@@ -98,7 +120,12 @@ export class StandardLayout extends React.Component<
                 </StandardLayoutParent>
               </ReadMoreWrapper>
 
-              {isTruncated && <ReadMore onClick={this.removeTruncation} />}
+              {isTruncated && (
+                <ReadMoreButton
+                  onClick={this.removeTruncation.bind(this)}
+                  referrer={`/article/${infiniteScrollEntrySlug}`}
+                />
+              )}
 
               {(relatedArticlesForCanvas || display) && (
                 <CanvasFooter

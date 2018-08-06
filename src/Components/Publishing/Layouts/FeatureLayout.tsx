@@ -7,7 +7,7 @@ import {
   ArticleCardsContainer,
 } from "../RelatedArticles/ArticleCards/Block"
 import { Sections } from "../Sections/Sections"
-import { ArticleData, DisplayData, RelatedArticleData } from "../Typings"
+import { ArticleData, DisplayData, RelatedArticleCanvasData } from "../Typings"
 import { CanvasFooter } from "./Components/CanvasFooter"
 
 export interface ArticleProps {
@@ -15,7 +15,7 @@ export interface ArticleProps {
   display?: DisplayData
   isMobile?: boolean
   isSuper?: boolean
-  relatedArticlesForCanvas?: RelatedArticleData[]
+  relatedArticlesForCanvas?: RelatedArticleCanvasData[]
   renderTime?: number
   showTooltips?: boolean
 }
