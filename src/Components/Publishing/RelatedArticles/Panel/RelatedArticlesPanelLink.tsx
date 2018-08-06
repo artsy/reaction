@@ -4,8 +4,8 @@ import * as Schema from "Analytics/Schema"
 import { RelatedArticlePanelData } from "Components/Publishing/Typings"
 import React from "react"
 import styled from "styled-components"
-import { crop } from "../../../Utils/resizer"
-import { getEditorialHref } from "../Constants"
+import { crop } from "../../../../Utils/resizer"
+import { getEditorialHref } from "../../Constants"
 
 interface RelatedArticlesPanelProps extends React.HTMLProps<HTMLDivElement> {
   article: RelatedArticlePanelData

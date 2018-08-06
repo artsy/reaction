@@ -4,10 +4,10 @@ import * as Schema from "Analytics/Schema"
 import { RelatedArticleCanvasData } from "Components/Publishing/Typings"
 import React from "react"
 import styled from "styled-components"
-import { crop } from "../../../Utils/resizer"
-import { pMedia } from "../../Helpers"
-import { Byline } from "../Byline/Byline"
-import { getEditorialHref } from "../Constants"
+import { crop } from "../../../../Utils/resizer"
+import { pMedia } from "../../../Helpers"
+import { Byline } from "../../Byline/Byline"
+import { getEditorialHref } from "../../Constants"
 
 interface RelatedArticleCanvasLinkProps
   extends React.HTMLProps<HTMLDivElement> {

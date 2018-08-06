@@ -6,7 +6,7 @@ import { map, once } from "lodash"
 import React from "react"
 import Waypoint from "react-waypoint"
 import styled from "styled-components"
-import { pMedia } from "../../Helpers"
+import { pMedia } from "../../../Helpers"
 import { RelatedArticleCanvasLink } from "./RelatedArticleCanvasLink"
 
 export interface RelatedArticlesCanvasProps
