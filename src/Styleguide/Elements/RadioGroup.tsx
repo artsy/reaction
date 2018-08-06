@@ -1,7 +1,8 @@
-import { space } from "@artsy/palette"
+import { color, space } from "@artsy/palette"
 import React from "react"
 import { BorderProps, SizeProps, SpaceProps } from "styled-system"
 
+import { css } from "styled-components"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Radio } from "Styleguide/Elements/Radio"
 
@@ -83,4 +84,11 @@ const StyledRadio = Radio.extend`
   :not(:first-child) {
     border-top: 0;
   }
+  ${({ disabled }) =>
+    !disabled &&
+    css`
+      :hover {
+        background-color: ${color("black5")};
+      }
+    `};
 `
