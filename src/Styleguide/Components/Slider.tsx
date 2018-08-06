@@ -68,7 +68,6 @@ export const LargeSlider = (props: Props) => {
 export const SmallSlider = (props: Props) => {
   const slickConfig = {
     arrows: false,
-    centerMode: true,
     dots: true,
     infinite: true,
     slidesToShow: 1,
