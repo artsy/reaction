@@ -3,7 +3,7 @@ import {
   Display,
   RelatedCanvas,
 } from "Components/Publishing/Fixtures/Components"
-import RelatedArticlesCanvas from "Components/Publishing/RelatedArticles/RelatedArticlesCanvas"
+import { RelatedArticlesCanvas } from "Components/Publishing/RelatedArticles/Canvas/RelatedArticlesCanvas"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"

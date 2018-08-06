@@ -5,9 +5,9 @@ import { DisplayCanvas } from "../../Display/Canvas"
 import { DisplayPanel } from "../../Display/DisplayPanel"
 import { StandardArticle } from "../../Fixtures/Articles"
 import { Display, RelatedCanvas, RelatedPanel } from "../../Fixtures/Components"
-import { ReadMore } from "../../ReadMore/ReadMoreButton"
-import { RelatedArticlesCanvas } from "../../RelatedArticles/RelatedArticlesCanvas"
-import { RelatedArticlesPanel } from "../../RelatedArticles/RelatedArticlesPanel"
+import { ReadMoreButton } from "../../ReadMore/ReadMoreButton"
+import { RelatedArticlesCanvas } from "../../RelatedArticles/Canvas/RelatedArticlesCanvas"
+import { RelatedArticlesPanel } from "../../RelatedArticles/Panel/RelatedArticlesPanel"
 import { Sidebar } from "../Components/Sidebar"
 import { StandardLayout } from "../StandardLayout"
 
@@ -51,7 +51,7 @@ describe("Standard Article", () => {
   it("shows read more if truncated", () => {
     props.isTruncated = true
     const article = getWrapper(props)
-    expect(article.find(ReadMore).length).toBe(1)
+    expect(article.find(ReadMoreButton).length).toBe(1)
   })
 
   it("Can remove truncation on click", () => {
@@ -59,7 +59,7 @@ describe("Standard Article", () => {
     const article = getWrapper(props)
 
     article
-      .find(ReadMore)
+      .find(ReadMoreButton)
       .at(0)
       .props()
       .onClick()

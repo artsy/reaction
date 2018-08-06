@@ -20,8 +20,12 @@ export { VideoCover } from "./Video/VideoCover"
 export { VideoAbout } from "./Video/VideoAbout"
 export { PartnerInline } from "./Partner/PartnerInline"
 export { PartnerBlock } from "./Partner/PartnerBlock"
-export { RelatedArticlesCanvas } from "./RelatedArticles/RelatedArticlesCanvas"
-export { RelatedArticlesPanel } from "./RelatedArticles/RelatedArticlesPanel"
+export {
+  RelatedArticlesCanvas,
+} from "./RelatedArticles/Canvas/RelatedArticlesCanvas"
+export {
+  RelatedArticlesPanel,
+} from "./RelatedArticles/Panel/RelatedArticlesPanel"
 
 // Icon SVGs
 export { IconArtist } from "./Icon/IconArtist"

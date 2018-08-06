@@ -1,11 +1,19 @@
 import { cloneDeep } from "lodash"
 import {
   formatTime,
-  getMediaDate,
   getArtsySlugsFromArticle,
   getArtsySlugsFromHTML,
+  getEditorialHref,
+  getFullEditorialHref,
+  getMediaDate,
 } from "../Constants"
-import { VideoArticle, FeatureArticle } from "../Fixtures/Articles"
+import {
+  FeatureArticle,
+  NewsArticle,
+  SeriesArticle,
+  StandardArticle,
+  VideoArticle,
+} from "../Fixtures/Articles"
 
 describe("getMediaDate", () => {
   let article
@@ -39,6 +47,73 @@ describe("#formatTime", () => {
   it("#formatTime - formats single digit seconds and minutes", () => {
     expect(formatTime(301)).toMatch("05:01")
     expect(formatTime(242)).toMatch("04:02")
+  })
+})
+
+describe("getEditorialHref", () => {
+  const slug = "artsy-editorial-this-article"
+  it("Returns correctly for feature", () => {
+    expect(getEditorialHref("feature", slug)).toBe(
+      "/article/artsy-editorial-this-article"
+    )
+  })
+
+  it("Returns correctly for news", () => {
+    expect(getEditorialHref("news", slug)).toBe(
+      "/news/artsy-editorial-this-article"
+    )
+  })
+
+  it("Returns correctly for standard", () => {
+    expect(getEditorialHref("standard", slug)).toBe(
+      "/article/artsy-editorial-this-article"
+    )
+  })
+
+  it("Returns correctly for series", () => {
+    expect(getEditorialHref("series", slug)).toBe(
+      "/series/artsy-editorial-this-article"
+    )
+  })
+
+  it("Returns correctly for video", () => {
+    expect(getEditorialHref("video", slug)).toBe(
+      "/video/artsy-editorial-this-article"
+    )
+  })
+})
+
+describe("getFullEditorialHref", () => {
+  const slug = "artsy-editorial-this-article"
+
+  it("Returns correctly for feature", () => {
+    expect(getFullEditorialHref("feature", slug)).toBe(
+      "https://www.artsy.net/article/artsy-editorial-this-article"
+    )
+  })
+
+  it("Returns correctly for news", () => {
+    expect(getFullEditorialHref("news", slug)).toBe(
+      "https://www.artsy.net/news/artsy-editorial-this-article"
+    )
+  })
+
+  it("Returns correctly for standard", () => {
+    expect(getFullEditorialHref("standard", slug)).toBe(
+      "https://www.artsy.net/article/artsy-editorial-this-article"
+    )
+  })
+
+  it("Returns correctly for series", () => {
+    expect(getFullEditorialHref("series", slug)).toBe(
+      "https://www.artsy.net/series/artsy-editorial-this-article"
+    )
+  })
+
+  it("Returns correctly for video", () => {
+    expect(getFullEditorialHref("video", slug)).toBe(
+      "https://www.artsy.net/video/artsy-editorial-this-article"
+    )
   })
 })
 

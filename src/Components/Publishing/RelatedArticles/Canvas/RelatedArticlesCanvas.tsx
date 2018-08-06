@@ -1,12 +1,13 @@
 import { Sans } from "@artsy/palette"
-import { RelatedArticleData } from "Components/Publishing/Typings"
+import { track } from "Analytics"
+import * as Schema from "Analytics/Schema"
+import { RelatedArticleCanvasData } from "Components/Publishing/Typings"
 import { map, once } from "lodash"
 import React from "react"
-import track from "react-tracking"
 import Waypoint from "react-waypoint"
 import styled from "styled-components"
-import { pMedia } from "../../Helpers"
-import RelatedArticleFigure from "./RelatedArticleFigure"
+import { pMedia } from "../../../Helpers"
+import { RelatedArticleCanvasLink } from "./RelatedArticleCanvasLink"
 
 export interface RelatedArticlesCanvasProps
   extends React.HTMLProps<HTMLDivElement> {
@@ -14,25 +15,25 @@ export interface RelatedArticlesCanvasProps
     name: string
     id?: string
   }
-  articles: RelatedArticleData[]
+  articles: RelatedArticleCanvasData[]
   isMobile?: boolean
-  tracking?: any
 }
 
 interface ScrollingContainerProps {
   isMobile?: boolean
 }
 
+@track({
+  // TODO: reevalutate double naming of context/schema
+  context_module: Schema.Context.FurtherReading,
+  subject: Schema.Subject.FurtherReading,
+})
 export class RelatedArticlesCanvas extends React.Component<
   RelatedArticlesCanvasProps
 > {
-  trackRelatedImpression = () => {
-    const { tracking } = this.props
-
-    tracking.trackEvent({
-      action: "article_impression",
-      impression_type: "Further reading",
-    })
+  @track(() => ({ action_type: Schema.ActionType.Impression }))
+  trackRelatedImpression() {
+    // noop
   }
 
   render() {
@@ -41,11 +42,11 @@ export class RelatedArticlesCanvas extends React.Component<
     return (
       <RelatedArticlesContainer>
         {getTitle(vertical)}
-        <Waypoint onEnter={once(this.trackRelatedImpression)} />
+        <Waypoint onEnter={once(this.trackRelatedImpression.bind(this))} />
         <ArticlesWrapper isMobile={isMobile}>
           {map(articles, (article, i) => {
             return (
-              <RelatedArticleFigure
+              <RelatedArticleCanvasLink
                 article={article}
                 key={`related-article-figure-${i}`}
               />
@@ -118,5 +119,3 @@ const ArticlesWrapper = styled.div.attrs<ScrollingContainerProps>({})`
   }
   ${props => props.isMobile && "-webkit-overflow-scrolling: touch;"};
 `
-
-export default track()(RelatedArticlesCanvas)

@@ -10,7 +10,7 @@ import {
 import { RelatedCanvas } from "../../Fixtures/Components"
 import { Nav } from "../../Nav/Nav"
 import { ArticleCardsBlock } from "../../RelatedArticles/ArticleCards/Block"
-import { RelatedArticlesCanvas } from "../../RelatedArticles/RelatedArticlesCanvas"
+import { RelatedArticlesCanvas } from "../../RelatedArticles/Canvas/RelatedArticlesCanvas"
 import { SeriesAbout } from "../../Series/SeriesAbout"
 import { FeatureLayout } from "../FeatureLayout"
 

@@ -1,4 +1,8 @@
-import { DisplayUnitData } from "Components/Publishing/Typings"
+import {
+  DisplayUnitData,
+  RelatedArticleCanvasData,
+  RelatedArticlePanelData,
+} from "Components/Publishing/Typings"
 import { cloneDeep, extend, flatten } from "lodash"
 import { Props as ImageSetPreviewProps } from "../Sections/ImageSetPreview"
 import { SocialEmbedProps } from "../Sections/SocialEmbed"
@@ -493,13 +497,14 @@ export const Media = [
   },
 ]
 
-export const RelatedPanel = [
+export const RelatedPanel: RelatedArticlePanelData[] = [
   {
     thumbnail_title: "The 15 Top Art Schools in the United States",
     thumbnail_image:
       "https://artsy-media-uploads.s3.amazonaws.com/4Tq-iYkN8dOpshFoKRXyYw%2Fcustom-Custom_Size___PoetterHall_Exterior+copy.jpg",
     slug: "artsy-editorial-15-top-art-schools-united-states",
     id: "52d99185cd530e581300006c",
+    layout: "standard",
   },
   {
     thumbnail_title:
@@ -509,6 +514,7 @@ export const RelatedPanel = [
     slug:
       "artsy-editorial-four-years-walter-de-marias-death-final-work-complete",
     id: "52d99185cd530e581300006c",
+    layout: "feature",
   },
   {
     thumbnail_title: "French Art History in a Nutshell",
@@ -516,10 +522,11 @@ export const RelatedPanel = [
       "https://artsy-media-uploads.s3.amazonaws.com/lEcCm2XbfZ7bPAVgLlM21w%2Flarger-21.jpg",
     slug: "artsy-editorial-french-art-history-in-a-nutshell",
     id: "52d99185cd530e581300006c",
+    layout: "news",
   },
 ]
 
-export const RelatedCanvas = [
+export const RelatedCanvas: RelatedArticleCanvasData[] = [
   {
     thumbnail_title: "The 15 Top Art Schools in the United States",
     thumbnail_image:
@@ -530,6 +537,7 @@ export const RelatedCanvas = [
     contributing_authors: [{ name: "Casey Lesser" }],
     published_at: "2017-05-19T13:09:18.567Z",
     id: "52d99185cd530e581300006c",
+    layout: "standard",
   },
   {
     thumbnail_title:
@@ -543,6 +551,7 @@ export const RelatedCanvas = [
     contributing_authors: [{ name: "Casey Lesser" }],
     published_at: "2017-05-19T13:09:18.567Z",
     id: "52d99185cd530e581300006c",
+    layout: "feature",
   },
   {
     thumbnail_title: "French Art History in a Nutshell",
@@ -554,6 +563,7 @@ export const RelatedCanvas = [
     contributing_authors: [{ name: "Casey Lesser" }],
     published_at: "2017-05-19T13:09:18.567Z",
     id: "52d99185cd530e581300006c",
+    layout: "series",
   },
   {
     thumbnail_title: "Miami Artists and Museums Brace for Hurricane Irma",
@@ -563,6 +573,7 @@ export const RelatedCanvas = [
     authors: [{ name: "Owen Dodd" }],
     published_at: "2017-05-19T13:09:18.567Z",
     id: "52d99185cd530e581300006c",
+    layout: "news",
   },
 ]
 

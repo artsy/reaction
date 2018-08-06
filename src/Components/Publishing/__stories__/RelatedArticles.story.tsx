@@ -1,10 +1,10 @@
-import { storiesOf } from "@storybook/react"
 import React from "react"
+import { storiesOfPublishing } from "../../../__stories__/storiesOf.js"
 import { RelatedCanvas, RelatedPanel } from "../Fixtures/Components"
-import { RelatedArticlesCanvas } from "../RelatedArticles/RelatedArticlesCanvas"
-import { RelatedArticlesPanel } from "../RelatedArticles/RelatedArticlesPanel"
+import { RelatedArticlesCanvas } from "../RelatedArticles/Canvas/RelatedArticlesCanvas"
+import { RelatedArticlesPanel } from "../RelatedArticles/Panel/RelatedArticlesPanel"
 
-storiesOf("Publishing/Related Articles/Canvas", module)
+storiesOfPublishing("Publishing/Related Articles/Canvas", module)
   .add("With vertical", () => {
     return (
       <RelatedArticlesCanvas
@@ -20,6 +20,9 @@ storiesOf("Publishing/Related Articles/Canvas", module)
     return <RelatedArticlesCanvas articles={RelatedCanvas} />
   })
 
-storiesOf("Publishing/Related Articles/Panel", module).add("Panel", () => {
-  return <RelatedArticlesPanel articles={RelatedPanel} />
-})
+storiesOfPublishing("Publishing/Related Articles/Panel", module).add(
+  "Panel",
+  () => {
+    return <RelatedArticlesPanel articles={RelatedPanel} />
+  }
+)

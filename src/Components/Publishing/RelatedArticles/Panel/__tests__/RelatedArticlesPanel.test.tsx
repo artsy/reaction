@@ -3,8 +3,12 @@ import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
 import Waypoint from "react-waypoint"
-import { RelatedPanel } from "../../Fixtures/Components"
-import { ArticleLink, RelatedArticlesPanel } from "../RelatedArticlesPanel"
+import { mockTracking } from "../../../../../Analytics"
+import { RelatedPanel } from "../../../Fixtures/Components"
+import { RelatedArticlesPanel } from "../RelatedArticlesPanel"
+import { RelatedArticlesPanelLink } from "../RelatedArticlesPanelLink"
+
+jest.unmock("react-tracking")
 
 describe("RelatedArticlesPanel", () => {
   const getWrapper = props => {
@@ -15,9 +19,6 @@ describe("RelatedArticlesPanel", () => {
   beforeEach(() => {
     props = {
       articles: RelatedPanel,
-      tracking: {
-        trackEvent: jest.fn(),
-      },
     }
   })
 
@@ -41,37 +42,39 @@ describe("RelatedArticlesPanel", () => {
 
   it("renders links", () => {
     const component = getWrapper(props)
-    expect(component.find(ArticleLink)).toHaveLength(3)
+    expect(component.find(RelatedArticlesPanelLink)).toHaveLength(3)
   })
 
   it("tracks link clicks", () => {
-    const component = getWrapper(props)
+    const { Component, dispatch } = mockTracking(RelatedArticlesPanel)
+    const component = mount(<Component articles={RelatedPanel} />)
     component
-      .find(ArticleLink)
+      .find(RelatedArticlesPanelLink)
       .at(0)
       .simulate("click")
-    const trackCall = props.tracking.trackEvent.mock.calls[0][0]
 
-    expect(trackCall.action).toBe("Clicked article impression")
-    expect(trackCall.destination_path).toBe(
-      "/article/artsy-editorial-15-top-art-schools-united-states"
-    )
-    expect(trackCall.entity_id).toBe("52d99185cd530e581300006c")
-    expect(trackCall.entity_type).toBe("article")
-    expect(trackCall.flow).toBe("article")
-    expect(trackCall.impression_type).toBe("Related article")
-    expect(trackCall.type).toBe("link")
+    expect(dispatch).toBeCalledWith({
+      action_type: "Click",
+      context_module: "Related articles",
+      subject: "Related articles",
+      destination_path:
+        "/article/artsy-editorial-15-top-art-schools-united-states",
+      type: "thumbnail",
+    })
   })
 
   it("Calls a tracking impression", () => {
-    const component = getWrapper(props)
+    const { Component, dispatch } = mockTracking(RelatedArticlesPanel)
+    const component = mount(<Component articles={RelatedPanel} />)
     component
       .find(Waypoint)
       .getElement()
       .props.onEnter()
-    const trackCall = props.tracking.trackEvent.mock.calls[0][0]
 
-    expect(trackCall.action).toBe("article_impression")
-    expect(trackCall.impression_type).toBe("Related articles")
+    expect(dispatch).toBeCalledWith({
+      action_type: "Impression",
+      context_module: "Related articles",
+      subject: "Related articles",
+    })
   })
 })

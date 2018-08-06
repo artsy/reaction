@@ -1,7 +1,8 @@
+import { track } from "Analytics"
+import * as Schema from "Analytics/Schema"
 import { unica } from "Assets/Fonts"
 import { once } from "lodash"
 import React from "react"
-import track from "react-tracking"
 import Waypoint from "react-waypoint"
 import styled from "styled-components"
 import { pMedia } from "../../Helpers"
@@ -9,41 +10,38 @@ import { StandardLayoutParent } from "../Layouts/StandardLayout"
 
 interface ReadMoreProps {
   onClick: () => void
-  tracking?: any
+  referrer: string
 }
 
-export class ReadMore extends React.Component<ReadMoreProps> {
-  onClick = () => {
-    const { onClick, tracking } = this.props
-
-    tracking.trackEvent({
-      action: "Clicked read more",
-    })
-    onClick()
+@track({
+  context_module: Schema.Context.ReadMore,
+  subject: Schema.Subject.ReadMore,
+})
+export class ReadMoreButton extends React.Component<ReadMoreProps> {
+  @track({ action_type: Schema.ActionType.Impression })
+  trackImpression() {
+    // noop
   }
 
-  trackImpression = () => {
-    const { tracking } = this.props
-
-    tracking.trackEvent({
-      action: "article_impression",
-      impression_type: "Read more button",
-    })
+  // maps to force pageview override
+  @track({ action_type: Schema.ActionType.ClickedReadMore })
+  onClick() {
+    this.props.onClick()
   }
 
   render() {
     return (
       <StandardLayoutParent>
-        <ReadMoreContainer onClick={this.onClick}>
-          <ReadMoreButton>Read More</ReadMoreButton>
+        <ReadMoreContainer onClick={this.onClick.bind(this)}>
+          <Button>Read More</Button>
         </ReadMoreContainer>
-        <Waypoint onEnter={once(this.trackImpression)} />
+        <Waypoint onEnter={once(this.trackImpression.bind(this))} />
       </StandardLayoutParent>
     )
   }
 }
 
-const ReadMoreButton = styled.div`
+const Button = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -81,5 +79,3 @@ export const ReadMoreContainer = styled.div`
     padding: 20px;
   `};
 `
-
-export default track()(ReadMore)
