@@ -36,9 +36,7 @@ describe("RelatedArticleCanvasLink", () => {
     component.simulate("click")
 
     expect(dispatch).toBeCalledWith({
-      action: "Click",
-      context_module: "Further reading",
-      subject: "Further reading",
+      action_type: "Click",
       destination_path:
         "/article/artsy-editorial-15-top-art-schools-united-states",
       type: "thumbnail",

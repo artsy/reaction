@@ -1,9 +1,9 @@
 import { Sans } from "@artsy/palette"
+import { track } from "Analytics"
 import * as Schema from "Analytics/Schema"
 import { RelatedArticlePanelData } from "Components/Publishing/Typings"
 import { once } from "lodash"
 import React from "react"
-import track from "react-tracking"
 import Waypoint from "react-waypoint"
 import styled from "styled-components"
 import { RelatedArticlesPanelLink } from "./RelatedArticlesPanelLink"
@@ -13,7 +13,11 @@ interface RelatedArticlesPanelProps extends React.HTMLProps<HTMLDivElement> {
   articles: RelatedArticlePanelData[]
 }
 
-@track()
+@track({
+  // TODO: reevalutate double naming of context/schema
+  context_module: Schema.Context.RelatedArticles,
+  subject: Schema.Subject.RelatedArticles,
+})
 export class RelatedArticlesPanel extends React.Component<
   RelatedArticlesPanelProps
 > {
@@ -21,12 +25,7 @@ export class RelatedArticlesPanel extends React.Component<
     label: "Related Stories",
   }
 
-  @track(() => ({
-    action: Schema.ActionType.Impression,
-    // TODO: reevalutate double naming
-    context_module: Schema.Subject.RelatedArticles,
-    subject: Schema.Subject.RelatedArticles,
-  }))
+  @track(props => ({ action_type: Schema.ActionType.Impression }))
   trackRelatedImpression() {
     // noop
   }

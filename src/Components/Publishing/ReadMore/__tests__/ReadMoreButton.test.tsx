@@ -26,7 +26,9 @@ describe("ReadMoreButton", () => {
       .simulate("click")
 
     expect(dispatch).toBeCalledWith({
-      action: "Clicked read more",
+      action_type: "Clicked read more",
+      context_module: "Read more",
+      subject: "Read more",
     })
   })
 
@@ -40,7 +42,7 @@ describe("ReadMoreButton", () => {
       .props.onEnter()
 
     expect(dispatch).toBeCalledWith({
-      action: "Impression",
+      action_type: "Impression",
       context_module: "Read more",
       subject: "Read more",
     })

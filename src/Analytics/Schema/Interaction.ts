@@ -26,7 +26,7 @@ export interface Interaction {
    * A description of the UI element that describes it inside the page/module.
    * This is e.g. the label of the UI element.
    */
-  subject: string
+  subject?: string
 
   /**
    * In case of a link, the location that it points to.

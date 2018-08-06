@@ -1,9 +1,9 @@
 import { Sans } from "@artsy/palette"
+import { track } from "Analytics"
 import * as Schema from "Analytics/Schema"
 import { RelatedArticleCanvasData } from "Components/Publishing/Typings"
 import { map, once } from "lodash"
 import React from "react"
-import track from "react-tracking"
 import Waypoint from "react-waypoint"
 import styled from "styled-components"
 import { pMedia } from "../../Helpers"
@@ -23,16 +23,15 @@ interface ScrollingContainerProps {
   isMobile?: boolean
 }
 
-@track()
+@track({
+  // TODO: reevalutate double naming of context/schema
+  context_module: Schema.Context.FurtherReading,
+  subject: Schema.Subject.FurtherReading,
+})
 export class RelatedArticlesCanvas extends React.Component<
   RelatedArticlesCanvasProps
 > {
-  @track(() => ({
-    action: Schema.ActionType.Impression,
-    // TODO: reevalutate double naming
-    context_module: Schema.Subject.FurtherReading,
-    subject: Schema.Subject.FurtherReading,
-  }))
+  @track(() => ({ action_type: Schema.ActionType.Impression }))
   trackRelatedImpression() {
     // noop
   }

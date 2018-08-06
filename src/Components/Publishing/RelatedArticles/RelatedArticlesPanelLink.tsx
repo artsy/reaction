@@ -1,8 +1,8 @@
 import { color, Serif, space } from "@artsy/palette"
+import { track } from "Analytics"
 import * as Schema from "Analytics/Schema"
 import { RelatedArticlePanelData } from "Components/Publishing/Typings"
 import React from "react"
-import track from "react-tracking"
 import styled from "styled-components"
 import { crop } from "../../../Utils/resizer"
 import { getEditorialHref } from "../Constants"
@@ -19,10 +19,8 @@ export class RelatedArticlesPanelLink extends React.Component<
     label: "Related Stories",
   }
 
-  @track(props => ({
-    action: Schema.ActionType.Click,
-    subject: Schema.Subject.RelatedArticles,
-    context_module: Schema.Context.RelatedArticles,
+  @track<RelatedArticlesPanelProps>(props => ({
+    action_type: Schema.ActionType.Click,
     destination_path: getEditorialHref(
       props.article.layout,
       props.article.slug

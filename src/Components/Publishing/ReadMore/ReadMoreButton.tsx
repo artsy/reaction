@@ -1,8 +1,8 @@
+import { track } from "Analytics"
 import * as Schema from "Analytics/Schema"
 import { unica } from "Assets/Fonts"
 import { once } from "lodash"
 import React from "react"
-import track from "react-tracking"
 import Waypoint from "react-waypoint"
 import styled from "styled-components"
 import { pMedia } from "../../Helpers"
@@ -13,21 +13,18 @@ interface ReadMoreProps {
   referrer: string
 }
 
-@track()
+@track({
+  context_module: Schema.Context.ReadMore,
+  subject: Schema.Subject.ReadMore,
+})
 export class ReadMoreButton extends React.Component<ReadMoreProps> {
-  @track({
-    action: Schema.ActionType.Impression,
-    context_module: Schema.Context.ReadMore,
-    subject: Schema.Subject.ReadMore,
-  })
+  @track({ action_type: Schema.ActionType.Impression })
   trackImpression() {
     // noop
   }
 
-  @track({
-    // maps to force pageview override
-    action: "Clicked read more",
-  })
+  // maps to force pageview override
+  @track({ action_type: Schema.ActionType.ClickedReadMore })
   onClick() {
     this.props.onClick()
   }

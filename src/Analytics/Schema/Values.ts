@@ -57,6 +57,11 @@ export enum ActionType {
    * A UI element was rendered in the viewport
    */
   Impression = "Impression",
+
+  /**
+   * Triggers a pageview in force, skips segment
+   */
+  ClickedReadMore = "Clicked read more",
 }
 
 /**

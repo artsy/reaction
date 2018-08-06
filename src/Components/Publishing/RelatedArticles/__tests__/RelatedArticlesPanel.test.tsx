@@ -54,7 +54,7 @@ describe("RelatedArticlesPanel", () => {
       .simulate("click")
 
     expect(dispatch).toBeCalledWith({
-      action: "Click",
+      action_type: "Click",
       context_module: "Related articles",
       subject: "Related articles",
       destination_path:
@@ -72,7 +72,7 @@ describe("RelatedArticlesPanel", () => {
       .props.onEnter()
 
     expect(dispatch).toBeCalledWith({
-      action: "Impression",
+      action_type: "Impression",
       context_module: "Related articles",
       subject: "Related articles",
     })

@@ -1,9 +1,9 @@
 import { color, space } from "@artsy/palette"
+import { track } from "Analytics"
 import * as Schema from "Analytics/Schema"
 import { getEditorialHref } from "Components/Publishing/Constants"
 import { get, omit } from "lodash"
 import React from "react"
-import track from "react-tracking"
 import styled from "styled-components"
 import { ResponsiveDeprecated } from "../../../Utils/ResponsiveDeprecated"
 import { pMedia } from "../../Helpers"
@@ -39,7 +39,7 @@ export class StandardLayout extends React.Component<
     }
   }
 
-  @track(props => {
+  @track<ArticleProps>(props => {
     // Track here and on ReadMoreButton so pageview & action both fire
     const {
       article: { layout, slug },
@@ -50,7 +50,7 @@ export class StandardLayout extends React.Component<
       : undefined
 
     return {
-      action: Schema.ActionType.Click,
+      action_type: Schema.ActionType.Click,
       context_module: Schema.Context.ReadMore,
       destination_path: getEditorialHref(layout, slug),
       subject: Schema.Subject.ReadMore,
