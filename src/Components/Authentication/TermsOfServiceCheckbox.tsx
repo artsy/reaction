@@ -11,29 +11,24 @@ export const TermsOfServiceCheckbox = ({
   onBlur,
   value,
   ...props
-}) => (
-  <StyledCheckbox {...{ checked: value, error, onChange, onBlur, name }}>
-    <TOSText color={error ? Colors.redMedium : Colors.graySemibold}>
-      {"I agree to Artsy’s "}
-      <A
-        href="https://www.artsy.net/terms"
-        target="_blank"
-        color={error ? Colors.redMedium : Colors.graySemibold}
-      >
-        Terms of Use
-      </A>
-      {" and "}
-      <A
-        href="https://www.artsy.net/privacy"
-        target="_blank"
-        color={error ? Colors.redMedium : Colors.graySemibold}
-      >
-        Privacy Policy
-      </A>
-      {", and to receive emails from Artsy."}
-    </TOSText>
-  </StyledCheckbox>
-)
+}) => {
+  const color = error && !value ? Colors.redMedium : Colors.graySemibold
+  return (
+    <StyledCheckbox {...{ checked: value, error, onChange, onBlur, name }}>
+      <TOSText color={color}>
+        {"I agree to Artsy’s "}
+        <A href="https://www.artsy.net/terms" target="_blank" color={color}>
+          Terms of Use
+        </A>
+        {" and "}
+        <A href="https://www.artsy.net/privacy" target="_blank" color={color}>
+          Privacy Policy
+        </A>
+        {", and to receive emails from Artsy."}
+      </TOSText>
+    </StyledCheckbox>
+  )
+}
 
 const StyledCheckbox = styled(Checkbox)`
   margin: 5px 0;
