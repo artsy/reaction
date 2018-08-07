@@ -7,7 +7,7 @@ import { Join } from "Styleguide/Elements/Join"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Placeholder } from "Styleguide/Utils/Placeholder"
 import { Responsive } from "Utils/Responsive"
-import { Summary } from "../../Components/Summary"
+import { SummaryFragmentContainer as Summary } from "../../Components/Summary"
 import { TwoColumnLayout } from "../../Components/TwoColumnLayout"
 
 export interface ReviewProps {
@@ -44,7 +44,7 @@ export class ReviewRoute extends Component<ReviewProps> {
               </>
             }
             Sidebar={
-              <Summary mediator={this.props.mediator}>
+              <Summary mediator={this.props.mediator} order={order as any}>
                 {xs && (
                   <>
                     <Spacer mb={3} />
@@ -71,6 +71,7 @@ export const ReviewFragmentContainer = createFragmentContainer(
   graphql`
     fragment Review_order on Order {
       id
+      ...Summary_order
     }
   `
 )
