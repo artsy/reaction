@@ -50,7 +50,9 @@ export const MobileForgotPasswordForm: FormComponentType = props => {
                 />
                 {status &&
                   !status.success && <Error show>{status.error}</Error>}
-                <SubmitButton disabled={isSubmitting}>Next</SubmitButton>
+                <SubmitButton disabled={isSubmitting}>
+                  Send me reset instructions
+                </SubmitButton>
                 <Footer
                   handleTypeChange={props.handleTypeChange}
                   mode="forgot"
