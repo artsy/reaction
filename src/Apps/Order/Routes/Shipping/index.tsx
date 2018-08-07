@@ -13,7 +13,8 @@ import { RadioGroup } from "Styleguide/Elements/RadioGroup"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Responsive } from "Utils/Responsive"
 
-import { Summary } from "../../Components/Summary"
+import { SummaryFragmentContainer as Summary } from "../../Components/Summary"
+
 import {
   TwoColumnLayout,
   TwoColumnSplit,
@@ -105,7 +106,7 @@ export class ShippingRoute extends Component<ShippingProps> {
               </>
             }
             Sidebar={
-              <Summary mediator={this.props.mediator}>
+              <Summary mediator={this.props.mediator} order={order as any}>
                 {xs && (
                   <>
                     <Spacer mb={3} />
@@ -130,6 +131,7 @@ export const ShippingFragmentContainer = createFragmentContainer(
   graphql`
     fragment Shipping_order on Order {
       id
+      ...Summary_order
     }
   `
 )

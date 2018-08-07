@@ -22,6 +22,11 @@ const node: ConcreteFragment = {
       "storageKey": null
     },
     {
+      "kind": "FragmentSpread",
+      "name": "Summary_order",
+      "args": null
+    },
+    {
       "kind": "ScalarField",
       "alias": "__id",
       "name": "id",
@@ -30,5 +35,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '1d0f4a95a73e73dddc9f7127c7919d90';
+(node as any).hash = '2bcbbf6dbe7025129e62f481d60e23f9';
 export default node;

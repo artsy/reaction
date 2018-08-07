@@ -22,6 +22,22 @@ query routes_ReviewQuery(
 
 fragment Review_order on Order {
   id
+  ...Summary_order
+  __id: id
+}
+
+fragment Summary_order on Order {
+  lineItems {
+    edges {
+      node {
+        artwork {
+          id
+          __id
+        }
+        __id: id
+      }
+    }
+  }
   __id: id
 }
 */
@@ -49,13 +65,20 @@ v2 = {
   "name": "id",
   "args": null,
   "storageKey": null
+},
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
 };
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "routes_ReviewQuery",
   "id": null,
-  "text": "query routes_ReviewQuery(\n  $orderID: String!\n) {\n  order(id: $orderID) {\n    ...Review_order\n    __id: id\n  }\n}\n\nfragment Review_order on Order {\n  id\n  __id: id\n}\n",
+  "text": "query routes_ReviewQuery(\n  $orderID: String!\n) {\n  order(id: $orderID) {\n    ...Review_order\n    __id: id\n  }\n}\n\nfragment Review_order on Order {\n  id\n  ...Summary_order\n  __id: id\n}\n\nfragment Summary_order on Order {\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -97,12 +120,59 @@ return {
         "concreteType": "Order",
         "plural": false,
         "selections": [
+          v3,
           {
-            "kind": "ScalarField",
+            "kind": "LinkedField",
             "alias": null,
-            "name": "id",
+            "name": "lineItems",
+            "storageKey": null,
             "args": null,
-            "storageKey": null
+            "concreteType": "OrderLineItemConnection",
+            "plural": false,
+            "selections": [
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "edges",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "OrderLineItemEdge",
+                "plural": true,
+                "selections": [
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "node",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "OrderLineItem",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "kind": "LinkedField",
+                        "alias": null,
+                        "name": "artwork",
+                        "storageKey": null,
+                        "args": null,
+                        "concreteType": "Artwork",
+                        "plural": false,
+                        "selections": [
+                          v3,
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "__id",
+                            "args": null,
+                            "storageKey": null
+                          }
+                        ]
+                      },
+                      v2
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           v2
         ]

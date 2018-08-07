@@ -8,7 +8,7 @@ import { Join } from "Styleguide/Elements/Join"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Placeholder } from "Styleguide/Utils/Placeholder"
 import { Responsive } from "Utils/Responsive"
-import { Summary } from "../../Components/Summary"
+import { SummaryFragmentContainer as Summary } from "../../Components/Summary"
 
 export interface PaymentProps {
   order: Payment_order
@@ -41,7 +41,7 @@ export class PaymentRoute extends Component<PaymentProps> {
               </>
             }
             Sidebar={
-              <Summary mediator={this.props.mediator}>
+              <Summary mediator={this.props.mediator} order={order as any}>
                 {xs && (
                   <>
                     <Spacer mb={3} />
@@ -66,6 +66,7 @@ export const PaymentFragmentContainer = createFragmentContainer(
   graphql`
     fragment Payment_order on Order {
       id
+      ...Summary_order
     }
   `
 )
