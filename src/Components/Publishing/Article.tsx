@@ -42,8 +42,6 @@ export interface State {
 
 export enum CtaCopy {
   news = "Sign up for the best in art world news",
-  standard = "Sign up to get our best stories everyday",
-  feature = "Sign up to get our best stories everyday",
   default = "Sign up to get our best stories everyday",
 }
 
@@ -124,6 +122,9 @@ export class Article extends React.Component<ArticleProps, State> {
   }
 
   render() {
+    const copy =
+      this.props.article.layout === "news" ? CtaCopy.news : CtaCopy.default
+
     return (
       <FullScreenProvider>
         {this.getArticleLayout()}
@@ -131,7 +132,7 @@ export class Article extends React.Component<ArticleProps, State> {
           <MinimalCtaBanner
             href="/sign_up"
             height="50px"
-            copy={CtaCopy[this.props.article.layout] || CtaCopy.default}
+            copy={copy}
             position="bottom"
             textColor="white"
             backgroundColor="black"
