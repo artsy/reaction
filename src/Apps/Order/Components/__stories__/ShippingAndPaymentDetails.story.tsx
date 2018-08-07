@@ -1,5 +1,6 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
+import { Flex } from "Styleguide/Elements/Flex"
 import { Section } from "Styleguide/Utils/Section"
 import { ShippingAndPaymentDetails } from "../ShippingAndPaymentDetails"
 
@@ -14,28 +15,34 @@ storiesOf("App/Order/Components", module).add(
     return (
       <React.Fragment>
         <Section title="Shipping and Payment details (mastercard)">
-          <ShippingAndPaymentDetails
-            address={address}
-            creditCardLast4digits="4444"
-            creditCardExpiry="04/34"
-            creditCardtype="mastercard"
-          />
+          <Flex flexDirection="column" width={300}>
+            <ShippingAndPaymentDetails
+              address={address}
+              creditCardLast4digits="4444"
+              creditCardExpiry="04/34"
+              creditCardtype="mastercard"
+            />
+          </Flex>
         </Section>
         <Section title="Shipping and Payment details (visa)">
-          <ShippingAndPaymentDetails
-            address={address}
-            creditCardLast4digits="4444"
-            creditCardExpiry="04/34"
-            creditCardtype="visa"
-          />
+          <Flex flexDirection="column" width={300}>
+            <ShippingAndPaymentDetails
+              address={address}
+              creditCardLast4digits="4444"
+              creditCardExpiry="04/34"
+              creditCardtype="visa"
+            />
+          </Flex>
         </Section>
         <Section title="Shipping and Payment details (generic)">
-          <ShippingAndPaymentDetails
-            address={address}
-            creditCardLast4digits="4444"
-            creditCardExpiry="04/34"
-            creditCardtype="other"
-          />
+          <Flex flexDirection="column" width={300}>
+            <ShippingAndPaymentDetails
+              address={address}
+              creditCardLast4digits="4444"
+              creditCardExpiry="04/34"
+              creditCardtype="other"
+            />
+          </Flex>
         </Section>
       </React.Fragment>
     )
