@@ -10,6 +10,7 @@ import React from "react"
 import { createEnvironment } from "Relay/createEnvironment"
 import { AppShell } from "./AppShell"
 import { Boot } from "./Boot"
+import { getUser } from "./getUser"
 import { AppConfig, ClientResolveProps } from "./types"
 
 export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
@@ -24,15 +25,7 @@ export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
       } = config
 
       const relayBootstrap = JSON.parse(window.__RELAY_BOOTSTRAP__ || "{}")
-
-      let currentUser = user
-      if (process.env.USER_ID && process.env.USER_ACCESS_TOKEN) {
-        currentUser = currentUser || {
-          id: process.env.USER_ID,
-          accessToken: process.env.USER_ACCESS_TOKEN,
-        }
-      }
-
+      const currentUser = getUser(user)
       const relayEnvironment = createEnvironment({
         cache: relayBootstrap,
         user: currentUser,
