@@ -25,6 +25,9 @@ export class CVRoute extends Component<CVRouteProps> {
           <Join
             separator={xs ? <Spacer mt={1} /> : <Separator my={sectionSpace} />}
           >
+            {/*
+              FIXME: Ensure that we only render CV items that come back non-null
+            */}
             <CVItem
               category="Solo shows"
               artist={viewer.artist_soloShows as any}
