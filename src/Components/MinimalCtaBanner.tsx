@@ -11,11 +11,11 @@ export interface MinimalCtaBannerProps extends React.Props<HTMLDivElement> {
   href?: string
   position: "top" | "bottom"
   textColor?: string
-  showCtaBanner?: boolean
+  show?: boolean
 }
 
 export interface State {
-  showCta: boolean
+  dismissed: boolean
 }
 
 export class MinimalCtaBanner extends React.Component<
@@ -23,18 +23,17 @@ export class MinimalCtaBanner extends React.Component<
   State
 > {
   state = {
-    showCta: this.props.showCtaBanner,
+    dismissed: false,
   }
 
   dismissCta = () => {
-    const showCta = false
-    this.setState({ showCta })
+    this.setState({ dismissed: true })
   }
 
   render() {
     const ctaBanner = (
       <SlideTransition
-        in={this.props.showCtaBanner}
+        in={this.props.show}
         timeout={{ enter: 10, exit: 250 }}
         height={this.props.height}
       >
@@ -54,7 +53,7 @@ export class MinimalCtaBanner extends React.Component<
       </SlideTransition>
     )
 
-    return this.state.showCta ? ctaBanner : <div />
+    return !this.state.dismissed ? ctaBanner : <div />
   }
 }
 
