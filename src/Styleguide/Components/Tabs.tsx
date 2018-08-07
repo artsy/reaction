@@ -11,9 +11,10 @@ export interface TabLike extends JSX.Element {
   props: TabProps
 }
 
+type TabNameType = string | JSX.Element
 export interface TabInfo {
   /** Display name of the newly selected Tab */
-  name: string
+  name: TabNameType
 
   /** Index of the newly selected Tab */
   tabIndex: number
@@ -97,20 +98,19 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
     const { children = [], justifyContent, separator } = this.props
 
     return (
-      <React.Fragment>
+      <>
         <TabsContainer mb={0.5} width="100%" justifyContent={justifyContent}>
           <Join separator={separator}>{children.map(this.renderTab)}</Join>
         </TabsContainer>
         <Box pt={3}>{children[this.state.activeTabIndex]}</Box>
-      </React.Fragment>
+      </>
     )
   }
 }
 
 interface TabProps {
   /** Display name of the Tab */
-  name: string
-
+  name: TabNameType
   /**
    * Arbitrary data that can be associated with a Tab.
    *
@@ -185,3 +185,15 @@ const TabContainer = styled.div`
 const ActiveTabContainer = styled.div`
   ${styles.activeTabContainer};
 `
+
+const SupWrapper = styled.sup`
+  margin-left: 2px;
+`
+
+export const Sup: React.SFC<{}> = ({ children }) => (
+  <SupWrapper>
+    <Sans size="1" weight="medium" display="inline">
+      {children}
+    </Sans>
+  </SupWrapper>
+)

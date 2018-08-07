@@ -1,6 +1,6 @@
 import { mount } from "enzyme"
 import React from "react"
-import { Tab, Tabs } from "../Tabs"
+import { Sup, Tab, Tabs } from "../Tabs"
 
 describe("Tabs", () => {
   it("renders tabs by via name prop", () => {
@@ -88,5 +88,29 @@ describe("Tabs", () => {
 
     expect(wrapper.html()).toContain("foundTabSeparator")
     expect(wrapper.html()).toContain("foo|bar")
+  })
+
+  it("renders superscripts after tab text", () => {
+    const wrapper = mount(
+      <Tabs justifyContent="center">
+        <Tab
+          name={
+            <>
+              Open<Sup>100</Sup>
+            </>
+          }
+        />
+        <Tab
+          name={
+            <>
+              Ready to ship<Sup>4</Sup>
+            </>
+          }
+        />
+        <Tab name="Complete" />
+      </Tabs>
+    )
+
+    expect(wrapper.text()).toContain("Open100Ready to ship4Complete")
   })
 })
