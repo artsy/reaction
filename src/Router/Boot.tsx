@@ -45,6 +45,7 @@ export class Boot extends React.Component<BootProps> {
                   <GlobalStyles>
                     <Responsive>
                       {({ xs }) => {
+                        // FIXME: Padding should be moved out of here
                         return (
                           <Padding padding={xs ? 20 : 40}>
                             {children}
