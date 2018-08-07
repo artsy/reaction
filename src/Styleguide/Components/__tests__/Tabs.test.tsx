@@ -1,6 +1,6 @@
 import { mount } from "enzyme"
 import React from "react"
-import { Tab, Tabs, TabSuperscript } from "../Tabs"
+import { Sup, Tab, Tabs } from "../Tabs"
 
 describe("Tabs", () => {
   it("renders tabs by via name prop", () => {
@@ -95,16 +95,16 @@ describe("Tabs", () => {
       <Tabs justifyContent="center">
         <Tab
           name={
-            <React.Fragment>
-              Open<TabSuperscript>100</TabSuperscript>
-            </React.Fragment>
+            <>
+              Open<Sup>100</Sup>
+            </>
           }
         />
         <Tab
           name={
-            <React.Fragment>
-              Ready to ship<TabSuperscript>4</TabSuperscript>
-            </React.Fragment>
+            <>
+              Ready to ship<Sup>4</Sup>
+            </>
           }
         />
         <Tab name="Complete" />

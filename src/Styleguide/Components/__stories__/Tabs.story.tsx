@@ -2,11 +2,11 @@ import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Box } from "Styleguide/Elements/Box"
 import { Section } from "Styleguide/Utils/Section"
-import { Tab, Tabs, TabSuperscript } from "../Tabs"
+import { Sup, Tab, Tabs } from "../Tabs"
 
 storiesOf("Styleguide/Components", module).add("Tabs (Simple)", () => {
   return (
-    <React.Fragment>
+    <>
       <Section title="Artist">
         <Tabs>
           <Tab name="Overview" />
@@ -68,27 +68,28 @@ storiesOf("Styleguide/Components", module).add("Tabs (Simple)", () => {
         <Tabs justifyContent="center">
           <Tab
             name={
-              <React.Fragment>
-                Open<TabSuperscript>100</TabSuperscript>
-              </React.Fragment>
+              <>
+                Open<Sup>100</Sup>
+              </>
             }
           />
           <Tab
             name={
-              <React.Fragment>
-                Ready to ship<TabSuperscript>4</TabSuperscript>
-              </React.Fragment>
+              <>
+                Ready to ship<Sup>4</Sup>
+              </>
             }
           />
           <Tab
             name={
-              <React.Fragment>
-                Complete<TabSuperscript />
-              </React.Fragment>
+              <>
+                Complete<Sup />
+                {/* empty sup to get vertical alignment right */}
+              </>
             }
           />
         </Tabs>
       </Section>
-    </React.Fragment>
+    </>
   )
 })

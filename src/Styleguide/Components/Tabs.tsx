@@ -98,12 +98,12 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
     const { children = [], justifyContent, separator } = this.props
 
     return (
-      <React.Fragment>
+      <>
         <TabsContainer mb={0.5} width="100%" justifyContent={justifyContent}>
           <Join separator={separator}>{children.map(this.renderTab)}</Join>
         </TabsContainer>
         <Box pt={3}>{children[this.state.activeTabIndex]}</Box>
-      </React.Fragment>
+      </>
     )
   }
 }
@@ -186,14 +186,14 @@ const ActiveTabContainer = styled.div`
   ${styles.activeTabContainer};
 `
 
-const TabSuperScriptWrapper = styled.sup`
+const SupWrapper = styled.sup`
   margin-left: 2px;
 `
 
-export const TabSuperscript = ({ children }: { children?: any }) => (
-  <TabSuperScriptWrapper>
+export const Sup: React.SFC<{}> = ({ children }) => (
+  <SupWrapper>
     <Sans size="1" weight="medium" display="inline">
       {children}
     </Sans>
-  </TabSuperScriptWrapper>
+  </SupWrapper>
 )
