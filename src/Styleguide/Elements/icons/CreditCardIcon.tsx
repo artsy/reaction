@@ -67,7 +67,7 @@ const GenericIcon = (props: React.SVGProps<SVGSVGElement>) => (
       stroke="#E5E5E5"
       d="M2 .5h25A1.5 1.5 0 0 1 28.5 2v15a1.5 1.5 0 0 1-1.5 1.5H2A1.5 1.5 0 0 1 .5 17V2A1.5 1.5 0 0 1 2 .5z"
     />
-    <path fill="#848DA5" fillOpacity=".76" d="M0 4h29v3H0z" />
+    <path fill="#848DA5" fillOpacity=".95" d="M0 4h29v3H0z" />
     <path fill="#B3B9CA" fillOpacity=".73" d="M4 10h13v3H4z" />
   </svg>
 )
