@@ -58,6 +58,7 @@ export const MobileInnerWrapper = styled.div`
   display: flex;
   flex-direction: column;
   height: 285px;
+  min-height: fit-content;
 `
 
 export const MobileContainer = styled.div`
