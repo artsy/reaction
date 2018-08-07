@@ -1,6 +1,6 @@
+import { PriceSummary } from "Apps/Order/Components/PriceSummary"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { PriceSummary } from "Styleguide/Components/PriceSummary"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Section } from "Styleguide/Utils/Section"
 
