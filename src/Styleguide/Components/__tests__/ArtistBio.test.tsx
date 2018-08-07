@@ -5,11 +5,11 @@ import { ArtistBio } from "../ArtistBio"
 describe("ArtistBio", () => {
   const bio = {
     biography_blurb: {
-      text: '<div id="found">hello how are you</div>',
+      text: '<a href="hi">hello how are you</a>',
     },
   }
 
-  it("renders html text", () => {
+  it.only("renders html text", () => {
     const wrapper = mount(<ArtistBio bio={bio} />)
     expect(wrapper.html()).toContain(bio.biography_blurb.text)
   })

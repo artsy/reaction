@@ -183,6 +183,7 @@
     "styled-reset": "^1.3.5",
     "styled-system": "^2.2.5",
     "superagent": "^3.6.3",
+    "trunc-html": "^1.1.2",
     "unstated": "^2.1.1",
     "unstated-debug": "^0.2.0",
     "url": "^0.11.0",
