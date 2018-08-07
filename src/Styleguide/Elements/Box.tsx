@@ -1,6 +1,7 @@
-import { color } from "@artsy/palette"
+import { color, space } from "@artsy/palette"
 // @ts-ignore
 import React from "react"
+import { media } from "styled-bootstrap-grid"
 import styled, { css } from "styled-components"
 import {
   background,
@@ -34,12 +35,6 @@ import {
 } from "styled-system"
 import { Flex, FlexProps } from "./Flex"
 
-const hover = css`
-  &:hover {
-    border-color: ${color("black60")};
-  }
-`
-
 export interface BorderBoxProps
   extends FlexProps,
     SpaceProps,
@@ -47,20 +42,44 @@ export interface BorderBoxProps
     WidthProps,
     HeightProps {
   hover?: boolean
+  responsive?: boolean
+  hasSiblings?: boolean
 }
 
 export const BorderBox = styled(Flex).attrs<BorderBoxProps>({})`
   border: 1px solid ${color("black10")};
   border-radius: 2px;
-  ${props => props.hover && hover};
+  padding: ${space(2)}px;
   ${styledSpace};
   ${maxWidth};
   ${width};
   ${height};
+  ${({ hover }) =>
+    hover &&
+    css`
+      :hover {
+        border-color: ${color("black60")};
+      }
+    `};
+  ${({ responsive }) =>
+    responsive &&
+    media.sm`
+      padding: ${space(3)}px;
+    `};
+  ${({ hasSiblings }) =>
+    hasSiblings &&
+    css`
+      :not(:first-child) {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+      :not(:last-child) {
+        border-bottom: 0;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    `};
 `
-BorderBox.defaultProps = {
-  p: 2,
-}
 
 export interface BoxProps
   extends DisplayProps,
