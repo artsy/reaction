@@ -139,7 +139,8 @@ const LargeAuctionItem = class extends React.Component<Props> {
                   salePrice,
                   estimatedPrice,
                   this.props.currentUser,
-                  this.props.mediator
+                  this.props.mediator,
+                  "lg"
                 )}
               </Col>
             </React.Fragment>
@@ -187,7 +188,8 @@ const SmallAuctionItem = class extends React.Component<Props> {
             salePrice,
             estimatedPrice,
             this.props.currentUser,
-            this.props.mediator
+            this.props.mediator,
+            "sm"
           )}
         </Col>
       </React.Fragment>
@@ -239,7 +241,8 @@ const ExtraSmallAuctionItem = class extends React.Component<Props> {
                 salePrice,
                 estimatedPrice,
                 this.props.currentUser,
-                this.props.mediator
+                this.props.mediator,
+                "xs"
               )}
             </Box>
           </Flex>
@@ -314,7 +317,13 @@ const getProps = props => {
   }
 }
 
-const renderPricing = (salePrice, estimatedPrice, currentUser, mediator) => {
+const renderPricing = (
+  salePrice,
+  estimatedPrice,
+  currentUser,
+  mediator,
+  size
+) => {
   if (currentUser) {
     return (
       <React.Fragment>
@@ -327,8 +336,10 @@ const renderPricing = (salePrice, estimatedPrice, currentUser, mediator) => {
       </React.Fragment>
     )
   } else {
+    const btnSize = size === "xs" || "sm" ? "small" : "large"
     return (
       <Button
+        size={btnSize}
         onClick={() => {
           mediator &&
             mediator.trigger("open:auth", {
