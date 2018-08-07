@@ -61,32 +61,36 @@ export enum CtaCopy {
 )
 export class Article extends React.Component<ArticleProps, State> {
   state = {
-    showCtaBanner: true,
+    showCtaBanner: false,
+  }
+  lastScrollPosition: number = 0
+
+  handleScroll() {
+    const newScrollPosition = window.scrollY
+    let showCtaBanner = this.state.showCtaBanner
+
+    if (newScrollPosition <= this.lastScrollPosition) {
+      // scrolling up the page
+      if (this.state.showCtaBanner) {
+        showCtaBanner = false
+      }
+    } else {
+      // scrolling down the page
+      if (!this.state.showCtaBanner) {
+        showCtaBanner = true
+      }
+    }
+
+    if (this.state.showCtaBanner !== showCtaBanner) {
+      this.setState({ showCtaBanner })
+    }
+    this.lastScrollPosition = newScrollPosition
   }
 
   componentDidMount() {
     if (window) {
-      let lastScrollPosition = 0
       window.addEventListener("scroll", e => {
-        const newScrollPosition = window.scrollY
-        let showCtaBanner = this.state.showCtaBanner
-
-        if (newScrollPosition < lastScrollPosition) {
-          // scrolling up the page
-          if (this.state.showCtaBanner) {
-            showCtaBanner = false
-          }
-        } else {
-          // scrolling down the page
-          if (this.state.showCtaBanner === false) {
-            showCtaBanner = true
-          }
-        }
-
-        if (this.state.showCtaBanner !== showCtaBanner) {
-          this.setState({ showCtaBanner })
-        }
-        lastScrollPosition = newScrollPosition
+        this.handleScroll()
       })
     }
   }
@@ -131,7 +135,7 @@ export class Article extends React.Component<ArticleProps, State> {
             position="bottom"
             textColor="white"
             backgroundColor="black"
-            showCtaBanner={this.state.showCtaBanner}
+            show={this.state.showCtaBanner}
           />
         )}
       </FullScreenProvider>
