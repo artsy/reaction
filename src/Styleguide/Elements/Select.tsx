@@ -83,6 +83,19 @@ const hideDefaultSkin = css`
   cursor: pointer;
   outline: 0;
   -webkit-appearance: none;
+
+  -moz-appearance: none;
+  text-indent: 0.01px;
+  text-overflow: "";
+
+  &:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
+  }
+
+  option:not(:checked) {
+    color: black; /* prevent <option>s from becoming transparent as well */
+  }
 `
 
 const caretArrow = css`
