@@ -1,6 +1,11 @@
 import React from "react"
 
-export type CreditCardType = "mastercard" | "visa" | "other"
+export type CreditCardType =
+  | "mastercard"
+  | "visa"
+  | "discover"
+  | "amex"
+  | "other"
 
 export const CreditCardIcon = ({
   type,
@@ -13,61 +18,131 @@ export const CreditCardIcon = ({
       return <MastercardIcon {...others} />
     case "visa":
       return <VisaIcon {...others} />
+    case "discover":
+      return <DiscoverIcon {...others} />
+    case "amex":
+      return <AmexIcon {...others} />
+    case "other":
     default:
-      return <GenericIcon {...others} />
+      return <FallbackIcon {...others} />
   }
 }
 
-const VisaIcon = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg fill="none" viewBox="0 0 29 19" width="29" height="19" {...props}>
-    <path
-      fill="#EFEFEF"
-      stroke="#E5E5E5"
-      d="M2 .5h25A1.5 1.5 0 0 1 28.5 2v15a1.5 1.5 0 0 1-1.5 1.5H2A1.5 1.5 0 0 1 .5 17V2A1.5 1.5 0 0 1 2 .5z"
-    />
-    <path
-      fill="#F7B600"
-      fillRule="evenodd"
-      d="M0 14v3a2 2 0 0 0 2 2h25a2 2 0 0 0 2-2v-3H0z"
-      clipRule="evenodd"
-    />
-    <path
-      fill="#1A1F70"
-      fillOpacity=".68"
-      fillRule="evenodd"
-      d="M0 5h29V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v3z"
-      clipRule="evenodd"
-    />
-    <path fill="#5E6299" fillOpacity=".6" d="M8 8h15l-1 3H7l1-3z" />
+const AmexIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlnsXlink="http://www.w3.org/1999/xlink"
+    width={30}
+    height={20}
+    viewBox="0 0 30 20"
+    {...props}
+  >
+    <defs>
+      <rect id="a" width={30} height={20} rx={2} />
+    </defs>
+    <g fill="none" fillRule="evenodd">
+      <use fill="#EFEFEF" xlinkHref="#a" />
+      <rect width={29} height={19} x={0.5} y={0.5} stroke="#E5E5E5" rx={2} />
+      <g fill="#4DB3FF">
+        <path d="M9.999 11A.999.999 0 0 0 9 12.01v1.98A1 1 0 0 0 9.999 15H30v-4H9.999zM0 6v4h20.001A.999.999 0 0 0 21 8.99V7.01A.999.999 0 0 0 20.001 6H0z" />
+      </g>
+    </g>
+  </svg>
+)
+
+const DiscoverIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlnsXlink="http://www.w3.org/1999/xlink"
+    width={30}
+    height={20}
+    viewBox="0 0 30 20"
+    {...props}
+  >
+    <defs>
+      <rect id="a" width={30} height={20} rx={2} />
+    </defs>
+    <g fill="none" fillRule="evenodd">
+      <use fill="#EFEFEF" xlinkHref="#a" />
+      <rect width={29} height={19} x={0.5} y={0.5} stroke="#E5E5E5" rx={2} />
+      <path
+        fill="#FFB44F"
+        d="M12 20h16.005A1.992 1.992 0 0 0 30 18.002V12l-18 8z"
+      />
+      <rect width={20} height={3} x={5} y={5} fill="#D4D4D4" rx={1.5} />
+    </g>
+  </svg>
+)
+
+const FallbackIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlnsXlink="http://www.w3.org/1999/xlink"
+    width={30}
+    height={20}
+    viewBox="0 0 30 20"
+    {...props}
+  >
+    <defs>
+      <rect id="a" width={30} height={20} rx={2} />
+    </defs>
+    <g fill="none" fillRule="evenodd">
+      <use fill="#EFEFEF" xlinkHref="#a" />
+      <rect width={29} height={19} x={0.5} y={0.5} stroke="#E5E5E5" rx={2} />
+      <rect width={20} height={3} x={5} y={5} fill="#D4D4D4" rx={1.5} />
+      <rect width={7} height={3} x={5} y={10} fill="#D4D4D4" rx={1.5} />
+    </g>
   </svg>
 )
 
 const MastercardIcon = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg fill="none" viewBox="0 0 29 19" width="29" height="19" {...props}>
-    <path
-      fill="#EFEFEF"
-      stroke="#E5E5E5"
-      d="M2 .5h25A1.5 1.5 0 0 1 28.5 2v15a1.5 1.5 0 0 1-1.5 1.5H2A1.5 1.5 0 0 1 .5 17V2A1.5 1.5 0 0 1 2 .5z"
-    />
-    <path fill="#FFB44F" d="M18.5 14.5a5 5 0 1 0 0-10 5 5 0 0 0 0 10z" />
-    <path fill="#CE4747" d="M10.5 14.5a5 5 0 1 0 0-10 5 5 0 0 0 0 10z" />
-    <path
-      fill="#D6765F"
-      fillRule="evenodd"
-      d="M14.5 12.5a4.977 4.977 0 0 1-1-3c0-1.126.372-2.164 1-3 .628.836 1 1.874 1 3a4.977 4.977 0 0 1-1 3z"
-      clipRule="evenodd"
-    />
+  <svg
+    xmlnsXlink="http://www.w3.org/1999/xlink"
+    width={30}
+    height={20}
+    viewBox="0 0 30 20"
+    {...props}
+  >
+    <g fill="none" fillRule="evenodd">
+      <rect
+        width={29}
+        height={19}
+        x={0.5}
+        y={0.5}
+        fill="#EFEFEF"
+        stroke="#E5E5E5"
+        rx={2}
+      />
+      <g transform="translate(6 5)">
+        <circle cx={13} cy={5} r={5} fill="#FFB44F" />
+        <circle cx={5} cy={5} r={5} fill="#CE4747" />
+        <path
+          fill="#D6765F"
+          d="M9 8a4.977 4.977 0 0 1-1-3c0-1.126.372-2.164 1-3 .628.836 1 1.874 1 3a4.977 4.977 0 0 1-1 3z"
+        />
+      </g>
+    </g>
   </svg>
 )
-
-const GenericIcon = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg fill="none" viewBox="0 0 29 19" width="29" height="19" {...props}>
-    <path
-      fill="#EFEFEF"
-      stroke="#E5E5E5"
-      d="M2 .5h25A1.5 1.5 0 0 1 28.5 2v15a1.5 1.5 0 0 1-1.5 1.5H2A1.5 1.5 0 0 1 .5 17V2A1.5 1.5 0 0 1 2 .5z"
-    />
-    <path fill="#848DA5" fillOpacity=".95" d="M0 4h29v3H0z" />
-    <path fill="#B3B9CA" fillOpacity=".73" d="M4 10h13v3H4z" />
+const VisaIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlnsXlink="http://www.w3.org/1999/xlink"
+    width={30}
+    height={20}
+    viewBox="0 0 30 20"
+    {...props}
+  >
+    <defs>
+      <rect id="a" width={30} height={20} rx={2} />
+    </defs>
+    <g fill="none" fillRule="evenodd">
+      <use fill="#EFEFEF" xlinkHref="#a" />
+      <rect width={29} height={19} x={0.5} y={0.5} stroke="#E5E5E5" rx={2} />
+      <path
+        fill="#FFB44F"
+        d="M0 14v4.002C0 19.106.898 20 1.992 20h26.016c1.1 0 1.992-.898 1.992-1.998V14H0z"
+      />
+      <path
+        fill="#4287CB"
+        d="M1.992 0C.892 0 0 .898 0 1.998V6h30V1.998A1.999 1.999 0 0 0 28.008 0H1.992z"
+      />
+    </g>
   </svg>
 )

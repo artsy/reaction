@@ -34,6 +34,26 @@ storiesOf("App/Order/Components", module).add(
             />
           </Flex>
         </Section>
+        <Section title="Shipping and Payment details (discover)">
+          <Flex flexDirection="column" width={300}>
+            <ShippingAndPaymentDetails
+              address={address}
+              creditCardLast4digits="4444"
+              creditCardExpiry="04/34"
+              creditCardtype="discover"
+            />
+          </Flex>
+        </Section>
+        <Section title="Shipping and Payment details (amex)">
+          <Flex flexDirection="column" width={300}>
+            <ShippingAndPaymentDetails
+              address={address}
+              creditCardLast4digits="4444"
+              creditCardExpiry="04/34"
+              creditCardtype="amex"
+            />
+          </Flex>
+        </Section>
         <Section title="Shipping and Payment details (generic)">
           <Flex flexDirection="column" width={300}>
             <ShippingAndPaymentDetails
