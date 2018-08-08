@@ -100,7 +100,7 @@ const LargeAuctionItem = class extends React.Component<Props> {
       <Subscribe to={[AuctionResultsState]}>
         {({ state, showDetailsModal }: AuctionResultsState) => {
           return (
-            <React.Fragment>
+            <>
               <Col sm={1}>
                 <Box height="auto" pr={2}>
                   <Image width="70px" src={images.thumbnail.url} />
@@ -143,7 +143,7 @@ const LargeAuctionItem = class extends React.Component<Props> {
                   "lg"
                 )}
               </Col>
-            </React.Fragment>
+            </>
           )
         }}
       </Subscribe>
@@ -161,7 +161,7 @@ const SmallAuctionItem = class extends React.Component<Props> {
     } = getProps(this.props)
 
     return (
-      <React.Fragment>
+      <>
         <Col sm={6}>
           <Flex>
             <Box height="auto">
@@ -192,7 +192,7 @@ const SmallAuctionItem = class extends React.Component<Props> {
             "sm"
           )}
         </Col>
-      </React.Fragment>
+      </>
     )
   }
 }
@@ -213,7 +213,7 @@ const ExtraSmallAuctionItem = class extends React.Component<Props> {
     } = getProps(this.props)
 
     return (
-      <React.Fragment>
+      <>
         <Col>
           <Flex>
             <Box height="auto">
@@ -247,7 +247,7 @@ const ExtraSmallAuctionItem = class extends React.Component<Props> {
             </Box>
           </Flex>
         </Col>
-      </React.Fragment>
+      </>
     )
   }
 }
@@ -326,14 +326,14 @@ const renderPricing = (
 ) => {
   if (currentUser) {
     return (
-      <React.Fragment>
+      <>
         {salePrice && <Serif size="2">{`Sale: ${salePrice}`}</Serif>}
         {estimatedPrice && (
           <Serif size="2" color="black60">
             Est: {estimatedPrice}
           </Serif>
         )}
-      </React.Fragment>
+      </>
     )
   } else {
     const btnSize = size === "xs" || "sm" ? "small" : "large"

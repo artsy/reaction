@@ -62,7 +62,7 @@ const LotDetails: SFC<Props> = props => {
   } = props
 
   return (
-    <React.Fragment>
+    <>
       <Flex justifyContent="center">
         <Serif size="5t" weight="semibold">
           Lot description
@@ -109,6 +109,6 @@ const LotDetails: SFC<Props> = props => {
       >
         OK
       </Button>
-    </React.Fragment>
+    </>
   )
 }

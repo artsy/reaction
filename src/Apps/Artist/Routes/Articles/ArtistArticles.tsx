@@ -78,7 +78,7 @@ export class ArtistArticles extends Component<
   render() {
     const articlesLength = this.props.artist.articlesConnection.edges.length
     return (
-      <React.Fragment>
+      <>
         <span id="jumpto--artistArticles" />
 
         <Row>
@@ -121,7 +121,7 @@ export class ArtistArticles extends Component<
             </Box>
           </Col>
         </Row>
-      </React.Fragment>
+      </>
     )
   }
 }

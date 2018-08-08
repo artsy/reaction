@@ -11,7 +11,7 @@ export const ShowsRoute: SFC<ArtistShowsProps> = props => {
   const { viewer } = props
 
   return (
-    <React.Fragment>
+    <>
       <Spacer mb={2} />
 
       <Shows
@@ -41,7 +41,7 @@ export const ShowsRoute: SFC<ArtistShowsProps> = props => {
         scrollTo="#jumpto-Shows-Past"
         heading="Past"
       />
-    </React.Fragment>
+    </>
   )
 }
 

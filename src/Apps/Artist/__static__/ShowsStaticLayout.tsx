@@ -26,7 +26,7 @@ export const Shows = () => {
         const blockDirection = xs ? "column" : "row"
 
         return (
-          <React.Fragment>
+          <>
             <Row>
               <Col>
                 <Row>
@@ -157,7 +157,7 @@ export const Shows = () => {
                 </Row>
               </Col>
             </Row>
-          </React.Fragment>
+          </>
         )
       }}
     </Responsive>

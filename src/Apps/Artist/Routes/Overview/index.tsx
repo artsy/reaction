@@ -44,7 +44,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
       this.state.isReadMoreExpanded || !artist.biography_blurb.text
 
     return (
-      <React.Fragment>
+      <>
         <Row>
           <Col sm={9}>
             <MarketInsights artist={artist as any} />
@@ -94,7 +94,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
             <ArtworkFilter artist={artist as any} />
           </Col>
         </Row>
-      </React.Fragment>
+      </>
     )
   }
 }

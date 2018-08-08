@@ -123,7 +123,7 @@ class Filter extends Component<Props> {
             <Responsive>
               {({ xs, sm, md }) => {
                 return (
-                  <React.Fragment>
+                  <>
                     <Flex>
                       {/*
                         Sidebar Area
@@ -241,7 +241,7 @@ class Filter extends Component<Props> {
                         />
                       </Box>
                     </Flex>
-                  </React.Fragment>
+                  </>
                 )
               }}
             </Responsive>

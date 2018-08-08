@@ -32,7 +32,7 @@ const LargeArticleItem: SFC<ArticleItemProps> = props => {
   const { author, date, href, imageUrl, title, lastChild } = props
 
   return (
-    <React.Fragment>
+    <>
       <Row
         style={{ cursor: "pointer" }}
         onClick={() => {
@@ -77,7 +77,7 @@ const LargeArticleItem: SFC<ArticleItemProps> = props => {
       {/* FIXME: Weird block height issue... */}
       {!lastChild && <Separator />}
       <Spacer mt={3} />
-    </React.Fragment>
+    </>
   )
 }
 
@@ -85,7 +85,7 @@ const SmallArticleItem: SFC<ArticleItemProps> = props => {
   const { author, date, href, imageUrl, title, lastChild } = props
 
   return (
-    <React.Fragment>
+    <>
       <Flex
         justifyContent="space-between"
         style={{ cursor: "pointer" }}
@@ -114,7 +114,7 @@ const SmallArticleItem: SFC<ArticleItemProps> = props => {
       <Spacer mt={2} />
       {!lastChild && <Separator />}
       <Spacer mt={3} />
-    </React.Fragment>
+    </>
   )
 }
 
