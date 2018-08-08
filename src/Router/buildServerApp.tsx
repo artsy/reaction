@@ -66,6 +66,22 @@ export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
       const relayData = await relayEnvironment.relaySSRMiddleware.getCache()
       const loadableState = await getLoadableState(<AppContainer />)
 
+      /**
+       * FIXME: Relay SSR middleware is passing a _res object across which
+       * has circular references, leading to issues *ONLY* on staging / prod
+       * which can't be reproduced locally. This strips out _res as a quickfix
+       * though this should be PR'd back at relay-modern-network-modern-ssr.
+       */
+      try {
+        relayData.forEach(item => {
+          item.forEach(i => {
+            delete i._res
+          })
+        })
+      } catch (error) {
+        console.error("Router/buildServerApp Error cleaning data", error)
+      }
+
       resolve({
         ServerApp: props => (
           <AppContainer
