@@ -140,9 +140,9 @@ class Filter extends Component<Props> {
                             <Separator mb={1} />
                             {currentUser &&
                             currentUser.lab_features &&
-                            currentUser.lab_features.indexOf(
+                            currentUser.lab_features.includes(
                               "New Buy Now Flow"
-                            ) !== -1
+                            )
                               ? this.renderWaysToBuy(filters, mediator)
                               : this.renderForSaleCheckbox(
                                   filters,
