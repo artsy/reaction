@@ -30,9 +30,7 @@ export class FilterState extends Container<State> {
         if (props[filter]) {
           if (filter === "major_periods") {
             this.state[filter] = [props[filter]]
-          } else if (
-            ["for_sale", "ecommerce", "at_auction"].indexOf(filter) !== -1
-          ) {
+          } else if (["for_sale", "ecommerce", "at_auction"].includes(filter)) {
             this.state.for_sale = props[filter] ? true : null
           } else {
             this.state[filter] = props[filter]
@@ -60,8 +58,7 @@ export class FilterState extends Container<State> {
       newPartialState = { major_periods: [] }
     }
     if (
-      ["for_sale", "ecommerce", "at_auction", "partner_id"].indexOf(filter) !==
-      -1
+      ["for_sale", "ecommerce", "at_auction", "partner_id"].includes(filter)
     ) {
       newPartialState[filter] = null
     }
@@ -90,7 +87,7 @@ export class FilterState extends Container<State> {
         medium: "*",
       }
     }
-    if (["for_sale", "ecommerce", "at_auction"].indexOf(filter) !== -1) {
+    if (["for_sale", "ecommerce", "at_auction"].includes(filter)) {
       if (value) {
         newPartialState[filter] = true
       } else {
