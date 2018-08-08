@@ -737,6 +737,16 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "at_auction",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "color",
                   "description": null,
                   "type": {
@@ -752,6 +762,16 @@
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "ecommerce",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
                     "ofType": null
                   },
                   "defaultValue": null
@@ -1517,6 +1537,16 @@
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "sort",
+                  "description": null,
+                  "type": {
+                    "kind": "ENUM",
+                    "name": "OrdersSortMethodType",
                     "ofType": null
                   },
                   "defaultValue": null
@@ -4895,6 +4925,18 @@
               "deprecationReason": null
             },
             {
+              "name": "shippingInfo",
+              "description": "The string that describes domestic and international shipping.",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "provenance",
               "description": null,
               "args": [
@@ -6204,6 +6246,16 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "at_auction",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "color",
                   "description": null,
                   "type": {
@@ -6219,6 +6271,16 @@
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "ecommerce",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
                     "ofType": null
                   },
                   "defaultValue": null
@@ -16174,6 +16236,16 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "at_auction",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "color",
                   "description": null,
                   "type": {
@@ -16189,6 +16261,16 @@
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "ecommerce",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
                     "ofType": null
                   },
                   "defaultValue": null
@@ -16626,6 +16708,16 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "at_auction",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "color",
                   "description": null,
                   "type": {
@@ -16641,6 +16733,16 @@
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "ecommerce",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
                     "ofType": null
                   },
                   "defaultValue": null
@@ -17087,6 +17189,16 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "at_auction",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "color",
                   "description": null,
                   "type": {
@@ -17102,6 +17214,16 @@
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "ecommerce",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
                     "ofType": null
                   },
                   "defaultValue": null
@@ -17466,6 +17588,16 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "at_auction",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "color",
                   "description": null,
                   "type": {
@@ -17481,6 +17613,16 @@
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "ecommerce",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
                     "ofType": null
                   },
                   "defaultValue": null
@@ -26329,6 +26471,16 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "at_auction",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "color",
                   "description": null,
                   "type": {
@@ -26344,6 +26496,16 @@
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "ecommerce",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
                     "ofType": null
                   },
                   "defaultValue": null
@@ -26708,6 +26870,16 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "at_auction",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "color",
                   "description": null,
                   "type": {
@@ -26723,6 +26895,16 @@
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "ecommerce",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
                     "ofType": null
                   },
                   "defaultValue": null
@@ -33324,7 +33506,103 @@
               "deprecationReason": null
             },
             {
+              "name": "fulfillmentType",
+              "description": "Fulfillment Type",
+              "args": [],
+              "type": {
+                "kind": "ENUM",
+                "name": "OrderFulfillmentType",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "shippingAddressLine1",
+              "description": "Shipping address line 1",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "shippingAddressLine2",
+              "description": "Shipping address line 2",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "shippingCity",
+              "description": "Shipping city",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "shippingCountry",
+              "description": "Shipping country",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "shippingPostalCode",
+              "description": "Shipping postal code",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "shippingRegion",
+              "description": "Shipping region",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "itemsTotalCents",
+              "description": "Item total in cents",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "itemsTotal",
               "description": "A formatted price with various currency formatting options.",
               "args": [
                 {
@@ -33388,6 +33666,18 @@
             },
             {
               "name": "shippingTotalCents",
+              "description": "Shipping total in cents",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "shippingTotal",
               "description": "A formatted price with various currency formatting options.",
               "args": [
                 {
@@ -33451,6 +33741,18 @@
             },
             {
               "name": "taxTotalCents",
+              "description": "Tax total in cents",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "taxTotal",
               "description": "A formatted price with various currency formatting options.",
               "args": [
                 {
@@ -33514,6 +33816,18 @@
             },
             {
               "name": "transactionFeeCents",
+              "description": "Transaction fee in cents",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "transactionFee",
               "description": "A formatted price with various currency formatting options.",
               "args": [
                 {
@@ -33577,6 +33891,18 @@
             },
             {
               "name": "commissionFeeCents",
+              "description": "Commission fee in cents",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "commissionFee",
               "description": "A formatted price with various currency formatting options.",
               "args": [
                 {
@@ -33640,6 +33966,18 @@
             },
             {
               "name": "buyerTotalCents",
+              "description": "Buyer total in cents",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "buyerTotal",
               "description": "A formatted price with various currency formatting options.",
               "args": [
                 {
@@ -33703,6 +34041,18 @@
             },
             {
               "name": "sellerTotalCents",
+              "description": "Seller total in cents",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "sellerTotal",
               "description": "A formatted price with various currency formatting options.",
               "args": [
                 {
@@ -33979,6 +34329,29 @@
           "possibleTypes": null
         },
         {
+          "kind": "ENUM",
+          "name": "OrderFulfillmentType",
+          "description": null,
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": [
+            {
+              "name": "SHIP",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "PICKUP",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "possibleTypes": null
+        },
+        {
           "kind": "OBJECT",
           "name": "OrderLineItemConnection",
           "description": "A connection to a list of items.",
@@ -34096,6 +34469,18 @@
               "type": {
                 "kind": "OBJECT",
                 "name": "EditionSet",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "priceCents",
+              "description": "Unit price in cents",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -34261,6 +34646,190 @@
               },
               "isDeprecated": false,
               "deprecationReason": null
+            },
+            {
+              "name": "fulfillments",
+              "description": "List of order line items",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "OrderFulfillmentConnection",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "OrderFulfillmentConnection",
+          "description": "A connection to a list of items.",
+          "fields": [
+            {
+              "name": "pageInfo",
+              "description": "Information to aid in pagination.",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "PageInfo",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "edges",
+              "description": "A list of edges.",
+              "args": [],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "OrderFulfillmentEdge",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "OrderFulfillmentEdge",
+          "description": "An edge in a connection.",
+          "fields": [
+            {
+              "name": "node",
+              "description": "The item at the end of the edge",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "OrderFulfillment",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "cursor",
+              "description": "A cursor for use in pagination",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "OrderFulfillment",
+          "description": null,
+          "fields": [
+            {
+              "name": "id",
+              "description": "ID of the fulfillment",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "courier",
+              "description": "Fulfillment Courier",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "trackingId",
+              "description": "Courier's tracking id",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "estimatedDelivery",
+              "description": null,
+              "args": [
+                {
+                  "name": "convert_to_utc",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "format",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "timezone",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
             }
           ],
           "inputFields": null,
@@ -34417,6 +34986,29 @@
           "inputFields": null,
           "interfaces": [],
           "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "ENUM",
+          "name": "OrdersSortMethodType",
+          "description": null,
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": [
+            {
+              "name": "UPDATED_AT_ASC",
+              "description": "Sort by latest timestamp order was updated in ascending order",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "UPDATED_AT_DESC",
+              "description": "Sort by latest timestamp order was updated in descending order",
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
           "possibleTypes": null
         },
         {
@@ -35445,6 +36037,16 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "at_auction",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "color",
                   "description": null,
                   "type": {
@@ -35460,6 +36062,16 @@
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "ecommerce",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
                     "ofType": null
                   },
                   "defaultValue": null
@@ -37505,6 +38117,18 @@
               "deprecationReason": null
             },
             {
+              "name": "shippingInfo",
+              "description": "The string that describes domestic and international shipping.",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "provenance",
               "description": null,
               "args": [
@@ -38130,6 +38754,16 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "at_auction",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "color",
                   "description": null,
                   "type": {
@@ -38145,6 +38779,16 @@
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "ecommerce",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
                     "ofType": null
                   },
                   "defaultValue": null
@@ -38509,6 +39153,16 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "at_auction",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "color",
                   "description": null,
                   "type": {
@@ -38524,6 +39178,16 @@
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "ecommerce",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
                     "ofType": null
                   },
                   "defaultValue": null
@@ -39798,6 +40462,16 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "at_auction",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "color",
                   "description": null,
                   "type": {
@@ -39813,6 +40487,16 @@
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "ecommerce",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
                     "ofType": null
                   },
                   "defaultValue": null
@@ -40897,6 +41581,16 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "at_auction",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "color",
                   "description": null,
                   "type": {
@@ -40912,6 +41606,16 @@
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "ecommerce",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
                     "ofType": null
                   },
                   "defaultValue": null
@@ -41677,6 +42381,16 @@
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "sort",
+                  "description": null,
+                  "type": {
+                    "kind": "ENUM",
+                    "name": "OrdersSortMethodType",
                     "ofType": null
                   },
                   "defaultValue": null
@@ -43009,8 +43723,8 @@
               "deprecationReason": null
             },
             {
-              "name": "createOrder",
-              "description": "Creates an order with payment",
+              "name": "createOrderWithArtwork",
+              "description": "Creates an order with an artwork",
               "args": [
                 {
                   "name": "input",
@@ -43020,7 +43734,7 @@
                     "name": null,
                     "ofType": {
                       "kind": "INPUT_OBJECT",
-                      "name": "CreateOrderInput",
+                      "name": "CreateOrderWithArtworkInput",
                       "ofType": null
                     }
                   },
@@ -43029,7 +43743,34 @@
               ],
               "type": {
                 "kind": "OBJECT",
-                "name": "CreateOrderPayload",
+                "name": "CreateOrderWithArtworkPayload",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "setOrderShipping",
+              "description": "Sets shipping information for an order",
+              "args": [
+                {
+                  "name": "input",
+                  "description": null,
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "INPUT_OBJECT",
+                      "name": "SetOrderShippingInput",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "SetOrderShippingPayload",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -43090,8 +43831,8 @@
               "deprecationReason": null
             },
             {
-              "name": "finalizeOrder",
-              "description": "Finalizes an order",
+              "name": "fulfillOrderAtOnce",
+              "description": "Fulfills an Order with one fulfillment by setting this fulfillment to all line items of this order",
               "args": [
                 {
                   "name": "input",
@@ -43101,7 +43842,7 @@
                     "name": null,
                     "ofType": {
                       "kind": "INPUT_OBJECT",
-                      "name": "FinalizeOrderInput",
+                      "name": "FulfillOrderAtOnceInput",
                       "ofType": null
                     }
                   },
@@ -43110,7 +43851,7 @@
               ],
               "type": {
                 "kind": "OBJECT",
-                "name": "FinalizeOrderPayload",
+                "name": "FulfillOrderAtOncePayload",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -44809,23 +45550,13 @@
         },
         {
           "kind": "INPUT_OBJECT",
-          "name": "CreateOrderInput",
+          "name": "CreateOrderWithArtworkInput",
           "description": null,
           "fields": null,
           "inputFields": [
             {
-              "name": "partnerId",
-              "description": "ID of partner representing artwork",
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "currencyCode",
-              "description": "Currency code",
+              "name": "artworkId",
+              "description": "BSON ID of artwork",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -44838,16 +45569,22 @@
               "defaultValue": null
             },
             {
-              "name": "lineItems",
-              "description": "Line items in the order",
+              "name": "editionSetId",
+              "description": "ID of artwork's edition set",
               "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "LineItemInput",
-                  "ofType": null
-                }
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "quantity",
+              "description": "quantity of artwork",
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
               },
               "defaultValue": null
             },
@@ -44867,61 +45604,8 @@
           "possibleTypes": null
         },
         {
-          "kind": "INPUT_OBJECT",
-          "name": "LineItemInput",
-          "description": null,
-          "fields": null,
-          "inputFields": [
-            {
-              "name": "artworkId",
-              "description": "ID of artwork",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "quantity",
-              "description": "quantity of artwork",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Int",
-                  "ofType": null
-                }
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "priceCents",
-              "description": "Price in cents",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Int",
-                  "ofType": null
-                }
-              },
-              "defaultValue": null
-            }
-          ],
-          "interfaces": null,
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
           "kind": "OBJECT",
-          "name": "CreateOrderPayload",
+          "name": "CreateOrderWithArtworkPayload",
           "description": null,
           "fields": [
             {
@@ -44983,6 +45667,142 @@
                   "name": "String",
                   "ofType": null
                 }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "INPUT_OBJECT",
+          "name": "SetOrderShippingInput",
+          "description": null,
+          "fields": null,
+          "inputFields": [
+            {
+              "name": "orderId",
+              "description": "Id of the Order",
+              "type": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "fulfillmentType",
+              "description": "Fulfillment Type of this Order",
+              "type": {
+                "kind": "ENUM",
+                "name": "OrderFulfillmentType",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "shippingAddressLine1",
+              "description": "Shipping address line 1",
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "shippingAddressLine2",
+              "description": "Shipping address line 2",
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "shippingCity",
+              "description": "Shipping city",
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "shippingRegion",
+              "description": "Shipping region",
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "shippingCountry",
+              "description": "Shipping country",
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "shippingPostalCode",
+              "description": "Shipping postal code",
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "clientMutationId",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            }
+          ],
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "SetOrderShippingPayload",
+          "description": null,
+          "fields": [
+            {
+              "name": "result",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "OrderReturnType",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "clientMutationId",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -45149,19 +45969,33 @@
         },
         {
           "kind": "INPUT_OBJECT",
-          "name": "FinalizeOrderInput",
+          "name": "FulfillOrderAtOnceInput",
           "description": null,
           "fields": null,
           "inputFields": [
             {
               "name": "orderId",
-              "description": "Order ID",
+              "description": "ID of the order",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
                   "name": "String",
+                  "ofType": null
+                }
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "fulfillment",
+              "description": "Fulfillment information of this order",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "FulfillmentInputType",
                   "ofType": null
                 }
               },
@@ -45183,8 +46017,53 @@
           "possibleTypes": null
         },
         {
+          "kind": "INPUT_OBJECT",
+          "name": "FulfillmentInputType",
+          "description": null,
+          "fields": null,
+          "inputFields": [
+            {
+              "name": "courier",
+              "description": "Courier of the fulfiller",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "trackingId",
+              "description": "Courier's Tracking ID of this fulfillment",
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "estimatedDelivery",
+              "description": "Estimated delivery in YY-MM-DD format",
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            }
+          ],
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
           "kind": "OBJECT",
-          "name": "FinalizeOrderPayload",
+          "name": "FulfillOrderAtOncePayload",
           "description": null,
           "fields": [
             {

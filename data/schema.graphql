@@ -170,8 +170,10 @@ type Artist implements Node {
     aggregations: [ArtworkAggregation]
     artist_id: String
     artist_ids: [String]
+    at_auction: Boolean
     color: String
     dimension_range: String
+    ecommerce: Boolean
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
@@ -428,8 +430,10 @@ type ArtistItem implements Node {
     aggregations: [ArtworkAggregation]
     artist_id: String
     artist_ids: [String]
+    at_auction: Boolean
     color: String
     dimension_range: String
+    ecommerce: Boolean
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
@@ -713,6 +717,9 @@ type Artwork implements Node & Sellable {
     shallow: Boolean
   ): Partner
   price: String
+
+  # The string that describes domestic and international shipping.
+  shippingInfo: String
   provenance(format: Format): String
   publisher(format: Format): String
   related(size: Int): [Artwork]
@@ -1135,8 +1142,10 @@ type ArtworkFilterGene implements Node {
     aggregations: [ArtworkAggregation]
     artist_id: String
     artist_ids: [String]
+    at_auction: Boolean
     color: String
     dimension_range: String
+    ecommerce: Boolean
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
@@ -1185,8 +1194,10 @@ type ArtworkFilterTag implements Node {
     aggregations: [ArtworkAggregation]
     artist_id: String
     artist_ids: [String]
+    at_auction: Boolean
     color: String
     dimension_range: String
+    ecommerce: Boolean
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
@@ -1344,6 +1355,9 @@ type ArtworkItem implements Node & Sellable {
     shallow: Boolean
   ): Partner
   price: String
+
+  # The string that describes domestic and international shipping.
+  shippingInfo: String
   provenance(format: Format): String
   publisher(format: Format): String
   related(size: Int): [Artwork]
@@ -2040,19 +2054,19 @@ type CreateGeminiEntryForAssetPayload {
   clientMutationId: String
 }
 
-input CreateOrderInput {
-  # ID of partner representing artwork
-  partnerId: String
+input CreateOrderWithArtworkInput {
+  # BSON ID of artwork
+  artworkId: String!
 
-  # Currency code
-  currencyCode: String!
+  # ID of artwork's edition set
+  editionSetId: String
 
-  # Line items in the order
-  lineItems: [LineItemInput]
+  # quantity of artwork
+  quantity: Int
   clientMutationId: String
 }
 
-type CreateOrderPayload {
+type CreateOrderWithArtworkPayload {
   result: OrderReturnType
   clientMutationId: String
 }
@@ -2485,17 +2499,6 @@ type FilterSaleArtworksCounts {
   ): FormattedNumber
 }
 
-input FinalizeOrderInput {
-  # Order ID
-  orderId: String!
-  clientMutationId: String
-}
-
-type FinalizeOrderPayload {
-  result: OrderReturnType
-  clientMutationId: String
-}
-
 type FollowArtist {
   artist: Artist
   auto: Boolean
@@ -2639,6 +2642,31 @@ enum Format {
 # a formatted String. It does not try to coerce the type.
 scalar FormattedNumber
 
+input FulfillmentInputType {
+  # Courier of the fulfiller
+  courier: String!
+
+  # Courier's Tracking ID of this fulfillment
+  trackingId: String
+
+  # Estimated delivery in YY-MM-DD format
+  estimatedDelivery: String
+}
+
+input FulfillOrderAtOnceInput {
+  # ID of the order
+  orderId: String!
+
+  # Fulfillment information of this order
+  fulfillment: FulfillmentInputType!
+  clientMutationId: String
+}
+
+type FulfillOrderAtOncePayload {
+  result: OrderReturnType
+  clientMutationId: String
+}
+
 # An entry from gemini
 type GeminiEntry {
   # The token that represents the gemini entry.
@@ -2662,8 +2690,10 @@ type Gene implements Node {
     aggregations: [ArtworkAggregation]
     artist_id: String
     artist_ids: [String]
+    at_auction: Boolean
     color: String
     dimension_range: String
+    ecommerce: Boolean
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
@@ -2701,8 +2731,10 @@ type Gene implements Node {
     aggregations: [ArtworkAggregation]
     artist_id: String
     artist_ids: [String]
+    at_auction: Boolean
     color: String
     dimension_range: String
+    ecommerce: Boolean
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
@@ -2827,8 +2859,10 @@ type GeneItem implements Node {
     aggregations: [ArtworkAggregation]
     artist_id: String
     artist_ids: [String]
+    at_auction: Boolean
     color: String
     dimension_range: String
+    ecommerce: Boolean
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
@@ -2866,8 +2900,10 @@ type GeneItem implements Node {
     aggregations: [ArtworkAggregation]
     artist_id: String
     artist_ids: [String]
+    at_auction: Boolean
     color: String
     dimension_range: String
+    ecommerce: Boolean
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
@@ -3300,8 +3336,10 @@ type HomePageModuleContextGene implements Node {
     aggregations: [ArtworkAggregation]
     artist_id: String
     artist_ids: [String]
+    at_auction: Boolean
     color: String
     dimension_range: String
+    ecommerce: Boolean
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
@@ -3339,8 +3377,10 @@ type HomePageModuleContextGene implements Node {
     aggregations: [ArtworkAggregation]
     artist_id: String
     artist_ids: [String]
+    at_auction: Boolean
     color: String
     dimension_range: String
+    ecommerce: Boolean
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
@@ -3585,17 +3625,6 @@ union Item = ArtistItem | ArtworkItem | FeaturedLinkItem | GeneItem
 
 # The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 scalar JSON
-
-input LineItemInput {
-  # ID of artwork
-  artworkId: String!
-
-  # quantity of artwork
-  quantity: Int!
-
-  # Price in cents
-  priceCents: Int!
-}
 
 type Location {
   # A globally unique ID.
@@ -3870,8 +3899,11 @@ type Mutation {
   # Update a conversation.
   updateConversation(input: UpdateConversationMutationInput!): UpdateConversationMutationPayload
 
-  # Creates an order with payment
-  createOrder(input: CreateOrderInput!): CreateOrderPayload
+  # Creates an order with an artwork
+  createOrderWithArtwork(input: CreateOrderWithArtworkInput!): CreateOrderWithArtworkPayload
+
+  # Sets shipping information for an order
+  setOrderShipping(input: SetOrderShippingInput!): SetOrderShippingPayload
 
   # Sets payment information on an order
   setOrderPayment(input: SetOrderPaymentInput!): SetOrderPaymentPayload
@@ -3879,8 +3911,8 @@ type Mutation {
   # Approves an order with payment
   approveOrder(input: ApproveOrderInput!): ApproveOrderPayload
 
-  # Finalizes an order
-  finalizeOrder(input: FinalizeOrderInput!): FinalizeOrderPayload
+  # Fulfills an Order with one fulfillment by setting this fulfillment to all line items of this order
+  fulfillOrderAtOnce(input: FulfillOrderAtOnceInput!): FulfillOrderAtOncePayload
 
   # Rejects an order
   rejectOrder(input: RejectOrderInput!): RejectOrderPayload
@@ -3983,8 +4015,32 @@ type Order {
   # Tracking code of the order
   code: String
 
+  # Fulfillment Type
+  fulfillmentType: OrderFulfillmentType
+
+  # Shipping address line 1
+  shippingAddressLine1: String
+
+  # Shipping address line 2
+  shippingAddressLine2: String
+
+  # Shipping city
+  shippingCity: String
+
+  # Shipping country
+  shippingCountry: String
+
+  # Shipping postal code
+  shippingPostalCode: String
+
+  # Shipping region
+  shippingRegion: String
+
+  # Item total in cents
+  itemsTotalCents: Int
+
   # A formatted price with various currency formatting options.
-  itemsTotalCents(
+  itemsTotal(
     decimal: String = "."
 
     # Allows control of symbol position (%v = value, %s = symbol)
@@ -3994,8 +4050,11 @@ type Order {
     thousand: String = ","
   ): String
 
+  # Shipping total in cents
+  shippingTotalCents: Int
+
   # A formatted price with various currency formatting options.
-  shippingTotalCents(
+  shippingTotal(
     decimal: String = "."
 
     # Allows control of symbol position (%v = value, %s = symbol)
@@ -4005,8 +4064,11 @@ type Order {
     thousand: String = ","
   ): String
 
+  # Tax total in cents
+  taxTotalCents: Int
+
   # A formatted price with various currency formatting options.
-  taxTotalCents(
+  taxTotal(
     decimal: String = "."
 
     # Allows control of symbol position (%v = value, %s = symbol)
@@ -4016,8 +4078,11 @@ type Order {
     thousand: String = ","
   ): String
 
+  # Transaction fee in cents
+  transactionFeeCents: Int
+
   # A formatted price with various currency formatting options.
-  transactionFeeCents(
+  transactionFee(
     decimal: String = "."
 
     # Allows control of symbol position (%v = value, %s = symbol)
@@ -4027,8 +4092,11 @@ type Order {
     thousand: String = ","
   ): String
 
+  # Commission fee in cents
+  commissionFeeCents: Int
+
   # A formatted price with various currency formatting options.
-  commissionFeeCents(
+  commissionFee(
     decimal: String = "."
 
     # Allows control of symbol position (%v = value, %s = symbol)
@@ -4038,8 +4106,11 @@ type Order {
     thousand: String = ","
   ): String
 
+  # Buyer total in cents
+  buyerTotalCents: Int
+
   # A formatted price with various currency formatting options.
-  buyerTotalCents(
+  buyerTotal(
     decimal: String = "."
 
     # Allows control of symbol position (%v = value, %s = symbol)
@@ -4049,8 +4120,11 @@ type Order {
     thousand: String = ","
   ): String
 
+  # Seller total in cents
+  sellerTotalCents: Int
+
   # A formatted price with various currency formatting options.
-  sellerTotalCents(
+  sellerTotal(
     decimal: String = "."
 
     # Allows control of symbol position (%v = value, %s = symbol)
@@ -4130,6 +4204,47 @@ type OrderedSet {
   name: String
 }
 
+type OrderFulfillment {
+  # ID of the fulfillment
+  id: ID
+
+  # Fulfillment Courier
+  courier: String
+
+  # Courier's tracking id
+  trackingId: String
+  estimatedDelivery(
+    convert_to_utc: Boolean
+    format: String
+
+    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    timezone: String
+  ): String
+}
+
+# A connection to a list of items.
+type OrderFulfillmentConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [OrderFulfillmentEdge]
+}
+
+# An edge in a connection.
+type OrderFulfillmentEdge {
+  # The item at the end of the edge
+  node: OrderFulfillment
+
+  # A cursor for use in pagination
+  cursor: String!
+}
+
+enum OrderFulfillmentType {
+  SHIP
+  PICKUP
+}
+
 type OrderLineItem {
   # ID of the order line item
   id: ID
@@ -4139,6 +4254,9 @@ type OrderLineItem {
 
   # Edition set on the artwork
   editionSet: EditionSet
+
+  # Unit price in cents
+  priceCents: Int
 
   # A formatted price with various currency formatting options.
   price(
@@ -4167,6 +4285,9 @@ type OrderLineItem {
 
   # Quantity of items in this line item
   quantity: Int
+
+  # List of order line items
+  fulfillments: OrderFulfillmentConnection
 }
 
 # A connection to a list of items.
@@ -4190,6 +4311,14 @@ type OrderLineItemEdge {
 type OrderReturnType {
   order: Order
   errors: [String]
+}
+
+enum OrdersSortMethodType {
+  # Sort by latest timestamp order was updated in ascending order
+  UPDATED_AT_ASC
+
+  # Sort by latest timestamp order was updated in descending order
+  UPDATED_AT_DESC
 }
 
 type organizer {
@@ -4776,8 +4905,10 @@ type Query {
     aggregations: [ArtworkAggregation]
     artist_id: String
     artist_ids: [String]
+    at_auction: Boolean
     color: String
     dimension_range: String
+    ecommerce: Boolean
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
@@ -4872,7 +5003,7 @@ type Query {
   order(id: String!): Order
 
   # Returns list of orders
-  orders(userId: String, partnerId: String, state: String): OrderConnection
+  orders(userId: String, partnerId: String, state: String, sort: OrdersSortMethodType): OrderConnection
 
   # An OrderedSet
   ordered_set(
@@ -5579,6 +5710,38 @@ type SetOrderPaymentPayload {
   clientMutationId: String
 }
 
+input SetOrderShippingInput {
+  # Id of the Order
+  orderId: ID
+
+  # Fulfillment Type of this Order
+  fulfillmentType: OrderFulfillmentType
+
+  # Shipping address line 1
+  shippingAddressLine1: String
+
+  # Shipping address line 2
+  shippingAddressLine2: String
+
+  # Shipping city
+  shippingCity: String
+
+  # Shipping region
+  shippingRegion: String
+
+  # Shipping country
+  shippingCountry: String
+
+  # Shipping postal code
+  shippingPostalCode: String
+  clientMutationId: String
+}
+
+type SetOrderShippingPayload {
+  result: OrderReturnType
+  clientMutationId: String
+}
+
 type Show implements Node {
   # A globally unique ID.
   __id: ID!
@@ -5824,8 +5987,10 @@ type Tag implements Node {
     aggregations: [ArtworkAggregation]
     artist_id: String
     artist_ids: [String]
+    at_auction: Boolean
     color: String
     dimension_range: String
+    ecommerce: Boolean
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
@@ -6199,8 +6364,10 @@ type Viewer {
     aggregations: [ArtworkAggregation]
     artist_id: String
     artist_ids: [String]
+    at_auction: Boolean
     color: String
     dimension_range: String
+    ecommerce: Boolean
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
@@ -6295,7 +6462,7 @@ type Viewer {
   order(id: String!): Order
 
   # Returns list of orders
-  orders(userId: String, partnerId: String, state: String): OrderConnection
+  orders(userId: String, partnerId: String, state: String, sort: OrdersSortMethodType): OrderConnection
 
   # An OrderedSet
   ordered_set(

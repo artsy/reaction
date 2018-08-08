@@ -57,6 +57,18 @@ return {
     },
     {
       "kind": "LocalArgument",
+      "name": "at_auction",
+      "type": "Boolean",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "ecommerce",
+      "type": "Boolean",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
       "name": "sort",
       "type": "String",
       "defaultValue": "-partner_updated_at"
@@ -195,6 +207,18 @@ return {
       "args": [
         {
           "kind": "Variable",
+          "name": "at_auction",
+          "variableName": "at_auction",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "ecommerce",
+          "variableName": "ecommerce",
+          "type": null
+        },
+        {
+          "kind": "Variable",
           "name": "for_sale",
           "variableName": "for_sale",
           "type": null
@@ -229,5 +253,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'ab374d4d3831f140622a4ec12a7d0fc7';
+(node as any).hash = 'fb07391a52364bb9dce5c1383d7d641b';
 export default node;
