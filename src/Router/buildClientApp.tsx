@@ -1,3 +1,4 @@
+import CircularJSON from "circular-json"
 import BrowserProtocol from "farce/lib/BrowserProtocol"
 import HashProtocol from "farce/lib/HashProtocol"
 import MemoryProtocol from "farce/lib/MemoryProtocol"
@@ -24,7 +25,9 @@ export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
         relayNetwork,
       } = config
 
-      const relayBootstrap = JSON.parse(window.__RELAY_BOOTSTRAP__ || "{}")
+      const relayBootstrap = CircularJSON.parse(
+        window.__RELAY_BOOTSTRAP__ || "{}"
+      )
       const currentUser = getUser(user)
       const relayEnvironment = createEnvironment({
         cache: relayBootstrap,
