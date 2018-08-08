@@ -22,6 +22,7 @@ const {
   METAPHYSICS_ENDPOINT,
   USER_ID,
   USER_ACCESS_TOKEN,
+  USER_LAB_FEATURES,
   XAPP_TOKEN,
 } = process.env
 
@@ -52,6 +53,7 @@ if (USER_ID && USER_ACCESS_TOKEN) {
       "process.env": {
         USER_ID: JSON.stringify(USER_ID),
         USER_ACCESS_TOKEN: JSON.stringify(USER_ACCESS_TOKEN),
+        USER_LAB_FEATURES: JSON.stringify(USER_LAB_FEATURES),
         XAPP_TOKEN: JSON.stringify(XAPP_TOKEN),
       },
     })

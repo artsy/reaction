@@ -30,6 +30,7 @@ export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
         currentUser = currentUser || {
           id: process.env.USER_ID,
           accessToken: process.env.USER_ACCESS_TOKEN,
+          lab_features: (process.env.USER_LAB_FEATURES || "").split(","),
         }
       }
 

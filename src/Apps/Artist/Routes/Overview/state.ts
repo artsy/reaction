@@ -7,6 +7,8 @@ type State = {
   for_sale?: boolean
   page?: number
   sort?: string
+  ecommerce?: boolean
+  at_auction?: boolean
 }
 
 export class FilterState extends Container<State> {
@@ -17,6 +19,8 @@ export class FilterState extends Container<State> {
     major_periods: [],
     partner_id: null,
     sort: "-partner_updated_at",
+    ecommerce: null,
+    at_auction: null,
   }
 
   constructor(props: State) {
@@ -26,7 +30,9 @@ export class FilterState extends Container<State> {
         if (props[filter]) {
           if (filter === "major_periods") {
             this.state[filter] = [props[filter]]
-          } else if (filter === "for_sale") {
+          } else if (
+            ["for_sale", "ecommerce", "at_auction"].indexOf(filter) !== -1
+          ) {
             this.state.for_sale = props[filter] ? true : null
           } else {
             this.state[filter] = props[filter]
@@ -49,15 +55,15 @@ export class FilterState extends Container<State> {
   }
 
   unsetFilter(filter, mediator) {
-    let newPartialState
+    let newPartialState = {}
     if (filter === "major_periods") {
       newPartialState = { major_periods: [] }
     }
-    if (filter === "partner_id") {
-      newPartialState = { partner_id: null }
-    }
-    if (filter === "for_sale") {
-      newPartialState = { for_sale: null }
+    if (
+      ["for_sale", "ecommerce", "at_auction", "partner_id"].indexOf(filter) !==
+      -1
+    ) {
+      newPartialState[filter] = null
     }
     if (filter === "medium") {
       newPartialState = { medium: "*" }
@@ -69,7 +75,7 @@ export class FilterState extends Container<State> {
   }
 
   setFilter(filter, value, mediator) {
-    let newPartialState
+    let newPartialState = {}
     if (filter === "major_periods") {
       newPartialState = {
         partner_id: null,
@@ -84,11 +90,11 @@ export class FilterState extends Container<State> {
         medium: "*",
       }
     }
-    if (filter === "for_sale") {
+    if (["for_sale", "ecommerce", "at_auction"].indexOf(filter) !== -1) {
       if (value) {
-        newPartialState = { for_sale: true }
+        newPartialState[filter] = true
       } else {
-        newPartialState = { for_sale: null }
+        newPartialState[filter] = null
       }
     }
     if (filter === "medium") {

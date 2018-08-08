@@ -73,7 +73,10 @@ export class ContextProvider extends React.Component<ContextProps>
       const id = process.env.USER_ID
       const accessToken = process.env.USER_ACCESS_TOKEN
       if (id && accessToken) {
-        this.currentUser = { id, accessToken }
+        this.currentUser = {
+          id,
+          accessToken,
+        }
       }
     }
 

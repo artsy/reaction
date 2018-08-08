@@ -1,3 +1,4 @@
+import { Sans } from "@artsy/palette"
 import { ArtworkFilter_artist } from "__generated__/ArtworkFilter_artist.graphql"
 import { FilterState } from "Apps/Artist/Routes/Overview/state"
 import React, { Component } from "react"
@@ -47,6 +48,54 @@ class Filter extends Component<Props> {
     })
   }
 
+  renderForSaleCheckbox(filters, hasForSaleArtworks, mediator) {
+    return (
+      <Checkbox
+        selected={filters.state.for_sale}
+        disabled={!hasForSaleArtworks}
+        onSelect={value => {
+          return filters.setFilter("for_sale", value, mediator)
+        }}
+      >
+        For sale
+      </Checkbox>
+    )
+  }
+
+  renderWaysToBuy(filters, mediator) {
+    return (
+      <React.Fragment>
+        <Sans size="2" weight="medium" color="black100" mt={0.3}>
+          Ways to Buy
+        </Sans>
+        <Checkbox
+          selected={filters.state.ecommerce}
+          onSelect={value => {
+            return filters.setFilter("ecommerce", value, mediator)
+          }}
+        >
+          Buy Now
+        </Checkbox>
+        <Checkbox
+          selected={filters.state.at_auction}
+          onSelect={value => {
+            return filters.setFilter("at_auction", value, mediator)
+          }}
+        >
+          Bid
+        </Checkbox>
+        <Checkbox
+          selected={filters.state.for_sale}
+          onSelect={value => {
+            return filters.setFilter("for_sale", value, mediator)
+          }}
+        >
+          Inquire
+        </Checkbox>
+      </React.Fragment>
+    )
+  }
+
   render() {
     const { aggregations } = this.props.artist.filtered_artworks
     const mediumAggregation = aggregations.find(agg => agg.slice === "MEDIUM")
@@ -61,7 +110,15 @@ class Filter extends Component<Props> {
 
     return (
       <Subscribe to={[AppState, FilterState]}>
-        {({ state: { mediator } }, filters: FilterState) => {
+        {(
+          {
+            state: {
+              mediator,
+              system: { currentUser },
+            },
+          },
+          filters: FilterState
+        ) => {
           return (
             <Responsive>
               {({ xs, sm, md }) => {
@@ -81,19 +138,17 @@ class Filter extends Component<Props> {
                             mb={1}
                           >
                             <Separator mb={1} />
-                            <Checkbox
-                              selected={filters.state.for_sale}
-                              disabled={!hasForSaleArtworks}
-                              onSelect={value => {
-                                return filters.setFilter(
-                                  "for_sale",
-                                  value,
+                            {currentUser &&
+                            currentUser.lab_features &&
+                            currentUser.lab_features.indexOf(
+                              "New Buy Now Flow"
+                            ) !== -1
+                              ? this.renderWaysToBuy(filters, mediator)
+                              : this.renderForSaleCheckbox(
+                                  filters,
+                                  hasForSaleArtworks,
                                   mediator
-                                )
-                              }}
-                            >
-                              For sale
-                            </Checkbox>
+                                )}
                           </Flex>
 
                           <Toggle label="Medium" expanded>
@@ -206,6 +261,8 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(
         major_periods: { type: "[String]" }
         partner_id: { type: "ID" }
         for_sale: { type: "Boolean" }
+        at_auction: { type: "Boolean" }
+        ecommerce: { type: "Boolean" }
         aggregations: {
           type: "[ArtworkAggregation]"
           defaultValue: [MEDIUM, TOTAL, GALLERY, INSTITUTION, MAJOR_PERIOD]
@@ -232,6 +289,8 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(
           partner_id: $partner_id
           for_sale: $for_sale
           sort: $sort
+          ecommerce: $ecommerce
+          at_auction: $at_auction
         )
     }
   `

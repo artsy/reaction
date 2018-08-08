@@ -48,6 +48,18 @@ return {
     },
     {
       "kind": "LocalArgument",
+      "name": "at_auction",
+      "type": "Boolean",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "ecommerce",
+      "type": "Boolean",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
       "name": "sort",
       "type": "String",
       "defaultValue": "-partner_updated_at"
@@ -68,6 +80,18 @@ return {
             "TOTAL"
           ],
           "type": "[ArtworkAggregation]"
+        },
+        {
+          "kind": "Variable",
+          "name": "at_auction",
+          "variableName": "at_auction",
+          "type": "Boolean"
+        },
+        {
+          "kind": "Variable",
+          "name": "ecommerce",
+          "variableName": "ecommerce",
+          "type": "Boolean"
         },
         {
           "kind": "Variable",
@@ -120,5 +144,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'de43afce03555aa787c10bd8b7cb01b4';
+(node as any).hash = 'a6c047290a5a5e2dbdfecccc63977d4e';
 export default node;
