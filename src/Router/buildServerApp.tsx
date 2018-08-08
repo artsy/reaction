@@ -8,24 +8,15 @@ import ReactDOMServer from "react-dom/server"
 import { createEnvironment } from "../Relay/createEnvironment"
 import { AppShell } from "./AppShell"
 import { Boot } from "./Boot"
+import { getUser } from "./getUser"
 import { AppConfig, ServerResolveProps } from "./types"
 
 export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
   return new Promise(async (resolve, reject) => {
     try {
       const { routes, url, user, initialMatchingMediaQueries } = config
-
-      let currentUser = user
-      if (process.env.USER_ID && process.env.USER_ACCESS_TOKEN) {
-        currentUser = currentUser || {
-          id: process.env.USER_ID,
-          accessToken: process.env.USER_ACCESS_TOKEN,
-        }
-      }
-
-      const relayEnvironment = createEnvironment({
-        user: currentUser,
-      })
+      const currentUser = getUser(user)
+      const relayEnvironment = createEnvironment({ user: currentUser })
       const historyMiddlewares = [queryMiddleware]
       const resolver = new Resolver(relayEnvironment)
       const render = createRender({})
@@ -40,7 +31,6 @@ export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
 
       if (redirect) {
         resolve({ redirect, status })
-
         return
       }
 
@@ -61,6 +51,7 @@ export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
             <AppShell
               data={props.relayData}
               loadableState={props.loadableState}
+              url={url}
             >
               {element}
             </AppShell>
@@ -74,6 +65,22 @@ export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
       // Serializable data to be rehydrated on client
       const relayData = await relayEnvironment.relaySSRMiddleware.getCache()
       const loadableState = await getLoadableState(<AppContainer />)
+
+      /**
+       * FIXME: Relay SSR middleware is passing a _res object across which
+       * has circular references, leading to issues *ONLY* on staging / prod
+       * which can't be reproduced locally. This strips out _res as a quickfix
+       * though this should be PR'd back at relay-modern-network-modern-ssr.
+       */
+      try {
+        relayData.forEach(item => {
+          item.forEach(i => {
+            delete i._res
+          })
+        })
+      } catch (error) {
+        console.error("Router/buildServerApp Error cleaning data", error)
+      }
 
       resolve({
         ServerApp: props => (
