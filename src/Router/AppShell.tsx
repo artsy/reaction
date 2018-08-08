@@ -1,4 +1,3 @@
-import CircularJSON from "circular-json"
 import React, { SFC } from "react"
 import serialize from "serialize-javascript"
 import { AppShellProps } from "./types"
@@ -8,7 +7,9 @@ export const AppShell: SFC<AppShellProps & { url?: string }> = props => {
 
   let hydrationData
   try {
-    hydrationData = CircularJSON.stringify(data)
+    hydrationData = serialize(data, {
+      isJSON: true,
+    })
   } catch (error) {
     hydrationData = "{}"
     console.error("reaction/Router/AppShell Error serializing data:", error)
