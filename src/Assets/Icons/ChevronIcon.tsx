@@ -2,10 +2,10 @@ import { color } from "@artsy/palette"
 import React from "react"
 
 export enum Direction {
-  LEFT = "rotate(0deg)",
-  RIGHT = "rotate(180deg)",
-  UP = "rotate(90deg)",
-  DOWN = "rotate(270deg)",
+  LEFT = "rotate(0)",
+  RIGHT = "rotate(180)",
+  UP = "rotate(90)",
+  DOWN = "rotate(270)",
 }
 
 interface IconProps {
