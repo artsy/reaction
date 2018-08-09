@@ -12,6 +12,7 @@ const mock = {
   Order: (_, { id }) => {
     return {
       id,
+      code: "abcdefg",
     }
   },
 }
