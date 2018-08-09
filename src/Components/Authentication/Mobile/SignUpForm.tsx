@@ -30,6 +30,7 @@ export class MobileSignUpForm extends Component<
   }
 
   render() {
+    const { error } = this.props
     const steps = [
       <Step
         validationSchema={MobileSignUpValidator.email}
@@ -39,14 +40,7 @@ export class MobileSignUpForm extends Component<
       >
         {({
           wizard,
-          form: {
-            errors,
-            touched,
-            values,
-            handleChange,
-            handleBlur,
-            setTouched,
-          },
+          form: { errors, values, handleChange, handleBlur, setTouched },
         }) => (
           <Fragment>
             <Input
@@ -78,14 +72,7 @@ export class MobileSignUpForm extends Component<
       <Step validationSchema={MobileSignUpValidator.password}>
         {({
           wizard,
-          form: {
-            errors,
-            touched,
-            values,
-            handleChange,
-            handleBlur,
-            setTouched,
-          },
+          form: { errors, values, handleChange, handleBlur, setTouched },
         }) => (
           <Input
             block
@@ -107,14 +94,7 @@ export class MobileSignUpForm extends Component<
       <Step validationSchema={MobileSignUpValidator.name}>
         {({
           wizard,
-          form: {
-            errors,
-            touched,
-            values,
-            handleChange,
-            handleBlur,
-            setTouched,
-          },
+          form: { errors, values, handleChange, handleBlur, setTouched },
         }) => (
           <Input
             block
@@ -138,7 +118,7 @@ export class MobileSignUpForm extends Component<
       <Wizard steps={steps} onComplete={this.props.handleSubmit}>
         {context => {
           const {
-            form: { handleSubmit, status, values, setTouched },
+            form: { handleSubmit, values, setTouched },
             wizard,
           } = context
           const { currentStep, isLastStep } = wizard
@@ -163,8 +143,7 @@ export class MobileSignUpForm extends Component<
                 </BackButton>
                 <MobileHeader>Sign up for Artsy</MobileHeader>
                 {currentStep}
-                {status &&
-                  !status.success && <Error show>{status.error}</Error>}
+                {error && <Error show>{error}</Error>}
                 <SubmitButton
                   onClick={e => {
                     this.setState(

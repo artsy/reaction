@@ -21,6 +21,8 @@ import { MobileLoginValidator } from "../Validators"
 
 export class MobileLoginForm extends Component<FormProps> {
   render() {
+    const { error } = this.props
+
     const steps = [
       <Step
         validationSchema={MobileLoginValidator.email}
@@ -94,7 +96,7 @@ export class MobileLoginForm extends Component<FormProps> {
         {context => {
           const {
             wizard,
-            form: { handleSubmit, status, values },
+            form: { handleSubmit, values },
           } = context
           const { currentStep, isLastStep } = wizard
 
@@ -118,8 +120,7 @@ export class MobileLoginForm extends Component<FormProps> {
                 </BackButton>
                 <MobileHeader>Log in to Artsy</MobileHeader>
                 {currentStep}
-                {status &&
-                  !status.success && <Error show>{status.error}</Error>}
+                {error && <Error show>{error}</Error>}
                 <SubmitButton onClick={handleSubmit}>
                   {isLastStep ? "Log in" : "Next"}
                 </SubmitButton>
