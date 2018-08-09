@@ -4721,18 +4721,6 @@
               "deprecationReason": null
             },
             {
-              "name": "is_purchasable",
-              "description": "True for inquireable artworks that have an exact price.",
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "Boolean",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
               "name": "is_saved",
               "description": null,
               "args": [],
@@ -31126,18 +31114,6 @@
               "deprecationReason": null
             },
             {
-              "name": "purchase_request",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "Boolean",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
               "name": "from_last_viewed_message_id",
               "description": null,
               "args": [],
@@ -37903,18 +37879,6 @@
             {
               "name": "is_price_range",
               "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "Boolean",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "is_purchasable",
-              "description": "True for inquireable artworks that have an exact price.",
               "args": [],
               "type": {
                 "kind": "SCALAR",

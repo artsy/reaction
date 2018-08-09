@@ -700,8 +700,6 @@ type Artwork implements Node & Sellable {
   is_price_hidden: Boolean
   is_price_range: Boolean
 
-  # True for inquireable artworks that have an exact price.
-  is_purchasable: Boolean
   is_saved: Boolean
   is_shareable: Boolean
   is_sold: Boolean
@@ -1338,8 +1336,6 @@ type ArtworkItem implements Node & Sellable {
   is_price_hidden: Boolean
   is_price_range: Boolean
 
-  # True for inquireable artworks that have an exact price.
-  is_purchasable: Boolean
   is_saved: Boolean
   is_shareable: Boolean
   is_sold: Boolean
@@ -1927,7 +1923,6 @@ type Conversation implements Node {
     # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
-  purchase_request: Boolean
   from_last_viewed_message_id: String
   initial_message: String!
 
