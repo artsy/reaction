@@ -27,7 +27,7 @@ class Filter extends Component<Props> {
         ? filters.state.major_periods[0]
         : filters.state[category]
 
-    return counts.slice(0, 10).map((count, index) => {
+    return counts.map((count, index) => {
       return (
         <Radio
           my={0.3}
