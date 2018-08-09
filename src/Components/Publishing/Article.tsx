@@ -2,6 +2,7 @@ import React from "react"
 import track from "react-tracking"
 import Events from "../../Utils/Events"
 
+import { debounce } from "lodash"
 import { MinimalCtaBanner } from "../MinimalCtaBanner"
 import ArticleWithFullScreen from "./Layouts/ArticleWithFullScreen"
 import { ClassicLayout } from "./Layouts/ClassicLayout"
@@ -87,9 +88,10 @@ export class Article extends React.Component<ArticleProps, State> {
 
   componentDidMount() {
     if (window) {
-      window.addEventListener("scroll", e => {
-        this.handleScroll()
-      })
+      window.addEventListener(
+        "scroll",
+        debounce(() => this.handleScroll(), 250)
+      )
     }
   }
 
@@ -122,8 +124,10 @@ export class Article extends React.Component<ArticleProps, State> {
   }
 
   render() {
-    const copy =
-      this.props.article.layout === "news" ? CtaCopy.news : CtaCopy.default
+    const { layout } = this.props.article
+    const copy = layout === "news" ? CtaCopy.news : CtaCopy.default
+    const backgroundColor = layout === "video" ? "white" : "black"
+    const textColor = layout === "video" ? "black" : "white"
 
     return (
       <FullScreenProvider>
@@ -134,8 +138,8 @@ export class Article extends React.Component<ArticleProps, State> {
             height="50px"
             copy={copy}
             position="bottom"
-            textColor="white"
-            backgroundColor="black"
+            textColor={textColor}
+            backgroundColor={backgroundColor}
             show={this.state.showCtaBanner}
           />
         )}
