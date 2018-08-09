@@ -52,6 +52,20 @@ it("renders mobile MinimalCtaBanner for standard article layouts", () => {
   expect(article.find(MinimalCtaBanner).length).toBe(1)
 })
 
+it("renders mobile MinimalCtaBanner for news article layouts", () => {
+  const article = shallow(
+    <Article article={NewsArticle} isMobile isLoggedIn={false} />
+  )
+  expect(article.find(MinimalCtaBanner).length).toBe(1)
+})
+
+it("renders mobile MinimalCtaBanner for video article layouts", () => {
+  const article = shallow(
+    <Article article={VideoArticle} isMobile isLoggedIn={false} />
+  )
+  expect(article.find(MinimalCtaBanner).length).toBe(1)
+})
+
 it("does not renders mobile MinimalCtaBanner for standard article layouts for desktop", () => {
   const article = shallow(
     <Article article={StandardArticle} isMobile={false} isLoggedIn={false} />
@@ -62,6 +76,13 @@ it("does not renders mobile MinimalCtaBanner for standard article layouts for de
 it("does not renders mobile MinimalCtaBanner for standard article layouts for logged in users", () => {
   const article = shallow(
     <Article article={StandardArticle} isMobile isLoggedIn />
+  )
+  expect(article.find(MinimalCtaBanner).length).toBe(0)
+})
+
+it("does not renders mobile MinimalCtaBanner for series article layouts for logged in users", () => {
+  const article = shallow(
+    <Article article={SeriesArticle} isMobile isLoggedIn={false} />
   )
   expect(article.find(MinimalCtaBanner).length).toBe(0)
 })
