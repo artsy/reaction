@@ -340,6 +340,7 @@ const renderPricing = (
     return (
       <Button
         size={btnSize}
+        variant="secondaryOutline"
         onClick={() => {
           mediator &&
             mediator.trigger("open:auth", {

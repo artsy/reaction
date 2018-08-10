@@ -51,8 +51,7 @@ class CVItem extends Component<CVItemProps, CVItemState> {
 
       this.props.relay.loadMore(PAGE_SIZE, error => {
         if (error) {
-          // tslint:disable-next-line:no-console
-          console.log(error)
+          console.error(error)
         }
 
         this.setState({

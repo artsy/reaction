@@ -4,6 +4,7 @@ import { track } from "Analytics"
 import * as Schema from "Analytics/Schema"
 import { ArtworkFilterFragmentContainer as ArtworkFilter } from "Apps/Artist/Routes/Overview/Components/ArtworkFilter"
 import { GenesFragmentContainer as Genes } from "Apps/Artist/Routes/Overview/Components/Genes"
+import { hasSections as showMarketInsights } from "Components/Artist/MarketInsights/MarketInsights"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { ArtistBioFragmentContainer as ArtistBio } from "Styleguide/Components/ArtistBio"
@@ -15,14 +16,18 @@ import { Spacer } from "Styleguide/Elements/Spacer"
 import { CurrentEventFragmentContainer as CurrentEvent } from "./Components/CurrentEvent"
 
 export interface OverviewRouteProps {
-  artist: Overview_artist
+  artist: Overview_artist & {
+    __fragments: Array<object>
+  }
 }
 
 interface State {
   isReadMoreExpanded: boolean
 }
 
-@track({ context_module: Schema.Context.ArtistOverview })
+@track({
+  context_module: Schema.Context.ArtistOverview,
+})
 class OverviewRoute extends React.Component<OverviewRouteProps, State> {
   state = {
     isReadMoreExpanded: false,
@@ -41,35 +46,66 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
   render() {
     const { artist } = this.props
     const showGenes =
-      this.state.isReadMoreExpanded || !artist.biography_blurb.text
+      Boolean(artist.related.genes.edges.length) &&
+      (this.state.isReadMoreExpanded || !artist.biography_blurb.text)
+
+    const showSelectedExhibitions = Boolean(artist.exhibition_highlights.length)
+    const showArtistBio = Boolean(artist.biography_blurb.text)
+    const showCurrentEvent = Boolean(artist.currentEvent)
+    const showConsignable = Boolean(artist.is_consignable)
+
+    const hideMainOverviewSection =
+      !showMarketInsights(this.props.artist as any) &&
+      !showSelectedExhibitions &&
+      !showArtistBio &&
+      !showCurrentEvent &&
+      !showConsignable
+
+    // TODO: Hide right column if missing current event. Waiting on feedback
+    const colNum = 9 // artist.currentEvent ? 9 : 12
 
     return (
       <>
         <Row>
-          <Col sm={9}>
-            <MarketInsights artist={artist as any} />
-            <Spacer mb={1} />
+          <Col sm={colNum}>
+            {showMarketInsights && (
+              <>
+                <MarketInsights artist={artist as any} />
+                <Spacer mb={1} />
+              </>
+            )}
 
-            <SelectedExhibitions
-              artistID={artist.id}
-              totalExhibitions={this.props.artist.counts.partner_shows}
-              exhibitions={this.props.artist.exhibition_highlights as any}
-            />
+            {showSelectedExhibitions && (
+              <>
+                <SelectedExhibitions
+                  artistID={artist.id}
+                  totalExhibitions={this.props.artist.counts.partner_shows}
+                  exhibitions={this.props.artist.exhibition_highlights as any}
+                />
+                <Spacer mb={1} />
+              </>
+            )}
 
-            <Box mt={3} mb={1}>
-              <ArtistBio
-                onReadMoreClicked={() => {
-                  this.setState({ isReadMoreExpanded: true })
-                }}
-                bio={artist as any}
-              />
-            </Box>
+            {showArtistBio && (
+              <>
+                <ArtistBio
+                  onReadMoreClicked={() => {
+                    this.setState({ isReadMoreExpanded: true })
+                  }}
+                  bio={artist as any}
+                />
+                <Spacer mb={1} />
+              </>
+            )}
 
-            {showGenes && <Genes artist={artist as any} />}
+            {showGenes && (
+              <>
+                <Genes artist={artist as any} />
+                <Spacer mb={1} />
+              </>
+            )}
 
-            <Spacer mb={1} />
-
-            {artist.is_consignable && (
+            {showConsignable && (
               <Sans size="2" color="black60">
                 Want to sell a work by this artist?{" "}
                 <a href="/consign" onClick={this.handleConsignClick.bind(this)}>
@@ -78,20 +114,26 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
               </Sans>
             )}
           </Col>
-          <Col sm={3}>
-            <Box pl={2}>
-              <CurrentEvent artist={artist as any} />
-            </Box>
-          </Col>
+
+          {showCurrentEvent && (
+            <Col sm={3}>
+              <Box pl={2}>
+                <CurrentEvent artist={artist as any} />
+              </Box>
+            </Col>
+          )}
         </Row>
 
-        <Spacer mb={4} />
+        {!hideMainOverviewSection && <Spacer mb={4} />}
 
         <Row>
           <Col>
             <span id="jump--artistArtworkGrid" />
 
-            <ArtworkFilter artist={artist as any} />
+            <ArtworkFilter
+              artist={artist as any}
+              hideTopBorder={hideMainOverviewSection}
+            />
           </Col>
         </Row>
       </>
@@ -111,11 +153,25 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
         at_auction: { type: "Boolean" }
         ecommerce: { type: "Boolean" }
         sort: { type: "String", defaultValue: "-partner_updated_at" }
+        partner_category: {
+          type: "[String]"
+          defaultValue: ["blue-chip", "top-established", "top-emerging"]
+        }
       ) {
       ...ArtistHeader_artist
       ...ArtistBio_bio
       ...CurrentEvent_artist
       ...MarketInsightsArtistPage_artist
+      ...Genes_artist
+      ...ArtworkFilter_artist
+        @arguments(
+          medium: $medium
+          major_periods: $major_periods
+          partner_id: $partner_id
+          for_sale: $for_sale
+          sort: $sort
+        )
+
       id
       exhibition_highlights(size: 3) {
         ...SelectedExhibitions_exhibitions
@@ -124,26 +180,49 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
         partner_shows
       }
 
+      href
+      is_consignable
+
+      # NOTE: The following are used to determine whether sections
+      # should be rendered.
+
       biography_blurb(format: HTML, partner_bio: true) {
         text
         credit
       }
 
-      href
-      is_consignable
+      currentEvent {
+        name
+      }
 
-      ...Genes_artist
+      related {
+        genes {
+          edges {
+            node {
+              id
+            }
+          }
+        }
+      }
 
-      ...ArtworkFilter_artist
-        @arguments(
-          medium: $medium
-          major_periods: $major_periods
-          partner_id: $partner_id
-          for_sale: $for_sale
-          sort: $sort
-          at_auction: $at_auction
-          ecommerce: $ecommerce
-        )
+      _id
+      collections
+      highlights {
+        partners(
+          first: 10
+          display_on_partner_profile: true
+          represented_by: true
+          partner_category: $partner_category
+        ) {
+          edges {
+            node {
+              categories {
+                id
+              }
+            }
+          }
+        }
+      }
     }
   `
 )

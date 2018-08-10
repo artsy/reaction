@@ -18,9 +18,14 @@ import { ArtworkFilterRefetchContainer as ArtworkFilter } from "./ArtworkFilterR
 
 interface Props {
   artist: ArtworkFilter_artist
+  hideTopBorder?: boolean
 }
 
 class Filter extends Component<Props> {
+  static defaultProps = {
+    hideTopBorder: false,
+  }
+
   renderCategory(filters, category, counts, mediator) {
     const currentFilter =
       category === "major_periods"
@@ -97,6 +102,7 @@ class Filter extends Component<Props> {
   }
 
   render() {
+    const { hideTopBorder } = this.props
     const { aggregations } = this.props.artist.filtered_artworks
     const mediumAggregation = aggregations.find(agg => agg.slice === "MEDIUM")
     const galleryAggregation = aggregations.find(agg => agg.slice === "GALLERY")
@@ -137,7 +143,8 @@ class Filter extends Component<Props> {
                             mt={-1}
                             mb={1}
                           >
-                            <Separator mb={1} />
+                            {!hideTopBorder && <Separator mb={1} />}
+
                             {currentUser &&
                             currentUser.lab_features &&
                             currentUser.lab_features.includes(
@@ -201,7 +208,7 @@ class Filter extends Component<Props> {
                       */}
 
                       <Box width={xs ? "100%" : "70%"}>
-                        <Separator mb={2} mt={-1} />
+                        {!hideTopBorder && <Separator mb={2} mt={-1} />}
 
                         <Flex justifyContent="flex-end">
                           <Select
