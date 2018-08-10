@@ -1,12 +1,21 @@
 import { CV_viewer } from "__generated__/CV_viewer.graphql"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import styled from "styled-components"
 import { Responsive } from "Utils/Responsive"
 import { CVPaginationContainer as CVItem } from "./CVItem"
 
 export interface CVRouteProps {
   viewer: CV_viewer
 }
+
+const Container = styled.div`
+  .cvItems:last-child {
+    .cvSeparator {
+      display: none;
+    }
+  }
+`
 
 export class CVRoute extends Component<CVRouteProps> {
   render() {
@@ -15,7 +24,7 @@ export class CVRoute extends Component<CVRouteProps> {
     return (
       <Responsive>
         {({ sm, xs }) => (
-          <>
+          <Container>
             <CVItem
               category="Solo shows"
               artist={viewer.artist_soloShows as any}
@@ -28,7 +37,7 @@ export class CVRoute extends Component<CVRouteProps> {
               category="Fair booths"
               artist={viewer.artist_fairBooths as any}
             />
-          </>
+          </Container>
         )}
       </Responsive>
     )

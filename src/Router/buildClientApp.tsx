@@ -56,16 +56,6 @@ export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
         render,
       })
 
-      const bootProps = {
-        system: {
-          ...config,
-          relayEnvironment,
-          resolver,
-          routes,
-          currentUser,
-        },
-      }
-
       try {
         await loadComponents()
       } catch (error) {
@@ -74,7 +64,16 @@ export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
 
       const ClientApp = props => {
         return (
-          <Boot {...bootProps} {...props}>
+          <Boot
+            system={{
+              ...config,
+              relayEnvironment,
+              resolver,
+              routes,
+              currentUser,
+            }}
+            {...props}
+          >
             <AppShell>
               <Router resolver={resolver} />
             </AppShell>
