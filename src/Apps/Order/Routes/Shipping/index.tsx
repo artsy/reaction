@@ -15,6 +15,8 @@ import { Responsive } from "Utils/Responsive"
 
 import { SummaryFragmentContainer as Summary } from "../../Components/Summary"
 
+import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
+import { Col, Row } from "Styleguide/Elements/Grid"
 import {
   TwoColumnLayout,
   TwoColumnSplit,
@@ -31,97 +33,111 @@ export class ShippingRoute extends Component<ShippingProps> {
   render() {
     const { order } = this.props
     return (
-      <Responsive>
-        {({ xs }) => (
-          <TwoColumnLayout
-            Content={
-              <>
-                <RadioGroup
-                  onSelect={id => id}
-                  options={[
-                    { label: "Provide shipping address", id: "SHIP" },
-                    { label: "Arrange for pickup", id: "PICKUP" },
-                  ]}
-                />
-                <Spacer mb={3} />
+      <>
+        <Row>
+          <Col>
+            <BuyNowStepper currentStep={"shipping"} />
+          </Col>
+        </Row>
 
-                <Join separator={<Spacer mb={2} />}>
-                  <Flex flexDirection="column">
-                    <Input
-                      placeholder="Add full name"
-                      title="Full name"
-                      block
-                    />
-                  </Flex>
+        <Spacer mb={3} />
+        <Responsive>
+          {({ xs }) => (
+            <TwoColumnLayout
+              Content={
+                <>
+                  <RadioGroup
+                    onSelect={id => id}
+                    options={[
+                      { label: "Provide shipping address", id: "SHIP" },
+                      { label: "Arrange for pickup", id: "PICKUP" },
+                    ]}
+                  />
+                  <Spacer mb={3} />
 
-                  <TwoColumnSplit>
-                    <Flex flexDirection="column" pb={1}>
-                      <Serif mb={1} size="3t" color="black100" lineHeight={18}>
-                        Country
-                      </Serif>
-                      <CountrySelect selected="US" />
-                    </Flex>
-
+                  <Join separator={<Spacer mb={2} />}>
                     <Flex flexDirection="column">
                       <Input
-                        placeholder="Add postal code"
-                        title="Postal code"
-                        block
-                      />
-                    </Flex>
-                  </TwoColumnSplit>
-                  <TwoColumnSplit>
-                    <Flex flexDirection="column">
-                      <Input
-                        placeholder="Add street address"
-                        title="Address line 1"
+                        placeholder="Add full name"
+                        title="Full name"
                         block
                       />
                     </Flex>
 
-                    <Flex flexDirection="column">
-                      <Input
-                        placeholder="Add apt, floor, suite, etc."
-                        title="Address line 2 (optional)"
-                        block
-                      />
-                    </Flex>
-                  </TwoColumnSplit>
-                  <TwoColumnSplit>
-                    <Flex flexDirection="column">
-                      <Input placeholder="Add city" title="City" block />
-                    </Flex>
+                    <TwoColumnSplit>
+                      <Flex flexDirection="column" pb={1}>
+                        <Serif
+                          mb={1}
+                          size="3t"
+                          color="black100"
+                          lineHeight={18}
+                        >
+                          Country
+                        </Serif>
+                        <CountrySelect selected="US" />
+                      </Flex>
 
-                    <Flex flexDirection="column">
-                      <Input
-                        placeholder="Add State, province, or region"
-                        title="State, province, or region"
-                        block
-                      />
-                    </Flex>
-                  </TwoColumnSplit>
-                </Join>
+                      <Flex flexDirection="column">
+                        <Input
+                          placeholder="Add postal code"
+                          title="Postal code"
+                          block
+                        />
+                      </Flex>
+                    </TwoColumnSplit>
+                    <TwoColumnSplit>
+                      <Flex flexDirection="column">
+                        <Input
+                          placeholder="Add street address"
+                          title="Address line 1"
+                          block
+                        />
+                      </Flex>
 
-                <Spacer mb={3} />
-              </>
-            }
-            Sidebar={
-              <Summary mediator={this.props.mediator} order={order as any}>
-                {xs && (
-                  <>
-                    <Spacer mb={3} />
-                    <Link to={`/order2/${order.id}/payment`}>
-                      <Button size="large" width="100%">
-                        Continue
-                      </Button>
-                    </Link>
-                  </>
-                )}
-              </Summary>
-            }
-          />
-        )}
-      </Responsive>
+                      <Flex flexDirection="column">
+                        <Input
+                          placeholder="Add apt, floor, suite, etc."
+                          title="Address line 2 (optional)"
+                          block
+                        />
+                      </Flex>
+                    </TwoColumnSplit>
+                    <TwoColumnSplit>
+                      <Flex flexDirection="column">
+                        <Input placeholder="Add city" title="City" block />
+                      </Flex>
+
+                      <Flex flexDirection="column">
+                        <Input
+                          placeholder="Add State, province, or region"
+                          title="State, province, or region"
+                          block
+                        />
+                      </Flex>
+                    </TwoColumnSplit>
+                  </Join>
+
+                  <Spacer mb={3} />
+                </>
+              }
+              Sidebar={
+                <Summary mediator={this.props.mediator} order={order as any}>
+                  {xs && (
+                    <>
+                      <Spacer mb={3} />
+                      <Link to={`/order2/${order.id}/payment`}>
+                        <Button size="large" width="100%">
+                          Continue
+                        </Button>
+                      </Link>
+                    </>
+                  )}
+                </Summary>
+              }
+            />
+          )}
+        </Responsive>
+      </>
     )
   }
 }

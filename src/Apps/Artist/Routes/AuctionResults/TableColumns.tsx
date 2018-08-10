@@ -17,7 +17,7 @@ export const TableColumns = () => {
 
 const LargeTableColumns = () => {
   return (
-    <React.Fragment>
+    <>
       <Col sm={5}>
         <Sans size="2" weight="medium">
           Work
@@ -33,13 +33,13 @@ const LargeTableColumns = () => {
           Price
         </Sans>
       </Col>
-    </React.Fragment>
+    </>
   )
 }
 
 const SmallTableColumns = () => {
   return (
-    <React.Fragment>
+    <>
       <Col col={6}>
         <Sans size="2" weight="medium">
           Work
@@ -50,6 +50,6 @@ const SmallTableColumns = () => {
           Price
         </Sans>
       </Col>
-    </React.Fragment>
+    </>
   )
 }

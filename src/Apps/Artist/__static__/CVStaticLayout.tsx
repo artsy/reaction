@@ -12,7 +12,7 @@ export const CV = () => {
     <Responsive>
       {({ xs }) => {
         return (
-          <React.Fragment>
+          <>
             <Row>
               <Col>
                 <CVItems>
@@ -89,7 +89,7 @@ export const CV = () => {
                 </Disclaimer>
               </Col>
             </Row>
-          </React.Fragment>
+          </>
         )
       }}
     </Responsive>

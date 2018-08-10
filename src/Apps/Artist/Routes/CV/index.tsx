@@ -1,19 +1,12 @@
-import { space } from "@artsy/palette"
 import { CV_viewer } from "__generated__/CV_viewer.graphql"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Join } from "Styleguide/Elements/Join"
-import { Separator } from "Styleguide/Elements/Separator"
-import { Spacer } from "Styleguide/Elements/Spacer"
 import { Responsive } from "Utils/Responsive"
 import { CVPaginationContainer as CVItem } from "./CVItem"
 
 export interface CVRouteProps {
   viewer: CV_viewer
 }
-
-// Element spacing - correction for lineheight
-const sectionSpace = space(4) - 4
 
 export class CVRoute extends Component<CVRouteProps> {
   render() {
@@ -22,12 +15,7 @@ export class CVRoute extends Component<CVRouteProps> {
     return (
       <Responsive>
         {({ sm, xs }) => (
-          <Join
-            separator={xs ? <Spacer mt={1} /> : <Separator my={sectionSpace} />}
-          >
-            {/*
-              FIXME: Ensure that we only render CV items that come back non-null
-            */}
+          <>
             <CVItem
               category="Solo shows"
               artist={viewer.artist_soloShows as any}
@@ -40,7 +28,7 @@ export class CVRoute extends Component<CVRouteProps> {
               category="Fair booths"
               artist={viewer.artist_fairBooths as any}
             />
-          </Join>
+          </>
         )}
       </Responsive>
     )

@@ -45,7 +45,7 @@ const LargeTableSidebar = (props: Props) => {
     <Subscribe to={[AuctionResultsState]}>
       {(filters: AuctionResultsState) => {
         return (
-          <React.Fragment>
+          <>
             <Col sm={2} pr={2}>
               <Row>
                 <Col>{renderCount(props.count)}</Col>
@@ -67,7 +67,7 @@ const LargeTableSidebar = (props: Props) => {
                 </Col>
               </Row>
             </Col>
-          </React.Fragment>
+          </>
         )
       }}
     </Subscribe>

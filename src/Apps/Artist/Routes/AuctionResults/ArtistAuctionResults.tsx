@@ -109,7 +109,7 @@ class AuctionResultsContainer extends Component<
       <Subscribe to={[AuctionResultsState]}>
         {({ state }: AuctionResultsState) => {
           return (
-            <React.Fragment>
+            <>
               <Row>
                 <TableSidebar count={totalCount} />
 
@@ -162,7 +162,7 @@ class AuctionResultsContainer extends Component<
                   </Box>
                 </Col>
               </Row>
-            </React.Fragment>
+            </>
           )
         }}
       </Subscribe>
