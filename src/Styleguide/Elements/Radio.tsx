@@ -16,7 +16,7 @@ export interface RadioProps extends FlexProps {
   selected?: boolean
   disabled?: boolean
   hover?: boolean
-  onSelect?: (selected: boolean) => void
+  onSelect?: (selected: { selected: boolean; value: string }) => void
   value?: string
   name?: string
 }
@@ -31,12 +31,13 @@ export const Radio = styled(
   class Radio extends React.Component<RadioProps> {
     render() {
       const {
-        selected,
-        name,
         children,
         disabled,
         hover,
+        name,
         onSelect,
+        selected,
+        value,
         ...others
       } = this.props
 
@@ -46,7 +47,9 @@ export const Radio = styled(
           alignItems="center"
           selected={selected}
           hover={hover}
-          onClick={() => !disabled && onSelect && onSelect(!selected)}
+          onClick={() =>
+            !disabled && onSelect && onSelect({ selected: !selected, value })
+          }
           {...others}
         >
           <RadioButton
@@ -63,7 +66,9 @@ export const Radio = styled(
             name={name}
             checked={selected}
             disabled={disabled}
-            onChange={() => !disabled && onSelect && onSelect(!selected)}
+            onChange={() =>
+              !disabled && onSelect && onSelect({ selected: !selected, value })
+            }
           />
           <Label htmlFor={name} disabled={disabled}>
             {children}
