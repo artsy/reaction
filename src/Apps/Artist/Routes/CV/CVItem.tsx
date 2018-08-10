@@ -1,3 +1,4 @@
+import { space } from "@artsy/palette"
 import { Sans, Serif } from "@artsy/palette"
 import { CVItem_artist } from "__generated__/CVItem_artist.graphql"
 import { groupBy } from "lodash"
@@ -5,6 +6,7 @@ import React, { Component } from "react"
 import { Box } from "Styleguide/Elements/Box"
 import { Button } from "Styleguide/Elements/Button"
 import { Col, Row } from "Styleguide/Elements/Grid"
+import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Responsive } from "Utils/Responsive"
 
@@ -49,8 +51,7 @@ class CVItem extends Component<CVItemProps, CVItemState> {
 
       this.props.relay.loadMore(PAGE_SIZE, error => {
         if (error) {
-          // tslint:disable-next-line:no-console
-          console.log(error)
+          console.error(error)
         }
 
         this.setState({
@@ -71,6 +72,10 @@ class CVItem extends Component<CVItemProps, CVItemState> {
     ))
 
   render() {
+    if (!this.props.artist.showsConnection.edges.length) {
+      return null
+    }
+
     const groupedByYear = groupBy(
       this.props.artist.showsConnection.edges,
       ({ node: show }) => {
@@ -81,8 +86,14 @@ class CVItem extends Component<CVItemProps, CVItemState> {
     return (
       <Responsive>
         {({ xs, sm, md }) => {
+          // Element spacing - correction for lineheight
+          const sectionSpace = space(4) - 4
+
+          const ItemSeparator = () =>
+            xs ? <Spacer mt={1} /> : <Separator my={sectionSpace} />
+
           return (
-            <CVItems pb={1}>
+            <CVItems>
               {(xs || sm || md) && (
                 <Row>
                   <Col>
@@ -143,6 +154,7 @@ class CVItem extends Component<CVItemProps, CVItemState> {
                   </Col>
                 </Row>
               )}
+              <ItemSeparator />
             </CVItems>
           )
         }}

@@ -89,7 +89,7 @@ class ArtistShows extends Component<ArtistShowsProps, LoadingAreaState> {
           const pb = pr
 
           return (
-            <React.Fragment>
+            <>
               <Row>
                 <Col>
                   <Row>
@@ -174,7 +174,7 @@ class ArtistShows extends Component<ArtistShowsProps, LoadingAreaState> {
                   </Row>
                 </Col>
               </Row>
-            </React.Fragment>
+            </>
           )
         }}
       </Responsive>

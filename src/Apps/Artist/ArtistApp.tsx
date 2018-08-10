@@ -34,7 +34,7 @@ export class ArtistApp extends React.Component<ArtistAppProps> {
     const { artist, children, me } = this.props
 
     return (
-      <React.Fragment>
+      <>
         <Row>
           <Col>
             <ArtistHeader artist={artist as any} />
@@ -65,10 +65,10 @@ export class ArtistApp extends React.Component<ArtistAppProps> {
         </Row>
 
         {me && (
-          <React.Fragment>
+          <>
             <Separator my={6} />
             <RecentlyViewed me={me as any} />
-          </React.Fragment>
+          </>
         )}
 
         <Separator mt={6} mb={3} />
@@ -78,7 +78,7 @@ export class ArtistApp extends React.Component<ArtistAppProps> {
             <Footer />
           </Col>
         </Row>
-      </React.Fragment>
+      </>
     )
   }
 }

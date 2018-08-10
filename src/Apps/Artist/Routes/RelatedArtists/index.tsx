@@ -13,7 +13,7 @@ export class RelatedArtistsRoute extends Component<RelatedArtistsProps> {
     const { viewer } = this.props
 
     return (
-      <React.Fragment>
+      <>
         <RelatedArtistsList
           kind={"MAIN"}
           artist={viewer.mainArtists as any}
@@ -21,7 +21,7 @@ export class RelatedArtistsRoute extends Component<RelatedArtistsProps> {
         />
 
         <Spacer mb={1} />
-      </React.Fragment>
+      </>
     )
   }
 }
