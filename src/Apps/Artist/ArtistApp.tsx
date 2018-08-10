@@ -4,6 +4,7 @@ import { track } from "Analytics"
 import * as Schema from "Analytics/Schema"
 import { NavigationTabsFragmentContainer as NavigationTabs } from "Apps/Artist/Components/NavigationTabs"
 import React from "react"
+import { LazyLoadComponent } from "react-lazy-load-image-component"
 import { createFragmentContainer, graphql } from "react-relay"
 import { PreloadLinkState } from "Router/state"
 import { Footer } from "Styleguide/Components/Footer"
@@ -67,7 +68,9 @@ export class ArtistApp extends React.Component<ArtistAppProps> {
         {me && (
           <>
             <Separator my={6} />
-            <RecentlyViewed me={me as any} />
+            <LazyLoadComponent>
+              <RecentlyViewed me={me as any} />
+            </LazyLoadComponent>
           </>
         )}
 
