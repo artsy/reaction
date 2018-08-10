@@ -102,7 +102,9 @@ interface ContainerProps extends FlexProps {
   hover: boolean
   selected: boolean
 }
+
 const Container = styled(Flex).attrs<ContainerProps>({})`
+  align-items: flex-start;
   cursor: ${({ disabled }) => !disabled && "pointer"};
   user-select: none;
   ${hoverStyles};
@@ -159,6 +161,8 @@ const RadioButton = styled.div.attrs<RadioToggleProps>({})`
   border-color: ${radioBorderColor};
   width: ${space(2)}px;
   height: ${space(2)}px;
+  min-width: ${space(2)}px;
+  min-height: ${space(2)}px;
   border-radius: 50%;
   transition: background-color 0.25s, border-color 0.25s;
   ${InnerCircle} {

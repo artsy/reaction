@@ -1,64 +1,144 @@
 import { mount } from "enzyme"
 import React from "react"
+import { Radio } from "../Radio"
 import { RadioGroup } from "../RadioGroup"
 
 describe("RadioGroup", () => {
-  const options = [
-    { label: "Provide shipping address", id: "SHIP" },
-    { label: "Arrange for pickup", id: "PICKUP" },
-  ]
-
   it("renders a radio group", () => {
     const spy = jest.fn()
-    const wrapper = mount(<RadioGroup onSelect={spy} options={options} />)
+    const wrapper = mount(
+      <RadioGroup onSelect={spy}>
+        <Radio value="SHIP">Provide shipping address</Radio>
+        <Radio value="PICKUP">Arrange for pickup</Radio>
+      </RadioGroup>
+    )
+
     expect(wrapper.text()).toContain("Provide shipping address")
     expect(wrapper.text()).toContain("Arrange for pickup")
-    expect(wrapper.find("StyledRadio").length).toBe(2)
+
     wrapper
-      .find("StyledRadio")
+      .find("Radio")
       .first()
       .simulate("click")
+
     expect(spy).toHaveBeenCalled()
   })
 
   it("renders default value on mount", () => {
     const wrapper = mount(
-      <RadioGroup options={options} onSelect={x => x} defaultValue="PICKUP" />
+      <RadioGroup defaultValue="PICKUP">
+        <Radio value="SHIP">Provide shipping address</Radio>
+        <Radio value="PICKUP">Arrange for pickup</Radio>
+      </RadioGroup>
     )
+
     expect(
       wrapper
-        .find("StyledRadio")
+        .find("Radio")
+        .first()
+        .props().selected
+    ).toBe(false)
+    expect(
+      wrapper
+        .find("Radio")
         .last()
         .props().selected
     ).toBe(true)
   })
 
-  it("renders custom radio button", () => {
+  it("selects the radio that gets clicked", () => {
     const wrapper = mount(
-      <RadioGroup
-        options={options}
-        onSelect={x => x}
-        renderRadio={() => (
-          <div key={Math.random()} className="customRadio">
-            found
-          </div>
-        )}
-      />
+      <RadioGroup defaultValue="PICKUP">
+        <Radio value="SHIP">Provide shipping address</Radio>
+        <Radio value="PICKUP">Arrange for pickup</Radio>
+      </RadioGroup>
     )
-    expect(wrapper.find(".customRadio").length).toBe(2)
+
+    wrapper
+      .find("Radio")
+      .first()
+      .simulate("click")
+
     expect(
       wrapper
-        .find(".customRadio")
-        .at(1)
-        .text()
-    ).toBe("found")
+        .find("Radio")
+        .first()
+        .props().selected
+    ).toBe(true)
+    expect(
+      wrapper
+        .find("Radio")
+        .last()
+        .props().selected
+    ).toBe(false)
   })
 
-  it("disables radio group", () => {
+  it("allows the 'disabled' prop on the Radio component to take the precedence", () => {
+    const wrapper = mount(
+      <RadioGroup disabled>
+        <Radio value="SHIP" disabled={false}>
+          Provide shipping address
+        </Radio>
+        <Radio value="PICKUP">Arrange for pickup</Radio>
+      </RadioGroup>
+    )
+
+    const radio = wrapper.find("Radio").first()
+
+    expect(
+      wrapper
+        .find("Radio")
+        .first()
+        .props().disabled
+    ).toBe(false)
+    expect(
+      wrapper
+        .find("Radio")
+        .last()
+        .props().disabled
+    ).toBe(true)
+  })
+
+  it("ignores the 'selected' prop on the Radio component", () => {
     const spy = jest.fn()
-    const wrapper = mount(<RadioGroup onSelect={spy} options={options} />)
-    const radio = wrapper.find("StyledRadio").at(1)
-    radio.simulate("click")
-    expect(radio.props().selected).toBe(false)
+
+    const wrapper = mount(
+      <RadioGroup defaultValue="PICKUP">
+        <Radio value="SHIP" selected>
+          Provide shipping address
+        </Radio>
+        <Radio value="PICKUP">Arrange for pickup</Radio>
+      </RadioGroup>
+    )
+
+    const ship = wrapper.find("Radio").first()
+
+    expect(ship.props().selected).toBe(false)
+
+    const pickup = wrapper.find("Radio").last()
+
+    expect(pickup.props().selected).toBe(true)
+  })
+
+  it("allows for using the onSelect callback both on RadioGroup and Radio", () => {
+    const spyOnRadioGroup = jest.fn()
+    const spyOnRadio = jest.fn()
+
+    const wrapper = mount(
+      <RadioGroup onSelect={spyOnRadioGroup}>
+        <Radio value="SHIP" onSelect={spyOnRadio}>
+          Provide shipping address
+        </Radio>
+        <Radio value="PICKUP">Arrange for pickup</Radio>
+      </RadioGroup>
+    )
+
+    wrapper
+      .find("Radio")
+      .first()
+      .simulate("click")
+
+    expect(spyOnRadioGroup).toHaveBeenCalled()
+    expect(spyOnRadio).toHaveBeenCalled()
   })
 })
