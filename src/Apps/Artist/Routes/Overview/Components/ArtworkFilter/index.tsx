@@ -38,7 +38,7 @@ class Filter extends Component<Props> {
           my={0.3}
           selected={currentFilter === count.id}
           value={count.id}
-          onSelect={selected => {
+          onSelect={({ selected }) => {
             if (selected) {
               return filters.setFilter(category, count.id, mediator)
             } else {
