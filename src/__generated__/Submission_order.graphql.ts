@@ -3,6 +3,7 @@
 import { ConcreteFragment } from "relay-runtime";
 export type Submission_order = {
     readonly id: string | null;
+    readonly code: string | null;
 };
 
 
@@ -23,6 +24,13 @@ const node: ConcreteFragment = {
     },
     {
       "kind": "ScalarField",
+      "alias": null,
+      "name": "code",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
       "alias": "__id",
       "name": "id",
       "args": null,
@@ -30,5 +38,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'a28eb158dd8a4b23df5ecca95a1d45e4';
+(node as any).hash = 'ca1abbe36144eb62277e125aba18723a';
 export default node;
