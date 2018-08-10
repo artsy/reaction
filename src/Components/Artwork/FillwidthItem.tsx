@@ -1,12 +1,15 @@
+import { ContextProps } from "Components/Artsy"
 import React from "react"
+import { data as sd } from "sharify"
+import RelayMetadata, { Metadata } from "./Metadata"
+import RelaySaveButton, { SaveButton } from "./Save"
+
+const IMAGE_QUALITY = 80
+
 // @ts-ignore
 import { ComponentRef, createFragmentContainer, graphql } from "react-relay"
 // @ts-ignore
 import styled, { StyledComponentClass } from "styled-components"
-
-import { ContextProps } from "Components/Artsy"
-import RelayMetadata, { Metadata } from "./Metadata"
-import RelaySaveButton, { SaveButton } from "./Save"
 
 const Image = styled.img`
   width: 100%;
@@ -40,11 +43,36 @@ export interface FillwidthItemContainerProps
 }
 
 export class FillwidthItemContainer extends React.Component<
-  FillwidthItemContainerProps,
-  null
+  FillwidthItemContainerProps
 > {
   static defaultProps = {
     useRelay: true,
+  }
+
+  getImageUrl() {
+    const imageURL = this.props.artwork.image.url
+
+    if (!imageURL) {
+      return null
+    }
+
+    const {
+      artwork: {
+        image: { aspect_ratio },
+      },
+    } = this.props
+
+    // Either scale or crop, based on if an aspect ratio is available.
+    const type = aspect_ratio ? "fit" : "fill"
+    const height = this.props.imageHeight * window.devicePixelRatio
+    const width = Math.floor(height * aspect_ratio * window.devicePixelRatio)
+
+    // tslint:disable-next-line:max-line-length
+    return `${
+      sd.GEMINI_CLOUDFRONT_URL
+    }/?resize_to=${type}&width=${width}&height=${height}&quality=${IMAGE_QUALITY}&src=${encodeURIComponent(
+      imageURL
+    )}`
   }
 
   render() {
@@ -69,7 +97,7 @@ export class FillwidthItemContainer extends React.Component<
       <div className={className}>
         <Placeholder style={{ height: targetHeight }}>
           <ImageLink href={artwork.href}>
-            <Image src={artwork.image.url} height={imageHeight} />
+            <Image src={this.getImageUrl()} height={imageHeight} />
           </ImageLink>
           <SaveButtonBlock
             {...currentUserSpread}

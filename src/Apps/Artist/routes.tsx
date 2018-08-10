@@ -1,4 +1,5 @@
 import { FilterState } from "Apps/Artist/Routes/Overview/state"
+// import { Redirect } from "found"
 import React from "react"
 import { graphql } from "react-relay"
 import { Provider } from "unstated"
@@ -146,6 +147,10 @@ export const routes = [
           }
         `,
       },
+      // new Redirect({
+      //   from: "/works",
+      //   to: "/",
+      // }),
       {
         path: "*",
         Component: props => {
