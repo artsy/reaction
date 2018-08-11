@@ -68,7 +68,7 @@ export class ArtistApp extends React.Component<ArtistAppProps> {
         {me && (
           <>
             <Separator my={6} />
-            <LazyLoadComponent>
+            <LazyLoadComponent threshold={300}>
               <RecentlyViewed me={me as any} />
             </LazyLoadComponent>
           </>

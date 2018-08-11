@@ -23,11 +23,16 @@ interface ArtistShowsProps {
   sort: string
   scrollTo: string
   heading: string
+  my?: number
 }
 
 export const PAGE_SIZE = 4
 
 class ArtistShows extends Component<ArtistShowsProps, LoadingAreaState> {
+  static defaultProps = {
+    my: 4,
+  }
+
   state = {
     isLoading: false,
   }
@@ -81,103 +86,106 @@ class ArtistShows extends Component<ArtistShowsProps, LoadingAreaState> {
       return null
     }
     return (
-      <Responsive>
-        {({ xs }) => {
-          const blockWidth = xs ? "100%" : "50%"
-          const blockDirection = xs ? "column" : "row"
-          const pr = xs ? 0 : 2
-          const pb = pr
+      <Box my={this.props.my}>
+        <Responsive>
+          {({ xs }) => {
+            const blockWidth = xs ? "100%" : "50%"
+            const blockDirection = xs ? "column" : "row"
+            const pr = xs ? 0 : 2
+            const pb = pr
 
-          return (
-            <>
-              <Row>
-                <Col>
-                  <Row>
-                    <Col>
-                      {/* Negative margin bottom to make space 20px from bottom of
+            return (
+              <>
+                <Row>
+                  <Col>
+                    <Row>
+                      <Col>
+                        {/* Negative margin bottom to make space 20px from bottom of
                     text to the image below */}
-                      <Sans size="3" weight="medium" mb={-0.5}>
-                        {this.props.heading}
-                      </Sans>
-                      <Spacer mb={2} />
-                      <LoadingArea isLoading={this.state.isLoading}>
-                        {this.props.status === "running" ? (
-                          <Flex flexDirection={blockDirection} flexWrap>
-                            {this.props.artist.showsConnection.edges.map(
-                              ({ node }, index) => {
-                                return (
-                                  <React.Fragment key={index}>
-                                    <ArtistShowBlockItem
-                                      blockWidth={blockWidth}
-                                      imageUrl={node.cover_image.cropped.url}
-                                      partner={
-                                        node.partner && node.partner.name
-                                      }
-                                      name={node.name}
-                                      exhibitionInfo={node.exhibition_period}
-                                      pr={pr}
-                                      pb={pb}
-                                      href={node.href}
-                                      city={node.city}
-                                    />
-                                    {xs && <Spacer mb={3} />}
-                                  </React.Fragment>
-                                )
-                              }
-                            )}
-                          </Flex>
-                        ) : (
-                          <Box>
-                            {this.props.artist.showsConnection.edges.map(
-                              ({ node }, index) => {
-                                return (
-                                  <React.Fragment key={index}>
-                                    <ArtistShowListItem
-                                      key={index}
-                                      city={node.city}
-                                      partner={
-                                        node.partner && node.partner.name
-                                      }
-                                      name={node.name}
-                                      exhibitionInfo={node.exhibition_period}
-                                      href={node.href}
-                                    />
+                        <Sans size="3" weight="medium" mb={-0.5}>
+                          {this.props.heading}
+                        </Sans>
+                        <Spacer mb={2} />
+                        <LoadingArea isLoading={this.state.isLoading}>
+                          {this.props.status === "running" ? (
+                            <Flex flexDirection={blockDirection} flexWrap>
+                              {this.props.artist.showsConnection.edges.map(
+                                ({ node }, index) => {
+                                  return (
+                                    <React.Fragment key={index}>
+                                      <ArtistShowBlockItem
+                                        blockWidth={blockWidth}
+                                        imageUrl={node.cover_image.cropped.url}
+                                        partner={
+                                          node.partner && node.partner.name
+                                        }
+                                        name={node.name}
+                                        exhibitionInfo={node.exhibition_period}
+                                        pr={pr}
+                                        pb={pb}
+                                        href={node.href}
+                                        city={node.city}
+                                      />
+                                      {xs && <Spacer mb={3} />}
+                                    </React.Fragment>
+                                  )
+                                }
+                              )}
+                            </Flex>
+                          ) : (
+                            <Box>
+                              {this.props.artist.showsConnection.edges.map(
+                                ({ node }, index) => {
+                                  return (
+                                    <React.Fragment key={index}>
+                                      <ArtistShowListItem
+                                        key={index}
+                                        city={node.city}
+                                        partner={
+                                          node.partner && node.partner.name
+                                        }
+                                        name={node.name}
+                                        exhibitionInfo={node.exhibition_period}
+                                        href={node.href}
+                                      />
 
-                                    {xs && <Spacer mb={3} />}
-                                  </React.Fragment>
-                                )
-                              }
-                            )}
-                          </Box>
-                        )}
-                      </LoadingArea>
-                    </Col>
-                  </Row>
+                                      {xs && <Spacer mb={3} />}
+                                    </React.Fragment>
+                                  )
+                                }
+                              )}
+                            </Box>
+                          )}
+                        </LoadingArea>
+                      </Col>
+                    </Row>
 
-                  <Row>
-                    <Col>
-                      <Box>
-                        <Pagination
-                          hasNextPage={
-                            this.props.artist.showsConnection.pageInfo
-                              .hasNextPage
-                          }
-                          pageCursors={
-                            this.props.artist.showsConnection.pageCursors as any
-                          }
-                          onClick={this.loadAfter}
-                          onNext={this.loadNext}
-                          scrollTo={this.props.scrollTo}
-                        />
-                      </Box>
-                    </Col>
-                  </Row>
-                </Col>
-              </Row>
-            </>
-          )
-        }}
-      </Responsive>
+                    <Row>
+                      <Col>
+                        <Box>
+                          <Pagination
+                            hasNextPage={
+                              this.props.artist.showsConnection.pageInfo
+                                .hasNextPage
+                            }
+                            pageCursors={
+                              this.props.artist.showsConnection
+                                .pageCursors as any
+                            }
+                            onClick={this.loadAfter}
+                            onNext={this.loadNext}
+                            scrollTo={this.props.scrollTo}
+                          />
+                        </Box>
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+              </>
+            )
+          }}
+        </Responsive>
+      </Box>
     )
   }
 }

@@ -12,7 +12,7 @@ export const ShowsRoute: SFC<ArtistShowsProps> = props => {
 
   return (
     <>
-      <Spacer mb={2} />
+      <Spacer mb={-1} />
 
       <Shows
         sort="end_at_asc"
@@ -20,9 +20,10 @@ export const ShowsRoute: SFC<ArtistShowsProps> = props => {
         artist={viewer.artist_currentShows as any}
         scrollTo="#jumpto-ArtistHeader"
         heading="Currently on view"
+        my={4}
       />
 
-      <Spacer my={4} id="jumpto-Shows-Upcoming" />
+      <span id="jumpto-Shows-Upcoming" />
 
       <Shows
         sort="start_at_asc"
@@ -30,9 +31,10 @@ export const ShowsRoute: SFC<ArtistShowsProps> = props => {
         artist={viewer.artist_upcomingShows as any}
         scrollTo="#jumpto-Shows-Upcoming"
         heading="Upcoming"
+        my={4}
       />
 
-      <Spacer my={4} id="jumpto-Shows-Past" />
+      <span id="jumpto-Shows-Past" />
 
       <Shows
         sort="end_at_desc"

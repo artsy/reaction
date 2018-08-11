@@ -34,20 +34,19 @@ export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
         return
       }
 
-      const bootProps = {
-        initialMatchingMediaQueries,
-        system: {
-          ...config,
-          relayEnvironment,
-          resolver,
-          routes,
-          currentUser,
-        },
-      }
-
       const AppContainer = props => {
         return (
-          <Boot {...bootProps} {...props}>
+          <Boot
+            initialMatchingMediaQueries={initialMatchingMediaQueries}
+            system={{
+              ...config,
+              relayEnvironment,
+              resolver,
+              routes,
+              currentUser,
+            }}
+            {...props}
+          >
             <AppShell
               data={props.relayData}
               loadableState={props.loadableState}
