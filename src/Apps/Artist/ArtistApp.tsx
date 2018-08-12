@@ -5,12 +5,11 @@ import { NavigationTabsFragmentContainer as NavigationTabs } from "Apps/Artist/C
 import React from "react"
 import { LazyLoadComponent } from "react-lazy-load-image-component"
 import { createFragmentContainer, graphql } from "react-relay"
-import { PreloadLinkState } from "Router/state"
+import { Connect, PreloadLinkState } from "Router"
 import { Footer } from "Styleguide/Components/Footer"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
-import { Subscribe } from "unstated"
 import { ArtistHeaderFragmentContainer as ArtistHeader } from "./Components/ArtistHeader"
 import { LoadingArea } from "./Components/LoadingArea"
 
@@ -54,13 +53,13 @@ export class ArtistApp extends React.Component<ArtistAppProps> {
               transitioning to new route
             */}
 
-            <Subscribe to={[PreloadLinkState]}>
-              {({ state: { isLoading } }: PreloadLinkState) => {
+            <Connect to={PreloadLinkState}>
+              {({ isLoading }) => {
                 return (
                   <LoadingArea isLoading={isLoading}>{children}</LoadingArea>
                 )
               }}
-            </Subscribe>
+            </Connect>
           </Col>
         </Row>
 

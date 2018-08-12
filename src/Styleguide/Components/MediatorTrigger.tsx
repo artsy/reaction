@@ -1,6 +1,5 @@
 import React from "react"
-import { AppState } from "Router/state"
-import { Subscribe } from "unstated"
+import { AppState, Subscribe } from "Router"
 
 export const MediatorTrigger = () => {
   return (

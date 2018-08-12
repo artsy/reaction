@@ -1,6 +1,6 @@
 import { mount } from "enzyme"
 import React from "react"
-import { Subscribe } from "unstated"
+import { Subscribe } from "Router"
 import { Boot } from "../Boot"
 import { AppState } from "../state"
 

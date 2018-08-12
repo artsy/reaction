@@ -1,8 +1,7 @@
 import { mount } from "enzyme"
 import React from "react"
 import renderer from "react-test-renderer"
-import { AppState } from "Router/state"
-import { Provider } from "unstated"
+import { AppState, Provider } from "../../../../Router"
 import { SummaryFragmentContainer as Summary } from "../Summary"
 
 describe("Order summary", () => {

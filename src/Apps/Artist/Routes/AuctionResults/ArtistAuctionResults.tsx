@@ -1,11 +1,11 @@
 import { ArtistAuctionResults_artist } from "__generated__/ArtistAuctionResults_artist.graphql"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
+import { Connect } from "Router"
 import { PaginationFragmentContainer as Pagination } from "Styleguide/Components/Pagination"
 import { Box } from "Styleguide/Elements/Box"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Separator } from "Styleguide/Elements/Separator"
-import { Subscribe } from "unstated"
 import { ArtistAuctionDetailsModal } from "./ArtistAuctionDetailsModal"
 import { AuctionResultItemFragmentContainer as AuctionResultsItem } from "./ArtistAuctionResultItem"
 import { AuctionResultsState } from "./state"
@@ -106,8 +106,8 @@ class AuctionResultsContainer extends Component<
     const auctionResultsLength = this.props.artist.auctionResults.edges.length
     const { totalCount } = this.props.artist.auctionResults
     return (
-      <Subscribe to={[AuctionResultsState]}>
-        {({ state }: AuctionResultsState) => {
+      <Connect to={AuctionResultsState}>
+        {({ selectedAuction }) => {
           return (
             <>
               <Row>
@@ -122,9 +122,7 @@ class AuctionResultsContainer extends Component<
                     <Separator />
                   </Box>
 
-                  <ArtistAuctionDetailsModal
-                    auctionResult={state.selectedAuction}
-                  />
+                  <ArtistAuctionDetailsModal auctionResult={selectedAuction} />
 
                   <Spacer mt={3} />
 
@@ -165,7 +163,7 @@ class AuctionResultsContainer extends Component<
             </>
           )
         }}
-      </Subscribe>
+      </Connect>
     )
   }
 }
@@ -173,11 +171,11 @@ class AuctionResultsContainer extends Component<
 export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
   (props: AuctionResultsProps) => {
     return (
-      <Subscribe to={[AuctionResultsState]}>
-        {({ state }: AuctionResultsState) => {
-          return <AuctionResultsContainer {...props} sort={state.sort} />
+      <Connect to={AuctionResultsState}>
+        {({ sort }) => {
+          return <AuctionResultsContainer {...props} sort={sort} />
         }}
-      </Subscribe>
+      </Connect>
     )
   },
   {
