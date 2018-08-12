@@ -3,10 +3,10 @@ import { RecentlyViewed_me } from "__generated__/RecentlyViewed_me.graphql"
 import { FillwidthItem } from "Components/Artwork/FillwidthItem"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { Connect } from "Router/Connect"
 import { AppState } from "Router/state"
 import { Slider } from "Styleguide/Components/Slider"
 import { Spacer } from "Styleguide/Elements/Spacer"
-import { Subscribe } from "unstated"
 
 export interface RecentlyViewedProps {
   me: RecentlyViewed_me
@@ -19,12 +19,9 @@ export const RecentlyViewed: React.SFC<RecentlyViewedProps> = props => {
   const { me } = props
 
   return (
-    <Subscribe to={[AppState]}>
-      {({ state }) => {
-        const {
-          mediator,
-          system: { currentUser },
-        } = state
+    <Connect to={[AppState]}>
+      {({ mediator, system }) => {
+        const { currentUser } = system
 
         return (
           me && (
@@ -63,7 +60,7 @@ export const RecentlyViewed: React.SFC<RecentlyViewedProps> = props => {
           )
         )
       }}
-    </Subscribe>
+    </Connect>
   )
 }
 
