@@ -3,7 +3,7 @@ import { ArtistAuctionResultItem_auctionResult } from "__generated__/ArtistAucti
 import { ContextProps } from "Components/Artsy"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { AppState } from "Router/state"
+import { AppState, Connect, Subscribe } from "Router"
 import styled from "styled-components"
 import { Box } from "Styleguide/Elements/Box"
 import { Button } from "Styleguide/Elements/Button"
@@ -12,7 +12,6 @@ import { Col, Row } from "Styleguide/Elements/Grid"
 import { Image } from "Styleguide/Elements/Image"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
-import { Subscribe } from "unstated"
 import { Responsive } from "Utils/Responsive"
 import { AuctionResultsState } from "./state"
 
@@ -28,13 +27,8 @@ export class ArtistAuctionResultItem extends Component<Props> {
   render() {
     const { lastChild } = this.props
     return (
-      <Subscribe to={[AppState]}>
-        {({ state }) => {
-          const {
-            mediator,
-            system: { currentUser },
-          } = state
-
+      <Connect to={AppState}>
+        {({ mediator, system: { currentUser } }) => {
           return (
             <Row>
               <Responsive>
@@ -75,7 +69,7 @@ export class ArtistAuctionResultItem extends Component<Props> {
             </Row>
           )
         }}
-      </Subscribe>
+      </Connect>
     )
   }
 }

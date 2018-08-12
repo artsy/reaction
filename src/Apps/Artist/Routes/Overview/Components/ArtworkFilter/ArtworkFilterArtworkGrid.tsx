@@ -3,11 +3,10 @@ import { FilterState } from "Apps/Artist/Routes/Overview/state"
 import ArtworkGrid from "Components/ArtworkGrid"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
-import { AppState } from "Router/state"
+import { AppState, Connect, Subscribe } from "Router"
 import { PaginationFragmentContainer as Pagination } from "Styleguide/Components/Pagination"
 import { Box } from "Styleguide/Elements/Box"
 import { Spacer } from "Styleguide/Elements/Spacer"
-import { Subscribe } from "unstated"
 
 import {
   LoadingArea,
@@ -72,12 +71,8 @@ class Artworks extends Component<Props, LoadingAreaState> {
 
   render() {
     return (
-      <Subscribe to={[AppState]}>
-        {({ state }) => {
-          const {
-            mediator,
-            system: { currentUser },
-          } = state
+      <Connect to={AppState}>
+        {({ mediator, system: { currentUser } }) => {
           return (
             <Subscribe to={[FilterState]}>
               {(filters: FilterState) => {
@@ -120,7 +115,7 @@ class Artworks extends Component<Props, LoadingAreaState> {
             </Subscribe>
           )
         }}
-      </Subscribe>
+      </Connect>
     )
   }
 }

@@ -1,6 +1,6 @@
 import { Sans, Serif, space } from "@artsy/palette"
 import React from "react"
-import { AppState } from "Router/state"
+import { AppState, Connect } from "Router"
 import styled from "styled-components"
 import { FlexDirectionProps } from "styled-system"
 import { Flex } from "Styleguide/Elements/Flex"
@@ -11,7 +11,6 @@ import { TwitterIcon } from "Styleguide/Elements/icons/TwitterIcon"
 import { Mark } from "Styleguide/Elements/Logo"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
-import { Subscribe } from "unstated"
 import { Responsive } from "Utils/Responsive"
 
 interface Props {
@@ -22,21 +21,21 @@ interface Props {
 
 export const Footer: React.SFC<Props> = props => {
   return (
-    <Subscribe to={[AppState]}>
-      {({ state }) => {
+    <Connect to={AppState}>
+      {({ mediator }) => {
         return (
           <Responsive>
             {({ xs }) => {
               if (xs) {
-                return <SmallFooter mediator={state.mediator} />
+                return <SmallFooter mediator={mediator} />
               } else {
-                return <LargeFooter mediator={state.mediator} />
+                return <LargeFooter mediator={mediator} />
               }
             }}
           </Responsive>
         )
       }}
-    </Subscribe>
+    </Connect>
   )
 }
 

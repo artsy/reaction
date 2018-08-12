@@ -5,13 +5,12 @@ import * as Schema from "Analytics/Schema"
 import FollowArtistButton from "Components/FollowButton/FollowArtistButton"
 import React, { Component, Fragment } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { AppState } from "Router/state"
+import { AppState, Connect } from "Router"
 import { Slider } from "Styleguide/Components/Slider"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Image } from "Styleguide/Elements/Image"
 import { Spacer } from "Styleguide/Elements/Spacer"
-import { Subscribe } from "unstated"
 import { Responsive } from "Utils/Responsive"
 
 interface Props {
@@ -40,13 +39,8 @@ export class ArtistHeader extends Component<Props> {
   render() {
     const props = this.props
     return (
-      <Subscribe to={[AppState]}>
-        {({ state }) => {
-          const {
-            mediator,
-            system: { currentUser },
-          } = state
-
+      <Connect to={AppState}>
+        {({ mediator, system: { currentUser } }) => {
           return (
             <Responsive>
               {({ xs }) => {
@@ -71,7 +65,7 @@ export class ArtistHeader extends Component<Props> {
             </Responsive>
           )
         }}
-      </Subscribe>
+      </Connect>
     )
   }
 }

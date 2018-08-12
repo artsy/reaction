@@ -2,12 +2,10 @@ import { Sans } from "@artsy/palette"
 import { Summary_order } from "__generated__/Summary_order.graphql"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { AppState, Connect } from "Router"
+import styled from "styled-components"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Placeholder } from "Styleguide/Utils/Placeholder"
-
-import { AppState } from "Router/state"
-import styled from "styled-components"
-import { Subscribe } from "unstated"
 
 type Mediator = {
   trigger: (action: string, config?: object) => void
@@ -28,10 +26,8 @@ class Summary extends Component<SummaryProps> {
     const artworkId = initialLineItem ? initialLineItem.node.artwork.id : null
 
     return (
-      <Subscribe to={[AppState]}>
-        {({ state }) => {
-          const { mediator } = state
-
+      <Connect to={AppState}>
+        {({ mediator }) => {
           return (
             <>
               <Placeholder height="390px" name="Sidebar" />
@@ -40,7 +36,7 @@ class Summary extends Component<SummaryProps> {
             </>
           )
         }}
-      </Subscribe>
+      </Connect>
     )
   }
 }

@@ -1,7 +1,7 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
 import { graphql } from "react-relay"
-import { Subscribe } from "unstated"
+import { Subscribe } from "Router"
 import { PreloadLink } from "../../Router"
 import { AppState } from "../state"
 import { StorybooksRouter } from "../StorybooksRouter"
