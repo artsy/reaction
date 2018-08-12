@@ -15,8 +15,6 @@ export interface PreloadLinkProps extends AppStateContainer {
   children?: any
   exact?: boolean
   immediate?: boolean
-  // FIXME: This doesn’t seem used anywhere?
-  name?: string
   onClick?: () => void
   onToggleLoading?: (isLoading: boolean) => void
   replace?: string
