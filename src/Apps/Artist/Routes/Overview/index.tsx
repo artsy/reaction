@@ -158,7 +158,6 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
           defaultValue: ["blue-chip", "top-established", "top-emerging"]
         }
       ) {
-      ...ArtistHeader_artist
       ...ArtistBio_bio
       ...CurrentEvent_artist
       ...MarketInsightsArtistPage_artist
