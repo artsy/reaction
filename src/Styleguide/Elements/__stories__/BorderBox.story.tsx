@@ -1,7 +1,6 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { BorderBox } from "Styleguide/Elements/Box"
-import { Flex } from "Styleguide/Elements/Flex"
 import { Section } from "Styleguide/Utils/Section"
 
 storiesOf("Styleguide/Elements", module).add("BorderBox", () => {
@@ -14,24 +13,10 @@ storiesOf("Styleguide/Elements", module).add("BorderBox", () => {
         </BorderBox>
       </Section>
 
-      <Section title="BorderBox responsive padding">
-        <BorderBox responsive>
-          A BorderBox component can have responsive padding
+      <Section title="BorderBox with hover enabled">
+        <BorderBox hover>
+          A BorderBox component can have optional hover state
         </BorderBox>
-      </Section>
-
-      <Section title="BorderBox with siblings">
-        <Flex flexDirection="column">
-          <BorderBox responsive hasSiblings>
-            A BorderBox component can have siblings that share borders.
-          </BorderBox>
-          <BorderBox responsive hasSiblings>
-            Like this box
-          </BorderBox>
-          <BorderBox responsive hasSiblings>
-            And this box
-          </BorderBox>
-        </Flex>
       </Section>
     </>
   )
