@@ -53,7 +53,9 @@ class Filter extends Component<Props> {
     })
   }
 
-  renderForSaleCheckbox(filters, hasForSaleArtworks, mediator) {
+  renderForSaleCheckbox(filters, mediator, counts) {
+    const hasForSaleArtworks = counts.for_sale_artworks > 0
+
     return (
       <Checkbox
         selected={filters.state.for_sale}
@@ -67,7 +69,11 @@ class Filter extends Component<Props> {
     )
   }
 
-  renderWaysToBuy(filters, mediator) {
+  renderWaysToBuy(filters, mediator, counts) {
+    const hasForSaleArtworks = counts.for_sale_artworks > 0
+    const hasBuyNowArtworks = counts.ecommerce_artworks > 0
+    const hasAuctionArtworks = counts.auction_artworks > 0
+
     return (
       <React.Fragment>
         <Sans size="2" weight="medium" color="black100" mt={0.3}>
@@ -75,6 +81,7 @@ class Filter extends Component<Props> {
         </Sans>
         <Checkbox
           selected={filters.state.ecommerce}
+          disabled={!hasBuyNowArtworks}
           onSelect={value => {
             return filters.setFilter("ecommerce", value, mediator)
           }}
@@ -83,6 +90,7 @@ class Filter extends Component<Props> {
         </Checkbox>
         <Checkbox
           selected={filters.state.at_auction}
+          disabled={!hasAuctionArtworks}
           onSelect={value => {
             return filters.setFilter("at_auction", value, mediator)
           }}
@@ -91,6 +99,7 @@ class Filter extends Component<Props> {
         </Checkbox>
         <Checkbox
           selected={filters.state.for_sale}
+          disabled={!hasForSaleArtworks}
           onSelect={value => {
             return filters.setFilter("for_sale", value, mediator)
           }}
@@ -112,7 +121,8 @@ class Filter extends Component<Props> {
     const periodAggregation = aggregations.find(
       agg => agg.slice === "MAJOR_PERIOD"
     )
-    const hasForSaleArtworks = this.props.artist.counts.for_sale_artworks > 0
+
+    const { counts } = this.props.artist
 
     return (
       <Subscribe to={[AppState, FilterState]}>
@@ -150,11 +160,11 @@ class Filter extends Component<Props> {
                             currentUser.lab_features.includes(
                               "New Buy Now Flow"
                             )
-                              ? this.renderWaysToBuy(filters, mediator)
+                              ? this.renderWaysToBuy(filters, mediator, counts)
                               : this.renderForSaleCheckbox(
                                   filters,
-                                  hasForSaleArtworks,
-                                  mediator
+                                  mediator,
+                                  counts
                                 )}
                           </Flex>
 
@@ -279,6 +289,8 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(
       id
       counts {
         for_sale_artworks
+        ecommerce_artworks
+        auction_artworks
       }
       filtered_artworks(aggregations: $aggregations, size: 0) {
         aggregations {
