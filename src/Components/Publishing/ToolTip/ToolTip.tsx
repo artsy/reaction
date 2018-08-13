@@ -14,7 +14,7 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
   onMouseLeave?: any
   positionLeft?: number
   /**
-   * Having to tpye this opaque data manually is an exceptional case, because of
+   * Having to type this opaque data manually is an exceptional case, because of
    * how this component setup doesn’t strictly follow a Relay tree.
    */
   entity: { " $fragmentRefs": ArtistToolTip_artist$ref & GeneToolTip_gene$ref }
