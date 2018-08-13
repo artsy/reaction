@@ -52,7 +52,7 @@ export const ArtworkApp: React.SFC<Props> = props => {
           </ArtworkSlider>
         </Col>
         <Col sm={4}>
-          <ArtworkSidebar artwork={props.artwork as any} />
+          <ArtworkSidebar artwork={props.artwork} />
         </Col>
       </Row>
       <Row mb={6}>

@@ -108,9 +108,7 @@ export class ArtistArticles extends Component<
           <Col>
             <Box>
               <Pagination
-                pageCursors={
-                  this.props.artist.articlesConnection.pageCursors as any
-                }
+                pageCursors={this.props.artist.articlesConnection.pageCursors}
                 onClick={this.loadAfter}
                 onNext={this.loadNext}
                 scrollTo="#jumpto-ArtistHeader"

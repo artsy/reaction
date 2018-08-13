@@ -107,7 +107,7 @@ export class LargeArtistHeader extends Component<Props> {
           <Fragment>
             <Slider
               height={200}
-              data={carousel.images as any}
+              data={carousel.images as Array<object>}
               render={(slide: Image) => {
                 return (
                   <a href={slide.href} onClick={() => this.onClickSlide(slide)}>
@@ -145,7 +145,7 @@ export class LargeArtistHeader extends Component<Props> {
           </Box>
           <FollowArtistButton
             useDeprecatedButtonStyle={false}
-            artist={props.artist as any}
+            artist={props.artist}
             buttonProps={
               {
                 width: "100px",
@@ -206,7 +206,7 @@ export class SmallArtistHeader extends Component<Props> {
         {hasImages && (
           <Fragment>
             <Slider
-              data={carousel.images as any}
+              data={carousel.images as Array<object>}
               render={slide => {
                 return (
                   <a href={slide.href} onClick={() => this.onClickSlide(slide)}>
@@ -243,7 +243,7 @@ export class SmallArtistHeader extends Component<Props> {
         </Flex>
         <Box my={2}>
           <FollowArtistButton
-            artist={props.artist as any}
+            artist={props.artist}
             useDeprecatedButtonStyle={false}
             buttonProps={{ width: "100%" }}
             currentUser={currentUser}

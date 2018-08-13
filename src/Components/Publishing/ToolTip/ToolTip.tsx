@@ -1,3 +1,5 @@
+import { ArtistToolTip_artist$ref } from "__generated__/ArtistToolTip_artist.graphql"
+import { GeneToolTip_gene$ref } from "__generated__/GeneToolTip_gene.graphql"
 import React from "react"
 import styled from "styled-components"
 import { ArtistTooltipContainer } from "./ArtistToolTip"
@@ -6,12 +8,16 @@ import { GeneToolTipContainer } from "./GeneToolTip"
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
   arrowLeft?: string
-  entity: object
   orientation?: string
   model: string
   onMouseEnter?: any
   onMouseLeave?: any
   positionLeft?: number
+  /**
+   * Having to tpye this opaque data manually is an exceptional case, because of
+   * how this component setup doesn’t strictly follow a Relay tree.
+   */
+  entity: { " $fragmentRefs": ArtistToolTip_artist$ref & GeneToolTip_gene$ref }
 }
 
 export class ToolTip extends React.Component<Props> {
@@ -20,10 +26,10 @@ export class ToolTip extends React.Component<Props> {
 
     switch (model) {
       case "artist": {
-        return <ArtistTooltipContainer artist={entity as any} />
+        return <ArtistTooltipContainer artist={entity} />
       }
       case "gene": {
-        return <GeneToolTipContainer gene={entity as any} />
+        return <GeneToolTipContainer gene={entity} />
       }
       default: {
         return null

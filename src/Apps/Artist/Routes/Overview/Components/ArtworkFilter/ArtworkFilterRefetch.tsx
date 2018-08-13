@@ -65,7 +65,7 @@ class ArtworkGridRefetchContainerWrapper extends React.Component<Props> {
       <ArtworkGridRefetchContainer
         {...this.props}
         isLoading={this.state.isLoading}
-        filtered_artworks={this.props.artist.grid as any}
+        filtered_artworks={this.props.artist.grid}
       />
     )
   }

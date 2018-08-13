@@ -8,7 +8,7 @@ export interface ArticlesRouteProps {
 }
 
 export const ArticlesRoute: React.SFC<ArticlesRouteProps> = props => {
-  return <Articles artist={props.artist as any} />
+  return <Articles artist={props.artist} />
 }
 
 export const ArticlesRouteFragmentContainer = createFragmentContainer(

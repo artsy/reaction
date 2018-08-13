@@ -7,14 +7,13 @@ import { LazyLoadComponent } from "react-lazy-load-image-component"
 import { createFragmentContainer, graphql } from "react-relay"
 import { PreloadLinkState } from "Router/state"
 import { Footer } from "Styleguide/Components/Footer"
+import { RecentlyViewedQueryRenderer as RecentlyViewed } from "Styleguide/Components/RecentlyViewed"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Subscribe } from "unstated"
 import { ArtistHeaderFragmentContainer as ArtistHeader } from "./Components/ArtistHeader"
 import { LoadingArea } from "./Components/LoadingArea"
-
-import { RecentlyViewedQueryRenderer as RecentlyViewed } from "Styleguide/Components/RecentlyViewed"
 
 export interface ArtistAppProps {
   artist: ArtistApp_artist
@@ -37,7 +36,7 @@ export class ArtistApp extends React.Component<ArtistAppProps> {
       <>
         <Row>
           <Col>
-            <ArtistHeader artist={artist as any} />
+            <ArtistHeader artist={artist} />
           </Col>
         </Row>
 
@@ -45,7 +44,7 @@ export class ArtistApp extends React.Component<ArtistAppProps> {
 
         <Row>
           <Col>
-            <NavigationTabs artist={artist as any} />
+            <NavigationTabs artist={artist} />
 
             <Spacer mb={3} />
 

@@ -1,15 +1,16 @@
+import { FillwidthItem_artwork } from "__generated__/FillwidthItem_artwork.graphql"
 import { ContextProps } from "Components/Artsy"
 import React from "react"
 import { data as sd } from "sharify"
 import RelayMetadata, { Metadata } from "./Metadata"
 import RelaySaveButton, { SaveButton } from "./Save"
 
-const IMAGE_QUALITY = 80
-
 // @ts-ignore
 import { ComponentRef, createFragmentContainer, graphql } from "react-relay"
 // @ts-ignore
 import styled, { StyledComponentClass } from "styled-components"
+
+const IMAGE_QUALITY = 80
 
 const Image = styled.img`
   width: 100%;
@@ -28,14 +29,14 @@ const Placeholder = styled.div`
 `
 
 export interface FillwidthItemContainerProps
-  extends RelayProps,
-    ContextProps,
+  extends ContextProps,
     React.HTMLProps<FillwidthItemContainer> {
   targetHeight?: number
   imageHeight?: number
   width?: number
   margin?: number
   useRelay?: boolean
+  artwork: FillwidthItem_artwork
 
   mediator?: {
     trigger: (action: string, config: object) => void
@@ -103,7 +104,7 @@ export class FillwidthItemContainer extends React.Component<
             {...currentUserSpread}
             mediator={mediator}
             className="artwork-save"
-            artwork={artwork as any}
+            artwork={artwork}
             style={{ position: "absolute", right: "5px", bottom: "5px" }}
             useRelay={useRelay}
           />
@@ -119,9 +120,11 @@ export const FillwidthItem = styled(FillwidthItemContainer)`
   width: ${props => props.width}px;
   vertical-align: top;
   margin-right: ${props => props.margin}px;
+
   .artwork-save {
     opacity: 0;
   }
+
   &:hover .artwork-save {
     opacity: 1;
   }
@@ -142,14 +145,3 @@ export default createFragmentContainer(
     }
   `
 )
-
-export interface RelayProps {
-  artwork: {
-    href: string | null
-    image: {
-      placeholder: number | null
-      url: string | null
-      aspect_ratio: number | null
-    } | null
-  }
-}

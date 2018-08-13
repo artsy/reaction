@@ -169,8 +169,7 @@ class ArtistShows extends Component<ArtistShowsProps, LoadingAreaState> {
                                 .hasNextPage
                             }
                             pageCursors={
-                              this.props.artist.showsConnection
-                                .pageCursors as any
+                              this.props.artist.showsConnection.pageCursors
                             }
                             onClick={this.loadAfter}
                             onNext={this.loadNext}

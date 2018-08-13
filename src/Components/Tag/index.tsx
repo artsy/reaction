@@ -62,15 +62,15 @@ class TagContents extends React.Component<Props, State> {
   // we include its aggregation as part of `price_range`, we
   // have to handle it specially.
   onDropdownSelect(slice: string, value: string) {
-    let filter = slice.toLowerCase() as any
+    let filter = slice.toLowerCase()
     if (filter === "price_range" && value === "*-*") {
       filter = "for_sale"
       value = "true"
     }
     this.setState(
-      {
+      ({
         [filter]: value,
-      } as any,
+      } as any) as Filters,
       this.handleStateChange
     )
   }
