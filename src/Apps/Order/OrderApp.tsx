@@ -1,5 +1,13 @@
 import React from "react"
 
+const findRoute = (routes, routeIndices) => {
+  let currentRoute = routes[routeIndices[0]]
+  routeIndices.slice(1).forEach(routeIndex => {
+    currentRoute = currentRoute.children[routeIndex]
+  })
+  return currentRoute
+}
+
 export interface OrderAppProps {
   me: {
     name: string
@@ -8,6 +16,8 @@ export interface OrderAppProps {
     orderID: string
   }
   location: any
+  routeIndices: number[]
+  routes: any
 }
 
 export class OrderApp extends React.Component<OrderAppProps> {
@@ -26,20 +36,14 @@ export class OrderApp extends React.Component<OrderAppProps> {
   }
 
   onTransition = location => {
-    // FIXME: This logic shouldn't be invoked on a non-form based route
-    // Refresh
-    if (window && location.pathname === window.location.pathname) {
-      // Most browsers will ignore this and supply their own messaging for refresh
-      return "Are you sure you want to refresh? Your changes will not be saved."
+    const { routes, routeIndices } = this.props
+    let route = findRoute(routes, routeIndices)
+
+    if (route.onTransition) {
+      return route.onTransition(location)
     }
 
-    // https://regexper.com/#%5C%2Forder%5Cd%3F%5C%2F.%2B%5C%2F%28%5Cw%2B%29
-    // Attempting to navigate to another route
-    if (location.pathname.match(/\/order\d?\/.+\/(\w+)/)) {
-      return true
-    }
-
-    return "Are you sure you want to leave? Your changes will not be saved."
+    return true
   }
 
   render() {
