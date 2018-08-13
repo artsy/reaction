@@ -126,12 +126,7 @@ return {
     },
     {
       "kind": "FragmentSpread",
-      "name": "ArtistHeader_artist",
-      "args": null
-    },
-    {
-      "kind": "FragmentSpread",
-      "name": "CurrentEvent_artist",
+      "name": "ArtistBio_bio",
       "args": null
     },
     {
@@ -225,7 +220,7 @@ return {
     },
     {
       "kind": "FragmentSpread",
-      "name": "ArtistBio_bio",
+      "name": "CurrentEvent_artist",
       "args": null
     },
     {
@@ -438,5 +433,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '38af5f5aa7a18abd8fd70255eb280acb';
+(node as any).hash = '9c5f82d04f60217de3f7c2d50798a349';
 export default node;
