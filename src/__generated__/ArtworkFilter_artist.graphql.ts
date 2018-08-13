@@ -6,6 +6,8 @@ export type ArtworkFilter_artist = {
     readonly id: string;
     readonly counts: ({
         readonly for_sale_artworks: any | null;
+        readonly ecommerce_artworks: any | null;
+        readonly auction_artworks: any | null;
     }) | null;
     readonly filtered_artworks: ({
         readonly aggregations: ReadonlyArray<({
@@ -111,6 +113,20 @@ return {
           "kind": "ScalarField",
           "alias": null,
           "name": "for_sale_artworks",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "ecommerce_artworks",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "auction_artworks",
           "args": null,
           "storageKey": null
         }
@@ -231,5 +247,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '6c0c7a9145ed1a703cd9d8cc77b0dbc5';
+(node as any).hash = '79400bab7f1a4f533766475ad7512765';
 export default node;
