@@ -55,7 +55,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
     const showConsignable = Boolean(artist.is_consignable)
 
     const hideMainOverviewSection =
-      !showMarketInsights(this.props.artist as any) &&
+      !showMarketInsights(this.props.artist) &&
       !showSelectedExhibitions &&
       !showArtistBio &&
       !showCurrentEvent &&

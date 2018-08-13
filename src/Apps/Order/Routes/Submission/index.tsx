@@ -47,9 +47,7 @@ export class SubmissionRoute extends Component<SubmissionProps> {
                 <Spacer mb={3} />
               </>
             }
-            Sidebar={
-              <Summary mediator={this.props.mediator} order={order as any} />
-            }
+            Sidebar={<Summary mediator={this.props.mediator} order={order} />}
           />
         )}
       </Responsive>
@@ -63,6 +61,7 @@ export const SubmissionFragmentContainer = createFragmentContainer(
     fragment Submission_order on Order {
       id
       code
+      ...Summary_order
     }
   `
 )
