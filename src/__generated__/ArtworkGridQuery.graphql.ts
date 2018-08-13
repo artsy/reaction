@@ -1,12 +1,15 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
+import { ArtworkGrid_artworks$ref } from "./ArtworkGrid_artworks.graphql";
 export type ArtworkGridQueryVariables = {
     readonly artistID: string;
 };
 export type ArtworkGridQueryResponse = {
     readonly artist: ({
-        readonly artworks: ({}) | null;
+        readonly artworks: ({
+            readonly " $fragmentRefs": ArtworkGrid_artworks$ref;
+        }) | null;
     }) | null;
 };
 

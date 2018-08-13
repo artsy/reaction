@@ -10,13 +10,21 @@ storiesOf("Styleguide/Components", module).add("Pagination", () => {
   return (
     <React.Fragment>
       <Section title="Responsive">
-        <Pagination hasNextPage pageCursors={cursor} {...callbacks} />
+        <Pagination hasNextPage pageCursors={cursor as any} {...callbacks} />
       </Section>
       <Section title="Large Pagination">
-        <LargePagination hasNextPage pageCursors={cursor} {...callbacks} />
+        <LargePagination
+          hasNextPage
+          pageCursors={cursor as any}
+          {...callbacks}
+        />
       </Section>
       <Section title="Small Pagination">
-        <SmallPagination hasNextPage pageCursors={cursor} {...callbacks} />
+        <SmallPagination
+          hasNextPage
+          pageCursors={cursor as any}
+          {...callbacks}
+        />
       </Section>
     </React.Fragment>
   )

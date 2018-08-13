@@ -17,6 +17,7 @@ import TotalCount from "../ArtworkFilter/TotalCount"
 
 import BorderedPulldown from "../BorderedPulldown"
 
+import { GeneArtworks_gene } from "__generated__/GeneArtworks_gene.graphql"
 import GeneArtworksContent from "./GeneArtworksContent"
 
 interface Filters {
@@ -26,8 +27,9 @@ interface Filters {
   medium?: string
 }
 
-interface Props extends RelayProps, Filters {
-  relay?: RelayPaginationProp
+interface Props extends Filters {
+  relay: RelayPaginationProp
+  gene: GeneArtworks_gene
   onDropdownSelected: (slice: string, value: string) => void
   onSortSelected: (sort: string) => void
   onForSaleToggleSelected: () => void
@@ -53,6 +55,7 @@ const SubFilterBar = styled.div`
 
 const ArtistFilterButtons = styled.div`
   margin-right: 10px;
+
   button {
     height: 52px;
     padding: 16px;
@@ -131,7 +134,7 @@ export class GeneArtworks extends React.Component<Props, null> {
         </SubFilterBar>
         <GeneArtworksContent
           geneID={this.props.gene.id}
-          filtered_artworks={this.props.gene.filtered_artworks as any}
+          filtered_artworks={this.props.gene.filtered_artworks}
         />
       </div>
     )
@@ -191,19 +194,3 @@ export default createFragmentContainer(GeneArtworks, {
     }
   `,
 })
-
-interface RelayProps {
-  gene: {
-    id: string
-    filtered_artworks: {
-      aggregations: Array<{
-        slice: string
-        counts: {
-          name: string | null
-          id: string | null
-        }
-      }>
-      facet: any
-    }
-  }
-}

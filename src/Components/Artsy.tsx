@@ -93,7 +93,7 @@ export class ContextProvider extends React.Component<ContextProps>
   }
 
   render() {
-    return this.props.children as any
+    return this.props.children
   }
 }
 

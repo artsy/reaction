@@ -1,6 +1,8 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+declare const _Details_artwork$ref: unique symbol;
+export type Details_artwork$ref = typeof _Details_artwork$ref;
 export type Details_artwork = {
     readonly href: string | null;
     readonly title: string | null;
@@ -23,6 +25,7 @@ export type Details_artwork = {
         readonly is_open: boolean | null;
         readonly is_closed: boolean | null;
     }) | null;
+    readonly " $refType": Details_artwork$ref;
 };
 
 

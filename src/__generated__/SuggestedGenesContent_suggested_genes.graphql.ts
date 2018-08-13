@@ -1,6 +1,8 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+declare const _SuggestedGenesContent_suggested_genes$ref: unique symbol;
+export type SuggestedGenesContent_suggested_genes$ref = typeof _SuggestedGenesContent_suggested_genes$ref;
 export type SuggestedGenesContent_suggested_genes = ReadonlyArray<{
     readonly id: string;
     readonly _id: string;
@@ -10,6 +12,7 @@ export type SuggestedGenesContent_suggested_genes = ReadonlyArray<{
             readonly url: string | null;
         }) | null;
     }) | null;
+    readonly " $refType": SuggestedGenesContent_suggested_genes$ref;
 }>;
 
 

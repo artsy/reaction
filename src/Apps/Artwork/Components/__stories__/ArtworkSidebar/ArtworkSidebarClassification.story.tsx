@@ -11,10 +11,10 @@ storiesOf("Styleguide/Artwork/Sidebar", module).add("Classification", () => {
   return (
     <React.Fragment>
       <Section title="Artwork with Classification">
-        <Classification artwork={ArtworkWithClassification} />
+        <Classification artwork={ArtworkWithClassification as any} />
       </Section>
       <Section title="Artwork without Classification">
-        <Classification artwork={ArtworkWithoutClassification} />
+        <Classification artwork={ArtworkWithoutClassification as any} />
       </Section>
     </React.Fragment>
   )

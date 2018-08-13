@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
+import { TagArtworksContent_filtered_artworks$ref } from "./TagArtworksContent_filtered_artworks.graphql";
 export type TagArtworksContentQueryVariables = {
     readonly filteredArtworksNodeID: string;
     readonly count: number;
@@ -8,7 +9,9 @@ export type TagArtworksContentQueryVariables = {
     readonly sort?: string | null;
 };
 export type TagArtworksContentQueryResponse = {
-    readonly node: ({}) | null;
+    readonly node: ({
+        readonly " $fragmentRefs": TagArtworksContent_filtered_artworks$ref;
+    }) | null;
 };
 
 

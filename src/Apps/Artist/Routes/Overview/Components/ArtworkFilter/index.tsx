@@ -251,7 +251,7 @@ class Filter extends Component<Props> {
                         <Spacer mb={2} />
 
                         <ArtworkFilter
-                          artist={this.props.artist as any}
+                          artist={this.props.artist}
                           artistID={this.props.artist.id}
                           columnCount={xs || sm || md ? 2 : 3}
                           filters={filters.state}

@@ -1,11 +1,14 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+declare const _ArtistBio_bio$ref: unique symbol;
+export type ArtistBio_bio$ref = typeof _ArtistBio_bio$ref;
 export type ArtistBio_bio = {
     readonly biography_blurb: ({
         readonly text: string | null;
         readonly credit: string | null;
     }) | null;
+    readonly " $refType": ArtistBio_bio$ref;
 };
 
 

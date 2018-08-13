@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
+import { Overview_artist$ref } from "./Overview_artist.graphql";
 export type routes_OverviewQueryRendererQueryVariables = {
     readonly artistID: string;
     readonly medium?: string | null;
@@ -12,7 +13,9 @@ export type routes_OverviewQueryRendererQueryVariables = {
     readonly ecommerce?: boolean | null;
 };
 export type routes_OverviewQueryRendererQueryResponse = {
-    readonly artist: ({}) | null;
+    readonly artist: ({
+        readonly " $fragmentRefs": Overview_artist$ref;
+    }) | null;
 };
 
 

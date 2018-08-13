@@ -216,7 +216,7 @@ export const CVPaginationContainer = createPaginationContainer(
   {
     direction: "forward",
     getConnectionFromProps(props) {
-      return props.artist.showsConnection as any
+      return props.artist.showsConnection
     },
     getFragmentVariables(prevVars, totalCount) {
       return { ...prevVars, count: totalCount }

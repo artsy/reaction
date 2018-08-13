@@ -1,8 +1,8 @@
+import { Artwork_artwork } from "__generated__/Artwork_artwork.graphql"
 import React from "react"
 // @ts-ignore
 import { ComponentRef, createFragmentContainer, graphql } from "react-relay"
 import styled, { css } from "styled-components"
-
 import theme from "../../Assets/Theme"
 import RelayMetadata, { Metadata } from "./Metadata"
 
@@ -63,10 +63,11 @@ export interface OverlayProps {
   useRelay?: boolean
 }
 
-export interface ArtworkProps extends RelayProps {
+export interface ArtworkProps {
   extended?: boolean
   Overlay?: React.SFC<OverlayProps>
   useRelay?: boolean
+  artwork: Artwork_artwork
   onSelect?: (selected: boolean) => void
   showOverlayOnHover?: boolean
 }
@@ -143,13 +144,3 @@ export default createFragmentContainer(
     }
   `
 )
-
-export interface RelayProps {
-  artwork: {
-    id: string | null
-    image: {
-      url: string | null
-      aspect_ratio: number | null
-    } | null
-  }
-}

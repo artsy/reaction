@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
+import { Artists_gene$ref } from "./Artists_gene.graphql";
 export type ArtworkAggregation = "COLOR" | "DIMENSION_RANGE" | "FOLLOWED_ARTISTS" | "GALLERY" | "INSTITUTION" | "MAJOR_PERIOD" | "MEDIUM" | "MERCHANDISABLE_ARTISTS" | "PARTNER_CITY" | "PERIOD" | "PRICE_RANGE" | "TOTAL" | "%future added value";
 export type ArtistsQueryVariables = {
     readonly geneNodeID: string;
@@ -9,7 +10,9 @@ export type ArtistsQueryVariables = {
     readonly aggregations?: ReadonlyArray<ArtworkAggregation | null> | null;
 };
 export type ArtistsQueryResponse = {
-    readonly node: ({}) | null;
+    readonly node: ({
+        readonly " $fragmentRefs": Artists_gene$ref;
+    }) | null;
 };
 
 

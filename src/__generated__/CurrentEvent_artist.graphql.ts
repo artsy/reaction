@@ -1,6 +1,8 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+declare const _CurrentEvent_artist$ref: unique symbol;
+export type CurrentEvent_artist$ref = typeof _CurrentEvent_artist$ref;
 export type CurrentEvent_artist = {
     readonly currentEvent: ({
         readonly event: {
@@ -17,6 +19,7 @@ export type CurrentEvent_artist = {
         readonly partner: string | null;
         readonly href: string | null;
     }) | null;
+    readonly " $refType": CurrentEvent_artist$ref;
 };
 
 

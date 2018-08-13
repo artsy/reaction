@@ -1,11 +1,14 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
+import { ArtistApp_artist$ref } from "./ArtistApp_artist.graphql";
 export type routes_ArtistTopLevelQueryVariables = {
     readonly artistID: string;
 };
 export type routes_ArtistTopLevelQueryResponse = {
-    readonly artist: ({}) | null;
+    readonly artist: ({
+        readonly " $fragmentRefs": ArtistApp_artist$ref;
+    }) | null;
 };
 
 

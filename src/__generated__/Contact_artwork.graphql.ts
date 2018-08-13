@@ -1,6 +1,8 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+declare const _Contact_artwork$ref: unique symbol;
+export type Contact_artwork$ref = typeof _Contact_artwork$ref;
 export type Contact_artwork = {
     readonly _id: string;
     readonly href: string | null;
@@ -25,6 +27,7 @@ export type Contact_artwork = {
             readonly bidder_positions: any | null;
         }) | null;
     }) | null;
+    readonly " $refType": Contact_artwork$ref;
 };
 
 

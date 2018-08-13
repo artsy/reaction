@@ -18,9 +18,9 @@ export class ArtworkSidebarMetadata extends React.Component<
     const { artwork } = this.props
     return (
       <Box pb={3}>
-        <TitleInfo artwork={artwork as any} />
-        {artwork.edition_sets.length < 2 && <SizeInfo piece={artwork as any} />}
-        <Classification artwork={artwork as any} />
+        <TitleInfo artwork={artwork} />
+        {artwork.edition_sets.length < 2 && <SizeInfo piece={artwork} />}
+        <Classification artwork={artwork} />
       </Box>
     )
   }

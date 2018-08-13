@@ -1,8 +1,14 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+import { RelatedArtistsList_artist$ref } from "./RelatedArtistsList_artist.graphql";
+declare const _RelatedArtists_viewer$ref: unique symbol;
+export type RelatedArtists_viewer$ref = typeof _RelatedArtists_viewer$ref;
 export type RelatedArtists_viewer = {
-    readonly mainArtists: ({}) | null;
+    readonly mainArtists: ({
+        readonly " $fragmentRefs": RelatedArtistsList_artist$ref;
+    }) | null;
+    readonly " $refType": RelatedArtists_viewer$ref;
 };
 
 

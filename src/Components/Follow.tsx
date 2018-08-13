@@ -6,24 +6,25 @@
  * and two specialised components that use composition to achieve the desired functionality.
  */
 
+import { Follow_artist } from "__generated__/Follow_artist.graphql"
 import React from "react"
-import { commitMutation, createFragmentContainer, graphql } from "react-relay"
-
-import Icon from "./Icon"
-
+import {
+  commitMutation,
+  createFragmentContainer,
+  graphql,
+  RelayProp,
+} from "react-relay"
 import styled from "styled-components"
 import colors from "../Assets/Colors"
-
 import * as Artsy from "../Components/Artsy"
+import Icon from "./Icon"
 
 const SIZE = 32
 
-interface Props
-  extends RelayProps,
-    React.HTMLProps<FollowButton>,
-    Artsy.ContextProps {
+interface Props extends React.HTMLProps<FollowButton>, Artsy.ContextProps {
   style?: any
-  relay?: any
+  relay: RelayProp
+  artist: Follow_artist
 }
 
 export const StyledFollowButton = styled.div`
@@ -107,14 +108,6 @@ export class FollowButton extends React.Component<Props, null> {
         />
       </StyledFollowButton>
     )
-  }
-}
-
-interface RelayProps {
-  artist: {
-    __id: string
-    id: string
-    is_followed: boolean | null
   }
 }
 

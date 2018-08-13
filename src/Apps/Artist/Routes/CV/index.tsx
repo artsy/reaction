@@ -25,18 +25,9 @@ export class CVRoute extends Component<CVRouteProps> {
       <Responsive>
         {({ sm, xs }) => (
           <Container>
-            <CVItem
-              category="Solo shows"
-              artist={viewer.artist_soloShows as any}
-            />
-            <CVItem
-              category="Group shows"
-              artist={viewer.artist_groupShows as any}
-            />
-            <CVItem
-              category="Fair booths"
-              artist={viewer.artist_fairBooths as any}
-            />
+            <CVItem category="Solo shows" artist={viewer.artist_soloShows} />
+            <CVItem category="Group shows" artist={viewer.artist_groupShows} />
+            <CVItem category="Fair booths" artist={viewer.artist_fairBooths} />
           </Container>
         )}
       </Responsive>

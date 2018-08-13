@@ -14,13 +14,13 @@ storiesOf("Styleguide/Artwork/Sidebar", module).add(
     return (
       <React.Fragment>
         <Section title="Auction name only">
-          <AuctionPartnerInfo artwork={ArtworkNoEstimateNoPremium} />
+          <AuctionPartnerInfo artwork={ArtworkNoEstimateNoPremium as any} />
         </Section>
         <Section title="Artwork with estimate">
-          <AuctionPartnerInfo artwork={ArtworkWithEstimateNoPremium} />
+          <AuctionPartnerInfo artwork={ArtworkWithEstimateNoPremium as any} />
         </Section>
         <Section title="Artwork with estimate and buyer's premium">
-          <AuctionPartnerInfo artwork={ArtworkWithEstimateAndPremium} />
+          <AuctionPartnerInfo artwork={ArtworkWithEstimateAndPremium as any} />
         </Section>
       </React.Fragment>
     )

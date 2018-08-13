@@ -1,9 +1,9 @@
+import { Details_artwork } from "__generated__/Details_artwork.graphql"
 import React from "react"
 // @ts-ignore
 import { ComponentRef, createFragmentContainer, graphql } from "react-relay"
-import TextLink from "../TextLink"
-
 import styled from "styled-components"
+import TextLink from "../TextLink"
 
 const TruncatedLine = styled.div`
   display: block;
@@ -12,8 +12,9 @@ const TruncatedLine = styled.div`
   white-space: nowrap;
 `
 
-export interface Props extends RelayProps, React.HTMLProps<Details> {
+export interface Props extends React.HTMLProps<Details> {
   showSaleLine: boolean
+  artwork: Details_artwork
 }
 
 export class Details extends React.Component<Props, null> {
@@ -128,29 +129,3 @@ export default createFragmentContainer<Props>(
     }
   `
 )
-
-export interface RelayProps {
-  artwork: {
-    href: string | null
-    title: string | null
-    date: string | null
-    sale_message: string | null
-    cultural_maker: string | null
-    artists: Array<{
-      __id: string
-      href: string | null
-      name: string | null
-    } | null> | null
-    collecting_institution: string | null
-    partner: {
-      name: string | null
-      href: string | null
-    } | null
-    sale: {
-      is_auction: boolean | null
-      is_live_open: boolean | null
-      is_open: boolean | null
-      is_closed: boolean | null
-    } | null
-  }
-}

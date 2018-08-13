@@ -1,26 +1,24 @@
+import { Artists_gene } from "__generated__/Artists_gene.graphql"
+import { avantgarde } from "Assets/Fonts"
 import * as React from "react"
-import { ConnectionData } from "react-relay"
 import {
   createPaginationContainer,
   graphql,
   RelayPaginationProp,
 } from "react-relay"
 import styled from "styled-components"
-
-import { avantgarde } from "Assets/Fonts"
+import Dropdown from "../ArtworkFilter/Dropdown"
+import ForSaleCheckbox from "../ArtworkFilter/ForSaleCheckbox"
+import { ButtonState } from "../Buttons/Default"
+import Button from "../Buttons/Ghost"
 import Spinner from "../Spinner"
 import ArtistRow from "./ArtistRow"
 
-import Dropdown from "../ArtworkFilter/Dropdown"
-import ForSaleCheckbox from "../ArtworkFilter/ForSaleCheckbox"
-
-import { ButtonState } from "../Buttons/Default"
-import Button from "../Buttons/Ghost"
-
 const PageSize = 10
 
-interface Props extends RelayProps {
-  relay?: RelayPaginationProp
+interface Props {
+  relay: RelayPaginationProp
+  gene: Artists_gene
   onDropdownSelected: (slice: string, value: string) => void
   onForSaleToggleSelected: () => void
 }
@@ -44,6 +42,7 @@ const LoadMoreButton = styled.a`
   cursor: pointer;
   text-transform: uppercase;
   border-bottom: 2px solid transparent;
+
   &:hover {
     border-bottom: 2px solid black;
   }
@@ -57,6 +56,7 @@ const SpinnerContainer = styled.div`
 
 const ArtistFilterButtons = styled.div`
   margin-right: 10px;
+
   button {
     height: 52px;
     padding: 16px;
@@ -133,7 +133,7 @@ export class Artists extends React.Component<Props, State> {
     const artists = this.props.gene.artists
 
     const artistRows = artists.edges.map(edge => {
-      return <ArtistRow artist={edge.node as any} key={edge.node.__id} />
+      return <ArtistRow artist={edge.node} key={edge.node.__id} />
     })
 
     const loadMoreButton = (
@@ -209,7 +209,7 @@ export default createPaginationContainer(
   {
     direction: "forward",
     getConnectionFromProps(props) {
-      return props.gene.artists as ConnectionData
+      return props.gene.artists
     },
     getFragmentVariables(prevVars, totalCount) {
       return {
@@ -246,24 +246,3 @@ export default createPaginationContainer(
     `,
   }
 )
-
-interface RelayProps {
-  gene: {
-    __id: string
-    artists: {
-      pageInfo: {
-        hasNextPage: boolean
-      }
-      edges: Array<{
-        node: {
-          __id: string
-        }
-      }>
-    }
-    filter_aggregations: {
-      aggregations: Array<{
-        slice: string
-      }>
-    }
-  }
-}

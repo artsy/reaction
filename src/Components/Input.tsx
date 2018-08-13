@@ -185,12 +185,12 @@ export class Input extends React.Component<InputProps, InputState> {
       )
     }
 
-    const { title, description } = this.props
+    const { title, description, ref, ...rest } = this.props
     return (
       <Container>
         {title && <Title>{title}</Title>}
         {description && <Description>{description}</Description>}
-        <StyledInput {...this.props as any} />
+        <StyledInput {...rest} />
         <Error show={!!error}>{error}</Error>
       </Container>
     )

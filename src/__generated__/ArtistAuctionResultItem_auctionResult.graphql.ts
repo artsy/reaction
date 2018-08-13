@@ -1,6 +1,8 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+declare const _ArtistAuctionResultItem_auctionResult$ref: unique symbol;
+export type ArtistAuctionResultItem_auctionResult$ref = typeof _ArtistAuctionResultItem_auctionResult$ref;
 export type ArtistAuctionResultItem_auctionResult = {
     readonly title: string | null;
     readonly dimension_text: string | null;
@@ -20,6 +22,7 @@ export type ArtistAuctionResultItem_auctionResult = {
     readonly estimate: ({
         readonly display: string | null;
     }) | null;
+    readonly " $refType": ArtistAuctionResultItem_auctionResult$ref;
 };
 
 

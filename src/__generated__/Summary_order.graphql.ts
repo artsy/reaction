@@ -1,6 +1,8 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+declare const _Summary_order$ref: unique symbol;
+export type Summary_order$ref = typeof _Summary_order$ref;
 export type Summary_order = {
     readonly lineItems: ({
         readonly edges: ReadonlyArray<({
@@ -11,6 +13,7 @@ export type Summary_order = {
             }) | null;
         }) | null> | null;
     }) | null;
+    readonly " $refType": Summary_order$ref;
 };
 
 

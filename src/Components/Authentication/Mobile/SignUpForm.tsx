@@ -132,7 +132,7 @@ export class MobileSignUpForm extends Component<
                     this.props.onBackButtonClicked &&
                     wizard.currentStepIndex === 0
                       ? this.props.onBackButtonClicked(e as any)
-                      : wizard.previous(e as any, values)
+                      : wizard.previous(e, values)
                   }
                 >
                   <Icon

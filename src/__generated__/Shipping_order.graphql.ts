@@ -1,8 +1,13 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+import { Summary_order$ref } from "./Summary_order.graphql";
+declare const _Shipping_order$ref: unique symbol;
+export type Shipping_order$ref = typeof _Shipping_order$ref;
 export type Shipping_order = {
     readonly id: string | null;
+    readonly " $fragmentRefs": Summary_order$ref;
+    readonly " $refType": Shipping_order$ref;
 };
 
 

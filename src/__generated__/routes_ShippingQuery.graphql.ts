@@ -1,11 +1,14 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
+import { Shipping_order$ref } from "./Shipping_order.graphql";
 export type routes_ShippingQueryVariables = {
     readonly orderID: string;
 };
 export type routes_ShippingQueryResponse = {
-    readonly order: ({}) | null;
+    readonly order: ({
+        readonly " $fragmentRefs": Shipping_order$ref;
+    }) | null;
 };
 
 

@@ -92,7 +92,7 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
           onWheel={this.detectActivity}
           onTouchStart={this.detectActivity}
           onTouchMove={this.detectActivity}
-          innerRef={this.state.deepZoomRef as any}
+          innerRef={this.state.deepZoomRef as any /* TODO Update SC */}
         >
           <Box
             position="absolute"
@@ -137,11 +137,13 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
 
   render() {
     const { children } = this.props
-    const modifiedChildren = React.Children.map(children, child =>
-      React.cloneElement(child as any, {
-        style: { cursor: "zoom-in" },
-        onClick: this.show,
-      })
+    const modifiedChildren = React.Children.map(
+      children,
+      (child: React.ReactElement<any>) =>
+        React.cloneElement(child, {
+          style: { cursor: "zoom-in" },
+          onClick: this.show,
+        })
     )
     return (
       <React.Fragment>
