@@ -3,7 +3,7 @@ import { Summary_order } from "__generated__/Summary_order.graphql"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Spacer } from "Styleguide/Elements/Spacer"
-import { Placeholder } from "Styleguide/Utils/Placeholder"
+import { TransactionSummary } from "../Components/TransactionSummary"
 
 import { AppState } from "Router/state"
 import styled from "styled-components"
@@ -34,7 +34,17 @@ class Summary extends Component<SummaryProps> {
 
           return (
             <>
-              <Placeholder height="390px" name="Sidebar" />
+              <TransactionSummary
+                price="£3,024.89"
+                shipping="£132.32"
+                tax="£232.23"
+                total="£1,200,823.33"
+                artistName="Francesca DiMattio"
+                artworkName="The Fox and the Hound, 2018"
+                artworkLocation="New York, NY"
+                imageURL="https://d32dm0rphc51dk.cloudfront.net/SCShf97jlpFZpDBJUBqntg/small.jpg"
+                sellerName="Salon 94"
+              />
               {this.props.children}
               <Helper mediator={mediator} artworkId={artworkId} />
             </>
