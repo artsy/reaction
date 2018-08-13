@@ -1,8 +1,8 @@
-import { Serif, space } from "@artsy/palette"
+import { Serif } from "@artsy/palette"
 import React from "react"
-import { BorderBox } from "Styleguide/Elements/Box"
 import { Flex, FlexProps } from "Styleguide/Elements/Flex"
 import { Spacer } from "Styleguide/Elements/Spacer"
+import { StackableResponsiveBorderBox } from "Styleguide/Elements/StackableResponsiveBorderBox"
 
 interface PriceSummaryProps extends FlexProps {
   price: string
@@ -19,13 +19,13 @@ export const PriceSummary: React.SFC<PriceSummaryProps> = ({
   ...others
 }) => {
   return (
-    <BorderBox hasSiblings responsive flexDirection="column" {...others}>
+    <StackableResponsiveBorderBox flexDirection="column" {...others}>
       <Entry label="Price" value={price} />
       <Entry label="Shipping" value={shipping} />
       <Entry label="Tax" value={tax} />
-      <Spacer height={space(2)} />
+      <Spacer mb={2} />
       <Entry label="Total" value={total} final />
-    </BorderBox>
+    </StackableResponsiveBorderBox>
   )
 }
 
