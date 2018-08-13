@@ -1,12 +1,12 @@
 import React from "react"
 
 import { Serif, space } from "@artsy/palette"
+import { StackableBorderBox } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import {
   CreditCardIcon,
   CreditCardType,
 } from "Styleguide/Elements/icons/CreditCardIcon"
-import { StackableResponsiveBorderBox } from "Styleguide/Elements/StackableResponsiveBorderBox"
 
 interface ShippingAndPaymentDetailsProps {
   address: string
@@ -19,12 +19,12 @@ export const ShippingAndPaymentDetails: React.SFC<
   ShippingAndPaymentDetailsProps
 > = ({ address, creditCardLast4digits, creditCardtype, creditCardExpiry }) => (
   <Flex flexDirection="column">
-    <StackableResponsiveBorderBox>
+    <StackableBorderBox>
       <Serif size="3" color="black100" style={{ whiteSpace: "pre-wrap" }}>
         {address}
       </Serif>
-    </StackableResponsiveBorderBox>
-    <StackableResponsiveBorderBox alignItems="center">
+    </StackableBorderBox>
+    <StackableBorderBox alignItems="center">
       <CreditCardIcon
         type={creditCardtype}
         style={{ marginRight: space(1), position: "relative", top: "-2px" }}
@@ -33,6 +33,6 @@ export const ShippingAndPaymentDetails: React.SFC<
         •••• {creditCardLast4digits}
         &nbsp; Exp {creditCardExpiry}
       </Serif>
-    </StackableResponsiveBorderBox>
+    </StackableBorderBox>
   </Flex>
 )

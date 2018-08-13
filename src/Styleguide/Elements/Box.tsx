@@ -1,6 +1,7 @@
 import { color, space } from "@artsy/palette"
 // @ts-ignore
 import React from "react"
+import { media } from "styled-bootstrap-grid"
 import styled, { css } from "styled-components"
 import {
   background,
@@ -58,6 +59,23 @@ export const BorderBox = styled(Flex).attrs<BorderBoxProps>({})`
         border-color: ${color("black60")};
       }
     `};
+`
+
+export const StackableBorderBox = styled(BorderBox)`
+  :not(:first-child) {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+  :not(:last-child) {
+    border-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  ${media.sm`
+    padding: ${space(3)}px;
+    ${styledSpace};
+  `};
 `
 
 export interface BoxProps

@@ -2,7 +2,6 @@ import { CV_viewer } from "__generated__/CV_viewer.graphql"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
-import { Responsive } from "Utils/Responsive"
 import { CVPaginationContainer as CVItem } from "./CVItem"
 
 export interface CVRouteProps {
@@ -22,15 +21,11 @@ export class CVRoute extends Component<CVRouteProps> {
     const { viewer } = this.props
 
     return (
-      <Responsive>
-        {({ sm, xs }) => (
-          <Container>
-            <CVItem category="Solo shows" artist={viewer.artist_soloShows} />
-            <CVItem category="Group shows" artist={viewer.artist_groupShows} />
-            <CVItem category="Fair booths" artist={viewer.artist_fairBooths} />
-          </Container>
-        )}
-      </Responsive>
+      <Container>
+        <CVItem category="Solo shows" artist={viewer.artist_soloShows} />
+        <CVItem category="Group shows" artist={viewer.artist_groupShows} />
+        <CVItem category="Fair booths" artist={viewer.artist_fairBooths} />
+      </Container>
     )
   }
 }
