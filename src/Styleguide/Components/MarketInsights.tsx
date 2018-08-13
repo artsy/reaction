@@ -96,20 +96,25 @@ export class MarketInsights extends React.Component<MarketInsightsProps> {
     if (!hasSections(this.props.artist)) {
       return null
     }
+
     return (
-      <BorderBox flexDirection="column">
-        <Responsive>
-          {({ xs }) => {
-            return (
-              <div>
-                {this.renderAuctionHighlight(xs)}
-                {this.renderGalleryRepresentation(xs)}
-                {this.renderPermanentCollection(xs)}
-              </div>
-            )
-          }}
-        </Responsive>
-      </BorderBox>
+      <>
+        <BorderBox flexDirection="column">
+          <Responsive>
+            {({ xs }) => {
+              return (
+                <div>
+                  {this.renderAuctionHighlight(xs)}
+                  {this.renderGalleryRepresentation(xs)}
+                  {this.renderPermanentCollection(xs)}
+                </div>
+              )
+            }}
+          </Responsive>
+        </BorderBox>
+
+        {this.props.children}
+      </>
     )
   }
 }

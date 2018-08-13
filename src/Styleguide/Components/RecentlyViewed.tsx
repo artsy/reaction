@@ -2,6 +2,7 @@ import { Serif } from "@artsy/palette"
 import { RecentlyViewed_me } from "__generated__/RecentlyViewed_me.graphql"
 import { FillwidthItem } from "Components/Artwork/FillwidthItem"
 import React from "react"
+import { QueryRenderer } from "react-relay"
 import { createFragmentContainer, graphql } from "react-relay"
 import { AppState } from "Router/state"
 import { Slider } from "Styleguide/Components/Slider"
@@ -89,3 +90,39 @@ export const RecentlyViewedFragmentContainer = createFragmentContainer(
     }
   `
 )
+
+export const RecentlyViewedQueryRenderer = () => {
+  return (
+    <Subscribe to={[AppState]}>
+      {({
+        state: {
+          system: { relayEnvironment, currentUser },
+        },
+      }) => {
+        if (!currentUser) {
+          return null
+        }
+        return (
+          <QueryRenderer
+            environment={relayEnvironment}
+            variables={{}}
+            query={graphql`
+              query RecentlyViewedQuery {
+                me {
+                  ...RecentlyViewed_me
+                }
+              }
+            `}
+            render={({ props }) => {
+              if (props) {
+                return <RecentlyViewedFragmentContainer me={props.me} />
+              } else {
+                return null
+              }
+            }}
+          />
+        )
+      }}
+    </Subscribe>
+  )
+}

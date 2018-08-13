@@ -33,6 +33,17 @@ describe("MobileLoginForm", () => {
     })
   })
 
+  it("renders global errors", () => {
+    const wrapper = mount(
+      <MobileLoginForm
+        error="Some global server error"
+        handleSubmit={jest.fn()}
+      />
+    )
+    wrapper.update()
+    expect(wrapper.html()).toMatch("Some global server error")
+  })
+
   it("calls onBackButtonClicked if back button is clicked on first page", () => {
     const onBackButtonClicked = jest.fn()
     const wrapper = mount(

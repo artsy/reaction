@@ -30,7 +30,7 @@ const LargeShowListItem: SFC<ArtistShowListItemProps> = props => {
   const { name, city, exhibitionInfo, href, partner } = props
 
   return (
-    <React.Fragment>
+    <>
       <Separator mb={4} />
       <Row>
         <Col sm={3}>
@@ -57,7 +57,7 @@ const LargeShowListItem: SFC<ArtistShowListItemProps> = props => {
       </Row>
 
       <Spacer mb={4} />
-    </React.Fragment>
+    </>
   )
 }
 
@@ -65,7 +65,7 @@ const SmallShowListItem: SFC<ArtistShowListItemProps> = props => {
   const { name, city, exhibitionInfo, href, partner } = props
 
   return (
-    <React.Fragment>
+    <>
       <Separator mb={3} />
       <Serif size="3">
         <a href={FIXME_DOMAIN + href} className="noUnderline">
@@ -82,6 +82,6 @@ const SmallShowListItem: SFC<ArtistShowListItemProps> = props => {
         {exhibitionInfo}
       </Serif>
       <Spacer mb={3} />
-    </React.Fragment>
+    </>
   )
 }

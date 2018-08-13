@@ -9,7 +9,7 @@ const address = `Brian Watterson
 Brooklyn, NY 10011
 United States`
 
-storiesOf("App/Order/Components", module).add(
+storiesOf("Apps/Order/Components", module).add(
   "ShippingAndPaymentDetails",
   () => {
     return (

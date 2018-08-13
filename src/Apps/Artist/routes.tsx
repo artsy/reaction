@@ -1,4 +1,5 @@
 import { FilterState } from "Apps/Artist/Routes/Overview/state"
+import { Redirect } from "found"
 import React from "react"
 import { graphql } from "react-relay"
 import { Provider } from "unstated"
@@ -38,9 +39,6 @@ export const routes = [
       query routes_ArtistTopLevelQuery($artistID: String!) {
         artist(id: $artistID) {
           ...ArtistApp_artist
-        }
-        me {
-          ...ArtistApp_me
         }
       }
     `,
@@ -146,6 +144,11 @@ export const routes = [
           }
         `,
       },
+      // Redirect old Artist app links to Overview page
+      new Redirect({
+        from: "/works",
+        to: "/artist/:artistID",
+      }),
       {
         path: "*",
         Component: props => {

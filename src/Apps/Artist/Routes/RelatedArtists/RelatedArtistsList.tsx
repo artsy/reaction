@@ -109,7 +109,7 @@ class RelatedArtistsList extends Component<ShowProps, LoadingAreaState> {
                 }
 
                 return (
-                  <React.Fragment>
+                  <>
                     <Row>
                       <Col>
                         <LoadingArea isLoading={this.state.isLoading}>
@@ -158,7 +158,7 @@ class RelatedArtistsList extends Component<ShowProps, LoadingAreaState> {
                         </Box>
                       </Col>
                     </Row>
-                  </React.Fragment>
+                  </>
                 )
               }}
             </Responsive>

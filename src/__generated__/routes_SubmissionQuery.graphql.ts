@@ -22,6 +22,7 @@ query routes_SubmissionQuery(
 
 fragment Submission_order on Order {
   id
+  code
   __id: id
 }
 */
@@ -55,7 +56,7 @@ return {
   "operationKind": "query",
   "name": "routes_SubmissionQuery",
   "id": null,
-  "text": "query routes_SubmissionQuery(\n  $orderID: String!\n) {\n  order(id: $orderID) {\n    ...Submission_order\n    __id: id\n  }\n}\n\nfragment Submission_order on Order {\n  id\n  __id: id\n}\n",
+  "text": "query routes_SubmissionQuery(\n  $orderID: String!\n) {\n  order(id: $orderID) {\n    ...Submission_order\n    __id: id\n  }\n}\n\nfragment Submission_order on Order {\n  id\n  code\n  __id: id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -101,6 +102,13 @@ return {
             "kind": "ScalarField",
             "alias": null,
             "name": "id",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "code",
             "args": null,
             "storageKey": null
           },

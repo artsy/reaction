@@ -24,7 +24,7 @@ export const RelatedArtists = () => {
         }
 
         return (
-          <React.Fragment>
+          <>
             <Row>
               <Col>
                 <Flex flexWrap>
@@ -64,7 +64,7 @@ export const RelatedArtists = () => {
                 </Flex>
               </Col>
             </Row>
-          </React.Fragment>
+          </>
         )
       }}
     </Responsive>

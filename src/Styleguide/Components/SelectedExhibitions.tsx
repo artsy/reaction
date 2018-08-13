@@ -61,26 +61,33 @@ export interface ExhibitionYearListProps {
   year: Year
   exhibitions: SelectedExhibitions_exhibitions
 }
-export const ExhibitionYearList: SFC<ExhibitionYearListProps> = props => (
-  <Flex>
-    <Sans size="2">{props.year}</Sans>
-    <Flex flexDirection="column">
-      {props.exhibitions.map(exhibition => (
-        <Box key={exhibition.name} display="inline" ml={1}>
-          <Sans size="2" display="inline" verticalAlign="top">
-            {exhibition.name}
-            {", "}
-          </Sans>
-          {exhibition.partner && (
-            <Sans size="2" display="inline" verticalAlign="top" color="black60">
-              {exhibition.partner.name}
+export const ExhibitionYearList: SFC<ExhibitionYearListProps> = props => {
+  return (
+    <Flex>
+      <Sans size="2">{props.year}</Sans>
+      <Flex flexDirection="column">
+        {props.exhibitions.map(exhibition => (
+          <Box key={exhibition.name} display="inline" ml={1}>
+            <Sans size="2" display="inline" verticalAlign="top">
+              {exhibition.name}
+              {", "}
             </Sans>
-          )}
-        </Box>
-      ))}
+            {exhibition.partner && (
+              <Sans
+                size="2"
+                display="inline"
+                verticalAlign="top"
+                color="black60"
+              >
+                {exhibition.partner.name}
+              </Sans>
+            )}
+          </Box>
+        ))}
+      </Flex>
     </Flex>
-  </Flex>
-)
+  )
+}
 
 interface FullExhibitionListProps {
   exhibitions: SelectedExhibitions_exhibitions
@@ -119,7 +126,7 @@ export class SelectedExhibitionsContainer extends React.Component<
   }
   render() {
     if (
-      !this.props.exhibitions ||
+      !this.props.exhibitions.length ||
       this.props.totalExhibitions < MIN_EXHIBITIONS
     )
       return null

@@ -18,22 +18,27 @@ import { ArtworkFilterRefetchContainer as ArtworkFilter } from "./ArtworkFilterR
 
 interface Props {
   artist: ArtworkFilter_artist
+  hideTopBorder?: boolean
 }
 
 class Filter extends Component<Props> {
+  static defaultProps = {
+    hideTopBorder: false,
+  }
+
   renderCategory(filters, category, counts, mediator) {
     const currentFilter =
       category === "major_periods"
         ? filters.state.major_periods[0]
         : filters.state[category]
 
-    return counts.slice(0, 10).map((count, index) => {
+    return counts.map((count, index) => {
       return (
         <Radio
           my={0.3}
           selected={currentFilter === count.id}
           value={count.id}
-          onSelect={selected => {
+          onSelect={({ selected }) => {
             if (selected) {
               return filters.setFilter(category, count.id, mediator)
             } else {
@@ -97,6 +102,7 @@ class Filter extends Component<Props> {
   }
 
   render() {
+    const { hideTopBorder } = this.props
     const { aggregations } = this.props.artist.filtered_artworks
     const mediumAggregation = aggregations.find(agg => agg.slice === "MEDIUM")
     const galleryAggregation = aggregations.find(agg => agg.slice === "GALLERY")
@@ -123,7 +129,7 @@ class Filter extends Component<Props> {
             <Responsive>
               {({ xs, sm, md }) => {
                 return (
-                  <React.Fragment>
+                  <>
                     <Flex>
                       {/*
                         Sidebar Area
@@ -137,7 +143,8 @@ class Filter extends Component<Props> {
                             mt={-1}
                             mb={1}
                           >
-                            <Separator mb={1} />
+                            {!hideTopBorder && <Separator mb={1} />}
+
                             {currentUser &&
                             currentUser.lab_features &&
                             currentUser.lab_features.includes(
@@ -201,7 +208,7 @@ class Filter extends Component<Props> {
                       */}
 
                       <Box width={xs ? "100%" : "70%"}>
-                        <Separator mb={2} mt={-1} />
+                        {!hideTopBorder && <Separator mb={2} mt={-1} />}
 
                         <Flex justifyContent="flex-end">
                           <Select
@@ -241,7 +248,7 @@ class Filter extends Component<Props> {
                         />
                       </Box>
                     </Flex>
-                  </React.Fragment>
+                  </>
                 )
               }}
             </Responsive>
