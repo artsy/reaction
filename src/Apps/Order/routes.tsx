@@ -30,7 +30,7 @@ import { SubmissionProps } from "./Routes/Submission"
  */
 const ORDER_REGEX = /\/order\d?\/.+\/(\w+)/
 
-const confirmRouteExit = nextExpectedRoute => location => {
+const confirmRouteExit = location => {
   // Refresh
   if (window && location.pathname === window.location.pathname) {
     // Most browsers will ignore this and supply their own messaging for refresh
