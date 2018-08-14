@@ -78,6 +78,7 @@ const Helper: React.SFC<HelperProps> = ({ mediator, artworkId }) => (
         ask an Artsy Specialist
       </Link>.
     </Sans>
+    <Spacer mb={2} />
   </>
 )
 
