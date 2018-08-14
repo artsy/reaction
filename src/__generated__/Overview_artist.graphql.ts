@@ -2,7 +2,6 @@
 
 import { ConcreteFragment } from "relay-runtime";
 import { ArtistBio_bio$ref } from "./ArtistBio_bio.graphql";
-import { ArtistHeader_artist$ref } from "./ArtistHeader_artist.graphql";
 import { ArtworkFilter_artist$ref } from "./ArtworkFilter_artist.graphql";
 import { CurrentEvent_artist$ref } from "./CurrentEvent_artist.graphql";
 import { Genes_artist$ref } from "./Genes_artist.graphql";
@@ -49,7 +48,7 @@ export type Overview_artist = {
             }) | null> | null;
         }) | null;
     }) | null;
-    readonly " $fragmentRefs": ArtistHeader_artist$ref & ArtistBio_bio$ref & CurrentEvent_artist$ref & MarketInsightsArtistPage_artist$ref & Genes_artist$ref & ArtworkFilter_artist$ref;
+    readonly " $fragmentRefs": ArtistBio_bio$ref & CurrentEvent_artist$ref & MarketInsightsArtistPage_artist$ref & Genes_artist$ref & ArtworkFilter_artist$ref;
     readonly " $refType": Overview_artist$ref;
 };
 

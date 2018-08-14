@@ -1,3 +1,4 @@
+import { Sans } from "@artsy/palette"
 import { GridItem_artwork } from "__generated__/GridItem_artwork.graphql"
 import { pickBy } from "lodash"
 import React from "react"
@@ -89,6 +90,27 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
     }
   }
 
+  renderBidLabel() {
+    return (
+      <Sans
+        size="1"
+        style={{
+          position: "absolute",
+          bottom: "8px",
+          left: "8px",
+          borderRadius: "2px",
+          letterSpacing: "0.3px",
+          padding: "1px 5px 0px 6px",
+          backgroundColor: "white",
+          boxShadow: "0 2px 5px 0 rgba(0, 0, 0, 0.1)",
+          textTransform: "uppercase",
+        }}
+      >
+        Bid
+      </Sans>
+    )
+  }
+
   render() {
     const { style, className, artwork, useRelay, currentUser } = this.props
     const SaveButtonBlock = useRelay ? RelaySaveButton : SaveButton
@@ -98,6 +120,11 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
     if (currentUser) {
       currentUserSpread = { currentUser }
     }
+
+    const hasBuyNowLabFeature =
+      currentUser &&
+      currentUser.lab_features &&
+      currentUser.lab_features.includes("New Buy Now Flow")
     return (
       <Responsive>
         {({ hover, ...breakpoints }) => {
@@ -107,7 +134,9 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
                 <a href={artwork.href}>
                   <Image src={this.getImageUrl(breakpoints)} />
                 </a>
-
+                {hasBuyNowLabFeature &&
+                  artwork.is_biddable &&
+                  this.renderBidLabel()}
                 {hover && (
                   <SaveButtonBlock
                     className="artwork-save"
@@ -151,6 +180,7 @@ export default createFragmentContainer(
         url(version: "large")
         aspect_ratio
       }
+      is_biddable
       href
       ...Metadata_artwork
       ...Save_artwork
