@@ -53,7 +53,7 @@ export class CanvasContainerComponent extends React.Component<
 
   // TODO: Ensure that full element can be clicked on video complete
   // Prevent links from blocking video playback.
-  @track((props, [e]) => {
+  @track((props, state, [e]) => {
     if (!isVideoClickArea(e)) {
       return {
         action: "Click",
