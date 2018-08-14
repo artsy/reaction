@@ -1,6 +1,9 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+import { FillwidthItem_artwork$ref } from "./FillwidthItem_artwork.graphql";
+declare const _Fillwidth_artworks$ref: unique symbol;
+export type Fillwidth_artworks$ref = typeof _Fillwidth_artworks$ref;
 export type Fillwidth_artworks = {
     readonly edges: ReadonlyArray<({
         readonly node: ({
@@ -8,8 +11,10 @@ export type Fillwidth_artworks = {
             readonly image: ({
                 readonly aspect_ratio: number | null;
             }) | null;
+            readonly " $fragmentRefs": FillwidthItem_artwork$ref;
         }) | null;
     }) | null> | null;
+    readonly " $refType": Fillwidth_artworks$ref;
 };
 
 

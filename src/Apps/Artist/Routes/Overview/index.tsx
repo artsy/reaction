@@ -55,7 +55,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
     const showConsignable = Boolean(artist.is_consignable)
 
     const hideMainOverviewSection =
-      !showMarketInsights(this.props.artist as any) &&
+      !showMarketInsights(this.props.artist) &&
       !showSelectedExhibitions &&
       !showArtistBio &&
       !showCurrentEvent &&
@@ -70,7 +70,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
           <Col sm={colNum}>
             {showMarketInsights && (
               <>
-                <MarketInsights artist={artist as any} />
+                <MarketInsights artist={artist} />
                 <Spacer mb={1} />
               </>
             )}
@@ -80,7 +80,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
                 <SelectedExhibitions
                   artistID={artist.id}
                   totalExhibitions={this.props.artist.counts.partner_shows}
-                  exhibitions={this.props.artist.exhibition_highlights as any}
+                  exhibitions={this.props.artist.exhibition_highlights}
                 />
                 <Spacer mb={1} />
               </>
@@ -92,7 +92,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
                   onReadMoreClicked={() => {
                     this.setState({ isReadMoreExpanded: true })
                   }}
-                  bio={artist as any}
+                  bio={artist}
                 />
                 <Spacer mb={1} />
               </>
@@ -100,7 +100,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
 
             {showGenes && (
               <>
-                <Genes artist={artist as any} />
+                <Genes artist={artist} />
                 <Spacer mb={1} />
               </>
             )}
@@ -118,7 +118,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
           {showCurrentEvent && (
             <Col sm={3}>
               <Box pl={2}>
-                <CurrentEvent artist={artist as any} />
+                <CurrentEvent artist={artist} />
               </Box>
             </Col>
           )}
@@ -131,7 +131,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
             <span id="jump--artistArtworkGrid" />
 
             <ArtworkFilter
-              artist={artist as any}
+              artist={artist}
               hideTopBorder={hideMainOverviewSection}
             />
           </Col>
@@ -158,7 +158,6 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
           defaultValue: ["blue-chip", "top-established", "top-emerging"]
         }
       ) {
-      ...ArtistHeader_artist
       ...ArtistBio_bio
       ...CurrentEvent_artist
       ...MarketInsightsArtistPage_artist

@@ -86,7 +86,7 @@ class Artworks extends Component<Props, LoadingAreaState> {
                     isLoading={this.state.isLoading || this.props.isLoading}
                   >
                     <ArtworkGrid
-                      artworks={this.props.filtered_artworks.artworks as any}
+                      artworks={this.props.filtered_artworks.artworks}
                       columnCount={this.props.columnCount}
                       itemMargin={40}
                       currentUser={currentUser}
@@ -102,8 +102,7 @@ class Artworks extends Component<Props, LoadingAreaState> {
                             .hasNextPage
                         }
                         pageCursors={
-                          this.props.filtered_artworks.artworks
-                            .pageCursors as any
+                          this.props.filtered_artworks.artworks.pageCursors
                         }
                         onClick={(cursor, page) => {
                           this.loadAfter(cursor, page, filters, mediator)

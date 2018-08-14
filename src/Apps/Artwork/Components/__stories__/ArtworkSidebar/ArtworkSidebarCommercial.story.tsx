@@ -16,16 +16,16 @@ storiesOf("Styleguide/Artwork/Sidebar", module)
     return (
       <React.Fragment>
         <Section title="For sale artwork with no editions">
-          <Commercial artwork={FoSaleArtworkNoEditions} />
+          <Commercial artwork={FoSaleArtworkNoEditions as any} />
         </Section>
         <Section title="For sale artwork with one edition set">
-          <Commercial artwork={FoSaleArtworkWithOneEdition} />
+          <Commercial artwork={FoSaleArtworkWithOneEdition as any} />
         </Section>
         <Section title="For sale artwork with multiple edition sets">
-          <Commercial artwork={FoSaleArtworkWithMultipleEditions} />
+          <Commercial artwork={FoSaleArtworkWithMultipleEditions as any} />
         </Section>
         <Section title="Contact for price work">
-          <Commercial artwork={ContactForPriceWork} />
+          <Commercial artwork={ContactForPriceWork as any} />
         </Section>
       </React.Fragment>
     )

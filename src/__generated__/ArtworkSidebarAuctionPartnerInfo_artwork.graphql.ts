@@ -1,6 +1,8 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+declare const _ArtworkSidebarAuctionPartnerInfo_artwork$ref: unique symbol;
+export type ArtworkSidebarAuctionPartnerInfo_artwork$ref = typeof _ArtworkSidebarAuctionPartnerInfo_artwork$ref;
 export type ArtworkSidebarAuctionPartnerInfo_artwork = {
     readonly is_biddable: boolean | null;
     readonly partner: ({
@@ -13,6 +15,7 @@ export type ArtworkSidebarAuctionPartnerInfo_artwork = {
     readonly sale: ({
         readonly is_with_buyers_premium: boolean | null;
     }) | null;
+    readonly " $refType": ArtworkSidebarAuctionPartnerInfo_artwork$ref;
 };
 
 

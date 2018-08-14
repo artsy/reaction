@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
+import { ArtistArticles_artist$ref } from "./ArtistArticles_artist.graphql";
 export type ArtistArticlesQueryVariables = {
     readonly first?: number | null;
     readonly last?: number | null;
@@ -9,7 +10,9 @@ export type ArtistArticlesQueryVariables = {
     readonly artistID: string;
 };
 export type ArtistArticlesQueryResponse = {
-    readonly artist: ({}) | null;
+    readonly artist: ({
+        readonly " $fragmentRefs": ArtistArticles_artist$ref;
+    }) | null;
 };
 
 

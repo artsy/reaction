@@ -1,7 +1,7 @@
 import React from "react"
 
 import { Serif, space } from "@artsy/palette"
-import { BorderBox } from "Styleguide/Elements/Box"
+import { StackableBorderBox } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import {
   CreditCardIcon,
@@ -19,12 +19,12 @@ export const ShippingAndPaymentDetails: React.SFC<
   ShippingAndPaymentDetailsProps
 > = ({ address, creditCardLast4digits, creditCardtype, creditCardExpiry }) => (
   <Flex flexDirection="column">
-    <BorderBox hasSiblings responsive>
+    <StackableBorderBox>
       <Serif size="3" color="black100" style={{ whiteSpace: "pre-wrap" }}>
         {address}
       </Serif>
-    </BorderBox>
-    <BorderBox hasSiblings responsive alignItems="center">
+    </StackableBorderBox>
+    <StackableBorderBox alignItems="center">
       <CreditCardIcon
         type={creditCardtype}
         style={{ marginRight: space(1), position: "relative", top: "-2px" }}
@@ -33,6 +33,6 @@ export const ShippingAndPaymentDetails: React.SFC<
         •••• {creditCardLast4digits}
         &nbsp; Exp {creditCardExpiry}
       </Serif>
-    </BorderBox>
+    </StackableBorderBox>
   </Flex>
 )

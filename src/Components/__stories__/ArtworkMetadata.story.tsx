@@ -17,7 +17,8 @@ function ArtworkExample(props: { artworkID: string }) {
       `}
       variables={{ artworkID: props.artworkID }}
       render={readyState =>
-        readyState.props && <RelayMetadata {...readyState.props as any} />}
+        readyState.props && <RelayMetadata {...readyState.props as any} />
+      }
     />
   )
 }
@@ -29,7 +30,9 @@ storiesOf("Components/Artwork/Metadata", module)
   .add("A for-sale artwork with exact price", () => (
     <ArtworkExample artworkID="stephen-berkman-a-history-of-dread" />
   ))
-  .add("Without Relay", () => <Metadata artwork={artwork} useRelay={false} />)
+  .add("Without Relay", () => (
+    <Metadata artwork={artwork as any} useRelay={false} />
+  ))
 
 const artwork = {
   id: "mikael-olson-some-kind-of-dinosaur",

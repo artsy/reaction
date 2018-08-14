@@ -1,6 +1,10 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+import { ArtworkGrid_artworks$ref } from "./ArtworkGrid_artworks.graphql";
+import { Pagination_pageCursors$ref } from "./Pagination_pageCursors.graphql";
+declare const _ArtworkFilterArtworkGrid_filtered_artworks$ref: unique symbol;
+export type ArtworkFilterArtworkGrid_filtered_artworks$ref = typeof _ArtworkFilterArtworkGrid_filtered_artworks$ref;
 export type ArtworkFilterArtworkGrid_filtered_artworks = {
     readonly __id: string;
     readonly artworks: ({
@@ -8,13 +12,17 @@ export type ArtworkFilterArtworkGrid_filtered_artworks = {
             readonly hasNextPage: boolean;
             readonly endCursor: string | null;
         };
-        readonly pageCursors: ({}) | null;
+        readonly pageCursors: ({
+            readonly " $fragmentRefs": Pagination_pageCursors$ref;
+        }) | null;
         readonly edges: ReadonlyArray<({
             readonly node: ({
                 readonly __id: string;
             }) | null;
         }) | null> | null;
+        readonly " $fragmentRefs": ArtworkGrid_artworks$ref;
     }) | null;
+    readonly " $refType": ArtworkFilterArtworkGrid_filtered_artworks$ref;
 };
 
 

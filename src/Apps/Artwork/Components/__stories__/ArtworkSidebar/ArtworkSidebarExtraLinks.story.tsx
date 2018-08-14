@@ -16,25 +16,33 @@ storiesOf("Styleguide/Artwork/Sidebar", module).add("ExtraLinks", () => {
   return (
     <React.Fragment>
       <Section title="Not for sale artwork with no consignable artists">
-        <ExtraLinks artwork={ArtworkNotForSaleWithNoConsignableArtists} />
+        <ExtraLinks
+          artwork={ArtworkNotForSaleWithNoConsignableArtists as any}
+        />
       </Section>
       <Section title="For sale artwork with no consignable artists">
-        <ExtraLinks artwork={ForSaleArtworkWithNoConsignableArtists} />
+        <ExtraLinks artwork={ForSaleArtworkWithNoConsignableArtists as any} />
       </Section>
       <Section title="For sale artwork with one consignable artist">
-        <ExtraLinks artwork={ForSaleArtworkWithOneConsignableArtist} />
+        <ExtraLinks artwork={ForSaleArtworkWithOneConsignableArtist as any} />
       </Section>
       <Section title="For sale artwork with multiple consignable artists">
-        <ExtraLinks artwork={ForSaleArtworkWithMultipleConsignableArtists} />
+        <ExtraLinks
+          artwork={ForSaleArtworkWithMultipleConsignableArtists as any}
+        />
       </Section>
       <Section title="Not for sale artwork with one consignable artist">
-        <ExtraLinks artwork={ArtworkNotForSaleWithOneConsignableArtist} />
+        <ExtraLinks
+          artwork={ArtworkNotForSaleWithOneConsignableArtist as any}
+        />
       </Section>
       <Section title="Not for sale artwork with multiple consignable artists">
-        <ExtraLinks artwork={ArtworkNotForSaleWithMultipleConsignableArtist} />
+        <ExtraLinks
+          artwork={ArtworkNotForSaleWithMultipleConsignableArtist as any}
+        />
       </Section>
       <Section title="Artwork from live auction">
-        <ExtraLinks artwork={ArtworkFromLiveAuction} />
+        <ExtraLinks artwork={ArtworkFromLiveAuction as any} />
       </Section>
     </React.Fragment>
   )

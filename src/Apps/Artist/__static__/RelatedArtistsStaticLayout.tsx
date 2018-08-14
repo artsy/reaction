@@ -33,18 +33,20 @@ export const RelatedArtists = () => {
                       <Box p={1} width={width}>
                         <ArtistCard
                           currentUser={null}
-                          artist={{
-                            id: "percy",
-                            image: {
-                              cropped: {
-                                url: "https://picsum.photos/110/110/?random",
+                          artist={
+                            {
+                              id: "percy",
+                              image: {
+                                cropped: {
+                                  url: "https://picsum.photos/110/110/?random",
+                                },
                               },
-                            },
-                            href: "/artist/francesca-dimattio",
-                            name: "Francesca DiMattio",
-                            formatted_nationality_and_birthday:
-                              "American, b. 1979",
-                          }}
+                              href: "/artist/francesca-dimattio",
+                              name: "Francesca DiMattio",
+                              formatted_nationality_and_birthday:
+                                "American, b. 1979",
+                            } as any
+                          }
                         />
                       </Box>
                     )
@@ -60,7 +62,11 @@ export const RelatedArtists = () => {
             <Row>
               <Col>
                 <Flex justifyContent="flex-end">
-                  <Pagination hasNextPage pageCursors={cursor} {...callbacks} />
+                  <Pagination
+                    hasNextPage
+                    pageCursors={cursor as any}
+                    {...callbacks}
+                  />
                 </Flex>
               </Col>
             </Row>

@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
+import { TagArtworks_tag$ref } from "./TagArtworks_tag.graphql";
 export type TagContentsArtworksQueryVariables = {
     readonly tagID: string;
     readonly medium?: string | null;
@@ -10,7 +11,9 @@ export type TagContentsArtworksQueryVariables = {
     readonly dimension_range?: string | null;
 };
 export type TagContentsArtworksQueryResponse = {
-    readonly tag: ({}) | null;
+    readonly tag: ({
+        readonly " $fragmentRefs": TagArtworks_tag$ref;
+    }) | null;
 };
 
 

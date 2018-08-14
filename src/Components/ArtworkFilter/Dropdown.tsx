@@ -1,18 +1,16 @@
+import { Dropdown_aggregation } from "__generated__/Dropdown_aggregation.graphql"
+import { find } from "lodash"
 import numeral from "numeral"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-
-import Icon from "../Icon"
-
 import styled from "styled-components"
 import colors from "../../Assets/Colors"
 import { avantgarde, garamond } from "../../Assets/Fonts"
+import Icon from "../Icon"
 import { labelMap } from "./ParamMap"
 
-import { find } from "lodash"
-
-interface DropdownProps extends RelayProps, React.HTMLProps<Dropdown> {
-  aggregation: any
+interface DropdownProps extends React.HTMLProps<Dropdown> {
+  aggregation: Dropdown_aggregation
   onSelected?: (slice: string, value: string) => void
   selected?: any
 }
@@ -194,14 +192,3 @@ export default createFragmentContainer(
     }
   `
 )
-
-interface RelayProps {
-  aggregation: {
-    slice: string | null
-    counts: {
-      name: string | null
-      id: string | null
-      count: number | null
-    }
-  } | null
-}

@@ -1,6 +1,8 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+declare const _GeneToolTip_gene$ref: unique symbol;
+export type GeneToolTip_gene$ref = typeof _GeneToolTip_gene$ref;
 export type GeneToolTip_gene = {
     readonly description: string | null;
     readonly href: string | null;
@@ -10,6 +12,7 @@ export type GeneToolTip_gene = {
         readonly url: string | null;
     }) | null;
     readonly name: string | null;
+    readonly " $refType": GeneToolTip_gene$ref;
 };
 
 

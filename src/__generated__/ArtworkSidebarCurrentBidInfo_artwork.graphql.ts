@@ -1,6 +1,8 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+declare const _ArtworkSidebarCurrentBidInfo_artwork$ref: unique symbol;
+export type ArtworkSidebarCurrentBidInfo_artwork$ref = typeof _ArtworkSidebarCurrentBidInfo_artwork$ref;
 export type ArtworkSidebarCurrentBidInfo_artwork = {
     readonly myLotStanding: ReadonlyArray<{
         readonly active_bid: ({
@@ -27,6 +29,7 @@ export type ArtworkSidebarCurrentBidInfo_artwork = {
             readonly bidder_positions: any | null;
         }) | null;
     }) | null;
+    readonly " $refType": ArtworkSidebarCurrentBidInfo_artwork$ref;
 };
 
 

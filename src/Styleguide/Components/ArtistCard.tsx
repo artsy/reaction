@@ -54,7 +54,7 @@ export const LargeArtistCard = (props: Props) => (
 
     <Flex flexDirection="column" alignItems="center">
       <FollowArtistButton
-        artist={props.artist as any}
+        artist={props.artist}
         currentUser={props.currentUser}
         useDeprecatedButtonStyle={false}
         buttonProps={{
@@ -90,7 +90,7 @@ export const SmallArtistCard = (props: Props) => (
       <Sans size="1">{props.artist.formatted_nationality_and_birthday}</Sans>
       <Spacer mb={1} />
       <FollowArtistButton
-        artist={props.artist as any}
+        artist={props.artist}
         currentUser={props.currentUser}
         useDeprecatedButtonStyle={false}
         buttonProps={{

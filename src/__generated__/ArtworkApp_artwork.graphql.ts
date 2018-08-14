@@ -1,7 +1,13 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-export type ArtworkApp_artwork = {};
+import { ArtworkSidebar_artwork$ref } from "./ArtworkSidebar_artwork.graphql";
+declare const _ArtworkApp_artwork$ref: unique symbol;
+export type ArtworkApp_artwork$ref = typeof _ArtworkApp_artwork$ref;
+export type ArtworkApp_artwork = {
+    readonly " $fragmentRefs": ArtworkSidebar_artwork$ref;
+    readonly " $refType": ArtworkApp_artwork$ref;
+};
 
 
 

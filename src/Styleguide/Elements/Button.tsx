@@ -26,6 +26,7 @@ export type ButtonVariant =
   | "primaryWhite"
   | "secondaryGray"
   | "secondaryOutline"
+  | "noOutline"
 const defaultVariant: ButtonVariant = "primaryBlack"
 
 export interface ButtonProps extends ButtonBaseProps {
@@ -136,6 +137,17 @@ export const Button = styled(
                     color: ${colors.black100};
                   }
                 }
+              `
+            }};
+          `
+        case "noOutline":
+          return css`
+            ${props => {
+              const { colors } = props.theme
+              return `
+                background-color: transparent;
+                border-color: transparent;
+                color: ${colors.black60};
               `
             }};
           `

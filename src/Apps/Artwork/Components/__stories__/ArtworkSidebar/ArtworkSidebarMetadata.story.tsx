@@ -18,22 +18,22 @@ storiesOf("Styleguide/Artwork/Sidebar", module)
     return (
       <React.Fragment>
         <Section title="Filled out metadata no editions">
-          <Metadata artwork={FilledOutMetadataNoEditions} />
+          <Metadata artwork={FilledOutMetadataNoEditions as any} />
         </Section>
         <Section title="Filled out metadata one edition set">
-          <Metadata artwork={FilledOutMetadataOneEditionSet} />
+          <Metadata artwork={FilledOutMetadataOneEditionSet as any} />
         </Section>
         <Section title="Filled out metadata multiple edition sets">
-          <Metadata artwork={FilledOutMetadataMultipleEditionSets} />
+          <Metadata artwork={FilledOutMetadataMultipleEditionSets as any} />
         </Section>
         <Section title="Empty metadata no editions">
-          <Metadata artwork={EmptyMetadataNoEditions} />
+          <Metadata artwork={EmptyMetadataNoEditions as any} />
         </Section>
         <Section title="Empty metadata one edition set">
-          <Metadata artwork={EmptyMetadataOneEditionSet} />
+          <Metadata artwork={EmptyMetadataOneEditionSet as any} />
         </Section>
         <Section title="Empty metadata multiple edition sets">
-          <Metadata artwork={EmptyMetadataMultipleEditionSets} />
+          <Metadata artwork={EmptyMetadataMultipleEditionSets as any} />
         </Section>
       </React.Fragment>
     )

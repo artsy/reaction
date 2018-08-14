@@ -81,7 +81,15 @@ export const highestCategory = edges => {
   )[0]
 }
 
-export const hasSections = ({ highlights, auctionResults, collections }) => {
+export const hasSections = ({
+  highlights,
+  auctionResults,
+  collections,
+}: {
+  highlights: { partners?: { edges: ReadonlyArray<any> } }
+  auctionResults?: { edges: ReadonlyArray<any> }
+  collections?: ReadonlyArray<any>
+}) => {
   const { partners } = highlights
 
   // Is there a gallery representation section?

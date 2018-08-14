@@ -4722,15 +4722,15 @@
             },
             {
               "name": "is_purchasable",
-              "description": "True for inquireable artworks that have an exact price.",
+              "description": null,
               "args": [],
               "type": {
                 "kind": "SCALAR",
                 "name": "Boolean",
                 "ofType": null
               },
-              "isDeprecated": false,
-              "deprecationReason": null
+              "isDeprecated": true,
+              "deprecationReason": "Purchase requests are not supported. Replaced by buy now."
             },
             {
               "name": "is_saved",
@@ -8827,6 +8827,72 @@
               "type": {
                 "kind": "SCALAR",
                 "name": "Int",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "ecommerce_artworks",
+              "description": null,
+              "args": [
+                {
+                  "name": "format",
+                  "description": "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "label",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "SCALAR",
+                "name": "FormattedNumber",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "auction_artworks",
+              "description": null,
+              "args": [
+                {
+                  "name": "format",
+                  "description": "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "label",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "SCALAR",
+                "name": "FormattedNumber",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -31134,8 +31200,8 @@
                 "name": "Boolean",
                 "ofType": null
               },
-              "isDeprecated": false,
-              "deprecationReason": null
+              "isDeprecated": true,
+              "deprecationReason": "Purchase requests are not supported. Replaced by buy now."
             },
             {
               "name": "from_last_viewed_message_id",
@@ -37914,15 +37980,15 @@
             },
             {
               "name": "is_purchasable",
-              "description": "True for inquireable artworks that have an exact price.",
+              "description": null,
               "args": [],
               "type": {
                 "kind": "SCALAR",
                 "name": "Boolean",
                 "ofType": null
               },
-              "isDeprecated": false,
-              "deprecationReason": null
+              "isDeprecated": true,
+              "deprecationReason": "Purchase requests are not supported. Replaced by buy now."
             },
             {
               "name": "is_saved",

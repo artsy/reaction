@@ -1,11 +1,14 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
+import { MarketDataSummary_artist$ref } from "./MarketDataSummary_artist.graphql";
 export type MarketDataSummaryContentsQueryVariables = {
     readonly artistID: string;
 };
 export type MarketDataSummaryContentsQueryResponse = {
-    readonly artist: ({}) | null;
+    readonly artist: ({
+        readonly " $fragmentRefs": MarketDataSummary_artist$ref;
+    }) | null;
 };
 
 

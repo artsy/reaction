@@ -1,6 +1,8 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+declare const _MarketDataSummary_artist$ref: unique symbol;
+export type MarketDataSummary_artist$ref = typeof _MarketDataSummary_artist$ref;
 export type MarketDataSummary_artist = {
     readonly _id: string;
     readonly collections: ReadonlyArray<string | null> | null;
@@ -24,6 +26,7 @@ export type MarketDataSummary_artist = {
             }) | null;
         }) | null> | null;
     }) | null;
+    readonly " $refType": MarketDataSummary_artist$ref;
 };
 
 

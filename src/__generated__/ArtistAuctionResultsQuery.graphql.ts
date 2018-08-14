@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
+import { ArtistAuctionResults_artist$ref } from "./ArtistAuctionResults_artist.graphql";
 export type AuctionResultSorts = "DATE_DESC" | "ESTIMATE_AND_DATE_DESC" | "PRICE_AND_DATE_DESC" | "%future added value";
 export type ArtistAuctionResultsQueryVariables = {
     readonly first?: number | null;
@@ -11,7 +12,9 @@ export type ArtistAuctionResultsQueryVariables = {
     readonly artistID: string;
 };
 export type ArtistAuctionResultsQueryResponse = {
-    readonly artist: ({}) | null;
+    readonly artist: ({
+        readonly " $fragmentRefs": ArtistAuctionResults_artist$ref;
+    }) | null;
 };
 
 

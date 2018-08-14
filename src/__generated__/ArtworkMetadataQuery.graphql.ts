@@ -1,11 +1,14 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
+import { Metadata_artwork$ref } from "./Metadata_artwork.graphql";
 export type ArtworkMetadataQueryVariables = {
     readonly artworkID: string;
 };
 export type ArtworkMetadataQueryResponse = {
-    readonly artwork: ({}) | null;
+    readonly artwork: ({
+        readonly " $fragmentRefs": Metadata_artwork$ref;
+    }) | null;
 };
 
 

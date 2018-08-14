@@ -1,6 +1,8 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+declare const _ArtistSearchResultsContent_viewer$ref: unique symbol;
+export type ArtistSearchResultsContent_viewer$ref = typeof _ArtistSearchResultsContent_viewer$ref;
 export type ArtistSearchResultsContent_viewer = {
     readonly match_artist: ReadonlyArray<({
         readonly id: string;
@@ -13,6 +15,7 @@ export type ArtistSearchResultsContent_viewer = {
             }) | null;
         }) | null;
     }) | null> | null;
+    readonly " $refType": ArtistSearchResultsContent_viewer$ref;
 };
 
 

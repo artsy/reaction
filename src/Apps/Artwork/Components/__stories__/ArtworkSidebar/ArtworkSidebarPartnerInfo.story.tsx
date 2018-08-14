@@ -53,13 +53,13 @@ storiesOf("Styleguide/Artwork/Sidebar", module).add("PartnerInfo", () => {
   return (
     <React.Fragment>
       <Section title="Rartner with locations">
-        <PartnerInfo artwork={ArtworkFromPartnerWithLocations} />
+        <PartnerInfo artwork={ArtworkFromPartnerWithLocations as any} />
       </Section>
       <Section title="Partner without locations">
-        <PartnerInfo artwork={ArtworkFromPartnerWithoutLocations} />
+        <PartnerInfo artwork={ArtworkFromPartnerWithoutLocations as any} />
       </Section>
       <Section title="Institutional seller">
-        <PartnerInfo artwork={ArtworkWithCollectingInstitution} />
+        <PartnerInfo artwork={ArtworkWithCollectingInstitution as any} />
       </Section>
     </React.Fragment>
   )
