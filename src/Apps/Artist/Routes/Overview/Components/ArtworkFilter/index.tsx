@@ -1,6 +1,8 @@
 import { Sans } from "@artsy/palette"
+import { color } from "@artsy/palette"
 import { ArtworkFilter_artist } from "__generated__/ArtworkFilter_artist.graphql"
 import { FilterState } from "Apps/Artist/Routes/Overview/state"
+import { FilterIcon } from "Assets/Icons/FilterIcon"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { AppState } from "Router"
@@ -33,7 +35,7 @@ class Filter extends Component<Props, State> {
   }
 
   state = {
-    showMobileActionSheet: true,
+    showMobileActionSheet: false,
   }
 
   renderCategory(filters, category, counts, mediator) {
@@ -301,7 +303,14 @@ class Filter extends Component<Props, State> {
                                     })
                                   }
                                 >
-                                  Filter
+                                  <Flex
+                                    justifyContent="space-between"
+                                    alignItems="center"
+                                  >
+                                    <FilterIcon fill={color("white100")} />
+                                    <Spacer mr={0.5} />
+                                    Filter
+                                  </Flex>
                                 </Button>
                               )}
                             </Flex>
