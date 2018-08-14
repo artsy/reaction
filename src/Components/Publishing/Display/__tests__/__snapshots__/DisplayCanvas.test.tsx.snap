@@ -202,6 +202,9 @@ exports[`snapshot renders the canvas in overlay layout 1`] = `
     padding: 0;
     width: 100%;
     height: 400px;
+    min-height: -webkit-fit-content;
+    min-height: -moz-fit-content;
+    min-height: fit-content;
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -583,6 +586,9 @@ exports[`snapshot renders the canvas in slideshow layout 1`] = `
     padding: 0;
     width: 100%;
     height: 400px;
+    min-height: -webkit-fit-content;
+    min-height: -moz-fit-content;
+    min-height: fit-content;
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -949,6 +955,9 @@ exports[`snapshot renders the canvas in standard layout with image 1`] = `
     padding: 0;
     width: 100%;
     height: 400px;
+    min-height: -webkit-fit-content;
+    min-height: -moz-fit-content;
+    min-height: fit-content;
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -1161,6 +1170,7 @@ exports[`snapshot renders the canvas in standard layout with video 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  z-index: 10;
 }
 
 .c2 {
@@ -1319,6 +1329,9 @@ exports[`snapshot renders the canvas in standard layout with video 1`] = `
     padding: 0;
     width: 100%;
     height: 400px;
+    min-height: -webkit-fit-content;
+    min-height: -moz-fit-content;
+    min-height: fit-content;
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -1381,7 +1394,7 @@ exports[`snapshot renders the canvas in standard layout with video 1`] = `
       onClick={[Function]}
     >
       <div
-        className="c4"
+        className="CanvasVideo__cover c4"
       >
         <div
           className="PlayButton c5"
