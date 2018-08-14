@@ -22,27 +22,26 @@ import { ShippingProps } from "./Routes/Shipping"
 // @ts-ignore
 import { SubmissionProps } from "./Routes/Submission"
 
-/**
- * Used to match against child route locations. Supports order or order2.
- * Captures the child route name in the first capture group.
- *
- * https://regexper.com/#%5C%2Forder%5Cd%3F%5C%2F.%2B%5C%2F%28%5Cw%2B%29
- */
-const ORDER_REGEX = /\/order\d?\/.+\/(\w+)/
+const LEAVE_MESSAGING =
+  "Are you sure you want to refresh? Your changes will not be saved."
 
-const confirmRouteExit = location => {
-  // Refresh
-  if (window && location.pathname === window.location.pathname) {
+const confirmRouteExit = (newLocation, oldLocation, router) => {
+  // Refresh -- On refresh newLocation is null
+  if (!newLocation || newLocation.pathname === oldLocation.pathname) {
     // Most browsers will ignore this and supply their own messaging for refresh
-    return "Are you sure you want to refresh? Your changes will not be saved."
+    return LEAVE_MESSAGING
   }
 
-  // Attempting to navigate to another route
-  if (location.pathname.match(ORDER_REGEX)) {
-    return true
+  // Attempting to navigate to another route in the orders app
+  const match = router.matcher.match(newLocation)
+  if (match) {
+    const matchedRoutes = router.matcher.getRoutes(match)
+    if (matchedRoutes && matchedRoutes[0].Component === OrderApp) {
+      return true
+    }
   }
 
-  return "Are you sure you want to leave? Your changes will not be saved."
+  return LEAVE_MESSAGING
 }
 
 export const routes = [

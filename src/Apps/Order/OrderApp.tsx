@@ -18,6 +18,7 @@ export interface OrderAppProps {
   location: any
   routeIndices: number[]
   routes: any
+  router: any
 }
 
 export class OrderApp extends React.Component<OrderAppProps> {
@@ -35,12 +36,12 @@ export class OrderApp extends React.Component<OrderAppProps> {
     this.removeTransitionHook()
   }
 
-  onTransition = location => {
-    const { routes, routeIndices } = this.props
-    let route = findRoute(routes, routeIndices)
+  onTransition = newLocation => {
+    const { routes, routeIndices, location: oldLocation, router } = this.props
+    const route = findRoute(routes, routeIndices)
 
     if (route.onTransition) {
-      return route.onTransition(location)
+      return route.onTransition(newLocation, oldLocation, router)
     }
 
     return true
