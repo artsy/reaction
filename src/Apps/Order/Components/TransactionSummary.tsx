@@ -1,19 +1,10 @@
-import { Serif, space } from "@artsy/palette"
+import { Serif } from "@artsy/palette"
 import React from "react"
-import { media } from "styled-bootstrap-grid"
-import { BorderBox, Box } from "Styleguide/Elements/Box"
+import { Box } from "Styleguide/Elements/Box"
 import { Flex, FlexProps } from "Styleguide/Elements/Flex"
 import { Image } from "Styleguide/Elements/Image"
-import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
-import styled from "../../../../node_modules/styled-components"
-
-const SummaryContainer = styled(Flex)`
-  margin: ${space(2)}px;
-  ${media.sm`
-  margin: ${space(3)}px;
-`};
-`
+import { StackableResponsiveBorderBox } from "Styleguide/Elements/StackableResponsiveBorderBox"
 
 export interface TransactionSummaryProps extends FlexProps {
   price: string
@@ -40,8 +31,8 @@ export const TransactionSummary: React.SFC<TransactionSummaryProps> = ({
   ...others
 }) => {
   return (
-    <BorderBox p={0} flexDirection="column" {...others}>
-      <SummaryContainer flexDirection="row">
+    <Flex flexDirection="column" {...others}>
+      <StackableResponsiveBorderBox flexDirection="row">
         <Box height="auto">
           <Image src={imageURL} width="55px" mr={1} />
         </Box>
@@ -59,16 +50,15 @@ export const TransactionSummary: React.SFC<TransactionSummaryProps> = ({
             {artworkLocation}
           </Serif>
         </Flex>
-      </SummaryContainer>
-      <Separator />
-      <SummaryContainer flexDirection="column">
+      </StackableResponsiveBorderBox>
+      <StackableResponsiveBorderBox flexDirection="column">
         <Entry label="Price" value={price} />
         <Entry label="Shipping" value={shipping} />
         <Entry label="Tax" value={tax} />
         <Spacer mb={2} />
         <Entry label="Total" value={total} final />
-      </SummaryContainer>
-    </BorderBox>
+      </StackableResponsiveBorderBox>
+    </Flex>
   )
 }
 

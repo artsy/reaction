@@ -3,10 +3,10 @@
 exports[`Order summary renders the summary properly 1`] = `
 Array [
   <div
-    className="Box__BorderBox-s8jehsh-0 inBkKi Flex-s16agd44-0 glBAnc"
+    className="Flex-s16agd44-0 dPbvVX"
   >
     <div
-      className="TransactionSummary__SummaryContainer-s152y43v-0 fpNQLq Flex-s16agd44-0 cIVWsN"
+      className="StackableResponsiveBorderBox-s35ikuq-0 kSZzum Box__BorderBox-s8jehsh-0 dcVnlg Flex-s16agd44-0 cIVWsN"
     >
       <div
         className="Box-s8jehsh-1 cgJzVN"
@@ -66,11 +66,7 @@ Array [
       </div>
     </div>
     <div
-      className="Separator-s1stngne-0 fSkTJC"
-      width="100%"
-    />
-    <div
-      className="TransactionSummary__SummaryContainer-s152y43v-0 fpNQLq Flex-s16agd44-0 dPbvVX"
+      className="StackableResponsiveBorderBox-s35ikuq-0 kSZzum Box__BorderBox-s8jehsh-0 dcVnlg Flex-s16agd44-0 dPbvVX"
     >
       <div
         className="Flex-s16agd44-0 gcWLCl"
