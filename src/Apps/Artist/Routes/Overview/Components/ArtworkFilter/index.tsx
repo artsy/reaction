@@ -6,24 +6,34 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { AppState } from "Router"
 import { Toggle } from "Styleguide/Components/Toggle"
 import { Box } from "Styleguide/Elements/Box"
+import { Button } from "Styleguide/Elements/Button"
 import { Checkbox } from "Styleguide/Elements/Checkbox"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Radio } from "Styleguide/Elements/Radio"
-import { Select } from "Styleguide/Elements/Select"
+import { SmallSelect } from "Styleguide/Elements/Select"
 import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Subscribe } from "unstated"
 import { Responsive } from "Utils/Responsive"
 import { ArtworkFilterRefetchContainer as ArtworkFilter } from "./ArtworkFilterRefetch"
+import { MobileActionSheet } from "./MobileActionSheet"
 
 interface Props {
   artist: ArtworkFilter_artist
   hideTopBorder?: boolean
 }
 
-class Filter extends Component<Props> {
+interface State {
+  showMobileActionSheet: boolean
+}
+
+class Filter extends Component<Props, State> {
   static defaultProps = {
     hideTopBorder: false,
+  }
+
+  state = {
+    showMobileActionSheet: true,
   }
 
   renderCategory(filters, category, counts, mediator) {
@@ -111,7 +121,7 @@ class Filter extends Component<Props> {
   }
 
   render() {
-    const { hideTopBorder } = this.props
+    const { showMobileActionSheet } = this.state
     const { aggregations } = this.props.artist.filtered_artworks
     const mediumAggregation = aggregations.find(agg => agg.slice === "MEDIUM")
     const galleryAggregation = aggregations.find(agg => agg.slice === "GALLERY")
@@ -138,6 +148,77 @@ class Filter extends Component<Props> {
           return (
             <Responsive>
               {({ xs, sm, md }) => {
+                const hideTopBorder = this.props.hideTopBorder || xs
+
+                // Filters component to be rendered in Sidebar (desktop) and
+                // ActionSheet (mobile)
+                const Filters = () => {
+                  return (
+                    <>
+                      <Flex
+                        flexDirection="column"
+                        alignItems="left"
+                        mt={-1}
+                        mb={1}
+                      >
+                        {!hideTopBorder && <Separator mb={1} />}
+
+                        {currentUser &&
+                        currentUser.lab_features &&
+                        currentUser.lab_features.includes("New Buy Now Flow")
+                          ? this.renderWaysToBuy(filters, mediator, counts)
+                          : this.renderForSaleCheckbox(
+                              filters,
+                              mediator,
+                              counts
+                            )}
+                      </Flex>
+
+                      <Toggle label="Medium" expanded>
+                        {this.renderCategory(
+                          filters,
+                          "medium",
+                          mediumAggregation.counts,
+                          mediator
+                        )}
+                      </Toggle>
+                      <Toggle
+                        expanded={filters.state.partner_id}
+                        label="Gallery"
+                      >
+                        {this.renderCategory(
+                          filters,
+                          "partner_id",
+                          galleryAggregation.counts,
+                          mediator
+                        )}
+                      </Toggle>
+
+                      <Toggle
+                        expanded={filters.state.partner_id}
+                        label="Institution"
+                      >
+                        {this.renderCategory(
+                          filters,
+                          "partner_id",
+                          institutionAggregation.counts,
+                          mediator
+                        )}
+                      </Toggle>
+                      <Toggle
+                        expanded={filters.state.major_periods.length > 0}
+                        label="Time period"
+                      >
+                        {this.renderCategory(
+                          filters,
+                          "major_periods",
+                          periodAggregation.counts,
+                          mediator
+                        )}
+                      </Toggle>
+                    </>
+                  )
+                }
                 return (
                   <>
                     <Flex>
@@ -145,71 +226,19 @@ class Filter extends Component<Props> {
                         Sidebar Area
                       */}
 
-                      {!xs && (
+                      {xs ? (
+                        showMobileActionSheet && (
+                          <MobileActionSheet
+                            onClose={() =>
+                              this.setState({ showMobileActionSheet: false })
+                            }
+                          >
+                            <Filters />
+                          </MobileActionSheet>
+                        )
+                      ) : (
                         <Sidebar width="30%" mr={2}>
-                          <Flex
-                            flexDirection="column"
-                            alignItems="left"
-                            mt={-1}
-                            mb={1}
-                          >
-                            {!hideTopBorder && <Separator mb={1} />}
-
-                            {currentUser &&
-                            currentUser.lab_features &&
-                            currentUser.lab_features.includes(
-                              "New Buy Now Flow"
-                            )
-                              ? this.renderWaysToBuy(filters, mediator, counts)
-                              : this.renderForSaleCheckbox(
-                                  filters,
-                                  mediator,
-                                  counts
-                                )}
-                          </Flex>
-
-                          <Toggle label="Medium" expanded>
-                            {this.renderCategory(
-                              filters,
-                              "medium",
-                              mediumAggregation.counts,
-                              mediator
-                            )}
-                          </Toggle>
-                          <Toggle
-                            expanded={filters.state.partner_id}
-                            label="Gallery"
-                          >
-                            {this.renderCategory(
-                              filters,
-                              "partner_id",
-                              galleryAggregation.counts,
-                              mediator
-                            )}
-                          </Toggle>
-
-                          <Toggle
-                            expanded={filters.state.partner_id}
-                            label="Institution"
-                          >
-                            {this.renderCategory(
-                              filters,
-                              "partner_id",
-                              institutionAggregation.counts,
-                              mediator
-                            )}
-                          </Toggle>
-                          <Toggle
-                            expanded={filters.state.major_periods.length > 0}
-                            label="Time period"
-                          >
-                            {this.renderCategory(
-                              filters,
-                              "major_periods",
-                              periodAggregation.counts,
-                              mediator
-                            )}
-                          </Toggle>
+                          <Filters />
                         </Sidebar>
                       )}
 
@@ -220,33 +249,64 @@ class Filter extends Component<Props> {
                       <Box width={xs ? "100%" : "70%"}>
                         {!hideTopBorder && <Separator mb={2} mt={-1} />}
 
-                        <Flex justifyContent="flex-end">
-                          <Select
-                            mt="-8px"
-                            options={
-                              [
-                                { value: "-decayed_merch", text: "Default" },
-                                {
-                                  value: "-partner_updated_at",
-                                  text: "Recently updated",
-                                },
-                                {
-                                  value: "-published_at",
-                                  text: "Recently added",
-                                },
-                                {
-                                  value: "-year",
-                                  text: "Artwork year (desc.)",
-                                },
-                                { value: "year", text: "Artwork year (asc.)" },
-                              ] // Corrective spacing for line-height
-                            }
-                            selected={filters.state.sort}
-                            onSelect={sort => {
-                              return filters.setSort(sort, mediator)
-                            }}
-                          />
-                        </Flex>
+                        {(() => {
+                          const justifyContent = xs
+                            ? "space-between"
+                            : "flex-end"
+
+                          return (
+                            <Flex
+                              justifyContent={justifyContent}
+                              alignItems="center"
+                            >
+                              <SmallSelect
+                                mt="-8px"
+                                options={
+                                  [
+                                    {
+                                      value: "-decayed_merch",
+                                      text: "Default",
+                                    },
+                                    {
+                                      value: "-partner_updated_at",
+                                      text: "Recently updated",
+                                    },
+                                    {
+                                      value: "-published_at",
+                                      text: "Recently added",
+                                    },
+                                    {
+                                      value: "-year",
+                                      text: "Artwork year (desc.)",
+                                    },
+                                    {
+                                      value: "year",
+                                      text: "Artwork year (asc.)",
+                                    },
+                                  ] // Corrective spacing for line-height
+                                }
+                                selected={filters.state.sort}
+                                onSelect={sort => {
+                                  return filters.setSort(sort, mediator)
+                                }}
+                              />
+
+                              {xs && (
+                                <Button
+                                  size="small"
+                                  mt={-1}
+                                  onClick={() =>
+                                    this.setState({
+                                      showMobileActionSheet: true,
+                                    })
+                                  }
+                                >
+                                  Filter
+                                </Button>
+                              )}
+                            </Flex>
+                          )
+                        })()}
 
                         <Spacer mb={2} />
 
