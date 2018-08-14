@@ -27,11 +27,9 @@ export class ErrorPage extends React.Component<ErrorPageProps, null> {
 
     return (
       <>
-        <StyledErrorCodeBackground code={code}>
-          <StyledErrorDefaultMessage>
-            {defaultMessage}
-          </StyledErrorDefaultMessage>
-          {code !== 404 && <StyledErrorInner>{detailMessage}</StyledErrorInner>}
+        <ErrorCodeBackground code={code}>
+          <ErrorDefaultMessage>{defaultMessage}</ErrorDefaultMessage>
+          {code !== 404 && <ErrorInner>{detailMessage}</ErrorInner>}
           <Serif size="4" color="black60">
             Please contact{" "}
             <Link href="mailto:support@artsy.net">support@artsy.net</Link> with
@@ -41,7 +39,7 @@ export class ErrorPage extends React.Component<ErrorPageProps, null> {
           <Link href="/">
             <Button size="large">Go to Artsy homepage</Button>
           </Link>
-        </StyledErrorCodeBackground>
+        </ErrorCodeBackground>
       </>
     )
   }
@@ -51,13 +49,13 @@ const Link = styled.a`
   color: ${color("black100")};
 `
 
-const StyledErrorDefaultMessage = styled.div`
+const ErrorDefaultMessage = styled.div`
   max-width: 60%;
   margin: 40px auto;
   ${garamond("s40")};
 `
 
-const StyledErrorInner = styled.div`
+const ErrorInner = styled.div`
   background: ${color("white100")};
   border: 0;
   border: 3px solid ${color("black10")};
@@ -75,7 +73,7 @@ const StyledErrorInner = styled.div`
   word-break: break-word;
 `
 
-const StyledErrorCodeBackground = styled<ErrorCodeBackgroundProps, any>("div")`
+const ErrorCodeBackground = styled<ErrorCodeBackgroundProps, any>("div")`
   position: absolute;
   text-align: center;
   width: 100%;

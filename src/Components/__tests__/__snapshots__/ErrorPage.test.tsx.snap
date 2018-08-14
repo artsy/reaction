@@ -51,7 +51,7 @@ exports[`ErrorPage snapshots renders correctly 1`] = `
 }
 
 .c3 {
-  color: #000000;
+  color: #000;
 }
 
 .c1 {
@@ -89,7 +89,7 @@ exports[`ErrorPage snapshots renders correctly 1`] = `
   font-size: 535px;
   line-height: 1;
   z-index: -1;
-  color: #f8f8f8;
+  color: #F8F8F8;
 }
 
 @media not all and (pointer:coarse),not all and (-moz-touch-enabled:1) {
