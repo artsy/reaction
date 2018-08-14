@@ -1,6 +1,8 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+declare const _NavigationTabs_artist$ref: unique symbol;
+export type NavigationTabs_artist$ref = typeof _NavigationTabs_artist$ref;
 export type NavigationTabs_artist = {
     readonly id: string;
     readonly statuses: ({
@@ -10,6 +12,7 @@ export type NavigationTabs_artist = {
         readonly cv: boolean | null;
         readonly auction_lots: boolean | null;
     }) | null;
+    readonly " $refType": NavigationTabs_artist$ref;
 };
 
 

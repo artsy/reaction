@@ -1,3 +1,4 @@
+import { GridItem_artwork } from "__generated__/GridItem_artwork.graphql"
 import { pickBy } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -21,8 +22,9 @@ const Placeholder = styled.div`
   width: 100%;
 `
 
-interface Props extends RelayProps, React.HTMLProps<ArtworkGridItemContainer> {
+interface Props extends React.HTMLProps<ArtworkGridItemContainer> {
   useRelay?: boolean
+  artwork: GridItem_artwork
   style?: any
   currentUser?: any
   mediator?: {
@@ -109,7 +111,7 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
                 {hover && (
                   <SaveButtonBlock
                     className="artwork-save"
-                    artwork={artwork as any}
+                    artwork={artwork}
                     style={{
                       position: "absolute",
                       right: "10px",
@@ -134,6 +136,7 @@ export const ArtworkGridItem = styled(ArtworkGridItemContainer)`
   .artwork-save {
     opacity: 0;
   }
+
   &:hover .artwork-save {
     opacity: 1;
   }
@@ -154,14 +157,3 @@ export default createFragmentContainer(
     }
   `
 )
-
-interface RelayProps {
-  artwork: {
-    href: string | null
-    image: {
-      placeholder: number | null
-      url: string | null
-      aspect_ratio: number | null
-    } | null
-  }
-}

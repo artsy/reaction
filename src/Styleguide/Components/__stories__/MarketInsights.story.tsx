@@ -8,7 +8,7 @@ storiesOf("Styleguide/Components", module).add("MarketInsights", () => {
   return (
     <React.Fragment>
       <Section title="Market Insights">
-        <MarketInsights artist={artistResponse} />
+        <MarketInsights artist={artistResponse as any} />
       </Section>
     </React.Fragment>
   )

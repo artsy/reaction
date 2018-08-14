@@ -118,10 +118,16 @@ export class ShippingRoute extends Component<ShippingProps> {
                   </Join>
 
                   <Spacer mb={3} />
+
+                  <Link to={`/order2/${order.id}/payment`}>
+                    <Button size="large" width="100%">
+                      Continue
+                    </Button>
+                  </Link>
                 </>
               }
               Sidebar={
-                <Summary mediator={this.props.mediator} order={order as any}>
+                <Summary mediator={this.props.mediator} order={order}>
                   {xs && (
                     <>
                       <Spacer mb={3} />

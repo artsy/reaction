@@ -1,27 +1,18 @@
+import { Fillwidth_artworks } from "__generated__/Fillwidth_artworks.graphql"
+import { find } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-
 import sizeMe from "react-sizeme"
 import styled from "styled-components"
-
 import fillwidthDimensions from "../../Utils/fillwidth"
 import RelayFillwidthItem, { FillwidthItem } from "./FillwidthItem"
 
-import { find } from "lodash"
-
-interface RelayProps {
-  artworks: {
-    edges: Array<{
-      node: any
-    } | null> | null
-  }
-}
-
-interface Props extends RelayProps, React.HTMLAttributes<FillwidthContainer> {
+interface Props extends React.HTMLAttributes<FillwidthContainer> {
   targetHeight?: number
   gutter?: number
   size?: any
   useRelay?: boolean
+  artworks: Fillwidth_artworks
 }
 
 class FillwidthContainer extends React.Component<Props, null> {
@@ -36,7 +27,7 @@ class FillwidthContainer extends React.Component<Props, null> {
 
     return (
       <FillWidthItemBlock
-        artwork={artwork as any}
+        artwork={artwork}
         key={"artwork--" + artwork.__id}
         targetHeight={artworkSize.height}
         imageHeight={artworkSize.height}

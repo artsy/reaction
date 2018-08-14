@@ -1,7 +1,7 @@
+import { InquiryArtwork_artwork } from "__generated__/InquiryArtwork_artwork.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled, { StyledFunction } from "styled-components"
-
 import colors from "../Assets/Colors"
 import Artwork, { ArtworkProps, OverlayProps } from "./Artwork"
 import Icon from "./Icon"
@@ -47,7 +47,9 @@ const Overlay: React.SFC<OverlayProps> = props => (
   </OverlayBackground>
 )
 
-export const InquiryArtwork: React.SFC<ArtworkProps> = props => {
+export const InquiryArtwork: React.SFC<
+  ArtworkProps & { artwork: InquiryArtwork_artwork }
+> = props => {
   return (
     <Artwork {...props} extended={false} Overlay={Overlay} showOverlayOnHover />
   )

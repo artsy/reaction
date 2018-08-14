@@ -34,15 +34,17 @@ export class ArtistInfo extends React.Component<ArtistInfoProps> {
           }}
         </Responsive>
         <Box mb={1}>
-          <MarketInsights artist={artistResponse} />
+          <MarketInsights artist={artistResponse as any} />
         </Box>
         <Box mb={2}>
           <SelectedExhibitions exhibitions={this.props.exhibitions} />
         </Box>
         <ArtistBio
-          bio={{
-            biography_blurb: { text: this.props.bio, credit: "Gagosian" },
-          }}
+          bio={
+            {
+              biography_blurb: { text: this.props.bio, credit: "Gagosian" },
+            } as any
+          }
         />
       </React.Fragment>
     )

@@ -1,6 +1,6 @@
+import { GeneArtworksContent_filtered_artworks } from "__generated__/GeneArtworksContent_filtered_artworks.graphql"
 import * as React from "react"
 import {
-  ConnectionData,
   createPaginationContainer,
   graphql,
   RelayPaginationProp,
@@ -9,8 +9,9 @@ import styled from "styled-components"
 import ArtworkGrid from "../ArtworkGrid"
 import Spinner from "../Spinner"
 
-interface Props extends RelayProps {
-  relay?: RelayPaginationProp
+interface Props {
+  relay: RelayPaginationProp
+  filtered_artworks: GeneArtworksContent_filtered_artworks
   geneID: string
 }
 
@@ -47,8 +48,9 @@ export class GeneArtworksContent extends React.Component<Props, State> {
             .hasNextPage
           if (newLength - origLength < PageSize && newHasMore) {
             console.error(
-              `Total count inconsistent with actual records returned for gene: ${this
-                .props.geneID}`
+              `Total count inconsistent with actual records returned for gene: ${
+                this.props.geneID
+              }`
             )
             this.finishedPaginatingWithError = true
           }
@@ -62,7 +64,7 @@ export class GeneArtworksContent extends React.Component<Props, State> {
     return (
       <div>
         <ArtworkGrid
-          artworks={this.props.filtered_artworks.artworks as any}
+          artworks={this.props.filtered_artworks.artworks}
           columnCount={4}
           itemMargin={40}
           onLoadMore={() => this.loadMoreArtworks()}
@@ -107,7 +109,7 @@ export default createPaginationContainer(
   {
     direction: "forward",
     getConnectionFromProps(props) {
-      return props.filtered_artworks.artworks as ConnectionData
+      return props.filtered_artworks.artworks
     },
     getFragmentVariables(prevVars, totalCount) {
       return {
@@ -140,14 +142,3 @@ export default createPaginationContainer(
     `,
   }
 )
-
-interface RelayProps {
-  filtered_artworks: {
-    artworks: {
-      edges: Array<{}>
-      pageInfo: {
-        hasNextPage: boolean
-      }
-    }
-  }
-}

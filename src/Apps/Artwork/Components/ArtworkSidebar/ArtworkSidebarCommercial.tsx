@@ -30,7 +30,7 @@ export class ArtworkSidebarCommercial extends React.Component<
         <React.Fragment key={edition.__id}>
           <Box pb={2}>
             {this.renderSaleMessage()}
-            <SizeInfo piece={edition as any} />
+            <SizeInfo piece={edition} />
           </Box>
           {index !== editions.length - 1 && <Separator />}
         </React.Fragment>

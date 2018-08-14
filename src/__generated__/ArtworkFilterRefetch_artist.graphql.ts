@@ -1,9 +1,15 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+import { ArtworkFilterArtworkGrid_filtered_artworks$ref } from "./ArtworkFilterArtworkGrid_filtered_artworks.graphql";
+declare const _ArtworkFilterRefetch_artist$ref: unique symbol;
+export type ArtworkFilterRefetch_artist$ref = typeof _ArtworkFilterRefetch_artist$ref;
 export type ArtworkFilterRefetch_artist = {
     readonly __id: string;
-    readonly grid: ({}) | null;
+    readonly grid: ({
+        readonly " $fragmentRefs": ArtworkFilterArtworkGrid_filtered_artworks$ref;
+    }) | null;
+    readonly " $refType": ArtworkFilterRefetch_artist$ref;
 };
 
 

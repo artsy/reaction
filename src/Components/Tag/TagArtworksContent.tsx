@@ -1,6 +1,6 @@
+import { TagArtworksContent_filtered_artworks } from "__generated__/TagArtworksContent_filtered_artworks.graphql"
 import React from "react"
 import {
-  ConnectionData,
   createPaginationContainer,
   graphql,
   RelayPaginationProp,
@@ -9,8 +9,9 @@ import styled from "styled-components"
 import ArtworkGrid from "../ArtworkGrid"
 import Spinner from "../Spinner"
 
-export interface Props extends RelayProps {
-  relay?: RelayPaginationProp
+export interface Props {
+  filtered_artworks: TagArtworksContent_filtered_artworks
+  relay: RelayPaginationProp
   tagID: string
 }
 
@@ -63,7 +64,7 @@ export class TagArtworksContent extends React.Component<Props, State> {
     return (
       <div>
         <ArtworkGrid
-          artworks={this.props.filtered_artworks.artworks as any}
+          artworks={this.props.filtered_artworks.artworks}
           columnCount={4}
           itemMargin={40}
           onLoadMore={() => this.loadMoreArtworks()}
@@ -108,7 +109,7 @@ export default createPaginationContainer(
   {
     direction: "forward",
     getConnectionFromProps(props) {
-      return props.filtered_artworks.artworks as ConnectionData
+      return props.filtered_artworks.artworks
     },
     getFragmentVariables(prevVars, totalCount) {
       return {
@@ -141,14 +142,3 @@ export default createPaginationContainer(
     `,
   }
 )
-
-export interface RelayProps {
-  filtered_artworks: {
-    artworks: {
-      edges: Array<{}>
-      pageInfo: {
-        hasNextPage: boolean
-      }
-    }
-  }
-}

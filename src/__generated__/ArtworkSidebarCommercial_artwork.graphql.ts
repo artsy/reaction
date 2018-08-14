@@ -1,13 +1,18 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+import { ArtworkSidebarSizeInfo_piece$ref } from "./ArtworkSidebarSizeInfo_piece.graphql";
+declare const _ArtworkSidebarCommercial_artwork$ref: unique symbol;
+export type ArtworkSidebarCommercial_artwork$ref = typeof _ArtworkSidebarCommercial_artwork$ref;
 export type ArtworkSidebarCommercial_artwork = {
     readonly __id: string;
     readonly sale_message: string | null;
     readonly is_inquireable: boolean | null;
     readonly edition_sets: ReadonlyArray<({
         readonly __id: string;
+        readonly " $fragmentRefs": ArtworkSidebarSizeInfo_piece$ref;
     }) | null> | null;
+    readonly " $refType": ArtworkSidebarCommercial_artwork$ref;
 };
 
 

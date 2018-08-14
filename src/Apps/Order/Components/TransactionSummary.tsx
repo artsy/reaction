@@ -1,10 +1,9 @@
 import { Serif } from "@artsy/palette"
 import React from "react"
-import { Box } from "Styleguide/Elements/Box"
+import { Box, StackableBorderBox } from "Styleguide/Elements/Box"
 import { Flex, FlexProps } from "Styleguide/Elements/Flex"
 import { Image } from "Styleguide/Elements/Image"
 import { Spacer } from "Styleguide/Elements/Spacer"
-import { StackableResponsiveBorderBox } from "Styleguide/Elements/StackableResponsiveBorderBox"
 
 export interface TransactionSummaryProps extends FlexProps {
   price: string
@@ -32,7 +31,7 @@ export const TransactionSummary: React.SFC<TransactionSummaryProps> = ({
 }) => {
   return (
     <Flex flexDirection="column" {...others}>
-      <StackableResponsiveBorderBox flexDirection="row">
+      <StackableBorderBox flexDirection="row">
         <Box height="auto">
           <Image src={imageURL} width="55px" mr={1} />
         </Box>
@@ -50,14 +49,14 @@ export const TransactionSummary: React.SFC<TransactionSummaryProps> = ({
             {artworkLocation}
           </Serif>
         </Flex>
-      </StackableResponsiveBorderBox>
-      <StackableResponsiveBorderBox flexDirection="column">
+      </StackableBorderBox>
+      <StackableBorderBox flexDirection="column">
         <Entry label="Price" value={price} />
         <Entry label="Shipping" value={shipping} />
         <Entry label="Tax" value={tax} />
         <Spacer mb={2} />
         <Entry label="Total" value={total} final />
-      </StackableResponsiveBorderBox>
+      </StackableBorderBox>
     </Flex>
   )
 }

@@ -1,12 +1,13 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
+export type SaveArtworkInput = {
+    readonly artwork_id?: string | null;
+    readonly remove?: boolean | null;
+    readonly clientMutationId?: string | null;
+};
 export type SaveArtworkMutationVariables = {
-    readonly input: {
-        readonly artwork_id: string | null;
-        readonly remove: boolean | null;
-        readonly clientMutationId: string | null;
-    };
+    readonly input: SaveArtworkInput;
 };
 export type SaveArtworkMutationResponse = {
     readonly saveArtwork: ({

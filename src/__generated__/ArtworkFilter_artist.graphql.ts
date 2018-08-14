@@ -1,11 +1,16 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+import { ArtworkFilterRefetch_artist$ref } from "./ArtworkFilterRefetch_artist.graphql";
 export type ArtworkAggregation = "COLOR" | "DIMENSION_RANGE" | "FOLLOWED_ARTISTS" | "GALLERY" | "INSTITUTION" | "MAJOR_PERIOD" | "MEDIUM" | "MERCHANDISABLE_ARTISTS" | "PARTNER_CITY" | "PERIOD" | "PRICE_RANGE" | "TOTAL" | "%future added value";
+declare const _ArtworkFilter_artist$ref: unique symbol;
+export type ArtworkFilter_artist$ref = typeof _ArtworkFilter_artist$ref;
 export type ArtworkFilter_artist = {
     readonly id: string;
     readonly counts: ({
         readonly for_sale_artworks: any | null;
+        readonly ecommerce_artworks: any | null;
+        readonly auction_artworks: any | null;
     }) | null;
     readonly filtered_artworks: ({
         readonly aggregations: ReadonlyArray<({
@@ -16,6 +21,8 @@ export type ArtworkFilter_artist = {
             }) | null> | null;
         }) | null> | null;
     }) | null;
+    readonly " $fragmentRefs": ArtworkFilterRefetch_artist$ref;
+    readonly " $refType": ArtworkFilter_artist$ref;
 };
 
 
@@ -111,6 +118,20 @@ return {
           "kind": "ScalarField",
           "alias": null,
           "name": "for_sale_artworks",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "ecommerce_artworks",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "auction_artworks",
           "args": null,
           "storageKey": null
         }
@@ -231,5 +252,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '6c0c7a9145ed1a703cd9d8cc77b0dbc5';
+(node as any).hash = '79400bab7f1a4f533766475ad7512765';
 export default node;

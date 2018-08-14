@@ -11,10 +11,12 @@ import {
   RegisteredBidder,
 } from "Apps/__test__/Fixtures/Artwork/Sidebar/BidAction"
 import { ArtworkSidebarBidAction as BidAction } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarBidAction"
-import { merge } from "lodash"
+import { merge as _merge } from "lodash"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
+
+const merge: (...args: Array<object>) => any = _merge
 
 storiesOf("Styleguide/Artwork/Sidebar", module).add("BidAction", () => {
   return (

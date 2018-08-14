@@ -134,7 +134,7 @@ class AuctionResultsContainer extends Component<
                         return (
                           <React.Fragment key={index}>
                             <AuctionResultsItem
-                              auctionResult={node as any}
+                              auctionResult={node}
                               lastChild={index === auctionResultsLength - 1}
                             />
                           </React.Fragment>
@@ -152,9 +152,7 @@ class AuctionResultsContainer extends Component<
                       hasNextPage={
                         this.props.artist.auctionResults.pageInfo.hasNextPage
                       }
-                      pageCursors={
-                        this.props.artist.auctionResults.pageCursors as any
-                      }
+                      pageCursors={this.props.artist.auctionResults.pageCursors}
                       onClick={this.loadAfter}
                       onNext={this.loadNext}
                       scrollTo="#jumpto-ArtistHeader"

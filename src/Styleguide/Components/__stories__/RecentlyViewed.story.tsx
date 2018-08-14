@@ -11,11 +11,13 @@ storiesOf("Styleguide/Components", module).add("Recently Viewed", () => {
       <Section title="Recently Viewed">
         <Box width="70%">
           <RecentlyViewed
-            me={{
-              recentlyViewedArtworks: {
-                edges: artworkBricks,
-              },
-            }}
+            me={
+              {
+                recentlyViewedArtworks: {
+                  edges: artworkBricks,
+                },
+              } as any
+            }
             useRelay={false}
           />
         </Box>

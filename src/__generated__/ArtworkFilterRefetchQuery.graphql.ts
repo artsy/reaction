@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
+import { ArtworkFilterRefetch_artist$ref } from "./ArtworkFilterRefetch_artist.graphql";
 export type ArtworkFilterRefetchQueryVariables = {
     readonly artistNodeID: string;
     readonly medium?: string | null;
@@ -12,7 +13,9 @@ export type ArtworkFilterRefetchQueryVariables = {
     readonly sort?: string | null;
 };
 export type ArtworkFilterRefetchQueryResponse = {
-    readonly node: ({}) | null;
+    readonly node: ({
+        readonly " $fragmentRefs": ArtworkFilterRefetch_artist$ref;
+    }) | null;
 };
 
 

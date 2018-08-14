@@ -1,9 +1,12 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
+import { RecentlyViewed_me$ref } from "./RecentlyViewed_me.graphql";
 export type RecentlyViewedQueryVariables = {};
 export type RecentlyViewedQueryResponse = {
-    readonly me: ({}) | null;
+    readonly me: ({
+        readonly " $fragmentRefs": RecentlyViewed_me$ref;
+    }) | null;
 };
 
 

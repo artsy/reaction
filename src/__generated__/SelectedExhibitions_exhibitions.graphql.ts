@@ -1,6 +1,8 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+declare const _SelectedExhibitions_exhibitions$ref: unique symbol;
+export type SelectedExhibitions_exhibitions$ref = typeof _SelectedExhibitions_exhibitions$ref;
 export type SelectedExhibitions_exhibitions = ReadonlyArray<{
     readonly partner: ({
         readonly name?: string | null;
@@ -13,6 +15,7 @@ export type SelectedExhibitions_exhibitions = ReadonlyArray<{
         }) | null;
     }) | null;
     readonly city: string | null;
+    readonly " $refType": SelectedExhibitions_exhibitions$ref;
 }>;
 
 

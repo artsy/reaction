@@ -1,14 +1,14 @@
+import { Metadata_artwork } from "__generated__/Metadata_artwork.graphql"
 import colors from "Assets/Colors"
 import { garamond } from "Assets/Fonts"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
-
 import RelayContact, { Contact } from "./Contact"
 import RelayDetails, { Details } from "./Details"
 
 export interface MetadataProps extends React.HTMLProps<MetadataContainer> {
-  artwork: any
+  artwork: Metadata_artwork
   extended?: boolean
   useRelay?: boolean
 }

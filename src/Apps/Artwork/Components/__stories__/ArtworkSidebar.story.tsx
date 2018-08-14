@@ -22,31 +22,31 @@ storiesOf("Styleguide/Artwork/", module)
     return (
       <React.Fragment>
         <Section title="Artwork with collectiing_institution attribute set">
-          <ArtworkSidebar artwork={CollecingInstitutionArtwork} />
+          <ArtworkSidebar artwork={CollecingInstitutionArtwork as any} />
         </Section>
         <Section title="Multiple artists artwork">
-          <ArtworkSidebar artwork={MultipleArtistsArtwork} />
+          <ArtworkSidebar artwork={MultipleArtistsArtwork as any} />
         </Section>
         <Section title="Regular non editioned artwork">
-          <ArtworkSidebar artwork={RegularNonEditionedArtwork} />
+          <ArtworkSidebar artwork={RegularNonEditionedArtwork as any} />
         </Section>
         <Section title="Regular artwork with 1 edition set">
-          <ArtworkSidebar artwork={RegularArtworkWithOneEdition} />
+          <ArtworkSidebar artwork={RegularArtworkWithOneEdition as any} />
         </Section>
         <Section title="Regular artwork with 2 editions">
-          <ArtworkSidebar artwork={RegularArtwork2Editions} />
+          <ArtworkSidebar artwork={RegularArtwork2Editions as any} />
         </Section>
         <Section title="Video artwork">
-          <ArtworkSidebar artwork={VideoArtwork} />
+          <ArtworkSidebar artwork={VideoArtwork as any} />
         </Section>
         <Section title="Current auction artwork with bidding allowed">
-          <ArtworkSidebar artwork={OpenAuctionArtwork} />
+          <ArtworkSidebar artwork={OpenAuctionArtwork as any} />
         </Section>
         <Section title="Live auction artwork">
-          <ArtworkSidebar artwork={LiveAuctionArtwork} />
+          <ArtworkSidebar artwork={LiveAuctionArtwork as any} />
         </Section>
         <Section title="Closed auction artwork">
-          <ArtworkSidebar artwork={ClosedAuctionArtwork} />
+          <ArtworkSidebar artwork={ClosedAuctionArtwork as any} />
         </Section>
       </React.Fragment>
     )

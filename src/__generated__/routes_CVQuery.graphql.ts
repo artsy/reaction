@@ -1,11 +1,14 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
+import { CV_viewer$ref } from "./CV_viewer.graphql";
 export type routes_CVQueryVariables = {
     readonly artistID: string;
 };
 export type routes_CVQueryResponse = {
-    readonly viewer: ({}) | null;
+    readonly viewer: ({
+        readonly " $fragmentRefs": CV_viewer$ref;
+    }) | null;
 };
 
 

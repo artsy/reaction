@@ -1,6 +1,10 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+import { Metadata_artwork$ref } from "./Metadata_artwork.graphql";
+import { Save_artwork$ref } from "./Save_artwork.graphql";
+declare const _GridItem_artwork$ref: unique symbol;
+export type GridItem_artwork$ref = typeof _GridItem_artwork$ref;
 export type GridItem_artwork = {
     readonly image: ({
         readonly placeholder: string | null;
@@ -8,6 +12,8 @@ export type GridItem_artwork = {
         readonly aspect_ratio: number | null;
     }) | null;
     readonly href: string | null;
+    readonly " $fragmentRefs": Metadata_artwork$ref & Save_artwork$ref;
+    readonly " $refType": GridItem_artwork$ref;
 };
 
 

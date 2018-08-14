@@ -1,11 +1,14 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
+import { Review_order$ref } from "./Review_order.graphql";
 export type routes_ReviewQueryVariables = {
     readonly orderID: string;
 };
 export type routes_ReviewQueryResponse = {
-    readonly order: ({}) | null;
+    readonly order: ({
+        readonly " $fragmentRefs": Review_order$ref;
+    }) | null;
 };
 
 

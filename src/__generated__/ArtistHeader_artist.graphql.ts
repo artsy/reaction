@@ -1,6 +1,9 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+import { FollowArtistButton_artist$ref } from "./FollowArtistButton_artist.graphql";
+declare const _ArtistHeader_artist$ref: unique symbol;
+export type ArtistHeader_artist$ref = typeof _ArtistHeader_artist$ref;
 export type ArtistHeader_artist = {
     readonly _id: string;
     readonly id: string;
@@ -20,6 +23,8 @@ export type ArtistHeader_artist = {
             }) | null;
         }) | null> | null;
     }) | null;
+    readonly " $fragmentRefs": FollowArtistButton_artist$ref;
+    readonly " $refType": ArtistHeader_artist$ref;
 };
 
 

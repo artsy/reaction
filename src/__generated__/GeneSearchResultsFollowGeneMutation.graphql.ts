@@ -1,11 +1,12 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
+export type FollowGeneInput = {
+    readonly gene_id?: string | null;
+    readonly clientMutationId?: string | null;
+};
 export type GeneSearchResultsFollowGeneMutationVariables = {
-    readonly input: {
-        readonly gene_id: string | null;
-        readonly clientMutationId: string | null;
-    };
+    readonly input: FollowGeneInput;
     readonly excludedGeneIds: ReadonlyArray<string | null>;
 };
 export type GeneSearchResultsFollowGeneMutationResponse = {

@@ -79,7 +79,7 @@ class RelatedArtistsList extends Component<ShowProps, LoadingAreaState> {
       <Box>
         <Pagination
           hasNextPage={this.props.artist.related.artists.pageInfo.hasNextPage}
-          pageCursors={this.props.artist.related.artists.pageCursors as any}
+          pageCursors={this.props.artist.related.artists.pageCursors}
           onClick={this.loadAfter}
           onNext={this.loadNext}
         />
@@ -124,7 +124,7 @@ class RelatedArtistsList extends Component<ShowProps, LoadingAreaState> {
                                     key={index}
                                   >
                                     <ArtistCard
-                                      artist={node as any}
+                                      artist={node}
                                       mediator={mediator}
                                       currentUser={currentUser}
                                     />
@@ -148,8 +148,7 @@ class RelatedArtistsList extends Component<ShowProps, LoadingAreaState> {
                                 .hasNextPage
                             }
                             pageCursors={
-                              this.props.artist.related.artists
-                                .pageCursors as any
+                              this.props.artist.related.artists.pageCursors
                             }
                             onClick={this.loadAfter}
                             onNext={this.loadNext}

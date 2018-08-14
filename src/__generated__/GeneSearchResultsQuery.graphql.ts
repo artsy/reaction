@@ -1,11 +1,14 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
+import { GeneSearchResultsContent_viewer$ref } from "./GeneSearchResultsContent_viewer.graphql";
 export type GeneSearchResultsQueryVariables = {
     readonly term: string;
 };
 export type GeneSearchResultsQueryResponse = {
-    readonly viewer: ({}) | null;
+    readonly viewer: ({
+        readonly " $fragmentRefs": GeneSearchResultsContent_viewer$ref;
+    }) | null;
 };
 
 

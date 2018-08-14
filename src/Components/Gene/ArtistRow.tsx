@@ -1,13 +1,15 @@
+import { ArtistRow_artist } from "__generated__/ArtistRow_artist.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
-
 import Fillwidth from "../Artwork/Fillwidth"
 import Follow from "../Follow"
 import Text from "../Text"
 import TextLink from "../TextLink"
 
-interface Props extends RelayProps, React.HTMLProps<ArtistRow> {}
+interface Props extends React.HTMLProps<ArtistRow> {
+  artist: ArtistRow_artist
+}
 
 export class ArtistRow extends React.Component<Props, null> {
   render() {
@@ -20,7 +22,7 @@ export class ArtistRow extends React.Component<Props, null> {
               {artist.name}
             </Text>
           </TextLink>
-          <Follow artist={artist as any} />
+          <Follow artist={artist} />
         </Header>
         <Fillwidth artworks={artist.artworks} />
       </Container>
@@ -50,11 +52,3 @@ export default createFragmentContainer(
     }
   `
 )
-
-interface RelayProps {
-  artist: {
-    name: string | null
-    href: string | null
-    artworks: any
-  }
-}

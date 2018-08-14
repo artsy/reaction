@@ -52,7 +52,7 @@ export class PaymentRoute extends Component<PaymentProps> {
                 </>
               }
               Sidebar={
-                <Summary mediator={this.props.mediator} order={order as any}>
+                <Summary mediator={this.props.mediator} order={order}>
                   {xs && (
                     <>
                       <Spacer mb={3} />

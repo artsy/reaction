@@ -341,6 +341,16 @@ type ArtistCounts {
   ): FormattedNumber
   related_artists: Int
   articles: Int
+  ecommerce_artworks(
+    # Returns a `String` when format is specified. e.g.`'0,0.0000''`
+    format: String
+    label: String
+  ): FormattedNumber
+  auction_artworks(
+    # Returns a `String` when format is specified. e.g.`'0,0.0000''`
+    format: String
+    label: String
+  ): FormattedNumber
 }
 
 # An edge in a connection.
@@ -699,9 +709,7 @@ type Artwork implements Node & Sellable {
   is_on_hold: String
   is_price_hidden: Boolean
   is_price_range: Boolean
-
-  # True for inquireable artworks that have an exact price.
-  is_purchasable: Boolean
+  is_purchasable: Boolean @deprecated(reason: "Purchase requests are not supported. Replaced by buy now.")
   is_saved: Boolean
   is_shareable: Boolean
   is_sold: Boolean
@@ -1337,9 +1345,7 @@ type ArtworkItem implements Node & Sellable {
   is_on_hold: String
   is_price_hidden: Boolean
   is_price_range: Boolean
-
-  # True for inquireable artworks that have an exact price.
-  is_purchasable: Boolean
+  is_purchasable: Boolean @deprecated(reason: "Purchase requests are not supported. Replaced by buy now.")
   is_saved: Boolean
   is_shareable: Boolean
   is_sold: Boolean
@@ -1927,7 +1933,7 @@ type Conversation implements Node {
     # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
-  purchase_request: Boolean
+  purchase_request: Boolean @deprecated(reason: "Purchase requests are not supported. Replaced by buy now.")
   from_last_viewed_message_id: String
   initial_message: String!
 

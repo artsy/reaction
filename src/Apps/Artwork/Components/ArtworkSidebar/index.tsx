@@ -25,7 +25,7 @@ export class ArtworkSidebar extends Component<ArtworkSidebarProps> {
     const { artwork } = this.props
     return (
       <ArtworkSidebarContainer>
-        <Artists artwork={artwork as any} />
+        <Artists artwork={artwork} />
 
         {artwork.is_biddable &&
           artwork.sale_artwork &&
@@ -34,25 +34,25 @@ export class ArtworkSidebar extends Component<ArtworkSidebarProps> {
               Lot {artwork.sale_artwork.lot_label}
             </Serif>
           )}
-        <Metadata artwork={artwork as any} />
+        <Metadata artwork={artwork} />
 
         {artwork.is_in_auction ? (
           <React.Fragment>
-            <AuctionPartnerInfo artwork={artwork as any} />
+            <AuctionPartnerInfo artwork={artwork} />
             <Separator />
-            <CurrentBidInfo artwork={artwork as any} />
-            <BidAction artwork={artwork as any} />
+            <CurrentBidInfo artwork={artwork} />
+            <BidAction artwork={artwork} />
           </React.Fragment>
         ) : (
           <React.Fragment>
             <Separator />
-            <Commercial artwork={artwork as any} />
-            <PartnerInfo artwork={artwork as any} />
+            <Commercial artwork={artwork} />
+            <PartnerInfo artwork={artwork} />
           </React.Fragment>
         )}
 
         <Separator />
-        <ExtraLinks artwork={artwork as any} />
+        <ExtraLinks artwork={artwork} />
       </ArtworkSidebarContainer>
     )
   }
