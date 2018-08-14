@@ -7,10 +7,6 @@ import { Join } from "Styleguide/Elements/Join"
 import { RadioProps } from "Styleguide/Elements/Radio"
 import { Separator } from "Styleguide/Elements/Separator"
 
-export interface RadioGroupElementProps {
-  value?: string
-}
-
 export interface RadioGroupProps {
   disabled?: boolean
   onSelect?: (selectedOption: string) => void
