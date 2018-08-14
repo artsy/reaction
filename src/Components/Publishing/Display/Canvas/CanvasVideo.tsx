@@ -1,7 +1,7 @@
 import { memoize, once } from "lodash"
 import React, { Component } from "react"
 import track from "react-tracking"
-import styled, { StyledFunction } from "styled-components"
+import styled from "styled-components"
 import { pMedia } from "../../../Helpers"
 import { VideoControls } from "../../Sections/VideoControls"
 
@@ -137,7 +137,7 @@ export class CanvasVideo extends Component<CanvasVideoProps, any> {
     return (
       <VideoContainer onClick={this.onPlayVideo}>
         {!isPlaying && (
-          <Cover coverUrl={this.props.coverUrl}>
+          <Cover coverUrl={this.props.coverUrl} className="CanvasVideo__cover">
             <VideoControls />
           </Cover>
         )}
@@ -177,12 +177,7 @@ const VideoContainer = styled.div`
   `};
 `
 
-const div: StyledFunction<{
-  coverUrl?: string
-}> =
-  styled.div
-
-const Cover = div`
+const Cover = styled.div.attrs<{ coverUrl?: string }>({})`
   background: url(${p => p.coverUrl || ""}) no-repeat center center;
   background-size: cover;
   position: absolute;
@@ -193,4 +188,5 @@ const Cover = div`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 10;
 `

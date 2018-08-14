@@ -53,16 +53,17 @@ export class CanvasContainerComponent extends React.Component<
 
   // TODO: Ensure that full element can be clicked on video complete
   // Prevent links from blocking video playback.
-  @track(
-    (props, [e]) =>
-      !isVideoClickArea(e) && {
+  @track((props, [e]) => {
+    if (!isVideoClickArea(e)) {
+      return {
         action: "Click",
         label: "Display ad clickthrough",
         entity_type: "display_ad",
         campaign_name: props.campaign.name,
         unit_layout: unitLayout(props),
       }
-  )
+    }
+  })
   openLink(e) {
     e.preventDefault()
 
@@ -199,8 +200,13 @@ const isVideoClickArea = e => {
     "PlayButton",
     "PlayButton__PlayButtonCaret",
     "CanvasVideo__video",
+    "CanvasVideo__cover",
   ]
-  return videoClasses.some(c => e.target.className.includes(c))
+
+  const isVideo = videoClasses.some(c => {
+    return e.target.className.includes(c)
+  })
+  return isVideo
 }
 
 export const maxAssetSize = containerWidth => {
