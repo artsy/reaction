@@ -118,6 +118,12 @@ export class ShippingRoute extends Component<ShippingProps> {
                   </Join>
 
                   <Spacer mb={3} />
+
+                  <Link to={`/order2/${order.id}/payment`}>
+                    <Button size="large" width="100%">
+                      Continue
+                    </Button>
+                  </Link>
                 </>
               }
               Sidebar={
