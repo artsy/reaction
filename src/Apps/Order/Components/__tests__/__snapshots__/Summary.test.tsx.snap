@@ -3,22 +3,175 @@
 exports[`Order summary renders the summary properly 1`] = `
 Array [
   <div
-    className="Flex-s16agd44-0 LLgoj"
-    height="390px"
-    style={
-      Object {
-        "background": "gray",
-      }
-    }
-    width="100%"
+    className="Flex-s16agd44-0 dPbvVX"
   >
     <div
-      className="sc-bwzfXH uTxCW sc-bdVaJa iRfyEM"
-      color="white"
-      fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-      fontSize={18}
+      className="Box__StackableBorderBox-s8jehsh-1 hiwjbv Box__BorderBox-s8jehsh-0 dcVnlg Flex-s16agd44-0 cIVWsN"
     >
-      Sidebar
+      <div
+        className="Box-s8jehsh-2 bYGMDT"
+        height="auto"
+      >
+        <img
+          className="Image-cc11kw-0 dHXUVs"
+          src="https://d32dm0rphc51dk.cloudfront.net/SCShf97jlpFZpDBJUBqntg/small.jpg"
+          width="55px"
+        />
+      </div>
+      <div
+        className="Flex-s16agd44-0 dPbvVX"
+      >
+        <div
+          className="sc-htpNat KtFsv sc-bdVaJa OWEPL"
+          color="black60"
+          fontFamily={
+            Object {
+              "fontFamily": "'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif",
+              "fontWeight": 600,
+            }
+          }
+          fontSize={14}
+        >
+          Francesca DiMattio
+        </div>
+        <div
+          className="sc-htpNat KtFsv sc-bdVaJa eUScv"
+          color="black60"
+          fontFamily={
+            Object {
+              "fontFamily": "'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif",
+              "fontStyle": "italic",
+            }
+          }
+          fontSize={14}
+        >
+          The Fox and the Hound, 2018
+        </div>
+        <div
+          className="sc-htpNat KtFsv sc-bdVaJa jRPZyz"
+          color="black60"
+          fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
+          fontSize={14}
+        >
+          Salon 94
+        </div>
+        <div
+          className="sc-htpNat KtFsv sc-bdVaJa jRPZyz"
+          color="black60"
+          fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
+          fontSize={14}
+        >
+          New York, NY
+        </div>
+      </div>
+    </div>
+    <div
+      className="Box__StackableBorderBox-s8jehsh-1 hiwjbv Box__BorderBox-s8jehsh-0 dcVnlg Flex-s16agd44-0 dPbvVX"
+    >
+      <div
+        className="Flex-s16agd44-0 gcWLCl"
+      >
+        <div>
+          <div
+            className="sc-htpNat KtFsv sc-bdVaJa jRPZyz"
+            color="black60"
+            fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
+            fontSize={14}
+          >
+            Price
+          </div>
+        </div>
+        <div>
+          <div
+            className="sc-htpNat KtFsv sc-bdVaJa jRPZyz"
+            color="black60"
+            fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
+            fontSize={14}
+          >
+            £3,024.89
+          </div>
+        </div>
+      </div>
+      <div
+        className="Flex-s16agd44-0 gcWLCl"
+      >
+        <div>
+          <div
+            className="sc-htpNat KtFsv sc-bdVaJa jRPZyz"
+            color="black60"
+            fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
+            fontSize={14}
+          >
+            Shipping
+          </div>
+        </div>
+        <div>
+          <div
+            className="sc-htpNat KtFsv sc-bdVaJa jRPZyz"
+            color="black60"
+            fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
+            fontSize={14}
+          >
+            £132.32
+          </div>
+        </div>
+      </div>
+      <div
+        className="Flex-s16agd44-0 gcWLCl"
+      >
+        <div>
+          <div
+            className="sc-htpNat KtFsv sc-bdVaJa jRPZyz"
+            color="black60"
+            fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
+            fontSize={14}
+          >
+            Tax
+          </div>
+        </div>
+        <div>
+          <div
+            className="sc-htpNat KtFsv sc-bdVaJa jRPZyz"
+            color="black60"
+            fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
+            fontSize={14}
+          >
+            £232.23
+          </div>
+        </div>
+      </div>
+      <div
+        className="Box-s8jehsh-2 fDdqfP"
+      />
+      <div
+        className="Flex-s16agd44-0 gcWLCl"
+      >
+        <div>
+          <div
+            className="sc-htpNat KtFsv sc-bdVaJa jRPZyz"
+            color="black60"
+            fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
+            fontSize={14}
+          >
+            Total
+          </div>
+        </div>
+        <div>
+          <div
+            className="sc-htpNat KtFsv sc-bdVaJa jPtRcv"
+            color="black100"
+            fontFamily={
+              Object {
+                "fontFamily": "'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif",
+                "fontWeight": 600,
+              }
+            }
+            fontSize={14}
+          >
+            £1,200,823.33
+          </div>
+        </div>
+      </div>
     </div>
   </div>,
   <div
