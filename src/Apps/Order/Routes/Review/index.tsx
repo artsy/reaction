@@ -44,7 +44,7 @@ export class ReviewRoute extends Component<ReviewProps> {
                     <Placeholder height="80px" name="Item review" />
                     <Placeholder height="20px" name="Terms and conditions" />
                     {!xs && (
-                      <Link to={`/order2/${order.id}/summary`}>
+                      <Link to={`/order2/${order.id}/submission`}>
                         <Button size="large" width="100%">
                           Submit Order
                         </Button>
@@ -61,7 +61,7 @@ export class ReviewRoute extends Component<ReviewProps> {
                       <Spacer mb={3} />
                       <Placeholder height="20px" name="Terms and conditions" />
                       <Spacer mb={3} />
-                      <Link to={`/order2/${order.id}/summary`}>
+                      <Link to={`/order2/${order.id}/submission`}>
                         <Button size="large" width="100%">
                           Continue
                         </Button>
