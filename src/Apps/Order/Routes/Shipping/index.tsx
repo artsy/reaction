@@ -5,6 +5,7 @@ import { createFragmentContainer, graphql } from "react-relay"
 
 import Input from "Components/Input"
 import { Link } from "Router"
+import { Collapse } from "Styleguide/Components/Collapse"
 import { CountrySelect } from "Styleguide/Components/CountrySelect"
 import { Button } from "Styleguide/Elements/Button"
 import { Flex } from "Styleguide/Elements/Flex"
@@ -64,79 +65,83 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
 
                     <Radio value="PICKUP">
                       Arrange for pickup
-                      <Sans size="2" color="black60">
-                        After you place your order, you’ll be appointed an Artsy
-                        Specialist within 2 business days to handle pickup
-                        logistics.
-                      </Sans>
+                      <Collapse open={this.state.shippingOption === "PICKUP"}>
+                        <Sans size="2" color="black60">
+                          After you place your order, you’ll be appointed an
+                          Artsy Specialist within 2 business days to handle
+                          pickup logistics.
+                        </Sans>
+                      </Collapse>
                     </Radio>
                   </BorderedRadioGroup>
 
                   <Spacer mb={3} />
 
-                  <Join separator={<Spacer mb={2} />}>
-                    <Flex flexDirection="column">
-                      <Input
-                        placeholder="Add full name"
-                        title="Full name"
-                        block
-                      />
-                    </Flex>
-
-                    <TwoColumnSplit>
-                      <Flex flexDirection="column" pb={1}>
-                        <Serif
-                          mb={1}
-                          size="3t"
-                          color="black100"
-                          lineHeight={18}
-                        >
-                          Country
-                        </Serif>
-                        <CountrySelect selected="US" />
-                      </Flex>
-
+                  <Collapse open={this.state.shippingOption === "SHIP"}>
+                    <Join separator={<Spacer mb={2} />}>
                       <Flex flexDirection="column">
                         <Input
-                          placeholder="Add postal code"
-                          title="Postal code"
-                          block
-                        />
-                      </Flex>
-                    </TwoColumnSplit>
-                    <TwoColumnSplit>
-                      <Flex flexDirection="column">
-                        <Input
-                          placeholder="Add street address"
-                          title="Address line 1"
+                          placeholder="Add full name"
+                          title="Full name"
                           block
                         />
                       </Flex>
 
-                      <Flex flexDirection="column">
-                        <Input
-                          placeholder="Add apt, floor, suite, etc."
-                          title="Address line 2 (optional)"
-                          block
-                        />
-                      </Flex>
-                    </TwoColumnSplit>
-                    <TwoColumnSplit>
-                      <Flex flexDirection="column">
-                        <Input placeholder="Add city" title="City" block />
-                      </Flex>
+                      <TwoColumnSplit>
+                        <Flex flexDirection="column" pb={1}>
+                          <Serif
+                            mb={1}
+                            size="3t"
+                            color="black100"
+                            lineHeight={18}
+                          >
+                            Country
+                          </Serif>
+                          <CountrySelect selected="US" />
+                        </Flex>
 
-                      <Flex flexDirection="column">
-                        <Input
-                          placeholder="Add State, province, or region"
-                          title="State, province, or region"
-                          block
-                        />
-                      </Flex>
-                    </TwoColumnSplit>
-                  </Join>
+                        <Flex flexDirection="column">
+                          <Input
+                            placeholder="Add postal code"
+                            title="Postal code"
+                            block
+                          />
+                        </Flex>
+                      </TwoColumnSplit>
+                      <TwoColumnSplit>
+                        <Flex flexDirection="column">
+                          <Input
+                            placeholder="Add street address"
+                            title="Address line 1"
+                            block
+                          />
+                        </Flex>
 
-                  <Spacer mb={3} />
+                        <Flex flexDirection="column">
+                          <Input
+                            placeholder="Add apt, floor, suite, etc."
+                            title="Address line 2 (optional)"
+                            block
+                          />
+                        </Flex>
+                      </TwoColumnSplit>
+                      <TwoColumnSplit>
+                        <Flex flexDirection="column">
+                          <Input placeholder="Add city" title="City" block />
+                        </Flex>
+
+                        <Flex flexDirection="column">
+                          <Input
+                            placeholder="Add State, province, or region"
+                            title="State, province, or region"
+                            block
+                          />
+                        </Flex>
+                      </TwoColumnSplit>
+                    </Join>
+
+                    <Spacer mb={2} />
+                  </Collapse>
 
                   {!xs && (
                     <Link to={`/order2/${order.id}/payment`}>
