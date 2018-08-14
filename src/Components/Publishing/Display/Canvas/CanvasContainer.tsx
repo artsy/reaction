@@ -241,6 +241,7 @@ export const CanvasLink = responsiveLink`
     padding: 0;
     width: 100%;
     height: 400px;
+    min-height: fit-content;
     flex-direction: column;
     justify-content: flex-start;
   `}
