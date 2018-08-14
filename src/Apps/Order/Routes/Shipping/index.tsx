@@ -119,11 +119,13 @@ export class ShippingRoute extends Component<ShippingProps> {
 
                   <Spacer mb={3} />
 
-                  <Link to={`/order2/${order.id}/payment`}>
-                    <Button size="large" width="100%">
-                      Continue
-                    </Button>
-                  </Link>
+                  {!xs && (
+                    <Link to={`/order2/${order.id}/payment`}>
+                      <Button size="large" width="100%">
+                        Continue
+                      </Button>
+                    </Link>
+                  )}
                 </>
               }
               Sidebar={

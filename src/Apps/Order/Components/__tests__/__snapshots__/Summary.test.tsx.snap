@@ -6,10 +6,10 @@ Array [
     className="Flex-s16agd44-0 dPbvVX"
   >
     <div
-      className="StackableResponsiveBorderBox-s35ikuq-0 kSZzum Box__BorderBox-s8jehsh-0 dcVnlg Flex-s16agd44-0 cIVWsN"
+      className="Box__StackableBorderBox-s8jehsh-1 hiwjbv Box__BorderBox-s8jehsh-0 dcVnlg Flex-s16agd44-0 cIVWsN"
     >
       <div
-        className="Box-s8jehsh-1 cgJzVN"
+        className="Box-s8jehsh-2 bYGMDT"
         height="auto"
       >
         <img
@@ -66,7 +66,7 @@ Array [
       </div>
     </div>
     <div
-      className="StackableResponsiveBorderBox-s35ikuq-0 kSZzum Box__BorderBox-s8jehsh-0 dcVnlg Flex-s16agd44-0 dPbvVX"
+      className="Box__StackableBorderBox-s8jehsh-1 hiwjbv Box__BorderBox-s8jehsh-0 dcVnlg Flex-s16agd44-0 dPbvVX"
     >
       <div
         className="Flex-s16agd44-0 gcWLCl"
@@ -141,7 +141,7 @@ Array [
         </div>
       </div>
       <div
-        className="Box-s8jehsh-1 gdnHQa"
+        className="Box-s8jehsh-2 fDdqfP"
       />
       <div
         className="Flex-s16agd44-0 gcWLCl"
