@@ -1,4 +1,4 @@
-import { Serif } from "@artsy/palette"
+import { Sans, Serif } from "@artsy/palette"
 import { Shipping_order } from "__generated__/Shipping_order.graphql"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -9,7 +9,8 @@ import { CountrySelect } from "Styleguide/Components/CountrySelect"
 import { Button } from "Styleguide/Elements/Button"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Join } from "Styleguide/Elements/Join"
-import { RadioGroup } from "Styleguide/Elements/RadioGroup"
+import { Radio } from "Styleguide/Elements/Radio"
+import { BorderedRadioGroup } from "Styleguide/Elements/RadioGroup"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Responsive } from "Utils/Responsive"
 
@@ -29,7 +30,15 @@ export interface ShippingProps {
   }
 }
 
-export class ShippingRoute extends Component<ShippingProps> {
+export interface ShippingState {
+  shippingOption: string
+}
+
+export class ShippingRoute extends Component<ShippingProps, ShippingState> {
+  state = {
+    shippingOption: "SHIP",
+  }
+
   render() {
     const { order } = this.props
     return (
@@ -39,20 +48,30 @@ export class ShippingRoute extends Component<ShippingProps> {
             <BuyNowStepper currentStep={"shipping"} />
           </Col>
         </Row>
-
         <Spacer mb={3} />
         <Responsive>
           {({ xs }) => (
             <TwoColumnLayout
               Content={
                 <>
-                  <RadioGroup
-                    onSelect={id => id}
-                    options={[
-                      { label: "Provide shipping address", id: "SHIP" },
-                      { label: "Arrange for pickup", id: "PICKUP" },
-                    ]}
-                  />
+                  <BorderedRadioGroup
+                    onSelect={shippingOption =>
+                      this.setState({ shippingOption })
+                    }
+                    defaultValue="SHIP"
+                  >
+                    <Radio value="SHIP">Provide shipping address</Radio>
+
+                    <Radio value="PICKUP">
+                      Arrange for pickup
+                      <Sans size="2" color="black60">
+                        After you place your order, you’ll be appointed an Artsy
+                        Specialist within 2 business days to handle pickup
+                        logistics.
+                      </Sans>
+                    </Radio>
+                  </BorderedRadioGroup>
+
                   <Spacer mb={3} />
 
                   <Join separator={<Spacer mb={2} />}>

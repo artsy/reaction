@@ -1,25 +1,17 @@
-import { color, space } from "@artsy/palette"
 import React from "react"
 import { BorderProps, SizeProps, SpaceProps } from "styled-system"
 
-import { css } from "styled-components"
+import { BorderBox } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
-import { Radio } from "Styleguide/Elements/Radio"
+import { Join } from "Styleguide/Elements/Join"
+import { RadioProps } from "Styleguide/Elements/Radio"
+import { Separator } from "Styleguide/Elements/Separator"
 
 export interface RadioGroupProps {
   disabled?: boolean
-  onSelect: (selectedOption: string) => void
+  onSelect?: (selectedOption: string) => void
   defaultValue?: string
-  options: Array<{ label: React.ReactNode | null; id: string }>
-  renderRadio?: (
-    props: {
-      id: string
-      label: React.ReactNode
-      selected: boolean
-      onSelect: () => void
-      disabled: boolean
-    }
-  ) => React.ReactNode | null
+  children: Array<React.ReactElement<RadioProps>>
 }
 
 export interface RadioGroupToggleProps
@@ -40,60 +32,53 @@ export class RadioGroup extends React.Component<
     selectedOption: this.props.defaultValue || null,
   }
 
-  static defaultProps = {
-    renderRadio: ({ id, label, selected, onSelect, disabled }) => (
-      <StyledRadio
-        key={id}
-        selected={selected}
-        onSelect={onSelect}
-        disabled={disabled}
-      >
-        {label}
-      </StyledRadio>
-    ),
+  onSelect = ({ selected, value }) => {
+    if (this.props.onSelect) {
+      this.props.onSelect(value)
+    }
+
+    this.setState({ selectedOption: value })
   }
 
-  onSelectionChange = (id: string) => {
-    if (id !== this.state.selectedOption) {
-      this.setState({ selectedOption: id }, () => {
-        this.props.onSelect(id)
-      })
-    }
+  renderRadioButtons() {
+    return React.Children.map(
+      this.props.children,
+      (child: React.ReactElement<RadioProps>) => {
+        return React.cloneElement(child, {
+          disabled:
+            child.props.disabled !== undefined
+              ? child.props.disabled
+              : this.props.disabled,
+          onSelect: child.props.onSelect
+            ? selected => {
+                this.onSelect(selected)
+                child.props.onSelect(selected)
+              }
+            : this.onSelect,
+          // FIXME: Throw an error `child.props.selected' is set once we enable the dev code elimination.
+          selected: this.state.selectedOption === child.props.value,
+        })
+      }
+    )
   }
 
   render() {
-    const { disabled, options, renderRadio } = this.props
-
     return (
-      <Flex flexDirection="column">
-        {options.map(({ id, label }) =>
-          renderRadio({
-            id,
-            label,
-            onSelect: () => this.onSelectionChange(id),
-            selected: this.state.selectedOption === id,
-            disabled,
-          })
-        )}
+      <Flex flexDirection="column" p={2}>
+        {this.renderRadioButtons()}
       </Flex>
     )
   }
 }
 
-const StyledRadio = Radio.extend`
-  border: 1px solid #eee;
-  /* offset the vertical padding to account for label line-height */
-  padding: calc(${space(2)}px - 3px) ${space(2)}px;
-  :not(:first-child) {
-    border-top: 0;
+export class BorderedRadioGroup extends RadioGroup {
+  render() {
+    return (
+      <BorderBox flexDirection="column" p={2}>
+        <Join separator={<Separator mx={-2} my={2} width="inherit" />}>
+          {this.renderRadioButtons()}
+        </Join>
+      </BorderBox>
+    )
   }
-  ${({ disabled }) =>
-    !disabled &&
-    css`
-      :hover {
-        background-color: ${color("black5")};
-      }
-    `};
-`
-
-StyledRadio.displayName = "StyledRadio"
+}
