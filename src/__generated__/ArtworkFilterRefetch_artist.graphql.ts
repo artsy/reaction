@@ -60,7 +60,7 @@ return {
     },
     {
       "kind": "LocalArgument",
-      "name": "ecommerce",
+      "name": "acquireable",
       "type": "Boolean",
       "defaultValue": null
     },
@@ -80,6 +80,12 @@ return {
       "storageKey": null,
       "args": [
         {
+          "kind": "Variable",
+          "name": "acquireable",
+          "variableName": "acquireable",
+          "type": "Boolean"
+        },
+        {
           "kind": "Literal",
           "name": "aggregations",
           "value": [
@@ -91,12 +97,6 @@ return {
           "kind": "Variable",
           "name": "at_auction",
           "variableName": "at_auction",
-          "type": "Boolean"
-        },
-        {
-          "kind": "Variable",
-          "name": "ecommerce",
-          "variableName": "ecommerce",
           "type": "Boolean"
         },
         {
@@ -150,5 +150,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'a6c047290a5a5e2dbdfecccc63977d4e';
+(node as any).hash = 'fa00aa16ce4364e274aa2277e5720c9a';
 export default node;

@@ -82,7 +82,7 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
           partner_id: { type: "ID" }
           for_sale: { type: "Boolean" }
           at_auction: { type: "Boolean" }
-          ecommerce: { type: "Boolean" }
+          acquireable: { type: "Boolean" }
           sort: { type: "String", defaultValue: "-partner_updated_at" }
         ) {
         __id
@@ -93,7 +93,7 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
           partner_id: $partner_id
           for_sale: $for_sale
           at_auction: $at_auction
-          ecommerce: $ecommerce
+          acquireable: $acquireable
           size: 0
           sort: $sort
         ) {
@@ -108,7 +108,7 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
       $medium: String
       $major_periods: [String]
       $partner_id: ID
-      $ecommerce: Boolean
+      $acquireable: Boolean
       $at_auction: Boolean
       $for_sale: Boolean
       $sort: String
@@ -123,7 +123,7 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
               for_sale: $for_sale
               sort: $sort
               at_auction: $at_auction
-              ecommerce: $ecommerce
+              acquireable: $acquireable
             )
         }
       }

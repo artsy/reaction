@@ -84,10 +84,10 @@ class Filter extends Component<Props> {
           Ways to Buy
         </Sans>
         <Checkbox
-          selected={filters.state.ecommerce}
+          selected={filters.state.acquireable}
           disabled={!hasBuyNowArtworks}
           onSelect={value => {
-            return filters.setFilter("ecommerce", value, mediator)
+            return filters.setFilter("acquireable", value, mediator)
           }}
         >
           Buy Now
@@ -326,7 +326,7 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(
         partner_id: { type: "ID" }
         for_sale: { type: "Boolean" }
         at_auction: { type: "Boolean" }
-        ecommerce: { type: "Boolean" }
+        acquireable: { type: "Boolean" }
         aggregations: {
           type: "[ArtworkAggregation]"
           defaultValue: [MEDIUM, TOTAL, GALLERY, INSTITUTION, MAJOR_PERIOD]
@@ -355,7 +355,7 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(
           partner_id: $partner_id
           for_sale: $for_sale
           sort: $sort
-          ecommerce: $ecommerce
+          acquireable: $acquireable
           at_auction: $at_auction
         )
     }

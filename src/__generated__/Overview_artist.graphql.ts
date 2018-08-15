@@ -107,7 +107,7 @@ return {
     },
     {
       "kind": "LocalArgument",
-      "name": "ecommerce",
+      "name": "acquireable",
       "type": "Boolean",
       "defaultValue": null
     },
@@ -155,6 +155,18 @@ return {
       "kind": "FragmentSpread",
       "name": "ArtworkFilter_artist",
       "args": [
+        {
+          "kind": "Variable",
+          "name": "acquireable",
+          "variableName": "acquireable",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "at_auction",
+          "variableName": "at_auction",
+          "type": null
+        },
         {
           "kind": "Variable",
           "name": "for_sale",
@@ -445,5 +457,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '9c5f82d04f60217de3f7c2d50798a349';
+(node as any).hash = '031b151141d235e97058c2f8d7924f9d';
 export default node;
