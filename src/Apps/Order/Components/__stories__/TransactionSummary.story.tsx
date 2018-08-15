@@ -4,7 +4,7 @@ import { storiesOf } from "storybook/storiesOf"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Section } from "Styleguide/Utils/Section"
 
-storiesOf("Styleguide/Components", module).add("TransactionSummary", () => {
+storiesOf("Apps/Order/Components", module).add("TransactionSummary", () => {
   return (
     <Section title="Price Summary">
       <Flex width={280} flexDirection="column">

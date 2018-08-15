@@ -1,7 +1,7 @@
 import React from "react"
 
 interface IconProps {
-  fill: string
+  fill?: string
 }
 
 export const CheckIcon = ({ fill }: IconProps) => (

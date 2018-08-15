@@ -149,6 +149,8 @@ class CVItem extends Component<CVItemProps, CVItemState> {
                       width={xs ? "100%" : ""}
                       mt={xs ? 1 : 2}
                     />
+
+                    {xs && <Spacer mb={1} />}
                   </Col>
                 </Row>
               )}
