@@ -4,7 +4,8 @@ import styled from "styled-components"
 import { MobileTopBar } from "Styleguide/Components/MobileTopBar"
 import { StackableBorderBox } from "Styleguide/Elements/Box"
 import { Button } from "Styleguide/Elements/Button"
-import { Flex } from "Styleguide/Elements/Flex"
+import { Subscribe } from "unstated"
+import { FilterState } from "../../state"
 
 interface MobileActionSheet {
   children: JSX.Element
@@ -16,31 +17,37 @@ export const MobileActionSheet: SFC<MobileActionSheet> = ({
   onClose,
 }) => {
   return (
-    <Container>
-      <Flex flexDirection="column">
-        <MobileTopBar>
-          <Button variant="noOutline" size="small">
-            Reset
-          </Button>
-          <Sans size="2" weight="medium">
-            Filter (2)
-          </Sans>
-          <Button variant="primaryBlack" size="small" onClick={() => onClose()}>
-            Apply
-          </Button>
-        </MobileTopBar>
-        <StackableBorderBox flexDirection="column">
-          {children}
-        </StackableBorderBox>
-      </Flex>
-    </Container>
-  )
-}
+    <Subscribe to={[FilterState]}>
+      {({ state: { selectedFilters } }) => {
+        const filterCount = selectedFilters.length
+          ? `(${selectedFilters.length})`
+          : ""
 
-MobileActionSheet.defaultProps = {
-  onClose: () => {
-    //
-  },
+        return (
+          <Container>
+            <MobileTopBar>
+              <Button variant="noOutline" size="small">
+                Reset
+              </Button>
+              <Sans size="2" weight="medium">
+                Filter {filterCount}
+              </Sans>
+              <Button
+                variant="primaryBlack"
+                size="small"
+                onClick={() => onClose()}
+              >
+                Apply
+              </Button>
+            </MobileTopBar>
+            <StackableBorderBox flexDirection="column">
+              {children}
+            </StackableBorderBox>
+          </Container>
+        )
+      }}
+    </Subscribe>
+  )
 }
 
 const Container = styled.div`
@@ -51,8 +58,6 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   background-color: white;
-
-  > div {
-    overflow-y: scroll;
-  }
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 `

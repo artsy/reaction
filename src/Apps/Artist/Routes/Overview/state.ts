@@ -1,6 +1,8 @@
+import { omit, uniq, without } from "lodash"
 import { Container } from "unstated"
 
 type State = {
+  // Search filters
   medium: string
   major_periods?: string[]
   partner_id?: string
@@ -9,6 +11,10 @@ type State = {
   sort?: string
   ecommerce?: boolean
   at_auction?: boolean
+
+  // UI
+  selectedFilters: string[]
+  showActionSheet: boolean
 }
 
 export class FilterState extends Container<State> {
@@ -21,6 +27,8 @@ export class FilterState extends Container<State> {
     sort: "-partner_updated_at",
     ecommerce: null,
     at_auction: null,
+    selectedFilters: [],
+    showActionSheet: false,
   }
 
   constructor(props: State) {
@@ -52,7 +60,21 @@ export class FilterState extends Container<State> {
     })
   }
 
+  showActionSheet = show => {
+    // TODO: Manage this side-effect in a more react-like fashion
+    if (show) {
+      document.body.style.overflowY = "hidden"
+    } else {
+      document.body.style.overflowY = "auto"
+    }
+
+    this.setState({
+      showActionSheet: show,
+    })
+  }
+
   unsetFilter(filter, mediator) {
+    let { selectedFilters } = this.state
     let newPartialState = {}
     if (filter === "major_periods") {
       newPartialState = { major_periods: [] }
@@ -66,12 +88,20 @@ export class FilterState extends Container<State> {
       newPartialState = { medium: "*" }
     }
 
-    this.setState({ page: 1, ...newPartialState }, () => {
-      mediator.trigger("artist:filter:changed", this.state)
+    selectedFilters = without(selectedFilters, "radio")
+
+    this.setState({ page: 1, selectedFilters, ...newPartialState }, () => {
+      const filterState = omit(this.state, [
+        "selectedFilterCount",
+        "showActionSheet",
+      ])
+      mediator.trigger("artist:filter:changed", filterState)
     })
   }
 
   setFilter(filter, value, mediator) {
+    let { selectedFilters } = this.state
+
     let newPartialState = {}
     if (filter === "major_periods") {
       newPartialState = {
@@ -79,31 +109,41 @@ export class FilterState extends Container<State> {
         major_periods: [value],
         medium: "*",
       }
-    }
-    if (filter === "partner_id") {
+    } else if (filter === "partner_id") {
       newPartialState = {
         major_periods: [],
         partner_id: value,
         medium: "*",
       }
-    }
-    if (["for_sale", "ecommerce", "at_auction"].includes(filter)) {
-      if (value) {
-        newPartialState[filter] = true
-      } else {
-        newPartialState[filter] = null
-      }
-    }
-    if (filter === "medium") {
+    } else if (filter === "medium") {
       newPartialState = {
         medium: value,
         partner_id: null,
         major_periods: [],
       }
+    } else if (["for_sale", "ecommerce", "at_auction"].includes(filter)) {
+      if (value) {
+        selectedFilters = selectedFilters.concat([filter])
+        newPartialState[filter] = true
+      } else {
+        selectedFilters = without(selectedFilters, filter)
+        newPartialState[filter] = null
+      }
     }
 
-    this.setState({ page: 1, ...newPartialState }, () => {
-      mediator.trigger("artist:filter:changed", this.state)
+    if (["major_periods", "partner_id", "medium"].includes(filter)) {
+      selectedFilters = selectedFilters.concat(["radio"])
+    }
+
+    selectedFilters = uniq(selectedFilters)
+
+    this.setState({ page: 1, selectedFilters, ...newPartialState }, () => {
+      const filterState = omit(this.state, [
+        "selectedFilters",
+        "showActionSheet",
+      ])
+
+      mediator.trigger("artist:filter:changed", filterState)
     })
   }
 }

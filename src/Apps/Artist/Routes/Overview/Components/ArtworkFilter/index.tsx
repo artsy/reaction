@@ -25,17 +25,9 @@ interface Props {
   hideTopBorder?: boolean
 }
 
-interface State {
-  showMobileActionSheet: boolean
-}
-
-class Filter extends Component<Props, State> {
+class Filter extends Component<Props> {
   static defaultProps = {
     hideTopBorder: false,
-  }
-
-  state = {
-    showMobileActionSheet: false,
   }
 
   renderCategory(filters, category, counts, mediator) {
@@ -123,7 +115,6 @@ class Filter extends Component<Props, State> {
   }
 
   render() {
-    const { showMobileActionSheet } = this.state
     const { aggregations } = this.props.artist.filtered_artworks
     const mediumAggregation = aggregations.find(agg => agg.slice === "MEDIUM")
     const galleryAggregation = aggregations.find(agg => agg.slice === "GALLERY")
@@ -225,20 +216,20 @@ class Filter extends Component<Props, State> {
                   <>
                     <Flex>
                       {/*
-                        Sidebar Area
+                        Filter options
                       */}
 
                       {xs ? (
-                        showMobileActionSheet && (
+                        // Mobile
+                        filters.state.showActionSheet && (
                           <MobileActionSheet
-                            onClose={() =>
-                              this.setState({ showMobileActionSheet: false })
-                            }
+                            onClose={() => filters.showActionSheet(false)}
                           >
                             <Filters />
                           </MobileActionSheet>
                         )
                       ) : (
+                        // Desktop
                         <Sidebar width="30%" mr={2}>
                           <Filters />
                         </Sidebar>
@@ -250,72 +241,59 @@ class Filter extends Component<Props, State> {
 
                       <Box width={xs ? "100%" : "70%"}>
                         {!hideTopBorder && <Separator mb={2} mt={-1} />}
+                        <Flex
+                          justifyContent={xs ? "space-between" : "flex-end"}
+                          alignItems="center"
+                        >
+                          <SmallSelect
+                            mt="-8px"
+                            options={
+                              [
+                                {
+                                  value: "-decayed_merch",
+                                  text: "Default",
+                                },
+                                {
+                                  value: "-partner_updated_at",
+                                  text: "Recently updated",
+                                },
+                                {
+                                  value: "-published_at",
+                                  text: "Recently added",
+                                },
+                                {
+                                  value: "-year",
+                                  text: "Artwork year (desc.)",
+                                },
+                                {
+                                  value: "year",
+                                  text: "Artwork year (asc.)",
+                                },
+                              ] // Corrective spacing for line-height
+                            }
+                            selected={filters.state.sort}
+                            onSelect={sort => {
+                              return filters.setSort(sort, mediator)
+                            }}
+                          />
 
-                        {(() => {
-                          const justifyContent = xs
-                            ? "space-between"
-                            : "flex-end"
-
-                          return (
-                            <Flex
-                              justifyContent={justifyContent}
-                              alignItems="center"
+                          {xs && (
+                            <Button
+                              size="small"
+                              mt={-1}
+                              onClick={() => filters.showActionSheet(true)}
                             >
-                              <SmallSelect
-                                mt="-8px"
-                                options={
-                                  [
-                                    {
-                                      value: "-decayed_merch",
-                                      text: "Default",
-                                    },
-                                    {
-                                      value: "-partner_updated_at",
-                                      text: "Recently updated",
-                                    },
-                                    {
-                                      value: "-published_at",
-                                      text: "Recently added",
-                                    },
-                                    {
-                                      value: "-year",
-                                      text: "Artwork year (desc.)",
-                                    },
-                                    {
-                                      value: "year",
-                                      text: "Artwork year (asc.)",
-                                    },
-                                  ] // Corrective spacing for line-height
-                                }
-                                selected={filters.state.sort}
-                                onSelect={sort => {
-                                  return filters.setSort(sort, mediator)
-                                }}
-                              />
-
-                              {xs && (
-                                <Button
-                                  size="small"
-                                  mt={-1}
-                                  onClick={() =>
-                                    this.setState({
-                                      showMobileActionSheet: true,
-                                    })
-                                  }
-                                >
-                                  <Flex
-                                    justifyContent="space-between"
-                                    alignItems="center"
-                                  >
-                                    <FilterIcon fill={color("white100")} />
-                                    <Spacer mr={0.5} />
-                                    Filter
-                                  </Flex>
-                                </Button>
-                              )}
-                            </Flex>
-                          )
-                        })()}
+                              <Flex
+                                justifyContent="space-between"
+                                alignItems="center"
+                              >
+                                <FilterIcon fill={color("white100")} />
+                                <Spacer mr={0.5} />
+                                Filter
+                              </Flex>
+                            </Button>
+                          )}
+                        </Flex>
 
                         <Spacer mb={2} />
 
