@@ -4,7 +4,7 @@ import { Flex } from "Styleguide/Elements/Flex"
 import { Section } from "Styleguide/Utils/Section"
 import { ItemReview } from "../ItemReview"
 
-storiesOf("Styleguide/Components", module).add("ItemReview", () => {
+storiesOf("Apps/Order/Components", module).add("ItemReview", () => {
   return (
     <>
       <Section title="Item Review">
