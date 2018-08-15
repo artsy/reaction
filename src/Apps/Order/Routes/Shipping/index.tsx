@@ -1,14 +1,18 @@
 import { Sans, Serif } from "@artsy/palette"
 import { Shipping_order } from "__generated__/Shipping_order.graphql"
 import React, { Component } from "react"
-import { createFragmentContainer, graphql } from "react-relay"
+import {
+  commitMutation,
+  createFragmentContainer,
+  graphql,
+  RelayProp,
+} from "react-relay"
 
-import Input from "Components/Input"
-import { Link } from "Router"
 import { Collapse } from "Styleguide/Components/Collapse"
 import { CountrySelect } from "Styleguide/Components/CountrySelect"
 import { Button } from "Styleguide/Elements/Button"
 import { Flex } from "Styleguide/Elements/Flex"
+import { Col, Row } from "Styleguide/Elements/Grid"
 import { Join } from "Styleguide/Elements/Join"
 import { Radio } from "Styleguide/Elements/Radio"
 import { BorderedRadioGroup } from "Styleguide/Elements/RadioGroup"
@@ -18,7 +22,7 @@ import { Responsive } from "Utils/Responsive"
 import { SummaryFragmentContainer as Summary } from "../../Components/Summary"
 
 import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
-import { Col, Row } from "Styleguide/Elements/Grid"
+import { Input } from "Components/Input"
 import {
   TwoColumnLayout,
   TwoColumnSplit,
@@ -29,15 +33,91 @@ export interface ShippingProps {
   mediator?: {
     trigger: (action: string, config: object) => void
   }
+  relay?: RelayProp
+}
+
+// TODO: When the todo for abstracting the address is done and we have an Address component, we won't need this here, so the wonky state generic on ShippingRoute is fine for now.
+export interface Address {
+  // TODO: Shipping name is not in Exchange's schema yet.
+  // See: https://artsyproduct.atlassian.net/browse/PURCHASE-377
+  name?: string
+  addressLine1?: string
+  addressLine2?: string
+  city?: string
+  region?: string
+  country?: string
+  postalCode?: string
 }
 
 export interface ShippingState {
   shippingOption: string
 }
 
-export class ShippingRoute extends Component<ShippingProps, ShippingState> {
+export class ShippingRoute extends Component<
+  ShippingProps,
+  ShippingState & Address
+> {
+  // TODO: Fill in with Relay data on load.
+  // See: https://artsyproduct.atlassian.net/browse/PURCHASE-376
   state = {
     shippingOption: "SHIP",
+    address: {},
+  } as ShippingState & Address
+
+  // TODO: This can be handled with Formik.
+  // See: https://artsyproduct.atlassian.net/browse/PURCHASE-375
+  onUpdateName = e => {
+    this.setState({ name: e.target.value })
+  }
+  onUpdateAddressLine1 = e => {
+    this.setState({ addressLine1: e.target.value })
+  }
+  onUpdateAddressLine2 = e => {
+    this.setState({ addressLine2: e.target.value })
+  }
+  onUpdateCity = e => {
+    this.setState({ city: e.target.value })
+  }
+  onUpdateRegion = e => {
+    this.setState({ region: e.target.value })
+  }
+  onUpdateCountry = country => {
+    this.setState({ country })
+  }
+  onUpdatePostalCode = e => {
+    this.setState({ postalCode: e.target.value })
+  }
+
+  onContinueButtonPressed = () => {
+    if (this.props.relay && this.props.relay.environment) {
+      commitMutation(this.props.relay.environment, {
+        mutation: graphql`
+          mutation ShippingOrderAddressUpdateMutation(
+            $input: SetOrderShippingInput!
+          ) {
+            setOrderShipping(input: $input) {
+              result {
+                order {
+                  state
+                }
+              }
+            }
+          }
+        `,
+        variables: {
+          input: {
+            orderId: this.props.order.id,
+            fulfillmentType: this.state.shippingOption,
+            shippingAddressLine1: this.state.addressLine1 || "",
+            shippingAddressLine2: this.state.addressLine2 || "",
+            shippingCity: this.state.city || "",
+            shippingRegion: this.state.region || "",
+            shippingCountry: this.state.country || "",
+            shippingPostalCode: this.state.postalCode || "",
+          },
+        },
+      })
+    }
   }
 
   render() {
@@ -78,11 +158,14 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                   <Spacer mb={3} />
 
                   <Collapse open={this.state.shippingOption === "SHIP"}>
+                    {/* TODO: This address entry form should be abstracted into its own component, to be used on the billing address screen. */}
+                    {/* See: https://artsyproduct.atlassian.net/browse/PURCHASE-375 */}
                     <Join separator={<Spacer mb={2} />}>
                       <Flex flexDirection="column">
                         <Input
                           placeholder="Add full name"
                           title="Full name"
+                          onChange={this.onUpdateName}
                           block
                         />
                       </Flex>
@@ -97,13 +180,17 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                           >
                             Country
                           </Serif>
-                          <CountrySelect selected="US" />
+                          <CountrySelect
+                            selected={this.state.country || "US"}
+                            onSelect={this.onUpdateCountry}
+                          />
                         </Flex>
 
                         <Flex flexDirection="column">
                           <Input
                             placeholder="Add postal code"
                             title="Postal code"
+                            onChange={this.onUpdatePostalCode}
                             block
                           />
                         </Flex>
@@ -113,6 +200,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                           <Input
                             placeholder="Add street address"
                             title="Address line 1"
+                            onChange={this.onUpdateAddressLine1}
                             block
                           />
                         </Flex>
@@ -121,34 +209,42 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                           <Input
                             placeholder="Add apt, floor, suite, etc."
                             title="Address line 2 (optional)"
+                            onChange={this.onUpdateAddressLine2}
                             block
                           />
                         </Flex>
                       </TwoColumnSplit>
                       <TwoColumnSplit>
                         <Flex flexDirection="column">
-                          <Input placeholder="Add city" title="City" block />
+                          <Input
+                            placeholder="Add city"
+                            title="City"
+                            onChange={this.onUpdateCity}
+                            block
+                          />
                         </Flex>
 
                         <Flex flexDirection="column">
                           <Input
                             placeholder="Add State, province, or region"
                             title="State, province, or region"
+                            onChange={this.onUpdateRegion}
                             block
                           />
                         </Flex>
                       </TwoColumnSplit>
                     </Join>
-
                     <Spacer mb={2} />
                   </Collapse>
 
                   {!xs && (
-                    <Link to={`/order2/${order.id}/payment`}>
-                      <Button size="large" width="100%">
-                        Continue
-                      </Button>
-                    </Link>
+                    <Button
+                      onClick={this.onContinueButtonPressed}
+                      size="large"
+                      width="100%"
+                    >
+                      Continue
+                    </Button>
                   )}
                 </>
               }
@@ -157,11 +253,13 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                   {xs && (
                     <>
                       <Spacer mb={3} />
-                      <Link to={`/order2/${order.id}/payment`}>
-                        <Button size="large" width="100%">
-                          Continue
-                        </Button>
-                      </Link>
+                      <Button
+                        onClick={this.onContinueButtonPressed}
+                        size="large"
+                        width="100%"
+                      >
+                        Continue
+                      </Button>
                     </>
                   )}
                 </Summary>
