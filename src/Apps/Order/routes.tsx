@@ -1,3 +1,4 @@
+import { Location, RouteConfig, Router } from "found"
 import { graphql } from "react-relay"
 import { OrderApp } from "./OrderApp"
 
@@ -25,7 +26,11 @@ import { SubmissionProps } from "./Routes/Submission"
 const LEAVE_MESSAGING =
   "Are you sure you want to refresh? Your changes will not be saved."
 
-const confirmRouteExit = (newLocation, oldLocation, router) => {
+const confirmRouteExit = (
+  newLocation: Location,
+  oldLocation: Location,
+  router: Router
+) => {
   // Refresh -- On refresh newLocation is null
   if (!newLocation || newLocation.pathname === oldLocation.pathname) {
     // Most browsers will ignore this and supply their own messaging for refresh
@@ -35,7 +40,7 @@ const confirmRouteExit = (newLocation, oldLocation, router) => {
   // Attempting to navigate to another route in the orders app
   const match = router.matcher.match(newLocation)
   if (match) {
-    const matchedRoutes = router.matcher.getRoutes(match)
+    const matchedRoutes: RouteConfig[] | null = router.matcher.getRoutes(match)
     if (matchedRoutes && matchedRoutes[0].Component === OrderApp) {
       return true
     }

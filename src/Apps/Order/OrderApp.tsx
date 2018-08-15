@@ -1,3 +1,4 @@
+import { Location, RouteConfig, Router } from "found"
 import React from "react"
 
 const findRoute = (routes, routeIndices) => {
@@ -15,10 +16,10 @@ export interface OrderAppProps {
   params: {
     orderID: string
   }
-  location: any
+  location: Location
   routeIndices: number[]
-  routes: any
-  router: any
+  routes: RouteConfig[]
+  router: Router
 }
 
 export class OrderApp extends React.Component<OrderAppProps> {
