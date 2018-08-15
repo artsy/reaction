@@ -151,7 +151,7 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
         partner_id: { type: "ID!" }
         for_sale: { type: "Boolean" }
         at_auction: { type: "Boolean" }
-        ecommerce: { type: "Boolean" }
+        acquireable: { type: "Boolean" }
         sort: { type: "String", defaultValue: "-partner_updated_at" }
         partner_category: {
           type: "[String]"
@@ -169,8 +169,9 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
           partner_id: $partner_id
           for_sale: $for_sale
           sort: $sort
+          at_auction: $at_auction
+          acquireable: $acquireable
         )
-
       id
       exhibition_highlights(size: 3) {
         ...SelectedExhibitions_exhibitions
