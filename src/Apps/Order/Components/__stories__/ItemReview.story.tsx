@@ -1,4 +1,3 @@
-import { ItemReview_artwork$ref } from "__generated__/ItemReview_artwork.graphql"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Flex } from "Styleguide/Elements/Flex"
@@ -12,7 +11,7 @@ storiesOf("Styleguide/Components", module).add("ItemReview", () => {
         <Flex width={542} flexDirection="column">
           <ItemReview
             artwork={{
-              " $refType": Symbol() as ItemReview_artwork$ref,
+              " $refType": null,
               artist_names: "Francesca DiMattio",
               title: "The Fox and the Hound",
               date: "2018",
@@ -38,7 +37,7 @@ storiesOf("Styleguide/Components", module).add("ItemReview", () => {
         <Flex width={542} flexDirection="column">
           <ItemReview
             artwork={{
-              " $refType": Symbol() as ItemReview_artwork$ref,
+              " $refType": null,
               artist_names: "Francesca DiMattio",
               title: "The Fox and the Hound",
               date: "2018",
@@ -63,7 +62,7 @@ storiesOf("Styleguide/Components", module).add("ItemReview", () => {
         <Flex width={542} flexDirection="column">
           <ItemReview
             artwork={{
-              " $refType": Symbol() as ItemReview_artwork$ref,
+              " $refType": null,
               artist_names: "Francesca DiMattio",
               title: "The Fox and the Hound",
               date: "2018",
