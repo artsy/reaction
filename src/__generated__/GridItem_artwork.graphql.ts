@@ -12,6 +12,7 @@ export type GridItem_artwork = {
         readonly aspect_ratio: number | null;
     }) | null;
     readonly is_biddable: boolean | null;
+    readonly is_acquireable: boolean | null;
     readonly href: string | null;
     readonly " $fragmentRefs": Metadata_artwork$ref & Save_artwork$ref;
     readonly " $refType": GridItem_artwork$ref;
@@ -75,6 +76,13 @@ const node: ConcreteFragment = {
     {
       "kind": "ScalarField",
       "alias": null,
+      "name": "is_acquireable",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
       "name": "href",
       "args": null,
       "storageKey": null
@@ -98,5 +106,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'f9fa0fb57c177649740dd1c43ba2eb88';
+(node as any).hash = '7d787e18a67dccb515e738babcc841fc';
 export default node;

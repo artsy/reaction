@@ -5,6 +5,7 @@ import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import styled from "styled-components"
+import { Flex } from "Styleguide/Elements/Flex"
 import { Responsive } from "Utils/Responsive"
 import colors from "../../Assets/Colors"
 import RelayMetadata, { Metadata } from "./Metadata"
@@ -38,6 +39,22 @@ interface State {
 }
 
 const IMAGE_QUALITY = 80
+
+const Badge = styled.div`
+  border-radius: 2px;
+  letter-spacing: 0.3px;
+  padding: 1px 5px 0px 6px;
+  background-color: white;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+  margin-left: 5px;
+`
+
+const Badges = styled(Flex)`
+  position: absolute;
+  bottom: 8px;
+  left: 3px;
+`
 
 class ArtworkGridItemContainer extends React.Component<Props, State> {
   static defaultProps = {
@@ -90,24 +107,22 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
     }
   }
 
-  renderBidLabel() {
+  renderArtworkBadge({ is_biddable, is_acquireable }) {
     return (
-      <Sans
-        size="1"
-        style={{
-          position: "absolute",
-          bottom: "8px",
-          left: "8px",
-          borderRadius: "2px",
-          letterSpacing: "0.3px",
-          padding: "1px 5px 0px 6px",
-          backgroundColor: "white",
-          boxShadow: "0 2px 5px 0 rgba(0, 0, 0, 0.1)",
-          textTransform: "uppercase",
-        }}
-      >
-        Bid
-      </Sans>
+      <React.Fragment>
+        <Badges>
+          {is_biddable && (
+            <Badge>
+              <Sans size="1">Bid</Sans>
+            </Badge>
+          )}
+          {is_acquireable && (
+            <Badge>
+              <Sans size="1">Buy Now</Sans>
+            </Badge>
+          )}
+        </Badges>
+      </React.Fragment>
     )
   }
 
@@ -134,9 +149,7 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
                 <a href={artwork.href}>
                   <Image src={this.getImageUrl(breakpoints)} />
                 </a>
-                {hasBuyNowLabFeature &&
-                  artwork.is_biddable &&
-                  this.renderBidLabel()}
+                {hasBuyNowLabFeature && this.renderArtworkBadge(artwork)}
                 {hover && (
                   <SaveButtonBlock
                     className="artwork-save"
@@ -181,6 +194,7 @@ export default createFragmentContainer(
         aspect_ratio
       }
       is_biddable
+      is_acquireable
       href
       ...Metadata_artwork
       ...Save_artwork
