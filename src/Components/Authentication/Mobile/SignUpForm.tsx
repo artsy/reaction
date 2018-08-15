@@ -118,7 +118,7 @@ export class MobileSignUpForm extends Component<
       <Wizard steps={steps} onComplete={this.props.handleSubmit}>
         {context => {
           const {
-            form: { handleSubmit, values, setTouched },
+            form: { handleSubmit, values, setTouched, isSubmitting },
             wizard,
           } = context
           const { currentStep, isLastStep } = wizard
@@ -155,6 +155,7 @@ export class MobileSignUpForm extends Component<
                       }
                     )
                   }}
+                  loading={isLastStep && isSubmitting}
                 >
                   {isLastStep ? "Create account" : "Next"}
                 </SubmitButton>
