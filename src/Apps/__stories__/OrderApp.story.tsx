@@ -13,28 +13,6 @@ const mock = {
     return {
       id,
       code: "abcdefg",
-      currencyCode: "USD",
-      state: "PENDING",
-      fulfillmentType: null,
-      shippingAddressLine1: null,
-      shippingAddressLine2: null,
-      shippingCity: null,
-      shippingPostalCode: null,
-      shippingRegion: null,
-      itemsTotalCents: 1200000,
-      itemsTotal: "$12,000",
-      shippingTotalCents: null,
-      shippingTotal: null,
-      taxTotalCents: null,
-      taxTotal: null,
-      transactionFee: null,
-      transactionFeeCents: null,
-      commissionFee: null,
-      commissionFeeCents: null,
-      buyerTotal: "$12,000",
-      buyerTotalCents: 1200000,
-      sellerTotal: null,
-      sellerTotalCents: null,
       lineItems: {
         edges: [
           {
@@ -60,13 +38,6 @@ const mock = {
           },
         ],
       },
-      partner: {
-        name: "Kathryn Markel Fine Arts",
-      },
-      user: {
-        name: "David Sheldrick",
-      },
-      creditCard: null,
     }
   },
 }
