@@ -8,6 +8,7 @@ import { Message } from "Styleguide/Elements/Message"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Placeholder } from "Styleguide/Utils/Placeholder"
 import { Responsive } from "Utils/Responsive"
+import { ItemReviewFragmentContainer as ItemReview } from "../../Components/ItemReview"
 import { SummaryFragmentContainer as Summary } from "../../Components/Summary"
 
 export interface SubmissionProps {
@@ -41,7 +42,19 @@ export class SubmissionRoute extends Component<SubmissionProps> {
                       <a href="#">orders@artsy.net</a>.
                     </Message>
                   </>
-                  <Placeholder height="80px" name="Item Summary" />
+                  <Responsive>
+                    {({ xs }) =>
+                      !xs && (
+                        <div>
+                          <ItemReview
+                            artwork={
+                              this.props.order.lineItems.edges[0].node.artwork
+                            }
+                          />
+                        </div>
+                      )
+                    }
+                  </Responsive>
                   <Placeholder height="80px" name="Price Summary" />
                 </Join>
                 <Spacer mb={3} />
@@ -62,6 +75,15 @@ export const SubmissionFragmentContainer = createFragmentContainer(
       id
       code
       ...Summary_order
+      lineItems {
+        edges {
+          node {
+            artwork {
+              ...ItemReview_artwork
+            }
+          }
+        }
+      }
     }
   `
 )

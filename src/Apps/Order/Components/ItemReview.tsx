@@ -1,21 +1,14 @@
 import React from "react"
 
 import { Serif } from "@artsy/palette"
+import { ItemReview_artwork } from "__generated__/ItemReview_artwork.graphql"
+import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 import { StackableBorderBox } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 
 interface ItemReviewProps {
-  artist: string
-  title: string
-  date?: string
-  medium?: string
-  dimensions?: {
-    in: string
-    cm: string
-  }
-  attributionClassDescription?: string
-  imageURL: string
+  artwork: ItemReview_artwork
 }
 
 const ImageBox = styled.div`
@@ -29,18 +22,22 @@ const ImageBox = styled.div`
 `
 
 export const ItemReview: React.SFC<ItemReviewProps> = ({
-  artist,
-  title,
-  date,
-  medium,
-  dimensions,
-  attributionClassDescription,
-  imageURL,
+  artwork: {
+    artist_names,
+    title,
+    date,
+    medium,
+    dimensions,
+    attribution_class,
+    image: {
+      resized: { url },
+    },
+  },
 }) => (
   <StackableBorderBox>
     <Flex flexGrow={1} flexDirection="column">
       <Serif size="2" weight="semibold" color="black60">
-        {artist}
+        {artist_names}
       </Serif>
       <Serif italic size="2" color="black60">
         {title}
@@ -56,14 +53,38 @@ export const ItemReview: React.SFC<ItemReviewProps> = ({
           {dimensions.in} ({dimensions.cm})
         </Serif>
       )}
-      {attributionClassDescription && (
+      {attribution_class && (
         <Serif size="2" color="black60">
-          {attributionClassDescription}
+          {attribution_class.short_description}
         </Serif>
       )}
     </Flex>
     <ImageBox>
-      <img alt={`${title} by ${artist}`} src={imageURL} />
+      <img alt={`${title} by ${artist_names}`} src={url} />
     </ImageBox>
   </StackableBorderBox>
+)
+
+export const ItemReviewFragmentContainer = createFragmentContainer(
+  ItemReview,
+  graphql`
+    fragment ItemReview_artwork on Artwork {
+      artist_names
+      title
+      date
+      medium
+      dimensions {
+        in
+        cm
+      }
+      attribution_class {
+        short_description
+      }
+      image {
+        resized(width: 185) {
+          url
+        }
+      }
+    }
+  `
 )
