@@ -2,7 +2,7 @@
 
 import { ConcreteFragment } from "relay-runtime";
 import { ItemReview_artwork$ref } from "./ItemReview_artwork.graphql";
-import { Summary_order$ref } from "./Summary_order.graphql";
+import { TransactionSummary_order$ref } from "./TransactionSummary_order.graphql";
 declare const _Submission_order$ref: unique symbol;
 export type Submission_order$ref = typeof _Submission_order$ref;
 export type Submission_order = {
@@ -12,12 +12,13 @@ export type Submission_order = {
         readonly edges: ReadonlyArray<({
             readonly node: ({
                 readonly artwork: ({
+                    readonly id: string;
                     readonly " $fragmentRefs": ItemReview_artwork$ref;
                 }) | null;
             }) | null;
         }) | null> | null;
     }) | null;
-    readonly " $fragmentRefs": Summary_order$ref;
+    readonly " $fragmentRefs": TransactionSummary_order$ref;
     readonly " $refType": Submission_order$ref;
 };
 
@@ -25,6 +26,13 @@ export type Submission_order = {
 
 const node: ConcreteFragment = (function(){
 var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v1 = {
   "kind": "ScalarField",
   "alias": "__id",
   "name": "id",
@@ -38,13 +46,7 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "id",
-      "args": null,
-      "storageKey": null
-    },
+    v0,
     {
       "kind": "ScalarField",
       "alias": null,
@@ -54,7 +56,7 @@ return {
     },
     {
       "kind": "FragmentSpread",
-      "name": "Summary_order",
+      "name": "TransactionSummary_order",
       "args": null
     },
     {
@@ -93,6 +95,7 @@ return {
                   "concreteType": "Artwork",
                   "plural": false,
                   "selections": [
+                    v0,
                     {
                       "kind": "FragmentSpread",
                       "name": "ItemReview_artwork",
@@ -107,16 +110,16 @@ return {
                     }
                   ]
                 },
-                v0
+                v1
               ]
             }
           ]
         }
       ]
     },
-    v0
+    v1
   ]
 };
 })();
-(node as any).hash = '52975cff4e38e6a3e5d7371368bcd880';
+(node as any).hash = '8413fd35bda3cbb8ad69db290e1d6bb4';
 export default node;

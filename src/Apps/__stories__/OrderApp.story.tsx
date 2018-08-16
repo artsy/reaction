@@ -13,6 +13,10 @@ const mock = {
     return {
       id,
       code: "abcdefg",
+      itemsTotal: "$12,000",
+      shippingTotal: null,
+      taxTotal: null,
+      buyerTotal: "$12,000",
       lineItems: {
         edges: [
           {
@@ -35,6 +39,16 @@ const mock = {
                 },
               },
             },
+          },
+        ],
+      },
+      partner: {
+        name: "Kathryn Markel Fine Arts",
+        locations: [
+          {
+            city: "New York",
+            state: "NY",
+            country: "US",
           },
         ],
       },

@@ -3,13 +3,14 @@ import { Submission_order } from "__generated__/Submission_order.graphql"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { Flex } from "Styleguide/Elements/Flex"
 import { Join } from "Styleguide/Elements/Join"
 import { Message } from "Styleguide/Elements/Message"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Placeholder } from "Styleguide/Utils/Placeholder"
 import { Responsive } from "Utils/Responsive"
-import { ItemReviewFragmentContainer as ItemReview } from "../../Components/ItemReview"
-import { SummaryFragmentContainer as Summary } from "../../Components/Summary"
+import { Helper } from "../../Components/Helper"
+import { TransactionSummaryFragmentContainer as TransactionSummary } from "../../Components/TransactionSummary"
 
 export interface SubmissionProps {
   order: Submission_order
@@ -24,11 +25,11 @@ export class SubmissionRoute extends Component<SubmissionProps> {
 
     return (
       <Responsive>
-        {() => (
+        {({ xs }) => (
           <TwoColumnLayout
             Content={
               <>
-                <Join separator={<Spacer mb={3} />}>
+                <Join separator={<Spacer mb={xs ? 2 : 3} />}>
                   <>
                     <Serif size="6" weight="regular" color="black100">
                       Your order has been submitted
@@ -36,31 +37,27 @@ export class SubmissionRoute extends Component<SubmissionProps> {
                     <Sans size="2" weight="regular" color="black60">
                       Order #{order.code}
                     </Sans>
-                    <Message mt={3}>
+                    <Message mt={xs ? 2 : 3}>
                       Thank you for your order. You’ll receive a confirmation
                       email shortly. If you have questions, please contact{" "}
                       <a href="#">orders@artsy.net</a>.
                     </Message>
                   </>
-                  <Responsive>
-                    {({ xs }) =>
-                      !xs && (
-                        <div>
-                          <ItemReview
-                            artwork={
-                              this.props.order.lineItems.edges[0].node.artwork
-                            }
-                          />
-                        </div>
-                      )
-                    }
-                  </Responsive>
-                  <Placeholder height="80px" name="Price Summary" />
+                  <TransactionSummary order={order} />
                 </Join>
-                <Spacer mb={3} />
+                <Spacer mb={xs ? 2 : 3} />
               </>
             }
-            Sidebar={<Summary mediator={this.props.mediator} order={order} />}
+            Sidebar={
+              <Flex flexDirection="column">
+                <Placeholder
+                  height="180px"
+                  name="Shipping and payment details"
+                  mb={xs ? 2 : 3}
+                />
+                <Helper artworkId={order.lineItems.edges[0].node.artwork.id} />
+              </Flex>
+            }
           />
         )}
       </Responsive>
@@ -74,11 +71,12 @@ export const SubmissionFragmentContainer = createFragmentContainer(
     fragment Submission_order on Order {
       id
       code
-      ...Summary_order
+      ...TransactionSummary_order
       lineItems {
         edges {
           node {
             artwork {
+              id
               ...ItemReview_artwork
             }
           }

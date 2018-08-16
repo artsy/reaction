@@ -1,20 +1,21 @@
 import { mount } from "enzyme"
 import React from "react"
 import renderer from "react-test-renderer"
-import { AppState } from "Router/state"
 import { Provider } from "unstated"
-import { SummaryFragmentContainer as Summary } from "../Summary"
+import { AppState } from "../../../../Router/state"
+import { Helper } from "../Helper"
 
 describe("Order summary", () => {
   const mediatorMock = {
     trigger: jest.fn(),
   }
-  it("renders the summary properly", () => {
+  it("renders the helper properly", () => {
     const appState = new AppState({ mediator: mediatorMock })
+    console.dir(appState)
     const summary = renderer
       .create(
         <Provider inject={[appState]}>
-          <Summary order={mockOrder} />
+          <Helper artworkId="whatever" />
         </Provider>
       )
       .toJSON()
@@ -26,7 +27,7 @@ describe("Order summary", () => {
 
     const summary = mount(
       <Provider inject={[appState]}>
-        <Summary order={mockOrder} mediator={mediatorMock} />
+        <Helper artworkId="whatever" />
       </Provider>
     )
 
@@ -43,7 +44,7 @@ describe("Order summary", () => {
 
     const summary = mount(
       <Provider inject={[appState]}>
-        <Summary order={mockOrder} mediator={mediatorMock} />
+        <Helper artworkId="whatever" />
       </Provider>
     )
 
@@ -54,21 +55,7 @@ describe("Order summary", () => {
 
     expect(mediatorMock.trigger).toHaveBeenCalledWith(
       "openOrdersContactArtsyModal",
-      { artworkId: "lisa-breslow-cactus" }
+      { artworkId: "whatever" }
     )
   })
-
-  const mockOrder = {
-    lineItems: {
-      edges: [
-        {
-          node: {
-            artwork: {
-              id: "lisa-breslow-cactus",
-            },
-          },
-        },
-      ],
-    },
-  }
 })
