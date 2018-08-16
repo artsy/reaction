@@ -18,7 +18,7 @@ export const MobileActionSheet: SFC<MobileActionSheet> = ({
 }) => {
   return (
     <Subscribe to={[FilterState]}>
-      {({ state: { selectedFilters } }) => {
+      {({ resetFilters, state: { selectedFilters } }: FilterState) => {
         const filterCount = selectedFilters.length
           ? `(${selectedFilters.length})`
           : ""
@@ -26,7 +26,11 @@ export const MobileActionSheet: SFC<MobileActionSheet> = ({
         return (
           <Container>
             <MobileTopBar>
-              <Button variant="noOutline" size="small">
+              <Button
+                variant="noOutline"
+                size="small"
+                onClick={() => resetFilters()}
+              >
                 Reset
               </Button>
               <Sans size="2" weight="medium">
@@ -52,9 +56,9 @@ export const MobileActionSheet: SFC<MobileActionSheet> = ({
 
 const Container = styled(Box)`
   position: fixed;
-  z-index: 2;
-  /* Account for Artsy.net mobile nav  */
-  top: 60px;
+  /* The z-index after Force's mobile top-nav header */
+  z-index: 971;
+  top: 0;
   left: 0;
   width: 100%;
   height: 100%;
