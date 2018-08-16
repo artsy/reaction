@@ -7,12 +7,16 @@ import { GenesFragmentContainer as Genes } from "Apps/Artist/Routes/Overview/Com
 import { hasSections as showMarketInsights } from "Components/Artist/MarketInsights/MarketInsights"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { ArtistBioFragmentContainer as ArtistBio } from "Styleguide/Components/ArtistBio"
+import {
+  ArtistBioFragmentContainer as ArtistBio,
+  MAX_CHARS,
+} from "Styleguide/Components/ArtistBio"
 import { MarketInsightsFragmentContainer as MarketInsights } from "Styleguide/Components/MarketInsights"
 import { SelectedExhibitionFragmentContainer as SelectedExhibitions } from "Styleguide/Components/SelectedExhibitions"
 import { Box } from "Styleguide/Elements/Box"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Spacer } from "Styleguide/Elements/Spacer"
+import { Responsive } from "Utils/Responsive"
 import { CurrentEventFragmentContainer as CurrentEvent } from "./Components/CurrentEvent"
 
 export interface OverviewRouteProps {
@@ -43,11 +47,35 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
     // no-op
   }
 
+  maybeShowGenes(xs) {
+    const { artist } = this.props
+    let showGenes = false
+
+    if (artist.related.genes.edges.length) {
+      if (this.state.isReadMoreExpanded) {
+        showGenes = true
+      } else if (!artist.biography_blurb.text) {
+        showGenes = true
+      } else {
+        const bioLen = artist.biography_blurb.text.length
+
+        if (xs) {
+          if (bioLen < MAX_CHARS.xs) {
+            showGenes = true
+          }
+        } else {
+          if (bioLen < MAX_CHARS.rest) {
+            showGenes = true
+          }
+        }
+      }
+    }
+
+    return showGenes
+  }
+
   render() {
     const { artist } = this.props
-    const showGenes =
-      Boolean(artist.related.genes.edges.length) &&
-      (this.state.isReadMoreExpanded || !artist.biography_blurb.text)
 
     const showSelectedExhibitions = Boolean(artist.exhibition_highlights.length)
     const showArtistBio = Boolean(artist.biography_blurb.text)
@@ -65,78 +93,92 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
     const colNum = 9 // artist.currentEvent ? 9 : 12
 
     return (
-      <>
-        <Row>
-          <Col sm={colNum}>
-            {showMarketInsights && (
-              <>
-                <MarketInsights artist={artist} />
-                <Spacer mb={1} />
-              </>
-            )}
+      <Responsive>
+        {({ xs }) => {
+          return (
+            <>
+              <Row>
+                <Col sm={colNum}>
+                  {showMarketInsights && (
+                    <>
+                      <MarketInsights artist={artist} />
+                      <Spacer mb={1} />
+                    </>
+                  )}
 
-            {showSelectedExhibitions && (
-              <>
-                <SelectedExhibitions
-                  artistID={artist.id}
-                  totalExhibitions={this.props.artist.counts.partner_shows}
-                  exhibitions={this.props.artist.exhibition_highlights}
-                />
-                <Spacer mb={1} />
-              </>
-            )}
+                  {showSelectedExhibitions && (
+                    <>
+                      <SelectedExhibitions
+                        artistID={artist.id}
+                        totalExhibitions={
+                          this.props.artist.counts.partner_shows
+                        }
+                        exhibitions={this.props.artist.exhibition_highlights}
+                      />
+                      <Spacer mb={1} />
+                    </>
+                  )}
 
-            {showArtistBio && (
-              <>
-                <ArtistBio
-                  onReadMoreClicked={() => {
-                    this.setState({ isReadMoreExpanded: true })
-                  }}
-                  bio={artist}
-                />
-                <Spacer mb={1} />
-              </>
-            )}
+                  {showArtistBio && (
+                    <>
+                      <ArtistBio
+                        onReadMoreClicked={() => {
+                          this.setState({ isReadMoreExpanded: true })
+                        }}
+                        bio={artist}
+                      />
+                      <Spacer mb={1} />
+                    </>
+                  )}
 
-            {showGenes && (
-              <>
-                <Genes artist={artist} />
-                <Spacer mb={1} />
-              </>
-            )}
+                  {this.maybeShowGenes(xs) && (
+                    <>
+                      <Genes artist={artist} />
+                      <Spacer mb={1} />
+                    </>
+                  )}
 
-            {showConsignable && (
-              <Sans size="2" color="black60">
-                Want to sell a work by this artist?{" "}
-                <a href="/consign" onClick={this.handleConsignClick.bind(this)}>
-                  Learn more
-                </a>.
-              </Sans>
-            )}
-          </Col>
+                  {showConsignable && (
+                    <>
+                      <Spacer mb={2} />
+                      <Sans size="2" color="black60">
+                        Want to sell a work by this artist?{" "}
+                        <a
+                          href="/consign"
+                          onClick={this.handleConsignClick.bind(this)}
+                        >
+                          Learn more
+                        </a>.
+                      </Sans>
+                    </>
+                  )}
+                </Col>
 
-          {showCurrentEvent && (
-            <Col sm={3}>
-              <Box pl={2}>
-                <CurrentEvent artist={artist} />
-              </Box>
-            </Col>
-          )}
-        </Row>
+                {showCurrentEvent && (
+                  <Col sm={3}>
+                    <Box pl={2}>
+                      <CurrentEvent artist={artist} />
+                    </Box>
+                  </Col>
+                )}
+              </Row>
 
-        {!hideMainOverviewSection && <Spacer mb={4} />}
+              {!hideMainOverviewSection && <Spacer mb={4} />}
 
-        <Row>
-          <Col>
-            <span id="jump--artistArtworkGrid" />
+              <Row>
+                <Col>
+                  <span id="jump--artistArtworkGrid" />
 
-            <ArtworkFilter
-              artist={artist}
-              hideTopBorder={hideMainOverviewSection}
-            />
-          </Col>
-        </Row>
-      </>
+                  <ArtworkFilter
+                    artist={artist}
+                    hideTopBorder={hideMainOverviewSection}
+                  />
+                </Col>
+              </Row>
+            </>
+          )
+        }}
+      </Responsive>
     )
   }
 }

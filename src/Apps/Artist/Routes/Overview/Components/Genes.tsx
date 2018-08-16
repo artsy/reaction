@@ -4,6 +4,7 @@ import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 import { space } from "styled-system"
+import { Spacer } from "Styleguide/Elements/Spacer"
 
 const GeneFamily = styled.div``
 const GeneLink = styled.a`
@@ -28,6 +29,7 @@ export class Genes extends Component<Props> {
         <Sans size="2" weight="medium">
           Related Categories
         </Sans>
+        <Spacer mb={1} />
         {genes.edges.map(({ node: gene }, index, list) => {
           const geneDivider = index < list.length - 1 ? "," : ""
 

@@ -2,7 +2,7 @@ import { Sans } from "@artsy/palette"
 import React, { SFC } from "react"
 import styled from "styled-components"
 import { MobileTopBar } from "Styleguide/Components/MobileTopBar"
-import { StackableBorderBox } from "Styleguide/Elements/Box"
+import { Box, StackableBorderBox } from "Styleguide/Elements/Box"
 import { Button } from "Styleguide/Elements/Button"
 import { Subscribe } from "unstated"
 import { FilterState } from "../../state"
@@ -50,10 +50,11 @@ export const MobileActionSheet: SFC<MobileActionSheet> = ({
   )
 }
 
-const Container = styled.div`
+const Container = styled(Box)`
   position: fixed;
   z-index: 2;
-  top: 0;
+  /* Account for Artsy.net mobile nav  */
+  top: 60px;
   left: 0;
   width: 100%;
   height: 100%;
