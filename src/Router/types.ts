@@ -5,10 +5,14 @@ import { NewResponsiveProviderProps } from "Utils/Responsive"
 
 type ReactComponent = ComponentType<any>
 type HistoryProtocol = "browser" | "hash" | "memory"
+export interface HistoryOptions {
+  useBeforeUnload?: boolean
+}
 export type MatchingMediaQueries = NewResponsiveProviderProps["initialMatchingMediaQueries"]
 
 export interface AppConfig {
   historyProtocol?: HistoryProtocol
+  historyOptions?: HistoryOptions
   initialMatchingMediaQueries?: MatchingMediaQueries
   initialRoute?: string
   routes: RouteConfig
