@@ -9,7 +9,7 @@ describe("ArtistBio", () => {
     },
   }
 
-  it.only("renders html text", () => {
+  it("renders html text", () => {
     const wrapper = mount(<ArtistBio bio={bio} />)
     expect(wrapper.html()).toContain(bio.biography_blurb.text)
   })
@@ -28,6 +28,6 @@ describe("ArtistBio", () => {
         }}
       />
     )
-    wrapper.simulate("click")
+    wrapper.find("Container").simulate("click")
   })
 })

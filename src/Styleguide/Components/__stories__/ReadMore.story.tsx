@@ -58,6 +58,20 @@ storiesOf("Styleguide/Components", module).add("ReadMore", () => {
           />
         </Sans>
       </Section>
+
+      <Section title="Short content">
+        <Sans size="3">
+          <ReadMore
+            maxChars={300}
+            content={
+              <div>
+                Donald Judd, widely regarded as one of the most significant
+                American artists of <a href="#">the post-war period</a>.
+              </div>
+            }
+          />
+        </Sans>
+      </Section>
     </React.Fragment>
   )
 })

@@ -20,6 +20,8 @@ export interface ReadMoreState {
 
 @track()
 export class ReadMore extends Component<ReadMoreProps, ReadMoreState> {
+  private html: string
+
   state = {
     isExpanded: true,
   }
@@ -32,8 +34,16 @@ export class ReadMore extends Component<ReadMoreProps, ReadMoreState> {
   constructor(props) {
     super(props)
 
+    this.html = isString(props.content)
+      ? props.content
+      : renderToStaticMarkup(<>{props.content}</>)
+
+    const RE = /(<([^>]+)>)/gi // Strip HTML tags to get innerText char count
+    const { length } = this.html.replace(RE, "") //
+    const isExpanded = props.isExpanded || length < props.maxChars
+
     this.state = {
-      isExpanded: props.isExpanded,
+      isExpanded,
     }
   }
 
@@ -53,17 +63,10 @@ export class ReadMore extends Component<ReadMoreProps, ReadMoreState> {
   }
 
   getContent() {
-    const { isExpanded } = this.state
-    const { content } = this.props
-
-    const html = isString(content)
-      ? content
-      : renderToStaticMarkup(<>{content}</>)
-
-    if (isExpanded) {
-      return html
+    if (this.state.isExpanded) {
+      return this.html
     } else {
-      return truncate(html, this.props.maxChars).html
+      return truncate(this.html, this.props.maxChars).html
     }
   }
 
@@ -119,3 +122,5 @@ const Container = styled.div.attrs<ReadMoreState>({})`
     display: inline;
   }
 `
+
+Container.displayName = "Container"
