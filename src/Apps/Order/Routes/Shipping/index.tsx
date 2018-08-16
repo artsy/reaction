@@ -66,27 +66,13 @@ export class ShippingRoute extends Component<
 
   // TODO: This can be handled with Formik.
   // See: https://artsyproduct.atlassian.net/browse/PURCHASE-375
-  onUpdateName = e => {
-    this.setState({ name: e.target.value })
-  }
-  onUpdateAddressLine1 = e => {
-    this.setState({ addressLine1: e.target.value })
-  }
-  onUpdateAddressLine2 = e => {
-    this.setState({ addressLine2: e.target.value })
-  }
-  onUpdateCity = e => {
-    this.setState({ city: e.target.value })
-  }
-  onUpdateRegion = e => {
-    this.setState({ region: e.target.value })
-  }
-  onUpdateCountry = country => {
-    this.setState({ country })
-  }
-  onUpdatePostalCode = e => {
-    this.setState({ postalCode: e.target.value })
-  }
+  onUpdateName = e => this.setState({ name: e.target.value })
+  onUpdateAddressLine1 = e => this.setState({ addressLine1: e.target.value })
+  onUpdateAddressLine2 = e => this.setState({ addressLine2: e.target.value })
+  onUpdateCity = e => this.setState({ city: e.target.value })
+  onUpdateRegion = e => this.setState({ region: e.target.value })
+  onUpdateCountry = country => this.setState({ country })
+  onUpdatePostalCode = e => this.setState({ postalCode: e.target.value })
 
   onContinueButtonPressed = () => {
     if (this.props.relay && this.props.relay.environment) {
