@@ -11,7 +11,6 @@ describe("Order summary", () => {
   }
   it("renders the helper properly", () => {
     const appState = new AppState({ mediator: mediatorMock })
-    console.dir(appState)
     const summary = renderer
       .create(
         <Provider inject={[appState]}>
