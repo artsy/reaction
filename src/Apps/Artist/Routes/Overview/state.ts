@@ -1,4 +1,4 @@
-import { omit, uniq, without } from "lodash"
+import { cloneDeep, omit, uniq, without } from "lodash"
 import { Container } from "unstated"
 
 type State = {
@@ -17,19 +17,21 @@ type State = {
   showActionSheet: boolean
 }
 
+const initialState = {
+  medium: "*",
+  for_sale: null,
+  page: 1,
+  major_periods: [],
+  partner_id: null,
+  sort: "-partner_updated_at",
+  acquireable: null,
+  at_auction: null,
+  selectedFilters: [],
+  showActionSheet: false,
+}
+
 export class FilterState extends Container<State> {
-  state = {
-    medium: "*",
-    for_sale: null,
-    page: 1,
-    major_periods: [],
-    partner_id: null,
-    sort: "-partner_updated_at",
-    acquireable: null,
-    at_auction: null,
-    selectedFilters: [],
-    showActionSheet: false,
-  }
+  state = cloneDeep(initialState)
 
   constructor(props: State) {
     super()
@@ -63,14 +65,21 @@ export class FilterState extends Container<State> {
   }
 
   showActionSheet = show => {
-    // TODO: Manage this side-effect in a more react-like fashion
     if (show) {
+      // TODO: Manage this side-effect in a more react-like fashion
       document.body.style.overflowY = "hidden"
     } else {
       document.body.style.overflowY = "auto"
     }
 
     this.setState({ showActionSheet: show })
+  }
+
+  resetFilters = () => {
+    this.setState({
+      ...initialState,
+      showActionSheet: true,
+    })
   }
 
   unsetFilter(filter, mediator) {
