@@ -31,4 +31,23 @@ describe("MobileSignUpForm", () => {
       done()
     })
   })
+
+  it("renders password error", () => {
+    const wrapper = getWrapper({ values: { email: "kajsdlfjk" } })
+    const formik: any = wrapper.find("Formik").instance()
+    formik.setStatus({ error: "some password error" })
+    wrapper.update()
+    expect(wrapper.html()).toMatch("some password error")
+  })
+
+  it("renders global errors", () => {
+    const wrapper = mount(
+      <MobileSignUpForm
+        error="Some global server error"
+        handleSubmit={jest.fn()}
+      />
+    )
+    wrapper.update()
+    expect(wrapper.html()).toMatch("Some global server error")
+  })
 })
