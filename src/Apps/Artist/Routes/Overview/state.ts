@@ -9,7 +9,7 @@ type State = {
   for_sale?: boolean
   page?: number
   sort?: string
-  ecommerce?: boolean
+  acquireable?: boolean
   at_auction?: boolean
 
   // UI
@@ -25,7 +25,7 @@ export class FilterState extends Container<State> {
     major_periods: [],
     partner_id: null,
     sort: "-partner_updated_at",
-    ecommerce: null,
+    acquireable: null,
     at_auction: null,
     selectedFilters: [],
     showActionSheet: false,
@@ -38,7 +38,9 @@ export class FilterState extends Container<State> {
         if (props[filter]) {
           if (filter === "major_periods") {
             this.state[filter] = [props[filter]]
-          } else if (["for_sale", "ecommerce", "at_auction"].includes(filter)) {
+          } else if (
+            ["for_sale", "acquireable", "at_auction"].includes(filter)
+          ) {
             this.state.for_sale = props[filter] ? true : null
           } else {
             this.state[filter] = props[filter]
@@ -68,9 +70,7 @@ export class FilterState extends Container<State> {
       document.body.style.overflowY = "auto"
     }
 
-    this.setState({
-      showActionSheet: show,
-    })
+    this.setState({ showActionSheet: show })
   }
 
   unsetFilter(filter, mediator) {
@@ -80,7 +80,7 @@ export class FilterState extends Container<State> {
       newPartialState = { major_periods: [] }
     }
     if (
-      ["for_sale", "ecommerce", "at_auction", "partner_id"].includes(filter)
+      ["for_sale", "acquireable", "at_auction", "partner_id"].includes(filter)
     ) {
       newPartialState[filter] = null
     }
@@ -110,18 +110,10 @@ export class FilterState extends Container<State> {
         medium: "*",
       }
     } else if (filter === "partner_id") {
-      newPartialState = {
-        major_periods: [],
-        partner_id: value,
-        medium: "*",
-      }
+      newPartialState = { major_periods: [], partner_id: value, medium: "*" }
     } else if (filter === "medium") {
-      newPartialState = {
-        medium: value,
-        partner_id: null,
-        major_periods: [],
-      }
-    } else if (["for_sale", "ecommerce", "at_auction"].includes(filter)) {
+      newPartialState = { medium: value, partner_id: null, major_periods: [] }
+    } else if (["for_sale", "acquireable", "at_auction"].includes(filter)) {
       if (value) {
         selectedFilters = selectedFilters.concat([filter])
         newPartialState[filter] = true
