@@ -26,6 +26,11 @@ describe("ReadMore", () => {
     expect(wrapper(undefined).html()).toContain(htmlCopy)
   })
 
+  it("Auto expands text that is less than max char count", () => {
+    const wrapper = mount(<ReadMore maxChars={100} content={htmlCopy} />)
+    expect(wrapper.find("ReadMoreLink").length).toEqual(0)
+  })
+
   it("expands text on click", () => {
     const wrapper = mount(<ReadMore maxChars={20} content={copy} />)
     expect(wrapper.find("ReadMoreLink").length).toBe(1)
