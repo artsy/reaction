@@ -20,9 +20,19 @@ import { FormProps } from "../Types"
 import { MobileLoginValidator } from "../Validators"
 
 export class MobileLoginForm extends Component<FormProps> {
-  render() {
+  showError = status => {
     const { error } = this.props
+    if (error) {
+      return <Error show>{error}</Error>
+    }
 
+    if (status && !status.success) {
+      return <Error show>{status.error}</Error>
+    }
+
+    return null
+  }
+  render() {
     const steps = [
       <Step
         validationSchema={MobileLoginValidator.email}
@@ -96,7 +106,7 @@ export class MobileLoginForm extends Component<FormProps> {
         {context => {
           const {
             wizard,
-            form: { handleSubmit, values },
+            form: { handleSubmit, values, status, isSubmitting },
           } = context
           const { currentStep, isLastStep } = wizard
 
@@ -120,8 +130,11 @@ export class MobileLoginForm extends Component<FormProps> {
                 </BackButton>
                 <MobileHeader>Log in to Artsy</MobileHeader>
                 {currentStep}
-                {error && <Error show>{error}</Error>}
-                <SubmitButton onClick={handleSubmit}>
+                {this.showError(status)}
+                <SubmitButton
+                  onClick={handleSubmit}
+                  loading={isLastStep && isSubmitting}
+                >
                   {isLastStep ? "Log in" : "Next"}
                 </SubmitButton>
                 <Footer

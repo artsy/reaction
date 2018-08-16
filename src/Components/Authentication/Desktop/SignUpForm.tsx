@@ -102,7 +102,7 @@ export class SignUpForm extends Component<FormProps, SignUpFormState> {
                 onBlur={handleBlur}
               />
               {status && !status.success && <Error show>{status.error}</Error>}
-              <SubmitButton disabled={isSubmitting}>Sign up</SubmitButton>
+              <SubmitButton loading={isSubmitting}>Sign up</SubmitButton>
               <Footer
                 handleTypeChange={() =>
                   this.props.handleTypeChange(ModalType.login)
