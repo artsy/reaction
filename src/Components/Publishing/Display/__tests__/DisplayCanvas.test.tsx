@@ -20,31 +20,31 @@ import {
 
 describe("snapshot", () => {
   it("renders the canvas in standard layout with image", () => {
-    const displayPanel = renderer
+    const component = renderer
       .create(<DisplayCanvas unit={UnitCanvasImage} campaign={Campaign} />)
       .toJSON()
-    expect(displayPanel).toMatchSnapshot()
+    expect(component).toMatchSnapshot()
   })
 
   it("renders the canvas in standard layout with video", () => {
-    const displayPanel = renderer
+    const component = renderer
       .create(<DisplayCanvas unit={UnitCanvasVideo} campaign={Campaign} />)
       .toJSON()
-    expect(displayPanel).toMatchSnapshot()
+    expect(component).toMatchSnapshot()
   })
 
   it("renders the canvas in overlay layout", () => {
-    const displayPanel = renderer
+    const component = renderer
       .create(<DisplayCanvas unit={UnitCanvasOverlay} campaign={Campaign} />)
       .toJSON()
-    expect(displayPanel).toMatchSnapshot()
+    expect(component).toMatchSnapshot()
   })
 
   it("renders the canvas in slideshow layout", () => {
-    const displayPanel = renderer
+    const component = renderer
       .create(<DisplayCanvas unit={UnitCanvasSlideshow} campaign={Campaign} />)
       .toJSON()
-    expect(displayPanel).toMatchSnapshot()
+    expect(component).toMatchSnapshot()
   })
 })
 
