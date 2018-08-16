@@ -10,6 +10,14 @@ export const WithMediator: React.SFC<{
   children: (mediator: Mediator) => React.ReactNode
 }> = ({ children }) => (
   <Subscribe to={[AppState]}>
-    {({ state: { mediator } }) => children(mediator)}
+    {({ state: { mediator } }) =>
+      children(
+        mediator || {
+          trigger() {
+            console.error("mediator is not present in AppState")
+          },
+        }
+      )
+    }
   </Subscribe>
 )

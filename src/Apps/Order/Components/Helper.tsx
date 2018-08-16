@@ -19,17 +19,12 @@ export const Helper: React.SFC<HelperProps> = ({ artworkId }) => (
       <>
         <Sans size="2" color="black60">
           Have a question?{" "}
-          <Link
-            onClick={() => {
-              mediator && mediator.trigger("openOrdersBuyerFAQModal")
-            }}
-          >
+          <Link onClick={() => mediator.trigger("openOrdersBuyerFAQModal")}>
             Read our FAQ
           </Link>{" "}
           or{" "}
           <Link
             onClick={() =>
-              mediator &&
               mediator.trigger("openOrdersContactArtsyModal", {
                 artworkId,
               })
