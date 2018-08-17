@@ -56,7 +56,7 @@ export const ShippingAndPaymentDetails: React.SFC<
           <Serif size="3" weight="semibold" color="black100">
             Pick up
           </Serif>
-          <Serif size="3" color="black100">
+          <Serif size="3t" color="black100">
             You’ll be appointed an Artsy specialist within 2 business days to
             handle pickup logistics.
           </Serif>
@@ -66,7 +66,7 @@ export const ShippingAndPaymentDetails: React.SFC<
           <Serif size="3" weight="semibold" color="black100">
             Ship to
           </Serif>
-          <Serif size="3" color="black100" style={{ whiteSpace: "pre-wrap" }}>
+          <Serif size="3t" color="black100" style={{ whiteSpace: "pre-wrap" }}>
             {renderAddress(addressProps)}
           </Serif>
         </>
