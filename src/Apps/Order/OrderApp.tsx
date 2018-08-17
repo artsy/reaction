@@ -2,6 +2,12 @@ import { Location, RouteConfig, Router } from "found"
 import React from "react"
 import { StripeProvider } from "react-stripe-elements"
 
+declare global {
+  interface Window {
+    Stripe?: (key: string) => stripe.Stripe
+  }
+}
+
 const findRoute = (routes, routeIndices) => {
   let currentRoute = routes[routeIndices[0]]
   routeIndices.slice(1).forEach(routeIndex => {
@@ -23,7 +29,12 @@ export interface OrderAppProps {
   router: Router
 }
 
-export class OrderApp extends React.Component<OrderAppProps> {
+interface OrderAppState {
+  stripe: stripe.Stripe
+}
+
+export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
+  state = { stripe: null }
   removeTransitionHook: () => void
 
   constructor(props) {
@@ -32,6 +43,21 @@ export class OrderApp extends React.Component<OrderAppProps> {
     this.removeTransitionHook = props.router.addTransitionHook(
       this.onTransition
     )
+  }
+
+  componentDidMount() {
+    if (window.Stripe) {
+      this.setState({
+        stripe: window.Stripe("pk_test_BGUg8FPmcBs1ISbN25iCp2Ga"),
+      })
+    } else {
+      document.querySelector("#stripe-js").addEventListener("load", () => {
+        // Create Stripe instance once Stripe.js loads
+        this.setState({
+          stripe: window.Stripe("pk_test_BGUg8FPmcBs1ISbN25iCp2Ga"),
+        })
+      })
+    }
   }
 
   componentWillUnmount() {
@@ -52,9 +78,7 @@ export class OrderApp extends React.Component<OrderAppProps> {
   render() {
     const { children } = this.props
     return (
-      <StripeProvider apiKey="pk_test_BGUg8FPmcBs1ISbN25iCp2Ga">
-        {children}
-      </StripeProvider>
+      <StripeProvider stripe={this.state.stripe}>{children}</StripeProvider>
     )
   }
 }
