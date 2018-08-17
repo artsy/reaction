@@ -1,5 +1,6 @@
 import { Location, RouteConfig, Router } from "found"
 import React from "react"
+import { StripeProvider } from "react-stripe-elements"
 
 const findRoute = (routes, routeIndices) => {
   let currentRoute = routes[routeIndices[0]]
@@ -50,6 +51,10 @@ export class OrderApp extends React.Component<OrderAppProps> {
 
   render() {
     const { children } = this.props
-    return children
+    return (
+      <StripeProvider apiKey="pk_test_BGUg8FPmcBs1ISbN25iCp2Ga">
+        {children}
+      </StripeProvider>
+    )
   }
 }
