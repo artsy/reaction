@@ -25,8 +25,8 @@ const routes = [
       return (
         <>
           <ContextConsumer>
-            {props => {
-              console.log(props)
+            {p => {
+              console.error(p)
               return <div>hiii</div>
             }}
           </ContextConsumer>

@@ -28,23 +28,26 @@ describe("ToolTip", () => {
     )
   }
 
-  describe("snapshots", () => {
-    it("Renders an artist properly", () => {
-      const entity = Artists[0].artist
-      const component = renderer
-        .create(getWrapper({ entity, model: "artist" }))
-        .toJSON()
-      expect(component).toMatchSnapshot()
-    })
+  // FIXME: Reenable when React 16.4.5 is release
+  // https://github.com/facebook/react/issues/13150#issuecomment-411134477
 
-    it("Renders a gene properly", () => {
-      const entity = Genes[0].gene
-      const component = renderer
-        .create(getWrapper({ entity, model: "gene" }))
-        .toJSON()
-      expect(component).toMatchSnapshot()
-    })
-  })
+  // describe("snapshots", () => {
+  //   it("Renders an artist properly", () => {
+  //     const entity = Artists[0].artist
+  //     const component = renderer
+  //       .create(getWrapper({ entity, model: "artist" }))
+  //       .toJSON()
+  //     expect(component).toMatchSnapshot()
+  //   })
+
+  //   it("Renders a gene properly", () => {
+  //     const entity = Genes[0].gene
+  //     const component = renderer
+  //       .create(getWrapper({ entity, model: "gene" }))
+  //       .toJSON()
+  //     expect(component).toMatchSnapshot()
+  //   })
+  // })
 
   it("Renders an artist", () => {
     const entity = Artists[0].artist
