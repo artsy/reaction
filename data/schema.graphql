@@ -2578,6 +2578,7 @@ type FollowedArtistsArtworksGroup implements Node {
 
   # List of artworks in this group.
   artworks: [Artwork]
+  artworksConnection(after: String, first: Int, before: String, last: Int): ArtworkConnection
   artists: String
   summary: String
   image: Image
@@ -4029,6 +4030,9 @@ type Order {
 
   # Fulfillment Type
   fulfillmentType: OrderFulfillmentType
+
+  # Name for shipping information
+  shippingName: String
 
   # Shipping address line 1
   shippingAddressLine1: String
@@ -5737,6 +5741,9 @@ input SetOrderShippingInput {
 
   # Fulfillment Type of this Order
   fulfillmentType: OrderFulfillmentType
+
+  # Name for the shipping information
+  shippingName: String
 
   # Shipping address line 1
   shippingAddressLine1: String
