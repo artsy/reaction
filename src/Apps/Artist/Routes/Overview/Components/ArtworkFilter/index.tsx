@@ -49,10 +49,86 @@ class Filter extends Component<Props> {
       !this.existy.hasBuyNowArtworks &&
       !this.existy.hasForSaleArtworks
 
-    return !showZeroState
+    return showZeroState
   }
 
-  renderCategory(filters, category, counts, mediator) {
+  renderFilters({ currentUser, filters, mediator, hideTopBorder }) {
+    const { counts } = this.props.artist
+    const { aggregations } = this.props.artist.filtered_artworks
+    const mediumAggregation = aggregations.find(agg => agg.slice === "MEDIUM")
+    const galleryAggregation = aggregations.find(agg => agg.slice === "GALLERY")
+
+    const institutionAggregation = aggregations.find(
+      agg => agg.slice === "INSTITUTION"
+    )
+
+    const periodAggregation = aggregations.find(
+      agg => agg.slice === "MAJOR_PERIOD"
+    )
+
+    const enableLabFeature =
+      currentUser &&
+      currentUser.lab_features &&
+      currentUser.lab_features.includes("New Buy Now Flow")
+
+    return (
+      <>
+        <Flex flexDirection="column" alignItems="left" mt={-1} mb={1}>
+          {!hideTopBorder && <Separator mb={1} />}
+          {enableLabFeature
+            ? this.renderWaysToBuy(filters, mediator, counts)
+            : this.renderForSaleCheckbox(filters, mediator, counts)}
+        </Flex>
+
+        <Toggle label="Medium" expanded={!this.showZeroState}>
+          {this.renderCategory({
+            filters,
+            category: "medium",
+            counts: mediumAggregation.counts,
+            mediator,
+          })}
+        </Toggle>
+        <Toggle
+          expanded={filters.state.partner_id && !this.showZeroState}
+          label="Gallery"
+        >
+          {this.renderCategory({
+            filters,
+            category: "partner_id",
+            counts: galleryAggregation.counts,
+            mediator,
+          })}
+        </Toggle>
+
+        <Toggle
+          expanded={filters.state.partner_id && !this.showZeroState}
+          label="Institution"
+        >
+          {this.renderCategory({
+            filters,
+            category: "partner_id",
+            counts: institutionAggregation.counts,
+            mediator,
+          })}
+        </Toggle>
+        <Toggle
+          expanded={
+            filters.state.major_periods.length > 0 && !this.showZeroState
+          }
+          label="Time period"
+        >
+          {this.renderCategory({
+            filters,
+            category: "major_periods",
+            counts: periodAggregation.counts,
+            mediator,
+          })}
+        </Toggle>
+      </>
+    )
+  }
+
+  renderCategory({ filters, category, counts, mediator }) {
     const currentFilter =
       category === "major_periods"
         ? filters.state.major_periods[0]
@@ -130,30 +206,35 @@ class Filter extends Component<Props> {
     )
   }
 
-  renderZeroState(currentUser, mediator) {
+  renderZeroState({ currentUser, mediator, xs }) {
+    const {
+      artist,
+      artist: { id, name, is_followed },
+    } = this.props
+
     return (
-      <Message size="5t" justifyContent="center">
+      <Message size={xs ? "3t" : "5t"} justifyContent="center">
         There aren’t any works available by the artist at this time.{" "}
-        {!this.props.artist.is_followed && (
+        {!is_followed && (
           <>
             Follow{" "}
             <FollowArtistButton
-              artist={this.props.artist}
+              artist={artist}
               useDeprecatedButtonStyle={false}
               currentUser={currentUser}
               onOpenAuthModal={() => {
                 mediator.trigger("open:auth", {
                   mode: "signup",
-                  copy: `Sign up to follow ${this.props.artist.name}`,
+                  copy: `Sign up to follow ${name}`,
                   signupIntent: "follow artist",
                   afterSignUpAction: {
                     kind: "artist",
                     action: "follow",
-                    objectId: this.props.artist.id,
+                    objectId: id,
                   },
                 })
               }}
-              render={<ZeroStateLink>Allora & Calzadilla</ZeroStateLink>}
+              render={() => <ZeroStateLink>{name}</ZeroStateLink>}
             />{" "}
             to receive notifications when new works are added.
           </>
@@ -162,19 +243,60 @@ class Filter extends Component<Props> {
     )
   }
 
+  renderSelect({ filters, mediator, xs }) {
+    return (
+      <Flex
+        justifyContent={xs ? "space-between" : "flex-end"}
+        alignItems="center"
+      >
+        <SmallSelect
+          mt="-8px"
+          options={[
+            {
+              value: "-decayed_merch",
+              text: "Default",
+            },
+            {
+              value: "-partner_updated_at",
+              text: "Recently updated",
+            },
+            {
+              value: "-published_at",
+              text: "Recently added",
+            },
+            {
+              value: "-year",
+              text: "Artwork year (desc.)",
+            },
+            {
+              value: "year",
+              text: "Artwork year (asc.)",
+            },
+          ]}
+          selected={filters.state.sort}
+          onSelect={sort => {
+            return filters.setSort(sort, mediator)
+          }}
+        />
+
+        {xs && (
+          <Button
+            size="small"
+            mt={-1}
+            onClick={() => filters.showActionSheet(true)}
+          >
+            <Flex justifyContent="space-between" alignItems="center">
+              <FilterIcon fill={color("white100")} />
+              <Spacer mr={0.5} />
+              Filter
+            </Flex>
+          </Button>
+        )}
+      </Flex>
+    )
+  }
+
   render() {
-    const { aggregations } = this.props.artist.filtered_artworks
-    const mediumAggregation = aggregations.find(agg => agg.slice === "MEDIUM")
-    const galleryAggregation = aggregations.find(agg => agg.slice === "GALLERY")
-    const institutionAggregation = aggregations.find(
-      agg => agg.slice === "INSTITUTION"
-    )
-    const periodAggregation = aggregations.find(
-      agg => agg.slice === "MAJOR_PERIOD"
-    )
-
-    const { counts } = this.props.artist
-
     return (
       <Subscribe to={[AppState, FilterState]}>
         {(
@@ -191,89 +313,17 @@ class Filter extends Component<Props> {
               {({ xs, sm, md }) => {
                 const hideTopBorder = this.props.hideTopBorder || xs
 
-                // Filters component to be rendered in Sidebar (desktop) and
-                // ActionSheet (mobile)
-                const Filters = () => {
-                  return (
-                    <>
-                      <Flex
-                        flexDirection="column"
-                        alignItems="left"
-                        mt={-1}
-                        mb={1}
-                      >
-                        {!hideTopBorder && <Separator mb={1} />}
+                const Filters = () =>
+                  this.renderFilters({
+                    currentUser,
+                    filters,
+                    mediator,
+                    hideTopBorder,
+                  })
 
-                        {currentUser &&
-                        currentUser.lab_features &&
-                        currentUser.lab_features.includes("New Buy Now Flow")
-                          ? this.renderWaysToBuy(filters, mediator, counts)
-                          : this.renderForSaleCheckbox(
-                              filters,
-                              mediator,
-                              counts
-                            )}
-                      </Flex>
-
-                      <Toggle label="Medium" expanded={!this.showZeroState}>
-                        {this.renderCategory(
-                          filters,
-                          "medium",
-                          mediumAggregation.counts,
-                          mediator
-                        )}
-                      </Toggle>
-                      <Toggle
-                        expanded={
-                          filters.state.partner_id && !this.showZeroState
-                        }
-                        label="Gallery"
-                      >
-                        {this.renderCategory(
-                          filters,
-                          "partner_id",
-                          galleryAggregation.counts,
-                          mediator
-                        )}
-                      </Toggle>
-
-                      <Toggle
-                        expanded={
-                          filters.state.partner_id && !this.showZeroState
-                        }
-                        label="Institution"
-                      >
-                        {this.renderCategory(
-                          filters,
-                          "partner_id",
-                          institutionAggregation.counts,
-                          mediator
-                        )}
-                      </Toggle>
-                      <Toggle
-                        expanded={
-                          filters.state.major_periods.length > 0 &&
-                          !this.showZeroState
-                        }
-                        label="Time period"
-                      >
-                        {this.renderCategory(
-                          filters,
-                          "major_periods",
-                          periodAggregation.counts,
-                          mediator
-                        )}
-                      </Toggle>
-                    </>
-                  )
-                }
                 return (
                   <>
                     <Flex>
-                      {/*
-                        Filter options
-                      */}
-
                       {xs ? (
                         // Mobile
                         filters.state.showActionSheet && (
@@ -290,68 +340,24 @@ class Filter extends Component<Props> {
                         </Sidebar>
                       )}
 
-                      {/*
-                        Main Artwork Grid
-                      */}
-
+                      {/* Main Artwork Grid */}
                       <Box width={xs ? "100%" : "70%"}>
                         {!hideTopBorder && <Separator mb={2} mt={-1} />}
-                        <Flex
-                          justifyContent={xs ? "space-between" : "flex-end"}
-                          alignItems="center"
-                        >
-                          <SmallSelect
-                            mt="-8px"
-                            options={[
-                              {
-                                value: "-decayed_merch",
-                                text: "Default",
-                              },
-                              {
-                                value: "-partner_updated_at",
-                                text: "Recently updated",
-                              },
-                              {
-                                value: "-published_at",
-                                text: "Recently added",
-                              },
-                              {
-                                value: "-year",
-                                text: "Artwork year (desc.)",
-                              },
-                              {
-                                value: "year",
-                                text: "Artwork year (asc.)",
-                              },
-                            ]}
-                            selected={filters.state.sort}
-                            onSelect={sort => {
-                              return filters.setSort(sort, mediator)
-                            }}
-                          />
 
-                          {xs && (
-                            <Button
-                              size="small"
-                              mt={-1}
-                              onClick={() => filters.showActionSheet(true)}
-                            >
-                              <Flex
-                                justifyContent="space-between"
-                                alignItems="center"
-                              >
-                                <FilterIcon fill={color("white100")} />
-                                <Spacer mr={0.5} />
-                                Filter
-                              </Flex>
-                            </Button>
-                          )}
-                        </Flex>
+                        {this.renderSelect({
+                          filters,
+                          mediator,
+                          xs,
+                        })}
 
                         <Spacer mb={2} />
 
                         {this.showZeroState ? (
-                          this.renderZeroState(currentUser, mediator)
+                          this.renderZeroState({
+                            currentUser,
+                            mediator,
+                            xs,
+                          })
                         ) : (
                           <ArtworkFilter
                             artist={this.props.artist}

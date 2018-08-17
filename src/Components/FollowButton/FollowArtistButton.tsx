@@ -38,7 +38,7 @@ interface Props
   /**
    * Custom renderer for alternative button displays
    */
-  render?: JSX.Element
+  render?: (artist: FollowArtistButton_artist) => JSX.Element
 }
 
 export class FollowArtistButton extends React.Component<Props> {
@@ -121,7 +121,7 @@ export class FollowArtistButton extends React.Component<Props> {
 
     // Custom button renderer
     if (render) {
-      return <span onClick={this.handleFollow}>{render}</span>
+      return <span onClick={this.handleFollow}>{render(artist)}</span>
     } else {
       return (
         <Button
