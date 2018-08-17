@@ -2,6 +2,7 @@
 
 import { ConcreteFragment } from "relay-runtime";
 import { ItemReview_artwork$ref } from "./ItemReview_artwork.graphql";
+import { ShippingAndPaymentDetails_order$ref } from "./ShippingAndPaymentDetails_order.graphql";
 import { TransactionSummary_order$ref } from "./TransactionSummary_order.graphql";
 declare const _Submission_order$ref: unique symbol;
 export type Submission_order$ref = typeof _Submission_order$ref;
@@ -18,7 +19,7 @@ export type Submission_order = {
             }) | null;
         }) | null> | null;
     }) | null;
-    readonly " $fragmentRefs": TransactionSummary_order$ref;
+    readonly " $fragmentRefs": TransactionSummary_order$ref & ShippingAndPaymentDetails_order$ref;
     readonly " $refType": Submission_order$ref;
 };
 
@@ -57,6 +58,11 @@ return {
     {
       "kind": "FragmentSpread",
       "name": "TransactionSummary_order",
+      "args": null
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "ShippingAndPaymentDetails_order",
       "args": null
     },
     {
@@ -121,5 +127,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '8413fd35bda3cbb8ad69db290e1d6bb4';
+(node as any).hash = 'bd0e2493065931b528bb30c049e387e7';
 export default node;

@@ -33758,6 +33758,18 @@
               "deprecationReason": null
             },
             {
+              "name": "shippingName",
+              "description": "Name for shipping information",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "shippingAddressLine1",
               "description": "Shipping address line 1",
               "args": [],
@@ -45871,6 +45883,16 @@
               "type": {
                 "kind": "ENUM",
                 "name": "OrderFulfillmentType",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "shippingName",
+              "description": "Name for the shipping information",
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
                 "ofType": null
               },
               "defaultValue": null

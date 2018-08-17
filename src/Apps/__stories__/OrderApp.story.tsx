@@ -1,4 +1,4 @@
-import { IncompleteOrder } from "Apps/__test__/Fixtures/Order"
+import { OrderWithShippingDetails } from "Apps/__test__/Fixtures/Order"
 import React from "react"
 import { StorybooksRouter } from "Router/StorybooksRouter"
 import { storiesOf } from "storybook/storiesOf"
@@ -12,7 +12,7 @@ const mock = {
   }),
   Order: (_, { id, ...others }) => {
     return {
-      ...IncompleteOrder,
+      ...OrderWithShippingDetails,
       id,
       ...others,
     }

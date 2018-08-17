@@ -1,4 +1,4 @@
-export const IncompleteOrder = {
+export const UntouchedOrder = {
   id: "2939023",
   code: "abcdefg",
   itemsTotal: "$12,000",
@@ -44,5 +44,22 @@ export const IncompleteOrder = {
         country: "US",
       },
     ],
+  },
+}
+
+export const OrderWithShippingDetails = {
+  ...UntouchedOrder,
+  fulfillmentType: "SHIP",
+  shippingName: "Joelle Van Dyne",
+  shippingAddressLine1: "23 41st st",
+  shippingAddressLine2: null,
+  shippingCity: "New York",
+  shippingPostalCode: "90210",
+  shippingRegion: "US",
+  creditCard: {
+    brand: "Visa",
+    last_digits: "4444",
+    expiration_month: 3,
+    expiration_year: 21,
   },
 }

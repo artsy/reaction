@@ -1,28 +1,29 @@
 import React from "react"
 
+// https://stripe.com/docs/api#card_object-brand
 export type CreditCardType =
-  | "mastercard"
-  | "visa"
-  | "discover"
-  | "amex"
-  | "other"
+  | "Mastercard"
+  | "Visa"
+  | "Discover"
+  | "American Express"
+  | "Unknown"
 
 export const CreditCardIcon = ({
   type,
   ...others
 }: React.SVGProps<SVGSVGElement> & {
-  type?: CreditCardType
+  type?: CreditCardType | string
 }) => {
   switch (type) {
-    case "mastercard":
+    case "Mastercard":
       return <MastercardIcon {...others} />
-    case "visa":
+    case "Visa":
       return <VisaIcon {...others} />
-    case "discover":
+    case "Discover":
       return <DiscoverIcon {...others} />
-    case "amex":
+    case "American Express":
       return <AmexIcon {...others} />
-    case "other":
+    case "Unknown":
     default:
       return <FallbackIcon {...others} />
   }
