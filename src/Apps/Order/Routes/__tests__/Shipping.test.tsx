@@ -37,10 +37,6 @@ describe("Shipping", () => {
 
   it("commits the mutation with the orderId", () => {
     const component = getWrapper(props)
-    component
-      .find(Radio)
-      .last()
-      .simulate("click")
     const mockCommitMutation = commitMutation as jest.Mock<any>
     mockCommitMutation.mockImplementationOnce((_environment, config) => {
       expect(config.variables.input.orderId).toBe("1234")
@@ -48,7 +44,7 @@ describe("Shipping", () => {
 
     component.find(Button).simulate("click")
 
-    expect.assertions(1)
+    expect.hasAssertions()
   })
 
   it("commits the mutation with shipping option", () => {
@@ -64,7 +60,7 @@ describe("Shipping", () => {
 
     component.find(Button).simulate("click")
 
-    expect.assertions(1)
+    expect.hasAssertions()
   })
 
   it("commits the mutation with pickup option", () => {
@@ -80,6 +76,6 @@ describe("Shipping", () => {
 
     component.find(Button).simulate("click")
 
-    expect.assertions(1)
+    expect.hasAssertions()
   })
 })

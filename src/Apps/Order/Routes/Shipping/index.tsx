@@ -62,7 +62,6 @@ export class ShippingRoute extends Component<
   // See: https://artsyproduct.atlassian.net/browse/PURCHASE-376
   state = {
     shippingOption: "SHIP",
-    address: {},
   } as ShippingState & Address
 
   // TODO: This can be handled with Formik.
