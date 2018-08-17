@@ -2,7 +2,7 @@ import { mount } from "enzyme"
 import React from "react"
 import { commitMutation, RelayProp } from "react-relay"
 
-import { IncompleteOrder } from "Apps/__test__/Fixtures/Order"
+import { UntouchedOrder } from "Apps/__test__/Fixtures/Order"
 import { Button } from "Styleguide/Elements/Button"
 import { Radio } from "Styleguide/Elements/Radio"
 import { Provider } from "unstated"
@@ -26,7 +26,7 @@ describe("Shipping", () => {
   beforeEach(() => {
     props = {
       order: {
-        ...IncompleteOrder,
+        ...UntouchedOrder,
         id: "1234",
       },
       relay: {
