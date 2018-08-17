@@ -5,6 +5,7 @@ export type OrderFulfillmentType = "PICKUP" | "SHIP" | "%future added value";
 export type SetOrderShippingInput = {
     readonly orderId?: string | null;
     readonly fulfillmentType?: OrderFulfillmentType | null;
+    readonly shippingName?: string | null;
     readonly shippingAddressLine1?: string | null;
     readonly shippingAddressLine2?: string | null;
     readonly shippingCity?: string | null;
