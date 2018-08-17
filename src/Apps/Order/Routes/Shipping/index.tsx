@@ -39,8 +39,6 @@ export interface ShippingProps {
 
 // TODO: When the todo for abstracting the address is done and we have an Address component, we won't need this here, so the wonky state generic on ShippingRoute is fine for now.
 export interface Address {
-  // TODO: Shipping name is not in Exchange's schema yet.
-  // See: https://artsyproduct.atlassian.net/browse/PURCHASE-377
   name?: string
   addressLine1?: string
   addressLine2?: string
@@ -62,7 +60,6 @@ export class ShippingRoute extends Component<
   // See: https://artsyproduct.atlassian.net/browse/PURCHASE-376
   state = {
     shippingOption: "SHIP",
-    address: {},
   } as ShippingState & Address
 
   // TODO: This can be handled with Formik.
@@ -95,6 +92,7 @@ export class ShippingRoute extends Component<
           input: {
             orderId: this.props.order.id,
             fulfillmentType: this.state.shippingOption,
+            shippingName: this.state.name || "",
             shippingAddressLine1: this.state.addressLine1 || "",
             shippingAddressLine2: this.state.addressLine2 || "",
             shippingCity: this.state.city || "",
