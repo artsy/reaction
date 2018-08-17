@@ -1,4 +1,4 @@
-import { Sans, Serif } from "@artsy/palette"
+import { Sans } from "@artsy/palette"
 import { Shipping_order } from "__generated__/Shipping_order.graphql"
 import React, { Component } from "react"
 import {
@@ -9,11 +9,9 @@ import {
 } from "react-relay"
 
 import { Collapse } from "Styleguide/Components/Collapse"
-import { CountrySelect } from "Styleguide/Components/CountrySelect"
 import { Button } from "Styleguide/Elements/Button"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
-import { Join } from "Styleguide/Elements/Join"
 import { Radio } from "Styleguide/Elements/Radio"
 import { BorderedRadioGroup } from "Styleguide/Elements/RadioGroup"
 import { Spacer } from "Styleguide/Elements/Spacer"
@@ -23,11 +21,8 @@ import { Helper } from "Apps/Order/Components/Helper"
 
 import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
 import { TransactionSummaryFragmentContainer as TransactionSummary } from "Apps/Order/Components/TransactionSummary"
-import { Input } from "Components/Input"
-import {
-  TwoColumnLayout,
-  TwoColumnSplit,
-} from "../../Components/TwoColumnLayout"
+import { AddressForm } from "../../Components/AddressForm"
+import { TwoColumnLayout } from "../../Components/TwoColumnLayout"
 
 export interface ShippingProps {
   order: Shipping_order
@@ -147,81 +142,17 @@ export class ShippingRoute extends Component<
                   <Collapse open={this.state.shippingOption === "SHIP"}>
                     {/* TODO: This address entry form should be abstracted into its own component, to be used on the billing address screen. */}
                     {/* See: https://artsyproduct.atlassian.net/browse/PURCHASE-375 */}
-                    <Join separator={<Spacer mb={2} />}>
-                      <Flex flexDirection="column">
-                        <Input
-                          placeholder="Add full name"
-                          title="Full name"
-                          onChange={this.onUpdateName}
-                          block
-                        />
-                      </Flex>
-
-                      <TwoColumnSplit>
-                        <Flex flexDirection="column" pb={1}>
-                          <Serif
-                            mb={1}
-                            size="3t"
-                            color="black100"
-                            lineHeight={18}
-                          >
-                            Country
-                          </Serif>
-                          <CountrySelect
-                            selected={this.state.country || "US"}
-                            onSelect={this.onUpdateCountry}
-                          />
-                        </Flex>
-
-                        <Flex flexDirection="column">
-                          <Input
-                            placeholder="Add postal code"
-                            title="Postal code"
-                            onChange={this.onUpdatePostalCode}
-                            block
-                          />
-                        </Flex>
-                      </TwoColumnSplit>
-                      <TwoColumnSplit>
-                        <Flex flexDirection="column">
-                          <Input
-                            placeholder="Add street address"
-                            title="Address line 1"
-                            onChange={this.onUpdateAddressLine1}
-                            block
-                          />
-                        </Flex>
-
-                        <Flex flexDirection="column">
-                          <Input
-                            placeholder="Add apt, floor, suite, etc."
-                            title="Address line 2 (optional)"
-                            onChange={this.onUpdateAddressLine2}
-                            block
-                          />
-                        </Flex>
-                      </TwoColumnSplit>
-                      <TwoColumnSplit>
-                        <Flex flexDirection="column">
-                          <Input
-                            placeholder="Add city"
-                            title="City"
-                            onChange={this.onUpdateCity}
-                            block
-                          />
-                        </Flex>
-
-                        <Flex flexDirection="column">
-                          <Input
-                            placeholder="Add State, province, or region"
-                            title="State, province, or region"
-                            onChange={this.onUpdateRegion}
-                            block
-                          />
-                        </Flex>
-                      </TwoColumnSplit>
-                    </Join>
                     <Spacer mb={2} />
+                    <AddressForm
+                      country={this.state.country}
+                      onUpdateName={this.onUpdateName}
+                      onUpdateAddressLine1={this.onUpdateAddressLine1}
+                      onUpdateAddressLine2={this.onUpdateAddressLine2}
+                      onUpdateCity={this.onUpdateCity}
+                      onUpdateRegion={this.onUpdateRegion}
+                      onUpdateCountry={this.onUpdateCountry}
+                      onUpdatePostalCode={this.onUpdatePostalCode}
+                    />
                   </Collapse>
 
                   {!xs && (
