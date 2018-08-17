@@ -2,11 +2,14 @@
 
 import { ConcreteFragment } from "relay-runtime";
 import { ArtworkFilterRefetch_artist$ref } from "./ArtworkFilterRefetch_artist.graphql";
+import { FollowArtistButton_artist$ref } from "./FollowArtistButton_artist.graphql";
 export type ArtworkAggregation = "COLOR" | "DIMENSION_RANGE" | "FOLLOWED_ARTISTS" | "GALLERY" | "INSTITUTION" | "MAJOR_PERIOD" | "MEDIUM" | "MERCHANDISABLE_ARTISTS" | "PARTNER_CITY" | "PERIOD" | "PRICE_RANGE" | "TOTAL" | "%future added value";
 declare const _ArtworkFilter_artist$ref: unique symbol;
 export type ArtworkFilter_artist$ref = typeof _ArtworkFilter_artist$ref;
 export type ArtworkFilter_artist = {
     readonly id: string;
+    readonly name: string | null;
+    readonly is_followed: boolean | null;
     readonly counts: ({
         readonly for_sale_artworks: any | null;
         readonly ecommerce_artworks: any | null;
@@ -21,7 +24,7 @@ export type ArtworkFilter_artist = {
             }) | null> | null;
         }) | null> | null;
     }) | null;
-    readonly " $fragmentRefs": ArtworkFilterRefetch_artist$ref;
+    readonly " $fragmentRefs": ArtworkFilterRefetch_artist$ref & FollowArtistButton_artist$ref;
     readonly " $refType": ArtworkFilter_artist$ref;
 };
 
@@ -36,6 +39,13 @@ var v0 = {
   "storageKey": null
 },
 v1 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "name",
+  "args": null,
+  "storageKey": null
+},
+v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__id",
@@ -105,6 +115,14 @@ return {
   ],
   "selections": [
     v0,
+    v1,
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "is_followed",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -184,20 +202,14 @@ return {
               "concreteType": "AggregationCount",
               "plural": true,
               "selections": [
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "name",
-                  "args": null,
-                  "storageKey": null
-                },
+                v1,
                 v0,
-                v1
+                v2
               ]
             }
           ]
         },
-        v1
+        v2
       ]
     },
     {
@@ -248,9 +260,14 @@ return {
         }
       ]
     },
-    v1
+    {
+      "kind": "FragmentSpread",
+      "name": "FollowArtistButton_artist",
+      "args": null
+    },
+    v2
   ]
 };
 })();
-(node as any).hash = '0bef794edbd1d33ff46b63cef64754cb';
+(node as any).hash = 'd5fe26c3123956ace6429c8b27364fc2';
 export default node;
