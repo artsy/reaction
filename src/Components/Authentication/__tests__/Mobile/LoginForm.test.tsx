@@ -9,7 +9,7 @@ describe("MobileLoginForm", () => {
   const getWrapper = props =>
     mount(
       <MobileLoginForm
-        values={props.values || {}}
+        {...props}
         handleSubmit={handleSubmit}
         handleTypeChange={jest.fn()}
       />
@@ -22,7 +22,7 @@ describe("MobileLoginForm", () => {
     expect(input.props().type).toEqual("email")
   })
 
-  it("renders errors", done => {
+  it("renders email errors", done => {
     const wrapper = getWrapper({ values: { email: "kanalala" } })
     const button = wrapper.find("button")
     button.simulate("submit")
@@ -31,6 +31,14 @@ describe("MobileLoginForm", () => {
       expect(wrapper.html()).toMatch("Please enter a valid email.")
       done()
     })
+  })
+
+  it("renders password error", () => {
+    const wrapper = getWrapper({ values: { email: "kajsdlfjk" } })
+    const formik: any = wrapper.find("Formik").instance()
+    formik.setStatus({ error: "some password error" })
+    wrapper.update()
+    expect(wrapper.html()).toMatch("some password error")
   })
 
   it("renders global errors", () => {

@@ -4,6 +4,7 @@ import Events from "../../Utils/Events"
 
 import { debounce } from "lodash"
 import { MinimalCtaBanner } from "../MinimalCtaBanner"
+import { getArticleFullHref } from "./Constants"
 import ArticleWithFullScreen from "./Layouts/ArticleWithFullScreen"
 import { ClassicLayout } from "./Layouts/ClassicLayout"
 import { NewsLayout } from "./Layouts/NewsLayout"
@@ -89,10 +90,7 @@ export class Article extends React.Component<ArticleProps, State> {
 
   componentDidMount() {
     if (window) {
-      window.addEventListener(
-        "scroll",
-        debounce(() => this.handleScroll(), 250)
-      )
+      window.addEventListener("scroll", debounce(() => this.handleScroll(), 10))
     }
   }
 
@@ -119,13 +117,15 @@ export class Article extends React.Component<ArticleProps, State> {
   }
 
   shouldRenderSignUpCta = () => {
-    const { article, isLoggedIn, isMobile } = this.props
+    const { article, isLoggedIn, isTruncated, isMobile } = this.props
 
-    return isMobile && article.layout !== "series" && !isLoggedIn
+    return (
+      isMobile && article.layout !== "series" && !isLoggedIn && !isTruncated
+    )
   }
 
   render() {
-    const { layout } = this.props.article
+    const { layout, slug } = this.props.article
     const copy = layout === "news" ? CtaCopy.news : CtaCopy.default
     const backgroundColor = layout === "video" ? "white" : "black"
     const textColor = layout === "video" ? "black" : "white"
@@ -135,8 +135,8 @@ export class Article extends React.Component<ArticleProps, State> {
         {this.getArticleLayout()}
         {this.shouldRenderSignUpCta() && (
           <MinimalCtaBanner
-            href="/sign_up"
-            height="50px"
+            href={`/sign_up?redirect-to=${getArticleFullHref(slug)}`}
+            height="55px"
             copy={copy}
             position="bottom"
             textColor={textColor}

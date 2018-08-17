@@ -57,4 +57,26 @@ describe("SignUpForm", () => {
       done()
     })
   })
+
+  it("renders spinner", done => {
+    const values = {
+      email: "foo@bar.com",
+      password: "password123",
+      name: "John Doe",
+      acceptedTermsOfService: true,
+    }
+    const wrapper = mount(
+      <SignUpForm handleSubmit={jest.fn()} values={values} />
+    )
+
+    const input = wrapper.find(`Formik`)
+    input.simulate("submit")
+    wrapper.update()
+
+    setTimeout(() => {
+      const submitButton = wrapper.find(`SubmitButton`)
+      expect(submitButton.props().loading).toEqual(true)
+      done()
+    })
+  })
 })
