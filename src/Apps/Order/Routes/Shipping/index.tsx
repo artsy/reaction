@@ -19,9 +19,10 @@ import { BorderedRadioGroup } from "Styleguide/Elements/RadioGroup"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Responsive } from "Utils/Responsive"
 
-import { SummaryFragmentContainer as Summary } from "../../Components/Summary"
+import { Helper } from "Apps/Order/Components/Helper"
 
 import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
+import { TransactionSummaryFragmentContainer as TransactionSummary } from "Apps/Order/Components/TransactionSummary"
 import { Input } from "Components/Input"
 import {
   TwoColumnLayout,
@@ -235,7 +236,11 @@ export class ShippingRoute extends Component<
                 </>
               }
               Sidebar={
-                <Summary mediator={this.props.mediator} order={order}>
+                <Flex flexDirection="column">
+                  <TransactionSummary order={order} mb={xs ? 2 : 3} />
+                  <Helper
+                    artworkId={order.lineItems.edges[0].node.artwork.id}
+                  />
                   {xs && (
                     <>
                       <Spacer mb={3} />
@@ -248,7 +253,7 @@ export class ShippingRoute extends Component<
                       </Button>
                     </>
                   )}
-                </Summary>
+                </Flex>
               }
             />
           )}
@@ -263,7 +268,16 @@ export const ShippingFragmentContainer = createFragmentContainer(
   graphql`
     fragment Shipping_order on Order {
       id
-      ...Summary_order
+      lineItems {
+        edges {
+          node {
+            artwork {
+              id
+            }
+          }
+        }
+      }
+      ...TransactionSummary_order
     }
   `
 )

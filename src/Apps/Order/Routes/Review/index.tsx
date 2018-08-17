@@ -4,19 +4,18 @@ import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Link } from "Router"
 import { Button } from "Styleguide/Elements/Button"
+import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Join } from "Styleguide/Elements/Join"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Placeholder } from "Styleguide/Utils/Placeholder"
 import { Responsive } from "Utils/Responsive"
-import { SummaryFragmentContainer as Summary } from "../../Components/Summary"
+import { Helper } from "../../Components/Helper"
+import { TransactionSummaryFragmentContainer as TransactionSummary } from "../../Components/TransactionSummary"
 import { TwoColumnLayout } from "../../Components/TwoColumnLayout"
 
 export interface ReviewProps {
   order: Review_order
-  mediator?: {
-    trigger: (action: string, config: object) => void
-  }
 }
 
 export class ReviewRoute extends Component<ReviewProps> {
@@ -55,7 +54,11 @@ export class ReviewRoute extends Component<ReviewProps> {
                 </>
               }
               Sidebar={
-                <Summary mediator={this.props.mediator} order={order}>
+                <Flex flexDirection="column">
+                  <TransactionSummary order={order} mb={xs ? 2 : 3} />
+                  <Helper
+                    artworkId={order.lineItems.edges[0].node.artwork.id}
+                  />
                   {xs && (
                     <>
                       <Spacer mb={3} />
@@ -68,7 +71,7 @@ export class ReviewRoute extends Component<ReviewProps> {
                       </Link>
                     </>
                   )}
-                </Summary>
+                </Flex>
               }
             />
           )}
@@ -83,7 +86,16 @@ export const ReviewFragmentContainer = createFragmentContainer(
   graphql`
     fragment Review_order on Order {
       id
-      ...Summary_order
+      lineItems {
+        edges {
+          node {
+            artwork {
+              id
+            }
+          }
+        }
+      }
+      ...TransactionSummary_order
     }
   `
 )

@@ -8,18 +8,39 @@ storiesOf("Apps/Order Page/Components", module).add(
   "TransactionSummary",
   () => {
     return (
-      <Section title="Price Summary">
+      <Section title="Transaction Summary">
         <Flex width={280} flexDirection="column">
           <TransactionSummary
-            price="£3,024.89"
-            shipping="£132.32"
-            tax="£232.23"
-            total="£1,200,823.33"
-            artistName="Francesca DiMattio"
-            artworkName="The Fox and the Hound, 2018"
-            artworkLocation="New York, NY"
-            imageURL="https://d32dm0rphc51dk.cloudfront.net/SCShf97jlpFZpDBJUBqntg/small.jpg"
-            sellerName="Salon 94"
+            order={{
+              " $refType": null,
+              itemsTotal: "£3,024.89",
+              shippingTotal: "£132.32",
+              taxTotal: "£232.23",
+              buyerTotal: "£1,200,823.33",
+              lineItems: {
+                edges: [
+                  {
+                    node: {
+                      artwork: {
+                        artist_names: "Francesca DiMattio",
+                        title: "The Fox and the Hound",
+                        date: "2018",
+                        shippingOrigin: "New York, NY",
+                        image: {
+                          resized_transactionSummary: {
+                            url:
+                              "https://d32dm0rphc51dk.cloudfront.net/SCShf97jlpFZpDBJUBqntg/small.jpg",
+                          },
+                        },
+                      },
+                    },
+                  },
+                ],
+              },
+              partner: {
+                name: "Salon 94",
+              },
+            }}
           />
         </Flex>
       </Section>

@@ -26,11 +26,12 @@ query routes_SubmissionQuery(
 fragment Submission_order on Order {
   id
   code
-  ...Summary_order
+  ...TransactionSummary_order
   lineItems {
     edges {
       node {
         artwork {
+          id
           ...ItemReview_artwork
           __id
         }
@@ -41,12 +42,28 @@ fragment Submission_order on Order {
   __id: id
 }
 
-fragment Summary_order on Order {
+fragment TransactionSummary_order on Order {
+  shippingTotal
+  taxTotal
+  itemsTotal
+  buyerTotal
+  partner {
+    name
+    __id
+  }
   lineItems {
     edges {
       node {
         artwork {
-          id
+          artist_names
+          title
+          date
+          shippingOrigin
+          image {
+            resized_transactionSummary: resized(width: 55) {
+              url
+            }
+          }
           __id
         }
         __id: id
@@ -107,13 +124,29 @@ v3 = {
   "name": "id",
   "args": null,
   "storageKey": null
-};
+},
+v4 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
+},
+v5 = [
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "url",
+    "args": null,
+    "storageKey": null
+  }
+];
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "routes_SubmissionQuery",
   "id": null,
-  "text": "query routes_SubmissionQuery(\n  $orderID: String!\n) {\n  order(id: $orderID) {\n    ...Submission_order\n    __id: id\n  }\n}\n\nfragment Submission_order on Order {\n  id\n  code\n  ...Summary_order\n  lineItems {\n    edges {\n      node {\n        artwork {\n          ...ItemReview_artwork\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n\nfragment Summary_order on Order {\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n\nfragment ItemReview_artwork on Artwork {\n  artist_names\n  title\n  date\n  medium\n  dimensions {\n    in\n    cm\n  }\n  attribution_class {\n    short_description\n  }\n  image {\n    resized(width: 185) {\n      url\n    }\n  }\n  __id\n}\n",
+  "text": "query routes_SubmissionQuery(\n  $orderID: String!\n) {\n  order(id: $orderID) {\n    ...Submission_order\n    __id: id\n  }\n}\n\nfragment Submission_order on Order {\n  id\n  code\n  ...TransactionSummary_order\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          ...ItemReview_artwork\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n\nfragment TransactionSummary_order on Order {\n  shippingTotal\n  taxTotal\n  itemsTotal\n  buyerTotal\n  partner {\n    name\n    __id\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_transactionSummary: resized(width: 55) {\n              url\n            }\n          }\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n\nfragment ItemReview_artwork on Artwork {\n  artist_names\n  title\n  date\n  medium\n  dimensions {\n    in\n    cm\n  }\n  attribution_class {\n    short_description\n  }\n  image {\n    resized(width: 185) {\n      url\n    }\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -164,6 +197,53 @@ return {
             "storageKey": null
           },
           {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "shippingTotal",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "taxTotal",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "itemsTotal",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "buyerTotal",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "partner",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "Partner",
+            "plural": false,
+            "selections": [
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "name",
+                "args": null,
+                "storageKey": null
+              },
+              v4
+            ]
+          },
+          {
             "kind": "LinkedField",
             "alias": null,
             "name": "lineItems",
@@ -199,14 +279,6 @@ return {
                         "concreteType": "Artwork",
                         "plural": false,
                         "selections": [
-                          v3,
-                          {
-                            "kind": "ScalarField",
-                            "alias": null,
-                            "name": "__id",
-                            "args": null,
-                            "storageKey": null
-                          },
                           {
                             "kind": "ScalarField",
                             "alias": null,
@@ -228,6 +300,60 @@ return {
                             "args": null,
                             "storageKey": null
                           },
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "shippingOrigin",
+                            "args": null,
+                            "storageKey": null
+                          },
+                          {
+                            "kind": "LinkedField",
+                            "alias": null,
+                            "name": "image",
+                            "storageKey": null,
+                            "args": null,
+                            "concreteType": "Image",
+                            "plural": false,
+                            "selections": [
+                              {
+                                "kind": "LinkedField",
+                                "alias": "resized_transactionSummary",
+                                "name": "resized",
+                                "storageKey": "resized(width:55)",
+                                "args": [
+                                  {
+                                    "kind": "Literal",
+                                    "name": "width",
+                                    "value": 55,
+                                    "type": "Int"
+                                  }
+                                ],
+                                "concreteType": "ResizedImageUrl",
+                                "plural": false,
+                                "selections": v5
+                              },
+                              {
+                                "kind": "LinkedField",
+                                "alias": null,
+                                "name": "resized",
+                                "storageKey": "resized(width:185)",
+                                "args": [
+                                  {
+                                    "kind": "Literal",
+                                    "name": "width",
+                                    "value": 185,
+                                    "type": "Int"
+                                  }
+                                ],
+                                "concreteType": "ResizedImageUrl",
+                                "plural": false,
+                                "selections": v5
+                              }
+                            ]
+                          },
+                          v4,
+                          v3,
                           {
                             "kind": "ScalarField",
                             "alias": null,
@@ -275,42 +401,6 @@ return {
                                 "name": "short_description",
                                 "args": null,
                                 "storageKey": null
-                              }
-                            ]
-                          },
-                          {
-                            "kind": "LinkedField",
-                            "alias": null,
-                            "name": "image",
-                            "storageKey": null,
-                            "args": null,
-                            "concreteType": "Image",
-                            "plural": false,
-                            "selections": [
-                              {
-                                "kind": "LinkedField",
-                                "alias": null,
-                                "name": "resized",
-                                "storageKey": "resized(width:185)",
-                                "args": [
-                                  {
-                                    "kind": "Literal",
-                                    "name": "width",
-                                    "value": 185,
-                                    "type": "Int"
-                                  }
-                                ],
-                                "concreteType": "ResizedImageUrl",
-                                "plural": false,
-                                "selections": [
-                                  {
-                                    "kind": "ScalarField",
-                                    "alias": null,
-                                    "name": "url",
-                                    "args": null,
-                                    "storageKey": null
-                                  }
-                                ]
                               }
                             ]
                           }

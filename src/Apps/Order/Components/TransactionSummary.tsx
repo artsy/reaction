@@ -1,34 +1,37 @@
 import { Serif } from "@artsy/palette"
+import { TransactionSummary_order } from "__generated__/TransactionSummary_order.graphql"
 import React from "react"
+import { createFragmentContainer, graphql } from "react-relay"
 import { Box, StackableBorderBox } from "Styleguide/Elements/Box"
 import { Flex, FlexProps } from "Styleguide/Elements/Flex"
 import { Image } from "Styleguide/Elements/Image"
 import { Spacer } from "Styleguide/Elements/Spacer"
 
 export interface TransactionSummaryProps extends FlexProps {
-  price: string
-  shipping: string
-  tax: string
-  total: string
-  artistName: string
-  artworkName: string
-  sellerName: string
-  artworkLocation: string
-  imageURL: string
+  order: TransactionSummary_order
 }
 
 export const TransactionSummary: React.SFC<TransactionSummaryProps> = ({
-  price,
-  shipping,
-  tax,
-  total,
-  artistName,
-  artworkName,
-  sellerName,
-  artworkLocation,
-  imageURL,
+  order: {
+    itemsTotal,
+    taxTotal,
+    shippingTotal,
+    buyerTotal,
+    lineItems,
+    partner: { name },
+  },
   ...others
 }) => {
+  const {
+    artist_names,
+    title,
+    date,
+    shippingOrigin,
+    image: {
+      resized_transactionSummary: { url: imageURL },
+    },
+  } = lineItems.edges[0].node.artwork
+
   return (
     <Flex flexDirection="column" {...others}>
       <StackableBorderBox flexDirection="row">
@@ -37,25 +40,30 @@ export const TransactionSummary: React.SFC<TransactionSummaryProps> = ({
         </Box>
         <Flex flexDirection="column">
           <Serif size="2" weight="semibold" color="black60">
-            {artistName}
+            {artist_names}
           </Serif>
-          <Serif italic size="2" color="black60">
-            {artworkName}
+          <div style={{ lineHeight: "1" }}>
+            <Serif italic size="2" color="black60" display="inline">
+              {title}
+            </Serif>
+            <Serif size="2" color="black60" display="inline">
+              {date && `, ${date}`}
+            </Serif>
+          </div>
+          <Serif size="2" color="black60">
+            {name}
           </Serif>
           <Serif size="2" color="black60">
-            {sellerName}
-          </Serif>
-          <Serif size="2" color="black60">
-            {artworkLocation}
+            {shippingOrigin}
           </Serif>
         </Flex>
       </StackableBorderBox>
       <StackableBorderBox flexDirection="column">
-        <Entry label="Price" value={price} />
-        <Entry label="Shipping" value={shipping} />
-        <Entry label="Tax" value={tax} />
+        <Entry label="Price" value={itemsTotal} />
+        <Entry label="Shipping" value={shippingTotal || "—"} />
+        <Entry label="Tax" value={taxTotal || "—"} />
         <Spacer mb={2} />
-        <Entry label="Total" value={total} final />
+        <Entry label="Total" value={buyerTotal} final />
       </StackableBorderBox>
     </Flex>
   )
@@ -86,4 +94,36 @@ const Entry = ({
       </Serif>
     </div>
   </Flex>
+)
+
+export const TransactionSummaryFragmentContainer = createFragmentContainer(
+  TransactionSummary,
+  graphql`
+    fragment TransactionSummary_order on Order {
+      shippingTotal
+      taxTotal
+      itemsTotal
+      buyerTotal
+      partner {
+        name
+      }
+      lineItems {
+        edges {
+          node {
+            artwork {
+              artist_names
+              title
+              date
+              shippingOrigin
+              image {
+                resized_transactionSummary: resized(width: 55) {
+                  url
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `
 )

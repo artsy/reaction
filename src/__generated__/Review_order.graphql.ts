@@ -1,44 +1,110 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-import { Summary_order$ref } from "./Summary_order.graphql";
+import { TransactionSummary_order$ref } from "./TransactionSummary_order.graphql";
 declare const _Review_order$ref: unique symbol;
 export type Review_order$ref = typeof _Review_order$ref;
 export type Review_order = {
     readonly id: string | null;
-    readonly " $fragmentRefs": Summary_order$ref;
+    readonly lineItems: ({
+        readonly edges: ReadonlyArray<({
+            readonly node: ({
+                readonly artwork: ({
+                    readonly id: string;
+                }) | null;
+            }) | null;
+        }) | null> | null;
+    }) | null;
+    readonly " $fragmentRefs": TransactionSummary_order$ref;
     readonly " $refType": Review_order$ref;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ConcreteFragment = (function(){
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v1 = {
+  "kind": "ScalarField",
+  "alias": "__id",
+  "name": "id",
+  "args": null,
+  "storageKey": null
+};
+return {
   "kind": "Fragment",
   "name": "Review_order",
   "type": "Order",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
+    v0,
     {
-      "kind": "ScalarField",
+      "kind": "LinkedField",
       "alias": null,
-      "name": "id",
+      "name": "lineItems",
+      "storageKey": null,
       "args": null,
-      "storageKey": null
+      "concreteType": "OrderLineItemConnection",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "edges",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "OrderLineItemEdge",
+          "plural": true,
+          "selections": [
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "node",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "OrderLineItem",
+              "plural": false,
+              "selections": [
+                {
+                  "kind": "LinkedField",
+                  "alias": null,
+                  "name": "artwork",
+                  "storageKey": null,
+                  "args": null,
+                  "concreteType": "Artwork",
+                  "plural": false,
+                  "selections": [
+                    v0,
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "__id",
+                      "args": null,
+                      "storageKey": null
+                    }
+                  ]
+                },
+                v1
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       "kind": "FragmentSpread",
-      "name": "Summary_order",
+      "name": "TransactionSummary_order",
       "args": null
     },
-    {
-      "kind": "ScalarField",
-      "alias": "__id",
-      "name": "id",
-      "args": null,
-      "storageKey": null
-    }
+    v1
   ]
 };
-(node as any).hash = '2bcbbf6dbe7025129e62f481d60e23f9';
+})();
+(node as any).hash = 'c1dc19ff02dce4160669a3b0dca53952';
 export default node;
