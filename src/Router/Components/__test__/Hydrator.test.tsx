@@ -1,10 +1,10 @@
 import { mount } from "enzyme"
 import React from "react"
-import { AppShell } from "../AppShell"
+import { Hydrator } from "Router/Components/Hydrator"
 
 describe("AppShell", () => {
   const getWrapper = (props = {}) => {
-    return mount(<AppShell {...props} />)
+    return mount(<Hydrator {...props} />)
   }
 
   it("does not inject loadable-components script tags if not provide", () => {
@@ -35,6 +35,6 @@ describe("AppShell", () => {
   })
 
   it("renders children", () => {
-    expect(mount(<AppShell>child</AppShell>).html()).toContain("child")
+    expect(mount(<Hydrator>child</Hydrator>).html()).toContain("child")
   })
 })

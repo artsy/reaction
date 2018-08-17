@@ -10,7 +10,7 @@ import track from "react-tracking"
 import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
 import Events from "../../../../Utils/Events"
 import ReplaceTransition from "../../../Animation/ReplaceTransition"
-import { ContextConsumer, ContextProps } from "../../../Artsy"
+import { ContextProps, withContext } from "../../../Artsy2"
 import ItemLink, { LinkContainer } from "../../ItemLink"
 import { FollowProps } from "../../Types"
 
@@ -231,4 +231,4 @@ const ArtistSearchResultsComponent: React.SFC<Props & ContextProps> = ({
   )
 }
 
-export const ArtistSearchResults = ContextConsumer(ArtistSearchResultsComponent)
+export const ArtistSearchResults = withContext(ArtistSearchResultsComponent)

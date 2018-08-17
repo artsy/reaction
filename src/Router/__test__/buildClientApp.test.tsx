@@ -1,12 +1,15 @@
 import { mount } from "enzyme"
 import React from "react"
+import { Subscribe } from "unstated"
 import { buildClientApp } from "../buildClientApp"
+import { AppState } from "../state"
 
 describe("buildClientApp", () => {
-  const getWrapper = async (initialRoute = "/") => {
+  it("resolves with a <ClientApp /> component", async () => {
     const { ClientApp } = await buildClientApp({
-      historyProtocol: "memory",
-      initialRoute: initialRoute || "/",
+      history: {
+        protocol: "memory",
+      },
       routes: [
         {
           path: "/",
@@ -19,15 +22,30 @@ describe("buildClientApp", () => {
       ],
     })
 
-    return mount(<ClientApp />)
-  }
-
-  it("resolves with a <ClientApp /> component", async () => {
-    expect((await getWrapper()).html()).toContain("<div>Hello Router</div>")
+    const wrapper = mount(<ClientApp />)
+    expect(wrapper.html()).toContain("<div>Hello Router</div>")
   })
 
   it("accepts an initial route", async () => {
-    expect((await getWrapper("/cv")).html()).toContain("<div>CV Page</div>")
+    const { ClientApp } = await buildClientApp({
+      history: {
+        protocol: "memory",
+      },
+      initialRoute: "/cv",
+      routes: [
+        {
+          path: "/",
+          Component: () => <div>Hello Router</div>,
+        },
+        {
+          path: "/cv",
+          Component: () => <div>CV Page</div>,
+        },
+      ],
+    })
+
+    const wrapper = mount(<ClientApp />)
+    expect(wrapper.html()).toContain("<div>CV Page</div>")
   })
 
   it("bootstraps data from __RELAY_BOOTSTRAP__", async () => {
@@ -35,10 +53,70 @@ describe("buildClientApp", () => {
       ["cacheKey", "found window cache"],
     ])
 
+    const { ClientApp } = await buildClientApp({
+      history: {
+        protocol: "memory",
+      },
+      routes: [
+        {
+          path: "/",
+          Component: () => <div>Hello Router</div>,
+        },
+        {
+          path: "/cv",
+          Component: () => <div>CV Page</div>,
+        },
+      ],
+    })
+
+    const wrapper = mount(<ClientApp />)
     expect(
-      ((await getWrapper())
+      (wrapper
         .find("Boot")
         .props() as any).system.relayEnvironment.relaySSRMiddleware.cache.values()
     ).toContain("found window cache")
+  })
+
+  it("passes along initial context values", async done => {
+    const HomeApp = () => {
+      return (
+        <Subscribe to={[AppState]}>
+          {({ state: { system } }) => {
+            expect(Object.keys(system)).toEqual([
+              "history",
+              "routes",
+              "context",
+              "relayEnvironment",
+              "resolver",
+              "currentUser",
+            ])
+            expect(Object.keys(system.context)).toEqual(["mediator", "user"])
+            done()
+            return <div />
+          }}
+        </Subscribe>
+      )
+    }
+
+    const { ClientApp } = await buildClientApp({
+      history: {
+        protocol: "memory",
+      },
+      routes: [
+        {
+          path: "/",
+          Component: HomeApp,
+        },
+      ],
+      context: {
+        mediator: jest.fn(),
+        user: {
+          id: "foo",
+          accessToken: "bar",
+        },
+      },
+    })
+
+    mount(<ClientApp />)
   })
 })

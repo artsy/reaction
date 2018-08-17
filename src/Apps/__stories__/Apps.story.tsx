@@ -1,6 +1,6 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
-import { StorybooksRouter } from "Router/StorybooksRouter"
+import { StorybooksRouter } from "Router"
 import { routes as artistRoutes } from "../Artist/routes"
 import { routes as artworkRoutes } from "../Artwork/routes"
 

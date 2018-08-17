@@ -1,6 +1,6 @@
 import React from "react"
 import { storiesOfPublishing } from "../../../__stories__/storiesOf.js"
-import { ContextProvider } from "../../Artsy"
+import { ContextProvider } from "../../Artsy2"
 import { Article } from "../Article"
 import {
   ImageHeavyStandardArticle,

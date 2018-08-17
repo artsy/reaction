@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, QueryRenderer } from "react-relay"
 
-import { ContextConsumer, ContextProps } from "../../Artsy"
+import { ContextProps, withContext } from "../../Artsy2"
 import MarketInsights from "./MarketInsights"
 
 export interface Props extends ContextProps {
@@ -34,4 +34,4 @@ class MarketInsightsContents extends React.Component<Props, null> {
   }
 }
 
-export const Contents = ContextConsumer(MarketInsightsContents)
+export const Contents = withContext(MarketInsightsContents)

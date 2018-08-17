@@ -3,7 +3,7 @@ import { SelectedExhibitions_exhibitions } from "__generated__/SelectedExhibitio
 import { groupBy, toPairs } from "lodash"
 import React, { SFC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { PreloadLink } from "Router/PreloadLink"
+import { PreloadLink } from "Router"
 import { BorderBox, Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Responsive } from "Utils/Responsive"

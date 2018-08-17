@@ -8,23 +8,24 @@ import createRender from "found/lib/createRender"
 import { loadComponents } from "loadable-components"
 import React from "react"
 import { createEnvironment } from "Relay/createEnvironment"
-import { AppShell } from "./AppShell"
-import { Boot } from "./Boot"
-import { getUser } from "./getUser"
-import { AppConfig, ClientResolveProps } from "./types"
+import { Boot } from "Router/Components/Boot"
+import { Hydrator } from "Router/Components/Hydrator"
+import { getUser } from "Utils/getUser"
+import { AppConfig2, ClientResolveProps } from "./types"
 
-export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
+export function buildClientApp(
+  config: AppConfig2
+): Promise<ClientResolveProps> {
   return new Promise(async (resolve, reject) => {
     try {
       const {
-        routes,
-        user,
-        historyProtocol = "browser",
-        historyOptions,
+        context = {},
+        history = {},
         initialRoute = "/",
-        relayNetwork,
+        routes = [],
       } = config
 
+      const { relayNetwork, user } = context
       const relayBootstrap = JSON.parse(window.__RELAY_BOOTSTRAP__ || "{}")
       const currentUser = getUser(user)
       const relayEnvironment = createEnvironment({
@@ -34,7 +35,7 @@ export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
       })
 
       const getHistoryProtocol = () => {
-        switch (historyProtocol) {
+        switch (history.protocol) {
           case "browser":
             return new BrowserProtocol()
           case "hash":
@@ -52,7 +53,7 @@ export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
       const Router = await createInitialFarceRouter({
         historyProtocol: getHistoryProtocol(),
         historyMiddlewares,
-        historyOptions,
+        historyOptions: history.options,
         routeConfig: routes,
         resolver,
         render,
@@ -76,9 +77,9 @@ export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
             }}
             {...props}
           >
-            <AppShell>
+            <Hydrator>
               <Router resolver={resolver} />
-            </AppShell>
+            </Hydrator>
           </Boot>
         )
       }

@@ -12,7 +12,7 @@ import {
 import * as RelayRuntimeTypes from "relay-runtime"
 import styled from "styled-components"
 import colors from "../../Assets/Colors"
-import * as Artsy from "../../Components/Artsy"
+import * as Artsy from "../../Components/Artsy2"
 import Icon from "../Icon"
 
 const SIZE = 40
@@ -213,7 +213,7 @@ export const SaveButton = styled(SaveButtonContainer)`
 `
 
 export default createFragmentContainer(
-  Artsy.ContextConsumer(SaveButton),
+  Artsy.withContext(SaveButton),
   graphql`
     fragment Save_artwork on Artwork {
       __id

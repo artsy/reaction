@@ -12,7 +12,7 @@ import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
 import styled from "styled-components"
 import Events from "../../../../Utils/Events"
 import ReplaceTransition from "../../../Animation/ReplaceTransition"
-import { ContextConsumer, ContextProps } from "../../../Artsy"
+import { ContextProps, withContext } from "../../../Artsy2"
 import ItemLink, { LinkContainer } from "../../ItemLink"
 import { FollowProps } from "../../Types"
 
@@ -218,4 +218,4 @@ const GeneSearchResultsComponent: React.SFC<Props & ContextProps> = ({
   )
 }
 
-export const GeneSearchResults = ContextConsumer(GeneSearchResultsComponent)
+export const GeneSearchResults = withContext(GeneSearchResultsComponent)

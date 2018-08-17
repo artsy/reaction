@@ -1,10 +1,10 @@
 import { mount } from "enzyme"
 import React from "react"
+import { Boot } from "Router"
 import { exhibitions } from "../../../Apps/__test__/Fixtures/SelectedExhibitions"
-import { Boot } from "../../../Router/Boot"
 import { SelectedExhibitions } from "../SelectedExhibitions"
 
-jest.mock("../../../Router/PreloadLink")
+jest.mock("../../../Router/Components/PreloadLink")
 
 describe("SelectedExhibitions", () => {
   const props = {

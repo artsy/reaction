@@ -1,6 +1,6 @@
 import { exhibitions } from "Apps/__test__/Fixtures/SelectedExhibitions"
 import React from "react"
-import { StorybooksRouter } from "Router/StorybooksRouter"
+import { StorybooksRouter } from "Router"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
 import {

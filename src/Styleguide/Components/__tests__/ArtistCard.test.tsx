@@ -1,7 +1,8 @@
 import { mount } from "enzyme"
 import { set } from "lodash/fp"
 import React from "react"
-import { Boot } from "../../../Router/Boot"
+import { Boot } from "Router"
+import { MatchingMediaQueries } from "Router/types"
 import { ArtistCard, LargeArtistCard, SmallArtistCard } from "../ArtistCard"
 
 describe("ArtistCard", () => {
@@ -45,7 +46,9 @@ describe("ArtistCard", () => {
       const updatedProps: any = set("artist.image", undefined, props)
 
       const wrapper = mount(
-        <Boot initialMatchingMediaQueries={[breakpoint]}>
+        <Boot
+          initialMatchingMediaQueries={[breakpoint] as MatchingMediaQueries}
+        >
           <ArtistCard {...updatedProps} />
         </Boot>
       )

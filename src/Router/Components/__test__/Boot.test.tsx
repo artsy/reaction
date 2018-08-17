@@ -1,8 +1,8 @@
 import { mount } from "enzyme"
 import React from "react"
+import { Boot } from "Router"
+import { AppState } from "Router/state"
 import { Subscribe } from "unstated"
-import { Boot } from "../Boot"
-import { AppState } from "../state"
 
 describe("Boot", () => {
   const bootProps: any = {

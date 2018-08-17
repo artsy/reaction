@@ -1,8 +1,8 @@
 import { mount } from "enzyme"
 import { set } from "lodash/fp"
 import React from "react"
+import { Boot } from "Router"
 import { paginationProps } from "../../../Apps/__test__/Fixtures/Pagination"
-import { Boot } from "../../../Router/Boot"
 import { LargePagination, Pagination, SmallPagination } from "../Pagination"
 
 describe("Pagination", () => {

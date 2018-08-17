@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, QueryRenderer } from "react-relay"
 
-import { ContextConsumer, ContextProps } from "../Artsy"
+import { ContextProps, withContext } from "../Artsy2"
 import Artists from "./Artists"
 import GeneArtworks from "./GeneArtworks"
 
@@ -210,4 +210,4 @@ class GeneContents extends React.Component<Props, State> {
   }
 }
 
-export const Contents = ContextConsumer(GeneContents)
+export const Contents = withContext(GeneContents)

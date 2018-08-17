@@ -1,7 +1,7 @@
+import { selectProps } from "Apps/__test__/Fixtures/Select"
 import { mount } from "enzyme"
 import React from "react"
-import { selectProps } from "../../../Apps/__test__/Fixtures/Select"
-import { Boot } from "../../../Router/Boot"
+import { Boot } from "Router"
 import { LargeSelect, Select, SmallSelect } from "../Select"
 
 describe("Select", () => {

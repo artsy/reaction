@@ -1,6 +1,9 @@
 import { Theme, themeProps } from "@artsy/palette"
 import { track } from "Analytics"
+import * as Artsy from "Components/Artsy2"
 import React from "react"
+import { AppState } from "Router/state"
+import { BootProps } from "Router/types"
 import { GridThemeProvider } from "styled-bootstrap-grid"
 import styled from "styled-components"
 import { GlobalStyles } from "Styleguide/Elements/GlobalStyles"
@@ -10,9 +13,6 @@ import { Provider as StateProvider } from "unstated"
 import Events from "Utils/Events"
 import { ResponsiveProvider } from "Utils/Responsive"
 import { Responsive } from "Utils/Responsive"
-import { ContextProvider } from "../Components/Artsy"
-import { AppState } from "./state"
-import { BootProps } from "./types"
 
 // TODO: Do we want to let Force explicitly inject the analytics code?
 @track(null, {
@@ -31,7 +31,7 @@ export class Boot extends React.Component<BootProps> {
 
     return (
       <StateProvider inject={[appState]}>
-        <ContextProvider
+        <Artsy.ContextProvider
           relayEnvironment={props.relayEnvironment}
           currentUser={props.currentUser}
         >
@@ -61,7 +61,7 @@ export class Boot extends React.Component<BootProps> {
               </GridThemeProvider>
             </Theme>
           </ResponsiveProvider>
-        </ContextProvider>
+        </Artsy.ContextProvider>
       </StateProvider>
     )
   }

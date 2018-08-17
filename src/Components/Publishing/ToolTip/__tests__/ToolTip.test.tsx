@@ -3,12 +3,12 @@ import "jest-styled-components"
 import PropTypes from "prop-types"
 import React from "react"
 import renderer from "react-test-renderer"
+import { ContextProvider } from "../../../Artsy2"
+import { Artists, Genes } from "../../Fixtures/Components"
 import { wrapperWithContext } from "../../Fixtures/Helpers"
-import { Genes, Artists } from "../../Fixtures/Components"
 import { ArtistToolTip } from "../ArtistToolTip"
 import { GeneToolTip } from "../GeneToolTip"
 import { ToolTip } from "../ToolTip"
-import { ContextProvider } from "../../../Artsy"
 
 describe("ToolTip", () => {
   const getWrapper = props => {

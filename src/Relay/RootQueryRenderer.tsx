@@ -3,10 +3,10 @@ import { GraphQLTaggedNode, ReadyState } from "react-relay"
 import { QueryRenderer } from "react-relay"
 import { CacheConfig, RerunParam, Variables } from "relay-runtime"
 import {
-  ContextConsumer,
   ContextProps,
   ContextProvider,
-} from "../Components/Artsy"
+  withContext,
+} from "../Components/Artsy2"
 
 /**
  * A copy of the upstream interface, minus the `environment` field.
@@ -28,7 +28,7 @@ const Renderer: React.SFC<Props> = ({
   ...props
 }) => <QueryRenderer {...props} environment={relayEnvironment} />
 
-const RendererWithContext = ContextConsumer(Renderer)
+const RendererWithContext = withContext(Renderer)
 
 /**
  * This component is, for now, mostly intended as an easy way to render stories, as it combines the Artsy

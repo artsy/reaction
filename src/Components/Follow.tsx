@@ -16,7 +16,7 @@ import {
 } from "react-relay"
 import styled from "styled-components"
 import colors from "../Assets/Colors"
-import * as Artsy from "../Components/Artsy"
+import * as Artsy from "../Components/Artsy2"
 import Icon from "./Icon"
 
 const SIZE = 32
@@ -112,7 +112,7 @@ export class FollowButton extends React.Component<Props, null> {
 }
 
 export default createFragmentContainer(
-  Artsy.ContextConsumer(FollowButton),
+  Artsy.withContext(FollowButton),
   graphql`
     fragment Follow_artist on Artist {
       __id

@@ -3,7 +3,7 @@ import { commitMutation, graphql } from "react-relay"
 import styled from "styled-components"
 
 import Colors from "../../../Assets/Colors"
-import { ContextConsumer, ContextProps } from "../../Artsy"
+import { ContextProps, withContext } from "../../Artsy2"
 import { MultiButtonState } from "../../Buttons/MultiStateButton"
 import { media } from "../../Helpers"
 import SelectableToggle from "../SelectableToggle"
@@ -105,7 +105,7 @@ export class BudgetComponent extends React.Component<
   }
 }
 
-const Budget = ContextConsumer(BudgetComponent)
+const Budget = withContext(BudgetComponent)
 // tslint:disable:no-string-literal
 Budget["slug"] = BudgetComponent.slug
 

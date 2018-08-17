@@ -1,7 +1,7 @@
 import { mount } from "enzyme"
 import React from "react"
-import { Boot } from "../../../Router/Boot"
-import { StorybooksRouter } from "../../../Router/StorybooksRouter"
+import { Boot } from "Router"
+import { StorybooksRouter } from "Router"
 import { RouteTab, RouteTabs } from "../RouteTabs"
 
 describe("RouteTabs", () => {

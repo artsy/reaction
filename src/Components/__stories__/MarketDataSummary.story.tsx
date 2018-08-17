@@ -2,7 +2,7 @@ import { storiesOf } from "@storybook/react"
 import * as React from "react"
 
 import { Contents } from "../Artist/MarketDataSummary"
-import { ContextProvider } from "../Artsy"
+import { ContextProvider } from "../Artsy2"
 
 function RenderMarketDataSummaryFor(artistID: string) {
   return (

@@ -1,15 +1,15 @@
-import * as Found from "found"
-import { withRouter } from "found"
+import * as Artsy from "Components/Artsy2"
 import { Link } from "found"
+import { withRouter } from "found"
+import * as Found from "found"
 import { isEmpty, isUndefined, last, pick } from "lodash/fp"
 import PropTypes from "prop-types"
 import React from "react"
-import { fetchQuery } from "react-relay"
 import { QueryRendererProps } from "react-relay"
+import { fetchQuery } from "react-relay"
 import { AppState, PreloadLinkState } from "Router/state"
+import { AppStateContainer } from "Router/types"
 import { Subscribe } from "unstated"
-import { ContextConsumer, ContextProps } from "../Components/Artsy"
-import { AppStateContainer } from "./types"
 
 export interface PreloadLinkProps extends AppStateContainer {
   children?: any
@@ -23,7 +23,7 @@ export interface PreloadLinkProps extends AppStateContainer {
 }
 
 const _PreloadLink: React.SFC<
-  PreloadLinkProps & ContextProps & Found.WithRouter
+  PreloadLinkProps & Artsy.ContextProps & Found.WithRouter
 > = preloadLinkProps => {
   /**
    * Create a Preloader wrapper to perform relay fetches and render out a <Link>
@@ -241,4 +241,4 @@ const _PreloadLink: React.SFC<
   )
 }
 
-export const PreloadLink = withRouter(ContextConsumer(_PreloadLink))
+export const PreloadLink = withRouter(Artsy.withContext(_PreloadLink))

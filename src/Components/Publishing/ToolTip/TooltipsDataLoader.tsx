@@ -1,5 +1,5 @@
 import { TooltipsDataLoaderQueryResponse } from "__generated__/TooltipsDataLoaderQuery.graphql"
-import * as Artsy from "Components/Artsy"
+import * as Artsy from "Components/Artsy2"
 import { getArtsySlugsFromArticle } from "Components/Publishing/Constants"
 import { ArticleData } from "Components/Publishing/Typings"
 import { keyBy } from "lodash"
@@ -136,4 +136,4 @@ class TooltipsContextProvider extends Component<any> {
   }
 }
 
-export const TooltipsData = Artsy.ContextConsumer(TooltipsDataLoader)
+export const TooltipsData = Artsy.withContext(TooltipsDataLoader)

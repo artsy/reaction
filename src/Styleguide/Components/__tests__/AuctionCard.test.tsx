@@ -1,6 +1,6 @@
 import { mount } from "enzyme"
 import React from "react"
-import { Boot } from "../../../Router/Boot"
+import { Boot } from "Router"
 import { AuctionCard, LargeAuctionCard, SmallAuctionCard } from "../AuctionCard"
 
 describe("AuctionCard", () => {

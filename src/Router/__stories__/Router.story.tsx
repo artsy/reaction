@@ -1,10 +1,11 @@
 import { storiesOf } from "@storybook/react"
+import { ContextConsumer } from "Components/Artsy2"
 import React from "react"
 import { graphql } from "react-relay"
+import { StorybooksRouter } from "Router"
+import { PreloadLink } from "Router"
+import { AppState } from "Router/state"
 import { Subscribe } from "unstated"
-import { PreloadLink } from "../../Router"
-import { AppState } from "../state"
-import { StorybooksRouter } from "../StorybooksRouter"
 
 const routes = [
   {
@@ -22,33 +23,41 @@ const routes = [
     }),
     Component: ({ artist, children, ...props }) => {
       return (
-        <Subscribe to={[AppState]}>
-          {app => {
-            return (
-              <div>
-                <h1>Example Relay Router App</h1>
-                <h3>{artist.name}</h3>
-                <p>{artist.bio}</p>
+        <>
+          <ContextConsumer>
+            {props => {
+              console.log(props)
+              return <div>hiii</div>
+            }}
+          </ContextConsumer>
+          <Subscribe to={[AppState]}>
+            {app => {
+              return (
+                <div>
+                  <h1>Example Relay Router App</h1>
+                  <h3>{artist.name}</h3>
+                  <p>{artist.bio}</p>
 
-                <nav>
-                  <ul>
-                    <li>
-                      <PreloadLink to="/home">Link to Home</PreloadLink>
-                    </li>
-                    <li>
-                      <PreloadLink to="/about">Link to About</PreloadLink>
-                    </li>
-                    <li>
-                      <PreloadLink to="/artist">Link to Artist</PreloadLink>
-                    </li>
-                  </ul>
-                </nav>
+                  <nav>
+                    <ul>
+                      <li>
+                        <PreloadLink to="/home">Link to Home</PreloadLink>
+                      </li>
+                      <li>
+                        <PreloadLink to="/about">Link to About</PreloadLink>
+                      </li>
+                      <li>
+                        <PreloadLink to="/artist">Link to Artist</PreloadLink>
+                      </li>
+                    </ul>
+                  </nav>
 
-                {children}
-              </div>
-            )
-          }}
-        </Subscribe>
+                  {children}
+                </div>
+              )
+            }}
+          </Subscribe>
+        </>
       )
     },
     children: [
@@ -75,5 +84,12 @@ const routes = [
 ]
 
 storiesOf("SSR Router/Example", module).add("Example Router App", () => {
-  return <StorybooksRouter routes={routes} />
+  return (
+    <StorybooksRouter
+      routes={routes}
+      context={{
+        foo: "bar",
+      }}
+    />
+  )
 })

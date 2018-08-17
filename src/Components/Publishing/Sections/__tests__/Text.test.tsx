@@ -3,17 +3,17 @@ import "jest-styled-components"
 import PropTypes from "prop-types"
 import React from "react"
 import renderer from "react-test-renderer"
+import { ContextProvider } from "../../../Artsy2"
 import {
   NewsArticle,
   TextClassicArticle,
   TextFeatureArticle,
   TextStandardArticle,
 } from "../../Fixtures/Articles"
-import { ContextProvider } from "../../../Artsy"
 import { TextFromArticle } from "../../Fixtures/Helpers"
-import { Text } from "../Text"
-import { LinkWithTooltip } from "../../ToolTip/LinkWithTooltip"
 import { wrapperWithContext } from "../../Fixtures/Helpers"
+import { LinkWithTooltip } from "../../ToolTip/LinkWithTooltip"
+import { Text } from "../Text"
 
 describe("Text", () => {
   const getWrapper = props => {

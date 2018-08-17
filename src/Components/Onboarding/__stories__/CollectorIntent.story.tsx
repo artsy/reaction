@@ -1,7 +1,7 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
 
-import { ContextProvider } from "../../Artsy"
+import { ContextProvider } from "../../Artsy2"
 import CollectorIntent from "../Steps/CollectorIntent"
 
 storiesOf("Onboarding", module).add("Collector Intent", () => {

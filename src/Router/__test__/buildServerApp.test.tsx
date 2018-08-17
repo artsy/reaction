@@ -4,7 +4,9 @@
 
 import { render } from "enzyme"
 import React from "react"
+import { Subscribe } from "unstated"
 import { buildServerApp } from "../buildServerApp"
+import { AppState } from "../state"
 
 jest.mock("loadable-components/server", () => ({
   getLoadableState: () =>
@@ -50,5 +52,46 @@ describe("buildServerApp", () => {
   it("resolves with a 404 status if url does not match request", async () => {
     const { status } = await getWrapper("/bad-url")
     expect(status).toEqual(404)
+  })
+
+  it("passes items along in context option", async done => {
+    const HomeApp = () => {
+      return (
+        <Subscribe to={[AppState]}>
+          {({ state: { system } }) => {
+            expect(Object.keys(system)).toEqual([
+              "routes",
+              "url",
+              "context",
+              "relayEnvironment",
+              "resolver",
+              "currentUser",
+            ])
+            expect(Object.keys(system.context)).toEqual(["mediator", "user"])
+            done()
+            return <div />
+          }}
+        </Subscribe>
+      )
+    }
+
+    const { ServerApp } = await buildServerApp({
+      routes: [
+        {
+          path: "/",
+          Component: HomeApp,
+        },
+      ],
+      url: "/",
+      context: {
+        mediator: jest.fn(),
+        user: {
+          id: "foo",
+          accessToken: "bar",
+        },
+      },
+    })
+
+    render(<ServerApp />)
   })
 })

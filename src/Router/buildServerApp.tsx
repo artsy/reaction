@@ -5,16 +5,19 @@ import { getFarceResult } from "found/lib/server"
 import { getLoadableState } from "loadable-components/server"
 import React from "react"
 import ReactDOMServer from "react-dom/server"
-import { createEnvironment } from "../Relay/createEnvironment"
-import { AppShell } from "./AppShell"
-import { Boot } from "./Boot"
-import { getUser } from "./getUser"
-import { AppConfig, ServerResolveProps } from "./types"
+import { createEnvironment } from "Relay/createEnvironment"
+import { Boot } from "Router/Components/Boot"
+import { Hydrator } from "Router/Components/Hydrator"
+import { getUser } from "Utils/getUser"
+import { AppConfig2, ServerResolveProps } from "./types"
 
-export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
+export function buildServerApp(
+  config: AppConfig2
+): Promise<ServerResolveProps> {
   return new Promise(async (resolve, reject) => {
     try {
-      const { routes, url, user, initialMatchingMediaQueries } = config
+      const { context = {}, routes = [], url } = config
+      const { initialMatchingMediaQueries, user } = context
       const currentUser = getUser(user)
       const relayEnvironment = createEnvironment({ user: currentUser })
       const historyMiddlewares = [queryMiddleware]
@@ -34,7 +37,7 @@ export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
         return
       }
 
-      const AppContainer = props => {
+      const App = props => {
         return (
           <Boot
             initialMatchingMediaQueries={initialMatchingMediaQueries}
@@ -43,27 +46,27 @@ export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
               relayEnvironment,
               resolver,
               routes,
-              currentUser,
+              currentUser: user,
             }}
             {...props}
           >
-            <AppShell
-              data={props.relayData}
+            <Hydrator
+              data={props.data}
               loadableState={props.loadableState}
               url={url}
             >
               {element}
-            </AppShell>
+            </Hydrator>
           </Boot>
         )
       }
 
       // Kick off relay requests to prime cache
-      ReactDOMServer.renderToString(<AppContainer />)
+      ReactDOMServer.renderToString(<App />)
 
       // Serializable data to be rehydrated on client
       const relayData = await relayEnvironment.relaySSRMiddleware.getCache()
-      const loadableState = await getLoadableState(<AppContainer />)
+      const loadableState = await getLoadableState(<App />)
 
       /**
        * FIXME: Relay SSR middleware is passing a _res object across which
@@ -83,11 +86,7 @@ export function buildServerApp(config: AppConfig): Promise<ServerResolveProps> {
 
       resolve({
         ServerApp: props => (
-          <AppContainer
-            relayData={relayData}
-            loadableState={loadableState}
-            {...props}
-          />
+          <App data={relayData} loadableState={loadableState} {...props} />
         ),
         status,
       })
