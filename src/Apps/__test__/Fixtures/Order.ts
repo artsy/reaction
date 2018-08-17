@@ -13,6 +13,7 @@ export const IncompleteOrder = {
             artist_names: "Lisa Breslow",
             title: "Gramercy Park South",
             date: "2016",
+            shippingOrigin: "New York, NY",
             medium: "Oil and pencil on panel",
             dimensions: {
               in: "36 × 36 in",

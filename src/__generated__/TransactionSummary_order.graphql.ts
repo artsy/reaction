@@ -10,11 +10,6 @@ export type TransactionSummary_order = {
     readonly buyerTotal: string | null;
     readonly partner: ({
         readonly name: string | null;
-        readonly locations: ReadonlyArray<({
-            readonly city: string | null;
-            readonly state: string | null;
-            readonly country: string | null;
-        }) | null> | null;
     }) | null;
     readonly lineItems: ({
         readonly edges: ReadonlyArray<({
@@ -23,6 +18,7 @@ export type TransactionSummary_order = {
                     readonly artist_names: string | null;
                     readonly title: string | null;
                     readonly date: string | null;
+                    readonly shippingOrigin: string | null;
                     readonly image: ({
                         readonly resized_transactionSummary: ({
                             readonly url: string | null;
@@ -103,46 +99,6 @@ return {
           "args": null,
           "storageKey": null
         },
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "locations",
-          "storageKey": "locations(size:1)",
-          "args": [
-            {
-              "kind": "Literal",
-              "name": "size",
-              "value": 1,
-              "type": "Int"
-            }
-          ],
-          "concreteType": "Location",
-          "plural": true,
-          "selections": [
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "city",
-              "args": null,
-              "storageKey": null
-            },
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "state",
-              "args": null,
-              "storageKey": null
-            },
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "country",
-              "args": null,
-              "storageKey": null
-            },
-            v0
-          ]
-        },
         v0
       ]
     },
@@ -204,6 +160,13 @@ return {
                       "storageKey": null
                     },
                     {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "shippingOrigin",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    {
                       "kind": "LinkedField",
                       "alias": null,
                       "name": "image",
@@ -253,5 +216,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'a706e8452f54de7b094170e0bdaf2885';
+(node as any).hash = 'df6d9577c69cc1ffa4a5bb9ec4ae26af';
 export default node;

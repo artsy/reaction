@@ -18,7 +18,7 @@ export const TransactionSummary: React.SFC<TransactionSummaryProps> = ({
     shippingTotal,
     buyerTotal,
     lineItems,
-    partner: { name, locations },
+    partner: { name },
   },
   ...others
 }) => {
@@ -26,15 +26,11 @@ export const TransactionSummary: React.SFC<TransactionSummaryProps> = ({
     artist_names,
     title,
     date,
+    shippingOrigin,
     image: {
       resized_transactionSummary: { url: imageURL },
     },
   } = lineItems.edges[0].node.artwork
-
-  const { city, state, country } = locations[0]
-
-  const location =
-    country === "US" ? `${city}, ${state}` : `${city}, ${country}.`
 
   return (
     <Flex flexDirection="column" {...others}>
@@ -58,7 +54,7 @@ export const TransactionSummary: React.SFC<TransactionSummaryProps> = ({
             {name}
           </Serif>
           <Serif size="2" color="black60">
-            {location}
+            {shippingOrigin}
           </Serif>
         </Flex>
       </StackableBorderBox>
@@ -110,11 +106,6 @@ export const TransactionSummaryFragmentContainer = createFragmentContainer(
       buyerTotal
       partner {
         name
-        locations(size: 1) {
-          city
-          state
-          country
-        }
       }
       lineItems {
         edges {
@@ -123,6 +114,7 @@ export const TransactionSummaryFragmentContainer = createFragmentContainer(
               artist_names
               title
               date
+              shippingOrigin
               image {
                 resized_transactionSummary: resized(width: 55) {
                   url

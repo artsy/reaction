@@ -25,6 +25,7 @@ storiesOf("Apps/Order Page/Components", module).add(
                         artist_names: "Francesca DiMattio",
                         title: "The Fox and the Hound",
                         date: "2018",
+                        shippingOrigin: "New York, NY",
                         image: {
                           resized_transactionSummary: {
                             url:
@@ -38,13 +39,6 @@ storiesOf("Apps/Order Page/Components", module).add(
               },
               partner: {
                 name: "Salon 94",
-                locations: [
-                  {
-                    city: "New York",
-                    state: "NY",
-                    country: "US",
-                  },
-                ],
               },
             }}
           />

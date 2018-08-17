@@ -47,12 +47,6 @@ fragment TransactionSummary_order on Order {
   buyerTotal
   partner {
     name
-    locations(size: 1) {
-      city
-      state
-      country
-      __id
-    }
     __id
   }
   lineItems {
@@ -62,6 +56,7 @@ fragment TransactionSummary_order on Order {
           artist_names
           title
           date
+          shippingOrigin
           image {
             resized_transactionSummary: resized(width: 55) {
               url
@@ -120,7 +115,7 @@ return {
   "operationKind": "query",
   "name": "routes_PaymentQuery",
   "id": null,
-  "text": "query routes_PaymentQuery(\n  $orderID: String!\n) {\n  order(id: $orderID) {\n    ...Payment_order\n    __id: id\n  }\n}\n\nfragment Payment_order on Order {\n  id\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  ...TransactionSummary_order\n  __id: id\n}\n\nfragment TransactionSummary_order on Order {\n  shippingTotal\n  taxTotal\n  itemsTotal\n  buyerTotal\n  partner {\n    name\n    locations(size: 1) {\n      city\n      state\n      country\n      __id\n    }\n    __id\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          image {\n            resized_transactionSummary: resized(width: 55) {\n              url\n            }\n          }\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n",
+  "text": "query routes_PaymentQuery(\n  $orderID: String!\n) {\n  order(id: $orderID) {\n    ...Payment_order\n    __id: id\n  }\n}\n\nfragment Payment_order on Order {\n  id\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  ...TransactionSummary_order\n  __id: id\n}\n\nfragment TransactionSummary_order on Order {\n  shippingTotal\n  taxTotal\n  itemsTotal\n  buyerTotal\n  partner {\n    name\n    __id\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_transactionSummary: resized(width: 55) {\n              url\n            }\n          }\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -223,6 +218,13 @@ return {
                             "storageKey": null
                           },
                           {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "shippingOrigin",
+                            "args": null,
+                            "storageKey": null
+                          },
+                          {
                             "kind": "LinkedField",
                             "alias": null,
                             "name": "image",
@@ -310,46 +312,6 @@ return {
                 "name": "name",
                 "args": null,
                 "storageKey": null
-              },
-              {
-                "kind": "LinkedField",
-                "alias": null,
-                "name": "locations",
-                "storageKey": "locations(size:1)",
-                "args": [
-                  {
-                    "kind": "Literal",
-                    "name": "size",
-                    "value": 1,
-                    "type": "Int"
-                  }
-                ],
-                "concreteType": "Location",
-                "plural": true,
-                "selections": [
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "city",
-                    "args": null,
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "state",
-                    "args": null,
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "country",
-                    "args": null,
-                    "storageKey": null
-                  },
-                  v4
-                ]
               },
               v4
             ]
