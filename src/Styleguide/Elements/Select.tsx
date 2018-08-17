@@ -119,6 +119,7 @@ const LargeSelectContainer = styled.div.attrs<SelectProps>({})`
     ${hideDefaultSkin};
     border: 1px solid ${color("black10")};
     border-radius: 0;
+    padding-right: ${space(1)}px;
     ${styledSpace};
   }
 

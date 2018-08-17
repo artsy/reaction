@@ -3,14 +3,17 @@ import { color } from "@artsy/palette"
 import { ArtworkFilter_artist } from "__generated__/ArtworkFilter_artist.graphql"
 import { FilterState } from "Apps/Artist/Routes/Overview/state"
 import { FilterIcon } from "Assets/Icons/FilterIcon"
+import FollowArtistButton from "Components/FollowButton/FollowArtistButton"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { AppState } from "Router"
+import styled from "styled-components"
 import { Toggle } from "Styleguide/Components/Toggle"
 import { Box } from "Styleguide/Elements/Box"
 import { Button } from "Styleguide/Elements/Button"
 import { Checkbox } from "Styleguide/Elements/Checkbox"
 import { Flex } from "Styleguide/Elements/Flex"
+import { Message } from "Styleguide/Elements/Message"
 import { Radio } from "Styleguide/Elements/Radio"
 import { SmallSelect } from "Styleguide/Elements/Select"
 import { Separator } from "Styleguide/Elements/Separator"
@@ -28,6 +31,25 @@ interface Props {
 class Filter extends Component<Props> {
   static defaultProps = {
     hideTopBorder: false,
+  }
+
+  get existy() {
+    const { artist } = this.props
+
+    return {
+      hasForSaleArtworks: artist.counts.for_sale_artworks > 0,
+      hasBuyNowArtworks: artist.counts.ecommerce_artworks > 0,
+      hasAuctionArtworks: artist.counts.auction_artworks > 0,
+    }
+  }
+
+  get showZeroState() {
+    const showZeroState =
+      !this.existy.hasAuctionArtworks &&
+      !this.existy.hasBuyNowArtworks &&
+      !this.existy.hasForSaleArtworks
+
+    return !showZeroState
   }
 
   renderCategory(filters, category, counts, mediator) {
@@ -58,12 +80,10 @@ class Filter extends Component<Props> {
   }
 
   renderForSaleCheckbox(filters, mediator, counts) {
-    const hasForSaleArtworks = counts.for_sale_artworks > 0
-
     return (
       <Checkbox
         selected={filters.state.for_sale}
-        disabled={!hasForSaleArtworks}
+        disabled={!this.existy.hasForSaleArtworks || this.showZeroState}
         onSelect={value => {
           return filters.setFilter("for_sale", value, mediator)
         }}
@@ -74,10 +94,6 @@ class Filter extends Component<Props> {
   }
 
   renderWaysToBuy(filters, mediator, counts) {
-    const hasForSaleArtworks = counts.for_sale_artworks > 0
-    const hasBuyNowArtworks = counts.ecommerce_artworks > 0
-    const hasAuctionArtworks = counts.auction_artworks > 0
-
     return (
       <React.Fragment>
         <Sans size="2" weight="medium" color="black100" mt={0.3}>
@@ -85,7 +101,7 @@ class Filter extends Component<Props> {
         </Sans>
         <Checkbox
           selected={filters.state.acquireable}
-          disabled={!hasBuyNowArtworks}
+          disabled={!this.existy.hasBuyNowArtworks || this.showZeroState}
           onSelect={value => {
             return filters.setFilter("acquireable", value, mediator)
           }}
@@ -94,7 +110,7 @@ class Filter extends Component<Props> {
         </Checkbox>
         <Checkbox
           selected={filters.state.at_auction}
-          disabled={!hasAuctionArtworks}
+          disabled={!this.existy.hasAuctionArtworks || this.showZeroState}
           onSelect={value => {
             return filters.setFilter("at_auction", value, mediator)
           }}
@@ -103,7 +119,7 @@ class Filter extends Component<Props> {
         </Checkbox>
         <Checkbox
           selected={filters.state.for_sale}
-          disabled={!hasForSaleArtworks}
+          disabled={!this.existy.hasForSaleArtworks || this.showZeroState}
           onSelect={value => {
             return filters.setFilter("for_sale", value, mediator)
           }}
@@ -111,6 +127,38 @@ class Filter extends Component<Props> {
           Inquire
         </Checkbox>
       </React.Fragment>
+    )
+  }
+
+  renderZeroState(currentUser, mediator) {
+    return (
+      <Message size="5t" justifyContent="center">
+        There aren’t any works available by the artist at this time.{" "}
+        {!this.props.artist.is_followed && (
+          <>
+            Follow{" "}
+            <FollowArtistButton
+              artist={this.props.artist}
+              useDeprecatedButtonStyle={false}
+              currentUser={currentUser}
+              onOpenAuthModal={() => {
+                mediator.trigger("open:auth", {
+                  mode: "signup",
+                  copy: `Sign up to follow ${this.props.artist.name}`,
+                  signupIntent: "follow artist",
+                  afterSignUpAction: {
+                    kind: "artist",
+                    action: "follow",
+                    objectId: this.props.artist.id,
+                  },
+                })
+              }}
+              render={<ZeroStateLink>Allora & Calzadilla</ZeroStateLink>}
+            />{" "}
+            to receive notifications when new works are added.
+          </>
+        )}
+      </Message>
     )
   }
 
@@ -167,7 +215,7 @@ class Filter extends Component<Props> {
                             )}
                       </Flex>
 
-                      <Toggle label="Medium" expanded>
+                      <Toggle label="Medium" expanded={!this.showZeroState}>
                         {this.renderCategory(
                           filters,
                           "medium",
@@ -176,7 +224,9 @@ class Filter extends Component<Props> {
                         )}
                       </Toggle>
                       <Toggle
-                        expanded={filters.state.partner_id}
+                        expanded={
+                          filters.state.partner_id && !this.showZeroState
+                        }
                         label="Gallery"
                       >
                         {this.renderCategory(
@@ -188,7 +238,9 @@ class Filter extends Component<Props> {
                       </Toggle>
 
                       <Toggle
-                        expanded={filters.state.partner_id}
+                        expanded={
+                          filters.state.partner_id && !this.showZeroState
+                        }
                         label="Institution"
                       >
                         {this.renderCategory(
@@ -199,7 +251,10 @@ class Filter extends Component<Props> {
                         )}
                       </Toggle>
                       <Toggle
-                        expanded={filters.state.major_periods.length > 0}
+                        expanded={
+                          filters.state.major_periods.length > 0 &&
+                          !this.showZeroState
+                        }
                         label="Time period"
                       >
                         {this.renderCategory(
@@ -247,30 +302,28 @@ class Filter extends Component<Props> {
                         >
                           <SmallSelect
                             mt="-8px"
-                            options={
-                              [
-                                {
-                                  value: "-decayed_merch",
-                                  text: "Default",
-                                },
-                                {
-                                  value: "-partner_updated_at",
-                                  text: "Recently updated",
-                                },
-                                {
-                                  value: "-published_at",
-                                  text: "Recently added",
-                                },
-                                {
-                                  value: "-year",
-                                  text: "Artwork year (desc.)",
-                                },
-                                {
-                                  value: "year",
-                                  text: "Artwork year (asc.)",
-                                },
-                              ] // Corrective spacing for line-height
-                            }
+                            options={[
+                              {
+                                value: "-decayed_merch",
+                                text: "Default",
+                              },
+                              {
+                                value: "-partner_updated_at",
+                                text: "Recently updated",
+                              },
+                              {
+                                value: "-published_at",
+                                text: "Recently added",
+                              },
+                              {
+                                value: "-year",
+                                text: "Artwork year (desc.)",
+                              },
+                              {
+                                value: "year",
+                                text: "Artwork year (asc.)",
+                              },
+                            ]}
                             selected={filters.state.sort}
                             onSelect={sort => {
                               return filters.setSort(sort, mediator)
@@ -297,12 +350,16 @@ class Filter extends Component<Props> {
 
                         <Spacer mb={2} />
 
-                        <ArtworkFilter
-                          artist={this.props.artist}
-                          artistID={this.props.artist.id}
-                          columnCount={xs || sm || md ? 2 : 3}
-                          filters={filters.state}
-                        />
+                        {this.showZeroState ? (
+                          this.renderZeroState(currentUser, mediator)
+                        ) : (
+                          <ArtworkFilter
+                            artist={this.props.artist}
+                            artistID={this.props.artist.id}
+                            columnCount={xs || sm || md ? 2 : 3}
+                            filters={filters.state}
+                          />
+                        )}
                       </Box>
                     </Flex>
                   </>
@@ -334,6 +391,8 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(
         sort: { type: "String", defaultValue: "-partner_updated_at" }
       ) {
       id
+      name
+      is_followed
       counts {
         for_sale_artworks
         ecommerce_artworks
@@ -348,6 +407,7 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(
           }
         }
       }
+
       ...ArtworkFilterRefetch_artist
         @arguments(
           medium: $medium
@@ -358,8 +418,15 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(
           acquireable: $acquireable
           at_auction: $at_auction
         )
+
+      ...FollowArtistButton_artist
     }
   `
 )
 
 const Sidebar = Box
+
+const ZeroStateLink = styled.span`
+  text-decoration: underline;
+  cursor: pointer;
+`

@@ -35,6 +35,10 @@ interface Props
    * to new design-system buttons.
    */
   buttonProps?: Partial<ButtonProps>
+  /**
+   * Custom renderer for alternative button displays
+   */
+  render?: JSX.Element
 }
 
 export class FollowArtistButton extends React.Component<Props> {
@@ -62,6 +66,7 @@ export class FollowArtistButton extends React.Component<Props> {
       const newFollowCount = artist.is_followed
         ? artist.counts.follows - 1
         : artist.counts.follows + 1
+
       commitMutation(relay.environment, {
         mutation: graphql`
           mutation FollowArtistButtonMutation($input: FollowArtistInput!) {
@@ -107,20 +112,25 @@ export class FollowArtistButton extends React.Component<Props> {
   }
 
   render() {
-    const { artist, useDeprecatedButtonStyle, buttonProps } = this.props
+    const { artist, useDeprecatedButtonStyle, buttonProps, render } = this.props
 
     // FIXME: Unify design language
     const Button = useDeprecatedButtonStyle
       ? FollowButtonDeprecated
       : FollowButton
 
-    return (
-      <Button
-        isFollowed={artist && artist.is_followed}
-        handleFollow={this.handleFollow}
-        buttonProps={buttonProps}
-      />
-    )
+    // Custom button renderer
+    if (render) {
+      return <span onClick={this.handleFollow}>{render}</span>
+    } else {
+      return (
+        <Button
+          isFollowed={artist && artist.is_followed}
+          handleFollow={this.handleFollow}
+          buttonProps={buttonProps}
+        />
+      )
+    }
   }
 }
 

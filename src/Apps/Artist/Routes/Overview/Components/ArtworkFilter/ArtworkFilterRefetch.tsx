@@ -1,7 +1,7 @@
 import { ArtworkFilterRefetch_artist } from "__generated__/ArtworkFilterRefetch_artist.graphql"
 import React from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
-import { ArtworkGridRefetchContainer } from "./ArtworkFilterArtworkGrid"
+import { ArtworkGridRefetchContainer as ArtworkGrid } from "./ArtworkFilterArtworkGrid"
 
 interface Props {
   artist: ArtworkFilterRefetch_artist
@@ -62,7 +62,7 @@ class ArtworkGridRefetchContainerWrapper extends React.Component<Props> {
 
   render() {
     return (
-      <ArtworkGridRefetchContainer
+      <ArtworkGrid
         {...this.props}
         isLoading={this.state.isLoading}
         filtered_artworks={this.props.artist.grid}
