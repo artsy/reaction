@@ -12,8 +12,8 @@ import { Collapse } from "Styleguide/Components/Collapse"
 import { Button } from "Styleguide/Elements/Button"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
-import { Radio } from "Styleguide/Elements/Radio"
-import { BorderedRadioGroup } from "Styleguide/Elements/RadioGroup"
+import { BorderedRadio } from "Styleguide/Elements/Radio"
+import { RadioGroup } from "Styleguide/Elements/RadioGroup"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Responsive } from "Utils/Responsive"
 
@@ -115,15 +115,17 @@ export class ShippingRoute extends Component<
             <TwoColumnLayout
               Content={
                 <>
-                  <BorderedRadioGroup
+                  <RadioGroup
                     onSelect={shippingOption =>
                       this.setState({ shippingOption })
                     }
                     defaultValue="SHIP"
                   >
-                    <Radio value="SHIP">Provide shipping address</Radio>
+                    <BorderedRadio value="SHIP">
+                      Provide shipping address
+                    </BorderedRadio>
 
-                    <Radio value="PICKUP">
+                    <BorderedRadio value="PICKUP">
                       Arrange for pickup
                       <Collapse open={this.state.shippingOption === "PICKUP"}>
                         <Sans size="2" color="black60">
@@ -132,8 +134,8 @@ export class ShippingRoute extends Component<
                           pickup logistics.
                         </Sans>
                       </Collapse>
-                    </Radio>
-                  </BorderedRadioGroup>
+                    </BorderedRadio>
+                  </RadioGroup>
 
                   <Spacer mb={3} />
 

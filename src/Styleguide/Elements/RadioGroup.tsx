@@ -1,11 +1,8 @@
 import React from "react"
 import { BorderProps, SizeProps, SpaceProps } from "styled-system"
 
-import { BorderBox } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
-import { Join } from "Styleguide/Elements/Join"
 import { RadioProps } from "Styleguide/Elements/Radio"
-import { Separator } from "Styleguide/Elements/Separator"
 
 export interface RadioGroupProps {
   disabled?: boolean
@@ -67,18 +64,6 @@ export class RadioGroup extends React.Component<
       <Flex flexDirection="column" p={2}>
         {this.renderRadioButtons()}
       </Flex>
-    )
-  }
-}
-
-export class BorderedRadioGroup extends RadioGroup {
-  render() {
-    return (
-      <BorderBox flexDirection="column" p={2}>
-        <Join separator={<Separator mx={-2} my={2} width="inherit" />}>
-          {this.renderRadioButtons()}
-        </Join>
-      </BorderBox>
     )
   }
 }
