@@ -35,7 +35,7 @@ const renderAddress = ({
     cityLine,
     shippingRegion,
   ]
-    .filter(x => x)
+    .filter(Boolean)
     .join("\n")
 }
 
