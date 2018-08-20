@@ -138,8 +138,7 @@ class Filter extends Component<Props> {
                           >
                             {!hideTopBorder && <Separator mb={1} />}
 
-                            {currentUser &&
-                              this.renderWaysToBuy(filters, mediator)}
+                            {this.renderWaysToBuy(filters, mediator)}
                           </Flex>
 
                           <Toggle label="Medium" expanded>

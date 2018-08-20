@@ -31,7 +31,7 @@ storiesOf("Apps", module)
     return (
       <StorybooksRouter
         routes={collectRoutes}
-        initialRoute="/collect"
+        initialRoute="/collect2"
         initialState={{
           mediator: {
             trigger: x => x,
