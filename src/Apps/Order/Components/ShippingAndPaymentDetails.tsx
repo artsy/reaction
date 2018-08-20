@@ -64,7 +64,10 @@ export const ShippingAndPaymentDetails: React.SFC<
         pickup logistics.
       </StepSummaryItem>
     ) : (
-      <StepSummaryItem onChange={onShippingChange} title="Ship to">
+      <StepSummaryItem
+        onChange={onShippingChange}
+        title={onShippingChange ? "Shipping address" : "Ship to"}
+      >
         <div style={{ whiteSpace: "pre-wrap" }}>
           {renderAddress(addressProps)}
         </div>
