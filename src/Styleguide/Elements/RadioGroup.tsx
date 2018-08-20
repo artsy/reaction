@@ -1,21 +1,14 @@
 import React from "react"
-import { BorderProps, SizeProps, SpaceProps } from "styled-system"
 
-import { Flex } from "Styleguide/Elements/Flex"
+import { Flex, FlexProps } from "Styleguide/Elements/Flex"
 import { RadioProps } from "Styleguide/Elements/Radio"
 
-export interface RadioGroupProps {
+export interface RadioGroupProps extends FlexProps {
   disabled?: boolean
   onSelect?: (selectedOption: string) => void
   defaultValue?: string
   children: Array<React.ReactElement<RadioProps>>
 }
-
-export interface RadioGroupToggleProps
-  extends RadioGroupProps,
-    BorderProps,
-    SizeProps,
-    SpaceProps {}
 
 interface RadioGroupState {
   selectedOption: string | null
@@ -60,8 +53,9 @@ export class RadioGroup extends React.Component<
   }
 
   render() {
+    const { disabled, onSelect, defaultValue, children, ...others } = this.props
     return (
-      <Flex flexDirection="column" p={2}>
+      <Flex flexDirection="column" {...others}>
         {this.renderRadioButtons()}
       </Flex>
     )
