@@ -34,7 +34,7 @@ describe("units", () => {
     let unit = props.unit || UnitPanel
 
     if (isVideo) {
-      unit = cloneDeep(UnitPanel)
+      unit = cloneDeep(UnitPanelVideo)
       unit.assets[0].url = "foo.mp4"
     }
 
@@ -468,10 +468,22 @@ describe("units", () => {
       const wrapper = getWrapper({ isVideo: true })
       expect(wrapper.find("video").length).toEqual(1)
     })
+
+    it("Returns original URL if video asset", () => {
+      const wrapper = getWrapper({ isVideo: true })
+      expect(wrapper.find("video").props().src).toBe("foo.mp4")
+    })
   })
 
   it("renders an image", () => {
     const wrapper = getWrapper()
     expect(wrapper.find("Image").length).toEqual(1)
+  })
+
+  it("Returns resized cloudfront URL if image asset", () => {
+    const wrapper = getWrapper()
+    expect(wrapper.find("DisplayPanelContainer").props().imageUrl).toMatch(
+      "cloudfront"
+    )
   })
 })
