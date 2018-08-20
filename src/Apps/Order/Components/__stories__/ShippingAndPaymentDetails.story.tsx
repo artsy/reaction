@@ -14,6 +14,9 @@ const order: ShippingAndPaymentDetails_order = {
   shippingCity: "New York",
   shippingPostalCode: "90210",
   shippingRegion: "US",
+  lineItems: {
+    edges: [{ node: { artwork: { shippingOrigin: "Jersey City, NJ" } } }],
+  },
   creditCard: {
     brand: "Visa",
     last_digits: "4444",

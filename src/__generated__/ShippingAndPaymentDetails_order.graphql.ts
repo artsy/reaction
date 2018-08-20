@@ -12,6 +12,15 @@ export type ShippingAndPaymentDetails_order = {
     readonly shippingCity: string | null;
     readonly shippingPostalCode: string | null;
     readonly shippingRegion: string | null;
+    readonly lineItems: ({
+        readonly edges: ReadonlyArray<({
+            readonly node: ({
+                readonly artwork: ({
+                    readonly shippingOrigin: string | null;
+                }) | null;
+            }) | null;
+        }) | null> | null;
+    }) | null;
     readonly creditCard: ({
         readonly brand: string;
         readonly last_digits: string;
@@ -23,7 +32,22 @@ export type ShippingAndPaymentDetails_order = {
 
 
 
-const node: ConcreteFragment = {
+const node: ConcreteFragment = (function(){
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
+},
+v1 = {
+  "kind": "ScalarField",
+  "alias": "__id",
+  "name": "id",
+  "args": null,
+  "storageKey": null
+};
+return {
   "kind": "Fragment",
   "name": "ShippingAndPaymentDetails_order",
   "type": "Order",
@@ -82,6 +106,59 @@ const node: ConcreteFragment = {
     {
       "kind": "LinkedField",
       "alias": null,
+      "name": "lineItems",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "OrderLineItemConnection",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "edges",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "OrderLineItemEdge",
+          "plural": true,
+          "selections": [
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "node",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "OrderLineItem",
+              "plural": false,
+              "selections": [
+                {
+                  "kind": "LinkedField",
+                  "alias": null,
+                  "name": "artwork",
+                  "storageKey": null,
+                  "args": null,
+                  "concreteType": "Artwork",
+                  "plural": false,
+                  "selections": [
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "shippingOrigin",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    v0
+                  ]
+                },
+                v1
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
       "name": "creditCard",
       "storageKey": null,
       "args": null,
@@ -116,23 +193,12 @@ const node: ConcreteFragment = {
           "args": null,
           "storageKey": null
         },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "__id",
-          "args": null,
-          "storageKey": null
-        }
+        v0
       ]
     },
-    {
-      "kind": "ScalarField",
-      "alias": "__id",
-      "name": "id",
-      "args": null,
-      "storageKey": null
-    }
+    v1
   ]
 };
-(node as any).hash = '244c767cb9600a1f938ccddda84018f1';
+})();
+(node as any).hash = '868ebbbec1e0bda85945e5794a51b160';
 export default node;

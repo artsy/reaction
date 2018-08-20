@@ -45,6 +45,7 @@ export const ShippingAndPaymentDetails: React.SFC<
   order: {
     fulfillmentType,
     creditCard: { brand, last_digits, expiration_year, expiration_month },
+    lineItems,
     ...addressProps
   },
   ...others
@@ -54,7 +55,7 @@ export const ShippingAndPaymentDetails: React.SFC<
       {fulfillmentType === "PICKUP" ? (
         <>
           <Serif size="3" weight="semibold" color="black100">
-            Pick up
+            Pick up ({lineItems.edges[0].node.artwork.shippingOrigin})
           </Serif>
           <Serif size="3t" color="black100">
             You’ll be appointed an Artsy specialist within 2 business days to
@@ -96,6 +97,15 @@ export const ShippingAndPaymentDetailsFragmentContainer = createFragmentContaine
       shippingCity
       shippingPostalCode
       shippingRegion
+      lineItems {
+        edges {
+          node {
+            artwork {
+              shippingOrigin
+            }
+          }
+        }
+      }
       creditCard {
         brand
         last_digits
