@@ -40,6 +40,37 @@ storiesOf("Apps/Order Page/Components", module).add(
             />
           </Flex>
         </Section>
+        <Section title="Shipping and Payment details (pickup, visa)">
+          <Flex flexDirection="column" width={300}>
+            <ShippingAndPaymentDetails
+              order={{
+                ...order,
+                fulfillmentType: "PICKUP",
+              }}
+            />
+          </Flex>
+        </Section>
+        <Section title="Shipping and Payment details (review, visa)">
+          <Flex flexDirection="column" width={300}>
+            <ShippingAndPaymentDetails
+              onPaymentChange={() => alert("clicked")}
+              onShippingChange={() => alert("clicked")}
+              order={order}
+            />
+          </Flex>
+        </Section>
+        <Section title="Shipping and Payment details (review, pickup, visa)">
+          <Flex flexDirection="column" width={300}>
+            <ShippingAndPaymentDetails
+              onPaymentChange={() => alert("clicked")}
+              onShippingChange={() => alert("clicked")}
+              order={{
+                ...order,
+                fulfillmentType: "PICKUP",
+              }}
+            />
+          </Flex>
+        </Section>
         <Section title="Shipping and Payment details (visa)">
           <Flex flexDirection="column" width={300}>
             <ShippingAndPaymentDetails order={order} />
@@ -81,16 +112,6 @@ storiesOf("Apps/Order Page/Components", module).add(
               order={{
                 ...order,
                 creditCard: { ...order.creditCard, brand: "blasdijf22023" },
-              }}
-            />
-          </Flex>
-        </Section>
-        <Section title="Shipping and Payment details (pickup, visa)">
-          <Flex flexDirection="column" width={300}>
-            <ShippingAndPaymentDetails
-              order={{
-                ...order,
-                fulfillmentType: "PICKUP",
               }}
             />
           </Flex>
