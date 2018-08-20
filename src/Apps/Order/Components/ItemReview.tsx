@@ -4,7 +4,7 @@ import { Serif } from "@artsy/palette"
 import { ItemReview_artwork } from "__generated__/ItemReview_artwork.graphql"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
-import { StackableBorderBox } from "Styleguide/Elements/Box"
+import { BorderBox } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 
 interface ItemReviewProps {
@@ -34,7 +34,7 @@ export const ItemReview: React.SFC<ItemReviewProps> = ({
     },
   },
 }) => (
-  <StackableBorderBox>
+  <BorderBox>
     <Flex flexGrow={1} flexDirection="column">
       <Serif size="2" weight="semibold" color="black60">
         {artist_names}
@@ -62,7 +62,7 @@ export const ItemReview: React.SFC<ItemReviewProps> = ({
     <ImageBox>
       <img alt={`${title} by ${artist_names}`} src={url} />
     </ImageBox>
-  </StackableBorderBox>
+  </BorderBox>
 )
 
 export const ItemReviewFragmentContainer = createFragmentContainer(
