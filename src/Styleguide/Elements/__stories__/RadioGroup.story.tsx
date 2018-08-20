@@ -1,8 +1,8 @@
 import { Sans } from "@artsy/palette"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Radio } from "Styleguide/Elements/Radio"
-import { BorderedRadioGroup, RadioGroup } from "Styleguide/Elements/RadioGroup"
+import { BorderedRadio, Radio } from "Styleguide/Elements/Radio"
+import { RadioGroup } from "Styleguide/Elements/RadioGroup"
 import { Section } from "Styleguide/Utils/Section"
 
 storiesOf("Styleguide/Elements", module).add("RadioGroup", () => {
@@ -27,17 +27,17 @@ storiesOf("Styleguide/Elements", module).add("RadioGroup", () => {
         </RadioGroup>
       </Section>
       <Section title="Bordered RadioGroup">
-        <BorderedRadioGroup defaultValue="SHIP">
-          <Radio value="SHIP">Provide shipping address</Radio>
+        <RadioGroup defaultValue="SHIP">
+          <BorderedRadio value="SHIP">Provide shipping address</BorderedRadio>
 
-          <Radio value="PICKUP">
+          <BorderedRadio value="PICKUP">
             Arrange for pickup
             <Sans size="2" color="black60">
               After you place your order, you’ll be appointed an Artsy
               Specialist within 2 business days to handle pickup logistics.
             </Sans>
-          </Radio>
-        </BorderedRadioGroup>
+          </BorderedRadio>
+        </RadioGroup>
       </Section>
     </>
   )
