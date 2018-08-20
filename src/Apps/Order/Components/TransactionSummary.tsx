@@ -1,4 +1,4 @@
-import { Serif } from "@artsy/palette"
+import { Serif, space } from "@artsy/palette"
 import { TransactionSummary_order } from "__generated__/TransactionSummary_order.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -31,6 +31,12 @@ export const TransactionSummary: React.SFC<TransactionSummaryProps> = ({
       resized_transactionSummary: { url: imageURL },
     },
   } = lineItems.edges[0].node.artwork
+  const truncateTextStyle = {
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    width: "100%",
+  } as any
 
   return (
     <Flex flexDirection="column" {...others}>
@@ -38,11 +44,24 @@ export const TransactionSummary: React.SFC<TransactionSummaryProps> = ({
         <Box height="auto">
           <Image src={imageURL} width="55px" mr={1} />
         </Box>
-        <Flex flexDirection="column">
-          <Serif size="2" weight="semibold" color="black60">
+        <Flex
+          flexDirection="column"
+          style={{ width: `calc(100% - 55px - ${space(1)}px)` }} // 55px for Image above, plus 1 for its mr.
+        >
+          <Serif
+            size="2"
+            weight="semibold"
+            color="black60"
+            style={truncateTextStyle}
+          >
             {artist_names}
           </Serif>
-          <div style={{ lineHeight: "1" }}>
+          <div
+            style={{
+              lineHeight: "1",
+              ...truncateTextStyle,
+            }}
+          >
             <Serif italic size="2" color="black60" display="inline">
               {title}
             </Serif>
@@ -50,7 +69,7 @@ export const TransactionSummary: React.SFC<TransactionSummaryProps> = ({
               {date && `, ${date}`}
             </Serif>
           </div>
-          <Serif size="2" color="black60">
+          <Serif size="2" color="black60" style={truncateTextStyle}>
             {name}
           </Serif>
           <Serif size="2" color="black60">

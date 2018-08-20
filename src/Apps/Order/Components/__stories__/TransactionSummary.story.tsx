@@ -4,9 +4,29 @@ import { storiesOf } from "storybook/storiesOf"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Section } from "Styleguide/Utils/Section"
 
-storiesOf("Apps/Order Page/Components", module).add(
-  "TransactionSummary",
-  () => {
+const makeLineItem = ({ artistName, artworkTitle }) => ({
+  edges: [
+    {
+      node: {
+        artwork: {
+          artist_names: artistName,
+          title: artworkTitle,
+          date: "2018",
+          shippingOrigin: "New York, NY",
+          image: {
+            resized_transactionSummary: {
+              url:
+                "https://d32dm0rphc51dk.cloudfront.net/SCShf97jlpFZpDBJUBqntg/small.jpg",
+            },
+          },
+        },
+      },
+    },
+  ],
+})
+
+storiesOf("Apps/Order Page/Components", module)
+  .add("TransactionSummary", () => {
     return (
       <Section title="Transaction Summary">
         <Flex width={280} flexDirection="column">
@@ -17,26 +37,10 @@ storiesOf("Apps/Order Page/Components", module).add(
               shippingTotal: "£132.32",
               taxTotal: "£232.23",
               buyerTotal: "£1,200,823.33",
-              lineItems: {
-                edges: [
-                  {
-                    node: {
-                      artwork: {
-                        artist_names: "Francesca DiMattio",
-                        title: "The Fox and the Hound",
-                        date: "2018",
-                        shippingOrigin: "New York, NY",
-                        image: {
-                          resized_transactionSummary: {
-                            url:
-                              "https://d32dm0rphc51dk.cloudfront.net/SCShf97jlpFZpDBJUBqntg/small.jpg",
-                          },
-                        },
-                      },
-                    },
-                  },
-                ],
-              },
+              lineItems: makeLineItem({
+                artistName: "Francesca DiMattio",
+                artworkTitle: "The Fox",
+              }) as any,
               partner: {
                 name: "Salon 94",
               },
@@ -45,5 +49,26 @@ storiesOf("Apps/Order Page/Components", module).add(
         </Flex>
       </Section>
     )
-  }
-)
+  })
+  .add("TransactionSummary (with long titles)", () => (
+    <Section title="Transaction Summary">
+      <Flex width={280} flexDirection="column">
+        <TransactionSummary
+          order={{
+            " $refType": null,
+            itemsTotal: "£3,024.89",
+            shippingTotal: "£132.32",
+            taxTotal: "£232.23",
+            buyerTotal: "£1,200,823.33",
+            lineItems: makeLineItem({
+              artistName: "Francesca DiMattio and Orta Theroxicus",
+              artworkTitle: "Some quite long title you know how artists can be",
+            }) as any,
+            partner: {
+              name: "Salon Nineteen Eighty Four and Three Quarters",
+            },
+          }}
+        />
+      </Flex>
+    </Section>
+  ))
