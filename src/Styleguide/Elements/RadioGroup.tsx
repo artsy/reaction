@@ -22,7 +22,7 @@ export class RadioGroup extends React.Component<
     selectedOption: this.props.defaultValue || null,
   }
 
-  onSelect = ({ selected, value }) => {
+  onSelect = ({ value }) => {
     if (this.props.onSelect) {
       this.props.onSelect(value)
     }
