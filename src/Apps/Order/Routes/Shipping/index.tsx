@@ -1,5 +1,6 @@
 import { Sans } from "@artsy/palette"
 import { Shipping_order } from "__generated__/Shipping_order.graphql"
+import { Router } from "found"
 import React, { Component } from "react"
 import {
   commitMutation,
@@ -30,6 +31,7 @@ export interface ShippingProps {
     trigger: (action: string, config: object) => void
   }
   relay?: RelayProp
+  router: Router
 }
 
 // TODO: When the todo for abstracting the address is done and we have an Address component, we won't need this here, so the wonky state generic on ShippingRoute is fine for now.
@@ -45,6 +47,7 @@ export interface Address {
 
 export interface ShippingState {
   shippingOption: string
+  isComittingMutation: boolean
 }
 
 export class ShippingRoute extends Component<
@@ -55,6 +58,7 @@ export class ShippingRoute extends Component<
   // See: https://artsyproduct.atlassian.net/browse/PURCHASE-376
   state = {
     shippingOption: "SHIP",
+    isComittingMutation: false,
   } as ShippingState & Address
 
   // TODO: This can be handled with Formik.
@@ -69,34 +73,40 @@ export class ShippingRoute extends Component<
 
   onContinueButtonPressed = () => {
     if (this.props.relay && this.props.relay.environment) {
-      commitMutation(this.props.relay.environment, {
-        mutation: graphql`
-          mutation ShippingOrderAddressUpdateMutation(
-            $input: SetOrderShippingInput!
-          ) {
-            setOrderShipping(input: $input) {
-              result {
-                order {
-                  state
+      // We don't strictly need to wait for the state to be set, but it makes it easier to test.
+      this.setState({ isComittingMutation: true }, () =>
+        commitMutation(this.props.relay.environment, {
+          mutation: graphql`
+            mutation ShippingOrderAddressUpdateMutation(
+              $input: SetOrderShippingInput!
+            ) {
+              setOrderShipping(input: $input) {
+                result {
+                  order {
+                    state
+                  }
                 }
               }
             }
-          }
-        `,
-        variables: {
-          input: {
-            orderId: this.props.order.id,
-            fulfillmentType: this.state.shippingOption,
-            shippingName: this.state.name || "",
-            shippingAddressLine1: this.state.addressLine1 || "",
-            shippingAddressLine2: this.state.addressLine2 || "",
-            shippingCity: this.state.city || "",
-            shippingRegion: this.state.region || "",
-            shippingCountry: this.state.country || "",
-            shippingPostalCode: this.state.postalCode || "",
+          `,
+          variables: {
+            input: {
+              orderId: this.props.order.id,
+              fulfillmentType: this.state.shippingOption,
+              shippingName: this.state.name || "",
+              shippingAddressLine1: this.state.addressLine1 || "",
+              shippingAddressLine2: this.state.addressLine2 || "",
+              shippingCity: this.state.city || "",
+              shippingRegion: this.state.region || "",
+              shippingCountry: this.state.country || "",
+              shippingPostalCode: this.state.postalCode || "",
+            },
           },
-        },
-      })
+          onCompleted: () =>
+            // Note: We are only waiting for _a_ response and are not yet handling errors.
+            this.props.router.push(`/order2/${this.props.order.id}/payment`),
+        })
+      )
     }
   }
 
@@ -158,6 +168,7 @@ export class ShippingRoute extends Component<
                   {!xs && (
                     <Button
                       onClick={this.onContinueButtonPressed}
+                      loading={this.state.isComittingMutation}
                       size="large"
                       width="100%"
                     >
@@ -177,6 +188,7 @@ export class ShippingRoute extends Component<
                       <Spacer mb={3} />
                       <Button
                         onClick={this.onContinueButtonPressed}
+                        loading={this.state.isComittingMutation}
                         size="large"
                         width="100%"
                       >

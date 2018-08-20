@@ -32,7 +32,8 @@ describe("Shipping", () => {
       relay: {
         environment: {},
       } as RelayProp,
-    }
+      router: { push: jest.fn() },
+    } as any
   })
 
   it("commits the mutation with the orderId", () => {
@@ -77,5 +78,37 @@ describe("Shipping", () => {
     component.find(Button).simulate("click")
 
     expect.hasAssertions()
+  })
+
+  describe("mutation", () => {
+    it("routes to payment screen after mutation completes", () => {
+      const component = getWrapper(props)
+      const mockCommitMutation = commitMutation as jest.Mock<any>
+      mockCommitMutation.mockImplementationOnce(
+        (_environment, { onCompleted }) => {
+          onCompleted()
+        }
+      )
+
+      component.find(Button).simulate("click")
+
+      expect(props.router.push).toHaveBeenCalledWith("/order2/1234/payment")
+    })
+
+    it("shows the button spinner while loading the mutation", () => {
+      const component = getWrapper(props)
+      const mockCommitMutation = commitMutation as jest.Mock<any>
+      mockCommitMutation.mockImplementationOnce(() => {
+        const buttonProps = component
+          .update() // We need to wait for the component to re-render
+          .find(Button)
+          .props() as any
+        expect(buttonProps.loading).toBeTruthy()
+      })
+
+      component.find(Button).simulate("click")
+
+      expect.hasAssertions()
+    })
   })
 })
