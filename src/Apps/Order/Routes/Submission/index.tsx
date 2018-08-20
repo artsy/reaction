@@ -7,9 +7,9 @@ import { Flex } from "Styleguide/Elements/Flex"
 import { Join } from "Styleguide/Elements/Join"
 import { Message } from "Styleguide/Elements/Message"
 import { Spacer } from "Styleguide/Elements/Spacer"
-import { Placeholder } from "Styleguide/Utils/Placeholder"
 import { Responsive } from "Utils/Responsive"
 import { Helper } from "../../Components/Helper"
+import { ShippingAndPaymentDetailsFragmentContainer as ShippingAndPaymentDetails } from "../../Components/ShippingAndPaymentDetails"
 import { TransactionSummaryFragmentContainer as TransactionSummary } from "../../Components/TransactionSummary"
 
 export interface SubmissionProps {
@@ -50,11 +50,7 @@ export class SubmissionRoute extends Component<SubmissionProps> {
             }
             Sidebar={
               <Flex flexDirection="column">
-                <Placeholder
-                  height="180px"
-                  name="Shipping and payment details"
-                  mb={xs ? 2 : 3}
-                />
+                <ShippingAndPaymentDetails order={order} mb={xs ? 2 : 3} />
                 <Helper artworkId={order.lineItems.edges[0].node.artwork.id} />
               </Flex>
             }
@@ -72,6 +68,7 @@ export const SubmissionFragmentContainer = createFragmentContainer(
       id
       code
       ...TransactionSummary_order
+      ...ShippingAndPaymentDetails_order
       lineItems {
         edges {
           node {
