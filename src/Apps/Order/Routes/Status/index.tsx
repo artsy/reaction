@@ -9,7 +9,7 @@ import { Message } from "Styleguide/Elements/Message"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Responsive } from "Utils/Responsive"
 import { Helper } from "../../Components/Helper"
-import { ShippingAndPaymentDetailsFragmentContainer as ShippingAndPaymentDetails } from "../../Components/ShippingAndPaymentDetails"
+import { ShippingAndPaymentSummaryFragmentContainer as ShippingAndPaymentSummary } from "../../Components/ShippingAndPaymentDetails"
 import { TransactionSummaryFragmentContainer as TransactionSummary } from "../../Components/TransactionSummary"
 
 export interface StatusProps {
@@ -50,7 +50,7 @@ export class StatusRoute extends Component<StatusProps> {
             }
             Sidebar={
               <Flex flexDirection="column">
-                <ShippingAndPaymentDetails order={order} mb={xs ? 2 : 3} />
+                <ShippingAndPaymentSummary order={order} mb={xs ? 2 : 3} />
                 <Helper artworkId={order.lineItems.edges[0].node.artwork.id} />
               </Flex>
             }
