@@ -1,4 +1,4 @@
-import { Serif, space } from "@artsy/palette"
+import { Serif } from "@artsy/palette"
 import { TransactionSummary_order } from "__generated__/TransactionSummary_order.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -35,7 +35,6 @@ export const TransactionSummary: React.SFC<TransactionSummaryProps> = ({
     whiteSpace: "nowrap",
     overflow: "hidden",
     textOverflow: "ellipsis",
-    width: "100%",
   } as any
 
   return (
@@ -44,10 +43,7 @@ export const TransactionSummary: React.SFC<TransactionSummaryProps> = ({
         <Box height="auto">
           <Image src={imageURL} width="55px" mr={1} />
         </Box>
-        <Flex
-          flexDirection="column"
-          style={{ width: `calc(100% - 55px - ${space(1)}px)` }} // 55px for Image above, plus 1 for its mr.
-        >
+        <Flex flexDirection="column" style={{ overflow: "hidden" }}>
           <Serif
             size="2"
             weight="semibold"
