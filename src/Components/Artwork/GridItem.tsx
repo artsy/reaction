@@ -150,7 +150,10 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
                   <Image src={this.getImageUrl(breakpoints)} />
                 </a>
                 {hasBuyNowLabFeature && this.renderArtworkBadge(artwork)}
-                {hover && (
+                {/* The undefined check is a fallback for Force code that uses
+                    Reaction code without wrapping the tree in a Responsive
+                    provider component. */}
+                {(hover === undefined || hover) && (
                   <SaveButtonBlock
                     className="artwork-save"
                     artwork={artwork}
