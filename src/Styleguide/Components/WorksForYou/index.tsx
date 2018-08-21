@@ -7,11 +7,17 @@ import WorksForYouContent from "./WorksForYouContents"
 
 export interface Props extends ContextProps {
   artistID?: string
+  forSale?: boolean
 }
 
 class WorksForYou extends React.Component<Props> {
+  static defaultProps = {
+    forSale: true,
+  }
   render() {
-    const { relayEnvironment, artistID } = this.props
+    const { relayEnvironment, artistID, forSale } = this.props
+    const includeSelectedArtist = !!artistID
+    const filter = forSale ? ["IS_FOR_SALE"] : null
     return (
       <QueryRenderer
         environment={relayEnvironment}
@@ -19,18 +25,21 @@ class WorksForYou extends React.Component<Props> {
           query WorksForYouQuery(
             $includeSelectedArtist: Boolean!
             $artistID: String!
+            $forSale: Boolean
+            $filter: [ArtistArtworksFilters]
           ) {
             viewer {
-              ...WorksForYouContents_viewer @skip(if: $includeSelectedArtist)
+              ...WorksForYouContents_viewer
+                @skip(if: $includeSelectedArtist)
+                @arguments(for_sale: $forSale)
               ...WorksForYouArtist_viewer
                 @include(if: $includeSelectedArtist)
-                @arguments(artistID: $artistID)
+                @arguments(artistID: $artistID, filter: $filter)
             }
           }
         `}
-        variables={{ artistID, includeSelectedArtist: !!artistID }}
+        variables={{ artistID, includeSelectedArtist, forSale, filter }}
         render={({ props }) => {
-          const includeSelectedArtist = !!this.props.artistID
           if (props) {
             if (includeSelectedArtist) {
               return (

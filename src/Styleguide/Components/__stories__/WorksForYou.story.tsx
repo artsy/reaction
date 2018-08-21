@@ -4,8 +4,8 @@ import { Contents as WorksForYouContent } from "Styleguide/Components/WorksForYo
 
 import { ContextProvider } from "Components/Artsy"
 
-storiesOf("Styleguide/Components/WorksForYou/Contents", module).add(
-  "WorksForYou - Root",
+storiesOf("Styleguide/Components/WorksForYou/Contents/Feed", module).add(
+  "For Sale",
   () => {
     return (
       <div>
@@ -17,13 +17,39 @@ storiesOf("Styleguide/Components/WorksForYou/Contents", module).add(
   }
 )
 
-storiesOf("Styleguide/Components/WorksForYou/Contents", module).add(
-  "WorksForYou - ArtistMode",
+storiesOf("Styleguide/Components/WorksForYou/Contents/Feed", module).add(
+  "All",
+  () => {
+    return (
+      <div>
+        <ContextProvider>
+          <WorksForYouContent forSale={false} artistID={""} />
+        </ContextProvider>
+      </div>
+    )
+  }
+)
+
+storiesOf("Styleguide/Components/WorksForYou/Contents/Artist", module).add(
+  "For Sale",
   () => {
     return (
       <div>
         <ContextProvider>
           <WorksForYouContent artistID={"pablo-picasso"} />
+        </ContextProvider>
+      </div>
+    )
+  }
+)
+
+storiesOf("Styleguide/Components/WorksForYou/Contents/Artist", module).add(
+  "All",
+  () => {
+    return (
+      <div>
+        <ContextProvider>
+          <WorksForYouContent forSale={false} artistID={"pablo-picasso"} />
         </ContextProvider>
       </div>
     )

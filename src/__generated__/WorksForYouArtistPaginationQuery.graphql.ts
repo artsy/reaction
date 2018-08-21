@@ -2,10 +2,12 @@
 
 import { ConcreteRequest } from "relay-runtime";
 import { WorksForYouArtist_viewer$ref } from "./WorksForYouArtist_viewer.graphql";
+export type ArtistArtworksFilters = "IS_FOR_SALE" | "IS_NOT_FOR_SALE" | "%future added value";
 export type WorksForYouArtistPaginationQueryVariables = {
     readonly artistID: string;
     readonly count: number;
     readonly cursor?: string | null;
+    readonly filter?: ReadonlyArray<ArtistArtworksFilters | null> | null;
 };
 export type WorksForYouArtistPaginationQueryResponse = {
     readonly viewer: ({
@@ -20,16 +22,17 @@ query WorksForYouArtistPaginationQuery(
   $artistID: String!
   $count: Int!
   $cursor: String
+  $filter: [ArtistArtworksFilters]
 ) {
   viewer {
-    ...WorksForYouArtist_viewer_4czAHX
+    ...WorksForYouArtist_viewer_VuLYe
   }
 }
 
-fragment WorksForYouArtist_viewer_4czAHX on Viewer {
+fragment WorksForYouArtist_viewer_VuLYe on Viewer {
   artist(id: $artistID) {
     name
-    artworks_connection(sort: published_at_desc, first: $count, after: $cursor) {
+    artworks_connection(sort: published_at_desc, first: $count, after: $cursor, filter: $filter) {
       pageInfo {
         hasNextPage
         endCursor
@@ -163,6 +166,12 @@ var v0 = [
     "name": "cursor",
     "type": "String",
     "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "filter",
+    "type": "[ArtistArtworksFilters]",
+    "defaultValue": null
   }
 ],
 v1 = {
@@ -206,7 +215,7 @@ return {
   "operationKind": "query",
   "name": "WorksForYouArtistPaginationQuery",
   "id": null,
-  "text": "query WorksForYouArtistPaginationQuery(\n  $artistID: String!\n  $count: Int!\n  $cursor: String\n) {\n  viewer {\n    ...WorksForYouArtist_viewer_4czAHX\n  }\n}\n\nfragment WorksForYouArtist_viewer_4czAHX on Viewer {\n  artist(id: $artistID) {\n    name\n    artworks_connection(sort: published_at_desc, first: $count, after: $cursor) {\n      pageInfo {\n        hasNextPage\n        endCursor\n      }\n      ...ArtworkGrid_artworks\n      edges {\n        node {\n          __id\n          __typename\n        }\n        cursor\n      }\n    }\n    __id\n  }\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  is_biddable\n  is_acquireable\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
+  "text": "query WorksForYouArtistPaginationQuery(\n  $artistID: String!\n  $count: Int!\n  $cursor: String\n  $filter: [ArtistArtworksFilters]\n) {\n  viewer {\n    ...WorksForYouArtist_viewer_VuLYe\n  }\n}\n\nfragment WorksForYouArtist_viewer_VuLYe on Viewer {\n  artist(id: $artistID) {\n    name\n    artworks_connection(sort: published_at_desc, first: $count, after: $cursor, filter: $filter) {\n      pageInfo {\n        hasNextPage\n        endCursor\n      }\n      ...ArtworkGrid_artworks\n      edges {\n        node {\n          __id\n          __typename\n        }\n        cursor\n      }\n    }\n    __id\n  }\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  is_biddable\n  is_acquireable\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -244,6 +253,12 @@ return {
                 "kind": "Variable",
                 "name": "cursor",
                 "variableName": "cursor",
+                "type": null
+              },
+              {
+                "kind": "Variable",
+                "name": "filter",
+                "variableName": "filter",
                 "type": null
               }
             ]
@@ -294,6 +309,12 @@ return {
                     "name": "after",
                     "variableName": "cursor",
                     "type": "String"
+                  },
+                  {
+                    "kind": "Variable",
+                    "name": "filter",
+                    "variableName": "filter",
+                    "type": "[ArtistArtworksFilters]"
                   },
                   {
                     "kind": "Variable",
@@ -641,6 +662,12 @@ return {
                   },
                   {
                     "kind": "Variable",
+                    "name": "filter",
+                    "variableName": "filter",
+                    "type": "[ArtistArtworksFilters]"
+                  },
+                  {
+                    "kind": "Variable",
                     "name": "first",
                     "variableName": "count",
                     "type": "Int"
@@ -655,7 +682,8 @@ return {
                 "handle": "connection",
                 "key": "WorksForYouArtist_artworks_connection",
                 "filters": [
-                  "sort"
+                  "sort",
+                  "filter"
                 ]
               },
               v3
@@ -676,5 +704,5 @@ return {
   }
 };
 })();
-(node as any).hash = '181b616232de00191839f0bad3dbd133';
+(node as any).hash = '93c49ee12fe3d42e24ae2fa90e133bc5';
 export default node;

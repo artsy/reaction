@@ -2642,7 +2642,7 @@ type FollowGenePayload {
 
 type FollowsAndSaves {
   # A list of published artworks by followed artists (grouped by date and artists).
-  bundledArtworksByArtist(sort: ArtworkSorts, after: String, first: Int, before: String, last: Int): FollowedArtistsArtworksGroupConnection
+  bundledArtworksByArtist(sort: ArtworkSorts, for_sale: Boolean, after: String, first: Int, before: String, last: Int): FollowedArtistsArtworksGroupConnection
 }
 
 enum Format {

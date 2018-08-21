@@ -68,6 +68,12 @@ return {
       "name": "cursor",
       "type": "String",
       "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "for_sale",
+      "type": "Boolean",
+      "defaultValue": true
     }
   ],
   "selections": [
@@ -93,8 +99,14 @@ return {
               "kind": "LinkedField",
               "alias": "notifications",
               "name": "__WorksForYou_notifications_connection",
-              "storageKey": "__WorksForYou_notifications_connection(sort:\"PUBLISHED_AT_DESC\")",
+              "storageKey": null,
               "args": [
+                {
+                  "kind": "Variable",
+                  "name": "for_sale",
+                  "variableName": "for_sale",
+                  "type": "Boolean"
+                },
                 {
                   "kind": "Literal",
                   "name": "sort",
@@ -207,5 +219,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '70a43775f36bd66126320b6ded7bc13c';
+(node as any).hash = 'a65628f7681647d63ee306b255706746';
 export default node;
