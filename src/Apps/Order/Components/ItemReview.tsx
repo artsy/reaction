@@ -34,7 +34,7 @@ export const ItemReview: React.SFC<ItemReviewProps> = ({
     },
   },
 }) => (
-  <BorderBox>
+  <BorderBox p={[2, 3]}>
     <Flex flexGrow={1} flexDirection="column">
       <Serif size="2" weight="semibold" color="black60">
         {artist_names}

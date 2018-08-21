@@ -66,9 +66,11 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                     <Placeholder height="68px" name="Step summary item" />
                     <Placeholder height="68px" name="Step summary item" />
 
-                    <ItemReview
-                      artwork={order.lineItems.edges[0].node.artwork}
-                    />
+                    {!xs && (
+                      <ItemReview
+                        artwork={order.lineItems.edges[0].node.artwork}
+                      />
+                    )}
 
                     {!xs && (
                       <Flex justifyContent="center">
