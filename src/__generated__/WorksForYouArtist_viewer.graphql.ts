@@ -68,6 +68,14 @@ return {
       "name": "artistID",
       "type": "String!",
       "defaultValue": ""
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "filter",
+      "type": "[ArtistArtworksFilters]",
+      "defaultValue": [
+        "IS_FOR_SALE"
+      ]
     }
   ],
   "selections": [
@@ -98,8 +106,14 @@ return {
           "kind": "LinkedField",
           "alias": "artworks_connection",
           "name": "__WorksForYouArtist_artworks_connection_connection",
-          "storageKey": "__WorksForYouArtist_artworks_connection_connection(sort:\"published_at_desc\")",
+          "storageKey": null,
           "args": [
+            {
+              "kind": "Variable",
+              "name": "filter",
+              "variableName": "filter",
+              "type": "[ArtistArtworksFilters]"
+            },
             {
               "kind": "Literal",
               "name": "sort",
@@ -185,5 +199,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '85f02180e227f0325962ff763568ce5c';
+(node as any).hash = 'c9c5bf19aee2ee03dc0e3926ec290ef3';
 export default node;

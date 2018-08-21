@@ -61,6 +61,10 @@ export default createPaginationContainer(
           count: { type: "Int", defaultValue: 10 }
           cursor: { type: "String" }
           artistID: { type: "String!", defaultValue: "" }
+          filter: {
+            type: "[ArtistArtworksFilters]"
+            defaultValue: [IS_FOR_SALE]
+          }
         ) {
         artist(id: $artistID) {
           name
@@ -68,6 +72,7 @@ export default createPaginationContainer(
             sort: published_at_desc
             first: $count
             after: $cursor
+            filter: $filter
           ) @connection(key: "WorksForYouArtist_artworks_connection") {
             pageInfo {
               hasNextPage
@@ -109,10 +114,16 @@ export default createPaginationContainer(
         $artistID: String!
         $count: Int!
         $cursor: String
+        $filter: [ArtistArtworksFilters]
       ) {
         viewer {
           ...WorksForYouArtist_viewer
-            @arguments(artistID: $artistID, count: $count, cursor: $cursor)
+            @arguments(
+              artistID: $artistID
+              count: $count
+              cursor: $cursor
+              filter: $filter
+            )
         }
       }
     `,

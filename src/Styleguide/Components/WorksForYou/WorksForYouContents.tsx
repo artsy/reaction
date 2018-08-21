@@ -97,6 +97,7 @@ export default createPaginationContainer(
         @argumentDefinitions(
           count: { type: "Int", defaultValue: 10 }
           cursor: { type: "String" }
+          for_sale: { type: "Boolean", defaultValue: true }
         ) {
         me {
           followsAndSaves {
@@ -104,6 +105,7 @@ export default createPaginationContainer(
               sort: PUBLISHED_AT_DESC
               first: $count
               after: $cursor
+              for_sale: $for_sale
             ) @connection(key: "WorksForYou_notifications") {
               pageInfo {
                 hasNextPage
