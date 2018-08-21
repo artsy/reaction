@@ -177,6 +177,7 @@ type Artist implements Node {
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
+    inquireable: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -447,6 +448,7 @@ type ArtistItem implements Node {
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
+    inquireable: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -744,6 +746,10 @@ type Artwork implements Node & Sellable {
   title: String
   to_s: String
   website: String
+  framed: ArtworkInfoRow
+  signatureInfo: ArtworkInfoRow
+  conditionDescription: ArtworkInfoRow
+  certificateOfAuthenticity: ArtworkInfoRow
   cached: Int
 }
 
@@ -1160,6 +1166,7 @@ type ArtworkFilterGene implements Node {
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
+    inquireable: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -1212,6 +1219,7 @@ type ArtworkFilterTag implements Node {
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
+    inquireable: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -1233,6 +1241,14 @@ type ArtworkFilterTag implements Node {
     tag_id: String
     keyword: String
   ): FilterArtworks
+}
+
+type ArtworkInfoRow {
+  # Label for information row
+  label: String
+
+  # Additional details about given attribute
+  details: String
 }
 
 # An inquiry on an Artwork
@@ -1383,6 +1399,10 @@ type ArtworkItem implements Node & Sellable {
   title: String
   to_s: String
   website: String
+  framed: ArtworkInfoRow
+  signatureInfo: ArtworkInfoRow
+  conditionDescription: ArtworkInfoRow
+  certificateOfAuthenticity: ArtworkInfoRow
   cached: Int
 }
 
@@ -2575,6 +2595,7 @@ type FollowArtists {
 type FollowedArtistsArtworksGroup implements Node {
   # A globally unique ID.
   __id: ID!
+  href: String
 
   # List of artworks in this group.
   artworks: [Artwork]
@@ -2582,6 +2603,13 @@ type FollowedArtistsArtworksGroup implements Node {
   artists: String
   summary: String
   image: Image
+  published_at(
+    convert_to_utc: Boolean
+    format: String
+
+    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    timezone: String
+  ): String
 }
 
 # A connection to a list of items.
@@ -2710,6 +2738,7 @@ type Gene implements Node {
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
+    inquireable: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -2751,6 +2780,7 @@ type Gene implements Node {
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
+    inquireable: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -2879,6 +2909,7 @@ type GeneItem implements Node {
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
+    inquireable: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -2920,6 +2951,7 @@ type GeneItem implements Node {
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
+    inquireable: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -3356,6 +3388,7 @@ type HomePageModuleContextGene implements Node {
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
+    inquireable: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -3397,6 +3430,7 @@ type HomePageModuleContextGene implements Node {
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
+    inquireable: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -4937,6 +4971,7 @@ type Query {
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
+    inquireable: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -6022,6 +6057,7 @@ type Tag implements Node {
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
+    inquireable: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -6405,6 +6441,7 @@ type Viewer {
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
+    inquireable: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]

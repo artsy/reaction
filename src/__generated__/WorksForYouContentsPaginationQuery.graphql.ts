@@ -35,8 +35,10 @@ fragment WorksForYouContents_viewer_1G22uz on Viewer {
         edges {
           node {
             __id
+            href
             summary
             artists
+            published_at(format: "MMM DD")
             artworksConnection {
               ...ArtworkGrid_artworks
             }
@@ -169,7 +171,14 @@ v1 = {
   "args": null,
   "storageKey": null
 },
-v2 = [
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "href",
+  "args": null,
+  "storageKey": null
+},
+v3 = [
   {
     "kind": "Literal",
     "name": "shallow",
@@ -177,13 +186,6 @@ v2 = [
     "type": "Boolean"
   }
 ],
-v3 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "href",
-  "args": null,
-  "storageKey": null
-},
 v4 = {
   "kind": "ScalarField",
   "alias": null,
@@ -203,7 +205,7 @@ return {
   "operationKind": "query",
   "name": "WorksForYouContentsPaginationQuery",
   "id": null,
-  "text": "query WorksForYouContentsPaginationQuery(\n  $count: Int!\n  $cursor: String\n) {\n  viewer {\n    ...WorksForYouContents_viewer_1G22uz\n  }\n}\n\nfragment WorksForYouContents_viewer_1G22uz on Viewer {\n  me {\n    followsAndSaves {\n      notifications: bundledArtworksByArtist(sort: PUBLISHED_AT_DESC, first: $count, after: $cursor, for_sale: true) {\n        pageInfo {\n          hasNextPage\n          endCursor\n        }\n        edges {\n          node {\n            __id\n            summary\n            artists\n            artworksConnection {\n              ...ArtworkGrid_artworks\n            }\n            __typename\n          }\n          cursor\n        }\n      }\n    }\n    __id\n  }\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  is_biddable\n  is_acquireable\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
+  "text": "query WorksForYouContentsPaginationQuery(\n  $count: Int!\n  $cursor: String\n) {\n  viewer {\n    ...WorksForYouContents_viewer_1G22uz\n  }\n}\n\nfragment WorksForYouContents_viewer_1G22uz on Viewer {\n  me {\n    followsAndSaves {\n      notifications: bundledArtworksByArtist(sort: PUBLISHED_AT_DESC, first: $count, after: $cursor, for_sale: true) {\n        pageInfo {\n          hasNextPage\n          endCursor\n        }\n        edges {\n          node {\n            __id\n            href\n            summary\n            artists\n            published_at(format: \"MMM DD\")\n            artworksConnection {\n              ...ArtworkGrid_artworks\n            }\n            __typename\n          }\n          cursor\n        }\n      }\n    }\n    __id\n  }\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  is_biddable\n  is_acquireable\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -353,6 +355,7 @@ return {
                             "plural": false,
                             "selections": [
                               v1,
+                              v2,
                               {
                                 "kind": "ScalarField",
                                 "alias": null,
@@ -366,6 +369,20 @@ return {
                                 "name": "artists",
                                 "args": null,
                                 "storageKey": null
+                              },
+                              {
+                                "kind": "ScalarField",
+                                "alias": null,
+                                "name": "published_at",
+                                "args": [
+                                  {
+                                    "kind": "Literal",
+                                    "name": "format",
+                                    "value": "MMM DD",
+                                    "type": "String"
+                                  }
+                                ],
+                                "storageKey": "published_at(format:\"MMM DD\")"
                               },
                               {
                                 "kind": "LinkedField",
@@ -399,12 +416,12 @@ return {
                                             "alias": null,
                                             "name": "artists",
                                             "storageKey": "artists(shallow:true)",
-                                            "args": v2,
+                                            "args": v3,
                                             "concreteType": "Artist",
                                             "plural": true,
                                             "selections": [
                                               v1,
-                                              v3,
+                                              v2,
                                               v4
                                             ]
                                           },
@@ -423,7 +440,7 @@ return {
                                             "args": null,
                                             "storageKey": null
                                           },
-                                          v3,
+                                          v2,
                                           {
                                             "kind": "ScalarField",
                                             "alias": null,
@@ -503,12 +520,12 @@ return {
                                             "alias": null,
                                             "name": "partner",
                                             "storageKey": "partner(shallow:true)",
-                                            "args": v2,
+                                            "args": v3,
                                             "concreteType": "Partner",
                                             "plural": false,
                                             "selections": [
                                               v4,
-                                              v3,
+                                              v2,
                                               v1,
                                               {
                                                 "kind": "ScalarField",

@@ -7,6 +7,11 @@ export type WorksForYouArtist_viewer$ref = typeof _WorksForYouArtist_viewer$ref;
 export type WorksForYouArtist_viewer = {
     readonly artist: ({
         readonly name: string | null;
+        readonly href: string | null;
+        readonly counts: ({
+            readonly artworks: any | null;
+            readonly for_sale_artworks: any | null;
+        }) | null;
         readonly artworks_connection: ({
             readonly pageInfo: {
                 readonly hasNextPage: boolean;
@@ -101,6 +106,38 @@ return {
           "name": "name",
           "args": null,
           "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "href",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "counts",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "ArtistCounts",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "artworks",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "for_sale_artworks",
+              "args": null,
+              "storageKey": null
+            }
+          ]
         },
         {
           "kind": "LinkedField",
@@ -199,5 +236,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'c9c5bf19aee2ee03dc0e3926ec290ef3';
+(node as any).hash = '0ca3d030b86fb7295ffea5eb9af78941';
 export default node;

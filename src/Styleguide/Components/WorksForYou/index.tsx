@@ -46,6 +46,7 @@ class WorksForYou extends React.Component<Props> {
                 <WorksForYouArtist
                   artistID={this.props.artistID}
                   viewer={props.viewer}
+                  forSale={forSale}
                 />
               )
             } else {
