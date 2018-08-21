@@ -15,8 +15,10 @@ export type WorksForYouContents_viewer = {
                 readonly edges: ReadonlyArray<({
                     readonly node: ({
                         readonly __id: string;
+                        readonly href: string | null;
                         readonly summary: string | null;
                         readonly artists: string | null;
+                        readonly published_at: string | null;
                         readonly artworksConnection: ({
                             readonly " $fragmentRefs": ArtworkGrid_artworks$ref;
                         }) | null;
@@ -164,6 +166,13 @@ return {
                         {
                           "kind": "ScalarField",
                           "alias": null,
+                          "name": "href",
+                          "args": null,
+                          "storageKey": null
+                        },
+                        {
+                          "kind": "ScalarField",
+                          "alias": null,
                           "name": "summary",
                           "args": null,
                           "storageKey": null
@@ -174,6 +183,20 @@ return {
                           "name": "artists",
                           "args": null,
                           "storageKey": null
+                        },
+                        {
+                          "kind": "ScalarField",
+                          "alias": null,
+                          "name": "published_at",
+                          "args": [
+                            {
+                              "kind": "Literal",
+                              "name": "format",
+                              "value": "MMM DD",
+                              "type": "String"
+                            }
+                          ],
+                          "storageKey": "published_at(format:\"MMM DD\")"
                         },
                         {
                           "kind": "LinkedField",
@@ -219,5 +242,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'a65628f7681647d63ee306b255706746';
+(node as any).hash = '915429f878155840dbdece077eff8501';
 export default node;

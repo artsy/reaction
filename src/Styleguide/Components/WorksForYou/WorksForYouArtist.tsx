@@ -1,4 +1,6 @@
+import { Sans, Serif } from "@artsy/palette"
 import { WorksForYouArtist_viewer } from "__generated__/WorksForYouArtist_viewer.graphql"
+import { ChevronIcon } from "Assets/Icons/ChevronIcon"
 import ArtworkGrid from "Components/ArtworkGrid"
 import * as React from "react"
 import {
@@ -12,6 +14,7 @@ interface Props {
   relay?: RelayPaginationProp
   viewer: WorksForYouArtist_viewer
   artistID: string
+  forSale?: boolean
 }
 
 interface State {
@@ -41,13 +44,42 @@ export class WorksForYouArtist extends React.Component<Props, State> {
   }
 
   render() {
+    const { artist } = this.props.viewer
+    const { forSale } = this.props
     return (
-      <ArtworkGrid
-        artworks={this.props.viewer.artist.artworks_connection}
-        columnCount={4}
-        itemMargin={40}
-        onLoadMore={() => this.loadMoreArtworks()}
-      />
+      <div>
+        <hr />
+        <div style={{ padding: "32px 0px" }}>
+          <Sans
+            style={{ textDecoration: "none", textTransform: "uppercase" }}
+            weight="medium"
+            size={"2"}
+          >
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href={artist.href}
+            >
+              {artist.name}
+              <span style={{ position: "relative", top: "3px" }}>
+                <ChevronIcon width={16} height={16} />
+              </span>
+            </a>
+          </Sans>
+
+          <Serif style={{ color: "#666" }} size={"2"}>
+            {forSale
+              ? artist.counts.for_sale_artworks.toLocaleString()
+              : artist.counts.artworks.toLocaleString()}{" "}
+            works
+          </Serif>
+        </div>
+        <ArtworkGrid
+          artworks={artist.artworks_connection}
+          columnCount={4}
+          itemMargin={40}
+          onLoadMore={() => this.loadMoreArtworks()}
+        />
+      </div>
     )
   }
 }
@@ -68,6 +100,11 @@ export default createPaginationContainer(
         ) {
         artist(id: $artistID) {
           name
+          href
+          counts {
+            artworks
+            for_sale_artworks
+          }
           artworks_connection(
             sort: published_at_desc
             first: $count

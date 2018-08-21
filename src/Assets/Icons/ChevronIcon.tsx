@@ -14,14 +14,16 @@ interface IconProps {
 
   /** default is black10 */
   fill?: string
+  height?: number
+  width?: number
 }
 
-export const ChevronIcon = ({ direction, fill }: IconProps) => (
+export const ChevronIcon = ({ direction, fill, height, width }: IconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 12 12"
-    width="8px"
-    height="8px"
+    width={`${width || 8}px`}
+    height={`${height || 8}px`}
     transform={direction || Direction.RIGHT}
   >
     <path

@@ -1,4 +1,6 @@
+import { Sans, Serif } from "@artsy/palette"
 import { WorksForYouContents_viewer } from "__generated__/WorksForYouContents_viewer.graphql"
+import { ChevronIcon } from "Assets/Icons/ChevronIcon"
 import ArtworkGrid from "Components/ArtworkGrid"
 import * as React from "react"
 import ReactDOM from "react-dom"
@@ -73,8 +75,30 @@ export class WorksForYouContent extends React.Component<Props, State> {
             return (
               <div>
                 <hr />
-                <div>{node.artists}</div>
-                <div>{node.summary}</div>
+                <div style={{ padding: "32px 0px" }}>
+                  <Sans
+                    style={{
+                      textDecoration: "none",
+                      textTransform: "uppercase",
+                    }}
+                    weight="medium"
+                    size={"2"}
+                  >
+                    <a
+                      style={{ color: "black", textDecoration: "none" }}
+                      href={node.href}
+                    >
+                      {node.artists}
+                      <span style={{ position: "relative", top: "3px" }}>
+                        <ChevronIcon width={16} height={16} />
+                      </span>
+                    </a>
+                  </Sans>
+
+                  <Serif style={{ color: "#666" }} size={"2"}>
+                    {node.summary}, {node.published_at}
+                  </Serif>
+                </div>
                 <ArtworkGrid
                   artworks={node.artworksConnection}
                   columnCount={4}
@@ -114,8 +138,10 @@ export default createPaginationContainer(
               edges {
                 node {
                   __id
+                  href
                   summary
                   artists
+                  published_at(format: "MMM DD")
                   artworksConnection {
                     ...ArtworkGrid_artworks
                   }
