@@ -1,7 +1,7 @@
 import { mount } from "enzyme"
 import React from "react"
 
-import { IncompleteOrder } from "Apps/__test__/Fixtures/Order"
+import { UntouchedOrder } from "Apps/__test__/Fixtures/Order"
 import { TermsOfServiceCheckbox } from "Apps/Order/Components/TermsOfServiceCheckbox"
 import { Button } from "Styleguide/Elements/Button"
 import { Provider } from "unstated"
@@ -13,7 +13,7 @@ jest.mock("react-relay", () => ({
 
 const pushMock = jest.fn()
 const defaultProps = {
-  order: { ...IncompleteOrder, id: "1234" },
+  order: { ...UntouchedOrder, id: "1234" },
   router: {
     push: pushMock,
   },

@@ -67,29 +67,27 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                     <Placeholder height="68px" name="Step summary item" />
 
                     {!xs && (
-                      <ItemReview
-                        artwork={order.lineItems.edges[0].node.artwork}
-                      />
-                    )}
-
-                    {!xs && (
-                      <Flex justifyContent="center">
-                        <TermsOfServiceCheckbox
-                          onSelect={() => this.updateTermsCheckbox()}
-                          selected={termsCheckboxSelected}
+                      <>
+                        <ItemReview
+                          artwork={order.lineItems.edges[0].node.artwork}
                         />
-                      </Flex>
-                    )}
-
-                    {!xs && (
-                      <Button
-                        size="large"
-                        width="100%"
-                        disabled={!termsCheckboxSelected}
-                        onClick={() => this.onOrderSubmitted()}
-                      >
-                        Submit Order
-                      </Button>
+                        <Spacer mb={3} />
+                        <Flex justifyContent="center">
+                          <TermsOfServiceCheckbox
+                            onSelect={() => this.updateTermsCheckbox()}
+                            selected={termsCheckboxSelected}
+                          />
+                        </Flex>
+                        <Spacer mb={3} />
+                        <Button
+                          size="large"
+                          width="100%"
+                          disabled={!termsCheckboxSelected}
+                          onClick={() => this.onOrderSubmitted()}
+                        >
+                          Submit Order
+                        </Button>
+                      </>
                     )}
                   </Join>
                   <Spacer mb={3} />
@@ -98,19 +96,20 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
               Sidebar={
                 <Flex flexDirection="column">
                   <TransactionSummary order={order} mb={xs ? 2 : 3} />
-                  <Helper
-                    artworkId={order.lineItems.edges[0].node.artwork.id}
-                  />
+                  {!xs && (
+                    <Helper
+                      artworkId={order.lineItems.edges[0].node.artwork.id}
+                    />
+                  )}
                   {xs && (
                     <>
-                      <Spacer mb={3} />
                       <Flex justifyContent="center">
                         <TermsOfServiceCheckbox
                           onSelect={() => this.updateTermsCheckbox()}
                           selected={termsCheckboxSelected}
                         />
                       </Flex>
-                      <Spacer mb={3} />
+                      <Spacer mb={2} />
                       <Button
                         size="large"
                         width="100%"
@@ -119,6 +118,10 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                       >
                         Submit Order
                       </Button>
+                      <Spacer mb={2} />
+                      <Helper
+                        artworkId={order.lineItems.edges[0].node.artwork.id}
+                      />
                     </>
                   )}
                 </Flex>
