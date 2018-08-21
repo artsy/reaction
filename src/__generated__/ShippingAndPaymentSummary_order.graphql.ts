@@ -2,9 +2,9 @@
 
 import { ConcreteFragment } from "relay-runtime";
 export type OrderFulfillmentType = "PICKUP" | "SHIP" | "%future added value";
-declare const _ShippingAndPaymentDetails_order$ref: unique symbol;
-export type ShippingAndPaymentDetails_order$ref = typeof _ShippingAndPaymentDetails_order$ref;
-export type ShippingAndPaymentDetails_order = {
+declare const _ShippingAndPaymentSummary_order$ref: unique symbol;
+export type ShippingAndPaymentSummary_order$ref = typeof _ShippingAndPaymentSummary_order$ref;
+export type ShippingAndPaymentSummary_order = {
     readonly fulfillmentType: OrderFulfillmentType | null;
     readonly shippingName: string | null;
     readonly shippingAddressLine1: string | null;
@@ -27,7 +27,7 @@ export type ShippingAndPaymentDetails_order = {
         readonly expiration_year: number;
         readonly expiration_month: number;
     }) | null;
-    readonly " $refType": ShippingAndPaymentDetails_order$ref;
+    readonly " $refType": ShippingAndPaymentSummary_order$ref;
 };
 
 
@@ -49,7 +49,7 @@ v1 = {
 };
 return {
   "kind": "Fragment",
-  "name": "ShippingAndPaymentDetails_order",
+  "name": "ShippingAndPaymentSummary_order",
   "type": "Order",
   "metadata": null,
   "argumentDefinitions": [],
@@ -200,5 +200,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '868ebbbec1e0bda85945e5794a51b160';
+(node as any).hash = '09a03c5baef4447539a6133fab2c56dd';
 export default node;

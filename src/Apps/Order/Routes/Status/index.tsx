@@ -9,7 +9,7 @@ import { Message } from "Styleguide/Elements/Message"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Responsive } from "Utils/Responsive"
 import { Helper } from "../../Components/Helper"
-import { ShippingAndPaymentSummaryFragmentContainer as ShippingAndPaymentSummary } from "../../Components/ShippingAndPaymentDetails"
+import { ShippingAndPaymentSummaryFragmentContainer as ShippingAndPaymentSummary } from "../../Components/ShippingAndPaymentSummary"
 import { TransactionSummaryFragmentContainer as TransactionSummary } from "../../Components/TransactionSummary"
 
 export interface StatusProps {
@@ -68,7 +68,7 @@ export const StatusFragmentContainer = createFragmentContainer(
       id
       code
       ...TransactionSummary_order
-      ...ShippingAndPaymentDetails_order
+      ...ShippingAndPaymentSummary_order
       lineItems {
         edges {
           node {

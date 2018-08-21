@@ -1,15 +1,15 @@
-import { ShippingAndPaymentDetails_order } from "__generated__/ShippingAndPaymentDetails_order.graphql"
+import { ShippingAndPaymentReview_order } from "__generated__/ShippingAndPaymentReview_order.graphql"
+import { ShippingAndPaymentSummary_order } from "__generated__/ShippingAndPaymentSummary_order.graphql"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Section } from "Styleguide/Utils/Section"
-import {
-  CreditCardDetails,
-  ShippingAndPaymentReview,
-  ShippingAndPaymentSummary,
-} from "../ShippingAndPaymentDetails"
+import { CreditCardDetails } from "../CreditCardDetails"
+import { ShippingAndPaymentReview } from "../ShippingAndPaymentReview"
+import { ShippingAndPaymentSummary } from "../ShippingAndPaymentSummary"
 
-const order: ShippingAndPaymentDetails_order = {
+const order: ShippingAndPaymentReview_order &
+  ShippingAndPaymentSummary_order = {
   " $refType": null,
   fulfillmentType: "SHIP",
   shippingName: "Joelle Van Dyne",
