@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+import { ItemReview_artwork$ref } from "./ItemReview_artwork.graphql";
 import { TransactionSummary_order$ref } from "./TransactionSummary_order.graphql";
 declare const _Review_order$ref: unique symbol;
 export type Review_order$ref = typeof _Review_order$ref;
@@ -11,6 +12,7 @@ export type Review_order = {
             readonly node: ({
                 readonly artwork: ({
                     readonly id: string;
+                    readonly " $fragmentRefs": ItemReview_artwork$ref;
                 }) | null;
             }) | null;
         }) | null> | null;
@@ -82,6 +84,11 @@ return {
                   "selections": [
                     v0,
                     {
+                      "kind": "FragmentSpread",
+                      "name": "ItemReview_artwork",
+                      "args": null
+                    },
+                    {
                       "kind": "ScalarField",
                       "alias": null,
                       "name": "__id",
@@ -106,5 +113,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'c1dc19ff02dce4160669a3b0dca53952';
+(node as any).hash = '36a2475f6277e9d21295f00eae5a74fa';
 export default node;
