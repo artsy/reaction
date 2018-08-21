@@ -206,7 +206,7 @@ exports[`snapshots renders the display panel with video 1`] = `
 }
 
 .c1 .c3 {
-  background: url(https://de5y2r7wr8mpb.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FlHEsRROMLasYi9yZtgTR7A%252Fbombay_artsy_panel_640_28_480.mp4&width=680&height=284&quality=95) no-repeat center center;
+  background: url(https://artsy-media-uploads.s3.amazonaws.com/lHEsRROMLasYi9yZtgTR7A%2Fbombay_artsy_panel_640_28_480.mp4) no-repeat center center;
   background-size: cover;
 }
 
