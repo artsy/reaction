@@ -82,10 +82,10 @@ class GeneContents extends React.Component<Props, State> {
       value = true
     }
     this.setState(
-      {
+      ({
         [filter]: value,
         mode: "artworks",
-      } as any,
+      } as any) as Filters,
       this.handleStateChange
     )
   }

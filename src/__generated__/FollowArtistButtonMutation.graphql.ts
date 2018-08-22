@@ -1,12 +1,13 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
+export type FollowArtistInput = {
+    readonly artist_id?: string | null;
+    readonly unfollow?: boolean | null;
+    readonly clientMutationId?: string | null;
+};
 export type FollowArtistButtonMutationVariables = {
-    readonly input: {
-        readonly artist_id: string | null;
-        readonly unfollow: boolean | null;
-        readonly clientMutationId: string | null;
-    };
+    readonly input: FollowArtistInput;
 };
 export type FollowArtistButtonMutationResponse = {
     readonly followArtist: ({

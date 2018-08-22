@@ -51,7 +51,7 @@ export const ShippingForm: React.SFC<WizardStepChildProps> = ({
   )
 }
 
-// Imported in `PaymentForm` if addresss is different than shipping
+// Imported in `PaymentForm` if address is different than shipping
 export const AddressFormInputs = ({ billing = false }) => {
   return (
     <Fragment>

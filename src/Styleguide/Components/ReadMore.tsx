@@ -1,14 +1,17 @@
 import { track } from "Analytics"
 import * as Schema from "Analytics/Schema"
-import { Truncator } from "Components/Truncator"
-import React from "react"
+import { isString } from "lodash"
+import React, { Component } from "react"
+import { renderToStaticMarkup } from "react-dom/server"
 import styled from "styled-components"
 import { DisplayProps } from "styled-system"
+import truncate from "trunc-html"
 
 export interface ReadMoreProps extends DisplayProps {
   isExpanded?: boolean
-  maxLineCount?: number
+  maxChars?: number
   onReadMoreClicked?: () => void
+  content: string | JSX.Element
 }
 
 export interface ReadMoreState {
@@ -16,21 +19,31 @@ export interface ReadMoreState {
 }
 
 @track()
-export class ReadMore extends React.Component<ReadMoreProps, ReadMoreState> {
+export class ReadMore extends Component<ReadMoreProps, ReadMoreState> {
+  private html: string
+
   state = {
-    isExpanded: false,
+    isExpanded: true,
   }
 
   static defaultProps = {
     isExpanded: false,
-    maxLineCount: 3,
+    maxChars: Infinity,
   }
 
   constructor(props) {
     super(props)
 
+    this.html = isString(props.content)
+      ? props.content
+      : renderToStaticMarkup(<>{props.content}</>)
+
+    const RE = /(<([^>]+)>)/gi // Strip HTML tags to get innerText char count
+    const { length } = this.html.replace(RE, "") //
+    const isExpanded = props.isExpanded || length < props.maxChars
+
     this.state = {
-      isExpanded: props.isExpanded,
+      isExpanded,
     }
   }
 
@@ -49,22 +62,26 @@ export class ReadMore extends React.Component<ReadMoreProps, ReadMoreState> {
     )
   }
 
+  getContent() {
+    if (this.state.isExpanded) {
+      return this.html
+    } else {
+      return truncate(this.html, this.props.maxChars).html
+    }
+  }
+
   render() {
-    const { isExpanded } = this.state
-    const { maxLineCount } = this.props
+    const content = this.getContent()
 
     return (
       <Container onClick={this.expandText.bind(this)} isExpanded>
-        {isExpanded ? (
-          this.props.children
-        ) : (
-          <Truncator
-            maxLineCount={maxLineCount}
-            ReadMoreLink={() => <ReadMoreLink>Read more</ReadMoreLink>}
-          >
-            {this.props.children}
-          </Truncator>
-        )}
+        <span
+          dangerouslySetInnerHTML={{
+            __html: content,
+          }}
+        />
+
+        {!this.state.isExpanded && <ReadMoreLink>Read more</ReadMoreLink>}
       </Container>
     )
   }
@@ -72,12 +89,12 @@ export class ReadMore extends React.Component<ReadMoreProps, ReadMoreState> {
 
 const ReadMoreLink = ({ children }) => {
   return (
-    // TODO: Investigate why <Truncator />, when calling `renderToStaticMarkup`,
-    // breaks the context chain requiring us to wrap ReadMore in a <Theme />
-
-    <ReadMoreLinkContainer>
-      ... <ReadMoreLinkText>{children}</ReadMoreLinkText>
-    </ReadMoreLinkContainer>
+    <span>
+      {" "}
+      <ReadMoreLinkContainer>
+        <ReadMoreLinkText>{children}</ReadMoreLinkText>
+      </ReadMoreLinkContainer>
+    </span>
   )
 }
 
@@ -100,4 +117,10 @@ const ReadMoreLinkText = styled.span`
 
 const Container = styled.div.attrs<ReadMoreState>({})`
   cursor: ${p => (p.isExpanded ? "auto" : "pointer")};
+
+  > span > * {
+    display: inline;
+  }
 `
+
+Container.displayName = "Container"

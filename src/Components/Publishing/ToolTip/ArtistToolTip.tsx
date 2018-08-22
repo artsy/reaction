@@ -1,3 +1,4 @@
+import { ArtistToolTip_artist } from "__generated__/ArtistToolTip_artist.graphql"
 import { garamond, unica } from "Assets/Fonts"
 import { map } from "lodash"
 import PropTypes from "prop-types"
@@ -5,7 +6,6 @@ import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import track from "react-tracking"
 import styled from "styled-components"
-import { ArtistToolTip_artist } from "../../../__generated__/ArtistToolTip_artist.graphql"
 import fillwidthDimensions from "../../../Utils/fillwidth"
 import FollowArtistButton from "../../FollowButton/FollowArtistButton"
 import { FollowTrackingData } from "../../FollowButton/Typings"
@@ -91,7 +91,7 @@ export class ArtistToolTip extends React.Component<ArtistToolTipProps> {
               )}
             </TitleDate>
             <FollowArtistButton
-              artist={artists[id] as any}
+              artist={artists[id]}
               trackingData={trackingData}
               onOpenAuthModal={onOpenAuthModal}
             />

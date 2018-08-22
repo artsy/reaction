@@ -52,7 +52,7 @@ export const ArtworkApp: React.SFC<Props> = props => {
           </ArtworkSlider>
         </Col>
         <Col sm={4}>
-          <ArtworkSidebar artwork={props.artwork as any} />
+          <ArtworkSidebar artwork={props.artwork} />
         </Col>
       </Row>
       <Row mb={6}>
@@ -74,7 +74,7 @@ export const ArtworkApp: React.SFC<Props> = props => {
         <Col xl={8} lg={8} md={8} sm={12} xs={12}>
           <ArtistInfo
             name="Francesca DiMattio"
-            artist={artistResponse}
+            artist={artistResponse as any}
             exhibitions={exhibitions as any}
             bio={bio}
           />

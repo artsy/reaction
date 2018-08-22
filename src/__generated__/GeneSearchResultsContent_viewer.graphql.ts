@@ -1,6 +1,8 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+declare const _GeneSearchResultsContent_viewer$ref: unique symbol;
+export type GeneSearchResultsContent_viewer$ref = typeof _GeneSearchResultsContent_viewer$ref;
 export type GeneSearchResultsContent_viewer = {
     readonly match_gene: ReadonlyArray<({
         readonly name: string | null;
@@ -12,6 +14,7 @@ export type GeneSearchResultsContent_viewer = {
             }) | null;
         }) | null;
     }) | null> | null;
+    readonly " $refType": GeneSearchResultsContent_viewer$ref;
 };
 
 

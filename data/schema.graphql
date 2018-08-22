@@ -166,6 +166,7 @@ type Artist implements Node {
 
   # Artworks Elastic Search results
   filtered_artworks(
+    acquireable: Boolean
     aggregation_partner_cities: [String]
     aggregations: [ArtworkAggregation]
     artist_id: String
@@ -173,10 +174,10 @@ type Artist implements Node {
     at_auction: Boolean
     color: String
     dimension_range: String
-    ecommerce: Boolean
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
+    inquireable: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -341,6 +342,16 @@ type ArtistCounts {
   ): FormattedNumber
   related_artists: Int
   articles: Int
+  ecommerce_artworks(
+    # Returns a `String` when format is specified. e.g.`'0,0.0000''`
+    format: String
+    label: String
+  ): FormattedNumber
+  auction_artworks(
+    # Returns a `String` when format is specified. e.g.`'0,0.0000''`
+    format: String
+    label: String
+  ): FormattedNumber
 }
 
 # An edge in a connection.
@@ -426,6 +437,7 @@ type ArtistItem implements Node {
 
   # Artworks Elastic Search results
   filtered_artworks(
+    acquireable: Boolean
     aggregation_partner_cities: [String]
     aggregations: [ArtworkAggregation]
     artist_id: String
@@ -433,10 +445,10 @@ type ArtistItem implements Node {
     at_auction: Boolean
     color: String
     dimension_range: String
-    ecommerce: Boolean
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
+    inquireable: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -699,9 +711,7 @@ type Artwork implements Node & Sellable {
   is_on_hold: String
   is_price_hidden: Boolean
   is_price_range: Boolean
-
-  # True for inquireable artworks that have an exact price.
-  is_purchasable: Boolean
+  is_purchasable: Boolean @deprecated(reason: "Purchase requests are not supported. Replaced by buy now.")
   is_saved: Boolean
   is_shareable: Boolean
   is_sold: Boolean
@@ -720,6 +730,9 @@ type Artwork implements Node & Sellable {
 
   # The string that describes domestic and international shipping.
   shippingInfo: String
+
+  # Minimal location information describing from where artwork will be shipped.
+  shippingOrigin: String
   provenance(format: Format): String
   publisher(format: Format): String
   related(size: Int): [Artwork]
@@ -733,6 +746,10 @@ type Artwork implements Node & Sellable {
   title: String
   to_s: String
   website: String
+  framed: ArtworkInfoRow
+  signatureInfo: ArtworkInfoRow
+  conditionDescription: ArtworkInfoRow
+  certificateOfAuthenticity: ArtworkInfoRow
   cached: Int
 }
 
@@ -1138,6 +1155,7 @@ type ArtworkFilterGene implements Node {
 
   # Artworks Elastic Search results
   filtered_artworks(
+    acquireable: Boolean
     aggregation_partner_cities: [String]
     aggregations: [ArtworkAggregation]
     artist_id: String
@@ -1145,10 +1163,10 @@ type ArtworkFilterGene implements Node {
     at_auction: Boolean
     color: String
     dimension_range: String
-    ecommerce: Boolean
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
+    inquireable: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -1190,6 +1208,7 @@ type ArtworkFilterTag implements Node {
 
   # Artworks Elastic Search results
   filtered_artworks(
+    acquireable: Boolean
     aggregation_partner_cities: [String]
     aggregations: [ArtworkAggregation]
     artist_id: String
@@ -1197,10 +1216,10 @@ type ArtworkFilterTag implements Node {
     at_auction: Boolean
     color: String
     dimension_range: String
-    ecommerce: Boolean
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
+    inquireable: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -1222,6 +1241,14 @@ type ArtworkFilterTag implements Node {
     tag_id: String
     keyword: String
   ): FilterArtworks
+}
+
+type ArtworkInfoRow {
+  # Label for information row
+  label: String
+
+  # Additional details about given attribute
+  details: String
 }
 
 # An inquiry on an Artwork
@@ -1337,9 +1364,7 @@ type ArtworkItem implements Node & Sellable {
   is_on_hold: String
   is_price_hidden: Boolean
   is_price_range: Boolean
-
-  # True for inquireable artworks that have an exact price.
-  is_purchasable: Boolean
+  is_purchasable: Boolean @deprecated(reason: "Purchase requests are not supported. Replaced by buy now.")
   is_saved: Boolean
   is_shareable: Boolean
   is_sold: Boolean
@@ -1358,6 +1383,9 @@ type ArtworkItem implements Node & Sellable {
 
   # The string that describes domestic and international shipping.
   shippingInfo: String
+
+  # Minimal location information describing from where artwork will be shipped.
+  shippingOrigin: String
   provenance(format: Format): String
   publisher(format: Format): String
   related(size: Int): [Artwork]
@@ -1371,6 +1399,10 @@ type ArtworkItem implements Node & Sellable {
   title: String
   to_s: String
   website: String
+  framed: ArtworkInfoRow
+  signatureInfo: ArtworkInfoRow
+  conditionDescription: ArtworkInfoRow
+  certificateOfAuthenticity: ArtworkInfoRow
   cached: Int
 }
 
@@ -1927,7 +1959,7 @@ type Conversation implements Node {
     # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
-  purchase_request: Boolean
+  purchase_request: Boolean @deprecated(reason: "Purchase requests are not supported. Replaced by buy now.")
   from_last_viewed_message_id: String
   initial_message: String!
 
@@ -2165,19 +2197,19 @@ type CreditCard {
   _id: String!
 
   # Brand of credit card
-  brand: String
+  brand: String!
 
   # Name on the credit card
   name: String
 
   # Last four digits on the credit card
-  last_digits: String
+  last_digits: String!
 
   # Credit card's expiration month
-  expiration_month: Int
+  expiration_month: Int!
 
   # Credit card's expiration year
-  expiration_year: Int
+  expiration_year: Int!
 }
 
 input CreditCardInput {
@@ -2563,12 +2595,21 @@ type FollowArtists {
 type FollowedArtistsArtworksGroup implements Node {
   # A globally unique ID.
   __id: ID!
+  href: String
 
   # List of artworks in this group.
   artworks: [Artwork]
+  artworksConnection(after: String, first: Int, before: String, last: Int): ArtworkConnection
   artists: String
   summary: String
   image: Image
+  published_at(
+    convert_to_utc: Boolean
+    format: String
+
+    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    timezone: String
+  ): String
 }
 
 # A connection to a list of items.
@@ -2629,7 +2670,7 @@ type FollowGenePayload {
 
 type FollowsAndSaves {
   # A list of published artworks by followed artists (grouped by date and artists).
-  bundledArtworksByArtist(sort: ArtworkSorts, after: String, first: Int, before: String, last: Int): FollowedArtistsArtworksGroupConnection
+  bundledArtworksByArtist(sort: ArtworkSorts, for_sale: Boolean, after: String, first: Int, before: String, last: Int): FollowedArtistsArtworksGroupConnection
 }
 
 enum Format {
@@ -2686,6 +2727,7 @@ type Gene implements Node {
   artists: [Artist]
   artists_connection(after: String, first: Int, before: String, last: Int): ArtistConnection
   artworks_connection(
+    acquireable: Boolean
     aggregation_partner_cities: [String]
     aggregations: [ArtworkAggregation]
     artist_id: String
@@ -2693,10 +2735,10 @@ type Gene implements Node {
     at_auction: Boolean
     color: String
     dimension_range: String
-    ecommerce: Boolean
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
+    inquireable: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -2727,6 +2769,7 @@ type Gene implements Node {
 
   # Artworks Elastic Search results
   filtered_artworks(
+    acquireable: Boolean
     aggregation_partner_cities: [String]
     aggregations: [ArtworkAggregation]
     artist_id: String
@@ -2734,10 +2777,10 @@ type Gene implements Node {
     at_auction: Boolean
     color: String
     dimension_range: String
-    ecommerce: Boolean
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
+    inquireable: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -2855,6 +2898,7 @@ type GeneItem implements Node {
   artists: [Artist]
   artists_connection(after: String, first: Int, before: String, last: Int): ArtistConnection
   artworks_connection(
+    acquireable: Boolean
     aggregation_partner_cities: [String]
     aggregations: [ArtworkAggregation]
     artist_id: String
@@ -2862,10 +2906,10 @@ type GeneItem implements Node {
     at_auction: Boolean
     color: String
     dimension_range: String
-    ecommerce: Boolean
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
+    inquireable: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -2896,6 +2940,7 @@ type GeneItem implements Node {
 
   # Artworks Elastic Search results
   filtered_artworks(
+    acquireable: Boolean
     aggregation_partner_cities: [String]
     aggregations: [ArtworkAggregation]
     artist_id: String
@@ -2903,10 +2948,10 @@ type GeneItem implements Node {
     at_auction: Boolean
     color: String
     dimension_range: String
-    ecommerce: Boolean
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
+    inquireable: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -3332,6 +3377,7 @@ type HomePageModuleContextGene implements Node {
   artists: [Artist]
   artists_connection(after: String, first: Int, before: String, last: Int): ArtistConnection
   artworks_connection(
+    acquireable: Boolean
     aggregation_partner_cities: [String]
     aggregations: [ArtworkAggregation]
     artist_id: String
@@ -3339,10 +3385,10 @@ type HomePageModuleContextGene implements Node {
     at_auction: Boolean
     color: String
     dimension_range: String
-    ecommerce: Boolean
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
+    inquireable: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -3373,6 +3419,7 @@ type HomePageModuleContextGene implements Node {
 
   # Artworks Elastic Search results
   filtered_artworks(
+    acquireable: Boolean
     aggregation_partner_cities: [String]
     aggregations: [ArtworkAggregation]
     artist_id: String
@@ -3380,10 +3427,10 @@ type HomePageModuleContextGene implements Node {
     at_auction: Boolean
     color: String
     dimension_range: String
-    ecommerce: Boolean
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
+    inquireable: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -4018,6 +4065,9 @@ type Order {
   # Fulfillment Type
   fulfillmentType: OrderFulfillmentType
 
+  # Name for shipping information
+  shippingName: String
+
   # Shipping address line 1
   shippingAddressLine1: String
 
@@ -4142,6 +4192,9 @@ type Order {
 
   # User of this order
   user: User
+
+  # Credit card on this order
+  creditCard: CreditCard
   updatedAt(
     convert_to_utc: Boolean
     format: String
@@ -4834,6 +4887,12 @@ type Query {
     id: String!
   ): Collection
 
+  # A user's credit card
+  credit_card(
+    # The ID of the Credit Card
+    id: String!
+  ): CreditCard
+
   # An External Partner not on the platform
   external_partner(
     # The ID of the Partner
@@ -4901,6 +4960,7 @@ type Query {
 
   # Artworks Elastic Search results
   filter_artworks(
+    acquireable: Boolean
     aggregation_partner_cities: [String]
     aggregations: [ArtworkAggregation]
     artist_id: String
@@ -4908,10 +4968,10 @@ type Query {
     at_auction: Boolean
     color: String
     dimension_range: String
-    ecommerce: Boolean
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
+    inquireable: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -5717,6 +5777,9 @@ input SetOrderShippingInput {
   # Fulfillment Type of this Order
   fulfillmentType: OrderFulfillmentType
 
+  # Name for the shipping information
+  shippingName: String
+
   # Shipping address line 1
   shippingAddressLine1: String
 
@@ -5983,6 +6046,7 @@ type Tag implements Node {
 
   # Artworks Elastic Search results
   filtered_artworks(
+    acquireable: Boolean
     aggregation_partner_cities: [String]
     aggregations: [ArtworkAggregation]
     artist_id: String
@@ -5990,10 +6054,10 @@ type Tag implements Node {
     at_auction: Boolean
     color: String
     dimension_range: String
-    ecommerce: Boolean
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
+    inquireable: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -6293,6 +6357,12 @@ type Viewer {
     id: String!
   ): Collection
 
+  # A user's credit card
+  credit_card(
+    # The ID of the Credit Card
+    id: String!
+  ): CreditCard
+
   # An External Partner not on the platform
   external_partner(
     # The ID of the Partner
@@ -6360,6 +6430,7 @@ type Viewer {
 
   # Artworks Elastic Search results
   filter_artworks(
+    acquireable: Boolean
     aggregation_partner_cities: [String]
     aggregations: [ArtworkAggregation]
     artist_id: String
@@ -6367,10 +6438,10 @@ type Viewer {
     at_auction: Boolean
     color: String
     dimension_range: String
-    ecommerce: Boolean
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
+    inquireable: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]

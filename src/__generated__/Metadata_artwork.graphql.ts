@@ -1,7 +1,14 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-export type Metadata_artwork = {};
+import { Contact_artwork$ref } from "./Contact_artwork.graphql";
+import { Details_artwork$ref } from "./Details_artwork.graphql";
+declare const _Metadata_artwork$ref: unique symbol;
+export type Metadata_artwork$ref = typeof _Metadata_artwork$ref;
+export type Metadata_artwork = {
+    readonly " $fragmentRefs": Details_artwork$ref & Contact_artwork$ref;
+    readonly " $refType": Metadata_artwork$ref;
+};
 
 
 

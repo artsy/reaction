@@ -18,31 +18,35 @@ storiesOf("Styleguide/Artwork/Sidebar", module).add("CurrentBidInfo", () => {
   return (
     <React.Fragment>
       <Section title="Closed auction">
-        <CurrentBidInfo artwork={ClosedAuctionArtwork} />
+        <CurrentBidInfo artwork={ClosedAuctionArtwork as any} />
       </Section>
       <Section title="Open auction no reserve no bids">
-        <CurrentBidInfo artwork={OpenAuctionNoReserveNoBids} />
+        <CurrentBidInfo artwork={OpenAuctionNoReserveNoBids as any} />
       </Section>
       <Section title="Open auction no reserve with bids">
-        <CurrentBidInfo artwork={OpenAuctionNoReserveWithBids} />
+        <CurrentBidInfo artwork={OpenAuctionNoReserveWithBids as any} />
       </Section>
       <Section title="Open auction with reserve and no bids">
-        <CurrentBidInfo artwork={OpenAuctionReserveNoBids} />
+        <CurrentBidInfo artwork={OpenAuctionReserveNoBids as any} />
       </Section>
       <Section title="Open auction reserve not met with bids">
-        <CurrentBidInfo artwork={OpenAuctionReserveNotMetWithBids} />
+        <CurrentBidInfo artwork={OpenAuctionReserveNotMetWithBids as any} />
       </Section>
       <Section title="Open auction reserve met with bids">
-        <CurrentBidInfo artwork={OpenAuctionReserveMetWithBids} />
+        <CurrentBidInfo artwork={OpenAuctionReserveMetWithBids as any} />
       </Section>
       <Section title="Open auction with my bid winning">
-        <CurrentBidInfo artwork={OpenAuctionReserveMetWithMyWinningBid} />
+        <CurrentBidInfo
+          artwork={OpenAuctionReserveMetWithMyWinningBid as any}
+        />
       </Section>
       <Section title="Open auction with my bid loosing">
-        <CurrentBidInfo artwork={OpenAuctionReserveMetWithMyLoosingBid} />
+        <CurrentBidInfo
+          artwork={OpenAuctionReserveMetWithMyLoosingBid as any}
+        />
       </Section>
       <Section title="Live auction in progress">
-        <CurrentBidInfo artwork={LiveAuctionInProgeress} />
+        <CurrentBidInfo artwork={LiveAuctionInProgeress as any} />
       </Section>
     </React.Fragment>
   )

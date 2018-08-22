@@ -12,13 +12,13 @@ storiesOf("Styleguide/Artwork/Sidebar", module).add("SizeInfo", () => {
   return (
     <React.Fragment>
       <Section title="Artwork with Size and Edition of presentt">
-        <SizeInfo piece={ArtworkWithSizeAndEditionOf} />
+        <SizeInfo piece={ArtworkWithSizeAndEditionOf as any} />
       </Section>
       <Section title="Artwork with Size only">
-        <SizeInfo piece={ArtworkWithSizeOnly} />
+        <SizeInfo piece={ArtworkWithSizeOnly as any} />
       </Section>
       <Section title="Artwork with Edition of only">
-        <SizeInfo piece={ArtworkWithEditionOfOnly} />
+        <SizeInfo piece={ArtworkWithEditionOfOnly as any} />
       </Section>
     </React.Fragment>
   )

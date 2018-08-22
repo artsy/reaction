@@ -34,7 +34,7 @@ storiesOf("Components/Artworks/Fillwidth", module)
     return <FillwidthExample artistID="stephen-willats" />
   })
   .add("Without Relay", () => {
-    return <Fillwidth artworks={artworks} useRelay={false} />
+    return <Fillwidth artworks={artworks as any} useRelay={false} />
   })
 
 const artworks = {

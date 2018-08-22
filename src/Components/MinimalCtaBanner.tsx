@@ -1,6 +1,6 @@
+import { Sans } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
-import { unica } from "../Assets/Fonts"
 import SlideTransition from "./Animation/SlideTransition"
 import Icon from "./Icon"
 
@@ -43,7 +43,9 @@ export class MinimalCtaBanner extends React.Component<
         >
           <Banner textColor={this.props.textColor}>
             <a href={this.props.href}>
-              <p>{this.props.copy}</p>
+              <Sans size="3" weight="medium" my={0.5}>
+                <p>{this.props.copy}</p>
+              </Sans>
             </a>
             <IconContainer onClick={this.dismissCta as any}>
               <Icon name="close" color={this.props.textColor} fontSize="16px" />
@@ -63,6 +65,7 @@ const BannerContainer = styled.div.attrs<MinimalCtaBannerProps>({})`
   background-color: ${props => props.backgroundColor || "white"};
   display: flex;
   position: fixed;
+  z-index: 99;
   ${props => {
     if (props.position === "bottom") return "bottom: 0px;"
     if (props.position === "top") return "top: 0px;"
@@ -74,11 +77,10 @@ const Banner = styled.div.attrs<{ textColor: string }>({})`
   align-items: center;
   height: 100%;
   width: 100%;
-  padding: 0 10px;
+  padding: 10px 10px;
   a {
     color: ${props => props.textColor || "black"};
     text-decoration: none;
-    ${unica("s12")};
     margin: auto auto auto 0;
   }
 `

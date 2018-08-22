@@ -1,8 +1,11 @@
+import { Sans } from "@artsy/palette"
+import { GridItem_artwork } from "__generated__/GridItem_artwork.graphql"
 import { pickBy } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import styled from "styled-components"
+import { Flex } from "Styleguide/Elements/Flex"
 import { Responsive } from "Utils/Responsive"
 import colors from "../../Assets/Colors"
 import RelayMetadata, { Metadata } from "./Metadata"
@@ -21,8 +24,9 @@ const Placeholder = styled.div`
   width: 100%;
 `
 
-interface Props extends RelayProps, React.HTMLProps<ArtworkGridItemContainer> {
+interface Props extends React.HTMLProps<ArtworkGridItemContainer> {
   useRelay?: boolean
+  artwork: GridItem_artwork
   style?: any
   currentUser?: any
   mediator?: {
@@ -35,6 +39,22 @@ interface State {
 }
 
 const IMAGE_QUALITY = 80
+
+const Badge = styled.div`
+  border-radius: 2px;
+  letter-spacing: 0.3px;
+  padding: 1px 5px 0px 6px;
+  background-color: white;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+  margin-left: 5px;
+`
+
+const Badges = styled(Flex)`
+  position: absolute;
+  bottom: 8px;
+  left: 3px;
+`
 
 class ArtworkGridItemContainer extends React.Component<Props, State> {
   static defaultProps = {
@@ -87,6 +107,25 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
     }
   }
 
+  renderArtworkBadge({ is_biddable, is_acquireable }) {
+    return (
+      <React.Fragment>
+        <Badges>
+          {is_biddable && (
+            <Badge>
+              <Sans size="1">Bid</Sans>
+            </Badge>
+          )}
+          {is_acquireable && (
+            <Badge>
+              <Sans size="1">Buy Now</Sans>
+            </Badge>
+          )}
+        </Badges>
+      </React.Fragment>
+    )
+  }
+
   render() {
     const { style, className, artwork, useRelay, currentUser } = this.props
     const SaveButtonBlock = useRelay ? RelaySaveButton : SaveButton
@@ -96,6 +135,11 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
     if (currentUser) {
       currentUserSpread = { currentUser }
     }
+
+    const hasBuyNowLabFeature =
+      currentUser &&
+      currentUser.lab_features &&
+      currentUser.lab_features.includes("New Buy Now Flow")
     return (
       <Responsive>
         {({ hover, ...breakpoints }) => {
@@ -105,11 +149,14 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
                 <a href={artwork.href}>
                   <Image src={this.getImageUrl(breakpoints)} />
                 </a>
-
-                {hover && (
+                {hasBuyNowLabFeature && this.renderArtworkBadge(artwork)}
+                {/* The undefined check is a fallback for Force code that uses
+                    Reaction code without wrapping the tree in a Responsive
+                    provider component. */}
+                {(hover === undefined || hover) && (
                   <SaveButtonBlock
                     className="artwork-save"
-                    artwork={artwork as any}
+                    artwork={artwork}
                     style={{
                       position: "absolute",
                       right: "10px",
@@ -134,6 +181,7 @@ export const ArtworkGridItem = styled(ArtworkGridItemContainer)`
   .artwork-save {
     opacity: 0;
   }
+
   &:hover .artwork-save {
     opacity: 1;
   }
@@ -148,20 +196,11 @@ export default createFragmentContainer(
         url(version: "large")
         aspect_ratio
       }
+      is_biddable
+      is_acquireable
       href
       ...Metadata_artwork
       ...Save_artwork
     }
   `
 )
-
-interface RelayProps {
-  artwork: {
-    href: string | null
-    image: {
-      placeholder: number | null
-      url: string | null
-      aspect_ratio: number | null
-    } | null
-  }
-}

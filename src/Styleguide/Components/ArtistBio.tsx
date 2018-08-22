@@ -12,36 +12,28 @@ interface Props {
   onReadMoreClicked?: () => void
 }
 
+export const MAX_CHARS = {
+  xs: 300,
+  rest: 900,
+}
+
 @track({ context_module: Schema.Context.ArtistBio })
 export class ArtistBio extends React.Component<Props> {
   render() {
-    const blurb = (
-      <div
-        dangerouslySetInnerHTML={{
-          __html: this.props.bio.biography_blurb.text,
-        }}
-      />
-    )
-
     return (
       <Responsive>
         {({ xs }) => {
-          if (xs) {
-            return (
-              <ReadMore onReadMoreClicked={this.props.onReadMoreClicked}>
-                <Serif size="3">{blurb}</Serif>
-              </ReadMore>
-            )
-          } else {
-            return (
+          const maxChars = xs ? MAX_CHARS.xs : MAX_CHARS.rest
+
+          return (
+            <Serif size="3">
               <ReadMore
                 onReadMoreClicked={this.props.onReadMoreClicked}
-                maxLineCount={7}
-              >
-                <Serif size="3">{blurb}</Serif>
-              </ReadMore>
-            )
-          }
+                maxChars={maxChars}
+                content={this.props.bio.biography_blurb.text}
+              />
+            </Serif>
+          )
         }}
       </Responsive>
     )

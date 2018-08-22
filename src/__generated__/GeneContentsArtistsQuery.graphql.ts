@@ -1,11 +1,14 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
+import { Artists_gene$ref } from "./Artists_gene.graphql";
 export type GeneContentsArtistsQueryVariables = {
     readonly geneID: string;
 };
 export type GeneContentsArtistsQueryResponse = {
-    readonly gene: ({}) | null;
+    readonly gene: ({
+        readonly " $fragmentRefs": Artists_gene$ref;
+    }) | null;
 };
 
 

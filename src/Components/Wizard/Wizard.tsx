@@ -132,10 +132,12 @@ export class Wizard extends React.Component<WizardProps, WizardState> {
         const result = onSubmit(values, actions)
 
         if (result instanceof Boolean) {
+          actions.setSubmitting(false)
           return result
         } else {
           return (result as Promise<boolean>).then(shouldGoNext => {
             if (shouldGoNext) {
+              actions.setSubmitting(false)
               this.next(null, values)
             }
           })

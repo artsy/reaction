@@ -20,6 +20,7 @@ export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
         routes,
         user,
         historyProtocol = "browser",
+        historyOptions,
         initialRoute = "/",
         relayNetwork,
       } = config
@@ -51,6 +52,7 @@ export function buildClientApp(config: AppConfig): Promise<ClientResolveProps> {
       const Router = await createInitialFarceRouter({
         historyProtocol: getHistoryProtocol(),
         historyMiddlewares,
+        historyOptions,
         routeConfig: routes,
         resolver,
         render,

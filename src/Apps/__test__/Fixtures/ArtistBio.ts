@@ -1,6 +1,6 @@
 export const bio = `<p>Donald Judd, widely regarded as one of the most significant American artists of
 the post-war period, is perhaps best-known for the large-scale outdoor
-installations and long, spacious interiors he designed in Marfa, Texas. His
+installations and long, spacious <a href='foo'>interiors he designed in Marfa</a>, Texas. His
 oeuvre has come to define what has been referred to as Minimalist art—a label
 the artist strongly objected to. His sculptures and installations, constructed
 out of industrial materials such as Plexiglas, concrete, and steel and arranged

@@ -1,3 +1,4 @@
+import { OrderWithShippingDetails } from "Apps/__test__/Fixtures/Order"
 import React from "react"
 import { StorybooksRouter } from "Router/StorybooksRouter"
 import { storiesOf } from "storybook/storiesOf"
@@ -9,40 +10,26 @@ const mock = {
       name: "Alice Jane",
     },
   }),
-  Order: (_, { id }) => {
+  Order: (_, { id, ...others }) => {
     return {
+      ...OrderWithShippingDetails,
       id,
-      code: "abcdefg",
+      ...others,
     }
   },
 }
 
+const Router = props => (
+  <StorybooksRouter
+    routes={orderRoutes}
+    mockResolvers={mock}
+    historyOptions={{ useBeforeUnload: true }}
+    {...props}
+  />
+)
+
 storiesOf("Apps/Order Page", module)
-  .add("Shipping", () => (
-    <StorybooksRouter
-      routes={orderRoutes}
-      initialRoute="/order2/123/shipping"
-      mockResolvers={mock}
-    />
-  ))
-  .add("Payment", () => (
-    <StorybooksRouter
-      routes={orderRoutes}
-      initialRoute="/order2/123/payment"
-      mockResolvers={mock}
-    />
-  ))
-  .add("Review", () => (
-    <StorybooksRouter
-      routes={orderRoutes}
-      initialRoute="/order2/123/review"
-      mockResolvers={mock}
-    />
-  ))
-  .add("Submission", () => (
-    <StorybooksRouter
-      routes={orderRoutes}
-      initialRoute="/order2/123/submission"
-      mockResolvers={mock}
-    />
-  ))
+  .add("Shipping", () => <Router initialRoute="/order2/123/shipping" />)
+  .add("Payment", () => <Router initialRoute="/order2/123/payment" />)
+  .add("Review", () => <Router initialRoute="/order2/123/review" />)
+  .add("Submission", () => <Router initialRoute="/order2/123/submission" />)

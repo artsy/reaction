@@ -23,7 +23,7 @@ export function ArtworkGridExample(props: {
       render={readyState => {
         return (
           readyState.props && (
-            <ArtworkGrid {...readyState.props.artist as any} {...props} />
+            <ArtworkGrid {...readyState.props.artist} {...props} />
           )
         )
       }}

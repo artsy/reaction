@@ -1,10 +1,13 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+declare const _Save_artwork$ref: unique symbol;
+export type Save_artwork$ref = typeof _Save_artwork$ref;
 export type Save_artwork = {
     readonly __id: string;
     readonly id: string;
     readonly is_saved: boolean | null;
+    readonly " $refType": Save_artwork$ref;
 };
 
 

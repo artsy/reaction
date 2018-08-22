@@ -1,6 +1,10 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+import { ArtistCard_artist$ref } from "./ArtistCard_artist.graphql";
+import { Pagination_pageCursors$ref } from "./Pagination_pageCursors.graphql";
+declare const _RelatedArtistsList_artist$ref: unique symbol;
+export type RelatedArtistsList_artist$ref = typeof _RelatedArtistsList_artist$ref;
 export type RelatedArtistsList_artist = {
     readonly id: string;
     readonly related: ({
@@ -9,12 +13,17 @@ export type RelatedArtistsList_artist = {
                 readonly hasNextPage: boolean;
                 readonly endCursor: string | null;
             };
-            readonly pageCursors: ({}) | null;
+            readonly pageCursors: ({
+                readonly " $fragmentRefs": Pagination_pageCursors$ref;
+            }) | null;
             readonly edges: ReadonlyArray<({
-                readonly node: ({}) | null;
+                readonly node: ({
+                    readonly " $fragmentRefs": ArtistCard_artist$ref;
+                }) | null;
             }) | null> | null;
         }) | null;
     }) | null;
+    readonly " $refType": RelatedArtistsList_artist$ref;
 };
 
 

@@ -1,9 +1,19 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+import { ArtistBio_bio$ref } from "./ArtistBio_bio.graphql";
+import { ArtworkFilter_artist$ref } from "./ArtworkFilter_artist.graphql";
+import { CurrentEvent_artist$ref } from "./CurrentEvent_artist.graphql";
+import { Genes_artist$ref } from "./Genes_artist.graphql";
+import { MarketInsightsArtistPage_artist$ref } from "./MarketInsightsArtistPage_artist.graphql";
+import { SelectedExhibitions_exhibitions$ref } from "./SelectedExhibitions_exhibitions.graphql";
+declare const _Overview_artist$ref: unique symbol;
+export type Overview_artist$ref = typeof _Overview_artist$ref;
 export type Overview_artist = {
     readonly id: string;
-    readonly exhibition_highlights: ReadonlyArray<({}) | null> | null;
+    readonly exhibition_highlights: ReadonlyArray<({
+        readonly " $fragmentRefs": SelectedExhibitions_exhibitions$ref;
+    }) | null> | null;
     readonly counts: ({
         readonly partner_shows: any | null;
     }) | null;
@@ -38,6 +48,8 @@ export type Overview_artist = {
             }) | null> | null;
         }) | null;
     }) | null;
+    readonly " $fragmentRefs": ArtistBio_bio$ref & CurrentEvent_artist$ref & MarketInsightsArtistPage_artist$ref & Genes_artist$ref & ArtworkFilter_artist$ref;
+    readonly " $refType": Overview_artist$ref;
 };
 
 
@@ -95,7 +107,7 @@ return {
     },
     {
       "kind": "LocalArgument",
-      "name": "ecommerce",
+      "name": "acquireable",
       "type": "Boolean",
       "defaultValue": null
     },
@@ -126,12 +138,7 @@ return {
     },
     {
       "kind": "FragmentSpread",
-      "name": "ArtistHeader_artist",
-      "args": null
-    },
-    {
-      "kind": "FragmentSpread",
-      "name": "CurrentEvent_artist",
+      "name": "ArtistBio_bio",
       "args": null
     },
     {
@@ -148,6 +155,18 @@ return {
       "kind": "FragmentSpread",
       "name": "ArtworkFilter_artist",
       "args": [
+        {
+          "kind": "Variable",
+          "name": "acquireable",
+          "variableName": "acquireable",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "at_auction",
+          "variableName": "at_auction",
+          "type": null
+        },
         {
           "kind": "Variable",
           "name": "for_sale",
@@ -225,7 +244,7 @@ return {
     },
     {
       "kind": "FragmentSpread",
-      "name": "ArtistBio_bio",
+      "name": "CurrentEvent_artist",
       "args": null
     },
     {
@@ -438,5 +457,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '38af5f5aa7a18abd8fd70255eb280acb';
+(node as any).hash = '031b151141d235e97058c2f8d7924f9d';
 export default node;

@@ -5,7 +5,7 @@ import { ArtistBio } from "../ArtistBio"
 describe("ArtistBio", () => {
   const bio = {
     biography_blurb: {
-      text: '<div id="found">hello how are you</div>',
+      text: '<a href="hi">hello how are you</a>',
     },
   }
 
@@ -28,6 +28,6 @@ describe("ArtistBio", () => {
         }}
       />
     )
-    wrapper.simulate("click")
+    wrapper.find("Container").simulate("click")
   })
 })

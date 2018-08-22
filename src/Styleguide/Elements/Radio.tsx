@@ -56,6 +56,8 @@ export const Radio = styled(
             role="presentation"
             border={1}
             mr={1}
+            mt="2px"
+            mb="-2px"
             selected={selected}
             disabled={disabled}
           >
@@ -78,6 +80,29 @@ export const Radio = styled(
     }
   }
 ).attrs<RadioProps>({})``
+
+export const BorderedRadio = styled(Radio).attrs<RadioProps>({
+  p: 2,
+})`
+  border-radius: 2px;
+  border: 1px solid ${color("black10")};
+  transition: background-color 0.14s ease-in-out;
+
+  :hover:not(:disabled) {
+    background-color: ${color("black5")};
+  }
+
+  :not(:first-child) {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  :not(:last-child) {
+    border-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+`
 
 const hoverStyles = ({ selected, hover }) => {
   const styles = `background-color: ${color("black10")};`
@@ -102,7 +127,9 @@ interface ContainerProps extends FlexProps {
   hover: boolean
   selected: boolean
 }
+
 const Container = styled(Flex).attrs<ContainerProps>({})`
+  align-items: flex-start;
   cursor: ${({ disabled }) => !disabled && "pointer"};
   user-select: none;
   ${hoverStyles};
@@ -159,6 +186,8 @@ const RadioButton = styled.div.attrs<RadioToggleProps>({})`
   border-color: ${radioBorderColor};
   width: ${space(2)}px;
   height: ${space(2)}px;
+  min-width: ${space(2)}px;
+  min-height: ${space(2)}px;
   border-radius: 50%;
   transition: background-color 0.25s, border-color 0.25s;
   ${InnerCircle} {

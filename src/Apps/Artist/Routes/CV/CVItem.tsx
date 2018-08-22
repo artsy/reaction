@@ -149,6 +149,8 @@ class CVItem extends Component<CVItemProps, CVItemState> {
                       width={xs ? "100%" : ""}
                       mt={xs ? 1 : 2}
                     />
+
+                    {xs && <Spacer mb={1} />}
                   </Col>
                 </Row>
               )}
@@ -216,7 +218,7 @@ export const CVPaginationContainer = createPaginationContainer(
   {
     direction: "forward",
     getConnectionFromProps(props) {
-      return props.artist.showsConnection as any
+      return props.artist.showsConnection
     },
     getFragmentVariables(prevVars, totalCount) {
       return { ...prevVars, count: totalCount }

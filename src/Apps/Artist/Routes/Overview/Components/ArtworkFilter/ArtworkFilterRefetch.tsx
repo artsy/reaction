@@ -1,7 +1,7 @@
 import { ArtworkFilterRefetch_artist } from "__generated__/ArtworkFilterRefetch_artist.graphql"
 import React from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
-import { ArtworkGridRefetchContainer } from "./ArtworkFilterArtworkGrid"
+import { ArtworkGridRefetchContainer as ArtworkGrid } from "./ArtworkFilterArtworkGrid"
 
 interface Props {
   artist: ArtworkFilterRefetch_artist
@@ -62,10 +62,10 @@ class ArtworkGridRefetchContainerWrapper extends React.Component<Props> {
 
   render() {
     return (
-      <ArtworkGridRefetchContainer
+      <ArtworkGrid
         {...this.props}
         isLoading={this.state.isLoading}
-        filtered_artworks={this.props.artist.grid as any}
+        filtered_artworks={this.props.artist.grid}
       />
     )
   }
@@ -82,7 +82,7 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
           partner_id: { type: "ID" }
           for_sale: { type: "Boolean" }
           at_auction: { type: "Boolean" }
-          ecommerce: { type: "Boolean" }
+          acquireable: { type: "Boolean" }
           sort: { type: "String", defaultValue: "-partner_updated_at" }
         ) {
         __id
@@ -93,7 +93,7 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
           partner_id: $partner_id
           for_sale: $for_sale
           at_auction: $at_auction
-          ecommerce: $ecommerce
+          acquireable: $acquireable
           size: 0
           sort: $sort
         ) {
@@ -108,7 +108,7 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
       $medium: String
       $major_periods: [String]
       $partner_id: ID
-      $ecommerce: Boolean
+      $acquireable: Boolean
       $at_auction: Boolean
       $for_sale: Boolean
       $sort: String
@@ -123,7 +123,7 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
               for_sale: $for_sale
               sort: $sort
               at_auction: $at_auction
-              ecommerce: $ecommerce
+              acquireable: $acquireable
             )
         }
       }

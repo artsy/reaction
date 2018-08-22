@@ -1,3 +1,4 @@
+import { TagArtworks_tag } from "__generated__/TagArtworks_tag.graphql"
 import * as React from "react"
 import {
   createFragmentContainer,
@@ -5,15 +6,11 @@ import {
   RelayPaginationProp,
 } from "react-relay"
 import styled from "styled-components"
-
 import Dropdown from "../ArtworkFilter/Dropdown"
 import ForSaleCheckbox from "../ArtworkFilter/ForSaleCheckbox"
-
 import Headline from "../ArtworkFilter/Headline"
 import TotalCount from "../ArtworkFilter/TotalCount"
-
 import BorderedPulldown from "../BorderedPulldown"
-
 import TagArtworksContent from "./TagArtworksContent"
 
 interface Filters {
@@ -23,8 +20,9 @@ interface Filters {
   medium?: string
 }
 
-interface Props extends RelayProps, Filters {
-  relay?: RelayPaginationProp
+interface Props extends Filters {
+  relay: RelayPaginationProp
+  tag: TagArtworks_tag
   onDropdownSelected: (slice: string, value: string) => void
   onSortSelected: (sort: string) => void
   onForSaleToggleSelected: () => void
@@ -104,7 +102,7 @@ export class TagArtworks extends React.Component<Props, null> {
         </SubFilterBar>
         <TagArtworksContent
           tagID={this.props.tag.id}
-          filtered_artworks={this.props.tag.filtered_artworks as any}
+          filtered_artworks={this.props.tag.filtered_artworks}
         />
       </div>
     )
@@ -162,19 +160,3 @@ export default createFragmentContainer(TagArtworks, {
     }
   `,
 })
-
-interface RelayProps {
-  tag: {
-    id: string
-    filtered_artworks: {
-      aggregations: Array<{
-        slice: string
-        counts: {
-          name: string | null
-          id: string | null
-        }
-      }>
-      facet: any
-    }
-  }
-}

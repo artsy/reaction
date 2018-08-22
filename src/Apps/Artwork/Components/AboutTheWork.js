@@ -20,7 +20,8 @@ export const AboutTheWork = () => {
               Image rights: Courtesy of the artist and Salon 94
             </Serif>
           </AboutWork>
-          <ReadMore>
+          <ReadMore
+            text="
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -35,8 +36,8 @@ export const AboutTheWork = () => {
             labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
             exercitation ullamco laboris nisi ut aliquip ex ea commodo
             consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-            esse cillum dolore
-          </ReadMore>
+            esse cillum dolore"
+          />
         </Col>
       </Row>
     </Content>

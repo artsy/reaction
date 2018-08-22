@@ -59,9 +59,11 @@ export class LargeCurrentEvent extends Component<CurrentEventProps> {
         onClick={this.handleClick.bind(this)}
       >
         <Flex flexDirection="column">
-          <Box width="100%" height="auto">
-            <Image src={image.resized.url} width="100%" mb={1} />
-          </Box>
+          {image && (
+            <Box width="100%" height="auto">
+              <Image src={image.resized.url} width="100%" mb={1} />
+            </Box>
+          )}
           <Sans size="2" weight="medium" my={0.5}>
             {status}
           </Sans>

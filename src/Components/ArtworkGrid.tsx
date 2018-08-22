@@ -1,3 +1,4 @@
+import { ArtworkGrid_artworks } from "__generated__/ArtworkGrid_artworks.graphql"
 import React from "react"
 import ReactDOM from "react-dom"
 // @ts-ignore
@@ -6,9 +7,11 @@ import { ComponentRef, createFragmentContainer, graphql } from "react-relay"
 import styled, { StyledComponentClass } from "styled-components"
 import RelayGridItem, { ArtworkGridItem } from "./Artwork/GridItem"
 
+type SectionedArtworks = Array<Array<ArtworkGrid_artworks["edges"][0]["node"]>>
+
 export interface ArtworkGridContainerProps
-  extends RelayProps,
-    React.HTMLProps<ArtworkGridContainer> {
+  extends React.HTMLProps<ArtworkGridContainer> {
+  artworks: ArtworkGrid_artworks
   columnCount?: number
   sectionMargin?: number
   itemMargin?: number
@@ -64,8 +67,8 @@ export class ArtworkGridContainer extends React.Component<
     }
   }
 
-  sectionedArtworks() {
-    const sectionedArtworks: ArtworkRelayProps[][] = []
+  sectionedArtworks(): SectionedArtworks {
+    const sectionedArtworks: SectionedArtworks = []
     const sectionRatioSums = []
     const artworks = this.props.artworks ? this.props.artworks.edges : []
 
@@ -117,10 +120,12 @@ export class ArtworkGridContainer extends React.Component<
       const artworkComponents = []
       for (let j = 0; j < sectionedArtworks[i].length; j++) {
         const artwork = sectionedArtworks[i][j]
-        const GridItem = this.props.useRelay ? RelayGridItem : ArtworkGridItem
+        const GridItem: typeof RelayGridItem = (this.props.useRelay
+          ? RelayGridItem
+          : ArtworkGridItem) as any
         artworkComponents.push(
           <GridItem
-            artwork={artwork as any}
+            artwork={artwork}
             key={"artwork-" + j + "-" + artwork.__id}
             useRelay={this.props.useRelay}
             currentUser={this.props.currentUser}
@@ -179,18 +184,3 @@ export default createFragmentContainer(
     }
   `
 )
-
-export interface ArtworkRelayProps {
-  __id: string
-  image: {
-    aspect_ratio: number | null
-  } | null
-}
-
-export interface RelayProps {
-  artworks: {
-    edges: Array<{
-      node: any
-    } | null> | null
-  }
-}

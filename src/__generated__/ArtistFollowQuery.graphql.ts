@@ -1,11 +1,14 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
+import { Follow_artist$ref } from "./Follow_artist.graphql";
 export type ArtistFollowQueryVariables = {
     readonly artistID: string;
 };
 export type ArtistFollowQueryResponse = {
-    readonly artist: ({}) | null;
+    readonly artist: ({
+        readonly " $fragmentRefs": Follow_artist$ref;
+    }) | null;
 };
 
 

@@ -1,6 +1,6 @@
 import { Sans, Serif } from "@artsy/palette"
 import React from "react"
-import { BorderBox } from "Styleguide/Elements/Box"
+import { StackableBorderBox } from "Styleguide/Elements/Box"
 import { Flex, FlexProps } from "Styleguide/Elements/Flex"
 
 interface StepSummaryItemProps extends FlexProps {
@@ -15,7 +15,7 @@ export const StepSummaryItem: React.SFC<StepSummaryItemProps> = ({
   ...others
 }) => {
   return (
-    <BorderBox hasSiblings responsive flexDirection="column" {...others}>
+    <StackableBorderBox flexDirection="column" {...others}>
       <Flex justifyContent="space-between" alignItems="baseline" mb={1}>
         <Serif size="3t" weight="semibold" color="black100">
           {title}
@@ -27,6 +27,6 @@ export const StepSummaryItem: React.SFC<StepSummaryItemProps> = ({
         </Sans>
       </Flex>
       {children}
-    </BorderBox>
+    </StackableBorderBox>
   )
 }

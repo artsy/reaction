@@ -1,27 +1,51 @@
 import { Review_order } from "__generated__/Review_order.graphql"
 import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
+import { ItemReviewFragmentContainer as ItemReview } from "Apps/Order/Components/ItemReview"
+import { TermsOfServiceCheckbox } from "Apps/Order/Components/TermsOfServiceCheckbox"
+import { Router } from "found"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Link } from "Router"
 import { Button } from "Styleguide/Elements/Button"
+import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Join } from "Styleguide/Elements/Join"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Placeholder } from "Styleguide/Utils/Placeholder"
 import { Responsive } from "Utils/Responsive"
-import { SummaryFragmentContainer as Summary } from "../../Components/Summary"
+import { Helper } from "../../Components/Helper"
+import { TransactionSummaryFragmentContainer as TransactionSummary } from "../../Components/TransactionSummary"
 import { TwoColumnLayout } from "../../Components/TwoColumnLayout"
 
 export interface ReviewProps {
   order: Review_order
-  mediator?: {
-    trigger: (action: string, config: object) => void
-  }
+  router: Router
 }
 
-export class ReviewRoute extends Component<ReviewProps> {
+interface ReviewState {
+  termsCheckboxSelected?: Boolean
+}
+
+export class ReviewRoute extends Component<ReviewProps, ReviewState> {
+  constructor(props) {
+    super(props)
+
+    this.state = { termsCheckboxSelected: false }
+  }
+
+  updateTermsCheckbox() {
+    const { termsCheckboxSelected } = this.state
+    this.setState({
+      termsCheckboxSelected: !termsCheckboxSelected,
+    })
+  }
+
+  onOrderSubmitted() {
+    this.props.router.push(`/order2/${this.props.order.id}/submission`)
+  }
+
   render() {
     const { order } = this.props
+    const { termsCheckboxSelected } = this.state
 
     return (
       <>
@@ -41,34 +65,66 @@ export class ReviewRoute extends Component<ReviewProps> {
                   <Join separator={<Spacer mb={3} />}>
                     <Placeholder height="68px" name="Step summary item" />
                     <Placeholder height="68px" name="Step summary item" />
-                    <Placeholder height="80px" name="Item review" />
-                    <Placeholder height="20px" name="Terms and conditions" />
+
                     {!xs && (
-                      <Link to={`/order2/${order.id}/summary`}>
-                        <Button size="large" width="100%">
+                      <>
+                        <ItemReview
+                          artwork={order.lineItems.edges[0].node.artwork}
+                        />
+                        <Spacer mb={3} />
+                        <Flex justifyContent="center">
+                          <TermsOfServiceCheckbox
+                            onSelect={() => this.updateTermsCheckbox()}
+                            selected={termsCheckboxSelected}
+                          />
+                        </Flex>
+                        <Spacer mb={3} />
+                        <Button
+                          size="large"
+                          width="100%"
+                          disabled={!termsCheckboxSelected}
+                          onClick={() => this.onOrderSubmitted()}
+                        >
                           Submit Order
                         </Button>
-                      </Link>
+                      </>
                     )}
                   </Join>
                   <Spacer mb={3} />
                 </>
               }
               Sidebar={
-                <Summary mediator={this.props.mediator} order={order as any}>
+                <Flex flexDirection="column">
+                  <TransactionSummary order={order} mb={xs ? 2 : 3} />
+                  {!xs && (
+                    <Helper
+                      artworkId={order.lineItems.edges[0].node.artwork.id}
+                    />
+                  )}
                   {xs && (
                     <>
-                      <Spacer mb={3} />
-                      <Placeholder height="20px" name="Terms and conditions" />
-                      <Spacer mb={3} />
-                      <Link to={`/order2/${order.id}/summary`}>
-                        <Button size="large" width="100%">
-                          Continue
-                        </Button>
-                      </Link>
+                      <Flex justifyContent="center">
+                        <TermsOfServiceCheckbox
+                          onSelect={() => this.updateTermsCheckbox()}
+                          selected={termsCheckboxSelected}
+                        />
+                      </Flex>
+                      <Spacer mb={2} />
+                      <Button
+                        size="large"
+                        width="100%"
+                        disabled={!termsCheckboxSelected}
+                        onClick={() => this.onOrderSubmitted()}
+                      >
+                        Submit Order
+                      </Button>
+                      <Spacer mb={2} />
+                      <Helper
+                        artworkId={order.lineItems.edges[0].node.artwork.id}
+                      />
                     </>
                   )}
-                </Summary>
+                </Flex>
               }
             />
           )}
@@ -83,7 +139,17 @@ export const ReviewFragmentContainer = createFragmentContainer(
   graphql`
     fragment Review_order on Order {
       id
-      ...Summary_order
+      lineItems {
+        edges {
+          node {
+            artwork {
+              id
+              ...ItemReview_artwork
+            }
+          }
+        }
+      }
+      ...TransactionSummary_order
     }
   `
 )

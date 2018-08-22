@@ -1,6 +1,8 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+declare const _CVItem_artist$ref: unique symbol;
+export type CVItem_artist$ref = typeof _CVItem_artist$ref;
 export type CVItem_artist = {
     readonly id: string;
     readonly showsConnection: ({
@@ -21,6 +23,7 @@ export type CVItem_artist = {
             }) | null;
         }) | null> | null;
     }) | null;
+    readonly " $refType": CVItem_artist$ref;
 };
 
 

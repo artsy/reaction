@@ -91,7 +91,7 @@ export class LoginForm extends Component<FormProps, LoginFormState> {
                 />
               </Row>
               {globalError && <Error show>{globalError}</Error>}
-              <SubmitButton disabled={isSubmitting}>Log in</SubmitButton>
+              <SubmitButton loading={isSubmitting}>Log in</SubmitButton>
               <Footer
                 handleTypeChange={() =>
                   this.props.handleTypeChange(ModalType.signup)

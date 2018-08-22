@@ -1,12 +1,15 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
+import { Fillwidth_artworks$ref } from "./Fillwidth_artworks.graphql";
 export type FillwidthQueryVariables = {
     readonly artistID: string;
 };
 export type FillwidthQueryResponse = {
     readonly artist: ({
-        readonly artworks: ({}) | null;
+        readonly artworks: ({
+            readonly " $fragmentRefs": Fillwidth_artworks$ref;
+        }) | null;
     }) | null;
 };
 

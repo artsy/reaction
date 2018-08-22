@@ -323,6 +323,33 @@
               "deprecationReason": null
             },
             {
+              "name": "credit_card",
+              "description": "A user's credit card",
+              "args": [
+                {
+                  "name": "id",
+                  "description": "The ID of the Credit Card",
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "CreditCard",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "external_partner",
               "description": "An External Partner not on the platform",
               "args": [
@@ -685,6 +712,16 @@
               "description": "Artworks Elastic Search results",
               "args": [
                 {
+                  "name": "acquireable",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "aggregation_partner_cities",
                   "description": null,
                   "type": {
@@ -767,16 +804,6 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "ecommerce",
-                  "description": null,
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Boolean",
-                    "ofType": null
-                  },
-                  "defaultValue": null
-                },
-                {
                   "name": "extra_aggregation_gene_ids",
                   "description": null,
                   "type": {
@@ -802,6 +829,16 @@
                 },
                 {
                   "name": "include_medium_filter_in_aggregation",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "inquireable",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -4722,15 +4759,15 @@
             },
             {
               "name": "is_purchasable",
-              "description": "True for inquireable artworks that have an exact price.",
+              "description": null,
               "args": [],
               "type": {
                 "kind": "SCALAR",
                 "name": "Boolean",
                 "ofType": null
               },
-              "isDeprecated": false,
-              "deprecationReason": null
+              "isDeprecated": true,
+              "deprecationReason": "Purchase requests are not supported. Replaced by buy now."
             },
             {
               "name": "is_saved",
@@ -4927,6 +4964,18 @@
             {
               "name": "shippingInfo",
               "description": "The string that describes domestic and international shipping.",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "shippingOrigin",
+              "description": "Minimal location information describing from where artwork will be shipped.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -5243,6 +5292,54 @@
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "framed",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "ArtworkInfoRow",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "signatureInfo",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "ArtworkInfoRow",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "conditionDescription",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "ArtworkInfoRow",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "certificateOfAuthenticity",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "ArtworkInfoRow",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -6194,6 +6291,16 @@
               "description": "Artworks Elastic Search results",
               "args": [
                 {
+                  "name": "acquireable",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "aggregation_partner_cities",
                   "description": null,
                   "type": {
@@ -6276,16 +6383,6 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "ecommerce",
-                  "description": null,
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Boolean",
-                    "ofType": null
-                  },
-                  "defaultValue": null
-                },
-                {
                   "name": "extra_aggregation_gene_ids",
                   "description": null,
                   "type": {
@@ -6311,6 +6408,16 @@
                 },
                 {
                   "name": "include_medium_filter_in_aggregation",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "inquireable",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -8827,6 +8934,72 @@
               "type": {
                 "kind": "SCALAR",
                 "name": "Int",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "ecommerce_artworks",
+              "description": null,
+              "args": [
+                {
+                  "name": "format",
+                  "description": "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "label",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "SCALAR",
+                "name": "FormattedNumber",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "auction_artworks",
+              "description": null,
+              "args": [
+                {
+                  "name": "format",
+                  "description": "Returns a `String` when format is specified. e.g.`'0,0.0000''`",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "label",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "SCALAR",
+                "name": "FormattedNumber",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -16184,6 +16357,16 @@
               "description": "Artworks Elastic Search results",
               "args": [
                 {
+                  "name": "acquireable",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "aggregation_partner_cities",
                   "description": null,
                   "type": {
@@ -16266,16 +16449,6 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "ecommerce",
-                  "description": null,
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Boolean",
-                    "ofType": null
-                  },
-                  "defaultValue": null
-                },
-                {
                   "name": "extra_aggregation_gene_ids",
                   "description": null,
                   "type": {
@@ -16301,6 +16474,16 @@
                 },
                 {
                   "name": "include_medium_filter_in_aggregation",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "inquireable",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -16656,6 +16839,16 @@
               "description": "Artworks Elastic Search results",
               "args": [
                 {
+                  "name": "acquireable",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "aggregation_partner_cities",
                   "description": null,
                   "type": {
@@ -16738,16 +16931,6 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "ecommerce",
-                  "description": null,
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Boolean",
-                    "ofType": null
-                  },
-                  "defaultValue": null
-                },
-                {
                   "name": "extra_aggregation_gene_ids",
                   "description": null,
                   "type": {
@@ -16773,6 +16956,16 @@
                 },
                 {
                   "name": "include_medium_filter_in_aggregation",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "inquireable",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -17137,6 +17330,16 @@
               "description": null,
               "args": [
                 {
+                  "name": "acquireable",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "aggregation_partner_cities",
                   "description": null,
                   "type": {
@@ -17219,16 +17422,6 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "ecommerce",
-                  "description": null,
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Boolean",
-                    "ofType": null
-                  },
-                  "defaultValue": null
-                },
-                {
                   "name": "extra_aggregation_gene_ids",
                   "description": null,
                   "type": {
@@ -17254,6 +17447,16 @@
                 },
                 {
                   "name": "include_medium_filter_in_aggregation",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "inquireable",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -17536,6 +17739,16 @@
               "description": "Artworks Elastic Search results",
               "args": [
                 {
+                  "name": "acquireable",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "aggregation_partner_cities",
                   "description": null,
                   "type": {
@@ -17618,16 +17831,6 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "ecommerce",
-                  "description": null,
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Boolean",
-                    "ofType": null
-                  },
-                  "defaultValue": null
-                },
-                {
                   "name": "extra_aggregation_gene_ids",
                   "description": null,
                   "type": {
@@ -17653,6 +17856,16 @@
                 },
                 {
                   "name": "include_medium_filter_in_aggregation",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "inquireable",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -24338,6 +24551,41 @@
           "possibleTypes": null
         },
         {
+          "kind": "OBJECT",
+          "name": "ArtworkInfoRow",
+          "description": null,
+          "fields": [
+            {
+              "name": "label",
+              "description": "Label for information row",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "details",
+              "description": "Additional details about given attribute",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
           "kind": "ENUM",
           "name": "ArtistSorts",
           "description": null,
@@ -24658,6 +24906,141 @@
               "deprecationReason": null
             }
           ],
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "CreditCard",
+          "description": null,
+          "fields": [
+            {
+              "name": "__id",
+              "description": "A globally unique ID.",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "id",
+              "description": "A type-specific ID.",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "_id",
+              "description": "A type-specific Gravity Mongo Document ID.",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "brand",
+              "description": "Brand of credit card",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "name",
+              "description": "Name on the credit card",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "last_digits",
+              "description": "Last four digits on the credit card",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "expiration_month",
+              "description": "Credit card's expiration month",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "expiration_year",
+              "description": "Credit card's expiration year",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
           "possibleTypes": null
         },
         {
@@ -26419,6 +26802,16 @@
               "description": null,
               "args": [
                 {
+                  "name": "acquireable",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "aggregation_partner_cities",
                   "description": null,
                   "type": {
@@ -26501,16 +26894,6 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "ecommerce",
-                  "description": null,
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Boolean",
-                    "ofType": null
-                  },
-                  "defaultValue": null
-                },
-                {
                   "name": "extra_aggregation_gene_ids",
                   "description": null,
                   "type": {
@@ -26536,6 +26919,16 @@
                 },
                 {
                   "name": "include_medium_filter_in_aggregation",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "inquireable",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -26818,6 +27211,16 @@
               "description": "Artworks Elastic Search results",
               "args": [
                 {
+                  "name": "acquireable",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "aggregation_partner_cities",
                   "description": null,
                   "type": {
@@ -26900,16 +27303,6 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "ecommerce",
-                  "description": null,
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Boolean",
-                    "ofType": null
-                  },
-                  "defaultValue": null
-                },
-                {
                   "name": "extra_aggregation_gene_ids",
                   "description": null,
                   "type": {
@@ -26935,6 +27328,16 @@
                 },
                 {
                   "name": "include_medium_filter_in_aggregation",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "inquireable",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -31134,8 +31537,8 @@
                 "name": "Boolean",
                 "ofType": null
               },
-              "isDeprecated": false,
-              "deprecationReason": null
+              "isDeprecated": true,
+              "deprecationReason": "Purchase requests are not supported. Replaced by buy now."
             },
             {
               "name": "from_last_viewed_message_id",
@@ -32939,6 +33342,16 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "for_sale",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "after",
                   "description": null,
                   "type": {
@@ -33097,6 +33510,18 @@
               "deprecationReason": null
             },
             {
+              "name": "href",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "artworks",
               "description": "List of artworks in this group.",
               "args": [],
@@ -33108,6 +33533,59 @@
                   "name": "Artwork",
                   "ofType": null
                 }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "artworksConnection",
+              "description": null,
+              "args": [
+                {
+                  "name": "after",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "first",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "before",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "last",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "ArtworkConnection",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -33143,6 +33621,49 @@
               "type": {
                 "kind": "OBJECT",
                 "name": "Image",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "published_at",
+              "description": null,
+              "args": [
+                {
+                  "name": "convert_to_utc",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "format",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "timezone",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -33512,6 +34033,18 @@
               "type": {
                 "kind": "ENUM",
                 "name": "OrderFulfillmentType",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "shippingName",
+              "description": "Name for shipping information",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -34145,6 +34678,18 @@
               "type": {
                 "kind": "OBJECT",
                 "name": "User",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "creditCard",
+              "description": "Credit card on this order",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "CreditCard",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -35985,6 +36530,16 @@
               "description": "Artworks Elastic Search results",
               "args": [
                 {
+                  "name": "acquireable",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "aggregation_partner_cities",
                   "description": null,
                   "type": {
@@ -36067,16 +36622,6 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "ecommerce",
-                  "description": null,
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Boolean",
-                    "ofType": null
-                  },
-                  "defaultValue": null
-                },
-                {
                   "name": "extra_aggregation_gene_ids",
                   "description": null,
                   "type": {
@@ -36102,6 +36647,16 @@
                 },
                 {
                   "name": "include_medium_filter_in_aggregation",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "inquireable",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -37914,15 +38469,15 @@
             },
             {
               "name": "is_purchasable",
-              "description": "True for inquireable artworks that have an exact price.",
+              "description": null,
               "args": [],
               "type": {
                 "kind": "SCALAR",
                 "name": "Boolean",
                 "ofType": null
               },
-              "isDeprecated": false,
-              "deprecationReason": null
+              "isDeprecated": true,
+              "deprecationReason": "Purchase requests are not supported. Replaced by buy now."
             },
             {
               "name": "is_saved",
@@ -38119,6 +38674,18 @@
             {
               "name": "shippingInfo",
               "description": "The string that describes domestic and international shipping.",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "shippingOrigin",
+              "description": "Minimal location information describing from where artwork will be shipped.",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -38441,6 +39008,54 @@
               "deprecationReason": null
             },
             {
+              "name": "framed",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "ArtworkInfoRow",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "signatureInfo",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "ArtworkInfoRow",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "conditionDescription",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "ArtworkInfoRow",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "certificateOfAuthenticity",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "ArtworkInfoRow",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "cached",
               "description": null,
               "args": [],
@@ -38702,6 +39317,16 @@
               "description": null,
               "args": [
                 {
+                  "name": "acquireable",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "aggregation_partner_cities",
                   "description": null,
                   "type": {
@@ -38784,16 +39409,6 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "ecommerce",
-                  "description": null,
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Boolean",
-                    "ofType": null
-                  },
-                  "defaultValue": null
-                },
-                {
                   "name": "extra_aggregation_gene_ids",
                   "description": null,
                   "type": {
@@ -38819,6 +39434,16 @@
                 },
                 {
                   "name": "include_medium_filter_in_aggregation",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "inquireable",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -39101,6 +39726,16 @@
               "description": "Artworks Elastic Search results",
               "args": [
                 {
+                  "name": "acquireable",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "aggregation_partner_cities",
                   "description": null,
                   "type": {
@@ -39183,16 +39818,6 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "ecommerce",
-                  "description": null,
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Boolean",
-                    "ofType": null
-                  },
-                  "defaultValue": null
-                },
-                {
                   "name": "extra_aggregation_gene_ids",
                   "description": null,
                   "type": {
@@ -39218,6 +39843,16 @@
                 },
                 {
                   "name": "include_medium_filter_in_aggregation",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "inquireable",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -40410,6 +41045,16 @@
               "description": "Artworks Elastic Search results",
               "args": [
                 {
+                  "name": "acquireable",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "aggregation_partner_cities",
                   "description": null,
                   "type": {
@@ -40492,16 +41137,6 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "ecommerce",
-                  "description": null,
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Boolean",
-                    "ofType": null
-                  },
-                  "defaultValue": null
-                },
-                {
                   "name": "extra_aggregation_gene_ids",
                   "description": null,
                   "type": {
@@ -40527,6 +41162,16 @@
                 },
                 {
                   "name": "include_medium_filter_in_aggregation",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "inquireable",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -41167,6 +41812,33 @@
               "deprecationReason": null
             },
             {
+              "name": "credit_card",
+              "description": "A user's credit card",
+              "args": [
+                {
+                  "name": "id",
+                  "description": "The ID of the Credit Card",
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "CreditCard",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "external_partner",
               "description": "An External Partner not on the platform",
               "args": [
@@ -41529,6 +42201,16 @@
               "description": "Artworks Elastic Search results",
               "args": [
                 {
+                  "name": "acquireable",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "aggregation_partner_cities",
                   "description": null,
                   "type": {
@@ -41611,16 +42293,6 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "ecommerce",
-                  "description": null,
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Boolean",
-                    "ofType": null
-                  },
-                  "defaultValue": null
-                },
-                {
                   "name": "extra_aggregation_gene_ids",
                   "description": null,
                   "type": {
@@ -41646,6 +42318,16 @@
                 },
                 {
                   "name": "include_medium_filter_in_aggregation",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "inquireable",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -44411,125 +45093,6 @@
           "possibleTypes": null
         },
         {
-          "kind": "OBJECT",
-          "name": "CreditCard",
-          "description": null,
-          "fields": [
-            {
-              "name": "__id",
-              "description": "A globally unique ID.",
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "ID",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "id",
-              "description": "A type-specific ID.",
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "_id",
-              "description": "A type-specific Gravity Mongo Document ID.",
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "brand",
-              "description": "Brand of credit card",
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "name",
-              "description": "Name on the credit card",
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "last_digits",
-              "description": "Last four digits on the credit card",
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "expiration_month",
-              "description": "Credit card's expiration month",
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "expiration_year",
-              "description": "Credit card's expiration year",
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
           "kind": "UNION",
           "name": "CreditCardMutationType",
           "description": null,
@@ -45699,6 +46262,16 @@
               "type": {
                 "kind": "ENUM",
                 "name": "OrderFulfillmentType",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "shippingName",
+              "description": "Name for the shipping information",
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
                 "ofType": null
               },
               "defaultValue": null

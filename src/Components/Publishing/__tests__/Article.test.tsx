@@ -87,6 +87,18 @@ it("does not renders mobile MinimalCtaBanner for series article layouts for logg
   expect(article.find(MinimalCtaBanner).length).toBe(0)
 })
 
+it("does not render separate MinimalCtaBanner for articles after the initial article in infinite scroll", () => {
+  const article = shallow(
+    <Article
+      article={StandardArticle}
+      isMobile
+      isLoggedIn={false}
+      isTruncated
+    />
+  )
+  expect(article.find(MinimalCtaBanner).length).toBe(0)
+})
+
 it("it sets state appropriately based on scroll direction", () => {
   const aWindow: any = window
 

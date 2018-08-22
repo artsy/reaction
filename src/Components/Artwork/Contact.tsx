@@ -1,8 +1,11 @@
+import { Contact_artwork } from "__generated__/Contact_artwork.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import TextLink from "../TextLink"
 
-export interface ContactProps extends RelayProps, React.HTMLProps<Contact> {}
+export interface ContactProps extends React.HTMLProps<Contact> {
+  artwork: Contact_artwork
+}
 
 export class Contact extends React.Component<ContactProps, null> {
   contactLine() {
@@ -89,31 +92,3 @@ export default createFragmentContainer(
     }
   `
 )
-
-interface RelayProps {
-  artwork: {
-    _id: string
-    href: string | null
-    is_inquireable: boolean | null
-    sale: {
-      is_auction: boolean | null
-      is_live_open: boolean | null
-      is_open: boolean | null
-      is_closed: boolean | null
-    } | null
-    partner: {
-      type: string | null
-    } | null
-    sale_artwork: {
-      highest_bid: {
-        display: string | null
-      } | null
-      opening_bid: {
-        display: string | null
-      } | null
-      counts: {
-        bidder_positions: boolean | number | string | null
-      } | null
-    } | null
-  }
-}

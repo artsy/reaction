@@ -68,6 +68,18 @@ storiesOf("Styleguide/Elements", module).add("Button", () => {
         </Button>
       </Section>
 
+      <Section title="noOutline">
+        <Button variant="noOutline" size="small" m={0.5}>
+          Reset
+        </Button>
+        <Button variant="noOutline" size="medium" m={0.5}>
+          Reset
+        </Button>
+        <Button variant="noOutline" size="large" m={0.5}>
+          Reset
+        </Button>
+      </Section>
+
       <Section title="Full width">
         <Button width="100%" size="large" m={0.5}>
           Contact Gallery

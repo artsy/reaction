@@ -1,6 +1,8 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+declare const _Genes_artist$ref: unique symbol;
+export type Genes_artist$ref = typeof _Genes_artist$ref;
 export type Genes_artist = {
     readonly related: ({
         readonly genes: ({
@@ -12,6 +14,7 @@ export type Genes_artist = {
             }) | null> | null;
         }) | null;
     }) | null;
+    readonly " $refType": Genes_artist$ref;
 };
 
 

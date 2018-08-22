@@ -42,8 +42,6 @@ export interface BorderBoxProps
     WidthProps,
     HeightProps {
   hover?: boolean
-  responsive?: boolean
-  hasSiblings?: boolean
 }
 
 export const BorderBox = styled(Flex).attrs<BorderBoxProps>({})`
@@ -61,24 +59,23 @@ export const BorderBox = styled(Flex).attrs<BorderBoxProps>({})`
         border-color: ${color("black60")};
       }
     `};
-  ${({ responsive }) =>
-    responsive &&
-    media.sm`
-      padding: ${space(3)}px;
-    `};
-  ${({ hasSiblings }) =>
-    hasSiblings &&
-    css`
-      :not(:first-child) {
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-      }
-      :not(:last-child) {
-        border-bottom: 0;
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-      }
-    `};
+`
+
+export const StackableBorderBox = styled(BorderBox)`
+  :not(:first-child) {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+  :not(:last-child) {
+    border-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  ${media.sm`
+    padding: ${space(3)}px;
+    ${styledSpace};
+  `};
 `
 
 export interface BoxProps
