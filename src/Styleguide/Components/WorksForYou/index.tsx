@@ -2,6 +2,8 @@ import React from "react"
 import { graphql, QueryRenderer } from "react-relay"
 
 import { ContextConsumer, ContextProps } from "Components/Artsy"
+import Spinner from "Components/Spinner"
+import styled from "styled-components"
 import WorksForYouArtist from "./WorksForYouArtist"
 import WorksForYouContent from "./WorksForYouContents"
 
@@ -9,6 +11,12 @@ export interface Props extends ContextProps {
   artistID?: string
   forSale?: boolean
 }
+
+const SpinnerContainer = styled.div`
+  width: 100%;
+  height: 100px;
+  position: relative;
+`
 
 class WorksForYou extends React.Component<Props> {
   static defaultProps = {
@@ -59,7 +67,11 @@ class WorksForYou extends React.Component<Props> {
               )
             }
           } else {
-            return null
+            return (
+              <SpinnerContainer>
+                <Spinner />
+              </SpinnerContainer>
+            )
           }
         }}
       />
