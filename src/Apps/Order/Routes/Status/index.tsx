@@ -1,5 +1,5 @@
 import { Sans, Serif } from "@artsy/palette"
-import { Submission_order } from "__generated__/Submission_order.graphql"
+import { Status_order } from "__generated__/Status_order.graphql"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -12,14 +12,14 @@ import { Helper } from "../../Components/Helper"
 import { ShippingAndPaymentDetailsFragmentContainer as ShippingAndPaymentDetails } from "../../Components/ShippingAndPaymentDetails"
 import { TransactionSummaryFragmentContainer as TransactionSummary } from "../../Components/TransactionSummary"
 
-export interface SubmissionProps {
-  order: Submission_order
+export interface StatusProps {
+  order: Status_order
   mediator?: {
     trigger: (action: string, config: object) => void
   }
 }
 
-export class SubmissionRoute extends Component<SubmissionProps> {
+export class StatusRoute extends Component<StatusProps> {
   render() {
     const { order } = this.props
 
@@ -61,10 +61,10 @@ export class SubmissionRoute extends Component<SubmissionProps> {
   }
 }
 
-export const SubmissionFragmentContainer = createFragmentContainer(
-  SubmissionRoute,
+export const StatusFragmentContainer = createFragmentContainer(
+  StatusRoute,
   graphql`
-    fragment Submission_order on Order {
+    fragment Status_order on Order {
       id
       code
       ...TransactionSummary_order

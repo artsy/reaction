@@ -4,9 +4,9 @@ import { ConcreteFragment } from "relay-runtime";
 import { ItemReview_artwork$ref } from "./ItemReview_artwork.graphql";
 import { ShippingAndPaymentDetails_order$ref } from "./ShippingAndPaymentDetails_order.graphql";
 import { TransactionSummary_order$ref } from "./TransactionSummary_order.graphql";
-declare const _Submission_order$ref: unique symbol;
-export type Submission_order$ref = typeof _Submission_order$ref;
-export type Submission_order = {
+declare const _Status_order$ref: unique symbol;
+export type Status_order$ref = typeof _Status_order$ref;
+export type Status_order = {
     readonly id: string | null;
     readonly code: string | null;
     readonly lineItems: ({
@@ -20,7 +20,7 @@ export type Submission_order = {
         }) | null> | null;
     }) | null;
     readonly " $fragmentRefs": TransactionSummary_order$ref & ShippingAndPaymentDetails_order$ref;
-    readonly " $refType": Submission_order$ref;
+    readonly " $refType": Status_order$ref;
 };
 
 
@@ -42,7 +42,7 @@ v1 = {
 };
 return {
   "kind": "Fragment",
-  "name": "Submission_order",
+  "name": "Status_order",
   "type": "Order",
   "metadata": null,
   "argumentDefinitions": [],
@@ -127,5 +127,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'bd0e2493065931b528bb30c049e387e7';
+(node as any).hash = '3c83ed34f8f403d98cda27a76b3c37d0';
 export default node;
