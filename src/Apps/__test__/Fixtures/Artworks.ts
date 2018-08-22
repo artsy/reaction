@@ -646,3 +646,24 @@ export const MoctionArtwork = {
   is_price_range: false,
   is_for_sale: false,
 }
+
+export const WithAllConditionInfo = {
+  __id: "QXJ0d29yazpqZXJlbXktY2hhbmRsZXItcHJvbmUtcG9zaXRpb24=",
+  framed: {
+    label: "Framed",
+    details: null,
+  },
+  signatureInfo: {
+    label: "Signed",
+    details: "Hand-signed by the artist, stamped by artist’s estate.",
+  },
+  conditionDescription: {
+    label: "Condition details",
+    details:
+      "Slight discoloration from sun exposure, light abrasion in lower left.",
+  },
+  certificateOfAuthenticity: {
+    label: "Certificate of authenticity",
+    details: null,
+  },
+}
