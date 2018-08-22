@@ -1,6 +1,7 @@
 import { Sans, Serif } from "@artsy/palette"
 import { WorksForYouContents_viewer } from "__generated__/WorksForYouContents_viewer.graphql"
 import { ChevronIcon } from "Assets/Icons/ChevronIcon"
+import { ContextProps } from "Components/Artsy"
 import ArtworkGrid from "Components/ArtworkGrid"
 import * as React from "react"
 import ReactDOM from "react-dom"
@@ -11,7 +12,7 @@ import {
   RelayPaginationProp,
 } from "react-relay"
 
-interface Props {
+interface Props extends ContextProps {
   relay?: RelayPaginationProp
   viewer: WorksForYouContents_viewer
 }
@@ -103,6 +104,7 @@ export class WorksForYouContent extends React.Component<Props, State> {
                   artworks={node.artworksConnection}
                   columnCount={4}
                   itemMargin={40}
+                  currentUser={this.props.currentUser}
                 />
               </div>
             )
