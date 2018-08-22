@@ -1,6 +1,7 @@
 {
   "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
   "rules": {
+    "no-import-un-mocked": true,
     "curly": false,
     "interface-name": [true, "never-prefix"],
     "jsx-boolean-value": [true, "never"],
@@ -16,5 +17,6 @@
     "no-namespace": [true, "allow-declarations"],
     "trailing-comma": false,
     "variable-name": [true, "ban-keywords", "allow-leading-underscore"]
-  }
+  },
+  "rulesDirectory": ["tslint"]
 }
