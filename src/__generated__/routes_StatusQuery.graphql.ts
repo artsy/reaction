@@ -1,29 +1,29 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { Submission_order$ref } from "./Submission_order.graphql";
-export type routes_SubmissionQueryVariables = {
+import { Status_order$ref } from "./Status_order.graphql";
+export type routes_StatusQueryVariables = {
     readonly orderID: string;
 };
-export type routes_SubmissionQueryResponse = {
+export type routes_StatusQueryResponse = {
     readonly order: ({
-        readonly " $fragmentRefs": Submission_order$ref;
+        readonly " $fragmentRefs": Status_order$ref;
     }) | null;
 };
 
 
 
 /*
-query routes_SubmissionQuery(
+query routes_StatusQuery(
   $orderID: String!
 ) {
   order(id: $orderID) {
-    ...Submission_order
+    ...Status_order
     __id: id
   }
 }
 
-fragment Submission_order on Order {
+fragment Status_order on Order {
   id
   code
   ...TransactionSummary_order
@@ -174,13 +174,13 @@ v5 = [
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "routes_SubmissionQuery",
+  "name": "routes_StatusQuery",
   "id": null,
-  "text": "query routes_SubmissionQuery(\n  $orderID: String!\n) {\n  order(id: $orderID) {\n    ...Submission_order\n    __id: id\n  }\n}\n\nfragment Submission_order on Order {\n  id\n  code\n  ...TransactionSummary_order\n  ...ShippingAndPaymentDetails_order\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          ...ItemReview_artwork\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n\nfragment TransactionSummary_order on Order {\n  shippingTotal\n  taxTotal\n  itemsTotal\n  buyerTotal\n  partner {\n    name\n    __id\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_transactionSummary: resized(width: 55) {\n              url\n            }\n          }\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n\nfragment ShippingAndPaymentDetails_order on Order {\n  fulfillmentType\n  shippingName\n  shippingAddressLine1\n  shippingAddressLine2\n  shippingCity\n  shippingPostalCode\n  shippingRegion\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  creditCard {\n    brand\n    last_digits\n    expiration_year\n    expiration_month\n    __id\n  }\n  __id: id\n}\n\nfragment ItemReview_artwork on Artwork {\n  artist_names\n  title\n  date\n  medium\n  dimensions {\n    in\n    cm\n  }\n  attribution_class {\n    short_description\n  }\n  image {\n    resized(width: 185) {\n      url\n    }\n  }\n  __id\n}\n",
+  "text": "query routes_StatusQuery(\n  $orderID: String!\n) {\n  order(id: $orderID) {\n    ...Status_order\n    __id: id\n  }\n}\n\nfragment Status_order on Order {\n  id\n  code\n  ...TransactionSummary_order\n  ...ShippingAndPaymentDetails_order\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          ...ItemReview_artwork\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n\nfragment TransactionSummary_order on Order {\n  shippingTotal\n  taxTotal\n  itemsTotal\n  buyerTotal\n  partner {\n    name\n    __id\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_transactionSummary: resized(width: 55) {\n              url\n            }\n          }\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n\nfragment ShippingAndPaymentDetails_order on Order {\n  fulfillmentType\n  shippingName\n  shippingAddressLine1\n  shippingAddressLine2\n  shippingCity\n  shippingPostalCode\n  shippingRegion\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  creditCard {\n    brand\n    last_digits\n    expiration_year\n    expiration_month\n    __id\n  }\n  __id: id\n}\n\nfragment ItemReview_artwork on Artwork {\n  artist_names\n  title\n  date\n  medium\n  dimensions {\n    in\n    cm\n  }\n  attribution_class {\n    short_description\n  }\n  image {\n    resized(width: 185) {\n      url\n    }\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "routes_SubmissionQuery",
+    "name": "routes_StatusQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -196,7 +196,7 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "Submission_order",
+            "name": "Status_order",
             "args": null
           },
           v2
@@ -206,7 +206,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "routes_SubmissionQuery",
+    "name": "routes_StatusQuery",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -539,5 +539,5 @@ return {
   }
 };
 })();
-(node as any).hash = '2327a8a5d5ec421c21ee604875374966';
+(node as any).hash = '8f8410086ebd51a9ba12556cc36730ed';
 export default node;

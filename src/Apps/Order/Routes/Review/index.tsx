@@ -40,7 +40,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
   }
 
   onOrderSubmitted() {
-    this.props.router.push(`/order2/${this.props.order.id}/submission`)
+    this.props.router.push(`/order2/${this.props.order.id}/status`)
   }
 
   render() {

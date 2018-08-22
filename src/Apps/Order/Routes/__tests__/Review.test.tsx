@@ -42,6 +42,6 @@ describe("Review", () => {
       .props()
       .onSelect()
     component.find(Button).simulate("click")
-    expect(pushMock).toBeCalledWith("/order2/1234/submission")
+    expect(pushMock).toBeCalledWith("/order2/1234/status")
   })
 })
