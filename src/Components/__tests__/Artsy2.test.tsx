@@ -1,7 +1,7 @@
+import * as Artsy from "Artsy/Router/Artsy2"
 import { render } from "enzyme"
 import React from "react"
 import renderer from "react-test-renderer"
-import * as Artsy from "Router/Artsy2"
 import { ContextProps } from "../Artsy"
 
 jest.mock("../../Relay/createEnvironment", () => ({

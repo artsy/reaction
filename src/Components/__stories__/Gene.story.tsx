@@ -2,7 +2,7 @@ import { storiesOf } from "@storybook/react"
 import React from "react"
 import { Contents } from "../Gene"
 
-import { ContextProvider } from "Router/Artsy2"
+import { ContextProvider } from "Artsy/Router/Artsy2"
 
 storiesOf("Components/Pages/Gene/Contents", module)
   .add("Artists Mode - Minimalism", () => {

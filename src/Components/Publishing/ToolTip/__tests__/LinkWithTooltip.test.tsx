@@ -1,9 +1,9 @@
+import { ContextProvider } from "Artsy/Router/Artsy2"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import { defer } from "lodash"
 import PropTypes from "prop-types"
 import React from "react"
-import { ContextProvider } from "Router/Artsy2"
 import { Artists, Genes } from "../../Fixtures/Components"
 import { wrapperWithContext } from "../../Fixtures/Helpers"
 import {

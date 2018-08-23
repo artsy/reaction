@@ -1,6 +1,6 @@
+import { Boot } from "Artsy/Router"
 import { mount } from "enzyme"
 import React from "react"
-import { Boot } from "Router"
 import { exhibitions } from "../../../Apps/__test__/Fixtures/SelectedExhibitions"
 import { SelectedExhibitions } from "../SelectedExhibitions"
 

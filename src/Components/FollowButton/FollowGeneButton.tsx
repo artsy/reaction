@@ -1,3 +1,4 @@
+import * as Artsy from "Artsy/Router/Artsy2"
 import { extend } from "lodash"
 import React from "react"
 import {
@@ -7,7 +8,6 @@ import {
   RelayProp,
 } from "react-relay"
 import track from "react-tracking"
-import * as Artsy from "Router/Artsy2"
 import { FollowGeneButton_gene } from "../../__generated__/FollowGeneButton_gene.graphql"
 import { FollowButtonDeprecated } from "./ButtonDeprecated"
 import { FollowTrackingData } from "./Typings"

@@ -1,7 +1,7 @@
 import { ContextProps as _ContextProps } from "Components/Artsy"
 import React, { SFC } from "react"
 import { getUser } from "Utils/getUser"
-import { createEnvironment } from "../Relay/createEnvironment"
+import { createEnvironment } from "../../Relay/createEnvironment"
 
 // FIXME: Move from Artsy to Artsy2
 export interface ContextProps extends _ContextProps {

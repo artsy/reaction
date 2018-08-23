@@ -1,6 +1,7 @@
 import { Save_artwork } from "__generated__/Save_artwork.graphql"
-import { track } from "Analytics"
-import * as Schema from "Analytics/Schema"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
+import * as Artsy from "Artsy/Router/Artsy2"
 import { isNull } from "lodash"
 import React from "react"
 import {
@@ -10,7 +11,6 @@ import {
   RelayProp,
 } from "react-relay"
 import * as RelayRuntimeTypes from "relay-runtime"
-import * as Artsy from "Router/Artsy2"
 import styled from "styled-components"
 import colors from "../../Assets/Colors"
 import Icon from "../Icon"

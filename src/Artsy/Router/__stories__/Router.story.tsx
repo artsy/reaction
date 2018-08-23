@@ -1,9 +1,9 @@
 import { storiesOf } from "@storybook/react"
+import { StorybooksRouter } from "Artsy/Router"
+import { PreloadLink } from "Artsy/Router"
+import { ContextConsumer } from "Artsy/Router/Artsy2"
 import React from "react"
 import { graphql } from "react-relay"
-import { StorybooksRouter } from "Router"
-import { PreloadLink } from "Router"
-import { ContextConsumer } from "Router/Artsy2"
 
 const routes = [
   {

@@ -1,7 +1,7 @@
+import { ContextProvider } from "Artsy/Router"
 import { mount } from "enzyme"
 import React from "react"
 import renderer from "react-test-renderer"
-import { ContextProvider } from "Router"
 import { Provider } from "unstated"
 import { Helper } from "../Helper"
 

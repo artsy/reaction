@@ -1,8 +1,8 @@
+import { ContextProps, ContextProvider, withContext } from "Artsy/Router/Artsy2"
 import React from "react"
 import { GraphQLTaggedNode, ReadyState } from "react-relay"
 import { QueryRenderer } from "react-relay"
 import { CacheConfig, RerunParam, Variables } from "relay-runtime"
-import { ContextProps, ContextProvider, withContext } from "Router/Artsy2"
 
 /**
  * A copy of the upstream interface, minus the `environment` field.

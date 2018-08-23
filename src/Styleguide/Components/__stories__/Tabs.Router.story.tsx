@@ -1,5 +1,5 @@
+import { StorybooksRouter } from "Artsy/Router"
 import React from "react"
-import { StorybooksRouter } from "Router"
 import { storiesOf } from "storybook/storiesOf"
 import { RouteTab, RouteTabs } from "Styleguide/Components/RouteTabs"
 import { Section } from "Styleguide/Utils/Section"

@@ -1,6 +1,6 @@
 import { OrderWithShippingDetails } from "Apps/__test__/Fixtures/Order"
+import { StorybooksRouter } from "Artsy/Router"
 import React from "react"
-import { StorybooksRouter } from "Router"
 import { storiesOf } from "storybook/storiesOf"
 import { routes as orderRoutes } from "../Order/routes"
 

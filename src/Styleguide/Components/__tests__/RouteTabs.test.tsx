@@ -1,7 +1,7 @@
+import { Boot } from "Artsy/Router"
+import { StorybooksRouter } from "Artsy/Router"
 import { mount } from "enzyme"
 import React from "react"
-import { Boot } from "Router"
-import { StorybooksRouter } from "Router"
 import { RouteTab, RouteTabs } from "../RouteTabs"
 
 describe("RouteTabs", () => {

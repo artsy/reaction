@@ -1,5 +1,5 @@
+import { ContextProvider } from "Artsy/Router/Artsy2"
 import React from "react"
-import { ContextProvider } from "Router/Artsy2"
 import { storiesOfPublishing } from "../../../__stories__/storiesOf.js"
 import { Article } from "../Article"
 import {

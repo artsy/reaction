@@ -1,6 +1,6 @@
+import { Boot } from "Artsy/Router"
 import { mount } from "enzyme"
 import React from "react"
-import { Boot } from "Router"
 import { LargeSlider, Slider, SmallSlider } from "../Slider"
 
 describe("Slider", () => {

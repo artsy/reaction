@@ -1,3 +1,4 @@
+import { ContextProps, withContext } from "Artsy/Router/Artsy2"
 import * as React from "react"
 import {
   commitMutation,
@@ -8,7 +9,6 @@ import {
 } from "react-relay"
 import track from "react-tracking"
 import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
-import { ContextProps, withContext } from "Router/Artsy2"
 import Events from "../../../../Utils/Events"
 import ReplaceTransition from "../../../Animation/ReplaceTransition"
 import ItemLink, { LinkContainer } from "../../ItemLink"

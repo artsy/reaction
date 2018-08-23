@@ -13,7 +13,7 @@ import { Trackables } from "./Schema"
  * @example
  *
  *      ```ts
- *      import { track } from "Analytics"
+ *      import { track } from "Artsy/Analytics"
  *
  *      interface Props {
  *        artist: {
@@ -58,7 +58,7 @@ import { Trackables } from "./Schema"
  * @example
  *
  *      ```ts
- *      import { track as _track, Track } from "Analytics"
+ *      import { track as _track, Track } from "Artsy/Analytics"
  *
  *      interface Props {
  *        artist: {
@@ -119,7 +119,7 @@ export interface Track<PP = {}, SS = null, AA extends Array<any> = Array<any>> {
  *
  *     ```ts
  *     import React from "react"
- *     import { track } from "Analytics"
+ *     import { track } from "Artsy/Analytics"
  *
  *     // This is what enables tracking for further use inside the component.
  *     @track()

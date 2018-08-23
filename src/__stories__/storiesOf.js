@@ -1,6 +1,6 @@
 import React from "react"
 import { storiesOf as _storiesOf } from "@storybook/react"
-import { Boot } from "Router"
+import { Boot } from "Artsy/Router"
 import track from "react-tracking"
 import Events from "../Utils/Events"
 

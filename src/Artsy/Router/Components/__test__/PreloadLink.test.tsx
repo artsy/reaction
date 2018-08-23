@@ -1,9 +1,9 @@
+import { PreloadLink } from "Artsy/Router"
 import { ContextProvider } from "Components/Artsy"
 import { mount } from "enzyme"
 import React from "react"
 import { fetchQuery } from "react-relay"
 import "regenerator-runtime/runtime" // FIXME: Open PR react-relay-network-modern to fix this
-import { PreloadLink } from "Router"
 
 jest.mock("react-relay", () => ({
   fetchQuery: jest.fn(),

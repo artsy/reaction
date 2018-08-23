@@ -1,7 +1,7 @@
+import { Boot } from "Artsy/Router"
+import { ContextConsumer } from "Artsy/Router"
 import { mount } from "enzyme"
 import React from "react"
-import { Boot } from "Router"
-import { ContextConsumer } from "Router"
 
 describe("Boot", () => {
   const bootProps: any = {

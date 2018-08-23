@@ -1,7 +1,7 @@
 import { RelatedArtistsList_artist } from "__generated__/RelatedArtistsList_artist.graphql"
+import { ContextConsumer } from "Artsy/Router"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
-import { ContextConsumer } from "Router"
 import { ArtistCardFragmentContainer as ArtistCard } from "Styleguide/Components/ArtistCard"
 import { PaginationFragmentContainer as Pagination } from "Styleguide/Components/Pagination"
 import { Box } from "Styleguide/Elements/Box"

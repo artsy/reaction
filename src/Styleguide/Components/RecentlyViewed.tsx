@@ -1,10 +1,10 @@
 import { Serif } from "@artsy/palette"
 import { RecentlyViewed_me } from "__generated__/RecentlyViewed_me.graphql"
+import { ContextConsumer } from "Artsy/Router"
 import { FillwidthItem } from "Components/Artwork/FillwidthItem"
 import React from "react"
 import { QueryRenderer } from "react-relay"
 import { createFragmentContainer, graphql } from "react-relay"
-import { ContextConsumer } from "Router"
 import { Slider } from "Styleguide/Components/Slider"
 import { Spacer } from "Styleguide/Elements/Spacer"
 

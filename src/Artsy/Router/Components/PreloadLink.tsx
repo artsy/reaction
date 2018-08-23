@@ -1,13 +1,13 @@
+import { ContextConsumer } from "Artsy/Router/Artsy2"
+import * as Artsy from "Artsy/Router/Artsy2"
 import * as Found from "found"
-import { withRouter } from "found"
 import { Link } from "found"
+import { withRouter } from "found"
 import { isEmpty, isUndefined, last, pick } from "lodash/fp"
 import PropTypes from "prop-types"
 import React from "react"
-import { QueryRendererProps } from "react-relay"
 import { fetchQuery } from "react-relay"
-import * as Artsy from "Router/Artsy2"
-import { ContextConsumer } from "Router/Artsy2"
+import { QueryRendererProps } from "react-relay"
 import { Container, Subscribe } from "unstated"
 
 export interface PreloadLinkProps extends Artsy.ContextProps, Found.WithRouter {

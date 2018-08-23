@@ -1,9 +1,9 @@
+import { ContextProvider } from "Artsy/Router/Artsy2"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
 import { commitMutation } from "react-relay"
 import renderer from "react-test-renderer"
-import { ContextProvider } from "Router/Artsy2"
 import { FollowButtonDeprecated } from "../ButtonDeprecated"
 import FollowGeneButton from "../FollowGeneButton"
 

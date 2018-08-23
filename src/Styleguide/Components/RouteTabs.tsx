@@ -1,6 +1,6 @@
 import { color, Sans, space } from "@artsy/palette"
+import { PreloadLink, PreloadLinkProps } from "Artsy/Router"
 import React from "react"
-import { PreloadLink, PreloadLinkProps } from "Router"
 import styled from "styled-components"
 import { Flex } from "Styleguide/Elements/Flex"
 import { styles } from "./Tabs"

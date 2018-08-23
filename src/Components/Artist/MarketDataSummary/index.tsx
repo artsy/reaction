@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, QueryRenderer } from "react-relay"
 
-import { ContextProps, withContext } from "Router/Artsy2"
+import { ContextProps, withContext } from "Artsy/Router/Artsy2"
 import MarketDataSummary from "./MarketDataSummary"
 
 export interface Props extends ContextProps {

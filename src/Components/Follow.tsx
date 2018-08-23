@@ -7,6 +7,7 @@
  */
 
 import { Follow_artist } from "__generated__/Follow_artist.graphql"
+import * as Artsy from "Artsy/Router/Artsy2"
 import React from "react"
 import {
   commitMutation,
@@ -14,7 +15,6 @@ import {
   graphql,
   RelayProp,
 } from "react-relay"
-import * as Artsy from "Router/Artsy2"
 import styled from "styled-components"
 import colors from "../Assets/Colors"
 import Icon from "./Icon"

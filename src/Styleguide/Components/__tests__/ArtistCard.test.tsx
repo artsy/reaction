@@ -1,8 +1,8 @@
+import { Boot } from "Artsy/Router"
+import { MatchingMediaQueries } from "Artsy/Router/types"
 import { mount } from "enzyme"
 import { set } from "lodash/fp"
 import React from "react"
-import { Boot } from "Router"
-import { MatchingMediaQueries } from "Router/types"
 import { ArtistCard, LargeArtistCard, SmallArtistCard } from "../ArtistCard"
 
 describe("ArtistCard", () => {

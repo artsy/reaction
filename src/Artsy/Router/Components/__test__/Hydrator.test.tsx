@@ -1,6 +1,6 @@
+import { Hydrator } from "Artsy/Router/Components/Hydrator"
 import { mount } from "enzyme"
 import React from "react"
-import { Hydrator } from "Router/Components/Hydrator"
 
 describe("AppShell", () => {
   const getWrapper = (props = {}) => {
