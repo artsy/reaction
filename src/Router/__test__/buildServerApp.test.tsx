@@ -62,9 +62,9 @@ describe("buildServerApp", () => {
               "routes",
               "url",
               "context",
+              "currentUser",
               "relayEnvironment",
               "resolver",
-              "currentUser",
             ])
             expect(Object.keys(system.context)).toEqual(["mediator", "user"])
             setImmediate(done)

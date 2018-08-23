@@ -31,7 +31,7 @@ export const RouteTabs: any /* FIXME */ = styled(Flex)`
   }
 `
 
-export const RouteTab: React.SFC<PreloadLinkProps> = ({
+export const RouteTab: React.SFC<Partial<PreloadLinkProps>> = ({
   children,
   ...props
 }) => {

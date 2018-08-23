@@ -1,8 +1,15 @@
 import React, { SFC } from "react"
-import { AppShellProps } from "Router/types"
 import serialize from "serialize-javascript"
 
-export const Hydrator: SFC<AppShellProps> = props => {
+export interface HydratorProps {
+  loadableState?: {
+    getScriptTag: () => string
+  }
+  data?: Array<object>
+  url?: string
+}
+
+export const Hydrator: SFC<HydratorProps> = props => {
   const { loadableState, data = {}, children } = props
 
   let hydrationData

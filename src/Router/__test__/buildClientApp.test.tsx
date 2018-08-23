@@ -85,9 +85,9 @@ describe("buildClientApp", () => {
               "history",
               "routes",
               "context",
+              "currentUser",
               "relayEnvironment",
               "resolver",
-              "currentUser",
             ])
             expect(Object.keys(system.context)).toEqual(["mediator", "user"])
             setImmediate(done)

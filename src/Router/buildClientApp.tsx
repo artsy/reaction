@@ -6,16 +6,18 @@ import { Resolver } from "found-relay"
 import createInitialFarceRouter from "found/lib/createInitialFarceRouter"
 import createRender from "found/lib/createRender"
 import { loadComponents } from "loadable-components"
-import React from "react"
+import React, { ComponentType } from "react"
 import { createEnvironment } from "Relay/createEnvironment"
 import { Boot } from "Router/Components/Boot"
 import { Hydrator } from "Router/Components/Hydrator"
 import { getUser } from "Utils/getUser"
-import { AppConfig2, ClientResolveProps } from "./types"
+import { RouterConfig } from "./"
 
-export function buildClientApp(
-  config: AppConfig2
-): Promise<ClientResolveProps> {
+interface Resolve {
+  ClientApp: ComponentType<any>
+}
+
+export function buildClientApp(config: RouterConfig): Promise<Resolve> {
   return new Promise(async (resolve, reject) => {
     try {
       const {

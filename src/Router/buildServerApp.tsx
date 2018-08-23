@@ -3,17 +3,21 @@ import { Resolver } from "found-relay"
 import createRender from "found/lib/createRender"
 import { getFarceResult } from "found/lib/server"
 import { getLoadableState } from "loadable-components/server"
-import React from "react"
+import React, { ComponentType } from "react"
 import ReactDOMServer from "react-dom/server"
 import { createEnvironment } from "Relay/createEnvironment"
 import { Boot } from "Router/Components/Boot"
 import { Hydrator } from "Router/Components/Hydrator"
 import { getUser } from "Utils/getUser"
-import { AppConfig2, ServerResolveProps } from "./types"
+import { RouterConfig } from "./"
 
-export function buildServerApp(
-  config: AppConfig2
-): Promise<ServerResolveProps> {
+interface Resolve {
+  ServerApp?: ComponentType<any>
+  redirect?: string
+  status?: string
+}
+
+export function buildServerApp(config: RouterConfig): Promise<Resolve> {
   return new Promise(async (resolve, reject) => {
     try {
       const { context = {}, routes = [], url } = config

@@ -8,18 +8,21 @@ import { QueryRendererProps } from "react-relay"
 import { fetchQuery } from "react-relay"
 import * as Artsy from "Router/Artsy2"
 import { ContextConsumer } from "Router/Artsy2"
-import { AppStateContainer, PreloadLinkContainer } from "Router/types"
 import { Container, Subscribe } from "unstated"
 
-export interface PreloadLinkProps extends AppStateContainer {
+export interface PreloadLinkProps extends Artsy.ContextProps, Found.WithRouter {
   children?: any
   exact?: boolean
   immediate?: boolean
   onClick?: () => void
   onToggleLoading?: (isLoading: boolean) => void
   replace?: string
-  router?: any // TODO, from found
+  router: any // TODO, from found
   to?: string
+}
+
+export interface PreloadLinkContainer {
+  isLoading: boolean
 }
 
 export class PreloadLinkState extends Container<PreloadLinkContainer> {
@@ -34,9 +37,7 @@ export class PreloadLinkState extends Container<PreloadLinkContainer> {
   }
 }
 
-const _PreloadLink: React.SFC<
-  PreloadLinkProps & Artsy.ContextProps & Found.WithRouter
-> = preloadLinkProps => {
+const _PreloadLink: React.SFC<PreloadLinkProps> = preloadLinkProps => {
   /**
    * Create a Preloader wrapper to perform relay fetches and render out a <Link>
    */

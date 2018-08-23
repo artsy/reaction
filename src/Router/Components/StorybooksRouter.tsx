@@ -1,8 +1,9 @@
+import { HistoryOptions } from "farce"
 import { IMocks } from "graphql-tools/dist/Interfaces"
 import React from "react"
 import { createMockNetworkLayer } from "Relay/createMockNetworkLayer"
 import { buildClientApp } from "Router"
-import { HistoryOptions, MatchingMediaQueries } from "Router/types"
+import { MatchingMediaQueries } from "Utils/Responsive"
 
 interface Props {
   routes: Array<object>
