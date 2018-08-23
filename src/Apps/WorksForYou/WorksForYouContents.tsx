@@ -3,6 +3,7 @@ import { WorksForYouContents_viewer } from "__generated__/WorksForYouContents_vi
 import { ChevronIcon } from "Assets/Icons/ChevronIcon"
 import { ContextProps } from "Components/Artsy"
 import ArtworkGrid from "Components/ArtworkGrid"
+import Spinner from "Components/Spinner"
 import * as React from "react"
 import ReactDOM from "react-dom"
 import {
@@ -11,6 +12,7 @@ import {
   graphql,
   RelayPaginationProp,
 } from "react-relay"
+import styled from "styled-components"
 
 interface Props extends ContextProps {
   relay?: RelayPaginationProp
@@ -23,6 +25,12 @@ interface State {
 }
 
 const PageSize = 10
+
+const SpinnerContainer = styled.div`
+  width: 100%;
+  height: 100px;
+  position: relative;
+`
 
 export class WorksForYouContent extends React.Component<Props, State> {
   state = { loading: false, interval: null }
@@ -110,6 +118,9 @@ export class WorksForYouContent extends React.Component<Props, State> {
             )
           }
         )}
+        <SpinnerContainer>
+          {this.state.loading ? <Spinner /> : ""}
+        </SpinnerContainer>
       </div>
     )
   }

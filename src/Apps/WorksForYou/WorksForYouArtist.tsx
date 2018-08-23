@@ -3,6 +3,7 @@ import { WorksForYouArtist_viewer } from "__generated__/WorksForYouArtist_viewer
 import { ChevronIcon } from "Assets/Icons/ChevronIcon"
 import { ContextProps } from "Components/Artsy"
 import ArtworkGrid from "Components/ArtworkGrid"
+import Spinner from "Components/Spinner"
 import * as React from "react"
 import {
   ConnectionData,
@@ -10,6 +11,7 @@ import {
   graphql,
   RelayPaginationProp,
 } from "react-relay"
+import styled from "styled-components"
 
 interface Props extends ContextProps {
   relay?: RelayPaginationProp
@@ -23,6 +25,12 @@ interface State {
 }
 
 const PageSize = 10
+
+const SpinnerContainer = styled.div`
+  width: 100%;
+  height: 100px;
+  position: relative;
+`
 
 export class WorksForYouArtist extends React.Component<Props, State> {
   state = { loading: false }
@@ -81,6 +89,9 @@ export class WorksForYouArtist extends React.Component<Props, State> {
           onLoadMore={() => this.loadMoreArtworks()}
           currentUser={this.props.currentUser}
         />
+        <SpinnerContainer>
+          {this.state.loading ? <Spinner /> : ""}
+        </SpinnerContainer>
       </div>
     )
   }
