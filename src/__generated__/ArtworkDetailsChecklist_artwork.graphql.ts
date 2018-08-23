@@ -1,9 +1,9 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-declare const _ArtworkDetailsConditionInfo_artwork$ref: unique symbol;
-export type ArtworkDetailsConditionInfo_artwork$ref = typeof _ArtworkDetailsConditionInfo_artwork$ref;
-export type ArtworkDetailsConditionInfo_artwork = {
+declare const _ArtworkDetailsChecklist_artwork$ref: unique symbol;
+export type ArtworkDetailsChecklist_artwork$ref = typeof _ArtworkDetailsChecklist_artwork$ref;
+export type ArtworkDetailsChecklist_artwork = {
     readonly framed: ({
         readonly label: string | null;
         readonly details: string | null;
@@ -20,7 +20,7 @@ export type ArtworkDetailsConditionInfo_artwork = {
         readonly label: string | null;
         readonly details: string | null;
     }) | null;
-    readonly " $refType": ArtworkDetailsConditionInfo_artwork$ref;
+    readonly " $refType": ArtworkDetailsChecklist_artwork$ref;
 };
 
 
@@ -44,7 +44,7 @@ var v0 = [
 ];
 return {
   "kind": "Fragment",
-  "name": "ArtworkDetailsConditionInfo_artwork",
+  "name": "ArtworkDetailsChecklist_artwork",
   "type": "Artwork",
   "metadata": null,
   "argumentDefinitions": [],
@@ -99,5 +99,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '3783b10ba21ff253fbf846dfba1745bc';
+(node as any).hash = 'c8d15d3dc9346159f345ef5190245dbd';
 export default node;

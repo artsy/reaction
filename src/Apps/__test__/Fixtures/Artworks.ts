@@ -647,8 +647,9 @@ export const MoctionArtwork = {
   is_for_sale: false,
 }
 
-export const WithAllConditionInfo = {
-  __id: "QXJ0d29yazpqZXJlbXktY2hhbmRsZXItcHJvbmUtcG9zaXRpb24=",
+export const WithBothAboutConditionsAndAdditionalInfo = {
+  additional_information:
+    "In Francesca DiMattio’s The Fox and the Hound, 2018, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullam DiMattio’s The Fox and the Hound, 2018, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullam. Tempor incididunt ut labore et dolore magnas.",
   framed: {
     label: "Framed",
     details: null,
@@ -666,4 +667,9 @@ export const WithAllConditionInfo = {
     label: "Certificate of authenticity",
     details: null,
   },
+  series: "Lorem Ipsum Dolor",
+  publisher: "Factory Editions, New York",
+  manufacturer: "Mfg Group",
+  provenance: "Peter Freeman Inc., New York",
+  image_rights: "Courtesy of the artist and Salon 94",
 }

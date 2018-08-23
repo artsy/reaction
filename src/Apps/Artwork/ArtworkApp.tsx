@@ -8,8 +8,8 @@ import styled from "styled-components"
 import { FullArtworkGrid } from "Styleguide/Components/ArtworkGrid"
 import { Tab, Tabs } from "Styleguide/Components/Tabs"
 import { Col, Row } from "Styleguide/Elements/Grid"
-import { AboutTheWork } from "./Components/AboutTheWork"
 import { ArtistInfo } from "./Components/ArtistInfo"
+import { ArtworkDetailsFragmentContainer as ArtworkDetails } from "./Components/ArtworkDetails"
 import { ArtworkSidebarFragmentContainer as ArtworkSidebar } from "./Components/ArtworkSidebar"
 import { Banner } from "./Components/Banner"
 import { Bibliography } from "./Components/Bibliography"
@@ -55,11 +55,11 @@ export const ArtworkApp: React.SFC<Props> = props => {
           <ArtworkSidebar artwork={props.artwork} />
         </Col>
       </Row>
-      <Row mb={6}>
-        <Col>
+      <Row>
+        <Col sm={8}>
           <Tabs>
             <Tab name="About the work">
-              <AboutTheWork />
+              <ArtworkDetails artwork={props.artwork} />
             </Tab>
             <Tab name="Exhibition history">
               <ExhibitionHistory />
@@ -70,8 +70,8 @@ export const ArtworkApp: React.SFC<Props> = props => {
           </Tabs>
         </Col>
       </Row>
-      <Row mb={6}>
-        <Col xl={8} lg={8} md={8} sm={12} xs={12}>
+      <Row>
+        <Col xl={8} lg={8} md={8} sm={8} xs={12}>
           <ArtistInfo
             name="Francesca DiMattio"
             artist={artistResponse as any}
@@ -187,6 +187,7 @@ export const ArtworkAppFragmentContainer = createFragmentContainer(
   graphql`
     fragment ArtworkApp_artwork on Artwork {
       ...ArtworkSidebar_artwork
+      ...ArtworkDetails_artwork
     }
   `
 )
