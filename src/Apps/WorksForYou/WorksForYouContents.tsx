@@ -110,7 +110,7 @@ export class WorksForYouContent extends React.Component<Props, State> {
                 </div>
                 <ArtworkGrid
                   artworks={node.artworksConnection}
-                  columnCount={4}
+                  columnCount={3}
                   itemMargin={40}
                   currentUser={this.props.currentUser}
                 />
