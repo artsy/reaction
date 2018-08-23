@@ -1,7 +1,7 @@
 import { Theme, themeProps } from "@artsy/palette"
 import { track } from "Analytics"
-import * as Artsy from "Components/Artsy2"
 import React from "react"
+import * as Artsy from "Router/Artsy2"
 import { AppState } from "Router/state"
 import { BootProps } from "Router/types"
 import { GridThemeProvider } from "styled-bootstrap-grid"

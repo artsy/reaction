@@ -1,7 +1,7 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
 
-import { ContextProvider } from "../../Artsy2"
+import { ContextProvider } from "Router/Artsy2"
 import { Wizard } from "../Wizard"
 
 storiesOf("Onboarding", module).add("Wizard", () => {

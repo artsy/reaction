@@ -1,11 +1,11 @@
 import { TooltipsDataLoaderQueryResponse } from "__generated__/TooltipsDataLoaderQuery.graphql"
-import * as Artsy from "Components/Artsy2"
 import { getArtsySlugsFromArticle } from "Components/Publishing/Constants"
 import { ArticleData } from "Components/Publishing/Typings"
 import { keyBy } from "lodash"
 import PropTypes from "prop-types"
 import React, { Component } from "react"
 import { graphql, QueryRenderer } from "react-relay"
+import * as Artsy from "Router/Artsy2"
 import { ArticleProps } from "../Article"
 
 interface Props extends Artsy.ContextProps {

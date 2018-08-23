@@ -10,9 +10,9 @@ import {
   RelayProp,
 } from "react-relay"
 import * as RelayRuntimeTypes from "relay-runtime"
+import * as Artsy from "Router/Artsy2"
 import styled from "styled-components"
 import colors from "../../Assets/Colors"
-import * as Artsy from "../../Components/Artsy2"
 import Icon from "../Icon"
 
 const SIZE = 40

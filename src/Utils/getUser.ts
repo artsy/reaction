@@ -1,4 +1,4 @@
-export function getUser(user) {
+export function getUser(user): User {
   let currentUser = user
 
   if (currentUser === undefined) {

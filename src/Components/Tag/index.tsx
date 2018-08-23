@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, QueryRenderer } from "react-relay"
 
-import { ContextProps, withContext } from "../Artsy2"
+import { ContextProps, withContext } from "Router/Artsy2"
 import TagArtworks from "./TagArtworks"
 
 export interface Filters {

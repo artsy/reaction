@@ -27,33 +27,7 @@ export const ContextProvider: SFC<ContextProps> = ({ children, ...props }) => {
   return <Context.Provider value={providerValues}>{children}</Context.Provider>
 }
 
-// interface ArtsyConsumerProps {
-//   children: (ContextProps) => JSX.Element
-// }
-
 export const ContextConsumer = Context.Consumer
-
-// /**
-//  * Creates a new Context.Consumer and validates that a Context.Provider has
-//  * been created.
-//  */
-// export const ContextConsumer: SFC<ArtsyConsumerProps> = ({ children }) => {
-//   return (
-//     <Context.Consumer>
-//       {contextValues => {
-//         // FIXME: Find way to exclude _isNested from check
-//         if (!(contextValues as any)._isNestedInProvider) {
-//           throw new Error(
-//             "Components/Artsy Error: Attempting to use ArtsyConsumer without " +
-//               "an ArtsyProvider."
-//           )
-//         } else {
-//           return children(contextValues)
-//         }
-//       }}
-//     </Context.Consumer>
-//   )
-// }
 
 /**
  * A HOC utility function for injecting renderProps into a component.

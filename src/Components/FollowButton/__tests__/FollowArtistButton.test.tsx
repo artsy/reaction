@@ -3,7 +3,7 @@ import "jest-styled-components"
 import React from "react"
 import { commitMutation } from "react-relay"
 import renderer from "react-test-renderer"
-import { ContextProvider } from "../../Artsy2"
+import { ContextProvider } from "Router/Artsy2"
 import { FollowButtonDeprecated } from "../ButtonDeprecated"
 import FollowArtistButton from "../FollowArtistButton"
 

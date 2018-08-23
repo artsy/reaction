@@ -1,9 +1,9 @@
 import { storiesOf } from "@storybook/react"
-import { ContextConsumer } from "Components/Artsy2"
 import React from "react"
 import { graphql } from "react-relay"
 import { StorybooksRouter } from "Router"
 import { PreloadLink } from "Router"
+import { ContextConsumer } from "Router/Artsy2"
 import { AppState } from "Router/state"
 import { Subscribe } from "unstated"
 

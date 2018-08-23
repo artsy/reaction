@@ -9,10 +9,10 @@ import {
 } from "react-relay"
 import track from "react-tracking"
 import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
+import { ContextProps, withContext } from "Router/Artsy2"
 import styled from "styled-components"
 import Events from "../../../../Utils/Events"
 import ReplaceTransition from "../../../Animation/ReplaceTransition"
-import { ContextProps, withContext } from "../../../Artsy2"
 import ItemLink, { LinkContainer } from "../../ItemLink"
 import { FollowProps } from "../../Types"
 

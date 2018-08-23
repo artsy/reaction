@@ -91,7 +91,7 @@ describe("buildClientApp", () => {
               "currentUser",
             ])
             expect(Object.keys(system.context)).toEqual(["mediator", "user"])
-            done()
+            setImmediate(done)
             return <div />
           }}
         </Subscribe>
