@@ -1,10 +1,10 @@
-import * as Artsy from "Artsy/Router/Artsy2"
+import * as Artsy from "Artsy/SystemContext"
 import { render } from "enzyme"
 import React from "react"
 import renderer from "react-test-renderer"
 import { ContextProps } from "../Artsy"
 
-jest.mock("../../Relay/createEnvironment", () => ({
+jest.mock("../../Artsy/Relay/createEnvironment", () => ({
   createEnvironment: config => ({
     description: `A mocked env for ${
       config.user ? config.user.id : "no-current-user"

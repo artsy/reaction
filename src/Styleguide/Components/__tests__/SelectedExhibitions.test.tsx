@@ -4,7 +4,7 @@ import React from "react"
 import { exhibitions } from "../../../Apps/__test__/Fixtures/SelectedExhibitions"
 import { SelectedExhibitions } from "../SelectedExhibitions"
 
-jest.mock("../../../Router/Components/PreloadLink")
+jest.mock("../../../Artsy/Router/Components/PreloadLink")
 
 describe("SelectedExhibitions", () => {
   const props = {

@@ -2,7 +2,7 @@ import React from "react"
 import { commitMutation, graphql } from "react-relay"
 import styled from "styled-components"
 
-import { ContextProps, withContext } from "Artsy/Router/Artsy2"
+import { ContextProps, withContext } from "Artsy/SystemContext"
 import Colors from "../../../Assets/Colors"
 import { MultiButtonState } from "../../Buttons/MultiStateButton"
 import { media } from "../../Helpers"

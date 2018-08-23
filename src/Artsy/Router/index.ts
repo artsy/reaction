@@ -1,16 +1,15 @@
 import { HistoryOptions, HistoryProtocol } from "farce"
 import { RouteConfig } from "found"
-import { RelayNetwork } from "relay-runtime"
-import { MatchingMediaQueries } from "Utils/Responsive"
+import { ContextProps } from "../SystemContext"
 
-// Framework API Exports
+// API Exports
 export { buildServerApp } from "./buildServerApp"
 export { buildClientApp } from "./buildClientApp"
 export { PreloadLink, PreloadLinkProps } from "./Components/PreloadLink"
 export { Link } from "found"
 export { StorybooksRouter } from "./Components/StorybooksRouter"
 export { Boot } from "./Components/Boot"
-export { ContextProvider, ContextConsumer } from "./Artsy2"
+export { ContextProvider, ContextConsumer } from "Artsy/SystemContext"
 
 /**
  * Configuration used when creating a new Router app
@@ -19,12 +18,7 @@ export interface RouterConfig {
   /**
    * Context values to be passed to ArtsyContext
    */
-  context?: {
-    user?: User
-    relayNetwork?: RelayNetwork
-    initialMatchingMediaQueries?: MatchingMediaQueries
-    [key: string]: any
-  }
+  context?: ContextProps
   /**
    * Configuration options to be passed to Found router
    */

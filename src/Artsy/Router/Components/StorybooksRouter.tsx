@@ -1,8 +1,8 @@
+import { createMockNetworkLayer } from "Artsy/Relay/createMockNetworkLayer"
 import { buildClientApp } from "Artsy/Router"
 import { HistoryOptions } from "farce"
 import { IMocks } from "graphql-tools/dist/Interfaces"
 import React from "react"
-import { createMockNetworkLayer } from "Relay/createMockNetworkLayer"
 import { MatchingMediaQueries } from "Utils/Responsive"
 
 interface Props {

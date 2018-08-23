@@ -1,23 +1,23 @@
-import { ContextConsumer } from "Artsy/Router/Artsy2"
-import * as Artsy from "Artsy/Router/Artsy2"
-import * as Found from "found"
+import { ContextConsumer, ContextProps, withContext } from "Artsy/SystemContext"
 import { Link } from "found"
 import { withRouter } from "found"
+import { ResolverUtils, Router, WithRouter } from "found"
 import { isEmpty, isUndefined, last, pick } from "lodash/fp"
 import PropTypes from "prop-types"
 import React from "react"
 import { fetchQuery } from "react-relay"
 import { QueryRendererProps } from "react-relay"
+import { SizeProps } from "styled-system"
 import { Container, Subscribe } from "unstated"
 
-export interface PreloadLinkProps extends Artsy.ContextProps, Found.WithRouter {
-  children?: any
+export interface PreloadLinkProps extends ContextProps, WithRouter, SizeProps {
+  children?: JSX.Element | string
   exact?: boolean
   immediate?: boolean
   onClick?: () => void
   onToggleLoading?: (isLoading: boolean) => void
   replace?: string
-  router: any // TODO, from found
+  router: Router
   to?: string
 }
 
@@ -72,11 +72,9 @@ const _PreloadLink: React.SFC<PreloadLinkProps> = preloadLinkProps => {
       /**
        * Injected props from ContextConsumer
        */
-      system: PropTypes.shape({
-        relayEnvironment: PropTypes.object.isRequired,
-        routes: PropTypes.array.isRequired,
-        resolver: PropTypes.object.isRequired,
-      }).isRequired,
+      relayEnvironment: PropTypes.object.isRequired,
+      routes: PropTypes.array.isRequired,
+      resolver: PropTypes.object.isRequired,
     }
 
     static defaultProps = {
@@ -115,13 +113,8 @@ const _PreloadLink: React.SFC<PreloadLinkProps> = preloadLinkProps => {
      * ]
      */
     getRouteQuery(): Partial<QueryRendererProps> {
-      const {
-        system: { resolver, relayEnvironment },
-        router,
-        to,
-      } = this.props
-
-      const { getRouteMatches, getRouteValues } = Found.ResolverUtils
+      const { resolver, relayEnvironment, router, to } = this.props
+      const { getRouteMatches, getRouteValues } = ResolverUtils
       const location = router.createLocation(to)
       const match = router.matcher.match(location)
 
@@ -241,14 +234,14 @@ const _PreloadLink: React.SFC<PreloadLinkProps> = preloadLinkProps => {
    */
   return (
     <ContextConsumer>
-      {({ system }) => {
+      {context => {
         return (
           <Subscribe to={[PreloadLinkState]}>
             {(preloadLink: PreloadLinkState) => {
               return (
                 <Preloader
                   onToggleLoading={preloadLink.toggleLoading}
-                  system={system}
+                  {...context}
                   {...preloadLinkProps}
                 />
               )
@@ -260,4 +253,4 @@ const _PreloadLink: React.SFC<PreloadLinkProps> = preloadLinkProps => {
   )
 }
 
-export const PreloadLink = withRouter(Artsy.withContext(_PreloadLink))
+export const PreloadLink = withRouter(withContext(_PreloadLink))

@@ -1,5 +1,5 @@
 import { TooltipsDataLoaderQueryResponse } from "__generated__/TooltipsDataLoaderQuery.graphql"
-import * as Artsy from "Artsy/Router/Artsy2"
+import * as Artsy from "Artsy/SystemContext"
 import { getArtsySlugsFromArticle } from "Components/Publishing/Constants"
 import { ArticleData } from "Components/Publishing/Typings"
 import { keyBy } from "lodash"

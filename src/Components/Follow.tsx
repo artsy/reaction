@@ -7,7 +7,7 @@
  */
 
 import { Follow_artist } from "__generated__/Follow_artist.graphql"
-import * as Artsy from "Artsy/Router/Artsy2"
+import * as Artsy from "Artsy/SystemContext"
 import React from "react"
 import {
   commitMutation,

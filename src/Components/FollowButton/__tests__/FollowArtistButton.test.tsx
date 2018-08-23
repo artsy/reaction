@@ -1,4 +1,4 @@
-import { ContextProvider } from "Artsy/Router/Artsy2"
+import { ContextProvider } from "Artsy/SystemContext"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"

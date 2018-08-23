@@ -149,7 +149,7 @@ export const track: Track = _track
  *     ```ts
  *     import { mount } from "enzyme"
  *     import React from "react"
- *     import { mockTracking } from "../../../../Analytics"
+ *     import { mockTracking } from "Artsy/Analytics"
  *     import { DateSource } from "../DateSource"
  *
  *     jest.unmock("react-tracking")

@@ -1,6 +1,7 @@
 import { Theme, themeProps } from "@artsy/palette"
 import { track } from "Artsy/Analytics"
-import * as Artsy from "Artsy/Router/Artsy2"
+import * as Artsy from "Artsy/SystemContext"
+import { ResolverUtils, RouteConfig } from "found"
 import React from "react"
 import { Environment } from "relay-runtime"
 import { GridThemeProvider } from "styled-bootstrap-grid"
@@ -10,14 +11,20 @@ import { Grid } from "Styleguide/Elements/Grid"
 import { BreakpointVisualizer } from "Styleguide/Utils/BreakpointVisualizer"
 import { Provider as StateProvider } from "unstated"
 import Events from "Utils/Events"
-import { MatchingMediaQueries } from "Utils/Responsive"
-import { ResponsiveProvider } from "Utils/Responsive"
-import { Responsive } from "Utils/Responsive"
+
+import {
+  MatchingMediaQueries,
+  Responsive,
+  ResponsiveProvider,
+} from "Utils/Responsive"
 
 export interface BootProps {
-  currentUser?: User
+  context: object
+  currentUser: User
   initialMatchingMediaQueries?: MatchingMediaQueries
-  relayEnvironment?: Environment
+  relayEnvironment: Environment
+  resolver: ResolverUtils
+  routes: RouteConfig
 }
 
 // TODO: Do we want to let Force explicitly inject the analytics code?
@@ -25,18 +32,16 @@ export interface BootProps {
   dispatch: data => Events.postEvent(data),
 })
 export class Boot extends React.Component<BootProps> {
-  static defaultProps = {
-    currentUser: null,
-    initialMatchingMediaQueries: null,
-    relayEnvironment: null,
-  }
-
   render() {
-    const { children, ...props } = this.props
+    const { children, context, ...props } = this.props
+    const contextProps = {
+      ...props,
+      ...context,
+    }
 
     return (
       <StateProvider>
-        <Artsy.ContextProvider {...props}>
+        <Artsy.ContextProvider {...contextProps}>
           <ResponsiveProvider
             mediaQueries={themeProps.mediaQueries}
             initialMatchingMediaQueries={props.initialMatchingMediaQueries}

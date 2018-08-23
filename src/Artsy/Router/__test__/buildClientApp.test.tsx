@@ -72,7 +72,7 @@ describe("buildClientApp", () => {
     expect(
       (wrapper
         .find("Boot")
-        .props() as any).system.relayEnvironment.relaySSRMiddleware.cache.values()
+        .props() as any).relayEnvironment.relaySSRMiddleware.cache.values()
     ).toContain("found window cache")
   })
 
@@ -80,16 +80,15 @@ describe("buildClientApp", () => {
     const HomeApp = () => {
       return (
         <ContextConsumer>
-          {({ system }) => {
-            expect(Object.keys(system)).toEqual([
-              "history",
-              "routes",
-              "context",
+          {context => {
+            expect(Object.keys(context).sort()).toEqual([
               "currentUser",
+              "foo",
+              "mediator",
               "relayEnvironment",
               "resolver",
+              "routes",
             ])
-            expect(Object.keys(system.context)).toEqual(["mediator", "user"])
             setImmediate(done)
             return <div />
           }}
@@ -108,10 +107,9 @@ describe("buildClientApp", () => {
         },
       ],
       context: {
-        mediator: jest.fn(),
-        user: {
-          id: "foo",
-          accessToken: "bar",
+        foo: "bar",
+        mediator: {
+          trigger: jest.fn(),
         },
       },
     })

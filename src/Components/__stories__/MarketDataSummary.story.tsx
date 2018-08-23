@@ -1,7 +1,7 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
 
-import { ContextProvider } from "Artsy/Router/Artsy2"
+import { ContextProvider } from "Artsy/SystemContext"
 import { Contents } from "../Artist/MarketDataSummary"
 
 function RenderMarketDataSummaryFor(artistID: string) {

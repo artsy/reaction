@@ -57,16 +57,16 @@ describe("buildServerApp", () => {
     const HomeApp = () => {
       return (
         <ContextConsumer>
-          {({ system }) => {
-            expect(Object.keys(system)).toEqual([
-              "routes",
-              "url",
-              "context",
+          {context => {
+            expect(Object.keys(context).sort()).toEqual([
               "currentUser",
+              "foo",
+              "initialMatchingMediaQueries",
+              "mediator",
               "relayEnvironment",
               "resolver",
+              "routes",
             ])
-            expect(Object.keys(system.context)).toEqual(["mediator", "user"])
             setImmediate(done)
             return <div />
           }}
@@ -83,10 +83,9 @@ describe("buildServerApp", () => {
       ],
       url: "/",
       context: {
-        mediator: jest.fn(),
-        user: {
-          id: "foo",
-          accessToken: "bar",
+        foo: "bar",
+        mediator: {
+          trigger: jest.fn(),
         },
       },
     })

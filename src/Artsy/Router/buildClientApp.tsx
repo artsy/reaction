@@ -1,3 +1,4 @@
+import { createEnvironment } from "Artsy/Relay/createEnvironment"
 import { Boot } from "Artsy/Router/Components/Boot"
 import { Hydrator } from "Artsy/Router/Components/Hydrator"
 import BrowserProtocol from "farce/lib/BrowserProtocol"
@@ -9,7 +10,6 @@ import createInitialFarceRouter from "found/lib/createInitialFarceRouter"
 import createRender from "found/lib/createRender"
 import { loadComponents } from "loadable-components"
 import React, { ComponentType } from "react"
-import { createEnvironment } from "Relay/createEnvironment"
 import { getUser } from "Utils/getUser"
 import { RouterConfig } from "./"
 
@@ -67,17 +67,14 @@ export function buildClientApp(config: RouterConfig): Promise<Resolve> {
         // FIXME: https://github.com/smooth-code/loadable-components/pull/93
       }
 
-      const ClientApp = props => {
+      const ClientApp = () => {
         return (
           <Boot
-            system={{
-              ...config,
-              currentUser,
-              relayEnvironment,
-              resolver,
-              routes,
-            }}
-            {...props}
+            context={context}
+            currentUser={currentUser}
+            relayEnvironment={relayEnvironment}
+            resolver={resolver}
+            routes={routes}
           >
             <Hydrator>
               <Router resolver={resolver} />
@@ -90,7 +87,7 @@ export function buildClientApp(config: RouterConfig): Promise<Resolve> {
         ClientApp,
       })
     } catch (error) {
-      console.error("[Reaction Router/buildClientApp]", error)
+      console.error("[Artsy/Router/buildClientApp]", error)
     }
   })
 }

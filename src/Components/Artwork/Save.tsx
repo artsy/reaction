@@ -1,7 +1,7 @@
 import { Save_artwork } from "__generated__/Save_artwork.graphql"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import * as Artsy from "Artsy/Router/Artsy2"
+import * as Artsy from "Artsy/SystemContext"
 import { isNull } from "lodash"
 import React from "react"
 import {

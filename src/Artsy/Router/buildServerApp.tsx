@@ -1,3 +1,4 @@
+import { createEnvironment } from "Artsy/Relay/createEnvironment"
 import { Boot } from "Artsy/Router/Components/Boot"
 import { Hydrator } from "Artsy/Router/Components/Hydrator"
 import queryMiddleware from "farce/lib/queryMiddleware"
@@ -7,7 +8,6 @@ import { getFarceResult } from "found/lib/server"
 import { getLoadableState } from "loadable-components/server"
 import React, { ComponentType } from "react"
 import ReactDOMServer from "react-dom/server"
-import { createEnvironment } from "Relay/createEnvironment"
 import { getUser } from "Utils/getUser"
 import { RouterConfig } from "./"
 
@@ -37,22 +37,22 @@ export function buildServerApp(config: RouterConfig): Promise<Resolve> {
       })
 
       if (redirect) {
-        resolve({ redirect, status })
+        resolve({
+          redirect,
+          status,
+        })
         return
       }
 
       const App = props => {
         return (
           <Boot
+            context={context}
+            currentUser={currentUser}
             initialMatchingMediaQueries={initialMatchingMediaQueries}
-            system={{
-              ...config,
-              currentUser,
-              relayEnvironment,
-              resolver,
-              routes,
-            }}
-            {...props}
+            relayEnvironment={relayEnvironment}
+            resolver={resolver}
+            routes={routes}
           >
             <Hydrator
               data={props.data}
@@ -85,7 +85,10 @@ export function buildServerApp(config: RouterConfig): Promise<Resolve> {
           })
         })
       } catch (error) {
-        console.error("Router/buildServerApp Error cleaning data", error)
+        console.error(
+          "[Artsy/Router/buildServerApp] Error cleaning data",
+          error
+        )
       }
 
       resolve({
@@ -95,7 +98,7 @@ export function buildServerApp(config: RouterConfig): Promise<Resolve> {
         status,
       })
     } catch (error) {
-      console.error("[Reaction Router/buildServerApp] Error:", error)
+      console.error("[Artsy/Router/buildServerApp] Error:", error)
       reject(error)
     }
   })

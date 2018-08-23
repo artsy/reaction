@@ -5,10 +5,10 @@ import styled from "styled-components"
 import { Flex } from "Styleguide/Elements/Flex"
 import { styles } from "./Tabs"
 
-export const RouteTabs: any /* FIXME */ = styled(Flex)`
+export const RouteTabs = styled(Flex)`
   ${styles.tabsContainer};
 
-  ${(props: any) => {
+  ${(props: { size: string }) => {
     if (props.size === "xs") {
       return `
         -webkit-overflow-scrolling: touch;

@@ -1,4 +1,4 @@
-import * as Artsy from "Artsy/Router/Artsy2"
+import * as Artsy from "Artsy/SystemContext"
 import { extend } from "lodash"
 import React from "react"
 import {

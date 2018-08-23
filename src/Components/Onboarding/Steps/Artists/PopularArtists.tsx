@@ -1,4 +1,4 @@
-import { ContextProps, withContext } from "Artsy/Router/Artsy2"
+import { ContextProps, withContext } from "Artsy/SystemContext"
 import * as React from "react"
 import {
   commitMutation,
