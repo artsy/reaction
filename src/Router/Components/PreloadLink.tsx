@@ -1,5 +1,5 @@
-import { withRouter } from "found"
 import * as Found from "found"
+import { withRouter } from "found"
 import { Link } from "found"
 import { isEmpty, isUndefined, last, pick } from "lodash/fp"
 import PropTypes from "prop-types"
@@ -7,9 +7,9 @@ import React from "react"
 import { QueryRendererProps } from "react-relay"
 import { fetchQuery } from "react-relay"
 import * as Artsy from "Router/Artsy2"
-import { AppState, PreloadLinkState } from "Router/state"
-import { AppStateContainer } from "Router/types"
-import { Subscribe } from "unstated"
+import { ContextConsumer } from "Router/Artsy2"
+import { AppStateContainer, PreloadLinkContainer } from "Router/types"
+import { Container, Subscribe } from "unstated"
 
 export interface PreloadLinkProps extends AppStateContainer {
   children?: any
@@ -20,6 +20,18 @@ export interface PreloadLinkProps extends AppStateContainer {
   replace?: string
   router?: any // TODO, from found
   to?: string
+}
+
+export class PreloadLinkState extends Container<PreloadLinkContainer> {
+  state = {
+    isLoading: false,
+  }
+
+  toggleLoading = isLoading => {
+    this.setState({
+      isLoading,
+    })
+  }
 }
 
 const _PreloadLink: React.SFC<
@@ -227,17 +239,23 @@ const _PreloadLink: React.SFC<
    * Subscribe to PreloadLink state
    */
   return (
-    <Subscribe to={[AppState, PreloadLinkState]}>
-      {(app: AppState, preloadLink: PreloadLinkState) => {
+    <ContextConsumer>
+      {({ system }) => {
         return (
-          <Preloader
-            onToggleLoading={preloadLink.toggleLoading}
-            system={app.state.system}
-            {...preloadLinkProps}
-          />
+          <Subscribe to={[PreloadLinkState]}>
+            {(preloadLink: PreloadLinkState) => {
+              return (
+                <Preloader
+                  onToggleLoading={preloadLink.toggleLoading}
+                  system={system}
+                  {...preloadLinkProps}
+                />
+              )
+            }}
+          </Subscribe>
         )
       }}
-    </Subscribe>
+    </ContextConsumer>
   )
 }
 

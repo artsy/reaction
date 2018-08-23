@@ -4,8 +4,6 @@ import { graphql } from "react-relay"
 import { StorybooksRouter } from "Router"
 import { PreloadLink } from "Router"
 import { ContextConsumer } from "Router/Artsy2"
-import { AppState } from "Router/state"
-import { Subscribe } from "unstated"
 
 const routes = [
   {
@@ -25,13 +23,7 @@ const routes = [
       return (
         <>
           <ContextConsumer>
-            {p => {
-              console.error(p)
-              return <div>hiii</div>
-            }}
-          </ContextConsumer>
-          <Subscribe to={[AppState]}>
-            {app => {
+            {context => {
               return (
                 <div>
                   <h1>Example Relay Router App</h1>
@@ -56,7 +48,7 @@ const routes = [
                 </div>
               )
             }}
-          </Subscribe>
+          </ContextConsumer>
         </>
       )
     },
@@ -88,7 +80,7 @@ storiesOf("SSR Router/Example", module).add("Example Router App", () => {
     <StorybooksRouter
       routes={routes}
       context={{
-        foo: "bar",
+        mediator: x => x,
       }}
     />
   )

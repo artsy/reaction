@@ -43,10 +43,10 @@ export function buildServerApp(
             initialMatchingMediaQueries={initialMatchingMediaQueries}
             system={{
               ...config,
+              currentUser,
               relayEnvironment,
               resolver,
               routes,
-              currentUser: user,
             }}
             {...props}
           >

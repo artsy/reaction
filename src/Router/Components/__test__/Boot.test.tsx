@@ -1,8 +1,7 @@
 import { mount } from "enzyme"
 import React from "react"
 import { Boot } from "Router"
-import { AppState } from "Router/state"
-import { Subscribe } from "unstated"
+import { ContextConsumer } from "Router"
 
 describe("Boot", () => {
   const bootProps: any = {
@@ -24,11 +23,11 @@ describe("Boot", () => {
 
     const SomeOtherComponent = () => {
       return (
-        <Subscribe to={[AppState]}>
-          {app => {
-            return <div>{app.state.welcomeMessage}</div>
+        <ContextConsumer>
+          {({ welcomeMessage }: any) => {
+            return <div>{welcomeMessage}</div>
           }}
-        </Subscribe>
+        </ContextConsumer>
       )
     }
 

@@ -3,9 +3,8 @@ import { track } from "Analytics"
 import * as Schema from "Analytics/Schema"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { AppState } from "Router/state"
+import { ContextConsumer } from "Router"
 import { RouteTab, RouteTabs } from "Styleguide/Components/RouteTabs"
-import { Subscribe } from "unstated"
 import { Responsive } from "Utils/Responsive"
 
 interface Props {
@@ -54,10 +53,8 @@ export class NavigationTabs extends React.Component<Props> {
     const route = path => `/artist/${id}${path}`
 
     return (
-      <Subscribe to={[AppState]}>
-        {({ state }) => {
-          const { mediator } = state
-
+      <ContextConsumer>
+        {({ mediator }) => {
           return (
             <Responsive>
               {({ xs }) => {
@@ -97,7 +94,7 @@ export class NavigationTabs extends React.Component<Props> {
             </Responsive>
           )
         }}
-      </Subscribe>
+      </ContextConsumer>
     )
   }
 }

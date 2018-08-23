@@ -4,7 +4,11 @@ import { getUser } from "Utils/getUser"
 import { createEnvironment } from "../Relay/createEnvironment"
 
 // FIXME: Move from Artsy to Artsy2
-export interface ContextProps extends _ContextProps {}
+export interface ContextProps extends _ContextProps {
+  // FIXME: Type properly
+  mediator?: any
+  system?: any
+}
 
 const Context = React.createContext<ContextProps>({})
 
@@ -19,7 +23,6 @@ export const ContextProvider: SFC<ContextProps> = ({ children, ...props }) => {
 
   const providerValues = {
     ...props,
-    _isNestedInProvider: true,
     currentUser,
     relayEnvironment,
   }

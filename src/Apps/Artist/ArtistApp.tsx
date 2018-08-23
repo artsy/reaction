@@ -5,7 +5,7 @@ import { NavigationTabsFragmentContainer as NavigationTabs } from "Apps/Artist/C
 import React from "react"
 import { LazyLoadComponent } from "react-lazy-load-image-component"
 import { createFragmentContainer, graphql } from "react-relay"
-import { PreloadLinkState } from "Router/state"
+import { PreloadLinkState } from "Router/Components/PreloadLink"
 import { Footer } from "Styleguide/Components/Footer"
 import { RecentlyViewedQueryRenderer as RecentlyViewed } from "Styleguide/Components/RecentlyViewed"
 import { Col, Row } from "Styleguide/Elements/Grid"

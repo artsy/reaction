@@ -1,8 +1,7 @@
 import { mount } from "enzyme"
 import React from "react"
-import { Subscribe } from "unstated"
+import { ContextConsumer } from "../"
 import { buildClientApp } from "../buildClientApp"
-import { AppState } from "../state"
 
 describe("buildClientApp", () => {
   it("resolves with a <ClientApp /> component", async () => {
@@ -80,8 +79,8 @@ describe("buildClientApp", () => {
   it("passes along initial context values", async done => {
     const HomeApp = () => {
       return (
-        <Subscribe to={[AppState]}>
-          {({ state: { system } }) => {
+        <ContextConsumer>
+          {({ system }) => {
             expect(Object.keys(system)).toEqual([
               "history",
               "routes",
@@ -94,7 +93,7 @@ describe("buildClientApp", () => {
             setImmediate(done)
             return <div />
           }}
-        </Subscribe>
+        </ContextConsumer>
       )
     }
 

@@ -4,9 +4,8 @@
 
 import { render } from "enzyme"
 import React from "react"
-import { Subscribe } from "unstated"
+import { ContextConsumer } from "../"
 import { buildServerApp } from "../buildServerApp"
-import { AppState } from "../state"
 
 jest.mock("loadable-components/server", () => ({
   getLoadableState: () =>
@@ -57,8 +56,8 @@ describe("buildServerApp", () => {
   it("passes items along in context option", async done => {
     const HomeApp = () => {
       return (
-        <Subscribe to={[AppState]}>
-          {({ state: { system } }) => {
+        <ContextConsumer>
+          {({ system }) => {
             expect(Object.keys(system)).toEqual([
               "routes",
               "url",
@@ -71,7 +70,7 @@ describe("buildServerApp", () => {
             setImmediate(done)
             return <div />
           }}
-        </Subscribe>
+        </ContextConsumer>
       )
     }
 

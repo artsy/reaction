@@ -1,9 +1,9 @@
 import { Theme, themeProps } from "@artsy/palette"
 import { track } from "Analytics"
 import React from "react"
+import { Environment } from "relay-runtime"
 import * as Artsy from "Router/Artsy2"
-import { AppState } from "Router/state"
-import { BootProps } from "Router/types"
+import { MatchingMediaQueries } from "Router/types"
 import { GridThemeProvider } from "styled-bootstrap-grid"
 import styled from "styled-components"
 import { GlobalStyles } from "Styleguide/Elements/GlobalStyles"
@@ -14,27 +14,29 @@ import Events from "Utils/Events"
 import { ResponsiveProvider } from "Utils/Responsive"
 import { Responsive } from "Utils/Responsive"
 
+export interface BootProps {
+  currentUser?: User
+  initialMatchingMediaQueries?: MatchingMediaQueries
+  relayEnvironment?: Environment
+}
+
 // TODO: Do we want to let Force explicitly inject the analytics code?
 @track(null, {
   dispatch: data => Events.postEvent(data),
 })
 export class Boot extends React.Component<BootProps> {
   static defaultProps = {
+    currentUser: null,
     initialMatchingMediaQueries: null,
     relayEnvironment: null,
-    currentUser: null,
   }
 
   render() {
     const { children, ...props } = this.props
-    const appState = new AppState(props)
 
     return (
-      <StateProvider inject={[appState]}>
-        <Artsy.ContextProvider
-          relayEnvironment={props.relayEnvironment}
-          currentUser={props.currentUser}
-        >
+      <StateProvider>
+        <Artsy.ContextProvider {...props}>
           <ResponsiveProvider
             mediaQueries={themeProps.mediaQueries}
             initialMatchingMediaQueries={props.initialMatchingMediaQueries}

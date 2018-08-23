@@ -70,10 +70,10 @@ export function buildClientApp(
           <Boot
             system={{
               ...config,
+              currentUser,
               relayEnvironment,
               resolver,
               routes,
-              currentUser,
             }}
             {...props}
           >

@@ -4,10 +4,9 @@ import { FillwidthItem } from "Components/Artwork/FillwidthItem"
 import React from "react"
 import { QueryRenderer } from "react-relay"
 import { createFragmentContainer, graphql } from "react-relay"
-import { AppState } from "Router/state"
+import { ContextConsumer } from "Router"
 import { Slider } from "Styleguide/Components/Slider"
 import { Spacer } from "Styleguide/Elements/Spacer"
-import { Subscribe } from "unstated"
 
 export interface RecentlyViewedProps {
   me: RecentlyViewed_me
@@ -20,13 +19,8 @@ export const RecentlyViewed: React.SFC<RecentlyViewedProps> = props => {
   const { me } = props
 
   return (
-    <Subscribe to={[AppState]}>
-      {({ state }) => {
-        const {
-          mediator,
-          system: { currentUser },
-        } = state
-
+    <ContextConsumer>
+      {({ currentUser, mediator }) => {
         return (
           me && (
             <React.Fragment>
@@ -64,7 +58,7 @@ export const RecentlyViewed: React.SFC<RecentlyViewedProps> = props => {
           )
         )
       }}
-    </Subscribe>
+    </ContextConsumer>
   )
 }
 
@@ -93,12 +87,8 @@ export const RecentlyViewedFragmentContainer = createFragmentContainer(
 
 export const RecentlyViewedQueryRenderer = () => {
   return (
-    <Subscribe to={[AppState]}>
-      {({
-        state: {
-          system: { relayEnvironment, currentUser },
-        },
-      }) => {
+    <ContextConsumer>
+      {({ currentUser, mediator, relayEnvironment }) => {
         if (!currentUser) {
           return null
         }
@@ -123,6 +113,6 @@ export const RecentlyViewedQueryRenderer = () => {
           />
         )
       }}
-    </Subscribe>
+    </ContextConsumer>
   )
 }
