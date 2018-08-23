@@ -22,6 +22,11 @@ export type WorksForYouContents_viewer = {
                         readonly artworksConnection: ({
                             readonly " $fragmentRefs": ArtworkGrid_artworks$ref;
                         }) | null;
+                        readonly image: ({
+                            readonly resized: ({
+                                readonly url: string | null;
+                            }) | null;
+                        }) | null;
                     }) | null;
                 }) | null> | null;
             }) | null;
@@ -215,6 +220,48 @@ return {
                           ]
                         },
                         {
+                          "kind": "LinkedField",
+                          "alias": null,
+                          "name": "image",
+                          "storageKey": null,
+                          "args": null,
+                          "concreteType": "Image",
+                          "plural": false,
+                          "selections": [
+                            {
+                              "kind": "LinkedField",
+                              "alias": null,
+                              "name": "resized",
+                              "storageKey": "resized(height:80,width:80)",
+                              "args": [
+                                {
+                                  "kind": "Literal",
+                                  "name": "height",
+                                  "value": 80,
+                                  "type": "Int"
+                                },
+                                {
+                                  "kind": "Literal",
+                                  "name": "width",
+                                  "value": 80,
+                                  "type": "Int"
+                                }
+                              ],
+                              "concreteType": "ResizedImageUrl",
+                              "plural": false,
+                              "selections": [
+                                {
+                                  "kind": "ScalarField",
+                                  "alias": null,
+                                  "name": "url",
+                                  "args": null,
+                                  "storageKey": null
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
                           "kind": "ScalarField",
                           "alias": null,
                           "name": "__typename",
@@ -242,5 +289,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '915429f878155840dbdece077eff8501';
+(node as any).hash = '6c4288aa2182516c66d510c8f3b4562e';
 export default node;

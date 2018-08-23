@@ -1,6 +1,5 @@
 import { Sans, Serif } from "@artsy/palette"
 import { WorksForYouArtist_viewer } from "__generated__/WorksForYouArtist_viewer.graphql"
-import { ChevronIcon } from "Assets/Icons/ChevronIcon"
 import { ContextProps } from "Components/Artsy"
 import ArtworkGrid from "Components/ArtworkGrid"
 import Spinner from "Components/Spinner"
@@ -12,6 +11,9 @@ import {
   RelayPaginationProp,
 } from "react-relay"
 import styled from "styled-components"
+import { Box } from "Styleguide/Elements/Box"
+import { Flex } from "Styleguide/Elements/Flex"
+import { Image } from "Styleguide/Elements/Image"
 
 interface Props extends ContextProps {
   relay?: RelayPaginationProp
@@ -30,6 +32,18 @@ const SpinnerContainer = styled.div`
   width: 100%;
   height: 100px;
   position: relative;
+`
+
+const Avatar = styled.div`
+  border-radius: 20px;
+  width: 40px;
+  height: 40px;
+`
+
+const Container = styled.div`
+  &:first-child {
+    margin-top: -10px;
+  }
 `
 
 export class WorksForYouArtist extends React.Component<Props, State> {
@@ -56,31 +70,41 @@ export class WorksForYouArtist extends React.Component<Props, State> {
     const { artist } = this.props.viewer
     const { forSale } = this.props
     return (
-      <div>
-        <hr />
-        <div style={{ padding: "32px 0px" }}>
-          <Sans
-            style={{ textDecoration: "none", textTransform: "uppercase" }}
-            weight="medium"
-            size={"2"}
-          >
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href={artist.href}
-            >
-              {artist.name}
-              <span style={{ position: "relative", top: "3px" }}>
-                <ChevronIcon width={16} height={16} />
-              </span>
-            </a>
-          </Sans>
+      <Container>
+        <div style={{ padding: "50px 0px 30px 0px" }}>
+          <Flex>
+            {artist.image && (
+              <Avatar>
+                <Image
+                  src={artist.image.resized.url}
+                  width={40}
+                  height={40}
+                  style={{ borderRadius: "20px" }}
+                />
+              </Avatar>
+            )}
+            <Box ml={2}>
+              <Serif
+                style={{ textDecoration: "none", display: "inline-block" }}
+                weight="semibold"
+                size={"3"}
+              >
+                <a
+                  style={{ color: "black", textDecoration: "none" }}
+                  href={artist.href}
+                >
+                  {artist.name}
+                </a>
+              </Serif>
 
-          <Serif style={{ color: "#666" }} size={"2"}>
-            {forSale
-              ? artist.counts.for_sale_artworks.toLocaleString()
-              : artist.counts.artworks.toLocaleString()}{" "}
-            works
-          </Serif>
+              <Sans style={{ color: "#666" }} size={"2"}>
+                {forSale
+                  ? artist.counts.for_sale_artworks.toLocaleString()
+                  : artist.counts.artworks.toLocaleString()}{" "}
+                works
+              </Sans>
+            </Box>
+          </Flex>
         </div>
         <ArtworkGrid
           artworks={artist.artworks_connection}
@@ -92,7 +116,7 @@ export class WorksForYouArtist extends React.Component<Props, State> {
         <SpinnerContainer>
           {this.state.loading ? <Spinner /> : ""}
         </SpinnerContainer>
-      </div>
+      </Container>
     )
   }
 }
@@ -117,6 +141,11 @@ export default createPaginationContainer(
           counts {
             artworks
             for_sale_artworks
+          }
+          image {
+            resized(height: 80, width: 80) {
+              url
+            }
           }
           artworks_connection(
             sort: published_at_desc
