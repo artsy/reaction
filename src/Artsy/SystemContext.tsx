@@ -5,10 +5,7 @@ import { RelayNetwork } from "relay-runtime"
 import { getUser } from "Utils/getUser"
 import { MatchingMediaQueries } from "Utils/Responsive"
 
-/**
- * Globally accessible Context values for use in Artsy apps
- */
-export interface ContextProps {
+interface SystemProps {
   /**
    * The currently signed-in user.
    *
@@ -38,20 +35,28 @@ export interface ContextProps {
    * the `currentUser` if available.
    */
   relayNetwork?: RelayNetwork
+}
 
+/**
+ * Globally accessible Context values for use in Artsy apps
+ */
+export interface ContextProps<T = {}> extends SystemProps {
   /**
    * Catch-all for additional context values passed in during initialization.
    */
   [key: string]: any
 }
 
-const Context = React.createContext<ContextProps>({})
+const Context = React.createContext<ContextProps<any>>({})
 
 /**
  * Creates a new Context.Provider with a user and Relay environment, or defaults
  * if not passed in as props.
  */
-export const ContextProvider: SFC<ContextProps> = ({ children, ...props }) => {
+export const ContextProvider: SFC<ContextProps<any>> = ({
+  children,
+  ...props
+}) => {
   const currentUser = getUser(props.currentUser)
   const relayEnvironment =
     props.relayEnvironment || createEnvironment({ user: currentUser })
