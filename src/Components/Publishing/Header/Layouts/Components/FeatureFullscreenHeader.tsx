@@ -104,7 +104,9 @@ const FeatureAssetContainer = styled.div.attrs<{ src?: string }>({})`
   `};
 `
 
-const FeatureHeaderContainer = styled.div.attrs<{ hasNav?: boolean }>({})`
+export const FeatureHeaderContainer = styled.div.attrs<{ hasNav?: boolean }>(
+  {}
+)`
   width: 100%;
   position: relative;
   height: ${props => (props.hasNav ? "100vh" : "calc(100vh - 61px)")};

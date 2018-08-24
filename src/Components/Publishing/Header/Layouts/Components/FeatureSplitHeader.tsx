@@ -93,12 +93,13 @@ const FeatureVideo = styled.video`
   `};
 `
 
-const FeatureAssetContainer = Col.extend`
+export const FeatureAssetContainer = Col.extend`
   flex: 1;
   overflow: hidden;
   margin: ${space(2)}px;
   padding-left: 0;
   padding-right: 0;
+  position: relative;
   img {
     display: none;
   }
@@ -131,7 +132,9 @@ const Img = styled.img`
   width: 100%;
 `
 
-const FeatureSplitHeaderContainer = Row.extend.attrs<{ hasNav?: boolean }>({})`
+export const FeatureSplitHeaderContainer = Row.extend.attrs<{
+  hasNav?: boolean
+}>({})`
   margin-left: 0;
   margin-right: 0;
   height: ${props => (props.hasNav ? "100vh" : "calc(100vh - 61px)")};
