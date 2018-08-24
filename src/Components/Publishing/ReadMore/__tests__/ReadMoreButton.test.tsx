@@ -1,8 +1,8 @@
+import { mockTracking } from "Artsy/Analytics"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
 import Waypoint from "react-waypoint"
-import { mockTracking } from "../../../../Analytics"
 import { ReadMoreButton, ReadMoreContainer } from "../ReadMoreButton"
 
 jest.unmock("react-tracking")

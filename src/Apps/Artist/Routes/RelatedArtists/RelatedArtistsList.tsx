@@ -1,13 +1,12 @@
 import { RelatedArtistsList_artist } from "__generated__/RelatedArtistsList_artist.graphql"
+import { ContextConsumer } from "Artsy/Router"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
-import { AppState } from "Router/state"
 import { ArtistCardFragmentContainer as ArtistCard } from "Styleguide/Components/ArtistCard"
 import { PaginationFragmentContainer as Pagination } from "Styleguide/Components/Pagination"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
-import { Subscribe } from "unstated"
 import { Responsive } from "Utils/Responsive"
 
 import {
@@ -89,13 +88,8 @@ class RelatedArtistsList extends Component<ShowProps, LoadingAreaState> {
 
   render() {
     return (
-      <Subscribe to={[AppState]}>
-        {({ state }) => {
-          const {
-            mediator,
-            system: { currentUser },
-          } = state
-
+      <ContextConsumer>
+        {({ currentUser, mediator }) => {
           return (
             <Responsive>
               {({ xs, sm, md }) => {
@@ -163,7 +157,7 @@ class RelatedArtistsList extends Component<ShowProps, LoadingAreaState> {
             </Responsive>
           )
         }}
-      </Subscribe>
+      </ContextConsumer>
     )
   }
 }

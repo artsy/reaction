@@ -1,3 +1,4 @@
+import { ContextProps, withContext } from "Artsy/SystemContext"
 import * as React from "react"
 import {
   commitMutation,
@@ -10,7 +11,6 @@ import track from "react-tracking"
 import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
 import Events from "../../../../Utils/Events"
 import ReplaceTransition from "../../../Animation/ReplaceTransition"
-import { ContextConsumer, ContextProps } from "../../../Artsy"
 import ItemLink, { LinkContainer } from "../../ItemLink"
 import { FollowProps } from "../../Types"
 
@@ -231,4 +231,4 @@ const ArtistSearchResultsComponent: React.SFC<Props & ContextProps> = ({
   )
 }
 
-export const ArtistSearchResults = ContextConsumer(ArtistSearchResultsComponent)
+export const ArtistSearchResults = withContext(ArtistSearchResultsComponent)

@@ -1,11 +1,10 @@
 import { NavigationTabs_artist } from "__generated__/NavigationTabs_artist.graphql"
-import { track } from "Analytics"
-import * as Schema from "Analytics/Schema"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
+import { ContextConsumer } from "Artsy/Router"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { AppState } from "Router/state"
 import { RouteTab, RouteTabs } from "Styleguide/Components/RouteTabs"
-import { Subscribe } from "unstated"
 import { Responsive } from "Utils/Responsive"
 
 interface Props {
@@ -54,10 +53,8 @@ export class NavigationTabs extends React.Component<Props> {
     const route = path => `/artist/${id}${path}`
 
     return (
-      <Subscribe to={[AppState]}>
-        {({ state }) => {
-          const { mediator } = state
-
+      <ContextConsumer>
+        {({ mediator }) => {
           return (
             <Responsive>
               {({ xs }) => {
@@ -97,7 +94,7 @@ export class NavigationTabs extends React.Component<Props> {
             </Responsive>
           )
         }}
-      </Subscribe>
+      </ContextConsumer>
     )
   }
 }

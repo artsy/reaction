@@ -1,6 +1,7 @@
 import { Save_artwork } from "__generated__/Save_artwork.graphql"
-import { track } from "Analytics"
-import * as Schema from "Analytics/Schema"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
+import * as Artsy from "Artsy/SystemContext"
 import { isNull } from "lodash"
 import React from "react"
 import {
@@ -12,7 +13,6 @@ import {
 import * as RelayRuntimeTypes from "relay-runtime"
 import styled from "styled-components"
 import colors from "../../Assets/Colors"
-import * as Artsy from "../../Components/Artsy"
 import Icon from "../Icon"
 
 const SIZE = 40
@@ -213,7 +213,7 @@ export const SaveButton = styled(SaveButtonContainer)`
 `
 
 export default createFragmentContainer(
-  Artsy.ContextConsumer(SaveButton),
+  Artsy.withContext(SaveButton),
   graphql`
     fragment Save_artwork on Artwork {
       __id
