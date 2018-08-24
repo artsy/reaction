@@ -2,6 +2,7 @@ import { memoize, once } from "lodash"
 import React, { Component } from "react"
 import track from "react-tracking"
 import styled from "styled-components"
+import { resize } from "../../../../Utils/resizer"
 import { pMedia } from "../../../Helpers"
 import { VideoControls } from "../../Sections/VideoControls"
 
@@ -27,6 +28,10 @@ export class CanvasVideo extends Component<CanvasVideoProps, any> {
 
     this.state = {
       isPlaying: false,
+      resized_cover: resize(this.props.coverUrl, {
+        width: 760,
+        isDisplayAd: true,
+      }),
     }
   }
 
@@ -132,12 +137,12 @@ export class CanvasVideo extends Component<CanvasVideoProps, any> {
   }
 
   render() {
-    const { isPlaying } = this.state
+    const { isPlaying, resized_cover } = this.state
 
     return (
       <VideoContainer onClick={this.onPlayVideo}>
         {!isPlaying && (
-          <Cover coverUrl={this.props.coverUrl} className="CanvasVideo__cover">
+          <Cover coverUrl={resized_cover} className="CanvasVideo__cover">
             <VideoControls />
           </Cover>
         )}
