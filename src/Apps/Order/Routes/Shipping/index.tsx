@@ -85,6 +85,7 @@ export class ShippingRoute extends Component<
                   order {
                     state
                   }
+                  errors
                 }
               }
             }
@@ -93,13 +94,15 @@ export class ShippingRoute extends Component<
             input: {
               orderId: this.props.order.id,
               fulfillmentType: this.state.shippingOption,
-              shippingName: this.state.name || "",
-              shippingAddressLine1: this.state.addressLine1 || "",
-              shippingAddressLine2: this.state.addressLine2 || "",
-              shippingCity: this.state.city || "",
-              shippingRegion: this.state.region || "",
-              shippingCountry: this.state.country || "",
-              shippingPostalCode: this.state.postalCode || "",
+              shipping: {
+                name: this.state.name,
+                addressLine1: this.state.addressLine1,
+                addressLine2: this.state.addressLine2,
+                city: this.state.city,
+                region: this.state.region,
+                country: this.state.country || "", // Required, kind of, for now. See: https://artsyproduct.atlassian.net/browse/PURCHASE-408
+                postalCode: this.state.postalCode,
+              },
             },
           },
           onCompleted: () =>

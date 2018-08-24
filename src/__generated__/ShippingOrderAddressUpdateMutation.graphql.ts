@@ -5,14 +5,17 @@ export type OrderFulfillmentType = "PICKUP" | "SHIP" | "%future added value";
 export type SetOrderShippingInput = {
     readonly orderId?: string | null;
     readonly fulfillmentType?: OrderFulfillmentType | null;
-    readonly shippingName?: string | null;
-    readonly shippingAddressLine1?: string | null;
-    readonly shippingAddressLine2?: string | null;
-    readonly shippingCity?: string | null;
-    readonly shippingRegion?: string | null;
-    readonly shippingCountry?: string | null;
-    readonly shippingPostalCode?: string | null;
+    readonly shipping?: ShippingInputField | null;
     readonly clientMutationId?: string | null;
+};
+export type ShippingInputField = {
+    readonly name?: string | null;
+    readonly addressLine1?: string | null;
+    readonly addressLine2?: string | null;
+    readonly city?: string | null;
+    readonly region?: string | null;
+    readonly country?: string | null;
+    readonly postalCode?: string | null;
 };
 export type ShippingOrderAddressUpdateMutationVariables = {
     readonly input: SetOrderShippingInput;
@@ -23,6 +26,7 @@ export type ShippingOrderAddressUpdateMutationResponse = {
             readonly order: ({
                 readonly state: string | null;
             }) | null;
+            readonly errors: ReadonlyArray<string | null> | null;
         }) | null;
     }) | null;
 };
@@ -39,6 +43,7 @@ mutation ShippingOrderAddressUpdateMutation(
         state
         __id: id
       }
+      errors
     }
   }
 }
@@ -103,6 +108,13 @@ v1 = [
                 "storageKey": null
               }
             ]
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "errors",
+            "args": null,
+            "storageKey": null
           }
         ]
       }
@@ -114,7 +126,7 @@ return {
   "operationKind": "mutation",
   "name": "ShippingOrderAddressUpdateMutation",
   "id": null,
-  "text": "mutation ShippingOrderAddressUpdateMutation(\n  $input: SetOrderShippingInput!\n) {\n  setOrderShipping(input: $input) {\n    result {\n      order {\n        state\n        __id: id\n      }\n    }\n  }\n}\n",
+  "text": "mutation ShippingOrderAddressUpdateMutation(\n  $input: SetOrderShippingInput!\n) {\n  setOrderShipping(input: $input) {\n    result {\n      order {\n        state\n        __id: id\n      }\n      errors\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -132,5 +144,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'a58cd0e6d450018a34b8ca4b546ba826';
+(node as any).hash = '8c15f3b0558274117be3712f4a6a3afb';
 export default node;
