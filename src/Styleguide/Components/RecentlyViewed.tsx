@@ -14,7 +14,7 @@ export interface RecentlyViewedProps {
   useRelay?: boolean
 }
 
-const HEIGHT = 100
+const HEIGHT = 180
 
 export const RecentlyViewed: React.SFC<RecentlyViewedProps> = props => {
   const { me } = props
