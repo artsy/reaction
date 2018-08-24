@@ -1,3 +1,10 @@
+/**
+ * NOTE: This file has been deprecated. See /Artsy/SystemContext for most
+ * recent version.
+ *
+ * FIXME: Remove this file once things settle a bit.
+ */
+
 import { createEnvironment } from "Artsy/Relay/createEnvironment"
 import PropTypes from "prop-types"
 import React from "react"
