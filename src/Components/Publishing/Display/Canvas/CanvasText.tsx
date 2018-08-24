@@ -17,8 +17,9 @@ interface DivProps extends React.HTMLProps<HTMLDivElement> {
 
 export const CanvasText: React.SFC<CanvasTextProps> = props => {
   const { disclaimer, unit } = props
-  const resized_logo = resize(unit.logo, {
-    width: unit.layout === "overlay" ? 300 : 250,
+  let resized_logo = resize(unit.logo, {
+    // slightly oversize to avoid fuzziness
+    width: 400,
     isDisplayAd: true,
   })
   const isSlideshowWithCaption =

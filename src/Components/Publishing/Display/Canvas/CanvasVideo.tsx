@@ -28,10 +28,6 @@ export class CanvasVideo extends Component<CanvasVideoProps, any> {
 
     this.state = {
       isPlaying: false,
-      resized_cover: resize(this.props.coverUrl, {
-        width: 760,
-        isDisplayAd: true,
-      }),
     }
   }
 
@@ -137,7 +133,12 @@ export class CanvasVideo extends Component<CanvasVideoProps, any> {
   }
 
   render() {
-    const { isPlaying, resized_cover } = this.state
+    const { isPlaying } = this.state
+
+    const resized_cover = resize(this.props.coverUrl, {
+      width: 760,
+      isDisplayAd: true,
+    })
 
     return (
       <VideoContainer onClick={this.onPlayVideo}>
