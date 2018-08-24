@@ -1,8 +1,8 @@
+import { pMedia } from "Components/Helpers"
 import React from "react"
 import track from "react-tracking"
 import styled from "styled-components"
-import { resize } from "../../../Utils/resizer"
-import { pMedia } from "../../Helpers"
+import { resize } from "Utils/resizer"
 import Icon from "../../Icon"
 import { IconPlus } from "../Icon/IconPlus"
 
@@ -38,19 +38,21 @@ export class PartnerInline extends React.Component<Props, null> {
     const resized_logo = logo ? resize(logo, { width: 240 }) : ""
 
     return (
-      <PartnerInlineContainer margin={margin}>
+      <PartnerInlineContainer margin={margin} className="PartnerInline">
         <a href="/">
           <Icon name="logo" color={color ? color : "black"} fontSize="32px" />
         </a>
-        {resized_logo && <IconPlus color={color} />}
         {resized_logo && (
-          <a
-            href={url}
-            target="_blank"
-            onClick={this.onPartnerClick.bind(this)}
-          >
-            <img src={resized_logo} />
-          </a>
+          <>
+            <IconPlus color={color} />
+            <a
+              href={url}
+              target="_blank"
+              onClick={this.onPartnerClick.bind(this)}
+            >
+              <img src={resized_logo} />
+            </a>
+          </>
         )}
       </PartnerInlineContainer>
     )

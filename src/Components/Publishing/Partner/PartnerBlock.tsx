@@ -1,9 +1,9 @@
 import { unica } from "Assets/Fonts"
+import { pMedia } from "Components/Helpers"
 import React from "react"
 import track from "react-tracking"
 import styled from "styled-components"
-import { resize } from "../../../Utils/resizer"
-import { pMedia } from "../../Helpers"
+import { resize } from "Utils/resizer"
 
 interface Props {
   logo: string
