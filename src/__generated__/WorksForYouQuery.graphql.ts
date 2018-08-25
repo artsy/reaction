@@ -15,6 +15,10 @@ export type WorksForYouQueryResponse = {
         readonly " $fragmentRefs": WorksForYouContents_viewer$ref & WorksForYouArtist_viewer$ref;
     }) | null;
 };
+export type WorksForYouQuery = {
+    readonly response: WorksForYouQueryResponse;
+    readonly variables: WorksForYouQueryVariables;
+};
 
 
 

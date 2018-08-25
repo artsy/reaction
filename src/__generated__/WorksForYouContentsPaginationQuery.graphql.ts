@@ -11,6 +11,10 @@ export type WorksForYouContentsPaginationQueryResponse = {
         readonly " $fragmentRefs": WorksForYouContents_viewer$ref;
     }) | null;
 };
+export type WorksForYouContentsPaginationQuery = {
+    readonly response: WorksForYouContentsPaginationQueryResponse;
+    readonly variables: WorksForYouContentsPaginationQueryVariables;
+};
 
 
 

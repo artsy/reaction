@@ -47,6 +47,10 @@ export type ArtistSearchResultsArtistMutationResponse = {
         }) | null;
     }) | null;
 };
+export type ArtistSearchResultsArtistMutation = {
+    readonly response: ArtistSearchResultsArtistMutationResponse;
+    readonly variables: ArtistSearchResultsArtistMutationVariables;
+};
 
 
 

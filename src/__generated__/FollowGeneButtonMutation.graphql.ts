@@ -15,6 +15,10 @@ export type FollowGeneButtonMutationResponse = {
         }) | null;
     }) | null;
 };
+export type FollowGeneButtonMutation = {
+    readonly response: FollowGeneButtonMutationResponse;
+    readonly variables: FollowGeneButtonMutationVariables;
+};
 
 
 

@@ -16,6 +16,10 @@ export type FollowArtistMutationResponse = {
         }) | null;
     }) | null;
 };
+export type FollowArtistMutation = {
+    readonly response: FollowArtistMutationResponse;
+    readonly variables: FollowArtistMutationVariables;
+};
 
 
 

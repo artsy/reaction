@@ -10,6 +10,10 @@ export type routes_ArtworkQueryResponse = {
         readonly " $fragmentRefs": ArtworkApp_artwork$ref;
     }) | null;
 };
+export type routes_ArtworkQuery = {
+    readonly response: routes_ArtworkQueryResponse;
+    readonly variables: routes_ArtworkQueryVariables;
+};
 
 
 

@@ -10,6 +10,10 @@ export type GeneSearchResultsQueryResponse = {
         readonly " $fragmentRefs": GeneSearchResultsContent_viewer$ref;
     }) | null;
 };
+export type GeneSearchResultsQuery = {
+    readonly response: GeneSearchResultsQueryResponse;
+    readonly variables: GeneSearchResultsQueryVariables;
+};
 
 
 

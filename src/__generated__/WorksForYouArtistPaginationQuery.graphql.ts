@@ -14,6 +14,10 @@ export type WorksForYouArtistPaginationQueryResponse = {
         readonly " $fragmentRefs": WorksForYouArtist_viewer$ref;
     }) | null;
 };
+export type WorksForYouArtistPaginationQuery = {
+    readonly response: WorksForYouArtistPaginationQueryResponse;
+    readonly variables: WorksForYouArtistPaginationQueryVariables;
+};
 
 
 

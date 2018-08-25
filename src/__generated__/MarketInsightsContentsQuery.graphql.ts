@@ -10,6 +10,10 @@ export type MarketInsightsContentsQueryResponse = {
         readonly " $fragmentRefs": MarketInsights_artist$ref;
     }) | null;
 };
+export type MarketInsightsContentsQuery = {
+    readonly response: MarketInsightsContentsQueryResponse;
+    readonly variables: MarketInsightsContentsQueryVariables;
+};
 
 
 

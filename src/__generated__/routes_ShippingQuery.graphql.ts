@@ -10,6 +10,10 @@ export type routes_ShippingQueryResponse = {
         readonly " $fragmentRefs": Shipping_order$ref;
     }) | null;
 };
+export type routes_ShippingQuery = {
+    readonly response: routes_ShippingQueryResponse;
+    readonly variables: routes_ShippingQueryVariables;
+};
 
 
 
