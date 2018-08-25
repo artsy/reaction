@@ -1,3 +1,4 @@
+import { FollowGeneButtonMutation } from "__generated__/FollowGeneButtonMutation.graphql"
 import * as Artsy from "Artsy/SystemContext"
 import { extend } from "lodash"
 import React from "react"
@@ -36,11 +37,12 @@ export class FollowGeneButton extends React.Component<Props> {
     const { gene, user, relay, onOpenAuthModal } = this.props
 
     if (user && user.id) {
-      commitMutation(relay.environment, {
+      commitMutation<FollowGeneButtonMutation>(relay.environment, {
         mutation: graphql`
           mutation FollowGeneButtonMutation($input: FollowGeneInput!) {
             followGene(input: $input) {
               gene {
+                __id
                 is_followed
               }
             }

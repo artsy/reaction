@@ -12,6 +12,7 @@ export type FollowArtistButtonMutationVariables = {
 export type FollowArtistButtonMutationResponse = {
     readonly followArtist: ({
         readonly artist: ({
+            readonly __id: string;
             readonly is_followed: boolean | null;
             readonly counts: ({
                 readonly follows: any | null;
@@ -32,11 +33,11 @@ mutation FollowArtistButtonMutation(
 ) {
   followArtist(input: $input) {
     artist {
+      __id
       is_followed
       counts {
         follows
       }
-      __id
     }
   }
 }
@@ -80,6 +81,13 @@ v1 = [
           {
             "kind": "ScalarField",
             "alias": null,
+            "name": "__id",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
             "name": "is_followed",
             "args": null,
             "storageKey": null
@@ -101,13 +109,6 @@ v1 = [
                 "storageKey": null
               }
             ]
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "__id",
-            "args": null,
-            "storageKey": null
           }
         ]
       }
@@ -119,7 +120,7 @@ return {
   "operationKind": "mutation",
   "name": "FollowArtistButtonMutation",
   "id": null,
-  "text": "mutation FollowArtistButtonMutation(\n  $input: FollowArtistInput!\n) {\n  followArtist(input: $input) {\n    artist {\n      is_followed\n      counts {\n        follows\n      }\n      __id\n    }\n  }\n}\n",
+  "text": "mutation FollowArtistButtonMutation(\n  $input: FollowArtistInput!\n) {\n  followArtist(input: $input) {\n    artist {\n      __id\n      is_followed\n      counts {\n        follows\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -137,5 +138,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'd54eeca05a563762419d40406443e60e';
+(node as any).hash = 'e65f3d9d751239122f1c59971dd45400';
 export default node;

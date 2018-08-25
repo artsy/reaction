@@ -1,3 +1,4 @@
+import { FollowArtistButtonMutation } from "__generated__/FollowArtistButtonMutation.graphql"
 import * as Artsy from "Artsy/SystemContext"
 import { extend } from "lodash"
 import React from "react"
@@ -67,11 +68,12 @@ export class FollowArtistButton extends React.Component<Props> {
         ? artist.counts.follows - 1
         : artist.counts.follows + 1
 
-      commitMutation(relay.environment, {
+      commitMutation<FollowArtistButtonMutation>(relay.environment, {
         mutation: graphql`
           mutation FollowArtistButtonMutation($input: FollowArtistInput!) {
             followArtist(input: $input) {
               artist {
+                __id
                 is_followed
                 counts {
                   follows

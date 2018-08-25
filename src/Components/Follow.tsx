@@ -7,6 +7,7 @@
  */
 
 import { Follow_artist } from "__generated__/Follow_artist.graphql"
+import { FollowArtistMutation } from "__generated__/FollowArtistMutation.graphql"
 import * as Artsy from "Artsy/SystemContext"
 import React from "react"
 import {
@@ -57,11 +58,12 @@ export class FollowButton extends React.Component<Props, null> {
   handleFollow() {
     const { artist, user, relay } = this.props
     if (user && user.id) {
-      commitMutation(relay.environment, {
+      commitMutation<FollowArtistMutation>(relay.environment, {
         mutation: graphql`
           mutation FollowArtistMutation($input: FollowArtistInput!) {
             followArtist(input: $input) {
               artist {
+                __id
                 is_followed
               }
             }

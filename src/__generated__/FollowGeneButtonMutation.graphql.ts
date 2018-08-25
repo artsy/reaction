@@ -11,6 +11,7 @@ export type FollowGeneButtonMutationVariables = {
 export type FollowGeneButtonMutationResponse = {
     readonly followGene: ({
         readonly gene: ({
+            readonly __id: string;
             readonly is_followed: boolean | null;
         }) | null;
     }) | null;
@@ -28,8 +29,8 @@ mutation FollowGeneButtonMutation(
 ) {
   followGene(input: $input) {
     gene {
-      is_followed
       __id
+      is_followed
     }
   }
 }
@@ -73,14 +74,14 @@ v1 = [
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "is_followed",
+            "name": "__id",
             "args": null,
             "storageKey": null
           },
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "__id",
+            "name": "is_followed",
             "args": null,
             "storageKey": null
           }
@@ -94,7 +95,7 @@ return {
   "operationKind": "mutation",
   "name": "FollowGeneButtonMutation",
   "id": null,
-  "text": "mutation FollowGeneButtonMutation(\n  $input: FollowGeneInput!\n) {\n  followGene(input: $input) {\n    gene {\n      is_followed\n      __id\n    }\n  }\n}\n",
+  "text": "mutation FollowGeneButtonMutation(\n  $input: FollowGeneInput!\n) {\n  followGene(input: $input) {\n    gene {\n      __id\n      is_followed\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -112,5 +113,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'ea86451980173904af773f09c2fa4e03';
+(node as any).hash = 'db00447f1c033c153937a7380efcbc6b';
 export default node;

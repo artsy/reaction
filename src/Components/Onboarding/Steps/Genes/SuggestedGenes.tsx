@@ -1,3 +1,7 @@
+import {
+  SuggestedGenesFollowGeneMutation,
+  SuggestedGenesFollowGeneMutationResponse,
+} from "__generated__/SuggestedGenesFollowGeneMutation.graphql"
 import { ContextProps, withContext } from "Artsy/SystemContext"
 import * as React from "react"
 import {
@@ -8,7 +12,7 @@ import {
   RelayProp,
 } from "react-relay"
 import track from "react-tracking"
-import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
+import { RecordSourceSelectorProxy } from "relay-runtime"
 import Events from "../../../../Utils/Events"
 import ReplaceTransition from "../../../Animation/ReplaceTransition"
 import ItemLink, { LinkContainer } from "../../ItemLink"
@@ -53,7 +57,7 @@ class SuggestedGenesContent extends React.Component<Props, null> {
   onGeneFollowed(
     gene: Gene,
     store: RecordSourceSelectorProxy,
-    data: SelectorData
+    data: SuggestedGenesFollowGeneMutationResponse
   ): void {
     const suggestedGene = store.get(
       data.followGene.gene.similar.edges[0].node.__id
@@ -89,24 +93,27 @@ class SuggestedGenesContent extends React.Component<Props, null> {
   followedGene(gene: Gene) {
     this.excludedGeneIds.add(gene._id)
 
-    commitMutation(this.props.relay.environment, {
-      mutation: graphql`
-        mutation SuggestedGenesFollowGeneMutation(
-          $input: FollowGeneInput!
-          $excludedGeneIds: [String]!
-        ) {
-          followGene(input: $input) {
-            gene {
-              similar(first: 1, exclude_gene_ids: $excludedGeneIds) {
-                edges {
-                  node {
-                    id
-                    _id
-                    __id
-                    name
-                    image {
-                      cropped(width: 100, height: 100) {
-                        url
+    commitMutation<SuggestedGenesFollowGeneMutation>(
+      this.props.relay.environment,
+      {
+        mutation: graphql`
+          mutation SuggestedGenesFollowGeneMutation(
+            $input: FollowGeneInput!
+            $excludedGeneIds: [String]!
+          ) {
+            followGene(input: $input) {
+              gene {
+                similar(first: 1, exclude_gene_ids: $excludedGeneIds) {
+                  edges {
+                    node {
+                      id
+                      _id
+                      __id
+                      name
+                      image {
+                        cropped(width: 100, height: 100) {
+                          url
+                        }
                       }
                     }
                   }
@@ -114,17 +121,16 @@ class SuggestedGenesContent extends React.Component<Props, null> {
               }
             }
           }
-        }
-      `,
-      variables: {
-        input: {
-          gene_id: gene.id,
+        `,
+        variables: {
+          input: {
+            gene_id: gene.id,
+          },
+          excludedGeneIds: Array.from(this.excludedGeneIds),
         },
-        excludedGeneIds: Array.from(this.excludedGeneIds),
-      },
-      updater: (store: RecordSourceSelectorProxy, data: SelectorData) =>
-        this.onGeneFollowed(gene, store, data),
-    })
+        updater: (store, data) => this.onGeneFollowed(gene, store, data),
+      }
+    )
   }
 
   render() {

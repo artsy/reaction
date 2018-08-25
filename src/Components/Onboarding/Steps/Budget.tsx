@@ -2,6 +2,7 @@ import React from "react"
 import { commitMutation, graphql } from "react-relay"
 import styled from "styled-components"
 
+import { BudgetUpdateMyUserProfileMutation } from "__generated__/BudgetUpdateMyUserProfileMutation.graphql"
 import { ContextProps, withContext } from "Artsy/SystemContext"
 import Colors from "../../../Assets/Colors"
 import { MultiButtonState } from "../../Buttons/MultiStateButton"
@@ -54,25 +55,28 @@ export class BudgetComponent extends React.Component<
   submit() {
     const priceRangeMax = this.state.selection
 
-    commitMutation(this.props.relayEnvironment, {
-      mutation: graphql`
-        mutation BudgetUpdateMyUserProfileMutation(
-          $input: UpdateMyProfileInput!
-        ) {
-          updateMyUserProfile(input: $input) {
-            user {
-              name
+    commitMutation<BudgetUpdateMyUserProfileMutation>(
+      this.props.relayEnvironment,
+      {
+        mutation: graphql`
+          mutation BudgetUpdateMyUserProfileMutation(
+            $input: UpdateMyProfileInput!
+          ) {
+            updateMyUserProfile(input: $input) {
+              user {
+                name
+              }
             }
           }
-        }
-      `,
-      variables: {
-        input: {
-          price_range_min: -1,
-          price_range_max: priceRangeMax,
+        `,
+        variables: {
+          input: {
+            price_range_min: -1,
+            price_range_max: priceRangeMax,
+          },
         },
-      },
-    })
+      }
+    )
 
     this.props.onNextButtonPressed()
   }
