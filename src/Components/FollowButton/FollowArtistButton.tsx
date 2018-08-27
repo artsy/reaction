@@ -24,7 +24,7 @@ interface Props
   artist?: FollowArtistButton_artist
   tracking?: any
   trackingData?: FollowTrackingData
-  onOpenAuthModal?: (type: "register" | "login", config?: Object) => void
+  onOpenAuthModal?: (type: "register" | "login", config?: object) => void
 
   /**
    * FIXME: Default is true due to legacy code. If false, use new @artsy/palette

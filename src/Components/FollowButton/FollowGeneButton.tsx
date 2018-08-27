@@ -18,7 +18,7 @@ interface Props extends React.HTMLProps<FollowGeneButton>, Artsy.ContextProps {
   gene?: FollowGeneButton_gene
   tracking?: any
   trackingData?: FollowTrackingData
-  onOpenAuthModal?: (type: "register" | "login", config?: Object) => void
+  onOpenAuthModal?: (type: "register" | "login", config?: object) => void
 }
 
 export class FollowGeneButton extends React.Component<Props> {

@@ -5,7 +5,7 @@ export interface HydratorProps {
   loadableState?: {
     getScriptTag: () => string
   }
-  data?: Array<object>
+  data?: object[]
   url?: string
 }
 

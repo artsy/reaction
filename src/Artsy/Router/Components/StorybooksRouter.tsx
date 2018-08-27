@@ -6,7 +6,7 @@ import React from "react"
 import { MatchingMediaQueries } from "Utils/Responsive"
 
 interface Props {
-  routes: Array<object>
+  routes: object[]
   initialMatchingMediaQueries?: MatchingMediaQueries
   initialRoute?: string
   initialState?: object

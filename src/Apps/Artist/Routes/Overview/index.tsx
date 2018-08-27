@@ -21,7 +21,7 @@ import { CurrentEventFragmentContainer as CurrentEvent } from "./Components/Curr
 
 export interface OverviewRouteProps {
   artist: Overview_artist & {
-    __fragments: Array<object>
+    __fragments: object[]
   }
 }
 

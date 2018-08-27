@@ -101,6 +101,7 @@ import { Trackables } from "./Schema"
  *      ```
  */
 export interface Track<PP = {}, SS = null, AA extends Array<any> = Array<any>> {
+  // tslint:disable-next-line:callable-types
   <P = PP, S = SS, A extends any[] = AA>(
     trackingInfo?: Trackables | ((props: P, state: S, args: A) => Trackables),
     options?: Options<Trackables>

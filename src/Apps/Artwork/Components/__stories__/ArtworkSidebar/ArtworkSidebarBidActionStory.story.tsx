@@ -16,7 +16,7 @@ import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
 
-const merge: (...args: Array<object>) => any = _merge
+const merge: (...args: object[]) => any = _merge
 
 storiesOf("Styleguide/Artwork/Sidebar", module).add("BidAction", () => {
   return (

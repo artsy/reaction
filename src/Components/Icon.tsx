@@ -34,7 +34,7 @@ export interface IconProps
 }
 
 const Icon: React.SFC<IconProps> = ({
-  color,
+  color: _color,
   font,
   fontSize,
   name,
@@ -47,9 +47,8 @@ export default styled(Icon)`
   font-size: ${props => props.fontSize || "24px"};
   margin: 0 5px;
   display: inline-block;
-  letter-spacing: 0px;
+  letter-spacing: 0;
   position: relative;
-
   ${bottom};
   ${color};
   ${left};

@@ -70,7 +70,7 @@ export class CanvasVideo extends Component<CanvasVideoProps, any> {
     }
   }
 
-  trackDuration: Function = memoize(percentComplete => {
+  trackDuration = memoize(percentComplete => {
     this.props.tracking.trackEvent({
       action: "Video duration",
       label: "Display ad video duration",
@@ -80,7 +80,7 @@ export class CanvasVideo extends Component<CanvasVideoProps, any> {
     })
   })
 
-  trackSeconds: Function = memoize(secondsComplete => {
+  trackSeconds = memoize(secondsComplete => {
     this.props.tracking.trackEvent({
       action: "Video seconds",
       label: "Display ad video seconds",

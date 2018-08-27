@@ -202,7 +202,7 @@ export class VideoPlayer extends Component<VideoPlayerProps, VideoPlayerState> {
     }
   }
 
-  trackDuration: Function = memoize(percentComplete => {
+  trackDuration = memoize(percentComplete => {
     this.props.tracking.trackEvent({
       action: "Video duration",
       label: "Video duration",
@@ -210,7 +210,7 @@ export class VideoPlayer extends Component<VideoPlayerProps, VideoPlayerState> {
     })
   })
 
-  trackSeconds: Function = memoize(secondsComplete => {
+  trackSeconds = memoize(secondsComplete => {
     this.props.tracking.trackEvent({
       action: "Video seconds",
       label: "Video seconds",

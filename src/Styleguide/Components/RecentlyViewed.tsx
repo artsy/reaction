@@ -33,7 +33,7 @@ export const RecentlyViewed: React.SFC<RecentlyViewedProps> = props => {
                 settings={{
                   slidesToScroll: 5,
                 }}
-                data={me.recentlyViewedArtworks.edges as Array<object>}
+                data={me.recentlyViewedArtworks.edges as object[]}
                 render={artwork => {
                   const {
                     node: {

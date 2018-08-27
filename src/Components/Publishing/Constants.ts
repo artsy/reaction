@@ -175,8 +175,8 @@ export const getArtsySlugsFromArticle = (
     })
     .join()
 
-  let artists = uniq(getArtsySlugsFromHTML(articleBody, "artist"))
-  let genes = uniq(getArtsySlugsFromHTML(articleBody, "gene"))
+  const artists = uniq(getArtsySlugsFromHTML(articleBody, "artist"))
+  const genes = uniq(getArtsySlugsFromHTML(articleBody, "gene"))
 
   return {
     artists,
@@ -191,7 +191,7 @@ export const getArtsySlugsFromHTML = (
   const $ = cheerio.load(html)
 
   const slugs = compact($("a")).map(a => {
-    let href = $(a).attr("href")
+    const href = $(a).attr("href")
     if (href) {
       if (href.match(`artsy.net/${model}`)) {
         return last(url.parse(href).pathname.split("/"))

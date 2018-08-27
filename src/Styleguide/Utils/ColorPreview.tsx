@@ -6,13 +6,13 @@ import { Flex } from "Styleguide/Elements/Flex"
 
 // http://24ways.org/2010/calculating-color-contrast/
 function getContrast(hex) {
-  let r = parseInt(hex.substr(1, 2), 16)
-  let g = parseInt(hex.substr(3, 2), 16)
-  let b = parseInt(hex.substr(5, 2), 16)
-  let yiq = (r * 299 + g * 587 + b * 114) / 1000
+  const r = parseInt(hex.substr(1, 2), 16)
+  const g = parseInt(hex.substr(3, 2), 16)
+  const b = parseInt(hex.substr(5, 2), 16)
+  const yiq = (r * 299 + g * 587 + b * 114) / 1000
   return yiq >= 128 ? "black" : "white"
 }
-const visibleColor = color => getContrast(themeProps.colors[color])
+const visibleColor = name => getContrast(themeProps.colors[name])
 
 export interface ColorBlockProps extends ColorProps, BackgroundProps {}
 
@@ -44,8 +44,8 @@ const Grid = styled.div`
 
 export const ColorPreview = () => (
   <Grid>
-    {Object.keys(themeProps.colors).map((color, key) => (
-      <LabeledColorBlock name={color} key={key} />
+    {Object.keys(themeProps.colors).map((name, key) => (
+      <LabeledColorBlock name={name} key={key} />
     ))}
   </Grid>
 )

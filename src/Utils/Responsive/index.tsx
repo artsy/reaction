@@ -18,7 +18,7 @@ export const Responsive = ResponsiveComponents.Consumer
 
 export type Breakpoint = keyof typeof themeProps["grid"]["breakpoints"]
 
-export type DeprecatedResponsiveProviderProps = {
+export interface DeprecatedResponsiveProviderProps {
   initialBreakpoint?: Breakpoint
   breakpoints: { [K in Breakpoint]: string }
   children: React.ReactNode

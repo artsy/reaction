@@ -13,8 +13,8 @@ import { FeatureHeader } from "../Layouts/FeatureHeader"
 import { StandardHeader } from "../Layouts/StandardHeader"
 
 describe("Header", () => {
-  const getWrapper = props => {
-    return mount(<Header {...props} />)
+  const getWrapper = headerProps => {
+    return mount(<Header {...headerProps} />)
   }
 
   let props

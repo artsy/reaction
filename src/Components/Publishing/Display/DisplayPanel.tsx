@@ -115,7 +115,7 @@ export class DisplayPanel extends Component<
     }
   }
 
-  trackDuration: Function = memoize(percentComplete => {
+  trackDuration = memoize(percentComplete => {
     this.props.tracking.trackEvent({
       action: "Video duration",
       label: "Display ad video duration",
@@ -125,7 +125,7 @@ export class DisplayPanel extends Component<
     })
   })
 
-  trackSeconds: Function = memoize(secondsComplete => {
+  trackSeconds = memoize(secondsComplete => {
     this.props.tracking.trackEvent({
       action: "Video seconds",
       label: "Display ad video seconds",

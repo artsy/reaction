@@ -35,7 +35,7 @@ export interface ArticleProps {
   tracking?: any
   closeViewer?: () => void
   viewerIsOpen?: boolean
-  onOpenAuthModal?: (type: "register" | "login", config: Object) => void
+  onOpenAuthModal?: (type: "register" | "login", config: object) => void
   onExpand?: () => void
 }
 

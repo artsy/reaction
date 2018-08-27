@@ -7,10 +7,10 @@ exports[`Nav renders a Nav 1`] = `
   font-size: 32px;
   margin: 0 5px;
   display: inline-block;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: 0;
+  -moz-letter-spacing: 0;
+  -ms-letter-spacing: 0;
+  letter-spacing: 0;
   position: relative;
   color: white;
 }
@@ -152,10 +152,10 @@ exports[`Nav renders a sponsored nav 1`] = `
   font-size: 32px;
   margin: 0 5px;
   display: inline-block;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: 0;
+  -moz-letter-spacing: 0;
+  -ms-letter-spacing: 0;
+  letter-spacing: 0;
   position: relative;
   color: white;
 }
@@ -354,10 +354,10 @@ exports[`Nav renders a transparent nav 1`] = `
   font-size: 32px;
   margin: 0 5px;
   display: inline-block;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: 0;
+  -moz-letter-spacing: 0;
+  -ms-letter-spacing: 0;
+  letter-spacing: 0;
   position: relative;
   color: white;
 }
