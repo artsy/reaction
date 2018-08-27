@@ -37,6 +37,7 @@
     "prettier-project": "yarn run prettier-write 'src/**/*.{ts,tsx}'",
     "prettier-write": "yarn run prettier --write",
     "relay": "relay-compiler --src ./src --schema data/schema.graphql --language typescript --artifactDirectory ./src/__generated__",
+    "semantic-release": "semantic-release",
     "start": "yarn storybook",
     "storybook": "node verify-node-version.js && concurrently --raw --kill-others 'yarn relay --watch' 'start-storybook -s ./public -p 9001'",
     "sync-colors": "cd externals/elan && git fetch && git checkout origin/master && cp components/lib/variables/colors.json ../../data",
@@ -44,9 +45,9 @@
     "sync-schema:localhost": "cd ../metaphysics && yarn dump-schema -- ../reaction/data",
     "test": "node verify-node-version.js && jest",
     "test:watch": "jest --watch --runInBand",
+    "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
     "type-check": "tsc --pretty",
-    "watch": "concurrently --raw --kill-others 'yarn relay --watch' 'yarn compile -w' 'yarn emit-types --watch'",
-    "semantic-release": "semantic-release"
+    "watch": "concurrently --raw --kill-others 'yarn relay --watch' 'yarn compile -w' 'yarn emit-types --watch'"
   },
   "resolutions": {
     "@types/react": "16.3.17",
@@ -125,7 +126,6 @@
     "react-test-renderer": "^16.2.0",
     "relay-compiler": "https://github.com/alloy/relay/releases/download/v1.5.0-artsy.3/relay-compiler-1.5.0-artsy.3.tgz",
     "relay-compiler-language-typescript": "^1.0.1",
-    "relay-mock-network-layer": "^1.2.0",
     "semantic-release": "^12.4.1",
     "storybook-addon-scissors": "^4.0.1",
     "styled-components": "^3.3.2",
@@ -142,7 +142,7 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
-    "@artsy/palette": "^2.9.1",
+    "@artsy/palette": "^2.9.3",
     "cheerio": "^1.0.0-rc.2",
     "farce": "^0.2.6",
     "formik": "^0.11.11",
@@ -178,6 +178,7 @@
     "react-transition-group": "^2.3.0",
     "react-url-query": "^1.1.4",
     "react-waypoint": "^7.3.3",
+    "relay-mock-network-layer": "^1.2.0",
     "relay-runtime": "https://github.com/alloy/relay/releases/download/v1.5.0-artsy.3/relay-runtime-1.5.0-artsy.3.tgz",
     "serialize-javascript": "^1.5.0",
     "sharify": "^0.1.6",

@@ -1,3 +1,4 @@
+import * as Artsy from "Artsy/SystemContext"
 import { extend } from "lodash"
 import React from "react"
 import {
@@ -8,7 +9,6 @@ import {
 } from "react-relay"
 import track from "react-tracking"
 import { FollowGeneButton_gene } from "../../__generated__/FollowGeneButton_gene.graphql"
-import * as Artsy from "../Artsy"
 import { FollowButtonDeprecated } from "./ButtonDeprecated"
 import { FollowTrackingData } from "./Typings"
 
@@ -85,7 +85,7 @@ export class FollowGeneButton extends React.Component<Props> {
 
 export default track()(
   createFragmentContainer(
-    Artsy.ContextConsumer(FollowGeneButton),
+    Artsy.withContext(FollowGeneButton),
     graphql`
       fragment FollowGeneButton_gene on Gene {
         __id

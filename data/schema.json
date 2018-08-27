@@ -838,6 +838,16 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "inquireable",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "for_sale",
                   "description": null,
                   "type": {
@@ -5288,6 +5298,54 @@
               "deprecationReason": null
             },
             {
+              "name": "framed",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "ArtworkInfoRow",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "signatureInfo",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "ArtworkInfoRow",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "conditionDescription",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "ArtworkInfoRow",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "certificateOfAuthenticity",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "ArtworkInfoRow",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "cached",
               "description": null,
               "args": [],
@@ -6350,6 +6408,16 @@
                 },
                 {
                   "name": "include_medium_filter_in_aggregation",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "inquireable",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -16415,6 +16483,16 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "inquireable",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "for_sale",
                   "description": null,
                   "type": {
@@ -16878,6 +16956,16 @@
                 },
                 {
                   "name": "include_medium_filter_in_aggregation",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "inquireable",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -17368,6 +17456,16 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "inquireable",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "for_sale",
                   "description": null,
                   "type": {
@@ -17758,6 +17856,16 @@
                 },
                 {
                   "name": "include_medium_filter_in_aggregation",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "inquireable",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -24443,6 +24551,41 @@
           "possibleTypes": null
         },
         {
+          "kind": "OBJECT",
+          "name": "ArtworkInfoRow",
+          "description": null,
+          "fields": [
+            {
+              "name": "label",
+              "description": "Label for information row",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "details",
+              "description": "Additional details about given attribute",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
           "kind": "ENUM",
           "name": "ArtistSorts",
           "description": null,
@@ -26785,6 +26928,16 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "inquireable",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "for_sale",
                   "description": null,
                   "type": {
@@ -27175,6 +27328,16 @@
                 },
                 {
                   "name": "include_medium_filter_in_aggregation",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "inquireable",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -33179,6 +33342,16 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "for_sale",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "after",
                   "description": null,
                   "type": {
@@ -33337,6 +33510,18 @@
               "deprecationReason": null
             },
             {
+              "name": "href",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "artworks",
               "description": "List of artworks in this group.",
               "args": [],
@@ -33348,6 +33533,59 @@
                   "name": "Artwork",
                   "ofType": null
                 }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "artworksConnection",
+              "description": null,
+              "args": [
+                {
+                  "name": "after",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "first",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "before",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "last",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "ArtworkConnection",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -33383,6 +33621,49 @@
               "type": {
                 "kind": "OBJECT",
                 "name": "Image",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "published_at",
+              "description": null,
+              "args": [
+                {
+                  "name": "convert_to_utc",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "format",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "timezone",
+                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -33752,6 +34033,18 @@
               "type": {
                 "kind": "ENUM",
                 "name": "OrderFulfillmentType",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "shippingName",
+              "description": "Name for shipping information",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -36363,6 +36656,16 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "inquireable",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "for_sale",
                   "description": null,
                   "type": {
@@ -38705,6 +39008,54 @@
               "deprecationReason": null
             },
             {
+              "name": "framed",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "ArtworkInfoRow",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "signatureInfo",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "ArtworkInfoRow",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "conditionDescription",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "ArtworkInfoRow",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "certificateOfAuthenticity",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "ArtworkInfoRow",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "cached",
               "description": null,
               "args": [],
@@ -39083,6 +39434,16 @@
                 },
                 {
                   "name": "include_medium_filter_in_aggregation",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "inquireable",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -39482,6 +39843,16 @@
                 },
                 {
                   "name": "include_medium_filter_in_aggregation",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "inquireable",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -40800,6 +41171,16 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "inquireable",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "for_sale",
                   "description": null,
                   "type": {
@@ -41937,6 +42318,16 @@
                 },
                 {
                   "name": "include_medium_filter_in_aggregation",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "inquireable",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -45781,12 +46172,12 @@
           "description": null,
           "fields": [
             {
-              "name": "result",
+              "name": "orderOrError",
               "description": null,
               "args": [],
               "type": {
-                "kind": "OBJECT",
-                "name": "OrderReturnType",
+                "kind": "UNION",
+                "name": "OrderOrFailureUnionType",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -45811,8 +46202,29 @@
           "possibleTypes": null
         },
         {
+          "kind": "UNION",
+          "name": "OrderOrFailureUnionType",
+          "description": null,
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": [
+            {
+              "kind": "OBJECT",
+              "name": "OrderWithMutationSuccess",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
+              "name": "OrderWithMutationFailure",
+              "ofType": null
+            }
+          ]
+        },
+        {
           "kind": "OBJECT",
-          "name": "OrderReturnType",
+          "name": "OrderWithMutationSuccess",
           "description": null,
           "fields": [
             {
@@ -45826,13 +46238,47 @@
               },
               "isDeprecated": false,
               "deprecationReason": null
-            },
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "OrderWithMutationFailure",
+          "description": null,
+          "fields": [
             {
-              "name": "errors",
+              "name": "error",
               "description": null,
               "args": [],
               "type": {
-                "kind": "LIST",
+                "kind": "OBJECT",
+                "name": "EcommerceError",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "EcommerceError",
+          "description": null,
+          "fields": [
+            {
+              "name": "description",
+              "description": "The error message",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
@@ -45876,7 +46322,48 @@
               "defaultValue": null
             },
             {
-              "name": "shippingAddressLine1",
+              "name": "shipping",
+              "description": "Shipping information",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "ShippingInputField",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "clientMutationId",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            }
+          ],
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "INPUT_OBJECT",
+          "name": "ShippingInputField",
+          "description": null,
+          "fields": null,
+          "inputFields": [
+            {
+              "name": "name",
+              "description": "Name for the shipping information",
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "addressLine1",
               "description": "Shipping address line 1",
               "type": {
                 "kind": "SCALAR",
@@ -45886,7 +46373,7 @@
               "defaultValue": null
             },
             {
-              "name": "shippingAddressLine2",
+              "name": "addressLine2",
               "description": "Shipping address line 2",
               "type": {
                 "kind": "SCALAR",
@@ -45896,7 +46383,7 @@
               "defaultValue": null
             },
             {
-              "name": "shippingCity",
+              "name": "city",
               "description": "Shipping city",
               "type": {
                 "kind": "SCALAR",
@@ -45906,7 +46393,7 @@
               "defaultValue": null
             },
             {
-              "name": "shippingRegion",
+              "name": "region",
               "description": "Shipping region",
               "type": {
                 "kind": "SCALAR",
@@ -45916,7 +46403,7 @@
               "defaultValue": null
             },
             {
-              "name": "shippingCountry",
+              "name": "country",
               "description": "Shipping country",
               "type": {
                 "kind": "SCALAR",
@@ -45926,18 +46413,8 @@
               "defaultValue": null
             },
             {
-              "name": "shippingPostalCode",
+              "name": "postalCode",
               "description": "Shipping postal code",
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "clientMutationId",
-              "description": null,
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -45975,6 +46452,45 @@
                 "kind": "SCALAR",
                 "name": "String",
                 "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "OrderReturnType",
+          "description": null,
+          "fields": [
+            {
+              "name": "order",
+              "description": "Returned order object",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "Order",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "errors",
+              "description": "Errors",
+              "args": [],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
               },
               "isDeprecated": false,
               "deprecationReason": null

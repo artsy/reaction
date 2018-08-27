@@ -28,6 +28,8 @@ export interface ModalManagerProps {
   ) => void
   blurContainerSelector?: string
   onSocialAuthEvent?: (options) => void
+  onModalOpen?: () => void
+  onModalClose?: () => void
 }
 
 export interface ModalManagerState {
@@ -59,6 +61,7 @@ export class ModalManager extends Component<
     })
 
     document.body.style.overflowY = "hidden"
+    this.props.onModalOpen && this.props.onModalOpen()
   }
 
   closeModal = () => {
@@ -67,6 +70,7 @@ export class ModalManager extends Component<
       options: {},
     })
     document.body.style.overflowY = "auto"
+    this.props.onModalClose && this.props.onModalClose()
   }
 
   handleTypeChange = type => {

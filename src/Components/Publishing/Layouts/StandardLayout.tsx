@@ -1,6 +1,6 @@
 import { color, space } from "@artsy/palette"
-import { track } from "Analytics"
-import * as Schema from "Analytics/Schema"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import { getEditorialHref } from "Components/Publishing/Constants"
 import { get, omit } from "lodash"
 import React from "react"

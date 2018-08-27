@@ -177,6 +177,7 @@ type Artist implements Node {
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
+    inquireable: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -447,6 +448,7 @@ type ArtistItem implements Node {
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
+    inquireable: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -744,6 +746,10 @@ type Artwork implements Node & Sellable {
   title: String
   to_s: String
   website: String
+  framed: ArtworkInfoRow
+  signatureInfo: ArtworkInfoRow
+  conditionDescription: ArtworkInfoRow
+  certificateOfAuthenticity: ArtworkInfoRow
   cached: Int
 }
 
@@ -1160,6 +1166,7 @@ type ArtworkFilterGene implements Node {
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
+    inquireable: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -1212,6 +1219,7 @@ type ArtworkFilterTag implements Node {
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
+    inquireable: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -1233,6 +1241,14 @@ type ArtworkFilterTag implements Node {
     tag_id: String
     keyword: String
   ): FilterArtworks
+}
+
+type ArtworkInfoRow {
+  # Label for information row
+  label: String
+
+  # Additional details about given attribute
+  details: String
 }
 
 # An inquiry on an Artwork
@@ -1383,6 +1399,10 @@ type ArtworkItem implements Node & Sellable {
   title: String
   to_s: String
   website: String
+  framed: ArtworkInfoRow
+  signatureInfo: ArtworkInfoRow
+  conditionDescription: ArtworkInfoRow
+  certificateOfAuthenticity: ArtworkInfoRow
   cached: Int
 }
 
@@ -2079,7 +2099,7 @@ input CreateOrderWithArtworkInput {
 }
 
 type CreateOrderWithArtworkPayload {
-  result: OrderReturnType
+  orderOrError: OrderOrFailureUnionType
   clientMutationId: String
 }
 
@@ -2303,6 +2323,11 @@ type Delivery {
 type dimensions {
   in: String
   cm: String
+}
+
+type EcommerceError {
+  # The error message
+  description: String!
 }
 
 input EditableLocation {
@@ -2575,12 +2600,21 @@ type FollowArtists {
 type FollowedArtistsArtworksGroup implements Node {
   # A globally unique ID.
   __id: ID!
+  href: String
 
   # List of artworks in this group.
   artworks: [Artwork]
+  artworksConnection(after: String, first: Int, before: String, last: Int): ArtworkConnection
   artists: String
   summary: String
   image: Image
+  published_at(
+    convert_to_utc: Boolean
+    format: String
+
+    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    timezone: String
+  ): String
 }
 
 # A connection to a list of items.
@@ -2641,7 +2675,7 @@ type FollowGenePayload {
 
 type FollowsAndSaves {
   # A list of published artworks by followed artists (grouped by date and artists).
-  bundledArtworksByArtist(sort: ArtworkSorts, after: String, first: Int, before: String, last: Int): FollowedArtistsArtworksGroupConnection
+  bundledArtworksByArtist(sort: ArtworkSorts, for_sale: Boolean, after: String, first: Int, before: String, last: Int): FollowedArtistsArtworksGroupConnection
 }
 
 enum Format {
@@ -2709,6 +2743,7 @@ type Gene implements Node {
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
+    inquireable: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -2750,6 +2785,7 @@ type Gene implements Node {
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
+    inquireable: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -2878,6 +2914,7 @@ type GeneItem implements Node {
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
+    inquireable: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -2919,6 +2956,7 @@ type GeneItem implements Node {
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
+    inquireable: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -3355,6 +3393,7 @@ type HomePageModuleContextGene implements Node {
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
+    inquireable: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -3396,6 +3435,7 @@ type HomePageModuleContextGene implements Node {
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
+    inquireable: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -4030,6 +4070,9 @@ type Order {
   # Fulfillment Type
   fulfillmentType: OrderFulfillmentType
 
+  # Name for shipping information
+  shippingName: String
+
   # Shipping address line 1
   shippingAddressLine1: String
 
@@ -4323,8 +4366,13 @@ type OrderLineItemEdge {
   cursor: String!
 }
 
+union OrderOrFailureUnionType = OrderWithMutationSuccess | OrderWithMutationFailure
+
 type OrderReturnType {
+  # Returned order object
   order: Order
+
+  # Errors
   errors: [String]
 }
 
@@ -4334,6 +4382,14 @@ enum OrdersSortMethodType {
 
   # Sort by latest timestamp order was updated in descending order
   UPDATED_AT_DESC
+}
+
+type OrderWithMutationFailure {
+  error: EcommerceError
+}
+
+type OrderWithMutationSuccess {
+  order: Order
 }
 
 type organizer {
@@ -4933,6 +4989,7 @@ type Query {
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
+    inquireable: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -5738,29 +5795,37 @@ input SetOrderShippingInput {
   # Fulfillment Type of this Order
   fulfillmentType: OrderFulfillmentType
 
-  # Shipping address line 1
-  shippingAddressLine1: String
-
-  # Shipping address line 2
-  shippingAddressLine2: String
-
-  # Shipping city
-  shippingCity: String
-
-  # Shipping region
-  shippingRegion: String
-
-  # Shipping country
-  shippingCountry: String
-
-  # Shipping postal code
-  shippingPostalCode: String
+  # Shipping information
+  shipping: ShippingInputField
   clientMutationId: String
 }
 
 type SetOrderShippingPayload {
   result: OrderReturnType
   clientMutationId: String
+}
+
+input ShippingInputField {
+  # Name for the shipping information
+  name: String
+
+  # Shipping address line 1
+  addressLine1: String
+
+  # Shipping address line 2
+  addressLine2: String
+
+  # Shipping city
+  city: String
+
+  # Shipping region
+  region: String
+
+  # Shipping country
+  country: String
+
+  # Shipping postal code
+  postalCode: String
 }
 
 type Show implements Node {
@@ -6015,6 +6080,7 @@ type Tag implements Node {
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
+    inquireable: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -6398,6 +6464,7 @@ type Viewer {
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
+    inquireable: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]

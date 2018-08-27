@@ -1,3 +1,4 @@
+import { ContextProps, withContext } from "Artsy/SystemContext"
 import * as React from "react"
 import {
   commitMutation,
@@ -10,7 +11,6 @@ import track from "react-tracking"
 import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
 import Events from "../../../../Utils/Events"
 import ReplaceTransition from "../../../Animation/ReplaceTransition"
-import { ContextConsumer, ContextProps } from "../../../Artsy"
 import ItemLink, { LinkContainer } from "../../ItemLink"
 import { FollowProps } from "../../Types"
 
@@ -200,4 +200,4 @@ const SuggestedGenesComponent: React.SFC<ContextProps & FollowProps> = ({
   )
 }
 
-export const SuggestedGenes = ContextConsumer(SuggestedGenesComponent)
+export const SuggestedGenes = withContext(SuggestedGenesComponent)

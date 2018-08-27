@@ -25,6 +25,7 @@ export type DeprecatedResponsiveProviderProps = {
 }
 
 export type NewResponsiveProviderProps = _ResponsiveProviderProps<MediaQuery>
+export type MatchingMediaQueries = NewResponsiveProviderProps["initialMatchingMediaQueries"]
 
 // Using a union here means that the component can either be used using the new
 // API or the deprecated one.

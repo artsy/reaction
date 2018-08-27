@@ -1,24 +1,14 @@
 import React from "react"
-import { BorderProps, SizeProps, SpaceProps } from "styled-system"
 
-import { BorderBox } from "Styleguide/Elements/Box"
-import { Flex } from "Styleguide/Elements/Flex"
-import { Join } from "Styleguide/Elements/Join"
+import { Flex, FlexProps } from "Styleguide/Elements/Flex"
 import { RadioProps } from "Styleguide/Elements/Radio"
-import { Separator } from "Styleguide/Elements/Separator"
 
-export interface RadioGroupProps {
+export interface RadioGroupProps extends FlexProps {
   disabled?: boolean
   onSelect?: (selectedOption: string) => void
   defaultValue?: string
   children: Array<React.ReactElement<RadioProps>>
 }
-
-export interface RadioGroupToggleProps
-  extends RadioGroupProps,
-    BorderProps,
-    SizeProps,
-    SpaceProps {}
 
 interface RadioGroupState {
   selectedOption: string | null
@@ -32,7 +22,7 @@ export class RadioGroup extends React.Component<
     selectedOption: this.props.defaultValue || null,
   }
 
-  onSelect = ({ selected, value }) => {
+  onSelect = ({ value }) => {
     if (this.props.onSelect) {
       this.props.onSelect(value)
     }
@@ -63,22 +53,11 @@ export class RadioGroup extends React.Component<
   }
 
   render() {
+    const { disabled, onSelect, defaultValue, children, ...others } = this.props
     return (
-      <Flex flexDirection="column" p={2}>
+      <Flex flexDirection="column" {...others}>
         {this.renderRadioButtons()}
       </Flex>
-    )
-  }
-}
-
-export class BorderedRadioGroup extends RadioGroup {
-  render() {
-    return (
-      <BorderBox flexDirection="column" p={2}>
-        <Join separator={<Separator mx={-2} my={2} width="inherit" />}>
-          {this.renderRadioButtons()}
-        </Join>
-      </BorderBox>
     )
   }
 }
