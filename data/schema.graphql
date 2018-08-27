@@ -2099,7 +2099,7 @@ input CreateOrderWithArtworkInput {
 }
 
 type CreateOrderWithArtworkPayload {
-  result: OrderReturnType
+  orderOrError: OrderOrFailureUnionType
   clientMutationId: String
 }
 
@@ -2323,6 +2323,11 @@ type Delivery {
 type dimensions {
   in: String
   cm: String
+}
+
+type EcommerceError {
+  # The error message
+  description: String!
 }
 
 input EditableLocation {
@@ -4361,8 +4366,13 @@ type OrderLineItemEdge {
   cursor: String!
 }
 
+union OrderOrFailureUnionType = OrderWithMutationSuccess | OrderWithMutationFailure
+
 type OrderReturnType {
+  # Returned order object
   order: Order
+
+  # Errors
   errors: [String]
 }
 
@@ -4372,6 +4382,14 @@ enum OrdersSortMethodType {
 
   # Sort by latest timestamp order was updated in descending order
   UPDATED_AT_DESC
+}
+
+type OrderWithMutationFailure {
+  error: EcommerceError
+}
+
+type OrderWithMutationSuccess {
+  order: Order
 }
 
 type organizer {
@@ -5777,32 +5795,37 @@ input SetOrderShippingInput {
   # Fulfillment Type of this Order
   fulfillmentType: OrderFulfillmentType
 
-  # Name for the shipping information
-  shippingName: String
-
-  # Shipping address line 1
-  shippingAddressLine1: String
-
-  # Shipping address line 2
-  shippingAddressLine2: String
-
-  # Shipping city
-  shippingCity: String
-
-  # Shipping region
-  shippingRegion: String
-
-  # Shipping country
-  shippingCountry: String
-
-  # Shipping postal code
-  shippingPostalCode: String
+  # Shipping information
+  shipping: ShippingInputField
   clientMutationId: String
 }
 
 type SetOrderShippingPayload {
   result: OrderReturnType
   clientMutationId: String
+}
+
+input ShippingInputField {
+  # Name for the shipping information
+  name: String
+
+  # Shipping address line 1
+  addressLine1: String
+
+  # Shipping address line 2
+  addressLine2: String
+
+  # Shipping city
+  city: String
+
+  # Shipping region
+  region: String
+
+  # Shipping country
+  country: String
+
+  # Shipping postal code
+  postalCode: String
 }
 
 type Show implements Node {

@@ -1,8 +1,8 @@
+import { Boot } from "Artsy/Router"
 import { mount } from "enzyme"
 import { set } from "lodash/fp"
 import React from "react"
 import { paginationProps } from "../../../Apps/__test__/Fixtures/Pagination"
-import { Boot } from "../../../Router/Boot"
 import { LargePagination, Pagination, SmallPagination } from "../Pagination"
 
 describe("Pagination", () => {

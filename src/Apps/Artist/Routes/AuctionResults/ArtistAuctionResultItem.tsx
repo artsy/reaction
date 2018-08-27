@@ -1,9 +1,9 @@
 import { Serif } from "@artsy/palette"
 import { ArtistAuctionResultItem_auctionResult } from "__generated__/ArtistAuctionResultItem_auctionResult.graphql"
+import { ContextConsumer } from "Artsy/Router"
 import { ContextProps } from "Components/Artsy"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { AppState } from "Router/state"
 import styled from "styled-components"
 import { Box } from "Styleguide/Elements/Box"
 import { Button } from "Styleguide/Elements/Button"
@@ -28,13 +28,8 @@ export class ArtistAuctionResultItem extends Component<Props> {
   render() {
     const { lastChild } = this.props
     return (
-      <Subscribe to={[AppState]}>
-        {({ state }) => {
-          const {
-            mediator,
-            system: { currentUser },
-          } = state
-
+      <ContextConsumer>
+        {({ currentUser, mediator }) => {
           return (
             <Row>
               <Responsive>
@@ -75,7 +70,7 @@ export class ArtistAuctionResultItem extends Component<Props> {
             </Row>
           )
         }}
-      </Subscribe>
+      </ContextConsumer>
     )
   }
 }

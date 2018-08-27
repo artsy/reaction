@@ -1,9 +1,9 @@
+import * as Artsy from "Artsy/SystemContext"
 import { extend } from "lodash"
 import React from "react"
 import track from "react-tracking"
 import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
 import { FollowArtistButton_artist } from "../../__generated__/FollowArtistButton_artist.graphql"
-import * as Artsy from "../Artsy"
 import { FollowButton } from "./Button"
 import { FollowButtonDeprecated } from "./ButtonDeprecated"
 import { FollowTrackingData } from "./Typings"
@@ -136,7 +136,7 @@ export class FollowArtistButton extends React.Component<Props> {
 
 export default track({})(
   createFragmentContainer(
-    Artsy.ContextConsumer(FollowArtistButton),
+    Artsy.withContext(FollowArtistButton),
     graphql`
       fragment FollowArtistButton_artist on Artist {
         __id

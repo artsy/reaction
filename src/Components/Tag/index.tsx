@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, QueryRenderer } from "react-relay"
 
-import { ContextConsumer, ContextProps } from "../Artsy"
+import { ContextProps, withContext } from "Artsy/SystemContext"
 import TagArtworks from "./TagArtworks"
 
 export interface Filters {
@@ -145,4 +145,4 @@ class TagContents extends React.Component<Props, State> {
   }
 }
 
-export const Contents = ContextConsumer(TagContents)
+export const Contents = withContext(TagContents)

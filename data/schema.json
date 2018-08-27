@@ -46172,12 +46172,12 @@
           "description": null,
           "fields": [
             {
-              "name": "result",
+              "name": "orderOrError",
               "description": null,
               "args": [],
               "type": {
-                "kind": "OBJECT",
-                "name": "OrderReturnType",
+                "kind": "UNION",
+                "name": "OrderOrFailureUnionType",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -46202,8 +46202,29 @@
           "possibleTypes": null
         },
         {
+          "kind": "UNION",
+          "name": "OrderOrFailureUnionType",
+          "description": null,
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": [
+            {
+              "kind": "OBJECT",
+              "name": "OrderWithMutationSuccess",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
+              "name": "OrderWithMutationFailure",
+              "ofType": null
+            }
+          ]
+        },
+        {
           "kind": "OBJECT",
-          "name": "OrderReturnType",
+          "name": "OrderWithMutationSuccess",
           "description": null,
           "fields": [
             {
@@ -46217,13 +46238,47 @@
               },
               "isDeprecated": false,
               "deprecationReason": null
-            },
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "OrderWithMutationFailure",
+          "description": null,
+          "fields": [
             {
-              "name": "errors",
+              "name": "error",
               "description": null,
               "args": [],
               "type": {
-                "kind": "LIST",
+                "kind": "OBJECT",
+                "name": "EcommerceError",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "EcommerceError",
+          "description": null,
+          "fields": [
+            {
+              "name": "description",
+              "description": "The error message",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
@@ -46267,7 +46322,38 @@
               "defaultValue": null
             },
             {
-              "name": "shippingName",
+              "name": "shipping",
+              "description": "Shipping information",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "ShippingInputField",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "clientMutationId",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            }
+          ],
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "INPUT_OBJECT",
+          "name": "ShippingInputField",
+          "description": null,
+          "fields": null,
+          "inputFields": [
+            {
+              "name": "name",
               "description": "Name for the shipping information",
               "type": {
                 "kind": "SCALAR",
@@ -46277,7 +46363,7 @@
               "defaultValue": null
             },
             {
-              "name": "shippingAddressLine1",
+              "name": "addressLine1",
               "description": "Shipping address line 1",
               "type": {
                 "kind": "SCALAR",
@@ -46287,7 +46373,7 @@
               "defaultValue": null
             },
             {
-              "name": "shippingAddressLine2",
+              "name": "addressLine2",
               "description": "Shipping address line 2",
               "type": {
                 "kind": "SCALAR",
@@ -46297,7 +46383,7 @@
               "defaultValue": null
             },
             {
-              "name": "shippingCity",
+              "name": "city",
               "description": "Shipping city",
               "type": {
                 "kind": "SCALAR",
@@ -46307,7 +46393,7 @@
               "defaultValue": null
             },
             {
-              "name": "shippingRegion",
+              "name": "region",
               "description": "Shipping region",
               "type": {
                 "kind": "SCALAR",
@@ -46317,7 +46403,7 @@
               "defaultValue": null
             },
             {
-              "name": "shippingCountry",
+              "name": "country",
               "description": "Shipping country",
               "type": {
                 "kind": "SCALAR",
@@ -46327,18 +46413,8 @@
               "defaultValue": null
             },
             {
-              "name": "shippingPostalCode",
+              "name": "postalCode",
               "description": "Shipping postal code",
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "clientMutationId",
-              "description": null,
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -46376,6 +46452,45 @@
                 "kind": "SCALAR",
                 "name": "String",
                 "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "OrderReturnType",
+          "description": null,
+          "fields": [
+            {
+              "name": "order",
+              "description": "Returned order object",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "Order",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "errors",
+              "description": "Errors",
+              "args": [],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
               },
               "isDeprecated": false,
               "deprecationReason": null

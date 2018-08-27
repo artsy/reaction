@@ -2,8 +2,8 @@ import React from "react"
 import { commitMutation, graphql } from "react-relay"
 import styled from "styled-components"
 
+import { ContextProps, withContext } from "Artsy/SystemContext"
 import Colors from "../../../Assets/Colors"
-import { ContextConsumer, ContextProps } from "../../Artsy"
 import { MultiButtonState } from "../../Buttons/MultiStateButton"
 import { media } from "../../Helpers"
 import SelectableToggle from "../SelectableToggle"
@@ -92,16 +92,16 @@ export class CollectorIntentComponent extends React.Component<Props, State> {
   }
 
   render() {
-    const options = Object.keys(
-      CollectorIntentComponent.intentEnum
-    ).map((text, index) => (
-      <SelectableToggle
-        key={index}
-        text={text}
-        onSelect={this.onOptionSelected.bind(this, index)}
-        selected={this.state.selectedOptions[index]}
-      />
-    ))
+    const options = Object.keys(CollectorIntentComponent.intentEnum).map(
+      (text, index) => (
+        <SelectableToggle
+          key={index}
+          text={text}
+          onSelect={this.onOptionSelected.bind(this, index)}
+          selected={this.state.selectedOptions[index]}
+        />
+      )
+    )
 
     return (
       <Layout
@@ -120,7 +120,7 @@ export class CollectorIntentComponent extends React.Component<Props, State> {
   }
 }
 
-const CollectorIntent = ContextConsumer(CollectorIntentComponent)
+const CollectorIntent = withContext(CollectorIntentComponent)
 // tslint:disable:no-string-literal
 CollectorIntent["slug"] = CollectorIntentComponent.slug
 

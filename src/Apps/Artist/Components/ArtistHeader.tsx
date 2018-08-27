@@ -1,17 +1,16 @@
 import { Serif } from "@artsy/palette"
 import { ArtistHeader_artist } from "__generated__/ArtistHeader_artist.graphql"
-import { track, Track } from "Analytics"
-import * as Schema from "Analytics/Schema"
+import { track, Track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
+import { ContextConsumer } from "Artsy/SystemContext"
 import FollowArtistButton from "Components/FollowButton/FollowArtistButton"
 import React, { Component, Fragment } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { AppState } from "Router/state"
 import { Slider } from "Styleguide/Components/Slider"
 import { Box } from "Styleguide/Elements/Box"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Image } from "Styleguide/Elements/Image"
 import { Spacer } from "Styleguide/Elements/Spacer"
-import { Subscribe } from "unstated"
 import { Responsive } from "Utils/Responsive"
 
 interface Props {
@@ -40,13 +39,8 @@ export class ArtistHeader extends Component<Props> {
   render() {
     const props = this.props
     return (
-      <Subscribe to={[AppState]}>
-        {({ state }) => {
-          const {
-            mediator,
-            system: { currentUser },
-          } = state
-
+      <ContextConsumer>
+        {({ mediator, currentUser }) => {
           return (
             <Responsive>
               {({ xs }) => {
@@ -71,7 +65,7 @@ export class ArtistHeader extends Component<Props> {
             </Responsive>
           )
         }}
-      </Subscribe>
+      </ContextConsumer>
     )
   }
 }

@@ -1,6 +1,6 @@
 import { Sans } from "@artsy/palette"
-import { track } from "Analytics"
-import * as Schema from "Analytics/Schema"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import { RelatedArticleCanvasData } from "Components/Publishing/Typings"
 import { map, once } from "lodash"
 import React from "react"

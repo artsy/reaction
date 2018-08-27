@@ -11,3 +11,11 @@ declare module "found" {
 
   const ResolverUtils: ResolverUtils
 }
+
+declare module "farce" {
+  type HistoryProtocol = "browser" | "hash" | "memory"
+
+  interface HistoryOptions {
+    useBeforeUnload?: boolean
+  }
+}

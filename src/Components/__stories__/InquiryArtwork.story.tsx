@@ -2,7 +2,7 @@ import { storiesOf } from "@storybook/react"
 import React from "react"
 import { graphql } from "react-relay"
 
-import { RootQueryRenderer } from "../../Relay/RootQueryRenderer"
+import { RootQueryRenderer } from "Artsy/Relay/RootQueryRenderer"
 import InquiryArtwork from "../InquiryArtwork"
 
 function ArtworkExample(props: { artworkID: string }) {
@@ -17,7 +17,8 @@ function ArtworkExample(props: { artworkID: string }) {
       `}
       variables={{ artworkID: props.artworkID }}
       render={readyState =>
-        readyState.props && <InquiryArtwork {...readyState.props as any} />}
+        readyState.props && <InquiryArtwork {...readyState.props as any} />
+      }
     />
   )
 }
