@@ -1,10 +1,10 @@
 import { pMedia } from "Components/Helpers"
+import Icon from "Components/Icon"
+import { IconPlus } from "Components/Publishing/Icon/IconPlus"
 import React from "react"
 import track from "react-tracking"
 import styled from "styled-components"
 import { resize } from "Utils/resizer"
-import Icon from "../../Icon"
-import { IconPlus } from "../Icon/IconPlus"
 
 interface Props {
   color?: string

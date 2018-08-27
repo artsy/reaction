@@ -1,10 +1,10 @@
 import { pMedia } from "Components/Helpers"
+import { VideoControls } from "Components/Publishing/Sections/VideoControls"
 import { memoize, once } from "lodash"
 import React, { Component } from "react"
 import track from "react-tracking"
 import styled from "styled-components"
 import { resize } from "Utils/resizer"
-import { VideoControls } from "../../Sections/VideoControls"
 
 export interface CanvasVideoProps {
   campaign: any
