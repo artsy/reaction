@@ -2,6 +2,8 @@ import {
   ArtistSearchResultsArtistMutation,
   ArtistSearchResultsArtistMutationResponse,
 } from "__generated__/ArtistSearchResultsArtistMutation.graphql"
+import { ArtistSearchResultsContent_viewer } from "__generated__/ArtistSearchResultsContent_viewer.graphql"
+import { ArtistSearchResultsQuery } from "__generated__/ArtistSearchResultsQuery.graphql"
 import { ContextProps, withContext } from "Artsy/SystemContext"
 import * as React from "react"
 import {
@@ -18,36 +20,24 @@ import ReplaceTransition from "../../../Animation/ReplaceTransition"
 import ItemLink, { LinkContainer } from "../../ItemLink"
 import { FollowProps } from "../../Types"
 
-interface Artist {
-  id: string | null
-  _id: string | null
-  __id: string | null
-  name: string | null
-  image: {
-    cropped: {
-      url: string | null
-    }
-  } | null
-}
+type Artist = ArtistSearchResultsContent_viewer["match_artist"][0]
 
-export interface Props extends FollowProps {
+export interface ContainerProps extends FollowProps {
   term: string
   tracking?: any
 }
 
-interface RelayProps extends React.HTMLProps<HTMLAnchorElement>, Props {
+interface Props extends React.HTMLProps<HTMLAnchorElement>, ContainerProps {
   relay?: RelayProp
-  viewer: {
-    match_artist: Artist[]
-  }
+  viewer: ArtistSearchResultsContent_viewer
 }
 
 @track({}, { dispatch: data => Events.postEvent(data) })
-class ArtistSearchResultsContent extends React.Component<RelayProps, null> {
+class ArtistSearchResultsContent extends React.Component<Props, null> {
   private excludedArtistIds: Set<string>
   followCount: number = 0
 
-  constructor(props: RelayProps, context: any) {
+  constructor(props: Props, context: any) {
     super(props, context)
     this.excludedArtistIds = new Set(
       this.props.viewer.match_artist.map(item => item._id)
@@ -204,13 +194,11 @@ const ArtistSearchResultsContentContainer = createFragmentContainer(
   `
 )
 
-const ArtistSearchResultsComponent: React.SFC<Props & ContextProps> = ({
-  term,
-  relayEnvironment,
-  updateFollowCount,
-}) => {
+const ArtistSearchResultsComponent: React.SFC<
+  ContainerProps & ContextProps
+> = ({ term, relayEnvironment, updateFollowCount }) => {
   return (
-    <QueryRenderer
+    <QueryRenderer<ArtistSearchResultsQuery>
       environment={relayEnvironment}
       query={graphql`
         query ArtistSearchResultsQuery($term: String!) {

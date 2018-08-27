@@ -1,4 +1,5 @@
 import { TooltipsDataLoaderQueryResponse } from "__generated__/TooltipsDataLoaderQuery.graphql"
+import { TooltipsDataLoaderQuery } from "__generated__/TooltipsDataLoaderQuery.graphql"
 import * as Artsy from "Artsy/SystemContext"
 import { getArtsySlugsFromArticle } from "Components/Publishing/Constants"
 import { ArticleData } from "Components/Publishing/Typings"
@@ -38,7 +39,7 @@ export class TooltipsDataLoader extends Component<Props> {
     }
 
     return (
-      <QueryRenderer
+      <QueryRenderer<TooltipsDataLoaderQuery>
         environment={relayEnvironment}
         query={graphql`
           query TooltipsDataLoaderQuery(

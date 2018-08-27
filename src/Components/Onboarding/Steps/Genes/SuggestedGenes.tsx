@@ -1,7 +1,9 @@
+import { SuggestedGenesContent_suggested_genes } from "__generated__/SuggestedGenesContent_suggested_genes.graphql"
 import {
   SuggestedGenesFollowGeneMutation,
   SuggestedGenesFollowGeneMutationResponse,
 } from "__generated__/SuggestedGenesFollowGeneMutation.graphql"
+import { SuggestedGenesQuery } from "__generated__/SuggestedGenesQuery.graphql"
 import { ContextProps, withContext } from "Artsy/SystemContext"
 import * as React from "react"
 import {
@@ -18,32 +20,16 @@ import ReplaceTransition from "../../../Animation/ReplaceTransition"
 import ItemLink, { LinkContainer } from "../../ItemLink"
 import { FollowProps } from "../../Types"
 
-interface Gene {
-  id: string | null
-  _id: string | null
-  __id: string | null
-  name: string | null
-  image: {
-    cropped: {
-      url: string | null
-    }
-  } | null
-}
+type Gene = SuggestedGenesContent_suggested_genes[0]
 
-interface RelayProps {
+interface Props extends React.HTMLProps<HTMLAnchorElement>, FollowProps {
   relay?: RelayProp
-  suggested_genes: Gene[]
-}
-
-interface Props
-  extends React.HTMLProps<HTMLAnchorElement>,
-    RelayProps,
-    FollowProps {
+  suggested_genes: SuggestedGenesContent_suggested_genes
   tracking?: any
 }
 
 @track({}, { dispatch: data => Events.postEvent(data) })
-class SuggestedGenesContent extends React.Component<Props, null> {
+class SuggestedGenesContent extends React.Component<Props> {
   private excludedGeneIds: Set<string>
   followCount: number = 0
 
@@ -180,7 +166,7 @@ const SuggestedGenesComponent: React.SFC<ContextProps & FollowProps> = ({
   updateFollowCount,
 }) => {
   return (
-    <QueryRenderer
+    <QueryRenderer<SuggestedGenesQuery>
       environment={relayEnvironment}
       query={graphql`
         query SuggestedGenesQuery {

@@ -1,7 +1,9 @@
+import { PopularArtistsContent_popular_artists } from "__generated__/PopularArtistsContent_popular_artists.graphql"
 import {
   PopularArtistsFollowArtistMutation,
   PopularArtistsFollowArtistMutationResponse,
 } from "__generated__/PopularArtistsFollowArtistMutation.graphql"
+import { PopularArtistsQuery } from "__generated__/PopularArtistsQuery.graphql"
 import { ContextProps, withContext } from "Artsy/SystemContext"
 import * as React from "react"
 import {
@@ -33,9 +35,7 @@ interface Artist {
 export interface RelayProps {
   tracking?: any
   relay?: RelayProp
-  popular_artists: {
-    artists?: Artist[]
-  }
+  popular_artists: PopularArtistsContent_popular_artists
 }
 
 interface Props
@@ -210,7 +210,7 @@ const PopularArtistsComponent: React.SFC<ContextProps & FollowProps> = ({
   updateFollowCount,
 }) => {
   return (
-    <QueryRenderer
+    <QueryRenderer<PopularArtistsQuery>
       environment={relayEnvironment}
       query={graphql`
         query PopularArtistsQuery {
