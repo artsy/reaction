@@ -8,7 +8,6 @@ import { BorderBox } from "Styleguide/Elements/Box"
 
 const StyledCardElement = styled(CardElement)`
   width: 100%;
-  font-family: "Comic Sans";
 `
 
 interface StyledBorderBox {
