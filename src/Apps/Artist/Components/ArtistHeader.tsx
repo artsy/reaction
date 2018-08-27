@@ -15,7 +15,7 @@ import { Responsive } from "Utils/Responsive"
 
 interface Props {
   artist: ArtistHeader_artist
-  currentUser?: User
+  user?: User
   mediator?: {
     trigger: (action: string, config: object) => void
   }
@@ -40,7 +40,7 @@ export class ArtistHeader extends Component<Props> {
     const props = this.props
     return (
       <ContextConsumer>
-        {({ mediator, currentUser }) => {
+        {({ mediator, user }) => {
           return (
             <Responsive>
               {({ xs }) => {
@@ -48,7 +48,7 @@ export class ArtistHeader extends Component<Props> {
                   return (
                     <SmallArtistHeader
                       mediator={mediator}
-                      currentUser={currentUser}
+                      user={user}
                       {...props}
                     />
                   )
@@ -56,7 +56,7 @@ export class ArtistHeader extends Component<Props> {
                   return (
                     <LargeArtistHeader
                       mediator={mediator}
-                      currentUser={currentUser}
+                      user={user}
                       {...props}
                     />
                   )
@@ -90,7 +90,7 @@ export class LargeArtistHeader extends Component<Props> {
     const { props } = this
     const {
       artist: { carousel },
-      currentUser,
+      user,
     } = props
 
     const hasImages = carousel && carousel.images
@@ -148,7 +148,7 @@ export class LargeArtistHeader extends Component<Props> {
                 paddingRight: 0,
               } as any
             }
-            currentUser={currentUser}
+            user={user}
             onOpenAuthModal={() => {
               props.mediator.trigger("open:auth", {
                 mode: "signup",
@@ -190,7 +190,7 @@ export class SmallArtistHeader extends Component<Props> {
     const props = this.props
     const {
       artist: { carousel },
-      currentUser,
+      user,
     } = props
 
     const hasImages = carousel && carousel.images
@@ -240,7 +240,7 @@ export class SmallArtistHeader extends Component<Props> {
             artist={props.artist}
             useDeprecatedButtonStyle={false}
             buttonProps={{ width: "100%" }}
-            currentUser={currentUser}
+            user={user}
             onOpenAuthModal={() => {
               props.mediator.trigger("open:auth", {
                 mode: "signup",

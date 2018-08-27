@@ -16,7 +16,7 @@ import * as Artsy from "../Artsy"
 const ShowCurrentUser: React.SFC<
   Artsy.ContextProps & { additionalProp?: string }
 > = props => {
-  let text = props.currentUser ? props.currentUser.id : "no-current-user"
+  let text = props.user ? props.user.id : "no-current-user"
   if (props.additionalProp) {
     text = `${text} & ${props.additionalProp}`
   }
@@ -32,7 +32,7 @@ const ShowRelayEnvironment: React.SFC<Artsy.ContextProps> = props => {
 const WithRelayEnvironment = Artsy.ContextConsumer(ShowRelayEnvironment)
 
 describe("Artsy context", () => {
-  const currentUser: User = {
+  const user: User = {
     id: "andy-warhol",
     accessToken: "secret",
   }
@@ -55,7 +55,7 @@ describe("Artsy context", () => {
     it("exposes the currently signed-in user", () => {
       const div = renderer
         .create(
-          <Artsy.ContextProvider currentUser={currentUser}>
+          <Artsy.ContextProvider user={user}>
             <WithCurrentUser />
           </Artsy.ContextProvider>
         )
@@ -77,7 +77,7 @@ describe("Artsy context", () => {
     it("does not default to environment variables when explicitly passing null", () => {
       const div = renderer
         .create(
-          <Artsy.ContextProvider currentUser={null}>
+          <Artsy.ContextProvider user={null}>
             <WithCurrentUser />
           </Artsy.ContextProvider>
         )
@@ -89,7 +89,7 @@ describe("Artsy context", () => {
   it("creates and exposes a Relay environment", () => {
     const div = renderer
       .create(
-        <Artsy.ContextProvider currentUser={currentUser}>
+        <Artsy.ContextProvider user={user}>
           <WithRelayEnvironment />
         </Artsy.ContextProvider>
       )
@@ -101,10 +101,7 @@ describe("Artsy context", () => {
     const mockedEnv: any = { description: "A passed in mocked env" }
     const div = renderer
       .create(
-        <Artsy.ContextProvider
-          currentUser={currentUser}
-          relayEnvironment={mockedEnv}
-        >
+        <Artsy.ContextProvider user={user} relayEnvironment={mockedEnv}>
           <WithRelayEnvironment />
         </Artsy.ContextProvider>
       )
@@ -115,7 +112,7 @@ describe("Artsy context", () => {
   it("passes other props on", () => {
     const div = renderer
       .create(
-        <Artsy.ContextProvider currentUser={currentUser}>
+        <Artsy.ContextProvider user={user}>
           <WithCurrentUser additionalProp="friends" />
         </Artsy.ContextProvider>
       )

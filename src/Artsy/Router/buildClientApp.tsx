@@ -29,10 +29,10 @@ export function buildClientApp(config: RouterConfig): Promise<Resolve> {
 
       const { relayNetwork, user } = context
       const relayBootstrap = JSON.parse(window.__RELAY_BOOTSTRAP__ || "{}")
-      const currentUser = getUser(user)
+      const _user = getUser(user)
       const relayEnvironment = createEnvironment({
         cache: relayBootstrap,
-        user: currentUser,
+        user: _user,
         relayNetwork,
       })
 
@@ -71,7 +71,7 @@ export function buildClientApp(config: RouterConfig): Promise<Resolve> {
         return (
           <Boot
             context={context}
-            currentUser={currentUser}
+            user={_user}
             relayEnvironment={relayEnvironment}
             resolver={resolver}
             routes={routes}

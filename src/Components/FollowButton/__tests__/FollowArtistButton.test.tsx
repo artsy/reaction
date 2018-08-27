@@ -1,4 +1,4 @@
-import { ContextProvider } from "Artsy/SystemContext"
+import { ContextProvider } from "Artsy"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
@@ -13,9 +13,9 @@ jest.mock("react-relay", () => ({
 }))
 
 describe("FollowArtistButton", () => {
-  const getWrapper = (props = {}, currentUser = {}) => {
+  const getWrapper = (props = {}, user = {}) => {
     return mount(
-      <ContextProvider currentUser={currentUser}>
+      <ContextProvider user={user}>
         <FollowArtistButton relay={{ environment: "" }} {...props} />
       </ContextProvider>
     )

@@ -7,7 +7,7 @@ import { ArtistCard, LargeArtistCard, SmallArtistCard } from "../ArtistCard"
 
 describe("ArtistCard", () => {
   const props = {
-    currentUser: null,
+    user: null,
     artist: {
       image: {
         cropped: {

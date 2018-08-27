@@ -12,7 +12,7 @@ interface SystemProps {
    * Unless explicitely set to `null`, this will default to use the `USER_ID`
    * and `USER_ACCESS_TOKEN` environment variables if available.
    */
-  currentUser?: User
+  user?: User
 
   /**
    * Media queries that are passed to Responsive when an app first mounts. Useful
@@ -32,7 +32,7 @@ interface SystemProps {
    * that need an environment object.
    *
    * If none is provided to the `ContextProvider` then one is created, using
-   * the `currentUser` if available.
+   * the `user` if available.
    */
   relayNetwork?: RelayNetwork
 }
@@ -57,13 +57,13 @@ export const ContextProvider: SFC<ContextProps<any>> = ({
   children,
   ...props
 }) => {
-  const currentUser = getUser(props.currentUser)
+  const _user = getUser(props.user)
   const relayEnvironment =
-    props.relayEnvironment || createEnvironment({ user: currentUser })
+    props.relayEnvironment || createEnvironment({ user: _user })
 
   const providerValues = {
     ...props,
-    currentUser,
+    user: _user,
     relayEnvironment,
   }
 

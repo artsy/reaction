@@ -55,8 +55,8 @@ export const StyledFollowButton = styled.div`
 
 export class FollowButton extends React.Component<Props, null> {
   handleFollow() {
-    const { artist, currentUser, relay } = this.props
-    if (currentUser && currentUser.id) {
+    const { artist, user, relay } = this.props
+    if (user && user.id) {
       commitMutation(relay.environment, {
         mutation: graphql`
           mutation FollowArtistMutation($input: FollowArtistInput!) {

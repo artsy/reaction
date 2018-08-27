@@ -33,9 +33,9 @@ export class FollowGeneButton extends React.Component<Props> {
   }
 
   handleFollow = () => {
-    const { gene, currentUser, relay, onOpenAuthModal } = this.props
+    const { gene, user, relay, onOpenAuthModal } = this.props
 
-    if (currentUser && currentUser.id) {
+    if (user && user.id) {
       commitMutation(relay.environment, {
         mutation: graphql`
           mutation FollowGeneButtonMutation($input: FollowGeneInput!) {

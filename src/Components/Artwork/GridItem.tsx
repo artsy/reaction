@@ -28,7 +28,7 @@ interface Props extends React.HTMLProps<ArtworkGridItemContainer> {
   useRelay?: boolean
   artwork: GridItem_artwork
   style?: any
-  currentUser?: any
+  user?: User
   mediator?: {
     trigger: (action: string, config: object) => void
   }
@@ -127,19 +127,19 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
   }
 
   render() {
-    const { style, className, artwork, useRelay, currentUser } = this.props
+    const { style, className, artwork, useRelay, user } = this.props
     const SaveButtonBlock = useRelay ? RelaySaveButton : SaveButton
     const MetadataBlock = useRelay ? RelayMetadata : Metadata
 
-    let currentUserSpread = {}
-    if (currentUser) {
-      currentUserSpread = { currentUser }
+    let userSpread = {}
+    if (user) {
+      userSpread = { user }
     }
 
     const hasBuyNowLabFeature =
-      currentUser &&
-      currentUser.lab_features &&
-      currentUser.lab_features.includes("New Buy Now Flow")
+      user &&
+      user.lab_features &&
+      user.lab_features.includes("New Buy Now Flow")
     return (
       <Responsive>
         {({ hover, ...breakpoints }) => {
@@ -163,7 +163,7 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
                       bottom: "10px",
                     }}
                     useRelay={useRelay}
-                    {...currentUserSpread}
+                    {...userSpread}
                     mediator={this.props.mediator}
                   />
                 )}

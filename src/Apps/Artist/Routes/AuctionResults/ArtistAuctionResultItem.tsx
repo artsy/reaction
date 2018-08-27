@@ -1,7 +1,6 @@
 import { Serif } from "@artsy/palette"
 import { ArtistAuctionResultItem_auctionResult } from "__generated__/ArtistAuctionResultItem_auctionResult.graphql"
-import { ContextConsumer } from "Artsy/Router"
-import { ContextProps } from "Components/Artsy"
+import { ContextConsumer, ContextProps } from "Artsy"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
@@ -22,6 +21,7 @@ export interface Props extends ContextProps {
     trigger: (action: string, config: object) => void
   }
   lastChild: boolean
+  user: User
 }
 
 export class ArtistAuctionResultItem extends Component<Props> {
@@ -29,7 +29,7 @@ export class ArtistAuctionResultItem extends Component<Props> {
     const { lastChild } = this.props
     return (
       <ContextConsumer>
-        {({ currentUser, mediator }) => {
+        {({ user, mediator }) => {
           return (
             <Row>
               <Responsive>
@@ -39,7 +39,7 @@ export class ArtistAuctionResultItem extends Component<Props> {
                       <ExtraSmallAuctionItem
                         {...this.props}
                         mediator={mediator}
-                        currentUser={currentUser}
+                        user={user}
                       />
                     )
                   } else if (sm || md) {
@@ -47,7 +47,7 @@ export class ArtistAuctionResultItem extends Component<Props> {
                       <SmallAuctionItem
                         {...this.props}
                         mediator={mediator}
-                        currentUser={currentUser}
+                        user={user}
                       />
                     )
                   } else {
@@ -55,7 +55,7 @@ export class ArtistAuctionResultItem extends Component<Props> {
                       <LargeAuctionItem
                         {...this.props}
                         mediator={mediator}
-                        currentUser={currentUser}
+                        user={user}
                       />
                     )
                   }
@@ -133,7 +133,7 @@ const LargeAuctionItem = class extends React.Component<Props> {
                 {renderPricing(
                   salePrice,
                   estimatedPrice,
-                  this.props.currentUser,
+                  this.props.user,
                   this.props.mediator,
                   "lg"
                 )}
@@ -182,7 +182,7 @@ const SmallAuctionItem = class extends React.Component<Props> {
           {renderPricing(
             salePrice,
             estimatedPrice,
-            this.props.currentUser,
+            this.props.user,
             this.props.mediator,
             "sm"
           )}
@@ -235,7 +235,7 @@ const ExtraSmallAuctionItem = class extends React.Component<Props> {
               {renderPricing(
                 salePrice,
                 estimatedPrice,
-                this.props.currentUser,
+                this.props.user,
                 this.props.mediator,
                 "xs"
               )}
@@ -312,14 +312,8 @@ const getProps = props => {
   }
 }
 
-const renderPricing = (
-  salePrice,
-  estimatedPrice,
-  currentUser,
-  mediator,
-  size
-) => {
-  if (currentUser) {
+const renderPricing = (salePrice, estimatedPrice, user, mediator, size) => {
+  if (user) {
     return (
       <>
         {salePrice && <Serif size="2">{`Sale: ${salePrice}`}</Serif>}
