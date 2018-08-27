@@ -66,16 +66,10 @@ class SaveButtonContainer extends React.Component<Props, State> {
       } as Schema.Old)
   )
   handleSave() {
-    const {
-      currentUser,
-      artwork,
-      relay,
-      relayEnvironment,
-      useRelay,
-    } = this.props
+    const { user, artwork, relay, relayEnvironment, useRelay } = this.props
     const environment = (relay && relay.environment) || relayEnvironment
 
-    if (environment && currentUser && currentUser.id) {
+    if (environment && user && user.id) {
       // Optimistic update for environments that don't have typical access to
       // Relay, e.g., where new ArtworkGrids are used in old code via Stitch. Note
       // that the prop `useRelay` refers to outer HOC wrappers. In cases where

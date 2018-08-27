@@ -22,7 +22,7 @@ storiesOf("Styleguide/Components", module)
   .add("ArtistCard", () => {
     const props = {
       artist: artist as any,
-      currentUser: null,
+      user: null,
     }
 
     return (

@@ -89,7 +89,7 @@ class RelatedArtistsList extends Component<ShowProps, LoadingAreaState> {
   render() {
     return (
       <ContextConsumer>
-        {({ currentUser, mediator }) => {
+        {({ user, mediator }) => {
           return (
             <Responsive>
               {({ xs, sm, md }) => {
@@ -120,7 +120,7 @@ class RelatedArtistsList extends Component<ShowProps, LoadingAreaState> {
                                     <ArtistCard
                                       artist={node}
                                       mediator={mediator}
-                                      currentUser={currentUser}
+                                      user={user}
                                     />
                                   </Box>
                                 )

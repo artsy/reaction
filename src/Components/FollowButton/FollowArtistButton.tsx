@@ -60,9 +60,9 @@ export class FollowArtistButton extends React.Component<Props> {
 
   handleFollow = e => {
     e.preventDefault() // If this button is part of a link, we _probably_ dont want to actually follow the link.
-    const { artist, currentUser, relay, onOpenAuthModal } = this.props
+    const { artist, user, relay, onOpenAuthModal } = this.props
 
-    if (currentUser && currentUser.id) {
+    if (user && user.id) {
       const newFollowCount = artist.is_followed
         ? artist.counts.follows - 1
         : artist.counts.follows + 1

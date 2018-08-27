@@ -52,7 +52,7 @@ class Filter extends Component<Props> {
     return showZeroState
   }
 
-  renderFilters({ currentUser, filters, mediator, hideTopBorder }) {
+  renderFilters({ user, filters, mediator, hideTopBorder }) {
     const { counts } = this.props.artist
     const { aggregations } = this.props.artist.filtered_artworks
     const mediumAggregation = aggregations.find(agg => agg.slice === "MEDIUM")
@@ -67,9 +67,9 @@ class Filter extends Component<Props> {
     )
 
     const enableLabFeature =
-      currentUser &&
-      currentUser.lab_features &&
-      currentUser.lab_features.includes("New Buy Now Flow")
+      user &&
+      user.lab_features &&
+      user.lab_features.includes("New Buy Now Flow")
 
     return (
       <>
@@ -206,7 +206,7 @@ class Filter extends Component<Props> {
     )
   }
 
-  renderZeroState({ currentUser, mediator, xs }) {
+  renderZeroState({ user, mediator, xs }) {
     const {
       artist,
       artist: { id, name, is_followed },
@@ -221,7 +221,7 @@ class Filter extends Component<Props> {
             <FollowArtistButton
               artist={artist}
               useDeprecatedButtonStyle={false}
-              currentUser={currentUser}
+              user={user}
               onOpenAuthModal={() => {
                 mediator.trigger("open:auth", {
                   mode: "signup",
@@ -299,7 +299,7 @@ class Filter extends Component<Props> {
   render() {
     return (
       <ContextConsumer>
-        {({ currentUser, mediator }) => {
+        {({ user, mediator }) => {
           return (
             <Subscribe to={[FilterState]}>
               {(filters: FilterState) => {
@@ -310,7 +310,7 @@ class Filter extends Component<Props> {
 
                       const Filters = () =>
                         this.renderFilters({
-                          currentUser,
+                          user,
                           filters,
                           mediator,
                           hideTopBorder,
@@ -349,7 +349,7 @@ class Filter extends Component<Props> {
 
                               {this.showZeroState ? (
                                 this.renderZeroState({
-                                  currentUser,
+                                  user,
                                   mediator,
                                   xs,
                                 })

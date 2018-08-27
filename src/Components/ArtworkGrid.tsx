@@ -17,7 +17,7 @@ export interface ArtworkGridContainerProps
   itemMargin?: number
   onLoadMore?: () => any
   useRelay?: boolean
-  currentUser?: any
+  user?: User
   mediator?: {
     trigger: (action: string, config: object) => void
   }
@@ -128,7 +128,7 @@ export class ArtworkGridContainer extends React.Component<
             artwork={artwork}
             key={"artwork-" + j + "-" + artwork.__id}
             useRelay={this.props.useRelay}
-            currentUser={this.props.currentUser}
+            user={this.props.user}
             mediator={this.props.mediator}
           />
         )

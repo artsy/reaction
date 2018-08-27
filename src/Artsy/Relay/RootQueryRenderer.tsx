@@ -18,7 +18,7 @@ interface QueryRendererProps {
 type Props = ContextProps & QueryRendererProps
 
 const Renderer: React.SFC<Props> = ({
-  currentUser,
+  user,
   relayEnvironment,
   children,
   ...props
@@ -33,11 +33,11 @@ const RendererWithContext = withContext(Renderer)
  * We’ll need to see if it makes sense to use this as an entry point to render component trees from Reaction in Force.
  */
 export const RootQueryRenderer: React.SFC<Props> = ({
-  currentUser,
+  user,
   children,
   ...props
 }) => (
-  <ContextProvider currentUser={currentUser}>
+  <ContextProvider user={user}>
     <RendererWithContext {...props} />
   </ContextProvider>
 )

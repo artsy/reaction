@@ -20,7 +20,7 @@ export const RecentlyViewed: React.SFC<RecentlyViewedProps> = props => {
 
   return (
     <ContextConsumer>
-      {({ currentUser, mediator }) => {
+      {({ user, mediator }) => {
         return (
           me && (
             <React.Fragment>
@@ -48,7 +48,7 @@ export const RecentlyViewed: React.SFC<RecentlyViewedProps> = props => {
                       width={HEIGHT * aspect_ratio}
                       margin={10}
                       useRelay={props.useRelay}
-                      currentUser={currentUser}
+                      user={user}
                       mediator={mediator}
                     />
                   )
@@ -88,8 +88,8 @@ export const RecentlyViewedFragmentContainer = createFragmentContainer(
 export const RecentlyViewedQueryRenderer = () => {
   return (
     <ContextConsumer>
-      {({ currentUser, mediator, relayEnvironment }) => {
-        if (!currentUser) {
+      {({ user, mediator, relayEnvironment }) => {
+        if (!user) {
           return null
         }
         return (

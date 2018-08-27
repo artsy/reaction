@@ -1,6 +1,6 @@
 import { Sans, Serif } from "@artsy/palette"
 import { WorksForYouArtist_viewer } from "__generated__/WorksForYouArtist_viewer.graphql"
-import { ContextProps } from "Components/Artsy"
+import { ContextProps } from "Artsy"
 import ArtworkGrid from "Components/ArtworkGrid"
 import Spinner from "Components/Spinner"
 import * as React from "react"
@@ -111,7 +111,7 @@ export class WorksForYouArtist extends React.Component<Props, State> {
           columnCount={3}
           itemMargin={40}
           onLoadMore={() => this.loadMoreArtworks()}
-          currentUser={this.props.currentUser}
+          user={this.props.user}
         />
         <SpinnerContainer>
           {this.state.loading ? <Spinner /> : ""}

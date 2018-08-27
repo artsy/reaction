@@ -13,7 +13,7 @@ import { Responsive } from "Utils/Responsive"
 
 interface Props {
   artist: ArtistCard_artist
-  currentUser: User
+  user: User
   mediator?: {
     trigger: (action: string, config: object) => void
   }
@@ -55,7 +55,7 @@ export const LargeArtistCard = (props: Props) => (
     <Flex flexDirection="column" alignItems="center">
       <FollowArtistButton
         artist={props.artist}
-        currentUser={props.currentUser}
+        user={props.user}
         useDeprecatedButtonStyle={false}
         buttonProps={{
           variant: "secondaryOutline",
@@ -91,7 +91,7 @@ export const SmallArtistCard = (props: Props) => (
       <Spacer mb={1} />
       <FollowArtistButton
         artist={props.artist}
-        currentUser={props.currentUser}
+        user={props.user}
         useDeprecatedButtonStyle={false}
         buttonProps={{
           variant: "secondaryOutline",

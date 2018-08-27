@@ -1,5 +1,5 @@
 import { FillwidthItem_artwork } from "__generated__/FillwidthItem_artwork.graphql"
-import { ContextProps } from "Components/Artsy"
+import { ContextProps } from "Artsy"
 import React from "react"
 import { data as sd } from "sharify"
 import RelayMetadata, { Metadata } from "./Metadata"
@@ -83,13 +83,13 @@ export class FillwidthItemContainer extends React.Component<
       targetHeight,
       imageHeight,
       useRelay,
-      currentUser,
+      user,
       mediator,
     } = this.props
 
-    let currentUserSpread = {}
-    if (currentUser) {
-      currentUserSpread = { currentUser }
+    let userSpread = {}
+    if (user) {
+      userSpread = { user }
     }
     const SaveButtonBlock = useRelay ? RelaySaveButton : SaveButton
     const MetadataBlock = useRelay ? RelayMetadata : Metadata
@@ -101,7 +101,7 @@ export class FillwidthItemContainer extends React.Component<
             <Image src={this.getImageUrl()} height={imageHeight} />
           </ImageLink>
           <SaveButtonBlock
-            {...currentUserSpread}
+            {...userSpread}
             mediator={mediator}
             className="artwork-save"
             artwork={artwork}
@@ -115,7 +115,9 @@ export class FillwidthItemContainer extends React.Component<
   }
 }
 
-export const FillwidthItem = styled(FillwidthItemContainer)`
+export const FillwidthItem = styled(FillwidthItemContainer).attrs<
+  FillwidthItemContainerProps
+>({})`
   display: inline-block;
   width: ${props => props.width}px;
   vertical-align: top;

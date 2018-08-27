@@ -55,13 +55,13 @@ class WorksForYou extends React.Component<Props> {
                   artistID={this.props.artistID}
                   viewer={props.viewer}
                   forSale={forSale}
-                  currentUser={this.props.currentUser}
+                  user={this.props.user}
                 />
               )
             } else {
               return (
                 <WorksForYouContent
-                  currentUser={this.props.currentUser}
+                  user={this.props.user}
                   viewer={props.viewer}
                 />
               )

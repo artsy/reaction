@@ -29,14 +29,14 @@ export interface ContextProps {
    * Unless explicitely set to `null`, this will default to use the `USER_ID`
    * and `USER_ACCESS_TOKEN` environment variables if available.
    */
-  currentUser?: User | null
+  user?: User | null
 
   /**
    * A configured environment object that can be used for any Relay operations
    * that need an environment object.
    *
    * If none is provided to the `ContextProvider` then one is created, using
-   * the `currentUser` if available.
+   * the `user` if available.
    */
   relayEnvironment?: Environment
 }
@@ -50,7 +50,7 @@ interface PrivateContextProps extends ContextProps {
 
 const ContextTypes: React.ValidationMap<PrivateContextProps> = {
   _isNestedInProvider: PropTypes.bool,
-  currentUser: PropTypes.object,
+  user: PropTypes.object,
   relayEnvironment: PropTypes.object,
 }
 
@@ -65,7 +65,7 @@ export class ContextProvider extends React.Component<ContextProps>
   implements React.ChildContextProvider<PrivateContextProps> {
   static childContextTypes = ContextTypes
 
-  private currentUser: User | null
+  private user: User | null
   private relayEnvironment: Environment
 
   constructor(props: ContextProps & { children?: React.ReactNode }) {
@@ -74,13 +74,13 @@ export class ContextProvider extends React.Component<ContextProps>
     }
     super(props)
 
-    if (props.currentUser) {
-      this.currentUser = props.currentUser
-    } else if (props.currentUser === undefined) {
+    if (props.user) {
+      this.user = props.user
+    } else if (props.user === undefined) {
       const id = process.env.USER_ID
       const accessToken = process.env.USER_ACCESS_TOKEN
       if (id && accessToken) {
-        this.currentUser = {
+        this.user = {
           id,
           accessToken,
         }
@@ -88,13 +88,13 @@ export class ContextProvider extends React.Component<ContextProps>
     }
 
     this.relayEnvironment =
-      props.relayEnvironment || createEnvironment({ user: this.currentUser })
+      props.relayEnvironment || createEnvironment({ user: this.user })
   }
 
   getChildContext() {
     return {
       _isNestedInProvider: true,
-      currentUser: this.currentUser,
+      user: this.user,
       relayEnvironment: this.relayEnvironment,
     }
   }
@@ -137,9 +137,9 @@ export function ContextConsumer<P>(
     }
 
     render() {
-      const { currentUser, relayEnvironment } = this.context
+      const { user, relayEnvironment } = this.context
 
-      const props = Object.assign({ currentUser, relayEnvironment }, this.props)
+      const props = Object.assign({ user, relayEnvironment }, this.props)
 
       return <Component {...props} />
     }

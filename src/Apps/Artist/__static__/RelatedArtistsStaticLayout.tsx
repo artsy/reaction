@@ -32,7 +32,7 @@ export const RelatedArtists = () => {
                     return (
                       <Box p={1} width={width}>
                         <ArtistCard
-                          currentUser={null}
+                          user={null}
                           artist={
                             {
                               id: "percy",
