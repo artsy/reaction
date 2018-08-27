@@ -86,7 +86,7 @@ describe("Artsy context", () => {
     })
 
     it("does not default to environment variables when explicitly passing null", () => {
-      let wrapper = render(
+      const wrapper = render(
         <Artsy.ContextProvider user={null}>
           <WithCurrentUser />
         </Artsy.ContextProvider>
