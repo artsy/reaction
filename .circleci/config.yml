@@ -1,18 +1,24 @@
-# Learn more about YAML anchors: https://blog.daemonl.com/2016/02/yaml.html
+# The section below specifies YAML anchors to create reusable configuration
+# To Learn more about YAML anchors: https://blog.daemonl.com/2016/02/yaml.html
 
 setup_workspace: &setup_workspace
   working_directory: ~/artsy/reaction
   docker:
     - image: circleci/node:8
 
+# https://circleci.com/docs/2.0/caching/#basic-example-of-dependency-caching
 save_cache: &save_cache
   save_cache:
     key: yarn-deps-{{ checksum "yarn.lock" }}
     paths:
       - ./node_modules
 
+# https://circleci.com/docs/2.0/caching/#restoring-cache
 restore_cache: &restore_cache
   restore_cache:
+    # If there isn't a match to the first key, it'll do a partial match of the
+    # second. That means after the first cache save there will always be a cache
+    # hit, but it might be an older version of the cache
     keys:
       - yarn-deps-{{ checksum "yarn.lock" }}
       - yarn-deps-
