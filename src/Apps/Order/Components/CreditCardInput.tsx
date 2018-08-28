@@ -1,6 +1,9 @@
 import { color } from "@artsy/palette"
 import { fontFamily } from "@artsy/palette/dist/platform/fonts"
-import { border } from "Components/Mixins"
+import {
+  border as inputBorder,
+  BorderProps as InputBorderProps,
+} from "Components/Mixins"
 import React from "react"
 import { CardElement } from "react-stripe-elements"
 import styled from "styled-components"
@@ -10,11 +13,9 @@ const StyledCardElement = styled(CardElement)`
   width: 100%;
 `
 
-interface StyledBorderBox {
-  hasError: boolean
-}
-const StyledBorderBox = styled(BorderBox).attrs<StyledBorderBox>({})`
-  ${border};
+// Re-uses old input border behavior
+const StyledBorderBox = styled(BorderBox).attrs<InputBorderProps>({})`
+  ${inputBorder};
 `
 
 export class CreditCardInput extends React.Component {
