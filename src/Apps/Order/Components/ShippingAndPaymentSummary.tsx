@@ -8,7 +8,19 @@ import { CreditCardDetails } from "./CreditCardDetails"
 import { ShippingAddress } from "./ShippingAddress"
 
 export const ShippingAndPaymentSummary = ({
-  order: { fulfillmentType, lineItems, creditCard, ...address },
+  order: {
+    requestedFulfillment: {
+      fulfillmentType,
+      name,
+      addressLine1,
+      addressLine2,
+      city,
+      postalCode,
+      region,
+    },
+    lineItems,
+    creditCard,
+  },
   ...others
 }: {
   order: ShippingAndPaymentSummary_order
@@ -25,7 +37,14 @@ export const ShippingAndPaymentSummary = ({
       </StepSummaryItem>
     ) : (
       <StepSummaryItem title="Ship to">
-        <ShippingAddress {...address} />
+        <ShippingAddress
+          shippingName={name}
+          shippingAddressLine1={addressLine1}
+          shippingAddressLine2={addressLine2}
+          shippingCity={city}
+          shippingPostalCode={postalCode}
+          shippingRegion={region}
+        />
       </StepSummaryItem>
     )}
     <StepSummaryItem>
@@ -38,13 +57,19 @@ export const ShippingAndPaymentSummaryFragmentContainer = createFragmentContaine
   ShippingAndPaymentSummary,
   graphql`
     fragment ShippingAndPaymentSummary_order on Order {
-      fulfillmentType
-      shippingName
-      shippingAddressLine1
-      shippingAddressLine2
-      shippingCity
-      shippingPostalCode
-      shippingRegion
+      requestedFulfillment {
+        ... on Pickup {
+          fulfillmentType
+        }
+        ... on Ship {
+          name
+          addressLine1
+          addressLine2
+          city
+          postalCode
+          region
+        }
+      }
       lineItems {
         edges {
           node {

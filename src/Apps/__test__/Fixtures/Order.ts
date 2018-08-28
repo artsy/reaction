@@ -35,7 +35,7 @@ export const UntouchedOrder = {
       },
     ],
   },
-  partner: {
+  seller: {
     name: "Kathryn Markel Fine Arts",
     locations: [
       {
@@ -49,13 +49,14 @@ export const UntouchedOrder = {
 
 export const OrderWithShippingDetails = {
   ...UntouchedOrder,
-  fulfillmentType: "SHIP",
-  shippingName: "Joelle Van Dyne",
-  shippingAddressLine1: "23 41st st",
-  shippingAddressLine2: null,
-  shippingCity: "New York",
-  shippingPostalCode: "90210",
-  shippingRegion: "US",
+  requestedFulfillment: {
+    name: "Joelle Van Dyne",
+    addressLine1: "23 41st st",
+    addressLine2: null,
+    city: "New York",
+    postalCode: "90210",
+    region: "US",
+  },
   creditCard: {
     brand: "Visa",
     last_digits: "4444",

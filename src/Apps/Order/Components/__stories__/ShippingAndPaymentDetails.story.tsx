@@ -11,13 +11,14 @@ import { ShippingAndPaymentSummary } from "../ShippingAndPaymentSummary"
 const order: ShippingAndPaymentReview_order &
   ShippingAndPaymentSummary_order = {
   " $refType": null,
-  fulfillmentType: "SHIP",
-  shippingName: "Joelle Van Dyne",
-  shippingAddressLine1: "23 41st st",
-  shippingAddressLine2: null,
-  shippingCity: "New York",
-  shippingPostalCode: "90210",
-  shippingRegion: "US",
+  requestedFulfillment: {
+    name: "Joelle Van Dyne",
+    addressLine1: "23 41st st",
+    addressLine2: null,
+    city: "New York",
+    pPostalCode: "90210",
+    region: "US",
+  },
   lineItems: {
     edges: [{ node: { artwork: { shippingOrigin: "Jersey City, NJ" } } }],
   },
@@ -44,7 +45,9 @@ storiesOf("Apps/Order Page/Components", module).add(
             <ShippingAndPaymentSummary
               order={{
                 ...order,
-                fulfillmentType: "PICKUP",
+                requestedFulfillment: {
+                  fulfillmentType: "PICKUP",
+                },
               }}
             />
           </Flex>
@@ -65,7 +68,9 @@ storiesOf("Apps/Order Page/Components", module).add(
               onChangeShipping={() => alert("clicked")}
               order={{
                 ...order,
-                fulfillmentType: "PICKUP",
+                requestedFulfillment: {
+                  fulfillmentType: "PICKUP",
+                },
               }}
             />
           </Flex>

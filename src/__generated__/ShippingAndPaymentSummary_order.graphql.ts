@@ -1,17 +1,18 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-export type OrderFulfillmentType = "PICKUP" | "SHIP" | "%future added value";
 declare const _ShippingAndPaymentSummary_order$ref: unique symbol;
 export type ShippingAndPaymentSummary_order$ref = typeof _ShippingAndPaymentSummary_order$ref;
 export type ShippingAndPaymentSummary_order = {
-    readonly fulfillmentType: OrderFulfillmentType | null;
-    readonly shippingName: string | null;
-    readonly shippingAddressLine1: string | null;
-    readonly shippingAddressLine2: string | null;
-    readonly shippingCity: string | null;
-    readonly shippingPostalCode: string | null;
-    readonly shippingRegion: string | null;
+    readonly requestedFulfillment: ({
+        readonly fulfillmentType?: string | null;
+        readonly name?: string | null;
+        readonly addressLine1?: string | null;
+        readonly addressLine2?: string | null;
+        readonly city?: string | null;
+        readonly postalCode?: string | null;
+        readonly region?: string | null;
+    }) | null;
     readonly lineItems: ({
         readonly edges: ReadonlyArray<({
             readonly node: ({
@@ -55,53 +56,76 @@ return {
   "argumentDefinitions": [],
   "selections": [
     {
-      "kind": "ScalarField",
+      "kind": "LinkedField",
       "alias": null,
-      "name": "fulfillmentType",
+      "name": "requestedFulfillment",
+      "storageKey": null,
       "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "shippingName",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "shippingAddressLine1",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "shippingAddressLine2",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "shippingCity",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "shippingPostalCode",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "shippingRegion",
-      "args": null,
-      "storageKey": null
+      "concreteType": null,
+      "plural": false,
+      "selections": [
+        {
+          "kind": "InlineFragment",
+          "type": "Ship",
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "name",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "addressLine1",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "addressLine2",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "city",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "postalCode",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "region",
+              "args": null,
+              "storageKey": null
+            }
+          ]
+        },
+        {
+          "kind": "InlineFragment",
+          "type": "Pickup",
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "fulfillmentType",
+              "args": null,
+              "storageKey": null
+            }
+          ]
+        }
+      ]
     },
     {
       "kind": "LinkedField",
@@ -200,5 +224,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '09a03c5baef4447539a6133fab2c56dd';
+(node as any).hash = '6ebabf09d28b40354d6980530ad1b763';
 export default node;
