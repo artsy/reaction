@@ -1,5 +1,15 @@
 import { Location, RouteConfig, Router } from "found"
 import React from "react"
+import { StripeProvider } from "react-stripe-elements"
+
+declare global {
+  interface Window {
+    Stripe?: (key: string) => stripe.Stripe
+    sd: {
+      STRIPE_PUBLISHABLE_KEY: string
+    }
+  }
+}
 
 const findRoute = (routes, routeIndices) => {
   let currentRoute = routes[routeIndices[0]]
@@ -22,7 +32,12 @@ export interface OrderAppProps {
   router: Router
 }
 
-export class OrderApp extends React.Component<OrderAppProps> {
+interface OrderAppState {
+  stripe: stripe.Stripe
+}
+
+export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
+  state = { stripe: null }
   removeTransitionHook: () => void
 
   constructor(props) {
@@ -31,6 +46,21 @@ export class OrderApp extends React.Component<OrderAppProps> {
     this.removeTransitionHook = props.router.addTransitionHook(
       this.onTransition
     )
+  }
+
+  componentDidMount() {
+    if (window.Stripe) {
+      this.setState({
+        stripe: window.Stripe(window.sd.STRIPE_PUBLISHABLE_KEY),
+      })
+    } else {
+      document.querySelector("#stripe-js").addEventListener("load", () => {
+        // Create Stripe instance once Stripe.js loads
+        this.setState({
+          stripe: window.Stripe(window.sd.STRIPE_PUBLISHABLE_KEY),
+        })
+      })
+    }
   }
 
   componentWillUnmount() {
@@ -50,6 +80,8 @@ export class OrderApp extends React.Component<OrderAppProps> {
 
   render() {
     const { children } = this.props
-    return children
+    return (
+      <StripeProvider stripe={this.state.stripe}>{children}</StripeProvider>
+    )
   }
 }
