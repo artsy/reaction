@@ -1,17 +1,16 @@
 import { Serif } from "@artsy/palette"
 import { artistResponse } from "Apps/__test__/Fixtures/MarketInsights"
 import React from "react"
-import { ArtistBio } from "Styleguide/Components/ArtistBio"
+import { Box } from "Styleguide/Elements"
+import { Responsive } from "Utils/Responsive"
+
 import {
+  ArtistBio,
   MarketInsights,
   MarketInsightsProps,
-} from "Styleguide/Components/MarketInsights"
-import {
   SelectedExhibitions,
   SelectedExhibitionsProps,
-} from "Styleguide/Components/SelectedExhibitions"
-import { Box } from "Styleguide/Elements/Box"
-import { Responsive } from "Utils/Responsive"
+} from "Styleguide/Components"
 
 interface ArtistInfoProps
   extends MarketInsightsProps,

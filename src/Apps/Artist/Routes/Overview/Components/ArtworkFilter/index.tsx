@@ -8,20 +8,23 @@ import FollowArtistButton from "Components/FollowButton/FollowArtistButton"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
-import { Toggle } from "Styleguide/Components/Toggle"
-import { Box } from "Styleguide/Elements/Box"
-import { Button } from "Styleguide/Elements/Button"
-import { Checkbox } from "Styleguide/Elements/Checkbox"
-import { Flex } from "Styleguide/Elements/Flex"
-import { Message } from "Styleguide/Elements/Message"
-import { Radio } from "Styleguide/Elements/Radio"
-import { SmallSelect } from "Styleguide/Elements/Select"
-import { Separator } from "Styleguide/Elements/Separator"
-import { Spacer } from "Styleguide/Elements/Spacer"
+import { Toggle } from "Styleguide/Components"
 import { Subscribe } from "unstated"
 import { Responsive } from "Utils/Responsive"
 import { ArtworkFilterRefetchContainer as ArtworkFilter } from "./ArtworkFilterRefetch"
 import { MobileActionSheet } from "./MobileActionSheet"
+
+import {
+  Box,
+  Button,
+  Checkbox,
+  Flex,
+  Message,
+  Radio,
+  Separator,
+  SmallSelect,
+  Spacer,
+} from "Styleguide/Elements"
 
 interface Props {
   artist: ArtworkFilter_artist

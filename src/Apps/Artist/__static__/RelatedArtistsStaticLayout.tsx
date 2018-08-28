@@ -1,12 +1,12 @@
 import { paginationProps } from "Apps/__test__/Fixtures/Pagination"
 import React from "react"
-import { ArtistCard } from "Styleguide/Components/ArtistCard"
-import { PaginationFragmentContainer as Pagination } from "Styleguide/Components/Pagination"
-import { Box } from "Styleguide/Elements/Box"
-import { Flex } from "Styleguide/Elements/Flex"
-import { Col, Row } from "Styleguide/Elements/Grid"
-import { Separator } from "Styleguide/Elements/Separator"
+import { Box, Col, Flex, Row, Separator } from "Styleguide/Elements"
 import { Responsive } from "Utils/Responsive"
+
+import {
+  ArtistCard,
+  PaginationFragmentContainer as Pagination,
+} from "Styleguide/Components"
 
 export const RelatedArtists = () => {
   const { cursor, callbacks } = paginationProps
