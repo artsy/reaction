@@ -40,7 +40,7 @@ export class PaymentRoute extends Component<
   PaymentProps,
   PaymentState & Address
 > {
-  state = { country: "USA", hideBillingAddress: true }
+  state = { country: "US", hideBillingAddress: true }
   onUpdateName = e => this.setState({ name: e.target.value })
   onUpdateAddressLine1 = e => this.setState({ addressLine1: e.target.value })
   onUpdateAddressLine2 = e => this.setState({ addressLine2: e.target.value })
