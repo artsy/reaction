@@ -217,7 +217,6 @@ class Filter extends Component<Props> {
         There aren’t any works available by the artist at this time.{" "}
         {!is_followed && (
           <>
-            Follow{" "}
             <FollowArtistButton
               artist={artist}
               useDeprecatedButtonStyle={false}
@@ -234,7 +233,7 @@ class Filter extends Component<Props> {
                   },
                 })
               }}
-              render={() => <ZeroStateLink>{name}</ZeroStateLink>}
+              render={() => <ZeroStateLink>Follow {name}</ZeroStateLink>}
             />{" "}
             to receive notifications when new works are added.
           </>
