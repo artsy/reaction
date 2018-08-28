@@ -135,7 +135,9 @@ export class Article extends React.Component<ArticleProps, State> {
         {this.getArticleLayout()}
         {this.shouldRenderSignUpCta() && (
           <MinimalCtaBanner
-            href={`/sign_up?redirect-to=${getArticleFullHref(slug)}`}
+            href={`/sign_up?intent=viewed+editorial&trigger=click&contextModule=auth+minimal+cta+banner&redirect-to=${getArticleFullHref(
+              slug
+            )}`}
             height="55px"
             copy={copy}
             position="bottom"

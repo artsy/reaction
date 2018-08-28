@@ -1,6 +1,8 @@
 import { Sans } from "@artsy/palette"
 import React from "react"
+import track from "react-tracking"
 import styled from "styled-components"
+import Events from "Utils/Events"
 import SlideTransition from "./Animation/SlideTransition"
 import Icon from "./Icon"
 
@@ -10,6 +12,7 @@ export interface MinimalCtaBannerProps extends React.Props<HTMLDivElement> {
   height?: string
   href?: string
   position: "top" | "bottom"
+  tracking?: any
   textColor?: string
   show?: boolean
 }
@@ -18,6 +21,7 @@ export interface State {
   dismissed: boolean
 }
 
+@track({}, { dispatch: data => Events.postEvent(data) })
 export class MinimalCtaBanner extends React.Component<
   MinimalCtaBannerProps,
   State
@@ -26,7 +30,27 @@ export class MinimalCtaBanner extends React.Component<
     dismissed: false,
   }
 
+  componentDidMount() {
+    if (this.props.tracking) {
+      this.props.tracking.trackEvent({
+        action: "Auth impression",
+        trigger: "click",
+        context_module: "auth minimal cta banner",
+      })
+    }
+  }
+
   dismissCta = () => {
+    if (this.props.tracking) {
+      this.props.tracking.trackEvent({
+        action: "Click",
+        type: "dismiss",
+        intent: "viewed editorial",
+        label: "dismiss auth banner",
+        flow: "auth",
+      })
+    }
+
     this.setState({ dismissed: true })
   }
 
