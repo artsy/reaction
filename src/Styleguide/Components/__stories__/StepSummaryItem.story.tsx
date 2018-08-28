@@ -1,7 +1,7 @@
 import { Sans, Serif } from "@artsy/palette"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { StepSummaryItem } from "Styleguide/Components/StepSummaryItem"
+import { StepSummaryItem } from "Styleguide/Components"
 import { Section } from "Styleguide/Utils/Section"
 import { Responsive } from "Utils/Responsive"
 

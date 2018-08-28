@@ -3,8 +3,7 @@ import { FillwidthItem } from "Components/Artwork/FillwidthItem"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { LargeSlider, Slider, SmallSlider } from "Styleguide/Components/Slider"
-import { Box } from "Styleguide/Elements/Box"
-import { Image } from "Styleguide/Elements/Image"
+import { Box, Image } from "Styleguide/Elements"
 import { Section } from "Styleguide/Utils/Section"
 
 storiesOf("Styleguide/Components", module).add("Slider", () => {

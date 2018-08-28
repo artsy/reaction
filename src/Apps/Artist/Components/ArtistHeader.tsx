@@ -6,11 +6,8 @@ import { ContextConsumer } from "Artsy/SystemContext"
 import FollowArtistButton from "Components/FollowButton/FollowArtistButton"
 import React, { Component, Fragment } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Slider } from "Styleguide/Components/Slider"
-import { Box } from "Styleguide/Elements/Box"
-import { Flex } from "Styleguide/Elements/Flex"
-import { Image } from "Styleguide/Elements/Image"
-import { Spacer } from "Styleguide/Elements/Spacer"
+import { Slider } from "Styleguide/Components"
+import { Box, Flex, Image, Spacer } from "Styleguide/Elements"
 import { Responsive } from "Utils/Responsive"
 
 interface Props {

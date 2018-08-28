@@ -1,11 +1,20 @@
 import { Sans } from "@artsy/palette"
 import { Shipping_order } from "__generated__/Shipping_order.graphql"
+import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
+import { Helper } from "Apps/Order/Components/Helper"
+import { TransactionSummaryFragmentContainer as TransactionSummary } from "Apps/Order/Components/TransactionSummary"
+import { Router } from "found"
+import React, { Component } from "react"
+import { Collapse } from "Styleguide/Components"
+import { Responsive } from "Utils/Responsive"
+import { AddressForm } from "../../Components/AddressForm"
+import { TwoColumnLayout } from "../../Components/TwoColumnLayout"
+
 import {
   OrderFulfillmentType,
   ShippingOrderAddressUpdateMutation,
 } from "__generated__/ShippingOrderAddressUpdateMutation.graphql"
-import { Router } from "found"
-import React, { Component } from "react"
+
 import {
   commitMutation,
   createFragmentContainer,
@@ -13,21 +22,15 @@ import {
   RelayProp,
 } from "react-relay"
 
-import { Collapse } from "Styleguide/Components/Collapse"
-import { Button } from "Styleguide/Elements/Button"
-import { Flex } from "Styleguide/Elements/Flex"
-import { Col, Row } from "Styleguide/Elements/Grid"
-import { BorderedRadio } from "Styleguide/Elements/Radio"
-import { RadioGroup } from "Styleguide/Elements/RadioGroup"
-import { Spacer } from "Styleguide/Elements/Spacer"
-import { Responsive } from "Utils/Responsive"
-
-import { Helper } from "Apps/Order/Components/Helper"
-
-import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
-import { TransactionSummaryFragmentContainer as TransactionSummary } from "Apps/Order/Components/TransactionSummary"
-import { AddressForm } from "../../Components/AddressForm"
-import { TwoColumnLayout } from "../../Components/TwoColumnLayout"
+import {
+  BorderedRadio,
+  Button,
+  Col,
+  Flex,
+  RadioGroup,
+  Row,
+  Spacer,
+} from "Styleguide/Elements"
 
 export interface ShippingProps {
   order: Shipping_order
