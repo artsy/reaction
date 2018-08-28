@@ -36,6 +36,7 @@ export const UntouchedOrder = {
     ],
   },
   seller: {
+    __typename: "Partner",
     name: "Kathryn Markel Fine Arts",
     locations: [
       {
