@@ -1,45 +1,36 @@
 import { storiesOf } from "@storybook/react"
-import { Contents as WorksForYouContent } from "Apps/WorksForYou"
+import { WorksForYou } from "Apps/WorksForYou"
+import { ContextProvider } from "Artsy"
 import React from "react"
-
-import { ContextProvider } from "Components/Artsy"
 
 storiesOf("Apps/WorksForYou/Feed", module).add("For Sale", () => {
   return (
-    <div>
-      <ContextProvider>
-        <WorksForYouContent artistID={""} />
-      </ContextProvider>
-    </div>
+    <ContextProvider>
+      <WorksForYou />
+    </ContextProvider>
   )
 })
 
 storiesOf("Apps/WorksForYou/Feed", module).add("All", () => {
   return (
-    <div>
-      <ContextProvider>
-        <WorksForYouContent forSale={false} artistID={""} />
-      </ContextProvider>
-    </div>
+    <ContextProvider>
+      <WorksForYou forSale={false} />
+    </ContextProvider>
   )
 })
 
 storiesOf("Apps/WorksForYou/Artist", module).add("For Sale", () => {
   return (
-    <div>
-      <ContextProvider>
-        <WorksForYouContent artistID={"pablo-picasso"} />
-      </ContextProvider>
-    </div>
+    <ContextProvider>
+      <WorksForYou artistID={"pablo-picasso"} />
+    </ContextProvider>
   )
 })
 
 storiesOf("Apps/WorksForYou/Artist", module).add("All", () => {
   return (
-    <div>
-      <ContextProvider>
-        <WorksForYouContent forSale={false} artistID={"pablo-picasso"} />
-      </ContextProvider>
-    </div>
+    <ContextProvider>
+      <WorksForYou forSale={false} artistID={"pablo-picasso"} />
+    </ContextProvider>
   )
 })

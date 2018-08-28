@@ -1,9 +1,9 @@
 import { ArtistArtworksFilters } from "__generated__/WorksForYouQuery.graphql"
 import { WorksForYouQuery } from "__generated__/WorksForYouQuery.graphql"
 import { MarketingHeader } from "Apps/WorksForYou/Components/MarketingHeader"
-import { ContextConsumer, ContextProps } from "Components/Artsy"
+import { ContextConsumer, ContextProps } from "Artsy"
 import Spinner from "Components/Spinner"
-import React from "react"
+import React, { Component } from "react"
 import { graphql, QueryRenderer } from "react-relay"
 import styled from "styled-components"
 import WorksForYouArtist from "./WorksForYouArtist"
@@ -20,68 +20,71 @@ const SpinnerContainer = styled.div`
   position: relative;
 `
 
-class WorksForYou extends React.Component<Props> {
+export class WorksForYou extends Component<Props> {
   static defaultProps = {
     forSale: true,
+    artistID: "",
   }
+
   render() {
-    const { relayEnvironment, artistID, forSale } = this.props
+    const { artistID, forSale } = this.props
     const includeSelectedArtist = !!artistID
     const filter: ArtistArtworksFilters[] = forSale ? ["IS_FOR_SALE"] : null
 
     return (
-      <QueryRenderer<WorksForYouQuery>
-        environment={relayEnvironment}
-        query={graphql`
-          query WorksForYouQuery(
-            $includeSelectedArtist: Boolean!
-            $artistID: String!
-            $forSale: Boolean
-            $filter: [ArtistArtworksFilters]
-          ) {
-            viewer {
-              ...WorksForYouContents_viewer
-                @skip(if: $includeSelectedArtist)
-                @arguments(for_sale: $forSale)
-              ...WorksForYouArtist_viewer
-                @include(if: $includeSelectedArtist)
-                @arguments(artistID: $artistID, filter: $filter)
-            }
-          }
-        `}
-        variables={{ artistID, includeSelectedArtist, forSale, filter }}
-        render={({ props }) => {
-          if (props) {
-            return (
-              <>
-                <MarketingHeader />
+      <ContextConsumer>
+        {({ relayEnvironment, user }) => {
+          return (
+            <QueryRenderer<WorksForYouQuery>
+              environment={relayEnvironment}
+              query={graphql`
+                query WorksForYouQuery(
+                  $includeSelectedArtist: Boolean!
+                  $artistID: String!
+                  $forSale: Boolean
+                  $filter: [ArtistArtworksFilters]
+                ) {
+                  viewer {
+                    ...WorksForYouContents_viewer
+                      @skip(if: $includeSelectedArtist)
+                      @arguments(for_sale: $forSale)
+                    ...WorksForYouArtist_viewer
+                      @include(if: $includeSelectedArtist)
+                      @arguments(artistID: $artistID, filter: $filter)
+                  }
+                }
+              `}
+              variables={{ artistID, includeSelectedArtist, forSale, filter }}
+              render={({ props }) => {
+                if (props) {
+                  return (
+                    <>
+                      <MarketingHeader />
 
-                {includeSelectedArtist ? (
-                  <WorksForYouArtist
-                    artistID={this.props.artistID}
-                    viewer={props.viewer}
-                    forSale={forSale}
-                    user={this.props.user}
-                  />
-                ) : (
-                  <WorksForYouContent
-                    user={this.props.user}
-                    viewer={props.viewer}
-                  />
-                )}
-              </>
-            )
-          } else {
-            return (
-              <SpinnerContainer>
-                <Spinner />
-              </SpinnerContainer>
-            )
-          }
+                      {includeSelectedArtist ? (
+                        <WorksForYouArtist
+                          artistID={this.props.artistID}
+                          viewer={props.viewer}
+                          forSale={forSale}
+                          user={user}
+                        />
+                      ) : (
+                        <WorksForYouContent user={user} viewer={props.viewer} />
+                      )}
+                    </>
+                  )
+                } else {
+                  return (
+                    <SpinnerContainer>
+                      <Spinner />
+                    </SpinnerContainer>
+                  )
+                }
+              }}
+            />
+          )
         }}
-      />
+      </ContextConsumer>
     )
   }
 }
-
-export const Contents = ContextConsumer(WorksForYou)
