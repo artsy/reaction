@@ -53,7 +53,7 @@ export class StorybooksRouter extends React.Component<Props> {
         ClientApp,
       })
     } catch (error) {
-      console.error("ArtistApp.story", error)
+      console.error("StorybooksRouter.story", error)
     }
   }
 

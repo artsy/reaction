@@ -16,7 +16,7 @@ const order: ShippingAndPaymentReview_order &
     addressLine1: "23 41st st",
     addressLine2: null,
     city: "New York",
-    pPostalCode: "90210",
+    postalCode: "90210",
     region: "US",
   },
   lineItems: {
