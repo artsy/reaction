@@ -19,6 +19,11 @@ Events.onEvent(data => {
   console.log("Tracked event", data)
 })
 
+if (!window.sd || !(typeof window.sd === "object")) {
+  window.sd = {}
+}
+window.sd.STRIPE_PUBLISHABLE_KEY = "pk_test_BGUg8FPmcBs1ISbN25iCp2Ga"
+
 // TODO: Fix the below
 // setOptions({
 //   name: "Reaction",

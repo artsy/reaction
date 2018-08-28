@@ -5,6 +5,9 @@ import { StripeProvider } from "react-stripe-elements"
 declare global {
   interface Window {
     Stripe?: (key: string) => stripe.Stripe
+    sd: {
+      STRIPE_PUBLISHABLE_KEY: string
+    }
   }
 }
 
@@ -48,13 +51,13 @@ export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
   componentDidMount() {
     if (window.Stripe) {
       this.setState({
-        stripe: window.Stripe("pk_test_BGUg8FPmcBs1ISbN25iCp2Ga"),
+        stripe: window.Stripe(window.sd.STRIPE_PUBLISHABLE_KEY),
       })
     } else {
       document.querySelector("#stripe-js").addEventListener("load", () => {
         // Create Stripe instance once Stripe.js loads
         this.setState({
-          stripe: window.Stripe("pk_test_BGUg8FPmcBs1ISbN25iCp2Ga"),
+          stripe: window.Stripe(window.sd.STRIPE_PUBLISHABLE_KEY),
         })
       })
     }
