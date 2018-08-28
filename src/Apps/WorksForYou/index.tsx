@@ -1,10 +1,10 @@
-import React from "react"
-import { graphql, QueryRenderer } from "react-relay"
-
 import { ArtistArtworksFilters } from "__generated__/WorksForYouQuery.graphql"
 import { WorksForYouQuery } from "__generated__/WorksForYouQuery.graphql"
+import { MarketingHeader } from "Apps/WorksForYou/Components/MarketingHeader"
 import { ContextConsumer, ContextProps } from "Components/Artsy"
 import Spinner from "Components/Spinner"
+import React from "react"
+import { graphql, QueryRenderer } from "react-relay"
 import styled from "styled-components"
 import WorksForYouArtist from "./WorksForYouArtist"
 import WorksForYouContent from "./WorksForYouContents"
@@ -28,6 +28,7 @@ class WorksForYou extends React.Component<Props> {
     const { relayEnvironment, artistID, forSale } = this.props
     const includeSelectedArtist = !!artistID
     const filter: ArtistArtworksFilters[] = forSale ? ["IS_FOR_SALE"] : null
+
     return (
       <QueryRenderer<WorksForYouQuery>
         environment={relayEnvironment}
@@ -51,23 +52,25 @@ class WorksForYou extends React.Component<Props> {
         variables={{ artistID, includeSelectedArtist, forSale, filter }}
         render={({ props }) => {
           if (props) {
-            if (includeSelectedArtist) {
-              return (
-                <WorksForYouArtist
-                  artistID={this.props.artistID}
-                  viewer={props.viewer}
-                  forSale={forSale}
-                  user={this.props.user}
-                />
-              )
-            } else {
-              return (
-                <WorksForYouContent
-                  user={this.props.user}
-                  viewer={props.viewer}
-                />
-              )
-            }
+            return (
+              <>
+                <MarketingHeader />
+
+                {includeSelectedArtist ? (
+                  <WorksForYouArtist
+                    artistID={this.props.artistID}
+                    viewer={props.viewer}
+                    forSale={forSale}
+                    user={this.props.user}
+                  />
+                ) : (
+                  <WorksForYouContent
+                    user={this.props.user}
+                    viewer={props.viewer}
+                  />
+                )}
+              </>
+            )
           } else {
             return (
               <SpinnerContainer>
