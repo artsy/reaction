@@ -22,7 +22,7 @@ export interface ReviewProps {
 }
 
 interface ReviewState {
-  termsCheckboxSelected?: Boolean
+  termsCheckboxSelected?: boolean
 }
 
 export class ReviewRoute extends Component<ReviewProps, ReviewState> {

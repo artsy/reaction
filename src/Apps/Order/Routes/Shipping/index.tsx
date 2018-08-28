@@ -1,5 +1,9 @@
 import { Sans } from "@artsy/palette"
 import { Shipping_order } from "__generated__/Shipping_order.graphql"
+import {
+  OrderFulfillmentType,
+  ShippingOrderAddressUpdateMutation,
+} from "__generated__/ShippingOrderAddressUpdateMutation.graphql"
 import { Router } from "found"
 import React, { Component } from "react"
 import {
@@ -46,7 +50,7 @@ export interface Address {
 }
 
 export interface ShippingState {
-  shippingOption: string
+  shippingOption: OrderFulfillmentType
   isComittingMutation: boolean
 }
 
@@ -75,40 +79,43 @@ export class ShippingRoute extends Component<
     if (this.props.relay && this.props.relay.environment) {
       // We don't strictly need to wait for the state to be set, but it makes it easier to test.
       this.setState({ isComittingMutation: true }, () =>
-        commitMutation(this.props.relay.environment, {
-          mutation: graphql`
-            mutation ShippingOrderAddressUpdateMutation(
-              $input: SetOrderShippingInput!
-            ) {
-              setOrderShipping(input: $input) {
-                result {
-                  order {
-                    state
+        commitMutation<ShippingOrderAddressUpdateMutation>(
+          this.props.relay.environment,
+          {
+            mutation: graphql`
+              mutation ShippingOrderAddressUpdateMutation(
+                $input: SetOrderShippingInput!
+              ) {
+                setOrderShipping(input: $input) {
+                  result {
+                    order {
+                      state
+                    }
+                    errors
                   }
-                  errors
                 }
               }
-            }
-          `,
-          variables: {
-            input: {
-              orderId: this.props.order.id,
-              fulfillmentType: this.state.shippingOption,
-              shipping: {
-                name: this.state.name,
-                addressLine1: this.state.addressLine1,
-                addressLine2: this.state.addressLine2,
-                city: this.state.city,
-                region: this.state.region,
-                country: this.state.country || "", // Required, kind of, for now. See: https://artsyproduct.atlassian.net/browse/PURCHASE-408
-                postalCode: this.state.postalCode,
+            `,
+            variables: {
+              input: {
+                orderId: this.props.order.id,
+                fulfillmentType: this.state.shippingOption,
+                shipping: {
+                  name: this.state.name,
+                  addressLine1: this.state.addressLine1,
+                  addressLine2: this.state.addressLine2,
+                  city: this.state.city,
+                  region: this.state.region,
+                  country: this.state.country || "", // Required, kind of, for now. See: https://artsyproduct.atlassian.net/browse/PURCHASE-408
+                  postalCode: this.state.postalCode,
+                },
               },
             },
-          },
-          onCompleted: () =>
-            // Note: We are only waiting for _a_ response and are not yet handling errors.
-            this.props.router.push(`/order2/${this.props.order.id}/payment`),
-        })
+            onCompleted: () =>
+              // Note: We are only waiting for _a_ response and are not yet handling errors.
+              this.props.router.push(`/order2/${this.props.order.id}/payment`),
+          }
+        )
       )
     }
   }
@@ -128,8 +135,11 @@ export class ShippingRoute extends Component<
             <TwoColumnLayout
               Content={
                 <>
+                  {/* TODO: Make RadioGroup generic for the allowed values,
+                            which could also ensure the children only use
+                            allowed values. */}
                   <RadioGroup
-                    onSelect={shippingOption =>
+                    onSelect={(shippingOption: OrderFulfillmentType) =>
                       this.setState({ shippingOption })
                     }
                     defaultValue="SHIP"

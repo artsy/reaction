@@ -108,7 +108,7 @@ export class Input extends React.Component<InputProps, InputState> {
   }
 
   getRightViewForPassword() {
-    let icon = this.state.showPassword ? (
+    const icon = this.state.showPassword ? (
       <ClosedEye onClick={this.toggleShowPassword} />
     ) : (
       <OpenEye onClick={this.toggleShowPassword} />
@@ -140,7 +140,7 @@ export class Input extends React.Component<InputProps, InputState> {
         className,
         label,
         leftView,
-        ref,
+        ref: _ref,
         rightView,
         showPasswordMessage,
         type,
@@ -220,12 +220,9 @@ const InputComponent = styled.input.attrs<{ showLabel: boolean }>({})`
   height: 100%;
   padding: 0 ${space(1)}px;
   line-height: initial;
+  ${props => props.showLabel && "padding: 10px 10px 0 10px"};
 
-  ${props =>
-    props.showLabel &&
-    `
-    padding: 10px 10px 0 10px;
-  `} &::placeholder {
+  &::placeholder {
     color: ${Colors.grayMedium};
   }
 `

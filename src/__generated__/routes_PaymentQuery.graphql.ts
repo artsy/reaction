@@ -10,6 +10,10 @@ export type routes_PaymentQueryResponse = {
         readonly " $fragmentRefs": Payment_order$ref;
     }) | null;
 };
+export type routes_PaymentQuery = {
+    readonly response: routes_PaymentQueryResponse;
+    readonly variables: routes_PaymentQueryVariables;
+};
 
 
 

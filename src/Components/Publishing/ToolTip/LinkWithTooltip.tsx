@@ -5,7 +5,7 @@ import React, { Component } from "react"
 import { findDOMNode } from "react-dom"
 import track from "react-tracking"
 import styled from "styled-components"
-import url from "url"
+import { parse as parseURL } from "url"
 import FadeTransition from "../../Animation/FadeTransition"
 import { ToolTip } from "./ToolTip"
 
@@ -40,7 +40,7 @@ export class LinkWithTooltip extends Component<Props, State> {
   }
 
   urlToEntityType(): { entityType: string; slug: string } {
-    const urlComponents = url.parse(this.props.url).pathname.split("/")
+    const urlComponents = parseURL(this.props.url).pathname.split("/")
     urlComponents.shift()
 
     return {

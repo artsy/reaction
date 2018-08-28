@@ -12,6 +12,10 @@ export type ArtworkGridQueryResponse = {
         }) | null;
     }) | null;
 };
+export type ArtworkGridQuery = {
+    readonly response: ArtworkGridQueryResponse;
+    readonly variables: ArtworkGridQueryVariables;
+};
 
 
 

@@ -83,14 +83,19 @@ const StyledSvg = styled.svg`
   left: -${BORDER_WIDTH}px;
 `
 
-const Check = ({ color }) => (
+const Check = ({ color: strokeColor }) => (
   <StyledSvg
     width={`${space(SIZE)}px`}
     height={`${space(SIZE)}px`}
     viewBox="0 0 20 20"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <path fill="none" stroke={color} strokeWidth="2" d="M4 9.7L8.2 14 16 6" />
+    <path
+      fill="none"
+      stroke={strokeColor}
+      strokeWidth="2"
+      d="M4 9.7L8.2 14 16 6"
+    />
   </StyledSvg>
 )
 

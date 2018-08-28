@@ -7,6 +7,10 @@ export type routes_OrderQueryResponse = {
         readonly name: string | null;
     }) | null;
 };
+export type routes_OrderQuery = {
+    readonly response: routes_OrderQueryResponse;
+    readonly variables: routes_OrderQueryVariables;
+};
 
 
 

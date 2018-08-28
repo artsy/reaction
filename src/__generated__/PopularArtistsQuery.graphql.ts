@@ -8,6 +8,10 @@ export type PopularArtistsQueryResponse = {
         readonly " $fragmentRefs": PopularArtistsContent_popular_artists$ref;
     }) | null;
 };
+export type PopularArtistsQuery = {
+    readonly response: PopularArtistsQueryResponse;
+    readonly variables: PopularArtistsQueryVariables;
+};
 
 
 

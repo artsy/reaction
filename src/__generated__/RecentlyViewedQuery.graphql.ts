@@ -8,6 +8,10 @@ export type RecentlyViewedQueryResponse = {
         readonly " $fragmentRefs": RecentlyViewed_me$ref;
     }) | null;
 };
+export type RecentlyViewedQuery = {
+    readonly response: RecentlyViewedQueryResponse;
+    readonly variables: RecentlyViewedQueryVariables;
+};
 
 
 

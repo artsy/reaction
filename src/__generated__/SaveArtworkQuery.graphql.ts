@@ -10,6 +10,10 @@ export type SaveArtworkQueryResponse = {
         readonly " $fragmentRefs": GridItem_artwork$ref;
     }) | null;
 };
+export type SaveArtworkQuery = {
+    readonly response: SaveArtworkQueryResponse;
+    readonly variables: SaveArtworkQueryVariables;
+};
 
 
 

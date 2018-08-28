@@ -30,6 +30,10 @@ export type SuggestedGenesFollowGeneMutationResponse = {
         }) | null;
     }) | null;
 };
+export type SuggestedGenesFollowGeneMutation = {
+    readonly response: SuggestedGenesFollowGeneMutationResponse;
+    readonly variables: SuggestedGenesFollowGeneMutationVariables;
+};
 
 
 

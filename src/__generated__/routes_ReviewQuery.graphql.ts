@@ -10,6 +10,10 @@ export type routes_ReviewQueryResponse = {
         readonly " $fragmentRefs": Review_order$ref;
     }) | null;
 };
+export type routes_ReviewQuery = {
+    readonly response: routes_ReviewQueryResponse;
+    readonly variables: routes_ReviewQueryVariables;
+};
 
 
 

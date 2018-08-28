@@ -10,6 +10,10 @@ export type ArtistSearchResultsQueryResponse = {
         readonly " $fragmentRefs": ArtistSearchResultsContent_viewer$ref;
     }) | null;
 };
+export type ArtistSearchResultsQuery = {
+    readonly response: ArtistSearchResultsQueryResponse;
+    readonly variables: ArtistSearchResultsQueryVariables;
+};
 
 
 

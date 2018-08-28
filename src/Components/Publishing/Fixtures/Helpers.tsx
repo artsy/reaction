@@ -10,21 +10,18 @@ export const TextFromArticle = article => {
   return compact(map(article.sections, "body")).join("")
 }
 
-export const wrapperWithContext: Function = (
-  context,
-  contextTypes,
-  children
-) => {
-  class WrapperWithContext extends React.Component {
-    static childContextTypes = contextTypes
-    getChildContext() {
-      return context
+export const wrapperWithContext = (context, contextTypes, children) => {
+  return React.createElement(
+    class extends React.Component {
+      static childContextTypes = contextTypes
+      getChildContext() {
+        return context
+      }
+      render() {
+        return children
+      }
     }
-    render() {
-      return children
-    }
-  }
-  return React.createElement(WrapperWithContext)
+  )
 }
 
 export const FullscreenViewerContext = {

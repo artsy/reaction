@@ -10,6 +10,10 @@ export type routes_ShowsQueryResponse = {
         readonly " $fragmentRefs": Shows_viewer$ref;
     }) | null;
 };
+export type routes_ShowsQuery = {
+    readonly response: routes_ShowsQueryResponse;
+    readonly variables: routes_ShowsQueryVariables;
+};
 
 
 

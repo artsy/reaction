@@ -10,6 +10,10 @@ export type InquiryArtworkQueryResponse = {
         readonly " $fragmentRefs": InquiryArtwork_artwork$ref;
     }) | null;
 };
+export type InquiryArtworkQuery = {
+    readonly response: InquiryArtworkQueryResponse;
+    readonly variables: InquiryArtworkQueryVariables;
+};
 
 
 

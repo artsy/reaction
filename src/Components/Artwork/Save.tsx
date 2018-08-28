@@ -1,4 +1,5 @@
 import { Save_artwork } from "__generated__/Save_artwork.graphql"
+import { SaveArtworkMutation } from "__generated__/SaveArtworkMutation.graphql"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import * as Artsy from "Artsy/SystemContext"
@@ -88,11 +89,12 @@ class SaveButtonContainer extends React.Component<Props, State> {
         })
       }
 
-      commitMutation(environment, {
+      commitMutation<SaveArtworkMutation>(environment, {
         mutation: graphql`
           mutation SaveArtworkMutation($input: SaveArtworkInput!) {
             saveArtwork(input: $input) {
               artwork {
+                __id
                 id
                 is_saved
               }
@@ -109,6 +111,7 @@ class SaveButtonContainer extends React.Component<Props, State> {
           saveArtwork: {
             artwork: {
               __id: artwork.__id,
+              id: artwork.id,
               is_saved: !this.isSaved,
             },
           },

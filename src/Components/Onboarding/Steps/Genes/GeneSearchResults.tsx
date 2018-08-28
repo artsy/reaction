@@ -1,3 +1,9 @@
+import { GeneSearchResultsContent_viewer } from "__generated__/GeneSearchResultsContent_viewer.graphql"
+import {
+  GeneSearchResultsFollowGeneMutation,
+  GeneSearchResultsFollowGeneMutationResponse,
+} from "__generated__/GeneSearchResultsFollowGeneMutation.graphql"
+import { GeneSearchResultsQuery } from "__generated__/GeneSearchResultsQuery.graphql"
 import { ContextProps, withContext } from "Artsy/SystemContext"
 import { garamond } from "Assets/Fonts"
 import * as React from "react"
@@ -9,35 +15,23 @@ import {
   RelayProp,
 } from "react-relay"
 import track from "react-tracking"
-import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
+import { RecordSourceSelectorProxy } from "relay-runtime"
 import styled from "styled-components"
 import Events from "../../../../Utils/Events"
 import ReplaceTransition from "../../../Animation/ReplaceTransition"
 import ItemLink, { LinkContainer } from "../../ItemLink"
 import { FollowProps } from "../../Types"
 
-interface Gene {
-  id: string | null
-  _id: string | null
-  __id: string | null
-  name: string | null
-  image: {
-    cropped: {
-      url: string | null
-    }
-  } | null
-}
+type Gene = GeneSearchResultsContent_viewer["match_gene"][0]
 
-interface Props extends FollowProps {
+interface ContainerProps extends FollowProps {
   term: string
 }
 
-interface RelayProps extends React.HTMLProps<HTMLAnchorElement>, Props {
+interface Props extends React.HTMLProps<HTMLAnchorElement>, ContainerProps {
   tracking?: any
   relay?: RelayProp
-  viewer: {
-    match_gene: Gene[]
-  }
+  viewer: GeneSearchResultsContent_viewer
 }
 
 const NoResultsContainer = styled.div`
@@ -49,11 +43,11 @@ const NoResultsContainer = styled.div`
 `
 
 @track({}, { dispatch: data => Events.postEvent(data) })
-class GeneSearchResultsContent extends React.Component<RelayProps, null> {
+class GeneSearchResultsContent extends React.Component<Props, null> {
   private excludedGeneIds: Set<string>
   followCount: number = 0
 
-  constructor(props: RelayProps, context: any) {
+  constructor(props: Props, context: any) {
     super(props, context)
     this.excludedGeneIds = new Set(
       this.props.viewer.match_gene.map(item => item._id)
@@ -63,7 +57,7 @@ class GeneSearchResultsContent extends React.Component<RelayProps, null> {
   onGeneFollowed(
     gene: Gene,
     store: RecordSourceSelectorProxy,
-    data: SelectorData
+    data: GeneSearchResultsFollowGeneMutationResponse
   ): void {
     const suggestedGene = store.get(
       data.followGene.gene.similar.edges[0].node.__id
@@ -101,24 +95,27 @@ class GeneSearchResultsContent extends React.Component<RelayProps, null> {
   followedGene(gene: Gene) {
     this.excludedGeneIds.add(gene._id)
 
-    commitMutation(this.props.relay.environment, {
-      mutation: graphql`
-        mutation GeneSearchResultsFollowGeneMutation(
-          $input: FollowGeneInput!
-          $excludedGeneIds: [String]!
-        ) {
-          followGene(input: $input) {
-            gene {
-              similar(first: 1, exclude_gene_ids: $excludedGeneIds) {
-                edges {
-                  node {
-                    id
-                    _id
-                    __id
-                    name
-                    image {
-                      cropped(width: 100, height: 100) {
-                        url
+    commitMutation<GeneSearchResultsFollowGeneMutation>(
+      this.props.relay.environment,
+      {
+        mutation: graphql`
+          mutation GeneSearchResultsFollowGeneMutation(
+            $input: FollowGeneInput!
+            $excludedGeneIds: [String]!
+          ) {
+            followGene(input: $input) {
+              gene {
+                similar(first: 1, exclude_gene_ids: $excludedGeneIds) {
+                  edges {
+                    node {
+                      id
+                      _id
+                      __id
+                      name
+                      image {
+                        cropped(width: 100, height: 100) {
+                          url
+                        }
                       }
                     }
                   }
@@ -126,17 +123,16 @@ class GeneSearchResultsContent extends React.Component<RelayProps, null> {
               }
             }
           }
-        }
-      `,
-      variables: {
-        input: {
-          gene_id: gene.id,
+        `,
+        variables: {
+          input: {
+            gene_id: gene.id,
+          },
+          excludedGeneIds: Array.from(this.excludedGeneIds),
         },
-        excludedGeneIds: Array.from(this.excludedGeneIds),
-      },
-      updater: (store: RecordSourceSelectorProxy, data: SelectorData) =>
-        this.onGeneFollowed(gene, store, data),
-    })
+        updater: (store, data) => this.onGeneFollowed(gene, store, data),
+      }
+    )
   }
 
   render() {
@@ -185,13 +181,13 @@ const GeneSearchResultsContentContainer = createFragmentContainer(
   `
 )
 
-const GeneSearchResultsComponent: React.SFC<Props & ContextProps> = ({
+const GeneSearchResultsComponent: React.SFC<ContainerProps & ContextProps> = ({
   term,
   relayEnvironment,
   updateFollowCount,
 }) => {
   return (
-    <QueryRenderer
+    <QueryRenderer<GeneSearchResultsQuery>
       environment={relayEnvironment}
       query={graphql`
         query GeneSearchResultsQuery($term: String!) {

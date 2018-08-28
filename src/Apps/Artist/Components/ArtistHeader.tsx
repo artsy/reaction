@@ -101,7 +101,7 @@ export class LargeArtistHeader extends Component<Props> {
           <Fragment>
             <Slider
               height={200}
-              data={carousel.images as Array<object>}
+              data={carousel.images as object[]}
               render={(slide: Image) => {
                 return (
                   <a href={slide.href} onClick={() => this.onClickSlide(slide)}>
@@ -200,7 +200,7 @@ export class SmallArtistHeader extends Component<Props> {
         {hasImages && (
           <Fragment>
             <Slider
-              data={carousel.images as Array<object>}
+              data={carousel.images as object[]}
               render={slide => {
                 return (
                   <a href={slide.href} onClick={() => this.onClickSlide(slide)}>

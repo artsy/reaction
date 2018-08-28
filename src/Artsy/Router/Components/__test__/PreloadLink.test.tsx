@@ -10,8 +10,6 @@ jest.mock("react-relay", () => ({
 }))
 
 jest.mock("found", () => {
-  const React = require("react")
-
   return {
     ResolverUtils: {
       getRouteMatches: x => [{ hello: "there " }],

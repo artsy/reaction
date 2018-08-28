@@ -10,6 +10,10 @@ export type routes_StatusQueryResponse = {
         readonly " $fragmentRefs": Status_order$ref;
     }) | null;
 };
+export type routes_StatusQuery = {
+    readonly response: routes_StatusQueryResponse;
+    readonly variables: routes_StatusQueryVariables;
+};
 
 
 

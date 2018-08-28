@@ -1,5 +1,6 @@
 import { Serif } from "@artsy/palette"
 import { RecentlyViewed_me } from "__generated__/RecentlyViewed_me.graphql"
+import { RecentlyViewedQuery } from "__generated__/RecentlyViewedQuery.graphql"
 import { ContextConsumer } from "Artsy/Router"
 import { FillwidthItem } from "Components/Artwork/FillwidthItem"
 import React from "react"
@@ -32,7 +33,7 @@ export const RecentlyViewed: React.SFC<RecentlyViewedProps> = props => {
                 settings={{
                   slidesToScroll: 5,
                 }}
-                data={me.recentlyViewedArtworks.edges as Array<object>}
+                data={me.recentlyViewedArtworks.edges as object[]}
                 render={artwork => {
                   const {
                     node: {
@@ -93,7 +94,7 @@ export const RecentlyViewedQueryRenderer = () => {
           return null
         }
         return (
-          <QueryRenderer
+          <QueryRenderer<RecentlyViewedQuery>
             environment={relayEnvironment}
             variables={{}}
             query={graphql`

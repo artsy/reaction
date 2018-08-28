@@ -1,6 +1,8 @@
 import React from "react"
 import { graphql, QueryRenderer } from "react-relay"
 
+import { ArtistArtworksFilters } from "__generated__/WorksForYouQuery.graphql"
+import { WorksForYouQuery } from "__generated__/WorksForYouQuery.graphql"
 import { ContextConsumer, ContextProps } from "Components/Artsy"
 import Spinner from "Components/Spinner"
 import styled from "styled-components"
@@ -25,9 +27,9 @@ class WorksForYou extends React.Component<Props> {
   render() {
     const { relayEnvironment, artistID, forSale } = this.props
     const includeSelectedArtist = !!artistID
-    const filter = forSale ? ["IS_FOR_SALE"] : null
+    const filter: ArtistArtworksFilters[] = forSale ? ["IS_FOR_SALE"] : null
     return (
-      <QueryRenderer
+      <QueryRenderer<WorksForYouQuery>
         environment={relayEnvironment}
         query={graphql`
           query WorksForYouQuery(

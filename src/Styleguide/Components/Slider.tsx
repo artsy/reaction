@@ -11,7 +11,7 @@ import { Responsive } from "Utils/Responsive"
 interface Props {
   settings?: Settings
   height?: number
-  data: Array<object> // This is designed to handle any shape of data passed, as long as its an array
+  data: object[] // This is designed to handle any shape of data passed, as long as its an array
   render: (slide) => ReactNode
 }
 

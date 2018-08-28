@@ -1,3 +1,9 @@
+import { PopularArtistsContent_popular_artists } from "__generated__/PopularArtistsContent_popular_artists.graphql"
+import {
+  PopularArtistsFollowArtistMutation,
+  PopularArtistsFollowArtistMutationResponse,
+} from "__generated__/PopularArtistsFollowArtistMutation.graphql"
+import { PopularArtistsQuery } from "__generated__/PopularArtistsQuery.graphql"
 import { ContextProps, withContext } from "Artsy/SystemContext"
 import * as React from "react"
 import {
@@ -8,7 +14,7 @@ import {
   RelayProp,
 } from "react-relay"
 import track from "react-tracking"
-import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
+import { RecordSourceSelectorProxy } from "relay-runtime"
 import Events from "../../../../Utils/Events"
 import ReplaceTransition from "../../../Animation/ReplaceTransition"
 import ItemLink, { LinkContainer } from "../../ItemLink"
@@ -29,9 +35,7 @@ interface Artist {
 export interface RelayProps {
   tracking?: any
   relay?: RelayProp
-  popular_artists: {
-    artists?: Artist[]
-  }
+  popular_artists: PopularArtistsContent_popular_artists
 }
 
 interface Props
@@ -54,7 +58,7 @@ class PopularArtistsContent extends React.Component<Props, null> {
   onArtistFollowed(
     artist: Artist,
     store: RecordSourceSelectorProxy,
-    data: SelectorData
+    data: PopularArtistsFollowArtistMutationResponse
   ): void {
     const suggestedArtistEdge =
       data.followArtist.artist.related.suggested.edges[0]
@@ -91,47 +95,50 @@ class PopularArtistsContent extends React.Component<Props, null> {
   }
 
   onFollowedArtist(artist: Artist) {
-    commitMutation(this.props.relay.environment, {
-      mutation: graphql`
-        mutation PopularArtistsFollowArtistMutation(
-          $input: FollowArtistInput!
-          $excludedArtistIds: [String]!
-        ) {
-          followArtist(input: $input) {
-            popular_artists(
-              size: 1
-              exclude_followed_artists: true
-              exclude_artist_ids: $excludedArtistIds
-            ) {
-              artists {
-                id
-                _id
-                __id
-                name
-                image {
-                  cropped(width: 100, height: 100) {
-                    url
+    commitMutation<PopularArtistsFollowArtistMutation>(
+      this.props.relay.environment,
+      {
+        mutation: graphql`
+          mutation PopularArtistsFollowArtistMutation(
+            $input: FollowArtistInput!
+            $excludedArtistIds: [String]!
+          ) {
+            followArtist(input: $input) {
+              popular_artists(
+                size: 1
+                exclude_followed_artists: true
+                exclude_artist_ids: $excludedArtistIds
+              ) {
+                artists {
+                  id
+                  _id
+                  __id
+                  name
+                  image {
+                    cropped(width: 100, height: 100) {
+                      url
+                    }
                   }
                 }
               }
-            }
-            artist {
-              __id
-              related {
-                suggested(
-                  first: 1
-                  exclude_followed_artists: true
-                  exclude_artist_ids: $excludedArtistIds
-                ) {
-                  edges {
-                    node {
-                      id
-                      _id
-                      __id
-                      name
-                      image {
-                        cropped(width: 100, height: 100) {
-                          url
+              artist {
+                __id
+                related {
+                  suggested(
+                    first: 1
+                    exclude_followed_artists: true
+                    exclude_artist_ids: $excludedArtistIds
+                  ) {
+                    edges {
+                      node {
+                        id
+                        _id
+                        __id
+                        name
+                        image {
+                          cropped(width: 100, height: 100) {
+                            url
+                          }
                         }
                       }
                     }
@@ -140,18 +147,17 @@ class PopularArtistsContent extends React.Component<Props, null> {
               }
             }
           }
-        }
-      `,
-      variables: {
-        input: {
-          artist_id: artist.id,
-          unfollow: false,
+        `,
+        variables: {
+          input: {
+            artist_id: artist.id,
+            unfollow: false,
+          },
+          excludedArtistIds: Array.from(this.excludedArtistIds),
         },
-        excludedArtistIds: Array.from(this.excludedArtistIds),
-      },
-      updater: (store: RecordSourceSelectorProxy, data: SelectorData) =>
-        this.onArtistFollowed(artist, store, data),
-    })
+        updater: (store, data) => this.onArtistFollowed(artist, store, data),
+      }
+    )
   }
 
   render() {
@@ -204,7 +210,7 @@ const PopularArtistsComponent: React.SFC<ContextProps & FollowProps> = ({
   updateFollowCount,
 }) => {
   return (
-    <QueryRenderer
+    <QueryRenderer<PopularArtistsQuery>
       environment={relayEnvironment}
       query={graphql`
         query PopularArtistsQuery {
