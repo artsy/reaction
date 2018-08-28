@@ -96,7 +96,7 @@ export class PaymentRoute extends Component<
                 }
                 Sidebar={
                   <Flex flexDirection="column">
-                    <TransactionSummary order={order} mb={xs ? 2 : 3} />
+                    <TransactionSummary order={order} mb={[2, 3]} />
                     <Helper
                       artworkId={order.lineItems.edges[0].node.artwork.id}
                     />
