@@ -1,4 +1,4 @@
-import { Sans, Serif } from "@artsy/palette"
+import { Sans, Serif, themeProps } from "@artsy/palette"
 import { WorksForYouArtist_viewer } from "__generated__/WorksForYouArtist_viewer.graphql"
 import { ContextProps } from "Artsy"
 import ArtworkGrid from "Components/ArtworkGrid"
@@ -97,7 +97,7 @@ export class WorksForYouArtist extends React.Component<Props, State> {
                 </a>
               </Serif>
 
-              <Sans style={{ color: "#666" }} size={"2"}>
+              <Sans color={themeProps.colors.black60} size={"2"}>
                 {forSale
                   ? artist.counts.for_sale_artworks.toLocaleString()
                   : artist.counts.artworks.toLocaleString()}{" "}
