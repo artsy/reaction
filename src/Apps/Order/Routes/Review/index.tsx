@@ -1,6 +1,7 @@
 import { Review_order } from "__generated__/Review_order.graphql"
 import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
 import { ItemReviewFragmentContainer as ItemReview } from "Apps/Order/Components/ItemReview"
+import { ShippingAndPaymentReviewFragmentContainer as ShippingAndPaymentReview } from "Apps/Order/Components/ShippingAndPaymentReview"
 import { TermsOfServiceCheckbox } from "Apps/Order/Components/TermsOfServiceCheckbox"
 import { Router } from "found"
 import React, { Component } from "react"
@@ -10,7 +11,6 @@ import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Join } from "Styleguide/Elements/Join"
 import { Spacer } from "Styleguide/Elements/Spacer"
-import { Placeholder } from "Styleguide/Utils/Placeholder"
 import { Responsive } from "Utils/Responsive"
 import { Helper } from "../../Components/Helper"
 import { TransactionSummaryFragmentContainer as TransactionSummary } from "../../Components/TransactionSummary"
@@ -43,6 +43,14 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
     this.props.router.push(`/order2/${this.props.order.id}/status`)
   }
 
+  onChangePayment() {
+    console.log("Clicked to change payment")
+  }
+
+  onChangeShipping() {
+    console.log("Clicked to change shipping")
+  }
+
   render() {
     const { order } = this.props
     const { termsCheckboxSelected } = this.state
@@ -63,8 +71,12 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
               Content={
                 <>
                   <Join separator={<Spacer mb={3} />}>
-                    <Placeholder height="68px" name="Step summary item" />
-                    <Placeholder height="68px" name="Step summary item" />
+                    <ShippingAndPaymentReview
+                      order={order}
+                      onChangePayment={this.onChangePayment}
+                      onChangeShipping={this.onChangeShipping}
+                      mb={xs ? 2 : 3}
+                    />
 
                     {!xs && (
                       <>
@@ -150,6 +162,7 @@ export const ReviewFragmentContainer = createFragmentContainer(
         }
       }
       ...TransactionSummary_order
+      ...ShippingAndPaymentReview_order
     }
   `
 )
