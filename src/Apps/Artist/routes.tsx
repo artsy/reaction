@@ -73,6 +73,7 @@ export const routes = [
             $sort: String
             $at_auction: Boolean
             $ecommerce: Boolean
+            $inquireable_only: Boolean
           ) {
             artist(id: $artistID) {
               ...Overview_artist
@@ -84,6 +85,7 @@ export const routes = [
                   sort: $sort
                   at_auction: $at_auction
                   ecommerce: $ecommerce
+                  inquireable_only: $inquireable_only
                 )
             }
           }

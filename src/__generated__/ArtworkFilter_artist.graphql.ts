@@ -96,6 +96,12 @@ return {
     },
     {
       "kind": "LocalArgument",
+      "name": "inquireable_only",
+      "type": "Boolean",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
       "name": "aggregations",
       "type": "[ArtworkAggregation]",
       "defaultValue": [
@@ -236,6 +242,12 @@ return {
         },
         {
           "kind": "Variable",
+          "name": "inquireable_only",
+          "variableName": "inquireable_only",
+          "type": null
+        },
+        {
+          "kind": "Variable",
           "name": "major_periods",
           "variableName": "major_periods",
           "type": null
@@ -269,5 +281,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'd5fe26c3123956ace6429c8b27364fc2';
+(node as any).hash = 'c96a4e1b0678cad8122b6b379623afa6';
 export default node;

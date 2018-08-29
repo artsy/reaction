@@ -50,10 +50,11 @@ type Article implements Node {
   contributing_authors: [Author]
   href: String
   published_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   slug: String
@@ -63,10 +64,11 @@ type Article implements Node {
   tier: Int
   title: String
   updated_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
 }
@@ -177,7 +179,7 @@ type Artist implements Node {
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
-    inquireable: Boolean
+    inquireable_only: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -448,7 +450,7 @@ type ArtistItem implements Node {
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
-    inquireable: Boolean
+    inquireable_only: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -814,24 +816,27 @@ type ArtworkContextAuction implements Node {
   display_timely_at: String
   eligible_sale_artworks_count: Int
   end_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   event_start_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   event_end_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   href: String
@@ -845,10 +850,11 @@ type ArtworkContextAuction implements Node {
   is_registration_closed: Boolean
   is_with_buyers_premium: Boolean
   live_start_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
 
@@ -858,10 +864,11 @@ type ArtworkContextAuction implements Node {
   profile: Profile
   promoted_sale: Sale
   registration_ends_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
 
@@ -872,10 +879,11 @@ type ArtworkContextAuction implements Node {
   sale_artworks_connection(after: String, first: Int, before: String, last: Int): SaleArtworkConnection
   sale_type: String
   start_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   status: String
@@ -920,17 +928,19 @@ type ArtworkContextFair {
     last: Int
   ): ShowConnection
   start_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   end_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   organizer: organizer
@@ -964,19 +974,21 @@ type ArtworkContextPartnerShow implements Node {
   counts: PartnerShowCounts
   cover_image: Image
   created_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   description: String
   displayable: Boolean @deprecated(reason: "Prefix Boolean returning fields with `is_`")
   end_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   events: [PartnerShowEventType]
@@ -1010,10 +1022,11 @@ type ArtworkContextPartnerShow implements Node {
   partner: Partner
   press_release(format: Format): String
   start_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   status: String
@@ -1058,24 +1071,27 @@ type ArtworkContextSale implements Node {
   display_timely_at: String
   eligible_sale_artworks_count: Int
   end_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   event_start_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   event_end_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   href: String
@@ -1089,10 +1105,11 @@ type ArtworkContextSale implements Node {
   is_registration_closed: Boolean
   is_with_buyers_premium: Boolean
   live_start_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
 
@@ -1102,10 +1119,11 @@ type ArtworkContextSale implements Node {
   profile: Profile
   promoted_sale: Sale
   registration_ends_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
 
@@ -1116,10 +1134,11 @@ type ArtworkContextSale implements Node {
   sale_artworks_connection(after: String, first: Int, before: String, last: Int): SaleArtworkConnection
   sale_type: String
   start_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   status: String
@@ -1167,7 +1186,7 @@ type ArtworkFilterGene implements Node {
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
-    inquireable: Boolean
+    inquireable_only: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -1220,7 +1239,7 @@ type ArtworkFilterTag implements Node {
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
-    inquireable: Boolean
+    inquireable_only: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -1532,10 +1551,11 @@ type AuctionResult implements Node {
   title: String
   artist_id: String!
   date(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   date_text: String
@@ -1545,10 +1565,11 @@ type AuctionResult implements Node {
   dimensions: AuctionLotDimensions
   organization: String
   sale_date(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   sale_date_text: String
@@ -1614,10 +1635,11 @@ type Bidder {
   # A type-specific ID.
   id: String!
   created_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   pin: String
@@ -1632,24 +1654,27 @@ type BidderPosition {
   # A type-specific ID.
   id: String!
   created_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   updated_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   processed_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   display_max_bid_amount_dollars: String @deprecated(reason: "Favor `max_bid`")
@@ -1803,33 +1828,37 @@ type CollectorProfileType {
   email: String
   name: String
   confirmed_buyer_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   collector_level: Int
   self_reported_purchases: String
   loyalty_applicant_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   professional_buyer_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   professional_buyer_applied_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   intents: [String]
@@ -1948,17 +1977,19 @@ type Conversation implements Node {
   to: ConversationResponder!
   buyer_outcome: String
   buyer_outcome_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   created_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   purchase_request: Boolean @deprecated(reason: "Purchase requests are not supported. Replaced by buy now.")
@@ -1968,10 +1999,11 @@ type Conversation implements Node {
   # This is a snippet of text from the last message.
   last_message: String
   last_message_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
 
@@ -2293,31 +2325,35 @@ type Delivery {
   # Masked email w/ display name.
   full_transformed_email: String!
   delivered_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   bounced_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   opened_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   clicked_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
 }
@@ -2441,17 +2477,19 @@ type Fair {
     last: Int
   ): ShowConnection
   start_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   end_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   organizer: organizer
@@ -2611,10 +2649,11 @@ type FollowedArtistsArtworksGroup implements Node {
   summary: String
   image: Image
   published_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
 }
@@ -2745,7 +2784,7 @@ type Gene implements Node {
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
-    inquireable: Boolean
+    inquireable_only: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -2787,7 +2826,7 @@ type Gene implements Node {
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
-    inquireable: Boolean
+    inquireable_only: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -2916,7 +2955,7 @@ type GeneItem implements Node {
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
-    inquireable: Boolean
+    inquireable_only: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -2958,7 +2997,7 @@ type GeneItem implements Node {
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
-    inquireable: Boolean
+    inquireable_only: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -3013,10 +3052,11 @@ type HighestBid {
   # A type-specific ID.
   id: String!
   created_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   number: Int
@@ -3052,10 +3092,11 @@ type HighlightedArticle implements Node {
   contributing_authors: [Author]
   href: String
   published_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   slug: String
@@ -3065,10 +3106,11 @@ type HighlightedArticle implements Node {
   tier: Int
   title: String
   updated_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
 }
@@ -3099,19 +3141,21 @@ type HighlightedShow implements Node {
   counts: PartnerShowCounts
   cover_image: Image
   created_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   description: String
   displayable: Boolean @deprecated(reason: "Prefix Boolean returning fields with `is_`")
   end_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   events: [PartnerShowEventType]
@@ -3145,10 +3189,11 @@ type HighlightedShow implements Node {
   partner: Partner
   press_release(format: Format): String
   start_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   status: String
@@ -3344,17 +3389,19 @@ type HomePageModuleContextFair {
     last: Int
   ): ShowConnection
   start_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   end_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   organizer: organizer
@@ -3395,7 +3442,7 @@ type HomePageModuleContextGene implements Node {
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
-    inquireable: Boolean
+    inquireable_only: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -3437,7 +3484,7 @@ type HomePageModuleContextGene implements Node {
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
-    inquireable: Boolean
+    inquireable_only: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -3515,24 +3562,27 @@ type HomePageModuleContextSale implements Node {
   display_timely_at: String
   eligible_sale_artworks_count: Int
   end_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   event_start_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   event_end_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   href: String
@@ -3546,10 +3596,11 @@ type HomePageModuleContextSale implements Node {
   is_registration_closed: Boolean
   is_with_buyers_premium: Boolean
   live_start_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
 
@@ -3559,10 +3610,11 @@ type HomePageModuleContextSale implements Node {
   profile: Profile
   promoted_sale: Sale
   registration_ends_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
 
@@ -3573,10 +3625,11 @@ type HomePageModuleContextSale implements Node {
   sale_artworks_connection(after: String, first: Int, before: String, last: Int): SaleArtworkConnection
   sale_type: String
   start_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   status: String
@@ -3765,10 +3818,11 @@ type Me implements Node {
   # Conversations, usually between a user and partner.
   conversations(after: String, first: Int, before: String, last: Int): ConversationConnection
   created_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   email: String
@@ -3896,10 +3950,11 @@ type Message implements Node {
   # True if message is an invoice message
   is_invoice: Boolean
   created_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
 }
@@ -4022,10 +4077,11 @@ type NotificationsFeedItem implements Node {
   # List of artworks in this notification bundle
   artworks: [Artwork]
   date(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   message: String
@@ -4182,31 +4238,35 @@ type Order {
   # Credit card on this order
   creditCard: CreditCard
   updatedAt(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   createdAt(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   stateUpdatedAt(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   stateExpiresAt(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
 }
@@ -4253,10 +4313,11 @@ type OrderFulfillment {
   # Courier's tracking id
   trackingId: String
   estimatedDelivery(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
 }
@@ -4308,17 +4369,19 @@ type OrderLineItem {
     thousand: String = ","
   ): String
   updatedAt(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   createdAt(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
 
@@ -4669,19 +4732,21 @@ type PartnerShow implements Node {
   counts: PartnerShowCounts
   cover_image: Image
   created_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   description: String
   displayable: Boolean @deprecated(reason: "Prefix Boolean returning fields with `is_`")
   end_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   events: [PartnerShowEventType]
@@ -4715,10 +4780,11 @@ type PartnerShow implements Node {
   partner: Partner
   press_release(format: Format): String
   start_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   status: String
@@ -4748,17 +4814,19 @@ type PartnerShowEventType {
   description: String
   title: String
   start_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   end_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
 }
@@ -4977,7 +5045,7 @@ type Query {
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
-    inquireable: Boolean
+    inquireable_only: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -5371,24 +5439,27 @@ type Sale implements Node {
   display_timely_at: String
   eligible_sale_artworks_count: Int
   end_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   event_start_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   event_end_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   href: String
@@ -5402,10 +5473,11 @@ type Sale implements Node {
   is_registration_closed: Boolean
   is_with_buyers_premium: Boolean
   live_start_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
 
@@ -5415,10 +5487,11 @@ type Sale implements Node {
   profile: Profile
   promoted_sale: Sale
   registration_ends_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
 
@@ -5429,10 +5502,11 @@ type Sale implements Node {
   sale_artworks_connection(after: String, first: Int, before: String, last: Int): SaleArtworkConnection
   sale_type: String
   start_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   status: String
@@ -5548,10 +5622,11 @@ type SaleArtworkEdge {
 type SaleArtworkHighestBid {
   id: ID
   created_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   is_cancelled: Boolean
@@ -5885,10 +5960,11 @@ type Show implements Node {
   description: String
   displayable: Boolean @deprecated(reason: "Prefix Boolean returning fields with `is_`")
   end_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   events: [PartnerShowEventType]
@@ -5923,10 +5999,11 @@ type Show implements Node {
   partner: PartnerTypes
   press_release(format: Format): String
   start_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   status: String
@@ -6093,7 +6170,7 @@ type Tag implements Node {
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
-    inquireable: Boolean
+    inquireable_only: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
@@ -6160,33 +6237,37 @@ type UpdateCollectorProfilePayload {
   email: String
   name: String
   confirmed_buyer_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   collector_level: Int
   self_reported_purchases: String
   loyalty_applicant_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   professional_buyer_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   professional_buyer_applied_at(
+    # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
 
-    # Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
   intents: [String]
@@ -6477,7 +6558,7 @@ type Viewer {
     extra_aggregation_gene_ids: [String]
     include_artworks_by_followed_artists: Boolean
     include_medium_filter_in_aggregation: Boolean
-    inquireable: Boolean
+    inquireable_only: Boolean
     for_sale: Boolean
     gene_id: String
     gene_ids: [String]
