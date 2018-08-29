@@ -8,7 +8,9 @@ import React from "react"
 const ResponsiveContext = React.createContext({})
 
 export type MediaQueries<M extends string = string> = { [K in M]: string }
-export type MediaQueryMatchers = { [key: string]: MediaQueryList }
+export interface MediaQueryMatchers {
+  [key: string]: MediaQueryList
+}
 export type MediaQueryMatches<M extends string = string> = { [K in M]: boolean }
 
 export interface ResponsiveProviderProps<M extends string> {
@@ -23,7 +25,7 @@ export interface ResponsiveProviderState {
 }
 
 const shallowEqual = (a: MediaQueryMatches, b: MediaQueryMatches) => {
-  for (let key in a) {
+  for (const key in a) {
     if (a[key] !== b[key]) return false
   }
   return true

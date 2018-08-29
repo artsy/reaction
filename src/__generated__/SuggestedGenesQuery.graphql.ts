@@ -8,6 +8,10 @@ export type SuggestedGenesQueryResponse = {
         readonly " $fragmentRefs": SuggestedGenesContent_suggested_genes$ref;
     }) | null> | null;
 };
+export type SuggestedGenesQuery = {
+    readonly response: SuggestedGenesQueryResponse;
+    readonly variables: SuggestedGenesQueryVariables;
+};
 
 
 

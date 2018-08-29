@@ -25,7 +25,7 @@ export type DateFormat =
   | "default"
 
 // TODO: Make some of these non-optional ;)
-export type ArticleData = {
+export interface ArticleData {
   id: string
   layout?: ArticleLayout
   authors?: any
@@ -53,7 +53,7 @@ export type SectionType =
   | "video"
   | "default"
 
-export type SectionData = {
+export interface SectionData {
   type: SectionType
   layout?: SectionLayout
   images?: any[]
@@ -66,19 +66,19 @@ export type SectionData = {
   height?: number
 }
 
-export type DisplayData = {
+export interface DisplayData {
   name: string
   canvas: DisplayUnitData
   panel: DisplayUnitData
   renderTime?: number
 }
 
-export type DisplayUnitAssetData = {
+export interface DisplayUnitAssetData {
   caption?: string
   url?: string
 }
 
-export type DisplayUnitData = {
+export interface DisplayUnitData {
   assets?: DisplayUnitAssetData[]
   body?: string
   cover_image_url?: string

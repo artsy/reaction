@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 export const PixelTracker = props => {
   const { unit, date } = props
-  let url = unit.pixel_tracking_code
+  const url = unit.pixel_tracking_code
   if (!url) {
     return null
   }

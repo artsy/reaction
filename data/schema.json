@@ -1549,7 +1549,7 @@
               "description": "Returns list of orders",
               "args": [
                 {
-                  "name": "userId",
+                  "name": "buyerId",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -1559,7 +1559,27 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "partnerId",
+                  "name": "buyerType",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "sellerId",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "sellerType",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -4951,6 +4971,18 @@
             },
             {
               "name": "price",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "price_currency",
               "description": null,
               "args": [],
               "type": {
@@ -34027,96 +34059,12 @@
               "deprecationReason": null
             },
             {
-              "name": "fulfillmentType",
-              "description": "Fulfillment Type",
+              "name": "requestedFulfillment",
+              "description": "Order Requested Fulfillment",
               "args": [],
               "type": {
-                "kind": "ENUM",
-                "name": "OrderFulfillmentType",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "shippingName",
-              "description": "Name for shipping information",
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "shippingAddressLine1",
-              "description": "Shipping address line 1",
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "shippingAddressLine2",
-              "description": "Shipping address line 2",
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "shippingCity",
-              "description": "Shipping city",
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "shippingCountry",
-              "description": "Shipping country",
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "shippingPostalCode",
-              "description": "Shipping postal code",
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "shippingRegion",
-              "description": "Shipping region",
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
+                "kind": "UNION",
+                "name": "RequestedFulfillment",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -34660,24 +34608,24 @@
               "deprecationReason": null
             },
             {
-              "name": "partner",
-              "description": "Partner of this order",
+              "name": "seller",
+              "description": "Seller of this order",
               "args": [],
               "type": {
-                "kind": "OBJECT",
-                "name": "Partner",
+                "kind": "UNION",
+                "name": "OrderParty",
                 "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
-              "name": "user",
-              "description": "User of this order",
+              "name": "buyer",
+              "description": "Buyer of this order",
               "args": [],
               "type": {
-                "kind": "OBJECT",
-                "name": "User",
+                "kind": "UNION",
+                "name": "OrderParty",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -34874,26 +34822,146 @@
           "possibleTypes": null
         },
         {
-          "kind": "ENUM",
-          "name": "OrderFulfillmentType",
+          "kind": "UNION",
+          "name": "RequestedFulfillment",
           "description": null,
           "fields": null,
           "inputFields": null,
           "interfaces": null,
-          "enumValues": [
+          "enumValues": null,
+          "possibleTypes": [
             {
-              "name": "SHIP",
-              "description": null,
+              "kind": "OBJECT",
+              "name": "Ship",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
+              "name": "Pickup",
+              "ofType": null
+            }
+          ]
+        },
+        {
+          "kind": "OBJECT",
+          "name": "Ship",
+          "description": null,
+          "fields": [
+            {
+              "name": "name",
+              "description": "Name for the shipping information",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
-              "name": "PICKUP",
-              "description": null,
+              "name": "addressLine1",
+              "description": "Shipping address line 1",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "addressLine2",
+              "description": "Shipping address line 2",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "city",
+              "description": "Shipping city",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "region",
+              "description": "Shipping region",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "country",
+              "description": "Shipping country",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "postalCode",
+              "description": "Shipping postal code",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
               "isDeprecated": false,
               "deprecationReason": null
             }
           ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "Pickup",
+          "description": null,
+          "fields": [
+            {
+              "name": "fulfillmentType",
+              "description": "It will always be PICKUP",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
           "possibleTypes": null
         },
         {
@@ -35381,6 +35449,27 @@
           "interfaces": [],
           "enumValues": null,
           "possibleTypes": null
+        },
+        {
+          "kind": "UNION",
+          "name": "OrderParty",
+          "description": null,
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": [
+            {
+              "kind": "OBJECT",
+              "name": "Partner",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
+              "name": "User",
+              "ofType": null
+            }
+          ]
         },
         {
           "kind": "OBJECT",
@@ -38661,6 +38750,18 @@
             },
             {
               "name": "price",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "price_currency",
               "description": null,
               "args": [],
               "type": {
@@ -43038,7 +43139,7 @@
               "description": "Returns list of orders",
               "args": [
                 {
-                  "name": "userId",
+                  "name": "buyerId",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -43048,7 +43149,27 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "partnerId",
+                  "name": "buyerType",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "sellerId",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "sellerType",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -46344,6 +46465,29 @@
           ],
           "interfaces": null,
           "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "ENUM",
+          "name": "OrderFulfillmentType",
+          "description": null,
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": [
+            {
+              "name": "SHIP",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "PICKUP",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
           "possibleTypes": null
         },
         {

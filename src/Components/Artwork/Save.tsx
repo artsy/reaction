@@ -1,4 +1,5 @@
 import { Save_artwork } from "__generated__/Save_artwork.graphql"
+import { SaveArtworkMutation } from "__generated__/SaveArtworkMutation.graphql"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import * as Artsy from "Artsy/SystemContext"
@@ -66,16 +67,10 @@ class SaveButtonContainer extends React.Component<Props, State> {
       } as Schema.Old)
   )
   handleSave() {
-    const {
-      currentUser,
-      artwork,
-      relay,
-      relayEnvironment,
-      useRelay,
-    } = this.props
+    const { user, artwork, relay, relayEnvironment, useRelay } = this.props
     const environment = (relay && relay.environment) || relayEnvironment
 
-    if (environment && currentUser && currentUser.id) {
+    if (environment && user && user.id) {
       // Optimistic update for environments that don't have typical access to
       // Relay, e.g., where new ArtworkGrids are used in old code via Stitch. Note
       // that the prop `useRelay` refers to outer HOC wrappers. In cases where
@@ -94,11 +89,12 @@ class SaveButtonContainer extends React.Component<Props, State> {
         })
       }
 
-      commitMutation(environment, {
+      commitMutation<SaveArtworkMutation>(environment, {
         mutation: graphql`
           mutation SaveArtworkMutation($input: SaveArtworkInput!) {
             saveArtwork(input: $input) {
               artwork {
+                __id
                 id
                 is_saved
               }
@@ -115,6 +111,7 @@ class SaveButtonContainer extends React.Component<Props, State> {
           saveArtwork: {
             artwork: {
               __id: artwork.__id,
+              id: artwork.id,
               is_saved: !this.isSaved,
             },
           },

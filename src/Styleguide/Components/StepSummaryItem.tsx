@@ -4,8 +4,8 @@ import { StackableBorderBox } from "Styleguide/Elements/Box"
 import { Flex, FlexProps } from "Styleguide/Elements/Flex"
 
 interface StepSummaryItemProps extends FlexProps {
-  title: string
-  onChange: () => void
+  title?: React.ReactNode
+  onChange?: () => void
 }
 
 export const StepSummaryItem: React.SFC<StepSummaryItemProps> = ({
@@ -16,16 +16,22 @@ export const StepSummaryItem: React.SFC<StepSummaryItemProps> = ({
 }) => {
   return (
     <StackableBorderBox flexDirection="column" {...others}>
-      <Flex justifyContent="space-between" alignItems="baseline" mb={1}>
-        <Serif size="3t" weight="semibold" color="black100">
-          {title}
-        </Serif>
-        <Sans size="2">
-          <a className="colorLink" onClick={onChange}>
-            Change
-          </a>
-        </Sans>
-      </Flex>
+      {(title || onChange) && (
+        <Flex justifyContent="space-between" alignItems="baseline" mb={1}>
+          {title && (
+            <Serif size="3t" weight="semibold" color="black100">
+              {title}
+            </Serif>
+          )}
+          {onChange && (
+            <Sans size="2">
+              <a className="colorLink" onClick={onChange}>
+                Change
+              </a>
+            </Sans>
+          )}
+        </Flex>
+      )}
       {children}
     </StackableBorderBox>
   )

@@ -7,10 +7,10 @@ exports[`renders properly 1`] = `
   font-size: 24px;
   margin: 0 5px;
   display: inline-block;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: 0;
+  -moz-letter-spacing: 0;
+  -ms-letter-spacing: 0;
+  letter-spacing: 0;
   position: relative;
   color: black;
 }

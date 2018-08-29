@@ -10,6 +10,10 @@ export type RouterQueryResponse = {
         readonly bio: string | null;
     }) | null;
 };
+export type RouterQuery = {
+    readonly response: RouterQueryResponse;
+    readonly variables: RouterQueryVariables;
+};
 
 
 

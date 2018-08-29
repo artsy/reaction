@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { Box } from "Styleguide/Elements/Box"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Serif } from "@artsy/palette"
-import { ReadMore } from "Styleguide/Components/ReadMore"
+import { ReadMore } from "Styleguide/Components"
 
 export const AboutTheWork = () => {
   return (

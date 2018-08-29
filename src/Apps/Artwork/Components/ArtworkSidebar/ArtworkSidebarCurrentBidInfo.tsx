@@ -37,7 +37,7 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
       artwork.sale_artwork.reserve_status === "reserve_not_met"
         ? "red100"
         : "black60"
-    let bidTextParts = []
+    const bidTextParts = []
     if (bidsPresent) {
       bidTextParts.push(
         artwork.sale_artwork.counts.bidder_positions === 1

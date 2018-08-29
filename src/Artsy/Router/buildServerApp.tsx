@@ -22,8 +22,8 @@ export function buildServerApp(config: RouterConfig): Promise<Resolve> {
     try {
       const { context = {}, routes = [], url } = config
       const { initialMatchingMediaQueries, user } = context
-      const currentUser = getUser(user)
-      const relayEnvironment = createEnvironment({ user: currentUser })
+      const _user = getUser(user)
+      const relayEnvironment = createEnvironment({ user: _user })
       const historyMiddlewares = [queryMiddleware]
       const resolver = new Resolver(relayEnvironment)
       const render = createRender({})
@@ -48,7 +48,7 @@ export function buildServerApp(config: RouterConfig): Promise<Resolve> {
         return (
           <Boot
             context={context}
-            currentUser={currentUser}
+            user={_user}
             initialMatchingMediaQueries={initialMatchingMediaQueries}
             relayEnvironment={relayEnvironment}
             resolver={resolver}

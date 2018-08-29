@@ -30,6 +30,10 @@ export type GeneSearchResultsFollowGeneMutationResponse = {
         }) | null;
     }) | null;
 };
+export type GeneSearchResultsFollowGeneMutation = {
+    readonly response: GeneSearchResultsFollowGeneMutationResponse;
+    readonly variables: GeneSearchResultsFollowGeneMutationVariables;
+};
 
 
 

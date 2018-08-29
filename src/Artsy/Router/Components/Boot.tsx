@@ -20,7 +20,7 @@ import {
 
 export interface BootProps {
   context: object
-  currentUser: User
+  user: User
   initialMatchingMediaQueries?: MatchingMediaQueries
   relayEnvironment: Environment
   resolver: ResolverUtils

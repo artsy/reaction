@@ -6,16 +6,13 @@ import { ContextConsumer } from "Artsy/SystemContext"
 import FollowArtistButton from "Components/FollowButton/FollowArtistButton"
 import React, { Component, Fragment } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Slider } from "Styleguide/Components/Slider"
-import { Box } from "Styleguide/Elements/Box"
-import { Flex } from "Styleguide/Elements/Flex"
-import { Image } from "Styleguide/Elements/Image"
-import { Spacer } from "Styleguide/Elements/Spacer"
+import { Slider } from "Styleguide/Components"
+import { Box, Flex, Image, Spacer } from "Styleguide/Elements"
 import { Responsive } from "Utils/Responsive"
 
 interface Props {
   artist: ArtistHeader_artist
-  currentUser?: User
+  user?: User
   mediator?: {
     trigger: (action: string, config: object) => void
   }
@@ -40,7 +37,7 @@ export class ArtistHeader extends Component<Props> {
     const props = this.props
     return (
       <ContextConsumer>
-        {({ mediator, currentUser }) => {
+        {({ mediator, user }) => {
           return (
             <Responsive>
               {({ xs }) => {
@@ -48,7 +45,7 @@ export class ArtistHeader extends Component<Props> {
                   return (
                     <SmallArtistHeader
                       mediator={mediator}
-                      currentUser={currentUser}
+                      user={user}
                       {...props}
                     />
                   )
@@ -56,7 +53,7 @@ export class ArtistHeader extends Component<Props> {
                   return (
                     <LargeArtistHeader
                       mediator={mediator}
-                      currentUser={currentUser}
+                      user={user}
                       {...props}
                     />
                   )
@@ -90,7 +87,7 @@ export class LargeArtistHeader extends Component<Props> {
     const { props } = this
     const {
       artist: { carousel },
-      currentUser,
+      user,
     } = props
 
     const hasImages = carousel && carousel.images
@@ -101,7 +98,7 @@ export class LargeArtistHeader extends Component<Props> {
           <Fragment>
             <Slider
               height={200}
-              data={carousel.images as Array<object>}
+              data={carousel.images as object[]}
               render={(slide: Image) => {
                 return (
                   <a href={slide.href} onClick={() => this.onClickSlide(slide)}>
@@ -148,7 +145,7 @@ export class LargeArtistHeader extends Component<Props> {
                 paddingRight: 0,
               } as any
             }
-            currentUser={currentUser}
+            user={user}
             onOpenAuthModal={() => {
               props.mediator.trigger("open:auth", {
                 mode: "signup",
@@ -190,7 +187,7 @@ export class SmallArtistHeader extends Component<Props> {
     const props = this.props
     const {
       artist: { carousel },
-      currentUser,
+      user,
     } = props
 
     const hasImages = carousel && carousel.images
@@ -200,7 +197,7 @@ export class SmallArtistHeader extends Component<Props> {
         {hasImages && (
           <Fragment>
             <Slider
-              data={carousel.images as Array<object>}
+              data={carousel.images as object[]}
               render={slide => {
                 return (
                   <a href={slide.href} onClick={() => this.onClickSlide(slide)}>
@@ -240,7 +237,7 @@ export class SmallArtistHeader extends Component<Props> {
             artist={props.artist}
             useDeprecatedButtonStyle={false}
             buttonProps={{ width: "100%" }}
-            currentUser={currentUser}
+            user={user}
             onOpenAuthModal={() => {
               props.mediator.trigger("open:auth", {
                 mode: "signup",

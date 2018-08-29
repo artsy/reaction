@@ -4,7 +4,7 @@ import * as Schema from "Artsy/Analytics/Schema"
 import { ContextConsumer } from "Artsy/Router"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { RouteTab, RouteTabs } from "Styleguide/Components/RouteTabs"
+import { RouteTab, RouteTabs } from "Styleguide/Components"
 import { Responsive } from "Utils/Responsive"
 
 interface Props {

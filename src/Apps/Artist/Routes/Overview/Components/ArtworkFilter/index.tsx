@@ -8,20 +8,23 @@ import FollowArtistButton from "Components/FollowButton/FollowArtistButton"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
-import { Toggle } from "Styleguide/Components/Toggle"
-import { Box } from "Styleguide/Elements/Box"
-import { Button } from "Styleguide/Elements/Button"
-import { Checkbox } from "Styleguide/Elements/Checkbox"
-import { Flex } from "Styleguide/Elements/Flex"
-import { Message } from "Styleguide/Elements/Message"
-import { Radio } from "Styleguide/Elements/Radio"
-import { SmallSelect } from "Styleguide/Elements/Select"
-import { Separator } from "Styleguide/Elements/Separator"
-import { Spacer } from "Styleguide/Elements/Spacer"
+import { Toggle } from "Styleguide/Components"
 import { Subscribe } from "unstated"
 import { Responsive } from "Utils/Responsive"
 import { ArtworkFilterRefetchContainer as ArtworkFilter } from "./ArtworkFilterRefetch"
 import { MobileActionSheet } from "./MobileActionSheet"
+
+import {
+  Box,
+  Button,
+  Checkbox,
+  Flex,
+  Message,
+  Radio,
+  Separator,
+  SmallSelect,
+  Spacer,
+} from "Styleguide/Elements"
 
 interface Props {
   artist: ArtworkFilter_artist
@@ -52,7 +55,7 @@ class Filter extends Component<Props> {
     return showZeroState
   }
 
-  renderFilters({ currentUser, filters, mediator, hideTopBorder }) {
+  renderFilters({ user, filters, mediator, hideTopBorder }) {
     const { counts } = this.props.artist
     const { aggregations } = this.props.artist.filtered_artworks
     const mediumAggregation = aggregations.find(agg => agg.slice === "MEDIUM")
@@ -67,9 +70,9 @@ class Filter extends Component<Props> {
     )
 
     const enableLabFeature =
-      currentUser &&
-      currentUser.lab_features &&
-      currentUser.lab_features.includes("New Buy Now Flow")
+      user &&
+      user.lab_features &&
+      user.lab_features.includes("New Buy Now Flow")
 
     return (
       <>
@@ -206,7 +209,7 @@ class Filter extends Component<Props> {
     )
   }
 
-  renderZeroState({ currentUser, mediator, xs }) {
+  renderZeroState({ user, mediator, xs }) {
     const {
       artist,
       artist: { id, name, is_followed },
@@ -217,11 +220,10 @@ class Filter extends Component<Props> {
         There aren’t any works available by the artist at this time.{" "}
         {!is_followed && (
           <>
-            Follow{" "}
             <FollowArtistButton
               artist={artist}
               useDeprecatedButtonStyle={false}
-              currentUser={currentUser}
+              user={user}
               onOpenAuthModal={() => {
                 mediator.trigger("open:auth", {
                   mode: "signup",
@@ -234,7 +236,7 @@ class Filter extends Component<Props> {
                   },
                 })
               }}
-              render={() => <ZeroStateLink>{name}</ZeroStateLink>}
+              render={() => <ZeroStateLink>Follow {name}</ZeroStateLink>}
             />{" "}
             to receive notifications when new works are added.
           </>
@@ -299,7 +301,7 @@ class Filter extends Component<Props> {
   render() {
     return (
       <ContextConsumer>
-        {({ currentUser, mediator }) => {
+        {({ user, mediator }) => {
           return (
             <Subscribe to={[FilterState]}>
               {(filters: FilterState) => {
@@ -310,7 +312,7 @@ class Filter extends Component<Props> {
 
                       const Filters = () =>
                         this.renderFilters({
-                          currentUser,
+                          user,
                           filters,
                           mediator,
                           hideTopBorder,
@@ -349,7 +351,7 @@ class Filter extends Component<Props> {
 
                               {this.showZeroState ? (
                                 this.renderZeroState({
-                                  currentUser,
+                                  user,
                                   mediator,
                                   xs,
                                 })

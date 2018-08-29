@@ -47,6 +47,10 @@ export type PopularArtistsFollowArtistMutationResponse = {
         }) | null;
     }) | null;
 };
+export type PopularArtistsFollowArtistMutation = {
+    readonly response: PopularArtistsFollowArtistMutationResponse;
+    readonly variables: PopularArtistsFollowArtistMutationVariables;
+};
 
 
 

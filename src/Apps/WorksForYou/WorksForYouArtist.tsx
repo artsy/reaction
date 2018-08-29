@@ -1,6 +1,6 @@
-import { Sans, Serif } from "@artsy/palette"
+import { Sans, Serif, themeProps } from "@artsy/palette"
 import { WorksForYouArtist_viewer } from "__generated__/WorksForYouArtist_viewer.graphql"
-import { ContextProps } from "Components/Artsy"
+import { ContextProps } from "Artsy"
 import ArtworkGrid from "Components/ArtworkGrid"
 import Spinner from "Components/Spinner"
 import * as React from "react"
@@ -97,7 +97,7 @@ export class WorksForYouArtist extends React.Component<Props, State> {
                 </a>
               </Serif>
 
-              <Sans style={{ color: "#666" }} size={"2"}>
+              <Sans color={themeProps.colors.black60} size={"2"}>
                 {forSale
                   ? artist.counts.for_sale_artworks.toLocaleString()
                   : artist.counts.artworks.toLocaleString()}{" "}
@@ -111,7 +111,7 @@ export class WorksForYouArtist extends React.Component<Props, State> {
           columnCount={3}
           itemMargin={40}
           onLoadMore={() => this.loadMoreArtworks()}
-          currentUser={this.props.currentUser}
+          user={this.props.user}
         />
         <SpinnerContainer>
           {this.state.loading ? <Spinner /> : ""}

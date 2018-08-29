@@ -1,5 +1,6 @@
 import { Serif } from "@artsy/palette"
 import { RecentlyViewed_me } from "__generated__/RecentlyViewed_me.graphql"
+import { RecentlyViewedQuery } from "__generated__/RecentlyViewedQuery.graphql"
 import { ContextConsumer } from "Artsy/Router"
 import { FillwidthItem } from "Components/Artwork/FillwidthItem"
 import React from "react"
@@ -20,7 +21,7 @@ export const RecentlyViewed: React.SFC<RecentlyViewedProps> = props => {
 
   return (
     <ContextConsumer>
-      {({ currentUser, mediator }) => {
+      {({ user, mediator }) => {
         return (
           me && (
             <React.Fragment>
@@ -32,7 +33,7 @@ export const RecentlyViewed: React.SFC<RecentlyViewedProps> = props => {
                 settings={{
                   slidesToScroll: 5,
                 }}
-                data={me.recentlyViewedArtworks.edges as Array<object>}
+                data={me.recentlyViewedArtworks.edges as object[]}
                 render={artwork => {
                   const {
                     node: {
@@ -48,7 +49,7 @@ export const RecentlyViewed: React.SFC<RecentlyViewedProps> = props => {
                       width={HEIGHT * aspect_ratio}
                       margin={10}
                       useRelay={props.useRelay}
-                      currentUser={currentUser}
+                      user={user}
                       mediator={mediator}
                     />
                   )
@@ -88,12 +89,12 @@ export const RecentlyViewedFragmentContainer = createFragmentContainer(
 export const RecentlyViewedQueryRenderer = () => {
   return (
     <ContextConsumer>
-      {({ currentUser, mediator, relayEnvironment }) => {
-        if (!currentUser) {
+      {({ user, mediator, relayEnvironment }) => {
+        if (!user) {
           return null
         }
         return (
-          <QueryRenderer
+          <QueryRenderer<RecentlyViewedQuery>
             environment={relayEnvironment}
             variables={{}}
             query={graphql`

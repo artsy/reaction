@@ -1,16 +1,14 @@
 import { paginationProps } from "Apps/__test__/Fixtures/Pagination"
 import React from "react"
 import styled from "styled-components"
-import { ArtworkGridExample as ArtworkGrid } from "Styleguide/Components/ArtworkGridExample"
-import { Pagination } from "Styleguide/Components/Pagination"
-import { Toggle } from "Styleguide/Components/Toggle"
-import { Box } from "Styleguide/Elements/Box"
-import { Checkbox } from "Styleguide/Elements/Checkbox"
-import { Flex } from "Styleguide/Elements/Flex"
-import { Radio } from "Styleguide/Elements/Radio"
-import { Select } from "Styleguide/Elements/Select"
-import { Spacer } from "Styleguide/Elements/Spacer"
+import { Box, Checkbox, Flex, Radio, Select, Spacer } from "Styleguide/Elements"
 import { Responsive } from "Utils/Responsive"
+
+import {
+  ArtworkGridExample as ArtworkGrid,
+  Pagination,
+  Toggle,
+} from "Styleguide/Components"
 
 export const ArtworkFilter = () => {
   return (

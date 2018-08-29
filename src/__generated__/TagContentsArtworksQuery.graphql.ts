@@ -15,6 +15,10 @@ export type TagContentsArtworksQueryResponse = {
         readonly " $fragmentRefs": TagArtworks_tag$ref;
     }) | null;
 };
+export type TagContentsArtworksQuery = {
+    readonly response: TagContentsArtworksQueryResponse;
+    readonly variables: TagContentsArtworksQueryVariables;
+};
 
 
 

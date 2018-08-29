@@ -1,3 +1,4 @@
+import { FollowArtistButtonMutation } from "__generated__/FollowArtistButtonMutation.graphql"
 import * as Artsy from "Artsy/SystemContext"
 import { extend } from "lodash"
 import React from "react"
@@ -23,7 +24,7 @@ interface Props
   artist?: FollowArtistButton_artist
   tracking?: any
   trackingData?: FollowTrackingData
-  onOpenAuthModal?: (type: "register" | "login", config?: Object) => void
+  onOpenAuthModal?: (type: "register" | "login", config?: object) => void
 
   /**
    * FIXME: Default is true due to legacy code. If false, use new @artsy/palette
@@ -60,18 +61,19 @@ export class FollowArtistButton extends React.Component<Props> {
 
   handleFollow = e => {
     e.preventDefault() // If this button is part of a link, we _probably_ dont want to actually follow the link.
-    const { artist, currentUser, relay, onOpenAuthModal } = this.props
+    const { artist, user, relay, onOpenAuthModal } = this.props
 
-    if (currentUser && currentUser.id) {
+    if (user && user.id) {
       const newFollowCount = artist.is_followed
         ? artist.counts.follows - 1
         : artist.counts.follows + 1
 
-      commitMutation(relay.environment, {
+      commitMutation<FollowArtistButtonMutation>(relay.environment, {
         mutation: graphql`
           mutation FollowArtistButtonMutation($input: FollowArtistInput!) {
             followArtist(input: $input) {
               artist {
+                __id
                 is_followed
                 counts {
                   follows

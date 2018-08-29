@@ -59,13 +59,13 @@ describe("buildServerApp", () => {
         <ContextConsumer>
           {context => {
             expect(Object.keys(context).sort()).toEqual([
-              "currentUser",
               "foo",
               "initialMatchingMediaQueries",
               "mediator",
               "relayEnvironment",
               "resolver",
               "routes",
+              "user",
             ])
             setImmediate(done)
             return <div />

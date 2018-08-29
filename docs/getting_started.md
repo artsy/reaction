@@ -3,6 +3,10 @@
 We're going to take a component, and make it fit inside Reaction Force. This doc is based
 on [this PR](https://github.com/artsy/reaction-force/pull/176).
 
+## Running Reaction inside Force
+
+Instructions for running Reaction within Force are in [the Force repo](https://github.com/artsy/force/blob/master/CONTRIBUTING.md#real-time-development-with-reaction).
+
 ## Simple
 
 ```jsx

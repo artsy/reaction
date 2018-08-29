@@ -2,6 +2,10 @@ import React from "react"
 import { commitMutation, graphql } from "react-relay"
 import styled from "styled-components"
 
+import {
+  CollectorIntentUpdateCollectorProfileMutation,
+  Intents,
+} from "__generated__/CollectorIntentUpdateCollectorProfileMutation.graphql"
 import { ContextProps, withContext } from "Artsy/SystemContext"
 import Colors from "../../../Assets/Colors"
 import { MultiButtonState } from "../../Buttons/MultiStateButton"
@@ -61,32 +65,31 @@ export class CollectorIntentComponent extends React.Component<Props, State> {
   selectedIntents() {
     const intents = Object.values(CollectorIntentComponent.intentEnum).filter(
       (_, index) => this.state.selectedOptions[index]
-    )
+    ) as Intents[]
 
     return intents
   }
 
   submit() {
-    const intents = Object.values(CollectorIntentComponent.intentEnum).filter(
-      (_, index) => this.state.selectedOptions[index]
-    )
-
-    commitMutation(this.props.relayEnvironment, {
-      mutation: graphql`
-        mutation CollectorIntentUpdateCollectorProfileMutation(
-          $input: UpdateCollectorProfileInput!
-        ) {
-          updateCollectorProfile(input: $input) {
-            intents
+    commitMutation<CollectorIntentUpdateCollectorProfileMutation>(
+      this.props.relayEnvironment,
+      {
+        mutation: graphql`
+          mutation CollectorIntentUpdateCollectorProfileMutation(
+            $input: UpdateCollectorProfileInput!
+          ) {
+            updateCollectorProfile(input: $input) {
+              intents
+            }
           }
-        }
-      `,
-      variables: {
-        input: {
-          intents,
+        `,
+        variables: {
+          input: {
+            intents: this.selectedIntents(),
+          },
         },
-      },
-    })
+      }
+    )
 
     this.props.onNextButtonPressed()
   }

@@ -1,8 +1,7 @@
+import { ContextProps } from "Artsy"
 import * as Artsy from "Artsy/SystemContext"
 import { render } from "enzyme"
 import React from "react"
-import renderer from "react-test-renderer"
-import { ContextProps } from "../Artsy"
 
 jest.mock("../../Artsy/Relay/createEnvironment", () => ({
   createEnvironment: config => ({
@@ -15,7 +14,7 @@ jest.mock("../../Artsy/Relay/createEnvironment", () => ({
 const ShowCurrentUser: React.SFC<
   ContextProps & { additionalProp?: string }
 > = props => {
-  let text = props.currentUser ? props.currentUser.id : "no-current-user"
+  let text = props.user ? props.user.id : "no-current-user"
   if (props.additionalProp) {
     text = `${text} & ${props.additionalProp}`
   }
@@ -31,7 +30,7 @@ const ShowRelayEnvironment: React.SFC<ContextProps> = props => {
 const WithRelayEnvironment = Artsy.withContext(ShowRelayEnvironment)
 
 describe("Artsy context", () => {
-  const currentUser = {
+  const user = {
     id: "andy-warhol",
     accessToken: "secret",
   }
@@ -42,10 +41,10 @@ describe("Artsy context", () => {
         <Artsy.ContextConsumer>
           {props => {
             expect(Object.keys(props).sort()).toEqual([
-              "currentUser",
               "relayEnvironment",
+              "user",
             ])
-            done()
+            setImmediate(done)
             return <div />
           }}
         </Artsy.ContextConsumer>
@@ -70,7 +69,7 @@ describe("Artsy context", () => {
 
     it("exposes the currently signed-in user", () => {
       const wrapper = render(
-        <Artsy.ContextProvider currentUser={currentUser}>
+        <Artsy.ContextProvider user={user}>
           <WithCurrentUser />
         </Artsy.ContextProvider>
       )
@@ -87,8 +86,8 @@ describe("Artsy context", () => {
     })
 
     it("does not default to environment variables when explicitly passing null", () => {
-      let wrapper = render(
-        <Artsy.ContextProvider currentUser={null}>
+      const wrapper = render(
+        <Artsy.ContextProvider user={null}>
           <WithCurrentUser />
         </Artsy.ContextProvider>
       )
@@ -98,7 +97,7 @@ describe("Artsy context", () => {
 
   it("creates and exposes a Relay environment", () => {
     const wrapper = render(
-      <Artsy.ContextProvider currentUser={currentUser}>
+      <Artsy.ContextProvider user={user}>
         <WithRelayEnvironment />
       </Artsy.ContextProvider>
     )
@@ -108,10 +107,7 @@ describe("Artsy context", () => {
   it("exposes a passed in Relay environment", () => {
     const mockedEnv: any = { description: "A passed in mocked env" }
     const wrapper = render(
-      <Artsy.ContextProvider
-        currentUser={currentUser}
-        relayEnvironment={mockedEnv}
-      >
+      <Artsy.ContextProvider user={user} relayEnvironment={mockedEnv}>
         <WithRelayEnvironment />
       </Artsy.ContextProvider>
     )
@@ -120,17 +116,10 @@ describe("Artsy context", () => {
 
   it("passes other props on", () => {
     const wrapper = render(
-      <Artsy.ContextProvider currentUser={currentUser}>
+      <Artsy.ContextProvider user={user}>
         <WithCurrentUser additionalProp="friends" />
       </Artsy.ContextProvider>
     )
     expect(wrapper.text()).toEqual("andy-warhol & friends")
   })
-
-  // it("throws an error when not embedded in a context provider", () => {
-  //   global.console.error = jest.fn()
-  //   expect(() => {
-  //     render(<WithCurrentUser />)
-  //   }).toThrowError()
-  // })
 })

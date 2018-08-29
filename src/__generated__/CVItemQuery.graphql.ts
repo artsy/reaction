@@ -18,6 +18,10 @@ export type CVItemQueryResponse = {
         readonly " $fragmentRefs": CVItem_artist$ref;
     }) | null;
 };
+export type CVItemQuery = {
+    readonly response: CVItemQueryResponse;
+    readonly variables: CVItemQueryVariables;
+};
 
 
 

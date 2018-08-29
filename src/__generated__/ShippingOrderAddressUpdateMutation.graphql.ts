@@ -30,6 +30,10 @@ export type ShippingOrderAddressUpdateMutationResponse = {
         }) | null;
     }) | null;
 };
+export type ShippingOrderAddressUpdateMutation = {
+    readonly response: ShippingOrderAddressUpdateMutationResponse;
+    readonly variables: ShippingOrderAddressUpdateMutationVariables;
+};
 
 
 

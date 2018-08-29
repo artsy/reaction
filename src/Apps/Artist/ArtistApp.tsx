@@ -6,14 +6,15 @@ import { PreloadLinkState } from "Artsy/Router/Components/PreloadLink"
 import React from "react"
 import { LazyLoadComponent } from "react-lazy-load-image-component"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Footer } from "Styleguide/Components/Footer"
-import { RecentlyViewedQueryRenderer as RecentlyViewed } from "Styleguide/Components/RecentlyViewed"
-import { Col, Row } from "Styleguide/Elements/Grid"
-import { Separator } from "Styleguide/Elements/Separator"
-import { Spacer } from "Styleguide/Elements/Spacer"
+import { Col, Row, Separator, Spacer } from "Styleguide/Elements"
 import { Subscribe } from "unstated"
 import { ArtistHeaderFragmentContainer as ArtistHeader } from "./Components/ArtistHeader"
 import { LoadingArea } from "./Components/LoadingArea"
+
+import {
+  Footer,
+  RecentlyViewedQueryRenderer as RecentlyViewed,
+} from "Styleguide/Components"
 
 export interface ArtistAppProps {
   artist: ArtistApp_artist

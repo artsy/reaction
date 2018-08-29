@@ -82,12 +82,12 @@ describe("buildClientApp", () => {
         <ContextConsumer>
           {context => {
             expect(Object.keys(context).sort()).toEqual([
-              "currentUser",
               "foo",
               "mediator",
               "relayEnvironment",
               "resolver",
               "routes",
+              "user",
             ])
             setImmediate(done)
             return <div />

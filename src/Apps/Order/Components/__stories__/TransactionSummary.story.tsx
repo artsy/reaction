@@ -41,7 +41,7 @@ storiesOf("Apps/Order Page/Components", module)
                 artistName: "Francesca DiMattio",
                 artworkTitle: "The Fox",
               }) as any,
-              partner: {
+              seller: {
                 name: "Salon 94",
               },
             }}
@@ -64,7 +64,7 @@ storiesOf("Apps/Order Page/Components", module)
               artistName: "Francesca DiMattio and Orta Theroxicus",
               artworkTitle: "Some quite long title you know how artists can be",
             }) as any,
-            partner: {
+            seller: {
               name: "Salon Nineteen Eighty Four and Three Quarters",
             },
           }}

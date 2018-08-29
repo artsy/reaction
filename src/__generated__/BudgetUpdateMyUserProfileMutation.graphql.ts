@@ -31,6 +31,10 @@ export type BudgetUpdateMyUserProfileMutationResponse = {
         }) | null;
     }) | null;
 };
+export type BudgetUpdateMyUserProfileMutation = {
+    readonly response: BudgetUpdateMyUserProfileMutationResponse;
+    readonly variables: BudgetUpdateMyUserProfileMutationVariables;
+};
 
 
 

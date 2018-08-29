@@ -12,6 +12,10 @@ export type ArtworkFilterArtworkGridQueryResponse = {
         readonly " $fragmentRefs": ArtworkFilterArtworkGrid_filtered_artworks$ref;
     }) | null;
 };
+export type ArtworkFilterArtworkGridQuery = {
+    readonly response: ArtworkFilterArtworkGridQueryResponse;
+    readonly variables: ArtworkFilterArtworkGridQueryVariables;
+};
 
 
 

@@ -1,7 +1,7 @@
 import { cloneDeep, omit, uniq, without } from "lodash"
 import { Container } from "unstated"
 
-type State = {
+interface State {
   // Search filters
   medium: string
   major_periods?: string[]

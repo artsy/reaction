@@ -10,6 +10,10 @@ export type routes_RelatedArtistsQueryResponse = {
         readonly " $fragmentRefs": RelatedArtists_viewer$ref;
     }) | null;
 };
+export type routes_RelatedArtistsQuery = {
+    readonly response: routes_RelatedArtistsQueryResponse;
+    readonly variables: routes_RelatedArtistsQueryVariables;
+};
 
 
 

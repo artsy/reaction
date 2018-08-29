@@ -9,19 +9,17 @@ import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import {
   ArtistBioFragmentContainer as ArtistBio,
+  MarketInsightsFragmentContainer as MarketInsights,
   MAX_CHARS,
-} from "Styleguide/Components/ArtistBio"
-import { MarketInsightsFragmentContainer as MarketInsights } from "Styleguide/Components/MarketInsights"
-import { SelectedExhibitionFragmentContainer as SelectedExhibitions } from "Styleguide/Components/SelectedExhibitions"
-import { Box } from "Styleguide/Elements/Box"
-import { Col, Row } from "Styleguide/Elements/Grid"
-import { Spacer } from "Styleguide/Elements/Spacer"
+  SelectedExhibitionFragmentContainer as SelectedExhibitions,
+} from "Styleguide/Components"
+import { Box, Col, Row, Spacer } from "Styleguide/Elements"
 import { Responsive } from "Utils/Responsive"
 import { CurrentEventFragmentContainer as CurrentEvent } from "./Components/CurrentEvent"
 
 export interface OverviewRouteProps {
   artist: Overview_artist & {
-    __fragments: Array<object>
+    __fragments: object[]
   }
 }
 

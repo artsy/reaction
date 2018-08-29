@@ -12,7 +12,7 @@ interface ErrorPageProps {
 }
 
 interface ErrorCodeBackgroundProps extends React.HTMLProps<HTMLDivElement> {
-  code: Number
+  code: number
 }
 
 export class ErrorPage extends React.Component<ErrorPageProps, null> {

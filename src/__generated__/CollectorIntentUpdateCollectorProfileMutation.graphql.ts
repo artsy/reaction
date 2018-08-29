@@ -17,6 +17,10 @@ export type CollectorIntentUpdateCollectorProfileMutationResponse = {
         readonly intents: ReadonlyArray<string | null> | null;
     }) | null;
 };
+export type CollectorIntentUpdateCollectorProfileMutation = {
+    readonly response: CollectorIntentUpdateCollectorProfileMutationResponse;
+    readonly variables: CollectorIntentUpdateCollectorProfileMutationVariables;
+};
 
 
 

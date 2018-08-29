@@ -6,7 +6,7 @@ import React from "react"
 import { MatchingMediaQueries } from "Utils/Responsive"
 
 interface Props {
-  routes: Array<object>
+  routes: object[]
   initialMatchingMediaQueries?: MatchingMediaQueries
   initialRoute?: string
   initialState?: object
@@ -53,7 +53,7 @@ export class StorybooksRouter extends React.Component<Props> {
         ClientApp,
       })
     } catch (error) {
-      console.error("ArtistApp.story", error)
+      console.error("StorybooksRouter.story", error)
     }
   }
 

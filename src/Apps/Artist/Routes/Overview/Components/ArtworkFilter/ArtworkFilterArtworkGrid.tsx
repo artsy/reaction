@@ -4,7 +4,7 @@ import { ContextConsumer } from "Artsy/Router"
 import ArtworkGrid from "Components/ArtworkGrid"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
-import { PaginationFragmentContainer as Pagination } from "Styleguide/Components/Pagination"
+import { PaginationFragmentContainer as Pagination } from "Styleguide/Components"
 import { Box } from "Styleguide/Elements/Box"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Subscribe } from "unstated"
@@ -73,7 +73,7 @@ class Artworks extends Component<Props, LoadingAreaState> {
   render() {
     return (
       <ContextConsumer>
-        {({ currentUser, mediator }) => {
+        {({ user, mediator }) => {
           return (
             <Subscribe to={[FilterState]}>
               {(filters: FilterState) => {
@@ -85,7 +85,7 @@ class Artworks extends Component<Props, LoadingAreaState> {
                       artworks={this.props.filtered_artworks.artworks}
                       columnCount={this.props.columnCount}
                       itemMargin={40}
-                      currentUser={currentUser}
+                      user={user}
                       mediator={mediator}
                     />
 
