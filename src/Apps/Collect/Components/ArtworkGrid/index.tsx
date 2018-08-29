@@ -1,8 +1,8 @@
 import { Sans } from "@artsy/palette"
-import { FilterState } from "Apps/Artist/Routes/Overview/state"
+import { FilterState } from "Apps/Collect/FilterState"
+import { ContextConsumer } from "Artsy"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { AppState } from "Router"
 import { Toggle } from "Styleguide/Components/Toggle"
 import { Box } from "Styleguide/Elements/Box"
 import { Checkbox } from "Styleguide/Elements/Checkbox"
@@ -108,101 +108,105 @@ class Filter extends Component<Props> {
       aggregations.find(agg => agg.slice === "MEDIUM") || []
 
     return (
-      <Subscribe to={[AppState, FilterState]}>
-        {(
-          {
-            state: {
-              mediator,
-              system: { currentUser },
-            },
-          },
-          filters: FilterState
-        ) => {
+      <ContextConsumer>
+        {({ mediator }) => {
           return (
-            <Responsive>
-              {({ xs, sm, md }) => {
+            <Subscribe to={[FilterState]}>
+              {(filters: FilterState) => {
                 return (
-                  <>
-                    <Flex>
-                      {/*
-                        Sidebar Area
-                      */}
+                  <Responsive>
+                    {({ xs, sm, md }) => {
+                      return (
+                        <>
+                          <Flex>
+                            {/*
+                            Sidebar Area
+                          */}
 
-                      {!xs && (
-                        <Sidebar width="30%" mr={2}>
-                          <Flex
-                            flexDirection="column"
-                            alignItems="left"
-                            mt={-1}
-                            mb={1}
-                          >
-                            {!hideTopBorder && <Separator mb={1} />}
+                            {!xs && (
+                              <Sidebar width="30%" mr={2}>
+                                <Flex
+                                  flexDirection="column"
+                                  alignItems="left"
+                                  mt={-1}
+                                  mb={1}
+                                >
+                                  {!hideTopBorder && <Separator mb={1} />}
 
-                            {this.renderWaysToBuy(filters, mediator)}
-                          </Flex>
+                                  {this.renderWaysToBuy(filters, mediator)}
+                                </Flex>
 
-                          <Toggle label="Medium" expanded>
-                            {this.renderCategory(
-                              filters,
-                              "medium",
-                              mediumAggregation.counts,
-                              mediator
+                                <Toggle label="Medium" expanded>
+                                  {this.renderCategory(
+                                    filters,
+                                    "medium",
+                                    mediumAggregation.counts,
+                                    mediator
+                                  )}
+                                </Toggle>
+                              </Sidebar>
                             )}
-                          </Toggle>
-                        </Sidebar>
-                      )}
 
-                      {/*
-                        Main Artwork Grid
-                      */}
+                            {/*
+                            Main Artwork Grid
+                          */}
 
-                      <Box width={xs ? "100%" : "70%"}>
-                        {!hideTopBorder && <Separator mb={2} mt={-1} />}
+                            <Box width={xs ? "100%" : "70%"}>
+                              {!hideTopBorder && <Separator mb={2} mt={-1} />}
 
-                        <Flex justifyContent="flex-end">
-                          <Select
-                            mt="-8px"
-                            options={
-                              [
-                                { value: "-decayed_merch", text: "Default" },
-                                {
-                                  value: "-partner_updated_at",
-                                  text: "Recently updated",
-                                },
-                                {
-                                  value: "-published_at",
-                                  text: "Recently added",
-                                },
-                                {
-                                  value: "-year",
-                                  text: "Artwork year (desc.)",
-                                },
-                                { value: "year", text: "Artwork year (asc.)" },
-                              ] // Corrective spacing for line-height
-                            }
-                            selected={filters.state.sort}
-                            onSelect={sort => {
-                              return filters.setSort(sort, mediator)
-                            }}
-                          />
-                        </Flex>
+                              <Flex justifyContent="flex-end">
+                                <Select
+                                  mt="-8px"
+                                  options={
+                                    [
+                                      {
+                                        value: "-decayed_merch",
+                                        text: "Default",
+                                      },
+                                      {
+                                        value: "-partner_updated_at",
+                                        text: "Recently updated",
+                                      },
+                                      {
+                                        value: "-published_at",
+                                        text: "Recently added",
+                                      },
+                                      {
+                                        value: "-year",
+                                        text: "Artwork year (desc.)",
+                                      },
+                                      {
+                                        value: "year",
+                                        text: "Artwork year (asc.)",
+                                      },
+                                    ] // Corrective spacing for line-height
+                                  }
+                                  selected={filters.state.sort}
+                                  onSelect={sort => {
+                                    return filters.setSort(sort, mediator)
+                                  }}
+                                />
+                              </Flex>
 
-                        <Spacer mb={2} />
+                              <Spacer mb={2} />
 
-                        <ArtworkFilter
-                          filtered_artworks={grid}
-                          columnCount={xs || sm || md ? 2 : 3}
-                          filters={filters.state}
-                        />
-                      </Box>
-                    </Flex>
-                  </>
+                              <ArtworkFilter
+                                filtered_artworks={grid}
+                                columnCount={xs || sm || md ? 2 : 3}
+                                filters={filters.state}
+                              />
+                            </Box>
+                          </Flex>
+                        </>
+                      )
+                    }}
+                  </Responsive>
                 )
               }}
-            </Responsive>
+            </Subscribe>
           )
         }}
-      </Subscribe>
+      </ContextConsumer>
     )
   }
 }
