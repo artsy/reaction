@@ -838,7 +838,7 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "inquireable",
+                  "name": "inquireable_only",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -2843,7 +2843,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -2863,7 +2863,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -2958,7 +2958,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -2978,7 +2978,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -6449,7 +6449,7 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "inquireable",
+                  "name": "inquireable_only",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -8289,7 +8289,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -8309,7 +8309,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -8404,7 +8404,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -8424,7 +8424,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -9534,7 +9534,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -9554,7 +9554,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -9819,7 +9819,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -9839,7 +9839,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -10029,7 +10029,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -10049,7 +10049,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -10072,7 +10072,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -10092,7 +10092,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -10415,7 +10415,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -10435,7 +10435,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -10458,7 +10458,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -10478,7 +10478,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -12640,7 +12640,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -12660,7 +12660,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -12707,7 +12707,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -12727,7 +12727,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -12980,7 +12980,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -13000,7 +13000,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -13458,7 +13458,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -13478,7 +13478,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -13501,7 +13501,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -13521,7 +13521,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -13544,7 +13544,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -13564,7 +13564,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -13707,7 +13707,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -13727,7 +13727,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -13798,7 +13798,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -13818,7 +13818,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -13977,7 +13977,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -13997,7 +13997,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -14313,7 +14313,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -14333,7 +14333,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -15105,7 +15105,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -15125,7 +15125,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -16515,7 +16515,7 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "inquireable",
+                  "name": "inquireable_only",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -16997,7 +16997,7 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "inquireable",
+                  "name": "inquireable_only",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -17488,7 +17488,7 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "inquireable",
+                  "name": "inquireable_only",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -17897,7 +17897,7 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "inquireable",
+                  "name": "inquireable_only",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -19784,7 +19784,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -19804,7 +19804,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -19827,7 +19827,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -19847,7 +19847,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -19870,7 +19870,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -19890,7 +19890,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -20100,7 +20100,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -20120,7 +20120,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -20828,7 +20828,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -20848,7 +20848,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -20871,7 +20871,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -20891,7 +20891,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -20914,7 +20914,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -20934,7 +20934,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -21077,7 +21077,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -21097,7 +21097,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -21168,7 +21168,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -21188,7 +21188,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -21347,7 +21347,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -21367,7 +21367,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -21747,7 +21747,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -21767,7 +21767,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -21790,7 +21790,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -21810,7 +21810,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -22061,7 +22061,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -22081,7 +22081,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -22128,7 +22128,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -22148,7 +22148,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -22401,7 +22401,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -22421,7 +22421,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -22745,7 +22745,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -22765,7 +22765,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -22788,7 +22788,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -22808,7 +22808,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -22831,7 +22831,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -22851,7 +22851,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -22994,7 +22994,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -23014,7 +23014,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -23085,7 +23085,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -23105,7 +23105,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -23264,7 +23264,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -23284,7 +23284,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -23710,7 +23710,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -23730,7 +23730,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -23777,7 +23777,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -23797,7 +23797,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -24050,7 +24050,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -24070,7 +24070,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -24253,7 +24253,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -24273,7 +24273,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -24368,7 +24368,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -24388,7 +24388,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -26488,7 +26488,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -26508,7 +26508,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -26531,7 +26531,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -26551,7 +26551,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -26960,7 +26960,7 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "inquireable",
+                  "name": "inquireable_only",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -27369,7 +27369,7 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "inquireable",
+                  "name": "inquireable_only",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -28044,7 +28044,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -28064,7 +28064,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -28087,7 +28087,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -28107,7 +28107,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -28130,7 +28130,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -28150,7 +28150,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -28293,7 +28293,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -28313,7 +28313,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -28384,7 +28384,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -28404,7 +28404,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -28563,7 +28563,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -28583,7 +28583,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -29592,7 +29592,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -29612,7 +29612,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -31173,7 +31173,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -31193,7 +31193,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -31240,7 +31240,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -31260,7 +31260,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -31283,7 +31283,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -31303,7 +31303,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -31326,7 +31326,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -31346,7 +31346,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -31480,7 +31480,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -31500,7 +31500,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -31523,7 +31523,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -31543,7 +31543,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -31618,7 +31618,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -31638,7 +31638,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -32374,7 +32374,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -32394,7 +32394,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -32501,7 +32501,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -32521,7 +32521,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -32544,7 +32544,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -32564,7 +32564,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -32587,7 +32587,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -32607,7 +32607,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -32630,7 +32630,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -32650,7 +32650,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -33664,7 +33664,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -33684,7 +33684,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -33850,7 +33850,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -33870,7 +33870,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -34649,7 +34649,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -34669,7 +34669,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -34692,7 +34692,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -34712,7 +34712,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -34735,7 +34735,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -34755,7 +34755,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -34778,7 +34778,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -34798,7 +34798,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -35168,7 +35168,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -35188,7 +35188,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -35211,7 +35211,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -35231,7 +35231,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -35407,7 +35407,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -35427,7 +35427,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -36745,7 +36745,7 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "inquireable",
+                  "name": "inquireable_only",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -39544,7 +39544,7 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "inquireable",
+                  "name": "inquireable_only",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -39953,7 +39953,7 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "inquireable",
+                  "name": "inquireable_only",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -41272,7 +41272,7 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "inquireable",
+                  "name": "inquireable_only",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -42428,7 +42428,7 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "inquireable",
+                  "name": "inquireable_only",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -45707,7 +45707,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -45727,7 +45727,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -45774,7 +45774,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -45794,7 +45794,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -45817,7 +45817,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -45837,7 +45837,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -45860,7 +45860,7 @@
               "args": [
                 {
                   "name": "convert_to_utc",
-                  "description": null,
+                  "description": "This arg is deprecated, use timezone instead",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
@@ -45880,7 +45880,7 @@
                 },
                 {
                   "name": "timezone",
-                  "description": "Specify a tz database time zone, otherwise falls back to `X-TIMEZONE` header",
+                  "description": "A tz database time zone, otherwise falls back to `X-TIMEZONE` header",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
