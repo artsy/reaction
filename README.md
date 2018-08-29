@@ -20,6 +20,7 @@
     $ cd reaction
     $ npm install -g yarn
     $ yarn install
+    $ brew install watchman (If you don't already have Homebrew, go here to installation instructions: https://brew.sh/)
     $ cp .env.oss .env
 
 ## Instructions
