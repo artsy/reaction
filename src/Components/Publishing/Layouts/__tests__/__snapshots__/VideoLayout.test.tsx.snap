@@ -1703,6 +1703,7 @@ exports[`Video Layout matches the snapshot 1`] = `
             
           </div>
         </a>
+        
       </div>
       <div
         className="c7"

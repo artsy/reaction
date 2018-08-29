@@ -835,6 +835,7 @@ exports[`renders a series properly 1`] = `
             
           </div>
         </a>
+        
       </div>
       <div
         className="c6"
@@ -2035,7 +2036,7 @@ exports[`renders a sponsored series properly 1`] = `
           target="_blank"
         >
           <img
-            src="https://artsy-media-uploads.s3.amazonaws.com/GEu3iYW6CQhbVxsjpOYwZQ%2FGKL_Wort-Bildmarke_negative_rgb+2.png"
+            src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FGEu3iYW6CQhbVxsjpOYwZQ%252FGKL_Wort-Bildmarke_negative_rgb%2B2.png&width=240&quality=95"
           />
         </a>
       </div>
@@ -2096,7 +2097,7 @@ exports[`renders a sponsored series properly 1`] = `
             target="_blank"
           >
             <img
-              src="https://artsy-media-uploads.s3.amazonaws.com/GEu3iYW6CQhbVxsjpOYwZQ%2FGKL_Wort-Bildmarke_negative_rgb+2.png"
+              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FGEu3iYW6CQhbVxsjpOYwZQ%252FGKL_Wort-Bildmarke_negative_rgb%2B2.png&width=240&quality=95"
             />
           </a>
         </div>
@@ -2320,7 +2321,7 @@ exports[`renders a sponsored series properly 1`] = `
               target="_blank"
             >
               <img
-                src="https://artsy-media-uploads.s3.amazonaws.com/GEu3iYW6CQhbVxsjpOYwZQ%2FGKL_Wort-Bildmarke_negative_rgb+2.png"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FGEu3iYW6CQhbVxsjpOYwZQ%252FGKL_Wort-Bildmarke_negative_rgb%2B2.png&width=240&quality=95"
               />
             </a>
           </div>
@@ -2362,7 +2363,7 @@ exports[`renders a sponsored series properly 1`] = `
               target="_blank"
             >
               <img
-                src="https://artsy-media-uploads.s3.amazonaws.com/GEu3iYW6CQhbVxsjpOYwZQ%2FGKL_Wort-Bildmarke_negative_rgb+2.png"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FGEu3iYW6CQhbVxsjpOYwZQ%252FGKL_Wort-Bildmarke_negative_rgb%2B2.png&width=240&quality=95"
               />
             </a>
           </div>
