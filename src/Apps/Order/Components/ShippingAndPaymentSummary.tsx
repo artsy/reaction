@@ -5,16 +5,20 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { StepSummaryItem } from "Styleguide/Components/StepSummaryItem"
 import { Flex, FlexProps } from "Styleguide/Elements/Flex"
 import { CreditCardDetails } from "./CreditCardDetails"
-import { ShippingAddress } from "./ShippingAddress"
+import { ShippingAddress, ShippingAddressProps } from "./ShippingAddress"
 
 export const ShippingAndPaymentSummary = ({
-  order: { fulfillmentType, lineItems, creditCard, ...address },
+  order: {
+    requestedFulfillment: { __typename, ...address },
+    lineItems,
+    creditCard,
+  },
   ...others
 }: {
   order: ShippingAndPaymentSummary_order
 } & FlexProps) => (
   <Flex flexDirection="column" {...others}>
-    {fulfillmentType === "PICKUP" ? (
+    {__typename === "Pickup" ? (
       <StepSummaryItem
         title={<>Pick up ({lineItems.edges[0].node.artwork.shippingOrigin})</>}
       >
@@ -25,7 +29,7 @@ export const ShippingAndPaymentSummary = ({
       </StepSummaryItem>
     ) : (
       <StepSummaryItem title="Ship to">
-        <ShippingAddress {...address} />
+        <ShippingAddress {...address as ShippingAddressProps} />
       </StepSummaryItem>
     )}
     <StepSummaryItem>
@@ -38,13 +42,20 @@ export const ShippingAndPaymentSummaryFragmentContainer = createFragmentContaine
   ShippingAndPaymentSummary,
   graphql`
     fragment ShippingAndPaymentSummary_order on Order {
-      fulfillmentType
-      shippingName
-      shippingAddressLine1
-      shippingAddressLine2
-      shippingCity
-      shippingPostalCode
-      shippingRegion
+      requestedFulfillment {
+        __typename
+        ... on Pickup {
+          fulfillmentType
+        }
+        ... on Ship {
+          name
+          addressLine1
+          addressLine2
+          city
+          postalCode
+          region
+        }
+      }
       lineItems {
         edges {
           node {

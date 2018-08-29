@@ -1,17 +1,25 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-export type OrderFulfillmentType = "PICKUP" | "SHIP" | "%future added value";
 declare const _ShippingAndPaymentReview_order$ref: unique symbol;
 export type ShippingAndPaymentReview_order$ref = typeof _ShippingAndPaymentReview_order$ref;
 export type ShippingAndPaymentReview_order = {
-    readonly fulfillmentType: OrderFulfillmentType | null;
-    readonly shippingName: string | null;
-    readonly shippingAddressLine1: string | null;
-    readonly shippingAddressLine2: string | null;
-    readonly shippingCity: string | null;
-    readonly shippingPostalCode: string | null;
-    readonly shippingRegion: string | null;
+    readonly requestedFulfillment: ({
+        readonly __typename: "Pickup";
+        readonly fulfillmentType: string | null;
+    } | {
+        readonly __typename: "Ship";
+        readonly name: string | null;
+        readonly addressLine1: string | null;
+        readonly addressLine2: string | null;
+        readonly city: string | null;
+        readonly postalCode: string | null;
+        readonly region: string | null;
+    } | {
+        /*This will never be '% other', but we need some
+        value in case none of the concrete values match.*/
+        readonly __typename: "%other";
+    }) | null;
     readonly lineItems: ({
         readonly edges: ReadonlyArray<({
             readonly node: ({
@@ -55,53 +63,83 @@ return {
   "argumentDefinitions": [],
   "selections": [
     {
-      "kind": "ScalarField",
+      "kind": "LinkedField",
       "alias": null,
-      "name": "fulfillmentType",
+      "name": "requestedFulfillment",
+      "storageKey": null,
       "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "shippingName",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "shippingAddressLine1",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "shippingAddressLine2",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "shippingCity",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "shippingPostalCode",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "shippingRegion",
-      "args": null,
-      "storageKey": null
+      "concreteType": null,
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "__typename",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "InlineFragment",
+          "type": "Ship",
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "name",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "addressLine1",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "addressLine2",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "city",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "postalCode",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "region",
+              "args": null,
+              "storageKey": null
+            }
+          ]
+        },
+        {
+          "kind": "InlineFragment",
+          "type": "Pickup",
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "fulfillmentType",
+              "args": null,
+              "storageKey": null
+            }
+          ]
+        }
+      ]
     },
     {
       "kind": "LinkedField",
@@ -200,5 +238,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '2943e42905f4f5510252dc7f4217fea2';
+(node as any).hash = 'ff8b0587a4fd62eac9130a404316ab12';
 export default node;

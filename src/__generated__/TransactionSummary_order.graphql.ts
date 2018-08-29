@@ -8,8 +8,8 @@ export type TransactionSummary_order = {
     readonly taxTotal: string | null;
     readonly itemsTotal: string | null;
     readonly buyerTotal: string | null;
-    readonly partner: ({
-        readonly name: string | null;
+    readonly seller: ({
+        readonly name?: string | null;
     }) | null;
     readonly lineItems: ({
         readonly edges: ReadonlyArray<({
@@ -86,20 +86,26 @@ return {
     {
       "kind": "LinkedField",
       "alias": null,
-      "name": "partner",
+      "name": "seller",
       "storageKey": null,
       "args": null,
-      "concreteType": "Partner",
+      "concreteType": null,
       "plural": false,
       "selections": [
+        v0,
         {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "name",
-          "args": null,
-          "storageKey": null
-        },
-        v0
+          "kind": "InlineFragment",
+          "type": "Partner",
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "name",
+              "args": null,
+              "storageKey": null
+            }
+          ]
+        }
       ]
     },
     {
@@ -216,5 +222,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'df6d9577c69cc1ffa4a5bb9ec4ae26af';
+(node as any).hash = 'b1bca64da23052b3b24693f5869d738e';
 export default node;
