@@ -2,34 +2,27 @@ import React from "react"
 
 import { Serif } from "@artsy/palette"
 
-interface ShippingAddressProps {
-  shippingName: string
-  shippingAddressLine1: string
-  shippingAddressLine2: string | null
-  shippingCity: string
-  shippingPostalCode: string
-  shippingRegion: string
+export interface ShippingAddressProps {
+  name: string
+  addressLine1: string
+  addressLine2: string | null
+  city: string
+  postalCode: string
+  region: string
 }
 
 export const ShippingAddress = ({
-  shippingName,
-  shippingAddressLine1,
-  shippingAddressLine2,
-  shippingCity,
-  shippingPostalCode,
-  shippingRegion,
+  name,
+  addressLine1,
+  addressLine2,
+  city,
+  postalCode,
+  region,
 }: ShippingAddressProps) => {
-  const cityLine =
-    shippingCity + (shippingPostalCode ? ` ${shippingPostalCode}` : "")
+  const cityLine = city + (postalCode ? ` ${postalCode}` : "")
   return (
     <Serif size="3t" style={{ whiteSpace: "pre-wrap" }}>
-      {[
-        shippingName,
-        shippingAddressLine1,
-        shippingAddressLine2,
-        cityLine,
-        shippingRegion,
-      ]
+      {[name, addressLine1, addressLine2, cityLine, region]
         .filter(Boolean)
         .join("\n")}
     </Serif>

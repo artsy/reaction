@@ -5,19 +5,11 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { StepSummaryItem } from "Styleguide/Components/StepSummaryItem"
 import { Flex, FlexProps } from "Styleguide/Elements/Flex"
 import { CreditCardDetails } from "./CreditCardDetails"
-import { ShippingAddress } from "./ShippingAddress"
+import { ShippingAddress, ShippingAddressProps } from "./ShippingAddress"
 
 export const ShippingAndPaymentReview = ({
   order: {
-    requestedFulfillment: {
-      fulfillmentType,
-      name,
-      addressLine1,
-      addressLine2,
-      city,
-      postalCode,
-      region,
-    },
+    requestedFulfillment: { fulfillmentType, ...address },
     lineItems,
     creditCard,
   },
@@ -42,14 +34,7 @@ export const ShippingAndPaymentReview = ({
       </StepSummaryItem>
     ) : (
       <StepSummaryItem onChange={onChangeShipping} title="Shipping address">
-        <ShippingAddress
-          shippingName={name}
-          shippingAddressLine1={addressLine1}
-          shippingAddressLine2={addressLine2}
-          shippingCity={city}
-          shippingPostalCode={postalCode}
-          shippingRegion={region}
-        />
+        <ShippingAddress {...address as ShippingAddressProps} />
       </StepSummaryItem>
     )}
     <StepSummaryItem onChange={onChangePayment} title="Payment method">
