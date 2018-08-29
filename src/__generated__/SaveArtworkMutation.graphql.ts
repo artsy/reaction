@@ -12,10 +12,15 @@ export type SaveArtworkMutationVariables = {
 export type SaveArtworkMutationResponse = {
     readonly saveArtwork: ({
         readonly artwork: ({
+            readonly __id: string;
             readonly id: string;
             readonly is_saved: boolean | null;
         }) | null;
     }) | null;
+};
+export type SaveArtworkMutation = {
+    readonly response: SaveArtworkMutationResponse;
+    readonly variables: SaveArtworkMutationVariables;
 };
 
 
@@ -26,9 +31,9 @@ mutation SaveArtworkMutation(
 ) {
   saveArtwork(input: $input) {
     artwork {
+      __id
       id
       is_saved
-      __id
     }
   }
 }
@@ -72,6 +77,13 @@ v1 = [
           {
             "kind": "ScalarField",
             "alias": null,
+            "name": "__id",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
             "name": "id",
             "args": null,
             "storageKey": null
@@ -80,13 +92,6 @@ v1 = [
             "kind": "ScalarField",
             "alias": null,
             "name": "is_saved",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "__id",
             "args": null,
             "storageKey": null
           }
@@ -100,7 +105,7 @@ return {
   "operationKind": "mutation",
   "name": "SaveArtworkMutation",
   "id": null,
-  "text": "mutation SaveArtworkMutation(\n  $input: SaveArtworkInput!\n) {\n  saveArtwork(input: $input) {\n    artwork {\n      id\n      is_saved\n      __id\n    }\n  }\n}\n",
+  "text": "mutation SaveArtworkMutation(\n  $input: SaveArtworkInput!\n) {\n  saveArtwork(input: $input) {\n    artwork {\n      __id\n      id\n      is_saved\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -118,5 +123,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'b7e3f17c96d3173b62d2ece993864fe1';
+(node as any).hash = 'b993cf24b6d048abd7c9e33bd30dcc2a';
 export default node;

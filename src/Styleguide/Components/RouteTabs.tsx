@@ -1,14 +1,14 @@
 import { color, Sans, space } from "@artsy/palette"
+import { PreloadLink, PreloadLinkProps } from "Artsy/Router"
 import React from "react"
-import { PreloadLink, PreloadLinkProps } from "Router/PreloadLink"
 import styled from "styled-components"
 import { Flex } from "Styleguide/Elements/Flex"
 import { styles } from "./Tabs"
 
-export const RouteTabs: any /* FIXME */ = styled(Flex)`
+export const RouteTabs = styled(Flex)`
   ${styles.tabsContainer};
 
-  ${(props: any) => {
+  ${(props: { size: string }) => {
     if (props.size === "xs") {
       return `
         -webkit-overflow-scrolling: touch;
@@ -31,7 +31,7 @@ export const RouteTabs: any /* FIXME */ = styled(Flex)`
   }
 `
 
-export const RouteTab: React.SFC<PreloadLinkProps> = ({
+export const RouteTab: React.SFC<Partial<PreloadLinkProps>> = ({
   children,
   ...props
 }) => {

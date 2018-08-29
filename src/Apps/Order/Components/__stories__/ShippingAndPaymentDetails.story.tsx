@@ -1,19 +1,25 @@
-import { ShippingAndPaymentDetails_order } from "__generated__/ShippingAndPaymentDetails_order.graphql"
+import { ShippingAndPaymentReview_order } from "__generated__/ShippingAndPaymentReview_order.graphql"
+import { ShippingAndPaymentSummary_order } from "__generated__/ShippingAndPaymentSummary_order.graphql"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Section } from "Styleguide/Utils/Section"
-import { ShippingAndPaymentDetails } from "../ShippingAndPaymentDetails"
+import { CreditCardDetails } from "../CreditCardDetails"
+import { ShippingAndPaymentReview } from "../ShippingAndPaymentReview"
+import { ShippingAndPaymentSummary } from "../ShippingAndPaymentSummary"
 
-const order: ShippingAndPaymentDetails_order = {
+const order: ShippingAndPaymentReview_order &
+  ShippingAndPaymentSummary_order = {
   " $refType": null,
-  fulfillmentType: "SHIP",
-  shippingName: "Joelle Van Dyne",
-  shippingAddressLine1: "23 41st st",
-  shippingAddressLine2: null,
-  shippingCity: "New York",
-  shippingPostalCode: "90210",
-  shippingRegion: "US",
+  requestedFulfillment: {
+    __typename: "Ship",
+    name: "Joelle Van Dyne",
+    addressLine1: "23 41st st",
+    addressLine2: null,
+    city: "New York",
+    postalCode: "90210",
+    region: "US",
+  },
   lineItems: {
     edges: [{ node: { artwork: { shippingOrigin: "Jersey City, NJ" } } }],
   },
@@ -26,73 +32,67 @@ const order: ShippingAndPaymentDetails_order = {
 }
 
 storiesOf("Apps/Order Page/Components", module).add(
-  "ShippingAndPaymentDetails",
+  "ShippingAndPaymentSummary",
   () => {
     return (
       <React.Fragment>
-        <Section title="Shipping and Payment details (mastercard)">
+        <Section title="Shipping and Payment Summary">
+          <h4>Delivery</h4>
           <Flex flexDirection="column" width={300}>
-            <ShippingAndPaymentDetails
+            <ShippingAndPaymentSummary order={order} />
+          </Flex>
+          <h4>Pickup</h4>
+          <Flex flexDirection="column" width={300}>
+            <ShippingAndPaymentSummary
               order={{
                 ...order,
-                creditCard: { ...order.creditCard, brand: "Mastercard" },
+                requestedFulfillment: {
+                  __typename: "Pickup",
+                  fulfillmentType: "pickup",
+                },
               }}
             />
           </Flex>
         </Section>
-        <Section title="Shipping and Payment details (visa)">
+        <Section title="Shipping and Payment Review">
+          <h4>Delivery</h4>
           <Flex flexDirection="column" width={300}>
-            <ShippingAndPaymentDetails order={order} />
+            <ShippingAndPaymentReview
+              onChangePayment={() => alert("clicked")}
+              onChangeShipping={() => alert("clicked")}
+              order={order}
+            />
           </Flex>
-        </Section>
-        <Section title="Shipping and Payment details (discover)">
+          <h4>Pickup</h4>
           <Flex flexDirection="column" width={300}>
-            <ShippingAndPaymentDetails
+            <ShippingAndPaymentReview
+              onChangePayment={() => alert("clicked")}
+              onChangeShipping={() => alert("clicked")}
               order={{
                 ...order,
-                creditCard: { ...order.creditCard, brand: "Discover" },
+                requestedFulfillment: {
+                  __typename: "Pickup",
+                  fulfillmentType: "pickup",
+                },
               }}
             />
           </Flex>
         </Section>
-        <Section title="Shipping and Payment details (amex)">
-          <Flex flexDirection="column" width={300}>
-            <ShippingAndPaymentDetails
-              order={{
-                ...order,
-                creditCard: { ...order.creditCard, brand: "American Express" },
-              }}
-            />
+        <Section title="Credit card details">
+          <Flex flexDirection="column" width={300} mb={2}>
+            <CreditCardDetails {...order.creditCard} brand="Visa" />
           </Flex>
-        </Section>
-        <Section title="Shipping and Payment details (Unknown)">
-          <Flex flexDirection="column" width={300}>
-            <ShippingAndPaymentDetails
-              order={{
-                ...order,
-                creditCard: { ...order.creditCard, brand: "Unknown" },
-              }}
-            />
+          <Flex flexDirection="column" width={300} mb={2}>
+            <CreditCardDetails {...order.creditCard} brand="Mastercard" />
           </Flex>
-        </Section>
-        <Section title="Shipping and Payment details (Anything else)">
-          <Flex flexDirection="column" width={300}>
-            <ShippingAndPaymentDetails
-              order={{
-                ...order,
-                creditCard: { ...order.creditCard, brand: "blasdijf22023" },
-              }}
-            />
+          <Flex flexDirection="column" width={300} mb={2}>
+            <CreditCardDetails {...order.creditCard} brand="Discover" />
           </Flex>
-        </Section>
-        <Section title="Shipping and Payment details (pickup, visa)">
+          <Flex flexDirection="column" width={300} mb={2}>
+            <CreditCardDetails {...order.creditCard} brand="American Express" />
+          </Flex>
           <Flex flexDirection="column" width={300}>
-            <ShippingAndPaymentDetails
-              order={{
-                ...order,
-                fulfillmentType: "PICKUP",
-              }}
-            />
+            <CreditCardDetails {...order.creditCard} brand="unknown" />
           </Flex>
         </Section>
       </React.Fragment>

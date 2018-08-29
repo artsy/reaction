@@ -1,3 +1,4 @@
+import { mockTracking } from "Artsy/Analytics"
 import {
   FeatureBasicArticle,
   FeatureBasicVideoArticle,
@@ -8,7 +9,6 @@ import { mount } from "enzyme"
 import "jest-styled-components"
 import { cloneDeep } from "lodash"
 import React from "react"
-import { mockTracking } from "../../../../../../Analytics"
 import { FeatureBasicHeader, VideoContainer } from "../FeatureBasicHeader"
 import { FeatureInnerContent } from "../FeatureInnerContent"
 
@@ -19,24 +19,22 @@ describe("FeatureBasicHeader", () => {
     return mount(<FeatureBasicHeader {...props} />)
   }
 
-  let props
+  let testProps
   beforeEach(() => {
-    props = {
+    testProps = {
       article: cloneDeep(FeatureBasicArticle),
-      tracking: {
-        trackEvent: jest.fn(),
-      },
+      tracking: { trackEvent: jest.fn() },
     }
   })
 
   it("Renders FeatureInnerContent", () => {
-    const component = getWrapper(props)
+    const component = getWrapper(testProps)
     expect(component.find(FeatureInnerContent)).toHaveLength(1)
   })
 
   it("Renders video assets", () => {
-    props.article = FeatureBasicVideoArticle
-    const component = getWrapper(props)
+    testProps.article = FeatureBasicVideoArticle
+    const component = getWrapper(testProps)
     expect(component.find(Video)).toHaveLength(1)
   })
 
@@ -57,8 +55,8 @@ describe("FeatureBasicHeader", () => {
   })
 
   it("Renders editImage", () => {
-    props.editImage = EditableChild("Image")
-    const component = getWrapper(props)
+    testProps.editImage = EditableChild("Image")
+    const component = getWrapper(testProps)
     expect(component.text()).toMatch("Child Image")
   })
 })

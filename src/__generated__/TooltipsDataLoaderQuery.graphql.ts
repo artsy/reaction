@@ -22,6 +22,10 @@ export type TooltipsDataLoaderQueryResponse = {
         readonly " $fragmentRefs": GeneToolTip_gene$ref & FollowGeneButton_gene$ref;
     }) | null> | null;
 };
+export type TooltipsDataLoaderQuery = {
+    readonly response: TooltipsDataLoaderQueryResponse;
+    readonly variables: TooltipsDataLoaderQueryVariables;
+};
 
 
 

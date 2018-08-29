@@ -10,6 +10,10 @@ export type routes_CVQueryResponse = {
         readonly " $fragmentRefs": CV_viewer$ref;
     }) | null;
 };
+export type routes_CVQuery = {
+    readonly response: routes_CVQueryResponse;
+    readonly variables: routes_CVQueryVariables;
+};
 
 
 

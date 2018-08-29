@@ -1,5 +1,5 @@
 import React from "react"
-import { ArtworkGridExample } from "Styleguide/Components/ArtworkGridExample"
+import { ArtworkGridExample } from "Styleguide/Components"
 import { Responsive } from "Utils/Responsive"
 
 export const FullArtworkGrid = props => (

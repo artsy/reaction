@@ -10,6 +10,10 @@ export type ArtistFollowQueryResponse = {
         readonly " $fragmentRefs": Follow_artist$ref;
     }) | null;
 };
+export type ArtistFollowQuery = {
+    readonly response: ArtistFollowQueryResponse;
+    readonly variables: ArtistFollowQueryVariables;
+};
 
 
 

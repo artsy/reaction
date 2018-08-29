@@ -2,7 +2,7 @@ import { ArtistArticles_artist } from "__generated__/ArtistArticles_artist.graph
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import styled from "styled-components"
-import { PaginationFragmentContainer as Pagination } from "Styleguide/Components/Pagination"
+import { PaginationFragmentContainer as Pagination } from "Styleguide/Components"
 import { Box } from "Styleguide/Elements/Box"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { ArticleItem } from "./ArtistArticle"

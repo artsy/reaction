@@ -17,6 +17,10 @@ export type ArtworkFilterRefetchQueryResponse = {
         readonly " $fragmentRefs": ArtworkFilterRefetch_artist$ref;
     }) | null;
 };
+export type ArtworkFilterRefetchQuery = {
+    readonly response: ArtworkFilterRefetchQueryResponse;
+    readonly variables: ArtworkFilterRefetchQueryVariables;
+};
 
 
 

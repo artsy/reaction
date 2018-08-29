@@ -12,6 +12,11 @@ export type WorksForYouArtist_viewer = {
             readonly artworks: any | null;
             readonly for_sale_artworks: any | null;
         }) | null;
+        readonly image: ({
+            readonly resized: ({
+                readonly url: string | null;
+            }) | null;
+        }) | null;
         readonly artworks_connection: ({
             readonly pageInfo: {
                 readonly hasNextPage: boolean;
@@ -141,6 +146,48 @@ return {
         },
         {
           "kind": "LinkedField",
+          "alias": null,
+          "name": "image",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "Image",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "resized",
+              "storageKey": "resized(height:80,width:80)",
+              "args": [
+                {
+                  "kind": "Literal",
+                  "name": "height",
+                  "value": 80,
+                  "type": "Int"
+                },
+                {
+                  "kind": "Literal",
+                  "name": "width",
+                  "value": 80,
+                  "type": "Int"
+                }
+              ],
+              "concreteType": "ResizedImageUrl",
+              "plural": false,
+              "selections": [
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "url",
+                  "args": null,
+                  "storageKey": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "LinkedField",
           "alias": "artworks_connection",
           "name": "__WorksForYouArtist_artworks_connection_connection",
           "storageKey": null,
@@ -236,5 +283,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '0ca3d030b86fb7295ffea5eb9af78941';
+(node as any).hash = '6c20fc3ca786df452d88571191e038f4';
 export default node;

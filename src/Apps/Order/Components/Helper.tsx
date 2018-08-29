@@ -1,9 +1,8 @@
 import { Sans } from "@artsy/palette"
+import { ContextConsumer } from "Artsy/Router"
 import React from "react"
-import { Spacer } from "Styleguide/Elements/Spacer"
-
-import { WithMediator } from "Router/WithMediator"
 import styled from "styled-components"
+import { Spacer } from "Styleguide/Elements/Spacer"
 
 const Link = styled.a`
   text-decoration: underline;
@@ -14,8 +13,8 @@ interface HelperProps {
 }
 
 export const Helper: React.SFC<HelperProps> = ({ artworkId }) => (
-  <WithMediator>
-    {mediator => (
+  <ContextConsumer>
+    {({ mediator }) => (
       <>
         <Sans size="2" color="black60">
           Have a question?{" "}
@@ -36,5 +35,5 @@ export const Helper: React.SFC<HelperProps> = ({ artworkId }) => (
         <Spacer mb={2} />
       </>
     )}
-  </WithMediator>
+  </ContextConsumer>
 )

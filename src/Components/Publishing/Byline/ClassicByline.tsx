@@ -35,7 +35,7 @@ export const ClassicByline: React.SFC<ClassicBylineProps> = props => {
 
 const TextSm = styled.div.attrs<{ color?: string }>({})`
   ${avantgarde("s11")}
-  color: ${({ color }) => (color ? color : "black")};
+  color: ${props => (props.color ? props.color : "black")};
 `
 
 const ClassicBylineContainer = styled.div`

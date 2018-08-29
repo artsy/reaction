@@ -22,22 +22,17 @@ describe("Shipping", () => {
     )
   }
 
-  let props: ShippingProps
+  let testProps: ShippingProps
   beforeEach(() => {
-    props = {
-      order: {
-        ...UntouchedOrder,
-        id: "1234",
-      },
-      relay: {
-        environment: {},
-      } as RelayProp,
+    testProps = {
+      order: { ...UntouchedOrder, id: "1234" },
+      relay: { environment: {} } as RelayProp,
       router: { push: jest.fn() },
     } as any
   })
 
   it("commits the mutation with the orderId", () => {
-    const component = getWrapper(props)
+    const component = getWrapper(testProps)
     const mockCommitMutation = commitMutation as jest.Mock<any>
     mockCommitMutation.mockImplementationOnce((_environment, config) => {
       expect(config.variables.input.orderId).toBe("1234")
@@ -49,14 +44,14 @@ describe("Shipping", () => {
   })
 
   it("commits the mutation with shipping option", () => {
-    const component = getWrapper(props)
+    const component = getWrapper(testProps)
     component
       .find("input")
       .last()
       .simulate("change", { target: { value: "New Brunswick" } })
     const mockCommitMutation = commitMutation as jest.Mock<any>
     mockCommitMutation.mockImplementationOnce((_environment, config) => {
-      expect(config.variables.input.shippingRegion).toBe("New Brunswick")
+      expect(config.variables.input.shipping.region).toBe("New Brunswick")
     })
 
     component.find(Button).simulate("click")
@@ -65,7 +60,7 @@ describe("Shipping", () => {
   })
 
   it("commits the mutation with pickup option", () => {
-    const component = getWrapper(props)
+    const component = getWrapper(testProps)
     component
       .find(Radio)
       .last()
@@ -82,7 +77,7 @@ describe("Shipping", () => {
 
   describe("mutation", () => {
     it("routes to payment screen after mutation completes", () => {
-      const component = getWrapper(props)
+      const component = getWrapper(testProps)
       const mockCommitMutation = commitMutation as jest.Mock<any>
       mockCommitMutation.mockImplementationOnce(
         (_environment, { onCompleted }) => {
@@ -92,11 +87,11 @@ describe("Shipping", () => {
 
       component.find(Button).simulate("click")
 
-      expect(props.router.push).toHaveBeenCalledWith("/order2/1234/payment")
+      expect(testProps.router.push).toHaveBeenCalledWith("/order2/1234/payment")
     })
 
     it("shows the button spinner while loading the mutation", () => {
-      const component = getWrapper(props)
+      const component = getWrapper(testProps)
       const mockCommitMutation = commitMutation as jest.Mock<any>
       mockCommitMutation.mockImplementationOnce(() => {
         const buttonProps = component

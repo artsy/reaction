@@ -1,5 +1,5 @@
 import React from "react"
-import { Step, Stepper } from "Styleguide/Components/Stepper"
+import { Step, Stepper } from "Styleguide/Components"
 
 const steps = ["Shipping", "Payment", "Review"]
 

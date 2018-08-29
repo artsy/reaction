@@ -1,19 +1,20 @@
 import { ArtistApp_artist } from "__generated__/ArtistApp_artist.graphql"
-import { track } from "Analytics"
-import * as Schema from "Analytics/Schema"
 import { NavigationTabsFragmentContainer as NavigationTabs } from "Apps/Artist/Components/NavigationTabs"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
+import { PreloadLinkState } from "Artsy/Router/Components/PreloadLink"
 import React from "react"
 import { LazyLoadComponent } from "react-lazy-load-image-component"
 import { createFragmentContainer, graphql } from "react-relay"
-import { PreloadLinkState } from "Router/state"
-import { Footer } from "Styleguide/Components/Footer"
-import { RecentlyViewedQueryRenderer as RecentlyViewed } from "Styleguide/Components/RecentlyViewed"
-import { Col, Row } from "Styleguide/Elements/Grid"
-import { Separator } from "Styleguide/Elements/Separator"
-import { Spacer } from "Styleguide/Elements/Spacer"
+import { Col, Row, Separator, Spacer } from "Styleguide/Elements"
 import { Subscribe } from "unstated"
 import { ArtistHeaderFragmentContainer as ArtistHeader } from "./Components/ArtistHeader"
 import { LoadingArea } from "./Components/LoadingArea"
+
+import {
+  Footer,
+  RecentlyViewedQueryRenderer as RecentlyViewed,
+} from "Styleguide/Components"
 
 export interface ArtistAppProps {
   artist: ArtistApp_artist

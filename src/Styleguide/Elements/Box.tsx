@@ -36,11 +36,12 @@ import {
 import { Flex, FlexProps } from "./Flex"
 
 export interface BorderBoxProps
-  extends FlexProps,
-    SpaceProps,
+  extends BackgroundProps,
+    FlexProps,
+    HeightProps,
     MaxWidthProps,
-    WidthProps,
-    HeightProps {
+    SpaceProps,
+    WidthProps {
   hover?: boolean
 }
 
@@ -48,10 +49,11 @@ export const BorderBox = styled(Flex).attrs<BorderBoxProps>({})`
   border: 1px solid ${color("black10")};
   border-radius: 2px;
   padding: ${space(2)}px;
-  ${styledSpace};
-  ${maxWidth};
-  ${width};
+  ${background};
   ${height};
+  ${maxWidth};
+  ${styledSpace};
+  ${width};
   ${({ hover }) =>
     hover &&
     css`
@@ -79,36 +81,37 @@ export const StackableBorderBox = styled(BorderBox)`
 `
 
 export interface BoxProps
-  extends DisplayProps,
-    SpaceProps,
-    WidthProps,
-    MaxWidthProps,
-    HeightProps,
+  extends BackgroundProps,
+    BottomProps,
+    BottomProps,
     ColorProps,
-    TextAlignProps,
-    PositionProps,
-    TopProps,
-    BottomProps,
+    DisplayProps,
+    HeightProps,
     LeftProps,
+    LeftProps,
+    MaxWidthProps,
+    PositionProps,
+    PositionProps,
     RightProps,
-    LeftProps,
-    BottomProps,
-    PositionProps,
-    BackgroundProps,
+    SpaceProps,
+    TextAlignProps,
+    TopProps,
+    WidthProps,
     ZIndexProps {}
+
 export const Box = styled.div.attrs<BoxProps>({})`
-  ${styledSpace};
-  ${display};
-  ${width};
-  ${height};
-  ${position};
-  ${top};
-  ${right};
-  ${bottom};
-  ${left};
-  ${styledColor};
-  ${textAlign};
-  ${maxWidth};
   ${background};
+  ${bottom};
+  ${display};
+  ${height};
+  ${left};
+  ${maxWidth};
+  ${position};
+  ${right};
+  ${styledColor};
+  ${styledSpace};
+  ${textAlign};
+  ${top};
+  ${width};
   ${zIndex};
 `

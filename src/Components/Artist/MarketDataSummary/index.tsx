@@ -1,7 +1,8 @@
 import React from "react"
 import { graphql, QueryRenderer } from "react-relay"
 
-import { ContextConsumer, ContextProps } from "../../Artsy"
+import { MarketDataSummaryContentsQuery } from "__generated__/MarketDataSummaryContentsQuery.graphql"
+import { ContextProps, withContext } from "Artsy/SystemContext"
 import MarketDataSummary from "./MarketDataSummary"
 
 export interface Props extends ContextProps {
@@ -12,7 +13,7 @@ class MarketDataSummaryContents extends React.Component<Props, null> {
   render() {
     const { artistID, relayEnvironment } = this.props
     return (
-      <QueryRenderer
+      <QueryRenderer<MarketDataSummaryContentsQuery>
         environment={relayEnvironment}
         query={graphql`
           query MarketDataSummaryContentsQuery($artistID: String!) {
@@ -34,4 +35,4 @@ class MarketDataSummaryContents extends React.Component<Props, null> {
   }
 }
 
-export const Contents = ContextConsumer(MarketDataSummaryContents)
+export const Contents = withContext(MarketDataSummaryContents)

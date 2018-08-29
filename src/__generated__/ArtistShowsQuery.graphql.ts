@@ -17,6 +17,10 @@ export type ArtistShowsQueryResponse = {
         readonly " $fragmentRefs": ArtistShows_artist$ref;
     }) | null;
 };
+export type ArtistShowsQuery = {
+    readonly response: ArtistShowsQueryResponse;
+    readonly variables: ArtistShowsQueryVariables;
+};
 
 
 

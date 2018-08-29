@@ -1,6 +1,8 @@
 import { Save_artwork } from "__generated__/Save_artwork.graphql"
-import { track } from "Analytics"
-import * as Schema from "Analytics/Schema"
+import { SaveArtworkMutation } from "__generated__/SaveArtworkMutation.graphql"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
+import * as Artsy from "Artsy/SystemContext"
 import { isNull } from "lodash"
 import React from "react"
 import {
@@ -12,7 +14,6 @@ import {
 import * as RelayRuntimeTypes from "relay-runtime"
 import styled from "styled-components"
 import colors from "../../Assets/Colors"
-import * as Artsy from "../../Components/Artsy"
 import Icon from "../Icon"
 
 const SIZE = 40
@@ -66,16 +67,10 @@ class SaveButtonContainer extends React.Component<Props, State> {
       } as Schema.Old)
   )
   handleSave() {
-    const {
-      currentUser,
-      artwork,
-      relay,
-      relayEnvironment,
-      useRelay,
-    } = this.props
+    const { user, artwork, relay, relayEnvironment, useRelay } = this.props
     const environment = (relay && relay.environment) || relayEnvironment
 
-    if (environment && currentUser && currentUser.id) {
+    if (environment && user && user.id) {
       // Optimistic update for environments that don't have typical access to
       // Relay, e.g., where new ArtworkGrids are used in old code via Stitch. Note
       // that the prop `useRelay` refers to outer HOC wrappers. In cases where
@@ -94,11 +89,12 @@ class SaveButtonContainer extends React.Component<Props, State> {
         })
       }
 
-      commitMutation(environment, {
+      commitMutation<SaveArtworkMutation>(environment, {
         mutation: graphql`
           mutation SaveArtworkMutation($input: SaveArtworkInput!) {
             saveArtwork(input: $input) {
               artwork {
+                __id
                 id
                 is_saved
               }
@@ -115,6 +111,7 @@ class SaveButtonContainer extends React.Component<Props, State> {
           saveArtwork: {
             artwork: {
               __id: artwork.__id,
+              id: artwork.id,
               is_saved: !this.isSaved,
             },
           },
@@ -213,7 +210,7 @@ export const SaveButton = styled(SaveButtonContainer)`
 `
 
 export default createFragmentContainer(
-  Artsy.ContextConsumer(SaveButton),
+  Artsy.withContext(SaveButton),
   graphql`
     fragment Save_artwork on Artwork {
       __id

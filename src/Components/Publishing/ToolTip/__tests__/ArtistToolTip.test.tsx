@@ -1,9 +1,9 @@
+import { ContextProvider } from "Artsy"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import PropTypes from "prop-types"
 import React from "react"
 import track from "react-tracking"
-import { ContextProvider } from "../../../Artsy"
 import { FollowArtistButton } from "../../../FollowButton/FollowArtistButton"
 import { Artists } from "../../Fixtures/Components"
 import { wrapperWithContext } from "../../Fixtures/Helpers"
@@ -22,31 +22,29 @@ describe("ArtistToolTip", () => {
         {
           tooltipsData: PropTypes.object,
           onOpenAuthModal: PropTypes.func,
-          currentUser: PropTypes.object,
+          user: PropTypes.object,
         },
-        <ContextProvider currentUser={(context as any).currentUser}>
+        <ContextProvider user={(context as any).user}>
           <ArtistToolTip {...props} />
         </ContextProvider>
       )
     )
   }
 
-  let props
+  let testProps
   beforeEach(() => {
-    props = {
-      tracking: {
-        trackEvent: jest.fn(),
-      },
+    testProps = {
+      tracking: { trackEvent: jest.fn() },
       artist: Artists[0].artist,
     }
   })
 
   it("Renders artist data", () => {
-    const component = getWrapper(props)
+    const component = getWrapper(testProps)
 
-    expect(component.text()).toMatch(props.artist.name)
+    expect(component.text()).toMatch(testProps.artist.name)
     expect(component.text()).toMatch(
-      props.artist.formatted_nationality_and_birthday
+      testProps.artist.formatted_nationality_and_birthday
     )
     expect(component.text()).toMatch(
       "Nick Mauss makes drawings, prints, and paintings that often"
@@ -58,8 +56,8 @@ describe("ArtistToolTip", () => {
   })
 
   it("Renders genes if no bio present", () => {
-    delete props.artist.blurb
-    const component = getWrapper(props)
+    delete testProps.artist.blurb
+    const component = getWrapper(testProps)
 
     expect(component.text()).toMatch(
       "United States, Abstract Art, 21st Century"
@@ -67,12 +65,12 @@ describe("ArtistToolTip", () => {
   })
 
   it("Tracks clicks to artist page", () => {
-    const component = getWrapper(props)
+    const component = getWrapper(testProps)
     component
       .find(TitleDate)
       .at(0)
       .simulate("click")
-    const trackingData = props.tracking.trackEvent.mock.calls[0][0]
+    const trackingData = testProps.tracking.trackEvent.mock.calls[0][0]
 
     expect(trackingData.action).toBe("Click")
     expect(trackingData.flow).toBe("tooltip")
@@ -86,7 +84,7 @@ describe("ArtistToolTip", () => {
       const artist = Artists[0].artist
       const context = {
         onOpenAuthModal: jest.fn(),
-        currentUser: null,
+        user: null,
       }
       const component = getWrapper({ artist }, context)
       component.find(FollowArtistButton).simulate("click")

@@ -1,9 +1,9 @@
+import { ContextProvider } from "Artsy/SystemContext"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import { defer } from "lodash"
 import PropTypes from "prop-types"
 import React from "react"
-import { ContextProvider } from "../../../Artsy"
 import { Artists, Genes } from "../../Fixtures/Components"
 import { wrapperWithContext } from "../../Fixtures/Helpers"
 import {
@@ -42,7 +42,7 @@ describe("LinkWithTooltip", () => {
     )
   }
 
-  let context = {
+  const testContext = {
     activeTooltip: null,
     tooltipsData: {
       artists: { "nick-mauss": Artists[0].artist },
@@ -51,20 +51,18 @@ describe("LinkWithTooltip", () => {
     onTriggerToolTip: jest.fn(),
   }
 
-  let props
+  let testProps
   let position
   const window = {
     innerHeight: 800,
   }
 
   beforeEach(() => {
-    context.onTriggerToolTip = jest.fn()
-    props = {
+    testContext.onTriggerToolTip = jest.fn()
+    testProps = {
       url: "https://www.artsy.net/artist/nick-mauss",
       text: "Nick Mauss",
-      tracking: {
-        trackEvent: jest.fn(),
-      },
+      tracking: { trackEvent: jest.fn() },
     }
 
     position = {
@@ -80,13 +78,13 @@ describe("LinkWithTooltip", () => {
   })
 
   it("Renders correctly", () => {
-    const wrapper = getWrapper(context, props)
+    const wrapper = getWrapper(testContext, testProps)
     expect(wrapper.text()).toBe("Nick Mauss")
     expect(wrapper.find(ToolTip).exists()).toBeFalsy()
   })
 
   it("#urlToEntityType extracts entity type from URL", () => {
-    const wrapper = getWrapper(context, props)
+    const wrapper = getWrapper(testContext, testProps)
       .childAt(0)
       .childAt(0)
       .instance()
@@ -98,38 +96,38 @@ describe("LinkWithTooltip", () => {
   })
 
   it("#entityTypeToEntity correctly gets data from tooltips context", () => {
-    const wrapper = getWrapper(context, props)
+    const wrapper = getWrapper(testContext, testProps)
       .childAt(0)
       .childAt(0)
       .instance()
 
     expect(wrapper.entityTypeToEntity()).toEqual({
       entityType: "artist",
-      entity: context.tooltipsData.artists["nick-mauss"],
+      entity: testContext.tooltipsData.artists["nick-mauss"],
     })
   })
 
   it("Displays a tooltip if context.activeToolTip is current item", () => {
-    context.activeToolTip = "nick-mauss"
-    const wrapper = getWrapper(context, props)
+    testContext.activeToolTip = "nick-mauss"
+    const wrapper = getWrapper(testContext, testProps)
 
     expect(wrapper.find(ToolTip).exists()).toBe(true)
     expect(wrapper.text()).toMatch("American, b. 1980")
   })
 
   it("Calls context.onTriggerToolTip on hover", () => {
-    context.activeToolTip = null
-    const wrapper = getWrapper(context, props)
+    testContext.activeToolTip = null
+    const wrapper = getWrapper(testContext, testProps)
     wrapper.find(Link).simulate("mouseEnter")
 
-    expect(context.onTriggerToolTip.mock.calls[0][0]).toBe("nick-mauss")
+    expect(testContext.onTriggerToolTip.mock.calls[0][0]).toBe("nick-mauss")
   })
 
   it("Tracks hover events", () => {
-    context.activeToolTip = null
-    const wrapper = getWrapper(context, props)
+    testContext.activeToolTip = null
+    const wrapper = getWrapper(testContext, testProps)
     wrapper.find(Link).simulate("mouseEnter")
-    const tracking = props.tracking.trackEvent.mock.calls[0][0]
+    const tracking = testProps.tracking.trackEvent.mock.calls[0][0]
 
     expect(tracking.action).toBe("Viewed tooltip")
     expect(tracking.entity_id).toBe("5955005ceaaedc0017acdd1f")
@@ -139,10 +137,10 @@ describe("LinkWithTooltip", () => {
   })
 
   it("Tracks click events", () => {
-    context.activeToolTip = null
-    const wrapper = getWrapper(context, props)
+    testContext.activeToolTip = null
+    const wrapper = getWrapper(testContext, testProps)
     wrapper.find(PrimaryLink).simulate("click")
-    const tracking = props.tracking.trackEvent.mock.calls[0][0]
+    const tracking = testProps.tracking.trackEvent.mock.calls[0][0]
 
     expect(tracking.action).toBe("Click")
     expect(tracking.flow).toBe("tooltip")
@@ -152,10 +150,10 @@ describe("LinkWithTooltip", () => {
   })
 
   it("Tracks click events from hover background", () => {
-    context.activeToolTip = "nick-mauss"
-    const wrapper = getWrapper(context, props)
+    testContext.activeToolTip = "nick-mauss"
+    const wrapper = getWrapper(testContext, testProps)
     wrapper.find(Background).simulate("click")
-    const tracking = props.tracking.trackEvent.mock.calls[0][0]
+    const tracking = testProps.tracking.trackEvent.mock.calls[0][0]
 
     expect(tracking.action).toBe("Click")
     expect(tracking.flow).toBe("tooltip")
@@ -165,7 +163,7 @@ describe("LinkWithTooltip", () => {
   })
 
   it("Sets tooltip position on mount", () => {
-    const wrapper = getWrapper(context, props)
+    const wrapper = getWrapper(testContext, testProps)
       .childAt(0)
       .childAt(0)
       .instance()
@@ -173,7 +171,7 @@ describe("LinkWithTooltip", () => {
   })
 
   it("Calls #setupToolTipPosition on #componentDidMount", () => {
-    const wrapper = getWrapper(context, props)
+    const wrapper = getWrapper(testContext, testProps)
       .childAt(0)
       .childAt(0)
       .instance()
@@ -184,8 +182,8 @@ describe("LinkWithTooltip", () => {
   })
 
   it("Calls #onLeaveLink on mouseLeave", done => {
-    context.activeToolTip = "nick-mauss"
-    const wrapper = getWrapper(context, props)
+    testContext.activeToolTip = "nick-mauss"
+    const wrapper = getWrapper(testContext, testProps)
     const instance = wrapper
       .childAt(0)
       .childAt(0)
@@ -195,7 +193,7 @@ describe("LinkWithTooltip", () => {
     expect(instance.state.maybeHideToolTip).toBe(true)
     defer(() => {
       setTimeout(() => {
-        expect(context.onTriggerToolTip.mock.calls[0][0]).toBe(null)
+        expect(testContext.onTriggerToolTip.mock.calls[0][0]).toBe(null)
         expect(instance.state.maybeHideToolTip).toBe(false)
         done()
       }, 750)
@@ -203,7 +201,7 @@ describe("LinkWithTooltip", () => {
   })
 
   it("#setupToolTipPosition sets state with link position and getOrientation", () => {
-    const wrapper = getWrapper(context, props)
+    const wrapper = getWrapper(testContext, testProps)
       .childAt(0)
       .childAt(0)
       .instance()
@@ -217,7 +215,7 @@ describe("LinkWithTooltip", () => {
   describe("#getOrientation", () => {
     it("Returns 'down' if space above link is < 350", () => {
       position.top = 300
-      const wrapper = getWrapper(context, props)
+      const wrapper = getWrapper(testContext, testProps)
         .childAt(0)
         .childAt(0)
         .instance()
@@ -228,7 +226,7 @@ describe("LinkWithTooltip", () => {
 
     it("Returns 'up' if space above link is > 350", () => {
       position.top = 500
-      const wrapper = getWrapper(context, props)
+      const wrapper = getWrapper(testContext, testProps)
         .childAt(0)
         .childAt(0)
         .instance()
@@ -240,7 +238,7 @@ describe("LinkWithTooltip", () => {
 
   describe("#getToolTipPosition", () => {
     it("Returns tooltip position for artist links", () => {
-      const wrapper = getWrapper(context, props)
+      const wrapper = getWrapper(testContext, testProps)
         .childAt(0)
         .childAt(0)
         .instance()
@@ -251,7 +249,7 @@ describe("LinkWithTooltip", () => {
     })
 
     it("Returns tooltip position for gene links", () => {
-      const wrapper = getWrapper(context, props)
+      const wrapper = getWrapper(testContext, testProps)
         .childAt(0)
         .childAt(0)
         .instance()
@@ -263,7 +261,7 @@ describe("LinkWithTooltip", () => {
       position.x = 80
       position.width = 100
       position.left = 60
-      const wrapper = getWrapper(context, props)
+      const wrapper = getWrapper(testContext, testProps)
         .childAt(0)
         .childAt(0)
         .instance()
@@ -278,7 +276,7 @@ describe("LinkWithTooltip", () => {
       position.x = 80
       position.width = 100
       position.left = 60
-      const wrapper = getWrapper(context, props)
+      const wrapper = getWrapper(testContext, testProps)
         .childAt(0)
         .childAt(0)
         .instance()

@@ -1,7 +1,7 @@
 import { selectProps } from "Apps/__test__/Fixtures/Select"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { CountrySelect } from "Styleguide/Components/CountrySelect"
+import { CountrySelect } from "Styleguide/Components"
 import { Section } from "Styleguide/Utils/Section"
 
 storiesOf("Styleguide/Components", module).add("Country Select", () => {

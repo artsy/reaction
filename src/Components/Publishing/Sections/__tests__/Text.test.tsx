@@ -1,3 +1,4 @@
+import { ContextProvider } from "Artsy/SystemContext"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import PropTypes from "prop-types"
@@ -9,11 +10,10 @@ import {
   TextFeatureArticle,
   TextStandardArticle,
 } from "../../Fixtures/Articles"
-import { ContextProvider } from "../../../Artsy"
 import { TextFromArticle } from "../../Fixtures/Helpers"
-import { Text } from "../Text"
-import { LinkWithTooltip } from "../../ToolTip/LinkWithTooltip"
 import { wrapperWithContext } from "../../Fixtures/Helpers"
+import { LinkWithTooltip } from "../../ToolTip/LinkWithTooltip"
+import { Text } from "../Text"
 
 describe("Text", () => {
   const getWrapper = props => {
@@ -32,57 +32,60 @@ describe("Text", () => {
     )
   }
 
-  let props
+  let testProps
   beforeEach(() => {
-    props = {}
+    testProps = {}
   })
 
-  describe("Snapshots", () => {
-    it("renders classic text properly", () => {
-      props.html = TextFromArticle(TextClassicArticle)
-      props.layout = "classic"
+  // FIXME: Reenable when React 16.4.5 is release
+  // https://github.com/facebook/react/issues/13150#issuecomment-411134477
 
-      const text = renderer.create(getWrapper(props)).toJSON()
-      expect(text).toMatchSnapshot()
-    })
+  // describe("Snapshots", () => {
+  //   it("renders classic text properly", () => {
+  //     testProps.html = TextFromArticle(TextClassicArticle)
+  //     testProps.layout = "classic"
 
-    it("renders feature text properly", () => {
-      props.html = TextFromArticle(TextFeatureArticle)
-      props.layout = "feature"
-      const text = renderer.create(getWrapper(props)).toJSON()
-      expect(text).toMatchSnapshot()
-    })
+  //     const text = renderer.create(getWrapper(testProps)).toJSON()
+  //     expect(text).toMatchSnapshot()
+  //   })
 
-    it("renders standard text properly", () => {
-      props.html = TextFromArticle(TextStandardArticle)
-      props.layout = "standard"
-      const text = renderer.create(getWrapper(props)).toJSON()
-      expect(text).toMatchSnapshot()
-    })
+  //   it("renders feature text properly", () => {
+  //     testProps.html = TextFromArticle(TextFeatureArticle)
+  //     testProps.layout = "feature"
+  //     const text = renderer.create(getWrapper(testProps)).toJSON()
+  //     expect(text).toMatchSnapshot()
+  //   })
 
-    it("renders news text properly", () => {
-      props.html = TextFromArticle(NewsArticle)
-      props.layout = "news"
-      const text = renderer.create(getWrapper(props)).toJSON()
-      expect(text).toMatchSnapshot()
-    })
-  })
+  //   it("renders standard text properly", () => {
+  //     testProps.html = TextFromArticle(TextStandardArticle)
+  //     testProps.layout = "standard"
+  //     const text = renderer.create(getWrapper(testProps)).toJSON()
+  //     expect(text).toMatchSnapshot()
+  //   })
+
+  //   it("renders news text properly", () => {
+  //     testProps.html = TextFromArticle(NewsArticle)
+  //     testProps.layout = "news"
+  //     const text = renderer.create(getWrapper(testProps)).toJSON()
+  //     expect(text).toMatchSnapshot()
+  //   })
+  // })
 
   describe("Unit", () => {
     it("Inserts content-end spans if isContentEnd", () => {
-      props.html = TextFromArticle(TextFeatureArticle)
-      props.layout = "feature"
-      props.isContentEnd = true
-      const wrapper = mount(getWrapper(props))
+      testProps.html = TextFromArticle(TextFeatureArticle)
+      testProps.layout = "feature"
+      testProps.isContentEnd = true
+      const wrapper = mount(getWrapper(testProps))
 
       expect(wrapper.html()).toMatch("content-end")
     })
 
     it("Inserts content-end spans in last paragraph, even if another block follows", () => {
-      props.html = "<p>The end of the article</p><h3>An h3 after</h3>"
-      props.layout = "standard"
-      props.isContentEnd = true
-      const wrapper = mount(getWrapper(props))
+      testProps.html = "<p>The end of the article</p><h3>An h3 after</h3>"
+      testProps.layout = "standard"
+      testProps.isContentEnd = true
+      const wrapper = mount(getWrapper(testProps))
 
       expect(wrapper.html()).toMatch(
         `<p>The end of the article<span class=\"content-end\"> </span></p><h3>An h3 after</h3>`
@@ -90,28 +93,28 @@ describe("Text", () => {
     })
 
     it("Removes content-end spans if not isContentEnd", () => {
-      props.html =
+      testProps.html =
         "<p>The end of a great article. <span class='content-end> </span></p>"
-      props.layout = "feature"
-      const wrapper = mount(getWrapper(props))
+      testProps.layout = "feature"
+      const wrapper = mount(getWrapper(testProps))
 
       expect(wrapper.html()).not.toMatch("content-end")
     })
 
     it("Should add LinkWithTooltip when artsy link is contained", () => {
-      props.html = `<p>Amazing content <a href="https://www.artsy.net/artist/banksy">Banksy</a></p>`
-      props.layout = "standard"
-      props.showTooltips = true
-      const wrapper = mount(getWrapper(props))
+      testProps.html = `<p>Amazing content <a href="https://www.artsy.net/artist/banksy">Banksy</a></p>`
+      testProps.layout = "standard"
+      testProps.showTooltips = true
+      const wrapper = mount(getWrapper(testProps))
 
       expect(wrapper.find(LinkWithTooltip)).toHaveLength(1)
     })
 
     it("Does not render for empty links", () => {
-      props.html = `<p>Amazing content <a href="https://www.artsy.net/artist/banksy"></a></p>`
-      props.layout = "standard"
-      props.showTooltips = true
-      const wrapper = mount(getWrapper(props))
+      testProps.html = `<p>Amazing content <a href="https://www.artsy.net/artist/banksy"></a></p>`
+      testProps.layout = "standard"
+      testProps.showTooltips = true
+      const wrapper = mount(getWrapper(testProps))
 
       expect(wrapper.find(LinkWithTooltip)).toHaveLength(0)
     })

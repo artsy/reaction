@@ -10,6 +10,10 @@ export type routes_AuctionResultsQueryResponse = {
         readonly " $fragmentRefs": AuctionResults_artist$ref;
     }) | null;
 };
+export type routes_AuctionResultsQuery = {
+    readonly response: routes_AuctionResultsQueryResponse;
+    readonly variables: routes_AuctionResultsQueryVariables;
+};
 
 
 

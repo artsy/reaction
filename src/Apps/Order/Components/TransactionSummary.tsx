@@ -18,7 +18,7 @@ export const TransactionSummary: React.SFC<TransactionSummaryProps> = ({
     shippingTotal,
     buyerTotal,
     lineItems,
-    partner: { name },
+    seller: { name },
   },
   ...others
 }) => {
@@ -119,8 +119,10 @@ export const TransactionSummaryFragmentContainer = createFragmentContainer(
       taxTotal
       itemsTotal
       buyerTotal
-      partner {
-        name
+      seller {
+        ... on Partner {
+          name
+        }
       }
       lineItems {
         edges {

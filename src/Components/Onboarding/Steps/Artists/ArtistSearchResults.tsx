@@ -1,3 +1,10 @@
+import {
+  ArtistSearchResultsArtistMutation,
+  ArtistSearchResultsArtistMutationResponse,
+} from "__generated__/ArtistSearchResultsArtistMutation.graphql"
+import { ArtistSearchResultsContent_viewer } from "__generated__/ArtistSearchResultsContent_viewer.graphql"
+import { ArtistSearchResultsQuery } from "__generated__/ArtistSearchResultsQuery.graphql"
+import { ContextProps, withContext } from "Artsy/SystemContext"
 import * as React from "react"
 import {
   commitMutation,
@@ -7,43 +14,30 @@ import {
   RelayProp,
 } from "react-relay"
 import track from "react-tracking"
-import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
+import { RecordSourceSelectorProxy } from "relay-runtime"
 import Events from "../../../../Utils/Events"
 import ReplaceTransition from "../../../Animation/ReplaceTransition"
-import { ContextConsumer, ContextProps } from "../../../Artsy"
 import ItemLink, { LinkContainer } from "../../ItemLink"
 import { FollowProps } from "../../Types"
 
-interface Artist {
-  id: string | null
-  _id: string | null
-  __id: string | null
-  name: string | null
-  image: {
-    cropped: {
-      url: string | null
-    }
-  } | null
-}
+type Artist = ArtistSearchResultsContent_viewer["match_artist"][0]
 
-export interface Props extends FollowProps {
+export interface ContainerProps extends FollowProps {
   term: string
   tracking?: any
 }
 
-interface RelayProps extends React.HTMLProps<HTMLAnchorElement>, Props {
+interface Props extends React.HTMLProps<HTMLAnchorElement>, ContainerProps {
   relay?: RelayProp
-  viewer: {
-    match_artist: Artist[]
-  }
+  viewer: ArtistSearchResultsContent_viewer
 }
 
 @track({}, { dispatch: data => Events.postEvent(data) })
-class ArtistSearchResultsContent extends React.Component<RelayProps, null> {
+class ArtistSearchResultsContent extends React.Component<Props, null> {
   private excludedArtistIds: Set<string>
   followCount: number = 0
 
-  constructor(props: RelayProps, context: any) {
+  constructor(props: Props, context: any) {
     super(props, context)
     this.excludedArtistIds = new Set(
       this.props.viewer.match_artist.map(item => item._id)
@@ -53,7 +47,7 @@ class ArtistSearchResultsContent extends React.Component<RelayProps, null> {
   onArtistFollowed(
     artist: Artist,
     store: RecordSourceSelectorProxy,
-    data: SelectorData
+    data: ArtistSearchResultsArtistMutationResponse
   ): void {
     const suggestedArtistEdge =
       data.followArtist.artist.related.suggested.edges[0]
@@ -92,47 +86,50 @@ class ArtistSearchResultsContent extends React.Component<RelayProps, null> {
   }
 
   onFollowedArtist(artist: Artist) {
-    commitMutation(this.props.relay.environment, {
-      mutation: graphql`
-        mutation ArtistSearchResultsArtistMutation(
-          $input: FollowArtistInput!
-          $excludedArtistIds: [String]!
-        ) {
-          followArtist(input: $input) {
-            popular_artists(
-              size: 1
-              exclude_followed_artists: true
-              exclude_artist_ids: $excludedArtistIds
-            ) {
-              artists {
-                id
-                _id
-                __id
-                name
-                image {
-                  cropped(width: 100, height: 100) {
-                    url
+    commitMutation<ArtistSearchResultsArtistMutation>(
+      this.props.relay.environment,
+      {
+        mutation: graphql`
+          mutation ArtistSearchResultsArtistMutation(
+            $input: FollowArtistInput!
+            $excludedArtistIds: [String]!
+          ) {
+            followArtist(input: $input) {
+              popular_artists(
+                size: 1
+                exclude_followed_artists: true
+                exclude_artist_ids: $excludedArtistIds
+              ) {
+                artists {
+                  id
+                  _id
+                  __id
+                  name
+                  image {
+                    cropped(width: 100, height: 100) {
+                      url
+                    }
                   }
                 }
               }
-            }
-            artist {
-              __id
-              related {
-                suggested(
-                  first: 1
-                  exclude_followed_artists: true
-                  exclude_artist_ids: $excludedArtistIds
-                ) {
-                  edges {
-                    node {
-                      id
-                      _id
-                      __id
-                      name
-                      image {
-                        cropped(width: 100, height: 100) {
-                          url
+              artist {
+                __id
+                related {
+                  suggested(
+                    first: 1
+                    exclude_followed_artists: true
+                    exclude_artist_ids: $excludedArtistIds
+                  ) {
+                    edges {
+                      node {
+                        id
+                        _id
+                        __id
+                        name
+                        image {
+                          cropped(width: 100, height: 100) {
+                            url
+                          }
                         }
                       }
                     }
@@ -141,18 +138,17 @@ class ArtistSearchResultsContent extends React.Component<RelayProps, null> {
               }
             }
           }
-        }
-      `,
-      variables: {
-        input: {
-          artist_id: artist.id,
-          unfollow: false,
+        `,
+        variables: {
+          input: {
+            artist_id: artist.id,
+            unfollow: false,
+          },
+          excludedArtistIds: Array.from(this.excludedArtistIds),
         },
-        excludedArtistIds: Array.from(this.excludedArtistIds),
-      },
-      updater: (store: RecordSourceSelectorProxy, data: SelectorData) =>
-        this.onArtistFollowed(artist, store, data),
-    })
+        updater: (store, data) => this.onArtistFollowed(artist, store, data),
+      }
+    )
   }
 
   render() {
@@ -198,13 +194,11 @@ const ArtistSearchResultsContentContainer = createFragmentContainer(
   `
 )
 
-const ArtistSearchResultsComponent: React.SFC<Props & ContextProps> = ({
-  term,
-  relayEnvironment,
-  updateFollowCount,
-}) => {
+const ArtistSearchResultsComponent: React.SFC<
+  ContainerProps & ContextProps
+> = ({ term, relayEnvironment, updateFollowCount }) => {
   return (
-    <QueryRenderer
+    <QueryRenderer<ArtistSearchResultsQuery>
       environment={relayEnvironment}
       query={graphql`
         query ArtistSearchResultsQuery($term: String!) {
@@ -231,4 +225,4 @@ const ArtistSearchResultsComponent: React.SFC<Props & ContextProps> = ({
   )
 }
 
-export const ArtistSearchResults = ContextConsumer(ArtistSearchResultsComponent)
+export const ArtistSearchResults = withContext(ArtistSearchResultsComponent)

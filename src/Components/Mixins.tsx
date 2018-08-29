@@ -3,7 +3,7 @@ import { garamond } from "Assets/Fonts"
 import { css } from "styled-components"
 import { InputProps } from "./Input"
 
-export const borderedInput = (props: InputProps = {}) => {
+export const borderedInput = (props: InputProps & BorderProps = {}) => {
   return css`
     padding: 10px;
     box-shadow: none;
@@ -25,7 +25,10 @@ export const borderedInput = (props: InputProps = {}) => {
   `
 }
 
-export const border = (props: any = {}) => {
+export interface BorderProps {
+  hasError?: boolean
+}
+export const border = (props: BorderProps = {}) => {
   return css`
     border: 1px solid ${props.hasError ? colors.redMedium : colors.grayRegular};
     transition: border-color 0.25s;

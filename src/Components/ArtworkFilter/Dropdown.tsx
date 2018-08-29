@@ -60,7 +60,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
     const labels = labelMap[this.props.aggregation.slice.toLowerCase()]
     const selectedName = this.getSelectedName(this.state.selected)
 
-    let navItems = this.props.aggregation.counts.map(count => {
+    const navItems = this.props.aggregation.counts.map(count => {
       return (
         <NavItem key={count.id} onClick={() => this.onSelect(slice, count.id)}>
           <span>{count.name}</span>

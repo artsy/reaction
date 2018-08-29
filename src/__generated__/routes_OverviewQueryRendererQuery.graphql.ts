@@ -17,6 +17,10 @@ export type routes_OverviewQueryRendererQueryResponse = {
         readonly " $fragmentRefs": Overview_artist$ref;
     }) | null;
 };
+export type routes_OverviewQueryRendererQuery = {
+    readonly response: routes_OverviewQueryRendererQueryResponse;
+    readonly variables: routes_OverviewQueryRendererQueryVariables;
+};
 
 
 

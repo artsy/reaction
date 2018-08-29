@@ -10,6 +10,10 @@ export type routes_ArticlesQueryResponse = {
         readonly " $fragmentRefs": Articles_artist$ref;
     }) | null;
 };
+export type routes_ArticlesQuery = {
+    readonly response: routes_ArticlesQueryResponse;
+    readonly variables: routes_ArticlesQueryVariables;
+};
 
 
 

@@ -1,27 +1,25 @@
 import { Sans } from "@artsy/palette"
 import { Overview_artist } from "__generated__/Overview_artist.graphql"
-import { track } from "Analytics"
-import * as Schema from "Analytics/Schema"
 import { ArtworkFilterFragmentContainer as ArtworkFilter } from "Apps/Artist/Routes/Overview/Components/ArtworkFilter"
 import { GenesFragmentContainer as Genes } from "Apps/Artist/Routes/Overview/Components/Genes"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import { hasSections as showMarketInsights } from "Components/Artist/MarketInsights/MarketInsights"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import {
   ArtistBioFragmentContainer as ArtistBio,
+  MarketInsightsFragmentContainer as MarketInsights,
   MAX_CHARS,
-} from "Styleguide/Components/ArtistBio"
-import { MarketInsightsFragmentContainer as MarketInsights } from "Styleguide/Components/MarketInsights"
-import { SelectedExhibitionFragmentContainer as SelectedExhibitions } from "Styleguide/Components/SelectedExhibitions"
-import { Box } from "Styleguide/Elements/Box"
-import { Col, Row } from "Styleguide/Elements/Grid"
-import { Spacer } from "Styleguide/Elements/Spacer"
+  SelectedExhibitionFragmentContainer as SelectedExhibitions,
+} from "Styleguide/Components"
+import { Box, Col, Row, Spacer } from "Styleguide/Elements"
 import { Responsive } from "Utils/Responsive"
 import { CurrentEventFragmentContainer as CurrentEvent } from "./Components/CurrentEvent"
 
 export interface OverviewRouteProps {
   artist: Overview_artist & {
-    __fragments: Array<object>
+    __fragments: object[]
   }
 }
 

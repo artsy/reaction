@@ -1,10 +1,8 @@
 import { Sans } from "@artsy/palette"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { MobileTopBar } from "Styleguide/Components/MobileTopBar"
-import { Box } from "Styleguide/Elements/Box"
-import { StackableBorderBox } from "Styleguide/Elements/Box"
-import { Button } from "Styleguide/Elements/Button"
+import { MobileTopBar } from "Styleguide/Components"
+import { Box, Button, StackableBorderBox } from "Styleguide/Elements"
 import { Section } from "Styleguide/Utils/Section"
 
 class ActionSheet extends React.Component {

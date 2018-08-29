@@ -1,7 +1,7 @@
+import { mockTracking } from "Artsy/Analytics"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
-import { mockTracking } from "../../../../../Analytics"
 import { RelatedPanel } from "../../../Fixtures/Components"
 import { RelatedArticlesPanelLink } from "../RelatedArticlesPanelLink"
 
@@ -12,15 +12,13 @@ describe("RelatedArticlesPanelLink", () => {
     return mount(<RelatedArticlesPanelLink {...props} />)
   }
 
-  let props
+  let testProps
   beforeEach(() => {
-    props = {
-      article: RelatedPanel[0],
-    }
+    testProps = { article: RelatedPanel[0] }
   })
 
   it("renders expected data", () => {
-    const component = getWrapper(props)
+    const component = getWrapper(testProps)
 
     expect(component.text()).toMatch(
       "The 15 Top Art Schools in the United States"

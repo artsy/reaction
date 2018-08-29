@@ -1,6 +1,6 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { AuctionCard } from "Styleguide/Components/AuctionCard"
+import { AuctionCard } from "Styleguide/Components"
 import { Section } from "Styleguide/Utils/Section"
 import { OtherAuctions } from "../OtherAuctions"
 

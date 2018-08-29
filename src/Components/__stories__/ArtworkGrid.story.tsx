@@ -2,7 +2,7 @@ import { storiesOf } from "@storybook/react"
 import React from "react"
 import { graphql } from "react-relay"
 
-import { RootQueryRenderer } from "../../Relay/RootQueryRenderer"
+import { RootQueryRenderer } from "Artsy/Relay/RootQueryRenderer"
 import RelayArtworkGrid, { ArtworkGrid } from "../ArtworkGrid"
 
 export function ArtworkGridExample(props: {

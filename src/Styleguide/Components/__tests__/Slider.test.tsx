@@ -1,6 +1,6 @@
+import { Boot } from "Artsy/Router"
 import { mount } from "enzyme"
 import React from "react"
-import { Boot } from "../../../Router/Boot"
 import { LargeSlider, Slider, SmallSlider } from "../Slider"
 
 describe("Slider", () => {
@@ -37,7 +37,7 @@ describe("Slider", () => {
   it("renders any kind of react element and iterates over data", () => {
     const Foo = ({ name }) => <div>hello {name} how are you</div>
 
-    let wrapper = mount(
+    const wrapper = mount(
       <Boot>
         <Slider
           data={[{ name: "name1" }, { name: "name2" }]}

@@ -28,7 +28,7 @@ export interface RadioToggleProps
     SpaceProps {}
 
 export const Radio = styled(
-  class Radio extends React.Component<RadioProps> {
+  class extends React.Component<RadioProps> {
     render() {
       const {
         children,

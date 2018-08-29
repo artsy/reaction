@@ -727,6 +727,7 @@ type Artwork implements Node & Sellable {
     shallow: Boolean
   ): Partner
   price: String
+  price_currency: String
 
   # The string that describes domestic and international shipping.
   shippingInfo: String
@@ -1380,6 +1381,7 @@ type ArtworkItem implements Node & Sellable {
     shallow: Boolean
   ): Partner
   price: String
+  price_currency: String
 
   # The string that describes domestic and international shipping.
   shippingInfo: String
@@ -2099,7 +2101,7 @@ input CreateOrderWithArtworkInput {
 }
 
 type CreateOrderWithArtworkPayload {
-  result: OrderReturnType
+  orderOrError: OrderOrFailureUnionType
   clientMutationId: String
 }
 
@@ -2323,6 +2325,11 @@ type Delivery {
 type dimensions {
   in: String
   cm: String
+}
+
+type EcommerceError {
+  # The error message
+  description: String!
 }
 
 input EditableLocation {
@@ -4062,29 +4069,8 @@ type Order {
   # Tracking code of the order
   code: String
 
-  # Fulfillment Type
-  fulfillmentType: OrderFulfillmentType
-
-  # Name for shipping information
-  shippingName: String
-
-  # Shipping address line 1
-  shippingAddressLine1: String
-
-  # Shipping address line 2
-  shippingAddressLine2: String
-
-  # Shipping city
-  shippingCity: String
-
-  # Shipping country
-  shippingCountry: String
-
-  # Shipping postal code
-  shippingPostalCode: String
-
-  # Shipping region
-  shippingRegion: String
+  # Order Requested Fulfillment
+  requestedFulfillment: RequestedFulfillment
 
   # Item total in cents
   itemsTotalCents: Int
@@ -4187,11 +4173,11 @@ type Order {
   # List of order line items
   lineItems: OrderLineItemConnection
 
-  # Partner of this order
-  partner: Partner
+  # Seller of this order
+  seller: OrderParty
 
-  # User of this order
-  user: User
+  # Buyer of this order
+  buyer: OrderParty
 
   # Credit card on this order
   creditCard: CreditCard
@@ -4361,8 +4347,15 @@ type OrderLineItemEdge {
   cursor: String!
 }
 
+union OrderOrFailureUnionType = OrderWithMutationSuccess | OrderWithMutationFailure
+
+union OrderParty = Partner | User
+
 type OrderReturnType {
+  # Returned order object
   order: Order
+
+  # Errors
   errors: [String]
 }
 
@@ -4372,6 +4365,14 @@ enum OrdersSortMethodType {
 
   # Sort by latest timestamp order was updated in descending order
   UPDATED_AT_DESC
+}
+
+type OrderWithMutationFailure {
+  error: EcommerceError
+}
+
+type OrderWithMutationSuccess {
+  order: Order
 }
 
 type organizer {
@@ -4798,6 +4799,11 @@ enum PartnersSortType {
 
 union PartnerTypes = Partner | ExternalPartner
 
+type Pickup {
+  # It will always be PICKUP
+  fulfillmentType: String
+}
+
 type PopularArtists {
   artists: [Artist]
 }
@@ -5063,7 +5069,7 @@ type Query {
   order(id: String!): Order
 
   # Returns list of orders
-  orders(userId: String, partnerId: String, state: String, sort: OrdersSortMethodType): OrderConnection
+  orders(buyerId: String, buyerType: String, sellerId: String, sellerType: String, state: String, sort: OrdersSortMethodType): OrderConnection
 
   # An OrderedSet
   ordered_set(
@@ -5294,6 +5300,8 @@ type RequestCredentialsForAssetUploadPayload {
   asset: Credentials
   clientMutationId: String
 }
+
+union RequestedFulfillment = Ship | Pickup
 
 type ResizedImageUrl {
   factor: Float
@@ -5777,32 +5785,60 @@ input SetOrderShippingInput {
   # Fulfillment Type of this Order
   fulfillmentType: OrderFulfillmentType
 
-  # Name for the shipping information
-  shippingName: String
-
-  # Shipping address line 1
-  shippingAddressLine1: String
-
-  # Shipping address line 2
-  shippingAddressLine2: String
-
-  # Shipping city
-  shippingCity: String
-
-  # Shipping region
-  shippingRegion: String
-
-  # Shipping country
-  shippingCountry: String
-
-  # Shipping postal code
-  shippingPostalCode: String
+  # Shipping information
+  shipping: ShippingInputField
   clientMutationId: String
 }
 
 type SetOrderShippingPayload {
   result: OrderReturnType
   clientMutationId: String
+}
+
+type Ship {
+  # Name for the shipping information
+  name: String
+
+  # Shipping address line 1
+  addressLine1: String
+
+  # Shipping address line 2
+  addressLine2: String
+
+  # Shipping city
+  city: String
+
+  # Shipping region
+  region: String
+
+  # Shipping country
+  country: String!
+
+  # Shipping postal code
+  postalCode: String
+}
+
+input ShippingInputField {
+  # Name for the shipping information
+  name: String
+
+  # Shipping address line 1
+  addressLine1: String
+
+  # Shipping address line 2
+  addressLine2: String
+
+  # Shipping city
+  city: String
+
+  # Shipping region
+  region: String
+
+  # Shipping country
+  country: String
+
+  # Shipping postal code
+  postalCode: String
 }
 
 type Show implements Node {
@@ -6533,7 +6569,7 @@ type Viewer {
   order(id: String!): Order
 
   # Returns list of orders
-  orders(userId: String, partnerId: String, state: String, sort: OrdersSortMethodType): OrderConnection
+  orders(buyerId: String, buyerType: String, sellerId: String, sellerType: String, state: String, sort: OrdersSortMethodType): OrderConnection
 
   # An OrderedSet
   ordered_set(

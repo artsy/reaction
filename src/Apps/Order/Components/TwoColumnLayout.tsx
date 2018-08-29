@@ -13,7 +13,7 @@ const COL_SPACE = 2
 const columnRatioWidth = (spans, size) => Math.round((spans / size) * 100) + "%"
 
 export const TwoColumnSplit = ({ children, ...props }) => {
-  let [firstColumn, secondColumn] = React.Children.toArray(children)
+  const [firstColumn, secondColumn] = React.Children.toArray(children)
 
   return (
     <Responsive>

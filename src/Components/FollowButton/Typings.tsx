@@ -1,4 +1,4 @@
-export type FollowTrackingData = {
+export interface FollowTrackingData {
   contextModule?: string
   entity_id?: string
   entity_slug?: string

@@ -7,10 +7,10 @@ exports[`Nav renders a Nav 1`] = `
   font-size: 32px;
   margin: 0 5px;
   display: inline-block;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: 0;
+  -moz-letter-spacing: 0;
+  -ms-letter-spacing: 0;
+  letter-spacing: 0;
   position: relative;
   color: white;
 }
@@ -124,6 +124,7 @@ exports[`Nav renders a Nav 1`] = `
           
         </div>
       </a>
+      
     </div>
     <div
       className="c5"
@@ -152,10 +153,10 @@ exports[`Nav renders a sponsored nav 1`] = `
   font-size: 32px;
   margin: 0 5px;
   display: inline-block;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: 0;
+  -moz-letter-spacing: 0;
+  -ms-letter-spacing: 0;
+  letter-spacing: 0;
   position: relative;
   color: white;
 }
@@ -323,7 +324,7 @@ exports[`Nav renders a sponsored nav 1`] = `
         target="_blank"
       >
         <img
-          src="https://artsy-media-uploads.s3.amazonaws.com/GEu3iYW6CQhbVxsjpOYwZQ%2FGKL_Wort-Bildmarke_negative_rgb+2.png"
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FGEu3iYW6CQhbVxsjpOYwZQ%252FGKL_Wort-Bildmarke_negative_rgb%2B2.png&width=240&quality=95"
         />
       </a>
     </div>
@@ -354,10 +355,10 @@ exports[`Nav renders a transparent nav 1`] = `
   font-size: 32px;
   margin: 0 5px;
   display: inline-block;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
+  -webkit-letter-spacing: 0;
+  -moz-letter-spacing: 0;
+  -ms-letter-spacing: 0;
+  letter-spacing: 0;
   position: relative;
   color: white;
 }
@@ -473,6 +474,7 @@ exports[`Nav renders a transparent nav 1`] = `
           
         </div>
       </a>
+      
     </div>
     <div
       className="c5"

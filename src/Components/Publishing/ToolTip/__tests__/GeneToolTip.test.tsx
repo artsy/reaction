@@ -1,8 +1,8 @@
+import { ContextProvider } from "Artsy"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import PropTypes from "prop-types"
 import React from "react"
-import { ContextProvider } from "../../../Artsy"
 import { FollowGeneButton } from "../../../FollowButton/FollowGeneButton"
 import { Genes } from "../../Fixtures/Components"
 import { wrapperWithContext } from "../../Fixtures/Helpers"
@@ -21,9 +21,9 @@ describe("GeneTooltip", () => {
         {
           tooltipsData: PropTypes.object,
           onOpenAuthModal: PropTypes.func,
-          currentUser: PropTypes.object,
+          user: PropTypes.object,
         },
-        <ContextProvider currentUser={(context as any).currentUser}>
+        <ContextProvider user={(context as any).user}>
           <GeneToolTip gene={props.gene} />
         </ContextProvider>
       )
@@ -42,7 +42,7 @@ describe("GeneTooltip", () => {
       const gene = Genes[0].gene
       const context = {
         onOpenAuthModal: jest.fn(),
-        currentUser: null,
+        user: null,
       }
       const component = getWrapper({ gene }, context)
       component.find(FollowGeneButton).simulate("click")
