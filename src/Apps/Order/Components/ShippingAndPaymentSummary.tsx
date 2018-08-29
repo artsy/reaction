@@ -18,7 +18,11 @@ export const ShippingAndPaymentSummary = ({
   order: ShippingAndPaymentSummary_order
 } & FlexProps) => (
   <Flex flexDirection="column" {...others}>
-    {__typename === "Pickup" ? (
+    {__typename === "Ship" ? (
+      <StepSummaryItem title="Ship to">
+        <ShippingAddress {...address as ShippingAddressProps} />
+      </StepSummaryItem>
+    ) : (
       <StepSummaryItem
         title={<>Pick up ({lineItems.edges[0].node.artwork.shippingOrigin})</>}
       >
@@ -26,10 +30,6 @@ export const ShippingAndPaymentSummary = ({
           You’ll be appointed an Artsy specialist within 2 business days to
           handle pickup logistics.
         </Serif>
-      </StepSummaryItem>
-    ) : (
-      <StepSummaryItem title="Ship to">
-        <ShippingAddress {...address as ShippingAddressProps} />
       </StepSummaryItem>
     )}
     <StepSummaryItem>
@@ -44,9 +44,6 @@ export const ShippingAndPaymentSummaryFragmentContainer = createFragmentContaine
     fragment ShippingAndPaymentSummary_order on Order {
       requestedFulfillment {
         __typename
-        ... on Pickup {
-          fulfillmentType
-        }
         ... on Ship {
           name
           addressLine1
