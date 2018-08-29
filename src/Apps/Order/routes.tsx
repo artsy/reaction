@@ -1,4 +1,5 @@
-import { Location, RouteConfig, Router } from "found"
+import { Location, Redirect, RouteConfig, Router } from "found"
+import React from "react"
 import { graphql } from "react-relay"
 import { OrderApp } from "./OrderApp"
 
@@ -107,6 +108,18 @@ export const routes = [
             }
           }
         `,
+      },
+      // For now, redirect the empty route to the shipping page
+      new Redirect({
+        from: "/",
+        to: "/order2/:orderID/shipping",
+      }),
+      {
+        path: "*",
+        Component: props => {
+          console.warn("Route not found: ", props)
+          return <div>Page not found</div>
+        },
       },
     ],
   },
