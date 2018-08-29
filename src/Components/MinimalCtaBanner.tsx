@@ -1,8 +1,8 @@
 import { Sans } from "@artsy/palette"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import React from "react"
-import track from "react-tracking"
 import styled from "styled-components"
-import Events from "Utils/Events"
 import SlideTransition from "./Animation/SlideTransition"
 import Icon from "./Icon"
 
@@ -21,7 +21,7 @@ export interface State {
   dismissed: boolean
 }
 
-@track({}, { dispatch: data => Events.postEvent(data) })
+@track({ context_module: Schema.Context.MinimalCtaBanner })
 export class MinimalCtaBanner extends React.Component<
   MinimalCtaBannerProps,
   State
@@ -30,27 +30,20 @@ export class MinimalCtaBanner extends React.Component<
     dismissed: false,
   }
 
+  @track({
+    action_type: Schema.ActionType.AuthImpression,
+    action_name: Schema.ActionName.ViewEditorial,
+  })
   componentDidMount() {
-    if (this.props.tracking) {
-      this.props.tracking.trackEvent({
-        action: "Auth impression",
-        trigger: "click",
-        context_module: "auth minimal cta banner",
-      })
-    }
+    // no op
   }
 
-  dismissCta = () => {
-    if (this.props.tracking) {
-      this.props.tracking.trackEvent({
-        action: "Click",
-        type: "dismiss",
-        intent: "viewed editorial",
-        label: "dismiss auth banner",
-        flow: "auth",
-      })
-    }
-
+  @track({
+    action_type: Schema.ActionType.Click,
+    action_name: Schema.ActionName.Dismiss,
+    subject: "dismiss auth banner",
+  })
+  dismissCta() {
     this.setState({ dismissed: true })
   }
 
@@ -71,7 +64,7 @@ export class MinimalCtaBanner extends React.Component<
                 <p>{this.props.copy}</p>
               </Sans>
             </a>
-            <IconContainer onClick={this.dismissCta as any}>
+            <IconContainer onClick={this.dismissCta.bind(this) as any}>
               <Icon name="close" color={this.props.textColor} fontSize="16px" />
             </IconContainer>
           </Banner>
