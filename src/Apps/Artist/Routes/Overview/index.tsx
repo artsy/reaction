@@ -192,6 +192,7 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
         for_sale: { type: "Boolean" }
         at_auction: { type: "Boolean" }
         acquireable: { type: "Boolean" }
+        inquireable_only: { type: "Boolean" }
         sort: { type: "String", defaultValue: "-partner_updated_at" }
         partner_category: {
           type: "[String]"
@@ -211,6 +212,7 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
           sort: $sort
           at_auction: $at_auction
           acquireable: $acquireable
+          inquireable_only: $inquireable_only
         )
       id
       exhibition_highlights(size: 3) {

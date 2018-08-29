@@ -113,6 +113,12 @@ return {
     },
     {
       "kind": "LocalArgument",
+      "name": "inquireable_only",
+      "type": "Boolean",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
       "name": "sort",
       "type": "String",
       "defaultValue": "-partner_updated_at"
@@ -171,6 +177,12 @@ return {
           "kind": "Variable",
           "name": "for_sale",
           "variableName": "for_sale",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "inquireable_only",
+          "variableName": "inquireable_only",
           "type": null
         },
         {
@@ -457,5 +469,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '031b151141d235e97058c2f8d7924f9d';
+(node as any).hash = '54da4958e772a85aa38f9ed187481b3d';
 export default node;

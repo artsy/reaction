@@ -197,10 +197,10 @@ class Filter extends Component<Props> {
           Bid
         </Checkbox>
         <Checkbox
-          selected={filters.state.for_sale}
+          selected={filters.state.inquireable_only}
           disabled={!this.existy.hasForSaleArtworks || this.showZeroState}
           onSelect={value => {
-            return filters.setFilter("for_sale", value, mediator)
+            return filters.setFilter("inquireable_only", value, mediator)
           }}
         >
           Inquire
@@ -390,6 +390,7 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(
         for_sale: { type: "Boolean" }
         at_auction: { type: "Boolean" }
         acquireable: { type: "Boolean" }
+        inquireable_only: { type: "Boolean" }
         aggregations: {
           type: "[ArtworkAggregation]"
           defaultValue: [MEDIUM, TOTAL, GALLERY, INSTITUTION, MAJOR_PERIOD]
@@ -423,6 +424,7 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(
           sort: $sort
           acquireable: $acquireable
           at_auction: $at_auction
+          inquireable_only: $inquireable_only
         )
 
       ...FollowArtistButton_artist
