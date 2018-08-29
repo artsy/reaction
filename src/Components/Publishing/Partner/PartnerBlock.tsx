@@ -1,9 +1,9 @@
 import { unica } from "Assets/Fonts"
+import { pMedia } from "Components/Helpers"
 import React from "react"
 import track from "react-tracking"
 import styled from "styled-components"
-import Events from "../../../Utils/Events"
-import { pMedia } from "../../Helpers"
+import { resize } from "Utils/resizer"
 
 interface Props {
   logo: string
@@ -12,35 +12,23 @@ interface Props {
   trackingData?: any
 }
 
-@track(
-  props => {
-    return props.trackingData ? props.trackingData : {}
-  },
-  {
-    dispatch: data => Events.postEvent(data),
-  }
-)
+@track()
 export class PartnerBlock extends React.Component<Props, null> {
-  static defaultProps = {
-    tracking: {
-      trackEvent: x => x,
-    },
-  }
+  static defaultProps = {}
 
-  constructor(props) {
-    super(props)
-    this.onPartnerClick = this.onPartnerClick.bind(this)
-  }
-
+  @track(props => ({
+    action: "Click",
+    type: "external_link",
+    destination_path: props.url,
+  }))
   onPartnerClick(event) {
-    this.props.tracking.trackEvent({
-      action: "Click",
-    })
+    // noop
   }
 
   render() {
     const { logo, url } = this.props
-    const image = <img src={logo} />
+    const resized_logo = resize(logo, { width: 240 })
+    const image = <img src={resized_logo} />
 
     return (
       <PartnerBlockContainer className="PartnerBlock">
@@ -48,7 +36,11 @@ export class PartnerBlock extends React.Component<Props, null> {
         {image && (
           <ImageContainer>
             {url ? (
-              <a href={url} target="_blank" onClick={this.onPartnerClick}>
+              <a
+                href={url}
+                target="_blank"
+                onClick={this.onPartnerClick.bind(this)}
+              >
                 {image}
               </a>
             ) : (

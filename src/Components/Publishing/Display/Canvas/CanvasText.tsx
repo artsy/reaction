@@ -1,8 +1,9 @@
 import { garamond } from "Assets/Fonts"
+import { pMedia } from "Components/Helpers"
 import { compact, map } from "lodash"
 import React from "react"
 import styled, { StyledFunction } from "styled-components"
-import { pMedia } from "../../../Helpers"
+import { resize } from "Utils/resizer"
 
 interface CanvasTextProps {
   disclaimer?: any
@@ -16,13 +17,20 @@ interface DivProps extends React.HTMLProps<HTMLDivElement> {
 
 export const CanvasText: React.SFC<CanvasTextProps> = props => {
   const { disclaimer, unit } = props
+  const resized_logo = unit.logo
+    ? resize(unit.logo, {
+        // slightly oversize to avoid fuzziness
+        width: 400,
+        isDisplayAd: true,
+      })
+    : ""
   const isSlideshowWithCaption =
     unit.layout === "slideshow" && compact(map(unit.assets, "caption")).length
   const hasDisclaimer = unit.layout !== "overflow" && !isSlideshowWithCaption
   return (
     <CanvasInner layout={unit.layout} isSlideshowWithCaption>
       <div>
-        <Logo layout={unit.layout} src={unit.logo} />
+        <Logo layout={unit.layout} src={resized_logo} />
         <Headline layout={unit.layout}>{unit.headline}</Headline>
         <Link layout={unit.layout}>{unit.link.text}</Link>
       </div>
