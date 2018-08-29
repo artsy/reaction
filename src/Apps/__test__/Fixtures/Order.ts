@@ -51,6 +51,7 @@ export const UntouchedOrder = {
 export const OrderWithShippingDetails = {
   ...UntouchedOrder,
   requestedFulfillment: {
+    __typename: "Ship",
     name: "Joelle Van Dyne",
     addressLine1: "23 41st st",
     addressLine2: null,

@@ -9,7 +9,7 @@ import { ShippingAddress, ShippingAddressProps } from "./ShippingAddress"
 
 export const ShippingAndPaymentReview = ({
   order: {
-    requestedFulfillment: { fulfillmentType, ...address },
+    requestedFulfillment: { __typename, ...address },
     lineItems,
     creditCard,
   },
@@ -22,7 +22,7 @@ export const ShippingAndPaymentReview = ({
   onChangeShipping(): void
 } & FlexProps) => (
   <Flex flexDirection="column" {...others}>
-    {fulfillmentType === "PICKUP" ? (
+    {__typename === "Pickup" ? (
       <StepSummaryItem
         onChange={onChangeShipping}
         title={<>Pick up ({lineItems.edges[0].node.artwork.shippingOrigin})</>}
@@ -48,6 +48,7 @@ export const ShippingAndPaymentReviewFragmentContainer = createFragmentContainer
   graphql`
     fragment ShippingAndPaymentReview_order on Order {
       requestedFulfillment {
+        __typename
         ... on Pickup {
           fulfillmentType
         }

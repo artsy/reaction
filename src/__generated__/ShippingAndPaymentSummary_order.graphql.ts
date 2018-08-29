@@ -5,13 +5,20 @@ declare const _ShippingAndPaymentSummary_order$ref: unique symbol;
 export type ShippingAndPaymentSummary_order$ref = typeof _ShippingAndPaymentSummary_order$ref;
 export type ShippingAndPaymentSummary_order = {
     readonly requestedFulfillment: ({
-        readonly fulfillmentType?: string | null;
-        readonly name?: string | null;
-        readonly addressLine1?: string | null;
-        readonly addressLine2?: string | null;
-        readonly city?: string | null;
-        readonly postalCode?: string | null;
-        readonly region?: string | null;
+        readonly __typename: "Pickup";
+        readonly fulfillmentType: string | null;
+    } | {
+        readonly __typename: "Ship";
+        readonly name: string | null;
+        readonly addressLine1: string | null;
+        readonly addressLine2: string | null;
+        readonly city: string | null;
+        readonly postalCode: string | null;
+        readonly region: string | null;
+    } | {
+        /*This will never be '% other', but we need some
+        value in case none of the concrete values match.*/
+        readonly __typename: "%other";
     }) | null;
     readonly lineItems: ({
         readonly edges: ReadonlyArray<({
@@ -64,6 +71,13 @@ return {
       "concreteType": null,
       "plural": false,
       "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "__typename",
+          "args": null,
+          "storageKey": null
+        },
         {
           "kind": "InlineFragment",
           "type": "Ship",
@@ -224,5 +238,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '6ebabf09d28b40354d6980530ad1b763';
+(node as any).hash = 'f31550d4edde35f5f432b06b4ea29de1';
 export default node;

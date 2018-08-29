@@ -12,6 +12,7 @@ const order: ShippingAndPaymentReview_order &
   ShippingAndPaymentSummary_order = {
   " $refType": null,
   requestedFulfillment: {
+    __typename: "Ship",
     name: "Joelle Van Dyne",
     addressLine1: "23 41st st",
     addressLine2: null,
@@ -46,7 +47,8 @@ storiesOf("Apps/Order Page/Components", module).add(
               order={{
                 ...order,
                 requestedFulfillment: {
-                  fulfillmentType: "PICKUP",
+                  __typename: "Pickup",
+                  fulfillmentType: "pickup",
                 },
               }}
             />
@@ -69,7 +71,8 @@ storiesOf("Apps/Order Page/Components", module).add(
               order={{
                 ...order,
                 requestedFulfillment: {
-                  fulfillmentType: "PICKUP",
+                  __typename: "Pickup",
+                  fulfillmentType: "pickup",
                 },
               }}
             />
