@@ -1,11 +1,17 @@
 import { Review_order } from "__generated__/Review_order.graphql"
+import { ReviewSubmitOrderMutation } from "__generated__/ReviewSubmitOrderMutation.graphql"
 import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
 import { ItemReviewFragmentContainer as ItemReview } from "Apps/Order/Components/ItemReview"
 import { ShippingAndPaymentReviewFragmentContainer as ShippingAndPaymentReview } from "Apps/Order/Components/ShippingAndPaymentReview"
 import { TermsOfServiceCheckbox } from "Apps/Order/Components/TermsOfServiceCheckbox"
 import { Router } from "found"
 import React, { Component } from "react"
-import { createFragmentContainer, graphql } from "react-relay"
+import {
+  commitMutation,
+  createFragmentContainer,
+  graphql,
+  RelayProp,
+} from "react-relay"
 import { Button } from "Styleguide/Elements/Button"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
@@ -18,18 +24,19 @@ import { TwoColumnLayout } from "../../Components/TwoColumnLayout"
 
 export interface ReviewProps {
   order: Review_order
+  relay?: RelayProp
   router: Router
 }
 
 interface ReviewState {
-  termsCheckboxSelected?: boolean
+  termsCheckboxSelected: boolean
+  isSubmitting: boolean
 }
 
 export class ReviewRoute extends Component<ReviewProps, ReviewState> {
-  constructor(props) {
-    super(props)
-
-    this.state = { termsCheckboxSelected: false }
+  state = {
+    termsCheckboxSelected: false,
+    isSubmitting: false,
   }
 
   updateTermsCheckbox() {
@@ -40,7 +47,32 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
   }
 
   onOrderSubmitted() {
-    this.props.router.push(`/order2/${this.props.order.id}/status`)
+    if (this.props.relay && this.props.relay.environment) {
+      this.setState({ isSubmitting: true }, () =>
+        commitMutation<ReviewSubmitOrderMutation>(
+          this.props.relay.environment,
+          {
+            mutation: graphql`
+              mutation ReviewSubmitOrderMutation($input: SubmitOrderInput!) {
+                submitOrder(input: $input) {
+                  orderOrError {
+                    __typename
+                  }
+                }
+              }
+            `,
+            variables: {
+              input: {
+                orderId: this.props.order.id,
+              },
+            },
+            onCompleted: () =>
+              // TODO: handle failure
+              this.props.router.push(`/order2/${this.props.order.id}/status`),
+          }
+        )
+      )
+    }
   }
 
   onChangePayment() {
@@ -53,7 +85,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
 
   render() {
     const { order } = this.props
-    const { termsCheckboxSelected } = this.state
+    const { termsCheckboxSelected, isSubmitting } = this.state
 
     return (
       <>
@@ -94,6 +126,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                         <Button
                           size="large"
                           width="100%"
+                          loading={isSubmitting}
                           disabled={!termsCheckboxSelected}
                           onClick={() => this.onOrderSubmitted()}
                         >
