@@ -112,6 +112,7 @@ export const CollectArtworkGridRefreshContainer = createRefetchContainer(
       }
     }
   `,
+  // TODO: fix refetch query
   graphql`
     query CollectArtworkFilterRefetchQuery(
       $medium: String
@@ -121,18 +122,7 @@ export const CollectArtworkGridRefreshContainer = createRefetchContainer(
       $for_sale: Boolean
       $sort: String
     ) {
-      grid: filter_artworks(
-        aggregations: [TOTAL, FOLLOWED_ARTISTS]
-        medium: $medium
-        major_periods: $major_periods
-        partner_id: $partner_id
-        for_sale: $for_sale
-        at_auction: $at_auction
-        size: 40
-        sort: $sort
-      ) {
-        ...CollectArtworkGrid_filtered_artworks
-      }
+      ...CollectArtworkFilterRefetch_query
     }
   `
 )
