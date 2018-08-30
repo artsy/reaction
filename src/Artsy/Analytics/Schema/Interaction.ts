@@ -8,7 +8,7 @@ import { ActionName, ActionType } from "./Values"
  * Some actions lead to results, such as following an artist, in which case the
  * action name is used to tie the interaction and result events together.
  */
-export interface Interaction {
+export interface BaseInteraction {
   /**
    * The type of interaction that this event represents. E.g. `Click`.
    *
@@ -35,3 +35,22 @@ export interface Interaction {
    */
   destination_path?: string
 }
+
+export interface AuthInteraction {
+  /*
+  * The action taken that prompted user to signup or login.
+  */
+  intent?: string
+
+  /*
+  * Flow
+  */
+  flow?: string
+
+  /*
+  *  The type of action that triggered the modal (eg: click, timed)
+  */
+  trigger?: string
+}
+
+export type Interaction = BaseInteraction & AuthInteraction
