@@ -72,17 +72,16 @@ export class CollectArtworkFilterRefetch extends Component<
   }
 }
 
-export const ArtworkGridFragmentContainer = createRefetchContainer(
+export const CollectArtworkGridRefreshContainer = createRefetchContainer(
   CollectArtworkFilterRefetch,
   graphql`
-    fragment ArtworkGrid_query on Query
+    fragment CollectArtworkFilterRefetch_query on Query
       @argumentDefinitions(
         medium: { type: "String", defaultValue: "*" }
         major_periods: { type: "[String]" }
         partner_id: { type: "ID" }
         for_sale: { type: "Boolean" }
         at_auction: { type: "Boolean" }
-        ecommerce: { type: "Boolean" }
         aggregations: {
           type: "[ArtworkAggregation]"
           defaultValue: [MEDIUM, TOTAL]
@@ -106,34 +105,34 @@ export const ArtworkGridFragmentContainer = createRefetchContainer(
         partner_id: $partner_id
         for_sale: $for_sale
         at_auction: $at_auction
-        ecommerce: $ecommerce
         size: 40
-        sort: "-decayed_merch"
+        sort: $sort
       ) {
         ...CollectArtworkGrid_filtered_artworks
       }
     }
   `,
   graphql`
-    query ArtworkFilterRefetchQuery(
+    query CollectArtworkFilterRefetchQuery(
       $medium: String
       $major_periods: [String]
       $partner_id: ID
-      $acquireable: Boolean
       $at_auction: Boolean
       $for_sale: Boolean
       $sort: String
     ) {
-      ArtworkGrid_query
-        @arguments(
-          medium: $medium
-          major_periods: $major_periods
-          partner_id: $partner_id
-          for_sale: $for_sale
-          sort: $sort
-          at_auction: $at_auction
-          acquireable: $acquireable
-        )
+      grid: filter_artworks(
+        aggregations: [TOTAL, FOLLOWED_ARTISTS]
+        medium: $medium
+        major_periods: $major_periods
+        partner_id: $partner_id
+        for_sale: $for_sale
+        at_auction: $at_auction
+        size: 40
+        sort: "-decayed_merch"
+      ) {
+        ...CollectArtworkGrid_filtered_artworks
+      }
     }
   `
 )

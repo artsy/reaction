@@ -13,7 +13,7 @@ import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Subscribe } from "unstated"
 import { Responsive } from "Utils/Responsive"
-import { CollectArtworkGridRefreshContainer as ArtworkFilter } from "./CollectArtworkGrid"
+import { CollectArtworkGridRefreshContainer as ArtworkFilter } from "./CollectArtworkFilterRefetch"
 
 interface Props {
   hideTopBorder?: boolean
@@ -102,7 +102,7 @@ class Filter extends Component<Props> {
 
   render() {
     const { hideTopBorder } = this.props
-    const { grid, filter_artworks } = this.props.query
+    const { filter_artworks } = this.props.query
     const { aggregations } = filter_artworks
     const mediumAggregation =
       aggregations.find(agg => agg.slice === "MEDIUM") || []
@@ -191,8 +191,7 @@ class Filter extends Component<Props> {
                               <Spacer mb={2} />
 
                               <ArtworkFilter
-                                filtered_artworks={grid}
-                                columnCount={xs || sm || md ? 2 : 3}
+                                query={this.props.query}
                                 filters={filters.state}
                               />
                             </Box>
@@ -221,7 +220,6 @@ export const ArtworkGridFragmentContainer = createFragmentContainer(
         partner_id: { type: "ID" }
         for_sale: { type: "Boolean" }
         at_auction: { type: "Boolean" }
-        ecommerce: { type: "Boolean" }
         aggregations: {
           type: "[ArtworkAggregation]"
           defaultValue: [MEDIUM, TOTAL]
@@ -245,7 +243,6 @@ export const ArtworkGridFragmentContainer = createFragmentContainer(
         partner_id: $partner_id
         for_sale: $for_sale
         at_auction: $at_auction
-        ecommerce: $ecommerce
         size: 40
         sort: "-decayed_merch"
       ) {
