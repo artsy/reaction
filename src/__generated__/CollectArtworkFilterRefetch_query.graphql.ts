@@ -3,9 +3,9 @@
 import { ConcreteFragment } from "relay-runtime";
 import { CollectArtworkGrid_filtered_artworks$ref } from "./CollectArtworkGrid_filtered_artworks.graphql";
 export type ArtworkAggregation = "COLOR" | "DIMENSION_RANGE" | "FOLLOWED_ARTISTS" | "GALLERY" | "INSTITUTION" | "MAJOR_PERIOD" | "MEDIUM" | "MERCHANDISABLE_ARTISTS" | "PARTNER_CITY" | "PERIOD" | "PRICE_RANGE" | "TOTAL" | "%future added value";
-declare const _ArtworkGrid_query$ref: unique symbol;
-export type ArtworkGrid_query$ref = typeof _ArtworkGrid_query$ref;
-export type ArtworkGrid_query = {
+declare const _CollectArtworkFilterRefetch_query$ref: unique symbol;
+export type CollectArtworkFilterRefetch_query$ref = typeof _CollectArtworkFilterRefetch_query$ref;
+export type CollectArtworkFilterRefetch_query = {
     readonly filter_artworks: ({
         readonly aggregations: ReadonlyArray<({
             readonly slice: ArtworkAggregation | null;
@@ -18,7 +18,7 @@ export type ArtworkGrid_query = {
     readonly grid: ({
         readonly " $fragmentRefs": CollectArtworkGrid_filtered_artworks$ref;
     }) | null;
-    readonly " $refType": ArtworkGrid_query$ref;
+    readonly " $refType": CollectArtworkFilterRefetch_query$ref;
 };
 
 
@@ -33,7 +33,7 @@ var v0 = {
 };
 return {
   "kind": "Fragment",
-  "name": "ArtworkGrid_query",
+  "name": "CollectArtworkFilterRefetch_query",
   "type": "Query",
   "metadata": null,
   "argumentDefinitions": [
@@ -205,9 +205,9 @@ return {
           "type": "Int"
         },
         {
-          "kind": "Literal",
+          "kind": "Variable",
           "name": "sort",
-          "value": "-decayed_merch",
+          "variableName": "sort",
           "type": "String"
         }
       ],
@@ -225,5 +225,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'e3d6a97a7df9358d4ac8115efdda4b43';
+(node as any).hash = '89ded07829967a3b05fc64e65b6b390a';
 export default node;

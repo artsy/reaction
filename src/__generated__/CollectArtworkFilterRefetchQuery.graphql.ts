@@ -1,40 +1,37 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { CollectApp_query$ref } from "./CollectApp_query.graphql";
-export type routes_CollectAppQueryVariables = {};
-export type routes_CollectAppQueryResponse = {
-    readonly " $fragmentRefs": CollectApp_query$ref;
+import { CollectArtworkGrid_filtered_artworks$ref } from "./CollectArtworkGrid_filtered_artworks.graphql";
+export type CollectArtworkFilterRefetchQueryVariables = {
+    readonly medium?: string | null;
+    readonly major_periods?: ReadonlyArray<string | null> | null;
+    readonly partner_id?: string | null;
+    readonly at_auction?: boolean | null;
+    readonly for_sale?: boolean | null;
+    readonly sort?: string | null;
 };
-export type routes_CollectAppQuery = {
-    readonly response: routes_CollectAppQueryResponse;
-    readonly variables: routes_CollectAppQueryVariables;
+export type CollectArtworkFilterRefetchQueryResponse = {
+    readonly grid: ({
+        readonly " $fragmentRefs": CollectArtworkGrid_filtered_artworks$ref;
+    }) | null;
+};
+export type CollectArtworkFilterRefetchQuery = {
+    readonly response: CollectArtworkFilterRefetchQueryResponse;
+    readonly variables: CollectArtworkFilterRefetchQueryVariables;
 };
 
 
 
 /*
-query routes_CollectAppQuery {
-  ...CollectApp_query
-}
-
-fragment CollectApp_query on Query {
-  ...ArtworkGrid_query
-}
-
-fragment ArtworkGrid_query on Query {
-  filter_artworks(aggregations: [MEDIUM, TOTAL], size: 0) {
-    aggregations {
-      slice
-      counts {
-        name
-        id
-        __id
-      }
-    }
-    __id
-  }
-  grid: filter_artworks(aggregations: [TOTAL, FOLLOWED_ARTISTS], medium: "*", size: 40, sort: "-decayed_merch") {
+query CollectArtworkFilterRefetchQuery(
+  $medium: String
+  $major_periods: [String]
+  $partner_id: ID
+  $at_auction: Boolean
+  $for_sale: Boolean
+  $sort: String
+) {
+  grid: filter_artworks(aggregations: [TOTAL, FOLLOWED_ARTISTS], medium: $medium, major_periods: $major_periods, partner_id: $partner_id, for_sale: $for_sale, at_auction: $at_auction, size: 40, sort: $sort) {
     ...CollectArtworkGrid_filtered_artworks
     __id
   }
@@ -179,20 +176,97 @@ fragment Contact_artwork on Artwork {
 */
 
 const node: ConcreteRequest = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "name",
-  "args": null,
-  "storageKey": null
-},
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
+var v0 = [
+  {
+    "kind": "LocalArgument",
+    "name": "medium",
+    "type": "String",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "major_periods",
+    "type": "[String]",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "partner_id",
+    "type": "ID",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "at_auction",
+    "type": "Boolean",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "for_sale",
+    "type": "Boolean",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "sort",
+    "type": "String",
+    "defaultValue": null
+  }
+],
+v1 = [
+  {
+    "kind": "Literal",
+    "name": "aggregations",
+    "value": [
+      "TOTAL",
+      "FOLLOWED_ARTISTS"
+    ],
+    "type": "[ArtworkAggregation]"
+  },
+  {
+    "kind": "Variable",
+    "name": "at_auction",
+    "variableName": "at_auction",
+    "type": "Boolean"
+  },
+  {
+    "kind": "Variable",
+    "name": "for_sale",
+    "variableName": "for_sale",
+    "type": "Boolean"
+  },
+  {
+    "kind": "Variable",
+    "name": "major_periods",
+    "variableName": "major_periods",
+    "type": "[String]"
+  },
+  {
+    "kind": "Variable",
+    "name": "medium",
+    "variableName": "medium",
+    "type": "String"
+  },
+  {
+    "kind": "Variable",
+    "name": "partner_id",
+    "variableName": "partner_id",
+    "type": "ID"
+  },
+  {
+    "kind": "Literal",
+    "name": "size",
+    "value": 40,
+    "type": "Int"
+  },
+  {
+    "kind": "Variable",
+    "name": "sort",
+    "variableName": "sort",
+    "type": "String"
+  }
+],
 v2 = {
   "kind": "ScalarField",
   "alias": null,
@@ -243,6 +317,13 @@ v7 = {
 v8 = {
   "kind": "ScalarField",
   "alias": null,
+  "name": "name",
+  "args": null,
+  "storageKey": null
+},
+v9 = {
+  "kind": "ScalarField",
+  "alias": null,
   "name": "display",
   "args": null,
   "storageKey": null
@@ -250,123 +331,47 @@ v8 = {
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "routes_CollectAppQuery",
+  "name": "CollectArtworkFilterRefetchQuery",
   "id": null,
-  "text": "query routes_CollectAppQuery {\n  ...CollectApp_query\n}\n\nfragment CollectApp_query on Query {\n  ...ArtworkGrid_query\n}\n\nfragment ArtworkGrid_query on Query {\n  filter_artworks(aggregations: [MEDIUM, TOTAL], size: 0) {\n    aggregations {\n      slice\n      counts {\n        name\n        id\n        __id\n      }\n    }\n    __id\n  }\n  grid: filter_artworks(aggregations: [TOTAL, FOLLOWED_ARTISTS], medium: \"*\", size: 40, sort: \"-decayed_merch\") {\n    ...CollectArtworkGrid_filtered_artworks\n    __id\n  }\n}\n\nfragment CollectArtworkGrid_filtered_artworks on FilterArtworks {\n  __id\n  artworks: artworks_connection(first: 10, after: \"\") {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    ...ArtworkGrid_artworks\n    edges {\n      node {\n        __id\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  is_biddable\n  is_acquireable\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
+  "text": "query CollectArtworkFilterRefetchQuery(\n  $medium: String\n  $major_periods: [String]\n  $partner_id: ID\n  $at_auction: Boolean\n  $for_sale: Boolean\n  $sort: String\n) {\n  grid: filter_artworks(aggregations: [TOTAL, FOLLOWED_ARTISTS], medium: $medium, major_periods: $major_periods, partner_id: $partner_id, for_sale: $for_sale, at_auction: $at_auction, size: 40, sort: $sort) {\n    ...CollectArtworkGrid_filtered_artworks\n    __id\n  }\n}\n\nfragment CollectArtworkGrid_filtered_artworks on FilterArtworks {\n  __id\n  artworks: artworks_connection(first: 10, after: \"\") {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    ...ArtworkGrid_artworks\n    edges {\n      node {\n        __id\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  is_biddable\n  is_acquireable\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "routes_CollectAppQuery",
+    "name": "CollectArtworkFilterRefetchQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": [],
+    "argumentDefinitions": v0,
     "selections": [
       {
-        "kind": "FragmentSpread",
-        "name": "CollectApp_query",
-        "args": null
+        "kind": "LinkedField",
+        "alias": "grid",
+        "name": "filter_artworks",
+        "storageKey": null,
+        "args": v1,
+        "concreteType": "FilterArtworks",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "FragmentSpread",
+            "name": "CollectArtworkGrid_filtered_artworks",
+            "args": null
+          },
+          v2
+        ]
       }
     ]
   },
   "operation": {
     "kind": "Operation",
-    "name": "routes_CollectAppQuery",
-    "argumentDefinitions": [],
+    "name": "CollectArtworkFilterRefetchQuery",
+    "argumentDefinitions": v0,
     "selections": [
-      {
-        "kind": "LinkedField",
-        "alias": null,
-        "name": "filter_artworks",
-        "storageKey": "filter_artworks(aggregations:[\"MEDIUM\",\"TOTAL\"],size:0)",
-        "args": [
-          {
-            "kind": "Literal",
-            "name": "aggregations",
-            "value": [
-              "MEDIUM",
-              "TOTAL"
-            ],
-            "type": "[ArtworkAggregation]"
-          },
-          {
-            "kind": "Literal",
-            "name": "size",
-            "value": 0,
-            "type": "Int"
-          }
-        ],
-        "concreteType": "FilterArtworks",
-        "plural": false,
-        "selections": [
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "name": "aggregations",
-            "storageKey": null,
-            "args": null,
-            "concreteType": "ArtworksAggregationResults",
-            "plural": true,
-            "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "slice",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "LinkedField",
-                "alias": null,
-                "name": "counts",
-                "storageKey": null,
-                "args": null,
-                "concreteType": "AggregationCount",
-                "plural": true,
-                "selections": [
-                  v0,
-                  v1,
-                  v2
-                ]
-              }
-            ]
-          },
-          v2
-        ]
-      },
       {
         "kind": "LinkedField",
         "alias": "grid",
         "name": "filter_artworks",
-        "storageKey": "filter_artworks(aggregations:[\"TOTAL\",\"FOLLOWED_ARTISTS\"],medium:\"*\",size:40,sort:\"-decayed_merch\")",
-        "args": [
-          {
-            "kind": "Literal",
-            "name": "aggregations",
-            "value": [
-              "TOTAL",
-              "FOLLOWED_ARTISTS"
-            ],
-            "type": "[ArtworkAggregation]"
-          },
-          {
-            "kind": "Literal",
-            "name": "medium",
-            "value": "*",
-            "type": "String"
-          },
-          {
-            "kind": "Literal",
-            "name": "size",
-            "value": 40,
-            "type": "Int"
-          },
-          {
-            "kind": "Literal",
-            "name": "sort",
-            "value": "-decayed_merch",
-            "type": "String"
-          }
-        ],
+        "storageKey": null,
+        "args": v1,
         "concreteType": "FilterArtworks",
         "plural": false,
         "selections": [
@@ -501,7 +506,7 @@ return {
                         "selections": [
                           v2,
                           v7,
-                          v0
+                          v8
                         ]
                       },
                       v2,
@@ -603,7 +608,7 @@ return {
                         "concreteType": "Partner",
                         "plural": false,
                         "selections": [
-                          v0,
+                          v8,
                           v7,
                           v2,
                           {
@@ -687,7 +692,7 @@ return {
                             "concreteType": "SaleArtworkHighestBid",
                             "plural": false,
                             "selections": [
-                              v8,
+                              v9,
                               {
                                 "kind": "ScalarField",
                                 "alias": "__id",
@@ -706,7 +711,7 @@ return {
                             "concreteType": "SaleArtworkOpeningBid",
                             "plural": false,
                             "selections": [
-                              v8
+                              v9
                             ]
                           },
                           {
@@ -730,7 +735,13 @@ return {
                           v2
                         ]
                       },
-                      v1,
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "id",
+                        "args": null,
+                        "storageKey": null
+                      },
                       {
                         "kind": "ScalarField",
                         "alias": null,
@@ -750,5 +761,5 @@ return {
   }
 };
 })();
-(node as any).hash = '43f7ab26f0c7bfb1300aebed48906fa7';
+(node as any).hash = 'aca76492b0baf966537e887eb4981015';
 export default node;

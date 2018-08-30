@@ -1,7 +1,13 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-export type CollectApp_query = {};
+import { ArtworkGrid_query$ref } from "./ArtworkGrid_query.graphql";
+declare const _CollectApp_query$ref: unique symbol;
+export type CollectApp_query$ref = typeof _CollectApp_query$ref;
+export type CollectApp_query = {
+    readonly " $fragmentRefs": ArtworkGrid_query$ref;
+    readonly " $refType": CollectApp_query$ref;
+};
 
 
 

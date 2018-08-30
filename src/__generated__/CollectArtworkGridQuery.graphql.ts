@@ -1,13 +1,20 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
+import { CollectArtworkGrid_filtered_artworks$ref } from "./CollectArtworkGrid_filtered_artworks.graphql";
 export type CollectArtworkGridQueryVariables = {
     readonly filteredArtworksNodeID: string;
     readonly first: number;
     readonly after?: string | null;
 };
 export type CollectArtworkGridQueryResponse = {
-    readonly filtered_artworks: ({}) | null;
+    readonly filtered_artworks: ({
+        readonly " $fragmentRefs": CollectArtworkGrid_filtered_artworks$ref;
+    }) | null;
+};
+export type CollectArtworkGridQuery = {
+    readonly response: CollectArtworkGridQueryResponse;
+    readonly variables: CollectArtworkGridQueryVariables;
 };
 
 
@@ -84,6 +91,8 @@ fragment GridItem_artwork on Artwork {
     url(version: "large")
     aspect_ratio
   }
+  is_biddable
+  is_acquireable
   href
   ...Metadata_artwork
   ...Save_artwork
@@ -222,14 +231,7 @@ v5 = [
     "storageKey": null
   }
 ],
-v6 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "href",
-  "args": null,
-  "storageKey": null
-},
-v7 = [
+v6 = [
   {
     "kind": "Literal",
     "name": "shallow",
@@ -237,6 +239,13 @@ v7 = [
     "type": "Boolean"
   }
 ],
+v7 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "href",
+  "args": null,
+  "storageKey": null
+},
 v8 = {
   "kind": "ScalarField",
   "alias": null,
@@ -256,7 +265,7 @@ return {
   "operationKind": "query",
   "name": "CollectArtworkGridQuery",
   "id": null,
-  "text": "query CollectArtworkGridQuery(\n  $filteredArtworksNodeID: ID!\n  $first: Int!\n  $after: String\n) {\n  filtered_artworks: node(__id: $filteredArtworksNodeID) {\n    __typename\n    ...CollectArtworkGrid_filtered_artworks_2HEEH6\n    __id\n  }\n}\n\nfragment CollectArtworkGrid_filtered_artworks_2HEEH6 on FilterArtworks {\n  __id\n  artworks: artworks_connection(first: $first, after: $after) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    ...ArtworkGrid_artworks\n    edges {\n      node {\n        __id\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
+  "text": "query CollectArtworkGridQuery(\n  $filteredArtworksNodeID: ID!\n  $first: Int!\n  $after: String\n) {\n  filtered_artworks: node(__id: $filteredArtworksNodeID) {\n    __typename\n    ...CollectArtworkGrid_filtered_artworks_2HEEH6\n    __id\n  }\n}\n\nfragment CollectArtworkGrid_filtered_artworks_2HEEH6 on FilterArtworks {\n  __id\n  artworks: artworks_connection(first: $first, after: $after) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    ...ArtworkGrid_artworks\n    edges {\n      node {\n        __id\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  is_biddable\n  is_acquireable\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -443,14 +452,35 @@ return {
                         "plural": false,
                         "selections": [
                           {
+                            "kind": "LinkedField",
+                            "alias": null,
+                            "name": "artists",
+                            "storageKey": "artists(shallow:true)",
+                            "args": v6,
+                            "concreteType": "Artist",
+                            "plural": true,
+                            "selections": [
+                              v2,
+                              v7,
+                              v8
+                            ]
+                          },
+                          v2,
+                          {
                             "kind": "ScalarField",
                             "alias": null,
-                            "name": "collecting_institution",
+                            "name": "is_biddable",
                             "args": null,
                             "storageKey": null
                           },
-                          v2,
-                          v6,
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "is_acquireable",
+                            "args": null,
+                            "storageKey": null
+                          },
+                          v7,
                           {
                             "kind": "ScalarField",
                             "alias": null,
@@ -478,20 +508,6 @@ return {
                             "name": "cultural_maker",
                             "args": null,
                             "storageKey": null
-                          },
-                          {
-                            "kind": "LinkedField",
-                            "alias": null,
-                            "name": "artists",
-                            "storageKey": "artists(shallow:true)",
-                            "args": v7,
-                            "concreteType": "Artist",
-                            "plural": true,
-                            "selections": [
-                              v2,
-                              v6,
-                              v8
-                            ]
                           },
                           {
                             "kind": "LinkedField",
@@ -533,16 +549,23 @@ return {
                             ]
                           },
                           {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "collecting_institution",
+                            "args": null,
+                            "storageKey": null
+                          },
+                          {
                             "kind": "LinkedField",
                             "alias": null,
                             "name": "partner",
                             "storageKey": "partner(shallow:true)",
-                            "args": v7,
+                            "args": v6,
                             "concreteType": "Partner",
                             "plural": false,
                             "selections": [
                               v8,
-                              v6,
+                              v7,
                               v2,
                               {
                                 "kind": "ScalarField",

@@ -129,7 +129,7 @@ export const CollectArtworkGridRefreshContainer = createRefetchContainer(
         for_sale: $for_sale
         at_auction: $at_auction
         size: 40
-        sort: "-decayed_merch"
+        sort: $sort
       ) {
         ...CollectArtworkGrid_filtered_artworks
       }
