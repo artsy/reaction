@@ -72,7 +72,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
               },
             },
             onCompleted: result => {
-              if (result.submitOrder.orderOrError.error) {
+              if ("error" in result.submitOrder.orderOrError) {
                 // TODO: handle failure properly
                 console.error(result.submitOrder.orderOrError.error.description)
                 return
