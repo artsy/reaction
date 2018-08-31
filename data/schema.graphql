@@ -34,7 +34,7 @@ input ApproveOrderInput {
 }
 
 type ApproveOrderPayload {
-  result: OrderReturnType
+  orderOrError: OrderOrFailureUnionType
   clientMutationId: String
 }
 
@@ -2750,7 +2750,7 @@ input FulfillOrderAtOnceInput {
 }
 
 type FulfillOrderAtOncePayload {
-  result: OrderReturnType
+  orderOrError: OrderOrFailureUnionType
   clientMutationId: String
 }
 
@@ -4414,14 +4414,6 @@ union OrderOrFailureUnionType = OrderWithMutationSuccess | OrderWithMutationFail
 
 union OrderParty = Partner | User
 
-type OrderReturnType {
-  # Returned order object
-  order: Order
-
-  # Errors
-  errors: [String]
-}
-
 enum OrdersSortMethodType {
   # Sort by latest timestamp order was updated in ascending order
   UPDATED_AT_ASC
@@ -5346,7 +5338,7 @@ input RejectOrderInput {
 }
 
 type RejectOrderPayload {
-  result: OrderReturnType
+  orderOrError: OrderOrFailureUnionType
   clientMutationId: String
 }
 
@@ -5849,7 +5841,7 @@ input SetOrderPaymentInput {
 }
 
 type SetOrderPaymentPayload {
-  result: OrderReturnType
+  orderOrError: OrderOrFailureUnionType
   clientMutationId: String
 }
 
@@ -5866,7 +5858,7 @@ input SetOrderShippingInput {
 }
 
 type SetOrderShippingPayload {
-  result: OrderReturnType
+  orderOrError: OrderOrFailureUnionType
   clientMutationId: String
 }
 
@@ -6117,7 +6109,7 @@ input SubmitOrderInput {
 }
 
 type SubmitOrderPayload {
-  result: OrderReturnType
+  orderOrError: OrderOrFailureUnionType
   clientMutationId: String
 }
 
