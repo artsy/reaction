@@ -8,7 +8,7 @@ import { ActionName, ActionType } from "./Values"
  * Some actions lead to results, such as following an artist, in which case the
  * action name is used to tie the interaction and result events together.
  */
-export interface BaseInteraction {
+export interface Interaction {
   /**
    * The type of interaction that this event represents. E.g. `Click`.
    *
@@ -36,7 +36,7 @@ export interface BaseInteraction {
   destination_path?: string
 }
 
-export interface AuthInteraction {
+export interface AuthenticationInteraction extends Interaction {
   /*
   * The action taken that prompted user to signup or login.
   */
@@ -52,5 +52,3 @@ export interface AuthInteraction {
   */
   trigger?: string
 }
-
-export type Interaction = BaseInteraction & AuthInteraction

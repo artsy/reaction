@@ -12,7 +12,6 @@ export interface MinimalCtaBannerProps extends React.Props<HTMLDivElement> {
   height?: string
   href?: string
   position: "top" | "bottom"
-  tracking?: any
   textColor?: string
   show?: boolean
 }
@@ -44,7 +43,7 @@ export class MinimalCtaBanner extends React.Component<
     action_name: Schema.ActionName.Dismiss,
     subject: "dismiss auth banner for editorial cta on mobile",
     intent: Schema.ActionName.ViewEditorial,
-    flow: "auth",
+    flow: "authentication",
   })
   dismissCta() {
     this.setState({ dismissed: true })
