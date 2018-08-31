@@ -5,7 +5,7 @@ import { getEditorialHref } from "Components/Publishing/Constants"
 import { get, omit } from "lodash"
 import React from "react"
 import styled from "styled-components"
-import { ResponsiveDeprecated } from "../../../Utils/ResponsiveDeprecated"
+import { Responsive } from "Utils/Responsive"
 import { pMedia } from "../../Helpers"
 import { ArticleProps } from "../Article"
 import { DisplayPanel } from "../Display/DisplayPanel"
@@ -67,6 +67,7 @@ export class StandardLayout extends React.Component<
       display,
       emailSignupUrl,
       infiniteScrollEntrySlug,
+      isMobile,
       relatedArticlesForCanvas,
       relatedArticlesForPanel,
       renderTime,
@@ -76,9 +77,8 @@ export class StandardLayout extends React.Component<
     const campaign = omit(display, "panel", "canvas")
 
     return (
-      // FIXME: Update with new version
-      <ResponsiveDeprecated initialState={{ isMobile: this.props.isMobile }}>
-        {({ isMobile, xs, sm, md }) => {
+      <Responsive>
+        {({ xs, sm, md }) => {
           const hasPanel = get(display, "panel", false)
           const isMobileAd = Boolean(isMobile || xs || sm || md)
 
@@ -138,7 +138,7 @@ export class StandardLayout extends React.Component<
             </ArticleWrapper>
           )
         }}
-      </ResponsiveDeprecated>
+      </Responsive>
     )
   }
 }

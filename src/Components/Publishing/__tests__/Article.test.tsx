@@ -10,7 +10,7 @@ import {
   VideoArticle,
 } from "../Fixtures/Articles"
 
-import { MinimalCtaBanner } from "../../MinimalCtaBanner"
+import { BannerWrapper } from "../Banner/Banner"
 import { ArticleWithFullScreen } from "../Layouts/ArticleWithFullScreen"
 import { NewsLayout } from "../Layouts/NewsLayout"
 import { SeriesLayout } from "../Layouts/SeriesLayout"
@@ -44,50 +44,28 @@ it("renders news articles in news layout", () => {
   const article = mount(<Article article={NewsArticle} />)
   expect(article.find(NewsLayout).length).toBe(1)
 })
-
-it("renders mobile MinimalCtaBanner for standard article layouts", () => {
-  const article = shallow(
-    <Article article={StandardArticle} isMobile isLoggedIn={false} />
-  )
-  expect(article.find(MinimalCtaBanner).length).toBe(1)
-})
-
-it("renders mobile MinimalCtaBanner for news article layouts", () => {
-  const article = shallow(
-    <Article article={NewsArticle} isMobile isLoggedIn={false} />
-  )
-  expect(article.find(MinimalCtaBanner).length).toBe(1)
-})
-
-it("renders mobile MinimalCtaBanner for video article layouts", () => {
-  const article = shallow(
-    <Article article={VideoArticle} isMobile isLoggedIn={false} />
-  )
-  expect(article.find(MinimalCtaBanner).length).toBe(1)
-})
-
-it("does not renders mobile MinimalCtaBanner for standard article layouts for desktop", () => {
+it("does not renders mobile BannerWrapper for standard article layouts for desktop", () => {
   const article = shallow(
     <Article article={StandardArticle} isMobile={false} isLoggedIn={false} />
   )
-  expect(article.find(MinimalCtaBanner).length).toBe(0)
+  expect(article.find(BannerWrapper).length).toBe(0)
 })
 
-it("does not renders mobile MinimalCtaBanner for standard article layouts for logged in users", () => {
+it("does not renders mobile BannerWrapper for standard article layouts for logged in users", () => {
   const article = shallow(
     <Article article={StandardArticle} isMobile isLoggedIn />
   )
-  expect(article.find(MinimalCtaBanner).length).toBe(0)
+  expect(article.find(BannerWrapper).length).toBe(0)
 })
 
-it("does not renders mobile MinimalCtaBanner for series article layouts for logged in users", () => {
+it("does not renders mobile BannerWrapper for series article layouts for logged in users", () => {
   const article = shallow(
     <Article article={SeriesArticle} isMobile isLoggedIn={false} />
   )
-  expect(article.find(MinimalCtaBanner).length).toBe(0)
+  expect(article.find(BannerWrapper).length).toBe(0)
 })
 
-it("does not render separate MinimalCtaBanner for articles after the initial article in infinite scroll", () => {
+it("does not render separate BannerWrapper for articles after the initial article in infinite scroll", () => {
   const article = shallow(
     <Article
       article={StandardArticle}
@@ -96,23 +74,5 @@ it("does not render separate MinimalCtaBanner for articles after the initial art
       isTruncated
     />
   )
-  expect(article.find(MinimalCtaBanner).length).toBe(0)
-})
-
-it("it sets state appropriately based on scroll direction", () => {
-  const aWindow: any = window
-
-  const wrapper = shallow(
-    <Article article={StandardArticle} isMobile isLoggedIn />
-  )
-  const article = wrapper.instance() as any
-
-  // User scrolls back up which should show the banner
-  article.handleScroll()
-  expect(article.state.showCtaBanner).toBe(false)
-
-  aWindow.scrollY = 500
-  article.handleScroll()
-  wrapper.update()
-  expect(article.state.showCtaBanner).toBe(true)
+  expect(article.find(BannerWrapper).length).toBe(0)
 })

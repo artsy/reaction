@@ -14,10 +14,10 @@ jest.mock("react-relay", () => ({
 }))
 
 describe("Shipping", () => {
-  const getWrapper = props => {
+  const getWrapper = someProps => {
     return mount(
       <Provider>
-        <ShippingRoute {...props} />
+        <ShippingRoute {...someProps} />
       </Provider>
     )
   }
