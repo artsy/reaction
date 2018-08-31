@@ -1,3 +1,4 @@
+import qs from "querystring"
 import React from "react"
 import track from "react-tracking"
 import Events from "../../Utils/Events"
@@ -135,9 +136,12 @@ export class Article extends React.Component<ArticleProps, State> {
         {this.getArticleLayout()}
         {this.shouldRenderSignUpCta() && (
           <MinimalCtaBanner
-            href={`/sign_up?intent=viewed+editorial&trigger=click&contextModule=auth+minimal+cta+banner&redirect-to=${getArticleFullHref(
-              slug
-            )}`}
+            href={`/sign_up?${qs.stringify({
+              intent: "viewed editorial",
+              trigger: "click",
+              contextModule: "auth minimal cta banner",
+              "redirect-to": getArticleFullHref(slug),
+            })}`}
             height="55px"
             copy={copy}
             position="bottom"
