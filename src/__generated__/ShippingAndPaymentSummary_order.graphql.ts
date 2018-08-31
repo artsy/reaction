@@ -12,6 +12,7 @@ export type ShippingAndPaymentSummary_order = {
         readonly city: string | null;
         readonly postalCode: string | null;
         readonly region: string | null;
+        readonly country: string;
     } | {
         /*This will never be '% other', but we need some
         value in case none of the concrete values match.*/
@@ -120,6 +121,13 @@ return {
               "name": "region",
               "args": null,
               "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "country",
+              "args": null,
+              "storageKey": null
             }
           ]
         }
@@ -222,5 +230,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '8aa1d8b313a6cb85a539e4d9453444ce';
+(node as any).hash = 'ece160ca7fd755b9b805ffd2b741e3b2';
 export default node;

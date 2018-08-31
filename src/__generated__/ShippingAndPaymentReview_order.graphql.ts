@@ -12,6 +12,7 @@ export type ShippingAndPaymentReview_order = {
         readonly city: string | null;
         readonly postalCode: string | null;
         readonly region: string | null;
+        readonly country: string;
     } | {
         /*This will never be '% other', but we need some
         value in case none of the concrete values match.*/
@@ -120,6 +121,13 @@ return {
               "name": "region",
               "args": null,
               "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "country",
+              "args": null,
+              "storageKey": null
             }
           ]
         }
@@ -222,5 +230,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '5cedddcabb93383a1e506b265d4468b9';
+(node as any).hash = 'e7d06d6951ef4d1722bd36d8beaa19f1';
 export default node;
