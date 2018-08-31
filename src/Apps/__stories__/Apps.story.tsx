@@ -1,8 +1,9 @@
 import { storiesOf } from "@storybook/react"
+import { StorybooksRouter } from "Artsy/Router"
 import React from "react"
-import { StorybooksRouter } from "Router/StorybooksRouter"
 import { routes as artistRoutes } from "../Artist/routes"
 import { routes as artworkRoutes } from "../Artwork/routes"
+import { routes as collectRoutes } from "../Collect/routes"
 
 storiesOf("Apps", module)
   .add("Artwork Page", () => {
@@ -17,8 +18,25 @@ storiesOf("Apps", module)
     return (
       <StorybooksRouter
         routes={artistRoutes}
-        initialRoute="/artist/pablo-picasso"
-        initialState={{ mediator: { trigger: x => x } }}
+        initialRoute="/artist/walter-gropius"
+        context={{
+          mediator: {
+            trigger: x => x,
+          },
+        }}
+      />
+    )
+  })
+  .add("Collect Page", () => {
+    return (
+      <StorybooksRouter
+        routes={collectRoutes}
+        initialRoute="/collect2"
+        initialState={{
+          mediator: {
+            trigger: x => x,
+          },
+        }}
       />
     )
   })

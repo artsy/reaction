@@ -63,13 +63,13 @@ export class Modal extends React.Component<ModalProps, ModalState> {
   }
 
   addBlurToContainers = () => {
-    for (let container of this.state.blurContainers) {
+    for (const container of this.state.blurContainers) {
       container.classList.add("blurred")
     }
   }
 
   removeBlurToContainers = () => {
-    for (let container of this.state.blurContainers) {
+    for (const container of this.state.blurContainers) {
       container.classList.remove("blurred")
     }
   }

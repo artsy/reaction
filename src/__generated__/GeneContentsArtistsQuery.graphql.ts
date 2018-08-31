@@ -10,6 +10,10 @@ export type GeneContentsArtistsQueryResponse = {
         readonly " $fragmentRefs": Artists_gene$ref;
     }) | null;
 };
+export type GeneContentsArtistsQuery = {
+    readonly response: GeneContentsArtistsQueryResponse;
+    readonly variables: GeneContentsArtistsQueryVariables;
+};
 
 
 

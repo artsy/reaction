@@ -1,6 +1,6 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Step, Stepper } from "Styleguide/Components/Stepper"
+import { Step, Stepper } from "Styleguide/Components"
 import { Section } from "Styleguide/Utils/Section"
 
 storiesOf("Styleguide/Components", module).add("Tabs (Stepper)", () => {

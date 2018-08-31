@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { Author } from "./Author"
 
 interface AuthorsProps {
-  authors: Array<object>
+  authors: object[]
 }
 
 export const Authors: React.SFC<AuthorsProps> = props => {

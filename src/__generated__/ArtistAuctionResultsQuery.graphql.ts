@@ -16,6 +16,10 @@ export type ArtistAuctionResultsQueryResponse = {
         readonly " $fragmentRefs": ArtistAuctionResults_artist$ref;
     }) | null;
 };
+export type ArtistAuctionResultsQuery = {
+    readonly response: ArtistAuctionResultsQueryResponse;
+    readonly variables: ArtistAuctionResultsQueryVariables;
+};
 
 
 

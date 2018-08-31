@@ -10,6 +10,10 @@ export type routes_ArtistTopLevelQueryResponse = {
         readonly " $fragmentRefs": ArtistApp_artist$ref;
     }) | null;
 };
+export type routes_ArtistTopLevelQuery = {
+    readonly response: routes_ArtistTopLevelQueryResponse;
+    readonly variables: routes_ArtistTopLevelQueryVariables;
+};
 
 
 

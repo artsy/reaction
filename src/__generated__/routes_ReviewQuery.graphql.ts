@@ -10,6 +10,10 @@ export type routes_ReviewQueryResponse = {
         readonly " $fragmentRefs": Review_order$ref;
     }) | null;
 };
+export type routes_ReviewQuery = {
+    readonly response: routes_ReviewQueryResponse;
+    readonly variables: routes_ReviewQueryVariables;
+};
 
 
 
@@ -38,6 +42,7 @@ fragment Review_order on Order {
     }
   }
   ...TransactionSummary_order
+  ...ShippingAndPaymentReview_order
   __id: id
 }
 
@@ -66,9 +71,17 @@ fragment TransactionSummary_order on Order {
   taxTotal
   itemsTotal
   buyerTotal
-  partner {
-    name
-    __id
+  seller {
+    __typename
+    ... on Partner {
+      name
+    }
+    ... on Node {
+      __id
+    }
+    ... on User {
+      __id
+    }
   }
   lineItems {
     edges {
@@ -88,6 +101,39 @@ fragment TransactionSummary_order on Order {
         __id: id
       }
     }
+  }
+  __id: id
+}
+
+fragment ShippingAndPaymentReview_order on Order {
+  requestedFulfillment {
+    __typename
+    ... on Ship {
+      name
+      addressLine1
+      addressLine2
+      city
+      postalCode
+      region
+    }
+  }
+  lineItems {
+    edges {
+      node {
+        artwork {
+          shippingOrigin
+          __id
+        }
+        __id: id
+      }
+    }
+  }
+  creditCard {
+    brand
+    last_digits
+    expiration_year
+    expiration_month
+    __id
   }
   __id: id
 }
@@ -139,13 +185,27 @@ v5 = {
   "name": "__id",
   "args": null,
   "storageKey": null
+},
+v6 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__typename",
+  "args": null,
+  "storageKey": null
+},
+v7 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "name",
+  "args": null,
+  "storageKey": null
 };
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "routes_ReviewQuery",
   "id": null,
-  "text": "query routes_ReviewQuery(\n  $orderID: String!\n) {\n  order(id: $orderID) {\n    ...Review_order\n    __id: id\n  }\n}\n\nfragment Review_order on Order {\n  id\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          ...ItemReview_artwork\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  ...TransactionSummary_order\n  __id: id\n}\n\nfragment ItemReview_artwork on Artwork {\n  artist_names\n  title\n  date\n  medium\n  dimensions {\n    in\n    cm\n  }\n  attribution_class {\n    short_description\n  }\n  image {\n    resized(width: 185) {\n      url\n    }\n  }\n  __id\n}\n\nfragment TransactionSummary_order on Order {\n  shippingTotal\n  taxTotal\n  itemsTotal\n  buyerTotal\n  partner {\n    name\n    __id\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_transactionSummary: resized(width: 55) {\n              url\n            }\n          }\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n",
+  "text": "query routes_ReviewQuery(\n  $orderID: String!\n) {\n  order(id: $orderID) {\n    ...Review_order\n    __id: id\n  }\n}\n\nfragment Review_order on Order {\n  id\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          ...ItemReview_artwork\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  ...TransactionSummary_order\n  ...ShippingAndPaymentReview_order\n  __id: id\n}\n\nfragment ItemReview_artwork on Artwork {\n  artist_names\n  title\n  date\n  medium\n  dimensions {\n    in\n    cm\n  }\n  attribution_class {\n    short_description\n  }\n  image {\n    resized(width: 185) {\n      url\n    }\n  }\n  __id\n}\n\nfragment TransactionSummary_order on Order {\n  shippingTotal\n  taxTotal\n  itemsTotal\n  buyerTotal\n  seller {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n    ... on User {\n      __id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_transactionSummary: resized(width: 55) {\n              url\n            }\n          }\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n\nfragment ShippingAndPaymentReview_order on Order {\n  requestedFulfillment {\n    __typename\n    ... on Ship {\n      name\n      addressLine1\n      addressLine2\n      city\n      postalCode\n      region\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  creditCard {\n    brand\n    last_digits\n    expiration_year\n    expiration_month\n    __id\n  }\n  __id: id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -389,23 +449,118 @@ return {
           {
             "kind": "LinkedField",
             "alias": null,
-            "name": "partner",
+            "name": "seller",
             "storageKey": null,
             "args": null,
-            "concreteType": "Partner",
+            "concreteType": null,
+            "plural": false,
+            "selections": [
+              v6,
+              v5,
+              {
+                "kind": "InlineFragment",
+                "type": "Partner",
+                "selections": [
+                  v7
+                ]
+              }
+            ]
+          },
+          v2,
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "requestedFulfillment",
+            "storageKey": null,
+            "args": null,
+            "concreteType": null,
+            "plural": false,
+            "selections": [
+              v6,
+              {
+                "kind": "InlineFragment",
+                "type": "Ship",
+                "selections": [
+                  v7,
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "addressLine1",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "addressLine2",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "city",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "postalCode",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "region",
+                    "args": null,
+                    "storageKey": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "creditCard",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "CreditCard",
             "plural": false,
             "selections": [
               {
                 "kind": "ScalarField",
                 "alias": null,
-                "name": "name",
+                "name": "brand",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "last_digits",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "expiration_year",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "expiration_month",
                 "args": null,
                 "storageKey": null
               },
               v5
             ]
-          },
-          v2
+          }
         ]
       }
     ]

@@ -1,5 +1,6 @@
 import { TooltipsDataLoaderQueryResponse } from "__generated__/TooltipsDataLoaderQuery.graphql"
-import * as Artsy from "Components/Artsy"
+import { TooltipsDataLoaderQuery } from "__generated__/TooltipsDataLoaderQuery.graphql"
+import * as Artsy from "Artsy/SystemContext"
 import { getArtsySlugsFromArticle } from "Components/Publishing/Constants"
 import { ArticleData } from "Components/Publishing/Typings"
 import { keyBy } from "lodash"
@@ -23,7 +24,7 @@ export class TooltipsDataLoader extends Component<Props> {
     const {
       article,
       children,
-      currentUser,
+      user,
       relayEnvironment,
       shouldFetchData,
       onOpenAuthModal,
@@ -38,7 +39,7 @@ export class TooltipsDataLoader extends Component<Props> {
     }
 
     return (
-      <QueryRenderer
+      <QueryRenderer<TooltipsDataLoaderQuery>
         environment={relayEnvironment}
         query={graphql`
           query TooltipsDataLoaderQuery(
@@ -76,7 +77,7 @@ export class TooltipsDataLoader extends Component<Props> {
           return (
             <TooltipsContextProvider
               {...data}
-              currentUser={currentUser}
+              user={user}
               onOpenAuthModal={onOpenAuthModal}
             >
               {children}
@@ -91,7 +92,7 @@ export class TooltipsDataLoader extends Component<Props> {
 class TooltipsContextProvider extends Component<any> {
   static childContextTypes = {
     activeToolTip: PropTypes.any,
-    currentUser: PropTypes.object,
+    user: PropTypes.object,
     onOpenAuthModal: PropTypes.func,
     onTriggerToolTip: PropTypes.func,
     tooltipsData: PropTypes.object,
@@ -115,12 +116,12 @@ class TooltipsContextProvider extends Component<any> {
   }
 
   getChildContext() {
-    const { artists, currentUser, genes, onOpenAuthModal } = this.props
+    const { artists, user, genes, onOpenAuthModal } = this.props
     const { activeToolTip, waitForFade } = this.state
 
     return {
       activeToolTip,
-      currentUser,
+      user,
       onOpenAuthModal,
       onTriggerToolTip: this.onTriggerToolTip,
       tooltipsData: {
@@ -136,4 +137,4 @@ class TooltipsContextProvider extends Component<any> {
   }
 }
 
-export const TooltipsData = Artsy.ContextConsumer(TooltipsDataLoader)
+export const TooltipsData = Artsy.withContext(TooltipsDataLoader)

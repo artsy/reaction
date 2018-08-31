@@ -1,9 +1,10 @@
+import { pMedia } from "Components/Helpers"
+import { VideoControls } from "Components/Publishing/Sections/VideoControls"
 import { memoize, once } from "lodash"
 import React, { Component } from "react"
 import track from "react-tracking"
 import styled from "styled-components"
-import { pMedia } from "../../../Helpers"
-import { VideoControls } from "../../Sections/VideoControls"
+import { resize } from "Utils/resizer"
 
 export interface CanvasVideoProps {
   campaign: any
@@ -70,7 +71,7 @@ export class CanvasVideo extends Component<CanvasVideoProps, any> {
     }
   }
 
-  trackDuration: Function = memoize(percentComplete => {
+  trackDuration = memoize(percentComplete => {
     this.props.tracking.trackEvent({
       action: "Video duration",
       label: "Display ad video duration",
@@ -80,7 +81,7 @@ export class CanvasVideo extends Component<CanvasVideoProps, any> {
     })
   })
 
-  trackSeconds: Function = memoize(secondsComplete => {
+  trackSeconds = memoize(secondsComplete => {
     this.props.tracking.trackEvent({
       action: "Video seconds",
       label: "Display ad video seconds",
@@ -134,10 +135,15 @@ export class CanvasVideo extends Component<CanvasVideoProps, any> {
   render() {
     const { isPlaying } = this.state
 
+    const resized_cover = resize(this.props.coverUrl, {
+      width: 760,
+      isDisplayAd: true,
+    })
+
     return (
       <VideoContainer onClick={this.onPlayVideo}>
         {!isPlaying && (
-          <Cover coverUrl={this.props.coverUrl} className="CanvasVideo__cover">
+          <Cover coverUrl={resized_cover} className="CanvasVideo__cover">
             <VideoControls />
           </Cover>
         )}

@@ -2,8 +2,9 @@ import React from "react"
 import { commitMutation, graphql } from "react-relay"
 import styled from "styled-components"
 
+import { BudgetUpdateMyUserProfileMutation } from "__generated__/BudgetUpdateMyUserProfileMutation.graphql"
+import { ContextProps, withContext } from "Artsy/SystemContext"
 import Colors from "../../../Assets/Colors"
-import { ContextConsumer, ContextProps } from "../../Artsy"
 import { MultiButtonState } from "../../Buttons/MultiStateButton"
 import { media } from "../../Helpers"
 import SelectableToggle from "../SelectableToggle"
@@ -47,32 +48,35 @@ export class BudgetComponent extends React.Component<
   }
 
   onOptionSelected = (index: number) => {
-    let selection = { selection: Object.values(this.options)[index] }
+    const selection = { selection: Object.values(this.options)[index] }
     this.setState(selection)
   }
 
   submit() {
     const priceRangeMax = this.state.selection
 
-    commitMutation(this.props.relayEnvironment, {
-      mutation: graphql`
-        mutation BudgetUpdateMyUserProfileMutation(
-          $input: UpdateMyProfileInput!
-        ) {
-          updateMyUserProfile(input: $input) {
-            user {
-              name
+    commitMutation<BudgetUpdateMyUserProfileMutation>(
+      this.props.relayEnvironment,
+      {
+        mutation: graphql`
+          mutation BudgetUpdateMyUserProfileMutation(
+            $input: UpdateMyProfileInput!
+          ) {
+            updateMyUserProfile(input: $input) {
+              user {
+                name
+              }
             }
           }
-        }
-      `,
-      variables: {
-        input: {
-          price_range_min: -1,
-          price_range_max: priceRangeMax,
+        `,
+        variables: {
+          input: {
+            price_range_min: -1,
+            price_range_max: priceRangeMax,
+          },
         },
-      },
-    })
+      }
+    )
 
     this.props.onNextButtonPressed()
   }
@@ -105,7 +109,7 @@ export class BudgetComponent extends React.Component<
   }
 }
 
-const Budget = ContextConsumer(BudgetComponent)
+const Budget = withContext(BudgetComponent)
 // tslint:disable:no-string-literal
 Budget["slug"] = BudgetComponent.slug
 

@@ -3,11 +3,13 @@ import React from "react"
 
 import { UntouchedOrder } from "Apps/__test__/Fixtures/Order"
 import { TermsOfServiceCheckbox } from "Apps/Order/Components/TermsOfServiceCheckbox"
+import { commitMutation } from "react-relay"
 import { Button } from "Styleguide/Elements/Button"
 import { Provider } from "unstated"
 import { ReviewRoute } from "../Review"
 
 jest.mock("react-relay", () => ({
+  commitMutation: jest.fn(),
   createFragmentContainer: component => component,
 }))
 
@@ -16,6 +18,9 @@ const defaultProps = {
   order: { ...UntouchedOrder, id: "1234" },
   router: {
     push: pushMock,
+  },
+  relay: {
+    environment: {},
   },
 }
 
@@ -41,7 +46,12 @@ describe("Review", () => {
       .find(TermsOfServiceCheckbox)
       .props()
       .onSelect()
+    ;(commitMutation as jest.Mock<any>).mockImplementationOnce(
+      (_, { onCompleted }) =>
+        onCompleted({ submitOrder: { orderOrError: { order: {} } } })
+    )
     component.find(Button).simulate("click")
-    expect(pushMock).toBeCalledWith("/order2/1234/submission")
+    expect(commitMutation).toHaveBeenCalledTimes(1)
+    expect(pushMock).toBeCalledWith("/order2/1234/status")
   })
 })

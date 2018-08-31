@@ -1,12 +1,13 @@
+import { Boot } from "Artsy/Router"
+import { MatchingMediaQueries } from "Artsy/Router/types"
 import { mount } from "enzyme"
 import { set } from "lodash/fp"
 import React from "react"
-import { Boot } from "../../../Router/Boot"
 import { ArtistCard, LargeArtistCard, SmallArtistCard } from "../ArtistCard"
 
 describe("ArtistCard", () => {
   const props = {
-    currentUser: null,
+    user: null,
     artist: {
       image: {
         cropped: {
@@ -45,7 +46,9 @@ describe("ArtistCard", () => {
       const updatedProps: any = set("artist.image", undefined, props)
 
       const wrapper = mount(
-        <Boot initialMatchingMediaQueries={[breakpoint]}>
+        <Boot
+          initialMatchingMediaQueries={[breakpoint] as MatchingMediaQueries}
+        >
           <ArtistCard {...updatedProps} />
         </Boot>
       )

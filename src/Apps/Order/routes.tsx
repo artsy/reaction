@@ -1,4 +1,5 @@
-import { Location, RouteConfig, Router } from "found"
+import { Location, Redirect, RouteConfig, Router } from "found"
+import React from "react"
 import { graphql } from "react-relay"
 import { OrderApp } from "./OrderApp"
 
@@ -9,7 +10,7 @@ import { ReviewFragmentContainer as ReviewRoute } from "Apps/Order/Routes/Review
 // @ts-ignore
 import { ShippingFragmentContainer as ShippingRoute } from "Apps/Order/Routes/Shipping"
 // @ts-ignore
-import { SubmissionFragmentContainer as SubmissionRoute } from "Apps/Order/Routes/Submission"
+import { StatusFragmentContainer as StatusRoute } from "Apps/Order/Routes/Status"
 
 // @ts-ignore
 import { ComponentClass, StatelessComponent } from "react"
@@ -21,7 +22,7 @@ import { ReviewProps } from "./Routes/Review"
 // @ts-ignore
 import { ShippingProps } from "./Routes/Shipping"
 // @ts-ignore
-import { SubmissionProps } from "./Routes/Submission"
+import { StatusProps } from "./Routes/Status"
 
 const LEAVE_MESSAGING =
   "Are you sure you want to refresh? Your changes will not be saved."
@@ -98,15 +99,27 @@ export const routes = [
         `,
       },
       {
-        path: "submission",
-        Component: SubmissionRoute,
+        path: "status",
+        Component: StatusRoute,
         query: graphql`
-          query routes_SubmissionQuery($orderID: String!) {
+          query routes_StatusQuery($orderID: String!) {
             order(id: $orderID) {
-              ...Submission_order
+              ...Status_order
             }
           }
         `,
+      },
+      // For now, redirect the empty route to the shipping page
+      new Redirect({
+        from: "/",
+        to: "/order2/:orderID/shipping",
+      }),
+      {
+        path: "*",
+        Component: props => {
+          console.warn("Route not found: ", props)
+          return <div>Page not found</div>
+        },
       },
     ],
   },

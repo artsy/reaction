@@ -12,9 +12,14 @@ export type FollowArtistMutationVariables = {
 export type FollowArtistMutationResponse = {
     readonly followArtist: ({
         readonly artist: ({
+            readonly __id: string;
             readonly is_followed: boolean | null;
         }) | null;
     }) | null;
+};
+export type FollowArtistMutation = {
+    readonly response: FollowArtistMutationResponse;
+    readonly variables: FollowArtistMutationVariables;
 };
 
 
@@ -25,8 +30,8 @@ mutation FollowArtistMutation(
 ) {
   followArtist(input: $input) {
     artist {
-      is_followed
       __id
+      is_followed
     }
   }
 }
@@ -70,14 +75,14 @@ v1 = [
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "is_followed",
+            "name": "__id",
             "args": null,
             "storageKey": null
           },
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "__id",
+            "name": "is_followed",
             "args": null,
             "storageKey": null
           }
@@ -91,7 +96,7 @@ return {
   "operationKind": "mutation",
   "name": "FollowArtistMutation",
   "id": null,
-  "text": "mutation FollowArtistMutation(\n  $input: FollowArtistInput!\n) {\n  followArtist(input: $input) {\n    artist {\n      is_followed\n      __id\n    }\n  }\n}\n",
+  "text": "mutation FollowArtistMutation(\n  $input: FollowArtistInput!\n) {\n  followArtist(input: $input) {\n    artist {\n      __id\n      is_followed\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -109,5 +114,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'ee4f16ddad64c93338d517ef28b0570e';
+(node as any).hash = '73c44bcd83a0d8cada5bcb910fb1a71f';
 export default node;

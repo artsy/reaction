@@ -1,9 +1,9 @@
+import { ContextProvider } from "Artsy"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import PropTypes from "prop-types"
 import React from "react"
 import track from "react-tracking"
-import { ContextProvider } from "../../../Artsy"
 import { FollowArtistButton } from "../../../FollowButton/FollowArtistButton"
 import { Artists } from "../../Fixtures/Components"
 import { wrapperWithContext } from "../../Fixtures/Helpers"
@@ -22,9 +22,9 @@ describe("ArtistToolTip", () => {
         {
           tooltipsData: PropTypes.object,
           onOpenAuthModal: PropTypes.func,
-          currentUser: PropTypes.object,
+          user: PropTypes.object,
         },
-        <ContextProvider currentUser={(context as any).currentUser}>
+        <ContextProvider user={(context as any).user}>
           <ArtistToolTip {...props} />
         </ContextProvider>
       )
@@ -86,7 +86,7 @@ describe("ArtistToolTip", () => {
       const artist = Artists[0].artist
       const context = {
         onOpenAuthModal: jest.fn(),
-        currentUser: null,
+        user: null,
       }
       const component = getWrapper({ artist }, context)
       component.find(FollowArtistButton).simulate("click")

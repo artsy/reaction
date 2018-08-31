@@ -1,7 +1,7 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
 
-import { ContextProvider } from "../../Artsy"
+import { ContextProvider } from "Artsy/SystemContext"
 import Budget from "../Steps/Budget"
 
 storiesOf("Onboarding", module).add("Budget", () => {

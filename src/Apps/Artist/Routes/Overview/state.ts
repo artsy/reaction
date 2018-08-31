@@ -1,7 +1,7 @@
 import { cloneDeep, omit, uniq, without } from "lodash"
 import { Container } from "unstated"
 
-type State = {
+interface State {
   // Search filters
   medium: string
   major_periods?: string[]
@@ -11,6 +11,7 @@ type State = {
   sort?: string
   acquireable?: boolean
   at_auction?: boolean
+  inquireable_only?: boolean
 
   // UI
   selectedFilters: string[]
@@ -26,6 +27,7 @@ const initialState = {
   sort: "-partner_updated_at",
   acquireable: null,
   at_auction: null,
+  inquireable_only: null,
   selectedFilters: [],
   showActionSheet: false,
 }
@@ -41,9 +43,14 @@ export class FilterState extends Container<State> {
           if (filter === "major_periods") {
             this.state[filter] = [props[filter]]
           } else if (
-            ["for_sale", "acquireable", "at_auction"].includes(filter)
+            [
+              "for_sale",
+              "acquireable",
+              "at_auction",
+              "inquireable_only",
+            ].includes(filter)
           ) {
-            this.state.for_sale = props[filter] ? true : null
+            this.state[filter] = props[filter] ? true : null
           } else {
             this.state[filter] = props[filter]
           }
@@ -89,7 +96,13 @@ export class FilterState extends Container<State> {
       newPartialState = { major_periods: [] }
     }
     if (
-      ["for_sale", "acquireable", "at_auction", "partner_id"].includes(filter)
+      [
+        "for_sale",
+        "acquireable",
+        "at_auction",
+        "partner_id",
+        "inquireable_only",
+      ].includes(filter)
     ) {
       newPartialState[filter] = null
     }
@@ -122,7 +135,11 @@ export class FilterState extends Container<State> {
       newPartialState = { major_periods: [], partner_id: value, medium: "*" }
     } else if (filter === "medium") {
       newPartialState = { medium: value, partner_id: null, major_periods: [] }
-    } else if (["for_sale", "acquireable", "at_auction"].includes(filter)) {
+    } else if (
+      ["for_sale", "acquireable", "at_auction", "inquireable_only"].includes(
+        filter
+      )
+    ) {
       if (value) {
         selectedFilters = selectedFilters.concat([filter])
         newPartialState[filter] = true

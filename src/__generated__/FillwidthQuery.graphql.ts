@@ -12,6 +12,10 @@ export type FillwidthQueryResponse = {
         }) | null;
     }) | null;
 };
+export type FillwidthQuery = {
+    readonly response: FillwidthQueryResponse;
+    readonly variables: FillwidthQueryVariables;
+};
 
 
 

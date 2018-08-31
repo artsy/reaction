@@ -10,6 +10,10 @@ export type routes_PaymentQueryResponse = {
         readonly " $fragmentRefs": Payment_order$ref;
     }) | null;
 };
+export type routes_PaymentQuery = {
+    readonly response: routes_PaymentQueryResponse;
+    readonly variables: routes_PaymentQueryVariables;
+};
 
 
 
@@ -45,9 +49,17 @@ fragment TransactionSummary_order on Order {
   taxTotal
   itemsTotal
   buyerTotal
-  partner {
-    name
-    __id
+  seller {
+    __typename
+    ... on Partner {
+      name
+    }
+    ... on Node {
+      __id
+    }
+    ... on User {
+      __id
+    }
   }
   lineItems {
     edges {
@@ -115,7 +127,7 @@ return {
   "operationKind": "query",
   "name": "routes_PaymentQuery",
   "id": null,
-  "text": "query routes_PaymentQuery(\n  $orderID: String!\n) {\n  order(id: $orderID) {\n    ...Payment_order\n    __id: id\n  }\n}\n\nfragment Payment_order on Order {\n  id\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  ...TransactionSummary_order\n  __id: id\n}\n\nfragment TransactionSummary_order on Order {\n  shippingTotal\n  taxTotal\n  itemsTotal\n  buyerTotal\n  partner {\n    name\n    __id\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_transactionSummary: resized(width: 55) {\n              url\n            }\n          }\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n",
+  "text": "query routes_PaymentQuery(\n  $orderID: String!\n) {\n  order(id: $orderID) {\n    ...Payment_order\n    __id: id\n  }\n}\n\nfragment Payment_order on Order {\n  id\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  ...TransactionSummary_order\n  __id: id\n}\n\nfragment TransactionSummary_order on Order {\n  shippingTotal\n  taxTotal\n  itemsTotal\n  buyerTotal\n  seller {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n    ... on User {\n      __id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_transactionSummary: resized(width: 55) {\n              url\n            }\n          }\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -300,20 +312,33 @@ return {
           {
             "kind": "LinkedField",
             "alias": null,
-            "name": "partner",
+            "name": "seller",
             "storageKey": null,
             "args": null,
-            "concreteType": "Partner",
+            "concreteType": null,
             "plural": false,
             "selections": [
               {
                 "kind": "ScalarField",
                 "alias": null,
-                "name": "name",
+                "name": "__typename",
                 "args": null,
                 "storageKey": null
               },
-              v4
+              v4,
+              {
+                "kind": "InlineFragment",
+                "type": "Partner",
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "name",
+                    "args": null,
+                    "storageKey": null
+                  }
+                ]
+              }
             ]
           },
           v2

@@ -10,6 +10,10 @@ export type MarketDataSummaryContentsQueryResponse = {
         readonly " $fragmentRefs": MarketDataSummary_artist$ref;
     }) | null;
 };
+export type MarketDataSummaryContentsQuery = {
+    readonly response: MarketDataSummaryContentsQueryResponse;
+    readonly variables: MarketDataSummaryContentsQueryVariables;
+};
 
 
 

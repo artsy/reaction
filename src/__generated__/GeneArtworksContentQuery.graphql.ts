@@ -13,6 +13,10 @@ export type GeneArtworksContentQueryResponse = {
         readonly " $fragmentRefs": GeneArtworksContent_filtered_artworks$ref;
     }) | null;
 };
+export type GeneArtworksContentQuery = {
+    readonly response: GeneArtworksContentQueryResponse;
+    readonly variables: GeneArtworksContentQueryVariables;
+};
 
 
 

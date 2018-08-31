@@ -1,16 +1,22 @@
 import { Review_order } from "__generated__/Review_order.graphql"
+import { ReviewSubmitOrderMutation } from "__generated__/ReviewSubmitOrderMutation.graphql"
 import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
 import { ItemReviewFragmentContainer as ItemReview } from "Apps/Order/Components/ItemReview"
+import { ShippingAndPaymentReviewFragmentContainer as ShippingAndPaymentReview } from "Apps/Order/Components/ShippingAndPaymentReview"
 import { TermsOfServiceCheckbox } from "Apps/Order/Components/TermsOfServiceCheckbox"
 import { Router } from "found"
 import React, { Component } from "react"
-import { createFragmentContainer, graphql } from "react-relay"
+import {
+  commitMutation,
+  createFragmentContainer,
+  graphql,
+  RelayProp,
+} from "react-relay"
 import { Button } from "Styleguide/Elements/Button"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Join } from "Styleguide/Elements/Join"
 import { Spacer } from "Styleguide/Elements/Spacer"
-import { Placeholder } from "Styleguide/Utils/Placeholder"
 import { Responsive } from "Utils/Responsive"
 import { Helper } from "../../Components/Helper"
 import { TransactionSummaryFragmentContainer as TransactionSummary } from "../../Components/TransactionSummary"
@@ -18,18 +24,19 @@ import { TwoColumnLayout } from "../../Components/TwoColumnLayout"
 
 export interface ReviewProps {
   order: Review_order
+  relay?: RelayProp
   router: Router
 }
 
 interface ReviewState {
-  termsCheckboxSelected?: Boolean
+  termsCheckboxSelected: boolean
+  isSubmitting: boolean
 }
 
 export class ReviewRoute extends Component<ReviewProps, ReviewState> {
-  constructor(props) {
-    super(props)
-
-    this.state = { termsCheckboxSelected: false }
+  state = {
+    termsCheckboxSelected: false,
+    isSubmitting: false,
   }
 
   updateTermsCheckbox() {
@@ -40,12 +47,55 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
   }
 
   onOrderSubmitted() {
-    this.props.router.push(`/order2/${this.props.order.id}/submission`)
+    if (this.props.relay && this.props.relay.environment) {
+      this.setState({ isSubmitting: true }, () =>
+        commitMutation<ReviewSubmitOrderMutation>(
+          this.props.relay.environment,
+          {
+            mutation: graphql`
+              mutation ReviewSubmitOrderMutation($input: SubmitOrderInput!) {
+                submitOrder(input: $input) {
+                  orderOrError {
+                    __typename
+                    ... on OrderWithMutationFailure {
+                      error {
+                        description
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+            variables: {
+              input: {
+                orderId: this.props.order.id,
+              },
+            },
+            onCompleted: result => {
+              if ("error" in result.submitOrder.orderOrError) {
+                // TODO: handle failure properly
+                console.error(result.submitOrder.orderOrError.error.description)
+                return
+              }
+              this.props.router.push(`/order2/${this.props.order.id}/status`)
+            },
+          }
+        )
+      )
+    }
+  }
+
+  onChangePayment() {
+    console.log("Clicked to change payment")
+  }
+
+  onChangeShipping() {
+    console.log("Clicked to change shipping")
   }
 
   render() {
     const { order } = this.props
-    const { termsCheckboxSelected } = this.state
+    const { termsCheckboxSelected, isSubmitting } = this.state
 
     return (
       <>
@@ -63,8 +113,12 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
               Content={
                 <>
                   <Join separator={<Spacer mb={3} />}>
-                    <Placeholder height="68px" name="Step summary item" />
-                    <Placeholder height="68px" name="Step summary item" />
+                    <ShippingAndPaymentReview
+                      order={order}
+                      onChangePayment={this.onChangePayment}
+                      onChangeShipping={this.onChangeShipping}
+                      mb={xs ? 2 : 3}
+                    />
 
                     {!xs && (
                       <>
@@ -82,6 +136,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                         <Button
                           size="large"
                           width="100%"
+                          loading={isSubmitting}
                           disabled={!termsCheckboxSelected}
                           onClick={() => this.onOrderSubmitted()}
                         >
@@ -150,6 +205,7 @@ export const ReviewFragmentContainer = createFragmentContainer(
         }
       }
       ...TransactionSummary_order
+      ...ShippingAndPaymentReview_order
     }
   `
 )

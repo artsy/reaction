@@ -1,14 +1,12 @@
 import React from "react"
 import { storiesOf as _storiesOf } from "@storybook/react"
-import { Boot } from "Router/Boot"
-import track from 'react-tracking'
+import { Boot } from "Artsy/Router"
+import track from "react-tracking"
 import Events from "../Utils/Events"
 
 const bootProps = {
   mediator: x => x,
-  system: {
-    currentUser: {},
-  },
+  user: {},
 }
 
 export function storiesOf(desc, mod) {
@@ -18,9 +16,12 @@ export function storiesOf(desc, mod) {
 }
 
 // Wrap publishing sub-component stories so tracking events log
-@track({}, {
-  dispatch: data => Events.postEvent(data)
-})
+@track(
+  {},
+  {
+    dispatch: data => Events.postEvent(data),
+  }
+)
 class PublishingBoot extends React.Component {
   render() {
     return this.props.children
@@ -29,10 +30,6 @@ class PublishingBoot extends React.Component {
 
 export function storiesOfPublishing(desc, mod) {
   return _storiesOf(desc, mod).addDecorator(storyFn => {
-    return (
-      <PublishingBoot>
-        {storyFn()}
-      </PublishingBoot>
-    )
+    return <PublishingBoot>{storyFn()}</PublishingBoot>
   })
 }

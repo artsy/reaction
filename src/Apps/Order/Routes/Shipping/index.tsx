@@ -1,7 +1,20 @@
 import { Sans } from "@artsy/palette"
 import { Shipping_order } from "__generated__/Shipping_order.graphql"
+import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
+import { Helper } from "Apps/Order/Components/Helper"
+import { TransactionSummaryFragmentContainer as TransactionSummary } from "Apps/Order/Components/TransactionSummary"
 import { Router } from "found"
 import React, { Component } from "react"
+import { Collapse } from "Styleguide/Components"
+import { Responsive } from "Utils/Responsive"
+import { AddressForm } from "../../Components/AddressForm"
+import { TwoColumnLayout } from "../../Components/TwoColumnLayout"
+
+import {
+  OrderFulfillmentType,
+  ShippingOrderAddressUpdateMutation,
+} from "__generated__/ShippingOrderAddressUpdateMutation.graphql"
+
 import {
   commitMutation,
   createFragmentContainer,
@@ -9,21 +22,15 @@ import {
   RelayProp,
 } from "react-relay"
 
-import { Collapse } from "Styleguide/Components/Collapse"
-import { Button } from "Styleguide/Elements/Button"
-import { Flex } from "Styleguide/Elements/Flex"
-import { Col, Row } from "Styleguide/Elements/Grid"
-import { BorderedRadio } from "Styleguide/Elements/Radio"
-import { RadioGroup } from "Styleguide/Elements/RadioGroup"
-import { Spacer } from "Styleguide/Elements/Spacer"
-import { Responsive } from "Utils/Responsive"
-
-import { Helper } from "Apps/Order/Components/Helper"
-
-import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
-import { TransactionSummaryFragmentContainer as TransactionSummary } from "Apps/Order/Components/TransactionSummary"
-import { AddressForm } from "../../Components/AddressForm"
-import { TwoColumnLayout } from "../../Components/TwoColumnLayout"
+import {
+  BorderedRadio,
+  Button,
+  Col,
+  Flex,
+  RadioGroup,
+  Row,
+  Spacer,
+} from "Styleguide/Elements"
 
 export interface ShippingProps {
   order: Shipping_order
@@ -46,7 +53,7 @@ export interface Address {
 }
 
 export interface ShippingState {
-  shippingOption: string
+  shippingOption: OrderFulfillmentType
   isComittingMutation: boolean
 }
 
@@ -58,6 +65,7 @@ export class ShippingRoute extends Component<
   // See: https://artsyproduct.atlassian.net/browse/PURCHASE-376
   state = {
     shippingOption: "SHIP",
+    country: "US",
     isComittingMutation: false,
   } as ShippingState & Address
 
@@ -75,37 +83,49 @@ export class ShippingRoute extends Component<
     if (this.props.relay && this.props.relay.environment) {
       // We don't strictly need to wait for the state to be set, but it makes it easier to test.
       this.setState({ isComittingMutation: true }, () =>
-        commitMutation(this.props.relay.environment, {
-          mutation: graphql`
-            mutation ShippingOrderAddressUpdateMutation(
-              $input: SetOrderShippingInput!
-            ) {
-              setOrderShipping(input: $input) {
-                result {
-                  order {
-                    state
+        commitMutation<ShippingOrderAddressUpdateMutation>(
+          this.props.relay.environment,
+          {
+            mutation: graphql`
+              mutation ShippingOrderAddressUpdateMutation(
+                $input: SetOrderShippingInput!
+              ) {
+                setOrderShipping(input: $input) {
+                  orderOrError {
+                    ... on OrderWithMutationSuccess {
+                      order {
+                        state
+                      }
+                    }
+                    ... on OrderWithMutationFailure {
+                      error {
+                        description
+                      }
+                    }
                   }
                 }
               }
-            }
-          `,
-          variables: {
-            input: {
-              orderId: this.props.order.id,
-              fulfillmentType: this.state.shippingOption,
-              shippingName: this.state.name || "",
-              shippingAddressLine1: this.state.addressLine1 || "",
-              shippingAddressLine2: this.state.addressLine2 || "",
-              shippingCity: this.state.city || "",
-              shippingRegion: this.state.region || "",
-              shippingCountry: this.state.country || "",
-              shippingPostalCode: this.state.postalCode || "",
+            `,
+            variables: {
+              input: {
+                orderId: this.props.order.id,
+                fulfillmentType: this.state.shippingOption,
+                shipping: {
+                  name: this.state.name,
+                  addressLine1: this.state.addressLine1,
+                  addressLine2: this.state.addressLine2,
+                  city: this.state.city,
+                  region: this.state.region,
+                  country: this.state.country,
+                  postalCode: this.state.postalCode,
+                },
+              },
             },
-          },
-          onCompleted: () =>
-            // Note: We are only waiting for _a_ response and are not yet handling errors.
-            this.props.router.push(`/order2/${this.props.order.id}/payment`),
-        })
+            onCompleted: () =>
+              // Note: We are only waiting for _a_ response and are not yet handling errors.
+              this.props.router.push(`/order2/${this.props.order.id}/payment`),
+          }
+        )
       )
     }
   }
@@ -125,8 +145,11 @@ export class ShippingRoute extends Component<
             <TwoColumnLayout
               Content={
                 <>
+                  {/* TODO: Make RadioGroup generic for the allowed values,
+                            which could also ensure the children only use
+                            allowed values. */}
                   <RadioGroup
-                    onSelect={shippingOption =>
+                    onSelect={(shippingOption: OrderFulfillmentType) =>
                       this.setState({ shippingOption })
                     }
                     defaultValue="SHIP"

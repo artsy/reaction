@@ -2,26 +2,29 @@ import { Sans } from "@artsy/palette"
 import { color } from "@artsy/palette"
 import { ArtworkFilter_artist } from "__generated__/ArtworkFilter_artist.graphql"
 import { FilterState } from "Apps/Artist/Routes/Overview/state"
+import { ContextConsumer } from "Artsy/SystemContext"
 import { FilterIcon } from "Assets/Icons/FilterIcon"
 import FollowArtistButton from "Components/FollowButton/FollowArtistButton"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { AppState } from "Router"
 import styled from "styled-components"
-import { Toggle } from "Styleguide/Components/Toggle"
-import { Box } from "Styleguide/Elements/Box"
-import { Button } from "Styleguide/Elements/Button"
-import { Checkbox } from "Styleguide/Elements/Checkbox"
-import { Flex } from "Styleguide/Elements/Flex"
-import { Message } from "Styleguide/Elements/Message"
-import { Radio } from "Styleguide/Elements/Radio"
-import { SmallSelect } from "Styleguide/Elements/Select"
-import { Separator } from "Styleguide/Elements/Separator"
-import { Spacer } from "Styleguide/Elements/Spacer"
+import { Toggle } from "Styleguide/Components"
 import { Subscribe } from "unstated"
 import { Responsive } from "Utils/Responsive"
 import { ArtworkFilterRefetchContainer as ArtworkFilter } from "./ArtworkFilterRefetch"
 import { MobileActionSheet } from "./MobileActionSheet"
+
+import {
+  Box,
+  Button,
+  Checkbox,
+  Flex,
+  Message,
+  Radio,
+  Separator,
+  SmallSelect,
+  Spacer,
+} from "Styleguide/Elements"
 
 interface Props {
   artist: ArtworkFilter_artist
@@ -52,7 +55,7 @@ class Filter extends Component<Props> {
     return showZeroState
   }
 
-  renderFilters({ currentUser, filters, mediator, hideTopBorder }) {
+  renderFilters({ user, filters, mediator, hideTopBorder }) {
     const { counts } = this.props.artist
     const { aggregations } = this.props.artist.filtered_artworks
     const mediumAggregation = aggregations.find(agg => agg.slice === "MEDIUM")
@@ -67,9 +70,9 @@ class Filter extends Component<Props> {
     )
 
     const enableLabFeature =
-      currentUser &&
-      currentUser.lab_features &&
-      currentUser.lab_features.includes("New Buy Now Flow")
+      user &&
+      user.lab_features &&
+      user.lab_features.includes("New Buy Now Flow")
 
     return (
       <>
@@ -194,10 +197,10 @@ class Filter extends Component<Props> {
           Bid
         </Checkbox>
         <Checkbox
-          selected={filters.state.for_sale}
+          selected={filters.state.inquireable_only}
           disabled={!this.existy.hasForSaleArtworks || this.showZeroState}
           onSelect={value => {
-            return filters.setFilter("for_sale", value, mediator)
+            return filters.setFilter("inquireable_only", value, mediator)
           }}
         >
           Inquire
@@ -206,7 +209,7 @@ class Filter extends Component<Props> {
     )
   }
 
-  renderZeroState({ currentUser, mediator, xs }) {
+  renderZeroState({ user, mediator, xs }) {
     const {
       artist,
       artist: { id, name, is_followed },
@@ -217,11 +220,10 @@ class Filter extends Component<Props> {
         There aren’t any works available by the artist at this time.{" "}
         {!is_followed && (
           <>
-            Follow{" "}
             <FollowArtistButton
               artist={artist}
               useDeprecatedButtonStyle={false}
-              currentUser={currentUser}
+              user={user}
               onOpenAuthModal={() => {
                 mediator.trigger("open:auth", {
                   mode: "signup",
@@ -234,7 +236,7 @@ class Filter extends Component<Props> {
                   },
                 })
               }}
-              render={() => <ZeroStateLink>{name}</ZeroStateLink>}
+              render={() => <ZeroStateLink>Follow {name}</ZeroStateLink>}
             />{" "}
             to receive notifications when new works are added.
           </>
@@ -298,83 +300,81 @@ class Filter extends Component<Props> {
 
   render() {
     return (
-      <Subscribe to={[AppState, FilterState]}>
-        {(
-          {
-            state: {
-              mediator,
-              system: { currentUser },
-            },
-          },
-          filters: FilterState
-        ) => {
+      <ContextConsumer>
+        {({ user, mediator }) => {
           return (
-            <Responsive>
-              {({ xs, sm, md }) => {
-                const hideTopBorder = this.props.hideTopBorder || xs
-
-                const Filters = () =>
-                  this.renderFilters({
-                    currentUser,
-                    filters,
-                    mediator,
-                    hideTopBorder,
-                  })
-
+            <Subscribe to={[FilterState]}>
+              {(filters: FilterState) => {
                 return (
-                  <>
-                    <Flex>
-                      {xs ? (
-                        // Mobile
-                        filters.state.showActionSheet && (
-                          <MobileActionSheet
-                            onClose={() => filters.showActionSheet(false)}
-                          >
-                            <Filters />
-                          </MobileActionSheet>
-                        )
-                      ) : (
-                        // Desktop
-                        <Sidebar width="30%" mr={2}>
-                          <Filters />
-                        </Sidebar>
-                      )}
+                  <Responsive>
+                    {({ xs, sm, md }) => {
+                      const hideTopBorder = this.props.hideTopBorder || xs
 
-                      {/* Main Artwork Grid */}
-                      <Box width={xs ? "100%" : "70%"}>
-                        {!hideTopBorder && <Separator mb={2} mt={-1} />}
-
-                        {this.renderSelect({
+                      const Filters = () =>
+                        this.renderFilters({
+                          user,
                           filters,
                           mediator,
-                          xs,
-                        })}
+                          hideTopBorder,
+                        })
 
-                        <Spacer mb={2} />
+                      return (
+                        <>
+                          <Flex>
+                            {xs ? (
+                              // Mobile
+                              filters.state.showActionSheet && (
+                                <MobileActionSheet
+                                  onClose={() => filters.showActionSheet(false)}
+                                >
+                                  <Filters />
+                                </MobileActionSheet>
+                              )
+                            ) : (
+                              // Desktop
+                              <Sidebar width="25%" mr={2}>
+                                <Filters />
+                              </Sidebar>
+                            )}
 
-                        {this.showZeroState ? (
-                          this.renderZeroState({
-                            currentUser,
-                            mediator,
-                            xs,
-                          })
-                        ) : (
-                          <ArtworkFilter
-                            artist={this.props.artist}
-                            artistID={this.props.artist.id}
-                            columnCount={xs || sm || md ? 2 : 3}
-                            filters={filters.state}
-                          />
-                        )}
-                      </Box>
-                    </Flex>
-                  </>
+                            {/* Main Artwork Grid */}
+                            <Box width={xs ? "100%" : "75%"}>
+                              {!hideTopBorder && <Separator mb={2} mt={-1} />}
+
+                              {this.renderSelect({
+                                filters,
+                                mediator,
+                                xs,
+                              })}
+
+                              <Spacer mb={2} />
+
+                              {this.showZeroState ? (
+                                this.renderZeroState({
+                                  user,
+                                  mediator,
+                                  xs,
+                                })
+                              ) : (
+                                <ArtworkFilter
+                                  artist={this.props.artist}
+                                  artistID={this.props.artist.id}
+                                  columnCount={xs || sm || md ? 2 : 3}
+                                  filters={filters.state}
+                                />
+                              )}
+                            </Box>
+                          </Flex>
+                        </>
+                      )
+                    }}
+                  </Responsive>
                 )
               }}
-            </Responsive>
+            </Subscribe>
           )
         }}
-      </Subscribe>
+      </ContextConsumer>
     )
   }
 }
@@ -390,6 +390,7 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(
         for_sale: { type: "Boolean" }
         at_auction: { type: "Boolean" }
         acquireable: { type: "Boolean" }
+        inquireable_only: { type: "Boolean" }
         aggregations: {
           type: "[ArtworkAggregation]"
           defaultValue: [MEDIUM, TOTAL, GALLERY, INSTITUTION, MAJOR_PERIOD]
@@ -423,6 +424,7 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(
           sort: $sort
           acquireable: $acquireable
           at_auction: $at_auction
+          inquireable_only: $inquireable_only
         )
 
       ...FollowArtistButton_artist

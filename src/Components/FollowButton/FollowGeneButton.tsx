@@ -1,3 +1,5 @@
+import { FollowGeneButtonMutation } from "__generated__/FollowGeneButtonMutation.graphql"
+import * as Artsy from "Artsy/SystemContext"
 import { extend } from "lodash"
 import React from "react"
 import {
@@ -8,7 +10,6 @@ import {
 } from "react-relay"
 import track from "react-tracking"
 import { FollowGeneButton_gene } from "../../__generated__/FollowGeneButton_gene.graphql"
-import * as Artsy from "../Artsy"
 import { FollowButtonDeprecated } from "./ButtonDeprecated"
 import { FollowTrackingData } from "./Typings"
 
@@ -17,7 +18,7 @@ interface Props extends React.HTMLProps<FollowGeneButton>, Artsy.ContextProps {
   gene?: FollowGeneButton_gene
   tracking?: any
   trackingData?: FollowTrackingData
-  onOpenAuthModal?: (type: "register" | "login", config?: Object) => void
+  onOpenAuthModal?: (type: "register" | "login", config?: object) => void
 }
 
 export class FollowGeneButton extends React.Component<Props> {
@@ -33,14 +34,15 @@ export class FollowGeneButton extends React.Component<Props> {
   }
 
   handleFollow = () => {
-    const { gene, currentUser, relay, onOpenAuthModal } = this.props
+    const { gene, user, relay, onOpenAuthModal } = this.props
 
-    if (currentUser && currentUser.id) {
-      commitMutation(relay.environment, {
+    if (user && user.id) {
+      commitMutation<FollowGeneButtonMutation>(relay.environment, {
         mutation: graphql`
           mutation FollowGeneButtonMutation($input: FollowGeneInput!) {
             followGene(input: $input) {
               gene {
+                __id
                 is_followed
               }
             }
@@ -85,7 +87,7 @@ export class FollowGeneButton extends React.Component<Props> {
 
 export default track()(
   createFragmentContainer(
-    Artsy.ContextConsumer(FollowGeneButton),
+    Artsy.withContext(FollowGeneButton),
     graphql`
       fragment FollowGeneButton_gene on Gene {
         __id

@@ -1,3 +1,4 @@
+import { mockTracking } from "Artsy/Analytics"
 import {
   FeatureBasicArticle,
   FeatureBasicVideoArticle,
@@ -8,7 +9,6 @@ import { mount } from "enzyme"
 import "jest-styled-components"
 import { cloneDeep } from "lodash"
 import React from "react"
-import { mockTracking } from "../../../../../../Analytics"
 import { FeatureBasicHeader, VideoContainer } from "../FeatureBasicHeader"
 import { FeatureInnerContent } from "../FeatureInnerContent"
 
