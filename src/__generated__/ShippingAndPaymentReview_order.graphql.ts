@@ -5,9 +5,6 @@ declare const _ShippingAndPaymentReview_order$ref: unique symbol;
 export type ShippingAndPaymentReview_order$ref = typeof _ShippingAndPaymentReview_order$ref;
 export type ShippingAndPaymentReview_order = {
     readonly requestedFulfillment: ({
-        readonly __typename: "Pickup";
-        readonly fulfillmentType: string | null;
-    } | {
         readonly __typename: "Ship";
         readonly name: string | null;
         readonly addressLine1: string | null;
@@ -125,19 +122,6 @@ return {
               "storageKey": null
             }
           ]
-        },
-        {
-          "kind": "InlineFragment",
-          "type": "Pickup",
-          "selections": [
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "fulfillmentType",
-              "args": null,
-              "storageKey": null
-            }
-          ]
         }
       ]
     },
@@ -238,5 +222,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'ff8b0587a4fd62eac9130a404316ab12';
+(node as any).hash = '5cedddcabb93383a1e506b265d4468b9';
 export default node;

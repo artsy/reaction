@@ -6,8 +6,7 @@ export const UntouchedOrder = {
   taxTotal: null,
   buyerTotal: "$12,000",
   requestedFulfillment: {
-    __typename: "Pickup",
-    fulfillmentType: "pickup",
+    __typename: "%other",
   },
   lineItems: {
     edges: [

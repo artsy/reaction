@@ -47,8 +47,7 @@ storiesOf("Apps/Order Page/Components", module).add(
               order={{
                 ...order,
                 requestedFulfillment: {
-                  __typename: "Pickup",
-                  fulfillmentType: "pickup",
+                  __typename: "%other",
                 },
               }}
             />
@@ -71,8 +70,7 @@ storiesOf("Apps/Order Page/Components", module).add(
               order={{
                 ...order,
                 requestedFulfillment: {
-                  __typename: "Pickup",
-                  fulfillmentType: "pickup",
+                  __typename: "%other",
                 },
               }}
             />
