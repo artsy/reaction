@@ -256,3 +256,8 @@ const COUNTRY_SELECT_OPTIONS = [
   { text: "Zambia", value: "ZM" },
   { text: "Zimbabwe", value: "ZW" },
 ]
+
+export const COUNTRY_CODE_TO_COUNTRY_NAME = COUNTRY_SELECT_OPTIONS.reduce(
+  (acc, option) => Object.assign(acc, { [option.value]: option.text }),
+  {}
+)

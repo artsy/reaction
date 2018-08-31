@@ -56,6 +56,7 @@ export const ShippingAndPaymentReviewFragmentContainer = createFragmentContainer
           city
           postalCode
           region
+          country
         }
       }
       lineItems {
