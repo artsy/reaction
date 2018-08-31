@@ -75,12 +75,14 @@ export class WorksForYouArtist extends React.Component<Props, State> {
           <Flex>
             {artist.image && (
               <Avatar>
-                <Image
-                  src={artist.image.resized.url}
-                  width={40}
-                  height={40}
-                  style={{ borderRadius: "20px" }}
-                />
+                <a href={artist.href}>
+                  <Image
+                    src={artist.image.resized.url}
+                    width={40}
+                    height={40}
+                    style={{ borderRadius: "20px" }}
+                  />
+                </a>
               </Avatar>
             )}
             <Box ml={2}>

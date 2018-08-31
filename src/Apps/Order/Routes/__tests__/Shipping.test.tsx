@@ -14,10 +14,10 @@ jest.mock("react-relay", () => ({
 }))
 
 describe("Shipping", () => {
-  const getWrapper = props => {
+  const getWrapper = someProps => {
     return mount(
       <Provider>
-        <ShippingRoute {...props} />
+        <ShippingRoute {...someProps} />
       </Provider>
     )
   }
@@ -57,6 +57,7 @@ describe("Shipping", () => {
     const mockCommitMutation = commitMutation as jest.Mock<any>
     mockCommitMutation.mockImplementationOnce((_environment, config) => {
       expect(config.variables.input.shipping.region).toBe("New Brunswick")
+      expect(config.variables.input.shipping.country).toBe("US") // It defaults to "US" when not selected
     })
 
     component.find(Button).simulate("click")

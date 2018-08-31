@@ -65,6 +65,7 @@ export class ShippingRoute extends Component<
   // See: https://artsyproduct.atlassian.net/browse/PURCHASE-376
   state = {
     shippingOption: "SHIP",
+    country: "US",
     isComittingMutation: false,
   } as ShippingState & Address
 
@@ -90,11 +91,17 @@ export class ShippingRoute extends Component<
                 $input: SetOrderShippingInput!
               ) {
                 setOrderShipping(input: $input) {
-                  result {
-                    order {
-                      state
+                  orderOrError {
+                    ... on OrderWithMutationSuccess {
+                      order {
+                        state
+                      }
                     }
-                    errors
+                    ... on OrderWithMutationFailure {
+                      error {
+                        description
+                      }
+                    }
                   }
                 }
               }
@@ -109,7 +116,7 @@ export class ShippingRoute extends Component<
                   addressLine2: this.state.addressLine2,
                   city: this.state.city,
                   region: this.state.region,
-                  country: this.state.country || "", // Required, kind of, for now. See: https://artsyproduct.atlassian.net/browse/PURCHASE-408
+                  country: this.state.country,
                   postalCode: this.state.postalCode,
                 },
               },

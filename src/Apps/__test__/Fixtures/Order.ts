@@ -6,8 +6,7 @@ export const UntouchedOrder = {
   taxTotal: null,
   buyerTotal: "$12,000",
   requestedFulfillment: {
-    __typename: "Pickup",
-    fulfillmentType: "pickup",
+    __typename: "%other",
   },
   lineItems: {
     edges: [
@@ -57,11 +56,12 @@ export const OrderWithShippingDetails = {
   requestedFulfillment: {
     __typename: "Ship",
     name: "Joelle Van Dyne",
-    addressLine1: "23 41st st",
-    addressLine2: null,
+    addressLine1: "401 Broadway",
+    addressLine2: "Suite 25",
     city: "New York",
-    postalCode: "90210",
-    region: "US",
+    postalCode: "10013",
+    region: "NY",
+    country: "US",
   },
   creditCard: {
     brand: "Visa",

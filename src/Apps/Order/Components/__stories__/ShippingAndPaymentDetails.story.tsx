@@ -14,11 +14,12 @@ const order: ShippingAndPaymentReview_order &
   requestedFulfillment: {
     __typename: "Ship",
     name: "Joelle Van Dyne",
-    addressLine1: "23 41st st",
-    addressLine2: null,
+    addressLine1: "401 Broadway",
+    addressLine2: "Suite 25",
     city: "New York",
-    postalCode: "90210",
-    region: "US",
+    postalCode: "10013",
+    region: "NY",
+    country: "US",
   },
   lineItems: {
     edges: [{ node: { artwork: { shippingOrigin: "Jersey City, NJ" } } }],
@@ -47,8 +48,7 @@ storiesOf("Apps/Order Page/Components", module).add(
               order={{
                 ...order,
                 requestedFulfillment: {
-                  __typename: "Pickup",
-                  fulfillmentType: "pickup",
+                  __typename: "%other",
                 },
               }}
             />
@@ -71,8 +71,7 @@ storiesOf("Apps/Order Page/Components", module).add(
               order={{
                 ...order,
                 requestedFulfillment: {
-                  __typename: "Pickup",
-                  fulfillmentType: "pickup",
+                  __typename: "%other",
                 },
               }}
             />

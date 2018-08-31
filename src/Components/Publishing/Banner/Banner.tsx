@@ -1,4 +1,5 @@
 import { debounce } from "lodash"
+import qs from "querystring"
 import React, { Component } from "react"
 import { MinimalCtaBanner } from "../../MinimalCtaBanner"
 import { getArticleFullHref } from "../Constants"
@@ -55,7 +56,12 @@ export class BannerWrapper extends Component<{ article: ArticleData }, State> {
 
     return (
       <MinimalCtaBanner
-        href={`/sign_up?redirect-to=${getArticleFullHref(slug)}`}
+        href={`/sign_up?${qs.stringify({
+          intent: "viewed editorial",
+          trigger: "click",
+          contextModule: "auth minimal cta banner",
+          "redirect-to": getArticleFullHref(slug),
+        })}`}
         height="55px"
         copy={copy}
         position="bottom"

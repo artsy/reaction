@@ -35,7 +35,7 @@ export class AddressForm extends React.Component<AddressFormProps> {
               Country
             </Serif>
             <CountrySelect
-              selected={this.props.country || "US"}
+              selected={this.props.country}
               onSelect={this.props.onUpdateCountry}
             />
           </Flex>

@@ -22,11 +22,13 @@ export type ShippingOrderAddressUpdateMutationVariables = {
 };
 export type ShippingOrderAddressUpdateMutationResponse = {
     readonly setOrderShipping: ({
-        readonly result: ({
-            readonly order: ({
+        readonly orderOrError: ({
+            readonly order?: ({
                 readonly state: string | null;
             }) | null;
-            readonly errors: ReadonlyArray<string | null> | null;
+            readonly error?: ({
+                readonly description: string;
+            }) | null;
         }) | null;
     }) | null;
 };
@@ -42,12 +44,19 @@ mutation ShippingOrderAddressUpdateMutation(
   $input: SetOrderShippingInput!
 ) {
   setOrderShipping(input: $input) {
-    result {
-      order {
-        state
-        __id: id
+    orderOrError {
+      __typename
+      ... on OrderWithMutationSuccess {
+        order {
+          state
+          __id: id
+        }
       }
-      errors
+      ... on OrderWithMutationFailure {
+        error {
+          description
+        }
+      }
     }
   }
 }
@@ -64,73 +73,73 @@ var v0 = [
 ],
 v1 = [
   {
-    "kind": "LinkedField",
-    "alias": null,
-    "name": "setOrderShipping",
-    "storageKey": null,
-    "args": [
-      {
-        "kind": "Variable",
-        "name": "input",
-        "variableName": "input",
-        "type": "SetOrderShippingInput!"
-      }
-    ],
-    "concreteType": "SetOrderShippingPayload",
-    "plural": false,
-    "selections": [
-      {
-        "kind": "LinkedField",
-        "alias": null,
-        "name": "result",
-        "storageKey": null,
-        "args": null,
-        "concreteType": "OrderReturnType",
-        "plural": false,
-        "selections": [
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "name": "order",
-            "storageKey": null,
-            "args": null,
-            "concreteType": "Order",
-            "plural": false,
-            "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "state",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": "__id",
-                "name": "id",
-                "args": null,
-                "storageKey": null
-              }
-            ]
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "errors",
-            "args": null,
-            "storageKey": null
-          }
-        ]
-      }
-    ]
+    "kind": "Variable",
+    "name": "input",
+    "variableName": "input",
+    "type": "SetOrderShippingInput!"
   }
-];
+],
+v2 = {
+  "kind": "InlineFragment",
+  "type": "OrderWithMutationFailure",
+  "selections": [
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "error",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "EcommerceError",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "description",
+          "args": null,
+          "storageKey": null
+        }
+      ]
+    }
+  ]
+},
+v3 = {
+  "kind": "InlineFragment",
+  "type": "OrderWithMutationSuccess",
+  "selections": [
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "order",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Order",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "state",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": "__id",
+          "name": "id",
+          "args": null,
+          "storageKey": null
+        }
+      ]
+    }
+  ]
+};
 return {
   "kind": "Request",
   "operationKind": "mutation",
   "name": "ShippingOrderAddressUpdateMutation",
   "id": null,
-  "text": "mutation ShippingOrderAddressUpdateMutation(\n  $input: SetOrderShippingInput!\n) {\n  setOrderShipping(input: $input) {\n    result {\n      order {\n        state\n        __id: id\n      }\n      errors\n    }\n  }\n}\n",
+  "text": "mutation ShippingOrderAddressUpdateMutation(\n  $input: SetOrderShippingInput!\n) {\n  setOrderShipping(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        order {\n          state\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          description\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -138,15 +147,72 @@ return {
     "type": "Mutation",
     "metadata": null,
     "argumentDefinitions": v0,
-    "selections": v1
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "setOrderShipping",
+        "storageKey": null,
+        "args": v1,
+        "concreteType": "SetOrderShippingPayload",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "orderOrError",
+            "storageKey": null,
+            "args": null,
+            "concreteType": null,
+            "plural": false,
+            "selections": [
+              v2,
+              v3
+            ]
+          }
+        ]
+      }
+    ]
   },
   "operation": {
     "kind": "Operation",
     "name": "ShippingOrderAddressUpdateMutation",
     "argumentDefinitions": v0,
-    "selections": v1
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "setOrderShipping",
+        "storageKey": null,
+        "args": v1,
+        "concreteType": "SetOrderShippingPayload",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "orderOrError",
+            "storageKey": null,
+            "args": null,
+            "concreteType": null,
+            "plural": false,
+            "selections": [
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "__typename",
+                "args": null,
+                "storageKey": null
+              },
+              v2,
+              v3
+            ]
+          }
+        ]
+      }
+    ]
   }
 };
 })();
-(node as any).hash = '8c15f3b0558274117be3712f4a6a3afb';
+(node as any).hash = 'a60f684961592e31c2bcd74fc872d32c';
 export default node;

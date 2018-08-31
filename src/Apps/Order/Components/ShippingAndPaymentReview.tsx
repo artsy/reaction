@@ -22,7 +22,11 @@ export const ShippingAndPaymentReview = ({
   onChangeShipping(): void
 } & FlexProps) => (
   <Flex flexDirection="column" {...others}>
-    {__typename === "Pickup" ? (
+    {__typename === "Ship" ? (
+      <StepSummaryItem onChange={onChangeShipping} title="Shipping address">
+        <ShippingAddress {...address as ShippingAddressProps} />
+      </StepSummaryItem>
+    ) : (
       <StepSummaryItem
         onChange={onChangeShipping}
         title={<>Pick up ({lineItems.edges[0].node.artwork.shippingOrigin})</>}
@@ -31,10 +35,6 @@ export const ShippingAndPaymentReview = ({
           After you place your order, you’ll be appointed an Artsy specialist
           within 2 business days to handle pickup logistics.
         </Sans>
-      </StepSummaryItem>
-    ) : (
-      <StepSummaryItem onChange={onChangeShipping} title="Shipping address">
-        <ShippingAddress {...address as ShippingAddressProps} />
       </StepSummaryItem>
     )}
     <StepSummaryItem onChange={onChangePayment} title="Payment method">
@@ -49,9 +49,6 @@ export const ShippingAndPaymentReviewFragmentContainer = createFragmentContainer
     fragment ShippingAndPaymentReview_order on Order {
       requestedFulfillment {
         __typename
-        ... on Pickup {
-          fulfillmentType
-        }
         ... on Ship {
           name
           addressLine1
@@ -59,6 +56,7 @@ export const ShippingAndPaymentReviewFragmentContainer = createFragmentContainer
           city
           postalCode
           region
+          country
         }
       }
       lineItems {

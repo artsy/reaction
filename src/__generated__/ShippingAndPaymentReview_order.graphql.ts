@@ -5,9 +5,6 @@ declare const _ShippingAndPaymentReview_order$ref: unique symbol;
 export type ShippingAndPaymentReview_order$ref = typeof _ShippingAndPaymentReview_order$ref;
 export type ShippingAndPaymentReview_order = {
     readonly requestedFulfillment: ({
-        readonly __typename: "Pickup";
-        readonly fulfillmentType: string | null;
-    } | {
         readonly __typename: "Ship";
         readonly name: string | null;
         readonly addressLine1: string | null;
@@ -15,6 +12,7 @@ export type ShippingAndPaymentReview_order = {
         readonly city: string | null;
         readonly postalCode: string | null;
         readonly region: string | null;
+        readonly country: string;
     } | {
         /*This will never be '% other', but we need some
         value in case none of the concrete values match.*/
@@ -123,17 +121,11 @@ return {
               "name": "region",
               "args": null,
               "storageKey": null
-            }
-          ]
-        },
-        {
-          "kind": "InlineFragment",
-          "type": "Pickup",
-          "selections": [
+            },
             {
               "kind": "ScalarField",
               "alias": null,
-              "name": "fulfillmentType",
+              "name": "country",
               "args": null,
               "storageKey": null
             }
@@ -238,5 +230,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'ff8b0587a4fd62eac9130a404316ab12';
+(node as any).hash = 'e7d06d6951ef4d1722bd36d8beaa19f1';
 export default node;

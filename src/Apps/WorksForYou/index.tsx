@@ -2,10 +2,12 @@ import { ArtistArtworksFilters } from "__generated__/WorksForYouQuery.graphql"
 import { WorksForYouQuery } from "__generated__/WorksForYouQuery.graphql"
 import { MarketingHeader } from "Apps/WorksForYou/Components/MarketingHeader"
 import { ContextConsumer, ContextProps } from "Artsy"
+import { track } from "Artsy/Analytics"
 import Spinner from "Components/Spinner"
 import React, { Component } from "react"
 import { graphql, QueryRenderer } from "react-relay"
 import styled from "styled-components"
+import Events from "Utils/Events"
 import WorksForYouArtist from "./WorksForYouArtist"
 import WorksForYouContent from "./WorksForYouContents"
 
@@ -20,6 +22,9 @@ const SpinnerContainer = styled.div`
   position: relative;
 `
 
+@track(null, {
+  dispatch: data => Events.postEvent(data),
+})
 export class WorksForYou extends Component<Props> {
   static defaultProps = {
     forSale: true,
@@ -56,10 +61,14 @@ export class WorksForYou extends Component<Props> {
               `}
               variables={{ artistID, includeSelectedArtist, forSale, filter }}
               render={({ props }) => {
+                const hasBuyNowLabFeature =
+                  user &&
+                  user.lab_features &&
+                  user.lab_features.includes("New Buy Now Flow")
                 if (props) {
                   return (
                     <>
-                      <MarketingHeader />
+                      {hasBuyNowLabFeature && <MarketingHeader />}
 
                       {includeSelectedArtist ? (
                         <WorksForYouArtist

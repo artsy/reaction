@@ -1,14 +1,16 @@
+import { Serif } from "@artsy/palette"
 import React from "react"
 
-import { Serif } from "@artsy/palette"
+import { COUNTRY_CODE_TO_COUNTRY_NAME } from "Styleguide/Components"
 
 export interface ShippingAddressProps {
   name: string
   addressLine1: string
-  addressLine2: string | null
+  addressLine2?: string | null
   city: string
   postalCode: string
   region: string
+  country: string
 }
 
 export const ShippingAddress = ({
@@ -18,13 +20,20 @@ export const ShippingAddress = ({
   city,
   postalCode,
   region,
+  country,
 }: ShippingAddressProps) => {
-  const cityLine = city + (postalCode ? ` ${postalCode}` : "")
   return (
-    <Serif size="3t" style={{ whiteSpace: "pre-wrap" }}>
-      {[name, addressLine1, addressLine2, cityLine, region]
-        .filter(Boolean)
-        .join("\n")}
-    </Serif>
+    <>
+      <Serif size="3t">{name}</Serif>
+      <Serif size="3t">
+        {[addressLine1, (addressLine2 || "").trim()].filter(Boolean).join(", ")}
+      </Serif>
+      <Serif size="3t">
+        {city}, {region} {postalCode}
+      </Serif>
+      <Serif size="3t">
+        {COUNTRY_CODE_TO_COUNTRY_NAME[country] || country}
+      </Serif>
+    </>
   )
 }
