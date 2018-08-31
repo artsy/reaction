@@ -60,18 +60,12 @@ export default class Genes extends React.Component<StepProps, State> {
     })
   }
 
-  clickedNext() {
-    this.props.onNextButtonPressed()
-  }
-
   render() {
     return (
       <Layout
         title="What categories most interest you?"
         subtitle="Follow one or more"
-        onNextButtonPressed={
-          this.state.followCount > 0 ? this.clickedNext.bind(this) : null
-        }
+        onNextButtonPressed={this.props.onNextButtonPressed}
         buttonState={
           this.state.followCount > 0
             ? MultiButtonState.Highlighted
