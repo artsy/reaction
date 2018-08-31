@@ -2,9 +2,7 @@ import React from "react"
 import track from "react-tracking"
 import Events from "../../Utils/Events"
 
-import { debounce } from "lodash"
-import { MinimalCtaBanner } from "../MinimalCtaBanner"
-import { getArticleFullHref } from "./Constants"
+import { BannerWrapper } from "./Banner/Banner"
 import ArticleWithFullScreen from "./Layouts/ArticleWithFullScreen"
 import { ClassicLayout } from "./Layouts/ClassicLayout"
 import { NewsLayout } from "./Layouts/NewsLayout"
@@ -39,15 +37,6 @@ export interface ArticleProps {
   onExpand?: () => void
 }
 
-export interface State {
-  showCtaBanner: boolean
-}
-
-export enum CtaCopy {
-  news = "Sign up for the best in art world news",
-  default = "Sign up to get our best stories everyday",
-}
-
 @track(
   (props: ArticleProps) => {
     return {
@@ -60,40 +49,7 @@ export enum CtaCopy {
     dispatch: data => Events.postEvent(data),
   }
 )
-export class Article extends React.Component<ArticleProps, State> {
-  state = {
-    showCtaBanner: false,
-  }
-  lastScrollPosition: number = 0
-
-  handleScroll() {
-    const newScrollPosition = window.scrollY
-    let showCtaBanner = this.state.showCtaBanner
-
-    if (newScrollPosition <= this.lastScrollPosition) {
-      // scrolling up the page
-      if (this.state.showCtaBanner) {
-        showCtaBanner = false
-      }
-    } else {
-      // scrolling down the page
-      if (!this.state.showCtaBanner) {
-        showCtaBanner = true
-      }
-    }
-
-    if (this.state.showCtaBanner !== showCtaBanner) {
-      this.setState({ showCtaBanner })
-    }
-    this.lastScrollPosition = newScrollPosition
-  }
-
-  componentDidMount() {
-    if (window) {
-      window.addEventListener("scroll", debounce(() => this.handleScroll(), 10))
-    }
-  }
-
+export class Article extends React.Component<ArticleProps> {
   getArticleLayout = () => {
     const { article } = this.props
 
@@ -125,24 +81,11 @@ export class Article extends React.Component<ArticleProps, State> {
   }
 
   render() {
-    const { layout, slug } = this.props.article
-    const copy = layout === "news" ? CtaCopy.news : CtaCopy.default
-    const backgroundColor = layout === "video" ? "white" : "black"
-    const textColor = layout === "video" ? "black" : "white"
-
     return (
       <FullScreenProvider>
         {this.getArticleLayout()}
         {this.shouldRenderSignUpCta() && (
-          <MinimalCtaBanner
-            href={`/sign_up?redirect-to=${getArticleFullHref(slug)}`}
-            height="55px"
-            copy={copy}
-            position="bottom"
-            textColor={textColor}
-            backgroundColor={backgroundColor}
-            show={this.state.showCtaBanner}
-          />
+          <BannerWrapper article={this.props.article} />
         )}
       </FullScreenProvider>
     )
