@@ -56,6 +56,7 @@ export enum ActionType {
   /**
    * A UI element was rendered in the viewport
    */
+  AuthImpression = "Auth impression",
   Impression = "Impression",
 
   /**
@@ -73,6 +74,12 @@ export enum ActionName {
    */
   ArtistFollow = "artistFollow",
   ArtistUnfollow = "artistUnfollow",
+
+  /**
+   * Authentication
+   */
+  ViewEditorial = "viewed editorial",
+  Dismiss = "dismiss",
 
   /**
    * Gene Page
@@ -156,4 +163,9 @@ export enum Context {
   FurtherReading = "Further reading",
   ReadMore = "Read more",
   RelatedArticles = "Related articles",
+
+  /**
+   * Authentication modal
+   */
+  MinimalCtaBanner = "MinimalCtaBanner",
 }
