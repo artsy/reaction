@@ -10,11 +10,10 @@ export type ReviewSubmitOrderMutationVariables = {
 };
 export type ReviewSubmitOrderMutationResponse = {
     readonly submitOrder: ({
-        readonly result: ({
-            readonly order: ({
-                readonly state: string | null;
+        readonly orderOrError: ({
+            readonly error?: ({
+                readonly description: string;
             }) | null;
-            readonly errors: ReadonlyArray<string | null> | null;
         }) | null;
     }) | null;
 };
@@ -30,12 +29,13 @@ mutation ReviewSubmitOrderMutation(
   $input: SubmitOrderInput!
 ) {
   submitOrder(input: $input) {
-    result {
-      order {
-        state
-        __id: id
+    orderOrError {
+      __typename
+      ... on OrderWithMutationFailure {
+        error {
+          description
+        }
       }
-      errors
     }
   }
 }
@@ -52,73 +52,42 @@ var v0 = [
 ],
 v1 = [
   {
-    "kind": "LinkedField",
-    "alias": null,
-    "name": "submitOrder",
-    "storageKey": null,
-    "args": [
-      {
-        "kind": "Variable",
-        "name": "input",
-        "variableName": "input",
-        "type": "SubmitOrderInput!"
-      }
-    ],
-    "concreteType": "SubmitOrderPayload",
-    "plural": false,
-    "selections": [
-      {
-        "kind": "LinkedField",
-        "alias": null,
-        "name": "result",
-        "storageKey": null,
-        "args": null,
-        "concreteType": "OrderReturnType",
-        "plural": false,
-        "selections": [
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "name": "order",
-            "storageKey": null,
-            "args": null,
-            "concreteType": "Order",
-            "plural": false,
-            "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "state",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": "__id",
-                "name": "id",
-                "args": null,
-                "storageKey": null
-              }
-            ]
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "errors",
-            "args": null,
-            "storageKey": null
-          }
-        ]
-      }
-    ]
+    "kind": "Variable",
+    "name": "input",
+    "variableName": "input",
+    "type": "SubmitOrderInput!"
   }
-];
+],
+v2 = {
+  "kind": "InlineFragment",
+  "type": "OrderWithMutationFailure",
+  "selections": [
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "error",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "EcommerceError",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "description",
+          "args": null,
+          "storageKey": null
+        }
+      ]
+    }
+  ]
+};
 return {
   "kind": "Request",
   "operationKind": "mutation",
   "name": "ReviewSubmitOrderMutation",
   "id": null,
-  "text": "mutation ReviewSubmitOrderMutation(\n  $input: SubmitOrderInput!\n) {\n  submitOrder(input: $input) {\n    result {\n      order {\n        state\n        __id: id\n      }\n      errors\n    }\n  }\n}\n",
+  "text": "mutation ReviewSubmitOrderMutation(\n  $input: SubmitOrderInput!\n) {\n  submitOrder(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationFailure {\n        error {\n          description\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -126,15 +95,70 @@ return {
     "type": "Mutation",
     "metadata": null,
     "argumentDefinitions": v0,
-    "selections": v1
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "submitOrder",
+        "storageKey": null,
+        "args": v1,
+        "concreteType": "SubmitOrderPayload",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "orderOrError",
+            "storageKey": null,
+            "args": null,
+            "concreteType": null,
+            "plural": false,
+            "selections": [
+              v2
+            ]
+          }
+        ]
+      }
+    ]
   },
   "operation": {
     "kind": "Operation",
     "name": "ReviewSubmitOrderMutation",
     "argumentDefinitions": v0,
-    "selections": v1
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "submitOrder",
+        "storageKey": null,
+        "args": v1,
+        "concreteType": "SubmitOrderPayload",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "orderOrError",
+            "storageKey": null,
+            "args": null,
+            "concreteType": null,
+            "plural": false,
+            "selections": [
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "__typename",
+                "args": null,
+                "storageKey": null
+              },
+              v2
+            ]
+          }
+        ]
+      }
+    ]
   }
 };
 })();
-(node as any).hash = 'c9ec99b36a2ceb273923f323b4c2ed4d';
+(node as any).hash = '0e81fed46f5998cbc84f51387e0e71a9';
 export default node;

@@ -91,11 +91,17 @@ export class ShippingRoute extends Component<
                 $input: SetOrderShippingInput!
               ) {
                 setOrderShipping(input: $input) {
-                  result {
-                    order {
-                      state
+                  orderOrError {
+                    ... on OrderWithMutationSuccess {
+                      order {
+                        state
+                      }
                     }
-                    errors
+                    ... on OrderWithMutationFailure {
+                      error {
+                        description
+                      }
+                    }
                   }
                 }
               }

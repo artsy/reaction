@@ -46577,12 +46577,12 @@
           "description": null,
           "fields": [
             {
-              "name": "result",
+              "name": "orderOrError",
               "description": null,
               "args": [],
               "type": {
-                "kind": "OBJECT",
-                "name": "OrderReturnType",
+                "kind": "UNION",
+                "name": "OrderOrFailureUnionType",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -46596,45 +46596,6 @@
                 "kind": "SCALAR",
                 "name": "String",
                 "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "OBJECT",
-          "name": "OrderReturnType",
-          "description": null,
-          "fields": [
-            {
-              "name": "order",
-              "description": "Returned order object",
-              "args": [],
-              "type": {
-                "kind": "OBJECT",
-                "name": "Order",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "errors",
-              "description": "Errors",
-              "args": [],
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -46700,12 +46661,12 @@
           "description": null,
           "fields": [
             {
-              "name": "result",
+              "name": "orderOrError",
               "description": null,
               "args": [],
               "type": {
-                "kind": "OBJECT",
-                "name": "OrderReturnType",
+                "kind": "UNION",
+                "name": "OrderOrFailureUnionType",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -46770,12 +46731,12 @@
           "description": null,
           "fields": [
             {
-              "name": "result",
+              "name": "orderOrError",
               "description": null,
               "args": [],
               "type": {
-                "kind": "OBJECT",
-                "name": "OrderReturnType",
+                "kind": "UNION",
+                "name": "OrderOrFailureUnionType",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -46899,12 +46860,12 @@
           "description": null,
           "fields": [
             {
-              "name": "result",
+              "name": "orderOrError",
               "description": null,
               "args": [],
               "type": {
-                "kind": "OBJECT",
-                "name": "OrderReturnType",
+                "kind": "UNION",
+                "name": "OrderOrFailureUnionType",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -46969,12 +46930,12 @@
           "description": null,
           "fields": [
             {
-              "name": "result",
+              "name": "orderOrError",
               "description": null,
               "args": [],
               "type": {
-                "kind": "OBJECT",
-                "name": "OrderReturnType",
+                "kind": "UNION",
+                "name": "OrderOrFailureUnionType",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -47039,12 +47000,12 @@
           "description": null,
           "fields": [
             {
-              "name": "result",
+              "name": "orderOrError",
               "description": null,
               "args": [],
               "type": {
-                "kind": "OBJECT",
-                "name": "OrderReturnType",
+                "kind": "UNION",
+                "name": "OrderOrFailureUnionType",
                 "ofType": null
               },
               "isDeprecated": false,
