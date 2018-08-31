@@ -57,6 +57,11 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                 submitOrder(input: $input) {
                   orderOrError {
                     __typename
+                    ... on OrderWithMutationFailure {
+                      error {
+                        description
+                      }
+                    }
                   }
                 }
               }
@@ -66,9 +71,14 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                 orderId: this.props.order.id,
               },
             },
-            onCompleted: () =>
-              // TODO: handle failure
-              this.props.router.push(`/order2/${this.props.order.id}/status`),
+            onCompleted(result) {
+              if (result.submitOrder.orderOrError.error) {
+                // TODO: handle failure properly
+                console.error(result.submitOrder.orderOrError.error.description)
+                return
+              }
+              this.props.router.push(`/order2/${this.props.order.id}/status`)
+            },
           }
         )
       )
