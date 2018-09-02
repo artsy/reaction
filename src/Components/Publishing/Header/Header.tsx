@@ -6,6 +6,7 @@ import { StandardHeader } from "./Layouts/StandardHeader"
 
 interface HeaderProps {
   article: ArticleData
+  textColor?: string
   date?: string
   editDeck?: ReactElement<any>
   editImage?: ReactElement<any>
@@ -18,6 +19,7 @@ export const Header: React.SFC<HeaderProps> = props => {
   const {
     article,
     date,
+    textColor,
     editLeadParagraph,
     editDeck,
     editImage,
@@ -30,6 +32,7 @@ export const Header: React.SFC<HeaderProps> = props => {
       return (
         <FeatureHeader
           article={article}
+          textColor={textColor}
           date={date && date}
           editDeck={editDeck}
           editImage={editImage}

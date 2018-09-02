@@ -18,7 +18,7 @@ export const FeatureFullscreenHeader: React.SFC<FeatureHeaderProps> = props => {
   const hasNav = seriesArticle || super_article || is_super_article
 
   return (
-    <FeatureHeaderContainer hasNav={hasNav}>
+    <FeatureHeaderContainer hasNav={hasNav || editImage}>
       <FeatureAssetContainer src={src ? src : undefined}>
         {editImage && <EditImage>{editImage}</EditImage>}
         {isVideo && (
@@ -68,7 +68,6 @@ const Overlay = styled.div`
 
 const HeaderTextContainer = styled.div.attrs<{ hasLogos?: boolean }>({})`
   height: 100%;
-  color: white;
   text-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
   padding: 50px;
   display: flex;

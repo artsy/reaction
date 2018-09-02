@@ -137,7 +137,7 @@ export function isValidVideoUrl(url: string) {
   return isValid
 }
 
-function getPlayerUrl(url) {
+export function getPlayerUrl(url) {
   const { hostname } = url
 
   if (hostname) {

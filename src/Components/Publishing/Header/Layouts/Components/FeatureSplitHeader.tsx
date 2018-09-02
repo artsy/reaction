@@ -25,7 +25,7 @@ export const FeatureSplitHeader: React.SFC<FeatureHeaderProps> = props => {
   const src = !isVideo && url.length && resize(url, { width: 1600 })
 
   return (
-    <FeatureSplitHeaderContainer hasNav={seriesArticle && true}>
+    <FeatureSplitHeaderContainer hasNav={(seriesArticle || editImage) && true}>
       <HeaderTextContainer xs={12} sm={5}>
         <FeatureInnerContent {...props} />
       </HeaderTextContainer>

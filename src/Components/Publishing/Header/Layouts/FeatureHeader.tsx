@@ -8,6 +8,7 @@ import { FeatureTextHeader } from "./Components/FeatureTextHeader"
 
 export interface FeatureHeaderProps {
   article?: ArticleData
+  textColor?: string
   date?: string
   editDeck?: ReactElement<any>
   editImage?: ReactElement<any>
