@@ -12,15 +12,13 @@ describe("RelatedArticleCanvasLink", () => {
     return mount(<RelatedArticleCanvasLink {...props} />)
   }
 
-  let props
+  let testProps
   beforeEach(() => {
-    props = {
-      article: RelatedCanvas[0],
-    }
+    testProps = { article: RelatedCanvas[0] }
   })
 
   it("renders expected data", () => {
-    const component = getWrapper(props)
+    const component = getWrapper(testProps)
 
     expect(component.text()).toMatch(
       "The 15 Top Art Schools in the United States"

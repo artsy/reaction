@@ -31,22 +31,20 @@ describe("ArtistToolTip", () => {
     )
   }
 
-  let props
+  let testProps
   beforeEach(() => {
-    props = {
-      tracking: {
-        trackEvent: jest.fn(),
-      },
+    testProps = {
+      tracking: { trackEvent: jest.fn() },
       artist: Artists[0].artist,
     }
   })
 
   it("Renders artist data", () => {
-    const component = getWrapper(props)
+    const component = getWrapper(testProps)
 
-    expect(component.text()).toMatch(props.artist.name)
+    expect(component.text()).toMatch(testProps.artist.name)
     expect(component.text()).toMatch(
-      props.artist.formatted_nationality_and_birthday
+      testProps.artist.formatted_nationality_and_birthday
     )
     expect(component.text()).toMatch(
       "Nick Mauss makes drawings, prints, and paintings that often"
@@ -58,8 +56,8 @@ describe("ArtistToolTip", () => {
   })
 
   it("Renders genes if no bio present", () => {
-    delete props.artist.blurb
-    const component = getWrapper(props)
+    delete testProps.artist.blurb
+    const component = getWrapper(testProps)
 
     expect(component.text()).toMatch(
       "United States, Abstract Art, 21st Century"
@@ -67,12 +65,12 @@ describe("ArtistToolTip", () => {
   })
 
   it("Tracks clicks to artist page", () => {
-    const component = getWrapper(props)
+    const component = getWrapper(testProps)
     component
       .find(TitleDate)
       .at(0)
       .simulate("click")
-    const trackingData = props.tracking.trackEvent.mock.calls[0][0]
+    const trackingData = testProps.tracking.trackEvent.mock.calls[0][0]
 
     expect(trackingData.action).toBe("Click")
     expect(trackingData.flow).toBe("tooltip")

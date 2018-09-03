@@ -37,7 +37,7 @@ describe("Slider", () => {
   it("renders any kind of react element and iterates over data", () => {
     const Foo = ({ name }) => <div>hello {name} how are you</div>
 
-    let wrapper = mount(
+    const wrapper = mount(
       <Boot>
         <Slider
           data={[{ name: "name1" }, { name: "name2" }]}

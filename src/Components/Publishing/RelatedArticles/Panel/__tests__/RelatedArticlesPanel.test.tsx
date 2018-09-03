@@ -15,11 +15,9 @@ describe("RelatedArticlesPanel", () => {
     return mount(<RelatedArticlesPanel {...props} />)
   }
 
-  let props
+  let testProps
   beforeEach(() => {
-    props = {
-      articles: RelatedPanel,
-    }
+    testProps = { articles: RelatedPanel }
   })
 
   it("renders the related articles panel", () => {
@@ -30,18 +28,18 @@ describe("RelatedArticlesPanel", () => {
   })
 
   it("renders a default label", () => {
-    const component = getWrapper(props)
+    const component = getWrapper(testProps)
     expect(component.text()).toMatch("Related Stories")
   })
 
   it("renders a provided label", () => {
-    props.label = "The Best Stories"
-    const component = getWrapper(props)
+    testProps.label = "The Best Stories"
+    const component = getWrapper(testProps)
     expect(component.text()).toMatch("The Best Stories")
   })
 
   it("renders links", () => {
-    const component = getWrapper(props)
+    const component = getWrapper(testProps)
     expect(component.find(RelatedArticlesPanelLink)).toHaveLength(3)
   })
 

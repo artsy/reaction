@@ -6,7 +6,7 @@ import { paginationProps } from "../../../Apps/__test__/Fixtures/Pagination"
 import { LargePagination, Pagination, SmallPagination } from "../Pagination"
 
 describe("Pagination", () => {
-  let { cursor, callbacks } = paginationProps
+  const { cursor, callbacks } = paginationProps
 
   beforeAll(() => {
     window.matchMedia = undefined // Immediately set matching media query in Boot

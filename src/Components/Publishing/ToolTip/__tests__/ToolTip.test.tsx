@@ -12,7 +12,7 @@ import { ToolTip } from "../ToolTip"
 
 describe("ToolTip", () => {
   const getWrapper = props => {
-    let tooltipsData = { artists: [], genes: [] }
+    const tooltipsData = { artists: [], genes: [] }
 
     tooltipsData[`${props.model}s`].push(props.entity)
     return wrapperWithContext(

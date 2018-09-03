@@ -15,34 +15,31 @@ describe("RelatedArticlesCanvas", () => {
     return mount(<RelatedArticlesCanvas {...props} />)
   }
 
-  let props
+  let testProps
   beforeEach(() => {
-    props = {
-      articles: RelatedCanvas,
-      vertical: { name: "Art Market" },
-    }
+    testProps = { articles: RelatedCanvas, vertical: { name: "Art Market" } }
   })
 
   it("renders the related articles canvas", () => {
     const related = renderer
-      .create(<RelatedArticlesCanvas {...props} />)
+      .create(<RelatedArticlesCanvas {...testProps} />)
       .toJSON()
     expect(related).toMatchSnapshot()
   })
 
   it("renders the vertical name if there is one", () => {
-    const component = getWrapper(props)
+    const component = getWrapper(testProps)
     expect(component.html()).toMatch("Art Market")
   })
 
   it("renders a default message if there is no vertical", () => {
-    delete props.vertical
-    const component = getWrapper(props)
+    delete testProps.vertical
+    const component = getWrapper(testProps)
     expect(component.html()).toMatch("More from Artsy Editorial")
   })
 
   it("renders article links", () => {
-    const component = getWrapper(props)
+    const component = getWrapper(testProps)
     expect(component.find(RelatedArticleCanvasLink)).toHaveLength(4)
   })
 
