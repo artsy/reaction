@@ -1,4 +1,5 @@
 import { space } from "@artsy/palette"
+import { pMedia } from "Components/Helpers"
 import { BylineContainer } from "Components/Publishing/Byline/Byline"
 import { ShareContainer } from "Components/Publishing/Byline/Share"
 import {
@@ -11,7 +12,6 @@ import {
 import React from "react"
 import track from "react-tracking"
 import styled from "styled-components"
-import { pMedia } from "../../../../Helpers"
 import { EditImage, FeatureHeaderProps } from "../FeatureHeader"
 import {
   Deck,
@@ -50,7 +50,7 @@ export class FeatureBasicHeader extends React.Component<
       editImage,
     } = this.props
     const { url } = hero_section
-    const hasVideo = url && getPlayerUrl(url).length !== 0
+    const hasVideo = getPlayerUrl({ hostname: url }) ? true : false
 
     return (
       <BasicHeaderContainer hasVideo={hasVideo}>

@@ -22,10 +22,10 @@ export const FeatureInnerContent: React.SFC<FeatureHeaderProps> = props => {
       <div>
         <VerticalOrSeriesTitle
           article={article}
-          color={!vertical ? color("black30") : TextColor}
+          color={!vertical ? color("black30") : TextColor || undefined}
           vertical={vertical || editVertical}
         />
-        <Title color={TextColor}>{editTitle || title}</Title>
+        <Title color={TextColor || undefined}>{editTitle || title}</Title>
       </div>
       <FeatureInnerSubContent {...props} />
     </TextContainer>

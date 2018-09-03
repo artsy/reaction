@@ -72,6 +72,7 @@ const HeaderTextContainer = Col.extend`
   ${BylineContainer} {
     margin-top: ${space(3)}px;
   }
+
   ${pMedia.sm`
     ${Title} {
       margin-bottom: 20px;
@@ -100,9 +101,11 @@ export const FeatureAssetContainer = Col.extend`
   padding-left: 0;
   padding-right: 0;
   position: relative;
+
   img {
     display: none;
   }
+
   ${pMedia.sm`
     height: fit-content;
     img {
@@ -140,6 +143,7 @@ export const FeatureSplitHeaderContainer = Row.extend.attrs<{
   height: ${props => (props.hasNav ? "100vh" : "calc(100vh - 61px)")};
   min-height: fit-content;
   justify-content: space-between;
+
   ${props =>
     !props.hasNav &&
     `

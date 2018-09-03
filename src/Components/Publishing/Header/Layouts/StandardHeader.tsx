@@ -26,7 +26,7 @@ export const StandardHeader: React.SFC<StandardHeaderProps> = props => {
             <VerticalOrSeriesTitle
               article={article}
               vertical={vertical || editVertical}
-              color={!vertical && color("black30")}
+              color={!vertical ? color("black30") : undefined}
             />
           </Vertical>
         )}
