@@ -15,7 +15,7 @@ export const FeatureTextHeader: React.SFC<FeatureHeaderProps> = props => {
   const src = url.length && !isVideo && resize(url, { width: 1200 })
 
   return (
-    <TextHeaderContainer isEditing={editTitle && true}>
+    <TextHeaderContainer isEditing={Boolean(editTitle)}>
       <FeatureInnerContent
         article={article}
         date={date}

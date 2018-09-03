@@ -16,13 +16,14 @@ export const FeatureInnerContent: React.SFC<FeatureHeaderProps> = props => {
   const vertical = article.vertical && article.vertical.name
   const isFullscreen = hero_section && hero_section.type === "fullscreen"
   const TextColor = textColor ? textColor : isFullscreen && "white"
+  const verticalColor = !vertical ? color("black30") : TextColor || undefined
 
   return (
     <TextContainer>
       <div>
         <VerticalOrSeriesTitle
           article={article}
-          color={!vertical ? color("black30") : TextColor || undefined}
+          color={verticalColor}
           vertical={vertical || editVertical}
         />
         <Title color={TextColor || undefined}>{editTitle || title}</Title>
