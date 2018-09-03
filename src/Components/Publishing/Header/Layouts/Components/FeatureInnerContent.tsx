@@ -1,5 +1,6 @@
 import { color, Sans, space } from "@artsy/palette"
 import { unica } from "Assets/Fonts"
+import { pMedia } from "Components/Helpers"
 import { Byline } from "Components/Publishing/Byline/Byline"
 import {
   Vertical,
@@ -7,13 +8,12 @@ import {
 } from "Components/Publishing/Sections/VerticalOrSeriesTitle"
 import React from "react"
 import styled from "styled-components"
-import { pMedia } from "../../../../Helpers"
 import { FeatureHeaderProps } from "../FeatureHeader"
 
 export const FeatureInnerContent: React.SFC<FeatureHeaderProps> = props => {
   const { article, textColor, editTitle, editVertical } = props
   const { title, hero_section } = article
-  const vertical = (article.vertical && article.vertical.name) || editVertical
+  const vertical = article.vertical && article.vertical.name
   const isFullscreen = hero_section && hero_section.type === "fullscreen"
   const TextColor = textColor ? textColor : isFullscreen && "white"
 
@@ -22,8 +22,8 @@ export const FeatureInnerContent: React.SFC<FeatureHeaderProps> = props => {
       <div>
         <VerticalOrSeriesTitle
           article={article}
-          color={TextColor}
-          vertical={vertical}
+          color={!vertical ? color("black30") : TextColor}
+          vertical={vertical || editVertical}
         />
         <Title color={TextColor}>{editTitle || title}</Title>
       </div>
@@ -37,6 +37,7 @@ export const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+
   ${Vertical} {
     padding-bottom: ${space(1)}px;
   }
@@ -84,6 +85,7 @@ export const SubContentContainer = styled.div`
   justify-content: space-between;
   align-items: flex-end;
   flex-direction: row;
+
   ${pMedia.sm`
     align-items: flex-start;
     flex-direction: column;
@@ -93,6 +95,7 @@ export const SubContentContainer = styled.div`
 export const Deck = Sans.extend`
   max-width: 460px;
   margin-right: ${space(3)}px;
+
   ${pMedia.sm`
     margin-bottom: ${space(3)}px;
   `};
