@@ -1,18 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Standard Header Snapshots renders editable props properly 1`] = `
-.c4 {
+.c7 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
 }
 
-.c7 {
+.c4 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #C2C2C2;
+}
+
+.c8 {
   margin: 10px 20px 0 0;
 }
 
-.c7:before {
+.c8:before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -22,12 +30,12 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
   background-color: black;
 }
 
-.c8 {
+.c9 {
   margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
-.c9 {
+.c10 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -41,18 +49,18 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
   margin-top: 5px;
 }
 
-.c10 {
+.c11 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c10:hover {
+.c11:hover {
   opacity: 0.6;
 }
 
-.c10:first-child {
+.c11:first-child {
   padding-left: 0;
 }
 
@@ -72,7 +80,7 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
 }
 
 .c3 a {
-  color: black;
+  color: #C2C2C2;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
@@ -139,6 +147,7 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
     >
       <div
         className="c3 c4"
+        color="#C2C2C2"
         fontFamily={
           Object {
             "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -168,7 +177,7 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
       color="black"
     >
       <div
-        className="c4"
+        className="c7"
         fontFamily={
           Object {
             "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -178,17 +187,17 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
         fontSize={14}
       >
         <div
-          className="c7"
+          className="c8"
           color="black"
         >
           Casey Lesser
         </div>
       </div>
       <div
-        className="c8"
+        className="c9"
       >
         <div
-          className="c4"
+          className="c7"
           fontFamily={
             Object {
               "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -201,10 +210,10 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
         </div>
       </div>
       <div
-        className="c9"
+        className="c10"
       >
         <a
-          className="c10"
+          className="c11"
           href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district"
           onClick={[Function]}
           target="_blank"
@@ -230,7 +239,7 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
           </svg>
         </a>
         <a
-          className="c10"
+          className="c11"
           href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district&text=New York's Next Art District&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district&via=artsy"
           onClick={[Function]}
           target="_blank"
@@ -256,7 +265,7 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
           </svg>
         </a>
         <a
-          className="c10"
+          className="c11"
           href="mailto:?subject=New York's Next Art District&body=Check out New York's Next Art District on Artsy: https://www.artsy.net/article/new-yorks-next-art-district"
           onClick={[Function]}
           target="_blank"

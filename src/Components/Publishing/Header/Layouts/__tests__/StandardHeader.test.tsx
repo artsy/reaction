@@ -35,8 +35,8 @@ describe("Standard Header", () => {
   })
 
   describe("Unit", () => {
-    const getWrapper = props => {
-      return mount(<StandardHeader {...props} />)
+    const getWrapper = passedProps => {
+      return mount(<StandardHeader {...passedProps} />)
     }
 
     let props
