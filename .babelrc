@@ -31,7 +31,8 @@
         "Analytics": "./src/Analytics",
         "Assets": "./src/Assets",
         "Components": "./src/Components",
-        "Styleguide": "./src/Styleguide"
+        "Styleguide": "./src/Styleguide",
+        "package.json": "./package.json"
       }
     }],
     "lodash"
