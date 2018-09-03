@@ -1,6 +1,7 @@
 import "isomorphic-fetch"
 import "regenerator-runtime/runtime"
 
+import { version as ReactionVersion } from "package.json"
 import RelayClientSSR from "react-relay-network-modern-ssr/lib/client"
 import RelayServerSSR from "react-relay-network-modern-ssr/lib/server"
 import { Environment, RecordSource, RelayNetwork, Store } from "relay-runtime"
@@ -13,6 +14,8 @@ import {
   RelayNetworkLayer,
   urlMiddleware,
 } from "react-relay-network-modern"
+
+const USER_AGENT = `Reaction/${ReactionVersion}`
 
 interface Config {
   cache?: object
@@ -36,7 +39,14 @@ export function createEnvironment(config: Config = {}) {
 
   const headers = {
     "Content-Type": "application/json",
-    "User-Agent": "Reaction",
+    /**
+     * Chrome still doesn’t support setting the `User-Agent` header, but as this
+     * isn’t critical information either we’re not going to work around it by
+     * adding e.g. a `X-User-Agent` header, for now.
+     *
+     * See https://bugs.chromium.org/p/chromium/issues/detail?id=571722
+     */
+    "User-Agent": USER_AGENT,
   }
 
   let timeZone

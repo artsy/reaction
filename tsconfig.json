@@ -25,7 +25,8 @@
       "Analytics/*": ["./Analytics/*"],
       "Assets/*": ["./Assets/*"],
       "Components/*": ["./Components/*"],
-      "Styleguide/*": ["./Styleguide/*"]
+      "Styleguide/*": ["./Styleguide/*"],
+      "package.json": ["./package.json"]
     }
   },
   "include": ["typings/*.d.ts", "src/**/*.ts", "src/**/*.tsx"],
