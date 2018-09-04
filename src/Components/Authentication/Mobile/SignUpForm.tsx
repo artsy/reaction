@@ -1,3 +1,5 @@
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import Colors from "Assets/Colors"
 import {
   BackButton,
@@ -21,12 +23,30 @@ import React, { Component, Fragment } from "react"
 export interface MobileSignUpFormState {
   isSocialSignUp: boolean
 }
+
+export const currentStepActionName = {
+  0: Schema.ActionName.EmailNextButton,
+  1: Schema.ActionName.PasswordNextButton,
+}
+
+@track({ context_module: Schema.Context.Header })
 export class MobileSignUpForm extends Component<
   FormProps,
   MobileSignUpFormState
 > {
   state = {
     isSocialSignUp: false,
+  }
+
+  @track((props: { intent: string }, state, args) => ({
+    action_type: Schema.ActionType.Click,
+    action_name: currentStepActionName[args[0]],
+    flow: "auth",
+    subject: "clicked next button",
+    intent: props.intent,
+  }))
+  trackNextClick(currentStepIndex) {
+    // no op
   }
 
   showError = status => {
@@ -158,6 +178,10 @@ export class MobileSignUpForm extends Component<
                 {this.showError(status)}
                 <SubmitButton
                   onClick={e => {
+                    if (wizard.shouldAllowNext) {
+                      this.trackNextClick(wizard.currentStepIndex)
+                    }
+
                     this.setState(
                       {
                         isSocialSignUp: false,
