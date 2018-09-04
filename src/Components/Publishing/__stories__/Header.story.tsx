@@ -63,6 +63,12 @@ storiesOf("Publishing/Header/Feature/Text", module)
   .add("Video", () => {
     return <Header article={FeatureArticle} />
   })
+  .add("Missing Vertical", () => {
+    const article = extend({}, FeatureArticle, {
+      vertical: null,
+    })
+    return <Header article={article} />
+  })
   .add("Editable", () => {
     const article = extend({}, FeatureArticle, {
       vertical: null,

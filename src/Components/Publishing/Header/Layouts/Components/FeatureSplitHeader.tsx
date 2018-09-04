@@ -25,7 +25,7 @@ export const FeatureSplitHeader: React.SFC<FeatureHeaderProps> = props => {
   const src = !isVideo && url.length && resize(url, { width: 1600 })
 
   return (
-    <FeatureSplitHeaderContainer hasNav={seriesArticle && true}>
+    <FeatureSplitHeaderContainer hasNav={(seriesArticle || editImage) && true}>
       <HeaderTextContainer xs={12} sm={5}>
         <FeatureInnerContent {...props} />
       </HeaderTextContainer>
@@ -72,6 +72,7 @@ const HeaderTextContainer = Col.extend`
   ${BylineContainer} {
     margin-top: ${space(3)}px;
   }
+
   ${pMedia.sm`
     ${Title} {
       margin-bottom: 20px;
@@ -93,15 +94,18 @@ const FeatureVideo = styled.video`
   `};
 `
 
-const FeatureAssetContainer = Col.extend`
+export const FeatureAssetContainer = Col.extend`
   flex: 1;
   overflow: hidden;
   margin: ${space(2)}px;
   padding-left: 0;
   padding-right: 0;
+  position: relative;
+
   img {
     display: none;
   }
+
   ${pMedia.sm`
     height: fit-content;
     img {
@@ -131,12 +135,15 @@ const Img = styled.img`
   width: 100%;
 `
 
-const FeatureSplitHeaderContainer = Row.extend.attrs<{ hasNav?: boolean }>({})`
+export const FeatureSplitHeaderContainer = Row.extend.attrs<{
+  hasNav?: boolean
+}>({})`
   margin-left: 0;
   margin-right: 0;
   height: ${props => (props.hasNav ? "100vh" : "calc(100vh - 61px)")};
   min-height: fit-content;
   justify-content: space-between;
+
   ${props =>
     !props.hasNav &&
     `

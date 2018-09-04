@@ -15,8 +15,8 @@ import { FeatureInnerContent } from "../FeatureInnerContent"
 jest.unmock("react-tracking")
 
 describe("FeatureBasicHeader", () => {
-  const getWrapper = props => {
-    return mount(<FeatureBasicHeader {...props} />)
+  const getWrapper = passedProps => {
+    return mount(<FeatureBasicHeader {...passedProps} />)
   }
 
   let testProps

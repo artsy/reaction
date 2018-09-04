@@ -11,8 +11,8 @@ import {
 } from "../FeatureInnerContent"
 
 describe("FeatureInnerContent", () => {
-  const getWrapper = props => {
-    return mount(<FeatureInnerContent {...props} />)
+  const getWrapper = passedProps => {
+    return mount(<FeatureInnerContent {...passedProps} />)
   }
 
   let props
@@ -54,8 +54,8 @@ describe("FeatureInnerContent", () => {
 })
 
 describe("FeatureInnerSubContent", () => {
-  const getWrapper = props => {
-    return mount(<FeatureInnerSubContent {...props} />)
+  const getWrapper = passedProps => {
+    return mount(<FeatureInnerSubContent {...passedProps} />)
   }
 
   let props

@@ -8,7 +8,7 @@ import {
   StandardArticle,
 } from "../Fixtures/Articles"
 
-import { ContextProvider } from "../../Artsy"
+import { ContextProvider } from "Artsy"
 import { Display, RelatedCanvas, RelatedPanel } from "../Fixtures/Components"
 import { ArticleData } from "../Typings"
 

@@ -1,17 +1,17 @@
 import { space } from "@artsy/palette"
+import { pMedia } from "Components/Helpers"
 import { BylineContainer } from "Components/Publishing/Byline/Byline"
 import { ShareContainer } from "Components/Publishing/Byline/Share"
 import {
   CoverImage,
+  getPlayerUrl,
   IFrame,
-  isValidVideoUrl,
   Video,
   VIDEO_RATIO,
 } from "Components/Publishing/Sections/Video"
 import React from "react"
 import track from "react-tracking"
 import styled from "styled-components"
-import { pMedia } from "../../../../Helpers"
 import { EditImage, FeatureHeaderProps } from "../FeatureHeader"
 import {
   Deck,
@@ -50,7 +50,7 @@ export class FeatureBasicHeader extends React.Component<
       editImage,
     } = this.props
     const { url } = hero_section
-    const hasVideo = url && isValidVideoUrl(url)
+    const hasVideo = getPlayerUrl({ hostname: url }) ? true : false
 
     return (
       <BasicHeaderContainer hasVideo={hasVideo}>
@@ -70,7 +70,7 @@ export const VideoContainer = styled.div`
   width: 100%;
 `
 
-const BasicHeaderContainer = styled.div.attrs<{ hasVideo: boolean }>({})`
+export const BasicHeaderContainer = styled.div.attrs<{ hasVideo: boolean }>({})`
   text-align: center;
   margin-top: ${props => (props.hasVideo ? "30" : "70")}px;
   padding: ${space(2)}px;

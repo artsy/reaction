@@ -1,5 +1,5 @@
 import { storiesOf } from "@storybook/react"
-import { ContextProvider } from "Components/Artsy"
+import { ContextProvider } from "Artsy"
 import { Article } from "Components/Publishing/Article"
 import {
   BasicArticle,

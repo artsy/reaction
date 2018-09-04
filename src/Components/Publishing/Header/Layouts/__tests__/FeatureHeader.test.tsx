@@ -10,8 +10,8 @@ import { FeatureTextHeader } from "../Components/FeatureTextHeader"
 import { FeatureHeader } from "../FeatureHeader"
 
 describe("Header", () => {
-  const getWrapper = props => {
-    return mount(<FeatureHeader {...props} />)
+  const getWrapper = passedProps => {
+    return mount(<FeatureHeader {...passedProps} />)
   }
 
   let props

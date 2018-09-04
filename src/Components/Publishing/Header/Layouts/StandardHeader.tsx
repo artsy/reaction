@@ -1,11 +1,11 @@
-import { space } from "@artsy/palette"
+import { color, space } from "@artsy/palette"
 import { garamond } from "Assets/Fonts"
+import { pMedia } from "Components/Helpers"
+import { Byline } from "Components/Publishing/Byline/Byline"
+import { VerticalOrSeriesTitle } from "Components/Publishing/Sections/VerticalOrSeriesTitle"
+import { ArticleData } from "Components/Publishing/Typings"
 import React, { ReactElement } from "react"
 import styled from "styled-components"
-import { pMedia } from "../../../Helpers"
-import { Byline } from "../../Byline/Byline"
-import { VerticalOrSeriesTitle } from "../../Sections/VerticalOrSeriesTitle"
-import { ArticleData } from "../../Typings"
 
 interface StandardHeaderProps {
   article?: ArticleData
@@ -16,14 +16,18 @@ interface StandardHeaderProps {
 
 export const StandardHeader: React.SFC<StandardHeaderProps> = props => {
   const { article, date, editTitle, editVertical } = props
-  const vertical = (article.vertical && article.vertical.name) || editVertical
+  const vertical = article.vertical && article.vertical.name
 
   return (
     <StandardHeaderParent>
       <StandardHeaderContainer>
-        {vertical && (
+        {(vertical || editVertical) && (
           <Vertical>
-            <VerticalOrSeriesTitle article={article} vertical={vertical} />
+            <VerticalOrSeriesTitle
+              article={article}
+              vertical={vertical || editVertical}
+              color={!vertical ? color("black30") : undefined}
+            />
           </Vertical>
         )}
         <Title>{editTitle || article.title}</Title>
