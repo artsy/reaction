@@ -1,11 +1,11 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-import { CollectArtworkGrid_filtered_artworks$ref } from "./CollectArtworkGrid_filtered_artworks.graphql";
+import { CollectArtworkFilterRefetch_viewer$ref } from "./CollectArtworkFilterRefetch_viewer.graphql";
 export type ArtworkAggregation = "COLOR" | "DIMENSION_RANGE" | "FOLLOWED_ARTISTS" | "GALLERY" | "INSTITUTION" | "MAJOR_PERIOD" | "MEDIUM" | "MERCHANDISABLE_ARTISTS" | "PARTNER_CITY" | "PERIOD" | "PRICE_RANGE" | "TOTAL" | "%future added value";
-declare const _CollectArtworkFilterRefetch_query$ref: unique symbol;
-export type CollectArtworkFilterRefetch_query$ref = typeof _CollectArtworkFilterRefetch_query$ref;
-export type CollectArtworkFilterRefetch_query = {
+declare const _ArtworkGrid_viewer$ref: unique symbol;
+export type ArtworkGrid_viewer$ref = typeof _ArtworkGrid_viewer$ref;
+export type ArtworkGrid_viewer = {
     readonly filter_artworks: ({
         readonly aggregations: ReadonlyArray<({
             readonly slice: ArtworkAggregation | null;
@@ -15,10 +15,8 @@ export type CollectArtworkFilterRefetch_query = {
             }) | null> | null;
         }) | null> | null;
     }) | null;
-    readonly grid: ({
-        readonly " $fragmentRefs": CollectArtworkGrid_filtered_artworks$ref;
-    }) | null;
-    readonly " $refType": CollectArtworkFilterRefetch_query$ref;
+    readonly " $fragmentRefs": CollectArtworkFilterRefetch_viewer$ref;
+    readonly " $refType": ArtworkGrid_viewer$ref;
 };
 
 
@@ -33,8 +31,8 @@ var v0 = {
 };
 return {
   "kind": "Fragment",
-  "name": "CollectArtworkFilterRefetch_query",
-  "type": "Query",
+  "name": "ArtworkGrid_viewer",
+  "type": "Viewer",
   "metadata": null,
   "argumentDefinitions": [
     {
@@ -64,6 +62,18 @@ return {
     {
       "kind": "LocalArgument",
       "name": "at_auction",
+      "type": "Boolean",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "acquireable",
+      "type": "Boolean",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "inquireable_only",
       "type": "Boolean",
       "defaultValue": null
     },
@@ -154,76 +164,61 @@ return {
       ]
     },
     {
-      "kind": "LinkedField",
-      "alias": "grid",
-      "name": "filter_artworks",
-      "storageKey": null,
+      "kind": "FragmentSpread",
+      "name": "CollectArtworkFilterRefetch_viewer",
       "args": [
         {
-          "kind": "Literal",
-          "name": "aggregations",
-          "value": [
-            "TOTAL",
-            "FOLLOWED_ARTISTS"
-          ],
-          "type": "[ArtworkAggregation]"
+          "kind": "Variable",
+          "name": "acquireable",
+          "variableName": "acquireable",
+          "type": null
         },
         {
           "kind": "Variable",
           "name": "at_auction",
           "variableName": "at_auction",
-          "type": "Boolean"
+          "type": null
         },
         {
           "kind": "Variable",
           "name": "for_sale",
           "variableName": "for_sale",
-          "type": "Boolean"
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "inquireable_only",
+          "variableName": "inquireable_only",
+          "type": null
         },
         {
           "kind": "Variable",
           "name": "major_periods",
           "variableName": "major_periods",
-          "type": "[String]"
+          "type": null
         },
         {
           "kind": "Variable",
           "name": "medium",
           "variableName": "medium",
-          "type": "String"
+          "type": null
         },
         {
           "kind": "Variable",
           "name": "partner_id",
           "variableName": "partner_id",
-          "type": "ID"
-        },
-        {
-          "kind": "Literal",
-          "name": "size",
-          "value": 40,
-          "type": "Int"
+          "type": null
         },
         {
           "kind": "Variable",
           "name": "sort",
           "variableName": "sort",
-          "type": "String"
+          "type": null
         }
-      ],
-      "concreteType": "FilterArtworks",
-      "plural": false,
-      "selections": [
-        {
-          "kind": "FragmentSpread",
-          "name": "CollectArtworkGrid_filtered_artworks",
-          "args": null
-        },
-        v0
       ]
     }
   ]
 };
 })();
-(node as any).hash = '89ded07829967a3b05fc64e65b6b390a';
+(node as any).hash = 'e9b1152a2ad8a87828bf0e76521aef3a';
 export default node;

@@ -9,8 +9,29 @@ export const routes = [
     path: "/collect2",
     Component: CollectApp,
     query: graphql`
-      query routes_CollectAppQuery {
-        ...CollectApp_query
+      query routes_CollectAppQuery(
+        $medium: String
+        $major_periods: [String]
+        $partner_id: ID
+        $for_sale: Boolean
+        $sort: String
+        $at_auction: Boolean
+        $ecommerce: Boolean
+        $inquireable_only: Boolean
+      ) {
+        viewer {
+          ...CollectApp_viewer
+            @arguments(
+              medium: $medium
+              major_periods: $major_periods
+              partner_id: $partner_id
+              for_sale: $for_sale
+              sort: $sort
+              at_auction: $at_auction
+              ecommerce: $ecommerce
+              inquireable_only: $inquireable_only
+            )
+        }
       }
     `,
     render: ({ props, Component }) => {

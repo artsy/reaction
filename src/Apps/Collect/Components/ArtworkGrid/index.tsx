@@ -1,4 +1,5 @@
 import { Sans } from "@artsy/palette"
+import { ArtworkGrid_viewer } from "__generated__/ArtworkGrid_viewer.graphql"
 import { FilterState } from "Apps/Collect/FilterState"
 import { ContextConsumer } from "Artsy"
 import React, { Component } from "react"
@@ -13,11 +14,11 @@ import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Subscribe } from "unstated"
 import { Responsive } from "Utils/Responsive"
-import { CollectArtworkGridRefreshContainer as ArtworkFilter } from "./CollectArtworkFilterRefetch"
+import { CollectArtworkGridRefetchContainer as ArtworkFilter } from "./CollectArtworkFilterRefetch"
 
 interface Props {
   hideTopBorder?: boolean
-  query: any
+  viewer: ArtworkGrid_viewer
 }
 
 class Filter extends Component<Props> {
@@ -73,9 +74,9 @@ class Filter extends Component<Props> {
           Ways to Buy
         </Sans>
         <Checkbox
-          selected={filters.state.ecommerce}
+          selected={filters.state.acquireable}
           onSelect={value => {
-            return filters.setFilter("ecommerce", value, mediator)
+            return filters.setFilter("acquireable", value, mediator)
           }}
         >
           Buy Now
@@ -89,9 +90,9 @@ class Filter extends Component<Props> {
           Bid
         </Checkbox>
         <Checkbox
-          selected={filters.state.for_sale}
+          selected={filters.state.inquireable_only}
           onSelect={value => {
-            return filters.setFilter("for_sale", value, mediator)
+            return filters.setFilter("inquireable_only", value, mediator)
           }}
         >
           Inquire
@@ -102,10 +103,9 @@ class Filter extends Component<Props> {
 
   render() {
     const { hideTopBorder } = this.props
-    const { filter_artworks } = this.props.query
+    const { filter_artworks } = this.props.viewer
     const { aggregations } = filter_artworks
-    const mediumAggregation =
-      aggregations.find(agg => agg.slice === "MEDIUM") || []
+    const mediumAggregation = aggregations.find(agg => agg.slice === "MEDIUM")
 
     return (
       <ContextConsumer>
@@ -191,7 +191,7 @@ class Filter extends Component<Props> {
                               <Spacer mb={2} />
 
                               <ArtworkFilter
-                                query={this.props.query}
+                                viewer={this.props.viewer}
                                 filters={filters.state}
                               />
                             </Box>
@@ -213,13 +213,15 @@ class Filter extends Component<Props> {
 export const ArtworkGridFragmentContainer = createFragmentContainer(
   Filter,
   graphql`
-    fragment ArtworkGrid_query on Query
+    fragment ArtworkGrid_viewer on Viewer
       @argumentDefinitions(
         medium: { type: "String", defaultValue: "*" }
         major_periods: { type: "[String]" }
         partner_id: { type: "ID" }
         for_sale: { type: "Boolean" }
         at_auction: { type: "Boolean" }
+        acquireable: { type: "Boolean" }
+        inquireable_only: { type: "Boolean" }
         aggregations: {
           type: "[ArtworkAggregation]"
           defaultValue: [MEDIUM, TOTAL]
@@ -236,18 +238,17 @@ export const ArtworkGridFragmentContainer = createFragmentContainer(
         }
       }
 
-      grid: filter_artworks(
-        aggregations: [TOTAL, FOLLOWED_ARTISTS]
-        medium: $medium
-        major_periods: $major_periods
-        partner_id: $partner_id
-        for_sale: $for_sale
-        at_auction: $at_auction
-        size: 40
-        sort: "-decayed_merch"
-      ) {
-        ...CollectArtworkGrid_filtered_artworks
-      }
+      ...CollectArtworkFilterRefetch_viewer
+        @arguments(
+          medium: $medium
+          major_periods: $major_periods
+          partner_id: $partner_id
+          for_sale: $for_sale
+          sort: $sort
+          acquireable: $acquireable
+          at_auction: $at_auction
+          inquireable_only: $inquireable_only
+        )
     }
   `
 )

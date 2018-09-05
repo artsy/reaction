@@ -1,4 +1,5 @@
 import { Serif } from "@artsy/palette"
+import { CollectApp_viewer } from "__generated__/CollectApp_viewer.graphql"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Box } from "Styleguide/Elements/Box"
@@ -7,7 +8,7 @@ import { ArtworkGridFragmentContainer as ArtworkGrid } from "./Components/Artwor
 
 export interface CollectAppProps {
   name: string
-  query?: any
+  viewer?: CollectApp_viewer
 }
 
 export class CollectApp extends Component<CollectAppProps> {
@@ -18,7 +19,7 @@ export class CollectApp extends Component<CollectAppProps> {
           <Serif size="8">Collect Art &amp; Design Online</Serif>
         </Box>
         <Box>
-          <ArtworkGrid query={this.props.query} />
+          <ArtworkGrid viewer={this.props.viewer} />
         </Box>
       </Flex>
     )
@@ -28,8 +29,8 @@ export class CollectApp extends Component<CollectAppProps> {
 export const CollectAppFragmentContainer = createFragmentContainer(
   CollectApp,
   graphql`
-    fragment CollectApp_query on Query {
-      ...ArtworkGrid_query
+    fragment CollectApp_viewer on Viewer {
+      ...ArtworkGrid_viewer
     }
   `
 )
