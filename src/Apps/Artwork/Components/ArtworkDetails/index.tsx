@@ -1,5 +1,7 @@
+import { ArtworkDetailsQuery } from "__generated__/ArtworkDetailsQuery.graphql"
+import { ContextConsumer } from "Artsy/Router"
 import React, { Component } from "react"
-import { createFragmentContainer, graphql } from "react-relay"
+import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 import { Box } from "Styleguide/Elements/Box"
 import { ArtworkDetailsAboutTheWorkFragmentContainer as AboutTheWork } from "./ArtworkDetailsAboutTheWork"
 import { ArtworkDetailsAdditionalInfoFragmentContainer as AdditionalInfo } from "./ArtworkDetailsAdditionalInfo"
@@ -36,3 +38,40 @@ export const ArtworkDetailsFragmentContainer = createFragmentContainer(
     }
   `
 )
+
+export const ArtworkDetailsQueryRenderer = ({
+  artworkID,
+}: {
+  artworkID: string
+}) => {
+  return (
+    <ContextConsumer>
+      {({ user, mediator, relayEnvironment }) => {
+        return (
+          <QueryRenderer<ArtworkDetailsQuery>
+            environment={relayEnvironment}
+            variables={{ artworkID }}
+            query={graphql`
+              query ArtworkDetailsQuery($artworkID: String!) {
+                artwork(id: $artworkID) {
+                  ...ArtworkDetails_artwork
+                }
+              }
+            `}
+            render={({ props }) => {
+              if (props) {
+                return (
+                  <ArtworkDetailsFragmentContainer
+                    artwork={props.artwork as any}
+                  />
+                )
+              } else {
+                return null
+              }
+            }}
+          />
+        )
+      }}
+    </ContextConsumer>
+  )
+}
