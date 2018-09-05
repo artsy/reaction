@@ -80,6 +80,8 @@ export enum ActionName {
    */
   ViewEditorial = "viewed editorial",
   Dismiss = "dismiss",
+  EmailNextButton = "emailNextButton",
+  PasswordNextButton = "passwordNextButton",
 
   /**
    * Gene Page

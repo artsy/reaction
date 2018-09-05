@@ -169,6 +169,7 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
         values={defaultValues}
         handleTypeChange={this.handleTypeChange}
         handleSubmit={handleSubmit}
+        intent={options.intent}
         onBackButtonClicked={onBackButtonClicked}
         onFacebookLogin={() => {
           if (this.props.onSocialAuthEvent) {
