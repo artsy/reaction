@@ -1,6 +1,7 @@
 import { Serif } from "@artsy/palette"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { ReadMore } from "Styleguide/Components"
 import { Box } from "Styleguide/Elements/Box"
 
 import { ArtworkDetailsAboutTheWork_artwork } from "__generated__/ArtworkDetailsAboutTheWork_artwork.graphql"
@@ -19,7 +20,9 @@ export class ArtworkDetailsAboutTheWork extends React.Component<
     }
     return (
       <Box pb={3} pt={3}>
-        <Serif size="5">{artwork.additional_information}</Serif>
+        <Serif size="4">
+          <ReadMore maxChars={300} content={artwork.additional_information} />
+        </Serif>
       </Box>
     )
   }
