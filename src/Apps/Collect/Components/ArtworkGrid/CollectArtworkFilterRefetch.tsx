@@ -65,6 +65,7 @@ export class CollectArtworkFilterRefetch extends Component<
           <ArtworkFilter
             // TODO: Figure out why this isn't typed properly.
             filtered_artworks={filtered_artworks as any}
+            isLoading={this.isLoading}
             columnCount={xs || sm || md ? 2 : 3}
             filters={filters.state}
           />
