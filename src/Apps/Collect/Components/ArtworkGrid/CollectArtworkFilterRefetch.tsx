@@ -1,3 +1,4 @@
+import { CollectArtworkFilterRefetch_viewer } from "__generated__/CollectArtworkFilterRefetch_viewer.graphql"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { Responsive } from "Utils/Responsive"
@@ -5,7 +6,7 @@ import { CollectArtworkGridRefreshContainer as ArtworkFilter } from "./CollectAr
 
 interface CollectArtworkFilterRefetchProps {
   filters: any
-  query: any
+  viewer: CollectArtworkFilterRefetch_viewer
   relay: RelayRefetchProp
 }
 
@@ -57,12 +58,13 @@ export class CollectArtworkFilterRefetch extends Component<
 
   render() {
     const { filters } = this.props
-    const { grid } = this.props.query
+    const { filtered_artworks } = this.props.viewer
     return (
       <Responsive>
         {({ xs, sm, md }) => (
           <ArtworkFilter
-            filtered_artworks={grid}
+            // TODO: Figure out why this isn't typed properly.
+            filtered_artworks={filtered_artworks as any}
             columnCount={xs || sm || md ? 2 : 3}
             filters={filters.state}
           />
@@ -72,57 +74,62 @@ export class CollectArtworkFilterRefetch extends Component<
   }
 }
 
-export const CollectArtworkGridRefreshContainer = createRefetchContainer(
+export const CollectArtworkGridRefetchContainer = createRefetchContainer(
   CollectArtworkFilterRefetch,
-  graphql`
-    fragment CollectArtworkFilterRefetch_query on Query
-      @argumentDefinitions(
-        medium: { type: "String", defaultValue: "*" }
-        major_periods: { type: "[String]" }
-        partner_id: { type: "ID" }
-        for_sale: { type: "Boolean" }
-        at_auction: { type: "Boolean" }
-        aggregations: {
-          type: "[ArtworkAggregation]"
-          defaultValue: [MEDIUM, TOTAL]
-        }
-        sort: { type: "String", defaultValue: "-partner_updated_at" }
-      ) {
-      filter_artworks(aggregations: $aggregations, size: 0) {
-        aggregations {
-          slice
-          counts {
-            name
-            id
-          }
+  {
+    viewer: graphql`
+      fragment CollectArtworkFilterRefetch_viewer on Viewer
+        @argumentDefinitions(
+          medium: { type: "String", defaultValue: "*" }
+          major_periods: { type: "[String]" }
+          partner_id: { type: "ID" }
+          for_sale: { type: "Boolean" }
+          at_auction: { type: "Boolean" }
+          acquireable: { type: "Boolean" }
+          inquireable_only: { type: "Boolean" }
+          sort: { type: "String", defaultValue: "-partner_updated_at" }
+        ) {
+        filtered_artworks: filter_artworks(
+          aggregations: [TOTAL]
+          medium: $medium
+          major_periods: $major_periods
+          partner_id: $partner_id
+          for_sale: $for_sale
+          at_auction: $at_auction
+          acquireable: $acquireable
+          inquireable_only: $inquireable_only
+          size: 0
+          sort: $sort
+        ) {
+          ...CollectArtworkGrid_filtered_artworks
         }
       }
-
-      grid: filter_artworks(
-        aggregations: [TOTAL, FOLLOWED_ARTISTS]
-        medium: $medium
-        major_periods: $major_periods
-        partner_id: $partner_id
-        for_sale: $for_sale
-        at_auction: $at_auction
-        size: 40
-        sort: $sort
-      ) {
-        ...CollectArtworkGrid_filtered_artworks
-      }
-    }
-  `,
-  // TODO: fix refetch query
+    `,
+  },
   graphql`
     query CollectArtworkFilterRefetchQuery(
       $medium: String
       $major_periods: [String]
       $partner_id: ID
+      $acquireable: Boolean
       $at_auction: Boolean
+      $inquireable_only: Boolean
       $for_sale: Boolean
       $sort: String
     ) {
-      ...CollectArtworkFilterRefetch_query
+      viewer {
+        ...CollectArtworkFilterRefetch_viewer
+          @arguments(
+            medium: $medium
+            major_periods: $major_periods
+            partner_id: $partner_id
+            for_sale: $for_sale
+            sort: $sort
+            at_auction: $at_auction
+            acquireable: $acquireable
+            inquireable_only: $inquireable_only
+          )
+      }
     }
   `
 )

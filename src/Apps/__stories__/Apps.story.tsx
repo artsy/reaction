@@ -32,7 +32,7 @@ storiesOf("Apps", module)
       <StorybooksRouter
         routes={collectRoutes}
         initialRoute="/collect2"
-        initialState={{
+        context={{
           mediator: {
             trigger: x => x,
           },
