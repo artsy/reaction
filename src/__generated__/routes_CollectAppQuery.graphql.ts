@@ -11,6 +11,7 @@ export type routes_CollectAppQueryVariables = {
     readonly at_auction?: boolean | null;
     readonly ecommerce?: boolean | null;
     readonly inquireable_only?: boolean | null;
+    readonly price_range?: string | null;
 };
 export type routes_CollectAppQueryResponse = {
     readonly viewer: ({
@@ -27,11 +28,11 @@ export type routes_CollectAppQuery = {
 /*
 query routes_CollectAppQuery {
   viewer {
-    ...CollectApp_viewer_AZnX
+    ...CollectApp_viewer_48m6Qi
   }
 }
 
-fragment CollectApp_viewer_AZnX on Viewer {
+fragment CollectApp_viewer_48m6Qi on Viewer {
   ...ArtworkGrid_viewer
 }
 
@@ -47,10 +48,10 @@ fragment ArtworkGrid_viewer on Viewer {
     }
     __id
   }
-  ...CollectArtworkFilterRefetch_viewer_i7bqw
+  ...CollectArtworkFilterRefetch_viewer_3cMrV3
 }
 
-fragment CollectArtworkFilterRefetch_viewer_i7bqw on Viewer {
+fragment CollectArtworkFilterRefetch_viewer_3cMrV3 on Viewer {
   filtered_artworks: filter_artworks(aggregations: [TOTAL], medium: "*", size: 0, sort: "-partner_updated_at") {
     ...CollectArtworkGrid_filtered_artworks
     __id
@@ -244,6 +245,12 @@ var v0 = [
     "name": "inquireable_only",
     "type": "Boolean",
     "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "price_range",
+    "type": "String",
+    "defaultValue": null
   }
 ],
 v1 = {
@@ -325,7 +332,7 @@ return {
   "operationKind": "query",
   "name": "routes_CollectAppQuery",
   "id": null,
-  "text": "query routes_CollectAppQuery {\n  viewer {\n    ...CollectApp_viewer_AZnX\n  }\n}\n\nfragment CollectApp_viewer_AZnX on Viewer {\n  ...ArtworkGrid_viewer\n}\n\nfragment ArtworkGrid_viewer on Viewer {\n  filter_artworks(aggregations: [MEDIUM, TOTAL], size: 0) {\n    aggregations {\n      slice\n      counts {\n        name\n        id\n        __id\n      }\n    }\n    __id\n  }\n  ...CollectArtworkFilterRefetch_viewer_i7bqw\n}\n\nfragment CollectArtworkFilterRefetch_viewer_i7bqw on Viewer {\n  filtered_artworks: filter_artworks(aggregations: [TOTAL], medium: \"*\", size: 0, sort: \"-partner_updated_at\") {\n    ...CollectArtworkGrid_filtered_artworks\n    __id\n  }\n}\n\nfragment CollectArtworkGrid_filtered_artworks on FilterArtworks {\n  __id\n  artworks: artworks_connection(first: 10, after: \"\") {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    ...ArtworkGrid_artworks\n    edges {\n      node {\n        __id\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  is_biddable\n  is_acquireable\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
+  "text": "query routes_CollectAppQuery {\n  viewer {\n    ...CollectApp_viewer_48m6Qi\n  }\n}\n\nfragment CollectApp_viewer_48m6Qi on Viewer {\n  ...ArtworkGrid_viewer\n}\n\nfragment ArtworkGrid_viewer on Viewer {\n  filter_artworks(aggregations: [MEDIUM, TOTAL], size: 0) {\n    aggregations {\n      slice\n      counts {\n        name\n        id\n        __id\n      }\n    }\n    __id\n  }\n  ...CollectArtworkFilterRefetch_viewer_3cMrV3\n}\n\nfragment CollectArtworkFilterRefetch_viewer_3cMrV3 on Viewer {\n  filtered_artworks: filter_artworks(aggregations: [TOTAL], medium: \"*\", size: 0, sort: \"-partner_updated_at\") {\n    ...CollectArtworkGrid_filtered_artworks\n    __id\n  }\n}\n\nfragment CollectArtworkGrid_filtered_artworks on FilterArtworks {\n  __id\n  artworks: artworks_connection(first: 10, after: \"\") {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    ...ArtworkGrid_artworks\n    edges {\n      node {\n        __id\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  is_biddable\n  is_acquireable\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -387,6 +394,12 @@ return {
                 "kind": "Variable",
                 "name": "partner_id",
                 "variableName": "partner_id",
+                "type": null
+              },
+              {
+                "kind": "Variable",
+                "name": "price_range",
+                "variableName": "price_range",
                 "type": null
               },
               {
@@ -892,5 +905,5 @@ return {
   }
 };
 })();
-(node as any).hash = '2f69d2c4cb4cef4568b0e6d5b2f8e647';
+(node as any).hash = '6396d2cf1e94b58a22bcbe1b2be80d12';
 export default node;

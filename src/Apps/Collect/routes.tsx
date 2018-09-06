@@ -18,6 +18,7 @@ export const routes = [
         $at_auction: Boolean
         $ecommerce: Boolean
         $inquireable_only: Boolean
+        $price_range: String
       ) {
         viewer {
           ...CollectApp_viewer
@@ -30,6 +31,7 @@ export const routes = [
               at_auction: $at_auction
               ecommerce: $ecommerce
               inquireable_only: $inquireable_only
+              price_range: $price_range
             )
         }
       }

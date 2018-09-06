@@ -2,6 +2,8 @@ import { Sans } from "@artsy/palette"
 import { ArtworkGrid_viewer } from "__generated__/ArtworkGrid_viewer.graphql"
 import { FilterState } from "Apps/Collect/FilterState"
 import { ContextConsumer } from "Artsy"
+import { Range } from "rc-slider"
+import "rc-slider/assets/index.css"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Toggle } from "Styleguide/Components/Toggle"
@@ -134,6 +136,29 @@ class Filter extends Component<Props> {
                                   {!hideTopBorder && <Separator mb={1} />}
 
                                   {this.renderWaysToBuy(filters, mediator)}
+
+                                  <div>
+                                    <Range
+                                      allowCross={false}
+                                      min={50}
+                                      max={50000}
+                                      step={50}
+                                      defaultValue={[50, 50000]}
+                                      onAfterChange={([min, max]) => {
+                                        if (max === 50000) {
+                                          filters.setPriceRange(
+                                            `${min}-*`,
+                                            mediator
+                                          )
+                                        } else {
+                                          filters.setPriceRange(
+                                            `${min}-${max}`,
+                                            mediator
+                                          )
+                                        }
+                                      }}
+                                    />
+                                  </div>
                                 </Flex>
 
                                 <Toggle label="Medium" expanded>
@@ -227,6 +252,7 @@ export const ArtworkGridFragmentContainer = createFragmentContainer(
           defaultValue: [MEDIUM, TOTAL]
         }
         sort: { type: "String", defaultValue: "-partner_updated_at" }
+        price_range: { type: "String" }
       ) {
       filter_artworks(aggregations: $aggregations, size: 0) {
         aggregations {
@@ -248,6 +274,7 @@ export const ArtworkGridFragmentContainer = createFragmentContainer(
           acquireable: $acquireable
           at_auction: $at_auction
           inquireable_only: $inquireable_only
+          price_range: $price_range
         )
     }
   `
