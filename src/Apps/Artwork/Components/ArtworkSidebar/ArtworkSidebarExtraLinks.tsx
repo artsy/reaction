@@ -1,7 +1,7 @@
 import { Sans } from "@artsy/palette"
+import { Box } from "@artsy/palette"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Box } from "Styleguide/Elements/Box"
 
 import { ArtworkSidebarExtraLinks_artwork } from "__generated__/ArtworkSidebarExtraLinks_artwork.graphql"
 

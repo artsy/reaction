@@ -1,11 +1,11 @@
 import { Sans, Serif } from "@artsy/palette"
+import { Box } from "@artsy/palette"
+import { Flex } from "@artsy/palette"
 import { CurrentEvent_artist } from "__generated__/CurrentEvent_artist.graphql"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Box } from "Styleguide/Elements/Box"
-import { Flex } from "Styleguide/Elements/Flex"
 import { Image } from "Styleguide/Elements/Image"
 import { Responsive } from "Utils/Responsive"
 

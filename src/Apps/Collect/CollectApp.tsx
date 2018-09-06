@@ -1,9 +1,9 @@
 import { Serif } from "@artsy/palette"
 import { CollectApp_viewer } from "__generated__/CollectApp_viewer.graphql"
+import { Box } from "@artsy/palette"
+import { Flex } from "@artsy/palette"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Box } from "Styleguide/Elements/Box"
-import { Flex } from "Styleguide/Elements/Flex"
 import { ArtworkGridFragmentContainer as ArtworkGrid } from "./Components/ArtworkGrid"
 
 export interface CollectAppProps {

@@ -1,9 +1,9 @@
 import { Serif } from "@artsy/palette"
 import { Sans } from "@artsy/palette"
+import { Box } from "@artsy/palette"
+import { Flex } from "@artsy/palette"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Box } from "Styleguide/Elements/Box"
-import { Flex } from "Styleguide/Elements/Flex"
 
 import { ArtworkSidebarCurrentBidInfo_artwork } from "__generated__/ArtworkSidebarCurrentBidInfo_artwork.graphql"
 import { LoosingBid } from "Assets/Icons/LoosingBid"

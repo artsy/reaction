@@ -1,8 +1,8 @@
 import { Serif } from "@artsy/palette"
+import { Flex } from "@artsy/palette"
 import { take } from "lodash"
 import React, { ReactNode } from "react"
 import { Button } from "Styleguide/Elements/Button"
-import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Grid, Row } from "Styleguide/Elements/Grid"
 import { Responsive } from "Utils/Responsive"
 

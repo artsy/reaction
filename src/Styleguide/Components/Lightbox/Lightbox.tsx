@@ -1,11 +1,11 @@
 import { color, space } from "@artsy/palette"
+import { Box } from "@artsy/palette"
+import { Flex } from "@artsy/palette"
 import FadeTransition from "Components/Animation/FadeTransition"
 import { bind, once, throttle } from "lodash"
 import React from "react"
 import ReactDOM from "react-dom"
 import styled from "styled-components"
-import { Box } from "Styleguide/Elements/Box"
-import { Flex } from "Styleguide/Elements/Flex"
 import { CloseButton } from "./CloseButton"
 import { Slider, SliderProps } from "./LightboxSlider"
 

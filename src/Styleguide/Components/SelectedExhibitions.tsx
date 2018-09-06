@@ -1,11 +1,11 @@
 import { Sans } from "@artsy/palette"
+import { Flex } from "@artsy/palette"
 import { SelectedExhibitions_exhibitions } from "__generated__/SelectedExhibitions_exhibitions.graphql"
 import { PreloadLink } from "Artsy/Router"
 import { groupBy, toPairs } from "lodash"
 import React, { SFC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { BorderBox, Box } from "Styleguide/Elements/Box"
-import { Flex } from "Styleguide/Elements/Flex"
 import { Responsive } from "Utils/Responsive"
 
 const MIN_FOR_SELECTED_EXHIBITIONS = 3

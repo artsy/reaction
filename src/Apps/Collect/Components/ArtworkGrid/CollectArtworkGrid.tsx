@@ -1,3 +1,5 @@
+import { Box } from "@artsy/palette"
+import { Spacer } from "@artsy/palette"
 import { ArtworkFilterArtworkGrid_filtered_artworks } from "__generated__/ArtworkFilterArtworkGrid_filtered_artworks.graphql"
 import { FilterState } from "Apps/Artist/Routes/Overview/state"
 import { ContextConsumer } from "Artsy/Router"
@@ -5,8 +7,6 @@ import ArtworkGrid from "Components/ArtworkGrid"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { PaginationFragmentContainer as Pagination } from "Styleguide/Components/Pagination"
-import { Box } from "Styleguide/Elements/Box"
-import { Spacer } from "Styleguide/Elements/Spacer"
 import { Subscribe } from "unstated"
 
 import {

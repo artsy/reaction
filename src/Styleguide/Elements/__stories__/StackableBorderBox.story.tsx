@@ -1,7 +1,7 @@
+import { Flex } from "@artsy/palette"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { StackableBorderBox } from "Styleguide/Elements/Box"
-import { Flex } from "Styleguide/Elements/Flex"
 import { Section } from "Styleguide/Utils/Section"
 
 storiesOf("Styleguide/Elements", module).add("StackableBorderBox", () => {

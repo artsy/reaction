@@ -1,11 +1,11 @@
 import { Sans, Serif } from "@artsy/palette"
+import { Box } from "@artsy/palette"
+import { Flex } from "@artsy/palette"
+import { Separator } from "@artsy/palette"
+import { Spacer } from "@artsy/palette"
 import React, { SFC } from "react"
-import { Box } from "Styleguide/Elements/Box"
-import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Image } from "Styleguide/Elements/Image"
-import { Separator } from "Styleguide/Elements/Separator"
-import { Spacer } from "Styleguide/Elements/Spacer"
 import { Responsive } from "Utils/Responsive"
 
 interface ArticleItemProps {

@@ -1,7 +1,7 @@
 import { color, Sans, themeProps } from "@artsy/palette"
+import { Flex } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
-import { Flex } from "Styleguide/Elements/Flex"
 
 const Header = styled.div`
   padding: 5px 10px 3px;

@@ -1,9 +1,9 @@
 import { Serif } from "@artsy/palette"
+import { Box } from "@artsy/palette"
+import { Separator } from "@artsy/palette"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Box } from "Styleguide/Elements/Box"
 import { Button } from "Styleguide/Elements/Button"
-import { Separator } from "Styleguide/Elements/Separator"
 import { ArtworkSidebarSizeInfoFragmentContainer as SizeInfo } from "./ArtworkSidebarSizeInfo"
 
 import { ArtworkSidebarCommercial_artwork } from "__generated__/ArtworkSidebarCommercial_artwork.graphql"

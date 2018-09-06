@@ -1,6 +1,6 @@
+import { Spacer } from "@artsy/palette"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Spacer } from "Styleguide/Elements/Spacer"
 import { Section } from "Styleguide/Utils/Section"
 
 storiesOf("Styleguide/Elements", module).add("Spacer", () => {

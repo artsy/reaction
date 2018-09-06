@@ -1,8 +1,8 @@
+import { Box } from "@artsy/palette"
+import { Spacer } from "@artsy/palette"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Box } from "Styleguide/Elements/Box"
 import { Message } from "Styleguide/Elements/Message"
-import { Spacer } from "Styleguide/Elements/Spacer"
 import { Section } from "Styleguide/Utils/Section"
 
 storiesOf("Styleguide/Elements", module).add("Message", () => {

@@ -1,6 +1,6 @@
+import { Flex } from "@artsy/palette"
 import React, { ReactNode, SFC } from "react"
 import { StackableBorderBox } from "Styleguide/Elements/Box"
-import { Flex } from "Styleguide/Elements/Flex"
 
 interface MobileTopBarProps {
   children: ReactNode

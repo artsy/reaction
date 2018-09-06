@@ -1,7 +1,7 @@
 import { Sans, Serif } from "@artsy/palette"
+import { Flex } from "@artsy/palette"
 import React from "react"
 import { Avatar, Button } from "Styleguide/Elements"
-import { Flex } from "Styleguide/Elements/Flex"
 import { Responsive } from "Utils/Responsive"
 
 export interface GalleryProps {

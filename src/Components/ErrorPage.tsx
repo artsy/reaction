@@ -1,9 +1,9 @@
 import { color, Serif } from "@artsy/palette"
+import { Spacer } from "@artsy/palette"
 import { garamond } from "Assets/Fonts"
 import React from "react"
 import styled from "styled-components"
 import { Button } from "Styleguide/Elements/Button"
-import { Spacer } from "Styleguide/Elements/Spacer"
 
 interface ErrorPageProps {
   code: number
