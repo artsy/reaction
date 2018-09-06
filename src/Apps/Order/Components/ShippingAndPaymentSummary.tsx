@@ -12,6 +12,7 @@ export const ShippingAndPaymentSummary = ({
     requestedFulfillment: { __typename, ...address },
     lineItems,
     creditCard,
+    buyerPhoneNumber,
   },
   ...others
 }: {
@@ -20,7 +21,10 @@ export const ShippingAndPaymentSummary = ({
   <Flex flexDirection="column" {...others}>
     {__typename === "Ship" ? (
       <StepSummaryItem title="Ship to">
-        <ShippingAddress {...address as ShippingAddressProps} />
+        <ShippingAddress
+          {...address as ShippingAddressProps}
+          phoneNumber={buyerPhoneNumber}
+        />
       </StepSummaryItem>
     ) : (
       <StepSummaryItem
@@ -69,6 +73,7 @@ export const ShippingAndPaymentSummaryFragmentContainer = createFragmentContaine
         expiration_year
         expiration_month
       }
+      buyerPhoneNumber
     }
   `
 )

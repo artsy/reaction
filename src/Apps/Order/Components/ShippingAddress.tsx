@@ -11,6 +11,7 @@ export interface ShippingAddressProps {
   postalCode: string
   region: string
   country: string
+  phoneNumber: string
 }
 
 export const ShippingAddress = ({
@@ -21,6 +22,7 @@ export const ShippingAddress = ({
   postalCode,
   region,
   country,
+  phoneNumber,
 }: ShippingAddressProps) => {
   return (
     <>
@@ -34,6 +36,7 @@ export const ShippingAddress = ({
       <Serif size="3t">
         {COUNTRY_CODE_TO_COUNTRY_NAME[country] || country}
       </Serif>
+      {phoneNumber && <Serif size="3t">{phoneNumber}</Serif>}
     </>
   )
 }

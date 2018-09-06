@@ -53,6 +53,7 @@ export const UntouchedOrder = {
 
 export const OrderWithShippingDetails = {
   ...UntouchedOrder,
+  buyerPhoneNumber: "120938120983",
   requestedFulfillment: {
     __typename: "Ship",
     name: "Joelle Van Dyne",

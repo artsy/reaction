@@ -33,6 +33,7 @@ export type ShippingAndPaymentReview_order = {
         readonly expiration_year: number;
         readonly expiration_month: number;
     }) | null;
+    readonly buyerPhoneNumber: string | null;
     readonly " $refType": ShippingAndPaymentReview_order$ref;
 };
 
@@ -226,9 +227,16 @@ return {
         v0
       ]
     },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "buyerPhoneNumber",
+      "args": null,
+      "storageKey": null
+    },
     v1
   ]
 };
 })();
-(node as any).hash = 'e7d06d6951ef4d1722bd36d8beaa19f1';
+(node as any).hash = 'b01215b4751e102c732c6187f36fd283';
 export default node;

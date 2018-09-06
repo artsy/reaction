@@ -14,17 +14,20 @@ import { Col, Row } from "Styleguide/Elements/Grid"
 import { Join } from "Styleguide/Elements/Join"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Responsive } from "Utils/Responsive"
-import { AddressForm } from "../../Components/AddressForm"
+import {
+  Address,
+  AddressForm,
+  emptyAddress,
+} from "../../Components/AddressForm"
 import { Helper } from "../../Components/Helper"
 import { TransactionSummaryFragmentContainer as TransactionSummary } from "../../Components/TransactionSummary"
-import { Address } from "../Shipping"
 
 export interface PaymentProps {
   order: Payment_order
 }
 
 interface PaymentState {
-  country: string
+  address: Partial<Address>
   hideBillingAddress: boolean
 }
 
@@ -36,18 +39,14 @@ const ContinueButton = ({ order }) => (
   </Link>
 )
 
-export class PaymentRoute extends Component<
-  PaymentProps,
-  PaymentState & Address
-> {
-  state = { country: "US", hideBillingAddress: true }
-  onUpdateName = e => this.setState({ name: e.target.value })
-  onUpdateAddressLine1 = e => this.setState({ addressLine1: e.target.value })
-  onUpdateAddressLine2 = e => this.setState({ addressLine2: e.target.value })
-  onUpdateCity = e => this.setState({ city: e.target.value })
-  onUpdateRegion = e => this.setState({ region: e.target.value })
-  onUpdateCountry = country => this.setState({ country })
-  onUpdatePostalCode = e => this.setState({ postalCode: e.target.value })
+export class PaymentRoute extends Component<PaymentProps, PaymentState> {
+  state = {
+    address: {
+      ...emptyAddress,
+      country: "US",
+    },
+    hideBillingAddress: true,
+  }
 
   render() {
     const { order } = this.props
@@ -79,14 +78,9 @@ export class PaymentRoute extends Component<
                       </Checkbox>
                       <Collapse open={!this.state.hideBillingAddress}>
                         <AddressForm
-                          country={this.state.country}
-                          onUpdateName={this.onUpdateName}
-                          onUpdateAddressLine1={this.onUpdateAddressLine1}
-                          onUpdateAddressLine2={this.onUpdateAddressLine2}
-                          onUpdateCity={this.onUpdateCity}
-                          onUpdateRegion={this.onUpdateRegion}
-                          onUpdateCountry={this.onUpdateCountry}
-                          onUpdatePostalCode={this.onUpdatePostalCode}
+                          defaultValue={this.state.address}
+                          onChange={address => this.setState({ address })}
+                          billing
                         />
                       </Collapse>
                       {!xs && <ContinueButton order={order} />}

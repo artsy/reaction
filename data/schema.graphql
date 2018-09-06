@@ -4285,6 +4285,9 @@ type Order {
     # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
+
+  # Buyer phone number
+  buyerPhoneNumber: String
 }
 
 # A connection to a list of items.
@@ -5868,6 +5871,9 @@ input SetOrderShippingInput {
 
   # Fulfillment Type of this Order
   fulfillmentType: OrderFulfillmentType
+
+  # Shipping phone number
+  phoneNumber: String
 
   # Shipping information
   shipping: ShippingInputField

@@ -3,6 +3,7 @@ import React from "react"
 import { commitMutation, RelayProp } from "react-relay"
 
 import { UntouchedOrder } from "Apps/__test__/Fixtures/Order"
+import Input from "Components/Input"
 import { Button } from "Styleguide/Elements/Button"
 import { Radio } from "Styleguide/Elements/Radio"
 import { Provider } from "unstated"
@@ -45,10 +46,16 @@ describe("Shipping", () => {
 
   it("commits the mutation with shipping option", () => {
     const component = getWrapper(testProps)
-    component
+    const input = component
+      .find(Input)
+      .filterWhere(
+        wrapper => wrapper.props().title === "State, province, or region"
+      )
       .find("input")
-      .last()
-      .simulate("change", { target: { value: "New Brunswick" } })
+    // https://github.com/airbnb/enzyme/issues/218#issuecomment-388481390
+    input.getDOMNode().value = "New Brunswick"
+    input.simulate("change")
+
     const mockCommitMutation = commitMutation as jest.Mock<any>
     mockCommitMutation.mockImplementationOnce((_environment, config) => {
       expect(config.variables.input.shipping.region).toBe("New Brunswick")
