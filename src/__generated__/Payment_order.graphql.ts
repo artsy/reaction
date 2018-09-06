@@ -6,6 +6,20 @@ declare const _Payment_order$ref: unique symbol;
 export type Payment_order$ref = typeof _Payment_order$ref;
 export type Payment_order = {
     readonly id: string | null;
+    readonly requestedFulfillment: ({
+        readonly __typename: "Ship";
+        readonly name: string | null;
+        readonly addressLine1: string | null;
+        readonly addressLine2: string | null;
+        readonly city: string | null;
+        readonly region: string | null;
+        readonly country: string;
+        readonly postalCode: string | null;
+    } | {
+        /*This will never be '% other', but we need some
+        value in case none of the concrete values match.*/
+        readonly __typename: "%other";
+    }) | null;
     readonly lineItems: ({
         readonly edges: ReadonlyArray<({
             readonly node: ({
@@ -44,6 +58,79 @@ return {
   "argumentDefinitions": [],
   "selections": [
     v0,
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "requestedFulfillment",
+      "storageKey": null,
+      "args": null,
+      "concreteType": null,
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "__typename",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "InlineFragment",
+          "type": "Ship",
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "name",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "addressLine1",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "addressLine2",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "city",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "region",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "country",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "postalCode",
+              "args": null,
+              "storageKey": null
+            }
+          ]
+        }
+      ]
+    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -106,5 +193,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '519e6b87c07603d3750a27229a27959a';
+(node as any).hash = '63936c5bf7df8709053e8dba255ad694';
 export default node;

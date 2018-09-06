@@ -1,6 +1,6 @@
 import { Location, RouteConfig, Router } from "found"
 import React from "react"
-import { StripeProvider } from "react-stripe-elements"
+import { Elements, StripeProvider } from "react-stripe-elements"
 
 declare global {
   interface Window {
@@ -81,7 +81,9 @@ export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
   render() {
     const { children } = this.props
     return (
-      <StripeProvider stripe={this.state.stripe}>{children}</StripeProvider>
+      <StripeProvider stripe={this.state.stripe}>
+        <Elements>{children}</Elements>
+      </StripeProvider>
     )
   }
 }
