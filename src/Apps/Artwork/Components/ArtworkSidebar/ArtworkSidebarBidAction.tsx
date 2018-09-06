@@ -1,6 +1,4 @@
-import { Serif } from "@artsy/palette"
-import { Box } from "@artsy/palette"
-import { Flex } from "@artsy/palette"
+import { Box, Flex, Serif } from "@artsy/palette"
 import { Help } from "Assets/Icons/Help"
 import { Tooltip } from "Components/Tooltip"
 import React from "react"

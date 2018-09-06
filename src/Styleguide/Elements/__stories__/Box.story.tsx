@@ -1,4 +1,3 @@
-// import { Box } from "@artsy/palette"
 import { Box } from "@artsy/palette"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"

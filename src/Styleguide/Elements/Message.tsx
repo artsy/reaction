@@ -1,5 +1,4 @@
-import { color, SansSize } from "@artsy/palette"
-import { Sans } from "@artsy/palette"
+import { color, Sans, SansSize } from "@artsy/palette"
 import React, { SFC } from "react"
 import styled from "styled-components"
 import { Flex, FlexProps } from "Styleguide/Elements/Flex"

@@ -1,6 +1,4 @@
-import { Flex } from "@artsy/palette"
-import { Spacer } from "@artsy/palette"
-import { Join } from "@artsy/palette"
+import { Flex, Join, Spacer } from "@artsy/palette"
 import { Payment_order } from "__generated__/Payment_order.graphql"
 import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
 import { CreditCardInput } from "Apps/Order/Components/CreditCardInput"

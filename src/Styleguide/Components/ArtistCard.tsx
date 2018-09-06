@@ -1,15 +1,20 @@
-import { Sans, Serif, space } from "@artsy/palette"
-import { Flex } from "@artsy/palette"
-import { Spacer } from "@artsy/palette"
 import { ArtistCard_artist } from "__generated__/ArtistCard_artist.graphql"
 import FollowArtistButton from "Components/FollowButton/FollowArtistButton"
 import { Truncator } from "Components/Truncator"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
-import { Avatar } from "Styleguide/Elements"
-import { BorderBox } from "Styleguide/Elements/Box"
 import { Responsive } from "Utils/Responsive"
+
+import {
+  Avatar,
+  BorderBox,
+  Flex,
+  Sans,
+  Serif,
+  space,
+  Spacer,
+} from "@artsy/palette"
 
 interface Props {
   artist: ArtistCard_artist

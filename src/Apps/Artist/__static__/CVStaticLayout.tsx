@@ -1,7 +1,4 @@
-import { Sans, Serif } from "@artsy/palette"
-import { Box } from "@artsy/palette"
-import { Flex } from "@artsy/palette"
-import { Spacer } from "@artsy/palette"
+import { Box, Flex, Sans, Serif, Spacer } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
 import { Col, Row } from "Styleguide/Elements/Grid"

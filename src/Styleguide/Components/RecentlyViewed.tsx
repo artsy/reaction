@@ -1,5 +1,4 @@
-import { Serif } from "@artsy/palette"
-import { Spacer } from "@artsy/palette"
+import { Serif, Spacer } from "@artsy/palette"
 import { RecentlyViewed_me } from "__generated__/RecentlyViewed_me.graphql"
 import { RecentlyViewedQuery } from "__generated__/RecentlyViewedQuery.graphql"
 import { ContextConsumer } from "Artsy/Router"

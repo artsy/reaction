@@ -1,5 +1,4 @@
-import { Sans } from "@artsy/palette"
-import { Spacer } from "@artsy/palette"
+import { Sans, Spacer } from "@artsy/palette"
 import { ContextConsumer } from "Artsy/Router"
 import React from "react"
 import styled from "styled-components"

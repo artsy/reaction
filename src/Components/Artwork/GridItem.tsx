@@ -1,5 +1,4 @@
-import { Sans } from "@artsy/palette"
-import { Flex } from "@artsy/palette"
+import { Flex, Sans } from "@artsy/palette"
 import { GridItem_artwork } from "__generated__/GridItem_artwork.graphql"
 import { pickBy } from "lodash"
 import React from "react"

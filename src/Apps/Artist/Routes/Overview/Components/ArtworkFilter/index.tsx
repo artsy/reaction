@@ -1,5 +1,4 @@
-import { Sans } from "@artsy/palette"
-import { color } from "@artsy/palette"
+import { color, Sans } from "@artsy/palette"
 import { ArtworkFilter_artist } from "__generated__/ArtworkFilter_artist.graphql"
 import { FilterState } from "Apps/Artist/Routes/Overview/state"
 import { ContextConsumer } from "Artsy/SystemContext"

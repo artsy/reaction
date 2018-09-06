@@ -1,5 +1,4 @@
-import { Sans, Serif } from "@artsy/palette"
-import { Spacer } from "@artsy/palette"
+import { Sans, Serif, Spacer } from "@artsy/palette"
 import { Genes_artist } from "__generated__/Genes_artist.graphql"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"

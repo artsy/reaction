@@ -1,5 +1,4 @@
-import { Box } from "@artsy/palette"
-import { Flex } from "@artsy/palette"
+import { Box, Flex } from "@artsy/palette"
 import React, { ReactNode } from "react"
 import Slick, { Settings } from "react-slick"
 import styled from "styled-components"

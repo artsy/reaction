@@ -1,5 +1,4 @@
-import { Box } from "@artsy/palette"
-import { Spacer } from "@artsy/palette"
+import { Box, Spacer } from "@artsy/palette"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Message } from "Styleguide/Elements/Message"

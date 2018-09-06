@@ -1,6 +1,4 @@
-import { color, space } from "@artsy/palette"
-import { Box } from "@artsy/palette"
-import { Flex } from "@artsy/palette"
+import { Box, color, Flex, space } from "@artsy/palette"
 import FadeTransition from "Components/Animation/FadeTransition"
 import { bind, once, throttle } from "lodash"
 import React from "react"

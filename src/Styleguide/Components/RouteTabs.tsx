@@ -1,5 +1,4 @@
-import { color, Sans, space } from "@artsy/palette"
-import { Flex } from "@artsy/palette"
+import { color, Flex, Sans, space } from "@artsy/palette"
 import { PreloadLink, PreloadLinkProps } from "Artsy/Router"
 import React from "react"
 import styled from "styled-components"

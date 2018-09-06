@@ -1,8 +1,7 @@
 import React from "react"
 import styled from "styled-components"
-import { Box } from "@artsy/palette"
+import { Box, Serif } from "@artsy/palette"
 import { Col, Row } from "Styleguide/Elements/Grid"
-import { Serif } from "@artsy/palette"
 import { ReadMore } from "Styleguide/Components"
 
 export const AboutTheWork = () => {

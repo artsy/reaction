@@ -1,7 +1,5 @@
-import { Flex } from "@artsy/palette"
-import { Box } from "@artsy/palette"
-import { Sans } from "@artsy/palette"
 import { ArtworkGrid_viewer } from "__generated__/ArtworkGrid_viewer.graphql"
+import { Box, Flex, Sans, Separator, Spacer } from "@artsy/palette"
 import { FilterState } from "Apps/Collect/FilterState"
 import { ContextConsumer } from "Artsy"
 import React, { Component } from "react"

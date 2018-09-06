@@ -1,6 +1,6 @@
+import { BorderBox } from "@artsy/palette"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { BorderBox } from "Styleguide/Elements/Box"
 import { Section } from "Styleguide/Utils/Section"
 
 storiesOf("Styleguide/Elements", module).add("BorderBox", () => {

@@ -1,7 +1,5 @@
-import { Sans, Serif } from "@artsy/palette"
-import { Flex } from "@artsy/palette"
+import { BorderBox, Flex, Sans, Serif } from "@artsy/palette"
 import React from "react"
-import { BorderBox } from "Styleguide/Elements/Box"
 import { Image, ResponsiveImage } from "Styleguide/Elements/Image"
 import { Responsive } from "Utils/Responsive"
 

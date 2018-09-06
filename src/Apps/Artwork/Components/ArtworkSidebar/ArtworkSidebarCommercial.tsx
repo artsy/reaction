@@ -1,6 +1,4 @@
-import { Serif } from "@artsy/palette"
-import { Box } from "@artsy/palette"
-import { Separator } from "@artsy/palette"
+import { Box, Separator, Serif } from "@artsy/palette"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Button } from "Styleguide/Elements/Button"

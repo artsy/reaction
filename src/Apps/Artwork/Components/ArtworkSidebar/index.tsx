@@ -1,5 +1,4 @@
-import { Serif } from "@artsy/palette"
-import { Separator } from "@artsy/palette"
+import { Separator, Serif } from "@artsy/palette"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"

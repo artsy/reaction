@@ -1,6 +1,4 @@
-import { Serif } from "@artsy/palette"
-import { Box } from "@artsy/palette"
-import { Flex } from "@artsy/palette"
+import { Box, Flex, Serif } from "@artsy/palette"
 import { Location } from "Assets/Icons/Location"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"

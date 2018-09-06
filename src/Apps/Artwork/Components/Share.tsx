@@ -1,6 +1,4 @@
-import { Sans } from "@artsy/palette"
-import { Flex } from "@artsy/palette"
-import { Separator } from "@artsy/palette"
+import { Flex, Sans, Separator } from "@artsy/palette"
 import { IconName } from "Assets/Icons"
 import Icon from "Components/Icon"
 import React from "react"

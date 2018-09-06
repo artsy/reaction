@@ -1,7 +1,4 @@
-import { Sans, themeProps } from "@artsy/palette"
-import { Flex } from "@artsy/palette"
-import { Separator } from "@artsy/palette"
-import { Spacer } from "@artsy/palette"
+import { Flex, Sans, Separator, Spacer, themeProps } from "@artsy/palette"
 import React, { SFC } from "react"
 import { Button } from "Styleguide/Elements"
 import { BorderBox, Box } from "Styleguide/Elements/Box"

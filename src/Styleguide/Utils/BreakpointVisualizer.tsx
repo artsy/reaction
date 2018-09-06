@@ -1,5 +1,4 @@
-import { Display } from "@artsy/palette"
-import { Box } from "@artsy/palette"
+import { Box, Display } from "@artsy/palette"
 import { isEqual } from "lodash"
 import React from "react"
 import Transition from "react-transition-group/Transition"

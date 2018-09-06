@@ -1,7 +1,4 @@
-import { color, Sans, space } from "@artsy/palette"
-import { Box } from "@artsy/palette"
-import { Flex } from "@artsy/palette"
-import { Join } from "@artsy/palette"
+import { Box, color, Flex, Join, Sans, space } from "@artsy/palette"
 import React from "react"
 import styled, { css } from "styled-components"
 import { borders, JustifyContentProps, WidthProps } from "styled-system"
