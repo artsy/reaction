@@ -30,6 +30,7 @@ const order: ShippingAndPaymentReview_order &
     expiration_month: 3,
     expiration_year: 21,
   },
+  buyerPhoneNumber: "555-8390344",
 }
 
 storiesOf("Apps/Order Page/Components", module).add(

@@ -12,6 +12,7 @@ export const ShippingAndPaymentReview = ({
     requestedFulfillment: { __typename, ...address },
     lineItems,
     creditCard,
+    buyerPhoneNumber,
   },
   onChangePayment,
   onChangeShipping,
@@ -24,7 +25,10 @@ export const ShippingAndPaymentReview = ({
   <Flex flexDirection="column" {...others}>
     {__typename === "Ship" ? (
       <StepSummaryItem onChange={onChangeShipping} title="Shipping address">
-        <ShippingAddress {...address as ShippingAddressProps} />
+        <ShippingAddress
+          {...address as ShippingAddressProps}
+          phoneNumber={buyerPhoneNumber}
+        />
       </StepSummaryItem>
     ) : (
       <StepSummaryItem
@@ -74,6 +78,7 @@ export const ShippingAndPaymentReviewFragmentContainer = createFragmentContainer
         expiration_year
         expiration_month
       }
+      buyerPhoneNumber
     }
   `
 )

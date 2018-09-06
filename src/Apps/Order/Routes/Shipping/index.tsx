@@ -7,7 +7,11 @@ import { Router } from "found"
 import React, { Component } from "react"
 import { Collapse } from "Styleguide/Components"
 import { Responsive } from "Utils/Responsive"
-import { AddressForm } from "../../Components/AddressForm"
+import {
+  Address,
+  AddressForm,
+  emptyAddress,
+} from "../../Components/AddressForm"
 import { TwoColumnLayout } from "../../Components/TwoColumnLayout"
 
 import {
@@ -41,48 +45,29 @@ export interface ShippingProps {
   router: Router
 }
 
-// TODO: When the todo for abstracting the address is done and we have an Address component, we won't need this here, so the wonky state generic on ShippingRoute is fine for now.
-export interface Address {
-  name?: string
-  addressLine1?: string
-  addressLine2?: string
-  city?: string
-  region?: string
-  country?: string
-  postalCode?: string
-}
-
 export interface ShippingState {
+  address: Address
   shippingOption: OrderFulfillmentType
   isComittingMutation: boolean
 }
 
-export class ShippingRoute extends Component<
-  ShippingProps,
-  ShippingState & Address
-> {
+export class ShippingRoute extends Component<ShippingProps, ShippingState> {
   // TODO: Fill in with Relay data on load.
   // See: https://artsyproduct.atlassian.net/browse/PURCHASE-376
   state = {
-    shippingOption: "SHIP",
-    country: "US",
+    shippingOption: "SHIP" as OrderFulfillmentType,
+    address: {
+      ...emptyAddress,
+      country: "US",
+    },
     isComittingMutation: false,
-  } as ShippingState & Address
-
-  // TODO: This can be handled with Formik.
-  // See: https://artsyproduct.atlassian.net/browse/PURCHASE-375
-  onUpdateName = e => this.setState({ name: e.target.value })
-  onUpdateAddressLine1 = e => this.setState({ addressLine1: e.target.value })
-  onUpdateAddressLine2 = e => this.setState({ addressLine2: e.target.value })
-  onUpdateCity = e => this.setState({ city: e.target.value })
-  onUpdateRegion = e => this.setState({ region: e.target.value })
-  onUpdateCountry = country => this.setState({ country })
-  onUpdatePostalCode = e => this.setState({ postalCode: e.target.value })
+  }
 
   onContinueButtonPressed = () => {
     if (this.props.relay && this.props.relay.environment) {
       // We don't strictly need to wait for the state to be set, but it makes it easier to test.
-      this.setState({ isComittingMutation: true }, () =>
+      this.setState({ isComittingMutation: true }, () => {
+        const { phoneNumber, ...shipping } = this.state.address
         commitMutation<ShippingOrderAddressUpdateMutation>(
           this.props.relay.environment,
           {
@@ -110,15 +95,8 @@ export class ShippingRoute extends Component<
               input: {
                 orderId: this.props.order.id,
                 fulfillmentType: this.state.shippingOption,
-                shipping: {
-                  name: this.state.name,
-                  addressLine1: this.state.addressLine1,
-                  addressLine2: this.state.addressLine2,
-                  city: this.state.city,
-                  region: this.state.region,
-                  country: this.state.country,
-                  postalCode: this.state.postalCode,
-                },
+                phoneNumber,
+                shipping,
               },
             },
             onCompleted: () =>
@@ -126,7 +104,7 @@ export class ShippingRoute extends Component<
               this.props.router.push(`/order2/${this.props.order.id}/payment`),
           }
         )
-      )
+      })
     }
   }
 
@@ -173,18 +151,10 @@ export class ShippingRoute extends Component<
                   <Spacer mb={3} />
 
                   <Collapse open={this.state.shippingOption === "SHIP"}>
-                    {/* TODO: This address entry form should be abstracted into its own component, to be used on the billing address screen. */}
-                    {/* See: https://artsyproduct.atlassian.net/browse/PURCHASE-375 */}
                     <Spacer mb={2} />
                     <AddressForm
-                      country={this.state.country}
-                      onUpdateName={this.onUpdateName}
-                      onUpdateAddressLine1={this.onUpdateAddressLine1}
-                      onUpdateAddressLine2={this.onUpdateAddressLine2}
-                      onUpdateCity={this.onUpdateCity}
-                      onUpdateRegion={this.onUpdateRegion}
-                      onUpdateCountry={this.onUpdateCountry}
-                      onUpdatePostalCode={this.onUpdatePostalCode}
+                      defaultValue={this.state.address}
+                      onChange={address => this.setState({ address })}
                     />
                   </Collapse>
 
