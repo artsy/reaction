@@ -12,6 +12,7 @@ interface State {
   acquireable?: boolean
   at_auction?: boolean
   inquireable_only?: boolean
+  price_range?: string
 
   // UI
   selectedFilters: string[]
@@ -28,6 +29,7 @@ const initialState = {
   acquireable: null,
   at_auction: null,
   inquireable_only: null,
+  price_range: null,
   selectedFilters: [],
   showActionSheet: false,
 }
@@ -67,6 +69,12 @@ export class FilterState extends Container<State> {
 
   setSort = (sort, mediator) => {
     this.setState({ sort }, () => {
+      mediator.trigger("artist:filter:changed", this.state)
+    })
+  }
+
+  setPriceRange = (price_range, mediator) => {
+    this.setState({ price_range }, () => {
       mediator.trigger("artist:filter:changed", this.state)
     })
   }
