@@ -82,6 +82,7 @@ return {
       "name": "aggregations",
       "type": "[ArtworkAggregation]",
       "defaultValue": [
+        "MAJOR_PERIOD",
         "MEDIUM",
         "TOTAL"
       ]
@@ -232,5 +233,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '99b1653db12202b0369643ca3ca5313a';
+(node as any).hash = 'daf60f7cde43ea04ed5124888bdaeb02';
 export default node;

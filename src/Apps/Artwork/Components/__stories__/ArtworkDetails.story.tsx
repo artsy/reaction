@@ -1,4 +1,7 @@
-import { ArtworkDetails } from "Apps/Artwork/Components/ArtworkDetails"
+import {
+  ArtworkDetails,
+  ArtworkDetailsQueryRenderer,
+} from "Apps/Artwork/Components/ArtworkDetails"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
@@ -15,6 +18,12 @@ storiesOf("Styleguide/Artwork/", module)
           <ArtworkDetails
             artwork={WithBothAboutConditionsAndAdditionalInfo as any}
           />
+        </Section>
+        <Section title="ArtworkDetailsQueryRenderer for andy-warhol-s-and-h-green-stamps-feldman-and-schellman-11-dot-9">
+          <ArtworkDetailsQueryRenderer artworkID="andy-warhol-s-and-h-green-stamps-feldman-and-schellman-11-dot-9" />
+        </Section>
+        <Section title="ArtworkDetailsQueryRenderer for ai-weiwei-arch">
+          <ArtworkDetailsQueryRenderer artworkID="ai-weiwei-arch" />
         </Section>
       </React.Fragment>
     )

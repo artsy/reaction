@@ -108,6 +108,9 @@ class Filter extends Component<Props> {
     const { filter_artworks } = this.props.viewer
     const { aggregations } = filter_artworks
     const mediumAggregation = aggregations.find(agg => agg.slice === "MEDIUM")
+    const periodAggregation = aggregations.find(
+      agg => agg.slice === "MAJOR_PERIOD"
+    )
 
     return (
       <ContextConsumer>
@@ -166,6 +169,19 @@ class Filter extends Component<Props> {
                                     filters,
                                     "medium",
                                     mediumAggregation.counts,
+                                    mediator
+                                  )}
+                                </Toggle>
+                                <Toggle
+                                  expanded={
+                                    filters.state.major_periods.length > 0
+                                  }
+                                  label="Time period"
+                                >
+                                  {this.renderCategory(
+                                    filters,
+                                    "major_periods",
+                                    periodAggregation.counts,
                                     mediator
                                   )}
                                 </Toggle>
@@ -249,7 +265,7 @@ export const ArtworkGridFragmentContainer = createFragmentContainer(
         inquireable_only: { type: "Boolean" }
         aggregations: {
           type: "[ArtworkAggregation]"
-          defaultValue: [MEDIUM, TOTAL]
+          defaultValue: [MAJOR_PERIOD, MEDIUM, TOTAL]
         }
         sort: { type: "String", defaultValue: "-partner_updated_at" }
         price_range: { type: "String" }
