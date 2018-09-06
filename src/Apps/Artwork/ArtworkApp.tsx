@@ -70,7 +70,7 @@ export const ArtworkApp: React.SFC<Props> = props => {
         </Col>
       </Row>
       <Row>
-        <Col xl={8} lg={8} md={8} sm={8} xs={12}>
+        <Col sm={8}>
           <ArtistInfo
             name="Francesca DiMattio"
             artist={artistResponse as any}

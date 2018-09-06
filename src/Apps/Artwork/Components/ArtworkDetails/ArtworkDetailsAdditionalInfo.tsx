@@ -42,6 +42,11 @@ export class ArtworkDetailsAdditionalInfo extends React.Component<
     return (
       <StackableBorderBox pb={3}>
         <Box>
+          <Box>
+            <Sans size="2" weight="medium">
+              Additional info
+            </Sans>
+          </Box>
           {artwork.series && this.renderRow("Series", artwork.series)}
           {artwork.publisher && this.renderRow("Publisher", artwork.publisher)}
           {artwork.manufacturer &&
