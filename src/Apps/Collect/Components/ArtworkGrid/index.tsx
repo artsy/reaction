@@ -2,8 +2,6 @@ import { Sans } from "@artsy/palette"
 import { ArtworkGrid_viewer } from "__generated__/ArtworkGrid_viewer.graphql"
 import { FilterState } from "Apps/Collect/FilterState"
 import { ContextConsumer } from "Artsy"
-import { Range } from "rc-slider"
-import "rc-slider/assets/index.css"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Toggle } from "Styleguide/Components/Toggle"
@@ -16,6 +14,7 @@ import { Separator } from "Styleguide/Elements/Separator"
 import { Spacer } from "Styleguide/Elements/Spacer"
 import { Subscribe } from "unstated"
 import { Responsive } from "Utils/Responsive"
+import { PriceRange } from "../Filters/PriceRange"
 import { CollectArtworkGridRefetchContainer as ArtworkFilter } from "./CollectArtworkFilterRefetch"
 
 interface Props {
@@ -55,6 +54,25 @@ class Filter extends Component<Props> {
     })
   }
 
+  renderPriceRange(filters, mediator) {
+    return (
+      <PriceRange
+        allowCross={false}
+        min={50}
+        max={50000}
+        step={50}
+        defaultValue={[50, 50000]}
+        onAfterChange={([min, max]) => {
+          if (max === 50000) {
+            filters.setPriceRange(`${min}-*`, mediator)
+          } else {
+            filters.setPriceRange(`${min}-${max}`, mediator)
+          }
+        }}
+      />
+    )
+  }
+
   renderForSaleCheckbox(filters, hasForSaleArtworks, mediator) {
     return (
       <Checkbox
@@ -72,30 +90,20 @@ class Filter extends Component<Props> {
   renderWaysToBuy(filters, mediator) {
     return (
       <React.Fragment>
-        <Sans size="2" weight="medium" color="black100" mt={0.3}>
+        <Sans size="2" weight="medium" color="black100" my={1}>
           Ways to Buy
         </Sans>
         <Checkbox
-          selected={filters.state.acquireable}
-          onSelect={value => {
-            return filters.setFilter("acquireable", value, mediator)
-          }}
-        >
-          Buy Now
-        </Checkbox>
-        <Checkbox
           selected={filters.state.at_auction}
-          onSelect={value => {
-            return filters.setFilter("at_auction", value, mediator)
-          }}
+          onSelect={value => filters.setFilter("at_auction", value, mediator)}
         >
           Bid
         </Checkbox>
         <Checkbox
           selected={filters.state.inquireable_only}
-          onSelect={value => {
-            return filters.setFilter("inquireable_only", value, mediator)
-          }}
+          onSelect={value =>
+            filters.setFilter("inquireable_only", value, mediator)
+          }
         >
           Inquire
         </Checkbox>
@@ -139,29 +147,14 @@ class Filter extends Component<Props> {
                                   {!hideTopBorder && <Separator mb={1} />}
 
                                   {this.renderWaysToBuy(filters, mediator)}
+                                </Flex>
 
-                                  <div>
-                                    <Range
-                                      allowCross={false}
-                                      min={50}
-                                      max={50000}
-                                      step={50}
-                                      defaultValue={[50, 50000]}
-                                      onAfterChange={([min, max]) => {
-                                        if (max === 50000) {
-                                          filters.setPriceRange(
-                                            `${min}-*`,
-                                            mediator
-                                          )
-                                        } else {
-                                          filters.setPriceRange(
-                                            `${min}-${max}`,
-                                            mediator
-                                          )
-                                        }
-                                      }}
-                                    />
-                                  </div>
+                                <Flex
+                                  flexDirection="column"
+                                  alignItems="left"
+                                  my={1}
+                                >
+                                  {this.renderPriceRange(filters, mediator)}
                                 </Flex>
 
                                 <Toggle label="Medium" expanded>
