@@ -1,6 +1,7 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
 
+import { ModalError } from "Components/Modal/ModalError"
 import { Images } from "Components/Publishing/Fixtures/Components"
 import Button from "../Buttons/Default"
 import Modal from "../Modal/Modal"
@@ -48,6 +49,38 @@ class ModalDemo extends React.Component<any, any> {
             <div>Even more contents</div>
           </div>
         </Modal>
+      </div>
+    )
+  }
+}
+
+class ModalErrorDemo extends React.Component<any, any> {
+  constructor(props) {
+    super(props)
+    this.state = { isModalOpen: true }
+    this.openModal = this.openModal.bind(this)
+    this.closeModal = this.closeModal.bind(this)
+  }
+
+  openModal() {
+    this.setState({ isModalOpen: true })
+  }
+
+  closeModal() {
+    this.setState({ isModalOpen: false })
+  }
+
+  render(): JSX.Element {
+    return (
+      <div>
+        <Button onClick={this.openModal}>Open Modal</Button>
+        <ModalError
+          onClose={this.closeModal}
+          show={this.state.isModalOpen}
+          headerText={this.props.headerText}
+          detailText={this.props.detailText}
+          closeText={this.props.closeText}
+        />
       </div>
     )
   }
@@ -123,6 +156,14 @@ storiesOf("Components/Modal/Demo", module)
         onClick: () => alert("clicked"),
       }}
       isWide
+    />
+  ))
+  .add("Error Modal (Default)", () => <ModalErrorDemo />)
+  .add("Error Modal (Custom)", () => (
+    <ModalErrorDemo
+      closeText="OK"
+      headerText="Price changed"
+      detailText="The price of the work changed since you started checkout. Please review pricing details before submitting."
     />
   ))
 
