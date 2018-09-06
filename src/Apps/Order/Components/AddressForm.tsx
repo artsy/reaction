@@ -47,6 +47,7 @@ export class AddressForm extends React.Component<
   changeEventHandler = (key: keyof Address) => (
     ev: React.FormEvent<HTMLInputElement>
   ) => {
+    console.log("FECK", ev.currentTarget.value)
     this.onChangeValue(key, ev.currentTarget.value)
   }
 
@@ -65,6 +66,7 @@ export class AddressForm extends React.Component<
       <Join separator={<Spacer mb={2} />}>
         <Flex flexDirection="column">
           <Input
+            id="AddressForm_name"
             placeholder="Add full name"
             title="Full name"
             defaultValue={this.props.defaultValue.name}
@@ -86,6 +88,7 @@ export class AddressForm extends React.Component<
 
           <Flex flexDirection="column">
             <Input
+              id="AddressForm_addressLine2"
               placeholder="Add postal code"
               title="Postal code"
               onChange={this.changeEventHandler("postalCode")}
@@ -96,6 +99,7 @@ export class AddressForm extends React.Component<
         <TwoColumnSplit>
           <Flex flexDirection="column">
             <Input
+              id="AddressForm_addressLine1"
               placeholder="Add street address"
               title="Address line 1"
               onChange={this.changeEventHandler("addressLine1")}
@@ -105,6 +109,7 @@ export class AddressForm extends React.Component<
 
           <Flex flexDirection="column">
             <Input
+              id="AddressForm_addressLine2"
               placeholder="Add apt, floor, suite, etc."
               title="Address line 2 (optional)"
               onChange={this.changeEventHandler("addressLine2")}
@@ -115,6 +120,7 @@ export class AddressForm extends React.Component<
         <TwoColumnSplit>
           <Flex flexDirection="column">
             <Input
+              id="AddressForm_city"
               placeholder="Add city"
               title="City"
               onChange={this.changeEventHandler("city")}
@@ -134,6 +140,7 @@ export class AddressForm extends React.Component<
         {!this.props.billing && (
           <Flex flexDirection="column">
             <Input
+              id="AddressForm_phoneNumber"
               title="Phone"
               description="For shipping purposes only"
               placeholder="Add phone"
