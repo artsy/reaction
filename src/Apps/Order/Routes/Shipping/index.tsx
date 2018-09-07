@@ -67,7 +67,6 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     if (this.props.relay && this.props.relay.environment) {
       // We don't strictly need to wait for the state to be set, but it makes it easier to test.
       this.setState({ isComittingMutation: true }, () => {
-        const { phoneNumber, ...shipping } = this.state.address
         commitMutation<ShippingOrderAddressUpdateMutation>(
           this.props.relay.environment,
           {
@@ -95,8 +94,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
               input: {
                 orderId: this.props.order.id,
                 fulfillmentType: this.state.shippingOption,
-                phoneNumber,
-                shipping,
+                shipping: this.state.address,
               },
             },
             onCompleted: () =>

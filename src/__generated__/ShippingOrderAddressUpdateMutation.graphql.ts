@@ -5,7 +5,6 @@ export type OrderFulfillmentType = "PICKUP" | "SHIP" | "%future added value";
 export type SetOrderShippingInput = {
     readonly orderId?: string | null;
     readonly fulfillmentType?: OrderFulfillmentType | null;
-    readonly phoneNumber?: string | null;
     readonly shipping?: ShippingInputField | null;
     readonly clientMutationId?: string | null;
 };
@@ -17,6 +16,7 @@ export type ShippingInputField = {
     readonly region?: string | null;
     readonly country?: string | null;
     readonly postalCode?: string | null;
+    readonly phoneNumber?: string | null;
 };
 export type ShippingOrderAddressUpdateMutationVariables = {
     readonly input: SetOrderShippingInput;
