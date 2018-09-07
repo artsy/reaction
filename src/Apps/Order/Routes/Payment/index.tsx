@@ -1,11 +1,17 @@
+import { Sans } from "@artsy/palette"
 import { Payment_order } from "__generated__/Payment_order.graphql"
 import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
 import { CreditCardInput } from "Apps/Order/Components/CreditCardInput"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
-import { Link } from "Artsy/Router"
+import { Router } from "found"
 import React, { Component } from "react"
-import { createFragmentContainer, graphql } from "react-relay"
-import { Elements } from "react-stripe-elements"
+import {
+  commitMutation,
+  createFragmentContainer,
+  graphql,
+  RelayRefetchProp,
+} from "react-relay"
+import { injectStripe, ReactStripeElements } from "react-stripe-elements"
 import { Collapse } from "Styleguide/Components/Collapse"
 import { Button } from "Styleguide/Elements/Button"
 import { Checkbox } from "Styleguide/Elements/Checkbox"
@@ -22,21 +28,23 @@ import {
 import { Helper } from "../../Components/Helper"
 import { TransactionSummaryFragmentContainer as TransactionSummary } from "../../Components/TransactionSummary"
 
-export interface PaymentProps {
+export interface PaymentProps extends ReactStripeElements.InjectedStripeProps {
   order: Payment_order
+  relay?: RelayRefetchProp
+  router: Router
 }
 
 interface PaymentState {
   address: Address
   hideBillingAddress: boolean
+  errorMessage: string
+  isComittingMutation: boolean
 }
 
-const ContinueButton = ({ order }) => (
-  <Link to={`/order2/${order.id}/review`}>
-    <Button size="large" width="100%">
-      Continue
-    </Button>
-  </Link>
+const ContinueButton = props => (
+  <Button size="large" width="100%" {...props}>
+    Continue
+  </Button>
 )
 
 export class PaymentRoute extends Component<PaymentProps, PaymentState> {
@@ -46,10 +54,31 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
       country: "US",
     },
     hideBillingAddress: true,
+    errorMessage: null,
+    isComittingMutation: false,
+  }
+
+  onContinueButtonPressed = () => {
+    const billingAddress = this.getSelectedBillingAddress()
+
+    this.setState({ isComittingMutation: true }, () => {
+      this.props.stripe.createToken(billingAddress).then(({ error, token }) => {
+        if (error) {
+          this.setState({
+            errorMessage: error.message,
+            isComittingMutation: false,
+          })
+        } else {
+          this.createCreditCard({ token: token.id })
+        }
+      })
+    })
   }
 
   render() {
     const { order } = this.props
+    const { errorMessage, isComittingMutation } = this.state
+
     return (
       <>
         <Row>
@@ -60,62 +89,198 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
 
         <Spacer mb={3} />
 
-        <Elements>
-          <Responsive>
-            {({ xs }) => (
-              <TwoColumnLayout
-                Content={
-                  <>
-                    <Join separator={<Spacer mb={3} />}>
+        <Responsive>
+          {({ xs }) => (
+            <TwoColumnLayout
+              Content={
+                <>
+                  <Join separator={<Spacer mb={3} />}>
+                    <Flex flexDirection="column">
                       <CreditCardInput />
-                      <Checkbox
-                        selected={this.state.hideBillingAddress}
-                        onSelect={hideBillingAddress =>
-                          this.setState({ hideBillingAddress })
-                        }
-                      >
-                        Billing and shipping addresses are the same
-                      </Checkbox>
-                      <Collapse open={!this.state.hideBillingAddress}>
-                        <AddressForm
-                          defaultValue={this.state.address}
-                          onChange={address => this.setState({ address })}
-                          billing
-                        />
-                      </Collapse>
-                      {!xs && <ContinueButton order={order} />}
-                    </Join>
-                    <Spacer mb={3} />
-                  </>
-                }
-                Sidebar={
-                  <Flex flexDirection="column">
-                    <TransactionSummary order={order} mb={[2, 3]} />
-                    <Helper
-                      artworkId={order.lineItems.edges[0].node.artwork.id}
-                    />
-                    {xs && (
-                      <>
-                        <Spacer mb={3} />
-                        <ContinueButton order={order} />
-                      </>
+                      {errorMessage && (
+                        <Sans pt={1} size="2" color="red100">
+                          {errorMessage}
+                        </Sans>
+                      )}
+                    </Flex>
+                    <Checkbox
+                      selected={this.state.hideBillingAddress}
+                      onSelect={hideBillingAddress =>
+                        this.setState({ hideBillingAddress })
+                      }
+                    >
+                      Billing and shipping addresses are the same
+                    </Checkbox>
+                    <Collapse open={!this.state.hideBillingAddress}>
+                      <AddressForm
+                        defaultValue={this.state.address}
+                        onChange={address => this.setState({ address })}
+                        billing
+                      />
+                    </Collapse>
+                    {!xs && (
+                      <ContinueButton
+                        onClick={this.onContinueButtonPressed}
+                        loading={isComittingMutation}
+                      />
                     )}
-                  </Flex>
-                }
-              />
-            )}
-          </Responsive>
-        </Elements>
+                  </Join>
+                  <Spacer mb={3} />
+                </>
+              }
+              Sidebar={
+                <Flex flexDirection="column">
+                  <TransactionSummary order={order} mb={[2, 3]} />
+                  <Helper
+                    artworkId={order.lineItems.edges[0].node.artwork.id}
+                  />
+                  {xs && (
+                    <>
+                      <Spacer mb={3} />
+                      <ContinueButton
+                        onClick={this.onContinueButtonPressed}
+                        loading={isComittingMutation}
+                      />
+                    </>
+                  )}
+                </Flex>
+              }
+            />
+          )}
+        </Responsive>
       </>
     )
+  }
+
+  private getSelectedBillingAddress(): stripe.TokenOptions {
+    const {
+      name,
+      addressLine1,
+      addressLine2,
+      city,
+      region,
+      postalCode,
+      country,
+    } = (this.state.hideBillingAddress
+      ? this.props.order.requestedFulfillment
+      : this.state.address) as Address
+
+    return {
+      name,
+      address_line1: addressLine1,
+      address_line2: addressLine2,
+      address_city: city,
+      address_state: region,
+      address_zip: postalCode,
+      address_country: country,
+    }
+  }
+
+  private createCreditCard({ token }) {
+    commitMutation(this.props.relay.environment, {
+      onCompleted: (data, errors) => {
+        if (data && data.createCreditCard.creditCardOrError.creditCard) {
+          this.setOrderPayment({
+            creditCardId: data.createCreditCard.creditCardOrError.creditCard.id,
+          })
+        } else {
+          // TODO: Add error handling
+          console.error(errors)
+        }
+      },
+      onError: this.onMutationError.bind(this),
+      mutation: graphql`
+        mutation PaymentRouteCreateCreditCardMutation(
+          $input: CreditCardInput!
+        ) {
+          createCreditCard(input: $input) {
+            creditCardOrError {
+              ... on CreditCardMutationSuccess {
+                creditCard {
+                  id
+                }
+              }
+              ... on CreditCardMutationFailure {
+                mutationError {
+                  type
+                  message
+                  detail
+                }
+              }
+            }
+          }
+        }
+      `,
+      variables: {
+        input: { token },
+      },
+    })
+  }
+
+  private setOrderPayment({ creditCardId }) {
+    commitMutation(this.props.relay.environment, {
+      onCompleted: (data, errors) => {
+        this.setState({ isComittingMutation: false })
+
+        if (data && data.setOrderPayment.orderOrError.order) {
+          this.props.router.push(`/order2/${this.props.order.id}/review`)
+        } else {
+          // TODO: Add error handling
+          console.error(errors)
+        }
+      },
+      onError: this.onMutationError.bind(this),
+      mutation: graphql`
+        mutation PaymentRouteSetOrderPaymentMutation(
+          $input: SetOrderPaymentInput!
+        ) {
+          setOrderPayment(input: $input) {
+            orderOrError {
+              ... on OrderWithMutationSuccess {
+                order {
+                  id
+                }
+              }
+              ... on OrderWithMutationFailure {
+                error {
+                  description
+                }
+              }
+            }
+          }
+        }
+      `,
+      variables: {
+        input: {
+          orderId: this.props.order.id,
+          creditCardId,
+        },
+      },
+    })
+  }
+
+  private onMutationError(errors) {
+    console.error(errors)
   }
 }
 
 export const PaymentFragmentContainer = createFragmentContainer(
-  PaymentRoute,
+  injectStripe(PaymentRoute),
   graphql`
     fragment Payment_order on Order {
       id
+      requestedFulfillment {
+        __typename
+        ... on Ship {
+          name
+          addressLine1
+          addressLine2
+          city
+          region
+          country
+          postalCode
+        }
+      }
       lineItems {
         edges {
           node {
