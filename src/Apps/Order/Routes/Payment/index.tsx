@@ -27,7 +27,7 @@ export interface PaymentProps {
 }
 
 interface PaymentState {
-  address: Partial<Address>
+  address: Address
   hideBillingAddress: boolean
 }
 

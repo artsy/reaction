@@ -47,7 +47,6 @@ export class AddressForm extends React.Component<
   changeEventHandler = (key: keyof Address) => (
     ev: React.FormEvent<HTMLInputElement>
   ) => {
-    console.log("FECK", ev.currentTarget.value)
     this.onChangeValue(key, ev.currentTarget.value)
   }
 
