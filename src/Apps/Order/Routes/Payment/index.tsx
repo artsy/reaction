@@ -36,7 +36,7 @@ interface PaymentState {
   isComittingMutation: boolean
 }
 
-const ContinueButton = props => (
+export const ContinueButton = props => (
   <Button size="large" width="100%" {...props}>
     Continue
   </Button>
