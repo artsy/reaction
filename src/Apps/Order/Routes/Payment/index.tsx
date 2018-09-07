@@ -1,4 +1,3 @@
-import { Sans } from "@artsy/palette"
 import { Payment_order } from "__generated__/Payment_order.graphql"
 import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
 import { CreditCardInput } from "Apps/Order/Components/CreditCardInput"
@@ -37,7 +36,7 @@ export interface PaymentProps extends ReactStripeElements.InjectedStripeProps {
 interface PaymentState {
   address: Address
   hideBillingAddress: boolean
-  errorMessage: string
+  error: stripe.Error
   isComittingMutation: boolean
 }
 
@@ -54,7 +53,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
       country: "US",
     },
     hideBillingAddress: true,
-    errorMessage: null,
+    error: null,
     isComittingMutation: false,
   }
 
@@ -65,7 +64,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
       this.props.stripe.createToken(billingAddress).then(({ error, token }) => {
         if (error) {
           this.setState({
-            errorMessage: error.message,
+            error,
             isComittingMutation: false,
           })
         } else {
@@ -77,7 +76,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
 
   render() {
     const { order } = this.props
-    const { errorMessage, isComittingMutation } = this.state
+    const { error, isComittingMutation } = this.state
 
     return (
       <>
@@ -95,14 +94,8 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
               Content={
                 <>
                   <Join separator={<Spacer mb={3} />}>
-                    <Flex flexDirection="column">
-                      <CreditCardInput />
-                      {errorMessage && (
-                        <Sans pt={1} size="2" color="red100">
-                          {errorMessage}
-                        </Sans>
-                      )}
-                    </Flex>
+                    <CreditCardInput error={error} />
+
                     <Checkbox
                       selected={this.state.hideBillingAddress}
                       onSelect={hideBillingAddress =>
