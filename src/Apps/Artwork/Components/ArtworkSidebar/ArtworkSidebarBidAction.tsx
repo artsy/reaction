@@ -1,9 +1,9 @@
 import { Box, Flex, Serif } from "@artsy/palette"
+import { Button } from "@artsy/palette"
 import { Help } from "Assets/Icons/Help"
 import { Tooltip } from "Components/Tooltip"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Button } from "Styleguide/Elements/Button"
 
 import { ArtworkSidebarBidAction_artwork } from "__generated__/ArtworkSidebarBidAction_artwork.graphql"
 

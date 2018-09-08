@@ -9,13 +9,13 @@ import { FollowButton } from "./Button"
 import { FollowButtonDeprecated } from "./ButtonDeprecated"
 import { FollowTrackingData } from "./Typings"
 
+import { ButtonProps } from "@artsy/palette"
 import {
   commitMutation,
   createFragmentContainer,
   graphql,
   RelayProp,
 } from "react-relay"
-import { ButtonProps } from "Styleguide/Elements/Button"
 
 interface Props
   extends React.HTMLProps<FollowArtistButton>,

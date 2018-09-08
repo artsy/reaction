@@ -1,4 +1,5 @@
 import { Flex, Join, Spacer } from "@artsy/palette"
+import { Button } from "@artsy/palette"
 import { Review_order } from "__generated__/Review_order.graphql"
 import { ReviewSubmitOrderMutation } from "__generated__/ReviewSubmitOrderMutation.graphql"
 import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
@@ -13,7 +14,6 @@ import {
   graphql,
   RelayProp,
 } from "react-relay"
-import { Button } from "Styleguide/Elements/Button"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Responsive } from "Utils/Responsive"
 import { Helper } from "../../Components/Helper"

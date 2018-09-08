@@ -1,7 +1,7 @@
 import { Box, Separator, Serif } from "@artsy/palette"
+import { Button } from "@artsy/palette"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Button } from "Styleguide/Elements/Button"
 import { ArtworkSidebarSizeInfoFragmentContainer as SizeInfo } from "./ArtworkSidebarSizeInfo"
 
 import { ArtworkSidebarCommercial_artwork } from "__generated__/ArtworkSidebarCommercial_artwork.graphql"

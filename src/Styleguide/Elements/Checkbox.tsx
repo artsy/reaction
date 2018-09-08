@@ -1,4 +1,5 @@
 import { color, space } from "@artsy/palette"
+import { Flex, FlexProps } from "@artsy/palette"
 import React from "react"
 import styled, { css } from "styled-components"
 import {
@@ -8,7 +9,6 @@ import {
   space as styledSpace,
   SpaceProps,
 } from "styled-system"
-import { Flex, FlexProps } from "Styleguide/Elements/Flex"
 
 const SIZE = 2
 const BORDER_WIDTH = 2

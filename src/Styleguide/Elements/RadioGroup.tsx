@@ -1,7 +1,7 @@
 import React from "react"
 
-import { Flex, FlexProps } from "Styleguide/Elements/Flex"
-import { RadioProps } from "Styleguide/Elements/Radio"
+import { Flex, FlexProps } from "@artsy/palette"
+import { RadioProps } from "@artsy/palette"
 
 export interface RadioGroupProps extends FlexProps {
   disabled?: boolean

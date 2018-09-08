@@ -1,9 +1,9 @@
 import { Sans } from "@artsy/palette"
+import { Box, StackableBorderBox } from "@artsy/palette"
 import { Checkmark } from "Assets/Checkmark"
 import colors from "Assets/Colors"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Box, StackableBorderBox } from "Styleguide/Elements/Box"
 
 import { ArtworkDetailsChecklist_artwork } from "__generated__/ArtworkDetailsChecklist_artwork.graphql"
 

@@ -1,8 +1,8 @@
 import { color, Serif, Spacer } from "@artsy/palette"
+import { Button } from "@artsy/palette"
 import { garamond } from "Assets/Fonts"
 import React from "react"
 import styled from "styled-components"
-import { Button } from "Styleguide/Elements/Button"
 
 interface ErrorPageProps {
   code: number

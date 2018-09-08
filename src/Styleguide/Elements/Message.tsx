@@ -1,7 +1,7 @@
 import { color, Sans, SansSize } from "@artsy/palette"
+import { Flex, FlexProps } from "@artsy/palette"
 import React, { SFC } from "react"
 import styled from "styled-components"
-import { Flex, FlexProps } from "Styleguide/Elements/Flex"
 
 export const StyledFlex = styled(Flex)`
   background-color: ${color("black5")};

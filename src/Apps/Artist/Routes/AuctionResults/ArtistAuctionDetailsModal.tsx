@@ -1,8 +1,8 @@
 import { Box, Flex, Sans, Separator, Serif, Spacer } from "@artsy/palette"
+import { Button } from "@artsy/palette"
+import { Image } from "@artsy/palette"
 import { Modal } from "Components/Modal/Modal"
 import React, { Component, SFC } from "react"
-import { Button } from "Styleguide/Elements/Button"
-import { Image } from "Styleguide/Elements/Image"
 import { Subscribe } from "unstated"
 import { AuctionResultsState } from "./state"
 

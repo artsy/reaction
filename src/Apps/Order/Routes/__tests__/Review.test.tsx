@@ -1,10 +1,10 @@
 import { mount } from "enzyme"
 import React from "react"
 
+import { Button } from "@artsy/palette"
 import { UntouchedOrder } from "Apps/__test__/Fixtures/Order"
 import { TermsOfServiceCheckbox } from "Apps/Order/Components/TermsOfServiceCheckbox"
 import { commitMutation } from "react-relay"
-import { Button } from "Styleguide/Elements/Button"
 import { Provider } from "unstated"
 import { ReviewRoute } from "../Review"
 

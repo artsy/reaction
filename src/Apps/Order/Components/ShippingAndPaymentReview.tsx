@@ -1,9 +1,9 @@
 import { Sans } from "@artsy/palette"
+import { Flex, FlexProps } from "@artsy/palette"
 import { ShippingAndPaymentReview_order } from "__generated__/ShippingAndPaymentReview_order.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { StepSummaryItem } from "Styleguide/Components/StepSummaryItem"
-import { Flex, FlexProps } from "Styleguide/Elements/Flex"
 import { CreditCardDetails } from "./CreditCardDetails"
 import { ShippingAddressFragmentContainer as ShippingAddress } from "./ShippingAddress"
 

@@ -5,7 +5,7 @@ import React from "react"
 import styled from "styled-components"
 export { Footer } from "./Footer"
 export { TermsOfServiceCheckbox } from "./TermsOfServiceCheckbox"
-import { Button, ButtonProps } from "Styleguide/Elements/Button"
+import { Button, ButtonProps } from "@artsy/palette"
 interface FormProps {
   height?: number
 }

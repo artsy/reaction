@@ -1,6 +1,6 @@
 import { Box, Serif } from "@artsy/palette"
+import { Image } from "@artsy/palette"
 import React, { SFC } from "react"
-import { Image } from "Styleguide/Elements/Image"
 
 interface ArtistShowBlockItemProps {
   imageUrl: string

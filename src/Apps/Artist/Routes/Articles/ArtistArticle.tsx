@@ -1,7 +1,7 @@
 import { Box, Flex, Sans, Separator, Serif, Spacer } from "@artsy/palette"
+import { Image } from "@artsy/palette"
 import React, { SFC } from "react"
 import { Col, Row } from "Styleguide/Elements/Grid"
-import { Image } from "Styleguide/Elements/Image"
 import { Responsive } from "Utils/Responsive"
 
 interface ArticleItemProps {
