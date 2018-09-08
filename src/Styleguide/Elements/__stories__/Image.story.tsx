@@ -1,8 +1,7 @@
-import { BorderBox } from "@artsy/palette"
+import { BorderBox, Image, ResponsiveImage } from "@artsy/palette"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
-import { Image, ResponsiveImage } from "../Image"
 
 storiesOf("Styleguide/Elements", module).add("Image", () => {
   return (

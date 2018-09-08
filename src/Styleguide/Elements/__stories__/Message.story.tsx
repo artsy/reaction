@@ -1,7 +1,6 @@
-import { Box, Spacer } from "@artsy/palette"
+import { Box, Message, Spacer } from "@artsy/palette"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Message } from "Styleguide/Elements/Message"
 import { Section } from "Styleguide/Utils/Section"
 
 storiesOf("Styleguide/Elements", module).add("Message", () => {
@@ -16,7 +15,7 @@ storiesOf("Styleguide/Elements", module).add("Message", () => {
 
       <Section title="Various sizes">
         <Box width="50%">
-          <Message size="2">
+          <Message textSize="2">
             Thank you for your order. You’ll receive a confirmation email
             shortly. If you have questions, please contact{" "}
             <a href="#">orders@artsy.net</a>.
@@ -24,7 +23,7 @@ storiesOf("Styleguide/Elements", module).add("Message", () => {
 
           <Spacer my={1} />
 
-          <Message size="3">
+          <Message textSize="3">
             Thank you for your order. You’ll receive a confirmation email
             shortly. If you have questions, please contact{" "}
             <a href="#">orders@artsy.net</a>.
@@ -32,7 +31,7 @@ storiesOf("Styleguide/Elements", module).add("Message", () => {
 
           <Spacer my={1} />
 
-          <Message size="4">
+          <Message textSize="4">
             Thank you for your order. You’ll receive a confirmation email
             shortly. If you have questions, please contact{" "}
             <a href="#">orders@artsy.net</a>.
@@ -40,7 +39,7 @@ storiesOf("Styleguide/Elements", module).add("Message", () => {
 
           <Spacer my={1} />
 
-          <Message size="5">
+          <Message textSize="5">
             Thank you for your order. You’ll receive a confirmation email
             shortly. If you have questions, please contact{" "}
             <a href="#">orders@artsy.net</a>.
