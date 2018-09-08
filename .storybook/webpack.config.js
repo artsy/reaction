@@ -120,14 +120,17 @@ module.exports = (baseConfig, env) => {
           ],
         },
         {
-          test: /\.graphql/,
+          test: /schema.graphql/,
           use: [{ loader: "graphqlLoader" }],
         },
       ],
     },
     plugins: plugins,
     resolveLoader: {
-      modules: ["node_modules", path.resolve(__dirname, "tooling", "webpack")],
+      modules: [
+        "node_modules",
+        path.resolve(__dirname, "..", "tooling", "webpack"),
+      ],
     },
   }
 
