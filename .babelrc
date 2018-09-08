@@ -2,7 +2,6 @@
   "presets": [
     "@babel/typescript",
     "@babel/react",
-    "@babel/stage-3",
     ["@babel/env", {
       "targets": {
         "browsers": ["last 2 versions"]
