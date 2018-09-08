@@ -23,5 +23,5 @@
     "trailing-comma": false,
     "variable-name": [true, "ban-keywords", "allow-leading-underscore"]
   },
-  "rulesDirectory": ["./tslint"]
+  "rulesDirectory": ["./tooling/tslint"]
 }

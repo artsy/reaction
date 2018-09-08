@@ -1,12 +1,12 @@
-import { readFileSync } from "fs"
 import { IMocks } from "graphql-tools/dist/Interfaces"
 import getNetworkLayer from "relay-mock-network-layer"
 import { Network } from "relay-runtime"
-
-// TODO: This doesn't work in client side rendering
-const schemaDSL = readFileSync("data/schema.graphql", "utf8")
+import schemaDSL from "../../../data/schema.graphql"
 
 export const createMockNetworkLayer = (mockResolvers: IMocks) => {
+  console.log(">>>>")
+  console.log(schemaDSL)
+  console.log(">>>>")
   const schemaObj = { data: schemaDSL }
   return Network.create(
     getNetworkLayer({

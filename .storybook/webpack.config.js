@@ -1,3 +1,5 @@
+// @ts-check
+
 const env = require("dotenv")
 const fs = require("fs")
 const path = require("path")
@@ -77,7 +79,10 @@ module.exports = (baseConfig, env) => {
     return constructor.name !== "ProgressPlugin"
   })
 
-  const merged = merge(config, {
+  /**
+   * @type {webpack.Configuration}
+   */
+  const artsyWebpackConfig = {
     devtool: WEBPACK_DEVTOOL,
     devServer: {
       overlay: {
@@ -114,9 +119,17 @@ module.exports = (baseConfig, env) => {
             // },
           ],
         },
+        {
+          test: /\.graphql/,
+          use: [{ loader: "graphqlLoader" }],
+        },
       ],
     },
     plugins: plugins,
-  })
-  return merged
+    resolveLoader: {
+      modules: ["node_modules", path.resolve(__dirname, "tooling", "webpack")],
+    },
+  }
+
+  return merge(config, artsyWebpackConfig)
 }
