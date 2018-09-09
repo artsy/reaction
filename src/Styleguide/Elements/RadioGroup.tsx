@@ -7,7 +7,9 @@ export interface RadioGroupProps extends FlexProps {
   disabled?: boolean
   onSelect?: (selectedOption: string) => void
   defaultValue?: string
-  children: Array<React.ReactElement<RadioProps>>
+  // FIXME: Reenable after unlinking @artsy/palette
+  // children: Array<React.ReactElement<RadioProps>>
+  children: JSX.Element[]
 }
 
 interface RadioGroupState {

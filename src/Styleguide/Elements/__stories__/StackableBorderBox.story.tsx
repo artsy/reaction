@@ -1,4 +1,4 @@
-import { Box, Flex, StackableBorderBox } from "@artsy/palette"
+import { Flex, StackableBorderBox } from "@artsy/palette"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
