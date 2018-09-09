@@ -123,7 +123,7 @@ const Title = styled.div`
   ${unica("s16", "medium")};
   margin-bottom: 10px;
 `
-const StyledButton = InvertedButton.extend`
+const StyledButton = styled(InvertedButton)`
   border-radius: 2px;
   height: 30px;
   width: 80px;

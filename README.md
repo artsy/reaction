@@ -94,7 +94,7 @@ We recently started shipping Reaction builds with declaration files (`.d.ts`) so
 ```typescript
 src/Components/Forms/OrderForm/App.tsx:63:14 - error TS4023: Exported variable 'StyledTitle' has or is using name 'TitleProps' from external module "/Users/lucsucces/Projects/reaction/src/Components/Title" but cannot be named.
 
-63 export const StyledTitle = Title.extend`
+63 export const StyledTitle = styled(Title)`
                 ~~~~~~~~~~~
 ```
 
