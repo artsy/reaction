@@ -36,7 +36,6 @@ import { ClassAttributes, HTMLAttributes } from "react"
 
 const flexGrow = style({
   prop: "flexGrow",
-  // numberToPx: false,
 })
 
 export interface FlexProps
