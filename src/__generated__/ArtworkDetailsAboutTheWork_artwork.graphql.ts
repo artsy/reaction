@@ -5,12 +5,24 @@ declare const _ArtworkDetailsAboutTheWork_artwork$ref: unique symbol;
 export type ArtworkDetailsAboutTheWork_artwork$ref = typeof _ArtworkDetailsAboutTheWork_artwork$ref;
 export type ArtworkDetailsAboutTheWork_artwork = {
     readonly additional_information: string | null;
+    readonly description: string | null;
+    readonly partner: ({
+        readonly name: string | null;
+    }) | null;
     readonly " $refType": ArtworkDetailsAboutTheWork_artwork$ref;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ConcreteFragment = (function(){
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
+};
+return {
   "kind": "Fragment",
   "name": "ArtworkDetailsAboutTheWork_artwork",
   "type": "Artwork",
@@ -27,11 +39,32 @@ const node: ConcreteFragment = {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "__id",
+      "name": "description",
       "args": null,
       "storageKey": null
-    }
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "partner",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Partner",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "name",
+          "args": null,
+          "storageKey": null
+        },
+        v0
+      ]
+    },
+    v0
   ]
 };
-(node as any).hash = 'fc282ef6a294362f03aa663e6b3913f0';
+})();
+(node as any).hash = 'fb79b0a704f6a5190986a121bf8fa760';
 export default node;

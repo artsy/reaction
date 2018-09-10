@@ -36,6 +36,11 @@ fragment ArtworkDetails_artwork on Artwork {
 
 fragment ArtworkDetailsAboutTheWork_artwork on Artwork {
   additional_information
+  description
+  partner {
+    name
+    __id
+  }
   __id
 }
 
@@ -114,7 +119,7 @@ return {
   "operationKind": "query",
   "name": "ArtworkDetailsQuery",
   "id": null,
-  "text": "query ArtworkDetailsQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...ArtworkDetails_artwork\n    __id\n  }\n}\n\nfragment ArtworkDetails_artwork on Artwork {\n  ...ArtworkDetailsAboutTheWork_artwork\n  ...ArtworkDetailsChecklist_artwork\n  ...ArtworkDetailsAdditionalInfo_artwork\n  __id\n}\n\nfragment ArtworkDetailsAboutTheWork_artwork on Artwork {\n  additional_information\n  __id\n}\n\nfragment ArtworkDetailsChecklist_artwork on Artwork {\n  framed {\n    label\n    details\n  }\n  signatureInfo {\n    label\n    details\n  }\n  conditionDescription {\n    label\n    details\n  }\n  certificateOfAuthenticity {\n    label\n    details\n  }\n  __id\n}\n\nfragment ArtworkDetailsAdditionalInfo_artwork on Artwork {\n  series\n  publisher\n  manufacturer\n  provenance\n  image_rights\n  __id\n}\n",
+  "text": "query ArtworkDetailsQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...ArtworkDetails_artwork\n    __id\n  }\n}\n\nfragment ArtworkDetails_artwork on Artwork {\n  ...ArtworkDetailsAboutTheWork_artwork\n  ...ArtworkDetailsChecklist_artwork\n  ...ArtworkDetailsAdditionalInfo_artwork\n  __id\n}\n\nfragment ArtworkDetailsAboutTheWork_artwork on Artwork {\n  additional_information\n  description\n  partner {\n    name\n    __id\n  }\n  __id\n}\n\nfragment ArtworkDetailsChecklist_artwork on Artwork {\n  framed {\n    label\n    details\n  }\n  signatureInfo {\n    label\n    details\n  }\n  conditionDescription {\n    label\n    details\n  }\n  certificateOfAuthenticity {\n    label\n    details\n  }\n  __id\n}\n\nfragment ArtworkDetailsAdditionalInfo_artwork on Artwork {\n  series\n  publisher\n  manufacturer\n  provenance\n  image_rights\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -159,7 +164,7 @@ return {
           {
             "kind": "LinkedField",
             "alias": null,
-            "name": "certificateOfAuthenticity",
+            "name": "conditionDescription",
             "storageKey": null,
             "args": null,
             "concreteType": "ArtworkInfoRow",
@@ -173,6 +178,26 @@ return {
             "args": null,
             "storageKey": null
           },
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "partner",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "Partner",
+            "plural": false,
+            "selections": [
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "name",
+                "args": null,
+                "storageKey": null
+              },
+              v2
+            ]
+          },
+          v2,
           {
             "kind": "LinkedField",
             "alias": null,
@@ -194,16 +219,22 @@ return {
             "selections": v3
           },
           {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "description",
+            "args": null,
+            "storageKey": null
+          },
+          {
             "kind": "LinkedField",
             "alias": null,
-            "name": "conditionDescription",
+            "name": "certificateOfAuthenticity",
             "storageKey": null,
             "args": null,
             "concreteType": "ArtworkInfoRow",
             "plural": false,
             "selections": v3
           },
-          v2,
           {
             "kind": "ScalarField",
             "alias": null,
