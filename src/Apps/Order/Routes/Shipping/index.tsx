@@ -52,13 +52,14 @@ export interface ShippingState {
 }
 
 export class ShippingRoute extends Component<ShippingProps, ShippingState> {
-  // TODO: Fill in with Relay data on load.
-  // See: https://artsyproduct.atlassian.net/browse/PURCHASE-376
   state = {
-    shippingOption: "SHIP" as OrderFulfillmentType,
+    shippingOption: ((this.props.order.requestedFulfillment &&
+      this.props.order.requestedFulfillment.__typename.toUpperCase()) ||
+      "SHIP") as OrderFulfillmentType,
     address: {
       ...emptyAddress,
       country: "US",
+      ...(this.props.order.requestedFulfillment as Partial<Address>),
     },
     isComittingMutation: false,
   }
@@ -128,7 +129,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                     onSelect={(shippingOption: OrderFulfillmentType) =>
                       this.setState({ shippingOption })
                     }
-                    defaultValue="SHIP"
+                    defaultValue={this.state.shippingOption}
                   >
                     <BorderedRadio value="SHIP">
                       Provide shipping address
@@ -202,6 +203,19 @@ export const ShippingFragmentContainer = createFragmentContainer(
   graphql`
     fragment Shipping_order on Order {
       id
+      requestedFulfillment {
+        __typename
+        ... on Ship {
+          name
+          addressLine1
+          addressLine2
+          city
+          region
+          country
+          postalCode
+          phoneNumber
+        }
+      }
       lineItems {
         edges {
           node {
