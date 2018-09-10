@@ -1,17 +1,25 @@
 import { createMockNetworkLayer } from "Artsy/Relay/createMockNetworkLayer"
+import { IResolvers } from "graphql-tools/dist/Interfaces"
 import React from "react"
 import { QueryRenderer } from "react-relay"
-import { Environment, RecordSource, Store } from "relay-runtime"
+import {
+  Environment,
+  GraphQLTaggedNode,
+  RecordSource,
+  Store,
+} from "relay-runtime"
+
+export interface MockRelayRendererProps {
+  Component: React.ComponentType
+  query: GraphQLTaggedNode
+  mockResolvers: IResolvers
+}
 
 export const MockRelayRenderer = ({
   Component,
   query,
   mockResolvers,
-}: {
-  Component: React.ComponentClass | React.SFC
-  query: any
-  mockResolvers: { [typeName: string]: () => any }
-}) => {
+}: MockRelayRendererProps) => {
   const network = createMockNetworkLayer({
     Query: () => ({}),
     ...mockResolvers,
