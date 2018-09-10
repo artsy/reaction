@@ -142,6 +142,6 @@ const IconWrapper = styled.a`
     padding-left: 0;
   }
 `
-const ShareLabel = Sans.extend`
+const ShareLabel = styled(Sans)`
   margin: 5px 10px 5px 0px;
 `

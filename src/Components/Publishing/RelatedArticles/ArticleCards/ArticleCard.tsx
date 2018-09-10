@@ -240,7 +240,7 @@ const Title = styled.div`
   `};
 `
 
-const SeriesTitle = Sans.extend`
+const SeriesTitle = styled(Sans)`
   margin-bottom: 10px;
 `
 
@@ -252,7 +252,7 @@ const Description = styled.div`
   `};
 `
 
-const MediaDate = Sans.extend`
+const MediaDate = styled(Sans)`
   display: flex;
   align-items: flex-end;
   span {
@@ -270,7 +270,7 @@ const Media = styled.div`
   align-items: flex-end;
 `
 
-const MediaPlay = Media.extend`
+const MediaPlay = styled(Media)`
   svg {
     width: 40px;
   }
@@ -281,7 +281,7 @@ const MediaPlay = Media.extend`
   `};
 `
 
-const MediaComingSoon = Media.extend`
+const MediaComingSoon = styled(Media)`
   ${unica("s45")};
   ${pMedia.md`
     ${unica("s32")}

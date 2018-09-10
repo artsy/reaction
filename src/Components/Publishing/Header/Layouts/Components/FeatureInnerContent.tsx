@@ -93,7 +93,7 @@ export const SubContentContainer = styled.div`
   `};
 `
 
-export const Deck = Sans.extend`
+export const Deck = styled(Sans)`
   max-width: 460px;
   margin-right: ${space(3)}px;
 

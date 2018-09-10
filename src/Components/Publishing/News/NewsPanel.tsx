@@ -58,7 +58,7 @@ const HeaderText = styled.div`
   `};
 `
 
-const HeaderTitle = HeaderText.extend`
+const HeaderTitle = styled(HeaderText)`
   position: absolute;
   left: 0;
 `

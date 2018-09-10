@@ -72,7 +72,7 @@ const Title = styled.div.attrs<{ color: string }>({})`
   `};
 `
 
-export const Credits = Col.extend`
+export const Credits = styled(Col)`
   flex: 1;
 
   p {
@@ -86,7 +86,7 @@ export const Credits = Col.extend`
   `};
 `
 
-const About = Col.extend`
+const About = styled(Col)`
   flex: 1;
 `
 

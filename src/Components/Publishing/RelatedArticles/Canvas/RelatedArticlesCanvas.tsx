@@ -77,7 +77,7 @@ const RelatedArticlesContainer = styled.div`
   margin: 40px auto 80px auto;
 `
 
-const Title = Sans.extend`
+const Title = styled(Sans)`
   margin-bottom: 20px;
   ${pMedia.xl`
     margin: 0 20px 30px 40px;

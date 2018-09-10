@@ -48,14 +48,14 @@ export class SubNav extends React.Component<null, State> {
   }
 }
 
-const Login = InvertedButton.extend`
+const Login = styled(InvertedButton)`
   ${avantgarde("s11")};
   height: 30px;
   width: 80px;
   border-radius: 2px;
   margin: 8px;
 `
-const Signup = StyledButton.extend`
+const Signup = styled(StyledButton)`
   ${avantgarde("s11")};
   height: 30px;
   width: 80px;

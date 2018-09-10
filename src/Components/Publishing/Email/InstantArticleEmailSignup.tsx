@@ -115,7 +115,7 @@ const Title = styled.div`
 const Subtitle = styled.div`
   ${Fonts.avantgarde("s11")} margin-bottom: 10px;
 `
-const StyledButton = InvertedButton.extend`
+const StyledButton = styled(InvertedButton)`
   border-radius: 2px;
   height: 30px;
   width: 80px;

@@ -34,7 +34,7 @@ const Logo = styled(Icon).attrs({
   `};
 `
 
-const Title = Serif.extend`
+const Title = styled(Serif)`
   padding-bottom: ${space(1)}px;
 `
 

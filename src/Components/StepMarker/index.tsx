@@ -143,13 +143,13 @@ const Mark = styled.div`
   }};
 `
 
-const StyledText = Text.extend`
+const StyledText = styled(Text)`
   ${unica("s12", "regular")};
   margin-top: 0;
   margin-bottom: 0;
 `
 
-const StyledIcon = Icon.extend`
+const StyledIcon = styled(Icon)`
   width: 100%;
   text-align: center;
   font-size: 6px;
