@@ -1,7 +1,7 @@
 import { ShippingAddress_ship } from "__generated__/ShippingAddress_ship.graphql"
 import { ShippingAndPaymentReview_order } from "__generated__/ShippingAndPaymentReview_order.graphql"
 import { ShippingAndPaymentSummary_order } from "__generated__/ShippingAndPaymentSummary_order.graphql"
-import { StorybookRelay } from "Artsy/Router/Components/StorybookRelay"
+import { MockRelayRenderer } from "Artsy/Relay/MockRelayRenderer"
 import React from "react"
 import { graphql } from "react-relay"
 import { storiesOf } from "storybook/storiesOf"
@@ -59,7 +59,7 @@ storiesOf("Apps/Order Page/Components", module).add(
         <Section title="Shipping and Payment Summary">
           <h4>Delivery</h4>
           <Flex flexDirection="column" width={300}>
-            <StorybookRelay
+            <MockRelayRenderer
               Component={ShippingAndPaymentSummary}
               mockResolvers={{ Order: () => order }}
               query={orderQuery}
@@ -67,7 +67,7 @@ storiesOf("Apps/Order Page/Components", module).add(
           </Flex>
           <h4>Pickup</h4>
           <Flex flexDirection="column" width={300}>
-            <StorybookRelay
+            <MockRelayRenderer
               Component={ShippingAndPaymentSummary}
               mockResolvers={{
                 Order: () => ({
@@ -84,7 +84,7 @@ storiesOf("Apps/Order Page/Components", module).add(
         <Section title="Shipping and Payment Review">
           <h4>Delivery</h4>
           <Flex flexDirection="column" width={300}>
-            <StorybookRelay
+            <MockRelayRenderer
               Component={(props: any) => (
                 <ShippingAndPaymentReview
                   onChangePayment={() => alert("clicked")}
@@ -100,7 +100,7 @@ storiesOf("Apps/Order Page/Components", module).add(
           </Flex>
           <h4>Pickup</h4>
           <Flex flexDirection="column" width={300}>
-            <StorybookRelay
+            <MockRelayRenderer
               Component={(props: any) => (
                 <ShippingAndPaymentReview
                   onChangePayment={() => alert("clicked")}

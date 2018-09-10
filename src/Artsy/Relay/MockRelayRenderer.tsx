@@ -1,9 +1,9 @@
+import { createMockNetworkLayer } from "Artsy/Relay/createMockNetworkLayer"
 import React from "react"
 import { QueryRenderer } from "react-relay"
 import { Environment, RecordSource, Store } from "relay-runtime"
-import { createMockNetworkLayer } from "../../Relay/createMockNetworkLayer"
 
-export const StorybookRelay = ({
+export const MockRelayRenderer = ({
   Component,
   query,
   mockResolvers,
