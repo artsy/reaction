@@ -1,7 +1,5 @@
-import { Serif } from "@artsy/palette"
+import { Box, Flex, Serif } from "@artsy/palette"
 import { CollectApp_viewer } from "__generated__/CollectApp_viewer.graphql"
-import { Box } from "@artsy/palette"
-import { Flex } from "@artsy/palette"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { ArtworkGridFragmentContainer as ArtworkGrid } from "./Components/ArtworkGrid"

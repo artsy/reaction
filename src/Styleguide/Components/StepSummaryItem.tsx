@@ -1,7 +1,12 @@
-import { Sans, Serif } from "@artsy/palette"
-import { StackableBorderBox } from "@artsy/palette"
-import { Flex, FlexProps } from "@artsy/palette"
 import React from "react"
+
+import {
+  Flex,
+  FlexProps,
+  Sans,
+  Serif,
+  StackableBorderBox,
+} from "@artsy/palette"
 
 interface StepSummaryItemProps extends FlexProps {
   title?: React.ReactNode

@@ -12,12 +12,12 @@ import { CollectArtworkGridRefetchContainer as ArtworkFilter } from "./CollectAr
 
 import {
   Box,
+  Checkbox,
   Flex,
+  Radio,
   Sans,
   Separator,
   Spacer,
-  Radio,
-  Checkbox,
 } from "@artsy/palette"
 
 interface Props {

@@ -1,5 +1,4 @@
-import { color, Sans } from "@artsy/palette"
-import { BorderBox, color } from "@artsy/palette"
+import { BorderBox, color, Sans } from "@artsy/palette"
 import { fontFamily } from "@artsy/palette/dist/platform/fonts"
 import {
   border as inputBorder,

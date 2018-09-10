@@ -2,10 +2,9 @@ import { mount } from "enzyme"
 import React from "react"
 import { commitMutation, RelayProp } from "react-relay"
 
-import { Button } from "@artsy/palette"
-import { Radio } from "@artsy/palette"
-import Input from "Components/Input"
+import { Button, Radio } from "@artsy/palette"
 import { UntouchedOrder } from "Apps/__test__/Fixtures/Order"
+import Input from "Components/Input"
 import { Provider } from "unstated"
 import { ShippingProps, ShippingRoute } from "../Shipping"
 

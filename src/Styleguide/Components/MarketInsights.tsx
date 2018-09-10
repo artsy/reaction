@@ -1,5 +1,4 @@
-import { Flex, Sans } from "@artsy/palette"
-import { BorderBox, Box } from "@artsy/palette"
+import { BorderBox, Box, Flex, Sans } from "@artsy/palette"
 import { MarketInsightsArtistPage_artist } from "__generated__/MarketInsightsArtistPage_artist.graphql"
 import {
   hasSections,

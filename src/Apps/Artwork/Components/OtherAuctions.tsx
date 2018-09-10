@@ -1,5 +1,4 @@
-import { Flex, Serif } from "@artsy/palette"
-import { Button } from "@artsy/palette"
+import { Button, Flex, Serif } from "@artsy/palette"
 import { take } from "lodash"
 import React, { ReactNode } from "react"
 import { Col, Grid, Row } from "Styleguide/Elements/Grid"

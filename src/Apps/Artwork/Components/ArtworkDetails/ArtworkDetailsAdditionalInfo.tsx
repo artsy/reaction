@@ -1,5 +1,4 @@
-import { Sans } from "@artsy/palette"
-import { Box, StackableBorderBox } from "@artsy/palette"
+import { Box, Sans, StackableBorderBox } from "@artsy/palette"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 

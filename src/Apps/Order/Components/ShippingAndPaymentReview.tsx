@@ -1,5 +1,4 @@
-import { Sans } from "@artsy/palette"
-import { Flex, FlexProps } from "@artsy/palette"
+import { Flex, FlexProps, Sans } from "@artsy/palette"
 import { ShippingAndPaymentReview_order } from "__generated__/ShippingAndPaymentReview_order.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"

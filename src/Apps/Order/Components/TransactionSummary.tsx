@@ -1,10 +1,16 @@
-import { Serif, Spacer } from "@artsy/palette"
-import { Box, StackableBorderBox } from "@artsy/palette"
-import { Flex, FlexProps } from "@artsy/palette"
-import { Image } from "@artsy/palette"
 import { TransactionSummary_order } from "__generated__/TransactionSummary_order.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+
+import {
+  Box,
+  Flex,
+  FlexProps,
+  Image,
+  Serif,
+  Spacer,
+  StackableBorderBox,
+} from "@artsy/palette"
 
 export interface TransactionSummaryProps extends FlexProps {
   order: TransactionSummary_order

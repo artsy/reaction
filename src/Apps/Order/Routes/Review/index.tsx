@@ -1,5 +1,4 @@
-import { Flex, Join, Spacer } from "@artsy/palette"
-import { Button } from "@artsy/palette"
+import { Button, Flex, Join, Spacer } from "@artsy/palette"
 import { Review_order } from "__generated__/Review_order.graphql"
 import { ReviewSubmitOrderMutation } from "__generated__/ReviewSubmitOrderMutation.graphql"
 import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"

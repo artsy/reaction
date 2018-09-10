@@ -1,5 +1,4 @@
-import { Sans } from "@artsy/palette"
-import { Box, StackableBorderBox } from "@artsy/palette"
+import { Box, Sans, StackableBorderBox } from "@artsy/palette"
 import { Checkmark } from "Assets/Checkmark"
 import colors from "Assets/Colors"
 import React from "react"

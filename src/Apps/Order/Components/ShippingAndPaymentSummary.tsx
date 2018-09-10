@@ -1,5 +1,4 @@
-import { Serif } from "@artsy/palette"
-import { Flex, FlexProps } from "@artsy/palette"
+import { Flex, FlexProps, Serif } from "@artsy/palette"
 import { ShippingAndPaymentSummary_order } from "__generated__/ShippingAndPaymentSummary_order.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"

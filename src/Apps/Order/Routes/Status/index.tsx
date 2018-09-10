@@ -1,5 +1,4 @@
-import { Flex, Join, Sans, Serif, Spacer } from "@artsy/palette"
-import { Message } from "@artsy/palette"
+import { Flex, Join, Message, Sans, Serif, Spacer } from "@artsy/palette"
 import { Status_order } from "__generated__/Status_order.graphql"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import React, { Component } from "react"

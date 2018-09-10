@@ -1,10 +1,18 @@
-import { Box, Flex, Sans, Separator, Serif, Spacer } from "@artsy/palette"
-import { Button } from "@artsy/palette"
-import { Image } from "@artsy/palette"
 import { Modal } from "Components/Modal/Modal"
 import React, { Component, SFC } from "react"
 import { Subscribe } from "unstated"
 import { AuctionResultsState } from "./state"
+
+import {
+  Box,
+  Button,
+  Flex,
+  Image,
+  Sans,
+  Separator,
+  Serif,
+  Spacer,
+} from "@artsy/palette"
 
 interface Props {
   hideDetailsModal?: () => void

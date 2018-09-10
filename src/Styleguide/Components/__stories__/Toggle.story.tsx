@@ -1,7 +1,4 @@
-import { Sans, Serif } from "@artsy/palette"
-import { Flex } from "@artsy/palette"
-import { Checkbox } from "@artsy/palette"
-import { Radio } from "@artsy/palette"
+import { Checkbox, Flex, Radio, Sans, Serif } from "@artsy/palette"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import styled from "styled-components"

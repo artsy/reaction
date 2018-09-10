@@ -1,5 +1,4 @@
-import { Box, Flex, Sans, Serif } from "@artsy/palette"
-import { Image } from "@artsy/palette"
+import { Box, Flex, Image, Sans, Serif } from "@artsy/palette"
 import { WorksForYouContents_viewer } from "__generated__/WorksForYouContents_viewer.graphql"
 import { ContextProps } from "Artsy"
 import ArtworkGrid from "Components/ArtworkGrid"

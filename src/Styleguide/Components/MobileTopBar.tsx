@@ -1,5 +1,4 @@
-import { Flex } from "@artsy/palette"
-import { StackableBorderBox } from "@artsy/palette"
+import { Flex, StackableBorderBox } from "@artsy/palette"
 import React, { ReactNode, SFC } from "react"
 
 interface MobileTopBarProps {

@@ -1,11 +1,11 @@
-import { color } from "@artsy/palette"
 import { growAndFadeIn } from "Assets/Animations"
 import { garamond, unica } from "Assets/Fonts"
 import React from "react"
 import styled from "styled-components"
 export { Footer } from "./Footer"
 export { TermsOfServiceCheckbox } from "./TermsOfServiceCheckbox"
-import { Button, ButtonProps } from "@artsy/palette"
+import { Button, ButtonProps, color } from "@artsy/palette"
+
 interface FormProps {
   height?: number
 }

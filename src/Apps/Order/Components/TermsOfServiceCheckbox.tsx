@@ -1,5 +1,4 @@
-import { Serif } from "@artsy/palette"
-import { Checkbox } from "@artsy/palette"
+import { Checkbox, Serif } from "@artsy/palette"
 import React from "react"
 
 export const TermsOfServiceCheckbox = props => {

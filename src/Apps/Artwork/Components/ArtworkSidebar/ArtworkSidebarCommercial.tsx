@@ -1,5 +1,4 @@
-import { Box, Separator, Serif } from "@artsy/palette"
-import { Button } from "@artsy/palette"
+import { Box, Button, Separator, Serif } from "@artsy/palette"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { ArtworkSidebarSizeInfoFragmentContainer as SizeInfo } from "./ArtworkSidebarSizeInfo"

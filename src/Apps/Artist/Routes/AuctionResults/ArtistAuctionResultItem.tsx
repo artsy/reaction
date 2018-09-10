@@ -1,6 +1,3 @@
-import { Button } from "@artsy/palette"
-import { Box, Flex, Separator, Serif, Spacer } from "@artsy/palette"
-import { Image } from "@artsy/palette"
 import { ArtistAuctionResultItem_auctionResult } from "__generated__/ArtistAuctionResultItem_auctionResult.graphql"
 import { ContextConsumer, ContextProps } from "Artsy"
 import React, { Component } from "react"
@@ -10,6 +7,16 @@ import { Col, Row } from "Styleguide/Elements/Grid"
 import { Subscribe } from "unstated"
 import { Responsive } from "Utils/Responsive"
 import { AuctionResultsState } from "./state"
+
+import {
+  Box,
+  Button,
+  Flex,
+  Image,
+  Separator,
+  Serif,
+  Spacer,
+} from "@artsy/palette"
 
 export interface Props extends ContextProps {
   auctionResult: ArtistAuctionResultItem_auctionResult
