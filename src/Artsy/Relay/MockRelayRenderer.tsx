@@ -25,7 +25,7 @@ export const MockRelayRenderer = ({
 
   return (
     <QueryRenderer
-      // tslint:disable-next-line
+      // tslint:disable-next-line relay-operation-generics
       query={query}
       environment={environment}
       variables={{}}
