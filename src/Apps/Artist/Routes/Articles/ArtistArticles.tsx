@@ -158,7 +158,7 @@ export const ArtistArticlesRefetchContainer = createRefetchContainer(
               author {
                 name
               }
-              published_at(format: "MMM d, YYYY")
+              published_at(format: "MMM Do, YYYY")
               thumbnail_image {
                 resized(width: 300) {
                   url

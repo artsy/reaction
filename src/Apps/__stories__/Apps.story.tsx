@@ -18,7 +18,7 @@ storiesOf("Apps", module)
     return (
       <StorybooksRouter
         routes={artistRoutes}
-        initialRoute="/artist/walter-gropius"
+        initialRoute="/artist/andy-warhol"
         context={{
           mediator: {
             trigger: x => x,
