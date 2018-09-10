@@ -63,6 +63,7 @@ export const OrderWithShippingDetails = {
     postalCode: "10013",
     region: "NY",
     country: "US",
+    phoneNumber: "120938120983",
   },
   creditCard: {
     brand: "Visa",

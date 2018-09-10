@@ -1,26 +1,36 @@
+import { ShippingAddress_ship } from "__generated__/ShippingAddress_ship.graphql"
 import { ShippingAndPaymentReview_order } from "__generated__/ShippingAndPaymentReview_order.graphql"
 import { ShippingAndPaymentSummary_order } from "__generated__/ShippingAndPaymentSummary_order.graphql"
+import { MockRelayRenderer } from "Artsy/Relay/MockRelayRenderer"
 import React from "react"
+import { graphql } from "react-relay"
 import { storiesOf } from "storybook/storiesOf"
 import { Flex } from "Styleguide/Elements/Flex"
 import { Section } from "Styleguide/Utils/Section"
 import { CreditCardDetails } from "../CreditCardDetails"
-import { ShippingAndPaymentReview } from "../ShippingAndPaymentReview"
-import { ShippingAndPaymentSummary } from "../ShippingAndPaymentSummary"
+import { ShippingAndPaymentReviewFragmentContainer as ShippingAndPaymentReview } from "../ShippingAndPaymentReview"
+import { ShippingAndPaymentSummaryFragmentContainer as ShippingAndPaymentSummary } from "../ShippingAndPaymentSummary"
+
+// define this separately to be able to type-check it
+const ship: ShippingAddress_ship = {
+  " $refType": null,
+  name: "Joelle Van Dyne",
+  addressLine1: "401 Broadway",
+  addressLine2: "Suite 25",
+  city: "New York",
+  postalCode: "10013",
+  phoneNumber: "+33 23409220",
+  region: "NY",
+  country: "US",
+}
 
 const order: ShippingAndPaymentReview_order &
   ShippingAndPaymentSummary_order = {
   " $refType": null,
   requestedFulfillment: {
     __typename: "Ship",
-    name: "Joelle Van Dyne",
-    addressLine1: "401 Broadway",
-    addressLine2: "Suite 25",
-    city: "New York",
-    postalCode: "10013",
-    region: "NY",
-    country: "US",
-  },
+    ...ship,
+  } as any,
   lineItems: {
     edges: [{ node: { artwork: { shippingOrigin: "Jersey City, NJ" } } }],
   },
@@ -30,8 +40,16 @@ const order: ShippingAndPaymentReview_order &
     expiration_month: 3,
     expiration_year: 21,
   },
-  buyerPhoneNumber: "555-8390344",
 }
+
+const orderQuery = graphql`
+  query ShippingAndPaymentDetailsQuery {
+    order(id: "foo") {
+      ...ShippingAndPaymentSummary_order
+      ...ShippingAndPaymentReview_order
+    }
+  }
+`
 
 storiesOf("Apps/Order Page/Components", module).add(
   "ShippingAndPaymentSummary",
@@ -41,40 +59,64 @@ storiesOf("Apps/Order Page/Components", module).add(
         <Section title="Shipping and Payment Summary">
           <h4>Delivery</h4>
           <Flex flexDirection="column" width={300}>
-            <ShippingAndPaymentSummary order={order} />
+            <MockRelayRenderer
+              Component={ShippingAndPaymentSummary}
+              mockResolvers={{ Order: () => order }}
+              query={orderQuery}
+            />
           </Flex>
           <h4>Pickup</h4>
           <Flex flexDirection="column" width={300}>
-            <ShippingAndPaymentSummary
-              order={{
-                ...order,
-                requestedFulfillment: {
-                  __typename: "%other",
-                },
+            <MockRelayRenderer
+              Component={ShippingAndPaymentSummary}
+              mockResolvers={{
+                Order: () => ({
+                  ...order,
+                  requestedFulfillment: {
+                    __typename: "Pickup",
+                  },
+                }),
               }}
+              query={orderQuery}
             />
           </Flex>
         </Section>
         <Section title="Shipping and Payment Review">
           <h4>Delivery</h4>
           <Flex flexDirection="column" width={300}>
-            <ShippingAndPaymentReview
-              onChangePayment={() => alert("clicked")}
-              onChangeShipping={() => alert("clicked")}
-              order={order}
+            <MockRelayRenderer
+              Component={(props: any) => (
+                <ShippingAndPaymentReview
+                  onChangePayment={() => alert("clicked")}
+                  onChangeShipping={() => alert("clicked")}
+                  {...props}
+                />
+              )}
+              mockResolvers={{
+                Order: () => order,
+              }}
+              query={orderQuery}
             />
           </Flex>
           <h4>Pickup</h4>
           <Flex flexDirection="column" width={300}>
-            <ShippingAndPaymentReview
-              onChangePayment={() => alert("clicked")}
-              onChangeShipping={() => alert("clicked")}
-              order={{
-                ...order,
-                requestedFulfillment: {
-                  __typename: "%other",
-                },
+            <MockRelayRenderer
+              Component={(props: any) => (
+                <ShippingAndPaymentReview
+                  onChangePayment={() => alert("clicked")}
+                  onChangeShipping={() => alert("clicked")}
+                  {...props}
+                />
+              )}
+              mockResolvers={{
+                Order: () => ({
+                  ...order,
+                  requestedFulfillment: {
+                    __typename: "Pickup",
+                  },
+                }),
               }}
+              query={orderQuery}
             />
           </Flex>
         </Section>
