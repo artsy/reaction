@@ -1,10 +1,9 @@
-import { color, Sans, space } from "@artsy/palette"
+import { color, Flex, Sans, space } from "@artsy/palette"
 import { CheckIcon } from "Assets/Icons/CheckIcon"
 import { ChevronIcon } from "Assets/Icons/ChevronIcon"
 import React from "react"
 import styled from "styled-components"
 import { Tab, Tabs, TabsProps } from "Styleguide/Components"
-import { Flex } from "Styleguide/Elements"
 import { styles } from "./Tabs"
 
 interface StepperProps extends TabsProps {

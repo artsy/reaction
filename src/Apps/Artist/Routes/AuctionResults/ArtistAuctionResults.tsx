@@ -2,7 +2,7 @@ import { ArtistAuctionResults_artist } from "__generated__/ArtistAuctionResults_
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { PaginationFragmentContainer as Pagination } from "Styleguide/Components"
-import { Box, Col, Row, Separator } from "Styleguide/Elements"
+import { Col, Row } from "Styleguide/Elements"
 import { Subscribe } from "unstated"
 import { ArtistAuctionDetailsModal } from "./ArtistAuctionDetailsModal"
 import { AuctionResultItemFragmentContainer as AuctionResultsItem } from "./ArtistAuctionResultItem"
@@ -10,7 +10,8 @@ import { AuctionResultsState } from "./state"
 import { TableColumns } from "./TableColumns"
 import { TableSidebar } from "./TableSidebar"
 
-import { Spacer } from "@artsy/palette"
+import { Box, Separator, Spacer } from "@artsy/palette"
+
 import {
   LoadingArea,
   LoadingAreaState,

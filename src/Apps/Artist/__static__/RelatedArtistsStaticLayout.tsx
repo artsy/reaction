@@ -1,6 +1,7 @@
+import { Box, Flex, Separator } from "@artsy/palette"
 import { paginationProps } from "Apps/__test__/Fixtures/Pagination"
 import React from "react"
-import { Box, Col, Flex, Row, Separator } from "Styleguide/Elements"
+import { Col, Row } from "Styleguide/Elements"
 import { Responsive } from "Utils/Responsive"
 
 import {

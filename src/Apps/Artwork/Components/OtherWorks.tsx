@@ -1,7 +1,6 @@
-import { Serif } from "@artsy/palette"
+import { Button, Flex, Serif } from "@artsy/palette"
 import React from "react"
 import { FullArtworkGrid } from "Styleguide/Components"
-import { Button, Flex } from "Styleguide/Elements"
 
 export const OtherWorks = ({ headline }) => (
   <Flex flexDirection="column" alignItems="center">

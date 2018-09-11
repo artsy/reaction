@@ -1,9 +1,9 @@
+import { Box, Image } from "@artsy/palette"
 import { artworkBricks, images } from "Apps/__test__/Fixtures/Slider"
 import { FillwidthItem } from "Components/Artwork/FillwidthItem"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { LargeSlider, Slider, SmallSlider } from "Styleguide/Components/Slider"
-import { Box, Image } from "Styleguide/Elements"
 import { Section } from "Styleguide/Utils/Section"
 
 storiesOf("Styleguide/Components", module).add("Slider", () => {

@@ -1,4 +1,3 @@
-import { Sans } from "@artsy/palette"
 import { Shipping_order } from "__generated__/Shipping_order.graphql"
 import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
 import { Helper } from "Apps/Order/Components/Helper"
@@ -29,12 +28,13 @@ import {
 import {
   BorderedRadio,
   Button,
-  Col,
   Flex,
   RadioGroup,
-  Row,
+  Sans,
   Spacer,
-} from "Styleguide/Elements"
+} from "@artsy/palette"
+
+import { Col, Row } from "Styleguide/Elements"
 
 export interface ShippingProps {
   order: Shipping_order

@@ -1,8 +1,7 @@
-import { Sans } from "@artsy/palette"
+import { Button, Sans } from "@artsy/palette"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Collapse } from "Styleguide/Components"
-import { Button } from "Styleguide/Elements"
 import { Section } from "Styleguide/Utils/Section"
 
 class Collapseable extends React.Component {

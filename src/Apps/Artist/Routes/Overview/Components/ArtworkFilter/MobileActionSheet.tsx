@@ -1,8 +1,7 @@
-import { Sans } from "@artsy/palette"
+import { Box, Button, Sans, StackableBorderBox } from "@artsy/palette"
 import React, { SFC } from "react"
 import styled from "styled-components"
 import { MobileTopBar } from "Styleguide/Components"
-import { Box, Button, StackableBorderBox } from "Styleguide/Elements"
 import { Subscribe } from "unstated"
 import { FilterState } from "../../state"
 

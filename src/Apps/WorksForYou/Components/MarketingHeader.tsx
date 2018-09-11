@@ -1,9 +1,9 @@
 import React, { SFC } from "react"
-import { Button } from "Styleguide/Elements"
 
 import {
   BorderBox,
   Box,
+  Button,
   Flex,
   Sans,
   Separator,

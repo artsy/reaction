@@ -1,8 +1,9 @@
+import { Box, Flex } from "@artsy/palette"
 import { RelatedArtistsList_artist } from "__generated__/RelatedArtistsList_artist.graphql"
 import { ContextConsumer } from "Artsy/Router"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
-import { Box, Col, Flex, Row } from "Styleguide/Elements"
+import { Col, Row } from "Styleguide/Elements"
 import { Responsive } from "Utils/Responsive"
 
 import {
