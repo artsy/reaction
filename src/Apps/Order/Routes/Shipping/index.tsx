@@ -4,6 +4,7 @@ import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
 import { Helper } from "Apps/Order/Components/Helper"
 import { TransactionSummaryFragmentContainer as TransactionSummary } from "Apps/Order/Components/TransactionSummary"
 import { Router } from "found"
+import { pick } from "lodash"
 import React, { Component } from "react"
 import { Collapse } from "Styleguide/Components"
 import { Responsive } from "Utils/Responsive"
@@ -59,7 +60,10 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     address: {
       ...emptyAddress,
       country: "US",
-      ...(this.props.order.requestedFulfillment as Partial<Address>),
+      // We need to pull out _only_ the values specified by the Address type,
+      // since our state will be used for Relay variables later on. The
+      // easiest way to do this is with the emptyAddress.
+      ...pick(this.props.order.requestedFulfillment, Object.keys(emptyAddress)),
     },
     isComittingMutation: false,
   }

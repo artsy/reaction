@@ -40,17 +40,10 @@ export class AddressForm extends React.Component<
   AddressFormProps,
   AddressFormState
 > {
-  // We need to pull out _only_ the values specified by the Address type,
-  // since our state will be used for Relay variables later on. The
-  // easiest way to do this is with the emptyAddress.
-  sanitizedPropsAddress: Partial<Address> = Object.keys(emptyAddress).reduce(
-    (memo, k) => ({ ...memo, [k]: this.props.defaultValue[k] }),
-    {}
-  )
   state = {
     address: {
       ...emptyAddress,
-      ...this.sanitizedPropsAddress,
+      ...this.props.defaultValue,
     },
   }
 
