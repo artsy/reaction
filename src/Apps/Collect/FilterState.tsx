@@ -1,9 +1,10 @@
+import { track } from "Artsy/Analytics"
 import { cloneDeep, isNil, omit, omitBy, uniq, without } from "lodash"
 import { Container } from "unstated"
 
-interface State {
+export interface State {
   // Search filters
-  medium: string
+  medium?: string
   major_periods?: string[]
   partner_id?: string
   for_sale?: boolean
@@ -15,8 +16,8 @@ interface State {
   price_range?: string
 
   // UI
-  selectedFilters: string[]
-  showActionSheet: boolean
+  selectedFilters?: string[]
+  showActionSheet?: boolean
 }
 
 const initialState = {
@@ -129,6 +130,14 @@ export class FilterState extends Container<State> {
     })
   }
 
+  @track((props, state, args) => ({
+    current: args[0],
+    changed: args[1],
+  }))
+  trackFilterParams(initialValues, changedValues) {
+    // no op
+  }
+
   setFilter(filter, value, mediator) {
     let { selectedFilters } = this.state
 
@@ -170,7 +179,8 @@ export class FilterState extends Container<State> {
       ])
       filterState = omitBy(filterState, isNil)
 
-      mediator.trigger("collect:filter:changed", filterState)
+      // mediator.trigger("artist:filter:changed", filterState)
+      this.trackFilterParams(selectedFilters, newPartialState)
     })
   }
 }
