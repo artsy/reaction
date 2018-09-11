@@ -13,7 +13,7 @@ import {
   MAX_CHARS,
   SelectedExhibitionFragmentContainer as SelectedExhibitions,
 } from "Styleguide/Components"
-import { Col, Row } from "Styleguide/Elements"
+import { Col, Row } from "Styleguide/Elements/Grid"
 import { Responsive } from "Utils/Responsive"
 import { CurrentEventFragmentContainer as CurrentEvent } from "./Components/CurrentEvent"
 

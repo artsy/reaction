@@ -2,7 +2,7 @@ import { ArtistAuctionResults_artist } from "__generated__/ArtistAuctionResults_
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { PaginationFragmentContainer as Pagination } from "Styleguide/Components"
-import { Col, Row } from "Styleguide/Elements"
+import { Col, Row } from "Styleguide/Elements/Grid"
 import { Subscribe } from "unstated"
 import { ArtistAuctionDetailsModal } from "./ArtistAuctionDetailsModal"
 import { AuctionResultItemFragmentContainer as AuctionResultsItem } from "./ArtistAuctionResultItem"

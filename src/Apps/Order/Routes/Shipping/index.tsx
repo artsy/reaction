@@ -34,7 +34,7 @@ import {
   Spacer,
 } from "@artsy/palette"
 
-import { Col, Row } from "Styleguide/Elements"
+import { Col, Row } from "Styleguide/Elements/Grid"
 
 export interface ShippingProps {
   order: Shipping_order

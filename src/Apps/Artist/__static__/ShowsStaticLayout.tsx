@@ -5,7 +5,7 @@ import { ArtistShowBlockItem } from "Apps/Artist/Routes/Shows/ArtistShowBlockIte
 import { ArtistShowListItem } from "Apps/Artist/Routes/Shows/ArtistShowListItem"
 import React from "react"
 import { PaginationFragmentContainer } from "Styleguide/Components"
-import { Col, Row } from "Styleguide/Elements"
+import { Col, Row } from "Styleguide/Elements/Grid"
 import { Responsive } from "Utils/Responsive"
 
 const ShowBlocks = Flex

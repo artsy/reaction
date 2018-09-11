@@ -1,6 +1,6 @@
+import { LargeSelect } from "@artsy/palette"
 import React from "react"
 import { PositionProps, SpaceProps } from "styled-system"
-import { LargeSelect } from "Styleguide/Elements/Select"
 
 export interface CountrySelectProps extends PositionProps, SpaceProps {
   selected?: string
