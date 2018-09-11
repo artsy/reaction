@@ -1,5 +1,5 @@
-import { Sans, Checkbox } from "@artsy/palette"
-import { shallow } from "enzyme"
+import { Sans, Checkbox, CheckboxProps } from "@artsy/palette"
+import { mount } from "enzyme"
 import React from "react"
 
 import { OrderWithShippingDetails } from "Apps/__test__/Fixtures/Order"
@@ -8,11 +8,17 @@ import {
   settingOrderPaymentSuccess,
 } from "./Fixtures/MutationResults"
 import { AddressForm } from "../../Components/AddressForm"
+import { CreditCardInput } from "../../Components/CreditCardInput"
 import { ContinueButton, PaymentProps, PaymentRoute } from "../Payment"
 
 jest.mock("react-relay", () => ({
   commitMutation: jest.fn(),
   createFragmentContainer: component => component,
+}))
+
+jest.mock("react-stripe-elements", () => ({
+  CardElement: props => <div {...props} />,
+  injectStripe: args => args,
 }))
 
 import { commitMutation, RelayProp } from "react-relay"
@@ -21,26 +27,6 @@ const mutationMock = commitMutation as jest.Mock<any>
 
 describe("Payment", () => {
   let stripeMock
-
-  const mountPaymentRoute = props => {
-    const paymentRouteComponent = shallow(<PaymentRoute {...props} />)
-    const responsiveComponent = shallow(
-      paymentRouteComponent
-        .childAt(2)
-        .props()
-        .children({ xs: false })
-    ) as any
-    const twoColumnLayout = shallow(
-      responsiveComponent.props().children({ xs: false })
-    )
-
-    return {
-      paymentRouteComponent,
-      responsiveComponent,
-      twoColumnLayout,
-    }
-  }
-
   let testProps: PaymentProps
 
   beforeEach(() => {
@@ -62,8 +48,8 @@ describe("Payment", () => {
     const thenMock = jest.fn()
     stripeMock.createToken.mockReturnValue({ then: thenMock })
 
-    mountPaymentRoute(testProps)
-      .twoColumnLayout.find(ContinueButton)
+    mount(<PaymentRoute {...testProps} />)
+      .find(ContinueButton)
       .simulate("click")
 
     expect(stripeMock.createToken).toHaveBeenCalledWith({
@@ -82,20 +68,23 @@ describe("Payment", () => {
     const thenMock = jest.fn()
     stripeMock.createToken.mockReturnValue({ then: thenMock })
 
-    const { twoColumnLayout } = mountPaymentRoute(testProps)
+    const paymentRoute = mount(<PaymentRoute {...testProps} />)
+    ;(paymentRoute.find(Checkbox).props() as CheckboxProps).onSelect(false)
 
-    twoColumnLayout.find(Checkbox).simulate("select", false)
-    twoColumnLayout.find(AddressForm).simulate("change", {
-      name: "Artsy UK Ltd",
-      addressLine1: "14 Gower's Walk",
-      addressLine2: "Suite 2.5, The Loom",
-      city: "Whitechapel",
-      region: "London",
-      postalCode: "E1 8PY",
-      country: "UK",
-    })
+    paymentRoute
+      .find(AddressForm)
+      .props()
+      .onChange({
+        name: "Artsy UK Ltd",
+        addressLine1: "14 Gower's Walk",
+        addressLine2: "Suite 2.5, The Loom",
+        city: "Whitechapel",
+        region: "London",
+        postalCode: "E1 8PY",
+        country: "UK",
+      })
 
-    twoColumnLayout.find(ContinueButton).simulate("click")
+    paymentRoute.find(ContinueButton).simulate("click")
 
     expect(stripeMock.createToken).toHaveBeenCalledWith({
       name: "Artsy UK Ltd",
@@ -124,8 +113,8 @@ describe("Payment", () => {
 
     stripeMock.createToken.mockReturnValue({ then: func => func(stripeToken) })
 
-    mountPaymentRoute(testProps)
-      .twoColumnLayout.find(ContinueButton)
+    mount(<PaymentRoute {...testProps} />)
+      .find(ContinueButton)
       .simulate("click")
 
     expect(mutationMock.mock.calls[0][1]).toMatchObject({
@@ -151,26 +140,16 @@ describe("Payment", () => {
 
     stripeMock.createToken.mockReturnValue({ then: func => func(stripeError) })
 
-    const { paymentRouteComponent, twoColumnLayout } = mountPaymentRoute(
-      testProps
-    )
+    const paymentRoute = mount(<PaymentRoute {...testProps} />)
 
-    twoColumnLayout.find(ContinueButton).simulate("click")
+    paymentRoute.find(ContinueButton).simulate("click")
 
-    paymentRouteComponent.update()
-    const responsiveComponent = shallow(
-      paymentRouteComponent
-        .childAt(2)
-        .props()
-        .children({ xs: false })
-    ) as any
-    const updatedTwoColumnLayout = shallow(
-      responsiveComponent.props().children({ xs: false })
-    )
-
-    expect(updatedTwoColumnLayout.find(Sans).html()).toContain(
-      "Your card number is invalid."
-    )
+    expect(
+      paymentRoute
+        .find(CreditCardInput)
+        .find(Sans)
+        .html()
+    ).toContain("Your card number is invalid.")
   })
 
   it("commits setOrderPayment mutation with Gravity credit card id", () => {
@@ -182,8 +161,8 @@ describe("Payment", () => {
       onCompleted(creatingCreditCardSuccess)
     )
 
-    mountPaymentRoute(testProps)
-      .twoColumnLayout.find(ContinueButton)
+    mount(<PaymentRoute {...testProps} />)
+      .find(ContinueButton)
       .simulate("click")
 
     expect(mutationMock.mock.calls[1][1]).toMatchObject({
@@ -209,8 +188,8 @@ describe("Payment", () => {
         onCompleted(settingOrderPaymentSuccess)
       )
 
-    mountPaymentRoute(testProps)
-      .twoColumnLayout.find(ContinueButton)
+    mount(<PaymentRoute {...testProps} />)
+      .find(ContinueButton)
       .simulate("click")
 
     expect(testProps.router.push).toHaveBeenCalledWith("/order2/1234/review")

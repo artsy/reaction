@@ -90,7 +90,12 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
               Content={
                 <>
                   <Join separator={<Spacer mb={3} />}>
-                    <CreditCardInput error={error} />
+                    <CreditCardInput
+                      error={error}
+                      onChange={response =>
+                        this.setState({ error: response.error })
+                      }
+                    />
 
                     <Checkbox
                       selected={this.state.hideBillingAddress}
