@@ -3,8 +3,10 @@ import { ArtworkDetailsQuery } from "__generated__/ArtworkDetailsQuery.graphql"
 import { ContextConsumer } from "Artsy/Router"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
+import { Tab, Tabs } from "Styleguide/Components"
 import { ArtworkDetailsAboutTheWorkFragmentContainer as AboutTheWork } from "./ArtworkDetailsAboutTheWork"
 import { ArtworkDetailsAdditionalInfoFragmentContainer as AdditionalInfo } from "./ArtworkDetailsAdditionalInfo"
+import { ArtworkDetailsArticlesFragmentContainer as Articles } from "./ArtworkDetailsArticles"
 import { ArtworkDetailsChecklistFragmentContainer as Checklist } from "./ArtworkDetailsChecklist"
 
 import { ArtworkDetails_artwork } from "__generated__/ArtworkDetails_artwork.graphql"
@@ -19,10 +21,23 @@ export class ArtworkDetails extends Component<ArtworkDetailsProps> {
   render() {
     const { artwork } = this.props
     return (
-      <ArtworkDetailsContainer pb={3}>
-        <AboutTheWork artwork={artwork} />
-        <Checklist artwork={artwork} />
-        <AdditionalInfo artwork={artwork} />
+      <ArtworkDetailsContainer pb={4}>
+        <Tabs>
+          <Tab name="About the work">
+            <AboutTheWork artwork={artwork} />
+            <Checklist artwork={artwork} />
+            <AdditionalInfo artwork={artwork} />
+          </Tab>
+          <Tab name="Articles">
+            <Articles artwork={artwork} />
+          </Tab>
+          {artwork.exhibition_history && (
+            <Tab name="Exhibition history">{artwork.exhibition_history}</Tab>
+          )}
+          {artwork.literature && (
+            <Tab name="Bibliography">{artwork.literature}</Tab>
+          )}
+        </Tabs>
       </ArtworkDetailsContainer>
     )
   }
@@ -35,6 +50,9 @@ export const ArtworkDetailsFragmentContainer = createFragmentContainer(
       ...ArtworkDetailsAboutTheWork_artwork
       ...ArtworkDetailsChecklist_artwork
       ...ArtworkDetailsAdditionalInfo_artwork
+      ...ArtworkDetailsArticles_artwork
+      literature
+      exhibition_history
     }
   `
 )

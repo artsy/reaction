@@ -31,6 +31,9 @@ fragment ArtworkDetails_artwork on Artwork {
   ...ArtworkDetailsAboutTheWork_artwork
   ...ArtworkDetailsChecklist_artwork
   ...ArtworkDetailsAdditionalInfo_artwork
+  ...ArtworkDetailsArticles_artwork
+  literature
+  exhibition_history
   __id
 }
 
@@ -72,6 +75,26 @@ fragment ArtworkDetailsAdditionalInfo_artwork on Artwork {
   image_rights
   __id
 }
+
+fragment ArtworkDetailsArticles_artwork on Artwork {
+  articles(size: 2) {
+    title
+    href
+    thumbnail: thumbnail_image {
+      image: cropped(width: 150, height: 100) {
+        width
+        height
+        url
+      }
+    }
+    author {
+      name
+      __id
+    }
+    __id
+  }
+  __id
+}
 */
 
 const node: ConcreteRequest = (function(){
@@ -102,6 +125,16 @@ v3 = [
   {
     "kind": "ScalarField",
     "alias": null,
+    "name": "name",
+    "args": null,
+    "storageKey": null
+  },
+  v2
+],
+v4 = [
+  {
+    "kind": "ScalarField",
+    "alias": null,
     "name": "label",
     "args": null,
     "storageKey": null
@@ -119,7 +152,7 @@ return {
   "operationKind": "query",
   "name": "ArtworkDetailsQuery",
   "id": null,
-  "text": "query ArtworkDetailsQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...ArtworkDetails_artwork\n    __id\n  }\n}\n\nfragment ArtworkDetails_artwork on Artwork {\n  ...ArtworkDetailsAboutTheWork_artwork\n  ...ArtworkDetailsChecklist_artwork\n  ...ArtworkDetailsAdditionalInfo_artwork\n  __id\n}\n\nfragment ArtworkDetailsAboutTheWork_artwork on Artwork {\n  additional_information\n  description\n  partner {\n    name\n    __id\n  }\n  __id\n}\n\nfragment ArtworkDetailsChecklist_artwork on Artwork {\n  framed {\n    label\n    details\n  }\n  signatureInfo {\n    label\n    details\n  }\n  conditionDescription {\n    label\n    details\n  }\n  certificateOfAuthenticity {\n    label\n    details\n  }\n  __id\n}\n\nfragment ArtworkDetailsAdditionalInfo_artwork on Artwork {\n  series\n  publisher\n  manufacturer\n  provenance\n  image_rights\n  __id\n}\n",
+  "text": "query ArtworkDetailsQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...ArtworkDetails_artwork\n    __id\n  }\n}\n\nfragment ArtworkDetails_artwork on Artwork {\n  ...ArtworkDetailsAboutTheWork_artwork\n  ...ArtworkDetailsChecklist_artwork\n  ...ArtworkDetailsAdditionalInfo_artwork\n  ...ArtworkDetailsArticles_artwork\n  literature\n  exhibition_history\n  __id\n}\n\nfragment ArtworkDetailsAboutTheWork_artwork on Artwork {\n  additional_information\n  description\n  partner {\n    name\n    __id\n  }\n  __id\n}\n\nfragment ArtworkDetailsChecklist_artwork on Artwork {\n  framed {\n    label\n    details\n  }\n  signatureInfo {\n    label\n    details\n  }\n  conditionDescription {\n    label\n    details\n  }\n  certificateOfAuthenticity {\n    label\n    details\n  }\n  __id\n}\n\nfragment ArtworkDetailsAdditionalInfo_artwork on Artwork {\n  series\n  publisher\n  manufacturer\n  provenance\n  image_rights\n  __id\n}\n\nfragment ArtworkDetailsArticles_artwork on Artwork {\n  articles(size: 2) {\n    title\n    href\n    thumbnail: thumbnail_image {\n      image: cropped(width: 150, height: 100) {\n        width\n        height\n        url\n      }\n    }\n    author {\n      name\n      __id\n    }\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -162,14 +195,11 @@ return {
         "plural": false,
         "selections": [
           {
-            "kind": "LinkedField",
+            "kind": "ScalarField",
             "alias": null,
-            "name": "conditionDescription",
-            "storageKey": null,
+            "name": "series",
             "args": null,
-            "concreteType": "ArtworkInfoRow",
-            "plural": false,
-            "selections": v3
+            "storageKey": null
           },
           {
             "kind": "ScalarField",
@@ -186,16 +216,7 @@ return {
             "args": null,
             "concreteType": "Partner",
             "plural": false,
-            "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "name",
-                "args": null,
-                "storageKey": null
-              },
-              v2
-            ]
+            "selections": v3
           },
           v2,
           {
@@ -206,7 +227,7 @@ return {
             "args": null,
             "concreteType": "ArtworkInfoRow",
             "plural": false,
-            "selections": v3
+            "selections": v4
           },
           {
             "kind": "LinkedField",
@@ -216,14 +237,17 @@ return {
             "args": null,
             "concreteType": "ArtworkInfoRow",
             "plural": false,
-            "selections": v3
+            "selections": v4
           },
           {
-            "kind": "ScalarField",
+            "kind": "LinkedField",
             "alias": null,
-            "name": "description",
+            "name": "conditionDescription",
+            "storageKey": null,
             "args": null,
-            "storageKey": null
+            "concreteType": "ArtworkInfoRow",
+            "plural": false,
+            "selections": v4
           },
           {
             "kind": "LinkedField",
@@ -233,12 +257,12 @@ return {
             "args": null,
             "concreteType": "ArtworkInfoRow",
             "plural": false,
-            "selections": v3
+            "selections": v4
           },
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "series",
+            "name": "description",
             "args": null,
             "storageKey": null
           },
@@ -267,6 +291,119 @@ return {
             "kind": "ScalarField",
             "alias": null,
             "name": "image_rights",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "articles",
+            "storageKey": "articles(size:2)",
+            "args": [
+              {
+                "kind": "Literal",
+                "name": "size",
+                "value": 2,
+                "type": "Int"
+              }
+            ],
+            "concreteType": "Article",
+            "plural": true,
+            "selections": [
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "title",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "href",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "LinkedField",
+                "alias": "thumbnail",
+                "name": "thumbnail_image",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "Image",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "LinkedField",
+                    "alias": "image",
+                    "name": "cropped",
+                    "storageKey": "cropped(height:100,width:150)",
+                    "args": [
+                      {
+                        "kind": "Literal",
+                        "name": "height",
+                        "value": 100,
+                        "type": "Int!"
+                      },
+                      {
+                        "kind": "Literal",
+                        "name": "width",
+                        "value": 150,
+                        "type": "Int!"
+                      }
+                    ],
+                    "concreteType": "CroppedImageUrl",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "width",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "height",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "url",
+                        "args": null,
+                        "storageKey": null
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "author",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "Author",
+                "plural": false,
+                "selections": v3
+              },
+              v2
+            ]
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "literature",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "exhibition_history",
             "args": null,
             "storageKey": null
           }
