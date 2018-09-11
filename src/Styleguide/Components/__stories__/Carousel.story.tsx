@@ -1,3 +1,4 @@
+import { Box, Image } from "@artsy/palette"
 import { artworkBricks, images } from "Apps/__test__/Fixtures/Carousel"
 import { FillwidthItem } from "Components/Artwork/FillwidthItem"
 import React from "react"
@@ -7,7 +8,6 @@ import {
   LargeCarousel,
   SmallCarousel,
 } from "Styleguide/Components/Carousel"
-import { Box, Image } from "Styleguide/Elements"
 import { Section } from "Styleguide/Utils/Section"
 
 storiesOf("Styleguide/Components", module).add("Carousel", () => {
