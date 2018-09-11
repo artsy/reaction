@@ -1,7 +1,6 @@
+import { Breakpoint } from "@artsy/palette/dist/Theme"
 import { Boot } from "Artsy/Router"
 import React from "react"
-
-type Breakpoint = "xl" | "lg" | "md" | "sm" | "xs"
 
 export const MockBoot: React.SFC<{ breakpoint?: Breakpoint }> = ({
   breakpoint,
