@@ -1,7 +1,6 @@
-import { Sans } from "@artsy/palette"
+import { Box, Sans, StackableBorderBox } from "@artsy/palette"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Box, StackableBorderBox } from "Styleguide/Elements/Box"
 
 import { ArtworkDetailsAdditionalInfo_artwork } from "__generated__/ArtworkDetailsAdditionalInfo_artwork.graphql"
 

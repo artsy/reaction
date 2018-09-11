@@ -1,4 +1,4 @@
-import { color, Sans } from "@artsy/palette"
+import { BorderBox, color, Sans } from "@artsy/palette"
 import { fontFamily } from "@artsy/palette/dist/platform/fonts"
 import {
   border as inputBorder,
@@ -7,7 +7,6 @@ import {
 import React from "react"
 import { CardElement } from "react-stripe-elements"
 import styled from "styled-components"
-import { BorderBox } from "Styleguide/Elements/Box"
 
 export const StyledCardElement = styled(CardElement)`
   width: 100%;

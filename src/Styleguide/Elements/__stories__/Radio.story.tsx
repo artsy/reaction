@@ -1,7 +1,7 @@
+import { Radio } from "@artsy/palette"
 import React from "react"
 import { Toggle } from "react-powerplug"
 import { storiesOf } from "storybook/storiesOf"
-import { Radio } from "Styleguide/Elements/Radio"
 import { Section } from "Styleguide/Utils/Section"
 
 storiesOf("Styleguide/Elements", module).add("Radio", () => {

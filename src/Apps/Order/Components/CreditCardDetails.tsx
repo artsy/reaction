@@ -1,7 +1,6 @@
 import React from "react"
 
-import { Serif, space } from "@artsy/palette"
-import { Flex } from "Styleguide/Elements/Flex"
+import { Flex, Serif, space } from "@artsy/palette"
 import { CreditCardIcon } from "Styleguide/Elements/icons/CreditCardIcon"
 
 export const CreditCardDetails = ({

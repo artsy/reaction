@@ -1,8 +1,6 @@
-import { Serif } from "@artsy/palette"
+import { Separator, Serif, Spacer } from "@artsy/palette"
 import React, { SFC } from "react"
 import { Col, Row } from "Styleguide/Elements/Grid"
-import { Separator } from "Styleguide/Elements/Separator"
-import { Spacer } from "Styleguide/Elements/Spacer"
 import { Responsive } from "Utils/Responsive"
 
 interface ArtistShowListItemProps {

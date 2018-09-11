@@ -1,11 +1,9 @@
 import React from "react"
 
-import { Serif } from "@artsy/palette"
+import { BorderBox, Flex, Serif } from "@artsy/palette"
 import { ItemReview_artwork } from "__generated__/ItemReview_artwork.graphql"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
-import { BorderBox } from "Styleguide/Elements/Box"
-import { Flex } from "Styleguide/Elements/Flex"
 
 interface ItemReviewProps {
   artwork: ItemReview_artwork

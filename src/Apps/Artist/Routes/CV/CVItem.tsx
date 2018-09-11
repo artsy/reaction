@@ -1,22 +1,26 @@
-import { space } from "@artsy/palette"
-import { Sans, Serif } from "@artsy/palette"
 import { CVItem_artist } from "__generated__/CVItem_artist.graphql"
 import { groupBy } from "lodash"
 import React, { Component } from "react"
 import styled from "styled-components"
-import { Box } from "Styleguide/Elements/Box"
-import { Button } from "Styleguide/Elements/Button"
 import { Col, Row } from "Styleguide/Elements/Grid"
-import { Separator } from "Styleguide/Elements/Separator"
-import { Spacer } from "Styleguide/Elements/Spacer"
 import { Responsive } from "Utils/Responsive"
+
+import {
+  Box,
+  Button,
+  Flex,
+  Sans,
+  Separator,
+  Serif,
+  space,
+  Spacer,
+} from "@artsy/palette"
 
 import {
   createPaginationContainer,
   graphql,
   RelayPaginationProp,
 } from "react-relay"
-import { Flex } from "Styleguide/Elements/Flex"
 import { ShowEntry } from "./ShowEntry"
 
 export const PAGE_SIZE = 10

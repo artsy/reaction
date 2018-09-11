@@ -1,3 +1,4 @@
+import { Button, Checkbox, Flex, Join, Spacer } from "@artsy/palette"
 import { Payment_order } from "__generated__/Payment_order.graphql"
 import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
 import { CreditCardInput } from "Apps/Order/Components/CreditCardInput"
@@ -12,12 +13,7 @@ import {
 } from "react-relay"
 import { injectStripe, ReactStripeElements } from "react-stripe-elements"
 import { Collapse } from "Styleguide/Components/Collapse"
-import { Button } from "Styleguide/Elements/Button"
-import { Checkbox } from "Styleguide/Elements/Checkbox"
-import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
-import { Join } from "Styleguide/Elements/Join"
-import { Spacer } from "Styleguide/Elements/Spacer"
 import { Responsive } from "Utils/Responsive"
 import {
   Address,

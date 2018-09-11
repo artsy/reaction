@@ -2,10 +2,9 @@ import { mount } from "enzyme"
 import React from "react"
 import { commitMutation, RelayProp } from "react-relay"
 
+import { Button, Radio } from "@artsy/palette"
 import { UntouchedOrder } from "Apps/__test__/Fixtures/Order"
 import Input from "Components/Input"
-import { Button } from "Styleguide/Elements/Button"
-import { Radio } from "Styleguide/Elements/Radio"
 import { Provider } from "unstated"
 import { ShippingProps, ShippingRoute } from "../Shipping"
 
@@ -39,7 +38,7 @@ describe("Shipping", () => {
       expect(config.variables.input.orderId).toBe("1234")
     })
 
-    component.find(Button).simulate("click")
+    component.find("Button").simulate("click")
 
     expect.hasAssertions()
   })
@@ -62,7 +61,7 @@ describe("Shipping", () => {
       expect(config.variables.input.shipping.country).toBe("US") // It defaults to "US" when not selected
     })
 
-    component.find(Button).simulate("click")
+    component.find("Button").simulate("click")
 
     expect.hasAssertions()
   })
@@ -70,7 +69,7 @@ describe("Shipping", () => {
   it("commits the mutation with pickup option", () => {
     const component = getWrapper(testProps)
     component
-      .find(Radio)
+      .find("Radio")
       .last()
       .simulate("click")
     const mockCommitMutation = commitMutation as jest.Mock<any>
@@ -78,7 +77,7 @@ describe("Shipping", () => {
       expect(config.variables.input.fulfillmentType).toBe("PICKUP")
     })
 
-    component.find(Button).simulate("click")
+    component.find("Button").simulate("click")
 
     expect.hasAssertions()
   })
@@ -93,7 +92,7 @@ describe("Shipping", () => {
         }
       )
 
-      component.find(Button).simulate("click")
+      component.find("Button").simulate("click")
 
       expect(testProps.router.push).toHaveBeenCalledWith("/order2/1234/payment")
     })
@@ -104,12 +103,12 @@ describe("Shipping", () => {
       mockCommitMutation.mockImplementationOnce(() => {
         const buttonProps = component
           .update() // We need to wait for the component to re-render
-          .find(Button)
+          .find("Button")
           .props() as any
         expect(buttonProps.loading).toBeTruthy()
       })
 
-      component.find(Button).simulate("click")
+      component.find("Button").simulate("click")
 
       expect.hasAssertions()
     })

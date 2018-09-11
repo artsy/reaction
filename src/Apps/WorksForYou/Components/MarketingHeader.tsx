@@ -1,10 +1,15 @@
-import { Sans, themeProps } from "@artsy/palette"
 import React, { SFC } from "react"
 import { Button } from "Styleguide/Elements"
-import { BorderBox, Box } from "Styleguide/Elements/Box"
-import { Flex } from "Styleguide/Elements/Flex"
-import { Separator } from "Styleguide/Elements/Separator"
-import { Spacer } from "Styleguide/Elements/Spacer"
+
+import {
+  BorderBox,
+  Box,
+  Flex,
+  Sans,
+  Separator,
+  Spacer,
+  themeProps,
+} from "@artsy/palette"
 
 export const MarketingHeader: SFC = () => {
   return (

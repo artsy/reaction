@@ -1,9 +1,8 @@
-import { Display } from "@artsy/palette"
+import { Box, Display } from "@artsy/palette"
 import { isEqual } from "lodash"
 import React from "react"
 import Transition from "react-transition-group/Transition"
 import styled from "styled-components"
-import { Box } from "Styleguide/Elements/Box"
 import { Responsive } from "Utils/Responsive"
 
 const StyledBox = styled(Box)`

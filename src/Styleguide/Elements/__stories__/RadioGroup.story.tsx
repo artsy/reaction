@@ -1,8 +1,6 @@
-import { Sans } from "@artsy/palette"
+import { BorderedRadio, Radio, RadioGroup, Sans } from "@artsy/palette"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { BorderedRadio, Radio } from "Styleguide/Elements/Radio"
-import { RadioGroup } from "Styleguide/Elements/RadioGroup"
 import { Section } from "Styleguide/Utils/Section"
 
 storiesOf("Styleguide/Elements", module).add("RadioGroup", () => {

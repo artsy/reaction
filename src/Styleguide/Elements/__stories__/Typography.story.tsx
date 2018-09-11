@@ -1,13 +1,16 @@
-import { Display, Sans, Serif, themeProps } from "@artsy/palette"
 import {
+  Display,
+  Flex,
   FontTypes,
+  Sans,
+  Serif,
+  themeProps,
   TypeSizeKeys,
-} from "@artsy/palette/dist/elements/Typography"
+} from "@artsy/palette"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import styled from "styled-components"
 import { Section } from "Styleguide/Utils/Section"
-import { Flex } from "../Flex"
 
 const stories = storiesOf("Styleguide/Elements", module)
 

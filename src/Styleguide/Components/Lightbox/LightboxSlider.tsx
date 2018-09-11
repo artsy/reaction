@@ -1,7 +1,6 @@
-import { color, space } from "@artsy/palette"
+import { color, Flex, space } from "@artsy/palette"
 import React, { SFC } from "react"
 import styled, { css } from "styled-components"
-import { Flex } from "Styleguide/Elements/Flex"
 
 const railStyles = css`
   width: 100%;

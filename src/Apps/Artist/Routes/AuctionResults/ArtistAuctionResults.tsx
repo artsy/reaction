@@ -10,11 +10,11 @@ import { AuctionResultsState } from "./state"
 import { TableColumns } from "./TableColumns"
 import { TableSidebar } from "./TableSidebar"
 
+import { Spacer } from "@artsy/palette"
 import {
   LoadingArea,
   LoadingAreaState,
 } from "Apps/Artist/Components/LoadingArea"
-import { Spacer } from "Styleguide/Elements/Spacer"
 
 const PAGE_SIZE = 10
 
