@@ -1,7 +1,6 @@
-import { Serif } from "@artsy/palette"
+import { Box, Serif } from "@artsy/palette"
 import { artistResponse } from "Apps/__test__/Fixtures/MarketInsights"
 import React from "react"
-import { Box } from "Styleguide/Elements"
 import { Responsive } from "Utils/Responsive"
 
 import {

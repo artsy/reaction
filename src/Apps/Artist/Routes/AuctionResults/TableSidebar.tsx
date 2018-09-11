@@ -1,7 +1,6 @@
-import { Box, Flex, Sans, Separator, Spacer } from "@artsy/palette"
+import { Box, Flex, LargeSelect, Sans, Separator, Spacer } from "@artsy/palette"
 import React from "react"
 import { Col, Row } from "Styleguide/Elements/Grid"
-import { LargeSelect } from "Styleguide/Elements/Select"
 import { Subscribe } from "unstated"
 import { Responsive } from "Utils/Responsive"
 import { AuctionResultsState } from "./state"

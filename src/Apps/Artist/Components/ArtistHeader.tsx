@@ -1,4 +1,4 @@
-import { Serif } from "@artsy/palette"
+import { Box, Flex, Image, Serif, Spacer } from "@artsy/palette"
 import { ArtistHeader_artist } from "__generated__/ArtistHeader_artist.graphql"
 import { track, Track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
@@ -7,7 +7,6 @@ import FollowArtistButton from "Components/FollowButton/FollowArtistButton"
 import React, { Component, Fragment } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Slider } from "Styleguide/Components"
-import { Box, Flex, Image, Spacer } from "Styleguide/Elements"
 import { Responsive } from "Utils/Responsive"
 
 interface Props {

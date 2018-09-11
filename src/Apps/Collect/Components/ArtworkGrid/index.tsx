@@ -1,10 +1,10 @@
+// import { LargeSelect, SmallSelect } from "@artsy/palette"
 import { ArtworkGrid_viewer } from "__generated__/ArtworkGrid_viewer.graphql"
 import { FilterState } from "Apps/Collect/FilterState"
 import { ContextConsumer } from "Artsy"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Toggle } from "Styleguide/Components/Toggle"
-import { Select } from "Styleguide/Elements/Select"
 import { Subscribe } from "unstated"
 import { Responsive } from "Utils/Responsive"
 import { PriceRange } from "../Filters/PriceRange"
@@ -14,9 +14,11 @@ import {
   Box,
   Checkbox,
   Flex,
+  LargeSelect,
   Radio,
   Sans,
   Separator,
+  SmallSelect,
   Spacer,
 } from "@artsy/palette"
 
@@ -132,6 +134,8 @@ class Filter extends Component<Props> {
                 return (
                   <Responsive>
                     {({ xs, sm, md }) => {
+                      const Select = xs ? LargeSelect : SmallSelect
+
                       return (
                         <>
                           <Flex>
@@ -194,6 +198,7 @@ class Filter extends Component<Props> {
                               <Flex justifyContent="flex-end">
                                 <Select
                                   mt="-8px"
+                                  mr="15px"
                                   options={
                                     [
                                       {

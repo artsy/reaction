@@ -1,11 +1,11 @@
-import { Sans } from "@artsy/palette"
+import { Box, Flex, Sans, Separator, Spacer } from "@artsy/palette"
 import { paginationProps } from "Apps/__test__/Fixtures/Pagination"
 import { showBlockProps, showListProps } from "Apps/__test__/Fixtures/Show"
 import { ArtistShowBlockItem } from "Apps/Artist/Routes/Shows/ArtistShowBlockItem"
 import { ArtistShowListItem } from "Apps/Artist/Routes/Shows/ArtistShowListItem"
 import React from "react"
 import { PaginationFragmentContainer } from "Styleguide/Components"
-import { Box, Col, Flex, Row, Separator, Spacer } from "Styleguide/Elements"
+import { Col, Row } from "Styleguide/Elements/Grid"
 import { Responsive } from "Utils/Responsive"
 
 const ShowBlocks = Flex

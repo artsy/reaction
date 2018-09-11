@@ -1,8 +1,7 @@
-import { Sans } from "@artsy/palette"
+import { Box, Button, Sans } from "@artsy/palette"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { MobileTopBar } from "Styleguide/Components"
-import { Box, Button } from "Styleguide/Elements"
 import { Section } from "Styleguide/Utils/Section"
 
 storiesOf("Styleguide/Components", module).add("MobileTopBar", () => {

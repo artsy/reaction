@@ -1,4 +1,4 @@
-import { Sans } from "@artsy/palette"
+import { Box, Sans, Spacer } from "@artsy/palette"
 import { Overview_artist } from "__generated__/Overview_artist.graphql"
 import { ArtworkFilterFragmentContainer as ArtworkFilter } from "Apps/Artist/Routes/Overview/Components/ArtworkFilter"
 import { GenesFragmentContainer as Genes } from "Apps/Artist/Routes/Overview/Components/Genes"
@@ -13,7 +13,7 @@ import {
   MAX_CHARS,
   SelectedExhibitionFragmentContainer as SelectedExhibitions,
 } from "Styleguide/Components"
-import { Box, Col, Row, Spacer } from "Styleguide/Elements"
+import { Col, Row } from "Styleguide/Elements/Grid"
 import { Responsive } from "Utils/Responsive"
 import { CurrentEventFragmentContainer as CurrentEvent } from "./Components/CurrentEvent"
 

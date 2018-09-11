@@ -1,10 +1,7 @@
-import { Sans, Serif } from "@artsy/palette"
+import { Flex, Range, RangeProps, Sans, Separator, Serif } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
 import { space, SpaceProps } from "styled-system"
-import { Flex } from "Styleguide/Elements/Flex"
-import { Range, RangeProps } from "Styleguide/Elements/Range"
-import { Separator } from "Styleguide/Elements/Separator"
 
 interface PriceRangeProps extends RangeProps {
   currency?: string

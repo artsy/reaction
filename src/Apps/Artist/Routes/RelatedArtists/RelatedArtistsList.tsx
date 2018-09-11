@@ -1,8 +1,9 @@
+import { Box, Flex } from "@artsy/palette"
 import { RelatedArtistsList_artist } from "__generated__/RelatedArtistsList_artist.graphql"
 import { ContextConsumer } from "Artsy/Router"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
-import { Box, Col, Flex, Row } from "Styleguide/Elements"
+import { Col, Row } from "Styleguide/Elements/Grid"
 import { Responsive } from "Utils/Responsive"
 
 import {
@@ -108,7 +109,7 @@ class RelatedArtistsList extends Component<ShowProps, LoadingAreaState> {
                     <Row>
                       <Col>
                         <LoadingArea isLoading={this.state.isLoading}>
-                          <Flex flexWrap mr={-2}>
+                          <Flex flexWrap="wrap" mr={-2} width="100%">
                             {this.props.artist.related.artists.edges.map(
                               ({ node }, index) => {
                                 return (
