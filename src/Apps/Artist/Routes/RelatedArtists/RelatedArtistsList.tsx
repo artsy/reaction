@@ -109,7 +109,7 @@ class RelatedArtistsList extends Component<ShowProps, LoadingAreaState> {
                     <Row>
                       <Col>
                         <LoadingArea isLoading={this.state.isLoading}>
-                          <Flex flexWrap mr={-2}>
+                          <Flex flexWrap="wrap" mr={-2} width="100%">
                             {this.props.artist.related.artists.edges.map(
                               ({ node }, index) => {
                                 return (
