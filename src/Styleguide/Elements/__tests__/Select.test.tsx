@@ -4,6 +4,15 @@ import { mount } from "enzyme"
 import React from "react"
 import { LargeSelect, Select, SmallSelect } from "../Select"
 
+type Breakpoint = "xl" | "lg" | "md" | "sm" | "xs"
+
+const ProvideSize: React.SFC<{ size: Breakpoint }> = ({ size, children }) => {
+  const Boot_unsafe = Boot as any
+  return (
+    <Boot_unsafe initialMatchingMediaQueries={[size]}>{children}</Boot_unsafe>
+  )
+}
+
 describe("Select", () => {
   beforeAll(() => {
     window.matchMedia = undefined // Immediately set matching media query in Boot
@@ -11,16 +20,16 @@ describe("Select", () => {
 
   it("is responsive", () => {
     const small = mount(
-      <Boot initialMatchingMediaQueries={["xs"]}>
+      <ProvideSize size={"xs"}>
         <Select {...selectProps} />
-      </Boot>
+      </ProvideSize>
     )
     expect(small.find(LargeSelect).length).toEqual(1) // Inverted
 
     const large = mount(
-      <Boot initialMatchingMediaQueries={["lg"]}>
+      <ProvideSize size={"lg"}>
         <Select {...selectProps} />
-      </Boot>
+      </ProvideSize>
     )
     expect(large.find(SmallSelect).length).toEqual(1)
     expect(small.find("option").length).toBe(3)
@@ -30,9 +39,9 @@ describe("Select", () => {
   it("triggers callback on change", () => {
     const spy = jest.fn()
     const wrapper = mount(
-      <Boot initialMatchingMediaQueries={["xs"]}>
+      <ProvideSize size={"xs"}>
         <Select {...selectProps} onSelect={spy} />
-      </Boot>
+      </ProvideSize>
     )
     wrapper
       .find("option")
