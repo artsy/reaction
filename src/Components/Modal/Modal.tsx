@@ -3,7 +3,7 @@ import Icon from "Components/Icon"
 import React from "react"
 import styled from "styled-components"
 
-import ModalWrapper from "Components/Modal/ModalWrapper"
+import { ModalWrapper } from "Components/Modal/ModalWrapper"
 import { media } from "../Helpers"
 import { CtaProps, ModalCta } from "./ModalCta"
 import { ModalHeader } from "./ModalHeader"

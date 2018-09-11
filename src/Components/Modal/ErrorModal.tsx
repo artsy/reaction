@@ -3,7 +3,7 @@ import { ModalWrapper } from "Components/Modal/ModalWrapper"
 import React from "react"
 import styled from "styled-components"
 
-interface ModalErrorProps extends React.HTMLProps<HTMLDivElement> {
+interface ErrorModalProps extends React.HTMLProps<HTMLDivElement> {
   show?: boolean
   headerText?: string
   detailText?: string
@@ -11,14 +11,14 @@ interface ModalErrorProps extends React.HTMLProps<HTMLDivElement> {
   onClose?: () => void
 }
 
-export class ModalError extends React.Component<ModalErrorProps> {
+export class ErrorModal extends React.Component<ErrorModalProps> {
   static defaultProps = {
     headerText: "An error occurred",
     closeText: "Continue",
   }
 
   close = () => {
-    this.props.onClose()
+    this.props.onClose && this.props.onClose()
   }
 
   render() {
@@ -26,7 +26,7 @@ export class ModalError extends React.Component<ModalErrorProps> {
 
     return (
       <ModalWrapper show={show} onClose={onClose}>
-        <ModalErrorInner>
+        <ErrorModalInner>
           <Sans size="4" weight="medium" mb={10}>
             {headerText}
           </Sans>
@@ -46,7 +46,7 @@ export class ModalError extends React.Component<ModalErrorProps> {
               {closeText}
             </Sans>
           </Dismiss>
-        </ModalErrorInner>
+        </ErrorModalInner>
       </ModalWrapper>
     )
   }
@@ -56,11 +56,11 @@ const Link = styled.a`
   color: ${color("black60")};
 `
 
-const ModalErrorInner = styled.div`
+const ErrorModalInner = styled.div`
   padding: 20px;
 `
 
-const Dismiss = styled.div`
+export const Dismiss = styled.div`
   text-align: right;
   &:hover {
     cursor: pointer;

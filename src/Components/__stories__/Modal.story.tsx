@@ -1,7 +1,7 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
 
-import { ModalError } from "Components/Modal/ModalError"
+import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Images } from "Components/Publishing/Fixtures/Components"
 import Button from "../Buttons/Default"
 import Modal from "../Modal/Modal"
@@ -54,7 +54,7 @@ class ModalDemo extends React.Component<any, any> {
   }
 }
 
-class ModalErrorDemo extends React.Component<any, any> {
+class ErrorModalDemo extends React.Component<any, any> {
   constructor(props) {
     super(props)
     this.state = { isModalOpen: true }
@@ -74,7 +74,7 @@ class ModalErrorDemo extends React.Component<any, any> {
     return (
       <div>
         <Button onClick={this.openModal}>Open Modal</Button>
-        <ModalError
+        <ErrorModal
           onClose={this.closeModal}
           show={this.state.isModalOpen}
           headerText={this.props.headerText}
@@ -158,9 +158,9 @@ storiesOf("Components/Modal/Demo", module)
       isWide
     />
   ))
-  .add("Error Modal (Default)", () => <ModalErrorDemo />)
+  .add("Error Modal (Default)", () => <ErrorModalDemo />)
   .add("Error Modal (Custom)", () => (
-    <ModalErrorDemo
+    <ErrorModalDemo
       closeText="OK"
       headerText="Price changed"
       detailText="The price of the work changed since you started checkout. Please review pricing details before submitting."

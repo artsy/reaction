@@ -1,3 +1,4 @@
+import { Theme } from "@artsy/palette"
 import React from "react"
 import styled, { injectGlobal, keyframes } from "styled-components"
 import FadeTransition from "../Animation/FadeTransition"
@@ -83,22 +84,24 @@ export class ModalWrapper extends React.Component<
     }
 
     return (
-      <Wrapper isShown={isShown || isAnimating}>
-        {isShown && <ModalOverlay onClick={this.close} />}
-        <FadeTransition
-          in={isShown}
-          mountOnEnter
-          onExited={() => {
-            this.setState({ isAnimating: false })
-          }}
-          unmountOnExit
-          timeout={{ enter: 10, exit: 200 }}
-        >
-          <ModalContainer isWide={isWide} image={image}>
-            <ModalInner>{children}</ModalInner>
-          </ModalContainer>
-        </FadeTransition>
-      </Wrapper>
+      <Theme>
+        <Wrapper isShown={isShown || isAnimating}>
+          {isShown && <ModalOverlay onClick={this.close} />}
+          <FadeTransition
+            in={isShown}
+            mountOnEnter
+            onExited={() => {
+              this.setState({ isAnimating: false })
+            }}
+            unmountOnExit
+            timeout={{ enter: 10, exit: 200 }}
+          >
+            <ModalContainer isWide={isWide} image={image}>
+              <ModalInner>{children}</ModalInner>
+            </ModalContainer>
+          </FadeTransition>
+        </Wrapper>
+      </Theme>
     )
   }
 }
