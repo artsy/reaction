@@ -1,6 +1,6 @@
+import { Checkbox } from "@artsy/palette"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Checkbox } from "Styleguide/Elements/Checkbox"
 import { Section } from "Styleguide/Utils/Section"
 
 storiesOf("Styleguide/Elements", module).add("Checkbox", () => {

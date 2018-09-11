@@ -1,7 +1,7 @@
+import { Spacer } from "@artsy/palette"
 import { Shows_viewer } from "__generated__/Shows_viewer.graphql"
 import React, { SFC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Spacer } from "Styleguide/Elements/Spacer"
 import { ArtistShowsRefetchContainer as Shows } from "./ArtistShows"
 
 export interface ArtistShowsProps {

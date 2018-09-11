@@ -71,9 +71,10 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.0.0",
     "@playlyfe/gql": "^2.3.2",
-    "@storybook/addon-info": "^3.4.6",
-    "@storybook/addon-options": "^3.2.1",
-    "@storybook/react": "^3.2.12",
+    "@storybook/addon-info": "^3.4.10",
+    "@storybook/addon-options": "^3.4.10",
+    "@storybook/addons": "^3.4.10",
+    "@storybook/react": "^3.4.10",
     "@types/enzyme": "^3.1.0",
     "@types/isomorphic-fetch": "^0.0.34",
     "@types/jest": "^20.0.7",
@@ -143,7 +144,7 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
-    "@artsy/palette": "^2.9.3",
+    "@artsy/palette": "^2.14.2",
     "cheerio": "^1.0.0-rc.2",
     "farce": "^0.2.6",
     "formik": "^0.11.11",

@@ -1,7 +1,5 @@
-import { Sans, Serif } from "@artsy/palette"
+import { Avatar, Flex, Sans, Serif } from "@artsy/palette"
 import React from "react"
-import { Avatar } from "Styleguide/Elements/Avatar"
-import { Flex } from "Styleguide/Elements/Flex"
 import { Responsive } from "Utils/Responsive"
 
 export interface BannerProps {

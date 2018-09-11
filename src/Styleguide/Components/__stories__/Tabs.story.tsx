@@ -1,6 +1,6 @@
+import { Box } from "@artsy/palette"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Box } from "Styleguide/Elements/Box"
 import { Section } from "Styleguide/Utils/Section"
 import { Sup, Tab, Tabs } from "../Tabs"
 

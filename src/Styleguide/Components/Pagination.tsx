@@ -1,10 +1,7 @@
-import { color, Sans, space } from "@artsy/palette"
+import { Box, color, Flex, Sans, Separator, space } from "@artsy/palette"
 import React from "react"
 import styled, { css } from "styled-components"
 import { Arrow } from "Styleguide/Elements/Arrow"
-import { Box } from "Styleguide/Elements/Box"
-import { Flex } from "Styleguide/Elements/Flex"
-import { Separator } from "Styleguide/Elements/Separator"
 import { ScrollIntoView } from "Styleguide/Utils/ScrollIntoView"
 import { Responsive } from "Utils/Responsive"
 

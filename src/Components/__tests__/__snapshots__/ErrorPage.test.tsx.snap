@@ -1,6 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ErrorPage snapshots renders correctly 1`] = `
+.c4 {
+  margin-bottom: 32px;
+}
+
 .c2 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 18px;
@@ -17,13 +21,13 @@ exports[`ErrorPage snapshots renders correctly 1`] = `
 }
 
 .c5 {
+  cursor: pointer;
   position: relative;
   border: 2px solid;
   border-radius: 3px;
   padding-left: 30px;
   padding-right: 30px;
   height: 50px;
-  cursor: pointer;
   -webkit-transition: 0.25s ease;
   transition: 0.25s ease;
   background-color: #000;
@@ -44,10 +48,6 @@ exports[`ErrorPage snapshots renders correctly 1`] = `
   border-color: #E5E5E5;
   color: #FFF;
   pointer-events: none;
-}
-
-.c4 {
-  margin-bottom: 32px;
 }
 
 .c3 {

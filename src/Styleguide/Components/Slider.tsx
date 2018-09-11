@@ -1,10 +1,9 @@
+import { Box, Flex } from "@artsy/palette"
 import React, { ReactNode } from "react"
 import Slick, { Settings } from "react-slick"
 import styled from "styled-components"
 import { left, LeftProps, right, RightProps } from "styled-system"
 import { Arrow } from "Styleguide/Elements/Arrow"
-import { Box } from "Styleguide/Elements/Box"
-import { Flex } from "Styleguide/Elements/Flex"
 import { media } from "Styleguide/Elements/Grid"
 import { Responsive } from "Utils/Responsive"
 

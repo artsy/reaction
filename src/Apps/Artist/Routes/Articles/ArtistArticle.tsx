@@ -1,12 +1,16 @@
-import { Sans, Serif } from "@artsy/palette"
 import React, { SFC } from "react"
-import { Box } from "Styleguide/Elements/Box"
-import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
-import { Image } from "Styleguide/Elements/Image"
-import { Separator } from "Styleguide/Elements/Separator"
-import { Spacer } from "Styleguide/Elements/Spacer"
 import { Responsive } from "Utils/Responsive"
+
+import {
+  Box,
+  Flex,
+  Image,
+  Sans,
+  Separator,
+  Serif,
+  Spacer,
+} from "@artsy/palette"
 
 interface ArticleItemProps {
   imageUrl: string

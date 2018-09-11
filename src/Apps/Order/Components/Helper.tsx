@@ -1,8 +1,7 @@
-import { Sans } from "@artsy/palette"
+import { Sans, Spacer } from "@artsy/palette"
 import { ContextConsumer } from "Artsy/Router"
 import React from "react"
 import styled from "styled-components"
-import { Spacer } from "Styleguide/Elements/Spacer"
 
 const Link = styled.a`
   text-decoration: underline;

@@ -25,7 +25,7 @@ const initialState = {
   page: 1,
   major_periods: [],
   partner_id: null,
-  sort: "-partner_updated_at",
+  sort: "-decayed_merch",
   acquireable: null,
   at_auction: null,
   inquireable_only: null,
@@ -63,19 +63,19 @@ export class FilterState extends Container<State> {
 
   setPage(page, mediator) {
     this.setState({ page }, () => {
-      mediator.trigger("artist:filter:changed", this.state)
+      mediator.trigger("collect:filter:changed", this.state)
     })
   }
 
   setSort = (sort, mediator) => {
     this.setState({ sort }, () => {
-      mediator.trigger("artist:filter:changed", this.state)
+      mediator.trigger("collect:filter:changed", this.state)
     })
   }
 
   setPriceRange = (price_range, mediator) => {
     this.setState({ price_range }, () => {
-      mediator.trigger("artist:filter:changed", this.state)
+      mediator.trigger("collect:filter:changed", this.state)
     })
   }
 
@@ -125,7 +125,7 @@ export class FilterState extends Container<State> {
         "selectedFilterCount",
         "showActionSheet",
       ])
-      mediator.trigger("artist:filter:changed", filterState)
+      mediator.trigger("collect:filter:changed", filterState)
     })
   }
 
@@ -170,7 +170,7 @@ export class FilterState extends Container<State> {
       ])
       filterState = omitBy(filterState, isNil)
 
-      mediator.trigger("artist:filter:changed", filterState)
+      mediator.trigger("collect:filter:changed", filterState)
     })
   }
 }

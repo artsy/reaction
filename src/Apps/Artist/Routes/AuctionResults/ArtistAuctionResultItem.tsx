@@ -1,19 +1,22 @@
-import { Serif } from "@artsy/palette"
 import { ArtistAuctionResultItem_auctionResult } from "__generated__/ArtistAuctionResultItem_auctionResult.graphql"
 import { ContextConsumer, ContextProps } from "Artsy"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
-import { Box } from "Styleguide/Elements/Box"
-import { Button } from "Styleguide/Elements/Button"
-import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
-import { Image } from "Styleguide/Elements/Image"
-import { Separator } from "Styleguide/Elements/Separator"
-import { Spacer } from "Styleguide/Elements/Spacer"
 import { Subscribe } from "unstated"
 import { Responsive } from "Utils/Responsive"
 import { AuctionResultsState } from "./state"
+
+import {
+  Box,
+  Button,
+  Flex,
+  Image,
+  Separator,
+  Serif,
+  Spacer,
+} from "@artsy/palette"
 
 export interface Props extends ContextProps {
   auctionResult: ArtistAuctionResultItem_auctionResult

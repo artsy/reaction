@@ -1,7 +1,7 @@
+import { Separator } from "@artsy/palette"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
-import { Separator } from "../Separator"
 
 storiesOf("Styleguide/Elements", module).add("Separator", () => {
   return (

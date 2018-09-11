@@ -1,11 +1,8 @@
-import { color, Sans, space } from "@artsy/palette"
+import { Box, color, Flex, Join, Sans, space } from "@artsy/palette"
 import React from "react"
 import styled, { css } from "styled-components"
 import { borders, JustifyContentProps, WidthProps } from "styled-system"
-import { Box } from "Styleguide/Elements/Box"
-import { Flex } from "Styleguide/Elements/Flex"
 import { media } from "Styleguide/Elements/Grid"
-import { Join } from "Styleguide/Elements/Join"
 
 export interface TabLike extends JSX.Element {
   props: TabProps

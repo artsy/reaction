@@ -1,7 +1,7 @@
+import { Avatar } from "@artsy/palette"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
-import { Avatar } from "../Avatar"
 
 storiesOf("Styleguide/Elements", module).add("Avatar", () => {
   return (
