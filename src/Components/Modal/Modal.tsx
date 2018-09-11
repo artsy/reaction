@@ -1,8 +1,9 @@
 import { color } from "@artsy/palette"
 import Icon from "Components/Icon"
 import React from "react"
-import styled, { injectGlobal, keyframes } from "styled-components"
-import FadeTransition from "../Animation/FadeTransition"
+import styled from "styled-components"
+
+import { ModalWrapper } from "Components/Modal/ModalWrapper"
 import { media } from "../Helpers"
 import { CtaProps, ModalCta } from "./ModalCta"
 import { ModalHeader } from "./ModalHeader"
@@ -12,25 +13,13 @@ export interface ModalProps extends React.HTMLProps<Modal> {
   cta?: CtaProps
   onClose?: () => void
   hasLogo?: boolean
-  image?: string
   isWide?: boolean
+  image?: string
   show?: boolean
   title?: string
 }
 
-export interface ModalState {
-  isAnimating: boolean
-  isShown: boolean
-  blurContainers: Element[]
-}
-
-injectGlobal`
-  .blurred {
-    filter: blur(50px);
-  }
-`
-
-export class Modal extends React.Component<ModalProps, ModalState> {
+export class Modal extends React.Component<ModalProps> {
   static defaultProps = {
     show: false,
     blurContainerSelector: "",
@@ -53,104 +42,54 @@ export class Modal extends React.Component<ModalProps, ModalState> {
     }
   }
 
-  componentWillUnmount() {
-    this.removeBlurToContainers()
-  }
-
   close = () => {
     this.props.onClose()
-    this.removeBlurToContainers()
-  }
-
-  addBlurToContainers = () => {
-    for (const container of this.state.blurContainers) {
-      container.classList.add("blurred")
-    }
-  }
-
-  removeBlurToContainers = () => {
-    for (const container of this.state.blurContainers) {
-      container.classList.remove("blurred")
-    }
   }
 
   render(): JSX.Element {
-    const { children, cta, hasLogo, image, isWide, title } = this.props
-    const { isShown, isAnimating } = this.state
-
-    if (isShown) {
-      this.addBlurToContainers()
-    } else {
-      this.removeBlurToContainers()
-    }
+    const {
+      children,
+      cta,
+      hasLogo,
+      image,
+      isWide,
+      onClose,
+      show,
+      title,
+    } = this.props
 
     return (
-      <ModalWrapper isShown={isShown || isAnimating}>
-        {isShown && <ModalOverlay onClick={this.close} />}
-        <FadeTransition
-          in={isShown}
-          mountOnEnter
-          onExited={() => {
-            this.setState({ isAnimating: false })
-          }}
-          unmountOnExit
-          timeout={{ enter: 10, exit: 200 }}
-        >
-          <ModalContainer isWide={isWide} image={image}>
-            <ModalInner>
-              <CloseButton name="close" onClick={this.close} />
+      <ModalWrapper
+        cta={cta}
+        onClose={onClose}
+        show={show}
+        isWide={isWide}
+        image={image}
+      >
+        <CloseButton name="close" onClick={this.close} />
 
-              {image && <Image image={image} />}
+        {image && <Image image={image} />}
 
-              <ModalContent cta={cta}>
-                {(hasLogo || title) && (
-                  <ModalHeader title={title} hasLogo={hasLogo} />
-                )}
+        <ModalContent cta={cta} hasImage={image && true}>
+          {(hasLogo || title) && (
+            <ModalHeader title={title} hasLogo={hasLogo} />
+          )}
 
-                <div>{children}</div>
+          <div>{children}</div>
 
-                {cta && (
-                  <ModalCta
-                    cta={cta}
-                    hasImage={image && true}
-                    onClose={this.close}
-                  />
-                )}
-              </ModalContent>
-            </ModalInner>
-          </ModalContainer>
-        </FadeTransition>
+          {cta && (
+            <ModalCta cta={cta} hasImage={image && true} onClose={this.close} />
+          )}
+        </ModalContent>
       </ModalWrapper>
     )
   }
 }
 
-const slideUp = keyframes`
-  from {
-    transform: translate(-50%,-40%);
-    opacity: 0;
-  },
-
-  to {
-    transform: translate(-50%,-50%);
-    opacity: 1;
-  }
-`
-
-const ModalWrapper = styled.div.attrs<{ isShown?: boolean }>({})`
-  ${props =>
-    props.isShown &&
-    `
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 9999
-  `};
-`
-
-const ModalContent = styled.div.attrs<{ cta: CtaProps }>({})`
+export const ModalContent = styled.div.attrs<{
+  cta: CtaProps
+  hasImage: boolean
+}>({})`
   padding: ${props =>
     props.cta
       ? props.cta.isFixed
@@ -158,48 +97,12 @@ const ModalContent = styled.div.attrs<{ cta: CtaProps }>({})`
         : "20px 40px 0"
       : "20px 40px 40px"};
   width: 100%;
+
+  width: ${props => (props.cta && props.hasImage ? "50%" : "100%")};
+  margin-left: ${props => props.cta && props.hasImage && "50%"};
   ${media.sm`
     padding: ${props =>
       props.cta && props.cta.isFixed ? "20px 20px 110px" : "20px"};
-  `};
-`
-
-export const ModalContainer = styled.div.attrs<{
-  isWide?: boolean
-  image?: string
-}>({})`
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #fff;
-  width: ${props => (props.isWide || props.image ? "900px" : "440px")};
-  height: min-content;
-  border-radius: 5px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-  animation: ${slideUp} 250ms linear;
-
-  ${ModalContent} {
-    ${props =>
-      props.image &&
-      `
-      width: 50%;
-      margin-left: 50%;
-    `};
-  }
-  ${media.sm`
-    width: 100%;
-    border-radius: 0;
-  `};
-`
-
-const ModalInner = styled.div`
-  /* disabling scrolling until custom scrollbars are implemented */
-  /* overflow-y: scroll; */
-  max-height: calc(100vh - 80px);
-  ${media.sm`
-    max-height: 100vh;
-    height: 100vh
   `};
 `
 
