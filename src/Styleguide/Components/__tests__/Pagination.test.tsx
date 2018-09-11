@@ -1,7 +1,7 @@
-import { Boot } from "Artsy/Router"
 import { mount } from "enzyme"
 import { set } from "lodash/fp"
 import React from "react"
+import { MockBoot } from "Utils/MockBoot"
 import { paginationProps } from "../../../Apps/__test__/Fixtures/Pagination"
 import { LargePagination, Pagination, SmallPagination } from "../Pagination"
 
@@ -9,30 +9,30 @@ describe("Pagination", () => {
   const { cursor, callbacks } = paginationProps
 
   beforeAll(() => {
-    window.matchMedia = undefined // Immediately set matching media query in Boot
+    window.matchMedia = undefined // Immediately set matching media query inMockBoot
   })
 
   it("is responsive", () => {
     const small = mount(
-      <Boot initialMatchingMediaQueries={["xs"]}>
+      <MockBoot breakpoint="xs">
         <Pagination hasNextPage pageCursors={cursor} {...callbacks} />
-      </Boot>
+      </MockBoot>
     )
     expect(small.find(SmallPagination).length).toEqual(1)
 
     const large = mount(
-      <Boot initialMatchingMediaQueries={["lg"]}>
+      <MockBoot breakpoint="lg">
         <Pagination hasNextPage pageCursors={cursor} {...callbacks} />
-      </Boot>
+      </MockBoot>
     )
     expect(large.find(LargePagination).length).toEqual(1)
   })
 
   it("disables next button if hasNextPage=false", () => {
     const wrapper = mount(
-      <Boot>
+      <MockBoot>
         <Pagination hasNextPage={false} pageCursors={cursor} {...callbacks} />
-      </Boot>
+      </MockBoot>
     )
     expect(wrapper.find("NextButton").html()).toContain('class="disabled')
   })
@@ -45,13 +45,13 @@ describe("Pagination", () => {
     ) as any
 
     const wrapper = mount(
-      <Boot>
+      <MockBoot>
         <Pagination
           hasNextPage
           pageCursors={updatedProps.cursor}
           {...callbacks}
         />
-      </Boot>
+      </MockBoot>
     )
 
     expect(wrapper.find("PrevButton").html()).toContain('class="disabled')
@@ -60,14 +60,14 @@ describe("Pagination", () => {
   it("triggers next callback on next button click", () => {
     const spy = jest.fn()
     const wrapper = mount(
-      <Boot>
+      <MockBoot>
         <Pagination
           hasNextPage
           pageCursors={cursor}
           {...callbacks}
           onNext={spy}
         />
-      </Boot>
+      </MockBoot>
     )
     wrapper.find("NextButton a").simulate("click")
     expect(spy).toHaveBeenCalled()
@@ -76,14 +76,14 @@ describe("Pagination", () => {
   it("triggers onClick callback on previous button click", () => {
     const spy = jest.fn()
     const wrapper = mount(
-      <Boot>
+      <MockBoot>
         <Pagination
           hasNextPage
           pageCursors={cursor}
           {...callbacks}
           onClick={spy}
         />
-      </Boot>
+      </MockBoot>
     )
     wrapper.find("PrevButton a").simulate("click")
     expect(spy).toHaveBeenCalled()
@@ -93,14 +93,14 @@ describe("Pagination", () => {
     it("triggers on click on number click", () => {
       const spy = jest.fn()
       const wrapper = mount(
-        <Boot>
+        <MockBoot>
           <Pagination
             hasNextPage
             pageCursors={cursor}
             {...callbacks}
             onClick={spy}
           />
-        </Boot>
+        </MockBoot>
       )
       wrapper
         .find("Page")
@@ -112,9 +112,9 @@ describe("Pagination", () => {
 
     it("renders first, last and page range", () => {
       const wrapper = mount(
-        <Boot>
+        <MockBoot>
           <Pagination hasNextPage pageCursors={cursor} {...callbacks} />
-        </Boot>
+        </MockBoot>
       )
       const html = wrapper.html()
       const pages = ["1", "...", "6", "7", "8", "9", "...", "20"]
@@ -128,9 +128,9 @@ describe("Pagination", () => {
   describe("SmallPagination", () => {
     it("does not render pages", () => {
       const wrapper = mount(
-        <Boot initialMatchingMediaQueries={["xs"]}>
+        <MockBoot breakpoint="xs">
           <Pagination hasNextPage pageCursors={cursor} {...callbacks} />
-        </Boot>
+        </MockBoot>
       )
       expect(wrapper.find("Page").length).toEqual(0)
       expect(wrapper.find("PageSpan").length).toEqual(0)
@@ -139,14 +139,14 @@ describe("Pagination", () => {
     it("triggers next callback on previous button click", () => {
       const spy = jest.fn()
       const wrapper = mount(
-        <Boot initialMatchingMediaQueries={["xs"]}>
+        <MockBoot breakpoint="xs">
           <Pagination
             hasNextPage
             pageCursors={cursor}
             {...callbacks}
             onClick={spy}
           />
-        </Boot>
+        </MockBoot>
       )
       wrapper
         .find("Pagination__ButtonWithBorder")
@@ -159,14 +159,14 @@ describe("Pagination", () => {
     it("triggers onClick callback on next button click", () => {
       const spy = jest.fn()
       const wrapper = mount(
-        <Boot initialMatchingMediaQueries={["xs"]}>
+        <MockBoot breakpoint="xs">
           <Pagination
             hasNextPage
             pageCursors={cursor}
             {...callbacks}
             onNext={spy}
           />
-        </Boot>
+        </MockBoot>
       )
       wrapper
         .find("Pagination__ButtonWithBorder")
