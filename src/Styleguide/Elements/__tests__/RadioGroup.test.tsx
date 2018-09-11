@@ -83,8 +83,6 @@ describe("RadioGroup", () => {
       </RadioGroup>
     )
 
-    const radio = wrapper.find("Radio").first()
-
     expect(
       wrapper
         .find("Radio")
@@ -100,8 +98,6 @@ describe("RadioGroup", () => {
   })
 
   it("ignores the 'selected' prop on the Radio component", () => {
-    const spy = jest.fn()
-
     const wrapper = mount(
       <RadioGroup defaultValue="PICKUP">
         <Radio value="SHIP" selected>
