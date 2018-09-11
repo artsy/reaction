@@ -6,7 +6,7 @@ import { FillwidthItem } from "Components/Artwork/FillwidthItem"
 import React from "react"
 import { QueryRenderer } from "react-relay"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Slider } from "Styleguide/Components/Slider"
+import { Carousel } from "Styleguide/Components/Carousel"
 
 export interface RecentlyViewedProps {
   me: RecentlyViewed_me
@@ -28,7 +28,7 @@ export const RecentlyViewed: React.SFC<RecentlyViewedProps> = props => {
 
               <Spacer mb={3} />
 
-              <Slider
+              <Carousel
                 settings={{
                   slidesToScroll: 5,
                 }}
