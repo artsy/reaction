@@ -1,6 +1,6 @@
-import { Boot } from "Artsy/Router"
 import { mount } from "enzyme"
 import React from "react"
+import { MockBoot } from "Utils/MockBoot"
 import { LargeSlider, Slider, SmallSlider } from "../Slider"
 
 describe("Slider", () => {
@@ -10,26 +10,26 @@ describe("Slider", () => {
 
   it("is responsive", () => {
     const small = mount(
-      <Boot initialMatchingMediaQueries={["xs"]}>
+      <MockBoot breakpoint="xs">
         <Slider
           data={[{ name: "foo" }]}
           render={props => {
             return <div />
           }}
         />
-      </Boot>
+      </MockBoot>
     )
     expect(small.find(SmallSlider).length).toEqual(1)
 
     const large = mount(
-      <Boot initialMatchingMediaQueries={["lg"]}>
+      <MockBoot breakpoint="lg">
         <Slider
           data={[{ name: "foo" }]}
           render={props => {
             return <div />
           }}
         />
-      </Boot>
+      </MockBoot>
     )
     expect(large.find(LargeSlider).length).toEqual(1)
   })
@@ -38,14 +38,14 @@ describe("Slider", () => {
     const Foo = ({ name }) => <div>hello {name} how are you</div>
 
     const wrapper = mount(
-      <Boot>
+      <MockBoot breakpoint="xs">
         <Slider
           data={[{ name: "name1" }, { name: "name2" }]}
           render={props => {
             return <Foo {...props} />
           }}
         />
-      </Boot>
+      </MockBoot>
     )
     expect(wrapper.find(Foo).length).toEqual(2)
     expect(

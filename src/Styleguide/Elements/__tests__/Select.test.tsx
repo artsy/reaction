@@ -1,17 +1,8 @@
 import { selectProps } from "Apps/__test__/Fixtures/Select"
-import { Boot } from "Artsy/Router"
 import { mount } from "enzyme"
 import React from "react"
+import { MockBoot } from "Utils/MockBoot"
 import { LargeSelect, Select, SmallSelect } from "../Select"
-
-type Breakpoint = "xl" | "lg" | "md" | "sm" | "xs"
-
-const ProvideSize: React.SFC<{ size: Breakpoint }> = ({ size, children }) => {
-  const Boot_unsafe = Boot as any
-  return (
-    <Boot_unsafe initialMatchingMediaQueries={[size]}>{children}</Boot_unsafe>
-  )
-}
 
 describe("Select", () => {
   beforeAll(() => {
@@ -20,16 +11,16 @@ describe("Select", () => {
 
   it("is responsive", () => {
     const small = mount(
-      <ProvideSize size={"xs"}>
+      <MockBoot breakpoint={"xs"}>
         <Select {...selectProps} />
-      </ProvideSize>
+      </MockBoot>
     )
     expect(small.find(LargeSelect).length).toEqual(1) // Inverted
 
     const large = mount(
-      <ProvideSize size={"lg"}>
+      <MockBoot breakpoint={"lg"}>
         <Select {...selectProps} />
-      </ProvideSize>
+      </MockBoot>
     )
     expect(large.find(SmallSelect).length).toEqual(1)
     expect(small.find("option").length).toBe(3)
@@ -39,9 +30,9 @@ describe("Select", () => {
   it("triggers callback on change", () => {
     const spy = jest.fn()
     const wrapper = mount(
-      <ProvideSize size={"xs"}>
+      <MockBoot breakpoint={"xs"}>
         <Select {...selectProps} onSelect={spy} />
-      </ProvideSize>
+      </MockBoot>
     )
     wrapper
       .find("option")
