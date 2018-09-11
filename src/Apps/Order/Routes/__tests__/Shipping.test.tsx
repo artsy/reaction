@@ -2,9 +2,9 @@ import { mount } from "enzyme"
 import React from "react"
 import { commitMutation, RelayProp } from "react-relay"
 
-import { Button, Radio } from "@artsy/palette"
 import { UntouchedOrder } from "Apps/__test__/Fixtures/Order"
-import Input from "Components/Input"
+import Input, { InputProps } from "Components/Input"
+import { Button } from "Styleguide/Elements/Button"
 import { Provider } from "unstated"
 import { ShippingProps, ShippingRoute } from "../Shipping"
 
@@ -28,6 +28,7 @@ describe("Shipping", () => {
       order: { ...UntouchedOrder, id: "1234" },
       relay: { environment: {} } as RelayProp,
       router: { push: jest.fn() },
+      requestedFulfillment: undefined,
     } as any
   })
 
@@ -109,6 +110,40 @@ describe("Shipping", () => {
       })
 
       component.find("Button").simulate("click")
+
+      expect.hasAssertions()
+    })
+  })
+
+  describe("with previously filled-in data", () => {
+    beforeEach(() => {
+      testProps.order.requestedFulfillment = {
+        __typename: "Ship",
+        name: "Dr Collector",
+      }
+    })
+    it("includes already-filled-in data if available", () => {
+      const component = getWrapper(testProps)
+
+      const input = component
+        .find(Input)
+        .filterWhere(
+          wrapper => (wrapper.props() as InputProps).title === "Full name"
+        )
+
+      expect((input.props() as InputProps).defaultValue).toBe(
+        testProps.order.requestedFulfillment.name
+      )
+    })
+
+    it("includes already-filled-in data in mutation if re-sent", () => {
+      const component = getWrapper(testProps)
+      const mockCommitMutation = commitMutation as jest.Mock<any>
+      mockCommitMutation.mockImplementationOnce((_environment, config) => {
+        expect(config.variables.input.shipping.name).toBe("Dr Collector")
+      })
+
+      component.find(Button).simulate("click")
 
       expect.hasAssertions()
     })

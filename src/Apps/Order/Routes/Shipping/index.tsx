@@ -3,6 +3,7 @@ import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
 import { Helper } from "Apps/Order/Components/Helper"
 import { TransactionSummaryFragmentContainer as TransactionSummary } from "Apps/Order/Components/TransactionSummary"
 import { Router } from "found"
+import { pick } from "lodash"
 import React, { Component } from "react"
 import { Collapse } from "Styleguide/Components"
 import { Responsive } from "Utils/Responsive"
@@ -52,13 +53,17 @@ export interface ShippingState {
 }
 
 export class ShippingRoute extends Component<ShippingProps, ShippingState> {
-  // TODO: Fill in with Relay data on load.
-  // See: https://artsyproduct.atlassian.net/browse/PURCHASE-376
   state = {
-    shippingOption: "SHIP" as OrderFulfillmentType,
+    shippingOption: ((this.props.order.requestedFulfillment &&
+      this.props.order.requestedFulfillment.__typename.toUpperCase()) ||
+      "SHIP") as OrderFulfillmentType,
     address: {
       ...emptyAddress,
       country: "US",
+      // We need to pull out _only_ the values specified by the Address type,
+      // since our state will be used for Relay variables later on. The
+      // easiest way to do this is with the emptyAddress.
+      ...pick(this.props.order.requestedFulfillment, Object.keys(emptyAddress)),
     },
     isComittingMutation: false,
   }
@@ -128,7 +133,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                     onSelect={(shippingOption: OrderFulfillmentType) =>
                       this.setState({ shippingOption })
                     }
-                    defaultValue="SHIP"
+                    defaultValue={this.state.shippingOption}
                   >
                     <BorderedRadio value="SHIP">
                       Provide shipping address
@@ -202,6 +207,19 @@ export const ShippingFragmentContainer = createFragmentContainer(
   graphql`
     fragment Shipping_order on Order {
       id
+      requestedFulfillment {
+        __typename
+        ... on Ship {
+          name
+          addressLine1
+          addressLine2
+          city
+          region
+          country
+          postalCode
+          phoneNumber
+        }
+      }
       lineItems {
         edges {
           node {
