@@ -21,13 +21,13 @@ exports[`ErrorPage snapshots renders correctly 1`] = `
 }
 
 .c5 {
+  cursor: pointer;
   position: relative;
   border: 2px solid;
   border-radius: 3px;
   padding-left: 30px;
   padding-right: 30px;
   height: 50px;
-  cursor: pointer;
   -webkit-transition: 0.25s ease;
   transition: 0.25s ease;
   background-color: #000;
