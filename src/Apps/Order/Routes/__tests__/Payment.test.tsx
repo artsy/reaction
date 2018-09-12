@@ -1,14 +1,14 @@
-import { Sans, Checkbox, CheckboxProps } from "@artsy/palette"
+import { Checkbox, CheckboxProps, Sans } from "@artsy/palette"
 import { mount } from "enzyme"
 import React from "react"
 
 import { OrderWithShippingDetails } from "Apps/__test__/Fixtures/Order"
+import { AddressForm } from "../../Components/AddressForm"
+import { CreditCardInput } from "../../Components/CreditCardInput"
 import {
   creatingCreditCardSuccess,
   settingOrderPaymentSuccess,
-} from "./Fixtures/MutationResults"
-import { AddressForm } from "../../Components/AddressForm"
-import { CreditCardInput } from "../../Components/CreditCardInput"
+} from "../__fixtures__/MutationResults"
 import { ContinueButton, PaymentProps, PaymentRoute } from "../Payment"
 
 jest.mock("react-relay", () => ({
