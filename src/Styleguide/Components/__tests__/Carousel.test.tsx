@@ -1,6 +1,6 @@
-import { Boot } from "Artsy/Router"
 import { mount } from "enzyme"
 import React from "react"
+import { MockBoot } from "Utils/MockBoot"
 import { Carousel, LargeCarousel, SmallCarousel } from "../Carousel"
 
 describe("Carousel", () => {
@@ -10,26 +10,26 @@ describe("Carousel", () => {
 
   it("is responsive", () => {
     const small = mount(
-      <Boot initialMatchingMediaQueries={["xs"]}>
+      <MockBoot breakpoint="xs">
         <Carousel
           data={[{ name: "foo" }]}
           render={props => {
             return <div />
           }}
         />
-      </Boot>
+      </MockBoot>
     )
     expect(small.find(SmallCarousel).length).toEqual(1)
 
     const large = mount(
-      <Boot initialMatchingMediaQueries={["lg"]}>
+      <MockBoot breakpoint="lg">
         <Carousel
           data={[{ name: "foo" }]}
           render={props => {
             return <div />
           }}
         />
-      </Boot>
+      </MockBoot>
     )
     expect(large.find(LargeCarousel).length).toEqual(1)
   })
@@ -38,14 +38,14 @@ describe("Carousel", () => {
     const Foo = ({ name }) => <div>hello {name} how are you</div>
 
     const wrapper = mount(
-      <Boot>
+      <MockBoot>
         <Carousel
           data={[{ name: "name1" }, { name: "name2" }]}
           render={props => {
             return <Foo {...props} />
           }}
         />
-      </Boot>
+      </MockBoot>
     )
     expect(wrapper.find(Foo).length).toEqual(2)
     expect(

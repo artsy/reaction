@@ -1,3 +1,5 @@
+import { Pagination_pageCursors } from "__generated__/Pagination_pageCursors.graphql"
+
 export const paginationProps = {
   cursor: {
     first: { page: 1, cursor: "Y3Vyc29yMg==", isCurrent: false },
@@ -9,7 +11,8 @@ export const paginationProps = {
       { page: 9, cursor: "Y3Vyc29yMw==", isCurrent: false },
     ],
     previous: { page: 5, cursor: "Y3Vyc29yMw==", isCurrent: false },
-  },
+    " $refType": null,
+  } as Pagination_pageCursors,
   callbacks: {
     onClick: () => {
       /* */

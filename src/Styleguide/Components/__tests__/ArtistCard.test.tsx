@@ -1,12 +1,13 @@
-import { Boot } from "Artsy/Router"
-import { MatchingMediaQueries } from "Artsy/Router/types"
+import { ArtistCard_artist } from "__generated__/ArtistCard_artist.graphql"
 import { mount } from "enzyme"
 import { set } from "lodash/fp"
 import React from "react"
+import { MockBoot } from "Utils/MockBoot"
+import { Breakpoint } from "Utils/Responsive"
 import { ArtistCard, LargeArtistCard, SmallArtistCard } from "../ArtistCard"
 
 describe("ArtistCard", () => {
-  const props = {
+  const props: { user: null; artist: ArtistCard_artist } = {
     user: null,
     artist: {
       image: {
@@ -18,39 +19,39 @@ describe("ArtistCard", () => {
       name: "Francesca DiMattio",
       formatted_nationality_and_birthday: "American, b. 1979",
       id: "percy",
+      " $fragmentRefs": null,
+      " $refType": null,
     },
   }
 
   beforeAll(() => {
-    window.matchMedia = undefined // Immediately set matching media query in Boot
+    window.matchMedia = undefined // Immediately set matching media query in MockBoot
   })
 
   it("is responsive", () => {
     const small = mount(
-      <Boot initialMatchingMediaQueries={["xs"]}>
+      <MockBoot breakpoint="xs">
         <ArtistCard {...props} />
-      </Boot>
+      </MockBoot>
     )
     expect(small.find(SmallArtistCard).length).toEqual(1)
 
     const large = mount(
-      <Boot initialMatchingMediaQueries={["lg"]}>
+      <MockBoot breakpoint="lg">
         <ArtistCard {...props} />
-      </Boot>
+      </MockBoot>
     )
     expect(large.find(LargeArtistCard).length).toEqual(1)
   })
 
   it("hides avatar if no image is provided", () => {
-    ;["xs", "lg"].forEach(breakpoint => {
+    ;["xs" as Breakpoint, "lg" as Breakpoint].forEach(breakpoint => {
       const updatedProps: any = set("artist.image", undefined, props)
 
       const wrapper = mount(
-        <Boot
-          initialMatchingMediaQueries={[breakpoint] as MatchingMediaQueries}
-        >
+        <MockBoot breakpoint={breakpoint}>
           <ArtistCard {...updatedProps} />
-        </Boot>
+        </MockBoot>
       )
 
       expect(wrapper.find("Avatar").length).toEqual(0)

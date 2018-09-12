@@ -1,13 +1,13 @@
-import { Boot } from "Artsy/Router"
 import { StorybooksRouter } from "Artsy/Router"
 import { mount } from "enzyme"
 import React from "react"
+import { MockBoot } from "Utils/MockBoot"
 import { RouteTab, RouteTabs } from "../RouteTabs"
 
 describe("RouteTabs", () => {
   const getWrapper = () => {
     return mount(
-      <Boot>
+      <MockBoot>
         <StorybooksRouter
           initialRoute="/cv"
           routes={[
@@ -36,7 +36,7 @@ describe("RouteTabs", () => {
             },
           ]}
         />
-      </Boot>
+      </MockBoot>
     )
   }
 
