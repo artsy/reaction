@@ -1,6 +1,6 @@
-import { Boot } from "Artsy/Router"
 import { mount } from "enzyme"
 import React from "react"
+import { MockBoot } from "Utils/MockBoot"
 import { AuctionCard, LargeAuctionCard, SmallAuctionCard } from "../AuctionCard"
 
 describe("AuctionCard", () => {
@@ -17,16 +17,16 @@ describe("AuctionCard", () => {
 
   it("is responsive", () => {
     const small = mount(
-      <Boot initialMatchingMediaQueries={["xs"]}>
+      <MockBoot breakpoint="xs">
         <AuctionCard {...props} />
-      </Boot>
+      </MockBoot>
     )
     expect(small.find(SmallAuctionCard).length).toEqual(1)
 
     const large = mount(
-      <Boot initialMatchingMediaQueries={["lg"]}>
+      <MockBoot breakpoint="lg">
         <AuctionCard {...props} />
-      </Boot>
+      </MockBoot>
     )
     expect(large.find(LargeAuctionCard).length).toEqual(1)
   })

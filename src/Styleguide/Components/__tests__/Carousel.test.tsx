@@ -1,51 +1,51 @@
-import { Boot } from "Artsy/Router"
 import { mount } from "enzyme"
 import React from "react"
-import { LargeSlider, Slider, SmallSlider } from "../Slider"
+import { MockBoot } from "Utils/MockBoot"
+import { Carousel, LargeCarousel, SmallCarousel } from "../Carousel"
 
-describe("Slider", () => {
+describe("Carousel", () => {
   beforeAll(() => {
     window.matchMedia = undefined // Immediately set matching media query in Boot
   })
 
   it("is responsive", () => {
     const small = mount(
-      <Boot initialMatchingMediaQueries={["xs"]}>
-        <Slider
+      <MockBoot breakpoint="xs">
+        <Carousel
           data={[{ name: "foo" }]}
           render={props => {
             return <div />
           }}
         />
-      </Boot>
+      </MockBoot>
     )
-    expect(small.find(SmallSlider).length).toEqual(1)
+    expect(small.find(SmallCarousel).length).toEqual(1)
 
     const large = mount(
-      <Boot initialMatchingMediaQueries={["lg"]}>
-        <Slider
+      <MockBoot breakpoint="lg">
+        <Carousel
           data={[{ name: "foo" }]}
           render={props => {
             return <div />
           }}
         />
-      </Boot>
+      </MockBoot>
     )
-    expect(large.find(LargeSlider).length).toEqual(1)
+    expect(large.find(LargeCarousel).length).toEqual(1)
   })
 
   it("renders any kind of react element and iterates over data", () => {
     const Foo = ({ name }) => <div>hello {name} how are you</div>
 
     const wrapper = mount(
-      <Boot>
-        <Slider
+      <MockBoot>
+        <Carousel
           data={[{ name: "name1" }, { name: "name2" }]}
           render={props => {
             return <Foo {...props} />
           }}
         />
-      </Boot>
+      </MockBoot>
     )
     expect(wrapper.find(Foo).length).toEqual(2)
     expect(
