@@ -14,7 +14,6 @@ export default class AnalyticsProvider extends React.Component<any> {
       ...remainingProps
     } = this.props
 
-    console.log("tracking:", tracking)
     return (
       <Provider
         inject={[

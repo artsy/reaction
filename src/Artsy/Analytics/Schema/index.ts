@@ -15,16 +15,11 @@ export * from "./Values"
 
 import { ContextModule } from "./ContextModule"
 import { ContextPage } from "./ContextPage"
-import {
-  AuthenticationInteraction,
-  CollectInteraction,
-  Interaction,
-} from "./Interaction"
+import { AuthenticationInteraction, Interaction } from "./Interaction"
 import { Failure, Success } from "./Result"
 
 export type Trackables =
   | AuthenticationInteraction
-  | CollectInteraction
   | ContextModule
   | ContextPage
   | Interaction

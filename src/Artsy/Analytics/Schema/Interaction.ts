@@ -1,4 +1,3 @@
-import { State as CollectParamValues } from "Apps/Collect/FilterState"
 import { ActionName, ActionType } from "./Values"
 
 /**
@@ -52,16 +51,4 @@ export interface AuthenticationInteraction extends Interaction {
   *  The type of action that triggered the modal (eg: click, timed)
   */
   trigger?: string
-}
-
-export interface CollectInteraction {
-  /*
-  * The action taken that prompted user to signup or login.
-  */
-  current: CollectParamValues
-
-  /*
-  * Flow
-  */
-  changed: object
 }
