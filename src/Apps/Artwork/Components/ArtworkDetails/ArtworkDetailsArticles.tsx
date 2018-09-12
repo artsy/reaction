@@ -1,11 +1,24 @@
 import { Box } from "@artsy/palette"
 import React from "react"
-import { createFragmentContainer, graphql } from "react-relay"
 
-import { ArtworkDetailsArticles_artwork } from "__generated__/ArtworkDetailsArticles_artwork.graphql"
-
-export interface ArtworkDetailsArticlesProps {
-  artwork: ArtworkDetailsArticles_artwork
+interface ArtworkDetailsArticlesArtwork {
+  readonly articles: ReadonlyArray<{
+    readonly title?: string
+    readonly href?: string
+    readonly thumbnail?: {
+      readonly image?: {
+        readonly width: number
+        readonly height: number
+        readonly url: string
+      }
+    }
+    readonly author?: {
+      readonly name: string
+    }
+  }>
+}
+interface ArtworkDetailsArticlesProps {
+  artwork: ArtworkDetailsArticlesArtwork
 }
 
 export class ArtworkDetailsArticles extends React.Component<
@@ -19,25 +32,3 @@ export class ArtworkDetailsArticles extends React.Component<
     return <Box>{articles.length}</Box>
   }
 }
-
-export const ArtworkDetailsArticlesFragmentContainer = createFragmentContainer(
-  ArtworkDetailsArticles,
-  graphql`
-    fragment ArtworkDetailsArticles_artwork on Artwork {
-      articles(size: 2) {
-        title
-        href
-        thumbnail: thumbnail_image {
-          image: cropped(width: 150, height: 100) {
-            width
-            height
-            url
-          }
-        }
-        author {
-          name
-        }
-      }
-    }
-  `
-)

@@ -1,11 +1,16 @@
 import { Box, Sans, StackableBorderBox } from "@artsy/palette"
 import React from "react"
-import { createFragmentContainer, graphql } from "react-relay"
 
-import { ArtworkDetailsAdditionalInfo_artwork } from "__generated__/ArtworkDetailsAdditionalInfo_artwork.graphql"
+interface ArtworkDetailsAdditionalInfoArtwork {
+  readonly series?: string
+  readonly publisher?: string
+  readonly manufacturer?: string
+  readonly provenance?: string
+  readonly image_rights?: string
+}
 
-export interface ArtworkDetailsAdditionalInfoProps {
-  artwork: ArtworkDetailsAdditionalInfo_artwork
+interface ArtworkDetailsAdditionalInfoProps {
+  artwork: ArtworkDetailsAdditionalInfoArtwork
 }
 
 export class ArtworkDetailsAdditionalInfo extends React.Component<
@@ -28,13 +33,19 @@ export class ArtworkDetailsAdditionalInfo extends React.Component<
   }
 
   render() {
-    const { artwork } = this.props
+    const {
+      series,
+      publisher,
+      manufacturer,
+      provenance,
+      image_rights,
+    } = this.props.artwork
     if (
-      !artwork.series &&
-      !artwork.publisher &&
-      !artwork.manufacturer &&
-      !artwork.provenance &&
-      !artwork.image_rights
+      !series &&
+      !publisher &&
+      !manufacturer &&
+      !provenance &&
+      !image_rights
     ) {
       return null
     }
@@ -46,29 +57,13 @@ export class ArtworkDetailsAdditionalInfo extends React.Component<
               Additional info
             </Sans>
           </Box>
-          {artwork.series && this.renderRow("Series", artwork.series)}
-          {artwork.publisher && this.renderRow("Publisher", artwork.publisher)}
-          {artwork.manufacturer &&
-            this.renderRow("Manufacturer", artwork.manufacturer)}
-          {artwork.provenance &&
-            this.renderRow("Provenance", artwork.provenance)}
-          {artwork.image_rights &&
-            this.renderRow("Image rights", artwork.image_rights)}
+          {series && this.renderRow("Series", series)}
+          {publisher && this.renderRow("Publisher", publisher)}
+          {manufacturer && this.renderRow("Manufacturer", manufacturer)}
+          {provenance && this.renderRow("Provenance", provenance)}
+          {image_rights && this.renderRow("Image rights", image_rights)}
         </Box>
       </StackableBorderBox>
     )
   }
 }
-
-export const ArtworkDetailsAdditionalInfoFragmentContainer = createFragmentContainer(
-  ArtworkDetailsAdditionalInfo,
-  graphql`
-    fragment ArtworkDetailsAdditionalInfo_artwork on Artwork {
-      series
-      publisher
-      manufacturer
-      provenance
-      image_rights
-    }
-  `
-)

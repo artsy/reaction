@@ -28,26 +28,12 @@ query ArtworkDetailsQuery(
 }
 
 fragment ArtworkDetails_artwork on Artwork {
-  ...ArtworkDetailsAboutTheWork_artwork
-  ...ArtworkDetailsChecklist_artwork
-  ...ArtworkDetailsAdditionalInfo_artwork
-  ...ArtworkDetailsArticles_artwork
-  literature
-  exhibition_history
-  __id
-}
-
-fragment ArtworkDetailsAboutTheWork_artwork on Artwork {
   additional_information
   description
   partner {
     name
     __id
   }
-  __id
-}
-
-fragment ArtworkDetailsChecklist_artwork on Artwork {
   framed {
     label
     details
@@ -64,20 +50,12 @@ fragment ArtworkDetailsChecklist_artwork on Artwork {
     label
     details
   }
-  __id
-}
-
-fragment ArtworkDetailsAdditionalInfo_artwork on Artwork {
   series
   publisher
   manufacturer
   provenance
   image_rights
-  __id
-}
-
-fragment ArtworkDetailsArticles_artwork on Artwork {
-  articles(size: 2) {
+  articles(size: 10) {
     title
     href
     thumbnail: thumbnail_image {
@@ -93,6 +71,8 @@ fragment ArtworkDetailsArticles_artwork on Artwork {
     }
     __id
   }
+  literature
+  exhibition_history
   __id
 }
 */
@@ -152,7 +132,7 @@ return {
   "operationKind": "query",
   "name": "ArtworkDetailsQuery",
   "id": null,
-  "text": "query ArtworkDetailsQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...ArtworkDetails_artwork\n    __id\n  }\n}\n\nfragment ArtworkDetails_artwork on Artwork {\n  ...ArtworkDetailsAboutTheWork_artwork\n  ...ArtworkDetailsChecklist_artwork\n  ...ArtworkDetailsAdditionalInfo_artwork\n  ...ArtworkDetailsArticles_artwork\n  literature\n  exhibition_history\n  __id\n}\n\nfragment ArtworkDetailsAboutTheWork_artwork on Artwork {\n  additional_information\n  description\n  partner {\n    name\n    __id\n  }\n  __id\n}\n\nfragment ArtworkDetailsChecklist_artwork on Artwork {\n  framed {\n    label\n    details\n  }\n  signatureInfo {\n    label\n    details\n  }\n  conditionDescription {\n    label\n    details\n  }\n  certificateOfAuthenticity {\n    label\n    details\n  }\n  __id\n}\n\nfragment ArtworkDetailsAdditionalInfo_artwork on Artwork {\n  series\n  publisher\n  manufacturer\n  provenance\n  image_rights\n  __id\n}\n\nfragment ArtworkDetailsArticles_artwork on Artwork {\n  articles(size: 2) {\n    title\n    href\n    thumbnail: thumbnail_image {\n      image: cropped(width: 150, height: 100) {\n        width\n        height\n        url\n      }\n    }\n    author {\n      name\n      __id\n    }\n    __id\n  }\n  __id\n}\n",
+  "text": "query ArtworkDetailsQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...ArtworkDetails_artwork\n    __id\n  }\n}\n\nfragment ArtworkDetails_artwork on Artwork {\n  additional_information\n  description\n  partner {\n    name\n    __id\n  }\n  framed {\n    label\n    details\n  }\n  signatureInfo {\n    label\n    details\n  }\n  conditionDescription {\n    label\n    details\n  }\n  certificateOfAuthenticity {\n    label\n    details\n  }\n  series\n  publisher\n  manufacturer\n  provenance\n  image_rights\n  articles(size: 10) {\n    title\n    href\n    thumbnail: thumbnail_image {\n      image: cropped(width: 150, height: 100) {\n        width\n        height\n        url\n      }\n    }\n    author {\n      name\n      __id\n    }\n    __id\n  }\n  literature\n  exhibition_history\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -197,7 +177,7 @@ return {
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "series",
+            "name": "publisher",
             "args": null,
             "storageKey": null
           },
@@ -218,7 +198,6 @@ return {
             "plural": false,
             "selections": v3
           },
-          v2,
           {
             "kind": "LinkedField",
             "alias": null,
@@ -262,14 +241,14 @@ return {
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "description",
+            "name": "series",
             "args": null,
             "storageKey": null
           },
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "publisher",
+            "name": "description",
             "args": null,
             "storageKey": null
           },
@@ -298,12 +277,12 @@ return {
             "kind": "LinkedField",
             "alias": null,
             "name": "articles",
-            "storageKey": "articles(size:2)",
+            "storageKey": "articles(size:10)",
             "args": [
               {
                 "kind": "Literal",
                 "name": "size",
-                "value": 2,
+                "value": 10,
                 "type": "Int"
               }
             ],
@@ -406,7 +385,8 @@ return {
             "name": "exhibition_history",
             "args": null,
             "storageKey": null
-          }
+          },
+          v2
         ]
       }
     ]

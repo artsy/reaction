@@ -2,12 +2,28 @@ import { Box, Sans, StackableBorderBox } from "@artsy/palette"
 import { Checkmark } from "Assets/Checkmark"
 import colors from "Assets/Colors"
 import React from "react"
-import { createFragmentContainer, graphql } from "react-relay"
 
-import { ArtworkDetailsChecklist_artwork } from "__generated__/ArtworkDetailsChecklist_artwork.graphql"
+interface ArtworkDetailsChecklistArtwork {
+  readonly framed?: {
+    readonly label: string
+    readonly details?: string
+  }
+  readonly signatureInfo?: {
+    readonly label: string
+    readonly details?: string
+  }
+  readonly conditionDescription?: {
+    readonly label: string
+    readonly details?: string
+  }
+  readonly certificateOfAuthenticity?: {
+    readonly label: string
+    readonly details?: string
+  }
+}
 
-export interface ArtworkDetailsChecklistProps {
-  artwork: ArtworkDetailsChecklist_artwork
+interface ArtworkDetailsChecklistProps {
+  artwork: ArtworkDetailsChecklistArtwork
 }
 
 export class ArtworkDetailsChecklist extends React.Component<
@@ -33,61 +49,38 @@ export class ArtworkDetailsChecklist extends React.Component<
   }
 
   render() {
-    const { artwork } = this.props
+    const {
+      framed,
+      signatureInfo,
+      conditionDescription,
+      certificateOfAuthenticity,
+    } = this.props.artwork
     if (
-      !artwork.framed &&
-      !artwork.signatureInfo &&
-      !artwork.conditionDescription &&
-      !artwork.certificateOfAuthenticity
+      !framed &&
+      !signatureInfo &&
+      !conditionDescription &&
+      !certificateOfAuthenticity
     ) {
       return null
     }
     return (
       <StackableBorderBox pb={3}>
         <Box>
-          {artwork.framed &&
-            this.renderRow(artwork.framed.label, artwork.framed.details)}
-          {artwork.signatureInfo &&
+          {framed && this.renderRow(framed.label, framed.details)}
+          {signatureInfo &&
+            this.renderRow(signatureInfo.label, signatureInfo.details)}
+          {conditionDescription &&
             this.renderRow(
-              artwork.signatureInfo.label,
-              artwork.signatureInfo.details
+              conditionDescription.label,
+              conditionDescription.details
             )}
-          {artwork.conditionDescription &&
+          {certificateOfAuthenticity &&
             this.renderRow(
-              artwork.conditionDescription.label,
-              artwork.conditionDescription.details
-            )}
-          {artwork.certificateOfAuthenticity &&
-            this.renderRow(
-              artwork.certificateOfAuthenticity.label,
-              artwork.certificateOfAuthenticity.details
+              certificateOfAuthenticity.label,
+              certificateOfAuthenticity.details
             )}
         </Box>
       </StackableBorderBox>
     )
   }
 }
-
-export const ArtworkDetailsChecklistFragmentContainer = createFragmentContainer(
-  ArtworkDetailsChecklist,
-  graphql`
-    fragment ArtworkDetailsChecklist_artwork on Artwork {
-      framed {
-        label
-        details
-      }
-      signatureInfo {
-        label
-        details
-      }
-      conditionDescription {
-        label
-        details
-      }
-      certificateOfAuthenticity {
-        label
-        details
-      }
-    }
-  `
-)

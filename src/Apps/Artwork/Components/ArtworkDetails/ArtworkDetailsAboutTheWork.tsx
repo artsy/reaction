@@ -1,44 +1,46 @@
 import { Box, Sans, Serif } from "@artsy/palette"
 import React from "react"
-import { createFragmentContainer, graphql } from "react-relay"
 import { ReadMore } from "Styleguide/Components"
 
-import { ArtworkDetailsAboutTheWork_artwork } from "__generated__/ArtworkDetailsAboutTheWork_artwork.graphql"
+interface ArtworkDetailsAboutTheWorkArtwork {
+  readonly additional_information?: string
+  readonly description?: string
+  readonly partner?: {
+    readonly name?: string
+  }
+}
 
-export interface ArtworkDetailsAboutTheWorkProps {
-  artwork: ArtworkDetailsAboutTheWork_artwork
+interface ArtworkDetailsAboutTheWorkProps {
+  artwork: ArtworkDetailsAboutTheWorkArtwork
 }
 
 export class ArtworkDetailsAboutTheWork extends React.Component<
   ArtworkDetailsAboutTheWorkProps
 > {
   render() {
-    const { artwork } = this.props
-    if (!artwork.additional_information && !artwork.description) {
+    const { additional_information, description, partner } = this.props.artwork
+    if (!additional_information && !description) {
       return null
     }
     return (
       <Box pt={2}>
-        {artwork.additional_information && (
+        {additional_information && (
           <Box>
             <Sans size="3" weight="medium" pb={1}>
-              From {artwork.partner.name}
+              From {partner.name}
             </Sans>
             <Serif size="4" pb={2}>
-              <ReadMore
-                maxChars={300}
-                content={artwork.additional_information}
-              />
+              <ReadMore maxChars={300} content={additional_information} />
             </Serif>
           </Box>
         )}
-        {artwork.description && (
+        {description && (
           <Box pb={2}>
             <Sans size="3" weight="medium" pb={1}>
               From Artsy
             </Sans>
             <Serif size="4">
-              <ReadMore maxChars={300} content={artwork.description} />
+              <ReadMore maxChars={300} content={description} />
             </Serif>
           </Box>
         )}
@@ -46,16 +48,3 @@ export class ArtworkDetailsAboutTheWork extends React.Component<
     )
   }
 }
-
-export const ArtworkDetailsAboutTheWorkFragmentContainer = createFragmentContainer(
-  ArtworkDetailsAboutTheWork,
-  graphql`
-    fragment ArtworkDetailsAboutTheWork_artwork on Artwork {
-      additional_information
-      description
-      partner {
-        name
-      }
-    }
-  `
-)

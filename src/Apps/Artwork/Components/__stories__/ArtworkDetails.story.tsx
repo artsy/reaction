@@ -1,10 +1,7 @@
-import {
-  ArtworkDetails,
-  ArtworkDetailsQueryRenderer,
-} from "Apps/Artwork/Components/ArtworkDetails"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
+import { ArtworkDetails, ArtworkDetailsQueryRenderer } from "../ArtworkDetails"
 
 import { WithBothAboutConditionsAndAdditionalInfo } from "Apps/__test__/Fixtures/Artworks"
 import { RelayStubProvider } from "Utils/RelayStubProvider"
