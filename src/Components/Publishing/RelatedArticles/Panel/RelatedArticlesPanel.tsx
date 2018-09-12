@@ -61,6 +61,6 @@ const Collection = styled.div`
   flex-direction: column;
 `
 
-const Label = Sans.extend`
+const Label = styled(Sans)`
   margin-bottom: 10px;
 `

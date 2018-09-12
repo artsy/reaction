@@ -1,10 +1,7 @@
-import { Sans, Serif } from "@artsy/palette"
+import { Checkbox, Flex, Radio, Sans, Serif } from "@artsy/palette"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import styled from "styled-components"
-import { Checkbox } from "Styleguide/Elements/Checkbox"
-import { Flex } from "Styleguide/Elements/Flex"
-import { Radio } from "Styleguide/Elements/Radio"
 import { Section } from "Styleguide/Utils/Section"
 import { Toggle } from "../Toggle"
 

@@ -6,7 +6,7 @@ import { CollectAppFragmentContainer as CollectApp } from "./CollectApp"
 
 export const routes = [
   {
-    path: "/collect2",
+    path: "/collect2/:medium?",
     Component: CollectApp,
     query: graphql`
       query routes_CollectAppQuery(
@@ -43,15 +43,23 @@ export const routes = [
 
       const { __fragments, __id, ...remainingProps } = props
       return (
-        <Provider inject={[new FilterState(props.location.query)]}>
+        <Provider
+          inject={[
+            new FilterState({ ...props.params, ...props.location.query }),
+          ]}
+        >
           <Component {...remainingProps} query={{ __id, __fragments }} />
         </Provider>
       )
     },
     prepareVariables: (params, props) => {
-      // FIXME: The initial render includes `location` in props, but subsequent
-      // renders (such as tabbing back to this route in your browser) will not.
       const initialFilterState = props.location ? props.location.query : {}
+      if (params.medium) {
+        initialFilterState.medium = params.medium
+        if (props.location.query) {
+          props.location.query.medium = params.medium
+        }
+      }
       return { ...initialFilterState, ...params }
     },
   },

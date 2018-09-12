@@ -1,9 +1,9 @@
+import { Box } from "@artsy/palette"
 import { ArtistArticles_artist } from "__generated__/ArtistArticles_artist.graphql"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import styled from "styled-components"
 import { PaginationFragmentContainer as Pagination } from "Styleguide/Components"
-import { Box } from "Styleguide/Elements/Box"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { ArticleItem } from "./ArtistArticle"
 
@@ -158,7 +158,7 @@ export const ArtistArticlesRefetchContainer = createRefetchContainer(
               author {
                 name
               }
-              published_at(format: "MMM d, YYYY")
+              published_at(format: "MMM Do, YYYY")
               thumbnail_image {
                 resized(width: 300) {
                   url

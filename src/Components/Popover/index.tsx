@@ -42,7 +42,7 @@ const PopoverArrow = styled.div.attrs<PopoverArrowPositionProps>({})`
   border-style: solid;
 `
 
-const PopoverTopArrow = PopoverArrow.extend`
+const PopoverTopArrow = styled(PopoverArrow)`
   bottom: 0;
   left: ${({ arrowOffsetLeft }) => arrowOffsetLeft || "50%"};
   margin-left: -5px;
@@ -50,7 +50,7 @@ const PopoverTopArrow = PopoverArrow.extend`
   border-top-color: #000;
 `
 
-const PopoverRightArrow = PopoverArrow.extend`
+const PopoverRightArrow = styled(PopoverArrow)`
   top: ${({ arrowOffsetTop }) => arrowOffsetTop || "50%"};
   left: 0;
   margin-top: -5px;
@@ -58,7 +58,7 @@ const PopoverRightArrow = PopoverArrow.extend`
   border-right-color: #000;
 `
 
-const PopoverBottomArrow = PopoverArrow.extend`
+const PopoverBottomArrow = styled(PopoverArrow)`
   top: 0;
   left: ${({ arrowOffsetLeft }) => arrowOffsetLeft || "50%"};
   margin-left: -5px;
@@ -66,7 +66,7 @@ const PopoverBottomArrow = PopoverArrow.extend`
   border-bottom-color: #000;
 `
 
-const PopoverLeftArrow = PopoverArrow.extend`
+const PopoverLeftArrow = styled(PopoverArrow)`
   top: ${({ arrowOffsetTop }) => arrowOffsetTop || "50%"};
   right: 0;
   margin-top: -5px;

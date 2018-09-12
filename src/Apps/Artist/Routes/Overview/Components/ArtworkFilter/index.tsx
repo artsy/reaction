@@ -1,5 +1,3 @@
-import { Sans } from "@artsy/palette"
-import { color } from "@artsy/palette"
 import { ArtworkFilter_artist } from "__generated__/ArtworkFilter_artist.graphql"
 import { FilterState } from "Apps/Artist/Routes/Overview/state"
 import { ContextConsumer } from "Artsy/SystemContext"
@@ -18,13 +16,15 @@ import {
   Box,
   Button,
   Checkbox,
+  color,
   Flex,
   Message,
   Radio,
+  Sans,
   Separator,
   SmallSelect,
   Spacer,
-} from "Styleguide/Elements"
+} from "@artsy/palette"
 
 interface Props {
   artist: ArtworkFilter_artist
@@ -216,7 +216,7 @@ class Filter extends Component<Props> {
     } = this.props
 
     return (
-      <Message size={xs ? "3t" : "5t"} justifyContent="center">
+      <Message textSize={xs ? "3t" : "5t"} justifyContent="center">
         There aren’t any works available by the artist at this time.{" "}
         {!is_followed && (
           <>

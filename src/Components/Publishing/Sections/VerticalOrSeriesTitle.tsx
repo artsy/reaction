@@ -1,5 +1,6 @@
 import { Sans } from "@artsy/palette"
 import React from "react"
+import styled from "styled-components"
 import { getEditorialHref } from "../Constants"
 import { ArticleData } from "../Typings"
 
@@ -37,7 +38,7 @@ export const VerticalOrSeriesTitle: React.SFC<Props> = props => {
   )
 }
 
-export const Vertical = Sans.extend`
+export const Vertical = styled(Sans)`
   a {
     color: ${props => props.color || "black"};
     text-decoration: none;

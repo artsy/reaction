@@ -1,10 +1,7 @@
-import { Sans, Serif } from "@artsy/palette"
+import { Box, Flex, Sans, Serif, Spacer } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
-import { Box } from "Styleguide/Elements/Box"
-import { Flex } from "Styleguide/Elements/Flex"
 import { Col, Row } from "Styleguide/Elements/Grid"
-import { Spacer } from "Styleguide/Elements/Spacer"
 import { Responsive } from "Utils/Responsive"
 
 export const CV = () => {

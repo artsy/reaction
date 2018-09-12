@@ -1,16 +1,13 @@
-import { Sans, Serif, space } from "@artsy/palette"
+import { Flex, Sans, Separator, Serif, space, Spacer } from "@artsy/palette"
 import { ContextConsumer } from "Artsy/Router"
 import React from "react"
 import styled from "styled-components"
 import { FlexDirectionProps } from "styled-system"
-import { Flex } from "Styleguide/Elements/Flex"
 import { WeChatIcon } from "Styleguide/Elements/icons"
 import { FacebookIcon } from "Styleguide/Elements/icons/FacebookIcon"
 import { InstagramIcon } from "Styleguide/Elements/icons/InstagramIcon"
 import { TwitterIcon } from "Styleguide/Elements/icons/TwitterIcon"
 import { Mark } from "Styleguide/Elements/Logo"
-import { Separator } from "Styleguide/Elements/Separator"
-import { Spacer } from "Styleguide/Elements/Spacer"
 import { Responsive } from "Utils/Responsive"
 
 interface Props {

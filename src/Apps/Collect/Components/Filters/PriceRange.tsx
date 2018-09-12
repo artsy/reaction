@@ -1,12 +1,16 @@
-import { Sans, Serif } from "@artsy/palette"
+import {
+  Flex,
+  Sans,
+  Separator,
+  Serif,
+  Slider,
+  SliderProps,
+} from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
 import { space, SpaceProps } from "styled-system"
-import { Flex } from "Styleguide/Elements/Flex"
-import { Range, RangeProps } from "Styleguide/Elements/Range"
-import { Separator } from "Styleguide/Elements/Separator"
 
-interface PriceRangeProps extends RangeProps {
+interface PriceRangeProps extends SliderProps {
   currency?: string
 }
 
@@ -61,7 +65,7 @@ export class PriceRange extends React.Component<
         </Header>
 
         <Flex flexDirection="column" alignItems="left" mt={-1} mb={1}>
-          <Range my={1} mx={1} {...this.props} onChange={this.updateMinMax} />
+          <Slider my={1} mx={1} {...this.props} onChange={this.updateMinMax} />
         </Flex>
       </Flex>
     )

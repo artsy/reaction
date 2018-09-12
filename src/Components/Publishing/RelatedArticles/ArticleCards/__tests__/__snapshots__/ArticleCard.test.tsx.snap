@@ -255,7 +255,7 @@ exports[`ArticleCard renders an article with children properly 1`] = `
   line-height: 20px;
 }
 
-.c10 {
+.c11 {
   width: 32px;
   height: 32px;
 }
@@ -344,7 +344,7 @@ exports[`ArticleCard renders an article with children properly 1`] = `
   margin-right: 5px;
 }
 
-.c9 {
+.c10 {
   position: absolute;
   left: 20px;
   bottom: 20px;
@@ -479,10 +479,10 @@ exports[`ArticleCard renders an article with children properly 1`] = `
       image
     </div>
     <div
-      className="c9"
+      className="c9 c10"
     >
       <svg
-        className="c10"
+        className="c11"
         version="1.1"
         viewBox="0 0 40 56"
         x="0px"
@@ -531,7 +531,7 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
   white-space: nowrap;
 }
 
-.c12 {
+.c13 {
   width: 32px;
   height: 32px;
 }
@@ -615,7 +615,7 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
   -webkit-font-smoothing: antialiased;
 }
 
-.c11 {
+.c12 {
   position: absolute;
   left: 20px;
   bottom: 20px;
@@ -745,10 +745,10 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
       src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
     />
     <div
-      className="c11"
+      className="c11 c12"
     >
       <svg
-        className="c12"
+        className="c13"
         version="1.1"
         viewBox="0 0 40 56"
         x="0px"

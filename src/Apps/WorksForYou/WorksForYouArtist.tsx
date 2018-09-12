@@ -1,4 +1,4 @@
-import { Sans, Serif, themeProps } from "@artsy/palette"
+import { Box, Flex, Image, Sans, Serif, themeProps } from "@artsy/palette"
 import { WorksForYouArtist_viewer } from "__generated__/WorksForYouArtist_viewer.graphql"
 import { ContextProps } from "Artsy"
 import ArtworkGrid from "Components/ArtworkGrid"
@@ -11,9 +11,6 @@ import {
   RelayPaginationProp,
 } from "react-relay"
 import styled from "styled-components"
-import { Box } from "Styleguide/Elements/Box"
-import { Flex } from "Styleguide/Elements/Flex"
-import { Image } from "Styleguide/Elements/Image"
 
 interface Props extends ContextProps {
   relay?: RelayPaginationProp

@@ -6,13 +6,16 @@ describe("ShippingAddress", () => {
   it("shows the given shipping address", () => {
     const shippingAddress = render(
       <ShippingAddress
-        name="Yuki Nishijima"
-        addressLine1="401 Broadway"
-        addressLine2="Suite 25"
-        city="New York"
-        postalCode="10013"
-        region="NY"
-        country="US"
+        ship={{
+          name: "Yuki Nishijima",
+          addressLine1: "401 Broadway",
+          addressLine2: "Suite 25",
+          city: "New York",
+          postalCode: "10013",
+          phoneNumber: "10013",
+          region: "NY",
+          country: "US",
+        }}
       />
     )
 
@@ -27,13 +30,16 @@ describe("ShippingAddress", () => {
   it("ignores addressLine2if it is blank or null", () => {
     const shippingAddressWithBlankAddressLine2 = render(
       <ShippingAddress
-        name="Yuki Nishijima"
-        addressLine1="401 Broadway"
-        addressLine2=" "
-        city="New York"
-        postalCode="10013"
-        region="NY"
-        country="US"
+        ship={{
+          name: "Yuki Nishijima",
+          addressLine1: "401 Broadway",
+          addressLine2: " ",
+          city: "New York",
+          postalCode: "10013",
+          phoneNumber: "10013",
+          region: "NY",
+          country: "US",
+        }}
       />
     )
 
@@ -44,13 +50,16 @@ describe("ShippingAddress", () => {
 
     const shippingAddressWithoutAddressLine2 = render(
       <ShippingAddress
-        name="Yuki Nishijima"
-        addressLine1="401 Broadway"
-        addressLine2={null}
-        city="New York"
-        postalCode="10013"
-        region="NY"
-        country="US"
+        ship={{
+          name: "Yuki Nishijima",
+          addressLine1: "401 Broadway",
+          addressLine2: null,
+          city: "New York",
+          postalCode: "10013",
+          phoneNumber: "10013",
+          region: "NY",
+          country: "US",
+        }}
       />
     )
 

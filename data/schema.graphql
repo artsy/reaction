@@ -5872,9 +5872,6 @@ input SetOrderShippingInput {
   # Fulfillment Type of this Order
   fulfillmentType: OrderFulfillmentType
 
-  # Shipping phone number
-  phoneNumber: String
-
   # Shipping information
   shipping: ShippingInputField
   clientMutationId: String
@@ -5906,6 +5903,9 @@ type Ship {
 
   # Shipping postal code
   postalCode: String
+
+  # Shipping phone number
+  phoneNumber: String
 }
 
 input ShippingInputField {
@@ -5929,6 +5929,9 @@ input ShippingInputField {
 
   # Shipping postal code
   postalCode: String
+
+  # Shipping phone number
+  phoneNumber: String
 }
 
 type Show implements Node {

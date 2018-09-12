@@ -1,6 +1,5 @@
+import { Button, ButtonProps } from "@artsy/palette"
 import React from "react"
-import { Button } from "Styleguide/Elements"
-import { ButtonProps } from "Styleguide/Elements/Button"
 
 interface Props {
   handleFollow?: any

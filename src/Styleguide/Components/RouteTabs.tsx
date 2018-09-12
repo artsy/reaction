@@ -1,8 +1,7 @@
-import { color, Sans, space } from "@artsy/palette"
+import { color, Flex, Sans, space } from "@artsy/palette"
 import { PreloadLink, PreloadLinkProps } from "Artsy/Router"
 import React from "react"
 import styled from "styled-components"
-import { Flex } from "Styleguide/Elements/Flex"
 import { styles } from "./Tabs"
 
 export const RouteTabs = styled(Flex)`

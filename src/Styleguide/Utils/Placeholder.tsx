@@ -1,6 +1,5 @@
-import { Sans } from "@artsy/palette"
+import { Flex, Sans } from "@artsy/palette"
 import React from "react"
-import { Flex } from "Styleguide/Elements/Flex"
 
 export const Placeholder = ({ name, ...props }) => (
   <Flex

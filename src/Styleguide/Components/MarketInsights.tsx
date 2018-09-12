@@ -1,4 +1,4 @@
-import { Sans } from "@artsy/palette"
+import { BorderBox, Box, Flex, Sans } from "@artsy/palette"
 import { MarketInsightsArtistPage_artist } from "__generated__/MarketInsightsArtistPage_artist.graphql"
 import {
   hasSections,
@@ -6,8 +6,6 @@ import {
 } from "Components/Artist/MarketInsights/MarketInsights"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { BorderBox, Box } from "Styleguide/Elements/Box"
-import { Flex } from "Styleguide/Elements/Flex"
 import { Responsive } from "Utils/Responsive"
 
 const wrapper = xs => props =>

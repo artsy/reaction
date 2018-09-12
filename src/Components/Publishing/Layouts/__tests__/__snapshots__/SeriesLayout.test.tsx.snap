@@ -90,7 +90,7 @@ exports[`renders a series properly 1`] = `
   text-decoration: none;
 }
 
-.c35 {
+.c36 {
   box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
@@ -118,7 +118,7 @@ exports[`renders a series properly 1`] = `
   padding-left: 0.5rem;
 }
 
-.c37 {
+.c38 {
   box-sizing: border-box;
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
@@ -127,7 +127,7 @@ exports[`renders a series properly 1`] = `
   padding-left: 0.5rem;
 }
 
-.c39 {
+.c40 {
   box-sizing: border-box;
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
@@ -143,11 +143,11 @@ exports[`renders a series properly 1`] = `
   line-height: 20px;
 }
 
-.c32 {
+.c33 {
   margin: 10px 20px 0 0;
 }
 
-.c32:before {
+.c33:before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -162,7 +162,7 @@ exports[`renders a series properly 1`] = `
   white-space: nowrap;
 }
 
-.c31 {
+.c32 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -177,7 +177,7 @@ exports[`renders a series properly 1`] = `
   color: white;
 }
 
-.c30 {
+.c31 {
   width: 32px;
   height: 32px;
 }
@@ -261,7 +261,7 @@ exports[`renders a series properly 1`] = `
   -webkit-font-smoothing: antialiased;
 }
 
-.c29 {
+.c30 {
   position: absolute;
   left: 20px;
   bottom: 20px;
@@ -324,12 +324,12 @@ exports[`renders a series properly 1`] = `
   z-index: -1;
 }
 
-.c40 {
+.c41 {
   position: relative;
   width: 100%;
 }
 
-.c40 a {
+.c41 a {
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -339,22 +339,22 @@ exports[`renders a series properly 1`] = `
   background-position: bottom;
 }
 
-.c40 a:hover {
+.c41 a:hover {
   color: white;
   opacity: .65;
 }
 
-.c40 div[class*='ToolTip'] a {
+.c41 div[class*='ToolTip'] a {
   background-image: none;
   opacity: 1;
   color: inherit;
 }
 
-.c40 p,
-.c40 ul,
-.c40 ol,
-.c40 .paragraph,
-.c40 div[data-block=true] .public-DraftStyleDefault-block {
+.c41 p,
+.c41 ul,
+.c41 ol,
+.c41 .paragraph,
+.c41 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -365,32 +365,32 @@ exports[`renders a series properly 1`] = `
   font-style: inherit;
 }
 
-.c40 p:first-child,
-.c40 .paragraph:first-child,
-.c40 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c41 p:first-child,
+.c41 .paragraph:first-child,
+.c41 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c40 p:last-child,
-.c40 .paragraph:last-child,
-.c40 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c41 p:last-child,
+.c41 .paragraph:last-child,
+.c41 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c40 ul,
-.c40 ol {
+.c41 ul,
+.c41 ol {
   padding-left: 1em;
 }
 
-.c40 ul {
+.c41 ul {
   list-style: disc;
 }
 
-.c40 ol {
+.c41 ol {
   list-style: decimal;
 }
 
-.c40 li {
+.c41 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -399,7 +399,7 @@ exports[`renders a series properly 1`] = `
   padding-bottom: .5em;
 }
 
-.c40 h1 {
+.c41 h1 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -412,7 +412,7 @@ exports[`renders a series properly 1`] = `
   text-align: center;
 }
 
-.c40 h1:before {
+.c41 h1:before {
   content: "";
   width: 8px;
   height: 8px;
@@ -423,7 +423,7 @@ exports[`renders a series properly 1`] = `
   right: calc(50% - 4px);
 }
 
-.c40 h2 {
+.c41 h2 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -432,15 +432,15 @@ exports[`renders a series properly 1`] = `
   margin: 0;
 }
 
-.c40 h2 a {
+.c41 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c40 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
+.c41 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
   background-position: bottom !important;
 }
 
-.c40 h3 {
+.c41 h3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -450,7 +450,7 @@ exports[`renders a series properly 1`] = `
   margin: 0;
 }
 
-.c40 h3 strong {
+.c41 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -458,11 +458,11 @@ exports[`renders a series properly 1`] = `
   line-height: 1.5em;
 }
 
-.c40 h3 a {
+.c41 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c40 blockquote {
+.c41 blockquote {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 40px;
   line-height: 1.1em;
@@ -475,7 +475,7 @@ exports[`renders a series properly 1`] = `
   word-break: break-word;
 }
 
-.c40 .content-end {
+.c41 .content-end {
   display: inline-block;
   content: "";
   width: 8px;
@@ -486,14 +486,14 @@ exports[`renders a series properly 1`] = `
   margin-bottom: 1px;
 }
 
-.c40 .artist-follow {
+.c41 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c40 .artist-follow:before {
+.c41 .artist-follow:before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -501,7 +501,7 @@ exports[`renders a series properly 1`] = `
   font-size: 32px;
 }
 
-.c40 .artist-follow:after {
+.c41 .artist-follow:after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -510,17 +510,17 @@ exports[`renders a series properly 1`] = `
   text-transform: none;
 }
 
-.c34 {
+.c35 {
   color: white;
   max-width: 1200px;
   width: 100%;
 }
 
-.c36 .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
+.c37 .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
   display: none;
 }
 
-.c36:first-of-type {
+.c37:first-of-type {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -534,12 +534,12 @@ exports[`renders a series properly 1`] = `
   flex-direction: column;
 }
 
-.c36:first-of-type .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
+.c37:first-of-type .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
   display: block;
   margin-bottom: 10px;
 }
 
-.c38 {
+.c39 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -579,7 +579,7 @@ exports[`renders a series properly 1`] = `
   margin-bottom: 90px;
 }
 
-.c11 .c33 {
+.c11 .c34 {
   padding-top: 60px;
 }
 
@@ -622,7 +622,7 @@ exports[`renders a series properly 1`] = `
 }
 
 @media only screen and (min-width:0em) {
-  .c37 {
+  .c38 {
     -webkit-flex-basis: 100%;
     -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
@@ -632,7 +632,7 @@ exports[`renders a series properly 1`] = `
 }
 
 @media only screen and (min-width:48em) {
-  .c37 {
+  .c38 {
     -webkit-flex-basis: 33.333333333333336%;
     -ms-flex-preferred-size: 33.333333333333336%;
     flex-basis: 33.333333333333336%;
@@ -642,7 +642,7 @@ exports[`renders a series properly 1`] = `
 }
 
 @media only screen and (min-width:0em) {
-  .c39 {
+  .c40 {
     -webkit-flex-basis: 100%;
     -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
@@ -652,7 +652,7 @@ exports[`renders a series properly 1`] = `
 }
 
 @media only screen and (min-width:48em) {
-  .c39 {
+  .c40 {
     -webkit-flex-basis: 66.66666666666667%;
     -ms-flex-preferred-size: 66.66666666666667%;
     flex-basis: 66.66666666666667%;
@@ -717,38 +717,38 @@ exports[`renders a series properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c40 p,
-  .c40 ul,
-  .c40 ol,
-  .c40 div[data-block=true] .public-DraftStyleDefault-block {
+  .c41 p,
+  .c41 ul,
+  .c41 ol,
+  .c41 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c40 li {
+  .c41 li {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c40 h1 {
+  .c41 h1 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c40 h2 {
+  .c41 h2 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c40 h3 {
+  .c41 h3 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -756,14 +756,14 @@ exports[`renders a series properly 1`] = `
     line-height: 1.5em;
   }
 
-  .c40 h3 strong {
+  .c41 h3 strong {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c40 blockquote {
+  .c41 blockquote {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
@@ -771,24 +771,24 @@ exports[`renders a series properly 1`] = `
     margin: 0;
   }
 
-  .c40 .content-start {
+  .c41 .content-start {
     font-size: 55px;
   }
 }
 
 @media (max-width:48em) {
-  .c36:first-of-type .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
+  .c37:first-of-type .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
     display: none;
   }
 
-  .c36 .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
+  .c37 .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
     margin-top: 60px;
     display: block;
   }
 }
 
 @media (max-width:48em) {
-  .c38 {
+  .c39 {
     margin-bottom: 20px;
   }
 }
@@ -810,7 +810,7 @@ exports[`renders a series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c11 .c33 {
+  .c11 .c34 {
     padding-top: 60px;
   }
 }
@@ -943,10 +943,10 @@ exports[`renders a series properly 1`] = `
               src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
             />
             <div
-              className="c29"
+              className="c29 c30"
             >
               <svg
-                className="c30"
+                className="c31"
                 version="1.1"
                 viewBox="0 0 40 56"
                 x="0px"
@@ -1018,7 +1018,7 @@ exports[`renders a series properly 1`] = `
               </div>
             </div>
             <div
-              className="Byline c31"
+              className="Byline c32"
               color="white"
             >
               <div
@@ -1032,7 +1032,7 @@ exports[`renders a series properly 1`] = `
                 fontSize={14}
               >
                 <div
-                  className="c32"
+                  className="c33"
                   color="white"
                 >
                   Casey Lesser
@@ -1068,26 +1068,26 @@ exports[`renders a series properly 1`] = `
       </div>
     </div>
     <div
-      className="c33 c34 c35"
+      className="c34 c35 c36"
       color="white"
     >
       <div
-        className="c36 c37"
+        className="c37 c38"
       >
         <div
-          className="c38"
+          className="c39"
         >
           About the Series
         </div>
       </div>
       <div
-        className="c36 c39"
+        className="c37 c40"
       >
         <div
           className="SeriesAbout__description"
         >
           <div
-            className="article__text-section c40"
+            className="article__text-section c41"
             color="white"
           >
             <div
@@ -1200,7 +1200,7 @@ exports[`renders a sponsored series properly 1`] = `
   text-decoration: none;
 }
 
-.c42 {
+.c43 {
   box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1228,7 +1228,7 @@ exports[`renders a sponsored series properly 1`] = `
   padding-left: 0.5rem;
 }
 
-.c44 {
+.c45 {
   box-sizing: border-box;
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
@@ -1237,7 +1237,7 @@ exports[`renders a sponsored series properly 1`] = `
   padding-left: 0.5rem;
 }
 
-.c46 {
+.c47 {
   box-sizing: border-box;
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
@@ -1253,11 +1253,11 @@ exports[`renders a sponsored series properly 1`] = `
   line-height: 20px;
 }
 
-.c39 {
+.c40 {
   margin: 10px 20px 0 0;
 }
 
-.c39:before {
+.c40:before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -1272,7 +1272,7 @@ exports[`renders a sponsored series properly 1`] = `
   white-space: nowrap;
 }
 
-.c38 {
+.c39 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1287,7 +1287,7 @@ exports[`renders a sponsored series properly 1`] = `
   color: white;
 }
 
-.c37 {
+.c38 {
   width: 32px;
   height: 32px;
 }
@@ -1371,7 +1371,7 @@ exports[`renders a sponsored series properly 1`] = `
   -webkit-font-smoothing: antialiased;
 }
 
-.c36 {
+.c37 {
   position: absolute;
   left: 20px;
   bottom: 20px;
@@ -1453,12 +1453,12 @@ exports[`renders a sponsored series properly 1`] = `
   margin-bottom: 20px;
 }
 
-.c47 {
+.c48 {
   position: relative;
   width: 100%;
 }
 
-.c47 a {
+.c48 a {
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -1468,22 +1468,22 @@ exports[`renders a sponsored series properly 1`] = `
   background-position: bottom;
 }
 
-.c47 a:hover {
+.c48 a:hover {
   color: white;
   opacity: .65;
 }
 
-.c47 div[class*='ToolTip'] a {
+.c48 div[class*='ToolTip'] a {
   background-image: none;
   opacity: 1;
   color: inherit;
 }
 
-.c47 p,
-.c47 ul,
-.c47 ol,
-.c47 .paragraph,
-.c47 div[data-block=true] .public-DraftStyleDefault-block {
+.c48 p,
+.c48 ul,
+.c48 ol,
+.c48 .paragraph,
+.c48 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -1494,32 +1494,32 @@ exports[`renders a sponsored series properly 1`] = `
   font-style: inherit;
 }
 
-.c47 p:first-child,
-.c47 .paragraph:first-child,
-.c47 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c48 p:first-child,
+.c48 .paragraph:first-child,
+.c48 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c47 p:last-child,
-.c47 .paragraph:last-child,
-.c47 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c48 p:last-child,
+.c48 .paragraph:last-child,
+.c48 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c47 ul,
-.c47 ol {
+.c48 ul,
+.c48 ol {
   padding-left: 1em;
 }
 
-.c47 ul {
+.c48 ul {
   list-style: disc;
 }
 
-.c47 ol {
+.c48 ol {
   list-style: decimal;
 }
 
-.c47 li {
+.c48 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -1528,7 +1528,7 @@ exports[`renders a sponsored series properly 1`] = `
   padding-bottom: .5em;
 }
 
-.c47 h1 {
+.c48 h1 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -1541,7 +1541,7 @@ exports[`renders a sponsored series properly 1`] = `
   text-align: center;
 }
 
-.c47 h1:before {
+.c48 h1:before {
   content: "";
   width: 8px;
   height: 8px;
@@ -1552,7 +1552,7 @@ exports[`renders a sponsored series properly 1`] = `
   right: calc(50% - 4px);
 }
 
-.c47 h2 {
+.c48 h2 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -1561,15 +1561,15 @@ exports[`renders a sponsored series properly 1`] = `
   margin: 0;
 }
 
-.c47 h2 a {
+.c48 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c47 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
+.c48 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
   background-position: bottom !important;
 }
 
-.c47 h3 {
+.c48 h3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -1579,7 +1579,7 @@ exports[`renders a sponsored series properly 1`] = `
   margin: 0;
 }
 
-.c47 h3 strong {
+.c48 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -1587,11 +1587,11 @@ exports[`renders a sponsored series properly 1`] = `
   line-height: 1.5em;
 }
 
-.c47 h3 a {
+.c48 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c47 blockquote {
+.c48 blockquote {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 40px;
   line-height: 1.1em;
@@ -1604,7 +1604,7 @@ exports[`renders a sponsored series properly 1`] = `
   word-break: break-word;
 }
 
-.c47 .content-end {
+.c48 .content-end {
   display: inline-block;
   content: "";
   width: 8px;
@@ -1615,14 +1615,14 @@ exports[`renders a sponsored series properly 1`] = `
   margin-bottom: 1px;
 }
 
-.c47 .artist-follow {
+.c48 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c47 .artist-follow:before {
+.c48 .artist-follow:before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -1630,7 +1630,7 @@ exports[`renders a sponsored series properly 1`] = `
   font-size: 32px;
 }
 
-.c47 .artist-follow:after {
+.c48 .artist-follow:after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -1639,17 +1639,17 @@ exports[`renders a sponsored series properly 1`] = `
   text-transform: none;
 }
 
-.c41 {
+.c42 {
   color: white;
   max-width: 1200px;
   width: 100%;
 }
 
-.c43 .c17 {
+.c44 .c17 {
   display: none;
 }
 
-.c43:first-of-type {
+.c44:first-of-type {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1663,12 +1663,12 @@ exports[`renders a sponsored series properly 1`] = `
   flex-direction: column;
 }
 
-.c43:first-of-type .c17 {
+.c44:first-of-type .c17 {
   display: block;
   margin-bottom: 10px;
 }
 
-.c45 {
+.c46 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -1698,11 +1698,11 @@ exports[`renders a sponsored series properly 1`] = `
   margin-bottom: 30px;
 }
 
-.fuwlBz .c14 {
+.bwXAvy .c14 {
   margin-bottom: 90px;
 }
 
-.fuwlBz .c40 {
+.bwXAvy .c41 {
   padding-top: 60px;
 }
 
@@ -1716,7 +1716,7 @@ exports[`renders a sponsored series properly 1`] = `
   margin-bottom: 60px;
 }
 
-.c13 .c40 {
+.c13 .c41 {
   padding-top: 60px;
 }
 
@@ -1766,7 +1766,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media only screen and (min-width:0em) {
-  .c44 {
+  .c45 {
     -webkit-flex-basis: 100%;
     -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
@@ -1776,7 +1776,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media only screen and (min-width:48em) {
-  .c44 {
+  .c45 {
     -webkit-flex-basis: 33.333333333333336%;
     -ms-flex-preferred-size: 33.333333333333336%;
     flex-basis: 33.333333333333336%;
@@ -1786,7 +1786,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media only screen and (min-width:0em) {
-  .c46 {
+  .c47 {
     -webkit-flex-basis: 100%;
     -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
@@ -1796,7 +1796,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media only screen and (min-width:48em) {
-  .c46 {
+  .c47 {
     -webkit-flex-basis: 66.66666666666667%;
     -ms-flex-preferred-size: 66.66666666666667%;
     flex-basis: 66.66666666666667%;
@@ -1870,38 +1870,38 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c47 p,
-  .c47 ul,
-  .c47 ol,
-  .c47 div[data-block=true] .public-DraftStyleDefault-block {
+  .c48 p,
+  .c48 ul,
+  .c48 ol,
+  .c48 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c47 li {
+  .c48 li {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c47 h1 {
+  .c48 h1 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c47 h2 {
+  .c48 h2 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c47 h3 {
+  .c48 h3 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -1909,14 +1909,14 @@ exports[`renders a sponsored series properly 1`] = `
     line-height: 1.5em;
   }
 
-  .c47 h3 strong {
+  .c48 h3 strong {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c47 blockquote {
+  .c48 blockquote {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
@@ -1924,24 +1924,24 @@ exports[`renders a sponsored series properly 1`] = `
     margin: 0;
   }
 
-  .c47 .content-start {
+  .c48 .content-start {
     font-size: 55px;
   }
 }
 
 @media (max-width:48em) {
-  .c43:first-of-type .c17 {
+  .c44:first-of-type .c17 {
     display: none;
   }
 
-  .c43 .c17 {
+  .c44 .c17 {
     margin-top: 60px;
     display: block;
   }
 }
 
 @media (max-width:48em) {
-  .c45 {
+  .c46 {
     margin-bottom: 20px;
   }
 }
@@ -1963,13 +1963,13 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .fuwlBz .c40 {
+  .bwXAvy .c41 {
     padding-top: 60px;
   }
 }
 
 @media (max-width:900px) {
-  .c13 .c40 {
+  .c13 .c41 {
     padding-top: 60px;
   }
 }
@@ -2168,10 +2168,10 @@ exports[`renders a sponsored series properly 1`] = `
               src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
             />
             <div
-              className="c36"
+              className="c36 c37"
             >
               <svg
-                className="c37"
+                className="c38"
                 version="1.1"
                 viewBox="0 0 40 56"
                 x="0px"
@@ -2243,7 +2243,7 @@ exports[`renders a sponsored series properly 1`] = `
               </div>
             </div>
             <div
-              className="Byline c38"
+              className="Byline c39"
               color="white"
             >
               <div
@@ -2257,7 +2257,7 @@ exports[`renders a sponsored series properly 1`] = `
                 fontSize={14}
               >
                 <div
-                  className="c39"
+                  className="c40"
                   color="white"
                 >
                   Casey Lesser
@@ -2293,14 +2293,14 @@ exports[`renders a sponsored series properly 1`] = `
       </div>
     </div>
     <div
-      className="c40 c41 c42"
+      className="c41 c42 c43"
       color="white"
     >
       <div
-        className="c43 c44"
+        className="c44 c45"
       >
         <div
-          className="c45"
+          className="c46"
         >
           About the Series
         </div>
@@ -2328,13 +2328,13 @@ exports[`renders a sponsored series properly 1`] = `
         </div>
       </div>
       <div
-        className="c43 c46"
+        className="c44 c47"
       >
         <div
           className="SeriesAbout__description"
         >
           <div
-            className="article__text-section c47"
+            className="article__text-section c48"
             color="white"
           >
             <div

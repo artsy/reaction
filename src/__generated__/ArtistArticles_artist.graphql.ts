@@ -228,11 +228,11 @@ return {
                     {
                       "kind": "Literal",
                       "name": "format",
-                      "value": "MMM d, YYYY",
+                      "value": "MMM Do, YYYY",
                       "type": "String"
                     }
                   ],
-                  "storageKey": "published_at(format:\"MMM d, YYYY\")"
+                  "storageKey": "published_at(format:\"MMM Do, YYYY\")"
                 },
                 {
                   "kind": "LinkedField",
@@ -281,5 +281,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '7d4d8ca22c110937d49ba6c16fdd75b9';
+(node as any).hash = '9431572d880bde3b77ca6f9a8b570ef8';
 export default node;

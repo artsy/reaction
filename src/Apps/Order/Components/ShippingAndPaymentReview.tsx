@@ -1,19 +1,13 @@
-import { Sans } from "@artsy/palette"
+import { Flex, FlexProps, Sans } from "@artsy/palette"
 import { ShippingAndPaymentReview_order } from "__generated__/ShippingAndPaymentReview_order.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { StepSummaryItem } from "Styleguide/Components/StepSummaryItem"
-import { Flex, FlexProps } from "Styleguide/Elements/Flex"
 import { CreditCardDetails } from "./CreditCardDetails"
-import { ShippingAddress, ShippingAddressProps } from "./ShippingAddress"
+import { ShippingAddressFragmentContainer as ShippingAddress } from "./ShippingAddress"
 
 export const ShippingAndPaymentReview = ({
-  order: {
-    requestedFulfillment: { __typename, ...address },
-    lineItems,
-    creditCard,
-    buyerPhoneNumber,
-  },
+  order: { requestedFulfillment, lineItems, creditCard },
   onChangePayment,
   onChangeShipping,
   ...others
@@ -21,31 +15,32 @@ export const ShippingAndPaymentReview = ({
   order: ShippingAndPaymentReview_order
   onChangePayment(): void
   onChangeShipping(): void
-} & FlexProps) => (
-  <Flex flexDirection="column" {...others}>
-    {__typename === "Ship" ? (
-      <StepSummaryItem onChange={onChangeShipping} title="Shipping address">
-        <ShippingAddress
-          {...address as ShippingAddressProps}
-          phoneNumber={buyerPhoneNumber}
-        />
+} & FlexProps) => {
+  return (
+    <Flex flexDirection="column" {...others}>
+      {requestedFulfillment.__typename === "Ship" ? (
+        <StepSummaryItem onChange={onChangeShipping} title="Shipping address">
+          <ShippingAddress ship={requestedFulfillment} />
+        </StepSummaryItem>
+      ) : (
+        <StepSummaryItem
+          onChange={onChangeShipping}
+          title={
+            <>Pick up ({lineItems.edges[0].node.artwork.shippingOrigin})</>
+          }
+        >
+          <Sans size="2">
+            After you place your order, you’ll be appointed an Artsy specialist
+            within 2 business days to handle pickup logistics.
+          </Sans>
+        </StepSummaryItem>
+      )}
+      <StepSummaryItem onChange={onChangePayment} title="Payment method">
+        <CreditCardDetails {...creditCard} />
       </StepSummaryItem>
-    ) : (
-      <StepSummaryItem
-        onChange={onChangeShipping}
-        title={<>Pick up ({lineItems.edges[0].node.artwork.shippingOrigin})</>}
-      >
-        <Sans size="2">
-          After you place your order, you’ll be appointed an Artsy specialist
-          within 2 business days to handle pickup logistics.
-        </Sans>
-      </StepSummaryItem>
-    )}
-    <StepSummaryItem onChange={onChangePayment} title="Payment method">
-      <CreditCardDetails {...creditCard} />
-    </StepSummaryItem>
-  </Flex>
-)
+    </Flex>
+  )
+}
 
 export const ShippingAndPaymentReviewFragmentContainer = createFragmentContainer(
   ShippingAndPaymentReview,
@@ -53,15 +48,7 @@ export const ShippingAndPaymentReviewFragmentContainer = createFragmentContainer
     fragment ShippingAndPaymentReview_order on Order {
       requestedFulfillment {
         __typename
-        ... on Ship {
-          name
-          addressLine1
-          addressLine2
-          city
-          postalCode
-          region
-          country
-        }
+        ...ShippingAddress_ship
       }
       lineItems {
         edges {
@@ -78,7 +65,6 @@ export const ShippingAndPaymentReviewFragmentContainer = createFragmentContainer
         expiration_year
         expiration_month
       }
-      buyerPhoneNumber
     }
   `
 )

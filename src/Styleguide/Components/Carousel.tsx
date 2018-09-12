@@ -1,10 +1,9 @@
+import { Box, Flex } from "@artsy/palette"
 import React, { ReactNode } from "react"
 import Slick, { Settings } from "react-slick"
 import styled from "styled-components"
 import { left, LeftProps, right, RightProps } from "styled-system"
 import { Arrow } from "Styleguide/Elements/Arrow"
-import { Box } from "Styleguide/Elements/Box"
-import { Flex } from "Styleguide/Elements/Flex"
 import { media } from "Styleguide/Elements/Grid"
 import { Responsive } from "Utils/Responsive"
 
@@ -15,7 +14,7 @@ interface Props {
   render: (slide) => ReactNode
 }
 
-export class Slider extends React.Component<Props> {
+export class Carousel extends React.Component<Props> {
   static defaultProps = {
     height: 300,
   }
@@ -24,15 +23,15 @@ export class Slider extends React.Component<Props> {
     return (
       <Responsive>
         {({ xs }) => {
-          if (xs) return <SmallSlider {...this.props} />
-          else return <LargeSlider {...this.props} />
+          if (xs) return <SmallCarousel {...this.props} />
+          else return <LargeCarousel {...this.props} />
         }}
       </Responsive>
     )
   }
 }
 
-export const LargeSlider = (props: Props) => {
+export const LargeCarousel = (props: Props) => {
   const slickConfig = {
     arrows: false,
     draggable: false,
@@ -50,13 +49,13 @@ export const LargeSlider = (props: Props) => {
         <Arrow direction="left" color="black100" fontSize="11px" />
       </ArrowButton>
 
-      <SliderContainer>
+      <CarouselContainer>
         <Slick {...slickConfig} ref={slider => (slickRef = slider)}>
           {props.data.map((slide, index) => {
             return <Box key={index}>{props.render(slide)}</Box>
           })}
         </Slick>
-      </SliderContainer>
+      </CarouselContainer>
 
       <ArrowButton right={-10} onClick={() => slickRef.slickNext()}>
         <Arrow direction="right" color="black100" fontSize="11px" />
@@ -65,7 +64,7 @@ export const LargeSlider = (props: Props) => {
   )
 }
 
-export const SmallSlider = (props: Props) => {
+export const SmallCarousel = (props: Props) => {
   const slickConfig = {
     arrows: false,
     dots: true,
@@ -80,18 +79,18 @@ export const SmallSlider = (props: Props) => {
 
   return (
     <Flex justifyContent="space-around" alignItems="center">
-      <SliderContainer>
+      <CarouselContainer>
         <Slick {...slickConfig}>
           {props.data.map((slide, index) => {
             return <Box key={index}>{props.render(slide)}</Box>
           })}
         </Slick>
-      </SliderContainer>
+      </CarouselContainer>
     </Flex>
   )
 }
 
-const SliderContainer = styled.div`
+const CarouselContainer = styled.div`
   width: 100%;
 
   ${"" /*

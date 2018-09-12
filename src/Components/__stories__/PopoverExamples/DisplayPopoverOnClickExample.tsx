@@ -12,19 +12,19 @@ const Container = styled.div`
 `
 
 // The <OverlayTrigger> component doesn't like components with margins.
-const ButtonWithoutMargin = Button.extend`
+const ButtonWithoutMargin = styled(Button)`
   margin: 0;
 `
 
-const RowWithMargin = Row.extend`
+const RowWithMargin = styled(Row)`
   margin: 100px 0;
 `
 
-const CenteringCol = Col.extend`
+const CenteringCol = styled(Col)`
   text-align: center;
 `
 
-const WrapContentCol = Col.extend`
+const WrapContentCol = styled(Col)`
   flexgrow: 0;
 `
 

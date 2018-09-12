@@ -1,8 +1,7 @@
-import { Serif } from "@artsy/palette"
+import { Flex, Join, Serif, Spacer } from "@artsy/palette"
 import Input from "Components/Input"
 import React from "react"
 import { CountrySelect } from "Styleguide/Components"
-import { Flex, Join, Spacer } from "Styleguide/Elements"
 import { TwoColumnSplit } from "./TwoColumnLayout"
 
 export interface Address {
@@ -41,7 +40,10 @@ export class AddressForm extends React.Component<
   AddressFormState
 > {
   state = {
-    address: { ...emptyAddress, ...this.props.defaultValue },
+    address: {
+      ...emptyAddress,
+      ...this.props.defaultValue,
+    },
   }
 
   changeEventHandler = (key: keyof Address) => (
@@ -87,9 +89,10 @@ export class AddressForm extends React.Component<
 
           <Flex flexDirection="column">
             <Input
-              id="AddressForm_addressLine2"
+              id="AddressForm_postalCode"
               placeholder="Add postal code"
               title="Postal code"
+              defaultValue={this.props.defaultValue.postalCode}
               onChange={this.changeEventHandler("postalCode")}
               block
             />
@@ -101,6 +104,7 @@ export class AddressForm extends React.Component<
               id="AddressForm_addressLine1"
               placeholder="Add street address"
               title="Address line 1"
+              defaultValue={this.props.defaultValue.addressLine1}
               onChange={this.changeEventHandler("addressLine1")}
               block
             />
@@ -111,6 +115,7 @@ export class AddressForm extends React.Component<
               id="AddressForm_addressLine2"
               placeholder="Add apt, floor, suite, etc."
               title="Address line 2 (optional)"
+              defaultValue={this.props.defaultValue.addressLine2}
               onChange={this.changeEventHandler("addressLine2")}
               block
             />
@@ -122,6 +127,7 @@ export class AddressForm extends React.Component<
               id="AddressForm_city"
               placeholder="Add city"
               title="City"
+              defaultValue={this.props.defaultValue.city}
               onChange={this.changeEventHandler("city")}
               block
             />
@@ -131,6 +137,7 @@ export class AddressForm extends React.Component<
             <Input
               placeholder="Add State, province, or region"
               title="State, province, or region"
+              defaultValue={this.props.defaultValue.region}
               onChange={this.changeEventHandler("region")}
               block
             />
@@ -143,6 +150,7 @@ export class AddressForm extends React.Component<
               title="Phone"
               description="For shipping purposes only"
               placeholder="Add phone"
+              defaultValue={this.props.defaultValue.phoneNumber}
               onChange={this.changeEventHandler("phoneNumber")}
               block
             />

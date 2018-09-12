@@ -21,7 +21,7 @@ export const NewsNav: React.SFC<Props> = props => {
   )
 }
 
-const Title = NewsText.extend`
+const Title = styled(NewsText)`
   position: absolute;
   left: 30px;
   ${pMedia.sm`

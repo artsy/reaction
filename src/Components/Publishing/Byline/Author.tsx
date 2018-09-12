@@ -1,5 +1,4 @@
-import { Sans } from "@artsy/palette"
-import { SansSize } from "@artsy/palette"
+import { Sans, SansSize } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
 import { getAuthorByline } from "../Constants"

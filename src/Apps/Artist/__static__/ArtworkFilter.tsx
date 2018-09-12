@@ -1,7 +1,7 @@
+import { Box, Checkbox, Flex, Radio, SmallSelect, Spacer } from "@artsy/palette"
 import { paginationProps } from "Apps/__test__/Fixtures/Pagination"
 import React from "react"
 import styled from "styled-components"
-import { Box, Checkbox, Flex, Radio, Select, Spacer } from "Styleguide/Elements"
 import { Responsive } from "Utils/Responsive"
 
 import {
@@ -39,7 +39,7 @@ export const ArtworkFilter = () => {
               alignItems="flex-end"
             >
               <Flex pb={2} justifyContent="flex-end">
-                <Select
+                <SmallSelect
                   options={[
                     { value: "RECENTLY_UPDATED", text: "Recently updated" },
                     { value: "RECENTLY_ADDED", text: "Recently added" },

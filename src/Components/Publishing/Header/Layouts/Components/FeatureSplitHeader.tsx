@@ -57,7 +57,7 @@ export const FeatureSplitHeader: React.SFC<FeatureHeaderProps> = props => {
   )
 }
 
-const HeaderTextContainer = Col.extend`
+const HeaderTextContainer = styled(Col)`
   padding-left: ${space(2)}px;
   padding-right: ${space(2)}px;
   padding-top: ${space(2)}px;
@@ -94,7 +94,7 @@ const FeatureVideo = styled.video`
   `};
 `
 
-export const FeatureAssetContainer = Col.extend`
+export const FeatureAssetContainer = styled(Col)`
   flex: 1;
   overflow: hidden;
   margin: ${space(2)}px;
@@ -135,7 +135,7 @@ const Img = styled.img`
   width: 100%;
 `
 
-export const FeatureSplitHeaderContainer = Row.extend.attrs<{
+export const FeatureSplitHeaderContainer = styled(Row).attrs<{
   hasNav?: boolean
 }>({})`
   margin-left: 0;

@@ -1,4 +1,4 @@
-import { Serif } from "@artsy/palette"
+import { Serif, Spacer } from "@artsy/palette"
 import { RecentlyViewed_me } from "__generated__/RecentlyViewed_me.graphql"
 import { RecentlyViewedQuery } from "__generated__/RecentlyViewedQuery.graphql"
 import { ContextConsumer } from "Artsy/Router"
@@ -6,8 +6,7 @@ import { FillwidthItem } from "Components/Artwork/FillwidthItem"
 import React from "react"
 import { QueryRenderer } from "react-relay"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Slider } from "Styleguide/Components/Slider"
-import { Spacer } from "Styleguide/Elements/Spacer"
+import { Carousel } from "Styleguide/Components/Carousel"
 
 export interface RecentlyViewedProps {
   me: RecentlyViewed_me
@@ -29,7 +28,7 @@ export const RecentlyViewed: React.SFC<RecentlyViewedProps> = props => {
 
               <Spacer mb={3} />
 
-              <Slider
+              <Carousel
                 settings={{
                   slidesToScroll: 5,
                 }}

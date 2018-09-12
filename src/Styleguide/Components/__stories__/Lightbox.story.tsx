@@ -1,7 +1,7 @@
+import { Image } from "@artsy/palette"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Lightbox } from "Styleguide/Components"
-import { Image } from "Styleguide/Elements"
 import { Section } from "Styleguide/Utils/Section"
 
 const image = size =>

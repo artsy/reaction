@@ -1,10 +1,8 @@
-import { Sans } from "@artsy/palette"
+import { Flex, Sans, Separator } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
 import { space, SpaceProps } from "styled-system"
 import { Arrow } from "Styleguide/Elements/Arrow"
-import { Flex } from "Styleguide/Elements/Flex"
-import { Separator } from "Styleguide/Elements/Separator"
 
 export interface ToggleProps {
   disabled?: boolean

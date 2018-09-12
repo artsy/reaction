@@ -1,7 +1,7 @@
+import { Flex } from "@artsy/palette"
 import { TransactionSummary } from "Apps/Order/Components/TransactionSummary"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Flex } from "Styleguide/Elements/Flex"
 import { Section } from "Styleguide/Utils/Section"
 
 const makeLineItem = ({ artistName, artworkTitle }) => ({

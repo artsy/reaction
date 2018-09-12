@@ -1,4 +1,4 @@
-import { Serif } from "@artsy/palette"
+import { Box, Flex, Image, Serif, Spacer } from "@artsy/palette"
 import { ArtistHeader_artist } from "__generated__/ArtistHeader_artist.graphql"
 import { track, Track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
@@ -6,8 +6,7 @@ import { ContextConsumer } from "Artsy/SystemContext"
 import FollowArtistButton from "Components/FollowButton/FollowArtistButton"
 import React, { Component, Fragment } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Slider } from "Styleguide/Components"
-import { Box, Flex, Image, Spacer } from "Styleguide/Elements"
+import { Carousel } from "Styleguide/Components"
 import { Responsive } from "Utils/Responsive"
 
 interface Props {
@@ -96,7 +95,7 @@ export class LargeArtistHeader extends Component<Props> {
       <Box width="100%">
         {hasImages && (
           <Fragment>
-            <Slider
+            <Carousel
               height={200}
               data={carousel.images as object[]}
               render={(slide: Image) => {
@@ -196,7 +195,7 @@ export class SmallArtistHeader extends Component<Props> {
       <Flex flexDirection="column">
         {hasImages && (
           <Fragment>
-            <Slider
+            <Carousel
               data={carousel.images as object[]}
               render={slide => {
                 return (
