@@ -162,6 +162,7 @@
     "qs": "^6.5.0",
     "rc-slider": "^8.6.2",
     "react-css-transition-replace": "^3.0.2",
+    "react-head": "^3.0.0",
     "react-html-parser": "^2.0.2",
     "react-lazy-load-image-component": "^1.1.1",
     "react-lines-ellipsis": "xiaody/react-lines-ellipsis#0cd517ad9079aeb5e6710178d93dd6faa65b924a",
