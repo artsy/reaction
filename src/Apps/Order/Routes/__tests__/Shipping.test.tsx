@@ -5,7 +5,12 @@ import { commitMutation, RelayProp } from "react-relay"
 import { Button } from "@artsy/palette"
 import { UntouchedOrder } from "Apps/__test__/Fixtures/Order"
 import Input, { InputProps } from "Components/Input"
+import { Dismiss } from "Components/Modal/ErrorModal"
 import { Provider } from "unstated"
+import {
+  settingOrderShipmentFailure,
+  settingOrderShipmentSuccess,
+} from "../__fixtures__/MutationResults"
 import { ShippingProps, ShippingRoute } from "../Shipping"
 
 jest.mock("react-relay", () => ({
@@ -84,12 +89,17 @@ describe("Shipping", () => {
   })
 
   describe("mutation", () => {
+    beforeEach(() => {
+      console.error = jest.fn() // Silences component logging.
+      commitMutation.mockReset()
+    })
+
     it("routes to payment screen after mutation completes", () => {
       const component = getWrapper(testProps)
       const mockCommitMutation = commitMutation as jest.Mock<any>
       mockCommitMutation.mockImplementationOnce(
         (_environment, { onCompleted }) => {
-          onCompleted()
+          onCompleted(settingOrderShipmentSuccess)
         }
       )
 
@@ -112,6 +122,34 @@ describe("Shipping", () => {
       component.find("Button").simulate("click")
 
       expect.hasAssertions()
+    })
+
+    it("shows an error modal when there is an error from the server", () => {
+      const component = getWrapper(testProps)
+      expect(component.find("ErrorModal").props().show).toBe(false)
+      const mockCommitMutation = commitMutation as jest.Mock<any>
+      mockCommitMutation.mockImplementationOnce((_, { onCompleted }) =>
+        onCompleted(settingOrderShipmentFailure)
+      )
+      component.find("Button").simulate("click")
+      expect(component.find("ErrorModal").props().show).toBe(true)
+
+      component.find(Dismiss).simulate("click")
+      expect(component.find("ErrorModal").props().show).toBe(false)
+    })
+
+    it("shows an error modal when there is a network error", () => {
+      const component = getWrapper(testProps)
+      expect(component.find("ErrorModal").props().show).toBe(false)
+      const mockCommitMutation = commitMutation as jest.Mock<any>
+      mockCommitMutation.mockImplementationOnce((_, { onError }) =>
+        onError(new TypeError("Network request failed"))
+      )
+      component.find("Button").simulate("click")
+      expect(component.find("ErrorModal").props().show).toBe(true)
+
+      component.find(Dismiss).simulate("click")
+      expect(component.find("ErrorModal").props().show).toBe(false)
     })
   })
 
