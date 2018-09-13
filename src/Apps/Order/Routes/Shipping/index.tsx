@@ -51,7 +51,7 @@ export interface ShippingState {
   address: Address
   shippingOption: OrderFulfillmentType
   isComittingMutation: boolean
-  isModalOpen: boolean
+  isErrorModalOpen: boolean
 }
 
 export class ShippingRoute extends Component<ShippingProps, ShippingState> {
@@ -68,7 +68,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
       ...pick(this.props.order.requestedFulfillment, Object.keys(emptyAddress)),
     },
     isComittingMutation: false,
-    isModalOpen: false,
+    isErrorModalOpen: false,
   }
 
   onContinueButtonPressed = () => {
@@ -129,11 +129,11 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
 
   onError = error => {
     console.error("Order/Shipping/index.tsx", error)
-    this.setState({ isComittingMutation: false, isModalOpen: true })
+    this.setState({ isComittingMutation: false, isErrorModalOpen: true })
   }
 
   onCloseModal = () => {
-    this.setState({ isModalOpen: false })
+    this.setState({ isErrorModalOpen: false })
   }
 
   render() {
@@ -223,8 +223,8 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
           )}
         </Responsive>
         <ErrorModal
-          onClose={this.onCloseModal.bind(this)}
-          show={this.state.isModalOpen}
+          onClose={this.onCloseModal}
+          show={this.state.isErrorModalOpen}
         />
       </>
     )
