@@ -1,5 +1,6 @@
 import { Location, RouteConfig, Router } from "found"
 import React from "react"
+import { Title } from "react-head"
 import { Elements, StripeProvider } from "react-stripe-elements"
 
 declare global {
@@ -81,9 +82,12 @@ export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
   render() {
     const { children } = this.props
     return (
-      <StripeProvider stripe={this.state.stripe}>
-        <Elements>{children}</Elements>
-      </StripeProvider>
+      <>
+        <Title>Checkout | Artsy</Title>
+        <StripeProvider stripe={this.state.stripe}>
+          <Elements>{children}</Elements>
+        </StripeProvider>
+      </>
     )
   }
 }
