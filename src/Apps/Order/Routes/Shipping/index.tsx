@@ -115,7 +115,6 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
 
   render() {
     const { order } = this.props
-    this.props.order.lineItems[0].edges.node.artwork.pickup_available
     return (
       <>
         <Row>
@@ -228,7 +227,6 @@ export const ShippingFragmentContainer = createFragmentContainer(
           node {
             artwork {
               id
-              pickup_available
             }
           }
         }
