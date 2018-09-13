@@ -1,24 +1,13 @@
 import { Box } from "@artsy/palette"
+import { ArticleItem } from "Apps/Artist/Routes/Articles/ArtistArticle"
 import React from "react"
+import { createFragmentContainer, graphql } from "react-relay"
+import { Col, Row } from "Styleguide/Elements/Grid"
 
-interface ArtworkDetailsArticlesArtwork {
-  readonly articles: ReadonlyArray<{
-    readonly title?: string
-    readonly href?: string
-    readonly thumbnail?: {
-      readonly image?: {
-        readonly width: number
-        readonly height: number
-        readonly url: string
-      }
-    }
-    readonly author?: {
-      readonly name: string
-    }
-  }>
-}
-interface ArtworkDetailsArticlesProps {
-  artwork: ArtworkDetailsArticlesArtwork
+import { ArtworkDetailsArticles_artwork } from "__generated__/ArtworkDetailsArticles_artwork.graphql"
+
+export interface ArtworkDetailsArticlesProps {
+  artwork: ArtworkDetailsArticles_artwork
 }
 
 export class ArtworkDetailsArticles extends React.Component<
@@ -29,6 +18,47 @@ export class ArtworkDetailsArticles extends React.Component<
     if (!articles || articles.length < 1) {
       return null
     }
-    return <Box>{articles.length}</Box>
+    return (
+      <Row>
+        <Col>
+          <Box>
+            {articles.map((article, index) => {
+              return (
+                <ArticleItem
+                  title={article.thumbnail_title}
+                  imageUrl={article.thumbnail_image.resized.url}
+                  date={article.published_at}
+                  author={article.author.name}
+                  href={article.href}
+                  key={index}
+                  lastChild={index === articles.length - 1}
+                />
+              )
+            })}
+          </Box>
+        </Col>
+      </Row>
+    )
   }
 }
+
+export const ArtworkDetailsArticlesFragmentContainer = createFragmentContainer(
+  ArtworkDetailsArticles,
+  graphql`
+    fragment ArtworkDetailsArticles_artwork on Artwork {
+      articles(size: 10) {
+        author {
+          name
+        }
+        href
+        published_at(format: "MMM Do, YYYY")
+        thumbnail_image {
+          resized(width: 300) {
+            url
+          }
+        }
+        thumbnail_title
+      }
+    }
+  `
+)

@@ -2,28 +2,12 @@ import { Box, Sans, StackableBorderBox } from "@artsy/palette"
 import { Checkmark } from "Assets/Checkmark"
 import colors from "Assets/Colors"
 import React from "react"
+import { createFragmentContainer, graphql } from "react-relay"
 
-interface ArtworkDetailsChecklistArtwork {
-  readonly framed?: {
-    readonly label: string
-    readonly details?: string
-  }
-  readonly signatureInfo?: {
-    readonly label: string
-    readonly details?: string
-  }
-  readonly conditionDescription?: {
-    readonly label: string
-    readonly details?: string
-  }
-  readonly certificateOfAuthenticity?: {
-    readonly label: string
-    readonly details?: string
-  }
-}
+import { ArtworkDetailsChecklist_artwork } from "__generated__/ArtworkDetailsChecklist_artwork.graphql"
 
-interface ArtworkDetailsChecklistProps {
-  artwork: ArtworkDetailsChecklistArtwork
+export interface ArtworkDetailsChecklistProps {
+  artwork: ArtworkDetailsChecklist_artwork
 }
 
 export class ArtworkDetailsChecklist extends React.Component<
@@ -84,3 +68,27 @@ export class ArtworkDetailsChecklist extends React.Component<
     )
   }
 }
+
+export const ArtworkDetailsChecklistFragmentContainer = createFragmentContainer(
+  ArtworkDetailsChecklist,
+  graphql`
+    fragment ArtworkDetailsChecklist_artwork on Artwork {
+      framed {
+        label
+        details
+      }
+      signatureInfo {
+        label
+        details
+      }
+      conditionDescription {
+        label
+        details
+      }
+      certificateOfAuthenticity {
+        label
+        details
+      }
+    }
+  `
+)

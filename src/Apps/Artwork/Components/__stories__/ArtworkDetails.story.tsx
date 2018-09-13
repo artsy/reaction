@@ -19,8 +19,14 @@ storiesOf("Styleguide/Artwork/", module)
         <Section title="ArtworkDetailsQueryRenderer for andy-warhol-s-and-h-green-stamps-feldman-and-schellman-11-dot-9">
           <ArtworkDetailsQueryRenderer artworkID="andy-warhol-s-and-h-green-stamps-feldman-and-schellman-11-dot-9" />
         </Section>
-        <Section title="ArtworkDetailsQueryRenderer for ai-weiwei-arch">
+        <Section title="ArtworkDetailsQueryRenderer for one tab">
           <ArtworkDetailsQueryRenderer artworkID="ai-weiwei-arch" />
+        </Section>
+        <Section title="ArtworkDetailsQueryRenderer for 2 tabs">
+          <ArtworkDetailsQueryRenderer artworkID="daniel-mendel-black-untitled" />
+        </Section>
+        <Section title="ArtworkDetailsQueryRenderer for 3 tabs">
+          <ArtworkDetailsQueryRenderer artworkID="eugene-delacroix-lion-hunt" />
         </Section>
       </React.Fragment>
     )

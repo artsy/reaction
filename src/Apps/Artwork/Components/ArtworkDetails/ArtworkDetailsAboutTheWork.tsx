@@ -1,17 +1,12 @@
 import { Box, Sans, Serif } from "@artsy/palette"
 import React from "react"
+import { createFragmentContainer, graphql } from "react-relay"
 import { ReadMore } from "Styleguide/Components"
 
-interface ArtworkDetailsAboutTheWorkArtwork {
-  readonly additional_information?: string
-  readonly description?: string
-  readonly partner?: {
-    readonly name?: string
-  }
-}
+import { ArtworkDetailsAboutTheWork_artwork } from "__generated__/ArtworkDetailsAboutTheWork_artwork.graphql"
 
-interface ArtworkDetailsAboutTheWorkProps {
-  artwork: ArtworkDetailsAboutTheWorkArtwork
+export interface ArtworkDetailsAboutTheWorkProps {
+  artwork: ArtworkDetailsAboutTheWork_artwork
 }
 
 export class ArtworkDetailsAboutTheWork extends React.Component<
@@ -48,3 +43,16 @@ export class ArtworkDetailsAboutTheWork extends React.Component<
     )
   }
 }
+
+export const ArtworkDetailsAboutTheWorkFragmentContainer = createFragmentContainer(
+  ArtworkDetailsAboutTheWork,
+  graphql`
+    fragment ArtworkDetailsAboutTheWork_artwork on Artwork {
+      additional_information
+      description
+      partner {
+        name
+      }
+    }
+  `
+)

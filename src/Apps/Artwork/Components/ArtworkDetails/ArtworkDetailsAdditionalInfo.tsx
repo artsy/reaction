@@ -1,16 +1,11 @@
 import { Box, Sans, StackableBorderBox } from "@artsy/palette"
 import React from "react"
+import { createFragmentContainer, graphql } from "react-relay"
 
-interface ArtworkDetailsAdditionalInfoArtwork {
-  readonly series?: string
-  readonly publisher?: string
-  readonly manufacturer?: string
-  readonly provenance?: string
-  readonly image_rights?: string
-}
+import { ArtworkDetailsAdditionalInfo_artwork } from "__generated__/ArtworkDetailsAdditionalInfo_artwork.graphql"
 
-interface ArtworkDetailsAdditionalInfoProps {
-  artwork: ArtworkDetailsAdditionalInfoArtwork
+export interface ArtworkDetailsAdditionalInfoProps {
+  artwork: ArtworkDetailsAdditionalInfo_artwork
 }
 
 export class ArtworkDetailsAdditionalInfo extends React.Component<
@@ -67,3 +62,16 @@ export class ArtworkDetailsAdditionalInfo extends React.Component<
     )
   }
 }
+
+export const ArtworkDetailsAdditionalInfoFragmentContainer = createFragmentContainer(
+  ArtworkDetailsAdditionalInfo,
+  graphql`
+    fragment ArtworkDetailsAdditionalInfo_artwork on Artwork {
+      series
+      publisher
+      manufacturer
+      provenance
+      image_rights
+    }
+  `
+)
