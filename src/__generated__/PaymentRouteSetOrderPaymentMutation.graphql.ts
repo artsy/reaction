@@ -16,7 +16,9 @@ export type PaymentRouteSetOrderPaymentMutationResponse = {
                 readonly id: string | null;
             }) | null;
             readonly error?: ({
-                readonly description: string;
+                readonly type: string;
+                readonly code: string;
+                readonly data: string | null;
             }) | null;
         }) | null;
     }) | null;
@@ -43,7 +45,9 @@ mutation PaymentRouteSetOrderPaymentMutation(
       }
       ... on OrderWithMutationFailure {
         error {
-          description
+          type
+          code
+          data
         }
       }
     }
@@ -84,7 +88,21 @@ v2 = {
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "description",
+          "name": "type",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "code",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "data",
           "args": null,
           "storageKey": null
         }
@@ -128,7 +146,7 @@ return {
   "operationKind": "mutation",
   "name": "PaymentRouteSetOrderPaymentMutation",
   "id": null,
-  "text": "mutation PaymentRouteSetOrderPaymentMutation(\n  $input: SetOrderPaymentInput!\n) {\n  setOrderPayment(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        order {\n          id\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          description\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation PaymentRouteSetOrderPaymentMutation(\n  $input: SetOrderPaymentInput!\n) {\n  setOrderPayment(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        order {\n          id\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -203,5 +221,5 @@ return {
   }
 };
 })();
-(node as any).hash = '53e9a8c006107749f5d46b2d52354703';
+(node as any).hash = 'f4236a9316275fc5f7e068010243cc7b';
 export default node;
