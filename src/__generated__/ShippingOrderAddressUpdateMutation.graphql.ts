@@ -28,7 +28,9 @@ export type ShippingOrderAddressUpdateMutationResponse = {
                 readonly state: string | null;
             }) | null;
             readonly error?: ({
-                readonly description: string;
+                readonly type: string;
+                readonly code: string;
+                readonly data: string | null;
             }) | null;
         }) | null;
     }) | null;
@@ -55,7 +57,9 @@ mutation ShippingOrderAddressUpdateMutation(
       }
       ... on OrderWithMutationFailure {
         error {
-          description
+          type
+          code
+          data
         }
       }
     }
@@ -96,7 +100,21 @@ v2 = {
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "description",
+          "name": "type",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "code",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "data",
           "args": null,
           "storageKey": null
         }
@@ -140,7 +158,7 @@ return {
   "operationKind": "mutation",
   "name": "ShippingOrderAddressUpdateMutation",
   "id": null,
-  "text": "mutation ShippingOrderAddressUpdateMutation(\n  $input: SetOrderShippingInput!\n) {\n  setOrderShipping(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        order {\n          state\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          description\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation ShippingOrderAddressUpdateMutation(\n  $input: SetOrderShippingInput!\n) {\n  setOrderShipping(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        order {\n          state\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -215,5 +233,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'a60f684961592e31c2bcd74fc872d32c';
+(node as any).hash = 'b4d505f0863e59f98f6a2aeaf9022bfe';
 export default node;

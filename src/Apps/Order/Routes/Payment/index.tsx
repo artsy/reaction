@@ -237,7 +237,9 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
               }
               ... on OrderWithMutationFailure {
                 error {
-                  description
+                  type
+                  code
+                  data
                 }
               }
             }

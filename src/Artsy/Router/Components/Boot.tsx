@@ -3,6 +3,7 @@ import { track } from "Artsy/Analytics"
 import * as Artsy from "Artsy/SystemContext"
 import { ResolverUtils, RouteConfig } from "found"
 import React from "react"
+import { HeadProvider } from "react-head"
 import { Environment } from "relay-runtime"
 import { GridThemeProvider } from "styled-bootstrap-grid"
 import styled from "styled-components"
@@ -25,6 +26,7 @@ export interface BootProps {
   relayEnvironment: Environment
   resolver: ResolverUtils
   routes: RouteConfig
+  headTags?: any[]
 }
 
 // TODO: Do we want to let Force explicitly inject the analytics code?
@@ -33,43 +35,45 @@ export interface BootProps {
 })
 export class Boot extends React.Component<BootProps> {
   render() {
-    const { children, context, ...props } = this.props
+    const { children, context, headTags = [], ...props } = this.props
     const contextProps = {
       ...props,
       ...context,
     }
 
     return (
-      <StateProvider>
-        <Artsy.ContextProvider {...contextProps}>
-          <ResponsiveProvider
-            mediaQueries={themeProps.mediaQueries}
-            initialMatchingMediaQueries={props.initialMatchingMediaQueries}
-          >
-            <Theme>
-              <GridThemeProvider gridTheme={themeProps.grid}>
-                <Grid fluid>
-                  <GlobalStyles>
-                    <Responsive>
-                      {({ xs }) => {
-                        // FIXME: Padding should be moved out of here
-                        return (
-                          <Padding padding={xs ? 20 : 40}>
-                            {children}
-                            {process.env.NODE_ENV === "development" && (
-                              <BreakpointVisualizer />
-                            )}
-                          </Padding>
-                        )
-                      }}
-                    </Responsive>
-                  </GlobalStyles>
-                </Grid>
-              </GridThemeProvider>
-            </Theme>
-          </ResponsiveProvider>
-        </Artsy.ContextProvider>
-      </StateProvider>
+      <HeadProvider headTags={headTags}>
+        <StateProvider>
+          <Artsy.ContextProvider {...contextProps}>
+            <ResponsiveProvider
+              mediaQueries={themeProps.mediaQueries}
+              initialMatchingMediaQueries={props.initialMatchingMediaQueries}
+            >
+              <Theme>
+                <GridThemeProvider gridTheme={themeProps.grid}>
+                  <Grid fluid>
+                    <GlobalStyles>
+                      <Responsive>
+                        {({ xs }) => {
+                          // FIXME: Padding should be moved out of here
+                          return (
+                            <Padding padding={xs ? 20 : 40}>
+                              {children}
+                              {process.env.NODE_ENV === "development" && (
+                                <BreakpointVisualizer />
+                              )}
+                            </Padding>
+                          )
+                        }}
+                      </Responsive>
+                    </GlobalStyles>
+                  </Grid>
+                </GridThemeProvider>
+              </Theme>
+            </ResponsiveProvider>
+          </Artsy.ContextProvider>
+        </StateProvider>
+      </HeadProvider>
     )
   }
 }
