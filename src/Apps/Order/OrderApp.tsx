@@ -1,7 +1,7 @@
 import { Location, RouteConfig, Router } from "found"
 import React from "react"
-import { Elements, StripeProvider } from "react-stripe-elements"
 import { Title } from "react-head"
+import { Elements, StripeProvider } from "react-stripe-elements"
 
 declare global {
   interface Window {
