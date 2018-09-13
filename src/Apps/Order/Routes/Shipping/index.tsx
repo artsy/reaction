@@ -88,7 +88,9 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                     }
                     ... on OrderWithMutationFailure {
                       error {
-                        description
+                        type
+                        code
+                        data
                       }
                     }
                   }
