@@ -19,28 +19,29 @@ const StyledBorderBox = styled(BorderBox).attrs<InputBorderProps>({})`
 
 interface CreditCardInputProps {
   error?: stripe.Error
+  onChange?: (response: stripe.elements.ElementChangeResponse) => void
 }
 
 interface CreditCardInputState {
   focused: boolean
-  error: stripe.Error
 }
 
 export class CreditCardInput extends React.Component<
   CreditCardInputProps,
   CreditCardInputState
 > {
-  constructor(props) {
-    super(props)
+  state = {
+    focused: false,
+  }
 
-    this.state = {
-      focused: false,
-      error: props.error || {},
+  onChange(response: stripe.elements.ElementChangeResponse) {
+    if (this.props.onChange) {
+      this.props.onChange(response)
     }
   }
 
   render() {
-    const { message } = this.state.error || { message: null }
+    const { message } = this.props.error ? this.props.error : { message: null }
 
     return (
       <>
@@ -50,9 +51,7 @@ export class CreditCardInput extends React.Component<
           p={1}
         >
           <StyledCardElement
-            onChange={res => {
-              this.setState({ error: res.error })
-            }}
+            onChange={this.onChange.bind(this)}
             onFocus={() => this.setState({ focused: true })}
             onBlur={() => this.setState({ focused: false })}
             style={{
