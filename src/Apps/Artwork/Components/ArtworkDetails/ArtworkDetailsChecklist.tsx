@@ -34,16 +34,16 @@ export class ArtworkDetailsChecklist extends React.Component<
 
   render() {
     const {
+      certificateOfAuthenticity,
+      conditionDescription,
       framed,
       signatureInfo,
-      conditionDescription,
-      certificateOfAuthenticity,
     } = this.props.artwork
     if (
-      !framed &&
-      !signatureInfo &&
+      !certificateOfAuthenticity &&
       !conditionDescription &&
-      !certificateOfAuthenticity
+      !framed &&
+      !signatureInfo
     ) {
       return null
     }

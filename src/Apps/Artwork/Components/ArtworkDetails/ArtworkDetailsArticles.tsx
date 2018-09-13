@@ -10,36 +10,34 @@ export interface ArtworkDetailsArticlesProps {
   artwork: ArtworkDetailsArticles_artwork
 }
 
-export class ArtworkDetailsArticles extends React.Component<
+export const ArtworkDetailsArticles: React.SFC<
   ArtworkDetailsArticlesProps
-> {
-  render() {
-    const { articles } = this.props.artwork
-    if (!articles || articles.length < 1) {
-      return null
-    }
-    return (
-      <Row>
-        <Col>
-          <Box>
-            {articles.map((article, index) => {
-              return (
-                <ArticleItem
-                  title={article.thumbnail_title}
-                  imageUrl={article.thumbnail_image.resized.url}
-                  date={article.published_at}
-                  author={article.author.name}
-                  href={article.href}
-                  key={index}
-                  lastChild={index === articles.length - 1}
-                />
-              )
-            })}
-          </Box>
-        </Col>
-      </Row>
-    )
+> = props => {
+  const { articles } = props.artwork
+  if (!articles || articles.length < 1) {
+    return null
   }
+  return (
+    <Row>
+      <Col>
+        <Box>
+          {articles.map((article, index) => {
+            return (
+              <ArticleItem
+                title={article.thumbnail_title}
+                imageUrl={article.thumbnail_image.resized.url}
+                date={article.published_at}
+                author={article.author.name}
+                href={article.href}
+                key={index}
+                lastChild={index === articles.length - 1}
+              />
+            )
+          })}
+        </Box>
+      </Col>
+    </Row>
+  )
 }
 
 export const ArtworkDetailsArticlesFragmentContainer = createFragmentContainer(
