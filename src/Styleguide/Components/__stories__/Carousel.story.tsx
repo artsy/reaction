@@ -1,17 +1,21 @@
 import { Box, Image } from "@artsy/palette"
-import { artworkBricks, images } from "Apps/__test__/Fixtures/Slider"
+import { artworkBricks, images } from "Apps/__test__/Fixtures/Carousel"
 import { FillwidthItem } from "Components/Artwork/FillwidthItem"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { LargeSlider, Slider, SmallSlider } from "Styleguide/Components/Slider"
+import {
+  Carousel,
+  LargeCarousel,
+  SmallCarousel,
+} from "Styleguide/Components/Carousel"
 import { Section } from "Styleguide/Utils/Section"
 
-storiesOf("Styleguide/Components", module).add("Slider", () => {
+storiesOf("Styleguide/Components", module).add("Carousel", () => {
   return (
     <React.Fragment>
-      <Section title="Responsive Slider">
+      <Section title="Responsive Carousel">
         <Box width="70%">
-          <Slider
+          <Carousel
             data={images}
             render={props => {
               return (
@@ -26,9 +30,9 @@ storiesOf("Styleguide/Components", module).add("Slider", () => {
           />
         </Box>
       </Section>
-      <Section title="Small Slider">
+      <Section title="Small Carousel">
         <Box width="50%">
-          <SmallSlider
+          <SmallCarousel
             data={images}
             render={props => {
               return (
@@ -43,9 +47,9 @@ storiesOf("Styleguide/Components", module).add("Slider", () => {
           />
         </Box>
       </Section>
-      <Section title="Large Slider">
+      <Section title="Large Carousel">
         <Box width="70%">
-          <LargeSlider
+          <LargeCarousel
             data={images}
             render={props => {
               return (
@@ -62,7 +66,7 @@ storiesOf("Styleguide/Components", module).add("Slider", () => {
       </Section>
       <Section title="Artwork Brick">
         <Box width="70%">
-          <Slider
+          <Carousel
             data={artworkBricks}
             render={artwork => {
               const {

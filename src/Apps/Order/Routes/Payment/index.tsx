@@ -36,7 +36,7 @@ interface PaymentState {
   isComittingMutation: boolean
 }
 
-const ContinueButton = props => (
+export const ContinueButton = props => (
   <Button size="large" width="100%" {...props}>
     Continue
   </Button>
@@ -90,7 +90,12 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
               Content={
                 <>
                   <Join separator={<Spacer mb={3} />}>
-                    <CreditCardInput error={error} />
+                    <CreditCardInput
+                      error={error}
+                      onChange={response =>
+                        this.setState({ error: response.error })
+                      }
+                    />
 
                     <Checkbox
                       selected={this.state.hideBillingAddress}
@@ -232,7 +237,9 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
               }
               ... on OrderWithMutationFailure {
                 error {
-                  description
+                  type
+                  code
+                  data
                 }
               }
             }

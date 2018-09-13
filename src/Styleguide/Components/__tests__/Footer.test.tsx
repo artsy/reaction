@@ -1,6 +1,6 @@
-import { Boot } from "Artsy/Router"
 import { mount } from "enzyme"
 import React from "react"
+import { MockBoot } from "Utils/MockBoot"
 import { Footer, LargeFooter, SmallFooter } from "../Footer"
 
 describe("Footer", () => {
@@ -10,16 +10,16 @@ describe("Footer", () => {
 
   it("is responsive", () => {
     const small = mount(
-      <Boot initialMatchingMediaQueries={["xs"]}>
+      <MockBoot breakpoint="xs">
         <Footer />
-      </Boot>
+      </MockBoot>
     )
     expect(small.find(SmallFooter).length).toEqual(1)
 
     const large = mount(
-      <Boot initialMatchingMediaQueries={["lg"]}>
+      <MockBoot breakpoint="lg">
         <Footer />
-      </Boot>
+      </MockBoot>
     )
     expect(large.find(LargeFooter).length).toEqual(1)
   })

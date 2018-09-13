@@ -1,6 +1,6 @@
-import { Boot } from "Artsy/Router"
 import { mount } from "enzyme"
 import React from "react"
+import { MockBoot } from "Utils/MockBoot"
 import { exhibitions } from "../../../Apps/__test__/Fixtures/SelectedExhibitions"
 import { SelectedExhibitions } from "../SelectedExhibitions"
 
@@ -19,18 +19,18 @@ describe("SelectedExhibitions", () => {
 
   it("is responsive", () => {
     const small = mount(
-      <Boot initialMatchingMediaQueries={["xs"]}>
+      <MockBoot breakpoint="xs">
         <SelectedExhibitions {...props} />
-      </Boot>
+      </MockBoot>
     )
     expect(
       (small.find("SelectedExhibitionsContainer").props() as any).collapsible
     ).toBe(true)
 
     const large = mount(
-      <Boot>
+      <MockBoot>
         <SelectedExhibitions {...props} />
-      </Boot>
+      </MockBoot>
     )
     expect(
       (large.find("SelectedExhibitionsContainer").props() as any).collapsible
@@ -39,9 +39,9 @@ describe("SelectedExhibitions", () => {
 
   it("shows count when collapsed", () => {
     const wrapper = mount(
-      <Boot initialMatchingMediaQueries={["xs"]}>
+      <MockBoot breakpoint="xs">
         <SelectedExhibitions {...props} />
-      </Boot>
+      </MockBoot>
     )
 
     expect(wrapper.html()).toContain("Selected exhibitions (3)")
@@ -50,9 +50,9 @@ describe("SelectedExhibitions", () => {
 
   it("shows all exhibitions when clicked", () => {
     const wrapper = mount(
-      <Boot initialMatchingMediaQueries={["xs"]}>
+      <MockBoot breakpoint="xs">
         <SelectedExhibitions {...props} />
-      </Boot>
+      </MockBoot>
     )
 
     expect(wrapper.html()).toContain("Selected exhibitions (3)")
