@@ -4,6 +4,7 @@
 
 import { render } from "enzyme"
 import React from "react"
+import { Title } from "react-head"
 import { ContextConsumer } from "../"
 import { buildServerApp } from "../buildServerApp"
 
@@ -14,21 +15,29 @@ jest.mock("loadable-components/server", () => ({
     }),
 }))
 
+const defaultComponent = () => <div>hi!</div>
+
 describe("buildServerApp", () => {
-  const getWrapper = async (url = "/") => {
-    const { ServerApp, status } = await buildServerApp({
+  const getWrapper = async ({
+    url = "/",
+    Component = defaultComponent,
+    options = {},
+  } = {}) => {
+    const { ServerApp, status, headTags } = await buildServerApp({
       routes: [
         {
           path: "/",
-          Component: () => <div>hi!</div>,
+          Component,
         },
       ],
       url,
+      ...options,
     })
 
     return {
       wrapper: render(<ServerApp />),
       status,
+      headTags,
     }
   }
 
@@ -44,13 +53,23 @@ describe("buildServerApp", () => {
   })
 
   it("resolves with a 200 status if url matches request", async () => {
-    const { status } = await getWrapper("/")
+    const { status } = await getWrapper({ url: "/" })
     expect(status).toEqual(200)
   })
 
   it("resolves with a 404 status if url does not match request", async () => {
-    const { status } = await getWrapper("/bad-url")
+    const { status } = await getWrapper({ url: "/bad-url" })
     expect(status).toEqual(404)
+  })
+
+  it("resolves with headTags if react-head components present", async () => {
+    const { headTags } = await getWrapper({
+      Component: () => <Title>test</Title>,
+    })
+    // Enzyme won't render the right results for the title for whatever reason
+    // It renders fine with renderToString though. ¯\_(ツ)_/¯
+    expect(headTags[0].type).toBe("title")
+    expect(headTags[0].props.children).toBe("test")
   })
 
   it("passes items along in context option", async done => {
@@ -74,22 +93,16 @@ describe("buildServerApp", () => {
       )
     }
 
-    const { ServerApp } = await buildServerApp({
-      routes: [
-        {
-          path: "/",
-          Component: HomeApp,
-        },
-      ],
-      url: "/",
-      context: {
-        foo: "bar",
-        mediator: {
-          trigger: jest.fn(),
+    await getWrapper({
+      Component: HomeApp,
+      options: {
+        context: {
+          foo: "bar",
+          mediator: {
+            trigger: jest.fn(),
+          },
         },
       },
     })
-
-    render(<ServerApp />)
   })
 })
