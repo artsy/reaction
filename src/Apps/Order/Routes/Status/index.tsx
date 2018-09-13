@@ -2,6 +2,7 @@ import { Flex, Join, Message, Sans, Serif, Spacer } from "@artsy/palette"
 import { Status_order } from "__generated__/Status_order.graphql"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import React, { Component } from "react"
+import { Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Responsive } from "Utils/Responsive"
 import { Helper } from "../../Components/Helper"
@@ -25,6 +26,7 @@ export class StatusRoute extends Component<StatusProps> {
           <TwoColumnLayout
             Content={
               <>
+                <Title>Order status | Artsy</Title>
                 <Join separator={<Spacer mb={xs ? 2 : 3} />}>
                   <>
                     <Serif size="6" weight="regular" color="black100">

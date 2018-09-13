@@ -15,6 +15,7 @@ interface Resolve {
   ServerApp?: ComponentType<any>
   redirect?: string
   status?: string
+  headTags?: any[]
 }
 
 export function buildServerApp(config: RouterConfig): Promise<Resolve> {
@@ -27,6 +28,7 @@ export function buildServerApp(config: RouterConfig): Promise<Resolve> {
       const historyMiddlewares = [queryMiddleware]
       const resolver = new Resolver(relayEnvironment)
       const render = createRender({})
+      const headTags = []
 
       const { redirect, status, element } = await getFarceResult({
         url,
@@ -49,6 +51,7 @@ export function buildServerApp(config: RouterConfig): Promise<Resolve> {
           <Boot
             context={context}
             user={_user}
+            headTags={headTags}
             initialMatchingMediaQueries={initialMatchingMediaQueries}
             relayEnvironment={relayEnvironment}
             resolver={resolver}
@@ -96,6 +99,7 @@ export function buildServerApp(config: RouterConfig): Promise<Resolve> {
           <App data={relayData} loadableState={loadableState} {...props} />
         ),
         status,
+        headTags,
       })
     } catch (error) {
       console.error("[Artsy/Router/buildServerApp] Error:", error)
