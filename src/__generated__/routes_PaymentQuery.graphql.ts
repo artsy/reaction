@@ -40,6 +40,9 @@ fragment Payment_order on Order {
       country
       postalCode
     }
+    ... on Pickup {
+      fulfillmentType
+    }
   }
   lineItems {
     edges {
@@ -153,7 +156,7 @@ return {
   "operationKind": "query",
   "name": "routes_PaymentQuery",
   "id": null,
-  "text": "query routes_PaymentQuery(\n  $orderID: String!\n) {\n  order(id: $orderID) {\n    ...Payment_order\n    __id: id\n  }\n}\n\nfragment Payment_order on Order {\n  id\n  requestedFulfillment {\n    __typename\n    ... on Ship {\n      name\n      addressLine1\n      addressLine2\n      city\n      region\n      country\n      postalCode\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  ...TransactionSummary_order\n  __id: id\n}\n\nfragment TransactionSummary_order on Order {\n  shippingTotal\n  taxTotal\n  itemsTotal\n  buyerTotal\n  seller {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n    ... on User {\n      __id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_transactionSummary: resized(width: 55) {\n              url\n            }\n          }\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n",
+  "text": "query routes_PaymentQuery(\n  $orderID: String!\n) {\n  order(id: $orderID) {\n    ...Payment_order\n    __id: id\n  }\n}\n\nfragment Payment_order on Order {\n  id\n  requestedFulfillment {\n    __typename\n    ... on Ship {\n      name\n      addressLine1\n      addressLine2\n      city\n      region\n      country\n      postalCode\n    }\n    ... on Pickup {\n      fulfillmentType\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  ...TransactionSummary_order\n  __id: id\n}\n\nfragment TransactionSummary_order on Order {\n  shippingTotal\n  taxTotal\n  itemsTotal\n  buyerTotal\n  seller {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n    ... on User {\n      __id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_transactionSummary: resized(width: 55) {\n              url\n            }\n          }\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -206,6 +209,19 @@ return {
             "plural": false,
             "selections": [
               v4,
+              {
+                "kind": "InlineFragment",
+                "type": "Pickup",
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "fulfillmentType",
+                    "args": null,
+                    "storageKey": null
+                  }
+                ]
+              },
               {
                 "kind": "InlineFragment",
                 "type": "Ship",
