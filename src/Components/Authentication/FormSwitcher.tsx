@@ -165,6 +165,7 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
 
     return (
       <Form
+        contextModule={options.contextModule}
         error={error}
         values={defaultValues}
         handleTypeChange={this.handleTypeChange}

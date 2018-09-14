@@ -1,4 +1,3 @@
-import { debounce } from "lodash"
 import React from "react"
 import track from "react-tracking"
 import Events from "../../Utils/Events"
@@ -51,28 +50,6 @@ export interface ArticleProps {
   }
 )
 export class Article extends React.Component<ArticleProps> {
-  componentDidMount() {
-    if (!this.props.isLoggedIn) {
-      window.addEventListener(
-        "scroll",
-        debounce(() => {
-          setTimeout(
-            this.props.onOpenAuthModal("register", {
-              mode: "signup",
-              intent: "Viewed editorial",
-              signupIntent: "signup",
-              trigger: "timed",
-              triggerSeconds: 2,
-              copy: "Sign up for the Best Stories in Art and Visual Culture",
-              destination: location.href,
-            }),
-            2000
-          )
-        }, 250)
-      )
-    }
-  }
-
   getArticleLayout = () => {
     const { article } = this.props
 
