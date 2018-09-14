@@ -35,6 +35,7 @@ import {
   Spacer,
 } from "@artsy/palette"
 
+import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Col, Row } from "Styleguide/Elements/Grid"
 
 export interface ShippingProps {
@@ -50,6 +51,7 @@ export interface ShippingState {
   address: Address
   shippingOption: OrderFulfillmentType
   isComittingMutation: boolean
+  isErrorModalOpen: boolean
 }
 
 export class ShippingRoute extends Component<ShippingProps, ShippingState> {
@@ -66,6 +68,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
       ...pick(this.props.order.requestedFulfillment, Object.keys(emptyAddress)),
     },
     isComittingMutation: false,
+    isErrorModalOpen: false,
   }
 
   onContinueButtonPressed = () => {
@@ -104,13 +107,33 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                 shipping: this.state.address,
               },
             },
-            onCompleted: () =>
-              // Note: We are only waiting for _a_ response and are not yet handling errors.
-              this.props.router.push(`/order2/${this.props.order.id}/payment`),
+            onCompleted: data => {
+              const {
+                setOrderShipping: { orderOrError },
+              } = data
+
+              if (orderOrError.error) {
+                this.onError(orderOrError.error)
+              } else {
+                this.props.router.push(`/order2/${this.props.order.id}/payment`)
+              }
+            },
+            onError: error => {
+              this.onError(error)
+            },
           }
         )
       })
     }
+  }
+
+  onError = error => {
+    console.error("Order/Shipping/index.tsx", error)
+    this.setState({ isComittingMutation: false, isErrorModalOpen: true })
+  }
+
+  onCloseModal = () => {
+    this.setState({ isErrorModalOpen: false })
   }
 
   render() {
@@ -199,6 +222,10 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
             />
           )}
         </Responsive>
+        <ErrorModal
+          onClose={this.onCloseModal}
+          show={this.state.isErrorModalOpen}
+        />
       </>
     )
   }
