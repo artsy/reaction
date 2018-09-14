@@ -3,17 +3,59 @@
 import { ConcreteFragment } from "relay-runtime";
 import { ArtworkDetailsAboutTheWork_artwork$ref } from "./ArtworkDetailsAboutTheWork_artwork.graphql";
 import { ArtworkDetailsAdditionalInfo_artwork$ref } from "./ArtworkDetailsAdditionalInfo_artwork.graphql";
+import { ArtworkDetailsArticles_artwork$ref } from "./ArtworkDetailsArticles_artwork.graphql";
 import { ArtworkDetailsChecklist_artwork$ref } from "./ArtworkDetailsChecklist_artwork.graphql";
 declare const _ArtworkDetails_artwork$ref: unique symbol;
 export type ArtworkDetails_artwork$ref = typeof _ArtworkDetails_artwork$ref;
 export type ArtworkDetails_artwork = {
-    readonly " $fragmentRefs": ArtworkDetailsAboutTheWork_artwork$ref & ArtworkDetailsChecklist_artwork$ref & ArtworkDetailsAdditionalInfo_artwork$ref;
+    readonly additional_information: string | null;
+    readonly description: string | null;
+    readonly framed: ({
+        readonly label: string | null;
+    }) | null;
+    readonly signatureInfo: ({
+        readonly label: string | null;
+    }) | null;
+    readonly conditionDescription: ({
+        readonly label: string | null;
+    }) | null;
+    readonly certificateOfAuthenticity: ({
+        readonly label: string | null;
+    }) | null;
+    readonly series: string | null;
+    readonly publisher: string | null;
+    readonly manufacturer: string | null;
+    readonly provenance: string | null;
+    readonly image_rights: string | null;
+    readonly articles: ReadonlyArray<({
+        readonly id: string;
+    }) | null> | null;
+    readonly literature: string | null;
+    readonly exhibition_history: string | null;
+    readonly " $fragmentRefs": ArtworkDetailsAboutTheWork_artwork$ref & ArtworkDetailsChecklist_artwork$ref & ArtworkDetailsAdditionalInfo_artwork$ref & ArtworkDetailsArticles_artwork$ref;
     readonly " $refType": ArtworkDetails_artwork$ref;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ConcreteFragment = (function(){
+var v0 = [
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "label",
+    "args": null,
+    "storageKey": null
+  }
+],
+v1 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
+};
+return {
   "kind": "Fragment",
   "name": "ArtworkDetails_artwork",
   "type": "Artwork",
@@ -21,13 +63,18 @@ const node: ConcreteFragment = {
   "argumentDefinitions": [],
   "selections": [
     {
-      "kind": "FragmentSpread",
-      "name": "ArtworkDetailsAboutTheWork_artwork",
-      "args": null
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "certificateOfAuthenticity",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "ArtworkInfoRow",
+      "plural": false,
+      "selections": v0
     },
     {
       "kind": "FragmentSpread",
-      "name": "ArtworkDetailsChecklist_artwork",
+      "name": "ArtworkDetailsAboutTheWork_artwork",
       "args": null
     },
     {
@@ -36,13 +83,137 @@ const node: ConcreteFragment = {
       "args": null
     },
     {
+      "kind": "FragmentSpread",
+      "name": "ArtworkDetailsArticles_artwork",
+      "args": null
+    },
+    {
       "kind": "ScalarField",
       "alias": null,
-      "name": "__id",
+      "name": "additional_information",
       "args": null,
       "storageKey": null
-    }
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "description",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "framed",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "ArtworkInfoRow",
+      "plural": false,
+      "selections": v0
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "signatureInfo",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "ArtworkInfoRow",
+      "plural": false,
+      "selections": v0
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "conditionDescription",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "ArtworkInfoRow",
+      "plural": false,
+      "selections": v0
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "ArtworkDetailsChecklist_artwork",
+      "args": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "series",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "publisher",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "manufacturer",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "provenance",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "image_rights",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "articles",
+      "storageKey": "articles(size:10)",
+      "args": [
+        {
+          "kind": "Literal",
+          "name": "size",
+          "value": 10,
+          "type": "Int"
+        }
+      ],
+      "concreteType": "Article",
+      "plural": true,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "id",
+          "args": null,
+          "storageKey": null
+        },
+        v1
+      ]
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "literature",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "exhibition_history",
+      "args": null,
+      "storageKey": null
+    },
+    v1
   ]
 };
-(node as any).hash = 'ae9daf8427f7b8c5801836a5c6afaa76';
+})();
+(node as any).hash = '2df3e3bf98b0cbdffcc89ae0803e8fe4';
 export default node;

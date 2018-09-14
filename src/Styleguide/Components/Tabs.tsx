@@ -75,6 +75,9 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
   }
 
   renderTab = (tab, index) => {
+    if (!tab) {
+      return false
+    }
     const { name } = tab.props
     return this.state.activeTabIndex === index
       ? this.props.transformTabBtn(
