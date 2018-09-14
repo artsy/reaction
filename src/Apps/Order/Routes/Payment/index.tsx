@@ -1,4 +1,4 @@
-import { Button, Checkbox, Flex, Join, Spacer } from "@artsy/palette"
+import { Button, Checkbox, Flex, Join, Serif, Spacer } from "@artsy/palette"
 import { Payment_order } from "__generated__/Payment_order.graphql"
 import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
 import { CreditCardInput } from "Apps/Order/Components/CreditCardInput"
@@ -90,22 +90,31 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
               Content={
                 <>
                   <Join separator={<Spacer mb={3} />}>
-                    <CreditCardInput
-                      error={error}
-                      onChange={response =>
-                        this.setState({ error: response.error })
-                      }
-                    />
+                    <Flex flexDirection="column">
+                      <Serif mb={1} size="3t" color="black100" lineHeight={18}>
+                        Credit Card
+                      </Serif>
+                      <CreditCardInput
+                        error={error}
+                        onChange={response =>
+                          this.setState({ error: response.error })
+                        }
+                      />
+                    </Flex>
 
-                    <Checkbox
-                      selected={this.state.hideBillingAddress}
-                      onSelect={hideBillingAddress =>
-                        this.setState({ hideBillingAddress })
-                      }
+                    {!this.isPickup() && (
+                      <Checkbox
+                        selected={this.state.hideBillingAddress}
+                        onSelect={hideBillingAddress =>
+                          this.setState({ hideBillingAddress })
+                        }
+                      >
+                        Billing and shipping addresses are the same
+                      </Checkbox>
+                    )}
+                    <Collapse
+                      open={this.isPickup() || !this.state.hideBillingAddress}
                     >
-                      Billing and shipping addresses are the same
-                    </Checkbox>
-                    <Collapse open={!this.state.hideBillingAddress}>
                       <AddressForm
                         defaultValue={this.state.address}
                         onChange={address => this.setState({ address })}
@@ -155,9 +164,9 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
       region,
       postalCode,
       country,
-    } = (this.state.hideBillingAddress
-      ? this.props.order.requestedFulfillment
-      : this.state.address) as Address
+    } = (this.isPickup() || !this.state.hideBillingAddress
+      ? this.state.address
+      : this.props.order.requestedFulfillment) as Address
 
     return {
       name,
@@ -258,6 +267,10 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
   private onMutationError(errors) {
     console.error(errors)
   }
+
+  private isPickup() {
+    return this.props.order.requestedFulfillment.__typename === "Pickup"
+  }
 }
 
 export const PaymentFragmentContainer = createFragmentContainer(
@@ -275,6 +288,9 @@ export const PaymentFragmentContainer = createFragmentContainer(
           region
           country
           postalCode
+        }
+        ... on Pickup {
+          fulfillmentType
         }
       }
       lineItems {

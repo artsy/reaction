@@ -16,6 +16,9 @@ export type Payment_order = {
         readonly country: string;
         readonly postalCode: string | null;
     } | {
+        readonly __typename: "Pickup";
+        readonly fulfillmentType: string | null;
+    } | {
         /*This will never be '% other', but we need some
         value in case none of the concrete values match.*/
         readonly __typename: "%other";
@@ -73,6 +76,19 @@ return {
           "name": "__typename",
           "args": null,
           "storageKey": null
+        },
+        {
+          "kind": "InlineFragment",
+          "type": "Pickup",
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "fulfillmentType",
+              "args": null,
+              "storageKey": null
+            }
+          ]
         },
         {
           "kind": "InlineFragment",
@@ -193,5 +209,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '63936c5bf7df8709053e8dba255ad694';
+(node as any).hash = '3cdee803a766cd0d71a9daeb6caba12a';
 export default node;
