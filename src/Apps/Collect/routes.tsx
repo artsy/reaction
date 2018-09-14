@@ -1,7 +1,6 @@
-import { FilterState } from "Apps/Collect/FilterState"
 import React from "react"
 import { graphql } from "react-relay"
-import { Provider } from "unstated"
+import AnalyticsProvider from "./AnalyticsProvider"
 import { CollectAppFragmentContainer as CollectApp } from "./CollectApp"
 
 export const routes = [
@@ -41,16 +40,7 @@ export const routes = [
         return null
       }
 
-      const { __fragments, __id, ...remainingProps } = props
-      return (
-        <Provider
-          inject={[
-            new FilterState({ ...props.params, ...props.location.query }),
-          ]}
-        >
-          <Component {...remainingProps} query={{ __id, __fragments }} />
-        </Provider>
-      )
+      return <AnalyticsProvider {...props} Component={Component} />
     },
     prepareVariables: (params, props) => {
       const initialFilterState = props.location ? props.location.query : {}
