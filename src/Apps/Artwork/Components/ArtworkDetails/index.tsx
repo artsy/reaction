@@ -1,10 +1,12 @@
 import { Box } from "@artsy/palette"
 import { ArtworkDetailsQuery } from "__generated__/ArtworkDetailsQuery.graphql"
 import { ContextConsumer } from "Artsy/Router"
-import React, { Component } from "react"
+import React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
+import { Tab, Tabs } from "Styleguide/Components"
 import { ArtworkDetailsAboutTheWorkFragmentContainer as AboutTheWork } from "./ArtworkDetailsAboutTheWork"
 import { ArtworkDetailsAdditionalInfoFragmentContainer as AdditionalInfo } from "./ArtworkDetailsAdditionalInfo"
+import { ArtworkDetailsArticlesFragmentContainer as Articles } from "./ArtworkDetailsArticles"
 import { ArtworkDetailsChecklistFragmentContainer as Checklist } from "./ArtworkDetailsChecklist"
 
 import { ArtworkDetails_artwork } from "__generated__/ArtworkDetails_artwork.graphql"
@@ -15,17 +17,53 @@ export interface ArtworkDetailsProps {
 
 const ArtworkDetailsContainer = Box
 
-export class ArtworkDetails extends Component<ArtworkDetailsProps> {
-  render() {
-    const { artwork } = this.props
-    return (
-      <ArtworkDetailsContainer pb={3}>
-        <AboutTheWork artwork={artwork} />
-        <Checklist artwork={artwork} />
-        <AdditionalInfo artwork={artwork} />
-      </ArtworkDetailsContainer>
-    )
+export const ArtworkDetails: React.SFC<ArtworkDetailsProps> = props => {
+  const { artwork } = props
+  const renderAbout =
+    artwork.additional_information ||
+    artwork.certificateOfAuthenticity ||
+    artwork.conditionDescription ||
+    artwork.description ||
+    artwork.framed ||
+    artwork.image_rights ||
+    artwork.manufacturer ||
+    artwork.provenance ||
+    artwork.publisher ||
+    artwork.series ||
+    artwork.signatureInfo
+  if (
+    !renderAbout &&
+    !artwork.articles &&
+    !artwork.exhibition_history &&
+    !artwork.literature
+  ) {
+    return null
   }
+  return (
+    <ArtworkDetailsContainer pb={4}>
+      <Tabs>
+        {renderAbout && (
+          <Tab name="About the work">
+            <AboutTheWork artwork={artwork as any} />
+            <Checklist artwork={artwork as any} />
+            <AdditionalInfo artwork={artwork as any} />
+          </Tab>
+        )}
+        {artwork.articles &&
+          artwork.articles.length && (
+            <Tab name="Articles">
+              <Articles artwork={artwork as any} />
+            </Tab>
+          )}
+        {artwork.exhibition_history && (
+          <Tab name="Exhibition history">{artwork.exhibition_history}</Tab>
+        )}
+        {artwork.literature && (
+          <Tab name="Bibliography">{artwork.literature}</Tab>
+        )}
+      </Tabs>
+    </ArtworkDetailsContainer>
+  )
 }
 
 export const ArtworkDetailsFragmentContainer = createFragmentContainer(
@@ -35,6 +73,31 @@ export const ArtworkDetailsFragmentContainer = createFragmentContainer(
       ...ArtworkDetailsAboutTheWork_artwork
       ...ArtworkDetailsChecklist_artwork
       ...ArtworkDetailsAdditionalInfo_artwork
+      ...ArtworkDetailsArticles_artwork
+      additional_information
+      description
+      framed {
+        label
+      }
+      signatureInfo {
+        label
+      }
+      conditionDescription {
+        label
+      }
+      certificateOfAuthenticity {
+        label
+      }
+      series
+      publisher
+      manufacturer
+      provenance
+      image_rights
+      articles(size: 10) {
+        id
+      }
+      literature
+      exhibition_history
     }
   `
 )

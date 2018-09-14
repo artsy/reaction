@@ -2,7 +2,11 @@ import { Checkbox, CheckboxProps, Sans } from "@artsy/palette"
 import { mount } from "enzyme"
 import React from "react"
 
-import { OrderWithShippingDetails } from "Apps/__test__/Fixtures/Order"
+import {
+  OrderWithShippingDetails,
+  PickupOrder,
+} from "Apps/__test__/Fixtures/Order"
+import { Collapse } from "../../../../Styleguide/Components"
 import { AddressForm } from "../../Components/AddressForm"
 import { CreditCardInput } from "../../Components/CreditCardInput"
 import {
@@ -42,6 +46,49 @@ describe("Payment", () => {
       router: { push: jest.fn() },
       stripe: stripeMock,
     } as any
+  })
+
+  it("always shows the billing address form without checkbox when the user selected 'pick' shipping option", () => {
+    const paymentRoute = mount(
+      <PaymentRoute {...testProps} order={{ ...PickupOrder, id: "1234" }} />
+    )
+
+    expect(paymentRoute.find(Checkbox).length).toBe(0)
+    expect(paymentRoute.find(Collapse).props().open).toBe(true)
+  })
+
+  it("always uses the billing address for stripe tokenization when the user selected 'pick' shipping option", () => {
+    const thenMock = jest.fn()
+    stripeMock.createToken.mockReturnValue({ then: thenMock })
+
+    const paymentRoute = mount(
+      <PaymentRoute {...testProps} order={{ ...PickupOrder, id: "1234" }} />
+    )
+
+    paymentRoute
+      .find(AddressForm)
+      .props()
+      .onChange({
+        name: "Artsy UK Ltd",
+        addressLine1: "14 Gower's Walk",
+        addressLine2: "Suite 2.5, The Loom",
+        city: "Whitechapel",
+        region: "London",
+        postalCode: "E1 8PY",
+        country: "UK",
+      })
+
+    paymentRoute.find(ContinueButton).simulate("click")
+
+    expect(stripeMock.createToken).toHaveBeenCalledWith({
+      name: "Artsy UK Ltd",
+      address_line1: "14 Gower's Walk",
+      address_line2: "Suite 2.5, The Loom",
+      address_city: "Whitechapel",
+      address_state: "London",
+      address_zip: "E1 8PY",
+      address_country: "UK",
+    })
   })
 
   it("tokenizes credit card information using shipping address as billing address", () => {

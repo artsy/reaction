@@ -72,3 +72,11 @@ export const OrderWithShippingDetails = {
     expiration_year: 21,
   },
 }
+
+export const PickupOrder = {
+  ...UntouchedOrder,
+  buyerPhoneNumber: "120938120983",
+  requestedFulfillment: {
+    __typename: "Pickup",
+  },
+}

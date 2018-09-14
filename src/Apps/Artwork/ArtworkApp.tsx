@@ -11,8 +11,6 @@ import { ArtistInfo } from "./Components/ArtistInfo"
 import { ArtworkDetailsFragmentContainer as ArtworkDetails } from "./Components/ArtworkDetails"
 import { ArtworkSidebarFragmentContainer as ArtworkSidebar } from "./Components/ArtworkSidebar"
 import { Banner } from "./Components/Banner"
-import { Bibliography } from "./Components/Bibliography"
-import { ExhibitionHistory } from "./Components/ExhibitionHistory"
 import { ImageCarousel } from "./Components/ImageCarousel"
 import { OtherWorks } from "./Components/OtherWorks"
 
@@ -56,17 +54,7 @@ export const ArtworkApp: React.SFC<Props> = props => {
       </Row>
       <Row>
         <Col sm={8}>
-          <Tabs>
-            <Tab name="About the work">
-              <ArtworkDetails artwork={props.artwork} />
-            </Tab>
-            <Tab name="Exhibition history">
-              <ExhibitionHistory />
-            </Tab>
-            <Tab name="Bibliography">
-              <Bibliography />
-            </Tab>
-          </Tabs>
+          <ArtworkDetails artwork={props.artwork} />
         </Col>
       </Row>
       <Row>

@@ -28,13 +28,19 @@ export class ArtworkDetailsAdditionalInfo extends React.Component<
   }
 
   render() {
-    const { artwork } = this.props
+    const {
+      series,
+      publisher,
+      manufacturer,
+      provenance,
+      image_rights,
+    } = this.props.artwork
     if (
-      !artwork.series &&
-      !artwork.publisher &&
-      !artwork.manufacturer &&
-      !artwork.provenance &&
-      !artwork.image_rights
+      !series &&
+      !publisher &&
+      !manufacturer &&
+      !provenance &&
+      !image_rights
     ) {
       return null
     }
@@ -46,14 +52,11 @@ export class ArtworkDetailsAdditionalInfo extends React.Component<
               Additional info
             </Sans>
           </Box>
-          {artwork.series && this.renderRow("Series", artwork.series)}
-          {artwork.publisher && this.renderRow("Publisher", artwork.publisher)}
-          {artwork.manufacturer &&
-            this.renderRow("Manufacturer", artwork.manufacturer)}
-          {artwork.provenance &&
-            this.renderRow("Provenance", artwork.provenance)}
-          {artwork.image_rights &&
-            this.renderRow("Image rights", artwork.image_rights)}
+          {series && this.renderRow("Series", series)}
+          {publisher && this.renderRow("Publisher", publisher)}
+          {manufacturer && this.renderRow("Manufacturer", manufacturer)}
+          {provenance && this.renderRow("Provenance", provenance)}
+          {image_rights && this.renderRow("Image rights", image_rights)}
         </Box>
       </StackableBorderBox>
     )

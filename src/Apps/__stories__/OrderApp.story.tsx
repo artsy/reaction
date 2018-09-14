@@ -1,4 +1,7 @@
-import { OrderWithShippingDetails } from "Apps/__test__/Fixtures/Order"
+import {
+  OrderWithShippingDetails,
+  PickupOrder,
+} from "Apps/__test__/Fixtures/Order"
 import { StorybooksRouter } from "Artsy/Router"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
@@ -30,6 +33,21 @@ const Router = props => (
 
 storiesOf("Apps/Order Page", module)
   .add("Shipping", () => <Router initialRoute="/order2/123/shipping" />)
-  .add("Payment", () => <Router initialRoute="/order2/123/payment" />)
   .add("Review", () => <Router initialRoute="/order2/123/review" />)
   .add("Status", () => <Router initialRoute="/order2/123/status" />)
+
+storiesOf("Apps/Order Page/Payment", module)
+  .add("With 'Ship'", () => <Router initialRoute="/order2/123/payment" />)
+  .add("With 'Pickup'", () => (
+    <Router
+      initialRoute="/order2/123/payment"
+      mockResolvers={{
+        ...mock,
+        Order: (_, { id, ...others }) => ({
+          ...PickupOrder,
+          id,
+          ...others,
+        }),
+      }}
+    />
+  ))

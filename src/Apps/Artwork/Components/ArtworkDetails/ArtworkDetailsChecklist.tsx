@@ -33,34 +33,35 @@ export class ArtworkDetailsChecklist extends React.Component<
   }
 
   render() {
-    const { artwork } = this.props
+    const {
+      certificateOfAuthenticity,
+      conditionDescription,
+      framed,
+      signatureInfo,
+    } = this.props.artwork
     if (
-      !artwork.framed &&
-      !artwork.signatureInfo &&
-      !artwork.conditionDescription &&
-      !artwork.certificateOfAuthenticity
+      !certificateOfAuthenticity &&
+      !conditionDescription &&
+      !framed &&
+      !signatureInfo
     ) {
       return null
     }
     return (
       <StackableBorderBox pb={3}>
         <Box>
-          {artwork.framed &&
-            this.renderRow(artwork.framed.label, artwork.framed.details)}
-          {artwork.signatureInfo &&
+          {framed && this.renderRow(framed.label, framed.details)}
+          {signatureInfo &&
+            this.renderRow(signatureInfo.label, signatureInfo.details)}
+          {conditionDescription &&
             this.renderRow(
-              artwork.signatureInfo.label,
-              artwork.signatureInfo.details
+              conditionDescription.label,
+              conditionDescription.details
             )}
-          {artwork.conditionDescription &&
+          {certificateOfAuthenticity &&
             this.renderRow(
-              artwork.conditionDescription.label,
-              artwork.conditionDescription.details
-            )}
-          {artwork.certificateOfAuthenticity &&
-            this.renderRow(
-              artwork.certificateOfAuthenticity.label,
-              artwork.certificateOfAuthenticity.details
+              certificateOfAuthenticity.label,
+              certificateOfAuthenticity.details
             )}
         </Box>
       </StackableBorderBox>
