@@ -23,6 +23,7 @@ export interface FormProps {
    * any global error that comes from an external data source
    * (e.g. server)
    */
+  contextModule?: string
   error?: string
   values?: InputValues
   handleSubmit?: SubmitHandler
