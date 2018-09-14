@@ -1,4 +1,4 @@
-import { mount } from "enzyme"
+import { mount, shallow } from "enzyme"
 import React from "react"
 import { commitMutation, RelayProp } from "react-relay"
 
@@ -7,6 +7,8 @@ import { UntouchedOrder } from "Apps/__test__/Fixtures/Order"
 import Input, { InputProps } from "Components/Input"
 import { Dismiss } from "Components/Modal/ErrorModal"
 import { Provider } from "unstated"
+import { CountrySelect } from "../../../../Styleguide/Components"
+import { Address, AddressFields } from "../../Components/AddressFields"
 import {
   settingOrderShipmentFailure,
   settingOrderShipmentSuccess,
@@ -25,6 +27,35 @@ describe("Shipping", () => {
         <ShippingRoute {...someProps} />
       </Provider>
     )
+  }
+  const validAddress: Address = {
+    name: "Artsy UK Ltd",
+    addressLine1: "14 Gower's Walk",
+    addressLine2: "Suite 2.5, The Loom",
+    city: "Whitechapel",
+    region: "London",
+    postalCode: "E1 8PY",
+    country: "UK",
+    phoneNumber: "8475937743",
+  }
+  const fillInput = (component, name, val, inputType = Input) => {
+    const input = component
+      .find(inputType)
+      .filterWhere(wrapper => wrapper.props().name === name)
+    input.getDOMNode().value = val
+    input.simulate("change")
+  }
+
+  const fillCountrySelect = (component, name, val) => {
+    fillInput(component, name, val, CountrySelect)
+  }
+
+  const fillAddressForm = (component, values: Partial<Address>) => {
+    const { country: countryVal, ...inputVals } = values
+    Object.keys(inputVals).forEach(name =>
+      fillInput(component, name, inputVals[name])
+    )
+    countryVal && fillCountrySelect(component, "country", countryVal)
   }
 
   let testProps: ShippingProps
@@ -90,7 +121,7 @@ describe("Shipping", () => {
 
   describe("mutation", () => {
     beforeEach(() => {
-      console.error = jest.fn() // Silences component logging.
+      // console.error = jest.fn() // Silences component logging.
       commitMutation.mockReset()
     })
 
@@ -106,22 +137,6 @@ describe("Shipping", () => {
       component.find("Button").simulate("click")
 
       expect(testProps.router.push).toHaveBeenCalledWith("/order2/1234/payment")
-    })
-
-    it("shows the button spinner while loading the mutation", () => {
-      const component = getWrapper(testProps)
-      const mockCommitMutation = commitMutation as jest.Mock<any>
-      mockCommitMutation.mockImplementationOnce(() => {
-        const buttonProps = component
-          .update() // We need to wait for the component to re-render
-          .find("Button")
-          .props() as any
-        expect(buttonProps.loading).toBeTruthy()
-      })
-
-      component.find("Button").simulate("click")
-
-      expect.hasAssertions()
     })
 
     it("shows an error modal when there is an error from the server", () => {
@@ -165,25 +180,46 @@ describe("Shipping", () => {
 
       const input = component
         .find(Input)
-        .filterWhere(
-          wrapper => (wrapper.props() as InputProps).title === "Full name"
-        )
-
-      expect((input.props() as InputProps).defaultValue).toBe(
+        .filterWhere(wrapper => (wrapper.props() as InputProps).name === "name")
+      expect((input.props() as InputProps).value).toBe(
         testProps.order.requestedFulfillment.name
       )
     })
 
-    it("includes already-filled-in data in mutation if re-sent", () => {
+    it.only("includes already-filled-in data in mutation if re-sent", () => {
       const component = getWrapper(testProps)
       const mockCommitMutation = commitMutation as jest.Mock<any>
       mockCommitMutation.mockImplementationOnce((_environment, config) => {
+        console.log("***********")
         expect(config.variables.input.shipping.name).toBe("Dr Collector")
       })
 
+      console.log("????????", component.find(AddressFields).props().values)
+      fillAddressForm(component, validAddress)
+      component.update()
+      console.log("????????", component.find(AddressFields).props().values)
       component.find(Button).simulate("click")
 
       expect.hasAssertions()
     })
   })
+
+  // describe("#validate", () => {
+  //   xit("validates address if SHIP is selected", () => {
+  //     const wrapper = getWrapper(testProps)
+  //     // console.log("??????????????", wrapper.instance())
+  //     const component = wrapper.find("ShippingRoute").instance()
+  //     console.log("????????????", component)
+  //     //   const result = ShippingRoute.prototype.validateAddress({
+  //     //     shippingOption: "SHIP",
+  //     //   })
+  //     //   expect(Object.keys(result).length).not.toEqual(0)
+  //   })
+  // })
+
+  // describe("#onContinue", () => {
+  //   xit("sets the submitting state on an error", () => {
+  //     expect(false).toBe(true)
+  //   })
+  // })
 })
