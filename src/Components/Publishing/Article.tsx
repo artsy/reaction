@@ -52,7 +52,7 @@ export interface ArticleProps {
 )
 export class Article extends React.Component<ArticleProps> {
   componentDidMount() {
-    if (!this.props.isLoggedIn) {
+    if (!this.props.isLoggedIn && !this.props.isMobile) {
       window.addEventListener(
         "scroll",
         debounce(() => {
