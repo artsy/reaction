@@ -1,31 +1,3 @@
-import { Shipping_order } from "__generated__/Shipping_order.graphql"
-import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
-import { Helper } from "Apps/Order/Components/Helper"
-import { TransactionSummaryFragmentContainer as TransactionSummary } from "Apps/Order/Components/TransactionSummary"
-import { Router } from "found"
-import { get, pick } from "lodash"
-import React, { Component } from "react"
-import { Collapse } from "Styleguide/Components"
-import { Responsive } from "Utils/Responsive"
-import {
-  Address,
-  AddressForm,
-  emptyAddress,
-} from "../../Components/AddressForm"
-import { TwoColumnLayout } from "../../Components/TwoColumnLayout"
-
-import {
-  OrderFulfillmentType,
-  ShippingOrderAddressUpdateMutation,
-} from "__generated__/ShippingOrderAddressUpdateMutation.graphql"
-
-import {
-  commitMutation,
-  createFragmentContainer,
-  graphql,
-  RelayProp,
-} from "react-relay"
-
 import {
   BorderedRadio,
   Button,
@@ -34,9 +6,36 @@ import {
   Sans,
   Spacer,
 } from "@artsy/palette"
-
+import { Shipping_order } from "__generated__/Shipping_order.graphql"
+import {
+  OrderFulfillmentType,
+  ShippingOrderAddressUpdateMutation,
+} from "__generated__/ShippingOrderAddressUpdateMutation.graphql"
+import {
+  Address,
+  AddressChangeHandler,
+  AddressErrors,
+  AddressForm,
+  emptyAddress,
+} from "Apps/Order/Components/AddressForm"
+import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
+import { Helper } from "Apps/Order/Components/Helper"
+import { TransactionSummaryFragmentContainer as TransactionSummary } from "Apps/Order/Components/TransactionSummary"
+import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
+import { validatePresence } from "Apps/Order/Components/Validators"
 import { ErrorModal } from "Components/Modal/ErrorModal"
+import { Router } from "found"
+import { get, pick } from "lodash"
+import React, { Component } from "react"
+import {
+  commitMutation,
+  createFragmentContainer,
+  graphql,
+  RelayProp,
+} from "react-relay"
+import { Collapse } from "Styleguide"
 import { Col, Row } from "Styleguide/Elements/Grid"
+import { Responsive } from "Utils/Responsive"
 
 export interface ShippingProps {
   order: Shipping_order
@@ -48,8 +47,9 @@ export interface ShippingProps {
 }
 
 export interface ShippingState {
-  address: Address
   shippingOption: OrderFulfillmentType
+  address: Address
+  addressErrors: AddressErrors
   isComittingMutation: boolean
   isErrorModalOpen: boolean
 }
@@ -59,22 +59,37 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     shippingOption: ((this.props.order.requestedFulfillment &&
       this.props.order.requestedFulfillment.__typename.toUpperCase()) ||
       "SHIP") as OrderFulfillmentType,
-    address: {
+    isComittingMutation: false,
+    isErrorModalOpen: false,
+    address: this.startingAddress,
+    addressErrors: {},
+  }
+
+  get startingAddress() {
+    return {
       ...emptyAddress,
       country: "US",
       // We need to pull out _only_ the values specified by the Address type,
       // since our state will be used for Relay variables later on. The
       // easiest way to do this is with the emptyAddress.
       ...pick(this.props.order.requestedFulfillment, Object.keys(emptyAddress)),
-    },
-    isComittingMutation: false,
-    isErrorModalOpen: false,
+    }
   }
 
-  onContinueButtonPressed = () => {
-    if (this.props.relay && this.props.relay.environment) {
-      // We don't strictly need to wait for the state to be set, but it makes it easier to test.
-      this.setState({ isComittingMutation: true }, () => {
+  onContinue: () => void = () => {
+    this.setState({ isComittingMutation: true }, () => {
+      const { address, shippingOption } = this.state
+
+      if (this.state.shippingOption === "SHIP") {
+        const errors = this.validateAddress(this.state.address)
+
+        if (Object.keys(errors).filter(key => errors[key]).length > 0) {
+          this.setState({ isComittingMutation: false, addressErrors: errors })
+          return
+        }
+      }
+
+      if (this.props.relay && this.props.relay.environment) {
         commitMutation<ShippingOrderAddressUpdateMutation>(
           this.props.relay.environment,
           {
@@ -103,11 +118,12 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
             variables: {
               input: {
                 orderId: this.props.order.id,
-                fulfillmentType: this.state.shippingOption,
-                shipping: this.state.address,
+                fulfillmentType: shippingOption,
+                shipping: address,
               },
             },
             onCompleted: data => {
+              this.setState({ isComittingMutation: false })
               const {
                 setOrderShipping: { orderOrError },
               } = data
@@ -119,11 +135,24 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
               }
             },
             onError: error => {
+              this.setState({ isComittingMutation: false })
               this.onError(error)
             },
           }
         )
-      })
+      }
+    })
+  }
+
+  private validateAddress(address: Address) {
+    const { name, addressLine1, city, region, country, postalCode } = address
+    return {
+      name: validatePresence(name),
+      addressLine1: validatePresence(addressLine1),
+      city: validatePresence(city),
+      region: validatePresence(region),
+      country: validatePresence(country),
+      postalCode: validatePresence(postalCode),
     }
   }
 
@@ -136,12 +165,23 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     this.setState({ isErrorModalOpen: false })
   }
 
+  onAddressChange: AddressChangeHandler = (address, key) => {
+    this.setState({
+      address,
+      addressErrors: {
+        ...this.state.addressErrors,
+        [key]: this.validateAddress(address)[key],
+      },
+    })
+  }
+
   render() {
     const { order } = this.props
     const isPickupAvailable = get(
       this.props,
       "order.lineItems.edges[0].node.artwork.pickup_available"
     )
+    const { address, addressErrors, isComittingMutation } = this.state
     return (
       <>
         <Row>
@@ -150,6 +190,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
           </Col>
         </Row>
         <Spacer mb={3} />
+
         <Responsive>
           {({ xs }) => (
             <TwoColumnLayout
@@ -189,15 +230,16 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
 
                   <Collapse open={this.state.shippingOption === "SHIP"}>
                     <AddressForm
-                      defaultValue={this.state.address}
-                      onChange={address => this.setState({ address })}
+                      defaultValue={address}
+                      errors={addressErrors}
+                      onChange={this.onAddressChange}
                     />
                   </Collapse>
 
                   {!xs && (
                     <Button
-                      onClick={this.onContinueButtonPressed}
-                      loading={this.state.isComittingMutation}
+                      onClick={this.onContinue}
+                      loading={isComittingMutation}
                       size="large"
                       width="100%"
                     >
@@ -208,16 +250,21 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
               }
               Sidebar={
                 <Flex flexDirection="column">
-                  <TransactionSummary order={order} mb={xs ? 2 : 3} />
+                  <TransactionSummary
+                    order={this.props.order}
+                    mb={xs ? 2 : 3}
+                  />
                   <Helper
-                    artworkId={order.lineItems.edges[0].node.artwork.id}
+                    artworkId={
+                      this.props.order.lineItems.edges[0].node.artwork.id
+                    }
                   />
                   {xs && (
                     <>
                       <Spacer mb={3} />
                       <Button
-                        onClick={this.onContinueButtonPressed}
-                        loading={this.state.isComittingMutation}
+                        onClick={this.onContinue}
+                        loading={isComittingMutation}
                         size="large"
                         width="100%"
                       >
@@ -230,6 +277,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
             />
           )}
         </Responsive>
+
         <ErrorModal
           onClose={this.onCloseModal}
           show={this.state.isErrorModalOpen}
