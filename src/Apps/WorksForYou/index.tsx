@@ -61,10 +61,11 @@ export class WorksForYou extends Component<Props> {
               `}
               variables={{ artistID, includeSelectedArtist, forSale, filter }}
               render={({ props }) => {
-                const hasBuyNowLabFeature =
-                  user &&
-                  user.lab_features &&
-                  user.lab_features.includes("New Buy Now Flow")
+                const hasBuyNowLabFeature = true
+                // user &&
+                // user.lab_features &&
+                // user.lab_features.includes("New Buy Now Flow")
+                console.log(user)
                 if (props) {
                   return (
                     <>

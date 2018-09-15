@@ -18,7 +18,25 @@ export const MarketingHeader: SFC = () => {
         width="100%"
         height="220px"
         background={themeProps.colors.black5}
-      />
+        p={0}
+        style={{
+          overflow: "hidden",
+        }}
+      >
+        <video
+          // FIXME: Point to CloudFront url and post file to prod
+          src="https://s3.amazonaws.com/artsy-vanity-files-staging/BN-Banner_S-XL_compressed.mp4"
+          width="100%"
+          height="220"
+          style={{
+            objectFit: "cover",
+            width: "100%",
+            height: "220px",
+          }}
+          autoPlay
+          loop
+        />
+      </BorderBox>
 
       <Spacer mb={1} />
 
