@@ -1,9 +1,9 @@
 import { cloneDeep, isNil, omit, omitBy, uniq, without } from "lodash"
 import { Container } from "unstated"
 
-interface State {
+export interface State {
   // Search filters
-  medium: string
+  medium?: string
   major_periods?: string[]
   partner_id?: string
   for_sale?: boolean
@@ -15,8 +15,10 @@ interface State {
   price_range?: string
 
   // UI
-  selectedFilters: string[]
-  showActionSheet: boolean
+  selectedFilters?: string[]
+  showActionSheet?: boolean
+
+  tracking?: any
 }
 
 const initialState = {
@@ -36,9 +38,12 @@ const initialState = {
 
 export class FilterState extends Container<State> {
   state = cloneDeep(initialState)
+  tracking: any
 
   constructor(props: State) {
     super()
+    this.tracking = props.tracking
+
     if (props) {
       Object.keys(this.state).forEach(filter => {
         if (props[filter]) {
@@ -170,7 +175,11 @@ export class FilterState extends Container<State> {
       ])
       filterState = omitBy(filterState, isNil)
 
-      mediator.trigger("collect:filter:changed", filterState)
+      this.tracking.trackEvent({
+        action: "Commercial filter: params changed",
+        current: omit(this.state, ["selectedFilterCount", "showActionSheet"]),
+        changed: newPartialState,
+      })
     })
   }
 }

@@ -29,7 +29,7 @@ export const currentStepActionName = {
   1: Schema.ActionName.PasswordNextButton,
 }
 
-@track({ context_module: Schema.Context.Header })
+@track()
 export class MobileSignUpForm extends Component<
   FormProps,
   MobileSignUpFormState
@@ -38,14 +38,15 @@ export class MobileSignUpForm extends Component<
     isSocialSignUp: false,
   }
 
-  @track((props: { intent: string }, state, args) => ({
+  @track((props: { contextModule: string; intent: string }, state, args) => ({
     action_type: Schema.ActionType.Click,
     action_name: currentStepActionName[args[0]],
+    contextModule: args[1],
     flow: "auth",
     subject: "clicked next button",
     intent: props.intent,
   }))
-  trackNextClick(currentStepIndex) {
+  trackNextClick(currentStepIndex, contextModule) {
     // no op
   }
 
@@ -178,8 +179,11 @@ export class MobileSignUpForm extends Component<
                 {this.showError(status)}
                 <SubmitButton
                   onClick={e => {
-                    if (wizard.shouldAllowNext) {
-                      this.trackNextClick(wizard.currentStepIndex)
+                    if (wizard.shouldAllowNext && this.props.contextModule) {
+                      this.trackNextClick(
+                        wizard.currentStepIndex,
+                        this.props.contextModule
+                      )
                     }
 
                     this.setState(
