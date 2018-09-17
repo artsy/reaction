@@ -3,6 +3,7 @@ import { Payment_order } from "__generated__/Payment_order.graphql"
 import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
 import { CreditCardInput } from "Apps/Order/Components/CreditCardInput"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
+import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
 import React, { Component } from "react"
 import {
@@ -34,6 +35,7 @@ interface PaymentState {
   hideBillingAddress: boolean
   error: stripe.Error
   isComittingMutation: boolean
+  isErrorModalOpen: boolean
 }
 
 export const ContinueButton = props => (
@@ -51,6 +53,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
     hideBillingAddress: true,
     error: null,
     isComittingMutation: false,
+    isErrorModalOpen: false,
   }
 
   onContinueButtonPressed = () => {
@@ -68,6 +71,10 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
         }
       })
     })
+  }
+
+  onCloseModal = () => {
+    this.setState({ isErrorModalOpen: false })
   }
 
   render() {
@@ -151,6 +158,11 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
             />
           )}
         </Responsive>
+
+        <ErrorModal
+          onClose={this.onCloseModal}
+          show={this.state.isErrorModalOpen}
+        />
       </>
     )
   }
@@ -182,13 +194,16 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
   private createCreditCard({ token }) {
     commitMutation(this.props.relay.environment, {
       onCompleted: (data, errors) => {
-        if (data && data.createCreditCard.creditCardOrError.creditCard) {
+        const {
+          createCreditCard: { creditCardOrError },
+        } = data
+
+        if (creditCardOrError.creditCard) {
           this.setOrderPayment({
-            creditCardId: data.createCreditCard.creditCardOrError.creditCard.id,
+            creditCardId: creditCardOrError.creditCard.id,
           })
         } else {
-          // TODO: Add error handling
-          console.error(errors)
+          this.onMutationError(errors || creditCardOrError.mutationError)
         }
       },
       onError: this.onMutationError.bind(this),
@@ -225,11 +240,14 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
       onCompleted: (data, errors) => {
         this.setState({ isComittingMutation: false })
 
-        if (data && data.setOrderPayment.orderOrError.order) {
+        const {
+          setOrderPayment: { orderOrError },
+        } = data
+
+        if (orderOrError.order) {
           this.props.router.push(`/order2/${this.props.order.id}/review`)
         } else {
-          // TODO: Add error handling
-          console.error(errors)
+          this.onMutationError(errors || orderOrError)
         }
       },
       onError: this.onMutationError.bind(this),
@@ -265,7 +283,8 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
   }
 
   private onMutationError(errors) {
-    console.error(errors)
+    console.error("Order/Routes/Payment/index.tsx", errors)
+    this.setState({ isComittingMutation: false, isErrorModalOpen: true })
   }
 
   private isPickup() {

@@ -10,8 +10,11 @@ import { Collapse } from "../../../../Styleguide/Components"
 import { AddressForm } from "../../Components/AddressForm"
 import { CreditCardInput } from "../../Components/CreditCardInput"
 import {
+  creatingCreditCardFailed,
   creatingCreditCardSuccess,
+  settingOrderPaymentFailed,
   settingOrderPaymentSuccess,
+  settingOrderShipmentFailure,
 } from "../__fixtures__/MutationResults"
 import { ContinueButton, PaymentProps, PaymentRoute } from "../Payment"
 
@@ -26,6 +29,10 @@ jest.mock("react-stripe-elements", () => ({
 }))
 
 import { commitMutation, RelayProp } from "react-relay"
+import {
+  ErrorModal,
+  ModalButton,
+} from "../../../../Components/Modal/ErrorModal"
 
 const mutationMock = commitMutation as jest.Mock<any>
 
@@ -34,6 +41,7 @@ describe("Payment", () => {
   let testProps: PaymentProps
 
   beforeEach(() => {
+    console.error = jest.fn() // Silences component logging.
     mutationMock.mockReset()
 
     stripeMock = {
@@ -240,5 +248,63 @@ describe("Payment", () => {
       .simulate("click")
 
     expect(testProps.router.push).toHaveBeenCalledWith("/order2/1234/review")
+  })
+
+  it("shows an error modal when there is an error in CreateCreditCardPayload", () => {
+    stripeMock.createToken.mockReturnValue({
+      then: func => func({ token: { id: "tokenId" } }),
+    })
+
+    mutationMock.mockImplementationOnce((_, { onCompleted }) =>
+      onCompleted(creatingCreditCardFailed)
+    )
+
+    const component = mount(<PaymentRoute {...testProps} />)
+
+    expect(component.find(ErrorModal).props().show).toBe(false)
+
+    component.find(ContinueButton).simulate("click")
+
+    expect(component.find(ErrorModal).props().show).toBe(true)
+
+    component.find(ModalButton).simulate("click")
+
+    expect(component.find(ErrorModal).props().show).toBe(false)
+  })
+
+  it("shows an error modal when there is an error in SetOrderPaymentPayload", () => {
+    stripeMock.createToken.mockReturnValue({
+      then: func => func({ token: { id: "tokenId" } }),
+    })
+
+    const component = mount(<PaymentRoute {...testProps} />)
+
+    mutationMock
+      .mockImplementationOnce((_, { onCompleted }) =>
+        onCompleted(creatingCreditCardSuccess)
+      )
+      .mockImplementationOnce((_, { onCompleted }) =>
+        onCompleted(settingOrderPaymentFailed)
+      )
+
+    component.find(ContinueButton).simulate("click")
+
+    expect(component.find(ErrorModal).props().show).toBe(true)
+  })
+
+  it("shows an error modal when there is a network error", () => {
+    stripeMock.createToken.mockReturnValue({
+      then: func => func({ token: { id: "tokenId" } }),
+    })
+
+    const component = mount(<PaymentRoute {...testProps} />)
+
+    mutationMock.mockImplementationOnce((_, { onError }) =>
+      onError(new TypeError("Network request failed"))
+    )
+
+    component.find(ContinueButton).simulate("click")
+
+    expect(component.find(ErrorModal).props().show).toBe(true)
   })
 })

@@ -7,3 +7,15 @@ export const settingOrderPaymentSuccess = {
     },
   },
 }
+
+export const settingOrderPaymentFailed = {
+  setOrderPayment: {
+    orderOrError: {
+      error: {
+        type: "validation",
+        code: "invalid_state",
+        data: '{"state":"canceled"}',
+      },
+    },
+  },
+}
