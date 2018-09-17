@@ -1,6 +1,6 @@
 import { mount } from "enzyme"
 import React from "react"
-import { Dismiss, ErrorModal } from "../ErrorModal"
+import { Dismiss, ErrorModal, ModalButton } from "../ErrorModal"
 
 describe("ErrorModal", () => {
   const getWrapper = inputs => {
@@ -54,7 +54,7 @@ describe("ErrorModal", () => {
     it("Clicking on the continue button closes the modal", () => {
       props.onClose = jest.fn()
       const component = getWrapper(props)
-      component.find(Dismiss).simulate("click")
+      component.find(ModalButton).simulate("click")
       expect(props.onClose).toBeCalled()
     })
   })
