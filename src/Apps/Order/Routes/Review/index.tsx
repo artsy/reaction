@@ -5,6 +5,7 @@ import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
 import { ItemReviewFragmentContainer as ItemReview } from "Apps/Order/Components/ItemReview"
 import { ShippingAndPaymentReviewFragmentContainer as ShippingAndPaymentReview } from "Apps/Order/Components/ShippingAndPaymentReview"
 import { TermsOfServiceCheckbox } from "Apps/Order/Components/TermsOfServiceCheckbox"
+import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
 import React, { Component } from "react"
 import {
@@ -28,12 +29,16 @@ export interface ReviewProps {
 interface ReviewState {
   termsCheckboxSelected: boolean
   isSubmitting: boolean
+  isErrorModalOpen: boolean
+  errorModalMessage: string
 }
 
 export class ReviewRoute extends Component<ReviewProps, ReviewState> {
   state = {
     termsCheckboxSelected: false,
     isSubmitting: false,
+    isErrorModalOpen: false,
+    errorModalMessage: null,
   }
 
   updateTermsCheckbox() {
@@ -72,16 +77,26 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
             },
             onCompleted: result => {
               if ("error" in result.submitOrder.orderOrError) {
-                // TODO: handle failure properly
-                console.error("error", result.submitOrder.orderOrError.error)
+                this.onMutationError(result.submitOrder.orderOrError.error)
                 return
               }
+
               this.props.router.push(`/order2/${this.props.order.id}/status`)
             },
+            onError: this.onMutationError.bind(this),
           }
         )
       )
     }
+  }
+
+  private onMutationError(errors, errorModalMessage?) {
+    console.error("Order/Routes/Review/index.tsx", errors)
+    this.setState({
+      isSubmitting: false,
+      isErrorModalOpen: true,
+      errorModalMessage,
+    })
   }
 
   onChangePayment() {
@@ -90,6 +105,10 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
 
   onChangeShipping() {
     console.log("Clicked to change shipping")
+  }
+
+  onCloseModal = () => {
+    this.setState({ isErrorModalOpen: false })
   }
 
   render() {
@@ -183,6 +202,12 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
             />
           )}
         </Responsive>
+
+        <ErrorModal
+          onClose={this.onCloseModal}
+          show={this.state.isErrorModalOpen}
+          detailText={this.state.errorModalMessage}
+        />
       </>
     )
   }
