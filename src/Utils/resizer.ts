@@ -19,6 +19,9 @@ export const crop = (
 ) => {
   const { width, height, quality, isDisplayAd } = options
 
+  // dont call gemini with empty src
+  if (!src) return null
+
   if (!width && !height) {
     warn("requires width and height")
     return src
@@ -54,6 +57,9 @@ export const resize = (
   }
 ) => {
   const { width, height, quality, isDisplayAd } = options
+
+  // dont call gemini with empty src
+  if (!src) return null
 
   let resizeTo
   if (width && !height) {

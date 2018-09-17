@@ -366,13 +366,13 @@ export class DisplayPanel extends Component<
     const { unit, campaign, isMobile, renderTime } = this.props
     const url = get(unit.assets, "0.url", "")
     const isVideo = this.isVideo()
-    const cover = unit.cover_image_url || ""
-
     const imageUrl = isVideo
       ? url
       : crop(url, { width: 680, height: 284, isDisplayAd: true })
     const hoverImageUrl = resize(unit.logo, { width: 680, isDisplayAd: true })
-    const coverUrl = crop(cover, { width: 680, height: 284, isDisplayAd: true })
+    const coverUrl =
+      unit.cover_image_url &&
+      crop(unit.cover_image_url, { width: 680, height: 284, isDisplayAd: true })
 
     return (
       <ErrorBoundary>
