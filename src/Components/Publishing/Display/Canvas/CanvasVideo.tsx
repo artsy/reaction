@@ -134,11 +134,14 @@ export class CanvasVideo extends Component<CanvasVideoProps, any> {
 
   render() {
     const { isPlaying } = this.state
+    const { coverUrl, src } = this.props
 
-    const resized_cover = resize(this.props.coverUrl, {
-      width: 760,
-      isDisplayAd: true,
-    })
+    const resized_cover =
+      coverUrl &&
+      resize(coverUrl, {
+        width: 760,
+        isDisplayAd: true,
+      })
 
     return (
       <VideoContainer onClick={this.onPlayVideo}>
@@ -150,7 +153,7 @@ export class CanvasVideo extends Component<CanvasVideoProps, any> {
 
         <video
           playsInline
-          src={this.props.src}
+          src={src}
           className="CanvasVideo__video"
           controls={false}
           ref={video => (this.video = video)}
