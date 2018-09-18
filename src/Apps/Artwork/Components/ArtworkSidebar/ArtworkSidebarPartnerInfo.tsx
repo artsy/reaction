@@ -1,8 +1,8 @@
 import { Box, Flex, Serif } from "@artsy/palette"
+import { FilterLocations } from "Apps/Artwork/Utils/FilterLocations"
 import { Location } from "Assets/Icons/Location"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { filterLocations } from "Styleguide/Components/Helpers"
 
 import { ArtworkSidebarPartnerInfo_artwork } from "__generated__/ArtworkSidebarPartnerInfo_artwork.graphql"
 
@@ -51,7 +51,7 @@ export class ArtworkSidebarPartnerInfo extends React.Component<
       artwork.partner &&
       artwork.partner.locations &&
       artwork.partner.locations.length > 0 &&
-      filterLocations(artwork.partner.locations)
+      FilterLocations(artwork.partner.locations)
     return (
       <Box pb={3}>
         {artwork && artwork.collecting_institution ? (

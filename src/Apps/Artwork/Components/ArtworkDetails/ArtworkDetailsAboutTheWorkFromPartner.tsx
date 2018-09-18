@@ -1,8 +1,8 @@
 import { Avatar, Box, Flex, Serif, StackableBorderBox } from "@artsy/palette"
+import { FilterLocations } from "Apps/Artwork/Utils/FilterLocations"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { ReadMore } from "Styleguide/Components"
-import { filterLocations } from "Styleguide/Components/Helpers"
 
 import { ArtworkDetailsAboutTheWorkFromPartner_artwork } from "__generated__/ArtworkDetailsAboutTheWorkFromPartner_artwork.graphql"
 
@@ -21,7 +21,7 @@ export const ArtworkDetailsAboutTheWorkFromPartner: React.SFC<
     partner &&
     partner.locations &&
     partner.locations.length > 0 &&
-    filterLocations(partner.locations)
+    FilterLocations(partner.locations)
   return (
     <StackableBorderBox>
       <Box>

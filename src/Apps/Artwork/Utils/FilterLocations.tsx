@@ -2,7 +2,7 @@
  * Helper function to filter out blank and duplicate location names
  * @param locations collection of location objects to filter
  */
-export const filterLocations = (locations: ReadonlyArray<{ city: string }>) => {
+export const FilterLocations = (locations: ReadonlyArray<{ city: string }>) => {
   if (!locations || locations.length < 1) {
     return
   }
