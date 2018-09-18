@@ -1,4 +1,5 @@
 import { Box, Flex, Serif } from "@artsy/palette"
+import { filterLocations } from "Apps/Artwork/Utils/filterLocations"
 import { Location } from "Assets/Icons/Location"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -45,15 +46,12 @@ export class ArtworkSidebarPartnerInfo extends React.Component<
 
   render() {
     const { artwork } = this.props
-    const locationCities = artwork.partner.locations.map((location, index) => {
-      return location.city
-    })
-    const filteredForDuplicatesAndBlanks = locationCities.filter(
-      (city, pos) => {
-        return city && locationCities.indexOf(city) === pos && city.length > 0
-      }
-    )
-
+    const locationNames =
+      artwork &&
+      artwork.partner &&
+      artwork.partner.locations &&
+      artwork.partner.locations.length > 0 &&
+      filterLocations(artwork.partner.locations)
     return (
       <Box pb={3}>
         {artwork && artwork.collecting_institution ? (
@@ -61,18 +59,19 @@ export class ArtworkSidebarPartnerInfo extends React.Component<
         ) : (
           <React.Fragment>
             {this.renderPartnerName()}
-            {filteredForDuplicatesAndBlanks.length > 0 && (
-              <Box>
-                <Flex width="100%" pt={1}>
-                  <Flex flexDirection="column">
-                    <Location />
+            {locationNames &&
+              locationNames.length > 0 && (
+                <Box>
+                  <Flex width="100%" pt={1}>
+                    <Flex flexDirection="column">
+                      <Location />
+                    </Flex>
+                    <Flex flexDirection="column">
+                      {this.renderLocations(locationNames)}
+                    </Flex>
                   </Flex>
-                  <Flex flexDirection="column">
-                    {this.renderLocations(filteredForDuplicatesAndBlanks)}
-                  </Flex>
-                </Flex>
-              </Box>
-            )}
+                </Box>
+              )}
           </React.Fragment>
         )}
       </Box>

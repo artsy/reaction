@@ -28,7 +28,8 @@ query ArtworkDetailsQuery(
 }
 
 fragment ArtworkDetails_artwork on Artwork {
-  ...ArtworkDetailsAboutTheWork_artwork
+  ...ArtworkDetailsAboutTheWorkFromArtsy_artwork
+  ...ArtworkDetailsAboutTheWorkFromPartner_artwork
   ...ArtworkDetailsChecklist_artwork
   ...ArtworkDetailsAdditionalInfo_artwork
   ...ArtworkDetailsArticles_artwork
@@ -60,11 +61,25 @@ fragment ArtworkDetails_artwork on Artwork {
   __id
 }
 
-fragment ArtworkDetailsAboutTheWork_artwork on Artwork {
-  additional_information
+fragment ArtworkDetailsAboutTheWorkFromArtsy_artwork on Artwork {
   description
+  __id
+}
+
+fragment ArtworkDetailsAboutTheWorkFromPartner_artwork on Artwork {
+  additional_information
   partner {
     name
+    locations {
+      city
+      __id
+    }
+    profile {
+      image {
+        url
+      }
+      __id
+    }
     __id
   }
   __id
@@ -143,17 +158,23 @@ v2 = {
   "args": null,
   "storageKey": null
 },
-v3 = [
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "name",
+  "args": null,
+  "storageKey": null
+},
+v4 = [
   {
     "kind": "ScalarField",
     "alias": null,
-    "name": "name",
+    "name": "url",
     "args": null,
     "storageKey": null
-  },
-  v2
+  }
 ],
-v4 = [
+v5 = [
   {
     "kind": "ScalarField",
     "alias": null,
@@ -174,7 +195,7 @@ return {
   "operationKind": "query",
   "name": "ArtworkDetailsQuery",
   "id": null,
-  "text": "query ArtworkDetailsQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...ArtworkDetails_artwork\n    __id\n  }\n}\n\nfragment ArtworkDetails_artwork on Artwork {\n  ...ArtworkDetailsAboutTheWork_artwork\n  ...ArtworkDetailsChecklist_artwork\n  ...ArtworkDetailsAdditionalInfo_artwork\n  ...ArtworkDetailsArticles_artwork\n  additional_information\n  description\n  framed {\n    label\n  }\n  signatureInfo {\n    label\n  }\n  conditionDescription {\n    label\n  }\n  certificateOfAuthenticity {\n    label\n  }\n  series\n  publisher\n  manufacturer\n  provenance\n  image_rights\n  articles(size: 10) {\n    id\n    __id\n  }\n  literature\n  exhibition_history\n  __id\n}\n\nfragment ArtworkDetailsAboutTheWork_artwork on Artwork {\n  additional_information\n  description\n  partner {\n    name\n    __id\n  }\n  __id\n}\n\nfragment ArtworkDetailsChecklist_artwork on Artwork {\n  framed {\n    label\n    details\n  }\n  signatureInfo {\n    label\n    details\n  }\n  conditionDescription {\n    label\n    details\n  }\n  certificateOfAuthenticity {\n    label\n    details\n  }\n  __id\n}\n\nfragment ArtworkDetailsAdditionalInfo_artwork on Artwork {\n  series\n  publisher\n  manufacturer\n  provenance\n  image_rights\n  __id\n}\n\nfragment ArtworkDetailsArticles_artwork on Artwork {\n  articles(size: 10) {\n    author {\n      name\n      __id\n    }\n    href\n    published_at(format: \"MMM Do, YYYY\")\n    thumbnail_image {\n      resized(width: 300) {\n        url\n      }\n    }\n    thumbnail_title\n    __id\n  }\n  __id\n}\n",
+  "text": "query ArtworkDetailsQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...ArtworkDetails_artwork\n    __id\n  }\n}\n\nfragment ArtworkDetails_artwork on Artwork {\n  ...ArtworkDetailsAboutTheWorkFromArtsy_artwork\n  ...ArtworkDetailsAboutTheWorkFromPartner_artwork\n  ...ArtworkDetailsChecklist_artwork\n  ...ArtworkDetailsAdditionalInfo_artwork\n  ...ArtworkDetailsArticles_artwork\n  additional_information\n  description\n  framed {\n    label\n  }\n  signatureInfo {\n    label\n  }\n  conditionDescription {\n    label\n  }\n  certificateOfAuthenticity {\n    label\n  }\n  series\n  publisher\n  manufacturer\n  provenance\n  image_rights\n  articles(size: 10) {\n    id\n    __id\n  }\n  literature\n  exhibition_history\n  __id\n}\n\nfragment ArtworkDetailsAboutTheWorkFromArtsy_artwork on Artwork {\n  description\n  __id\n}\n\nfragment ArtworkDetailsAboutTheWorkFromPartner_artwork on Artwork {\n  additional_information\n  partner {\n    name\n    locations {\n      city\n      __id\n    }\n    profile {\n      image {\n        url\n      }\n      __id\n    }\n    __id\n  }\n  __id\n}\n\nfragment ArtworkDetailsChecklist_artwork on Artwork {\n  framed {\n    label\n    details\n  }\n  signatureInfo {\n    label\n    details\n  }\n  conditionDescription {\n    label\n    details\n  }\n  certificateOfAuthenticity {\n    label\n    details\n  }\n  __id\n}\n\nfragment ArtworkDetailsAdditionalInfo_artwork on Artwork {\n  series\n  publisher\n  manufacturer\n  provenance\n  image_rights\n  __id\n}\n\nfragment ArtworkDetailsArticles_artwork on Artwork {\n  articles(size: 10) {\n    author {\n      name\n      __id\n    }\n    href\n    published_at(format: \"MMM Do, YYYY\")\n    thumbnail_image {\n      resized(width: 300) {\n        url\n      }\n    }\n    thumbnail_title\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -226,6 +247,13 @@ return {
           {
             "kind": "ScalarField",
             "alias": null,
+            "name": "description",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
             "name": "additional_information",
             "args": null,
             "storageKey": null
@@ -238,9 +266,52 @@ return {
             "args": null,
             "concreteType": "Partner",
             "plural": false,
-            "selections": v3
+            "selections": [
+              v3,
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "locations",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "Location",
+                "plural": true,
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "city",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  v2
+                ]
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "profile",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "Profile",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "image",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "Image",
+                    "plural": false,
+                    "selections": v4
+                  },
+                  v2
+                ]
+              },
+              v2
+            ]
           },
-          v2,
           {
             "kind": "LinkedField",
             "alias": null,
@@ -249,7 +320,7 @@ return {
             "args": null,
             "concreteType": "ArtworkInfoRow",
             "plural": false,
-            "selections": v4
+            "selections": v5
           },
           {
             "kind": "LinkedField",
@@ -259,7 +330,7 @@ return {
             "args": null,
             "concreteType": "ArtworkInfoRow",
             "plural": false,
-            "selections": v4
+            "selections": v5
           },
           {
             "kind": "LinkedField",
@@ -269,7 +340,7 @@ return {
             "args": null,
             "concreteType": "ArtworkInfoRow",
             "plural": false,
-            "selections": v4
+            "selections": v5
           },
           {
             "kind": "LinkedField",
@@ -279,15 +350,9 @@ return {
             "args": null,
             "concreteType": "ArtworkInfoRow",
             "plural": false,
-            "selections": v4
+            "selections": v5
           },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "description",
-            "args": null,
-            "storageKey": null
-          },
+          v2,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -340,7 +405,10 @@ return {
                 "args": null,
                 "concreteType": "Author",
                 "plural": false,
-                "selections": v3
+                "selections": [
+                  v3,
+                  v2
+                ]
               },
               {
                 "kind": "ScalarField",
@@ -387,15 +455,7 @@ return {
                     ],
                     "concreteType": "ResizedImageUrl",
                     "plural": false,
-                    "selections": [
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "name": "url",
-                        "args": null,
-                        "storageKey": null
-                      }
-                    ]
+                    "selections": v4
                   }
                 ]
               },
