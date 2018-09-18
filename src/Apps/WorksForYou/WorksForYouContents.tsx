@@ -92,9 +92,9 @@ export class WorksForYouContent extends React.Component<Props, State> {
     return (
       <Container>
         {this.props.viewer.me.followsAndSaves.notifications.edges.map(
-          ({ node }) => {
+          ({ node }, index) => {
             return (
-              <div style={{ borderBottom: "1px solid #e5e5e5" }}>
+              <div style={{ borderBottom: "1px solid #e5e5e5" }} key={index}>
                 <div
                   style={{
                     padding: "60px 0px 30px 0px",

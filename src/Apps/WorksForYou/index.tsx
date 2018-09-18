@@ -65,6 +65,7 @@ export class WorksForYou extends Component<Props> {
                   user &&
                   user.lab_features &&
                   user.lab_features.includes("New Buy Now Flow")
+
                 if (props) {
                   return (
                     <>
