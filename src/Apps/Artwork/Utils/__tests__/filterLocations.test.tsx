@@ -5,10 +5,12 @@ describe("filterLocations", () => {
     const filtered = filterLocations(null)
     expect(filtered).toBeNull
   })
+
   it("returns null if empty array of locations is given", () => {
     const filtered = filterLocations([])
     expect(filtered).toBeNull
   })
+
   it("filters out duplicates and blanks", () => {
     const filtered = filterLocations([
       { city: "NYC" },
