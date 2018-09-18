@@ -2,6 +2,11 @@ import { storiesOf } from "@storybook/react"
 import { WorksForYou } from "Apps/WorksForYou"
 import { ContextProvider } from "Artsy"
 import React from "react"
+import { MarketingHeader } from "../WorksForYou/Components/MarketingHeader"
+
+storiesOf("Apps/WorksForYou/Components", module).add("Marketing Header", () => {
+  return <MarketingHeader />
+})
 
 storiesOf("Apps/WorksForYou/Feed", module).add("For Sale", () => {
   return (

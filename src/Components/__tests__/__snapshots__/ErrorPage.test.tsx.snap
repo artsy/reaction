@@ -23,6 +23,7 @@ exports[`ErrorPage snapshots renders correctly 1`] = `
 .c5 {
   cursor: pointer;
   position: relative;
+  white-space: nowrap;
   border: 2px solid;
   border-radius: 3px;
   padding-left: 30px;

@@ -1,4 +1,6 @@
 import React, { SFC } from "react"
+import { data as sd } from "sharify"
+import styled from "styled-components"
 
 import {
   BorderBox,
@@ -10,6 +12,8 @@ import {
   Spacer,
   themeProps,
 } from "@artsy/palette"
+
+const VIDEO_URL = `${sd.FORCE_CLOUDFRONT_URL}/videos/9172018-bn-banner-xl.mp4`
 
 export const MarketingHeader: SFC = () => {
   return (
@@ -23,19 +27,7 @@ export const MarketingHeader: SFC = () => {
           overflow: "hidden",
         }}
       >
-        <video
-          // FIXME: Point to CloudFront url and post file to prod
-          src="https://s3.amazonaws.com/artsy-vanity-files-staging/BN-Banner_S-XL_compressed.mp4"
-          width="100%"
-          height="220"
-          style={{
-            objectFit: "cover",
-            width: "100%",
-            height: "220px",
-          }}
-          autoPlay
-          loop
-        />
+        <Video src={VIDEO_URL} autoPlay loop />
       </BorderBox>
 
       <Spacer mb={1} />
@@ -44,10 +36,19 @@ export const MarketingHeader: SFC = () => {
         <Box>
           <Sans size="3">Introducing a new way to buy on Artsy</Sans>
           <Sans size="3" color={themeProps.colors.black60}>
-            A new selection of works available for immediate purchase and offer
+            Buying art on Artsy is easier than ever before. Our most in-demand
+            works are now available for instant purchase, with simple checkout
+            and hassle-free shipping.
           </Sans>
         </Box>
-        <Button>Browse works</Button>
+        <Button
+          onClick={() =>
+            // FIXME: Redirect to collect once page route has been renamed.
+            (window.location.href = "http://www.artsy.net/collect2")
+          }
+        >
+          Browse works
+        </Button>
       </Flex>
 
       <Spacer mb={5} />
@@ -56,3 +57,11 @@ export const MarketingHeader: SFC = () => {
     </>
   )
 }
+
+const Video = styled.video`
+  left: 0;
+  object-fit: cover;
+  object-position: 0% 50%;
+  width: 100%;
+  height: 220px;
+`
