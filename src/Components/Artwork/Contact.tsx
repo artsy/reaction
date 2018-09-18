@@ -27,8 +27,8 @@ export class Contact extends React.Component<ContactProps, null> {
       )
     } else if (artwork.sale.is_open) {
       const sa = artwork.sale_artwork
-      const bids = sa.counts.bidder_positions
-      if (bids > 0) {
+      const bids = sa && sa.counts && sa.counts.bidder_positions
+      if (bids && bids > 0) {
         const s = bids > 1 ? "s" : ""
         return (
           <span>
