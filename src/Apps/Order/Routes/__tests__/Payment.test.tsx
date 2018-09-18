@@ -2,19 +2,23 @@ import { Checkbox, CheckboxProps, Sans } from "@artsy/palette"
 import { mount } from "enzyme"
 import React from "react"
 
-import { Collapse } from "../../../../Styleguide/Components"
 import {
   OrderWithShippingDetails,
   PickupOrder,
-} from "../../../__test__/Fixtures/Order"
+  UntouchedOrder,
+} from "Apps/__test__/Fixtures/Order"
+import { Collapse } from "../../../../Styleguide/Components"
 import { AddressFields } from "../../Components/AddressFields"
 import { CreditCardInput } from "../../Components/CreditCardInput"
 import {
   creatingCreditCardSuccess,
   settingOrderPaymentSuccess,
 } from "../__fixtures__/MutationResults"
-import { PaymentProps, PaymentRoute } from "../Payment"
-
+import { ContinueButton, PaymentProps, PaymentRoute } from "../Payment"
+import {
+  fillAddressForm,
+  validAddress as validAddressWithPhone,
+} from "./support"
 jest.mock("react-relay", () => ({
   commitMutation: jest.fn(),
   createFragmentContainer: component => component,
@@ -28,11 +32,10 @@ jest.mock("react-stripe-elements", () => ({
 import { commitMutation, RelayProp } from "react-relay"
 
 const mutationMock = commitMutation as jest.Mock<any>
-
+const { phoneNumber, ...validAddress } = validAddressWithPhone
 describe("Payment", () => {
   let stripeMock
   let testProps: PaymentProps
-
   beforeEach(() => {
     mutationMock.mockReset()
 
@@ -57,28 +60,16 @@ describe("Payment", () => {
     expect(paymentRoute.find(Collapse).props().open).toBe(true)
   })
 
-  xit("always uses the billing address for stripe tokenization when the user selected 'pick' shipping option", () => {
+  it("always uses the billing address for stripe tokenization when the user selected 'pick' shipping option", () => {
     const thenMock = jest.fn()
     stripeMock.createToken.mockReturnValue({ then: thenMock })
 
     const paymentRoute = mount(
       <PaymentRoute {...testProps} order={{ ...PickupOrder, id: "1234" }} />
     )
+    fillAddressForm(paymentRoute, validAddress)
 
-    paymentRoute
-      .find(AddressFields)
-      .props()
-      .onChange({
-        name: "Artsy UK Ltd",
-        addressLine1: "14 Gower's Walk",
-        addressLine2: "Suite 2.5, The Loom",
-        city: "Whitechapel",
-        region: "London",
-        postalCode: "E1 8PY",
-        country: "UK",
-      })
-
-    paymentRoute.find("Button").simulate("click")
+    paymentRoute.find(ContinueButton).simulate("click")
 
     expect(stripeMock.createToken).toHaveBeenCalledWith({
       name: "Artsy UK Ltd",
@@ -91,13 +82,13 @@ describe("Payment", () => {
     })
   })
 
-  xit("tokenizes credit card information using shipping address as billing address", () => {
+  it("tokenizes credit card information using shipping address as billing address", () => {
     const thenMock = jest.fn()
     stripeMock.createToken.mockReturnValue({ then: thenMock })
 
-    mount(<PaymentRoute {...testProps} />)
-      .find(ContinueButton)
-      .simulate("click")
+    const paymentRoute = mount(<PaymentRoute {...testProps} />)
+    // fillAddressForm(paymentRoute, validAddress)
+    paymentRoute.find(ContinueButton).simulate("click")
 
     expect(stripeMock.createToken).toHaveBeenCalledWith({
       name: "Joelle Van Dyne",
@@ -111,27 +102,15 @@ describe("Payment", () => {
     expect(thenMock.mock.calls.length).toBe(1)
   })
 
-  xit("tokenizes credit card information with a different billing address", () => {
+  it("tokenizes credit card information with a different billing address", () => {
     const thenMock = jest.fn()
     stripeMock.createToken.mockReturnValue({ then: thenMock })
 
     const paymentRoute = mount(<PaymentRoute {...testProps} />)
     ;(paymentRoute.find(Checkbox).props() as CheckboxProps).onSelect(false)
 
-    paymentRoute
-      .find(AddressFields)
-      .props()
-      .onChange({
-        name: "Artsy UK Ltd",
-        addressLine1: "14 Gower's Walk",
-        addressLine2: "Suite 2.5, The Loom",
-        city: "Whitechapel",
-        region: "London",
-        postalCode: "E1 8PY",
-        country: "UK",
-      })
-
-    paymentRoute.find("Button").simulate("click")
+    fillAddressForm(paymentRoute, validAddress)
+    paymentRoute.find(ContinueButton).simulate("click")
 
     expect(stripeMock.createToken).toHaveBeenCalledWith({
       name: "Artsy UK Ltd",
@@ -145,7 +124,7 @@ describe("Payment", () => {
     expect(thenMock.mock.calls.length).toBe(1)
   })
 
-  xit("commits createCreditCard mutation with stripe token id", () => {
+  it("commits createCreditCard mutation with stripe token id", () => {
     const stripeToken: stripe.TokenResponse = {
       token: {
         id: "tokenId",
@@ -160,9 +139,9 @@ describe("Payment", () => {
 
     stripeMock.createToken.mockReturnValue({ then: func => func(stripeToken) })
 
-    mount(<PaymentRoute {...testProps} />)
-      .find("Button")
-      .simulate("click")
+    const paymentRoute = mount(<PaymentRoute {...testProps} />)
+    fillAddressForm(paymentRoute, validAddress)
+    paymentRoute.find(ContinueButton).simulate("click")
 
     expect(mutationMock.mock.calls[0][1]).toMatchObject({
       variables: {
@@ -188,8 +167,9 @@ describe("Payment", () => {
     stripeMock.createToken.mockReturnValue({ then: func => func(stripeError) })
 
     const paymentRoute = mount(<PaymentRoute {...testProps} />)
+    fillAddressForm(paymentRoute, validAddress)
 
-    paymentRoute.find("Button").simulate("click")
+    paymentRoute.find(ContinueButton).simulate("click")
 
     expect(
       paymentRoute
@@ -208,9 +188,9 @@ describe("Payment", () => {
       onCompleted(creatingCreditCardSuccess)
     )
 
-    mount(<PaymentRoute {...testProps} />)
-      .find("Button")
-      .simulate("click")
+    const paymentRoute = mount(<PaymentRoute {...testProps} />)
+    fillAddressForm(paymentRoute, validAddress)
+    paymentRoute.find(ContinueButton).simulate("click")
 
     expect(mutationMock.mock.calls[1][1]).toMatchObject({
       variables: {
@@ -234,11 +214,42 @@ describe("Payment", () => {
       .mockImplementationOnce((_, { onCompleted }) =>
         onCompleted(settingOrderPaymentSuccess)
       )
-
-    mount(<PaymentRoute {...testProps} />)
-      .find("Button")
-      .simulate("click")
+    const paymentRoute = mount(<PaymentRoute {...testProps} />)
+    fillAddressForm(paymentRoute, validAddress)
+    paymentRoute.find(ContinueButton).simulate("click")
 
     expect(testProps.router.push).toHaveBeenCalledWith("/order2/1234/review")
+  })
+
+  describe("Validations", () => {
+    let shipOrderProps
+    beforeEach(() => {
+      const shipOrder = {
+        ...UntouchedOrder,
+        requestedFulfillment: {
+          __typename: "Ship",
+        },
+      }
+      shipOrderProps = { ...testProps, order: shipOrder }
+    })
+
+    it("does not submit an empty form if shipping/billing address are different", () => {
+      const paymentRoute = mount(<PaymentRoute {...testProps} />)
+      const { addressLine1, ...badAddress } = validAddress
+      ;(paymentRoute.find(Checkbox).props() as CheckboxProps).onSelect(false)
+
+      paymentRoute.find(ContinueButton).simulate("click")
+      expect(commitMutation).not.toBeCalled()
+    })
+
+    it("does not submit the mutation with an incomplete form with billing address exposed", () => {
+      const paymentRoute = mount(<PaymentRoute {...testProps} />)
+      const { addressLine1, ...badAddress } = validAddress
+      ;(paymentRoute.find(Checkbox).props() as CheckboxProps).onSelect(false)
+      fillAddressForm(paymentRoute, badAddress)
+
+      paymentRoute.find(ContinueButton).simulate("click")
+      expect(commitMutation).not.toBeCalled()
+    })
   })
 })

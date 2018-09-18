@@ -89,7 +89,6 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
     e.preventDefault()
     this.setState({ isComittingMutation: true }, () => {
       const errors = this.validate()
-      console.log(errors)
       if (Object.keys(errors).length) {
         this.setState({ isComittingMutation: false, errors })
       } else {
@@ -102,7 +101,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
   }
 
   validate = () => {
-    if (!this.needsAddress()) {
+    if (this.needsAddress()) {
       const fields: AddressField[] = [
         "name",
         "addressLine1",
