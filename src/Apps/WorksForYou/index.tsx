@@ -39,59 +39,64 @@ export class WorksForYou extends Component<Props> {
     return (
       <ContextConsumer>
         {({ relayEnvironment, user }) => {
+          const hasBuyNowLabFeature =
+            user &&
+            user.lab_features &&
+            user.lab_features.includes("New Buy Now Flow")
+
           return (
-            <QueryRenderer<WorksForYouQuery>
-              environment={relayEnvironment}
-              query={graphql`
-                query WorksForYouQuery(
-                  $includeSelectedArtist: Boolean!
-                  $artistID: String!
-                  $forSale: Boolean
-                  $filter: [ArtistArtworksFilters]
-                ) {
-                  viewer {
-                    ...WorksForYouContents_viewer
-                      @skip(if: $includeSelectedArtist)
-                      @arguments(for_sale: $forSale)
-                    ...WorksForYouArtist_viewer
-                      @include(if: $includeSelectedArtist)
-                      @arguments(artistID: $artistID, filter: $filter)
+            <>
+              {hasBuyNowLabFeature && <MarketingHeader />}
+
+              <QueryRenderer<WorksForYouQuery>
+                environment={relayEnvironment}
+                query={graphql`
+                  query WorksForYouQuery(
+                    $includeSelectedArtist: Boolean!
+                    $artistID: String!
+                    $forSale: Boolean
+                    $filter: [ArtistArtworksFilters]
+                  ) {
+                    viewer {
+                      ...WorksForYouContents_viewer
+                        @skip(if: $includeSelectedArtist)
+                        @arguments(for_sale: $forSale)
+                      ...WorksForYouArtist_viewer
+                        @include(if: $includeSelectedArtist)
+                        @arguments(artistID: $artistID, filter: $filter)
+                    }
                   }
-                }
-              `}
-              variables={{ artistID, includeSelectedArtist, forSale, filter }}
-              render={({ props }) => {
-                const hasBuyNowLabFeature =
-                  user &&
-                  user.lab_features &&
-                  user.lab_features.includes("New Buy Now Flow")
-
-                if (props) {
-                  return (
-                    <>
-                      {hasBuyNowLabFeature && <MarketingHeader />}
-
-                      {includeSelectedArtist ? (
-                        <WorksForYouArtist
-                          artistID={this.props.artistID}
-                          viewer={props.viewer}
-                          forSale={forSale}
-                          user={user}
-                        />
-                      ) : (
-                        <WorksForYouContent user={user} viewer={props.viewer} />
-                      )}
-                    </>
-                  )
-                } else {
-                  return (
-                    <SpinnerContainer>
-                      <Spinner />
-                    </SpinnerContainer>
-                  )
-                }
-              }}
-            />
+                `}
+                variables={{ artistID, includeSelectedArtist, forSale, filter }}
+                render={({ props }) => {
+                  if (props) {
+                    return (
+                      <>
+                        {includeSelectedArtist ? (
+                          <WorksForYouArtist
+                            artistID={this.props.artistID}
+                            viewer={props.viewer}
+                            forSale={forSale}
+                            user={user}
+                          />
+                        ) : (
+                          <WorksForYouContent
+                            user={user}
+                            viewer={props.viewer}
+                          />
+                        )}
+                      </>
+                    )
+                  } else {
+                    return (
+                      <SpinnerContainer>
+                        <Spinner />
+                      </SpinnerContainer>
+                    )
+                  }
+                }}
+              />
+            </>
           )
         }}
       </ContextConsumer>
