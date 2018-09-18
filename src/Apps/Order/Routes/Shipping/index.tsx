@@ -2,7 +2,7 @@ import { Shipping_order } from "__generated__/Shipping_order.graphql"
 import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
 import { Helper } from "Apps/Order/Components/Helper"
 import { TransactionSummaryFragmentContainer as TransactionSummary } from "Apps/Order/Components/TransactionSummary"
-import { Router } from "found"
+import { Redirect, Router } from "found"
 import { pick } from "lodash"
 import React, { Component } from "react"
 import { Collapse } from "Styleguide/Components"
@@ -138,6 +138,13 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
 
   render() {
     const { order } = this.props
+
+    const redirect1 = new Redirect({
+      from: "*",
+      to: `/order2/${order.id}/status`,
+    })
+    console.log(redirect1)
+
     return (
       <>
         <Row>
