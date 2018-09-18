@@ -647,7 +647,7 @@ export const MoctionArtwork = {
   is_for_sale: false,
 }
 
-export const WithBothAboutConditionsAndAdditionalInfo = {
+export const AllAdditionalDetailsPresent = {
   additional_information:
     "In Francesca DiMattio’s The Fox and the Hound, 2018, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullam DiMattio’s The Fox and the Hound, 2018, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullam. Tempor incididunt ut labore et dolore magnas.",
   description: "Artist designed towel for WOW. --*Courtesy of EHC Fine Art*",
@@ -670,5 +670,17 @@ export const WithBothAboutConditionsAndAdditionalInfo = {
   manufacturer: "Mfg Group",
   provenance: "Peter Freeman Inc., New York",
   image_rights: "Courtesy of the artist and Salon 94",
-  partner: { name: "Salon 94" },
+  literature: "Some literature info goes here",
+  exhibition_history: "And the work was so excibited!",
+  articles: {},
+  partner: {
+    name: "Salon 94",
+    locations: [
+      { city: "New York" },
+      { city: "Kharkov" },
+      { city: "New York" },
+      { city: "" },
+    ],
+    profile: { image: { url: "https://picsum.photos/110/110/?random" } },
+  },
 }
