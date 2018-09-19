@@ -43,6 +43,6 @@ export const SmallGallery = props => (
         Follow
       </Button>
     </Flex>
-    <Avatar src={props.src} size="small" ml={2} />
+    <Avatar src={props.src} size="sm" ml={2} />
   </Flex>
 )

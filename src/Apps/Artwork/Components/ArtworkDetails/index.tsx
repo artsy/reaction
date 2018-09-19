@@ -1,6 +1,7 @@
 import { Box } from "@artsy/palette"
 import { ArtworkDetailsQuery } from "__generated__/ArtworkDetailsQuery.graphql"
 import { ContextConsumer } from "Artsy/Router"
+import Spinner from "Components/Spinner"
 import React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 import { Tab, Tabs } from "Styleguide/Components"
@@ -17,6 +18,7 @@ export interface ArtworkDetailsProps {
 }
 
 const ArtworkDetailsContainer = Box
+const SpinnerContainer = Box
 
 export const ArtworkDetails: React.SFC<ArtworkDetailsProps> = props => {
   const { artwork } = props
@@ -132,7 +134,15 @@ export const ArtworkDetailsQueryRenderer = ({
                   />
                 )
               } else {
-                return null
+                return (
+                  <SpinnerContainer
+                    width="100%"
+                    height="100px"
+                    position="relative"
+                  >
+                    <Spinner />
+                  </SpinnerContainer>
+                )
               }
             }}
           />

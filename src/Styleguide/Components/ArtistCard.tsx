@@ -120,7 +120,7 @@ export const SmallArtistCard = (props: Props) => (
       </FollowArtistButton>
     </Flex>
     {props.artist.image && (
-      <Avatar size="small" src={props.artist.image.cropped.url} ml={2} />
+      <Avatar size="sm" src={props.artist.image.cropped.url} ml={2} />
     )}
   </BorderBox>
 )
