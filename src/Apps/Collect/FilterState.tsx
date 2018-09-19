@@ -72,18 +72,6 @@ export class FilterState extends Container<State> {
     })
   }
 
-  setSort = (sort, mediator) => {
-    this.setState({ sort }, () => {
-      mediator.trigger("collect:filter:changed", this.state)
-    })
-  }
-
-  setPriceRange = (price_range, mediator) => {
-    this.setState({ price_range }, () => {
-      mediator.trigger("collect:filter:changed", this.state)
-    })
-  }
-
   showActionSheet = show => {
     if (show) {
       // TODO: Manage this side-effect in a more react-like fashion
@@ -143,11 +131,37 @@ export class FilterState extends Container<State> {
         partner_id: null,
         major_periods: [value],
         medium: "*",
+        price_range: null,
       }
     } else if (filter === "partner_id") {
-      newPartialState = { major_periods: [], partner_id: value, medium: "*" }
+      newPartialState = {
+        major_periods: [],
+        partner_id: value,
+        medium: "*",
+        price_range: null,
+      }
     } else if (filter === "medium") {
-      newPartialState = { medium: value, partner_id: null, major_periods: [] }
+      newPartialState = {
+        medium: value,
+        partner_id: null,
+        major_periods: [],
+        price_range: null,
+      }
+    } else if (filter === "price_range") {
+      newPartialState = {
+        price_range: value,
+        medium: "*",
+        partner_id: null,
+        major_periods: [],
+      }
+    } else if (filter === "sort") {
+      newPartialState = {
+        sort: value,
+        medium: "*",
+        partner_id: null,
+        major_periods: [],
+        price_range: null,
+      }
     } else if (
       ["for_sale", "acquireable", "at_auction", "inquireable_only"].includes(
         filter

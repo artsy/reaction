@@ -69,9 +69,9 @@ class Filter extends Component<Props> {
         defaultValue={[50, 50000]}
         onAfterChange={([min, max]) => {
           if (max === 50000) {
-            filters.setPriceRange(`${min}-*`, mediator)
+            filters.setFilter("price_range", `${min}-*`, mediator)
           } else {
-            filters.setPriceRange(`${min}-${max}`, mediator)
+            filters.setFilter("price_range", `${min}-${max}`, mediator)
           }
         }}
       />
@@ -225,7 +225,11 @@ class Filter extends Component<Props> {
                                   }
                                   selected={filters.state.sort}
                                   onSelect={sort => {
-                                    return filters.setSort(sort, mediator)
+                                    return filters.setFilter(
+                                      "sort",
+                                      sort,
+                                      mediator
+                                    )
                                   }}
                                 />
                               </Flex>
