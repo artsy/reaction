@@ -46,7 +46,7 @@ export class PriceRange extends React.Component<
     const minPrice = this.state.min.toLocaleString("en-US", formatOptions)
     const maxPrice = this.state.max.toLocaleString("en-US", formatOptions)
 
-    return `${minPrice} - ${maxPrice}`
+    return `${minPrice} - ${maxPrice}+`
   }
 
   render() {
