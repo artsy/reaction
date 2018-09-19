@@ -2,10 +2,11 @@ import { mount } from "enzyme"
 import React from "react"
 import { commitMutation, RelayProp } from "react-relay"
 
-import { Button } from "@artsy/palette"
+import { Button, RadioGroup } from "@artsy/palette"
 import { UntouchedOrder } from "Apps/__test__/Fixtures/Order"
 import Input, { InputProps } from "Components/Input"
 import { Dismiss } from "Components/Modal/ErrorModal"
+import { cloneDeep } from "lodash"
 import { Provider } from "unstated"
 import {
   settingOrderShipmentFailure,
@@ -35,6 +36,13 @@ describe("Shipping", () => {
       router: { push: jest.fn() },
       requestedFulfillment: undefined,
     } as any
+  })
+
+  it("removes radio group if pickup_available flag is false", () => {
+    const testPropWithShipOnlyOrder = cloneDeep(testProps)
+    testPropWithShipOnlyOrder.order.lineItems.edges[0].node.artwork.pickup_available = false
+    const component = getWrapper(testPropWithShipOnlyOrder)
+    expect(component.find(RadioGroup).length).toEqual(0)
   })
 
   it("commits the mutation with the orderId", () => {
