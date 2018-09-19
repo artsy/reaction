@@ -1,7 +1,8 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-import { ArtworkDetailsAboutTheWork_artwork$ref } from "./ArtworkDetailsAboutTheWork_artwork.graphql";
+import { ArtworkDetailsAboutTheWorkFromArtsy_artwork$ref } from "./ArtworkDetailsAboutTheWorkFromArtsy_artwork.graphql";
+import { ArtworkDetailsAboutTheWorkFromPartner_artwork$ref } from "./ArtworkDetailsAboutTheWorkFromPartner_artwork.graphql";
 import { ArtworkDetailsAdditionalInfo_artwork$ref } from "./ArtworkDetailsAdditionalInfo_artwork.graphql";
 import { ArtworkDetailsArticles_artwork$ref } from "./ArtworkDetailsArticles_artwork.graphql";
 import { ArtworkDetailsChecklist_artwork$ref } from "./ArtworkDetailsChecklist_artwork.graphql";
@@ -32,7 +33,7 @@ export type ArtworkDetails_artwork = {
     }) | null> | null;
     readonly literature: string | null;
     readonly exhibition_history: string | null;
-    readonly " $fragmentRefs": ArtworkDetailsAboutTheWork_artwork$ref & ArtworkDetailsChecklist_artwork$ref & ArtworkDetailsAdditionalInfo_artwork$ref & ArtworkDetailsArticles_artwork$ref;
+    readonly " $fragmentRefs": ArtworkDetailsAboutTheWorkFromArtsy_artwork$ref & ArtworkDetailsAboutTheWorkFromPartner_artwork$ref & ArtworkDetailsChecklist_artwork$ref & ArtworkDetailsAdditionalInfo_artwork$ref & ArtworkDetailsArticles_artwork$ref;
     readonly " $refType": ArtworkDetails_artwork$ref;
 };
 
@@ -74,7 +75,12 @@ return {
     },
     {
       "kind": "FragmentSpread",
-      "name": "ArtworkDetailsAboutTheWork_artwork",
+      "name": "ArtworkDetailsAboutTheWorkFromArtsy_artwork",
+      "args": null
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "ArtworkDetailsChecklist_artwork",
       "args": null
     },
     {
@@ -133,7 +139,7 @@ return {
     },
     {
       "kind": "FragmentSpread",
-      "name": "ArtworkDetailsChecklist_artwork",
+      "name": "ArtworkDetailsAboutTheWorkFromPartner_artwork",
       "args": null
     },
     {
@@ -215,5 +221,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '2df3e3bf98b0cbdffcc89ae0803e8fe4';
+(node as any).hash = '8028039fe2e0766c0ac41fcb9e3eaa2b';
 export default node;

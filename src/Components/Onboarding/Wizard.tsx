@@ -37,7 +37,7 @@ export class Wizard extends React.Component<Props, State> {
     }
   }
 
-  onNextButtonPressed = (increaseBy, history) => {
+  onNextButtonPressed = (increaseBy: number, history) => {
     history.push(STEPS[STEPS.indexOf(location.pathname) + increaseBy])
   }
 
