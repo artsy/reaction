@@ -1,4 +1,4 @@
-import { Address } from "Apps/Order/Components/AddressFields"
+import { Address } from "Apps/Order/Components/AddressForm"
 import Input from "Components/Input"
 import { CountrySelect } from "Styleguide/Components"
 
@@ -13,17 +13,26 @@ export const validAddress: Address = {
   phoneNumber: "8475937743",
 }
 
-export const fillInput = (component, name, value) => {
+const keysToTitles = {
+  "Full Name": "name"
+}
+
+export const fillIn = (component, {title, with}) => {
+  const nowAddress = component.find(AddressForm).prop('defaultValue')
   const input = component
     .find(Input)
-    .filterWhere(wrapper => wrapper.props().name === name)
+    .filterWhere(wrapper => wrapper.props().title === title)
   // input.getDOMNode().value = val
   // input.simulate("change")
-  input.prop("onChange")({
-    preventDefault: () => null,
-    target: { name, value },
-  })
+  const key = keysToTitles[title]
+  input.prop("onChange")(
+    { ...nowAddress, key: with }
+  )
+
 }
+
+// export const fillInput = (component, name, value) => {
+// }
 
 export const fillCountrySelect = (component, name, value) => {
   const input = component

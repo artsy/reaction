@@ -1,15 +1,15 @@
 import { Button, Checkbox, Flex, Join, Serif, Spacer } from "@artsy/palette"
 import { Payment_order } from "__generated__/Payment_order.graphql"
 import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
-import { requiredFields } from "Apps/Order/Components/Validators"
+import { validatePresence } from "Apps/Order/Components/Validators"
 import {
   Address,
   AddressChangeHandler,
   AddressErrors,
   AddressField,
-  AddressFields,
+  AddressForm,
   emptyAddress,
-} from "../../Components/AddressFields"
+} from "../../Components/AddressForm"
 
 import { CreditCardInput } from "Apps/Order/Components/CreditCardInput"
 import { Helper } from "Apps/Order/Components/Helper"
@@ -43,7 +43,7 @@ export interface PaymentProps extends ReactStripeElements.InjectedStripeProps {
 interface PaymentState {
   hideBillingAddress: boolean
   address: Address
-  errors: AddressErrors
+  addressErrors: AddressErrors
   stripeError: stripe.Error
   isComittingMutation: boolean
 }
@@ -54,7 +54,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
     stripeError: null,
     isComittingMutation: false,
     address: this.startingAddress,
-    errors: {},
+    addressErrors: {},
   }
 
   get startingAddress(): Address {
@@ -65,74 +65,68 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
   }
 
   onContinue: () => void = () => {
-    const { address } = this.state
-    const stripeBillingAddress = this.getStripeBillingAddress(address)
-    this.props.stripe
-      .createToken(stripeBillingAddress)
-      .then(({ error, token }) => {
-        if (error) {
-          this.setState({
-            isComittingMutation: false,
-            stripeError: error,
-          })
-        } else {
-          this.createCreditCard({ token: token.id }, () =>
+    if (this.needsAddress()) {
+      const errors = this.validateAddress(this.state.address)
+      if (Object.keys(errors).filter(key => errors[key]).length > 0) {
+        this.setState({ addressErrors: errors })
+        return
+      }
+    } else {
+      const { address } = this.state
+      const stripeBillingAddress = this.getStripeBillingAddress(address)
+      this.props.stripe
+        .createToken(stripeBillingAddress)
+        .then(({ error, token }) => {
+          if (error) {
             this.setState({
               isComittingMutation: false,
+              stripeError: error,
             })
-          )
-        }
-      })
-  }
-
-  handleSubmit = e => {
-    e.preventDefault()
-    this.setState({ isComittingMutation: true }, () => {
-      const errors = this.validate()
-      if (Object.keys(errors).length) {
-        this.setState({ isComittingMutation: false, errors })
-      } else {
-        // clear errors & submit the form
-        this.setState({ errors }, () => {
-          this.onContinue()
+          } else {
+            this.createCreditCard({ token: token.id }, () =>
+              this.setState({
+                isComittingMutation: false,
+              })
+            )
+          }
         })
-      }
-    })
+    }
   }
 
-  validate = () => {
-    if (this.needsAddress()) {
-      const fields: AddressField[] = [
-        "name",
-        "addressLine1",
-        "city",
-        "postalCode",
-        "region",
-        "country",
-      ]
-      return requiredFields(fields, this.state.address as any)
-      // ^ `as any` is due to a mismatch between shipping and payment address types
+  private validateAddress(address: Address) {
+    const { name, addressLine1, city, region, country, postalCode } = address
+    return {
+      name: validatePresence(name),
+      addressLine1: validatePresence(addressLine1),
+      city: validatePresence(city),
+      region: validatePresence(region),
+      country: validatePresence(country),
+      postalCode: validatePresence(postalCode),
     }
-    return {}
   }
 
   handleChangeHideBillingAddress = (hideBillingAddress: boolean) => {
     this.setState({ hideBillingAddress })
   }
 
-  handleChangeAddress: AddressChangeHandler = event => {
-    event.preventDefault()
-    const {
-      target: { value, name },
-    } = event
-    this.setState(oldState => ({
-      address: { ...oldState.address, [name]: value },
-    }))
+  onAddressChange: AddressChangeHandler = (address, key) => {
+    this.setState({
+      address,
+      addressErrors: {
+        ...this.state.addressErrors,
+        [key]: this.validateAddress(address)[key],
+      },
+    })
   }
 
   render() {
     const { order } = this.props
-    const { stripeError, isComittingMutation, address, errors } = this.state
+    const {
+      stripeError,
+      isComittingMutation,
+      address,
+      addressErrors,
+    } = this.state
 
     return (
       <>
@@ -172,16 +166,16 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
                     <Collapse
                       open={this.isPickup() || this.state.hideBillingAddress}
                     >
-                      <AddressFields
-                        values={address}
-                        errors={errors}
-                        onChange={this.handleChangeAddress}
+                      <AddressForm
+                        defaultValue={address}
+                        errors={addressErrors}
+                        onChange={this.onAddressChange}
                         billing
                       />
                     </Collapse>
                     {!xs && (
                       <ContinueButton
-                        onClick={this.handleSubmit}
+                        onClick={this.onContinue}
                         loading={isComittingMutation}
                       />
                     )}
@@ -199,7 +193,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
                     <>
                       <Spacer mb={3} />
                       <ContinueButton
-                        onClick={this.handleSubmit}
+                        onClick={this.onContinue}
                         loading={isComittingMutation}
                       />
                     </>
