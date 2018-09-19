@@ -14,7 +14,12 @@ import {
   settingOrderShipmentSuccess,
 } from "../__fixtures__/MutationResults"
 import { ShippingProps, ShippingRoute } from "../Shipping"
-import { fillAddressForm, validAddress } from "./support"
+import {
+  fillAddressForm,
+  fillCountrySelect,
+  fillIn,
+  validAddress,
+} from "./support"
 
 jest.mock("react-relay", () => ({
   commitMutation: jest.fn(),

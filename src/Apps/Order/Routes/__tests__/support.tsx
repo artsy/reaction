@@ -1,4 +1,4 @@
-import { Address } from "Apps/Order/Components/AddressForm"
+import { Address } from "Apps/Order/Components/AddressFields"
 import Input from "Components/Input"
 import { CountrySelect } from "Styleguide/Components"
 
@@ -13,35 +13,33 @@ export const validAddress: Address = {
   phoneNumber: "8475937743",
 }
 
-const keysToTitles = {
-  "Full Name": "name"
-}
-
-export const fillIn = (component, {title, with}) => {
-  const nowAddress = component.find(AddressForm).prop('defaultValue')
+export const fillIn = (
+  component: any,
+  inputData: { title: string; value: string }
+) => {
   const input = component
     .find(Input)
-    .filterWhere(wrapper => wrapper.props().title === title)
-  // input.getDOMNode().value = val
-  // input.simulate("change")
-  const key = keysToTitles[title]
-  input.prop("onChange")(
-    { ...nowAddress, key: with }
-  )
+    .filterWhere(wrapper => wrapper.props().title === inputData.title)
 
+  input.props().onChange({ currentTarget: { value: inputData.value } } as any)
 }
 
-// export const fillInput = (component, name, value) => {
-// }
-
-export const fillCountrySelect = (component, name, value) => {
+export const fillInput = (component, name, value) => {
   const input = component
-    .find(CountrySelect)
+    .find(Input)
     .filterWhere(wrapper => wrapper.props().name === name)
-  input.prop("onSelect")({
+  // input.getDOMNode().value = val
+  // input.simulate("change")
+  input.prop("onChange")({
     preventDefault: () => null,
     target: { name, value },
   })
+}
+
+export const fillCountrySelect = (component, value) => {
+  const input = component.find(CountrySelect)
+
+  input.props().onSelect(value)
 }
 
 export const fillAddressForm = (component, values: Partial<Address>) => {

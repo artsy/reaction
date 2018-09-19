@@ -7,7 +7,7 @@ import {
   AddressFields,
   emptyAddress,
   Touched,
-} from "Apps/Order/Components/AddressFields"
+} from "Apps/Order/Components/AddressForm"
 import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
 import { Router } from "found"
 import { pick } from "lodash"

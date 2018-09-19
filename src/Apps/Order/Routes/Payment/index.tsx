@@ -65,32 +65,40 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
   }
 
   onContinue: () => void = () => {
+    // console.log("onContinue")
+
     if (this.needsAddress()) {
       const errors = this.validateAddress(this.state.address)
+
+      // console.log("onContinue", "needsAddress", this.state.address)
+
       if (Object.keys(errors).filter(key => errors[key]).length > 0) {
+        // console.log("onContinue", "needsAddress", "error", errors)
         this.setState({ addressErrors: errors })
         return
       }
-    } else {
-      const { address } = this.state
-      const stripeBillingAddress = this.getStripeBillingAddress(address)
-      this.props.stripe
-        .createToken(stripeBillingAddress)
-        .then(({ error, token }) => {
-          if (error) {
+    }
+
+    // console.log("onContinue", "valid")
+
+    const { address } = this.state
+    const stripeBillingAddress = this.getStripeBillingAddress(address)
+    this.props.stripe
+      .createToken(stripeBillingAddress)
+      .then(({ error, token }) => {
+        if (error) {
+          this.setState({
+            isComittingMutation: false,
+            stripeError: error,
+          })
+        } else {
+          this.createCreditCard({ token: token.id }, () =>
             this.setState({
               isComittingMutation: false,
-              stripeError: error,
             })
-          } else {
-            this.createCreditCard({ token: token.id }, () =>
-              this.setState({
-                isComittingMutation: false,
-              })
-            )
-          }
-        })
-    }
+          )
+        }
+      })
   }
 
   private validateAddress(address: Address) {
@@ -338,6 +346,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
   isPickup = () => {
     return this.props.order.requestedFulfillment.__typename === "Pickup"
   }
+
   needsAddress = () => {
     return this.isPickup() || !this.state.hideBillingAddress
   }
