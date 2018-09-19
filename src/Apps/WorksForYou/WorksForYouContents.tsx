@@ -95,11 +95,7 @@ export class WorksForYouContent extends React.Component<Props, State> {
           ({ node }, index) => {
             return (
               <div style={{ borderBottom: "1px solid #e5e5e5" }} key={index}>
-                <div
-                  style={{
-                    padding: "60px 0px 30px 0px",
-                  }}
-                >
+                <Box pt={6} pb={3}>
                   <Flex>
                     {node.image && (
                       <Avatar>
@@ -135,15 +131,15 @@ export class WorksForYouContent extends React.Component<Props, State> {
                       </Sans>
                     </Box>
                   </Flex>
-                </div>
-                <div style={{ paddingBottom: "60px" }}>
+                </Box>
+                <Box pb={6}>
                   <ArtworkGrid
                     artworks={node.artworksConnection}
                     columnCount={3}
                     itemMargin={40}
                     user={this.props.user}
                   />
-                </div>
+                </Box>
               </div>
             )
           }
