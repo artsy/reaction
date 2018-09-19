@@ -179,6 +179,7 @@
     "react-router": "^4.2.0",
     "react-sizeme": "^2.4.4",
     "react-slick": "^0.23.1",
+    "react-spring": "^5.7.2",
     "react-stripe-elements": "^2.0.1",
     "react-styled-flexboxgrid": "^2.2.0",
     "react-tracking": "^5.3.0",
