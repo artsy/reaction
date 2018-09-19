@@ -4,6 +4,7 @@ import { PositionProps, SpaceProps } from "styled-system"
 
 export interface CountrySelectProps extends PositionProps, SpaceProps {
   selected?: string
+  name?: string
   onSelect?: (value) => void
 }
 

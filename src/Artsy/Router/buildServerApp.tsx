@@ -19,6 +19,7 @@ interface Resolve {
 }
 
 export function buildServerApp(config: RouterConfig): Promise<Resolve> {
+  console.log("start", Boot, Hydrator, config)
   return new Promise(async (resolve, reject) => {
     try {
       const { context = {}, routes = [], url } = config
