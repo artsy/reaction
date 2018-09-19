@@ -45,7 +45,7 @@ export class ArtworkDetailsAdditionalInfo extends React.Component<
       return null
     }
     return (
-      <StackableBorderBox pb={3}>
+      <StackableBorderBox p={2}>
         <Box>
           {series && this.renderRow("Series", series)}
           {publisher && this.renderRow("Publisher", publisher)}

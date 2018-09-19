@@ -48,6 +48,6 @@ export const SmallBanner = props => (
         {props.subHeadline}
       </Serif>
     </Flex>
-    <Avatar size="small" src={props.src} ml={2} />
+    <Avatar size="sm" src={props.src} ml={2} />
   </Flex>
 )

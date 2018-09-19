@@ -1,6 +1,5 @@
-import { Box, Sans, StackableBorderBox } from "@artsy/palette"
+import { Box, color, Sans, StackableBorderBox } from "@artsy/palette"
 import { Checkmark } from "Assets/Checkmark"
-import colors from "Assets/Colors"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 
@@ -20,7 +19,7 @@ export class ArtworkDetailsChecklist extends React.Component<
     return (
       <Box>
         <Box display="inline" mr={1}>
-          <Checkmark stroke={colors.black} />
+          <Checkmark stroke={color("black100")} />
         </Box>
         <Sans size="2" weight="medium" display="inline" mr={1}>
           {label}
@@ -48,7 +47,7 @@ export class ArtworkDetailsChecklist extends React.Component<
       return null
     }
     return (
-      <StackableBorderBox pb={3}>
+      <StackableBorderBox p={2}>
         <Box>
           {framed && this.renderRow(framed.label, framed.details)}
           {signatureInfo &&
