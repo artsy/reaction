@@ -144,7 +144,7 @@ class Filter extends Component<Props> {
                           */}
 
                             {!xs && (
-                              <Sidebar width="30%" mr={2}>
+                              <Sidebar width="25%" mr={2}>
                                 <Flex
                                   flexDirection="column"
                                   alignItems="left"
@@ -192,7 +192,7 @@ class Filter extends Component<Props> {
                             Main Artwork Grid
                           */}
 
-                            <Box width={xs ? "100%" : "70%"}>
+                            <Box width={xs ? "100%" : "75%"}>
                               {!hideTopBorder && <Separator mb={2} mt={-1} />}
 
                               <Flex justifyContent="flex-end">
