@@ -4,7 +4,8 @@ import { ContextConsumer } from "Artsy/Router"
 import React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 import { Tab, Tabs } from "Styleguide/Components"
-import { ArtworkDetailsAboutTheWorkFragmentContainer as AboutTheWork } from "./ArtworkDetailsAboutTheWork"
+import { ArtworkDetailsAboutTheWorkFromArtsyFragmentContainer as AboutTheWorkFromArtsy } from "./ArtworkDetailsAboutTheWorkFromArtsy"
+import { ArtworkDetailsAboutTheWorkFromPartnerFragmentContainer as AboutTheWorkFromPartner } from "./ArtworkDetailsAboutTheWorkFromPartner"
 import { ArtworkDetailsAdditionalInfoFragmentContainer as AdditionalInfo } from "./ArtworkDetailsAdditionalInfo"
 import { ArtworkDetailsArticlesFragmentContainer as Articles } from "./ArtworkDetailsArticles"
 import { ArtworkDetailsChecklistFragmentContainer as Checklist } from "./ArtworkDetailsChecklist"
@@ -44,15 +45,16 @@ export const ArtworkDetails: React.SFC<ArtworkDetailsProps> = props => {
       <Tabs>
         {renderAbout && (
           <Tab name="About the work">
-            <AboutTheWork artwork={artwork as any} />
-            <Checklist artwork={artwork as any} />
-            <AdditionalInfo artwork={artwork as any} />
+            <AboutTheWorkFromArtsy artwork={artwork} />
+            <AboutTheWorkFromPartner artwork={artwork} />
+            <AdditionalInfo artwork={artwork} />
+            <Checklist artwork={artwork} />
           </Tab>
         )}
         {artwork.articles &&
           artwork.articles.length && (
             <Tab name="Articles">
-              <Articles artwork={artwork as any} />
+              <Articles artwork={artwork} />
             </Tab>
           )}
         {artwork.exhibition_history && (
@@ -70,7 +72,8 @@ export const ArtworkDetailsFragmentContainer = createFragmentContainer(
   ArtworkDetails,
   graphql`
     fragment ArtworkDetails_artwork on Artwork {
-      ...ArtworkDetailsAboutTheWork_artwork
+      ...ArtworkDetailsAboutTheWorkFromArtsy_artwork
+      ...ArtworkDetailsAboutTheWorkFromPartner_artwork
       ...ArtworkDetailsChecklist_artwork
       ...ArtworkDetailsAdditionalInfo_artwork
       ...ArtworkDetailsArticles_artwork
