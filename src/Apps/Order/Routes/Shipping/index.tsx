@@ -3,7 +3,7 @@ import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
 import { Helper } from "Apps/Order/Components/Helper"
 import { TransactionSummaryFragmentContainer as TransactionSummary } from "Apps/Order/Components/TransactionSummary"
 import { Router } from "found"
-import { pick } from "lodash"
+import { get, pick } from "lodash"
 import React, { Component } from "react"
 import { Collapse } from "Styleguide/Components"
 import { Responsive } from "Utils/Responsive"
@@ -138,7 +138,10 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
 
   render() {
     const { order } = this.props
-    this.props.order.lineItems[0].edges.node.artwork.pickup_available
+    const isPickupAvailable = get(
+      this.props,
+      "order.lineItems.edges[0].node.artwork.pickup_available"
+    )
     return (
       <>
         <Row>
@@ -153,34 +156,38 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
               Content={
                 <>
                   {/* TODO: Make RadioGroup generic for the allowed values,
-                            which could also ensure the children only use
-                            allowed values. */}
-                  <RadioGroup
-                    onSelect={(shippingOption: OrderFulfillmentType) =>
-                      this.setState({ shippingOption })
-                    }
-                    defaultValue={this.state.shippingOption}
-                  >
-                    <BorderedRadio value="SHIP">
-                      Provide shipping address
-                    </BorderedRadio>
+                  which could also ensure the children only use
+                  allowed values. */}
+                  {isPickupAvailable && (
+                    <>
+                      <RadioGroup
+                        onSelect={(shippingOption: OrderFulfillmentType) =>
+                          this.setState({ shippingOption })
+                        }
+                        defaultValue={this.state.shippingOption}
+                      >
+                        <BorderedRadio value="SHIP">
+                          Provide shipping address
+                        </BorderedRadio>
 
-                    <BorderedRadio value="PICKUP">
-                      Arrange for pickup
-                      <Collapse open={this.state.shippingOption === "PICKUP"}>
-                        <Sans size="2" color="black60">
-                          After you place your order, you’ll be appointed an
-                          Artsy Specialist within 2 business days to handle
-                          pickup logistics.
-                        </Sans>
-                      </Collapse>
-                    </BorderedRadio>
-                  </RadioGroup>
-
-                  <Spacer mb={3} />
+                        <BorderedRadio value="PICKUP">
+                          Arrange for pickup
+                          <Collapse
+                            open={this.state.shippingOption === "PICKUP"}
+                          >
+                            <Sans size="2" color="black60">
+                              After you place your order, you’ll be appointed an
+                              Artsy Specialist within 2 business days to handle
+                              pickup logistics.
+                            </Sans>
+                          </Collapse>
+                        </BorderedRadio>
+                      </RadioGroup>
+                      <Spacer mb={3} />
+                    </>
+                  )}
 
                   <Collapse open={this.state.shippingOption === "SHIP"}>
-                    <Spacer mb={2} />
                     <AddressForm
                       defaultValue={this.state.address}
                       onChange={address => this.setState({ address })}
