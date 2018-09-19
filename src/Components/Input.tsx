@@ -190,7 +190,7 @@ export class Input extends React.Component<InputProps, InputState> {
       <Container>
         {title && <Title>{title}</Title>}
         {description && <Description>{description}</Description>}
-        <StyledInput hasError={!!error} {...rest} />
+        <StyledInput {...rest} />
         <Error show={!!error}>{error}</Error>
       </Container>
     )

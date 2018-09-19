@@ -17,6 +17,5 @@
     "editor.formatOnSave": false
   },
   "tslint.autoFixOnSave": true,
-  "typescript.tsdk": "./node_modules/typescript/lib",
-  "cSpell.enabled": false
+  "typescript.tsdk": "./node_modules/typescript/lib"
 }
