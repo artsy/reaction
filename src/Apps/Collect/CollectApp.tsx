@@ -2,7 +2,6 @@ import { Separator } from "@artsy/palette"
 import { Box, Flex, Serif } from "@artsy/palette"
 import { CollectApp_viewer } from "__generated__/CollectApp_viewer.graphql"
 import React, { Component } from "react"
-import { Title } from "react-head"
 import { LazyLoadComponent } from "react-lazy-load-image-component"
 import { createFragmentContainer, graphql } from "react-relay"
 import { ArtworkGridFragmentContainer as ArtworkGrid } from "./Components/ArtworkGrid"
@@ -20,8 +19,7 @@ export interface CollectAppProps {
 export class CollectApp extends Component<CollectAppProps> {
   render() {
     return (
-      <>
-        <Title>Collect | Artsy</Title>
+      <div>
         <Flex flexDirection="column">
           <Box mt={3} mb={4}>
             <Serif size="8">Collect Art &amp; Design Online</Serif>
@@ -45,7 +43,7 @@ export class CollectApp extends Component<CollectAppProps> {
             <Footer />
           </Box>
         </Flex>
-      </>
+      </div>
     )
   }
 }
