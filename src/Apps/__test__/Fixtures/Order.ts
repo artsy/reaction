@@ -13,6 +13,7 @@ export const UntouchedOrder = {
       {
         node: {
           artwork: {
+            pickup_available: true,
             artist_names: "Lisa Breslow",
             title: "Gramercy Park South",
             date: "2016",
