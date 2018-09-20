@@ -18,6 +18,7 @@ const mock = {
       ...OrderWithShippingDetails,
       id,
       ...others,
+      state: "pending",
     }
   },
 }

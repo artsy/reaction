@@ -55,9 +55,12 @@ export const routes = [
     path: "/order2/:orderID",
     Component: OrderApp,
     query: graphql`
-      query routes_OrderQuery {
+      query routes_OrderQuery($orderID: String!) {
         me {
           name
+        }
+        order(id: $orderID) {
+          state
         }
       }
     `,
