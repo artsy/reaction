@@ -47,11 +47,10 @@ describe("OrderApp", () => {
     })
     // @ts-ignore
     mount(<OrderApp {...props} />)
-
-    expect(replace).not.toHaveBeenCalled()
+    expect(replace).not.toBeCalledWith("/order2/123/status")
   })
 
-  it("does redirects to the Status route when the order is not pending", () => {
+  it("redirects to the Status route when the order is not pending", () => {
     const replace = jest.fn()
     const props = getProps({
       state: "submitted",
@@ -60,7 +59,6 @@ describe("OrderApp", () => {
     })
     // @ts-ignore
     mount(<OrderApp {...props} />)
-
-    expect(replace).toHaveBeenCalled()
+    expect(replace).toBeCalledWith("/order2/123/status")
   })
 })
