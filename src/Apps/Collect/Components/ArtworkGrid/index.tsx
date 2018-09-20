@@ -2,7 +2,6 @@
 import { ArtworkGrid_viewer } from "__generated__/ArtworkGrid_viewer.graphql"
 import { FilterState } from "Apps/Collect/FilterState"
 import { ContextConsumer } from "Artsy"
-import { filter } from "lodash"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Toggle } from "Styleguide/Components/Toggle"
@@ -33,33 +32,49 @@ class Filter extends Component<Props> {
     hideTopBorder: false,
   }
 
-  renderCategory(filters, category, counts, mediator) {
-    const currentFilter =
-      category === "major_periods"
-        ? filters.state.major_periods[0]
-        : filters.state[category]
+  renderMedium(filters, counts, mediator) {
+    return counts.map((count, index) => {
+      const isSelected = filters.state.medium === count.id
 
-    const options =
-      category === "major_periods"
-        ? filter(counts, count => allowedPeriods.includes(count.name))
-        : counts
-
-    return options.map((count, index) => {
       return (
         <Radio
           my={0.3}
-          selected={currentFilter === count.id}
+          selected={isSelected}
           value={count.id}
           onSelect={({ selected }) => {
             if (selected) {
-              return filters.setFilter(category, count.id, mediator)
+              return filters.setFilter("medium", count.id, mediator)
             } else {
-              return filters.unsetFilter(category, mediator)
+              return filters.unsetFilter("medium", mediator)
             }
           }}
           key={index}
         >
           {count.name}
+        </Radio>
+      )
+    })
+  }
+
+  renderTimePeriods(filters, mediator) {
+    return allowedPeriods.map((timePeriod, index) => {
+      const isSelected = filters.state.major_periods[0] === timePeriod
+
+      return (
+        <Radio
+          my={0.3}
+          selected={isSelected}
+          value={timePeriod}
+          onSelect={({ selected }) => {
+            if (selected) {
+              return filters.setFilter("major_periods", timePeriod, mediator)
+            } else {
+              return filters.unsetFilter("major_periods", mediator)
+            }
+          }}
+          key={index}
+        >
+          {timePeriod}
         </Radio>
       )
     })
@@ -127,9 +142,6 @@ class Filter extends Component<Props> {
     const { filter_artworks } = this.props.viewer
     const { aggregations } = filter_artworks
     const mediumAggregation = aggregations.find(agg => agg.slice === "MEDIUM")
-    const periodAggregation = aggregations.find(
-      agg => agg.slice === "MAJOR_PERIOD"
-    )
 
     return (
       <ContextConsumer>
@@ -171,9 +183,8 @@ class Filter extends Component<Props> {
                                 </Flex>
 
                                 <Toggle label="Medium" expanded>
-                                  {this.renderCategory(
+                                  {this.renderMedium(
                                     filters,
-                                    "medium",
                                     mediumAggregation.counts,
                                     mediator
                                   )}
@@ -184,12 +195,7 @@ class Filter extends Component<Props> {
                                   }
                                   label="Time period"
                                 >
-                                  {this.renderCategory(
-                                    filters,
-                                    "major_periods",
-                                    periodAggregation.counts,
-                                    mediator
-                                  )}
+                                  {this.renderTimePeriods(filters, mediator)}
                                 </Toggle>
                               </Sidebar>
                             )}
@@ -272,7 +278,7 @@ export const ArtworkGridFragmentContainer = createFragmentContainer(
         inquireable_only: { type: "Boolean" }
         aggregations: {
           type: "[ArtworkAggregation]"
-          defaultValue: [MAJOR_PERIOD, MEDIUM, TOTAL]
+          defaultValue: [MEDIUM, TOTAL]
         }
         sort: { type: "String", defaultValue: "-partner_updated_at" }
         price_range: { type: "String" }
