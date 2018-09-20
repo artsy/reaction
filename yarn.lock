@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@artsy/palette@^2.17.4":
-  version "2.17.4"
-  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-2.17.4.tgz#0a69a461b4bfe17bae3c7130c5cd1c72a67b9af9"
+"@artsy/palette@^2.17.5":
+  version "2.17.5"
+  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-2.17.5.tgz#4610822873c5b57895a6cc5d884bfc9efcfe5c59"
   dependencies:
     rc-slider "^8.6.2"
     react "^16.5.0"
