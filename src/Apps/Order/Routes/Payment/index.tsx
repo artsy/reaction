@@ -36,6 +36,7 @@ interface PaymentState {
   error: stripe.Error
   isComittingMutation: boolean
   isErrorModalOpen: boolean
+  errorModalMessage: string
 }
 
 export const ContinueButton = props => (
@@ -54,6 +55,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
     error: null,
     isComittingMutation: false,
     isErrorModalOpen: false,
+    errorModalMessage: null,
   }
 
   onContinueButtonPressed = () => {
@@ -162,6 +164,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
         <ErrorModal
           onClose={this.onCloseModal}
           show={this.state.isErrorModalOpen}
+          detailText={this.state.errorModalMessage}
         />
       </>
     )
@@ -203,7 +206,11 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
             creditCardId: creditCardOrError.creditCard.id,
           })
         } else {
-          this.onMutationError(errors || creditCardOrError.mutationError)
+          this.onMutationError(
+            errors || creditCardOrError.mutationError,
+            creditCardOrError.mutationError &&
+              creditCardOrError.mutationError.message
+          )
         }
       },
       onError: this.onMutationError.bind(this),
@@ -282,9 +289,13 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
     })
   }
 
-  private onMutationError(errors) {
+  private onMutationError(errors, errorModalMessage?) {
     console.error("Order/Routes/Payment/index.tsx", errors)
-    this.setState({ isComittingMutation: false, isErrorModalOpen: true })
+    this.setState({
+      isComittingMutation: false,
+      isErrorModalOpen: true,
+      errorModalMessage,
+    })
   }
 
   private isPickup() {

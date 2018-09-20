@@ -266,6 +266,9 @@ describe("Payment", () => {
     component.find(ContinueButton).simulate("click")
 
     expect(component.find(ErrorModal).props().show).toBe(true)
+    expect(component.find(ErrorModal).props().detailText).toBe(
+      "No such token: fake-token"
+    )
 
     component.find(ModalButton).simulate("click")
 
