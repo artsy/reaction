@@ -1,4 +1,4 @@
-import { color, Sans } from "@artsy/palette"
+import { color, Flex, Sans } from "@artsy/palette"
 import { ModalWrapper } from "Components/Modal/ModalWrapper"
 import React from "react"
 import styled from "styled-components"
@@ -26,43 +26,41 @@ export class ErrorModal extends React.Component<ErrorModalProps> {
 
     return (
       <ModalWrapper show={show} onClose={onClose}>
-        <ErrorModalInner>
+        <Flex flexDirection="column" pt={2} px={2}>
           <Sans size="4" weight="medium" mb={10}>
             {headerText}
           </Sans>
-          {detailText ? (
-            <Sans size="3" color="black60" mb={30}>
-              {detailText}
-            </Sans>
-          ) : (
-            <Sans size="3" color="black60" mb={30}>
-              Something went wrong. Please try again or contact{" "}
-              <Link href="mailto:support@artsy.net">support@artsy.net</Link>.
-            </Sans>
-          )}
+          <Sans size="3" color="black60">
+            {detailText || (
+              <>
+                Something went wrong. Please try again or contact{" "}
+                <Link href="mailto:support@artsy.net">support@artsy.net</Link>.
+              </>
+            )}
+          </Sans>
+        </Flex>
 
-          <Dismiss onClick={this.close}>
-            <Sans size="3" color="purple100" weight="medium">
-              {closeText}
-            </Sans>
-          </Dismiss>
-        </ErrorModalInner>
+        <Flex mt={1} justifyContent="flex-end" onClick={this.close}>
+          <ModalButton>{closeText}</ModalButton>
+        </Flex>
       </ModalWrapper>
     )
   }
 }
 
+// TODO: Generalize this button and move it to @artsy/palette
+export const ModalButton = props => (
+  <Sans
+    p={2}
+    size="3"
+    color="purple100"
+    weight="medium"
+    style={{ cursor: "pointer" }}
+    {...props}
+  />
+)
+
+// TODO: Generalize this link and move it to @artsy/palette
 const Link = styled.a`
   color: ${color("black60")};
-`
-
-const ErrorModalInner = styled.div`
-  padding: 20px;
-`
-
-export const Dismiss = styled.div`
-  text-align: right;
-  &:hover {
-    cursor: pointer;
-  }
 `

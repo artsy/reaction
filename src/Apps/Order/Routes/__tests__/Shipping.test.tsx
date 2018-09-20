@@ -5,7 +5,7 @@ import { commitMutation, RelayProp } from "react-relay"
 import { Button } from "@artsy/palette"
 import { UntouchedOrder } from "Apps/__test__/Fixtures/Order"
 import Input, { InputProps } from "Components/Input"
-import { Dismiss } from "Components/Modal/ErrorModal"
+import { ModalButton } from "Components/Modal/ErrorModal"
 import { Provider } from "unstated"
 import {
   settingOrderShipmentFailure,
@@ -134,7 +134,7 @@ describe("Shipping", () => {
       component.find("Button").simulate("click")
       expect(component.find("ErrorModal").props().show).toBe(true)
 
-      component.find(Dismiss).simulate("click")
+      component.find(ModalButton).simulate("click")
       expect(component.find("ErrorModal").props().show).toBe(false)
     })
 
@@ -148,7 +148,7 @@ describe("Shipping", () => {
       component.find("Button").simulate("click")
       expect(component.find("ErrorModal").props().show).toBe(true)
 
-      component.find(Dismiss).simulate("click")
+      component.find(ModalButton).simulate("click")
       expect(component.find("ErrorModal").props().show).toBe(false)
     })
   })
