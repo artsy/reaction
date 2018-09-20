@@ -32,25 +32,25 @@ class Filter extends Component<Props> {
     hideTopBorder: false,
   }
 
-  renderMedium(filters, counts, mediator) {
-    return counts.map((count, index) => {
-      const isSelected = filters.state.medium === count.id
+  renderMedium(filters, mediums, mediator) {
+    return mediums.map((medium, index) => {
+      const isSelected = filters.state.medium === medium.id
 
       return (
         <Radio
           my={0.3}
           selected={isSelected}
-          value={count.id}
+          value={medium.id}
           onSelect={({ selected }) => {
             if (selected) {
-              return filters.setFilter("medium", count.id, mediator)
+              return filters.setFilter("medium", medium.id, mediator)
             } else {
               return filters.unsetFilter("medium", mediator)
             }
           }}
           key={index}
         >
-          {count.name}
+          {medium.name}
         </Radio>
       )
     })
