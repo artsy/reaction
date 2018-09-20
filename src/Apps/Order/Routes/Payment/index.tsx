@@ -97,7 +97,10 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
           {({ xs }) => (
             <TwoColumnLayout
               Content={
-                <>
+                <Flex
+                  flexDirection="column"
+                  style={isComittingMutation ? { pointerEvents: "none" } : {}}
+                >
                   <Join separator={<Spacer mb={3} />}>
                     <Flex flexDirection="column">
                       <Serif mb={1} size="3t" color="black100" lineHeight={18}>
@@ -138,7 +141,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
                     )}
                   </Join>
                   <Spacer mb={3} />
-                </>
+                </Flex>
               }
               Sidebar={
                 <Flex flexDirection="column">

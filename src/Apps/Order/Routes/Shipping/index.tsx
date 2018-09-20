@@ -138,10 +138,12 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
 
   render() {
     const { order } = this.props
+    const { isComittingMutation } = this.state
     const isPickupAvailable = get(
       this.props,
       "order.lineItems.edges[0].node.artwork.pickup_available"
     )
+
     return (
       <>
         <Row>
@@ -154,7 +156,10 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
           {({ xs }) => (
             <TwoColumnLayout
               Content={
-                <>
+                <Flex
+                  flexDirection="column"
+                  style={isComittingMutation ? { pointerEvents: "none" } : {}}
+                >
                   {/* TODO: Make RadioGroup generic for the allowed values,
                   which could also ensure the children only use
                   allowed values. */}
@@ -197,14 +202,14 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                   {!xs && (
                     <Button
                       onClick={this.onContinueButtonPressed}
-                      loading={this.state.isComittingMutation}
+                      loading={isComittingMutation}
                       size="large"
                       width="100%"
                     >
                       Continue
                     </Button>
                   )}
-                </>
+                </Flex>
               }
               Sidebar={
                 <Flex flexDirection="column">
@@ -217,7 +222,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                       <Spacer mb={3} />
                       <Button
                         onClick={this.onContinueButtonPressed}
-                        loading={this.state.isComittingMutation}
+                        loading={isComittingMutation}
                         size="large"
                         width="100%"
                       >
