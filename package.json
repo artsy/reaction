@@ -20,7 +20,6 @@
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
     "react-router": "^4.2.0",
-    "relay-mock-network-layer": "^1.2.0",
     "styled-components": "^2 || ^3"
   },
   "scripts": {
@@ -129,7 +128,6 @@
     "react-test-renderer": "^16.2.0",
     "relay-compiler": "https://github.com/alloy/relay/releases/download/v1.5.0-artsy.3/relay-compiler-1.5.0-artsy.3.tgz",
     "relay-compiler-language-typescript": "^1.1.0",
-    "relay-mock-network-layer": "^1.2.0",
     "semantic-release": "^12.4.1",
     "storybook-addon-scissors": "^4.0.1",
     "styled-components": "^3.4.5",
@@ -184,6 +182,7 @@
     "react-transition-group": "^2.3.0",
     "react-url-query": "^1.1.4",
     "react-waypoint": "^7.3.3",
+    "relay-mock-network-layer": "^1.2.0",
     "relay-runtime": "https://github.com/alloy/relay/releases/download/v1.5.0-artsy.3/relay-runtime-1.5.0-artsy.3.tgz",
     "serialize-javascript": "^1.5.0",
     "sharify": "^0.1.6",
