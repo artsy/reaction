@@ -2,6 +2,7 @@
 import { ArtworkGrid_viewer } from "__generated__/ArtworkGrid_viewer.graphql"
 import { FilterState } from "Apps/Collect/FilterState"
 import { ContextConsumer } from "Artsy"
+import { filter } from "lodash"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Toggle } from "Styleguide/Components/Toggle"
@@ -38,7 +39,12 @@ class Filter extends Component<Props> {
         ? filters.state.major_periods[0]
         : filters.state[category]
 
-    return counts.map((count, index) => {
+    const options =
+      category === "major_periods"
+        ? filter(counts, count => allowedPeriods.includes(count.name))
+        : counts
+
+    return options.map((count, index) => {
       return (
         <Radio
           my={0.3}
@@ -298,3 +304,21 @@ export const ArtworkGridFragmentContainer = createFragmentContainer(
 )
 
 const Sidebar = Box
+
+const allowedPeriods = [
+  "2010",
+  "2000",
+  "1990",
+  "1980",
+  "1970",
+  "1960",
+  "1950",
+  "1940",
+  "1930",
+  "1920",
+  "1910",
+  "1900",
+  "Late 19th Century",
+  "Mid 19th Century",
+  "Early 19th Century",
+]
