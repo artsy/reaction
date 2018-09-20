@@ -62,7 +62,7 @@ export const CollectAppFragmentContainer = createFragmentContainer(
         inquireable_only: { type: "Boolean" }
         aggregations: {
           type: "[ArtworkAggregation]"
-          defaultValue: [MAJOR_PERIOD, MEDIUM, TOTAL]
+          defaultValue: [MEDIUM, TOTAL]
         }
         sort: { type: "String", defaultValue: "-partner_updated_at" }
         price_range: { type: "String" }
