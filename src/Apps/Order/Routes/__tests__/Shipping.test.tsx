@@ -38,6 +38,7 @@ const fillAddressForm = (component: any, address: Address) => {
     value: address.region,
   })
   fillIn(component, { title: "Postal code", value: address.postalCode })
+  fillIn(component, { title: "Phone", value: address.phoneNumber })
   fillCountrySelect(component, address.country)
 }
 
@@ -229,12 +230,14 @@ describe("Shipping", () => {
       }
       shipOrderProps = { ...testProps, order: shipOrder }
     })
+
     it("does not submit an empty form for a SHIP order", () => {
       const component = getWrapper(shipOrderProps)
       const { addressLine1, ...badAddress } = validAddress
       component.find(Button).simulate("click")
       expect(commitMutation).not.toBeCalled()
     })
+
     it("does not submit the mutation with an incomplete form for a SHIP order", () => {
       const component = getWrapper(shipOrderProps)
       const { addressLine1, ...badAddress } = validAddress
@@ -243,12 +246,14 @@ describe("Shipping", () => {
       component.find(Button).simulate("click")
       expect(commitMutation).not.toBeCalled()
     })
+
     it("does submit the mutation with a complete form for a SHIP order", () => {
       const component = getWrapper(shipOrderProps)
       fillAddressForm(component, validAddress)
       component.find(Button).simulate("click")
       expect(commitMutation).toBeCalled()
     })
+
     it("does submit the mutation with a non-ship order", () => {
       const component = getWrapper(testProps)
       fillIn(component, { title: "Full name", value: "Air Bud" })
@@ -256,6 +261,7 @@ describe("Shipping", () => {
       component.find(Button).simulate("click")
       expect(commitMutation).toBeCalled()
     })
+
     it("says a required field is required for a SHIP order", () => {
       const component = getWrapper(shipOrderProps)
 

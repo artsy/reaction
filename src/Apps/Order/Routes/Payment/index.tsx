@@ -217,15 +217,10 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
     )
   }
 
-  // Infer the billing address from the form or shipping address (maybe not needed)
-  private getSelectedBillingAddress(formAddress: Address): Address {
-    return (this.needsAddress()
+  private getStripeBillingAddress(formAddress: Address): stripe.TokenOptions {
+    const selectedBillingAddress = (this.needsAddress()
       ? this.state.address
       : this.props.order.requestedFulfillment) as Address
-  }
-
-  // Smoosh the billing address into stripe-friendly camel case.
-  private getStripeBillingAddress(formAddress: Address): stripe.TokenOptions {
     const {
       name,
       addressLine1,
@@ -234,7 +229,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
       region,
       postalCode,
       country,
-    } = this.getSelectedBillingAddress(formAddress)
+    } = selectedBillingAddress
     return {
       name,
       address_line1: addressLine1,

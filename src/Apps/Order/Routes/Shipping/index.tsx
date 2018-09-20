@@ -145,7 +145,15 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
   }
 
   private validateAddress(address: Address) {
-    const { name, addressLine1, city, region, country, postalCode } = address
+    const {
+      name,
+      addressLine1,
+      city,
+      region,
+      country,
+      postalCode,
+      phoneNumber,
+    } = address
     return {
       name: validatePresence(name),
       addressLine1: validatePresence(addressLine1),
@@ -153,6 +161,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
       region: validatePresence(region),
       country: validatePresence(country),
       postalCode: validatePresence(postalCode),
+      phoneNumber: validatePresence(phoneNumber),
     }
   }
 
@@ -250,14 +259,9 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
               }
               Sidebar={
                 <Flex flexDirection="column">
-                  <TransactionSummary
-                    order={this.props.order}
-                    mb={xs ? 2 : 3}
-                  />
+                  <TransactionSummary order={order} mb={xs ? 2 : 3} />
                   <Helper
-                    artworkId={
-                      this.props.order.lineItems.edges[0].node.artwork.id
-                    }
+                    artworkId={order.lineItems.edges[0].node.artwork.id}
                   />
                   {xs && (
                     <>

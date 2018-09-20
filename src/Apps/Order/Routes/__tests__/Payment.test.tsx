@@ -114,7 +114,6 @@ describe("Payment", () => {
     stripeMock.createToken.mockReturnValue({ then: thenMock })
 
     const paymentRoute = mount(<PaymentRoute {...testProps} />)
-    // fillAddressForm(paymentRoute, validAddress)
     paymentRoute.find(ContinueButton).simulate("click")
 
     expect(stripeMock.createToken).toHaveBeenCalledWith({
