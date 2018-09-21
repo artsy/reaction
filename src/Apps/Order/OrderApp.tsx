@@ -81,7 +81,7 @@ export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
     const { children, location, router, order, params } = this.props
     if (
       order &&
-      order.state !== "pending" &&
+      order.state !== "PENDING" &&
       !location.pathname.includes("status")
     ) {
       router.replace(`/order2/${params.orderID}/status`)
