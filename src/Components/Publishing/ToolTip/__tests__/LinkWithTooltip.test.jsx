@@ -5,7 +5,7 @@ import PropTypes from "prop-types"
 import React from "react"
 import { wrapperWithContext } from "../../Fixtures/Helpers"
 import { Artists, Genes } from "../../Fixtures/Components"
-import { ContextProvider } from "Artsy/SystemContext"
+import { ContextProvider } from "Artsy"
 import {
   Link,
   LinkWithTooltip,

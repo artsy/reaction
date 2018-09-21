@@ -4,7 +4,7 @@ import {
   SuggestedGenesFollowGeneMutationResponse,
 } from "__generated__/SuggestedGenesFollowGeneMutation.graphql"
 import { SuggestedGenesQuery } from "__generated__/SuggestedGenesQuery.graphql"
-import { ContextProps, withContext } from "Artsy/SystemContext"
+import { ContextProps, withContext } from "Artsy"
 import * as React from "react"
 import {
   commitMutation,

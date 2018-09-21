@@ -1,7 +1,7 @@
+import { MockBoot } from "Artsy"
 import { mount } from "enzyme"
 import { set } from "lodash/fp"
 import React from "react"
-import { MockBoot } from "Utils/MockBoot"
 import { paginationProps } from "../../../Apps/__test__/Fixtures/Pagination"
 import { LargePagination, Pagination, SmallPagination } from "../Pagination"
 

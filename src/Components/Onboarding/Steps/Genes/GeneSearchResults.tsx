@@ -4,7 +4,7 @@ import {
   GeneSearchResultsFollowGeneMutationResponse,
 } from "__generated__/GeneSearchResultsFollowGeneMutation.graphql"
 import { GeneSearchResultsQuery } from "__generated__/GeneSearchResultsQuery.graphql"
-import { ContextProps, withContext } from "Artsy/SystemContext"
+import { ContextProps, withContext } from "Artsy"
 import { garamond } from "Assets/Fonts"
 import * as React from "react"
 import {

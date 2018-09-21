@@ -1,4 +1,4 @@
-import { ContextProvider } from "Artsy/SystemContext"
+import { ContextProvider } from "Artsy"
 import React from "react"
 import { storiesOfPublishing } from "../../../__stories__/storiesOf.js"
 import { Article } from "../Article"

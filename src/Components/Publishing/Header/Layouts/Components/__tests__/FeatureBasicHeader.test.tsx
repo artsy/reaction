@@ -1,4 +1,4 @@
-import { mockTracking } from "Artsy/Analytics"
+import { mockTracking } from "Artsy"
 import {
   FeatureBasicArticle,
   FeatureBasicVideoArticle,

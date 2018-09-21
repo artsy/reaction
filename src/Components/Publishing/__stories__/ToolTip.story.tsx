@@ -1,5 +1,5 @@
 import { storiesOf } from "@storybook/react"
-import { ContextProvider } from "Artsy/SystemContext"
+import { ContextProvider } from "Artsy"
 import { StandardArticle } from "Components/Publishing/Fixtures/Articles"
 import { StyledText } from "Components/Publishing/Sections/StyledText"
 import { LinkWithTooltip } from "Components/Publishing/ToolTip/LinkWithTooltip"

@@ -1,7 +1,7 @@
 import { Box, Spacer } from "@artsy/palette"
 import { ArtworkFilterArtworkGrid_filtered_artworks } from "__generated__/ArtworkFilterArtworkGrid_filtered_artworks.graphql"
 import { FilterState } from "Apps/Collect/FilterState"
-import { ContextConsumer } from "Artsy/Router"
+import { ContextConsumer } from "Artsy"
 import ArtworkGrid from "Components/ArtworkGrid"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"

@@ -1,5 +1,5 @@
 import { color, Flex, Sans, space } from "@artsy/palette"
-import { PreloadLink, PreloadLinkProps } from "Artsy/Router"
+import { PreloadLink, PreloadLinkProps } from "Artsy"
 import React from "react"
 import styled from "styled-components"
 import { styles } from "./Tabs"

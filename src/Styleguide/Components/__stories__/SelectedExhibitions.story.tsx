@@ -1,5 +1,5 @@
 import { exhibitions } from "Apps/__test__/Fixtures/SelectedExhibitions"
-import { StorybooksRouter } from "Artsy/Router"
+import { ClientRouter } from "Artsy"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
@@ -16,7 +16,7 @@ const props = {
 
 storiesOf("Styleguide/Components", module).add("SelectedExhibitions", () => {
   return (
-    <StorybooksRouter
+    <ClientRouter
       routes={[
         {
           path: "*",

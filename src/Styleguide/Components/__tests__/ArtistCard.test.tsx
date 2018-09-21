@@ -1,8 +1,8 @@
 import { ArtistCard_artist } from "__generated__/ArtistCard_artist.graphql"
+import { MockBoot } from "Artsy"
 import { mount } from "enzyme"
 import { set } from "lodash/fp"
 import React from "react"
-import { MockBoot } from "Utils/MockBoot"
 import { Breakpoint } from "Utils/Responsive"
 import { ArtistCard, LargeArtistCard, SmallArtistCard } from "../ArtistCard"
 

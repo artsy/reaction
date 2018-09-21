@@ -2,7 +2,7 @@ import React from "react"
 import { graphql, QueryRenderer } from "react-relay"
 
 import { TagContentsArtworksQuery } from "__generated__/TagContentsArtworksQuery.graphql"
-import { ContextProps, withContext } from "Artsy/SystemContext"
+import { ContextProps, withContext } from "Artsy"
 import TagArtworks from "./TagArtworks"
 
 export interface Filters {

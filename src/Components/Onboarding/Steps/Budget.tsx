@@ -3,7 +3,7 @@ import { commitMutation, graphql } from "react-relay"
 import styled from "styled-components"
 
 import { BudgetUpdateMyUserProfileMutation } from "__generated__/BudgetUpdateMyUserProfileMutation.graphql"
-import { ContextProps, withContext } from "Artsy/SystemContext"
+import { ContextProps, withContext } from "Artsy"
 import Colors from "../../../Assets/Colors"
 import { MultiButtonState } from "../../Buttons/MultiStateButton"
 import { media } from "../../Helpers"

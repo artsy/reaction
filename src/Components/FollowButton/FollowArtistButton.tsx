@@ -1,5 +1,5 @@
 import { FollowArtistButtonMutation } from "__generated__/FollowArtistButtonMutation.graphql"
-import * as Artsy from "Artsy/SystemContext"
+import { ContextProps, withContext } from "Artsy"
 import { extend } from "lodash"
 import React from "react"
 import track from "react-tracking"
@@ -17,9 +17,7 @@ import {
   RelayProp,
 } from "react-relay"
 
-interface Props
-  extends React.HTMLProps<FollowArtistButton>,
-    Artsy.ContextProps {
+interface Props extends React.HTMLProps<FollowArtistButton>, ContextProps {
   relay?: RelayProp
   artist?: FollowArtistButton_artist
   tracking?: any
@@ -138,7 +136,7 @@ export class FollowArtistButton extends React.Component<Props> {
 
 export default track({})(
   createFragmentContainer(
-    Artsy.withContext(FollowArtistButton),
+    withContext(FollowArtistButton),
     graphql`
       fragment FollowArtistButton_artist on Artist {
         __id

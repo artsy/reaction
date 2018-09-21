@@ -3,7 +3,7 @@ import { graphql, QueryRenderer } from "react-relay"
 
 import { GeneContentsArtistsQuery } from "__generated__/GeneContentsArtistsQuery.graphql"
 import { GeneContentsArtworksQuery } from "__generated__/GeneContentsArtworksQuery.graphql"
-import { ContextProps, withContext } from "Artsy/SystemContext"
+import { ContextProps, withContext } from "Artsy"
 import Artists from "./Artists"
 import GeneArtworks from "./GeneArtworks"
 

@@ -1,4 +1,4 @@
-import { PreloadLink } from "Artsy/Router"
+import { PreloadLink } from "Artsy"
 import { ContextProvider } from "Components/Artsy"
 import { mount } from "enzyme"
 import React from "react"

@@ -4,7 +4,7 @@ import {
 } from "__generated__/ArtistSearchResultsArtistMutation.graphql"
 import { ArtistSearchResultsContent_viewer } from "__generated__/ArtistSearchResultsContent_viewer.graphql"
 import { ArtistSearchResultsQuery } from "__generated__/ArtistSearchResultsQuery.graphql"
-import { ContextProps, withContext } from "Artsy/SystemContext"
+import { ContextProps, withContext } from "Artsy"
 import * as React from "react"
 import {
   commitMutation,

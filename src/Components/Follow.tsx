@@ -8,7 +8,7 @@
 
 import { Follow_artist } from "__generated__/Follow_artist.graphql"
 import { FollowArtistMutation } from "__generated__/FollowArtistMutation.graphql"
-import * as Artsy from "Artsy/SystemContext"
+import { ContextProps, withContext } from "Artsy"
 import React from "react"
 import {
   commitMutation,
@@ -22,7 +22,7 @@ import Icon from "./Icon"
 
 const SIZE = 32
 
-interface Props extends React.HTMLProps<FollowButton>, Artsy.ContextProps {
+interface Props extends React.HTMLProps<FollowButton>, ContextProps {
   style?: any
   relay: RelayProp
   artist: Follow_artist
@@ -114,7 +114,7 @@ export class FollowButton extends React.Component<Props, null> {
 }
 
 export default createFragmentContainer(
-  Artsy.withContext(FollowButton),
+  withContext(FollowButton),
   graphql`
     fragment Follow_artist on Artist {
       __id

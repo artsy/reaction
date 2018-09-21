@@ -1,5 +1,4 @@
-import { Boot } from "Artsy/Router"
-import { ContextConsumer } from "Artsy/Router"
+import { Boot, ContextConsumer } from "Artsy"
 import { mount } from "enzyme"
 import React from "react"
 

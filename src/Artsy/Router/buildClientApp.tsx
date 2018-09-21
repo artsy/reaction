@@ -1,5 +1,5 @@
+import { Boot } from "Artsy"
 import { createEnvironment } from "Artsy/Relay/createEnvironment"
-import { Boot } from "Artsy/Router/Components/Boot"
 import { Hydrator } from "Artsy/Router/Components/Hydrator"
 import BrowserProtocol from "farce/lib/BrowserProtocol"
 import HashProtocol from "farce/lib/HashProtocol"

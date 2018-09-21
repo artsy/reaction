@@ -1,4 +1,4 @@
-import { ContextProps, ContextProvider, withContext } from "Artsy/SystemContext"
+import { ContextProps, ContextProvider, withContext } from "Artsy"
 import React from "react"
 import { GraphQLTaggedNode, ReadyState } from "react-relay"
 import { QueryRenderer } from "react-relay"

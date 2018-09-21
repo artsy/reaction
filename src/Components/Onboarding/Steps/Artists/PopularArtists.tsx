@@ -4,7 +4,7 @@ import {
   PopularArtistsFollowArtistMutationResponse,
 } from "__generated__/PopularArtistsFollowArtistMutation.graphql"
 import { PopularArtistsQuery } from "__generated__/PopularArtistsQuery.graphql"
-import { ContextProps, withContext } from "Artsy/SystemContext"
+import { ContextProps, withContext } from "Artsy"
 import * as React from "react"
 import {
   commitMutation,
