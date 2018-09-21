@@ -39,15 +39,13 @@ export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
   state = { stripe: null }
   removeTransitionHook: () => void
 
-  constructor(props) {
-    super(props)
-
-    this.removeTransitionHook = props.router.addTransitionHook(
-      this.onTransition
-    )
-  }
-
   componentDidMount() {
+    if (!this.removeTransitionHook) {
+      this.removeTransitionHook = this.props.router.addTransitionHook(
+        this.onTransition
+      )
+    }
+
     if (window.Stripe) {
       this.setState({
         stripe: window.Stripe(window.sd.STRIPE_PUBLISHABLE_KEY),
@@ -63,7 +61,9 @@ export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
   }
 
   componentWillUnmount() {
-    this.removeTransitionHook()
+    if (this.removeTransitionHook) {
+      this.removeTransitionHook()
+    }
   }
 
   onTransition = newLocation => {
@@ -79,7 +79,11 @@ export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
 
   render() {
     const { children, location, router, order, params } = this.props
-    if (order.state !== "pending" && !location.pathname.includes("status")) {
+    if (
+      order &&
+      order.state !== "pending" &&
+      !location.pathname.includes("status")
+    ) {
       router.replace(`/order2/${params.orderID}/status`)
     }
     return (
