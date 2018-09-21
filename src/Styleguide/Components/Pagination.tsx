@@ -27,6 +27,7 @@ export class Pagination extends React.Component<Props> {
     if (this.props.pageCursors.around.length === 1) {
       return null
     }
+
     return (
       <ScrollIntoView selector={this.props.scrollTo}>
         <Responsive>
@@ -207,7 +208,7 @@ const activeButton = css`
 
 const Button = styled.button.attrs<{ active?: boolean }>({})`
   cursor: pointer;
-  width: 23px;
+  width: min-content;
   height: 25px;
   background: transparent;
   border: 0;

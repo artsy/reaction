@@ -105,6 +105,7 @@ class Artworks extends Component<Props, LoadingAreaState> {
                         onNext={() => {
                           this.loadNext(filters, mediator)
                         }}
+                        scrollTo="#jump--collectArtworkGrid"
                       />
                     </Box>
                   </LoadingArea>
