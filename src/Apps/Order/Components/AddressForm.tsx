@@ -15,6 +15,12 @@ export interface Address {
   phoneNumber: string
 }
 
+export type AddressErrors = Partial<Address>
+export type AddressChangeHandler = (
+  address: Address,
+  key: keyof Address
+) => void
+
 export const emptyAddress: Address = Object.freeze({
   name: "",
   country: "",
@@ -26,9 +32,10 @@ export const emptyAddress: Address = Object.freeze({
   phoneNumber: "",
 })
 export interface AddressFormProps {
-  onChange(address: Address): void
+  onChange: AddressChangeHandler
   defaultValue?: Partial<Address>
   billing?: boolean
+  errors?: AddressErrors
 }
 
 interface AddressFormState {
@@ -58,7 +65,7 @@ export class AddressForm extends React.Component<
 
   onChangeValue = (key: keyof Address, value: string) => {
     this.setState({ address: { ...this.state.address, [key]: value } }, () => {
-      this.props.onChange({ ...this.state.address })
+      this.props.onChange({ ...this.state.address }, key)
     })
   }
 
@@ -72,6 +79,7 @@ export class AddressForm extends React.Component<
             title="Full name"
             defaultValue={this.props.defaultValue.name}
             onChange={this.changeEventHandler("name")}
+            error={this.props.errors && this.props.errors.name}
             block
           />
         </Flex>
@@ -94,6 +102,7 @@ export class AddressForm extends React.Component<
               title="Postal code"
               defaultValue={this.props.defaultValue.postalCode}
               onChange={this.changeEventHandler("postalCode")}
+              error={this.props.errors && this.props.errors.postalCode}
               block
             />
           </Flex>
@@ -106,6 +115,7 @@ export class AddressForm extends React.Component<
               title="Address line 1"
               defaultValue={this.props.defaultValue.addressLine1}
               onChange={this.changeEventHandler("addressLine1")}
+              error={this.props.errors && this.props.errors.addressLine1}
               block
             />
           </Flex>
@@ -129,6 +139,7 @@ export class AddressForm extends React.Component<
               title="City"
               defaultValue={this.props.defaultValue.city}
               onChange={this.changeEventHandler("city")}
+              error={this.props.errors && this.props.errors.city}
               block
             />
           </Flex>
@@ -139,6 +150,7 @@ export class AddressForm extends React.Component<
               title="State, province, or region"
               defaultValue={this.props.defaultValue.region}
               onChange={this.changeEventHandler("region")}
+              error={this.props.errors && this.props.errors.region}
               block
             />
           </Flex>
@@ -152,6 +164,7 @@ export class AddressForm extends React.Component<
               placeholder="Add phone"
               defaultValue={this.props.defaultValue.phoneNumber}
               onChange={this.changeEventHandler("phoneNumber")}
+              error={this.props.errors && this.props.errors.phoneNumber}
               block
             />
           </Flex>
