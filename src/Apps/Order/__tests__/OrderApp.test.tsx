@@ -41,7 +41,7 @@ describe("OrderApp", () => {
   it("does not redirect to the Status route when the order is pending", () => {
     const replace = jest.fn()
     const props = getProps({
-      state: "pending",
+      state: "PENDING",
       location: "/order/123/shipping",
       replace,
     })
@@ -53,7 +53,7 @@ describe("OrderApp", () => {
   it("redirects to the Status route when the order is not pending", () => {
     const replace = jest.fn()
     const props = getProps({
-      state: "submitted",
+      state: "SUBMITTED",
       location: "/order/123/review",
       replace,
     })
