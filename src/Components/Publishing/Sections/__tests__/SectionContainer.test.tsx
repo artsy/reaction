@@ -25,6 +25,19 @@ describe("SectionContainer", () => {
       expect(getSectionWidth()).toBe("680px")
     })
 
+    describe("classic layout", () => {
+      const articleLayout = "classic"
+
+      it("returns correct width for overflow_fillwidth", () => {
+        expect(getSectionWidth(section, articleLayout)).toBe("1100px")
+      })
+
+      it("returns correct width for column_width", () => {
+        section.layout = "column_width"
+        expect(getSectionWidth(section, articleLayout)).toBe("580px")
+      })
+    })
+
     describe("standard layout", () => {
       const articleLayout = "standard"
 
@@ -35,6 +48,11 @@ describe("SectionContainer", () => {
       it("returns correct width for column_width", () => {
         section.layout = "column_width"
         expect(getSectionWidth(section, articleLayout)).toBe("680px")
+      })
+
+      it("returns correct width for blockquotes", () => {
+        section.body = "<blockquote>Hello, world!</blockquote>"
+        expect(getSectionWidth(section, articleLayout)).toBe("780px")
       })
     })
 

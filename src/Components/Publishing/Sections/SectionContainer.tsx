@@ -2,17 +2,18 @@ import styled from "styled-components"
 import { pMedia } from "../../Helpers"
 import { ArticleLayout, SectionData } from "../Typings"
 
-const ColumnWidth = "680px"
-const OverflowWidth = "780px"
 const BlockquoteWidth = "900px"
+const ColumnWidth = "680px"
+const ColumnWidthClassic = "580px"
 const Fillwidth = "100%"
+const OverflowWidth = "780px"
+const OverflowWidthClassic = "1100px"
 
 export const SectionContainer = styled.div.attrs<{
   section?: SectionData
   articleLayout?: ArticleLayout
 }>({})`
   box-sizing: border-box;
-  display: flex;
   margin: auto;
   margin-bottom: 40px;
   width: ${props => getSectionWidth(props.section, props.articleLayout)};
@@ -40,7 +41,11 @@ export const getSectionWidth = (
 
   switch (articleLayout) {
     case "standard": {
-      return maybeOverflow
+      if (isBlockquote) {
+        return OverflowWidth
+      } else {
+        return maybeOverflow
+      }
     }
     case "feature": {
       if (isBlockquote) {
@@ -50,6 +55,11 @@ export const getSectionWidth = (
       } else {
         return maybeOverflow
       }
+    }
+    case "classic": {
+      return layout === "overflow_fillwidth"
+        ? OverflowWidthClassic
+        : ColumnWidthClassic
     }
     default:
       return ColumnWidth

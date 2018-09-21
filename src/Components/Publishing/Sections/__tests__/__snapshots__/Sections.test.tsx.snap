@@ -359,10 +359,6 @@ exports[`Sections snapshots renders properly 1`] = `
 
 .c1 {
   box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   margin: auto;
   margin-bottom: 40px;
   width: 680px;
@@ -371,10 +367,6 @@ exports[`Sections snapshots renders properly 1`] = `
 
 .c3 {
   box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   margin: auto;
   margin-bottom: 40px;
   width: 780px;
@@ -383,10 +375,6 @@ exports[`Sections snapshots renders properly 1`] = `
 
 .c4 {
   box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   margin: auto;
   margin-bottom: 40px;
   width: 780px;
@@ -395,10 +383,6 @@ exports[`Sections snapshots renders properly 1`] = `
 
 .c27 {
   box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   margin: auto;
   margin-bottom: 40px;
   width: 680px;
@@ -407,10 +391,6 @@ exports[`Sections snapshots renders properly 1`] = `
 
 .c36 {
   box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   margin: auto;
   margin-bottom: 40px;
   width: 680px;

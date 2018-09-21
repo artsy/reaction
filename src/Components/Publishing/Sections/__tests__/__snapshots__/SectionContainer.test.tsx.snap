@@ -3,10 +3,6 @@
 exports[`SectionContainer Snapshots renders column_width properly 1`] = `
 .c0 {
   box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   margin: auto;
   margin-bottom: 40px;
   width: 680px;
@@ -286,10 +282,6 @@ exports[`SectionContainer Snapshots renders column_width properly 1`] = `
 exports[`SectionContainer Snapshots renders fillwidth properly 1`] = `
 .c0 {
   box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   margin: auto;
   margin-bottom: 40px;
   width: 680px;
@@ -569,10 +561,6 @@ exports[`SectionContainer Snapshots renders fillwidth properly 1`] = `
 exports[`SectionContainer Snapshots renders overflow_fillwidth properly 1`] = `
 .c0 {
   box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   margin: auto;
   margin-bottom: 40px;
   width: 680px;
