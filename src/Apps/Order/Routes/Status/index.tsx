@@ -20,15 +20,15 @@ export class StatusRoute extends Component<StatusProps> {
   stateCopy = () => {
     const { state, requestedFulfillment } = this.props.order
     switch (state) {
-      case "submitted":
+      case "SUBMITTED":
         return "Your order has been submitted."
-      case "approved":
+      case "APPROVED":
         return "Your order is confirmed."
-      case "fulfilled":
+      case "FULFILLED":
         return requestedFulfillment.__typename === "Ship"
           ? "Your order was shipped."
           : "Your order was picked up."
-      case "canceled":
+      case "CANCELED":
         return "Your order was canceled and refunded."
     }
   }
@@ -37,7 +37,7 @@ export class StatusRoute extends Component<StatusProps> {
     const { order } = this.props
     const { state, requestedFulfillment } = order
     switch (state) {
-      case "submitted":
+      case "SUBMITTED":
         return (
           <>
             Thank you for your order. You’ll receive a confirmation email
@@ -45,7 +45,7 @@ export class StatusRoute extends Component<StatusProps> {
             <a href="#">orders@artsy.net</a>.
           </>
         )
-      case "approved":
+      case "APPROVED":
         return requestedFulfillment.__typename === "Ship" ? (
           <>
             The seller will notify you when your order has shipped (typically
@@ -54,7 +54,7 @@ export class StatusRoute extends Component<StatusProps> {
         ) : (
           false
         )
-      case "fulfilled":
+      case "FULFILLED":
         return requestedFulfillment.__typename === "Ship" ? (
           <>
             Estimated delivery:
@@ -64,7 +64,7 @@ export class StatusRoute extends Component<StatusProps> {
         ) : (
           false
         )
-      case "canceled":
+      case "CANCELED":
         return (
           <>
             The work is no longer available.
