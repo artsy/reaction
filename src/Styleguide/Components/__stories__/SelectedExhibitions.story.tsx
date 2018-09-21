@@ -1,5 +1,5 @@
 import { exhibitions } from "Apps/__test__/Fixtures/SelectedExhibitions"
-import { ClientRouter } from "Artsy/Router/client"
+import { ClientRouter } from "Artsy/Router/Components/ClientRouter"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"

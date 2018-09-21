@@ -1,4 +1,4 @@
-import { ClientRouter } from "Artsy/Router/client"
+import { ClientRouter } from "Artsy/Router/Components/ClientRouter"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { RouteTab, RouteTabs } from "Styleguide/Components"

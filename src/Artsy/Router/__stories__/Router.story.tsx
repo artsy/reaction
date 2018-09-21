@@ -1,5 +1,6 @@
 import { storiesOf } from "@storybook/react"
-import { ClientRouter, PreloadLink } from "Artsy/Router/client"
+import { PreloadLink } from "Artsy/Router"
+import { ClientRouter } from "Artsy/Router/Components/ClientRouter"
 import { ContextConsumer } from "Artsy/SystemContext"
 import React from "react"
 import { graphql } from "react-relay"

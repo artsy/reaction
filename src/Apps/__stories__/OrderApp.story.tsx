@@ -2,7 +2,7 @@ import {
   OrderWithShippingDetails,
   PickupOrder,
 } from "Apps/__test__/Fixtures/Order"
-import { ClientRouter } from "Artsy/Router/client"
+import { ClientRouter } from "Artsy/Router/Components/ClientRouter"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { routes as orderRoutes } from "../Order/routes"

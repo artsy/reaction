@@ -1,5 +1,5 @@
 import { storiesOf } from "@storybook/react"
-import { ClientRouter } from "Artsy/Router/client"
+import { ClientRouter } from "Artsy/Router/Components/ClientRouter"
 import React from "react"
 import { routes as artistRoutes } from "../Artist/routes"
 import { routes as artworkRoutes } from "../Artwork/routes"

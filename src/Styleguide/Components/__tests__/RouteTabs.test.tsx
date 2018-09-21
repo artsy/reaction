@@ -1,4 +1,4 @@
-import { ClientRouter } from "Artsy/Router/client"
+import { ClientRouter } from "Artsy/Router/Components/ClientRouter"
 import { mount } from "enzyme"
 import React from "react"
 import { MockBoot } from "Utils/MockBoot"
