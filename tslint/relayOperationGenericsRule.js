@@ -183,13 +183,14 @@ class RelayOperationGenericsWalker extends Lint.RuleWalker {
    * @param {number} width
    * @param {string} replacement
    * @param {string} operationName
+   * @returns {Lint.Replacement[]}
    */
   createFixes(start, width, replacement, operationName) {
     const fixes = [new Lint.Replacement(start, width, replacement)]
     if (!this.hasImportForOperation(operationName)) {
       fixes.push(this.importDeclarationFixForOperation(operationName))
     }
-    return new Lint.Fix("fix-relay-type-parameter", fixes)
+    return fixes
   }
 
   /**

@@ -1,5 +1,7 @@
 import { Button, Checkbox, Flex, Join, Serif, Spacer } from "@artsy/palette"
 import { Payment_order } from "__generated__/Payment_order.graphql"
+import { PaymentRouteCreateCreditCardMutation } from "__generated__/PaymentRouteCreateCreditCardMutation.graphql"
+import { PaymentRouteSetOrderPaymentMutation } from "__generated__/PaymentRouteSetOrderPaymentMutation.graphql"
 import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
 import { validatePresence } from "Apps/Order/Components/Validators"
 import {
@@ -245,104 +247,104 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
   }
 
   private createCreditCard({ token }) {
-    commitMutation(this.props.relay.environment, {
-      onCompleted: (data, errors) => {
-        const {
-          createCreditCard: { creditCardOrError },
-        } = data
+    commitMutation<PaymentRouteCreateCreditCardMutation>(
+      this.props.relay.environment,
+      {
+        onCompleted: (data, errors) => {
+          const {
+            createCreditCard: { creditCardOrError },
+          } = data
 
-        if (creditCardOrError.creditCard) {
-          this.setOrderPayment({
-            creditCardId: creditCardOrError.creditCard.id,
-          })
-        } else {
-          this.onMutationError(
-            errors || creditCardOrError.mutationError,
-            creditCardOrError.mutationError &&
-              creditCardOrError.mutationError.message
-          )
-        }
-      },
-      onError: (error?: Error) => {
-        this.setState({ isComittingMutation: false })
-        this.onMutationError.bind(this)(error)
-      },
-      mutation: graphql`
-        mutation PaymentRouteCreateCreditCardMutation(
-          $input: CreditCardInput!
-        ) {
-          createCreditCard(input: $input) {
-            creditCardOrError {
-              ... on CreditCardMutationSuccess {
-                creditCard {
-                  id
+          if (creditCardOrError.creditCard) {
+            this.setOrderPayment({
+              creditCardId: creditCardOrError.creditCard.id,
+            })
+          } else {
+            this.onMutationError(
+              errors || creditCardOrError.mutationError,
+              creditCardOrError.mutationError &&
+                creditCardOrError.mutationError.message
+            )
+          }
+        },
+        onError: this.onMutationError.bind(this),
+        mutation: graphql`
+          mutation PaymentRouteCreateCreditCardMutation(
+            $input: CreditCardInput!
+          ) {
+            createCreditCard(input: $input) {
+              creditCardOrError {
+                ... on CreditCardMutationSuccess {
+                  creditCard {
+                    id
+                  }
                 }
-              }
-              ... on CreditCardMutationFailure {
-                mutationError {
-                  type
-                  message
-                  detail
+                ... on CreditCardMutationFailure {
+                  mutationError {
+                    type
+                    message
+                    detail
+                  }
                 }
               }
             }
           }
-        }
-      `,
-      variables: {
-        input: { token },
-      },
-    })
+        `,
+        variables: {
+          input: { token },
+        },
+      }
+    )
   }
 
   private setOrderPayment({ creditCardId }) {
-    commitMutation(this.props.relay.environment, {
-      onCompleted: (data, errors) => {
-        this.setState({ isComittingMutation: false })
+    commitMutation<PaymentRouteSetOrderPaymentMutation>(
+      this.props.relay.environment,
+      {
+        onCompleted: (data, errors) => {
+          this.setState({ isComittingMutation: false })
 
-        const {
-          setOrderPayment: { orderOrError },
-        } = data
+          const {
+            setOrderPayment: { orderOrError },
+          } = data
 
-        if (orderOrError.order) {
-          this.props.router.push(`/order2/${this.props.order.id}/review`)
-        } else {
-          this.onMutationError(errors || orderOrError)
-        }
-      },
-      onError: (error?: Error) => {
-        this.setState({ isComittingMutation: false })
-        this.onMutationError.bind(this)(error)
-      },
-      mutation: graphql`
-        mutation PaymentRouteSetOrderPaymentMutation(
-          $input: SetOrderPaymentInput!
-        ) {
-          setOrderPayment(input: $input) {
-            orderOrError {
-              ... on OrderWithMutationSuccess {
-                order {
-                  id
+          if (orderOrError.order) {
+            this.props.router.push(`/order2/${this.props.order.id}/review`)
+          } else {
+            this.onMutationError(errors || orderOrError)
+          }
+        },
+        onError: this.onMutationError.bind(this),
+        mutation: graphql`
+          mutation PaymentRouteSetOrderPaymentMutation(
+            $input: SetOrderPaymentInput!
+          ) {
+            setOrderPayment(input: $input) {
+              orderOrError {
+                ... on OrderWithMutationSuccess {
+                  order {
+                    id
+                  }
                 }
-              }
-              ... on OrderWithMutationFailure {
-                error {
-                  type
-                  code
-                  data
+                ... on OrderWithMutationFailure {
+                  error {
+                    type
+                    code
+                    data
+                  }
                 }
               }
             }
           }
-        }
-      `,
-      variables: {
-        input: {
-          orderId: this.props.order.id,
-          creditCardId,
+        `,
+        variables: {
+          input: {
+            orderId: this.props.order.id,
+            creditCardId,
+          },
         },
-      },
-    })
+      }
+    )
   }
 
   private onMutationError(errors, errorModalMessage?) {
