@@ -1,4 +1,4 @@
-import { StorybooksRouter } from "Artsy/Router"
+import { ClientRouter } from "Artsy/Router/client"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { RouteTab, RouteTabs } from "Styleguide/Components"
@@ -8,7 +8,7 @@ storiesOf("Styleguide/Components", module).add("Tabs (Router)", () => {
   return (
     <React.Fragment>
       <Section title="Route Tabs">
-        <StorybooksRouter
+        <ClientRouter
           initialRoute="/cv"
           routes={[
             {

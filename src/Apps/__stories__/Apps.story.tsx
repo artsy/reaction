@@ -1,5 +1,5 @@
 import { storiesOf } from "@storybook/react"
-import { StorybooksRouter } from "Artsy/Router"
+import { ClientRouter } from "Artsy/Router/client"
 import React from "react"
 import { routes as artistRoutes } from "../Artist/routes"
 import { routes as artworkRoutes } from "../Artwork/routes"
@@ -8,7 +8,7 @@ import { routes as collectRoutes } from "../Collect/routes"
 storiesOf("Apps", module)
   .add("Artwork Page", () => {
     return (
-      <StorybooksRouter
+      <ClientRouter
         routes={artworkRoutes}
         initialRoute="/artwork2/pablo-picasso-david-et-bethsabee"
       />
@@ -16,7 +16,7 @@ storiesOf("Apps", module)
   })
   .add("Artist Page", () => {
     return (
-      <StorybooksRouter
+      <ClientRouter
         routes={artistRoutes}
         initialRoute="/artist/pablo-picasso"
         context={{
@@ -29,7 +29,7 @@ storiesOf("Apps", module)
   })
   .add("Collect Page", () => {
     return (
-      <StorybooksRouter
+      <ClientRouter
         routes={collectRoutes}
         initialRoute="/collect2"
         context={{

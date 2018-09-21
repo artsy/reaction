@@ -15,7 +15,7 @@ interface Props {
   context?: object
 }
 
-export class StorybooksRouter extends React.Component<Props> {
+export class ClientRouter extends React.Component<Props> {
   state = {
     ClientApp: null,
   }
@@ -53,7 +53,7 @@ export class StorybooksRouter extends React.Component<Props> {
         ClientApp,
       })
     } catch (error) {
-      console.error("StorybooksRouter.story", error)
+      console.error("ClientRouter", error)
     }
   }
 

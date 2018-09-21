@@ -1,4 +1,4 @@
-import { StorybooksRouter } from "Artsy/Router/client"
+import { ClientRouter } from "Artsy/Router/client"
 import { mount } from "enzyme"
 import React from "react"
 import { MockBoot } from "Utils/MockBoot"
@@ -8,7 +8,7 @@ describe("RouteTabs", () => {
   const getWrapper = () => {
     return mount(
       <MockBoot>
-        <StorybooksRouter
+        <ClientRouter
           initialRoute="/cv"
           routes={[
             {
@@ -44,7 +44,7 @@ describe("RouteTabs", () => {
     const wrapper = getWrapper()
 
     await wrapper
-      .find("StorybooksRouter")
+      .find("ClientRouter")
       .instance()
       .componentDidMount()
 

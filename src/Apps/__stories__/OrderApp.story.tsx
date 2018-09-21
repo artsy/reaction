@@ -2,7 +2,7 @@ import {
   OrderWithShippingDetails,
   PickupOrder,
 } from "Apps/__test__/Fixtures/Order"
-import { StorybooksRouter } from "Artsy/Router"
+import { ClientRouter } from "Artsy/Router/client"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { routes as orderRoutes } from "../Order/routes"
@@ -24,7 +24,7 @@ const mock = {
 }
 
 const Router = props => (
-  <StorybooksRouter
+  <ClientRouter
     routes={orderRoutes}
     mockResolvers={mock}
     historyOptions={{ useBeforeUnload: true }}
