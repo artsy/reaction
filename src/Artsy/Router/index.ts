@@ -2,12 +2,9 @@ import { HistoryOptions, HistoryProtocol } from "farce"
 import { RouteConfig } from "found"
 import { ContextProps } from "../SystemContext"
 
-// API Exports
-export { buildServerApp } from "./buildServerApp"
-export { buildClientApp } from "./buildClientApp"
+// API Exports for either client or server
 export { PreloadLink, PreloadLinkProps } from "./Components/PreloadLink"
 export { Link } from "found"
-export { StorybooksRouter } from "./Components/StorybooksRouter"
 export { Boot } from "./Components/Boot"
 export { ContextProvider, ContextConsumer } from "Artsy/SystemContext"
 

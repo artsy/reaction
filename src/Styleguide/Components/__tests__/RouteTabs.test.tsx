@@ -1,4 +1,4 @@
-import { StorybooksRouter } from "Artsy/Router"
+import { StorybooksRouter } from "Artsy/Router/client"
 import { mount } from "enzyme"
 import React from "react"
 import { MockBoot } from "Utils/MockBoot"
