@@ -1,3 +1,4 @@
+import { routes_OrderQueryResponse } from "__generated__/routes_OrderQuery.graphql"
 import { Location, RouteConfig, Router } from "found"
 import React from "react"
 import { Title } from "react-head"
@@ -20,10 +21,7 @@ const findRoute = (routes, routeIndices) => {
   return currentRoute
 }
 
-export interface OrderAppProps {
-  me: {
-    name: string
-  }
+export interface OrderAppProps extends routes_OrderQueryResponse {
   params: {
     orderID: string
   }
@@ -80,7 +78,10 @@ export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
   }
 
   render() {
-    const { children } = this.props
+    const { children, location, router, order, params } = this.props
+    if (order.state !== "pending" && !location.pathname.includes("status")) {
+      router.replace(`/order2/${params.orderID}/status`)
+    }
     return (
       <>
         <Title>Checkout | Artsy</Title>
