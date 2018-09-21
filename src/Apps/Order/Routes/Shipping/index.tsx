@@ -241,7 +241,11 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                     </>
                   )}
 
-                  <Collapse open={this.state.shippingOption === "SHIP"}>
+                  <Collapse
+                    open={
+                      !isPickupAvailable || this.state.shippingOption === "SHIP"
+                    }
+                  >
                     <AddressForm
                       defaultValue={address}
                       errors={addressErrors}
