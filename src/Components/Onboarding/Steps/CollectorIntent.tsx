@@ -6,7 +6,7 @@ import {
   CollectorIntentUpdateCollectorProfileMutation,
   Intents,
 } from "__generated__/CollectorIntentUpdateCollectorProfileMutation.graphql"
-import { ContextProps, withContext } from "Artsy/SystemContext"
+import { ContextProps, withContext } from "Artsy"
 import Colors from "../../../Assets/Colors"
 import { MultiButtonState } from "../../Buttons/MultiStateButton"
 import { media } from "../../Helpers"

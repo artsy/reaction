@@ -1,5 +1,5 @@
+import { Boot } from "Artsy"
 import { createEnvironment } from "Artsy/Relay/createEnvironment"
-import { Boot } from "Artsy/Router/Components/Boot"
 import { Hydrator } from "Artsy/Router/Components/Hydrator"
 import queryMiddleware from "farce/lib/queryMiddleware"
 import { Resolver } from "found-relay"

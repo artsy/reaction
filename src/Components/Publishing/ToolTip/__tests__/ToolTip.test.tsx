@@ -1,4 +1,4 @@
-import { ContextProvider } from "Artsy/SystemContext"
+import { ContextProvider } from "Artsy"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import PropTypes from "prop-types"

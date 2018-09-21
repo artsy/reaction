@@ -1,8 +1,7 @@
 import { Save_artwork } from "__generated__/Save_artwork.graphql"
 import { SaveArtworkMutation } from "__generated__/SaveArtworkMutation.graphql"
-import { track } from "Artsy/Analytics"
+import { ContextProps, track, withContext } from "Artsy"
 import * as Schema from "Artsy/Analytics/Schema"
-import * as Artsy from "Artsy/SystemContext"
 import { isNull } from "lodash"
 import React from "react"
 import {
@@ -19,7 +18,7 @@ import Icon from "../Icon"
 const SIZE = 40
 
 export interface Props
-  extends Artsy.ContextProps,
+  extends ContextProps,
     React.HTMLProps<React.ComponentType> {
   artwork: Save_artwork
   style?: any
@@ -210,7 +209,7 @@ export const SaveButton = styled(SaveButtonContainer)`
 `
 
 export default createFragmentContainer(
-  Artsy.withContext(SaveButton),
+  withContext(SaveButton),
   graphql`
     fragment Save_artwork on Artwork {
       __id

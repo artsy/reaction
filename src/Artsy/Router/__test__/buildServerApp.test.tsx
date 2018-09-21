@@ -2,10 +2,10 @@
  * @jest-environment node
  */
 
+import { ContextConsumer } from "Artsy"
 import { render } from "enzyme"
 import React from "react"
 import { Title } from "react-head"
-import { ContextConsumer } from "../"
 import { buildServerApp } from "../buildServerApp"
 
 jest.mock("loadable-components/server", () => ({

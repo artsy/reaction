@@ -1,6 +1,5 @@
 import { Theme, themeProps } from "@artsy/palette"
-import { track } from "Artsy/Analytics"
-import * as Artsy from "Artsy/SystemContext"
+import { ContextProvider, track } from "Artsy"
 import { ResolverUtils, RouteConfig } from "found"
 import React from "react"
 import { HeadProvider } from "react-head"
@@ -44,7 +43,7 @@ export class Boot extends React.Component<BootProps> {
     return (
       <HeadProvider headTags={headTags}>
         <StateProvider>
-          <Artsy.ContextProvider {...contextProps}>
+          <ContextProvider {...contextProps}>
             <ResponsiveProvider
               mediaQueries={themeProps.mediaQueries}
               initialMatchingMediaQueries={props.initialMatchingMediaQueries}
@@ -71,7 +70,7 @@ export class Boot extends React.Component<BootProps> {
                 </GridThemeProvider>
               </Theme>
             </ResponsiveProvider>
-          </Artsy.ContextProvider>
+          </ContextProvider>
         </StateProvider>
       </HeadProvider>
     )

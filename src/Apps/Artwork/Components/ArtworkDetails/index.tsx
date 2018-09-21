@@ -1,6 +1,6 @@
 import { Box } from "@artsy/palette"
 import { ArtworkDetailsQuery } from "__generated__/ArtworkDetailsQuery.graphql"
-import { ContextConsumer } from "Artsy/Router"
+import { ContextConsumer } from "Artsy"
 import Spinner from "Components/Spinner"
 import React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"

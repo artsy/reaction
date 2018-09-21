@@ -1,6 +1,6 @@
+import { MockBoot } from "Artsy"
 import { mount } from "enzyme"
 import React from "react"
-import { MockBoot } from "Utils/MockBoot"
 import { AuctionCard, LargeAuctionCard, SmallAuctionCard } from "../AuctionCard"
 
 describe("AuctionCard", () => {

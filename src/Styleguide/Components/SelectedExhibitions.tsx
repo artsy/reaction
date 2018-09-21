@@ -1,6 +1,6 @@
 import { BorderBox, Box, Flex, Sans } from "@artsy/palette"
 import { SelectedExhibitions_exhibitions } from "__generated__/SelectedExhibitions_exhibitions.graphql"
-import { PreloadLink } from "Artsy/Router"
+import { PreloadLink } from "Artsy"
 import { groupBy, toPairs } from "lodash"
 import React, { SFC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"

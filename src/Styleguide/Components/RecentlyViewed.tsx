@@ -1,7 +1,7 @@
 import { Serif, Spacer } from "@artsy/palette"
 import { RecentlyViewed_me } from "__generated__/RecentlyViewed_me.graphql"
 import { RecentlyViewedQuery } from "__generated__/RecentlyViewedQuery.graphql"
-import { ContextConsumer } from "Artsy/Router"
+import { ContextConsumer } from "Artsy"
 import { FillwidthItem } from "Components/Artwork/FillwidthItem"
 import React from "react"
 import { QueryRenderer } from "react-relay"

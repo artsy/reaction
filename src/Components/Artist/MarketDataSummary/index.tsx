@@ -2,7 +2,7 @@ import React from "react"
 import { graphql, QueryRenderer } from "react-relay"
 
 import { MarketDataSummaryContentsQuery } from "__generated__/MarketDataSummaryContentsQuery.graphql"
-import { ContextProps, withContext } from "Artsy/SystemContext"
+import { ContextProps, withContext } from "Artsy"
 import MarketDataSummary from "./MarketDataSummary"
 
 export interface Props extends ContextProps {

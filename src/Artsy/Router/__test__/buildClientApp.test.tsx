@@ -1,7 +1,7 @@
+import { ContextConsumer } from "Artsy"
+import { buildClientApp } from "Artsy/Router/buildClientApp"
 import { mount } from "enzyme"
 import React from "react"
-import { ContextConsumer } from "../"
-import { buildClientApp } from "../buildClientApp"
 
 describe("buildClientApp", () => {
   it("resolves with a <ClientApp /> component", async () => {

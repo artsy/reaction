@@ -33,7 +33,7 @@ export type Trackables =
  * @example
  *
  *     ```ts
- *     import * as Schema from "Artsy/Analytics/Schema"
+ *     import { Schema } from "Artsy"
  *
  *     @track({ … } as Schema.Old)
  */

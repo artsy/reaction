@@ -2,7 +2,7 @@ import { storiesOf } from "@storybook/react"
 import React from "react"
 import { Contents } from "../Tag"
 
-import { ContextProvider } from "Artsy/SystemContext"
+import { ContextProvider } from "Artsy"
 
 storiesOf("Components/Pages/Tag/Contents", module).add("Butt", () => {
   return (

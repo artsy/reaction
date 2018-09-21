@@ -1,5 +1,5 @@
 import { FilterState } from "Apps/Collect/FilterState"
-import { track } from "Artsy/Analytics/track"
+import { track } from "Artsy"
 import React from "react"
 import { Provider } from "unstated"
 

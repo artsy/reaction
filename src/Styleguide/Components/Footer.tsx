@@ -1,5 +1,5 @@
 import { Flex, Sans, Separator, Serif, space, Spacer } from "@artsy/palette"
-import { ContextConsumer } from "Artsy/Router"
+import { ContextConsumer } from "Artsy"
 import React from "react"
 import styled from "styled-components"
 import { FlexDirectionProps } from "styled-system"

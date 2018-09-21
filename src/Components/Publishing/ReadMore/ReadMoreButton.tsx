@@ -1,5 +1,4 @@
-import { track } from "Artsy/Analytics"
-import * as Schema from "Artsy/Analytics/Schema"
+import { Schema, track } from "Artsy"
 import { unica } from "Assets/Fonts"
 import { once } from "lodash"
 import React from "react"

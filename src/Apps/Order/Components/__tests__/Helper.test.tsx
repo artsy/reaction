@@ -1,4 +1,4 @@
-import { ContextProvider } from "Artsy/Router"
+import { ContextProvider } from "Artsy"
 import { mount } from "enzyme"
 import React from "react"
 import renderer from "react-test-renderer"

@@ -1,5 +1,4 @@
-import { track } from "Artsy/Analytics"
-import * as Schema from "Artsy/Analytics/Schema"
+import { Schema, track } from "Artsy"
 import { isString } from "lodash"
 import React, { Component } from "react"
 import { renderToStaticMarkup } from "react-dom/server"

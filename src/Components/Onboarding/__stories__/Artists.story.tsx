@@ -1,7 +1,7 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
 
-import { ContextProvider } from "Artsy/SystemContext"
+import { ContextProvider } from "Artsy"
 import Artists from "../Steps/Artists"
 
 storiesOf("Onboarding", module).add("Artist Selector", () => {

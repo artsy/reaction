@@ -1,6 +1,5 @@
 import { Sans } from "@artsy/palette"
-import { track } from "Artsy/Analytics"
-import * as Schema from "Artsy/Analytics/Schema"
+import { Schema, track } from "Artsy"
 import React from "react"
 import styled from "styled-components"
 import SlideTransition from "./Animation/SlideTransition"
