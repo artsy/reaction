@@ -192,6 +192,8 @@ class Filter extends Component<Props> {
                             Main Artwork Grid
                           */}
 
+                            <span id="jump--collectArtworkGrid" />
+
                             <Box width={xs ? "100%" : "75%"}>
                               {!hideTopBorder && <Separator mb={2} mt={-1} />}
 
