@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Sections snapshots renders properly 1`] = `
-.c42 {
+.c43 {
   font-family: artsy-icons;
   color: black;
   font-size: 24px;
@@ -15,7 +15,7 @@ exports[`Sections snapshots renders properly 1`] = `
   color: black;
 }
 
-.c37 {
+.c38 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -27,7 +27,7 @@ exports[`Sections snapshots renders properly 1`] = `
   margin-bottom: 20px;
 }
 
-.c38 {
+.c39 {
   display: block;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -35,27 +35,27 @@ exports[`Sections snapshots renders properly 1`] = `
   line-height: 1.1em;
 }
 
-.c38 a {
+.c39 a {
   color: black;
 }
 
-.c39 {
+.c40 {
   margin-left: 20px;
 }
 
-.c40 {
+.c41 {
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
   white-space: nowrap;
 }
 
-.c40 .c41 {
+.c41 .c42 {
   vertical-align: middle;
   margin: 0px;
 }
 
-.c36 {
+.c37 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -363,9 +363,10 @@ exports[`Sections snapshots renders properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 680px;
   margin: auto;
   margin-bottom: 40px;
+  width: 680px;
+  max-width: 100%;
 }
 
 .c3 {
@@ -374,9 +375,10 @@ exports[`Sections snapshots renders properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 780px;
   margin: auto;
   margin-bottom: 40px;
+  width: 780px;
+  max-width: 100%;
 }
 
 .c4 {
@@ -385,9 +387,10 @@ exports[`Sections snapshots renders properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 780px;
   margin: auto;
   margin-bottom: 40px;
+  width: 780px;
+  max-width: 100%;
 }
 
 .c27 {
@@ -396,9 +399,22 @@ exports[`Sections snapshots renders properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 680px;
   margin: auto;
   margin-bottom: 40px;
+  width: 680px;
+  max-width: 100%;
+}
+
+.c36 {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto;
+  margin-bottom: 40px;
+  width: 680px;
+  max-width: 100%;
 }
 
 .c2 {
@@ -605,7 +621,7 @@ exports[`Sections snapshots renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c38 {
+  .c39 {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
@@ -735,9 +751,7 @@ exports[`Sections snapshots renders properly 1`] = `
 
 @media (max-width:900px) {
   .c1 {
-    width: 100%;
     padding: 0 20px;
-    margin: 0 0 40px 0;
   }
 }
 
@@ -749,9 +763,7 @@ exports[`Sections snapshots renders properly 1`] = `
 
 @media (max-width:900px) {
   .c3 {
-    width: 100%;
     padding: 0 20px;
-    margin: 0 0 40px 0;
   }
 }
 
@@ -763,9 +775,7 @@ exports[`Sections snapshots renders properly 1`] = `
 
 @media (max-width:900px) {
   .c4 {
-    width: 100%;
     padding: 0;
-    margin: 0 0 40px 0;
   }
 }
 
@@ -777,9 +787,13 @@ exports[`Sections snapshots renders properly 1`] = `
 
 @media (max-width:900px) {
   .c27 {
-    width: 100%;
     padding: 0;
-    margin: 0 0 40px 0;
+  }
+}
+
+@media (max-width:900px) {
+  .c36 {
+    padding: 0 20px;
   }
 }
 
@@ -866,7 +880,6 @@ exports[`Sections snapshots renders properly 1`] = `
 >
   <div
     className="c1"
-    type="text"
   >
     <div
       className="article__text-section c2"
@@ -883,7 +896,6 @@ exports[`Sections snapshots renders properly 1`] = `
   </div>
   <div
     className="c1"
-    type="text"
   >
     <div
       className="article__text-section c2"
@@ -900,7 +912,6 @@ exports[`Sections snapshots renders properly 1`] = `
   </div>
   <div
     className="c3"
-    type="text"
   >
     <div
       className="article__text-section c2"
@@ -917,7 +928,6 @@ exports[`Sections snapshots renders properly 1`] = `
   </div>
   <div
     className="c1"
-    type="text"
   >
     <div
       className="article__text-section c2"
@@ -934,7 +944,6 @@ exports[`Sections snapshots renders properly 1`] = `
   </div>
   <div
     className="c4"
-    type="image_collection"
   >
     <div
       className="c5"
@@ -1273,7 +1282,6 @@ exports[`Sections snapshots renders properly 1`] = `
   </div>
   <div
     className="c1"
-    type="text"
   >
     <div
       className="article__text-section c2"
@@ -1290,7 +1298,6 @@ exports[`Sections snapshots renders properly 1`] = `
   </div>
   <div
     className="c4"
-    type="image_collection"
   >
     <div
       className="c5"
@@ -1566,7 +1573,6 @@ exports[`Sections snapshots renders properly 1`] = `
   </div>
   <div
     className="c1"
-    type="text"
   >
     <div
       className="article__text-section c2"
@@ -1583,7 +1589,6 @@ exports[`Sections snapshots renders properly 1`] = `
   </div>
   <div
     className="c4"
-    type="image_collection"
   >
     <div
       className="c5"
@@ -1680,7 +1685,6 @@ exports[`Sections snapshots renders properly 1`] = `
   </div>
   <div
     className="c1"
-    type="text"
   >
     <div
       className="article__text-section c2"
@@ -1696,8 +1700,7 @@ exports[`Sections snapshots renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c4"
-    type="embed"
+    className="c3"
   >
     <iframe
       className="c24"
@@ -1709,7 +1712,6 @@ exports[`Sections snapshots renders properly 1`] = `
   </div>
   <div
     className="c1"
-    type="text"
   >
     <div
       className="article__text-section c2"
@@ -1726,7 +1728,6 @@ exports[`Sections snapshots renders properly 1`] = `
   </div>
   <div
     className="c4"
-    type="image_collection"
   >
     <div
       className="c5"
@@ -2002,7 +2003,6 @@ exports[`Sections snapshots renders properly 1`] = `
   </div>
   <div
     className="c1"
-    type="text"
   >
     <div
       className="article__text-section c2"
@@ -2019,7 +2019,6 @@ exports[`Sections snapshots renders properly 1`] = `
   </div>
   <div
     className="c27"
-    type="image_set"
   >
     <div
       style={
@@ -2088,7 +2087,6 @@ exports[`Sections snapshots renders properly 1`] = `
   </div>
   <div
     className="c1"
-    type="text"
   >
     <div
       className="article__text-section c2"
@@ -2105,7 +2103,6 @@ exports[`Sections snapshots renders properly 1`] = `
   </div>
   <div
     className="c27"
-    type="image_collection"
   >
     <div
       className="c5"
@@ -2202,7 +2199,6 @@ exports[`Sections snapshots renders properly 1`] = `
   </div>
   <div
     className="c1"
-    type="text"
   >
     <div
       className="article__text-section c2"
@@ -2218,17 +2214,16 @@ exports[`Sections snapshots renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c1"
-    type="author"
+    className="c36"
   >
     <div
-      className="c36"
+      className="c37"
     >
       <div
-        className="c37"
+        className="c38"
       >
         <div
-          className="c38"
+          className="c39"
         >
           <span>
             <a
@@ -2239,14 +2234,14 @@ exports[`Sections snapshots renders properly 1`] = `
              is a well-known author and a long-time baker.
           </span>
           <span
-            className="c39"
+            className="c40"
           >
             <a
-              className="c40"
+              className="c41"
               href="http://twitter.com/caseylesser"
             >
               <div
-                className="c41 c42"
+                className="c42 c43"
               >
                 
               </div>
