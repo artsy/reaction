@@ -12,6 +12,8 @@ const MIN_EXHIBITIONS = 2
 export type Year = string
 
 export interface SelectedExhibitionsProps {
+  border?: boolean
+  collapsible?: boolean
   exhibitions: SelectedExhibitions_exhibitions
   artistID?: string
   totalExhibitions?: number
@@ -113,23 +115,33 @@ const FullExhibitionList: SFC<FullExhibitionListProps> = props => (
 
 export interface SelectedExhibitionsContainerProps
   extends SelectedExhibitionsProps {
+  border?: boolean
   collapsible?: boolean
 }
 
 export class SelectedExhibitionsContainer extends React.Component<
   SelectedExhibitionsContainerProps
 > {
+  static defaultProps = {
+    border: true,
+  }
+
   state = {
     expanded: false,
   }
+
   render() {
     if (
       !this.props.exhibitions.length ||
       this.props.totalExhibitions < MIN_EXHIBITIONS
-    )
+    ) {
       return null
+    }
+
+    const Container = this.props.border ? BorderBox : Box
+
     return (
-      <BorderBox width="100%">
+      <Container>
         <Flex flexDirection="column">
           <ExhibitionsHeadline
             expanded={this.state.expanded}
@@ -148,7 +160,7 @@ export class SelectedExhibitionsContainer extends React.Component<
             />
           )}
         </Flex>
-      </BorderBox>
+      </Container>
     )
   }
 }
