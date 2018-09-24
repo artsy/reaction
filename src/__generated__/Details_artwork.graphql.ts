@@ -24,6 +24,18 @@ export type Details_artwork = {
         readonly is_live_open: boolean | null;
         readonly is_open: boolean | null;
         readonly is_closed: boolean | null;
+        readonly display_timely_at: string | null;
+    }) | null;
+    readonly sale_artwork: ({
+        readonly highest_bid: ({
+            readonly display: string | null;
+        }) | null;
+        readonly opening_bid: ({
+            readonly display: string | null;
+        }) | null;
+        readonly counts: ({
+            readonly bidder_positions: any | null;
+        }) | null;
     }) | null;
     readonly " $refType": Details_artwork$ref;
 };
@@ -31,14 +43,7 @@ export type Details_artwork = {
 
 
 const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "href",
-  "args": null,
-  "storageKey": null
-},
-v1 = [
+var v0 = [
   {
     "kind": "Literal",
     "name": "shallow",
@@ -46,10 +51,17 @@ v1 = [
     "type": "Boolean"
   }
 ],
-v2 = {
+v1 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__id",
+  "args": null,
+  "storageKey": null
+},
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "href",
   "args": null,
   "storageKey": null
 },
@@ -57,6 +69,13 @@ v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "name",
+  "args": null,
+  "storageKey": null
+},
+v4 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "display",
   "args": null,
   "storageKey": null
 };
@@ -67,14 +86,21 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    v0,
     {
-      "kind": "ScalarField",
+      "kind": "LinkedField",
       "alias": null,
-      "name": "title",
-      "args": null,
-      "storageKey": null
+      "name": "artists",
+      "storageKey": "artists(shallow:true)",
+      "args": v0,
+      "concreteType": "Artist",
+      "plural": true,
+      "selections": [
+        v1,
+        v2,
+        v3
+      ]
     },
+    v2,
     {
       "kind": "ScalarField",
       "alias": null,
@@ -97,18 +123,11 @@ return {
       "storageKey": null
     },
     {
-      "kind": "LinkedField",
+      "kind": "ScalarField",
       "alias": null,
-      "name": "artists",
-      "storageKey": "artists(shallow:true)",
-      "args": v1,
-      "concreteType": "Artist",
-      "plural": true,
-      "selections": [
-        v2,
-        v0,
-        v3
-      ]
+      "name": "title",
+      "args": null,
+      "storageKey": null
     },
     {
       "kind": "ScalarField",
@@ -122,13 +141,13 @@ return {
       "alias": null,
       "name": "partner",
       "storageKey": "partner(shallow:true)",
-      "args": v1,
+      "args": v0,
       "concreteType": "Partner",
       "plural": false,
       "selections": [
         v3,
-        v0,
-        v2
+        v2,
+        v1
       ]
     },
     {
@@ -168,12 +187,80 @@ return {
           "args": null,
           "storageKey": null
         },
-        v2
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "display_timely_at",
+          "args": null,
+          "storageKey": null
+        },
+        v1
       ]
     },
-    v2
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "sale_artwork",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "SaleArtwork",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "highest_bid",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "SaleArtworkHighestBid",
+          "plural": false,
+          "selections": [
+            v4,
+            {
+              "kind": "ScalarField",
+              "alias": "__id",
+              "name": "id",
+              "args": null,
+              "storageKey": null
+            }
+          ]
+        },
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "opening_bid",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "SaleArtworkOpeningBid",
+          "plural": false,
+          "selections": [
+            v4
+          ]
+        },
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "counts",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "SaleArtworkCounts",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "bidder_positions",
+              "args": null,
+              "storageKey": null
+            }
+          ]
+        },
+        v1
+      ]
+    },
+    v1
   ]
 };
 })();
-(node as any).hash = '46676bc3e081aefe4bcdb6ea73308dc0';
+(node as any).hash = '72bf29102d0892c31bd30c6cc7be5e5f';
 export default node;

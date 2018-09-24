@@ -1,4 +1,5 @@
 import { Details_artwork } from "__generated__/Details_artwork.graphql"
+import { ContextConsumer } from "Artsy/Router"
 import React from "react"
 // @ts-ignore
 import { ComponentRef, createFragmentContainer, graphql } from "react-relay"
@@ -89,14 +90,69 @@ export class Details extends React.Component<Props, null> {
     }
   }
 
-  render() {
+  saleInfoLine() {
+    const { artwork } = this.props
+    const { sale } = artwork
+    const inClosedAuction = sale && sale.is_auction && sale.is_closed
+
     return (
       <div>
-        {this.artistLine()}
-        {this.titleLine()}
-        {this.partnerLine()}
-        {this.props.showSaleLine && this.saleLine()}
+        <div>
+          {inClosedAuction ? "Bidding closed" : this.saleMessageOrBidInfo()}
+          {!inClosedAuction && this.auctionInfo()}
+        </div>
       </div>
+    )
+  }
+
+  saleMessageOrBidInfo() {
+    const { artwork } = this.props
+    const { sale } = artwork
+    const inRunningAuction = sale && sale.is_auction && !sale.is_closed
+
+    if (inRunningAuction) {
+      if (sale && sale.is_open) {
+        const sa = artwork.sale_artwork
+        const bids = sa && sa.counts && sa.counts.bidder_positions
+        if (bids && bids > 0) {
+          return sa.highest_bid.display
+        } else {
+          return sa.opening_bid.display
+        }
+      }
+    } else {
+      return artwork.sale_message
+    }
+  }
+
+  auctionInfo() {
+    const { artwork } = this.props
+    const { sale } = artwork
+
+    if (sale) {
+      return `(${sale.display_timely_at})`
+    }
+  }
+
+  render() {
+    return (
+      <ContextConsumer>
+        {({ user }) => {
+          const enableLabFeature =
+            user &&
+            user.lab_features &&
+            user.lab_features.includes("New Artwork Brick")
+          return (
+            <div>
+              {enableLabFeature && this.saleInfoLine()}
+              {this.artistLine()}
+              {this.titleLine()}
+              {this.partnerLine()}
+              {!enableLabFeature && this.props.showSaleLine && this.saleLine()}
+            </div>
+          )
+        }}
+      </ContextConsumer>
     )
   }
 }
@@ -125,6 +181,18 @@ export default createFragmentContainer<Props>(
         is_live_open
         is_open
         is_closed
+        display_timely_at
+      }
+      sale_artwork {
+        highest_bid {
+          display
+        }
+        opening_bid {
+          display
+        }
+        counts {
+          bidder_positions
+        }
       }
     }
   `

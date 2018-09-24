@@ -14,6 +14,7 @@ export type ArtworkFilter_artist = {
         readonly for_sale_artworks: any | null;
         readonly ecommerce_artworks: any | null;
         readonly auction_artworks: any | null;
+        readonly artworks: any | null;
     }) | null;
     readonly filtered_artworks: ({
         readonly aggregations: ReadonlyArray<({
@@ -158,6 +159,13 @@ return {
           "name": "auction_artworks",
           "args": null,
           "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "artworks",
+          "args": null,
+          "storageKey": null
         }
       ]
     },
@@ -281,5 +289,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'c96a4e1b0678cad8122b6b379623afa6';
+(node as any).hash = 'ec966f68cdcc2c99539ca4d3148ce271';
 export default node;

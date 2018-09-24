@@ -43,16 +43,12 @@ class Filter extends Component<Props> {
       hasForSaleArtworks: artist.counts.for_sale_artworks > 0,
       hasBuyNowArtworks: artist.counts.ecommerce_artworks > 0,
       hasAuctionArtworks: artist.counts.auction_artworks > 0,
+      hasArtworks: artist.counts.artworks > 0,
     }
   }
 
   get showZeroState() {
-    const showZeroState =
-      !this.existy.hasAuctionArtworks &&
-      !this.existy.hasBuyNowArtworks &&
-      !this.existy.hasForSaleArtworks
-
-    return showZeroState
+    return !this.existy.hasArtworks
   }
 
   renderFilters({ user, filters, mediator, hideTopBorder }) {
@@ -404,6 +400,7 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(
         for_sale_artworks
         ecommerce_artworks
         auction_artworks
+        artworks
       }
       filtered_artworks(aggregations: $aggregations, size: 0) {
         aggregations {

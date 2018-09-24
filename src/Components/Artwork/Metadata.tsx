@@ -1,4 +1,5 @@
 import { Metadata_artwork } from "__generated__/Metadata_artwork.graphql"
+import { ContextConsumer } from "Artsy/Router"
 import colors from "Assets/Colors"
 import { garamond } from "Assets/Fonts"
 import React from "react"
@@ -25,10 +26,21 @@ export class MetadataContainer extends React.Component<MetadataProps> {
     const ContactBlock = useRelay ? RelayContact : Contact
 
     return (
-      <div className={className}>
-        <DetailsBlock showSaleLine={extended} artwork={artwork} />
-        {extended && <ContactBlock artwork={artwork} />}
-      </div>
+      <ContextConsumer>
+        {({ user }) => {
+          const enableLabFeature =
+            user &&
+            user.lab_features &&
+            user.lab_features.includes("New Artwork Brick")
+          return (
+            <div className={className}>
+              <DetailsBlock showSaleLine={extended} artwork={artwork} />
+              {!enableLabFeature &&
+                extended && <ContactBlock artwork={artwork} />}
+            </div>
+          )
+        }}
+      </ContextConsumer>
     )
   }
 }
