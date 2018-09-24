@@ -189,6 +189,7 @@ export class FilterState extends Container<State> {
       ])
       filterState = omitBy(filterState, isNil)
 
+      mediator.trigger("collect:filter:changed", filterState)
       this.tracking.trackEvent({
         action: "Commercial filter: params changed",
         current: omit(this.state, ["selectedFilterCount", "showActionSheet"]),
