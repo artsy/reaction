@@ -1,9 +1,9 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
 
-import { Col, Row } from "Styleguide/Elements/Grid"
 import icons, { IconName } from "../../Assets/Icons"
 import CircleIcon from "../CircleIcon"
+import { Col, Row } from "../Grid"
 import Icon from "../Icon"
 import Title from "../Title"
 
