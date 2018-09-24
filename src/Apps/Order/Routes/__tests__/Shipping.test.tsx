@@ -38,7 +38,7 @@ const fillAddressForm = (component: any, address: Address) => {
     value: address.region,
   })
   fillIn(component, { title: "Postal code", value: address.postalCode })
-  fillIn(component, { title: "Phone", value: address.phoneNumber })
+  fillIn(component, { title: "Phone number", value: address.phoneNumber })
   fillCountrySelect(component, address.country)
 }
 

@@ -221,18 +221,18 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                         defaultValue={this.state.shippingOption}
                       >
                         <BorderedRadio value="SHIP">
-                          Provide shipping address
+                          Add shipping address
                         </BorderedRadio>
 
                         <BorderedRadio value="PICKUP">
-                          Arrange for pickup
+                          Arrange for pickup (free)
                           <Collapse
                             open={this.state.shippingOption === "PICKUP"}
                           >
                             <Sans size="2" color="black60">
-                              After you place your order, you’ll be appointed an
-                              Artsy Specialist within 2 business days to handle
-                              pickup logistics.
+                              After your order is confirmed, a specialist will
+                              contact you within 2 business days to coordinate
+                              pickup.
                             </Sans>
                           </Collapse>
                         </BorderedRadio>

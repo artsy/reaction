@@ -156,7 +156,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
                   <Join separator={<Spacer mb={3} />}>
                     <Flex flexDirection="column">
                       <Serif mb={1} size="3t" color="black100" lineHeight={18}>
-                        Credit Card
+                        Credit card
                       </Serif>
                       <CreditCardInput
                         error={stripeError}
@@ -171,7 +171,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
                         selected={this.state.hideBillingAddress}
                         onSelect={this.handleChangeHideBillingAddress}
                       >
-                        Billing and shipping addresses are the same
+                        Use shipping address.
                       </Checkbox>
                     )}
                     <Collapse open={this.needsAddress()}>

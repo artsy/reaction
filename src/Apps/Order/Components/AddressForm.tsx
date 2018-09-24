@@ -159,8 +159,8 @@ export class AddressForm extends React.Component<
           <Flex flexDirection="column">
             <Input
               id="AddressForm_phoneNumber"
-              title="Phone"
-              description="For shipping purposes only"
+              title="Phone number"
+              description="Required for shipping logistics"
               placeholder="Add phone"
               defaultValue={this.props.defaultValue.phoneNumber}
               onChange={this.changeEventHandler("phoneNumber")}

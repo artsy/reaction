@@ -48,6 +48,7 @@ storiesOf("Apps/Order Page/Payment", module)
           ...PickupOrder,
           id,
           ...others,
+          state: "PENDING",
         }),
       }}
     />
