@@ -5,7 +5,7 @@ import { CollectAppFragmentContainer as CollectApp } from "./CollectApp"
 
 export const routes = [
   {
-    path: "/collect2/:medium?",
+    path: "/collect/:medium?",
     Component: CollectApp,
     query: graphql`
       query routes_CollectAppQuery(
