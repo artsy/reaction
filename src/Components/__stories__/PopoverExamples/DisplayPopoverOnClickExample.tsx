@@ -1,8 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 
-import { Col, Row } from "Styleguide/Elements/Grid"
 import Button from "../../Buttons/Default"
+import { Col, Row } from "../../Grid"
 import { OverlayTrigger } from "../../OverlayTrigger"
 import { Popover } from "../../Popover"
 

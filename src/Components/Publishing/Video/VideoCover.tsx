@@ -8,8 +8,6 @@ import { IconVideoPlay } from "../Icon/IconVideoPlay"
 import { MaxRow } from "./Shared"
 import { VideoInfoBlock } from "./VideoInfoBlock"
 
-// TODO: migrate to using Styleguide/Col component
-const _Col: any = Col
 interface Props {
   article: any
   description?: string
@@ -60,9 +58,9 @@ export class VideoCover extends Component<Props, null> {
         <VideoCoverOverlay />
         <VideoCoverInfo>
           <VideoCoverInfoRow>
-            <_Col xs={2} sm={1} onClick={this.onPlayClick}>
+            <Col xs={2} sm={1} onClick={this.onPlayClick}>
               <IconVideoPlay color="white" />
-            </_Col>
+            </Col>
             <Col xs={10} sm={6}>
               <VideoInfoBlock
                 media={media}
