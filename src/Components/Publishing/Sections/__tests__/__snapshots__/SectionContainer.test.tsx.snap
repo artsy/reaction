@@ -1,15 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders column_width properly 1`] = `
+exports[`SectionContainer Snapshots renders column_width properly 1`] = `
 .c0 {
   box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  margin: auto;
+  margin-bottom: 40px;
   width: 680px;
-  margin: auto;
-  margin-bottom: 40px;
+  max-width: 100%;
 }
 
 .c1 {
@@ -198,17 +195,9 @@ exports[`renders column_width properly 1`] = `
   text-transform: none;
 }
 
-@media (max-width:1280px) {
-  .c0 {
-    width: 680px;
-  }
-}
-
 @media (max-width:900px) {
   .c0 {
-    width: 100%;
-    padding: 0;
-    margin: 0 0 40px 0;
+    padding: 0 20px;
   }
 }
 
@@ -274,7 +263,6 @@ exports[`renders column_width properly 1`] = `
 
 <div
   className="c0"
-  type="text"
 >
   <div
     className="article__text-section c1"
@@ -291,16 +279,13 @@ exports[`renders column_width properly 1`] = `
 </div>
 `;
 
-exports[`renders fillwidth properly 1`] = `
+exports[`SectionContainer Snapshots renders fillwidth properly 1`] = `
 .c0 {
   box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
   margin: auto;
   margin-bottom: 40px;
+  width: 680px;
+  max-width: 100%;
 }
 
 .c1 {
@@ -489,17 +474,9 @@ exports[`renders fillwidth properly 1`] = `
   text-transform: none;
 }
 
-@media (max-width:1280px) {
-  .c0 {
-    width: 100%;
-  }
-}
-
 @media (max-width:900px) {
   .c0 {
-    width: 100%;
-    padding: 0;
-    margin: 0 0 40px 0;
+    padding: 0 20px;
   }
 }
 
@@ -565,7 +542,6 @@ exports[`renders fillwidth properly 1`] = `
 
 <div
   className="c0"
-  type="text"
 >
   <div
     className="article__text-section c1"
@@ -582,16 +558,13 @@ exports[`renders fillwidth properly 1`] = `
 </div>
 `;
 
-exports[`renders overflow_fillwidth properly 1`] = `
+exports[`SectionContainer Snapshots renders overflow_fillwidth properly 1`] = `
 .c0 {
   box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 780px;
   margin: auto;
   margin-bottom: 40px;
+  width: 680px;
+  max-width: 100%;
 }
 
 .c1 {
@@ -780,17 +753,9 @@ exports[`renders overflow_fillwidth properly 1`] = `
   text-transform: none;
 }
 
-@media (max-width:1280px) {
-  .c0 {
-    width: 780px;
-  }
-}
-
 @media (max-width:900px) {
   .c0 {
-    width: 100%;
-    padding: 0;
-    margin: 0 0 40px 0;
+    padding: 0 20px;
   }
 }
 
@@ -856,7 +821,6 @@ exports[`renders overflow_fillwidth properly 1`] = `
 
 <div
   className="c0"
-  type="text"
 >
   <div
     className="article__text-section c1"

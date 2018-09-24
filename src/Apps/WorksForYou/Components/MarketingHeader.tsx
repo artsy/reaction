@@ -14,10 +14,12 @@ import {
 } from "@artsy/palette"
 
 const VIDEO_URL = `${sd.FORCE_CLOUDFRONT_URL}/videos/9172018-bn-banner-xl.mp4`
+const COLLECT_URL =
+  "https://artsy.net/collect?split_test[new_collect_page]=new&acquireable=true"
 
 export const MarketingHeader: SFC = () => {
   return (
-    <>
+    <Container onClick={() => (window.location.href = COLLECT_URL)}>
       <BorderBox
         width="100%"
         height="220px"
@@ -44,7 +46,7 @@ export const MarketingHeader: SFC = () => {
         <Button
           onClick={() =>
             // FIXME: Redirect to collect once page route has been renamed.
-            (window.location.href = "http://www.artsy.net/collect2")
+            (window.location.href = COLLECT_URL)
           }
         >
           Browse works
@@ -54,9 +56,13 @@ export const MarketingHeader: SFC = () => {
       <Spacer mb={5} />
 
       <Separator />
-    </>
+    </Container>
   )
 }
+
+const Container = styled.div`
+  cursor: pointer;
+`
 
 const Video = styled.video`
   left: 0;

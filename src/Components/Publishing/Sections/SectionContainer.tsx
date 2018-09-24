@@ -1,68 +1,75 @@
-import React from "react"
-import styled, { StyledFunction } from "styled-components"
+import styled from "styled-components"
 import { pMedia } from "../../Helpers"
-import { ArticleLayout, SectionLayout } from "../Typings"
+import { ArticleLayout, SectionData } from "../Typings"
 
-interface SectionContainerProps extends React.HTMLProps<HTMLDivElement> {
-  layout?: SectionLayout
+const BlockquoteWidth = "900px"
+const ColumnWidth = "680px"
+const ColumnWidthClassic = "580px"
+const Fillwidth = "100%"
+const OverflowWidth = "780px"
+const OverflowWidthClassic = "1100px"
+
+export const SectionContainer = styled.div.attrs<{
+  section?: SectionData
   articleLayout?: ArticleLayout
-  type?: string
-}
-
-const Div: StyledFunction<SectionContainerProps> = styled.div
-
-const chooseWidth = (layout, articleLayout, media = null) => {
-  if (layout) {
-    // Standard Desktop
-    if (media && media === "lg" && articleLayout === "standard") {
-      return "680px"
-    }
-
-    // Blockquote
-    if (
-      layout === "blockquote" &&
-      ["feature", "standard"].includes(articleLayout)
-    ) {
-      const sectionWidth = articleLayout === "feature" ? "900px" : "780px"
-      return sectionWidth
-
-      // Overflow Blockquote
-    } else if (layout === "overflow_fillwidth" || layout === "blockquote") {
-      return "780px"
-
-      // Fillwidth
-    } else if (layout === "fillwidth") {
-      return "100%"
-    }
-  }
-  return "680px"
-}
-
-const chooseMobilePadding = type => {
-  switch (type) {
-    case "author":
-    case "blockquote":
-    case "text":
-    case "image_set":
-    case "mini": // imageset layout
-      return "0 20px"
-    default:
-      return "0"
-  }
-}
-
-export const SectionContainer = Div`
+}>({})`
   box-sizing: border-box;
-  display: flex;
-  width: ${props => chooseWidth(props.layout, props.articleLayout)};
   margin: auto;
   margin-bottom: 40px;
+  width: ${props => getSectionWidth(props.section, props.articleLayout)};
+  max-width: 100%;
+
   ${props => pMedia.xl`
-    width: ${chooseWidth(props.layout, props.articleLayout, "lg")};
-  `}
-  ${props => pMedia.md`
-    width: 100%;
-    padding: ${chooseMobilePadding(props.layout || props.type)};
-    margin: 0 0 40px 0;
-  `}
+    ${props.articleLayout === "standard" &&
+      `
+      width: ${ColumnWidth}
+    `}
+  `} ${props => pMedia.md`
+    padding: ${getSectionMobilePadding(props.section)};
+  `};
 `
+
+export const getSectionWidth = (
+  section?: SectionData,
+  articleLayout?: ArticleLayout
+) => {
+  const layout = (section && section.layout) || "column_width"
+  const maybeOverflow =
+    layout === "overflow_fillwidth" ? OverflowWidth : ColumnWidth
+  const isText = section && section.type === "text"
+  const isBlockquote = isText && section.body.includes("<blockquote>")
+
+  switch (articleLayout) {
+    case "standard": {
+      if (isBlockquote) {
+        return OverflowWidth
+      } else {
+        return maybeOverflow
+      }
+    }
+    case "feature": {
+      if (isBlockquote) {
+        return BlockquoteWidth
+      } else if (layout === "fillwidth") {
+        return Fillwidth
+      } else {
+        return maybeOverflow
+      }
+    }
+    case "classic": {
+      return layout === "overflow_fillwidth"
+        ? OverflowWidthClassic
+        : ColumnWidthClassic
+    }
+    default:
+      return ColumnWidth
+  }
+}
+
+export const getSectionMobilePadding = (section?: SectionData) => {
+  const type = section && section.type
+  const isFillWidth = ["video", "image_collection", "image_set"].includes(type)
+  const isMiniImageSet = type === "image_set" && section.layout === "mini"
+
+  return !isFillWidth || isMiniImageSet ? "0 20px" : 0
+}
