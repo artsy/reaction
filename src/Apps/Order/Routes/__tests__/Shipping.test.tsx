@@ -12,6 +12,8 @@ import { ErrorModal } from "../../../../Components/Modal/ErrorModal"
 import { Address, AddressForm } from "../../Components/AddressForm"
 import {
   settingOrderShipmentFailure,
+  settingOrderShipmentMissingCountryFailure,
+  settingOrderShipmentMissingRegionFailure,
   settingOrderShipmentSuccess,
 } from "../__fixtures__/MutationResults"
 import { ShippingProps, ShippingRoute } from "../Shipping"
@@ -179,6 +181,44 @@ describe("Shipping", () => {
       )
       component.find("Button").simulate("click")
       expect(component.find(ErrorModal).props().show).toBe(true)
+
+      component.find(ModalButton).simulate("click")
+      expect(component.find(ErrorModal).props().show).toBe(false)
+    })
+
+    it("shows a validation error modal when there is a missing_country error from the server", () => {
+      const component = getWrapper(testProps)
+      expect(component.find(ErrorModal).props().show).toBe(false)
+      const mockCommitMutation = commitMutation as jest.Mock<any>
+      mockCommitMutation.mockImplementationOnce((_, { onCompleted }) =>
+        onCompleted(settingOrderShipmentMissingCountryFailure)
+      )
+      component.find("Button").simulate("click")
+      const errorComponent = component.find(ErrorModal)
+      expect(errorComponent.props().show).toBe(true)
+      expect(errorComponent.text()).toContain("Invalid address")
+      expect(errorComponent.text()).toContain(
+        "There was an error processing your address. Please review and try again."
+      )
+
+      component.find(ModalButton).simulate("click")
+      expect(component.find(ErrorModal).props().show).toBe(false)
+    })
+
+    it("shows a validation error modal when there is a missing_region error from the server", () => {
+      const component = getWrapper(testProps)
+      expect(component.find(ErrorModal).props().show).toBe(false)
+      const mockCommitMutation = commitMutation as jest.Mock<any>
+      mockCommitMutation.mockImplementationOnce((_, { onCompleted }) =>
+        onCompleted(settingOrderShipmentMissingRegionFailure)
+      )
+      component.find("Button").simulate("click")
+      const errorComponent = component.find(ErrorModal)
+      expect(errorComponent.props().show).toBe(true)
+      expect(errorComponent.text()).toContain("Invalid address")
+      expect(errorComponent.text()).toContain(
+        "There was an error processing your address. Please review and try again."
+      )
 
       component.find(ModalButton).simulate("click")
       expect(component.find(ErrorModal).props().show).toBe(false)

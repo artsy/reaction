@@ -52,6 +52,8 @@ export interface ShippingState {
   addressErrors: AddressErrors
   isCommittingMutation: boolean
   isErrorModalOpen: boolean
+  errorModalTitle: string
+  errorModalMessage: string
 }
 
 export class ShippingRoute extends Component<ShippingProps, ShippingState> {
@@ -63,6 +65,8 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     isErrorModalOpen: false,
     address: this.startingAddress,
     addressErrors: {},
+    errorModalTitle: null,
+    errorModalMessage: null,
   }
 
   get startingAddress() {
@@ -84,7 +88,10 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
         const errors = this.validateAddress(this.state.address)
 
         if (Object.keys(errors).filter(key => errors[key]).length > 0) {
-          this.setState({ isCommittingMutation: false, addressErrors: errors })
+          this.setState({
+            isCommittingMutation: false,
+            addressErrors: errors,
+          })
           return
         }
       }
@@ -129,18 +136,38 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
               } = data
 
               if (orderOrError.error) {
-                this.onError(orderOrError.error)
+                const errorCode = orderOrError.error.code
+                if (
+                  errorCode &&
+                  (errorCode === "missing_region" ||
+                    errorCode === "missing_country" ||
+                    errorCode === "missing_postal_code")
+                ) {
+                  this.onMutationError(
+                    orderOrError.error,
+                    "Invalid address",
+                    "There was an error processing your address. Please review and try again."
+                  )
+                } else {
+                  this.onMutationError(orderOrError.error)
+                }
               } else {
                 this.props.router.push(`/order2/${this.props.order.id}/payment`)
               }
             },
-            onError: error => {
-              this.setState({ isCommittingMutation: false })
-              this.onError(error)
-            },
+            onError: this.onMutationError.bind(this),
           }
         )
       }
+    })
+  }
+
+  onMutationError(errors, errorModalTitle?, errorModalMessage?) {
+    this.setState({
+      isCommittingMutation: false,
+      isErrorModalOpen: true,
+      errorModalTitle,
+      errorModalMessage,
     })
   }
 
@@ -163,11 +190,6 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
       postalCode: validatePresence(postalCode),
       phoneNumber: validatePresence(phoneNumber),
     }
-  }
-
-  onError = error => {
-    console.error("Order/Shipping/index.tsx", error)
-    this.setState({ isCommittingMutation: false, isErrorModalOpen: true })
   }
 
   onCloseModal = () => {
@@ -293,6 +315,8 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
         <ErrorModal
           onClose={this.onCloseModal}
           show={this.state.isErrorModalOpen}
+          detailText={this.state.errorModalMessage}
+          headerText={this.state.errorModalTitle}
         />
       </>
     )
