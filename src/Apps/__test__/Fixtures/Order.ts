@@ -36,6 +36,17 @@ export const UntouchedOrder = {
               },
             },
           },
+          fulfillments: {
+            edges: [
+              {
+                node: {
+                  courier: "UPS",
+                  trackingId: "AP234345634",
+                  estimatedDelivery: "Friday, August 6",
+                },
+              },
+            ],
+          },
         },
       },
     ],
