@@ -11,7 +11,7 @@ import { ShippingAddressFragmentContainer as ShippingAddress } from "./ShippingA
  * the user that they'll be assigned an artsy specialist as it doesn't make
  * sense in that context
  */
-const hidePickupCopy = state => state === "FULFILLED" || state === "CANCELED"
+const showPickupCopy = state => state !== "FULFILLED" && state !== "CANCELED"
 
 export const ShippingAndPaymentSummary = ({
   order: { state, requestedFulfillment, lineItems, creditCard },
@@ -31,9 +31,9 @@ export const ShippingAndPaymentSummary = ({
             <>Pick up ({lineItems.edges[0].node.artwork.shippingOrigin})</>
           }
           /* Fixes spacing issues with title when no pickup description copy is present */
-          mb={hidePickupCopy(state) ? -1 : undefined}
+          mb={showPickupCopy(state) ? undefined : -1}
         >
-          {!hidePickupCopy(state) && (
+          {showPickupCopy(state) && (
             <Serif size="3t">
               You’ll be appointed an Artsy specialist within 2 business days to
               handle pickup logistics.
