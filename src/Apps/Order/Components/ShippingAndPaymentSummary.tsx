@@ -30,7 +30,7 @@ export const ShippingAndPaymentSummary = ({
           title={
             <>Pick up ({lineItems.edges[0].node.artwork.shippingOrigin})</>
           }
-          /* Fixes spacing issues when no copy present for body*/
+          /* Fixes spacing issues with title when no pickup description copy is present */
           mb={hidePickupCopy(state) ? -1 : undefined}
         >
           {!hidePickupCopy(state) && (
