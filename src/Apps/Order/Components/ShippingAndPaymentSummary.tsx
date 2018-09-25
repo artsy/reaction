@@ -6,8 +6,10 @@ import { StepSummaryItem } from "Styleguide/Components/StepSummaryItem"
 import { CreditCardDetails } from "./CreditCardDetails"
 import { ShippingAddressFragmentContainer as ShippingAddress } from "./ShippingAddress"
 
+const orderFinished = state => state === "FULFILLED" || state === "CANCELED"
+
 export const ShippingAndPaymentSummary = ({
-  order: { requestedFulfillment, lineItems, creditCard },
+  order: { state, requestedFulfillment, lineItems, creditCard },
   ...others
 }: {
   order: ShippingAndPaymentSummary_order
@@ -23,11 +25,15 @@ export const ShippingAndPaymentSummary = ({
           title={
             <>Pick up ({lineItems.edges[0].node.artwork.shippingOrigin})</>
           }
+          /* Fixes spacing issues when no copy present for body*/
+          mb={orderFinished(state) ? -1 : undefined}
         >
-          <Serif size="3t">
-            You’ll be appointed an Artsy specialist within 2 business days to
-            handle pickup logistics.
-          </Serif>
+          {!orderFinished(state) && (
+            <Serif size="3t">
+              You’ll be appointed an Artsy specialist within 2 business days to
+              handle pickup logistics.
+            </Serif>
+          )}
         </StepSummaryItem>
       )}
       <StepSummaryItem>
@@ -41,6 +47,7 @@ export const ShippingAndPaymentSummaryFragmentContainer = createFragmentContaine
   ShippingAndPaymentSummary,
   graphql`
     fragment ShippingAndPaymentSummary_order on Order {
+      state
       requestedFulfillment {
         __typename
         ...ShippingAddress_ship
