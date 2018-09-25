@@ -6,7 +6,12 @@ import { StepSummaryItem } from "Styleguide/Components/StepSummaryItem"
 import { CreditCardDetails } from "./CreditCardDetails"
 import { ShippingAddressFragmentContainer as ShippingAddress } from "./ShippingAddress"
 
-const orderFinished = state => state === "FULFILLED" || state === "CANCELED"
+/**
+ * When the order is completed or canceled state we _don't_ want to tell
+ * the user that they'll be assigned an artsy specialist as it doesn't make
+ * sense in that context
+ */
+const hidePickupCopy = state => state === "FULFILLED" || state === "CANCELED"
 
 export const ShippingAndPaymentSummary = ({
   order: { state, requestedFulfillment, lineItems, creditCard },
@@ -26,9 +31,9 @@ export const ShippingAndPaymentSummary = ({
             <>Pick up ({lineItems.edges[0].node.artwork.shippingOrigin})</>
           }
           /* Fixes spacing issues when no copy present for body*/
-          mb={orderFinished(state) ? -1 : undefined}
+          mb={hidePickupCopy(state) ? -1 : undefined}
         >
-          {!orderFinished(state) && (
+          {!hidePickupCopy(state) && (
             <Serif size="3t">
               You’ll be appointed an Artsy specialist within 2 business days to
               handle pickup logistics.
