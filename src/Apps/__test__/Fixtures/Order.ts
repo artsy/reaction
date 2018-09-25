@@ -1,3 +1,18 @@
+export const mockResolver = (orderDetails: any = OrderWithShippingDetails) => ({
+  Query: () => ({
+    me: {
+      name: "Alice Jane",
+    },
+  }),
+  Order: (_, { id, ...others }) => {
+    return {
+      ...orderDetails,
+      id,
+      ...others,
+    }
+  },
+})
+
 export const UntouchedOrder = {
   id: "2939023",
   code: "abcdefg",

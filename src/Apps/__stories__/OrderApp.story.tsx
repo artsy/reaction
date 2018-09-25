@@ -1,4 +1,5 @@
 import {
+  mockResolver,
   OrderWithShippingDetails,
   PickupOrder,
 } from "Apps/__test__/Fixtures/Order"
@@ -7,25 +8,10 @@ import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { routes as orderRoutes } from "../Order/routes"
 
-const mock = (orderDetails: any = OrderWithShippingDetails) => ({
-  Query: () => ({
-    me: {
-      name: "Alice Jane",
-    },
-  }),
-  Order: (_, { id, ...others }) => {
-    return {
-      ...orderDetails,
-      id,
-      ...others,
-    }
-  },
-})
-
 const Router = props => (
   <ClientRouter
     routes={orderRoutes}
-    mockResolvers={mock()}
+    mockResolvers={mockResolver()}
     historyOptions={{ useBeforeUnload: true }}
     {...props}
   />
@@ -39,43 +25,55 @@ storiesOf("Apps/Order Page/Status", module)
   .add("submitted", () => (
     <Router
       initialRoute="/order2/123/status"
-      mockResolvers={mock({ ...OrderWithShippingDetails, state: "submitted" })}
+      mockResolvers={mockResolver({
+        ...OrderWithShippingDetails,
+        state: "SUBMITTED",
+      })}
     />
   ))
   .add("approved (ship)", () => (
     <Router
       initialRoute="/order2/123/status"
-      mockResolvers={mock({ ...OrderWithShippingDetails, state: "approved" })}
+      mockResolvers={mockResolver({
+        ...OrderWithShippingDetails,
+        state: "APPROVED",
+      })}
     />
   ))
   .add("approved (pickup)", () => (
     <Router
       initialRoute="/order2/123/status"
-      mockResolvers={mock({ ...PickupOrder, state: "approved" })}
+      mockResolvers={mockResolver({ ...PickupOrder, state: "APPROVED" })}
     />
   ))
   .add("fulfilled (ship)", () => (
     <Router
       initialRoute="/order2/123/status"
-      mockResolvers={mock({ ...OrderWithShippingDetails, state: "fulfilled" })}
+      mockResolvers={mockResolver({
+        ...OrderWithShippingDetails,
+        state: "FULFILLED",
+      })}
     />
   ))
   .add("fulfilled (pickup)", () => (
     <Router
       initialRoute="/order2/123/status"
-      mockResolvers={mock({ ...PickupOrder, state: "fulfilled" })}
+      mockResolvers={mockResolver({ ...PickupOrder, state: "FULFILLED" })}
     />
   ))
   .add("canceled (ship)", () => (
     <Router
       initialRoute="/order2/123/status"
-      mockResolvers={mock({ ...OrderWithShippingDetails, state: "canceled" })}
+      mockResolvers={mockResolver({
+        ...OrderWithShippingDetails,
+        state: "CANCELED",
+      })}
     />
   ))
   .add("canceled (pickup)", () => (
     <Router
       initialRoute="/order2/123/status"
-      mockResolvers={mock({ ...PickupOrder, state: "canceled" })}
+      mockResolvers={mockResolver({ ...PickupOrder, state: "CANCELED" })}
     />
   ))
 
@@ -84,6 +82,6 @@ storiesOf("Apps/Order Page/Payment", module)
   .add("With 'Pickup'", () => (
     <Router
       initialRoute="/order2/123/payment"
-      mockResolvers={mock(PickupOrder)}
+      mockResolvers={mockResolver(PickupOrder)}
     />
   ))
