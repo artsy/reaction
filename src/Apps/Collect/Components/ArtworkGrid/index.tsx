@@ -81,13 +81,16 @@ class Filter extends Component<Props> {
   }
 
   renderPriceRange(filters, mediator) {
+    const [initialMin, initialMax] = filters.price_range
+      ? filters.price_range.split("-")
+      : [50, 50000]
     return (
       <PriceRange
         allowCross={false}
         min={50}
         max={50000}
         step={50}
-        defaultValue={[50, 50000]}
+        defaultValue={[initialMin, initialMax]}
         onAfterChange={([min, max]) => {
           if (max === 50000) {
             filters.setFilter("price_range", `${min}-*`, mediator)

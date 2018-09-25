@@ -31,7 +31,7 @@ const initialState = {
   acquireable: null,
   at_auction: null,
   inquireable_only: null,
-  price_range: null,
+  price_range: "*-*",
   selectedFilters: [],
   showActionSheet: false,
 }
@@ -46,41 +46,42 @@ export class FilterState extends Container<State> {
 
     if (props) {
       Object.keys(this.state).forEach(filter => {
-        if (props[filter]) {
-          if (filter === "major_periods") {
-            this.state[filter] = [props[filter]]
-          } else if (
-            [
-              "for_sale",
-              "acquireable",
-              "at_auction",
-              "inquireable_only",
-            ].includes(filter)
-          ) {
-            this.state[filter] = props[filter] ? true : null
-          } else {
-            this.state[filter] = props[filter]
-          }
+        const value = props[filter]
+        if (!value) {
+          return
+        }
+
+        switch (filter) {
+          case "major_periods":
+            this.state[filter] = [value]
+            break
+          case "page":
+            this.state[filter] = Number(value)
+            break
+          case "for_sale":
+          case "acquireable":
+          case "at_auction":
+          case "inquireable_only":
+            this.state[filter] = value ? true : null
+            break
+          default:
+            this.state[filter] = value
         }
       })
     }
   }
 
-  setPage(page, mediator) {
-    this.setState({ page }, () => {
-      mediator.trigger("collect:filter:changed", this.state)
-    })
+  get filteredState() {
+    return omitBy(
+      omit(this.state, ["selectedFilterCount", "showActionSheet"]),
+      isNil
+    )
   }
 
-  showActionSheet = show => {
-    if (show) {
-      // TODO: Manage this side-effect in a more react-like fashion
-      document.body.style.overflowY = "hidden"
-    } else {
-      document.body.style.overflowY = "auto"
-    }
-
-    this.setState({ showActionSheet: show })
+  setPage(page, mediator) {
+    this.setState({ page }, () => {
+      mediator.trigger("collect:filter:changed", this.filteredState)
+    })
   }
 
   resetFilters = () => {
@@ -114,11 +115,7 @@ export class FilterState extends Container<State> {
     selectedFilters = without(selectedFilters, "radio")
 
     this.setState({ page: 1, selectedFilters, ...newPartialState }, () => {
-      const filterState = omit(this.state, [
-        "selectedFilterCount",
-        "showActionSheet",
-      ])
-      mediator.trigger("collect:filter:changed", filterState)
+      mediator.trigger("collect:filter:changed", this.filteredState)
     })
   }
 
@@ -128,40 +125,12 @@ export class FilterState extends Container<State> {
     let newPartialState = {}
     if (filter === "major_periods") {
       newPartialState = {
-        partner_id: null,
         major_periods: [value],
-        medium: "*",
-        price_range: null,
       }
-    } else if (filter === "partner_id") {
-      newPartialState = {
-        major_periods: [],
-        partner_id: value,
-        medium: "*",
-        price_range: null,
-      }
-    } else if (filter === "medium") {
-      newPartialState = {
-        medium: value,
-        partner_id: null,
-        major_periods: [],
-        price_range: null,
-      }
-    } else if (filter === "price_range") {
-      newPartialState = {
-        price_range: value,
-        medium: "*",
-        partner_id: null,
-        major_periods: [],
-      }
-    } else if (filter === "sort") {
-      newPartialState = {
-        sort: value,
-        medium: "*",
-        partner_id: null,
-        major_periods: [],
-        price_range: null,
-      }
+    } else if (
+      ["partner_id", "medium", "price_range", "sort"].includes(filter)
+    ) {
+      newPartialState[filter] = value
     } else if (
       ["for_sale", "acquireable", "at_auction", "inquireable_only"].includes(
         filter
@@ -183,17 +152,11 @@ export class FilterState extends Container<State> {
     selectedFilters = uniq(selectedFilters)
 
     this.setState({ page: 1, selectedFilters, ...newPartialState }, () => {
-      let filterState: any = omit(this.state, [
-        "selectedFilters",
-        "showActionSheet",
-      ])
-      filterState = omitBy(filterState, isNil)
-
-      mediator.trigger("collect:filter:changed", filterState)
+      mediator.trigger("collect:filter:changed", this.filteredState)
       this.tracking.trackEvent({
         action: "Commercial filter: params changed",
         current: omit(this.state, ["selectedFilterCount", "showActionSheet"]),
-        changed: newPartialState,
+        changed: { [filter]: value },
       })
     })
   }
