@@ -1,3 +1,4 @@
+import { color, Sans, Spacer } from "@artsy/palette"
 import { Details_artwork } from "__generated__/Details_artwork.graphql"
 import { ContextConsumer } from "Artsy"
 import React from "react"
@@ -97,8 +98,18 @@ export class Details extends React.Component<Props, null> {
 
     return (
       <>
-        {inClosedAuction ? "Bidding closed" : this.saleMessageOrBidInfo()}{" "}
-        {!inClosedAuction && this.auctionInfo()}
+        <Sans
+          style={{ display: "inline" }}
+          color={color("black100")}
+          weight={"medium"}
+          size={"2"}
+        >
+          {inClosedAuction ? "Bidding closed" : this.saleMessageOrBidInfo()}{" "}
+        </Sans>
+        <Sans style={{ display: "inline" }} size={"2"} color={color("black60")}>
+          {!inClosedAuction && this.auctionInfo()}
+        </Sans>
+        <Spacer mb={0.3} />
       </>
     )
   }
@@ -110,12 +121,7 @@ export class Details extends React.Component<Props, null> {
 
     if (inRunningAuction) {
       const sa = artwork.sale_artwork
-      const bids = sa && sa.counts && sa.counts.bidder_positions
-      if (bids && bids > 0) {
-        return sa.highest_bid.display
-      } else {
-        return sa.opening_bid.display
-      }
+      return sa.highest_bid.display || sa.opening_bid.display
     }
 
     return artwork.sale_message
@@ -185,9 +191,6 @@ export default createFragmentContainer<Props>(
         }
         opening_bid {
           display
-        }
-        counts {
-          bidder_positions
         }
       }
     }

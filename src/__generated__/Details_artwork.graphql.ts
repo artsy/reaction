@@ -33,9 +33,6 @@ export type Details_artwork = {
         readonly opening_bid: ({
             readonly display: string | null;
         }) | null;
-        readonly counts: ({
-            readonly bidder_positions: any | null;
-        }) | null;
     }) | null;
     readonly " $refType": Details_artwork$ref;
 };
@@ -237,24 +234,6 @@ return {
             v4
           ]
         },
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "counts",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "SaleArtworkCounts",
-          "plural": false,
-          "selections": [
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "bidder_positions",
-              "args": null,
-              "storageKey": null
-            }
-          ]
-        },
         v1
       ]
     },
@@ -262,5 +241,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '72bf29102d0892c31bd30c6cc7be5e5f';
+(node as any).hash = 'e0e2014a654a44aa66ac03435b60a897';
 export default node;
