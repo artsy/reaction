@@ -26,8 +26,8 @@ export class StatusRoute extends Component<StatusProps> {
         return "Your order is confirmed."
       case "FULFILLED":
         return requestedFulfillment.__typename === "Ship"
-          ? "Your order was shipped."
-          : "Your order was picked up."
+          ? "Your order has shipped."
+          : "Your order has been picked up."
       case "CANCELED":
         return "Your order was canceled and refunded."
     }
@@ -40,26 +40,47 @@ export class StatusRoute extends Component<StatusProps> {
       case "SUBMITTED":
         return (
           <>
-            Thank you for your order. You’ll receive a confirmation email
-            shortly. If you have questions, please contact{" "}
-            <a href="#">orders@artsy.net</a>.
+            Thank you for your purchase. You will receive a confirmation email
+            within 2 days.
           </>
         )
       case "APPROVED":
         return requestedFulfillment.__typename === "Ship" ? (
           <>
-            The seller will notify you when your order has shipped (typically
-            5–7 business days).
+            Thank you for your purchase. You will be notified when the work has
+            shipped, typically within 5–7 business days.
           </>
         ) : (
-          false
+          <>
+            Thank you for your purchase. A specialist will contact you within 2
+            business days to coordinate pickup.
+          </>
         )
       case "FULFILLED":
+        const fulfillment =
+          order.lineItems.edges[0].node.fulfillments.edges[0].node
+        if (!fulfillment) {
+          return false
+        }
         return requestedFulfillment.__typename === "Ship" ? (
           <>
-            Estimated delivery:
+            <>Your work is on its way.</>
             <br />
-            Tracking ID:
+            <br />
+            {fulfillment.courier && (
+              <>
+                Shipper: {fulfillment.courier} <br />
+              </>
+            )}
+            {fulfillment.trackingId && (
+              <>
+                <>Tracking Info: {fulfillment.trackingId}</>
+                <br />
+              </>
+            )}
+            {fulfillment.estimatedDelivery && (
+              <>Estimated delivery: {fulfillment.estimatedDelivery}</>
+            )}
           </>
         ) : (
           false
@@ -139,6 +160,15 @@ export const StatusFragmentContainer = createFragmentContainer(
       lineItems {
         edges {
           node {
+            fulfillments {
+              edges {
+                node {
+                  courier
+                  trackingId
+                  estimatedDelivery
+                }
+              }
+            }
             artwork {
               id
               ...ItemReview_artwork

@@ -20,6 +20,15 @@ export type Status_order = {
     readonly lineItems: ({
         readonly edges: ReadonlyArray<({
             readonly node: ({
+                readonly fulfillments: ({
+                    readonly edges: ReadonlyArray<({
+                        readonly node: ({
+                            readonly courier: string | null;
+                            readonly trackingId: string | null;
+                            readonly estimatedDelivery: string | null;
+                        }) | null;
+                    }) | null> | null;
+                }) | null;
                 readonly artwork: ({
                     readonly id: string;
                     readonly " $fragmentRefs": ItemReview_artwork$ref;
@@ -140,6 +149,61 @@ return {
                 {
                   "kind": "LinkedField",
                   "alias": null,
+                  "name": "fulfillments",
+                  "storageKey": null,
+                  "args": null,
+                  "concreteType": "OrderFulfillmentConnection",
+                  "plural": false,
+                  "selections": [
+                    {
+                      "kind": "LinkedField",
+                      "alias": null,
+                      "name": "edges",
+                      "storageKey": null,
+                      "args": null,
+                      "concreteType": "OrderFulfillmentEdge",
+                      "plural": true,
+                      "selections": [
+                        {
+                          "kind": "LinkedField",
+                          "alias": null,
+                          "name": "node",
+                          "storageKey": null,
+                          "args": null,
+                          "concreteType": "OrderFulfillment",
+                          "plural": false,
+                          "selections": [
+                            {
+                              "kind": "ScalarField",
+                              "alias": null,
+                              "name": "courier",
+                              "args": null,
+                              "storageKey": null
+                            },
+                            {
+                              "kind": "ScalarField",
+                              "alias": null,
+                              "name": "trackingId",
+                              "args": null,
+                              "storageKey": null
+                            },
+                            {
+                              "kind": "ScalarField",
+                              "alias": null,
+                              "name": "estimatedDelivery",
+                              "args": null,
+                              "storageKey": null
+                            },
+                            v2
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "LinkedField",
+                  "alias": null,
                   "name": "artwork",
                   "storageKey": null,
                   "args": null,
@@ -172,5 +236,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '763450116bfa7f6f40dc8c4bfe39c173';
+(node as any).hash = 'f20368375c20cf02211e7b8e824e3cf1';
 export default node;
