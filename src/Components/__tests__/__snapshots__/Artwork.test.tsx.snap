@@ -95,46 +95,44 @@ exports[`Artwork renders correctly 1`] = `
   <div
     className="c3"
   >
+    <div
+      className="c4"
+    >
+      <strong>
+        <a
+          className="c5"
+          target="_self"
+        >
+          Mikael Olson
+        </a>
+      </strong>
+    </div>
+    <div
+      className="c4"
+    >
+      <a
+        className="c5"
+        href="/artwork/mikael-olson-some-kind-of-dinosaur"
+        target="_self"
+      >
+        <em>
+          Some Kind of Dinosaur
+        </em>
+        , 2015
+      </a>
+    </div>
+    <div
+      className="c4"
+    >
+      <a
+        className="c5"
+        target="_self"
+      >
+        Gallery 1261
+      </a>
+    </div>
     <div>
-      <div
-        className="c4"
-      >
-        <strong>
-          <a
-            className="c5"
-            target="_self"
-          >
-            Mikael Olson
-          </a>
-        </strong>
-      </div>
-      <div
-        className="c4"
-      >
-        <a
-          className="c5"
-          href="/artwork/mikael-olson-some-kind-of-dinosaur"
-          target="_self"
-        >
-          <em>
-            Some Kind of Dinosaur
-          </em>
-          , 2015
-        </a>
-      </div>
-      <div
-        className="c4"
-      >
-        <a
-          className="c5"
-          target="_self"
-        >
-          Gallery 1261
-        </a>
-      </div>
-      <div>
-        $875
-      </div>
+      $875
     </div>
     <div />
   </div>
