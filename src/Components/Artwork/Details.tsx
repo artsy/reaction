@@ -16,16 +16,19 @@ const TruncatedLine = styled.div`
 
 export interface Props extends React.HTMLProps<Details> {
   showSaleLine: boolean
+  includeLinks: boolean
   artwork: Details_artwork
 }
 
 export class Details extends React.Component<Props, null> {
   static defaultProps = {
     showSaleLine: true,
+    includeLinks: true,
   }
 
   artistLine() {
     const { cultural_maker, artists } = this.props.artwork
+    const { includeLinks } = this.props
 
     if (cultural_maker) {
       return (
@@ -38,9 +41,9 @@ export class Details extends React.Component<Props, null> {
         .reduce((acc, artist, index) => {
           return acc.concat([
             ", ",
-            <TextLink href={artist.href} key={artist.__id + "-" + index}>
-              {artist.name}
-            </TextLink>,
+            includeLinks
+              ? this.link(artist.name, artist.href, artist.__id + "-" + index)
+              : this.line(artist.name),
           ])
         }, [])
         .slice(1)
@@ -63,21 +66,33 @@ export class Details extends React.Component<Props, null> {
     )
   }
 
+  line(text) {
+    return <TruncatedLine>{text}</TruncatedLine>
+  }
+
+  link(text, href, key) {
+    return (
+      <TextLink href={href} key={key}>
+        {text}
+      </TextLink>
+    )
+  }
+
   partnerLine() {
     if (this.props.artwork.collecting_institution) {
-      return (
-        <TruncatedLine>
-          {this.props.artwork.collecting_institution}
-        </TruncatedLine>
-      )
+      return this.line(this.props.artwork.collecting_institution)
     } else if (this.props.artwork.partner) {
-      return (
-        <TruncatedLine>
-          <TextLink href={this.props.artwork.partner.href}>
-            {this.props.artwork.partner.name}
-          </TextLink>
-        </TruncatedLine>
-      )
+      if (this.props.includeLinks) {
+        return (
+          <TruncatedLine>
+            <TextLink href={this.props.artwork.partner.href}>
+              {this.props.artwork.partner.name}
+            </TextLink>
+          </TruncatedLine>
+        )
+      } else {
+        return this.line(this.props.artwork.partner.name)
+      }
     }
   }
 
