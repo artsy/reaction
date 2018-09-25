@@ -34,7 +34,6 @@ const Router = props => (
 storiesOf("Apps/Order Page", module)
   .add("Shipping", () => <Router initialRoute="/order2/123/shipping" />)
   .add("Review", () => <Router initialRoute="/order2/123/review" />)
-  .add("Status", () => <Router initialRoute="/order2/123/status" />)
 
 storiesOf("Apps/Order Page/Status", module)
   .add("submitted", () => (
