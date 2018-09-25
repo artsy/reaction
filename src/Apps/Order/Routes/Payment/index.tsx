@@ -47,7 +47,7 @@ interface PaymentState {
   address: Address
   addressErrors: AddressErrors
   stripeError: stripe.Error
-  isComittingMutation: boolean
+  isCommittingMutation: boolean
   isErrorModalOpen: boolean
   errorModalMessage: string
 }
@@ -56,7 +56,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
   state = {
     hideBillingAddress: true,
     stripeError: null,
-    isComittingMutation: false,
+    isCommittingMutation: false,
     isErrorModalOpen: false,
     errorModalMessage: null,
     address: this.startingAddress,
@@ -71,11 +71,11 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
   }
 
   onContinue: () => void = () => {
-    this.setState({ isComittingMutation: true }, () => {
+    this.setState({ isCommittingMutation: true }, () => {
       if (this.needsAddress()) {
         const errors = this.validateAddress(this.state.address)
         if (Object.keys(errors).filter(key => errors[key]).length > 0) {
-          this.setState({ isComittingMutation: false, addressErrors: errors })
+          this.setState({ isCommittingMutation: false, addressErrors: errors })
           return
         }
       }
@@ -87,7 +87,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
         .then(({ error, token }) => {
           if (error) {
             this.setState({
-              isComittingMutation: false,
+              isCommittingMutation: false,
               stripeError: error,
             })
           } else {
@@ -131,7 +131,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
     const { order } = this.props
     const {
       stripeError,
-      isComittingMutation,
+      isCommittingMutation,
       address,
       addressErrors,
     } = this.state
@@ -151,7 +151,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
               Content={
                 <Flex
                   flexDirection="column"
-                  style={isComittingMutation ? { pointerEvents: "none" } : {}}
+                  style={isCommittingMutation ? { pointerEvents: "none" } : {}}
                 >
                   <Join separator={<Spacer mb={3} />}>
                     <Flex flexDirection="column">
@@ -185,7 +185,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
                     {!xs && (
                       <ContinueButton
                         onClick={this.onContinue}
-                        loading={isComittingMutation}
+                        loading={isCommittingMutation}
                       />
                     )}
                   </Join>
@@ -203,7 +203,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
                       <Spacer mb={3} />
                       <ContinueButton
                         onClick={this.onContinue}
-                        loading={isComittingMutation}
+                        loading={isCommittingMutation}
                       />
                     </>
                   )}
@@ -302,7 +302,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
       this.props.relay.environment,
       {
         onCompleted: (data, errors) => {
-          this.setState({ isComittingMutation: false })
+          this.setState({ isCommittingMutation: false })
 
           const {
             setOrderPayment: { orderOrError },
@@ -350,7 +350,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
   private onMutationError(errors, errorModalMessage?) {
     console.error("Order/Routes/Payment/index.tsx", errors)
     this.setState({
-      isComittingMutation: false,
+      isCommittingMutation: false,
       isErrorModalOpen: true,
       errorModalMessage,
     })
