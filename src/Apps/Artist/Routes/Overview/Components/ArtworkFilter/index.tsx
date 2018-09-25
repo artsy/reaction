@@ -171,7 +171,7 @@ class Filter extends Component<Props> {
   renderWaysToBuy(filters, mediator, counts) {
     return (
       <React.Fragment>
-        <Sans size="2" weight="medium" color="black100" mt={0.3}>
+        <Sans size="2" weight="medium" color="black100" mt={0.3} mb={1}>
           Ways to Buy
         </Sans>
         <Checkbox
@@ -181,7 +181,7 @@ class Filter extends Component<Props> {
             return filters.setFilter("acquireable", value, mediator)
           }}
         >
-          Buy Now
+          Buy now
         </Checkbox>
         <Checkbox
           selected={filters.state.at_auction}
