@@ -8,6 +8,7 @@ import { UntouchedOrder } from "Apps/__test__/Fixtures/Order"
 import Input, { InputProps } from "Components/Input"
 import { ModalButton } from "Components/Modal/ErrorModal"
 import { commitMutation, RelayProp } from "react-relay"
+import { ErrorModal } from "../../../../Components/Modal/ErrorModal"
 import { Address, AddressForm } from "../../Components/AddressForm"
 import {
   settingOrderShipmentFailure,
@@ -157,30 +158,30 @@ describe("Shipping", () => {
 
     it("shows an error modal when there is an error from the server", () => {
       const component = getWrapper(testProps)
-      expect(component.find("ErrorModal").props().show).toBe(false)
+      expect(component.find(ErrorModal).props().show).toBe(false)
       const mockCommitMutation = commitMutation as jest.Mock<any>
       mockCommitMutation.mockImplementationOnce((_, { onCompleted }) =>
         onCompleted(settingOrderShipmentFailure)
       )
       component.find("Button").simulate("click")
-      expect(component.find("ErrorModal").props().show).toBe(true)
+      expect(component.find(ErrorModal).props().show).toBe(true)
 
       component.find(ModalButton).simulate("click")
-      expect(component.find("ErrorModal").props().show).toBe(false)
+      expect(component.find(ErrorModal).props().show).toBe(false)
     })
 
     it("shows an error modal when there is a network error", () => {
       const component = getWrapper(testProps)
-      expect(component.find("ErrorModal").props().show).toBe(false)
+      expect(component.find(ErrorModal).props().show).toBe(false)
       const mockCommitMutation = commitMutation as jest.Mock<any>
       mockCommitMutation.mockImplementationOnce((_, { onError }) =>
         onError(new TypeError("Network request failed"))
       )
       component.find("Button").simulate("click")
-      expect(component.find("ErrorModal").props().show).toBe(true)
+      expect(component.find(ErrorModal).props().show).toBe(true)
 
       component.find(ModalButton).simulate("click")
-      expect(component.find("ErrorModal").props().show).toBe(false)
+      expect(component.find(ErrorModal).props().show).toBe(false)
     })
   })
 
