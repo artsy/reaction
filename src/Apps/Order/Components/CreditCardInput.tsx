@@ -51,6 +51,7 @@ export class CreditCardInput extends React.Component<
           p={1}
         >
           <StyledCardElement
+            hidePostalCode
             onChange={this.onChange.bind(this)}
             onFocus={() => this.setState({ focused: true })}
             onBlur={() => this.setState({ focused: false })}

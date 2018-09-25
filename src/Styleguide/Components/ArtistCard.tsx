@@ -1,7 +1,7 @@
 import { ArtistCard_artist } from "__generated__/ArtistCard_artist.graphql"
 import FollowArtistButton from "Components/FollowButton/FollowArtistButton"
 import { Truncator } from "Components/Truncator"
-import React from "react"
+import React, { SFC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 import { Responsive } from "Utils/Responsive"
@@ -9,6 +9,7 @@ import { Responsive } from "Utils/Responsive"
 import {
   Avatar,
   BorderBox,
+  Button,
   Flex,
   Sans,
   Serif,
@@ -43,15 +44,17 @@ export class ArtistCard extends React.Component<Props> {
   }
 }
 
-export const LargeArtistCard = (props: Props) => (
+export const LargeArtistCard: SFC<Props> = props => (
   <BorderBox hover flexDirection="column" width="100%" height="254px">
     <Flex flexDirection="column" flexGrow="0" alignItems="center" pt={1}>
       {props.artist.image && (
         <Avatar src={props.artist.image.cropped.url} mb={1} />
       )}
+
       <Serif size="3t" weight="semibold" textAlign="center">
         <Truncator maxLineCount={2}>{props.artist.name}</Truncator>
       </Serif>
+
       <Sans size="2">{props.artist.formatted_nationality_and_birthday}</Sans>
     </Flex>
 
@@ -61,23 +64,13 @@ export const LargeArtistCard = (props: Props) => (
       <FollowArtistButton
         artist={props.artist}
         user={props.user}
-        useDeprecatedButtonStyle={false}
-        buttonProps={{
-          variant: "secondaryOutline",
-          size: "small",
-          width: space(9),
-        }}
-        onOpenAuthModal={() => {
-          props.mediator.trigger("open:auth", {
-            mode: "signup",
-            copy: `Sign up to follow ${props.artist.name}`,
-            signupIntent: "follow artist",
-            afterSignUpAction: {
-              kind: "artist",
-              action: "follow",
-              objectId: props.artist.id,
-            },
-          })
+        onOpenAuthModal={maybeAuthenticated}
+        render={_props => {
+          return (
+            <Button variant="secondaryOutline" size="small" width={space(9)}>
+              Follow
+            </Button>
+          )
         }}
       >
         Follow
@@ -86,44 +79,51 @@ export const LargeArtistCard = (props: Props) => (
   </BorderBox>
 )
 
-export const SmallArtistCard = (props: Props) => (
+export const SmallArtistCard: SFC<Props> = props => (
   <BorderBox hover width="100%" justifyContent="space-between">
     <Flex flexDirection="column" justifyContent="center">
-      <Serif size="3t">
+      <Serif size="3t" weight="semibold">
         <Truncator maxLineCount={2}>{props.artist.name}</Truncator>
       </Serif>
+
       <Sans size="1">{props.artist.formatted_nationality_and_birthday}</Sans>
+
       <Spacer mb={1} />
+
       <FollowArtistButton
         artist={props.artist}
         user={props.user}
-        useDeprecatedButtonStyle={false}
-        buttonProps={{
-          variant: "secondaryOutline",
-          size: "small",
-          width: "70px",
-        }}
-        onOpenAuthModal={() => {
-          props.mediator.trigger("open:auth", {
-            mode: "signup",
-            copy: `Sign up to follow ${props.artist.name}`,
-            signupIntent: "follow artist",
-            afterSignUpAction: {
-              kind: "artist",
-              action: "follow",
-              objectId: props.artist.id,
-            },
-          })
+        onOpenAuthModal={maybeAuthenticated}
+        render={_props => {
+          return (
+            <Button variant="secondaryOutline" size="small" width="70px">
+              Follow
+            </Button>
+          )
         }}
       >
         Follow
       </FollowArtistButton>
     </Flex>
+
     {props.artist.image && (
       <Avatar size="sm" src={props.artist.image.cropped.url} ml={2} />
     )}
   </BorderBox>
 )
+
+function maybeAuthenticated(props: Props) {
+  return props.mediator.trigger("open:auth", {
+    mode: "signup",
+    copy: `Sign up to follow ${props.artist.name}`,
+    signupIntent: "follow artist",
+    afterSignUpAction: {
+      kind: "artist",
+      action: "follow",
+      objectId: props.artist.id,
+    },
+  })
+}
 
 export const ArtistCardFragmentContainer = createFragmentContainer(
   ArtistCard,

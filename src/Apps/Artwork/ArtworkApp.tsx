@@ -138,7 +138,6 @@ export const ArtworkApp: React.SFC<Props> = props => {
                 <a>Buying from Galleries FAQ</a>
                 <a>Buying from Auctions FAQ</a>
                 <a>Consign with Artsy</a>
-                <a>Artsy for Professional Buyers</a>
               </Col>
               <Col>
                 <Category>Learn</Category>

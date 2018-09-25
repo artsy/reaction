@@ -1698,11 +1698,11 @@ exports[`renders a sponsored series properly 1`] = `
   margin-bottom: 30px;
 }
 
-.bwXAvy .c14 {
+.epfuSp .c14 {
   margin-bottom: 90px;
 }
 
-.bwXAvy .c41 {
+.epfuSp .c41 {
   padding-top: 60px;
 }
 
@@ -1963,7 +1963,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .bwXAvy .c41 {
+  .epfuSp .c41 {
     padding-top: 60px;
   }
 }

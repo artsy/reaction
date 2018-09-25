@@ -1,6 +1,6 @@
 import { garamond } from "Assets/Fonts"
+import { Col } from "Components/Grid"
 import React, { Component } from "react"
-import { Col } from "react-styled-flexboxgrid"
 import track from "react-tracking"
 import styled, { StyledFunction } from "styled-components"
 import { media as mediaQueries } from "../../Helpers"

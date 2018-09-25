@@ -158,7 +158,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                           disabled={!termsCheckboxSelected}
                           onClick={() => this.onOrderSubmitted()}
                         >
-                          Submit Order
+                          Submit
                         </Button>
                       </>
                     )}

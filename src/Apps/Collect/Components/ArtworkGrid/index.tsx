@@ -32,28 +32,49 @@ class Filter extends Component<Props> {
     hideTopBorder: false,
   }
 
-  renderCategory(filters, category, counts, mediator) {
-    const currentFilter =
-      category === "major_periods"
-        ? filters.state.major_periods[0]
-        : filters.state[category]
+  renderMedium(filters, mediums, mediator) {
+    return mediums.map((medium, index) => {
+      const isSelected = filters.state.medium === medium.id
 
-    return counts.map((count, index) => {
       return (
         <Radio
           my={0.3}
-          selected={currentFilter === count.id}
-          value={count.id}
+          selected={isSelected}
+          value={medium.id}
           onSelect={({ selected }) => {
             if (selected) {
-              return filters.setFilter(category, count.id, mediator)
+              return filters.setFilter("medium", medium.id, mediator)
             } else {
-              return filters.unsetFilter(category, mediator)
+              return filters.unsetFilter("medium", mediator)
             }
           }}
           key={index}
         >
-          {count.name}
+          {medium.name}
+        </Radio>
+      )
+    })
+  }
+
+  renderTimePeriods(filters, mediator) {
+    return allowedPeriods.map((timePeriod, index) => {
+      const isSelected = filters.state.major_periods[0] === timePeriod
+
+      return (
+        <Radio
+          my={0.3}
+          selected={isSelected}
+          value={timePeriod}
+          onSelect={({ selected }) => {
+            if (selected) {
+              return filters.setFilter("major_periods", timePeriod, mediator)
+            } else {
+              return filters.unsetFilter("major_periods", mediator)
+            }
+          }}
+          key={index}
+        >
+          {timePeriod}
         </Radio>
       )
     })
@@ -69,9 +90,9 @@ class Filter extends Component<Props> {
         defaultValue={[50, 50000]}
         onAfterChange={([min, max]) => {
           if (max === 50000) {
-            filters.setPriceRange(`${min}-*`, mediator)
+            filters.setFilter("price_range", `${min}-*`, mediator)
           } else {
-            filters.setPriceRange(`${min}-${max}`, mediator)
+            filters.setFilter("price_range", `${min}-${max}`, mediator)
           }
         }}
       />
@@ -121,9 +142,6 @@ class Filter extends Component<Props> {
     const { filter_artworks } = this.props.viewer
     const { aggregations } = filter_artworks
     const mediumAggregation = aggregations.find(agg => agg.slice === "MEDIUM")
-    const periodAggregation = aggregations.find(
-      agg => agg.slice === "MAJOR_PERIOD"
-    )
 
     return (
       <ContextConsumer>
@@ -165,9 +183,8 @@ class Filter extends Component<Props> {
                                 </Flex>
 
                                 <Toggle label="Medium" expanded>
-                                  {this.renderCategory(
+                                  {this.renderMedium(
                                     filters,
-                                    "medium",
                                     mediumAggregation.counts,
                                     mediator
                                   )}
@@ -178,12 +195,7 @@ class Filter extends Component<Props> {
                                   }
                                   label="Time period"
                                 >
-                                  {this.renderCategory(
-                                    filters,
-                                    "major_periods",
-                                    periodAggregation.counts,
-                                    mediator
-                                  )}
+                                  {this.renderTimePeriods(filters, mediator)}
                                 </Toggle>
                               </Sidebar>
                             )}
@@ -227,7 +239,11 @@ class Filter extends Component<Props> {
                                   }
                                   selected={filters.state.sort}
                                   onSelect={sort => {
-                                    return filters.setSort(sort, mediator)
+                                    return filters.setFilter(
+                                      "sort",
+                                      sort,
+                                      mediator
+                                    )
                                   }}
                                 />
                               </Flex>
@@ -268,7 +284,7 @@ export const ArtworkGridFragmentContainer = createFragmentContainer(
         inquireable_only: { type: "Boolean" }
         aggregations: {
           type: "[ArtworkAggregation]"
-          defaultValue: [MAJOR_PERIOD, MEDIUM, TOTAL]
+          defaultValue: [MEDIUM, TOTAL]
         }
         sort: { type: "String", defaultValue: "-partner_updated_at" }
         price_range: { type: "String" }
@@ -300,3 +316,21 @@ export const ArtworkGridFragmentContainer = createFragmentContainer(
 )
 
 const Sidebar = Box
+
+const allowedPeriods = [
+  "2010",
+  "2000",
+  "1990",
+  "1980",
+  "1970",
+  "1960",
+  "1950",
+  "1940",
+  "1930",
+  "1920",
+  "1910",
+  "1900",
+  "Late 19th Century",
+  "Mid 19th Century",
+  "Early 19th Century",
+]
