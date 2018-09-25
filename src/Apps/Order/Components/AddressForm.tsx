@@ -1,4 +1,4 @@
-import { Flex, Join, Serif, Spacer } from "@artsy/palette"
+import { Flex, Join, Sans, Serif, Spacer } from "@artsy/palette"
 import Input from "Components/Input"
 import React from "react"
 import { CountrySelect } from "Styleguide/Components"
@@ -35,6 +35,7 @@ export interface AddressFormProps {
   onChange: AddressChangeHandler
   defaultValue?: Partial<Address>
   billing?: boolean
+  continentalUsOnly?: boolean
   errors?: AddressErrors
 }
 
@@ -70,6 +71,7 @@ export class AddressForm extends React.Component<
   }
 
   render() {
+    const lockCountryToUS = !this.props.billing && this.props.continentalUsOnly
     return (
       <Join separator={<Spacer mb={2} />}>
         <Flex flexDirection="column">
@@ -92,9 +94,18 @@ export class AddressForm extends React.Component<
               Country
             </Serif>
             <CountrySelect
-              selected={this.state.address.country}
+              selected={lockCountryToUS ? "US" : this.state.address.country}
               onSelect={this.changeValueHandler("country")}
+              disabled={lockCountryToUS}
             />
+            {lockCountryToUS && (
+              <>
+                <Spacer m={0.5} />
+                <Sans size="2" color="black60">
+                  Ships to continental US only
+                </Sans>
+              </>
+            )}
           </Flex>
 
           <Flex flexDirection="column">

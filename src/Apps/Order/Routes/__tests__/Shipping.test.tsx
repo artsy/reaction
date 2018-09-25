@@ -8,6 +8,7 @@ import { UntouchedOrder } from "Apps/__test__/Fixtures/Order"
 import Input, { InputProps } from "Components/Input"
 import { ModalButton } from "Components/Modal/ErrorModal"
 import { commitMutation, RelayProp } from "react-relay"
+import { CountrySelect } from "Styleguide/Components"
 import { ErrorModal } from "../../../../Components/Modal/ErrorModal"
 import { Address, AddressForm } from "../../Components/AddressForm"
 import {
@@ -68,6 +69,13 @@ describe("Shipping", () => {
     testPropWithShipOnlyOrder.order.lineItems.edges[0].node.artwork.pickup_available = false
     const component = getWrapper(testPropWithShipOnlyOrder)
     expect(component.find(RadioGroup).length).toEqual(0)
+  })
+
+  it("disables country select when shipsToContinentalUSOnly is true", () => {
+    const testPropWithContinentalUSOnlyOrder = cloneDeep(testProps)
+    testPropWithContinentalUSOnlyOrder.order.lineItems.edges[0].node.artwork.shipsToContinentalUSOnly = true
+    const component = getWrapper(testPropWithContinentalUSOnlyOrder)
+    expect(component.find(CountrySelect).props().disabled).toBe(true)
   })
 
   it("commits the mutation with the orderId", () => {
