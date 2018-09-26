@@ -10,6 +10,7 @@ import { ReadMore } from "./ReadMore"
 interface Props {
   bio: ArtistBio_bio
   onReadMoreClicked?: () => void
+  maxChars?: number
 }
 
 export const MAX_CHARS = {
@@ -23,7 +24,8 @@ export class ArtistBio extends React.Component<Props> {
     return (
       <Responsive>
         {({ xs }) => {
-          const maxChars = xs ? MAX_CHARS.xs : MAX_CHARS.rest
+          const maxChars =
+            this.props.maxChars || xs ? MAX_CHARS.xs : MAX_CHARS.rest
 
           return (
             <Serif size="3">

@@ -50,7 +50,7 @@ export interface ShippingState {
   shippingOption: OrderFulfillmentType
   address: Address
   addressErrors: AddressErrors
-  isComittingMutation: boolean
+  isCommittingMutation: boolean
   isErrorModalOpen: boolean
 }
 
@@ -59,7 +59,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     shippingOption: ((this.props.order.requestedFulfillment &&
       this.props.order.requestedFulfillment.__typename.toUpperCase()) ||
       "SHIP") as OrderFulfillmentType,
-    isComittingMutation: false,
+    isCommittingMutation: false,
     isErrorModalOpen: false,
     address: this.startingAddress,
     addressErrors: {},
@@ -77,14 +77,14 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
   }
 
   onContinueButtonPressed: () => void = () => {
-    this.setState({ isComittingMutation: true }, () => {
+    this.setState({ isCommittingMutation: true }, () => {
       const { address, shippingOption } = this.state
 
       if (this.state.shippingOption === "SHIP") {
         const errors = this.validateAddress(this.state.address)
 
         if (Object.keys(errors).filter(key => errors[key]).length > 0) {
-          this.setState({ isComittingMutation: false, addressErrors: errors })
+          this.setState({ isCommittingMutation: false, addressErrors: errors })
           return
         }
       }
@@ -123,7 +123,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
               },
             },
             onCompleted: data => {
-              this.setState({ isComittingMutation: false })
+              this.setState({ isCommittingMutation: false })
               const {
                 setOrderShipping: { orderOrError },
               } = data
@@ -135,7 +135,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
               }
             },
             onError: error => {
-              this.setState({ isComittingMutation: false })
+              this.setState({ isCommittingMutation: false })
               this.onError(error)
             },
           }
@@ -167,7 +167,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
 
   onError = error => {
     console.error("Order/Shipping/index.tsx", error)
-    this.setState({ isComittingMutation: false, isErrorModalOpen: true })
+    this.setState({ isCommittingMutation: false, isErrorModalOpen: true })
   }
 
   onCloseModal = () => {
@@ -186,7 +186,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
 
   render() {
     const { order } = this.props
-    const { address, addressErrors, isComittingMutation } = this.state
+    const { address, addressErrors, isCommittingMutation } = this.state
     const isPickupAvailable = get(
       this.props,
       "order.lineItems.edges[0].node.artwork.pickup_available"
@@ -207,7 +207,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
               Content={
                 <Flex
                   flexDirection="column"
-                  style={isComittingMutation ? { pointerEvents: "none" } : {}}
+                  style={isCommittingMutation ? { pointerEvents: "none" } : {}}
                 >
                   {/* TODO: Make RadioGroup generic for the allowed values,
                   which could also ensure the children only use
@@ -256,7 +256,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                   {!xs && (
                     <Button
                       onClick={this.onContinueButtonPressed}
-                      loading={isComittingMutation}
+                      loading={isCommittingMutation}
                       size="large"
                       width="100%"
                     >
@@ -276,7 +276,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                       <Spacer mb={3} />
                       <Button
                         onClick={this.onContinueButtonPressed}
-                        loading={isComittingMutation}
+                        loading={isCommittingMutation}
                         size="large"
                         width="100%"
                       >

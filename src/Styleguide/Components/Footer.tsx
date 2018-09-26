@@ -74,9 +74,6 @@ const FooterContainer: React.SFC<FlexDirectionProps & Props> = props => {
                 <Link href="https://www.artsy.net/consign">
                   Consign with Artsy
                 </Link>
-                <Link href="https://www.artsy.net/professional-buyer">
-                  Artsy for Professional Buyers
-                </Link>
               </Serif>
             </Flex>
             <Flex flexDirection="column" mb={1}>

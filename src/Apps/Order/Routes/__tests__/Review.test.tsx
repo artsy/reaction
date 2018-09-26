@@ -43,19 +43,8 @@ describe("Review", () => {
     )
   }
 
-  it("disables the button while the terms are unchecked", () => {
+  it("enables the button and routes to the payoff page", () => {
     const component = getWrapper(defaultProps)
-    expect(component.find(Button).props().disabled).toBe(true)
-    expect(pushMock).not.toBeCalled
-  })
-
-  it("enables the button while the terms are checked and routes to the payoff page", () => {
-    const component = getWrapper(defaultProps)
-    expect(component.find(Button).props().disabled).toBe(true)
-    component
-      .find(TermsOfServiceCheckbox)
-      .props()
-      .onSelect()
     ;(commitMutation as jest.Mock<any>).mockImplementationOnce(
       (_, { onCompleted }) =>
         onCompleted({ submitOrder: { orderOrError: { order: {} } } })
