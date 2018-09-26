@@ -1,10 +1,10 @@
 import { Flex, Join, Message, Sans, Serif, Spacer } from "@artsy/palette"
 import { Status_order } from "__generated__/Status_order.graphql"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
-import { get } from "lodash"
 import React, { Component } from "react"
 import { Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
+import { get } from "Utils/get"
 import { Responsive } from "Utils/Responsive"
 import { Helper } from "../../Components/Helper"
 import { ShippingAndPaymentSummaryFragmentContainer as ShippingAndPaymentSummary } from "../../Components/ShippingAndPaymentSummary"
@@ -60,8 +60,7 @@ export class StatusRoute extends Component<StatusProps> {
       case "FULFILLED":
         const fulfillment = get(
           order,
-          "lineItems.edges[0].node.fulfillments.edges[0].node",
-          false
+          o => o.lineItems.edges[0].node.fulfillments.edges[0].node
         )
         if (!fulfillment) {
           return false
@@ -132,7 +131,10 @@ export class StatusRoute extends Component<StatusProps> {
                 <Flex flexDirection="column">
                   <ShippingAndPaymentSummary order={order} mb={[2, 3]} />
                   <Helper
-                    artworkId={get(order, "lineItems.edges[0].node.artwork.id")}
+                    artworkId={get(
+                      order,
+                      o => o.lineItems.edges[0].node.artwork.id
+                    )}
                   />
                 </Flex>
               }
