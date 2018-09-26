@@ -1,7 +1,8 @@
 import { routes_OrderQueryResponse } from "__generated__/routes_OrderQuery.graphql"
+import { ContextConsumer } from "Artsy/SystemContext"
 import { Location, RouteConfig, Router } from "found"
 import React from "react"
-import { Title } from "react-head"
+import { Meta, Title } from "react-head"
 import { Elements, StripeProvider } from "react-stripe-elements"
 
 declare global {
@@ -79,6 +80,7 @@ export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
 
   render() {
     const { children, location, router, order, params } = this.props
+
     if (
       order &&
       order.state !== "PENDING" &&
@@ -87,12 +89,22 @@ export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
       router.replace(`/order2/${params.orderID}/status`)
     }
     return (
-      <>
-        <Title>Checkout | Artsy</Title>
-        <StripeProvider stripe={this.state.stripe}>
-          <Elements>{children}</Elements>
-        </StripeProvider>
-      </>
+      <ContextConsumer>
+        {({ isEigen }) => (
+          <>
+            <Title>Checkout | Artsy</Title>
+            {isEigen ? (
+              <Meta
+                name="viewport"
+                content="width=device-width, user-scalable=no"
+              />
+            ) : null}
+            <StripeProvider stripe={this.state.stripe}>
+              <Elements>{children}</Elements>
+            </StripeProvider>
+          </>
+        )}
+      </ContextConsumer>
     )
   }
 }

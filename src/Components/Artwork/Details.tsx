@@ -1,4 +1,6 @@
+import { color, Sans, Spacer } from "@artsy/palette"
 import { Details_artwork } from "__generated__/Details_artwork.graphql"
+import { ContextConsumer } from "Artsy"
 import React from "react"
 // @ts-ignore
 import { ComponentRef, createFragmentContainer, graphql } from "react-relay"
@@ -14,16 +16,19 @@ const TruncatedLine = styled.div`
 
 export interface Props extends React.HTMLProps<Details> {
   showSaleLine: boolean
+  includeLinks: boolean
   artwork: Details_artwork
 }
 
 export class Details extends React.Component<Props, null> {
   static defaultProps = {
     showSaleLine: true,
+    includeLinks: true,
   }
 
   artistLine() {
     const { cultural_maker, artists } = this.props.artwork
+    const { includeLinks } = this.props
 
     if (cultural_maker) {
       return (
@@ -36,9 +41,9 @@ export class Details extends React.Component<Props, null> {
         .reduce((acc, artist, index) => {
           return acc.concat([
             ", ",
-            <TextLink href={artist.href} key={artist.__id + "-" + index}>
-              {artist.name}
-            </TextLink>,
+            includeLinks
+              ? this.link(artist.name, artist.href, artist.__id + "-" + index)
+              : this.line(artist.name),
           ])
         }, [])
         .slice(1)
@@ -61,21 +66,33 @@ export class Details extends React.Component<Props, null> {
     )
   }
 
+  line(text) {
+    return <TruncatedLine>{text}</TruncatedLine>
+  }
+
+  link(text, href, key) {
+    return (
+      <TextLink href={href} key={key}>
+        {text}
+      </TextLink>
+    )
+  }
+
   partnerLine() {
     if (this.props.artwork.collecting_institution) {
-      return (
-        <TruncatedLine>
-          {this.props.artwork.collecting_institution}
-        </TruncatedLine>
-      )
+      return this.line(this.props.artwork.collecting_institution)
     } else if (this.props.artwork.partner) {
-      return (
-        <TruncatedLine>
-          <TextLink href={this.props.artwork.partner.href}>
-            {this.props.artwork.partner.name}
-          </TextLink>
-        </TruncatedLine>
-      )
+      if (this.props.includeLinks) {
+        return (
+          <TruncatedLine>
+            <TextLink href={this.props.artwork.partner.href}>
+              {this.props.artwork.partner.name}
+            </TextLink>
+          </TruncatedLine>
+        )
+      } else {
+        return this.line(this.props.artwork.partner.name)
+      }
     }
   }
 
@@ -89,14 +106,75 @@ export class Details extends React.Component<Props, null> {
     }
   }
 
+  saleInfoLine() {
+    const { artwork } = this.props
+    const { sale } = artwork
+    const inClosedAuction = sale && sale.is_auction && sale.is_closed
+
+    return (
+      <>
+        <Sans
+          style={{ display: "inline" }}
+          color={color("black100")}
+          weight={"medium"}
+          size={"2"}
+        >
+          {inClosedAuction ? "Bidding closed" : this.saleMessageOrBidInfo()}{" "}
+        </Sans>
+        <Sans style={{ display: "inline" }} size={"2"} color={color("black60")}>
+          {!inClosedAuction && this.auctionInfo()}
+        </Sans>
+        <Spacer mb={0.3} />
+      </>
+    )
+  }
+
+  saleMessageOrBidInfo() {
+    const { artwork } = this.props
+    const { sale } = artwork
+    const inRunningAuction = sale && sale.is_auction && !sale.is_closed
+
+    if (inRunningAuction) {
+      const sa = artwork.sale_artwork
+      return sa.highest_bid.display || sa.opening_bid.display
+    }
+
+    // TODO: Extract this sentence-cased version and apply everywhere.
+    if (artwork.sale_message === "Contact For Price") {
+      return "Contact for price"
+    }
+
+    return artwork.sale_message
+  }
+
+  auctionInfo() {
+    const { artwork } = this.props
+    const { sale } = artwork
+
+    if (sale) {
+      return `(${sale.display_timely_at})`
+    }
+  }
+
   render() {
     return (
-      <div>
-        {this.artistLine()}
-        {this.titleLine()}
-        {this.partnerLine()}
-        {this.props.showSaleLine && this.saleLine()}
-      </div>
+      <ContextConsumer>
+        {({ user }) => {
+          const enableLabFeature =
+            user &&
+            user.lab_features &&
+            user.lab_features.includes("New Artwork Brick")
+          return (
+            <>
+              {enableLabFeature && this.saleInfoLine()}
+              {this.artistLine()}
+              {this.titleLine()}
+              {this.partnerLine()}
+              {!enableLabFeature && this.props.showSaleLine && this.saleLine()}
+            </>
+          )
+        }}
+      </ContextConsumer>
     )
   }
 }
@@ -125,6 +203,15 @@ export default createFragmentContainer<Props>(
         is_live_open
         is_open
         is_closed
+        display_timely_at
+      }
+      sale_artwork {
+        highest_bid {
+          display
+        }
+        opening_bid {
+          display
+        }
       }
     }
   `
