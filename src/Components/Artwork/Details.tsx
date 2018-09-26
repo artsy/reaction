@@ -139,6 +139,11 @@ export class Details extends React.Component<Props, null> {
       return sa.highest_bid.display || sa.opening_bid.display
     }
 
+    // TODO: Extract this sentence-cased version and apply everywhere.
+    if (artwork.sale_message === "Contact For Price") {
+      return "Contact for price"
+    }
+
     return artwork.sale_message
   }
 
