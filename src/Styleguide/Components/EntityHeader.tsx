@@ -5,14 +5,14 @@ import React, { Component } from "react"
 interface EntityHeaderProps {
   imageUrl?: string
   initials?: string
-  meta: string | null
+  meta?: string
   name: string
   showFollow: boolean
 }
 
 export class EntityHeader extends Component<EntityHeaderProps> {
   static defaultProps: Partial<EntityHeaderProps> = {
-    showFollow: true,
+    showFollow: false,
   }
 
   render() {
@@ -31,9 +31,11 @@ export class EntityHeader extends Component<EntityHeaderProps> {
             </Serif>
 
             <Flex>
-              <Sans size="2" color="black60">
-                {meta}
-              </Sans>
+              {!!meta && (
+                <Sans size="2" color="black60">
+                  {meta}
+                </Sans>
+              )}
 
               {showFollow && (
                 <>
