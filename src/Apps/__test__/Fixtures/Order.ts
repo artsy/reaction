@@ -1,6 +1,22 @@
+export const mockResolver = (orderDetails: any = OrderWithShippingDetails) => ({
+  Query: () => ({
+    me: {
+      name: "Alice Jane",
+    },
+  }),
+  Order: (_, { id, ...others }) => {
+    return {
+      ...orderDetails,
+      id,
+      ...others,
+    }
+  },
+})
+
 export const UntouchedOrder = {
   id: "2939023",
   code: "abcdefg",
+  state: "PENDING",
   itemsTotal: "$12,000",
   shippingTotal: null,
   taxTotal: null,
@@ -34,6 +50,17 @@ export const UntouchedOrder = {
                   "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=185&height=184&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FtOfWds4sIX_9WpRf3RqaQQ%2Flarge.jpg",
               },
             },
+          },
+          fulfillments: {
+            edges: [
+              {
+                node: {
+                  courier: "UPS",
+                  trackingId: "AP234345634",
+                  estimatedDelivery: "Friday, August 6",
+                },
+              },
+            ],
           },
         },
       },
