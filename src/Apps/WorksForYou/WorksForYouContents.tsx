@@ -109,11 +109,12 @@ export class WorksForYouContent extends React.Component<Props, State> {
                         </a>
                       </Avatar>
                     )}
-                    <Box ml={2}>
+                    <Box ml={2} width="100%">
                       <Serif
                         style={{
                           textDecoration: "none",
                           display: "inline-block",
+                          width: "100%",
                         }}
                         weight="semibold"
                         size={"3"}
