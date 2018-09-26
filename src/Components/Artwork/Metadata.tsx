@@ -32,7 +32,7 @@ export class MetadataContainer extends React.Component<MetadataProps> {
           const enableLabFeature =
             user &&
             user.lab_features &&
-            user.lab_features.includes("New Artwork Brick")
+            user.lab_features.includes("New Buy Now Flow")
 
           const detailsContent = (
             <div className={className}>

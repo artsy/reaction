@@ -163,7 +163,7 @@ export class Details extends React.Component<Props, null> {
           const enableLabFeature =
             user &&
             user.lab_features &&
-            user.lab_features.includes("New Artwork Brick")
+            user.lab_features.includes("New Buy Now Flow")
           return (
             <>
               {enableLabFeature && this.saleInfoLine()}
