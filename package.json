@@ -144,7 +144,7 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
-    "@artsy/palette": "^2.18.0",
+    "@artsy/palette": "^2.18.1",
     "cheerio": "^1.0.0-rc.2",
     "farce": "^0.2.6",
     "formik": "^0.11.11",
