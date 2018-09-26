@@ -43,7 +43,7 @@ export class Details extends React.Component<Props, null> {
             ", ",
             includeLinks
               ? this.link(artist.name, artist.href, artist.__id + "-" + index)
-              : this.line(artist.name),
+              : artist.name,
           ])
         }, [])
         .slice(1)
