@@ -86,6 +86,38 @@ describe("Payment", () => {
     expect(paymentRoute.find(Collapse).props().open).toBe(true)
   })
 
+  it("pre-populates with available details when returning to the payment route", () => {
+    const paymentRoute = mount(
+      <PaymentRoute
+        {...testProps}
+        order={{
+          ...PickupOrder,
+          id: "1234",
+          creditCard: {
+            name: "Artsy UK Ltd",
+            street1: "14 Gower's Walk",
+            street2: "Suite 2.5, The Loom",
+            city: "London",
+            state: "Whitechapel",
+            country: "UK",
+            postal_code: "E1 8PY",
+          },
+        }}
+      />
+    )
+
+    expect(paymentRoute.find(AddressForm).props().defaultValue).toEqual({
+      name: "Artsy UK Ltd",
+      addressLine1: "14 Gower's Walk",
+      addressLine2: "Suite 2.5, The Loom",
+      city: "London",
+      region: "Whitechapel",
+      postalCode: "E1 8PY",
+      country: "UK",
+      phoneNumber: "",
+    })
+  })
+
   it("always uses the billing address for stripe tokenization when the user selected 'pick' shipping option", () => {
     const thenMock = jest.fn()
     stripeMock.createToken.mockReturnValue({ then: thenMock })
