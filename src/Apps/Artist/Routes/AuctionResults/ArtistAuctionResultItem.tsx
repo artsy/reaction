@@ -17,12 +17,11 @@ import {
   Serif,
   Spacer,
 } from "@artsy/palette"
+import { Mediator } from "Artsy/SystemContext"
 
 export interface Props extends ContextProps {
   auctionResult: ArtistAuctionResultItem_auctionResult
-  mediator?: {
-    trigger: (action: string, config: object) => void
-  }
+  mediator?: Mediator
   lastChild: boolean
   user: User
 }

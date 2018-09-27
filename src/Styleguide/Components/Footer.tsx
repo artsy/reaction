@@ -1,5 +1,6 @@
 import { Flex, Sans, Separator, Serif, space, Spacer } from "@artsy/palette"
 import { ContextConsumer } from "Artsy/Router"
+import { Mediator } from "Artsy/SystemContext"
 import React from "react"
 import styled from "styled-components"
 import { FlexDirectionProps } from "styled-system"
@@ -11,9 +12,7 @@ import { Mark } from "Styleguide/Elements/Logo"
 import { Responsive } from "Utils/Responsive"
 
 interface Props {
-  mediator?: {
-    trigger: (action: string, config?: object) => void
-  }
+  mediator?: Mediator
 }
 
 export const Footer: React.SFC<Props> = props => {

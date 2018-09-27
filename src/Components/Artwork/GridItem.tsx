@@ -1,5 +1,6 @@
 import { Flex, Sans } from "@artsy/palette"
 import { GridItem_artwork } from "__generated__/GridItem_artwork.graphql"
+import { Mediator } from "Artsy/SystemContext"
 import { pickBy } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -28,9 +29,7 @@ interface Props extends React.HTMLProps<ArtworkGridItemContainer> {
   artwork: GridItem_artwork
   style?: any
   user?: User
-  mediator?: {
-    trigger: (action: string, config: object) => void
-  }
+  mediator?: Mediator
 }
 
 interface State {

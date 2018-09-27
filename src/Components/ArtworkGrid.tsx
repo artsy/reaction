@@ -1,4 +1,5 @@
 import { ArtworkGrid_artworks } from "__generated__/ArtworkGrid_artworks.graphql"
+import { Mediator } from "Artsy/SystemContext"
 import React from "react"
 import ReactDOM from "react-dom"
 // @ts-ignore
@@ -18,9 +19,7 @@ export interface ArtworkGridContainerProps
   onLoadMore?: () => any
   useRelay?: boolean
   user?: User
-  mediator?: {
-    trigger: (action: string, config: object) => void
-  }
+  mediator?: Mediator
 }
 
 export interface ArtworkGridContainerState {

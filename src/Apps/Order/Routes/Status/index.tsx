@@ -1,6 +1,7 @@
 import { Flex, Join, Message, Sans, Serif, Spacer } from "@artsy/palette"
 import { Status_order } from "__generated__/Status_order.graphql"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
+import { Mediator } from "Artsy/SystemContext"
 import React, { Component } from "react"
 import { Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -12,9 +13,7 @@ import { TransactionSummaryFragmentContainer as TransactionSummary } from "../..
 
 export interface StatusProps {
   order: Status_order
-  mediator?: {
-    trigger: (action: string, config: object) => void
-  }
+  mediator?: Mediator
 }
 
 export class StatusRoute extends Component<StatusProps> {

@@ -1,62 +1,156 @@
-import { Spacer, StackableBorderBox } from "@artsy/palette"
-import { artistResponse } from "Apps/__test__/Fixtures/MarketInsights"
-import React from "react"
+import React, { SFC } from "react"
+
+import { Box, Sans, Spacer, Spinner, StackableBorderBox } from "@artsy/palette"
+import { ArtistInfo_artist } from "__generated__/ArtistInfo_artist.graphql"
+import { ArtistInfoQuery } from "__generated__/ArtistInfoQuery.graphql"
+import { ContextConsumer } from "Artsy"
+import { Mediator } from "Artsy/SystemContext"
+import FollowArtistButton from "Components/FollowButton/FollowArtistButton"
+import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
+import { EntityHeader } from "Styleguide/Components/EntityHeader"
+import { get } from "Utils/get"
 
 import {
-  ArtistBio,
-  MarketInsights,
-  MarketInsightsProps,
-  SelectedExhibitions,
-  SelectedExhibitionsProps,
+  ArtistBioFragmentContainer as ArtistBio,
+  MarketInsightsFragmentContainer as MarketInsights,
+  SelectedExhibitionFragmentContainer as SelectedExhibitions,
 } from "Styleguide/Components"
-import { EntityHeader } from "Styleguide/Components/EntityHeader"
 
-interface ArtistInfoProps
-  extends MarketInsightsProps,
-    SelectedExhibitionsProps {
-  name: string
-  bio: string
-  credit?: string
+interface ArtistInfoProps {
+  artist: ArtistInfo_artist
+  user: User
+  mediator?: Mediator
 }
 
-export class ArtistInfo extends React.Component<ArtistInfoProps> {
-  render() {
-    // FIXME: Fetch from relay
-    const props = {
-      href: "/artist/francesca-dimattio",
-      imageUrl: "https://picsum.photos/110/110/?random",
-      name: "Francesca DiMattio",
-      meta: "American, b. 1979",
-    }
+export const ArtistInfo: SFC<ArtistInfoProps> = props => {
+  const imageUrl = get(props, p => p.artist.image.cropped.url)
 
-    return (
-      <>
-        <StackableBorderBox p={2} flexDirection="column">
-          <EntityHeader {...props} />
-          <Spacer mb={1} />
-          <ArtistBio
-            maxChars={200}
-            bio={
-              {
-                biography_blurb: {
-                  text: this.props.bio,
-                  credit: this.props.credit,
-                },
-              } as any
-            }
+  return (
+    <>
+      <StackableBorderBox p={2} flexDirection="column">
+        <EntityHeader
+          name={props.artist.name}
+          meta={props.artist.formatted_nationality_and_birthday}
+          imageUrl={imageUrl}
+          FollowButton={
+            <FollowArtistButton
+              artist={props.artist}
+              user={props.user}
+              onOpenAuthModal={() => {
+                props.mediator.trigger("open:auth", {
+                  mode: "signup",
+                  copy: `Sign up to follow ${props.artist.name}`,
+                  signupIntent: "follow artist",
+                  afterSignUpAction: {
+                    kind: "artist",
+                    action: "follow",
+                    objectId: props.artist.id,
+                  },
+                })
+              }}
+              render={({ is_followed }) => {
+                return (
+                  <Sans
+                    size="2"
+                    weight="medium"
+                    style={{
+                      cursor: "pointer",
+                      textDecoration: "underline",
+                    }}
+                  >
+                    {is_followed ? "Following" : "Follow"}
+                  </Sans>
+                )
+              }}
+            >
+              Follow
+            </FollowArtistButton>
+          }
+        />
+        <Spacer mb={1} />
+        <ArtistBio bio={props.artist} maxChars={300} />
+      </StackableBorderBox>
+      <StackableBorderBox p={2}>
+        <MarketInsights artist={props.artist} border={false} />
+      </StackableBorderBox>
+      <StackableBorderBox p={2}>
+        <SelectedExhibitions
+          artistID={props.artist.id}
+          border={false}
+          totalExhibitions={props.artist.counts.partner_shows}
+          exhibitions={props.artist.exhibition_highlights}
+          ViewAllLink={
+            <a href={`https://artsy.net/artist/${props.artist.id}/cv`}>
+              View all
+            </a>
+          }
+        />
+      </StackableBorderBox>
+    </>
+  )
+}
+
+export const ArtistInfoFragmentContainer = createFragmentContainer(
+  ArtistInfo,
+  graphql`
+    fragment ArtistInfo_artist on Artist {
+      id
+      name
+      href
+      image {
+        cropped(width: 100, height: 100) {
+          url
+        }
+      }
+      formatted_nationality_and_birthday
+      counts {
+        partner_shows
+      }
+      exhibition_highlights(size: 3) {
+        ...SelectedExhibitions_exhibitions
+      }
+      ...ArtistBio_bio
+      ...MarketInsightsArtistPage_artist
+      ...FollowArtistButton_artist
+    }
+  `
+)
+
+export const ArtistInfoQueryRenderer = ({ artistID }: { artistID: string }) => {
+  return (
+    <ContextConsumer>
+      {({ user, mediator, relayEnvironment }) => {
+        return (
+          <QueryRenderer<ArtistInfoQuery>
+            environment={relayEnvironment}
+            variables={{ artistID }}
+            query={graphql`
+              query ArtistInfoQuery($artistID: String!) {
+                artist(id: $artistID) {
+                  ...ArtistInfo_artist
+                }
+              }
+            `}
+            render={({ props }) => {
+              if (props) {
+                return (
+                  <ArtistInfoFragmentContainer
+                    artist={props.artist as any}
+                    user={user}
+                    mediator={mediator}
+                  />
+                )
+              } else {
+                return (
+                  <Box width="100%" height="100px" position="relative">
+                    <Spinner />
+                  </Box>
+                )
+              }
+            }}
           />
-        </StackableBorderBox>
-        <StackableBorderBox p={2}>
-          <MarketInsights artist={artistResponse as any} border={false} />
-        </StackableBorderBox>
-        <StackableBorderBox p={2}>
-          <SelectedExhibitions
-            exhibitions={this.props.exhibitions}
-            border={false}
-            collapsible={false}
-          />
-        </StackableBorderBox>
-      </>
-    )
-  }
+        )
+      }}
+    </ContextConsumer>
+  )
 }
