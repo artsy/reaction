@@ -2,6 +2,7 @@
 import { ArtworkGrid_viewer } from "__generated__/ArtworkGrid_viewer.graphql"
 import { FilterState } from "Apps/Collect/FilterState"
 import { ContextConsumer } from "Artsy"
+import { SystemProps } from "Artsy/SystemContext"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Toggle } from "Styleguide/Components/Toggle"
@@ -27,13 +28,13 @@ interface Props {
   viewer: ArtworkGrid_viewer
 }
 
-class Filter extends Component<Props> {
-  static defaultProps = {
-    hideTopBorder: false,
-  }
-
-  renderMedium(filters, mediums, mediator) {
-    return mediums.map((medium, index) => {
+export const MediumRadios: React.SFC<{
+  filters: FilterState
+  mediums: ArtworkGrid_viewer["filter_artworks"]["aggregations"][0]["counts"]
+  mediator: SystemProps["mediator"]
+}> = ({ filters, mediums, mediator }) => (
+  <>
+    {mediums.map((medium, index) => {
       const isSelected = filters.state.medium === medium.id
 
       return (
@@ -53,11 +54,16 @@ class Filter extends Component<Props> {
           {medium.name}
         </Radio>
       )
-    })
-  }
+    })}
+  </>
+)
 
-  renderTimePeriods(filters, mediator) {
-    return allowedPeriods.map((timePeriod, index) => {
+export const TimePeriodRadios: React.SFC<{
+  filters: FilterState
+  mediator: SystemProps["mediator"]
+}> = ({ filters, mediator }) => (
+  <>
+    {allowedPeriods.map((timePeriod, index) => {
       const isSelected = filters.state.major_periods[0] === timePeriod
 
       return (
@@ -77,7 +83,13 @@ class Filter extends Component<Props> {
           {timePeriod}
         </Radio>
       )
-    })
+    })}
+  </>
+)
+
+class Filter extends Component<Props> {
+  static defaultProps = {
+    hideTopBorder: false,
   }
 
   renderPriceRange(filters, mediator) {
@@ -183,11 +195,11 @@ class Filter extends Component<Props> {
                                 </Flex>
 
                                 <Toggle label="Medium" expanded>
-                                  {this.renderMedium(
-                                    filters,
-                                    mediumAggregation.counts,
-                                    mediator
-                                  )}
+                                  <MediumRadios
+                                    filters={filters}
+                                    mediums={mediumAggregation.counts}
+                                    mediator={mediator}
+                                  />
                                 </Toggle>
                                 <Toggle
                                   expanded={
@@ -195,7 +207,10 @@ class Filter extends Component<Props> {
                                   }
                                   label="Time period"
                                 >
-                                  {this.renderTimePeriods(filters, mediator)}
+                                  <TimePeriodRadios
+                                    filters={filters}
+                                    mediator={mediator}
+                                  />
                                 </Toggle>
                               </Sidebar>
                             )}
