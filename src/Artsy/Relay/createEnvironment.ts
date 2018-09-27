@@ -10,10 +10,22 @@ import { NetworkError } from "Utils/errors"
 
 import {
   cacheMiddleware,
+  errorMiddleware,
   loggerMiddleware,
   RelayNetworkLayer,
   urlMiddleware,
 } from "react-relay-network-modern"
+
+const isServer = typeof window === "undefined"
+const isDevelopment =
+  (isServer ? process.env.NODE_ENV : sd.NODE_ENV) === "development"
+
+// Only log on the client during development
+const loggingEnabled = isDevelopment && !isServer
+
+const METAPHYSICS_ENDPOINT = isServer
+  ? process.env.METAPHYSICS_ENDPOINT
+  : sd.METAPHYSICS_ENDPOINT
 
 const USER_AGENT = `Reaction/${ReactionVersion}`
 
@@ -30,7 +42,7 @@ interface RelayEnvironment extends Environment {
 
 export function createEnvironment(config: Config = {}) {
   const { cache = {}, checkStatus, user, relayNetwork } = config
-  const isServer = typeof window === "undefined"
+
   const relaySSRMiddleware = isServer
     ? new RelayServerSSR()
     : new RelayClientSSR(cache)
@@ -57,15 +69,11 @@ export function createEnvironment(config: Config = {}) {
     console.warn("Browser does not support i18n API, not setting TZ header.")
   }
 
-  const url = isServer
-    ? process.env.METAPHYSICS_ENDPOINT
-    : sd.METAPHYSICS_ENDPOINT
-
   const network =
     relayNetwork ||
     new RelayNetworkLayer([
       urlMiddleware({
-        url,
+        url: METAPHYSICS_ENDPOINT,
         headers: !!user
           ? {
               ...headers,
@@ -95,8 +103,8 @@ export function createEnvironment(config: Config = {}) {
           throw error
         }
       },
-      // TODO: Audit logging
-      !isServer && loggerMiddleware(),
+      loggingEnabled && loggerMiddleware(),
+      loggingEnabled && errorMiddleware(),
     ])
 
   const source = new RecordSource()
