@@ -12,25 +12,28 @@ const genDefaultConfig = require("@storybook/react/dist/server/config/defaults/w
 
 env.load()
 
-/**
- * Write out a file that stubs the data that’s normally shared with the client through the `sharify` module. This file
- * is then replaced in the product of webpack where normally the actual `sharify` module would be loaded.
- */
 const {
   WEBPACK_DEVTOOL = "cheap-module-eval-source-map",
   FORCE_CLOUDFRONT_URL,
   GEMINI_CLOUDFRONT_URL,
   METAPHYSICS_ENDPOINT,
+  NODE_ENV,
   USER_ID,
   USER_ACCESS_TOKEN,
   USER_LAB_FEATURES,
   XAPP_TOKEN,
 } = process.env
 
+/**
+ * Write out a file that stubs the data that’s normally shared with the client
+ * through the `sharify` module. This file is then replaced in the product of
+ * webpack where normally the actual `sharify` module would be loaded.
+ */
 const sharifyPath = sharify({
   FORCE_CLOUDFRONT_URL,
   GEMINI_CLOUDFRONT_URL,
   METAPHYSICS_ENDPOINT,
+  NODE_ENV,
   XAPP_TOKEN,
 })
 
