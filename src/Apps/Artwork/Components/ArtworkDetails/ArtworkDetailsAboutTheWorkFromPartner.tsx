@@ -1,4 +1,4 @@
-import { Avatar, Box, Serif, StackableBorderBox } from "@artsy/palette"
+import { Avatar, Box, Serif, Spacer, StackableBorderBox } from "@artsy/palette"
 import { filterLocations } from "Apps/Artwork/Utils/filterLocations"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -42,6 +42,7 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
             imageUrl={imageUrl}
             initials={partner.initials}
           />
+          <Spacer mb={1} />
           <Serif size="3">
             <ReadMore maxChars={300} content={additional_information} />
           </Serif>
