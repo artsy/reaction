@@ -1,12 +1,13 @@
 import { createMockNetworkLayer } from "Artsy/Relay/createMockNetworkLayer"
 import { buildClientApp } from "Artsy/Router/buildClientApp"
 import { HistoryOptions } from "farce"
+import { RouteConfig } from "found"
 import { IMocks } from "graphql-tools/dist/Interfaces"
 import React from "react"
 import { MatchingMediaQueries } from "Utils/Responsive"
 
 interface Props {
-  routes: object[]
+  routes: RouteConfig[]
   initialMatchingMediaQueries?: MatchingMediaQueries
   initialRoute?: string
   initialState?: object

@@ -16,6 +16,7 @@ export interface RouterConfig {
    * Context values to be passed to ArtsyContext
    */
   context?: ContextProps
+
   /**
    * Configuration options to be passed to Found router
    */
@@ -24,16 +25,20 @@ export interface RouterConfig {
      * Defines the type of history to use, depending on router environment.
      */
     protocol?: HistoryProtocol
+
     options?: HistoryOptions
   }
+
   /**
    * Initial route for router on boot
    */
   initialRoute?: string
+
   /**
    * Array of routes to be passed to Found
    */
-  routes: RouteConfig
+  routes: RouteConfig[]
+
   /**
    * URL passed from server
    */

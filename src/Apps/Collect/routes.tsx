@@ -1,9 +1,10 @@
+import { RouteConfig } from "found"
 import React from "react"
 import { graphql } from "react-relay"
 import AnalyticsProvider from "./AnalyticsProvider"
 import { CollectAppFragmentContainer as CollectApp } from "./CollectApp"
 
-export const routes = [
+export const routes: RouteConfig[] = [
   {
     path: "/collect/:medium?",
     Component: CollectApp,
