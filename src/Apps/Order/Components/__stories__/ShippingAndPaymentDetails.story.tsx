@@ -27,6 +27,7 @@ const ship: ShippingAddress_ship = {
 const order: ShippingAndPaymentReview_order &
   ShippingAndPaymentSummary_order = {
   " $refType": null,
+  state: "PENDING",
   requestedFulfillment: {
     __typename: "Ship",
     ...ship,

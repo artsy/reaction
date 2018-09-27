@@ -80,7 +80,9 @@ storiesOf("SSR Router/Example", module).add("Example Router App", () => {
     <ClientRouter
       routes={routes}
       context={{
-        mediator: x => x,
+        mediator: {
+          trigger: x => x,
+        },
       }}
     />
   )

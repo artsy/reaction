@@ -18,12 +18,8 @@ storiesOf("Apps", module)
     return (
       <ClientRouter
         routes={artistRoutes}
-        initialRoute="/artist/pablo-picasso"
-        context={{
-          mediator: {
-            trigger: x => x,
-          },
-        }}
+        initialRoute="/artist/james-rosenquist"
+        context={{ mediator: { trigger: x => x } }}
       />
     )
   })
@@ -31,7 +27,7 @@ storiesOf("Apps", module)
     return (
       <ClientRouter
         routes={collectRoutes}
-        initialRoute="/collect2"
+        initialRoute="/collect"
         context={{
           mediator: {
             trigger: x => x,

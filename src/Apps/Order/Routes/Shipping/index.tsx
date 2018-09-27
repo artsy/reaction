@@ -50,8 +50,10 @@ export interface ShippingState {
   shippingOption: OrderFulfillmentType
   address: Address
   addressErrors: AddressErrors
-  isComittingMutation: boolean
+  isCommittingMutation: boolean
   isErrorModalOpen: boolean
+  errorModalTitle: string
+  errorModalMessage: string
 }
 
 export class ShippingRoute extends Component<ShippingProps, ShippingState> {
@@ -59,10 +61,12 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     shippingOption: ((this.props.order.requestedFulfillment &&
       this.props.order.requestedFulfillment.__typename.toUpperCase()) ||
       "SHIP") as OrderFulfillmentType,
-    isComittingMutation: false,
+    isCommittingMutation: false,
     isErrorModalOpen: false,
     address: this.startingAddress,
     addressErrors: {},
+    errorModalTitle: null,
+    errorModalMessage: null,
   }
 
   get startingAddress() {
@@ -77,14 +81,17 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
   }
 
   onContinueButtonPressed: () => void = () => {
-    this.setState({ isComittingMutation: true }, () => {
+    this.setState({ isCommittingMutation: true }, () => {
       const { address, shippingOption } = this.state
 
       if (this.state.shippingOption === "SHIP") {
         const errors = this.validateAddress(this.state.address)
 
         if (Object.keys(errors).filter(key => errors[key]).length > 0) {
-          this.setState({ isComittingMutation: false, addressErrors: errors })
+          this.setState({
+            isCommittingMutation: false,
+            addressErrors: errors,
+          })
           return
         }
       }
@@ -123,24 +130,44 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
               },
             },
             onCompleted: data => {
-              this.setState({ isComittingMutation: false })
+              this.setState({ isCommittingMutation: false })
               const {
                 setOrderShipping: { orderOrError },
               } = data
 
               if (orderOrError.error) {
-                this.onError(orderOrError.error)
+                const errorCode = orderOrError.error.code
+                if (
+                  errorCode &&
+                  (errorCode === "missing_region" ||
+                    errorCode === "missing_country" ||
+                    errorCode === "missing_postal_code")
+                ) {
+                  this.onMutationError(
+                    orderOrError.error,
+                    "Invalid address",
+                    "There was an error processing your address. Please review and try again."
+                  )
+                } else {
+                  this.onMutationError(orderOrError.error)
+                }
               } else {
                 this.props.router.push(`/order2/${this.props.order.id}/payment`)
               }
             },
-            onError: error => {
-              this.setState({ isComittingMutation: false })
-              this.onError(error)
-            },
+            onError: this.onMutationError.bind(this),
           }
         )
       }
+    })
+  }
+
+  onMutationError(errors, errorModalTitle?, errorModalMessage?) {
+    this.setState({
+      isCommittingMutation: false,
+      isErrorModalOpen: true,
+      errorModalTitle,
+      errorModalMessage,
     })
   }
 
@@ -165,11 +192,6 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     }
   }
 
-  onError = error => {
-    console.error("Order/Shipping/index.tsx", error)
-    this.setState({ isComittingMutation: false, isErrorModalOpen: true })
-  }
-
   onCloseModal = () => {
     this.setState({ isErrorModalOpen: false })
   }
@@ -186,7 +208,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
 
   render() {
     const { order } = this.props
-    const { address, addressErrors, isComittingMutation } = this.state
+    const { address, addressErrors, isCommittingMutation } = this.state
     const isPickupAvailable = get(
       this.props,
       "order.lineItems.edges[0].node.artwork.pickup_available"
@@ -207,7 +229,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
               Content={
                 <Flex
                   flexDirection="column"
-                  style={isComittingMutation ? { pointerEvents: "none" } : {}}
+                  style={isCommittingMutation ? { pointerEvents: "none" } : {}}
                 >
                   {/* TODO: Make RadioGroup generic for the allowed values,
                   which could also ensure the children only use
@@ -221,18 +243,18 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                         defaultValue={this.state.shippingOption}
                       >
                         <BorderedRadio value="SHIP">
-                          Provide shipping address
+                          Add shipping address
                         </BorderedRadio>
 
                         <BorderedRadio value="PICKUP">
-                          Arrange for pickup
+                          Arrange for pickup (free)
                           <Collapse
                             open={this.state.shippingOption === "PICKUP"}
                           >
                             <Sans size="2" color="black60">
-                              After you place your order, you’ll be appointed an
-                              Artsy Specialist within 2 business days to handle
-                              pickup logistics.
+                              After your order is confirmed, a specialist will
+                              contact you within 2 business days to coordinate
+                              pickup.
                             </Sans>
                           </Collapse>
                         </BorderedRadio>
@@ -256,7 +278,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                   {!xs && (
                     <Button
                       onClick={this.onContinueButtonPressed}
-                      loading={isComittingMutation}
+                      loading={isCommittingMutation}
                       size="large"
                       width="100%"
                     >
@@ -276,7 +298,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                       <Spacer mb={3} />
                       <Button
                         onClick={this.onContinueButtonPressed}
-                        loading={isComittingMutation}
+                        loading={isCommittingMutation}
                         size="large"
                         width="100%"
                       >
@@ -293,6 +315,8 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
         <ErrorModal
           onClose={this.onCloseModal}
           show={this.state.isErrorModalOpen}
+          detailText={this.state.errorModalMessage}
+          headerText={this.state.errorModalTitle}
         />
       </>
     )

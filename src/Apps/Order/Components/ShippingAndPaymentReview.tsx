@@ -30,8 +30,8 @@ export const ShippingAndPaymentReview = ({
           }
         >
           <Sans size="2">
-            After you place your order, you’ll be appointed an Artsy specialist
-            within 2 business days to handle pickup logistics.
+            After your order is confirmed, a specialist will contact you within
+            2 business days to coordinate pickup.
           </Sans>
         </StepSummaryItem>
       )}

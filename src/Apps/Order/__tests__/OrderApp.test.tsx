@@ -1,10 +1,9 @@
+import { ContextProvider } from "Artsy/Router"
 import { mount } from "enzyme"
 import React from "react"
+import { HeadProvider } from "react-head"
+import { Meta } from "react-head"
 import { OrderApp } from "../OrderApp"
-
-jest.mock("react-head", () => ({
-  Title: () => false,
-}))
 
 jest.mock("react-stripe-elements", () => ({
   Elements: ({ children }) => children,
@@ -12,6 +11,15 @@ jest.mock("react-stripe-elements", () => ({
 }))
 
 describe("OrderApp", () => {
+  const getWrapper = ({ props, context }) => {
+    return mount(
+      <HeadProvider>
+        <ContextProvider {...context}>
+          <OrderApp {...props} />
+        </ContextProvider>
+      </HeadProvider>
+    )
+  }
   beforeAll(() => {
     // @ts-ignore
     // tslint:disable-next-line:no-empty
@@ -20,19 +28,19 @@ describe("OrderApp", () => {
     window.sd = { STRIPE_PUBLISHABLE_KEY: "" }
   })
 
-  const getProps = ({ state, location, replace }) => {
+  const getProps = ({ state, location, replace } = {}) => {
     return {
       children: false,
       params: {
         orderID: "123",
       },
-      location: { pathname: location },
+      location: { pathname: location || "/order/123/shipping" },
       router: {
         // tslint:disable-next-line:no-empty
         addTransitionHook: () => {},
         replace,
       },
-      order: { state },
+      order: { state: state || "PENDING" },
       routeIndices: [],
       routes: [],
     }
@@ -46,7 +54,7 @@ describe("OrderApp", () => {
       replace,
     })
     // @ts-ignore
-    mount(<OrderApp {...props} />)
+    getWrapper({ props })
     expect(replace).not.toBeCalledWith("/order2/123/status")
   })
 
@@ -58,7 +66,25 @@ describe("OrderApp", () => {
       replace,
     })
     // @ts-ignore
-    mount(<OrderApp {...props} />)
+    getWrapper({ props })
     expect(replace).toBeCalledWith("/order2/123/status")
+  })
+
+  it("omits meta viewport tag unless Eigen", () => {
+    const props = getProps()
+    const subject = getWrapper({ props })
+    const viewportMetaTags = subject
+      .find(Meta)
+      .filterWhere(meta => meta.props().name === "viewport")
+    expect(viewportMetaTags.length).toBe(0)
+  })
+
+  it("includes meta viewport tag if Eigen", () => {
+    const props = getProps()
+    const subject = getWrapper({ props, context: { isEigen: true } })
+    const viewportMetaTags = subject
+      .find(Meta)
+      .filterWhere(meta => meta.props().name === "viewport")
+    expect(viewportMetaTags.length).toBe(1)
   })
 })

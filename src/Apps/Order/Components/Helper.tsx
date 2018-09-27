@@ -28,7 +28,7 @@ export const Helper: React.SFC<HelperProps> = ({ artworkId }) => (
               })
             }
           >
-            ask an Artsy Specialist
+            ask a specialist
           </Link>.
         </Sans>
         <Spacer mb={2} />

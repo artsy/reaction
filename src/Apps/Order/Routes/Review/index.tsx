@@ -1,10 +1,9 @@
-import { Button, Flex, Join, Spacer } from "@artsy/palette"
+import { Button, Flex, Join, Sans, Spacer } from "@artsy/palette"
 import { Review_order } from "__generated__/Review_order.graphql"
 import { ReviewSubmitOrderMutation } from "__generated__/ReviewSubmitOrderMutation.graphql"
 import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
 import { ItemReviewFragmentContainer as ItemReview } from "Apps/Order/Components/ItemReview"
 import { ShippingAndPaymentReviewFragmentContainer as ShippingAndPaymentReview } from "Apps/Order/Components/ShippingAndPaymentReview"
-import { TermsOfServiceCheckbox } from "Apps/Order/Components/TermsOfServiceCheckbox"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
 import React, { Component } from "react"
@@ -27,7 +26,6 @@ export interface ReviewProps {
 }
 
 interface ReviewState {
-  termsCheckboxSelected: boolean
   isSubmitting: boolean
   isErrorModalOpen: boolean
   errorModalMessage: string
@@ -35,17 +33,9 @@ interface ReviewState {
 
 export class ReviewRoute extends Component<ReviewProps, ReviewState> {
   state = {
-    termsCheckboxSelected: false,
     isSubmitting: false,
     isErrorModalOpen: false,
     errorModalMessage: null,
-  }
-
-  updateTermsCheckbox() {
-    const { termsCheckboxSelected } = this.state
-    this.setState({
-      termsCheckboxSelected: !termsCheckboxSelected,
-    })
   }
 
   onOrderSubmitted() {
@@ -113,7 +103,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
 
   render() {
     const { order } = this.props
-    const { termsCheckboxSelected, isSubmitting } = this.state
+    const { isSubmitting } = this.state
 
     return (
       <>
@@ -144,22 +134,25 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                           artwork={order.lineItems.edges[0].node.artwork}
                         />
                         <Spacer mb={3} />
-                        <Flex justifyContent="center">
-                          <TermsOfServiceCheckbox
-                            onSelect={() => this.updateTermsCheckbox()}
-                            selected={termsCheckboxSelected}
-                          />
-                        </Flex>
-                        <Spacer mb={3} />
                         <Button
                           size="large"
                           width="100%"
                           loading={isSubmitting}
-                          disabled={!termsCheckboxSelected}
                           onClick={() => this.onOrderSubmitted()}
                         >
-                          Submit Order
+                          Submit
                         </Button>
+                        <Spacer mb={2} />
+                        <Sans textAlign="center" size="2" color="black60">
+                          By clicking Submit, I agree to Artsy’s{" "}
+                          <a
+                            href="https://www.artsy.net/conditions-of-sale"
+                            target="_blank"
+                          >
+                            Conditions of Sale
+                          </a>
+                          .
+                        </Sans>
                       </>
                     )}
                   </Join>
@@ -176,21 +169,25 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                   )}
                   {xs && (
                     <>
-                      <Flex justifyContent="center">
-                        <TermsOfServiceCheckbox
-                          onSelect={() => this.updateTermsCheckbox()}
-                          selected={termsCheckboxSelected}
-                        />
-                      </Flex>
-                      <Spacer mb={2} />
                       <Button
                         size="large"
                         width="100%"
-                        disabled={!termsCheckboxSelected}
+                        loading={isSubmitting}
                         onClick={() => this.onOrderSubmitted()}
                       >
-                        Submit Order
+                        Submit
                       </Button>
+                      <Spacer mb={2} />
+                      <Sans size="2" color="black60">
+                        By clicking Submit, I agree to Artsy’s{" "}
+                        <a
+                          href="https://www.artsy.net/conditions-of-sale"
+                          target="_blank"
+                        >
+                          Conditions of Sale
+                        </a>
+                        .
+                      </Sans>
                       <Spacer mb={2} />
                       <Helper
                         artworkId={order.lineItems.edges[0].node.artwork.id}

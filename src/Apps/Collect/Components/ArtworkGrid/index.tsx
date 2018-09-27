@@ -191,12 +191,7 @@ class Filter extends Component<Props> {
                                     mediator
                                   )}
                                 </Toggle>
-                                <Toggle
-                                  expanded={
-                                    filters.state.major_periods.length > 0
-                                  }
-                                  label="Time period"
-                                >
+                                <Toggle label="Time period" expanded>
                                   {this.renderTimePeriods(filters, mediator)}
                                 </Toggle>
                               </Sidebar>

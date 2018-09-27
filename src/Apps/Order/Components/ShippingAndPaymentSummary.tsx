@@ -6,8 +6,15 @@ import { StepSummaryItem } from "Styleguide/Components/StepSummaryItem"
 import { CreditCardDetails } from "./CreditCardDetails"
 import { ShippingAddressFragmentContainer as ShippingAddress } from "./ShippingAddress"
 
+/**
+ * When the order is completed or canceled state we _don't_ want to tell
+ * the user that they'll be assigned an artsy specialist as it doesn't make
+ * sense in that context
+ */
+const showPickupCopy = state => state !== "FULFILLED" && state !== "CANCELED"
+
 export const ShippingAndPaymentSummary = ({
-  order: { requestedFulfillment, lineItems, creditCard },
+  order: { state, requestedFulfillment, lineItems, creditCard },
   ...others
 }: {
   order: ShippingAndPaymentSummary_order
@@ -23,11 +30,15 @@ export const ShippingAndPaymentSummary = ({
           title={
             <>Pick up ({lineItems.edges[0].node.artwork.shippingOrigin})</>
           }
+          /* Fixes spacing issues with title when no pickup description copy is present */
+          mb={showPickupCopy(state) ? undefined : -1}
         >
-          <Serif size="3t">
-            You’ll be appointed an Artsy specialist within 2 business days to
-            handle pickup logistics.
-          </Serif>
+          {showPickupCopy(state) && (
+            <Serif size="3t">
+              You’ll be appointed an Artsy specialist within 2 business days to
+              handle pickup logistics.
+            </Serif>
+          )}
         </StepSummaryItem>
       )}
       <StepSummaryItem>
@@ -41,6 +52,7 @@ export const ShippingAndPaymentSummaryFragmentContainer = createFragmentContaine
   ShippingAndPaymentSummary,
   graphql`
     fragment ShippingAndPaymentSummary_order on Order {
+      state
       requestedFulfillment {
         __typename
         ...ShippingAddress_ship
