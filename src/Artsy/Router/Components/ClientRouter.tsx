@@ -1,8 +1,10 @@
 import { createMockNetworkLayer } from "Artsy/Relay/createMockNetworkLayer"
 import { buildClientApp } from "Artsy/Router/buildClientApp"
+import { ContextProps } from "Artsy/SystemContext"
 import { HistoryOptions } from "farce"
 import { IMocks } from "graphql-tools/dist/Interfaces"
 import React from "react"
+import { getUser } from "Utils/getUser"
 import { MatchingMediaQueries } from "Utils/Responsive"
 
 interface Props {
@@ -12,7 +14,7 @@ interface Props {
   initialState?: object
   historyOptions?: HistoryOptions
   mockResolvers?: IMocks
-  context?: object
+  context?: ContextProps
 }
 
 export class ClientRouter extends React.Component<Props> {
@@ -35,6 +37,8 @@ export class ClientRouter extends React.Component<Props> {
     } = this.props
 
     try {
+      const user = getUser(context && context.user)
+
       const { ClientApp } = await buildClientApp({
         routes,
         initialRoute,
@@ -44,6 +48,7 @@ export class ClientRouter extends React.Component<Props> {
         },
         context: {
           ...context,
+          user,
           initialMatchingMediaQueries,
           relayNetwork: mockResolvers && createMockNetworkLayer(mockResolvers),
         },
