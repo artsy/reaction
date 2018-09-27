@@ -1,23 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ArticleCard renders an article properly 1`] = `
-.c3 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-.c8 {
+.c7 {
   margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
-.c7 {
+.c6 {
   margin: 10px 20px 0 0;
 }
 
-.c7:before {
+.c6:before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -27,7 +20,7 @@ exports[`ArticleCard renders an article properly 1`] = `
   background-color: black;
 }
 
-.c6 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -42,7 +35,7 @@ exports[`ArticleCard renders an article properly 1`] = `
   color: black;
 }
 
-.c12 {
+.c11 {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -52,7 +45,7 @@ exports[`ArticleCard renders an article properly 1`] = `
   display: block;
 }
 
-.c10 {
+.c9 {
   position: relative;
   width: 50%;
   height: inherit;
@@ -74,15 +67,15 @@ exports[`ArticleCard renders an article properly 1`] = `
   display: flex;
 }
 
-.c0 .c11 {
+.c0 .c10 {
   opacity: 1;
 }
 
-.c0:hover .c11 {
+.c0:hover .c10 {
   opacity: 0.7;
 }
 
-.c0 .c9 {
+.c0 .c8 {
   background: white;
 }
 
@@ -102,7 +95,7 @@ exports[`ArticleCard renders an article properly 1`] = `
   margin-bottom: 5px;
 }
 
-.c4 {
+.c3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 45px;
@@ -114,7 +107,7 @@ exports[`ArticleCard renders an article properly 1`] = `
   margin-bottom: 10px;
 }
 
-.c5 {
+.c4 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -122,7 +115,7 @@ exports[`ArticleCard renders an article properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c10 {
+  .c9 {
     width: 100%;
     margin-left: 0;
     margin-bottom: 10px;
@@ -146,7 +139,7 @@ exports[`ArticleCard renders an article properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c4 {
+  .c3 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
@@ -155,7 +148,7 @@ exports[`ArticleCard renders an article properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c5 {
+  .c4 {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
@@ -175,7 +168,7 @@ exports[`ArticleCard renders an article properly 1`] = `
   >
     <div>
       <div
-        className="c2 c3"
+        className="c2 sc-htpNat KtFsv sc-bwzfXH CuLFv"
         fontFamily={
           Object {
             "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -187,22 +180,22 @@ exports[`ArticleCard renders an article properly 1`] = `
         The Future of Art
       </div>
       <div
-        className="c4"
+        className="c3"
       >
         New York's Next Art District
       </div>
       <div
-        className="c5"
+        className="c4"
       >
         Land exhibitions, make influential contacts, and gain valuable feedback about your work.
       </div>
     </div>
     <div
-      className="Byline c6"
+      className="Byline c5"
       color="black"
     >
       <div
-        className="c3"
+        className="sc-htpNat KtFsv sc-bwzfXH CuLFv"
         fontFamily={
           Object {
             "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -212,17 +205,17 @@ exports[`ArticleCard renders an article properly 1`] = `
         fontSize={14}
       >
         <div
-          className="c7"
+          className="c6"
           color="black"
         >
           Casey Lesser
         </div>
       </div>
       <div
-        className="c8"
+        className="c7"
       >
         <div
-          className="c3"
+          className="sc-htpNat KtFsv sc-bwzfXH CuLFv"
           fontFamily={
             Object {
               "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -237,10 +230,10 @@ exports[`ArticleCard renders an article properly 1`] = `
     </div>
   </div>
   <div
-    className="c9 c10"
+    className="c8 c9"
   >
     <img
-      className="c11 c12"
+      className="c10 c11"
       src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=95"
     />
   </div>
@@ -248,19 +241,12 @@ exports[`ArticleCard renders an article properly 1`] = `
 `;
 
 exports[`ArticleCard renders an article with children properly 1`] = `
-.c3 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-.c11 {
+.c10 {
   width: 32px;
   height: 32px;
 }
 
-.c8 {
+.c7 {
   position: relative;
   width: 50%;
   height: inherit;
@@ -290,7 +276,7 @@ exports[`ArticleCard renders an article with children properly 1`] = `
   opacity: 0.7;
 }
 
-.c0 .c7 {
+.c0 .c6 {
   background: white;
 }
 
@@ -310,7 +296,7 @@ exports[`ArticleCard renders an article with children properly 1`] = `
   margin-bottom: 5px;
 }
 
-.c4 {
+.c3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 45px;
@@ -322,14 +308,14 @@ exports[`ArticleCard renders an article with children properly 1`] = `
   margin-bottom: 10px;
 }
 
-.c5 {
+.c4 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
   -webkit-font-smoothing: antialiased;
 }
 
-.c6 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -340,11 +326,11 @@ exports[`ArticleCard renders an article with children properly 1`] = `
   align-items: flex-end;
 }
 
-.c6 span {
+.c5 span {
   margin-right: 5px;
 }
 
-.c10 {
+.c9 {
   position: absolute;
   left: 20px;
   bottom: 20px;
@@ -363,12 +349,12 @@ exports[`ArticleCard renders an article with children properly 1`] = `
   align-items: flex-end;
 }
 
-.c9 svg {
+.c8 svg {
   width: 40px;
 }
 
 @media (max-width:900px) {
-  .c8 {
+  .c7 {
     width: 100%;
     margin-left: 0;
     margin-bottom: 10px;
@@ -392,7 +378,7 @@ exports[`ArticleCard renders an article with children properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c4 {
+  .c3 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
@@ -401,7 +387,7 @@ exports[`ArticleCard renders an article with children properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c5 {
+  .c4 {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
@@ -411,7 +397,7 @@ exports[`ArticleCard renders an article with children properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c9 svg {
+  .c8 svg {
     width: 30px;
   }
 }
@@ -427,7 +413,7 @@ exports[`ArticleCard renders an article with children properly 1`] = `
   >
     <div>
       <div
-        className="c2 c3"
+        className="c2 sc-htpNat KtFsv sc-bwzfXH CuLFv"
         fontFamily={
           Object {
             "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -439,7 +425,7 @@ exports[`ArticleCard renders an article with children properly 1`] = `
         The Future of Art
       </div>
       <div
-        className="c4"
+        className="c3"
       >
         <div>
           Child 
@@ -447,7 +433,7 @@ exports[`ArticleCard renders an article with children properly 1`] = `
         </div>
       </div>
       <div
-        className="c5"
+        className="c4"
       >
         <div>
           Child 
@@ -456,7 +442,7 @@ exports[`ArticleCard renders an article with children properly 1`] = `
       </div>
     </div>
     <div
-      className="c6 c3"
+      className="c5 sc-htpNat KtFsv sc-bwzfXH CuLFv"
       fontFamily={
         Object {
           "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -472,17 +458,17 @@ exports[`ArticleCard renders an article with children properly 1`] = `
     </div>
   </div>
   <div
-    className="c7 c8"
+    className="c6 c7"
   >
     <div>
       Child 
       image
     </div>
     <div
-      className="c9 c10"
+      className="c8 c9"
     >
       <svg
-        className="c11"
+        className="c10"
         version="1.1"
         viewBox="0 0 40 56"
         x="0px"
@@ -502,7 +488,7 @@ exports[`ArticleCard renders an article with children properly 1`] = `
         </g>
       </svg>
       <div
-        className="c3"
+        className="sc-htpNat KtFsv sc-bwzfXH CuLFv"
         fontFamily={
           Object {
             "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -519,24 +505,17 @@ exports[`ArticleCard renders an article with children properly 1`] = `
 `;
 
 exports[`ArticleCard renders an article with unpublished media properly 1`] = `
-.c3 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-.c6 {
+.c5 {
   margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
-.c13 {
+.c12 {
   width: 32px;
   height: 32px;
 }
 
-.c10 {
+.c9 {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -546,7 +525,7 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
   display: block;
 }
 
-.c8 {
+.c7 {
   position: relative;
   width: 50%;
   height: inherit;
@@ -568,15 +547,15 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
   display: flex;
 }
 
-.c0 .c9 {
+.c0 .c8 {
   opacity: 1;
 }
 
-.c0:hover .c9 {
+.c0:hover .c8 {
   opacity: 0.7;
 }
 
-.c0 .c7 {
+.c0 .c6 {
   background: white;
 }
 
@@ -596,7 +575,7 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
   margin-bottom: 5px;
 }
 
-.c4 {
+.c3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 45px;
@@ -608,14 +587,14 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
   margin-bottom: 10px;
 }
 
-.c5 {
+.c4 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
   -webkit-font-smoothing: antialiased;
 }
 
-.c12 {
+.c11 {
   position: absolute;
   left: 20px;
   bottom: 20px;
@@ -634,12 +613,12 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
   align-items: flex-end;
 }
 
-.c11 svg {
+.c10 svg {
   width: 40px;
 }
 
 @media (max-width:900px) {
-  .c8 {
+  .c7 {
     width: 100%;
     margin-left: 0;
     margin-bottom: 10px;
@@ -663,7 +642,7 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c4 {
+  .c3 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
@@ -672,7 +651,7 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c5 {
+  .c4 {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
@@ -682,7 +661,7 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c11 svg {
+  .c10 svg {
     width: 30px;
   }
 }
@@ -698,7 +677,7 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
   >
     <div>
       <div
-        className="c2 c3"
+        className="c2 sc-htpNat KtFsv sc-bwzfXH CuLFv"
         fontFamily={
           Object {
             "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -710,21 +689,21 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
         The Future of Art
       </div>
       <div
-        className="c4"
+        className="c3"
       >
         New Study Shows the Gender Pay Gap for Artists Is Not So Simple
       </div>
       <div
-        className="c5"
+        className="c4"
       >
         The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
       </div>
     </div>
     <div
-      className="c6"
+      className="c5"
     >
       <div
-        className="c3"
+        className="sc-htpNat KtFsv sc-bwzfXH CuLFv"
         fontFamily={
           Object {
             "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -738,17 +717,17 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
     </div>
   </div>
   <div
-    className="c7 c8"
+    className="c6 c7"
   >
     <img
-      className="c9 c10"
+      className="c8 c9"
       src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
     />
     <div
-      className="c11 c12"
+      className="c10 c11"
     >
       <svg
-        className="c13"
+        className="c12"
         version="1.1"
         viewBox="0 0 40 56"
         x="0px"
@@ -768,7 +747,7 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
         </g>
       </svg>
       <div
-        className="c3"
+        className="sc-htpNat KtFsv sc-bwzfXH CuLFv"
         fontFamily={
           Object {
             "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
