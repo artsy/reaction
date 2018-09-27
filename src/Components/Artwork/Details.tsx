@@ -56,14 +56,19 @@ export class Details extends React.Component<Props, null> {
   }
 
   titleLine() {
-    return (
-      <TruncatedLine>
-        <TextLink href={this.props.artwork.href}>
-          <em>{this.props.artwork.title}</em>
-          {this.props.artwork.date && `, ${this.props.artwork.date}`}
-        </TextLink>
-      </TruncatedLine>
+    const { includeLinks } = this.props
+    const artworkText = (
+      <>
+        <em>{this.props.artwork.title}</em>
+        {this.props.artwork.date && `, ${this.props.artwork.date}`}
+      </>
     )
+    const artworkTextWithLink = includeLinks ? (
+      <TextLink href={this.props.artwork.href}>{artworkText}</TextLink>
+    ) : (
+      artworkText
+    )
+    return <TruncatedLine>{artworkTextWithLink}</TruncatedLine>
   }
 
   line(text) {
