@@ -27,7 +27,7 @@ storiesOf("Apps", module)
     return (
       <ClientRouter
         routes={collectRoutes}
-        initialRoute="/collect2"
+        initialRoute="/collect"
         context={{
           mediator: {
             trigger: x => x,
