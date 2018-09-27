@@ -92,11 +92,10 @@ class Filter extends Component<Props> {
         step={50}
         defaultValue={[initialMin, initialMax]}
         onAfterChange={([min, max]) => {
-          if (max === 50000) {
-            filters.setFilter("price_range", `${min}-*`, mediator)
-          } else {
-            filters.setFilter("price_range", `${min}-${max}`, mediator)
-          }
+          const minStr = min === 50 ? "*" : min
+          const maxStr = max === 50000 ? "*" : max
+
+          filters.setFilter("price_range", `${minStr}-${maxStr}`, mediator)
         }}
       />
     )
