@@ -2,19 +2,32 @@ import { FilterState } from "../FilterState"
 
 describe("FilterState", () => {
   let instance = null
+  const mediator = {
+    trigger: jest.fn(),
+  }
+
+  const tracking = {
+    trackEvent: jest.fn(),
+  }
 
   beforeEach(() => {
-    instance = new FilterState(initialState)
+    instance = new FilterState({
+      ...initialState,
+      tracking,
+    })
   })
 
   it("Gets initialized properly", () => {
-    expect(instance.state).toEqual(initialState)
+    expect(instance.state).toEqual({ ...initialState, major_periods: [[]] })
   })
 
-  it("updates it's state properly if a filter is changed", () => {
+  it("updates it's state properly if a filter is changed", done => {
     expect(instance.state.page).toEqual(1)
-    instance.setFilter("page", 3)
-    expect(instance.state.page).toEqual(3)
+    instance.setFilter("page", 3, mediator)
+    setTimeout(() => {
+      expect(instance.state.page).toEqual(3)
+      done()
+    })
   })
 })
 
@@ -28,7 +41,5 @@ const initialState = {
   acquireable: null,
   at_auction: null,
   inquireable_only: null,
-  price_range: null,
-  selectedFilters: [],
-  showActionSheet: false,
+  price_range: "*-*",
 }

@@ -1,8 +1,7 @@
-import { cloneDeep, isNil, omit, omitBy, uniq, without } from "lodash"
+import { cloneDeep, isNil, omit, omitBy } from "lodash"
 import { Container } from "unstated"
 
 export interface State {
-  // Search filters
   medium?: string
   major_periods?: string[]
   partner_id?: string
@@ -13,10 +12,6 @@ export interface State {
   at_auction?: boolean
   inquireable_only?: boolean
   price_range?: string
-
-  // UI
-  selectedFilters?: string[]
-  showActionSheet?: boolean
 
   tracking?: any
 }
@@ -32,8 +27,6 @@ const initialState = {
   at_auction: null,
   inquireable_only: null,
   price_range: "*-*",
-  selectedFilters: [],
-  showActionSheet: false,
 }
 
 export class FilterState extends Container<State> {
@@ -72,10 +65,7 @@ export class FilterState extends Container<State> {
   }
 
   get filteredState() {
-    return omitBy(
-      omit(this.state, ["selectedFilterCount", "showActionSheet"]),
-      isNil
-    )
+    return omitBy(this.state, isNil)
   }
 
   setPage(page, mediator) {
@@ -87,12 +77,10 @@ export class FilterState extends Container<State> {
   resetFilters = () => {
     this.setState({
       ...initialState,
-      showActionSheet: true,
     })
   }
 
   unsetFilter(filter, mediator) {
-    let { selectedFilters } = this.state
     let newPartialState = {}
     if (filter === "major_periods") {
       newPartialState = { major_periods: [] }
@@ -112,47 +100,40 @@ export class FilterState extends Container<State> {
       newPartialState = { medium: "*" }
     }
 
-    selectedFilters = without(selectedFilters, "radio")
-
-    this.setState({ page: 1, selectedFilters, ...newPartialState }, () => {
+    this.setState(newPartialState, () => {
       mediator.trigger("collect:filter:changed", this.filteredState)
     })
   }
 
   setFilter(filter, value, mediator) {
-    let { selectedFilters } = this.state
-
     let newPartialState = {}
-    if (filter === "major_periods") {
-      newPartialState = {
-        major_periods: [value],
-      }
-    } else if (
-      ["partner_id", "medium", "price_range", "sort"].includes(filter)
-    ) {
-      newPartialState[filter] = value
-    } else if (
-      ["for_sale", "acquireable", "at_auction", "inquireable_only"].includes(
-        filter
-      )
-    ) {
-      if (value) {
-        selectedFilters = selectedFilters.concat([filter])
-        newPartialState[filter] = true
-      } else {
-        selectedFilters = without(selectedFilters, filter)
-        newPartialState[filter] = null
-      }
+
+    switch (filter) {
+      case "major_periods":
+        newPartialState = {
+          major_periods: [value],
+        }
+        break
+      case "page":
+        newPartialState[filter] = Number(value)
+        break
+      case "partner_id":
+      case "medium":
+      case "price_range":
+      case "sort":
+        newPartialState[filter] = value
+        break
+      case "for_sale":
+      case "acquireable":
+      case "at_auction":
+      case "inquireable_only":
+        newPartialState[filter] = !!value
+        break
     }
 
-    if (["major_periods", "partner_id", "medium"].includes(filter)) {
-      selectedFilters = selectedFilters.concat(["radio"])
-    }
-
-    selectedFilters = uniq(selectedFilters)
-
-    this.setState({ page: 1, selectedFilters, ...newPartialState }, () => {
+    this.setState(newPartialState, () => {
       mediator.trigger("collect:filter:changed", this.filteredState)
+
       this.tracking.trackEvent({
         action: "Commercial filter: params changed",
         current: omit(this.state, ["selectedFilterCount", "showActionSheet"]),
