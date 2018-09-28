@@ -40,11 +40,9 @@ export enum ActionType {
   Click = "Click",
 
   /**
-   * A tap on a UI element using a finger-like input device.
-   *
-   * TODO: Check if ‘Click’ and this can be combined.
+   * Triggers a pageview in force, skips segment
    */
-  Tap = "Tap",
+  ClickedReadMore = "Clicked read more",
 
   /**
    * Moving the mouse pointer over a UI element or, when browsing on a mobile
@@ -56,13 +54,20 @@ export enum ActionType {
   /**
    * A UI element was rendered in the viewport
    */
-  AuthImpression = "Auth impression",
   Impression = "Impression",
+  AuthImpression = "Auth impression",
 
   /**
-   * Triggers a pageview in force, skips segment
+   * A UI element that links out to another location
    */
-  ClickedReadMore = "Clicked read more",
+  Link = "Link",
+
+  /**
+   * A tap on a UI element using a finger-like input device.
+   *
+   * TODO: Check if ‘Click’ and this can be combined.
+   */
+  Tap = "Tap",
 }
 
 /**
@@ -170,4 +175,9 @@ export enum Context {
    * Authentication modal
    */
   MinimalCtaBanner = "MinimalCtaBanner",
+
+  /**
+   * Buy Now Make Offer ("Works For You")
+   */
+  BNMOBanner = "BNMO Banner",
 }
