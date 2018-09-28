@@ -27,7 +27,7 @@ storiesOf("Apps/WorksForYou/Feed", module).add("All", () => {
 storiesOf("Apps/WorksForYou/Artist", module).add("For Sale", () => {
   return (
     <ContextProvider>
-      <WorksForYou artistID={"pablo-picasso"} />
+      <WorksForYou artistID={"rosemarie-trockel"} />
     </ContextProvider>
   )
 })
