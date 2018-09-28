@@ -1,5 +1,6 @@
+import { routes_OverviewQueryRendererQueryResponse } from "__generated__/routes_OverviewQueryRendererQuery.graphql"
 import { FilterState } from "Apps/Artist/Routes/Overview/state"
-import { Redirect } from "found"
+import { Redirect, RouteConfig } from "found"
 import React from "react"
 import { graphql } from "react-relay"
 import { Provider } from "unstated"
@@ -31,7 +32,10 @@ import { ShowProps } from "./Routes/Shows"
 //
 // ---------
 
-export const routes = [
+// FIXME:
+// * `render` functions requires casting
+// * `Redirect` needs to be casted, as it’s not compatible with `RouteConfig`
+export const routes: RouteConfig[] = [
   {
     path: "/artist/:artistID",
     Component: ArtistApp,
@@ -52,8 +56,13 @@ export const routes = [
           }
 
           return (
-            <Provider inject={[new FilterState(props.location.query)]}>
-              <Component artist={props.artist} />
+            <Provider inject={[new FilterState(props.location.query as any)]}>
+              <Component
+                artist={
+                  (props as any)
+                    .artist as routes_OverviewQueryRendererQueryResponse
+                }
+              />
             </Provider>
           )
         },
@@ -150,7 +159,7 @@ export const routes = [
       new Redirect({
         from: "/works",
         to: "/artist/:artistID",
-      }),
+      }) as any,
       {
         path: "*",
         Component: props => {

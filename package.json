@@ -17,6 +17,7 @@
     "npm": "5.4.x"
   },
   "peerDependencies": {
+    "dd-trace": "^0.6.0",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
     "react-router": "^4.2.0",
@@ -75,6 +76,7 @@
     "@storybook/addon-options": "^3.4.10",
     "@storybook/addons": "^3.4.10",
     "@storybook/react": "^3.4.10",
+    "@types/dd-trace": "^0.6.0",
     "@types/enzyme": "^3.1.0",
     "@types/isomorphic-fetch": "^0.0.34",
     "@types/jest": "^20.0.7",
@@ -104,6 +106,7 @@
     "cache-loader": "^1.2.0",
     "concurrently": "^3.5.0",
     "conventional-changelog-ember": "^0.3.4",
+    "dd-trace": "^0.6.0",
     "dotenv": "^4.0.0",
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-16": "1.5.0",

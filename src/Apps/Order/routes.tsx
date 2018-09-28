@@ -50,7 +50,9 @@ const confirmRouteExit = (
   return LEAVE_MESSAGING
 }
 
-export const routes = [
+// FIXME:
+// * `render` functions requires casting
+export const routes: RouteConfig[] = [
   {
     path: "/order2/:orderID",
     Component: OrderApp,
@@ -116,7 +118,7 @@ export const routes = [
       new Redirect({
         from: "/",
         to: "/order2/:orderID/shipping",
-      }),
+      }) as any,
       {
         path: "*",
         Component: props => {
