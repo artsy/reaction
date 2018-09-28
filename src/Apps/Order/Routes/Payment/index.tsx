@@ -159,7 +159,6 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
           </Col>
         </Row>
 
-        <Spacer mb={3} />
         <Responsive>
           {({ xs }) => (
             <TwoColumnLayout
