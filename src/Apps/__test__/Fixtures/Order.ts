@@ -16,7 +16,7 @@ export const mockResolver = (orderDetails: any = OrderWithShippingDetails) => ({
 export const UntouchedOrder = {
   id: "2939023",
   code: "abcdefg",
-  state: "pending",
+  state: "PENDING",
   itemsTotal: "$12,000",
   shippingTotal: null,
   taxTotal: null,
