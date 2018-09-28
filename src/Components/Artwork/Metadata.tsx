@@ -1,6 +1,8 @@
 import { Metadata_artwork } from "__generated__/Metadata_artwork.graphql"
+import { ContextConsumer } from "Artsy/Router"
 import colors from "Assets/Colors"
 import { garamond } from "Assets/Fonts"
+import StyledTextLink from "Components/TextLink"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
@@ -25,10 +27,33 @@ export class MetadataContainer extends React.Component<MetadataProps> {
     const ContactBlock = useRelay ? RelayContact : Contact
 
     return (
-      <div className={className}>
-        <DetailsBlock showSaleLine={extended} artwork={artwork} />
-        {extended && <ContactBlock artwork={artwork} />}
-      </div>
+      <ContextConsumer>
+        {({ user }) => {
+          const enableLabFeature =
+            user &&
+            user.lab_features &&
+            user.lab_features.includes("New Buy Now Flow")
+
+          const detailsContent = (
+            <div className={className}>
+              <DetailsBlock
+                includeLinks={!enableLabFeature}
+                showSaleLine={extended}
+                artwork={artwork}
+              />
+              {!enableLabFeature &&
+                extended && <ContactBlock artwork={artwork} />}
+            </div>
+          )
+          return enableLabFeature ? (
+            <StyledTextLink href={artwork.href}>
+              {detailsContent}
+            </StyledTextLink>
+          ) : (
+            detailsContent
+          )
+        }}
+      </ContextConsumer>
     )
   }
 }
@@ -46,6 +71,7 @@ export default createFragmentContainer(
     fragment Metadata_artwork on Artwork {
       ...Details_artwork
       ...Contact_artwork
+      href
     }
   `
 )

@@ -6,7 +6,6 @@ import Events from "../Utils/Events"
 
 const bootProps = {
   mediator: x => x,
-  user: {},
 }
 
 export function storiesOf(desc, mod) {

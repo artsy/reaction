@@ -33,19 +33,21 @@ class Filter extends Component<Props> {
   }
 
   renderPriceRange(filters, mediator) {
+    const [initialMin, initialMax] = filters.price_range
+      ? filters.price_range.split("-")
+      : [50, 50000]
     return (
       <PriceRange
         allowCross={false}
         min={50}
         max={50000}
         step={50}
-        defaultValue={[50, 50000]}
+        defaultValue={[initialMin, initialMax]}
         onAfterChange={([min, max]) => {
-          if (max === 50000) {
-            filters.setFilter("price_range", `${min}-*`, mediator)
-          } else {
-            filters.setFilter("price_range", `${min}-${max}`, mediator)
-          }
+          const minStr = min === 50 ? "*" : min
+          const maxStr = max === 50000 ? "*" : max
+
+          filters.setFilter("price_range", `${minStr}-${maxStr}`, mediator)
         }}
       />
     )
@@ -141,12 +143,7 @@ class Filter extends Component<Props> {
                                     mediator={mediator}
                                   />
                                 </Toggle>
-                                <Toggle
-                                  expanded={
-                                    filters.state.major_periods.length > 0
-                                  }
-                                  label="Time period"
-                                >
+                                <Toggle expanded label="Time period">
                                   <TimePeriodFilter
                                     filters={filters}
                                     mediator={mediator}

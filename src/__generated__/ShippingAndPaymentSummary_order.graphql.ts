@@ -5,6 +5,7 @@ import { ShippingAddress_ship$ref } from "./ShippingAddress_ship.graphql";
 declare const _ShippingAndPaymentSummary_order$ref: unique symbol;
 export type ShippingAndPaymentSummary_order$ref = typeof _ShippingAndPaymentSummary_order$ref;
 export type ShippingAndPaymentSummary_order = {
+    readonly state: string | null;
     readonly requestedFulfillment: ({
         readonly __typename: string;
         readonly " $fragmentRefs": ShippingAddress_ship$ref;
@@ -51,6 +52,13 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "state",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -171,5 +179,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '50d1e78477d26500592bc89360f2d3ad';
+(node as any).hash = '7a3d053b75d5fbff9f3951d67ed119e0';
 export default node;

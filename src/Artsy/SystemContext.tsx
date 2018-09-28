@@ -35,6 +35,8 @@ export interface SystemProps {
    * the `user` if available.
    */
   relayNetwork?: RelayNetwork
+
+  isEigen?: boolean
 }
 
 /**

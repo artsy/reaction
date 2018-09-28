@@ -26,6 +26,7 @@ query ShippingAndPaymentDetailsQuery {
 }
 
 fragment ShippingAndPaymentSummary_order on Order {
+  state
   requestedFulfillment {
     __typename
     ...ShippingAddress_ship
@@ -117,7 +118,7 @@ return {
   "operationKind": "query",
   "name": "ShippingAndPaymentDetailsQuery",
   "id": null,
-  "text": "query ShippingAndPaymentDetailsQuery {\n  order(id: \"foo\") {\n    ...ShippingAndPaymentSummary_order\n    ...ShippingAndPaymentReview_order\n    __id: id\n  }\n}\n\nfragment ShippingAndPaymentSummary_order on Order {\n  requestedFulfillment {\n    __typename\n    ...ShippingAddress_ship\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  creditCard {\n    brand\n    last_digits\n    expiration_year\n    expiration_month\n    __id\n  }\n  __id: id\n}\n\nfragment ShippingAndPaymentReview_order on Order {\n  requestedFulfillment {\n    __typename\n    ...ShippingAddress_ship\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  creditCard {\n    brand\n    last_digits\n    expiration_year\n    expiration_month\n    __id\n  }\n  __id: id\n}\n\nfragment ShippingAddress_ship on Ship {\n  name\n  addressLine1\n  addressLine2\n  city\n  postalCode\n  region\n  country\n  phoneNumber\n}\n",
+  "text": "query ShippingAndPaymentDetailsQuery {\n  order(id: \"foo\") {\n    ...ShippingAndPaymentSummary_order\n    ...ShippingAndPaymentReview_order\n    __id: id\n  }\n}\n\nfragment ShippingAndPaymentSummary_order on Order {\n  state\n  requestedFulfillment {\n    __typename\n    ...ShippingAddress_ship\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  creditCard {\n    brand\n    last_digits\n    expiration_year\n    expiration_month\n    __id\n  }\n  __id: id\n}\n\nfragment ShippingAndPaymentReview_order on Order {\n  requestedFulfillment {\n    __typename\n    ...ShippingAddress_ship\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  creditCard {\n    brand\n    last_digits\n    expiration_year\n    expiration_month\n    __id\n  }\n  __id: id\n}\n\nfragment ShippingAddress_ship on Ship {\n  name\n  addressLine1\n  addressLine2\n  city\n  postalCode\n  region\n  country\n  phoneNumber\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -164,6 +165,13 @@ return {
         "concreteType": "Order",
         "plural": false,
         "selections": [
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "state",
+            "args": null,
+            "storageKey": null
+          },
           {
             "kind": "LinkedField",
             "alias": null,

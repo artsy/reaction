@@ -13,6 +13,7 @@ const wrapper = xs => props =>
 
 export interface MarketInsightsProps {
   artist: MarketInsightsArtistPage_artist
+  border?: boolean
 }
 
 const CATEGORIES = {
@@ -27,6 +28,10 @@ const CATEGORY_LABEL_MAP = {
 }
 
 export class MarketInsights extends React.Component<MarketInsightsProps> {
+  static defaultProps = {
+    border: true,
+  }
+
   renderAuctionHighlight(xs: boolean) {
     const TextWrap = wrapper(xs)
     if (
@@ -95,9 +100,11 @@ export class MarketInsights extends React.Component<MarketInsightsProps> {
       return null
     }
 
+    const Container = this.props.border ? BorderBox : Box
+
     return (
       <>
-        <BorderBox flexDirection="column">
+        <Container flexDirection="column">
           <Responsive>
             {({ xs }) => {
               return (
@@ -109,7 +116,7 @@ export class MarketInsights extends React.Component<MarketInsightsProps> {
               )
             }}
           </Responsive>
-        </BorderBox>
+        </Container>
 
         {this.props.children}
       </>

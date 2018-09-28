@@ -18,7 +18,5 @@
   },
   "tslint.autoFixOnSave": true,
   "typescript.tsdk": "./node_modules/typescript/lib",
-  "cSpell.words": [
-    "Styleguide"
-  ]
+  "cSpell.words": ["Refetch", "Styleguide", "Truthy", "Validators"]
 }

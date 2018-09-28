@@ -77,6 +77,8 @@ export class AddressForm extends React.Component<
             id="AddressForm_name"
             placeholder="Add full name"
             title="Full name"
+            autoCapitalize="words"
+            autoCorrect="off"
             defaultValue={this.props.defaultValue.name}
             onChange={this.changeEventHandler("name")}
             error={this.props.errors && this.props.errors.name}
@@ -100,6 +102,8 @@ export class AddressForm extends React.Component<
               id="AddressForm_postalCode"
               placeholder="Add postal code"
               title="Postal code"
+              autoCapitalize="characters"
+              autoCorrect="off"
               defaultValue={this.props.defaultValue.postalCode}
               onChange={this.changeEventHandler("postalCode")}
               error={this.props.errors && this.props.errors.postalCode}
@@ -113,6 +117,7 @@ export class AddressForm extends React.Component<
               id="AddressForm_addressLine1"
               placeholder="Add street address"
               title="Address line 1"
+              autoCapitalize="words"
               defaultValue={this.props.defaultValue.addressLine1}
               onChange={this.changeEventHandler("addressLine1")}
               error={this.props.errors && this.props.errors.addressLine1}
@@ -125,6 +130,7 @@ export class AddressForm extends React.Component<
               id="AddressForm_addressLine2"
               placeholder="Add apt, floor, suite, etc."
               title="Address line 2 (optional)"
+              autoCapitalize="words"
               defaultValue={this.props.defaultValue.addressLine2}
               onChange={this.changeEventHandler("addressLine2")}
               block
@@ -137,6 +143,7 @@ export class AddressForm extends React.Component<
               id="AddressForm_city"
               placeholder="Add city"
               title="City"
+              autoCapitalize="words"
               defaultValue={this.props.defaultValue.city}
               onChange={this.changeEventHandler("city")}
               error={this.props.errors && this.props.errors.city}
@@ -148,6 +155,8 @@ export class AddressForm extends React.Component<
             <Input
               placeholder="Add State, province, or region"
               title="State, province, or region"
+              autoCapitalize="words"
+              autoCorrect="off"
               defaultValue={this.props.defaultValue.region}
               onChange={this.changeEventHandler("region")}
               error={this.props.errors && this.props.errors.region}
@@ -162,6 +171,7 @@ export class AddressForm extends React.Component<
               title="Phone number"
               description="Required for shipping logistics"
               placeholder="Add phone"
+              pattern="[0-9]*"
               defaultValue={this.props.defaultValue.phoneNumber}
               onChange={this.changeEventHandler("phoneNumber")}
               error={this.props.errors && this.props.errors.phoneNumber}

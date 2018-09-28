@@ -43,16 +43,12 @@ class Filter extends Component<Props> {
       hasForSaleArtworks: artist.counts.for_sale_artworks > 0,
       hasBuyNowArtworks: artist.counts.ecommerce_artworks > 0,
       hasAuctionArtworks: artist.counts.auction_artworks > 0,
+      hasArtworks: artist.counts.artworks > 0,
     }
   }
 
   get showZeroState() {
-    const showZeroState =
-      !this.existy.hasAuctionArtworks &&
-      !this.existy.hasBuyNowArtworks &&
-      !this.existy.hasForSaleArtworks
-
-    return showZeroState
+    return !this.existy.hasArtworks
   }
 
   renderFilters({ user, filters, mediator, hideTopBorder }) {
@@ -175,7 +171,7 @@ class Filter extends Component<Props> {
   renderWaysToBuy(filters, mediator, counts) {
     return (
       <React.Fragment>
-        <Sans size="2" weight="medium" color="black100" mt={0.3}>
+        <Sans size="2" weight="medium" color="black100" mt={0.3} mb={1}>
           Ways to Buy
         </Sans>
         <Checkbox
@@ -185,7 +181,7 @@ class Filter extends Component<Props> {
             return filters.setFilter("acquireable", value, mediator)
           }}
         >
-          Buy Now
+          Buy now
         </Checkbox>
         <Checkbox
           selected={filters.state.at_auction}
@@ -250,6 +246,7 @@ class Filter extends Component<Props> {
       <Flex
         justifyContent={xs ? "space-between" : "flex-end"}
         alignItems="center"
+        mr={2}
       >
         <SmallSelect
           mt="-8px"
@@ -404,6 +401,7 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(
         for_sale_artworks
         ecommerce_artworks
         auction_artworks
+        artworks
       }
       filtered_artworks(aggregations: $aggregations, size: 0) {
         aggregations {
