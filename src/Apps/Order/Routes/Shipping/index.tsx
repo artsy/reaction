@@ -221,7 +221,6 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
             <BuyNowStepper currentStep={"shipping"} />
           </Col>
         </Row>
-        <Spacer mb={3} />
 
         <Responsive>
           {({ xs }) => (

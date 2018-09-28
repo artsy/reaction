@@ -165,19 +165,22 @@ export class AddressForm extends React.Component<
           </Flex>
         </TwoColumnSplit>
         {!this.props.billing && (
-          <Flex flexDirection="column">
-            <Input
-              id="AddressForm_phoneNumber"
-              title="Phone number"
-              description="Required for shipping logistics"
-              placeholder="Add phone"
-              pattern="[0-9]*"
-              defaultValue={this.props.defaultValue.phoneNumber}
-              onChange={this.changeEventHandler("phoneNumber")}
-              error={this.props.errors && this.props.errors.phoneNumber}
-              block
-            />
-          </Flex>
+          <>
+            <Flex flexDirection="column">
+              <Input
+                id="AddressForm_phoneNumber"
+                title="Phone number"
+                description="Required for shipping logistics"
+                placeholder="Add phone"
+                pattern="[0-9]*"
+                defaultValue={this.props.defaultValue.phoneNumber}
+                onChange={this.changeEventHandler("phoneNumber")}
+                error={this.props.errors && this.props.errors.phoneNumber}
+                block
+              />
+            </Flex>
+            <Spacer mb={2} />
+          </>
         )}
       </Join>
     )

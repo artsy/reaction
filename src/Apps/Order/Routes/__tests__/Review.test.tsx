@@ -5,6 +5,7 @@ import { Button } from "@artsy/palette"
 import { UntouchedOrder } from "Apps/__test__/Fixtures/Order"
 import { TermsOfServiceCheckbox } from "Apps/Order/Components/TermsOfServiceCheckbox"
 import { commitMutation, RelayProp } from "react-relay"
+import { StepSummaryItem } from "Styleguide/Components/StepSummaryItem"
 import { Provider } from "unstated"
 import {
   ErrorModal,
@@ -52,6 +53,26 @@ describe("Review", () => {
     component.find(Button).simulate("click")
     expect(commitMutation).toHaveBeenCalledTimes(1)
     expect(pushMock).toBeCalledWith("/order2/1234/status")
+  })
+
+  it("takes the user back to the /shipping view", () => {
+    const component = getWrapper(defaultProps)
+    component
+      .find(StepSummaryItem)
+      .first()
+      .find("a")
+      .simulate("click")
+    expect(pushMock).toBeCalledWith("/order2/1234/shipping")
+  })
+
+  it("takes the user back to the /payment view", () => {
+    const component = getWrapper(defaultProps)
+    component
+      .find(StepSummaryItem)
+      .last()
+      .find("a")
+      .simulate("click")
+    expect(pushMock).toBeCalledWith("/order2/1234/shipping")
   })
 
   it("shows an error modal when there is an error in submitOrderPayload", () => {
