@@ -6,6 +6,15 @@ declare const _Payment_order$ref: unique symbol;
 export type Payment_order$ref = typeof _Payment_order$ref;
 export type Payment_order = {
     readonly id: string | null;
+    readonly creditCard: ({
+        readonly name: string | null;
+        readonly street1: string | null;
+        readonly street2: string | null;
+        readonly city: string | null;
+        readonly state: string | null;
+        readonly country: string | null;
+        readonly postal_code: string | null;
+    }) | null;
     readonly requestedFulfillment: ({
         readonly __typename: "Ship";
         readonly name: string | null;
@@ -48,6 +57,34 @@ var v0 = {
 },
 v1 = {
   "kind": "ScalarField",
+  "alias": null,
+  "name": "name",
+  "args": null,
+  "storageKey": null
+},
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "city",
+  "args": null,
+  "storageKey": null
+},
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "country",
+  "args": null,
+  "storageKey": null
+},
+v4 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
+},
+v5 = {
+  "kind": "ScalarField",
   "alias": "__id",
   "name": "id",
   "args": null,
@@ -61,6 +98,49 @@ return {
   "argumentDefinitions": [],
   "selections": [
     v0,
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "creditCard",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "CreditCard",
+      "plural": false,
+      "selections": [
+        v1,
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "street1",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "street2",
+          "args": null,
+          "storageKey": null
+        },
+        v2,
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "state",
+          "args": null,
+          "storageKey": null
+        },
+        v3,
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "postal_code",
+          "args": null,
+          "storageKey": null
+        },
+        v4
+      ]
+    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -94,13 +174,7 @@ return {
           "kind": "InlineFragment",
           "type": "Ship",
           "selections": [
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "name",
-              "args": null,
-              "storageKey": null
-            },
+            v1,
             {
               "kind": "ScalarField",
               "alias": null,
@@ -115,13 +189,7 @@ return {
               "args": null,
               "storageKey": null
             },
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "city",
-              "args": null,
-              "storageKey": null
-            },
+            v2,
             {
               "kind": "ScalarField",
               "alias": null,
@@ -129,13 +197,7 @@ return {
               "args": null,
               "storageKey": null
             },
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "country",
-              "args": null,
-              "storageKey": null
-            },
+            v3,
             {
               "kind": "ScalarField",
               "alias": null,
@@ -184,16 +246,10 @@ return {
                   "plural": false,
                   "selections": [
                     v0,
-                    {
-                      "kind": "ScalarField",
-                      "alias": null,
-                      "name": "__id",
-                      "args": null,
-                      "storageKey": null
-                    }
+                    v4
                   ]
                 },
-                v1
+                v5
               ]
             }
           ]
@@ -205,9 +261,9 @@ return {
       "name": "TransactionSummary_order",
       "args": null
     },
-    v1
+    v5
   ]
 };
 })();
-(node as any).hash = '3cdee803a766cd0d71a9daeb6caba12a';
+(node as any).hash = 'd04e90e3364e639fb25aa49292a041d2';
 export default node;

@@ -59,14 +59,29 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
     isCommittingMutation: false,
     isErrorModalOpen: false,
     errorModalMessage: null,
-    address: this.startingAddress,
+    address: this.startingAddress(),
     addressErrors: {},
   }
 
-  get startingAddress(): Address {
-    return {
-      ...emptyAddress,
-      country: "US",
+  startingAddress(): Address {
+    const { creditCard } = this.props.order
+
+    if (creditCard) {
+      return {
+        ...emptyAddress,
+        name: creditCard.name,
+        country: creditCard.country,
+        postalCode: creditCard.postal_code,
+        addressLine1: creditCard.street1,
+        addressLine2: creditCard.street2,
+        city: creditCard.city,
+        region: creditCard.state,
+      }
+    } else {
+      return {
+        ...emptyAddress,
+        country: "US",
+      }
     }
   }
 
@@ -370,6 +385,15 @@ export const PaymentFragmentContainer = createFragmentContainer(
   graphql`
     fragment Payment_order on Order {
       id
+      creditCard {
+        name
+        street1
+        street2
+        city
+        state
+        country
+        postal_code
+      }
       requestedFulfillment {
         __typename
         ... on Ship {
