@@ -1,4 +1,3 @@
-// import { LargeSelect, SmallSelect } from "@artsy/palette"
 import { ArtworkGrid_viewer } from "__generated__/ArtworkGrid_viewer.graphql"
 import { FilterState } from "Apps/Collect/FilterState"
 import { ContextConsumer } from "Artsy"
@@ -8,7 +7,9 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { Toggle } from "Styleguide/Components/Toggle"
 import { Subscribe } from "unstated"
 import { Responsive } from "Utils/Responsive"
+import { MediumFilter } from "../Filters/MediumFilter"
 import { PriceRange } from "../Filters/PriceRange"
+import { TimePeriodFilter } from "../Filters/TimePeriodFilter"
 import { CollectArtworkGridRefetchContainer as ArtworkFilter } from "./CollectArtworkFilterRefetch"
 import { MobileActionSheet } from "./MobileActionSheet"
 
@@ -18,7 +19,6 @@ import {
   Checkbox,
   color,
   Flex,
-  Radio,
   Sans,
   Separator,
   SmallSelect,
@@ -41,54 +41,6 @@ class Filter extends Component<Props, State> {
 
   state = {
     showMobileActionSheet: false,
-  }
-
-  renderMedium(filters, mediums, mediator) {
-    return mediums.map((medium, index) => {
-      const isSelected = filters.state.medium === medium.id
-
-      return (
-        <Radio
-          my={0.3}
-          selected={isSelected}
-          value={medium.id}
-          onSelect={({ selected }) => {
-            if (selected) {
-              return filters.setFilter("medium", medium.id, mediator)
-            } else {
-              return filters.unsetFilter("medium", mediator)
-            }
-          }}
-          key={index}
-        >
-          {medium.name}
-        </Radio>
-      )
-    })
-  }
-
-  renderTimePeriods(filters, mediator) {
-    return allowedPeriods.map((timePeriod, index) => {
-      const isSelected = filters.state.major_periods[0] === timePeriod
-
-      return (
-        <Radio
-          my={0.3}
-          selected={isSelected}
-          value={timePeriod}
-          onSelect={({ selected }) => {
-            if (selected) {
-              return filters.setFilter("major_periods", timePeriod, mediator)
-            } else {
-              return filters.unsetFilter("major_periods", mediator)
-            }
-          }}
-          key={index}
-        >
-          {timePeriod}
-        </Radio>
-      )
-    })
   }
 
   renderPriceRange(filters, mediator) {
@@ -234,12 +186,15 @@ class Filter extends Component<Props, State> {
         <Flex flexDirection="column" alignItems="left" my={1}>
           {this.renderPriceRange(filters, mediator)}
         </Flex>
-
         <Toggle label="Medium" expanded>
-          {this.renderMedium(filters, mediumAggregation.counts, mediator)}
+          <MediumFilter
+            filters={filters}
+            mediums={mediumAggregation.counts}
+            mediator={mediator}
+          />
         </Toggle>
-        <Toggle label="Time period" expanded>
-          {this.renderTimePeriods(filters, mediator)}
+        <Toggle expanded label="Time period">
+          <TimePeriodFilter filters={filters} mediator={mediator} />
         </Toggle>
       </>
     )
@@ -375,21 +330,3 @@ export const ArtworkGridFragmentContainer = createFragmentContainer(
 )
 
 const Sidebar = Box
-
-const allowedPeriods = [
-  "2010",
-  "2000",
-  "1990",
-  "1980",
-  "1970",
-  "1960",
-  "1950",
-  "1940",
-  "1930",
-  "1920",
-  "1910",
-  "1900",
-  "Late 19th Century",
-  "Mid 19th Century",
-  "Early 19th Century",
-]

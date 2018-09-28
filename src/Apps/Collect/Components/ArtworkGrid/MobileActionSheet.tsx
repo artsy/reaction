@@ -16,7 +16,7 @@ export const MobileActionSheet: SFC<MobileActionSheet> = ({
 }) => {
   return (
     <Subscribe to={[FilterState]}>
-      {({ resetFilters, state: { selectedFilters } }: FilterState) => {
+      {({ resetFilters }: FilterState) => {
         return (
           <Container>
             <MobileTopBar>

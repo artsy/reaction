@@ -5,7 +5,7 @@ import { RelayNetwork } from "relay-runtime"
 import { getUser } from "Utils/getUser"
 import { MatchingMediaQueries } from "Utils/Responsive"
 
-interface SystemProps {
+export interface SystemProps {
   /**
    * The currently signed-in user.
    *

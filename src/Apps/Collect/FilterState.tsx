@@ -16,7 +16,7 @@ export interface State {
   tracking?: any
 }
 
-const initialState = {
+export const initialState = {
   medium: "*",
   for_sale: null,
   page: 1,
