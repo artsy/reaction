@@ -17,6 +17,7 @@ export interface SelectedExhibitionsProps {
   exhibitions: SelectedExhibitions_exhibitions
   artistID?: string
   totalExhibitions?: number
+  ViewAllLink?: JSX.Element
 }
 export const SelectedExhibitions: SFC<SelectedExhibitionsProps> = props => (
   <Responsive>
@@ -93,25 +94,35 @@ interface FullExhibitionListProps {
   exhibitions: SelectedExhibitions_exhibitions
   artistID: string
   totalExhibitions: number
+  ViewAllLink?: JSX.Element
 }
-const FullExhibitionList: SFC<FullExhibitionListProps> = props => (
-  <React.Fragment>
-    {toPairs(groupBy(props.exhibitions, ({ start_at }) => start_at))
-      .reverse()
-      .map(([year, exhibitions]) => (
-        <ExhibitionYearList
-          key={year}
-          year={year}
-          exhibitions={exhibitions.reverse()}
-        />
-      ))}
-    {props.totalExhibitions > MIN_FOR_SELECTED_EXHIBITIONS && (
-      <Sans size="2" color="black60">
-        <PreloadLink to={`/artist/${props.artistID}/cv`}>View all</PreloadLink>
-      </Sans>
-    )}
-  </React.Fragment>
-)
+const FullExhibitionList: SFC<FullExhibitionListProps> = props => {
+  const {
+    // FIXME: To use PreloadLink the component has to be within a formal
+    // Artsy/Router app tree. This defaults to PreloadLink, but can be overwritten.
+    ViewAllLink = (
+      <PreloadLink to={`/artist/${props.artistID}/cv`}>View all</PreloadLink>
+    ),
+  } = props
+  return (
+    <React.Fragment>
+      {toPairs(groupBy(props.exhibitions, ({ start_at }) => start_at))
+        .reverse()
+        .map(([year, exhibitions]) => (
+          <ExhibitionYearList
+            key={year}
+            year={year}
+            exhibitions={exhibitions.reverse()}
+          />
+        ))}
+      {props.totalExhibitions > MIN_FOR_SELECTED_EXHIBITIONS && (
+        <Sans size="2" color="black60">
+          {ViewAllLink}
+        </Sans>
+      )}
+    </React.Fragment>
+  )
+}
 
 export interface SelectedExhibitionsContainerProps
   extends SelectedExhibitionsProps {
@@ -157,6 +168,7 @@ export class SelectedExhibitionsContainer extends React.Component<
               artistID={this.props.artistID}
               exhibitions={this.props.exhibitions}
               totalExhibitions={this.props.totalExhibitions}
+              ViewAllLink={this.props.ViewAllLink}
             />
           )}
         </Flex>

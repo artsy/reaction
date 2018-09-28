@@ -1,4 +1,5 @@
 import { ArtistCard_artist } from "__generated__/ArtistCard_artist.graphql"
+import { Mediator } from "Artsy/SystemContext"
 import FollowArtistButton from "Components/FollowButton/FollowArtistButton"
 import { Truncator } from "Components/Truncator"
 import React, { SFC } from "react"
@@ -20,9 +21,7 @@ import {
 interface Props {
   artist: ArtistCard_artist
   user: User
-  mediator?: {
-    trigger: (action: string, config: object) => void
-  }
+  mediator?: Mediator
 }
 
 const StyledLink = styled.a`

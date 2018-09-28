@@ -2,7 +2,7 @@ import { Box, Flex, Image, Serif, Spacer } from "@artsy/palette"
 import { ArtistHeader_artist } from "__generated__/ArtistHeader_artist.graphql"
 import { track, Track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ContextConsumer } from "Artsy/SystemContext"
+import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import FollowArtistButton from "Components/FollowButton/FollowArtistButton"
 import React, { Component, Fragment } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -12,9 +12,7 @@ import { Responsive } from "Utils/Responsive"
 interface Props {
   artist: ArtistHeader_artist
   user?: User
-  mediator?: {
-    trigger: (action: string, config: object) => void
-  }
+  mediator?: Mediator
 }
 
 type Image = Props["artist"]["carousel"]["images"][0]
