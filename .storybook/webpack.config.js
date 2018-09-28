@@ -13,14 +13,15 @@ const genDefaultConfig = require("@storybook/react/dist/server/config/defaults/w
 env.load()
 
 const {
-  WEBPACK_DEVTOOL = "cheap-module-eval-source-map",
+  APP_URL,
   FORCE_CLOUDFRONT_URL,
   GEMINI_CLOUDFRONT_URL,
   METAPHYSICS_ENDPOINT,
   NODE_ENV,
-  USER_ID,
   USER_ACCESS_TOKEN,
+  USER_ID,
   USER_LAB_FEATURES,
+  WEBPACK_DEVTOOL = "cheap-module-eval-source-map",
   XAPP_TOKEN,
 } = process.env
 
@@ -30,6 +31,7 @@ const {
  * webpack where normally the actual `sharify` module would be loaded.
  */
 const sharifyPath = sharify({
+  APP_URL,
   FORCE_CLOUDFRONT_URL,
   GEMINI_CLOUDFRONT_URL,
   METAPHYSICS_ENDPOINT,

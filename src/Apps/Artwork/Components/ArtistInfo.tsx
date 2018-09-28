@@ -1,12 +1,12 @@
-import React, { SFC } from "react"
-
 import { Box, Sans, Spacer, Spinner, StackableBorderBox } from "@artsy/palette"
 import { ArtistInfo_artist } from "__generated__/ArtistInfo_artist.graphql"
 import { ArtistInfoQuery } from "__generated__/ArtistInfoQuery.graphql"
 import { ContextConsumer } from "Artsy"
 import { Mediator } from "Artsy/SystemContext"
 import FollowArtistButton from "Components/FollowButton/FollowArtistButton"
+import React, { SFC } from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
+import { data as sd } from "sharify"
 import { EntityHeader } from "Styleguide/Components/EntityHeader"
 import { get } from "Utils/get"
 
@@ -80,9 +80,7 @@ export const ArtistInfo: SFC<ArtistInfoProps> = props => {
           totalExhibitions={props.artist.counts.partner_shows}
           exhibitions={props.artist.exhibition_highlights}
           ViewAllLink={
-            <a href={`https://artsy.net/artist/${props.artist.id}/cv`}>
-              View all
-            </a>
+            <a href={`${sd.APP_URL}/artist/${props.artist.id}/cv`}>View all</a>
           }
         />
       </StackableBorderBox>
