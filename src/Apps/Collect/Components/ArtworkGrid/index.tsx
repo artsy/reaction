@@ -2,6 +2,7 @@
 import { ArtworkGrid_viewer } from "__generated__/ArtworkGrid_viewer.graphql"
 import { FilterState } from "Apps/Collect/FilterState"
 import { ContextConsumer } from "Artsy"
+import { FilterIcon } from "Assets/Icons/FilterIcon"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Toggle } from "Styleguide/Components/Toggle"
@@ -9,12 +10,14 @@ import { Subscribe } from "unstated"
 import { Responsive } from "Utils/Responsive"
 import { PriceRange } from "../Filters/PriceRange"
 import { CollectArtworkGridRefetchContainer as ArtworkFilter } from "./CollectArtworkFilterRefetch"
+import { MobileActionSheet } from "./MobileActionSheet"
 
 import {
   Box,
+  Button,
   Checkbox,
+  color,
   Flex,
-  LargeSelect,
   Radio,
   Sans,
   Separator,
@@ -27,9 +30,17 @@ interface Props {
   viewer: ArtworkGrid_viewer
 }
 
-class Filter extends Component<Props> {
+interface State {
+  showMobileActionSheet: boolean
+}
+
+class Filter extends Component<Props, State> {
   static defaultProps = {
     hideTopBorder: false,
+  }
+
+  state = {
+    showMobileActionSheet: false,
   }
 
   renderMedium(filters, mediums, mediator) {
@@ -115,12 +126,22 @@ class Filter extends Component<Props> {
     )
   }
 
-  renderWaysToBuy(filters, mediator) {
+  renderWaysToBuy(filters, showBuyNow, mediator) {
     return (
       <React.Fragment>
         <Sans size="2" weight="medium" color="black100" my={1}>
           Ways to Buy
         </Sans>
+        {showBuyNow && (
+          <Checkbox
+            selected={filters.state.acquireable}
+            onSelect={value => {
+              return filters.setFilter("acquireable", value, mediator)
+            }}
+          >
+            Buy now
+          </Checkbox>
+        )}
         <Checkbox
           selected={filters.state.at_auction}
           onSelect={value => filters.setFilter("at_auction", value, mediator)}
@@ -139,22 +160,110 @@ class Filter extends Component<Props> {
     )
   }
 
-  render() {
-    const { hideTopBorder } = this.props
+  renderSelect({ filters, mediator, xs }) {
+    return (
+      <Flex
+        justifyContent={xs ? "space-between" : "flex-end"}
+        alignItems="center"
+      >
+        <SmallSelect
+          mt="-8px"
+          options={[
+            {
+              value: "-decayed_merch",
+              text: "Default",
+            },
+            {
+              value: "-partner_updated_at",
+              text: "Recently updated",
+            },
+            {
+              value: "-published_at",
+              text: "Recently added",
+            },
+            {
+              value: "-year",
+              text: "Artwork year (desc.)",
+            },
+            {
+              value: "year",
+              text: "Artwork year (asc.)",
+            },
+          ]}
+          selected={filters.state.sort}
+          onSelect={sort => {
+            return filters.setSort(sort, mediator)
+          }}
+        />
+
+        {xs && (
+          <Button
+            size="small"
+            mt={-1}
+            onClick={() => this.setState({ showMobileActionSheet: true })}
+          >
+            <Flex justifyContent="space-between" alignItems="center">
+              <FilterIcon fill={color("white100")} />
+              <Spacer mr={0.5} />
+              Filter
+            </Flex>
+          </Button>
+        )}
+      </Flex>
+    )
+  }
+
+  renderFilters({ user, filters, mediator, hideTopBorder }) {
+    const enableBuyNowFlow =
+      user &&
+      user.lab_features &&
+      user.lab_features.includes("New Buy Now Flow")
+
     const { filter_artworks } = this.props.viewer
     const { aggregations } = filter_artworks
     const mediumAggregation = aggregations.find(agg => agg.slice === "MEDIUM")
 
     return (
+      <>
+        <Flex flexDirection="column" alignItems="left" mt={-1} mb={1}>
+          {!hideTopBorder && <Separator mb={1} />}
+
+          {this.renderWaysToBuy(filters, enableBuyNowFlow, mediator)}
+        </Flex>
+
+        <Flex flexDirection="column" alignItems="left" my={1}>
+          {this.renderPriceRange(filters, mediator)}
+        </Flex>
+
+        <Toggle label="Medium" expanded>
+          {this.renderMedium(filters, mediumAggregation.counts, mediator)}
+        </Toggle>
+        <Toggle label="Time period" expanded>
+          {this.renderTimePeriods(filters, mediator)}
+        </Toggle>
+      </>
+    )
+  }
+
+  render() {
+    const { hideTopBorder } = this.props
+
+    return (
       <ContextConsumer>
-        {({ mediator }) => {
+        {({ user, mediator }) => {
           return (
             <Subscribe to={[FilterState]}>
               {(filters: FilterState) => {
                 return (
                   <Responsive>
                     {({ xs, sm, md }) => {
-                      const Select = xs ? LargeSelect : SmallSelect
+                      const Filters = () =>
+                        this.renderFilters({
+                          user,
+                          filters,
+                          mediator,
+                          hideTopBorder,
+                        })
 
                       return (
                         <>
@@ -163,37 +272,23 @@ class Filter extends Component<Props> {
                             Sidebar Area
                           */}
 
-                            {!xs && (
+                            {xs ? (
+                              // Mobile
+                              this.state.showMobileActionSheet && (
+                                <MobileActionSheet
+                                  onClose={() =>
+                                    this.setState({
+                                      showMobileActionSheet: false,
+                                    })
+                                  }
+                                >
+                                  <Filters />
+                                </MobileActionSheet>
+                              )
+                            ) : (
+                              // Desktop
                               <Sidebar width="25%" mr={2}>
-                                <Flex
-                                  flexDirection="column"
-                                  alignItems="left"
-                                  mt={-1}
-                                  mb={1}
-                                >
-                                  {!hideTopBorder && <Separator mb={1} />}
-
-                                  {this.renderWaysToBuy(filters, mediator)}
-                                </Flex>
-
-                                <Flex
-                                  flexDirection="column"
-                                  alignItems="left"
-                                  my={1}
-                                >
-                                  {this.renderPriceRange(filters, mediator)}
-                                </Flex>
-
-                                <Toggle label="Medium" expanded>
-                                  {this.renderMedium(
-                                    filters,
-                                    mediumAggregation.counts,
-                                    mediator
-                                  )}
-                                </Toggle>
-                                <Toggle label="Time period" expanded>
-                                  {this.renderTimePeriods(filters, mediator)}
-                                </Toggle>
+                                <Filters />
                               </Sidebar>
                             )}
 
@@ -206,44 +301,11 @@ class Filter extends Component<Props> {
                             <Box width={xs ? "100%" : "75%"}>
                               {!hideTopBorder && <Separator mb={2} mt={-1} />}
 
-                              <Flex justifyContent="flex-end">
-                                <Select
-                                  mt="-8px"
-                                  mr="15px"
-                                  options={
-                                    [
-                                      {
-                                        value: "-decayed_merch",
-                                        text: "Default",
-                                      },
-                                      {
-                                        value: "-partner_updated_at",
-                                        text: "Recently updated",
-                                      },
-                                      {
-                                        value: "-published_at",
-                                        text: "Recently added",
-                                      },
-                                      {
-                                        value: "-year",
-                                        text: "Artwork year (desc.)",
-                                      },
-                                      {
-                                        value: "year",
-                                        text: "Artwork year (asc.)",
-                                      },
-                                    ] // Corrective spacing for line-height
-                                  }
-                                  selected={filters.state.sort}
-                                  onSelect={sort => {
-                                    return filters.setFilter(
-                                      "sort",
-                                      sort,
-                                      mediator
-                                    )
-                                  }}
-                                />
-                              </Flex>
+                              {this.renderSelect({
+                                filters,
+                                mediator,
+                                xs,
+                              })}
 
                               <Spacer mb={2} />
 
