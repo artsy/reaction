@@ -86,7 +86,7 @@ export class WorksForYouArtist extends React.Component<Props, State> {
               <Serif
                 style={{ textDecoration: "none", display: "inline-block" }}
                 weight="semibold"
-                size={"3"}
+                size={"3t"}
               >
                 <a
                   style={{ color: "black", textDecoration: "none" }}
