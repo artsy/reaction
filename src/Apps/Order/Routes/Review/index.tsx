@@ -90,11 +90,11 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
   }
 
   onChangePayment() {
-    console.log("Clicked to change payment")
+    this.props.router.push(`/order2/${this.props.order.id}/payment`)
   }
 
   onChangeShipping() {
-    console.log("Clicked to change shipping")
+    this.props.router.push(`/order2/${this.props.order.id}/shipping`)
   }
 
   onCloseModal = () => {
@@ -113,8 +113,6 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
           </Col>
         </Row>
 
-        <Spacer mb={3} />
-
         <Responsive>
           {({ xs }) => (
             <TwoColumnLayout
@@ -123,8 +121,8 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                   <Join separator={<Spacer mb={3} />}>
                     <ShippingAndPaymentReview
                       order={order}
-                      onChangePayment={this.onChangePayment}
-                      onChangeShipping={this.onChangeShipping}
+                      onChangePayment={this.onChangePayment.bind(this)}
+                      onChangeShipping={this.onChangeShipping.bind(this)}
                       mb={xs ? 2 : 3}
                     />
 

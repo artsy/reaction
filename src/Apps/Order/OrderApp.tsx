@@ -1,3 +1,4 @@
+import { Spacer } from "@artsy/palette"
 import { routes_OrderQueryResponse } from "__generated__/routes_OrderQuery.graphql"
 import { ContextConsumer } from "Artsy/SystemContext"
 import { Location, RouteConfig, Router } from "found"
@@ -100,7 +101,12 @@ export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
               />
             ) : null}
             <StripeProvider stripe={this.state.stripe}>
-              <Elements>{children}</Elements>
+              <Elements>
+                <>
+                  {children}
+                  <Spacer mb={6} />
+                </>
+              </Elements>
             </StripeProvider>
           </>
         )}
