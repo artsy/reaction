@@ -1,139 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`News Layout renders the news layout on mobile 1`] = `
-.c17 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-.c19 {
-  margin: 10px 20px 0 0;
-}
-
-.c19:before {
-  content: "";
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  margin: 5px 5px 1px 0;
-  background-color: black;
-}
-
-.c21 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  white-space: nowrap;
-  line-height: 1em;
-  margin-top: 5px;
-}
-
-.c22 {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  padding-left: 7px;
-  padding-right: 7px;
-}
-
-.c22:hover {
-  opacity: 0.6;
-}
-
-.c22:first-child {
-  padding-left: 0;
-}
-
-.c20 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
-  color: #999999;
-}
-
-.c20 a {
-  color: #999999;
-}
-
-.c15 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
-  align-items: flex-start;
-}
-
-.c15 .c18 {
-  margin-top: 0;
-  margin-bottom: 5px;
-}
-
-.c16 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c8 {
-  position: relative;
-}
-
-.c8:hover .ImageWrapper__Fullscreen-s87c4qo-0 {
-  opacity: 1;
-}
-
-.c8 .BlockImage__container {
-  opacity: 0;
-  -webkit-transition: opacity 1s;
-  transition: opacity 1s;
-}
-
-.c8 .image-loaded {
-  opacity: 1;
-}
-
-.c9 {
-  display: block;
-}
-
-.c10 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  margin: 10px 0 10px 0;
-}
-
 .c11 {
   padding: 0;
   width: 100%;
@@ -165,18 +32,6 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 .c7 {
   margin-right: 0px;
   width: 100%;
-}
-
-.c6 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
 }
 
 .c13 {
@@ -373,6 +228,144 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   text-transform: none;
 }
 
+.c18 {
+  margin: 10px 20px 0 0;
+}
+
+.c18:before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin: 5px 5px 1px 0;
+  background-color: black;
+}
+
+.c20 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  white-space: nowrap;
+  line-height: 1em;
+  margin-top: 5px;
+}
+
+.c21 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.c21:hover {
+  opacity: 0.6;
+}
+
+.c21:first-child {
+  padding-left: 0;
+}
+
+.c19 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: Unica77LLWebRegular,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+  color: #999999;
+}
+
+.c19 a {
+  color: #999999;
+}
+
+.c15 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+}
+
+.c15 .c17 {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.c16 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c8 {
+  position: relative;
+}
+
+.c8:hover .ImageWrapper__Fullscreen-s87c4qo-0 {
+  opacity: 1;
+}
+
+.c8 .BlockImage__container {
+  opacity: 0;
+  -webkit-transition: opacity 1s;
+  transition: opacity 1s;
+}
+
+.c8 .image-loaded {
+  opacity: 1;
+}
+
+.c9 {
+  display: block;
+}
+
+.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin: 10px 0 10px 0;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
 .c5 {
   margin-bottom: 20px;
 }
@@ -418,7 +411,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   border-bottom: 1px solid #E5E5E5;
 }
 
-.c23 {
+.c22 {
   width: 80px;
   height: 30px;
   background-color: black;
@@ -441,11 +434,11 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   line-height: 1em;
 }
 
-.c23:focus {
+.c22:focus {
   outline: 0;
 }
 
-.c23:hover {
+.c22:hover {
   color: #E5E5E5;
 }
 
@@ -460,33 +453,6 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 }
 
 @media (max-width:600px) {
-  .c21 {
-    margin-top: 15px;
-  }
-}
-
-@media (max-width:720px) {
-  .c20 {
-    font-family: Unica77LLWebRegular,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 12px;
-    line-height: 1.4em;
-  }
-}
-
-@media (max-width:720px) {
-  .c8 .ImageWrapper__Fullscreen-s87c4qo-0 {
-    opacity: 1;
-  }
-}
-
-@media (max-width:600px) {
-  .c10 {
-    padding: 0px 10px;
-  }
-}
-
-@media (max-width:600px) {
   .c11 {
     padding: 0px;
   }
@@ -495,14 +461,6 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 @media (max-width:600px) {
   .c7 {
     margin-bottom: 10px;
-  }
-}
-
-@media (max-width:600px) {
-  .c6 {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
   }
 }
 
@@ -566,6 +524,41 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   }
 }
 
+@media (max-width:600px) {
+  .c20 {
+    margin-top: 15px;
+  }
+}
+
+@media (max-width:720px) {
+  .c19 {
+    font-family: Unica77LLWebRegular,Arial,serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 1.4em;
+  }
+}
+
+@media (max-width:720px) {
+  .c8 .ImageWrapper__Fullscreen-s87c4qo-0 {
+    opacity: 1;
+  }
+}
+
+@media (max-width:600px) {
+  .c10 {
+    padding: 0px 10px;
+  }
+}
+
+@media (max-width:600px) {
+  .c6 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
 @media (max-width:720px) {
   .c5 {
     margin: 0 0 15px 0;
@@ -598,7 +591,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 }
 
 @media (max-width:720px) {
-  .c23 {
+  .c22 {
     bottom: 15px;
     right: 15px;
   }
@@ -797,7 +790,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
             className="c16"
           >
             <div
-              className="c17"
+              className="KtFsv CuLFv"
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -807,14 +800,14 @@ exports[`News Layout renders the news layout on mobile 1`] = `
               fontSize={14}
             >
               <div
-                className="c18 c19"
+                className="c17 c18"
                 color="black"
               >
                 Casey Lesser
               </div>
             </div>
             <div
-              className="c20"
+              className="c19"
             >
               Jul 19, 2018 at 1:19 pm
               , via
@@ -829,10 +822,10 @@ exports[`News Layout renders the news layout on mobile 1`] = `
             </div>
           </div>
           <div
-            className="c21"
+            className="c20"
           >
             <a
-              className="c22"
+              className="c21"
               href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article"
               onClick={[Function]}
               target="_blank"
@@ -858,7 +851,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
               </svg>
             </a>
             <a
-              className="c22"
+              className="c21"
               href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article&text=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article&via=artsy"
               onClick={[Function]}
               target="_blank"
@@ -884,7 +877,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
               </svg>
             </a>
             <a
-              className="c22"
+              className="c21"
               href="mailto:?subject=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&body=Check out The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe. on Artsy: https://www.artsy.net/article/news-article"
               onClick={[Function]}
               target="_blank"
@@ -914,7 +907,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
       </div>
     </div>
     <button
-      className="c23"
+      className="c22"
       onClick={[Function]}
     >
       Expand
@@ -924,139 +917,6 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 `;
 
 exports[`News Layout renders the news layout properly 1`] = `
-.c17 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-.c19 {
-  margin: 10px 20px 0 0;
-}
-
-.c19:before {
-  content: "";
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  margin: 5px 5px 1px 0;
-  background-color: black;
-}
-
-.c21 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  white-space: nowrap;
-  line-height: 1em;
-  margin-top: 5px;
-}
-
-.c22 {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  padding-left: 7px;
-  padding-right: 7px;
-}
-
-.c22:hover {
-  opacity: 0.6;
-}
-
-.c22:first-child {
-  padding-left: 0;
-}
-
-.c20 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
-  color: #999999;
-}
-
-.c20 a {
-  color: #999999;
-}
-
-.c15 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
-  align-items: flex-start;
-}
-
-.c15 .c18 {
-  margin-top: 0;
-  margin-bottom: 5px;
-}
-
-.c16 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c8 {
-  position: relative;
-}
-
-.c8:hover .ImageWrapper__Fullscreen-s87c4qo-0 {
-  opacity: 1;
-}
-
-.c8 .BlockImage__container {
-  opacity: 0;
-  -webkit-transition: opacity 1s;
-  transition: opacity 1s;
-}
-
-.c8 .image-loaded {
-  opacity: 1;
-}
-
-.c9 {
-  display: block;
-}
-
-.c10 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  margin: 10px 0 10px 0;
-}
-
 .c11 {
   padding: 0;
   width: 100%;
@@ -1088,18 +948,6 @@ exports[`News Layout renders the news layout properly 1`] = `
 .c7 {
   margin-right: 0px;
   width: 100%;
-}
-
-.c6 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
 }
 
 .c13 {
@@ -1296,6 +1144,144 @@ exports[`News Layout renders the news layout properly 1`] = `
   text-transform: none;
 }
 
+.c18 {
+  margin: 10px 20px 0 0;
+}
+
+.c18:before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin: 5px 5px 1px 0;
+  background-color: black;
+}
+
+.c20 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  white-space: nowrap;
+  line-height: 1em;
+  margin-top: 5px;
+}
+
+.c21 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.c21:hover {
+  opacity: 0.6;
+}
+
+.c21:first-child {
+  padding-left: 0;
+}
+
+.c19 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: Unica77LLWebRegular,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+  color: #999999;
+}
+
+.c19 a {
+  color: #999999;
+}
+
+.c15 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+}
+
+.c15 .c17 {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.c16 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c8 {
+  position: relative;
+}
+
+.c8:hover .ImageWrapper__Fullscreen-s87c4qo-0 {
+  opacity: 1;
+}
+
+.c8 .BlockImage__container {
+  opacity: 0;
+  -webkit-transition: opacity 1s;
+  transition: opacity 1s;
+}
+
+.c8 .image-loaded {
+  opacity: 1;
+}
+
+.c9 {
+  display: block;
+}
+
+.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin: 10px 0 10px 0;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
 .c5 {
   margin-bottom: 20px;
 }
@@ -1341,7 +1327,7 @@ exports[`News Layout renders the news layout properly 1`] = `
   border-bottom: 1px solid #E5E5E5;
 }
 
-.c23 {
+.c22 {
   width: 80px;
   height: 30px;
   background-color: black;
@@ -1364,11 +1350,11 @@ exports[`News Layout renders the news layout properly 1`] = `
   line-height: 1em;
 }
 
-.c23:focus {
+.c22:focus {
   outline: 0;
 }
 
-.c23:hover {
+.c22:hover {
   color: #E5E5E5;
 }
 
@@ -1382,27 +1368,6 @@ exports[`News Layout renders the news layout properly 1`] = `
   border: 1px solid transparent;
 }
 
-@media (max-width:720px) {
-  .c20 {
-    font-family: Unica77LLWebRegular,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 12px;
-    line-height: 1.4em;
-  }
-}
-
-@media (max-width:720px) {
-  .c8 .ImageWrapper__Fullscreen-s87c4qo-0 {
-    opacity: 1;
-  }
-}
-
-@media (max-width:600px) {
-  .c10 {
-    padding: 0px 10px;
-  }
-}
-
 @media (max-width:600px) {
   .c11 {
     padding: 0px;
@@ -1412,14 +1377,6 @@ exports[`News Layout renders the news layout properly 1`] = `
 @media (max-width:600px) {
   .c7 {
     margin-bottom: 10px;
-  }
-}
-
-@media (max-width:600px) {
-  .c6 {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
   }
 }
 
@@ -1484,6 +1441,35 @@ exports[`News Layout renders the news layout properly 1`] = `
 }
 
 @media (max-width:720px) {
+  .c19 {
+    font-family: Unica77LLWebRegular,Arial,serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 1.4em;
+  }
+}
+
+@media (max-width:720px) {
+  .c8 .ImageWrapper__Fullscreen-s87c4qo-0 {
+    opacity: 1;
+  }
+}
+
+@media (max-width:600px) {
+  .c10 {
+    padding: 0px 10px;
+  }
+}
+
+@media (max-width:600px) {
+  .c6 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media (max-width:720px) {
   .c5 {
     margin: 0 0 15px 0;
     padding: 0;
@@ -1515,7 +1501,7 @@ exports[`News Layout renders the news layout properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c23 {
+  .c22 {
     bottom: 15px;
     right: 15px;
   }
@@ -1714,7 +1700,7 @@ exports[`News Layout renders the news layout properly 1`] = `
             className="c16"
           >
             <div
-              className="c17"
+              className="KtFsv CuLFv"
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1724,14 +1710,14 @@ exports[`News Layout renders the news layout properly 1`] = `
               fontSize={14}
             >
               <div
-                className="c18 c19"
+                className="c17 c18"
                 color="black"
               >
                 Casey Lesser
               </div>
             </div>
             <div
-              className="c20"
+              className="c19"
             >
               Jul 19, 2018 at 1:19 pm
               , via
@@ -1746,10 +1732,10 @@ exports[`News Layout renders the news layout properly 1`] = `
             </div>
           </div>
           <div
-            className="c21"
+            className="c20"
           >
             <a
-              className="c22"
+              className="c21"
               href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article"
               onClick={[Function]}
               target="_blank"
@@ -1775,7 +1761,7 @@ exports[`News Layout renders the news layout properly 1`] = `
               </svg>
             </a>
             <a
-              className="c22"
+              className="c21"
               href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article&text=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article&via=artsy"
               onClick={[Function]}
               target="_blank"
@@ -1801,7 +1787,7 @@ exports[`News Layout renders the news layout properly 1`] = `
               </svg>
             </a>
             <a
-              className="c22"
+              className="c21"
               href="mailto:?subject=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&body=Check out The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe. on Artsy: https://www.artsy.net/article/news-article"
               onClick={[Function]}
               target="_blank"
@@ -1831,7 +1817,7 @@ exports[`News Layout renders the news layout properly 1`] = `
       </div>
     </div>
     <button
-      className="c23"
+      className="c22"
       onClick={[Function]}
     >
       Expand
