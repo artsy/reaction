@@ -12,7 +12,7 @@ export type ArtworkDetailsAboutTheWorkFromPartner_artwork = {
             readonly city: string | null;
         }) | null> | null;
         readonly profile: ({
-            readonly image: ({
+            readonly icon: ({
                 readonly url: string | null;
             }) | null;
         }) | null;
@@ -98,7 +98,7 @@ return {
             {
               "kind": "LinkedField",
               "alias": null,
-              "name": "image",
+              "name": "icon",
               "storageKey": null,
               "args": null,
               "concreteType": "Image",
@@ -123,5 +123,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'a8735cebc60fdc6ad21eff0f5f145377';
+(node as any).hash = '9c242a9350f75d3ba619bc601c50ebec';
 export default node;
