@@ -29,6 +29,7 @@ export const UntouchedOrder = {
       {
         node: {
           artwork: {
+            id: "artworkId",
             pickup_available: true,
             artist_names: "Lisa Breslow",
             title: "Gramercy Park South",
@@ -38,6 +39,9 @@ export const UntouchedOrder = {
             dimensions: {
               in: "36 × 36 in",
               cm: "91.4 × 91.4 cm",
+            },
+            artist: {
+              id: "artistId",
             },
             attribution_class: null,
             image: {

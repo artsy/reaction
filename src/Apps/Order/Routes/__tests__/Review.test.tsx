@@ -3,20 +3,18 @@ import React from "react"
 
 import { Button } from "@artsy/palette"
 import { UntouchedOrder } from "Apps/__test__/Fixtures/Order"
-import { TermsOfServiceCheckbox } from "Apps/Order/Components/TermsOfServiceCheckbox"
-import { commitMutation, RelayProp } from "react-relay"
+import { commitMutation } from "react-relay"
 import { StepSummaryItem } from "Styleguide/Components/StepSummaryItem"
 import { Provider } from "unstated"
 import {
   ErrorModal,
   ModalButton,
 } from "../../../../Components/Modal/ErrorModal"
-import { OrderWithShippingDetails } from "../../../__test__/Fixtures/Order"
 import {
-  creatingCreditCardSuccess,
-  settingOrderPaymentFailed,
+  submitOrderWithFailure,
+  submitOrderWithNoInventoryFailure,
+  submitOrderWithVersionMismatchFailure,
 } from "../__fixtures__/MutationResults"
-import { ContinueButton } from "../Payment"
 import { ReviewRoute } from "../Review"
 
 jest.mock("react-relay", () => ({
@@ -29,6 +27,9 @@ const defaultProps = {
   order: { ...UntouchedOrder, id: "1234" },
   router: {
     push: pushMock,
+  },
+  route: {
+    onTransition: jest.fn(),
   },
   relay: {
     environment: {},
@@ -82,19 +83,7 @@ describe("Review", () => {
 
     expect(component.find(ErrorModal).props().show).toBe(false)
     ;(commitMutation as jest.Mock<any>).mockImplementationOnce(
-      (_, { onCompleted }) =>
-        onCompleted({
-          submitOrder: {
-            orderOrError: {
-              __typename: "OrderWithMutationFailure",
-              error: {
-                type: "validation",
-                code: "credit_card_not_found",
-                data: '{"credit_card_id":"5b9987f72957190026d0ff54"}',
-              },
-            },
-          },
-        })
+      (_, { onCompleted }) => onCompleted(submitOrderWithFailure)
     )
 
     component.find(Button).simulate("click")
@@ -117,5 +106,52 @@ describe("Review", () => {
     component.find(Button).simulate("click")
 
     expect(component.find(ErrorModal).props().show).toBe(true)
+  })
+
+  it("shows a modal that redirects to the artwork page if there is an artwork_version_mismatch", () => {
+    console.error = jest.fn() // Silences component logging.
+    window.location.assign = jest.fn()
+
+    const component = getWrapper(defaultProps)
+
+    expect(component.find(ErrorModal).props().show).toBe(false)
+    ;(commitMutation as jest.Mock<any>).mockImplementationOnce(
+      (_, { onCompleted }) => onCompleted(submitOrderWithVersionMismatchFailure)
+    )
+
+    component.find(Button).simulate("click")
+
+    const errorComponent = component.find(ErrorModal)
+    expect(errorComponent.props().show).toBe(true)
+    expect(errorComponent.text()).toContain(
+      "Something about the work changed since you started checkout. Please review the work before submitting your order."
+    )
+
+    component.find(ModalButton).simulate("click")
+
+    expect(window.location.assign).toBeCalledWith("/artwork/artworkId")
+  })
+
+  it("shows a modal that redirects to the artist page if there is an insufficient inventory", () => {
+    console.error = jest.fn() // Silences component logging.
+    window.location.assign = jest.fn()
+
+    const component = getWrapper(defaultProps)
+
+    expect(component.find(ErrorModal).props().show).toBe(false)
+    ;(commitMutation as jest.Mock<any>).mockImplementationOnce(
+      (_, { onCompleted }) => onCompleted(submitOrderWithNoInventoryFailure)
+    )
+
+    component.find(Button).simulate("click")
+
+    const errorComponent = component.find(ErrorModal)
+    expect(errorComponent.props().show).toBe(true)
+    expect(errorComponent.text()).toContain(
+      "Sorry, the work is no longer available."
+    )
+
+    component.find(ModalButton).simulate("click")
+    expect(window.location.assign).toBeCalledWith("/artist/artistId")
   })
 })

@@ -13,6 +13,9 @@ export type Review_order = {
             readonly node: ({
                 readonly artwork: ({
                     readonly id: string;
+                    readonly artist: ({
+                        readonly id: string;
+                    }) | null;
                     readonly " $fragmentRefs": ItemReview_artwork$ref;
                 }) | null;
             }) | null;
@@ -33,6 +36,13 @@ var v0 = {
   "storageKey": null
 },
 v1 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
+},
+v2 = {
   "kind": "ScalarField",
   "alias": "__id",
   "name": "id",
@@ -85,20 +95,27 @@ return {
                   "selections": [
                     v0,
                     {
+                      "kind": "LinkedField",
+                      "alias": null,
+                      "name": "artist",
+                      "storageKey": null,
+                      "args": null,
+                      "concreteType": "Artist",
+                      "plural": false,
+                      "selections": [
+                        v0,
+                        v1
+                      ]
+                    },
+                    {
                       "kind": "FragmentSpread",
                       "name": "ItemReview_artwork",
                       "args": null
                     },
-                    {
-                      "kind": "ScalarField",
-                      "alias": null,
-                      "name": "__id",
-                      "args": null,
-                      "storageKey": null
-                    }
+                    v1
                   ]
                 },
-                v1
+                v2
               ]
             }
           ]
@@ -115,9 +132,9 @@ return {
       "name": "ShippingAndPaymentReview_order",
       "args": null
     },
-    v1
+    v2
   ]
 };
 })();
-(node as any).hash = 'df52d5788d78942fe9c4ff41f50c9192';
+(node as any).hash = 'e79bfb52f1e88625587692b0ff3fcfea';
 export default node;

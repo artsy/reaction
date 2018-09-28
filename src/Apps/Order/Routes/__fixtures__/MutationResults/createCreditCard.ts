@@ -12,9 +12,9 @@ export const creatingCreditCardFailed = {
   createCreditCard: {
     creditCardOrError: {
       mutationError: {
-        type: "other_error",
-        message: "No such token: fake-token",
-        detail: null,
+        type: "payment_error",
+        message: "Payment error",
+        detail: "No such token: fake-token",
         error: null,
       },
     },

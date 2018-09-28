@@ -9,6 +9,7 @@ interface ErrorModalProps extends React.HTMLProps<HTMLDivElement> {
   detailText?: string
   closeText?: string
   onClose?: () => void
+  ctaAction?: () => void
 }
 
 export class ErrorModal extends React.Component<ErrorModalProps> {
@@ -22,7 +23,14 @@ export class ErrorModal extends React.Component<ErrorModalProps> {
   }
 
   render() {
-    const { show, onClose, headerText, detailText, closeText } = this.props
+    const {
+      show,
+      onClose,
+      headerText,
+      detailText,
+      closeText,
+      ctaAction,
+    } = this.props
 
     return (
       <ModalWrapper show={show} onClose={onClose}>
@@ -40,7 +48,11 @@ export class ErrorModal extends React.Component<ErrorModalProps> {
           </Sans>
         </Flex>
 
-        <Flex mt={1} justifyContent="flex-end" onClick={this.close}>
+        <Flex
+          mt={1}
+          justifyContent="flex-end"
+          onClick={ctaAction ? ctaAction : this.close}
+        >
           <ModalButton>{closeText}</ModalButton>
         </Flex>
       </ModalWrapper>
