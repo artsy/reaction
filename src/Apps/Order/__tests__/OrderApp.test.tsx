@@ -3,6 +3,7 @@ import { mount } from "enzyme"
 import React from "react"
 import { HeadProvider } from "react-head"
 import { Meta } from "react-head"
+import { ErrorPage } from "../../../Components/ErrorPage"
 import { OrderApp } from "../OrderApp"
 
 jest.mock("react-stripe-elements", () => ({
@@ -86,5 +87,19 @@ describe("OrderApp", () => {
       .find(Meta)
       .filterWhere(meta => meta.props().name === "viewport")
     expect(viewportMetaTags.length).toBe(1)
+  })
+
+  it("shows an error page if the order is missing", () => {
+    const props = getProps()
+    const subject = getWrapper({
+      props: { ...props, order: null },
+      context: { isEigen: true },
+    })
+
+    const viewportMetaTags = subject.find(ErrorPage)
+
+    expect(subject.find(ErrorPage).text()).toContain(
+      "Sorry, the page you were looking for doesn’t exist at this URL."
+    )
   })
 })
