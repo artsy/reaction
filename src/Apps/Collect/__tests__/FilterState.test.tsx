@@ -29,6 +29,22 @@ describe("FilterState", () => {
       done()
     })
   })
+
+  it("triggers an event after filter is set", done => {
+    expect(instance.state.page).toEqual(1)
+    instance.setFilter("medium", "photography", mediator)
+
+    setTimeout(() => {
+      expect(mediator.trigger).toBeCalledWith("collect:filter:changed", {
+        major_periods: [[]],
+        medium: "photography",
+        page: 1,
+        price_range: "*-*",
+        sort: "-decayed_merch",
+      })
+      done()
+    }, 20)
+  })
 })
 
 const initialState = {
