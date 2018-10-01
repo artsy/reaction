@@ -5,7 +5,7 @@ import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
 import { ItemReviewFragmentContainer as ItemReview } from "Apps/Order/Components/ItemReview"
 import { ShippingAndPaymentReviewFragmentContainer as ShippingAndPaymentReview } from "Apps/Order/Components/ShippingAndPaymentReview"
 import { ErrorModal } from "Components/Modal/ErrorModal"
-import { Router } from "found"
+import { RouteConfig, Router } from "found"
 import React, { Component } from "react"
 import {
   commitMutation,
@@ -14,6 +14,7 @@ import {
   RelayProp,
 } from "react-relay"
 import { Col, Row } from "Styleguide/Elements/Grid"
+import { get } from "Utils/get"
 import { Responsive } from "Utils/Responsive"
 import { Helper } from "../../Components/Helper"
 import { TransactionSummaryFragmentContainer as TransactionSummary } from "../../Components/TransactionSummary"
@@ -23,12 +24,15 @@ export interface ReviewProps {
   order: Review_order
   relay?: RelayProp
   router: Router
+  route: RouteConfig
 }
 
 interface ReviewState {
   isSubmitting: boolean
   isErrorModalOpen: boolean
   errorModalMessage: string
+  errorModalTitle: string
+  errorModalCtaAction: () => null
 }
 
 export class ReviewRoute extends Component<ReviewProps, ReviewState> {
@@ -36,6 +40,8 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
     isSubmitting: false,
     isErrorModalOpen: false,
     errorModalMessage: null,
+    errorModalTitle: null,
+    errorModalCtaAction: null,
   }
 
   onOrderSubmitted() {
@@ -48,7 +54,6 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
               mutation ReviewSubmitOrderMutation($input: SubmitOrderInput!) {
                 submitOrder(input: $input) {
                   orderOrError {
-                    __typename
                     ... on OrderWithMutationFailure {
                       error {
                         type
@@ -66,12 +71,49 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
               },
             },
             onCompleted: result => {
-              if ("error" in result.submitOrder.orderOrError) {
-                this.onMutationError(result.submitOrder.orderOrError.error)
-                return
-              }
+              const {
+                submitOrder: { orderOrError },
+              } = result
 
-              this.props.router.push(`/order2/${this.props.order.id}/status`)
+              const error = orderOrError.error
+              if (error) {
+                switch (error.code) {
+                  case "insufficient_inventory": {
+                    const artistId = this.artistId()
+                    this.onMutationError(
+                      error,
+                      "Not available",
+                      "Sorry, the work is no longer available.",
+                      artistId ? this.routeToArtistPage.bind(this) : null
+                    )
+                    break
+                  }
+                  case "failed_charge_authorize": {
+                    const parsedData = JSON.parse(error.data)
+                    this.onMutationError(
+                      error,
+                      "An error occurred",
+                      parsedData.failure_message
+                    )
+                    break
+                  }
+                  case "artwork_version_mismatch": {
+                    this.onMutationError(
+                      error,
+                      "Work has been updated",
+                      "Something about the work changed since you started checkout. Please review the work before submitting your order.",
+                      this.routeToArtworkPage.bind(this)
+                    )
+                    break
+                  }
+                  default: {
+                    this.onMutationError(error)
+                    break
+                  }
+                }
+              } else {
+                this.props.router.push(`/order2/${this.props.order.id}/status`)
+              }
             },
             onError: this.onMutationError.bind(this),
           }
@@ -80,12 +122,44 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
     }
   }
 
-  private onMutationError(errors, errorModalMessage?) {
+  private artistId() {
+    return get(
+      this.props.order,
+      o => o.lineItems.edges[0].node.artwork.artists[0].id
+    )
+  }
+
+  private routeToArtworkPage() {
+    const artworkId = get(
+      this.props.order,
+      o => o.lineItems.edges[0].node.artwork.id
+    )
+    // Don't confirm whether or not you want to leave the page
+    this.props.route.onTransition = () => null
+    window.location.assign(`/artwork/${artworkId}`)
+  }
+
+  private routeToArtistPage() {
+    const artistId = this.artistId()
+
+    // Don't confirm whether or not you want to leave the page
+    this.props.route.onTransition = () => null
+    window.location.assign(`/artist/${artistId}`)
+  }
+
+  private onMutationError(
+    errors,
+    errorModalTitle?,
+    errorModalMessage?,
+    errorModalCtaAction?
+  ) {
     console.error("Order/Routes/Review/index.tsx", errors)
     this.setState({
       isSubmitting: false,
       isErrorModalOpen: true,
+      errorModalTitle,
       errorModalMessage,
+      errorModalCtaAction,
     })
   }
 
@@ -202,6 +276,8 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
           onClose={this.onCloseModal}
           show={this.state.isErrorModalOpen}
           detailText={this.state.errorModalMessage}
+          headerText={this.state.errorModalTitle}
+          ctaAction={this.state.errorModalCtaAction}
         />
       </>
     )
@@ -218,6 +294,9 @@ export const ReviewFragmentContainer = createFragmentContainer(
           node {
             artwork {
               id
+              artists {
+                id
+              }
               ...ItemReview_artwork
             }
           }
