@@ -810,6 +810,9 @@ type Artwork implements Node & Sellable {
   price: String
   price_currency: String
 
+  # Is this work available for shipping only within the Contenental US?
+  shipsToContinentalUSOnly: Boolean
+
   # The string that describes domestic and international shipping.
   shippingInfo: String
 
@@ -837,6 +840,11 @@ type Artwork implements Node & Sellable {
   signature(format: Format): String
   title: String
   to_s: String
+
+  # Whether this Artwork is Published of not
+  published: Boolean!
+
+  # If the category is video, then it returns the href for the (youtube/vimeo) video, otherwise returns the website from CMS
   website: String
   framed: ArtworkInfoRow
   signatureInfo: ArtworkInfoRow
@@ -1024,7 +1032,7 @@ type ArtworkContextFair {
     section: String
 
     # Sorts for shows in a fair
-    sort: ShowSort = FEATURED_DESC
+    sort: ShowSort = null
     after: String
     first: Int
     before: String
@@ -1523,6 +1531,9 @@ type ArtworkItem implements Node & Sellable {
   price: String
   price_currency: String
 
+  # Is this work available for shipping only within the Contenental US?
+  shipsToContinentalUSOnly: Boolean
+
   # The string that describes domestic and international shipping.
   shippingInfo: String
 
@@ -1550,6 +1561,11 @@ type ArtworkItem implements Node & Sellable {
   signature(format: Format): String
   title: String
   to_s: String
+
+  # Whether this Artwork is Published of not
+  published: Boolean!
+
+  # If the category is video, then it returns the href for the (youtube/vimeo) video, otherwise returns the website from CMS
   website: String
   framed: ArtworkInfoRow
   signatureInfo: ArtworkInfoRow
@@ -1948,7 +1964,7 @@ type Collection implements Node {
     before: String
     last: Int
     private: Boolean = false
-    sort: CollectionSorts = POSITION_DESC
+    sort: CollectionSorts = null
   ): ArtworkConnection
   description: String!
   default: Boolean!
@@ -2005,6 +2021,17 @@ type CollectorProfileType {
     timezone: String
   ): String
   intents: [String]
+}
+
+input ConfirmPickupInput {
+  # Order ID
+  orderId: String!
+  clientMutationId: String
+}
+
+type ConfirmPickupPayload {
+  orderOrError: OrderOrFailureUnionType
+  clientMutationId: String
 }
 
 # A work to be consigned to the user
@@ -2416,6 +2443,26 @@ type CreditCard {
   postal_code: String
 }
 
+# A connection to a list of items.
+type CreditCardConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [CreditCardEdge]
+  pageCursors: PageCursors
+  totalCount: Int
+}
+
+# An edge in a connection.
+type CreditCardEdge {
+  # The item at the end of the edge
+  node: CreditCard
+
+  # A cursor for use in pagination
+  cursor: String!
+}
+
 input CreditCardInput {
   token: String!
   clientMutationId: String
@@ -2487,6 +2534,16 @@ type DeepZoomImage {
 type DeepZoomImageSize {
   Width: Int
   Height: Int
+}
+
+input DeleteCreditCardInput {
+  id: String!
+  clientMutationId: String
+}
+
+type DeleteCreditCardPayload {
+  creditCardOrError: CreditCardMutationType
+  clientMutationId: String
 }
 
 # Fields of a delivery (currently from Radiation)
@@ -2648,7 +2705,7 @@ type Fair {
     section: String
 
     # Sorts for shows in a fair
-    sort: ShowSort = FEATURED_DESC
+    sort: ShowSort = null
     after: String
     first: Int
     before: String
@@ -3604,7 +3661,7 @@ type HomePageModuleContextFair {
     section: String
 
     # Sorts for shows in a fair
-    sort: ShowSort = FEATURED_DESC
+    sort: ShowSort = null
     after: String
     first: Int
     before: String
@@ -4079,6 +4136,14 @@ type Me implements Node {
     # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
+
+  # A list of the current user’s credit cards
+  creditCards(
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): CreditCardConnection
   email: String
 
   # A list of the current user’s artist follows
@@ -4264,6 +4329,16 @@ type MessageInitiator {
   email: String
 }
 
+type Metaphysics {
+  environment: Boolean!
+  queryTracing: Boolean!
+  heapDumps: Boolean!
+  stitching: Boolean!
+  stitchingGravity: Boolean!
+  stitchingConvection: Boolean!
+  stitchingExchange: Boolean!
+}
+
 type Mutation {
   # Create a bidder
   createBidder(input: CreateBidderInput!): CreateBidderPayload
@@ -4273,6 +4348,9 @@ type Mutation {
 
   # Create a credit card
   createCreditCard(input: CreditCardInput!): CreditCardPayload
+
+  # Remove a credit card
+  deleteCreditCard(input: DeleteCreditCardInput!): DeleteCreditCardPayload
 
   # Follow (or unfollow) an artist
   followArtist(input: FollowArtistInput!): FollowArtistPayload
@@ -4292,6 +4370,45 @@ type Mutation {
   updateConversation(
     input: UpdateConversationMutationInput!
   ): UpdateConversationMutationPayload
+
+  # Appending a message to a conversation thread
+  sendConversationMessage(
+    input: SendConversationMessageMutationInput!
+  ): SendConversationMessageMutationPayload
+
+  # Save (or remove) an artwork to (from) a users default collection.
+  saveArtwork(input: SaveArtworkInput!): SaveArtworkPayload
+
+  # Mark sale as ended.
+  endSale(input: EndSaleInput!): EndSalePayload
+
+  # Attach an gemini asset to a consignment submission
+  requestCredentialsForAssetUpload(
+    input: RequestCredentialsForAssetUploadInput!
+  ): RequestCredentialsForAssetUploadPayload
+
+  # Attach an gemini asset to a consignment submission
+  createGeminiEntryForAsset(
+    input: CreateGeminiEntryForAssetInput!
+  ): CreateGeminiEntryForAssetPayload
+
+  # Records an artwork view.
+  recordArtworkView(input: RecordArtworkViewInput!): RecordArtworkViewPayload
+
+  # Create a new consignment submission using Convection
+  createConsignmentSubmission(
+    input: CreateSubmissionMutationInput!
+  ): CreateSubmissionMutationPayload
+
+  # Update a consignment using Convection
+  updateConsignmentSubmission(
+    input: UpdateSubmissionMutationInput!
+  ): UpdateSubmissionMutationPayload
+
+  # Attach an gemini asset to a consignment submission
+  addAssetToConsignmentSubmission(
+    input: AddAssetToConsignmentSubmissionInput!
+  ): AddAssetToConsignmentSubmissionPayload
 
   # Creates an order with an artwork
   createOrderWithArtwork(
@@ -4316,44 +4433,35 @@ type Mutation {
   # Submits an order
   submitOrder(input: SubmitOrderInput!): SubmitOrderPayload
 
-  # Appending a message to a conversation thread
-  sendConversationMessage(
-    input: SendConversationMessageMutationInput!
-  ): SendConversationMessageMutationPayload
+  # Creates an order with an artwork
+  ecommerceCreateOrderWithArtwork(
+    input: CreateOrderWithArtworkInput!
+  ): CreateOrderWithArtworkPayload
 
-  # Save (or remove) an artwork to (from) a users default collection.
-  saveArtwork(input: SaveArtworkInput!): SaveArtworkPayload
+  # Sets shipping information for an order
+  ecommerceSetOrderShipping(
+    input: SetOrderShippingInput!
+  ): SetOrderShippingPayload
 
-  # Mark sale as ended.
-  endSale(input: EndSaleInput!): EndSalePayload
+  # Sets payment information on an order
+  ecommerceSetOrderPayment(input: SetOrderPaymentInput!): SetOrderPaymentPayload
 
-  # Attach an gemini asset to a consignment submission
-  requestCredentialsForAssetUpload(
-    input: RequestCredentialsForAssetUploadInput!
-  ): RequestCredentialsForAssetUploadPayload
+  # Approves an order with payment
+  ecommerceApproveOrder(input: ApproveOrderInput!): ApproveOrderPayload
 
-  # Attach an gemini asset to a consignment submission
-  createGeminiEntryForAsset(
-    input: CreateGeminiEntryForAssetInput!
-  ): CreateGeminiEntryForAssetPayload
+  # Confirms pickup for an ecommerce order
+  ecommerceConfirmPickup(input: ConfirmPickupInput!): ConfirmPickupPayload
 
-  # Create a new consignment submission using Convection
-  createConsignmentSubmission(
-    input: CreateSubmissionMutationInput!
-  ): CreateSubmissionMutationPayload
+  # Fulfills an Order with one fulfillment by setting this fulfillment to all line items of this order
+  ecommerceFulfillOrderAtOnce(
+    input: FulfillOrderAtOnceInput!
+  ): FulfillOrderAtOncePayload
 
-  # Update a consignment using Convection
-  updateConsignmentSubmission(
-    input: UpdateSubmissionMutationInput!
-  ): UpdateSubmissionMutationPayload
+  # Rejects an order
+  ecommerceRejectOrder(input: RejectOrderInput!): RejectOrderPayload
 
-  # Attach an gemini asset to a consignment submission
-  addAssetToConsignmentSubmission(
-    input: AddAssetToConsignmentSubmissionInput!
-  ): AddAssetToConsignmentSubmissionPayload
-
-  # Records an artwork view.
-  recordArtworkView(input: RecordArtworkViewInput!): RecordArtworkViewPayload
+  # Submits an order
+  ecommerceSubmitOrder(input: SubmitOrderInput!): SubmitOrderPayload
 }
 
 input Near {
@@ -4420,6 +4528,9 @@ type Order {
 
   # State of the order
   state: String
+
+  # Reason for current state
+  stateReason: String
 
   # Tracking code of the order
   code: String
@@ -4671,8 +4782,8 @@ type OrderLineItem {
   # Artwork that is being ordered
   artwork: Artwork
 
-  # Edition set on the artwork
-  editionSet: EditionSet
+  # ID of the selected Edition set from the artwork
+  editionSetId: String
 
   # Unit price in cents
   priceCents: Int
@@ -4736,11 +4847,17 @@ union OrderOrFailureUnionType =
 union OrderParty = Partner | User
 
 enum OrdersSortMethodType {
-  # Sort by latest timestamp order was updated in ascending order
+  # Sort by the timestamp the order was last updated in ascending order
   UPDATED_AT_ASC
 
-  # Sort by latest timestamp order was updated in descending order
+  # Sort by the timestamp the order was last updated in descending order
   UPDATED_AT_DESC
+
+  # Sort by the timestamp the state of order was last updated in ascending order
+  STATE_UPDATED_AT_ASC
+
+  # Sort by the timestamp the state of order was last updated in descending order
+  STATE_UPDATED_AT_DESC
 }
 
 type OrderWithMutationFailure {
@@ -5481,19 +5598,6 @@ type Query {
     __id: ID!
   ): Node
 
-  # Returns a single Order
-  order(id: String!): Order
-
-  # Returns list of orders
-  orders(
-    buyerId: String
-    buyerType: String
-    sellerId: String
-    sellerType: String
-    state: String
-    sort: OrdersSortMethodType
-  ): OrderConnection
-
   # An OrderedSet
   ordered_set(
     # The ID of the OrderedSet
@@ -5645,7 +5749,7 @@ type Query {
     sort: SaleSorts
   ): [Sale]
 
-  # The schema for difference microservice settings
+  # The schema for difference micro-service settings
   services: Services
 
   # A Show
@@ -5695,6 +5799,40 @@ type Query {
     # Number of results to return
     size: Int
   ): PopularArtists
+
+  # Returns a single Order
+  order(id: String!): Order
+
+  # Returns list of orders
+  orders(
+    buyerId: String
+    buyerType: String
+    sellerId: String
+    sellerType: String
+    state: String
+    sort: OrdersSortMethodType
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): OrderConnection
+
+  # Returns a single Order
+  ecommerceOrder(id: String!): Order
+
+  # Returns list of orders
+  ecommerceOrders(
+    buyerId: String
+    buyerType: String
+    sellerId: String
+    sellerType: String
+    state: String
+    sort: OrdersSortMethodType
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): OrderConnection
 
   # A wildcard used to support complex root queries in Relay
   viewer: Viewer
@@ -6219,6 +6357,7 @@ type SendConversationMessageMutationPayload {
 
 type Services {
   convection: Convection!
+  metaphysics: Metaphysics!
 }
 
 input SetOrderPaymentInput {
@@ -7058,19 +7197,6 @@ type Viewer {
     __id: ID!
   ): Node
 
-  # Returns a single Order
-  order(id: String!): Order
-
-  # Returns list of orders
-  orders(
-    buyerId: String
-    buyerType: String
-    sellerId: String
-    sellerType: String
-    state: String
-    sort: OrdersSortMethodType
-  ): OrderConnection
-
   # An OrderedSet
   ordered_set(
     # The ID of the OrderedSet
@@ -7222,7 +7348,7 @@ type Viewer {
     sort: SaleSorts
   ): [Sale]
 
-  # The schema for difference microservice settings
+  # The schema for difference micro-service settings
   services: Services
 
   # A Show
