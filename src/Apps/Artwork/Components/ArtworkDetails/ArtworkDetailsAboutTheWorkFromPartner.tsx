@@ -31,7 +31,7 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
       []
     ).join(", ")
 
-    const imageUrl = get(partner, p => p.profile.image.url)
+    const imageUrl = get(partner, p => p.profile.icon.url)
 
     return (
       <StackableBorderBox p={2}>
@@ -64,7 +64,7 @@ export const ArtworkDetailsAboutTheWorkFromPartnerFragmentContainer = createFrag
           city
         }
         profile {
-          image {
+          icon {
             url
           }
         }

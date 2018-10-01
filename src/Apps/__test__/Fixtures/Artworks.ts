@@ -681,6 +681,6 @@ export const AllAdditionalDetailsPresent = {
       { city: "New York" },
       { city: "" },
     ],
-    profile: { image: { url: "https://picsum.photos/110/110/?random" } },
+    profile: { icon: { url: "https://picsum.photos/110/110/?random" } },
   },
 }
