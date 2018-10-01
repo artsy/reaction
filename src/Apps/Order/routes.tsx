@@ -16,6 +16,8 @@ import { StatusFragmentContainer as StatusRoute } from "Apps/Order/Routes/Status
 import { ComponentClass, StatelessComponent } from "react"
 
 // @ts-ignore
+import { ErrorPage } from "Components/ErrorPage"
+// @ts-ignore
 import { PaymentProps } from "./Routes/Payment"
 // @ts-ignore
 import { ReviewProps } from "./Routes/Review"
@@ -122,8 +124,7 @@ export const routes: RouteConfig[] = [
       {
         path: "*",
         Component: props => {
-          console.warn("Route not found: ", props)
-          return <div>Page not found</div>
+          return <ErrorPage code={404} />
         },
       },
     ],
