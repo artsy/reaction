@@ -10,7 +10,7 @@ export type PaymentRouteSetOrderPaymentMutationVariables = {
     readonly input: SetOrderPaymentInput;
 };
 export type PaymentRouteSetOrderPaymentMutationResponse = {
-    readonly setOrderPayment: ({
+    readonly ecommerceSetOrderPayment: ({
         readonly orderOrError: ({
             readonly order?: ({
                 readonly id: string | null;
@@ -34,7 +34,7 @@ export type PaymentRouteSetOrderPaymentMutation = {
 mutation PaymentRouteSetOrderPaymentMutation(
   $input: SetOrderPaymentInput!
 ) {
-  setOrderPayment(input: $input) {
+  ecommerceSetOrderPayment(input: $input) {
     orderOrError {
       __typename
       ... on OrderWithMutationSuccess {
@@ -146,7 +146,7 @@ return {
   "operationKind": "mutation",
   "name": "PaymentRouteSetOrderPaymentMutation",
   "id": null,
-  "text": "mutation PaymentRouteSetOrderPaymentMutation(\n  $input: SetOrderPaymentInput!\n) {\n  setOrderPayment(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        order {\n          id\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation PaymentRouteSetOrderPaymentMutation(\n  $input: SetOrderPaymentInput!\n) {\n  ecommerceSetOrderPayment(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        order {\n          id\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -158,7 +158,7 @@ return {
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "setOrderPayment",
+        "name": "ecommerceSetOrderPayment",
         "storageKey": null,
         "args": v1,
         "concreteType": "SetOrderPaymentPayload",
@@ -189,7 +189,7 @@ return {
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "setOrderPayment",
+        "name": "ecommerceSetOrderPayment",
         "storageKey": null,
         "args": v1,
         "concreteType": "SetOrderPaymentPayload",
@@ -221,5 +221,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'f4236a9316275fc5f7e068010243cc7b';
+(node as any).hash = 'e931e913800f6d3049bad7d29d9e8841';
 export default node;

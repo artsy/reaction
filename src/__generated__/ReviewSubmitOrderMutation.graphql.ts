@@ -9,7 +9,7 @@ export type ReviewSubmitOrderMutationVariables = {
     readonly input: SubmitOrderInput;
 };
 export type ReviewSubmitOrderMutationResponse = {
-    readonly submitOrder: ({
+    readonly ecommerceSubmitOrder: ({
         readonly orderOrError: ({
             readonly __typename: "OrderWithMutationFailure";
             readonly error: ({
@@ -35,7 +35,7 @@ export type ReviewSubmitOrderMutation = {
 mutation ReviewSubmitOrderMutation(
   $input: SubmitOrderInput!
 ) {
-  submitOrder(input: $input) {
+  ecommerceSubmitOrder(input: $input) {
     orderOrError {
       __typename
       ... on OrderWithMutationFailure {
@@ -63,7 +63,7 @@ v1 = [
   {
     "kind": "LinkedField",
     "alias": null,
-    "name": "submitOrder",
+    "name": "ecommerceSubmitOrder",
     "storageKey": null,
     "args": [
       {
@@ -140,7 +140,7 @@ return {
   "operationKind": "mutation",
   "name": "ReviewSubmitOrderMutation",
   "id": null,
-  "text": "mutation ReviewSubmitOrderMutation(\n  $input: SubmitOrderInput!\n) {\n  submitOrder(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation ReviewSubmitOrderMutation(\n  $input: SubmitOrderInput!\n) {\n  ecommerceSubmitOrder(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -158,5 +158,5 @@ return {
   }
 };
 })();
-(node as any).hash = '782db6e616700ecab8b28acdc829255f';
+(node as any).hash = '5ec6c2dae5ba8bff146873658d9dd7e1';
 export default node;

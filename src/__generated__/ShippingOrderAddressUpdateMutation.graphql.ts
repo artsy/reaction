@@ -22,7 +22,7 @@ export type ShippingOrderAddressUpdateMutationVariables = {
     readonly input: SetOrderShippingInput;
 };
 export type ShippingOrderAddressUpdateMutationResponse = {
-    readonly setOrderShipping: ({
+    readonly ecommerceSetOrderShipping: ({
         readonly orderOrError: ({
             readonly order?: ({
                 readonly state: string | null;
@@ -46,7 +46,7 @@ export type ShippingOrderAddressUpdateMutation = {
 mutation ShippingOrderAddressUpdateMutation(
   $input: SetOrderShippingInput!
 ) {
-  setOrderShipping(input: $input) {
+  ecommerceSetOrderShipping(input: $input) {
     orderOrError {
       __typename
       ... on OrderWithMutationSuccess {
@@ -158,7 +158,7 @@ return {
   "operationKind": "mutation",
   "name": "ShippingOrderAddressUpdateMutation",
   "id": null,
-  "text": "mutation ShippingOrderAddressUpdateMutation(\n  $input: SetOrderShippingInput!\n) {\n  setOrderShipping(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        order {\n          state\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation ShippingOrderAddressUpdateMutation(\n  $input: SetOrderShippingInput!\n) {\n  ecommerceSetOrderShipping(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        order {\n          state\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -170,7 +170,7 @@ return {
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "setOrderShipping",
+        "name": "ecommerceSetOrderShipping",
         "storageKey": null,
         "args": v1,
         "concreteType": "SetOrderShippingPayload",
@@ -201,7 +201,7 @@ return {
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "setOrderShipping",
+        "name": "ecommerceSetOrderShipping",
         "storageKey": null,
         "args": v1,
         "concreteType": "SetOrderShippingPayload",
@@ -233,5 +233,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'b4d505f0863e59f98f6a2aeaf9022bfe';
+(node as any).hash = 'c22077a59619a305104868825e6fb215';
 export default node;

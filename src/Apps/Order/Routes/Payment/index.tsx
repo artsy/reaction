@@ -319,7 +319,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
           this.setState({ isCommittingMutation: false })
 
           const {
-            setOrderPayment: { orderOrError },
+            ecommerceSetOrderPayment: { orderOrError },
           } = data
 
           if (orderOrError.order) {
@@ -333,7 +333,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
           mutation PaymentRouteSetOrderPaymentMutation(
             $input: SetOrderPaymentInput!
           ) {
-            setOrderPayment(input: $input) {
+            ecommerceSetOrderPayment(input: $input) {
               orderOrError {
                 ... on OrderWithMutationSuccess {
                   order {

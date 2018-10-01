@@ -1,5 +1,5 @@
 export const settingOrderShipmentFailure = {
-  setOrderShipping: {
+  ecommerceSetOrderShipping: {
     orderOrError: {
       error: {
         code: "Not permitted",
@@ -9,7 +9,7 @@ export const settingOrderShipmentFailure = {
 }
 
 export const settingOrderShipmentMissingRegionFailure = {
-  setOrderShipping: {
+  ecommerceSetOrderShipping: {
     orderOrError: {
       error: {
         type: "validation",
@@ -20,7 +20,7 @@ export const settingOrderShipmentMissingRegionFailure = {
 }
 
 export const settingOrderShipmentMissingCountryFailure = {
-  setOrderShipping: {
+  ecommerceSetOrderShipping: {
     orderOrError: {
       error: {
         type: "validation",
@@ -31,7 +31,7 @@ export const settingOrderShipmentMissingCountryFailure = {
 }
 
 export const settingOrderShipmentSuccess = {
-  setOrderShipping: {
+  ecommerceSetOrderShipping: {
     orderOrError: {
       order: {
         id: "1234",
