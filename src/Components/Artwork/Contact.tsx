@@ -1,6 +1,7 @@
 import { Contact_artwork } from "__generated__/Contact_artwork.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { get } from "Utils/get"
 import TextLink from "../TextLink"
 
 export interface ContactProps extends React.HTMLProps<Contact> {
@@ -19,26 +20,33 @@ export class Contact extends React.Component<ContactProps, null> {
 
   auctionLine() {
     const { artwork } = this.props
-    if (artwork.sale.is_live_open) {
+    const isLiveOpen = get(artwork, p => p.sale.is_live_open)
+    const isOpen = get(artwork, p => p.sale.is_open)
+    const isClosed = get(artwork, p => p.sale.is_closed)
+
+    if (isLiveOpen) {
       return (
         <TextLink href={artwork.href} underline>
           Enter Live Auction
         </TextLink>
       )
-    } else if (artwork.sale.is_open) {
-      const sa = artwork.sale_artwork
-      const bids = sa && sa.counts && sa.counts.bidder_positions
-      if (bids && bids > 0) {
-        const s = bids > 1 ? "s" : ""
+    } else if (isOpen) {
+      const sa = get(artwork, p => p.sale_artwork)
+      const bidderPositions = get(sa, p => p.counts.bidder_positions)
+      const highestBidDisplay = get(sa, p => p.highest_bid.display)
+      const openingBidDisplay = get(sa, p => p.opening_bid.display)
+
+      if (bidderPositions && bidderPositions > 0) {
+        const s = bidderPositions > 1 ? "s" : ""
         return (
           <span>
-            {sa.highest_bid.display} ({bids} bid{s})
+            {highestBidDisplay} ({bidderPositions} bid{s})
           </span>
         )
       } else {
-        return <span>{sa.opening_bid.display}</span>
+        return <span>{openingBidDisplay}</span>
       }
-    } else if (artwork.sale.is_closed) {
+    } else if (isClosed) {
       return <span>Auction closed</span>
     } else {
       return <span />
@@ -46,15 +54,19 @@ export class Contact extends React.Component<ContactProps, null> {
   }
 
   contactPartnerLine() {
-    const partner =
-      this.props.artwork.partner &&
-      this.props.artwork.partner.type.toLocaleLowerCase()
-
-    return (
-      <TextLink href={this.props.artwork.href} underline>
-        Contact {partner}
-      </TextLink>
+    const partner = get(this.props, p =>
+      p.artwork.partner.type.toLocaleLowerCase()
     )
+
+    if (partner) {
+      return (
+        <TextLink href={this.props.artwork.href} underline>
+          Contact {partner}
+        </TextLink>
+      )
+    } else {
+      return null
+    }
   }
 
   render() {
