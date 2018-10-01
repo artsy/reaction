@@ -40,9 +40,11 @@ export const UntouchedOrder = {
               in: "36 × 36 in",
               cm: "91.4 × 91.4 cm",
             },
-            artist: {
-              id: "artistId",
-            },
+            artists: [
+              {
+                id: "artistId",
+              },
+            ],
             attribution_class: null,
             image: {
               resized: {

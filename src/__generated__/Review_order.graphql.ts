@@ -13,9 +13,9 @@ export type Review_order = {
             readonly node: ({
                 readonly artwork: ({
                     readonly id: string;
-                    readonly artist: ({
+                    readonly artists: ReadonlyArray<({
                         readonly id: string;
-                    }) | null;
+                    }) | null> | null;
                     readonly " $fragmentRefs": ItemReview_artwork$ref;
                 }) | null;
             }) | null;
@@ -97,11 +97,11 @@ return {
                     {
                       "kind": "LinkedField",
                       "alias": null,
-                      "name": "artist",
+                      "name": "artists",
                       "storageKey": null,
                       "args": null,
                       "concreteType": "Artist",
-                      "plural": false,
+                      "plural": true,
                       "selections": [
                         v0,
                         v1
@@ -136,5 +136,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'e79bfb52f1e88625587692b0ff3fcfea';
+(node as any).hash = '370d9da157fd82506e919b9e2bcd44a3';
 export default node;

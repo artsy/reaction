@@ -78,12 +78,8 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
               const error = orderOrError.error
               if (error) {
                 switch (error.code) {
-                  case "insufficient_inventory":
-                    const artistId = get(
-                      this.props.order,
-                      o => o.lineItems.edges[0].node.artwork.artist.id
-                    )
-
+                  case "insufficient_inventory": {
+                    const artistId = this.artistId()
                     this.onMutationError(
                       error,
                       "Not available",
@@ -91,7 +87,8 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                       artistId ? this.routeToArtistPage.bind(this) : null
                     )
                     break
-                  case "failed_charge_authorize":
+                  }
+                  case "failed_charge_authorize": {
                     const parsedData = JSON.parse(error.data)
                     this.onMutationError(
                       error,
@@ -99,7 +96,8 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                       parsedData.failure_message
                     )
                     break
-                  case "artwork_version_mismatch":
+                  }
+                  case "artwork_version_mismatch": {
                     this.onMutationError(
                       error,
                       "Work has been updated",
@@ -107,9 +105,11 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                       this.routeToArtworkPage.bind(this)
                     )
                     break
-                  default:
+                  }
+                  default: {
                     this.onMutationError(error)
                     break
+                  }
                 }
               } else {
                 this.props.router.push(`/order2/${this.props.order.id}/status`)
@@ -120,6 +120,13 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
         )
       )
     }
+  }
+
+  private artistId() {
+    return get(
+      this.props.order,
+      o => o.lineItems.edges[0].node.artwork.artists[0].id
+    )
   }
 
   private routeToArtworkPage() {
@@ -133,10 +140,8 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
   }
 
   private routeToArtistPage() {
-    const artistId = get(
-      this.props.order,
-      o => o.lineItems.edges[0].node.artwork.artist.id
-    )
+    const artistId = this.artistId()
+
     // Don't confirm whether or not you want to leave the page
     this.props.route.onTransition = () => null
     window.location.assign(`/artist/${artistId}`)
@@ -289,7 +294,7 @@ export const ReviewFragmentContainer = createFragmentContainer(
           node {
             artwork {
               id
-              artist {
+              artists {
                 id
               }
               ...ItemReview_artwork
