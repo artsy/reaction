@@ -52,7 +52,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
           {
             mutation: graphql`
               mutation ReviewSubmitOrderMutation($input: SubmitOrderInput!) {
-                submitOrder(input: $input) {
+                ecommerceSubmitOrder(input: $input) {
                   orderOrError {
                     ... on OrderWithMutationFailure {
                       error {
@@ -72,7 +72,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
             },
             onCompleted: result => {
               const {
-                submitOrder: { orderOrError },
+                ecommerceSubmitOrder: { orderOrError },
               } = result
 
               const error = orderOrError.error

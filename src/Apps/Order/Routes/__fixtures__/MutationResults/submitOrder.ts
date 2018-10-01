@@ -1,5 +1,5 @@
 export const submitOrderWithFailure = {
-  submitOrder: {
+  ecommerceSubmitOrder: {
     orderOrError: {
       __typename: "OrderWithMutationFailure",
       error: {
@@ -12,7 +12,7 @@ export const submitOrderWithFailure = {
 }
 
 export const submitOrderWithVersionMismatchFailure = {
-  submitOrder: {
+  ecommerceSubmitOrder: {
     orderOrError: {
       __typename: "OrderWithMutationFailure",
       error: { type: "processing", code: "artwork_version_mismatch" },
@@ -21,7 +21,7 @@ export const submitOrderWithVersionMismatchFailure = {
 }
 
 export const submitOrderWithNoInventoryFailure = {
-  submitOrder: {
+  ecommerceSubmitOrder: {
     orderOrError: {
       error: {
         type: "processing",

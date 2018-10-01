@@ -81,7 +81,13 @@ export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
   }
 
   render() {
-    const { children, location, router, order, params } = this.props
+    const {
+      children,
+      location,
+      router,
+      ecommerceOrder: order,
+      params,
+    } = this.props
 
     if (!order) {
       return <ErrorPage code={404} />

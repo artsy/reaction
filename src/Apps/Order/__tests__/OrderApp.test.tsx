@@ -41,7 +41,7 @@ describe("OrderApp", () => {
         addTransitionHook: () => {},
         replace,
       },
-      order: { state: state || "PENDING" },
+      ecommerceOrder: { state: state || "PENDING" },
       routeIndices: [],
       routes: [],
     }
@@ -92,7 +92,7 @@ describe("OrderApp", () => {
   it("shows an error page if the order is missing", () => {
     const props = getProps()
     const subject = getWrapper({
-      props: { ...props, order: null },
+      props: { ...props, ecommerceOrder: null },
       context: { isEigen: true },
     })
 

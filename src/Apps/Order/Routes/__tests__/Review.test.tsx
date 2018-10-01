@@ -49,7 +49,7 @@ describe("Review", () => {
     const component = getWrapper(defaultProps)
     ;(commitMutation as jest.Mock<any>).mockImplementationOnce(
       (_, { onCompleted }) =>
-        onCompleted({ submitOrder: { orderOrError: { order: {} } } })
+        onCompleted({ ecommerceSubmitOrder: { orderOrError: { order: {} } } })
     )
     component.find(Button).simulate("click")
     expect(commitMutation).toHaveBeenCalledTimes(1)

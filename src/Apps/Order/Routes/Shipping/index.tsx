@@ -103,7 +103,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
               mutation ShippingOrderAddressUpdateMutation(
                 $input: SetOrderShippingInput!
               ) {
-                setOrderShipping(input: $input) {
+                ecommerceSetOrderShipping(input: $input) {
                   orderOrError {
                     ... on OrderWithMutationSuccess {
                       order {
@@ -131,7 +131,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
             onCompleted: data => {
               this.setState({ isCommittingMutation: false })
               const {
-                setOrderShipping: { orderOrError },
+                ecommerceSetOrderShipping: { orderOrError },
               } = data
 
               if (orderOrError.error) {

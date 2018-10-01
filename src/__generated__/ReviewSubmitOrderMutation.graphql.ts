@@ -9,7 +9,7 @@ export type ReviewSubmitOrderMutationVariables = {
     readonly input: SubmitOrderInput;
 };
 export type ReviewSubmitOrderMutationResponse = {
-    readonly submitOrder: ({
+    readonly ecommerceSubmitOrder: ({
         readonly orderOrError: ({
             readonly error?: ({
                 readonly type: string;
@@ -30,7 +30,7 @@ export type ReviewSubmitOrderMutation = {
 mutation ReviewSubmitOrderMutation(
   $input: SubmitOrderInput!
 ) {
-  submitOrder(input: $input) {
+  ecommerceSubmitOrder(input: $input) {
     orderOrError {
       __typename
       ... on OrderWithMutationFailure {
@@ -105,7 +105,7 @@ return {
   "operationKind": "mutation",
   "name": "ReviewSubmitOrderMutation",
   "id": null,
-  "text": "mutation ReviewSubmitOrderMutation(\n  $input: SubmitOrderInput!\n) {\n  submitOrder(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation ReviewSubmitOrderMutation(\n  $input: SubmitOrderInput!\n) {\n  ecommerceSubmitOrder(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -117,7 +117,7 @@ return {
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "submitOrder",
+        "name": "ecommerceSubmitOrder",
         "storageKey": null,
         "args": v1,
         "concreteType": "SubmitOrderPayload",
@@ -147,7 +147,7 @@ return {
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "submitOrder",
+        "name": "ecommerceSubmitOrder",
         "storageKey": null,
         "args": v1,
         "concreteType": "SubmitOrderPayload",
@@ -178,5 +178,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'ec2d0c50ae03c607e590c06f905b182f';
+(node as any).hash = 'ada451c41a0adfffd072a19ac6269ba8';
 export default node;

@@ -1,5 +1,5 @@
 export const settingOrderPaymentSuccess = {
-  setOrderPayment: {
+  ecommerceSetOrderPayment: {
     orderOrError: {
       order: {
         id: "1234",
@@ -9,7 +9,7 @@ export const settingOrderPaymentSuccess = {
 }
 
 export const settingOrderPaymentFailed = {
-  setOrderPayment: {
+  ecommerceSetOrderPayment: {
     orderOrError: {
       error: {
         type: "validation",
