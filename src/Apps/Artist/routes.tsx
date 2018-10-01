@@ -155,18 +155,15 @@ export const routes: RouteConfig[] = [
           }
         `,
       },
-      // Redirect old Artist app links to Overview page
+      // Redirect all unhandled tabs to the artist page.
+      // Note: there is a deep-linked standalone auction-lot page
+      // in Force, under /artist/:artistID/auction-result/:id.
+      // That app needs to be mounted before this app for that to work,
+      // and not get caught here.
       new Redirect({
-        from: "/works",
+        from: "*",
         to: "/artist/:artistID",
       }) as any,
-      {
-        path: "*",
-        Component: props => {
-          console.warn("Route not found: ", props)
-          return <div>Page not found</div>
-        },
-      },
     ],
   },
 ]
