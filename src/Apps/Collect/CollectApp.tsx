@@ -29,14 +29,10 @@ export class CollectApp extends Component<CollectAppProps> {
           </Box>
 
           {typeof window !== "undefined" && (
-            <>
-              <Separator my={6} />
-              <LazyLoadComponent threshold={1000}>
-                <RecentlyViewed />
-              </LazyLoadComponent>
-            </>
+            <LazyLoadComponent threshold={1000}>
+              <RecentlyViewed />
+            </LazyLoadComponent>
           )}
-
           <Separator mt={6} mb={3} />
 
           <Box>
