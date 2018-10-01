@@ -23,6 +23,7 @@ import { Helper } from "Apps/Order/Components/Helper"
 import { TransactionSummaryFragmentContainer as TransactionSummary } from "Apps/Order/Components/TransactionSummary"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { validatePresence } from "Apps/Order/Components/Validators"
+import { Mediator } from "Artsy/SystemContext"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
 import { get, pick } from "lodash"
@@ -39,9 +40,7 @@ import { Responsive } from "Utils/Responsive"
 
 export interface ShippingProps {
   order: Shipping_order
-  mediator?: {
-    trigger: (action: string, config: object) => void
-  }
+  mediator?: Mediator
   relay?: RelayProp
   router: Router
 }

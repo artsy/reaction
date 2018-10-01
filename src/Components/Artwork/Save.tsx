@@ -26,9 +26,7 @@ export interface Props
   relay?: RelayProp
   relayEnvironment?: RelayRuntimeTypes.Environment
   useRelay?: boolean
-  mediator?: {
-    trigger: (action: string, config: object) => void
-  }
+  mediator?: Artsy.Mediator
 }
 
 // TODO: This will be refactored out once Artworks / Grids are full Relay in Force

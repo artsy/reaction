@@ -1,82 +1,54 @@
 import { Avatar, Box, Flex, Sans, Serif } from "@artsy/palette"
-import FollowArtistButton from "Components/FollowButton/FollowArtistButton"
-import React, { Component } from "react"
+import React, { SFC } from "react"
 
 interface EntityHeaderProps {
   imageUrl?: string
   initials?: string
   meta?: string
   name: string
-  showFollow: boolean
+  showFollow?: boolean
+  FollowButton?: JSX.Element
 }
 
-export class EntityHeader extends Component<EntityHeaderProps> {
-  static defaultProps: Partial<EntityHeaderProps> = {
-    showFollow: false,
-  }
+export const EntityHeader: SFC<EntityHeaderProps> = ({
+  imageUrl,
+  initials,
+  name,
+  meta,
+  FollowButton,
+}) => {
+  return (
+    <>
+      <Flex alignItems="center">
+        <Box mr={1} pt={0.5}>
+          <Avatar size="xs" src={imageUrl} initials={initials} />
+        </Box>
 
-  render() {
-    const { imageUrl, initials, name, meta, showFollow } = this.props
+        <Flex flexDirection="column" justifyContent="center">
+          <Serif size="3" weight="semibold" color="black100">
+            {name}
+          </Serif>
 
-    return (
-      <>
-        <Flex alignItems="center">
-          <Box mr={1} pt={0.5}>
-            <Avatar size="xs" src={imageUrl} initials={initials} />
-          </Box>
+          <Flex>
+            {!!meta && (
+              <Sans size="2" color="black60">
+                {meta}
+              </Sans>
+            )}
 
-          <Flex flexDirection="column" justifyContent="center">
-            <Serif size="3" weight="semibold" color="black100">
-              {name}
-            </Serif>
-
-            <Flex>
-              {!!meta && (
-                <Sans size="2" color="black60">
-                  {meta}
-                </Sans>
-              )}
-
-              {showFollow && (
-                <>
-                  {meta && (
-                    <Box mx={0.3}>
-                      <Sans size="2">•</Sans>
-                    </Box>
-                  )}
-
-                  <FollowArtistButton
-                    // artist={props.artist}
-                    // user={props.user}
-                    onOpenAuthModal={maybeAuthenticated}
-                    render={_props => {
-                      return (
-                        <Sans
-                          size="2"
-                          weight="medium"
-                          style={{
-                            cursor: "pointer",
-                            textDecoration: "underline",
-                          }}
-                        >
-                          Follow
-                        </Sans>
-                      )
-                    }}
-                  >
-                    Follow
-                  </FollowArtistButton>
-                </>
-              )}
-            </Flex>
+            {FollowButton && (
+              <>
+                {meta && (
+                  <Box mx={0.3}>
+                    <Sans size="2">•</Sans>
+                  </Box>
+                )}
+                {FollowButton}
+              </>
+            )}
           </Flex>
         </Flex>
-      </>
-    )
-  }
-}
-
-// FIXME: Implement
-function maybeAuthenticated() {
-  return true
+      </Flex>
+    </>
+  )
 }

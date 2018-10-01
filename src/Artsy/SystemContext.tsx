@@ -5,6 +5,10 @@ import { RelayNetwork } from "relay-runtime"
 import { getUser } from "Utils/getUser"
 import { MatchingMediaQueries } from "Utils/Responsive"
 
+export interface Mediator {
+  trigger: (action: string, config?: object) => void
+}
+
 export interface SystemProps {
   /**
    * The currently signed-in user.
@@ -23,9 +27,7 @@ export interface SystemProps {
   /**
    * A PubSub hub typically used for communicating with Force.
    */
-  mediator?: {
-    trigger: (action: string, config?: object) => void
-  }
+  mediator?: Mediator
 
   /**
    * A configured environment object that can be used for any Relay operations

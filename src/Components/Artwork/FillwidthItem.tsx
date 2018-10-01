@@ -1,12 +1,14 @@
 import { FillwidthItem_artwork } from "__generated__/FillwidthItem_artwork.graphql"
 import { ContextProps } from "Artsy"
 import React from "react"
+import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import RelayMetadata, { Metadata } from "./Metadata"
 import RelaySaveButton, { SaveButton } from "./Save"
 
 // @ts-ignore
-import { ComponentRef, createFragmentContainer, graphql } from "react-relay"
+import { Mediator } from "Artsy/SystemContext"
+
 // @ts-ignore
 import styled, { StyledComponentClass } from "styled-components"
 
@@ -37,10 +39,7 @@ export interface FillwidthItemContainerProps
   margin?: number
   useRelay?: boolean
   artwork: FillwidthItem_artwork
-
-  mediator?: {
-    trigger: (action: string, config: object) => void
-  }
+  mediator?: Mediator
 }
 
 export class FillwidthItemContainer extends React.Component<
