@@ -1,4 +1,4 @@
-import { Serif, Spacer } from "@artsy/palette"
+import { Separator, Serif, Spacer } from "@artsy/palette"
 import { RecentlyViewed_me } from "__generated__/RecentlyViewed_me.graphql"
 import { RecentlyViewedQuery } from "__generated__/RecentlyViewedQuery.graphql"
 import { ContextConsumer } from "Artsy/Router"
@@ -24,6 +24,8 @@ export const RecentlyViewed: React.SFC<RecentlyViewedProps> = props => {
         return (
           me && (
             <React.Fragment>
+              <Separator my={6} />
+
               <Serif size="6">Recently viewed</Serif>
 
               <Spacer mb={3} />

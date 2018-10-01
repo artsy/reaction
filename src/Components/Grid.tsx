@@ -16,7 +16,7 @@ export const Grid = FlexGrid
 /**
  * @deprecated Use `Styleguide/Elements/Grid` instead
  */
-export const Col: FlexCol = styled(FlexCol)`
+export const Col: any = styled(FlexCol)`
   ${media.sm`
     padding-left: 0.5rem;
     padding-right: 0.5rem;
@@ -26,7 +26,7 @@ export const Col: FlexCol = styled(FlexCol)`
 /**
  * @deprecated Use `Styleguide/Elements/Grid` instead
  */
-export const Row: FlexRow = styled(FlexRow)`
+export const Row: any = styled(FlexRow)`
   ${media.sm`
     margin-left: 1rem;
     margin-right: 1rem;
