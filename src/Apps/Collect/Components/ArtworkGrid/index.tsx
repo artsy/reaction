@@ -43,20 +43,19 @@ class Filter extends Component<Props, State> {
     showMobileActionSheet: false,
   }
 
-  renderPriceRange(filters, mediator) {
-    const [initialMin, initialMax] = filters.price_range
-      ? filters.price_range.split("-")
-      : [50, 50000]
+  renderPriceRange(filters: FilterState, mediator) {
+    const [initialMin, initialMax] = filters.priceRangeToTuple()
+
     return (
       <PriceRange
         allowCross={false}
-        min={50}
-        max={50000}
+        min={FilterState.MIN_PRICE}
+        max={FilterState.MAX_PRICE}
         step={50}
         defaultValue={[initialMin, initialMax]}
         onAfterChange={([min, max]) => {
-          const minStr = min === 50 ? "*" : min
-          const maxStr = max === 50000 ? "*" : max
+          const minStr = min === FilterState.MIN_PRICE ? "*" : min
+          const maxStr = max === FilterState.MAX_PRICE ? "*" : max
 
           filters.setFilter("price_range", `${minStr}-${maxStr}`, mediator)
         }}

@@ -43,7 +43,16 @@ describe("FilterState", () => {
         sort: "-decayed_merch",
       })
       done()
-    }, 20)
+    })
+  })
+
+  it("returns a price range tuple based on filter string", done => {
+    instance.setFilter("price_range", "*-43000", mediator)
+
+    setTimeout(() => {
+      expect(instance.priceRangeToTuple()).toEqual([50, 43000])
+      done()
+    })
   })
 })
 
