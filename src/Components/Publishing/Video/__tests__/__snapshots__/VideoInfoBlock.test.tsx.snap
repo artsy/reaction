@@ -5,6 +5,7 @@ exports[`Video Info Block matches the snapshot 1`] = `
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 14px;
   line-height: 20px;
+  width: inherit;
 }
 
 .c0 {
@@ -80,6 +81,7 @@ exports[`Video Info Block matches the snapshot with edit props 1`] = `
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 14px;
   line-height: 20px;
+  width: inherit;
 }
 
 .c0 {

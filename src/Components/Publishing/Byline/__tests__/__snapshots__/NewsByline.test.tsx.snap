@@ -6,6 +6,7 @@ exports[`News Byline renders on mobile 1`] = `
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
+  width: inherit;
 }
 
 .c4 {
@@ -309,6 +310,7 @@ exports[`News Byline renders properly 1`] = `
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
+  width: inherit;
 }
 
 .c4 {
@@ -615,6 +617,7 @@ exports[`News Byline renders without a news source 1`] = `
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
+  width: inherit;
 }
 
 .c4 {

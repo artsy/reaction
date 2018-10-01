@@ -6,12 +6,14 @@ exports[`RelatedArticlesPanel renders the related articles panel 1`] = `
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
+  width: inherit;
 }
 
 .c6 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 18px;
   line-height: 22px;
+  width: inherit;
   color: #000;
 }
 

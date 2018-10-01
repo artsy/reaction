@@ -6,6 +6,7 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
+  width: inherit;
 }
 
 .c4 {
@@ -13,6 +14,7 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
+  width: inherit;
   color: #C2C2C2;
 }
 
@@ -302,6 +304,7 @@ exports[`Standard Header Snapshots renders properly 1`] = `
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
+  width: inherit;
 }
 
 .c7 {

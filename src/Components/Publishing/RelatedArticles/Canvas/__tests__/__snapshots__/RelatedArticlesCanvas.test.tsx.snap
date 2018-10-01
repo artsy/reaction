@@ -5,12 +5,14 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 28px;
   line-height: 36px;
+  width: inherit;
 }
 
 .c8 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 16px;
   line-height: 20px;
+  width: inherit;
 }
 
 .c10 {
@@ -18,6 +20,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
+  width: inherit;
 }
 
 .c11 {
