@@ -33,6 +33,9 @@ export class FilterState extends Container<State> {
   state = cloneDeep(initialState)
   tracking: any
 
+  static MIN_PRICE = 50
+  static MAX_PRICE = 50000
+
   constructor(props: State) {
     super()
     this.tracking = props.tracking
@@ -117,9 +120,9 @@ export class FilterState extends Container<State> {
       case "page":
         newPartialState[filter] = Number(value)
         break
+      case "price_range":
       case "partner_id":
       case "medium":
-      case "price_range":
       case "sort":
         newPartialState[filter] = value
         break
@@ -140,5 +143,13 @@ export class FilterState extends Container<State> {
         changed: { [filter]: value },
       })
     })
+  }
+
+  priceRangeToTuple(): [number, number] {
+    const [minStr, maxStr] = this.state.price_range.split("-")
+    const min = minStr === "*" ? FilterState.MIN_PRICE : Number(minStr)
+    const max = maxStr === "*" ? FilterState.MAX_PRICE : Number(maxStr)
+
+    return [min, max]
   }
 }

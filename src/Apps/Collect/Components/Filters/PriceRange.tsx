@@ -28,8 +28,16 @@ export class PriceRange extends React.Component<
   }
 
   state = {
-    min: this.props.min,
-    max: this.props.max,
+    min: this.props.defaultValue[0],
+    max: this.props.defaultValue[1],
+  }
+
+  componentWillReceiveProps(newProps: PriceRangeProps) {
+    const [min, max] = newProps.defaultValue
+    this.setState({
+      min,
+      max,
+    })
   }
 
   updateMinMax = ([min, max]) => {
