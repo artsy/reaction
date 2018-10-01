@@ -90,11 +90,10 @@ export class StatusRoute extends Component<StatusProps> {
       case "CANCELED":
         return (
           <>
-            The work is no longer available.
-            <br />
-            <br />
-            Please allow 5-7 business days for the refund to appear on your bank
-            statement.
+            Please allow 5–7 business days for the refund to appear on your bank
+            statement. Contact{" "}
+            <a href="mailto:orders@artsy.net">orders@artsy.net</a> with any
+            questions.
           </>
         )
     }
