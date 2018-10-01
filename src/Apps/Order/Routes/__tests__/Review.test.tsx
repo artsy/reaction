@@ -3,20 +3,17 @@ import React from "react"
 
 import { Button } from "@artsy/palette"
 import { UntouchedOrder } from "Apps/__test__/Fixtures/Order"
-import { TermsOfServiceCheckbox } from "Apps/Order/Components/TermsOfServiceCheckbox"
-import { commitMutation, RelayProp } from "react-relay"
+import { commitMutation } from "react-relay"
 import { StepSummaryItem } from "Styleguide/Components/StepSummaryItem"
 import { Provider } from "unstated"
 import {
   ErrorModal,
   ModalButton,
 } from "../../../../Components/Modal/ErrorModal"
-import { OrderWithShippingDetails } from "../../../__test__/Fixtures/Order"
 import {
   creatingCreditCardSuccess,
   settingOrderPaymentFailed,
 } from "../__fixtures__/MutationResults"
-import { ContinueButton } from "../Payment"
 import { ReviewRoute } from "../Review"
 
 jest.mock("react-relay", () => ({
@@ -48,7 +45,7 @@ describe("Review", () => {
     const component = getWrapper(defaultProps)
     ;(commitMutation as jest.Mock<any>).mockImplementationOnce(
       (_, { onCompleted }) =>
-        onCompleted({ submitOrder: { orderOrError: { order: {} } } })
+        onCompleted({ ecommerceSubmitOrder: { orderOrError: { order: {} } } })
     )
     component.find(Button).simulate("click")
     expect(commitMutation).toHaveBeenCalledTimes(1)
@@ -84,7 +81,7 @@ describe("Review", () => {
     ;(commitMutation as jest.Mock<any>).mockImplementationOnce(
       (_, { onCompleted }) =>
         onCompleted({
-          submitOrder: {
+          ecommerceSubmitOrder: {
             orderOrError: {
               __typename: "OrderWithMutationFailure",
               error: {
