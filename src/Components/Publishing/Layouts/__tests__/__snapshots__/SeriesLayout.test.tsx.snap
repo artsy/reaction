@@ -141,6 +141,7 @@ exports[`renders a series properly 1`] = `
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
+  width: inherit;
 }
 
 .c33 {
@@ -1251,6 +1252,7 @@ exports[`renders a sponsored series properly 1`] = `
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
+  width: inherit;
 }
 
 .c40 {
@@ -1698,11 +1700,11 @@ exports[`renders a sponsored series properly 1`] = `
   margin-bottom: 30px;
 }
 
-.epfuSp .c14 {
+.fKzgLF .c14 {
   margin-bottom: 90px;
 }
 
-.epfuSp .c41 {
+.fKzgLF .c41 {
   padding-top: 60px;
 }
 
@@ -1963,7 +1965,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .epfuSp .c41 {
+  .fKzgLF .c41 {
     padding-top: 60px;
   }
 }

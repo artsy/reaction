@@ -51,6 +51,7 @@ exports[`Video About matches the snapshot 1`] = `
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
+  width: inherit;
 }
 
 .c9 {
@@ -840,6 +841,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
+  width: inherit;
 }
 
 .c9 {
