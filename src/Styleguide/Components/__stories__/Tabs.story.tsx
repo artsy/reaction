@@ -93,8 +93,8 @@ storiesOf("Styleguide/Components", module).add("Tabs (Simple)", () => {
       <Section title="Supports empty(null) tabs by ignoring them">
         <Tabs>
           {null}
+          {false as any}
           <Tab name="Pricing" />
-          {null}
         </Tabs>
       </Section>
     </>

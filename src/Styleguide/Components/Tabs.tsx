@@ -56,7 +56,7 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
     super(props)
 
     const activeTabIndex =
-      props.initialTabIndex || this.props.children.findIndex(tab => tab != null)
+      props.initialTabIndex || this.props.children.findIndex(tab => !!tab)
     this.state = {
       activeTabIndex,
     }

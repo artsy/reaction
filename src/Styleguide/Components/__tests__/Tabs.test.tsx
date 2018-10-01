@@ -26,6 +26,18 @@ describe("Tabs", () => {
     expect(wrapper.find("ActiveTabButton").html()).toContain("CV")
   })
 
+  it("ignores empty tab when selecting default selected tab on mount", () => {
+    const wrapper = mount(
+      <Tabs>
+        {null}
+        {false as any}
+        <Tab name="CV" />
+      </Tabs>
+    )
+
+    expect(wrapper.find("ActiveTabButton").html()).toContain("CV")
+  })
+
   it("toggls tab content on click", () => {
     const getWrapper = tabIndex =>
       mount(
