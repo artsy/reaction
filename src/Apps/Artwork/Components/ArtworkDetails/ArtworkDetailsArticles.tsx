@@ -3,6 +3,7 @@ import { ArticleItem } from "Apps/Artist/Routes/Articles/ArtistArticle"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Col, Row } from "Styleguide/Elements/Grid"
+import { get } from "Utils/get"
 
 import { ArtworkDetailsArticles_artwork } from "__generated__/ArtworkDetailsArticles_artwork.graphql"
 
@@ -22,10 +23,11 @@ export const ArtworkDetailsArticles: React.SFC<
       <Col>
         <Box>
           {articles.map((article, index) => {
+            const imageUrl = get(article, p => p.thumbnail_image.resized.url)
             return (
               <ArticleItem
                 title={article.thumbnail_title}
-                imageUrl={article.thumbnail_image.resized.url}
+                imageUrl={imageUrl}
                 date={article.published_at}
                 author={article.author.name}
                 href={article.href}
