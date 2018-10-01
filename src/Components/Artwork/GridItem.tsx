@@ -105,7 +105,7 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
     }
   }
 
-  renderArtworkBadge({ is_biddable, is_acquireable }) {
+  renderArtworkBadge({ is_biddable, is_acquireable, href }) {
     return (
       <React.Fragment>
         <Badges>
@@ -116,7 +116,12 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
           )}
           {is_acquireable && (
             <Badge>
-              <Sans size="1">Buy Now</Sans>
+              <a
+                href={href}
+                style={{ textDecoration: "none", cursor: "pointer" }}
+              >
+                <Sans size="1">Buy Now</Sans>
+              </a>
             </Badge>
           )}
         </Badges>
