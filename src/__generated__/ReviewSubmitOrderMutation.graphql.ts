@@ -11,16 +11,11 @@ export type ReviewSubmitOrderMutationVariables = {
 export type ReviewSubmitOrderMutationResponse = {
     readonly ecommerceSubmitOrder: ({
         readonly orderOrError: ({
-            readonly __typename: "OrderWithMutationFailure";
-            readonly error: ({
+            readonly error?: ({
                 readonly type: string;
                 readonly code: string;
                 readonly data: string | null;
             }) | null;
-        } | {
-            /*This will never be '% other', but we need some
-            value in case none of the concrete values match.*/
-            readonly __typename: "%other";
         }) | null;
     }) | null;
 };
@@ -61,80 +56,50 @@ var v0 = [
 ],
 v1 = [
   {
-    "kind": "LinkedField",
-    "alias": null,
-    "name": "ecommerceSubmitOrder",
-    "storageKey": null,
-    "args": [
-      {
-        "kind": "Variable",
-        "name": "input",
-        "variableName": "input",
-        "type": "SubmitOrderInput!"
-      }
-    ],
-    "concreteType": "SubmitOrderPayload",
-    "plural": false,
-    "selections": [
-      {
-        "kind": "LinkedField",
-        "alias": null,
-        "name": "orderOrError",
-        "storageKey": null,
-        "args": null,
-        "concreteType": null,
-        "plural": false,
-        "selections": [
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "__typename",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "InlineFragment",
-            "type": "OrderWithMutationFailure",
-            "selections": [
-              {
-                "kind": "LinkedField",
-                "alias": null,
-                "name": "error",
-                "storageKey": null,
-                "args": null,
-                "concreteType": "EcommerceError",
-                "plural": false,
-                "selections": [
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "type",
-                    "args": null,
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "code",
-                    "args": null,
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "data",
-                    "args": null,
-                    "storageKey": null
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
+    "kind": "Variable",
+    "name": "input",
+    "variableName": "input",
+    "type": "SubmitOrderInput!"
   }
-];
+],
+v2 = {
+  "kind": "InlineFragment",
+  "type": "OrderWithMutationFailure",
+  "selections": [
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "error",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "EcommerceError",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "type",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "code",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "data",
+          "args": null,
+          "storageKey": null
+        }
+      ]
+    }
+  ]
+};
 return {
   "kind": "Request",
   "operationKind": "mutation",
@@ -148,15 +113,70 @@ return {
     "type": "Mutation",
     "metadata": null,
     "argumentDefinitions": v0,
-    "selections": v1
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "ecommerceSubmitOrder",
+        "storageKey": null,
+        "args": v1,
+        "concreteType": "SubmitOrderPayload",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "orderOrError",
+            "storageKey": null,
+            "args": null,
+            "concreteType": null,
+            "plural": false,
+            "selections": [
+              v2
+            ]
+          }
+        ]
+      }
+    ]
   },
   "operation": {
     "kind": "Operation",
     "name": "ReviewSubmitOrderMutation",
     "argumentDefinitions": v0,
-    "selections": v1
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "ecommerceSubmitOrder",
+        "storageKey": null,
+        "args": v1,
+        "concreteType": "SubmitOrderPayload",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "orderOrError",
+            "storageKey": null,
+            "args": null,
+            "concreteType": null,
+            "plural": false,
+            "selections": [
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "__typename",
+                "args": null,
+                "storageKey": null
+              },
+              v2
+            ]
+          }
+        ]
+      }
+    ]
   }
 };
 })();
-(node as any).hash = '5ec6c2dae5ba8bff146873658d9dd7e1';
+(node as any).hash = 'ada451c41a0adfffd072a19ac6269ba8';
 export default node;

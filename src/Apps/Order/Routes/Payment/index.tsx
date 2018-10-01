@@ -277,7 +277,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
             this.onMutationError(
               errors || creditCardOrError.mutationError,
               creditCardOrError.mutationError &&
-                creditCardOrError.mutationError.message
+                creditCardOrError.mutationError.detail
             )
           }
         },
