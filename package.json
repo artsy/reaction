@@ -228,9 +228,9 @@
       "<rootDir>/src"
     ],
     "setupFiles": [
-      "raf/polyfill",
-      "./src/setup_jest.ts"
+      "raf/polyfill"
     ],
+    "setupTestFrameworkScriptFile": "<rootDir>/src/setup_jest.ts",
     "moduleNameMapper": {
       "Assets(.*)$": "<rootDir>/src/Assets/$1",
       "^Components(.*)$": "<rootDir>/src/Components/$1"

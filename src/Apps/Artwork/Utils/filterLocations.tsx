@@ -4,7 +4,7 @@
  */
 export const filterLocations = (locations: ReadonlyArray<{ city: string }>) => {
   if (!locations || locations.length < 1) {
-    return
+    return null
   }
   const locationCities = locations.map((location, index) => {
     return location.city
