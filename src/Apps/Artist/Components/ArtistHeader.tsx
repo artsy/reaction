@@ -134,14 +134,6 @@ export class LargeArtistHeader extends Component<Props> {
           <FollowArtistButton
             useDeprecatedButtonStyle={false}
             artist={props.artist}
-            buttonProps={
-              {
-                width: "100px",
-                // FIXME: Hack to get around fixed with and centered text
-                paddingLeft: 0,
-                paddingRight: 0,
-              } as any
-            }
             user={user}
             onOpenAuthModal={() => {
               props.mediator.trigger("open:auth", {
