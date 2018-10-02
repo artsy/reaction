@@ -6,7 +6,7 @@ export type routes_ReviewQueryVariables = {
     readonly orderID: string;
 };
 export type routes_ReviewQueryResponse = {
-    readonly ecommerceOrder: ({
+    readonly order: ({
         readonly " $fragmentRefs": Review_order$ref;
     }) | null;
 };
@@ -21,7 +21,7 @@ export type routes_ReviewQuery = {
 query routes_ReviewQuery(
   $orderID: String!
 ) {
-  ecommerceOrder(id: $orderID) {
+  order: ecommerceOrder(id: $orderID) {
     ...Review_order
     __id: id
   }
@@ -213,7 +213,7 @@ return {
   "operationKind": "query",
   "name": "routes_ReviewQuery",
   "id": null,
-  "text": "query routes_ReviewQuery(\n  $orderID: String!\n) {\n  ecommerceOrder(id: $orderID) {\n    ...Review_order\n    __id: id\n  }\n}\n\nfragment Review_order on Order {\n  id\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          artists {\n            id\n            __id\n          }\n          ...ItemReview_artwork\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  ...TransactionSummary_order\n  ...ShippingAndPaymentReview_order\n  __id: id\n}\n\nfragment ItemReview_artwork on Artwork {\n  artist_names\n  title\n  date\n  medium\n  dimensions {\n    in\n    cm\n  }\n  attribution_class {\n    short_description\n  }\n  image {\n    resized(width: 185) {\n      url\n    }\n  }\n  __id\n}\n\nfragment TransactionSummary_order on Order {\n  shippingTotal\n  taxTotal\n  itemsTotal\n  buyerTotal\n  seller {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n    ... on User {\n      __id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_transactionSummary: resized(width: 55) {\n              url\n            }\n          }\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n\nfragment ShippingAndPaymentReview_order on Order {\n  requestedFulfillment {\n    __typename\n    ...ShippingAddress_ship\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  creditCard {\n    brand\n    last_digits\n    expiration_year\n    expiration_month\n    __id\n  }\n  __id: id\n}\n\nfragment ShippingAddress_ship on Ship {\n  name\n  addressLine1\n  addressLine2\n  city\n  postalCode\n  region\n  country\n  phoneNumber\n}\n",
+  "text": "query routes_ReviewQuery(\n  $orderID: String!\n) {\n  order: ecommerceOrder(id: $orderID) {\n    ...Review_order\n    __id: id\n  }\n}\n\nfragment Review_order on Order {\n  id\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          artists {\n            id\n            __id\n          }\n          ...ItemReview_artwork\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  ...TransactionSummary_order\n  ...ShippingAndPaymentReview_order\n  __id: id\n}\n\nfragment ItemReview_artwork on Artwork {\n  artist_names\n  title\n  date\n  medium\n  dimensions {\n    in\n    cm\n  }\n  attribution_class {\n    short_description\n  }\n  image {\n    resized(width: 185) {\n      url\n    }\n  }\n  __id\n}\n\nfragment TransactionSummary_order on Order {\n  shippingTotal\n  taxTotal\n  itemsTotal\n  buyerTotal\n  seller {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n    ... on User {\n      __id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_transactionSummary: resized(width: 55) {\n              url\n            }\n          }\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n\nfragment ShippingAndPaymentReview_order on Order {\n  requestedFulfillment {\n    __typename\n    ...ShippingAddress_ship\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  creditCard {\n    brand\n    last_digits\n    expiration_year\n    expiration_month\n    __id\n  }\n  __id: id\n}\n\nfragment ShippingAddress_ship on Ship {\n  name\n  addressLine1\n  addressLine2\n  city\n  postalCode\n  region\n  country\n  phoneNumber\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -224,7 +224,7 @@ return {
     "selections": [
       {
         "kind": "LinkedField",
-        "alias": null,
+        "alias": "order",
         "name": "ecommerceOrder",
         "storageKey": null,
         "args": v1,
@@ -248,7 +248,7 @@ return {
     "selections": [
       {
         "kind": "LinkedField",
-        "alias": null,
+        "alias": "order",
         "name": "ecommerceOrder",
         "storageKey": null,
         "args": v1,
@@ -602,5 +602,5 @@ return {
   }
 };
 })();
-(node as any).hash = '53c70db0dcda70299c65bb1a248702a8';
+(node as any).hash = 'cfabb8a0ecc3bffbbaea2e073c390d3e';
 export default node;
