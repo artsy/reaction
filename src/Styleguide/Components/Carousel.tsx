@@ -44,12 +44,17 @@ export const LargeCarousel = (props: Props) => {
   let slickRef = null
 
   return (
-    <Flex justifyContent="space-around" alignItems="center">
+    <Flex
+      flexDirection="row"
+      justifyContent="space-around"
+      alignItems="center"
+      height={props.height}
+    >
       <ArrowButton left={-10} onClick={() => slickRef.slickPrev()}>
         <Arrow direction="left" color="black100" fontSize="11px" />
       </ArrowButton>
 
-      <CarouselContainer>
+      <CarouselContainer height={props.height}>
         <Slick {...slickConfig} ref={slider => (slickRef = slider)}>
           {props.data.map((slide, index) => {
             return <Box key={index}>{props.render(slide)}</Box>
@@ -79,7 +84,7 @@ export const SmallCarousel = (props: Props) => {
 
   return (
     <Flex justifyContent="space-around" alignItems="center">
-      <CarouselContainer>
+      <CarouselContainer height={props.height}>
         <Slick {...slickConfig}>
           {props.data.map((slide, index) => {
             return <Box key={index}>{props.render(slide)}</Box>
@@ -90,8 +95,24 @@ export const SmallCarousel = (props: Props) => {
   )
 }
 
-const CarouselContainer = styled.div`
+const CarouselContainer = styled.div<{ height?: number }>`
   width: 100%;
+
+  ${"" /*
+    FIXME: Revisit using react-slick -- too many hacks
+*/};
+
+  ${props => {
+    if (props.height) {
+      return `
+        height: ${props.height}px;
+
+        .slick-slider, .slick-list, .slick-slide {
+          height: ${props.height}px;
+        }
+      `
+    }
+  }};
 
   ${"" /*
     FIXME: The below two rules are hacks for SSR to render properly.
@@ -103,6 +124,11 @@ const CarouselContainer = styled.div`
     width: 100% !important;
   }
 
+  .slick-slide {
+    position: relative;
+    top: -18px;
+  }
+
   ${"" /*
     FIXME: On SSR mobile this shifts the image, must fix
     Might be fixed in https://github.com/artsy/reaction/pull/929
@@ -111,6 +137,7 @@ const CarouselContainer = styled.div`
   ${media.xs`
     .slick-list {
       padding: 0 !important;
+      height: ${p => p.height}px;
     }
   `};
 
@@ -134,7 +161,7 @@ const ArrowButton = styled(Flex).attrs<LeftProps & RightProps>({})`
   opacity: 0.1;
 
   transition: opacity 0.25s;
-  min-height: 200px;
+  min-height: ${p => p.height || 200}px;
 
   &:hover {
     opacity: 1;

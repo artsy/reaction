@@ -1,41 +1,56 @@
+import { Box } from "@artsy/palette"
 import { storiesOf } from "@storybook/react"
 import { WorksForYou } from "Apps/WorksForYou"
 import { ContextProvider } from "Artsy"
 import React from "react"
-import { MarketingHeader } from "../WorksForYou/Components/MarketingHeader"
+import { MarketingHeader } from "../WorksForYou/MarketingHeader"
 
-storiesOf("Apps/WorksForYou/Components", module).add("Marketing Header", () => {
+storiesOf("Apps/WorksForYou", module).add("Marketing Header", () => {
   return <MarketingHeader />
 })
 
-storiesOf("Apps/WorksForYou/Feed", module).add("For Sale", () => {
-  return (
-    <ContextProvider>
-      <WorksForYou />
-    </ContextProvider>
-  )
-})
+storiesOf("Apps/WorksForYou/Feed", module).add(
+  "Including for sale works",
+  () => {
+    return (
+      <Box p={6} pt={2}>
+        <ContextProvider>
+          <WorksForYou />
+        </ContextProvider>
+      </Box>
+    )
+  }
+)
 
 storiesOf("Apps/WorksForYou/Feed", module).add("All", () => {
   return (
-    <ContextProvider>
-      <WorksForYou forSale={false} />
-    </ContextProvider>
+    <Box p={6} pt={2}>
+      <ContextProvider>
+        <WorksForYou forSale={false} />
+      </ContextProvider>
+    </Box>
   )
 })
 
-storiesOf("Apps/WorksForYou/Artist", module).add("For Sale", () => {
-  return (
-    <ContextProvider>
-      <WorksForYou artistID={"rosemarie-trockel"} />
-    </ContextProvider>
-  )
-})
+storiesOf("Apps/WorksForYou/Selected Artist Feed", module).add(
+  "Including for sale works",
+  () => {
+    return (
+      <Box p={6} pt={2}>
+        <ContextProvider>
+          <WorksForYou artistID={"rosemarie-trockel"} />
+        </ContextProvider>
+      </Box>
+    )
+  }
+)
 
-storiesOf("Apps/WorksForYou/Artist", module).add("All", () => {
+storiesOf("Apps/WorksForYou/Selected Artist Feed", module).add("All", () => {
   return (
-    <ContextProvider>
-      <WorksForYou forSale={false} artistID={"pablo-picasso"} />
-    </ContextProvider>
+    <Box p={6} pt={2}>
+      <ContextProvider>
+        <WorksForYou forSale={false} artistID={"pablo-picasso"} />
+      </ContextProvider>
+    </Box>
   )
 })

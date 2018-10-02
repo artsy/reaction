@@ -51,6 +51,7 @@ storiesOf("Styleguide/Components", module).add("Carousel", () => {
         <Box width="70%">
           <LargeCarousel
             data={images}
+            height={300}
             render={props => {
               return (
                 <Image

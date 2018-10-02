@@ -2,9 +2,9 @@
 
 import { ConcreteFragment } from "relay-runtime";
 import { ArtworkGrid_artworks$ref } from "./ArtworkGrid_artworks.graphql";
-declare const _WorksForYouContents_viewer$ref: unique symbol;
-export type WorksForYouContents_viewer$ref = typeof _WorksForYouContents_viewer$ref;
-export type WorksForYouContents_viewer = {
+declare const _WorksForYouFeed_viewer$ref: unique symbol;
+export type WorksForYouFeed_viewer$ref = typeof _WorksForYouFeed_viewer$ref;
+export type WorksForYouFeed_viewer = {
     readonly me: ({
         readonly followsAndSaves: ({
             readonly notifications: ({
@@ -32,7 +32,7 @@ export type WorksForYouContents_viewer = {
             }) | null;
         }) | null;
     }) | null;
-    readonly " $refType": WorksForYouContents_viewer$ref;
+    readonly " $refType": WorksForYouFeed_viewer$ref;
 };
 
 
@@ -47,7 +47,7 @@ var v0 = {
 };
 return {
   "kind": "Fragment",
-  "name": "WorksForYouContents_viewer",
+  "name": "WorksForYouFeed_viewer",
   "type": "Viewer",
   "metadata": {
     "connection": [
@@ -289,5 +289,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '6c4288aa2182516c66d510c8f3b4562e';
+(node as any).hash = '4a5f6fe1600a373f7271a88baf13d9cd';
 export default node;

@@ -1,6 +1,7 @@
+import { Box } from "@artsy/palette"
 import { ArtistArtworksFilters } from "__generated__/WorksForYouQuery.graphql"
 import { WorksForYouQuery } from "__generated__/WorksForYouQuery.graphql"
-import { MarketingHeader } from "Apps/WorksForYou/Components/MarketingHeader"
+import { MarketingHeader } from "Apps/WorksForYou/MarketingHeader"
 import { ContextConsumer, ContextProps } from "Artsy"
 import { track } from "Artsy/Analytics"
 import Spinner from "Components/Spinner"
@@ -8,19 +9,13 @@ import React, { Component } from "react"
 import { graphql, QueryRenderer } from "react-relay"
 import styled from "styled-components"
 import Events from "Utils/Events"
-import WorksForYouArtist from "./WorksForYouArtist"
-import WorksForYouContent from "./WorksForYouContents"
+import { WorksForYouArtistFeedPaginationContainer as WorksForYouArtistFeed } from "./WorksForYouArtistFeed"
+import { WorksForYouFeedPaginationContainer as WorksForYouFeed } from "./WorksForYouFeed"
 
 export interface Props extends ContextProps {
   artistID?: string
   forSale?: boolean
 }
-
-const SpinnerContainer = styled.div`
-  width: 100%;
-  height: 100px;
-  position: relative;
-`
 
 @track(null, {
   dispatch: data => Events.postEvent(data),
@@ -58,10 +53,10 @@ export class WorksForYou extends Component<Props> {
                     $filter: [ArtistArtworksFilters]
                   ) {
                     viewer {
-                      ...WorksForYouContents_viewer
+                      ...WorksForYouFeed_viewer
                         @skip(if: $includeSelectedArtist)
                         @arguments(for_sale: $forSale)
-                      ...WorksForYouArtist_viewer
+                      ...WorksForYouArtistFeed_viewer
                         @include(if: $includeSelectedArtist)
                         @arguments(artistID: $artistID, filter: $filter)
                     }
@@ -71,21 +66,18 @@ export class WorksForYou extends Component<Props> {
                 render={({ props }) => {
                   if (props) {
                     return (
-                      <>
+                      <Box pt={3} pb={3}>
                         {includeSelectedArtist ? (
-                          <WorksForYouArtist
+                          <WorksForYouArtistFeed
                             artistID={this.props.artistID}
                             viewer={props.viewer}
                             forSale={forSale}
                             user={user}
                           />
                         ) : (
-                          <WorksForYouContent
-                            user={user}
-                            viewer={props.viewer}
-                          />
+                          <WorksForYouFeed user={user} viewer={props.viewer} />
                         )}
-                      </>
+                      </Box>
                     )
                   } else {
                     return (
@@ -103,3 +95,9 @@ export class WorksForYou extends Component<Props> {
     )
   }
 }
+
+const SpinnerContainer = styled.div`
+  width: 100%;
+  height: 100px;
+  position: relative;
+`

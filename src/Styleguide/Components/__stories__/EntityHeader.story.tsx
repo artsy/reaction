@@ -1,4 +1,6 @@
+import { Sans } from "@artsy/palette"
 import React from "react"
+import { Toggle } from "react-powerplug"
 import { storiesOf } from "storybook/storiesOf"
 import { EntityHeader } from "Styleguide/Components/EntityHeader"
 import { Section } from "Styleguide/Utils/Section"
@@ -21,6 +23,16 @@ storiesOf("Styleguide/Components", module)
             imageUrl={props.imageUrl}
             name={props.name}
             meta={props.meta}
+            href={`http://www.artsy.net/${props.href}`}
+            FollowButton={
+              <Toggle initial={true}>
+                {({ on, toggle }) => (
+                  <span onClick={() => toggle()} style={{ cursor: "pointer" }}>
+                    <Sans size="2">{on ? "Unfollow" : "Follow"}</Sans>
+                  </span>
+                )}
+              </Toggle>
+            }
           />
         </Section>
         <Section title="No image, initials">
