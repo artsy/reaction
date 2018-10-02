@@ -14,8 +14,8 @@ interface Props {
 }
 
 export const MAX_CHARS = {
-  xs: 300,
-  rest: 900,
+  xs: 100,
+  default: 320,
 }
 
 @track({ context_module: Schema.Context.ArtistBio })
@@ -25,7 +25,7 @@ export class ArtistBio extends React.Component<Props> {
       <Responsive>
         {({ xs }) => {
           const maxChars =
-            this.props.maxChars || xs ? MAX_CHARS.xs : MAX_CHARS.rest
+            this.props.maxChars || xs ? MAX_CHARS.xs : MAX_CHARS.default
 
           return (
             <Serif size="3">
