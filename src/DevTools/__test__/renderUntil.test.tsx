@@ -18,24 +18,22 @@ class Component extends React.Component {
 }
 
 describe("renderUntil", () => {
-  it("yields an enzyme wrapper to the `until` block until it returns true", () => {
+  it("yields an enzyme wrapper to the `until` block until it returns true", async () => {
     const states = []
-    return renderUntil(wrapper => {
+    await renderUntil(wrapper => {
       const text = wrapper.find("div").text()
       states.push(text)
       return text !== "Loading"
-    }, <Component />).then(() => {
-      expect(states).toEqual(["Loading", "ohai"])
-    })
+    }, <Component />)
+    expect(states).toEqual(["Loading", "ohai"])
   })
 
-  it("resolves the promise with an enzyme wrapper with the final state", () => {
-    return renderUntil(
+  it("resolves the promise with an enzyme wrapper with the final state", async () => {
+    const tree = await renderUntil(
       wrapper => wrapper.find("div").text() !== "Loading",
       <Component />
-    ).then(wrapper => {
-      expect(wrapper.find("div").text()).toEqual("ohai")
-    })
+    )
+    expect(tree.find("div").text()).toEqual("ohai")
   })
 
   // TODO: Whatever way I try to test this, it just doesn’t work as expected.

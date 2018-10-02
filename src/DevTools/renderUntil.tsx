@@ -61,13 +61,12 @@ export type UntilCallback<
      }
    }
    
-   it("resolves the promise with an enzyme wrapper with the final state", () => {
-     return renderUntil(
+   it("resolves the promise with an enzyme wrapper with the final state", async () => {
+     const tree = await renderUntil(
        wrapper => wrapper.find("div").text() !== "Loading",
        <Component />
-     ).then(wrapper => {
-       expect(wrapper.find("div").text()).toEqual("ohai")
-     })
+     )
+     expect(tree.find("div").text()).toEqual("ohai")
    })
    ```
  *
