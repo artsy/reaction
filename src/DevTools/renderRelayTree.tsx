@@ -1,7 +1,7 @@
 import { LoadingClassName } from "Artsy/Relay/renderWithLoadProgress"
 import React from "react"
 import { MockRelayRenderer, MockRelayRendererProps } from "./MockRelayRenderer"
-import { renderUntil, UntilCallback } from "./renderUntil"
+import { renderUntil, RenderUntilCallback } from "./renderUntil"
 
 /**
  * Renders a tree of Relay containers and resolves the returned promise once
@@ -76,7 +76,7 @@ export function renderRelayTree<
   C extends React.Component = React.Component
 >(
   params: MockRelayRendererProps & {
-    until?: UntilCallback<P, S, C>
+    until?: RenderUntilCallback<P, S, C>
     wrapper?: (renderer: JSX.Element) => JSX.Element
   }
 ) {

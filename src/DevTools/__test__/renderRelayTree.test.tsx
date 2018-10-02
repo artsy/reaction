@@ -58,7 +58,7 @@ describe("renderRelayTree", () => {
     }
 
     const tree = await renderRelayTree({
-      until: wrapper => wrapper.find(".much-later").text().length > 0,
+      renderUntil: wrapper => wrapper.find(".much-later").text().length > 0,
       Component: Artwork,
       query,
       mockResolvers: {

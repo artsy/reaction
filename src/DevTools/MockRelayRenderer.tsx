@@ -10,7 +10,7 @@ import {
   Store,
 } from "relay-runtime"
 import { createMockNetworkLayer } from "./createMockNetworkLayer"
-import { renderUntil, UntilCallback } from "./renderUntil"
+import { renderUntil, RenderUntilCallback } from "./renderUntil"
 
 export interface MockRelayRendererProps {
   Component: React.ComponentType
@@ -206,11 +206,17 @@ export function renderRelayTree<
   C extends React.Component = React.Component
 >(
   params: MockRelayRendererProps & {
-    until?: UntilCallback<P, S, C>
+    renderUntil?: RenderUntilCallback<P, S, C>
     wrapper?: (renderer: JSX.Element) => JSX.Element
   }
 ) {
-  const { Component, query, mockResolvers, until, wrapper } = params
+  const {
+    Component,
+    query,
+    mockResolvers,
+    renderUntil: renderUntilCallback,
+    wrapper,
+  } = params
   const renderer = (
     <MockRelayRenderer
       Component={Component}
@@ -219,7 +225,7 @@ export function renderRelayTree<
     />
   )
   return renderUntil<P, S, C>(
-    until || (tree => !tree.find(`.${LoadingClassName}`).length),
+    renderUntilCallback || (tree => !tree.find(`.${LoadingClassName}`).length),
     wrapper ? wrapper(renderer) : renderer
   )
 }

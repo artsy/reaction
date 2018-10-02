@@ -20,7 +20,7 @@ class ErrorBoundary extends React.Component<{ onError: (error) => void }> {
   }
 }
 
-export type UntilCallback<
+export type RenderUntilCallback<
   P = {},
   S = {},
   C extends React.Component = React.Component
@@ -75,7 +75,7 @@ export function renderUntil<
   P = {},
   S = {},
   C extends React.Component = React.Component
->(until: UntilCallback<P, S, C>, element: React.ReactElement<P>) {
+>(until: RenderUntilCallback<P, S, C>, element: React.ReactElement<P>) {
   return new Promise<ReactWrapper<P, S, C>>((resolve, reject) => {
     /**
      * In case of an uncaught error, be sure to reject the promise ASAP and
