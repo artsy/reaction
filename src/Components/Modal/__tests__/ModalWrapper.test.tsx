@@ -16,6 +16,7 @@ describe("Modal", () => {
     props = {
       onClose: jest.fn(),
       blurContainerSelector: "",
+      fullscreenResponsiveModal: true,
     }
   })
 
