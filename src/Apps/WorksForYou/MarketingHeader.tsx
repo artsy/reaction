@@ -52,10 +52,10 @@ export class MarketingHeader extends Component {
 
         <Flex justifyContent="space-between" alignItems="center">
           <Box pr={2}>
-            <Sans size="3">Introducing a new way to buy on Artsy</Sans>
+            <Sans size="3">In-demand artworks, available to buy now</Sans>
             <Sans size="3" color={color("black60")}>
-              A new selection of works available for immediate purchase and
-              offer
+              Collect works by today’s top artists, with transparent pricing,
+              easy shipping, and a simple checkout process.
             </Sans>
           </Box>
           <Button onClick={this.handleClick}>Browse works</Button>
