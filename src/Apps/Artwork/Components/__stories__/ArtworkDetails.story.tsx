@@ -35,6 +35,9 @@ storiesOf("Styleguide/Artwork", module)
         <Section title="Info from partner plus other 2 types of data">
           <ArtworkDetailsQueryRenderer artworkID="allan-bruce-zee-lily-pads-balboa-park-san-diego-california-two-photographs-1" />
         </Section>
+        <Section title="Articles tab only with news article">
+          <ArtworkDetailsQueryRenderer artworkID="kevin-beasley-untitled-stub" />
+        </Section>
       </React.Fragment>
     )
   })
