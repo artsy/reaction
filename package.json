@@ -37,7 +37,7 @@
     "stylelint-project": " stylelint -- 'src/**/*.{ts,tsx}'",
     "prettier-project": "yarn run prettier-write 'src/**/*.{ts,tsx}'",
     "prettier-write": "yarn run prettier --write",
-    "relay": "relay-compiler --src ./src --schema data/schema.graphql --language typescript --artifactDirectory ./src/__generated__ --exclude '**/node_modules/****/__mocks__/**,**/__generated__/**'",
+    "relay": "relay-compiler --src ./src --schema data/schema.graphql --language typescript --artifactDirectory ./src/__generated__ --exclude '**/node_modules/**,**/__mocks__/**,**/__generated__/**'",
     "semantic-release": "semantic-release",
     "start": "yarn storybook",
     "storybook": "node verify-node-version.js && concurrently --raw --kill-others 'yarn relay --watch' 'start-storybook -s ./public -p 9001'",
