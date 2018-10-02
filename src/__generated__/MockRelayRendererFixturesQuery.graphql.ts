@@ -1,29 +1,29 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { MockRelayRenderer_artwork$ref } from "./MockRelayRenderer_artwork.graphql";
-export type MockRelayRendererQueryVariables = {};
-export type MockRelayRendererQueryResponse = {
+import { MockRelayRendererFixtures_artwork$ref } from "./MockRelayRendererFixtures_artwork.graphql";
+export type MockRelayRendererFixturesQueryVariables = {};
+export type MockRelayRendererFixturesQueryResponse = {
     readonly artwork: ({
-        readonly " $fragmentRefs": MockRelayRenderer_artwork$ref;
+        readonly " $fragmentRefs": MockRelayRendererFixtures_artwork$ref;
     }) | null;
 };
-export type MockRelayRendererQuery = {
-    readonly response: MockRelayRendererQueryResponse;
-    readonly variables: MockRelayRendererQueryVariables;
+export type MockRelayRendererFixturesQuery = {
+    readonly response: MockRelayRendererFixturesQueryResponse;
+    readonly variables: MockRelayRendererFixturesQueryVariables;
 };
 
 
 
 /*
-query MockRelayRendererQuery {
+query MockRelayRendererFixturesQuery {
   artwork(id: "mona-lisa") {
-    ...MockRelayRenderer_artwork
+    ...MockRelayRendererFixtures_artwork
     __id
   }
 }
 
-fragment MockRelayRenderer_artwork on Artwork {
+fragment MockRelayRendererFixtures_artwork on Artwork {
   image {
     url
   }
@@ -31,11 +31,11 @@ fragment MockRelayRenderer_artwork on Artwork {
     id
     __id
   }
-  ...MockRelayRenderer_artworkMetadata
+  ...MockRelayRendererFixtures_artworkMetadata
   __id
 }
 
-fragment MockRelayRenderer_artworkMetadata on Artwork {
+fragment MockRelayRendererFixtures_artworkMetadata on Artwork {
   title
   __id
 }
@@ -60,13 +60,13 @@ v1 = {
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "MockRelayRendererQuery",
+  "name": "MockRelayRendererFixturesQuery",
   "id": null,
-  "text": "query MockRelayRendererQuery {\n  artwork(id: \"mona-lisa\") {\n    ...MockRelayRenderer_artwork\n    __id\n  }\n}\n\nfragment MockRelayRenderer_artwork on Artwork {\n  image {\n    url\n  }\n  artist {\n    id\n    __id\n  }\n  ...MockRelayRenderer_artworkMetadata\n  __id\n}\n\nfragment MockRelayRenderer_artworkMetadata on Artwork {\n  title\n  __id\n}\n",
+  "text": "query MockRelayRendererFixturesQuery {\n  artwork(id: \"mona-lisa\") {\n    ...MockRelayRendererFixtures_artwork\n    __id\n  }\n}\n\nfragment MockRelayRendererFixtures_artwork on Artwork {\n  image {\n    url\n  }\n  artist {\n    id\n    __id\n  }\n  ...MockRelayRendererFixtures_artworkMetadata\n  __id\n}\n\nfragment MockRelayRendererFixtures_artworkMetadata on Artwork {\n  title\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "MockRelayRendererQuery",
+    "name": "MockRelayRendererFixturesQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": [],
@@ -82,7 +82,7 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "MockRelayRenderer_artwork",
+            "name": "MockRelayRendererFixtures_artwork",
             "args": null
           },
           v1
@@ -92,7 +92,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "MockRelayRendererQuery",
+    "name": "MockRelayRendererFixturesQuery",
     "argumentDefinitions": [],
     "selections": [
       {
@@ -155,5 +155,5 @@ return {
   }
 };
 })();
-(node as any).hash = '967365b431eab64ccdae135e84b58263';
+(node as any).hash = '814458999981388a8402adebf4982530';
 export default node;

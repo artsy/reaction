@@ -1,18 +1,18 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-import { MockRelayRenderer_artworkMetadata$ref } from "./MockRelayRenderer_artworkMetadata.graphql";
-declare const _MockRelayRenderer_artwork$ref: unique symbol;
-export type MockRelayRenderer_artwork$ref = typeof _MockRelayRenderer_artwork$ref;
-export type MockRelayRenderer_artwork = {
+import { MockRelayRendererFixtures_artworkMetadata$ref } from "./MockRelayRendererFixtures_artworkMetadata.graphql";
+declare const _MockRelayRendererFixtures_artwork$ref: unique symbol;
+export type MockRelayRendererFixtures_artwork$ref = typeof _MockRelayRendererFixtures_artwork$ref;
+export type MockRelayRendererFixtures_artwork = {
     readonly image: ({
         readonly url: string | null;
     }) | null;
     readonly artist: ({
         readonly id: string;
     }) | null;
-    readonly " $fragmentRefs": MockRelayRenderer_artworkMetadata$ref;
-    readonly " $refType": MockRelayRenderer_artwork$ref;
+    readonly " $fragmentRefs": MockRelayRendererFixtures_artworkMetadata$ref;
+    readonly " $refType": MockRelayRendererFixtures_artwork$ref;
 };
 
 
@@ -27,7 +27,7 @@ var v0 = {
 };
 return {
   "kind": "Fragment",
-  "name": "MockRelayRenderer_artwork",
+  "name": "MockRelayRendererFixtures_artwork",
   "type": "Artwork",
   "metadata": null,
   "argumentDefinitions": [],
@@ -71,12 +71,12 @@ return {
     },
     {
       "kind": "FragmentSpread",
-      "name": "MockRelayRenderer_artworkMetadata",
+      "name": "MockRelayRendererFixtures_artworkMetadata",
       "args": null
     },
     v0
   ]
 };
 })();
-(node as any).hash = '2e03324f01a3fe592c6919f9814611a1';
+(node as any).hash = 'decbf11fdffcceb6e5fae04292842cb1';
 export default node;

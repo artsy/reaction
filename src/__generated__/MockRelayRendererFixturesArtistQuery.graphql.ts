@@ -1,33 +1,33 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { MockRelayRenderer_artist$ref } from "./MockRelayRenderer_artist.graphql";
-export type MockRelayRendererArtistQueryVariables = {
+import { MockRelayRendererFixtures_artist$ref } from "./MockRelayRendererFixtures_artist.graphql";
+export type MockRelayRendererFixturesArtistQueryVariables = {
     readonly id: string;
 };
-export type MockRelayRendererArtistQueryResponse = {
+export type MockRelayRendererFixturesArtistQueryResponse = {
     readonly artist: ({
-        readonly " $fragmentRefs": MockRelayRenderer_artist$ref;
+        readonly " $fragmentRefs": MockRelayRendererFixtures_artist$ref;
     }) | null;
 };
-export type MockRelayRendererArtistQuery = {
-    readonly response: MockRelayRendererArtistQueryResponse;
-    readonly variables: MockRelayRendererArtistQueryVariables;
+export type MockRelayRendererFixturesArtistQuery = {
+    readonly response: MockRelayRendererFixturesArtistQueryResponse;
+    readonly variables: MockRelayRendererFixturesArtistQueryVariables;
 };
 
 
 
 /*
-query MockRelayRendererArtistQuery(
+query MockRelayRendererFixturesArtistQuery(
   $id: String!
 ) {
   artist(id: $id) {
-    ...MockRelayRenderer_artist
+    ...MockRelayRendererFixtures_artist
     __id
   }
 }
 
-fragment MockRelayRenderer_artist on Artist {
+fragment MockRelayRendererFixtures_artist on Artist {
   name
   __id
 }
@@ -60,13 +60,13 @@ v2 = {
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "MockRelayRendererArtistQuery",
+  "name": "MockRelayRendererFixturesArtistQuery",
   "id": null,
-  "text": "query MockRelayRendererArtistQuery(\n  $id: String!\n) {\n  artist(id: $id) {\n    ...MockRelayRenderer_artist\n    __id\n  }\n}\n\nfragment MockRelayRenderer_artist on Artist {\n  name\n  __id\n}\n",
+  "text": "query MockRelayRendererFixturesArtistQuery(\n  $id: String!\n) {\n  artist(id: $id) {\n    ...MockRelayRendererFixtures_artist\n    __id\n  }\n}\n\nfragment MockRelayRendererFixtures_artist on Artist {\n  name\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "MockRelayRendererArtistQuery",
+    "name": "MockRelayRendererFixturesArtistQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -82,7 +82,7 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "MockRelayRenderer_artist",
+            "name": "MockRelayRendererFixtures_artist",
             "args": null
           },
           v2
@@ -92,7 +92,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "MockRelayRendererArtistQuery",
+    "name": "MockRelayRendererFixturesArtistQuery",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -118,5 +118,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'c57c3cdf26e19ee362b094ed0c2c0f1b';
+(node as any).hash = 'aabded82722f7ed4c4f873a3d0b315be';
 export default node;

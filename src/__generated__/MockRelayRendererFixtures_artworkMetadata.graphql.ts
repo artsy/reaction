@@ -1,18 +1,18 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-declare const _MockRelayRenderer_artworkMetadata$ref: unique symbol;
-export type MockRelayRenderer_artworkMetadata$ref = typeof _MockRelayRenderer_artworkMetadata$ref;
-export type MockRelayRenderer_artworkMetadata = {
+declare const _MockRelayRendererFixtures_artworkMetadata$ref: unique symbol;
+export type MockRelayRendererFixtures_artworkMetadata$ref = typeof _MockRelayRendererFixtures_artworkMetadata$ref;
+export type MockRelayRendererFixtures_artworkMetadata = {
     readonly title: string | null;
-    readonly " $refType": MockRelayRenderer_artworkMetadata$ref;
+    readonly " $refType": MockRelayRendererFixtures_artworkMetadata$ref;
 };
 
 
 
 const node: ConcreteFragment = {
   "kind": "Fragment",
-  "name": "MockRelayRenderer_artworkMetadata",
+  "name": "MockRelayRendererFixtures_artworkMetadata",
   "type": "Artwork",
   "metadata": null,
   "argumentDefinitions": [],
@@ -33,5 +33,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '987763c86f1b83c5aa0574a6c4dc4c60';
+(node as any).hash = '36229b903e6398f793878a155df342a7';
 export default node;
