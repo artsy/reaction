@@ -1,22 +1,25 @@
-import { Box, Flex, Image, Sans, Serif } from "@artsy/palette"
-import { WorksForYouContents_viewer } from "__generated__/WorksForYouContents_viewer.graphql"
+import { Box, Separator, Spacer } from "@artsy/palette"
+import { WorksForYouFeed_viewer } from "__generated__/WorksForYouFeed_viewer.graphql"
 import { ContextProps } from "Artsy"
 import ArtworkGrid from "Components/ArtworkGrid"
 import Spinner from "Components/Spinner"
-import * as React from "react"
+import React, { Component } from "react"
 import ReactDOM from "react-dom"
+import styled from "styled-components"
+import { EntityHeader } from "Styleguide/Components"
+import { get } from "Utils/get"
+
 import {
   ConnectionData,
   createPaginationContainer,
   graphql,
   RelayPaginationProp,
 } from "react-relay"
-import styled from "styled-components"
 
 interface Props extends ContextProps {
   relay?: RelayPaginationProp
   user?: User
-  viewer: WorksForYouContents_viewer
+  viewer: WorksForYouFeed_viewer
 }
 
 interface State {
@@ -25,33 +28,22 @@ interface State {
 }
 
 const PageSize = 10
+const RefreshInterval = 150 // ms
 
-const SpinnerContainer = styled.div`
-  width: 100%;
-  height: 100px;
-  position: relative;
-`
-
-const Avatar = styled.div`
-  border-radius: 20px;
-  width: 40px;
-  height: 40px;
-`
-
-const Container = styled.div`
-  &:first-child {
-    margin-top: -10px;
+export class WorksForYouFeed extends Component<Props, State> {
+  state = {
+    loading: false,
+    interval: null,
   }
-`
-
-export class WorksForYouContent extends React.Component<Props, State> {
-  state = { loading: false, interval: null }
 
   componentDidMount() {
     const interval = setInterval(() => {
       this.maybeLoadMore()
-    }, 150)
-    this.setState({ interval })
+    }, RefreshInterval)
+
+    this.setState({
+      interval,
+    })
   }
 
   componentWillUnmount() {
@@ -90,73 +82,51 @@ export class WorksForYouContent extends React.Component<Props, State> {
 
   render() {
     return (
-      <Container>
+      <>
         {this.props.viewer.me.followsAndSaves.notifications.edges.map(
           ({ node }, index) => {
-            return (
-              <div style={{ borderBottom: "1px solid #e5e5e5" }} key={index}>
-                <Box pt={6} pb={3}>
-                  <Flex>
-                    {node.image && (
-                      <Avatar>
-                        <a href={node.href}>
-                          <Image
-                            src={node.image.resized.url}
-                            width={40}
-                            height={40}
-                            style={{ borderRadius: "20px" }}
-                          />
-                        </a>
-                      </Avatar>
-                    )}
-                    <Box ml={2} width="100%">
-                      <Serif
-                        style={{
-                          textDecoration: "none",
-                          display: "inline-block",
-                        }}
-                        weight="semibold"
-                        size={"3"}
-                      >
-                        <a
-                          style={{ color: "black", textDecoration: "none" }}
-                          href={node.href}
-                        >
-                          {node.artists}
-                        </a>
-                      </Serif>
+            const avatarImageUrl = get(node, p => p.image.resized.url)
+            const meta = `${node.summary}, ${node.published_at}`
 
-                      <Sans style={{ color: "#666" }} size={"2"}>
-                        {node.summary}, {node.published_at}
-                      </Sans>
-                    </Box>
-                  </Flex>
+            return (
+              <Box key={index}>
+                <EntityHeader
+                  name={node.artists}
+                  meta={meta}
+                  imageUrl={avatarImageUrl}
+                  href={node.href}
+                />
+
+                <Spacer mb={3} />
+
+                <ArtworkGrid
+                  artworks={node.artworksConnection}
+                  columnCount={3}
+                  itemMargin={40}
+                  user={this.props.user}
+                />
+
+                <Box mt={4} mb={3}>
+                  <Separator />
                 </Box>
-                <Box pb={6}>
-                  <ArtworkGrid
-                    artworks={node.artworksConnection}
-                    columnCount={3}
-                    itemMargin={40}
-                    user={this.props.user}
-                  />
-                </Box>
-              </div>
+              </Box>
             )
           }
         )}
+
         <SpinnerContainer>
           {this.state.loading ? <Spinner /> : ""}
         </SpinnerContainer>
-      </Container>
+      </>
     )
   }
 }
 
-export default createPaginationContainer(
-  WorksForYouContent,
+export const WorksForYouFeedPaginationContainer = createPaginationContainer(
+  WorksForYouFeed,
   {
     viewer: graphql`
-      fragment WorksForYouContents_viewer on Viewer
+      fragment WorksForYouFeed_viewer on Viewer
         @argumentDefinitions(
           count: { type: "Int", defaultValue: 10 }
           cursor: { type: "String" }
@@ -218,12 +188,17 @@ export default createPaginationContainer(
       }
     },
     query: graphql`
-      query WorksForYouContentsPaginationQuery($count: Int!, $cursor: String) {
+      query WorksForYouFeedPaginationQuery($count: Int!, $cursor: String) {
         viewer {
-          ...WorksForYouContents_viewer
-            @arguments(count: $count, cursor: $cursor)
+          ...WorksForYouFeed_viewer @arguments(count: $count, cursor: $cursor)
         }
       }
     `,
   }
 )
+
+const SpinnerContainer = styled.div`
+  width: 100%;
+  height: 100px;
+  position: relative;
+`

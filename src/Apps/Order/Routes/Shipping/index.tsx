@@ -34,7 +34,7 @@ import {
   graphql,
   RelayProp,
 } from "react-relay"
-import { Collapse } from "Styleguide"
+import { Collapse } from "Styleguide/Components"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Responsive } from "Utils/Responsive"
 

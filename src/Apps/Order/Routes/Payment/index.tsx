@@ -26,7 +26,7 @@ import {
   RelayRefetchProp,
 } from "react-relay"
 import { injectStripe, ReactStripeElements } from "react-stripe-elements"
-import { Collapse } from "Styleguide"
+import { Collapse } from "Styleguide/Components"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Responsive } from "Utils/Responsive"
 

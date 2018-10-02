@@ -1,20 +1,23 @@
-import { Box, Flex, Image, Sans, Serif, themeProps } from "@artsy/palette"
-import { WorksForYouArtist_viewer } from "__generated__/WorksForYouArtist_viewer.graphql"
+import { WorksForYouArtistFeed_viewer } from "__generated__/WorksForYouArtistFeed_viewer.graphql"
 import { ContextProps } from "Artsy"
 import ArtworkGrid from "Components/ArtworkGrid"
 import Spinner from "Components/Spinner"
 import * as React from "react"
+import styled from "styled-components"
+import { EntityHeader } from "Styleguide/Components"
+import { get } from "Utils/get"
+
+import { Spacer } from "@artsy/palette"
 import {
   ConnectionData,
   createPaginationContainer,
   graphql,
   RelayPaginationProp,
 } from "react-relay"
-import styled from "styled-components"
 
 interface Props extends ContextProps {
   relay?: RelayPaginationProp
-  viewer: WorksForYouArtist_viewer
+  viewer: WorksForYouArtistFeed_viewer
   artistID: string
   forSale?: boolean
 }
@@ -25,26 +28,10 @@ interface State {
 
 const PageSize = 10
 
-const SpinnerContainer = styled.div`
-  width: 100%;
-  height: 100px;
-  position: relative;
-`
-
-const Avatar = styled.div`
-  border-radius: 20px;
-  width: 40px;
-  height: 40px;
-`
-
-const Container = styled.div`
-  &:first-child {
-    margin-top: -10px;
+export class WorksForYouArtistFeed extends React.Component<Props, State> {
+  state = {
+    loading: false,
   }
-`
-
-export class WorksForYouArtist extends React.Component<Props, State> {
-  state = { loading: false }
 
   loadMoreArtworks() {
     const hasMore = this.props.viewer.artist.artworks_connection.pageInfo
@@ -64,47 +51,28 @@ export class WorksForYouArtist extends React.Component<Props, State> {
   }
 
   render() {
-    const { artist } = this.props.viewer
-    const { forSale } = this.props
-    return (
-      <Container>
-        <div style={{ padding: "50px 0px 30px 0px" }}>
-          <Flex>
-            {artist.image && (
-              <Avatar>
-                <a href={artist.href}>
-                  <Image
-                    src={artist.image.resized.url}
-                    width={40}
-                    height={40}
-                    style={{ borderRadius: "20px" }}
-                  />
-                </a>
-              </Avatar>
-            )}
-            <Box ml={2}>
-              <Serif
-                style={{ textDecoration: "none", display: "inline-block" }}
-                weight="semibold"
-                size={"3"}
-              >
-                <a
-                  style={{ color: "black", textDecoration: "none" }}
-                  href={artist.href}
-                >
-                  {artist.name}
-                </a>
-              </Serif>
+    const {
+      forSale,
+      viewer: { artist },
+    } = this.props
 
-              <Sans color={themeProps.colors.black60} size={"2"}>
-                {forSale
-                  ? artist.counts.for_sale_artworks.toLocaleString()
-                  : artist.counts.artworks.toLocaleString()}{" "}
-                works
-              </Sans>
-            </Box>
-          </Flex>
-        </div>
+    const avatarImageUrl = get(artist, p => p.image.resized.url)
+    const meta =
+      (forSale
+        ? get(artist, p => p.counts.for_sale_artworks, "").toLocaleString()
+        : get(artist, p => p.counts.artworks, "").toLocaleString()) + " Works"
+
+    return (
+      <>
+        <EntityHeader
+          name={artist.name}
+          meta={meta}
+          imageUrl={avatarImageUrl}
+          href={artist.href}
+        />
+
+        <Spacer mb={3} />
+
         <ArtworkGrid
           artworks={artist.artworks_connection}
           columnCount={3}
@@ -112,19 +80,22 @@ export class WorksForYouArtist extends React.Component<Props, State> {
           onLoadMore={() => this.loadMoreArtworks()}
           user={this.props.user}
         />
-        <SpinnerContainer>
-          {this.state.loading ? <Spinner /> : ""}
-        </SpinnerContainer>
-      </Container>
+
+        {this.state.loading && (
+          <SpinnerContainer>
+            <Spinner />
+          </SpinnerContainer>
+        )}
+      </>
     )
   }
 }
 
-export default createPaginationContainer(
-  WorksForYouArtist,
+export const WorksForYouArtistFeedPaginationContainer = createPaginationContainer(
+  WorksForYouArtistFeed,
   {
     viewer: graphql`
-      fragment WorksForYouArtist_viewer on Viewer
+      fragment WorksForYouArtistFeed_viewer on Viewer
         @argumentDefinitions(
           count: { type: "Int", defaultValue: 10 }
           cursor: { type: "String" }
@@ -151,7 +122,7 @@ export default createPaginationContainer(
             first: $count
             after: $cursor
             filter: $filter
-          ) @connection(key: "WorksForYouArtist_artworks_connection") {
+          ) @connection(key: "WorksForYouArtistFeed_artworks_connection") {
             pageInfo {
               hasNextPage
               endCursor
@@ -188,14 +159,14 @@ export default createPaginationContainer(
       }
     },
     query: graphql`
-      query WorksForYouArtistPaginationQuery(
+      query WorksForYouArtistFeedPaginationQuery(
         $artistID: String!
         $count: Int!
         $cursor: String
         $filter: [ArtistArtworksFilters]
       ) {
         viewer {
-          ...WorksForYouArtist_viewer
+          ...WorksForYouArtistFeed_viewer
             @arguments(
               artistID: $artistID
               count: $count
@@ -207,3 +178,9 @@ export default createPaginationContainer(
     `,
   }
 )
+
+const SpinnerContainer = styled.div`
+  width: 100%;
+  height: 100px;
+  position: relative;
+`

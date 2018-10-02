@@ -32,6 +32,7 @@ export const ArtistInfo: SFC<ArtistInfoProps> = props => {
           name={props.artist.name}
           meta={props.artist.formatted_nationality_and_birthday}
           imageUrl={imageUrl}
+          href={props.artist.href}
           FollowButton={
             <FollowArtistButton
               artist={props.artist}

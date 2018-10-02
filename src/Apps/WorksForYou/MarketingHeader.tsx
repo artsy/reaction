@@ -9,16 +9,17 @@ import {
   BorderBox,
   Box,
   Button,
+  color,
   Flex,
   Sans,
   Separator,
   Spacer,
-  themeProps,
 } from "@artsy/palette"
 
+// prettier-ignore
+const COLLECT_URL = `${sd.APP_URL}/collect?split_test[new_collect_page]=new&acquireable=true}`
+
 const VIDEO_URL = `${sd.FORCE_CLOUDFRONT_URL}/videos/9172018-bn-banner-xl.mp4`
-const COLLECT_URL =
-  "https://artsy.net/collect?split_test[new_collect_page]=new&acquireable=true"
 
 @track({
   context_module: Schema.Context.BNMOBanner,
@@ -38,7 +39,7 @@ export class MarketingHeader extends Component {
         <BorderBox
           width="100%"
           height="220px"
-          background={themeProps.colors.black5}
+          background={color("black5")}
           p={0}
           style={{
             overflow: "hidden",
@@ -50,18 +51,17 @@ export class MarketingHeader extends Component {
         <Spacer mb={1} />
 
         <Flex justifyContent="space-between" alignItems="center">
-          <Box>
+          <Box pr={2}>
             <Sans size="3">Introducing a new way to buy on Artsy</Sans>
-            <Sans size="3" color={themeProps.colors.black60}>
-              Buying art on Artsy is easier than ever before. Our most in-demand
-              works are now available for instant purchase, with simple checkout
-              and hassle-free shipping.
+            <Sans size="3" color={color("black60")}>
+              A new selection of works available for immediate purchase and
+              offer
             </Sans>
           </Box>
           <Button onClick={this.handleClick}>Browse works</Button>
         </Flex>
 
-        <Spacer mb={5} />
+        <Spacer mb={4} />
 
         <Separator />
       </Container>

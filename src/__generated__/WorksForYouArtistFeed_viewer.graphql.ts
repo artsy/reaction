@@ -2,9 +2,9 @@
 
 import { ConcreteFragment } from "relay-runtime";
 import { ArtworkGrid_artworks$ref } from "./ArtworkGrid_artworks.graphql";
-declare const _WorksForYouArtist_viewer$ref: unique symbol;
-export type WorksForYouArtist_viewer$ref = typeof _WorksForYouArtist_viewer$ref;
-export type WorksForYouArtist_viewer = {
+declare const _WorksForYouArtistFeed_viewer$ref: unique symbol;
+export type WorksForYouArtistFeed_viewer$ref = typeof _WorksForYouArtistFeed_viewer$ref;
+export type WorksForYouArtistFeed_viewer = {
     readonly artist: ({
         readonly name: string | null;
         readonly href: string | null;
@@ -30,7 +30,7 @@ export type WorksForYouArtist_viewer = {
             readonly " $fragmentRefs": ArtworkGrid_artworks$ref;
         }) | null;
     }) | null;
-    readonly " $refType": WorksForYouArtist_viewer$ref;
+    readonly " $refType": WorksForYouArtistFeed_viewer$ref;
 };
 
 
@@ -45,7 +45,7 @@ var v0 = {
 };
 return {
   "kind": "Fragment",
-  "name": "WorksForYouArtist_viewer",
+  "name": "WorksForYouArtistFeed_viewer",
   "type": "Viewer",
   "metadata": {
     "connection": [
@@ -189,7 +189,7 @@ return {
         {
           "kind": "LinkedField",
           "alias": "artworks_connection",
-          "name": "__WorksForYouArtist_artworks_connection_connection",
+          "name": "__WorksForYouArtistFeed_artworks_connection_connection",
           "storageKey": null,
           "args": [
             {
@@ -283,5 +283,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '6c20fc3ca786df452d88571191e038f4';
+(node as any).hash = '60ccb8fe8c9a15b986acc163d33073df';
 export default node;

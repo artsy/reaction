@@ -1,39 +1,39 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { WorksForYouArtist_viewer$ref } from "./WorksForYouArtist_viewer.graphql";
+import { WorksForYouArtistFeed_viewer$ref } from "./WorksForYouArtistFeed_viewer.graphql";
 export type ArtistArtworksFilters = "IS_FOR_SALE" | "IS_NOT_FOR_SALE" | "%future added value";
-export type WorksForYouArtistPaginationQueryVariables = {
+export type WorksForYouArtistFeedPaginationQueryVariables = {
     readonly artistID: string;
     readonly count: number;
     readonly cursor?: string | null;
     readonly filter?: ReadonlyArray<ArtistArtworksFilters | null> | null;
 };
-export type WorksForYouArtistPaginationQueryResponse = {
+export type WorksForYouArtistFeedPaginationQueryResponse = {
     readonly viewer: ({
-        readonly " $fragmentRefs": WorksForYouArtist_viewer$ref;
+        readonly " $fragmentRefs": WorksForYouArtistFeed_viewer$ref;
     }) | null;
 };
-export type WorksForYouArtistPaginationQuery = {
-    readonly response: WorksForYouArtistPaginationQueryResponse;
-    readonly variables: WorksForYouArtistPaginationQueryVariables;
+export type WorksForYouArtistFeedPaginationQuery = {
+    readonly response: WorksForYouArtistFeedPaginationQueryResponse;
+    readonly variables: WorksForYouArtistFeedPaginationQueryVariables;
 };
 
 
 
 /*
-query WorksForYouArtistPaginationQuery(
+query WorksForYouArtistFeedPaginationQuery(
   $artistID: String!
   $count: Int!
   $cursor: String
   $filter: [ArtistArtworksFilters]
 ) {
   viewer {
-    ...WorksForYouArtist_viewer_VuLYe
+    ...WorksForYouArtistFeed_viewer_VuLYe
   }
 }
 
-fragment WorksForYouArtist_viewer_VuLYe on Viewer {
+fragment WorksForYouArtistFeed_viewer_VuLYe on Viewer {
   artist(id: $artistID) {
     name
     href
@@ -239,13 +239,13 @@ v5 = {
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "WorksForYouArtistPaginationQuery",
+  "name": "WorksForYouArtistFeedPaginationQuery",
   "id": null,
-  "text": "query WorksForYouArtistPaginationQuery(\n  $artistID: String!\n  $count: Int!\n  $cursor: String\n  $filter: [ArtistArtworksFilters]\n) {\n  viewer {\n    ...WorksForYouArtist_viewer_VuLYe\n  }\n}\n\nfragment WorksForYouArtist_viewer_VuLYe on Viewer {\n  artist(id: $artistID) {\n    name\n    href\n    counts {\n      artworks\n      for_sale_artworks\n    }\n    image {\n      resized(height: 80, width: 80) {\n        url\n      }\n    }\n    artworks_connection(sort: published_at_desc, first: $count, after: $cursor, filter: $filter) {\n      pageInfo {\n        hasNextPage\n        endCursor\n      }\n      ...ArtworkGrid_artworks\n      edges {\n        node {\n          __id\n          __typename\n        }\n        cursor\n      }\n    }\n    __id\n  }\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  is_biddable\n  is_acquireable\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    display_timely_at\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
+  "text": "query WorksForYouArtistFeedPaginationQuery(\n  $artistID: String!\n  $count: Int!\n  $cursor: String\n  $filter: [ArtistArtworksFilters]\n) {\n  viewer {\n    ...WorksForYouArtistFeed_viewer_VuLYe\n  }\n}\n\nfragment WorksForYouArtistFeed_viewer_VuLYe on Viewer {\n  artist(id: $artistID) {\n    name\n    href\n    counts {\n      artworks\n      for_sale_artworks\n    }\n    image {\n      resized(height: 80, width: 80) {\n        url\n      }\n    }\n    artworks_connection(sort: published_at_desc, first: $count, after: $cursor, filter: $filter) {\n      pageInfo {\n        hasNextPage\n        endCursor\n      }\n      ...ArtworkGrid_artworks\n      edges {\n        node {\n          __id\n          __typename\n        }\n        cursor\n      }\n    }\n    __id\n  }\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  is_biddable\n  is_acquireable\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    display_timely_at\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "WorksForYouArtistPaginationQuery",
+    "name": "WorksForYouArtistFeedPaginationQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -261,7 +261,7 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "WorksForYouArtist_viewer",
+            "name": "WorksForYouArtistFeed_viewer",
             "args": [
               {
                 "kind": "Variable",
@@ -295,7 +295,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "WorksForYouArtistPaginationQuery",
+    "name": "WorksForYouArtistFeedPaginationQuery",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -781,7 +781,7 @@ return {
                   }
                 ],
                 "handle": "connection",
-                "key": "WorksForYouArtist_artworks_connection",
+                "key": "WorksForYouArtistFeed_artworks_connection",
                 "filters": [
                   "sort",
                   "filter"
@@ -805,5 +805,5 @@ return {
   }
 };
 })();
-(node as any).hash = '93c49ee12fe3d42e24ae2fa90e133bc5';
+(node as any).hash = '87c21e6654c568c333a9929f5ce358a4';
 export default node;
