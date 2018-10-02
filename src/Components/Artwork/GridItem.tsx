@@ -41,7 +41,7 @@ const IMAGE_QUALITY = 80
 const Badge = styled.div`
   border-radius: 2px;
   letter-spacing: 0.3px;
-  padding: 1px 5px 0px 6px;
+  padding: 3px 5px 1px 6px;
   background-color: white;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
   text-transform: uppercase;
@@ -52,6 +52,7 @@ const Badges = styled(Flex)`
   position: absolute;
   bottom: 8px;
   left: 3px;
+  pointer-events: none;
 `
 
 class ArtworkGridItemContainer extends React.Component<Props, State> {
@@ -111,7 +112,7 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
         <Badges>
           {is_biddable && (
             <Badge>
-              <Sans size="1">Bid</Sans>
+              <Sans size="0">Bid</Sans>
             </Badge>
           )}
           {is_acquireable && (
@@ -120,7 +121,7 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
                 href={href}
                 style={{ textDecoration: "none", cursor: "pointer" }}
               >
-                <Sans size="1">Buy Now</Sans>
+                <Sans size="0">Buy Now</Sans>
               </a>
             </Badge>
           )}
