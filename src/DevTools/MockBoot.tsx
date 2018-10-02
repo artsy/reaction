@@ -4,7 +4,7 @@ import { Breakpoint } from "Utils/Responsive"
 
 export const MockBoot: React.SFC<{
   breakpoint?: Breakpoint
-  headTags?: Array<React.ReactElement<any>>
+  headTags?: JSX.Element[]
 }> = ({ breakpoint, headTags, children }) => {
   return (
     <Boot

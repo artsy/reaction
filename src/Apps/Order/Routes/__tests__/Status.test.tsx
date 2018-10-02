@@ -15,7 +15,7 @@ jest.unmock("react-relay")
 describe("Status", () => {
   const getWrapper = (
     order: any,
-    headTags: Array<React.ReactElement<any>> = [],
+    headTags: JSX.Element[] = [],
     until: UntilCallback = null
   ) => {
     return renderRelayTree({
@@ -38,7 +38,7 @@ describe("Status", () => {
   }
 
   it("should should have a title containing status", async () => {
-    const headTags: Array<React.ReactElement<any>> = []
+    const headTags: JSX.Element[] = []
     await getWrapper(
       OrderWithShippingDetails,
       headTags,

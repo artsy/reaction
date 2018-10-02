@@ -14,7 +14,7 @@ export const LoadingClassName = "relay-loading"
 export function renderWithLoadProgress<P>(
   Container: RelayContainer<P>,
   initialProps: object = {}
-): (readyState: ReadyState<P>) => React.ReactElement<any> | null {
+): (readyState: ReadyState<P>) => React.ReactElement<RelayContainer<P>> | null {
   // TODO: We need design for retry-ing, or the go-ahead to re-use the design of
   //       the iOS app.
   //

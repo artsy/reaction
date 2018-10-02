@@ -83,6 +83,6 @@ export const query = graphql`
   }
 `
 
-export function renderToString(element: React.ReactElement<any>) {
+export function renderToString(element: JSX.Element) {
   return cheerio.html(render(element))
 }
