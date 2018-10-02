@@ -8,7 +8,7 @@ export type routes_OrderQueryResponse = {
     readonly me: ({
         readonly name: string | null;
     }) | null;
-    readonly ecommerceOrder: ({
+    readonly order: ({
         readonly state: string | null;
     }) | null;
 };
@@ -27,7 +27,7 @@ query routes_OrderQuery(
     name
     __id
   }
-  ecommerceOrder(id: $orderID) {
+  order: ecommerceOrder(id: $orderID) {
     state
     __id: id
   }
@@ -71,7 +71,7 @@ v1 = [
   },
   {
     "kind": "LinkedField",
-    "alias": null,
+    "alias": "order",
     "name": "ecommerceOrder",
     "storageKey": null,
     "args": [
@@ -107,7 +107,7 @@ return {
   "operationKind": "query",
   "name": "routes_OrderQuery",
   "id": null,
-  "text": "query routes_OrderQuery(\n  $orderID: String!\n) {\n  me {\n    name\n    __id\n  }\n  ecommerceOrder(id: $orderID) {\n    state\n    __id: id\n  }\n}\n",
+  "text": "query routes_OrderQuery(\n  $orderID: String!\n) {\n  me {\n    name\n    __id\n  }\n  order: ecommerceOrder(id: $orderID) {\n    state\n    __id: id\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -125,5 +125,5 @@ return {
   }
 };
 })();
-(node as any).hash = '6c3f405f439ea6c1cba31a1aa4aa8618';
+(node as any).hash = 'cd8f6d53d89a5c0f91d324f56b102830';
 export default node;
