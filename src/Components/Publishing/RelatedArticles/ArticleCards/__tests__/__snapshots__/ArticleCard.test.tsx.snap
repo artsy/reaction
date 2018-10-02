@@ -6,7 +6,6 @@ exports[`ArticleCard renders an article properly 1`] = `
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
-  width: inherit;
 }
 
 .c8 {
@@ -254,7 +253,6 @@ exports[`ArticleCard renders an article with children properly 1`] = `
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
-  width: inherit;
 }
 
 .c11 {
@@ -526,7 +524,6 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
-  width: inherit;
 }
 
 .c6 {

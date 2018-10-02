@@ -62,7 +62,6 @@ exports[`Video Cover matches the snapshot 1`] = `
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 14px;
   line-height: 20px;
-  width: inherit;
 }
 
 .c15 {
@@ -384,7 +383,6 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 14px;
   line-height: 20px;
-  width: inherit;
 }
 
 .c15 {

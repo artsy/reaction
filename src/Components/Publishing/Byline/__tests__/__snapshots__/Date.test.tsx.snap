@@ -6,7 +6,6 @@ exports[`Date Snapshots renders a condensed date 1`] = `
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
-  width: inherit;
 }
 
 .c0 {
@@ -38,7 +37,6 @@ exports[`Date Snapshots renders a date 1`] = `
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
-  width: inherit;
 }
 
 .c0 {
