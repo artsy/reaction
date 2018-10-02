@@ -180,13 +180,14 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
       postalCode,
       phoneNumber,
     } = address
+    const usOrCanada = country === "US" || country === "CA"
     return {
       name: validatePresence(name),
       addressLine1: validatePresence(addressLine1),
       city: validatePresence(city),
-      region: validatePresence(region),
+      region: usOrCanada && validatePresence(region),
       country: validatePresence(country),
-      postalCode: validatePresence(postalCode),
+      postalCode: usOrCanada && validatePresence(postalCode),
       phoneNumber: validatePresence(phoneNumber),
     }
   }
