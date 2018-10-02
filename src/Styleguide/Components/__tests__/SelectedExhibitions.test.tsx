@@ -1,6 +1,6 @@
+import { MockBoot } from "DevTools/MockBoot"
 import { mount } from "enzyme"
 import React from "react"
-import { MockBoot } from "Utils/MockBoot"
 import { exhibitions } from "../../../Apps/__test__/Fixtures/SelectedExhibitions"
 import { SelectedExhibitions } from "../SelectedExhibitions"
 

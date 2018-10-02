@@ -1,4 +1,4 @@
-import { ClientRouter } from "Artsy/Router/Components/ClientRouter"
+import { MockRouter } from "DevTools/MockRouter"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { RouteTab, RouteTabs } from "Styleguide/Components"
@@ -8,7 +8,7 @@ storiesOf("Styleguide/Components", module).add("Tabs (Router)", () => {
   return (
     <React.Fragment>
       <Section title="Route Tabs">
-        <ClientRouter
+        <MockRouter
           initialRoute="/cv"
           routes={[
             {
