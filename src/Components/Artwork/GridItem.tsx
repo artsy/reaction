@@ -139,10 +139,7 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
       userSpread = { user }
     }
 
-    const hasBuyNowLabFeature =
-      user &&
-      user.lab_features &&
-      user.lab_features.includes("New Buy Now Flow")
+    const enableBuyNowFlow = sd.ENABLE_NEW_BUY_NOW_FLOW
     return (
       <Responsive>
         {({ hover, ...breakpoints }) => {
@@ -152,7 +149,7 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
                 <a href={artwork.href}>
                   <Image src={this.getImageUrl(breakpoints)} />
                 </a>
-                {hasBuyNowLabFeature && this.renderArtworkBadge(artwork)}
+                {enableBuyNowFlow && this.renderArtworkBadge(artwork)}
                 {/* The undefined check is a fallback for Force code that uses
                     Reaction code without wrapping the tree in a Responsive
                     provider component. */}

@@ -1,12 +1,13 @@
 import { Box } from "@artsy/palette"
-import { ArtistArtworksFilters } from "__generated__/WorksForYouQuery.graphql"
 import { WorksForYouQuery } from "__generated__/WorksForYouQuery.graphql"
+import { ArtistArtworksFilters } from "__generated__/WorksForYouQuery.graphql"
 import { MarketingHeader } from "Apps/WorksForYou/MarketingHeader"
 import { ContextConsumer, ContextProps } from "Artsy"
 import { track } from "Artsy/Analytics"
 import Spinner from "Components/Spinner"
 import React, { Component } from "react"
 import { graphql, QueryRenderer } from "react-relay"
+import { data as sd } from "sharify"
 import styled from "styled-components"
 import Events from "Utils/Events"
 import { WorksForYouArtistFeedPaginationContainer as WorksForYouArtistFeed } from "./WorksForYouArtistFeed"
@@ -34,14 +35,11 @@ export class WorksForYou extends Component<Props> {
     return (
       <ContextConsumer>
         {({ relayEnvironment, user }) => {
-          const hasBuyNowLabFeature =
-            user &&
-            user.lab_features &&
-            user.lab_features.includes("New Buy Now Flow")
+          const enableBuyNowFlow = sd.ENABLE_NEW_BUY_NOW_FLOW
 
           return (
             <>
-              {hasBuyNowLabFeature && <MarketingHeader />}
+              {enableBuyNowFlow && <MarketingHeader />}
 
               <QueryRenderer<WorksForYouQuery>
                 environment={relayEnvironment}
