@@ -2,6 +2,7 @@ import { storiesOf } from "@storybook/react"
 import React from "react"
 import { FollowArtistButton } from "../FollowButton/FollowArtistButton"
 import { FollowGeneButton } from "../FollowButton/FollowGeneButton"
+import { FollowProfileButton } from "../FollowButton/FollowProfileButton"
 
 storiesOf("Components/Follow Button", module)
   .add("Artist", () => {
@@ -48,6 +49,31 @@ storiesOf("Components/Follow Button", module)
           gene={
             {
               id: "brooklyn-artists",
+              __id: "1234",
+              is_followed: true,
+            } as any
+          }
+        />
+      </div>
+    )
+  })
+  .add("Profile", () => {
+    return (
+      <div style={{ margin: 20 }}>
+        <FollowProfileButton
+          profile={
+            {
+              id: "casey-kaplan",
+              __id: "1234",
+              is_followed: false,
+            } as any
+          }
+        />
+        <br />
+        <FollowProfileButton
+          profile={
+            {
+              id: "casey-kaplan",
               __id: "1234",
               is_followed: true,
             } as any

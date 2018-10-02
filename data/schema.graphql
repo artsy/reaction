@@ -1032,7 +1032,7 @@ type ArtworkContextFair {
     section: String
 
     # Sorts for shows in a fair
-    sort: ShowSort = null
+    sort: ShowSort
     after: String
     first: Int
     before: String
@@ -1964,7 +1964,7 @@ type Collection implements Node {
     before: String
     last: Int
     private: Boolean = false
-    sort: CollectionSorts = null
+    sort: CollectionSorts
   ): ArtworkConnection
   description: String!
   default: Boolean!
@@ -2705,7 +2705,7 @@ type Fair {
     section: String
 
     # Sorts for shows in a fair
-    sort: ShowSort = null
+    sort: ShowSort
     after: String
     first: Int
     before: String
@@ -2962,6 +2962,17 @@ input FollowGeneInput {
 
 type FollowGenePayload {
   gene: Gene
+  clientMutationId: String
+}
+
+input FollowProfileInput {
+  profile_id: String
+  unfollow: Boolean = false
+  clientMutationId: String
+}
+
+type FollowProfilePayload {
+  profile: Profile
   clientMutationId: String
 }
 
@@ -3661,7 +3672,7 @@ type HomePageModuleContextFair {
     section: String
 
     # Sorts for shows in a fair
-    sort: ShowSort = null
+    sort: ShowSort
     after: String
     first: Int
     before: String
@@ -4354,6 +4365,9 @@ type Mutation {
 
   # Follow (or unfollow) an artist
   followArtist(input: FollowArtistInput!): FollowArtistPayload
+
+  # Follow (or unfollow) a profile
+  followProfile(input: FollowProfileInput!): FollowProfilePayload
 
   # Follow (or unfollow) an gene
   followGene(input: FollowGeneInput!): FollowGenePayload
