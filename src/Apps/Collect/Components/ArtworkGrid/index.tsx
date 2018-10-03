@@ -143,7 +143,7 @@ class Filter extends Component<Props, State> {
           ]}
           selected={filters.state.sort}
           onSelect={sort => {
-            return filters.setSort(sort, mediator)
+            return filters.setFilter("sort", sort, mediator)
           }}
         />
 
