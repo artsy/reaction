@@ -314,5 +314,38 @@ describe("Shipping", () => {
         .filterWhere(wrapper => wrapper.props().title === "Full name")
       expect(input.props().error).toEqual("This field is required")
     })
+
+    it("allows a missing postal code if the selected country is not US or Canada", () => {
+      const component = getWrapper(shipOrderProps)
+      const address = {
+        name: "Erik David",
+        addressLine1: "401 Broadway",
+        addressLine2: "",
+        city: "New York",
+        region: "NY",
+        postalCode: "",
+        phoneNumber: "5555937743",
+        country: "AQ",
+      }
+      fillAddressForm(component, address)
+      component.find("Button").simulate("click")
+      expect(commitMutation).toBeCalled()
+    })
+    it("allows a missing state/province if the selected country is not US or Canada", () => {
+      const component = getWrapper(shipOrderProps)
+      const address = {
+        name: "Erik David",
+        addressLine1: "401 Broadway",
+        addressLine2: "",
+        city: "New York",
+        region: "",
+        postalCode: "7Z",
+        phoneNumber: "5555937743",
+        country: "AQ",
+      }
+      fillAddressForm(component, address)
+      component.find("Button").simulate("click")
+      expect(commitMutation).toBeCalled()
+    })
   })
 })
