@@ -29,7 +29,7 @@ export const EntityHeader: SFC<EntityHeaderProps> = ({
   return (
     <Container onClick={() => handleContainerClick()} hasLink={!!href}>
       {imageUrl && (
-        <Box mr={1} pt={2}>
+        <Box mr={1}>
           <Avatar size="xs" src={imageUrl} initials={initials} />
         </Box>
       )}

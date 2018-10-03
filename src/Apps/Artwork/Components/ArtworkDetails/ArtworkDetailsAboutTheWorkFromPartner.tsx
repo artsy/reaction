@@ -7,7 +7,7 @@ import {
   StackableBorderBox,
 } from "@artsy/palette"
 import { filterLocations } from "Apps/Artwork/Utils/filterLocations"
-import { FollowProfileButton } from "Components/FollowButton/FollowProfileButton"
+import { FollowProfileButtonFragmentContainer as FollowProfileButton } from "Components/FollowButton/FollowProfileButton"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { ReadMore } from "Styleguide/Components"
@@ -74,7 +74,7 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
                                       kind: "profile",
                                       action: "follow",
                                       objectId:
-                                        partner.profile && partner.profile.__id,
+                                        partner.profile && partner.profile.id,
                                     },
                                   })
                               }}
@@ -135,6 +135,7 @@ export const ArtworkDetailsAboutTheWorkFromPartnerFragmentContainer = createFrag
         }
         profile {
           __id
+          id
           is_followed
           icon {
             url

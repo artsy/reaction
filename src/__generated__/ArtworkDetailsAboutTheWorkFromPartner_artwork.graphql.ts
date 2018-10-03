@@ -13,6 +13,7 @@ export type ArtworkDetailsAboutTheWorkFromPartner_artwork = {
         }) | null> | null;
         readonly profile: ({
             readonly __id: string;
+            readonly id: string;
             readonly is_followed: boolean | null;
             readonly icon: ({
                 readonly url: string | null;
@@ -101,6 +102,13 @@ return {
             {
               "kind": "ScalarField",
               "alias": null,
+              "name": "id",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
               "name": "is_followed",
               "args": null,
               "storageKey": null
@@ -132,5 +140,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '95ad4b108064785ec07293c0a77afd5a';
+(node as any).hash = 'de95d415b6d76e1ec37bacc1173fb56f';
 export default node;
