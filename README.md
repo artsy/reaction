@@ -29,12 +29,7 @@
 
         $ yarn start
         $ open http://localhost:9001/
-
-- When working between Reaction and [Force](https://github.com/artsy/force):
-
-        $ yarn link && yarn watch
-        $ cd ../force && yarn link @artsy/reaction && yarn start
-
+        
 - Run the tests:
 
         $ yarn test
@@ -55,6 +50,19 @@
         $ yarn sync-schema
 
 * There are some suggested VSCode extensions in `.vscode/extensions.json` and additional docs at [docs/vscode.md](docs/vscode.md).
+
+## Linking and Unlinking with Force
+
+To _link_ your local reaction with your local force, run:
+
+        $ yarn link && yarn watch
+        $ cd ../force && yarn link @artsy/reaction && yarn start
+
+To _unlink_ your local reaction from your local force, run (in **Force**):
+
+        $ yarn unlink @artsy/reaction
+        $ yarn add @artsy/reaction
+        $ yarn start
 
 ## Commits and Deployments
 
