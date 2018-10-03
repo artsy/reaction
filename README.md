@@ -56,6 +56,8 @@
 To _link_ your local reaction with your local force, run:
 
         $ yarn link && yarn watch
+        (wait until you see a message that X files have been successfully compiled before moving on) 
+        
         $ cd ../force && yarn link @artsy/reaction && yarn start
 
 To _unlink_ your local reaction from your local force, run (in **Force**):
