@@ -6,6 +6,7 @@ import { ArtworkSidebar_artwork$ref } from "./ArtworkSidebar_artwork.graphql";
 declare const _ArtworkApp_artwork$ref: unique symbol;
 export type ArtworkApp_artwork$ref = typeof _ArtworkApp_artwork$ref;
 export type ArtworkApp_artwork = {
+    readonly id: string;
     readonly " $fragmentRefs": ArtworkSidebar_artwork$ref & ArtworkDetails_artwork$ref;
     readonly " $refType": ArtworkApp_artwork$ref;
 };
@@ -19,6 +20,13 @@ const node: ConcreteFragment = {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "id",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "FragmentSpread",
       "name": "ArtworkSidebar_artwork",
@@ -38,5 +46,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'ddbaba6cdc4bdf3594ebd01d562ad41d';
+(node as any).hash = '2f20d53105c189160608e8b621b36066';
 export default node;

@@ -1,5 +1,14 @@
-import { Avatar, Box, Serif, Spacer, StackableBorderBox } from "@artsy/palette"
+import {
+  Avatar,
+  Box,
+  Sans,
+  Serif,
+  Spacer,
+  StackableBorderBox,
+} from "@artsy/palette"
 import { filterLocations } from "Apps/Artwork/Utils/filterLocations"
+import { Mediator } from "Artsy/SystemContext"
+import FollowProfileButton from "Components/FollowButton/FollowProfileButton"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { ReadMore } from "Styleguide/Components"
@@ -10,6 +19,8 @@ import { ArtworkDetailsAboutTheWorkFromPartner_artwork } from "__generated__/Art
 
 export interface ArtworkDetailsAboutTheWorkFromPartnerProps {
   artwork: ArtworkDetailsAboutTheWorkFromPartner_artwork
+  user: User
+  mediator?: Mediator
 }
 
 export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
@@ -20,11 +31,8 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
   }
 
   render() {
-    const { additional_information, partner } = this.props.artwork
-    if (!additional_information) {
-      return null
-    }
-
+    const { artwork, user, mediator } = this.props
+    const { additional_information, partner } = artwork
     const locationNames = get(
       partner,
       p => filterLocations(p.locations),
@@ -41,6 +49,39 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
             meta={locationNames}
             imageUrl={imageUrl}
             initials={partner.initials}
+            FollowButton={
+              <FollowProfileButton
+                profile={partner.profile}
+                user={user}
+                onOpenAuthModal={() => {
+                  mediator &&
+                    mediator.trigger("open:auth", {
+                      mode: "signup",
+                      copy: `Sign up to follow ${partner.name}`,
+                      signupIntent: "follow gallery",
+                      afterSignUpAction: {
+                        kind: "profile",
+                        action: "follow",
+                        objectId: partner.profile && partner.profile.id,
+                      },
+                    })
+                }}
+                render={profile => {
+                  const is_followed = (profile && profile.is_followed) || false
+                  return (
+                    <Sans
+                      size="2"
+                      weight="medium"
+                      style={{ cursor: "pointer", textDecoration: "underline" }}
+                    >
+                      {is_followed ? "Following" : "Follow"}
+                    </Sans>
+                  )
+                }}
+              >
+                Follow
+              </FollowProfileButton>
+            }
           />
           <Spacer mb={1} />
           <Serif size="3">
@@ -64,6 +105,8 @@ export const ArtworkDetailsAboutTheWorkFromPartnerFragmentContainer = createFrag
           city
         }
         profile {
+          id
+          is_followed
           icon {
             url
           }

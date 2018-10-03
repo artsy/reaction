@@ -1,6 +1,7 @@
 import { Box } from "@artsy/palette"
 import { ArtworkDetailsQuery } from "__generated__/ArtworkDetailsQuery.graphql"
 import { ContextConsumer } from "Artsy/Router"
+import { Mediator } from "Artsy/SystemContext"
 import Spinner from "Components/Spinner"
 import React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
@@ -15,13 +16,15 @@ import { ArtworkDetails_artwork } from "__generated__/ArtworkDetails_artwork.gra
 
 export interface ArtworkDetailsProps {
   artwork: ArtworkDetails_artwork
+  user: User
+  mediator?: Mediator
 }
 
 const ArtworkDetailsContainer = Box
 const SpinnerContainer = Box
 
 export const ArtworkDetails: React.SFC<ArtworkDetailsProps> = props => {
-  const { artwork } = props
+  const { artwork, user, mediator } = props
   const renderAbout =
     artwork.additional_information ||
     artwork.certificateOfAuthenticity ||
@@ -48,7 +51,11 @@ export const ArtworkDetails: React.SFC<ArtworkDetailsProps> = props => {
         {renderAbout && (
           <Tab name="About the work">
             <AboutTheWorkFromArtsy artwork={artwork} />
-            <AboutTheWorkFromPartner artwork={artwork} />
+            <AboutTheWorkFromPartner
+              artwork={artwork}
+              user={user}
+              mediator={mediator}
+            />
             <AdditionalInfo artwork={artwork} />
             <Checklist artwork={artwork} />
           </Tab>
@@ -131,6 +138,8 @@ export const ArtworkDetailsQueryRenderer = ({
                 return (
                   <ArtworkDetailsFragmentContainer
                     artwork={props.artwork as any}
+                    user={user}
+                    mediator={mediator}
                   />
                 )
               } else {
