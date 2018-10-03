@@ -3,9 +3,9 @@
 
 
 "@artsy/palette@^2.19.1":
-  version "2.19.4"
-  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-2.19.4.tgz#c12787bbaf80fd46d9ff977c6ad0a193fab85be4"
-  integrity sha512-ylPr1pvXhiPMbIFVg+GX5ckW5EKY5LoY1I23OQuMhWRzNzpfMaSkats0J9C2hj6oVs4DqRLbb1tP9R+Ulu2/IQ==
+  version "2.19.6"
+  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-2.19.6.tgz#5d2dac141753ef7a866d81d5e691b72212a3234b"
+  integrity sha512-R05bhFYpCAgeAFYsEqjf2Ky5MoJBRSEOdPSeyE1owe48hlFRdFIlyUnAsQZ9HeHKOksGK8EmjSW0KM6tHx9sjg==
   dependencies:
     rc-slider "^8.6.2"
     react "^16.5.0"
