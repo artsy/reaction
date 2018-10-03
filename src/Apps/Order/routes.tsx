@@ -1,5 +1,6 @@
-import { Location, Redirect, RouteConfig, Router } from "found"
-import React from "react"
+import { confirmRouteExit, shouldRedirect } from "Apps/Order/redirects"
+import { Redirect, RouteConfig } from "found"
+import * as React from "react"
 import { graphql } from "react-relay"
 import { OrderApp } from "./OrderApp"
 
@@ -26,32 +27,6 @@ import { ShippingProps } from "./Routes/Shipping"
 // @ts-ignore
 import { StatusProps } from "./Routes/Status"
 
-const LEAVE_MESSAGING =
-  "Are you sure you want to refresh? Your changes will not be saved."
-
-const confirmRouteExit = (
-  newLocation: Location,
-  oldLocation: Location,
-  router: Router
-) => {
-  // Refresh -- On refresh newLocation is null
-  if (!newLocation || newLocation.pathname === oldLocation.pathname) {
-    // Most browsers will ignore this and supply their own messaging for refresh
-    return LEAVE_MESSAGING
-  }
-
-  // Attempting to navigate to another route in the orders app
-  const match = router.matcher.match(newLocation)
-  if (match) {
-    const matchedRoutes: RouteConfig[] | null = router.matcher.getRoutes(match)
-    if (matchedRoutes && matchedRoutes[0].Component === OrderApp) {
-      return true
-    }
-  }
-
-  return LEAVE_MESSAGING
-}
-
 // FIXME:
 // * `render` functions requires casting
 export const routes: RouteConfig[] = [
@@ -65,9 +40,22 @@ export const routes: RouteConfig[] = [
         }
         order: ecommerceOrder(id: $orderID) {
           state
+          requestedFulfillment {
+            __typename
+          }
+          creditCard {
+            id
+          }
         }
       }
     `,
+    render: ({ Component, props }) => {
+      if (Component && props) {
+        if (!shouldRedirect(props)) {
+          return <Component {...props} />
+        }
+      }
+    },
     children: [
       {
         path: "shipping",
@@ -116,8 +104,8 @@ export const routes: RouteConfig[] = [
           }
         `,
       },
-      // For now, redirect the empty route to the shipping page
       new Redirect({
+        // For now, redirect the empty route to the shipping page
         from: "/",
         to: "/order2/:orderID/shipping",
       }) as any,

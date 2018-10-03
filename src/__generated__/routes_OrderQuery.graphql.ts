@@ -10,6 +10,12 @@ export type routes_OrderQueryResponse = {
     }) | null;
     readonly order: ({
         readonly state: string | null;
+        readonly requestedFulfillment: ({
+            readonly __typename: string;
+        }) | null;
+        readonly creditCard: ({
+            readonly id: string;
+        }) | null;
     }) | null;
 };
 export type routes_OrderQuery = {
@@ -29,6 +35,13 @@ query routes_OrderQuery(
   }
   order: ecommerceOrder(id: $orderID) {
     state
+    requestedFulfillment {
+      __typename
+    }
+    creditCard {
+      id
+      __id
+    }
     __id: id
   }
 }
@@ -43,7 +56,14 @@ var v0 = [
     "defaultValue": null
   }
 ],
-v1 = [
+v1 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
+},
+v2 = [
   {
     "kind": "LinkedField",
     "alias": null,
@@ -60,13 +80,7 @@ v1 = [
         "args": null,
         "storageKey": null
       },
-      {
-        "kind": "ScalarField",
-        "alias": null,
-        "name": "__id",
-        "args": null,
-        "storageKey": null
-      }
+      v1
     ]
   },
   {
@@ -93,6 +107,43 @@ v1 = [
         "storageKey": null
       },
       {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "requestedFulfillment",
+        "storageKey": null,
+        "args": null,
+        "concreteType": null,
+        "plural": false,
+        "selections": [
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "__typename",
+            "args": null,
+            "storageKey": null
+          }
+        ]
+      },
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "creditCard",
+        "storageKey": null,
+        "args": null,
+        "concreteType": "CreditCard",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "id",
+            "args": null,
+            "storageKey": null
+          },
+          v1
+        ]
+      },
+      {
         "kind": "ScalarField",
         "alias": "__id",
         "name": "id",
@@ -107,7 +158,7 @@ return {
   "operationKind": "query",
   "name": "routes_OrderQuery",
   "id": null,
-  "text": "query routes_OrderQuery(\n  $orderID: String!\n) {\n  me {\n    name\n    __id\n  }\n  order: ecommerceOrder(id: $orderID) {\n    state\n    __id: id\n  }\n}\n",
+  "text": "query routes_OrderQuery(\n  $orderID: String!\n) {\n  me {\n    name\n    __id\n  }\n  order: ecommerceOrder(id: $orderID) {\n    state\n    requestedFulfillment {\n      __typename\n    }\n    creditCard {\n      id\n      __id\n    }\n    __id: id\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -115,15 +166,15 @@ return {
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
-    "selections": v1
+    "selections": v2
   },
   "operation": {
     "kind": "Operation",
     "name": "routes_OrderQuery",
     "argumentDefinitions": v0,
-    "selections": v1
+    "selections": v2
   }
 };
 })();
-(node as any).hash = 'cd8f6d53d89a5c0f91d324f56b102830';
+(node as any).hash = 'a3058d3342922022ac9960c0e813b8d9';
 export default node;

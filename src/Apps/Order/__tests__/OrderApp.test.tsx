@@ -1,15 +1,144 @@
+import { routes } from "Apps/Order/routes"
 import { ContextProvider } from "Artsy/Router"
 import { mount } from "enzyme"
+import { Resolver } from "found-relay"
+import createRender from "found/lib/createRender"
+import getFarceResult from "found/lib/server/getFarceResult"
 import React from "react"
-import { HeadProvider } from "react-head"
-import { Meta } from "react-head"
+import { HeadProvider, Meta } from "react-head"
 import { ErrorPage } from "../../../Components/ErrorPage"
 import { OrderApp } from "../OrderApp"
+
+import { createMockNetworkLayer } from "Artsy/Relay/createMockNetworkLayer"
+import { Environment, RecordSource, Store } from "relay-runtime"
 
 jest.mock("react-stripe-elements", () => ({
   Elements: ({ children }) => children,
   StripeProvider: ({ children }) => children,
+  CardElement: () => jest.fn(),
+  injectStripe: () => jest.fn(),
 }))
+
+describe("OrderApp routing redirects", () => {
+  // FIXME: move to DevTools folder
+  async function render(url, mockResolvers) {
+    const network = createMockNetworkLayer(mockResolvers)
+    const source = new RecordSource()
+    const store = new Store(source)
+    const environment = new Environment({ network, store })
+
+    return await getFarceResult({
+      url,
+      routeConfig: routes,
+      resolver: new Resolver(environment),
+      render: createRender({}),
+    })
+  }
+
+  it("does not redirect to the status route if the order is pending", async () => {
+    const { redirect } = await render("/order2/1234/shipping", {
+      Order: () => ({
+        id: 1234,
+        state: "PENDING",
+        requestedFulfillment: {
+          __typename: "Pickup",
+        },
+      }),
+    })
+    expect(redirect).toBe(undefined)
+  })
+
+  it("redirects to the status route if the order is not pending", async () => {
+    const { redirect } = await render("/order2/1234/shipping", {
+      Order: () => ({
+        id: 1234,
+        state: "ABANDONED",
+        requestedFulfillment: {
+          __typename: "Pickup",
+        },
+      }),
+    })
+    expect(redirect.url).toBe("/order2/1234/status")
+  })
+
+  it("stays on the shipping route if no shipping option is set", async () => {
+    const { redirect } = await render("/order2/1234/shipping", {
+      Order: () => ({
+        id: 1234,
+        state: "PENDING",
+        requestedFulfillment: null,
+      }),
+    })
+    expect(redirect).toBe(undefined)
+  })
+
+  it("redirects to the shipping route from the payment route if no shipping option was set", async () => {
+    const { redirect } = await render("/order2/1234/payment", {
+      Order: () => ({
+        id: 1234,
+        state: "PENDING",
+        requestedFulfillment: null,
+      }),
+    })
+    expect(redirect.url).toBe("/order2/1234/shipping")
+  })
+
+  it("stays on the payment route if there is shipping but no payment info", async () => {
+    const { redirect } = await render("/order2/1234/payment", {
+      Order: () => ({
+        id: 1234,
+        state: "PENDING",
+        requestedFulfillment: {
+          __typename: "Ship",
+        },
+        creditCard: null,
+      }),
+    })
+    expect(redirect).toBe(undefined)
+  })
+
+  it("redirects to the shipping route from the review route if no shipping option was set", async () => {
+    const { redirect } = await render("/order2/1234/review", {
+      Order: () => ({
+        id: 1234,
+        state: "PENDING",
+        requestedFulfillment: null,
+        creditCard: null,
+      }),
+    })
+    expect(redirect.url).toBe("/order2/1234/shipping")
+  })
+
+  it("redirects to the payment route from the review route if no credit card is set", async () => {
+    const { redirect } = await render("/order2/1234/review", {
+      Order: () => ({
+        id: 1234,
+        state: "PENDING",
+        requestedFulfillment: {
+          __typename: "Ship",
+        },
+        creditCard: null,
+      }),
+    })
+    expect(redirect.url).toBe("/order2/1234/payment")
+  })
+
+  it("stays on the review route if there are payment and shipping options set", async () => {
+    const { redirect } = await render("/order2/1234/review", {
+      Order: () => ({
+        id: 1234,
+        state: "PENDING",
+        requestedFulfillment: {
+          __typename: "Ship",
+        },
+        creditCard: {
+          id: "12345",
+        },
+      }),
+    })
+    expect(redirect).toBe(undefined)
+  })
+})
 
 describe("OrderApp", () => {
   const getWrapper = ({ props, context }) => {
@@ -46,30 +175,6 @@ describe("OrderApp", () => {
       routes: [],
     }
   }
-
-  it("does not redirect to the Status route when the order is pending", () => {
-    const replace = jest.fn()
-    const props = getProps({
-      state: "PENDING",
-      location: "/order/123/shipping",
-      replace,
-    })
-    // @ts-ignore
-    getWrapper({ props })
-    expect(replace).not.toBeCalledWith("/order2/123/status")
-  })
-
-  it("redirects to the Status route when the order is not pending", () => {
-    const replace = jest.fn()
-    const props = getProps({
-      state: "SUBMITTED",
-      location: "/order/123/review",
-      replace,
-    })
-    // @ts-ignore
-    getWrapper({ props })
-    expect(replace).toBeCalledWith("/order2/123/status")
-  })
 
   it("omits meta viewport tag unless Eigen", () => {
     const props = getProps()

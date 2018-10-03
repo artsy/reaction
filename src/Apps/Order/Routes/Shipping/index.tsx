@@ -176,6 +176,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
   }
 
   onMutationError(errors, errorModalTitle?, errorModalMessage?) {
+    console.error("Shipping/index.tsx", errors)
     this.setState({
       isCommittingMutation: false,
       isErrorModalOpen: true,
