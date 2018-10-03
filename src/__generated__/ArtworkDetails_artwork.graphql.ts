@@ -9,25 +9,6 @@ import { ArtworkDetailsChecklist_artwork$ref } from "./ArtworkDetailsChecklist_a
 declare const _ArtworkDetails_artwork$ref: unique symbol;
 export type ArtworkDetails_artwork$ref = typeof _ArtworkDetails_artwork$ref;
 export type ArtworkDetails_artwork = {
-    readonly additional_information: string | null;
-    readonly description: string | null;
-    readonly framed: ({
-        readonly label: string | null;
-    }) | null;
-    readonly signatureInfo: ({
-        readonly label: string | null;
-    }) | null;
-    readonly conditionDescription: ({
-        readonly label: string | null;
-    }) | null;
-    readonly certificateOfAuthenticity: ({
-        readonly label: string | null;
-    }) | null;
-    readonly series: string | null;
-    readonly publisher: string | null;
-    readonly manufacturer: string | null;
-    readonly provenance: string | null;
-    readonly image_rights: string | null;
     readonly articles: ReadonlyArray<({
         readonly id: string;
     }) | null> | null;
@@ -40,16 +21,7 @@ export type ArtworkDetails_artwork = {
 
 
 const node: ConcreteFragment = (function(){
-var v0 = [
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "label",
-    "args": null,
-    "storageKey": null
-  }
-],
-v1 = {
+var v0 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__id",
@@ -64,18 +36,13 @@ return {
   "argumentDefinitions": [],
   "selections": [
     {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "certificateOfAuthenticity",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "ArtworkInfoRow",
-      "plural": false,
-      "selections": v0
+      "kind": "FragmentSpread",
+      "name": "ArtworkDetailsAboutTheWorkFromArtsy_artwork",
+      "args": null
     },
     {
       "kind": "FragmentSpread",
-      "name": "ArtworkDetailsAboutTheWorkFromArtsy_artwork",
+      "name": "ArtworkDetailsAboutTheWorkFromPartner_artwork",
       "args": null
     },
     {
@@ -92,90 +59,6 @@ return {
       "kind": "FragmentSpread",
       "name": "ArtworkDetailsArticles_artwork",
       "args": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "additional_information",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "description",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "framed",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "ArtworkInfoRow",
-      "plural": false,
-      "selections": v0
-    },
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "signatureInfo",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "ArtworkInfoRow",
-      "plural": false,
-      "selections": v0
-    },
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "conditionDescription",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "ArtworkInfoRow",
-      "plural": false,
-      "selections": v0
-    },
-    {
-      "kind": "FragmentSpread",
-      "name": "ArtworkDetailsAboutTheWorkFromPartner_artwork",
-      "args": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "series",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "publisher",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "manufacturer",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "provenance",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "image_rights",
-      "args": null,
-      "storageKey": null
     },
     {
       "kind": "LinkedField",
@@ -200,7 +83,7 @@ return {
           "args": null,
           "storageKey": null
         },
-        v1
+        v0
       ]
     },
     {
@@ -217,9 +100,9 @@ return {
       "args": null,
       "storageKey": null
     },
-    v1
+    v0
   ]
 };
 })();
-(node as any).hash = '8028039fe2e0766c0ac41fcb9e3eaa2b';
+(node as any).hash = '55917c2770100bd68f2ece1a0607f743';
 export default node;

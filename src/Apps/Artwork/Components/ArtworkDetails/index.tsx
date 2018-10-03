@@ -25,41 +25,19 @@ const SpinnerContainer = Box
 
 export const ArtworkDetails: React.SFC<ArtworkDetailsProps> = props => {
   const { artwork, user, mediator } = props
-  const renderAbout =
-    artwork.additional_information ||
-    artwork.certificateOfAuthenticity ||
-    artwork.conditionDescription ||
-    artwork.description ||
-    artwork.framed ||
-    artwork.image_rights ||
-    artwork.manufacturer ||
-    artwork.provenance ||
-    artwork.publisher ||
-    artwork.series ||
-    artwork.signatureInfo
-  if (
-    !renderAbout &&
-    !artwork.articles &&
-    !artwork.exhibition_history &&
-    !artwork.literature
-  ) {
-    return null
-  }
   return (
     <ArtworkDetailsContainer pb={4}>
       <Tabs>
-        {renderAbout && (
-          <Tab name="About the work">
-            <AboutTheWorkFromArtsy artwork={artwork} />
-            <AboutTheWorkFromPartner
-              artwork={artwork}
-              user={user}
-              mediator={mediator}
-            />
-            <AdditionalInfo artwork={artwork} />
-            <Checklist artwork={artwork} />
-          </Tab>
-        )}
+        <Tab name="About the work">
+          <AboutTheWorkFromArtsy artwork={artwork} />
+          <AboutTheWorkFromPartner
+            artwork={artwork}
+            user={user}
+            mediator={mediator}
+          />
+          <AdditionalInfo artwork={artwork} />
+          <Checklist artwork={artwork} />
+        </Tab>
         {artwork.articles &&
           artwork.articles.length && (
             <Tab name="Articles">
@@ -86,25 +64,6 @@ export const ArtworkDetailsFragmentContainer = createFragmentContainer(
       ...ArtworkDetailsChecklist_artwork
       ...ArtworkDetailsAdditionalInfo_artwork
       ...ArtworkDetailsArticles_artwork
-      additional_information
-      description
-      framed {
-        label
-      }
-      signatureInfo {
-        label
-      }
-      conditionDescription {
-        label
-      }
-      certificateOfAuthenticity {
-        label
-      }
-      series
-      publisher
-      manufacturer
-      provenance
-      image_rights
       articles(size: 10) {
         id
       }
