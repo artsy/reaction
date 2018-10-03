@@ -9,7 +9,7 @@ import { HeadProvider, Meta } from "react-head"
 import { ErrorPage } from "../../../Components/ErrorPage"
 import { OrderApp } from "../OrderApp"
 
-import { createMockNetworkLayer } from "Artsy/Relay/createMockNetworkLayer"
+import { createMockNetworkLayer } from "DevTools/createMockNetworkLayer"
 import { Environment, RecordSource, Store } from "relay-runtime"
 
 jest.mock("react-stripe-elements", () => ({

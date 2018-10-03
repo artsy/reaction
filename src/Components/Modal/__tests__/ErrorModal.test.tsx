@@ -1,6 +1,7 @@
 import { mount } from "enzyme"
 import React from "react"
 import { Dismiss, ErrorModal, ModalButton } from "../ErrorModal"
+import { ModalWrapper } from "../ModalWrapper"
 
 describe("ErrorModal", () => {
   const getWrapper = inputs => {
@@ -49,6 +50,13 @@ describe("ErrorModal", () => {
       expect(text).toContain("Custom header")
       expect(text).toContain("A custom error detail.")
       expect(text).toContain("OK")
+    })
+
+    it("Renders a responsive modal", () => {
+      const component = getWrapper(props)
+      expect(
+        component.find(ModalWrapper).props().fullscreenResponsiveModal
+      ).toBeUndefined()
     })
 
     it("Clicking on the continue button closes the modal", () => {

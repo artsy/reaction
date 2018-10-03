@@ -65,6 +65,7 @@ export class Modal extends React.Component<ModalProps> {
         show={show}
         isWide={isWide}
         image={image}
+        fullscreenResponsiveModal
       >
         <CloseButton name="close" onClick={this.close} />
 

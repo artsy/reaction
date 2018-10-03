@@ -10,6 +10,7 @@ export interface ModalWrapperProps extends React.HTMLProps<ModalWrapper> {
   cta?: CtaProps
   onClose?: () => void
   isWide?: boolean
+  fullscreenResponsiveModal?: boolean
   image?: string
   show?: boolean
 }
@@ -74,7 +75,7 @@ export class ModalWrapper extends React.Component<
   }
 
   render(): JSX.Element {
-    const { children, isWide, image } = this.props
+    const { children, isWide, fullscreenResponsiveModal, image } = this.props
     const { isShown, isAnimating } = this.state
 
     if (isShown) {
@@ -96,8 +97,14 @@ export class ModalWrapper extends React.Component<
             unmountOnExit
             timeout={{ enter: 10, exit: 200 }}
           >
-            <ModalContainer isWide={isWide} image={image}>
-              <ModalInner>{children}</ModalInner>
+            <ModalContainer
+              fullscreenResponsiveModal={fullscreenResponsiveModal}
+              isWide={isWide}
+              image={image}
+            >
+              <ModalInner fullscreenResponsiveModal={fullscreenResponsiveModal}>
+                {children}
+              </ModalInner>
             </ModalContainer>
           </FadeTransition>
         </Wrapper>
@@ -142,6 +149,7 @@ export const ModalOverlay = styled.div`
 
 export const ModalContainer = styled.div.attrs<{
   isWide?: boolean
+  fullscreenResponsiveModal?: boolean
   image?: string
 }>({})`
   position: fixed;
@@ -155,20 +163,30 @@ export const ModalContainer = styled.div.attrs<{
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
   animation: ${slideUp} 250ms linear;
 
-  ${media.sm`
-    width: 100%;
-    border-radius: 0;
-  `};
+  ${props =>
+    props.fullscreenResponsiveModal
+      ? media.sm`
+          width: 100%;
+          border-radius: 0;
+        `
+      : media.sm`
+          width: calc(100vw - 20px);
+          border-radius: 2px;
+        `};
 `
 
-const ModalInner = styled.div`
+const ModalInner = styled.div.attrs<{ fullscreenResponsiveModal?: boolean }>(
+  {}
+)`
   /* disabling scrolling until custom scrollbars are implemented */
   /* overflow-y: scroll; */
   max-height: calc(100vh - 80px);
-  ${media.sm`
-    max-height: 100vh;
-    height: 100vh
-  `};
+  ${props =>
+    props.fullscreenResponsiveModal &&
+    media.sm`
+      max-height: 100vh;
+      height: 100vh
+    `};
 `
 
 export default ModalWrapper
