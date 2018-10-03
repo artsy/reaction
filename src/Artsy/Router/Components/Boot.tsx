@@ -26,7 +26,7 @@ export interface BootProps {
   relayEnvironment: Environment
   resolver: ResolverUtils
   routes: RouteConfig
-  headTags?: any[]
+  headTags?: JSX.Element[]
 }
 
 // TODO: Do we want to let Force explicitly inject the analytics code?

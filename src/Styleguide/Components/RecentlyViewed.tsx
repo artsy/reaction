@@ -1,6 +1,7 @@
 import { Separator, Serif, Spacer } from "@artsy/palette"
 import { RecentlyViewed_me } from "__generated__/RecentlyViewed_me.graphql"
 import { RecentlyViewedQuery } from "__generated__/RecentlyViewedQuery.graphql"
+import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { ContextConsumer } from "Artsy/Router"
 import { FillwidthItem } from "Components/Artwork/FillwidthItem"
 import React from "react"
@@ -105,13 +106,7 @@ export const RecentlyViewedQueryRenderer = () => {
                 }
               }
             `}
-            render={({ props }) => {
-              if (props) {
-                return <RecentlyViewedFragmentContainer me={props.me} />
-              } else {
-                return null
-              }
-            }}
+            render={renderWithLoadProgress(RecentlyViewedFragmentContainer)}
           />
         )
       }}

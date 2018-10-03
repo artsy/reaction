@@ -52,7 +52,8 @@ describe("MobileLoginForm", () => {
     expect(wrapper.html()).toMatch("Some global server error")
   })
 
-  it("calls onBackButtonClicked if back button is clicked on first page", () => {
+  // TODO: Luc, this test needs finishing.
+  xit("calls onBackButtonClicked if back button is clicked on first page", () => {
     const onBackButtonClicked = jest.fn()
     const wrapper = mount(
       <MobileLoginForm

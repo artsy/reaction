@@ -37,7 +37,7 @@
     "stylelint-project": " stylelint -- 'src/**/*.{ts,tsx}'",
     "prettier-project": "yarn run prettier-write 'src/**/*.{ts,tsx}'",
     "prettier-write": "yarn run prettier --write",
-    "relay": "relay-compiler --src ./src --schema data/schema.graphql --language typescript --artifactDirectory ./src/__generated__",
+    "relay": "relay-compiler --src ./src --schema data/schema.graphql --language typescript --artifactDirectory ./src/__generated__ --exclude '**/node_modules/**,**/__mocks__/**,**/__generated__/**'",
     "semantic-release": "semantic-release",
     "start": "yarn storybook",
     "storybook": "node verify-node-version.js && concurrently --raw --kill-others 'yarn relay --watch' 'start-storybook -s ./public -p 9001'",
@@ -108,7 +108,7 @@
     "conventional-changelog-ember": "^0.3.4",
     "dd-trace": "^0.6.0",
     "dotenv": "^4.0.0",
-    "enzyme": "^3.1.0",
+    "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "1.5.0",
     "fork-ts-checker-notifier-webpack-plugin": "^0.2.0",
     "fork-ts-checker-webpack-plugin": "^0.3.0",
@@ -228,9 +228,9 @@
       "<rootDir>/src"
     ],
     "setupFiles": [
-      "raf/polyfill",
-      "./src/setup_jest.ts"
+      "raf/polyfill"
     ],
+    "setupTestFrameworkScriptFile": "<rootDir>/src/setup_jest.ts",
     "moduleNameMapper": {
       "Assets(.*)$": "<rootDir>/src/Assets/$1",
       "^Components(.*)$": "<rootDir>/src/Components/$1"

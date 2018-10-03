@@ -226,8 +226,6 @@ describe("Payment", () => {
     fillAddressForm(paymentRoute, validAddress)
 
     paymentRoute.find(ContinueButton).simulate("click")
-
-    expect.hasAssertions()
   })
 
   it("shows an error message when CreateToken passes in an error", () => {

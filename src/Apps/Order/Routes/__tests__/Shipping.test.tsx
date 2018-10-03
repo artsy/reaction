@@ -78,8 +78,6 @@ describe("Shipping", () => {
     })
 
     component.find("Button").simulate("click")
-
-    expect.hasAssertions()
   })
 
   it("commits the mutation with shipping option", () => {
@@ -101,8 +99,6 @@ describe("Shipping", () => {
     })
 
     component.find("Button").simulate("click")
-
-    expect.hasAssertions()
   })
 
   it("commits the mutation with pickup option", () => {
@@ -117,8 +113,6 @@ describe("Shipping", () => {
     })
 
     component.find("Button").simulate("click")
-
-    expect.hasAssertions()
   })
 
   describe("mutation", () => {
@@ -154,8 +148,6 @@ describe("Shipping", () => {
       fillAddressForm(component, validAddress)
 
       component.find("Button").simulate("click")
-
-      expect.hasAssertions()
     })
 
     it("shows an error modal when there is an error from the server", () => {

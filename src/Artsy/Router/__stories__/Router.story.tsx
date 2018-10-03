@@ -1,7 +1,7 @@
 import { storiesOf } from "@storybook/react"
 import { PreloadLink } from "Artsy/Router"
-import { ClientRouter } from "Artsy/Router/Components/ClientRouter"
 import { ContextConsumer } from "Artsy/SystemContext"
+import { MockRouter } from "DevTools/MockRouter"
 import React from "react"
 import { graphql } from "react-relay"
 
@@ -77,7 +77,7 @@ const routes = [
 
 storiesOf("SSR Router/Example", module).add("Example Router App", () => {
   return (
-    <ClientRouter
+    <MockRouter
       routes={routes}
       context={{
         mediator: {

@@ -1,7 +1,7 @@
 import { createEnvironment } from "Artsy/Relay/createEnvironment"
 import { ContextProps as _ContextProps } from "Components/Artsy"
 import React, { SFC } from "react"
-import { RelayNetwork } from "relay-runtime"
+import { Environment } from "relay-runtime"
 import { getUser } from "Utils/getUser"
 import { MatchingMediaQueries } from "Utils/Responsive"
 
@@ -36,7 +36,7 @@ export interface SystemProps {
    * If none is provided to the `ContextProvider` then one is created, using
    * the `user` if available.
    */
-  relayNetwork?: RelayNetwork
+  relayEnvironment?: Environment
 
   isEigen?: boolean
 }
