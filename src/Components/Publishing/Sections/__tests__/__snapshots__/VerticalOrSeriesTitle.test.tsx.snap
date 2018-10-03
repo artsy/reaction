@@ -6,6 +6,7 @@ exports[`renders properly for a feature article 1`] = `
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
+  width: inherit;
 }
 
 .c0 a {
@@ -36,6 +37,7 @@ exports[`renders properly for a standard article 1`] = `
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
+  width: inherit;
 }
 
 .c0 a {
