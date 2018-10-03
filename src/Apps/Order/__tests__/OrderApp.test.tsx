@@ -20,10 +20,9 @@ jest.mock("react-stripe-elements", () => ({
 }))
 
 describe("OrderApp routing redirects", () => {
+  // FIXME: move to DevTools folder
   async function render(url, mockResolvers) {
-    const network = createMockNetworkLayer({
-      ...mockResolvers,
-    })
+    const network = createMockNetworkLayer(mockResolvers)
     const source = new RecordSource()
     const store = new Store(source)
     const environment = new Environment({ network, store })
@@ -48,6 +47,7 @@ describe("OrderApp routing redirects", () => {
     })
     expect(redirect).toBe(undefined)
   })
+
   it("redirects to the status route if the order is not pending", async () => {
     const { redirect } = await render("/order2/1234/shipping", {
       Order: () => ({

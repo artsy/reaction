@@ -58,6 +58,38 @@ const confirmRouteExit = (
   return LEAVE_MESSAGING
 }
 
+const shouldRedirect = props => {
+  const { location, order, params } = props as any
+
+  if (
+    order &&
+    order.state !== "PENDING" &&
+    !location.pathname.includes("status")
+  ) {
+    // Redirect to status page if the order is no longer PENDING (means it can't be edited anymore)
+    throw new RedirectException(`/order2/${params.orderID}/status`)
+  } else if (
+    order &&
+    !order.requestedFulfillment &&
+    !location.pathname.includes("shipping")
+  ) {
+    // Redirect to shipping page if no shipping info has been set
+    throw new RedirectException(`/order2/${params.orderID}/shipping`)
+  } else if (
+    order &&
+    !order.creditCard &&
+    !(
+      location.pathname.includes("payment") ||
+      location.pathname.includes("shipping")
+    )
+  ) {
+    // Redirect to payment page if there is shipping but _no_ credit card
+    throw new RedirectException(`/order2/${params.orderID}/payment`)
+  } else {
+    return false
+  }
+}
+
 // FIXME:
 // * `render` functions requires casting
 export const routes: RouteConfig[] = [
@@ -82,30 +114,7 @@ export const routes: RouteConfig[] = [
     `,
     render: ({ Component, props }) => {
       if (Component && props) {
-        const { location, order, params } = props as any
-
-        if (
-          order &&
-          order.state !== "PENDING" &&
-          !location.pathname.includes("status")
-        ) {
-          throw new RedirectException(`/order2/${params.orderID}/status`)
-        } else if (
-          order &&
-          !order.requestedFulfillment &&
-          !location.pathname.includes("shipping")
-        ) {
-          throw new RedirectException(`/order2/${params.orderID}/shipping`)
-        } else if (
-          order &&
-          !order.creditCard &&
-          !(
-            location.pathname.includes("payment") ||
-            location.pathname.includes("shipping")
-          )
-        ) {
-          throw new RedirectException(`/order2/${params.orderID}/payment`)
-        } else {
+        if (!shouldRedirect(props)) {
           return <Component {...props} />
         }
       }
