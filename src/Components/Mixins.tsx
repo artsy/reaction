@@ -18,6 +18,7 @@ export const borderedInput = (props: InputProps & BorderProps = {}) => {
     &::placeholder {
       color: ${colors.grayMedium};
       text-overflow: ellipsis;
+      line-height: normal;
     }
 
     ${garamond("s17")};
