@@ -81,18 +81,10 @@ export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
   }
 
   render() {
-    const { children, location, router, order, params } = this.props
+    const { children, order } = this.props
 
     if (!order) {
       return <ErrorPage code={404} />
-    }
-
-    if (
-      order &&
-      order.state !== "PENDING" &&
-      !location.pathname.includes("status")
-    ) {
-      router.replace(`/order2/${params.orderID}/status`)
     }
 
     return (

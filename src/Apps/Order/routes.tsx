@@ -1,4 +1,10 @@
-import { Location, Redirect, RouteConfig, Router } from "found"
+import {
+  Location,
+  Redirect,
+  RedirectException,
+  RouteConfig,
+  Router,
+} from "found"
 import React from "react"
 import { graphql } from "react-relay"
 import { OrderApp } from "./OrderApp"
@@ -65,9 +71,45 @@ export const routes: RouteConfig[] = [
         }
         order: ecommerceOrder(id: $orderID) {
           state
+          requestedFulfillment {
+            __typename
+          }
+          creditCard {
+            id
+          }
         }
       }
     `,
+    render: ({ Component, props }) => {
+      if (Component && props) {
+        const { location, order, params } = props as any
+
+        if (
+          order &&
+          order.state !== "PENDING" &&
+          !location.pathname.includes("status")
+        ) {
+          throw new RedirectException(`/order2/${params.orderID}/status`)
+        } else if (
+          order &&
+          !order.requestedFulfillment &&
+          !location.pathname.includes("shipping")
+        ) {
+          throw new RedirectException(`/order2/${params.orderID}/shipping`)
+        } else if (
+          order &&
+          !order.creditCard &&
+          !(
+            location.pathname.includes("payment") ||
+            location.pathname.includes("shipping")
+          )
+        ) {
+          throw new RedirectException(`/order2/${params.orderID}/payment`)
+        } else {
+          return <Component {...props} />
+        }
+      }
+    },
     children: [
       {
         path: "shipping",
@@ -116,8 +158,8 @@ export const routes: RouteConfig[] = [
           }
         `,
       },
-      // For now, redirect the empty route to the shipping page
       new Redirect({
+        // For now, redirect the empty route to the shipping page
         from: "/",
         to: "/order2/:orderID/shipping",
       }) as any,
