@@ -187,6 +187,7 @@ export class SmallArtistHeader extends Component<Props> {
           <Fragment>
             <Carousel
               data={carousel.images as object[]}
+              height={200}
               render={slide => {
                 return (
                   <a href={slide.href} onClick={() => this.onClickSlide(slide)}>
@@ -263,7 +264,7 @@ export const ArtistHeaderFragmentContainer = createFragmentContainer(
       carousel {
         images {
           href
-          resized(height: 300) {
+          resized(height: 200) {
             url
             width
             height

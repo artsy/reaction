@@ -118,12 +118,12 @@ const node: ConcreteFragment = {
               "kind": "LinkedField",
               "alias": null,
               "name": "resized",
-              "storageKey": "resized(height:300)",
+              "storageKey": "resized(height:200)",
               "args": [
                 {
                   "kind": "Literal",
                   "name": "height",
-                  "value": 300,
+                  "value": 200,
                   "type": "Int"
                 }
               ],
@@ -171,5 +171,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'a554c80e5164862b396742ea12072a79';
+(node as any).hash = '7c700420d84dd2fe567a9f2491518ea1';
 export default node;

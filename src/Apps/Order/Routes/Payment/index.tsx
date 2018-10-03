@@ -26,7 +26,7 @@ import {
   RelayRefetchProp,
 } from "react-relay"
 import { injectStripe, ReactStripeElements } from "react-stripe-elements"
-import { Collapse } from "Styleguide"
+import { Collapse } from "Styleguide/Components"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Responsive } from "Utils/Responsive"
 
@@ -114,13 +114,14 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
 
   private validateAddress(address: Address) {
     const { name, addressLine1, city, region, country, postalCode } = address
+    const usOrCanada = country === "US" || country === "CA"
     return {
       name: validatePresence(name),
       addressLine1: validatePresence(addressLine1),
       city: validatePresence(city),
-      region: validatePresence(region),
+      region: usOrCanada && validatePresence(region),
       country: validatePresence(country),
-      postalCode: validatePresence(postalCode),
+      postalCode: usOrCanada && validatePresence(postalCode),
     }
   }
 

@@ -63,7 +63,7 @@ export const routes: RouteConfig[] = [
         me {
           name
         }
-        ecommerceOrder(id: $orderID) {
+        order: ecommerceOrder(id: $orderID) {
           state
         }
       }
@@ -75,7 +75,7 @@ export const routes: RouteConfig[] = [
         onTransition: confirmRouteExit,
         query: graphql`
           query routes_ShippingQuery($orderID: String!) {
-            ecommerceOrder(id: $orderID) {
+            order: ecommerceOrder(id: $orderID) {
               ...Shipping_order
             }
           }
@@ -87,7 +87,7 @@ export const routes: RouteConfig[] = [
         onTransition: confirmRouteExit,
         query: graphql`
           query routes_PaymentQuery($orderID: String!) {
-            ecommerceOrder(id: $orderID) {
+            order: ecommerceOrder(id: $orderID) {
               ...Payment_order
             }
           }
@@ -99,7 +99,7 @@ export const routes: RouteConfig[] = [
         onTransition: confirmRouteExit,
         query: graphql`
           query routes_ReviewQuery($orderID: String!) {
-            ecommerceOrder(id: $orderID) {
+            order: ecommerceOrder(id: $orderID) {
               ...Review_order
             }
           }
@@ -110,7 +110,7 @@ export const routes: RouteConfig[] = [
         Component: StatusRoute,
         query: graphql`
           query routes_StatusQuery($orderID: String!) {
-            ecommerceOrder(id: $orderID) {
+            order: ecommerceOrder(id: $orderID) {
               ...Status_order
             }
           }

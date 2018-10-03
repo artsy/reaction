@@ -62,7 +62,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
             showGenes = true
           }
         } else {
-          if (bioLen < MAX_CHARS.rest) {
+          if (bioLen < MAX_CHARS.default) {
             showGenes = true
           }
         }
