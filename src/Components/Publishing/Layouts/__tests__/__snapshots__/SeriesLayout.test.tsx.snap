@@ -141,7 +141,6 @@ exports[`renders a series properly 1`] = `
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
-  width: inherit;
 }
 
 .c33 {
@@ -1252,7 +1251,6 @@ exports[`renders a sponsored series properly 1`] = `
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
-  width: inherit;
 }
 
 .c40 {

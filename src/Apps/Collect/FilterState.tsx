@@ -108,7 +108,7 @@ export class FilterState extends Container<State> {
     })
   }
 
-  setFilter(filter, value, mediator) {
+  setFilter(filter: keyof State, value, mediator) {
     let newPartialState = {}
 
     switch (filter) {

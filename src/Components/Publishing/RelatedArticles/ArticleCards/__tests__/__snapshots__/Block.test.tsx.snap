@@ -6,7 +6,6 @@ exports[`ArticleCard renders properly 1`] = `
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
-  width: inherit;
   color: black;
 }
 
@@ -15,7 +14,6 @@ exports[`ArticleCard renders properly 1`] = `
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
-  width: inherit;
 }
 
 .c6 a {
