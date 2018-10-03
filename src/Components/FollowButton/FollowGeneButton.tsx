@@ -85,7 +85,7 @@ export class FollowGeneButton extends React.Component<Props> {
   }
 }
 
-export default track()(
+export const FollowGeneButtonFragmentContainer = track({})(
   createFragmentContainer(
     Artsy.withContext(FollowGeneButton),
     graphql`

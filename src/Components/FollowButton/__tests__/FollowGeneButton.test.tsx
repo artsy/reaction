@@ -3,9 +3,8 @@ import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
 import { commitMutation } from "react-relay"
-import renderer from "react-test-renderer"
 import { FollowButtonDeprecated } from "../ButtonDeprecated"
-import FollowGeneButton from "../FollowGeneButton"
+import { FollowGeneButtonFragmentContainer as FollowGeneButton } from "../FollowGeneButton"
 
 jest.mock("react-relay", () => ({
   commitMutation: jest.fn(),
