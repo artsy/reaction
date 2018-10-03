@@ -5,6 +5,7 @@ import { garamond } from "Assets/Fonts"
 import StyledTextLink from "Components/TextLink"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { data as sd } from "sharify"
 import styled from "styled-components"
 import RelayContact, { Contact } from "./Contact"
 import RelayDetails, { Details } from "./Details"
@@ -29,23 +30,20 @@ export class MetadataContainer extends React.Component<MetadataProps> {
     return (
       <ContextConsumer>
         {({ user }) => {
-          const enableLabFeature =
-            user &&
-            user.lab_features &&
-            user.lab_features.includes("New Buy Now Flow")
+          const enableBuyNowFlow = sd.ENABLE_NEW_BUY_NOW_FLOW
 
           const detailsContent = (
             <div className={className}>
               <DetailsBlock
-                includeLinks={!enableLabFeature}
+                includeLinks={!enableBuyNowFlow}
                 showSaleLine={extended}
                 artwork={artwork}
               />
-              {!enableLabFeature &&
+              {!enableBuyNowFlow &&
                 extended && <ContactBlock artwork={artwork} />}
             </div>
           )
-          return enableLabFeature ? (
+          return enableBuyNowFlow ? (
             <StyledTextLink href={artwork.href}>
               {detailsContent}
             </StyledTextLink>

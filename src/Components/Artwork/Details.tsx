@@ -4,6 +4,7 @@ import { ContextConsumer } from "Artsy"
 import React from "react"
 // @ts-ignore
 import { ComponentRef, createFragmentContainer, graphql } from "react-relay"
+import { data as sd } from "sharify"
 import styled from "styled-components"
 import TextLink from "../TextLink"
 
@@ -165,17 +166,14 @@ export class Details extends React.Component<Props, null> {
     return (
       <ContextConsumer>
         {({ user }) => {
-          const enableLabFeature =
-            user &&
-            user.lab_features &&
-            user.lab_features.includes("New Buy Now Flow")
+          const enableBuyNowFlow = sd.ENABLE_NEW_BUY_NOW_FLOW
           return (
             <>
-              {enableLabFeature && this.saleInfoLine()}
+              {enableBuyNowFlow && this.saleInfoLine()}
               {this.artistLine()}
               {this.titleLine()}
               {this.partnerLine()}
-              {!enableLabFeature && this.props.showSaleLine && this.saleLine()}
+              {!enableBuyNowFlow && this.props.showSaleLine && this.saleLine()}
             </>
           )
         }}

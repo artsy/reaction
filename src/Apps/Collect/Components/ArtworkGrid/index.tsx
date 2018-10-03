@@ -4,6 +4,7 @@ import { ContextConsumer } from "Artsy"
 import { FilterIcon } from "Assets/Icons/FilterIcon"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { data as sd } from "sharify"
 import { Toggle } from "Styleguide/Components/Toggle"
 import { Subscribe } from "unstated"
 import { Responsive } from "Utils/Responsive"
@@ -165,10 +166,7 @@ class Filter extends Component<Props, State> {
   }
 
   renderFilters({ user, filters, mediator, hideTopBorder }) {
-    const enableBuyNowFlow =
-      user &&
-      user.lab_features &&
-      user.lab_features.includes("New Buy Now Flow")
+    const enableBuyNowFlow = sd.ENABLE_NEW_BUY_NOW_FLOW
 
     const { filter_artworks } = this.props.viewer
     const { aggregations } = filter_artworks
