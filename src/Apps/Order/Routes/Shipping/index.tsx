@@ -26,7 +26,7 @@ import { validatePresence } from "Apps/Order/Components/Validators"
 import { Mediator } from "Artsy/SystemContext"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
-import { get, pick } from "lodash"
+import { pick } from "lodash"
 import React, { Component } from "react"
 import {
   commitMutation,
@@ -36,6 +36,7 @@ import {
 } from "react-relay"
 import { Collapse } from "Styleguide/Components"
 import { Col, Row } from "Styleguide/Elements/Grid"
+import { get } from "Utils/get"
 import { Responsive } from "Utils/Responsive"
 
 export interface ShippingProps {
@@ -209,9 +210,9 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
   render() {
     const { order } = this.props
     const { address, addressErrors, isCommittingMutation } = this.state
-    const isPickupAvailable = get(
+    const artwork = get(
       this.props,
-      "order.lineItems.edges[0].node.artwork.pickup_available"
+      props => order.lineItems.edges[0].node.artwork
     )
 
     return (
@@ -233,7 +234,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                   {/* TODO: Make RadioGroup generic for the allowed values,
                   which could also ensure the children only use
                   allowed values. */}
-                  {isPickupAvailable && (
+                  {artwork.pickup_available && (
                     <>
                       <RadioGroup
                         onSelect={(shippingOption: OrderFulfillmentType) =>
@@ -264,13 +265,15 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
 
                   <Collapse
                     open={
-                      !isPickupAvailable || this.state.shippingOption === "SHIP"
+                      !artwork.pickup_available ||
+                      this.state.shippingOption === "SHIP"
                     }
                   >
                     <AddressForm
                       defaultValue={address}
                       errors={addressErrors}
                       onChange={this.onAddressChange}
+                      continentalUsOnly={artwork.shipsToContinentalUSOnly}
                     />
                   </Collapse>
 
@@ -289,9 +292,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
               Sidebar={
                 <Flex flexDirection="column">
                   <TransactionSummary order={order} mb={xs ? 2 : 3} />
-                  <Helper
-                    artworkId={order.lineItems.edges[0].node.artwork.id}
-                  />
+                  <Helper artworkId={artwork.id} />
                   {xs && (
                     <>
                       <Spacer mb={3} />
@@ -346,6 +347,7 @@ export const ShippingFragmentContainer = createFragmentContainer(
             artwork {
               id
               pickup_available
+              shipsToContinentalUSOnly
             }
           }
         }

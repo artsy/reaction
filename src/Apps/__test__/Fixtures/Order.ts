@@ -36,6 +36,7 @@ export const UntouchedOrder = {
             date: "2016",
             shippingOrigin: "New York, NY",
             medium: "Oil and pencil on panel",
+            shipsToContinentalUSOnly: false,
             dimensions: {
               in: "36 × 36 in",
               cm: "91.4 × 91.4 cm",
