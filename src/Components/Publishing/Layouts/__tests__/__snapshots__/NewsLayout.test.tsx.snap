@@ -6,7 +6,6 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
-  width: inherit;
 }
 
 .c19 {
@@ -930,7 +929,6 @@ exports[`News Layout renders the news layout properly 1`] = `
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
-  width: inherit;
 }
 
 .c19 {

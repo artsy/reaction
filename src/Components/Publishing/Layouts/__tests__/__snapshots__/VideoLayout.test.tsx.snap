@@ -94,7 +94,6 @@ exports[`Video Layout matches the snapshot 1`] = `
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 14px;
   line-height: 20px;
-  width: inherit;
 }
 
 .c57 {
@@ -102,7 +101,6 @@ exports[`Video Layout matches the snapshot 1`] = `
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
-  width: inherit;
 }
 
 .c70 {
@@ -110,7 +108,6 @@ exports[`Video Layout matches the snapshot 1`] = `
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
-  width: inherit;
   color: white;
 }
 

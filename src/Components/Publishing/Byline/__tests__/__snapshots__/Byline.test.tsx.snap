@@ -6,7 +6,6 @@ exports[`Byline renders a byline 1`] = `
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
-  width: inherit;
 }
 
 .c2 {
