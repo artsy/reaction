@@ -8,7 +8,7 @@ import {
 } from "@artsy/palette"
 import { filterLocations } from "Apps/Artwork/Utils/filterLocations"
 import { Mediator } from "Artsy/SystemContext"
-import FollowProfileButton from "Components/FollowButton/FollowProfileButton"
+import { FollowProfileButton } from "Components/FollowButton/FollowProfileButton"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { ReadMore } from "Styleguide/Components"
@@ -59,50 +59,56 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
                   imageUrl={imageUrl}
                   initials={partner.initials}
                   FollowButton={
-                    <FollowProfileButton
-                      profile={partner.profile}
-                      user={user}
-                      onOpenAuthModal={() => {
-                        mediator &&
-                          mediator.trigger("open:auth", {
-                            mode: "signup",
-                            copy: `Sign up to follow ${partner.name}`,
-                            signupIntent: "follow gallery",
-                            afterSignUpAction: {
-                              kind: "profile",
-                              action: "follow",
-                              objectId: partner.profile && partner.profile.id,
-                            },
-                          })
-                      }}
-                      render={profile => {
-                        const is_followed =
-                          (profile && profile.is_followed) || false
-                        return (
-                          <Sans
-                            size="2"
-                            weight="medium"
-                            style={{
-                              cursor: "pointer",
-                              textDecoration: "underline",
-                            }}
-                          >
-                            {is_followed ? "Following" : "Follow"}
-                          </Sans>
-                        )
-                      }}
-                    >
-                      Follow
-                    </FollowProfileButton>
+                    partner.profile && (
+                      <FollowProfileButton
+                        profile={partner.profile as any}
+                        user={user}
+                        onOpenAuthModal={() => {
+                          mediator &&
+                            mediator.trigger("open:auth", {
+                              mode: "signup",
+                              copy: `Sign up to follow ${partner.name}`,
+                              signupIntent: "follow gallery",
+                              afterSignUpAction: {
+                                kind: "profile",
+                                action: "follow",
+                                objectId:
+                                  partner.profile && partner.profile.__id,
+                              },
+                            })
+                        }}
+                        render={profile => {
+                          const is_followed = profile.is_followed || false
+                          return (
+                            <Sans
+                              size="2"
+                              weight="medium"
+                              style={{
+                                cursor: "pointer",
+                                textDecoration: "underline",
+                              }}
+                            >
+                              {is_followed ? "Following" : "Follow"}
+                            </Sans>
+                          )
+                        }}
+                      >
+                        Follow
+                      </FollowProfileButton>
+                    )
                   }
                 />
-                <Spacer mb={1} />
-                <Serif size="3">
-                  <ReadMore
-                    maxChars={maxChars}
-                    content={additional_information}
-                  />
-                </Serif>
+                {additional_information && (
+                  <>
+                    <Spacer mb={1} />
+                    <Serif size="3">
+                      <ReadMore
+                        maxChars={maxChars}
+                        content={additional_information}
+                      />
+                    </Serif>
+                  </>
+                )}
               </Box>
             </StackableBorderBox>
           )
@@ -124,7 +130,7 @@ export const ArtworkDetailsAboutTheWorkFromPartnerFragmentContainer = createFrag
           city
         }
         profile {
-          id
+          __id
           is_followed
           icon {
             url
