@@ -120,10 +120,10 @@ export const TransactionSummaryFragmentContainer = createFragmentContainer(
   TransactionSummary,
   graphql`
     fragment TransactionSummary_order on Order {
-      shippingTotal
-      taxTotal
-      itemsTotal
-      buyerTotal
+      shippingTotal(precision: 2)
+      taxTotal(precision: 2)
+      itemsTotal(precision: 2)
+      buyerTotal(precision: 2)
       seller {
         ... on Partner {
           name

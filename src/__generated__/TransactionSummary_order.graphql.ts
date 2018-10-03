@@ -34,14 +34,22 @@ export type TransactionSummary_order = {
 
 
 const node: ConcreteFragment = (function(){
-var v0 = {
+var v0 = [
+  {
+    "kind": "Literal",
+    "name": "precision",
+    "value": 2,
+    "type": "Int"
+  }
+],
+v1 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__id",
   "args": null,
   "storageKey": null
 },
-v1 = {
+v2 = {
   "kind": "ScalarField",
   "alias": "__id",
   "name": "id",
@@ -59,29 +67,29 @@ return {
       "kind": "ScalarField",
       "alias": null,
       "name": "shippingTotal",
-      "args": null,
-      "storageKey": null
+      "args": v0,
+      "storageKey": "shippingTotal(precision:2)"
     },
     {
       "kind": "ScalarField",
       "alias": null,
       "name": "taxTotal",
-      "args": null,
-      "storageKey": null
+      "args": v0,
+      "storageKey": "taxTotal(precision:2)"
     },
     {
       "kind": "ScalarField",
       "alias": null,
       "name": "itemsTotal",
-      "args": null,
-      "storageKey": null
+      "args": v0,
+      "storageKey": "itemsTotal(precision:2)"
     },
     {
       "kind": "ScalarField",
       "alias": null,
       "name": "buyerTotal",
-      "args": null,
-      "storageKey": null
+      "args": v0,
+      "storageKey": "buyerTotal(precision:2)"
     },
     {
       "kind": "LinkedField",
@@ -92,7 +100,7 @@ return {
       "concreteType": null,
       "plural": false,
       "selections": [
-        v0,
+        v1,
         {
           "kind": "InlineFragment",
           "type": "Partner",
@@ -208,19 +216,19 @@ return {
                         }
                       ]
                     },
-                    v0
+                    v1
                   ]
                 },
-                v1
+                v2
               ]
             }
           ]
         }
       ]
     },
-    v1
+    v2
   ]
 };
 })();
-(node as any).hash = 'b1bca64da23052b3b24693f5869d738e';
+(node as any).hash = '660e2fa4c1c289134155a071361ed09c';
 export default node;
