@@ -65,7 +65,7 @@ export class FollowProfileButton extends React.Component<Props> {
         `,
         variables: {
           input: {
-            profile_id: profile.id,
+            profile_id: profile.__id,
             unfollow: profile.is_followed,
           },
         },
@@ -113,7 +113,6 @@ export default track({})(
     graphql`
       fragment FollowProfileButton_profile on Profile {
         __id
-        id
         is_followed
       }
     `

@@ -5,7 +5,7 @@ import styled from "styled-components"
 import { FullArtworkGrid, Tab, Tabs } from "Styleguide/Components"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { ArtistInfoQueryRenderer as ArtistInfo } from "./Components/ArtistInfo"
-import { ArtworkDetailsFragmentContainer as ArtworkDetails } from "./Components/ArtworkDetails"
+import { ArtworkDetailsQueryRenderer as ArtworkDetails } from "./Components/ArtworkDetails"
 import { ArtworkSidebarFragmentContainer as ArtworkSidebar } from "./Components/ArtworkSidebar"
 import { Banner } from "./Components/Banner"
 import { ImageCarousel } from "./Components/ImageCarousel"
@@ -51,7 +51,7 @@ export const ArtworkApp: React.SFC<Props> = props => {
       </Row>
       <Row>
         <Col sm={8}>
-          <ArtworkDetails artwork={props.artwork} />
+          <ArtworkDetails artworkID={props.artwork.id} />
         </Col>
       </Row>
       <Row>
@@ -164,6 +164,7 @@ export const ArtworkAppFragmentContainer = createFragmentContainer(
   ArtworkApp,
   graphql`
     fragment ArtworkApp_artwork on Artwork {
+      id
       ...ArtworkSidebar_artwork
       ...ArtworkDetails_artwork
     }

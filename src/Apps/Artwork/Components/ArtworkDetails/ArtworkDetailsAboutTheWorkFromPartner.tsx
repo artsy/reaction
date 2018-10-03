@@ -1,5 +1,13 @@
-import { Avatar, Box, Serif, Spacer, StackableBorderBox } from "@artsy/palette"
+import {
+  Avatar,
+  Box,
+  Sans,
+  Serif,
+  Spacer,
+  StackableBorderBox,
+} from "@artsy/palette"
 import { filterLocations } from "Apps/Artwork/Utils/filterLocations"
+import { FollowProfileButton } from "Components/FollowButton/FollowProfileButton"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { ReadMore } from "Styleguide/Components"
@@ -7,6 +15,7 @@ import { EntityHeader } from "Styleguide/Components"
 import { get } from "Utils/get"
 
 import { ArtworkDetailsAboutTheWorkFromPartner_artwork } from "__generated__/ArtworkDetailsAboutTheWorkFromPartner_artwork.graphql"
+import { ContextConsumer } from "Artsy/Router"
 import { Responsive } from "Utils/Responsive"
 import { READ_MORE_MAX_CHARS } from "./ArtworkDetailsAboutTheWorkFromArtsy"
 
@@ -22,11 +31,8 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
   }
 
   render() {
-    const { additional_information, partner } = this.props.artwork
-    if (!additional_information) {
-      return null
-    }
-
+    const { artwork } = this.props
+    const { additional_information, partner } = artwork
     const locationNames = get(
       partner,
       p => filterLocations(p.locations),
@@ -36,33 +42,82 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
     const imageUrl = get(partner, p => p.profile.icon.url)
 
     return (
-      <Responsive>
-        {({ xs }) => {
-          const maxChars = xs
-            ? READ_MORE_MAX_CHARS.xs
-            : READ_MORE_MAX_CHARS.default
-
+      <ContextConsumer>
+        {({ user, mediator }) => {
           return (
-            <StackableBorderBox p={2}>
-              <Box>
-                <EntityHeader
-                  name={partner.name}
-                  meta={locationNames}
-                  imageUrl={imageUrl}
-                  initials={partner.initials}
-                />
-                <Spacer mb={1} />
-                <Serif size="3">
-                  <ReadMore
-                    maxChars={maxChars}
-                    content={additional_information}
-                  />
-                </Serif>
-              </Box>
-            </StackableBorderBox>
+            <Responsive>
+              {({ xs }) => {
+                const maxChars = xs
+                  ? READ_MORE_MAX_CHARS.xs
+                  : READ_MORE_MAX_CHARS.default
+
+                return (
+                  <StackableBorderBox p={2}>
+                    <Box>
+                      <EntityHeader
+                        name={partner.name}
+                        meta={locationNames}
+                        imageUrl={imageUrl}
+                        initials={partner.initials}
+                        FollowButton={
+                          partner.profile && (
+                            <FollowProfileButton
+                              profile={partner.profile as any}
+                              user={user}
+                              onOpenAuthModal={() => {
+                                mediator &&
+                                  mediator.trigger("open:auth", {
+                                    mode: "signup",
+                                    copy: `Sign up to follow ${partner.name}`,
+                                    signupIntent: "follow gallery",
+                                    afterSignUpAction: {
+                                      kind: "profile",
+                                      action: "follow",
+                                      objectId:
+                                        partner.profile && partner.profile.__id,
+                                    },
+                                  })
+                              }}
+                              render={profile => {
+                                const is_followed = profile.is_followed || false
+                                return (
+                                  <Sans
+                                    size="2"
+                                    weight="medium"
+                                    style={{
+                                      cursor: "pointer",
+                                      textDecoration: "underline",
+                                    }}
+                                  >
+                                    {is_followed ? "Following" : "Follow"}
+                                  </Sans>
+                                )
+                              }}
+                            >
+                              Follow
+                            </FollowProfileButton>
+                          )
+                        }
+                      />
+                      {additional_information && (
+                        <React.Fragment>
+                          <Spacer mb={1} />
+                          <Serif size="3">
+                            <ReadMore
+                              maxChars={maxChars}
+                              content={additional_information}
+                            />
+                          </Serif>
+                        </React.Fragment>
+                      )}
+                    </Box>
+                  </StackableBorderBox>
+                )
+              }}
+            </Responsive>
           )
         }}
-      </Responsive>
+      </ContextConsumer>
     )
   }
 }
@@ -79,6 +134,8 @@ export const ArtworkDetailsAboutTheWorkFromPartnerFragmentContainer = createFrag
           city
         }
         profile {
+          __id
+          is_followed
           icon {
             url
           }

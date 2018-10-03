@@ -33,25 +33,6 @@ fragment ArtworkDetails_artwork on Artwork {
   ...ArtworkDetailsChecklist_artwork
   ...ArtworkDetailsAdditionalInfo_artwork
   ...ArtworkDetailsArticles_artwork
-  additional_information
-  description
-  framed {
-    label
-  }
-  signatureInfo {
-    label
-  }
-  conditionDescription {
-    label
-  }
-  certificateOfAuthenticity {
-    label
-  }
-  series
-  publisher
-  manufacturer
-  provenance
-  image_rights
   articles(size: 10) {
     id
     __id
@@ -76,10 +57,11 @@ fragment ArtworkDetailsAboutTheWorkFromPartner_artwork on Artwork {
       __id
     }
     profile {
+      __id
+      is_followed
       icon {
         url
       }
-      __id
     }
     __id
   }
@@ -196,7 +178,7 @@ return {
   "operationKind": "query",
   "name": "ArtworkDetailsQuery",
   "id": null,
-  "text": "query ArtworkDetailsQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...ArtworkDetails_artwork\n    __id\n  }\n}\n\nfragment ArtworkDetails_artwork on Artwork {\n  ...ArtworkDetailsAboutTheWorkFromArtsy_artwork\n  ...ArtworkDetailsAboutTheWorkFromPartner_artwork\n  ...ArtworkDetailsChecklist_artwork\n  ...ArtworkDetailsAdditionalInfo_artwork\n  ...ArtworkDetailsArticles_artwork\n  additional_information\n  description\n  framed {\n    label\n  }\n  signatureInfo {\n    label\n  }\n  conditionDescription {\n    label\n  }\n  certificateOfAuthenticity {\n    label\n  }\n  series\n  publisher\n  manufacturer\n  provenance\n  image_rights\n  articles(size: 10) {\n    id\n    __id\n  }\n  literature\n  exhibition_history\n  __id\n}\n\nfragment ArtworkDetailsAboutTheWorkFromArtsy_artwork on Artwork {\n  description\n  __id\n}\n\nfragment ArtworkDetailsAboutTheWorkFromPartner_artwork on Artwork {\n  additional_information\n  partner {\n    name\n    initials\n    locations {\n      city\n      __id\n    }\n    profile {\n      icon {\n        url\n      }\n      __id\n    }\n    __id\n  }\n  __id\n}\n\nfragment ArtworkDetailsChecklist_artwork on Artwork {\n  framed {\n    label\n    details\n  }\n  signatureInfo {\n    label\n    details\n  }\n  conditionDescription {\n    label\n    details\n  }\n  certificateOfAuthenticity {\n    label\n    details\n  }\n  __id\n}\n\nfragment ArtworkDetailsAdditionalInfo_artwork on Artwork {\n  series\n  publisher\n  manufacturer\n  provenance\n  image_rights\n  __id\n}\n\nfragment ArtworkDetailsArticles_artwork on Artwork {\n  articles(size: 10) {\n    author {\n      name\n      __id\n    }\n    href\n    published_at(format: \"MMM Do, YYYY\")\n    thumbnail_image {\n      resized(width: 300) {\n        url\n      }\n    }\n    thumbnail_title\n    __id\n  }\n  __id\n}\n",
+  "text": "query ArtworkDetailsQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...ArtworkDetails_artwork\n    __id\n  }\n}\n\nfragment ArtworkDetails_artwork on Artwork {\n  ...ArtworkDetailsAboutTheWorkFromArtsy_artwork\n  ...ArtworkDetailsAboutTheWorkFromPartner_artwork\n  ...ArtworkDetailsChecklist_artwork\n  ...ArtworkDetailsAdditionalInfo_artwork\n  ...ArtworkDetailsArticles_artwork\n  articles(size: 10) {\n    id\n    __id\n  }\n  literature\n  exhibition_history\n  __id\n}\n\nfragment ArtworkDetailsAboutTheWorkFromArtsy_artwork on Artwork {\n  description\n  __id\n}\n\nfragment ArtworkDetailsAboutTheWorkFromPartner_artwork on Artwork {\n  additional_information\n  partner {\n    name\n    initials\n    locations {\n      city\n      __id\n    }\n    profile {\n      __id\n      is_followed\n      icon {\n        url\n      }\n    }\n    __id\n  }\n  __id\n}\n\nfragment ArtworkDetailsChecklist_artwork on Artwork {\n  framed {\n    label\n    details\n  }\n  signatureInfo {\n    label\n    details\n  }\n  conditionDescription {\n    label\n    details\n  }\n  certificateOfAuthenticity {\n    label\n    details\n  }\n  __id\n}\n\nfragment ArtworkDetailsAdditionalInfo_artwork on Artwork {\n  series\n  publisher\n  manufacturer\n  provenance\n  image_rights\n  __id\n}\n\nfragment ArtworkDetailsArticles_artwork on Artwork {\n  articles(size: 10) {\n    author {\n      name\n      __id\n    }\n    href\n    published_at(format: \"MMM Do, YYYY\")\n    thumbnail_image {\n      resized(width: 300) {\n        url\n      }\n    }\n    thumbnail_title\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -304,6 +286,14 @@ return {
                 "concreteType": "Profile",
                 "plural": false,
                 "selections": [
+                  v2,
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "is_followed",
+                    "args": null,
+                    "storageKey": null
+                  },
                   {
                     "kind": "LinkedField",
                     "alias": null,
@@ -313,8 +303,7 @@ return {
                     "concreteType": "Image",
                     "plural": false,
                     "selections": v4
-                  },
-                  v2
+                  }
                 ]
               },
               v2
