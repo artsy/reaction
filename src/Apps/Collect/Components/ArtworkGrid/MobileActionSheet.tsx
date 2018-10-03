@@ -27,9 +27,9 @@ export const MobileActionSheet: SFC<MobileActionSheet> = ({
               >
                 Reset
               </Button>
-              <Sans size="2" weight="medium">
+              <FilterTitle size="2" weight="medium">
                 Filter
-              </Sans>
+              </FilterTitle>
               <Button
                 variant="primaryBlack"
                 size="small"
@@ -59,4 +59,8 @@ const Container = styled(Box)`
   background-color: white;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
+`
+
+const FilterTitle = styled(Sans)`
+  width: min-content;
 `
