@@ -74,7 +74,16 @@ export class PriceRange extends React.Component<
         </Header>
 
         <Flex flexDirection="column" alignItems="left" mt={-1} mb={1}>
-          <Slider my={1} mx={1} {...this.props} onChange={this.updateMinMax} />
+          <SliderContainer>
+            <Slider
+              my={1}
+              mx={1}
+              {...this.props}
+              onChange={minMax => {
+                this.updateMinMax(minMax)
+              }}
+            />
+          </SliderContainer>
         </Flex>
       </Flex>
     )
@@ -86,6 +95,10 @@ const Header = styled.div.attrs<SpaceProps>({})`
   padding-bottom: 16px;
   user-select: none;
   ${space};
+`
+
+const SliderContainer = styled.div`
+  width: 100%;
 `
 
 Header.displayName = "Header"
