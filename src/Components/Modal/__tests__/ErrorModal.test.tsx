@@ -56,7 +56,7 @@ describe("ErrorModal", () => {
       const component = getWrapper(props)
       expect(
         component.find(ModalWrapper).props().fullscreenResponsiveModal
-      ).toBe(true)
+      ).toBeUndefined()
     })
 
     it("Clicking on the continue button closes the modal", () => {
