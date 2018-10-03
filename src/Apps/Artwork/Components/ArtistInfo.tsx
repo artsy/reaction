@@ -69,7 +69,7 @@ export const ArtistInfo: SFC<ArtistInfoProps> = props => {
           }
         />
         <Spacer mb={1} />
-        <ArtistBio bio={props.artist} maxChars={300} />
+        <ArtistBio bio={props.artist} />
       </StackableBorderBox>
       <StackableBorderBox p={2}>
         <MarketInsights artist={props.artist} border={false} />

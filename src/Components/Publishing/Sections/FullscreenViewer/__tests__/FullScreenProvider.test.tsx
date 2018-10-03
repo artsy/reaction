@@ -29,11 +29,12 @@ describe("FullScreenProvider", () => {
       return <div />
     }
 
-    mount(
+    const tree = mount(
       <FullScreenProvider>
         <Child />
       </FullScreenProvider>
     )
+    expect(tree.find(Child).length).toEqual(1)
   })
 
   it("toggles open and closed state", () => {

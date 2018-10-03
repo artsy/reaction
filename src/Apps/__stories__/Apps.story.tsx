@@ -1,5 +1,5 @@
 import { storiesOf } from "@storybook/react"
-import { ClientRouter } from "Artsy/Router/Components/ClientRouter"
+import { MockRouter } from "DevTools/MockRouter"
 import React from "react"
 import { routes as artistRoutes } from "../Artist/routes"
 import { routes as artworkRoutes } from "../Artwork/routes"
@@ -8,7 +8,7 @@ import { routes as collectRoutes } from "../Collect/routes"
 storiesOf("Apps", module)
   .add("Artwork Page", () => {
     return (
-      <ClientRouter
+      <MockRouter
         routes={artworkRoutes}
         initialRoute="/artwork2/pablo-picasso-david-et-bethsabee"
       />
@@ -16,9 +16,9 @@ storiesOf("Apps", module)
   })
   .add("Artist Page", () => {
     return (
-      <ClientRouter
+      <MockRouter
         routes={artistRoutes}
-        initialRoute="/artist/pablo-picasso"
+        initialRoute="/artist/james-rosenquist"
         context={{
           mediator: {
             trigger: x => x,
@@ -29,7 +29,7 @@ storiesOf("Apps", module)
   })
   .add("Collect Page", () => {
     return (
-      <ClientRouter
+      <MockRouter
         routes={collectRoutes}
         initialRoute="/collect"
         context={{

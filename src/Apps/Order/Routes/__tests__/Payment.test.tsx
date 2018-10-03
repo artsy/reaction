@@ -226,8 +226,6 @@ describe("Payment", () => {
     fillAddressForm(paymentRoute, validAddress)
 
     paymentRoute.find(ContinueButton).simulate("click")
-
-    expect.hasAssertions()
   })
 
   it("shows an error message when CreateToken passes in an error", () => {
@@ -398,6 +396,42 @@ describe("Payment", () => {
       fillIn(paymentRoute, { title: "Full name", value: "Air Bud" })
       paymentRoute.find(ContinueButton).simulate("click")
       expect(commitMutation).not.toBeCalled()
+    })
+
+    it("allows a missing postal code if the selected country is not US or Canada", () => {
+      const paymentRoute = mount(<PaymentRoute {...testProps} />)
+      stripeMock.createToken.mockReturnValue({ then: jest.fn() })
+
+      const address = {
+        name: "Erik David",
+        addressLine1: "401 Broadway",
+        addressLine2: "",
+        city: "New York",
+        region: "NY",
+        postalCode: "",
+        phoneNumber: "5555937743",
+        country: "AQ",
+      }
+      fillAddressForm(paymentRoute, address)
+      paymentRoute.find("Button").simulate("click")
+      expect(stripeMock.createToken).toBeCalled()
+    })
+    it("allows a missing state/province if the selected country is not US or Canada", () => {
+      const paymentRoute = mount(<PaymentRoute {...testProps} />)
+      stripeMock.createToken.mockReturnValue({ then: jest.fn() })
+      const address = {
+        name: "Erik David",
+        addressLine1: "401 Broadway",
+        addressLine2: "",
+        city: "New York",
+        region: "",
+        postalCode: "7Z",
+        phoneNumber: "5555937743",
+        country: "AQ",
+      }
+      fillAddressForm(paymentRoute, address)
+      paymentRoute.find("Button").simulate("click")
+      expect(stripeMock.createToken).toBeCalled()
     })
   })
 })

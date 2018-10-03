@@ -21,7 +21,8 @@
       { "artifactDirectory": "__generated__", "makeRelative": false }
     ],
     "trailing-comma": false,
-    "variable-name": [true, "ban-keywords", "allow-leading-underscore"]
+    "variable-name": [true, "ban-keywords", "allow-leading-underscore"],
+    "jsdoc-format": false
   },
   "rulesDirectory": ["./tslint"]
 }

@@ -81,21 +81,25 @@ exports[`EmailSignup renders an email signup 1`] = `
 .c3::-webkit-input-placeholder {
   color: #cccccc;
   text-overflow: ellipsis;
+  line-height: normal;
 }
 
 .c3::-moz-placeholder {
   color: #cccccc;
   text-overflow: ellipsis;
+  line-height: normal;
 }
 
 .c3:-ms-input-placeholder {
   color: #cccccc;
   text-overflow: ellipsis;
+  line-height: normal;
 }
 
 .c3::placeholder {
   color: #cccccc;
   text-overflow: ellipsis;
+  line-height: normal;
 }
 
 .c3:hover,

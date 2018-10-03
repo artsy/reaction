@@ -1,32 +1,56 @@
 import { Message } from "@artsy/palette"
-import { mount, render } from "enzyme"
+import { render } from "enzyme"
 import React from "react"
-import { HeadProvider } from "react-head"
-import { Status_order } from "../../../../__generated__/Status_order.graphql"
+import { graphql } from "react-relay"
 import {
+  mockResolver,
   OrderWithShippingDetails,
   PickupOrder,
 } from "../../../../Apps/__test__/Fixtures/Order"
-import { StatusRoute } from "../Status"
+import { MockBoot, renderRelayTree, UntilCallback } from "../../../../DevTools"
+import { StatusFragmentContainer } from "../Status"
+
+jest.unmock("react-relay")
 
 describe("Status", () => {
-  const getWrapper = (order: Status_order, headTags = []) =>
-    mount(
-      <HeadProvider headTags={headTags}>
-        <StatusRoute order={order} />
-      </HeadProvider>
-    )
+  const getWrapper = (
+    order: any,
+    headTags: JSX.Element[] = [],
+    until: UntilCallback = null
+  ) => {
+    return renderRelayTree({
+      until,
+      Component: StatusFragmentContainer,
+      query: graphql`
+        query StatusQuery {
+          order(id: "42") {
+            ...Status_order
+          }
+        }
+      `,
+      mockResolvers: mockResolver(order),
+      wrapper: renderer => (
+        <MockBoot breakpoint="xs" headTags={headTags}>
+          {renderer}
+        </MockBoot>
+      ),
+    })
+  }
 
   it("should should have a title containing status", async () => {
-    const headTags = []
-    getWrapper(OrderWithShippingDetails, headTags)
-    // @ts-ignore
-    expect(render(headTags).text()).toBe("Order status | Artsy")
+    const headTags: JSX.Element[] = []
+    await getWrapper(
+      OrderWithShippingDetails,
+      headTags,
+      () => headTags.length > 0
+    )
+    expect(headTags.length).toEqual(1)
+    expect(render(headTags[0]).text()).toBe("Order status | Artsy")
   })
 
   describe("submitted", () => {
-    it("should say order submitted and have message box", () => {
-      const wrapper = getWrapper({
+    it("should say order submitted and have message box", async () => {
+      const wrapper = await getWrapper({
         ...OrderWithShippingDetails,
         state: "SUBMITTED",
       })
@@ -36,8 +60,8 @@ describe("Status", () => {
   })
 
   describe("approved", () => {
-    it("should say confirmed", () => {
-      const wrapper = getWrapper({
+    it("should say confirmed", async () => {
+      const wrapper = await getWrapper({
         ...OrderWithShippingDetails,
         state: "APPROVED",
       })
@@ -46,8 +70,8 @@ describe("Status", () => {
   })
 
   describe("fulfilled (ship)", () => {
-    it("should say order has shipped and have message box", () => {
-      const wrapper = getWrapper({
+    it("should say order has shipped and have message box", async () => {
+      const wrapper = await getWrapper({
         ...OrderWithShippingDetails,
         state: "FULFILLED",
       })
@@ -57,8 +81,8 @@ describe("Status", () => {
   })
 
   describe("fulfilled (pickup)", () => {
-    it("should say order has been picked up and NOT have message box", () => {
-      const wrapper = getWrapper({
+    it("should say order has been picked up and NOT have message box", async () => {
+      const wrapper = await getWrapper({
         ...PickupOrder,
         state: "FULFILLED",
       })
@@ -68,8 +92,8 @@ describe("Status", () => {
   })
 
   describe("canceled (ship)", () => {
-    it("should say that order was canceled", () => {
-      const wrapper = getWrapper({
+    it("should say that order was canceled", async () => {
+      const wrapper = await getWrapper({
         ...OrderWithShippingDetails,
         state: "CANCELED",
       })
@@ -79,8 +103,8 @@ describe("Status", () => {
   })
 
   describe("canceled (pickup)", () => {
-    it("should say that order was canceled", () => {
-      const wrapper = getWrapper({
+    it("should say that order was canceled", async () => {
+      const wrapper = await getWrapper({
         ...PickupOrder,
         state: "CANCELED",
       })

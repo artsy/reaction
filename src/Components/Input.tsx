@@ -221,10 +221,6 @@ const InputComponent = styled.input.attrs<{ showLabel: boolean }>({})`
   padding: 0 ${space(1)}px;
   line-height: initial;
   ${props => props.showLabel && "padding: 10px 10px 0 10px"};
-
-  &::placeholder {
-    color: ${Colors.grayMedium};
-  }
 `
 
 const InputContainer = styled.div.attrs<{

@@ -1,14 +1,14 @@
-import { ClientRouter } from "Artsy/Router/Components/ClientRouter"
+import { MockBoot } from "DevTools/MockBoot"
+import { MockRouter } from "DevTools/MockRouter"
 import { mount } from "enzyme"
 import React from "react"
-import { MockBoot } from "Utils/MockBoot"
 import { RouteTab, RouteTabs } from "../RouteTabs"
 
 describe("RouteTabs", () => {
   const getWrapper = () => {
     return mount(
       <MockBoot>
-        <ClientRouter
+        <MockRouter
           initialRoute="/cv"
           routes={[
             {
@@ -44,7 +44,7 @@ describe("RouteTabs", () => {
     const wrapper = getWrapper()
 
     await wrapper
-      .find("ClientRouter")
+      .find("MockRouter")
       .instance()
       .componentDidMount()
 

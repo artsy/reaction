@@ -19,7 +19,8 @@ describe("ArtistBio", () => {
     expect(wrapper.find("ReadMore").length).toBe(1)
   })
 
-  it("triggers callback when clicked", done => {
+  // TODO: Chris, this test needs finishing.
+  xit("triggers callback when clicked", done => {
     const wrapper = mount(
       <ArtistBio
         bio={bio}

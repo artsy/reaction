@@ -1,6 +1,6 @@
-import { createMockNetworkLayer } from "Artsy/Relay/createMockNetworkLayer"
 import { buildClientApp } from "Artsy/Router/buildClientApp"
 import { ContextProps } from "Artsy/SystemContext"
+import { createMockNetworkLayer } from "DevTools/createMockNetworkLayer"
 import { HistoryOptions } from "farce"
 import { RouteConfig } from "found"
 import { IMocks } from "graphql-tools/dist/Interfaces"
@@ -18,7 +18,7 @@ interface Props {
   context?: ContextProps
 }
 
-export class ClientRouter extends React.Component<Props> {
+export class MockRouter extends React.Component<Props> {
   state = {
     ClientApp: null,
   }
@@ -59,7 +59,7 @@ export class ClientRouter extends React.Component<Props> {
         ClientApp,
       })
     } catch (error) {
-      console.error("ClientRouter", error)
+      console.error("MockRouter", error)
     }
   }
 
