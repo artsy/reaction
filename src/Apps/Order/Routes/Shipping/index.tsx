@@ -137,16 +137,29 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
 
               if (orderOrError.error) {
                 const errorCode = orderOrError.error.code
+                const errorData = get(
+                  orderOrError,
+                  o => JSON.parse(o.error.data),
+                  {}
+                )
                 if (
-                  errorCode &&
-                  (errorCode === "missing_region" ||
-                    errorCode === "missing_country" ||
-                    errorCode === "missing_postal_code")
+                  errorCode === "missing_region" ||
+                  errorCode === "missing_country" ||
+                  errorCode === "missing_postal_code"
                 ) {
                   this.onMutationError(
                     orderOrError.error,
                     "Invalid address",
                     "There was an error processing your address. Please review and try again."
+                  )
+                } else if (
+                  errorCode === "unsupported_shipping_location" &&
+                  errorData.failure_code === "domestic_shipping_only"
+                ) {
+                  this.onMutationError(
+                    orderOrError.error,
+                    "Can't ship to that address",
+                    "This work can only be shipped to the continental United States."
                   )
                 } else {
                   this.onMutationError(orderOrError.error)
