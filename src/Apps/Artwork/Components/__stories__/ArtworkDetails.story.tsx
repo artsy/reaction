@@ -12,10 +12,7 @@ storiesOf("Styleguide/Artwork", module)
     return (
       <React.Fragment>
         <Section title="Artwork with every additional details available">
-          <ArtworkDetails
-            artwork={AllAdditionalDetailsPresent as any}
-            user={null}
-          />
+          <ArtworkDetails artwork={AllAdditionalDetailsPresent as any} />
         </Section>
         <Section title="ArtworkDetailsQueryRenderer for andy-warhol-s-and-h-green-stamps-feldman-and-schellman-11-dot-9">
           <ArtworkDetailsQueryRenderer artworkID="andy-warhol-s-and-h-green-stamps-feldman-and-schellman-11-dot-9" />
