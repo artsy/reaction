@@ -32,9 +32,7 @@ fragment ArtistInfo_artist on Artist {
   name
   href
   image {
-    cropped(width: 100, height: 100) {
-      url
-    }
+    url(version: "square")
   }
   formatted_nationality_and_birthday
   counts {
@@ -155,26 +153,17 @@ v3 = {
   "args": null,
   "storageKey": null
 },
-v4 = [
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "url",
-    "args": null,
-    "storageKey": null
-  }
-],
-v5 = {
+v4 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "name",
   "args": null,
   "storageKey": null
 },
-v6 = [
-  v5
+v5 = [
+  v4
 ],
-v7 = [
+v6 = [
   {
     "kind": "Literal",
     "name": "format",
@@ -187,7 +176,7 @@ return {
   "operationKind": "query",
   "name": "ArtistInfoQuery",
   "id": null,
-  "text": "query ArtistInfoQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...ArtistInfo_artist\n    __id\n  }\n}\n\nfragment ArtistInfo_artist on Artist {\n  id\n  name\n  href\n  image {\n    cropped(width: 100, height: 100) {\n      url\n    }\n  }\n  formatted_nationality_and_birthday\n  counts {\n    partner_shows\n  }\n  exhibition_highlights(size: 3) {\n    ...SelectedExhibitions_exhibitions\n    __id\n  }\n  ...ArtistBio_bio\n  ...MarketInsightsArtistPage_artist\n  ...FollowArtistButton_artist\n  __id\n}\n\nfragment SelectedExhibitions_exhibitions on Show {\n  partner {\n    __typename\n    ... on ExternalPartner {\n      name\n      __id\n    }\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n  }\n  name\n  start_at(format: \"YYYY\")\n  cover_image {\n    cropped(width: 800, height: 600) {\n      url\n    }\n  }\n  city\n  __id\n}\n\nfragment ArtistBio_bio on Artist {\n  biography_blurb(format: HTML, partner_bio: true) {\n    text\n    credit\n  }\n  __id\n}\n\nfragment MarketInsightsArtistPage_artist on Artist {\n  _id\n  collections\n  highlights {\n    partners(first: 10, display_on_partner_profile: true, represented_by: true, partner_category: [\"blue-chip\", \"top-established\", \"top-emerging\"]) {\n      edges {\n        node {\n          categories {\n            id\n          }\n          __id\n        }\n        __id\n      }\n    }\n  }\n  auctionResults(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {\n    edges {\n      node {\n        price_realized {\n          display(format: \"0a\")\n        }\n        organization\n        sale_date(format: \"YYYY\")\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n",
+  "text": "query ArtistInfoQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...ArtistInfo_artist\n    __id\n  }\n}\n\nfragment ArtistInfo_artist on Artist {\n  id\n  name\n  href\n  image {\n    url(version: \"square\")\n  }\n  formatted_nationality_and_birthday\n  counts {\n    partner_shows\n  }\n  exhibition_highlights(size: 3) {\n    ...SelectedExhibitions_exhibitions\n    __id\n  }\n  ...ArtistBio_bio\n  ...MarketInsightsArtistPage_artist\n  ...FollowArtistButton_artist\n  __id\n}\n\nfragment SelectedExhibitions_exhibitions on Show {\n  partner {\n    __typename\n    ... on ExternalPartner {\n      name\n      __id\n    }\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n  }\n  name\n  start_at(format: \"YYYY\")\n  cover_image {\n    cropped(width: 800, height: 600) {\n      url\n    }\n  }\n  city\n  __id\n}\n\nfragment ArtistBio_bio on Artist {\n  biography_blurb(format: HTML, partner_bio: true) {\n    text\n    credit\n  }\n  __id\n}\n\nfragment MarketInsightsArtistPage_artist on Artist {\n  _id\n  collections\n  highlights {\n    partners(first: 10, display_on_partner_profile: true, represented_by: true, partner_category: [\"blue-chip\", \"top-established\", \"top-emerging\"]) {\n      edges {\n        node {\n          categories {\n            id\n          }\n          __id\n        }\n        __id\n      }\n    }\n  }\n  auctionResults(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {\n    edges {\n      node {\n        price_realized {\n          display(format: \"0a\")\n        }\n        organization\n        sale_date(format: \"YYYY\")\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -285,27 +274,18 @@ return {
             "plural": false,
             "selections": [
               {
-                "kind": "LinkedField",
+                "kind": "ScalarField",
                 "alias": null,
-                "name": "cropped",
-                "storageKey": "cropped(height:100,width:100)",
+                "name": "url",
                 "args": [
                   {
                     "kind": "Literal",
-                    "name": "height",
-                    "value": 100,
-                    "type": "Int!"
-                  },
-                  {
-                    "kind": "Literal",
-                    "name": "width",
-                    "value": 100,
-                    "type": "Int!"
+                    "name": "version",
+                    "value": "square",
+                    "type": "[String]"
                   }
                 ],
-                "concreteType": "CroppedImageUrl",
-                "plural": false,
-                "selections": v4
+                "storageKey": "url(version:\"square\")"
               }
             ]
           },
@@ -377,21 +357,21 @@ return {
                   {
                     "kind": "InlineFragment",
                     "type": "Partner",
-                    "selections": v6
+                    "selections": v5
                   },
                   {
                     "kind": "InlineFragment",
                     "type": "ExternalPartner",
-                    "selections": v6
+                    "selections": v5
                   }
                 ]
               },
-              v5,
+              v4,
               {
                 "kind": "ScalarField",
                 "alias": null,
                 "name": "start_at",
-                "args": v7,
+                "args": v6,
                 "storageKey": "start_at(format:\"YYYY\")"
               },
               {
@@ -424,7 +404,15 @@ return {
                     ],
                     "concreteType": "CroppedImageUrl",
                     "plural": false,
-                    "selections": v4
+                    "selections": [
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "url",
+                        "args": null,
+                        "storageKey": null
+                      }
+                    ]
                   }
                 ]
               },
@@ -438,7 +426,7 @@ return {
               v2
             ]
           },
-          v5,
+          v4,
           v2,
           {
             "kind": "ScalarField",
@@ -623,7 +611,7 @@ return {
                         "kind": "ScalarField",
                         "alias": null,
                         "name": "sale_date",
-                        "args": v7,
+                        "args": v6,
                         "storageKey": "sale_date(format:\"YYYY\")"
                       },
                       v2

@@ -12,9 +12,7 @@ export type ArtistInfo_artist = {
     readonly name: string | null;
     readonly href: string | null;
     readonly image: ({
-        readonly cropped: ({
-            readonly url: string | null;
-        }) | null;
+        readonly url: string | null;
     }) | null;
     readonly formatted_nationality_and_birthday: string | null;
     readonly counts: ({
@@ -86,35 +84,18 @@ return {
       "plural": false,
       "selections": [
         {
-          "kind": "LinkedField",
+          "kind": "ScalarField",
           "alias": null,
-          "name": "cropped",
-          "storageKey": "cropped(height:100,width:100)",
+          "name": "url",
           "args": [
             {
               "kind": "Literal",
-              "name": "height",
-              "value": 100,
-              "type": "Int!"
-            },
-            {
-              "kind": "Literal",
-              "name": "width",
-              "value": 100,
-              "type": "Int!"
+              "name": "version",
+              "value": "square",
+              "type": "[String]"
             }
           ],
-          "concreteType": "CroppedImageUrl",
-          "plural": false,
-          "selections": [
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "url",
-              "args": null,
-              "storageKey": null
-            }
-          ]
+          "storageKey": "url(version:\"square\")"
         }
       ]
     },
@@ -175,5 +156,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '4ed973cde14cb372eb2a89f8706f0392';
+(node as any).hash = 'c545f2e8120f6244fe025586de8a9241';
 export default node;

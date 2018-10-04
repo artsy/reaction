@@ -23,7 +23,7 @@ interface ArtistInfoProps {
 }
 
 export const ArtistInfo: SFC<ArtistInfoProps> = props => {
-  const imageUrl = get(props, p => p.artist.image.cropped.url)
+  const imageUrl = get(props, p => p.artist.image.url)
 
   return (
     <>
@@ -97,9 +97,7 @@ export const ArtistInfoFragmentContainer = createFragmentContainer(
       name
       href
       image {
-        cropped(width: 100, height: 100) {
-          url
-        }
+        url(version: "square")
       }
       formatted_nationality_and_birthday
       counts {
