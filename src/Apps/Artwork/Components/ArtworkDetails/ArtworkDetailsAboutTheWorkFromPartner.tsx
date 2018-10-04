@@ -137,7 +137,7 @@ export const ArtworkDetailsAboutTheWorkFromPartnerFragmentContainer = createFrag
           ...FollowProfileButton_profile
           id
           icon {
-            url
+            url(version: "square140")
           }
         }
       }
