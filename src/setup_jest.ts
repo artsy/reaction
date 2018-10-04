@@ -17,22 +17,12 @@ beforeEach(() => expect.hasAssertions())
 
 Enzyme.configure({ adapter: new Adapter() })
 
+import "jsdom"
 if (typeof window !== "undefined") {
-  window.matchMedia =
-    window.matchMedia ||
-    (() => {
-      return {
-        media: "",
-        matches: false,
-        addListener: () => null,
-        removeListener: () => null,
-      }
-    })
-
+  window.open = jest.fn()
+  window.matchMedia = undefined
   HTMLMediaElement.prototype.pause = jest.fn()
   HTMLMediaElement.prototype.play = jest.fn()
-
-  window.open = jest.fn()
 }
 
 /**

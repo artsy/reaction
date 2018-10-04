@@ -1,4 +1,6 @@
 import * as React from "react"
+import { Responsive } from "Utils/Responsive"
+import { MockBoot } from "../MockBoot"
 import { renderUntil } from "../renderUntil"
 
 class Component extends React.Component {
@@ -7,13 +9,24 @@ class Component extends React.Component {
   }
 
   componentDidMount() {
-    setImmediate(() => {
-      this.setState({ data: "ohai" })
-    })
+    this.setState(
+      {
+        data: "Loading",
+      },
+      () =>
+        setImmediate(() => {
+          this.setState({ data: "ohai" })
+        })
+    )
   }
 
   render() {
-    return <div>{this.state.data}</div>
+    return (
+      <div>
+        {this.state.data}
+        {this.state.data !== "Loading" && this.props.children}
+      </div>
+    )
   }
 }
 
@@ -34,6 +47,20 @@ describe("renderUntil", () => {
       <Component />
     )
     expect(tree.find("div").text()).toEqual("ohai")
+  })
+
+  it("plays well with the Responsive component", async () => {
+    const tree = await renderUntil(
+      wrapper => wrapper.find(Component).text() !== "Loading",
+      <MockBoot breakpoint="xs">
+        <Component>
+          <Responsive>
+            {({ xs }) => xs && <span>Such response</span>}
+          </Responsive>
+        </Component>
+      </MockBoot>
+    )
+    expect(tree.find("span").text()).toEqual("Such response")
   })
 
   // TODO: Whatever way I try to test this, it just doesn’t work as expected.
