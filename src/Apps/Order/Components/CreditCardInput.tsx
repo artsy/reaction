@@ -15,6 +15,8 @@ export const StyledCardElement = styled(CardElement)`
 // Re-uses old input border behavior
 const StyledBorderBox = styled(BorderBox).attrs<InputBorderProps>({})`
   ${inputBorder};
+  padding: 9px 10px;
+  height: 40px;
 `
 
 interface CreditCardInputProps {
