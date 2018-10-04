@@ -1,50 +1,33 @@
 import React from "react"
-import styled from "styled-components"
+import { animated, Spring } from "react-spring"
 
 export interface CollapseProps {
   open: boolean
 }
 
-export interface CollapseState {
-  computedHeight: string
-}
-
-export class Collapse extends React.Component<CollapseProps, CollapseState> {
+export class Collapse extends React.Component<CollapseProps> {
   state = {
-    computedHeight: null,
-  }
-
-  private element: HTMLElement
-
-  handleRef = element => {
-    this.element = element
+    mounted: false,
   }
 
   componentDidMount() {
-    if (this.state.computedHeight === null) {
-      const prevHeight = this.element.style.height
-      this.element.style.height = "auto"
-      const computedHeight = getComputedStyle(this.element).height
-      this.element.style.height = prevHeight
-
-      this.setState({ computedHeight })
-    }
+    this.setState({ mounted: true })
   }
 
   render() {
-    const height = this.props.open ? this.state.computedHeight || "auto" : "0"
-
     return (
-      <Collapseable
-        innerRef={this.handleRef}
-        {...this.props}
-        style={{ height }}
-      />
+      <Spring
+        native
+        immediate={!this.state.mounted}
+        from={{ height: 0 }}
+        to={{ height: this.props.open ? "auto" : 0 }}
+      >
+        {props => (
+          <animated.div style={{ ...props, overflow: "hidden" }}>
+            {this.props.children}
+          </animated.div>
+        )}
+      </Spring>
     )
   }
 }
-
-const Collapseable = styled.div`
-  overflow: hidden;
-  transition: height 0.25s ease-in-out;
-`
