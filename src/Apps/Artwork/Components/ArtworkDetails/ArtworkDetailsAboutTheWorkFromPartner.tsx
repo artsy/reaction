@@ -62,7 +62,7 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
                         FollowButton={
                           partner.profile && (
                             <FollowProfileButton
-                              profile={partner.profile as any}
+                              profile={partner.profile}
                               user={user}
                               onOpenAuthModal={() => {
                                 mediator &&
@@ -134,9 +134,8 @@ export const ArtworkDetailsAboutTheWorkFromPartnerFragmentContainer = createFrag
           city
         }
         profile {
-          __id
+          ...FollowProfileButton_profile
           id
-          is_followed
           icon {
             url
           }
