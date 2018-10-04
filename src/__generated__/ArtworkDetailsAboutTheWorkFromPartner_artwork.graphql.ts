@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+import { FollowProfileButton_profile$ref } from "./FollowProfileButton_profile.graphql";
 declare const _ArtworkDetailsAboutTheWorkFromPartner_artwork$ref: unique symbol;
 export type ArtworkDetailsAboutTheWorkFromPartner_artwork$ref = typeof _ArtworkDetailsAboutTheWorkFromPartner_artwork$ref;
 export type ArtworkDetailsAboutTheWorkFromPartner_artwork = {
@@ -12,12 +13,11 @@ export type ArtworkDetailsAboutTheWorkFromPartner_artwork = {
             readonly city: string | null;
         }) | null> | null;
         readonly profile: ({
-            readonly __id: string;
             readonly id: string;
-            readonly is_followed: boolean | null;
             readonly icon: ({
                 readonly url: string | null;
             }) | null;
+            readonly " $fragmentRefs": FollowProfileButton_profile$ref;
         }) | null;
     }) | null;
     readonly " $refType": ArtworkDetailsAboutTheWorkFromPartner_artwork$ref;
@@ -98,18 +98,15 @@ return {
           "concreteType": "Profile",
           "plural": false,
           "selections": [
-            v0,
             {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "id",
-              "args": null,
-              "storageKey": null
+              "kind": "FragmentSpread",
+              "name": "FollowProfileButton_profile",
+              "args": null
             },
             {
               "kind": "ScalarField",
               "alias": null,
-              "name": "is_followed",
+              "name": "id",
               "args": null,
               "storageKey": null
             },
@@ -126,11 +123,19 @@ return {
                   "kind": "ScalarField",
                   "alias": null,
                   "name": "url",
-                  "args": null,
-                  "storageKey": null
+                  "args": [
+                    {
+                      "kind": "Literal",
+                      "name": "version",
+                      "value": "square140",
+                      "type": "[String]"
+                    }
+                  ],
+                  "storageKey": "url(version:\"square140\")"
                 }
               ]
-            }
+            },
+            v0
           ]
         },
         v0
@@ -140,5 +145,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'de95d415b6d76e1ec37bacc1173fb56f';
+(node as any).hash = 'cf09631bef749077431e4acd764dc8d1';
 export default node;

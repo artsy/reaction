@@ -675,6 +675,7 @@ export const AllAdditionalDetailsPresent = {
   articles: {},
   partner: {
     name: "Salon 94",
+    initials: "S9",
     locations: [
       { city: "New York" },
       { city: "Kharkov" },
