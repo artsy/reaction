@@ -20,7 +20,7 @@ export const confirmRouteExit = (
   if (match) {
     const matchedRoutes: RouteConfig[] | null = router.matcher.getRoutes(match)
     if (matchedRoutes && matchedRoutes[0].Component === OrderApp) {
-      return true
+      return undefined
     }
   }
 

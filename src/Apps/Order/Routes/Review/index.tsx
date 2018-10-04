@@ -54,6 +54,11 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
               mutation ReviewSubmitOrderMutation($input: SubmitOrderInput!) {
                 ecommerceSubmitOrder(input: $input) {
                   orderOrError {
+                    ... on OrderWithMutationSuccess {
+                      order {
+                        state
+                      }
+                    }
                     ... on OrderWithMutationFailure {
                       error {
                         type
