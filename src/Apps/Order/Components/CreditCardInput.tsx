@@ -1,4 +1,4 @@
-import { BorderBox, color, Sans } from "@artsy/palette"
+import { BorderBox, color, Sans, themeProps } from "@artsy/palette"
 import { fontFamily } from "@artsy/palette/dist/platform/fonts"
 import {
   border as inputBorder,
@@ -63,6 +63,7 @@ export class CreditCardInput extends React.Component<
                   color: color("black30"),
                 },
                 fontFamily: fontFamily.serif.regular as string,
+                fontSize: `${themeProps.typeSizes.serif["3t"].fontSize}px`,
                 fontSmoothing: "antialiased",
                 lineHeight: "20px",
               },
