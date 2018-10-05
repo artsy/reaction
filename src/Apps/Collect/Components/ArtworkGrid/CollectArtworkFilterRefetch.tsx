@@ -1,9 +1,9 @@
 import { CollectArtworkFilterRefetch_viewer } from "__generated__/CollectArtworkFilterRefetch_viewer.graphql"
+import { isEqual } from "lodash"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { Responsive } from "Utils/Responsive"
 import { CollectArtworkGridRefreshContainer as ArtworkFilter } from "./CollectArtworkGrid"
-
 interface CollectArtworkFilterRefetchProps {
   filters: any
   viewer: CollectArtworkFilterRefetch_viewer
@@ -21,7 +21,7 @@ export class CollectArtworkFilterRefetch extends Component<
     Object.keys(this.props.filters).forEach(key => {
       if (
         key !== "page" &&
-        this.props.filters[key] !== prevProps.filters[key]
+        !isEqual(this.props.filters[key], prevProps.filters[key])
       ) {
         this.loadFilter()
       }
