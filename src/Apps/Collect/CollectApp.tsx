@@ -4,12 +4,12 @@ import { CollectApp_viewer } from "__generated__/CollectApp_viewer.graphql"
 import React, { Component, Fragment } from "react"
 import { LazyLoadComponent } from "react-lazy-load-image-component"
 import { createFragmentContainer, graphql } from "react-relay"
-import { ArtworkGridFragmentContainer as ArtworkGrid } from "./Components/ArtworkGrid"
-
 import {
   Footer,
   RecentlyViewedQueryRenderer as RecentlyViewed,
 } from "Styleguide/Components"
+import { ArtworkGridFragmentContainer as ArtworkGrid } from "./Components/ArtworkGrid"
+import { CollectionHeader } from "./Components/Header"
 
 export interface CollectAppProps {
   name: string
@@ -21,9 +21,13 @@ export class CollectApp extends Component<CollectAppProps> {
     return (
       <Fragment>
         <Flex flexDirection="column">
-          <Box mt={3} mb={4}>
-            <Serif size="8">Collect Art &amp; Design Online</Serif>
-          </Box>
+          {true ? (
+            <CollectionHeader />
+          ) : (
+            <Box mt={3} mb={4}>
+              <Serif size="8">Collect Art &amp; Design Online</Serif>
+            </Box>
+          )}
           <Box>
             <ArtworkGrid viewer={this.props.viewer} />
           </Box>
