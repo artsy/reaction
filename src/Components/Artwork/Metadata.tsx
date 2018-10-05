@@ -30,7 +30,11 @@ export class MetadataContainer extends React.Component<MetadataProps> {
     return (
       <ContextConsumer>
         {({ user }) => {
-          const enableBuyNowFlow = sd.ENABLE_NEW_BUY_NOW_FLOW
+          const hasLabFeature =
+            user &&
+            user.lab_features &&
+            user.lab_features.includes("New Buy Now Flow")
+          const enableBuyNowFlow = sd.ENABLE_NEW_BUY_NOW_FLOW || hasLabFeature
 
           const detailsContent = (
             <div className={className}>

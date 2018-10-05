@@ -35,7 +35,11 @@ export class WorksForYou extends Component<Props> {
     return (
       <ContextConsumer>
         {({ relayEnvironment, user }) => {
-          const enableBuyNowFlow = sd.ENABLE_NEW_BUY_NOW_FLOW
+          const hasLabFeature =
+            user &&
+            user.lab_features &&
+            user.lab_features.includes("New Buy Now Flow")
+          const enableBuyNowFlow = sd.ENABLE_NEW_BUY_NOW_FLOW || hasLabFeature
 
           return (
             <>
