@@ -11,6 +11,9 @@ export type ReviewSubmitOrderMutationVariables = {
 export type ReviewSubmitOrderMutationResponse = {
     readonly ecommerceSubmitOrder: ({
         readonly orderOrError: ({
+            readonly order?: ({
+                readonly state: string | null;
+            }) | null;
             readonly error?: ({
                 readonly type: string;
                 readonly code: string;
@@ -33,6 +36,12 @@ mutation ReviewSubmitOrderMutation(
   ecommerceSubmitOrder(input: $input) {
     orderOrError {
       __typename
+      ... on OrderWithMutationSuccess {
+        order {
+          state
+          __id: id
+        }
+      }
       ... on OrderWithMutationFailure {
         error {
           type
@@ -99,13 +108,44 @@ v2 = {
       ]
     }
   ]
+},
+v3 = {
+  "kind": "InlineFragment",
+  "type": "OrderWithMutationSuccess",
+  "selections": [
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "order",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Order",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "state",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": "__id",
+          "name": "id",
+          "args": null,
+          "storageKey": null
+        }
+      ]
+    }
+  ]
 };
 return {
   "kind": "Request",
   "operationKind": "mutation",
   "name": "ReviewSubmitOrderMutation",
   "id": null,
-  "text": "mutation ReviewSubmitOrderMutation(\n  $input: SubmitOrderInput!\n) {\n  ecommerceSubmitOrder(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation ReviewSubmitOrderMutation(\n  $input: SubmitOrderInput!\n) {\n  ecommerceSubmitOrder(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        order {\n          state\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -132,7 +172,8 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v2
+              v2,
+              v3
             ]
           }
         ]
@@ -169,7 +210,8 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v2
+              v2,
+              v3
             ]
           }
         ]
@@ -178,5 +220,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'ada451c41a0adfffd072a19ac6269ba8';
+(node as any).hash = 'd8b9bdee6af75e80c6c0014bf9882b41';
 export default node;

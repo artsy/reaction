@@ -338,7 +338,16 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
               orderOrError {
                 ... on OrderWithMutationSuccess {
                   order {
-                    id
+                    creditCard {
+                      id
+                      name
+                      street1
+                      street2
+                      city
+                      state
+                      country
+                      postal_code
+                    }
                   }
                 }
                 ... on OrderWithMutationFailure {
