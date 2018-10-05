@@ -4,6 +4,7 @@ import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 import { FullArtworkGrid, Tab, Tabs } from "Styleguide/Components"
 import { Col, Row } from "Styleguide/Elements/Grid"
+import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { ArtistInfoQueryRenderer as ArtistInfo } from "./Components/ArtistInfo"
 import { ArtworkDetailsQueryRenderer as ArtworkDetails } from "./Components/ArtworkDetails"
 import { ArtworkSidebarFragmentContainer as ArtworkSidebar } from "./Components/ArtworkSidebar"
@@ -28,7 +29,7 @@ export const ArtworkApp: React.SFC<Props> = props => {
   ]
 
   return (
-    <React.Fragment>
+    <HorizontalPadding>
       <Row>
         <Col sm={8}>
           <Banner
@@ -156,7 +157,7 @@ export const ArtworkApp: React.SFC<Props> = props => {
           </Footer>
         </Col>
       </Row>
-    </React.Fragment>
+    </HorizontalPadding>
   )
 }
 
