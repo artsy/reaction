@@ -1,3 +1,7 @@
+/**
+ *  FIXME: Replace with new Responsive2 component
+ */
+
 import { ArtworkFilter_artist } from "__generated__/ArtworkFilter_artist.graphql"
 import { FilterState } from "Apps/Artist/Routes/Overview/state"
 import { ContextConsumer } from "Artsy/SystemContext"
@@ -351,6 +355,9 @@ class Filter extends Component<Props> {
                                   xs,
                                 })
                               ) : (
+                                /**
+                                 * NOTE TO SELF: This kind of conditional rendering is useful, not too thrashy
+                                 */
                                 <ArtworkFilter
                                   artist={this.props.artist}
                                   artistID={this.props.artist.id}

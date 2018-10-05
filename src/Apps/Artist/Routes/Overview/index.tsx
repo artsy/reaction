@@ -14,6 +14,12 @@ import {
   SelectedExhibitionFragmentContainer as SelectedExhibitions,
 } from "Styleguide/Components"
 import { Col, Row } from "Styleguide/Elements/Grid"
+/**
+ * NOTE: Responsive2: No real dom swaps using existing Responsive, just
+ * conditionally checks to see if xs and then evaluates a string length to
+ * show / hide a single component
+ */
+
 import { Responsive } from "Utils/Responsive"
 import { CurrentEventFragmentContainer as CurrentEvent } from "./Components/CurrentEvent"
 

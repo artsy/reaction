@@ -1,3 +1,7 @@
+/**
+ * NOTE: Responsive2: No real dom swaps using existing Responsive, just changing
+ * width % based on breakpoint
+ */
 import { Box, Flex } from "@artsy/palette"
 import { RelatedArtistsList_artist } from "__generated__/RelatedArtistsList_artist.graphql"
 import { ContextConsumer } from "Artsy/Router"
