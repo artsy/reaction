@@ -166,7 +166,12 @@ export class Details extends React.Component<Props, null> {
     return (
       <ContextConsumer>
         {({ user }) => {
-          const enableBuyNowFlow = sd.ENABLE_NEW_BUY_NOW_FLOW
+          const hasLabFeature =
+            user &&
+            user.lab_features &&
+            user.lab_features.includes("New Buy Now Flow")
+          const enableBuyNowFlow = sd.ENABLE_NEW_BUY_NOW_FLOW || hasLabFeature
+
           return (
             <>
               {enableBuyNowFlow && this.saleInfoLine()}

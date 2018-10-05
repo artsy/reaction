@@ -140,7 +140,12 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
       userSpread = { user }
     }
 
-    const enableBuyNowFlow = sd.ENABLE_NEW_BUY_NOW_FLOW
+    const hasLabFeature =
+      user &&
+      user.lab_features &&
+      user.lab_features.includes("New Buy Now Flow")
+    const enableBuyNowFlow = sd.ENABLE_NEW_BUY_NOW_FLOW || hasLabFeature
+
     return (
       <Responsive>
         {({ hover, ...breakpoints }) => {

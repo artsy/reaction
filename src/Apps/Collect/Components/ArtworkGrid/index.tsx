@@ -166,7 +166,11 @@ class Filter extends Component<Props, State> {
   }
 
   renderFilters({ user, filters, mediator, hideTopBorder }) {
-    const enableBuyNowFlow = sd.ENABLE_NEW_BUY_NOW_FLOW
+    const hasLabFeature =
+      user &&
+      user.lab_features &&
+      user.lab_features.includes("New Buy Now Flow")
+    const enableBuyNowFlow = sd.ENABLE_NEW_BUY_NOW_FLOW || hasLabFeature
 
     const { filter_artworks } = this.props.viewer
     const { aggregations } = filter_artworks
