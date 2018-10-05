@@ -1,5 +1,5 @@
 import React from "react"
-import { Responsive } from "Utils/Responsive"
+import { Responsive2 } from "Utils/Responsive"
 
 import {
   BorderBox,
@@ -20,12 +20,20 @@ export interface AuctionCardProps {
 export class AuctionCard extends React.Component<AuctionCardProps> {
   render() {
     return (
-      <Responsive>
-        {({ xs }) => {
-          if (xs) return <SmallAuctionCard {...this.props} />
-          else return <LargeAuctionCard {...this.props} />
+      <Responsive2>
+        {breakpoints => {
+          return (
+            <>
+              <breakpoints.xs>
+                <SmallAuctionCard {...this.props} />
+              </breakpoints.xs>
+              <breakpoints.else>
+                <LargeAuctionCard {...this.props} />
+              </breakpoints.else>
+            </>
+          )
         }}
-      </Responsive>
+      </Responsive2>
     )
   }
 }

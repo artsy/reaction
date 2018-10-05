@@ -89,6 +89,12 @@ class CVItem extends Component<CVItemProps, CVItemState> {
     )
 
     return (
+      /**
+       * TODO:  replace with new responsive component
+       *
+       * Sometimes conditional rendering utilities are helpful, though the below
+       * would most likely benefit from a refactor since the code is a bit crazy
+       */
       <Responsive>
         {({ xs, sm, md }) => {
           // Element spacing - correction for lineheight
