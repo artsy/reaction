@@ -56,7 +56,7 @@ export const ArtworkApp: React.SFC<Props> = props => {
       </Row>
       <Row>
         <Col sm={8}>
-          <ArtistInfo artistID="pablo-picasso" />
+          <ArtistInfo artistID={props.artwork.artist.id} />
         </Col>
       </Row>
       <Row mb={6}>
@@ -165,6 +165,9 @@ export const ArtworkAppFragmentContainer = createFragmentContainer(
   graphql`
     fragment ArtworkApp_artwork on Artwork {
       id
+      artist {
+        id
+      }
       ...ArtworkSidebar_artwork
       ...ArtworkDetails_artwork
     }
