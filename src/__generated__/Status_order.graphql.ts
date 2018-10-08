@@ -191,8 +191,15 @@ return {
                               "kind": "ScalarField",
                               "alias": null,
                               "name": "estimatedDelivery",
-                              "args": null,
-                              "storageKey": null
+                              "args": [
+                                {
+                                  "kind": "Literal",
+                                  "name": "format",
+                                  "value": "MMM Do, YYYY",
+                                  "type": "String"
+                                }
+                              ],
+                              "storageKey": "estimatedDelivery(format:\"MMM Do, YYYY\")"
                             },
                             v2
                           ]
@@ -236,5 +243,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'f20368375c20cf02211e7b8e824e3cf1';
+(node as any).hash = '6bb6f2de1184dbfa8b39ddd0f68d4cdf';
 export default node;
