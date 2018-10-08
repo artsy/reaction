@@ -4,20 +4,42 @@ import styled from "styled-components"
 import { ReadMore } from "Styleguide/Components/ReadMore"
 import { Col, Grid, Row } from "Styleguide/Elements/Grid"
 
-export class CollectionHeader extends Component {
+interface Props {
+  collection: {
+    id: string
+    title: string
+    image: string
+    description?: string
+    medium?: string
+    major_periods?: string[]
+    gene_ids?: string[]
+    artist_ids?: string[]
+  }
+}
+
+export class CollectionHeader extends Component<Props> {
   render() {
     return (
       <>
         <Flex flexDirection="column">
           <Box>
-            <Background p={2} my={3}>
-              <Sans size="3" color="white100">
-                Collecting category
-              </Sans>
+            <Background
+              p={2}
+              my={3}
+              headerImageUrl={this.props.collection.image}
+            >
+              <SubtitlesContainer>
+                <Sans size="3" color="white100">
+                  Collecting category
+                </Sans>
+                <Sans size="3" color="white100" ml="auto">
+                  <a href="#">View all collections</a>
+                </Sans>
+              </SubtitlesContainer>
               <Spacer mt={1} />
-              <Serif size="10" color="white100">
-                Minimalist Prints
-              </Serif>
+              <Title size="10" color="white100">
+                {this.props.collection.title}
+              </Title>
             </Background>
             <DescriptionContainer mb={5}>
               <Grid fluid>
@@ -27,13 +49,14 @@ export class CollectionHeader extends Component {
                       <ReadMore
                         onReadMoreClicked={() => false}
                         maxChars={320}
-                        content={TEXT}
+                        content={this.props.collection.description}
                       />
                     </Serif>
                   </Col>
                 </Row>
               </Grid>
             </DescriptionContainer>
+            <Spacer mb={1} />
           </Box>
         </Flex>
         <Spacer mb={2} />
@@ -42,13 +65,18 @@ export class CollectionHeader extends Component {
   }
 }
 
-const Background = styled(Box)`
+const Background = styled(Box).attrs<{ headerImageUrl: string }>({})`
   background: ${color("black30")};
   height: 240px;
+  background-image: url(${props => props.headerImageUrl});
 `
 
 const DescriptionContainer = styled(Flex)``
 
-const TEXT = `
-Obsessed with celebrity, consumer culture, and mechanical (re)production, Pop artist Andy Warhol created some of the most iconic images of the 20th century. As famous for his quips as for his art—he variously mused that “art is what you can get away with” and “everyone will be famous for 15 minutes”
+const SubtitlesContainer = styled(Box)`
+  display: flex;
+`
+
+const Title = styled(Serif)`
+  text-transform: capitalize;
 `
