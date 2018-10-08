@@ -12,6 +12,7 @@ import { space, SpaceProps } from "styled-system"
 
 interface PriceRangeProps extends SliderProps {
   currency?: string
+  disabled?: boolean
 }
 
 interface PriceRangeState {
@@ -25,6 +26,7 @@ export class PriceRange extends React.Component<
 > {
   static defaultProps = {
     currency: "USD",
+    disabled: false,
   }
 
   state = {
@@ -76,6 +78,7 @@ export class PriceRange extends React.Component<
         <Flex flexDirection="column" alignItems="left" mt={-1} mb={1}>
           <SliderContainer>
             <Slider
+              disabled={this.props.disabled}
               my={1}
               mx={1}
               {...this.props}
