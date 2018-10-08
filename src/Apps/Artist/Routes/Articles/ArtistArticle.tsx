@@ -1,6 +1,6 @@
 import React, { SFC } from "react"
 import { Col, Row } from "Styleguide/Elements/Grid"
-import { Responsive } from "Utils/Responsive"
+import { Responsive2 } from "Utils/Responsive"
 
 import {
   Box,
@@ -23,12 +23,20 @@ interface ArticleItemProps {
 
 export const ArticleItem: SFC<ArticleItemProps> = props => {
   return (
-    <Responsive>
-      {({ xs }) => {
-        if (xs) return <SmallArticleItem {...props} />
-        else return <LargeArticleItem {...props} />
+    <Responsive2>
+      {breakpoints => {
+        return (
+          <>
+            <breakpoints.xs>
+              <SmallArticleItem {...props} />
+            </breakpoints.xs>
+            <breakpoints.else>
+              <LargeArticleItem {...props} />
+            </breakpoints.else>
+          </>
+        )
       }}
-    </Responsive>
+    </Responsive2>
   )
 }
 

@@ -9,7 +9,7 @@ import { FacebookIcon } from "Styleguide/Elements/icons/FacebookIcon"
 import { InstagramIcon } from "Styleguide/Elements/icons/InstagramIcon"
 import { TwitterIcon } from "Styleguide/Elements/icons/TwitterIcon"
 import { Mark } from "Styleguide/Elements/Logo"
-import { Responsive } from "Utils/Responsive"
+import { Responsive2 } from "Utils/Responsive"
 
 interface Props {
   mediator?: Mediator
@@ -20,15 +20,20 @@ export const Footer: React.SFC<Props> = props => {
     <ContextConsumer>
       {({ mediator }) => {
         return (
-          <Responsive>
-            {({ xs }) => {
-              if (xs) {
-                return <SmallFooter mediator={mediator} />
-              } else {
-                return <LargeFooter mediator={mediator} />
-              }
+          <Responsive2>
+            {breakpoints => {
+              return (
+                <>
+                  <breakpoints.xs>
+                    <SmallFooter mediator={mediator} />
+                  </breakpoints.xs>
+                  <breakpoints.else>
+                    <LargeFooter mediator={mediator} />
+                  </breakpoints.else>
+                </>
+              )
             }}
-          </Responsive>
+          </Responsive2>
         )
       }}
     </ContextConsumer>
@@ -45,8 +50,8 @@ export const SmallFooter = (props: Props) => (
 
 const FooterContainer: React.SFC<FlexDirectionProps & Props> = props => {
   return (
-    <Responsive>
-      {({ xs }) => (
+    <Responsive2>
+      {breakpoints => (
         <React.Fragment>
           <Flex
             flexDirection={props.flexDirection}
@@ -124,19 +129,27 @@ const FooterContainer: React.SFC<FlexDirectionProps & Props> = props => {
                 </Link>
               </Serif>
             </Flex>
-            {xs && (
+            <breakpoints.xs>
               <Flex mb={1}>
                 <PolicyLinks />
               </Flex>
-            )}
+            </breakpoints.xs>
           </Flex>
           <Separator mt={1} mb={2} />
           <Flex justifyContent="space-between">
             <Flex alignItems="center" mb={4}>
-              {!xs && <Mark width="30px" height="30px" mr={2} />}
-              {xs && <Mark width="20px" height="20px" mr={2} />}
-              <Spacer mr={1} />
-              {!xs && <PolicyLinks />}
+              {/* NOTE: Responsive2 Is it possible to render out multiple instances
+                of a given breakpoint component? Like, interweve stuff? Noticing because
+                <breakpoint.xs> is used above, this xs / else isn't rendering properly
+            */}
+              <breakpoints.xs>
+                <Mark width="20px" height="20px" mr={2} />
+              </breakpoints.xs>
+              <breakpoints.else>
+                <Mark width="30px" height="30px" mr={2} />
+                <Spacer mr={1} />
+                <PolicyLinks />
+              </breakpoints.else>
             </Flex>
             <Flex>
               <WeChatIcon width={space(2)} height={space(2)} mr={1} />
@@ -153,7 +166,7 @@ const FooterContainer: React.SFC<FlexDirectionProps & Props> = props => {
           </Flex>
         </React.Fragment>
       )}
-    </Responsive>
+    </Responsive2>
   )
 }
 

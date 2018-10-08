@@ -2,7 +2,7 @@ import { Box, Flex, LargeSelect, Sans, Separator, Spacer } from "@artsy/palette"
 import React from "react"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Subscribe } from "unstated"
-import { Responsive } from "Utils/Responsive"
+import { Responsive2 } from "Utils/Responsive"
 import { AuctionResultsState } from "./state"
 
 const SORTS = [
@@ -26,12 +26,20 @@ interface Props {
 
 export const TableSidebar = (props: Props) => {
   return (
-    <Responsive>
-      {({ xs }) => {
-        if (xs) return <SmallTableSidebar {...props} />
-        else return <LargeTableSidebar {...props} />
+    <Responsive2>
+      {breakpoints => {
+        return (
+          <>
+            <breakpoints.xs>
+              <SmallTableSidebar {...props} />
+            </breakpoints.xs>
+            <breakpoints.else>
+              <LargeTableSidebar {...props} />
+            </breakpoints.else>
+          </>
+        )
       }}
-    </Responsive>
+    </Responsive2>
   )
 }
 

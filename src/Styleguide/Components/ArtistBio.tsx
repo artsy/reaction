@@ -4,7 +4,7 @@ import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Responsive } from "Utils/Responsive"
+import { Responsive2 } from "Utils/Responsive"
 import { ReadMore } from "./ReadMore"
 
 interface Props {
@@ -22,22 +22,32 @@ export const MAX_CHARS = {
 export class ArtistBio extends React.Component<Props> {
   render() {
     return (
-      <Responsive>
-        {({ xs }) => {
-          const maxChars =
-            this.props.maxChars || xs ? MAX_CHARS.xs : MAX_CHARS.default
-
+      <Responsive2>
+        {breakpoints => {
           return (
-            <Serif size="3">
-              <ReadMore
-                onReadMoreClicked={this.props.onReadMoreClicked}
-                maxChars={maxChars}
-                content={this.props.bio.biography_blurb.text}
-              />
-            </Serif>
+            <>
+              <breakpoints.xs>
+                <Serif size="3">
+                  <ReadMore
+                    onReadMoreClicked={this.props.onReadMoreClicked}
+                    maxChars={MAX_CHARS.xs}
+                    content={this.props.bio.biography_blurb.text}
+                  />
+                </Serif>
+              </breakpoints.xs>
+              <breakpoints.else>
+                <Serif size="3">
+                  <ReadMore
+                    onReadMoreClicked={this.props.onReadMoreClicked}
+                    maxChars={MAX_CHARS.default}
+                    content={this.props.bio.biography_blurb.text}
+                  />
+                </Serif>
+              </breakpoints.else>
+            </>
           )
         }}
-      </Responsive>
+      </Responsive2>
     )
   }
 }
