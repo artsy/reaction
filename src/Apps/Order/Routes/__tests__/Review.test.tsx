@@ -53,7 +53,7 @@ describe("Review", () => {
     )
     component.find(Button).simulate("click")
     expect(commitMutation).toHaveBeenCalledTimes(1)
-    expect(pushMock).toBeCalledWith("/order2/1234/status")
+    expect(pushMock).toBeCalledWith("/orders/1234/status")
   })
 
   it("takes the user back to the /shipping view", () => {
@@ -63,7 +63,7 @@ describe("Review", () => {
       .first()
       .find("a")
       .simulate("click")
-    expect(pushMock).toBeCalledWith("/order2/1234/shipping")
+    expect(pushMock).toBeCalledWith("/orders/1234/shipping")
   })
 
   it("takes the user back to the /payment view", () => {
@@ -73,7 +73,7 @@ describe("Review", () => {
       .last()
       .find("a")
       .simulate("click")
-    expect(pushMock).toBeCalledWith("/order2/1234/shipping")
+    expect(pushMock).toBeCalledWith("/orders/1234/shipping")
   })
 
   it("shows an error modal when there is an error in submitOrderPayload", () => {

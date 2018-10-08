@@ -294,7 +294,7 @@ describe("Payment", () => {
     fillAddressForm(paymentRoute, validAddress)
     paymentRoute.find(ContinueButton).simulate("click")
 
-    expect(testProps.router.push).toHaveBeenCalledWith("/order2/1234/review")
+    expect(testProps.router.push).toHaveBeenCalledWith("/orders/1234/review")
   })
 
   it("shows an error modal when there is an error in CreateCreditCardPayload", () => {

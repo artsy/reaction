@@ -324,7 +324,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
           } = data
 
           if (orderOrError.order) {
-            this.props.router.push(`/order2/${this.props.order.id}/review`)
+            this.props.router.push(`/orders/${this.props.order.id}/review`)
           } else {
             this.onMutationError(errors || orderOrError)
           }
