@@ -6,6 +6,7 @@ declare const _Shipping_order$ref: unique symbol;
 export type Shipping_order$ref = typeof _Shipping_order$ref;
 export type Shipping_order = {
     readonly id: string | null;
+    readonly state: string | null;
     readonly requestedFulfillment: ({
         readonly __typename: "Ship";
         readonly name: string | null;
@@ -61,6 +62,13 @@ return {
   "argumentDefinitions": [],
   "selections": [
     v0,
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "state",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -217,5 +225,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '4f33217ba6f66907afd60846e143003a';
+(node as any).hash = '47697c5e3326df8ac42b252fea2c60d7';
 export default node;

@@ -107,8 +107,23 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                 ecommerceSetOrderShipping(input: $input) {
                   orderOrError {
                     ... on OrderWithMutationSuccess {
+                      __typename
                       order {
+                        id
                         state
+                        requestedFulfillment {
+                          __typename
+                          ... on Ship {
+                            name
+                            addressLine1
+                            addressLine2
+                            city
+                            region
+                            country
+                            postalCode
+                            phoneNumber
+                          }
+                        }
                       }
                     }
                     ... on OrderWithMutationFailure {
@@ -342,6 +357,7 @@ export const ShippingFragmentContainer = createFragmentContainer(
   graphql`
     fragment Shipping_order on Order {
       id
+      state
       requestedFulfillment {
         __typename
         ... on Ship {

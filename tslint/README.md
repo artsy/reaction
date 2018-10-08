@@ -1,6 +1,6 @@
 ## Steps to adding a custom TSLint rule
 
-1.  Make a new file, the name is important, it must be camel-case and not a `.ts` file.
+1.  Make a new file, the name is important, it must be camel-case and not a `.ts` file (the `@ts-check` declaration at the top of each file uses JSDoc to check types while developing rules – [read here](https://github.com/Microsoft/TypeScript/wiki/Type-Checking-JavaScript-Files) for more info).
 1.  You will need to convert your camelCase name to kebab-case and add it to the [`tslint.json`](../tslint.json)
 
     E.g. `noDoingAnythingRule.js` -> `no-doing-anything` and:
