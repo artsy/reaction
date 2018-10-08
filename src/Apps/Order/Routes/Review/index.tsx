@@ -117,7 +117,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                   }
                 }
               } else {
-                this.props.router.push(`/order2/${this.props.order.id}/status`)
+                this.props.router.push(`/orders/${this.props.order.id}/status`)
               }
             },
             onError: this.onMutationError.bind(this),
@@ -169,11 +169,11 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
   }
 
   onChangePayment() {
-    this.props.router.push(`/order2/${this.props.order.id}/payment`)
+    this.props.router.push(`/orders/${this.props.order.id}/payment`)
   }
 
   onChangeShipping() {
-    this.props.router.push(`/order2/${this.props.order.id}/shipping`)
+    this.props.router.push(`/orders/${this.props.order.id}/shipping`)
   }
 
   onCloseModal = () => {

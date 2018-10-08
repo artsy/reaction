@@ -140,7 +140,7 @@ describe("Shipping", () => {
 
       component.find("Button").simulate("click")
 
-      expect(testProps.router.push).toHaveBeenCalledWith("/order2/1234/payment")
+      expect(testProps.router.push).toHaveBeenCalledWith("/orders/1234/payment")
     })
 
     it("shows the button spinner while loading the mutation", () => {

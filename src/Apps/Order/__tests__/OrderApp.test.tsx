@@ -36,7 +36,7 @@ describe("OrderApp routing redirects", () => {
   }
 
   it("does not redirect to the status route if the order is pending", async () => {
-    const { redirect } = await render("/order2/1234/shipping", {
+    const { redirect } = await render("/orders/1234/shipping", {
       Order: () => ({
         id: 1234,
         state: "PENDING",
@@ -49,7 +49,7 @@ describe("OrderApp routing redirects", () => {
   })
 
   it("redirects to the status route if the order is not pending", async () => {
-    const { redirect } = await render("/order2/1234/shipping", {
+    const { redirect } = await render("/orders/1234/shipping", {
       Order: () => ({
         id: 1234,
         state: "ABANDONED",
@@ -58,11 +58,11 @@ describe("OrderApp routing redirects", () => {
         },
       }),
     })
-    expect(redirect.url).toBe("/order2/1234/status")
+    expect(redirect.url).toBe("/orders/1234/status")
   })
 
   it("stays on the shipping route if no shipping option is set", async () => {
-    const { redirect } = await render("/order2/1234/shipping", {
+    const { redirect } = await render("/orders/1234/shipping", {
       Order: () => ({
         id: 1234,
         state: "PENDING",
@@ -73,18 +73,18 @@ describe("OrderApp routing redirects", () => {
   })
 
   it("redirects to the shipping route from the payment route if no shipping option was set", async () => {
-    const { redirect } = await render("/order2/1234/payment", {
+    const { redirect } = await render("/orders/1234/payment", {
       Order: () => ({
         id: 1234,
         state: "PENDING",
         requestedFulfillment: null,
       }),
     })
-    expect(redirect.url).toBe("/order2/1234/shipping")
+    expect(redirect.url).toBe("/orders/1234/shipping")
   })
 
   it("stays on the payment route if there is shipping but no payment info", async () => {
-    const { redirect } = await render("/order2/1234/payment", {
+    const { redirect } = await render("/orders/1234/payment", {
       Order: () => ({
         id: 1234,
         state: "PENDING",
@@ -98,7 +98,7 @@ describe("OrderApp routing redirects", () => {
   })
 
   it("redirects to the shipping route from the review route if no shipping option was set", async () => {
-    const { redirect } = await render("/order2/1234/review", {
+    const { redirect } = await render("/orders/1234/review", {
       Order: () => ({
         id: 1234,
         state: "PENDING",
@@ -106,11 +106,11 @@ describe("OrderApp routing redirects", () => {
         creditCard: null,
       }),
     })
-    expect(redirect.url).toBe("/order2/1234/shipping")
+    expect(redirect.url).toBe("/orders/1234/shipping")
   })
 
   it("redirects to the payment route from the review route if no credit card is set", async () => {
-    const { redirect } = await render("/order2/1234/review", {
+    const { redirect } = await render("/orders/1234/review", {
       Order: () => ({
         id: 1234,
         state: "PENDING",
@@ -120,11 +120,11 @@ describe("OrderApp routing redirects", () => {
         creditCard: null,
       }),
     })
-    expect(redirect.url).toBe("/order2/1234/payment")
+    expect(redirect.url).toBe("/orders/1234/payment")
   })
 
   it("stays on the review route if there are payment and shipping options set", async () => {
-    const { redirect } = await render("/order2/1234/review", {
+    const { redirect } = await render("/orders/1234/review", {
       Order: () => ({
         id: 1234,
         state: "PENDING",

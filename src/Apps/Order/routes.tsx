@@ -31,7 +31,7 @@ import { StatusProps } from "./Routes/Status"
 // * `render` functions requires casting
 export const routes: RouteConfig[] = [
   {
-    path: "/order2/:orderID",
+    path: "/order(2|s)/:orderID",
     Component: OrderApp,
     query: graphql`
       query routes_OrderQuery($orderID: String!) {
@@ -107,7 +107,7 @@ export const routes: RouteConfig[] = [
       new Redirect({
         // For now, redirect the empty route to the shipping page
         from: "/",
-        to: "/order2/:orderID/shipping",
+        to: "/orders/:orderID/shipping",
       }) as any,
       {
         path: "*",

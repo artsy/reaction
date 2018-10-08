@@ -180,7 +180,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                   this.onMutationError(orderOrError.error)
                 }
               } else {
-                this.props.router.push(`/order2/${this.props.order.id}/payment`)
+                this.props.router.push(`/orders/${this.props.order.id}/payment`)
               }
             },
             onError: this.onMutationError.bind(this),

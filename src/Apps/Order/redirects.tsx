@@ -36,14 +36,14 @@ export const shouldRedirect = props => {
     !location.pathname.includes("status")
   ) {
     // Redirect to status page if the order is no longer PENDING (means it can't be edited anymore)
-    throw new RedirectException(`/order2/${params.orderID}/status`)
+    throw new RedirectException(`/orders/${params.orderID}/status`)
   } else if (
     order &&
     !order.requestedFulfillment &&
     !location.pathname.includes("shipping")
   ) {
     // Redirect to shipping page if no shipping info has been set
-    throw new RedirectException(`/order2/${params.orderID}/shipping`)
+    throw new RedirectException(`/orders/${params.orderID}/shipping`)
   } else if (
     order &&
     !order.creditCard &&
@@ -53,7 +53,7 @@ export const shouldRedirect = props => {
     )
   ) {
     // Redirect to payment page if there is shipping but _no_ credit card
-    throw new RedirectException(`/order2/${params.orderID}/payment`)
+    throw new RedirectException(`/orders/${params.orderID}/payment`)
   } else {
     return false
   }
