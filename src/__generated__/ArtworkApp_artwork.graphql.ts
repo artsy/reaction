@@ -7,25 +7,50 @@ declare const _ArtworkApp_artwork$ref: unique symbol;
 export type ArtworkApp_artwork$ref = typeof _ArtworkApp_artwork$ref;
 export type ArtworkApp_artwork = {
     readonly id: string;
+    readonly artist: ({
+        readonly id: string;
+    }) | null;
     readonly " $fragmentRefs": ArtworkSidebar_artwork$ref & ArtworkDetails_artwork$ref;
     readonly " $refType": ArtworkApp_artwork$ref;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ConcreteFragment = (function(){
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v1 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
+};
+return {
   "kind": "Fragment",
   "name": "ArtworkApp_artwork",
   "type": "Artwork",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
+    v0,
     {
-      "kind": "ScalarField",
+      "kind": "LinkedField",
       "alias": null,
-      "name": "id",
+      "name": "artist",
+      "storageKey": null,
       "args": null,
-      "storageKey": null
+      "concreteType": "Artist",
+      "plural": false,
+      "selections": [
+        v0,
+        v1
+      ]
     },
     {
       "kind": "FragmentSpread",
@@ -37,14 +62,9 @@ const node: ConcreteFragment = {
       "name": "ArtworkDetails_artwork",
       "args": null
     },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
-    }
+    v1
   ]
 };
-(node as any).hash = '2f20d53105c189160608e8b621b36066';
+})();
+(node as any).hash = 'f5a3a7710c389e2e36408f59505b751b';
 export default node;

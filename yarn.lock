@@ -803,6 +803,7 @@
 "@babel/runtime@^7.0.0":
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.0.0.tgz#adeb78fedfc855aa05bc041640f3f6f98e85424c"
+  integrity sha512-7hGhzlcmg01CvH1EHdSPVXYX1aJ8KCEyz6I9xYIi/asDtzBPMyMhVibhM/K6g/5qnKBwjZtp10bNZIEFTRW1MA==
   dependencies:
     regenerator-runtime "^0.12.0"
 
@@ -12419,6 +12420,7 @@ react-split-pane@^0.1.77:
 react-spring@^5.7.2:
   version "5.7.2"
   resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-5.7.2.tgz#5c0fb7c726305f11bfae6fbb5dfaf08fe0ea113f"
+  integrity sha512-XsBWNAB2kHZ7lYTeYcdhuQCEysFvfnA2E3IRBmThowkDKQmD1prtK8tUMDsrPkR14dtiHUmssoYaPlHIecGpXQ==
   dependencies:
     "@babel/runtime" "^7.0.0"
 

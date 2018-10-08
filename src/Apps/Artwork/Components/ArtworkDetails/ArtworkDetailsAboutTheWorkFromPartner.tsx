@@ -7,7 +7,7 @@ import {
   StackableBorderBox,
 } from "@artsy/palette"
 import { filterLocations } from "Apps/Artwork/Utils/filterLocations"
-import { limitArrayOfStringsWithCount } from "Apps/Artwork/Utils/limitArrayOfStringsWithCount"
+import { limitWithCount } from "Apps/Artwork/Utils/limitWithCount"
 import { FollowProfileButtonFragmentContainer as FollowProfileButton } from "Components/FollowButton/FollowProfileButton"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -36,7 +36,7 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
     const { additional_information, partner } = artwork
     const locationNames = get(
       partner,
-      p => limitArrayOfStringsWithCount(filterLocations(p.locations), 2),
+      p => limitWithCount(filterLocations(p.locations), 2),
       []
     ).join(", ")
 
