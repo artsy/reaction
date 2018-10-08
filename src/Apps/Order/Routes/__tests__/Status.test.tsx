@@ -7,19 +7,18 @@ import {
   OrderWithShippingDetails,
   PickupOrder,
 } from "../../../../Apps/__test__/Fixtures/Order"
-import { MockBoot, renderRelayTree, UntilCallback } from "../../../../DevTools"
+import {
+  MockBoot,
+  renderRelayTree,
+  RenderUntilCallback,
+} from "../../../../DevTools"
 import { StatusFragmentContainer } from "../Status"
 
 jest.unmock("react-relay")
 
 describe("Status", () => {
-  const getWrapper = (
-    order: any,
-    headTags: JSX.Element[] = [],
-    until: UntilCallback = null
-  ) => {
+  const getWrapper = (order: any, headTags: JSX.Element[] = []) => {
     return renderRelayTree({
-      until,
       Component: StatusFragmentContainer,
       query: graphql`
         query StatusQuery {
@@ -39,11 +38,7 @@ describe("Status", () => {
 
   it("should should have a title containing status", async () => {
     const headTags: JSX.Element[] = []
-    await getWrapper(
-      OrderWithShippingDetails,
-      headTags,
-      () => headTags.length > 0
-    )
+    await getWrapper(OrderWithShippingDetails, headTags)
     expect(headTags.length).toEqual(1)
     expect(render(headTags[0]).text()).toBe("Order status | Artsy")
   })
