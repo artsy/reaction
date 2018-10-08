@@ -7,7 +7,7 @@ import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Compo
 import React, { Component, Fragment } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Carousel } from "Styleguide/Components"
-import { Responsive2 } from "Utils/Responsive/Responsive2"
+import { Media } from "Utils/Responsive/Media2"
 
 interface Props {
   artist: ArtistHeader_artist
@@ -36,26 +36,14 @@ export class ArtistHeader extends Component<Props> {
       <ContextConsumer>
         {({ mediator, user }) => {
           return (
-            <Responsive2>
-              {breakpoints => (
-                <>
-                  <breakpoints.xs>
-                    <SmallArtistHeader
-                      mediator={mediator}
-                      user={user}
-                      {...props}
-                    />
-                  </breakpoints.xs>
-                  <breakpoints.else>
-                    <LargeArtistHeader
-                      mediator={mediator}
-                      user={user}
-                      {...props}
-                    />
-                  </breakpoints.else>
-                </>
-              )}
-            </Responsive2>
+            <>
+              <Media at="xs">
+                <SmallArtistHeader mediator={mediator} user={user} {...props} />
+              </Media>
+              <Media greaterThan="xs">
+                <LargeArtistHeader mediator={mediator} user={user} {...props} />
+              </Media>
+            </>
           )
         }}
       </ContextConsumer>

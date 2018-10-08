@@ -5,7 +5,7 @@ import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Subscribe } from "unstated"
-import { Responsive2 } from "Utils/Responsive"
+import { Media } from "Utils/Responsive/Media2"
 import { AuctionResultsState } from "./state"
 
 import {
@@ -34,52 +34,27 @@ export class ArtistAuctionResultItem extends Component<Props> {
         {({ user, mediator }) => {
           return (
             <Row>
-              <Responsive2>
-                {breakpoints => {
-                  return (
-                    <>
-                      <breakpoints.xs>
-                        <ExtraSmallAuctionItem
-                          {...this.props}
-                          mediator={mediator}
-                          user={user}
-                        />
-                      </breakpoints.xs>
-
-                      {/*
-                      NOTE:
-
-                      @alloy: I wonder if there's a way to compose breakpoints
-                      togehter. In previous code this was `if (sm || md)`, so
-                      the react JSX below will create exact duplicates of markup
-                      which could be confusing / error prone.
-                    */}
-                      <breakpoints.sm>
-                        <SmallAuctionItem
-                          {...this.props}
-                          mediator={mediator}
-                          user={user}
-                        />
-                      </breakpoints.sm>
-                      <breakpoints.md>
-                        <SmallAuctionItem
-                          {...this.props}
-                          mediator={mediator}
-                          user={user}
-                        />
-                      </breakpoints.md>
-                      <breakpoints.else>
-                        <LargeAuctionItem
-                          {...this.props}
-                          mediator={mediator}
-                          user={user}
-                        />
-                      </breakpoints.else>
-                    </>
-                  )
-                }}
-              </Responsive2>
-
+              <Media at="xs">
+                <ExtraSmallAuctionItem
+                  {...this.props}
+                  mediator={mediator}
+                  user={user}
+                />
+              </Media>
+              <Media between={["sm", "lg"]}>
+                <SmallAuctionItem
+                  {...this.props}
+                  mediator={mediator}
+                  user={user}
+                />
+              </Media>
+              <Media greaterThanOrEqual="lg">
+                <LargeAuctionItem
+                  {...this.props}
+                  mediator={mediator}
+                  user={user}
+                />
+              </Media>
               <Col>
                 <Box pt={2} pb={1}>
                   {!lastChild && <Separator />}

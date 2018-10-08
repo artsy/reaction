@@ -1,6 +1,6 @@
 import React, { SFC } from "react"
 import { Col, Row } from "Styleguide/Elements/Grid"
-import { Responsive2 } from "Utils/Responsive"
+import { Media } from "Utils/Responsive/Media2"
 
 import {
   Box,
@@ -23,20 +23,14 @@ interface ArticleItemProps {
 
 export const ArticleItem: SFC<ArticleItemProps> = props => {
   return (
-    <Responsive2>
-      {breakpoints => {
-        return (
-          <>
-            <breakpoints.xs>
-              <SmallArticleItem {...props} />
-            </breakpoints.xs>
-            <breakpoints.else>
-              <LargeArticleItem {...props} />
-            </breakpoints.else>
-          </>
-        )
-      }}
-    </Responsive2>
+    <>
+      <Media at="xs">
+        <SmallArticleItem {...props} />
+      </Media>
+      <Media greaterThan="xs">
+        <LargeArticleItem {...props} />
+      </Media>
+    </>
   )
 }
 

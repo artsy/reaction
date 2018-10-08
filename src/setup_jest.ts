@@ -2,6 +2,8 @@ import Enzyme from "enzyme"
 import Adapter from "enzyme-adapter-react-16"
 import "regenerator-runtime/runtime"
 
+import "jest-styled-components"
+
 jest.mock("react-tracking")
 import _track from "react-tracking"
 const track = _track as jest.Mock<typeof _track>

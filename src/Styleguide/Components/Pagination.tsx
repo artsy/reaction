@@ -3,7 +3,7 @@ import React from "react"
 import styled, { css } from "styled-components"
 import { Arrow } from "Styleguide/Elements/Arrow"
 import { ScrollIntoView } from "Styleguide/Utils/ScrollIntoView"
-import { Responsive2 } from "Utils/Responsive"
+import { Media } from "Utils/Responsive/Media2"
 
 import { Pagination_pageCursors } from "__generated__/Pagination_pageCursors.graphql"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -30,20 +30,12 @@ export class Pagination extends React.Component<Props> {
 
     return (
       <ScrollIntoView selector={this.props.scrollTo}>
-        <Responsive2>
-          {breakpoints => {
-            return (
-              <>
-                <breakpoints.xs>
-                  <SmallPagination {...this.props} />
-                </breakpoints.xs>
-                <breakpoints.else>
-                  <LargePagination {...this.props} />
-                </breakpoints.else>
-              </>
-            )
-          }}
-        </Responsive2>
+        <Media at="xs">
+          <SmallPagination {...this.props} />
+        </Media>
+        <Media greaterThan="xs">
+          <LargePagination {...this.props} />
+        </Media>
       </ScrollIntoView>
     )
   }

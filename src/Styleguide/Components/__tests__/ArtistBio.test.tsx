@@ -16,7 +16,7 @@ describe("ArtistBio", () => {
 
   it("renders a ReadMore expandable area", () => {
     const wrapper = mount(<ArtistBio bio={bio} />)
-    expect(wrapper.find("ReadMore").length).toBe(1)
+    expect(wrapper.find("ReadMore").length).toBe(2)
   })
 
   // TODO: Chris, this test needs finishing.

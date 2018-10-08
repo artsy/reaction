@@ -5,8 +5,6 @@ import {
   ResponsiveProviderProps as _ResponsiveProviderProps,
 } from "./Responsive"
 
-export { Responsive2 } from "./Responsive2"
-
 type MediaQuery = keyof typeof themeProps["mediaQueries"]
 
 const ResponsiveComponents = createResponsiveComponents<MediaQuery>()

@@ -5,7 +5,7 @@ import styled from "styled-components"
 import { left, LeftProps, right, RightProps } from "styled-system"
 import { Arrow } from "Styleguide/Elements/Arrow"
 import { media } from "Styleguide/Elements/Grid"
-import { Responsive2 } from "Utils/Responsive"
+import { Media } from "Utils/Responsive/Media2"
 
 interface Props {
   settings?: Settings
@@ -21,20 +21,14 @@ export class Carousel extends React.Component<Props> {
 
   render() {
     return (
-      <Responsive2>
-        {breakpoints => {
-          return (
-            <>
-              <breakpoints.xs>
-                <SmallCarousel {...this.props} />
-              </breakpoints.xs>
-              <breakpoints.else>
-                <LargeCarousel {...this.props} />
-              </breakpoints.else>
-            </>
-          )
-        }}
-      </Responsive2>
+      <>
+        <Media at="xs">
+          <SmallCarousel {...this.props} />
+        </Media>
+        <Media greaterThan="xs">
+          <LargeCarousel {...this.props} />
+        </Media>
+      </>
     )
   }
 }

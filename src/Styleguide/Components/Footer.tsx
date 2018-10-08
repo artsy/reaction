@@ -9,7 +9,7 @@ import { FacebookIcon } from "Styleguide/Elements/icons/FacebookIcon"
 import { InstagramIcon } from "Styleguide/Elements/icons/InstagramIcon"
 import { TwitterIcon } from "Styleguide/Elements/icons/TwitterIcon"
 import { Mark } from "Styleguide/Elements/Logo"
-import { Responsive2 } from "Utils/Responsive"
+import { Media } from "Utils/Responsive/Media2"
 
 interface Props {
   mediator?: Mediator
@@ -20,20 +20,14 @@ export const Footer: React.SFC<Props> = props => {
     <ContextConsumer>
       {({ mediator }) => {
         return (
-          <Responsive2>
-            {breakpoints => {
-              return (
-                <>
-                  <breakpoints.xs>
-                    <SmallFooter mediator={mediator} />
-                  </breakpoints.xs>
-                  <breakpoints.else>
-                    <LargeFooter mediator={mediator} />
-                  </breakpoints.else>
-                </>
-              )
-            }}
-          </Responsive2>
+          <>
+            <Media at="xs">
+              <SmallFooter mediator={mediator} />
+            </Media>
+            <Media greaterThan="xs">
+              <LargeFooter mediator={mediator} />
+            </Media>
+          </>
         )
       }}
     </ContextConsumer>
@@ -50,123 +44,103 @@ export const SmallFooter = (props: Props) => (
 
 const FooterContainer: React.SFC<FlexDirectionProps & Props> = props => {
   return (
-    <Responsive2>
-      {breakpoints => (
-        <React.Fragment>
-          <Flex
-            flexDirection={props.flexDirection}
-            justifyContent="space-between"
-            width="100%"
-          >
-            <Flex flexDirection="column" mb={1}>
-              <Sans size="2" weight="medium">
-                Buy
-              </Sans>
-              <Serif size="2">
-                <Link
-                  onClick={() =>
-                    props.mediator.trigger("openCollectorFAQModal")
-                  }
-                >
-                  Buying from Galleries FAQ
-                </Link>
-                <Link
-                  onClick={() => props.mediator.trigger("openAuctionFAQModal")}
-                >
-                  Buying from Auctions FAQ
-                </Link>
-                <Link href="https://www.artsy.net/consign">
-                  Consign with Artsy
-                </Link>
-              </Serif>
-            </Flex>
-            <Flex flexDirection="column" mb={1}>
-              <Sans size="2" weight="medium">
-                Learn
-              </Sans>
-              <Serif size="2">
-                <Link href="https://www.artsy.net/artsy-education">
-                  Education
-                </Link>
-                <Link href="https://www.artsy.net/categories">
-                  The Art Genome Project
-                </Link>
-              </Serif>
-            </Flex>
-            <Flex flexDirection="column" mb={1}>
-              <Sans size="2" weight="medium">
-                About us
-              </Sans>
-              <Serif size="2">
-                <Link href="https://www.artsy.net/about">About</Link>
-                <Link href="https://medium.com/artsy-blog">Blog</Link>
-                <Link href="https://www.artsy.net/about/jobs">Jobs</Link>
-                <Link href="https://artsy.github.com/open-source">
-                  Open Source
-                </Link>
-                <Link href="https://www.artsy.net/about/press">Press</Link>
-                <Link href="https://www.artsy.net/contact">Contact</Link>
-                <Link
-                  onClick={() => props.mediator.trigger("openFeedbackModal")}
-                >
-                  Send us feedback
-                </Link>
-              </Serif>
-            </Flex>
-            <Flex flexDirection="column" mb={1}>
-              <Sans size="2" weight="medium">
-                Partners
-              </Sans>
-              <Serif size="2">
-                <Link href="https://www.artsy.net/gallery-partnerships">
-                  Artsy for Galleries
-                </Link>
-                <Link href="https://www.artsy.net/institution-partnerships">
-                  Artsy for Museums
-                </Link>
-                <Link href="https://www.artsy.net/auction-partnerships">
-                  Artsy for Auctions
-                </Link>
-              </Serif>
-            </Flex>
-            <breakpoints.xs>
-              <Flex mb={1}>
-                <PolicyLinks />
-              </Flex>
-            </breakpoints.xs>
+    <React.Fragment>
+      <Flex
+        flexDirection={props.flexDirection}
+        justifyContent="space-between"
+        width="100%"
+      >
+        <Flex flexDirection="column" mb={1}>
+          <Sans size="2" weight="medium">
+            Buy
+          </Sans>
+          <Serif size="2">
+            <Link
+              onClick={() => props.mediator.trigger("openCollectorFAQModal")}
+            >
+              Buying from Galleries FAQ
+            </Link>
+            <Link onClick={() => props.mediator.trigger("openAuctionFAQModal")}>
+              Buying from Auctions FAQ
+            </Link>
+            <Link href="https://www.artsy.net/consign">Consign with Artsy</Link>
+          </Serif>
+        </Flex>
+        <Flex flexDirection="column" mb={1}>
+          <Sans size="2" weight="medium">
+            Learn
+          </Sans>
+          <Serif size="2">
+            <Link href="https://www.artsy.net/artsy-education">Education</Link>
+            <Link href="https://www.artsy.net/categories">
+              The Art Genome Project
+            </Link>
+          </Serif>
+        </Flex>
+        <Flex flexDirection="column" mb={1}>
+          <Sans size="2" weight="medium">
+            About us
+          </Sans>
+          <Serif size="2">
+            <Link href="https://www.artsy.net/about">About</Link>
+            <Link href="https://medium.com/artsy-blog">Blog</Link>
+            <Link href="https://www.artsy.net/about/jobs">Jobs</Link>
+            <Link href="https://artsy.github.com/open-source">Open Source</Link>
+            <Link href="https://www.artsy.net/about/press">Press</Link>
+            <Link href="https://www.artsy.net/contact">Contact</Link>
+            <Link onClick={() => props.mediator.trigger("openFeedbackModal")}>
+              Send us feedback
+            </Link>
+          </Serif>
+        </Flex>
+        <Flex flexDirection="column" mb={1}>
+          <Sans size="2" weight="medium">
+            Partners
+          </Sans>
+          <Serif size="2">
+            <Link href="https://www.artsy.net/gallery-partnerships">
+              Artsy for Galleries
+            </Link>
+            <Link href="https://www.artsy.net/institution-partnerships">
+              Artsy for Museums
+            </Link>
+            <Link href="https://www.artsy.net/auction-partnerships">
+              Artsy for Auctions
+            </Link>
+          </Serif>
+        </Flex>
+        <Media at="xs">
+          <Flex mb={1}>
+            <PolicyLinks />
           </Flex>
-          <Separator mt={1} mb={2} />
-          <Flex justifyContent="space-between">
-            <Flex alignItems="center" mb={4}>
-              {/* NOTE: Responsive2 Is it possible to render out multiple instances
-                of a given breakpoint component? Like, interweve stuff? Noticing because
-                <breakpoint.xs> is used above, this xs / else isn't rendering properly
-            */}
-              <breakpoints.xs>
-                <Mark width="20px" height="20px" mr={2} />
-              </breakpoints.xs>
-              <breakpoints.else>
-                <Mark width="30px" height="30px" mr={2} />
-                <Spacer mr={1} />
-                <PolicyLinks />
-              </breakpoints.else>
-            </Flex>
-            <Flex>
-              <WeChatIcon width={space(2)} height={space(2)} mr={1} />
-              <a href="https://twitter.com/artsy">
-                <TwitterIcon width={space(2)} height={space(2)} mr={1} />
-              </a>
-              <a href="https://www.facebook.com/artsy">
-                <FacebookIcon width={space(2)} height={space(2)} mr={1} />
-              </a>
-              <a href="https://www.instagram.com/artsy/">
-                <InstagramIcon width={space(2)} height={space(2)} mr={1} />
-              </a>
-            </Flex>
-          </Flex>
-        </React.Fragment>
-      )}
-    </Responsive2>
+        </Media>
+      </Flex>
+      <Separator mt={1} mb={2} />
+      <Flex justifyContent="space-between">
+        <Flex alignItems="center" mb={4}>
+          <Media at="xs">
+            <Mark width="20px" height="20px" mr={2} />
+          </Media>
+          <Media greaterThan="xs">
+            <Mark width="30px" height="30px" mr={2} />
+            <Spacer mr={1} />
+            <PolicyLinks />
+          </Media>
+        </Flex>
+        <Flex>
+          <WeChatIcon width={space(2)} height={space(2)} mr={1} />
+          <a href="https://twitter.com/artsy">
+            <TwitterIcon width={space(2)} height={space(2)} mr={1} />
+          </a>
+          <a href="https://www.facebook.com/artsy">
+            <FacebookIcon width={space(2)} height={space(2)} mr={1} />
+          </a>
+          <a href="https://www.instagram.com/artsy/">
+            <InstagramIcon width={space(2)} height={space(2)} mr={1} />
+          </a>
+        </Flex>
+      </Flex>
+    </React.Fragment>
   )
 }
 

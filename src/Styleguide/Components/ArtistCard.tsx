@@ -5,7 +5,7 @@ import { Truncator } from "Components/Truncator"
 import React, { SFC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
-import { Responsive2 } from "Utils/Responsive"
+import { Media } from "Utils/Responsive/Media2"
 
 import {
   Avatar,
@@ -32,20 +32,12 @@ export class ArtistCard extends React.Component<Props> {
   render() {
     return (
       <StyledLink href={this.props.artist.href}>
-        <Responsive2>
-          {breakpoints => {
-            return (
-              <>
-                <breakpoints.xs>
-                  <SmallArtistCard {...this.props} />
-                </breakpoints.xs>
-                <breakpoints.else>
-                  <LargeArtistCard {...this.props} />
-                </breakpoints.else>
-              </>
-            )
-          }}
-        </Responsive2>
+        <Media at="xs">
+          <SmallArtistCard {...this.props} />
+        </Media>
+        <Media greaterThan="xs">
+          <LargeArtistCard {...this.props} />
+        </Media>
       </StyledLink>
     )
   }

@@ -4,7 +4,7 @@ import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Responsive2 } from "Utils/Responsive"
+import { Media } from "Utils/Responsive/Media2"
 
 export interface CurrentEventProps {
   artist: CurrentEvent_artist
@@ -13,18 +13,9 @@ export interface CurrentEventProps {
 export class CurrentEvent extends Component<CurrentEventProps> {
   render() {
     return (
-      <Responsive2>
-        {breakpoints => {
-          return (
-            <>
-              <breakpoints.xs>{null}</breakpoints.xs>
-              <breakpoints.else>
-                <LargeCurrentEvent {...this.props} />
-              </breakpoints.else>
-            </>
-          )
-        }}
-      </Responsive2>
+      <Media greaterThanOrEqual="sm">
+        <LargeCurrentEvent {...this.props} />
+      </Media>
     )
   }
 }

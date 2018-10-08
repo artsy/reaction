@@ -4,7 +4,7 @@ import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Responsive2 } from "Utils/Responsive"
+import { Media } from "Utils/Responsive/Media2"
 import { ReadMore } from "./ReadMore"
 
 interface Props {
@@ -22,32 +22,26 @@ export const MAX_CHARS = {
 export class ArtistBio extends React.Component<Props> {
   render() {
     return (
-      <Responsive2>
-        {breakpoints => {
-          return (
-            <>
-              <breakpoints.xs>
-                <Serif size="3">
-                  <ReadMore
-                    onReadMoreClicked={this.props.onReadMoreClicked}
-                    maxChars={MAX_CHARS.xs}
-                    content={this.props.bio.biography_blurb.text}
-                  />
-                </Serif>
-              </breakpoints.xs>
-              <breakpoints.else>
-                <Serif size="3">
-                  <ReadMore
-                    onReadMoreClicked={this.props.onReadMoreClicked}
-                    maxChars={MAX_CHARS.default}
-                    content={this.props.bio.biography_blurb.text}
-                  />
-                </Serif>
-              </breakpoints.else>
-            </>
-          )
-        }}
-      </Responsive2>
+      <>
+        <Media at="xs">
+          <Serif size="3">
+            <ReadMore
+              onReadMoreClicked={this.props.onReadMoreClicked}
+              maxChars={MAX_CHARS.xs}
+              content={this.props.bio.biography_blurb.text}
+            />
+          </Serif>
+        </Media>
+        <Media greaterThan="xs">
+          <Serif size="3">
+            <ReadMore
+              onReadMoreClicked={this.props.onReadMoreClicked}
+              maxChars={MAX_CHARS.default}
+              content={this.props.bio.biography_blurb.text}
+            />
+          </Serif>
+        </Media>
+      </>
     )
   }
 }

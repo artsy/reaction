@@ -1,7 +1,7 @@
 import { Separator, Serif, Spacer } from "@artsy/palette"
 import React, { SFC } from "react"
 import { Col, Row } from "Styleguide/Elements/Grid"
-import { Responsive2 } from "Utils/Responsive"
+import { Media } from "Utils/Responsive/Media2"
 
 interface ArtistShowListItemProps {
   exhibitionInfo: string
@@ -15,20 +15,14 @@ const FIXME_DOMAIN = "https://www.artsy.net"
 
 export const ArtistShowListItem: SFC<ArtistShowListItemProps> = props => {
   return (
-    <Responsive2>
-      {breakpoints => {
-        return (
-          <>
-            <breakpoints.xs>
-              <SmallShowListItem {...props} />
-            </breakpoints.xs>
-            <breakpoints.else>
-              <LargeShowListItem {...props} />
-            </breakpoints.else>
-          </>
-        )
-      }}
-    </Responsive2>
+    <>
+      <Media at="xs">
+        <SmallShowListItem {...props} />
+      </Media>
+      <Media greaterThan="xs">
+        <LargeShowListItem {...props} />
+      </Media>
+    </>
   )
 }
 

@@ -1,28 +1,21 @@
 import { Sans } from "@artsy/palette"
 import React from "react"
 import { Col } from "Styleguide/Elements/Grid"
-import { Responsive2 } from "Utils/Responsive"
+import { Media } from "Utils/Responsive/Media2"
 
 export const TableColumns = () => {
   return (
-    <Responsive2>
-      {breakpoints => {
-        return (
-          <>
-            <breakpoints.xs>{null}</breakpoints.xs>
-            <breakpoints.sm>
-              <SmallTableColumns />
-            </breakpoints.sm>
-            <breakpoints.md>
-              <SmallTableColumns />
-            </breakpoints.md>
-            <breakpoints.else>
-              <LargeTableColumns />
-            </breakpoints.else>
-          </>
-        )
-      }}
-    </Responsive2>
+    <>
+      <Media at="sm">
+        <SmallTableColumns />
+      </Media>
+      <Media at="md">
+        <SmallTableColumns />
+      </Media>
+      <Media greaterThanOrEqual="lg">
+        <LargeTableColumns />
+      </Media>
+    </>
   )
 }
 
