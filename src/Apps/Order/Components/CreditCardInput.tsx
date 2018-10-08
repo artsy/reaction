@@ -1,4 +1,4 @@
-import { BorderBox, color, Sans } from "@artsy/palette"
+import { BorderBox, color, Sans, themeProps } from "@artsy/palette"
 import { fontFamily } from "@artsy/palette/dist/platform/fonts"
 import {
   border as inputBorder,
@@ -10,12 +10,13 @@ import styled from "styled-components"
 
 export const StyledCardElement = styled(CardElement)`
   width: 100%;
+  padding: 9px 10px;
 `
 
 // Re-uses old input border behavior
 const StyledBorderBox = styled(BorderBox).attrs<InputBorderProps>({})`
   ${inputBorder};
-  padding: 9px 10px;
+  padding: 0;
   height: 40px;
 `
 
@@ -63,6 +64,7 @@ export class CreditCardInput extends React.Component<
                   color: color("black30"),
                 },
                 fontFamily: fontFamily.serif.regular as string,
+                fontSize: `${themeProps.typeSizes.serif["3t"].fontSize}px`,
                 fontSmoothing: "antialiased",
                 lineHeight: "20px",
               },
