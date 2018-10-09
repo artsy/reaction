@@ -2,26 +2,22 @@
 
 import { ConcreteRequest } from "relay-runtime";
 import { ArtistInfo_artist$ref } from "./ArtistInfo_artist.graphql";
-export type ArtistInfoQueryVariables = {
-    readonly artistID: string;
-};
-export type ArtistInfoQueryResponse = {
+export type ArtistInfo_Test_QueryVariables = {};
+export type ArtistInfo_Test_QueryResponse = {
     readonly artist: ({
         readonly " $fragmentRefs": ArtistInfo_artist$ref;
     }) | null;
 };
-export type ArtistInfoQuery = {
-    readonly response: ArtistInfoQueryResponse;
-    readonly variables: ArtistInfoQueryVariables;
+export type ArtistInfo_Test_Query = {
+    readonly response: ArtistInfo_Test_QueryResponse;
+    readonly variables: ArtistInfo_Test_QueryVariables;
 };
 
 
 
 /*
-query ArtistInfoQuery(
-  $artistID: String!
-) {
-  artist(id: $artistID) {
+query ArtistInfo_Test_Query {
+  artist(id: "pablo-picasso") {
     ...ArtistInfo_artist
     __id
   }
@@ -130,35 +126,27 @@ fragment FollowArtistButton_artist on Artist {
 const node: ConcreteRequest = (function(){
 var v0 = [
   {
-    "kind": "LocalArgument",
-    "name": "artistID",
-    "type": "String!",
-    "defaultValue": null
-  }
-],
-v1 = [
-  {
-    "kind": "Variable",
+    "kind": "Literal",
     "name": "id",
-    "variableName": "artistID",
+    "value": "pablo-picasso",
     "type": "String!"
   }
 ],
-v2 = {
+v1 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__id",
   "args": null,
   "storageKey": null
 },
-v3 = {
+v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
   "args": null,
   "storageKey": null
 },
-v4 = [
+v3 = [
   {
     "kind": "ScalarField",
     "alias": null,
@@ -167,17 +155,17 @@ v4 = [
     "storageKey": null
   }
 ],
-v5 = {
+v4 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "name",
   "args": null,
   "storageKey": null
 },
-v6 = [
-  v5
+v5 = [
+  v4
 ],
-v7 = [
+v6 = [
   {
     "kind": "Literal",
     "name": "format",
@@ -188,23 +176,23 @@ v7 = [
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "ArtistInfoQuery",
+  "name": "ArtistInfo_Test_Query",
   "id": null,
-  "text": "query ArtistInfoQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...ArtistInfo_artist\n    __id\n  }\n}\n\nfragment ArtistInfo_artist on Artist {\n  id\n  name\n  href\n  image {\n    cropped(width: 100, height: 100) {\n      url\n    }\n  }\n  formatted_nationality_and_birthday\n  counts {\n    partner_shows\n  }\n  exhibition_highlights(size: 3) {\n    ...SelectedExhibitions_exhibitions\n    __id\n  }\n  ...ArtistBio_bio\n  ...MarketInsightsArtistPage_artist\n  ...FollowArtistButton_artist\n  biography_blurb(format: HTML, partner_bio: true) {\n    text\n  }\n  __id\n}\n\nfragment SelectedExhibitions_exhibitions on Show {\n  partner {\n    __typename\n    ... on ExternalPartner {\n      name\n      __id\n    }\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n  }\n  name\n  start_at(format: \"YYYY\")\n  cover_image {\n    cropped(width: 800, height: 600) {\n      url\n    }\n  }\n  city\n  __id\n}\n\nfragment ArtistBio_bio on Artist {\n  biography_blurb(format: HTML, partner_bio: true) {\n    text\n    credit\n  }\n  __id\n}\n\nfragment MarketInsightsArtistPage_artist on Artist {\n  _id\n  collections\n  highlights {\n    partners(first: 10, display_on_partner_profile: true, represented_by: true, partner_category: [\"blue-chip\", \"top-established\", \"top-emerging\"]) {\n      edges {\n        node {\n          categories {\n            id\n          }\n          __id\n        }\n        __id\n      }\n    }\n  }\n  auctionResults(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {\n    edges {\n      node {\n        price_realized {\n          display(format: \"0a\")\n        }\n        organization\n        sale_date(format: \"YYYY\")\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n",
+  "text": "query ArtistInfo_Test_Query {\n  artist(id: \"pablo-picasso\") {\n    ...ArtistInfo_artist\n    __id\n  }\n}\n\nfragment ArtistInfo_artist on Artist {\n  id\n  name\n  href\n  image {\n    cropped(width: 100, height: 100) {\n      url\n    }\n  }\n  formatted_nationality_and_birthday\n  counts {\n    partner_shows\n  }\n  exhibition_highlights(size: 3) {\n    ...SelectedExhibitions_exhibitions\n    __id\n  }\n  ...ArtistBio_bio\n  ...MarketInsightsArtistPage_artist\n  ...FollowArtistButton_artist\n  biography_blurb(format: HTML, partner_bio: true) {\n    text\n  }\n  __id\n}\n\nfragment SelectedExhibitions_exhibitions on Show {\n  partner {\n    __typename\n    ... on ExternalPartner {\n      name\n      __id\n    }\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n  }\n  name\n  start_at(format: \"YYYY\")\n  cover_image {\n    cropped(width: 800, height: 600) {\n      url\n    }\n  }\n  city\n  __id\n}\n\nfragment ArtistBio_bio on Artist {\n  biography_blurb(format: HTML, partner_bio: true) {\n    text\n    credit\n  }\n  __id\n}\n\nfragment MarketInsightsArtistPage_artist on Artist {\n  _id\n  collections\n  highlights {\n    partners(first: 10, display_on_partner_profile: true, represented_by: true, partner_category: [\"blue-chip\", \"top-established\", \"top-emerging\"]) {\n      edges {\n        node {\n          categories {\n            id\n          }\n          __id\n        }\n        __id\n      }\n    }\n  }\n  auctionResults(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {\n    edges {\n      node {\n        price_realized {\n          display(format: \"0a\")\n        }\n        organization\n        sale_date(format: \"YYYY\")\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "ArtistInfoQuery",
+    "name": "ArtistInfo_Test_Query",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": [],
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "artist",
-        "storageKey": null,
-        "args": v1,
+        "storageKey": "artist(id:\"pablo-picasso\")",
+        "args": v0,
         "concreteType": "Artist",
         "plural": false,
         "selections": [
@@ -213,22 +201,22 @@ return {
             "name": "ArtistInfo_artist",
             "args": null
           },
-          v2
+          v1
         ]
       }
     ]
   },
   "operation": {
     "kind": "Operation",
-    "name": "ArtistInfoQuery",
-    "argumentDefinitions": v0,
+    "name": "ArtistInfo_Test_Query",
+    "argumentDefinitions": [],
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "artist",
-        "storageKey": null,
-        "args": v1,
+        "storageKey": "artist(id:\"pablo-picasso\")",
+        "args": v0,
         "concreteType": "Artist",
         "plural": false,
         "selections": [
@@ -270,7 +258,7 @@ return {
               }
             ]
           },
-          v3,
+          v2,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -308,7 +296,7 @@ return {
                 ],
                 "concreteType": "CroppedImageUrl",
                 "plural": false,
-                "selections": v4
+                "selections": v3
               }
             ]
           },
@@ -376,25 +364,25 @@ return {
                     "args": null,
                     "storageKey": null
                   },
-                  v2,
+                  v1,
                   {
                     "kind": "InlineFragment",
                     "type": "Partner",
-                    "selections": v6
+                    "selections": v5
                   },
                   {
                     "kind": "InlineFragment",
                     "type": "ExternalPartner",
-                    "selections": v6
+                    "selections": v5
                   }
                 ]
               },
-              v5,
+              v4,
               {
                 "kind": "ScalarField",
                 "alias": null,
                 "name": "start_at",
-                "args": v7,
+                "args": v6,
                 "storageKey": "start_at(format:\"YYYY\")"
               },
               {
@@ -427,7 +415,7 @@ return {
                     ],
                     "concreteType": "CroppedImageUrl",
                     "plural": false,
-                    "selections": v4
+                    "selections": v3
                   }
                 ]
               },
@@ -438,11 +426,11 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v2
+              v1
             ]
           },
-          v5,
-          v2,
+          v4,
+          v1,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -531,13 +519,13 @@ return {
                             "concreteType": "Category",
                             "plural": true,
                             "selections": [
-                              v3
+                              v2
                             ]
                           },
-                          v2
+                          v1
                         ]
                       },
-                      v2
+                      v1
                     ]
                   }
                 ]
@@ -626,10 +614,10 @@ return {
                         "kind": "ScalarField",
                         "alias": null,
                         "name": "sale_date",
-                        "args": v7,
+                        "args": v6,
                         "storageKey": "sale_date(format:\"YYYY\")"
                       },
-                      v2
+                      v1
                     ]
                   }
                 ]
@@ -649,5 +637,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'f9168e1fde70d178c078c351f4a38c0b';
+(node as any).hash = '67a6932578a6a1e87ab26769b614563c';
 export default node;
