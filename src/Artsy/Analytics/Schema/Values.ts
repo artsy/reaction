@@ -149,6 +149,15 @@ export enum Subject {
   FurtherReading = "Further reading",
   ReadMore = "Read more",
   RelatedArticles = "Related articles",
+
+  /**
+   * Buy now checkout flow
+   */
+  BNMOSubmitOrder = "submitOrder",
+  BNMOAskSpecialist = "ask a specialist",
+  BNMOReadFAQ = "read faq",
+  BNMOProvideShipping = "provide shipping address",
+  BNMOArrangePickup = "arrange for pickup",
 }
 
 /**

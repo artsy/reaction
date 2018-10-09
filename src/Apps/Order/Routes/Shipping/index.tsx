@@ -23,6 +23,8 @@ import { Helper } from "Apps/Order/Components/Helper"
 import { TransactionSummaryFragmentContainer as TransactionSummary } from "Apps/Order/Components/TransactionSummary"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { validatePresence } from "Apps/Order/Components/Validators"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import { Mediator } from "Artsy/SystemContext"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
@@ -56,7 +58,7 @@ export interface ShippingState {
   errorModalTitle: string
   errorModalMessage: string
 }
-
+@track()
 export class ShippingRoute extends Component<ShippingProps, ShippingState> {
   state = {
     shippingOption: ((this.props.order.requestedFulfillment &&
@@ -237,6 +239,19 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     })
   }
 
+  @track((props, state, args) => ({
+    action_type: Schema.ActionType.Click,
+    subject:
+      args[0] === "SHIP"
+        ? Schema.Subject.BNMOProvideShipping
+        : Schema.Subject.BNMOArrangePickup,
+    flow: "buy now",
+    type: "button",
+  }))
+  onSelectShippingOption(shippingOption: OrderFulfillmentType) {
+    this.setState({ shippingOption })
+  }
+
   render() {
     const { order } = this.props
     const { address, addressErrors, isCommittingMutation } = this.state
@@ -272,9 +287,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                     {artwork.pickup_available && (
                       <>
                         <RadioGroup
-                          onSelect={(shippingOption: OrderFulfillmentType) =>
-                            this.setState({ shippingOption })
-                          }
+                          onSelect={this.onSelectShippingOption.bind(this)}
                           defaultValue={this.state.shippingOption}
                         >
                           <BorderedRadio value="SHIP">
