@@ -85,6 +85,7 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
                                   <Sans
                                     size="2"
                                     weight="medium"
+                                    color="black"
                                     style={{
                                       cursor: "pointer",
                                       textDecoration: "underline",
