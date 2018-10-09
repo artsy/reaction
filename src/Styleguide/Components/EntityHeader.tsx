@@ -39,23 +39,18 @@ export const EntityHeader: SFC<EntityHeaderProps> = ({
           {name}
         </Serif>
 
-        <Flex>
-          {!!meta && (
-            <Sans size="2" color="black60">
-              {meta}
-            </Sans>
-          )}
+        <Sans size="2" color="black60">
+          {!!meta && <span>{meta}</span>}
 
           {FollowButton && (
             <>
               {meta && (
-                <Box mx={0.3}>
-                  <Sans size="2" color="black60">
-                    •
-                  </Sans>
-                </Box>
+                <Sans size="2" color="black60" mx={0.3} display="inline-block">
+                  •
+                </Sans>
               )}
-              <span
+              <Box
+                display="inline-block"
                 onClick={event => {
                   // Capture click event so that interacting with Follow doesn't
                   // trigger Container's link.
@@ -63,10 +58,10 @@ export const EntityHeader: SFC<EntityHeaderProps> = ({
                 }}
               >
                 {FollowButton}
-              </span>
+              </Box>
             </>
           )}
-        </Flex>
+        </Sans>
       </Flex>
     </Container>
   )

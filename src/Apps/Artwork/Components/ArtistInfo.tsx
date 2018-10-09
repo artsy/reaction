@@ -54,6 +54,7 @@ export const ArtistInfo: SFC<ArtistInfoProps> = props => {
                   <Sans
                     size="2"
                     weight="medium"
+                    color="black"
                     style={{
                       cursor: "pointer",
                       textDecoration: "underline",
