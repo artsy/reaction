@@ -54,6 +54,7 @@ class Filter extends Component<Props, State> {
         max={FilterState.MAX_PRICE}
         step={50}
         defaultValue={[initialMin, initialMax]}
+        disabled={filters.state.at_auction}
         onAfterChange={([min, max]) => {
           const minStr = min === FilterState.MIN_PRICE ? "*" : min
           const maxStr = max === FilterState.MAX_PRICE ? "*" : max
@@ -97,6 +98,7 @@ class Filter extends Component<Props, State> {
         <Checkbox
           selected={filters.state.at_auction}
           onSelect={value => filters.setFilter("at_auction", value, mediator)}
+          disabled={filters.isPriceSelected()}
         >
           Bid
         </Checkbox>

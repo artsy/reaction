@@ -145,6 +145,10 @@ export class FilterState extends Container<State> {
     })
   }
 
+  isPriceSelected(): boolean {
+    return this.state.price_range !== "*-*"
+  }
+
   priceRangeToTuple(): [number, number] {
     const [minStr, maxStr] = this.state.price_range.split("-")
     const min = minStr === "*" ? FilterState.MIN_PRICE : Number(minStr)
