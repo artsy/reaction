@@ -102,6 +102,7 @@ const ReadMoreLinkContainer = styled.span`
   cursor: pointer;
   text-decoration: underline;
   display: inline-block;
+  white-space: nowrap;
 `
 
 // NOTE: Couldn't use @artsy/palette / Sans due to root element being a `div`;

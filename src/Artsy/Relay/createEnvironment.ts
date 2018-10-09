@@ -104,7 +104,7 @@ export function createEnvironment(config: Config = {}) {
         }
       },
       loggingEnabled && loggerMiddleware(),
-      loggingEnabled && errorMiddleware(),
+      loggingEnabled && errorMiddleware({ disableServerMiddlewareTip: true }),
     ])
 
   const source = new RecordSource()

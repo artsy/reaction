@@ -22,7 +22,12 @@ interface ArtistInfoProps {
   mediator?: Mediator
 }
 
+const Container = ({ children }) => (
+  <StackableBorderBox p={2}>{children}</StackableBorderBox>
+)
+
 export const ArtistInfo: SFC<ArtistInfoProps> = props => {
+  const showArtistBio = !!props.artist.biography_blurb.text
   const imageUrl = get(props, p => p.artist.image.cropped.url)
 
   return (
@@ -69,23 +74,28 @@ export const ArtistInfo: SFC<ArtistInfoProps> = props => {
             </FollowArtistButton>
           }
         />
-        <Spacer mb={1} />
-        <ArtistBio bio={props.artist} />
+        {showArtistBio && (
+          <>
+            <Spacer mb={1} />
+            <ArtistBio bio={props.artist} />
+          </>
+        )}
       </StackableBorderBox>
-      <StackableBorderBox p={2}>
-        <MarketInsights artist={props.artist} border={false} />
-      </StackableBorderBox>
-      <StackableBorderBox p={2}>
-        <SelectedExhibitions
-          artistID={props.artist.id}
-          border={false}
-          totalExhibitions={props.artist.counts.partner_shows}
-          exhibitions={props.artist.exhibition_highlights}
-          ViewAllLink={
-            <a href={`${sd.APP_URL}/artist/${props.artist.id}/cv`}>View all</a>
-          }
-        />
-      </StackableBorderBox>
+      <MarketInsights
+        artist={props.artist}
+        border={false}
+        Container={Container}
+      />
+      <SelectedExhibitions
+        artistID={props.artist.id}
+        border={false}
+        totalExhibitions={props.artist.counts.partner_shows}
+        exhibitions={props.artist.exhibition_highlights}
+        ViewAllLink={
+          <a href={`${sd.APP_URL}/artist/${props.artist.id}/cv`}>View all</a>
+        }
+        Container={Container}
+      />
     </>
   )
 }
@@ -112,6 +122,13 @@ export const ArtistInfoFragmentContainer = createFragmentContainer(
       ...ArtistBio_bio
       ...MarketInsightsArtistPage_artist
       ...FollowArtistButton_artist
+
+      # The below data is only used to determine whether a section
+      # should be rendered
+
+      biography_blurb(format: HTML, partner_bio: true) {
+        text
+      }
     }
   `
 )
