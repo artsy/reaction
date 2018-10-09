@@ -60,6 +60,7 @@ export class NavigationTabs extends React.Component<Props> {
               {({ xs }) => {
                 return (
                   <RouteTabs
+                    // FIXME: Don't use negative margins, adjust container padding responsively
                     mx={xs ? -4 : 0}
                     pl={xs ? 4 : 0}
                     size={xs ? "xs" : null}

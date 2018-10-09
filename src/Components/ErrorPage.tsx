@@ -2,6 +2,7 @@ import { Button, color, Serif, Spacer } from "@artsy/palette"
 import { garamond } from "Assets/Fonts"
 import React from "react"
 import styled from "styled-components"
+import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 
 interface ErrorPageProps {
   code: number
@@ -24,7 +25,7 @@ export class ErrorPage extends React.Component<ErrorPageProps, null> {
     const detailMessage = message ? `Error Message: ${message}` : detail
 
     return (
-      <>
+      <HorizontalPadding>
         <ErrorCodeBackground code={code}>
           <ErrorDefaultMessage>{defaultMessage}</ErrorDefaultMessage>
           {code !== 404 && <ErrorInner>{detailMessage}</ErrorInner>}
@@ -38,7 +39,7 @@ export class ErrorPage extends React.Component<ErrorPageProps, null> {
             <Button size="large">Go to Artsy homepage</Button>
           </Link>
         </ErrorCodeBackground>
-      </>
+      </HorizontalPadding>
     )
   }
 }

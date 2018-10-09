@@ -28,6 +28,7 @@ import {
 import { injectStripe, ReactStripeElements } from "react-stripe-elements"
 import { Collapse } from "Styleguide/Components"
 import { Col, Row } from "Styleguide/Elements/Grid"
+import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { Responsive } from "Utils/Responsive"
 
 export const ContinueButton = props => (
@@ -154,77 +155,88 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
 
     return (
       <>
-        <Row>
-          <Col>
-            <BuyNowStepper currentStep={"payment"} />
-          </Col>
-        </Row>
+        <HorizontalPadding px={[0, 4]}>
+          <Row>
+            <Col>
+              <BuyNowStepper currentStep={"payment"} />
+            </Col>
+          </Row>
+        </HorizontalPadding>
 
         <Responsive>
           {({ xs }) => (
-            <TwoColumnLayout
-              Content={
-                <Flex
-                  flexDirection="column"
-                  style={isCommittingMutation ? { pointerEvents: "none" } : {}}
-                >
-                  <Join separator={<Spacer mb={3} />}>
-                    <Flex flexDirection="column">
-                      <Serif mb={1} size="3t" color="black100" lineHeight={18}>
-                        Credit card
-                      </Serif>
-                      <CreditCardInput
-                        error={stripeError}
-                        onChange={response => {
-                          this.setState({ stripeError: response.error })
-                        }}
-                      />
-                    </Flex>
+            <HorizontalPadding>
+              <TwoColumnLayout
+                Content={
+                  <Flex
+                    flexDirection="column"
+                    style={
+                      isCommittingMutation ? { pointerEvents: "none" } : {}
+                    }
+                  >
+                    <Join separator={<Spacer mb={3} />}>
+                      <Flex flexDirection="column">
+                        <Serif
+                          mb={1}
+                          size="3t"
+                          color="black100"
+                          lineHeight={18}
+                        >
+                          Credit card
+                        </Serif>
+                        <CreditCardInput
+                          error={stripeError}
+                          onChange={response => {
+                            this.setState({ stripeError: response.error })
+                          }}
+                        />
+                      </Flex>
 
-                    {!this.isPickup() && (
-                      <Checkbox
-                        selected={this.state.hideBillingAddress}
-                        onSelect={this.handleChangeHideBillingAddress}
-                      >
-                        Use shipping address.
-                      </Checkbox>
+                      {!this.isPickup() && (
+                        <Checkbox
+                          selected={this.state.hideBillingAddress}
+                          onSelect={this.handleChangeHideBillingAddress}
+                        >
+                          Use shipping address.
+                        </Checkbox>
+                      )}
+                      <Collapse open={this.needsAddress()}>
+                        <AddressForm
+                          defaultValue={address}
+                          errors={addressErrors}
+                          onChange={this.onAddressChange}
+                          billing
+                        />
+                      </Collapse>
+                      {!xs && (
+                        <ContinueButton
+                          onClick={this.onContinue}
+                          loading={isCommittingMutation}
+                        />
+                      )}
+                    </Join>
+                    <Spacer mb={3} />
+                  </Flex>
+                }
+                Sidebar={
+                  <Flex flexDirection="column">
+                    <TransactionSummary order={order} mb={[2, 3]} />
+                    <Helper
+                      artworkId={order.lineItems.edges[0].node.artwork.id}
+                    />
+                    {xs && (
+                      <>
+                        <Spacer mb={3} />
+                        <ContinueButton
+                          onClick={this.onContinue}
+                          loading={isCommittingMutation}
+                        />
+                      </>
                     )}
-                    <Collapse open={this.needsAddress()}>
-                      <AddressForm
-                        defaultValue={address}
-                        errors={addressErrors}
-                        onChange={this.onAddressChange}
-                        billing
-                      />
-                    </Collapse>
-                    {!xs && (
-                      <ContinueButton
-                        onClick={this.onContinue}
-                        loading={isCommittingMutation}
-                      />
-                    )}
-                  </Join>
-                  <Spacer mb={3} />
-                </Flex>
-              }
-              Sidebar={
-                <Flex flexDirection="column">
-                  <TransactionSummary order={order} mb={[2, 3]} />
-                  <Helper
-                    artworkId={order.lineItems.edges[0].node.artwork.id}
-                  />
-                  {xs && (
-                    <>
-                      <Spacer mb={3} />
-                      <ContinueButton
-                        onClick={this.onContinue}
-                        loading={isCommittingMutation}
-                      />
-                    </>
-                  )}
-                </Flex>
-              }
-            />
+                  </Flex>
+                }
+              />
+            </HorizontalPadding>
           )}
         </Responsive>
 

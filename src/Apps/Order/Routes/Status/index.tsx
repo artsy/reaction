@@ -5,6 +5,7 @@ import { Mediator } from "Artsy/SystemContext"
 import React, { Component } from "react"
 import { Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
+import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { get } from "Utils/get"
 import { Responsive } from "Utils/Responsive"
 import { Helper } from "../../Components/Helper"
@@ -107,7 +108,7 @@ export class StatusRoute extends Component<StatusProps> {
     return (
       <Responsive>
         {({ xs }) => (
-          <>
+          <HorizontalPadding>
             <Serif size="6" weight="regular" color="black100">
               {this.stateCopy()}
             </Serif>
@@ -137,7 +138,7 @@ export class StatusRoute extends Component<StatusProps> {
                 </Flex>
               }
             />
-          </>
+          </HorizontalPadding>
         )}
       </Responsive>
     )
