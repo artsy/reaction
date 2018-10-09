@@ -68,6 +68,11 @@ export enum ActionType {
    * TODO: Check if ‘Click’ and this can be combined.
    */
   Tap = "Tap",
+
+  /**
+   * BNMO
+   */
+  SubmittedOrder = "submitted_order",
 }
 
 /**

@@ -4,6 +4,7 @@ import { ReviewSubmitOrderMutation } from "__generated__/ReviewSubmitOrderMutati
 import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
 import { ItemReviewFragmentContainer as ItemReview } from "Apps/Order/Components/ItemReview"
 import { ShippingAndPaymentReviewFragmentContainer as ShippingAndPaymentReview } from "Apps/Order/Components/ShippingAndPaymentReview"
+import * as Schema from "Artsy/Analytics/Schema"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { RouteConfig, Router } from "found"
 import React, { Component } from "react"
@@ -13,6 +14,7 @@ import {
   graphql,
   RelayProp,
 } from "react-relay"
+import track from "react-tracking"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { get } from "Utils/get"
@@ -36,6 +38,7 @@ interface ReviewState {
   errorModalCtaAction: () => null
 }
 
+@track()
 export class ReviewRoute extends Component<ReviewProps, ReviewState> {
   state = {
     isSubmitting: false,
@@ -43,6 +46,19 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
     errorModalMessage: null,
     errorModalTitle: null,
     errorModalCtaAction: null,
+  }
+
+  constructor(props) {
+    super(props)
+    this.onSuccessfulSubmit = this.onSuccessfulSubmit.bind(this)
+  }
+
+  @track(props => ({
+    action_type: Schema.ActionType.SubmittedOrder,
+    order_id: props.order.id,
+  }))
+  onSuccessfulSubmit() {
+    this.props.router.push(`/orders/${this.props.order.id}/status`)
   }
 
   onOrderSubmitted() {
@@ -118,7 +134,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                   }
                 }
               } else {
-                this.props.router.push(`/orders/${this.props.order.id}/status`)
+                this.onSuccessfulSubmit()
               }
             },
             onError: this.onMutationError.bind(this),
