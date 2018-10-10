@@ -44,7 +44,7 @@ import { Responsive } from "Utils/Responsive"
 
 export interface ShippingProps {
   order: Shipping_order
-  mediator?: Mediator
+  mediator: Mediator
   relay?: RelayProp
   router: Router
 }
@@ -70,6 +70,10 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     addressErrors: {},
     errorModalTitle: null,
     errorModalMessage: null,
+  }
+
+  componentDidMount() {
+    this.props.mediator.trigger("order:shipping")
   }
 
   get startingAddress() {

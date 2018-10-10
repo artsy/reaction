@@ -17,6 +17,7 @@ import { StatusFragmentContainer as StatusRoute } from "Apps/Order/Routes/Status
 import { ComponentClass, StatelessComponent } from "react"
 
 // @ts-ignore
+import { ContextConsumer } from "Artsy"
 import { ErrorPage } from "Components/ErrorPage"
 // @ts-ignore
 import { PaymentProps } from "./Routes/Payment"
@@ -26,6 +27,24 @@ import { ReviewProps } from "./Routes/Review"
 import { ShippingProps } from "./Routes/Shipping"
 // @ts-ignore
 import { StatusProps } from "./Routes/Status"
+
+const ShippingRouteWrapper = props => (
+  <ContextConsumer>
+    {({ mediator }) => <ShippingRoute {...props} mediator={mediator} />}
+  </ContextConsumer>
+)
+
+const PaymentRouteWrapper = props => (
+  <ContextConsumer>
+    {({ mediator }) => <PaymentRoute {...props} mediator={mediator} />}
+  </ContextConsumer>
+)
+
+const ReviewRouteWrapper = props => (
+  <ContextConsumer>
+    {({ mediator }) => <ReviewRoute {...props} mediator={mediator} />}
+  </ContextConsumer>
+)
 
 // FIXME:
 // * `render` functions requires casting
@@ -59,7 +78,7 @@ export const routes: RouteConfig[] = [
     children: [
       {
         path: "shipping",
-        Component: ShippingRoute,
+        Component: ShippingRouteWrapper,
         onTransition: confirmRouteExit,
         query: graphql`
           query routes_ShippingQuery($orderID: String!) {
@@ -74,7 +93,7 @@ export const routes: RouteConfig[] = [
       },
       {
         path: "payment",
-        Component: PaymentRoute,
+        Component: PaymentRouteWrapper,
         onTransition: confirmRouteExit,
         query: graphql`
           query routes_PaymentQuery($orderID: String!) {
@@ -89,7 +108,7 @@ export const routes: RouteConfig[] = [
       },
       {
         path: "review",
-        Component: ReviewRoute,
+        Component: ReviewRouteWrapper,
         onTransition: confirmRouteExit,
         query: graphql`
           query routes_ReviewQuery($orderID: String!) {

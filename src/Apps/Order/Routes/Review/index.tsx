@@ -5,6 +5,7 @@ import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
 import { ItemReviewFragmentContainer as ItemReview } from "Apps/Order/Components/ItemReview"
 import { ShippingAndPaymentReviewFragmentContainer as ShippingAndPaymentReview } from "Apps/Order/Components/ShippingAndPaymentReview"
 import * as Schema from "Artsy/Analytics/Schema"
+import { Mediator } from "Artsy/SystemContext"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { RouteConfig, Router } from "found"
 import React, { Component } from "react"
@@ -24,6 +25,7 @@ import { TransactionSummaryFragmentContainer as TransactionSummary } from "../..
 import { TwoColumnLayout } from "../../Components/TwoColumnLayout"
 
 export interface ReviewProps {
+  mediator: Mediator
   order: Review_order
   relay?: RelayProp
   router: Router
@@ -51,6 +53,10 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
   constructor(props) {
     super(props)
     this.onSuccessfulSubmit = this.onSuccessfulSubmit.bind(this)
+  }
+
+  componentDidMount() {
+    this.props.mediator.trigger("order:review")
   }
 
   @track(props => ({
