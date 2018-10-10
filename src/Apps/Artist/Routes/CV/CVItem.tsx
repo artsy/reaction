@@ -3,7 +3,7 @@ import { groupBy } from "lodash"
 import React, { Component } from "react"
 import styled from "styled-components"
 import { Col, Row } from "Styleguide/Elements/Grid"
-import { Responsive } from "Utils/Responsive"
+import { Media, Responsive } from "Utils/Responsive"
 
 import {
   Box,
@@ -89,46 +89,41 @@ class CVItem extends Component<CVItemProps, CVItemState> {
     )
 
     return (
-      /**
-       * TODO:  replace with new responsive component
-       *
-       * Sometimes conditional rendering utilities are helpful, though the below
-       * would most likely benefit from a refactor since the code is a bit crazy
-       */
       <Responsive>
-        {({ xs, sm, md }) => {
+        {({ xs }) => {
           // Element spacing - correction for lineheight
           const sectionSpace = space(4) - 4
 
           return (
             <CVItems className="cvItems">
-              {(xs || sm || md) && (
+              <Media between={["xs", "md"]}>
                 <Row>
                   <Col>
                     <Category size={xs ? "2" : "3"} weight="medium">
                       {this.props.category}
                     </Category>
-                    <Spacer mb={xs ? 0.5 : 1} />
+                    <Spacer mb={[0.5, 1]} />
                   </Col>
                 </Row>
-              )}
+              </Media>
               {Object.keys(groupedByYear)
                 .sort()
                 .reverse()
                 .map((year, index) => {
                   const isFirst = index === 0
                   const yearGroup = groupedByYear[year]
-                  return xs ? (
-                    <Flex key={index}>
-                      <Year size="2" mr={1}>
-                        {year}
-                      </Year>
-                      <Box>{this.renderEntries(yearGroup, "2")}</Box>
-                    </Flex>
-                  ) : (
-                    <Row key={index}>
-                      {!sm &&
-                        !md && (
+                  return (
+                    <>
+                      <Media at="xs">
+                        <Flex key={index}>
+                          <Year size="2" mr={1}>
+                            {year}
+                          </Year>
+                          <Box>{this.renderEntries(yearGroup, "2")}</Box>
+                        </Flex>
+                      </Media>
+                      <Row key={index}>
+                        <Media greaterThanOrEqual="lg">
                           <Col xl={2} lg={2}>
                             {isFirst && (
                               <Category size="3" weight="medium">
@@ -136,16 +131,17 @@ class CVItem extends Component<CVItemProps, CVItemState> {
                               </Category>
                             )}
                           </Col>
-                        )}
-                      <Col lg={1} md={2} sm={2}>
-                        <Year mr={2} size="3">
-                          {year}
-                        </Year>
-                      </Col>
-                      <Col md={8} lg={9} xl={9} sm={10}>
-                        {this.renderEntries(yearGroup)}
-                      </Col>
-                    </Row>
+                        </Media>
+                        <Col lg={1} md={2} sm={2}>
+                          <Year mr={2} size="3">
+                            {year}
+                          </Year>
+                        </Col>
+                        <Col md={8} lg={9} xl={9} sm={10}>
+                          {this.renderEntries(yearGroup)}
+                        </Col>
+                      </Row>
+                    </>
                   )
                 })}
 
@@ -157,16 +153,23 @@ class CVItem extends Component<CVItemProps, CVItemState> {
                       onClick={() => this.loadMore()}
                       loading={this.state.isLoading ? true : false}
                       width={xs ? "100%" : ""}
-                      mt={xs ? 1 : 2}
+                      mt={[1, 2]}
                     />
 
-                    {xs && <Spacer mb={1} />}
+                    <Media at="xs">
+                      <Spacer mb={1} />
+                    </Media>
                   </Col>
                 </Row>
               )}
 
               <div className="cvSeparator">
-                {xs ? <Spacer mt={1} /> : <Separator my={sectionSpace} />}
+                <Media at="xs">
+                  <Spacer mt={1} />
+                </Media>
+                <Media greaterThan="xs">
+                  <Separator my={sectionSpace} />
+                </Media>
               </div>
             </CVItems>
           )
