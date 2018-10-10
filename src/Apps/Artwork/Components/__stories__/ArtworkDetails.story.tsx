@@ -4,7 +4,7 @@ import { Section } from "Styleguide/Utils/Section"
 import { ArtworkDetails, ArtworkDetailsQueryRenderer } from "../ArtworkDetails"
 
 import { AllAdditionalDetailsPresent } from "Apps/__test__/Fixtures/Artworks"
-import { RelayStubProvider } from "Utils/RelayStubProvider"
+import { RelayStubProvider } from "DevTools/RelayStubProvider"
 
 storiesOf("Styleguide/Artwork", module)
   .addDecorator(story => <RelayStubProvider>{story()}</RelayStubProvider>)
