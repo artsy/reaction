@@ -1,6 +1,14 @@
 import React from "react"
 import styled, { css, InterpolationValue } from "styled-components"
 
+type RenderProp = ((
+  generatedStyle: RenderPropStyleGenerator
+) => React.ReactNode)
+
+type RenderPropStyleGenerator = (
+  matchingStyle?: InterpolationValue[]
+) => InterpolationValue[]
+
 const MutuallyExclusiveProps = [
   "query",
   "at",
@@ -14,27 +22,207 @@ const MutuallyExclusiveProps = [
 // TODO: All of these props should be mutually exclusive. Using a union should
 //       probably be made possible by https://github.com/Microsoft/TypeScript/pull/27408.
 export interface Props<B, I> {
-  not?: boolean
+  /**
+   * Allows you to pass in any CSS Media Query that will be used to
+   * conditionally show or hide the children.
+   *
+   * Use this sparingly and consider making your use-case part of the API,
+   * because these raw strings cannot be used directly on React Native.
+   */
   query?: string
+
+  /**
+   * Children will only be shown if the viewport matches the specified
+   * breakpoint. That is, a viewport width that’s higher than the configured
+   * breakpoint value, but lower than the value of the next breakpoint, if any
+   * larger breakpoints exist at all.
+   *
+   * @example
+
+     ```tsx
+     // With breakpoints defined like these
+     { xs: 0, sm: 768, md: 1024 }
+
+     // Matches a viewport that has a width between 0 and 768
+     <Media at="xs">ohai</Media>
+
+     // Matches a viewport that has a width between 768 and 1024
+     <Media at="sm">ohai</Media>
+
+     // Matches a viewport that has a width over 1024
+     <Media at="md">ohai</Media>
+     ```
+   *
+   */
   at?: B
+
+  /**
+   * Children will only be shown if the viewport is smaller than the specified
+   * breakpoint.
+   *
+   * @example
+
+     ```tsx
+     // With breakpoints defined like these
+     { xs: 0, sm: 768, md: 1024 }
+
+    // Matches a viewport that has a width from 0 to 767
+     <Media lessThan="sm">ohai</Media>
+
+     // Matches a viewport that has a width from 0 to 1023
+     <Media lessThan="md">ohai</Media>
+     ```
+   *
+   */
   lessThan?: B
+
+  /**
+   * Children will only be shown if the viewport is greater than the specified
+   * breakpoint.
+   *
+   * @example
+
+     ```tsx
+     // With breakpoints defined like these
+     { xs: 0, sm: 768, md: 1024 }
+
+     // Matches a viewport that has a width from 768 to infinity
+     <Media greaterThan="xs">ohai</Media>
+
+     // Matches a viewport that has a width from 1024 to infinity
+     <Media greaterThan="sm">ohai</Media>
+     ```
+   *
+   */
   greaterThan?: B
+
+  /**
+   * Children will only be shown if the viewport is greater or equal to the
+   * specified breakpoint.
+   *
+   * @example
+
+     ```tsx
+     // With breakpoints defined like these
+     { xs: 0, sm: 768, md: 1024 }
+
+     // Matches a viewport that has a width from 0 to infinity
+     <Media greaterThanOrEqual="xs">ohai</Media>
+
+     // Matches a viewport that has a width from 768 to infinity
+     <Media greaterThanOrEqual="sm">ohai</Media>
+
+     // Matches a viewport that has a width from 1024 to infinity
+     <Media greaterThanOrEqual="md">ohai</Media>
+     ```
+   *
+   */
   greaterThanOrEqual?: B
+
+  /**
+   * Children will only be shown if the viewport is between the specified
+   * breakpoints. That is, a viewport width that’s higher than or equal to the
+   * small breakpoint value, but lower than the value of the large breakpoint.
+   *
+   * @example
+
+     ```tsx
+     // With breakpoints defined like these
+     { xs: 0, sm: 768, md: 1024 }
+
+     // Matches a viewport that has a width from 0 to 767
+     <Media between={["xs", "sm"]}>ohai</Media>
+
+     // Matches a viewport that has a width from 0 to 1023
+     <Media between={["xs", "md"]}>ohai</Media>
+     ```
+   *
+   */
   between?: [B, B]
+
+  /**
+   * Children will only be shown if the interaction query matches.
+   *
+   * @example
+
+     ```tsx
+     // With interactions defined like these
+     { hover: negate => `(hover: ${negate ? "hover" : "none"})` }
+
+     // Matches an input device that is capable of hovering
+     <Media interaction="hover">ohai</Media>
+     ```
+   */
   interaction?: I
+
+  /**
+   * Used to negate an `interaction`.
+   *
+   * @example
+
+     ```tsx
+     // With interactions defined like these
+     { hover: negate => `(hover: ${negate ? "hover" : "none"})` }
+
+     // Matches an input device that is not capable of hovering
+     <Media not interaction="hover">ohai</Media>
+     ```
+   *
+   */
+  not?: boolean
+
+  /**
+   * Either typical React nodes, in which case they will be wrapped in a `div`
+   * element that using styled-components has had the media query applied.
+   *
+   * In case a different element is preferred or styling for both the matching
+   * and not matching states should be added, a render prop can be provided.
+   *
+   * @example
+   *
+     ```tsx
+     <Media greaterThan="xs">
+      {generatedStyle => {
+        const Container = styled.span`
+          // Regular component styling
+          ${generatedStyle(css`
+            // Optional styling that is applied to the matching state
+            font-family: "Comic Sans MS";
+          `)}
+        `
+        return <Container>ohai</Container>
+      }}
+     </Media>
+     ```
+   *
+   */
   children: React.ReactNode | RenderProp
 }
 
-type RenderProp = ((
-  generatedStyle: RenderPropStyleGenerator
-) => React.ReactNode)
-
-type RenderPropStyleGenerator = (
-  matchingStyle?: InterpolationValue[]
-) => InterpolationValue[]
-
 /**
- * breakpoints are 0-based
+ * This is used to generate a Media component and its context provider based on
+ * your application’s breakpoints and interactions.
+ *
+ * @example
+ *
+   ```tsx
+   const MyAppMedia = createMedia({
+     breakpoints: {
+       xs: 0,
+       sm: 768,
+       md: 900
+       lg: 1024,
+       xl: 1192,
+     },
+     interactions: {
+       hover: negate => `(hover: ${negate ? "hover" : "none"})`
+     },
+   })
+
+   export const Media = MyAppMedia.Media
+   export const MediaContextProvider = MyAppMedia.MediaContextProvider
+   ```
+ *
  */
 export function createMedia<
   C extends {
