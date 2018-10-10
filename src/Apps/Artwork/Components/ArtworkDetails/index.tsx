@@ -1,6 +1,5 @@
-import { Box } from "@artsy/palette"
+import { Box, Spinner } from "@artsy/palette"
 import { ContextConsumer } from "Artsy/Router"
-import Spinner from "Components/Spinner"
 import React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 import { Tab, Tabs } from "Styleguide/Components"

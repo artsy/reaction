@@ -1,7 +1,5 @@
-import { Separator, Serif, Spacer } from "@artsy/palette"
-import { Box } from "@artsy/palette"
+import { Box, Separator, Serif, Spacer, Spinner } from "@artsy/palette"
 import { ContextConsumer } from "Artsy/Router"
-import Spinner from "Components/Spinner"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 import { ArtworkSidebarArtistsFragmentContainer as Artists } from "./ArtworkSidebarArtists"
@@ -39,6 +37,7 @@ export class ArtworkSidebar extends Component<ArtworkSidebarProps> {
             </Serif>
           )}
         <Metadata artwork={artwork} />
+        <Spacer mb={2} />
 
         {artwork.is_in_auction ? (
           <React.Fragment>
@@ -49,7 +48,7 @@ export class ArtworkSidebar extends Component<ArtworkSidebarProps> {
           </React.Fragment>
         ) : (
           <React.Fragment>
-            <Separator />
+            <Separator mt={3} mb={1} />
             <Commercial artwork={artwork} />
             <PartnerInfo artwork={artwork} />
           </React.Fragment>

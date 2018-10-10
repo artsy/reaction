@@ -11,7 +11,7 @@ describe("FollowIcon", () => {
   })
 
   it("shows unfollow", () => {
-    const wrapper = mount(<FollowIcon is_followed />)
+    const wrapper = mount(<FollowIcon isFollowed />)
     expect(wrapper.find("Following").length).toBe(1)
     expect(wrapper.find("Unfollow").length).toBe(1)
     expect(wrapper.find("Follow").length).toBe(0)
