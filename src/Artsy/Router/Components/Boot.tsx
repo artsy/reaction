@@ -6,18 +6,13 @@ import React from "react"
 import { HeadProvider } from "react-head"
 import { Environment } from "relay-runtime"
 import { GridThemeProvider } from "styled-bootstrap-grid"
-import styled from "styled-components"
 import { GlobalStyles } from "Styleguide/Elements/GlobalStyles"
 import { Grid } from "Styleguide/Elements/Grid"
 import { BreakpointVisualizer } from "Styleguide/Utils/BreakpointVisualizer"
 import { Provider as StateProvider } from "unstated"
 import Events from "Utils/Events"
 
-import {
-  MatchingMediaQueries,
-  Responsive,
-  ResponsiveProvider,
-} from "Utils/Responsive"
+import { MatchingMediaQueries, ResponsiveProvider } from "Utils/Responsive"
 
 export interface BootProps {
   context: object
@@ -53,19 +48,10 @@ export class Boot extends React.Component<BootProps> {
                 <GridThemeProvider gridTheme={themeProps.grid}>
                   <Grid fluid>
                     <GlobalStyles>
-                      <Responsive>
-                        {({ xs }) => {
-                          // FIXME: Padding should be moved out of here
-                          return (
-                            <Padding padding={xs ? 20 : 40}>
-                              {children}
-                              {process.env.NODE_ENV === "development" && (
-                                <BreakpointVisualizer />
-                              )}
-                            </Padding>
-                          )
-                        }}
-                      </Responsive>
+                      {children}
+                      {process.env.NODE_ENV === "development" && (
+                        <BreakpointVisualizer />
+                      )}
                     </GlobalStyles>
                   </Grid>
                 </GridThemeProvider>
@@ -77,10 +63,3 @@ export class Boot extends React.Component<BootProps> {
     )
   }
 }
-
-const Padding = styled.div.attrs<{ padding: number }>({})`
-  padding-right: ${p => p.padding}px;
-  padding-left: ${p => p.padding}px;
-  margin-right: auto;
-  margin-left: auto;
-`

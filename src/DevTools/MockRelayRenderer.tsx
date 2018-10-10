@@ -36,10 +36,10 @@ export interface MockRelayRendererProps {
  * return for those. See {@link https://www.apollographql.com/docs/graphql-tools/mocking.html#Customizing-mocks}
  *
  * @example
- * 
+ *
    ```tsx
    jest.unmock("react-relay")
- 
+
    const Artwork = createFragmentContainer(
      props => (
        <div>
@@ -148,7 +148,7 @@ export const MockRelayRenderer = ({
  * @param until
  * An optional callback that is used to test wether rendering should be
  * considered finished. This is a regular enzyme wrapper.
- * 
+ *
  * @param wrapper
  * An optional component that the Relay tree should be nested in. Use this to
  * e.g. setup any context provider components etc.
@@ -157,7 +157,7 @@ export const MockRelayRenderer = ({
  *
    ```tsx
    jest.unmock("react-relay")
- 
+
    const Artwork = createFragmentContainer(
      props => (
        <div>

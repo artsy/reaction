@@ -5,19 +5,21 @@ import { Box } from "@artsy/palette"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
-import { RelayStubProvider } from "Utils/RelayStubProvider"
 import { ArtistInfoQueryRenderer } from "../ArtistInfo"
 
-storiesOf("Styleguide/Artwork", module)
-  .addDecorator(story => <RelayStubProvider>{story()}</RelayStubProvider>)
-  .add("ArtistInfo", () => {
-    return (
-      <React.Fragment>
-        <Section title="ArtistInfoQueryRenderer">
-          <Box width="100%">
-            <ArtistInfoQueryRenderer artistID="pablo-picasso" />
-          </Box>
-        </Section>
-      </React.Fragment>
-    )
-  })
+storiesOf("Styleguide/Artwork", module).add("ArtistInfo", () => {
+  return (
+    <React.Fragment>
+      <Section title="ArtistInfoQueryRenderer">
+        <Box width="100%">
+          <ArtistInfoQueryRenderer artistID="pablo-picasso" />
+        </Box>
+      </Section>
+      <Section title="Artist with little content">
+        <Box width="100%">
+          <ArtistInfoQueryRenderer artistID="chonat-getz" />
+        </Box>
+      </Section>
+    </React.Fragment>
+  )
+})

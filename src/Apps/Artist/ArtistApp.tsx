@@ -8,6 +8,7 @@ import React from "react"
 import { LazyLoadComponent } from "react-lazy-load-image-component"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Col, Row } from "Styleguide/Elements/Grid"
+import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { Subscribe } from "unstated"
 import { ArtistHeaderFragmentContainer as ArtistHeader } from "./Components/ArtistHeader"
 import { LoadingArea } from "./Components/LoadingArea"
@@ -35,7 +36,7 @@ export class ArtistApp extends React.Component<ArtistAppProps> {
     const { artist, children } = this.props
 
     return (
-      <>
+      <HorizontalPadding>
         <Row>
           <Col>
             <ArtistHeader artist={artist} />
@@ -80,7 +81,7 @@ export class ArtistApp extends React.Component<ArtistAppProps> {
             <Footer />
           </Col>
         </Row>
-      </>
+      </HorizontalPadding>
     )
   }
 }

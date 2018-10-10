@@ -14,6 +14,7 @@ import {
   RelayProp,
 } from "react-relay"
 import { Col, Row } from "Styleguide/Elements/Grid"
+import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { get } from "Utils/get"
 import { Responsive } from "Utils/Responsive"
 import { Helper } from "../../Components/Helper"
@@ -186,31 +187,69 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
 
     return (
       <>
-        <Row>
-          <Col>
-            <BuyNowStepper currentStep={"review"} />
-          </Col>
-        </Row>
+        <HorizontalPadding px={[0, 4]}>
+          <Row>
+            <Col>
+              <BuyNowStepper currentStep={"review"} />
+            </Col>
+          </Row>
+        </HorizontalPadding>
 
         <Responsive>
           {({ xs }) => (
-            <TwoColumnLayout
-              Content={
-                <>
-                  <Join separator={<Spacer mb={3} />}>
-                    <ShippingAndPaymentReview
-                      order={order}
-                      onChangePayment={this.onChangePayment.bind(this)}
-                      onChangeShipping={this.onChangeShipping.bind(this)}
-                      mb={xs ? 2 : 3}
-                    />
+            <HorizontalPadding>
+              <TwoColumnLayout
+                Content={
+                  <>
+                    <Join separator={<Spacer mb={3} />}>
+                      <ShippingAndPaymentReview
+                        order={order}
+                        onChangePayment={this.onChangePayment.bind(this)}
+                        onChangeShipping={this.onChangeShipping.bind(this)}
+                        mb={xs ? 2 : 3}
+                      />
 
+                      {!xs && (
+                        <>
+                          <ItemReview
+                            artwork={order.lineItems.edges[0].node.artwork}
+                          />
+                          <Spacer mb={3} />
+                          <Button
+                            size="large"
+                            width="100%"
+                            loading={isSubmitting}
+                            onClick={() => this.onOrderSubmitted()}
+                          >
+                            Submit
+                          </Button>
+                          <Spacer mb={2} />
+                          <Sans textAlign="center" size="2" color="black60">
+                            By clicking Submit, I agree to Artsy’s{" "}
+                            <a
+                              href="https://www.artsy.net/conditions-of-sale"
+                              target="_blank"
+                            >
+                              Conditions of Sale
+                            </a>
+                            .
+                          </Sans>
+                        </>
+                      )}
+                    </Join>
+                    <Spacer mb={3} />
+                  </>
+                }
+                Sidebar={
+                  <Flex flexDirection="column">
+                    <TransactionSummary order={order} mb={xs ? 2 : 3} />
                     {!xs && (
+                      <Helper
+                        artworkId={order.lineItems.edges[0].node.artwork.id}
+                      />
+                    )}
+                    {xs && (
                       <>
-                        <ItemReview
-                          artwork={order.lineItems.edges[0].node.artwork}
-                        />
-                        <Spacer mb={3} />
                         <Button
                           size="large"
                           width="100%"
@@ -220,7 +259,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                           Submit
                         </Button>
                         <Spacer mb={2} />
-                        <Sans textAlign="center" size="2" color="black60">
+                        <Sans size="2" color="black60">
                           By clicking Submit, I agree to Artsy’s{" "}
                           <a
                             href="https://www.artsy.net/conditions-of-sale"
@@ -230,50 +269,16 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                           </a>
                           .
                         </Sans>
+                        <Spacer mb={2} />
+                        <Helper
+                          artworkId={order.lineItems.edges[0].node.artwork.id}
+                        />
                       </>
                     )}
-                  </Join>
-                  <Spacer mb={3} />
-                </>
-              }
-              Sidebar={
-                <Flex flexDirection="column">
-                  <TransactionSummary order={order} mb={xs ? 2 : 3} />
-                  {!xs && (
-                    <Helper
-                      artworkId={order.lineItems.edges[0].node.artwork.id}
-                    />
-                  )}
-                  {xs && (
-                    <>
-                      <Button
-                        size="large"
-                        width="100%"
-                        loading={isSubmitting}
-                        onClick={() => this.onOrderSubmitted()}
-                      >
-                        Submit
-                      </Button>
-                      <Spacer mb={2} />
-                      <Sans size="2" color="black60">
-                        By clicking Submit, I agree to Artsy’s{" "}
-                        <a
-                          href="https://www.artsy.net/conditions-of-sale"
-                          target="_blank"
-                        >
-                          Conditions of Sale
-                        </a>
-                        .
-                      </Sans>
-                      <Spacer mb={2} />
-                      <Helper
-                        artworkId={order.lineItems.edges[0].node.artwork.id}
-                      />
-                    </>
-                  )}
-                </Flex>
-              }
-            />
+                  </Flex>
+                }
+              />
+            </HorizontalPadding>
           )}
         </Responsive>
 

@@ -20,6 +20,9 @@ const sizes = theme.flexboxgrid.breakpoints
 
 type Media = { [S in keyof typeof sizes]: typeof css }
 
+/**
+ * @deprecated import { media } from `Styleguide/Elements/Grid` instead
+ */
 export const media: Media = Object.keys(sizes).reduce((accumulator, label) => {
   // using px in breakpoints to maintain uniform units with flexbox-grid
   // https://zellwk.com/blog/media-query-units/
