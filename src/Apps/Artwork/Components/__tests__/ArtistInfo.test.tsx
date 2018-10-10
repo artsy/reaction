@@ -1,6 +1,8 @@
 import { renderRelayTree } from "DevTools/MockRelayRenderer"
 import { cloneDeep } from "lodash"
+import * as React from "react"
 import { graphql } from "react-relay"
+import { MediaContextProvider } from "Utils/Responsive"
 import { ArtistInfoFixture } from "../../../__test__/Fixtures/Artwork/ArtistInfo"
 import { ArtistInfoFragmentContainer } from "../ArtistInfo"
 
@@ -17,6 +19,11 @@ describe("ArtistInfo", () => {
           }
         }
       `,
+      wrapper: wrapper => (
+        <MediaContextProvider onlyRender={["xs"]}>
+          {wrapper}
+        </MediaContextProvider>
+      ),
       mockResolvers: {
         Artist: () => response,
       },

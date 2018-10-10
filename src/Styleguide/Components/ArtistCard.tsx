@@ -5,7 +5,7 @@ import { Truncator } from "Components/Truncator"
 import React, { SFC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
-import { Media } from "Utils/Responsive/Media2"
+import { Media } from "Utils/Responsive"
 
 import {
   Avatar,

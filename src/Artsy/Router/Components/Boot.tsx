@@ -12,8 +12,11 @@ import { BreakpointVisualizer } from "Styleguide/Utils/BreakpointVisualizer"
 import { Provider as StateProvider } from "unstated"
 import Events from "Utils/Events"
 
-import { MatchingMediaQueries, ResponsiveProvider } from "Utils/Responsive"
-import { ContextProvider as MediaContextProvider } from "Utils/Responsive/Media2"
+import {
+  MatchingMediaQueries,
+  MediaContextProvider,
+  ResponsiveProvider,
+} from "Utils/Responsive"
 
 export interface BootProps {
   context: object

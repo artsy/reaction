@@ -4,7 +4,7 @@ import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Media } from "Utils/Responsive/Media2"
+import { Media } from "Utils/Responsive"
 import { ReadMore } from "./ReadMore"
 
 interface Props {

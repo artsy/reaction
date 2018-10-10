@@ -7,7 +7,7 @@ import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Compo
 import React, { Component, Fragment } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Carousel } from "Styleguide/Components"
-import { Media } from "Utils/Responsive/Media2"
+import { Media } from "Utils/Responsive"
 
 interface Props {
   artist: ArtistHeader_artist

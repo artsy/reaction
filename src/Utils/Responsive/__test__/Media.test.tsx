@@ -1,160 +1,263 @@
 import React from "react"
 import renderer from "react-test-renderer"
 import styled, { css } from "styled-components"
-import * as Media from "../Media"
+import { createMedia } from "../Media"
+
+const { Media, MediaContextProvider } = createMedia({
+  breakpoints: {
+    "extra-small": 0,
+    small: 768,
+    medium: 1024,
+    large: 1120,
+  },
+  interactions: {
+    hover: negated => `(hover:${negated ? "none" : "hover"})`,
+  },
+})
 
 describe("Media", () => {
-  describe("Query", () => {
-    it("creates a container that will only display when its query matches", () => {
+  // FIXME: Once an error is thrown it breaks all other tests
+  xit("throws when trying to use mutually exclusive props", () => {
+    expect(() => {
+      renderer.create(
+        <Media query="(width:100px)" at="extra-small">
+          ohai
+        </Media>
+      )
+    }).toThrow()
+  })
+
+  it("creates a container that will only display when its query matches", () => {
+    const query = renderer
+      .create(<Media query="(width:100px)">ohai</Media>)
+      .toJSON()
+    expect(query.type).toEqual("div")
+    expect(query).toHaveStyleRule("display", "none")
+    expect(query).toHaveStyleRule("display", "inherit", {
+      media: "(width:100px)",
+    })
+  })
+
+  describe("concerning breakpoints", () => {
+    it("creates a container that will only display when the page size is less than the specified breakpoint", () => {
       const query = renderer
-        .create(<Media.Query query="(width:100px)">ohai</Media.Query>)
+        .create(<Media lessThan="small">ohai</Media>)
         .toJSON()
       expect(query.type).toEqual("div")
       expect(query).toHaveStyleRule("display", "none")
-      expect(query).toHaveStyleRule("display", "block", {
-        media: "(width:100px)",
+      expect(query).toHaveStyleRule("display", "inherit", {
+        media: "(max-width:767px)",
       })
     })
 
-    describe("when negated", () => {
-      it("creates a container that will only display when its query does not match", () => {
-        const query = renderer
-          .create(
-            <Media.Query not query="(width:100px)">
-              ohai
-            </Media.Query>
-          )
-          .toJSON()
-        expect(query.type).toEqual("div")
-        expect(query).toHaveStyleRule("display", "none")
-        expect(query).toHaveStyleRule("display", "block", {
-          media: "not all and (width:100px)",
-        })
+    it("creates a container that will only display when the page size is greater than or equal to the next breakpoint of the specified breakpoint", () => {
+      const query = renderer
+        .create(<Media greaterThan="medium">ohai</Media>)
+        .toJSON()
+      expect(query.type).toEqual("div")
+      expect(query).toHaveStyleRule("display", "none")
+      expect(query).toHaveStyleRule("display", "inherit", {
+        media: "(min-width:1120px)",
       })
     })
 
-    describe("with a render prop", () => {
-      it("yields the generated style such that it can be applied to another element", () => {
-        const query = renderer
-          .create(
-            <Media.Query query="(width:100px)">
-              {generatedStyle => {
-                const Component = styled.span`
-                  ${generatedStyle({ display: "inline" })};
-                `
-                return <Component>ohai</Component>
-              }}
-            </Media.Query>
-          )
-          .toJSON()
-        expect(query.type).toEqual("span")
-        expect(query).toHaveStyleRule("display", "none")
-        expect(query).toHaveStyleRule("display", "inline", {
-          media: "(width:100px)",
-        })
+    it("creates a container that will only display when the page size is greater than or equal to the specified breakpoint", () => {
+      const query = renderer
+        .create(<Media greaterThanOrEqual="medium">ohai</Media>)
+        .toJSON()
+      expect(query.type).toEqual("div")
+      expect(query).toHaveStyleRule("display", "none")
+      expect(query).toHaveStyleRule("display", "inherit", {
+        media: "(min-width:1024px)",
       })
+    })
 
-      it("yields the generated style and allows adding styles to the matching media selector", () => {
-        const query = renderer
-          .create(
-            <Media.Query query="(width:100px)">
-              {generatedStyle => {
-                const Component = styled.div`
-                  ${generatedStyle({
-                    style: css`
-                      color: red;
-                    `,
-                  })};
-                `
-                return <Component>ohai</Component>
-              }}
-            </Media.Query>
-          )
-          .toJSON()
-        expect(query.type).toEqual("div")
-        expect(query).not.toHaveStyleRule("color", "red")
-        expect(query).toHaveStyleRule("color", "red", {
-          media: "(width:100px)",
-        })
+    it("creates a container that will only display when the page size is between the specified breakpoints", () => {
+      const query = renderer
+        .create(<Media between={["small", "large"]}>ohai</Media>)
+        .toJSON()
+      expect(query.type).toEqual("div")
+      expect(query).toHaveStyleRule("display", "none")
+      expect(query).toHaveStyleRule("display", "inherit", {
+        media: "(min-width:768px) and (max-width:1119px)",
+      })
+    })
+
+    describe("concerning shortcuts", () => {
+      it("creates a container that will only display when the page size is between the specified breakpoint and the next one", () => {
+        expect(
+          renderer.create(<Media at="extra-small">ohai</Media>).toJSON()
+        ).toEqual(
+          renderer
+            .create(<Media between={["extra-small", "small"]}>ohai</Media>)
+            .toJSON()
+        )
+        expect(
+          renderer.create(<Media at="small">ohai</Media>).toJSON()
+        ).toEqual(
+          renderer
+            .create(<Media between={["small", "medium"]}>ohai</Media>)
+            .toJSON()
+        )
+        expect(
+          renderer.create(<Media at="medium">ohai</Media>).toJSON()
+        ).toEqual(
+          renderer
+            .create(<Media between={["medium", "large"]}>ohai</Media>)
+            .toJSON()
+        )
+        expect(
+          renderer.create(<Media at="large">ohai</Media>).toJSON()
+        ).toEqual(
+          renderer
+            .create(<Media greaterThanOrEqual="large">ohai</Media>)
+            .toJSON()
+        )
       })
     })
   })
 
-  describe("Match", () => {
-    const behavesLikeMatchers = (Component, not, expectations) => {
-      const Small = Media.Query.create("(width: 100px)")
-      const Large = Media.Query.create("(height: 200px)")
-      const matchers = [Small, Large]
-
-      const variants = ["any", "all"]
-      variants.forEach(variant => {
-        it(`matches ${variant} of the given queries`, () => {
-          const props = { [variant]: matchers }
-          const query = renderer
-            .create(
-              <Component not={not} {...props}>
-                ohai
-              </Component>
-            )
-            .toJSON()
-          expect(query).toHaveStyleRule("display", "none")
-          expect(query).toHaveStyleRule("display", "block", {
-            media: expectations[variant],
-          })
-        })
+  describe("concerning interactions", () => {
+    it("creates a container that will only display when the interaction is available", () => {
+      const query = renderer
+        .create(<Media interaction="hover">ohai</Media>)
+        .toJSON()
+      expect(query.type).toEqual("div")
+      expect(query).toHaveStyleRule("display", "none")
+      expect(query).toHaveStyleRule("display", "inherit", {
+        media: "(hover:hover)",
       })
-
-      it("adds styling to each specific matching query in the `any` list", () => {
-        const query = renderer
-          .create(
-            <Component not={not} any={matchers}>
-              {(generatedStyle, matcherStyle) => {
-                const StyledComponent = styled.div`
-                  ${generatedStyle()};
-                  ${matcherStyle(
-                    Small,
-                    css`
-                      color: red;
-                    `
-                  )};
-                  ${matcherStyle(
-                    Large,
-                    css`
-                      color: blue;
-                    `
-                  )};
-                `
-                return <StyledComponent>ohai</StyledComponent>
-              }}
-            </Component>
-          )
-          .toJSON()
-        expect(query).not.toHaveStyleRule("color", "red")
-        expect(query).not.toHaveStyleRule("color", "blue")
-        expect(query).toHaveStyleRule("color", "red", {
-          media: expectations.anyStyling.small,
-        })
-        expect(query).toHaveStyleRule("color", "blue", {
-          media: expectations.anyStyling.large,
-        })
-      })
-    }
-
-    behavesLikeMatchers(Media.Match, false, {
-      all: "(width:100px) and (height:200px)",
-      any: "(width:100px),(height:200px)",
-      anyStyling: { small: "(width:100px)", large: "(height:200px)" },
     })
 
-    describe("when negated does not", () => {
-      behavesLikeMatchers(Media.Match, true, {
-        all: "not all and (width:100px) and (height:200px)",
-        any: "not all and (width:100px),not all and (height:200px)",
-        anyStyling: {
-          small: "not all and (width:100px)",
-          large: "not all and (height:200px)",
-        },
+    it("creates a container that will only display when the interaction is not available", () => {
+      const query = renderer
+        .create(
+          <Media not interaction="hover">
+            ohai
+          </Media>
+        )
+        .toJSON()
+      expect(query.type).toEqual("div")
+      expect(query).toHaveStyleRule("display", "none")
+      expect(query).toHaveStyleRule("display", "inherit", {
+        media: "(hover:none)",
       })
+    })
+  })
+
+  describe("with a render prop", () => {
+    it("yields the generated style such that it can be applied to another element", () => {
+      const query = renderer
+        .create(
+          <Media lessThan="small">
+            {generatedStyle => {
+              const Component = styled.span`
+                ${generatedStyle()};
+              `
+              return <Component>ohai</Component>
+            }}
+          </Media>
+        )
+        .toJSON()
+      expect(query.type).toEqual("span")
+      expect(query).toHaveStyleRule("display", "none")
+      expect(query).toHaveStyleRule("display", "inherit", {
+        media: "(max-width:767px)",
+      })
+    })
+
+    it("yields the generated style and allows adding styles to the matching media selector", () => {
+      const query = renderer
+        .create(
+          <Media lessThan="small">
+            {generatedStyle => {
+              const Component = styled.div`
+                ${generatedStyle(css`
+                  color: red;
+                `)};
+              `
+              return <Component>ohai</Component>
+            }}
+          </Media>
+        )
+        .toJSON()
+      expect(query.type).toEqual("div")
+      expect(query).not.toHaveStyleRule("color", "red")
+      expect(query).toHaveStyleRule("color", "red", {
+        media: "(max-width:767px)",
+      })
+    })
+  })
+
+  describe("with a context", () => {
+    it("renders only matching `at` breakpoints", () => {
+      const query = renderer.create(
+        <MediaContextProvider onlyRender={["extra-small", "small"]}>
+          <Media at="extra-small">extra-small</Media>
+          <Media at="small">small</Media>
+          <Media at="medium">medium</Media>
+        </MediaContextProvider>
+      )
+      expect(
+        query.root.findAllByType("div").map(div => div.props.children)
+      ).toEqual(["extra-small", "small"])
+    })
+
+    it("renders only matching `lessThan` breakpoints", () => {
+      const query = renderer.create(
+        <MediaContextProvider onlyRender={["small", "medium"]}>
+          <Media lessThan="small">extra-small</Media>
+          <Media lessThan="medium">small</Media>
+          <Media lessThan="large">medium</Media>
+        </MediaContextProvider>
+      )
+      expect(
+        query.root.findAllByType("div").map(div => div.props.children)
+      ).toEqual(["small", "medium"])
+    })
+
+    it("renders only matching `greaterThan` breakpoints", () => {
+      const query = renderer.create(
+        <MediaContextProvider onlyRender={["small", "medium"]}>
+          <Media greaterThan="extra-small">small</Media>
+          <Media greaterThan="small">medium</Media>
+          <Media greaterThan="medium">large</Media>
+        </MediaContextProvider>
+      )
+      expect(
+        query.root.findAllByType("div").map(div => div.props.children)
+      ).toEqual(["small", "medium"])
+    })
+
+    it("renders only matching `greaterThanOrEqual` breakpoints", () => {
+      const query = renderer.create(
+        <MediaContextProvider onlyRender={["small", "medium"]}>
+          <Media greaterThanOrEqual="small">small</Media>
+          <Media greaterThanOrEqual="medium">medium</Media>
+          <Media greaterThanOrEqual="large">large</Media>
+        </MediaContextProvider>
+      )
+      expect(
+        query.root.findAllByType("div").map(div => div.props.children)
+      ).toEqual(["small", "medium"])
+    })
+
+    it("renders only matching `between` breakpoints", () => {
+      const query = renderer.create(
+        <MediaContextProvider onlyRender={["medium", "large"]}>
+          <Media between={["extra-small", "medium"]}>
+            extra-small - medium
+          </Media>
+          <Media between={["small", "large"]}>small - large</Media>
+        </MediaContextProvider>
+      )
+      expect(
+        query.root.findAllByType("div").map(div => div.props.children)
+      ).toEqual(["small - large"])
+    })
+
+    xit("renders only matching interactions", () => {
+      // TODO:
     })
   })
 })

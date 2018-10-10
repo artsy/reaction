@@ -1,7 +1,7 @@
 import { Box, Display } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
-import { Media } from "Utils/Responsive/Media2"
+import { Media } from "Utils/Responsive"
 
 // TODO: Bring transition animation back
 const StyledBox = styled(Box)`

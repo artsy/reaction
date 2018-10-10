@@ -1,6 +1,6 @@
 import React, { SFC } from "react"
 import { Col, Row } from "Styleguide/Elements/Grid"
-import { Media } from "Utils/Responsive/Media2"
+import { Media } from "Utils/Responsive"
 
 import {
   Box,

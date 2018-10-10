@@ -3,7 +3,7 @@ import React from "react"
 import {
   createResponsiveComponents,
   ResponsiveProviderProps as _ResponsiveProviderProps,
-} from "./Responsive"
+} from "./DeprecatedResponsive"
 
 type MediaQuery = keyof typeof themeProps["mediaQueries"]
 

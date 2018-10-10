@@ -9,7 +9,7 @@ import { FacebookIcon } from "Styleguide/Elements/icons/FacebookIcon"
 import { InstagramIcon } from "Styleguide/Elements/icons/InstagramIcon"
 import { TwitterIcon } from "Styleguide/Elements/icons/TwitterIcon"
 import { Mark } from "Styleguide/Elements/Logo"
-import { Media } from "Utils/Responsive/Media2"
+import { Media } from "Utils/Responsive"
 
 interface Props {
   mediator?: Mediator

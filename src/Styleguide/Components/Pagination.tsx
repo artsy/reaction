@@ -3,7 +3,7 @@ import React from "react"
 import styled, { css } from "styled-components"
 import { Arrow } from "Styleguide/Elements/Arrow"
 import { ScrollIntoView } from "Styleguide/Utils/ScrollIntoView"
-import { Media } from "Utils/Responsive/Media2"
+import { Media } from "Utils/Responsive"
 
 import { Pagination_pageCursors } from "__generated__/Pagination_pageCursors.graphql"
 import { createFragmentContainer, graphql } from "react-relay"

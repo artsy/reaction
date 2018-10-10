@@ -1,7 +1,7 @@
 import { Sans } from "@artsy/palette"
 import React from "react"
 import { Col } from "Styleguide/Elements/Grid"
-import { Media } from "Utils/Responsive/Media2"
+import { Media } from "Utils/Responsive"
 
 export const TableColumns = () => {
   return (

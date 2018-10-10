@@ -1,5 +1,5 @@
 import React from "react"
-import { Media } from "Utils/Responsive/Media2"
+import { Media } from "Utils/Responsive"
 
 import {
   BorderBox,

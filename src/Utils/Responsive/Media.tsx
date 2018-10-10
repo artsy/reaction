@@ -1,160 +1,224 @@
-import * as theme from "@artsy/palette"
 import React from "react"
 import styled, { css, InterpolationValue } from "styled-components"
 
-interface RenderPropStyleGeneratorOptions {
-  display?: "block" | "inline" | "inline-block"
-  style?: InterpolationValue[]
-}
+const MutuallyExclusiveProps = [
+  "query",
+  "at",
+  "lessThan",
+  "greaterThan",
+  "greaterThanOrEqual",
+  "between",
+  "interaction",
+]
 
-type RenderPropStyleGenerator = (
-  options?: RenderPropStyleGeneratorOptions
-) => InterpolationValue[]
+// TODO: All of these props should be mutually exclusive. Using a union should
+//       probably be made possible by https://github.com/Microsoft/TypeScript/pull/27408.
+export interface Props<B, I> {
+  not?: boolean
+  query?: string
+  at?: B
+  lessThan?: B
+  greaterThan?: B
+  greaterThanOrEqual?: B
+  between?: [B, B]
+  interaction?: I
+  children: React.ReactNode | RenderProp
+}
 
 type RenderProp = ((
   generatedStyle: RenderPropStyleGenerator
 ) => React.ReactNode)
 
-interface Props {
-  query: string
-  not?: boolean
-  children: React.ReactNode | RenderProp
-}
-
-type AliasedQuery = React.SFC<Pick<Props, Exclude<keyof Props, "query">>> & {
-  query: string
-}
-
-export class Query extends React.Component<Props> {
-  render() {
-    const prefix = this.props.not ? "not all and " : ""
-    const generatedStyle = (options?: RenderPropStyleGeneratorOptions) => css`
-      display: none;
-      @media ${prefix}${this.props.query} {
-        display: ${(options && options.display) || "block"};
-        ${(options && options.style) || ""};
-      }
-    `
-
-    if (typeof this.props.children === "undefined") {
-      return null
-    } else if (typeof this.props.children === "function") {
-      return this.props.children(generatedStyle)
-    }
-
-    const Container = styled.div`
-      ${generatedStyle()};
-    `
-    return <Container>{this.props.children}</Container>
-  }
-
-  public static create: (query: string) => AliasedQuery = query => {
-    const component: any = props => <Query query={query} {...props} />
-    component.query = query
-    return component
-  }
-}
-
-// TODO: Likely fixed by https://github.com/Microsoft/TypeScript/pull/27408
-// type MatchProps = {
-//   any: Array<{ query: string }>
-// } | {
-//   all: Array<{ query: string }>
-// }
-
-type MatcherRenderPropStyleGenerator = (
-  matcher: AliasedQuery,
-  style: InterpolationValue[]
+type RenderPropStyleGenerator = (
+  matchingStyle?: InterpolationValue[]
 ) => InterpolationValue[]
 
-type MatchRenderProp = ((
-  generatedStyle: RenderPropStyleGenerator,
-  matcherStyle: MatcherRenderPropStyleGenerator
-) => React.ReactNode)
+/**
+ * breakpoints are 0-based
+ */
+export function createMedia<
+  C extends {
+    breakpoints: { [key: string]: number }
+    interactions: { [key: string]: (negated: boolean) => string }
+  }
+>(config: C) {
+  type Breakpoint = keyof C["breakpoints"]
+  type Interaction = keyof C["interactions"]
 
-interface MatchProps {
-  not?: boolean
-  any?: Array<{ query: string }>
-  all?: Array<{ query: string }>
-  children: React.ReactNode | MatchRenderProp
+  const MediaContext = React.createContext<{ onlyRender?: Breakpoint[] }>({})
+  const MediaContextProvider: React.SFC<{ onlyRender?: Breakpoint[] }> = ({
+    onlyRender,
+    children,
+  }) => (
+    <MediaContext.Provider value={{ onlyRender }}>
+      {children}
+    </MediaContext.Provider>
+  )
+
+  const sortedBreakpoints = createSortedBreakpoints(config.breakpoints)
+  const atRanges = createAtRanges(sortedBreakpoints)
+
+  const findNextBreakpoint = (breakpoint: string) => {
+    const nextBreakpoint =
+      sortedBreakpoints[sortedBreakpoints.indexOf(breakpoint) + 1]
+    if (!nextBreakpoint) {
+      throw new Error(`There is no breakpoint larger than ${breakpoint}`)
+    }
+    return nextBreakpoint
+  }
+
+  const Media: React.SFC<Props<Breakpoint, Interaction>> = props => {
+    validateProps(props)
+
+    return (
+      <MediaContext.Consumer>
+        {({ onlyRender }) => {
+          let query: string
+          if (props.query) {
+            query = props.query
+          } else if (props.interaction) {
+            query = config.interactions[props.interaction as string](
+              !!props.not
+            )
+          } else {
+            let breakpointProps = props
+            if (breakpointProps.at) {
+              if (onlyRender && !onlyRender.includes(breakpointProps.at)) {
+                return null
+              }
+              breakpointProps = atRanges[breakpointProps.at as string]
+            }
+            if (breakpointProps.lessThan) {
+              const width =
+                config.breakpoints[breakpointProps.lessThan as string]
+              if (onlyRender) {
+                const lowestAllowedWidth = Math.min(
+                  ...onlyRender.map(
+                    breakpoint => config.breakpoints[breakpoint as string]
+                  )
+                )
+                if (lowestAllowedWidth >= width) {
+                  return null
+                }
+              }
+              query = `(max-width:${width - 1}px)`
+            } else if (breakpointProps.greaterThan) {
+              const width =
+                config.breakpoints[
+                  findNextBreakpoint(breakpointProps.greaterThan as string)
+                ]
+              if (onlyRender) {
+                const highestAllowedWidth = Math.max(
+                  ...onlyRender.map(
+                    breakpoint => config.breakpoints[breakpoint as string]
+                  )
+                )
+                if (highestAllowedWidth < width) {
+                  return null
+                }
+              }
+              query = `(min-width:${width}px)`
+            } else if (breakpointProps.greaterThanOrEqual) {
+              const width =
+                config.breakpoints[breakpointProps.greaterThanOrEqual as string]
+              if (onlyRender) {
+                const highestAllowedWidth = Math.max(
+                  ...onlyRender.map(
+                    breakpoint => config.breakpoints[breakpoint as string]
+                  )
+                )
+                if (highestAllowedWidth < width) {
+                  return null
+                }
+              }
+              query = `(min-width:${width}px)`
+            } else if (breakpointProps.between) {
+              // TODO: This is the only useful breakpoint to negate, but we’ll
+              //       we’ll see when/if we need it. We could then also decide
+              //       to add `oustide`.
+              const fromWidth =
+                config.breakpoints[breakpointProps.between[0] as string]
+              const toWidth =
+                config.breakpoints[breakpointProps.between[1] as string]
+              if (onlyRender) {
+                const allowedWidths = onlyRender.map(
+                  breakpoint => config.breakpoints[breakpoint as string]
+                )
+                if (
+                  Math.max(...allowedWidths) < fromWidth ||
+                  Math.min(...allowedWidths) >= toWidth
+                ) {
+                  return null
+                }
+              }
+              query = `(min-width:${fromWidth}px) and (max-width:${toWidth -
+                1}px)`
+            }
+          }
+
+          const generatedStyle: RenderPropStyleGenerator = matchingStyle => css`
+            display: none;
+            @media ${query} {
+              display: inherit;
+              ${matchingStyle};
+            }
+          `
+
+          if (typeof props.children === "function") {
+            // FIXME: This typings shouldn’t be necessary, because the actual type is
+            //        ReactNode and is legal. However, for some reason it breaks the
+            //        SFC typing of this component.
+            return props.children(generatedStyle) as React.ReactElement<any>
+          }
+
+          const MediaContainer = styled.div`
+            ${generatedStyle()};
+          `
+          return <MediaContainer>{props.children}</MediaContainer>
+        }}
+      </MediaContext.Consumer>
+    )
+  }
+
+  return { Media, MediaContextProvider }
 }
 
-export class Match extends React.Component<MatchProps> {
-  render() {
-    if (this.props.any) {
-      const queries = this.props.any.map(matcher => matcher.query)
-
-      /**
-       * TODO:
-       *
-       * Something like this doesn’t work, because an attribute can only be used
-       * once in a media query, presumably the last one wins:
-       *
-       *   <Match not any={[breakpoints.xs, breakpoints.sm, breakpoints.md]} />
-       *
-       * Generates:
-       *
-       *   @media not all and (max-width: 767px), not all and (max-width: 899px) and (min-width: 768px), not all and (max-width: 1023px) and (min-width: 900px)
-       *
-       * To overcome this we could define these attributes as actual props and
-       * then introduce a range matcher. E.g.
-       *
-       *   breakpoints.xs = Query.create({ maxWidth: 767 })
-       *   breakpoints.md = Query.create({ minWidth: 900, maxWidth: 1023 })
-       *   <Match not from={breakpoints.xs} to={breakpoints.md} />
-       *
-       * Which would then generate:
-       *
-       *   @media not all (max-width: 1023px)
-       */
-      const prefix = this.props.not ? "not all and " : ""
-
-      let children = this.props.children
-      if (typeof this.props.children === "function") {
-        const renderProp: MatchRenderProp = this.props.children
-        const matcherStyle: MatcherRenderPropStyleGenerator = (
-          matcher,
-          style
-        ) => css`
-          @media ${prefix}${matcher.query} {
-            ${style};
-          }
-        `
-        children = generatedStyle => renderProp(generatedStyle, matcherStyle)
-      }
-
-      return (
-        <Query query={`${prefix}${queries.join(`, ${prefix}`)}`}>
-          {children}
-        </Query>
-      )
-    } else if (this.props.all) {
-      const queries = this.props.all.map(matcher => matcher.query)
-      const prefix = this.props.not ? "not all and " : ""
-      return (
-        <Query query={`${prefix}${queries.join(" and ")}`}>
-          {this.props.children}
-        </Query>
-      )
-    }
+function validateProps(props) {
+  const selectedProps = Object.keys(props).filter(prop =>
+    MutuallyExclusiveProps.includes(prop)
+  )
+  if (selectedProps.length < 1) {
+    throw new Error(`1 of ${MutuallyExclusiveProps.join(", ")} is required.`)
+  } else if (selectedProps.length > 1) {
+    throw new Error(
+      `Only 1 of ${selectedProps.join(", ")} is allowed at a time.`
+    )
+  }
+  if (props.hasOwnProperty("not") && !props.interaction) {
+    throw new Error(
+      "The `not` prop is only allowed in combination with the `interaction` prop."
+    )
   }
 }
 
-/**
- * TODO: These are our specific ones. Figure out if it makes sense to always
- * define some of these or if every project should define them on their own.
- */
+function createSortedBreakpoints(breakpoints: { [key: string]: number }) {
+  return Object.keys(breakpoints)
+    .map(breakpoint => [breakpoint, breakpoints[breakpoint]])
+    .sort((a, b) => (a[1] < b[1] ? -1 : 1))
+    .map(breakpointAndValue => breakpointAndValue[0] as string)
+}
 
-export const breakpoints = Object.keys(theme.breakpoints).reduce(
-  (res, breakpoint) => {
-    return {
-      ...res,
-      [breakpoint]: Query.create(theme.themeProps.mediaQueries[breakpoint]),
+function createAtRanges(sortedBreakpoints: string[]) {
+  const atRanges = {}
+  // tslint:disable-next-line:prefer-for-of
+  for (let i = 0; i < sortedBreakpoints.length; i++) {
+    const from = sortedBreakpoints[i]
+    const to = sortedBreakpoints[i + 1]
+    if (to) {
+      atRanges[from] = { between: [from, to] }
+    } else {
+      atRanges[from] = { greaterThanOrEqual: from }
     }
-  },
-  {} as { [K in keyof typeof theme.breakpoints]: AliasedQuery }
-)
-
-export const interaction = {
-  hover: Query.create(theme.themeProps.mediaQueries.hover),
+  }
+  return atRanges
 }

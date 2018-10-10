@@ -4,7 +4,7 @@ import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Media } from "Utils/Responsive/Media2"
+import { Media } from "Utils/Responsive"
 
 export interface CurrentEventProps {
   artist: CurrentEvent_artist

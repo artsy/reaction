@@ -1,7 +1,7 @@
 import { Separator, Serif, Spacer } from "@artsy/palette"
 import React, { SFC } from "react"
 import { Col, Row } from "Styleguide/Elements/Grid"
-import { Media } from "Utils/Responsive/Media2"
+import { Media } from "Utils/Responsive"
 
 interface ArtistShowListItemProps {
   exhibitionInfo: string

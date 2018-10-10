@@ -5,7 +5,7 @@ import styled from "styled-components"
 import { left, LeftProps, right, RightProps } from "styled-system"
 import { Arrow } from "Styleguide/Elements/Arrow"
 import { media } from "Styleguide/Elements/Grid"
-import { Media } from "Utils/Responsive/Media2"
+import { Media } from "Utils/Responsive"
 
 interface Props {
   settings?: Settings

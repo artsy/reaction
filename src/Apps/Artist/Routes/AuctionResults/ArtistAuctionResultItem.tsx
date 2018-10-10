@@ -5,7 +5,7 @@ import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Subscribe } from "unstated"
-import { Media } from "Utils/Responsive/Media2"
+import { Media } from "Utils/Responsive"
 import { AuctionResultsState } from "./state"
 
 import {
