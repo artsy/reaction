@@ -1,4 +1,4 @@
-import { Separator, Serif } from "@artsy/palette"
+import { Separator, Serif, Spacer } from "@artsy/palette"
 import { Box } from "@artsy/palette"
 import { ContextConsumer } from "Artsy/Router"
 import Spinner from "Components/Spinner"
@@ -29,6 +29,7 @@ export class ArtworkSidebar extends Component<ArtworkSidebarProps> {
     return (
       <ArtworkSidebarContainer>
         <Artists artwork={artwork} />
+        <Spacer mb={2} />
 
         {artwork.is_biddable &&
           artwork.sale_artwork &&

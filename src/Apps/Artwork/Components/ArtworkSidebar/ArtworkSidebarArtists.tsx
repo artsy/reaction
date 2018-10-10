@@ -1,9 +1,12 @@
 import { Box, Serif } from "@artsy/palette"
+import { ContextConsumer } from "Artsy/Router"
+
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { FollowIcon } from "Styleguide/Components"
 
 import { ArtworkSidebarArtists_artwork } from "__generated__/ArtworkSidebarArtists_artwork.graphql"
+import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 
 export interface ArtistsProps {
   artwork: ArtworkSidebarArtists_artwork
@@ -24,11 +27,31 @@ export class ArtworkSidebarArtists extends React.Component<ArtistsProps> {
     )
   }
 
-  private renderSingleArtist(artist: Artist) {
+  private renderSingleArtist(artist: Artist, user, mediator) {
     return (
       <React.Fragment>
         {this.renderArtistName(artist)}
-        <FollowIcon is_followed={artist.is_followed} />
+        <FollowArtistButton
+          artist={artist}
+          user={user}
+          onOpenAuthModal={() => {
+            mediator.trigger("open:auth", {
+              mode: "signup",
+              copy: `Sign up to follow ${artist.name}`,
+              signupIntent: "follow artist",
+              afterSignUpAction: {
+                kind: "artist",
+                action: "follow",
+                objectId: artist.id,
+              },
+            })
+          }}
+          render={({ is_followed }) => {
+            return <FollowIcon is_followed={is_followed} />
+          }}
+        >
+          Follow
+        </FollowArtistButton>
       </React.Fragment>
     )
   }
@@ -52,11 +75,17 @@ export class ArtworkSidebarArtists extends React.Component<ArtistsProps> {
       artwork: { artists },
     } = this.props
     return (
-      <Box pb={2}>
-        {artists.length === 1
-          ? this.renderSingleArtist(artists[0])
-          : this.renderMultipleArtists()}
-      </Box>
+      <ContextConsumer>
+        {({ user, mediator }) => {
+          return (
+            <Box>
+              {artists.length === 1
+                ? this.renderSingleArtist(artists[0], user, mediator)
+                : this.renderMultipleArtists()}
+            </Box>
+          )
+        }}
+      </ContextConsumer>
     )
   }
 }
@@ -69,8 +98,8 @@ export const ArtworkSidebarArtistsFragmentContainer = createFragmentContainer(
         __id
         id
         name
-        is_followed
         href
+        ...FollowArtistButton_artist
       }
     }
   `
