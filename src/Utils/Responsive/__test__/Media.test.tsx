@@ -192,7 +192,7 @@ describe("Media", () => {
   describe("with a context", () => {
     it("renders only matching `at` breakpoints", () => {
       const query = renderer.create(
-        <MediaContextProvider onlyRender={["extra-small", "small"]}>
+        <MediaContextProvider onlyRenderAt={["extra-small", "small"]}>
           <Media at="extra-small">extra-small</Media>
           <Media at="small">small</Media>
           <Media at="medium">medium</Media>
@@ -205,7 +205,7 @@ describe("Media", () => {
 
     it("renders only matching `lessThan` breakpoints", () => {
       const query = renderer.create(
-        <MediaContextProvider onlyRender={["small", "medium"]}>
+        <MediaContextProvider onlyRenderAt={["small", "medium"]}>
           <Media lessThan="small">extra-small</Media>
           <Media lessThan="medium">small</Media>
           <Media lessThan="large">medium</Media>
@@ -218,7 +218,7 @@ describe("Media", () => {
 
     it("renders only matching `greaterThan` breakpoints", () => {
       const query = renderer.create(
-        <MediaContextProvider onlyRender={["small", "medium"]}>
+        <MediaContextProvider onlyRenderAt={["small", "medium"]}>
           <Media greaterThan="extra-small">small</Media>
           <Media greaterThan="small">medium</Media>
           <Media greaterThan="medium">large</Media>
@@ -231,7 +231,7 @@ describe("Media", () => {
 
     it("renders only matching `greaterThanOrEqual` breakpoints", () => {
       const query = renderer.create(
-        <MediaContextProvider onlyRender={["small", "medium"]}>
+        <MediaContextProvider onlyRenderAt={["small", "medium"]}>
           <Media greaterThanOrEqual="small">small</Media>
           <Media greaterThanOrEqual="medium">medium</Media>
           <Media greaterThanOrEqual="large">large</Media>
@@ -244,7 +244,7 @@ describe("Media", () => {
 
     it("renders only matching `between` breakpoints", () => {
       const query = renderer.create(
-        <MediaContextProvider onlyRender={["medium", "large"]}>
+        <MediaContextProvider onlyRenderAt={["medium", "large"]}>
           <Media between={["extra-small", "medium"]}>
             extra-small - medium
           </Media>

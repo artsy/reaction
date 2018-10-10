@@ -46,7 +46,7 @@ export class Boot extends React.Component<BootProps> {
           <Artsy.ContextProvider {...contextProps}>
             {/* TODO: initialMatchingMediaQueries may also contain `hover` */}
             <MediaContextProvider
-              onlyRender={props.initialMatchingMediaQueries as any}
+              onlyRenderAt={props.initialMatchingMediaQueries as any}
             >
               <ResponsiveProvider
                 mediaQueries={themeProps.mediaQueries}

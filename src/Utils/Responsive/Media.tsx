@@ -21,7 +21,7 @@ const MutuallyExclusiveProps = [
 
 // TODO: All of these props should be mutually exclusive. Using a union should
 //       probably be made possible by https://github.com/Microsoft/TypeScript/pull/27408.
-export interface Props<B, I> {
+export interface MediaProps<B, I> {
   /**
    * Allows you to pass in any CSS Media Query that will be used to
    * conditionally show or hide the children.
@@ -199,6 +199,17 @@ export interface Props<B, I> {
   children: React.ReactNode | RenderProp
 }
 
+export interface MediaContextProviderProps<B> {
+  /**
+   * This list of breakpoints can be used to limit the rendered output to these.
+   *
+   * For instance, when a server knows for some user-agents that certain
+   * breakpoints will never apply, omitting them altogether will lower the
+   * rendered byte size.
+   */
+  onlyRenderAt?: B[]
+}
+
 /**
  * This is used to generate a Media component and its context provider based on
  * your application’s breakpoints and interactions.
@@ -230,15 +241,15 @@ export function createMedia<
     interactions: { [key: string]: (negated: boolean) => string }
   }
 >(config: C) {
-  type Breakpoint = keyof C["breakpoints"]
-  type Interaction = keyof C["interactions"]
+  type B = keyof C["breakpoints"]
+  type I = keyof C["interactions"]
 
-  const MediaContext = React.createContext<{ onlyRender?: Breakpoint[] }>({})
-  const MediaContextProvider: React.SFC<{ onlyRender?: Breakpoint[] }> = ({
-    onlyRender,
+  const MediaContext = React.createContext<MediaContextProviderProps<B>>({})
+  const MediaContextProvider: React.SFC<MediaContextProviderProps<B>> = ({
+    onlyRenderAt,
     children,
   }) => (
-    <MediaContext.Provider value={{ onlyRender }}>
+    <MediaContext.Provider value={{ onlyRenderAt }}>
       {children}
     </MediaContext.Provider>
   )
@@ -255,12 +266,12 @@ export function createMedia<
     return nextBreakpoint
   }
 
-  const Media: React.SFC<Props<Breakpoint, Interaction>> = props => {
+  const Media: React.SFC<MediaProps<B, I>> = props => {
     validateProps(props)
 
     return (
       <MediaContext.Consumer>
-        {({ onlyRender }) => {
+        {({ onlyRenderAt }) => {
           let query: string
           if (props.query) {
             query = props.query
@@ -271,7 +282,7 @@ export function createMedia<
           } else {
             let breakpointProps = props
             if (breakpointProps.at) {
-              if (onlyRender && !onlyRender.includes(breakpointProps.at)) {
+              if (onlyRenderAt && !onlyRenderAt.includes(breakpointProps.at)) {
                 return null
               }
               breakpointProps = atRanges[breakpointProps.at as string]
@@ -279,9 +290,9 @@ export function createMedia<
             if (breakpointProps.lessThan) {
               const width =
                 config.breakpoints[breakpointProps.lessThan as string]
-              if (onlyRender) {
+              if (onlyRenderAt) {
                 const lowestAllowedWidth = Math.min(
-                  ...onlyRender.map(
+                  ...onlyRenderAt.map(
                     breakpoint => config.breakpoints[breakpoint as string]
                   )
                 )
@@ -295,9 +306,9 @@ export function createMedia<
                 config.breakpoints[
                   findNextBreakpoint(breakpointProps.greaterThan as string)
                 ]
-              if (onlyRender) {
+              if (onlyRenderAt) {
                 const highestAllowedWidth = Math.max(
-                  ...onlyRender.map(
+                  ...onlyRenderAt.map(
                     breakpoint => config.breakpoints[breakpoint as string]
                   )
                 )
@@ -309,9 +320,9 @@ export function createMedia<
             } else if (breakpointProps.greaterThanOrEqual) {
               const width =
                 config.breakpoints[breakpointProps.greaterThanOrEqual as string]
-              if (onlyRender) {
+              if (onlyRenderAt) {
                 const highestAllowedWidth = Math.max(
-                  ...onlyRender.map(
+                  ...onlyRenderAt.map(
                     breakpoint => config.breakpoints[breakpoint as string]
                   )
                 )
@@ -328,8 +339,8 @@ export function createMedia<
                 config.breakpoints[breakpointProps.between[0] as string]
               const toWidth =
                 config.breakpoints[breakpointProps.between[1] as string]
-              if (onlyRender) {
-                const allowedWidths = onlyRender.map(
+              if (onlyRenderAt) {
+                const allowedWidths = onlyRenderAt.map(
                   breakpoint => config.breakpoints[breakpoint as string]
                 )
                 if (
