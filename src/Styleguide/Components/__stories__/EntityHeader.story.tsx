@@ -1,10 +1,10 @@
 import { Sans } from "@artsy/palette"
+import { RelayStubProvider } from "DevTools/RelayStubProvider"
 import React from "react"
 import { Toggle } from "react-powerplug"
 import { storiesOf } from "storybook/storiesOf"
 import { EntityHeader } from "Styleguide/Components/EntityHeader"
 import { Section } from "Styleguide/Utils/Section"
-import { RelayStubProvider } from "Utils/RelayStubProvider"
 
 const props = {
   href: "/artist/francesca-dimattio",

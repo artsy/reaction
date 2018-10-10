@@ -1,7 +1,7 @@
+import { RelayStubProvider } from "DevTools/RelayStubProvider"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
-import { RelayStubProvider } from "Utils/RelayStubProvider"
 
 import { ArtistCard, LargeArtistCard, SmallArtistCard } from "../ArtistCard"
 

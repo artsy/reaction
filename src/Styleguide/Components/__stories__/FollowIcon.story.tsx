@@ -7,10 +7,10 @@ storiesOf("Styleguide/Components", module).add("FollowIcon", () => {
   return (
     <React.Fragment>
       <Section title="Object is already followed">
-        <FollowIcon is_followed />
+        <FollowIcon isFollowed />
       </Section>
       <Section title="Object is NOT followed">
-        <FollowIcon is_followed={false} />
+        <FollowIcon isFollowed={false} />
       </Section>
       <Section title="Default">
         <FollowIcon />

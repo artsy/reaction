@@ -4,7 +4,7 @@ import React from "react"
 import styled from "styled-components"
 
 interface FollowIconProps {
-  readonly is_followed?: boolean | false
+  readonly isFollowed?: boolean | false
 }
 
 export const FollowIconContainer = styled(Flex)`
@@ -54,7 +54,7 @@ const FollowHover = styled.div`
 
 export class FollowIcon extends React.Component<FollowIconProps> {
   render() {
-    const isFollowed = this.props.is_followed
+    const { isFollowed } = this.props
     const iconName = isFollowed ? "follow-circle.is-following" : "follow-circle"
 
     return (
@@ -64,7 +64,7 @@ export class FollowIcon extends React.Component<FollowIconProps> {
           style={{
             verticalAlign: "left",
             color: "inherit",
-            margin: "-2px 0 0 -5px",
+            margin: "0 0 0 -5px",
           }}
         />
         {isFollowed ? (

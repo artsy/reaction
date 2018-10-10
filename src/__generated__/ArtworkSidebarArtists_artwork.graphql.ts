@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+import { FollowArtistButton_artist$ref } from "./FollowArtistButton_artist.graphql";
 declare const _ArtworkSidebarArtists_artwork$ref: unique symbol;
 export type ArtworkSidebarArtists_artwork$ref = typeof _ArtworkSidebarArtists_artwork$ref;
 export type ArtworkSidebarArtists_artwork = {
@@ -8,8 +9,8 @@ export type ArtworkSidebarArtists_artwork = {
         readonly __id: string;
         readonly id: string;
         readonly name: string | null;
-        readonly is_followed: boolean | null;
         readonly href: string | null;
+        readonly " $fragmentRefs": FollowArtistButton_artist$ref;
     }) | null> | null;
     readonly " $refType": ArtworkSidebarArtists_artwork$ref;
 };
@@ -58,16 +59,14 @@ return {
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "is_followed",
+          "name": "href",
           "args": null,
           "storageKey": null
         },
         {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "href",
-          "args": null,
-          "storageKey": null
+          "kind": "FragmentSpread",
+          "name": "FollowArtistButton_artist",
+          "args": null
         }
       ]
     },
@@ -75,5 +74,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '51676cb08d2257ddee6ea4813bf49643';
+(node as any).hash = '078b2375943c21b18376b77d8ceb6d15';
 export default node;

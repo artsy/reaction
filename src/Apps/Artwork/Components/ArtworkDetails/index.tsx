@@ -1,8 +1,6 @@
 import { Box } from "@artsy/palette"
-import { ArtworkDetails_artwork } from "__generated__/ArtworkDetails_artwork.graphql"
-import { ArtworkDetailsQuery } from "__generated__/ArtworkDetailsQuery.graphql"
+import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { ContextConsumer } from "Artsy/Router"
-import Spinner from "Components/Spinner"
 import React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 import { Tab, Tabs } from "Styleguide/Components"
@@ -12,12 +10,14 @@ import { ArtworkDetailsAdditionalInfoFragmentContainer as AdditionalInfo } from 
 import { ArtworkDetailsArticlesFragmentContainer as Articles } from "./ArtworkDetailsArticles"
 import { ArtworkDetailsChecklistFragmentContainer as Checklist } from "./ArtworkDetailsChecklist"
 
+import { ArtworkDetails_artwork } from "__generated__/ArtworkDetails_artwork.graphql"
+import { ArtworkDetailsQuery } from "__generated__/ArtworkDetailsQuery.graphql"
+
 export interface ArtworkDetailsProps {
   artwork: ArtworkDetails_artwork
 }
 
 const ArtworkDetailsContainer = Box
-const SpinnerContainer = Box
 
 export const ArtworkDetails: React.SFC<ArtworkDetailsProps> = props => {
   const { artwork } = props
@@ -84,25 +84,9 @@ export const ArtworkDetailsQueryRenderer = ({
                 }
               }
             `}
-            render={({ props }) => {
-              if (props) {
-                return (
-                  <ArtworkDetailsFragmentContainer
-                    artwork={props.artwork as any}
-                  />
-                )
-              } else {
-                return (
-                  <SpinnerContainer
-                    width="100%"
-                    height="100px"
-                    position="relative"
-                  >
-                    <Spinner />
-                  </SpinnerContainer>
-                )
-              }
-            }}
+            render={renderWithLoadProgress(
+              ArtworkDetailsFragmentContainer as any
+            )}
           />
         )
       }}
