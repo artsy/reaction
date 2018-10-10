@@ -1,7 +1,9 @@
 import { Separator, Serif } from "@artsy/palette"
+import { Box } from "@artsy/palette"
+import { ContextConsumer } from "Artsy/Router"
+import Spinner from "Components/Spinner"
 import React, { Component } from "react"
-import { createFragmentContainer, graphql } from "react-relay"
-import styled from "styled-components"
+import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 import { ArtworkSidebarArtistsFragmentContainer as Artists } from "./ArtworkSidebarArtists"
 import { ArtworkSidebarAuctionPartnerInfoFragmentContainer as AuctionPartnerInfo } from "./ArtworkSidebarAuctionPartnerInfo"
 import { ArtworkSidebarBidActionFragmentContainer as BidAction } from "./ArtworkSidebarBidAction"
@@ -12,12 +14,14 @@ import { ArtworkSidebarMetadataFragmentContainer as Metadata } from "./ArtworkSi
 import { ArtworkSidebarPartnerInfoFragmentContainer as PartnerInfo } from "./ArtworkSidebarPartnerInfo"
 
 import { ArtworkSidebar_artwork } from "__generated__/ArtworkSidebar_artwork.graphql"
+import { ArtworkSidebarQuery } from "__generated__/ArtworkSidebarQuery.graphql"
 
 export interface ArtworkSidebarProps {
   artwork: ArtworkSidebar_artwork
 }
 
-const ArtworkSidebarContainer = styled.div``
+const ArtworkSidebarContainer = Box
+const SpinnerContainer = Box
 
 export class ArtworkSidebar extends Component<ArtworkSidebarProps> {
   render() {
@@ -80,3 +84,48 @@ export const ArtworkSidebarFragmentContainer = createFragmentContainer(
     }
   `
 )
+
+export const ArtworkSidebarQueryRenderer = ({
+  artworkID,
+}: {
+  artworkID: string
+}) => {
+  return (
+    <ContextConsumer>
+      {({ user, mediator, relayEnvironment }) => {
+        return (
+          <QueryRenderer<ArtworkSidebarQuery>
+            environment={relayEnvironment}
+            variables={{ artworkID }}
+            query={graphql`
+              query ArtworkSidebarQuery($artworkID: String!) {
+                artwork(id: $artworkID) {
+                  ...ArtworkSidebar_artwork
+                }
+              }
+            `}
+            render={({ props }) => {
+              if (props) {
+                return (
+                  <ArtworkSidebarFragmentContainer
+                    artwork={props.artwork as any}
+                  />
+                )
+              } else {
+                return (
+                  <SpinnerContainer
+                    width="100%"
+                    height="100px"
+                    position="relative"
+                  >
+                    <Spinner />
+                  </SpinnerContainer>
+                )
+              }
+            }}
+          />
+        )
+      }}
+    </ContextConsumer>
+  )
+}

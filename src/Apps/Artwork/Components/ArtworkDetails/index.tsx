@@ -1,6 +1,4 @@
 import { Box } from "@artsy/palette"
-import { ArtworkDetails_artwork } from "__generated__/ArtworkDetails_artwork.graphql"
-import { ArtworkDetailsQuery } from "__generated__/ArtworkDetailsQuery.graphql"
 import { ContextConsumer } from "Artsy/Router"
 import Spinner from "Components/Spinner"
 import React from "react"
@@ -11,6 +9,9 @@ import { ArtworkDetailsAboutTheWorkFromPartnerFragmentContainer as AboutTheWorkF
 import { ArtworkDetailsAdditionalInfoFragmentContainer as AdditionalInfo } from "./ArtworkDetailsAdditionalInfo"
 import { ArtworkDetailsArticlesFragmentContainer as Articles } from "./ArtworkDetailsArticles"
 import { ArtworkDetailsChecklistFragmentContainer as Checklist } from "./ArtworkDetailsChecklist"
+
+import { ArtworkDetails_artwork } from "__generated__/ArtworkDetails_artwork.graphql"
+import { ArtworkDetailsQuery } from "__generated__/ArtworkDetailsQuery.graphql"
 
 export interface ArtworkDetailsProps {
   artwork: ArtworkDetails_artwork
