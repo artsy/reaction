@@ -1,4 +1,5 @@
-import { Box, Spinner } from "@artsy/palette"
+import { Box } from "@artsy/palette"
+import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { ContextConsumer } from "Artsy/Router"
 import React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
@@ -17,7 +18,6 @@ export interface ArtworkDetailsProps {
 }
 
 const ArtworkDetailsContainer = Box
-const SpinnerContainer = Box
 
 export const ArtworkDetails: React.SFC<ArtworkDetailsProps> = props => {
   const { artwork } = props
@@ -84,25 +84,9 @@ export const ArtworkDetailsQueryRenderer = ({
                 }
               }
             `}
-            render={({ props }) => {
-              if (props) {
-                return (
-                  <ArtworkDetailsFragmentContainer
-                    artwork={props.artwork as any}
-                  />
-                )
-              } else {
-                return (
-                  <SpinnerContainer
-                    width="100%"
-                    height="100px"
-                    position="relative"
-                  >
-                    <Spinner />
-                  </SpinnerContainer>
-                )
-              }
-            }}
+            render={renderWithLoadProgress(
+              ArtworkDetailsFragmentContainer as any
+            )}
           />
         )
       }}

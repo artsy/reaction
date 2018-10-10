@@ -1,4 +1,4 @@
-import { Spinner } from "@artsy/palette"
+import Spinner from "Components/Spinner"
 import React, { ReactNode, SFC } from "react"
 import styled from "styled-components"
 

@@ -1,7 +1,8 @@
-import { Box, Sans, Spacer, Spinner, StackableBorderBox } from "@artsy/palette"
+import { Sans, Spacer, StackableBorderBox } from "@artsy/palette"
 import { ArtistInfo_artist } from "__generated__/ArtistInfo_artist.graphql"
 import { ArtistInfoQuery } from "__generated__/ArtistInfoQuery.graphql"
 import { ContextConsumer } from "Artsy"
+import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { Mediator } from "Artsy/SystemContext"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import React, { SFC } from "react"
@@ -148,23 +149,7 @@ export const ArtistInfoQueryRenderer = ({ artistID }: { artistID: string }) => {
                 }
               }
             `}
-            render={({ props }) => {
-              if (props) {
-                return (
-                  <ArtistInfoFragmentContainer
-                    artist={props.artist as any}
-                    user={user}
-                    mediator={mediator}
-                  />
-                )
-              } else {
-                return (
-                  <Box width="100%" height="100px" position="relative">
-                    <Spinner />
-                  </Box>
-                )
-              }
-            }}
+            render={renderWithLoadProgress(ArtistInfoFragmentContainer as any)}
           />
         )
       }}

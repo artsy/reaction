@@ -1,4 +1,5 @@
-import { Box, Separator, Serif, Spacer, Spinner } from "@artsy/palette"
+import { Box, Separator, Serif, Spacer } from "@artsy/palette"
+import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { ContextConsumer } from "Artsy/Router"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
@@ -19,7 +20,6 @@ export interface ArtworkSidebarProps {
 }
 
 const ArtworkSidebarContainer = Box
-const SpinnerContainer = Box
 
 export class ArtworkSidebar extends Component<ArtworkSidebarProps> {
   render() {
@@ -104,25 +104,9 @@ export const ArtworkSidebarQueryRenderer = ({
                 }
               }
             `}
-            render={({ props }) => {
-              if (props) {
-                return (
-                  <ArtworkSidebarFragmentContainer
-                    artwork={props.artwork as any}
-                  />
-                )
-              } else {
-                return (
-                  <SpinnerContainer
-                    width="100%"
-                    height="100px"
-                    position="relative"
-                  >
-                    <Spinner />
-                  </SpinnerContainer>
-                )
-              }
-            }}
+            render={renderWithLoadProgress(
+              ArtworkSidebarFragmentContainer as any
+            )}
           />
         )
       }}
