@@ -6,10 +6,7 @@ import { Media } from "Utils/Responsive"
 export const TableColumns = () => {
   return (
     <>
-      <Media at="sm">
-        <SmallTableColumns />
-      </Media>
-      <Media at="md">
+      <Media between={["sm", "lg"]}>
         <SmallTableColumns />
       </Media>
       <Media greaterThanOrEqual="lg">
