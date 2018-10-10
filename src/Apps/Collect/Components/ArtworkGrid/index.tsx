@@ -82,7 +82,7 @@ class Filter extends Component<Props, State> {
     return (
       <React.Fragment>
         <Sans size="2" weight="medium" color="black100" my={1}>
-          Ways to Buy
+          Ways to buy
         </Sans>
         {showBuyNow && (
           <Checkbox
@@ -166,39 +166,43 @@ class Filter extends Component<Props, State> {
   }
 
   renderFilters({ user, filters, mediator, hideTopBorder }) {
-    const hasLabFeature =
-      user &&
-      user.lab_features &&
-      user.lab_features.includes("New Buy Now Flow")
-    const enableBuyNowFlow = sd.ENABLE_NEW_BUY_NOW_FLOW || hasLabFeature
+    try {
+      const hasLabFeature =
+        user &&
+        user.lab_features &&
+        user.lab_features.includes("New Buy Now Flow")
+      const enableBuyNowFlow = sd.ENABLE_NEW_BUY_NOW_FLOW || hasLabFeature
 
-    const { filter_artworks } = this.props.viewer
-    const { aggregations } = filter_artworks
-    const mediumAggregation = aggregations.find(agg => agg.slice === "MEDIUM")
+      const { filter_artworks } = this.props.viewer
+      const { aggregations } = filter_artworks
+      const mediumAggregation = aggregations.find(agg => agg.slice === "MEDIUM")
 
-    return (
-      <>
-        <Flex flexDirection="column" alignItems="left" mt={-1} mb={1}>
-          {!hideTopBorder && <Separator mb={1} />}
+      return (
+        <>
+          <Flex flexDirection="column" alignItems="left" mt={-1} mb={1}>
+            {!hideTopBorder && <Separator mb={1} />}
 
-          {this.renderWaysToBuy(filters, enableBuyNowFlow, mediator)}
-        </Flex>
+            {this.renderWaysToBuy(filters, enableBuyNowFlow, mediator)}
+          </Flex>
 
-        <Flex flexDirection="column" alignItems="left" my={1}>
-          {this.renderPriceRange(filters, mediator)}
-        </Flex>
-        <Toggle label="Medium" expanded>
-          <MediumFilter
-            filters={filters}
-            mediums={mediumAggregation.counts}
-            mediator={mediator}
-          />
-        </Toggle>
-        <Toggle expanded label="Time period">
-          <TimePeriodFilter filters={filters} mediator={mediator} />
-        </Toggle>
-      </>
-    )
+          <Flex flexDirection="column" alignItems="left" my={1}>
+            {this.renderPriceRange(filters, mediator)}
+          </Flex>
+          <Toggle label="Medium" expanded>
+            <MediumFilter
+              filters={filters}
+              mediums={mediumAggregation.counts}
+              mediator={mediator}
+            />
+          </Toggle>
+          <Toggle expanded label="Time period">
+            <TimePeriodFilter filters={filters} mediator={mediator} />
+          </Toggle>
+        </>
+      )
+    } catch (err) {
+      console.error(err)
+    }
   }
 
   render() {
