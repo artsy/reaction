@@ -44,8 +44,15 @@ return {
       "kind": "ScalarField",
       "alias": null,
       "name": "additional_information",
-      "args": null,
-      "storageKey": null
+      "args": [
+        {
+          "kind": "Literal",
+          "name": "format",
+          "value": "HTML",
+          "type": "Format"
+        }
+      ],
+      "storageKey": "additional_information(format:\"HTML\")"
     },
     {
       "kind": "LinkedField",
@@ -145,5 +152,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'cf09631bef749077431e4acd764dc8d1';
+(node as any).hash = '0376117cfa4747fb4e11dfccf0d38185';
 export default node;

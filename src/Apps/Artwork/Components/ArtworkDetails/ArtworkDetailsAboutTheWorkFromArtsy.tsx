@@ -65,7 +65,7 @@ export const ArtworkDetailsAboutTheWorkFromArtsyFragmentContainer = createFragme
   ArtworkDetailsAboutTheWorkFromArtsy,
   graphql`
     fragment ArtworkDetailsAboutTheWorkFromArtsy_artwork on Artwork {
-      description
+      description(format: HTML)
     }
   `
 )
