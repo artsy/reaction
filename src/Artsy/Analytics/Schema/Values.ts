@@ -158,7 +158,6 @@ export enum Subject {
   /**
    * Buy now checkout flow
    */
-  BNMOSubmitOrder = "submitOrder",
   BNMOAskSpecialist = "ask a specialist",
   BNMOReadFAQ = "read faq",
   BNMOProvideShipping = "provide shipping address",
