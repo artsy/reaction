@@ -16,7 +16,7 @@ export const routes: RouteConfig[] = [
         $for_sale: Boolean
         $sort: String
         $at_auction: Boolean
-        $ecommerce: Boolean
+        $acquireable: Boolean
         $inquireable_only: Boolean
         $price_range: String
       ) {
@@ -29,7 +29,7 @@ export const routes: RouteConfig[] = [
               for_sale: $for_sale
               sort: $sort
               at_auction: $at_auction
-              ecommerce: $ecommerce
+              acquireable: $acquireable
               inquireable_only: $inquireable_only
               price_range: $price_range
             )

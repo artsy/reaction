@@ -81,7 +81,7 @@ export const routes: RouteConfig[] = [
             $for_sale: Boolean
             $sort: String
             $at_auction: Boolean
-            $ecommerce: Boolean
+            $acquireable: Boolean
             $inquireable_only: Boolean
           ) {
             artist(id: $artistID) {
@@ -93,7 +93,7 @@ export const routes: RouteConfig[] = [
                   for_sale: $for_sale
                   sort: $sort
                   at_auction: $at_auction
-                  ecommerce: $ecommerce
+                  acquireable: $acquireable
                   inquireable_only: $inquireable_only
                 )
             }
@@ -154,8 +154,7 @@ export const routes: RouteConfig[] = [
             }
           }
         `,
-      },
-      // Redirect all unhandled tabs to the artist page.
+      }, // Redirect all unhandled tabs to the artist page.
       // Note: there is a deep-linked standalone auction-lot page
       // in Force, under /artist/:artistID/auction-result/:id.
       // That app needs to be mounted before this app for that to work,
