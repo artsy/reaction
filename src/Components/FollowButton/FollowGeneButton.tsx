@@ -8,7 +8,7 @@ import {
   graphql,
   RelayProp,
 } from "react-relay"
-import track from "react-tracking"
+import track, { TrackingProp } from "react-tracking"
 import { FollowGeneButton_gene } from "../../__generated__/FollowGeneButton_gene.graphql"
 import { FollowButtonDeprecated } from "./ButtonDeprecated"
 import { FollowTrackingData } from "./Typings"
@@ -16,7 +16,7 @@ import { FollowTrackingData } from "./Typings"
 interface Props extends React.HTMLProps<FollowGeneButton>, Artsy.ContextProps {
   relay?: RelayProp
   gene?: FollowGeneButton_gene
-  tracking?: any
+  tracking?: TrackingProp
   trackingData?: FollowTrackingData
   onOpenAuthModal?: (type: "register" | "login", config?: object) => void
 }

@@ -20,13 +20,28 @@ import { ContextConsumer } from "Artsy/Router"
 import { Responsive } from "Utils/Responsive"
 import { READ_MORE_MAX_CHARS } from "./ArtworkDetailsAboutTheWorkFromArtsy"
 
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
+
 export interface ArtworkDetailsAboutTheWorkFromPartnerProps {
   artwork: ArtworkDetailsAboutTheWorkFromPartner_artwork
 }
 
+@track({
+  context_module: Schema.ContextModule.AboutTheWorkPartner,
+})
 export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
   ArtworkDetailsAboutTheWorkFromPartnerProps
 > {
+  @track({
+    flow: Schema.Flow.ArtworkAboutTheWork,
+    type: Schema.Type.Button,
+    label: Schema.Label.ReadMore,
+  })
+  trackReadMoreClick() {
+    // noop
+  }
+
   renderProfileImage(imageUrl?: string, initials?: string) {
     return <Avatar size="xs" src={imageUrl} initials={initials} mr={1} />
   }
@@ -108,6 +123,7 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
                             <ReadMore
                               maxChars={maxChars}
                               content={additional_information}
+                              onReadMoreClicked={this.trackReadMoreClick}
                             />
                           </Serif>
                         </React.Fragment>

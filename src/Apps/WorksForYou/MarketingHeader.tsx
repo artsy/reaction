@@ -22,7 +22,7 @@ const COLLECT_URL = `${sd.APP_URL}/collect?split_test[new_collect_page]=new&acqu
 const VIDEO_URL = `${sd.FORCE_CLOUDFRONT_URL}/videos/9172018-bn-banner-xl.mp4`
 
 @track({
-  context_module: Schema.Context.BNMOBanner,
+  context_module: Schema.ContextModule.BNMOBanner,
 })
 export class MarketingHeader extends Component {
   @track({

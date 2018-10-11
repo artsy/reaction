@@ -1,6 +1,6 @@
 import { Sans } from "@artsy/palette"
 import React from "react"
-import track from "react-tracking"
+import track, { TrackingProp } from "react-tracking"
 import styled from "styled-components"
 import Events from "../../../Utils/Events"
 import { pMedia } from "../../Helpers"
@@ -13,7 +13,7 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
   title: string
   articleId?: string
   color?: string
-  tracking?: any
+  tracking?: TrackingProp
   trackingData?: any
   hasLabel?: boolean
   isMobile?: boolean

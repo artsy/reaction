@@ -13,7 +13,7 @@ import {
   QueryRenderer,
   RelayProp,
 } from "react-relay"
-import track from "react-tracking"
+import track, { TrackingProp } from "react-tracking"
 import { RecordSourceSelectorProxy } from "relay-runtime"
 import Events from "../../../../Utils/Events"
 import ReplaceTransition from "../../../Animation/ReplaceTransition"
@@ -33,7 +33,7 @@ interface Artist {
 }
 
 export interface RelayProps {
-  tracking?: any
+  tracking?: TrackingProp
   relay?: RelayProp
   popular_artists: PopularArtistsContent_popular_artists
 }

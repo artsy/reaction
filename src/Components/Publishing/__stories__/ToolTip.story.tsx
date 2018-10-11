@@ -6,7 +6,7 @@ import { LinkWithTooltip } from "Components/Publishing/ToolTip/LinkWithTooltip"
 import { TooltipsData } from "Components/Publishing/ToolTip/TooltipsDataLoader"
 import React from "react"
 
-const tracking = { trackEvent: x => x }
+const tracking = { trackEvent: x => x, getTrackingData: x => x } as any
 
 storiesOf("Publishing/ToolTips/", module)
   .add("Artist", () => {

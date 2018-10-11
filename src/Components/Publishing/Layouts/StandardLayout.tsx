@@ -51,7 +51,7 @@ export class StandardLayout extends React.Component<
 
     return {
       action_type: Schema.ActionType.Click,
-      context_module: Schema.Context.ReadMore,
+      context_module: Schema.ContextModule.ReadMore,
       destination_path: getEditorialHref(layout, slug),
       subject: Schema.Subject.ReadMore,
       referrer,

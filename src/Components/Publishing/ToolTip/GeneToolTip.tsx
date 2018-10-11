@@ -4,7 +4,7 @@ import { FollowGeneButtonFragmentContainer as FollowGeneButton } from "Component
 import PropTypes from "prop-types"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import track from "react-tracking"
+import track, { TrackingProp } from "react-tracking"
 import styled from "styled-components"
 import { FollowTrackingData } from "../../FollowButton/Typings"
 import { getFullArtsyHref } from "../Constants"
@@ -13,7 +13,7 @@ import { NewFeature, NewFeatureContainer } from "./Components/NewFeature"
 
 export interface GeneProps {
   gene: GeneToolTip_gene
-  tracking?: any
+  tracking?: TrackingProp
 }
 
 export class GeneToolTip extends React.Component<GeneProps> {

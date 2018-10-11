@@ -18,7 +18,7 @@ export const MAX_CHARS = {
   default: 320,
 }
 
-@track({ context_module: Schema.Context.ArtistBio })
+@track({ context_module: Schema.ContextModule.ArtistBio })
 export class ArtistBio extends React.Component<Props> {
   render() {
     return (
