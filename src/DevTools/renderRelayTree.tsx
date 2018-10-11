@@ -4,13 +4,20 @@ import { MockRelayRenderer, MockRelayRendererProps } from "./MockRelayRenderer"
 import { renderUntil, RenderUntilCallback } from "./renderUntil"
 
 /**
- * Renders a tree of Relay containers and resolves the returned promise once
- * rendering has finished.
- *
+ * Renders a tree of Relay containers with a mocked local instance of the
+ * metaphysics schema and resolves the returned promise once loading data and
+ * rendering (including waterfall requests) has finished.
+ * 
  * It does this by checking the tree for the existence of an element with the
  * class defined by `LoadingClassName` from the `renderWithLoadProgress` module.
  * I.e. as long as at least 1 element exists in the tree with that class name,
- * rendering is not considered finished.
+ * rendering is not considered finished. Use the `renderWithLoadProgress`
+ * function for your `QueryRenderer` where possible, as it will do this plumbing
+ * by default.
+ * 
+ * @note
+ * Use this function in tests, but not storybooks. For storybooks you should
+ * usually use {@link MockRelayRenderer}.
  *
  * @param params
  * See {@link MockRelayRenderer}
@@ -76,11 +83,17 @@ export function renderRelayTree<
   C extends React.Component = React.Component
 >(
   params: MockRelayRendererProps & {
-    until?: RenderUntilCallback<P, S, C>
+    renderUntil?: RenderUntilCallback<P, S, C>
     wrapper?: (renderer: JSX.Element) => JSX.Element
   }
 ) {
-  const { Component, query, mockResolvers, until, wrapper } = params
+  const {
+    Component,
+    query,
+    mockResolvers,
+    renderUntil: renderUntilCallback,
+    wrapper,
+  } = params
   const renderer = (
     <MockRelayRenderer
       Component={Component}
@@ -89,7 +102,7 @@ export function renderRelayTree<
     />
   )
   return renderUntil<P, S, C>(
-    until || (tree => !tree.find(`.${LoadingClassName}`).length),
+    renderUntilCallback || (tree => !tree.find(`.${LoadingClassName}`).length),
     wrapper ? wrapper(renderer) : renderer
   )
 }
