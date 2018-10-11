@@ -1,6 +1,7 @@
 import "isomorphic-fetch"
 import "regenerator-runtime/runtime"
 
+import { isEmpty } from "lodash"
 import { version as ReactionVersion } from "package.json"
 import RelayClientSSR from "react-relay-network-modern-ssr/lib/client"
 import RelayServerSSR from "react-relay-network-modern-ssr/lib/server"
@@ -82,12 +83,15 @@ export function createEnvironment(config: Config = {}) {
             }
           : headers,
       }),
-      relaySSRMiddleware.getMiddleware({
-        lookup: true,
-      }),
+      relaySSRMiddleware.getMiddleware(),
       cacheMiddleware({
         size: 100, // max 100 requests
         ttl: 900000, // 15 minutes
+        onInit: queryResponseCache => {
+          if (!isServer) {
+            hydrateCacheFromSSR(queryResponseCache)
+          }
+        },
       }),
 
       // TODO: This has been moved over from `Utils/metaphysics` but can eventually
@@ -117,4 +121,26 @@ export function createEnvironment(config: Config = {}) {
   environment.relaySSRMiddleware = relaySSRMiddleware
 
   return environment
+}
+
+/**
+ * During the client-side rehydration phase take SSR cache and add to Relay's
+ * QueryResponseCache, which is used inside of cacheMiddleware.
+ *
+ * @param cache RelayQueryResponseCache
+ */
+export function hydrateCacheFromSSR(queryResponseCache) {
+  const ssrData = JSON.parse(window.__RELAY_BOOTSTRAP__ || "{}")
+
+  if (!isEmpty(ssrData)) {
+    try {
+      ssrData.forEach(request => {
+        const [key, json] = request
+        const { queryID, variables } = JSON.parse(key)
+        queryResponseCache.set(queryID, variables, json) // See: https://facebook.github.io/relay/docs/en/network-layer.html#caching
+      })
+    } catch (error) {
+      console.error("Relay/createEnvironment", error)
+    }
+  }
 }
