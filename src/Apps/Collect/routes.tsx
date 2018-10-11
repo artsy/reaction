@@ -19,6 +19,8 @@ export const routes: RouteConfig[] = [
         $ecommerce: Boolean
         $inquireable_only: Boolean
         $price_range: String
+        $artist_id: String
+        $attribution_class: [String]
       ) {
         viewer {
           ...CollectApp_viewer
@@ -32,6 +34,8 @@ export const routes: RouteConfig[] = [
               ecommerce: $ecommerce
               inquireable_only: $inquireable_only
               price_range: $price_range
+              artist_id: $artist_id
+              attribution_class: $attribution_class
             )
         }
       }

@@ -97,6 +97,18 @@ return {
       "name": "price_range",
       "type": "String",
       "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "artist_id",
+      "type": "String",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "attribution_class",
+      "type": "[String]",
+      "defaultValue": null
     }
   ],
   "selections": [
@@ -181,8 +193,20 @@ return {
         },
         {
           "kind": "Variable",
+          "name": "artist_id",
+          "variableName": "artist_id",
+          "type": null
+        },
+        {
+          "kind": "Variable",
           "name": "at_auction",
           "variableName": "at_auction",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "attribution_class",
+          "variableName": "attribution_class",
           "type": null
         },
         {
@@ -232,5 +256,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '99b1653db12202b0369643ca3ca5313a';
+(node as any).hash = '8f8be26538202e7952ab505d9073270f';
 export default node;

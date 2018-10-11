@@ -12,6 +12,8 @@ export type routes_CollectAppQueryVariables = {
     readonly ecommerce?: boolean | null;
     readonly inquireable_only?: boolean | null;
     readonly price_range?: string | null;
+    readonly artist_id?: string | null;
+    readonly attribution_class?: ReadonlyArray<string | null> | null;
 };
 export type routes_CollectAppQueryResponse = {
     readonly viewer: ({
@@ -35,17 +37,19 @@ query routes_CollectAppQuery(
   $at_auction: Boolean
   $inquireable_only: Boolean
   $price_range: String
+  $artist_id: String
+  $attribution_class: [String]
 ) {
   viewer {
-    ...CollectApp_viewer_48m6Qi
+    ...CollectApp_viewer_3DF8gZ
   }
 }
 
-fragment CollectApp_viewer_48m6Qi on Viewer {
-  ...ArtworkGrid_viewer_11qwCU
+fragment CollectApp_viewer_3DF8gZ on Viewer {
+  ...ArtworkGrid_viewer_35lY6T
 }
 
-fragment ArtworkGrid_viewer_11qwCU on Viewer {
+fragment ArtworkGrid_viewer_35lY6T on Viewer {
   filter_artworks(aggregations: [MEDIUM, TOTAL], size: 0) {
     aggregations {
       slice
@@ -57,11 +61,11 @@ fragment ArtworkGrid_viewer_11qwCU on Viewer {
     }
     __id
   }
-  ...CollectArtworkFilterRefetch_viewer_11qwCU
+  ...CollectArtworkFilterRefetch_viewer_35lY6T
 }
 
-fragment CollectArtworkFilterRefetch_viewer_11qwCU on Viewer {
-  filtered_artworks: filter_artworks(aggregations: [TOTAL], medium: $medium, major_periods: $major_periods, partner_id: $partner_id, for_sale: $for_sale, at_auction: $at_auction, inquireable_only: $inquireable_only, size: 0, sort: $sort, price_range: $price_range) {
+fragment CollectArtworkFilterRefetch_viewer_35lY6T on Viewer {
+  filtered_artworks: filter_artworks(aggregations: [TOTAL], medium: $medium, major_periods: $major_periods, partner_id: $partner_id, for_sale: $for_sale, at_auction: $at_auction, inquireable_only: $inquireable_only, size: 0, sort: $sort, price_range: $price_range, artist_id: $artist_id, attribution_class: $attribution_class) {
     ...CollectArtworkGrid_filtered_artworks
     __id
   }
@@ -272,6 +276,18 @@ var v0 = [
     "name": "price_range",
     "type": "String",
     "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "artist_id",
+    "type": "String",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "attribution_class",
+    "type": "[String]",
+    "defaultValue": null
   }
 ],
 v1 = {
@@ -353,7 +369,7 @@ return {
   "operationKind": "query",
   "name": "routes_CollectAppQuery",
   "id": null,
-  "text": "query routes_CollectAppQuery(\n  $medium: String\n  $major_periods: [String]\n  $partner_id: ID\n  $for_sale: Boolean\n  $sort: String\n  $at_auction: Boolean\n  $inquireable_only: Boolean\n  $price_range: String\n) {\n  viewer {\n    ...CollectApp_viewer_48m6Qi\n  }\n}\n\nfragment CollectApp_viewer_48m6Qi on Viewer {\n  ...ArtworkGrid_viewer_11qwCU\n}\n\nfragment ArtworkGrid_viewer_11qwCU on Viewer {\n  filter_artworks(aggregations: [MEDIUM, TOTAL], size: 0) {\n    aggregations {\n      slice\n      counts {\n        name\n        id\n        __id\n      }\n    }\n    __id\n  }\n  ...CollectArtworkFilterRefetch_viewer_11qwCU\n}\n\nfragment CollectArtworkFilterRefetch_viewer_11qwCU on Viewer {\n  filtered_artworks: filter_artworks(aggregations: [TOTAL], medium: $medium, major_periods: $major_periods, partner_id: $partner_id, for_sale: $for_sale, at_auction: $at_auction, inquireable_only: $inquireable_only, size: 0, sort: $sort, price_range: $price_range) {\n    ...CollectArtworkGrid_filtered_artworks\n    __id\n  }\n}\n\nfragment CollectArtworkGrid_filtered_artworks on FilterArtworks {\n  __id\n  artworks: artworks_connection(first: 30, after: \"\") {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    ...ArtworkGrid_artworks\n    edges {\n      node {\n        __id\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  is_biddable\n  is_acquireable\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    display_timely_at\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
+  "text": "query routes_CollectAppQuery(\n  $medium: String\n  $major_periods: [String]\n  $partner_id: ID\n  $for_sale: Boolean\n  $sort: String\n  $at_auction: Boolean\n  $inquireable_only: Boolean\n  $price_range: String\n  $artist_id: String\n  $attribution_class: [String]\n) {\n  viewer {\n    ...CollectApp_viewer_3DF8gZ\n  }\n}\n\nfragment CollectApp_viewer_3DF8gZ on Viewer {\n  ...ArtworkGrid_viewer_35lY6T\n}\n\nfragment ArtworkGrid_viewer_35lY6T on Viewer {\n  filter_artworks(aggregations: [MEDIUM, TOTAL], size: 0) {\n    aggregations {\n      slice\n      counts {\n        name\n        id\n        __id\n      }\n    }\n    __id\n  }\n  ...CollectArtworkFilterRefetch_viewer_35lY6T\n}\n\nfragment CollectArtworkFilterRefetch_viewer_35lY6T on Viewer {\n  filtered_artworks: filter_artworks(aggregations: [TOTAL], medium: $medium, major_periods: $major_periods, partner_id: $partner_id, for_sale: $for_sale, at_auction: $at_auction, inquireable_only: $inquireable_only, size: 0, sort: $sort, price_range: $price_range, artist_id: $artist_id, attribution_class: $attribution_class) {\n    ...CollectArtworkGrid_filtered_artworks\n    __id\n  }\n}\n\nfragment CollectArtworkGrid_filtered_artworks on FilterArtworks {\n  __id\n  artworks: artworks_connection(first: 30, after: \"\") {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    ...ArtworkGrid_artworks\n    edges {\n      node {\n        __id\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  is_biddable\n  is_acquireable\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    display_timely_at\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -377,8 +393,20 @@ return {
             "args": [
               {
                 "kind": "Variable",
+                "name": "artist_id",
+                "variableName": "artist_id",
+                "type": null
+              },
+              {
+                "kind": "Variable",
                 "name": "at_auction",
                 "variableName": "at_auction",
+                "type": null
+              },
+              {
+                "kind": "Variable",
+                "name": "attribution_class",
+                "variableName": "attribution_class",
                 "type": null
               },
               {
@@ -520,9 +548,21 @@ return {
               },
               {
                 "kind": "Variable",
+                "name": "artist_id",
+                "variableName": "artist_id",
+                "type": "String"
+              },
+              {
+                "kind": "Variable",
                 "name": "at_auction",
                 "variableName": "at_auction",
                 "type": "Boolean"
+              },
+              {
+                "kind": "Variable",
+                "name": "attribution_class",
+                "variableName": "attribution_class",
+                "type": "[String]"
               },
               {
                 "kind": "Variable",
@@ -969,5 +1009,5 @@ return {
   }
 };
 })();
-(node as any).hash = '6396d2cf1e94b58a22bcbe1b2be80d12';
+(node as any).hash = '7c9ea9b72c27d5d59ea34d40f65a9b0a';
 export default node;

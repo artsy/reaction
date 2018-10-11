@@ -38,7 +38,7 @@ export class FilterState extends Container<State> {
 
   constructor(props: State) {
     super()
-    this.tracking = props.tracking
+    this.tracking = props && props.tracking
 
     if (props) {
       Object.keys(this.state).forEach(filter => {

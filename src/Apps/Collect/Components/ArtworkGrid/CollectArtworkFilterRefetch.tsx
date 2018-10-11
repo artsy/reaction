@@ -90,6 +90,8 @@ export const CollectArtworkGridRefetchContainer = createRefetchContainer(
           inquireable_only: { type: "Boolean" }
           sort: { type: "String", defaultValue: "-partner_updated_at" }
           price_range: { type: "String" }
+          artist_id: { type: "String" }
+          attribution_class: { type: "[String]" }
         ) {
         filtered_artworks: filter_artworks(
           aggregations: [TOTAL]
@@ -103,6 +105,8 @@ export const CollectArtworkGridRefetchContainer = createRefetchContainer(
           size: 0
           sort: $sort
           price_range: $price_range
+          artist_id: $artist_id
+          attribution_class: $attribution_class
         ) {
           ...CollectArtworkGrid_filtered_artworks
         }
@@ -120,6 +124,8 @@ export const CollectArtworkGridRefetchContainer = createRefetchContainer(
       $for_sale: Boolean
       $sort: String
       $price_range: String
+      $artist_id: String
+      $attribution_class: [String]
     ) {
       viewer {
         ...CollectArtworkFilterRefetch_viewer
@@ -133,6 +139,8 @@ export const CollectArtworkGridRefetchContainer = createRefetchContainer(
             acquireable: $acquireable
             inquireable_only: $inquireable_only
             price_range: $price_range
+            artist_id: $artist_id
+            attribution_class: $attribution_class
           )
       }
     }
