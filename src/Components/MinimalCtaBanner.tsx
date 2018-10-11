@@ -20,7 +20,7 @@ export interface State {
   dismissed: boolean
 }
 
-@track({ context_module: Schema.Context.MinimalCtaBanner })
+@track({ context_module: Schema.ContextModule.MinimalCtaBanner })
 export class MinimalCtaBanner extends React.Component<
   MinimalCtaBannerProps,
   State

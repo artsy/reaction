@@ -1,4 +1,4 @@
-import { Context } from "./Values"
+import { ContextModule as _ContextModule } from "./Values"
 
 export interface ContextModule {
   /**
@@ -6,5 +6,5 @@ export interface ContextModule {
    * it does not need to be, as long as given the name it should be clear what
    * part of the page is being referred to.
    */
-  context_module: Context
+  context_module: _ContextModule
 }

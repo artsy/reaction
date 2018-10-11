@@ -1,7 +1,7 @@
 import { unica } from "Assets/Fonts"
 import React, { Component } from "react"
 import { Col, Row } from "react-styled-flexboxgrid"
-import track from "react-tracking"
+import track, { TrackingProp } from "react-tracking"
 import styled from "styled-components"
 import { media } from "../../Helpers"
 import { PartnerBlock, PartnerBlockContainer } from "../Partner/PartnerBlock"
@@ -13,7 +13,7 @@ interface Props {
   color?: string
   editDescription?: any
   editSubTitle?: any
-  tracking?: any
+  tracking?: TrackingProp
 }
 
 @track()

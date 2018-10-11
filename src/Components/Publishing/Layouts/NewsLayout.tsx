@@ -2,7 +2,7 @@ import { color } from "@artsy/palette"
 import { unica } from "Assets/Fonts"
 import { once } from "lodash"
 import React, { Component } from "react"
-import track from "react-tracking"
+import track, { TrackingProp } from "react-tracking"
 import styled from "styled-components"
 import { pMedia } from "../../Helpers"
 import { NewsHeadline } from "../News/NewsHeadline"
@@ -19,7 +19,7 @@ interface Props {
   onExpand?: () => void
   relatedArticlesForCanvas?: RelatedArticleCanvasData[]
   renderTime?: number
-  tracking?: any
+  tracking?: TrackingProp
 }
 
 interface State {

@@ -11,6 +11,9 @@ storiesOf("Styleguide/Artwork", module)
   .add("ArtworkDetails", () => {
     return (
       <React.Fragment>
+        <Section title="ArtworkDetailsQueryRenderer containing CMS markdown text">
+          <ArtworkDetailsQueryRenderer artworkID="muhammad-ali-sting-like-a-bee" />
+        </Section>
         <Section title="Artwork with every additional details available">
           <ArtworkDetails artwork={AllAdditionalDetailsPresent as any} />
         </Section>

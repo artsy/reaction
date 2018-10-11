@@ -1,6 +1,6 @@
 import { avantgarde, unica } from "Assets/Fonts"
 import React from "react"
-import track from "react-tracking"
+import track, { TrackingProp } from "react-tracking"
 import styled from "styled-components"
 import request from "superagent"
 import Colors from "../../../Assets/Colors"
@@ -11,7 +11,7 @@ import { EMAIL_REGEX } from "../Constants"
 
 interface EmailPanelProps {
   signupUrl: string
-  tracking?: any
+  tracking?: TrackingProp
 }
 
 interface EmailPanelState {

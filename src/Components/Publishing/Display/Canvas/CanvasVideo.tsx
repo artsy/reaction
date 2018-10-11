@@ -2,7 +2,7 @@ import { pMedia } from "Components/Helpers"
 import { VideoControls } from "Components/Publishing/Sections/VideoControls"
 import { memoize, once } from "lodash"
 import React, { Component } from "react"
-import track from "react-tracking"
+import track, { TrackingProp } from "react-tracking"
 import styled from "styled-components"
 import { resize } from "Utils/resizer"
 
@@ -11,7 +11,7 @@ export interface CanvasVideoProps {
   coverUrl?: string
   src: any
   onInit?: any
-  tracking?: any
+  tracking?: TrackingProp
 }
 
 @track()

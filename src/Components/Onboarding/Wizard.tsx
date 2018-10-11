@@ -1,7 +1,7 @@
 import React from "react"
 import { Redirect, Route } from "react-router"
 
-import track from "react-tracking"
+import track, { TrackingProp } from "react-tracking"
 import Events from "../../Utils/Events"
 import { ProgressIndicator } from "../ProgressIndicator"
 
@@ -21,7 +21,7 @@ const STEPS = [
 
 export interface Props {
   redirectTo?: string
-  tracking?: any
+  tracking?: TrackingProp
 }
 
 export interface State {

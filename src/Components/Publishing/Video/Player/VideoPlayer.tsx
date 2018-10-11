@@ -1,6 +1,6 @@
 import { memoize } from "lodash"
 import React, { Component } from "react"
-import track from "react-tracking"
+import track, { TrackingProp } from "react-tracking"
 // @ts-ignore
 import styled, { StyledComponentClass, StyledFunction } from "styled-components"
 import {
@@ -18,7 +18,7 @@ export interface VideoPlayerProps extends React.HTMLProps<HTMLDivElement> {
   title?: string
   notifyPlayToggle?: (e) => void
   forcePlay?: boolean
-  tracking?: any
+  tracking?: TrackingProp
 }
 
 export interface VideoPlayerState {
