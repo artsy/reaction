@@ -144,7 +144,7 @@ export const ArtworkDetailsAboutTheWorkFromPartnerFragmentContainer = createFrag
   ArtworkDetailsAboutTheWorkFromPartner,
   graphql`
     fragment ArtworkDetailsAboutTheWorkFromPartner_artwork on Artwork {
-      additional_information
+      additional_information(format: HTML)
       partner {
         name
         initials
