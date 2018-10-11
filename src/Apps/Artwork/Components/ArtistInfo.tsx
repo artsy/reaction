@@ -2,6 +2,8 @@ import { Sans, Spacer, StackableBorderBox } from "@artsy/palette"
 import { ArtistInfo_artist } from "__generated__/ArtistInfo_artist.graphql"
 import { ArtistInfoQuery } from "__generated__/ArtistInfoQuery.graphql"
 import { ContextConsumer } from "Artsy"
+import { track, Track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { Mediator } from "Artsy/SystemContext"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
@@ -21,6 +23,9 @@ interface ArtistInfoProps {
   artist: ArtistInfo_artist
   user: User
   mediator?: Mediator
+  tracking?: {
+    trackEvent: Track
+  }
 }
 
 const Container = ({ children }) => (
@@ -31,6 +36,7 @@ export const ArtistInfo: SFC<ArtistInfoProps> = props => {
   const showArtistBio = !!props.artist.biography_blurb.text
   const imageUrl = get(props, p => p.artist.image.cropped.url)
 
+  console.log(props)
   return (
     <>
       <StackableBorderBox p={2} flexDirection="column">
@@ -78,7 +84,16 @@ export const ArtistInfo: SFC<ArtistInfoProps> = props => {
         {showArtistBio && (
           <>
             <Spacer mb={1} />
-            <ArtistBio bio={props.artist} />
+            <ArtistBio
+              bio={props.artist}
+              onReadMoreClicked={() => {
+                props.tracking.trackEvent({
+                  flow: Schema.Flow.ArtworkAboutTheArtist,
+                  type: Schema.Type.Button,
+                  label: Schema.Label.ReadMore,
+                })
+              }}
+            />
           </>
         )}
       </StackableBorderBox>
@@ -102,7 +117,9 @@ export const ArtistInfo: SFC<ArtistInfoProps> = props => {
 }
 
 export const ArtistInfoFragmentContainer = createFragmentContainer(
-  ArtistInfo,
+  track({
+    context_module: Schema.ContextModule.Biography,
+  })(ArtistInfo),
   graphql`
     fragment ArtistInfo_artist on Artist {
       id

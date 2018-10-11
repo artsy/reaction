@@ -15,7 +15,7 @@ interface RelatedArticlesPanelProps extends React.HTMLProps<HTMLDivElement> {
 
 @track({
   // TODO: reevalutate double naming of context/schema
-  context_module: Schema.Context.RelatedArticles,
+  context_module: Schema.ContextModule.RelatedArticles,
   subject: Schema.Subject.RelatedArticles,
 })
 export class RelatedArticlesPanel extends React.Component<

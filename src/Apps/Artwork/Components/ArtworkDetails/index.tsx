@@ -13,8 +13,14 @@ import { ArtworkDetailsChecklistFragmentContainer as Checklist } from "./Artwork
 import { ArtworkDetails_artwork } from "__generated__/ArtworkDetails_artwork.graphql"
 import { ArtworkDetailsQuery } from "__generated__/ArtworkDetailsQuery.graphql"
 
+import { track, Track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
+
 export interface ArtworkDetailsProps {
   artwork: ArtworkDetails_artwork
+  tracking?: {
+    trackEvent: Track
+  }
 }
 
 const ArtworkDetailsContainer = Box
@@ -23,8 +29,16 @@ export const ArtworkDetails: React.SFC<ArtworkDetailsProps> = props => {
   const { artwork } = props
   return (
     <ArtworkDetailsContainer pb={4}>
-      <Tabs>
-        <Tab name="About the work">
+      <Tabs
+        onChange={({ data }) => {
+          props.tracking.trackEvent({
+            flow: Schema.Flow.ArtworkAboutTheArtist,
+            type: Schema.Type.Tab,
+            label: data.trackingLabel,
+          })
+        }}
+      >
+        <Tab name="About the work" data={{ trackingLabel: "about_the_work" }}>
           <AboutTheWorkFromArtsy artwork={artwork} />
           <AboutTheWorkFromPartner artwork={artwork} />
           <AdditionalInfo artwork={artwork} />
@@ -32,15 +46,22 @@ export const ArtworkDetails: React.SFC<ArtworkDetailsProps> = props => {
         </Tab>
         {artwork.articles &&
           artwork.articles.length && (
-            <Tab name="Articles">
+            <Tab name="Articles" data={{ trackingLabel: "articles" }}>
               <Articles artwork={artwork} />
             </Tab>
           )}
         {artwork.exhibition_history && (
-          <Tab name="Exhibition history">{artwork.exhibition_history}</Tab>
+          <Tab
+            name="Exhibition history"
+            data={{ trackingLabel: "exhibition_history" }}
+          >
+            {artwork.exhibition_history}
+          </Tab>
         )}
         {artwork.literature && (
-          <Tab name="Bibliography">{artwork.literature}</Tab>
+          <Tab name="Bibliography" data={{ trackingLabel: "bibliography" }}>
+            {artwork.literature}
+          </Tab>
         )}
       </Tabs>
     </ArtworkDetailsContainer>
@@ -48,7 +69,9 @@ export const ArtworkDetails: React.SFC<ArtworkDetailsProps> = props => {
 }
 
 export const ArtworkDetailsFragmentContainer = createFragmentContainer(
-  ArtworkDetails,
+  track({
+    context_module: Schema.ContextModule.ArtworkTabs,
+  })(ArtworkDetails),
   graphql`
     fragment ArtworkDetails_artwork on Artwork {
       ...ArtworkDetailsAboutTheWorkFromArtsy_artwork

@@ -20,8 +20,14 @@ import { ContextConsumer } from "Artsy/Router"
 import { Responsive } from "Utils/Responsive"
 import { READ_MORE_MAX_CHARS } from "./ArtworkDetailsAboutTheWorkFromArtsy"
 
+import { track, Track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
+
 export interface ArtworkDetailsAboutTheWorkFromPartnerProps {
   artwork: ArtworkDetailsAboutTheWorkFromPartner_artwork
+  tracking?: {
+    trackEvent: Track
+  }
 }
 
 export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
@@ -108,6 +114,13 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
                             <ReadMore
                               maxChars={maxChars}
                               content={additional_information}
+                              onReadMoreClicked={() => {
+                                this.props.tracking.trackEvent({
+                                  flow: Schema.Flow.ArtworkAboutTheWork,
+                                  type: Schema.Type.Button,
+                                  label: Schema.Label.ReadMore,
+                                })
+                              }}
                             />
                           </Serif>
                         </React.Fragment>
@@ -125,7 +138,9 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
 }
 
 export const ArtworkDetailsAboutTheWorkFromPartnerFragmentContainer = createFragmentContainer(
-  ArtworkDetailsAboutTheWorkFromPartner,
+  track({
+    context_module: Schema.ContextModule.AboutTheWorkPartner,
+  })(ArtworkDetailsAboutTheWorkFromPartner),
   graphql`
     fragment ArtworkDetailsAboutTheWorkFromPartner_artwork on Artwork {
       additional_information

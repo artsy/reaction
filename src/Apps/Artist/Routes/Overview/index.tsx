@@ -28,7 +28,7 @@ interface State {
 }
 
 @track({
-  context_module: Schema.Context.ArtistOverview,
+  context_module: Schema.ContextModule.ArtistOverview,
 })
 class OverviewRoute extends React.Component<OverviewRouteProps, State> {
   state = {

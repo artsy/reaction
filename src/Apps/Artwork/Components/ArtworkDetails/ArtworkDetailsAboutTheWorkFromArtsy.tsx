@@ -4,6 +4,8 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { ReadMore } from "Styleguide/Components"
 
 import { ArtworkDetailsAboutTheWorkFromArtsy_artwork } from "__generated__/ArtworkDetailsAboutTheWorkFromArtsy_artwork.graphql"
+import { track, Track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import { Responsive } from "Utils/Responsive"
 
 export const READ_MORE_MAX_CHARS = {
@@ -13,6 +15,9 @@ export const READ_MORE_MAX_CHARS = {
 
 export interface ArtworkDetailsAboutTheWorkFromArtsyProps {
   artwork: ArtworkDetailsAboutTheWorkFromArtsy_artwork
+  tracking?: {
+    trackEvent: Track
+  }
 }
 
 export const ArtworkDetailsAboutTheWorkFromArtsy: React.SFC<
@@ -32,7 +37,17 @@ export const ArtworkDetailsAboutTheWorkFromArtsy: React.SFC<
         return (
           <Box pb={2}>
             <Serif size="3">
-              <ReadMore maxChars={maxChars} content={description} />
+              <ReadMore
+                maxChars={maxChars}
+                content={description}
+                onReadMoreClicked={() => {
+                  props.tracking.trackEvent({
+                    flow: Schema.Flow.ArtworkAboutTheWork,
+                    type: Schema.Type.Button,
+                    label: Schema.Label.ReadMore,
+                  })
+                }}
+              />
             </Serif>
           </Box>
         )
@@ -42,7 +57,9 @@ export const ArtworkDetailsAboutTheWorkFromArtsy: React.SFC<
 }
 
 export const ArtworkDetailsAboutTheWorkFromArtsyFragmentContainer = createFragmentContainer(
-  ArtworkDetailsAboutTheWorkFromArtsy,
+  track({
+    context_module: Schema.ContextModule.AboutTheWork,
+  })(ArtworkDetailsAboutTheWorkFromArtsy),
   graphql`
     fragment ArtworkDetailsAboutTheWorkFromArtsy_artwork on Artwork {
       description
