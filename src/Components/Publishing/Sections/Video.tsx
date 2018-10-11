@@ -1,6 +1,6 @@
 import React from "react"
 import sizeMe from "react-sizeme"
-import track from "react-tracking"
+import track, { TrackingProp } from "react-tracking"
 import styled, { StyledFunction } from "styled-components"
 import urlParser from "url"
 import Events from "../../../Utils/Events"
@@ -23,7 +23,7 @@ interface VideoProps {
     cover_image_url?: string
   }
   size?: any
-  tracking?: any
+  tracking?: TrackingProp
   trackingData?: any
   layout?: ArticleLayout
 }

@@ -2,13 +2,14 @@ import { Sans, Spacer, StackableBorderBox } from "@artsy/palette"
 import { ArtistInfo_artist } from "__generated__/ArtistInfo_artist.graphql"
 import { ArtistInfoQuery } from "__generated__/ArtistInfoQuery.graphql"
 import { ContextConsumer } from "Artsy"
-import { track, Track } from "Artsy/Analytics"
+import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { Mediator } from "Artsy/SystemContext"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import React, { SFC } from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
+import { TrackingProp } from "react-tracking"
 import { data as sd } from "sharify"
 import { EntityHeader } from "Styleguide/Components/EntityHeader"
 import { get } from "Utils/get"
@@ -23,9 +24,7 @@ interface ArtistInfoProps {
   artist: ArtistInfo_artist
   user: User
   mediator?: Mediator
-  tracking?: {
-    trackEvent: Track
-  }
+  tracking?: TrackingProp
 }
 
 const Container = ({ children }) => (

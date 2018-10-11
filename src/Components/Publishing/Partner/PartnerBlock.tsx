@@ -1,14 +1,14 @@
 import { unica } from "Assets/Fonts"
 import { pMedia } from "Components/Helpers"
 import React from "react"
-import track from "react-tracking"
+import track, { TrackingProp } from "react-tracking"
 import styled from "styled-components"
 import { resize } from "Utils/resizer"
 
 interface Props {
   logo: string
   url: string
-  tracking?: any
+  tracking?: TrackingProp
   trackingData?: any
 }
 

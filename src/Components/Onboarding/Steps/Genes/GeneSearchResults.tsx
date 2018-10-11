@@ -14,7 +14,7 @@ import {
   QueryRenderer,
   RelayProp,
 } from "react-relay"
-import track from "react-tracking"
+import track, { TrackingProp } from "react-tracking"
 import { RecordSourceSelectorProxy } from "relay-runtime"
 import styled from "styled-components"
 import Events from "../../../../Utils/Events"
@@ -29,7 +29,7 @@ interface ContainerProps extends FollowProps {
 }
 
 interface Props extends React.HTMLProps<HTMLAnchorElement>, ContainerProps {
-  tracking?: any
+  tracking?: TrackingProp
   relay?: RelayProp
   viewer: GeneSearchResultsContent_viewer
 }

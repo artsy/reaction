@@ -1,7 +1,7 @@
 import { Sans } from "@artsy/palette"
 import { garamond, unica } from "Assets/Fonts"
 import React, { Component } from "react"
-import track from "react-tracking"
+import track, { TrackingProp } from "react-tracking"
 import styled from "styled-components"
 import { crop } from "../../../../Utils/resizer"
 import { pMedia } from "../../../Helpers"
@@ -19,7 +19,7 @@ interface Props {
   editTitle?: any
   editImage?: any
   series?: any
-  tracking?: any
+  tracking?: TrackingProp
 }
 
 interface LinkProps extends Props, React.HTMLProps<HTMLLinkElement> {

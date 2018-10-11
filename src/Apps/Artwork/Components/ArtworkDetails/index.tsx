@@ -13,14 +13,13 @@ import { ArtworkDetailsChecklistFragmentContainer as Checklist } from "./Artwork
 import { ArtworkDetails_artwork } from "__generated__/ArtworkDetails_artwork.graphql"
 import { ArtworkDetailsQuery } from "__generated__/ArtworkDetailsQuery.graphql"
 
-import { track, Track } from "Artsy/Analytics"
+import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
+import { TrackingProp } from "react-tracking"
 
 export interface ArtworkDetailsProps {
   artwork: ArtworkDetails_artwork
-  tracking?: {
-    trackEvent: Track
-  }
+  tracking?: TrackingProp
 }
 
 const ArtworkDetailsContainer = Box

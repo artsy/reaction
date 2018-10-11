@@ -1,6 +1,6 @@
 import qs from "querystring"
 import React from "react"
-import track from "react-tracking"
+import track, { TrackingProp } from "react-tracking"
 import Events from "Utils/Events"
 
 import { ForgotPasswordForm } from "Components/Authentication/Desktop/ForgotPasswordForm"
@@ -26,7 +26,7 @@ export interface FormSwitcherProps {
   onFacebookLogin?: (e: Event) => void
   onTwitterLogin?: (e: Event) => void
   options: ModalOptions
-  tracking?: any
+  tracking?: TrackingProp
   type: ModalType
   submitUrls?: { [P in ModalType]: string } & {
     facebook?: string

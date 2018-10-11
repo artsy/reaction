@@ -20,14 +20,13 @@ import { ContextConsumer } from "Artsy/Router"
 import { Responsive } from "Utils/Responsive"
 import { READ_MORE_MAX_CHARS } from "./ArtworkDetailsAboutTheWorkFromArtsy"
 
-import { track, Track } from "Artsy/Analytics"
+import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
+import { TrackingProp } from "react-tracking"
 
 export interface ArtworkDetailsAboutTheWorkFromPartnerProps {
   artwork: ArtworkDetailsAboutTheWorkFromPartner_artwork
-  tracking?: {
-    trackEvent: Track
-  }
+  tracking?: TrackingProp
 }
 
 export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
