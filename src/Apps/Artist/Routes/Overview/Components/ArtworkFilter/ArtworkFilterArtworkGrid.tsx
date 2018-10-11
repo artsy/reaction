@@ -22,7 +22,7 @@ interface Props {
   relay: RelayRefetchProp
 }
 
-const PAGE_SIZE = 10
+const PAGE_SIZE = 24
 
 class Artworks extends Component<Props, LoadingAreaState> {
   state = {
@@ -125,7 +125,7 @@ export const ArtworkGridRefetchContainer = createRefetchContainer(
     filtered_artworks: graphql`
       fragment ArtworkFilterArtworkGrid_filtered_artworks on FilterArtworks
         @argumentDefinitions(
-          first: { type: "Int", defaultValue: 10 }
+          first: { type: "Int", defaultValue: 24 }
           after: { type: "String", defaultValue: "" }
         ) {
         __id
