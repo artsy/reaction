@@ -67,6 +67,10 @@ export class LargeArtistHeader extends Component<Props> {
     // no-op
   }
 
+  componentDidMount() {
+    console.log("MOUNT LargeArtistHeader")
+  }
+
   render() {
     const { props } = this
     const {
@@ -157,6 +161,10 @@ export class SmallArtistHeader extends Component<Props> {
   })
   onClickSlide(slide) {
     // no-op
+  }
+
+  componentDidMount() {
+    console.log("MOUNT SmallArtistHeader")
   }
 
   render() {

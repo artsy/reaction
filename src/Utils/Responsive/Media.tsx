@@ -1,5 +1,7 @@
+import { themeProps } from "@artsy/palette"
 import React from "react"
 import styled, { css, InterpolationValue } from "styled-components"
+import { createResponsiveComponents } from "./DeprecatedResponsive"
 
 type RenderProp = ((
   generatedStyle: RenderPropStyleGenerator
@@ -244,15 +246,37 @@ export function createMedia<
   type B = keyof C["breakpoints"]
   type I = keyof C["interactions"]
 
+  const DynamicResponsive = createResponsiveComponents()
+
   const MediaContext = React.createContext<MediaContextProviderProps<B>>({})
   const MediaContextProvider: React.SFC<MediaContextProviderProps<B>> = ({
     onlyRenderAt,
     children,
-  }) => (
-    <MediaContext.Provider value={{ onlyRenderAt }}>
-      {children}
-    </MediaContext.Provider>
-  )
+  }) => {
+    const { hover, ...breakpointMediaQueries } = themeProps.mediaQueries
+    return (
+      <DynamicResponsive.Provider
+        mediaQueries={breakpointMediaQueries as any}
+        initialMatchingMediaQueries={["xs", "sm", "md", "lg", "xl"]}
+      >
+        <DynamicResponsive.Consumer>
+          {matches => {
+            const matchingBreakpoints = Object.keys(matches).filter(
+              key => matches[key]
+            )
+            console.log(matchingBreakpoints)
+            return (
+              <MediaContext.Provider
+                value={{ onlyRenderAt: matchingBreakpoints }}
+              >
+                {children}
+              </MediaContext.Provider>
+            )
+          }}
+        </DynamicResponsive.Consumer>
+      </DynamicResponsive.Provider>
+    )
+  }
 
   const sortedBreakpoints = createSortedBreakpoints(config.breakpoints)
   const atRanges = createAtRanges(sortedBreakpoints)
@@ -266,6 +290,8 @@ export function createMedia<
     return nextBreakpoint
   }
 
+  // TODO: Ensure the component does not re-render if the instance’s query still
+  //       matches a new `renderOnlyAt` value.
   const Media: React.SFC<MediaProps<B, I>> = props => {
     validateProps(props)
 
