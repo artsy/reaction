@@ -7,11 +7,7 @@ import {
   OrderWithShippingDetails,
   PickupOrder,
 } from "../../../../Apps/__test__/Fixtures/Order"
-import {
-  MockBoot,
-  renderRelayTree,
-  RenderUntilCallback,
-} from "../../../../DevTools"
+import { MockBoot, renderRelayTree } from "../../../../DevTools"
 import { StatusFragmentContainer } from "../Status"
 
 jest.unmock("react-relay")

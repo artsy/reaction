@@ -1,6 +1,6 @@
-import { renderRelayTree } from "DevTools/MockRelayRenderer"
 import { cloneDeep } from "lodash"
 import { graphql } from "react-relay"
+import { renderRelayTree } from "../../../../DevTools"
 import { ArtistInfoFixture } from "../../../__test__/Fixtures/Artwork/ArtistInfo"
 import { ArtistInfoFragmentContainer } from "../ArtistInfo"
 
