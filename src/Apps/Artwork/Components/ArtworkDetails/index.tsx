@@ -1,7 +1,7 @@
 import { Box } from "@artsy/palette"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { ContextConsumer } from "Artsy/Router"
-import React from "react"
+import React, { Component } from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 import { Tab, Tabs } from "Styleguide/Components"
 import { ArtworkDetailsAboutTheWorkFromArtsyFragmentContainer as AboutTheWorkFromArtsy } from "./ArtworkDetailsAboutTheWorkFromArtsy"
@@ -15,62 +15,66 @@ import { ArtworkDetailsQuery } from "__generated__/ArtworkDetailsQuery.graphql"
 
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { TrackingProp } from "react-tracking"
 
 export interface ArtworkDetailsProps {
   artwork: ArtworkDetails_artwork
-  tracking?: TrackingProp
 }
 
 const ArtworkDetailsContainer = Box
 
-export const ArtworkDetails: React.SFC<ArtworkDetailsProps> = props => {
-  const { artwork } = props
-  return (
-    <ArtworkDetailsContainer pb={4}>
-      <Tabs
-        onChange={({ data }) => {
-          props.tracking.trackEvent({
-            flow: Schema.Flow.ArtworkAboutTheArtist,
-            type: Schema.Type.Tab,
-            label: data.trackingLabel,
-          })
-        }}
-      >
-        <Tab name="About the work" data={{ trackingLabel: "about_the_work" }}>
-          <AboutTheWorkFromArtsy artwork={artwork} />
-          <AboutTheWorkFromPartner artwork={artwork} />
-          <AdditionalInfo artwork={artwork} />
-          <Checklist artwork={artwork} />
-        </Tab>
-        {artwork.articles &&
-          artwork.articles.length && (
-            <Tab name="Articles" data={{ trackingLabel: "articles" }}>
-              <Articles artwork={artwork} />
+@track({
+  context_module: Schema.ContextModule.ArtworkTabs,
+})
+export class ArtworkDetails extends Component<ArtworkDetailsProps> {
+  @track((_props, _state, [{ data }]) => {
+    return {
+      flow: Schema.Flow.ArtworkAboutTheArtist,
+      type: Schema.Type.Tab,
+      label: data.trackingLabel,
+    }
+  })
+  trackTabChange() {
+    // noop
+  }
+
+  render() {
+    const { artwork } = this.props
+    return (
+      <ArtworkDetailsContainer pb={4}>
+        <Tabs onChange={this.trackTabChange.bind(this)}>
+          <Tab name="About the work" data={{ trackingLabel: "about_the_work" }}>
+            <AboutTheWorkFromArtsy artwork={artwork} />
+            <AboutTheWorkFromPartner artwork={artwork} />
+            <AdditionalInfo artwork={artwork} />
+            <Checklist artwork={artwork} />
+          </Tab>
+          {artwork.articles &&
+            artwork.articles.length && (
+              <Tab name="Articles" data={{ trackingLabel: "articles" }}>
+                <Articles artwork={artwork} />
+              </Tab>
+            )}
+          {artwork.exhibition_history && (
+            <Tab
+              name="Exhibition history"
+              data={{ trackingLabel: "exhibition_history" }}
+            >
+              {artwork.exhibition_history}
             </Tab>
           )}
-        {artwork.exhibition_history && (
-          <Tab
-            name="Exhibition history"
-            data={{ trackingLabel: "exhibition_history" }}
-          >
-            {artwork.exhibition_history}
-          </Tab>
-        )}
-        {artwork.literature && (
-          <Tab name="Bibliography" data={{ trackingLabel: "bibliography" }}>
-            {artwork.literature}
-          </Tab>
-        )}
-      </Tabs>
-    </ArtworkDetailsContainer>
-  )
+          {artwork.literature && (
+            <Tab name="Bibliography" data={{ trackingLabel: "bibliography" }}>
+              {artwork.literature}
+            </Tab>
+          )}
+        </Tabs>
+      </ArtworkDetailsContainer>
+    )
+  }
 }
 
 export const ArtworkDetailsFragmentContainer = createFragmentContainer(
-  track({
-    context_module: Schema.ContextModule.ArtworkTabs,
-  })(ArtworkDetails),
+  ArtworkDetails,
   graphql`
     fragment ArtworkDetails_artwork on Artwork {
       ...ArtworkDetailsAboutTheWorkFromArtsy_artwork

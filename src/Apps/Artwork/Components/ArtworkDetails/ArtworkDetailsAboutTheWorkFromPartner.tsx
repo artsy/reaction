@@ -22,16 +22,26 @@ import { READ_MORE_MAX_CHARS } from "./ArtworkDetailsAboutTheWorkFromArtsy"
 
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { TrackingProp } from "react-tracking"
 
 export interface ArtworkDetailsAboutTheWorkFromPartnerProps {
   artwork: ArtworkDetailsAboutTheWorkFromPartner_artwork
-  tracking?: TrackingProp
 }
 
+@track({
+  context_module: Schema.ContextModule.AboutTheWorkPartner,
+})
 export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
   ArtworkDetailsAboutTheWorkFromPartnerProps
 > {
+  @track({
+    flow: Schema.Flow.ArtworkAboutTheWork,
+    type: Schema.Type.Button,
+    label: Schema.Label.ReadMore,
+  })
+  trackReadMoreClick() {
+    // noop
+  }
+
   renderProfileImage(imageUrl?: string, initials?: string) {
     return <Avatar size="xs" src={imageUrl} initials={initials} mr={1} />
   }
@@ -113,13 +123,7 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
                             <ReadMore
                               maxChars={maxChars}
                               content={additional_information}
-                              onReadMoreClicked={() => {
-                                this.props.tracking.trackEvent({
-                                  flow: Schema.Flow.ArtworkAboutTheWork,
-                                  type: Schema.Type.Button,
-                                  label: Schema.Label.ReadMore,
-                                })
-                              }}
+                              onReadMoreClicked={this.trackReadMoreClick}
                             />
                           </Serif>
                         </React.Fragment>
@@ -137,9 +141,7 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
 }
 
 export const ArtworkDetailsAboutTheWorkFromPartnerFragmentContainer = createFragmentContainer(
-  track({
-    context_module: Schema.ContextModule.AboutTheWorkPartner,
-  })(ArtworkDetailsAboutTheWorkFromPartner),
+  ArtworkDetailsAboutTheWorkFromPartner,
   graphql`
     fragment ArtworkDetailsAboutTheWorkFromPartner_artwork on Artwork {
       additional_information
