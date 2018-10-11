@@ -68,6 +68,9 @@ export const routes: RouteConfig[] = [
             }
           }
         `,
+        cacheConfig: {
+          force: true,
+        },
       },
       {
         path: "payment",
