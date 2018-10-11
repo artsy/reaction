@@ -329,6 +329,12 @@ describe("Shipping", () => {
       }
       fillAddressForm(component, address)
       component.find("Button").simulate("click")
+
+      const input = component
+        .find(Input)
+        .filterWhere(wrapper => wrapper.props().title === "Postal code")
+      expect(input.props().error).toBeFalsy()
+
       expect(commitMutation).toBeCalled()
     })
     it("allows a missing state/province if the selected country is not US or Canada", () => {

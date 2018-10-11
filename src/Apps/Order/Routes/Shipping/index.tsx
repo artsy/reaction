@@ -232,7 +232,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
       address,
       addressErrors: {
         ...this.state.addressErrors,
-        [key]: this.validateAddress(address)[key],
+        ...this.validateAddress(address),
       },
     })
   }
