@@ -12,6 +12,7 @@ export interface State {
   at_auction?: boolean
   inquireable_only?: boolean
   price_range?: string
+  attribution_class?: string[]
 
   tracking?: any
 }
@@ -27,6 +28,7 @@ export const initialState = {
   at_auction: null,
   inquireable_only: null,
   price_range: "*-*",
+  attribution_class: [],
 }
 
 export class FilterState extends Container<State> {
@@ -88,6 +90,9 @@ export class FilterState extends Container<State> {
     if (filter === "major_periods") {
       newPartialState = { major_periods: [] }
     }
+    if (filter === "attribution_class") {
+      newPartialState = { attribution_class: [] }
+    }
     if (
       [
         "for_sale",
@@ -113,8 +118,11 @@ export class FilterState extends Container<State> {
 
     switch (filter) {
       case "major_periods":
+        newPartialState = { major_periods: [value] }
+        break
+      case "attribution_class":
         newPartialState = {
-          major_periods: [value],
+          attribution_class: this.state.attribution_class.concat(value),
         }
         break
       case "page":

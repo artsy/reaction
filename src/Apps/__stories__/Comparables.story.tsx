@@ -8,7 +8,7 @@ storiesOf("Apps/Comparables", module).add("albers", () => {
   return (
     <Box p={6} pt={2}>
       <ContextProvider>
-        <ComparablesContainer artworkID="josef-albers-wls-i-from-white-line-squares-series-i" />
+        <ComparablesContainer artworkID="damien-hirst-spin-2" />
       </ContextProvider>
     </Box>
   )

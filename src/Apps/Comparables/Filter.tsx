@@ -1,8 +1,8 @@
-import { Box, Flex } from "@artsy/palette"
+import { Box, Flex, Spacer } from "@artsy/palette"
 import { CollectArtworkGridRefetchContainer as ArtworkFilter } from "Apps/Collect/Components/ArtworkGrid/CollectArtworkFilterRefetch"
 import { PriceRange } from "Apps/Collect/Components/Filters/PriceRange"
-import { TimePeriodFilter } from "Apps/Collect/Components/Filters/TimePeriodFilter"
 import { FilterState } from "Apps/Collect/FilterState"
+import { AttributionClassFilter } from "Apps/Comparables/Filter/AttributionClassFilter"
 import { MediumFilter } from "Apps/Comparables/Filter/MediumFilter"
 import { ContextConsumer, ContextProps } from "Artsy"
 import React, { Component } from "react"
@@ -40,20 +40,21 @@ export class Comparables extends Component<ContextProps> {
                 return (
                   <div>
                     <Flex>
-                      <Sidebar width="25%" mr={2}>
-                        Sidebar
+                      <Sidebar width="25%" mr={4}>
                         {this.renderPriceRange(filters, mediator)}
+                        <Spacer mb={4} />
                         <Toggle label="Medium" expanded>
                           <MediumFilter filters={filters} mediator={mediator} />
                         </Toggle>
-                        <Toggle expanded label="Time period">
-                          <TimePeriodFilter
+                        <Spacer mb={4} />
+                        <Toggle label="Attribution Class" expanded>
+                          <AttributionClassFilter
                             filters={filters}
                             mediator={mediator}
                           />
                         </Toggle>
                       </Sidebar>
-                      <Box width="75%">
+                      <Box width="75%" ml={4}>
                         <ArtworkFilter
                           viewer={this.props.viewer}
                           filters={filters.state}

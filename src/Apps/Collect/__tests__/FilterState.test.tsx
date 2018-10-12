@@ -41,6 +41,7 @@ describe("FilterState", () => {
         page: 1,
         price_range: "*-*",
         sort: "-decayed_merch",
+        attribution_class: [],
       })
       done()
     })
@@ -67,4 +68,5 @@ const initialState = {
   at_auction: null,
   inquireable_only: null,
   price_range: "*-*",
+  attribution_class: [],
 }
