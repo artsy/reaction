@@ -1,17 +1,26 @@
 import { Box, Flex, Spacer } from "@artsy/palette"
+import { Filter_viewer } from "__generated__/Filter_viewer.graphql"
 import { CollectArtworkGridRefetchContainer as ArtworkFilter } from "Apps/Collect/Components/ArtworkGrid/CollectArtworkFilterRefetch"
 import { PriceRange } from "Apps/Collect/Components/Filters/PriceRange"
 import { FilterState } from "Apps/Collect/FilterState"
 import { AttributionClassFilter } from "Apps/Comparables/Filter/AttributionClassFilter"
 import { MediumFilter } from "Apps/Comparables/Filter/MediumFilter"
 import { ContextConsumer, ContextProps } from "Artsy"
+import { SystemProps } from "Artsy/SystemContext"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Toggle } from "Styleguide/Components/Toggle"
 import { Subscribe } from "unstated"
 
-export class Comparables extends Component<ContextProps> {
-  renderPriceRange(filters: FilterState, mediator) {
+interface Props extends ContextProps {
+  filters: FilterState
+  mediator: SystemProps["mediator"]
+  viewer: Filter_viewer
+}
+
+class Comparables extends Component<Props> {
+  renderPriceRange() {
+    const { filters, mediator } = this.props
     const [initialMin, initialMax] = filters.priceRangeToTuple()
 
     return (
@@ -31,6 +40,32 @@ export class Comparables extends Component<ContextProps> {
     )
   }
   render() {
+    const { filters } = this.props
+    return (
+      <div>
+        <Flex>
+          <Sidebar width="25%" mr={4}>
+            {this.renderPriceRange()}
+            <Spacer mb={4} />
+            <Toggle label="Medium" expanded>
+              <MediumFilter />
+            </Toggle>
+            <Spacer mb={4} />
+            <Toggle label="Attribution Class" expanded>
+              <AttributionClassFilter />
+            </Toggle>
+          </Sidebar>
+          <Box width="75%" ml={4}>
+            <ArtworkFilter viewer={this.props.viewer} filters={filters.state} />
+          </Box>
+        </Flex>
+      </div>
+    )
+  }
+}
+
+export const ComparablesFragmentContainer = createFragmentContainer(
+  (props: Props) => {
     return (
       <ContextConsumer>
         {({ mediator }) => {
@@ -38,30 +73,11 @@ export class Comparables extends Component<ContextProps> {
             <Subscribe to={[FilterState]}>
               {(filters: FilterState) => {
                 return (
-                  <div>
-                    <Flex>
-                      <Sidebar width="25%" mr={4}>
-                        {this.renderPriceRange(filters, mediator)}
-                        <Spacer mb={4} />
-                        <Toggle label="Medium" expanded>
-                          <MediumFilter filters={filters} mediator={mediator} />
-                        </Toggle>
-                        <Spacer mb={4} />
-                        <Toggle label="Attribution Class" expanded>
-                          <AttributionClassFilter
-                            filters={filters}
-                            mediator={mediator}
-                          />
-                        </Toggle>
-                      </Sidebar>
-                      <Box width="75%" ml={4}>
-                        <ArtworkFilter
-                          viewer={this.props.viewer}
-                          filters={filters.state}
-                        />
-                      </Box>
-                    </Flex>
-                  </div>
+                  <Comparables
+                    {...props}
+                    mediator={mediator}
+                    filters={filters}
+                  />
                 )
               }}
             </Subscribe>
@@ -69,11 +85,7 @@ export class Comparables extends Component<ContextProps> {
         }}
       </ContextConsumer>
     )
-  }
-}
-
-export const ComparablesFragmentContainer = createFragmentContainer(
-  Comparables,
+  },
   graphql`
     fragment Filter_viewer on Viewer
       @argumentDefinitions(

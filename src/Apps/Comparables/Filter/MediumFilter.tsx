@@ -1,38 +1,55 @@
-import { FilterState } from "Apps/Collect/FilterState"
-import React from "react"
-
 import { Radio } from "@artsy/palette"
-import { SystemProps } from "Artsy/SystemContext"
+import { FilterState } from "Apps/Collect/FilterState"
+import { ContextConsumer } from "Artsy/SystemContext"
+import React from "react"
+import { Subscribe } from "unstated"
 
-export const MediumFilter: React.SFC<{
-  filters: FilterState
-  mediator: SystemProps["mediator"]
-}> = ({ filters, mediator }) => (
-  <>
-    {Object.keys(CategoryToMediumGeneMap).map((category, index) => {
-      const medium = CategoryToMediumGeneMap[category]
-      const isSelected = filters.state.medium === medium
+export const MediumFilter: React.SFC = () => {
+  return (
+    <ContextConsumer>
+      {({ mediator }) => {
+        return (
+          <Subscribe to={[FilterState]}>
+            {(filters: FilterState) => {
+              return (
+                <>
+                  {Object.keys(CategoryToMediumGeneMap).map(
+                    (category, index) => {
+                      const medium = CategoryToMediumGeneMap[category]
+                      const isSelected = filters.state.medium === medium
 
-      return (
-        <Radio
-          my={0.3}
-          selected={isSelected}
-          value={medium} // to do: url
-          onSelect={({ selected }) => {
-            if (selected) {
-              return filters.setFilter("medium", medium, mediator)
-            } else {
-              return filters.unsetFilter("medium", mediator)
-            }
-          }}
-          key={index}
-        >
-          {category}
-        </Radio>
-      )
-    })}
-  </>
-)
+                      return (
+                        <Radio
+                          my={0.3}
+                          selected={isSelected}
+                          value={medium} // to do: url
+                          onSelect={({ selected }) => {
+                            if (selected) {
+                              return filters.setFilter(
+                                "medium",
+                                medium,
+                                mediator
+                              )
+                            } else {
+                              return filters.unsetFilter("medium", mediator)
+                            }
+                          }}
+                          key={index}
+                        >
+                          {category}
+                        </Radio>
+                      )
+                    }
+                  )}
+                </>
+              )
+            }}
+          </Subscribe>
+        )
+      }}
+    </ContextConsumer>
+  )
+}
 
 export const CategoryToMediumGeneMap = {
   Print: "prints",

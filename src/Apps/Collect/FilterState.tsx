@@ -40,9 +40,9 @@ export class FilterState extends Container<State> {
 
   constructor(props: State) {
     super()
-    this.tracking = props && props.tracking
 
     if (props) {
+      this.tracking = props.tracking
       Object.keys(this.state).forEach(filter => {
         const value = props[filter]
         if (!value) {
@@ -145,11 +145,12 @@ export class FilterState extends Container<State> {
     this.setState(newPartialState, () => {
       mediator.trigger("collect:filter:changed", this.filteredState)
 
-      this.tracking.trackEvent({
-        action: "Commercial filter: params changed",
-        current: omit(this.state, ["selectedFilterCount", "showActionSheet"]),
-        changed: { [filter]: value },
-      })
+      this.tracking &&
+        this.tracking.trackEvent({
+          action: "Commercial filter: params changed",
+          current: omit(this.state, ["selectedFilterCount", "showActionSheet"]),
+          changed: { [filter]: value },
+        })
     })
   }
 
