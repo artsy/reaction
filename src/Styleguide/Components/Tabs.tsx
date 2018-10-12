@@ -27,7 +27,7 @@ export interface TabsProps extends WidthProps, JustifyContentProps {
   /** Index of the Tab that should be pre-selected */
   initialTabIndex?: number
 
-  /** To be able to extend or modify the way tab btns are getting rendered
+  /** To be able to extend or modify the way tab buttons are getting rendered
    * default value is an identity function
    */
   transformTabBtn?: (
