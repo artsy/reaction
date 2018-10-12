@@ -1,6 +1,6 @@
 .DS_Store
 .awcache
-.cache-loader/
+.cache
 .env
 .storybook/.DS_Store
 .storybook/manager.js
