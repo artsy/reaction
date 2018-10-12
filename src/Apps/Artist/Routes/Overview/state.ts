@@ -16,6 +16,7 @@ interface State {
   // UI
   selectedFilters: string[]
   showActionSheet: boolean
+  showZeroState: boolean
 }
 
 const initialState = {
@@ -30,6 +31,7 @@ const initialState = {
   inquireable_only: null,
   selectedFilters: [],
   showActionSheet: false,
+  showZeroState: false,
 }
 
 export class FilterState extends Container<State> {
@@ -80,6 +82,12 @@ export class FilterState extends Container<State> {
     }
 
     this.setState({ showActionSheet: show })
+  }
+
+  showZeroState = showZeroState => {
+    this.setState({
+      showZeroState,
+    })
   }
 
   resetFilters = () => {
