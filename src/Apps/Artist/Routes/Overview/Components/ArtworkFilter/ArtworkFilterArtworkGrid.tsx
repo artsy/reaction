@@ -1,4 +1,4 @@
-import { Box, Spacer } from "@artsy/palette"
+import { Box, Message, Spacer } from "@artsy/palette"
 import { ArtworkFilterArtworkGrid_filtered_artworks } from "__generated__/ArtworkFilterArtworkGrid_filtered_artworks.graphql"
 import { FilterState } from "Apps/Artist/Routes/Overview/state"
 import { ContextConsumer } from "Artsy/Router"
@@ -12,12 +12,14 @@ import {
   LoadingArea,
   LoadingAreaState,
 } from "Apps/Artist/Components/LoadingArea"
+import { Responsive } from "Utils/Responsive"
 
 interface Props {
   artistID: string
   columnCount: number
   filters: any
   filtered_artworks: ArtworkFilterArtworkGrid_filtered_artworks
+  filterState?: FilterState
   isLoading?: boolean
   relay: RelayRefetchProp
 }
@@ -69,58 +71,88 @@ class Artworks extends Component<Props, LoadingAreaState> {
     })
   }
 
+  componentDidUpdate(prevProps) {
+    const prevCount = prevProps.filtered_artworks.artworks.edges.length
+    const count = this.props.filtered_artworks.artworks.edges.length
+
+    if (prevCount !== count) {
+      const shouldShow = count === 0 ? true : false
+      this.props.filterState.showZeroState(shouldShow)
+    }
+  }
+
   render() {
+    const { filterState } = this.props
+
     return (
       <ContextConsumer>
-        {({ user, mediator }) => {
-          return (
-            <Subscribe to={[FilterState]}>
-              {(filters: FilterState) => {
-                return (
-                  <LoadingArea
-                    isLoading={this.state.isLoading || this.props.isLoading}
-                  >
-                    <ArtworkGrid
-                      artworks={this.props.filtered_artworks.artworks}
-                      columnCount={this.props.columnCount}
-                      itemMargin={40}
-                      user={user}
-                      mediator={mediator}
-                    />
-
-                    <Spacer mb={3} />
-
-                    <Box>
-                      <Pagination
-                        hasNextPage={
-                          this.props.filtered_artworks.artworks.pageInfo
-                            .hasNextPage
-                        }
-                        pageCursors={
-                          this.props.filtered_artworks.artworks.pageCursors
-                        }
-                        onClick={(cursor, page) => {
-                          this.loadAfter(cursor, page, filters, mediator)
-                        }}
-                        onNext={() => {
-                          this.loadNext(filters, mediator)
-                        }}
-                        scrollTo="#jump--artistArtworkGrid"
+        {({ user, mediator }) => (
+          <Responsive>
+            {({ xs }) => {
+              return (
+                <LoadingArea
+                  isLoading={this.state.isLoading || this.props.isLoading}
+                >
+                  {!filterState.state.showZeroState ? (
+                    <>
+                      <ArtworkGrid
+                        artworks={this.props.filtered_artworks.artworks}
+                        columnCount={this.props.columnCount}
+                        itemMargin={40}
+                        user={user}
+                        mediator={mediator}
                       />
-                    </Box>
-                  </LoadingArea>
-                )
-              }}
-            </Subscribe>
-          )
-        }}
+
+                      <Spacer mb={3} />
+
+                      <Box>
+                        <Pagination
+                          hasNextPage={
+                            this.props.filtered_artworks.artworks.pageInfo
+                              .hasNextPage
+                          }
+                          pageCursors={
+                            this.props.filtered_artworks.artworks.pageCursors
+                          }
+                          onClick={(cursor, page) => {
+                            this.loadAfter(cursor, page, filterState, mediator)
+                          }}
+                          onNext={() => {
+                            this.loadNext(filterState, mediator)
+                          }}
+                          scrollTo="#jump--artistArtworkGrid"
+                        />
+                      </Box>
+                    </>
+                  ) : (
+                    <Message
+                      textSize={xs ? "3t" : "5t"}
+                      justifyContent="center"
+                    >
+                      There aren't any works available by the artist that meet
+                      the following criteria at this time.
+                    </Message>
+                  )}
+                </LoadingArea>
+              )
+            }}
+          </Responsive>
+        )}
       </ContextConsumer>
     )
   }
 }
 
 export const ArtworkGridRefetchContainer = createRefetchContainer(
-  Artworks,
+  (props: Props) => {
+    return (
+      <Subscribe to={[FilterState]}>
+        {(filters: FilterState) => {
+          return <Artworks filterState={filters} {...props} />
+        }}
+      </Subscribe>
+    )
+  },
   {
     filtered_artworks: graphql`
       fragment ArtworkFilterArtworkGrid_filtered_artworks on FilterArtworks
