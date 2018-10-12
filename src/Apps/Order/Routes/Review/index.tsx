@@ -188,13 +188,13 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
   }
 
   onChangePayment() {
-    this.props.mediator.trigger("order:payment")
     this.props.router.push(`/orders/${this.props.order.id}/payment`)
+    this.props.mediator.trigger("order:payment")
   }
 
   onChangeShipping() {
-    this.props.mediator.trigger("order:shipping")
     this.props.router.push(`/orders/${this.props.order.id}/shipping`)
+    this.props.mediator.trigger("order:shipping")
   }
 
   onCloseModal = () => {

@@ -183,8 +183,8 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                   this.onMutationError(orderOrError.error)
                 }
               } else {
-                this.props.mediator.trigger("order:payment")
                 this.props.router.push(`/orders/${this.props.order.id}/payment`)
+                this.props.mediator.trigger("order:payment")
               }
             },
             onError: this.onMutationError.bind(this),

@@ -338,8 +338,8 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
           } = data
 
           if (orderOrError.order) {
-            this.props.mediator.trigger("order:review")
             this.props.router.push(`/orders/${this.props.order.id}/review`)
+            this.props.mediator.trigger("order:review")
           } else {
             this.onMutationError(errors || orderOrError)
           }
