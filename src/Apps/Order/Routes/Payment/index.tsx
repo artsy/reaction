@@ -66,6 +66,10 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
     addressErrors: {},
   }
 
+  componentDidMount() {
+    this.props.mediator.trigger("order:payment")
+  }
+
   startingAddress(): Address {
     const { creditCard } = this.props.order
 
@@ -339,7 +343,6 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
 
           if (orderOrError.order) {
             this.props.router.push(`/orders/${this.props.order.id}/review`)
-            this.props.mediator.trigger("order:review")
           } else {
             this.onMutationError(errors || orderOrError)
           }

@@ -72,6 +72,10 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     errorModalMessage: null,
   }
 
+  componentDidMount() {
+    this.props.mediator.trigger("order:shipping")
+  }
+
   get startingAddress() {
     return {
       ...emptyAddress,
@@ -184,7 +188,6 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                 }
               } else {
                 this.props.router.push(`/orders/${this.props.order.id}/payment`)
-                this.props.mediator.trigger("order:payment")
               }
             },
             onError: this.onMutationError.bind(this),

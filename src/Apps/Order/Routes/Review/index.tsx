@@ -55,6 +55,10 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
     this.onSuccessfulSubmit = this.onSuccessfulSubmit.bind(this)
   }
 
+  componentDidMount() {
+    this.props.mediator.trigger("order:review")
+  }
+
   @track<ReviewProps>(props => ({
     action_type: Schema.ActionType.SubmittedOrder,
     order_id: props.order.id,
@@ -189,12 +193,10 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
 
   onChangePayment() {
     this.props.router.push(`/orders/${this.props.order.id}/payment`)
-    this.props.mediator.trigger("order:payment")
   }
 
   onChangeShipping() {
     this.props.router.push(`/orders/${this.props.order.id}/shipping`)
-    this.props.mediator.trigger("order:shipping")
   }
 
   onCloseModal = () => {
