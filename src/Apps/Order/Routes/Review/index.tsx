@@ -55,7 +55,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
     this.onSuccessfulSubmit = this.onSuccessfulSubmit.bind(this)
   }
 
-  @track(props => ({
+  @track<ReviewProps>(props => ({
     action_type: Schema.ActionType.SubmittedOrder,
     order_id: props.order.id,
   }))
