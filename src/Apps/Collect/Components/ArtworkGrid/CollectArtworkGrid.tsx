@@ -15,7 +15,7 @@ import {
 
 interface Props {
   columnCount: number
-  filters: any
+  filters?: any
   filtered_artworks: ArtworkFilterArtworkGrid_filtered_artworks
   isLoading?: boolean
   relay: RelayRefetchProp

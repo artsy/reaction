@@ -3,6 +3,7 @@ import React from "react"
 import { graphql } from "react-relay"
 import AnalyticsProvider from "./AnalyticsProvider"
 import { CollectAppFragmentContainer as CollectApp } from "./CollectApp"
+import { CollectionAppFragmentContainer as CollectionApp } from "./CollectionApp"
 
 export const routes: RouteConfig[] = [
   {
@@ -55,6 +56,24 @@ export const routes: RouteConfig[] = [
         params.sort = "-decayed_merch"
       }
       return { ...initialFilterState, ...params }
+    },
+  },
+  {
+    path: "/collection/:slug",
+    Component: CollectionApp,
+    query: graphql`
+      query routes_MarketingCollectionAppQuery($slug: String!) {
+        marketingCollection(slug: $slug) {
+          ...CollectionApp_collection
+        }
+      }
+    `,
+    render: ({ props, Component }) => {
+      if (!props) {
+        return null
+      }
+
+      return <AnalyticsProvider {...props} Component={Component} />
     },
   },
 ]

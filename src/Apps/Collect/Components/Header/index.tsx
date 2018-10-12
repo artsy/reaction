@@ -6,7 +6,7 @@ import { ReadMore } from "Styleguide/Components/ReadMore"
 import { Col, Grid, Row } from "Styleguide/Elements/Grid"
 
 interface Props {
-  id: string
+  slug: string
   title: string
   image: string
   description?: string
@@ -22,7 +22,7 @@ const getReadMoreContent = (description, image_caption) => {
     <Box>
       {description}
       <Spacer mt={3} />
-      <ImageCaption>{image_caption}</ImageCaption>
+      <ImageCaption>{image_caption || ""}</ImageCaption>
     </Box>
   )
 }
