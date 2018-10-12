@@ -1,16 +1,9 @@
-import { Separator } from "@artsy/palette"
-import { Box, Flex, Serif } from "@artsy/palette"
+import { Box, Serif } from "@artsy/palette"
 import { CollectApp_viewer } from "__generated__/CollectApp_viewer.graphql"
 import React, { Component } from "react"
-import { LazyLoadComponent } from "react-lazy-load-image-component"
 import { createFragmentContainer, graphql } from "react-relay"
-import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
+import { CollectFrame } from "./CollectFrame"
 import { ArtworkGridFragmentContainer as ArtworkGrid } from "./Components/ArtworkGrid"
-
-import {
-  Footer,
-  RecentlyViewedQueryRenderer as RecentlyViewed,
-} from "Styleguide/Components"
 
 export interface CollectAppProps {
   name: string
@@ -20,27 +13,14 @@ export interface CollectAppProps {
 export class CollectApp extends Component<CollectAppProps> {
   render() {
     return (
-      <HorizontalPadding>
-        <Flex flexDirection="column">
-          <Box mt={3} mb={4}>
-            <Serif size="8">Collect Art &amp; Design Online</Serif>
-          </Box>
-          <Box>
-            <ArtworkGrid viewer={this.props.viewer} />
-          </Box>
-
-          {typeof window !== "undefined" && (
-            <LazyLoadComponent threshold={1000}>
-              <RecentlyViewed />
-            </LazyLoadComponent>
-          )}
-          <Separator mt={6} mb={3} />
-
-          <Box>
-            <Footer />
-          </Box>
-        </Flex>
-      </HorizontalPadding>
+      <CollectFrame>
+        <Box mt={3} mb={4}>
+          <Serif size="8">Collect Art &amp; Design Online</Serif>
+        </Box>
+        <Box>
+          <ArtworkGrid viewer={this.props.viewer} />
+        </Box>
+      </CollectFrame>
     )
   }
 }

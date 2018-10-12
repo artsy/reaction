@@ -6,7 +6,7 @@ import { ReadMore } from "Styleguide/Components/ReadMore"
 import { Col, Grid, Row } from "Styleguide/Elements/Grid"
 
 interface Props {
-  id: string
+  slug: string
   title: string
   image: string
   description?: string
