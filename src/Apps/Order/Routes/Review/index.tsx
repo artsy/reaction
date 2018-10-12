@@ -4,6 +4,7 @@ import { ReviewSubmitOrderMutation } from "__generated__/ReviewSubmitOrderMutati
 import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
 import { ItemReviewFragmentContainer as ItemReview } from "Apps/Order/Components/ItemReview"
 import { ShippingAndPaymentReviewFragmentContainer as ShippingAndPaymentReview } from "Apps/Order/Components/ShippingAndPaymentReview"
+import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { Mediator } from "Artsy/SystemContext"
 import { ErrorModal } from "Components/Modal/ErrorModal"
@@ -15,7 +16,6 @@ import {
   graphql,
   RelayProp,
 } from "react-relay"
-import track from "react-tracking"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { get } from "Utils/get"
