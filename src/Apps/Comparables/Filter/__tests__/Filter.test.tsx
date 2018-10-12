@@ -7,7 +7,7 @@ import { MediumFilter } from "../MediumFilter"
 describe("Filter", () => {
   describe("MediumFilter", () => {
     const tracking = { trackEvent: jest.fn() }
-    const filterState = new FilterState({ ...initialState })
+    const filterState = new FilterState({ ...initialState, tracking })
     const mediator = { trigger: jest.fn() }
 
     const mediumFilter = mount(
@@ -15,7 +15,7 @@ describe("Filter", () => {
     )
 
     it("displays the correct number of Radio components", () => {
-      expect(mediumFilter.find(Radio).length).toBe(4)
+      expect(mediumFilter.find(Radio).length).toBe(12)
     })
 
     it("updates the state with the correct medium", done => {
@@ -27,7 +27,7 @@ describe("Filter", () => {
       mediumFilter.update()
 
       setTimeout(() => {
-        expect(filterState.state.medium).toBe("photography")
+        expect(filterState.state.medium).toBe("prints")
         done()
       })
     })
