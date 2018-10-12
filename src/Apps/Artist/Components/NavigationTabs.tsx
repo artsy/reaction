@@ -11,7 +11,9 @@ interface Props {
   artist: NavigationTabs_artist
 }
 
-@track({ context_module: Schema.Context.NavigationTabs })
+@track({
+  context_module: Schema.ContextModule.NavigationTabs,
+})
 export class NavigationTabs extends React.Component<Props> {
   @track((_props, _state, [tab, destination_path]: string[]) => ({
     action_type: Schema.ActionType.Click,
@@ -62,9 +64,10 @@ export class NavigationTabs extends React.Component<Props> {
                   <RouteTabs
                     // FIXME: Don't use negative margins, adjust container padding responsively
                     mx={xs ? -4 : 0}
-                    pl={xs ? 4 : 0}
                     size={xs ? "xs" : null}
                   >
+                    {/* Add spacer on mobile */}
+                    {xs && <span style={{ paddingLeft: 20 }} />}
                     {this.renderTab("Overview", route(""), {
                       exact: true,
                       mediator,

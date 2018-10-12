@@ -83,7 +83,7 @@ class Filter extends Component<Props, State> {
     return (
       <React.Fragment>
         <Sans size="2" weight="medium" color="black100" my={1}>
-          Ways to Buy
+          Ways to buy
         </Sans>
         {showBuyNow && (
           <Checkbox

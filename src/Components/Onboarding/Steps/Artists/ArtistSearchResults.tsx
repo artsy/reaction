@@ -13,7 +13,7 @@ import {
   QueryRenderer,
   RelayProp,
 } from "react-relay"
-import track from "react-tracking"
+import track, { TrackingProp } from "react-tracking"
 import { RecordSourceSelectorProxy } from "relay-runtime"
 import Events from "../../../../Utils/Events"
 import ReplaceTransition from "../../../Animation/ReplaceTransition"
@@ -24,7 +24,7 @@ type Artist = ArtistSearchResultsContent_viewer["match_artist"][0]
 
 export interface ContainerProps extends FollowProps {
   term: string
-  tracking?: any
+  tracking?: TrackingProp
 }
 
 interface Props extends React.HTMLProps<HTMLAnchorElement>, ContainerProps {

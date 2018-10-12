@@ -9,7 +9,6 @@ import {
   BorderBox,
   Box,
   Button,
-  color,
   Flex,
   Sans,
   Separator,
@@ -22,7 +21,7 @@ const COLLECT_URL = `${sd.APP_URL}/collect?split_test[new_collect_page]=new&acqu
 const VIDEO_URL = `${sd.FORCE_CLOUDFRONT_URL}/videos/9172018-bn-banner-xl.mp4`
 
 @track({
-  context_module: Schema.Context.BNMOBanner,
+  context_module: Schema.ContextModule.BNMOBanner,
 })
 export class MarketingHeader extends Component {
   @track({
@@ -39,7 +38,7 @@ export class MarketingHeader extends Component {
         <BorderBox
           width="100%"
           height="220px"
-          background={color("black5")}
+          background={"black5"}
           p={0}
           style={{
             overflow: "hidden",
@@ -53,7 +52,7 @@ export class MarketingHeader extends Component {
         <Flex justifyContent="space-between" alignItems="center">
           <Box pr={2}>
             <Sans size="3">In-demand artworks, available to buy now</Sans>
-            <Sans size="3" color={color("black60")}>
+            <Sans size="3" color={"black60"}>
               Collect works by today’s top artists, with transparent pricing,
               easy shipping, and a simple checkout process.
             </Sans>

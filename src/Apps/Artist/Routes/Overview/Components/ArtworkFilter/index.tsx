@@ -30,6 +30,7 @@ import {
 interface Props {
   artist: ArtworkFilter_artist
   hideTopBorder?: boolean
+  filterState?: FilterState
 }
 
 class Filter extends Component<Props> {
@@ -52,7 +53,7 @@ class Filter extends Component<Props> {
     return !this.existy.hasArtworks
   }
 
-  renderFilters({ user, filters, mediator, hideTopBorder }) {
+  renderFilters({ user, filterState, mediator, hideTopBorder }) {
     const { counts } = this.props.artist
     const { aggregations } = this.props.artist.filtered_artworks
     const mediumAggregation = aggregations.find(agg => agg.slice === "MEDIUM")
@@ -77,24 +78,24 @@ class Filter extends Component<Props> {
         <Flex flexDirection="column" alignItems="left" mt={-1} mb={1}>
           {!hideTopBorder && <Separator mb={1} />}
           {enableBuyNowFlow
-            ? this.renderWaysToBuy(filters, mediator, counts)
-            : this.renderForSaleCheckbox(filters, mediator, counts)}
+            ? this.renderWaysToBuy(filterState, mediator, counts)
+            : this.renderForSaleCheckbox(filterState, mediator, counts)}
         </Flex>
 
         <Toggle label="Medium" expanded={!this.showZeroState}>
           {this.renderCategory({
-            filters,
+            filterState,
             category: "medium",
             counts: mediumAggregation.counts,
             mediator,
           })}
         </Toggle>
         <Toggle
-          expanded={filters.state.partner_id && !this.showZeroState}
+          expanded={filterState.state.partner_id && !this.showZeroState}
           label="Gallery"
         >
           {this.renderCategory({
-            filters,
+            filterState,
             category: "partner_id",
             counts: galleryAggregation.counts,
             mediator,
@@ -102,11 +103,11 @@ class Filter extends Component<Props> {
         </Toggle>
 
         <Toggle
-          expanded={filters.state.partner_id && !this.showZeroState}
+          expanded={filterState.state.partner_id && !this.showZeroState}
           label="Institution"
         >
           {this.renderCategory({
-            filters,
+            filterState,
             category: "partner_id",
             counts: institutionAggregation.counts,
             mediator,
@@ -114,12 +115,12 @@ class Filter extends Component<Props> {
         </Toggle>
         <Toggle
           expanded={
-            filters.state.major_periods.length > 0 && !this.showZeroState
+            filterState.state.major_periods.length > 0 && !this.showZeroState
           }
           label="Time period"
         >
           {this.renderCategory({
-            filters,
+            filterState,
             category: "major_periods",
             counts: periodAggregation.counts,
             mediator,
@@ -129,11 +130,11 @@ class Filter extends Component<Props> {
     )
   }
 
-  renderCategory({ filters, category, counts, mediator }) {
+  renderCategory({ filterState, category, counts, mediator }) {
     const currentFilter =
       category === "major_periods"
-        ? filters.state.major_periods[0]
-        : filters.state[category]
+        ? filterState.state.major_periods[0]
+        : filterState.state[category]
 
     return counts.map((count, index) => {
       return (
@@ -143,9 +144,9 @@ class Filter extends Component<Props> {
           value={count.id}
           onSelect={({ selected }) => {
             if (selected) {
-              return filters.setFilter(category, count.id, mediator)
+              return filterState.setFilter(category, count.id, mediator)
             } else {
-              return filters.unsetFilter(category, mediator)
+              return filterState.unsetFilter(category, mediator)
             }
           }}
           key={index}
@@ -156,13 +157,13 @@ class Filter extends Component<Props> {
     })
   }
 
-  renderForSaleCheckbox(filters, mediator, counts) {
+  renderForSaleCheckbox(filterState, mediator, counts) {
     return (
       <Checkbox
-        selected={filters.state.for_sale}
+        selected={filterState.state.for_sale}
         disabled={!this.existy.hasForSaleArtworks || this.showZeroState}
         onSelect={value => {
-          return filters.setFilter("for_sale", value, mediator)
+          return filterState.setFilter("for_sale", value, mediator)
         }}
       >
         For sale
@@ -170,35 +171,35 @@ class Filter extends Component<Props> {
     )
   }
 
-  renderWaysToBuy(filters, mediator, counts) {
+  renderWaysToBuy(filterState, mediator, counts) {
     return (
       <React.Fragment>
         <Sans size="2" weight="medium" color="black100" mt={0.3} mb={1}>
           Ways to Buy
         </Sans>
         <Checkbox
-          selected={filters.state.acquireable}
+          selected={filterState.state.acquireable}
           disabled={!this.existy.hasBuyNowArtworks || this.showZeroState}
           onSelect={value => {
-            return filters.setFilter("acquireable", value, mediator)
+            return filterState.setFilter("acquireable", value, mediator)
           }}
         >
           Buy now
         </Checkbox>
         <Checkbox
-          selected={filters.state.at_auction}
+          selected={filterState.state.at_auction}
           disabled={!this.existy.hasAuctionArtworks || this.showZeroState}
           onSelect={value => {
-            return filters.setFilter("at_auction", value, mediator)
+            return filterState.setFilter("at_auction", value, mediator)
           }}
         >
           Bid
         </Checkbox>
         <Checkbox
-          selected={filters.state.inquireable_only}
+          selected={filterState.state.inquireable_only}
           disabled={!this.existy.hasForSaleArtworks || this.showZeroState}
           onSelect={value => {
-            return filters.setFilter("inquireable_only", value, mediator)
+            return filterState.setFilter("inquireable_only", value, mediator)
           }}
         >
           Inquire
@@ -243,7 +244,7 @@ class Filter extends Component<Props> {
     )
   }
 
-  renderSelect({ filters, mediator, xs }) {
+  renderSelect({ filterState, mediator, xs }) {
     return (
       <Flex
         justifyContent={xs ? "space-between" : "flex-end"}
@@ -274,9 +275,9 @@ class Filter extends Component<Props> {
               text: "Artwork year (asc.)",
             },
           ]}
-          selected={filters.state.sort}
+          selected={filterState.state.sort}
           onSelect={sort => {
-            return filters.setSort(sort, mediator)
+            return filterState.setSort(sort, mediator)
           }}
         />
 
@@ -284,7 +285,7 @@ class Filter extends Component<Props> {
           <Button
             size="small"
             mt={-1}
-            onClick={() => filters.showActionSheet(true)}
+            onClick={() => filterState.showActionSheet(true)}
           >
             <Flex justifyContent="space-between" alignItems="center">
               <FilterIcon fill={color("white100")} />
@@ -298,79 +299,75 @@ class Filter extends Component<Props> {
   }
 
   render() {
+    const { filterState } = this.props
+
     return (
       <ContextConsumer>
         {({ user, mediator }) => {
           return (
-            <Subscribe to={[FilterState]}>
-              {(filters: FilterState) => {
+            <Responsive>
+              {({ xs, sm, md }) => {
+                const hideTopBorder = this.props.hideTopBorder || xs
+
+                const Filters = () =>
+                  this.renderFilters({
+                    user,
+                    filterState,
+                    mediator,
+                    hideTopBorder,
+                  })
+
                 return (
-                  <Responsive>
-                    {({ xs, sm, md }) => {
-                      const hideTopBorder = this.props.hideTopBorder || xs
+                  <>
+                    <Flex>
+                      {xs ? (
+                        // Mobile
+                        filterState.state.showActionSheet && (
+                          <MobileActionSheet
+                            onClose={() => filterState.showActionSheet(false)}
+                          >
+                            <Filters />
+                          </MobileActionSheet>
+                        )
+                      ) : (
+                        // Desktop
+                        <Sidebar width="25%" mr={2}>
+                          <Filters />
+                        </Sidebar>
+                      )}
 
-                      const Filters = () =>
-                        this.renderFilters({
-                          user,
-                          filters,
+                      {/* Main Artwork Grid */}
+                      <Box width={xs ? "100%" : "75%"}>
+                        {!hideTopBorder && <Separator mb={2} mt={-1} />}
+
+                        {this.renderSelect({
+                          filterState,
                           mediator,
-                          hideTopBorder,
-                        })
+                          xs,
+                        })}
 
-                      return (
-                        <>
-                          <Flex>
-                            {xs ? (
-                              // Mobile
-                              filters.state.showActionSheet && (
-                                <MobileActionSheet
-                                  onClose={() => filters.showActionSheet(false)}
-                                >
-                                  <Filters />
-                                </MobileActionSheet>
-                              )
-                            ) : (
-                              // Desktop
-                              <Sidebar width="25%" mr={2}>
-                                <Filters />
-                              </Sidebar>
-                            )}
+                        <Spacer mb={2} />
 
-                            {/* Main Artwork Grid */}
-                            <Box width={xs ? "100%" : "75%"}>
-                              {!hideTopBorder && <Separator mb={2} mt={-1} />}
-
-                              {this.renderSelect({
-                                filters,
-                                mediator,
-                                xs,
-                              })}
-
-                              <Spacer mb={2} />
-
-                              {this.showZeroState ? (
-                                this.renderZeroState({
-                                  user,
-                                  mediator,
-                                  xs,
-                                })
-                              ) : (
-                                <ArtworkFilter
-                                  artist={this.props.artist}
-                                  artistID={this.props.artist.id}
-                                  columnCount={xs || sm || md ? 2 : 3}
-                                  filters={filters.state}
-                                />
-                              )}
-                            </Box>
-                          </Flex>
-                        </>
-                      )
-                    }}
-                  </Responsive>
+                        {this.showZeroState ? (
+                          this.renderZeroState({
+                            user,
+                            mediator,
+                            xs,
+                          })
+                        ) : (
+                          <ArtworkFilter
+                            artist={this.props.artist}
+                            artistID={this.props.artist.id}
+                            columnCount={xs || sm || md ? 2 : 3}
+                            filters={filterState.state}
+                          />
+                        )}
+                      </Box>
+                    </Flex>
+                  </>
                 )
               }}
-            </Subscribe>
+            </Responsive>
           )
         }}
       </ContextConsumer>
@@ -379,7 +376,15 @@ class Filter extends Component<Props> {
 }
 
 export const ArtworkFilterFragmentContainer = createFragmentContainer(
-  Filter,
+  (props: Props) => {
+    return (
+      <Subscribe to={[FilterState]}>
+        {(filters: FilterState) => {
+          return <Filter filterState={filters} {...props} />
+        }}
+      </Subscribe>
+    )
+  },
   graphql`
     fragment ArtworkFilter_artist on Artist
       @argumentDefinitions(

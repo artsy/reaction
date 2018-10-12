@@ -5,7 +5,7 @@ import { map } from "lodash"
 import PropTypes from "prop-types"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import track from "react-tracking"
+import track, { TrackingProp } from "react-tracking"
 import styled from "styled-components"
 import fillwidthDimensions from "../../../Utils/fillwidth"
 import { FollowTrackingData } from "../../FollowButton/Typings"
@@ -14,7 +14,7 @@ import { NewFeature } from "./Components/NewFeature"
 
 export interface ArtistToolTipProps {
   artist: ArtistToolTip_artist
-  tracking?: any
+  tracking?: TrackingProp
 }
 
 export class ArtistToolTip extends React.Component<ArtistToolTipProps> {

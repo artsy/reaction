@@ -3,7 +3,7 @@ import { defer } from "lodash"
 import PropTypes from "prop-types"
 import React, { Component } from "react"
 import { findDOMNode } from "react-dom"
-import track from "react-tracking"
+import track, { TrackingProp } from "react-tracking"
 import styled from "styled-components"
 import { parse as parseURL } from "url"
 import FadeTransition from "../../Animation/FadeTransition"
@@ -11,7 +11,7 @@ import { ToolTip } from "./ToolTip"
 
 interface Props {
   url: string
-  tracking?: any
+  tracking?: TrackingProp
 }
 
 interface State {

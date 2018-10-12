@@ -1,4 +1,4 @@
-import { Box, Spinner } from "@artsy/palette"
+import { Box, Spinner, Theme } from "@artsy/palette"
 import { WorksForYouQuery } from "__generated__/WorksForYouQuery.graphql"
 import { ArtistArtworksFilters } from "__generated__/WorksForYouQuery.graphql"
 import { MarketingHeader } from "Apps/WorksForYou/MarketingHeader"
@@ -32,67 +32,77 @@ export class WorksForYou extends Component<Props> {
     const filter: ArtistArtworksFilters[] = forSale ? ["IS_FOR_SALE"] : null
 
     return (
-      <ContextConsumer>
-        {({ relayEnvironment, user }) => {
-          const hasLabFeature =
-            user &&
-            user.lab_features &&
-            user.lab_features.includes("New Buy Now Flow")
-          const enableBuyNowFlow = sd.ENABLE_NEW_BUY_NOW_FLOW || hasLabFeature
+      <Theme>
+        <ContextConsumer>
+          {({ relayEnvironment, user }) => {
+            const hasLabFeature =
+              user &&
+              user.lab_features &&
+              user.lab_features.includes("New Buy Now Flow")
+            const enableBuyNowFlow = sd.ENABLE_NEW_BUY_NOW_FLOW || hasLabFeature
 
-          return (
-            <>
-              {enableBuyNowFlow && <MarketingHeader />}
+            return (
+              <>
+                {enableBuyNowFlow && <MarketingHeader />}
 
-              <QueryRenderer<WorksForYouQuery>
-                environment={relayEnvironment}
-                query={graphql`
-                  query WorksForYouQuery(
-                    $includeSelectedArtist: Boolean!
-                    $artistID: String!
-                    $forSale: Boolean
-                    $filter: [ArtistArtworksFilters]
-                  ) {
-                    viewer {
-                      ...WorksForYouFeed_viewer
-                        @skip(if: $includeSelectedArtist)
-                        @arguments(for_sale: $forSale)
-                      ...WorksForYouArtistFeed_viewer
-                        @include(if: $includeSelectedArtist)
-                        @arguments(artistID: $artistID, filter: $filter)
+                <QueryRenderer<WorksForYouQuery>
+                  environment={relayEnvironment}
+                  query={graphql`
+                    query WorksForYouQuery(
+                      $includeSelectedArtist: Boolean!
+                      $artistID: String!
+                      $forSale: Boolean
+                      $filter: [ArtistArtworksFilters]
+                    ) {
+                      viewer {
+                        ...WorksForYouFeed_viewer
+                          @skip(if: $includeSelectedArtist)
+                          @arguments(for_sale: $forSale)
+                        ...WorksForYouArtistFeed_viewer
+                          @include(if: $includeSelectedArtist)
+                          @arguments(artistID: $artistID, filter: $filter)
+                      }
                     }
-                  }
-                `}
-                variables={{ artistID, includeSelectedArtist, forSale, filter }}
-                render={({ props }) => {
-                  if (props) {
-                    return (
-                      <Box pt={3} pb={3}>
-                        {includeSelectedArtist ? (
-                          <WorksForYouArtistFeed
-                            artistID={this.props.artistID}
-                            viewer={props.viewer}
-                            forSale={forSale}
-                            user={user}
-                          />
-                        ) : (
-                          <WorksForYouFeed user={user} viewer={props.viewer} />
-                        )}
-                      </Box>
-                    )
-                  } else {
-                    return (
-                      <SpinnerContainer>
-                        <Spinner />
-                      </SpinnerContainer>
-                    )
-                  }
-                }}
-              />
-            </>
-          )
-        }}
-      </ContextConsumer>
+                  `}
+                  variables={{
+                    artistID,
+                    includeSelectedArtist,
+                    forSale,
+                    filter,
+                  }}
+                  render={({ props }) => {
+                    if (props) {
+                      return (
+                        <Box pt={3} pb={3}>
+                          {includeSelectedArtist ? (
+                            <WorksForYouArtistFeed
+                              artistID={this.props.artistID}
+                              viewer={props.viewer}
+                              forSale={forSale}
+                              user={user}
+                            />
+                          ) : (
+                            <WorksForYouFeed
+                              user={user}
+                              viewer={props.viewer}
+                            />
+                          )}
+                        </Box>
+                      )
+                    } else {
+                      return (
+                        <SpinnerContainer>
+                          <Spinner />
+                        </SpinnerContainer>
+                      )
+                    }
+                  }}
+                />
+              </>
+            )
+          }}
+        </ContextConsumer>
+      </Theme>
     )
   }
 }

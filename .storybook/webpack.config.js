@@ -5,12 +5,14 @@ const sharify = require("./sharify")
 
 const ForkTsCheckerNotifierWebpackPlugin = require("fork-ts-checker-notifier-webpack-plugin")
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin")
+const SimpleProgressWebpackPlugin = require("simple-progress-webpack-plugin")
 
 const webpack = require("webpack")
 const merge = require("webpack-merge")
-const genDefaultConfig = require("@storybook/react/dist/server/config/defaults/webpack.config.js")
 
 env.load()
+
+const cacheDirectory = path.resolve(__dirname, "../", ".cache")
 
 const {
   APP_URL,
@@ -53,6 +55,7 @@ const plugins = [
     excludeWarnings: true,
     skipFirstNotification: true,
   }),
+  new SimpleProgressWebpackPlugin({ format: "compact" }),
   new webpack.NoEmitOnErrorsPlugin(),
 ]
 
@@ -79,14 +82,8 @@ if (USER_ID && USER_ACCESS_TOKEN) {
 module.exports = (baseConfig, env) => {
   console.log("\n[Reaction] Booting...\n")
 
-  const config = genDefaultConfig(baseConfig, env)
-
-  // The progress plugin does not play nice with `concurrently`, so remove it.
-  config.plugins = config.plugins.filter(({ constructor }) => {
-    return constructor.name !== "ProgressPlugin"
-  })
-
-  const merged = merge(config, {
+  const merged = merge(baseConfig, {
+    mode: env.toLowerCase(),
     devtool: WEBPACK_DEVTOOL,
     devServer: {
       overlay: {
@@ -109,19 +106,25 @@ module.exports = (baseConfig, env) => {
           include: [/src/],
           exclude: [/node_modules/, /__tests__/],
           use: [
-            { loader: "cache-loader" },
+            {
+              loader: "cache-loader",
+              options: {
+                cacheDirectory: path.join(cacheDirectory),
+              },
+            },
             {
               loader: "babel-loader",
               options: {
-                cacheDirectory: true,
+                cacheDirectory: path.join(cacheDirectory, "babel"),
               },
             },
-            // NOTE: Painfully slow startup
-            // See: https://github.com/strothj/react-docgen-typescript-loader
-            // {
-            //   loader: "react-docgen-typescript-loader",
-            // },
           ],
+        },
+        // ESM support. See: https://github.com/apollographql/react-apollo/issues/1737#issuecomment-371178602
+        {
+          type: "javascript/auto",
+          test: /\.mjs$/,
+          use: [],
         },
       ],
     },

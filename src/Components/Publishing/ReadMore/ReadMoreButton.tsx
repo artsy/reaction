@@ -14,7 +14,7 @@ interface ReadMoreProps {
 }
 
 @track({
-  context_module: Schema.Context.ReadMore,
+  context_module: Schema.ContextModule.ReadMore,
   subject: Schema.Subject.ReadMore,
 })
 export class ReadMoreButton extends React.Component<ReadMoreProps> {

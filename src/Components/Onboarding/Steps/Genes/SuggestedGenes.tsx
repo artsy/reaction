@@ -13,7 +13,7 @@ import {
   QueryRenderer,
   RelayProp,
 } from "react-relay"
-import track from "react-tracking"
+import track, { TrackingProp } from "react-tracking"
 import { RecordSourceSelectorProxy } from "relay-runtime"
 import Events from "../../../../Utils/Events"
 import ReplaceTransition from "../../../Animation/ReplaceTransition"
@@ -25,7 +25,7 @@ type Gene = SuggestedGenesContent_suggested_genes[0]
 interface Props extends React.HTMLProps<HTMLAnchorElement>, FollowProps {
   relay?: RelayProp
   suggested_genes: SuggestedGenesContent_suggested_genes
-  tracking?: any
+  tracking?: TrackingProp
 }
 
 @track({}, { dispatch: data => Events.postEvent(data) })

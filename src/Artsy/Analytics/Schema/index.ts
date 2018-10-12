@@ -7,24 +7,26 @@
  *   `ContextPage` and `Result`.
  */
 
-export * from "./ContextPage"
-export * from "./ContextModule"
-export * from "./Interaction"
-export * from "./Result"
 export * from "./Values"
 
 import { ContextModule } from "./ContextModule"
 import { ContextPage } from "./ContextPage"
+import { Flow } from "./Flow"
 import { AuthenticationInteraction, Interaction } from "./Interaction"
+import { Label } from "./Label"
 import { Failure, Success } from "./Result"
+import { Type } from "./Type"
 
 export type Trackables =
   | AuthenticationInteraction
   | ContextModule
   | ContextPage
+  | Flow
   | Interaction
+  | Label
   | Success
   | Failure
+  | Type
 
 /**
  * A sentinel type used to signal that anything goes in order to be able to

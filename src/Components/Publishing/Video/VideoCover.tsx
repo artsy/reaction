@@ -1,7 +1,7 @@
 import { garamond } from "Assets/Fonts"
 import { Col } from "Components/Grid"
 import React, { Component } from "react"
-import track from "react-tracking"
+import track, { TrackingProp } from "react-tracking"
 import styled, { StyledFunction } from "styled-components"
 import { media as mediaQueries } from "../../Helpers"
 import { IconVideoPlay } from "../Icon/IconVideoPlay"
@@ -18,7 +18,7 @@ interface Props {
   playVideo?: () => void
   seriesLink?: string
   seriesTitle?: string
-  tracking?: any
+  tracking?: TrackingProp
 }
 
 interface CoverProps {

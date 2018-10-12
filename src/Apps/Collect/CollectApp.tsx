@@ -13,7 +13,6 @@ import {
 } from "Styleguide/Components"
 
 export interface CollectAppProps {
-  name: string
   viewer?: CollectApp_viewer
 }
 
@@ -23,7 +22,7 @@ export class CollectApp extends Component<CollectAppProps> {
       <HorizontalPadding>
         <Flex flexDirection="column">
           <Box mt={3} mb={4}>
-            <Serif size="8">Collect Art &amp; Design Online</Serif>
+            <Serif size="8">Collect art and design online</Serif>
           </Box>
           <Box>
             <ArtworkGrid viewer={this.props.viewer} />
