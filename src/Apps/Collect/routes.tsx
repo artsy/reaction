@@ -63,7 +63,7 @@ export const routes: RouteConfig[] = [
     Component: CollectionApp,
     query: graphql`
       query routes_MarketingCollectionAppQuery($slug: String!) {
-        marketingCollection(slug: $slug) {
+        collection: marketingCollection(slug: $slug) {
           ...CollectionApp_collection
         }
       }

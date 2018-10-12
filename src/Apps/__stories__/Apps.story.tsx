@@ -40,3 +40,16 @@ storiesOf("Apps", module)
       />
     )
   })
+  .add("Collection Page", () => {
+    return (
+      <MockRouter
+        routes={collectRoutes}
+        initialRoute="/collection/kaws-companions"
+        context={{
+          mediator: {
+            trigger: x => x,
+          },
+        }}
+      />
+    )
+  })

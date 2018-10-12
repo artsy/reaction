@@ -9,7 +9,7 @@ interface Props {
   slug: string
   title: string
   image: string
-  description?: string
+  description?: JSX.Element | string
   image_caption?: string
   medium?: string
   major_periods?: string[]
