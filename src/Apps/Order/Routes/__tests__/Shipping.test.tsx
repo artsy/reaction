@@ -337,6 +337,33 @@ describe("Shipping", () => {
 
       expect(commitMutation).toBeCalled()
     })
+    it("before submit, only shows a validation error on inputs that have been touched", () => {
+      const component = getWrapper(shipOrderProps)
+      fillIn(component, { title: "Full name", value: "Erik David" })
+      fillIn(component, { title: "Address line 1", value: "" })
+      component.update()
+
+      const [addressInput, cityInput] = ["Address line 1", "City"].map(label =>
+        component
+          .find(Input)
+          .filterWhere(wrapper => wrapper.props().title === label)
+      )
+
+      expect(addressInput.props().error).toBeTruthy()
+      expect(cityInput.props().error).toBeFalsy()
+    })
+    it("after submit, shows all validation errors on inputs that have been touched", () => {
+      const component = getWrapper(shipOrderProps)
+      fillIn(component, { title: "Full name", value: "Erik David" })
+
+      component.find("Button").simulate("click")
+
+      const cityInput = component
+        .find(Input)
+        .filterWhere(wrapper => wrapper.props().title === "City")
+
+      expect(cityInput.props().error).toBeTruthy()
+    })
     it("allows a missing state/province if the selected country is not US or Canada", () => {
       const component = getWrapper(shipOrderProps)
       const address = {

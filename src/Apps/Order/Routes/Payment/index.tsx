@@ -9,6 +9,7 @@ import {
   AddressChangeHandler,
   AddressErrors,
   AddressForm,
+  AddressTouched,
   emptyAddress,
 } from "../../Components/AddressForm"
 
@@ -47,6 +48,7 @@ interface PaymentState {
   hideBillingAddress: boolean
   address: Address
   addressErrors: AddressErrors
+  addressTouched: AddressTouched
   stripeError: stripe.Error
   isCommittingMutation: boolean
   isErrorModalOpen: boolean
@@ -62,6 +64,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
     errorModalMessage: null,
     address: this.startingAddress(),
     addressErrors: {},
+    addressTouched: {},
   }
 
   startingAddress(): Address {
@@ -86,12 +89,29 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
     }
   }
 
+  get touchedAddress() {
+    return {
+      name: true,
+      country: true,
+      postalCode: true,
+      addressLine1: true,
+      addressLine2: true,
+      city: true,
+      region: true,
+      phoneNumber: true,
+    }
+  }
+
   onContinue: () => void = () => {
     this.setState({ isCommittingMutation: true }, () => {
       if (this.needsAddress()) {
         const errors = this.validateAddress(this.state.address)
         if (Object.keys(errors).filter(key => errors[key]).length > 0) {
-          this.setState({ isCommittingMutation: false, addressErrors: errors })
+          this.setState({
+            isCommittingMutation: false,
+            addressErrors: errors,
+            addressTouched: this.touchedAddress,
+          })
           return
         }
       }
@@ -137,6 +157,10 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
         ...this.state.addressErrors,
         [key]: this.validateAddress(address)[key],
       },
+      addressTouched: {
+        ...this.state.addressTouched,
+        [key]: true,
+      },
     })
   }
 
@@ -151,6 +175,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
       isCommittingMutation,
       address,
       addressErrors,
+      addressTouched,
     } = this.state
 
     return (
@@ -204,6 +229,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
                         <AddressForm
                           defaultValue={address}
                           errors={addressErrors}
+                          touched={addressTouched}
                           onChange={this.onAddressChange}
                           billing
                         />
