@@ -107,7 +107,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
               stripeError: error,
             })
           } else {
-            this.createCreditCard({ token: token.id })
+            this.createCreditCard({ token: token.id, oneTimeUse: true })
           }
         })
     })
@@ -273,7 +273,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
     }
   }
 
-  private createCreditCard({ token }) {
+  private createCreditCard({ token, oneTimeUse }) {
     commitMutation<PaymentRouteCreateCreditCardMutation>(
       this.props.relay.environment,
       {
@@ -318,7 +318,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
           }
         `,
         variables: {
-          input: { token },
+          input: { token, oneTimeUse },
         },
       }
     )
