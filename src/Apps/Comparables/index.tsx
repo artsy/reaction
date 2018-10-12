@@ -1,9 +1,11 @@
 import { Box, Spinner } from "@artsy/palette"
 import { ComparablesQuery } from "__generated__/ComparablesQuery.graphql"
+import { FilterState } from "Apps/Collect/FilterState"
 import { ContextConsumer, ContextProps } from "Artsy"
 import React, { Component } from "react"
 import { graphql, QueryRenderer } from "react-relay"
 import styled from "styled-components"
+import { Provider as StateProvider } from "unstated"
 import { Comparables } from "./ComparablesView"
 import { CategoryToMediumGeneMap } from "./Filter/MediumFilter"
 
@@ -47,15 +49,17 @@ export class ComparablesContainer extends Component<Props> {
                     } = props.artwork
                     const medium = CategoryToMediumGeneMap[category]
                     return (
-                      <Box pt={3} pb={3}>
-                        <Comparables
-                          attributionClass={
-                            attribution_class && [attribution_class.id]
-                          }
-                          artistID={artist.id}
-                          medium={medium}
-                        />
-                      </Box>
+                      <StateProvider inject={[new FilterState({ medium })]}>
+                        <Box pt={3} pb={3}>
+                          <Comparables
+                            attributionClass={
+                              attribution_class && [attribution_class.id]
+                            }
+                            artistID={artist.id}
+                            medium={medium}
+                          />
+                        </Box>
+                      </StateProvider>
                     )
                   } else {
                     return (

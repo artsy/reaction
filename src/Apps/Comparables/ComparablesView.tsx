@@ -69,6 +69,7 @@ export class Comparables extends Component<Props> {
                   price_range: priceRange,
                   for_sale: forSale,
                   attribution_class: attributionClass,
+                  sort: "-decayed_merch",
                 }}
                 render={({ props }) => {
                   if (props) {
