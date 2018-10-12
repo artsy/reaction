@@ -1,21 +1,12 @@
 import { Box } from "@artsy/palette"
-// import { CollectionApp_collection } from "__generated__/CollectionApp_collection.graphql"
+import { CollectionApp_collection } from "__generated__/CollectionApp_collection.graphql"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { CollectFrame } from "./CollectFrame"
-// import { ArtworkGridFragmentContainer as ArtworkGrid } from "./Components/ArtworkGrid"
+import { CollectArtworkGridRefreshContainer as ArtworkGrid } from "./Components/ArtworkGrid/CollectArtworkGrid"
 import { CollectionHeader } from "./Components/Header"
 
-import { ArtworkGridExample as ArtworkGrid } from "Styleguide/Components"
-
-export interface CollectionAppProps {
-  description: string
-  // filter_artworks?: CollectionApp_filter_artworks
-  image: string
-  image_caption: string
-  slug: string
-  title: string
-}
+type CollectionAppProps = CollectionApp_collection
 
 export class CollectionApp extends Component<CollectionAppProps> {
   render() {
@@ -23,13 +14,17 @@ export class CollectionApp extends Component<CollectionAppProps> {
       <CollectFrame>
         <CollectionHeader
           description={this.props.description}
-          image={this.props.image}
-          image_caption={this.props.image_caption}
+          // image={this.props.headerImage.large }
+          image="https://artsy-vanity-files-production.s3.amazonaws.com/images/kaws2.png"
+          // image_caption={this.props.image_caption}
           slug={this.props.slug}
           title={this.props.title}
         />
         <Box>
-          <ArtworkGrid filter_artworks={this.props.collection.artworks} />
+          <ArtworkGrid
+            filtered_artworks={this.props.artworks as any}
+            columnCount={3}
+          />
         </Box>
       </CollectFrame>
     )
@@ -39,20 +34,22 @@ export class CollectionApp extends Component<CollectionAppProps> {
 export const CollectionAppFragmentContainer = createFragmentContainer(
   CollectionApp,
   graphql`
-    fragment CollectionApp_collection on Collection {
-      @argumentDefinitions(id: { type: "String" }) {
-      collection(id: $id) {
-        id
-        description
-        image
-        image_caption
-        title
-        artworks
+    fragment CollectionApp_collection on MarketingCollection {
+      id
+      slug
+      title
+      description
+      headerImage {
+        large
+      }
+      query {
+        artist_ids
+        artist_id
+        gene_id
+      }
+      artworks {
+        ...CollectArtworkGrid_filtered_artworks
       }
     }
-    # fragment CollectionApp_collection on Collection
-    #   @argumentDefinitions(slug: { type: "String" }) {
-    #   ...ArtworkGrid_viewer @arguments(slug: $slug)
-    # }
   `
 )

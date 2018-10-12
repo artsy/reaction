@@ -22,7 +22,7 @@ const getReadMoreContent = (description, image_caption) => {
     <Box>
       {description}
       <Spacer mt={3} />
-      <ImageCaption>{image_caption}</ImageCaption>
+      <ImageCaption>{image_caption || ""}</ImageCaption>
     </Box>
   )
 }

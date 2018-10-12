@@ -3,7 +3,7 @@ import React from "react"
 import { graphql } from "react-relay"
 import AnalyticsProvider from "./AnalyticsProvider"
 import { CollectAppFragmentContainer as CollectApp } from "./CollectApp"
-import { CollectionApp } from "./CollectionApp"
+import { CollectionAppFragmentContainer as CollectionApp } from "./CollectionApp"
 
 export const routes: RouteConfig[] = [
   {
@@ -59,8 +59,10 @@ export const routes: RouteConfig[] = [
     path: "/collection/:slug",
     Component: CollectionApp,
     query: graphql`
-      query routes_CollectionAppQuery($slug: String) {
-        ...CollectionApp_collection @arguments(slug: $slug)
+      query routes_MarketingCollectionAppQuery($slug: String!) {
+        marketingCollection(slug: $slug) {
+          ...CollectionApp_collection
+        }
       }
     `,
     render: ({ props, Component }) => {
@@ -68,21 +70,7 @@ export const routes: RouteConfig[] = [
         return null
       }
 
-      const collection = {
-        slug: "minimalist-prints",
-        title: "minimalist prints",
-        image:
-          "https://d32dm0rphc51dk.cloudfront.net/fde__iLARRKC1fKVHILzAQ/untouched-png.png",
-        image_caption: "",
-        description:
-          "Brian Donnelly, better known as KAWS, spent the first year of his career as an animator for Disney. After leaving in 1997, KAWS took inspiration from the company’s signature cartoon, Mickey Mouse, to create his own set of characters that he named “Companions.” With gloved hands and X’s for eyes, “Companions” first appeared in KAWS’s graffiti works across New York City in the late 1990s. By the end of the decade, the street artist created his first three-dimensional version, and his characters have since taken on a variety of colors, sizes, and poses. In 2017, his four-foot-tall Seated Companion (2011) broke the auction record for the series, selling for over $400,000. However, many of KAWS’s “Companions” are considerably more affordable, such as his vinyl toys produced in collaboration with esteemed manufacturers including Bounty Hunter, Bape, Medicom, and his own brand OriginalFake, which was active between 2006 and 2013.",
-        medium: "prints",
-        major_periods: [],
-        gene_ids: [],
-        artist_ids: [],
-      }
-
-      return <Component {...props} {...collection} />
+      return <AnalyticsProvider {...props} Component={Component} />
     },
   },
 ]
