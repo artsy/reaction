@@ -5,6 +5,7 @@ import { FollowProfileButton_profile$ref } from "./FollowProfileButton_profile.g
 declare const _ArtworkDetailsAboutTheWorkFromPartner_artwork$ref: unique symbol;
 export type ArtworkDetailsAboutTheWorkFromPartner_artwork$ref = typeof _ArtworkDetailsAboutTheWorkFromPartner_artwork$ref;
 export type ArtworkDetailsAboutTheWorkFromPartner_artwork = {
+    readonly is_in_auction: boolean | null;
     readonly additional_information: string | null;
     readonly partner: ({
         readonly name: string | null;
@@ -40,6 +41,13 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "is_in_auction",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "ScalarField",
       "alias": null,
@@ -152,5 +160,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '0376117cfa4747fb4e11dfccf0d38185';
+(node as any).hash = '51a6fffa151f481c11434597ab8f755c';
 export default node;
