@@ -10,4 +10,5 @@
 
 ## master
 
-- Added changelog
+- Adds a changelog
+- Relocates project utilities to scripts directory
