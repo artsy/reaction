@@ -1,4 +1,4 @@
-import { ArtworkGrid_viewer } from "__generated__/ArtworkGrid_viewer.graphql"
+// import { ArtworkGrid_viewer } from "__generated__/ArtworkGrid_viewer.graphql"
 import { SystemProps } from "Artsy/SystemContext"
 import React from "react"
 import { FilterState } from "../../FilterState"
@@ -7,7 +7,8 @@ import { Radio } from "@artsy/palette"
 
 export const MediumFilter: React.SFC<{
   filters: FilterState
-  mediums: ArtworkGrid_viewer["filter_artworks"]["aggregations"][0]["counts"]
+  // mediums: ArtworkGrid_viewer["filter_artworks"]["aggregations"][0]["counts"]
+  mediums: any
   mediator: SystemProps["mediator"]
 }> = ({ filters, mediums, mediator }) => (
   <>
