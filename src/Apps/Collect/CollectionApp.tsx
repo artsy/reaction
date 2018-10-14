@@ -3,8 +3,8 @@ import { CollectionApp_collection } from "__generated__/CollectionApp_collection
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { CollectFrame } from "./CollectFrame"
-import { CollectArtworkGridRefreshContainer as ArtworkGrid } from "./Components/ArtworkGrid/CollectArtworkGrid"
-import { CollectionHeader } from "./Components/Header"
+import { CollectionFilterFragmentContainer } from "./Components/Collection/CollectionFilterContainer"
+import { CollectionHeader } from "./Components/Collection/Header"
 
 interface CollectionAppProps {
   collection: CollectionApp_collection
@@ -27,10 +27,7 @@ export class CollectionApp extends Component<CollectionAppProps> {
           title={collection.title}
         />
         <Box>
-          <ArtworkGrid
-            filtered_artworks={collection.artworks as any}
-            columnCount={3}
-          />
+          <CollectionFilterFragmentContainer collection={collection} />
         </Box>
       </CollectFrame>
     )
@@ -53,9 +50,7 @@ export const CollectionAppFragmentContainer = createFragmentContainer(
         artist_id
         gene_id
       }
-      artworks {
-        ...CollectArtworkGrid_filtered_artworks
-      }
+      ...CollectionFilterContainer_collection
     }
   `
 )

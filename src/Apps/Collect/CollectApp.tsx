@@ -3,7 +3,7 @@ import { CollectApp_viewer } from "__generated__/CollectApp_viewer.graphql"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { CollectFrame } from "./CollectFrame"
-import { ArtworkGridFragmentContainer as ArtworkGrid } from "./Components/ArtworkGrid"
+import { CollectFilterFragmentContainer as ArtworkGrid } from "./Components/Base/CollectFilterContainer"
 
 export interface CollectAppProps {
   viewer?: CollectApp_viewer
@@ -43,7 +43,7 @@ export const CollectAppFragmentContainer = createFragmentContainer(
         sort: { type: "String", defaultValue: "-partner_updated_at" }
         price_range: { type: "String" }
       ) {
-      ...ArtworkGrid_viewer
+      ...CollectFilterContainer_viewer
         @arguments(
           medium: $medium
           major_periods: $major_periods
