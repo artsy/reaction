@@ -1,20 +1,22 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-import { CollectFilterContainer_viewer$ref } from "./CollectFilterContainer_viewer.graphql";
-declare const _CollectApp_viewer$ref: unique symbol;
-export type CollectApp_viewer$ref = typeof _CollectApp_viewer$ref;
-export type CollectApp_viewer = {
-    readonly " $fragmentRefs": CollectFilterContainer_viewer$ref;
-    readonly " $refType": CollectApp_viewer$ref;
+import { CollectArtworkGrid_filtered_artworks$ref } from "./CollectArtworkGrid_filtered_artworks.graphql";
+declare const _CollectionRefetch_collection$ref: unique symbol;
+export type CollectionRefetch_collection$ref = typeof _CollectionRefetch_collection$ref;
+export type CollectionRefetch_collection = {
+    readonly filtered_artworks: ({
+        readonly " $fragmentRefs": CollectArtworkGrid_filtered_artworks$ref;
+    }) | null;
+    readonly " $refType": CollectionRefetch_collection$ref;
 };
 
 
 
 const node: ConcreteFragment = {
   "kind": "Fragment",
-  "name": "CollectApp_viewer",
-  "type": "Viewer",
+  "name": "CollectionRefetch_collection",
+  "type": "MarketingCollection",
   "metadata": null,
   "argumentDefinitions": [
     {
@@ -61,15 +63,6 @@ const node: ConcreteFragment = {
     },
     {
       "kind": "LocalArgument",
-      "name": "aggregations",
-      "type": "[ArtworkAggregation]",
-      "defaultValue": [
-        "MEDIUM",
-        "TOTAL"
-      ]
-    },
-    {
-      "kind": "LocalArgument",
       "name": "sort",
       "type": "String",
       "defaultValue": "-partner_updated_at"
@@ -83,66 +76,105 @@ const node: ConcreteFragment = {
   ],
   "selections": [
     {
-      "kind": "FragmentSpread",
-      "name": "CollectFilterContainer_viewer",
+      "kind": "LinkedField",
+      "alias": "filtered_artworks",
+      "name": "artworks",
+      "storageKey": null,
       "args": [
         {
           "kind": "Variable",
           "name": "acquireable",
           "variableName": "acquireable",
-          "type": null
+          "type": "Boolean"
+        },
+        {
+          "kind": "Literal",
+          "name": "aggregations",
+          "value": [
+            "TOTAL"
+          ],
+          "type": "[ArtworkAggregation]"
         },
         {
           "kind": "Variable",
           "name": "at_auction",
           "variableName": "at_auction",
-          "type": null
+          "type": "Boolean"
         },
         {
           "kind": "Variable",
           "name": "for_sale",
           "variableName": "for_sale",
-          "type": null
+          "type": "Boolean"
         },
         {
           "kind": "Variable",
           "name": "inquireable_only",
           "variableName": "inquireable_only",
-          "type": null
+          "type": "Boolean"
         },
         {
           "kind": "Variable",
           "name": "major_periods",
           "variableName": "major_periods",
-          "type": null
+          "type": "[String]"
         },
         {
           "kind": "Variable",
           "name": "medium",
           "variableName": "medium",
-          "type": null
+          "type": "String"
         },
         {
           "kind": "Variable",
           "name": "partner_id",
           "variableName": "partner_id",
-          "type": null
+          "type": "ID"
         },
         {
           "kind": "Variable",
           "name": "price_range",
           "variableName": "price_range",
-          "type": null
+          "type": "String"
+        },
+        {
+          "kind": "Literal",
+          "name": "size",
+          "value": 0,
+          "type": "Int"
         },
         {
           "kind": "Variable",
           "name": "sort",
           "variableName": "sort",
-          "type": null
+          "type": "String"
+        }
+      ],
+      "concreteType": "FilterArtworks",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "FragmentSpread",
+          "name": "CollectArtworkGrid_filtered_artworks",
+          "args": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "__id",
+          "args": null,
+          "storageKey": null
         }
       ]
+    },
+    {
+      "kind": "ScalarField",
+      "alias": "__id",
+      "name": "id",
+      "args": null,
+      "storageKey": null
     }
   ]
 };
-(node as any).hash = 'ee440496109c1ecf230d819744451114';
+(node as any).hash = '53021a27b6620f8da3884d3657e2a057';
 export default node;

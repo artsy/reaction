@@ -1,7 +1,7 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-import { CollectArtworkGrid_filtered_artworks$ref } from "./CollectArtworkGrid_filtered_artworks.graphql";
+import { CollectionFilterContainer_collection$ref } from "./CollectionFilterContainer_collection.graphql";
 declare const _CollectionApp_collection$ref: unique symbol;
 export type CollectionApp_collection$ref = typeof _CollectionApp_collection$ref;
 export type CollectionApp_collection = {
@@ -17,9 +17,7 @@ export type CollectionApp_collection = {
         readonly artist_id: string | null;
         readonly gene_id: string | null;
     };
-    readonly artworks: ({
-        readonly " $fragmentRefs": CollectArtworkGrid_filtered_artworks$ref;
-    }) | null;
+    readonly " $fragmentRefs": CollectionFilterContainer_collection$ref;
     readonly " $refType": CollectionApp_collection$ref;
 };
 
@@ -121,31 +119,13 @@ return {
       ]
     },
     {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "artworks",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "FilterArtworks",
-      "plural": false,
-      "selections": [
-        {
-          "kind": "FragmentSpread",
-          "name": "CollectArtworkGrid_filtered_artworks",
-          "args": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "__id",
-          "args": null,
-          "storageKey": null
-        }
-      ]
+      "kind": "FragmentSpread",
+      "name": "CollectionFilterContainer_collection",
+      "args": null
     },
     v0
   ]
 };
 })();
-(node as any).hash = '9f37d58088078548bb66fd2e6bb85de9';
+(node as any).hash = '4953c4fec87e46687cab617d59114ba6';
 export default node;

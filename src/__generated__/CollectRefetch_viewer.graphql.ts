@@ -2,20 +2,20 @@
 
 import { ConcreteFragment } from "relay-runtime";
 import { CollectArtworkGrid_filtered_artworks$ref } from "./CollectArtworkGrid_filtered_artworks.graphql";
-declare const _CollectArtworkFilterRefetch_viewer$ref: unique symbol;
-export type CollectArtworkFilterRefetch_viewer$ref = typeof _CollectArtworkFilterRefetch_viewer$ref;
-export type CollectArtworkFilterRefetch_viewer = {
+declare const _CollectRefetch_viewer$ref: unique symbol;
+export type CollectRefetch_viewer$ref = typeof _CollectRefetch_viewer$ref;
+export type CollectRefetch_viewer = {
     readonly filtered_artworks: ({
         readonly " $fragmentRefs": CollectArtworkGrid_filtered_artworks$ref;
     }) | null;
-    readonly " $refType": CollectArtworkFilterRefetch_viewer$ref;
+    readonly " $refType": CollectRefetch_viewer$ref;
 };
 
 
 
 const node: ConcreteFragment = {
   "kind": "Fragment",
-  "name": "CollectArtworkFilterRefetch_viewer",
+  "name": "CollectRefetch_viewer",
   "type": "Viewer",
   "metadata": null,
   "argumentDefinitions": [
@@ -169,5 +169,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'eade9ee97a257512fff92948a7600e3f';
+(node as any).hash = 'fd0277b2c9045774eae86cfec8fc6880';
 export default node;
