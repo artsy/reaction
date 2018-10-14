@@ -62,9 +62,29 @@ const run = async () => {
     (i: any) => i.number
   ) as number[]
   for (const prNumber of prsWithCommit) {
-    // Get the PR labels
-    const issue = await octokit.issues.get({ owner, repo, number: prNumber })
-    console.log(issue.data.html_url)
+    const pullRequest = await octokit.issues.get({
+      owner,
+      repo,
+      number: prNumber,
+    })
+
+    const releaseLabels = pullRequest.data.labels.filter(label =>
+      label.name.startsWith("release:")
+    )
+    if (releaseLabels.length === 0) {
+      throw new Error(
+        `No release label specified on #${pullRequest.data.number}.` +
+          `\n\n\tPlease add a release label: ${pullRequest.data.html_url}`
+      )
+    }
+    if (releaseLabels.length > 1) {
+      throw new Error(
+        `Too many release labels on #${pullRequest.data.number}.` +
+          `\n\n\tPlease ensure there's only 1 release label: ${
+            pullRequest.data.html_url
+          }`
+      )
+    }
   }
 }
 
