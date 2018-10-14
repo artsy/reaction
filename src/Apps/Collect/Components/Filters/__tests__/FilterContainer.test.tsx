@@ -5,8 +5,9 @@ import { FilterState } from "../../../FilterState"
 import { FilterContainer } from "../FilterContainer"
 
 jest.mock("sharify", () => ({
-  sd: {
+  data: {
     ENABLE_NEW_BUY_NOW_FLOW: false,
+    NODE_ENV: "test",
   },
 }))
 

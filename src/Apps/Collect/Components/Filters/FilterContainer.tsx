@@ -89,7 +89,7 @@ export class FilterContainer extends React.Component<
     const Filters = ({ filters }) => this.renderFilters(filters)
 
     // tslint:disable-next-line:ban-types
-    const children = this.props.children as Function
+    const children = (this.props.children as Function) || (() => null)
 
     const Mobile = props =>
       // Mobile
