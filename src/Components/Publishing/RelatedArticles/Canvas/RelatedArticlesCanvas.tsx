@@ -24,7 +24,7 @@ interface ScrollingContainerProps {
 }
 
 @track({
-  // TODO: reevalutate double naming of context/schema
+  // TODO: re-evalutate double naming of context/schema
   context_module: Schema.ContextModule.FurtherReading,
   subject: Schema.Subject.FurtherReading,
 })

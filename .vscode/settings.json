@@ -18,6 +18,34 @@
   },
   "tslint.autoFixOnSave": true,
   "typescript.tsdk": "./node_modules/typescript/lib",
-  "cSpell.words": ["Refetch", "Styleguide", "Truthy", "Validators"],
+  "cSpell.words": [
+    "Fillwidth",
+    "Lifecycle",
+    "Mastercard",
+    "Refetch",
+    "Stackable",
+    "Styleguide",
+    "Truthy",
+    "Validators",
+    "Waypoint",
+    "inquireable",
+    "semibold",
+    "signup",
+    "xlarge",
+    "xsmall",
+    "xxsmall",
+    "zucconi"
+  ],
+  "cSpell.diagnosticLevel": "Hint",
+  "cSpell.ignorePaths": [
+    "**/package-lock.json",
+    "**/node_modules/**",
+    "**/vscode-extension/**",
+    "**/.git/**",
+    ".vscode",
+    "typings",
+    "**/*.snap",
+    "**/*.story.tsx"
+  ],
   "debug.node.autoAttach": "on"
 }

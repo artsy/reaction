@@ -74,7 +74,10 @@ export class ReadMore extends Component<ReadMoreProps, ReadMoreState> {
     const content = this.getContent()
 
     return (
-      <Container onClick={this.expandText.bind(this)} isExpanded>
+      <Container
+        onClick={this.expandText.bind(this)}
+        isExpanded={this.state.isExpanded || this.props.isExpanded}
+      >
         <span
           dangerouslySetInnerHTML={{
             __html: content,
@@ -102,6 +105,7 @@ const ReadMoreLinkContainer = styled.span`
   cursor: pointer;
   text-decoration: underline;
   display: inline-block;
+  white-space: nowrap;
 `
 
 // NOTE: Couldn't use @artsy/palette / Sans due to root element being a `div`;
@@ -119,6 +123,10 @@ const Container = styled.div.attrs<ReadMoreState>({})`
   cursor: ${p => (p.isExpanded ? "auto" : "pointer")};
 
   > span > * {
+    margin-block-start: 0;
+  }
+
+  > span > *:last-child {
     display: inline;
   }
 `

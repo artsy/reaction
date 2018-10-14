@@ -83,6 +83,9 @@ export const routes: RouteConfig[] = [
             }
           }
         `,
+        cacheConfig: {
+          force: true,
+        },
       },
       {
         path: "review",
@@ -95,6 +98,9 @@ export const routes: RouteConfig[] = [
             }
           }
         `,
+        cacheConfig: {
+          force: true,
+        },
       },
       {
         path: "status",
@@ -106,6 +112,9 @@ export const routes: RouteConfig[] = [
             }
           }
         `,
+        cacheConfig: {
+          force: true,
+        },
       },
       new Redirect({
         // For now, redirect the empty route to the shipping page
