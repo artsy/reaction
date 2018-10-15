@@ -1,4 +1,3 @@
-import { ContextProps } from "Artsy"
 import { LoadingClassName } from "Artsy/Relay/renderWithLoadProgress"
 import React from "react"
 import { MockRelayRenderer, MockRelayRendererProps } from "./MockRelayRenderer"
@@ -86,7 +85,6 @@ export function renderRelayTree<
   params: MockRelayRendererProps & {
     renderUntil?: RenderUntilCallback<P, S, C>
     wrapper?: (renderer: JSX.Element) => JSX.Element
-    contextProps?: ContextProps
   }
 ) {
   const {
@@ -95,14 +93,12 @@ export function renderRelayTree<
     mockResolvers,
     renderUntil: renderUntilCallback,
     wrapper,
-    contextProps,
   } = params
   const renderer = (
     <MockRelayRenderer
       Component={Component}
       mockResolvers={mockResolvers}
       query={query}
-      contextProps={contextProps}
     />
   )
   return renderUntil<P, S, C>(

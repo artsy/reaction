@@ -1,4 +1,5 @@
 import { Message } from "@artsy/palette"
+import { ContextProvider } from "Artsy"
 import { render } from "enzyme"
 import React from "react"
 import { graphql } from "react-relay"
@@ -24,10 +25,11 @@ describe("Status", () => {
         }
       `,
       mockResolvers: mockResolver(order),
-      contextProps: { mediator: { trigger: jest.fn() } },
       wrapper: renderer => (
         <MockBoot breakpoint="xs" headTags={headTags}>
-          {renderer}
+          <ContextProvider mediator={{ trigger: jest.fn() }}>
+            {renderer}
+          </ContextProvider>
         </MockBoot>
       ),
     })
