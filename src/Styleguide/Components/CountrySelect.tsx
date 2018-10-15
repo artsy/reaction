@@ -194,7 +194,7 @@ const COUNTRY_SELECT_OPTIONS = [
   { text: "Reunion", value: "RE" },
   { text: "Romania", value: "RO" },
   { text: "Russian Federation", value: "RU" },
-  { text: "RWANDA", value: "RW" },
+  { text: "Rwanda", value: "RW" },
   { text: "Saint Helena", value: "SH" },
   { text: "Saint Kitts and Nevis", value: "KN" },
   { text: "Saint Lucia", value: "LC" },
