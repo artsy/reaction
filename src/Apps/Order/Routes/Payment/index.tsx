@@ -228,7 +228,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
                           selected={this.state.hideBillingAddress}
                           onSelect={this.handleChangeHideBillingAddress}
                         >
-                          Use shipping address.
+                          Billing and shipping addresses are the same
                         </Checkbox>
                       )}
                       <Collapse open={this.needsAddress()}>
@@ -275,6 +275,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
         <ErrorModal
           onClose={this.onCloseModal}
           show={this.state.isErrorModalOpen}
+          contactEmail="orders@artsy.net"
           detailText={this.state.errorModalMessage}
         />
       </>

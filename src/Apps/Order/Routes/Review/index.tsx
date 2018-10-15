@@ -308,6 +308,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
           onClose={this.onCloseModal}
           show={this.state.isErrorModalOpen}
           detailText={this.state.errorModalMessage}
+          contactEmail="orders@artsy.net"
           headerText={this.state.errorModalTitle}
           ctaAction={this.state.errorModalCtaAction}
         />

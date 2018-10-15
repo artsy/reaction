@@ -36,11 +36,20 @@ storiesOf("Apps/Order Page", module)
   .add("Review", () => <Router initialRoute="/orders/123/review" />)
 
 storiesOf("Apps/Order Page/Status", module)
-  .add("submitted", () => (
+  .add("submitted (ship)", () => (
     <Router
       initialRoute="/orders/123/status"
       mockResolvers={mockResolver({
         ...OrderWithShippingDetails,
+        state: "SUBMITTED",
+      })}
+    />
+  ))
+  .add("submitted (pickup)", () => (
+    <Router
+      initialRoute="/orders/123/status"
+      mockResolvers={mockResolver({
+        ...PickupOrder,
         state: "SUBMITTED",
       })}
     />

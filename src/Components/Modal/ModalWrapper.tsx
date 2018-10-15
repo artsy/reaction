@@ -5,11 +5,17 @@ import FadeTransition from "../Animation/FadeTransition"
 import { media } from "../Helpers"
 import { CtaProps } from "./ModalCta"
 
+export enum ModalWidth {
+  Narrow = "280px",
+  Normal = "440px",
+  Wide = "900px",
+}
+
 export interface ModalWrapperProps extends React.HTMLProps<ModalWrapper> {
   blurContainerSelector?: string
   cta?: CtaProps
   onClose?: () => void
-  isWide?: boolean
+  width?: ModalWidth
   fullscreenResponsiveModal?: boolean
   image?: string
   show?: boolean
@@ -75,7 +81,7 @@ export class ModalWrapper extends React.Component<
   }
 
   render(): JSX.Element {
-    const { children, isWide, fullscreenResponsiveModal, image } = this.props
+    const { children, width, fullscreenResponsiveModal, image } = this.props
     const { isShown, isAnimating } = this.state
 
     if (isShown) {
@@ -99,7 +105,7 @@ export class ModalWrapper extends React.Component<
           >
             <ModalContainer
               fullscreenResponsiveModal={fullscreenResponsiveModal}
-              isWide={isWide}
+              width={width}
               image={image}
             >
               <ModalInner fullscreenResponsiveModal={fullscreenResponsiveModal}>
@@ -148,7 +154,7 @@ export const ModalOverlay = styled.div`
 `
 
 export const ModalContainer = styled.div.attrs<{
-  isWide?: boolean
+  width?: ModalWidth
   fullscreenResponsiveModal?: boolean
   image?: string
 }>({})`
@@ -157,7 +163,13 @@ export const ModalContainer = styled.div.attrs<{
   left: 50%;
   transform: translate(-50%, -50%);
   background: #fff;
-  width: ${props => (props.isWide || props.image ? "900px" : "440px")};
+  width: ${props => {
+    if (props.image) {
+      return ModalWidth.Wide
+    } else {
+      return props.width ? props.width : ModalWidth.Normal
+    }
+  }};
   height: min-content;
   border-radius: 5px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);

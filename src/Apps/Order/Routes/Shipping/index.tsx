@@ -396,6 +396,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
         <ErrorModal
           onClose={this.onCloseModal}
           show={this.state.isErrorModalOpen}
+          contactEmail="orders@artsy.net"
           detailText={this.state.errorModalMessage}
           headerText={this.state.errorModalTitle}
         />
