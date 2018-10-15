@@ -48,6 +48,19 @@ describe("OrderApp routing redirects", () => {
     expect(redirect).toBe(undefined)
   })
 
+  it("redirects to the status route if the order is not pending", async () => {
+    const { redirect } = await render("/orders/1234/shipping", {
+      Order: () => ({
+        id: 1234,
+        state: "SUBMITTED",
+        requestedFulfillment: {
+          __typename: "Pickup",
+        },
+      }),
+    })
+    expect(redirect.url).toBe("/orders/1234/status")
+  })
+
   it("redirects to the artwork page if the order is abandoned", async () => {
     const { redirect } = await render("/orders/1234/shipping", {
       Order: () => ({
