@@ -1,5 +1,5 @@
 import { color, Flex, Sans } from "@artsy/palette"
-import { ModalWrapper } from "Components/Modal/ModalWrapper"
+import { ModalWidth, ModalWrapper } from "Components/Modal/ModalWrapper"
 import React from "react"
 import styled from "styled-components"
 
@@ -33,7 +33,7 @@ export class ErrorModal extends React.Component<ErrorModalProps> {
     } = this.props
 
     return (
-      <ModalWrapper show={show} onClose={onClose}>
+      <ModalWrapper show={show} onClose={onClose} width={ModalWidth.Narrow}>
         <Flex flexDirection="column" pt={2} px={2}>
           <Sans size="4" weight="medium" mb={10}>
             {headerText}
