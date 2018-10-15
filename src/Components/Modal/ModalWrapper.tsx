@@ -7,8 +7,8 @@ import { CtaProps } from "./ModalCta"
 
 export enum ModalWidth {
   Narrow = "280px",
-  Normal = "900px",
-  Wide = "440px",
+  Normal = "440px",
+  Wide = "900px",
 }
 
 export interface ModalWrapperProps extends React.HTMLProps<ModalWrapper> {
@@ -154,7 +154,7 @@ export const ModalOverlay = styled.div`
 `
 
 export const ModalContainer = styled.div.attrs<{
-  width: ModalWidth
+  width?: ModalWidth
   fullscreenResponsiveModal?: boolean
   image?: string
 }>({})`
@@ -163,7 +163,13 @@ export const ModalContainer = styled.div.attrs<{
   left: 50%;
   transform: translate(-50%, -50%);
   background: #fff;
-  width: ${props => (props.image ? ModalWidth.Wide : props.width)};
+  width: ${props => {
+    if (props.image) {
+      return ModalWidth.Wide
+    } else {
+      return props.width ? props.width : ModalWidth.Normal
+    }
+  }};
   height: min-content;
   border-radius: 5px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
