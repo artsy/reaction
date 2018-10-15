@@ -33,6 +33,7 @@ export const shouldRedirect = props => {
 
   if (order && order.state === "ABANDONED") {
     const artworkID = get(order, o => o.lineItems.edges[0].node.artwork.id)
+    // If an artwork ID can't be found, redirect back to home page.
     throw new RedirectException(artworkID ? `/artwork/${artworkID}` : "/")
   } else if (
     order &&
