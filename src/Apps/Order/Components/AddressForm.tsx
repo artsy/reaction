@@ -16,6 +16,7 @@ export interface Address {
 }
 
 export type AddressErrors = Partial<Address>
+export type AddressTouched = Partial<{ [T in keyof Address]: boolean }>
 export type AddressChangeHandler = (
   address: Address,
   key: keyof Address
@@ -36,7 +37,8 @@ export interface AddressFormProps {
   defaultValue?: Partial<Address>
   billing?: boolean
   continentalUsOnly?: boolean
-  errors?: AddressErrors
+  errors: AddressErrors
+  touched: AddressTouched
 }
 
 interface AddressFormState {
@@ -70,6 +72,16 @@ export class AddressForm extends React.Component<
     })
   }
 
+  getError = (key: keyof Address): string => {
+    return (
+      (this.props.touched &&
+        this.props.touched[key] &&
+        this.props.errors &&
+        this.props.errors[key]) ||
+      ""
+    )
+  }
+
   render() {
     const lockCountryToUS = !this.props.billing && this.props.continentalUsOnly
     return (
@@ -83,7 +95,7 @@ export class AddressForm extends React.Component<
             autoCorrect="off"
             defaultValue={this.props.defaultValue.name}
             onChange={this.changeEventHandler("name")}
-            error={this.props.errors && this.props.errors.name}
+            error={this.getError("name")}
             block
           />
         </Flex>
@@ -117,7 +129,7 @@ export class AddressForm extends React.Component<
               autoCorrect="off"
               defaultValue={this.props.defaultValue.postalCode}
               onChange={this.changeEventHandler("postalCode")}
-              error={this.props.errors && this.props.errors.postalCode}
+              error={this.getError("postalCode")}
               block
             />
           </Flex>
@@ -131,7 +143,7 @@ export class AddressForm extends React.Component<
               autoCapitalize="words"
               defaultValue={this.props.defaultValue.addressLine1}
               onChange={this.changeEventHandler("addressLine1")}
-              error={this.props.errors && this.props.errors.addressLine1}
+              error={this.getError("addressLine1")}
               block
             />
           </Flex>
@@ -144,6 +156,7 @@ export class AddressForm extends React.Component<
               autoCapitalize="words"
               defaultValue={this.props.defaultValue.addressLine2}
               onChange={this.changeEventHandler("addressLine2")}
+              error={this.getError("addressLine2")}
               block
             />
           </Flex>
@@ -157,7 +170,7 @@ export class AddressForm extends React.Component<
               autoCapitalize="words"
               defaultValue={this.props.defaultValue.city}
               onChange={this.changeEventHandler("city")}
-              error={this.props.errors && this.props.errors.city}
+              error={this.getError("city")}
               block
             />
           </Flex>
@@ -170,7 +183,7 @@ export class AddressForm extends React.Component<
               autoCorrect="off"
               defaultValue={this.props.defaultValue.region}
               onChange={this.changeEventHandler("region")}
-              error={this.props.errors && this.props.errors.region}
+              error={this.getError("region")}
               block
             />
           </Flex>
@@ -186,7 +199,7 @@ export class AddressForm extends React.Component<
                 pattern="[0-9]*"
                 defaultValue={this.props.defaultValue.phoneNumber}
                 onChange={this.changeEventHandler("phoneNumber")}
-                error={this.props.errors && this.props.errors.phoneNumber}
+                error={this.getError("phoneNumber")}
                 block
               />
             </Flex>

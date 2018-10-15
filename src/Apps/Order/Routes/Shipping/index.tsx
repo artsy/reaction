@@ -16,6 +16,7 @@ import {
   AddressChangeHandler,
   AddressErrors,
   AddressForm,
+  AddressTouched,
   emptyAddress,
 } from "Apps/Order/Components/AddressForm"
 import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
@@ -51,6 +52,7 @@ export interface ShippingState {
   shippingOption: OrderFulfillmentType
   address: Address
   addressErrors: AddressErrors
+  addressTouched: AddressTouched
   isCommittingMutation: boolean
   isErrorModalOpen: boolean
   errorModalTitle: string
@@ -66,6 +68,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     isErrorModalOpen: false,
     address: this.startingAddress,
     addressErrors: {},
+    addressTouched: {},
     errorModalTitle: null,
     errorModalMessage: null,
   }
@@ -81,17 +84,32 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     }
   }
 
+  get touchedAddress() {
+    return {
+      name: true,
+      country: true,
+      postalCode: true,
+      addressLine1: true,
+      addressLine2: true,
+      city: true,
+      region: true,
+      phoneNumber: true,
+    }
+  }
+
   onContinueButtonPressed: () => void = () => {
     this.setState({ isCommittingMutation: true }, () => {
       const { address, shippingOption } = this.state
 
       if (this.state.shippingOption === "SHIP") {
         const errors = this.validateAddress(this.state.address)
-
-        if (Object.keys(errors).filter(key => errors[key]).length > 0) {
+        const thereAreErrors =
+          Object.keys(errors).filter(key => errors[key]).length > 0
+        if (thereAreErrors) {
           this.setState({
             isCommittingMutation: false,
             addressErrors: errors,
+            addressTouched: this.touchedAddress,
           })
           return
         }
@@ -232,14 +250,23 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
       address,
       addressErrors: {
         ...this.state.addressErrors,
-        [key]: this.validateAddress(address)[key],
+        ...this.validateAddress(address),
+      },
+      addressTouched: {
+        ...this.state.addressTouched,
+        [key]: true,
       },
     })
   }
 
   render() {
     const { order } = this.props
-    const { address, addressErrors, isCommittingMutation } = this.state
+    const {
+      address,
+      addressErrors,
+      addressTouched,
+      isCommittingMutation,
+    } = this.state
     const artwork = get(
       this.props,
       props => order.lineItems.edges[0].node.artwork
@@ -307,6 +334,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                       <AddressForm
                         defaultValue={address}
                         errors={addressErrors}
+                        touched={addressTouched}
                         onChange={this.onAddressChange}
                         continentalUsOnly={artwork.shipsToContinentalUSOnly}
                       />
