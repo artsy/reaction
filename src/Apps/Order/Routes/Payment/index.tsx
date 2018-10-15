@@ -65,24 +65,9 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
   }
 
   startingAddress(): Address {
-    const { creditCard } = this.props.order
-
-    if (creditCard) {
-      return {
-        ...emptyAddress,
-        name: creditCard.name,
-        country: creditCard.country,
-        postalCode: creditCard.postal_code,
-        addressLine1: creditCard.street1,
-        addressLine2: creditCard.street2,
-        city: creditCard.city,
-        region: creditCard.state,
-      }
-    } else {
-      return {
-        ...emptyAddress,
-        country: "US",
-      }
+    return {
+      ...emptyAddress,
+      country: "US",
     }
   }
 
@@ -127,6 +112,15 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
   }
 
   handleChangeHideBillingAddress = (hideBillingAddress: boolean) => {
+    if (!hideBillingAddress) {
+      this.setState({
+        address: {
+          ...emptyAddress,
+          country: "US",
+        },
+      })
+    }
+
     this.setState({ hideBillingAddress })
   }
 
@@ -202,7 +196,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
                       )}
                       <Collapse open={this.needsAddress()}>
                         <AddressForm
-                          defaultValue={address}
+                          value={address}
                           errors={addressErrors}
                           onChange={this.onAddressChange}
                           billing

@@ -305,7 +305,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                       }
                     >
                       <AddressForm
-                        defaultValue={address}
+                        value={address}
                         errors={addressErrors}
                         onChange={this.onAddressChange}
                         continentalUsOnly={artwork.shipsToContinentalUSOnly}
