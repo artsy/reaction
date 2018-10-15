@@ -13,6 +13,15 @@ export type routes_OrderQueryResponse = {
         readonly requestedFulfillment: ({
             readonly __typename: string;
         }) | null;
+        readonly lineItems: ({
+            readonly edges: ReadonlyArray<({
+                readonly node: ({
+                    readonly artwork: ({
+                        readonly id: string;
+                    }) | null;
+                }) | null;
+            }) | null> | null;
+        }) | null;
         readonly creditCard: ({
             readonly id: string;
         }) | null;
@@ -37,6 +46,17 @@ query routes_OrderQuery(
     state
     requestedFulfillment {
       __typename
+    }
+    lineItems {
+      edges {
+        node {
+          artwork {
+            id
+            __id
+          }
+          __id: id
+        }
+      }
     }
     creditCard {
       id
@@ -64,6 +84,23 @@ v1 = {
   "storageKey": null
 },
 v2 = [
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "id",
+    "args": null,
+    "storageKey": null
+  },
+  v1
+],
+v3 = {
+  "kind": "ScalarField",
+  "alias": "__id",
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v4 = [
   {
     "kind": "LinkedField",
     "alias": null,
@@ -127,29 +164,58 @@ v2 = [
       {
         "kind": "LinkedField",
         "alias": null,
+        "name": "lineItems",
+        "storageKey": null,
+        "args": null,
+        "concreteType": "OrderLineItemConnection",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "edges",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "OrderLineItemEdge",
+            "plural": true,
+            "selections": [
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "node",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "OrderLineItem",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "artwork",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "Artwork",
+                    "plural": false,
+                    "selections": v2
+                  },
+                  v3
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "LinkedField",
+        "alias": null,
         "name": "creditCard",
         "storageKey": null,
         "args": null,
         "concreteType": "CreditCard",
         "plural": false,
-        "selections": [
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "id",
-            "args": null,
-            "storageKey": null
-          },
-          v1
-        ]
+        "selections": v2
       },
-      {
-        "kind": "ScalarField",
-        "alias": "__id",
-        "name": "id",
-        "args": null,
-        "storageKey": null
-      }
+      v3
     ]
   }
 ];
@@ -158,7 +224,7 @@ return {
   "operationKind": "query",
   "name": "routes_OrderQuery",
   "id": null,
-  "text": "query routes_OrderQuery(\n  $orderID: String!\n) {\n  me {\n    name\n    __id\n  }\n  order: ecommerceOrder(id: $orderID) {\n    state\n    requestedFulfillment {\n      __typename\n    }\n    creditCard {\n      id\n      __id\n    }\n    __id: id\n  }\n}\n",
+  "text": "query routes_OrderQuery(\n  $orderID: String!\n) {\n  me {\n    name\n    __id\n  }\n  order: ecommerceOrder(id: $orderID) {\n    state\n    requestedFulfillment {\n      __typename\n    }\n    lineItems {\n      edges {\n        node {\n          artwork {\n            id\n            __id\n          }\n          __id: id\n        }\n      }\n    }\n    creditCard {\n      id\n      __id\n    }\n    __id: id\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -166,15 +232,15 @@ return {
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
-    "selections": v2
+    "selections": v4
   },
   "operation": {
     "kind": "Operation",
     "name": "routes_OrderQuery",
     "argumentDefinitions": v0,
-    "selections": v2
+    "selections": v4
   }
 };
 })();
-(node as any).hash = 'a3058d3342922022ac9960c0e813b8d9';
+(node as any).hash = 'a5f42ca394d331b958b93e77a997506d';
 export default node;

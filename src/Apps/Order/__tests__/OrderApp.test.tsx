@@ -48,7 +48,7 @@ describe("OrderApp routing redirects", () => {
     expect(redirect).toBe(undefined)
   })
 
-  it("redirects to the status route if the order is not pending", async () => {
+  it("redirects to the artwork page if the order is abandoned", async () => {
     const { redirect } = await render("/orders/1234/shipping", {
       Order: () => ({
         id: 1234,
@@ -56,9 +56,34 @@ describe("OrderApp routing redirects", () => {
         requestedFulfillment: {
           __typename: "Pickup",
         },
+        lineItems: {
+          edges: [
+            {
+              node: {
+                artwork: {
+                  id: "artwork-id",
+                },
+              },
+            },
+          ],
+        },
       }),
     })
-    expect(redirect.url).toBe("/orders/1234/status")
+    expect(redirect.url).toBe("/artwork/artwork-id")
+  })
+
+  it("redirects to the home page if the order is abandoned and has no ID", async () => {
+    const { redirect } = await render("/orders/1234/shipping", {
+      Order: () => ({
+        id: 1234,
+        state: "ABANDONED",
+        requestedFulfillment: {
+          __typename: "Pickup",
+        },
+        lineItems: null,
+      }),
+    })
+    expect(redirect.url).toBe("/")
   })
 
   it("stays on the shipping route if no shipping option is set", async () => {
@@ -170,7 +195,9 @@ describe("OrderApp", () => {
         addTransitionHook: () => {},
         replace,
       },
-      order: { state: state || "PENDING" },
+      order: {
+        state: state || "PENDING",
+      },
       routeIndices: [],
       routes: [],
     }

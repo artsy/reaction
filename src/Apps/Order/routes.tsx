@@ -43,6 +43,15 @@ export const routes: RouteConfig[] = [
           requestedFulfillment {
             __typename
           }
+          lineItems {
+            edges {
+              node {
+                artwork {
+                  id
+                }
+              }
+            }
+          }
           creditCard {
             id
           }
