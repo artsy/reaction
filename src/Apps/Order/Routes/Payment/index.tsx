@@ -243,6 +243,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
         <ErrorModal
           onClose={this.onCloseModal}
           show={this.state.isErrorModalOpen}
+          contactEmail="orders@artsy.net"
           detailText={this.state.errorModalMessage}
         />
       </>

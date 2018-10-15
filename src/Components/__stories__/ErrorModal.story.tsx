@@ -4,6 +4,9 @@ import { ErrorModal } from "../Modal/ErrorModal"
 
 storiesOf("Components/Error Modal", module)
   .add("Default", () => <ErrorModal show />)
+  .add("With custom contactEmail", () => (
+    <ErrorModal show contactEmail="ash@artsy.net" />
+  ))
   .add("With custom text", () => (
     <ErrorModal
       show
