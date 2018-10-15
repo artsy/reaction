@@ -123,6 +123,46 @@ describe("Pagination", () => {
         expect(html).toContain(`>${page}<`)
       })
     })
+
+    it("does render a link to last page even when displayLast is false but page number does not exceed 100", () => {
+      const wrapper = mount(
+        <MockBoot>
+          <Pagination
+            hasNextPage
+            displayLast={false}
+            pageCursors={cursor}
+            {...callbacks}
+          />
+        </MockBoot>
+      )
+      const html = wrapper.html()
+      const pages = ["1", "...", "6", "7", "8", "9", "...", "20"]
+
+      pages.forEach(page => {
+        expect(html).toContain(`>${page}<`)
+      })
+    })
+
+    it("does not render a link to last page if displayLast is false and page number exceeds 100", () => {
+      const last = { page: 101, cursor: "Y3Vyc29yMw==", isCurrent: false }
+      const wrapper = mount(
+        <MockBoot>
+          <Pagination
+            hasNextPage
+            displayLast={false}
+            pageCursors={{ ...cursor, last }}
+          />
+        </MockBoot>
+      )
+      const html = wrapper.html()
+      const pages = ["1", "...", "6", "7", "8", "9", "..."]
+
+      pages.forEach(page => {
+        expect(html).toContain(`>${page}<`)
+      })
+
+      expect(html).not.toContain(">101<")
+    })
   })
 
   describe("SmallPagination", () => {
