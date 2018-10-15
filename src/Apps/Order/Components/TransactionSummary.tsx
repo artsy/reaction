@@ -1,6 +1,7 @@
 import { TransactionSummary_order } from "__generated__/TransactionSummary_order.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { get } from "Utils/get"
 
 import {
   Box,
@@ -19,19 +20,6 @@ export interface TransactionSummaryProps extends FlexProps {
 export class TransactionSummary extends React.Component<
   TransactionSummaryProps
 > {
-  formattedTaxTotal = () => {
-    const {
-      order: { taxTotalCents, taxTotal },
-    } = this.props
-
-    // FIXME: Use actual currency code
-    if (taxTotal) {
-      return taxTotal
-    } else {
-      return taxTotalCents === 0 ? "$0.00" : null
-    }
-  }
-
   render() {
     const {
       order: {
@@ -47,6 +35,8 @@ export class TransactionSummary extends React.Component<
       ...others
     } = this.props
 
+    const artwork = get(this.props, props => lineItems.edges[0].node.artwork)
+
     const {
       artist_names,
       title,
@@ -55,7 +45,7 @@ export class TransactionSummary extends React.Component<
       image: {
         resized_transactionSummary: { url: imageURL },
       },
-    } = lineItems.edges[0].node.artwork
+    } = artwork
 
     const truncateTextStyle = {
       whiteSpace: "nowrap",
