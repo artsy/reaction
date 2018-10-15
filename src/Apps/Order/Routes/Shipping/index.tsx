@@ -16,6 +16,7 @@ import {
   AddressChangeHandler,
   AddressErrors,
   AddressForm,
+  AddressTouched,
   emptyAddress,
 } from "Apps/Order/Components/AddressForm"
 import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
@@ -23,7 +24,9 @@ import { Helper } from "Apps/Order/Components/Helper"
 import { TransactionSummaryFragmentContainer as TransactionSummary } from "Apps/Order/Components/TransactionSummary"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { validatePresence } from "Apps/Order/Components/Validators"
-import { Mediator } from "Artsy/SystemContext"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
+import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
 import { pick } from "lodash"
@@ -42,7 +45,7 @@ import { Responsive } from "Utils/Responsive"
 
 export interface ShippingProps {
   order: Shipping_order
-  mediator?: Mediator
+  mediator: Mediator
   relay?: RelayProp
   router: Router
 }
@@ -51,12 +54,13 @@ export interface ShippingState {
   shippingOption: OrderFulfillmentType
   address: Address
   addressErrors: AddressErrors
+  addressTouched: AddressTouched
   isCommittingMutation: boolean
   isErrorModalOpen: boolean
   errorModalTitle: string
   errorModalMessage: string
 }
-
+@track()
 export class ShippingRoute extends Component<ShippingProps, ShippingState> {
   state = {
     shippingOption: ((this.props.order.requestedFulfillment &&
@@ -66,8 +70,13 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     isErrorModalOpen: false,
     address: this.startingAddress,
     addressErrors: {},
+    addressTouched: {},
     errorModalTitle: null,
     errorModalMessage: null,
+  }
+
+  componentDidMount() {
+    this.props.mediator.trigger("order:shipping")
   }
 
   get startingAddress() {
@@ -81,17 +90,32 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     }
   }
 
+  get touchedAddress() {
+    return {
+      name: true,
+      country: true,
+      postalCode: true,
+      addressLine1: true,
+      addressLine2: true,
+      city: true,
+      region: true,
+      phoneNumber: true,
+    }
+  }
+
   onContinueButtonPressed: () => void = () => {
     this.setState({ isCommittingMutation: true }, () => {
       const { address, shippingOption } = this.state
 
       if (this.state.shippingOption === "SHIP") {
         const errors = this.validateAddress(this.state.address)
-
-        if (Object.keys(errors).filter(key => errors[key]).length > 0) {
+        const thereAreErrors =
+          Object.keys(errors).filter(key => errors[key]).length > 0
+        if (thereAreErrors) {
           this.setState({
             isCommittingMutation: false,
             addressErrors: errors,
+            addressTouched: this.touchedAddress,
           })
           return
         }
@@ -232,14 +256,36 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
       address,
       addressErrors: {
         ...this.state.addressErrors,
-        [key]: this.validateAddress(address)[key],
+        ...this.validateAddress(address),
+      },
+      addressTouched: {
+        ...this.state.addressTouched,
+        [key]: true,
       },
     })
   }
 
+  @track((props, state, args) => ({
+    action_type: Schema.ActionType.Click,
+    subject:
+      args[0] === "SHIP"
+        ? Schema.Subject.BNMOProvideShipping
+        : Schema.Subject.BNMOArrangePickup,
+    flow: "buy now",
+    type: "button",
+  }))
+  onSelectShippingOption(shippingOption: OrderFulfillmentType) {
+    this.setState({ shippingOption })
+  }
+
   render() {
     const { order } = this.props
-    const { address, addressErrors, isCommittingMutation } = this.state
+    const {
+      address,
+      addressErrors,
+      addressTouched,
+      isCommittingMutation,
+    } = this.state
     const artwork = get(
       this.props,
       props => order.lineItems.edges[0].node.artwork
@@ -272,9 +318,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                     {artwork.pickup_available && (
                       <>
                         <RadioGroup
-                          onSelect={(shippingOption: OrderFulfillmentType) =>
-                            this.setState({ shippingOption })
-                          }
+                          onSelect={this.onSelectShippingOption.bind(this)}
                           defaultValue={this.state.shippingOption}
                         >
                           <BorderedRadio value="SHIP">
@@ -307,6 +351,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                       <AddressForm
                         defaultValue={address}
                         errors={addressErrors}
+                        touched={addressTouched}
                         onChange={this.onAddressChange}
                         continentalUsOnly={artwork.shipsToContinentalUSOnly}
                       />
@@ -351,6 +396,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
         <ErrorModal
           onClose={this.onCloseModal}
           show={this.state.isErrorModalOpen}
+          contactEmail="orders@artsy.net"
           detailText={this.state.errorModalMessage}
           headerText={this.state.errorModalTitle}
         />
@@ -359,8 +405,16 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
   }
 }
 
+const ShippingRouteWrapper = props => (
+  <ContextConsumer>
+    {({ mediator }) => {
+      return <ShippingRoute {...props} mediator={mediator} />
+    }}
+  </ContextConsumer>
+)
+
 export const ShippingFragmentContainer = createFragmentContainer(
-  ShippingRoute,
+  ShippingRouteWrapper,
   graphql`
     fragment Shipping_order on Order {
       id

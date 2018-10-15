@@ -399,7 +399,7 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(
           type: "[ArtworkAggregation]"
           defaultValue: [MEDIUM, TOTAL, GALLERY, INSTITUTION, MAJOR_PERIOD]
         }
-        sort: { type: "String", defaultValue: "-partner_updated_at" }
+        sort: { type: "String", defaultValue: "-decayed_merch" }
       ) {
       id
       name

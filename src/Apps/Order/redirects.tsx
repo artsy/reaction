@@ -1,4 +1,5 @@
 import { Location, RedirectException, RouteConfig, Router } from "found"
+import { get } from "Utils/get"
 import { OrderApp } from "./OrderApp"
 
 const LEAVE_MESSAGING =
@@ -30,7 +31,11 @@ export const confirmRouteExit = (
 export const shouldRedirect = props => {
   const { location, order, params } = props as any
 
-  if (
+  if (order && order.state === "ABANDONED") {
+    const artworkID = get(order, o => o.lineItems.edges[0].node.artwork.id)
+    // If an artwork ID can't be found, redirect back to home page.
+    throw new RedirectException(artworkID ? `/artwork/${artworkID}` : "/")
+  } else if (
     order &&
     order.state !== "PENDING" &&
     !location.pathname.includes("status")

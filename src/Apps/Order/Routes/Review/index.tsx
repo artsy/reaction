@@ -4,6 +4,9 @@ import { ReviewSubmitOrderMutation } from "__generated__/ReviewSubmitOrderMutati
 import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
 import { ItemReviewFragmentContainer as ItemReview } from "Apps/Order/Components/ItemReview"
 import { ShippingAndPaymentReviewFragmentContainer as ShippingAndPaymentReview } from "Apps/Order/Components/ShippingAndPaymentReview"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
+import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { RouteConfig, Router } from "found"
 import React, { Component } from "react"
@@ -22,6 +25,7 @@ import { TransactionSummaryFragmentContainer as TransactionSummary } from "../..
 import { TwoColumnLayout } from "../../Components/TwoColumnLayout"
 
 export interface ReviewProps {
+  mediator: Mediator
   order: Review_order
   relay?: RelayProp
   router: Router
@@ -36,6 +40,7 @@ interface ReviewState {
   errorModalCtaAction: () => null
 }
 
+@track()
 export class ReviewRoute extends Component<ReviewProps, ReviewState> {
   state = {
     isSubmitting: false,
@@ -43,6 +48,23 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
     errorModalMessage: null,
     errorModalTitle: null,
     errorModalCtaAction: null,
+  }
+
+  constructor(props) {
+    super(props)
+    this.onSuccessfulSubmit = this.onSuccessfulSubmit.bind(this)
+  }
+
+  componentDidMount() {
+    this.props.mediator.trigger("order:review")
+  }
+
+  @track<ReviewProps>(props => ({
+    action_type: Schema.ActionType.SubmittedOrder,
+    order_id: props.order.id,
+  }))
+  onSuccessfulSubmit() {
+    this.props.router.push(`/orders/${this.props.order.id}/status`)
   }
 
   onOrderSubmitted() {
@@ -118,7 +140,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                   }
                 }
               } else {
-                this.props.router.push(`/orders/${this.props.order.id}/status`)
+                this.onSuccessfulSubmit()
               }
             },
             onError: this.onMutationError.bind(this),
@@ -286,6 +308,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
           onClose={this.onCloseModal}
           show={this.state.isErrorModalOpen}
           detailText={this.state.errorModalMessage}
+          contactEmail="orders@artsy.net"
           headerText={this.state.errorModalTitle}
           ctaAction={this.state.errorModalCtaAction}
         />
@@ -294,8 +317,16 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
   }
 }
 
+const ReviewRouteWrapper = props => (
+  <ContextConsumer>
+    {({ mediator }) => {
+      return <ReviewRoute {...props} mediator={mediator} />
+    }}
+  </ContextConsumer>
+)
+
 export const ReviewFragmentContainer = createFragmentContainer(
-  ReviewRoute,
+  ReviewRouteWrapper,
   graphql`
     fragment Review_order on Order {
       id

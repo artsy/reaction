@@ -2,6 +2,7 @@ import {
   mockResolver,
   OrderWithShippingDetails,
   PickupOrder,
+  UntouchedOrder,
 } from "Apps/__test__/Fixtures/Order"
 import { MockRouter } from "DevTools/MockRouter"
 import React from "react"
@@ -18,15 +19,37 @@ const Router = props => (
 )
 
 storiesOf("Apps/Order Page", module)
-  .add("Shipping", () => <Router initialRoute="/orders/123/shipping" />)
+  .add("Shipping - Pre-filled", () => (
+    <Router initialRoute="/orders/123/shipping" />
+  ))
+  .add("Shipping - Untouched Order", () => (
+    <Router
+      // The UntouchedOrder has a specified requestedFulfillment, but it should be null.
+      // Unfortunately, enough of our tests use UntouchedOrder to change it, so we'll specify it here to avoid breaking our story.
+      mockResolvers={mockResolver({
+        ...UntouchedOrder,
+        requestedFulfillment: null,
+      })}
+      initialRoute="/orders/123/shipping"
+    />
+  ))
   .add("Review", () => <Router initialRoute="/orders/123/review" />)
 
 storiesOf("Apps/Order Page/Status", module)
-  .add("submitted", () => (
+  .add("submitted (ship)", () => (
     <Router
       initialRoute="/orders/123/status"
       mockResolvers={mockResolver({
         ...OrderWithShippingDetails,
+        state: "SUBMITTED",
+      })}
+    />
+  ))
+  .add("submitted (pickup)", () => (
+    <Router
+      initialRoute="/orders/123/status"
+      mockResolvers={mockResolver({
+        ...PickupOrder,
         state: "SUBMITTED",
       })}
     />
