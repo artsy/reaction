@@ -84,7 +84,7 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
           at_auction: { type: "Boolean" }
           acquireable: { type: "Boolean" }
           inquireable_only: { type: "Boolean" }
-          sort: { type: "String", defaultValue: "-partner_updated_at" }
+          sort: { type: "String", defaultValue: "-decayed_merch" }
         ) {
         __id
         grid: filtered_artworks(

@@ -74,6 +74,7 @@ describe("Payment", () => {
       relay: { environment: {} } as RelayProp,
       router: { push: jest.fn() },
       stripe: stripeMock,
+      mediator: { trigger: jest.fn() },
     } as any
   })
 
@@ -375,10 +376,42 @@ describe("Payment", () => {
       ;(paymentRoute.find(Checkbox).props() as CheckboxProps).onSelect(false)
 
       paymentRoute.find(ContinueButton).simulate("click")
+      paymentRoute.update()
       const input = paymentRoute
         .find(Input)
         .filterWhere(wrapper => wrapper.props().title === "Full name")
       expect(input.props().error).toEqual("This field is required")
+    })
+    it("before submit, only shows a validation error on inputs that have been touched", () => {
+      const component = mount(<PaymentRoute {...testProps} />)
+      ;(component.find(Checkbox).props() as CheckboxProps).onSelect(false)
+
+      fillIn(component, { title: "Full name", value: "Erik David" })
+      fillIn(component, { title: "Address line 1", value: "" })
+      component.update()
+
+      const [addressInput, cityInput] = ["Address line 1", "City"].map(label =>
+        component
+          .find(Input)
+          .filterWhere(wrapper => wrapper.props().title === label)
+      )
+
+      expect(addressInput.props().error).toBeTruthy()
+      expect(cityInput.props().error).toBeFalsy()
+    })
+    it("after submit, shows all validation errors on inputs that have been touched", () => {
+      const component = mount(<PaymentRoute {...testProps} />)
+      ;(component.find(Checkbox).props() as CheckboxProps).onSelect(false)
+
+      fillIn(component, { title: "Full name", value: "Erik David" })
+
+      component.find("Button").simulate("click")
+
+      const cityInput = component
+        .find(Input)
+        .filterWhere(wrapper => wrapper.props().title === "City")
+
+      expect(cityInput.props().error).toBeTruthy()
     })
 
     it("does not submit an empty form with billing address exposed", () => {

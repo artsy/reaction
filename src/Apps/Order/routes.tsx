@@ -17,6 +17,7 @@ import { StatusFragmentContainer as StatusRoute } from "Apps/Order/Routes/Status
 import { ComponentClass, StatelessComponent } from "react"
 
 // @ts-ignore
+import { ContextConsumer } from "Artsy"
 import { ErrorPage } from "Components/ErrorPage"
 // @ts-ignore
 import { PaymentProps } from "./Routes/Payment"
