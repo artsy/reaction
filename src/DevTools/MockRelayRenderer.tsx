@@ -1,5 +1,6 @@
 import { ContextProvider } from "Artsy"
 import { LoadingClassName } from "Artsy/Relay/renderWithLoadProgress"
+import { ContextProps } from "Components/Artsy"
 import { IMocks } from "graphql-tools/dist/Interfaces"
 import React from "react"
 import { QueryRenderer } from "react-relay"
@@ -13,6 +14,7 @@ import { createMockNetworkLayer } from "./createMockNetworkLayer"
 
 export interface MockRelayRendererProps {
   Component: React.ComponentType
+  contextProps: ContextProps
   query: GraphQLTaggedNode
   mockResolvers: IMocks
 }
@@ -92,6 +94,7 @@ export const MockRelayRenderer = ({
   Component,
   query,
   mockResolvers,
+  contextProps,
 }: MockRelayRendererProps) => {
   if (
     typeof __webpack_require__ === "undefined" &&
@@ -115,7 +118,7 @@ export const MockRelayRenderer = ({
   })
 
   return (
-    <ContextProvider relayEnvironment={environment}>
+    <ContextProvider {...contextProps} relayEnvironment={environment}>
       <QueryRenderer
         // tslint:disable-next-line relay-operation-generics
         query={query}
