@@ -1,6 +1,7 @@
 import { Radio } from "@artsy/palette"
 import { mount } from "enzyme"
 import React from "react"
+import { ContextProvider } from "../../../../../Artsy/SystemContext"
 import { FilterState, initialState } from "../../../FilterState"
 import { TimePeriodFilter } from "../TimePeriodFilter"
 
@@ -9,7 +10,9 @@ describe("TimePeriodFilter", () => {
   const filterState = new FilterState({ ...initialState, tracking })
   const mediator = { trigger: jest.fn() }
   const timePeriodFilter = mount(
-    <TimePeriodFilter filters={filterState} mediator={mediator} />
+    <ContextProvider mediator={mediator}>
+      <TimePeriodFilter filters={filterState} />
+    </ContextProvider>
   )
 
   it("displays the correct number o Radio components for Time Periods", () => {
