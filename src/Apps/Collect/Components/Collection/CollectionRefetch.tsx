@@ -1,3 +1,5 @@
+import { CollectionRefetch_collection } from "__generated__/CollectionRefetch_collection.graphql"
+import { FilterState } from "Apps/Collect/FilterState"
 import { isEqual } from "lodash"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
@@ -5,8 +7,8 @@ import { Responsive } from "Utils/Responsive"
 import { CollectArtworkGridRefreshContainer as ArtworkFilter } from "../Base/CollectArtworkGrid"
 
 interface CollectionRefetchProps {
-  filters: any
-  collection: any
+  filters: FilterState
+  collection: CollectionRefetch_collection
   relay?: RelayRefetchProp
 }
 
@@ -37,7 +39,8 @@ export class CollectionRefetch extends Component<CollectionRefetchProps> {
       this.props.relay.refetch(
         {
           ...this.props.filters,
-          collectionNodeID: this.props.collection.__id,
+          // TODO: have Collection extend Node interface
+          collectionNodeID: (this.props.collection as any).__id,
         },
         null,
         error => {
