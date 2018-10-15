@@ -98,19 +98,14 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
   }
 
   onContinueButtonPressed: () => void = () => {
-    console.log("OCBP")
     this.setState({ isCommittingMutation: true }, () => {
-      console.log("1 - started")
       const { address, shippingOption } = this.state
 
       if (this.state.shippingOption === "SHIP") {
-        console.log("2 - ship selected")
         const errors = this.validateAddress(this.state.address)
         const thereAreErrors =
           Object.keys(errors).filter(key => errors[key]).length > 0
-        console.log("3- are there errors?", thereAreErrors)
         if (thereAreErrors) {
-          console.log("4 - touching everything...")
           this.setState({
             isCommittingMutation: false,
             addressErrors: errors,
