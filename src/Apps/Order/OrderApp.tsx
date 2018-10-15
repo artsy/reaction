@@ -49,6 +49,20 @@ export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
       )
     }
 
+    if (typeof document !== "undefined") {
+      const headerLink = document.querySelectorAll(
+        "nav#main-layout-minimal-header a.logo"
+      )
+
+      if (headerLink.length === 1) {
+        const lineItem = this.props.order.lineItems.edges[0]
+        if (lineItem) {
+          const href = lineItem.node.artwork.href
+          headerLink[0].setAttribute("href", href || "")
+        }
+      }
+    }
+
     if (window.Stripe) {
       this.setState({
         stripe: window.Stripe(window.sd.STRIPE_PUBLISHABLE_KEY),

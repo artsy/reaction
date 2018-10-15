@@ -46,6 +46,15 @@ export const routes: RouteConfig[] = [
           creditCard {
             id
           }
+          lineItems {
+            edges {
+              node {
+                artwork {
+                  href
+                }
+              }
+            }
+          }
         }
       }
     `,

@@ -16,6 +16,15 @@ export type routes_OrderQueryResponse = {
         readonly creditCard: ({
             readonly id: string;
         }) | null;
+        readonly lineItems: ({
+            readonly edges: ReadonlyArray<({
+                readonly node: ({
+                    readonly artwork: ({
+                        readonly href: string | null;
+                    }) | null;
+                }) | null;
+            }) | null> | null;
+        }) | null;
     }) | null;
 };
 export type routes_OrderQuery = {
@@ -42,6 +51,17 @@ query routes_OrderQuery(
       id
       __id
     }
+    lineItems {
+      edges {
+        node {
+          artwork {
+            href
+            __id
+          }
+          __id: id
+        }
+      }
+    }
     __id: id
   }
 }
@@ -63,7 +83,14 @@ v1 = {
   "args": null,
   "storageKey": null
 },
-v2 = [
+v2 = {
+  "kind": "ScalarField",
+  "alias": "__id",
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v3 = [
   {
     "kind": "LinkedField",
     "alias": null,
@@ -144,12 +171,59 @@ v2 = [
         ]
       },
       {
-        "kind": "ScalarField",
-        "alias": "__id",
-        "name": "id",
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "lineItems",
+        "storageKey": null,
         "args": null,
-        "storageKey": null
-      }
+        "concreteType": "OrderLineItemConnection",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "edges",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "OrderLineItemEdge",
+            "plural": true,
+            "selections": [
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "node",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "OrderLineItem",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "artwork",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "Artwork",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "href",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      v1
+                    ]
+                  },
+                  v2
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      v2
     ]
   }
 ];
@@ -158,7 +232,7 @@ return {
   "operationKind": "query",
   "name": "routes_OrderQuery",
   "id": null,
-  "text": "query routes_OrderQuery(\n  $orderID: String!\n) {\n  me {\n    name\n    __id\n  }\n  order: ecommerceOrder(id: $orderID) {\n    state\n    requestedFulfillment {\n      __typename\n    }\n    creditCard {\n      id\n      __id\n    }\n    __id: id\n  }\n}\n",
+  "text": "query routes_OrderQuery(\n  $orderID: String!\n) {\n  me {\n    name\n    __id\n  }\n  order: ecommerceOrder(id: $orderID) {\n    state\n    requestedFulfillment {\n      __typename\n    }\n    creditCard {\n      id\n      __id\n    }\n    lineItems {\n      edges {\n        node {\n          artwork {\n            href\n            __id\n          }\n          __id: id\n        }\n      }\n    }\n    __id: id\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -166,15 +240,15 @@ return {
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
-    "selections": v2
+    "selections": v3
   },
   "operation": {
     "kind": "Operation",
     "name": "routes_OrderQuery",
     "argumentDefinitions": v0,
-    "selections": v2
+    "selections": v3
   }
 };
 })();
-(node as any).hash = 'a3058d3342922022ac9960c0e813b8d9';
+(node as any).hash = 'e4681af7c5ebbafe89186e1b4afd2ebc';
 export default node;
