@@ -24,6 +24,7 @@ describe("Status", () => {
         }
       `,
       mockResolvers: mockResolver(order),
+      contextProps: { mediator: { trigger: jest.fn() } },
       wrapper: renderer => (
         <MockBoot breakpoint="xs" headTags={headTags}>
           {renderer}
