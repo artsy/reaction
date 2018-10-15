@@ -14,7 +14,7 @@ import { createMockNetworkLayer } from "./createMockNetworkLayer"
 
 export interface MockRelayRendererProps {
   Component: React.ComponentType
-  contextProps: ContextProps
+  contextProps?: ContextProps
   query: GraphQLTaggedNode
   mockResolvers: IMocks
 }
