@@ -1,4 +1,5 @@
 import { cloneDeep, omit, uniq, without } from "lodash"
+import { data as sd } from "sharify"
 import { Container } from "unstated"
 
 interface State {
@@ -19,13 +20,17 @@ interface State {
   showZeroState: boolean
 }
 
-const initialState = {
+const initialSort = sd.ENABLE_NEW_BUY_NOW_FLOW
+  ? "-decayed_merch"
+  : "-partner_updated_at"
+
+export const initialState = {
   medium: "*",
   for_sale: null,
   page: 1,
   major_periods: [],
   partner_id: null,
-  sort: "-partner_updated_at",
+  sort: initialSort,
   acquireable: null,
   at_auction: null,
   inquireable_only: null,
