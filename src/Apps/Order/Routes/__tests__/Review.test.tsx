@@ -34,6 +34,7 @@ const defaultProps = {
   relay: {
     environment: {},
   },
+  mediator: { trigger: jest.fn() },
 }
 
 describe("Review", () => {

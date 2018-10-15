@@ -74,6 +74,7 @@ describe("Payment", () => {
       relay: { environment: {} } as RelayProp,
       router: { push: jest.fn() },
       stripe: stripeMock,
+      mediator: { trigger: jest.fn() },
     } as any
   })
 

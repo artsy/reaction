@@ -17,6 +17,7 @@ import { CreditCardInput } from "Apps/Order/Components/CreditCardInput"
 import { Helper } from "Apps/Order/Components/Helper"
 import { TransactionSummaryFragmentContainer as TransactionSummary } from "Apps/Order/Components/TransactionSummary"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
+import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
 import React, { Component } from "react"
@@ -39,6 +40,7 @@ export const ContinueButton = props => (
 )
 
 export interface PaymentProps extends ReactStripeElements.InjectedStripeProps {
+  mediator: Mediator
   order: Payment_order
   relay?: RelayRefetchProp
   router: Router
@@ -65,6 +67,10 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
     address: this.startingAddress(),
     addressErrors: {},
     addressTouched: {},
+  }
+
+  componentDidMount() {
+    this.props.mediator.trigger("order:payment")
   }
 
   startingAddress(): Address {
@@ -427,8 +433,16 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
   }
 }
 
+const PaymentRouteWrapper = props => (
+  <ContextConsumer>
+    {({ mediator }) => {
+      return <PaymentRoute {...props} mediator={mediator} />
+    }}
+  </ContextConsumer>
+)
+
 export const PaymentFragmentContainer = createFragmentContainer(
-  injectStripe(PaymentRoute),
+  injectStripe(PaymentRouteWrapper),
   graphql`
     fragment Payment_order on Order {
       id

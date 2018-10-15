@@ -61,6 +61,7 @@ describe("Shipping", () => {
       order: { ...UntouchedOrder, id: "1234" },
       relay: { environment: {} } as RelayProp,
       router: { push: jest.fn() },
+      mediator: { trigger: jest.fn() },
     } as any
   })
 

@@ -24,7 +24,9 @@ import { Helper } from "Apps/Order/Components/Helper"
 import { TransactionSummaryFragmentContainer as TransactionSummary } from "Apps/Order/Components/TransactionSummary"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { validatePresence } from "Apps/Order/Components/Validators"
-import { Mediator } from "Artsy/SystemContext"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
+import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
 import { pick } from "lodash"
@@ -43,7 +45,7 @@ import { Responsive } from "Utils/Responsive"
 
 export interface ShippingProps {
   order: Shipping_order
-  mediator?: Mediator
+  mediator: Mediator
   relay?: RelayProp
   router: Router
 }
@@ -58,7 +60,7 @@ export interface ShippingState {
   errorModalTitle: string
   errorModalMessage: string
 }
-
+@track()
 export class ShippingRoute extends Component<ShippingProps, ShippingState> {
   state = {
     shippingOption: ((this.props.order.requestedFulfillment &&
@@ -71,6 +73,10 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     addressTouched: {},
     errorModalTitle: null,
     errorModalMessage: null,
+  }
+
+  componentDidMount() {
+    this.props.mediator.trigger("order:shipping")
   }
 
   get startingAddress() {
@@ -259,6 +265,19 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     })
   }
 
+  @track((props, state, args) => ({
+    action_type: Schema.ActionType.Click,
+    subject:
+      args[0] === "SHIP"
+        ? Schema.Subject.BNMOProvideShipping
+        : Schema.Subject.BNMOArrangePickup,
+    flow: "buy now",
+    type: "button",
+  }))
+  onSelectShippingOption(shippingOption: OrderFulfillmentType) {
+    this.setState({ shippingOption })
+  }
+
   render() {
     const { order } = this.props
     const {
@@ -299,9 +318,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                     {artwork.pickup_available && (
                       <>
                         <RadioGroup
-                          onSelect={(shippingOption: OrderFulfillmentType) =>
-                            this.setState({ shippingOption })
-                          }
+                          onSelect={this.onSelectShippingOption.bind(this)}
                           defaultValue={this.state.shippingOption}
                         >
                           <BorderedRadio value="SHIP">
@@ -387,8 +404,16 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
   }
 }
 
+const ShippingRouteWrapper = props => (
+  <ContextConsumer>
+    {({ mediator }) => {
+      return <ShippingRoute {...props} mediator={mediator} />
+    }}
+  </ContextConsumer>
+)
+
 export const ShippingFragmentContainer = createFragmentContainer(
-  ShippingRoute,
+  ShippingRouteWrapper,
   graphql`
     fragment Shipping_order on Order {
       id
