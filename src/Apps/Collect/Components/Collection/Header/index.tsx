@@ -89,7 +89,11 @@ export const Overlay = styled.div`
   height: 100%;
   top: 0;
   left: 0;
-  background: rgba(200, 200, 200, 0.5);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.25),
+    rgba(0, 0, 0, 0.15)
+  );
   z-index: 0;
 `
 
@@ -104,13 +108,13 @@ const SubtitlesContainer = styled(Box)`
   display: flex;
 
   ${Sans} {
-    text-shadow: 1px 1px 5px ${color("black30")};
+    text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
   }
 `
 
 const Title = styled(Serif)`
   text-transform: capitalize;
-  text-shadow: 1px 1px ${color("black30")};
+  text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
 `
 
 const ImageCaption = styled(Box)`

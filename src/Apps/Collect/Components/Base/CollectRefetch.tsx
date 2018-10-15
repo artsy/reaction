@@ -1,4 +1,4 @@
-// import { CollectRefetch_viewer } from "__generated__/CollectRefetch_viewer.graphql"
+import { CollectRefetch_viewer } from "__generated__/CollectRefetch_viewer.graphql"
 import { isEqual } from "lodash"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
@@ -6,7 +6,7 @@ import { Responsive } from "Utils/Responsive"
 import { CollectArtworkGridRefreshContainer as ArtworkFilter } from "./CollectArtworkGrid"
 interface CollectRefetchProps {
   filters: any
-  viewer: any
+  viewer: CollectRefetch_viewer
   relay: RelayRefetchProp
 }
 
