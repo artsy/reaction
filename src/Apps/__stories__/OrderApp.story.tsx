@@ -24,7 +24,12 @@ storiesOf("Apps/Order Page", module)
   ))
   .add("Shipping - Untouched Order", () => (
     <Router
-      mockResolvers={mockResolver({ ...UntouchedOrder })}
+      // The UntouchedOrder has a specified requestedFulfillment, but it should be null.
+      // Unfortunately, enough of our tests use UntouchedOrder to change it, so we'll specify it here to avoid breaking our story.
+      mockResolvers={mockResolver({
+        ...UntouchedOrder,
+        requestedFulfillment: null,
+      })}
       initialRoute="/orders/123/shipping"
     />
   ))
