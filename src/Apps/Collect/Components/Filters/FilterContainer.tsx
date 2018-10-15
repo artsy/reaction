@@ -3,7 +3,7 @@ import { data as sd } from "sharify"
 import { Subscribe } from "unstated"
 
 import { FilterState } from "Apps/Collect/FilterState"
-import { SystemProps } from "Artsy/SystemContext"
+import { Mediator } from "Artsy/SystemContext"
 import { MobileActionSheet } from "../MobileActionSheet"
 import { MediumFilter } from "./MediumFilter"
 import { PriceRangeFilter } from "./PriceRangeFilter"
@@ -16,7 +16,7 @@ import { Toggle } from "Styleguide/Components"
 
 export interface FilterContainerProps {
   user?: any
-  mediator: SystemProps["mediator"]
+  mediator: Mediator
   mediums: Array<{ id: string; name: string }>
   isMobile?: boolean
 }
@@ -24,7 +24,6 @@ export interface FilterContainerProps {
 export interface FilterContainerState {
   showMobileActionSheet: boolean
 }
-
 export class FilterContainer extends React.Component<
   FilterContainerProps,
   FilterContainerState
@@ -53,39 +52,31 @@ export class FilterContainer extends React.Component<
   }
 
   renderFilters(filters: FilterState) {
-    const { mediator, mediums } = this.props
+    const { mediums } = this.props
 
     return (
       <>
         <Flex flexDirection="column" alignItems="left" mt={-1} mb={1}>
-          <WaysToBuyFilter
-            enableBuyNow={this.enableBuyNow}
-            filters={filters}
-            mediator={mediator}
-          />
+          <WaysToBuyFilter enableBuyNow={this.enableBuyNow} filters={filters} />
         </Flex>
 
         <Flex flexDirection="column" alignItems="left" my={1}>
-          <PriceRangeFilter filters={filters} mediator={mediator} />
+          <PriceRangeFilter filters={filters} />
         </Flex>
 
         <Toggle label="Medium" expanded>
-          <MediumFilter
-            filters={filters}
-            mediums={mediums}
-            mediator={mediator}
-          />
+          <MediumFilter filters={filters} mediums={mediums} />
         </Toggle>
 
         <Toggle expanded label="Time period">
-          <TimePeriodFilter filters={filters} mediator={mediator} />
+          <TimePeriodFilter filters={filters} />
         </Toggle>
       </>
     )
   }
 
   render() {
-    const { isMobile, mediator } = this.props
+    const { isMobile } = this.props
     const Filters = ({ filters }) => this.renderFilters(filters)
 
     // tslint:disable-next-line:ban-types
@@ -119,11 +110,7 @@ export class FilterContainer extends React.Component<
               <span id="jump--collectArtworkGrid" />
 
               <Box width={isMobile ? "100%" : "75%"}>
-                <SortFilter
-                  filters={filters}
-                  mediator={mediator}
-                  xs={isMobile}
-                />
+                <SortFilter filters={filters} xs={isMobile} />
 
                 <Spacer mb={2} />
 
