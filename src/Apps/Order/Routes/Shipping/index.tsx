@@ -25,7 +25,7 @@ import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { validatePresence } from "Apps/Order/Components/Validators"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { Mediator } from "Artsy/SystemContext"
+import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
 import { pick } from "lodash"
@@ -376,8 +376,16 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
   }
 }
 
+const ShippingRouteWrapper = props => (
+  <ContextConsumer>
+    {({ mediator }) => {
+      return <ShippingRoute {...props} mediator={mediator} />
+    }}
+  </ContextConsumer>
+)
+
 export const ShippingFragmentContainer = createFragmentContainer(
-  ShippingRoute,
+  ShippingRouteWrapper,
   graphql`
     fragment Shipping_order on Order {
       id

@@ -6,7 +6,7 @@ import { ItemReviewFragmentContainer as ItemReview } from "Apps/Order/Components
 import { ShippingAndPaymentReviewFragmentContainer as ShippingAndPaymentReview } from "Apps/Order/Components/ShippingAndPaymentReview"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { Mediator } from "Artsy/SystemContext"
+import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { RouteConfig, Router } from "found"
 import React, { Component } from "react"
@@ -316,8 +316,16 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
   }
 }
 
+const ReviewRouteWrapper = props => (
+  <ContextConsumer>
+    {({ mediator }) => {
+      return <ReviewRoute {...props} mediator={mediator} />
+    }}
+  </ContextConsumer>
+)
+
 export const ReviewFragmentContainer = createFragmentContainer(
-  ReviewRoute,
+  ReviewRouteWrapper,
   graphql`
     fragment Review_order on Order {
       id

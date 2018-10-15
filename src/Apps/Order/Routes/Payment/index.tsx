@@ -16,7 +16,7 @@ import { CreditCardInput } from "Apps/Order/Components/CreditCardInput"
 import { Helper } from "Apps/Order/Components/Helper"
 import { TransactionSummaryFragmentContainer as TransactionSummary } from "Apps/Order/Components/TransactionSummary"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
-import { Mediator } from "Artsy/SystemContext"
+import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
 import React, { Component } from "react"
@@ -407,8 +407,16 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
   }
 }
 
+const PaymentRouteWrapper = props => (
+  <ContextConsumer>
+    {({ mediator }) => {
+      return <PaymentRoute {...props} mediator={mediator} />
+    }}
+  </ContextConsumer>
+)
+
 export const PaymentFragmentContainer = createFragmentContainer(
-  injectStripe(PaymentRoute),
+  injectStripe(PaymentRouteWrapper),
   graphql`
     fragment Payment_order on Order {
       id
