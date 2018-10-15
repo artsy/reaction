@@ -1,5 +1,6 @@
 import { ContextProvider } from "Artsy"
 import { LoadingClassName } from "Artsy/Relay/renderWithLoadProgress"
+import { ContextConsumer } from "Artsy/SystemContext"
 import { IMocks } from "graphql-tools/dist/Interfaces"
 import React from "react"
 import { QueryRenderer } from "react-relay"
@@ -115,22 +116,26 @@ export const MockRelayRenderer = ({
   })
 
   return (
-    <ContextProvider relayEnvironment={environment}>
-      <QueryRenderer
-        // tslint:disable-next-line relay-operation-generics
-        query={query}
-        environment={environment}
-        variables={{}}
-        render={({ error, props, retry }) => {
-          if (props) {
-            return <Component {...props} />
-          } else if (error) {
-            return <div className="relay-error">{error}</div>
-          } else {
-            return <div className={LoadingClassName}>Loading</div>
-          }
-        }}
-      />
-    </ContextProvider>
+    <ContextConsumer>
+      {contextProps => (
+        <ContextProvider {...contextProps} relayEnvironment={environment}>
+          <QueryRenderer
+            // tslint:disable-next-line relay-operation-generics
+            query={query}
+            environment={environment}
+            variables={{}}
+            render={({ error, props, retry }) => {
+              if (props) {
+                return <Component {...props} />
+              } else if (error) {
+                return <div className="relay-error">{error}</div>
+              } else {
+                return <div className={LoadingClassName}>Loading</div>
+              }
+            }}
+          />
+        </ContextProvider>
+      )}
+    </ContextConsumer>
   )
 }
