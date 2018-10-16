@@ -8,7 +8,10 @@ import { Responsive } from "Utils/Responsive"
 import { Pagination_pageCursors } from "__generated__/Pagination_pageCursors.graphql"
 import { createFragmentContainer, graphql } from "react-relay"
 
+const PAGE_NUMBER_CAP = 100
+
 interface Props {
+  displayLast?: boolean
   onClick?: (cursor: string, page: number) => void
   onNext?: () => void
   pageCursors: Pagination_pageCursors
@@ -18,6 +21,7 @@ interface Props {
 
 export class Pagination extends React.Component<Props> {
   static defaultProps = {
+    displayLast: true,
     onClick: _cursor => ({}),
     onNext: () => ({}),
     scrollTo: null,
@@ -62,6 +66,7 @@ export const LargePagination = (props: Props) => {
     onClick,
     onNext,
     hasNextPage,
+    displayLast,
   } = props
 
   return (
@@ -80,7 +85,9 @@ export const LargePagination = (props: Props) => {
         {last && (
           <div>
             <PageSpan mx={0.5} />
-            {renderPage(last, onClick)}
+            {displayLast
+              ? renderPage(last, onClick)
+              : last.page <= PAGE_NUMBER_CAP && renderPage(last, onClick)}
           </div>
         )}
 
