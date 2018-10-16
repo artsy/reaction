@@ -29,7 +29,7 @@
 
         $ yarn start
         $ open http://localhost:9001/
-        
+
 - Run the tests:
 
         $ yarn test
@@ -56,8 +56,8 @@
 To _link_ your local reaction with your local force, run:
 
         $ yarn link && yarn watch
-        (wait until you see a message that X files have been successfully compiled before moving on) 
-        
+        (wait until you see a message that X files have been successfully compiled before moving on)
+
         $ cd ../force && yarn link @artsy/reaction && yarn start
 
 To _unlink_ your local reaction from your local force, run (in **Force**):
@@ -136,5 +136,5 @@ export class Icon extends Component<IconProps> {
 }
 ```
 
-The more descriptive interface name (`IconProps`) is to get more useful error messages from the compiler when something goes wrong,
+The more descriptive interface name (`IconProps`) will get more useful error messages from the compiler when something goes wrong,
 and it's clearer which interface is being referred to in type defintion files.
