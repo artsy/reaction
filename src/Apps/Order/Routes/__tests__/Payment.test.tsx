@@ -87,7 +87,7 @@ describe("Payment", () => {
     expect(paymentRoute.find(Collapse).props().open).toBe(true)
   })
 
-  it.only("removes all data when the billing address form is hidden", () => {
+  it("removes all data when the billing address form is hidden", () => {
     const paymentRoute = mount(<PaymentRoute {...testProps} />)
     // expand address form
     paymentRoute.find(Checkbox).simulate("click")
