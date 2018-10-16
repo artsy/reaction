@@ -4,13 +4,16 @@ import { Section } from "Styleguide/Utils/Section"
 import { ArtworkDetails, ArtworkDetailsQueryRenderer } from "../ArtworkDetails"
 
 import { AllAdditionalDetailsPresent } from "Apps/__test__/Fixtures/Artworks"
-import { RelayStubProvider } from "Utils/RelayStubProvider"
+import { RelayStubProvider } from "DevTools/RelayStubProvider"
 
 storiesOf("Styleguide/Artwork", module)
   .addDecorator(story => <RelayStubProvider>{story()}</RelayStubProvider>)
   .add("ArtworkDetails", () => {
     return (
       <React.Fragment>
+        <Section title="ArtworkDetailsQueryRenderer containing CMS markdown text">
+          <ArtworkDetailsQueryRenderer artworkID="henri-de-toulouse-lautrec-debauche-deuxieme-planche-1" />
+        </Section>
         <Section title="Artwork with every additional details available">
           <ArtworkDetails artwork={AllAdditionalDetailsPresent as any} />
         </Section>

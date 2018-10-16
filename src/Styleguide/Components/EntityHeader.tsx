@@ -29,9 +29,9 @@ export const EntityHeader: SFC<EntityHeaderProps> = ({
   return (
     <Container onClick={() => handleContainerClick()} hasLink={!!href}>
       {imageUrl && (
-        <Box mr={1}>
+        <Flex mr={1}>
           <Avatar size="xs" src={imageUrl} initials={initials} />
-        </Box>
+        </Flex>
       )}
 
       <Flex flexDirection="column" justifyContent="center" width="100%">
@@ -76,3 +76,5 @@ const Container = styled(Flex)<{ hasLink: boolean }>`
     }
   }};
 `
+
+EntityHeader.displayName = "EntityHeader"

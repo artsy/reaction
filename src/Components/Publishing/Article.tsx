@@ -1,5 +1,5 @@
 import React from "react"
-import track from "react-tracking"
+import track, { TrackingProp } from "react-tracking"
 import Events from "../../Utils/Events"
 
 import { BannerWrapper } from "./Banner/Banner"
@@ -30,7 +30,7 @@ export interface ArticleProps {
   display?: DisplayData
   showTooltips?: boolean
   slideIndex?: number
-  tracking?: any
+  tracking?: TrackingProp
   closeViewer?: () => void
   viewerIsOpen?: boolean
   onOpenAuthModal?: (type: "register" | "login", config: object) => void

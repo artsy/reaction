@@ -7,7 +7,7 @@ import {
   PickupOrder,
   UntouchedOrder,
 } from "Apps/__test__/Fixtures/Order"
-import { Input } from "../../../../Components/Input"
+import { Input, InputProps } from "../../../../Components/Input"
 import { Collapse } from "../../../../Styleguide/Components"
 import { CreditCardInput } from "../../Components/CreditCardInput"
 import {
@@ -74,6 +74,7 @@ describe("Payment", () => {
       relay: { environment: {} } as RelayProp,
       router: { push: jest.fn() },
       stripe: stripeMock,
+      mediator: { trigger: jest.fn() },
     } as any
   })
 
@@ -86,7 +87,30 @@ describe("Payment", () => {
     expect(paymentRoute.find(Collapse).props().open).toBe(true)
   })
 
-  it("pre-populates with available details when returning to the payment route", () => {
+  it.only("removes all data when the billing address form is hidden", () => {
+    const paymentRoute = mount(<PaymentRoute {...testProps} />)
+    // expand address form
+    paymentRoute.find(Checkbox).simulate("click")
+
+    const nameInput = paymentRoute
+      .find(Input)
+      .filterWhere(wrapper => wrapper.props().title === "Full name")
+      .find("input")
+    nameInput.instance().value = "Dr Collector"
+    nameInput.simulate("change")
+    expect(nameInput.instance().value).toEqual("Dr Collector")
+
+    // hide address form
+    paymentRoute.find(Checkbox).simulate("click")
+
+    // expand address form again
+    paymentRoute.find(Checkbox).simulate("click")
+
+    // expect name to be empty
+    expect(nameInput.instance().value).toEqual("")
+  })
+
+  it("does not pre-populate with available details when returning to the payment route", () => {
     const paymentRoute = mount(
       <PaymentRoute
         {...testProps}
@@ -106,14 +130,14 @@ describe("Payment", () => {
       />
     )
 
-    expect(paymentRoute.find(AddressForm).props().defaultValue).toEqual({
-      name: "Artsy UK Ltd",
-      addressLine1: "14 Gower's Walk",
-      addressLine2: "Suite 2.5, The Loom",
-      city: "London",
-      region: "Whitechapel",
-      postalCode: "E1 8PY",
-      country: "UK",
+    expect(paymentRoute.find(AddressForm).props().value).toEqual({
+      name: "",
+      addressLine1: "",
+      addressLine2: "",
+      city: "",
+      region: "",
+      postalCode: "",
+      country: "US",
       phoneNumber: "",
     })
   })
@@ -375,10 +399,42 @@ describe("Payment", () => {
       ;(paymentRoute.find(Checkbox).props() as CheckboxProps).onSelect(false)
 
       paymentRoute.find(ContinueButton).simulate("click")
+      paymentRoute.update()
       const input = paymentRoute
         .find(Input)
         .filterWhere(wrapper => wrapper.props().title === "Full name")
       expect(input.props().error).toEqual("This field is required")
+    })
+    it("before submit, only shows a validation error on inputs that have been touched", () => {
+      const component = mount(<PaymentRoute {...testProps} />)
+      ;(component.find(Checkbox).props() as CheckboxProps).onSelect(false)
+
+      fillIn(component, { title: "Full name", value: "Erik David" })
+      fillIn(component, { title: "Address line 1", value: "" })
+      component.update()
+
+      const [addressInput, cityInput] = ["Address line 1", "City"].map(label =>
+        component
+          .find(Input)
+          .filterWhere(wrapper => wrapper.props().title === label)
+      )
+
+      expect(addressInput.props().error).toBeTruthy()
+      expect(cityInput.props().error).toBeFalsy()
+    })
+    it("after submit, shows all validation errors on inputs that have been touched", () => {
+      const component = mount(<PaymentRoute {...testProps} />)
+      ;(component.find(Checkbox).props() as CheckboxProps).onSelect(false)
+
+      fillIn(component, { title: "Full name", value: "Erik David" })
+
+      component.find("Button").simulate("click")
+
+      const cityInput = component
+        .find(Input)
+        .filterWhere(wrapper => wrapper.props().title === "City")
+
+      expect(cityInput.props().error).toBeTruthy()
     })
 
     it("does not submit an empty form with billing address exposed", () => {

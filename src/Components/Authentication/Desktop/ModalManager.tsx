@@ -1,5 +1,6 @@
 import { FormikProps } from "formik"
 import React, { Component } from "react"
+import { TrackingProp } from "react-tracking"
 
 import { DesktopModal } from "Components/Authentication/Desktop/Components/DesktopModal"
 import { FormSwitcher } from "Components/Authentication/FormSwitcher"
@@ -18,7 +19,7 @@ export interface ModalManagerProps {
   }
   csrf?: string
   redirectTo?: string
-  tracking?: any
+  tracking?: TrackingProp
   type?: ModalType
   handleSubmit?: (
     type: ModalType,

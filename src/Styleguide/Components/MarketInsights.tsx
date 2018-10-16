@@ -8,12 +8,10 @@ import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Responsive } from "Utils/Responsive"
 
-const wrapper = xs => props =>
-  xs ? <Flex flexDirection="column" mb={1} {...props} /> : <Box {...props} />
-
 export interface MarketInsightsProps {
   artist: MarketInsightsArtistPage_artist
   border?: boolean
+  Container?: (props: { children: JSX.Element }) => JSX.Element
 }
 
 const CATEGORIES = {
@@ -100,7 +98,15 @@ export class MarketInsights extends React.Component<MarketInsightsProps> {
       return null
     }
 
-    const Container = this.props.border ? BorderBox : Box
+    let Container
+
+    if (this.props.Container) {
+      Container = this.props.Container
+    } else if (this.props.border) {
+      Container = BorderBox
+    } else {
+      Container = Box
+    }
 
     return (
       <>
@@ -170,3 +176,6 @@ export const MarketInsightsFragmentContainer = createFragmentContainer(
     }
   `
 )
+
+const wrapper = xs => props =>
+  xs ? <Flex flexDirection="column" mb={1} {...props} /> : <Box {...props} />

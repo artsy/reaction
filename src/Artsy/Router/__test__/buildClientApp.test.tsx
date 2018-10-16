@@ -49,7 +49,10 @@ describe("buildClientApp", () => {
 
   it("bootstraps data from __RELAY_BOOTSTRAP__", async () => {
     window.__RELAY_BOOTSTRAP__ = JSON.stringify([
-      ["cacheKey", "found window cache"],
+      [
+        '{"queryID":"OrderQuery","variables":{"orderID":"0"}}',
+        "found window cache",
+      ],
     ])
 
     const { ClientApp } = await buildClientApp({

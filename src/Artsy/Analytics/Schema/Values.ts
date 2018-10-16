@@ -68,6 +68,11 @@ export enum ActionType {
    * TODO: Check if ‘Click’ and this can be combined.
    */
   Tap = "Tap",
+
+  /**
+   * BNMO
+   */
+  SubmittedOrder = "submitted_order",
 }
 
 /**
@@ -79,6 +84,7 @@ export enum ActionName {
    */
   ArtistFollow = "artistFollow",
   ArtistUnfollow = "artistUnfollow",
+  ArtworkAboutTheWork = "Artwork about the work",
 
   /**
    * Authentication
@@ -148,20 +154,36 @@ export enum Subject {
   FurtherReading = "Further reading",
   ReadMore = "Read more",
   RelatedArticles = "Related articles",
+
+  /**
+   * Buy now checkout flow
+   */
+  BNMOAskSpecialist = "ask a specialist",
+  BNMOReadFAQ = "read faq",
+  BNMOProvideShipping = "provide shipping address",
+  BNMOArrangePickup = "arrange for pickup",
 }
 
 /**
  * Identifier of a conceptual module on the page.
  */
-export enum Context {
+export enum ContextModule {
   Header = "Header",
   NavigationTabs = "NavigationTabs",
 
   /**
    * Artist page
    */
+  AboutTheWork = "About the work",
+  AboutTheWorkPartner = "About the Work (Partner)",
   ArtistOverview = "ArtistOverview",
   ArtistBio = "ArtistBio",
+  Biography = "Biography",
+
+  /**
+   * Artwork page
+   */
+  ArtworkTabs = "Artwork tabs",
 
   /*
   * Articles
@@ -180,4 +202,22 @@ export enum Context {
    * Buy Now Make Offer ("Works For You")
    */
   BNMOBanner = "BNMO Banner",
+}
+
+export enum Flow {
+  ArtworkAboutTheWork = "Artwork about the work",
+  ArtworkAboutTheArtist = "Artwork about the artist",
+}
+
+export enum Label {
+  AboutTheWork = "about_the_work",
+  Articles = "articles",
+  Biography = "biography",
+  ExhibitionHighlights = "exhibition_highlights",
+  ReadMore = "ReadMore",
+}
+
+export enum Type {
+  Button = "Button",
+  Tab = "Tab",
 }

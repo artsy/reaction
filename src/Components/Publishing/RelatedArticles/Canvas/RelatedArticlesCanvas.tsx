@@ -24,8 +24,8 @@ interface ScrollingContainerProps {
 }
 
 @track({
-  // TODO: reevalutate double naming of context/schema
-  context_module: Schema.Context.FurtherReading,
+  // TODO: re-evalutate double naming of context/schema
+  context_module: Schema.ContextModule.FurtherReading,
   subject: Schema.Subject.FurtherReading,
 })
 export class RelatedArticlesCanvas extends React.Component<

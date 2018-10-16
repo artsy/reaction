@@ -21,8 +21,15 @@ const node: ConcreteFragment = {
       "kind": "ScalarField",
       "alias": null,
       "name": "description",
-      "args": null,
-      "storageKey": null
+      "args": [
+        {
+          "kind": "Literal",
+          "name": "format",
+          "value": "HTML",
+          "type": "Format"
+        }
+      ],
+      "storageKey": "description(format:\"HTML\")"
     },
     {
       "kind": "ScalarField",
@@ -33,5 +40,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'e111216a2e8a4223ef87d25499bc5760';
+(node as any).hash = '621e4eaa61c267369ccc26d7d14d9ef3';
 export default node;

@@ -27,7 +27,7 @@ export interface TabsProps extends WidthProps, JustifyContentProps {
   /** Index of the Tab that should be pre-selected */
   initialTabIndex?: number
 
-  /** To be able to extend or modify the way tab btns are getting rendered
+  /** To be able to extend or modify the way tab buttons are getting rendered
    * default value is an identity function
    */
   transformTabBtn?: (
@@ -146,6 +146,9 @@ const ActiveTabButton = ({ children }) => (
 export const styles = {
   tabsContainer: css`
     border-bottom: 1px solid ${color("black10")};
+    ${media.xs`
+      padding-left: ${space(2)}px;
+    `};
   `,
   tabContainer: css`
     cursor: pointer;
@@ -155,8 +158,6 @@ export const styles = {
     ${borders};
 
     ${media.xs`
-      margin-right: ${space(2)}px;
-
       &:last-child {
         padding-right: ${space(4)}px;
       }
@@ -168,10 +169,6 @@ export const styles = {
     margin-bottom: -1px;
     white-space: nowrap;
     border-bottom: 1px solid ${color("black60")};
-
-    ${media.xs`
-      margin-right: ${space(2)}px;
-    `};
   `,
 }
 

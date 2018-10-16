@@ -35,8 +35,8 @@ export const ShippingAndPaymentSummary = ({
         >
           {showPickupCopy(state) && (
             <Serif size="3t">
-              You’ll be appointed an Artsy specialist within 2 business days to
-              handle pickup logistics.
+              After your order is confirmed, a specialist will contact you
+              within 2 business days to coordinate pickup.
             </Serif>
           )}
         </StepSummaryItem>

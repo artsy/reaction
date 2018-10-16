@@ -17,6 +17,7 @@ import { StatusFragmentContainer as StatusRoute } from "Apps/Order/Routes/Status
 import { ComponentClass, StatelessComponent } from "react"
 
 // @ts-ignore
+import { ContextConsumer } from "Artsy"
 import { ErrorPage } from "Components/ErrorPage"
 // @ts-ignore
 import { PaymentProps } from "./Routes/Payment"
@@ -43,6 +44,15 @@ export const routes: RouteConfig[] = [
           requestedFulfillment {
             __typename
           }
+          lineItems {
+            edges {
+              node {
+                artwork {
+                  id
+                }
+              }
+            }
+          }
           creditCard {
             id
           }
@@ -68,6 +78,9 @@ export const routes: RouteConfig[] = [
             }
           }
         `,
+        cacheConfig: {
+          force: true,
+        },
       },
       {
         path: "payment",
@@ -80,6 +93,9 @@ export const routes: RouteConfig[] = [
             }
           }
         `,
+        cacheConfig: {
+          force: true,
+        },
       },
       {
         path: "review",
@@ -92,6 +108,9 @@ export const routes: RouteConfig[] = [
             }
           }
         `,
+        cacheConfig: {
+          force: true,
+        },
       },
       {
         path: "status",
@@ -103,6 +122,9 @@ export const routes: RouteConfig[] = [
             }
           }
         `,
+        cacheConfig: {
+          force: true,
+        },
       },
       new Redirect({
         // For now, redirect the empty route to the shipping page

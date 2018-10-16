@@ -28,7 +28,7 @@ interface State {
 }
 
 @track({
-  context_module: Schema.Context.ArtistOverview,
+  context_module: Schema.ContextModule.ArtistOverview,
 })
 class OverviewRoute extends React.Component<OverviewRouteProps, State> {
   state = {
@@ -193,7 +193,7 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
         at_auction: { type: "Boolean" }
         acquireable: { type: "Boolean" }
         inquireable_only: { type: "Boolean" }
-        sort: { type: "String", defaultValue: "-partner_updated_at" }
+        sort: { type: "String", defaultValue: "-decayed_merch" }
         partner_category: {
           type: "[String]"
           defaultValue: ["blue-chip", "top-established", "top-emerging"]

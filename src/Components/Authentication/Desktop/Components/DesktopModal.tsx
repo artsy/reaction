@@ -2,6 +2,7 @@ import { ModalOptions } from "Components/Authentication/Types"
 import Modal, { ModalProps } from "Components/Modal/Modal"
 import React, { Component } from "react"
 import track from "react-tracking"
+import { TrackingProp } from "react-tracking"
 import Events from "Utils/Events"
 
 export interface DesktopModalProps extends ModalProps {
@@ -10,7 +11,7 @@ export interface DesktopModalProps extends ModalProps {
   onTypeChange?: (options: ModalOptions) => void
   show?: boolean
   subtitle?: string
-  tracking?: any
+  tracking?: TrackingProp
 }
 
 @track({}, { dispatch: data => Events.postEvent(data) })

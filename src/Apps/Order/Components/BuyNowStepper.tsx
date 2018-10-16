@@ -15,7 +15,11 @@ export const BuyNowStepper: React.SFC<BuyNowStepperProps> = ({
 }) => {
   const stepIndex = getStepIndex(currentStep)
   return (
-    <Stepper initialTabIndex={stepIndex} currentStepIndex={stepIndex}>
+    <Stepper
+      initialTabIndex={stepIndex}
+      currentStepIndex={stepIndex}
+      disableNavigation
+    >
       {steps.map(step => <Step name={step} key={step} />)}
     </Stepper>
   )

@@ -1,7 +1,7 @@
 import { avantgarde, garamond, unica } from "Assets/Fonts"
 import { get, memoize } from "lodash"
 import React, { Component, HTMLProps } from "react"
-import track from "react-tracking"
+import track, { TrackingProp } from "react-tracking"
 import Waypoint from "react-waypoint"
 import styled from "styled-components"
 import Colors from "../../../Assets/Colors"
@@ -19,7 +19,7 @@ export interface DisplayPanelProps extends React.HTMLProps<HTMLDivElement> {
   article?: any
   isMobile?: boolean
   unit: any
-  tracking?: any
+  tracking?: TrackingProp
   renderTime?: number
 }
 

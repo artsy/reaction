@@ -18,15 +18,18 @@ export interface SelectedExhibitionsProps {
   artistID?: string
   totalExhibitions?: number
   ViewAllLink?: JSX.Element
+  Container?: (props: { children: JSX.Element }) => JSX.Element
 }
-export const SelectedExhibitions: SFC<SelectedExhibitionsProps> = props => (
-  <Responsive>
-    {({ xs }) => {
-      if (xs) return <SelectedExhibitionsContainer collapsible {...props} />
-      else return <SelectedExhibitionsContainer {...props} />
-    }}
-  </Responsive>
-)
+export const SelectedExhibitions: SFC<SelectedExhibitionsProps> = props => {
+  return (
+    <Responsive>
+      {({ xs }) => {
+        if (xs) return <SelectedExhibitionsContainer collapsible {...props} />
+        else return <SelectedExhibitionsContainer {...props} />
+      }}
+    </Responsive>
+  )
+}
 
 export const isCollapsed = props => props.collapsible && !props.expanded
 
@@ -149,7 +152,15 @@ export class SelectedExhibitionsContainer extends React.Component<
       return null
     }
 
-    const Container = this.props.border ? BorderBox : Box
+    let Container
+
+    if (this.props.Container) {
+      Container = this.props.Container
+    } else if (this.props.border) {
+      Container = BorderBox
+    } else {
+      Container = Box
+    }
 
     return (
       <Container>

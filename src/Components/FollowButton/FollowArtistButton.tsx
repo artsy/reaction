@@ -2,7 +2,7 @@ import { FollowArtistButtonMutation } from "__generated__/FollowArtistButtonMuta
 import * as Artsy from "Artsy/SystemContext"
 import { extend } from "lodash"
 import React from "react"
-import track from "react-tracking"
+import track, { TrackingProp } from "react-tracking"
 import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
 import { FollowArtistButton_artist } from "../../__generated__/FollowArtistButton_artist.graphql"
 import { FollowButton } from "./Button"
@@ -22,7 +22,7 @@ interface Props
     Artsy.ContextProps {
   relay?: RelayProp
   artist?: FollowArtistButton_artist
-  tracking?: any
+  tracking?: TrackingProp
   trackingData?: FollowTrackingData
   onOpenAuthModal?: (type: "register" | "login", config?: object) => void
 

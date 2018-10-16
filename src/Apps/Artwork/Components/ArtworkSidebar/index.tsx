@@ -1,7 +1,8 @@
-import { Separator, Serif } from "@artsy/palette"
+import { Box, Separator, Serif, Spacer } from "@artsy/palette"
+import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
+import { ContextConsumer } from "Artsy/Router"
 import React, { Component } from "react"
-import { createFragmentContainer, graphql } from "react-relay"
-import styled from "styled-components"
+import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 import { ArtworkSidebarArtistsFragmentContainer as Artists } from "./ArtworkSidebarArtists"
 import { ArtworkSidebarAuctionPartnerInfoFragmentContainer as AuctionPartnerInfo } from "./ArtworkSidebarAuctionPartnerInfo"
 import { ArtworkSidebarBidActionFragmentContainer as BidAction } from "./ArtworkSidebarBidAction"
@@ -12,12 +13,13 @@ import { ArtworkSidebarMetadataFragmentContainer as Metadata } from "./ArtworkSi
 import { ArtworkSidebarPartnerInfoFragmentContainer as PartnerInfo } from "./ArtworkSidebarPartnerInfo"
 
 import { ArtworkSidebar_artwork } from "__generated__/ArtworkSidebar_artwork.graphql"
+import { ArtworkSidebarQuery } from "__generated__/ArtworkSidebarQuery.graphql"
 
 export interface ArtworkSidebarProps {
   artwork: ArtworkSidebar_artwork
 }
 
-const ArtworkSidebarContainer = styled.div``
+const ArtworkSidebarContainer = Box
 
 export class ArtworkSidebar extends Component<ArtworkSidebarProps> {
   render() {
@@ -25,6 +27,7 @@ export class ArtworkSidebar extends Component<ArtworkSidebarProps> {
     return (
       <ArtworkSidebarContainer>
         <Artists artwork={artwork} />
+        <Spacer mb={2} />
 
         {artwork.is_biddable &&
           artwork.sale_artwork &&
@@ -34,6 +37,7 @@ export class ArtworkSidebar extends Component<ArtworkSidebarProps> {
             </Serif>
           )}
         <Metadata artwork={artwork} />
+        <Spacer mb={2} />
 
         {artwork.is_in_auction ? (
           <React.Fragment>
@@ -44,7 +48,7 @@ export class ArtworkSidebar extends Component<ArtworkSidebarProps> {
           </React.Fragment>
         ) : (
           <React.Fragment>
-            <Separator />
+            <Separator mt={3} mb={1} />
             <Commercial artwork={artwork} />
             <PartnerInfo artwork={artwork} />
           </React.Fragment>
@@ -80,3 +84,32 @@ export const ArtworkSidebarFragmentContainer = createFragmentContainer(
     }
   `
 )
+
+export const ArtworkSidebarQueryRenderer = ({
+  artworkID,
+}: {
+  artworkID: string
+}) => {
+  return (
+    <ContextConsumer>
+      {({ user, mediator, relayEnvironment }) => {
+        return (
+          <QueryRenderer<ArtworkSidebarQuery>
+            environment={relayEnvironment}
+            variables={{ artworkID }}
+            query={graphql`
+              query ArtworkSidebarQuery($artworkID: String!) {
+                artwork(id: $artworkID) {
+                  ...ArtworkSidebar_artwork
+                }
+              }
+            `}
+            render={renderWithLoadProgress(
+              ArtworkSidebarFragmentContainer as any
+            )}
+          />
+        )
+      }}
+    </ContextConsumer>
+  )
+}
