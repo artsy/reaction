@@ -4566,6 +4566,11 @@ class-utils@^0.3.5:
   version "0.3.6"
   resolved "https://registry.yarnpkg.com/class-utils/-/class-utils-0.3.6.tgz#f93369ae8b9a7ce02fd41faad0ca83033190c463"
   integrity sha512-qOhPa/Fj7s6TY8H8esGu5QNpMMQxz79h+urzrNYN6mn+9BnxlDGf5QZ+XeCDsxSjPqsSR56XOZOJmpeurnLMeg==
+  dependencies:
+    arr-union "^3.1.0"
+    define-property "^0.2.5"
+    isobject "^3.0.0"
+    static-extend "^0.1.1"
 
 classnames@^2.2.3, classnames@^2.2.4, classnames@^2.2.6:
   version "2.2.6"
@@ -14225,7 +14230,7 @@ state-toggle@^1.0.0:
   resolved "https://registry.yarnpkg.com/state-toggle/-/state-toggle-1.0.1.tgz#c3cb0974f40a6a0f8e905b96789eb41afa1cde3a"
   integrity sha512-Qe8QntFrrpWTnHwvwj2FZTgv+PKIsp0B9VxLzLLbSpPXWOgRgc5LVj/aTiSfK1RqIeF9jeC1UeOH8Q8y60A7og==
 
-static-extend@^0.1.2:
+static-extend@^0.1.1, static-extend@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/static-extend/-/static-extend-0.1.2.tgz#60809c39cbff55337226fd5e0b520f341f1fb5c6"
   integrity sha1-YICcOcv/VTNyJv1eC1IPNB8ftcY=
@@ -15067,6 +15072,11 @@ tslint-config-prettier@^1.1.0:
   version "1.13.0"
   resolved "https://registry.yarnpkg.com/tslint-config-prettier/-/tslint-config-prettier-1.13.0.tgz#189e821931ad89e0364e4e292d5c44a14e90ecd6"
   integrity sha512-assE77K7K8Q9j8CVIHiU3d1uoKc8N5v7UPpkQ9IE8BEPWkvSYR37lDuYekDlAMFqR1IpD6CrS+uOJLl6pw7Wdw==
+
+tslint-plugin-relay@~0.0.1:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/tslint-plugin-relay/-/tslint-plugin-relay-0.0.2.tgz#8d4b05d8776b39d23a4abbe0b9ad4f8063437312"
+  integrity sha512-f6VSbZfplckkCMXGAlQkV9d3iB6yzr982sW/cbYm/ad0mHL2wLFH+CbcUpdhn1O/YWtAArfpZ89kyQVpllyzXw==
 
 tslint-react@^2.4.0:
   version "2.6.0"
