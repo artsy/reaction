@@ -1,5 +1,4 @@
-import { Box, color, Flex, Sans, StackableBorderBox } from "@artsy/palette"
-import { Checkmark } from "Assets/Checkmark"
+import { Box, Flex, Sans, StackableBorderBox } from "@artsy/palette"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 
