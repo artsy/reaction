@@ -124,6 +124,8 @@ const Container = styled.div.attrs<ReadMoreState>({})`
 
   > span > * {
     margin-block-start: 0;
+    margin-block-end: 0;
+    padding-bottom: 1em;
   }
 
   > span > *:last-child {

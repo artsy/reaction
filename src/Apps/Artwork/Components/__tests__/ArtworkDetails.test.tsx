@@ -26,7 +26,7 @@ describe("ArtworkDetails", () => {
   it("renders a correct component tree for artwork with all details", async () => {
     const wrapper = await getWrapper()
     const html = wrapper.html()
-    expect(wrapper.html()).toContain("About the work")
+    expect(html).toContain("About the work")
     // One for Artsy details and one for partner details
     expect(wrapper.find("ReadMore").length).toBe(2)
     expect(html).toContain("Following")

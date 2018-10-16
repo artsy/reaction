@@ -61,6 +61,7 @@ describe("Shipping", () => {
       order: { ...UntouchedOrder, id: "1234" },
       relay: { environment: {} } as RelayProp,
       router: { push: jest.fn() },
+      mediator: { trigger: jest.fn() },
     } as any
   })
 
@@ -243,7 +244,7 @@ describe("Shipping", () => {
           wrapper => (wrapper.props() as InputProps).title === "Full name"
         )
 
-      expect((input.props() as InputProps).defaultValue).toBe(
+      expect((input.props() as InputProps).value).toBe(
         testProps.order.requestedFulfillment.name
       )
     })

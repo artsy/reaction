@@ -5,7 +5,9 @@ declare const _TransactionSummary_order$ref: unique symbol;
 export type TransactionSummary_order$ref = typeof _TransactionSummary_order$ref;
 export type TransactionSummary_order = {
     readonly shippingTotal: string | null;
+    readonly shippingTotalCents: number | null;
     readonly taxTotal: string | null;
+    readonly taxTotalCents: number | null;
     readonly itemsTotal: string | null;
     readonly buyerTotal: string | null;
     readonly seller: ({
@@ -73,9 +75,23 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
+      "name": "shippingTotalCents",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
       "name": "taxTotal",
       "args": v0,
       "storageKey": "taxTotal(precision:2)"
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "taxTotalCents",
+      "args": null,
+      "storageKey": null
     },
     {
       "kind": "ScalarField",
@@ -230,5 +246,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '660e2fa4c1c289134155a071361ed09c';
+(node as any).hash = '4f991b676af8fbbbe34e0c86f83e398d';
 export default node;
