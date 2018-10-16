@@ -18,9 +18,10 @@ export class ArtworkDetailsChecklist extends React.Component<
     }
     return (
       <Flex flexDirection="row">
+        {/* TODO: need to resolve based on design after Bnow release
         <Box display="inline" mr={1}>
           <Checkmark stroke={color("black100")} />
-        </Box>
+        </Box> */}
         <Box>
           <Sans size="2" weight="medium" display="inline" mr={1}>
             {label}
