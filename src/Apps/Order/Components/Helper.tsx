@@ -1,6 +1,8 @@
 import { Sans, Spacer } from "@artsy/palette"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import { ContextConsumer } from "Artsy/Router"
-import React from "react"
+import React, { Component } from "react"
 import styled from "styled-components"
 
 const Link = styled.a`
@@ -11,28 +13,47 @@ interface HelperProps {
   artworkId: string | null
 }
 
-export const Helper: React.SFC<HelperProps> = ({ artworkId }) => (
-  <ContextConsumer>
-    {({ mediator }) => (
-      <>
-        <Sans size="2" color="black60">
-          Have a question?{" "}
-          <Link onClick={() => mediator.trigger("openOrdersBuyerFAQModal")}>
-            Read our FAQ
-          </Link>{" "}
-          or{" "}
-          <Link
-            onClick={() =>
-              mediator.trigger("openOrdersContactArtsyModal", {
-                artworkId,
-              })
-            }
-          >
-            ask a specialist
-          </Link>.
-        </Sans>
-        <Spacer mb={2} />
-      </>
-    )}
-  </ContextConsumer>
-)
+@track()
+export class Helper extends Component<HelperProps> {
+  @track(() => ({
+    action_type: Schema.ActionType.Click,
+    subject: Schema.Subject.BNMOReadFAQ,
+    type: "button",
+    flow: "buy now",
+  }))
+  onClickReadFAQ() {
+    window.open("https://www.artsy.net/buy-now-feature-faq", "_blank")
+  }
+
+  @track(() => ({
+    action_type: Schema.ActionType.Click,
+    subject: Schema.Subject.BNMOAskSpecialist,
+    type: "button",
+    flow: "buy now",
+  }))
+  onClickAskSpecialist(mediator) {
+    mediator.trigger("openOrdersContactArtsyModal", {
+      artworkId: this.props.artworkId,
+    })
+  }
+
+  render() {
+    return (
+      <ContextConsumer>
+        {({ mediator }) => (
+          <>
+            <Sans size="2" color="black60">
+              Have a question?{" "}
+              <Link onClick={this.onClickReadFAQ.bind(this)}>Read our FAQ</Link>{" "}
+              or{" "}
+              <Link onClick={this.onClickAskSpecialist.bind(this, mediator)}>
+                ask a specialist
+              </Link>.
+            </Sans>
+            <Spacer mb={2} />
+          </>
+        )}
+      </ContextConsumer>
+    )
+  }
+}

@@ -9,6 +9,7 @@ import {
   AddressChangeHandler,
   AddressErrors,
   AddressForm,
+  AddressTouched,
   emptyAddress,
 } from "../../Components/AddressForm"
 
@@ -16,6 +17,7 @@ import { CreditCardInput } from "Apps/Order/Components/CreditCardInput"
 import { Helper } from "Apps/Order/Components/Helper"
 import { TransactionSummaryFragmentContainer as TransactionSummary } from "Apps/Order/Components/TransactionSummary"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
+import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
 import React, { Component } from "react"
@@ -38,6 +40,7 @@ export const ContinueButton = props => (
 )
 
 export interface PaymentProps extends ReactStripeElements.InjectedStripeProps {
+  mediator: Mediator
   order: Payment_order
   relay?: RelayRefetchProp
   router: Router
@@ -47,6 +50,7 @@ interface PaymentState {
   hideBillingAddress: boolean
   address: Address
   addressErrors: AddressErrors
+  addressTouched: AddressTouched
   stripeError: stripe.Error
   isCommittingMutation: boolean
   isErrorModalOpen: boolean
@@ -62,27 +66,30 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
     errorModalMessage: null,
     address: this.startingAddress(),
     addressErrors: {},
+    addressTouched: {},
+  }
+
+  componentDidMount() {
+    this.props.mediator.trigger("order:payment")
   }
 
   startingAddress(): Address {
-    const { creditCard } = this.props.order
+    return {
+      ...emptyAddress,
+      country: "US",
+    }
+  }
 
-    if (creditCard) {
-      return {
-        ...emptyAddress,
-        name: creditCard.name,
-        country: creditCard.country,
-        postalCode: creditCard.postal_code,
-        addressLine1: creditCard.street1,
-        addressLine2: creditCard.street2,
-        city: creditCard.city,
-        region: creditCard.state,
-      }
-    } else {
-      return {
-        ...emptyAddress,
-        country: "US",
-      }
+  get touchedAddress() {
+    return {
+      name: true,
+      country: true,
+      postalCode: true,
+      addressLine1: true,
+      addressLine2: true,
+      city: true,
+      region: true,
+      phoneNumber: true,
     }
   }
 
@@ -91,7 +98,11 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
       if (this.needsAddress()) {
         const errors = this.validateAddress(this.state.address)
         if (Object.keys(errors).filter(key => errors[key]).length > 0) {
-          this.setState({ isCommittingMutation: false, addressErrors: errors })
+          this.setState({
+            isCommittingMutation: false,
+            addressErrors: errors,
+            addressTouched: this.touchedAddress,
+          })
           return
         }
       }
@@ -107,7 +118,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
               stripeError: error,
             })
           } else {
-            this.createCreditCard({ token: token.id })
+            this.createCreditCard({ token: token.id, oneTimeUse: true })
           }
         })
     })
@@ -127,6 +138,15 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
   }
 
   handleChangeHideBillingAddress = (hideBillingAddress: boolean) => {
+    if (!hideBillingAddress) {
+      this.setState({
+        address: {
+          ...emptyAddress,
+          country: "US",
+        },
+      })
+    }
+
     this.setState({ hideBillingAddress })
   }
 
@@ -136,6 +156,10 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
       addressErrors: {
         ...this.state.addressErrors,
         [key]: this.validateAddress(address)[key],
+      },
+      addressTouched: {
+        ...this.state.addressTouched,
+        [key]: true,
       },
     })
   }
@@ -151,6 +175,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
       isCommittingMutation,
       address,
       addressErrors,
+      addressTouched,
     } = this.state
 
     return (
@@ -197,13 +222,14 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
                           selected={this.state.hideBillingAddress}
                           onSelect={this.handleChangeHideBillingAddress}
                         >
-                          Use shipping address.
+                          Billing and shipping addresses are the same
                         </Checkbox>
                       )}
                       <Collapse open={this.needsAddress()}>
                         <AddressForm
-                          defaultValue={address}
+                          value={address}
                           errors={addressErrors}
+                          touched={addressTouched}
                           onChange={this.onAddressChange}
                           billing
                         />
@@ -243,6 +269,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
         <ErrorModal
           onClose={this.onCloseModal}
           show={this.state.isErrorModalOpen}
+          contactEmail="orders@artsy.net"
           detailText={this.state.errorModalMessage}
         />
       </>
@@ -273,7 +300,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
     }
   }
 
-  private createCreditCard({ token }) {
+  private createCreditCard({ token, oneTimeUse }) {
     commitMutation<PaymentRouteCreateCreditCardMutation>(
       this.props.relay.environment,
       {
@@ -318,7 +345,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
           }
         `,
         variables: {
-          input: { token },
+          input: { token, oneTimeUse },
         },
       }
     )
@@ -401,8 +428,16 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
   }
 }
 
+const PaymentRouteWrapper = props => (
+  <ContextConsumer>
+    {({ mediator }) => {
+      return <PaymentRoute {...props} mediator={mediator} />
+    }}
+  </ContextConsumer>
+)
+
 export const PaymentFragmentContainer = createFragmentContainer(
-  injectStripe(PaymentRoute),
+  injectStripe(PaymentRouteWrapper),
   graphql`
     fragment Payment_order on Order {
       id

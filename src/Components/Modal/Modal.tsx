@@ -3,7 +3,7 @@ import Icon from "Components/Icon"
 import React from "react"
 import styled from "styled-components"
 
-import { ModalWrapper } from "Components/Modal/ModalWrapper"
+import { ModalWidth, ModalWrapper } from "Components/Modal/ModalWrapper"
 import { media } from "../Helpers"
 import { CtaProps, ModalCta } from "./ModalCta"
 import { ModalHeader } from "./ModalHeader"
@@ -63,7 +63,7 @@ export class Modal extends React.Component<ModalProps> {
         cta={cta}
         onClose={onClose}
         show={show}
-        isWide={isWide}
+        width={isWide ? ModalWidth.Wide : ModalWidth.Normal}
         image={image}
         fullscreenResponsiveModal
       >

@@ -11,7 +11,7 @@ const ResponsiveComponents = createResponsiveComponents<MediaQuery>()
 
 export const Responsive = ResponsiveComponents.Consumer
 
-// TODO Once we consider the deprecation period of the previous ‘beakpoint’
+// TODO Once we consider the deprecation period of the previous ‘breakpoint’
 //      centric API to be over, we can replace the wrapper with just this line.
 //
 // export const ResponsiveProvider = Responsive.Provider
