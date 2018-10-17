@@ -14,6 +14,11 @@ const Router = props => (
     routes={orderRoutes}
     mockResolvers={mockResolver()}
     historyOptions={{ useBeforeUnload: true }}
+    context={{
+      mediator: {
+        trigger: x => x,
+      },
+    }}
     {...props}
   />
 )
