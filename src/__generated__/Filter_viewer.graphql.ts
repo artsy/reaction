@@ -1,11 +1,11 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-import { CollectArtworkFilterRefetch_viewer$ref } from "./CollectArtworkFilterRefetch_viewer.graphql";
+import { CollectRefetch_viewer$ref } from "./CollectRefetch_viewer.graphql";
 declare const _Filter_viewer$ref: unique symbol;
 export type Filter_viewer$ref = typeof _Filter_viewer$ref;
 export type Filter_viewer = {
-    readonly " $fragmentRefs": CollectArtworkFilterRefetch_viewer$ref;
+    readonly " $fragmentRefs": CollectRefetch_viewer$ref;
     readonly " $refType": Filter_viewer$ref;
 };
 
@@ -95,7 +95,7 @@ const node: ConcreteFragment = {
   "selections": [
     {
       "kind": "FragmentSpread",
-      "name": "CollectArtworkFilterRefetch_viewer",
+      "name": "CollectRefetch_viewer",
       "args": [
         {
           "kind": "Variable",
@@ -167,5 +167,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'eb15da5807c5bedf40299a29fba41a0b';
+(node as any).hash = 'f65cd94c77eb70331da906f87848bff2';
 export default node;

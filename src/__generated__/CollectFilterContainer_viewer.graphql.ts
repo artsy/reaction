@@ -1,19 +1,37 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-import { CollectFilterContainer_viewer$ref } from "./CollectFilterContainer_viewer.graphql";
-declare const _CollectApp_viewer$ref: unique symbol;
-export type CollectApp_viewer$ref = typeof _CollectApp_viewer$ref;
-export type CollectApp_viewer = {
-    readonly " $fragmentRefs": CollectFilterContainer_viewer$ref;
-    readonly " $refType": CollectApp_viewer$ref;
+import { CollectRefetch_viewer$ref } from "./CollectRefetch_viewer.graphql";
+export type ArtworkAggregation = "COLOR" | "DIMENSION_RANGE" | "FOLLOWED_ARTISTS" | "GALLERY" | "INSTITUTION" | "MAJOR_PERIOD" | "MEDIUM" | "MERCHANDISABLE_ARTISTS" | "PARTNER_CITY" | "PERIOD" | "PRICE_RANGE" | "TOTAL" | "%future added value";
+declare const _CollectFilterContainer_viewer$ref: unique symbol;
+export type CollectFilterContainer_viewer$ref = typeof _CollectFilterContainer_viewer$ref;
+export type CollectFilterContainer_viewer = {
+    readonly filter_artworks: ({
+        readonly aggregations: ReadonlyArray<({
+            readonly slice: ArtworkAggregation | null;
+            readonly counts: ReadonlyArray<({
+                readonly name: string | null;
+                readonly id: string;
+            }) | null> | null;
+        }) | null> | null;
+    }) | null;
+    readonly " $fragmentRefs": CollectRefetch_viewer$ref;
+    readonly " $refType": CollectFilterContainer_viewer$ref;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ConcreteFragment = (function(){
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
+};
+return {
   "kind": "Fragment",
-  "name": "CollectApp_viewer",
+  "name": "CollectFilterContainer_viewer",
   "type": "Viewer",
   "metadata": null,
   "argumentDefinitions": [
@@ -85,18 +103,81 @@ const node: ConcreteFragment = {
       "name": "artist_id",
       "type": "String",
       "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "attribution_class",
-      "type": "String",
-      "defaultValue": null
     }
   ],
   "selections": [
     {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "filter_artworks",
+      "storageKey": null,
+      "args": [
+        {
+          "kind": "Variable",
+          "name": "aggregations",
+          "variableName": "aggregations",
+          "type": "[ArtworkAggregation]"
+        },
+        {
+          "kind": "Literal",
+          "name": "size",
+          "value": 0,
+          "type": "Int"
+        }
+      ],
+      "concreteType": "FilterArtworks",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "aggregations",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "ArtworksAggregationResults",
+          "plural": true,
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "slice",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "counts",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "AggregationCount",
+              "plural": true,
+              "selections": [
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "name",
+                  "args": null,
+                  "storageKey": null
+                },
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "id",
+                  "args": null,
+                  "storageKey": null
+                },
+                v0
+              ]
+            }
+          ]
+        },
+        v0
+      ]
+    },
+    {
       "kind": "FragmentSpread",
-      "name": "CollectFilterContainer_viewer",
+      "name": "CollectRefetch_viewer",
       "args": [
         {
           "kind": "Variable",
@@ -114,12 +195,6 @@ const node: ConcreteFragment = {
           "kind": "Variable",
           "name": "at_auction",
           "variableName": "at_auction",
-          "type": null
-        },
-        {
-          "kind": "Variable",
-          "name": "attribution_class",
-          "variableName": "attribution_class",
           "type": null
         },
         {
@@ -168,5 +243,6 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'dbb0e07f08a0aaf88a6c210ca4fdf614';
+})();
+(node as any).hash = 'b9455a26a896e8dddff9cd86b8b5b98c';
 export default node;

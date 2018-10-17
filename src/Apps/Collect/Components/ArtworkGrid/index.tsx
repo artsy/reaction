@@ -318,7 +318,7 @@ export const ArtworkGridFragmentContainer = createFragmentContainer(
         }
       }
 
-      ...CollectArtworkFilterRefetch_viewer
+      ...CollectRefetch_viewer
         @arguments(
           medium: $medium
           major_periods: $major_periods

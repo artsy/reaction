@@ -13,6 +13,7 @@ export interface State {
   inquireable_only?: boolean
   price_range?: string
   attribution_class?: string[]
+  artist_id?: string
 
   tracking?: any
 }
@@ -29,6 +30,7 @@ export const initialState = {
   inquireable_only: null,
   price_range: "*-*",
   attribution_class: [],
+  artist_id: null,
 }
 
 export class FilterState extends Container<State> {

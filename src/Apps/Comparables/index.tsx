@@ -72,6 +72,7 @@ export class ComparablesContainer extends Component<Props> {
                             attribution_class: attributionClass,
                             price_range: priceRange,
                             medium,
+                            artist_id: artist.id,
                           }),
                         ]}
                       >

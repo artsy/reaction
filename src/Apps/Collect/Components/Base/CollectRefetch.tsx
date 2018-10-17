@@ -1,18 +1,17 @@
-import { CollectArtworkFilterRefetch_viewer } from "__generated__/CollectArtworkFilterRefetch_viewer.graphql"
+import { CollectRefetch_viewer } from "__generated__/CollectRefetch_viewer.graphql"
+import { FilterState } from "Apps/Collect/FilterState"
 import { isEqual } from "lodash"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { Responsive } from "Utils/Responsive"
 import { CollectArtworkGridRefreshContainer as ArtworkFilter } from "./CollectArtworkGrid"
-interface CollectArtworkFilterRefetchProps {
-  filters: any
-  viewer: CollectArtworkFilterRefetch_viewer
+interface CollectRefetchProps {
+  filters: FilterState
+  viewer: CollectRefetch_viewer
   relay: RelayRefetchProp
 }
 
-export class CollectArtworkFilterRefetch extends Component<
-  CollectArtworkFilterRefetchProps
-> {
+export class CollectRefetch extends Component<CollectRefetchProps> {
   // FIXME: Figure out a pattern so that setState can replace this completely
   // Used to prevent multiple in-flight requests
   private isLoading = false
@@ -63,7 +62,6 @@ export class CollectArtworkFilterRefetch extends Component<
       <Responsive>
         {({ xs, sm, md }) => (
           <ArtworkFilter
-            // TODO: Figure out why this isn't typed properly.
             filtered_artworks={filtered_artworks as any}
             isLoading={this.isLoading}
             columnCount={xs || sm || md ? 2 : 3}
@@ -75,11 +73,11 @@ export class CollectArtworkFilterRefetch extends Component<
   }
 }
 
-export const CollectArtworkGridRefetchContainer = createRefetchContainer(
-  CollectArtworkFilterRefetch,
+export const CollectRefetchContainer = createRefetchContainer(
+  CollectRefetch,
   {
     viewer: graphql`
-      fragment CollectArtworkFilterRefetch_viewer on Viewer
+      fragment CollectRefetch_viewer on Viewer
         @argumentDefinitions(
           medium: { type: "String", defaultValue: "*" }
           major_periods: { type: "[String]" }
@@ -114,7 +112,7 @@ export const CollectArtworkGridRefetchContainer = createRefetchContainer(
     `,
   },
   graphql`
-    query CollectArtworkFilterRefetchQuery(
+    query CollectRefetchQuery(
       $medium: String
       $major_periods: [String]
       $partner_id: ID
@@ -128,7 +126,7 @@ export const CollectArtworkGridRefetchContainer = createRefetchContainer(
       $attribution_class: [String]
     ) {
       viewer {
-        ...CollectArtworkFilterRefetch_viewer
+        ...CollectRefetch_viewer
           @arguments(
             medium: $medium
             major_periods: $major_periods

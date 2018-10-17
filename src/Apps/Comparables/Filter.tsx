@@ -1,7 +1,8 @@
 import { Box, Flex, Spacer } from "@artsy/palette"
 import { Filter_viewer } from "__generated__/Filter_viewer.graphql"
-import { CollectArtworkGridRefetchContainer as ArtworkFilter } from "Apps/Collect/Components/ArtworkGrid/CollectArtworkFilterRefetch"
-import { PriceRange } from "Apps/Collect/Components/Filters/PriceRange"
+import { CollectFilterContainer as ArtworkFilter } from "Apps/Collect/Components/Base/CollectFilterContainer"
+import { CollectRefetchContainer } from "Apps/Collect/Components/Base/CollectRefetch"
+import { PriceRangeFilter as PriceRange } from "Apps/Collect/Components/Filters/PriceRangeFilter"
 import { FilterState } from "Apps/Collect/FilterState"
 import { AttributionClassFilter } from "Apps/Comparables/Filter/AttributionClassFilter"
 import { MediumFilter } from "Apps/Comparables/Filter/MediumFilter"
@@ -20,24 +21,9 @@ interface Props extends ContextProps {
 
 class Comparables extends Component<Props> {
   renderPriceRange() {
-    const { filters, mediator } = this.props
-    const [initialMin, initialMax] = filters.priceRangeToTuple()
+    const { filters } = this.props
 
-    return (
-      <PriceRange
-        allowCross={false}
-        min={FilterState.MIN_PRICE}
-        max={FilterState.MAX_PRICE}
-        step={50}
-        defaultValue={[initialMin, initialMax]}
-        onAfterChange={([min, max]) => {
-          const minStr = min === FilterState.MIN_PRICE ? "*" : min
-          const maxStr = max === FilterState.MAX_PRICE ? "*" : max
-
-          filters.setFilter("price_range", `${minStr}-${maxStr}`, mediator)
-        }}
-      />
-    )
+    return <PriceRange filters={filters} />
   }
   render() {
     const { filters } = this.props
@@ -56,7 +42,10 @@ class Comparables extends Component<Props> {
             </Toggle>
           </Sidebar>
           <Box width="75%" ml={4}>
-            <ArtworkFilter viewer={this.props.viewer} filters={filters.state} />
+            <CollectRefetchContainer
+              filters={filters}
+              viewer={this.props.viewer}
+            />
           </Box>
         </Flex>
       </div>
@@ -72,13 +61,7 @@ export const ComparablesFragmentContainer = createFragmentContainer(
           return (
             <Subscribe to={[FilterState]}>
               {(filters: FilterState) => {
-                return (
-                  <Comparables
-                    {...props}
-                    mediator={mediator}
-                    filters={filters}
-                  />
-                )
+                return <Comparables {...props} filters={filters} />
               }}
             </Subscribe>
           )
@@ -102,7 +85,7 @@ export const ComparablesFragmentContainer = createFragmentContainer(
         artist_id: { type: "String" }
         attribution_class: { type: "[String]" }
       ) {
-      ...CollectArtworkFilterRefetch_viewer
+      ...CollectRefetch_viewer
         @arguments(
           medium: $medium
           major_periods: $major_periods

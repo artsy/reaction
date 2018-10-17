@@ -1,7 +1,7 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-import { CollectArtworkFilterRefetch_viewer$ref } from "./CollectArtworkFilterRefetch_viewer.graphql";
+import { CollectRefetch_viewer$ref } from "./CollectRefetch_viewer.graphql";
 export type ArtworkAggregation = "COLOR" | "DIMENSION_RANGE" | "FOLLOWED_ARTISTS" | "GALLERY" | "INSTITUTION" | "MAJOR_PERIOD" | "MEDIUM" | "MERCHANDISABLE_ARTISTS" | "PARTNER_CITY" | "PERIOD" | "PRICE_RANGE" | "TOTAL" | "%future added value";
 declare const _ArtworkGrid_viewer$ref: unique symbol;
 export type ArtworkGrid_viewer$ref = typeof _ArtworkGrid_viewer$ref;
@@ -15,7 +15,7 @@ export type ArtworkGrid_viewer = {
             }) | null> | null;
         }) | null> | null;
     }) | null;
-    readonly " $fragmentRefs": CollectArtworkFilterRefetch_viewer$ref;
+    readonly " $fragmentRefs": CollectRefetch_viewer$ref;
     readonly " $refType": ArtworkGrid_viewer$ref;
 };
 
@@ -183,7 +183,7 @@ return {
     },
     {
       "kind": "FragmentSpread",
-      "name": "CollectArtworkFilterRefetch_viewer",
+      "name": "CollectRefetch_viewer",
       "args": [
         {
           "kind": "Variable",
@@ -256,5 +256,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '8f8be26538202e7952ab505d9073270f';
+(node as any).hash = '4af25eff35f0b539ad9366fe861eec44';
 export default node;
