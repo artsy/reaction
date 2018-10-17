@@ -249,7 +249,6 @@ class Filter extends Component<Props> {
       <Flex
         justifyContent={xs ? "space-between" : "flex-end"}
         alignItems="center"
-        mr={2}
       >
         <SmallSelect
           mt="-8px"
