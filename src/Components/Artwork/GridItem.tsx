@@ -22,6 +22,7 @@ const Placeholder = styled.div`
   background-color: ${colors.grayMedium};
   position: relative;
   width: 100%;
+  overflow: hidden;
 `
 
 interface Props extends React.HTMLProps<ArtworkGridItemContainer> {
