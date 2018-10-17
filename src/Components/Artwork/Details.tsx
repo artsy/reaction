@@ -116,6 +116,7 @@ export class Details extends React.Component<Props, null> {
   saleInfoLine() {
     const { artwork } = this.props
     const { sale } = artwork
+    const isPreviewAuction = sale && sale.auction_state === "preview"
     const inClosedAuction = sale && sale.is_auction && sale.is_closed
 
     return (
@@ -129,7 +130,7 @@ export class Details extends React.Component<Props, null> {
           {inClosedAuction ? "Bidding closed" : this.saleMessageOrBidInfo()}{" "}
         </Sans>
         <Sans style={{ display: "inline" }} size={"2"} color={color("black60")}>
-          {!inClosedAuction && this.auctionInfo()}
+          {!inClosedAuction && !isPreviewAuction && this.auctionInfo()}
         </Sans>
         <Spacer mb={0.3} />
       </>
@@ -181,13 +182,13 @@ export class Details extends React.Component<Props, null> {
           const enableBuyNowFlow = sd.ENABLE_NEW_BUY_NOW_FLOW || hasLabFeature
 
           return (
-            <>
+            <div>
               {enableBuyNowFlow && this.saleInfoLine()}
               {this.artistLine()}
               {this.titleLine()}
               {this.partnerLine()}
               {!enableBuyNowFlow && this.props.showSaleLine && this.saleLine()}
-            </>
+            </div>
           )
         }}
       </ContextConsumer>
@@ -195,7 +196,7 @@ export class Details extends React.Component<Props, null> {
   }
 }
 
-export default createFragmentContainer<Props>(
+export const DetailsFragmentContainer = createFragmentContainer<Props>(
   Details,
   graphql`
     fragment Details_artwork on Artwork {
@@ -220,6 +221,7 @@ export default createFragmentContainer<Props>(
         is_open
         is_closed
         display_timely_at
+        auction_state
       }
       sale_artwork {
         highest_bid {
