@@ -21,6 +21,8 @@ export interface ArtworkDetailsProps {
 }
 
 const ArtworkDetailsContainer = Box
+const ExhibitionHistory = Box
+const Literature = Box
 
 @track({
   context_module: Schema.ContextModule.ArtworkTabs,
@@ -59,12 +61,14 @@ export class ArtworkDetails extends Component<ArtworkDetailsProps> {
               name="Exhibition history"
               data={{ trackingLabel: "exhibition_history" }}
             >
-              {artwork.exhibition_history}
+              <ExhibitionHistory>
+                {artwork.exhibition_history}
+              </ExhibitionHistory>
             </Tab>
           )}
           {artwork.literature && (
             <Tab name="Bibliography" data={{ trackingLabel: "bibliography" }}>
-              {artwork.literature}
+              <Literature>{artwork.literature}</Literature>
             </Tab>
           )}
         </Tabs>

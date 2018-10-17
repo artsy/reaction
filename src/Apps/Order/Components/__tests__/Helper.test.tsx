@@ -27,18 +27,17 @@ describe("Order summary", () => {
   // })
 
   it("handles FAQ modal", () => {
-    const summary = mount(
-      <ContextProvider mediator={mediatorMock}>
-        <Helper artworkId="whatever" />
-      </ContextProvider>
-    )
+    const summary = mount(<Helper artworkId="whatever" />)
 
     summary
       .find("a")
       .at(0)
       .simulate("click")
 
-    expect(mediatorMock.trigger).toHaveBeenCalledWith("openOrdersBuyerFAQModal")
+    expect(window.open).toHaveBeenCalledWith(
+      "https://www.artsy.net/buy-now-feature-faq",
+      "_blank"
+    )
   })
 
   it("handles contact specialist modal", () => {

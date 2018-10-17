@@ -6,6 +6,7 @@ import React from "react"
 import { ComponentRef, createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import styled from "styled-components"
+import { get } from "Utils/get"
 import TextLink from "../TextLink"
 
 const TruncatedLine = styled.div`
@@ -115,6 +116,7 @@ export class Details extends React.Component<Props, null> {
   saleInfoLine() {
     const { artwork } = this.props
     const { sale } = artwork
+    const isPreviewAuction = sale && sale.auction_state === "preview"
     const inClosedAuction = sale && sale.is_auction && sale.is_closed
 
     return (
@@ -128,7 +130,7 @@ export class Details extends React.Component<Props, null> {
           {inClosedAuction ? "Bidding closed" : this.saleMessageOrBidInfo()}{" "}
         </Sans>
         <Sans style={{ display: "inline" }} size={"2"} color={color("black60")}>
-          {!inClosedAuction && this.auctionInfo()}
+          {!inClosedAuction && !isPreviewAuction && this.auctionInfo()}
         </Sans>
         <Spacer mb={0.3} />
       </>
@@ -141,8 +143,15 @@ export class Details extends React.Component<Props, null> {
     const inRunningAuction = sale && sale.is_auction && !sale.is_closed
 
     if (inRunningAuction) {
-      const sa = artwork.sale_artwork
-      return sa.highest_bid.display || sa.opening_bid.display
+      const highestBidDisplay = get(
+        artwork,
+        p => p.sale_artwork.highest_bid.display
+      )
+      const openingBidDisplay = get(
+        artwork,
+        p => p.sale_artwork.opening_bid.display
+      )
+      return highestBidDisplay || openingBidDisplay || ""
     }
 
     // TODO: Extract this sentence-cased version and apply everywhere.
@@ -173,13 +182,13 @@ export class Details extends React.Component<Props, null> {
           const enableBuyNowFlow = sd.ENABLE_NEW_BUY_NOW_FLOW || hasLabFeature
 
           return (
-            <>
+            <div>
               {enableBuyNowFlow && this.saleInfoLine()}
               {this.artistLine()}
               {this.titleLine()}
               {this.partnerLine()}
               {!enableBuyNowFlow && this.props.showSaleLine && this.saleLine()}
-            </>
+            </div>
           )
         }}
       </ContextConsumer>
@@ -187,7 +196,7 @@ export class Details extends React.Component<Props, null> {
   }
 }
 
-export default createFragmentContainer<Props>(
+export const DetailsFragmentContainer = createFragmentContainer<Props>(
   Details,
   graphql`
     fragment Details_artwork on Artwork {
@@ -212,6 +221,7 @@ export default createFragmentContainer<Props>(
         is_open
         is_closed
         display_timely_at
+        auction_state
       }
       sale_artwork {
         highest_bid {

@@ -15,8 +15,7 @@ import {
   Spacer,
 } from "@artsy/palette"
 
-// prettier-ignore
-const COLLECT_URL = `${sd.APP_URL}/collect?split_test[new_collect_page]=new&acquireable=true}`
+const COLLECT_URL = `${sd.APP_URL}/collect?acquireable=true`
 
 const VIDEO_URL = `${sd.FORCE_CLOUDFRONT_URL}/videos/9172018-bn-banner-xl.mp4`
 
