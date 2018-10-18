@@ -42,9 +42,9 @@ export const CollectionAppFragmentContainer = createFragmentContainer(
       slug
       title
       description
-      headerImage {
-        large
-      }
+      headerImage
+      category
+      credit
       query {
         artist_ids
         artist_id

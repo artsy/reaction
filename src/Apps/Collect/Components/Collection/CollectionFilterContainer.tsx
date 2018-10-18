@@ -4,11 +4,12 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { Responsive } from "Utils/Responsive"
 import { CollectionRefetchContainer } from "./CollectionRefetch"
 
+import { CollectionFilterContainer_collection } from "__generated__/CollectionFilterContainer_collection.graphql"
 import { FilterState } from "Apps/Collect/FilterState"
 import { FilterContainer } from "../Filters"
 
 export interface CollectionFilterContainerProps {
-  collection?: any
+  collection?: CollectionFilterContainer_collection
 }
 export class CollectionFilterContainer extends Component<
   CollectionFilterContainerProps
