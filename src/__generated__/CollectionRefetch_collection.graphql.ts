@@ -2,21 +2,22 @@
 
 import { ConcreteFragment } from "relay-runtime";
 import { CollectArtworkGrid_filtered_artworks$ref } from "./CollectArtworkGrid_filtered_artworks.graphql";
-declare const _CollectArtworkFilterRefetch_viewer$ref: unique symbol;
-export type CollectArtworkFilterRefetch_viewer$ref = typeof _CollectArtworkFilterRefetch_viewer$ref;
-export type CollectArtworkFilterRefetch_viewer = {
+declare const _CollectionRefetch_collection$ref: unique symbol;
+export type CollectionRefetch_collection$ref = typeof _CollectionRefetch_collection$ref;
+export type CollectionRefetch_collection = {
+    readonly slug: string;
     readonly filtered_artworks: ({
         readonly " $fragmentRefs": CollectArtworkGrid_filtered_artworks$ref;
     }) | null;
-    readonly " $refType": CollectArtworkFilterRefetch_viewer$ref;
+    readonly " $refType": CollectionRefetch_collection$ref;
 };
 
 
 
 const node: ConcreteFragment = {
   "kind": "Fragment",
-  "name": "CollectArtworkFilterRefetch_viewer",
-  "type": "Viewer",
+  "name": "CollectionRefetch_collection",
+  "type": "MarketingCollection",
   "metadata": null,
   "argumentDefinitions": [
     {
@@ -76,9 +77,16 @@ const node: ConcreteFragment = {
   ],
   "selections": [
     {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "slug",
+      "args": null,
+      "storageKey": null
+    },
+    {
       "kind": "LinkedField",
       "alias": "filtered_artworks",
-      "name": "filter_artworks",
+      "name": "artworks",
       "storageKey": null,
       "args": [
         {
@@ -166,8 +174,15 @@ const node: ConcreteFragment = {
           "storageKey": null
         }
       ]
+    },
+    {
+      "kind": "ScalarField",
+      "alias": "__id",
+      "name": "id",
+      "args": null,
+      "storageKey": null
     }
   ]
 };
-(node as any).hash = 'eade9ee97a257512fff92948a7600e3f';
+(node as any).hash = '6847f5f161749d78be95da9759eb674e';
 export default node;

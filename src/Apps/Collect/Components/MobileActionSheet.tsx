@@ -3,7 +3,7 @@ import React, { SFC } from "react"
 import styled from "styled-components"
 import { MobileTopBar } from "Styleguide/Components"
 import { Subscribe } from "unstated"
-import { FilterState } from "../../FilterState"
+import { FilterState } from "../FilterState"
 
 interface MobileActionSheet {
   children: JSX.Element

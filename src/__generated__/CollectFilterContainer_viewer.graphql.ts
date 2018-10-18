@@ -1,11 +1,11 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-import { CollectArtworkFilterRefetch_viewer$ref } from "./CollectArtworkFilterRefetch_viewer.graphql";
+import { CollectRefetch_viewer$ref } from "./CollectRefetch_viewer.graphql";
 export type ArtworkAggregation = "COLOR" | "DIMENSION_RANGE" | "FOLLOWED_ARTISTS" | "GALLERY" | "INSTITUTION" | "MAJOR_PERIOD" | "MEDIUM" | "MERCHANDISABLE_ARTISTS" | "PARTNER_CITY" | "PERIOD" | "PRICE_RANGE" | "TOTAL" | "%future added value";
-declare const _ArtworkGrid_viewer$ref: unique symbol;
-export type ArtworkGrid_viewer$ref = typeof _ArtworkGrid_viewer$ref;
-export type ArtworkGrid_viewer = {
+declare const _CollectFilterContainer_viewer$ref: unique symbol;
+export type CollectFilterContainer_viewer$ref = typeof _CollectFilterContainer_viewer$ref;
+export type CollectFilterContainer_viewer = {
     readonly filter_artworks: ({
         readonly aggregations: ReadonlyArray<({
             readonly slice: ArtworkAggregation | null;
@@ -15,8 +15,8 @@ export type ArtworkGrid_viewer = {
             }) | null> | null;
         }) | null> | null;
     }) | null;
-    readonly " $fragmentRefs": CollectArtworkFilterRefetch_viewer$ref;
-    readonly " $refType": ArtworkGrid_viewer$ref;
+    readonly " $fragmentRefs": CollectRefetch_viewer$ref;
+    readonly " $refType": CollectFilterContainer_viewer$ref;
 };
 
 
@@ -31,7 +31,7 @@ var v0 = {
 };
 return {
   "kind": "Fragment",
-  "name": "ArtworkGrid_viewer",
+  "name": "CollectFilterContainer_viewer",
   "type": "Viewer",
   "metadata": null,
   "argumentDefinitions": [
@@ -171,7 +171,7 @@ return {
     },
     {
       "kind": "FragmentSpread",
-      "name": "CollectArtworkFilterRefetch_viewer",
+      "name": "CollectRefetch_viewer",
       "args": [
         {
           "kind": "Variable",
@@ -232,5 +232,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '99b1653db12202b0369643ca3ca5313a';
+(node as any).hash = 'c23b1491d1b0c681364f4b40984ebdb1';
 export default node;
