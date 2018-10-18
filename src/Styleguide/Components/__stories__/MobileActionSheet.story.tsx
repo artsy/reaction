@@ -1,4 +1,11 @@
-import { Box, Button, Sans, StackableBorderBox } from "@artsy/palette"
+import {
+  Box,
+  Button,
+  Flex,
+  Sans,
+  Spacer,
+  StackableBorderBox,
+} from "@artsy/palette"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { MobileTopBar } from "Styleguide/Components"
@@ -6,7 +13,7 @@ import { Section } from "Styleguide/Utils/Section"
 
 class ActionSheet extends React.Component {
   state = {
-    isOpen: false,
+    isOpen: true,
   }
 
   render() {
@@ -29,7 +36,29 @@ class ActionSheet extends React.Component {
                 Apply
               </Button>
             </MobileTopBar>
-            <StackableBorderBox>Content</StackableBorderBox>
+            <StackableBorderBox mt={4}>
+              <Flex flexDirection="column">
+                hello
+                <Spacer mb={100} />
+                long
+                <Spacer mb={100} />
+                content
+                <Spacer mb={100} />
+                content hello
+                <Spacer mb={100} />
+                long
+                <Spacer mb={100} />
+                content
+                <Spacer mb={100} />
+                content hello
+                <Spacer mb={100} />
+                long
+                <Spacer mb={100} />
+                content
+                <Spacer mb={100} />
+                content
+              </Flex>
+            </StackableBorderBox>
           </>
         ) : (
           <>

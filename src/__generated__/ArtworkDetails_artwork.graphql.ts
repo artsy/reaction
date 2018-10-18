@@ -27,7 +27,15 @@ var v0 = {
   "name": "__id",
   "args": null,
   "storageKey": null
-};
+},
+v1 = [
+  {
+    "kind": "Literal",
+    "name": "format",
+    "value": "HTML",
+    "type": "Format"
+  }
+];
 return {
   "kind": "Fragment",
   "name": "ArtworkDetails_artwork",
@@ -90,19 +98,19 @@ return {
       "kind": "ScalarField",
       "alias": null,
       "name": "literature",
-      "args": null,
-      "storageKey": null
+      "args": v1,
+      "storageKey": "literature(format:\"HTML\")"
     },
     {
       "kind": "ScalarField",
       "alias": null,
       "name": "exhibition_history",
-      "args": null,
-      "storageKey": null
+      "args": v1,
+      "storageKey": "exhibition_history(format:\"HTML\")"
     },
     v0
   ]
 };
 })();
-(node as any).hash = '55917c2770100bd68f2ece1a0607f743';
+(node as any).hash = '8518b286a89bd1135f033a2352036f66';
 export default node;
