@@ -6,7 +6,7 @@ import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { Responsive } from "Utils/Responsive"
 import { CollectArtworkGridRefreshContainer as ArtworkFilter } from "./CollectArtworkGrid"
 interface CollectRefetchProps {
-  filters: FilterState
+  filtersState: FilterState["state"]
   viewer: CollectRefetch_viewer
   relay: RelayRefetchProp
 }
@@ -16,11 +16,11 @@ export class CollectRefetch extends Component<CollectRefetchProps> {
   // Used to prevent multiple in-flight requests
   private isLoading = false
 
-  componentDidUpdate(prevProps) {
-    Object.keys(this.props.filters).forEach(key => {
+  componentDidUpdate(prevProps: CollectRefetchProps) {
+    Object.keys(this.props.filtersState).forEach(key => {
       if (
         key !== "page" &&
-        !isEqual(this.props.filters[key], prevProps.filters[key])
+        !isEqual(this.props.filtersState[key], prevProps.filtersState[key])
       ) {
         this.loadFilter()
       }
@@ -37,7 +37,7 @@ export class CollectRefetch extends Component<CollectRefetchProps> {
 
       this.props.relay.refetch(
         {
-          ...this.props.filters,
+          ...this.props.filtersState,
         },
         null,
         error => {
@@ -56,7 +56,7 @@ export class CollectRefetch extends Component<CollectRefetchProps> {
   }
 
   render() {
-    const { filters } = this.props
+    const { filtersState } = this.props
     const { filtered_artworks } = this.props.viewer
     return (
       <Responsive>
@@ -65,7 +65,7 @@ export class CollectRefetch extends Component<CollectRefetchProps> {
             filtered_artworks={filtered_artworks as any}
             isLoading={this.isLoading}
             columnCount={xs || sm || md ? 2 : 3}
-            filters={filters.state}
+            filters={filtersState}
           />
         )}
       </Responsive>

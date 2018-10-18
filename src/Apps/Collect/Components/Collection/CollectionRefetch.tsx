@@ -7,7 +7,7 @@ import { Responsive } from "Utils/Responsive"
 import { CollectArtworkGridRefreshContainer as ArtworkFilter } from "../Base/CollectArtworkGrid"
 
 interface CollectionRefetchProps {
-  filters: FilterState
+  filtersState: FilterState["state"]
   collection: CollectionRefetch_collection
   relay?: RelayRefetchProp
 }
@@ -17,11 +17,11 @@ export class CollectionRefetch extends Component<CollectionRefetchProps> {
   // Used to prevent multiple in-flight requests
   private isLoading = false
 
-  componentDidUpdate(prevProps) {
-    Object.keys(this.props.filters).forEach(key => {
+  componentDidUpdate(prevProps: CollectionRefetchProps) {
+    Object.keys(this.props.filtersState).forEach(key => {
       if (
         key !== "page" &&
-        !isEqual(this.props.filters[key], prevProps.filters[key])
+        !isEqual(this.props.filtersState[key], prevProps.filtersState[key])
       ) {
         this.loadFilter()
       }
@@ -38,9 +38,8 @@ export class CollectionRefetch extends Component<CollectionRefetchProps> {
 
       this.props.relay.refetch(
         {
-          ...this.props.filters,
-          // TODO: have Collection extend Node interface
-          collectionNodeID: (this.props.collection as any).__id,
+          ...this.props.filtersState,
+          collectionSlug: this.props.collection.slug,
         },
         null,
         error => {
@@ -59,7 +58,7 @@ export class CollectionRefetch extends Component<CollectionRefetchProps> {
   }
 
   render() {
-    const { filters } = this.props
+    const { filtersState } = this.props
     const { filtered_artworks } = this.props.collection
     return (
       <Responsive>
@@ -68,7 +67,7 @@ export class CollectionRefetch extends Component<CollectionRefetchProps> {
             filtered_artworks={filtered_artworks as any}
             isLoading={this.isLoading}
             columnCount={xs || sm || md ? 2 : 3}
-            filters={filters.state}
+            filters={filtersState}
           />
         )}
       </Responsive>
@@ -92,6 +91,7 @@ export const CollectionRefetchContainer = createRefetchContainer(
           sort: { type: "String", defaultValue: "-partner_updated_at" }
           price_range: { type: "String" }
         ) {
+        slug
         filtered_artworks: artworks(
           aggregations: [TOTAL]
           medium: $medium
@@ -112,7 +112,7 @@ export const CollectionRefetchContainer = createRefetchContainer(
   },
   graphql`
     query CollectionRefetchQuery(
-      $collectionNodeID: String!
+      $collectionSlug: String!
       $medium: String
       $major_periods: [String]
       $partner_id: ID
@@ -123,7 +123,7 @@ export const CollectionRefetchContainer = createRefetchContainer(
       $sort: String
       $price_range: String
     ) {
-      marketingCollection(slug: $collectionNodeID) {
+      marketingCollection(slug: $collectionSlug) {
         ...CollectionRefetch_collection
           @arguments(
             medium: $medium
