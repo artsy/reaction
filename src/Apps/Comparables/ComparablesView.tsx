@@ -44,6 +44,7 @@ export class Comparables extends Component<Props> {
                     $price_range: String
                     $artist_id: String
                     $attribution_class: [String]
+                    $acquireable: Boolean
                   ) {
                     viewer {
                       ...Filter_viewer
@@ -59,6 +60,7 @@ export class Comparables extends Component<Props> {
                           price_range: $price_range
                           artist_id: $artist_id
                           attribution_class: $attribution_class
+                          acquireable: $acquireable
                         )
                     }
                   }

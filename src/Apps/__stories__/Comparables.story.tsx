@@ -15,3 +15,13 @@ storiesOf("Apps/Comparables", module).add("albers", () => {
     </Box>
   )
 })
+
+storiesOf("Apps/Comparables", module).add("input", () => {
+  return (
+    <Box p={6} pt={2}>
+      <ContextProvider mediator={mediator}>
+        <ComparablesContainer />
+      </ContextProvider>
+    </Box>
+  )
+})

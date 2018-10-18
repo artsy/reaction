@@ -1,6 +1,5 @@
 import { Box, Flex, Spacer } from "@artsy/palette"
 import { Filter_viewer } from "__generated__/Filter_viewer.graphql"
-import { CollectFilterContainer as ArtworkFilter } from "Apps/Collect/Components/Base/CollectFilterContainer"
 import { CollectRefetchContainer } from "Apps/Collect/Components/Base/CollectRefetch"
 import { PriceRangeFilter as PriceRange } from "Apps/Collect/Components/Filters/PriceRangeFilter"
 import { FilterState } from "Apps/Collect/FilterState"
@@ -56,17 +55,11 @@ class Comparables extends Component<Props> {
 export const ComparablesFragmentContainer = createFragmentContainer(
   (props: Props) => {
     return (
-      <ContextConsumer>
-        {({ mediator }) => {
-          return (
-            <Subscribe to={[FilterState]}>
-              {(filters: FilterState) => {
-                return <Comparables {...props} filters={filters} />
-              }}
-            </Subscribe>
-          )
+      <Subscribe to={[FilterState]}>
+        {(filters: FilterState) => {
+          return <Comparables {...props} filters={filters} />
         }}
-      </ContextConsumer>
+      </Subscribe>
     )
   },
   graphql`
