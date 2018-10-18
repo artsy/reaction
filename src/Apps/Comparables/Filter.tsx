@@ -5,7 +5,7 @@ import { PriceRangeFilter as PriceRange } from "Apps/Collect/Components/Filters/
 import { FilterState } from "Apps/Collect/FilterState"
 import { AttributionClassFilter } from "Apps/Comparables/Filter/AttributionClassFilter"
 import { MediumFilter } from "Apps/Comparables/Filter/MediumFilter"
-import { ContextConsumer, ContextProps } from "Artsy"
+import { ContextProps } from "Artsy"
 import { SystemProps } from "Artsy/SystemContext"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"

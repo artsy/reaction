@@ -68,6 +68,7 @@ export const CollectFilterFragmentContainer = createFragmentContainer(
         sort: { type: "String", defaultValue: "-partner_updated_at" }
         price_range: { type: "String" }
         artist_id: { type: "String" }
+        attribution_class: { type: "[String]" }
       ) {
       filter_artworks(aggregations: $aggregations, size: 0) {
         aggregations {
@@ -91,6 +92,7 @@ export const CollectFilterFragmentContainer = createFragmentContainer(
           inquireable_only: $inquireable_only
           price_range: $price_range
           artist_id: $artist_id
+          attribution_class: $attribution_class
         )
     }
   `

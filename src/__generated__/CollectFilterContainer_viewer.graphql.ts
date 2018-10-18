@@ -103,6 +103,12 @@ return {
       "name": "artist_id",
       "type": "String",
       "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "attribution_class",
+      "type": "[String]",
+      "defaultValue": null
     }
   ],
   "selections": [
@@ -199,6 +205,12 @@ return {
         },
         {
           "kind": "Variable",
+          "name": "attribution_class",
+          "variableName": "attribution_class",
+          "type": null
+        },
+        {
+          "kind": "Variable",
           "name": "for_sale",
           "variableName": "for_sale",
           "type": null
@@ -244,5 +256,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'b9455a26a896e8dddff9cd86b8b5b98c';
+(node as any).hash = '8790c9b9f4e32b60d51d7602788a75a5';
 export default node;
