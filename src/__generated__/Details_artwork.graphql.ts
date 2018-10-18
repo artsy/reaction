@@ -25,6 +25,7 @@ export type Details_artwork = {
         readonly is_open: boolean | null;
         readonly is_closed: boolean | null;
         readonly display_timely_at: string | null;
+        readonly auction_state: string | null;
     }) | null;
     readonly sale_artwork: ({
         readonly highest_bid: ({
@@ -191,6 +192,13 @@ return {
           "args": null,
           "storageKey": null
         },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "auction_state",
+          "args": null,
+          "storageKey": null
+        },
         v1
       ]
     },
@@ -241,5 +249,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'e0e2014a654a44aa66ac03435b60a897';
+(node as any).hash = '6c8e96bbb549d363d5dd7a66cc56d100';
 export default node;

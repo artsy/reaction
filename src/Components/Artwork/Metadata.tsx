@@ -8,7 +8,7 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import styled from "styled-components"
 import RelayContact, { Contact } from "./Contact"
-import RelayDetails, { Details } from "./Details"
+import { Details, DetailsFragmentContainer } from "./Details"
 
 export interface MetadataProps extends React.HTMLProps<MetadataContainer> {
   artwork: Metadata_artwork
@@ -24,7 +24,7 @@ export class MetadataContainer extends React.Component<MetadataProps> {
 
   render() {
     const { artwork, className, extended, useRelay } = this.props
-    const DetailsBlock = useRelay ? RelayDetails : Details
+    const DetailsBlock = useRelay ? DetailsFragmentContainer : Details
     const ContactBlock = useRelay ? RelayContact : Contact
 
     return (

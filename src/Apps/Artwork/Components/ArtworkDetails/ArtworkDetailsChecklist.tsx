@@ -1,5 +1,4 @@
-import { Box, color, Flex, Sans, StackableBorderBox } from "@artsy/palette"
-import { Checkmark } from "Assets/Checkmark"
+import { Box, Flex, Sans, StackableBorderBox } from "@artsy/palette"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 
@@ -18,9 +17,10 @@ export class ArtworkDetailsChecklist extends React.Component<
     }
     return (
       <Flex flexDirection="row">
+        {/* TODO: need to resolve based on design after Bnow release
         <Box display="inline" mr={1}>
           <Checkmark stroke={color("black100")} />
-        </Box>
+        </Box> */}
         <Box>
           <Sans size="2" weight="medium" display="inline" mr={1}>
             {label}

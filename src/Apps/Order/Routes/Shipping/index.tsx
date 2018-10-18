@@ -349,7 +349,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                       }
                     >
                       <AddressForm
-                        defaultValue={address}
+                        value={address}
                         errors={addressErrors}
                         touched={addressTouched}
                         onChange={this.onAddressChange}

@@ -21,8 +21,8 @@ export class Helper extends Component<HelperProps> {
     type: "button",
     flow: "buy now",
   }))
-  onClickReadFAQ(mediator) {
-    mediator.trigger("openOrdersBuyerFAQModal")
+  onClickReadFAQ() {
+    window.open("https://www.artsy.net/buy-now-feature-faq", "_blank")
   }
 
   @track(() => ({
@@ -44,9 +44,7 @@ export class Helper extends Component<HelperProps> {
           <>
             <Sans size="2" color="black60">
               Have a question?{" "}
-              <Link onClick={this.onClickReadFAQ.bind(this, mediator)}>
-                Read our FAQ
-              </Link>{" "}
+              <Link onClick={this.onClickReadFAQ.bind(this)}>Read our FAQ</Link>{" "}
               or{" "}
               <Link onClick={this.onClickAskSpecialist.bind(this, mediator)}>
                 ask a specialist
