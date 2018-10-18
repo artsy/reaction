@@ -137,11 +137,12 @@ export class FilterState extends Container<State> {
     this.setState(newPartialState, () => {
       mediator.trigger("collect:filter:changed", this.filteredState)
 
-      this.tracking.trackEvent({
-        action: "Commercial filter: params changed",
-        current: omit(this.state, ["selectedFilterCount", "showActionSheet"]),
-        changed: { [filter]: value },
-      })
+      this.tracking &&
+        this.tracking.trackEvent({
+          action: "Commercial filter: params changed",
+          current: omit(this.state, ["selectedFilterCount", "showActionSheet"]),
+          changed: { [filter]: value },
+        })
     })
   }
 
