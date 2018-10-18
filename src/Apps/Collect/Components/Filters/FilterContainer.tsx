@@ -11,7 +11,7 @@ import { SortFilter } from "./SortFilter"
 import { TimePeriodFilter } from "./TimePeriodFilter"
 import { WaysToBuyFilter } from "./WaysToBuyFilter"
 
-import { Box, Flex, Spacer } from "@artsy/palette"
+import { Box, Flex, Separator, Spacer } from "@artsy/palette"
 import { Toggle } from "Styleguide/Components"
 
 export interface FilterContainerProps {
@@ -52,10 +52,12 @@ export class FilterContainer extends React.Component<
   }
 
   renderFilters(filters: FilterState) {
-    const { mediums } = this.props
+    const { mediums, isMobile } = this.props
 
     return (
       <>
+        {!isMobile && <Separator mb={2} mt={-1} />}
+
         <Flex flexDirection="column" alignItems="left" mt={-1} mb={1}>
           <WaysToBuyFilter enableBuyNow={this.enableBuyNow} filters={filters} />
         </Flex>
@@ -80,7 +82,8 @@ export class FilterContainer extends React.Component<
     const Filters = ({ filters }) => this.renderFilters(filters)
 
     // tslint:disable-next-line:ban-types
-    const children = (this.props.children as Function) || (() => null)
+    const children: (filters: FilterState) => null =
+      (this.props.children as (filters: FilterState) => null) || (() => null)
 
     const Mobile = props =>
       // Mobile
@@ -110,11 +113,13 @@ export class FilterContainer extends React.Component<
               <span id="jump--collectArtworkGrid" />
 
               <Box width={isMobile ? "100%" : "75%"}>
+                {!isMobile && <Separator mb={2} mt={-1} />}
+
                 <SortFilter filters={filters} xs={isMobile} />
 
                 <Spacer mb={2} />
 
-                {children({ filters })}
+                {children(filters)}
               </Box>
             </Flex>
           )

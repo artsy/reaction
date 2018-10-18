@@ -4,6 +4,7 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { Responsive } from "Utils/Responsive"
 import { CollectionRefetchContainer } from "./CollectionRefetch"
 
+import { FilterState } from "Apps/Collect/FilterState"
 import { FilterContainer } from "../Filters"
 
 export interface CollectionFilterContainerProps {
@@ -32,10 +33,10 @@ export class CollectionFilterContainer extends Component<
                     mediator={mediator}
                     mediums={mediumAggregation.counts as any}
                   >
-                    {({ filters }) => (
+                    {(filters: FilterState) => (
                       <CollectionRefetchContainer
                         collection={collection}
-                        filters={filters.state}
+                        filtersState={filters.state}
                       />
                     )}
                   </FilterContainer>

@@ -5,6 +5,7 @@ import { CollectArtworkGrid_filtered_artworks$ref } from "./CollectArtworkGrid_f
 declare const _CollectionRefetch_collection$ref: unique symbol;
 export type CollectionRefetch_collection$ref = typeof _CollectionRefetch_collection$ref;
 export type CollectionRefetch_collection = {
+    readonly slug: string;
     readonly filtered_artworks: ({
         readonly " $fragmentRefs": CollectArtworkGrid_filtered_artworks$ref;
     }) | null;
@@ -75,6 +76,13 @@ const node: ConcreteFragment = {
     }
   ],
   "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "slug",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "LinkedField",
       "alias": "filtered_artworks",
@@ -176,5 +184,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '53021a27b6620f8da3884d3657e2a057';
+(node as any).hash = '6847f5f161749d78be95da9759eb674e';
 export default node;

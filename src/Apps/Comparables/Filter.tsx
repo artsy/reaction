@@ -43,7 +43,7 @@ class Comparables extends Component<Props> {
           </Sidebar>
           <Box width="75%" ml={4}>
             <CollectRefetchContainer
-              filters={filters}
+              filtersState={filters.state}
               viewer={this.props.viewer}
             />
           </Box>

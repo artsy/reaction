@@ -1,4 +1,4 @@
-import { Box, Button, Sans, StackableBorderBox } from "@artsy/palette"
+import { Box, Button, Sans, Spacer } from "@artsy/palette"
 import React, { SFC } from "react"
 import styled from "styled-components"
 import { MobileTopBar } from "Styleguide/Components"
@@ -38,9 +38,10 @@ export const MobileActionSheet: SFC<MobileActionSheet> = ({
                 Apply
               </Button>
             </MobileTopBar>
-            <StackableBorderBox flexDirection="column">
-              {children}
-            </StackableBorderBox>
+
+            <Spacer mb={3} />
+
+            <Box p={2}>{children}</Box>
           </Container>
         )
       }}
