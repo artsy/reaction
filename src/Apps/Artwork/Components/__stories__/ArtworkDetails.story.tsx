@@ -12,7 +12,7 @@ storiesOf("Styleguide/Artwork", module)
     return (
       <React.Fragment>
         <Section title="ArtworkDetailsQueryRenderer containing CMS markdown text">
-          <ArtworkDetailsQueryRenderer artworkID="henri-de-toulouse-lautrec-debauche-deuxieme-planche-1" />
+          <ArtworkDetailsQueryRenderer artworkID="alex-dordoy-5th-genome-test-partner-xysdkaldgag" />
         </Section>
         <Section title="Artwork with every additional details available">
           <ArtworkDetails artwork={AllAdditionalDetailsPresent as any} />
