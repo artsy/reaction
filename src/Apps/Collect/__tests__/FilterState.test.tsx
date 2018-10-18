@@ -69,4 +69,5 @@ const initialState = {
   inquireable_only: null,
   price_range: "*-*",
   attribution_class: [],
+  artist_id: null,
 }
