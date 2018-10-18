@@ -4,7 +4,7 @@ import { isEqual } from "lodash"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { Responsive } from "Utils/Responsive"
-import { CollectArtworkGridRefreshContainer as ArtworkFilter } from "./CollectArtworkGrid"
+import { CollectArtworkGridRefreshContainer as CollectArtworkGrid } from "./CollectArtworkGrid"
 interface CollectRefetchProps {
   filtersState: FilterState["state"]
   viewer: CollectRefetch_viewer
@@ -61,7 +61,7 @@ export class CollectRefetch extends Component<CollectRefetchProps> {
     return (
       <Responsive>
         {({ xs, sm, md }) => (
-          <ArtworkFilter
+          <CollectArtworkGrid
             filtered_artworks={filtered_artworks as any}
             isLoading={this.isLoading}
             columnCount={xs || sm || md ? 2 : 3}

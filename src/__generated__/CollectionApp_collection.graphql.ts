@@ -9,9 +9,9 @@ export type CollectionApp_collection = {
     readonly slug: string;
     readonly title: string;
     readonly description: string | null;
-    readonly headerImage: ({
-        readonly large: string;
-    }) | null;
+    readonly headerImage: string | null;
+    readonly category: string;
+    readonly credit: string | null;
     readonly query: {
         readonly artist_ids: ReadonlyArray<string> | null;
         readonly artist_id: string | null;
@@ -67,23 +67,25 @@ return {
       "storageKey": null
     },
     {
-      "kind": "LinkedField",
+      "kind": "ScalarField",
       "alias": null,
       "name": "headerImage",
-      "storageKey": null,
       "args": null,
-      "concreteType": "MarketingImage",
-      "plural": false,
-      "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "large",
-          "args": null,
-          "storageKey": null
-        },
-        v0
-      ]
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "category",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "credit",
+      "args": null,
+      "storageKey": null
     },
     {
       "kind": "LinkedField",
@@ -127,5 +129,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '4953c4fec87e46687cab617d59114ba6';
+(node as any).hash = 'c740025118f291d5d777f1e2bdd26189';
 export default node;
