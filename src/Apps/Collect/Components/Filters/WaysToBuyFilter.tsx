@@ -4,16 +4,15 @@ import React from "react"
 import { FilterState } from "../../FilterState"
 
 export const WaysToBuyFilter: React.SFC<{
-  enableBuyNow: boolean
   filters: FilterState
-}> = ({ enableBuyNow, filters }) => (
+}> = ({ filters }) => (
   <ContextConsumer>
     {({ mediator }) => (
       <React.Fragment>
         <Sans size="2" weight="medium" color="black100" my={1}>
           Ways to buy
         </Sans>
-        {enableBuyNow && (
+        {
           <Checkbox
             selected={filters.state.acquireable}
             onSelect={value => {
@@ -22,7 +21,7 @@ export const WaysToBuyFilter: React.SFC<{
           >
             Buy now
           </Checkbox>
-        )}
+        }
         <Checkbox
           selected={filters.state.at_auction}
           onSelect={value => filters.setFilter("at_auction", value, mediator)}

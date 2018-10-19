@@ -5,7 +5,6 @@ import { FilterIcon } from "Assets/Icons/FilterIcon"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { data as sd } from "sharify"
 import styled from "styled-components"
 import { Toggle } from "Styleguide/Components"
 import { Subscribe } from "unstated"
@@ -67,19 +66,11 @@ class Filter extends Component<Props> {
       agg => agg.slice === "MAJOR_PERIOD"
     )
 
-    const hasLabFeature =
-      user &&
-      user.lab_features &&
-      user.lab_features.includes("New Buy Now Flow")
-    const enableBuyNowFlow = sd.ENABLE_NEW_BUY_NOW_FLOW || hasLabFeature
-
     return (
       <>
         <Flex flexDirection="column" alignItems="left" mt={-1} mb={1}>
           {!hideTopBorder && <Separator mb={1} />}
-          {enableBuyNowFlow
-            ? this.renderWaysToBuy(filterState, mediator, counts)
-            : this.renderForSaleCheckbox(filterState, mediator, counts)}
+          {this.renderWaysToBuy(filterState, mediator, counts)}
         </Flex>
 
         <Toggle label="Medium" expanded={!this.showZeroState}>
