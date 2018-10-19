@@ -16,14 +16,7 @@ export class CollectionApp extends Component<CollectionAppProps> {
 
     return (
       <CollectFrame>
-        <CollectionHeader
-          description={
-            <div dangerouslySetInnerHTML={{ __html: collection.description }} />
-          }
-          image={collection.headerImage}
-          slug={collection.slug}
-          title={collection.title}
-        />
+        <CollectionHeader collection={collection} />
         <Box>
           <CollectionFilterContainer collection={collection} />
         </Box>

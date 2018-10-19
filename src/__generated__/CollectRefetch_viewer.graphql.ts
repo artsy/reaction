@@ -72,6 +72,18 @@ const node: ConcreteFragment = {
       "name": "price_range",
       "type": "String",
       "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "artist_id",
+      "type": "String",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "attribution_class",
+      "type": "[String]",
+      "defaultValue": null
     }
   ],
   "selections": [
@@ -97,9 +109,21 @@ const node: ConcreteFragment = {
         },
         {
           "kind": "Variable",
+          "name": "artist_id",
+          "variableName": "artist_id",
+          "type": "String"
+        },
+        {
+          "kind": "Variable",
           "name": "at_auction",
           "variableName": "at_auction",
           "type": "Boolean"
+        },
+        {
+          "kind": "Variable",
+          "name": "attribution_class",
+          "variableName": "attribution_class",
+          "type": "[String]"
         },
         {
           "kind": "Variable",
@@ -169,5 +193,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'fd0277b2c9045774eae86cfec8fc6880';
+(node as any).hash = 'b5a8be204586a373893524d3a402068a';
 export default node;

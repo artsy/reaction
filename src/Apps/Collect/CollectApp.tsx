@@ -42,6 +42,8 @@ export const CollectAppFragmentContainer = createFragmentContainer(
         }
         sort: { type: "String", defaultValue: "-partner_updated_at" }
         price_range: { type: "String" }
+        artist_id: { type: "String" }
+        attribution_class: { type: "String" }
       ) {
       ...CollectFilterContainer_viewer
         @arguments(
@@ -54,6 +56,8 @@ export const CollectAppFragmentContainer = createFragmentContainer(
           at_auction: $at_auction
           inquireable_only: $inquireable_only
           price_range: $price_range
+          artist_id: $artist_id
+          attribution_class: $attribution_class
         )
     }
   `
