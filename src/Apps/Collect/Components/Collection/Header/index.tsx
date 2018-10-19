@@ -35,8 +35,8 @@ const getReadMoreContent = (description, credit) => {
 
 const maxChars = {
   xs: 200,
-  sm: 420,
-  md: 460,
+  sm: 430,
+  md: 450,
   lg: 460,
   xl: 510,
 }
@@ -57,6 +57,7 @@ export class CollectionHeader extends Component<Props> {
         {({ xs, sm, md, lg }) => {
           const size = xs ? "xs" : sm ? "sm" : md ? "md" : lg ? "lg" : "xl"
           const imageWidth = imageWidthSizes[size]
+          const imageHeight = xs ? 160 : 240
           const chars = maxChars[size]
           const subtitleFontSize = xs ? "1" : "3"
 
@@ -69,7 +70,10 @@ export class CollectionHeader extends Component<Props> {
                     my={3}
                     headerImageUrl={resize(collection.headerImage, {
                       width: imageWidth,
+                      height: imageHeight,
                     })}
+                    isMobile={xs ? true : false}
+                    height={imageHeight}
                   >
                     <Overlay />
                     <MetaContainer>
@@ -94,7 +98,7 @@ export class CollectionHeader extends Component<Props> {
                   <DescriptionContainer mb={5}>
                     <Grid>
                       <Row>
-                        <Col xl="8" lg="8" md="9" sm="12" xs="12">
+                        <Col xl="8" lg="8" md="10" sm="12" xs="12">
                           <ExtendedSerif size="5" px={1}>
                             <ReadMore
                               onReadMoreClicked={() => false}
@@ -121,11 +125,23 @@ export class CollectionHeader extends Component<Props> {
   }
 }
 
-const Background = styled(Box)<{ headerImageUrl: string }>`
+const Background = styled(Box)<{
+  headerImageUrl: string
+  isMobile: boolean
+  height: number
+}>`
   position: relative;
   background: ${color("black30")};
-  height: 240px;
+  height: ${props => props.height}px;
   background-image: url(${props => props.headerImageUrl});
+  background-size: 100% 100%;
+  ${props =>
+    props.isMobile &&
+    `
+      margin-left: -20px;
+      margin-right: -20px;
+      margin-top: -20px;
+  `};
 `
 export const Overlay = styled.div`
   position: absolute;
