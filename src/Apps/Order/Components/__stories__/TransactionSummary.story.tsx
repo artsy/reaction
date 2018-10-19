@@ -35,7 +35,9 @@ storiesOf("Apps/Order Page/Components", module)
               " $refType": null,
               itemsTotal: "£3,024.89",
               shippingTotal: "£132.32",
+              shippingTotalCents: 13232,
               taxTotal: "£232.23",
+              taxTotalCents: 23223,
               buyerTotal: "£1,200,823.33",
               lineItems: makeLineItem({
                 artistName: "Francesca DiMattio",
@@ -58,7 +60,9 @@ storiesOf("Apps/Order Page/Components", module)
             " $refType": null,
             itemsTotal: "£3,024.89",
             shippingTotal: "£132.32",
+            shippingTotalCents: 13232,
             taxTotal: "£232.23",
+            taxTotalCents: 23223,
             buyerTotal: "£1,200,823.33",
             lineItems: makeLineItem({
               artistName: "Francesca DiMattio and Orta Theroxicus",

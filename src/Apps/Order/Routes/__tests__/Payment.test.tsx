@@ -7,7 +7,7 @@ import {
   PickupOrder,
   UntouchedOrder,
 } from "Apps/__test__/Fixtures/Order"
-import { Input } from "../../../../Components/Input"
+import { Input, InputProps } from "../../../../Components/Input"
 import { Collapse } from "../../../../Styleguide/Components"
 import { CreditCardInput } from "../../Components/CreditCardInput"
 import {
@@ -87,7 +87,30 @@ describe("Payment", () => {
     expect(paymentRoute.find(Collapse).props().open).toBe(true)
   })
 
-  it("pre-populates with available details when returning to the payment route", () => {
+  it("removes all data when the billing address form is hidden", () => {
+    const paymentRoute = mount(<PaymentRoute {...testProps} />)
+    // expand address form
+    paymentRoute.find(Checkbox).simulate("click")
+
+    const nameInput = paymentRoute
+      .find(Input)
+      .filterWhere(wrapper => wrapper.props().title === "Full name")
+      .find("input")
+    nameInput.instance().value = "Dr Collector"
+    nameInput.simulate("change")
+    expect(nameInput.instance().value).toEqual("Dr Collector")
+
+    // hide address form
+    paymentRoute.find(Checkbox).simulate("click")
+
+    // expand address form again
+    paymentRoute.find(Checkbox).simulate("click")
+
+    // expect name to be empty
+    expect(nameInput.instance().value).toEqual("")
+  })
+
+  it("does not pre-populate with available details when returning to the payment route", () => {
     const paymentRoute = mount(
       <PaymentRoute
         {...testProps}
@@ -107,14 +130,14 @@ describe("Payment", () => {
       />
     )
 
-    expect(paymentRoute.find(AddressForm).props().defaultValue).toEqual({
-      name: "Artsy UK Ltd",
-      addressLine1: "14 Gower's Walk",
-      addressLine2: "Suite 2.5, The Loom",
-      city: "London",
-      region: "Whitechapel",
-      postalCode: "E1 8PY",
-      country: "UK",
+    expect(paymentRoute.find(AddressForm).props().value).toEqual({
+      name: "",
+      addressLine1: "",
+      addressLine2: "",
+      city: "",
+      region: "",
+      postalCode: "",
+      country: "US",
       phoneNumber: "",
     })
   })

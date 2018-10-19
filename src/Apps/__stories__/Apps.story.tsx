@@ -18,7 +18,7 @@ storiesOf("Apps", module)
     return (
       <MockRouter
         routes={artistRoutes}
-        initialRoute="/artist/damien-hirst?acquireable=true"
+        initialRoute="/artist/cecily-brown?acquireable=true"
         context={{
           mediator: {
             trigger: x => x,
@@ -32,6 +32,19 @@ storiesOf("Apps", module)
       <MockRouter
         routes={collectRoutes}
         initialRoute="/collect?acquireable=true"
+        context={{
+          mediator: {
+            trigger: x => x,
+          },
+        }}
+      />
+    )
+  })
+  .add("Collection Page", () => {
+    return (
+      <MockRouter
+        routes={collectRoutes}
+        initialRoute="/collection/kaws-companions"
         context={{
           mediator: {
             trigger: x => x,

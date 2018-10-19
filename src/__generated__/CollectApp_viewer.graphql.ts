@@ -1,11 +1,11 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-import { ArtworkGrid_viewer$ref } from "./ArtworkGrid_viewer.graphql";
+import { CollectFilterContainer_viewer$ref } from "./CollectFilterContainer_viewer.graphql";
 declare const _CollectApp_viewer$ref: unique symbol;
 export type CollectApp_viewer$ref = typeof _CollectApp_viewer$ref;
 export type CollectApp_viewer = {
-    readonly " $fragmentRefs": ArtworkGrid_viewer$ref;
+    readonly " $fragmentRefs": CollectFilterContainer_viewer$ref;
     readonly " $refType": CollectApp_viewer$ref;
 };
 
@@ -79,12 +79,24 @@ const node: ConcreteFragment = {
       "name": "price_range",
       "type": "String",
       "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "artist_id",
+      "type": "String",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "attribution_class",
+      "type": "String",
+      "defaultValue": null
     }
   ],
   "selections": [
     {
       "kind": "FragmentSpread",
-      "name": "ArtworkGrid_viewer",
+      "name": "CollectFilterContainer_viewer",
       "args": [
         {
           "kind": "Variable",
@@ -94,8 +106,20 @@ const node: ConcreteFragment = {
         },
         {
           "kind": "Variable",
+          "name": "artist_id",
+          "variableName": "artist_id",
+          "type": null
+        },
+        {
+          "kind": "Variable",
           "name": "at_auction",
           "variableName": "at_auction",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "attribution_class",
+          "variableName": "attribution_class",
           "type": null
         },
         {
@@ -144,5 +168,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'b4760b39260ab4d035a91028240712e3';
+(node as any).hash = 'dbb0e07f08a0aaf88a6c210ca4fdf614';
 export default node;
