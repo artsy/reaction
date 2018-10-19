@@ -57,8 +57,8 @@ export class CollectionHeader extends Component<Props> {
         {({ xs, sm, md, lg }) => {
           const size = xs ? "xs" : sm ? "sm" : md ? "md" : lg ? "lg" : "xl"
           const imageWidth = imageWidthSizes[size]
-
           const chars = maxChars[size]
+          const subtitleFontSize = xs ? "1" : "3"
 
           return (
             <>
@@ -74,15 +74,19 @@ export class CollectionHeader extends Component<Props> {
                     <Overlay />
                     <MetaContainer>
                       <SubtitlesContainer>
-                        <Sans size="3" color="white100">
+                        <Sans size={subtitleFontSize} color="white100">
                           Collecting category
                         </Sans>
-                        <Sans size="3" color="white100" ml="auto">
+                        <Sans
+                          size={subtitleFontSize}
+                          color="white100"
+                          ml="auto"
+                        >
                           <a href="/collect">View all artworks</a>
                         </Sans>
                       </SubtitlesContainer>
                       <Spacer mt={1} />
-                      <Title size="10" color="white100">
+                      <Title size={xs ? "5" : "10"} color="white100">
                         {collection.title}
                       </Title>
                     </MetaContainer>
