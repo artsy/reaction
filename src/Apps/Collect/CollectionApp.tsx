@@ -16,16 +16,7 @@ export class CollectionApp extends Component<CollectionAppProps> {
 
     return (
       <CollectFrame>
-        <CollectionHeader
-          description={
-            <div dangerouslySetInnerHTML={{ __html: collection.description }} />
-          }
-          // image={collection.headerImage.large }
-          image="https://artsy-vanity-files-production.s3.amazonaws.com/images/kaws2.png"
-          // image_caption={collection.image_caption}
-          slug={collection.slug}
-          title={collection.title}
-        />
+        <CollectionHeader collection={collection} />
         <Box>
           <CollectionFilterFragmentContainer collection={collection} />
         </Box>
