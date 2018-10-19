@@ -4,75 +4,115 @@ import React, { Component } from "react"
 import styled from "styled-components"
 import { ReadMore } from "Styleguide/Components/ReadMore"
 import { Col, Grid, Row } from "Styleguide/Elements/Grid"
+import { resize } from "Utils/resizer"
+import { Responsive } from "Utils/Responsive"
 
 interface Props {
-  slug: string
-  title: string
-  image: string
-  description?: JSX.Element | string
-  image_caption?: string
-  medium?: string
-  major_periods?: string[]
-  gene_ids?: string[]
-  artist_ids?: string[]
+  collection: {
+    slug: string
+    title: string
+    headerImage: string
+    description?: JSX.Element | string
+    credit?: string
+    medium?: string
+    major_periods?: string[]
+    gene_ids?: string[]
+    artist_ids?: string[]
+  }
 }
 
-const getReadMoreContent = (description, image_caption) => {
+const getReadMoreContent = (description, credit) => {
   return (
-    <Box>
-      {description}
+    <>
+      {description && (
+        <span dangerouslySetInnerHTML={{ __html: description }} />
+      )}
       <Spacer mt={3} />
-      {image_caption && <ImageCaption>{image_caption}</ImageCaption>}
-    </Box>
+      {credit && <ImageCaption dangerouslySetInnerHTML={{ __html: credit }} />}
+    </>
   )
+}
+
+const maxChars = {
+  xs: 200,
+  sm: 420,
+  md: 460,
+  lg: 460,
+  xl: 510,
+}
+
+const imageWidthSizes = {
+  xs: 320,
+  sm: 688,
+  md: 820,
+  lg: 944,
+  xl: 1112,
 }
 
 export class CollectionHeader extends Component<Props> {
   render() {
+    const { collection } = this.props
     return (
-      <>
-        <Flex flexDirection="column">
-          <Box>
-            <Background p={2} my={3} headerImageUrl={this.props.image}>
-              <Overlay />
-              <MetaContainer>
-                <SubtitlesContainer>
-                  <Sans size="3" color="white100">
-                    Collecting category
-                  </Sans>
-                  <Sans size="3" color="white100" ml="auto">
-                    <a href="/collect">View all artworks</a>
-                  </Sans>
-                </SubtitlesContainer>
-                <Spacer mt={1} />
-                <Title size="10" color="white100">
-                  {this.props.title}
-                </Title>
-              </MetaContainer>
-            </Background>
-            <DescriptionContainer mb={5}>
-              <Grid fluid>
-                <Row>
-                  <Col lg="8" md="5" sm="6">
-                    <Serif size="5" px={2}>
-                      <ReadMore
-                        onReadMoreClicked={() => false}
-                        maxChars={320}
-                        content={getReadMoreContent(
-                          this.props.description,
-                          this.props.image_caption
-                        )}
-                      />
-                    </Serif>
-                  </Col>
-                </Row>
-              </Grid>
-            </DescriptionContainer>
-            <Spacer mb={1} />
-          </Box>
-        </Flex>
-        <Spacer mb={2} />
-      </>
+      <Responsive>
+        {({ xs, sm, md, lg }) => {
+          const size = xs ? "xs" : sm ? "sm" : md ? "md" : lg ? "lg" : "xl"
+          const imageWidth = imageWidthSizes[size]
+
+          const chars = maxChars[size]
+
+          return (
+            <>
+              <Flex flexDirection="column">
+                <Box>
+                  <Background
+                    p={2}
+                    my={3}
+                    headerImageUrl={resize(collection.headerImage, {
+                      width: imageWidth,
+                    })}
+                  >
+                    <Overlay />
+                    <MetaContainer>
+                      <SubtitlesContainer>
+                        <Sans size="3" color="white100">
+                          Collecting category
+                        </Sans>
+                        <Sans size="3" color="white100" ml="auto">
+                          <a href="/collect">View all artworks</a>
+                        </Sans>
+                      </SubtitlesContainer>
+                      <Spacer mt={1} />
+                      <Title size="10" color="white100">
+                        {collection.title}
+                      </Title>
+                    </MetaContainer>
+                  </Background>
+                  <DescriptionContainer mb={5}>
+                    <Grid>
+                      <Row>
+                        <Col xl="8" lg="8" md="9" sm="12" xs="12">
+                          <ExtendedSerif size="5" px={1}>
+                            <ReadMore
+                              onReadMoreClicked={() => false}
+                              maxChars={chars}
+                              content={getReadMoreContent(
+                                collection.description,
+                                collection.credit
+                              )}
+                            />
+                          </ExtendedSerif>
+                        </Col>
+                      </Row>
+                    </Grid>
+                  </DescriptionContainer>
+                  <Spacer mb={1} />
+                </Box>
+              </Flex>
+              <Spacer mb={2} />
+            </>
+          )
+        }}
+      </Responsive>
     )
   }
 }
@@ -119,4 +159,10 @@ const Title = styled(Serif)`
 
 const ImageCaption = styled(Box)`
   ${unica("s12")};
+`
+
+const ExtendedSerif = styled(Serif)`
+  div span span p {
+    display: inline;
+  }
 `
