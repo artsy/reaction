@@ -113,9 +113,7 @@ export const ArtworkDetailsQueryRenderer = ({
                 }
               }
             `}
-            render={renderWithLoadProgress(
-              ArtworkDetailsFragmentContainer as any
-            )}
+            render={renderWithLoadProgress(ArtworkDetailsFragmentContainer)}
           />
         )
       }}

@@ -170,7 +170,7 @@ export const ArtistInfoQueryRenderer = ({ artistID }: { artistID: string }) => {
                 }
               }
             `}
-            render={renderWithLoadProgress(ArtistInfoFragmentContainer as any)}
+            render={renderWithLoadProgress(ArtistInfoFragmentContainer)}
           />
         )
       }}
