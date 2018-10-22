@@ -7,20 +7,15 @@ interface CollectEmptyStateProps {
 }
 
 export const CollectEmptyState: React.SFC<CollectEmptyStateProps> = props => (
-  <EmptyStateContainer justifyContent="center" p={4}>
+  <Message justifyContent="center">
     <MessageBody>
       There aren't any works available that meet the following criteria at this
       time. Change your filter criteria to view more works.
     </MessageBody>
     <Button onClick={props.onClick}>Clear all filters</Button>
-  </EmptyStateContainer>
+  </Message>
 )
 
-const EmptyStateContainer = styled(Message)`
-  text-align: center;
-`
-
 const MessageBody = styled.div`
-  margin-bottom: ${space(2)}px;
-  max-width: 500px;
+  margin-bottom: ${space(1)}px;
 `
