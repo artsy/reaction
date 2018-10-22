@@ -104,9 +104,7 @@ export const ArtworkSidebarQueryRenderer = ({
                 }
               }
             `}
-            render={renderWithLoadProgress(
-              ArtworkSidebarFragmentContainer as any
-            )}
+            render={renderWithLoadProgress(ArtworkSidebarFragmentContainer)}
           />
         )
       }}

@@ -6,7 +6,6 @@ import { FilterContainer } from "../FilterContainer"
 
 jest.mock("sharify", () => ({
   data: {
-    ENABLE_NEW_BUY_NOW_FLOW: false,
     NODE_ENV: "test",
   },
 }))
@@ -71,19 +70,5 @@ describe("FilterContainer", () => {
 
     expect(wrapper.find("Mobile").length).toEqual(0)
     expect(wrapper.find("Desktop").length).toEqual(1)
-  })
-
-  it("should turn on buy now if labFeature is on", () => {
-    const wrapper = mount(
-      <Provider inject={[filterState]}>
-        <FilterContainer
-          mediator={mockMediator}
-          mediums={mediums}
-          user={user}
-        />
-      </Provider>
-    )
-
-    expect((wrapper.instance as any).enableBuyNow).toBeFalsy()
   })
 })
