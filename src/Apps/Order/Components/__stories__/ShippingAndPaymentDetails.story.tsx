@@ -45,7 +45,7 @@ const order: ShippingAndPaymentReview_order &
 
 const orderQuery = graphql`
   query ShippingAndPaymentDetailsQuery {
-    ecommerceOrder(id: "foo") {
+    order: ecommerceOrder(id: "foo") {
       ...ShippingAndPaymentSummary_order
       ...ShippingAndPaymentReview_order
     }
