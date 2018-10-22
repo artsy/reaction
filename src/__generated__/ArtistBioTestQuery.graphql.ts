@@ -17,7 +17,7 @@ export type ArtistBioTestQuery = {
 
 /*
 query ArtistBioTestQuery {
-  bio: artist(id: "pablo-picasso") {
+  bio: artist(id: "unused") {
     ...ArtistBio_bio
     __id
   }
@@ -37,7 +37,7 @@ var v0 = [
   {
     "kind": "Literal",
     "name": "id",
-    "value": "pablo-picasso",
+    "value": "unused",
     "type": "String!"
   }
 ],
@@ -53,7 +53,7 @@ return {
   "operationKind": "query",
   "name": "ArtistBioTestQuery",
   "id": null,
-  "text": "query ArtistBioTestQuery {\n  bio: artist(id: \"pablo-picasso\") {\n    ...ArtistBio_bio\n    __id\n  }\n}\n\nfragment ArtistBio_bio on Artist {\n  biography_blurb(format: HTML, partner_bio: true) {\n    text\n    credit\n  }\n  __id\n}\n",
+  "text": "query ArtistBioTestQuery {\n  bio: artist(id: \"unused\") {\n    ...ArtistBio_bio\n    __id\n  }\n}\n\nfragment ArtistBio_bio on Artist {\n  biography_blurb(format: HTML, partner_bio: true) {\n    text\n    credit\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -66,7 +66,7 @@ return {
         "kind": "LinkedField",
         "alias": "bio",
         "name": "artist",
-        "storageKey": "artist(id:\"pablo-picasso\")",
+        "storageKey": "artist(id:\"unused\")",
         "args": v0,
         "concreteType": "Artist",
         "plural": false,
@@ -90,7 +90,7 @@ return {
         "kind": "LinkedField",
         "alias": "bio",
         "name": "artist",
-        "storageKey": "artist(id:\"pablo-picasso\")",
+        "storageKey": "artist(id:\"unused\")",
         "args": v0,
         "concreteType": "Artist",
         "plural": false,
@@ -140,5 +140,5 @@ return {
   }
 };
 })();
-(node as any).hash = '0a8246989f2959bc69ece3a165abfd57';
+(node as any).hash = 'f7fadd31b3f1d6d3ef89cd1911a4b0be';
 export default node;
