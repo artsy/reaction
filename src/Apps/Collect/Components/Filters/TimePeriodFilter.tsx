@@ -1,4 +1,4 @@
-import { SystemProps } from "Artsy/SystemContext"
+import { ContextConsumer } from "Artsy/SystemContext"
 import React from "react"
 import { FilterState } from "../../FilterState"
 
@@ -6,31 +6,32 @@ import { Radio } from "@artsy/palette"
 
 export const TimePeriodFilter: React.SFC<{
   filters: FilterState
-  mediator: SystemProps["mediator"]
-}> = ({ filters, mediator }) => (
-  <>
-    {allowedPeriods.map((timePeriod, index) => {
-      const isSelected = filters.state.major_periods[0] === timePeriod
+}> = ({ filters }) => (
+  <ContextConsumer>
+    {({ mediator }) =>
+      allowedPeriods.map((timePeriod, index) => {
+        const isSelected = filters.state.major_periods[0] === timePeriod
 
-      return (
-        <Radio
-          my={0.3}
-          selected={isSelected}
-          value={timePeriod}
-          onSelect={({ selected }) => {
-            if (selected) {
-              return filters.setFilter("major_periods", timePeriod, mediator)
-            } else {
-              return filters.unsetFilter("major_periods", mediator)
-            }
-          }}
-          key={index}
-        >
-          {timePeriod}
-        </Radio>
-      )
-    })}
-  </>
+        return (
+          <Radio
+            my={0.3}
+            selected={isSelected}
+            value={timePeriod}
+            onSelect={({ selected }) => {
+              if (selected) {
+                return filters.setFilter("major_periods", timePeriod, mediator)
+              } else {
+                return filters.unsetFilter("major_periods", mediator)
+              }
+            }}
+            key={index}
+          >
+            {timePeriod}
+          </Radio>
+        )
+      })
+    }
+  </ContextConsumer>
 )
 
 const allowedPeriods = [

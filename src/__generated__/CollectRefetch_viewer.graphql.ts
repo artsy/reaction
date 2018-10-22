@@ -2,20 +2,20 @@
 
 import { ConcreteFragment } from "relay-runtime";
 import { CollectArtworkGrid_filtered_artworks$ref } from "./CollectArtworkGrid_filtered_artworks.graphql";
-declare const _CollectArtworkFilterRefetch_viewer$ref: unique symbol;
-export type CollectArtworkFilterRefetch_viewer$ref = typeof _CollectArtworkFilterRefetch_viewer$ref;
-export type CollectArtworkFilterRefetch_viewer = {
+declare const _CollectRefetch_viewer$ref: unique symbol;
+export type CollectRefetch_viewer$ref = typeof _CollectRefetch_viewer$ref;
+export type CollectRefetch_viewer = {
     readonly filtered_artworks: ({
         readonly " $fragmentRefs": CollectArtworkGrid_filtered_artworks$ref;
     }) | null;
-    readonly " $refType": CollectArtworkFilterRefetch_viewer$ref;
+    readonly " $refType": CollectRefetch_viewer$ref;
 };
 
 
 
 const node: ConcreteFragment = {
   "kind": "Fragment",
-  "name": "CollectArtworkFilterRefetch_viewer",
+  "name": "CollectRefetch_viewer",
   "type": "Viewer",
   "metadata": null,
   "argumentDefinitions": [
@@ -72,6 +72,18 @@ const node: ConcreteFragment = {
       "name": "price_range",
       "type": "String",
       "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "artist_id",
+      "type": "String",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "attribution_class",
+      "type": "[String]",
+      "defaultValue": null
     }
   ],
   "selections": [
@@ -97,9 +109,21 @@ const node: ConcreteFragment = {
         },
         {
           "kind": "Variable",
+          "name": "artist_id",
+          "variableName": "artist_id",
+          "type": "String"
+        },
+        {
+          "kind": "Variable",
           "name": "at_auction",
           "variableName": "at_auction",
           "type": "Boolean"
+        },
+        {
+          "kind": "Variable",
+          "name": "attribution_class",
+          "variableName": "attribution_class",
+          "type": "[String]"
         },
         {
           "kind": "Variable",
@@ -169,5 +193,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'eade9ee97a257512fff92948a7600e3f';
+(node as any).hash = 'b5a8be204586a373893524d3a402068a';
 export default node;

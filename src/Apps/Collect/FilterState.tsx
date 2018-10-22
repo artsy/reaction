@@ -12,6 +12,8 @@ export interface State {
   at_auction?: boolean
   inquireable_only?: boolean
   price_range?: string
+  attribution_class?: string[]
+  artist_id?: string
 
   tracking?: any
 }
@@ -27,6 +29,8 @@ export const initialState = {
   at_auction: null,
   inquireable_only: null,
   price_range: "*-*",
+  attribution_class: [],
+  artist_id: null,
 }
 
 export class FilterState extends Container<State> {
@@ -38,9 +42,9 @@ export class FilterState extends Container<State> {
 
   constructor(props: State) {
     super()
-    this.tracking = props.tracking
 
     if (props) {
+      this.tracking = props.tracking
       Object.keys(this.state).forEach(filter => {
         const value = props[filter]
         if (!value) {
@@ -88,6 +92,9 @@ export class FilterState extends Container<State> {
     if (filter === "major_periods") {
       newPartialState = { major_periods: [] }
     }
+    if (filter === "attribution_class") {
+      newPartialState = { attribution_class: [] }
+    }
     if (
       [
         "for_sale",
@@ -113,8 +120,11 @@ export class FilterState extends Container<State> {
 
     switch (filter) {
       case "major_periods":
+        newPartialState = { major_periods: [value] }
+        break
+      case "attribution_class":
         newPartialState = {
-          major_periods: [value],
+          attribution_class: this.state.attribution_class.concat(value),
         }
         break
       case "page":
@@ -137,11 +147,12 @@ export class FilterState extends Container<State> {
     this.setState(newPartialState, () => {
       mediator.trigger("collect:filter:changed", this.filteredState)
 
-      this.tracking.trackEvent({
-        action: "Commercial filter: params changed",
-        current: omit(this.state, ["selectedFilterCount", "showActionSheet"]),
-        changed: { [filter]: value },
-      })
+      this.tracking &&
+        this.tracking.trackEvent({
+          action: "Commercial filter: params changed",
+          current: omit(this.state, ["selectedFilterCount", "showActionSheet"]),
+          changed: { [filter]: value },
+        })
     })
   }
 

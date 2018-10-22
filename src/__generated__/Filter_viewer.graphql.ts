@@ -1,19 +1,19 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-import { CollectFilterContainer_viewer$ref } from "./CollectFilterContainer_viewer.graphql";
-declare const _CollectApp_viewer$ref: unique symbol;
-export type CollectApp_viewer$ref = typeof _CollectApp_viewer$ref;
-export type CollectApp_viewer = {
-    readonly " $fragmentRefs": CollectFilterContainer_viewer$ref;
-    readonly " $refType": CollectApp_viewer$ref;
+import { CollectRefetch_viewer$ref } from "./CollectRefetch_viewer.graphql";
+declare const _Filter_viewer$ref: unique symbol;
+export type Filter_viewer$ref = typeof _Filter_viewer$ref;
+export type Filter_viewer = {
+    readonly " $fragmentRefs": CollectRefetch_viewer$ref;
+    readonly " $refType": Filter_viewer$ref;
 };
 
 
 
 const node: ConcreteFragment = {
   "kind": "Fragment",
-  "name": "CollectApp_viewer",
+  "name": "Filter_viewer",
   "type": "Viewer",
   "metadata": null,
   "argumentDefinitions": [
@@ -64,7 +64,6 @@ const node: ConcreteFragment = {
       "name": "aggregations",
       "type": "[ArtworkAggregation]",
       "defaultValue": [
-        "MEDIUM",
         "TOTAL"
       ]
     },
@@ -89,14 +88,14 @@ const node: ConcreteFragment = {
     {
       "kind": "LocalArgument",
       "name": "attribution_class",
-      "type": "String",
+      "type": "[String]",
       "defaultValue": null
     }
   ],
   "selections": [
     {
       "kind": "FragmentSpread",
-      "name": "CollectFilterContainer_viewer",
+      "name": "CollectRefetch_viewer",
       "args": [
         {
           "kind": "Variable",
@@ -168,5 +167,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'dbb0e07f08a0aaf88a6c210ca4fdf614';
+(node as any).hash = 'f65cd94c77eb70331da906f87848bff2';
 export default node;
