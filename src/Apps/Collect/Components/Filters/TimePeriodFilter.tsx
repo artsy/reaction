@@ -6,10 +6,11 @@ import { Radio } from "@artsy/palette"
 
 export const TimePeriodFilter: React.SFC<{
   filters: FilterState
-}> = ({ filters }) => (
+  timePeriods?: string[]
+}> = ({ filters, timePeriods }) => (
   <ContextConsumer>
     {({ mediator }) =>
-      allowedPeriods.map((timePeriod, index) => {
+      (timePeriods || allowedPeriods).map((timePeriod, index) => {
         const isSelected = filters.state.major_periods[0] === timePeriod
 
         return (
