@@ -16,23 +16,32 @@ describe("MediumFilter", () => {
   ]
   const mediator = { trigger: jest.fn() }
 
-  const mediumFilter = mount(
-    <ContextProvider mediator={mediator}>
-      <MediumFilter filters={filterState} mediums={mediums} />
-    </ContextProvider>
-  )
+  const mediumFilter = (mediumProps = []) => {
+    return mount(
+      <ContextProvider mediator={mediator}>
+        <MediumFilter filters={filterState} mediums={mediumProps} />
+      </ContextProvider>
+    )
+  }
 
   it("displays the correct number of Radio components", () => {
-    expect(mediumFilter.find(Radio).length).toBe(4)
+    const component = mediumFilter(mediums)
+    expect(component.find(Radio).length).toBe(4)
+  })
+
+  it("Uses hardcoded mediums if none are returned", () => {
+    const component = mediumFilter()
+    expect(component.find(Radio).length).toBe(11)
   })
 
   it("updates the state with the correct medium", done => {
-    mediumFilter
+    const component = mediumFilter(mediums)
+    component
       .find(Radio)
       .at(0)
       .simulate("click")
 
-    mediumFilter.update()
+    component.update()
 
     setTimeout(() => {
       expect(filterState.state.medium).toBe("photography")
