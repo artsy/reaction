@@ -21,6 +21,10 @@ export class CollectionFilterContainer extends Component<
       agg => agg.slice === "MEDIUM"
     ) || { counts: [] }
 
+    const timePeriodAggregation = aggregations.find(
+      agg => agg.slice === "MAJOR_PERIOD"
+    ) || { counts: [] }
+
     return (
       <ContextConsumer>
         {({ user, mediator }) => {
@@ -33,6 +37,7 @@ export class CollectionFilterContainer extends Component<
                     user={user}
                     mediator={mediator}
                     mediums={mediumAggregation.counts as any}
+                    timePeriods={timePeriodAggregation.counts as any}
                   >
                     {(filters: FilterState) => (
                       <CollectionRefetchContainer
@@ -59,15 +64,16 @@ export const CollectionFilterFragmentContainer = createFragmentContainer(
         @argumentDefinitions(
           aggregations: {
             type: "[ArtworkAggregation]"
-            defaultValue: [MEDIUM, TOTAL]
+            defaultValue: [MEDIUM, MAJOR_PERIOD, TOTAL]
           }
         ) {
-        artworks(aggregations: $aggregations, size: 0) {
+        artworks(aggregations: $aggregations) {
           aggregations {
             slice
             counts {
-              name
               id
+              name
+              count
             }
           }
         }

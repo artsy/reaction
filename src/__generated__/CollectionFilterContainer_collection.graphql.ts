@@ -10,8 +10,9 @@ export type CollectionFilterContainer_collection = {
         readonly aggregations: ReadonlyArray<({
             readonly slice: ArtworkAggregation | null;
             readonly counts: ReadonlyArray<({
-                readonly name: string | null;
                 readonly id: string;
+                readonly name: string | null;
+                readonly count: number | null;
             }) | null> | null;
         }) | null> | null;
     }) | null;
@@ -41,6 +42,7 @@ return {
       "type": "[ArtworkAggregation]",
       "defaultValue": [
         "MEDIUM",
+        "MAJOR_PERIOD",
         "TOTAL"
       ]
     }
@@ -57,12 +59,6 @@ return {
           "name": "aggregations",
           "variableName": "aggregations",
           "type": "[ArtworkAggregation]"
-        },
-        {
-          "kind": "Literal",
-          "name": "size",
-          "value": 0,
-          "type": "Int"
         }
       ],
       "concreteType": "FilterArtworks",
@@ -96,6 +92,13 @@ return {
                 {
                   "kind": "ScalarField",
                   "alias": null,
+                  "name": "id",
+                  "args": null,
+                  "storageKey": null
+                },
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
                   "name": "name",
                   "args": null,
                   "storageKey": null
@@ -103,7 +106,7 @@ return {
                 {
                   "kind": "ScalarField",
                   "alias": null,
-                  "name": "id",
+                  "name": "count",
                   "args": null,
                   "storageKey": null
                 },
@@ -130,5 +133,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'a1e4c4295d2c2b72d625035da4bd3d00';
+(node as any).hash = '99a1c440b7587997db62df1c860b6b97';
 export default node;

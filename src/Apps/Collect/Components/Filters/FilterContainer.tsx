@@ -18,6 +18,7 @@ export interface FilterContainerProps {
   user?: any
   mediator: Mediator
   mediums: Array<{ id: string; name: string }>
+  timePeriods?: Array<{ name: string }>
   isMobile?: boolean
 }
 
@@ -52,7 +53,7 @@ export class FilterContainer extends React.Component<
   }
 
   renderFilters(filters: FilterState) {
-    const { mediums, isMobile } = this.props
+    const { mediums, timePeriods, isMobile } = this.props
 
     return (
       <>
@@ -71,7 +72,10 @@ export class FilterContainer extends React.Component<
         </Toggle>
 
         <Toggle expanded label="Time period">
-          <TimePeriodFilter filters={filters} />
+          <TimePeriodFilter
+            filters={filters}
+            timePeriods={timePeriods.map(a => a.name)}
+          />
         </Toggle>
       </>
     )
