@@ -64,7 +64,7 @@ export class FilterContainer extends React.Component<
         <Toggle expanded label="Time period">
           <TimePeriodFilter
             filters={filters}
-            timePeriods={timePeriods.map(a => a.name)}
+            timePeriods={!!timePeriods ? timePeriods.map(a => a.name) : null}
           />
         </Toggle>
       </>
