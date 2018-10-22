@@ -9,15 +9,16 @@ import { Responsive } from "Utils/Responsive"
 
 interface Props {
   collection: {
+    artist_ids?: string[]
+    category: string
+    credit?: string
+    description?: JSX.Element | string
+    gene_ids?: string[]
+    headerImage: string
+    major_periods?: string[]
+    medium?: string
     slug: string
     title: string
-    headerImage: string
-    description?: JSX.Element | string
-    credit?: string
-    medium?: string
-    major_periods?: string[]
-    gene_ids?: string[]
-    artist_ids?: string[]
   }
 }
 
@@ -59,7 +60,7 @@ export class CollectionHeader extends Component<Props> {
           const imageWidth = imageWidthSizes[size]
           const imageHeight = xs ? 160 : 240
           const chars = maxChars[size]
-          const subtitleFontSize = xs ? "1" : "3"
+          const subtitleFontSize = xs ? "2" : "3"
 
           return (
             <>
@@ -67,10 +68,11 @@ export class CollectionHeader extends Component<Props> {
                 <Box>
                   <Background
                     p={2}
-                    my={3}
+                    mt={xs ? 0 : 3}
+                    mb={3}
                     headerImageUrl={resize(collection.headerImage, {
-                      width: imageWidth,
-                      height: imageHeight,
+                      width: imageWidth * 2,
+                      height: imageHeight * 2,
                     })}
                     isMobile={xs ? true : false}
                     height={imageHeight}
@@ -79,7 +81,7 @@ export class CollectionHeader extends Component<Props> {
                     <MetaContainer>
                       <SubtitlesContainer>
                         <Sans size={subtitleFontSize} color="white100">
-                          Collecting category
+                          {collection.category}
                         </Sans>
                         <Sans
                           size={subtitleFontSize}
@@ -90,7 +92,7 @@ export class CollectionHeader extends Component<Props> {
                         </Sans>
                       </SubtitlesContainer>
                       <Spacer mt={1} />
-                      <Title size={xs ? "5" : "10"} color="white100">
+                      <Title size={xs ? "6" : "10"} color="white100">
                         {collection.title}
                       </Title>
                     </MetaContainer>
@@ -99,7 +101,7 @@ export class CollectionHeader extends Component<Props> {
                     <Grid>
                       <Row>
                         <Col xl="8" lg="8" md="10" sm="12" xs="12">
-                          <ExtendedSerif size="5" px={1}>
+                          <ExtendedSerif size="5" px={xs ? 0 : 1}>
                             <ReadMore
                               onReadMoreClicked={() => false}
                               maxChars={chars}
@@ -134,13 +136,13 @@ const Background = styled(Box)<{
   background: ${color("black30")};
   height: ${props => props.height}px;
   background-image: url(${props => props.headerImageUrl});
-  background-size: 100% 100%;
+  background-size: cover;
+  background-position: center;
   ${props =>
     props.isMobile &&
     `
       margin-left: -20px;
       margin-right: -20px;
-      margin-top: -20px;
   `};
 `
 export const Overlay = styled.div`
