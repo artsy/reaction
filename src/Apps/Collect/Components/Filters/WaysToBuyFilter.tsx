@@ -12,16 +12,14 @@ export const WaysToBuyFilter: React.SFC<{
         <Sans size="2" weight="medium" color="black100" my={1}>
           Ways to buy
         </Sans>
-        {
-          <Checkbox
-            selected={filters.state.acquireable}
-            onSelect={value => {
-              return filters.setFilter("acquireable", value, mediator)
-            }}
-          >
-            Buy now
-          </Checkbox>
-        }
+        <Checkbox
+          selected={filters.state.acquireable}
+          onSelect={value => {
+            return filters.setFilter("acquireable", value, mediator)
+          }}
+        >
+          Buy now
+        </Checkbox>
         <Checkbox
           selected={filters.state.at_auction}
           onSelect={value => filters.setFilter("at_auction", value, mediator)}

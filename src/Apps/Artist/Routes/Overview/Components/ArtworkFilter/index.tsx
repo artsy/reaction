@@ -148,20 +148,6 @@ class Filter extends Component<Props> {
     })
   }
 
-  renderForSaleCheckbox(filterState, mediator, counts) {
-    return (
-      <Checkbox
-        selected={filterState.state.for_sale}
-        disabled={!this.existy.hasForSaleArtworks || this.showZeroState}
-        onSelect={value => {
-          return filterState.setFilter("for_sale", value, mediator)
-        }}
-      >
-        For sale
-      </Checkbox>
-    )
-  }
-
   renderWaysToBuy(filterState, mediator, counts) {
     return (
       <React.Fragment>
