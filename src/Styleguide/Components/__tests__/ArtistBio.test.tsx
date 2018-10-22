@@ -1,34 +1,57 @@
-import { mount } from "enzyme"
 import React from "react"
-import { ArtistBio } from "../ArtistBio"
+
+import { ArtistBio_bio } from "__generated__/ArtistBio_bio.graphql"
+import { renderRelayTree } from "DevTools"
+import { graphql } from "react-relay"
+import {
+  ArtistBioFragmentContainer as ArtistBio,
+  ArtistBioProps,
+} from "../ArtistBio"
+
+jest.unmock("react-relay")
+
+type Omit<T, K> = { [k in Exclude<keyof T, K>]: T[k] }
 
 describe("ArtistBio", () => {
-  const bio = {
-    biography_blurb: {
-      text: '<a href="hi">hello how are you</a>',
-    },
+  const biography_blurb = {
+    text: '<a href="hi">hello how are you</a>',
+    credit: "",
   }
 
-  it("renders html text", () => {
-    const wrapper = mount(<ArtistBio bio={bio} />)
-    expect(wrapper.html()).toContain(bio.biography_blurb.text)
+  const getWrapper = (props: Partial<ArtistBioProps> = {}) => {
+    return renderRelayTree({
+      Component: ({ bio }: any) => <ArtistBio bio={bio} {...props} />,
+      query: graphql`
+        query ArtistBioTestQuery {
+          bio: artist(id: "unused") {
+            ...ArtistBio_bio
+          }
+        }
+      `,
+      mockResolvers: {
+        Artist: (): Omit<ArtistBio_bio, " $refType"> => ({ biography_blurb }),
+      },
+    })
+  }
+
+  it("renders html text", async () => {
+    const wrapper = await getWrapper()
+
+    expect(wrapper.html()).toContain(biography_blurb.text)
   })
 
-  it("renders a ReadMore expandable area", () => {
-    const wrapper = mount(<ArtistBio bio={bio} />)
+  it("renders a ReadMore expandable area", async () => {
+    const wrapper = await getWrapper()
     expect(wrapper.find("ReadMore").length).toBe(1)
   })
 
   // TODO: Chris, this test needs finishing.
-  xit("triggers callback when clicked", done => {
-    const wrapper = mount(
-      <ArtistBio
-        bio={bio}
-        onReadMoreClicked={() => {
-          done()
-        }}
-      />
-    )
+  xit("triggers callback when clicked", async done => {
+    const wrapper = await getWrapper({
+      onReadMoreClicked: () => {
+        done()
+      },
+    })
     wrapper.find("Container").simulate("click")
   })
 })
