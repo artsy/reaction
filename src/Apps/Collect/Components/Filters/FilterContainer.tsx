@@ -119,7 +119,11 @@ export class FilterContainer extends React.Component<
               <Box width={isMobile ? "100%" : "75%"}>
                 {!isMobile && <Separator mb={2} mt={-1} />}
 
-                <SortFilter filters={filters} xs={isMobile} />
+                <SortFilter
+                  filters={filters}
+                  xs={isMobile}
+                  onShow={() => this.setState({ showMobileActionSheet: true })}
+                />
 
                 <Spacer mb={2} />
 
