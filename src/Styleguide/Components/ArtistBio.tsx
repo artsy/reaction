@@ -7,7 +7,7 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { Responsive } from "Utils/Responsive"
 import { ReadMore } from "./ReadMore"
 
-interface Props {
+export interface ArtistBioProps {
   bio: ArtistBio_bio
   onReadMoreClicked?: () => void
   maxChars?: number
@@ -19,7 +19,7 @@ export const MAX_CHARS = {
 }
 
 @track({ context_module: Schema.ContextModule.ArtistBio })
-export class ArtistBio extends React.Component<Props> {
+export class ArtistBio extends React.Component<ArtistBioProps> {
   render() {
     return (
       <Responsive>

@@ -6,6 +6,7 @@ import HashProtocol from "farce/lib/HashProtocol"
 import MemoryProtocol from "farce/lib/MemoryProtocol"
 import queryMiddleware from "farce/lib/queryMiddleware"
 import { Resolver } from "found-relay"
+import { ScrollManager } from "found-scroll"
 import createInitialFarceRouter from "found/lib/createInitialFarceRouter"
 import createRender from "found/lib/createRender"
 import { loadComponents } from "loadable-components"
@@ -58,7 +59,11 @@ export function buildClientApp(config: RouterConfig): Promise<Resolve> {
         historyOptions: history.options,
         routeConfig: routes,
         resolver,
-        render,
+        render: renderArgs => (
+          <ScrollManager renderArgs={renderArgs}>
+            {render(renderArgs)}
+          </ScrollManager>
+        ),
       })
 
       try {

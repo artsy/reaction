@@ -22,7 +22,6 @@ declare module "sharify" {
       readonly METAPHYSICS_ENDPOINT: string
       readonly NODE_ENV: string
       readonly XAPP_TOKEN: string
-      readonly ENABLE_NEW_BUY_NOW_FLOW: string
     }
 
     export interface ResponseLocalData extends GlobalData {

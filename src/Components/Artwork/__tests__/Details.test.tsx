@@ -5,11 +5,6 @@ import { renderRelayTree } from "../../../DevTools"
 import { DetailsFragmentContainer } from "../Details"
 
 jest.unmock("react-relay")
-jest.mock("sharify", () => ({
-  data: {
-    ENABLE_NEW_BUY_NOW_FLOW: true,
-  },
-}))
 
 describe("Details", () => {
   const getWrapper = async response => {
