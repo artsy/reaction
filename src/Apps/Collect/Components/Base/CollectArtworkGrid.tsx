@@ -12,6 +12,7 @@ import {
   LoadingArea,
   LoadingAreaState,
 } from "Apps/Artist/Components/LoadingArea"
+import { CollectEmptyState } from "./CollectEmptyState"
 
 interface Props {
   columnCount: number
@@ -69,6 +70,12 @@ class Artworks extends Component<Props, LoadingAreaState> {
   }
 
   render() {
+    const {
+      filtered_artworks: { artworks },
+    } = this.props
+    const hasArtworks = artworks.edges.length !== 0
+    const isLoading = this.state.isLoading || this.props.isLoading
+
     return (
       <ContextConsumer>
         {({ user, mediator }) => {
@@ -76,38 +83,36 @@ class Artworks extends Component<Props, LoadingAreaState> {
             <Subscribe to={[FilterState]}>
               {(filters: FilterState) => {
                 return (
-                  <LoadingArea
-                    isLoading={this.state.isLoading || this.props.isLoading}
-                  >
-                    <ArtworkGrid
-                      artworks={this.props.filtered_artworks.artworks as any}
-                      columnCount={this.props.columnCount}
-                      itemMargin={40}
-                      user={user}
-                      mediator={mediator}
-                    />
+                  <LoadingArea isLoading={isLoading}>
+                    {!hasArtworks ? (
+                      <CollectEmptyState onClick={filters.resetFilters} />
+                    ) : (
+                      <>
+                        <ArtworkGrid
+                          artworks={artworks as any}
+                          columnCount={this.props.columnCount}
+                          itemMargin={40}
+                          user={user}
+                          mediator={mediator}
+                        />
 
-                    <Spacer mb={3} />
+                        <Spacer mb={3} />
 
-                    <Box>
-                      <Pagination
-                        hasNextPage={
-                          this.props.filtered_artworks.artworks.pageInfo
-                            .hasNextPage
-                        }
-                        pageCursors={
-                          this.props.filtered_artworks.artworks
-                            .pageCursors as any
-                        }
-                        onClick={(cursor, page) => {
-                          this.loadAfter(cursor, page, filters, mediator)
-                        }}
-                        onNext={() => {
-                          this.loadNext(filters, mediator)
-                        }}
-                        scrollTo="#jump--collectArtworkGrid"
-                      />
-                    </Box>
+                        <Box>
+                          <Pagination
+                            hasNextPage={artworks.pageInfo.hasNextPage}
+                            pageCursors={artworks.pageCursors as any}
+                            onClick={(cursor, page) => {
+                              this.loadAfter(cursor, page, filters, mediator)
+                            }}
+                            onNext={() => {
+                              this.loadNext(filters, mediator)
+                            }}
+                            scrollTo="#jump--collectArtworkGrid"
+                          />
+                        </Box>
+                      </>
+                    )}
                   </LoadingArea>
                 )
               }}
