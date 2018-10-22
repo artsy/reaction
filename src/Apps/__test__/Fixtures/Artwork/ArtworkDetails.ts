@@ -2,8 +2,7 @@ export const ArtworkDetailsFixture = {
   id: "richard-prince-untitled-fashion",
   description: "Artist designed towel for WOW. --*Courtesy of EHC Fine Art*",
   is_in_auction: false,
-  additional_information:
-    '<p>Signed and dated in pencil, outside of the edition of 150; sheet: 58 x 58cm</p>\n<p>Subject to Artist’s Resale Rights (see <a href="https://chiswickauctions.co.uk/wp-content/uploads/Chiswick-Auctions-Buyers-Terms-and-Conditions-3.pdf">Conditions of Sale</a> for further information)</p>\n',
+  additional_information: "<p>Here is some addition info for this work</p>\n",
   partner: {
     name: "Salon 94",
     initials: "S9",
@@ -11,12 +10,14 @@ export const ArtworkDetailsFixture = {
       { city: "New York" },
       { city: "Kharkov" },
       { city: "New York" },
+      { city: "Paris" },
+      { city: "Berlin" },
       { city: "" },
     ],
     profile: {
       __id: "profile",
       is_followed: true,
-      icon: { url: "https://picsum.photos/110/110/?random" },
+      icon: { url: "https://profile_url" },
     },
   },
   framed: { label: "Framed", details: null },
