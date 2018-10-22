@@ -33,7 +33,7 @@ describe("ArtistHeader", () => {
   it("renders the follow button in the correct state", async () => {
     const wrapper = await getWrapper()
     const html = wrapper.html()
-    expect(html).toContain("Following")
-    expect(html).not.toContain("Follow")
+    expect(html).toContain(">Following<")
+    expect(html).not.toContain(">Follow<")
   })
 })
