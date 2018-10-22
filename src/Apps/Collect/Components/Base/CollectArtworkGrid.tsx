@@ -73,7 +73,7 @@ class Artworks extends Component<Props, LoadingAreaState> {
     const {
       filtered_artworks: { artworks },
     } = this.props
-    const hasArtworks = artworks.edges.length !== 0
+    const hasArtworks = artworks && artworks.edges.length !== 0
     const isLoading = this.state.isLoading || this.props.isLoading
 
     return (
