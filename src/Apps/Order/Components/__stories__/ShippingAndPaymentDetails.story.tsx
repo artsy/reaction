@@ -54,91 +54,80 @@ const orderQuery = graphql`
 
 storiesOf("Apps/Order Page/Components", module).add(
   "ShippingAndPaymentSummary",
-  () => {
-    return (
-      <React.Fragment>
-        <Section title="Shipping and Payment Summary">
-          <h4>Delivery</h4>
-          <Flex flexDirection="column" width={300}>
-            <MockRelayRenderer
-              Component={ShippingAndPaymentSummary}
-              mockResolvers={{ Order: () => order }}
-              query={orderQuery}
-            />
-          </Flex>
-          <h4>Pickup</h4>
-          <Flex flexDirection="column" width={300}>
-            <MockRelayRenderer
-              Component={ShippingAndPaymentSummary}
-              mockResolvers={{
-                Order: () => ({
-                  ...order,
-                  requestedFulfillment: {
-                    __typename: "Pickup",
-                  },
-                }),
-              }}
-              query={orderQuery}
-            />
-          </Flex>
-        </Section>
-        <Section title="Shipping and Payment Review">
-          <h4>Delivery</h4>
-          <Flex flexDirection="column" width={300}>
-            <MockRelayRenderer
-              Component={(props: any) => (
-                <ShippingAndPaymentReview
-                  onChangePayment={() => alert("clicked")}
-                  onChangeShipping={() => alert("clicked")}
-                  {...props}
-                />
-              )}
-              mockResolvers={{
-                Order: () => order,
-              }}
-              query={orderQuery}
-            />
-          </Flex>
-          <h4>Pickup</h4>
-          <Flex flexDirection="column" width={300}>
-            <MockRelayRenderer
-              Component={(props: any) => (
-                <ShippingAndPaymentReview
-                  onChangePayment={() => alert("clicked")}
-                  onChangeShipping={() => alert("clicked")}
-                  {...props}
-                />
-              )}
-              mockResolvers={{
-                Order: () => ({
-                  ...order,
-                  requestedFulfillment: {
-                    __typename: "Pickup",
-                  },
-                }),
-              }}
-              query={orderQuery}
-            />
-          </Flex>
-        </Section>
-        <Section title="Credit card details">
-          <Flex flexDirection="column" width={300} mb={2}>
-            <CreditCardDetails {...order.creditCard} brand="Visa" />
-          </Flex>
-          <Flex flexDirection="column" width={300} mb={2}>
-            <CreditCardDetails {...order.creditCard} brand="Mastercard" />
-          </Flex>
-          <Flex flexDirection="column" width={300} mb={2}>
-            <CreditCardDetails {...order.creditCard} brand="Discover" />
-          </Flex>
-          <Flex flexDirection="column" width={300} mb={2}>
-            <CreditCardDetails {...order.creditCard} brand="American Express" />
-          </Flex>
-          <Flex flexDirection="column" width={300}>
-            <CreditCardDetails {...order.creditCard} brand="unknown" />
-          </Flex>
-        </Section>
-      </React.Fragment>
-    )
-  }
+  () => (
+    <>
+      <Section title="Shipping and Payment Summary">
+        <h4>Delivery</h4>
+        <Flex flexDirection="column" width={300}>
+          <MockRelayRenderer
+            Component={ShippingAndPaymentSummary}
+            mockResolvers={{
+              Order: (...anything) => {
+                console.log("HEY!!!", anything)
+                return order
+              },
+            }}
+            query={orderQuery}
+          />
+        </Flex>
+      </Section>
+
+      <Section title="Shipping and Payment Review">
+        <h4>Delivery</h4>
+        <Flex flexDirection="column" width={300}>
+          <MockRelayRenderer
+            Component={(props: any) => (
+              <ShippingAndPaymentReview
+                onChangePayment={() => alert("clicked")}
+                onChangeShipping={() => alert("clicked")}
+                {...props}
+              />
+            )}
+            mockResolvers={{
+              Order: () => order,
+            }}
+            query={orderQuery}
+          />
+        </Flex>
+        <h4>Pickup</h4>
+        <Flex flexDirection="column" width={300}>
+          <MockRelayRenderer
+            Component={(props: any) => (
+              <ShippingAndPaymentReview
+                onChangePayment={() => alert("clicked")}
+                onChangeShipping={() => alert("clicked")}
+                {...props}
+              />
+            )}
+            mockResolvers={{
+              Order: () => ({
+                ...order,
+                requestedFulfillment: {
+                  __typename: "Pickup",
+                },
+              }),
+            }}
+            query={orderQuery}
+          />
+        </Flex>
+      </Section>
+      <Section title="Credit card details">
+        <Flex flexDirection="column" width={300} mb={2}>
+          <CreditCardDetails {...order.creditCard} brand="Visa" />
+        </Flex>
+        <Flex flexDirection="column" width={300} mb={2}>
+          <CreditCardDetails {...order.creditCard} brand="Mastercard" />
+        </Flex>
+        <Flex flexDirection="column" width={300} mb={2}>
+          <CreditCardDetails {...order.creditCard} brand="Discover" />
+        </Flex>
+        <Flex flexDirection="column" width={300} mb={2}>
+          <CreditCardDetails {...order.creditCard} brand="American Express" />
+        </Flex>
+        <Flex flexDirection="column" width={300}>
+          <CreditCardDetails {...order.creditCard} brand="unknown" />
+        </Flex>
+      </Section>
+    </>
+  )
 )
