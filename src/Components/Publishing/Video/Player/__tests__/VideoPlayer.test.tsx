@@ -17,16 +17,17 @@ describe("VideoPlayer", () => {
         url="http://files.artsy.net/videos/placeholder.mp4"
         tracking={{
           trackEvent,
+          getTrackingData: jest.fn(),
         }}
       />
     )
   }
 
   beforeEach(() => {
-    FullscreenHelpers.addFSEventListener = jest.fn()
-    FullscreenHelpers.requestFullscreen = jest.fn()
-    FullscreenHelpers.exitFullscreen = jest.fn()
-    document.fullscreenEnabled = true
+    ;(FullscreenHelpers as any).addFSEventListener = jest.fn()
+    ;(FullscreenHelpers as any).requestFullscreen = jest.fn()
+    ;(FullscreenHelpers as any).exitFullscreen = jest.fn()
+    ;(document as any).fullscreenEnabled = true
   })
 
   it("matches the snapshot", () => {
@@ -98,7 +99,7 @@ describe("VideoPlayer", () => {
 
     it("#toggleFullscreen - exits fullscreen", () => {
       const videoPlayer = getWrapper()
-      FullscreenHelpers.isFullscreen = () => true
+      ;(FullscreenHelpers as any).isFullscreen = () => true
       videoPlayer.instance().toggleFullscreen()
       expect(FullscreenHelpers.exitFullscreen).toBeCalled()
     })
@@ -173,7 +174,7 @@ describe("VideoPlayer", () => {
         writable: true,
       })
       videoPlayer.instance().video.currentTime = 3
-      videoPlayer.instance().video.duration = 10
+      ;(videoPlayer.instance().video as any).duration = 10
       videoPlayer.instance().trackProgress()
       expect(trackEvent).toBeCalledWith({
         action: "Video duration",
