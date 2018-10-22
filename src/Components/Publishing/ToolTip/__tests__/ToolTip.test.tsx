@@ -3,7 +3,6 @@ import { mount } from "enzyme"
 import "jest-styled-components"
 import PropTypes from "prop-types"
 import React from "react"
-import renderer from "react-test-renderer"
 import { Artists, Genes } from "../../Fixtures/Components"
 import { wrapperWithContext } from "../../Fixtures/Helpers"
 import { ArtistToolTip } from "../ArtistToolTip"
@@ -29,6 +28,7 @@ describe("ToolTip", () => {
   }
 
   // FIXME: Reenable when React 16.4.5 is release
+  // (still seeing this error at React 16.5.0)
   // https://github.com/facebook/react/issues/13150#issuecomment-411134477
 
   // describe("snapshots", () => {
