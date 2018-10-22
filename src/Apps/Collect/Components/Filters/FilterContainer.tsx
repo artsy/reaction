@@ -1,5 +1,4 @@
 import React from "react"
-import { data as sd } from "sharify"
 import { Subscribe } from "unstated"
 
 import { FilterState } from "Apps/Collect/FilterState"
@@ -36,15 +35,6 @@ export class FilterContainer extends React.Component<
     showMobileActionSheet: false,
   }
 
-  get enableBuyNow(): boolean {
-    const user = this.props.user
-    const hasLabFeature =
-      user &&
-      user.lab_features &&
-      user.lab_features.includes("New Buy Now Flow")
-    return sd.ENABLE_NEW_BUY_NOW_FLOW || hasLabFeature
-  }
-
   hideMobileActionSheet = () => {
     this.setState({
       showMobileActionSheet: false,
@@ -59,7 +49,7 @@ export class FilterContainer extends React.Component<
         {!isMobile && <Separator mb={2} mt={-1} />}
 
         <Flex flexDirection="column" alignItems="left" mt={-1} mb={1}>
-          <WaysToBuyFilter enableBuyNow={this.enableBuyNow} filters={filters} />
+          <WaysToBuyFilter filters={filters} />
         </Flex>
 
         <Flex flexDirection="column" alignItems="left" my={1}>
