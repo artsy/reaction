@@ -15073,7 +15073,7 @@ tslint-config-prettier@^1.1.0:
   resolved "https://registry.yarnpkg.com/tslint-config-prettier/-/tslint-config-prettier-1.13.0.tgz#189e821931ad89e0364e4e292d5c44a14e90ecd6"
   integrity sha512-assE77K7K8Q9j8CVIHiU3d1uoKc8N5v7UPpkQ9IE8BEPWkvSYR37lDuYekDlAMFqR1IpD6CrS+uOJLl6pw7Wdw==
 
-tslint-plugin-relay@~0.0.1:
+tslint-plugin-relay@^0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/tslint-plugin-relay/-/tslint-plugin-relay-0.0.2.tgz#8d4b05d8776b39d23a4abbe0b9ad4f8063437312"
   integrity sha512-f6VSbZfplckkCMXGAlQkV9d3iB6yzr982sW/cbYm/ad0mHL2wLFH+CbcUpdhn1O/YWtAArfpZ89kyQVpllyzXw==

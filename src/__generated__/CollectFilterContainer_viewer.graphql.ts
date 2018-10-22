@@ -1,11 +1,11 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-import { CollectArtworkFilterRefetch_viewer$ref } from "./CollectArtworkFilterRefetch_viewer.graphql";
+import { CollectRefetch_viewer$ref } from "./CollectRefetch_viewer.graphql";
 export type ArtworkAggregation = "COLOR" | "DIMENSION_RANGE" | "FOLLOWED_ARTISTS" | "GALLERY" | "INSTITUTION" | "MAJOR_PERIOD" | "MEDIUM" | "MERCHANDISABLE_ARTISTS" | "PARTNER_CITY" | "PERIOD" | "PRICE_RANGE" | "TOTAL" | "%future added value";
-declare const _ArtworkGrid_viewer$ref: unique symbol;
-export type ArtworkGrid_viewer$ref = typeof _ArtworkGrid_viewer$ref;
-export type ArtworkGrid_viewer = {
+declare const _CollectFilterContainer_viewer$ref: unique symbol;
+export type CollectFilterContainer_viewer$ref = typeof _CollectFilterContainer_viewer$ref;
+export type CollectFilterContainer_viewer = {
     readonly filter_artworks: ({
         readonly aggregations: ReadonlyArray<({
             readonly slice: ArtworkAggregation | null;
@@ -15,8 +15,8 @@ export type ArtworkGrid_viewer = {
             }) | null> | null;
         }) | null> | null;
     }) | null;
-    readonly " $fragmentRefs": CollectArtworkFilterRefetch_viewer$ref;
-    readonly " $refType": ArtworkGrid_viewer$ref;
+    readonly " $fragmentRefs": CollectRefetch_viewer$ref;
+    readonly " $refType": CollectFilterContainer_viewer$ref;
 };
 
 
@@ -31,7 +31,7 @@ var v0 = {
 };
 return {
   "kind": "Fragment",
-  "name": "ArtworkGrid_viewer",
+  "name": "CollectFilterContainer_viewer",
   "type": "Viewer",
   "metadata": null,
   "argumentDefinitions": [
@@ -96,6 +96,18 @@ return {
       "kind": "LocalArgument",
       "name": "price_range",
       "type": "String",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "artist_id",
+      "type": "String",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "attribution_class",
+      "type": "[String]",
       "defaultValue": null
     }
   ],
@@ -171,7 +183,7 @@ return {
     },
     {
       "kind": "FragmentSpread",
-      "name": "CollectArtworkFilterRefetch_viewer",
+      "name": "CollectRefetch_viewer",
       "args": [
         {
           "kind": "Variable",
@@ -181,8 +193,20 @@ return {
         },
         {
           "kind": "Variable",
+          "name": "artist_id",
+          "variableName": "artist_id",
+          "type": null
+        },
+        {
+          "kind": "Variable",
           "name": "at_auction",
           "variableName": "at_auction",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "attribution_class",
+          "variableName": "attribution_class",
           "type": null
         },
         {
@@ -232,5 +256,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '99b1653db12202b0369643ca3ca5313a';
+(node as any).hash = '8790c9b9f4e32b60d51d7602788a75a5';
 export default node;
