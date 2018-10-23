@@ -1,7 +1,7 @@
 import {
   ArtworkWithClassification,
   ArtworkWithoutClassification,
-} from "Apps/__test__/Fixtures/Artwork/Sidebar/Classification"
+} from "Apps/__test__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarClassification"
 import { ArtworkSidebarClassification as Classification } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarClassification"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"

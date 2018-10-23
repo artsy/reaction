@@ -5,7 +5,7 @@ import {
   FilledOutMetadataMultipleEditionSets,
   FilledOutMetadataNoEditions,
   FilledOutMetadataOneEditionSet,
-} from "Apps/__test__/Fixtures/Artwork/Sidebar/ArtworkMetadata"
+} from "Apps/__test__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarMetadata"
 import { ArtworkSidebarMetadata as Metadata } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarMetadata"
 import { RelayStubProvider } from "DevTools/RelayStubProvider"
 import React from "react"

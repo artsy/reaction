@@ -3,7 +3,7 @@ import {
   ArtworkWithTitleAndMedium,
   ArtworkWithTitleDateAndMedium,
   ArtworkWithTitleOnly,
-} from "Apps/__test__/Fixtures/Artwork/Sidebar/TitleInfo"
+} from "Apps/__test__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarTitleInfo"
 import { ArtworkSidebarTitleInfo as TitleInfo } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarTitleInfo"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"

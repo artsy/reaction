@@ -1,4 +1,4 @@
-export const NoAuctionArtworkSidebarFixture = {
+export const ArtworkSidebarFixture = {
   id: "josef-albers-homage-to-the-square-85",
   is_biddable: false,
   is_in_auction: false,

@@ -6,7 +6,7 @@ import {
   ForSaleArtworkWithMultipleConsignableArtists,
   ForSaleArtworkWithNoConsignableArtists,
   ForSaleArtworkWithOneConsignableArtist,
-} from "Apps/__test__/Fixtures/Artwork/Sidebar/ExtraLinks"
+} from "Apps/__test__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarExtraLinks"
 import { ArtworkSidebarExtraLinks as ExtraLinks } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarExtraLinks"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
