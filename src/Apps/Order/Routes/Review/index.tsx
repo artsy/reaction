@@ -1,8 +1,8 @@
 import { Button, Flex, Join, Sans, Spacer } from "@artsy/palette"
 import { Review_order } from "__generated__/Review_order.graphql"
 import { ReviewSubmitOrderMutation } from "__generated__/ReviewSubmitOrderMutation.graphql"
-import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
 import { ItemReviewFragmentContainer as ItemReview } from "Apps/Order/Components/ItemReview"
+import { OrderStepper } from "Apps/Order/Components/OrderStepper"
 import { ShippingAndPaymentReviewFragmentContainer as ShippingAndPaymentReview } from "Apps/Order/Components/ShippingAndPaymentReview"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
@@ -212,7 +212,10 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
         <HorizontalPadding px={[0, 4]}>
           <Row>
             <Col>
-              <BuyNowStepper currentStep={"review"} />
+              <OrderStepper
+                currentStep="Review"
+                makeOfferFlow={false /* TODO: order.isMakeOffer or whatever */}
+              />
             </Col>
           </Row>
         </HorizontalPadding>
