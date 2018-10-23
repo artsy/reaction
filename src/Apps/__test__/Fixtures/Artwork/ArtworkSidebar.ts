@@ -1,0 +1,142 @@
+export const ArtworkSidebarFixture = {
+  id: "josef-albers-homage-to-the-square-85",
+  is_biddable: false,
+  is_in_auction: false,
+  is_for_sale: true,
+  is_inquireable: true,
+  sale_message: "$2,000",
+  partner: {
+    __id: "UGFydG5lcjpyb2dhbGxlcnk=",
+    name: "RoGallery",
+    href: "/rogallery",
+    locations: [],
+  },
+  sale_artwork: null,
+  sale: null,
+  myLotStanding: null,
+  artists: [
+    {
+      __id: "QXJ0aXN0Ompvc2VmLWFsYmVycw==",
+      id: "josef-albers",
+      name: "Josef Albers",
+      href: "/artist/josef-albers",
+      is_followed: false,
+      counts: {
+        follows: 9346,
+      },
+      is_consignable: true,
+    },
+  ],
+  title: "Homage to the Square",
+  date: "1972",
+  medium: "Silkscreen",
+  edition_sets: [
+    {
+      __id: "RWRpdGlvblNldDo1YmM4ZGZmNWE4YzMzODQ5ZjVhODc3ZDE=",
+      dimensions: {
+        in: "15 × 20 in",
+        cm: "38.1 × 50.8 cm",
+      },
+      edition_of: "Edition of 1000",
+    },
+  ],
+  dimensions: {
+    in: "15 × 20 in",
+    cm: "38.1 × 50.8 cm",
+  },
+  edition_of: "Edition of 1000",
+  attribution_class: {
+    short_description: "This is an editioned multiple",
+  },
+}
+
+export const AuctionArtworkSidebarFixture = {
+  is_biddable: true,
+  is_in_auction: true,
+  is_for_sale: true,
+  is_inquireable: true,
+  sale_message: "Contact For Price",
+  partner: {
+    __id: "UGFydG5lcjpoZXJpdGFnZS1hdWN0aW9ucw==",
+    name: "Heritage Auctions",
+    href: "/auction/partner-595e67cab202a301c4818569",
+    locations: [],
+  },
+  sale_artwork: {
+    lot_label: "60006",
+    estimate: "$6,000–$8,000",
+    is_with_reserve: false,
+    reserve_message: null,
+    reserve_status: "no_reserve",
+    current_bid: {
+      display: "$3,000",
+    },
+    counts: {
+      bidder_positions: 1,
+    },
+    increments: [
+      { display: "$3,200" },
+      { display: "$3,400" },
+      { display: "$3,600" },
+      { display: "$3,800" },
+      { display: "$4,000" },
+      { display: "$4,200" },
+      { display: "$4,400" },
+      { display: "$4,600" },
+      { display: "$4,800" },
+      { display: "$5,000" },
+      { display: "$5,500" },
+      { display: "$6,000" },
+      { display: "$6,500" },
+      { display: "$7,000" },
+      { display: "$7,500" },
+      { display: "$8,000" },
+      { display: "$8,500" },
+      { display: "$9,000" },
+      { display: "$9,500" },
+      { display: "$10,000" },
+    ],
+  },
+  sale: {
+    registrationStatus: null,
+    is_preview: false,
+    is_open: true,
+    is_live_open: true,
+    is_closed: false,
+    is_registration_closed: true,
+    is_with_buyers_premium: true,
+  },
+  myLotStanding: null,
+  artists: [
+    {
+      __id: "QXJ0aXN0OmZyYW5jaXMtYmFjb24=",
+      id: "francis-bacon",
+      name: "Francis Bacon",
+      href: "/artist/francis-bacon",
+      is_followed: false,
+      counts: {
+        follows: 64403,
+      },
+      is_consignable: true,
+    },
+  ],
+  title: "Metropolitan Museum of Art",
+  date: "1975",
+  medium: "Lithograph in colors on Arches paper",
+  edition_sets: [
+    {
+      __id: "RWRpdGlvblNldDo1YmJiYjQ4NzU0OThmMzYwY2IyZjYxZDg=",
+      dimensions: {
+        in: "45 1/8 × 34 in",
+        cm: "114.6 × 86.4 cm",
+      },
+      edition_of: "Edition 119/200",
+    },
+  ],
+  dimensions: {
+    in: "45 1/8 × 34 in",
+    cm: "114.6 × 86.4 cm",
+  },
+  edition_of: "Edition 119/200",
+  attribution_class: null,
+}
