@@ -3,9 +3,7 @@ import React from "react"
 // @ts-ignore
 import Artwork, { ArtworkProps } from "./Artwork"
 // @ts-ignore
-import ArtworkGrid, {
-  ArtworkGridContainerProps,
-} from "./ArtworkGrid/ArtworkGrid"
+import ArtworkGrid, { ArtworkGridProps } from "./ArtworkGrid/ArtworkGrid"
 // @ts-ignore
 import BorderedPulldown, { BorderedPullDownProps } from "./BorderedPulldown"
 import Buttons from "./Buttons"

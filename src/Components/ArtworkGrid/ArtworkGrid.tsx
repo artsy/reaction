@@ -11,7 +11,7 @@ import RelayGridItem, { ArtworkGridItem } from "../Artwork/GridItem"
 
 type SectionedArtworks = Array<Array<ArtworkGrid_artworks["edges"][0]["node"]>>
 
-export interface ArtworkGridContainerProps
+export interface ArtworkGridProps
   extends React.HTMLProps<ArtworkGridContainer> {
   artworks: ArtworkGrid_artworks
   columnCount?: number
@@ -30,7 +30,7 @@ export interface ArtworkGridContainerState {
 }
 
 export class ArtworkGridContainer extends React.Component<
-  ArtworkGridContainerProps,
+  ArtworkGridProps,
   ArtworkGridContainerState
 > {
   static defaultProps = {
