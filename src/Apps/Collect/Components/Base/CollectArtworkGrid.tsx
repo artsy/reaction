@@ -12,7 +12,7 @@ import {
   LoadingArea,
   LoadingAreaState,
 } from "Apps/Artist/Components/LoadingArea"
-import { CollectEmptyState } from "./CollectEmptyState"
+import { ArtworkGridEmptyState } from "./ArtworkGridEmptyState"
 
 interface Props {
   columnCount: number
@@ -85,7 +85,9 @@ class Artworks extends Component<Props, LoadingAreaState> {
                 return (
                   <LoadingArea isLoading={isLoading}>
                     {!hasArtworks ? (
-                      <CollectEmptyState onClick={filters.resetFilters} />
+                      <ArtworkGridEmptyState
+                        onClearFilters={filters.resetFilters}
+                      />
                     ) : (
                       <>
                         <ArtworkGrid

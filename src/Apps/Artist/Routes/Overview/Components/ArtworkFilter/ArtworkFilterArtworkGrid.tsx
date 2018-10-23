@@ -1,4 +1,4 @@
-import { Box, Message, Spacer } from "@artsy/palette"
+import { Box, Spacer } from "@artsy/palette"
 import { ArtworkFilterArtworkGrid_filtered_artworks } from "__generated__/ArtworkFilterArtworkGrid_filtered_artworks.graphql"
 import { FilterState } from "Apps/Artist/Routes/Overview/state"
 import { ContextConsumer } from "Artsy/Router"
@@ -12,6 +12,7 @@ import {
   LoadingArea,
   LoadingAreaState,
 } from "Apps/Artist/Components/LoadingArea"
+import { ArtworkGridEmptyState } from "Apps/Collect/Components/Base/ArtworkGridEmptyState"
 import { Responsive } from "Utils/Responsive"
 
 interface Props {
@@ -125,13 +126,9 @@ class Artworks extends Component<Props, LoadingAreaState> {
                       </Box>
                     </>
                   ) : (
-                    <Message
-                      textSize={xs ? "3t" : "5t"}
-                      justifyContent="center"
-                    >
-                      There aren't any works available by the artist that meet
-                      the following criteria at this time.
-                    </Message>
+                    <ArtworkGridEmptyState
+                      onClearFilters={filterState.resetFilters}
+                    />
                   )}
                 </LoadingArea>
               )
