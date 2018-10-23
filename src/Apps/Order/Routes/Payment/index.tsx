@@ -17,6 +17,8 @@ import { CreditCardInput } from "Apps/Order/Components/CreditCardInput"
 import { Helper } from "Apps/Order/Components/Helper"
 import { TransactionSummaryFragmentContainer as TransactionSummary } from "Apps/Order/Components/TransactionSummary"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
@@ -57,6 +59,7 @@ interface PaymentState {
   errorModalMessage: string
 }
 
+@track()
 export class PaymentRoute extends Component<PaymentProps, PaymentState> {
   state = {
     hideBillingAddress: true,
@@ -137,7 +140,18 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
     }
   }
 
-  handleChangeHideBillingAddress = (hideBillingAddress: boolean) => {
+  @track((props, state, args) => {
+    const willInputBillingAddress = !args[0]
+    if (willInputBillingAddress) {
+      return {
+        action_type: Schema.ActionType.Click,
+        subject: Schema.Subject.BNMOUseShippingAddress,
+        flow: "buy now",
+        type: "checkbox",
+      }
+    }
+  })
+  handleChangeHideBillingAddress(hideBillingAddress: boolean) {
     if (!hideBillingAddress) {
       this.setState({
         address: {
@@ -220,7 +234,9 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
                       {!this.isPickup() && (
                         <Checkbox
                           selected={this.state.hideBillingAddress}
-                          onSelect={this.handleChangeHideBillingAddress}
+                          onSelect={this.handleChangeHideBillingAddress.bind(
+                            this
+                          )}
                         >
                           Billing and shipping addresses are the same
                         </Checkbox>
