@@ -25,7 +25,6 @@ const {
   USER_LAB_FEATURES,
   WEBPACK_DEVTOOL = "cheap-module-eval-source-map",
   XAPP_TOKEN,
-  ENABLE_NEW_BUY_NOW_FLOW,
 } = process.env
 
 /**
@@ -40,7 +39,6 @@ const sharifyPath = sharify({
   METAPHYSICS_ENDPOINT,
   NODE_ENV,
   XAPP_TOKEN,
-  ENABLE_NEW_BUY_NOW_FLOW,
 })
 
 const plugins = [

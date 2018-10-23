@@ -28,7 +28,7 @@ export const EntityHeader: SFC<EntityHeaderProps> = ({
 
   return (
     <Container onClick={() => handleContainerClick()} hasLink={!!href}>
-      {imageUrl && (
+      {(imageUrl || initials) && (
         <Flex mr={1}>
           <Avatar size="xs" src={imageUrl} initials={initials} />
         </Flex>

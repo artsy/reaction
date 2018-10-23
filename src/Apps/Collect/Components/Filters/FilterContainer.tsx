@@ -1,5 +1,4 @@
 import React from "react"
-import { data as sd } from "sharify"
 import { Subscribe } from "unstated"
 
 import { FilterState } from "Apps/Collect/FilterState"
@@ -18,6 +17,7 @@ export interface FilterContainerProps {
   user?: any
   mediator: Mediator
   mediums: Array<{ id: string; name: string }>
+  timePeriods?: Array<{ name: string }>
   isMobile?: boolean
 }
 
@@ -36,15 +36,6 @@ export class FilterContainer extends React.Component<
     showMobileActionSheet: false,
   }
 
-  get enableBuyNow(): boolean {
-    const user = this.props.user
-    const hasLabFeature =
-      user &&
-      user.lab_features &&
-      user.lab_features.includes("New Buy Now Flow")
-    return sd.ENABLE_NEW_BUY_NOW_FLOW || hasLabFeature
-  }
-
   hideMobileActionSheet = () => {
     this.setState({
       showMobileActionSheet: false,
@@ -52,14 +43,14 @@ export class FilterContainer extends React.Component<
   }
 
   renderFilters(filters: FilterState) {
-    const { mediums, isMobile } = this.props
+    const { mediums, timePeriods, isMobile } = this.props
 
     return (
       <>
         {!isMobile && <Separator mb={2} mt={-1} />}
 
         <Flex flexDirection="column" alignItems="left" mt={-1} mb={1}>
-          <WaysToBuyFilter enableBuyNow={this.enableBuyNow} filters={filters} />
+          <WaysToBuyFilter filters={filters} />
         </Flex>
 
         <Flex flexDirection="column" alignItems="left" my={1}>
@@ -71,7 +62,10 @@ export class FilterContainer extends React.Component<
         </Toggle>
 
         <Toggle expanded label="Time period">
-          <TimePeriodFilter filters={filters} />
+          <TimePeriodFilter
+            filters={filters}
+            timePeriods={!!timePeriods ? timePeriods.map(a => a.name) : null}
+          />
         </Toggle>
       </>
     )
@@ -115,7 +109,11 @@ export class FilterContainer extends React.Component<
               <Box width={isMobile ? "100%" : "75%"}>
                 {!isMobile && <Separator mb={2} mt={-1} />}
 
-                <SortFilter filters={filters} xs={isMobile} />
+                <SortFilter
+                  filters={filters}
+                  xs={isMobile}
+                  onShow={() => this.setState({ showMobileActionSheet: true })}
+                />
 
                 <Spacer mb={2} />
 

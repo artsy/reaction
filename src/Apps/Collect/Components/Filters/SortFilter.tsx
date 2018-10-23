@@ -7,7 +7,8 @@ import { FilterState } from "../../FilterState"
 export const SortFilter: React.SFC<{
   filters: FilterState
   xs: boolean
-}> = ({ filters, xs }) => {
+  onShow?: () => void
+}> = ({ filters, xs, onShow }) => {
   return (
     <ContextConsumer>
       {({ mediator }) => (
@@ -46,11 +47,7 @@ export const SortFilter: React.SFC<{
           />
 
           {xs && (
-            <Button
-              size="small"
-              mt={-1}
-              onClick={() => this.setState({ showMobileActionSheet: true })}
-            >
+            <Button size="small" mt={-1} onClick={onShow}>
               <Flex justifyContent="space-between" alignItems="center">
                 <FilterIcon fill={color("white100")} />
                 <Spacer mr={0.5} />
