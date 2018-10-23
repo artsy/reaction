@@ -276,7 +276,6 @@ class Filter extends Component<Props> {
 
   render() {
     const { filterState } = this.props
-
     return (
       <ContextConsumer>
         {({ user, mediator }) => {
