@@ -33,7 +33,7 @@ export class MarketingHeader extends Component {
 
   render() {
     return (
-      <Container onClick={this.handleClick}>
+      <Container onClick={this.handleClick.bind(this)}>
         <BorderBox
           width="100%"
           height="220px"
@@ -50,7 +50,9 @@ export class MarketingHeader extends Component {
 
         <Flex justifyContent="space-between" alignItems="center">
           <Box pr={2}>
-            <Sans size="3">In-demand artworks, available to buy now</Sans>
+            <Sans size="3" weight="medium">
+              In-demand artworks, available to buy now
+            </Sans>
             <Sans size="3" color={"black60"}>
               Collect works by today’s top artists, with transparent pricing,
               easy shipping, and a simple checkout process.
