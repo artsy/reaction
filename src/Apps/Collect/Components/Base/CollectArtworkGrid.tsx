@@ -2,7 +2,8 @@ import { Box, Spacer } from "@artsy/palette"
 import { ArtworkFilterArtworkGrid_filtered_artworks } from "__generated__/ArtworkFilterArtworkGrid_filtered_artworks.graphql"
 import { FilterState } from "Apps/Collect/FilterState"
 import { ContextConsumer } from "Artsy/Router"
-import ArtworkGrid from "Components/ArtworkGrid"
+import ArtworkGrid from "Components/ArtworkGrid/ArtworkGrid"
+import { ArtworkGridEmptyState } from "Components/ArtworkGrid/ArtworkGridEmptyState"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { PaginationFragmentContainer as Pagination } from "Styleguide/Components/Pagination"
@@ -12,7 +13,6 @@ import {
   LoadingArea,
   LoadingAreaState,
 } from "Apps/Artist/Components/LoadingArea"
-import { ArtworkGridEmptyState } from "./ArtworkGridEmptyState"
 
 interface Props {
   columnCount: number

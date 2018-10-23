@@ -3,7 +3,7 @@ import React from "react"
 import styled from "styled-components"
 
 interface ArtworkGridEmptyStateProps {
-  onClearFilters: () => void
+  onClearFilters?: () => void
 }
 
 export const ArtworkGridEmptyState: React.SFC<

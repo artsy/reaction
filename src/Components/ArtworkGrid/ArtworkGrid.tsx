@@ -6,7 +6,7 @@ import ReactDOM from "react-dom"
 import { ComponentRef, createFragmentContainer, graphql } from "react-relay"
 // @ts-ignore
 import styled, { StyledComponentClass } from "styled-components"
-import RelayGridItem, { ArtworkGridItem } from "./Artwork/GridItem"
+import RelayGridItem, { ArtworkGridItem } from "../Artwork/GridItem"
 
 type SectionedArtworks = Array<Array<ArtworkGrid_artworks["edges"][0]["node"]>>
 

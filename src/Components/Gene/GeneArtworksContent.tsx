@@ -6,7 +6,7 @@ import {
   RelayPaginationProp,
 } from "react-relay"
 import styled from "styled-components"
-import ArtworkGrid from "../ArtworkGrid"
+import ArtworkGrid from "../ArtworkGrid/ArtworkGrid"
 import Spinner from "../Spinner"
 
 interface Props {
