@@ -196,7 +196,6 @@
     "serialize-javascript": "^1.5.0",
     "sharify": "^0.1.6",
     "styled-bootstrap-grid": "1.0.4",
-    "styled-reset": "^1.3.5",
     "styled-system": "^3.0.3",
     "superagent": "^3.6.3",
     "trunc-html": "^1.1.2",
