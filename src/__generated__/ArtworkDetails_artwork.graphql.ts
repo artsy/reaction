@@ -14,6 +14,7 @@ export type ArtworkDetails_artwork = {
     }) | null> | null;
     readonly literature: string | null;
     readonly exhibition_history: string | null;
+    readonly provenance: string | null;
     readonly " $fragmentRefs": ArtworkDetailsAboutTheWorkFromArtsy_artwork$ref & ArtworkDetailsAboutTheWorkFromPartner_artwork$ref & ArtworkDetailsChecklist_artwork$ref & ArtworkDetailsAdditionalInfo_artwork$ref & ArtworkDetailsArticles_artwork$ref;
     readonly " $refType": ArtworkDetails_artwork$ref;
 };
@@ -108,9 +109,16 @@ return {
       "args": v1,
       "storageKey": "exhibition_history(format:\"HTML\")"
     },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "provenance",
+      "args": v1,
+      "storageKey": "provenance(format:\"HTML\")"
+    },
     v0
   ]
 };
 })();
-(node as any).hash = '8518b286a89bd1135f033a2352036f66';
+(node as any).hash = '0d56fc6679fb1ab42d5d5d6d1f4d9ece';
 export default node;
