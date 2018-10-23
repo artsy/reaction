@@ -47,77 +47,79 @@ export class ArtistInfo extends Component<ArtistInfoProps> {
     const imageUrl = get(this.props, p => p.artist.image.cropped.url)
 
     return (
-      <>
-        <StackableBorderBox p={2} flexDirection="column">
-          <EntityHeader
-            name={this.props.artist.name}
-            meta={this.props.artist.formatted_nationality_and_birthday}
-            imageUrl={imageUrl}
-            href={this.props.artist.href}
-            FollowButton={
-              <FollowArtistButton
-                artist={this.props.artist}
-                user={this.props.user}
-                onOpenAuthModal={() => {
-                  this.props.mediator.trigger("open:auth", {
-                    mode: "signup",
-                    copy: `Sign up to follow ${this.props.artist.name}`,
-                    signupIntent: "follow artist",
-                    afterSignUpAction: {
-                      kind: "artist",
-                      action: "follow",
-                      objectId: this.props.artist.id,
-                    },
-                  })
-                }}
-                render={({ is_followed }) => {
-                  return (
-                    <Sans
-                      size="2"
-                      weight="medium"
-                      color="black"
-                      style={{
-                        cursor: "pointer",
-                        textDecoration: "underline",
-                      }}
-                    >
-                      {is_followed ? "Following" : "Follow"}
-                    </Sans>
-                  )
-                }}
-              >
-                Follow
-              </FollowArtistButton>
-            }
-          />
-          {showArtistBio && (
-            <>
-              <Spacer mb={1} />
-              <ArtistBio
-                bio={this.props.artist}
-                onReadMoreClicked={this.trackArtistBioReadMoreClick}
+      <ContextConsumer>
+        {({ user, mediator }) => (
+          <>
+            <StackableBorderBox p={2} flexDirection="column">
+              <EntityHeader
+                name={this.props.artist.name}
+                meta={this.props.artist.formatted_nationality_and_birthday}
+                imageUrl={imageUrl}
+                href={this.props.artist.href}
+                FollowButton={
+                  <FollowArtistButton
+                    artist={this.props.artist}
+                    user={user}
+                    onOpenAuthModal={() => {
+                      mediator.trigger("open:auth", {
+                        mode: "signup",
+                        copy: `Sign up to follow ${this.props.artist.name}`,
+                        signupIntent: "follow artist",
+                        afterSignUpAction: {
+                          kind: "artist",
+                          action: "follow",
+                          objectId: this.props.artist.id,
+                        },
+                      })
+                    }}
+                    render={({ is_followed }) => {
+                      return (
+                        <Sans
+                          size="2"
+                          weight="medium"
+                          color="black"
+                          style={{
+                            cursor: "pointer",
+                            textDecoration: "underline",
+                          }}
+                        >
+                          {is_followed ? "Following" : "Follow"}
+                        </Sans>
+                      )
+                    }}
+                  />
+                }
               />
-            </>
-          )}
-        </StackableBorderBox>
-        <MarketInsights
-          artist={this.props.artist}
-          border={false}
-          Container={Container}
-        />
-        <SelectedExhibitions
-          artistID={this.props.artist.id}
-          border={false}
-          totalExhibitions={this.props.artist.counts.partner_shows}
-          exhibitions={this.props.artist.exhibition_highlights}
-          ViewAllLink={
-            <a href={`${sd.APP_URL}/artist/${this.props.artist.id}/cv`}>
-              View all
-            </a>
-          }
-          Container={Container}
-        />
-      </>
+              {showArtistBio && (
+                <>
+                  <Spacer mb={1} />
+                  <ArtistBio
+                    bio={this.props.artist}
+                    onReadMoreClicked={this.trackArtistBioReadMoreClick}
+                  />
+                </>
+              )}
+            </StackableBorderBox>
+            <MarketInsights
+              artist={this.props.artist}
+              border={false}
+              Container={Container}
+            />
+            <SelectedExhibitions
+              artistID={this.props.artist.id}
+              border={false}
+              totalExhibitions={this.props.artist.counts.partner_shows}
+              exhibitions={this.props.artist.exhibition_highlights}
+              ViewAllLink={
+                <a href={`${sd.APP_URL}/artist/${this.props.artist.id}/cv`}>
+                  View all
+                </a>
+              }
+              Container={Container}
+            />
+          </>
+        )}
+      </ContextConsumer>
     )
   }
 }
@@ -158,7 +160,7 @@ export const ArtistInfoFragmentContainer = createFragmentContainer(
 export const ArtistInfoQueryRenderer = ({ artistID }: { artistID: string }) => {
   return (
     <ContextConsumer>
-      {({ user, mediator, relayEnvironment }) => {
+      {({ relayEnvironment }) => {
         return (
           <QueryRenderer<ArtistInfoQuery>
             environment={relayEnvironment}
