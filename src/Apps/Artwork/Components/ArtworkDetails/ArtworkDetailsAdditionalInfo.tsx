@@ -28,20 +28,8 @@ export class ArtworkDetailsAdditionalInfo extends React.Component<
   }
 
   render() {
-    const {
-      series,
-      publisher,
-      manufacturer,
-      provenance,
-      image_rights,
-    } = this.props.artwork
-    if (
-      !series &&
-      !publisher &&
-      !manufacturer &&
-      !provenance &&
-      !image_rights
-    ) {
+    const { series, publisher, manufacturer, image_rights } = this.props.artwork
+    if (!series && !publisher && !manufacturer && !image_rights) {
       return null
     }
     return (
@@ -50,7 +38,6 @@ export class ArtworkDetailsAdditionalInfo extends React.Component<
           {series && this.renderRow("Series", series)}
           {publisher && this.renderRow("Publisher", publisher)}
           {manufacturer && this.renderRow("Manufacturer", manufacturer)}
-          {provenance && this.renderRow("Provenance", provenance)}
           {image_rights && this.renderRow("Image rights", image_rights)}
         </Box>
       </StackableBorderBox>
@@ -65,7 +52,6 @@ export const ArtworkDetailsAdditionalInfoFragmentContainer = createFragmentConta
       series
       publisher
       manufacturer
-      provenance
       image_rights
     }
   `

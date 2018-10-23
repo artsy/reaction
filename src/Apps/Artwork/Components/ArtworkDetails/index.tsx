@@ -70,6 +70,13 @@ export class ArtworkDetails extends Component<ArtworkDetailsProps> {
               />
             </Tab>
           )}
+          {artwork.provenance && (
+            <Tab name="Provenance" data={{ trackingLabel: "provenance" }}>
+              <Provenance
+                dangerouslySetInnerHTML={{ __html: artwork.provenance }}
+              />
+            </Tab>
+          )}
         </Tabs>
       </ArtworkDetailsContainer>
     )
@@ -90,6 +97,7 @@ export const ArtworkDetailsFragmentContainer = createFragmentContainer(
       }
       literature(format: HTML)
       exhibition_history(format: HTML)
+      provenance(format: HTML)
     }
   `
 )
@@ -132,3 +140,4 @@ const TabContainer = styled(Box)`
 const ArtworkDetailsContainer = TabContainer
 const ExhibitionHistory = TabContainer
 const Literature = TabContainer
+const Provenance = TabContainer
