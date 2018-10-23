@@ -12,7 +12,7 @@ describe("ArtworkDetails", () => {
       Component: ArtworkDetailsFragmentContainer,
       query: graphql`
         query ArtworkDetails_Test_Query {
-          artwork(id: "pablo-picasso") {
+          artwork(id: "richard-prince-untitled-fashion") {
             ...ArtworkDetails_artwork
           }
         }
