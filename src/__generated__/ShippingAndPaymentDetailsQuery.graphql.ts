@@ -5,7 +5,7 @@ import { ShippingAndPaymentReview_order$ref } from "./ShippingAndPaymentReview_o
 import { ShippingAndPaymentSummary_order$ref } from "./ShippingAndPaymentSummary_order.graphql";
 export type ShippingAndPaymentDetailsQueryVariables = {};
 export type ShippingAndPaymentDetailsQueryResponse = {
-    readonly ecommerceOrder: ({
+    readonly order: ({
         readonly " $fragmentRefs": ShippingAndPaymentSummary_order$ref & ShippingAndPaymentReview_order$ref;
     }) | null;
 };
@@ -18,7 +18,7 @@ export type ShippingAndPaymentDetailsQuery = {
 
 /*
 query ShippingAndPaymentDetailsQuery {
-  ecommerceOrder(id: "foo") {
+  order: ecommerceOrder(id: "foo") {
     ...ShippingAndPaymentSummary_order
     ...ShippingAndPaymentReview_order
     __id: id
@@ -118,7 +118,7 @@ return {
   "operationKind": "query",
   "name": "ShippingAndPaymentDetailsQuery",
   "id": null,
-  "text": "query ShippingAndPaymentDetailsQuery {\n  ecommerceOrder(id: \"foo\") {\n    ...ShippingAndPaymentSummary_order\n    ...ShippingAndPaymentReview_order\n    __id: id\n  }\n}\n\nfragment ShippingAndPaymentSummary_order on Order {\n  state\n  requestedFulfillment {\n    __typename\n    ...ShippingAddress_ship\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  creditCard {\n    brand\n    last_digits\n    expiration_year\n    expiration_month\n    __id\n  }\n  __id: id\n}\n\nfragment ShippingAndPaymentReview_order on Order {\n  requestedFulfillment {\n    __typename\n    ...ShippingAddress_ship\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  creditCard {\n    brand\n    last_digits\n    expiration_year\n    expiration_month\n    __id\n  }\n  __id: id\n}\n\nfragment ShippingAddress_ship on Ship {\n  name\n  addressLine1\n  addressLine2\n  city\n  postalCode\n  region\n  country\n  phoneNumber\n}\n",
+  "text": "query ShippingAndPaymentDetailsQuery {\n  order: ecommerceOrder(id: \"foo\") {\n    ...ShippingAndPaymentSummary_order\n    ...ShippingAndPaymentReview_order\n    __id: id\n  }\n}\n\nfragment ShippingAndPaymentSummary_order on Order {\n  state\n  requestedFulfillment {\n    __typename\n    ...ShippingAddress_ship\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  creditCard {\n    brand\n    last_digits\n    expiration_year\n    expiration_month\n    __id\n  }\n  __id: id\n}\n\nfragment ShippingAndPaymentReview_order on Order {\n  requestedFulfillment {\n    __typename\n    ...ShippingAddress_ship\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  creditCard {\n    brand\n    last_digits\n    expiration_year\n    expiration_month\n    __id\n  }\n  __id: id\n}\n\nfragment ShippingAddress_ship on Ship {\n  name\n  addressLine1\n  addressLine2\n  city\n  postalCode\n  region\n  country\n  phoneNumber\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -129,7 +129,7 @@ return {
     "selections": [
       {
         "kind": "LinkedField",
-        "alias": null,
+        "alias": "order",
         "name": "ecommerceOrder",
         "storageKey": "ecommerceOrder(id:\"foo\")",
         "args": v0,
@@ -158,7 +158,7 @@ return {
     "selections": [
       {
         "kind": "LinkedField",
-        "alias": null,
+        "alias": "order",
         "name": "ecommerceOrder",
         "storageKey": "ecommerceOrder(id:\"foo\")",
         "args": v0,
@@ -352,5 +352,5 @@ return {
   }
 };
 })();
-(node as any).hash = '4b970acf593539de047184f756ccb82c';
+(node as any).hash = '12d0982905e17e0658cff7975cc336af';
 export default node;
