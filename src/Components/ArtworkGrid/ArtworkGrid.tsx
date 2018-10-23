@@ -1,5 +1,6 @@
 import { ArtworkGrid_artworks } from "__generated__/ArtworkGrid_artworks.graphql"
 import { Mediator } from "Artsy/SystemContext"
+import { ArtworkGridEmptyState } from "Components/ArtworkGrid/ArtworkGridEmptyState"
 import React from "react"
 import ReactDOM from "react-dom"
 // @ts-ignore
@@ -16,6 +17,7 @@ export interface ArtworkGridContainerProps
   columnCount?: number
   sectionMargin?: number
   itemMargin?: number
+  onClearFilters?: () => any
   onLoadMore?: () => any
   useRelay?: boolean
   user?: User
@@ -156,8 +158,19 @@ export class ArtworkGridContainer extends React.Component<
   }
 
   render() {
-    const artworks = this.renderSections() || []
-    return <div className={this.props.className}>{artworks}</div>
+    const { artworks, className, onClearFilters } = this.props
+    const hasArtworks = artworks && artworks.edges && artworks.edges.length > 0
+    const artworkGrid = this.renderSections() || []
+
+    return (
+      <div className={className}>
+        {hasArtworks ? (
+          artworkGrid
+        ) : (
+          <ArtworkGridEmptyState onClearFilters={onClearFilters} />
+        )}
+      </div>
+    )
   }
 }
 

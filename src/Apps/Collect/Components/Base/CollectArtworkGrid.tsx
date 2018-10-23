@@ -3,7 +3,6 @@ import { ArtworkFilterArtworkGrid_filtered_artworks } from "__generated__/Artwor
 import { FilterState } from "Apps/Collect/FilterState"
 import { ContextConsumer } from "Artsy/Router"
 import ArtworkGrid from "Components/ArtworkGrid/ArtworkGrid"
-import { ArtworkGridEmptyState } from "Components/ArtworkGrid/ArtworkGridEmptyState"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { PaginationFragmentContainer as Pagination } from "Styleguide/Components/Pagination"
@@ -71,9 +70,9 @@ class Artworks extends Component<Props, LoadingAreaState> {
 
   render() {
     const {
+      columnCount,
       filtered_artworks: { artworks },
     } = this.props
-    const hasArtworks = artworks && artworks.edges.length !== 0
     const isLoading = this.state.isLoading || this.props.isLoading
 
     return (
@@ -84,37 +83,30 @@ class Artworks extends Component<Props, LoadingAreaState> {
               {(filters: FilterState) => {
                 return (
                   <LoadingArea isLoading={isLoading}>
-                    {!hasArtworks ? (
-                      <ArtworkGridEmptyState
-                        onClearFilters={filters.resetFilters}
+                    <ArtworkGrid
+                      artworks={artworks as any}
+                      columnCount={columnCount}
+                      itemMargin={40}
+                      user={user}
+                      mediator={mediator}
+                      onClearFilters={filters.resetFilters}
+                    />
+
+                    <Spacer mb={3} />
+
+                    <Box>
+                      <Pagination
+                        hasNextPage={artworks.pageInfo.hasNextPage}
+                        pageCursors={artworks.pageCursors as any}
+                        onClick={(cursor, page) => {
+                          this.loadAfter(cursor, page, filters, mediator)
+                        }}
+                        onNext={() => {
+                          this.loadNext(filters, mediator)
+                        }}
+                        scrollTo="#jump--collectArtworkGrid"
                       />
-                    ) : (
-                      <>
-                        <ArtworkGrid
-                          artworks={artworks as any}
-                          columnCount={this.props.columnCount}
-                          itemMargin={40}
-                          user={user}
-                          mediator={mediator}
-                        />
-
-                        <Spacer mb={3} />
-
-                        <Box>
-                          <Pagination
-                            hasNextPage={artworks.pageInfo.hasNextPage}
-                            pageCursors={artworks.pageCursors as any}
-                            onClick={(cursor, page) => {
-                              this.loadAfter(cursor, page, filters, mediator)
-                            }}
-                            onNext={() => {
-                              this.loadNext(filters, mediator)
-                            }}
-                            scrollTo="#jump--collectArtworkGrid"
-                          />
-                        </Box>
-                      </>
-                    )}
+                    </Box>
                   </LoadingArea>
                 )
               }}
