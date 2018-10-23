@@ -2,7 +2,7 @@ import { Box, Spacer } from "@artsy/palette"
 import { ArtworkFilterArtworkGrid_filtered_artworks } from "__generated__/ArtworkFilterArtworkGrid_filtered_artworks.graphql"
 import { FilterState } from "Apps/Collect/FilterState"
 import { ContextConsumer } from "Artsy/Router"
-import ArtworkGrid from "Components/ArtworkGrid"
+import ArtworkGrid from "Components/ArtworkGrid/ArtworkGrid"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { PaginationFragmentContainer as Pagination } from "Styleguide/Components/Pagination"
@@ -69,6 +69,12 @@ class Artworks extends Component<Props, LoadingAreaState> {
   }
 
   render() {
+    const {
+      columnCount,
+      filtered_artworks: { artworks },
+    } = this.props
+    const isLoading = this.state.isLoading || this.props.isLoading
+
     return (
       <ContextConsumer>
         {({ user, mediator }) => {
@@ -76,29 +82,22 @@ class Artworks extends Component<Props, LoadingAreaState> {
             <Subscribe to={[FilterState]}>
               {(filters: FilterState) => {
                 return (
-                  <LoadingArea
-                    isLoading={this.state.isLoading || this.props.isLoading}
-                  >
+                  <LoadingArea isLoading={isLoading}>
                     <ArtworkGrid
-                      artworks={this.props.filtered_artworks.artworks as any}
-                      columnCount={this.props.columnCount}
+                      artworks={artworks as any}
+                      columnCount={columnCount}
                       itemMargin={40}
                       user={user}
                       mediator={mediator}
+                      onClearFilters={filters.resetFilters}
                     />
 
                     <Spacer mb={3} />
 
                     <Box>
                       <Pagination
-                        hasNextPage={
-                          this.props.filtered_artworks.artworks.pageInfo
-                            .hasNextPage
-                        }
-                        pageCursors={
-                          this.props.filtered_artworks.artworks
-                            .pageCursors as any
-                        }
+                        hasNextPage={artworks.pageInfo.hasNextPage}
+                        pageCursors={artworks.pageCursors as any}
                         onClick={(cursor, page) => {
                           this.loadAfter(cursor, page, filters, mediator)
                         }}

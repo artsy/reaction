@@ -1,8 +1,8 @@
-import { Box, Message, Spacer } from "@artsy/palette"
+import { Box, Spacer } from "@artsy/palette"
 import { ArtworkFilterArtworkGrid_filtered_artworks } from "__generated__/ArtworkFilterArtworkGrid_filtered_artworks.graphql"
 import { FilterState } from "Apps/Artist/Routes/Overview/state"
 import { ContextConsumer } from "Artsy/Router"
-import ArtworkGrid from "Components/ArtworkGrid"
+import ArtworkGrid from "Components/ArtworkGrid/ArtworkGrid"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { PaginationFragmentContainer as Pagination } from "Styleguide/Components"
@@ -12,7 +12,6 @@ import {
   LoadingArea,
   LoadingAreaState,
 } from "Apps/Artist/Components/LoadingArea"
-import { Responsive } from "Utils/Responsive"
 
 interface Props {
   artistID: string
@@ -87,56 +86,34 @@ class Artworks extends Component<Props, LoadingAreaState> {
     return (
       <ContextConsumer>
         {({ user, mediator }) => (
-          <Responsive>
-            {({ xs }) => {
-              return (
-                <LoadingArea
-                  isLoading={this.state.isLoading || this.props.isLoading}
-                >
-                  {!filterState.state.showZeroState ? (
-                    <>
-                      <ArtworkGrid
-                        artworks={this.props.filtered_artworks.artworks}
-                        columnCount={this.props.columnCount}
-                        itemMargin={40}
-                        user={user}
-                        mediator={mediator}
-                      />
+          <LoadingArea isLoading={this.state.isLoading || this.props.isLoading}>
+            <ArtworkGrid
+              artworks={this.props.filtered_artworks.artworks}
+              columnCount={this.props.columnCount}
+              itemMargin={40}
+              user={user}
+              mediator={mediator}
+              onClearFilters={filterState.resetFilters}
+            />
 
-                      <Spacer mb={3} />
+            <Spacer mb={3} />
 
-                      <Box>
-                        <Pagination
-                          hasNextPage={
-                            this.props.filtered_artworks.artworks.pageInfo
-                              .hasNextPage
-                          }
-                          pageCursors={
-                            this.props.filtered_artworks.artworks.pageCursors
-                          }
-                          onClick={(cursor, page) => {
-                            this.loadAfter(cursor, page, filterState, mediator)
-                          }}
-                          onNext={() => {
-                            this.loadNext(filterState, mediator)
-                          }}
-                          scrollTo="#jump--artistArtworkGrid"
-                        />
-                      </Box>
-                    </>
-                  ) : (
-                    <Message
-                      textSize={xs ? "3t" : "5t"}
-                      justifyContent="center"
-                    >
-                      There aren't any works available by the artist that meet
-                      the following criteria at this time.
-                    </Message>
-                  )}
-                </LoadingArea>
-              )
-            }}
-          </Responsive>
+            <Box>
+              <Pagination
+                hasNextPage={
+                  this.props.filtered_artworks.artworks.pageInfo.hasNextPage
+                }
+                pageCursors={this.props.filtered_artworks.artworks.pageCursors}
+                onClick={(cursor, page) => {
+                  this.loadAfter(cursor, page, filterState, mediator)
+                }}
+                onNext={() => {
+                  this.loadNext(filterState, mediator)
+                }}
+                scrollTo="#jump--artistArtworkGrid"
+              />
+            </Box>
+          </LoadingArea>
         )}
       </ContextConsumer>
     )

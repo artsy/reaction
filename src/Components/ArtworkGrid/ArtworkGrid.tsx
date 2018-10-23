@@ -1,21 +1,23 @@
 import { ArtworkGrid_artworks } from "__generated__/ArtworkGrid_artworks.graphql"
 import { Mediator } from "Artsy/SystemContext"
+import { ArtworkGridEmptyState } from "Components/ArtworkGrid/ArtworkGridEmptyState"
 import React from "react"
 import ReactDOM from "react-dom"
 // @ts-ignore
 import { ComponentRef, createFragmentContainer, graphql } from "react-relay"
 // @ts-ignore
 import styled, { StyledComponentClass } from "styled-components"
-import RelayGridItem, { ArtworkGridItem } from "./Artwork/GridItem"
+import RelayGridItem, { ArtworkGridItem } from "../Artwork/GridItem"
 
 type SectionedArtworks = Array<Array<ArtworkGrid_artworks["edges"][0]["node"]>>
 
-export interface ArtworkGridContainerProps
+export interface ArtworkGridProps
   extends React.HTMLProps<ArtworkGridContainer> {
   artworks: ArtworkGrid_artworks
   columnCount?: number
   sectionMargin?: number
   itemMargin?: number
+  onClearFilters?: () => any
   onLoadMore?: () => any
   useRelay?: boolean
   user?: User
@@ -28,7 +30,7 @@ export interface ArtworkGridContainerState {
 }
 
 export class ArtworkGridContainer extends React.Component<
-  ArtworkGridContainerProps,
+  ArtworkGridProps,
   ArtworkGridContainerState
 > {
   static defaultProps = {
@@ -156,8 +158,19 @@ export class ArtworkGridContainer extends React.Component<
   }
 
   render() {
-    const artworks = this.renderSections() || []
-    return <div className={this.props.className}>{artworks}</div>
+    const { artworks, className, onClearFilters } = this.props
+    const hasArtworks = artworks && artworks.edges && artworks.edges.length > 0
+    const artworkGrid = this.renderSections() || []
+
+    return (
+      <div className={className}>
+        {hasArtworks ? (
+          artworkGrid
+        ) : (
+          <ArtworkGridEmptyState onClearFilters={onClearFilters} />
+        )}
+      </div>
+    )
   }
 }
 
