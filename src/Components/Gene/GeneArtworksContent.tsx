@@ -1,4 +1,5 @@
 import { GeneArtworksContent_filtered_artworks } from "__generated__/GeneArtworksContent_filtered_artworks.graphql"
+import ArtworkGrid from "Components/ArtworkGrid/ArtworkGrid"
 import * as React from "react"
 import {
   createPaginationContainer,
@@ -6,7 +7,6 @@ import {
   RelayPaginationProp,
 } from "react-relay"
 import styled from "styled-components"
-import ArtworkGrid from "../ArtworkGrid/ArtworkGrid"
 import Spinner from "../Spinner"
 
 interface Props {
