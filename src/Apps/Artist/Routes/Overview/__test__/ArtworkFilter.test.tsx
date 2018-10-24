@@ -1,5 +1,6 @@
 // FIXME: Uncomment tests, currently WIP
 
+import { ArtworkFilter_Test_Query } from "__generated__/ArtworkFilter_Test_Query.graphql"
 import { FilterState } from "Apps/Artist/Routes/Overview/state"
 import React from "react"
 import { graphql } from "react-relay"
@@ -13,7 +14,7 @@ import { ArtworkFilterFragmentContainer as ArtworkFilter } from "../Components/A
 
 jest.unmock("react-relay")
 
-xdescribe("ArtistHeader", () => {
+xdescribe("ArtworkFilter", () => {
   // const getWrapper = async (response = ArtworkFilterFixture) => {
   //   return await renderRelayTree({
   //     Component: () => {
@@ -46,7 +47,7 @@ xdescribe("ArtistHeader", () => {
       },
       <MockBoot breakpoint="lg">
         <Provider inject={[filterState]}>
-          <MockRelayRenderer
+          <MockRelayRenderer<ArtworkFilter_Test_Query>
             Component={ArtworkFilter}
             query={graphql`
               query ArtworkFilter_Test_Query {
