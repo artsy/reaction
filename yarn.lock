@@ -13115,10 +13115,10 @@ relay-compiler-language-typescript@^1.1.0:
     signedsource "^1.0.0"
     yargs "^9.0.0"
 
-relay-mock-network-layer@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/relay-mock-network-layer/-/relay-mock-network-layer-1.2.0.tgz#bcf30aa2d8c9c840f6c5744d008663c2f57a7819"
-  integrity sha512-eOOIU0O2nCfkZQK+15wQYNiC334EpBrbKscsmg+0AXGtDq+SN+fDvhaOvJ/C85MmTkuV283oe6lNzKw3dgU19Q==
+relay-mock-network-layer@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/relay-mock-network-layer/-/relay-mock-network-layer-1.3.0.tgz#d0be1db25f6df239fd80e41fd4a2a724d2fa47d6"
+  integrity sha512-7IPu77pJxJ6YWSG+n+GIHE4iT1Yo0L7PPFZCmqwn3rK0vRwpkWuBBOQqNTwWGFDDorB5UAu6rVl7TUcGbzlDOA==
   dependencies:
     graphql-tools "^1.2.1"
 
