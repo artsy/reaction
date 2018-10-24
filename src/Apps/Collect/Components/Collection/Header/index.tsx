@@ -93,7 +93,7 @@ export class CollectionHeader extends Component<Props> {
                       </SubtitlesContainer>
                       <Spacer mt={1} />
                       <Title size={xs ? "6" : "10"} color="white100">
-                        {collection.title}
+                        <h1>{collection.title}</h1>
                       </Title>
                     </MetaContainer>
                   </Background>
