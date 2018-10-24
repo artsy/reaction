@@ -1,5 +1,5 @@
 import { GeneArtworksContent_filtered_artworks } from "__generated__/GeneArtworksContent_filtered_artworks.graphql"
-import ArtworkGrid from "Components/ArtworkGrid/ArtworkGrid"
+import ArtworkGrid from "Components/ArtworkGrid"
 import * as React from "react"
 import {
   createPaginationContainer,
