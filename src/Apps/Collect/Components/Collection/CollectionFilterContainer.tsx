@@ -67,7 +67,10 @@ export const CollectionFilterFragmentContainer = createFragmentContainer(
             defaultValue: [MEDIUM, MAJOR_PERIOD, TOTAL]
           }
         ) {
-        artworks(aggregations: $aggregations) {
+        artworks(
+          aggregations: $aggregations
+          include_medium_filter_in_aggregation: true
+        ) {
           aggregations {
             slice
             counts {

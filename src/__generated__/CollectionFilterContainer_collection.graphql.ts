@@ -59,6 +59,12 @@ return {
           "name": "aggregations",
           "variableName": "aggregations",
           "type": "[ArtworkAggregation]"
+        },
+        {
+          "kind": "Literal",
+          "name": "include_medium_filter_in_aggregation",
+          "value": true,
+          "type": "Boolean"
         }
       ],
       "concreteType": "FilterArtworks",
@@ -133,5 +139,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '99a1c440b7587997db62df1c860b6b97';
+(node as any).hash = '713f9d9c7ead58f659767f38c918ea7a';
 export default node;
