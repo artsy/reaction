@@ -1,0 +1,65 @@
+patch-package
+new file mode 100644
+--- /dev/null
++++ b/node_modules/relay-mock-network-layer/RelayMockNetworkLayerError.js
+@@ -0,0 +1,31 @@
++function RelayMockNetworkLayerError(errors) {
++  const distinctMessages = errors
++    .map(e => e.message)
++    .filter((value, index, messages) => messages.indexOf(value) === index)
++  const instance = new Error(
++    "RelayMockNetworkLayerError: " + distinctMessages.join(" - ")
++  )
++  instance.originalErrors = errors
++  Object.setPrototypeOf(instance, Object.getPrototypeOf(this))
++  if (Error.captureStackTrace) {
++    Error.captureStackTrace(instance, RelayMockNetworkLayerError)
++  }
++  return instance
++}
++
++RelayMockNetworkLayerError.prototype = Object.create(Error.prototype, {
++  constructor: {
++    value: Error,
++    enumerable: false,
++    writable: true,
++    configurable: true,
++  },
++})
++
++if (Object.setPrototypeOf) {
++  Object.setPrototypeOf(RelayMockNetworkLayerError, Error)
++} else {
++  RelayMockNetworkLayerError.__proto__ = Error
++}
++
++module.exports = RelayMockNetworkLayerError
+--- a/node_modules/relay-mock-network-layer/index.js
++++ b/node_modules/relay-mock-network-layer/index.js
+@@ -2,6 +2,7 @@
+ 
+ const { makeExecutableSchema, addMockFunctionsToSchema } = require('graphql-tools');
+ const { graphql, printSchema, buildClientSchema } = require('graphql');
++const RelayMockNetworkLayerError = require("./RelayMockNetworkLayerError")
+ 
+ module.exports = function getNetworkLayer({schema, mocks, resolvers}) {
+     return function fetchQuery(
+@@ -19,12 +20,11 @@ module.exports = function getNetworkLayer({schema, mocks, resolvers}) {
+ 
+         return graphql(executableSchema, operation.text, null, null, variableValues).then(
+             // Trigger Relay error in case of GraphQL errors (or errors in mutation response)
+-            // NOTICE that data might contain values even when errors are present
+             // See https://github.com/facebook/relay/issues/1816
+             
+             result => {
+                 if (result.errors && result.errors.length > 0) {
+-                    return Promise.reject(result);
++                    return Promise.reject(new RelayMockNetworkLayerError(result.errors));
+                 }
+                 return Promise.resolve(result);
+             }
+@@ -32,3 +32,4 @@ module.exports = function getNetworkLayer({schema, mocks, resolvers}) {
+     }
+ };
+ 
++
