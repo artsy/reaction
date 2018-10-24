@@ -1,19 +1,24 @@
 import { ContextProvider } from "Artsy"
-import { LoadingClassName } from "Artsy/Relay/renderWithLoadProgress"
+import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { ContextConsumer } from "Artsy/SystemContext"
 import { IMocks } from "graphql-tools/dist/Interfaces"
 import React from "react"
-import { QueryRenderer } from "react-relay"
+import { QueryRenderer, RelayContainer } from "react-relay"
 import {
   Environment,
   GraphQLTaggedNode,
+  OperationBase,
+  OperationDefaults,
   RecordSource,
   Store,
 } from "relay-runtime"
 import { createMockNetworkLayer } from "./createMockNetworkLayer"
 
-export interface MockRelayRendererProps {
-  Component: React.ComponentType
+export interface MockRelayRendererProps<
+  T extends OperationBase = OperationDefaults
+> {
+  Component: RelayContainer<T["response"]>
+  variables?: T["variables"]
   query: GraphQLTaggedNode
   mockResolvers: IMocks
 }
@@ -30,6 +35,10 @@ export interface MockRelayRendererProps {
  * @param params.Component
  * The component that either is a Relay container or has children that are Relay
  * containers.
+ *
+ * @param params.variables
+ * The optional variables that should be used in the operation. In most cases
+ * you should be able to just hardcode these into the root query.
  *
  * @param params.query
  * The root GraphQL query.
@@ -89,55 +98,53 @@ export interface MockRelayRendererProps {
    ```
  *
  */
-export const MockRelayRenderer = ({
-  Component,
-  query,
-  mockResolvers,
-}: MockRelayRendererProps) => {
-  if (
-    typeof __webpack_require__ === "undefined" &&
-    QueryRenderer === require("../../__mocks__/react-relay").QueryRenderer
-  ) {
-    throw new Error(
-      "The `react-relay` module has been mocked, be sure to unmock it with: " +
-        '`jest.unmock("react-relay")`'
+export class MockRelayRenderer<
+  T extends OperationBase = OperationDefaults
+> extends React.Component<MockRelayRendererProps<T>> {
+  render() {
+    // TODO: When extracting these test utils to their own package, this check
+    //       should probably become a custom TSLint rule, as there’s no good way
+    //       to test this in a generic way, plus with the rule we get fixes.
+    if (
+      typeof __webpack_require__ === "undefined" &&
+      QueryRenderer === require("../../__mocks__/react-relay").QueryRenderer
+    ) {
+      throw new Error(
+        "The `react-relay` module has been mocked, be sure to unmock it with: " +
+          '`jest.unmock("react-relay")`'
+      )
+    }
+
+    const { Component, variables, query, mockResolvers } = this.props
+
+    const network = createMockNetworkLayer({
+      Query: () => ({}),
+      ...mockResolvers,
+    })
+    const source = new RecordSource()
+    const store = new Store(source)
+    const environment = new Environment({
+      network,
+      store,
+    })
+
+    return (
+      <ContextConsumer>
+        {contextProps => (
+          <ContextProvider {...contextProps} relayEnvironment={environment}>
+            <QueryRenderer
+              // tslint:disable-next-line relay-operation-generics
+              query={query}
+              environment={environment}
+              variables={variables || {}}
+              // We rely on renderWithLoadProgress to throw an error in the test
+              // env ASAP. When we extract these test helpers to their own package
+              // that will need to be handled explicitly.
+              render={renderWithLoadProgress(Component as any)}
+            />
+          </ContextProvider>
+        )}
+      </ContextConsumer>
     )
   }
-
-  const network = createMockNetworkLayer({
-    Query: () => ({}),
-    ...mockResolvers,
-  })
-  const source = new RecordSource()
-  const store = new Store(source)
-  const environment = new Environment({
-    network,
-    store,
-  })
-
-  return (
-    <ContextConsumer>
-      {contextProps => (
-        <ContextProvider {...contextProps} relayEnvironment={environment}>
-          <QueryRenderer
-            // tslint:disable-next-line relay-operation-generics
-            query={query}
-            environment={environment}
-            variables={{}}
-            render={({ error, props, retry }) => {
-              // TODO: Replace with renderWithLoadProgress?
-              if (props) {
-                return <Component {...props} />
-              } else if (error) {
-                // In tests we want errors to clearly bubble up.
-                throw error
-              } else {
-                return <div className={LoadingClassName}>Loading</div>
-              }
-            }}
-          />
-        </ContextProvider>
-      )}
-    </ContextConsumer>
-  )
 }
