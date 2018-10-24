@@ -1,24 +1,24 @@
 import React from "react"
 import { Step, Stepper } from "Styleguide/Components"
 
-const makeOfferFlow = ["Offer", "Shipping", "Payment", "Review"]
+const offerFlow = ["Offer", "Shipping", "Payment", "Review"]
 const buyNowFlow = ["Shipping", "Payment", "Review"]
 
 type OrderStepperProps =
   | {
       currentStep: "Offer" | "Shipping" | "Payment" | "Review"
-      makeOfferFlow: true
+      offerFlow: true
     }
   | {
       currentStep: "Shipping" | "Payment" | "Review"
-      makeOfferFlow: false
+      offerFlow: false
     }
 
 export const OrderStepper: React.SFC<OrderStepperProps> = ({
   currentStep,
   ...more
 }) => {
-  const steps = more.makeOfferFlow ? makeOfferFlow : buyNowFlow
+  const steps = more.offerFlow ? offerFlow : buyNowFlow
   const stepIndex = steps.indexOf(currentStep)
   return (
     <Stepper

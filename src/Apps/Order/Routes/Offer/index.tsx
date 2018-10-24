@@ -106,7 +106,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
         <HorizontalPadding px={[0, 4]}>
           <Row>
             <Col>
-              <OrderStepper currentStep="Offer" makeOfferFlow />
+              <OrderStepper currentStep="Offer" offerFlow />
             </Col>
           </Row>
         </HorizontalPadding>

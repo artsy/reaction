@@ -214,7 +214,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
             <Col>
               <OrderStepper
                 currentStep="Review"
-                makeOfferFlow={false /* TODO: order.isMakeOffer or whatever */}
+                offerFlow={false /* TODO: order.isMakeOffer or whatever */}
               />
             </Col>
           </Row>

@@ -298,7 +298,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
             <Col>
               <OrderStepper
                 currentStep="Shipping"
-                makeOfferFlow={false /* TODO: order.isMakeOffer or whatever */}
+                offerFlow={false /* TODO: order.isMakeOffer or whatever */}
               />
             </Col>
           </Row>
