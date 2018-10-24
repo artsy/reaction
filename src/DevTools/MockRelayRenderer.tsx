@@ -125,10 +125,12 @@ export const MockRelayRenderer = ({
             environment={environment}
             variables={{}}
             render={({ error, props, retry }) => {
+              // TODO: Replace with renderWithLoadProgress?
               if (props) {
                 return <Component {...props} />
               } else if (error) {
-                return <div className="relay-error">{error}</div>
+                // In tests we want errors to clearly bubble up.
+                throw error
               } else {
                 return <div className={LoadingClassName}>Loading</div>
               }
