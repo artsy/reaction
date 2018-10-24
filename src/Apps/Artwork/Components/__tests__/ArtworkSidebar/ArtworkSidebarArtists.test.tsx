@@ -62,5 +62,10 @@ describe("ArtworkSidebarArtists", () => {
       const wrapper = await getWrapper(MultipleArtists)
       expect(wrapper.html()).not.toContain("Follow")
     })
+    it("separates artist names by comma", async () => {
+      const wrapper = await getWrapper(MultipleArtists)
+      // 2 artists are separared by 1 ,
+      expect(wrapper.html().match(", ").length).toBe(1)
+    })
   })
 })

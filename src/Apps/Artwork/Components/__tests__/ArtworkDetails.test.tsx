@@ -47,9 +47,9 @@ describe("ArtworkDetails", () => {
     })
 
     it("displays partner Initials when profile is present but icon is not", async () => {
-      const data = cloneDeep(ArtworkDetailsFixture)
-      data.partner.profile.icon = null
-      const wrapper = await getWrapper(data)
+      const noIconProfile = cloneDeep(ArtworkDetailsFixture)
+      noIconProfile.partner.profile.icon = null
+      const wrapper = await getWrapper(noIconProfile)
       expect(wrapper.find("img").length).toBe(0)
       expect(wrapper.html()).toContain("S9")
     })
@@ -62,10 +62,10 @@ describe("ArtworkDetails", () => {
     })
 
     it("does not display avatar when profile is not available and no initials for partner", async () => {
-      const data = cloneDeep(ArtworkDetailsFixture)
-      data.partner.profile = null
-      data.partner.initials = null
-      const wrapper = await getWrapper(data)
+      const noIconNoInitials = cloneDeep(ArtworkDetailsFixture)
+      noIconNoInitials.partner.profile = null
+      noIconNoInitials.partner.initials = null
+      const wrapper = await getWrapper(noIconNoInitials)
       expect(wrapper.find("img").length).toBe(0)
       // This checks that Avatar div is not rendered.
       expect(wrapper.find("EntityHeader").children.length).toBe(1)

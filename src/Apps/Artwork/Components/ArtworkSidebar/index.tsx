@@ -1,4 +1,4 @@
-import { Box, Separator, Serif, Spacer } from "@artsy/palette"
+import { Box, Separator, Spacer } from "@artsy/palette"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { ContextConsumer } from "Artsy/Router"
 import React, { Component } from "react"
@@ -28,14 +28,6 @@ export class ArtworkSidebar extends Component<ArtworkSidebarProps> {
       <ArtworkSidebarContainer>
         <Artists artwork={artwork} />
         <Spacer mb={2} />
-
-        {artwork.is_biddable &&
-          artwork.sale_artwork &&
-          artwork.sale_artwork.lot_label && (
-            <Serif size="2" weight="semibold" color="black100">
-              Lot {artwork.sale_artwork.lot_label}
-            </Serif>
-          )}
         <Metadata artwork={artwork} />
         <Spacer mb={2} />
 
@@ -65,14 +57,7 @@ export const ArtworkSidebarFragmentContainer = createFragmentContainer(
   ArtworkSidebar,
   graphql`
     fragment ArtworkSidebar_artwork on Artwork {
-      is_biddable
       is_in_auction
-      sale_artwork {
-        lot_label
-      }
-      sale {
-        is_closed
-      }
       ...ArtworkSidebarArtists_artwork
       ...ArtworkSidebarMetadata_artwork
       ...ArtworkSidebarAuctionPartnerInfo_artwork
