@@ -19,7 +19,6 @@ const Container = styled.div`
 export class CVRoute extends Component<CVRouteProps> {
   render() {
     const { viewer } = this.props
-
     return (
       <Container>
         <CVItem category="Solo shows" artist={viewer.artist_soloShows} />
