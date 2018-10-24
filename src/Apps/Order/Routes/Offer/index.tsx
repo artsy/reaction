@@ -30,6 +30,25 @@ export interface OfferState {
   errorModalTitle: string
   errorModalMessage: string
 }
+
+function formatMoney(money: number | undefined): string | null {
+  if (money == null) return null
+
+  const [dollars, cents] = money.toFixed(2).split(".")
+  const dollarDigits = dollars.split("")
+
+  for (let i = dollarDigits.length - 3; i > 0; i -= 3) {
+    dollarDigits.splice(i, 0, ",")
+  }
+
+  const formattedDollars = dollarDigits.join("")
+
+  if (cents === "00") {
+    return `$${formattedDollars}`
+  }
+  return `$${formattedDollars}.${cents}`
+}
+
 @track()
 export class OfferRoute extends Component<OfferProps, OfferState> {
   state = {
@@ -119,9 +138,11 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
                         block
                       />
                     </Flex>
-                    <Sans size="2" color="black60">
-                      List price: $15,000
-                    </Sans>
+                    {Boolean(order.itemsTotal) && (
+                      <Sans size="2" color="black60">
+                        List price: {order.itemsTotal}
+                      </Sans>
+                    )}
                     <Spacer mb={3} />
                     {!xs && (
                       <Button
@@ -137,7 +158,11 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
                 }
                 Sidebar={
                   <Flex flexDirection="column">
-                    <TransactionSummary order={order} mb={xs ? 2 : 3} />
+                    <TransactionSummary
+                      order={order}
+                      mb={xs ? 2 : 3}
+                      offerOverride={formatMoney(this.state.offerValue)}
+                    />
                     <Helper artworkId={artwork.id} />
                     {xs && (
                       <>
@@ -185,6 +210,7 @@ export const OfferFragmentContainer = createFragmentContainer(
     fragment Offer_order on Order {
       id
       state
+      itemsTotal(precision: 2)
       lineItems {
         edges {
           node {

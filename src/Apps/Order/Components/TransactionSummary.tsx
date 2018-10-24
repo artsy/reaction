@@ -8,6 +8,7 @@ import {
   Flex,
   FlexProps,
   Image,
+  Sans,
   Serif,
   Spacer,
   StackableBorderBox,
@@ -15,6 +16,7 @@ import {
 
 export interface TransactionSummaryProps extends FlexProps {
   order: TransactionSummary_order
+  offerOverride?: string | null
 }
 
 export class TransactionSummary extends React.Component<
@@ -22,6 +24,7 @@ export class TransactionSummary extends React.Component<
 > {
   render() {
     const {
+      offerOverride,
       order: {
         itemsTotal,
         shippingTotal,
@@ -52,6 +55,10 @@ export class TransactionSummary extends React.Component<
       overflow: "hidden",
       textOverflow: "ellipsis",
     } as any
+
+    const isMakeOfferFlow =
+      typeof offerOverride !==
+      "undefined" /* TODO: order.isMakeOffer or whatever */
 
     return (
       <Flex flexDirection="column" {...others}>
@@ -85,7 +92,24 @@ export class TransactionSummary extends React.Component<
           </Flex>
         </StackableBorderBox>
         <StackableBorderBox flexDirection="column">
-          <Entry label="Price" value={itemsTotal} />
+          {isMakeOfferFlow ? (
+            <>
+              <Entry
+                label="Your offer"
+                value={
+                  offerOverride ||
+                  /* TODO: || order.offer.value or whatever */ "—"
+                }
+              />
+              {Boolean(itemsTotal) && (
+                <Entry label="List price" secondary value={itemsTotal} />
+              )}
+
+              <Spacer mb={2} />
+            </>
+          ) : (
+            <Entry label="Price" value={itemsTotal} />
+          )}
           <Entry
             label="Shipping"
             value={
@@ -117,25 +141,39 @@ const Entry = ({
   label,
   value,
   final,
+  secondary,
 }: {
   label: React.ReactNode
   value: React.ReactNode
   final?: boolean
+  secondary?: boolean
 }) => (
   <Flex justifyContent="space-between" alignItems="baseline">
     <div>
-      <Serif size="2" color="black60">
-        {label}
-      </Serif>
+      {secondary ? (
+        <Sans size="2" color="black30">
+          {label}
+        </Sans>
+      ) : (
+        <Serif size="2" color="black60">
+          {label}
+        </Serif>
+      )}
     </div>
     <div>
-      <Serif
-        size="2"
-        color={final ? "black100" : "black60"}
-        weight={final ? "semibold" : "regular"}
-      >
-        {value}
-      </Serif>
+      {secondary ? (
+        <Sans size="2" color="black30">
+          {value}
+        </Sans>
+      ) : (
+        <Serif
+          size="2"
+          color={final ? "black100" : "black60"}
+          weight={final ? "semibold" : "regular"}
+        >
+          {value}
+        </Serif>
+      )}
     </div>
   </Flex>
 )

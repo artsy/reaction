@@ -7,6 +7,7 @@ export type Offer_order$ref = typeof _Offer_order$ref;
 export type Offer_order = {
     readonly id: string | null;
     readonly state: string | null;
+    readonly itemsTotal: string | null;
     readonly lineItems: ({
         readonly edges: ReadonlyArray<({
             readonly node: ({
@@ -51,6 +52,20 @@ return {
       "name": "state",
       "args": null,
       "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "itemsTotal",
+      "args": [
+        {
+          "kind": "Literal",
+          "name": "precision",
+          "value": 2,
+          "type": "Int"
+        }
+      ],
+      "storageKey": "itemsTotal(precision:2)"
     },
     {
       "kind": "LinkedField",
@@ -114,5 +129,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'cd9b8b6533db689824a4b6e0c1277cd9';
+(node as any).hash = 'e275c6841831e4344a74b2b6823e7bd4';
 export default node;
