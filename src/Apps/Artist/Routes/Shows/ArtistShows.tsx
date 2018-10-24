@@ -79,7 +79,10 @@ class ArtistShows extends Component<ArtistShowsProps, LoadingAreaState> {
   }
 
   render() {
-    if (this.props.artist.showsConnection.edges.length === 0) {
+    if (
+      !this.props.artist.showsConnection ||
+      !this.props.artist.showsConnection.edges.length
+    ) {
       return null
     }
     return (

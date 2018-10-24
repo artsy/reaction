@@ -1,4 +1,4 @@
-import { CV_Test_Query } from "__generated__/CV_Test_Query.graphql"
+import { Shows_Test_Query } from "__generated__/Shows_Test_Query.graphql"
 import React from "react"
 import { graphql } from "react-relay"
 import {
@@ -10,28 +10,28 @@ import {
   CVFixture,
   showsConnection,
 } from "../../../../__test__/Fixtures/Artist/CV"
-import { CVRouteFragmentContainer as CV } from "../../CV"
+import { ShowsRouteFragmentContainer as Shows } from "../../Shows"
 
 jest.unmock("react-relay")
 
-describe("CV", () => {
-  it("renders the correct CV info", async () => {
+describe("ArtistHeader", () => {
+  it("renders correct show information", async () => {
     const tree = await renderUntil(
       wrapper => {
-        return wrapper.find(CV).length > 0
+        return wrapper.find(Shows).length > 0
       },
       <MockBoot breakpoint="lg">
-        <MockRelayRenderer<CV_Test_Query>
-          Component={CV}
+        <MockRelayRenderer<Shows_Test_Query>
+          Component={Shows}
           query={graphql`
-            query CV_Test_Query($artistID: String!) {
+            query Shows_Test_Query($artistID: String!) {
               viewer {
-                ...CV_viewer
+                ...Shows_viewer
               }
             }
           `}
           mockResolvers={{
-            Viewer: () => ({ viewer: { artist_soloShows: CVFixture } }),
+            Viewer: () => ({ viewer: { artist_currentShows: CVFixture } }),
             Artist: () => ({ artist: CVFixture }),
             ShowConnection: () => showsConnection,
           }}
