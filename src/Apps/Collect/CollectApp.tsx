@@ -15,7 +15,7 @@ export class CollectApp extends Component<CollectAppProps> {
     return (
       <CollectFrame>
         <Title>Collect | Artsy</Title>
-        <Meta name="og:url" content={`${sd.APP_URL}/collect`} />
+        <Meta property="og:url" content={`${sd.APP_URL}/collect`} />
         <Meta
           property="og:image"
           content={`${sd.APP_URL}/images/og_image.jpg`}

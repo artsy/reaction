@@ -20,8 +20,8 @@ export class CollectionApp extends Component<CollectionAppProps> {
     return (
       <CollectFrame>
         <Title>{title} | Collect on Artsy</Title>
-        <Meta name="og:url" content={`${sd.APP_URL}/collection/${slug}`} />
-        <Meta name="og:image" content={headerImage} />
+        <Meta property="og:url" content={`${sd.APP_URL}/collection/${slug}`} />
+        <Meta property="og:image" content={headerImage} />
 
         <CollectionHeader collection={collection} />
         <Box>
