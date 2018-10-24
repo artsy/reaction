@@ -185,7 +185,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
             <Col>
               <OrderStepper
                 currentStep="Payment"
-                offerFlow={false /* TODO: order.isMakeOffer or whatever */}
+                offerFlow={false /* TODO: order.isOfferable or whatever */}
               />
             </Col>
           </Row>

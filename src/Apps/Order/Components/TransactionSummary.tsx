@@ -56,9 +56,9 @@ export class TransactionSummary extends React.Component<
       textOverflow: "ellipsis",
     } as any
 
-    const isMakeOfferFlow =
+    const isOfferFlow =
       typeof offerOverride !==
-      "undefined" /* TODO: order.isMakeOffer or whatever */
+      "undefined" /* TODO: order.isOfferable or whatever */
 
     return (
       <Flex flexDirection="column" {...others}>
@@ -92,7 +92,7 @@ export class TransactionSummary extends React.Component<
           </Flex>
         </StackableBorderBox>
         <StackableBorderBox flexDirection="column">
-          {isMakeOfferFlow ? (
+          {isOfferFlow ? (
             <>
               <Entry
                 label="Your offer"
