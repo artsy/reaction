@@ -3,7 +3,6 @@ import { Offer_order } from "__generated__/Offer_order.graphql"
 import { Helper } from "Apps/Order/Components/Helper"
 import { TransactionSummaryFragmentContainer as TransactionSummary } from "Apps/Order/Components/TransactionSummary"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
-import { track } from "Artsy/Analytics"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { Input } from "Components/Input"
 import { ErrorModal } from "Components/Modal/ErrorModal"
@@ -31,25 +30,6 @@ export interface OfferState {
   errorModalMessage: string
 }
 
-function formatMoney(money: number | undefined): string | null {
-  if (money == null) return null
-
-  const [dollars, cents] = money.toFixed(2).split(".")
-  const dollarDigits = dollars.split("")
-
-  for (let i = dollarDigits.length - 3; i > 0; i -= 3) {
-    dollarDigits.splice(i, 0, ",")
-  }
-
-  const formattedDollars = dollarDigits.join("")
-
-  if (cents === "00") {
-    return `$${formattedDollars}`
-  }
-  return `$${formattedDollars}.${cents}`
-}
-
-@track()
 export class OfferRoute extends Component<OfferProps, OfferState> {
   state = {
     offerValue: null,
@@ -59,21 +39,17 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
     errorModalMessage: null,
   }
 
-  componentDidMount() {
-    this.props.mediator.trigger("order:offer")
-  }
-
   onContinueButtonPressed: () => void = () => {
     this.setState({ isCommittingMutation: true }, () => {
       if (this.props.relay && this.props.relay.environment) {
         // TODO: commit mutation
         new Promise(resolve => setTimeout(resolve, 1000)).then(() => {
           this.setState({ isCommittingMutation: false })
-          this.setState({
-            isErrorModalOpen: true,
-            errorModalTitle: "Congratulations",
-            errorModalMessage: "You clicked the button. Well done!",
-          })
+          this.onMutationError(
+            null,
+            "Congratulations",
+            "You clicked the button. Well done!"
+          )
         })
       }
     })
@@ -160,8 +136,15 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
                   <Flex flexDirection="column">
                     <TransactionSummary
                       order={order}
-                      mb={xs ? 2 : 3}
-                      offerOverride={formatMoney(this.state.offerValue)}
+                      mb={[2, 3]}
+                      offerOverride={
+                        this.state.offerValue &&
+                        this.state.offerValue.toLocaleString("en-US", {
+                          style: "currency",
+                          currency: "USD",
+                          minimumFractionDigits: 0,
+                        })
+                      }
                     />
                     <Helper artworkId={artwork.id} />
                     {xs && (
