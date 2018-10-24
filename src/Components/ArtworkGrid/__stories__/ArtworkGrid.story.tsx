@@ -3,8 +3,8 @@ import React from "react"
 import { graphql } from "react-relay"
 
 import { RootQueryRenderer } from "Artsy/Relay/RootQueryRenderer"
-import { ArtworkGridFixture } from "../__tests__/ArtworkGridFixture"
 import RelayArtworkGrid, { ArtworkGrid } from "../ArtworkGrid"
+import { ArtworkGridFixture } from "./ArtworkGridFixture"
 
 export function ArtworkGridExample(props: {
   artistID: string

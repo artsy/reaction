@@ -4,12 +4,12 @@ import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { renderRelayTree } from "../../../DevTools"
 import { ArtworkGridItem } from "../../Artwork/GridItem"
+import { ArtworkGridFixture } from "../__stories__/ArtworkGridFixture"
 import ArtworkGrid, {
   ArtworkGridContainer,
   ArtworkGridContainerState,
 } from "../ArtworkGrid"
 import { ArtworkGridEmptyState } from "../ArtworkGridEmptyState"
-import { ArtworkGridFixture } from "./ArtworkGridFixture"
 
 jest.unmock("react-relay")
 global.clearInterval = jest.fn()
