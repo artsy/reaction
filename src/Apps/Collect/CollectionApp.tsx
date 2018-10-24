@@ -1,7 +1,9 @@
 import { Box } from "@artsy/palette"
 import { CollectionApp_collection } from "__generated__/CollectionApp_collection.graphql"
 import React, { Component } from "react"
+import { Meta, Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
+import { data as sd } from "sharify"
 import { CollectFrame } from "./CollectFrame"
 import { CollectionFilterFragmentContainer as CollectionFilterContainer } from "./Components/Collection/CollectionFilterContainer"
 import { CollectionHeader } from "./Components/Collection/Header"
@@ -12,10 +14,15 @@ interface CollectionAppProps {
 
 export class CollectionApp extends Component<CollectionAppProps> {
   render() {
-    const collection = this.props.collection
+    const { collection } = this.props
+    const { title, slug, headerImage } = collection
 
     return (
       <CollectFrame>
+        <Title>{title} | Collect on Artsy</Title>
+        <Meta property="og:url" content={`${sd.APP_URL}/collection/${slug}`} />
+        <Meta property="og:image" content={headerImage} />
+
         <CollectionHeader collection={collection} />
         <Box>
           <CollectionFilterContainer collection={collection} />

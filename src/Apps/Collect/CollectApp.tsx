@@ -1,10 +1,11 @@
 import { Box, Serif } from "@artsy/palette"
 import { CollectApp_viewer } from "__generated__/CollectApp_viewer.graphql"
 import React, { Component } from "react"
+import { Meta, Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
+import { data as sd } from "sharify"
 import { CollectFrame } from "./CollectFrame"
 import { CollectFilterFragmentContainer as ArtworkGrid } from "./Components/Base/CollectFilterContainer"
-
 export interface CollectAppProps {
   viewer?: CollectApp_viewer
 }
@@ -13,6 +14,13 @@ export class CollectApp extends Component<CollectAppProps> {
   render() {
     return (
       <CollectFrame>
+        <Title>Collect | Artsy</Title>
+        <Meta property="og:url" content={`${sd.APP_URL}/collect`} />
+        <Meta
+          property="og:image"
+          content={`${sd.APP_URL}/images/og_image.jpg`}
+        />
+
         <Box mt={3} mb={4}>
           <Serif size="8">Collect art and design online</Serif>
         </Box>
