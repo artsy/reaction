@@ -18,7 +18,7 @@ export const OrderStepper: React.SFC<OrderStepperProps> = ({
   currentStep,
   ...more
 }) => {
-  const steps = "makeOfferFlow" in more ? makeOfferFlow : buyNowFlow
+  const steps = more.makeOfferFlow ? makeOfferFlow : buyNowFlow
   const stepIndex = steps.indexOf(currentStep)
   return (
     <Stepper
