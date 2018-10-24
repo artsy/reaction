@@ -1,5 +1,6 @@
 import { LoadingClassName } from "Artsy/Relay/renderWithLoadProgress"
 import React from "react"
+import { Variables } from "relay-runtime"
 import { MockRelayRenderer, MockRelayRendererProps } from "./MockRelayRenderer"
 import { renderUntil, RenderUntilCallback } from "./renderUntil"
 
@@ -84,6 +85,7 @@ export function renderRelayTree<
 >(
   params: MockRelayRendererProps & {
     renderUntil?: RenderUntilCallback<P, S, C>
+    variables?: Variables
     wrapper?: (renderer: JSX.Element) => JSX.Element
   }
 ) {
@@ -92,6 +94,7 @@ export function renderRelayTree<
     query,
     mockResolvers,
     renderUntil: renderUntilCallback,
+    variables,
     wrapper,
   } = params
   const renderer = (
@@ -99,6 +102,7 @@ export function renderRelayTree<
       Component={Component}
       mockResolvers={mockResolvers}
       query={query}
+      variables={variables}
     />
   )
   return renderUntil<P, S, C>(

@@ -1,7 +1,7 @@
+import { ArtistHeaderFixture } from "Apps/__test__/Fixtures/Artist/Components/ArtistHeader"
+import { ArtistHeaderFragmentContainer as ArtistHeader } from "Apps/Artist/Components/ArtistHeader"
+import { renderRelayTree } from "DevTools"
 import { graphql } from "react-relay"
-import { renderRelayTree } from "../../../../DevTools"
-import { ArtistHeaderFixture } from "../../../__test__/Fixtures/Artist/ArtistHeader"
-import { ArtistHeaderFragmentContainer as ArtistHeader } from "../ArtistHeader"
 
 jest.unmock("react-relay")
 

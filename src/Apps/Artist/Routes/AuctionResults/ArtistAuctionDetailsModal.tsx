@@ -1,5 +1,5 @@
 import { Modal } from "Components/Modal/Modal"
-import React, { Component, SFC } from "react"
+import React, { SFC } from "react"
 import { Subscribe } from "unstated"
 import { AuctionResultsState } from "./state"
 
@@ -29,34 +29,32 @@ interface Props {
   }
 }
 
-export class ArtistAuctionDetailsModal extends Component<Props> {
-  render() {
-    return (
-      <Subscribe to={[AuctionResultsState]}>
-        {({ state, hideDetailsModal }: AuctionResultsState) => {
-          if (!state.showModal) {
-            return null
-          }
+export const ArtistAuctionDetailsModal: SFC<Props> = props => {
+  return (
+    <Subscribe to={[AuctionResultsState]}>
+      {({ state, hideDetailsModal }: AuctionResultsState) => {
+        if (!state.showModal) {
+          return null
+        }
 
-          return (
-            <Modal
-              onClose={() => hideDetailsModal()}
-              show={state.showModal}
-              style={{
-                maxHeight: 540,
-                overflowX: "scroll",
-              }}
-            >
-              <LotDetails
-                auctionResult={state.selectedAuction.auctionResult}
-                hideDetailsModal={hideDetailsModal}
-              />
-            </Modal>
-          )
-        }}
-      </Subscribe>
-    )
-  }
+        return (
+          <Modal
+            onClose={() => hideDetailsModal()}
+            show={state.showModal}
+            style={{
+              maxHeight: 540,
+              overflowX: "scroll",
+            }}
+          >
+            <LotDetails
+              auctionResult={state.selectedAuction.auctionResult}
+              hideDetailsModal={hideDetailsModal}
+            />
+          </Modal>
+        )
+      }}
+    </Subscribe>
+  )
 }
 
 const LotDetails: SFC<Props> = props => {
