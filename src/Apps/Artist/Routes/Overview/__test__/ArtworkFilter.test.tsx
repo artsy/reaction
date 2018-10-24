@@ -14,26 +14,7 @@ import { ArtworkFilterFragmentContainer as ArtworkFilter } from "../Components/A
 
 jest.unmock("react-relay")
 
-xdescribe("ArtworkFilter", () => {
-  // const getWrapper = async (response = ArtworkFilterFixture) => {
-  //   return await renderRelayTree({
-  //     Component: () => {
-  //       return (
-  //         <Provider inject={[filterState]}>
-  //           <ArtworkFilter />
-  //         </Provider>
-  //       )
-  //     },
-  //     query: graphql`
-  //       query ArtworkFilter_Test_Query {
-  //         artist(id: "pablo-picasso") {
-  //           ...ArtworkFilter_artist
-  //         }
-  //       }
-  //     `,
-  //     mockResolvers: { Artist: () => {} },
-  //   })
-  // }
+describe("ArtworkFilter", () => {
   let filterState: FilterState = null
 
   beforeEach(() => {
@@ -63,9 +44,8 @@ xdescribe("ArtworkFilter", () => {
         </Provider>
       </MockBoot>
     )
-    console.log(tree.html())
-    // const tree = await getWrapper()
-    // console.log(tree.html())
+    const html = tree.html()
+    expect(html).toContain("Catty Painting")
   })
 })
 
@@ -95,10 +75,30 @@ const data = {
         ],
       },
       {
+        slice: "GALLERY",
+        counts: [
+          {
+            name: "The FLAG Art Foundation",
+            id: "the-flag-art-foundation",
+            __id: "QWdncmVnYXRpb25Db3VudDp0aGUtZmxhZy1hcnQtZm91bmRhdGlvbg==",
+          },
+        ],
+      },
+      {
+        slice: "MAJOR_PERIOD",
+        counts: [
+          {
+            name: "The 90s",
+            id: "90s",
+            __id: "blah==",
+          },
+        ],
+      },
+      {
         slice: "MEDIUM",
         counts: [
           {
-            name: "Painting",
+            name: "Catty Painting",
             id: "painting",
             __id: "QWdncmVnYXRpb25Db3VudDpwYWludGluZw==",
           },
