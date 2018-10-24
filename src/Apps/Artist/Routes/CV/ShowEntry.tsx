@@ -21,7 +21,7 @@ export const ShowEntry: SFC<ShowEntryProps> = ({ node, size = "3" }) => (
         <span>{node.name}</span>
       )}
     </Serif>
-    {node.partner && " ,"} {renderPartnerInfoSafely(node.partner)}
+    {node.partner && ", "} {renderPartnerInfoSafely(node.partner)}
     {node.city && `, ${node.city}`}
   </Serif>
 )

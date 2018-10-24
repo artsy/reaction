@@ -5,7 +5,6 @@ import { FilterIcon } from "Assets/Icons/FilterIcon"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import styled from "styled-components"
 import { Toggle } from "Styleguide/Components"
 import { Subscribe } from "unstated"
 import { Responsive } from "Utils/Responsive"
@@ -185,14 +184,14 @@ class Filter extends Component<Props> {
     )
   }
 
-  renderZeroState({ user, mediator, xs }) {
+  renderZeroState({ user, mediator }) {
     const {
       artist,
       artist: { id, name, is_followed },
     } = this.props
 
     return (
-      <Message textSize={xs ? "3t" : "5t"} justifyContent="center">
+      <Message>
         There aren’t any works available by the artist at this time.{" "}
         {!is_followed && (
           <>
@@ -212,7 +211,7 @@ class Filter extends Component<Props> {
                   },
                 })
               }}
-              render={() => <ZeroStateLink>Follow {name}</ZeroStateLink>}
+              render={() => <a>Follow {name}</a>}
             />{" "}
             to receive notifications when new works are added.
           </>
@@ -276,7 +275,6 @@ class Filter extends Component<Props> {
 
   render() {
     const { filterState } = this.props
-
     return (
       <ContextConsumer>
         {({ user, mediator }) => {
@@ -328,7 +326,6 @@ class Filter extends Component<Props> {
                           this.renderZeroState({
                             user,
                             mediator,
-                            xs,
                           })
                         ) : (
                           <ArtworkFilter
@@ -414,8 +411,3 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(
 )
 
 const Sidebar = Box
-
-const ZeroStateLink = styled.span`
-  text-decoration: underline;
-  cursor: pointer;
-`

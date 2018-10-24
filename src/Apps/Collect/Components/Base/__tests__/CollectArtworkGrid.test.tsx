@@ -1,4 +1,4 @@
-import { CollectArtworkGrid } from "../CollectArtworkGrid"
+// TODO: write some tests
 
 describe("CollectArtworkGrid", () => {
   it("renders", () => {
