@@ -9,8 +9,25 @@ import { OfferFragmentContainer as OfferRoute } from "../Offer"
 jest.unmock("react-relay")
 
 describe("Payment", () => {
-  beforeEach(() => {
+  let wrapper
+  beforeEach(async () => {
     console.error = jest.fn() // Silences component logging.
+
+    wrapper = await renderRelayTree({
+      Component: ({ order }: any) => (
+        <OfferRoute order={order} {...defaultProps} />
+      ),
+      query: graphql`
+        query OfferTestQuery {
+          order: ecommerceOrder(id: "unused") {
+            ...Offer_order
+          }
+        }
+      `,
+      mockResolvers: {
+        Order: () => UntouchedOrder,
+      },
+    })
   })
 
   const defaultProps = {
@@ -28,33 +45,12 @@ describe("Payment", () => {
     } as any,
   }
 
-  const getWrapper = () => {
-    return renderRelayTree({
-      Component: ({ order }: any) => (
-        <OfferRoute order={order} {...defaultProps} />
-      ),
-      query: graphql`
-        query OfferTestQuery {
-          order: ecommerceOrder(id: "unused") {
-            ...Offer_order
-          }
-        }
-      `,
-      mockResolvers: {
-        Order: () => UntouchedOrder,
-      },
-      renderUntil: wrapper => wrapper.find(Input).length > 0,
-    })
-  }
-
-  it("renders", async () => {
-    const wrapper = await getWrapper()
+  it("renders", () => {
     const input = wrapper.find(Input)
     expect(input.text()).toContain("Your offer")
   })
 
-  it("can receive input, which updates the transaction summary", async () => {
-    const wrapper = await getWrapper()
+  it("can receive input, which updates the transaction summary", () => {
     const input = wrapper.find(Input)
     const transactionSummary = wrapper.find(TransactionSummary)
 
