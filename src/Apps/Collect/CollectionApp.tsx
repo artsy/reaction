@@ -20,9 +20,12 @@ export class CollectionApp extends Component<CollectionAppProps> {
     }
   }
 
+  componentWillMount() {
+    this.collectionNotFound(this.props.collection)
+  }
+
   render() {
     const { collection } = this.props
-    this.collectionNotFound(collection)
     const { title, slug, headerImage } = collection
 
     return (
