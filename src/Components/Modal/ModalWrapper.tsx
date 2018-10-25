@@ -187,12 +187,12 @@ export const ModalContainer = styled.div.attrs<{
         `};
 `
 
-const ModalInner = styled.div.attrs<{ fullscreenResponsiveModal?: boolean }>(
-  {}
-)`
-  /* disabling scrolling until custom scrollbars are implemented */
-  /* overflow-y: scroll; */
+const ModalInner = styled.div.attrs<{
+  fullscreenResponsiveModal?: boolean
+  isLong?: boolean
+}>({})`
   max-height: calc(100vh - 80px);
+  overflow-y: auto;
   ${props =>
     props.fullscreenResponsiveModal &&
     media.sm`
