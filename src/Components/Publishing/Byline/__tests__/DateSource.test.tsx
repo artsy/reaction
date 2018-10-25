@@ -1,10 +1,10 @@
 import { mockTracking } from "Artsy/Analytics"
+import { NewsArticle } from "Components/Publishing/Fixtures/Articles"
+import { EditableChild } from "Components/Publishing/Fixtures/Helpers"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import { cloneDeep, extend } from "lodash"
 import React from "react"
-import { NewsArticle } from "../../Fixtures/Articles"
-import { EditableChild } from "../../Fixtures/Helpers"
 import { DateSource } from "../DateSource"
 
 jest.unmock("react-tracking")
@@ -18,7 +18,7 @@ describe("DateSource", () => {
   })
 
   it("Renders a source with link", () => {
-    const article = extend(cloneDeep(NewsArticle))
+    extend(cloneDeep(NewsArticle))
     const component = mount(<DateSource article={NewsArticle} />)
 
     expect(component.text()).toMatch("via")

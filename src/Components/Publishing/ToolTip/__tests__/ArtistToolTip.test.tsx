@@ -1,12 +1,11 @@
 import { ContextProvider } from "Artsy"
+import { FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
+import { Artists } from "Components/Publishing/Fixtures/Components"
+import { wrapperWithContext } from "Components/Publishing/Fixtures/Helpers"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import PropTypes from "prop-types"
 import React from "react"
-import track from "react-tracking"
-import { FollowArtistButton } from "../../../FollowButton/FollowArtistButton"
-import { Artists } from "../../Fixtures/Components"
-import { wrapperWithContext } from "../../Fixtures/Helpers"
 import { ArtistToolTip, TitleDate } from "../ArtistToolTip"
 
 describe("ArtistToolTip", () => {

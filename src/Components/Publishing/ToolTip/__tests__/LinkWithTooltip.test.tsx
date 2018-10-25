@@ -1,11 +1,11 @@
 import { ContextProvider } from "Artsy/SystemContext"
+import { Artists, Genes } from "Components/Publishing/Fixtures/Components"
+import { wrapperWithContext } from "Components/Publishing/Fixtures/Helpers"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import { defer } from "lodash"
 import PropTypes from "prop-types"
 import React from "react"
-import { Artists, Genes } from "../../Fixtures/Components"
-import { wrapperWithContext } from "../../Fixtures/Helpers"
 import {
   Background,
   Link,
@@ -42,7 +42,7 @@ describe("LinkWithTooltip", () => {
     )
   }
 
-  const testContext = {
+  const testContext: any = {
     activeTooltip: null,
     tooltipsData: {
       artists: { "nick-mauss": Artists[0].artist },
@@ -53,9 +53,6 @@ describe("LinkWithTooltip", () => {
 
   let testProps
   let position
-  const window = {
-    innerHeight: 800,
-  }
 
   beforeEach(() => {
     testContext.onTriggerToolTip = jest.fn()
@@ -87,7 +84,7 @@ describe("LinkWithTooltip", () => {
     const wrapper = getWrapper(testContext, testProps)
       .childAt(0)
       .childAt(0)
-      .instance()
+      .instance() as any
 
     expect(wrapper.urlToEntityType()).toEqual({
       entityType: "artist",
@@ -99,7 +96,7 @@ describe("LinkWithTooltip", () => {
     const wrapper = getWrapper(testContext, testProps)
       .childAt(0)
       .childAt(0)
-      .instance()
+      .instance() as any
 
     expect(wrapper.entityTypeToEntity()).toEqual({
       entityType: "artist",
@@ -166,7 +163,7 @@ describe("LinkWithTooltip", () => {
     const wrapper = getWrapper(testContext, testProps)
       .childAt(0)
       .childAt(0)
-      .instance()
+      .instance() as any
     expect(wrapper.state.position.left).toBe(0)
   })
 
@@ -174,7 +171,7 @@ describe("LinkWithTooltip", () => {
     const wrapper = getWrapper(testContext, testProps)
       .childAt(0)
       .childAt(0)
-      .instance()
+      .instance() as any
     wrapper.setupToolTipPosition = jest.fn()
 
     wrapper.componentDidMount()
@@ -187,7 +184,7 @@ describe("LinkWithTooltip", () => {
     const instance = wrapper
       .childAt(0)
       .childAt(0)
-      .instance()
+      .instance() as any
     wrapper.find(Background).simulate("mouseLeave")
 
     expect(instance.state.maybeHideToolTip).toBe(true)
@@ -204,7 +201,7 @@ describe("LinkWithTooltip", () => {
     const wrapper = getWrapper(testContext, testProps)
       .childAt(0)
       .childAt(0)
-      .instance()
+      .instance() as any
     wrapper.setState = jest.fn()
     wrapper.setupToolTipPosition()
 
@@ -218,7 +215,7 @@ describe("LinkWithTooltip", () => {
       const wrapper = getWrapper(testContext, testProps)
         .childAt(0)
         .childAt(0)
-        .instance()
+        .instance() as any
       const getOrientation = wrapper.getOrientation(position)
 
       expect(getOrientation).toBe("down")
@@ -229,7 +226,7 @@ describe("LinkWithTooltip", () => {
       const wrapper = getWrapper(testContext, testProps)
         .childAt(0)
         .childAt(0)
-        .instance()
+        .instance() as any
       const getOrientation = wrapper.getOrientation(position)
 
       expect(getOrientation).toBe("up")
@@ -241,7 +238,7 @@ describe("LinkWithTooltip", () => {
       const wrapper = getWrapper(testContext, testProps)
         .childAt(0)
         .childAt(0)
-        .instance()
+        .instance() as any
       wrapper.setState({ position })
       expect(wrapper.getToolTipPosition("artist").toolTipLeft).toBe(
         -116.3203125
@@ -252,7 +249,7 @@ describe("LinkWithTooltip", () => {
       const wrapper = getWrapper(testContext, testProps)
         .childAt(0)
         .childAt(0)
-        .instance()
+        .instance() as any
       wrapper.setState({ position })
       expect(wrapper.getToolTipPosition("gene").toolTipLeft).toBe(-76.3203125)
     })
@@ -264,7 +261,7 @@ describe("LinkWithTooltip", () => {
       const wrapper = getWrapper(testContext, testProps)
         .childAt(0)
         .childAt(0)
-        .instance()
+        .instance() as any
       wrapper.setState({ position })
       const { arrowLeft, toolTipLeft } = wrapper.getToolTipPosition("artist")
 
@@ -279,7 +276,7 @@ describe("LinkWithTooltip", () => {
       const wrapper = getWrapper(testContext, testProps)
         .childAt(0)
         .childAt(0)
-        .instance()
+        .instance() as any
       wrapper.setState({ position })
       const { arrowLeft, toolTipLeft } = wrapper.getToolTipPosition("gene")
 

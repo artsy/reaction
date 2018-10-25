@@ -3,8 +3,8 @@ import { defer } from "lodash"
 import { mount } from "enzyme"
 import PropTypes from "prop-types"
 import React from "react"
-import { wrapperWithContext } from "../../Fixtures/Helpers"
-import { Artists, Genes } from "../../Fixtures/Components"
+import { wrapperWithContext } from "Components/Publishing/Fixtures/Helpers"
+import { Artists, Genes } from "Components/Publishing/Fixtures/Components"
 import { ContextProvider } from "Artsy/SystemContext"
 import {
   Link,

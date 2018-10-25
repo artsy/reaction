@@ -1,19 +1,18 @@
+import {
+  SeriesArticle,
+  StandardArticle,
+  VideoArticle,
+} from "Components/Publishing/Fixtures/Articles"
+import { Nav } from "Components/Publishing/Nav/Nav"
+import { ArticleCard } from "Components/Publishing/RelatedArticles/ArticleCards/ArticleCard"
+import { SeriesAbout } from "Components/Publishing/Series/SeriesAbout"
+import { VideoPlayer } from "Components/Publishing/Video/Player/VideoPlayer"
+import { VideoAbout } from "Components/Publishing/Video/VideoAbout"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import { clone } from "lodash"
 import React from "react"
 import renderer from "react-test-renderer"
-import {
-  SeriesArticle,
-  StandardArticle,
-  VideoArticle,
-} from "../../Fixtures/Articles"
-import { Nav } from "../../Nav/Nav"
-import { ArticleCard } from "../../RelatedArticles/ArticleCards/ArticleCard"
-import { SeriesAbout } from "../../Series/SeriesAbout"
-import { ArticleData } from "../../Typings"
-import { VideoPlayer } from "../../Video/Player/VideoPlayer"
-import { VideoAbout } from "../../Video/VideoAbout"
 import { VideoLayout } from "../VideoLayout"
 
 describe("Video Layout", () => {
@@ -22,7 +21,7 @@ describe("Video Layout", () => {
     seriesArticle: SeriesArticle,
   })
 
-  const getWrapper = (props = {}) => {
+  const getWrapper = (props: any = {}) => {
     const { article, seriesArticle, relatedArticles } = props
     return mount(
       <VideoLayout
@@ -76,7 +75,7 @@ describe("Video Layout", () => {
   })
 
   it("sets isPlaying to false when paused", () => {
-    const component = getWrapper()
+    const component = getWrapper() as any
     component.instance().onPlayToggle(false)
     expect(component.state().isPlaying).toBe(false)
   })

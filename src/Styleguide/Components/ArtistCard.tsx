@@ -64,16 +64,14 @@ export const LargeArtistCard: SFC<Props> = props => (
         artist={props.artist}
         user={props.user}
         onOpenAuthModal={maybeAuthenticated}
-        render={_props => {
+        render={({ is_followed }) => {
           return (
             <Button variant="secondaryOutline" size="small" width={space(9)}>
-              Follow
+              {getButtonLabel(is_followed)}
             </Button>
           )
         }}
-      >
-        Follow
-      </FollowArtistButton>
+      />
     </Flex>
   </BorderBox>
 )
@@ -93,16 +91,14 @@ export const SmallArtistCard: SFC<Props> = props => (
         artist={props.artist}
         user={props.user}
         onOpenAuthModal={maybeAuthenticated}
-        render={_props => {
+        render={({ is_followed }) => {
           return (
             <Button variant="secondaryOutline" size="small" width="70px">
-              Follow
+              {getButtonLabel(is_followed)}
             </Button>
           )
         }}
-      >
-        Follow
-      </FollowArtistButton>
+      />
     </Flex>
 
     {props.artist.image && (
@@ -141,3 +137,9 @@ export const ArtistCardFragmentContainer = createFragmentContainer(
     }
   `
 )
+
+// Helpers
+
+const getButtonLabel = (isFollowed: boolean): string => {
+  return isFollowed ? "Unfollow" : "Follow"
+}

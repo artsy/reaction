@@ -1,16 +1,16 @@
-import { mount } from "enzyme"
-import "jest-styled-components"
-import React from "react"
-import renderer from "react-test-renderer"
-import { Date } from "../../../Byline/Date"
-import { getDate } from "../../../Constants"
+import { Date } from "Components/Publishing/Byline/Date"
+import { getDate } from "Components/Publishing/Constants"
 import {
   SeriesArticle,
   StandardArticle,
   VideoArticle,
-} from "../../../Fixtures/Articles"
-import { EditableChild } from "../../../Fixtures/Helpers"
-import { IconVideoPlay } from "../../../Icon/IconVideoPlay"
+} from "Components/Publishing/Fixtures/Articles"
+import { EditableChild } from "Components/Publishing/Fixtures/Helpers"
+import { IconVideoPlay } from "Components/Publishing/Icon/IconVideoPlay"
+import { mount } from "enzyme"
+import "jest-styled-components"
+import React from "react"
+import renderer from "react-test-renderer"
 import { ArticleCard, ArticleCardContainer } from "../ArticleCard"
 
 describe("ArticleCard", () => {
@@ -146,9 +146,11 @@ describe("ArticleCard", () => {
         <ArticleCard
           article={videoArticle}
           series={SeriesArticle}
-          tracking={{
-            trackEvent,
-          }}
+          tracking={
+            {
+              trackEvent,
+            } as any
+          }
         />
       )
       component

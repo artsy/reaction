@@ -28,7 +28,9 @@ describe("Artwork", () => {
       href: "/artwork/mikael-olson-some-kind-of-dinosaur",
     }
 
-    const artwork = renderer.create(<Artwork artwork={artworkProps} />).toJSON()
+    const artwork = renderer
+      .create(<Artwork artwork={artworkProps as any} />)
+      .toJSON()
     expect(artwork).toMatchSnapshot()
   })
 })

@@ -1,10 +1,10 @@
+import { VideoArticle } from "Components/Publishing/Fixtures/Articles"
+import { Media } from "Components/Publishing/Fixtures/Components"
+import { EditableChild } from "Components/Publishing/Fixtures/Helpers"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
-import { VideoArticle } from "../../Fixtures/Articles"
-import { Media } from "../../Fixtures/Components"
-import { EditableChild } from "../../Fixtures/Helpers"
 import { VideoCover, VideoCoverAsset } from "../VideoCover"
 
 describe("Video Cover", () => {

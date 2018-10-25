@@ -9,8 +9,8 @@ import { FeatureInnerContent } from "../FeatureInnerContent"
 import { FeatureTextHeader } from "../FeatureTextHeader"
 
 describe("FeatureTextHeader", () => {
-  const getWrapper = props => {
-    return mount(<FeatureTextHeader {...props} />)
+  const getWrapper = _props => {
+    return mount(<FeatureTextHeader {..._props} />)
   }
 
   let props

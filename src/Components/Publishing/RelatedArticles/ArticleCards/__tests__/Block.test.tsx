@@ -1,16 +1,16 @@
-import { mount } from "enzyme"
-import "jest-styled-components"
-import { clone } from "lodash"
-import React from "react"
-import renderer from "react-test-renderer"
 import {
   FeatureArticle,
   SeriesArticleSponsored,
   StandardArticle,
   VideoArticle,
-} from "../../../Fixtures/Articles"
-import { VerticalOrSeriesTitle } from "../../../Sections/VerticalOrSeriesTitle"
-import { SeriesAbout } from "../../../Series/SeriesAbout"
+} from "Components/Publishing/Fixtures/Articles"
+import { VerticalOrSeriesTitle } from "Components/Publishing/Sections/VerticalOrSeriesTitle"
+import { SeriesAbout } from "Components/Publishing/Series/SeriesAbout"
+import { mount } from "enzyme"
+import "jest-styled-components"
+import { clone } from "lodash"
+import React from "react"
+import renderer from "react-test-renderer"
 import { ArticleCard } from "../ArticleCard"
 import { ArticleCardsBlock } from "../Block"
 

@@ -14,6 +14,7 @@ export type ArtworkDetails_artwork = {
     }) | null> | null;
     readonly literature: string | null;
     readonly exhibition_history: string | null;
+    readonly provenance: string | null;
     readonly " $fragmentRefs": ArtworkDetailsAboutTheWorkFromArtsy_artwork$ref & ArtworkDetailsAboutTheWorkFromPartner_artwork$ref & ArtworkDetailsChecklist_artwork$ref & ArtworkDetailsAdditionalInfo_artwork$ref & ArtworkDetailsArticles_artwork$ref;
     readonly " $refType": ArtworkDetails_artwork$ref;
 };
@@ -27,7 +28,15 @@ var v0 = {
   "name": "__id",
   "args": null,
   "storageKey": null
-};
+},
+v1 = [
+  {
+    "kind": "Literal",
+    "name": "format",
+    "value": "HTML",
+    "type": "Format"
+  }
+];
 return {
   "kind": "Fragment",
   "name": "ArtworkDetails_artwork",
@@ -90,19 +99,26 @@ return {
       "kind": "ScalarField",
       "alias": null,
       "name": "literature",
-      "args": null,
-      "storageKey": null
+      "args": v1,
+      "storageKey": "literature(format:\"HTML\")"
     },
     {
       "kind": "ScalarField",
       "alias": null,
       "name": "exhibition_history",
-      "args": null,
-      "storageKey": null
+      "args": v1,
+      "storageKey": "exhibition_history(format:\"HTML\")"
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "provenance",
+      "args": v1,
+      "storageKey": "provenance(format:\"HTML\")"
     },
     v0
   ]
 };
 })();
-(node as any).hash = '55917c2770100bd68f2ece1a0607f743';
+(node as any).hash = '0d56fc6679fb1ab42d5d5d6d1f4d9ece';
 export default node;

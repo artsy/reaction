@@ -1,26 +1,26 @@
-import { mount } from "enzyme"
-import "jest-styled-components"
-import { extend } from "lodash"
-import PropTypes from "prop-types"
-import React from "react"
-import { StandardArticle } from "../../Fixtures/Articles"
+import { StandardArticle } from "Components/Publishing/Fixtures/Articles"
 import {
   FullscreenViewerContext,
   FullscreenViewerContextTypes,
   wrapperWithContext,
   WrapperWithFullscreenContext,
-} from "../../Fixtures/Helpers"
-import { Sections } from "../../Sections/Sections"
+} from "Components/Publishing/Fixtures/Helpers"
+import { Sections } from "Components/Publishing/Sections/Sections"
+import { mount } from "enzyme"
+import "jest-styled-components"
+import { extend } from "lodash"
+import PropTypes from "prop-types"
+import React from "react"
 import { ReadMoreWrapper } from "../ReadMoreWrapper"
 
 jest.useFakeTimers()
 
 describe("ReadMore", () => {
-  const getWrapper = (readMoreProps, sectionsProps) => {
+  const getWrapper = (_readMoreProps, _sectionsProps) => {
     return mount(
       WrapperWithFullscreenContext(
-        <ReadMoreWrapper {...readMoreProps}>
-          <Sections {...sectionsProps} />
+        <ReadMoreWrapper {..._readMoreProps}>
+          <Sections {..._sectionsProps} />
         </ReadMoreWrapper>
       )
     )
@@ -47,7 +47,7 @@ describe("ReadMore", () => {
   it("finds the optimal truncation height", () => {
     const viewer = getWrapper(readMoreProps, sectionsProps)
       .childAt(0)
-      .instance()
+      .instance() as any
     jest.runAllTimers()
     expect(viewer.state.truncationHeight).toEqual(200)
   })
@@ -70,14 +70,14 @@ describe("ReadMore", () => {
       )
     )
       .childAt(0)
-      .instance()
+      .instance() as any
     jest.runAllTimers()
     expect(viewer.state.truncationHeight).toEqual(200)
   })
 
   it("shows the whole article when not truncated", () => {
     readMoreProps.isTruncated = false
-    const viewer = getWrapper(readMoreProps, sectionsProps)
+    const viewer = getWrapper(readMoreProps, sectionsProps) as any
     jest.runAllTimers()
 
     expect(viewer.childAt(0).instance().state.truncationHeight).toEqual("100%")
@@ -103,7 +103,7 @@ describe("ReadMore", () => {
     })
     const viewer = getWrapper(readMoreProps, sectionsProps)
       .childAt(0)
-      .instance()
+      .instance() as any
     jest.runAllTimers()
     expect(viewer.state.truncationHeight).toEqual("100%")
     expect(readMoreProps.hideButton).toBeCalled()

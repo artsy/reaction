@@ -22,6 +22,7 @@ const Placeholder = styled.div`
   background-color: ${colors.grayMedium};
   position: relative;
   width: 100%;
+  overflow: hidden;
 `
 
 interface Props extends React.HTMLProps<ArtworkGridItemContainer> {
@@ -140,12 +141,6 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
       userSpread = { user }
     }
 
-    const hasLabFeature =
-      user &&
-      user.lab_features &&
-      user.lab_features.includes("New Buy Now Flow")
-    const enableBuyNowFlow = sd.ENABLE_NEW_BUY_NOW_FLOW || hasLabFeature
-
     return (
       <Responsive>
         {({ hover, ...breakpoints }) => {
@@ -155,7 +150,7 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
                 <a href={artwork.href}>
                   <Image src={this.getImageUrl(breakpoints)} />
                 </a>
-                {enableBuyNowFlow && this.renderArtworkBadge(artwork)}
+                {this.renderArtworkBadge(artwork)}
                 {/* The undefined check is a fallback for Force code that uses
                     Reaction code without wrapping the tree in a Responsive
                     provider component. */}

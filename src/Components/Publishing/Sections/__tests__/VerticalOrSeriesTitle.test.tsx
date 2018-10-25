@@ -1,15 +1,15 @@
+import { VerticalOrSeriesTitle } from "Components/Publishing/Sections/VerticalOrSeriesTitle"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import { clone } from "lodash"
 import React from "react"
 import renderer from "react-test-renderer"
-import { VerticalOrSeriesTitle } from "../../Sections/VerticalOrSeriesTitle"
 
 import {
   FeatureArticle,
   SeriesArticleSponsored,
   StandardArticle,
-} from "../../Fixtures/Articles"
+} from "Components/Publishing/Fixtures/Articles"
 
 it("renders properly for a feature article", () => {
   const component = renderer

@@ -2,6 +2,25 @@
 
 exports[`Artwork renders correctly 1`] = `
 .c5 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #000;
+}
+
+.c6 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  color: #666;
+}
+
+.c7 {
+  margin-bottom: 0.3px;
+}
+
+.c3 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 15px;
   line-height: 1.25em;
@@ -11,14 +30,14 @@ exports[`Artwork renders correctly 1`] = `
   text-decoration: none;
 }
 
-.c4 {
+.c8 {
   display: block;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
 
-.c3 {
+.c4 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 15px;
   line-height: 1.25em;
@@ -92,49 +111,70 @@ exports[`Artwork renders correctly 1`] = `
       className="overlay-container"
     />
   </div>
-  <div
+  <a
     className="c3"
+    href="/artwork/mikael-olson-some-kind-of-dinosaur"
+    target="_self"
   >
     <div
       className="c4"
     >
-      <strong>
-        <a
+      <div>
+        <div
           className="c5"
-          target="_self"
+          color="#000"
+          fontFamily={
+            Object {
+              "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+              "fontWeight": 500,
+            }
+          }
+          fontSize={12}
+          style={
+            Object {
+              "display": "inline",
+            }
+          }
         >
-          Mikael Olson
-        </a>
-      </strong>
+          $875
+           
+        </div>
+        <div
+          className="c6"
+          color="#666"
+          fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+          fontSize={12}
+          style={
+            Object {
+              "display": "inline",
+            }
+          }
+        />
+        <div
+          className="c7"
+        />
+        <div
+          className="c8"
+        >
+          <strong>
+            Mikael Olson
+          </strong>
+        </div>
+        <div
+          className="c8"
+        >
+          <em>
+            Some Kind of Dinosaur
+          </em>
+          , 2015
+        </div>
+        <div
+          className="c8"
+        >
+          Gallery 1261
+        </div>
+      </div>
     </div>
-    <div
-      className="c4"
-    >
-      <a
-        className="c5"
-        href="/artwork/mikael-olson-some-kind-of-dinosaur"
-        target="_self"
-      >
-        <em>
-          Some Kind of Dinosaur
-        </em>
-        , 2015
-      </a>
-    </div>
-    <div
-      className="c4"
-    >
-      <a
-        className="c5"
-        target="_self"
-      >
-        Gallery 1261
-      </a>
-    </div>
-    <div>
-      $875
-    </div>
-    <div />
-  </div>
+  </a>
 </div>
 `;

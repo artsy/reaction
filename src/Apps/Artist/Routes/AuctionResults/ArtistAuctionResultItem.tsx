@@ -1,6 +1,7 @@
 import { ArtistAuctionResultItem_auctionResult } from "__generated__/ArtistAuctionResultItem_auctionResult.graphql"
 import { ContextConsumer, ContextProps } from "Artsy"
-import React, { Component } from "react"
+import { Mediator } from "Artsy/SystemContext"
+import React, { SFC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 import { Col, Row } from "Styleguide/Elements/Grid"
@@ -17,7 +18,6 @@ import {
   Serif,
   Spacer,
 } from "@artsy/palette"
-import { Mediator } from "Artsy/SystemContext"
 
 export interface Props extends ContextProps {
   auctionResult: ArtistAuctionResultItem_auctionResult
@@ -26,227 +26,216 @@ export interface Props extends ContextProps {
   user: User
 }
 
-export class ArtistAuctionResultItem extends Component<Props> {
-  render() {
-    const { lastChild } = this.props
-    return (
-      <ContextConsumer>
-        {({ user, mediator }) => {
-          return (
-            <Row>
-              <Responsive>
-                {({ xs, sm, md }) => {
-                  if (xs) {
-                    return (
-                      <ExtraSmallAuctionItem
-                        {...this.props}
-                        mediator={mediator}
-                        user={user}
-                      />
-                    )
-                  } else if (sm || md) {
-                    return (
-                      <SmallAuctionItem
-                        {...this.props}
-                        mediator={mediator}
-                        user={user}
-                      />
-                    )
-                  } else {
-                    return (
-                      <LargeAuctionItem
-                        {...this.props}
-                        mediator={mediator}
-                        user={user}
-                      />
-                    )
-                  }
-                }}
-              </Responsive>
+export const ArtistAuctionResultItem: SFC<Props> = props => {
+  return (
+    <ContextConsumer>
+      {({ user, mediator }) => {
+        return (
+          <Row>
+            <Responsive>
+              {({ xs, sm, md }) => {
+                if (xs) {
+                  return (
+                    <ExtraSmallAuctionItem
+                      {...props}
+                      mediator={mediator}
+                      user={user}
+                    />
+                  )
+                } else if (sm || md) {
+                  return (
+                    <SmallAuctionItem
+                      {...props}
+                      mediator={mediator}
+                      user={user}
+                    />
+                  )
+                } else {
+                  return (
+                    <LargeAuctionItem
+                      {...props}
+                      mediator={mediator}
+                      user={user}
+                    />
+                  )
+                }
+              }}
+            </Responsive>
 
-              <Col>
-                <Box pt={2} pb={1}>
-                  {!lastChild && <Separator />}
-                </Box>
-              </Col>
-            </Row>
-          )
-        }}
-      </ContextConsumer>
-    )
-  }
+            <Col>
+              <Box pt={2} pb={1}>
+                {!props.lastChild && <Separator />}
+              </Box>
+            </Col>
+          </Row>
+        )
+      }}
+    </ContextConsumer>
+  )
 }
 
-const LargeAuctionItem = class extends React.Component<Props> {
-  render() {
-    const {
-      auctionResult: {
-        dimension_text,
-        images,
-        date_text,
-        organization,
-        sale_date_text,
-        title,
-      },
-      salePrice,
-      truncatedDescription,
-      estimatedPrice,
-    } = getProps(this.props)
+const LargeAuctionItem: SFC<Props> = props => {
+  const {
+    auctionResult: {
+      dimension_text,
+      images,
+      date_text,
+      organization,
+      sale_date_text,
+      title,
+    },
+    salePrice,
+    truncatedDescription,
+    estimatedPrice,
+  } = getProps(props)
 
-    return (
-      <Subscribe to={[AuctionResultsState]}>
-        {({ state, showDetailsModal }: AuctionResultsState) => {
-          return (
-            <>
-              <Col sm={1}>
-                <Box height="auto" pr={2}>
-                  <Image width="70px" src={images.thumbnail.url} />
-                </Box>
-              </Col>
-              <Col sm={4}>
-                <Box pl={1} pr={6}>
-                  <Serif size="2" italic>
-                    {title && title + ","}
-                    {date_text}
-                  </Serif>
-                  <Serif size="2">{dimension_text}</Serif>
-                  <Spacer pt={1} />
-                  <Serif size="1" color="black60">
-                    {truncatedDescription}
-                  </Serif>
-                </Box>
-              </Col>
-              <Col sm={3}>
-                <Box pr={2}>
-                  <Serif size="2">{organization}</Serif>
-                  <Serif size="2" color="black60">
-                    {sale_date_text}
-                  </Serif>
-                  <Serif size="2" color="black60">
-                    <FullDescriptionLink
-                      onClick={() => showDetailsModal(this.props)}
-                    >
-                      Full description
-                    </FullDescriptionLink>
-                  </Serif>
-                </Box>
-              </Col>
-              <Col sm={4}>
-                {renderPricing(
-                  salePrice,
-                  estimatedPrice,
-                  this.props.user,
-                  this.props.mediator,
-                  "lg"
-                )}
-              </Col>
-            </>
-          )
-        }}
-      </Subscribe>
-    )
-  }
-}
-
-const SmallAuctionItem = class extends React.Component<Props> {
-  render() {
-    const {
-      auctionResult: { dimension_text, images, date_text, title },
-      salePrice,
-      truncatedDescription,
-      estimatedPrice,
-    } = getProps(this.props)
-
-    return (
-      <>
-        <Col sm={6}>
-          <Flex>
-            <Box height="auto">
-              <Image width="70px" src={images.thumbnail.url} />
-            </Box>
-
-            <Spacer mr={2} />
-
-            <Box pr={4}>
-              <Serif size="2" italic>
-                {title && title + ","}
-                {date_text}
-              </Serif>
-              <Serif size="2">{dimension_text}</Serif>
-              <Spacer pt={1} />
-              <Serif size="1" color="black60">
-                {truncatedDescription}
-              </Serif>
-            </Box>
-          </Flex>
-        </Col>
-        <Col sm={6}>
-          {renderPricing(
-            salePrice,
-            estimatedPrice,
-            this.props.user,
-            this.props.mediator,
-            "sm"
-          )}
-        </Col>
-      </>
-    )
-  }
-}
-
-const ExtraSmallAuctionItem = class extends React.Component<Props> {
-  render() {
-    const {
-      auctionResult: {
-        dimension_text,
-        images,
-        date_text,
-        organization,
-        sale_date_text,
-        title,
-      },
-      salePrice,
-      estimatedPrice,
-    } = getProps(this.props)
-
-    return (
-      <>
-        <Col>
-          <Flex>
-            <Box height="auto">
-              <Image width="70px" src={images.thumbnail.url} />
-            </Box>
-
-            <Spacer mr={2} />
-
-            <Box>
-              <Serif size="2" italic>
-                {title && title + ","}
-                {date_text}
-              </Serif>
-              <Serif size="2">{dimension_text}</Serif>
-
-              <Spacer pb={1} />
-
-              <Serif size="2">{organization}</Serif>
-              <Serif size="2" color="black60">
-                {sale_date_text}
-              </Serif>
-
-              <Spacer pb={1} />
+  return (
+    <Subscribe to={[AuctionResultsState]}>
+      {({ state, showDetailsModal }: AuctionResultsState) => {
+        return (
+          <>
+            <Col sm={1}>
+              <Box height="auto" pr={2}>
+                <Image width="70px" src={images.thumbnail.url} />
+              </Box>
+            </Col>
+            <Col sm={4}>
+              <Box pl={1} pr={6}>
+                <Serif size="2" italic>
+                  {title && title + ","}
+                  {date_text}
+                </Serif>
+                <Serif size="2">{dimension_text}</Serif>
+                <Spacer pt={1} />
+                <Serif size="1" color="black60">
+                  {truncatedDescription}
+                </Serif>
+              </Box>
+            </Col>
+            <Col sm={3}>
+              <Box pr={2}>
+                <Serif size="2">{organization}</Serif>
+                <Serif size="2" color="black60">
+                  {sale_date_text}
+                </Serif>
+                <Serif size="2" color="black60">
+                  <FullDescriptionLink onClick={() => showDetailsModal(props)}>
+                    Full description
+                  </FullDescriptionLink>
+                </Serif>
+              </Box>
+            </Col>
+            <Col sm={4}>
               {renderPricing(
                 salePrice,
                 estimatedPrice,
-                this.props.user,
-                this.props.mediator,
-                "xs"
+                props.user,
+                props.mediator,
+                "lg"
               )}
-            </Box>
-          </Flex>
-        </Col>
-      </>
-    )
-  }
+            </Col>
+          </>
+        )
+      }}
+    </Subscribe>
+  )
+}
+
+const SmallAuctionItem: SFC<Props> = props => {
+  const {
+    auctionResult: { dimension_text, images, date_text, title },
+    salePrice,
+    truncatedDescription,
+    estimatedPrice,
+  } = getProps(props)
+
+  return (
+    <>
+      <Col sm={6}>
+        <Flex>
+          <Box height="auto">
+            <Image width="70px" src={images.thumbnail.url} />
+          </Box>
+
+          <Spacer mr={2} />
+
+          <Box pr={4}>
+            <Serif size="2" italic>
+              {title && title + ","}
+              {date_text}
+            </Serif>
+            <Serif size="2">{dimension_text}</Serif>
+            <Spacer pt={1} />
+            <Serif size="1" color="black60">
+              {truncatedDescription}
+            </Serif>
+          </Box>
+        </Flex>
+      </Col>
+      <Col sm={6}>
+        {renderPricing(
+          salePrice,
+          estimatedPrice,
+          props.user,
+          props.mediator,
+          "sm"
+        )}
+      </Col>
+    </>
+  )
+}
+
+const ExtraSmallAuctionItem: SFC<Props> = props => {
+  const {
+    auctionResult: {
+      dimension_text,
+      images,
+      date_text,
+      organization,
+      sale_date_text,
+      title,
+    },
+    salePrice,
+    estimatedPrice,
+  } = getProps(props)
+
+  return (
+    <>
+      <Col>
+        <Flex>
+          <Box height="auto">
+            <Image width="70px" src={images.thumbnail.url} />
+          </Box>
+
+          <Spacer mr={2} />
+
+          <Box>
+            <Serif size="2" italic>
+              {title && title + ","}
+              {date_text}
+            </Serif>
+            <Serif size="2">{dimension_text}</Serif>
+
+            <Spacer pb={1} />
+
+            <Serif size="2">{organization}</Serif>
+            <Serif size="2" color="black60">
+              {sale_date_text}
+            </Serif>
+
+            <Spacer pb={1} />
+            {renderPricing(
+              salePrice,
+              estimatedPrice,
+              props.user,
+              props.mediator,
+              "xs"
+            )}
+          </Box>
+        </Flex>
+      </Col>
+    </>
+  )
 }
 
 export const AuctionResultItemFragmentContainer = createFragmentContainer(
@@ -279,6 +268,8 @@ const FullDescriptionLink = styled.span`
   cursor: pointer;
   text-decoration: underline;
 `
+
+FullDescriptionLink.displayName = "FullDescriptionLink"
 
 // Helpers
 

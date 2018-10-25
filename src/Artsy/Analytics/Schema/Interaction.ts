@@ -34,6 +34,11 @@ export interface Interaction {
    * NOTE: This is old Force schema.
    */
   destination_path?: string
+
+  /*
+  * Flow
+  */
+  flow?: string
 }
 
 export interface AuthenticationInteraction extends Interaction {
@@ -41,11 +46,6 @@ export interface AuthenticationInteraction extends Interaction {
   * The action taken that prompted user to signup or login.
   */
   intent?: string
-
-  /*
-  * Flow
-  */
-  flow?: string
 
   /*
   *  The type of action that triggered the modal (eg: click, timed)

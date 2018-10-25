@@ -1,8 +1,8 @@
+import { Images } from "Components/Publishing/Fixtures/Components"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
-import { Images } from "../../../Fixtures/Components"
 import {
   FullscreenViewer,
   FullscreenViewerContainer,

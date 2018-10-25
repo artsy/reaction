@@ -1,7 +1,7 @@
+import { Authors } from "Components/Publishing/Fixtures/Components"
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
-import { Authors } from "../../Fixtures/Components"
 import { Authors as AuthorInfo } from "../Authors"
 
 it("renders properly", () => {

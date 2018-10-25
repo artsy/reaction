@@ -1,13 +1,14 @@
 import { Message } from "@artsy/palette"
-import { render } from "enzyme"
-import React from "react"
-import { graphql } from "react-relay"
 import {
   mockResolver,
   OrderWithShippingDetails,
   PickupOrder,
-} from "../../../../Apps/__test__/Fixtures/Order"
-import { MockBoot, renderRelayTree } from "../../../../DevTools"
+} from "Apps/__test__/Fixtures/Order"
+import { ContextProvider } from "Artsy"
+import { MockBoot, renderRelayTree } from "DevTools"
+import { render } from "enzyme"
+import React from "react"
+import { graphql } from "react-relay"
 import { StatusFragmentContainer } from "../Status"
 
 jest.unmock("react-relay")
@@ -26,7 +27,9 @@ describe("Status", () => {
       mockResolvers: mockResolver(order),
       wrapper: renderer => (
         <MockBoot breakpoint="xs" headTags={headTags}>
-          {renderer}
+          <ContextProvider mediator={{ trigger: jest.fn() }}>
+            {renderer}
+          </ContextProvider>
         </MockBoot>
       ),
     })

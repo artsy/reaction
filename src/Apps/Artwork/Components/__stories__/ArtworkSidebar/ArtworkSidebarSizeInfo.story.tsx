@@ -2,7 +2,7 @@ import {
   ArtworkWithEditionOfOnly,
   ArtworkWithSizeAndEditionOf,
   ArtworkWithSizeOnly,
-} from "Apps/__test__/Fixtures/Artwork/Sidebar/SizeInfo"
+} from "Apps/__test__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarSizeInfo"
 import { ArtworkSidebarSizeInfo as SizeInfo } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarSizeInfo"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"

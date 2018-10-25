@@ -1,9 +1,9 @@
+import { getDate } from "Components/Publishing/Constants"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import moment from "moment-timezone"
 import React from "react"
 import renderer from "react-test-renderer"
-import { getDate } from "../../Constants"
 import { Date } from "../Date"
 
 describe("Date", () => {

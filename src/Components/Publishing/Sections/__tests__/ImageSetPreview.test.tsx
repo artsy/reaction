@@ -1,16 +1,19 @@
+import {
+  ImageSetFull,
+  ImageSetMini,
+} from "Components/Publishing/Fixtures/Components"
+import { WrapperWithFullscreenContext } from "Components/Publishing/Fixtures/Helpers"
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
-import { ImageSetFull, ImageSetMini } from "../../Fixtures/Components"
 import { ImageSetPreview } from "../ImageSetPreview"
-import { WrapperWithFullscreenContext } from "../../Fixtures/Helpers"
 
-const renderSnapshot = props => {
+const renderSnapshot = _props => {
   return renderer
-    .create(WrapperWithFullscreenContext(<ImageSetPreview {...props} />))
+    .create(WrapperWithFullscreenContext(<ImageSetPreview {..._props} />))
     .toJSON()
 }
-let props = { section: null }
+const props = { section: null }
 
 it("renders a full image set properly", () => {
   props.section = ImageSetFull

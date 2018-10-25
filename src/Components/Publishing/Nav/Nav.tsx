@@ -1,8 +1,8 @@
 import { garamond } from "Assets/Fonts"
+import { pMedia } from "Components/Helpers"
 import React from "react"
 import Waypoint from "react-waypoint"
 import styled, { StyledFunction } from "styled-components"
-import { pMedia } from "../../Helpers"
 import { PartnerInline } from "../Partner/PartnerInline"
 
 interface Props extends React.HTMLProps<HTMLDivElement> {

@@ -1,5 +1,5 @@
 import { routes_OverviewQueryRendererQueryResponse } from "__generated__/routes_OverviewQueryRendererQuery.graphql"
-import { FilterState } from "Apps/Artist/Routes/Overview/state"
+import { FilterState, initialState } from "Apps/Artist/Routes/Overview/state"
 import { Redirect, RouteConfig } from "found"
 import React from "react"
 import { graphql } from "react-relay"
@@ -69,8 +69,13 @@ export const routes: RouteConfig[] = [
         prepareVariables: (params, props) => {
           // FIXME: The initial render includes `location` in props, but subsequent
           // renders (such as tabbing back to this route in your browser) will not.
-          const initialFilterState = props.location ? props.location.query : {}
-          return { ...initialFilterState, ...params }
+          const filterStateFromUrl = props.location ? props.location.query : {}
+          const filterParams = {
+            ...initialState,
+            ...filterStateFromUrl,
+            ...params,
+          }
+          return filterParams
         },
         query: graphql`
           query routes_OverviewQueryRendererQuery(

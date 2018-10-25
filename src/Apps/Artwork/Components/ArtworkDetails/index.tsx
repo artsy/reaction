@@ -3,6 +3,7 @@ import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { ContextConsumer } from "Artsy/Router"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
+import styled from "styled-components"
 import { Tab, Tabs } from "Styleguide/Components"
 import { ArtworkDetailsAboutTheWorkFromArtsyFragmentContainer as AboutTheWorkFromArtsy } from "./ArtworkDetailsAboutTheWorkFromArtsy"
 import { ArtworkDetailsAboutTheWorkFromPartnerFragmentContainer as AboutTheWorkFromPartner } from "./ArtworkDetailsAboutTheWorkFromPartner"
@@ -19,8 +20,6 @@ import * as Schema from "Artsy/Analytics/Schema"
 export interface ArtworkDetailsProps {
   artwork: ArtworkDetails_artwork
 }
-
-const ArtworkDetailsContainer = Box
 
 @track({
   context_module: Schema.ContextModule.ArtworkTabs,
@@ -59,12 +58,23 @@ export class ArtworkDetails extends Component<ArtworkDetailsProps> {
               name="Exhibition history"
               data={{ trackingLabel: "exhibition_history" }}
             >
-              {artwork.exhibition_history}
+              <ExhibitionHistory
+                dangerouslySetInnerHTML={{ __html: artwork.exhibition_history }}
+              />
             </Tab>
           )}
           {artwork.literature && (
             <Tab name="Bibliography" data={{ trackingLabel: "bibliography" }}>
-              {artwork.literature}
+              <Literature
+                dangerouslySetInnerHTML={{ __html: artwork.literature }}
+              />
+            </Tab>
+          )}
+          {artwork.provenance && (
+            <Tab name="Provenance" data={{ trackingLabel: "provenance" }}>
+              <Provenance
+                dangerouslySetInnerHTML={{ __html: artwork.provenance }}
+              />
             </Tab>
           )}
         </Tabs>
@@ -85,8 +95,9 @@ export const ArtworkDetailsFragmentContainer = createFragmentContainer(
       articles(size: 10) {
         id
       }
-      literature
-      exhibition_history
+      literature(format: HTML)
+      exhibition_history(format: HTML)
+      provenance(format: HTML)
     }
   `
 )
@@ -110,12 +121,23 @@ export const ArtworkDetailsQueryRenderer = ({
                 }
               }
             `}
-            render={renderWithLoadProgress(
-              ArtworkDetailsFragmentContainer as any
-            )}
+            render={renderWithLoadProgress(ArtworkDetailsFragmentContainer)}
           />
         )
       }}
     </ContextConsumer>
   )
 }
+
+// For block-level HTML (CMS) tab content collapse the first element's top margin
+// so that content properly aligns to the top of the container.
+const TabContainer = styled(Box)`
+  > * {
+    margin-block-start: 0;
+  }
+`
+
+const ArtworkDetailsContainer = TabContainer
+const ExhibitionHistory = TabContainer
+const Literature = TabContainer
+const Provenance = TabContainer

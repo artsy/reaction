@@ -1,7 +1,7 @@
+import { mockTracking } from "Artsy/Analytics"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
-import { mockTracking } from "../../../../Artsy/Analytics"
 import { PartnerBlock } from "../PartnerBlock"
 
 jest.unmock("react-tracking")

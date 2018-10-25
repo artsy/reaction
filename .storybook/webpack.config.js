@@ -15,18 +15,22 @@ env.load()
 const cacheDirectory = path.resolve(__dirname, "../", ".cache")
 
 const {
+  CI,
   APP_URL,
   FORCE_CLOUDFRONT_URL,
   GEMINI_CLOUDFRONT_URL,
   METAPHYSICS_ENDPOINT,
+  NETLIFY,
   NODE_ENV,
   USER_ACCESS_TOKEN,
   USER_ID,
   USER_LAB_FEATURES,
   WEBPACK_DEVTOOL = "cheap-module-eval-source-map",
   XAPP_TOKEN,
-  ENABLE_NEW_BUY_NOW_FLOW,
 } = process.env
+
+const isCI = CI || NETLIFY
+const notOnCI = value => (isCI ? [] : [value])
 
 /**
  * Write out a file that stubs the data that’s normally shared with the client
@@ -40,7 +44,6 @@ const sharifyPath = sharify({
   METAPHYSICS_ENDPOINT,
   NODE_ENV,
   XAPP_TOKEN,
-  ENABLE_NEW_BUY_NOW_FLOW,
 })
 
 const plugins = [
@@ -55,7 +58,7 @@ const plugins = [
     excludeWarnings: true,
     skipFirstNotification: true,
   }),
-  new SimpleProgressWebpackPlugin({ format: "compact" }),
+  ...notOnCI(new SimpleProgressWebpackPlugin({ format: "compact" })),
   new webpack.NoEmitOnErrorsPlugin(),
 ]
 

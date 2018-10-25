@@ -1,6 +1,6 @@
 import { mount } from "enzyme"
 import React from "react"
-import { Dismiss, ErrorModal, ModalButton } from "../ErrorModal"
+import { ErrorModal, ModalButton } from "../ErrorModal"
 import { ModalWrapper } from "../ModalWrapper"
 
 describe("ErrorModal", () => {
@@ -27,6 +27,19 @@ describe("ErrorModal", () => {
       expect(text).toContain("An error occurred")
       expect(text).toContain(
         "Something went wrong. Please try again or contact support@artsy.net."
+      )
+      expect(text).toContain("Continue")
+    })
+
+    it("Renders with default text and custom contact email if no other props are specified", () => {
+      const component = getWrapper({
+        ...props,
+        contactEmail: "orders@artsy.net",
+      })
+      const text = component.text()
+      expect(text).toContain("An error occurred")
+      expect(text).toContain(
+        "Something went wrong. Please try again or contact orders@artsy.net."
       )
       expect(text).toContain("Continue")
     })

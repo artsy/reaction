@@ -1,13 +1,13 @@
+import {
+  ClassicArticle,
+  ClassicArticleManyAuthors,
+} from "Components/Publishing/Fixtures/Articles"
+import { EditableChild } from "Components/Publishing/Fixtures/Helpers"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import { cloneDeep } from "lodash"
 import React from "react"
 import renderer from "react-test-renderer"
-import {
-  ClassicArticle,
-  ClassicArticleManyAuthors,
-} from "../../../Fixtures/Articles"
-import { EditableChild } from "../../../Fixtures/Helpers"
 import { ClassicHeader } from "../ClassicHeader"
 
 describe("Classic Header", () => {
@@ -35,8 +35,8 @@ describe("Classic Header", () => {
   })
 
   describe("Unit", () => {
-    const getWrapper = props => {
-      return mount(<ClassicHeader {...props} />)
+    const getWrapper = _props => {
+      return mount(<ClassicHeader {..._props} />)
     }
     let props
     beforeEach(() => {

@@ -1,17 +1,17 @@
+import {
+  ArtworkMissingInfo,
+  ArtworkMultipleArtists,
+  ArtworkRegular,
+} from "Components/Publishing/Fixtures/Components"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import _ from "lodash"
 import React from "react"
 import renderer from "react-test-renderer"
-import {
-  ArtworkMissingInfo,
-  ArtworkMultipleArtists,
-  ArtworkRegular,
-} from "../../Fixtures/Components"
 import { ArtworkCaption } from "../ArtworkCaption"
 
 describe("ArtworkCaption", () => {
-  const getWrapper = (props = {}) => {
+  const getWrapper = (props: any = {}) => {
     return mount(<ArtworkCaption artwork={props.artwork || ArtworkRegular} />)
   }
 
@@ -40,19 +40,19 @@ describe("ArtworkCaption", () => {
 
   describe("#joinParts", () => {
     it("joins zero items", () => {
-      const component = getWrapper()
+      const component = getWrapper() as any
       const joined = component.instance().joinParts([])
       expect(joined.toString()).toEqual("")
     })
 
     it("joins one item", () => {
-      const component = getWrapper()
+      const component = getWrapper() as any
       const joined = component.instance().joinParts(["Title"])
       expect(joined.toString()).toEqual("Title")
     })
 
     it("joins two items", () => {
-      const component = getWrapper()
+      const component = getWrapper() as any
       const joined = component.instance().joinParts(["Title", "Date"])
 
       expect(joined[0]).toEqual("Title")
@@ -60,7 +60,7 @@ describe("ArtworkCaption", () => {
     })
 
     it("joins three items into a nested array", () => {
-      const component = getWrapper()
+      const component = getWrapper() as any
       const joined = component
         .instance()
         .joinParts(["Title", "Date", "Partner"])

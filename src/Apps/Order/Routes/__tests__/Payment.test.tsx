@@ -5,7 +5,6 @@ import React from "react"
 import {
   OrderWithShippingDetails,
   PickupOrder,
-  UntouchedOrder,
 } from "Apps/__test__/Fixtures/Order"
 import { Input } from "../../../../Components/Input"
 import { Collapse } from "../../../../Styleguide/Components"
@@ -15,7 +14,6 @@ import {
   creatingCreditCardSuccess,
   settingOrderPaymentFailed,
   settingOrderPaymentSuccess,
-  settingOrderShipmentFailure,
 } from "../__fixtures__/MutationResults"
 import { ContinueButton, PaymentProps, PaymentRoute } from "../Payment"
 import {
@@ -74,46 +72,75 @@ describe("Payment", () => {
       relay: { environment: {} } as RelayProp,
       router: { push: jest.fn() },
       stripe: stripeMock,
+      mediator: { trigger: jest.fn() },
     } as any
   })
 
   it("always shows the billing address form without checkbox when the user selected 'pick' shipping option", () => {
     const paymentRoute = mount(
-      <PaymentRoute {...testProps} order={{ ...PickupOrder, id: "1234" }} />
+      <PaymentRoute
+        {...testProps}
+        order={{ ...PickupOrder, id: "1234" } as any}
+      />
     )
 
     expect(paymentRoute.find(Checkbox).length).toBe(0)
     expect(paymentRoute.find(Collapse).props().open).toBe(true)
   })
 
-  it("pre-populates with available details when returning to the payment route", () => {
+  it("removes all data when the billing address form is hidden", () => {
+    const paymentRoute = mount(<PaymentRoute {...testProps} />)
+    // expand address form
+    paymentRoute.find(Checkbox).simulate("click")
+
+    const nameInput = paymentRoute
+      .find(Input)
+      .filterWhere(wrapper => wrapper.props().title === "Full name")
+      .find("input") as any
+    nameInput.instance().value = "Dr Collector"
+    nameInput.simulate("change")
+    expect(nameInput.instance().value).toEqual("Dr Collector")
+
+    // hide address form
+    paymentRoute.find(Checkbox).simulate("click")
+
+    // expand address form again
+    paymentRoute.find(Checkbox).simulate("click")
+
+    // expect name to be empty
+    expect(nameInput.instance().value).toEqual("")
+  })
+
+  it("does not pre-populate with available details when returning to the payment route", () => {
     const paymentRoute = mount(
       <PaymentRoute
         {...testProps}
-        order={{
-          ...PickupOrder,
-          id: "1234",
-          creditCard: {
-            name: "Artsy UK Ltd",
-            street1: "14 Gower's Walk",
-            street2: "Suite 2.5, The Loom",
-            city: "London",
-            state: "Whitechapel",
-            country: "UK",
-            postal_code: "E1 8PY",
-          },
-        }}
+        order={
+          {
+            ...PickupOrder,
+            id: "1234",
+            creditCard: {
+              name: "Artsy UK Ltd",
+              street1: "14 Gower's Walk",
+              street2: "Suite 2.5, The Loom",
+              city: "London",
+              state: "Whitechapel",
+              country: "UK",
+              postal_code: "E1 8PY",
+            },
+          } as any
+        }
       />
     )
 
-    expect(paymentRoute.find(AddressForm).props().defaultValue).toEqual({
-      name: "Artsy UK Ltd",
-      addressLine1: "14 Gower's Walk",
-      addressLine2: "Suite 2.5, The Loom",
-      city: "London",
-      region: "Whitechapel",
-      postalCode: "E1 8PY",
-      country: "UK",
+    expect(paymentRoute.find(AddressForm).props().value).toEqual({
+      name: "",
+      addressLine1: "",
+      addressLine2: "",
+      city: "",
+      region: "",
+      postalCode: "",
+      country: "US",
       phoneNumber: "",
     })
   })
@@ -123,7 +150,10 @@ describe("Payment", () => {
     stripeMock.createToken.mockReturnValue({ then: thenMock })
 
     const paymentRoute = mount(
-      <PaymentRoute {...testProps} order={{ ...PickupOrder, id: "1234" }} />
+      <PaymentRoute
+        {...testProps}
+        order={{ ...PickupOrder, id: "1234" } as any}
+      />
     )
 
     fillAddressForm(paymentRoute, validAddress)
@@ -359,26 +389,47 @@ describe("Payment", () => {
   })
 
   describe("Validations", () => {
-    let shipOrderProps
-    beforeEach(() => {
-      const shipOrder = {
-        ...UntouchedOrder,
-        requestedFulfillment: {
-          __typename: "Ship",
-        },
-      }
-      shipOrderProps = { ...testProps, order: shipOrder }
-    })
-
     it("says a required field is required with billing address exposed", () => {
       const paymentRoute = mount(<PaymentRoute {...testProps} />)
       ;(paymentRoute.find(Checkbox).props() as CheckboxProps).onSelect(false)
 
       paymentRoute.find(ContinueButton).simulate("click")
+      paymentRoute.update()
       const input = paymentRoute
         .find(Input)
         .filterWhere(wrapper => wrapper.props().title === "Full name")
       expect(input.props().error).toEqual("This field is required")
+    })
+    it("before submit, only shows a validation error on inputs that have been touched", () => {
+      const component = mount(<PaymentRoute {...testProps} />)
+      ;(component.find(Checkbox).props() as CheckboxProps).onSelect(false)
+
+      fillIn(component, { title: "Full name", value: "Erik David" })
+      fillIn(component, { title: "Address line 1", value: "" })
+      component.update()
+
+      const [addressInput, cityInput] = ["Address line 1", "City"].map(label =>
+        component
+          .find(Input)
+          .filterWhere(wrapper => wrapper.props().title === label)
+      )
+
+      expect(addressInput.props().error).toBeTruthy()
+      expect(cityInput.props().error).toBeFalsy()
+    })
+    it("after submit, shows all validation errors on inputs that have been touched", () => {
+      const component = mount(<PaymentRoute {...testProps} />)
+      ;(component.find(Checkbox).props() as CheckboxProps).onSelect(false)
+
+      fillIn(component, { title: "Full name", value: "Erik David" })
+
+      component.find("Button").simulate("click")
+
+      const cityInput = component
+        .find(Input)
+        .filterWhere(wrapper => wrapper.props().title === "City")
+
+      expect(cityInput.props().error).toBeTruthy()
     })
 
     it("does not submit an empty form with billing address exposed", () => {
@@ -391,7 +442,6 @@ describe("Payment", () => {
 
     it("does not submit the mutation with an incomplete form with billing address exposed", () => {
       const paymentRoute = mount(<PaymentRoute {...testProps} />)
-      const { addressLine1, ...badAddress } = validAddress
       ;(paymentRoute.find(Checkbox).props() as CheckboxProps).onSelect(false)
       fillIn(paymentRoute, { title: "Full name", value: "Air Bud" })
       paymentRoute.find(ContinueButton).simulate("click")

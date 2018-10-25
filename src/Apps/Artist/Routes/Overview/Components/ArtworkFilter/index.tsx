@@ -5,8 +5,6 @@ import { FilterIcon } from "Assets/Icons/FilterIcon"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { data as sd } from "sharify"
-import styled from "styled-components"
 import { Toggle } from "Styleguide/Components"
 import { Subscribe } from "unstated"
 import { Responsive } from "Utils/Responsive"
@@ -67,19 +65,11 @@ class Filter extends Component<Props> {
       agg => agg.slice === "MAJOR_PERIOD"
     )
 
-    const hasLabFeature =
-      user &&
-      user.lab_features &&
-      user.lab_features.includes("New Buy Now Flow")
-    const enableBuyNowFlow = sd.ENABLE_NEW_BUY_NOW_FLOW || hasLabFeature
-
     return (
       <>
         <Flex flexDirection="column" alignItems="left" mt={-1} mb={1}>
           {!hideTopBorder && <Separator mb={1} />}
-          {enableBuyNowFlow
-            ? this.renderWaysToBuy(filterState, mediator, counts)
-            : this.renderForSaleCheckbox(filterState, mediator, counts)}
+          {this.renderWaysToBuy(filterState, mediator, counts)}
         </Flex>
 
         <Toggle label="Medium" expanded={!this.showZeroState}>
@@ -157,20 +147,6 @@ class Filter extends Component<Props> {
     })
   }
 
-  renderForSaleCheckbox(filterState, mediator, counts) {
-    return (
-      <Checkbox
-        selected={filterState.state.for_sale}
-        disabled={!this.existy.hasForSaleArtworks || this.showZeroState}
-        onSelect={value => {
-          return filterState.setFilter("for_sale", value, mediator)
-        }}
-      >
-        For sale
-      </Checkbox>
-    )
-  }
-
   renderWaysToBuy(filterState, mediator, counts) {
     return (
       <React.Fragment>
@@ -208,14 +184,14 @@ class Filter extends Component<Props> {
     )
   }
 
-  renderZeroState({ user, mediator, xs }) {
+  renderZeroState({ user, mediator }) {
     const {
       artist,
       artist: { id, name, is_followed },
     } = this.props
 
     return (
-      <Message textSize={xs ? "3t" : "5t"} justifyContent="center">
+      <Message>
         There aren’t any works available by the artist at this time.{" "}
         {!is_followed && (
           <>
@@ -235,7 +211,7 @@ class Filter extends Component<Props> {
                   },
                 })
               }}
-              render={() => <ZeroStateLink>Follow {name}</ZeroStateLink>}
+              render={() => <a>Follow {name}</a>}
             />{" "}
             to receive notifications when new works are added.
           </>
@@ -249,7 +225,6 @@ class Filter extends Component<Props> {
       <Flex
         justifyContent={xs ? "space-between" : "flex-end"}
         alignItems="center"
-        mr={2}
       >
         <SmallSelect
           mt="-8px"
@@ -300,7 +275,6 @@ class Filter extends Component<Props> {
 
   render() {
     const { filterState } = this.props
-
     return (
       <ContextConsumer>
         {({ user, mediator }) => {
@@ -352,7 +326,6 @@ class Filter extends Component<Props> {
                           this.renderZeroState({
                             user,
                             mediator,
-                            xs,
                           })
                         ) : (
                           <ArtworkFilter
@@ -399,7 +372,7 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(
           type: "[ArtworkAggregation]"
           defaultValue: [MEDIUM, TOTAL, GALLERY, INSTITUTION, MAJOR_PERIOD]
         }
-        sort: { type: "String", defaultValue: "-partner_updated_at" }
+        sort: { type: "String", defaultValue: "-decayed_merch" }
       ) {
       id
       name
@@ -438,8 +411,3 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(
 )
 
 const Sidebar = Box
-
-const ZeroStateLink = styled.span`
-  text-decoration: underline;
-  cursor: pointer;
-`

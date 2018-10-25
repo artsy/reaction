@@ -1,4 +1,5 @@
 import { Location, RedirectException, RouteConfig, Router } from "found"
+import { get } from "Utils/get"
 import { OrderApp } from "./OrderApp"
 
 const LEAVE_MESSAGING =
@@ -30,22 +31,33 @@ export const confirmRouteExit = (
 export const shouldRedirect = props => {
   const { location, order, params } = props as any
 
-  if (
-    order &&
-    order.state !== "PENDING" &&
-    !location.pathname.includes("status")
-  ) {
+  if (!order) {
+    // error
+    return false
+  }
+
+  if (order.state === "ABANDONED") {
+    const artworkID = get(order, o => o.lineItems.edges[0].node.artwork.id)
+    // If an artwork ID can't be found, redirect back to home page.
+    throw new RedirectException(artworkID ? `/artwork/${artworkID}` : "/")
+  }
+
+  if (order.state !== "PENDING" && !location.pathname.includes("status")) {
     // Redirect to status page if the order is no longer PENDING (means it can't be edited anymore)
     throw new RedirectException(`/orders/${params.orderID}/status`)
-  } else if (
-    order &&
-    !order.requestedFulfillment &&
-    !location.pathname.includes("shipping")
-  ) {
+  }
+
+  if (location.pathname.includes("offer")) {
+    // TODO: more validation
+    return false
+  }
+
+  if (!order.requestedFulfillment && !location.pathname.includes("shipping")) {
     // Redirect to shipping page if no shipping info has been set
     throw new RedirectException(`/orders/${params.orderID}/shipping`)
-  } else if (
-    order &&
+  }
+
+  if (
     !order.creditCard &&
     !(
       location.pathname.includes("payment") ||
@@ -54,7 +66,7 @@ export const shouldRedirect = props => {
   ) {
     // Redirect to payment page if there is shipping but _no_ credit card
     throw new RedirectException(`/orders/${params.orderID}/payment`)
-  } else {
-    return false
   }
+
+  return false
 }

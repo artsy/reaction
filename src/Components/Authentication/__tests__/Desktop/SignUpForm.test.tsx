@@ -1,7 +1,7 @@
+import { SignUpForm } from "Components/Authentication/Desktop/SignUpForm"
 import { mount } from "enzyme"
 import { Formik } from "formik"
 import React from "react"
-import { SignUpForm } from "../../Desktop/SignUpForm"
 
 describe("SignUpForm", () => {
   xit("calls handleSubmit with the right params", done => {
@@ -49,11 +49,11 @@ describe("SignUpForm", () => {
       <SignUpForm error="Some global server error" handleSubmit={jest.fn()} />
     )
     const input = wrapper.find(`input[name="email"]`)
-    expect(wrapper.state().error).toEqual("Some global server error")
+    expect((wrapper.state() as any).error).toEqual("Some global server error")
     input.simulate("change")
     wrapper.update()
     setTimeout(() => {
-      expect(wrapper.state().error).toEqual(null)
+      expect((wrapper.state() as any).error).toEqual(null)
       done()
     })
   })
@@ -75,7 +75,7 @@ describe("SignUpForm", () => {
 
     setTimeout(() => {
       const submitButton = wrapper.find(`SubmitButton`)
-      expect(submitButton.props().loading).toEqual(true)
+      expect((submitButton.props() as any).loading).toEqual(true)
       done()
     })
   })

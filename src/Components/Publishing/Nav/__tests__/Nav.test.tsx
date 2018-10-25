@@ -1,8 +1,8 @@
+import { SponsoredArticle } from "Components/Publishing/Fixtures/Articles"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
-import { SponsoredArticle } from "../../Fixtures/Articles"
 import { Nav, NavComponent } from "../Nav"
 
 describe("Nav", () => {
@@ -29,13 +29,13 @@ describe("Nav", () => {
   })
 
   it("setPosition sets the state if props.canFix", () => {
-    const nav = mount(<NavComponent />)
+    const nav = mount(<NavComponent />) as any
     nav.instance().setPosition(true)
     expect(nav.state().isFixed).toBe(true)
   })
 
   it("setPosition does not set state if without props.canFix", () => {
-    const nav = mount(<NavComponent canFix={false} />)
+    const nav = mount(<NavComponent canFix={false} />) as any
     nav.instance().setPosition(true)
     expect(nav.state().isFixed).toBe(false)
   })

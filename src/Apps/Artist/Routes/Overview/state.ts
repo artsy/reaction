@@ -19,13 +19,15 @@ interface State {
   showZeroState: boolean
 }
 
-const initialState = {
+const initialSort = "-decayed_merch"
+
+export const initialState = {
   medium: "*",
   for_sale: null,
   page: 1,
   major_periods: [],
   partner_id: null,
-  sort: "-partner_updated_at",
+  sort: initialSort,
   acquireable: null,
   at_auction: null,
   inquireable_only: null,

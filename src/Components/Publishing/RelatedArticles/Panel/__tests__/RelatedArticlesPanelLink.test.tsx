@@ -1,8 +1,8 @@
 import { mockTracking } from "Artsy/Analytics"
+import { RelatedPanel } from "Components/Publishing/Fixtures/Components"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
-import { RelatedPanel } from "../../../Fixtures/Components"
 import { RelatedArticlesPanelLink } from "../RelatedArticlesPanelLink"
 
 jest.unmock("react-tracking")

@@ -1,7 +1,7 @@
+import { SectionData, SectionLayout } from "Components/Publishing/Typings"
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
-import { SectionData, SectionLayout } from "../../Typings"
 import {
   getSectionMobilePadding,
   getSectionWidth,
@@ -111,7 +111,7 @@ describe("SectionContainer", () => {
     it("renders overflow_fillwidth properly", () => {
       const sectionContainer = renderer
         .create(
-          <SectionContainer section={section} layout="standard">
+          <SectionContainer section={section} articleLayout="standard">
             <Text html={section.body} layout="standard" />
           </SectionContainer>
         )
@@ -123,7 +123,7 @@ describe("SectionContainer", () => {
       section.layout = "fillwidth"
       const sectionContainer = renderer
         .create(
-          <SectionContainer section={section} layout="standard">
+          <SectionContainer section={section} articleLayout="standard">
             <Text html={section.body} layout="standard" />
           </SectionContainer>
         )
@@ -135,7 +135,7 @@ describe("SectionContainer", () => {
       section.layout = "column_width"
       const sectionContainer = renderer
         .create(
-          <SectionContainer section={section} layout="standard">
+          <SectionContainer section={section} articleLayout="standard">
             <Text html={section.body} layout="standard" />
           </SectionContainer>
         )

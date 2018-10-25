@@ -7,7 +7,6 @@ export type ArtworkDetailsAdditionalInfo_artwork = {
     readonly series: string | null;
     readonly publisher: string | null;
     readonly manufacturer: string | null;
-    readonly provenance: string | null;
     readonly image_rights: string | null;
     readonly " $refType": ArtworkDetailsAdditionalInfo_artwork$ref;
 };
@@ -45,13 +44,6 @@ const node: ConcreteFragment = {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "provenance",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
       "name": "image_rights",
       "args": null,
       "storageKey": null
@@ -65,5 +57,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'c4f01d0818bc22c6a73c74ed1bec812e';
+(node as any).hash = '2ec60c1eb758fa6fbe016c6468e7d8c1';
 export default node;

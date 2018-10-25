@@ -1,14 +1,17 @@
+import { EmailPanel } from "Components/Publishing/Email/EmailPanel"
+import { RelatedPanel } from "Components/Publishing/Fixtures/Components"
+import { RelatedArticlesPanel } from "Components/Publishing/RelatedArticles/Panel/RelatedArticlesPanel"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
-import { EmailPanel } from "../../../Email/EmailPanel"
-import { RelatedPanel } from "../../../Fixtures/Components"
-import { RelatedArticlesPanel } from "../../../RelatedArticles/Panel/RelatedArticlesPanel"
 import { Sidebar } from "../Sidebar"
 
-jest.mock("../../../Sections/FullscreenViewer/withFullScreen", () => ({
-  withFullScreen: x => x,
-}))
+jest.mock(
+  "Components/Publishing/Sections/FullscreenViewer/withFullScreen",
+  () => ({
+    withFullScreen: x => x,
+  })
+)
 
 const DisplayPanel = () => {
   return <div>Display Panel</div>

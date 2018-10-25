@@ -1,8 +1,10 @@
+// tslint:disable:no-shadowed-variable
+
+import { Images } from "Components/Publishing/Fixtures/Components"
+import { WrapperWithFullscreenContext } from "Components/Publishing/Fixtures/Helpers"
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
-import { Images } from "../../Fixtures/Components"
-import { WrapperWithFullscreenContext } from "../../Fixtures/Helpers"
 import { ImageCollection } from "../ImageCollection"
 
 jest.mock("react-lines-ellipsis/lib/html", () => {
@@ -14,13 +16,13 @@ jest.mock("react-dom/server", () => ({
   renderToStaticMarkup: x => x,
 }))
 
-const renderSnapshot = props => {
+const renderSnapshot = _props => {
   return renderer
-    .create(WrapperWithFullscreenContext(<ImageCollection {...props} />))
+    .create(WrapperWithFullscreenContext(<ImageCollection {..._props} />))
     .toJSON()
 }
 
-let props = {
+const props = {
   targetHeight: 400,
   gutter: 10,
   images: null,

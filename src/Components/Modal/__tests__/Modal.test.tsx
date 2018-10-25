@@ -1,7 +1,7 @@
 import Icon from "Components/Icon"
 import { mount } from "enzyme"
 import React from "react"
-import { Modal, ModalOverlay } from "../Modal"
+import { Modal } from "../Modal"
 import { ModalCta } from "../ModalCta"
 import { ModalHeader } from "../ModalHeader"
 

@@ -6,7 +6,6 @@ import { ContextConsumer, ContextProps } from "Artsy"
 import { track } from "Artsy/Analytics"
 import React, { Component } from "react"
 import { graphql, QueryRenderer } from "react-relay"
-import { data as sd } from "sharify"
 import styled from "styled-components"
 import Events from "Utils/Events"
 import { WorksForYouArtistFeedPaginationContainer as WorksForYouArtistFeed } from "./WorksForYouArtistFeed"
@@ -35,15 +34,9 @@ export class WorksForYou extends Component<Props> {
       <Theme>
         <ContextConsumer>
           {({ relayEnvironment, user }) => {
-            const hasLabFeature =
-              user &&
-              user.lab_features &&
-              user.lab_features.includes("New Buy Now Flow")
-            const enableBuyNowFlow = sd.ENABLE_NEW_BUY_NOW_FLOW || hasLabFeature
-
             return (
               <>
-                {enableBuyNowFlow && <MarketingHeader />}
+                <MarketingHeader />
 
                 <QueryRenderer<WorksForYouQuery>
                   environment={relayEnvironment}

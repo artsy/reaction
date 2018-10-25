@@ -1,17 +1,11 @@
-import { Separator } from "@artsy/palette"
-import { Box, Flex, Serif } from "@artsy/palette"
+import { Box, Serif } from "@artsy/palette"
 import { CollectApp_viewer } from "__generated__/CollectApp_viewer.graphql"
 import React, { Component } from "react"
-import { LazyLoadComponent } from "react-lazy-load-image-component"
+import { Meta, Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
-import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
-import { ArtworkGridFragmentContainer as ArtworkGrid } from "./Components/ArtworkGrid"
-
-import {
-  Footer,
-  RecentlyViewedQueryRenderer as RecentlyViewed,
-} from "Styleguide/Components"
-
+import { data as sd } from "sharify"
+import { CollectFrame } from "./CollectFrame"
+import { CollectFilterFragmentContainer as ArtworkGrid } from "./Components/Base/CollectFilterContainer"
 export interface CollectAppProps {
   viewer?: CollectApp_viewer
 }
@@ -19,27 +13,21 @@ export interface CollectAppProps {
 export class CollectApp extends Component<CollectAppProps> {
   render() {
     return (
-      <HorizontalPadding>
-        <Flex flexDirection="column">
-          <Box mt={3} mb={4}>
-            <Serif size="8">Collect art and design online</Serif>
-          </Box>
-          <Box>
-            <ArtworkGrid viewer={this.props.viewer} />
-          </Box>
+      <CollectFrame>
+        <Title>Collect | Artsy</Title>
+        <Meta property="og:url" content={`${sd.APP_URL}/collect`} />
+        <Meta
+          property="og:image"
+          content={`${sd.APP_URL}/images/og_image.jpg`}
+        />
 
-          {typeof window !== "undefined" && (
-            <LazyLoadComponent threshold={1000}>
-              <RecentlyViewed />
-            </LazyLoadComponent>
-          )}
-          <Separator mt={6} mb={3} />
-
-          <Box>
-            <Footer />
-          </Box>
-        </Flex>
-      </HorizontalPadding>
+        <Box mt={3} mb={4}>
+          <Serif size="8">Collect art and design online</Serif>
+        </Box>
+        <Box>
+          <ArtworkGrid viewer={this.props.viewer} />
+        </Box>
+      </CollectFrame>
     )
   }
 }
@@ -62,8 +50,10 @@ export const CollectAppFragmentContainer = createFragmentContainer(
         }
         sort: { type: "String", defaultValue: "-partner_updated_at" }
         price_range: { type: "String" }
+        artist_id: { type: "String" }
+        attribution_class: { type: "String" }
       ) {
-      ...ArtworkGrid_viewer
+      ...CollectFilterContainer_viewer
         @arguments(
           medium: $medium
           major_periods: $major_periods
@@ -74,6 +64,8 @@ export const CollectAppFragmentContainer = createFragmentContainer(
           at_auction: $at_auction
           inquireable_only: $inquireable_only
           price_range: $price_range
+          artist_id: $artist_id
+          attribution_class: $attribution_class
         )
     }
   `
