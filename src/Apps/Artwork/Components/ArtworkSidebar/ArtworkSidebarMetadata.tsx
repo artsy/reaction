@@ -1,6 +1,7 @@
 import { Box, Serif } from "@artsy/palette"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { get } from "Utils/get"
 import { ArtworkSidebarClassificationFragmentContainer as Classification } from "./ArtworkSidebarClassification"
 import { ArtworkSidebarSizeInfoFragmentContainer as SizeInfo } from "./ArtworkSidebarSizeInfo"
 import { ArtworkSidebarTitleInfoFragmentContainer as TitleInfo } from "./ArtworkSidebarTitleInfo"
@@ -16,15 +17,17 @@ export class ArtworkSidebarMetadata extends React.Component<
 > {
   render() {
     const { artwork } = this.props
+    const lotLabel = get(
+      artwork,
+      a => a.is_biddable && a.sale_artwork.lot_label
+    )
     return (
       <Box>
-        {artwork.is_biddable &&
-          artwork.sale_artwork &&
-          artwork.sale_artwork.lot_label && (
-            <Serif size="2" weight="semibold" color="black100">
-              Lot {artwork.sale_artwork.lot_label}
-            </Serif>
-          )}
+        {lotLabel && (
+          <Serif size="2" weight="semibold" color="black100">
+            Lot {lotLabel}
+          </Serif>
+        )}
         <TitleInfo artwork={artwork} />
         {artwork.edition_sets.length < 2 && <SizeInfo piece={artwork} />}
         <Classification artwork={artwork} />
