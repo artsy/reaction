@@ -164,7 +164,7 @@ class RelatedArtistsList extends Component<ShowProps, LoadingAreaState> {
   }
 }
 
-export const RelatedArtistsRefetchContainer = createRefetchContainer(
+export const RelatedArtistsListRefetchContainer = createRefetchContainer(
   RelatedArtistsList,
   {
     artist: graphql`

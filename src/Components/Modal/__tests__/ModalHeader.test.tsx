@@ -4,8 +4,8 @@ import React from "react"
 import { ModalHeader } from "../ModalHeader"
 
 describe("ModalHeader", () => {
-  const getWrapper = props => {
-    return mount(<ModalHeader {...props} />)
+  const getWrapper = _props => {
+    return mount(<ModalHeader {..._props} />)
   }
   let props
   beforeEach(() => {

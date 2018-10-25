@@ -1,9 +1,9 @@
+import { IconVideoPause } from "Components/Publishing/Icon/IconVideoPause"
+import { IconVideoPlay } from "Components/Publishing/Icon/IconVideoPlay"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
-import { IconVideoPause } from "../../../Icon/IconVideoPause"
-import { IconVideoPlay } from "../../../Icon/IconVideoPlay"
 import { PlayPause } from "../PlayPause"
 
 describe("Play/Pause Button", () => {

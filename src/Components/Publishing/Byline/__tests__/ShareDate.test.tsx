@@ -1,7 +1,7 @@
+import { StandardArticle } from "Components/Publishing/Fixtures/Articles"
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
-import { StandardArticle } from "../../Fixtures/Articles"
 import { ShareDate } from "../ShareDate"
 
 it("renders ShareDate properly", () => {

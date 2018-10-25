@@ -1,9 +1,9 @@
+import { VideoArticle } from "Components/Publishing/Fixtures/Articles"
+import { EditableChild } from "Components/Publishing/Fixtures/Helpers"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
-import { VideoArticle } from "../../Fixtures/Articles"
-import { EditableChild } from "../../Fixtures/Helpers"
 import { VideoAbout } from "../VideoAbout"
 
 describe("Video About", () => {

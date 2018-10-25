@@ -3,6 +3,7 @@ import { Payment_order } from "__generated__/Payment_order.graphql"
 import { PaymentRouteCreateCreditCardMutation } from "__generated__/PaymentRouteCreateCreditCardMutation.graphql"
 import { PaymentRouteSetOrderPaymentMutation } from "__generated__/PaymentRouteSetOrderPaymentMutation.graphql"
 import { validatePresence } from "Apps/Order/Components/Validators"
+
 import {
   Address,
   AddressChangeHandler,
@@ -10,7 +11,7 @@ import {
   AddressForm,
   AddressTouched,
   emptyAddress,
-} from "../../Components/AddressForm"
+} from "Apps/Order/Components/AddressForm"
 
 import { CreditCardInput } from "Apps/Order/Components/CreditCardInput"
 import { Helper } from "Apps/Order/Components/Helper"

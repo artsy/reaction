@@ -1,6 +1,6 @@
+import { GenesFixture } from "Apps/__test__/Fixtures/Artist/Routes/Overview/Genes"
+import { renderRelayTree } from "DevTools"
 import { graphql } from "react-relay"
-import { renderRelayTree } from "../../../../../DevTools"
-import { GenesFixture } from "../../../../__test__/Fixtures/Artist/Genes"
 import { GenesFragmentContainer as Genes } from "../Components/Genes"
 
 jest.unmock("react-relay")

@@ -1,15 +1,18 @@
 import { unica } from "Assets/Fonts"
-import React from "react"
-import { Col } from "react-styled-flexboxgrid"
-import styled from "styled-components"
-import { media } from "../../../Helpers"
+import { media } from "Components/Helpers"
 import {
   Vertical,
   VerticalOrSeriesTitle,
-} from "../../Sections/VerticalOrSeriesTitle"
-import { SeriesAbout, SeriesAboutContainer } from "../../Series/SeriesAbout"
-import { ArticleData } from "../../Typings"
-import { MaxRow } from "../../Video/Shared"
+} from "Components/Publishing/Sections/VerticalOrSeriesTitle"
+import {
+  SeriesAbout,
+  SeriesAboutContainer,
+} from "Components/Publishing/Series/SeriesAbout"
+import { ArticleData } from "Components/Publishing/Typings"
+import { MaxRow } from "Components/Publishing/Video/Shared"
+import React from "react"
+import { Col } from "react-styled-flexboxgrid"
+import styled from "styled-components"
 import { ArticleCards } from "./ArticleCards"
 
 interface Props {

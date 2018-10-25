@@ -3,7 +3,7 @@ import renderer from "react-test-renderer"
 
 import "jest-styled-components"
 
-jest.mock("../../Artsy/Relay/createEnvironment", () => ({
+jest.mock("Artsy/Relay/createEnvironment", () => ({
   createEnvironment: config => ({
     description: `A mocked env for ${
       config.user ? config.user.id : "no-current-user"

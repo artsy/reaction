@@ -1,12 +1,14 @@
+// tslint:disable:no-shadowed-variable
+
+import { Images } from "Components/Publishing/Fixtures/Components"
+import {
+  EditableChild,
+  WrapperWithFullscreenContext,
+} from "Components/Publishing/Fixtures/Helpers"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
-import { Images } from "../../Fixtures/Components"
-import {
-  EditableChild,
-  WrapperWithFullscreenContext,
-} from "../../Fixtures/Helpers"
 import { Artwork } from "../Artwork"
 import { ViewFullscreen } from "../ViewFullscreen"
 

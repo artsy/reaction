@@ -1,12 +1,12 @@
-import { mount } from "enzyme"
-import "jest-styled-components"
-import React from "react"
-import renderer from "react-test-renderer"
 import {
   SeriesArticleSponsored,
   StandardArticle,
   VideoArticle,
-} from "../../../Fixtures/Articles"
+} from "Components/Publishing/Fixtures/Articles"
+import { mount } from "enzyme"
+import "jest-styled-components"
+import React from "react"
+import renderer from "react-test-renderer"
 import { ArticleCard } from "../ArticleCard"
 import { ArticleCards } from "../ArticleCards"
 

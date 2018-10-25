@@ -1,15 +1,15 @@
 import { DisplayCanvas } from "Components/Publishing/Display/Canvas"
+import { NewsArticle } from "Components/Publishing/Fixtures/Articles"
 import {
   Display,
   RelatedCanvas,
 } from "Components/Publishing/Fixtures/Components"
+import { NewsSectionContainer } from "Components/Publishing/News/NewsSections"
 import { RelatedArticlesCanvas } from "Components/Publishing/RelatedArticles/Canvas/RelatedArticlesCanvas"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
-import { NewsArticle } from "../../Fixtures/Articles"
-import { NewsSectionContainer } from "../../News/NewsSections"
 import { ExpandButton, NewsArticleContainer, NewsLayout } from "../NewsLayout"
 
 describe("News Layout", () => {
@@ -112,9 +112,11 @@ describe("News Layout", () => {
         <NewsLayout
           article={NewsArticle}
           isTruncated
-          tracking={{
-            trackEvent,
-          }}
+          tracking={
+            {
+              trackEvent,
+            } as any
+          }
         />
       )
       component.find(ExpandButton).simulate("click")

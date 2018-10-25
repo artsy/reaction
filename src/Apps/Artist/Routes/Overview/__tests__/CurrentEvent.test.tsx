@@ -1,7 +1,7 @@
+import { CurrentEventFixture } from "Apps/__test__/Fixtures/Artist/Routes/Overview/CurrentEvent"
+import { CurrentEventFragmentContainer as CurrentEvent } from "Apps/Artist/Routes/Overview/Components/CurrentEvent"
+import { renderRelayTree } from "DevTools"
 import { graphql } from "react-relay"
-import { renderRelayTree } from "../../../../../DevTools"
-import { CurrentEventFixture } from "../../../../__test__/Fixtures/Artist/CurrentEvent"
-import { CurrentEventFragmentContainer as CurrentEvent } from "../Components/CurrentEvent"
 
 jest.unmock("react-relay")
 

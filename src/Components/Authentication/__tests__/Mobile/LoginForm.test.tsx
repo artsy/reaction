@@ -1,8 +1,7 @@
+import { MobileLoginForm } from "Components/Authentication/Mobile/LoginForm"
+import Input from "Components/Input"
 import { mount } from "enzyme"
 import React from "react"
-import Input from "../../../Input"
-import { BackButton, SubmitButton } from "../../commonElements"
-import { MobileLoginForm } from "../../Mobile/LoginForm"
 
 describe("MobileLoginForm", () => {
   const handleSubmit = jest.fn()
@@ -55,7 +54,7 @@ describe("MobileLoginForm", () => {
   // TODO: Luc, this test needs finishing.
   xit("calls onBackButtonClicked if back button is clicked on first page", () => {
     const onBackButtonClicked = jest.fn()
-    const wrapper = mount(
+    mount(
       <MobileLoginForm
         values={{}}
         handleSubmit={handleSubmit}

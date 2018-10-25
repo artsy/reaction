@@ -3,13 +3,10 @@ import React from "react"
 
 import { Button } from "@artsy/palette"
 import { UntouchedOrder } from "Apps/__test__/Fixtures/Order"
+import { ErrorModal, ModalButton } from "Components/Modal/ErrorModal"
 import { commitMutation } from "react-relay"
 import { StepSummaryItem } from "Styleguide/Components/StepSummaryItem"
 import { Provider } from "unstated"
-import {
-  ErrorModal,
-  ModalButton,
-} from "../../../../Components/Modal/ErrorModal"
 import {
   submitOrderWithFailure,
   submitOrderWithNoInventoryFailure,

@@ -1,18 +1,12 @@
 import { ContextProvider } from "Artsy/SystemContext"
+import { TextFeatureArticle } from "Components/Publishing/Fixtures/Articles"
+import { TextFromArticle } from "Components/Publishing/Fixtures/Helpers"
+import { wrapperWithContext } from "Components/Publishing/Fixtures/Helpers"
+import { LinkWithTooltip } from "Components/Publishing/ToolTip/LinkWithTooltip"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import PropTypes from "prop-types"
 import React from "react"
-import renderer from "react-test-renderer"
-import {
-  NewsArticle,
-  TextClassicArticle,
-  TextFeatureArticle,
-  TextStandardArticle,
-} from "../../Fixtures/Articles"
-import { TextFromArticle } from "../../Fixtures/Helpers"
-import { wrapperWithContext } from "../../Fixtures/Helpers"
-import { LinkWithTooltip } from "../../ToolTip/LinkWithTooltip"
 import { Text } from "../Text"
 
 describe("Text", () => {

@@ -1,8 +1,7 @@
+import { DesktopModal } from "Components/Authentication/Desktop/Components/DesktopModal"
+import Icon from "Components/Icon"
 import { mount } from "enzyme"
 import React from "react"
-import Events from "Utils/Events"
-import Icon from "../../../../Icon"
-import { DesktopModal } from "../../../Desktop/Components/DesktopModal"
 
 jest.mock("Utils/Events")
 

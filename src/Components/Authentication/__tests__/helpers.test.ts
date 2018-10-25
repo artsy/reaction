@@ -1,14 +1,14 @@
+import { metaphysics } from "Utils/metaphysics"
 import { checkEmail } from "../helpers"
-import { metaphysics } from "../../../Utils/metaphysics"
 
-jest.mock("../../../Utils/metaphysics", () => ({
+jest.mock("Utils/metaphysics", () => ({
   metaphysics: jest.fn(),
 }))
 
 describe("Authentication Helpers", () => {
   describe("checkEmail", () => {
     it("return true if it should exist and it does exist", done => {
-      metaphysics.mockImplementationOnce(() =>
+      ;(metaphysics as any).mockImplementationOnce(() =>
         Promise.resolve({
           data: { user: { userAlreadyExists: true } },
         })
@@ -29,7 +29,7 @@ describe("Authentication Helpers", () => {
     })
 
     it("return false if it should exist and it doesnt exist", done => {
-      metaphysics.mockImplementationOnce(() =>
+      ;(metaphysics as any).mockImplementationOnce(() =>
         Promise.resolve({
           data: { user: { userAlreadyExists: false } },
         })
@@ -50,7 +50,7 @@ describe("Authentication Helpers", () => {
     })
 
     it("return true if it shouldnt exist and it doesnt exist", done => {
-      metaphysics.mockImplementationOnce(() =>
+      ;(metaphysics as any).mockImplementationOnce(() =>
         Promise.resolve({
           data: { user: { userAlreadyExists: false } },
         })
@@ -71,7 +71,7 @@ describe("Authentication Helpers", () => {
     })
 
     it("return false if it shouldnt exist and it does exist", done => {
-      metaphysics.mockImplementationOnce(() =>
+      ;(metaphysics as any).mockImplementationOnce(() =>
         Promise.resolve({
           data: { user: { userAlreadyExists: true } },
         })

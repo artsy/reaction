@@ -1,16 +1,12 @@
 // FIXME: Uncomment tests, currently WIP
 
 import { ArtworkFilter_Test_Query } from "__generated__/ArtworkFilter_Test_Query.graphql"
+import { ArtworkFilterFragmentContainer as ArtworkFilter } from "Apps/Artist/Routes/Overview/Components/ArtworkFilter"
 import { FilterState } from "Apps/Artist/Routes/Overview/state"
+import { MockBoot, MockRelayRenderer, renderUntil } from "DevTools"
 import React from "react"
 import { graphql } from "react-relay"
 import { Provider } from "unstated"
-import {
-  MockBoot,
-  MockRelayRenderer,
-  renderUntil,
-} from "../../../../../DevTools"
-import { ArtworkFilterFragmentContainer as ArtworkFilter } from "../Components/ArtworkFilter"
 
 jest.unmock("react-relay")
 

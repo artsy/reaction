@@ -7,13 +7,7 @@ import {
   getFullEditorialHref,
   getMediaDate,
 } from "../Constants"
-import {
-  FeatureArticle,
-  NewsArticle,
-  SeriesArticle,
-  StandardArticle,
-  VideoArticle,
-} from "../Fixtures/Articles"
+import { FeatureArticle, VideoArticle } from "../Fixtures/Articles"
 
 describe("getMediaDate", () => {
   let article
@@ -118,7 +112,7 @@ describe("getFullEditorialHref", () => {
 })
 
 describe("getArtsySlugs", () => {
-  let article = cloneDeep(FeatureArticle)
+  const article = cloneDeep(FeatureArticle)
 
   it("#getArtsySlugsFromArticle returns object with arrays of artsy ids by model", () => {
     article.sections.push({

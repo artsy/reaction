@@ -29,11 +29,11 @@ describe("EmailSignup", () => {
     expect(request.post).toBeCalled()
     expect(request.send.mock.calls[0][0].email).toEqual("foo@goo.net")
     request.end.mock.calls[0][0]()
-    const state = viewer.state()
+    const state = viewer.state() as any
     expect(state.message).toEqual("Thank you!")
 
     jest.runAllTimers()
-    const postTimeoutState = viewer.state()
+    const postTimeoutState = viewer.state() as any
     expect(postTimeoutState.disabled).toBe(false)
     expect(postTimeoutState.message).toEqual("")
   })
@@ -44,12 +44,12 @@ describe("EmailSignup", () => {
     viewer.find("button").simulate("click")
     expect(request.post).toBeCalled()
     request.end.mock.calls[1][0]("Error")
-    const state = viewer.state()
+    const state = viewer.state() as any
     expect(state.message).toEqual("Error. Please try again")
     expect(state.error).toBe(true)
 
     jest.runAllTimers()
-    const postTimeoutState = viewer.state()
+    const postTimeoutState = viewer.state() as any
     expect(postTimeoutState.disabled).toBe(false)
     expect(postTimeoutState.error).toBe(false)
     expect(postTimeoutState.message).toEqual("")
@@ -59,12 +59,12 @@ describe("EmailSignup", () => {
     const viewer = mount(<InstantArticleEmailSignup signupUrl="#" />)
     viewer.setState({ value: "foo" })
     viewer.find("button").simulate("click")
-    const state = viewer.state()
+    const state = viewer.state() as any
     expect(state.message).toEqual("Invalid Email... Please try again")
     expect(state.error).toBe(true)
 
     jest.runAllTimers()
-    const postTimeoutState = viewer.state()
+    const postTimeoutState = viewer.state() as any
     expect(postTimeoutState.disabled).toBe(false)
     expect(postTimeoutState.error).toBe(false)
     expect(postTimeoutState.message).toEqual("")

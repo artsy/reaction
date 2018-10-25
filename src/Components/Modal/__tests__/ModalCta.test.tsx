@@ -3,8 +3,8 @@ import React from "react"
 import { ModalCta } from "../ModalCta"
 
 describe("ModalCta", () => {
-  const getWrapper = props => {
-    return mount(<ModalCta {...props} />)
+  const getWrapper = _props => {
+    return mount(<ModalCta {..._props} />)
   }
   let props
   beforeEach(() => {

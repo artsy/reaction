@@ -81,7 +81,7 @@ describe("FormSwitcher", () => {
         .at(1)
         .simulate("click")
 
-      expect(window.location.assign.mock.calls[0][0]).toEqual(
+      expect((window.location.assign as any).mock.calls[0][0]).toEqual(
         "/signup?contextModule=Header&copy=Foo%20Bar&destination=%2Fcollect&intent=follow%20artist&redirectTo=%2Ffoo&trigger=timed&triggerSeconds=1"
       )
     })
@@ -96,7 +96,7 @@ describe("FormSwitcher", () => {
         .at(2)
         .simulate("click")
 
-      expect(wrapper.state().type).toMatch("signup")
+      expect((wrapper.state() as any).type).toMatch("signup")
       expect(wrapper.props().handleTypeChange).toBeCalled()
     })
   })
@@ -104,7 +104,7 @@ describe("FormSwitcher", () => {
   describe("Analytics", () => {
     it("tracks login impressions", () => {
       const tracking = { trackEvent: jest.fn() }
-      const wrapper = getWrapper({ type: ModalType.login, tracking })
+      getWrapper({ type: ModalType.login, tracking })
       expect(tracking.trackEvent).toBeCalledWith({
         action: "Auth impression",
         auth_redirect: "/foo",
@@ -119,7 +119,7 @@ describe("FormSwitcher", () => {
 
     it("tracks forgot password impressions", () => {
       const tracking = { trackEvent: jest.fn() }
-      const wrapper = getWrapper({ type: ModalType.forgot, tracking })
+      getWrapper({ type: ModalType.forgot, tracking })
       expect(tracking.trackEvent).toBeCalledWith({
         action: "Auth impression",
         auth_redirect: "/foo",
@@ -134,7 +134,7 @@ describe("FormSwitcher", () => {
 
     it("tracks signup impressions", () => {
       const tracking = { trackEvent: jest.fn() }
-      const wrapper = getWrapper({
+      getWrapper({
         type: ModalType.signup,
         tracking,
       })

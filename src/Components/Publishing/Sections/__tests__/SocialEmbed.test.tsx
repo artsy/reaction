@@ -1,11 +1,11 @@
+import {
+  SocialEmbedInstagram,
+  SocialEmbedTwitter,
+} from "Components/Publishing/Fixtures/Components"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import jsonp from "jsonp"
 import React from "react"
-import {
-  SocialEmbedInstagram,
-  SocialEmbedTwitter,
-} from "../../Fixtures/Components"
 import { SocialEmbed, SocialEmbedProps } from "../SocialEmbed"
 
 jest.mock("jsonp", () => jest.fn())

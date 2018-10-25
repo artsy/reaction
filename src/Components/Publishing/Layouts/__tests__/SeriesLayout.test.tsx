@@ -1,12 +1,12 @@
-import "jest-styled-components"
-import React from "react"
-import renderer from "react-test-renderer"
 import {
   SeriesArticle,
   SeriesArticleSponsored,
   StandardArticle,
   VideoArticle,
-} from "../../Fixtures/Articles"
+} from "Components/Publishing/Fixtures/Articles"
+import "jest-styled-components"
+import React from "react"
+import renderer from "react-test-renderer"
 import { SeriesLayout } from "../SeriesLayout"
 
 it("renders a series properly", () => {

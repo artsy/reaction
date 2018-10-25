@@ -14,16 +14,12 @@ describe("Author", () => {
 
   describe("Snapshots", () => {
     it("Single author", () => {
-      const snapshot = renderer.create(
-        <Author authors={author} layout={"split"} />
-      )
+      renderer.create(<Author authors={author} layout={"split"} />)
       expect(author).toMatchSnapshot()
     })
 
     it("Multiple authors", () => {
-      const snapshot = renderer.create(
-        <Author authors={authors} layout={"split"} />
-      )
+      renderer.create(<Author authors={authors} layout={"split"} />)
       expect(authors).toMatchSnapshot()
     })
   })

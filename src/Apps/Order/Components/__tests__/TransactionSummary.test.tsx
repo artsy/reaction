@@ -5,7 +5,7 @@ import { TransactionSummary } from "../TransactionSummary"
 describe("TransactionSummary", () => {
   it("shows the shipping and tax price if it's greater than 0", () => {
     const transactionSummary = render(
-      <TransactionSummary order={transactionSummaryOrder} />
+      <TransactionSummary order={transactionSummaryOrder as any} />
     )
 
     const text = transactionSummary.text()
@@ -19,13 +19,15 @@ describe("TransactionSummary", () => {
   it("shows the shipping and tax price as dashes if null", () => {
     const transactionSummary = render(
       <TransactionSummary
-        order={{
-          ...transactionSummaryOrder,
-          taxTotal: null,
-          taxTotalCents: null,
-          shippingTotal: null,
-          shippingTotalCents: null,
-        }}
+        order={
+          {
+            ...transactionSummaryOrder,
+            taxTotal: null,
+            taxTotalCents: null,
+            shippingTotal: null,
+            shippingTotalCents: null,
+          } as any
+        }
       />
     )
 
@@ -40,13 +42,15 @@ describe("TransactionSummary", () => {
   it("shows the shipping and tax price as $0.00 if zero cents", () => {
     const transactionSummary = render(
       <TransactionSummary
-        order={{
-          ...transactionSummaryOrder,
-          taxTotal: null,
-          taxTotalCents: 0,
-          shippingTotal: null,
-          shippingTotalCents: 0,
-        }}
+        order={
+          {
+            ...transactionSummaryOrder,
+            taxTotal: null,
+            taxTotalCents: 0,
+            shippingTotal: null,
+            shippingTotalCents: 0,
+          } as any
+        }
       />
     )
 

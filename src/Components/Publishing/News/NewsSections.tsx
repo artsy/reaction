@@ -1,7 +1,7 @@
+import { pMedia } from "Components/Helpers"
 import { Truncator } from "Components/Truncator"
 import React, { Component } from "react"
 import styled from "styled-components"
-import { pMedia } from "../../Helpers"
 import { NewsByline } from "../Byline/NewsByline"
 import { ImageCollection } from "../Sections/ImageCollection"
 import { SocialEmbed } from "../Sections/SocialEmbed"

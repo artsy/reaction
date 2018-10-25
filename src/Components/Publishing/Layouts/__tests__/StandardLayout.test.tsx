@@ -1,23 +1,30 @@
+import { DisplayCanvas } from "Components/Publishing/Display/Canvas"
+import { DisplayPanel } from "Components/Publishing/Display/DisplayPanel"
+import { StandardArticle } from "Components/Publishing/Fixtures/Articles"
+import {
+  Display,
+  RelatedCanvas,
+  RelatedPanel,
+} from "Components/Publishing/Fixtures/Components"
+import { ReadMoreButton } from "Components/Publishing/ReadMore/ReadMoreButton"
+import { RelatedArticlesCanvas } from "Components/Publishing/RelatedArticles/Canvas/RelatedArticlesCanvas"
+import { RelatedArticlesPanel } from "Components/Publishing/RelatedArticles/Panel/RelatedArticlesPanel"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
-import { DisplayCanvas } from "../../Display/Canvas"
-import { DisplayPanel } from "../../Display/DisplayPanel"
-import { StandardArticle } from "../../Fixtures/Articles"
-import { Display, RelatedCanvas, RelatedPanel } from "../../Fixtures/Components"
-import { ReadMoreButton } from "../../ReadMore/ReadMoreButton"
-import { RelatedArticlesCanvas } from "../../RelatedArticles/Canvas/RelatedArticlesCanvas"
-import { RelatedArticlesPanel } from "../../RelatedArticles/Panel/RelatedArticlesPanel"
 import { Sidebar } from "../Components/Sidebar"
 import { StandardLayout } from "../StandardLayout"
 
-jest.mock("../../Sections/FullscreenViewer/withFullScreen", () => ({
-  withFullScreen: x => x,
-}))
+jest.mock(
+  "Components/Publishing/Sections/FullscreenViewer/withFullScreen",
+  () => ({
+    withFullScreen: x => x,
+  })
+)
 
 describe("Standard Article", () => {
-  const getWrapper = props => {
-    return mount(<StandardLayout {...props} />)
+  const getWrapper = _props => {
+    return mount(<StandardLayout {..._props} />)
   }
 
   let props
@@ -56,7 +63,7 @@ describe("Standard Article", () => {
 
   it("Can remove truncation on click", () => {
     props.isTruncated = true
-    const article = getWrapper(props)
+    const article = getWrapper(props) as any
 
     article
       .find(ReadMoreButton)

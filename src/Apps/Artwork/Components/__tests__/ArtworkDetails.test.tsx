@@ -1,8 +1,8 @@
+import { ArtworkDetailsFixture } from "Apps/__test__/Fixtures/Artwork/ArtworkDetails"
+import { ArtworkDetailsFragmentContainer } from "Apps/Artwork/Components/ArtworkDetails"
+import { renderRelayTree } from "DevTools"
 import { cloneDeep } from "lodash"
 import { graphql } from "react-relay"
-import { renderRelayTree } from "../../../../DevTools"
-import { ArtworkDetailsFixture } from "../../../__test__/Fixtures/Artwork/ArtworkDetails"
-import { ArtworkDetailsFragmentContainer } from "../ArtworkDetails/index"
 
 jest.unmock("react-relay")
 
