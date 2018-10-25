@@ -2,7 +2,6 @@ import { Button, Checkbox, Flex, Join, Serif, Spacer } from "@artsy/palette"
 import { Payment_order } from "__generated__/Payment_order.graphql"
 import { PaymentRouteCreateCreditCardMutation } from "__generated__/PaymentRouteCreateCreditCardMutation.graphql"
 import { PaymentRouteSetOrderPaymentMutation } from "__generated__/PaymentRouteSetOrderPaymentMutation.graphql"
-import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
 import { validatePresence } from "Apps/Order/Components/Validators"
 import {
   Address,
@@ -15,6 +14,7 @@ import {
 
 import { CreditCardInput } from "Apps/Order/Components/CreditCardInput"
 import { Helper } from "Apps/Order/Components/Helper"
+import { OrderStepper } from "Apps/Order/Components/OrderStepper"
 import { TransactionSummaryFragmentContainer as TransactionSummary } from "Apps/Order/Components/TransactionSummary"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
@@ -183,7 +183,10 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
         <HorizontalPadding px={[0, 4]}>
           <Row>
             <Col>
-              <BuyNowStepper currentStep={"payment"} />
+              <OrderStepper
+                currentStep="Payment"
+                offerFlow={false /* TODO: order.isOfferable or whatever */}
+              />
             </Col>
           </Row>
         </HorizontalPadding>
