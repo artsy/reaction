@@ -83,6 +83,15 @@ export const query = graphql`
   }
 `
 
+// Bad query has a misnamed top-level property.
+export const badQuery = graphql`
+  query MockRelayRendererFixturesBadQuery {
+    something_that_is_not_expected: artwork(id: "mona-lisa") {
+      ...MockRelayRendererFixtures_artwork
+    }
+  }
+`
+
 export function renderToString(element: JSX.Element) {
   return cheerio.html(render(element))
 }
