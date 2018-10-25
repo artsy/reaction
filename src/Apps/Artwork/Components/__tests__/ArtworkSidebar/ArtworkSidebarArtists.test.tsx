@@ -1,5 +1,6 @@
 import { cloneDeep } from "lodash"
 import { graphql } from "react-relay"
+import { FollowArtistButton } from "../../../../../Components/FollowButton/FollowArtistButton"
 import { renderRelayTree } from "../../../../../DevTools"
 import {
   MultipleArtists,
@@ -11,6 +12,8 @@ jest.unmock("react-relay")
 
 describe("ArtworkSidebarArtists", () => {
   const data = null
+  let wrapper = null
+
   const getWrapper = async (response = SingleFollowedArtist) => {
     return await renderRelayTree({
       Component: ArtworkSidebarArtistsFragmentContainer,
@@ -26,25 +29,28 @@ describe("ArtworkSidebarArtists", () => {
       },
     })
   }
+
   describe("ArtworkSidebarArtists with one artist", () => {
-    it("displays artist name for single artist", async () => {
-      const wrapper = await getWrapper()
-      expect(wrapper.html()).toContain("Josef Albers")
-      expect(
-        wrapper.find({
-          href: "/artist/josef-albers",
-        }).length
-      ).toBe(1)
+    beforeAll(async () => {
+      wrapper = await getWrapper()
     })
-    it("renders artist follow button for single artist", async () => {
-      const wrapper = await getWrapper()
+
+    it("displays artist name for single artist", () => {
+      expect(wrapper.html()).toContain("Josef Albers")
+      expect(wrapper.find({ href: "/artist/josef-albers" }).length).toBe(1)
+    })
+
+    it("renders artist follow button for single artist", () => {
       expect(wrapper.html()).toContain("Follow")
     })
   })
 
   describe("ArtworkSidebarArtists with multiple artists", () => {
-    it("displays artist names for multiople artists", async () => {
-      const wrapper = await getWrapper(MultipleArtists)
+    beforeAll(async () => {
+      wrapper = await getWrapper(MultipleArtists)
+    })
+
+    it("displays artist names for multiople artists", () => {
       expect(wrapper.html()).toContain("Josef Albers")
       expect(
         wrapper.find({
@@ -58,9 +64,14 @@ describe("ArtworkSidebarArtists", () => {
         }).length
       ).toBe(1)
     })
-    it("does not display follow buttons", async () => {
-      const wrapper = await getWrapper(MultipleArtists)
+
+    it("does not render follow buttons", () => {
+      expect(wrapper.find(FollowArtistButton).length).toBe(0)
       expect(wrapper.html()).not.toContain("Follow")
+    })
+
+    it("separates artist names by comma", () => {
+      expect(wrapper.text()).toBe("Josef Albers, Ed Ruscha")
     })
   })
 })
