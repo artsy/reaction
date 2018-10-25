@@ -1,4 +1,5 @@
 import { Checkbox, CheckboxProps, Sans } from "@artsy/palette"
+import { mockTracking } from "Artsy/Analytics"
 import { mount } from "enzyme"
 import React from "react"
 
@@ -32,6 +33,8 @@ jest.mock("react-stripe-elements", () => ({
   CardElement: props => <div {...props} />,
   injectStripe: args => args,
 }))
+
+jest.unmock("react-tracking")
 
 import { commitMutation, RelayProp } from "react-relay"
 import {
@@ -380,6 +383,23 @@ describe("Payment", () => {
     component.find(ContinueButton).simulate("click")
 
     expect(component.find(ErrorModal).props().show).toBe(true)
+  })
+
+  describe("Analytics", () => {
+    it("tracks click when use shipping address checkbox is unchecked", () => {
+      const { Component, dispatch } = mockTracking(PaymentRoute)
+      const component = mount(<Component {...testProps} />)
+      component
+        .find(Checkbox)
+        .at(0)
+        .simulate("click")
+      expect(dispatch).toBeCalledWith({
+        action_type: "Click",
+        subject: "use shipping address",
+        flow: "buy now",
+        type: "checkbox",
+      })
+    })
   })
 
   describe("Validations", () => {

@@ -141,8 +141,8 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
   }
 
   @track((props, state, args) => {
-    const willInputBillingAddress = !args[0]
-    if (willInputBillingAddress) {
+    const showBillingAddress = !args[0]
+    if (showBillingAddress) {
       return {
         action_type: Schema.ActionType.Click,
         subject: Schema.Subject.BNMOUseShippingAddress,
