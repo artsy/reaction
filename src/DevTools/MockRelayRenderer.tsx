@@ -23,6 +23,13 @@ export interface MockRelayRendererProps<
   mockResolvers: IMocks
 }
 
+export interface MockRelayRendererState {
+  caughtError: {
+    error: any
+    errorInfo: any
+  }
+}
+
 /**
  * Renders a tree of Relay containers with a mocked local instance of the
  * metaphysics schema.
@@ -100,7 +107,15 @@ export interface MockRelayRendererProps<
  */
 export class MockRelayRenderer<
   T extends OperationBase = OperationDefaults
-> extends React.Component<MockRelayRendererProps<T>> {
+> extends React.Component<MockRelayRendererProps<T>, MockRelayRendererState> {
+  state = {
+    caughtError: undefined,
+  }
+
+  componentDidCatch(error, errorInfo) {
+    this.setState({ caughtError: { error, errorInfo } })
+  }
+
   render() {
     // TODO: When extracting these test utils to their own package, this check
     //       should probably become a custom TSLint rule, as there’s no good way
@@ -113,6 +128,12 @@ export class MockRelayRenderer<
         "The `react-relay` module has been mocked, be sure to unmock it with: " +
           '`jest.unmock("react-relay")`'
       )
+    }
+
+    if (this.state.caughtError) {
+      const { error, errorInfo } = this.state.caughtError
+      console.log({ error, errorInfo })
+      return `Error occurred while rendering Relay component: ${error}`
     }
 
     const { Component, variables, query, mockResolvers } = this.props
