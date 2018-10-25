@@ -3,7 +3,7 @@ import * as Artsy from "Artsy/SystemContext"
 import { render } from "enzyme"
 import React from "react"
 
-jest.mock("../../Artsy/Relay/createEnvironment", () => ({
+jest.mock("Artsy/Relay/createEnvironment", () => ({
   createEnvironment: config => ({
     description: `A mocked env for ${
       config.user ? config.user.id : "no-current-user"

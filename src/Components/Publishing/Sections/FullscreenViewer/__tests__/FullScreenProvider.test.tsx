@@ -1,6 +1,5 @@
 import { mount } from "enzyme"
 import React from "react"
-import renderer from "react-test-renderer"
 
 import { FullScreenProvider } from "../FullScreenProvider"
 
@@ -46,7 +45,7 @@ describe("FullScreenProvider", () => {
       </FullScreenProvider>
     )
 
-    const instance = wrapper.instance()
+    const instance = wrapper.instance() as any
 
     expect(wrapper.state()).toEqual({
       slideIndex: 0,

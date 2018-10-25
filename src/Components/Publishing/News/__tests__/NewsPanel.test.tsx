@@ -2,7 +2,10 @@ import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
 
-import { FeatureArticle, NewsArticle } from "../../Fixtures/Articles"
+import {
+  FeatureArticle,
+  NewsArticle,
+} from "Components/Publishing/Fixtures/Articles"
 import { NewsPanel } from "../NewsPanel"
 
 it("Renders article headlines", () => {

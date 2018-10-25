@@ -1,7 +1,8 @@
 import { RelatedArtistsFixture } from "Apps/__test__/Fixtures/Artist/Routes/RelatedArtistsFixture"
 import { RelatedArtistsRouteFragmentContainer as RelatedArtists } from "Apps/Artist/Routes/RelatedArtists"
-import { renderRelayTree } from "DevTools"
+import { MockBoot, renderRelayTree } from "DevTools"
 import { ReactWrapper } from "enzyme"
+import React from "react"
 import { graphql } from "react-relay"
 import { Breakpoint } from "Utils/Responsive"
 
@@ -29,6 +30,9 @@ describe("RelatedArtists Route", () => {
       variables: {
         artistID: "pablo-picasso",
       },
+      wrapper: children => (
+        <MockBoot breakpoint={breakpoint}>{children}</MockBoot>
+      ),
     })
   }
 
@@ -44,6 +48,7 @@ describe("RelatedArtists Route", () => {
       expect(artistCardWrapper.length).toEqual(2)
       expect(wrapper.find("Pagination").length).toBe(1)
     })
+
     it("renders correct number of related ArtistCards", () => {
       expect(artistCardWrapper.at(0).html()).toContain("Robert Indiana")
       expect(artistCardWrapper.at(1).html()).toContain("Tom Wesselmann")

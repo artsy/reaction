@@ -4,7 +4,7 @@ import moment from "moment"
 import React from "react"
 import renderer from "react-test-renderer"
 
-import { NewsArticle } from "../../Fixtures/Articles"
+import { NewsArticle } from "Components/Publishing/Fixtures/Articles"
 import { NewsDateHeader } from "../NewsDateHeader"
 
 it("renders a news date header properly", () => {

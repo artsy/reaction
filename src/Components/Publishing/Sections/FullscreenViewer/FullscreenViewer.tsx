@@ -1,10 +1,10 @@
+import { pMedia } from "Components/Helpers"
+import Icon from "Components/Icon"
 import { map } from "lodash"
 import PropTypes from "prop-types"
 import React, { Component, HTMLProps } from "react"
 import Slider from "react-slick"
 import styled, { StyledFunction } from "styled-components"
-import { pMedia } from "../../../Helpers"
-import Icon from "../../../Icon"
 import { Slide } from "./Slide"
 
 interface FullscreenViewerProps extends HTMLProps<HTMLDivElement> {

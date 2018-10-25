@@ -9,7 +9,7 @@ describe("MarketInsights", () => {
   describe("snapshots", () => {
     it("renders correctly", () => {
       const marketInsights = renderer
-        .create(<MarketInsights artist={MarketInsightsArtists[0]} />)
+        .create(<MarketInsights artist={MarketInsightsArtists[0] as any} />)
         .toJSON()
       expect(marketInsights).toMatchSnapshot()
     })
@@ -18,7 +18,7 @@ describe("MarketInsights", () => {
   describe("unit", () => {
     it("renders market data if present", () => {
       const component = mount(
-        <MarketInsights artist={MarketInsightsArtists[0]} />
+        <MarketInsights artist={MarketInsightsArtists[0] as any} />
       )
       expect(component.text()).toMatch("$63m auction record")
       expect(component.text()).toMatch("Represented by blue chip galleries")
@@ -30,7 +30,7 @@ describe("MarketInsights", () => {
 
     it("renders nothing if no market data", () => {
       const component = mount(
-        <MarketInsights artist={MarketInsightsArtists[1]} />
+        <MarketInsights artist={MarketInsightsArtists[1] as any} />
       )
       expect(component.html()).toBe(null)
     })
@@ -38,22 +38,25 @@ describe("MarketInsights", () => {
     describe("#renderGalleryCategory", () => {
       it("prints single results", () => {
         const component = mount(
-          <MarketInsights artist={MarketInsightsArtists[0]} />
+          <MarketInsights artist={MarketInsightsArtists[0] as any} />
         )
         const {
           props: { children },
-        } = component.instance().renderGalleryCategory("blue-chip", 1)
+        } = (component.instance() as any).renderGalleryCategory("blue-chip", 1)
 
         expect(children[0]).toMatch("Represented by a blue chip gallery")
       })
 
       it("prints plural results", () => {
         const component = mount(
-          <MarketInsights artist={MarketInsightsArtists[0]} />
+          <MarketInsights artist={MarketInsightsArtists[0] as any} />
         )
         const {
           props: { children },
-        } = component.instance().renderGalleryCategory("top-emerging", 2)
+        } = (component.instance() as any).renderGalleryCategory(
+          "top-emerging",
+          2
+        )
 
         expect(children[0]).toMatch("Represented by top emerging galleries")
       })

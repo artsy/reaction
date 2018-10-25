@@ -1,7 +1,12 @@
+import { LoginForm } from "Components/Authentication/Desktop/LoginForm"
+import { ModalType } from "Components/Authentication/Types"
 import { mount, ReactWrapper } from "enzyme"
 import React from "react"
-import { LoginForm } from "../../Desktop/LoginForm"
-import { ModalManager, ModalManagerProps } from "../../Desktop/ModalManager"
+
+import {
+  ModalManager,
+  ModalManagerProps,
+} from "Components/Authentication/Desktop/ModalManager"
 
 const getWrapper = (
   props?: ModalManagerProps
@@ -30,10 +35,10 @@ describe("ModalManager", () => {
 
   it("sets the currentType if openModal is called", () => {
     const wrapper = getWrapper()
-    let manager = wrapper.instance() as ModalManager
+    const manager = wrapper.instance() as ModalManager
 
     manager.openModal({
-      mode: "login",
+      mode: ModalType.login,
     })
 
     expect(manager.state.currentType).toEqual("login")
@@ -41,7 +46,7 @@ describe("ModalManager", () => {
 
   it("sets the currentType to null if closeModal is called", () => {
     const wrapper = getWrapper()
-    let manager = wrapper.instance() as ModalManager
+    const manager = wrapper.instance() as ModalManager
 
     manager.closeModal()
 
@@ -50,12 +55,12 @@ describe("ModalManager", () => {
 
   it("prevents scrolling when opened", () => {
     const wrapper = getWrapper()
-    let manager = wrapper.instance() as ModalManager
+    const manager = wrapper.instance() as ModalManager
 
     expect(document.body.style.overflowY).toEqual("auto")
 
     manager.openModal({
-      mode: "login",
+      mode: ModalType.login,
     })
 
     expect(document.body.style.overflowY).toEqual("hidden")
@@ -63,10 +68,10 @@ describe("ModalManager", () => {
 
   it("handles type changes", () => {
     const wrapper = getWrapper()
-    let manager = wrapper.instance() as ModalManager
+    const manager = wrapper.instance() as ModalManager
 
     manager.openModal({
-      mode: "login",
+      mode: ModalType.login,
     })
 
     manager.handleTypeChange("signup")
@@ -78,10 +83,10 @@ describe("ModalManager", () => {
 
   it("returns the right subtitle", () => {
     const wrapper = getWrapper()
-    let manager = wrapper.instance() as ModalManager
+    const manager = wrapper.instance() as ModalManager
 
     manager.openModal({
-      mode: "login",
+      mode: ModalType.login,
       copy: "Foobar",
     })
     expect(manager.getSubtitle()).toEqual("Foobar")

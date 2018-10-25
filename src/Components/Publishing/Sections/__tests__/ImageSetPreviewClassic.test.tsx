@@ -1,7 +1,7 @@
+import { Images } from "Components/Publishing/Fixtures/Components"
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
-import { Images } from "../../Fixtures/Components"
 import { ImageSetPreviewClassic } from "../ImageSetPreviewClassic"
 
 it("renders properly", () => {

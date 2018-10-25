@@ -1,8 +1,8 @@
+import colors from "Assets/Colors"
 import { garamond, unica } from "Assets/Fonts"
+import { pMedia } from "Components/Helpers"
 import React from "react"
 import styled from "styled-components"
-import colors from "../../../Assets/Colors"
-import { pMedia } from "../../Helpers"
 import { getDate } from "../Constants"
 import { ArticleData } from "../Typings"
 

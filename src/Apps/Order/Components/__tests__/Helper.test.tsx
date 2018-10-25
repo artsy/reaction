@@ -1,8 +1,6 @@
 import { ContextProvider } from "Artsy/Router"
 import { mount } from "enzyme"
 import React from "react"
-import renderer from "react-test-renderer"
-import { Provider } from "unstated"
 import { Helper } from "../Helper"
 
 describe("Order summary", () => {

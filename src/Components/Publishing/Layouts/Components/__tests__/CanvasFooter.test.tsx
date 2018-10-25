@@ -1,15 +1,18 @@
+import { DisplayCanvas } from "Components/Publishing/Display/Canvas"
+import { StandardArticle } from "Components/Publishing/Fixtures/Articles"
+import {
+  Display,
+  RelatedCanvas,
+} from "Components/Publishing/Fixtures/Components"
+import { RelatedArticlesCanvas } from "Components/Publishing/RelatedArticles/Canvas/RelatedArticlesCanvas"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
-import { DisplayCanvas } from "../../../Display/Canvas"
-import { StandardArticle } from "../../../Fixtures/Articles"
-import { Display, RelatedCanvas } from "../../../Fixtures/Components"
-import { RelatedArticlesCanvas } from "../../../RelatedArticles/Canvas/RelatedArticlesCanvas"
 import { CanvasFooter } from "../CanvasFooter"
 
 describe("CanvasFooter", () => {
-  const getWrapper = props => {
-    return mount(<CanvasFooter {...props} />)
+  const getWrapper = _props => {
+    return mount(<CanvasFooter {..._props} />)
   }
 
   let props

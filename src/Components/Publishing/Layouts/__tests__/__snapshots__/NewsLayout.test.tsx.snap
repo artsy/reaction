@@ -22,6 +22,22 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   background-color: black;
 }
 
+.c20 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: Unica77LLWebRegular,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+  color: #999999;
+}
+
+.c20 a {
+  color: #999999;
+}
+
 .c21 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -49,22 +65,6 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 
 .c22:first-child {
   padding-left: 0;
-}
-
-.c20 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
-  color: #999999;
-}
-
-.c20 a {
-  color: #999999;
 }
 
 .c15 {
@@ -459,18 +459,18 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   border: 1px solid transparent;
 }
 
-@media (max-width:600px) {
-  .c21 {
-    margin-top: 15px;
-  }
-}
-
 @media (max-width:720px) {
   .c20 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
     line-height: 1.4em;
+  }
+}
+
+@media (max-width:600px) {
+  .c21 {
+    margin-top: 15px;
   }
 }
 
@@ -945,6 +945,22 @@ exports[`News Layout renders the news layout properly 1`] = `
   background-color: black;
 }
 
+.c20 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: Unica77LLWebRegular,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+  color: #999999;
+}
+
+.c20 a {
+  color: #999999;
+}
+
 .c21 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -972,22 +988,6 @@ exports[`News Layout renders the news layout properly 1`] = `
 
 .c22:first-child {
   padding-left: 0;
-}
-
-.c20 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
-  color: #999999;
-}
-
-.c20 a {
-  color: #999999;
 }
 
 .c15 {

@@ -36,13 +36,15 @@ describe("Modal", () => {
   it("Closes on background click", () => {
     props.show = true
     const component = getWrapper(props)
-    component.instance().removeBlurToContainers = jest.fn()
+    ;(component.instance() as any).removeBlurToContainers = jest.fn()
     component
       .find(ModalOverlay)
       .at(0)
       .simulate("click")
 
-    expect(component.instance().removeBlurToContainers).toHaveBeenCalled()
+    expect(
+      (component.instance() as any).removeBlurToContainers
+    ).toHaveBeenCalled()
     expect(props.onClose).toHaveBeenCalled()
   })
 })

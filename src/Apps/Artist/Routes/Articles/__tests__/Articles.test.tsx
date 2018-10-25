@@ -1,6 +1,5 @@
 import { ArticlesFixture } from "Apps/__test__/Fixtures/Artist/Routes/ArticlesFixture"
-import { AuctionResultsRouteFragmentContainer as AuctionResults } from "Apps/Artist/Routes/AuctionResults"
-import { ContextProvider } from "Artsy"
+import { ArticlesRouteFragmentContainer as ArticlesRoute } from "Apps/Artist/Routes/Articles"
 import { MockBoot, renderRelayTree } from "DevTools"
 import { ReactWrapper } from "enzyme"
 import React from "react"
@@ -14,7 +13,7 @@ describe("Articles Route", () => {
 
   const getWrapper = async (breakpoint: Breakpoint = "xl") => {
     return await renderRelayTree({
-      Component: AuctionResults,
+      Component: ArticlesRoute,
       query: graphql`
         query Articles_Test_Query($artistID: String!) {
           artist(id: $artistID) {
@@ -29,9 +28,7 @@ describe("Articles Route", () => {
         artistID: "pablo-picasso",
       },
       wrapper: children => (
-        <MockBoot breakpoint={breakpoint}>
-          <ContextProvider>{children}</ContextProvider>
-        </MockBoot>
+        <MockBoot breakpoint={breakpoint}>{children}</MockBoot>
       ),
     })
   }
@@ -39,6 +36,11 @@ describe("Articles Route", () => {
   describe("general behavior", () => {
     beforeAll(async () => {
       wrapper = await getWrapper()
+    })
+
+    it("works", () => {
+      console.log(wrapper.html())
+      expect(true).toEqual(true)
     })
   })
 })

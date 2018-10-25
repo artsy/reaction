@@ -1,9 +1,9 @@
+import { ArtworkSidebarFixture } from "Apps/__test__/Fixtures/Artwork/ArtworkSidebar"
+import { ArtworkSidebarFragmentContainer } from "Apps/Artwork/Components/ArtworkSidebar"
+import { ArtworkSidebarArtists } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarArtists"
+import { ArtworkSidebarMetadata } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarMetadata"
+import { renderRelayTree } from "DevTools"
 import { graphql } from "react-relay"
-import { renderRelayTree } from "../../../../DevTools"
-import { ArtworkSidebarFixture } from "../../../__test__/Fixtures/Artwork/ArtworkSidebar"
-import { ArtworkSidebarArtists } from "../ArtworkSidebar/ArtworkSidebarArtists"
-import { ArtworkSidebarMetadata } from "../ArtworkSidebar/ArtworkSidebarMetadata"
-import { ArtworkSidebarFragmentContainer } from "../ArtworkSidebar/index"
 
 jest.unmock("react-relay")
 

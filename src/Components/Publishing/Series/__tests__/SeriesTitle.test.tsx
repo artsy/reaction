@@ -1,10 +1,13 @@
+import {
+  SeriesArticle,
+  SeriesArticleSponsored,
+} from "Components/Publishing/Fixtures/Articles"
+import { EditableChild } from "Components/Publishing/Fixtures/Helpers"
+import { PartnerBlock } from "Components/Publishing/Partner/PartnerBlock"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
-import { SeriesArticle, SeriesArticleSponsored } from "../../Fixtures/Articles"
-import { EditableChild } from "../../Fixtures/Helpers"
-import { PartnerBlock } from "../../Partner/PartnerBlock"
 import { SeriesTitle } from "../SeriesTitle"
 
 it("renders a series title properly", () => {

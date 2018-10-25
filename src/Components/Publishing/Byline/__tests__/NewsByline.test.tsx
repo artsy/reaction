@@ -1,8 +1,8 @@
+import { NewsArticle } from "Components/Publishing/Fixtures/Articles"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
-import { NewsArticle } from "../../Fixtures/Articles"
 import { NewsByline } from "../NewsByline"
 
 describe("News Byline", () => {

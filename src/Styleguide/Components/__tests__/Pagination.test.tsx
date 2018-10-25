@@ -1,8 +1,8 @@
+import { paginationProps } from "Apps/__test__/Fixtures/Pagination"
 import { MockBoot } from "DevTools/MockBoot"
 import { mount } from "enzyme"
 import { set } from "lodash/fp"
 import React from "react"
-import { paginationProps } from "../../../Apps/__test__/Fixtures/Pagination"
 import { LargePagination, Pagination, SmallPagination } from "../Pagination"
 
 describe("Pagination", () => {

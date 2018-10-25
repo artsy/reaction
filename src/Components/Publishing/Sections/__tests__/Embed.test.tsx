@@ -1,7 +1,7 @@
+import { Embeds } from "Components/Publishing/Fixtures/Components"
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
-import { Embeds } from "../../Fixtures/Components"
 import { Embed } from "../Embed"
 
 it("renders properly", () => {

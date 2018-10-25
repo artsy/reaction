@@ -67,7 +67,7 @@ describe("FollowArtistButton", () => {
     it("Follows an artist if current user", () => {
       const component = getWrapper(testProps, { id: "1234" })
       component.find(FollowButtonDeprecated).simulate("click")
-      const mutation = commitMutation.mock.calls[0][1].variables.input
+      const mutation = (commitMutation as any).mock.calls[0][1].variables.input
 
       expect(mutation.artist_id).toBe("damon-zucconi")
       expect(mutation.unfollow).toBe(false)
@@ -77,7 +77,7 @@ describe("FollowArtistButton", () => {
       testProps.artist.is_followed = true
       const component = getWrapper(testProps, { id: "1234" })
       component.find(FollowButtonDeprecated).simulate("click")
-      const mutation = commitMutation.mock.calls[1][1].variables.input
+      const mutation = (commitMutation as any).mock.calls[1][1].variables.input
 
       expect(mutation.artist_id).toBe("damon-zucconi")
       expect(mutation.unfollow).toBe(true)

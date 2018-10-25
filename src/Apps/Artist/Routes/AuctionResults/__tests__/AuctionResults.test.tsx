@@ -1,6 +1,5 @@
 import { AuctionResultsFixture } from "Apps/__test__/Fixtures/Artist/Routes/AuctionResultsFixture"
-import { AuctionResultsRouteFragmentContainer as AuctionResults } from "Apps/Artist/Routes/AuctionResults"
-import { ContextProvider } from "Artsy"
+import { AuctionResultsRouteFragmentContainer as AuctionResultsRoute } from "Apps/Artist/Routes/AuctionResults"
 import { MockBoot, renderRelayTree } from "DevTools"
 import { ReactWrapper } from "enzyme"
 import React from "react"
@@ -14,7 +13,7 @@ describe("AuctionResults", () => {
 
   const getWrapper = async (breakpoint: Breakpoint = "xl") => {
     return await renderRelayTree({
-      Component: AuctionResults,
+      Component: AuctionResultsRoute,
       query: graphql`
         query AuctionResults_Test_Query($artistID: String!) {
           artist(id: $artistID) {
@@ -29,9 +28,7 @@ describe("AuctionResults", () => {
         artistID: "pablo-picasso",
       },
       wrapper: children => (
-        <MockBoot breakpoint={breakpoint}>
-          <ContextProvider>{children}</ContextProvider>
-        </MockBoot>
+        <MockBoot breakpoint={breakpoint}>{children}</MockBoot>
       ),
     })
   }

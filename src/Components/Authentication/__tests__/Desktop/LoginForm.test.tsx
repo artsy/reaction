@@ -1,6 +1,6 @@
+import { LoginForm } from "Components/Authentication/Desktop/LoginForm"
 import { mount, shallow } from "enzyme"
 import React from "react"
-import { LoginForm } from "../../Desktop/LoginForm"
 
 describe("LoginForm", () => {
   xit("calls handleSubmit with the right params", () => {
@@ -47,11 +47,11 @@ describe("LoginForm", () => {
       <LoginForm error="Some global server error" handleSubmit={jest.fn()} />
     )
     const input = wrapper.find(`input[name="email"]`)
-    expect(wrapper.state().error).toEqual("Some global server error")
+    expect((wrapper.state() as any).error).toEqual("Some global server error")
     input.simulate("change")
     wrapper.update()
     setTimeout(() => {
-      expect(wrapper.state().error).toEqual(null)
+      expect((wrapper.state() as any).error).toEqual(null)
       done()
     })
   })
@@ -71,7 +71,7 @@ describe("LoginForm", () => {
 
     setTimeout(() => {
       const submitButton = wrapper.find(`SubmitButton`)
-      expect(submitButton.props().loading).toEqual(true)
+      expect((submitButton.props() as any).loading).toEqual(true)
       done()
     })
   })

@@ -1,9 +1,9 @@
+import { IconVideoMute } from "Components/Publishing/Icon/IconVideoMute"
+import { IconVideoUnmute } from "Components/Publishing/Icon/IconVideoUnmute"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
-import { IconVideoMute } from "../../../Icon/IconVideoMute"
-import { IconVideoUnmute } from "../../../Icon/IconVideoUnmute"
 import { MuteUnmute } from "../MuteUnmute"
 
 describe("Mute/Unmute Button", () => {

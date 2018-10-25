@@ -15,7 +15,6 @@ import { ArtworkSidebarSizeInfo } from "../../ArtworkSidebar/ArtworkSidebarSizeI
 jest.unmock("react-relay")
 
 describe("ArtworkSidebarMetadata", () => {
-  const data = null
   let wrapper = null
 
   const getWrapper = async (response = FilledOutMetadataNoEditions) => {

@@ -36,8 +36,8 @@ describe("ClassicByline", () => {
   })
 
   describe("Unit", () => {
-    const getWrapper = props => {
-      return mount(<ClassicByline {...props} />)
+    const getWrapper = _props => {
+      return mount(<ClassicByline {..._props} />)
     }
     let props
     beforeEach(() => {

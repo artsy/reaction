@@ -1,11 +1,11 @@
 import { ContextProvider } from "Artsy"
+import { FollowGeneButton } from "Components/FollowButton/FollowGeneButton"
+import { Genes } from "Components/Publishing/Fixtures/Components"
+import { wrapperWithContext } from "Components/Publishing/Fixtures/Helpers"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import PropTypes from "prop-types"
 import React from "react"
-import { FollowGeneButton } from "../../../FollowButton/FollowGeneButton"
-import { Genes } from "../../Fixtures/Components"
-import { wrapperWithContext } from "../../Fixtures/Helpers"
 import { GeneToolTip } from "../GeneToolTip"
 
 describe("GeneTooltip", () => {

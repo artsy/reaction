@@ -1,7 +1,7 @@
+import { Videos } from "Components/Publishing/Fixtures/Components"
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
-import { Videos } from "../../Fixtures/Components"
 import { Video } from "../Video"
 
 it("renders properly", () => {

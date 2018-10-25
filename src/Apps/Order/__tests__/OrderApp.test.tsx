@@ -1,12 +1,12 @@
 import { routes } from "Apps/Order/routes"
 import { ContextProvider } from "Artsy/Router"
+import { ErrorPage } from "Components/ErrorPage"
 import { mount } from "enzyme"
 import { Resolver } from "found-relay"
 import createRender from "found/lib/createRender"
 import getFarceResult from "found/lib/server/getFarceResult"
 import React from "react"
 import { HeadProvider, Meta } from "react-head"
-import { ErrorPage } from "../../../Components/ErrorPage"
 import { OrderApp } from "../OrderApp"
 
 import { createMockNetworkLayer } from "DevTools/createMockNetworkLayer"
@@ -179,7 +179,7 @@ describe("OrderApp routing redirects", () => {
 })
 
 describe("OrderApp", () => {
-  const getWrapper = ({ props, context }) => {
+  const getWrapper = ({ props, context }: any) => {
     return mount(
       <HeadProvider>
         <ContextProvider {...context}>
@@ -196,7 +196,7 @@ describe("OrderApp", () => {
     window.sd = { STRIPE_PUBLISHABLE_KEY: "" }
   })
 
-  const getProps = ({ state, location, replace } = {}) => {
+  const getProps = ({ state, location, replace }: any = {}) => {
     return {
       children: false,
       params: {
@@ -217,8 +217,8 @@ describe("OrderApp", () => {
   }
 
   it("omits meta viewport tag unless Eigen", () => {
-    const props = getProps()
-    const subject = getWrapper({ props })
+    const props = getProps() as any
+    const subject = getWrapper({ props }) as any
     const viewportMetaTags = subject
       .find(Meta)
       .filterWhere(meta => meta.props().name === "viewport")
@@ -227,7 +227,7 @@ describe("OrderApp", () => {
 
   it("includes meta viewport tag if Eigen", () => {
     const props = getProps()
-    const subject = getWrapper({ props, context: { isEigen: true } })
+    const subject = getWrapper({ props, context: { isEigen: true } }) as any
     const viewportMetaTags = subject
       .find(Meta)
       .filterWhere(meta => meta.props().name === "viewport")
@@ -241,7 +241,7 @@ describe("OrderApp", () => {
       context: { isEigen: true },
     })
 
-    const viewportMetaTags = subject.find(ErrorPage)
+    subject.find(ErrorPage)
 
     expect(subject.find(ErrorPage).text()).toContain(
       "Sorry, the page you were looking for doesn’t exist at this URL."

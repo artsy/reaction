@@ -1,13 +1,17 @@
+import {
+  FeatureArticle,
+  StandardArticle,
+} from "Components/Publishing/Fixtures/Articles"
+import { WrapperWithFullscreenContext } from "Components/Publishing/Fixtures/Helpers"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import { cloneDeep } from "lodash"
 import React from "react"
 import renderer from "react-test-renderer"
-import { FeatureArticle, StandardArticle } from "../../Fixtures/Articles"
-import { WrapperWithFullscreenContext } from "../../Fixtures/Helpers"
 import { Sections } from "../Sections"
 
 jest.mock("react-lines-ellipsis/lib/html", () => {
+  // tslint:disable:no-shadowed-variable
   const React = require("react")
   return () => <div />
 })
@@ -73,7 +77,7 @@ describe("Sections", () => {
       props.article = article
       const wrapper = mountWrapper(props)
         .childAt(0)
-        .instance()
+        .instance() as any
       expect(wrapper.state.shouldInjectMobileDisplay).toEqual(false)
       expect(spy).not.toHaveBeenCalled()
     })
@@ -83,7 +87,7 @@ describe("Sections", () => {
       props.isMobile = false
       const wrapper = mountWrapper(props)
         .childAt(0)
-        .instance()
+        .instance() as any
       expect(wrapper.state.shouldInjectMobileDisplay).toEqual(false)
       expect(spy).not.toHaveBeenCalled()
     })
@@ -96,7 +100,7 @@ describe("Sections", () => {
 
       const wrapper = mountWrapper(props)
         .childAt(0)
-        .instance()
+        .instance() as any
       expect(wrapper.state.shouldInjectMobileDisplay).toEqual(true)
       expect(spy).toHaveBeenCalled()
     })
@@ -121,7 +125,7 @@ describe("Sections", () => {
       props.article = FeatureArticle
       const wrapper = mountWrapper(props)
         .childAt(0)
-        .instance()
+        .instance() as any
       expect(wrapper.getContentStartIndex()).toBe(0)
     })
 
@@ -129,7 +133,7 @@ describe("Sections", () => {
       props.article = FeatureArticle
       const wrapper = mountWrapper(props)
         .childAt(0)
-        .instance()
+        .instance() as any
       expect(wrapper.getContentEndIndex()).toBe(11)
     })
   })

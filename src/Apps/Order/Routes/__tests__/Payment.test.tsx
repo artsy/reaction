@@ -5,9 +5,8 @@ import React from "react"
 import {
   OrderWithShippingDetails,
   PickupOrder,
-  UntouchedOrder,
 } from "Apps/__test__/Fixtures/Order"
-import { Input, InputProps } from "../../../../Components/Input"
+import { Input } from "../../../../Components/Input"
 import { Collapse } from "../../../../Styleguide/Components"
 import { CreditCardInput } from "../../Components/CreditCardInput"
 import {
@@ -15,7 +14,6 @@ import {
   creatingCreditCardSuccess,
   settingOrderPaymentFailed,
   settingOrderPaymentSuccess,
-  settingOrderShipmentFailure,
 } from "../__fixtures__/MutationResults"
 import { ContinueButton, PaymentProps, PaymentRoute } from "../Payment"
 import {
@@ -80,7 +78,10 @@ describe("Payment", () => {
 
   it("always shows the billing address form without checkbox when the user selected 'pick' shipping option", () => {
     const paymentRoute = mount(
-      <PaymentRoute {...testProps} order={{ ...PickupOrder, id: "1234" }} />
+      <PaymentRoute
+        {...testProps}
+        order={{ ...PickupOrder, id: "1234" } as any}
+      />
     )
 
     expect(paymentRoute.find(Checkbox).length).toBe(0)
@@ -95,7 +96,7 @@ describe("Payment", () => {
     const nameInput = paymentRoute
       .find(Input)
       .filterWhere(wrapper => wrapper.props().title === "Full name")
-      .find("input")
+      .find("input") as any
     nameInput.instance().value = "Dr Collector"
     nameInput.simulate("change")
     expect(nameInput.instance().value).toEqual("Dr Collector")
@@ -114,19 +115,21 @@ describe("Payment", () => {
     const paymentRoute = mount(
       <PaymentRoute
         {...testProps}
-        order={{
-          ...PickupOrder,
-          id: "1234",
-          creditCard: {
-            name: "Artsy UK Ltd",
-            street1: "14 Gower's Walk",
-            street2: "Suite 2.5, The Loom",
-            city: "London",
-            state: "Whitechapel",
-            country: "UK",
-            postal_code: "E1 8PY",
-          },
-        }}
+        order={
+          {
+            ...PickupOrder,
+            id: "1234",
+            creditCard: {
+              name: "Artsy UK Ltd",
+              street1: "14 Gower's Walk",
+              street2: "Suite 2.5, The Loom",
+              city: "London",
+              state: "Whitechapel",
+              country: "UK",
+              postal_code: "E1 8PY",
+            },
+          } as any
+        }
       />
     )
 
@@ -147,7 +150,10 @@ describe("Payment", () => {
     stripeMock.createToken.mockReturnValue({ then: thenMock })
 
     const paymentRoute = mount(
-      <PaymentRoute {...testProps} order={{ ...PickupOrder, id: "1234" }} />
+      <PaymentRoute
+        {...testProps}
+        order={{ ...PickupOrder, id: "1234" } as any}
+      />
     )
 
     fillAddressForm(paymentRoute, validAddress)
@@ -383,17 +389,6 @@ describe("Payment", () => {
   })
 
   describe("Validations", () => {
-    let shipOrderProps
-    beforeEach(() => {
-      const shipOrder = {
-        ...UntouchedOrder,
-        requestedFulfillment: {
-          __typename: "Ship",
-        },
-      }
-      shipOrderProps = { ...testProps, order: shipOrder }
-    })
-
     it("says a required field is required with billing address exposed", () => {
       const paymentRoute = mount(<PaymentRoute {...testProps} />)
       ;(paymentRoute.find(Checkbox).props() as CheckboxProps).onSelect(false)
@@ -447,7 +442,6 @@ describe("Payment", () => {
 
     it("does not submit the mutation with an incomplete form with billing address exposed", () => {
       const paymentRoute = mount(<PaymentRoute {...testProps} />)
-      const { addressLine1, ...badAddress } = validAddress
       ;(paymentRoute.find(Checkbox).props() as CheckboxProps).onSelect(false)
       fillIn(paymentRoute, { title: "Full name", value: "Air Bud" })
       paymentRoute.find(ContinueButton).simulate("click")

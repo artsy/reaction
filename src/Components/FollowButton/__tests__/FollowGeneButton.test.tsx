@@ -63,7 +63,7 @@ describe("FollowGeneButton", () => {
     it("Follows an gene if current user", () => {
       const component = getWrapper(testProps, { id: "1234" })
       component.find(FollowButtonDeprecated).simulate("click")
-      const mutation = commitMutation.mock.calls[0][1].variables.input
+      const mutation = (commitMutation as any).mock.calls[0][1].variables.input
 
       expect(mutation.gene_id).toBe("modernism")
     })
@@ -72,7 +72,7 @@ describe("FollowGeneButton", () => {
       testProps.gene.is_followed = true
       const component = getWrapper(testProps, { id: "1234" })
       component.find(FollowButtonDeprecated).simulate("click")
-      const mutation = commitMutation.mock.calls[1][1].variables.input
+      const mutation = (commitMutation as any).mock.calls[1][1].variables.input
 
       expect(mutation.gene_id).toBe("modernism")
     })
