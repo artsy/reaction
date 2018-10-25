@@ -1,0 +1,12 @@
+patch-package
+--- a/node_modules/react-tracking/build/trackEventMethodDecorator.js
++++ b/node_modules/react-tracking/build/trackEventMethodDecorator.js
+@@ -38,7 +38,7 @@ function trackEventMethodDecorator() {
+ 
+         if (_this.props && _this.props.tracking && typeof _this.props.tracking.trackEvent === 'function') {
+           var thisTrackingData = typeof trackingData === 'function' ? trackingData(_this.props, _this.state, args, promiseArguments) : trackingData;
+-          _this.props.tracking.trackEvent(thisTrackingData);
++          if (thisTrackingData) _this.props.tracking.trackEvent(thisTrackingData);
+         }
+       };
+ 
