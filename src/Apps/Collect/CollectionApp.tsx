@@ -1,5 +1,6 @@
 import { Box } from "@artsy/palette"
 import { CollectionApp_collection } from "__generated__/CollectionApp_collection.graphql"
+import { HttpError } from "found"
 import React, { Component } from "react"
 import { Meta, Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -13,6 +14,16 @@ interface CollectionAppProps {
 }
 
 export class CollectionApp extends Component<CollectionAppProps> {
+  collectionNotFound = collection => {
+    if (!collection) {
+      throw new HttpError(404)
+    }
+  }
+
+  componentWillMount() {
+    this.collectionNotFound(this.props.collection)
+  }
+
   render() {
     const { collection } = this.props
     const { title, slug, headerImage } = collection
