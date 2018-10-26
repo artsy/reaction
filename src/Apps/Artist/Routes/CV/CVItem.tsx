@@ -271,3 +271,6 @@ export const CVPaginationContainer = createPaginationContainer(
 const CVItems = styled(Box)``
 const Year = Serif
 const Category = Sans
+
+Year.displayName = "Year"
+Category.displayName = "Category"

@@ -6,8 +6,6 @@ import React from "react"
 import { graphql } from "react-relay"
 import { Breakpoint } from "Utils/Responsive"
 
-jest.unmock("react-relay")
-
 describe("Articles Route", () => {
   let wrapper: ReactWrapper
 

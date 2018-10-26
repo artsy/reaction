@@ -1,42 +1,23 @@
-import { CVRouteFragmentContainer as CV } from "Apps/Artist/Routes/CV"
-import { MockBoot, renderRelayTree } from "DevTools"
-import { ReactWrapper } from "enzyme"
+import { CVRouteFragmentContainer as CVRoute } from "Apps/Artist/Routes/CV"
+import { MockBoot } from "DevTools"
+import { mount, ReactWrapper } from "enzyme"
 import React from "react"
-import { graphql } from "react-relay"
 import { Breakpoint } from "Utils/Responsive"
 
-import {
-  CVFixture,
-  showsConnection,
-} from "Apps/__test__/Fixtures/Artist/Routes/CV"
-
-jest.unmock("react-relay")
+import { CVFixture } from "Apps/__test__/Fixtures/Artist/Routes/CV"
+import { RelayStubProvider } from "DevTools/RelayStubProvider"
 
 describe("CV Route", () => {
   let wrapper: ReactWrapper
 
-  const getWrapper = async (breakpoint: Breakpoint = "xl") => {
-    return await renderRelayTree({
-      Component: CV,
-      query: graphql`
-        query CV_Test_Query($artistID: String!) {
-          viewer {
-            ...CV_viewer
-          }
-        }
-      `,
-      mockResolvers: {
-        Viewer: () => ({ viewer: { artist_soloShows: CVFixture } }),
-        Artist: () => ({ artist: CVFixture }),
-        ShowConnection: () => showsConnection,
-      },
-      variables: {
-        artistID: "pablo-picasso",
-      },
-      wrapper: children => (
-        <MockBoot breakpoint={breakpoint}>{children}</MockBoot>
-      ),
-    })
+  const getWrapper = (breakpoint: Breakpoint = "xl") => {
+    return mount(
+      <RelayStubProvider>
+        <MockBoot breakpoint={breakpoint}>
+          <CVRoute viewer={CVFixture as any} />
+        </MockBoot>
+      </RelayStubProvider>
+    )
   }
 
   describe("general behavior", () => {
@@ -44,10 +25,56 @@ describe("CV Route", () => {
       wrapper = await getWrapper()
     })
 
-    it("renders correct data", () => {
+    it("renders proper elements", () => {
+      expect(wrapper.find("CVItem").length).toEqual(3)
+      expect(wrapper.find("Button").length).toEqual(3)
+    })
+
+    it("renders correct sections", () => {
       const html = wrapper.html()
-      expect(html).toContain("Catty Art Show")
-      expect(html).toContain("Catty Partner")
+      expect(html).toContain("Solo shows")
+      expect(html).toContain("Group shows")
+      expect(html).toContain("Fair booths")
+    })
+
+    it("renders correct number of items per section", () => {
+      const getRowsAt = index =>
+        wrapper
+          .find("CVItem")
+          .at(index)
+          .find("ShowEntry")
+
+      expect(getRowsAt(0).length).toEqual(10)
+      expect(getRowsAt(1).length).toEqual(10)
+      expect(getRowsAt(2).length).toEqual(10)
+    })
+
+    it("renders correct button labels", () => {
+      const getButtonAt = index => wrapper.find("Button").at(index)
+      expect(getButtonAt(0).text()).toEqual("Show more")
+      expect(getButtonAt(1).text()).toEqual("Show more")
+      expect(getButtonAt(2).text()).toEqual("Show more")
+    })
+
+    it("renders correct list items", () => {
+      const getShowAt = index => wrapper.find("ShowEntry").at(index)
+      expect(getShowAt(0).text()).toContain("Picasso Prints,  Wada Garou Tokyo")
+      expect(getShowAt(10).text()).toContain(
+        "2018 Larsen Art Auction,  Larsen Gallery, Scottsdale"
+      )
+    })
+
+    it("calls loadMore on button click", () => {
+      const spy = spyOn(
+        wrapper
+          .find("CVItem")
+          .at(0)
+          .instance(),
+        "loadMore"
+      )
+      const button = wrapper.find("Button").at(0)
+      button.simulate("click")
+      expect(spy).toHaveBeenCalled()
     })
   })
 })

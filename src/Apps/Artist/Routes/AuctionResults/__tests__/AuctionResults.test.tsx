@@ -6,8 +6,6 @@ import { mount, ReactWrapper } from "enzyme"
 import React from "react"
 import { Breakpoint } from "Utils/Responsive"
 
-jest.unmock("react-relay")
-
 describe("AuctionResults", () => {
   let wrapper: ReactWrapper
 

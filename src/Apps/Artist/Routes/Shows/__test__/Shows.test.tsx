@@ -7,8 +7,6 @@ import { Breakpoint } from "Utils/Responsive"
 import { ShowsFixture } from "Apps/__test__/Fixtures/Artist/Routes/ShowsFixture"
 import { RelayStubProvider } from "DevTools/RelayStubProvider"
 
-jest.unmock("react-relay")
-
 describe("Shows Route", () => {
   let wrapper: ReactWrapper
 
