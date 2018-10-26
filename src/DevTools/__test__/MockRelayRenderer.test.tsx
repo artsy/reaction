@@ -1,3 +1,4 @@
+import { renderUntil } from "DevTools/renderUntil"
 import { mount } from "enzyme"
 import * as React from "react"
 import { MockRelayRenderer } from "../MockRelayRenderer"
@@ -11,8 +12,9 @@ import {
 jest.unmock("react-relay")
 
 describe("MockRelayRenderer", () => {
-  it("renders a Relay tree", done => {
-    const tree = mount(
+  it("renders a Relay tree", async () => {
+    const tree = await renderUntil(
+      wrapper => wrapper.text().includes("Mona Lisa"),
       <MockRelayRenderer
         Component={Artwork}
         query={query}
@@ -27,17 +29,14 @@ describe("MockRelayRenderer", () => {
         }}
       />
     )
-    setTimeout(() => {
-      expect(tree.html()).toEqual(
-        renderToString(
-          <div>
-            <img src="http://test/image.jpg" />
-            <div>Mona Lisa</div>
-          </div>
-        )
+    expect(tree.html()).toEqual(
+      renderToString(
+        <div>
+          <img src="http://test/image.jpg" />
+          <div>Mona Lisa</div>
+        </div>
       )
-      done()
-    }, 10)
+    )
   })
 
   it("renders an error when child components throw", () => {
