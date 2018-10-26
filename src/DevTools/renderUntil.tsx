@@ -34,6 +34,8 @@ function renderUntil<
   })
 }
 
+// TODO: Depending on this discussion move this upstream
+// https://github.com/airbnb/enzyme/issues/1878.
 ReactWrapper.prototype.renderUntil = renderUntil
 
 /**

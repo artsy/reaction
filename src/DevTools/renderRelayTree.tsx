@@ -103,7 +103,7 @@ export function renderRelayTree<
     Component,
     query,
     mockResolvers,
-    renderUntil: renderUntilCallback,
+    renderUntil: renderUntilPredicate,
     variables,
     wrapper,
   } = params
@@ -116,6 +116,6 @@ export function renderRelayTree<
     />
   )
   return mount<C, P, S>(wrapper ? wrapper(renderer) : renderer).renderUntil(
-    renderUntilCallback || RelayFinishedLoading
+    renderUntilPredicate || RelayFinishedLoading
   )
 }
