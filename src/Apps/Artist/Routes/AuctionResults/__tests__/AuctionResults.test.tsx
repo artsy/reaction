@@ -1,9 +1,9 @@
 import { AuctionResultsFixture } from "Apps/__test__/Fixtures/Artist/Routes/AuctionResultsFixture"
 import { AuctionResultsRouteFragmentContainer as AuctionResultsRoute } from "Apps/Artist/Routes/AuctionResults"
-import { MockBoot, renderRelayTree } from "DevTools"
-import { ReactWrapper } from "enzyme"
+import { MockBoot } from "DevTools"
+import { RelayStubProvider } from "DevTools/RelayStubProvider"
+import { mount, ReactWrapper } from "enzyme"
 import React from "react"
-import { graphql } from "react-relay"
 import { Breakpoint } from "Utils/Responsive"
 
 jest.unmock("react-relay")
@@ -11,26 +11,14 @@ jest.unmock("react-relay")
 describe("AuctionResults", () => {
   let wrapper: ReactWrapper
 
-  const getWrapper = async (breakpoint: Breakpoint = "xl") => {
-    return await renderRelayTree({
-      Component: AuctionResultsRoute,
-      query: graphql`
-        query AuctionResults_Test_Query($artistID: String!) {
-          artist(id: $artistID) {
-            ...AuctionResults_artist
-          }
-        }
-      `,
-      mockResolvers: {
-        Artist: () => AuctionResultsFixture.artist,
-      },
-      variables: {
-        artistID: "pablo-picasso",
-      },
-      wrapper: children => (
-        <MockBoot breakpoint={breakpoint}>{children}</MockBoot>
-      ),
-    })
+  const getWrapper = (breakpoint: Breakpoint = "xl") => {
+    return mount(
+      <RelayStubProvider>
+        <MockBoot breakpoint={breakpoint}>
+          <AuctionResultsRoute artist={AuctionResultsFixture.artist as any} />
+        </MockBoot>
+      </RelayStubProvider>
+    )
   }
 
   describe("general behavior", () => {
