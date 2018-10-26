@@ -386,9 +386,10 @@ describe("Payment", () => {
   })
 
   describe("Analytics", () => {
-    it("tracks click when use shipping address checkbox is unchecked", () => {
+    it("tracks click when use shipping address checkbox transitions from checked to unchecked but not from unchecked to checked", () => {
       const { Component, dispatch } = mockTracking(PaymentRoute)
       const component = mount(<Component {...testProps} />)
+      // Initial state is checked
       component
         .find(Checkbox)
         .at(0)
@@ -399,6 +400,23 @@ describe("Payment", () => {
         flow: "buy now",
         type: "checkbox",
       })
+      expect(dispatch).toHaveBeenCalledTimes(1)
+
+      dispatch.mockClear()
+
+      // State is now unchecked
+      component
+        .find(Checkbox)
+        .at(0)
+        .simulate("click")
+      expect(dispatch).not.toBeCalled()
+    })
+
+    it("triggers order:payment event on component did mount", () => {
+      const { Component, dispatch } = mockTracking(PaymentRoute)
+      const component = mount(<Component {...testProps} />)
+      component.instance().componentDidMount()
+      expect(testProps.mediator.trigger).toHaveBeenCalledWith("order:payment")
     })
   })
 
