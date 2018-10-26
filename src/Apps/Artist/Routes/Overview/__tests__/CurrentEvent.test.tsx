@@ -1,27 +1,23 @@
 import { CurrentEventFixture } from "Apps/__test__/Fixtures/Artist/Routes/Overview/CurrentEvent"
 import { CurrentEventFragmentContainer as CurrentEvent } from "Apps/Artist/Routes/Overview/Components/CurrentEvent"
-import { renderRelayTree } from "DevTools"
-import { graphql } from "react-relay"
-
-jest.unmock("react-relay")
+import { RelayStubProvider } from "DevTools/RelayStubProvider"
+import { mount, ReactWrapper } from "enzyme"
+import React from "react"
+import { Breakpoint } from "Utils/Responsive"
 
 describe("ArtistHeader", () => {
-  const getWrapper = async (response = CurrentEventFixture) => {
-    return await renderRelayTree({
-      Component: CurrentEvent,
-      query: graphql`
-        query CurrentEvent_Test_Query {
-          artist(id: "pablo-picasso") {
-            ...CurrentEvent_artist
-          }
-        }
-      `,
-      mockResolvers: { Artist: () => response },
-    })
+  let wrapper: ReactWrapper
+
+  const getWrapper = (breakpoint: Breakpoint = "xl") => {
+    return mount(
+      <RelayStubProvider>
+        <CurrentEvent artist={CurrentEventFixture as any} />
+      </RelayStubProvider>
+    )
   }
 
   it("renders the current event information", async () => {
-    const wrapper = await getWrapper()
+    wrapper = getWrapper()
     const html = wrapper.html()
     expect(html).toContain("Currently at auction")
     expect(html).toContain("Live bidding begins soon")

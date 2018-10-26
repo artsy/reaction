@@ -26,11 +26,11 @@ describe("Shows Route", () => {
     })
 
     it("renders proper components", () => {
-      expect(wrapper.find("ArtistShows").length).toEqual(3)
-      expect(wrapper.find("Pagination").length).toEqual(3)
-      expect(wrapper.find("ArtistShowBlockItem").length).toEqual(4)
-      expect(wrapper.find("ArtistShowBlockItem").find("img").length).toEqual(4)
-      expect(wrapper.find("ArtistShowListItem").length).toEqual(8)
+      expect(wrapper.find("ArtistShows").length).toBe(3)
+      expect(wrapper.find("Pagination").length).toBe(3)
+      expect(wrapper.find("ArtistShowBlockItem").length).toBe(4)
+      expect(wrapper.find("ArtistShowBlockItem").find("img").length).toBe(4)
+      expect(wrapper.find("ArtistShowListItem").length).toBe(8)
     })
 
     it("renders correct sections", () => {
@@ -65,9 +65,9 @@ describe("Shows Route", () => {
           .at(index)
           .find("button")
 
-      expect(getPaginationAt(0).length).toEqual(2)
-      expect(getPaginationAt(1).length).toEqual(3)
-      expect(getPaginationAt(2).length).toEqual(5)
+      expect(getPaginationAt(0).length).toBe(2)
+      expect(getPaginationAt(1).length).toBe(3)
+      expect(getPaginationAt(2).length).toBe(5)
     })
   })
 })

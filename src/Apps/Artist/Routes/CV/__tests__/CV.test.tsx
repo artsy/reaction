@@ -21,13 +21,13 @@ describe("CV Route", () => {
   }
 
   describe("general behavior", () => {
-    beforeAll(async () => {
-      wrapper = await getWrapper()
+    beforeAll(() => {
+      wrapper = getWrapper()
     })
 
     it("renders proper elements", () => {
-      expect(wrapper.find("CVItem").length).toEqual(3)
-      expect(wrapper.find("Button").length).toEqual(3)
+      expect(wrapper.find("CVItem").length).toBe(3)
+      expect(wrapper.find("Button").length).toBe(3)
     })
 
     it("renders correct sections", () => {
@@ -44,16 +44,16 @@ describe("CV Route", () => {
           .at(index)
           .find("ShowEntry")
 
-      expect(getRowsAt(0).length).toEqual(10)
-      expect(getRowsAt(1).length).toEqual(10)
-      expect(getRowsAt(2).length).toEqual(10)
+      expect(getRowsAt(0).length).toBe(10)
+      expect(getRowsAt(1).length).toBe(10)
+      expect(getRowsAt(2).length).toBe(10)
     })
 
     it("renders correct button labels", () => {
       const getButtonAt = index => wrapper.find("Button").at(index)
-      expect(getButtonAt(0).text()).toEqual("Show more")
-      expect(getButtonAt(1).text()).toEqual("Show more")
-      expect(getButtonAt(2).text()).toEqual("Show more")
+      expect(getButtonAt(0).text()).toBe("Show more")
+      expect(getButtonAt(1).text()).toBe("Show more")
+      expect(getButtonAt(2).text()).toBe("Show more")
     })
 
     it("renders correct list items", () => {

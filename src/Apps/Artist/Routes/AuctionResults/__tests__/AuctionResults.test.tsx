@@ -13,21 +13,21 @@ describe("AuctionResults", () => {
     return mount(
       <RelayStubProvider>
         <MockBoot breakpoint={breakpoint}>
-          <AuctionResultsRoute artist={AuctionResultsFixture.artist as any} />
+          <AuctionResultsRoute artist={AuctionResultsFixture as any} />
         </MockBoot>
       </RelayStubProvider>
     )
   }
 
   describe("general behavior", () => {
-    beforeAll(async () => {
-      wrapper = await getWrapper()
+    beforeAll(() => {
+      wrapper = getWrapper()
     })
 
     it("renders proper elements", () => {
-      expect(wrapper.find("LargeSelect").length).toEqual(1)
-      expect(wrapper.find("Pagination").length).toEqual(1)
-      expect(wrapper.find("ArtistAuctionResultItem").length).toEqual(10)
+      expect(wrapper.find("LargeSelect").length).toBe(1)
+      expect(wrapper.find("Pagination").length).toBe(1)
+      expect(wrapper.find("ArtistAuctionResultItem").length).toBe(10)
     })
 
     it("renders the proper count", () => {
@@ -42,7 +42,7 @@ describe("AuctionResults", () => {
     })
 
     it('renders "Full Description" buttons', () => {
-      expect(wrapper.find("FullDescriptionLink").length).toEqual(10)
+      expect(wrapper.find("FullDescriptionLink").length).toBe(10)
     })
 
     describe("modal pop up", () => {
@@ -58,13 +58,13 @@ describe("AuctionResults", () => {
       })
 
       it("shows a modal on FullDescriptionLink click", () => {
-        expect(modalWrapper.length).toEqual(1)
+        expect(modalWrapper.length).toBe(1)
       })
 
       it("renders the proper modal content", () => {
-        expect(modalWrapper.length).toEqual(1)
+        expect(modalWrapper.length).toBe(1)
         const html = modalWrapper.html()
-        const data = AuctionResultsFixture.artist.auctionResults.edges[0].node
+        const data = AuctionResultsFixture.auctionResults.edges[0].node
         expect(html).toContain("Lot description")
         expect(html).toContain(data.title)
         expect(html).toContain(data.dimension_text)
@@ -75,61 +75,61 @@ describe("AuctionResults", () => {
   })
 
   describe("xs", () => {
-    beforeAll(async () => {
-      wrapper = await getWrapper("xs")
+    beforeAll(() => {
+      wrapper = getWrapper("xs")
     })
 
     it("renders proper elements", () => {
-      expect(wrapper.find("TableColumns").html()).toEqual(null)
-      expect(wrapper.find("SmallTableSidebar").length).toEqual(1)
+      expect(wrapper.find("TableColumns").html()).toBe(null)
+      expect(wrapper.find("SmallTableSidebar").length).toBe(1)
     })
   })
 
   describe("sm", () => {
-    beforeAll(async () => {
-      wrapper = await getWrapper("sm")
+    beforeAll(() => {
+      wrapper = getWrapper("sm")
     })
 
     it("renders proper elements", () => {
-      expect(wrapper.find("LargeTableColumns").length).toEqual(0)
-      expect(wrapper.find("SmallTableColumns").length).toEqual(1)
-      expect(wrapper.find("LargeTableSidebar").length).toEqual(1)
+      expect(wrapper.find("LargeTableColumns").length).toBe(0)
+      expect(wrapper.find("SmallTableColumns").length).toBe(1)
+      expect(wrapper.find("LargeTableSidebar").length).toBe(1)
     })
   })
 
   describe("md", () => {
-    beforeAll(async () => {
-      wrapper = await getWrapper("md")
+    beforeAll(() => {
+      wrapper = getWrapper("md")
     })
 
     it("renders proper elements", () => {
-      expect(wrapper.find("LargeTableColumns").length).toEqual(0)
-      expect(wrapper.find("SmallTableColumns").length).toEqual(1)
-      expect(wrapper.find("LargeTableSidebar").length).toEqual(1)
+      expect(wrapper.find("LargeTableColumns").length).toBe(0)
+      expect(wrapper.find("SmallTableColumns").length).toBe(1)
+      expect(wrapper.find("LargeTableSidebar").length).toBe(1)
     })
   })
 
   describe("lg", () => {
-    beforeAll(async () => {
-      wrapper = await getWrapper("lg")
+    beforeAll(() => {
+      wrapper = getWrapper("lg")
     })
 
     it("renders proper elements", () => {
-      expect(wrapper.find("SmallTableColumns").length).toEqual(0)
-      expect(wrapper.find("LargeTableColumns").length).toEqual(1)
-      expect(wrapper.find("LargeTableSidebar").length).toEqual(1)
+      expect(wrapper.find("SmallTableColumns").length).toBe(0)
+      expect(wrapper.find("LargeTableColumns").length).toBe(1)
+      expect(wrapper.find("LargeTableSidebar").length).toBe(1)
     })
   })
 
   describe("xl", () => {
-    beforeAll(async () => {
-      wrapper = await getWrapper("xl")
+    beforeAll(() => {
+      wrapper = getWrapper("xl")
     })
 
     it("renders proper elements", () => {
-      expect(wrapper.find("SmallTableColumns").length).toEqual(0)
-      expect(wrapper.find("LargeTableColumns").length).toEqual(1)
-      expect(wrapper.find("LargeTableSidebar").length).toEqual(1)
+      expect(wrapper.find("SmallTableColumns").length).toBe(0)
+      expect(wrapper.find("LargeTableColumns").length).toBe(1)
+      expect(wrapper.find("LargeTableSidebar").length).toBe(1)
     })
   })
 })
