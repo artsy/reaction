@@ -132,7 +132,7 @@ export class MockRelayRenderer<
 
     if (this.state.caughtError) {
       const { error, errorInfo } = this.state.caughtError
-      console.log({ error, errorInfo })
+      console.error({ error, errorInfo })
       return `Error occurred while rendering Relay component: ${error}`
     }
 

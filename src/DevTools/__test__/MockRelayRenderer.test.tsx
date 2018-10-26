@@ -40,8 +40,8 @@ describe("MockRelayRenderer", () => {
     }, 10)
   })
 
-  it("renders an error when child components throw", done => {
-    console.log = () => null // MockRelayRenderer prints out error info to the console, let's silence it.
+  it("renders an error when child components throw", () => {
+    console.error = () => null // MockRelayRenderer prints out error info to the console, let's silence it.
     const tree = mount(
       <MockRelayRenderer
         Component={Artwork}
@@ -63,12 +63,8 @@ describe("MockRelayRenderer", () => {
         errorInfo: {},
       },
     })
-    setTimeout(() => {
-      console.log(tree.text())
-      expect(tree.update().text()).toEqual(
-        "Error occurred while rendering Relay component: Error: Hey it's an error!"
-      )
-      done()
-    }, 10)
+    expect(tree.update().text()).toEqual(
+      "Error occurred while rendering Relay component: Error: Hey it's an error!"
+    )
   })
 })
