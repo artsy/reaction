@@ -419,7 +419,7 @@ describe("Payment", () => {
     })
 
     it("triggers order:payment event on component did mount", () => {
-      const { Component, dispatch } = mockTracking(PaymentRoute)
+      const { Component } = mockTracking(PaymentRoute)
       const component = mount(<Component {...testProps} />)
       component.instance().componentDidMount()
       expect(testProps.mediator.trigger).toHaveBeenCalledWith("order:payment")
