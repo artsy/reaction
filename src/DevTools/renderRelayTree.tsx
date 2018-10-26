@@ -1,8 +1,18 @@
 import { LoadingClassName } from "Artsy/Relay/renderWithLoadProgress"
+import "DevTools/renderUntil"
+import { mount, RenderUntilCallback } from "enzyme"
 import React from "react"
 import { Variables } from "relay-runtime"
 import { MockRelayRenderer, MockRelayRendererProps } from "./MockRelayRenderer"
-import { renderUntil, RenderUntilCallback } from "./renderUntil"
+
+/**
+ * A {@link ReactWrapper.prototype.renderUntil} callback implementation that
+ * passes when no more loading indicators exist in the tree. Use this when you
+ * need to use `renderUntil` directly, such as after making updates to a Relay
+ * tree.
+ */
+export const RelayFinishedLoading: RenderUntilCallback = tree =>
+  !tree.find(`.${LoadingClassName}`).length
 
 /**
  * Renders a tree of Relay containers with a mocked local instance of the
@@ -105,8 +115,7 @@ export function renderRelayTree<
       variables={variables}
     />
   )
-  return renderUntil<P, S, C>(
-    renderUntilCallback || (tree => !tree.find(`.${LoadingClassName}`).length),
-    wrapper ? wrapper(renderer) : renderer
+  return mount<C, P, S>(wrapper ? wrapper(renderer) : renderer).renderUntil(
+    renderUntilCallback || RelayFinishedLoading
   )
 }
