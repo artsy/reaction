@@ -15,6 +15,7 @@ jest.mock("react-sizeme", () => jest.fn(c => d => d))
  */
 beforeEach(() => expect.hasAssertions())
 
+import "DevTools/renderUntil"
 Enzyme.configure({ adapter: new Adapter() })
 
 import "jsdom"
