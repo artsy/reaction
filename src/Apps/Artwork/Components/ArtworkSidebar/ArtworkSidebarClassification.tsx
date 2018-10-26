@@ -10,22 +10,23 @@ export interface ArtworkSidebarClassificationProps {
   artwork: ArtworkSidebarClassification_artwork
 }
 
+interface State {
+  isModalOpen: boolean
+}
+
 export class ArtworkSidebarClassification extends React.Component<
   ArtworkSidebarClassificationProps,
-  any
+  State
 > {
-  constructor(props) {
-    super(props)
-    this.state = { isModalOpen: false }
-    this.openModal = this.openModal.bind(this)
-    this.closeModal = this.closeModal.bind(this)
+  state = {
+    isModalOpen: false,
   }
 
-  openModal() {
+  openModal = () => {
     this.setState({ isModalOpen: true })
   }
 
-  closeModal() {
+  closeModal = () => {
     this.setState({ isModalOpen: false })
   }
 
@@ -40,11 +41,7 @@ export class ArtworkSidebarClassification extends React.Component<
           onClose={this.closeModal}
           show={this.state.isModalOpen}
           title="Artwork classifications"
-          cta={{
-            text: "ok",
-            onClick: () => this.closeModal(),
-            isFixed: false,
-          }}
+          cta={{ text: "ok", onClick: () => this.closeModal(), isFixed: false }}
         >
           <ClassificationDetails />
         </Modal>

@@ -189,7 +189,6 @@ export const ModalContainer = styled.div.attrs<{
 
 const ModalInner = styled.div.attrs<{
   fullscreenResponsiveModal?: boolean
-  isLong?: boolean
 }>({})`
   max-height: calc(100vh - 80px);
   overflow-y: auto;
