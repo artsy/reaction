@@ -77,6 +77,7 @@ class CVItem extends Component<CVItemProps, CVItemState> {
     ))
 
   render() {
+    console.log(this.props)
     if (
       !this.props.artist.showsConnection ||
       !this.props.artist.showsConnection.edges.length

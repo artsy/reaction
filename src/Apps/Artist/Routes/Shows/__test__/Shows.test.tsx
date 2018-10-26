@@ -7,10 +7,7 @@ import { Breakpoint } from "Utils/Responsive"
 
 // import { ShowsFixture } from "Apps/__test__/Fixtures/Artist/Routes/ShowsFixture"
 
-import {
-  CVFixture,
-  showsConnection,
-} from "Apps/__test__/Fixtures/Artist/Routes/CV"
+import { CVFixture } from "Apps/__test__/Fixtures/Artist/Routes/CV"
 
 jest.unmock("react-relay")
 
@@ -29,8 +26,8 @@ describe("Shows Route", () => {
       `,
       mockResolvers: {
         Viewer: () => ({ viewer: { artist_currentShows: CVFixture } }),
-        Artist: () => ({ artist: CVFixture }),
-        ShowConnection: () => showsConnection,
+        Artist: () => ({ artist: CVFixture.artist_fairBooths }),
+        ShowConnection: () => CVFixture.artist_fairBooths.showsConnection,
       },
       variables: {
         artistID: "pablo-picasso",
@@ -48,8 +45,7 @@ describe("Shows Route", () => {
 
     it("to render proper data", () => {
       const html = wrapper.html()
-      expect(html).toContain("Catty Art Show")
-      expect(html).toContain("Catty Partner")
+      expect(html).toContain("Jaime Eguiguren- Art")
     })
   })
 })

@@ -5,10 +5,7 @@ import React from "react"
 import { graphql } from "react-relay"
 import { Breakpoint } from "Utils/Responsive"
 
-import {
-  CVFixture,
-  showsConnection,
-} from "Apps/__test__/Fixtures/Artist/Routes/CV"
+import { CVFixture } from "Apps/__test__/Fixtures/Artist/Routes/CV"
 
 jest.unmock("react-relay")
 
@@ -25,11 +22,29 @@ describe("CV Route", () => {
           }
         }
       `,
+
+      // Incorrect
       mockResolvers: {
-        Viewer: () => ({ viewer: { artist_soloShows: CVFixture } }),
-        Artist: () => ({ artist: CVFixture }),
-        ShowConnection: () => showsConnection,
+        Viewer: () => ({ viewer: CVFixture }),
+        // Wrong
+        Artist: () => ({ artist: CVFixture.artist_soloShows }),
+        // Better
+        // Artist: () => CVFixture.artist_soloShows,
+
+        // Returns an undefined connection when commented out, fixed when uncommented
+        // Show: () => CVFixture.artist_soloShows.showsConnection.edges[0].node,
+
+        ShowConnection: () => CVFixture.artist_soloShows.showsConnection,
       },
+
+      // Correct
+      // mockResolvers: {
+      //   Viewer: () => CVFixture,
+      //   Artist: () => CVFixture.artist_soloShows,
+      //   Show: () => CVFixture.artist_soloShows.showsConnection.edges[0].node,
+      //   ShowConnection: () => CVFixture.artist_soloShows.showsConnection,
+      // },
+
       variables: {
         artistID: "pablo-picasso",
       },
@@ -46,8 +61,7 @@ describe("CV Route", () => {
 
     it("renders correct data", () => {
       const html = wrapper.html()
-      expect(html).toContain("Catty Art Show")
-      expect(html).toContain("Catty Partner")
+      expect(html).toContain("Picasso Prints")
     })
   })
 })
