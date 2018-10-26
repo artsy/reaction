@@ -162,6 +162,7 @@ export enum Subject {
   BNMOReadFAQ = "read faq",
   BNMOProvideShipping = "provide shipping address",
   BNMOArrangePickup = "arrange for pickup",
+  BNMOUseShippingAddress = "use shipping address",
 }
 
 /**
