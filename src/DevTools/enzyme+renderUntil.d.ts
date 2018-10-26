@@ -2,22 +2,22 @@ import { ReactWrapper } from "enzyme"
 import * as React from "react"
 
 declare module "enzyme" {
-  export type RenderUntilCallback<P = {}, S = {}, C = React.Component> = (
+  export type RenderUntilPredicate<P, S, C> = (
     wrapper: ReactWrapper<P, S, C>
   ) => boolean
 
   export interface ReactWrapper<P = {}, S = {}, C = React.Component> {
     /**
-     * Continuously checks an asynchronously rendered tree until it is considered
-     * done, as per the provided callback.
+     * Continuously checks an asynchronously rendered tree until it is
+     * considered done, as per the provided predicate function.
      * 
      * @param until
-     * A callback that is used to test wether rendering should be considered
-     * finished. This is a regular enzyme wrapper.
+     * A predicate function that is used to test wether rendering should be
+     * considered finished. This is a regular enzyme wrapper.
      *
      * @returns
-     * A promise that will resolve with an enzyme wrapper containing the rendered
-     * tree.
+     * A promise that will resolve with an enzyme wrapper containing the
+     * rendered tree.
      *
      * @example
      *
@@ -49,7 +49,7 @@ declare module "enzyme" {
     *
     */
     renderUntil(
-      until: RenderUntilCallback<P, S, C>
+      predicate: RenderUntilPredicate<P, S, C>
     ): Promise<ReactWrapper<P, S, C>>
   }
 }

@@ -1,11 +1,11 @@
-import { mount, ReactWrapper, RenderUntilCallback } from "enzyme"
+import { mount, ReactWrapper, RenderUntilPredicate } from "enzyme"
 import * as React from "react"
 
 function renderUntil<
   P = {},
   S = {},
   C extends React.Component = React.Component
->(until: RenderUntilCallback<P, S, C>) {
+>(predicate: RenderUntilPredicate<P, S, C>) {
   return new Promise<ReactWrapper<P, S, C>>(resolve => {
     /**
      * Continuously lets JS/React continue doing its async work and then check
@@ -13,7 +13,7 @@ function renderUntil<
      * ready to be asserted on.
      */
     const wait = () => {
-      if (until(this)) {
+      if (predicate(this)) {
         resolve(this)
       } else {
         setImmediate(() => {
@@ -43,7 +43,7 @@ function deprecated_renderUntil<
   P = {},
   S = {},
   C extends React.Component = React.Component
->(until: RenderUntilCallback<P, S, C>, element: React.ReactElement<P>) {
+>(until: RenderUntilPredicate<P, S, C>, element: React.ReactElement<P>) {
   /**
    * In case of an uncaught error, be sure to reject the promise ASAP and
    * with a helpful error.

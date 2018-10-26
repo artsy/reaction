@@ -1,6 +1,6 @@
 import { LoadingClassName } from "Artsy/Relay/renderWithLoadProgress"
 import "DevTools/renderUntil"
-import { mount, RenderUntilCallback } from "enzyme"
+import { mount, RenderUntilPredicate } from "enzyme"
 import React from "react"
 import { Variables } from "relay-runtime"
 import { MockRelayRenderer, MockRelayRendererProps } from "./MockRelayRenderer"
@@ -11,7 +11,7 @@ import { MockRelayRenderer, MockRelayRendererProps } from "./MockRelayRenderer"
  * need to use `renderUntil` directly, such as after making updates to a Relay
  * tree.
  */
-export const RelayFinishedLoading: RenderUntilCallback = tree =>
+export const RelayFinishedLoading: RenderUntilPredicate<any, any, any> = tree =>
   !tree.find(`.${LoadingClassName}`).length
 
 /**
@@ -34,8 +34,8 @@ export const RelayFinishedLoading: RenderUntilCallback = tree =>
  * See {@link MockRelayRenderer}
  *
  * @param until
- * An optional callback that is used to test wether rendering should be
- * considered finished. This is a regular enzyme wrapper.
+ * An optional predicate function that is used to test wether rendering should
+ * be considered finished. This is a regular enzyme wrapper.
  *
  * @param wrapper
  * An optional component that the Relay tree should be nested in. Use this to
@@ -94,7 +94,7 @@ export function renderRelayTree<
   C extends React.Component = React.Component
 >(
   params: MockRelayRendererProps & {
-    renderUntil?: RenderUntilCallback<P, S, C>
+    renderUntil?: RenderUntilPredicate<P, S, C>
     variables?: Variables
     wrapper?: (renderer: JSX.Element) => JSX.Element
   }
