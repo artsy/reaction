@@ -1,6 +1,6 @@
 import { Avatar, Flex, Sans, Serif } from "@artsy/palette"
 import React from "react"
-import { Responsive } from "Utils/Responsive"
+import { Media } from "Utils/Responsive"
 
 export interface BannerProps {
   src: string
@@ -12,12 +12,14 @@ export interface BannerProps {
 export class Banner extends React.Component<BannerProps> {
   render() {
     return (
-      <Responsive>
-        {({ xs }) => {
-          if (xs) return <SmallBanner {...this.props} />
-          else return <LargeBanner {...this.props} />
-        }}
-      </Responsive>
+      <>
+        <Media at="xs">
+          <SmallBanner {...this.props} />
+        </Media>
+        <Media greaterThan="xs">
+          <LargeBanner {...this.props} />
+        </Media>
+      </>
     )
   }
 }

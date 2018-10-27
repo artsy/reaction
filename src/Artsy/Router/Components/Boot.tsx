@@ -15,7 +15,11 @@ import { BreakpointVisualizer } from "Styleguide/Utils/BreakpointVisualizer"
 import { Provider as StateProvider } from "unstated"
 import Events from "Utils/Events"
 
-import { MatchingMediaQueries, ResponsiveProvider } from "Utils/Responsive"
+import {
+  MatchingMediaQueries,
+  MediaContextProvider,
+  ResponsiveProvider,
+} from "Utils/Responsive"
 
 export interface BootProps {
   context: object
@@ -48,23 +52,30 @@ export class Boot extends React.Component<BootProps> {
         <HeadProvider headTags={headTags}>
           <StateProvider>
             <Artsy.ContextProvider {...contextProps}>
-              <ResponsiveProvider
-                mediaQueries={themeProps.mediaQueries}
-                initialMatchingMediaQueries={props.initialMatchingMediaQueries}
+              {/* TODO: initialMatchingMediaQueries may also contain `hover` */}
+              <MediaContextProvider
+                onlyRenderAt={props.initialMatchingMediaQueries as any}
               >
-                <Theme>
-                  <GridThemeProvider gridTheme={themeProps.grid}>
-                    <Grid fluid>
-                      <GlobalStyles>
-                        {children}
-                        {process.env.NODE_ENV === "development" && (
-                          <BreakpointVisualizer />
-                        )}
-                      </GlobalStyles>
-                    </Grid>
-                  </GridThemeProvider>
-                </Theme>
-              </ResponsiveProvider>
+                <ResponsiveProvider
+                  mediaQueries={themeProps.mediaQueries}
+                  initialMatchingMediaQueries={
+                    props.initialMatchingMediaQueries
+                  }
+                >
+                  <Theme>
+                    <GridThemeProvider gridTheme={themeProps.grid}>
+                      <Grid fluid>
+                        <GlobalStyles>
+                          {children}
+                          {process.env.NODE_ENV === "development" && (
+                            <BreakpointVisualizer />
+                          )}
+                        </GlobalStyles>
+                      </Grid>
+                    </GridThemeProvider>
+                  </Theme>
+                </ResponsiveProvider>
+              </MediaContextProvider>
             </Artsy.ContextProvider>
           </StateProvider>
         </HeadProvider>

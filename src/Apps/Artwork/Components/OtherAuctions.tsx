@@ -2,7 +2,7 @@ import { Button, Flex, Serif } from "@artsy/palette"
 import { take } from "lodash"
 import React, { ReactNode } from "react"
 import { Col, Grid, Row } from "Styleguide/Elements/Grid"
-import { Responsive } from "Utils/Responsive"
+import { Media } from "Utils/Responsive"
 
 interface OtherAuctionsProps {
   children: ReactNode[]
@@ -10,15 +10,17 @@ interface OtherAuctionsProps {
 export class OtherAuctions extends React.Component<OtherAuctionsProps> {
   render() {
     return (
-      <Responsive>
-        {({ md, sm, xs }) => {
-          if (xs) return <SmallOtherAuctions {...this.props} />
-          else if (sm || md) {
-            return <LargeOtherAuctions cardsPerRow={3} {...this.props} />
-          }
-          return <LargeOtherAuctions {...this.props} />
-        }}
-      </Responsive>
+      <>
+        <Media at="xs">
+          <SmallOtherAuctions {...this.props} />
+        </Media>
+        <Media between={["sm", "xl"]}>
+          <LargeOtherAuctions cardsPerRow={3} {...this.props} />
+        </Media>
+        <Media at="xl">
+          <LargeOtherAuctions {...this.props} />
+        </Media>
+      </>
     )
   }
 }

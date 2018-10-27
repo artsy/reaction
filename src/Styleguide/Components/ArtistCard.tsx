@@ -5,7 +5,7 @@ import { Truncator } from "Components/Truncator"
 import React, { SFC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
-import { Responsive } from "Utils/Responsive"
+import { Media } from "Utils/Responsive"
 
 import {
   Avatar,
@@ -32,12 +32,14 @@ export class ArtistCard extends React.Component<Props> {
   render() {
     return (
       <StyledLink href={this.props.artist.href}>
-        <Responsive>
-          {({ xs }) => {
-            if (xs) return <SmallArtistCard {...this.props} />
-            else return <LargeArtistCard {...this.props} />
-          }}
-        </Responsive>
+        <>
+          <Media at="xs">
+            <SmallArtistCard {...this.props} />
+          </Media>
+          <Media greaterThan="xs">
+            <LargeArtistCard {...this.props} />
+          </Media>
+        </>
       </StyledLink>
     )
   }

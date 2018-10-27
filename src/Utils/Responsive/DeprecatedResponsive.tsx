@@ -4,6 +4,7 @@
  */
 
 import React from "react"
+import * as sharify from "sharify"
 
 const ResponsiveContext = React.createContext({})
 
@@ -32,12 +33,37 @@ const shallowEqual = (a: MediaQueryMatches, b: MediaQueryMatches) => {
 }
 
 export function createResponsiveComponents<M extends string>() {
-  const Consumer: React.ComponentType<
+  const ResponsiveConsumer = class extends React.Component<
     React.ConsumerProps<MediaQueryMatches<M>>
-  > =
-    ResponsiveContext.Consumer
+  > {
+    render() {
+      // TODO: We should look into making React’s __DEV__ available and have
+      //       webpack completely compile these away.
+      if (
+        sharify.data.NODE_ENV !== "production" &&
+        typeof jest === "undefined"
+      ) {
+        let ownerName
+        try {
+          ownerName = (this as any)._reactInternalFiber._debugOwner.type.name
+        } catch (err) {
+          // no-op
+        }
+        console.warn(
+          `[Responsive] The Responsive component has been deprecated in ` +
+            `favour of the Media component.${
+              ownerName
+                ? ` It is being used in the ${ownerName} component.`
+                : ""
+            }`
+        )
+      }
+      return <ResponsiveContext.Consumer {...this.props} />
+    }
+  }
+
   return {
-    Consumer,
+    Consumer: ResponsiveConsumer,
     Provider: class ResponsiveProvider extends React.Component<
       ResponsiveProviderProps<M>,
       ResponsiveProviderState
