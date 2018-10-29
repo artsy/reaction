@@ -36,12 +36,12 @@ export class ArtworkSidebarClassification extends React.Component<
       return null
     }
     return (
-      <React.Fragment>
+      <ClassificationContainer>
         <Modal
           onClose={this.closeModal}
           show={this.state.isModalOpen}
           title="Artwork classifications"
-          cta={{ text: "ok", onClick: () => this.closeModal(), isFixed: false }}
+          cta={{ text: "OK", onClick: () => this.closeModal(), isFixed: false }}
         >
           <ClassificationDetails />
         </Modal>
@@ -52,7 +52,7 @@ export class ArtworkSidebarClassification extends React.Component<
             </ClassificationLink>.
           </Serif>
         </Box>
-      </React.Fragment>
+      </ClassificationContainer>
     )
   }
 }
@@ -68,10 +68,11 @@ export const ArtworkSidebarClassificationFragmentContainer = createFragmentConta
   `
 )
 
-const ClassificationLink = styled.span`
+export const ClassificationLink = styled.span`
   cursor: pointer;
   text-decoration: underline;
 `
+const ClassificationContainer = Box
 
 const ClassificationDetails = () => {
   const classificationOptions = [
