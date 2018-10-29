@@ -16,7 +16,7 @@ export interface ArtworkProps {
   height?: string | number
 }
 
-export class Artwork extends React.PureComponent<ArtworkProps, null> {
+export class Artwork extends React.PureComponent<ArtworkProps> {
   static defaultProps = {
     linked: true,
     width: "100%",
