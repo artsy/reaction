@@ -13,6 +13,7 @@ import { Mediator } from "Artsy/SystemContext"
 import styled, { StyledComponentClass } from "styled-components"
 
 const IMAGE_QUALITY = 80
+const FALLBACK_RATIO = 1
 
 const Image = styled.img`
   width: 100%;
@@ -64,8 +65,10 @@ export class FillwidthItemContainer extends React.Component<
 
     // Either scale or crop, based on if an aspect ratio is available.
     const type = aspect_ratio ? "fit" : "fill"
+    // In case aspect ratio is not available we still want to try to get some width
+    const ratio = aspect_ratio || FALLBACK_RATIO
     const height = this.props.imageHeight * window.devicePixelRatio
-    const width = Math.floor(height * aspect_ratio * window.devicePixelRatio)
+    const width = Math.floor(height * ratio * window.devicePixelRatio)
 
     // tslint:disable-next-line:max-line-length
     return `${

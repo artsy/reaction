@@ -15,6 +15,7 @@ export interface RecentlyViewedProps {
 }
 
 const HEIGHT = 180
+const FALLBACK_RATIO = 1
 
 export const RecentlyViewed: React.SFC<RecentlyViewedProps> = props => {
   const { me } = props
@@ -42,13 +43,14 @@ export const RecentlyViewed: React.SFC<RecentlyViewedProps> = props => {
                       image: { aspect_ratio },
                     },
                   } = artwork
+                  const ratio = aspect_ratio || FALLBACK_RATIO
 
                   return (
                     <FillwidthItem
                       artwork={artwork.node}
                       targetHeight={HEIGHT}
                       imageHeight={HEIGHT}
-                      width={HEIGHT * aspect_ratio}
+                      width={HEIGHT * ratio}
                       margin={10}
                       useRelay={props.useRelay}
                       user={user}
