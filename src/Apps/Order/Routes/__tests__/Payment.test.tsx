@@ -1,4 +1,5 @@
 import { Checkbox, CheckboxProps, Sans } from "@artsy/palette"
+import { mockTracking } from "Artsy/Analytics"
 import { mount } from "enzyme"
 import React from "react"
 
@@ -30,6 +31,8 @@ jest.mock("react-stripe-elements", () => ({
   CardElement: props => <div {...props} />,
   injectStripe: args => args,
 }))
+
+jest.unmock("react-tracking")
 
 import { commitMutation, RelayProp } from "react-relay"
 import {
@@ -386,6 +389,41 @@ describe("Payment", () => {
     component.find(ContinueButton).simulate("click")
 
     expect(component.find(ErrorModal).props().show).toBe(true)
+  })
+
+  describe("Analytics", () => {
+    it("tracks click when use shipping address checkbox transitions from checked to unchecked but not from unchecked to checked", () => {
+      const { Component, dispatch } = mockTracking(PaymentRoute)
+      const component = mount(<Component {...testProps} />)
+      // Initial state is checked
+      component
+        .find(Checkbox)
+        .at(0)
+        .simulate("click")
+      expect(dispatch).toBeCalledWith({
+        action_type: "Click",
+        subject: "use shipping address",
+        flow: "buy now",
+        type: "checkbox",
+      })
+      expect(dispatch).toHaveBeenCalledTimes(1)
+
+      dispatch.mockClear()
+
+      // State is now unchecked
+      component
+        .find(Checkbox)
+        .at(0)
+        .simulate("click")
+      expect(dispatch).not.toBeCalled()
+    })
+
+    it("triggers order:payment event on component did mount", () => {
+      const { Component } = mockTracking(PaymentRoute)
+      const component = mount(<Component {...testProps} />)
+      component.instance().componentDidMount()
+      expect(testProps.mediator.trigger).toHaveBeenCalledWith("order:payment")
+    })
   })
 
   describe("Validations", () => {
