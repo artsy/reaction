@@ -18,9 +18,11 @@ import {
   getLargestReleaseLabel,
   ReleaseLabel,
   strToReleaseLabel,
+  validReleaseLabels,
 } from "./labels"
 
-type PullRequest = OctoKit.IssuesGetResponse
+import { PullRequest } from "./github"
+
 // type Label = OctoKit.IssuesGetIssueLabelsResponseItem
 
 // const requiredEnvs = ["GITHUB_API_TOKEN", "GITHUB_EMAIL", "GITHUB_USER"]
@@ -121,7 +123,7 @@ export const run = async () => {
 
   console.log(pullRequests.map(pr => pr.html_url))
 
-  // TODO: Error check PRs for missing labels
+  validReleaseLabels(pullRequests)
 
   // Determine the release type by the largest label present on the PRs
   releaseType = pullRequests
