@@ -5469,7 +5469,7 @@ deep-object-diff@^1.1.0:
   resolved "https://registry.yarnpkg.com/deep-object-diff/-/deep-object-diff-1.1.0.tgz#d6fabf476c2ed1751fc94d5ca693d2ed8c18bc5a"
   integrity sha512-b+QLs5vHgS+IoSNcUE4n9HP2NwcHj7aqnJWsjPtuG75Rh5TOaGt0OjAYInh77d5T16V5cRDC+Pw/6ZZZiETBGw==
 
-deepmerge@^2.1.1:
+deepmerge@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-2.2.1.tgz#5d3ff22a01c00f645405a2fbc17d0778a1801170"
   integrity sha512-R9hc1Xa/NOBi9WRVUWg19rl1UB7Tt4kuPd+thNJgFZoxXsTz7ncaPaeIm+40oSGuP33DfMb4sZt1QIGiJzC4EA==
@@ -12658,12 +12658,12 @@ react-toggle@^4.0.2:
   dependencies:
     classnames "^2.2.5"
 
-react-tracking@^5.4.1:
-  version "5.4.1"
-  resolved "https://registry.yarnpkg.com/react-tracking/-/react-tracking-5.4.1.tgz#2a85793326aadefa9c3955332181279904fa72c4"
-  integrity sha512-945FcLuEjUSFCWF9zRPVLU9pNZf3lDO2GNhICWv3ZtqTkeI6eo2vzvrOSb5SaMYevesdwAIFmmQGCx8tmnZI6Q==
+react-tracking@^5.6.0:
+  version "5.6.0"
+  resolved "https://registry.yarnpkg.com/react-tracking/-/react-tracking-5.6.0.tgz#b093e88b161252457307fff1bec622eecc7894b4"
+  integrity sha512-S+BylXekrspRlJ6CTfrrSO/CAlyQv0pl6iEiiNLLQwmFpBNpg6O8fyC1tC6y8o/Ta5Mv9YS6sB6LseRwiQmEyQ==
   dependencies:
-    deepmerge "^2.1.1"
+    deepmerge "^2.2.1"
     hoist-non-react-statics "^3.0.1"
 
 react-transition-group@^2.0.0, react-transition-group@^2.2.0, react-transition-group@^2.3.0:
