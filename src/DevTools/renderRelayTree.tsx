@@ -1,8 +1,18 @@
 import { LoadingClassName } from "Artsy/Relay/renderWithLoadProgress"
+import "DevTools/renderUntil"
+import { mount, RenderUntilPredicate } from "enzyme"
 import React from "react"
 import { Variables } from "relay-runtime"
 import { MockRelayRenderer, MockRelayRendererProps } from "./MockRelayRenderer"
-import { renderUntil, RenderUntilCallback } from "./renderUntil"
+
+/**
+ * A {@link ReactWrapper.prototype.renderUntil} callback implementation that
+ * passes when no more loading indicators exist in the tree. Use this when you
+ * need to use `renderUntil` directly, such as after making updates to a Relay
+ * tree.
+ */
+export const RelayFinishedLoading: RenderUntilPredicate<any, any, any> = tree =>
+  !tree.find(`.${LoadingClassName}`).length
 
 /**
  * Renders a tree of Relay containers with a mocked local instance of the
@@ -24,8 +34,8 @@ import { renderUntil, RenderUntilCallback } from "./renderUntil"
  * See {@link MockRelayRenderer}
  *
  * @param until
- * An optional callback that is used to test wether rendering should be
- * considered finished. This is a regular enzyme wrapper.
+ * An optional predicate function that is used to test wether rendering should
+ * be considered finished. This is a regular enzyme wrapper.
  *
  * @param wrapper
  * An optional component that the Relay tree should be nested in. Use this to
@@ -84,7 +94,7 @@ export function renderRelayTree<
   C extends React.Component = React.Component
 >(
   params: MockRelayRendererProps & {
-    renderUntil?: RenderUntilCallback<P, S, C>
+    renderUntil?: RenderUntilPredicate<P, S, C>
     variables?: Variables
     wrapper?: (renderer: JSX.Element) => JSX.Element
   }
@@ -93,7 +103,7 @@ export function renderRelayTree<
     Component,
     query,
     mockResolvers,
-    renderUntil: renderUntilCallback,
+    renderUntil: renderUntilPredicate,
     variables,
     wrapper,
   } = params
@@ -105,8 +115,7 @@ export function renderRelayTree<
       variables={variables}
     />
   )
-  return renderUntil<P, S, C>(
-    renderUntilCallback || (tree => !tree.find(`.${LoadingClassName}`).length),
-    wrapper ? wrapper(renderer) : renderer
+  return mount<C, P, S>(wrapper ? wrapper(renderer) : renderer).renderUntil(
+    renderUntilPredicate || RelayFinishedLoading
   )
 }
