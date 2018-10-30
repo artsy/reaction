@@ -8,7 +8,6 @@ export interface ArtistShowsProps {
   viewer: Shows_viewer
 }
 export const ShowsRoute: SFC<ArtistShowsProps> = props => {
-  // console.log(props)
   const { viewer } = props
 
   return (
