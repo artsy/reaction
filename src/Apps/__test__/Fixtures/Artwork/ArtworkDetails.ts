@@ -1,9 +1,9 @@
 export const ArtworkDetailsFixture = {
   id: "richard-prince-untitled-fashion",
   description: "Artist designed towel for WOW. --*Courtesy of EHC Fine Art*",
-  is_in_auction: false,
   additional_information: "<p>Here is some addition info for this work</p>\n",
   partner: {
+    type: "Gallery",
     name: "Salon 94",
     initials: "S9",
     locations: [
