@@ -12,6 +12,7 @@ export const VideoArtwork = {
   ],
   partner: {
     __id: "UGFydG5lcjptaW5keS1zb2xvbW9uLWdhbGxlcnk=",
+    type: "Gallery",
     name: "Mindy Solomon Gallery",
     href: "/mindy-solomon-gallery",
     locations: [
@@ -68,19 +69,10 @@ export const CollecingInstitutionArtwork = {
   ],
   partner: {
     __id: "UGFydG5lcjpiZWx2ZWRlcmUtbXVzZXVt",
+    type: "Gallery",
     name: "Belvedere Museum",
     href: "/belvedere-museum",
-    locations: [
-      {
-        city: "Vienna",
-      },
-      {
-        city: "Vienna",
-      },
-      {
-        city: "Vienna",
-      },
-    ],
+    locations: [{ city: "Vienna" }, { city: "Vienna" }, { city: "Vienna" }],
   },
   sale: null,
   sale_artwork: null,
@@ -90,10 +82,7 @@ export const CollecingInstitutionArtwork = {
   title: "Ganymede in the Claws of the Eagle",
   date: "1635",
   medium: "Oil on canvas",
-  dimensions: {
-    in: "69 7/10 × 50 4/5 in",
-    cm: "177 × 129 cm",
-  },
+  dimensions: { in: "69 7/10 × 50 4/5 in", cm: "177 × 129 cm" },
   collecting_institution:
     '"Rembrandt – Titian – Bellotto: Spirit and Splendour of the Dresden Picture Gallery" at the Belvedere Museum, Vienna',
   edition_of: null,
@@ -151,13 +140,10 @@ export const MultipleArtistsArtwork = {
   ],
   partner: {
     __id: "UGFydG5lcjphbHBoYS0xMzctZ2FsbGVyeQ==",
+    type: "Gallery",
     name: "Alpha 137 Gallery",
     href: "/alpha-137-gallery",
-    locations: [
-      {
-        city: null,
-      },
-    ],
+    locations: [{ city: null }],
   },
   sale: null,
   sale_artwork: null,
@@ -168,10 +154,7 @@ export const MultipleArtistsArtwork = {
   date: "2007",
   medium:
     'Limited Edition Artist"s books consisting of two clothbound volumes in slipcase. Hand signed by all artists and numbered from the limited edition of only 170',
-  dimensions: {
-    in: "12 × 9 × 1 in",
-    cm: "30.5 × 22.9 × 2.5 cm",
-  },
+  dimensions: { in: "12 × 9 × 1 in", cm: "30.5 × 22.9 × 2.5 cm" },
   collecting_institution: null,
   edition_of: null,
   attribution_class: {
@@ -198,6 +181,7 @@ export const RegularNonEditionedArtwork = {
   ],
   partner: {
     __id: "UGFydG5lcjpydWRvbGYtYnVkamEtZ2FsbGVyeQ==",
+    type: "Gallery",
     name: "RUDOLF BUDJA GALLERY",
     href: "/rudolf-budja-gallery",
     locations: [
@@ -246,6 +230,7 @@ export const RegularArtworkWithOneEdition = {
   ],
   partner: {
     __id: "UGFydG5lcjpnYWdvc2lhbg==",
+    type: "Gallery",
     name: "Gagosian",
     href: "/gagosian-gallery",
     locations: [
@@ -345,6 +330,7 @@ export const RegularArtwork2Editions = {
   ],
   partner: {
     __id: "UGFydG5lcjp0aGUtbGl0dGxlLWJsYWNrLWdhbGxlcnk=",
+    type: "Gallery",
     name: "THE LITTLE BLACK GALLERY",
     href: "/the-little-black-gallery",
     locations: [
@@ -421,6 +407,7 @@ export const OpenAuctionArtwork = {
   ],
   partner: {
     __id: "UGFydG5lcjpyYWdv",
+    type: "Auction House",
     name: "Rago",
     href: "/auction/partner-595e68c9275b24129e961234",
     locations: [],
@@ -479,6 +466,7 @@ export const LiveAuctionArtwork = {
   ],
   partner: {
     __id: "UGFydG5lcjpoZXJpdGFnZS1hdWN0aW9ucw==",
+    type: "Auction House",
     name: "Heritage Auctions",
     href: "/auction/partner-595e67cab202a301c4818569",
     locations: [],
@@ -497,12 +485,8 @@ export const LiveAuctionArtwork = {
     is_with_reserve: false,
     reserve_message: null,
     reserve_status: "no_reserve",
-    current_bid: {
-      display: "$400",
-    },
-    counts: {
-      bidder_positions: 1,
-    },
+    current_bid: { display: "$400" },
+    counts: { bidder_positions: 1 },
   },
   is_in_auction: true,
   is_biddable: true,
@@ -544,6 +528,7 @@ export const ClosedAuctionArtwork = {
   ],
   partner: {
     __id: "UGFydG5lcjpwaGlsbGlwcy0x",
+    type: "Auction House",
     name: "Phillips",
     href: "/auction/phillips-1",
     locations: [],
@@ -562,12 +547,8 @@ export const ClosedAuctionArtwork = {
     is_with_reserve: false,
     reserve_message: null,
     reserve_status: "no_reserve",
-    current_bid: {
-      display: "£12,000",
-    },
-    counts: {
-      bidder_positions: 0,
-    },
+    current_bid: { display: "£12,000" },
+    counts: { bidder_positions: 0 },
   },
   is_in_auction: true,
   is_biddable: false,
@@ -604,12 +585,8 @@ export const MoctionArtwork = {
     is_with_reserve: true,
     reserve_message: "Reserve met",
     reserve_status: "reserve_met",
-    current_bid: {
-      display: "CHF 11,000",
-    },
-    counts: {
-      bidder_positions: 3,
-    },
+    current_bid: { display: "CHF 11,000" },
+    counts: { bidder_positions: 3 },
   },
   artists: [
     {
@@ -623,6 +600,7 @@ export const MoctionArtwork = {
   ],
   partner: {
     __id: "UGFydG5lcjptb2NrdGlvbi1kZW1vLXBhcnRuZXItb2tzYW5hLW1vY3Rpb24=",
+    type: "Auction House",
     name: "Mocktion Demo Partner Oksana moction",
     href: "/auction/mocktion-demo-partner-oksana-moction",
     locations: [],
@@ -633,10 +611,7 @@ export const MoctionArtwork = {
   title: "Surrealism",
   date: "",
   medium: "4-color screenprint on paper-backed wood veneer",
-  dimensions: {
-    in: "20 1/8 × 27 in",
-    cm: "51.1 × 68.6 cm",
-  },
+  dimensions: { in: "20 1/8 × 27 in", cm: "51.1 × 68.6 cm" },
   collecting_institution: null,
   edition_of: null,
   attribution_class: null,
@@ -648,12 +623,29 @@ export const MoctionArtwork = {
 }
 
 export const AllAdditionalDetailsPresent = {
+  description: "Artist designed towel for WOW. --*Courtesy of EHC Fine Art*",
   additional_information:
     "In Francesca DiMattio’s The Fox and the Hound, 2018, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullam DiMattio’s The Fox and the Hound, 2018, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullam. Tempor incididunt ut labore et dolore magnas.",
-  description: "Artist designed towel for WOW. --*Courtesy of EHC Fine Art*",
+  partner: {
+    type: "Gallery",
+    name: "Salon 94",
+    initials: "S9",
+    locations: [
+      { city: "New York" },
+      { city: "Kharkov" },
+      { city: "New York" },
+      { city: "" },
+    ],
+    profile: {
+      __id: "profile",
+      id: "profile",
+      is_followed: true,
+      icon: { url: "https://picsum.photos/110/110/?random" },
+    },
+  },
   framed: { label: "Framed", details: null },
   signatureInfo: {
-    label: "Signed",
+    label: "Signature",
     details: "Hand-signed by the artist, stamped by artist’s estate.",
   },
   conditionDescription: {
@@ -668,24 +660,9 @@ export const AllAdditionalDetailsPresent = {
   series: "Lorem Ipsum Dolor",
   publisher: "Factory Editions, New York",
   manufacturer: "Mfg Group",
-  provenance: "Peter Freeman Inc., New York",
   image_rights: "Courtesy of the artist and Salon 94",
+  provenance: "Peter Freeman Inc., New York",
   literature: "Some literature info goes here",
   exhibition_history: "And the work was so excibited!",
-  articles: {},
-  partner: {
-    name: "Salon 94",
-    initials: "S9",
-    locations: [
-      { city: "New York" },
-      { city: "Kharkov" },
-      { city: "New York" },
-      { city: "" },
-    ],
-    profile: {
-      __id: "profile",
-      is_followed: true,
-      icon: { url: "https://picsum.photos/110/110/?random" },
-    },
-  },
+  articles: [],
 }
