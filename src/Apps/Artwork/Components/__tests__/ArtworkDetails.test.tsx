@@ -81,9 +81,9 @@ describe("ArtworkDetails", () => {
       expect(wrapper.html()).toContain("Following")
     })
 
-    it("does not render partner follow button if artwork is in an auction", async () => {
+    it("does not render partner follow button if artwork is from an auction partner", async () => {
       const data = cloneDeep(ArtworkDetailsFixture)
-      data.is_in_auction = true
+      data.partner.type = "Auction House"
       const wrapper = await getWrapper(data)
       expect(wrapper.html()).not.toContain("Following")
     })

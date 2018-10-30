@@ -75,7 +75,7 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
                         imageUrl={imageUrl}
                         initials={partner.initials}
                         FollowButton={
-                          !artwork.is_in_auction &&
+                          partner.type !== "Auction House" &&
                           partner.profile && (
                             <FollowProfileButton
                               profile={partner.profile}
@@ -144,9 +144,9 @@ export const ArtworkDetailsAboutTheWorkFromPartnerFragmentContainer = createFrag
   ArtworkDetailsAboutTheWorkFromPartner,
   graphql`
     fragment ArtworkDetailsAboutTheWorkFromPartner_artwork on Artwork {
-      is_in_auction
       additional_information(format: HTML)
       partner {
+        type
         name
         initials
         locations {
