@@ -11,11 +11,11 @@ storiesOf("Styleguide/Artwork", module)
   .add("ArtworkDetails", () => {
     return (
       <React.Fragment>
+        <Section title="Fixture artwork with every additional details available">
+          <ArtworkDetails artwork={AllAdditionalDetailsPresent as any} />
+        </Section>
         <Section title="ArtworkDetailsQueryRenderer containing Provanance tab">
           <ArtworkDetailsQueryRenderer artworkID="charles-negre-model-reclining-in-the-artists-studio" />
-        </Section>
-        <Section title="Artwork with every additional details available">
-          <ArtworkDetails artwork={AllAdditionalDetailsPresent as any} />
         </Section>
         <Section title="ArtworkDetailsQueryRenderer for andy-warhol-s-and-h-green-stamps-feldman-and-schellman-11-dot-9">
           <ArtworkDetailsQueryRenderer artworkID="andy-warhol-s-and-h-green-stamps-feldman-and-schellman-11-dot-9" />
