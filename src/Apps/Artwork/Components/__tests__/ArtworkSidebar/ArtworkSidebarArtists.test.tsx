@@ -62,8 +62,7 @@ describe("ArtworkSidebarArtists", () => {
       ).toBe(1)
     })
 
-    it("does not display follow buttons", async () => {
-      wrapper = await getWrapper(MultipleArtists)
+    it("does not display follow buttons", () => {
       expect(wrapper.html()).not.toContain("Follow")
     })
 
