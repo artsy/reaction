@@ -56,10 +56,8 @@ export const routes: RouteConfig[] = [
           props.location.query.medium = params.medium
         }
       }
-      if (!params.sort) {
-        params.sort = "-decayed_merch"
-      }
-      return { ...initialFilterState, ...params }
+
+      return { sort: "-decayed_merch", ...initialFilterState, ...params }
     },
   },
   {
