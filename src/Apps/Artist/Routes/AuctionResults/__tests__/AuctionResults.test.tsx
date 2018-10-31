@@ -1,27 +1,41 @@
 import { AuctionResultsFixture } from "Apps/__test__/Fixtures/Artist/Routes/AuctionResultsFixture"
 import { AuctionResultsRouteFragmentContainer as AuctionResultsRoute } from "Apps/Artist/Routes/AuctionResults"
-import { MockBoot } from "DevTools"
-import { RelayStubProvider } from "DevTools/RelayStubProvider"
-import { mount, ReactWrapper } from "enzyme"
+import { MockBoot, renderRelayTree } from "DevTools"
+import { ReactWrapper } from "enzyme"
 import React from "react"
+import { graphql } from "react-relay"
 import { Breakpoint } from "Utils/Responsive"
+
+jest.unmock("react-relay")
 
 describe("AuctionResults", () => {
   let wrapper: ReactWrapper
 
-  const getWrapper = (breakpoint: Breakpoint = "xl") => {
-    return mount(
-      <RelayStubProvider>
-        <MockBoot breakpoint={breakpoint}>
-          <AuctionResultsRoute artist={AuctionResultsFixture as any} />
-        </MockBoot>
-      </RelayStubProvider>
-    )
+  const getWrapper = async (breakpoint: Breakpoint = "xl") => {
+    return await renderRelayTree({
+      Component: AuctionResultsRoute,
+      query: graphql`
+        query AuctionResults_Test_Query($artistID: String!) {
+          artist(id: $artistID) {
+            ...AuctionResults_artist
+          }
+        }
+      `,
+      mockResolvers: {
+        Artist: () => AuctionResultsFixture,
+      },
+      variables: {
+        artistID: "pablo-picasso",
+      },
+      wrapper: children => (
+        <MockBoot breakpoint={breakpoint}>{children}</MockBoot>
+      ),
+    })
   }
 
   describe("general behavior", () => {
-    beforeAll(() => {
-      wrapper = getWrapper()
+    beforeAll(async () => {
+      wrapper = await getWrapper()
     })
 
     it("renders proper elements", () => {
@@ -75,8 +89,8 @@ describe("AuctionResults", () => {
   })
 
   describe("xs", () => {
-    beforeAll(() => {
-      wrapper = getWrapper("xs")
+    beforeAll(async () => {
+      wrapper = await getWrapper("xs")
     })
 
     it("renders proper elements", () => {
@@ -86,8 +100,8 @@ describe("AuctionResults", () => {
   })
 
   describe("sm", () => {
-    beforeAll(() => {
-      wrapper = getWrapper("sm")
+    beforeAll(async () => {
+      wrapper = await getWrapper("sm")
     })
 
     it("renders proper elements", () => {
@@ -98,8 +112,8 @@ describe("AuctionResults", () => {
   })
 
   describe("md", () => {
-    beforeAll(() => {
-      wrapper = getWrapper("md")
+    beforeAll(async () => {
+      wrapper = await getWrapper("md")
     })
 
     it("renders proper elements", () => {
@@ -110,8 +124,8 @@ describe("AuctionResults", () => {
   })
 
   describe("lg", () => {
-    beforeAll(() => {
-      wrapper = getWrapper("lg")
+    beforeAll(async () => {
+      wrapper = await getWrapper("lg")
     })
 
     it("renders proper elements", () => {
@@ -122,8 +136,8 @@ describe("AuctionResults", () => {
   })
 
   describe("xl", () => {
-    beforeAll(() => {
-      wrapper = getWrapper("xl")
+    beforeAll(async () => {
+      wrapper = await getWrapper("xl")
     })
 
     it("renders proper elements", () => {

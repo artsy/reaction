@@ -1,28 +1,44 @@
+import { CVFixture } from "Apps/__test__/Fixtures/Artist/Routes/CV"
 import { CVRouteFragmentContainer as CVRoute } from "Apps/Artist/Routes/CV"
-import { MockBoot } from "DevTools"
-import { mount, ReactWrapper } from "enzyme"
+import { MockBoot, renderRelayTree } from "DevTools"
+import { ReactWrapper } from "enzyme"
 import React from "react"
+import { graphql } from "react-relay"
 import { Breakpoint } from "Utils/Responsive"
 
-import { CVFixture } from "Apps/__test__/Fixtures/Artist/Routes/CV"
-import { RelayStubProvider } from "DevTools/RelayStubProvider"
+jest.unmock("react-relay")
 
 describe("CV Route", () => {
   let wrapper: ReactWrapper
 
-  const getWrapper = (breakpoint: Breakpoint = "xl") => {
-    return mount(
-      <RelayStubProvider>
-        <MockBoot breakpoint={breakpoint}>
-          <CVRoute viewer={CVFixture as any} />
-        </MockBoot>
-      </RelayStubProvider>
-    )
+  const getWrapper = async (breakpoint: Breakpoint = "xl") => {
+    return await renderRelayTree({
+      Component: CVRoute,
+      query: graphql`
+        query CV_Test_Query($artistID: String!) {
+          viewer {
+            ...CV_viewer
+          }
+        }
+      `,
+      mockResolvers: {
+        Viewer: () => CVFixture,
+        Artist: () => CVFixture.artist_soloShows,
+        Show: () => CVFixture.artist_soloShows.showsConnection.edges[0].node,
+        ShowConnection: () => CVFixture.artist_soloShows.showsConnection,
+      },
+      variables: {
+        artistID: "pablo-picasso",
+      },
+      wrapper: children => (
+        <MockBoot breakpoint={breakpoint}>{children}</MockBoot>
+      ),
+    })
   }
 
   describe("general behavior", () => {
-    beforeAll(() => {
-      wrapper = getWrapper()
+    beforeAll(async () => {
+      wrapper = await getWrapper()
     })
 
     it("renders proper elements", () => {
@@ -60,7 +76,7 @@ describe("CV Route", () => {
       const getShowAt = index => wrapper.find("ShowEntry").at(index)
       expect(getShowAt(0).text()).toContain("Picasso Prints,  Wada Garou Tokyo")
       expect(getShowAt(10).text()).toContain(
-        "2018 Larsen Art Auction,  Larsen Gallery, Scottsdale"
+        "It's only about Ceramics,  BAILLY GALLERY"
       )
     })
 

@@ -1,27 +1,41 @@
 import { ArticlesFixture } from "Apps/__test__/Fixtures/Artist/Routes/ArticlesFixture"
 import { ArticlesRouteFragmentContainer as ArticlesRoute } from "Apps/Artist/Routes/Articles"
-import { MockBoot } from "DevTools"
-import { RelayStubProvider } from "DevTools/RelayStubProvider"
-import { mount, ReactWrapper } from "enzyme"
+import { MockBoot, renderRelayTree } from "DevTools"
+import { ReactWrapper } from "enzyme"
 import React from "react"
+import { graphql } from "react-relay"
 import { Breakpoint } from "Utils/Responsive"
+
+jest.unmock("react-relay")
 
 describe("Articles Route", () => {
   let wrapper: ReactWrapper
 
-  const getWrapper = (breakpoint: Breakpoint = "xl") => {
-    return mount(
-      <RelayStubProvider>
-        <MockBoot breakpoint={breakpoint}>
-          <ArticlesRoute artist={ArticlesFixture as any} />
-        </MockBoot>
-      </RelayStubProvider>
-    )
+  const getWrapper = async (breakpoint: Breakpoint = "xl") => {
+    return await renderRelayTree({
+      Component: ArticlesRoute,
+      query: graphql`
+        query Articles_Test_Query($artistID: String!) {
+          artist(id: $artistID) {
+            ...Articles_artist
+          }
+        }
+      `,
+      mockResolvers: {
+        Artist: () => ArticlesFixture,
+      },
+      variables: {
+        artistID: "pablo-picasso",
+      },
+      wrapper: children => (
+        <MockBoot breakpoint={breakpoint}>{children}</MockBoot>
+      ),
+    })
   }
 
   describe("general behavior", () => {
-    beforeAll(() => {
-      wrapper = getWrapper()
+    beforeAll(async () => {
+      wrapper = await getWrapper()
     })
 
     it("renders proper elements", () => {
@@ -37,8 +51,8 @@ describe("Articles Route", () => {
   })
 
   describe("xs", () => {
-    beforeAll(() => {
-      wrapper = getWrapper("xs")
+    beforeAll(async () => {
+      wrapper = await getWrapper("xs")
     })
 
     it("renders SmallArticleItem", () => {
@@ -48,8 +62,8 @@ describe("Articles Route", () => {
   })
 
   describe("md and up", () => {
-    beforeAll(() => {
-      wrapper = getWrapper("md")
+    beforeAll(async () => {
+      wrapper = await getWrapper("md")
     })
 
     it("renders LargeArticleItem", () => {
