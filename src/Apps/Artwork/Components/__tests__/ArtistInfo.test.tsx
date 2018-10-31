@@ -24,15 +24,17 @@ describe("ArtistInfo", () => {
   }
   let wrapper
 
-  beforeAll(async () => {
-    wrapper = await getWrapper()
-  })
+  describe("ArtistInfo for artwort with complete artist info", () => {
+    beforeAll(async () => {
+      wrapper = await getWrapper()
+    })
 
-  it("renders a correct component tree", () => {
-    expect(wrapper.find("EntityHeader").length).toBe(1)
-    expect(wrapper.find("ArtistBio").length).toBe(1)
-    expect(wrapper.find("MarketInsights").length).toBe(1)
-    expect(wrapper.find("SelectedExhibitions").length).toBe(1)
+    it("renders a correct component tree", () => {
+      expect(wrapper.find("EntityHeader").length).toBe(1)
+      expect(wrapper.find("ArtistBio").length).toBe(1)
+      expect(wrapper.find("MarketInsights").length).toBe(1)
+      expect(wrapper.find("SelectedExhibitions").length).toBe(1)
+    })
   })
 
   it("hides ArtistBio if no data", async () => {

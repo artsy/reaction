@@ -24,28 +24,32 @@ describe("ArtworkDetails", () => {
   }
   let wrapper
 
-  beforeAll(async () => {
-    wrapper = await getWrapper()
-  })
+  describe("ArtworkDetails for gallery artwork with complete details", () => {
+    beforeAll(async () => {
+      wrapper = await getWrapper()
+    })
 
-  it("renders a correct component tree for artwork with all details", () => {
-    const html = wrapper.html()
-    expect(html).toContain("About the work")
-    // One for Artsy details and one for partner details
-    expect(wrapper.find("ReadMore").length).toBe(2)
-    expect(html).toContain("Following")
-    expect(html).toContain("Articles")
-    expect(html).toContain("Exhibition history")
-    expect(html).toContain("Bibliography")
-    expect(html).toContain("Provenance")
+    it("renders a correct component tree", () => {
+      const html = wrapper.html()
+      expect(html).toContain("About the work")
+      // One for Artsy details and one for partner details
+      expect(wrapper.find("ReadMore").length).toBe(2)
+      expect(html).toContain("Following")
+      expect(html).toContain("Articles")
+      expect(html).toContain("Exhibition history")
+      expect(html).toContain("Bibliography")
+      expect(html).toContain("Provenance")
+    })
   })
 
   describe("ArtworkDetailsAboutTheWorkFromPartner", () => {
-    it("displays partner name", () => {
+    it("displays partner name", async () => {
+      wrapper = await getWrapper()
       expect(wrapper.html()).toContain("Salon 94")
     })
 
-    it("displays partner icon when info is available", () => {
+    it("displays partner icon when info is available", async () => {
+      wrapper = await getWrapper()
       expect(wrapper.find("img").prop("src")).toContain("https://profile_url")
     })
 
@@ -57,7 +61,8 @@ describe("ArtworkDetails", () => {
       expect(wrapper.html()).toContain("S9")
     })
 
-    it("displays partner additional_information for artwork", () => {
+    it("displays partner additional_information for artwork", async () => {
+      wrapper = await getWrapper()
       expect(wrapper.html()).toContain(
         "<p>Here is some addition info for this work</p>\n"
       )
@@ -73,7 +78,8 @@ describe("ArtworkDetails", () => {
       expect(wrapper.find("EntityHeader").children.length).toBe(1)
     })
 
-    it("renders truncated list of partner locations", () => {
+    it("renders truncated list of partner locations", async () => {
+      wrapper = await getWrapper()
       expect(wrapper.html()).toContain("New York, Kharkov, +2 more")
     })
 
