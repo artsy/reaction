@@ -22,7 +22,7 @@ describe("Articles Route", () => {
         }
       `,
       mockResolvers: {
-        Artist: () => ArticlesFixture.artist,
+        Artist: () => ArticlesFixture,
       },
       variables: {
         artistID: "pablo-picasso",
@@ -38,9 +38,37 @@ describe("Articles Route", () => {
       wrapper = await getWrapper()
     })
 
-    it("works", () => {
-      console.log(wrapper.html())
-      expect(true).toEqual(true)
+    it("renders proper elements", () => {
+      expect(wrapper.find("ArticleItem").length).toBe(10)
+      expect(wrapper.find("Pagination").length).toBe(1)
+      expect(wrapper.find("Pagination").find("button").length).toBe(4)
+    })
+
+    it("renders proper article contents", () => {
+      // TODO
+      expect(true).toBe(true)
+    })
+  })
+
+  describe("xs", () => {
+    beforeAll(async () => {
+      wrapper = await getWrapper("xs")
+    })
+
+    it("renders SmallArticleItem", () => {
+      expect(wrapper.find("SmallArticleItem").length).toBe(10)
+      expect(wrapper.find("LargeArticleItem").length).toBe(0)
+    })
+  })
+
+  describe("md and up", () => {
+    beforeAll(async () => {
+      wrapper = await getWrapper("md")
+    })
+
+    it("renders LargeArticleItem", () => {
+      expect(wrapper.find("LargeArticleItem").length).toBe(10)
+      expect(wrapper.find("SmallArticleItem").length).toBe(0)
     })
   })
 })
