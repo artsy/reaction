@@ -3,6 +3,7 @@ import {
   OrderWithShippingDetails,
   PickupOrder,
   UntouchedBuyOrder,
+  UntouchedOfferOrder,
 } from "Apps/__test__/Fixtures/Order"
 import { MockRouter } from "DevTools/MockRouter"
 import React from "react"
@@ -24,7 +25,14 @@ const Router = props => (
 )
 
 storiesOf("Apps/Order Page/Offer", module).add("Empty", () => (
-  <Router initialRoute="/orders/123/offer" />
+  <Router
+    initialRoute="/orders/123/offer"
+    mockResolver={mockResolver({
+      ...UntouchedOfferOrder,
+      requestedFulfillment: null,
+      state: "PENDING",
+    })}
+  />
 ))
 
 storiesOf("Apps/Order Page", module)

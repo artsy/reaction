@@ -58,7 +58,8 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
                     __typename
                     order {
                       id
-                      offerTotalCents
+                      mode
+                      offerTotal
                       lastOffer {
                         id
                         amountCents
@@ -191,18 +192,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
                 }
                 Sidebar={
                   <Flex flexDirection="column">
-                    <TransactionSummary
-                      order={order}
-                      mb={[2, 3]}
-                      offerOverride={
-                        this.state.offerValue &&
-                        this.state.offerValue.toLocaleString("en-US", {
-                          style: "currency",
-                          currency: "USD",
-                          minimumFractionDigits: 0,
-                        })
-                      }
-                    />
+                    <TransactionSummary order={order} mb={[2, 3]} />
                     <Helper artworkId={artwork.id} />
                     {xs && (
                       <>
@@ -249,8 +239,10 @@ export const OfferFragmentContainer = createFragmentContainer(
   graphql`
     fragment Offer_order on Order {
       id
+      mode
       state
       itemsTotal(precision: 2)
+      offerTotal(precision: 2)
       lineItems {
         edges {
           node {

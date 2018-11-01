@@ -16,7 +16,6 @@ import {
 
 export interface TransactionSummaryProps extends FlexProps {
   order: TransactionSummary_order
-  offerOverride?: string | null
 }
 
 export class TransactionSummary extends React.Component<
@@ -24,7 +23,6 @@ export class TransactionSummary extends React.Component<
 > {
   render() {
     const {
-      offerOverride,
       order: {
         itemsTotal,
         mode,
