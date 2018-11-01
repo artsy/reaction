@@ -4,6 +4,7 @@ import React from "react"
 import { routes as artistRoutes } from "../Artist/routes"
 import { routes as artworkRoutes } from "../Artwork/routes"
 import { routes as collectRoutes } from "../Collect/routes"
+import { routes as collectionsRoutes } from "../Collections/routes"
 
 storiesOf("Apps", module)
   .add("Artwork Page", () => {
@@ -50,6 +51,15 @@ storiesOf("Apps", module)
             trigger: x => x,
           },
         }}
+      />
+    )
+  })
+  .add("Collections Page", () => {
+    return (
+      <MockRouter
+        routes={collectionsRoutes}
+        initialRoute="/collections"
+        context={{}}
       />
     )
   })
