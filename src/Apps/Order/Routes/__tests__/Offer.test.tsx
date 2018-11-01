@@ -1,33 +1,17 @@
 import { Input } from "Components/Input"
 import { renderRelayTree } from "DevTools"
 import React from "react"
-import { graphql, RelayProp } from "react-relay"
-import { commitMutation as _commitMutation } from "react-relay"
-import { UntouchedOrder } from "../../../__test__/Fixtures/Order"
+import { graphql } from "react-relay"
+import { UntouchedOfferOrder } from "../../../__test__/Fixtures/Order"
 import { TransactionSummary } from "../../Components/TransactionSummary"
-import { initialOfferSuccess } from "../__fixtures__/MutationResults"
 import { OfferFragmentContainer as OfferRoute } from "../Offer"
 
-const commitMutation = _commitMutation as any
-
-jest.mock("react-relay", () => ({
-  commitMutation: jest.fn(),
-  createFragmentContainer: component => component,
-}))
-
-let testProps: any
+jest.unmock("react-relay")
 
 describe("Payment", () => {
   let wrapper
   beforeEach(async () => {
     console.error = jest.fn() // Silences component logging.
-
-    testProps = {
-      order: { ...UntouchedOrder, id: "1234" },
-      relay: { environment: {} } as RelayProp,
-      router: { push: jest.fn() },
-      mediator: { trigger: jest.fn() },
-    } as any
 
     wrapper = await renderRelayTree({
       Component: ({ order }: any) => (
@@ -41,7 +25,7 @@ describe("Payment", () => {
         }
       `,
       mockResolvers: {
-        Order: () => UntouchedOrder,
+        Order: () => UntouchedOfferOrder,
       },
     })
   })
@@ -88,7 +72,7 @@ describe("Payment", () => {
   //     commitMutation.mockReset()
   //   })
 
-  //   it("routes to payment screen after mutation completes", () => {
+  //   it("routes to shipping screen after mutation completes", () => {
   //     const mockCommitMutation = commitMutation as jest.Mock<any>
   //     mockCommitMutation.mockImplementationOnce(
   //       (_environment, { onCompleted }) => {
