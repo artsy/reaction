@@ -4,7 +4,6 @@ import { ConcreteFragment } from "relay-runtime";
 declare const _CollectionsApp_collections$ref: unique symbol;
 export type CollectionsApp_collections$ref = typeof _CollectionsApp_collections$ref;
 export type CollectionsApp_collections = ReadonlyArray<{
-    readonly id: string;
     readonly slug: string;
     readonly title: string;
     readonly headerImage: string | null;
@@ -22,13 +21,6 @@ const node: ConcreteFragment = {
   },
   "argumentDefinitions": [],
   "selections": [
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "id",
-      "args": null,
-      "storageKey": null
-    },
     {
       "kind": "ScalarField",
       "alias": null,
@@ -59,5 +51,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '45c2f54dc19f27453e732eea6f60f1b8';
+(node as any).hash = 'f3dd0cb1d3943fd6933e8c5919e6a1fe';
 export default node;

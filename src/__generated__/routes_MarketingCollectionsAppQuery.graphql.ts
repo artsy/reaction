@@ -24,7 +24,6 @@ query routes_MarketingCollectionsAppQuery {
 }
 
 fragment CollectionsApp_collections on MarketingCollection {
-  id
   slug
   title
   headerImage
@@ -45,7 +44,7 @@ return {
   "operationKind": "query",
   "name": "routes_MarketingCollectionsAppQuery",
   "id": null,
-  "text": "query routes_MarketingCollectionsAppQuery {\n  collections: marketingCollections {\n    ...CollectionsApp_collections\n    __id: id\n  }\n}\n\nfragment CollectionsApp_collections on MarketingCollection {\n  id\n  slug\n  title\n  headerImage\n  __id: id\n}\n",
+  "text": "query routes_MarketingCollectionsAppQuery {\n  collections: marketingCollections {\n    ...CollectionsApp_collections\n    __id: id\n  }\n}\n\nfragment CollectionsApp_collections on MarketingCollection {\n  slug\n  title\n  headerImage\n  __id: id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -87,13 +86,6 @@ return {
         "concreteType": "MarketingCollection",
         "plural": true,
         "selections": [
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "id",
-            "args": null,
-            "storageKey": null
-          },
           {
             "kind": "ScalarField",
             "alias": null,
