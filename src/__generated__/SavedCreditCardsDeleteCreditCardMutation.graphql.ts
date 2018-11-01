@@ -1,23 +1,18 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-export type CreditCardInput = {
-    readonly token: string;
-    readonly oneTimeUse?: boolean | null;
+export type DeleteCreditCardInput = {
+    readonly id: string;
     readonly clientMutationId?: string | null;
 };
-export type PaymentFormCreateCreditCardMutationVariables = {
-    readonly input: CreditCardInput;
+export type SavedCreditCardsDeleteCreditCardMutationVariables = {
+    readonly input: DeleteCreditCardInput;
 };
-export type PaymentFormCreateCreditCardMutationResponse = {
-    readonly createCreditCard: ({
+export type SavedCreditCardsDeleteCreditCardMutationResponse = {
+    readonly deleteCreditCard: ({
         readonly creditCardOrError: ({
             readonly creditCard?: ({
                 readonly id: string;
-                readonly brand: string;
-                readonly last_digits: string;
-                readonly expiration_year: number;
-                readonly expiration_month: number;
             }) | null;
             readonly mutationError?: ({
                 readonly type: string | null;
@@ -27,27 +22,23 @@ export type PaymentFormCreateCreditCardMutationResponse = {
         }) | null;
     }) | null;
 };
-export type PaymentFormCreateCreditCardMutation = {
-    readonly response: PaymentFormCreateCreditCardMutationResponse;
-    readonly variables: PaymentFormCreateCreditCardMutationVariables;
+export type SavedCreditCardsDeleteCreditCardMutation = {
+    readonly response: SavedCreditCardsDeleteCreditCardMutationResponse;
+    readonly variables: SavedCreditCardsDeleteCreditCardMutationVariables;
 };
 
 
 
 /*
-mutation PaymentFormCreateCreditCardMutation(
-  $input: CreditCardInput!
+mutation SavedCreditCardsDeleteCreditCardMutation(
+  $input: DeleteCreditCardInput!
 ) {
-  createCreditCard(input: $input) {
+  deleteCreditCard(input: $input) {
     creditCardOrError {
       __typename
       ... on CreditCardMutationSuccess {
         creditCard {
           id
-          brand
-          last_digits
-          expiration_year
-          expiration_month
           __id
         }
       }
@@ -68,7 +59,7 @@ var v0 = [
   {
     "kind": "LocalArgument",
     "name": "input",
-    "type": "CreditCardInput!",
+    "type": "DeleteCreditCardInput!",
     "defaultValue": null
   }
 ],
@@ -77,7 +68,7 @@ v1 = [
     "kind": "Variable",
     "name": "input",
     "variableName": "input",
-    "type": "CreditCardInput!"
+    "type": "DeleteCreditCardInput!"
   }
 ],
 v2 = {
@@ -141,34 +132,6 @@ v3 = {
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "brand",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "last_digits",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "expiration_year",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "expiration_month",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
           "name": "__id",
           "args": null,
           "storageKey": null
@@ -180,13 +143,13 @@ v3 = {
 return {
   "kind": "Request",
   "operationKind": "mutation",
-  "name": "PaymentFormCreateCreditCardMutation",
+  "name": "SavedCreditCardsDeleteCreditCardMutation",
   "id": null,
-  "text": "mutation PaymentFormCreateCreditCardMutation(\n  $input: CreditCardInput!\n) {\n  createCreditCard(input: $input) {\n    creditCardOrError {\n      __typename\n      ... on CreditCardMutationSuccess {\n        creditCard {\n          id\n          brand\n          last_digits\n          expiration_year\n          expiration_month\n          __id\n        }\n      }\n      ... on CreditCardMutationFailure {\n        mutationError {\n          type\n          message\n          detail\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation SavedCreditCardsDeleteCreditCardMutation(\n  $input: DeleteCreditCardInput!\n) {\n  deleteCreditCard(input: $input) {\n    creditCardOrError {\n      __typename\n      ... on CreditCardMutationSuccess {\n        creditCard {\n          id\n          __id\n        }\n      }\n      ... on CreditCardMutationFailure {\n        mutationError {\n          type\n          message\n          detail\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "PaymentFormCreateCreditCardMutation",
+    "name": "SavedCreditCardsDeleteCreditCardMutation",
     "type": "Mutation",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -194,10 +157,10 @@ return {
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "createCreditCard",
+        "name": "deleteCreditCard",
         "storageKey": null,
         "args": v1,
-        "concreteType": "CreditCardPayload",
+        "concreteType": "DeleteCreditCardPayload",
         "plural": false,
         "selections": [
           {
@@ -219,16 +182,16 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "PaymentFormCreateCreditCardMutation",
+    "name": "SavedCreditCardsDeleteCreditCardMutation",
     "argumentDefinitions": v0,
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "createCreditCard",
+        "name": "deleteCreditCard",
         "storageKey": null,
         "args": v1,
-        "concreteType": "CreditCardPayload",
+        "concreteType": "DeleteCreditCardPayload",
         "plural": false,
         "selections": [
           {
@@ -257,5 +220,5 @@ return {
   }
 };
 })();
-(node as any).hash = '5970673dca31c13ae6e5f89974addec0';
+(node as any).hash = '0724e2741f7679a610661808d89cd3e8';
 export default node;

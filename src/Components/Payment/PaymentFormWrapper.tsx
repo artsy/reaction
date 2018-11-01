@@ -1,4 +1,5 @@
 import React from "react"
+import { RelayProp } from "react-relay"
 import { Elements, StripeProvider } from "react-stripe-elements"
 import PaymentForm from "./PaymentForm"
 
@@ -11,11 +12,19 @@ declare global {
   }
 }
 
-interface PaymentFormState {
+interface PaymentFormWrapperState {
   stripe: stripe.Stripe
 }
 
-export class PaymentFormWrapper extends React.Component<{}, PaymentFormState> {
+export interface PaymentFormWrapperProps {
+  relay?: RelayProp
+  me: any
+}
+
+export class PaymentFormWrapper extends React.Component<
+  PaymentFormWrapperProps,
+  PaymentFormWrapperState
+> {
   state = { stripe: null }
 
   constructor(props) {
@@ -40,8 +49,8 @@ export class PaymentFormWrapper extends React.Component<{}, PaymentFormState> {
   render() {
     return (
       <StripeProvider stripe={this.state.stripe}>
-        <Elements hidePostalCode={true}>
-          <PaymentForm />
+        <Elements hidePostalCode>
+          <PaymentForm relay={this.props.relay} me={this.props.me} />
         </Elements>
       </StripeProvider>
     )
