@@ -36,7 +36,6 @@
     "data",
     "externals",
     "danger",
-    "scripts",
     "src/**/__tests__",
     "src/__generated__/**.ts"
   ]

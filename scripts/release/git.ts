@@ -1,7 +1,7 @@
-import * as path from "path"
-import * as Git from "simple-git/promise"
+import { join } from "path"
+import Git from "simple-git/promise"
 
-export const GIT_PROJECT_PATH = path.join(__dirname, "../../")
+export const GIT_PROJECT_PATH = join(__dirname, "../../")
 
 const git = Git(GIT_PROJECT_PATH)
 

@@ -1,4 +1,4 @@
-import * as OctoKit from "@octokit/rest"
+import OctoKit from "@octokit/rest"
 
 export type PullRequest = OctoKit.IssuesGetResponse
 

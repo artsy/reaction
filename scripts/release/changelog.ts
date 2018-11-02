@@ -1,13 +1,13 @@
-import * as parseChangelog from "changelog-parser"
+import parseChangelog from "changelog-parser"
 import { writeFile } from "fs"
-import * as path from "path"
+import { join } from "path"
 import { promisify } from "util"
 
 const write = promisify(writeFile)
 /**
  * Absolute path to the project's changelog file
  */
-export const CHANGELOG_PATH = path.join(__dirname, "../../CHANGELOG.md")
+export const CHANGELOG_PATH = join(__dirname, "../../CHANGELOG.md")
 
 export interface ChangeEntry {
   version: string | null
