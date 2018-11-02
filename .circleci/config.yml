@@ -51,42 +51,43 @@ jobs:
     steps:
       - yarn/update_dependencies
 
-filter-master: &filter-master
-  filters:
-    branches:
-      only:
-        - master
-
-pre-deploy: &pre-deploy
-  requires:
-    - pre-deploy
-
 workflows:
   version: 2
   build_and_verify:
     jobs:
       - update-cache:
-          <<: *pre-deploy
+          requires:
+            - pre-deploy
       - relay:
-          <<: *pre-deploy
+          requires:
+            - pre-deploy
       - lint:
-          <<: *pre-deploy
+          requires:
+            - pre-deploy
       - type-check:
-          <<: *pre-deploy
+          requires:
+            - pre-deploy
       - test:
-          <<: *pre-deploy
+          requires:
+            - pre-deploy
 
       - pre-deploy:
           # Queues builds so that only one deployment can happen at a time on
           # master
-          <<: *filter-master
+          filters:
+            branches:
+              only:
+                - master
 
       - deploy:
           # The deploy job is the _only_ job that should have access to our npm
           # tokens. We include a context that has our publish credentials
           # explicitly in this step. https://circleci.com/docs/2.0/contexts/
           context: npm-deploy
-          <<: *filter-master
+          filters:
+            branches:
+              only:
+                - master
           requires:
             - test
             - relay
