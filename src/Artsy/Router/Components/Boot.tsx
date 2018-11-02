@@ -1,10 +1,12 @@
 import { Theme, themeProps } from "@artsy/palette"
+import * as Sentry from "@sentry/browser"
 import { track } from "Artsy/Analytics"
 import * as Artsy from "Artsy/SystemContext"
 import { ResolverUtils, RouteConfig } from "found"
 import React from "react"
 import { HeadProvider } from "react-head"
 import { Environment } from "relay-runtime"
+import { data as sd } from "sharify"
 import { GridThemeProvider } from "styled-bootstrap-grid"
 import { GlobalStyles } from "Styleguide/Elements/GlobalStyles"
 import { Grid } from "Styleguide/Elements/Grid"
@@ -29,6 +31,10 @@ export interface BootProps {
   dispatch: data => Events.postEvent(data),
 })
 export class Boot extends React.Component<BootProps> {
+  componentDidMount() {
+    Sentry.init({ dsn: sd.SENTRY_PUBLIC_DSN })
+  }
+
   render() {
     const { children, context, headTags = [], ...props } = this.props
     const contextProps = {
