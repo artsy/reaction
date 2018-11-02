@@ -233,6 +233,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
                       billing
                     />
                   </Collapse>
+
                   <Media greaterThan="xs">
                     <ContinueButton
                       onClick={this.onContinue}

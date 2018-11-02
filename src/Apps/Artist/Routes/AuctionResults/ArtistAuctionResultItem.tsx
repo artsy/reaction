@@ -42,7 +42,7 @@ export const ArtistAuctionResultItem: SFC<Props> = props => {
             <Media between={["sm", "xl"]}>
               <SmallAuctionItem {...props} mediator={mediator} user={user} />
             </Media>
-            <Media at="xl">
+            <Media greaterThanOrEqual="xl">
               <LargeAuctionItem {...props} mediator={mediator} user={user} />
             </Media>
             <Col>

@@ -17,7 +17,7 @@ export class OtherAuctions extends React.Component<OtherAuctionsProps> {
         <Media between={["sm", "xl"]}>
           <LargeOtherAuctions cardsPerRow={3} {...this.props} />
         </Media>
-        <Media at="xl">
+        <Media greaterThanOrEqual="xl">
           <LargeOtherAuctions {...this.props} />
         </Media>
       </>

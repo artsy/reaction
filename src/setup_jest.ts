@@ -13,7 +13,7 @@ jest.mock("react-sizeme", () => jest.fn(c => d => d))
  * We want each test to have assertions, otherwise it’s too easy to write async
  * tests that never end up making any, leading to false positives.
  */
-beforeEach(() => expect.hasAssertions())
+afterEach(() => expect.hasAssertions())
 
 import "DevTools/renderUntil"
 Enzyme.configure({ adapter: new Adapter() })
