@@ -235,13 +235,14 @@ const SliderContainer = responsiveDiv`
   `}
 `
 const Slide = responsiveDiv`
-  margin-right: 20px;
+  padding-right: 20px;
   &.title-card {
-    max-width: 1190px;
+    max-width: 1170px;
     margin-left: 40px;
     width: ${props => props.containerWidth + "px;"}
-    display: flex;
+    display: flex !important;
     justify-content: space-between;
+
     ${props => pMedia.md`
       max-width: ${maxAssetSize(props.containerWidth).width + "px;"}
     `}
