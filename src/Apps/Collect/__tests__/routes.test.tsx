@@ -48,6 +48,20 @@ describe("Routes", () => {
       })
     })
 
+    it("respects the sort option selected by the user", () => {
+      const props = {
+        location: {
+          query: {
+            sort: "-published_at",
+          },
+        },
+      }
+
+      expect(route.prepareVariables(params, props)).toEqual({
+        sort: "-published_at",
+      })
+    })
+
     xit("renders", async () => {
       const { element } = (await render("/collect", {
         Viewer: () => data,

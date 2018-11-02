@@ -23,12 +23,17 @@ describe("ArtworkSidebar", () => {
       },
     })
   }
-  it("renders ArtworkSidebarArtists component", async () => {
-    const wrapper = await getWrapper()
+
+  let wrapper
+
+  beforeAll(async () => {
+    wrapper = await getWrapper()
+  })
+
+  it("renders ArtworkSidebarArtists component", () => {
     expect(wrapper.find(ArtworkSidebarArtists).length).toBe(1)
   })
-  it("renders Metadata component", async () => {
-    const wrapper = await getWrapper()
+  it("renders Metadata component", () => {
     expect(wrapper.find(ArtworkSidebarMetadata).length).toBe(1)
   })
 })

@@ -5,6 +5,18 @@ import AnalyticsProvider from "./AnalyticsProvider"
 import { CollectAppFragmentContainer as CollectApp } from "./CollectApp"
 import { CollectionAppFragmentContainer as CollectionApp } from "./CollectionApp"
 
+const initializeVariablesWithFilterState = (params, props) => {
+  const initialFilterState = props.location ? props.location.query : {}
+  if (params.medium) {
+    initialFilterState.medium = params.medium
+    if (props.location.query) {
+      props.location.query.medium = params.medium
+    }
+  }
+
+  return { sort: "-decayed_merch", ...initialFilterState, ...params }
+}
+
 export const routes: RouteConfig[] = [
   {
     path: "/collect/:medium?",
@@ -48,27 +60,35 @@ export const routes: RouteConfig[] = [
 
       return <AnalyticsProvider {...props} Component={Component} />
     },
-    prepareVariables: (params, props) => {
-      const initialFilterState = props.location ? props.location.query : {}
-      if (params.medium) {
-        initialFilterState.medium = params.medium
-        if (props.location.query) {
-          props.location.query.medium = params.medium
-        }
-      }
-      if (!params.sort) {
-        params.sort = "-decayed_merch"
-      }
-      return { ...initialFilterState, ...params }
-    },
+    prepareVariables: initializeVariablesWithFilterState,
   },
   {
     path: "/collection/:slug",
     Component: CollectionApp,
     query: graphql`
-      query routes_MarketingCollectionAppQuery($slug: String!) {
+      query routes_MarketingCollectionAppQuery(
+        $slug: String!
+        $medium: String
+        $major_periods: [String]
+        $for_sale: Boolean
+        $sort: String
+        $at_auction: Boolean
+        $acquireable: Boolean
+        $inquireable_only: Boolean
+        $price_range: String
+      ) {
         collection: marketingCollection(slug: $slug) {
           ...CollectionApp_collection
+            @arguments(
+              medium: $medium
+              major_periods: $major_periods
+              for_sale: $for_sale
+              sort: $sort
+              at_auction: $at_auction
+              acquireable: $acquireable
+              inquireable_only: $inquireable_only
+              price_range: $price_range
+            )
         }
       }
     `,
@@ -79,5 +99,6 @@ export const routes: RouteConfig[] = [
 
       return <AnalyticsProvider {...props} Component={Component} />
     },
+    prepareVariables: initializeVariablesWithFilterState,
   },
 ]
