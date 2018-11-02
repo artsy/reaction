@@ -45,7 +45,8 @@ describe("logger", () => {
         })
 
         afterAll(() => {
-          process.env = originalEnv(sendErrorToService as any).mockReset()
+          process.env = originalEnv
+          ;(sendErrorToService as any).mockReset()
         })
 
         it("sends errors to service", () => {
