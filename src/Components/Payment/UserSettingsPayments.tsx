@@ -60,15 +60,19 @@ export const UserSettingsPaymentsFragmentContainer = createFragmentContainer(
   UserSettingsPayments,
   graphql`
     fragment UserSettingsPayments_me on Me {
+      __id
       id
-      creditCards {
+      creditCards(first: 100, limit: 100)
+        @connection(key: "UserSettingsPayments_creditCards", filters: []) {
         edges {
           node {
+            __id
             id
             brand
             last_digits
             expiration_year
             expiration_month
+            __typename
           }
         }
       }

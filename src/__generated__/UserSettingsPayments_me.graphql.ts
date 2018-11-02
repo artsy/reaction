@@ -4,15 +4,18 @@ import { ConcreteFragment } from "relay-runtime";
 declare const _UserSettingsPayments_me$ref: unique symbol;
 export type UserSettingsPayments_me$ref = typeof _UserSettingsPayments_me$ref;
 export type UserSettingsPayments_me = {
+    readonly __id: string;
     readonly id: string;
     readonly creditCards: ({
         readonly edges: ReadonlyArray<({
             readonly node: ({
+                readonly __id: string;
                 readonly id: string;
                 readonly brand: string;
                 readonly last_digits: string;
                 readonly expiration_year: number;
                 readonly expiration_month: number;
+                readonly __typename: string;
             }) | null;
         }) | null> | null;
     }) | null;
@@ -25,14 +28,14 @@ const node: ConcreteFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
+  "name": "__id",
   "args": null,
   "storageKey": null
 },
 v1 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 };
@@ -40,14 +43,26 @@ return {
   "kind": "Fragment",
   "name": "UserSettingsPayments_me",
   "type": "Me",
-  "metadata": null,
+  "metadata": {
+    "connection": [
+      {
+        "count": null,
+        "cursor": null,
+        "direction": "forward",
+        "path": [
+          "creditCards"
+        ]
+      }
+    ]
+  },
   "argumentDefinitions": [],
   "selections": [
     v0,
+    v1,
     {
       "kind": "LinkedField",
-      "alias": null,
-      "name": "creditCards",
+      "alias": "creditCards",
+      "name": "__UserSettingsPayments_creditCards_connection",
       "storageKey": null,
       "args": null,
       "concreteType": "CreditCardConnection",
@@ -72,6 +87,7 @@ return {
               "plural": false,
               "selections": [
                 v0,
+                v1,
                 {
                   "kind": "ScalarField",
                   "alias": null,
@@ -100,16 +116,53 @@ return {
                   "args": null,
                   "storageKey": null
                 },
-                v1
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "__typename",
+                  "args": null,
+                  "storageKey": null
+                }
               ]
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "cursor",
+              "args": null,
+              "storageKey": null
+            }
+          ]
+        },
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "pageInfo",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "PageInfo",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "endCursor",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "hasNextPage",
+              "args": null,
+              "storageKey": null
             }
           ]
         }
       ]
-    },
-    v1
+    }
   ]
 };
 })();
-(node as any).hash = '09bf7d51229f4c755942119322de3efb';
+(node as any).hash = '253b3692125cbd93104b455e2b51f6f1';
 export default node;

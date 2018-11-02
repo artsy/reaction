@@ -2,21 +2,21 @@
 
 import { ConcreteRequest } from "relay-runtime";
 import { UserSettingsPayments_me$ref } from "./UserSettingsPayments_me.graphql";
-export type UserSettingsPaymentsQueryVariables = {};
-export type UserSettingsPaymentsQueryResponse = {
+export type PaymentNoCreditCardsQueryVariables = {};
+export type PaymentNoCreditCardsQueryResponse = {
     readonly me: ({
         readonly " $fragmentRefs": UserSettingsPayments_me$ref;
     }) | null;
 };
-export type UserSettingsPaymentsQuery = {
-    readonly response: UserSettingsPaymentsQueryResponse;
-    readonly variables: UserSettingsPaymentsQueryVariables;
+export type PaymentNoCreditCardsQuery = {
+    readonly response: PaymentNoCreditCardsQueryResponse;
+    readonly variables: PaymentNoCreditCardsQueryVariables;
 };
 
 
 
 /*
-query UserSettingsPaymentsQuery {
+query PaymentNoCreditCardsQuery {
   me {
     ...UserSettingsPayments_me
     __id
@@ -65,13 +65,13 @@ v1 = {
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "UserSettingsPaymentsQuery",
+  "name": "PaymentNoCreditCardsQuery",
   "id": null,
-  "text": "query UserSettingsPaymentsQuery {\n  me {\n    ...UserSettingsPayments_me\n    __id\n  }\n}\n\nfragment UserSettingsPayments_me on Me {\n  __id\n  id\n  creditCards(first: 100, limit: 100) {\n    edges {\n      node {\n        __id\n        id\n        brand\n        last_digits\n        expiration_year\n        expiration_month\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n",
+  "text": "query PaymentNoCreditCardsQuery {\n  me {\n    ...UserSettingsPayments_me\n    __id\n  }\n}\n\nfragment UserSettingsPayments_me on Me {\n  __id\n  id\n  creditCards(first: 100, limit: 100) {\n    edges {\n      node {\n        __id\n        id\n        brand\n        last_digits\n        expiration_year\n        expiration_month\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "UserSettingsPaymentsQuery",
+    "name": "PaymentNoCreditCardsQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": [],
@@ -97,7 +97,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "UserSettingsPaymentsQuery",
+    "name": "PaymentNoCreditCardsQuery",
     "argumentDefinitions": [],
     "selections": [
       {
@@ -254,5 +254,5 @@ return {
   }
 };
 })();
-(node as any).hash = '979a38cba2d2f95be025a730d894ca44';
+(node as any).hash = '32699d736d6d5f2cd4a1f7366379227d';
 export default node;

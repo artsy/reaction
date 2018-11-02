@@ -1,8 +1,6 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
 import { Contents } from "../Gene"
-import { PaymentFormWrapper } from "../Payment/PaymentFormWrapper"
-import { UserSettingsPayments } from "../Payment/UserSettingsPayments"
 
 import { ContextProvider } from "Artsy/SystemContext"
 

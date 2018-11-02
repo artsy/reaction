@@ -49,7 +49,7 @@ export class PaymentFormWrapper extends React.Component<
   render() {
     return (
       <StripeProvider stripe={this.state.stripe}>
-        <Elements hidePostalCode>
+        <Elements>
           <PaymentForm relay={this.props.relay} me={this.props.me} />
         </Elements>
       </StripeProvider>

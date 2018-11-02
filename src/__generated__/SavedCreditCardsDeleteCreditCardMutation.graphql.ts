@@ -13,6 +13,7 @@ export type SavedCreditCardsDeleteCreditCardMutationResponse = {
         readonly creditCardOrError: ({
             readonly creditCard?: ({
                 readonly id: string;
+                readonly __id: string;
             }) | null;
             readonly mutationError?: ({
                 readonly type: string | null;
@@ -220,5 +221,5 @@ return {
   }
 };
 })();
-(node as any).hash = '0724e2741f7679a610661808d89cd3e8';
+(node as any).hash = 'fdbb2e721cfef50fc61b817332812582';
 export default node;

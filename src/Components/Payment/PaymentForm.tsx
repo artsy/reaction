@@ -34,6 +34,8 @@ interface PaymentFormState {
 }
 
 class PaymentForm extends Component<PaymentFormProps, PaymentFormState> {
+  private cardElement
+
   state = {
     address: { ...emptyAddress, country: "US" },
     hideBillingAddress: true,
@@ -111,6 +113,7 @@ class PaymentForm extends Component<PaymentFormProps, PaymentFormState> {
                           onChange={response =>
                             this.setState({ error: response.error })
                           }
+                          ref={el => (this.cardElement = el)}
                         />
                       </Flex>
 
@@ -187,38 +190,25 @@ class PaymentForm extends Component<PaymentFormProps, PaymentFormState> {
   }
 
   onCreditCardAdded(me, store, data): void {
-    // const creditCard = store
-    //   .getRootField("createCreditCard")
-    //   .getLinkedRecord("creditCardOrError")
-    // const currentMe = store.get(me.__id)
-    const newCreditCard = store.getRootField("createCreditCard")
-    // const deletedId = deletePostField.getValue("deletedId")
-    const viewerProxy = store.get(me.__id)
-    const connection = ConnectionHandler.getConnection(
-      viewerProxy,
-      "CreditCards_connection"
-    )
-    // .getLinkedRecords("creditCards")
-    // debugger
-    // const newCreditCards = [...currentCreditCards, creditCard]
-    // const suggestedGene = store.get(
-    //   data.followGene.gene.similar.edges[0].node.__id
-    // )
-    // this.excludedGeneIds.add(suggestedGene.getValue("_id"))
+    const {
+      createCreditCard: { creditCardOrError },
+    } = data
 
-    // const suggestedGenesRootField = store.get("client:root")
-    // const suggestedGenes = suggestedGenesRootField.getLinkedRecords(
-    //   "suggested_genes"
-    // )
-    // const updatedSuggestedGenes = suggestedGenes.map(
-    //   geneItem =>
-    //     geneItem.getValue("id") === gene.id ? suggestedGene : geneItem
-    // )
-
-    // suggestedGenesRootField.setLinkedRecords(
-    //   updatedSuggestedGenes,
-    //   "suggested_genes"
-    // )
+    if (creditCardOrError.creditCardEdge) {
+      const meStore = store.get(me.__id)
+      const connection = ConnectionHandler.getConnection(
+        meStore,
+        "UserSettingsPayments_creditCards"
+      )
+      const mutationPayload = store.getRootField("createCreditCard")
+      const creditCardOrErrorEdge = mutationPayload.getLinkedRecord(
+        "creditCardOrError"
+      )
+      const creditCardEdge = creditCardOrErrorEdge.getLinkedRecord(
+        "creditCardEdge"
+      )
+      ConnectionHandler.insertEdgeAfter(connection, creditCardEdge)
+    }
   }
 
   private createCreditCard({ token, me }) {
@@ -230,8 +220,14 @@ class PaymentForm extends Component<PaymentFormProps, PaymentFormState> {
             createCreditCard: { creditCardOrError },
           } = data
 
-          if (creditCardOrError.creditCard) {
-            this.setState({ isCommittingMutation: false })
+          if (creditCardOrError.creditCardEdge) {
+            this.setState({
+              isCommittingMutation: false,
+              address: { ...emptyAddress, country: "US" },
+              addressErrors: {},
+              addressTouched: {},
+            })
+            this.cardElement && this.cardElement.cardInputElement.clear()
           } else {
             this.onMutationError(
               errors || creditCardOrError.mutationError,
@@ -248,12 +244,16 @@ class PaymentForm extends Component<PaymentFormProps, PaymentFormState> {
             createCreditCard(input: $input) {
               creditCardOrError {
                 ... on CreditCardMutationSuccess {
-                  creditCard {
-                    id
-                    brand
-                    last_digits
-                    expiration_year
-                    expiration_month
+                  creditCardEdge {
+                    node {
+                      __id
+                      id
+                      brand
+                      last_digits
+                      expiration_year
+                      expiration_month
+                      __typename
+                    }
                   }
                 }
                 ... on CreditCardMutationFailure {

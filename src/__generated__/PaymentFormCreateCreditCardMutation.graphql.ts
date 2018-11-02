@@ -12,12 +12,16 @@ export type PaymentFormCreateCreditCardMutationVariables = {
 export type PaymentFormCreateCreditCardMutationResponse = {
     readonly createCreditCard: ({
         readonly creditCardOrError: ({
-            readonly creditCard?: ({
-                readonly id: string;
-                readonly brand: string;
-                readonly last_digits: string;
-                readonly expiration_year: number;
-                readonly expiration_month: number;
+            readonly creditCardEdge?: ({
+                readonly node: ({
+                    readonly __id: string;
+                    readonly id: string;
+                    readonly brand: string;
+                    readonly last_digits: string;
+                    readonly expiration_year: number;
+                    readonly expiration_month: number;
+                    readonly __typename: string;
+                }) | null;
             }) | null;
             readonly mutationError?: ({
                 readonly type: string | null;
@@ -42,13 +46,16 @@ mutation PaymentFormCreateCreditCardMutation(
     creditCardOrError {
       __typename
       ... on CreditCardMutationSuccess {
-        creditCard {
-          id
-          brand
-          last_digits
-          expiration_year
-          expiration_month
-          __id
+        creditCardEdge {
+          node {
+            __id
+            id
+            brand
+            last_digits
+            expiration_year
+            expiration_month
+            __typename
+          }
         }
       }
       ... on CreditCardMutationFailure {
@@ -119,59 +126,78 @@ v2 = {
   ]
 },
 v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__typename",
+  "args": null,
+  "storageKey": null
+},
+v4 = {
   "kind": "InlineFragment",
   "type": "CreditCardMutationSuccess",
   "selections": [
     {
       "kind": "LinkedField",
       "alias": null,
-      "name": "creditCard",
+      "name": "creditCardEdge",
       "storageKey": null,
       "args": null,
-      "concreteType": "CreditCard",
+      "concreteType": "CreditCardEdge",
       "plural": false,
       "selections": [
         {
-          "kind": "ScalarField",
+          "kind": "LinkedField",
           "alias": null,
-          "name": "id",
+          "name": "node",
+          "storageKey": null,
           "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "brand",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "last_digits",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "expiration_year",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "expiration_month",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "__id",
-          "args": null,
-          "storageKey": null
+          "concreteType": "CreditCard",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "__id",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "id",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "brand",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "last_digits",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "expiration_year",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "expiration_month",
+              "args": null,
+              "storageKey": null
+            },
+            v3
+          ]
         }
       ]
     }
@@ -182,7 +208,7 @@ return {
   "operationKind": "mutation",
   "name": "PaymentFormCreateCreditCardMutation",
   "id": null,
-  "text": "mutation PaymentFormCreateCreditCardMutation(\n  $input: CreditCardInput!\n) {\n  createCreditCard(input: $input) {\n    creditCardOrError {\n      __typename\n      ... on CreditCardMutationSuccess {\n        creditCard {\n          id\n          brand\n          last_digits\n          expiration_year\n          expiration_month\n          __id\n        }\n      }\n      ... on CreditCardMutationFailure {\n        mutationError {\n          type\n          message\n          detail\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation PaymentFormCreateCreditCardMutation(\n  $input: CreditCardInput!\n) {\n  createCreditCard(input: $input) {\n    creditCardOrError {\n      __typename\n      ... on CreditCardMutationSuccess {\n        creditCardEdge {\n          node {\n            __id\n            id\n            brand\n            last_digits\n            expiration_year\n            expiration_month\n            __typename\n          }\n        }\n      }\n      ... on CreditCardMutationFailure {\n        mutationError {\n          type\n          message\n          detail\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -210,7 +236,7 @@ return {
             "plural": false,
             "selections": [
               v2,
-              v3
+              v4
             ]
           }
         ]
@@ -240,15 +266,9 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "__typename",
-                "args": null,
-                "storageKey": null
-              },
+              v3,
               v2,
-              v3
+              v4
             ]
           }
         ]
@@ -257,5 +277,5 @@ return {
   }
 };
 })();
-(node as any).hash = '5970673dca31c13ae6e5f89974addec0';
+(node as any).hash = '2886e6612195ebcd82e23d52dbc396d3';
 export default node;

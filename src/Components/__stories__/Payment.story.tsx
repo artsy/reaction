@@ -4,29 +4,6 @@ import { MockRelayRenderer } from "DevTools"
 import React from "react"
 import { graphql } from "react-relay"
 
-export function UserSettingsPaymentExample() {
-  return (
-    <MockRelayRenderer
-      Component={UserSettingsPaymentsFragmentContainer}
-      mockResolvers={{
-        Me: () => ({
-          id: "1234",
-          creditCards: {
-            edges: [],
-          },
-        }),
-      }}
-      query={graphql`
-        query UserSettingsPaymentsQuery {
-          me {
-            ...UserSettingsPayments_me
-          }
-        }
-      `}
-    />
-  )
-}
-
 storiesOf("Components/Payment", module)
   .add("Payment Form - no credit cards", () => {
     return (
@@ -41,7 +18,7 @@ storiesOf("Components/Payment", module)
           }),
         }}
         query={graphql`
-          query UserSettingsPaymentsQuery {
+          query PaymentNoCreditCardsQuery {
             me {
               ...UserSettingsPayments_me
             }
@@ -76,7 +53,7 @@ storiesOf("Components/Payment", module)
           }),
         }}
         query={graphql`
-          query UserSettingsPaymentsQuery {
+          query PaymentMultipleCreditCardsQuery {
             me {
               ...UserSettingsPayments_me
             }
