@@ -37,7 +37,7 @@ filter_master: &filter_master
       only:
         - master
 
-version: 2
+version: 2.1
 jobs:
   relay:
     <<: *setup_workspace
