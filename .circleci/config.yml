@@ -55,19 +55,19 @@ jobs:
 workflows:
   build_and_verify:
     jobs:
-      - update-cache:
+      - update-cache
           # requires:
           #   - pre-deploy
-      - relay:
+      - relay
           # requires:
           #   - pre-deploy
-      - lint:
+      - lint
           # requires:
           #   - pre-deploy
-      - type-check:
+      - type-check
           # requires:
           #   - pre-deploy
-      - test:
+      - test
           # requires:
           #   - pre-deploy
 
