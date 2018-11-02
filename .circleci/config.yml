@@ -35,8 +35,8 @@ jobs:
   pre-deploy:
     executor: node/build
     steps:
-      - queue/until_front_of_line
-          time: 2 # Timeout after 2 minutes of waiting and fail the build 
+      - queue/until_front_of_line:
+          time: "2" # Timeout after 2 minutes of waiting and fail the build
           consider-job: false # Block on entire workflow instead of just this job
   test:
     executor: node/build
@@ -50,7 +50,6 @@ jobs:
     executor: node/build
     steps:
       - yarn/update_dependencies
-
 
 filter-master: &filter-master
   filters:
@@ -66,17 +65,17 @@ workflows:
   version: 2
   build_and_verify:
     jobs:
-      - update-cache: 
+      - update-cache:
           <<: *pre-deploy
       - relay:
           <<: *pre-deploy
-      - lint: 
+      - lint:
           <<: *pre-deploy
       - type-check:
           <<: *pre-deploy
       - test:
           <<: *pre-deploy
-          
+
       - pre-deploy:
           # Queues builds so that only one deployment can happen at a time on
           # master
@@ -87,7 +86,7 @@ workflows:
           # tokens. We include a context that has our publish credentials
           # explicitly in this step. https://circleci.com/docs/2.0/contexts/
           context: npm-deploy
-          <<: *filter_master
+          <<: *filter-master
           requires:
             - test
             - relay
