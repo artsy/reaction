@@ -13,7 +13,7 @@ describe("errors", () => {
       expect(isErrorInfo(notErrorInfo)).toBe(false)
     })
   })
-  describe("#sendErrorToServie", () => {
+  describe("#sendErrorToService", () => {
     it("sends an error to Sentry", () => {
       const errorInfo = { componentStack: "more error info" }
       sendErrorToService(new Error("msg"), errorInfo)
