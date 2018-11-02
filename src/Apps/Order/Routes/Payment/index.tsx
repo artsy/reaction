@@ -33,6 +33,7 @@ import { injectStripe, ReactStripeElements } from "react-stripe-elements"
 import { Collapse } from "Styleguide/Components"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
+import createLogger from "Utils/logger"
 import { Responsive } from "Utils/Responsive"
 
 export const ContinueButton = props => (
@@ -58,6 +59,8 @@ interface PaymentState {
   isErrorModalOpen: boolean
   errorModalMessage: string
 }
+
+const logger = createLogger("Order/Routes/Payment/index.tsx")
 
 @track()
 export class PaymentRoute extends Component<PaymentProps, PaymentState> {
@@ -418,7 +421,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
   }
 
   private onMutationError(errors, errorModalMessage?) {
-    console.error("Order/Routes/Payment/index.tsx", errors)
+    logger.error(errors)
     this.setState({
       isCommittingMutation: false,
       isErrorModalOpen: true,
