@@ -16,6 +16,7 @@ import {
 
 export interface TransactionSummaryProps extends FlexProps {
   order: TransactionSummary_order
+  offerOverride?: string | null
 }
 
 export class TransactionSummary extends React.Component<
@@ -23,6 +24,7 @@ export class TransactionSummary extends React.Component<
 > {
   render() {
     const {
+      offerOverride,
       order: {
         itemsTotal,
         mode,
@@ -92,9 +94,13 @@ export class TransactionSummary extends React.Component<
         <StackableBorderBox flexDirection="column">
           {isOfferFlow ? (
             <>
-              <Entry label="Your offer" value={offerTotal} />
+              <Entry label="Your offer" value={offerOverride} />
               {Boolean(itemsTotal) && (
-                <Entry label="List price" secondary value={itemsTotal} />
+                <Entry
+                  label="List price"
+                  secondary
+                  value={itemsTotal || offerTotal}
+                />
               )}
 
               <Spacer mb={2} />

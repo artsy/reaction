@@ -90,19 +90,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
             } = data
 
             if (orderOrError.error) {
-              const errorCode = orderOrError.error.code
-              if (
-                errorCode === "cant_offer" ||
-                errorCode === "invalid_amount_cents"
-              ) {
-                this.onMutationError(
-                  orderOrError.error,
-                  "Cannot create offer",
-                  "There was an error processing your offer. Please review and try again."
-                )
-              } else {
-                this.onMutationError(orderOrError.error)
-              }
+              this.onMutationError(orderOrError.error)
             } else {
               this.props.router.push(`/orders/${this.props.order.id}/shipping`)
             }
@@ -192,7 +180,18 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
                 }
                 Sidebar={
                   <Flex flexDirection="column">
-                    <TransactionSummary order={order} mb={[2, 3]} />
+                    <TransactionSummary
+                      order={order}
+                      mb={[2, 3]}
+                      offerOverride={
+                        this.state.offerValue &&
+                        this.state.offerValue.toLocaleString("en-US", {
+                          style: "currency",
+                          currency: "USD",
+                          minimumFractionDigits: 0,
+                        })
+                      }
+                    />
                     <Helper artworkId={artwork.id} />
                     {xs && (
                       <>

@@ -1,5 +1,5 @@
 export const initialOfferSuccess = {
-  ecommerceSetOrderPayment: {
+  ecommerceInitialOffer: {
     orderOrError: {
       order: {
         id: "1234",
@@ -13,12 +13,12 @@ export const initialOfferSuccess = {
   },
 }
 
-export const initialOfferFailed = {
-  ecommerceSetOrderPayment: {
+export const initialOfferFailedCannotOffer = {
+  ecommerceInitialOffer: {
     orderOrError: {
       error: {
         type: "validation",
-        code: "cannot_offer",
+        code: "cant_offer",
         data: null,
       },
     },
