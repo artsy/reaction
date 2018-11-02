@@ -100,7 +100,7 @@ module.exports = (baseConfig, env) => {
       },
       stats: "errors-only",
     },
-    
+
     resolve: {
       extensions: [".mjs", ".js", ".jsx", ".ts", ".tsx"],
       alias: {
@@ -148,6 +148,6 @@ module.exports = (baseConfig, env) => {
       ],
     },
     plugins: plugins,
-  })
+  }
   return merge(baseConfig, artsyWebpackConfig)
 }
