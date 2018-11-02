@@ -105,6 +105,16 @@ module.exports = (baseConfig, env) => {
     module: {
       rules: [
         {
+          test: /\.graphql$/,
+          include: [/data/],
+          exclude: [/node_modules/],
+          use: [
+            {
+              loader: "raw-loader"
+            }
+          ]
+        },
+        {
           test: /\.tsx?$/,
           include: [/src/],
           exclude: [/node_modules/, /__tests__/],

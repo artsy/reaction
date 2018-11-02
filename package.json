@@ -160,6 +160,7 @@
     "found-scroll": "^0.1.5",
     "history": "^4.6.1",
     "isomorphic-fetch": "^2.2.1",
+    "jest-raw-loader": "^1.0.1",
     "jsonp": "^0.2.1",
     "loadable-components": "^2.2.2",
     "lodash": "^4.17.4",
@@ -168,6 +169,7 @@
     "openseadragon": "^2.3.1",
     "prop-types": "^15.5.10",
     "qs": "^6.5.0",
+    "raw-loader": "^0.5.1",
     "rc-slider": "^8.6.2",
     "react-css-transition-replace": "^3.0.2",
     "react-head": "^3.0.0",
@@ -212,7 +214,8 @@
   },
   "jest": {
     "transform": {
-      "^.+\\.(ts|tsx|js|jsx)$": "babel-jest"
+      "^.+\\.(ts|tsx|js|jsx)$": "babel-jest",
+      "\\.graphql$": "jest-raw-loader"
     },
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js|jsx)$",
     "testPathIgnorePatterns": [
