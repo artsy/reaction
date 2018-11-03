@@ -3,7 +3,7 @@ version: 2.1
 orbs:
   node: artsy/node@volatile
   yarn: artsy/yarn@volatile
-  # queue: eddiewebb/queue@volatile
+  queue: eddiewebb/queue@volatile
 
 jobs:
   relay:
@@ -33,12 +33,14 @@ jobs:
       # Setup the .npmrc with the proper registry and auth token to publish
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
       - run: yarn semantic-release
-  # pre-deploy:
-  #   executor: node/build
-  #   steps:
-  #     - queue/until_front_of_line:
-  #         time: "2" # Timeout after 2 minutes of waiting and fail the build
-  #         consider-job: false # Block on entire workflow instead of just this job
+  pre-deploy:
+    docker:
+      - image: eddiewebb/circleci-queue:latest 
+    steps:
+      - queue/until_front_of_line:
+          time: "2" # Timeout after 2 minutes of waiting and fail the build
+          consider-job: false # Block on entire workflow instead of just this job
+          only-on-branch: master
   test:
     executor: node/build
     steps:
@@ -56,28 +58,22 @@ workflows:
   build_and_verify:
     jobs:
       - update-cache
-          # requires:
-          #   - pre-deploy
+          requires:
+            - pre-deploy
       - relay
-          # requires:
-          #   - pre-deploy
+          requires:
+            - pre-deploy
       - lint
-          # requires:
-          #   - pre-deploy
+          requires:
+            - pre-deploy
       - type-check
-          # requires:
-          #   - pre-deploy
+          requires:
+            - pre-deploy
       - test
-          # requires:
-          #   - pre-deploy
+          requires:
+            - pre-deploy
 
-      # - pre-deploy:
-          # Queues builds so that only one deployment can happen at a time on
-          # master
-          # filters:
-          #   branches:
-          #     only:
-          #       - master
+      - pre-deploy
 
       - deploy:
           # The deploy job is the _only_ job that should have access to our npm
