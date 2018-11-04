@@ -1,5 +1,5 @@
 import { ArtistAuctionResultItem_auctionResult } from "__generated__/ArtistAuctionResultItem_auctionResult.graphql"
-import { ContextConsumer, ContextProps } from "Artsy"
+import { ContextConsumer } from "Artsy"
 import { Mediator } from "Artsy/SystemContext"
 import React, { SFC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -19,10 +19,13 @@ import {
   Spacer,
 } from "@artsy/palette"
 
-export interface Props extends ContextProps {
+export interface Props {
   auctionResult: ArtistAuctionResultItem_auctionResult
   mediator?: Mediator
   lastChild: boolean
+}
+
+interface PrivateProps extends Props {
   user: User
 }
 
@@ -74,7 +77,7 @@ export const ArtistAuctionResultItem: SFC<Props> = props => {
   )
 }
 
-const LargeAuctionItem: SFC<Props> = props => {
+const LargeAuctionItem: SFC<PrivateProps> = props => {
   const {
     auctionResult: {
       dimension_text,
@@ -141,7 +144,7 @@ const LargeAuctionItem: SFC<Props> = props => {
   )
 }
 
-const SmallAuctionItem: SFC<Props> = props => {
+const SmallAuctionItem: SFC<PrivateProps> = props => {
   const {
     auctionResult: { dimension_text, images, date_text, title },
     salePrice,
@@ -185,7 +188,7 @@ const SmallAuctionItem: SFC<Props> = props => {
   )
 }
 
-const ExtraSmallAuctionItem: SFC<Props> = props => {
+const ExtraSmallAuctionItem: SFC<PrivateProps> = props => {
   const {
     auctionResult: {
       dimension_text,

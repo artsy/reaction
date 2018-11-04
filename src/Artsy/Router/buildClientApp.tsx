@@ -28,14 +28,13 @@ export function buildClientApp(config: RouterConfig): Promise<Resolve> {
         routes = [],
       } = config
 
-      const { relayNetwork, user } = context
-      const relayBootstrap = JSON.parse(window.__RELAY_BOOTSTRAP__ || "{}")
-      const _user = getUser(user)
-      const relayEnvironment = createEnvironment({
-        cache: relayBootstrap,
-        user: _user,
-        relayNetwork,
-      })
+      const user = getUser(context.user)
+      const relayEnvironment =
+        context.relayEnvironment ||
+        createEnvironment({
+          cache: JSON.parse(window.__RELAY_BOOTSTRAP__ || "{}"),
+          user,
+        })
 
       const getHistoryProtocol = () => {
         switch (history.protocol) {
@@ -76,9 +75,8 @@ export function buildClientApp(config: RouterConfig): Promise<Resolve> {
         return (
           <Boot
             context={context}
-            user={_user}
+            user={user}
             relayEnvironment={relayEnvironment}
-            resolver={resolver}
             routes={routes}
           >
             <Hydrator>

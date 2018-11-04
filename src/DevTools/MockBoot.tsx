@@ -13,7 +13,6 @@ export const MockBoot: React.SFC<{
       context={null as any}
       user={null as any}
       relayEnvironment={null as any}
-      resolver={null as any}
       routes={null as any}
     >
       {children}

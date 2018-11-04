@@ -4,7 +4,9 @@ import { ErrorPage } from "Components/ErrorPage"
 import { mount } from "enzyme"
 import { Resolver } from "found-relay"
 import createRender from "found/lib/createRender"
-import getFarceResult from "found/lib/server/getFarceResult"
+import getFarceResult, {
+  FarceRedirectionResult,
+} from "found/lib/server/getFarceResult"
 import React from "react"
 import { HeadProvider, Meta } from "react-head"
 import { OrderApp } from "../OrderApp"
@@ -27,12 +29,12 @@ describe("OrderApp routing redirects", () => {
     const store = new Store(source)
     const environment = new Environment({ network, store })
 
-    return await getFarceResult({
+    return (await getFarceResult({
       url,
       routeConfig: routes,
       resolver: new Resolver(environment),
       render: createRender({}),
-    })
+    })) as FarceRedirectionResult
   }
 
   it("does not redirect to the status route if the order is pending", async () => {

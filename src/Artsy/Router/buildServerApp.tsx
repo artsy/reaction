@@ -4,7 +4,9 @@ import { Hydrator } from "Artsy/Router/Components/Hydrator"
 import queryMiddleware from "farce/lib/queryMiddleware"
 import { Resolver } from "found-relay"
 import createRender from "found/lib/createRender"
-import { getFarceResult } from "found/lib/server"
+import getFarceResult, {
+  FarceRedirectionResult,
+} from "found/lib/server/getFarceResult"
 import { getLoadableState } from "loadable-components/server"
 import React, { ComponentType } from "react"
 import ReactDOMServer from "react-dom/server"
@@ -12,14 +14,21 @@ import { getUser } from "Utils/getUser"
 import { trace } from "Utils/trace"
 import { RouterConfig } from "./"
 
-interface Resolve {
-  ServerApp?: ComponentType<any>
-  redirect?: string
-  status?: string
-  headTags?: any[]
+export interface Resolve {
+  ServerApp: ComponentType<any>
+  status: number
+  headTags: any[]
 }
 
-export function buildServerApp(config: RouterConfig): Promise<Resolve> {
+export function isRedirect(
+  farceResult: FarceRedirectionResult | object
+): farceResult is FarceRedirectionResult {
+  return (farceResult as FarceRedirectionResult).redirect !== undefined
+}
+
+export function buildServerApp(
+  config: RouterConfig
+): Promise<Resolve | FarceRedirectionResult> {
   return trace(
     "buildServerApp",
     new Promise(async (resolve, reject) => {
@@ -33,7 +42,7 @@ export function buildServerApp(config: RouterConfig): Promise<Resolve> {
         const render = createRender({})
         const headTags = []
 
-        const { redirect, status, element } = await trace(
+        const farceResult = await trace(
           "buildServerApp.farceResults",
           getFarceResult({
             url,
@@ -44,15 +53,11 @@ export function buildServerApp(config: RouterConfig): Promise<Resolve> {
           })
         )
 
-        if (redirect) {
-          resolve({
-            redirect,
-            // TODO: The docs seem to indicate that if there’s a redirect there
-            //       will not be a status.
-            //       https://github.com/4Catalyzer/found#server-side-rendering
-            status,
-          })
+        if (isRedirect(farceResult)) {
+          resolve(farceResult)
           return
+        } else {
+          farceResult.element
         }
 
         const App = props => {
@@ -63,7 +68,6 @@ export function buildServerApp(config: RouterConfig): Promise<Resolve> {
               headTags={headTags}
               initialMatchingMediaQueries={initialMatchingMediaQueries}
               relayEnvironment={relayEnvironment}
-              resolver={resolver}
               routes={routes}
             >
               <Hydrator
@@ -71,7 +75,7 @@ export function buildServerApp(config: RouterConfig): Promise<Resolve> {
                 loadableState={props.loadableState}
                 url={url}
               >
-                {element}
+                {farceResult.element}
               </Hydrator>
             </Boot>
           )
@@ -112,7 +116,7 @@ export function buildServerApp(config: RouterConfig): Promise<Resolve> {
           ServerApp: props => (
             <App data={relayData} loadableState={loadableState} {...props} />
           ),
-          status,
+          status: farceResult.status,
           headTags,
         })
       } catch (error) {

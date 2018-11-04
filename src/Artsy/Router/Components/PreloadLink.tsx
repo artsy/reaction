@@ -1,7 +1,6 @@
 import { ContextConsumer, ContextProps, withContext } from "Artsy/SystemContext"
-import { Link } from "found"
-import { withRouter } from "found"
-import { ResolverUtils, Router, WithRouter } from "found"
+import { Link, ResolverUtils, Router, withRouter, WithRouter } from "found"
+import { Resolver } from "found-relay"
 import { isEmpty, isUndefined, last, pick } from "lodash/fp"
 import PropTypes from "prop-types"
 import React from "react"
@@ -73,8 +72,6 @@ const _PreloadLink: React.SFC<PreloadLinkProps> = preloadLinkProps => {
        * Injected props from ContextConsumer
        */
       relayEnvironment: PropTypes.object.isRequired,
-      routes: PropTypes.array.isRequired,
-      resolver: PropTypes.object.isRequired,
     }
 
     static defaultProps = {
@@ -113,7 +110,7 @@ const _PreloadLink: React.SFC<PreloadLinkProps> = preloadLinkProps => {
      * ]
      */
     getRouteQuery(): Partial<QueryRendererProps> {
-      const { resolver, relayEnvironment, router, to } = this.props
+      const { relayEnvironment, router, to } = this.props
       const { getRouteMatches, getRouteValues } = ResolverUtils
       const location = router.createLocation(to)
       const match = router.matcher.match(location)
@@ -145,8 +142,9 @@ const _PreloadLink: React.SFC<PreloadLinkProps> = preloadLinkProps => {
       )
 
       const variables = last(
-        resolver
-          .getRouteVariables(match, routeMatches)
+        // TODO: This should just be a pure function in found-relay
+        Resolver.prototype.getRouteVariables
+          .call(null, match, routeMatches)
           .filter(
             routeVariables =>
               !isUndefined(routeVariables) && !isEmpty(routeVariables)

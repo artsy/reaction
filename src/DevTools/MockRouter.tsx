@@ -1,3 +1,4 @@
+import { createEnvironment } from "Artsy/Relay/createEnvironment"
 import { buildClientApp } from "Artsy/Router/buildClientApp"
 import { ContextProps } from "Artsy/SystemContext"
 import { createMockNetworkLayer } from "DevTools/createMockNetworkLayer"
@@ -51,7 +52,11 @@ export class MockRouter extends React.Component<Props> {
           ...context,
           user,
           initialMatchingMediaQueries,
-          relayNetwork: mockResolvers && createMockNetworkLayer(mockResolvers),
+          relayEnvironment:
+            mockResolvers &&
+            createEnvironment({
+              relayNetwork: createMockNetworkLayer(mockResolvers),
+            }),
         },
       })
 

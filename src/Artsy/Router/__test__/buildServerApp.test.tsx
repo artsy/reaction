@@ -3,7 +3,7 @@
  */
 
 import { ContextConsumer } from "Artsy"
-import { buildServerApp } from "Artsy/Router/buildServerApp"
+import { buildServerApp, Resolve } from "Artsy/Router/buildServerApp"
 import { render } from "enzyme"
 import React from "react"
 import { Title } from "react-head"
@@ -23,7 +23,7 @@ describe("buildServerApp", () => {
     Component = defaultComponent,
     options = {},
   } = {}) => {
-    const { ServerApp, status, headTags } = await buildServerApp({
+    const { ServerApp, status, headTags } = (await buildServerApp({
       routes: [
         {
           path: "/",
@@ -32,7 +32,7 @@ describe("buildServerApp", () => {
       ],
       url,
       ...options,
-    })
+    })) as Resolve
 
     return {
       wrapper: render(<ServerApp />),
@@ -82,7 +82,6 @@ describe("buildServerApp", () => {
               "initialMatchingMediaQueries",
               "mediator",
               "relayEnvironment",
-              "resolver",
               "routes",
               "user",
             ])

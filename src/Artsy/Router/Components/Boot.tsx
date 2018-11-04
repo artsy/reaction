@@ -1,7 +1,7 @@
 import { Theme, themeProps } from "@artsy/palette"
 import { track } from "Artsy/Analytics"
 import * as Artsy from "Artsy/SystemContext"
-import { ResolverUtils, RouteConfig } from "found"
+import { RouteConfig } from "found"
 import React from "react"
 import { HeadProvider } from "react-head"
 import { Environment } from "relay-runtime"
@@ -19,7 +19,6 @@ export interface BootProps {
   user: User
   initialMatchingMediaQueries?: MatchingMediaQueries
   relayEnvironment: Environment
-  resolver: ResolverUtils
   routes: RouteConfig
   headTags?: JSX.Element[]
 }

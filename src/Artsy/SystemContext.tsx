@@ -9,7 +9,10 @@ export interface Mediator {
   trigger: (action: string, config?: object) => void
 }
 
-export interface SystemProps {
+/**
+ * Globally accessible Context values for use in Artsy apps
+ */
+export interface ContextProps {
   /**
    * The currently signed-in user.
    *
@@ -41,33 +44,19 @@ export interface SystemProps {
   isEigen?: boolean
 }
 
-/**
- * Globally accessible Context values for use in Artsy apps
- */
-export interface ContextProps<T = {}> extends SystemProps {
-  /**
-   * Catch-all for additional context values passed in during initialization.
-   */
-  [key: string]: any
-}
-
-const Context = React.createContext<ContextProps<any>>({})
+const Context = React.createContext<ContextProps>({})
 
 /**
  * Creates a new Context.Provider with a user and Relay environment, or defaults
  * if not passed in as props.
  */
-export const ContextProvider: SFC<ContextProps<any>> = ({
-  children,
-  ...props
-}) => {
-  const _user = getUser(props.user)
-  const relayEnvironment =
-    props.relayEnvironment || createEnvironment({ user: _user })
+export const ContextProvider: SFC<ContextProps> = ({ children, ...props }) => {
+  const user = getUser(props.user)
+  const relayEnvironment = props.relayEnvironment || createEnvironment({ user })
 
   const providerValues = {
     ...props,
-    user: _user,
+    user,
     relayEnvironment,
   }
 

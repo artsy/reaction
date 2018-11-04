@@ -85,10 +85,8 @@ describe("buildClientApp", () => {
         <ContextConsumer>
           {context => {
             expect(Object.keys(context).sort()).toEqual([
-              "foo",
               "mediator",
               "relayEnvironment",
-              "resolver",
               "routes",
               "user",
             ])
@@ -110,7 +108,6 @@ describe("buildClientApp", () => {
         },
       ],
       context: {
-        foo: "bar",
         mediator: {
           trigger: jest.fn(),
         },
