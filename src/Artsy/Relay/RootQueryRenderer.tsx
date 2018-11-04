@@ -1,4 +1,8 @@
-import { ContextProps, ContextProvider, withContext } from "Artsy/SystemContext"
+import {
+  SystemContextProps,
+  SystemContextProvider,
+  withSystemContext,
+} from "Artsy/SystemContext"
 import React from "react"
 import { GraphQLTaggedNode, ReadyState } from "react-relay"
 import { QueryRenderer } from "react-relay"
@@ -15,7 +19,7 @@ interface QueryRendererProps {
   render(readyState: ReadyState): React.ReactElement<any> | undefined | null
 }
 
-type Props = ContextProps & QueryRendererProps
+type Props = SystemContextProps & QueryRendererProps
 
 const Renderer: React.SFC<Props> = ({
   user,
@@ -24,7 +28,7 @@ const Renderer: React.SFC<Props> = ({
   ...props
 }) => <QueryRenderer {...props} environment={relayEnvironment} />
 
-const RendererWithContext = withContext(Renderer)
+const RendererWithContext = withSystemContext(Renderer)
 
 /**
  * This component is, for now, mostly intended as an easy way to render stories, as it combines the Artsy
@@ -37,7 +41,7 @@ export const RootQueryRenderer: React.SFC<Props> = ({
   children,
   ...props
 }) => (
-  <ContextProvider user={user}>
+  <SystemContextProvider user={user}>
     <RendererWithContext {...props} />
-  </ContextProvider>
+  </SystemContextProvider>
 )

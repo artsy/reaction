@@ -1,2 +1,6 @@
 export * from "./Analytics"
-export { ContextProvider, ContextConsumer, ContextProps } from "./SystemContext"
+export {
+  SystemContextProvider as ContextProvider,
+  SystemContextConsumer as ContextConsumer,
+  SystemContextProps as ContextProps,
+} from "./SystemContext"

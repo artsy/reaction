@@ -1,6 +1,6 @@
 import { ContextProvider } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
-import { ContextConsumer } from "Artsy/SystemContext"
+import { SystemContextConsumer } from "Artsy/SystemContext"
 import { IMocks } from "graphql-tools/dist/Interfaces"
 import React from "react"
 import { QueryRenderer, RelayContainer } from "react-relay"
@@ -150,7 +150,7 @@ export class MockRelayRenderer<
     })
 
     return (
-      <ContextConsumer>
+      <SystemContextConsumer>
         {contextProps => (
           <ContextProvider {...contextProps} relayEnvironment={environment}>
             <QueryRenderer
@@ -165,7 +165,7 @@ export class MockRelayRenderer<
             />
           </ContextProvider>
         )}
-      </ContextConsumer>
+      </SystemContextConsumer>
     )
   }
 }

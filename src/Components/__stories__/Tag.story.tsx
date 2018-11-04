@@ -2,19 +2,19 @@ import { storiesOf } from "@storybook/react"
 import React from "react"
 import { Contents } from "../Tag"
 
-import { ContextProvider } from "Artsy/SystemContext"
+import { SystemContextProvider } from "Artsy/SystemContext"
 
 storiesOf("Components/Pages/Tag/Contents", module).add("Butt", () => {
   return (
     <div>
-      <ContextProvider>
+      <SystemContextProvider>
         <Contents
           tagID="butt"
           sort="-year"
           filters={{ for_sale: true }}
           onStateChange={console.log}
         />
-      </ContextProvider>
+      </SystemContextProvider>
     </div>
   )
 })

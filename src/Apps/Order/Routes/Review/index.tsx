@@ -14,7 +14,7 @@ import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "App
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ContextConsumer, Mediator } from "Artsy/SystemContext"
+import { Mediator, SystemContextConsumer } from "Artsy/SystemContext"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { RouteConfig, Router } from "found"
 import React, { Component } from "react"
@@ -383,11 +383,11 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
 }
 
 const ReviewRouteWrapper = props => (
-  <ContextConsumer>
+  <SystemContextConsumer>
     {({ mediator }) => {
       return <ReviewRoute {...props} mediator={mediator} />
     }}
-  </ContextConsumer>
+  </SystemContextConsumer>
 )
 
 export const ReviewFragmentContainer = createFragmentContainer(

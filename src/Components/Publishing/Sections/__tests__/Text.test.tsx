@@ -1,4 +1,4 @@
-import { ContextProvider } from "Artsy/SystemContext"
+import { SystemContextProvider } from "Artsy/SystemContext"
 import { TextFeatureArticle } from "Components/Publishing/Fixtures/Articles"
 import { TextFromArticle } from "Components/Publishing/Fixtures/Helpers"
 import { wrapperWithContext } from "Components/Publishing/Fixtures/Helpers"
@@ -20,9 +20,9 @@ describe("Text", () => {
       {
         tooltipsData: PropTypes.object,
       },
-      <ContextProvider>
+      <SystemContextProvider>
         <Text {...props} />
-      </ContextProvider>
+      </SystemContextProvider>
     )
   }
 

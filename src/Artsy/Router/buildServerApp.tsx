@@ -3,7 +3,9 @@ import { Boot } from "Artsy/Router/Components/Boot"
 import queryMiddleware from "farce/lib/queryMiddleware"
 import { Resolver } from "found-relay"
 import createRender from "found/lib/createRender"
-import { getFarceResult } from "found/lib/server"
+import getFarceResult, {
+  FarceRedirectionResult,
+} from "found/lib/server/getFarceResult"
 import { getLoadableState } from "loadable-components/server"
 import React, { ComponentType } from "react"
 import ReactDOMServer from "react-dom/server"
@@ -15,7 +17,7 @@ import { RouterConfig } from "./"
 import { createRouteConfig } from "./Utils/createRouteConfig"
 import { matchingMediaQueriesForUserAgent } from "./Utils/matchingMediaQueriesForUserAgent"
 
-interface Resolve {
+export interface Resolve {
   ServerApp?: ComponentType<any>
   redirect?: {
     url: string
@@ -32,7 +34,15 @@ export interface ServerRouterConfig extends RouterConfig {
   userAgent?: string
 }
 
-export function buildServerApp(config: ServerRouterConfig): Promise<Resolve> {
+export function isRedirect(
+  farceResult: FarceRedirectionResult | object
+): farceResult is FarceRedirectionResult {
+  return (farceResult as FarceRedirectionResult).redirect !== undefined
+}
+
+export function buildServerApp(
+  config: ServerRouterConfig
+): Promise<Resolve | FarceRedirectionResult> {
   return trace(
     "buildServerApp",
     new Promise(async (resolve, reject) => {
@@ -45,7 +55,7 @@ export function buildServerApp(config: ServerRouterConfig): Promise<Resolve> {
         const resolver = new Resolver(relayEnvironment)
         const render = createRender({})
 
-        const { redirect, status, element } = await trace(
+        const farceResult = await trace(
           "buildServerApp.farceResults",
           getFarceResult({
             url,
@@ -56,14 +66,8 @@ export function buildServerApp(config: ServerRouterConfig): Promise<Resolve> {
           })
         )
 
-        if (redirect) {
-          resolve({
-            redirect,
-            // TODO: The docs seem to indicate that if there’s a redirect there
-            //       will not be a status.
-            //       https://github.com/4Catalyzer/found#server-side-rendering
-            status,
-          })
+        if (isRedirect(farceResult)) {
+          resolve(farceResult)
           return
         }
 
@@ -79,10 +83,9 @@ export function buildServerApp(config: ServerRouterConfig): Promise<Resolve> {
               headTags={headTags}
               onlyMatchMediaQueries={matchingMediaQueries}
               relayEnvironment={relayEnvironment}
-              resolver={resolver}
               routes={routes}
             >
-              {element}
+              {farceResult.element}
             </Boot>
           )
         }
@@ -128,10 +131,10 @@ export function buildServerApp(config: ServerRouterConfig): Promise<Resolve> {
         `)
 
         resolve({
-          ServerApp,
-          status,
           headTags,
+          ServerApp,
           scripts: scripts.join("\n"),
+          status: farceResult.status,
         })
       } catch (error) {
         console.error("[Artsy/Router/buildServerApp] Error:", error)

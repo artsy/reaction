@@ -10,7 +10,7 @@ import {
 import { Status_order } from "__generated__/Status_order.graphql"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
-import { ContextConsumer, Mediator } from "Artsy/SystemContext"
+import { Mediator, SystemContextConsumer } from "Artsy/SystemContext"
 import { Router } from "found"
 import React, { Component } from "react"
 import { Title } from "react-head"
@@ -129,11 +129,11 @@ export class StatusRoute extends Component<StatusProps> {
 }
 
 const StatusRouteWrapper = props => (
-  <ContextConsumer>
+  <SystemContextConsumer>
     {({ mediator }) => {
       return <StatusRoute {...props} mediator={mediator} />
     }}
-  </ContextConsumer>
+  </SystemContextConsumer>
 )
 
 const offerMessages = {

@@ -2,10 +2,10 @@ import React from "react"
 import { graphql, QueryRenderer } from "react-relay"
 
 import { MarketDataSummaryContentsQuery } from "__generated__/MarketDataSummaryContentsQuery.graphql"
-import { ContextProps, withContext } from "Artsy/SystemContext"
+import { SystemContextProps, withSystemContext } from "Artsy/SystemContext"
 import MarketDataSummary from "./MarketDataSummary"
 
-export interface Props extends ContextProps {
+export interface Props extends SystemContextProps {
   artistID: string
 }
 
@@ -35,4 +35,4 @@ class MarketDataSummaryContents extends React.Component<Props, null> {
   }
 }
 
-export const Contents = withContext(MarketDataSummaryContents)
+export const Contents = withSystemContext(MarketDataSummaryContents)

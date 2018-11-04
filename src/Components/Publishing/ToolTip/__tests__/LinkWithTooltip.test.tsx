@@ -1,4 +1,4 @@
-import { ContextProvider } from "Artsy/SystemContext"
+import { SystemContextProvider } from "Artsy/SystemContext"
 import { Artists, Genes } from "Components/Publishing/Fixtures/Components"
 import { wrapperWithContext } from "Components/Publishing/Fixtures/Helpers"
 import { mount } from "enzyme"
@@ -33,11 +33,11 @@ describe("LinkWithTooltip", () => {
           onTriggerToolTip: PropTypes.func,
           relay: PropTypes.object,
         },
-        <ContextProvider>
+        <SystemContextProvider>
           <LinkWithTooltip url={url} tracking={tracking}>
             {text}
           </LinkWithTooltip>
-        </ContextProvider>
+        </SystemContextProvider>
       )
     )
   }

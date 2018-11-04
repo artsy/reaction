@@ -9,7 +9,7 @@ import React, { Component } from "react"
 import { graphql, QueryRenderer } from "react-relay"
 import { ArticleProps } from "../Article"
 
-interface Props extends Artsy.ContextProps {
+interface Props extends Artsy.SystemContextProps {
   article: ArticleData
   shouldFetchData?: boolean
   onOpenAuthModal?: ArticleProps["onOpenAuthModal"]
@@ -137,4 +137,4 @@ class TooltipsContextProvider extends Component<any> {
   }
 }
 
-export const TooltipsData = Artsy.withContext(TooltipsDataLoader)
+export const TooltipsData = Artsy.withSystemContext(TooltipsDataLoader)

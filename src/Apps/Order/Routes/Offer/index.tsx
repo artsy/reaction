@@ -6,7 +6,7 @@ import { Helper } from "Apps/Order/Components/Helper"
 import { OfferInput } from "Apps/Order/Components/OfferInput"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
-import { ContextConsumer, Mediator } from "Artsy/SystemContext"
+import { Mediator, SystemContextConsumer } from "Artsy/SystemContext"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
 import React, { Component } from "react"
@@ -243,11 +243,11 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
 }
 
 const OfferRouteWrapper = props => (
-  <ContextConsumer>
+  <SystemContextConsumer>
     {({ mediator }) => {
       return <OfferRoute {...props} mediator={mediator} />
     }}
-  </ContextConsumer>
+  </SystemContextConsumer>
 )
 
 export const OfferFragmentContainer = createFragmentContainer(

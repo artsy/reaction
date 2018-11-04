@@ -1,4 +1,4 @@
-import { ContextProvider } from "Artsy/SystemContext"
+import { SystemContextProvider } from "Artsy/SystemContext"
 import React from "react"
 import { storiesOfPublishing } from "../../../__stories__/storiesOf.js"
 import { Article } from "../Article"
@@ -11,7 +11,7 @@ import { RelatedCanvas, RelatedPanel } from "../Fixtures/Components"
 
 storiesOfPublishing("Publishing/Read More", module).add("Text Article", () => {
   return (
-    <ContextProvider>
+    <SystemContextProvider>
       <Article
         article={StandardArticle}
         relatedArticlesForPanel={RelatedPanel}
@@ -19,7 +19,7 @@ storiesOfPublishing("Publishing/Read More", module).add("Text Article", () => {
         infiniteScrollEntrySlug="artsy-editorial-this-article"
         isTruncated
       />
-    </ContextProvider>
+    </SystemContextProvider>
   )
 })
 
@@ -27,27 +27,27 @@ storiesOfPublishing("Publishing/Read More", module).add(
   "Image Heavy Article",
   () => {
     return (
-      <ContextProvider>
+      <SystemContextProvider>
         <Article
           article={ImageHeavyStandardArticle}
           relatedArticlesForPanel={RelatedPanel}
           relatedArticlesForCanvas={RelatedCanvas}
           isTruncated
         />
-      </ContextProvider>
+      </SystemContextProvider>
     )
   }
 )
 
 storiesOfPublishing("Publishing/Read More", module).add("Short Article", () => {
   return (
-    <ContextProvider>
+    <SystemContextProvider>
       <Article
         article={ShortStandardArticle}
         relatedArticlesForPanel={RelatedPanel}
         relatedArticlesForCanvas={RelatedCanvas}
         isTruncated
       />
-    </ContextProvider>
+    </SystemContextProvider>
   )
 })

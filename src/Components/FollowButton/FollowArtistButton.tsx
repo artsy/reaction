@@ -21,7 +21,7 @@ import {
 
 interface Props
   extends React.HTMLProps<FollowArtistButton>,
-    Artsy.ContextProps {
+    Artsy.SystemContextProps {
   relay?: RelayProp
   artist?: FollowArtistButton_artist
   tracking?: TrackingProp
@@ -188,7 +188,7 @@ export class FollowArtistButton extends React.Component<Props, State> {
 
 export const FollowArtistButtonFragmentContainer = track({})(
   createFragmentContainer(
-    Artsy.withContext(FollowArtistButton),
+    Artsy.withSystemContext(FollowArtistButton),
     graphql`
       fragment FollowArtistButton_artist on Artist
         @argumentDefinitions(

@@ -1,12 +1,12 @@
 import { Checkbox, Sans } from "@artsy/palette"
-import { ContextConsumer } from "Artsy/SystemContext"
+import { SystemContextConsumer } from "Artsy/SystemContext"
 import React from "react"
 import { FilterState } from "../../FilterState"
 
 export const WaysToBuyFilter: React.SFC<{
   filters: FilterState
 }> = ({ filters }) => (
-  <ContextConsumer>
+  <SystemContextConsumer>
     {({ mediator }) => (
       <React.Fragment>
         <Sans size="2" weight="medium" color="black100" my={1}>
@@ -37,5 +37,5 @@ export const WaysToBuyFilter: React.SFC<{
         </Checkbox>
       </React.Fragment>
     )}
-  </ContextConsumer>
+  </SystemContextConsumer>
 )

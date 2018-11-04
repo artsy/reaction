@@ -17,7 +17,7 @@ import {
 
 interface Props
   extends React.HTMLProps<FollowProfileButton>,
-    Artsy.ContextProps {
+    Artsy.SystemContextProps {
   relay?: RelayProp
   profile?: FollowProfileButton_profile
   tracking?: TrackingProp
@@ -109,7 +109,7 @@ export class FollowProfileButton extends React.Component<Props> {
 
 export const FollowProfileButtonFragmentContainer = track({})(
   createFragmentContainer(
-    Artsy.withContext(FollowProfileButton),
+    Artsy.withSystemContext(FollowProfileButton),
     graphql`
       fragment FollowProfileButton_profile on Profile {
         __id

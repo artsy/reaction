@@ -1,5 +1,5 @@
 import { Button, color, Flex, SmallSelect, Spacer } from "@artsy/palette"
-import { ContextConsumer } from "Artsy/SystemContext"
+import { SystemContextConsumer } from "Artsy/SystemContext"
 import { FilterIcon } from "Assets/Icons/FilterIcon"
 import React from "react"
 import { Media } from "Utils/Responsive"
@@ -10,7 +10,7 @@ export const SortFilter: React.SFC<{
   onShow?: () => void
 }> = ({ filters, onShow }) => {
   return (
-    <ContextConsumer>
+    <SystemContextConsumer>
       {({ mediator }) => (
         <Flex
           justifyContent={["space-between", "flex-end"]}
@@ -57,6 +57,6 @@ export const SortFilter: React.SFC<{
           </Media>
         </Flex>
       )}
-    </ContextConsumer>
+    </SystemContextConsumer>
   )
 }

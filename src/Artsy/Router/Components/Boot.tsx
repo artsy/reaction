@@ -3,7 +3,7 @@ import * as Sentry from "@sentry/browser"
 import { track } from "Artsy/Analytics"
 import * as Artsy from "Artsy/SystemContext"
 import { ErrorBoundary } from "Components/ErrorBoundary"
-import { ResolverUtils, RouteConfig } from "found"
+import { RouteConfig } from "found"
 import React from "react"
 import { HeadProvider } from "react-head"
 import { Environment } from "relay-runtime"
@@ -26,7 +26,6 @@ export interface BootProps {
   user: User
   onlyMatchMediaQueries?: MatchingMediaQueries
   relayEnvironment: Environment
-  resolver: ResolverUtils
   routes: RouteConfig
   headTags?: JSX.Element[]
 }
@@ -54,7 +53,7 @@ export class Boot extends React.Component<BootProps> {
       <ErrorBoundary>
         <HeadProvider headTags={headTags}>
           <StateProvider>
-            <Artsy.ContextProvider {...contextProps}>
+            <Artsy.SystemContextProvider {...contextProps}>
               <MediaContextProvider onlyMatch={props.onlyMatchMediaQueries}>
                 <ResponsiveProvider
                   mediaQueries={themeProps.mediaQueries}
@@ -76,7 +75,7 @@ export class Boot extends React.Component<BootProps> {
                   </Theme>
                 </ResponsiveProvider>
               </MediaContextProvider>
-            </Artsy.ContextProvider>
+            </Artsy.SystemContextProvider>
           </StateProvider>
         </HeadProvider>
       </ErrorBoundary>

@@ -19,7 +19,7 @@ import Icon from "../Icon"
 const SIZE = 40
 
 export interface SaveProps
-  extends Artsy.ContextProps,
+  extends Artsy.SystemContextProps,
     React.HTMLProps<React.ComponentType> {
   artwork: Save_artwork
   style?: any
@@ -234,7 +234,7 @@ export const Container = styled.div`
 `
 
 export default createFragmentContainer(
-  Artsy.withContext(SaveButton),
+  Artsy.withSystemContext(SaveButton),
   graphql`
     fragment Save_artwork on Artwork {
       __id

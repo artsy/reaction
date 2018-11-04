@@ -12,7 +12,7 @@ import { Helper } from "Apps/Order/Components/Helper"
 import { OfferInput } from "Apps/Order/Components/OfferInput"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
-import { ContextConsumer, Mediator } from "Artsy/SystemContext"
+import { Mediator, SystemContextConsumer } from "Artsy/SystemContext"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { StaticCollapse } from "Components/StaticCollapse"
 import { Router } from "found"
@@ -305,11 +305,11 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
 }
 
 const RespondRouteWrapper = props => (
-  <ContextConsumer>
+  <SystemContextConsumer>
     {({ mediator }) => {
       return <RespondRoute {...props} mediator={mediator} />
     }}
-  </ContextConsumer>
+  </SystemContextConsumer>
 )
 
 export const RespondFragmentContainer = createFragmentContainer(

@@ -4,7 +4,11 @@
 
 import { ContextConsumer } from "Artsy"
 import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
-import { buildServerApp, ServerRouterConfig } from "Artsy/Router/buildServerApp"
+import {
+  buildServerApp,
+  Resolve,
+  ServerRouterConfig,
+} from "Artsy/Router/buildServerApp"
 import { createMockNetworkLayer } from "DevTools"
 import { render } from "enzyme"
 import React from "react"
@@ -30,7 +34,7 @@ describe("buildServerApp", () => {
     ServerRouterConfig,
     Exclude<keyof ServerRouterConfig, "routes">
   > = {}) => {
-    const { ServerApp, ...rest } = await buildServerApp({
+    const { ServerApp, ...rest } = (await buildServerApp({
       routes: [
         {
           path: "/",
@@ -51,7 +55,7 @@ describe("buildServerApp", () => {
       url,
       userAgent: "A random user-agent",
       ...options,
-    })
+    })) as Resolve
     return {
       ...rest,
       wrapper: render(<ServerApp />),
@@ -99,7 +103,6 @@ describe("buildServerApp", () => {
               "mediator",
               "onlyMatchMediaQueries",
               "relayEnvironment",
-              "resolver",
               "routes",
               "user",
             ])

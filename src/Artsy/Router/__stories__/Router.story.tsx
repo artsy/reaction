@@ -1,6 +1,6 @@
 import { storiesOf } from "@storybook/react"
 import { PreloadLink } from "Artsy/Router"
-import { ContextConsumer } from "Artsy/SystemContext"
+import { SystemContextConsumer } from "Artsy/SystemContext"
 import { MockRouter } from "DevTools/MockRouter"
 import React from "react"
 import { graphql } from "react-relay"
@@ -22,7 +22,7 @@ const routes = [
     Component: ({ artist, children, ...props }) => {
       return (
         <>
-          <ContextConsumer>
+          <SystemContextConsumer>
             {context => {
               return (
                 <div>
@@ -48,7 +48,7 @@ const routes = [
                 </div>
               )
             }}
-          </ContextConsumer>
+          </SystemContextConsumer>
         </>
       )
     },

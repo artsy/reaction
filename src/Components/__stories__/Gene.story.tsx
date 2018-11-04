@@ -2,27 +2,27 @@ import { storiesOf } from "@storybook/react"
 import React from "react"
 import { Contents } from "../Gene"
 
-import { ContextProvider } from "Artsy/SystemContext"
+import { SystemContextProvider } from "Artsy/SystemContext"
 
 storiesOf("Components/Pages/Gene/Contents", module)
   .add("Artists Mode - Minimalism", () => {
     return (
       <div>
-        <ContextProvider>
+        <SystemContextProvider>
           <Contents
             filters={{}}
             geneID="minimalism"
             mode="artists"
             onStateChange={console.log}
           />
-        </ContextProvider>
+        </SystemContextProvider>
       </div>
     )
   })
   .add("Artworks Mode - Animals", () => {
     return (
       <div>
-        <ContextProvider>
+        <SystemContextProvider>
           <Contents
             sort="-year"
             filters={{ for_sale: true }}
@@ -30,14 +30,14 @@ storiesOf("Components/Pages/Gene/Contents", module)
             mode="artworks"
             onStateChange={console.log}
           />
-        </ContextProvider>
+        </SystemContextProvider>
       </div>
     )
   })
   .add("Artworks Mode w/ Pagination Issue - Russia", () => {
     return (
       <div>
-        <ContextProvider>
+        <SystemContextProvider>
           <Contents
             sort="-year"
             filters={{ for_sale: true }}
@@ -45,7 +45,7 @@ storiesOf("Components/Pages/Gene/Contents", module)
             mode="artworks"
             onStateChange={console.log}
           />
-        </ContextProvider>
+        </SystemContextProvider>
       </div>
     )
   })

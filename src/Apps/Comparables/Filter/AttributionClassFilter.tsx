@@ -1,12 +1,12 @@
 import { Checkbox } from "@artsy/palette"
 import { FilterState } from "Apps/Collect/FilterState"
-import { ContextConsumer } from "Artsy/SystemContext"
+import { SystemContextConsumer } from "Artsy/SystemContext"
 import React from "react"
 import { Subscribe } from "unstated"
 
 export const AttributionClassFilter: React.SFC = () => {
   return (
-    <ContextConsumer>
+    <SystemContextConsumer>
       {({ mediator }) => {
         return (
           <Subscribe to={[FilterState]}>
@@ -51,7 +51,7 @@ export const AttributionClassFilter: React.SFC = () => {
           </Subscribe>
         )
       }}
-    </ContextConsumer>
+    </SystemContextConsumer>
   )
 }
 

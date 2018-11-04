@@ -3,13 +3,19 @@ import { FollowArtistPopoverRow_artist } from "__generated__/FollowArtistPopover
 import { FollowArtistPopoverRowMutation } from "__generated__/FollowArtistPopoverRowMutation.graphql"
 import { ContextProps } from "Artsy"
 import React from "react"
-import { commitMutation, createFragmentContainer, graphql } from "react-relay"
+import {
+  commitMutation,
+  createFragmentContainer,
+  graphql,
+  RelayProp,
+} from "react-relay"
 import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
 import styled from "styled-components"
 import { get } from "Utils/get"
 
 interface Props extends ContextProps {
   artist: FollowArtistPopoverRow_artist
+  relay: RelayProp
 }
 
 interface State {

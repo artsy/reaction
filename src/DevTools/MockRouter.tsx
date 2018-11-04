@@ -1,3 +1,4 @@
+import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
 import { RouterConfig } from "Artsy/Router"
 import { buildClientApp } from "Artsy/Router/buildClientApp"
 import { createMockNetworkLayer } from "DevTools/createMockNetworkLayer"
@@ -6,11 +7,9 @@ import { RouteConfig } from "found"
 import { IMocks } from "graphql-tools/dist/Interfaces"
 import React from "react"
 import { getUser } from "Utils/getUser"
-import { MatchingMediaQueries } from "Utils/Responsive"
 
 interface Props {
   routes: RouteConfig[]
-  initialMatchingMediaQueries?: MatchingMediaQueries
   initialRoute?: string
   initialState?: object
   historyOptions?: HistoryOptions
@@ -32,7 +31,6 @@ export class MockRouter extends React.Component<Props> {
       routes,
       initialRoute,
       historyOptions,
-      initialMatchingMediaQueries,
       mockResolvers,
       context,
     } = this.props
@@ -50,8 +48,11 @@ export class MockRouter extends React.Component<Props> {
         context: {
           ...context,
           user,
-          initialMatchingMediaQueries,
-          relayNetwork: mockResolvers && createMockNetworkLayer(mockResolvers),
+          relayEnvironment:
+            mockResolvers &&
+            createRelaySSREnvironment({
+              relayNetwork: createMockNetworkLayer(mockResolvers),
+            }),
         },
       })
 

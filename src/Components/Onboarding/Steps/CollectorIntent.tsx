@@ -6,7 +6,7 @@ import {
   CollectorIntentUpdateCollectorProfileMutation,
   Intents,
 } from "__generated__/CollectorIntentUpdateCollectorProfileMutation.graphql"
-import { ContextProps, withContext } from "Artsy/SystemContext"
+import { SystemContextProps, withSystemContext } from "Artsy/SystemContext"
 import Colors from "../../../Assets/Colors"
 import { MultiButtonState } from "../../Buttons/MultiStateButton"
 import { media } from "../../Helpers"
@@ -26,7 +26,7 @@ const OptionsContainer = styled.div`
   `};
 `
 
-type Props = StepProps & ContextProps
+type Props = StepProps & SystemContextProps
 
 interface State {
   selectedOptions: { [option: string]: boolean }
@@ -123,7 +123,7 @@ export class CollectorIntentComponent extends React.Component<Props, State> {
   }
 }
 
-const CollectorIntent = withContext(CollectorIntentComponent)
+const CollectorIntent = withSystemContext(CollectorIntentComponent)
 // tslint:disable:no-string-literal
 CollectorIntent["slug"] = CollectorIntentComponent.slug
 

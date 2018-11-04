@@ -11,7 +11,7 @@ import {
 import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "Apps/Order/Components/ShippingSummaryItem"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
-import { ContextConsumer, Mediator } from "Artsy/SystemContext"
+import { Mediator, SystemContextConsumer } from "Artsy/SystemContext"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
 import React, { Component } from "react"
@@ -218,11 +218,11 @@ export class CounterRoute extends Component<CounterProps, CounterState> {
 }
 
 const CounterRouteWrapper = props => (
-  <ContextConsumer>
+  <SystemContextConsumer>
     {({ mediator }) => {
       return <CounterRoute {...props} mediator={mediator} />
     }}
-  </ContextConsumer>
+  </SystemContextConsumer>
 )
 
 export const CounterFragmentContainer = createFragmentContainer(

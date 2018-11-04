@@ -16,13 +16,15 @@ describe("Follow Artist Popover", () => {
       <RelayStubProvider>
         <MockBoot breakpoint={breakpoint}>
           <FollowArtistPopover
-            suggested={{
-              related: {
-                suggested: {
-                  edges: [{ node: SingleNonFollowedArtist[0] }],
+            suggested={
+              {
+                related: {
+                  suggested: {
+                    edges: [{ node: SingleNonFollowedArtist[0] }],
+                  },
                 },
-              },
-            }}
+              } as any
+            }
           />
         </MockBoot>
       </RelayStubProvider>

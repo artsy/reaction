@@ -1,7 +1,10 @@
-import { ContextConsumer, ContextProps, withContext } from "Artsy/SystemContext"
-import { Link } from "found"
-import { withRouter } from "found"
-import { ResolverUtils, Router, WithRouter } from "found"
+import {
+  SystemContextConsumer,
+  SystemContextProps,
+  withSystemContext,
+} from "Artsy/SystemContext"
+import { Link, ResolverUtils, Router, withRouter, WithRouter } from "found"
+import { Resolver } from "found-relay"
 import { isEmpty, isUndefined, last, pick } from "lodash/fp"
 import PropTypes from "prop-types"
 import React from "react"
@@ -10,7 +13,10 @@ import { QueryRendererProps } from "react-relay"
 import { SizeProps } from "styled-system"
 import { Container, Subscribe } from "unstated"
 
-export interface PreloadLinkProps extends ContextProps, WithRouter, SizeProps {
+export interface PreloadLinkProps
+  extends SystemContextProps,
+    WithRouter,
+    SizeProps {
   children?: JSX.Element | string
   exact?: boolean
   immediate?: boolean
@@ -73,8 +79,6 @@ const _PreloadLink: React.SFC<PreloadLinkProps> = preloadLinkProps => {
        * Injected props from ContextConsumer
        */
       relayEnvironment: PropTypes.object.isRequired,
-      routes: PropTypes.array.isRequired,
-      resolver: PropTypes.object.isRequired,
     }
 
     static defaultProps = {
@@ -109,7 +113,7 @@ const _PreloadLink: React.SFC<PreloadLinkProps> = preloadLinkProps => {
      * ]
      */
     getRouteQuery(): Partial<QueryRendererProps> {
-      const { resolver, relayEnvironment, router, to } = this.props
+      const { relayEnvironment, router, to } = this.props
       const { getRouteMatches, getRouteValues } = ResolverUtils
       const location = router.createLocation(to)
       const match = router.matcher.match(location)
@@ -141,8 +145,9 @@ const _PreloadLink: React.SFC<PreloadLinkProps> = preloadLinkProps => {
       )
 
       const variables = last(
-        resolver
-          .getRouteVariables(match, routeMatches)
+        // TODO: This should just be a pure function in found-relay
+        Resolver.prototype.getRouteVariables
+          .call(null, match, routeMatches)
           .filter(
             routeVariables =>
               !isUndefined(routeVariables) && !isEmpty(routeVariables)
@@ -229,7 +234,7 @@ const _PreloadLink: React.SFC<PreloadLinkProps> = preloadLinkProps => {
    * Subscribe to PreloadLink state
    */
   return (
-    <ContextConsumer>
+    <SystemContextConsumer>
       {context => {
         return (
           <Subscribe to={[PreloadLinkState]}>
@@ -245,8 +250,8 @@ const _PreloadLink: React.SFC<PreloadLinkProps> = preloadLinkProps => {
           </Subscribe>
         )
       }}
-    </ContextConsumer>
+    </SystemContextConsumer>
   )
 }
 
-export const PreloadLink = withRouter(withContext(_PreloadLink))
+export const PreloadLink = withRouter(withSystemContext(_PreloadLink))

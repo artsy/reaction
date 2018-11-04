@@ -32,7 +32,7 @@ import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { validatePresence } from "Apps/Order/Utils/formValidators"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ContextConsumer, Mediator } from "Artsy/SystemContext"
+import { Mediator, SystemContextConsumer } from "Artsy/SystemContext"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
 import { pick } from "lodash"
@@ -431,11 +431,11 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
 }
 
 const ShippingRouteWrapper = props => (
-  <ContextConsumer>
+  <SystemContextConsumer>
     {({ mediator }) => {
       return <ShippingRoute {...props} mediator={mediator} />
     }}
-  </ContextConsumer>
+  </SystemContextConsumer>
 )
 
 export const ShippingFragmentContainer = createFragmentContainer(

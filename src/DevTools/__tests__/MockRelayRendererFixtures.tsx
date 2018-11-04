@@ -3,7 +3,7 @@ import { MockRelayRendererFixtures_artwork } from "__generated__/MockRelayRender
 import { MockRelayRendererFixtures_artworkMetadata } from "__generated__/MockRelayRendererFixtures_artworkMetadata.graphql"
 import { MockRelayRendererFixturesArtistQuery } from "__generated__/MockRelayRendererFixturesArtistQuery.graphql"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
-import { ContextConsumer } from "Artsy/SystemContext"
+import { SystemContextConsumer } from "Artsy/SystemContext"
 import cheerio from "cheerio"
 import { render } from "enzyme"
 import * as React from "react"
@@ -55,7 +55,7 @@ const Artist = createFragmentContainer(
 )
 
 const ArtistQueryRenderer = (props: { id: string }) => (
-  <ContextConsumer>
+  <SystemContextConsumer>
     {({ relayEnvironment }) => {
       return (
         <QueryRenderer<MockRelayRendererFixturesArtistQuery>
@@ -72,7 +72,7 @@ const ArtistQueryRenderer = (props: { id: string }) => (
         />
       )
     }}
-  </ContextConsumer>
+  </SystemContextConsumer>
 )
 
 export const query = graphql`

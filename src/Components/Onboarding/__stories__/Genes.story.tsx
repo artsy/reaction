@@ -1,13 +1,13 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
 
-import { ContextProvider } from "Artsy/SystemContext"
+import { SystemContextProvider } from "Artsy/SystemContext"
 import Genes from "../Steps/Genes"
 
 storiesOf("Onboarding", module).add("Gene Follow", () => {
   return (
-    <ContextProvider>
+    <SystemContextProvider>
       <Genes onNextButtonPressed={null} />
-    </ContextProvider>
+    </SystemContextProvider>
   )
 })

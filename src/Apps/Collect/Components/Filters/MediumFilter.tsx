@@ -1,5 +1,5 @@
 import { Radio } from "@artsy/palette"
-import { ContextConsumer } from "Artsy/SystemContext"
+import { SystemContextConsumer } from "Artsy/SystemContext"
 import React from "react"
 import { FilterState } from "../../FilterState"
 
@@ -12,7 +12,7 @@ export const MediumFilter: React.SFC<{
 }> = ({ filters, mediums }) => {
   const allowedMediums = mediums && mediums.length ? mediums : hardcodedMediums
   return (
-    <ContextConsumer>
+    <SystemContextConsumer>
       {({ mediator }) =>
         allowedMediums.map((medium, index) => {
           const isSelected = filters.state.medium === medium.id
@@ -36,7 +36,7 @@ export const MediumFilter: React.SFC<{
           )
         })
       }
-    </ContextConsumer>
+    </SystemContextConsumer>
   )
 }
 

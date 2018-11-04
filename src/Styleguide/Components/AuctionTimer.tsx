@@ -1,6 +1,6 @@
 import { AuctionTimer_sale } from "__generated__/AuctionTimer_sale.graphql"
 import { AuctionTimerQuery } from "__generated__/AuctionTimerQuery.graphql"
-import { ContextConsumer } from "Artsy/SystemContext"
+import { SystemContextConsumer } from "Artsy/SystemContext"
 import moment from "moment-timezone"
 import React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
@@ -70,7 +70,7 @@ export const AuctionTimerFragmentContainer = createFragmentContainer(
 
 export const AuctionTimerQueryRenderer = ({ saleID }: { saleID: string }) => {
   return (
-    <ContextConsumer>
+    <SystemContextConsumer>
       {({ relayEnvironment }) => {
         return (
           <QueryRenderer<AuctionTimerQuery>
@@ -91,6 +91,6 @@ export const AuctionTimerQueryRenderer = ({ saleID }: { saleID: string }) => {
           />
         )
       }}
-    </ContextConsumer>
+    </SystemContextConsumer>
   )
 }

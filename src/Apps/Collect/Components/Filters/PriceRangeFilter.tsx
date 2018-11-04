@@ -1,4 +1,4 @@
-import { ContextConsumer } from "Artsy/SystemContext"
+import { SystemContextConsumer } from "Artsy/SystemContext"
 import React from "react"
 import { PriceRange } from "Styleguide/Components/PriceRange"
 import { FilterState } from "../../FilterState"
@@ -8,7 +8,7 @@ export const PriceRangeFilter: React.SFC<{
 }> = ({ filters }) => {
   const [initialMin, initialMax] = filters.priceRangeToTuple()
   return (
-    <ContextConsumer>
+    <SystemContextConsumer>
       {({ mediator }) => (
         <PriceRange
           allowCross={false}
@@ -25,6 +25,6 @@ export const PriceRangeFilter: React.SFC<{
           }}
         />
       )}
-    </ContextConsumer>
+    </SystemContextConsumer>
   )
 }

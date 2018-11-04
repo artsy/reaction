@@ -5,20 +5,20 @@ import { PriceRangeFilter as PriceRange } from "Apps/Collect/Components/Filters/
 import { FilterState } from "Apps/Collect/FilterState"
 import { AttributionClassFilter } from "Apps/Comparables/Filter/AttributionClassFilter"
 import { MediumFilter } from "Apps/Comparables/Filter/MediumFilter"
-import { ContextProps } from "Artsy"
-import { SystemProps } from "Artsy/SystemContext"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Toggle } from "Styleguide/Components/Toggle"
 import { Subscribe } from "unstated"
 
-interface Props extends ContextProps {
-  filters: FilterState
-  mediator: SystemProps["mediator"]
+interface ComparablesFragmentContainerProps {
   viewer: Filter_viewer
 }
 
-class Comparables extends Component<Props> {
+interface ComparablesProps extends ComparablesFragmentContainerProps {
+  filters: FilterState
+}
+
+class Comparables extends Component<ComparablesProps> {
   renderPriceRange() {
     const { filters } = this.props
 
@@ -53,7 +53,7 @@ class Comparables extends Component<Props> {
 }
 
 export const ComparablesFragmentContainer = createFragmentContainer(
-  (props: Props) => {
+  (props: ComparablesFragmentContainerProps) => {
     return (
       <Subscribe to={[FilterState]}>
         {(filters: FilterState) => {

@@ -1,4 +1,4 @@
-import { ContextProvider } from "Artsy/SystemContext"
+import { SystemContextProvider } from "Artsy/SystemContext"
 import { Artists, Genes } from "Components/Publishing/Fixtures/Components"
 import { wrapperWithContext } from "Components/Publishing/Fixtures/Helpers"
 import { mount } from "enzyme"
@@ -21,9 +21,9 @@ describe("ToolTip", () => {
       {
         tooltipsData: PropTypes.object,
       },
-      <ContextProvider>
+      <SystemContextProvider>
         <ToolTip model={props.model} entity={props.entity} />
-      </ContextProvider>
+      </SystemContextProvider>
     )
   }
 

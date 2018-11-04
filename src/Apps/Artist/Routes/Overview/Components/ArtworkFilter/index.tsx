@@ -1,6 +1,6 @@
 import { ArtworkFilter_artist } from "__generated__/ArtworkFilter_artist.graphql"
 import { FilterState } from "Apps/Artist/Routes/Overview/state"
-import { ContextConsumer } from "Artsy/SystemContext"
+import { SystemContextConsumer } from "Artsy/SystemContext"
 import { FilterIcon } from "Assets/Icons/FilterIcon"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import React, { Component } from "react"
@@ -273,7 +273,7 @@ class Filter extends Component<Props> {
   render() {
     const { filterState } = this.props
     return (
-      <ContextConsumer>
+      <SystemContextConsumer>
         {({ user, mediator }) => {
           const hideTopBorder = this.props.hideTopBorder
 
@@ -331,7 +331,7 @@ class Filter extends Component<Props> {
             </Flex>
           )
         }}
-      </ContextConsumer>
+      </SystemContextConsumer>
     )
   }
 }

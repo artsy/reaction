@@ -13,7 +13,9 @@ import { FollowGeneButton_gene } from "../../__generated__/FollowGeneButton_gene
 import { FollowButtonDeprecated } from "./ButtonDeprecated"
 import { FollowTrackingData } from "./Typings"
 
-interface Props extends React.HTMLProps<FollowGeneButton>, Artsy.ContextProps {
+interface Props
+  extends React.HTMLProps<FollowGeneButton>,
+    Artsy.SystemContextProps {
   relay?: RelayProp
   gene?: FollowGeneButton_gene
   tracking?: TrackingProp
@@ -87,7 +89,7 @@ export class FollowGeneButton extends React.Component<Props> {
 
 export const FollowGeneButtonFragmentContainer = track({})(
   createFragmentContainer(
-    Artsy.withContext(FollowGeneButton),
+    Artsy.withSystemContext(FollowGeneButton),
     graphql`
       fragment FollowGeneButton_gene on Gene {
         __id

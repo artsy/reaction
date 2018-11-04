@@ -2,7 +2,7 @@ import { Radio } from "@artsy/palette"
 import { mount } from "enzyme"
 import React from "react"
 import { Provider } from "unstated"
-import { ContextProvider } from "../../../../Artsy/SystemContext"
+import { SystemContextProvider } from "../../../../Artsy/SystemContext"
 import { FilterState, initialState } from "../../../Collect/FilterState"
 import { MediumFilter } from "../MediumFilter"
 
@@ -13,11 +13,11 @@ describe("Filter", () => {
     const mediator = { trigger: jest.fn() }
 
     const mediumFilter = mount(
-      <ContextProvider mediator={mediator}>
+      <SystemContextProvider mediator={mediator}>
         <Provider inject={[filterState]}>
           <MediumFilter />
         </Provider>
-      </ContextProvider>
+      </SystemContextProvider>
     )
 
     it("displays the correct number of Radio components", () => {

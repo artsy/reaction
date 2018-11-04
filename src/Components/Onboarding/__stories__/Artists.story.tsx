@@ -1,13 +1,13 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
 
-import { ContextProvider } from "Artsy/SystemContext"
+import { SystemContextProvider } from "Artsy/SystemContext"
 import Artists from "../Steps/Artists"
 
 storiesOf("Onboarding", module).add("Artist Selector", () => {
   return (
-    <ContextProvider>
+    <SystemContextProvider>
       <Artists onNextButtonPressed={() => null} />
-    </ContextProvider>
+    </SystemContextProvider>
   )
 })

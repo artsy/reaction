@@ -5,7 +5,7 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 
 import { ArtworkSidebarBidAction_artwork } from "__generated__/ArtworkSidebarBidAction_artwork.graphql"
-import { ContextConsumer } from "Artsy/SystemContext"
+import { SystemContextConsumer } from "Artsy/SystemContext"
 
 export interface ArtworkSidebarBidActionProps {
   artwork: ArtworkSidebarBidAction_artwork
@@ -99,7 +99,7 @@ export class ArtworkSidebarBidAction extends React.Component<
 
     if (artwork.sale.is_live_open) {
       return (
-        <ContextConsumer>
+        <SystemContextConsumer>
           {({ user }) => {
             return (
               <Box>
@@ -120,7 +120,7 @@ export class ArtworkSidebarBidAction extends React.Component<
               </Box>
             )
           }}
-        </ContextConsumer>
+        </SystemContextConsumer>
       )
     }
 

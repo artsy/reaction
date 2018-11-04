@@ -36,7 +36,7 @@ describe("Boot", () => {
   })
 
   it("injects ContextProvider", () => {
-    expect(getWrapper().find("ContextProvider").length).toEqual(1)
+    expect(getWrapper().find("SystemContextProvider").length).toEqual(1)
   })
 
   it("injects ResponsiveProvider", () => {

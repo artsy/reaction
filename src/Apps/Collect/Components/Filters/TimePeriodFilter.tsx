@@ -1,4 +1,4 @@
-import { ContextConsumer } from "Artsy/SystemContext"
+import { SystemContextConsumer } from "Artsy/SystemContext"
 import React from "react"
 import { FilterState } from "../../FilterState"
 
@@ -8,7 +8,7 @@ export const TimePeriodFilter: React.SFC<{
   filters: FilterState
   timePeriods?: string[]
 }> = ({ filters, timePeriods }) => (
-  <ContextConsumer>
+  <SystemContextConsumer>
     {({ mediator }) =>
       (timePeriods || allowedPeriods).map((timePeriod, index) => {
         const isSelected = filters.state.major_periods[0] === timePeriod
@@ -32,7 +32,7 @@ export const TimePeriodFilter: React.SFC<{
         )
       })
     }
-  </ContextConsumer>
+  </SystemContextConsumer>
 )
 
 const allowedPeriods = [

@@ -32,7 +32,7 @@ import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { validateAddress } from "Apps/Order/Utils/formValidators"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ContextConsumer, Mediator } from "Artsy/SystemContext"
+import { Mediator, SystemContextConsumer } from "Artsy/SystemContext"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
 import React, { Component } from "react"
@@ -458,11 +458,11 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
 }
 
 const PaymentRouteWrapper = props => (
-  <ContextConsumer>
+  <SystemContextConsumer>
     {({ mediator }) => {
       return <PaymentRoute {...props} mediator={mediator} />
     }}
-  </ContextConsumer>
+  </SystemContextConsumer>
 )
 
 export const PaymentFragmentContainer = createFragmentContainer(

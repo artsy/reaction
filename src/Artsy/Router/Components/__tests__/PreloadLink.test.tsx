@@ -1,5 +1,5 @@
 import { PreloadLink } from "Artsy/Router"
-import { ContextProvider } from "Artsy/SystemContext"
+import { SystemContextProvider } from "Artsy/SystemContext"
 import { mount } from "enzyme"
 import React from "react"
 import { fetchQuery } from "react-relay"
@@ -29,11 +29,11 @@ const resolveFetch = () => {
 xdescribe("PreloadLink", () => {
   const getWrapper = (props = {}) => {
     return mount(
-      <ContextProvider>
+      <SystemContextProvider>
         <Provider>
           <PreloadLink {...defaultProps as any} {...props as any} />
         </Provider>
-      </ContextProvider>
+      </SystemContextProvider>
     )
   }
 

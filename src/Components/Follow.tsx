@@ -22,7 +22,9 @@ import Icon from "./Icon"
 
 const SIZE = 32
 
-interface Props extends React.HTMLProps<FollowButton>, Artsy.ContextProps {
+interface Props
+  extends React.HTMLProps<FollowButton>,
+    Artsy.SystemContextProps {
   style?: any
   relay: RelayProp
   artist: Follow_artist
@@ -119,7 +121,7 @@ export class FollowButton extends React.Component<Props, null> {
 }
 
 export default createFragmentContainer(
-  Artsy.withContext(FollowButton),
+  Artsy.withSystemContext(FollowButton),
   graphql`
     fragment Follow_artist on Artist {
       __id

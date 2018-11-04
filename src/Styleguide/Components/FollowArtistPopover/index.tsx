@@ -10,7 +10,7 @@ import {
 } from "@artsy/palette"
 import { FollowArtistPopover_suggested } from "__generated__/FollowArtistPopover_suggested.graphql"
 import { FollowArtistPopoverQuery } from "__generated__/FollowArtistPopoverQuery.graphql"
-import { ContextConsumer, ContextProps } from "Artsy/SystemContext"
+import { SystemContextConsumer, SystemContextProps } from "Artsy/SystemContext"
 import React, { SFC } from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 import styled from "styled-components"
@@ -26,7 +26,7 @@ const BorderedContainer = styled(BorderBox)`
 const Container = Box
 const TitleContainer = Box
 
-interface Props extends ContextProps {
+interface Props extends SystemContextProps {
   suggested: FollowArtistPopover_suggested
   onClose?: () => void
 }
@@ -88,7 +88,7 @@ export const FollowArtistPopoverQueryRenderer = ({
   artistID: string
 }) => {
   return (
-    <ContextConsumer>
+    <SystemContextConsumer>
       {({ relayEnvironment, user }) => {
         return (
           <QueryRenderer<FollowArtistPopoverQuery>
@@ -114,6 +114,6 @@ export const FollowArtistPopoverQueryRenderer = ({
           />
         )
       }}
-    </ContextConsumer>
+    </SystemContextConsumer>
   )
 }
