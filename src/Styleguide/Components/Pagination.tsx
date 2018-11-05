@@ -33,7 +33,7 @@ export class Pagination extends React.Component<Props> {
         <Media at="xs">
           <SmallPagination {...this.props} />
         </Media>
-        <Media greaterThan="xs">
+        <Media greaterThanOrEqual="sm">
           <LargePagination {...this.props} />
         </Media>
       </ScrollIntoView>

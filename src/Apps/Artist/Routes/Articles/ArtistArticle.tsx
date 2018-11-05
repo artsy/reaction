@@ -27,7 +27,7 @@ export const ArticleItem: SFC<ArticleItemProps> = props => {
       <Media at="xs">
         <SmallArticleItem {...props} />
       </Media>
-      <Media greaterThan="xs">
+      <Media greaterThanOrEqual="sm">
         <LargeArticleItem {...props} />
       </Media>
     </>

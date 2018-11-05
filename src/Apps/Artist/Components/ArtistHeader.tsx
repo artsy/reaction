@@ -40,7 +40,7 @@ export class ArtistHeader extends Component<Props> {
               <Media at="xs">
                 <SmallArtistHeader mediator={mediator} user={user} {...props} />
               </Media>
-              <Media greaterThan="xs">
+              <Media greaterThanOrEqual="sm">
                 <LargeArtistHeader mediator={mediator} user={user} {...props} />
               </Media>
             </>

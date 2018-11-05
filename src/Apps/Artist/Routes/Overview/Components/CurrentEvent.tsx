@@ -13,7 +13,7 @@ export interface CurrentEventProps {
 export class CurrentEvent extends Component<CurrentEventProps> {
   render() {
     return (
-      <Media greaterThan="xs">
+      <Media greaterThanOrEqual="sm">
         <LargeCurrentEvent {...this.props} />
       </Media>
     )

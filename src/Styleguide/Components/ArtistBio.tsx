@@ -35,7 +35,7 @@ export class ArtistBio extends React.Component<ArtistBioProps> {
     return (
       <Serif size="3">
         <Media at="xs">{this.renderReadMore("xs")}</Media>
-        <Media greaterThan="xs">{this.renderReadMore("rest")}</Media>
+        <Media greaterThanOrEqual="sm">{this.renderReadMore("rest")}</Media>
       </Serif>
     )
   }

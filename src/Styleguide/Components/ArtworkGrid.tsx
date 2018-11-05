@@ -10,7 +10,7 @@ export const FullArtworkGrid = props => (
     <Media at="sm">
       <ArtworkGridExample columnCount={3} {...props} />
     </Media>
-    <Media greaterThan="sm">
+    <Media greaterThanOrEqual="md">
       <ArtworkGridExample columnCount={4} {...props} />
     </Media>
   </>

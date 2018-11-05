@@ -24,7 +24,7 @@ export class AuctionCard extends React.Component<AuctionCardProps> {
         <Media at="xs">
           <SmallAuctionCard {...this.props} />
         </Media>
-        <Media greaterThan="xs">
+        <Media greaterThanOrEqual="sm">
           <LargeAuctionCard {...this.props} />
         </Media>
       </>

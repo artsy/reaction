@@ -211,7 +211,7 @@ export class ImageCarousel extends React.Component<
     return (
       <ImageArea aspectRatio={this.image.aspectRatio}>
         {this.hasMultipleImages && (
-          <Media greaterThan="xs">
+          <Media greaterThanOrEqual="sm">
             <NavigationButton
               direction="left"
               onClick={this.changeCurrentImage.bind(this, -1)}
@@ -221,11 +221,11 @@ export class ImageCarousel extends React.Component<
 
         <ImageContainer>
           <Media at="xs">{this.renderImage("xs")}</Media>
-          <Media greaterThan="xs">{this.renderImage()}</Media>
+          <Media greaterThanOrEqual="sm">{this.renderImage()}</Media>
         </ImageContainer>
 
         {this.hasMultipleImages && (
-          <Media greaterThan="xs">
+          <Media greaterThanOrEqual="sm">
             <NavigationButton
               direction="right"
               onClick={this.changeCurrentImage.bind(this, +1)}
@@ -278,7 +278,7 @@ export class ImageCarousel extends React.Component<
           {this.renderControlsContainer("xs")}
         </Media>
 
-        <Media greaterThan="xs">
+        <Media greaterThanOrEqual="sm">
           {this.renderImageArea()}
           {this.renderControlsContainer()}
         </Media>

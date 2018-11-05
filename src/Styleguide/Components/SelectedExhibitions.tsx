@@ -26,7 +26,7 @@ export const SelectedExhibitions: SFC<SelectedExhibitionsProps> = props => {
       <Media at="xs">
         <SelectedExhibitionsContainer collapsible {...props} />
       </Media>
-      <Media greaterThan="xs">
+      <Media greaterThanOrEqual="sm">
         <SelectedExhibitionsContainer {...props} />
       </Media>
     </>

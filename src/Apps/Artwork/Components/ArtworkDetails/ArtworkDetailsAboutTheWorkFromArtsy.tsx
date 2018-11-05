@@ -54,7 +54,7 @@ export class ArtworkDetailsAboutTheWorkFromArtsy extends Component<
       <Box pb={2}>
         <Serif size="3">
           <Media at="xs">{this.renderReadMore("xs")}</Media>
-          <Media greaterThan="xs">{this.renderReadMore()}</Media>
+          <Media greaterThanOrEqual="sm">{this.renderReadMore()}</Media>
         </Serif>
       </Box>
     )
