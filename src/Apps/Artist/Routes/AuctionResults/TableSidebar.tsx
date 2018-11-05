@@ -30,7 +30,7 @@ export const TableSidebar = (props: Props) => {
       <Media at="xs">
         <SmallTableSidebar {...props} />
       </Media>
-      <Media greaterThanOrEqual="sm">
+      <Media greaterThan="xs">
         <LargeTableSidebar {...props} />
       </Media>
     </>

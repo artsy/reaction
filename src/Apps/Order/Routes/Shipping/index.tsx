@@ -363,7 +363,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                   />
                 </Collapse>
 
-                <Media greaterThanOrEqual="sm">
+                <Media greaterThan="xs">
                   <Button
                     onClick={this.onContinueButtonPressed}
                     loading={isCommittingMutation}

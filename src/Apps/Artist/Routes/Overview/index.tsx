@@ -120,7 +120,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
                 <Media at="xs">
                   {bioLen < MAX_CHARS.xs && <Genes artist={artist} />}
                 </Media>
-                <Media greaterThanOrEqual="sm">
+                <Media greaterThan="xs">
                   {bioLen < MAX_CHARS.default && <Genes artist={artist} />}
                 </Media>
                 <Spacer mb={1} />

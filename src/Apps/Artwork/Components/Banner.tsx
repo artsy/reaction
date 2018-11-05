@@ -16,7 +16,7 @@ export class Banner extends React.Component<BannerProps> {
         <Media at="xs">
           <SmallBanner {...this.props} />
         </Media>
-        <Media greaterThanOrEqual="sm">
+        <Media greaterThan="xs">
           <LargeBanner {...this.props} />
         </Media>
       </>

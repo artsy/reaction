@@ -19,7 +19,7 @@ export const ArtistShowListItem: SFC<ArtistShowListItemProps> = props => {
       <Media at="xs">
         <SmallShowListItem {...props} />
       </Media>
-      <Media greaterThanOrEqual="sm">
+      <Media greaterThan="xs">
         <LargeShowListItem {...props} />
       </Media>
     </>

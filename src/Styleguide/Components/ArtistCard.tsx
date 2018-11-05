@@ -36,7 +36,7 @@ export class ArtistCard extends React.Component<Props> {
           <Media at="xs">
             <SmallArtistCard {...this.props} />
           </Media>
-          <Media greaterThanOrEqual="sm">
+          <Media greaterThan="xs">
             <LargeArtistCard {...this.props} />
           </Media>
         </>

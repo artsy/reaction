@@ -24,7 +24,7 @@ export const Footer: React.SFC<Props> = props => {
             <Media at="xs">
               <SmallFooter mediator={mediator} />
             </Media>
-            <Media greaterThanOrEqual="sm">
+            <Media greaterThan="xs">
               <LargeFooter mediator={mediator} />
             </Media>
           </>
@@ -121,7 +121,7 @@ const FooterContainer: React.SFC<FlexDirectionProps & Props> = props => {
           <Media at="xs">
             <Mark width="20px" height="20px" mr={2} />
           </Media>
-          <Media greaterThanOrEqual="sm">
+          <Media greaterThan="xs">
             <Mark width="30px" height="30px" mr={2} />
             <Spacer mr={1} />
             <PolicyLinks />

@@ -235,7 +235,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                     mb={[2, 3]}
                   />
 
-                  <Media greaterThanOrEqual="sm">
+                  <Media greaterThan="xs">
                     <ItemReview
                       artwork={order.lineItems.edges[0].node.artwork}
                     />
@@ -267,7 +267,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
             Sidebar={
               <Flex flexDirection="column">
                 <TransactionSummary order={order} mb={[2, 3]} />
-                <Media greaterThanOrEqual="sm">
+                <Media greaterThan="xs">
                   <Helper
                     artworkId={order.lineItems.edges[0].node.artwork.id}
                   />

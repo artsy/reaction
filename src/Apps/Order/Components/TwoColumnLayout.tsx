@@ -23,7 +23,7 @@ export const TwoColumnSplit = ({ children, ...props }) => {
         </Flex>
       </Media>
 
-      <Media greaterThanOrEqual="sm">
+      <Media greaterThan="xs">
         <Flex flexDirection="row" {...props}>
           <Box width={columnRatioWidth(4, CONTENT_SPAN)}>{firstColumn}</Box>
           <Spacer mr={COL_SPACE} mb={null} />
@@ -39,7 +39,7 @@ export const TwoColumnLayout = props => (
     <Media at="xs">
       <XsLayout {...props} />
     </Media>
-    <Media greaterThanOrEqual="sm">
+    <Media greaterThan="xs">
       <DefaultLayout {...props} />
     </Media>
   </>

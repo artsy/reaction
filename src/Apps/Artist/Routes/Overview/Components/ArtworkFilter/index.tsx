@@ -304,7 +304,7 @@ class Filter extends Component<Props> {
                           </MobileActionSheet>
                         )}
                       </Media>
-                      <Media greaterThanOrEqual="sm">
+                      <Media greaterThan="xs">
                         <Sidebar width="25%" mr={2}>
                           <Filters />
                         </Sidebar>

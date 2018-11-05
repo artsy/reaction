@@ -234,7 +234,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
                     />
                   </Collapse>
 
-                  <Media greaterThanOrEqual="sm">
+                  <Media greaterThan="xs">
                     <ContinueButton
                       onClick={this.onContinue}
                       loading={isCommittingMutation}

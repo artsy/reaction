@@ -96,7 +96,7 @@ export class NavigationTabs extends React.Component<Props> {
             {this.renderTabs("xs")}
           </RouteTabs>
         </Media>
-        <Media greaterThanOrEqual="sm">
+        <Media greaterThan="xs">
           <RouteTabs mx={0} size={null}>
             {this.renderTabs()}
           </RouteTabs>

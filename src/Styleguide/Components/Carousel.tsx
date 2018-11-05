@@ -25,7 +25,7 @@ export class Carousel extends React.Component<Props> {
         <Media at="xs">
           <SmallCarousel {...this.props} />
         </Media>
-        <Media greaterThanOrEqual="sm">
+        <Media greaterThan="xs">
           <LargeCarousel {...this.props} />
         </Media>
       </>
