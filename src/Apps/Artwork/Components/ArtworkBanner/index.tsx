@@ -41,7 +41,8 @@ export class ArtworkBanner extends React.Component<ArtworkBannerProps> {
             imageUrl={fairImage}
             initials={initials}
             badge="At fair"
-            headline={context.name}
+            // headline={context.name}
+            headline="Fair name goes here"
             subHeadline={partner.name}
           />
         )
@@ -57,8 +58,8 @@ export class ArtworkBanner extends React.Component<ArtworkBannerProps> {
           <Banner
             imageUrl={showImage}
             initials={partner.initials}
-            badge={showLine}
-            headline={context.name}
+            badge={showLine} // headline={context.name}
+            headline="Show name goes here"
             subHeadline={partner.name}
           />
         )
