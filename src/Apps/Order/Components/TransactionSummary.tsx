@@ -27,6 +27,8 @@ export class TransactionSummary extends React.Component<
       offerOverride,
       order: {
         itemsTotal,
+        mode,
+        offerTotal,
         shippingTotal,
         shippingTotalCents,
         taxTotal,
@@ -56,9 +58,7 @@ export class TransactionSummary extends React.Component<
       textOverflow: "ellipsis",
     } as any
 
-    const isOfferFlow =
-      typeof offerOverride !==
-      "undefined" /* TODO: order.isOfferable or whatever */
+    const isOfferFlow = mode === "OFFER"
 
     return (
       <Flex flexDirection="column" {...others}>
@@ -94,13 +94,7 @@ export class TransactionSummary extends React.Component<
         <StackableBorderBox flexDirection="column">
           {isOfferFlow ? (
             <>
-              <Entry
-                label="Your offer"
-                value={
-                  offerOverride ||
-                  /* TODO: || order.offer.value or whatever */ "—"
-                }
-              />
+              <Entry label="Your offer" value={offerOverride || offerTotal} />
               {Boolean(itemsTotal) && (
                 <Entry label="List price" secondary value={itemsTotal} />
               )}
@@ -182,16 +176,22 @@ export const TransactionSummaryFragmentContainer = createFragmentContainer(
   TransactionSummary,
   graphql`
     fragment TransactionSummary_order on Order {
+      mode
       shippingTotal(precision: 2)
       shippingTotalCents
       taxTotal(precision: 2)
       taxTotalCents
       itemsTotal(precision: 2)
+      offerTotal(precision: 2)
       buyerTotal(precision: 2)
       seller {
         ... on Partner {
           name
         }
+      }
+      lastOffer {
+        id
+        amountCents
       }
       lineItems {
         edges {

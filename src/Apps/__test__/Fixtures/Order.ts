@@ -13,17 +13,20 @@ export const mockResolver = (orderDetails: any = OrderWithShippingDetails) => ({
   },
 })
 
-export const UntouchedOrder = {
+export const UntouchedBuyOrder = {
   id: "2939023",
+  mode: "BUY",
   code: "abcdefg",
   state: "PENDING",
   itemsTotal: "$12,000",
+  offerTotal: null,
   shippingTotal: null,
   taxTotal: null,
   buyerTotal: "$12,000",
   requestedFulfillment: {
     __typename: "%other",
   },
+  lastOffer: null,
   lineItems: {
     edges: [
       {
@@ -86,8 +89,13 @@ export const UntouchedOrder = {
   },
 }
 
+export const UntouchedOfferOrder = {
+  ...UntouchedBuyOrder,
+  mode: "OFFER",
+}
+
 export const OrderWithShippingDetails = {
-  ...UntouchedOrder,
+  ...UntouchedBuyOrder,
   buyerPhoneNumber: "120938120983",
   requestedFulfillment: {
     __typename: "Ship",
@@ -109,7 +117,7 @@ export const OrderWithShippingDetails = {
 }
 
 export const PickupOrder = {
-  ...UntouchedOrder,
+  ...UntouchedBuyOrder,
   buyerPhoneNumber: "120938120983",
   requestedFulfillment: {
     __typename: "Pickup",

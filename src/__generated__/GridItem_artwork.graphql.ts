@@ -9,7 +9,7 @@ export type GridItem_artwork = {
     readonly image: ({
         readonly placeholder: string | null;
         readonly url: string | null;
-        readonly aspect_ratio: number | null;
+        readonly aspect_ratio: number;
     }) | null;
     readonly is_biddable: boolean | null;
     readonly is_acquireable: boolean | null;

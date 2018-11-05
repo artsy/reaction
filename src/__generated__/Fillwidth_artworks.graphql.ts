@@ -9,7 +9,7 @@ export type Fillwidth_artworks = {
         readonly node: ({
             readonly __id: string;
             readonly image: ({
-                readonly aspect_ratio: number | null;
+                readonly aspect_ratio: number;
             }) | null;
             readonly " $fragmentRefs": FillwidthItem_artwork$ref;
         }) | null;
