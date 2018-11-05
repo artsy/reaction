@@ -114,13 +114,6 @@ export const UserSettingsPaymentsQueryRenderer = () => {
             )}
           />
         )
-        // render={({ props }) => {
-        //   if (props) {
-        //     return <UserSettingsPaymentsFragmentContainer me={props.me} />
-        //   } else {
-        //     return null
-        //   }
-        // }}
       }}
     </ContextConsumer>
   )

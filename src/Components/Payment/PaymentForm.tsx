@@ -1,5 +1,6 @@
 import { Box, Button, Flex, Join, Serif, Spacer } from "@artsy/palette"
 import { PaymentFormCreateCreditCardMutation } from "__generated__/PaymentFormCreateCreditCardMutation.graphql"
+import { UserSettingsPayments_me } from "__generated__/UserSettingsPayments_me.graphql"
 import {
   Address,
   AddressErrors,
@@ -15,13 +16,11 @@ import { commitMutation, graphql, RelayProp } from "react-relay"
 import { injectStripe, ReactStripeElements } from "react-stripe-elements"
 import { ConnectionHandler } from "relay-runtime"
 import { Responsive } from "Utils/Responsive"
-// @ts-ignore
-// import { UserSettingsPaymentsCreditCard } from "./UserSettingsPayments"
 
 export interface PaymentFormProps
   extends ReactStripeElements.InjectedStripeProps {
   relay?: RelayProp
-  me: any
+  me: UserSettingsPayments_me
 }
 
 interface PaymentFormState {
