@@ -33,7 +33,9 @@ storiesOf("Apps/Order Page/Components", module)
           <TransactionSummary
             order={{
               " $refType": null,
+              mode: "BUY",
               itemsTotal: "£3,024.89",
+              offerTotal: null,
               shippingTotal: "£132.32",
               shippingTotalCents: 13232,
               taxTotal: "£232.23",
@@ -46,6 +48,7 @@ storiesOf("Apps/Order Page/Components", module)
               seller: {
                 name: "Salon 94",
               },
+              lastOffer: null,
             }}
           />
         </Flex>
@@ -58,7 +61,9 @@ storiesOf("Apps/Order Page/Components", module)
         <TransactionSummary
           order={{
             " $refType": null,
+            mode: "BUY",
             itemsTotal: "£3,024.89",
+            offerTotal: null,
             shippingTotal: "£132.32",
             shippingTotalCents: 13232,
             taxTotal: "£232.23",
@@ -70,6 +75,37 @@ storiesOf("Apps/Order Page/Components", module)
             }) as any,
             seller: {
               name: "Salon Nineteen Eighty Four and Three Quarters",
+            },
+            lastOffer: null,
+          }}
+        />
+      </Flex>
+    </Section>
+  ))
+  .add("TransactionSummary (Offer)", () => (
+    <Section title="Transaction Summary">
+      <Flex width={280} flexDirection="column">
+        <TransactionSummary
+          order={{
+            " $refType": null,
+            mode: "OFFER",
+            itemsTotal: "£3,024.89",
+            offerTotal: "£1,024.89",
+            shippingTotal: "£132.32",
+            shippingTotalCents: 13232,
+            taxTotal: "£232.23",
+            taxTotalCents: 23223,
+            buyerTotal: "£1,200,823.33",
+            lineItems: makeLineItem({
+              artistName: "Francesca DiMattio",
+              artworkTitle: "The Fox",
+            }) as any,
+            seller: {
+              name: "Salon Nineteen Eighty Four and Three Quarters",
+            },
+            lastOffer: {
+              id: "2345",
+              amountCents: 1024.89,
             },
           }}
         />

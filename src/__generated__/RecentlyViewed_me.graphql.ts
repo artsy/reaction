@@ -11,7 +11,7 @@ export type RecentlyViewed_me = {
             readonly node: ({
                 readonly __id: string;
                 readonly image: ({
-                    readonly aspect_ratio: number | null;
+                    readonly aspect_ratio: number;
                     readonly placeholder: string | null;
                     readonly url: string | null;
                 }) | null;

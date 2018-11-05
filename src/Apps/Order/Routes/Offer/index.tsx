@@ -1,5 +1,6 @@
 import { Button, Flex, Sans, Spacer } from "@artsy/palette"
 import { Offer_order } from "__generated__/Offer_order.graphql"
+import { OfferMutation } from "__generated__/OfferMutation.graphql"
 import { Helper } from "Apps/Order/Components/Helper"
 import { TransactionSummaryFragmentContainer as TransactionSummary } from "Apps/Order/Components/TransactionSummary"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
@@ -8,7 +9,12 @@ import { Input } from "Components/Input"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
 import React, { Component } from "react"
-import { createFragmentContainer, graphql, RelayProp } from "react-relay"
+import {
+  commitMutation,
+  createFragmentContainer,
+  graphql,
+  RelayProp,
+} from "react-relay"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { get } from "Utils/get"
@@ -42,14 +48,54 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
   onContinueButtonPressed: () => void = () => {
     this.setState({ isCommittingMutation: true }, () => {
       if (this.props.relay && this.props.relay.environment) {
-        // TODO: commit mutation
-        new Promise(resolve => setTimeout(resolve, 1000)).then(() => {
-          this.setState({ isCommittingMutation: false })
-          this.onMutationError(
-            null,
-            "Congratulations",
-            "You clicked the button. Well done!"
-          )
+        const { offerValue } = this.state
+        commitMutation<OfferMutation>(this.props.relay.environment, {
+          mutation: graphql`
+            mutation OfferMutation($input: InitialOfferInput!) {
+              ecommerceInitialOffer(input: $input) {
+                orderOrError {
+                  ... on OrderWithMutationSuccess {
+                    __typename
+                    order {
+                      id
+                      mode
+                      offerTotal
+                      lastOffer {
+                        id
+                        amountCents
+                      }
+                    }
+                  }
+                  ... on OrderWithMutationFailure {
+                    error {
+                      type
+                      code
+                      data
+                    }
+                  }
+                }
+              }
+            }
+          `,
+          variables: {
+            input: {
+              orderId: this.props.order.id,
+              amountCents: offerValue,
+            },
+          },
+          onCompleted: data => {
+            this.setState({ isCommittingMutation: false })
+            const {
+              ecommerceInitialOffer: { orderOrError },
+            } = data
+
+            if (orderOrError.error) {
+              this.onMutationError(orderOrError.error)
+            } else {
+              this.props.router.push(`/orders/${this.props.order.id}/shipping`)
+            }
+          },
+          onError: this.onMutationError.bind(this),
         })
       }
     })
@@ -142,7 +188,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
                         this.state.offerValue.toLocaleString("en-US", {
                           style: "currency",
                           currency: "USD",
-                          minimumFractionDigits: 0,
+                          minimumFractionDigits: 2,
                         })
                       }
                     />
@@ -192,8 +238,10 @@ export const OfferFragmentContainer = createFragmentContainer(
   graphql`
     fragment Offer_order on Order {
       id
+      mode
       state
       itemsTotal(precision: 2)
+      offerTotal(precision: 2)
       lineItems {
         edges {
           node {
