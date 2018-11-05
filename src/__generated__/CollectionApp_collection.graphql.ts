@@ -36,7 +36,62 @@ return {
   "name": "CollectionApp_collection",
   "type": "MarketingCollection",
   "metadata": null,
-  "argumentDefinitions": [],
+  "argumentDefinitions": [
+    {
+      "kind": "LocalArgument",
+      "name": "medium",
+      "type": "String",
+      "defaultValue": "*"
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "major_periods",
+      "type": "[String]",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "partner_id",
+      "type": "ID",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "for_sale",
+      "type": "Boolean",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "at_auction",
+      "type": "Boolean",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "acquireable",
+      "type": "Boolean",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "inquireable_only",
+      "type": "Boolean",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "sort",
+      "type": "String",
+      "defaultValue": "-partner_updated_at"
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "price_range",
+      "type": "String",
+      "defaultValue": null
+    }
+  ],
   "selections": [
     {
       "kind": "ScalarField",
@@ -123,11 +178,60 @@ return {
     {
       "kind": "FragmentSpread",
       "name": "CollectionFilterContainer_collection",
-      "args": null
+      "args": [
+        {
+          "kind": "Variable",
+          "name": "acquireable",
+          "variableName": "acquireable",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "at_auction",
+          "variableName": "at_auction",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "for_sale",
+          "variableName": "for_sale",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "inquireable_only",
+          "variableName": "inquireable_only",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "major_periods",
+          "variableName": "major_periods",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "medium",
+          "variableName": "medium",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "price_range",
+          "variableName": "price_range",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "sort",
+          "variableName": "sort",
+          "type": null
+        }
+      ]
     },
     v0
   ]
 };
 })();
-(node as any).hash = 'c740025118f291d5d777f1e2bdd26189';
+(node as any).hash = 'e1195f09281ee73655876afd55e15636';
 export default node;

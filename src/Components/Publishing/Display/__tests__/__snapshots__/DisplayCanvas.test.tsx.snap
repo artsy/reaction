@@ -298,17 +298,17 @@ exports[`snapshot renders the canvas in slideshow layout 1`] = `
 }
 
 .c3 {
-  margin-right: 20px;
+  padding-right: 20px;
 }
 
 .c3.title-card {
-  max-width: 1190px;
+  max-width: 1170px;
   margin-left: 40px;
   width: 1250px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-box !important;
+  display: -webkit-flex !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;

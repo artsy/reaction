@@ -1,3 +1,5 @@
+version: 2.1
+
 # The section below specifies YAML anchors to create reusable configuration
 # To Learn more about YAML anchors: https://blog.daemonl.com/2016/02/yaml.html
 
@@ -37,7 +39,6 @@ filter_master: &filter_master
       only:
         - master
 
-version: 2
 jobs:
   relay:
     <<: *setup_workspace
@@ -98,7 +99,6 @@ jobs:
       - <<: *verify_dependencies
       - <<: *save_cache
 workflows:
-  version: 2
   build_and_verify:
     jobs:
       - update-cache

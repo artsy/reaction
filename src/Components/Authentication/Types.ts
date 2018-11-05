@@ -34,6 +34,12 @@ export interface FormProps {
   onBackButtonClicked?: (e: Event) => void
 }
 
+interface AfterSignUpAction {
+  action: "save" | "follow" | "editorialSignup"
+  objectId?: string
+  kind?: "artist" | "artworks" | "gene" | "profile" | "show"
+}
+
 export interface ModalOptions {
   /**
    * the subtitle of the form
@@ -70,7 +76,7 @@ export interface ModalOptions {
    *   objectId: artwork.id
    * }
    */
-  afterSignUpAction?: string
+  afterSignUpAction?: AfterSignUpAction
   /*
    * the location where the modal was triggered.
    */
