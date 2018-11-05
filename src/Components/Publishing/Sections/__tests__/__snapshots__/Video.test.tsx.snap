@@ -96,7 +96,7 @@ exports[`renders properly 1`] = `
   width: 100%;
   height: 281.25px;
   position: absolute;
-  background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FIB6epb5L_l0rm9btaDsY7Q%252F14183_MDP_Evening_240.jpg&width=1200&quality=95) no-repeat center center;
+  background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FIB6epb5L_l0rm9btaDsY7Q%252F14183_MDP_Evening_240.jpg&width=1200&quality=80) no-repeat center center;
   background-size: cover;
   cursor: pointer;
 }
@@ -121,7 +121,7 @@ exports[`renders properly 1`] = `
     height={281.25}
     hidden={false}
     onClick={[Function]}
-    src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FIB6epb5L_l0rm9btaDsY7Q%252F14183_MDP_Evening_240.jpg&width=1200&quality=95"
+    src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FIB6epb5L_l0rm9btaDsY7Q%252F14183_MDP_Evening_240.jpg&width=1200&quality=80"
   >
     <div
       className="PlayButton c2"
