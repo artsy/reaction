@@ -20,7 +20,7 @@ import {
   fillCountrySelect,
   fillIn,
   validAddress,
-} from "Apps/Order/Routes/testSupport/addressForm"
+} from "Apps/Order/Routes/__tests__/Utils/addressForm"
 import { ErrorModal, ModalButton } from "Components/Modal/ErrorModal"
 import PaymentForm, { PaymentFormProps } from "Components/Payment/PaymentForm"
 import { commitMutation, RelayProp } from "react-relay"
@@ -227,7 +227,6 @@ describe("PaymentForm", () => {
 
     it("does not submit the mutation with an incomplete billing address", () => {
       const paymentWrapper = mount(<PaymentForm {...testPaymentFormProps} />)
-      const { addressLine1, ...badAddress } = validAddress
       fillIn(paymentWrapper, { title: "Full name", value: "Air Bud" })
       paymentWrapper.find(Button).simulate("click")
       expect(commitMutation).not.toBeCalled()

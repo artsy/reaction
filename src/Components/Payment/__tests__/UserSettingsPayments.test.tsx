@@ -1,9 +1,13 @@
+import { UserSettingsPayments_me } from "__generated__/UserSettingsPayments_me.graphql"
 import { PaymentFormWrapper } from "Components/Payment/PaymentFormWrapper"
 import {
   CreditCard,
   SavedCreditCards,
 } from "Components/Payment/SavedCreditCards"
-import { UserSettingsPayments } from "Components/Payment/UserSettingsPayments"
+import {
+  CreditCardType,
+  UserSettingsPayments,
+} from "Components/Payment/UserSettingsPayments"
 import { mount } from "enzyme"
 import React from "react"
 import { RelayProp } from "react-relay"
@@ -14,6 +18,32 @@ jest.mock("react-stripe-elements", () => ({
   CardElement: () => jest.fn(),
   injectStripe: () => jest.fn(),
 }))
+
+const mockMe: UserSettingsPayments_me = {
+  " $refType": null,
+  id: "1234",
+  __id: "abcd1234",
+  creditCards: { edges: [] },
+}
+
+const mockCard: CreditCardType = {
+  __id: "abc123",
+  id: "123",
+  last_digits: "3456",
+  expiration_month: 2,
+  expiration_year: 2040,
+  brand: "Visa",
+  __typename: "CreditCard",
+}
+
+const mockMeWithCards: UserSettingsPayments_me = {
+  " $refType": null,
+  id: "1234",
+  __id: "abcd1234",
+  creditCards: {
+    edges: [{ node: { ...mockCard } }, { node: { ...mockCard } }],
+  },
+}
 
 describe("UserSettingsPayments", () => {
   beforeAll(() => {
@@ -26,7 +56,7 @@ describe("UserSettingsPayments", () => {
 
   it("shows only the payment form if there are no saved credit cards", () => {
     const testProps = {
-      me: { id: "1234", creditCards: { edges: [] } },
+      me: mockMe,
       relay: { environment: {} } as RelayProp,
       stripe: jest.fn(),
     }
@@ -38,10 +68,7 @@ describe("UserSettingsPayments", () => {
 
   it("shows saved credit cards + form if there are any", () => {
     const testProps = {
-      me: {
-        id: "1234",
-        creditCards: { edges: [{ brand: "Visa" }, { brand: "Visa" }] },
-      },
+      me: mockMeWithCards,
       relay: { environment: {} } as RelayProp,
       stripe: jest.fn(),
     }
