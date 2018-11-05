@@ -75,7 +75,7 @@ export const resize = (
     src,
     width,
     height,
-    quality: quality || 95,
+    quality: quality || 80,
   }
 
   const url = isDisplayAd

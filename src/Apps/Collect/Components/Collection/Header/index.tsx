@@ -71,8 +71,9 @@ export class CollectionHeader extends Component<Props> {
                     mt={xs ? 0 : 3}
                     mb={3}
                     headerImageUrl={resize(collection.headerImage, {
-                      width: imageWidth * 2,
-                      height: imageHeight * 2,
+                      width: imageWidth * (xs ? 2 : 1),
+                      height: imageHeight * (xs ? 2 : 1),
+                      quality: 80,
                     })}
                     isMobile={xs ? true : false}
                     height={imageHeight}
