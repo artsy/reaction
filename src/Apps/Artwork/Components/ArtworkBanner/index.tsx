@@ -18,8 +18,8 @@ export class ArtworkBanner extends React.Component<ArtworkBannerProps> {
     if (!context) return null
     // imageUrl: image for avatar
     // initials: fallback partner initials in case image is not there.
-    // badge: in auction / at fair / in show
-    // headline:  auction / fair / show name
+    // meta: in auction / at fair / in show
+    // name:  auction / fair / show name
     // subHeadline: partner name
     switch (context.__typename) {
       case "ArtworkContextAuction":
@@ -28,8 +28,8 @@ export class ArtworkBanner extends React.Component<ArtworkBannerProps> {
           <Banner
             imageUrl={auctionImage}
             initials={partner.initials}
-            badge="In auction"
-            headline={context.name}
+            meta="In auction"
+            name={context.name}
             subHeadline={partner.name}
           />
         )
@@ -40,9 +40,8 @@ export class ArtworkBanner extends React.Component<ArtworkBannerProps> {
           <Banner
             imageUrl={fairImage}
             initials={initials}
-            badge="At fair"
-            // headline={context.name}
-            headline="Fair name goes here"
+            meta="At fair"
+            name="Fair name goes here" // {context.name}
             subHeadline={partner.name}
           />
         )
@@ -58,8 +57,8 @@ export class ArtworkBanner extends React.Component<ArtworkBannerProps> {
           <Banner
             imageUrl={showImage}
             initials={partner.initials}
-            badge={showLine} // headline={context.name}
-            headline="Show name goes here"
+            meta={showLine}
+            name="Show name goes here" // {context.name}
             subHeadline={partner.name}
           />
         )

@@ -3,11 +3,11 @@ import React from "react"
 import { Responsive } from "Utils/Responsive"
 
 export interface BannerProps {
-  imageUrl: string
+  imageUrl?: string
   initials?: string
-  badge: string
-  headline: string
-  subHeadline: string
+  meta?: string
+  name?: string
+  subHeadline?: string
 }
 
 export class Banner extends React.Component<BannerProps> {
@@ -28,9 +28,9 @@ export const LargeBanner = props => (
     <Avatar size="sm" src={props.imageUrl} initials={props.initials} />
     <Flex flexDirection="column" justifyContent="center" ml={2}>
       <Sans weight="medium" size="2">
-        {props.badge}
+        {props.meta}
       </Sans>
-      <Serif size="4t">{props.headline}</Serif>
+      <Serif size="4t">{props.name}</Serif>
       <Serif size="4t" color="black60">
         {props.subHeadline}
       </Serif>

@@ -9,8 +9,8 @@ storiesOf("Styleguide/Artwork", module).add("Banner", () => {
       <Section title="Responsive with image">
         <Banner
           imageUrl="https://picsum.photos/110/110/?random"
-          badge="In show"
-          headline="Francesca DiMattio: Boucherouite"
+          meta="In show"
+          name="Francesca DiMattio: Boucherouite"
           subHeadline="Salon 94"
         />
       </Section>
@@ -18,16 +18,16 @@ storiesOf("Styleguide/Artwork", module).add("Banner", () => {
         <LargeBanner
           imageUrl={null}
           initials="OU"
-          badge="In show"
-          headline="Francesca DiMattio: Boucherouite"
+          meta="In show"
+          name="Francesca DiMattio: Boucherouite"
           subHeadline="Salon 94"
         />
       </Section>
       <Section title="Small Banner">
         <SmallBanner
           imageUrl="https://picsum.photos/110/110/?random"
-          badge="In show"
-          headline="Francesca DiMattio: Boucherouite"
+          meta="In show"
+          name="Francesca DiMattio: Boucherouite"
           subHeadline="Salon 94"
         />
       </Section>
