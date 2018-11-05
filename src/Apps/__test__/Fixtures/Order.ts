@@ -92,8 +92,6 @@ export const UntouchedBuyOrder = {
 export const UntouchedOfferOrder = {
   ...UntouchedBuyOrder,
   mode: "OFFER",
-  state: "PENDING",
-  taxTotal: null,
 }
 
 export const OrderWithShippingDetails = {

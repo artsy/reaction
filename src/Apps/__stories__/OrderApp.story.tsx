@@ -29,9 +29,7 @@ storiesOf("Apps/Order Page/Offer", module).add("Empty", () => (
     initialRoute="/orders/123/offer"
     mockResolvers={mockResolver({
       ...UntouchedOfferOrder,
-      mode: "OFFER",
       requestedFulfillment: null,
-      state: "PENDING",
     })}
   />
 ))
@@ -52,17 +50,6 @@ storiesOf("Apps/Order Page", module)
     />
   ))
   .add("Review", () => <Router initialRoute="/orders/123/review" />)
-  .add("Empty", () => (
-    <Router
-      initialRoute="/orders/123/offer"
-      mockResolver={mockResolver({
-        ...UntouchedOfferOrder,
-        mode: "OFFER",
-        requestedFulfillment: null,
-        state: "PENDING",
-      })}
-    />
-  ))
 
 storiesOf("Apps/Order Page/Status", module)
   .add("submitted (ship)", () => (
