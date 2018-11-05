@@ -29,7 +29,7 @@ describe("resizer", () => {
         width: 100,
       })
       expect(url).toMatch("d7hftxdivxxvm")
-      expect(url).toMatch("&width=100&quality=95")
+      expect(url).toMatch("&width=100&quality=80")
       expect(url).toMatch("resize_to=width")
     })
 
@@ -38,7 +38,7 @@ describe("resizer", () => {
         height: 100,
       })
       expect(url).toMatch("d7hftxdivxxvm")
-      expect(url).toMatch("&height=100&quality=95")
+      expect(url).toMatch("&height=100&quality=80")
       expect(url).toMatch("resize_to=height")
     })
 
@@ -48,7 +48,7 @@ describe("resizer", () => {
         isDisplayAd: true,
       })
       expect(url).toMatch("de5y2r7wr8mpb")
-      expect(url).toMatch("&width=100&quality=95")
+      expect(url).toMatch("&width=100&quality=80")
     })
   })
 })

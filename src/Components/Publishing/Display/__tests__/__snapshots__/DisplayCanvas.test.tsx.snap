@@ -263,7 +263,7 @@ exports[`snapshot renders the canvas in overlay layout 1`] = `
       <div>
         <img
           className="c5"
-          src="https://de5y2r7wr8mpb.cloudfront.net?resize_to=width&src=http%3A%2F%2Ffiles.artsy.net%2Fimages%2Fartsy_logo_full_whiteweb_transparent.png&width=400&quality=95"
+          src="https://de5y2r7wr8mpb.cloudfront.net?resize_to=width&src=http%3A%2F%2Ffiles.artsy.net%2Fimages%2Fartsy_logo_full_whiteweb_transparent.png&width=400&quality=80"
         />
         <div
           className="c6"
@@ -655,7 +655,7 @@ exports[`snapshot renders the canvas in slideshow layout 1`] = `
                 <div>
                   <img
                     className="c7"
-                    src="https://de5y2r7wr8mpb.cloudfront.net?resize_to=width&src=http%3A%2F%2Ffiles.artsy.net%2Fimages%2Fartsy-logo-wide-black.png&width=400&quality=95"
+                    src="https://de5y2r7wr8mpb.cloudfront.net?resize_to=width&src=http%3A%2F%2Ffiles.artsy.net%2Fimages%2Fartsy-logo-wide-black.png&width=400&quality=80"
                   />
                   <div
                     className="c8"
@@ -1028,7 +1028,7 @@ exports[`snapshot renders the canvas in standard layout with image 1`] = `
         <div>
           <img
             className="c6"
-            src="https://de5y2r7wr8mpb.cloudfront.net?resize_to=width&src=http%3A%2F%2Ffiles.artsy.net%2Fimages%2Fartsy-logo-wide-black.png&width=400&quality=95"
+            src="https://de5y2r7wr8mpb.cloudfront.net?resize_to=width&src=http%3A%2F%2Ffiles.artsy.net%2Fimages%2Fartsy-logo-wide-black.png&width=400&quality=80"
           />
           <div
             className="c7"
@@ -1151,7 +1151,7 @@ exports[`snapshot renders the canvas in standard layout with video 1`] = `
 }
 
 .c4 {
-  background: url(https://de5y2r7wr8mpb.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FXkEYc3dH8HiRVKCIogWfUw%252FBombay%2BDisplay%2BThumbnail.PNG&width=760&quality=95) no-repeat center center;
+  background: url(https://de5y2r7wr8mpb.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FXkEYc3dH8HiRVKCIogWfUw%252FBombay%2BDisplay%2BThumbnail.PNG&width=760&quality=80) no-repeat center center;
   background-size: cover;
   position: absolute;
   top: 0;
@@ -1420,7 +1420,7 @@ exports[`snapshot renders the canvas in standard layout with video 1`] = `
         <div>
           <img
             className="c9"
-            src="https://de5y2r7wr8mpb.cloudfront.net?resize_to=width&src=http%3A%2F%2Ffiles.artsy.net%2Fimages%2Fartsy-logo-wide-black.png&width=400&quality=95"
+            src="https://de5y2r7wr8mpb.cloudfront.net?resize_to=width&src=http%3A%2F%2Ffiles.artsy.net%2Fimages%2Fartsy-logo-wide-black.png&width=400&quality=80"
           />
           <div
             className="c10"
