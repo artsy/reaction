@@ -5,6 +5,7 @@ import React, { Component } from "react"
 import { Meta, Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
+import truncate from "trunc-html"
 import { CollectFrame } from "./CollectFrame"
 import { CollectionFilterFragmentContainer as CollectionFilterContainer } from "./Components/Collection/CollectionFilterContainer"
 import { CollectionHeader } from "./Components/Collection/Header"
@@ -26,13 +27,17 @@ export class CollectionApp extends Component<CollectionAppProps> {
 
   render() {
     const { collection } = this.props
-    const { title, slug, headerImage } = collection
+    const { title, slug, headerImage, description } = collection
+    const truncatedDescription = truncate(description, 158).text
 
     return (
       <CollectFrame>
         <Title>{title} | Collect on Artsy</Title>
+        <Meta name="description" content={truncatedDescription} />
         <Meta property="og:url" content={`${sd.APP_URL}/collection/${slug}`} />
         <Meta property="og:image" content={headerImage} />
+        <Meta property="og:description" content={truncatedDescription} />
+        <Meta property="twitter:description" content={truncatedDescription} />
 
         <CollectionHeader collection={collection} />
         <Box>

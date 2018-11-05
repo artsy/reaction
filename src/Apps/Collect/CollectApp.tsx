@@ -5,21 +5,37 @@ import { Meta, Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import { CollectFrame } from "./CollectFrame"
+import { CollectMediumMetadata } from "./CollectMediumMetadata"
 import { CollectFilterFragmentContainer as ArtworkGrid } from "./Components/Base/CollectFilterContainer"
+
 export interface CollectAppProps {
   viewer?: CollectApp_viewer
 }
 
 export class CollectApp extends Component<CollectAppProps> {
   render() {
+    const medium = this.props.viewer.__fragments.CollectFilterContainer_viewer
+      .medium
+
+    const title = medium
+      ? CollectMediumMetadata[medium].title
+      : "Collect | Artsy"
+
+    const description = medium
+      ? CollectMediumMetadata[medium].description
+      : "Find artworks by subject matter, style/technique, movement, price, and gallery/institution."
+
     return (
       <CollectFrame>
-        <Title>Collect | Artsy</Title>
+        <Title>{title}</Title>
         <Meta property="og:url" content={`${sd.APP_URL}/collect`} />
         <Meta
           property="og:image"
           content={`${sd.APP_URL}/images/og_image.jpg`}
         />
+        <Meta name="description" content={description} />
+        <Meta property="og:description" content={description} />
+        <Meta property="twitter:description" content={description} />
 
         <Box mt={3} mb={4}>
           <Serif size="8">Collect art and design online</Serif>
