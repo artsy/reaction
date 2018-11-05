@@ -1,12 +1,16 @@
-import { mount } from "enzyme"
-import React from "react"
-import { commitMutation, RelayProp } from "react-relay"
-import { ErrorModal } from "../../Modal/ErrorModal"
+import { ErrorModal } from "Components/Modal/ErrorModal"
 import {
   deletingCreditCardFailed,
   deletingCreditCardSuccess,
-} from "../__fixtures__/deleteCreditCard"
-import { CreditCard, RemoveLink, SavedCreditCards } from "../SavedCreditCards"
+} from "Components/Payment/__fixtures__/deleteCreditCard"
+import {
+  CreditCard,
+  RemoveLink,
+  SavedCreditCards,
+} from "Components/Payment/SavedCreditCards"
+import { mount } from "enzyme"
+import React from "react"
+import { commitMutation, RelayProp } from "react-relay"
 
 jest.mock("react-relay", () => ({
   commitMutation: jest.fn(),

@@ -7,6 +7,11 @@ import {
   OrderWithShippingDetails,
   PickupOrder,
 } from "Apps/__test__/Fixtures/Order"
+import {
+  fillCountrySelect,
+  fillIn,
+  validAddress,
+} from "Apps/Order/Routes/__tests__/Utils/addressForm"
 import { Input } from "../../../../Components/Input"
 import { Collapse } from "../../../../Styleguide/Components"
 import { CreditCardInput } from "../../Components/CreditCardInput"
@@ -17,11 +22,6 @@ import {
   settingOrderPaymentSuccess,
 } from "../__fixtures__/MutationResults"
 import { ContinueButton, PaymentProps, PaymentRoute } from "../Payment"
-import {
-  fillCountrySelect,
-  fillIn,
-  validAddress,
-} from "../testSupport/addressForm"
 jest.mock("react-relay", () => ({
   commitMutation: jest.fn(),
   createFragmentContainer: component => component,

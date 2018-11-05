@@ -1,9 +1,12 @@
+import { PaymentFormWrapper } from "Components/Payment/PaymentFormWrapper"
+import {
+  CreditCard,
+  SavedCreditCards,
+} from "Components/Payment/SavedCreditCards"
+import { UserSettingsPayments } from "Components/Payment/UserSettingsPayments"
 import { mount } from "enzyme"
 import React from "react"
 import { RelayProp } from "react-relay"
-import { PaymentFormWrapper } from "../PaymentFormWrapper"
-import { CreditCard, SavedCreditCards } from "../SavedCreditCards"
-import { UserSettingsPayments } from "../UserSettingsPayments"
 
 jest.mock("react-stripe-elements", () => ({
   Elements: ({ children }) => children,

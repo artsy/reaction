@@ -15,19 +15,16 @@ jest.mock("react-stripe-elements", () => ({
   injectStripe: args => args,
 }))
 
-import { commitMutation, RelayProp } from "react-relay"
-import {
-  Address,
-  AddressForm,
-} from "../../../Apps/Order/Components/AddressForm"
+import { Address, AddressForm } from "Apps/Order/Components/AddressForm"
 import {
   fillCountrySelect,
   fillIn,
   validAddress,
-} from "../../../Apps/Order/Routes/testSupport/addressForm"
+} from "Apps/Order/Routes/testSupport/addressForm"
+import { ErrorModal, ModalButton } from "Components/Modal/ErrorModal"
+import PaymentForm, { PaymentFormProps } from "Components/Payment/PaymentForm"
+import { commitMutation, RelayProp } from "react-relay"
 import Input from "../../Input"
-import { ErrorModal, ModalButton } from "../../Modal/ErrorModal"
-import PaymentForm, { PaymentFormProps } from "../PaymentForm"
 import {
   PaymentFormWrapper,
   PaymentFormWrapperProps,

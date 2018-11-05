@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Join, Serif, Spacer, Theme } from "@artsy/palette"
+import { Box, Button, Flex, Join, Serif, Spacer } from "@artsy/palette"
 import { PaymentFormCreateCreditCardMutation } from "__generated__/PaymentFormCreateCreditCardMutation.graphql"
 import {
   Address,
@@ -8,13 +8,15 @@ import {
   emptyAddress,
 } from "Apps/Order/Components/AddressForm"
 import { CreditCardInput } from "Apps/Order/Components/CreditCardInput"
-import { validatePresence } from "Apps/Order/Components/Validators"
+import { validateAddress } from "Apps/Order/Utils/formValidators"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import React, { Component } from "react"
 import { commitMutation, graphql, RelayProp } from "react-relay"
 import { injectStripe, ReactStripeElements } from "react-stripe-elements"
 import { ConnectionHandler } from "relay-runtime"
 import { Responsive } from "Utils/Responsive"
+// @ts-ignore
+import { CreditCardFragment } from "./UserSettingsPayments"
 
 export interface PaymentFormProps
   extends ReactStripeElements.InjectedStripeProps {
@@ -64,8 +66,8 @@ class PaymentForm extends Component<PaymentFormProps, PaymentFormState> {
     const billingAddress = this.getSelectedBillingAddress()
     const { me } = this.props
     this.setState({ isCommittingMutation: true }, () => {
-      const errors = this.validateAddress(this.state.address)
-      if (Object.keys(errors).filter(key => errors[key]).length > 0) {
+      const { errors, hasErrors } = validateAddress(this.state.address)
+      if (hasErrors) {
         this.setState({
           isCommittingMutation: false,
           addressErrors: errors,
@@ -91,80 +93,60 @@ class PaymentForm extends Component<PaymentFormProps, PaymentFormState> {
     const { error, isCommittingMutation } = this.state
 
     return (
-      <Theme>
-        <>
-          <Responsive>
-            {({ xs }) => {
-              return (
-                <Flex flexDirection={xs ? "column" : "row"}>
-                  <Box width="100%" maxWidth={542}>
-                    <Join separator={<Spacer mb={3} />}>
-                      <Flex flexDirection="column">
-                        <Serif
-                          mb={1}
-                          size="3t"
-                          color="black100"
-                          lineHeight={18}
-                        >
-                          Credit Card
-                        </Serif>
-                        <CreditCardInput
-                          error={error}
-                          onChange={response =>
-                            this.setState({ error: response.error })
-                          }
-                          ref={el => (this.cardElement = el)}
-                        />
-                      </Flex>
-
-                      <AddressForm
-                        value={this.state.address}
-                        onChange={address => this.setState({ address })}
-                        errors={this.state.addressErrors}
-                        touched={this.state.addressTouched}
-                        billing
+      <>
+        <Responsive>
+          {({ xs }) => {
+            return (
+              <Flex flexDirection={xs ? "column" : "row"}>
+                <Box width="100%" maxWidth={542}>
+                  <Join separator={<Spacer mb={3} />}>
+                    <Flex flexDirection="column">
+                      <Serif mb={1} size="3t" color="black100" lineHeight={18}>
+                        Credit Card
+                      </Serif>
+                      <CreditCardInput
+                        error={error}
+                        onChange={response =>
+                          this.setState({ error: response.error })
+                        }
+                        ref={el => (this.cardElement = el)}
                       />
-                      <Button
-                        size="large"
-                        width="100%"
-                        onClick={this.onSubmit}
-                        loading={isCommittingMutation}
-                      >
-                        Submit
-                      </Button>
-                    </Join>
-                    <Spacer mb={3} />
-                  </Box>
-                </Flex>
-              )
-            }}
-          </Responsive>
-          <ErrorModal
-            onClose={this.onCloseModal}
-            show={this.state.isErrorModalOpen}
-            contactEmail="support@artsy.net"
-            detailText={this.state.errorModalMessage}
-          />
-        </>
-      </Theme>
+                    </Flex>
+
+                    <AddressForm
+                      value={this.state.address}
+                      onChange={address => this.setState({ address })}
+                      errors={this.state.addressErrors}
+                      touched={this.state.addressTouched}
+                      billing
+                    />
+                    <Button
+                      size="large"
+                      width="100%"
+                      onClick={this.onSubmit}
+                      loading={isCommittingMutation}
+                    >
+                      Submit
+                    </Button>
+                  </Join>
+                  <Spacer mb={3} />
+                </Box>
+              </Flex>
+            )
+          }}
+        </Responsive>
+        <ErrorModal
+          onClose={this.onCloseModal}
+          show={this.state.isErrorModalOpen}
+          contactEmail="support@artsy.net"
+          detailText={this.state.errorModalMessage}
+        />
+      </>
     )
   }
 
   onCloseModal = () => {
     this.setState({ isErrorModalOpen: false })
-  }
-
-  private validateAddress(address: Address) {
-    const { name, addressLine1, city, region, country, postalCode } = address
-    const usOrCanada = country === "US" || country === "CA"
-    return {
-      name: validatePresence(name),
-      addressLine1: validatePresence(addressLine1),
-      city: validatePresence(city),
-      region: usOrCanada && validatePresence(region),
-      country: validatePresence(country),
-      postalCode: usOrCanada && validatePresence(postalCode),
-    }
   }
 
   private getSelectedBillingAddress(): stripe.TokenOptions {
@@ -194,6 +176,7 @@ class PaymentForm extends Component<PaymentFormProps, PaymentFormState> {
       createCreditCard: { creditCardOrError },
     } = data
 
+    // Explicitly update the relay store to be aware of the new credit card
     if (creditCardOrError.creditCardEdge) {
       const meStore = store.get(me.__id)
       const connection = ConnectionHandler.getConnection(
@@ -246,13 +229,7 @@ class PaymentForm extends Component<PaymentFormProps, PaymentFormState> {
                 ... on CreditCardMutationSuccess {
                   creditCardEdge {
                     node {
-                      __id
-                      id
-                      brand
-                      last_digits
-                      expiration_year
-                      expiration_month
-                      __typename
+                      ...CreditCardFragment
                     }
                   }
                 }

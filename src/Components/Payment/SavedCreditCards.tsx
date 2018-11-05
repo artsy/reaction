@@ -1,15 +1,17 @@
-import { BorderBox, Flex, Sans, Spinner, Theme } from "@artsy/palette"
+import { BorderBox, Flex, Sans, Spinner } from "@artsy/palette"
 import { SavedCreditCardsDeleteCreditCardMutation } from "__generated__/SavedCreditCardsDeleteCreditCardMutation.graphql"
+import { UserSettingsPayments_me } from "__generated__/UserSettingsPayments_me.graphql"
 import { CreditCardDetails } from "Apps/Order/Components/CreditCardDetails"
 import { ErrorModal } from "Components/Modal/ErrorModal"
-import React from "react"
+import React, { SFC } from "react"
 import { commitMutation, graphql, RelayProp } from "react-relay"
 import { ConnectionHandler } from "relay-runtime"
 import styled from "styled-components"
+import { CreditCardType } from "./UserSettingsPayments"
 
 interface SavedCreditCardsProps {
-  creditCards: any
-  me: any
+  creditCards: [CreditCardType]
+  me: UserSettingsPayments_me
   relay?: RelayProp
 }
 
@@ -19,8 +21,8 @@ interface CreditCardsState {
 }
 
 interface CreditCardProps {
-  creditCard?: any
-  me: any
+  creditCard?: CreditCardType
+  me: UserSettingsPayments_me
   relay?: RelayProp
 }
 
@@ -123,6 +125,7 @@ export class CreditCard extends React.Component<
       deleteCreditCard: { creditCardOrError },
     } = data
 
+    // Explicitly update relay store so the UI updates immediately
     if (creditCardOrError.creditCard) {
       const mutationPayload = store.getRootField("deleteCreditCard")
       const creditCardOrErrorEdge = mutationPayload.getLinkedRecord(
@@ -157,25 +160,17 @@ const SpinnerContainer = styled.div`
   position: relative;
 `
 
-export class SavedCreditCards extends React.Component<SavedCreditCardsProps> {
-  constructor(props) {
-    super(props)
-  }
-
-  render() {
-    return (
-      <Theme>
-        <>
-          {this.props.creditCards.map((creditCard, i) => (
-            <CreditCard
-              creditCard={creditCard}
-              key={i}
-              relay={this.props.relay}
-              me={this.props.me}
-            />
-          ))}
-        </>
-      </Theme>
-    )
-  }
+export const SavedCreditCards: SFC<SavedCreditCardsProps> = props => {
+  return (
+    <>
+      {props.creditCards.map((creditCard, i) => (
+        <CreditCard
+          creditCard={creditCard}
+          key={i}
+          relay={props.relay}
+          me={props.me}
+        />
+      ))}
+    </>
+  )
 }

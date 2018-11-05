@@ -4,6 +4,7 @@ import { UserSettingsPaymentsQuery } from "__generated__/UserSettingsPaymentsQue
 import { ContextConsumer, ContextProps } from "Artsy"
 import { get } from "Utils/get"
 
+import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import React from "react"
 import {
   createFragmentContainer,
@@ -33,28 +34,48 @@ export class UserSettingsPayments extends React.Component<
     })
 
     return (
-      <>
-        <Theme>
-          <>
-            {creditCards && creditCards.length ? (
-              <Box maxWidth={542}>
-                <SavedCreditCards
-                  creditCards={creditCards}
-                  relay={this.props.relay}
-                  me={this.props.me}
-                />
-                <Serif size="6" pb={3} pt={2}>
-                  Add new card
-                </Serif>
-              </Box>
-            ) : null}
-            <PaymentFormWrapper relay={this.props.relay} me={this.props.me} />
-          </>
-        </Theme>
-      </>
+      <Theme>
+        <>
+          {creditCards && creditCards.length ? (
+            <Box maxWidth={542}>
+              <SavedCreditCards
+                creditCards={creditCards as any}
+                relay={this.props.relay}
+                me={this.props.me}
+              />
+              <Serif size="6" pb={3} pt={2}>
+                Add new card
+              </Serif>
+            </Box>
+          ) : null}
+          <PaymentFormWrapper relay={this.props.relay} me={this.props.me} />
+        </>
+      </Theme>
     )
   }
 }
+
+export interface CreditCardType {
+  __id: string
+  id: string
+  brand: string
+  last_digits: string
+  expiration_month: number
+  expiration_year: number
+  __typename: string
+}
+
+export const CreditCardQuery = graphql`
+  fragment CreditCardFragment on CreditCard {
+    __id
+    id
+    brand
+    last_digits
+    expiration_year
+    expiration_month
+    __typename
+  }
+`
 
 export const UserSettingsPaymentsFragmentContainer = createFragmentContainer(
   UserSettingsPayments,
@@ -66,13 +87,7 @@ export const UserSettingsPaymentsFragmentContainer = createFragmentContainer(
         @connection(key: "UserSettingsPayments_creditCards", filters: []) {
         edges {
           node {
-            __id
-            id
-            brand
-            last_digits
-            expiration_year
-            expiration_month
-            __typename
+            ...CreditCardFragment
           }
         }
       }
@@ -98,15 +113,18 @@ export const UserSettingsPaymentsQueryRenderer = () => {
                 }
               }
             `}
-            render={({ props }) => {
-              if (props) {
-                return <UserSettingsPaymentsFragmentContainer me={props.me} />
-              } else {
-                return null
-              }
-            }}
+            render={renderWithLoadProgress(
+              UserSettingsPaymentsFragmentContainer as any
+            )}
           />
         )
+        // render={({ props }) => {
+        //   if (props) {
+        //     return <UserSettingsPaymentsFragmentContainer me={props.me} />
+        //   } else {
+        //     return null
+        //   }
+        // }}
       }}
     </ContextConsumer>
   )
