@@ -188,7 +188,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
                         this.state.offerValue.toLocaleString("en-US", {
                           style: "currency",
                           currency: "USD",
-                          minimumFractionDigits: 0,
+                          minimumFractionDigits: 2,
                         })
                       }
                     />

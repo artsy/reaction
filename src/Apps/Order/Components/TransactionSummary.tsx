@@ -94,13 +94,9 @@ export class TransactionSummary extends React.Component<
         <StackableBorderBox flexDirection="column">
           {isOfferFlow ? (
             <>
-              <Entry label="Your offer" value={offerOverride} />
+              <Entry label="Your offer" value={offerOverride || offerTotal} />
               {Boolean(itemsTotal) && (
-                <Entry
-                  label="List price"
-                  secondary
-                  value={itemsTotal || offerTotal}
-                />
+                <Entry label="List price" secondary value={itemsTotal} />
               )}
 
               <Spacer mb={2} />
