@@ -26,7 +26,7 @@ query PaymentMultipleCreditCardsQuery {
 fragment UserSettingsPayments_me on Me {
   __id
   id
-  creditCards(first: 100, limit: 100) {
+  creditCards(first: 100) {
     edges {
       node {
         __id
@@ -67,7 +67,7 @@ return {
   "operationKind": "query",
   "name": "PaymentMultipleCreditCardsQuery",
   "id": null,
-  "text": "query PaymentMultipleCreditCardsQuery {\n  me {\n    ...UserSettingsPayments_me\n    __id\n  }\n}\n\nfragment UserSettingsPayments_me on Me {\n  __id\n  id\n  creditCards(first: 100, limit: 100) {\n    edges {\n      node {\n        __id\n        id\n        brand\n        last_digits\n        expiration_year\n        expiration_month\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n",
+  "text": "query PaymentMultipleCreditCardsQuery {\n  me {\n    ...UserSettingsPayments_me\n    __id\n  }\n}\n\nfragment UserSettingsPayments_me on Me {\n  __id\n  id\n  creditCards(first: 100) {\n    edges {\n      node {\n        __id\n        id\n        brand\n        last_digits\n        expiration_year\n        expiration_month\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -115,17 +115,11 @@ return {
             "kind": "LinkedField",
             "alias": null,
             "name": "creditCards",
-            "storageKey": "creditCards(first:100,limit:100)",
+            "storageKey": "creditCards(first:100)",
             "args": [
               {
                 "kind": "Literal",
                 "name": "first",
-                "value": 100,
-                "type": "Int"
-              },
-              {
-                "kind": "Literal",
-                "name": "limit",
                 "value": 100,
                 "type": "Int"
               }
@@ -234,12 +228,6 @@ return {
               {
                 "kind": "Literal",
                 "name": "first",
-                "value": 100,
-                "type": "Int"
-              },
-              {
-                "kind": "Literal",
-                "name": "limit",
                 "value": 100,
                 "type": "Int"
               }

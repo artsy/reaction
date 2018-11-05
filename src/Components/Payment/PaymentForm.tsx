@@ -16,7 +16,7 @@ import { injectStripe, ReactStripeElements } from "react-stripe-elements"
 import { ConnectionHandler } from "relay-runtime"
 import { Responsive } from "Utils/Responsive"
 // @ts-ignore
-import { CreditCardFragment } from "./UserSettingsPayments"
+// import { UserSettingsPaymentsCreditCard } from "./UserSettingsPayments"
 
 export interface PaymentFormProps
   extends ReactStripeElements.InjectedStripeProps {
@@ -229,7 +229,7 @@ class PaymentForm extends Component<PaymentFormProps, PaymentFormState> {
                 ... on CreditCardMutationSuccess {
                   creditCardEdge {
                     node {
-                      ...CreditCardFragment
+                      ...UserSettingsPaymentsCreditCard @relay(mask: false)
                     }
                   }
                 }

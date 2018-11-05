@@ -23,10 +23,6 @@ interface UserSettingsPaymentsProps extends ContextProps {
 export class UserSettingsPayments extends React.Component<
   UserSettingsPaymentsProps
 > {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     const creditCardEdges = get(this.props, props => props.me.creditCards.edges)
     const creditCards = creditCardEdges.map(({ node: creditCard }) => {
@@ -65,8 +61,8 @@ export interface CreditCardType {
   __typename: string
 }
 
-export const CreditCardQuery = graphql`
-  fragment CreditCardFragment on CreditCard {
+graphql`
+  fragment UserSettingsPaymentsCreditCard on CreditCard {
     __id
     id
     brand
@@ -83,11 +79,11 @@ export const UserSettingsPaymentsFragmentContainer = createFragmentContainer(
     fragment UserSettingsPayments_me on Me {
       __id
       id
-      creditCards(first: 100, limit: 100)
+      creditCards(first: 100)
         @connection(key: "UserSettingsPayments_creditCards", filters: []) {
         edges {
           node {
-            ...CreditCardFragment
+            ...UserSettingsPaymentsCreditCard @relay(mask: false)
           }
         }
       }

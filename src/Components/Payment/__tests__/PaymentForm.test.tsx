@@ -1,4 +1,4 @@
-import { Button, Checkbox, CheckboxProps, Sans } from "@artsy/palette"
+import { Button, Sans } from "@artsy/palette"
 import { CreditCardInput } from "Apps/Order/Components/CreditCardInput"
 import { mount } from "enzyme"
 import React from "react"
@@ -25,10 +25,6 @@ import { ErrorModal, ModalButton } from "Components/Modal/ErrorModal"
 import PaymentForm, { PaymentFormProps } from "Components/Payment/PaymentForm"
 import { commitMutation, RelayProp } from "react-relay"
 import Input from "../../Input"
-import {
-  PaymentFormWrapper,
-  PaymentFormWrapperProps,
-} from "../PaymentFormWrapper"
 
 const mutationMock = commitMutation as jest.Mock<any>
 
