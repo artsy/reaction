@@ -1,8 +1,9 @@
+import { ArtworkSidebarFixture } from "Apps/__test__/Fixtures/Artwork/ArtworkSidebar"
+import { ArtworkSidebarFragmentContainer } from "Apps/Artwork/Components/ArtworkSidebar"
+import { ArtworkSidebarArtists } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarArtists"
+import { ArtworkSidebarMetadata } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarMetadata"
+import { renderRelayTree } from "DevTools"
 import { graphql } from "react-relay"
-import { renderRelayTree } from "../../../../DevTools"
-import { ArtworkSidebarFixture } from "../../../__test__/Fixtures/Artwork/ArtworkSidebar"
-import { ArtworkSidebarArtists } from "../ArtworkSidebar/ArtworkSidebarArtists"
-import { ArtworkSidebarFragmentContainer } from "../ArtworkSidebar/index"
 
 jest.unmock("react-relay")
 
@@ -23,23 +24,16 @@ describe("ArtworkSidebar", () => {
     })
   }
 
-  describe("ArtworkSidebarArtists", () => {
-    it("rentdes ArtworkSidebarArtists component", async () => {
-      const wrapper = await getWrapper()
-      expect(wrapper.find(ArtworkSidebarArtists).length).toBe(1)
-    })
-    it("displays artist name properly", async () => {
-      const wrapper = await getWrapper()
-      expect(wrapper.html()).toContain("Josef Albers")
-      expect(
-        wrapper.find({
-          href: "/artist/josef-albers",
-        }).length
-      ).toBe(1)
-    })
-    it("renders artist follow button properly", async () => {
-      const wrapper = await getWrapper()
-      expect(wrapper.html()).toContain("Follow")
-    })
+  let wrapper
+
+  beforeAll(async () => {
+    wrapper = await getWrapper()
+  })
+
+  it("renders ArtworkSidebarArtists component", () => {
+    expect(wrapper.find(ArtworkSidebarArtists).length).toBe(1)
+  })
+  it("renders Metadata component", () => {
+    expect(wrapper.find(ArtworkSidebarMetadata).length).toBe(1)
   })
 })

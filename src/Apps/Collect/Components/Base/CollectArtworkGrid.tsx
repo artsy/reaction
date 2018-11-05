@@ -23,7 +23,7 @@ interface Props {
 
 const PAGE_SIZE = 30
 
-class Artworks extends Component<Props, LoadingAreaState> {
+class CollectArtworkGrid extends Component<Props, LoadingAreaState> {
   state = {
     isLoading: false,
   }
@@ -119,7 +119,7 @@ class Artworks extends Component<Props, LoadingAreaState> {
 }
 
 export const CollectArtworkGridRefreshContainer = createRefetchContainer(
-  Artworks,
+  CollectArtworkGrid,
   {
     filtered_artworks: graphql`
       fragment CollectArtworkGrid_filtered_artworks on FilterArtworks

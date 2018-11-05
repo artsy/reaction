@@ -5,6 +5,7 @@ import {
   FilledOutMetadataMultipleEditionSets,
   FilledOutMetadataNoEditions,
   FilledOutMetadataOneEditionSet,
+  MetadataForAuctionWork,
 } from "Apps/__test__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarMetadata"
 import { ArtworkSidebarMetadata as Metadata } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarMetadata"
 import { RelayStubProvider } from "DevTools/RelayStubProvider"
@@ -34,6 +35,9 @@ storiesOf("Styleguide/Artwork/Sidebar", module)
         </Section>
         <Section title="Empty metadata multiple edition sets">
           <Metadata artwork={EmptyMetadataMultipleEditionSets as any} />
+        </Section>
+        <Section title="Artwork in an auction">
+          <Metadata artwork={MetadataForAuctionWork as any} />
         </Section>
       </React.Fragment>
     )

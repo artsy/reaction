@@ -1,6 +1,6 @@
+import { pMedia } from "Components/Helpers"
 import React from "react"
 import styled from "styled-components"
-import { pMedia } from "../../Helpers"
 import { NewsDateHeader } from "./NewsDateHeader"
 
 interface Props {

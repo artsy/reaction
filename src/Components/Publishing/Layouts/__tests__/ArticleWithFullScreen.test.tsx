@@ -1,23 +1,35 @@
+import {
+  FeatureArticle,
+  StandardArticle,
+} from "Components/Publishing/Fixtures/Articles"
+import {
+  Display,
+  RelatedCanvas,
+  RelatedPanel,
+} from "Components/Publishing/Fixtures/Components"
+import { RelatedArticlesCanvas } from "Components/Publishing/RelatedArticles/Canvas/RelatedArticlesCanvas"
+import { RelatedArticlesPanel } from "Components/Publishing/RelatedArticles/Panel/RelatedArticlesPanel"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
-import { FeatureArticle, StandardArticle } from "../../Fixtures/Articles"
-import { Display, RelatedCanvas, RelatedPanel } from "../../Fixtures/Components"
-import { RelatedArticlesCanvas } from "../../RelatedArticles/Canvas/RelatedArticlesCanvas"
-import { RelatedArticlesPanel } from "../../RelatedArticles/Panel/RelatedArticlesPanel"
 import { ArticleWithFullScreen } from "../ArticleWithFullScreen"
 import { FeatureLayout } from "../FeatureLayout"
 import { StandardLayout } from "../StandardLayout"
 
-jest.mock("../../Sections/FullscreenViewer/withFullScreen", () => ({
-  withFullScreen: x => x,
-}))
-jest.mock("../../ToolTip/TooltipsDataLoader", () => ({
+jest.mock(
+  "Components/Publishing/Sections/FullscreenViewer/withFullScreen",
+  () => ({
+    withFullScreen: x => x,
+  })
+)
+jest.mock("Components/Publishing/ToolTip/TooltipsDataLoader", () => ({
   TooltipsData: props => props.children,
 }))
 
 it("indexes and titles images", () => {
-  const article = mount(<ArticleWithFullScreen article={StandardArticle} />)
+  const article = mount(
+    <ArticleWithFullScreen article={StandardArticle} />
+  ) as any
   expect(article.state("article").sections[4].images[0].setTitle).toBe(
     "A World Without Capitalism"
   )

@@ -1,8 +1,8 @@
 import { mockTracking } from "Artsy/Analytics"
+import { RelatedCanvas } from "Components/Publishing/Fixtures/Components"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
-import { RelatedCanvas } from "../../../Fixtures/Components"
 import { RelatedArticleCanvasLink } from "../RelatedArticleCanvasLink"
 
 jest.unmock("react-tracking")

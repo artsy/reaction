@@ -5,8 +5,8 @@ import renderer from "react-test-renderer"
 import { FollowButtonDeprecated } from "../ButtonDeprecated"
 
 describe("FollowButton", () => {
-  const getWrapper = props => {
-    return mount(<FollowButtonDeprecated {...props} />)
+  const getWrapper = _props => {
+    return mount(<FollowButtonDeprecated {..._props} />)
   }
 
   let props = {
@@ -60,14 +60,14 @@ describe("FollowButton", () => {
     it("Sets state.showUnfollow on onMouseEnter", () => {
       const component = getWrapper(props)
       component.simulate("mouseEnter")
-      expect(component.state().showUnfollow).toBe(true)
+      expect((component.state() as any).showUnfollow).toBe(true)
     })
 
     it("Sets state.showUnfollow on onMouseLeave", () => {
       const component = getWrapper(props)
       component.setState({ showUnfollow: true })
       component.simulate("mouseLeave")
-      expect(component.state().showUnfollow).toBeFalsy()
+      expect((component.state() as any).showUnfollow).toBeFalsy()
     })
   })
 })

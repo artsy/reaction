@@ -1,13 +1,13 @@
-import { mount } from "enzyme"
-import "jest-styled-components"
-import React from "react"
-import renderer from "react-test-renderer"
 import {
   SeriesArticle,
   SeriesArticleCustomSubTitle,
   SeriesArticleSponsored,
-} from "../../Fixtures/Articles"
-import { EditableChild } from "../../Fixtures/Helpers"
+} from "Components/Publishing/Fixtures/Articles"
+import { EditableChild } from "Components/Publishing/Fixtures/Helpers"
+import { mount } from "enzyme"
+import "jest-styled-components"
+import React from "react"
+import renderer from "react-test-renderer"
 import { SeriesAbout } from "../SeriesAbout"
 
 describe("SeriesAbout", () => {
@@ -98,13 +98,13 @@ describe("SeriesAbout", () => {
       const component = mount(
         <SeriesAbout
           article={SeriesArticleSponsored}
-          tracking={{ trackEvent: jest.fn() }}
+          tracking={{ trackEvent: jest.fn() } as any}
         />
       )
       const spy = jest.spyOn(component.props().tracking, "trackEvent")
-      component
-        .instance()
-        .onClickFooterLink({ currentTarget: { href: "artsy.net" } })
+      ;(component.instance() as any).onClickFooterLink({
+        currentTarget: { href: "artsy.net" },
+      })
 
       expect(spy.mock.calls[0][0]).toEqual(
         expect.objectContaining({

@@ -4,7 +4,7 @@ import moment from "moment"
 import React from "react"
 import renderer from "react-test-renderer"
 
-import { NewsArticle } from "../../Fixtures/Articles"
+import { NewsArticle } from "Components/Publishing/Fixtures/Articles"
 import { NewsDateDivider } from "../NewsDateDivider"
 
 describe("NewsDateDivider", () => {

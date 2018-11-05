@@ -3,13 +3,10 @@ import { Resolver } from "found-relay"
 // import createRender from "found/lib/createRender"
 // import getFarceResult from "found/lib/server/getFarceResult"
 import { find } from "lodash"
+import React from "react"
 import { Environment, RecordSource, Store } from "relay-runtime"
 import { Boot } from "../../../Artsy/Router/Components/Boot"
-import {
-  createMockNetworkLayer,
-  MockBoot,
-  renderUntil,
-} from "../../../DevTools"
+import { createMockNetworkLayer, renderUntil } from "../../../DevTools"
 import { routes } from "../routes"
 
 describe("Routes", () => {
@@ -51,10 +48,24 @@ describe("Routes", () => {
       })
     })
 
-    xit("renders", async () => {
-      const { element } = await render("/collect", {
-        Viewer: () => data,
+    it("respects the sort option selected by the user", () => {
+      const props = {
+        location: {
+          query: {
+            sort: "-published_at",
+          },
+        },
+      }
+
+      expect(route.prepareVariables(params, props)).toEqual({
+        sort: "-published_at",
       })
+    })
+
+    xit("renders", async () => {
+      const { element } = (await render("/collect", {
+        Viewer: () => data,
+      })) as any
 
       renderUntil(wrapper => {
         console.log(wrapper.debug())

@@ -2,8 +2,8 @@ import { Button, Checkbox, Flex, Join, Serif, Spacer } from "@artsy/palette"
 import { Payment_order } from "__generated__/Payment_order.graphql"
 import { PaymentRouteCreateCreditCardMutation } from "__generated__/PaymentRouteCreateCreditCardMutation.graphql"
 import { PaymentRouteSetOrderPaymentMutation } from "__generated__/PaymentRouteSetOrderPaymentMutation.graphql"
-import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
 import { validatePresence } from "Apps/Order/Components/Validators"
+
 import {
   Address,
   AddressChangeHandler,
@@ -11,12 +11,15 @@ import {
   AddressForm,
   AddressTouched,
   emptyAddress,
-} from "../../Components/AddressForm"
+} from "Apps/Order/Components/AddressForm"
 
 import { CreditCardInput } from "Apps/Order/Components/CreditCardInput"
 import { Helper } from "Apps/Order/Components/Helper"
+import { OrderStepper } from "Apps/Order/Components/OrderStepper"
 import { TransactionSummaryFragmentContainer as TransactionSummary } from "Apps/Order/Components/TransactionSummary"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
@@ -57,6 +60,7 @@ interface PaymentState {
   errorModalMessage: string
 }
 
+@track()
 export class PaymentRoute extends Component<PaymentProps, PaymentState> {
   state = {
     hideBillingAddress: true,
@@ -137,7 +141,18 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
     }
   }
 
-  handleChangeHideBillingAddress = (hideBillingAddress: boolean) => {
+  @track((props, state, args) => {
+    const showBillingAddress = !args[0]
+    if (showBillingAddress) {
+      return {
+        action_type: Schema.ActionType.Click,
+        subject: Schema.Subject.BNMOUseShippingAddress,
+        flow: "buy now",
+        type: "checkbox",
+      }
+    }
+  })
+  handleChangeHideBillingAddress(hideBillingAddress: boolean) {
     if (!hideBillingAddress) {
       this.setState({
         address: {
@@ -183,7 +198,10 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
         <HorizontalPadding px={[0, 4]}>
           <Row>
             <Col>
-              <BuyNowStepper currentStep={"payment"} />
+              <OrderStepper
+                currentStep="Payment"
+                offerFlow={false /* TODO: order.isOfferable or whatever */}
+              />
             </Col>
           </Row>
         </HorizontalPadding>
@@ -220,7 +238,9 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
                       {!this.isPickup() && (
                         <Checkbox
                           selected={this.state.hideBillingAddress}
-                          onSelect={this.handleChangeHideBillingAddress}
+                          onSelect={this.handleChangeHideBillingAddress.bind(
+                            this
+                          )}
                         >
                           Billing and shipping addresses are the same
                         </Checkbox>

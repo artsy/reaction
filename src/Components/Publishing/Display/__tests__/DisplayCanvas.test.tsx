@@ -50,7 +50,7 @@ describe("snapshot", () => {
 
 describe("unit", () => {
   const trackEvent = jest.fn()
-  const getWrapper = (props = {}) => {
+  const getWrapper = (props: any = {}) => {
     return mount(
       <DisplayCanvas
         unit={props.unit || UnitCanvasImage}
@@ -101,7 +101,7 @@ describe("unit", () => {
 
   describe("analytics", () => {
     it("tracks impressions", () => {
-      const wrapper = getWrapper()
+      const wrapper = getWrapper() as any
       wrapper.instance().trackImpression()
 
       expect(trackEvent.mock.calls[0][0]).toEqual(
@@ -115,7 +115,7 @@ describe("unit", () => {
     })
 
     it("tracks viewability", () => {
-      const wrapper = getWrapper()
+      const wrapper = getWrapper() as any
       wrapper.instance().trackViewability()
 
       expect(trackEvent.mock.calls[1][0]).toEqual(
@@ -136,8 +136,9 @@ describe("unit", () => {
         .toString()
         .substring(6)
       wrapper.find(CanvasLink).simulate("click")
-      expect(window.open.mock.calls[0][0]).toMatch("?ord=")
-      expect(window.open.mock.calls[0][0]).toMatch(currentTime)
+      const open = window.open as any
+      expect(open.mock.calls[0][0]).toMatch("?ord=")
+      expect(open.mock.calls[0][0]).toMatch(currentTime)
     })
   })
 })

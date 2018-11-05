@@ -21,7 +21,7 @@ describe("CreditCardInput", () => {
 
   it("shows an error message when error.message prop is present", () => {
     const creditCardInput = shallow(
-      <CreditCardInput error={{ message: "Card number is invalid" }} />
+      <CreditCardInput error={{ message: "Card number is invalid" } as any} />
     )
 
     expect(creditCardInput.find(Sans).html()).toMatch("Card number is invalid")

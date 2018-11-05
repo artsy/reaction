@@ -45,6 +45,54 @@ return {
         "MAJOR_PERIOD",
         "TOTAL"
       ]
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "medium",
+      "type": "String",
+      "defaultValue": "*"
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "major_periods",
+      "type": "[String]",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "for_sale",
+      "type": "Boolean",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "at_auction",
+      "type": "Boolean",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "acquireable",
+      "type": "Boolean",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "inquireable_only",
+      "type": "Boolean",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "sort",
+      "type": "String",
+      "defaultValue": "-partner_updated_at"
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "price_range",
+      "type": "String",
+      "defaultValue": null
     }
   ],
   "selections": [
@@ -59,6 +107,12 @@ return {
           "name": "aggregations",
           "variableName": "aggregations",
           "type": "[ArtworkAggregation]"
+        },
+        {
+          "kind": "Literal",
+          "name": "include_medium_filter_in_aggregation",
+          "value": true,
+          "type": "Boolean"
         }
       ],
       "concreteType": "FilterArtworks",
@@ -121,7 +175,56 @@ return {
     {
       "kind": "FragmentSpread",
       "name": "CollectionRefetch_collection",
-      "args": null
+      "args": [
+        {
+          "kind": "Variable",
+          "name": "acquireable",
+          "variableName": "acquireable",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "at_auction",
+          "variableName": "at_auction",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "for_sale",
+          "variableName": "for_sale",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "inquireable_only",
+          "variableName": "inquireable_only",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "major_periods",
+          "variableName": "major_periods",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "medium",
+          "variableName": "medium",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "price_range",
+          "variableName": "price_range",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "sort",
+          "variableName": "sort",
+          "type": null
+        }
+      ]
     },
     {
       "kind": "ScalarField",
@@ -133,5 +236,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '99a1c440b7587997db62df1c860b6b97';
+(node as any).hash = '15332b09f1719ead0eb9dedb125169a9';
 export default node;

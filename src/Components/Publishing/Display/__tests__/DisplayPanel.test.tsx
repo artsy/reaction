@@ -4,13 +4,14 @@ import { cloneDeep } from "lodash"
 import React from "react"
 import renderer from "react-test-renderer"
 import track from "react-tracking"
+import { DisplayPanel } from "../DisplayPanel"
+
 import {
   Campaign,
   UnitPanel,
   UnitPanelTracked,
   UnitPanelVideo,
-} from "../../Fixtures/Components"
-import { DisplayPanel } from "../DisplayPanel"
+} from "Components/Publishing/Fixtures/Components"
 
 describe("snapshots", () => {
   it("renders the display panel with an image", () => {
@@ -29,7 +30,7 @@ describe("snapshots", () => {
 })
 
 describe("units", () => {
-  const getWrapper = (props = {}) => {
+  const getWrapper = (props: any = {}) => {
     const { isVideo = false, ...rest } = props
     let unit = props.unit || UnitPanel
 
@@ -49,11 +50,11 @@ describe("units", () => {
   }
 
   beforeEach(() => {
-    global.open = jest.fn()
+    ;(global as any).open = jest.fn()
   })
 
   afterEach(() => {
-    jest.restoreAllMocks()
+    ;(jest as any).restoreAllMocks()
   })
 
   describe("tracking", () => {
@@ -77,7 +78,7 @@ describe("units", () => {
     })
 
     it("tracks impressions", () => {
-      const { wrapper, instance, spy } = getTracker()
+      const { instance, spy } = getTracker() as any
       instance.trackImpression()
 
       expect(spy).toHaveBeenCalledWith(
@@ -91,7 +92,7 @@ describe("units", () => {
 
     it("tracks video progress", () => {
       const wrapper = getWrapper({ isVideo: true })
-      const instance = wrapper.instance()
+      const instance = wrapper.instance() as any
       const durationSpy = jest.spyOn(instance, "trackDuration")
       const secondsSpy = jest.spyOn(instance, "trackSeconds")
       instance.video.currentTime = 3
@@ -101,7 +102,7 @@ describe("units", () => {
     })
 
     it("tracks duration", () => {
-      const { wrapper, instance, spy } = getTracker()
+      const { instance, spy } = getTracker() as any
       instance.trackDuration(20)
       expect(spy).toHaveBeenCalledWith(
         expect.objectContaining({
@@ -112,7 +113,7 @@ describe("units", () => {
     })
 
     it("tracks seconds", () => {
-      const { wrapper, instance, spy } = getTracker()
+      const { instance, spy } = getTracker() as any
       instance.trackSeconds(20)
       expect(spy).toHaveBeenCalledWith(
         expect.objectContaining({
@@ -123,7 +124,7 @@ describe("units", () => {
     })
 
     it("tracks on click", () => {
-      const { wrapper, instance, spy } = getTracker()
+      const { instance, spy } = getTracker() as any
       const event = {
         preventDefault: jest.fn(),
         target: {
@@ -140,7 +141,7 @@ describe("units", () => {
     })
 
     it("tracks on video click", () => {
-      const { wrapper, instance, spy } = getTracker()
+      const { instance, spy } = getTracker() as any
       instance.trackVideoClick()
       expect(spy).toHaveBeenCalledWith(
         expect.objectContaining({
@@ -152,7 +153,7 @@ describe("units", () => {
 
     it("tracks on mouseEnter, if desktop", () => {
       const wrapper = getWrapper({ isVideo: true })
-      const instance = wrapper.instance()
+      const instance = wrapper.instance() as any
       const spy = jest.spyOn(wrapper.props().tracking, "trackEvent")
       instance.handleMouseEnter()
       expect(spy).toHaveBeenCalledWith(
@@ -167,7 +168,7 @@ describe("units", () => {
   describe("#componentDidMount", () => {
     it("attaches an onEnded handler to video", () => {
       const wrapper = getWrapper({ isVideo: true })
-      const instance = wrapper.instance()
+      const instance = wrapper.instance() as any
       expect(instance.video.onended).toBeDefined()
     })
   })
@@ -207,7 +208,7 @@ describe("units", () => {
     })
 
     it("prevents default event from occurring", () => {
-      const wrapper = getWrapper()
+      const wrapper = getWrapper() as any
       const event = { preventDefault: jest.fn() }
       wrapper.instance().handleClick(event)
       expect(event.preventDefault).toHaveBeenCalled()
@@ -216,7 +217,7 @@ describe("units", () => {
     describe("Mobile", () => {
       describe("Video", () => {
         it("toggles video if within media area", () => {
-          const wrapper = getWrapper({ isMobile: true, isVideo: true })
+          const wrapper = getWrapper({ isMobile: true, isVideo: true }) as any
           const event = {
             preventDefault: jest.fn(),
             target: {
@@ -230,8 +231,8 @@ describe("units", () => {
         })
 
         it("clicks away if outside media area", () => {
-          const spy = jest.spyOn(global, "open")
-          const wrapper = getWrapper({ isMobile: true, isVideo: true })
+          const spy = jest.spyOn(global as any, "open")
+          const wrapper = getWrapper({ isMobile: true, isVideo: true }) as any
           const event = {
             preventDefault: jest.fn(),
             target: {
@@ -244,7 +245,7 @@ describe("units", () => {
         })
 
         it("toggles muting of video", () => {
-          const wrapper = getWrapper({ isMobile: true, isVideo: true })
+          const wrapper = getWrapper({ isMobile: true, isVideo: true }) as any
           const event = {
             stopPropagation: jest.fn(),
           }
@@ -259,8 +260,8 @@ describe("units", () => {
 
       describe("Image", () => {
         it("opens a link if user has already clicked once", () => {
-          const spy = jest.spyOn(global, "open")
-          const wrapper = getWrapper({ isMobile: true })
+          const spy = jest.spyOn(global as any, "open")
+          const wrapper = getWrapper({ isMobile: true }) as any
           const event = {
             preventDefault: jest.fn(),
             target: {
@@ -274,7 +275,7 @@ describe("units", () => {
         })
 
         it("toggles cover image on click and toggles back on click away", () => {
-          const wrapper = getWrapper({ isMobile: true })
+          const wrapper = getWrapper({ isMobile: true }) as any
           const event = {
             preventDefault: jest.fn(),
             target: {
@@ -288,8 +289,8 @@ describe("units", () => {
         })
 
         it("clicks away if outside media area", () => {
-          const spy = jest.spyOn(global, "open")
-          const wrapper = getWrapper({ isMobile: true })
+          const spy = jest.spyOn(global as any, "open")
+          const wrapper = getWrapper({ isMobile: true }) as any
           const event = {
             preventDefault: jest.fn(),
             target: {
@@ -305,7 +306,7 @@ describe("units", () => {
     describe("Desktop", () => {
       it("pauses the video if video", () => {
         const spy = jest.spyOn(DisplayPanel.prototype, "pauseVideo")
-        const wrapper = getWrapper({ isVideo: true })
+        const wrapper = getWrapper({ isVideo: true }) as any
         const event = {
           preventDefault: jest.fn(),
           target: {
@@ -319,8 +320,8 @@ describe("units", () => {
       it("always clicks away", () => {
         const isVideo = [true, false]
         isVideo.forEach(type => {
-          const spy = jest.spyOn(global, "open")
-          const wrapper = getWrapper({ isVideo: type })
+          const spy = jest.spyOn(global as any, "open")
+          const wrapper = getWrapper({ isVideo: type }) as any
           const event = {
             preventDefault: jest.fn(),
             target: {
@@ -350,50 +351,50 @@ describe("units", () => {
     })
 
     it("does nothing if mobile", () => {
-      const wrapper = getWrapper({ isMobile: true })
+      const wrapper = getWrapper({ isMobile: true }) as any
       expect(wrapper.instance().handleMouseEnter()).toEqual(false)
     })
 
     it("plays video if video", () => {
       const spy = jest.spyOn(DisplayPanel.prototype, "playVideo")
-      const wrapper = getWrapper({ isVideo: true })
+      const wrapper = getWrapper({ isVideo: true }) as any
       wrapper.instance().handleMouseEnter()
       expect(spy).toHaveBeenCalled()
     })
 
     it("toggles cover image if image", () => {
       const spy = jest.spyOn(DisplayPanel.prototype, "toggleCoverImage")
-      const wrapper = getWrapper()
+      const wrapper = getWrapper() as any
       wrapper.instance().handleMouseEnter()
       expect(spy).toHaveBeenCalled()
     })
 
     it("does not change state if image has no logo", () => {
-      const spy = jest.spyOn(DisplayPanel.prototype, "toggleCoverImage")
+      jest.spyOn(DisplayPanel.prototype, "toggleCoverImage")
       const wrapper = getWrapper({
         unit: { logo: "" },
       })
-      wrapper.instance().handleMouseEnter()
+      ;(wrapper.instance() as any).handleMouseEnter()
       expect(wrapper.state("showCoverImage")).toBe(false)
     })
   })
 
   describe("#handleMouseLeave", () => {
     it("does nothing if mobile", () => {
-      const wrapper = getWrapper({ isMobile: true })
+      const wrapper = getWrapper({ isMobile: true }) as any
       expect(wrapper.instance().handleMouseLeave()).toEqual(false)
     })
 
     it("pauses video if video", () => {
       const spy = jest.spyOn(DisplayPanel.prototype, "pauseVideo")
-      const wrapper = getWrapper({ isVideo: true })
+      const wrapper = getWrapper({ isVideo: true }) as any
       wrapper.instance().handleMouseLeave()
       expect(spy).toHaveBeenCalled()
     })
 
     it("toggles cover image if image", () => {
       const spy = jest.spyOn(DisplayPanel.prototype, "toggleCoverImage")
-      const wrapper = getWrapper()
+      const wrapper = getWrapper() as any
       wrapper.instance().handleMouseLeave()
       expect(spy).toHaveBeenCalled()
     })
@@ -402,7 +403,7 @@ describe("units", () => {
   it("#toggleVideo", () => {
     const pauseSpy = jest.spyOn(DisplayPanel.prototype, "pauseVideo")
     const playSpy = jest.spyOn(DisplayPanel.prototype, "playVideo")
-    const wrapper = getWrapper({ isVideo: true })
+    const wrapper = getWrapper({ isVideo: true }) as any
     wrapper.instance().toggleVideo()
     expect(playSpy).toHaveBeenCalled()
     wrapper.instance().toggleVideo()
@@ -410,7 +411,7 @@ describe("units", () => {
   })
 
   it("#pauseVideo", () => {
-    const wrapper = getWrapper({ isVideo: true })
+    const wrapper = getWrapper({ isVideo: true }) as any
     const instance = wrapper.instance()
     const spy = jest.spyOn(instance.video, "pause")
     instance.pauseVideo()
@@ -419,7 +420,7 @@ describe("units", () => {
   })
 
   it("#playVideo", () => {
-    const wrapper = getWrapper({ isVideo: true })
+    const wrapper = getWrapper({ isVideo: true }) as any
     const instance = wrapper.instance()
     const spy = jest.spyOn(instance.video, "play")
     instance.playVideo()
@@ -429,12 +430,12 @@ describe("units", () => {
 
   describe("#isVideo", () => {
     it("returns true if asset contains video url", () => {
-      const wrapper = getWrapper({ isVideo: true })
+      const wrapper = getWrapper({ isVideo: true }) as any
       expect(wrapper.instance().isVideo()).toEqual(true)
     })
 
     it("returns false if asset does not contain video url", () => {
-      const wrapper = getWrapper({ isVideo: false })
+      const wrapper = getWrapper({ isVideo: false }) as any
       expect(wrapper.instance().isVideo()).toEqual(false)
     })
   })
@@ -446,7 +447,7 @@ describe("units", () => {
     })
 
     it("hides the video cover when playing", () => {
-      const wrapper = getWrapper({ isVideo: true, isMobile: true })
+      const wrapper = getWrapper({ isVideo: true, isMobile: true }) as any
       const instance = wrapper.instance()
       const event = {
         preventDefault: jest.fn(),
@@ -481,7 +482,7 @@ describe("units", () => {
   })
 
   it("Returns resized cloudfront URL if image asset", () => {
-    const wrapper = getWrapper()
+    const wrapper = getWrapper() as any
     expect(wrapper.find("DisplayPanelContainer").props().imageUrl).toMatch(
       "cloudfront"
     )

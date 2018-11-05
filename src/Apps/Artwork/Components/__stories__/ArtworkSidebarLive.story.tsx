@@ -43,6 +43,9 @@ storiesOf("Styleguide/Artwork", module)
         <Section title="Multiple editions nick-brandt-rangers-line-of-with-tusks-of-killed-elephants-amboseli-2011">
           <ArtworkSidebarQueryRenderer artworkID="nick-brandt-rangers-line-of-with-tusks-of-killed-elephants-amboseli-2011" />
         </Section>
+        <Section title="Artwork with cultural maker american-18th-century-lady-wearing-a-large-white-cap">
+          <ArtworkSidebarQueryRenderer artworkID="american-18th-century-lady-wearing-a-large-white-cap" />
+        </Section>
       </React.Fragment>
     )
   })

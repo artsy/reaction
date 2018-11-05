@@ -1,9 +1,9 @@
+import { Media } from "Components/Publishing/Fixtures/Components"
+import { EditableChild } from "Components/Publishing/Fixtures/Helpers"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
-import { Media } from "../../Fixtures/Components"
-import { EditableChild } from "../../Fixtures/Helpers"
 import { VideoInfoBlock } from "../VideoInfoBlock"
 
 describe("Video Info Block", () => {

@@ -15,8 +15,8 @@ import { FeatureFullscreenHeader } from "../FeatureFullscreenHeader"
 import { FeatureInnerContent } from "../FeatureInnerContent"
 
 describe("FeatureTextHeader", () => {
-  const getWrapper = props => {
-    return mount(<FeatureFullscreenHeader {...props} />)
+  const getWrapper = _props => {
+    return mount(<FeatureFullscreenHeader {..._props} />)
   }
 
   let props

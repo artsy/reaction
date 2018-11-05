@@ -23,7 +23,7 @@ class ModalDemo extends React.Component<any, any> {
   }
 
   render(): JSX.Element {
-    const { cta, hasLogo, isWide, image, title, isLong } = this.props
+    const { cta, hasLogo, isWide, image, title, scrollable } = this.props
     return (
       <div>
         <Button onClick={this.openModal}>Open Modal</Button>
@@ -37,7 +37,7 @@ class ModalDemo extends React.Component<any, any> {
           show={this.state.isModalOpen}
         >
           <div>
-            {isLong && (
+            {scrollable && (
               <div>
                 <p>{text}</p>
                 <p>{text}</p>
@@ -109,7 +109,7 @@ storiesOf("Components/Modal/Demo", module)
       }}
       hasLogo
       title="The art world online"
-      isLong
+      scrollable
     />
   ))
   .add("Cta isFixed", () => (
@@ -121,7 +121,7 @@ storiesOf("Components/Modal/Demo", module)
       }}
       hasLogo
       title="The art world online"
-      isLong
+      scrollable
     />
   ))
   .add("Image", () => (

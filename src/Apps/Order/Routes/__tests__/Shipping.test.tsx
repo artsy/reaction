@@ -5,24 +5,26 @@ import { Provider } from "unstated"
 
 import { Button, RadioGroup } from "@artsy/palette"
 import { UntouchedOrder } from "Apps/__test__/Fixtures/Order"
+import { Address } from "Apps/Order/Components/AddressForm"
 import Input, { InputProps } from "Components/Input"
 import { ModalButton } from "Components/Modal/ErrorModal"
-import { commitMutation, RelayProp } from "react-relay"
+import { ErrorModal } from "Components/Modal/ErrorModal"
+import { commitMutation as _commitMutation, RelayProp } from "react-relay"
 import { CountrySelect } from "Styleguide/Components"
-import { ErrorModal } from "../../../../Components/Modal/ErrorModal"
-import { Address, AddressForm } from "../../Components/AddressForm"
 import {
   settingOrderShipmentFailure,
   settingOrderShipmentMissingCountryFailure,
   settingOrderShipmentMissingRegionFailure,
   settingOrderShipmentSuccess,
 } from "../__fixtures__/MutationResults"
-import { ShippingProps, ShippingRoute } from "../Shipping"
+import { ShippingRoute } from "../Shipping"
 import {
   fillCountrySelect,
   fillIn,
   validAddress,
 } from "../testSupport/addressForm"
+
+const commitMutation = _commitMutation as any
 
 jest.mock("react-relay", () => ({
   commitMutation: jest.fn(),
@@ -55,7 +57,7 @@ describe("Shipping", () => {
     )
   }
 
-  let testProps: ShippingProps
+  let testProps: any
   beforeEach(() => {
     testProps = {
       order: { ...UntouchedOrder, id: "1234" },
@@ -66,14 +68,14 @@ describe("Shipping", () => {
   })
 
   it("removes radio group if pickup_available flag is false", () => {
-    const testPropWithShipOnlyOrder = cloneDeep(testProps)
+    const testPropWithShipOnlyOrder = cloneDeep(testProps) as any
     testPropWithShipOnlyOrder.order.lineItems.edges[0].node.artwork.pickup_available = false
     const component = getWrapper(testPropWithShipOnlyOrder)
     expect(component.find(RadioGroup).length).toEqual(0)
   })
 
   it("disables country select when shipsToContinentalUSOnly is true", () => {
-    const testPropWithContinentalUSOnlyOrder = cloneDeep(testProps)
+    const testPropWithContinentalUSOnlyOrder = cloneDeep(testProps) as any
     testPropWithContinentalUSOnlyOrder.order.lineItems.edges[0].node.artwork.shipsToContinentalUSOnly = true
     const component = getWrapper(testPropWithContinentalUSOnlyOrder)
     expect(component.find(CountrySelect).props().disabled).toBe(true)
@@ -96,7 +98,7 @@ describe("Shipping", () => {
       .filterWhere(
         wrapper => wrapper.props().title === "State, province, or region"
       )
-      .find("input")
+      .find("input") as any
     // https://github.com/airbnb/enzyme/issues/218#issuecomment-388481390
     input.getDOMNode().value = "New Brunswick"
     input.simulate("change")
@@ -207,7 +209,7 @@ describe("Shipping", () => {
     })
 
     it("shows a validation error modal when there is a missing_region error from the server", () => {
-      const component = getWrapper(testProps)
+      const component = getWrapper(testProps) as any
       expect(component.find(ErrorModal).props().show).toBe(false)
       const mockCommitMutation = commitMutation as jest.Mock<any>
       mockCommitMutation.mockImplementationOnce((_, { onCompleted }) =>
@@ -228,7 +230,7 @@ describe("Shipping", () => {
 
   describe("with previously filled-in data", () => {
     beforeEach(() => {
-      testProps.order.requestedFulfillment = {
+      ;(testProps.order as any).requestedFulfillment = {
         ...validAddress,
         __typename: "Ship",
         name: "Dr Collector",

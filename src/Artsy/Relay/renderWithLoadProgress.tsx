@@ -21,6 +21,11 @@ export function renderWithLoadProgress<P>(
   // let retrying = false
   return ({ error, props, retry }) => {
     if (error) {
+      // In tests we want errors to clearly bubble up.
+      if (typeof jest !== "undefined") {
+        throw error
+      }
+
       const networkError = error as any
       if (networkError.response && networkError.response._bodyInit) {
         let data = networkError.response._bodyInit || "{}"

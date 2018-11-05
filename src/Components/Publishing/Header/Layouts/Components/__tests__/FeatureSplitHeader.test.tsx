@@ -12,8 +12,8 @@ import {
 import { FeatureSplitHeader } from "../FeatureSplitHeader"
 
 describe("FeatureTextHeader", () => {
-  const getWrapper = props => {
-    return mount(<FeatureSplitHeader {...props} />)
+  const getWrapper = _props => {
+    return mount(<FeatureSplitHeader {..._props} />)
   }
 
   let props

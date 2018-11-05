@@ -1,9 +1,9 @@
+import { ClassicArticle } from "Components/Publishing/Fixtures/Articles"
+import { Header } from "Components/Publishing/Header/Header"
+import { Sections } from "Components/Publishing/Sections/Sections"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
-import { ClassicArticle } from "../../Fixtures/Articles"
-import { Header } from "../../Header/Header"
-import { Sections } from "../../Sections/Sections"
 import { ClassicLayout } from "../ClassicLayout"
 
 it("Renders article header and sections", () => {

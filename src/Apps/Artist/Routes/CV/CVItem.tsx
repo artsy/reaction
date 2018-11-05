@@ -77,7 +77,10 @@ class CVItem extends Component<CVItemProps, CVItemState> {
     ))
 
   render() {
-    if (!this.props.artist.showsConnection.edges.length) {
+    if (
+      !this.props.artist.showsConnection ||
+      !this.props.artist.showsConnection.edges.length
+    ) {
       return null
     }
 
@@ -268,3 +271,6 @@ export const CVPaginationContainer = createPaginationContainer(
 const CVItems = styled(Box)``
 const Year = Serif
 const Category = Sans
+
+Year.displayName = "Year"
+Category.displayName = "Category"

@@ -1,24 +1,24 @@
+import { Images } from "Components/Publishing/Fixtures/Components"
+import {
+  EditableChild,
+  WrapperWithFullscreenContext,
+} from "Components/Publishing/Fixtures/Helpers"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
-import { Images } from "../../Fixtures/Components"
-import {
-  EditableChild,
-  WrapperWithFullscreenContext,
-} from "../../Fixtures/Helpers"
 import { Image } from "../Image"
 import { ViewFullscreen } from "../ViewFullscreen"
 
 describe("Image", () => {
-  const renderSnapshot = props => {
+  const renderSnapshot = _props => {
     return renderer
-      .create(WrapperWithFullscreenContext(<Image {...props} />))
+      .create(WrapperWithFullscreenContext(<Image {..._props} />))
       .toJSON()
   }
 
-  const mountWrapper = props => {
-    return mount(WrapperWithFullscreenContext(<Image {...props} />))
+  const mountWrapper = _props => {
+    return mount(WrapperWithFullscreenContext(<Image {..._props} />))
   }
   let props
 

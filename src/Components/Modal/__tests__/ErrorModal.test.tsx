@@ -1,6 +1,6 @@
 import { mount } from "enzyme"
 import React from "react"
-import { Dismiss, ErrorModal, ModalButton } from "../ErrorModal"
+import { ErrorModal, ModalButton } from "../ErrorModal"
 import { ModalWrapper } from "../ModalWrapper"
 
 describe("ErrorModal", () => {

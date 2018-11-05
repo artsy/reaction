@@ -1,7 +1,7 @@
+import { MobileSignUpForm } from "Components/Authentication/Mobile/SignUpForm"
+import Input from "Components/Input"
 import { mount } from "enzyme"
 import React from "react"
-import Input from "../../../Input"
-import { MobileSignUpForm } from "../../Mobile/SignUpForm"
 
 describe("MobileSignUpForm", () => {
   const handleSubmit = jest.fn()

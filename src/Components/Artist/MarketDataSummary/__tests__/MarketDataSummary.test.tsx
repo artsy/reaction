@@ -1,8 +1,8 @@
 import "jest-styled-components"
-import renderer from "react-test-renderer"
-import { cloneDeep, extend } from "lodash"
+
 import { mount } from "enzyme"
 import React from "react"
+import renderer from "react-test-renderer"
 import { MarketDataSummaryArtists } from "../../Fixtures/Artists"
 import { MarketDataSummary } from "../MarketDataSummary"
 
@@ -52,7 +52,7 @@ describe("MarketDataSummary", () => {
         )
         const {
           props: { children },
-        } = component.instance().renderGalleryCategory("blue-chip", 1)
+        } = (component.instance() as any).renderGalleryCategory("blue-chip", 1)
 
         expect(children).toMatch("Represented by a blue chip gallery")
       })
@@ -63,7 +63,10 @@ describe("MarketDataSummary", () => {
         )
         const {
           props: { children },
-        } = component.instance().renderGalleryCategory("top-emerging", 2)
+        } = (component.instance() as any).renderGalleryCategory(
+          "top-emerging",
+          2
+        )
 
         expect(children).toMatch("Represented by top emerging galleries")
       })

@@ -15,6 +15,12 @@ export class ArtworkSidebarSizeInfo extends React.Component<
     const {
       piece: { dimensions, edition_of },
     } = this.props
+    if (
+      !(edition_of && edition_of.length) &&
+      !(dimensions && (dimensions.in || dimensions.cm))
+    ) {
+      return null
+    }
     return (
       <Box color="black60">
         <Serif size="2">

@@ -1,8 +1,8 @@
+import { mockTracking } from "Artsy/Analytics"
+import Icon from "Components/Icon"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
-import { mockTracking } from "../../../../Artsy/Analytics"
-import Icon from "../../../Icon"
 import { PartnerInline } from "../PartnerInline"
 
 jest.unmock("react-tracking")

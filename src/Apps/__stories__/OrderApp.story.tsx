@@ -23,6 +23,10 @@ const Router = props => (
   />
 )
 
+storiesOf("Apps/Order Page/Offer", module).add("Empty", () => (
+  <Router initialRoute="/orders/123/offer" />
+))
+
 storiesOf("Apps/Order Page", module)
   .add("Shipping - Pre-filled", () => (
     <Router initialRoute="/orders/123/shipping" />

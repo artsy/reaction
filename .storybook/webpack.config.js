@@ -1,3 +1,5 @@
+// @ts-check
+
 const env = require("dotenv")
 const fs = require("fs")
 const path = require("path")
@@ -85,7 +87,10 @@ if (USER_ID && USER_ACCESS_TOKEN) {
 module.exports = (baseConfig, env) => {
   console.log("\n[Reaction] Booting...\n")
 
-  const merged = merge(baseConfig, {
+  /**
+   * @type {webpack.Configuration}
+   */
+  const artsyWebpackConfig = {
     mode: env.toLowerCase(),
     devtool: WEBPACK_DEVTOOL,
     devServer: {
@@ -95,6 +100,7 @@ module.exports = (baseConfig, env) => {
       },
       stats: "errors-only",
     },
+
     resolve: {
       extensions: [".mjs", ".js", ".jsx", ".ts", ".tsx"],
       alias: {
@@ -104,6 +110,16 @@ module.exports = (baseConfig, env) => {
     },
     module: {
       rules: [
+        {
+          test: /\.graphql$/,
+          include: [/data/],
+          exclude: [/node_modules/],
+          use: [
+            {
+              loader: "raw-loader",
+            },
+          ],
+        },
         {
           test: /\.tsx?$/,
           include: [/src/],
@@ -132,6 +148,6 @@ module.exports = (baseConfig, env) => {
       ],
     },
     plugins: plugins,
-  })
-  return merged
+  }
+  return merge(baseConfig, artsyWebpackConfig)
 }

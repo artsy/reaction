@@ -15,6 +15,7 @@ jest.mock("react-sizeme", () => jest.fn(c => d => d))
  */
 beforeEach(() => expect.hasAssertions())
 
+import "DevTools/renderUntil"
 Enzyme.configure({ adapter: new Adapter() })
 
 import "jsdom"
@@ -37,6 +38,14 @@ if (typeof window !== "undefined") {
 const logAndThrow = loggerFn => {
   // tslint:disable-next-line:only-arrow-functions
   const imp = function(message) {
+    // Dont log warnings from RelayStubProvier
+    if (
+      typeof message === "string" &&
+      message.includes("Warning: RelayModernSelector")
+    ) {
+      return false
+    }
+
     // Keep default logging behaviour
     loggerFn.apply(console, arguments)
     if (message instanceof Error) {

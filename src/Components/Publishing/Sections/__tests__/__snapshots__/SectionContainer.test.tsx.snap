@@ -195,6 +195,12 @@ exports[`SectionContainer Snapshots renders column_width properly 1`] = `
   text-transform: none;
 }
 
+@media (max-width:1280px) {
+  .c0 {
+    width: 680px;
+  }
+}
+
 @media (max-width:900px) {
   .c0 {
     padding: 0 20px;
@@ -474,6 +480,12 @@ exports[`SectionContainer Snapshots renders fillwidth properly 1`] = `
   text-transform: none;
 }
 
+@media (max-width:1280px) {
+  .c0 {
+    width: 680px;
+  }
+}
+
 @media (max-width:900px) {
   .c0 {
     padding: 0 20px;
@@ -563,7 +575,7 @@ exports[`SectionContainer Snapshots renders overflow_fillwidth properly 1`] = `
   box-sizing: border-box;
   margin: auto;
   margin-bottom: 40px;
-  width: 680px;
+  width: 780px;
   max-width: 100%;
 }
 
@@ -751,6 +763,12 @@ exports[`SectionContainer Snapshots renders overflow_fillwidth properly 1`] = `
   line-height: 1.1em;
   -webkit-font-smoothing: antialiased;
   text-transform: none;
+}
+
+@media (max-width:1280px) {
+  .c0 {
+    width: 680px;
+  }
 }
 
 @media (max-width:900px) {

@@ -4,13 +4,10 @@ import * as React from "react"
 import { graphql } from "react-relay"
 import { OrderApp } from "./OrderApp"
 
-// @ts-ignore
+import { OfferFragmentContainer as OfferRoute } from "Apps/Order/Routes/Offer"
 import { PaymentFragmentContainer as PaymentRoute } from "Apps/Order/Routes/Payment"
-// @ts-ignore
 import { ReviewFragmentContainer as ReviewRoute } from "Apps/Order/Routes/Review"
-// @ts-ignore
 import { ShippingFragmentContainer as ShippingRoute } from "Apps/Order/Routes/Shipping"
-// @ts-ignore
 import { StatusFragmentContainer as StatusRoute } from "Apps/Order/Routes/Status"
 
 // @ts-ignore
@@ -67,6 +64,21 @@ export const routes: RouteConfig[] = [
       }
     },
     children: [
+      {
+        path: "offer",
+        Component: OfferRoute,
+        onTransition: confirmRouteExit,
+        query: graphql`
+          query routes_OfferQuery($orderID: String!) {
+            order: ecommerceOrder(id: $orderID) {
+              ...Offer_order
+            }
+          }
+        `,
+        cacheConfig: {
+          force: true,
+        },
+      },
       {
         path: "shipping",
         Component: ShippingRoute,

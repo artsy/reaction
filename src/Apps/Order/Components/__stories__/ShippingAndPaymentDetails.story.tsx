@@ -62,10 +62,7 @@ storiesOf("Apps/Order Page/Components", module).add(
           <MockRelayRenderer
             Component={ShippingAndPaymentSummary}
             mockResolvers={{
-              Order: (...anything) => {
-                console.log("HEY!!!", anything)
-                return order
-              },
+              Order: () => order,
             }}
             query={orderQuery}
           />

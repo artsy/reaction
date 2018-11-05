@@ -1,22 +1,25 @@
-import { mount } from "enzyme"
-import "jest-styled-components"
-import { cloneDeep, extend } from "lodash"
-import React from "react"
 import {
   FeatureArticle,
   SeriesArticle,
   SeriesArticleSponsored,
-} from "../../Fixtures/Articles"
-import { RelatedCanvas } from "../../Fixtures/Components"
-import { Nav } from "../../Nav/Nav"
-import { ArticleCardsBlock } from "../../RelatedArticles/ArticleCards/Block"
-import { RelatedArticlesCanvas } from "../../RelatedArticles/Canvas/RelatedArticlesCanvas"
-import { SeriesAbout } from "../../Series/SeriesAbout"
+} from "Components/Publishing/Fixtures/Articles"
+import { RelatedCanvas } from "Components/Publishing/Fixtures/Components"
+import { Nav } from "Components/Publishing/Nav/Nav"
+import { ArticleCardsBlock } from "Components/Publishing/RelatedArticles/ArticleCards/Block"
+import { RelatedArticlesCanvas } from "Components/Publishing/RelatedArticles/Canvas/RelatedArticlesCanvas"
+import { SeriesAbout } from "Components/Publishing/Series/SeriesAbout"
+import { mount } from "enzyme"
+import "jest-styled-components"
+import { cloneDeep, extend } from "lodash"
+import React from "react"
 import { FeatureLayout } from "../FeatureLayout"
 
-jest.mock("../../Sections/FullscreenViewer/withFullScreen", () => ({
-  withFullScreen: x => x,
-}))
+jest.mock(
+  "Components/Publishing/Sections/FullscreenViewer/withFullScreen",
+  () => ({
+    withFullScreen: x => x,
+  })
+)
 
 it("renders RelatedArticlesCanvas", () => {
   const article = mount(

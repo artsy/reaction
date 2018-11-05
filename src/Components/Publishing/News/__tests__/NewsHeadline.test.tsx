@@ -2,8 +2,8 @@ import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
 
-import { NewsArticle } from "../../Fixtures/Articles"
-import { EditableChild } from "../../Fixtures/Helpers"
+import { NewsArticle } from "Components/Publishing/Fixtures/Articles"
+import { EditableChild } from "Components/Publishing/Fixtures/Helpers"
 import { NewsHeadline } from "../NewsHeadline"
 
 it("renders a news headline properly", () => {

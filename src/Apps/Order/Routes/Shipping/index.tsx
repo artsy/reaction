@@ -19,8 +19,8 @@ import {
   AddressTouched,
   emptyAddress,
 } from "Apps/Order/Components/AddressForm"
-import { BuyNowStepper } from "Apps/Order/Components/BuyNowStepper"
 import { Helper } from "Apps/Order/Components/Helper"
+import { OrderStepper } from "Apps/Order/Components/OrderStepper"
 import { TransactionSummaryFragmentContainer as TransactionSummary } from "Apps/Order/Components/TransactionSummary"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { validatePresence } from "Apps/Order/Components/Validators"
@@ -296,7 +296,10 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
         <HorizontalPadding px={[0, 4]}>
           <Row>
             <Col>
-              <BuyNowStepper currentStep={"shipping"} />
+              <OrderStepper
+                currentStep="Shipping"
+                offerFlow={false /* TODO: order.isOfferable or whatever */}
+              />
             </Col>
           </Row>
         </HorizontalPadding>
