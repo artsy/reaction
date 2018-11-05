@@ -94,7 +94,8 @@ describe("AuctionResults", () => {
     })
 
     it("renders proper elements", () => {
-      expect(wrapper.find("TableColumns").html()).toBe(null)
+      expect(wrapper.find("LargeTableColumns").length).toBe(0)
+      expect(wrapper.find("SmallTableColumns").length).toBe(0)
       expect(wrapper.find("SmallTableSidebar").length).toBe(1)
     })
   })

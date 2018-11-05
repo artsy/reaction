@@ -4,9 +4,9 @@ import React from "react"
 import { Button } from "@artsy/palette"
 import { UntouchedBuyOrder } from "Apps/__test__/Fixtures/Order"
 import { ErrorModal, ModalButton } from "Components/Modal/ErrorModal"
+import { MockBoot } from "DevTools"
 import { commitMutation } from "react-relay"
 import { StepSummaryItem } from "Styleguide/Components/StepSummaryItem"
-import { Provider } from "unstated"
 import {
   submitOrderWithFailure,
   submitOrderWithNoInventoryFailure,
@@ -37,9 +37,9 @@ const defaultProps = {
 describe("Review", () => {
   const getWrapper = props => {
     return mount(
-      <Provider>
+      <MockBoot breakpoint="xs">
         <ReviewRoute {...props} />
-      </Provider>
+      </MockBoot>
     )
   }
 

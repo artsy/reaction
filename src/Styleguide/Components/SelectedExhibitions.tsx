@@ -21,7 +21,7 @@ export interface SelectedExhibitionsProps {
   Container?: (props: { children: JSX.Element }) => JSX.Element
 }
 export const SelectedExhibitions: SFC<SelectedExhibitionsProps> = props => {
-  return (
+  return props.exhibitions.length === 0 ? null : (
     <>
       <Media at="xs">
         <SelectedExhibitionsContainer collapsible {...props} />

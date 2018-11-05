@@ -1,7 +1,8 @@
 import { ArtistInfoFixture } from "Apps/__test__/Fixtures/Artwork/ArtistInfo"
 import { ArtistInfoFragmentContainer } from "Apps/Artwork/Components/ArtistInfo"
-import { renderRelayTree } from "DevTools"
+import { MockBoot, renderRelayTree } from "DevTools"
 import { cloneDeep } from "lodash"
+import React from "react"
 import { graphql } from "react-relay"
 
 jest.unmock("react-relay")
@@ -17,6 +18,7 @@ describe("ArtistInfo", () => {
           }
         }
       `,
+      wrapper: n => <MockBoot breakpoint="xs">{n}</MockBoot>,
       mockResolvers: {
         Artist: () => response,
       },

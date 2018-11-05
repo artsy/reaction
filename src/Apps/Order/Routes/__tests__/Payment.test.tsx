@@ -104,16 +104,15 @@ describe("Payment", () => {
 
   it("removes all data when the billing address form is hidden", () => {
     const paymentRoute = getWrapper(testProps)
+    const nameInput = () =>
+      paymentRoute.find("input[placeholder='Add full name']")
+
     // expand address form
     paymentRoute.find(Checkbox).simulate("click")
 
-    const nameInput = paymentRoute
-      .find(Input)
-      .filterWhere(wrapper => wrapper.props().title === "Full name")
-      .find("input") as any
-    nameInput.instance().value = "Dr Collector"
-    nameInput.simulate("change")
-    expect(nameInput.instance().value).toEqual("Dr Collector")
+    nameInput().instance().value = "Dr Collector"
+    nameInput().simulate("change")
+    expect(nameInput().instance().value).toEqual("Dr Collector")
 
     // hide address form
     paymentRoute.find(Checkbox).simulate("click")
@@ -122,7 +121,7 @@ describe("Payment", () => {
     paymentRoute.find(Checkbox).simulate("click")
 
     // expect name to be empty
-    expect(nameInput.instance().value).toEqual("")
+    expect(nameInput().instance().value).toEqual("")
   })
 
   it("does not pre-populate with available details when returning to the payment route", () => {
@@ -168,7 +167,6 @@ describe("Payment", () => {
     })
 
     fillAddressForm(paymentRoute, validAddress)
-
     paymentRoute.find(ContinueButton).simulate("click")
 
     expect(stripeMock.createToken).toHaveBeenCalledWith({
@@ -207,6 +205,7 @@ describe("Payment", () => {
 
     const paymentRoute = getWrapper(testProps)
     ;(paymentRoute.find(Checkbox).props() as CheckboxProps).onSelect(false)
+    paymentRoute.update()
 
     fillAddressForm(paymentRoute, validAddress)
     paymentRoute.find(ContinueButton).simulate("click")
@@ -438,6 +437,7 @@ describe("Payment", () => {
     it("says a required field is required with billing address exposed", () => {
       const paymentRoute = getWrapper(testProps)
       ;(paymentRoute.find(Checkbox).props() as CheckboxProps).onSelect(false)
+      paymentRoute.update()
 
       paymentRoute.find(ContinueButton).simulate("click")
       paymentRoute.update()
@@ -449,6 +449,7 @@ describe("Payment", () => {
     it("before submit, only shows a validation error on inputs that have been touched", () => {
       const component = getWrapper(testProps)
       ;(component.find(Checkbox).props() as CheckboxProps).onSelect(false)
+      component.update()
 
       fillIn(component, { title: "Full name", value: "Erik David" })
       fillIn(component, { title: "Address line 1", value: "" })
@@ -466,6 +467,7 @@ describe("Payment", () => {
     it("after submit, shows all validation errors on inputs that have been touched", () => {
       const component = getWrapper(testProps)
       ;(component.find(Checkbox).props() as CheckboxProps).onSelect(false)
+      component.update()
 
       fillIn(component, { title: "Full name", value: "Erik David" })
 
@@ -481,6 +483,7 @@ describe("Payment", () => {
     it("does not submit an empty form with billing address exposed", () => {
       const paymentRoute = getWrapper(testProps)
       ;(paymentRoute.find(Checkbox).props() as CheckboxProps).onSelect(false)
+      paymentRoute.update()
 
       paymentRoute.find(ContinueButton).simulate("click")
       expect(commitMutation).not.toBeCalled()
@@ -489,6 +492,7 @@ describe("Payment", () => {
     it("does not submit the mutation with an incomplete form with billing address exposed", () => {
       const paymentRoute = getWrapper(testProps)
       ;(paymentRoute.find(Checkbox).props() as CheckboxProps).onSelect(false)
+      paymentRoute.update()
       fillIn(paymentRoute, { title: "Full name", value: "Air Bud" })
       paymentRoute.find(ContinueButton).simulate("click")
       expect(commitMutation).not.toBeCalled()
@@ -527,12 +531,9 @@ describe("Payment", () => {
         country: "AQ",
       }
       fillAddressForm(paymentRoute, address)
-      console.log(paymentRoute.find("Button").length) // => 1
-      expect(paymentRoute.find("Button").length).toEqual(1)
 
-      // FIXME: Throws error: Invariant Violation: Unable to find node on an unmounted component.
-      // paymentRoute.find("Button").simulate("click")
-      // expect(stripeMock.createToken).toBeCalled()
+      paymentRoute.find("Button").simulate("click")
+      expect(stripeMock.createToken).toBeCalled()
     })
   })
 })
