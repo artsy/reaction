@@ -6,9 +6,9 @@ import { FullArtworkGrid, Tab, Tabs } from "Styleguide/Components"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { ArtistInfoQueryRenderer as ArtistInfo } from "./Components/ArtistInfo"
+import { ArtworkBannerQueryRenderer as ArtworkBanner } from "./Components/ArtworkBanner"
 import { ArtworkDetailsQueryRenderer as ArtworkDetails } from "./Components/ArtworkDetails"
 import { ArtworkSidebarQueryRenderer as ArtworkSidebar } from "./Components/ArtworkSidebar"
-import { Banner } from "./Components/Banner"
 import { ImageCarousel } from "./Components/ImageCarousel"
 import { OtherWorks } from "./Components/OtherWorks"
 
@@ -32,12 +32,7 @@ export const ArtworkApp: React.SFC<Props> = props => {
     <HorizontalPadding>
       <Row>
         <Col sm={8}>
-          <Banner
-            src="https://picsum.photos/110/110/?random"
-            badge="In show"
-            headline="Francesca DiMattio: Boucherouite"
-            subHeadline="Salon 94"
-          />
+          <ArtworkBanner artworkID={props.artwork.id} />
         </Col>
       </Row>
       <Row>
@@ -171,6 +166,7 @@ export const ArtworkAppFragmentContainer = createFragmentContainer(
       }
       ...ArtworkSidebar_artwork
       ...ArtworkDetails_artwork
+      ...ArtworkBanner_artwork
     }
   `
 )

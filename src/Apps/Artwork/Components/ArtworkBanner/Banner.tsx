@@ -3,7 +3,8 @@ import React from "react"
 import { Responsive } from "Utils/Responsive"
 
 export interface BannerProps {
-  src: string
+  imageUrl: string
+  initials?: string
   badge: string
   headline: string
   subHeadline: string
@@ -24,8 +25,8 @@ export class Banner extends React.Component<BannerProps> {
 
 export const LargeBanner = props => (
   <Flex flexDirection="row">
-    <Avatar src={props.src} mr={2} />
-    <Flex flexDirection="column" justifyContent="center">
+    <Avatar size="sm" src={props.imageUrl} initials={props.initials} />
+    <Flex flexDirection="column" justifyContent="center" ml={2}>
       <Sans weight="medium" size="2">
         {props.badge}
       </Sans>
@@ -39,7 +40,7 @@ export const LargeBanner = props => (
 
 export const SmallBanner = props => (
   <Flex flexDirection="row" width="100%" justifyContent="space-between">
-    <Flex flexDirection="column" justifyContent="center">
+    <Flex flexDirection="column" justifyContent="center" mr={2}>
       <Sans weight="medium" size="2">
         {props.badge}
       </Sans>
@@ -48,6 +49,6 @@ export const SmallBanner = props => (
         {props.subHeadline}
       </Serif>
     </Flex>
-    <Avatar size="sm" src={props.src} ml={2} />
+    <Avatar size="sm" src={props.imageUrl} initials={props.initials} />
   </Flex>
 )

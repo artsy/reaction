@@ -665,4 +665,17 @@ export const AllAdditionalDetailsPresent = {
   literature: "Some literature info goes here",
   exhibition_history: "And the work was so excibited!",
   articles: [],
+  context: {
+    __typename: "ArtworkContextPartnerShow",
+    name: "Marcel Barbeau : Jours d’envol",
+    href: "/show/galerie-deste-marcel-barbeau-jours-denvol",
+    type: "Show",
+    status: "running",
+    thumbnail: {
+      img: {
+        url:
+          "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=70&height=70&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2Fal6PoLl3HsQFbXNyxeOtdA%2Fsquare.jpg",
+      },
+    },
+  },
 }
