@@ -167,12 +167,12 @@ const SecondaryEntry = ({
 }) => (
   <Flex justifyContent="space-between" alignItems="baseline">
     <div>
-      <Sans size="2" color="black30">
+      <Sans size="2" color="black60">
         {label}
       </Sans>
     </div>
     <div>
-      <Sans size="2" color="black30">
+      <Sans size="2" color="black60">
         {value}
       </Sans>
     </div>
