@@ -2,6 +2,7 @@ import { TransactionSummary_order } from "__generated__/TransactionSummary_order
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { get } from "Utils/get"
+import { Responsive } from "Utils/Responsive"
 
 import {
   Box,
@@ -140,22 +141,30 @@ const Entry = ({
   value: React.ReactNode
   final?: boolean
 }) => (
-  <Flex justifyContent="space-between" alignItems="baseline">
-    <div>
-      <Serif size="2" color="black60">
-        {label}
-      </Serif>
-    </div>
-    <div>
-      <Serif
-        size="2"
-        color={final ? "black100" : "black60"}
-        weight={final ? "semibold" : "regular"}
-      >
-        {value}
-      </Serif>
-    </div>
-  </Flex>
+  <Responsive>
+    {({ xs }) => {
+      const size = xs ? "2" : "3"
+
+      return (
+        <Flex justifyContent="space-between" alignItems="baseline">
+          <div>
+            <Serif size={size} color="black60">
+              {label}
+            </Serif>
+          </div>
+          <div>
+            <Serif
+              size={size}
+              color={final ? "black100" : "black60"}
+              weight={final ? "semibold" : "regular"}
+            >
+              {value}
+            </Serif>
+          </div>
+        </Flex>
+      )
+    }}
+  </Responsive>
 )
 
 const SecondaryEntry = ({
