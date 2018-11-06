@@ -37,8 +37,21 @@ fragment ArtworkImages_artwork on Artwork {
     placeholder: resized(width: 30, height: 30, version: "small") {
       url
     }
-    is_zoomable
     aspectRatio: aspect_ratio
+    is_zoomable
+    deepZoom: deep_zoom {
+      Image {
+        xmlns
+        Url
+        Format
+        TileSize
+        Overlap
+        Size {
+          Width
+          Height
+        }
+      }
+    }
   }
   __id
 }
@@ -73,7 +86,7 @@ return {
   "operationKind": "query",
   "name": "ArtworkImagesQuery",
   "id": null,
-  "text": "query ArtworkImagesQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...ArtworkImages_artwork\n    __id\n  }\n}\n\nfragment ArtworkImages_artwork on Artwork {\n  title\n  image_alt: to_s\n  image_title\n  images {\n    id\n    uri: url(version: [\"larger\", \"large\"])\n    placeholder: resized(width: 30, height: 30, version: \"small\") {\n      url\n    }\n    is_zoomable\n    aspectRatio: aspect_ratio\n  }\n  __id\n}\n",
+  "text": "query ArtworkImagesQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...ArtworkImages_artwork\n    __id\n  }\n}\n\nfragment ArtworkImages_artwork on Artwork {\n  title\n  image_alt: to_s\n  image_title\n  images {\n    id\n    uri: url(version: [\"larger\", \"large\"])\n    placeholder: resized(width: 30, height: 30, version: \"small\") {\n      url\n    }\n    aspectRatio: aspect_ratio\n    is_zoomable\n    deepZoom: deep_zoom {\n      Image {\n        xmlns\n        Url\n        Format\n        TileSize\n        Overlap\n        Size {\n          Width\n          Height\n        }\n      }\n    }\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -208,17 +221,99 @@ return {
               },
               {
                 "kind": "ScalarField",
+                "alias": "aspectRatio",
+                "name": "aspect_ratio",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
                 "alias": null,
                 "name": "is_zoomable",
                 "args": null,
                 "storageKey": null
               },
               {
-                "kind": "ScalarField",
-                "alias": "aspectRatio",
-                "name": "aspect_ratio",
+                "kind": "LinkedField",
+                "alias": "deepZoom",
+                "name": "deep_zoom",
+                "storageKey": null,
                 "args": null,
-                "storageKey": null
+                "concreteType": "DeepZoom",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "Image",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "DeepZoomImage",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "xmlns",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "Url",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "Format",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "TileSize",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "Overlap",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "LinkedField",
+                        "alias": null,
+                        "name": "Size",
+                        "storageKey": null,
+                        "args": null,
+                        "concreteType": "DeepZoomImageSize",
+                        "plural": false,
+                        "selections": [
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "Width",
+                            "args": null,
+                            "storageKey": null
+                          },
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "Height",
+                            "args": null,
+                            "storageKey": null
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
               }
             ]
           },
