@@ -35,6 +35,9 @@ export interface LightboxProps {
       }
     }
   }
+
+  enabled?: boolean
+
   /**
    * Id of the element to render the lightbox in
    * Defaults to lightbox-container
@@ -57,6 +60,7 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
   static defaultProps = {
     lightboxId: "lightbox-container",
   }
+
   state = {
     element: null,
     viewer: null,
@@ -70,106 +74,11 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
       step: 0.001,
       value: 0,
     },
+
     /**
      * FIXME: convert to import('openseadragon) once force supports it
      */
     promisedDragon: Promise.resolve(require("openseadragon")),
-  }
-
-  renderLightbox() {
-    const { slider } = this.state
-    return (
-      <FadeTransition
-        in={this.state.shown}
-        mountOnEnter
-        unmountOnExit
-        timeout={{ enter: 250, exit: 300 }}
-      >
-        <DeepZoomContainer
-          onMouseMove={this.detectActivity}
-          onWheel={this.detectActivity}
-          onTouchStart={this.detectActivity}
-          onTouchMove={this.detectActivity}
-          innerRef={this.state.deepZoomRef as any /* TODO Update SC */}
-        >
-          <Box
-            position="absolute"
-            top={space(3) / 2}
-            right={space(3) / 2}
-            zIndex={1001}
-          >
-            <CloseButton onClick={() => this.hide()} />
-          </Box>
-          <Flex
-            position="absolute"
-            width="100%"
-            justifyContent="center"
-            zIndex={1001}
-            bottom={space(2)}
-          >
-            <FadeTransition
-              in={this.state.showZoomSlider}
-              timeout={{ enter: 50, exit: 150 }}
-            >
-              <Slider
-                min={slider.min}
-                max={slider.max}
-                step={slider.step}
-                value={slider.value}
-                onChange={this.onSliderChanged}
-                onZoomInClicked={() => this.zoomIn()}
-                onZoomOutClicked={() => this.zoomOut()}
-              />
-            </FadeTransition>
-          </Flex>
-        </DeepZoomContainer>
-      </FadeTransition>
-    )
-  }
-
-  renderPortal = () => {
-    return this.state.element
-      ? ReactDOM.createPortal(this.renderLightbox(), this.state.element)
-      : null
-  }
-
-  render() {
-    const { children } = this.props
-    const modifiedChildren = React.Children.map(
-      children,
-      (child: React.ReactElement<any>) =>
-        React.cloneElement(child, {
-          style: { cursor: "zoom-in" },
-          onClick: this.show,
-        })
-    )
-    return (
-      <React.Fragment>
-        {this.renderPortal()}
-        {modifiedChildren}
-      </React.Fragment>
-    )
-  }
-
-  postRender = () => {
-    this.state.viewer.addHandler(
-      "zoom",
-      bind(throttle(this.onZoomChanged, 50), this)
-    )
-    this.state.viewer.addHandler(
-      "tile-drawn",
-      once(() => {
-        this.setState({
-          slider: {
-            ...this.state.slider,
-            min: this.state.viewer.viewport.getMinZoom(),
-            max: this.state.viewer.viewport.getMaxZoom(),
-            value: this.state.viewer.viewport.getHomeZoom(),
-          },
-        })
-      })
-    )
-    this.detectActivity()
   }
 
   show = event => {
@@ -290,5 +199,104 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
     if (this.state.viewer && !prevState.viewer) {
       this.postRender()
     }
+  }
+
+  renderLightbox() {
+    const { slider } = this.state
+    return (
+      <FadeTransition
+        in={this.state.shown}
+        mountOnEnter
+        unmountOnExit
+        timeout={{ enter: 250, exit: 300 }}
+      >
+        <DeepZoomContainer
+          onMouseMove={this.detectActivity}
+          onWheel={this.detectActivity}
+          onTouchStart={this.detectActivity}
+          onTouchMove={this.detectActivity}
+          innerRef={this.state.deepZoomRef as any /* TODO Update SC */}
+        >
+          <Box
+            position="absolute"
+            top={space(3) / 2}
+            right={space(3) / 2}
+            zIndex={1001}
+          >
+            <CloseButton onClick={() => this.hide()} />
+          </Box>
+          <Flex
+            position="absolute"
+            width="100%"
+            justifyContent="center"
+            zIndex={1001}
+            bottom={space(2)}
+          >
+            <FadeTransition
+              in={this.state.showZoomSlider}
+              timeout={{ enter: 50, exit: 150 }}
+            >
+              <Slider
+                min={slider.min}
+                max={slider.max}
+                step={slider.step}
+                value={slider.value}
+                onChange={this.onSliderChanged}
+                onZoomInClicked={() => this.zoomIn()}
+                onZoomOutClicked={() => this.zoomOut()}
+              />
+            </FadeTransition>
+          </Flex>
+        </DeepZoomContainer>
+      </FadeTransition>
+    )
+  }
+
+  renderPortal = () => {
+    return this.state.element
+      ? ReactDOM.createPortal(this.renderLightbox(), this.state.element)
+      : null
+  }
+
+  render() {
+    const { children, enabled } = this.props
+    const modifiedChildren = React.Children.map(
+      children,
+      (child: React.ReactElement<any>) => {
+        return React.cloneElement(child, {
+          ...(enabled && {
+            style: { cursor: "zoom-in" },
+            onClick: this.show,
+          }),
+        })
+      }
+    )
+    return (
+      <React.Fragment>
+        {this.renderPortal()}
+        {modifiedChildren}
+      </React.Fragment>
+    )
+  }
+
+  postRender = () => {
+    this.state.viewer.addHandler(
+      "zoom",
+      bind(throttle(this.onZoomChanged, 50), this)
+    )
+    this.state.viewer.addHandler(
+      "tile-drawn",
+      once(() => {
+        this.setState({
+          slider: {
+            ...this.state.slider,
+            min: this.state.viewer.viewport.getMinZoom(),
+            max: this.state.viewer.viewport.getMaxZoom(),
+            value: this.state.viewer.viewport.getHomeZoom(),
+          },
+        })
+      })
+    )
+    this.detectActivity()
   }
 }
