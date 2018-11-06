@@ -36,6 +36,7 @@ export class CreditCardInput extends React.Component<
   state = {
     focused: false,
   }
+  cardInputElement: any
 
   onChange(response: stripe.elements.ElementChangeResponse) {
     if (this.props.onChange) {
@@ -57,12 +58,15 @@ export class CreditCardInput extends React.Component<
             hidePostalCode
             onChange={this.onChange.bind(this)}
             onFocus={() => this.setState({ focused: true })}
-            onBlur={() => this.setState({ focused: false })}
+            onBlur={() =>
+              this.setState({
+                focused: false,
+              })
+            }
+            onReady={(el => (this.cardInputElement = el)) as any}
             style={{
               base: {
-                "::placeholder": {
-                  color: color("black30"),
-                },
+                "::placeholder": { color: color("black30") },
                 fontFamily: fontFamily.serif.regular as string,
                 fontSize: `${themeProps.typeSizes.serif["3t"].fontSize}px`,
                 fontSmoothing: "antialiased",

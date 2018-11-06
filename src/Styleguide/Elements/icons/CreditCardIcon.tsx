@@ -15,7 +15,7 @@ export const CreditCardIcon = ({
   type?: CreditCardType | string
 }) => {
   switch (type) {
-    case "Mastercard":
+    case "MasterCard":
       return <MastercardIcon {...others} />
     case "Visa":
       return <VisaIcon {...others} />
