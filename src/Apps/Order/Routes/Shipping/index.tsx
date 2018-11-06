@@ -243,9 +243,11 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
       postalCode: usOrCanada && validatePresence(postalCode),
       phoneNumber: validatePresence(phoneNumber),
     }
+    const hasErrors = Object.keys(errors).filter(key => errors[key]).length > 0
+
     return {
       errors,
-      hasErrors: Object.keys(errors).filter(key => errors[key]).length > 0,
+      hasErrors,
     }
   }
 

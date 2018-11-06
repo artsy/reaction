@@ -16,8 +16,10 @@ export const validateAddress = (address: Address) => {
     country: validatePresence(country),
     postalCode: usOrCanada && validatePresence(postalCode),
   }
+  const hasErrors = Object.keys(errors).filter(key => errors[key]).length > 0
+
   return {
     errors,
-    hasErrors: Object.keys(errors).filter(key => errors[key]).length > 0,
+    hasErrors,
   }
 }
