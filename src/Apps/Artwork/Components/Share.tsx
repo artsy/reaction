@@ -1,4 +1,4 @@
-import { Flex, Sans, Separator } from "@artsy/palette"
+import { color, Flex, Sans, Separator } from "@artsy/palette"
 import { IconName } from "Assets/Icons"
 import Icon from "Components/Icon"
 import React from "react"
@@ -29,16 +29,23 @@ const URLInput = styled.input`
   display: flex;
   flex-grow: 1;
   color: inherit;
+  &:hover {
+    color: ${color("black100")};
+  }
+  &::selection {
+    color: ${color("white100")};
+    background: ${color("purple100")};
+  }
 `
 
 const Platform: React.SFC<{ iconName: IconName; title: string }> = ({
   iconName,
   title,
 }) => (
-  <Flex flexDirection="row" flexBasis="50%">
+  <Flex flexDirection="row" flexBasis="50%" mt={2}>
     <Icon name={iconName} color="black" />
     <Sans size="3" color="black60">
-      {title}
+      <a>{title}</a>
     </Sans>
   </Flex>
 )
@@ -68,14 +75,12 @@ export class Share extends React.Component<ShareProps> {
               onClick={this.selectURL}
             />
           </SansGrow>
-          <a onClick={this.selectURL}>
-            <Sans size="2" weight="medium" color="black60">
-              Copy
-            </Sans>
-          </a>
+          <Sans size="2" weight="medium" color="black60">
+            <a onClick={this.selectURL}>Copy</a>
+          </Sans>
         </Flex>
         <Separator />
-        <Flex flexDirection="row" flexWrap>
+        <Flex flexDirection="row" flexWrap="wrap">
           <Platform iconName="facebook" title="Facebook" />
           <Platform iconName="twitter" title="Twitter" />
           <Platform iconName="mail" title="Email" />
