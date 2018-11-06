@@ -96,7 +96,7 @@ export class TransactionSummary extends React.Component<
             <>
               <Entry label="Your offer" value={offerOverride || offerTotal} />
               {Boolean(itemsTotal) && (
-                <Entry label="List price" secondary value={itemsTotal} />
+                <SecondaryEntry label="List price" value={itemsTotal} />
               )}
 
               <Spacer mb={2} />
@@ -135,39 +135,46 @@ const Entry = ({
   label,
   value,
   final,
-  secondary,
 }: {
   label: React.ReactNode
   value: React.ReactNode
   final?: boolean
-  secondary?: boolean
 }) => (
   <Flex justifyContent="space-between" alignItems="baseline">
     <div>
-      {secondary ? (
-        <Sans size="2" color="black30">
-          {label}
-        </Sans>
-      ) : (
-        <Serif size="2" color="black60">
-          {label}
-        </Serif>
-      )}
+      <Serif size="2" color="black60">
+        {label}
+      </Serif>
     </div>
     <div>
-      {secondary ? (
-        <Sans size="2" color="black30">
-          {value}
-        </Sans>
-      ) : (
-        <Serif
-          size="2"
-          color={final ? "black100" : "black60"}
-          weight={final ? "semibold" : "regular"}
-        >
-          {value}
-        </Serif>
-      )}
+      <Serif
+        size="2"
+        color={final ? "black100" : "black60"}
+        weight={final ? "semibold" : "regular"}
+      >
+        {value}
+      </Serif>
+    </div>
+  </Flex>
+)
+
+const SecondaryEntry = ({
+  label,
+  value,
+}: {
+  label: React.ReactNode
+  value: React.ReactNode
+}) => (
+  <Flex justifyContent="space-between" alignItems="baseline">
+    <div>
+      <Sans size="2" color="black30">
+        {label}
+      </Sans>
+    </div>
+    <div>
+      <Sans size="2" color="black30">
+        {value}
+      </Sans>
     </div>
   </Flex>
 )
