@@ -2,8 +2,6 @@ import { Button, Checkbox, Flex, Join, Serif, Spacer } from "@artsy/palette"
 import { Payment_order } from "__generated__/Payment_order.graphql"
 import { PaymentRouteCreateCreditCardMutation } from "__generated__/PaymentRouteCreateCreditCardMutation.graphql"
 import { PaymentRouteSetOrderPaymentMutation } from "__generated__/PaymentRouteSetOrderPaymentMutation.graphql"
-import { validatePresence } from "Apps/Order/Components/Validators"
-
 import {
   Address,
   AddressChangeHandler,
@@ -18,6 +16,7 @@ import { Helper } from "Apps/Order/Components/Helper"
 import { OrderStepper } from "Apps/Order/Components/OrderStepper"
 import { TransactionSummaryFragmentContainer as TransactionSummary } from "Apps/Order/Components/TransactionSummary"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
+import { validateAddress } from "Apps/Order/Utils/formValidators"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
@@ -100,8 +99,8 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
   onContinue: () => void = () => {
     this.setState({ isCommittingMutation: true }, () => {
       if (this.needsAddress()) {
-        const errors = this.validateAddress(this.state.address)
-        if (Object.keys(errors).filter(key => errors[key]).length > 0) {
+        const { errors, hasErrors } = validateAddress(this.state.address)
+        if (hasErrors) {
           this.setState({
             isCommittingMutation: false,
             addressErrors: errors,
@@ -126,19 +125,6 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
           }
         })
     })
-  }
-
-  private validateAddress(address: Address) {
-    const { name, addressLine1, city, region, country, postalCode } = address
-    const usOrCanada = country === "US" || country === "CA"
-    return {
-      name: validatePresence(name),
-      addressLine1: validatePresence(addressLine1),
-      city: validatePresence(city),
-      region: usOrCanada && validatePresence(region),
-      country: validatePresence(country),
-      postalCode: usOrCanada && validatePresence(postalCode),
-    }
   }
 
   @track((props, state, args) => {
@@ -166,11 +152,12 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
   }
 
   onAddressChange: AddressChangeHandler = (address, key) => {
+    const { errors } = validateAddress(address)
     this.setState({
       address,
       addressErrors: {
         ...this.state.addressErrors,
-        [key]: this.validateAddress(address)[key],
+        [key]: errors[key],
       },
       addressTouched: {
         ...this.state.addressTouched,
