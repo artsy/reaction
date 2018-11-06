@@ -219,7 +219,7 @@
       "^.+\\.(ts|tsx|js|jsx)$": "babel-jest",
       "\\.graphql$": "jest-raw-loader"
     },
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js|jsx)$",
+    "testRegex": "/__tests__/.+?\\.test\\.(ts|tsx|js|jsx)$",
     "testPathIgnorePatterns": [
       "<rootDir>/dist/",
       "<rootDir>/externals/"

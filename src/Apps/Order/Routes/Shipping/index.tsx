@@ -23,7 +23,7 @@ import { Helper } from "Apps/Order/Components/Helper"
 import { OrderStepper } from "Apps/Order/Components/OrderStepper"
 import { TransactionSummaryFragmentContainer as TransactionSummary } from "Apps/Order/Components/TransactionSummary"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
-import { validatePresence } from "Apps/Order/Components/Validators"
+import { validatePresence } from "Apps/Order/Utils/formValidators"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
@@ -108,10 +108,8 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
       const { address, shippingOption } = this.state
 
       if (this.state.shippingOption === "SHIP") {
-        const errors = this.validateAddress(this.state.address)
-        const thereAreErrors =
-          Object.keys(errors).filter(key => errors[key]).length > 0
-        if (thereAreErrors) {
+        const { errors, hasErrors } = this.validateAddress(this.state.address)
+        if (hasErrors) {
           this.setState({
             isCommittingMutation: false,
             addressErrors: errors,
@@ -236,7 +234,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
       phoneNumber,
     } = address
     const usOrCanada = country === "US" || country === "CA"
-    return {
+    const errors = {
       name: validatePresence(name),
       addressLine1: validatePresence(addressLine1),
       city: validatePresence(city),
@@ -245,6 +243,12 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
       postalCode: usOrCanada && validatePresence(postalCode),
       phoneNumber: validatePresence(phoneNumber),
     }
+    const hasErrors = Object.keys(errors).filter(key => errors[key]).length > 0
+
+    return {
+      errors,
+      hasErrors,
+    }
   }
 
   onCloseModal = () => {
@@ -252,11 +256,12 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
   }
 
   onAddressChange: AddressChangeHandler = (address, key) => {
+    const { errors } = this.validateAddress(address)
     this.setState({
       address,
       addressErrors: {
         ...this.state.addressErrors,
-        ...this.validateAddress(address),
+        ...errors,
       },
       addressTouched: {
         ...this.state.addressTouched,
