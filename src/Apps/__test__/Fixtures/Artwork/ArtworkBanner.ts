@@ -1,6 +1,6 @@
 export const ArtworkAuctionBannerFixture = {
   id: "richard-anuszkiewicz-lino-yellow-318",
-  context: {
+  artworkContextAuction: {
     __typename: "ArtworkContextAuction",
     name: "Doyle: Post-War & Contemporary Art",
     href: "/auction/doyle-post-war-and-contemporary-art-2",
@@ -20,7 +20,7 @@ export const ArtworkAuctionBannerFixture = {
 
 export const ArtworkFairBannerFixture = {
   id: "raqib-shaw-the-garden-of-earthly-delights-xiv",
-  context: {
+  artworkContextFair: {
     __typename: "ArtworkContextFair",
     name: "West Bund Art & Design 2018",
     href: "/west-bund-art-and-design-2018",
@@ -52,7 +52,7 @@ export const ArtworkFairBannerFixture = {
 
 export const ArtworkUpcomingShowBannerFixture = {
   id: "claudia-giraudo-affinita-verde-amarillo",
-  context: {
+  artworkContextPartnerShow: {
     __typename: "ArtworkContextPartnerShow",
     name: "Claudia Giraudo | The age of innocence",
     href: "/show/galleria-punto-sullarte-claudia-giraudo-the-age-of-innocence",
@@ -80,7 +80,7 @@ export const ArtworkUpcomingShowBannerFixture = {
 
 export const ArtworkCurrentShowBannerFixture = {
   id: "marcel-barbeau-diamants-larmes",
-  context: {
+  artworkContextPartnerShow: {
     __typename: "ArtworkContextPartnerShow",
     name: "Marcel Barbeau : Jours d’envol",
     href: "/show/galerie-deste-marcel-barbeau-jours-denvol",
@@ -109,7 +109,7 @@ export const ArtworkCurrentShowBannerFixture = {
 export const ArtworkPastShowBannerFixture = {
   id:
     "julio-le-parc-la-longue-marche-etape-n-degrees-6-the-long-march-step-n-degrees-6",
-  context: {
+  artworkContextPartnerShow: {
     __typename: "ArtworkContextPartnerShow",
     name: "Julio Le Parc: Form into Action",
     href: "/show/perez-art-museum-miami-pamm-julio-le-parc-form-into-action",

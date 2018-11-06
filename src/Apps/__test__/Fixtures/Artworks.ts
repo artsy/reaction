@@ -665,7 +665,7 @@ export const AllAdditionalDetailsPresent = {
   literature: "Some literature info goes here",
   exhibition_history: "And the work was so excibited!",
   articles: [],
-  context: {
+  artworkContextPartnerShow: {
     __typename: "ArtworkContextPartnerShow",
     name: "Marcel Barbeau : Jours d’envol",
     href: "/show/galerie-deste-marcel-barbeau-jours-denvol",

@@ -13,65 +13,81 @@ export interface ArtworkBannerProps {
 }
 
 export const ArtworkBanner: React.SFC<ArtworkBannerProps> = props => {
-  const { context, partner } = props.artwork
-  if (!context) return null
+  const {
+    artworkContextAuction,
+    artworkContextFair,
+    artworkContextPartnerShow,
+    partner,
+  } = props.artwork
+
   // imageUrl: image for avatar
   // initials: fallback partner initials in case image is not there.
   // meta: in auction / at fair / in show
   // name:  auction / fair / show name
   // subHeadline: partner name
-  switch (context.__typename) {
-    case "ArtworkContextAuction":
-      const auctionImage = get(partner, p => p.profile.icon.url)
-      return (
-        <Banner
-          imageUrl={auctionImage}
-          initials={partner.initials}
-          meta="In auction"
-          name={context.name}
-          subHeadline={partner.name}
-        />
-      )
-    case "ArtworkContextFair":
-      const fairImage = get(context, c => c.profile.icon.img.url)
-      const initials = get(context, c => c.profile.initials)
-      return (
-        <Banner
-          imageUrl={fairImage}
-          initials={initials}
-          meta="At fair"
-          name="Fair name goes here" // {context.name}
-          subHeadline={partner.name}
-        />
-      )
-    case "ArtworkContextPartnerShow":
-      const showImage = get(context, c => c.thumbnail.img.url)
-      let showLine = "In current show"
-      if (context.status === "upcoming") {
-        showLine = "In upcoming show"
-      } else if (context.status === "closed") {
-        showLine = "In past show"
-      }
-      return (
-        <Banner
-          imageUrl={showImage}
-          initials={partner.initials}
-          meta={showLine}
-          name="Show name goes here" // {context.name}
-          subHeadline={partner.name}
-        />
-      )
-    default:
-      return null
+  if (artworkContextAuction) {
+    const auctionImage = get(partner, p => p.profile.icon.url)
+    return (
+      <Banner
+        imageUrl={auctionImage}
+        initials={partner.initials}
+        meta="In auction"
+        name={artworkContextAuction.name}
+        subHeadline={partner.name}
+      />
+    )
   }
+  if (artworkContextFair) {
+    const fairImage = get(artworkContextFair, c => c.profile.icon.img.url)
+    const initials = get(artworkContextFair, c => c.profile.initials)
+    return (
+      <Banner
+        imageUrl={fairImage}
+        initials={initials}
+        meta="At fair"
+        name={artworkContextFair.name}
+        subHeadline={partner.name}
+      />
+    )
+  }
+  if (artworkContextPartnerShow) {
+    const showImage = get(artworkContextPartnerShow, c => c.thumbnail.img.url)
+    let showLine = "In current show"
+    if (artworkContextPartnerShow.status === "upcoming") {
+      showLine = "In upcoming show"
+    } else if (artworkContextPartnerShow.status === "closed") {
+      showLine = "In past show"
+    }
+    return (
+      <Banner
+        imageUrl={showImage}
+        initials={partner.initials}
+        meta={showLine}
+        name={artworkContextPartnerShow.name}
+        subHeadline={partner.name}
+      />
+    )
+  }
+  return null
 }
 
 export const ArtworkBannerFragmentContainer = createFragmentContainer(
   ArtworkBanner,
   graphql`
     fragment ArtworkBanner_artwork on Artwork {
-      context {
-        __typename
+      partner {
+        type
+        name
+        initials
+        profile {
+          icon {
+            url(version: "square140")
+          }
+        }
+      }
+
+      # This aliasing selection of the context is done to work around a type generator bug, see below.
+      artworkContextAuction: context {
         ... on ArtworkContextAuction {
           name
           href
@@ -81,6 +97,8 @@ export const ArtworkBannerFragmentContainer = createFragmentContainer(
           live_start_at
           live_url_if_open
         }
+      }
+      artworkContextFair: context {
         ... on ArtworkContextFair {
           name
           href
@@ -96,6 +114,8 @@ export const ArtworkBannerFragmentContainer = createFragmentContainer(
             }
           }
         }
+      }
+      artworkContextPartnerShow: context {
         ... on ArtworkContextPartnerShow {
           name
           href
@@ -108,16 +128,51 @@ export const ArtworkBannerFragmentContainer = createFragmentContainer(
           }
         }
       }
-      partner {
-        type
-        name
-        initials
-        profile {
-          icon {
-            url(version: "square140")
-          }
-        }
-      }
+      # FIXME: There is a bug in the Relay transformer used before generating Flow types, and thus also our TS type
+      #        generator, that leads to a union selection _with_ a __typename selection being normalized incorrectly.
+      #        What ends up happening is that _only_ the common selection is being omitted from the second fragment,
+      #        i.e. in this case the fair and partnerShow selections are missing name and href.
+      #
+      #        This can be seen much more clear when adding __typename to the context part in ArtworkRail.tsx.
+      #
+      # context {
+      #   __typename
+      #   ... on ArtworkContextAuction {
+      #     name
+      #     href
+      #     is_auction
+      #     is_closed
+      #     is_open
+      #     live_start_at
+      #     live_url_if_open
+      #   }
+      #   ... on ArtworkContextFair {
+      #     name
+      #     href
+      #     is_active
+      #     start_at
+      #     end_at
+      #     profile {
+      #       initials
+      #       icon {
+      #         img: resized(width: 70, height: 70, version: "square") {
+      #           url
+      #         }
+      #       }
+      #     }
+      #   }
+      #   ... on ArtworkContextPartnerShow {
+      #     name
+      #     href
+      #     type
+      #     status
+      #     thumbnail: cover_image {
+      #       img: resized(width: 70, height: 70, version: "square") {
+      #         url
+      #       }
+      #     }
+      #   }
+      # }
     }
   `
 )

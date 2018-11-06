@@ -4,21 +4,32 @@ import { ConcreteFragment } from "relay-runtime";
 declare const _ArtworkBanner_artwork$ref: unique symbol;
 export type ArtworkBanner_artwork$ref = typeof _ArtworkBanner_artwork$ref;
 export type ArtworkBanner_artwork = {
-    readonly context: ({
-        readonly __typename: "ArtworkContextAuction";
+    readonly partner: ({
+        readonly type: string | null;
         readonly name: string | null;
-        readonly href: string | null;
-        readonly is_auction: boolean | null;
-        readonly is_closed: boolean | null;
-        readonly is_open: boolean | null;
-        readonly live_start_at: string | null;
-        readonly live_url_if_open: string | null;
-    } | {
-        readonly __typename: "ArtworkContextFair";
-        readonly is_active: boolean | null;
-        readonly start_at: string | null;
-        readonly end_at: string | null;
+        readonly initials: string | null;
         readonly profile: ({
+            readonly icon: ({
+                readonly url: string | null;
+            }) | null;
+        }) | null;
+    }) | null;
+    readonly artworkContextAuction: ({
+        readonly name?: string | null;
+        readonly href?: string | null;
+        readonly is_auction?: boolean | null;
+        readonly is_closed?: boolean | null;
+        readonly is_open?: boolean | null;
+        readonly live_start_at?: string | null;
+        readonly live_url_if_open?: string | null;
+    }) | null;
+    readonly artworkContextFair: ({
+        readonly name?: string | null;
+        readonly href?: string | null;
+        readonly is_active?: boolean | null;
+        readonly start_at?: string | null;
+        readonly end_at?: string | null;
+        readonly profile?: ({
             readonly initials: string | null;
             readonly icon: ({
                 readonly img: ({
@@ -26,26 +37,14 @@ export type ArtworkBanner_artwork = {
                 }) | null;
             }) | null;
         }) | null;
-    } | {
-        readonly __typename: "ArtworkContextPartnerShow";
-        readonly type: string | null;
-        readonly status: string | null;
-        readonly thumbnail: ({
-            readonly img: ({
-                readonly url: string | null;
-            }) | null;
-        }) | null;
-    } | {
-        /*This will never be '% other', but we need some
-        value in case none of the concrete values match.*/
-        readonly __typename: "%other";
     }) | null;
-    readonly partner: ({
-        readonly type: string | null;
-        readonly name: string | null;
-        readonly initials: string | null;
-        readonly profile: ({
-            readonly icon: ({
+    readonly artworkContextPartnerShow: ({
+        readonly name?: string | null;
+        readonly href?: string | null;
+        readonly type?: string | null;
+        readonly status?: string | null;
+        readonly thumbnail?: ({
+            readonly img: ({
                 readonly url: string | null;
             }) | null;
         }) | null;
@@ -59,7 +58,7 @@ const node: ConcreteFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "type",
   "args": null,
   "storageKey": null
 },
@@ -73,18 +72,25 @@ v1 = {
 v2 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "href",
+  "name": "initials",
   "args": null,
   "storageKey": null
 },
 v3 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "type",
+  "name": "__id",
   "args": null,
   "storageKey": null
 },
-v4 = [
+v4 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "href",
+  "args": null,
+  "storageKey": null
+},
+v5 = [
   {
     "kind": "LinkedField",
     "alias": "img",
@@ -122,14 +128,7 @@ v4 = [
       }
     ]
   }
-],
-v5 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "initials",
-  "args": null,
-  "storageKey": null
-};
+];
 return {
   "kind": "Fragment",
   "name": "ArtworkBanner_artwork",
@@ -140,104 +139,71 @@ return {
     {
       "kind": "LinkedField",
       "alias": null,
+      "name": "partner",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Partner",
+      "plural": false,
+      "selections": [
+        v0,
+        v1,
+        v2,
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "profile",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "Profile",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "icon",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "Image",
+              "plural": false,
+              "selections": [
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "url",
+                  "args": [
+                    {
+                      "kind": "Literal",
+                      "name": "version",
+                      "value": "square140",
+                      "type": "[String]"
+                    }
+                  ],
+                  "storageKey": "url(version:\"square140\")"
+                }
+              ]
+            },
+            v3
+          ]
+        },
+        v3
+      ]
+    },
+    {
+      "kind": "LinkedField",
+      "alias": "artworkContextAuction",
       "name": "context",
       "storageKey": null,
       "args": null,
       "concreteType": null,
       "plural": false,
       "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "__typename",
-          "args": null,
-          "storageKey": null
-        },
-        v0,
-        {
-          "kind": "InlineFragment",
-          "type": "ArtworkContextPartnerShow",
-          "selections": [
-            v1,
-            v2,
-            v3,
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "status",
-              "args": null,
-              "storageKey": null
-            },
-            {
-              "kind": "LinkedField",
-              "alias": "thumbnail",
-              "name": "cover_image",
-              "storageKey": null,
-              "args": null,
-              "concreteType": "Image",
-              "plural": false,
-              "selections": v4
-            }
-          ]
-        },
-        {
-          "kind": "InlineFragment",
-          "type": "ArtworkContextFair",
-          "selections": [
-            v1,
-            v2,
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "is_active",
-              "args": null,
-              "storageKey": null
-            },
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "start_at",
-              "args": null,
-              "storageKey": null
-            },
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "end_at",
-              "args": null,
-              "storageKey": null
-            },
-            {
-              "kind": "LinkedField",
-              "alias": null,
-              "name": "profile",
-              "storageKey": null,
-              "args": null,
-              "concreteType": "Profile",
-              "plural": false,
-              "selections": [
-                v5,
-                {
-                  "kind": "LinkedField",
-                  "alias": null,
-                  "name": "icon",
-                  "storageKey": null,
-                  "args": null,
-                  "concreteType": "Image",
-                  "plural": false,
-                  "selections": v4
-                },
-                v0
-              ]
-            }
-          ]
-        },
+        v3,
         {
           "kind": "InlineFragment",
           "type": "ArtworkContextAuction",
           "selections": [
             v1,
-            v2,
+            v4,
             {
               "kind": "ScalarField",
               "alias": null,
@@ -279,59 +245,109 @@ return {
     },
     {
       "kind": "LinkedField",
-      "alias": null,
-      "name": "partner",
+      "alias": "artworkContextFair",
+      "name": "context",
       "storageKey": null,
       "args": null,
-      "concreteType": "Partner",
+      "concreteType": null,
       "plural": false,
       "selections": [
         v3,
-        v1,
-        v5,
         {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "profile",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "Profile",
-          "plural": false,
+          "kind": "InlineFragment",
+          "type": "ArtworkContextFair",
           "selections": [
+            v1,
+            v4,
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "is_active",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "start_at",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "end_at",
+              "args": null,
+              "storageKey": null
+            },
             {
               "kind": "LinkedField",
               "alias": null,
-              "name": "icon",
+              "name": "profile",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "Profile",
+              "plural": false,
+              "selections": [
+                v2,
+                {
+                  "kind": "LinkedField",
+                  "alias": null,
+                  "name": "icon",
+                  "storageKey": null,
+                  "args": null,
+                  "concreteType": "Image",
+                  "plural": false,
+                  "selections": v5
+                },
+                v3
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "LinkedField",
+      "alias": "artworkContextPartnerShow",
+      "name": "context",
+      "storageKey": null,
+      "args": null,
+      "concreteType": null,
+      "plural": false,
+      "selections": [
+        v3,
+        {
+          "kind": "InlineFragment",
+          "type": "ArtworkContextPartnerShow",
+          "selections": [
+            v1,
+            v4,
+            v0,
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "status",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "LinkedField",
+              "alias": "thumbnail",
+              "name": "cover_image",
               "storageKey": null,
               "args": null,
               "concreteType": "Image",
               "plural": false,
-              "selections": [
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "url",
-                  "args": [
-                    {
-                      "kind": "Literal",
-                      "name": "version",
-                      "value": "square140",
-                      "type": "[String]"
-                    }
-                  ],
-                  "storageKey": "url(version:\"square140\")"
-                }
-              ]
-            },
-            v0
+              "selections": v5
+            }
           ]
-        },
-        v0
+        }
       ]
     },
-    v0
+    v3
   ]
 };
 })();
-(node as any).hash = '5b35be13e69f58d5e1fcd47658a65ac6';
+(node as any).hash = 'a54d55d21cdb9d25ca17c9f3bd3777c8';
 export default node;
