@@ -10,17 +10,15 @@ export interface BannerProps {
   subHeadline?: string
 }
 
-export class Banner extends React.Component<BannerProps> {
-  render() {
-    return (
-      <Responsive>
-        {({ xs }) => {
-          if (xs) return <SmallBanner {...this.props} />
-          else return <LargeBanner {...this.props} />
-        }}
-      </Responsive>
-    )
-  }
+export const Banner: React.SFC<BannerProps> = props => {
+  return (
+    <Responsive>
+      {({ xs }) => {
+        if (xs) return <SmallBanner {...props} />
+        else return <LargeBanner {...props} />
+      }}
+    </Responsive>
+  )
 }
 
 export const LargeBanner = props => (

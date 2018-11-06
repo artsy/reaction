@@ -12,59 +12,57 @@ export interface ArtworkBannerProps {
   artwork: ArtworkBanner_artwork
 }
 
-export class ArtworkBanner extends React.Component<ArtworkBannerProps> {
-  render() {
-    const { context, partner } = this.props.artwork
-    if (!context) return null
-    // imageUrl: image for avatar
-    // initials: fallback partner initials in case image is not there.
-    // meta: in auction / at fair / in show
-    // name:  auction / fair / show name
-    // subHeadline: partner name
-    switch (context.__typename) {
-      case "ArtworkContextAuction":
-        const auctionImage = get(partner, p => p.profile.icon.url)
-        return (
-          <Banner
-            imageUrl={auctionImage}
-            initials={partner.initials}
-            meta="In auction"
-            name={context.name}
-            subHeadline={partner.name}
-          />
-        )
-      case "ArtworkContextFair":
-        const fairImage = get(context, c => c.profile.icon.img.url)
-        const initials = get(context, c => c.profile.initials)
-        return (
-          <Banner
-            imageUrl={fairImage}
-            initials={initials}
-            meta="At fair"
-            name="Fair name goes here" // {context.name}
-            subHeadline={partner.name}
-          />
-        )
-      case "ArtworkContextPartnerShow":
-        const showImage = get(context, c => c.thumbnail.img.url)
-        let showLine = "In current show"
-        if (context.status === "upcoming") {
-          showLine = "In upcoming show"
-        } else if (context.status === "closed") {
-          showLine = "In past show"
-        }
-        return (
-          <Banner
-            imageUrl={showImage}
-            initials={partner.initials}
-            meta={showLine}
-            name="Show name goes here" // {context.name}
-            subHeadline={partner.name}
-          />
-        )
-      default:
-        return null
-    }
+export const ArtworkBanner: React.SFC<ArtworkBannerProps> = props => {
+  const { context, partner } = props.artwork
+  if (!context) return null
+  // imageUrl: image for avatar
+  // initials: fallback partner initials in case image is not there.
+  // meta: in auction / at fair / in show
+  // name:  auction / fair / show name
+  // subHeadline: partner name
+  switch (context.__typename) {
+    case "ArtworkContextAuction":
+      const auctionImage = get(partner, p => p.profile.icon.url)
+      return (
+        <Banner
+          imageUrl={auctionImage}
+          initials={partner.initials}
+          meta="In auction"
+          name={context.name}
+          subHeadline={partner.name}
+        />
+      )
+    case "ArtworkContextFair":
+      const fairImage = get(context, c => c.profile.icon.img.url)
+      const initials = get(context, c => c.profile.initials)
+      return (
+        <Banner
+          imageUrl={fairImage}
+          initials={initials}
+          meta="At fair"
+          name="Fair name goes here" // {context.name}
+          subHeadline={partner.name}
+        />
+      )
+    case "ArtworkContextPartnerShow":
+      const showImage = get(context, c => c.thumbnail.img.url)
+      let showLine = "In current show"
+      if (context.status === "upcoming") {
+        showLine = "In upcoming show"
+      } else if (context.status === "closed") {
+        showLine = "In past show"
+      }
+      return (
+        <Banner
+          imageUrl={showImage}
+          initials={partner.initials}
+          meta={showLine}
+          name="Show name goes here" // {context.name}
+          subHeadline={partner.name}
+        />
+      )
+    default:
+      return null
   }
 }
 
