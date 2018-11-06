@@ -75,8 +75,6 @@ describe("Review", () => {
   })
 
   it("shows an error modal when there is an error in submitOrderPayload", () => {
-    console.error = jest.fn() // Silences component logging.
-
     const component = getWrapper(defaultProps)
 
     expect(component.find(ErrorModal).props().show).toBe(false)
@@ -94,8 +92,6 @@ describe("Review", () => {
   })
 
   it("shows an error modal when there is a network error", () => {
-    console.error = jest.fn() // Silences component logging.
-
     const component = getWrapper(defaultProps)
     ;(commitMutation as jest.Mock<any>).mockImplementationOnce(
       (_, { onError }) => onError(new TypeError("Network request failed"))
@@ -107,7 +103,6 @@ describe("Review", () => {
   })
 
   it("shows a modal that redirects to the artwork page if there is an artwork_version_mismatch", () => {
-    console.error = jest.fn() // Silences component logging.
     window.location.assign = jest.fn()
 
     const component = getWrapper(defaultProps)
@@ -131,7 +126,6 @@ describe("Review", () => {
   })
 
   it("shows a modal that redirects to the artist page if there is an insufficient inventory", () => {
-    console.error = jest.fn() // Silences component logging.
     window.location.assign = jest.fn()
 
     const component = getWrapper(defaultProps)

@@ -1,9 +1,10 @@
 import { PreloadLink } from "Artsy/Router"
-import { ContextProvider } from "Components/Artsy"
+import { ContextProvider } from "Artsy/SystemContext"
 import { mount } from "enzyme"
 import React from "react"
 import { fetchQuery } from "react-relay"
 import "regenerator-runtime/runtime" // FIXME: Open PR react-relay-network-modern to fix this
+import { Provider } from "unstated"
 
 jest.mock("react-relay", () => ({
   fetchQuery: jest.fn(),
@@ -29,13 +30,21 @@ xdescribe("PreloadLink", () => {
   const getWrapper = (props = {}) => {
     return mount(
       <ContextProvider>
-        <PreloadLink {...defaultProps as any} {...props as any} />
+        <Provider>
+          <PreloadLink {...defaultProps as any} {...props as any} />
+        </Provider>
       </ContextProvider>
     )
   }
 
+  const consoleError = console.error
+
   beforeEach(() => {
     jest.clearAllMocks()
+  })
+
+  afterEach(() => {
+    console.error = consoleError
   })
 
   it("fetches data immediately if `immediate` is true", () => {
@@ -50,7 +59,6 @@ xdescribe("PreloadLink", () => {
 
   it("sets `isLoading` state to true if fetching data", done => {
     resolveFetch()
-    global.console.error = jest.fn()
     const onToggleLoading = jest.fn()
     const wrapper = getWrapper({ onToggleLoading })
     // TODO: Appropriately type
@@ -82,7 +90,7 @@ xdescribe("PreloadLink", () => {
 
   it("logs with an error if there is an error during fetch", done => {
     ;(fetchQuery as any).mockImplementation(() => Promise.reject("Error!"))
-    global.console.error = jest.fn()
+    console.error = jest.fn()
     getWrapper()
     setTimeout(() => {
       expect(global.console.error).toHaveBeenCalledWith(

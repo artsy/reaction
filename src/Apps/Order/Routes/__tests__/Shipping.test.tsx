@@ -128,7 +128,6 @@ describe("Shipping", () => {
 
   describe("mutation", () => {
     beforeEach(() => {
-      console.error = jest.fn() // Silences component logging.
       commitMutation.mockReset()
     })
 
