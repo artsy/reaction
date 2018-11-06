@@ -13,8 +13,21 @@ export type ArtworkImages_artwork = {
         readonly placeholder: ({
             readonly url: string | null;
         }) | null;
-        readonly is_zoomable: boolean | null;
         readonly aspectRatio: number;
+        readonly is_zoomable: boolean | null;
+        readonly deepZoom: ({
+            readonly Image: ({
+                readonly xmlns: string | null;
+                readonly Url: string | null;
+                readonly Format: string | null;
+                readonly TileSize: number | null;
+                readonly Overlap: number | null;
+                readonly Size: ({
+                    readonly Width: number | null;
+                    readonly Height: number | null;
+                }) | null;
+            }) | null;
+        }) | null;
     }) | null> | null;
     readonly " $refType": ArtworkImages_artwork$ref;
 };
@@ -121,17 +134,99 @@ const node: ConcreteFragment = {
         },
         {
           "kind": "ScalarField",
+          "alias": "aspectRatio",
+          "name": "aspect_ratio",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
           "alias": null,
           "name": "is_zoomable",
           "args": null,
           "storageKey": null
         },
         {
-          "kind": "ScalarField",
-          "alias": "aspectRatio",
-          "name": "aspect_ratio",
+          "kind": "LinkedField",
+          "alias": "deepZoom",
+          "name": "deep_zoom",
+          "storageKey": null,
           "args": null,
-          "storageKey": null
+          "concreteType": "DeepZoom",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "Image",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "DeepZoomImage",
+              "plural": false,
+              "selections": [
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "xmlns",
+                  "args": null,
+                  "storageKey": null
+                },
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "Url",
+                  "args": null,
+                  "storageKey": null
+                },
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "Format",
+                  "args": null,
+                  "storageKey": null
+                },
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "TileSize",
+                  "args": null,
+                  "storageKey": null
+                },
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "Overlap",
+                  "args": null,
+                  "storageKey": null
+                },
+                {
+                  "kind": "LinkedField",
+                  "alias": null,
+                  "name": "Size",
+                  "storageKey": null,
+                  "args": null,
+                  "concreteType": "DeepZoomImageSize",
+                  "plural": false,
+                  "selections": [
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "Width",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "Height",
+                      "args": null,
+                      "storageKey": null
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -144,5 +239,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'f1c91dbdbeb2ca3a07b399446d7f46bf';
+(node as any).hash = '1cb76d714f435fb21f95f1d49a462ddd';
 export default node;

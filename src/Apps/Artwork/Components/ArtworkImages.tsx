@@ -23,15 +23,25 @@ export const ArtworkImagesFragmentContainer = createFragmentContainer(
       image_title
       images {
         id
-        # FIXME: Update uri name prop when new Responsive PR is merged
         uri: url(version: ["larger", "large"])
         placeholder: resized(width: 30, height: 30, version: "small") {
           url
         }
-        is_zoomable
-
-        # FIXME: Update aspectRatio name when new Responsive PR is merged
         aspectRatio: aspect_ratio
+        is_zoomable
+        deepZoom: deep_zoom {
+          Image {
+            xmlns
+            Url
+            Format
+            TileSize
+            Overlap
+            Size {
+              Width
+              Height
+            }
+          }
+        }
       }
     }
   `
