@@ -1,29 +1,28 @@
 import { Box, Serif } from "@artsy/palette"
 import { CollectApp_viewer } from "__generated__/CollectApp_viewer.graphql"
 import React, { Component } from "react"
-import { Meta, Title } from "react-head"
+import { Link, Meta, Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import { CollectFrame } from "./CollectFrame"
-import { CollectMediumMetadata } from "./CollectMediumMetadata"
+import { getMetadataForMedium } from "./CollectMediumMetadata"
 import { CollectFilterFragmentContainer as ArtworkGrid } from "./Components/Base/CollectFilterContainer"
 
 export interface CollectAppProps {
   viewer?: CollectApp_viewer
+  params?: {
+    medium: string
+  }
 }
 
 export class CollectApp extends Component<CollectAppProps> {
   render() {
-    const medium = this.props.viewer.__fragments.CollectFilterContainer_viewer
-      .medium
-
-    const title = medium
-      ? CollectMediumMetadata[medium].title
-      : "Collect | Artsy"
-
-    const description = medium
-      ? CollectMediumMetadata[medium].description
-      : "Find artworks by subject matter, style/technique, movement, price, and gallery/institution."
+    const { params } = this.props
+    const medium = params && params.medium
+    const { description, title } = getMetadataForMedium(medium)
+    const canonicalHref = medium
+      ? `${sd.APP_URL}/collect/${medium}`
+      : `${sd.APP_URL}/collect`
 
     return (
       <CollectFrame>
@@ -36,6 +35,7 @@ export class CollectApp extends Component<CollectAppProps> {
         <Meta name="description" content={description} />
         <Meta property="og:description" content={description} />
         <Meta property="twitter:description" content={description} />
+        <Link rel="canonical" href={canonicalHref} />
 
         <Box mt={3} mb={4}>
           <Serif size="8">Collect art and design online</Serif>
