@@ -665,6 +665,8 @@ export const AllAdditionalDetailsPresent = {
   literature: "Some literature info goes here",
   exhibition_history: "And the work was so excibited!",
   articles: [],
+  artworkContextAuction: {},
+  artworkContextFair: {},
   artworkContextPartnerShow: {
     __typename: "ArtworkContextPartnerShow",
     name: "Marcel Barbeau : Jours d’envol",

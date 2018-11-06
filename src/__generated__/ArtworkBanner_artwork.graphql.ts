@@ -15,21 +15,27 @@ export type ArtworkBanner_artwork = {
         }) | null;
     }) | null;
     readonly artworkContextAuction: ({
-        readonly name?: string | null;
-        readonly href?: string | null;
-        readonly is_auction?: boolean | null;
-        readonly is_closed?: boolean | null;
-        readonly is_open?: boolean | null;
-        readonly live_start_at?: string | null;
-        readonly live_url_if_open?: string | null;
+        readonly __typename: "ArtworkContextAuction";
+        readonly name: string | null;
+        readonly href: string | null;
+        readonly is_auction: boolean | null;
+        readonly is_closed: boolean | null;
+        readonly is_open: boolean | null;
+        readonly live_start_at: string | null;
+        readonly live_url_if_open: string | null;
+    } | {
+        /*This will never be '% other', but we need some
+        value in case none of the concrete values match.*/
+        readonly __typename: "%other";
     }) | null;
     readonly artworkContextFair: ({
-        readonly name?: string | null;
-        readonly href?: string | null;
-        readonly is_active?: boolean | null;
-        readonly start_at?: string | null;
-        readonly end_at?: string | null;
-        readonly profile?: ({
+        readonly __typename: "ArtworkContextFair";
+        readonly name: string | null;
+        readonly href: string | null;
+        readonly is_active: boolean | null;
+        readonly start_at: string | null;
+        readonly end_at: string | null;
+        readonly profile: ({
             readonly initials: string | null;
             readonly icon: ({
                 readonly img: ({
@@ -37,17 +43,26 @@ export type ArtworkBanner_artwork = {
                 }) | null;
             }) | null;
         }) | null;
+    } | {
+        /*This will never be '% other', but we need some
+        value in case none of the concrete values match.*/
+        readonly __typename: "%other";
     }) | null;
     readonly artworkContextPartnerShow: ({
-        readonly name?: string | null;
-        readonly href?: string | null;
-        readonly type?: string | null;
-        readonly status?: string | null;
-        readonly thumbnail?: ({
+        readonly __typename: "ArtworkContextPartnerShow";
+        readonly name: string | null;
+        readonly href: string | null;
+        readonly type: string | null;
+        readonly status: string | null;
+        readonly thumbnail: ({
             readonly img: ({
                 readonly url: string | null;
             }) | null;
         }) | null;
+    } | {
+        /*This will never be '% other', but we need some
+        value in case none of the concrete values match.*/
+        readonly __typename: "%other";
     }) | null;
     readonly " $refType": ArtworkBanner_artwork$ref;
 };
@@ -86,11 +101,18 @@ v3 = {
 v4 = {
   "kind": "ScalarField",
   "alias": null,
+  "name": "__typename",
+  "args": null,
+  "storageKey": null
+},
+v5 = {
+  "kind": "ScalarField",
+  "alias": null,
   "name": "href",
   "args": null,
   "storageKey": null
 },
-v5 = [
+v6 = [
   {
     "kind": "LinkedField",
     "alias": "img",
@@ -197,13 +219,14 @@ return {
       "concreteType": null,
       "plural": false,
       "selections": [
+        v4,
         v3,
         {
           "kind": "InlineFragment",
           "type": "ArtworkContextAuction",
           "selections": [
             v1,
-            v4,
+            v5,
             {
               "kind": "ScalarField",
               "alias": null,
@@ -252,13 +275,14 @@ return {
       "concreteType": null,
       "plural": false,
       "selections": [
+        v4,
         v3,
         {
           "kind": "InlineFragment",
           "type": "ArtworkContextFair",
           "selections": [
             v1,
-            v4,
+            v5,
             {
               "kind": "ScalarField",
               "alias": null,
@@ -298,7 +322,7 @@ return {
                   "args": null,
                   "concreteType": "Image",
                   "plural": false,
-                  "selections": v5
+                  "selections": v6
                 },
                 v3
               ]
@@ -316,13 +340,14 @@ return {
       "concreteType": null,
       "plural": false,
       "selections": [
+        v4,
         v3,
         {
           "kind": "InlineFragment",
           "type": "ArtworkContextPartnerShow",
           "selections": [
             v1,
-            v4,
+            v5,
             v0,
             {
               "kind": "ScalarField",
@@ -339,7 +364,7 @@ return {
               "args": null,
               "concreteType": "Image",
               "plural": false,
-              "selections": v5
+              "selections": v6
             }
           ]
         }
@@ -349,5 +374,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'a54d55d21cdb9d25ca17c9f3bd3777c8';
+(node as any).hash = 'e1b05ea3a25e680bbabe03c8aec1da54';
 export default node;

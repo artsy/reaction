@@ -1,3 +1,16 @@
+export const ArtwrorkNoBannerFixture = {
+  id: "richard-anuszkiewicz-lino-yellow-318",
+  artworkContextAuction: null,
+  artworkContextFair: null,
+  artworkContextPartnerShow: null,
+  partner: {
+    type: "Auction House",
+    name: "Doyle",
+    initials: "D",
+    profile: null,
+  },
+}
+
 export const ArtworkAuctionBannerFixture = {
   id: "richard-anuszkiewicz-lino-yellow-318",
   artworkContextAuction: {
@@ -10,6 +23,8 @@ export const ArtworkAuctionBannerFixture = {
     live_start_at: "2018-11-07T19:00:00+00:00",
     live_url_if_open: null,
   },
+  artworkContextFair: { __typename: "ArtworkContextAuction" },
+  artworkContextPartnerShow: { __typename: "ArtworkContextAuction" },
   partner: {
     type: "Auction House",
     name: "Doyle",
@@ -20,6 +35,7 @@ export const ArtworkAuctionBannerFixture = {
 
 export const ArtworkFairBannerFixture = {
   id: "raqib-shaw-the-garden-of-earthly-delights-xiv",
+  artworkContextAuction: { __typename: "ArtworkContextFair" },
   artworkContextFair: {
     __typename: "ArtworkContextFair",
     name: "West Bund Art & Design 2018",
@@ -37,6 +53,7 @@ export const ArtworkFairBannerFixture = {
       },
     },
   },
+  artworkContextPartnerShow: { __typename: "ArtworkContextFair" },
   partner: {
     type: "Gallery",
     name: "White Cube",
@@ -52,6 +69,8 @@ export const ArtworkFairBannerFixture = {
 
 export const ArtworkUpcomingShowBannerFixture = {
   id: "claudia-giraudo-affinita-verde-amarillo",
+  artworkContextAuction: { __typename: "ArtworkContextPartnerShow" },
+  artworkContextFair: { __typename: "ArtworkContextPartnerShow" },
   artworkContextPartnerShow: {
     __typename: "ArtworkContextPartnerShow",
     name: "Claudia Giraudo | The age of innocence",
@@ -80,6 +99,8 @@ export const ArtworkUpcomingShowBannerFixture = {
 
 export const ArtworkCurrentShowBannerFixture = {
   id: "marcel-barbeau-diamants-larmes",
+  artworkContextAuction: { __typename: "ArtworkContextPartnerShow" },
+  artworkContextFair: { __typename: "ArtworkContextPartnerShow" },
   artworkContextPartnerShow: {
     __typename: "ArtworkContextPartnerShow",
     name: "Marcel Barbeau : Jours d’envol",
@@ -109,6 +130,8 @@ export const ArtworkCurrentShowBannerFixture = {
 export const ArtworkPastShowBannerFixture = {
   id:
     "julio-le-parc-la-longue-marche-etape-n-degrees-6-the-long-march-step-n-degrees-6",
+  artworkContextAuction: { __typename: "ArtworkContextPartnerShow" },
+  artworkContextFair: { __typename: "ArtworkContextPartnerShow" },
   artworkContextPartnerShow: {
     __typename: "ArtworkContextPartnerShow",
     name: "Julio Le Parc: Form into Action",
