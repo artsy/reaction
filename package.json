@@ -155,6 +155,7 @@
   },
   "dependencies": {
     "@artsy/palette": "^2.19.9",
+    "@artsy/react-responsive-media": "^1.0.5",
     "cheerio": "^1.0.0-rc.2",
     "farce": "^0.2.6",
     "formik": "^0.11.11",

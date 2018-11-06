@@ -11,6 +11,23 @@
     react "^16.5.0"
     styled-system "^3.0.3"
 
+"@artsy/palette@^2.19.8":
+  version "2.19.9"
+  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-2.19.9.tgz#c04167e93a7fdbf72a80ef93f4e3ad75b8db6d09"
+  integrity sha512-YLtm9R8Hf7/C2ZSS046NvQeV0BnWMbC61rPX5LlQ6HG+2xTGQ9SE8GACgVp6kRyNJU+7JDDuIADmW7YU2t9Zpw==
+  dependencies:
+    rc-slider "^8.6.2"
+    react "^16.5.0"
+    styled-system "^3.0.3"
+
+"@artsy/react-responsive-media@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@artsy/react-responsive-media/-/react-responsive-media-1.0.5.tgz#9dc2625dcb64b3e1820b93cf66920c8b31d5d348"
+  integrity sha512-BJLM0G8YhxtaurVb6GpOn30hXF/ytQkvl6+VFRCS7h0N6K7u3mdyJE0uAlsZBU5hOeE4lFY976ZxH28BuW80+g==
+  dependencies:
+    "@artsy/palette" "^2.19.8"
+    react "16.3.2"
+
 "@babel/cli@^7.0.0":
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/@babel/cli/-/cli-7.0.0.tgz#108b395fd43fff6681d36fb41274df4d8ffeb12e"
@@ -12732,6 +12749,16 @@ react-waypoint@^7.3.3:
   dependencies:
     consolidated-events "^1.1.0"
     prop-types "^15.0.0"
+
+react@16.3.2:
+  version "16.3.2"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.3.2.tgz#fdc8420398533a1e58872f59091b272ce2f91ea9"
+  integrity sha512-o5GPdkhciQ3cEph6qgvYB7LTOHw/GB0qRI6ZFNugj49qJCFfgHwVNjZ5u+b7nif4vOeMIOuYj3CeYe2IBD74lg==
+  dependencies:
+    fbjs "^0.8.16"
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.0"
 
 react@^16.5.0:
   version "16.5.0"

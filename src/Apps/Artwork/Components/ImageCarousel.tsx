@@ -129,7 +129,7 @@ const ActionButtonsContainer = styled.div`
 `
 
 interface ImageCarouselProps {
-  images: Array<{ uri: string; aspectRatio: number }>
+  images: any // Array<{ uri: string; aspectRatio: number }>
 }
 
 interface ImageCarouselState {
