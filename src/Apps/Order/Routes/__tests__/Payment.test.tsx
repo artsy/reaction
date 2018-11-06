@@ -106,13 +106,11 @@ describe("Payment", () => {
     const paymentRoute = getWrapper(testProps)
     const nameInput = () =>
       paymentRoute.find("input[placeholder='Add full name']")
-
     // expand address form
     paymentRoute.find(Checkbox).simulate("click")
-
-    nameInput().instance().value = "Dr Collector"
+    ;(nameInput().instance() as any).value = "Dr Collector"
     nameInput().simulate("change")
-    expect(nameInput().instance().value).toEqual("Dr Collector")
+    expect((nameInput().instance() as any).value).toEqual("Dr Collector")
 
     // hide address form
     paymentRoute.find(Checkbox).simulate("click")
@@ -121,7 +119,7 @@ describe("Payment", () => {
     paymentRoute.find(Checkbox).simulate("click")
 
     // expect name to be empty
-    expect(nameInput().instance().value).toEqual("")
+    expect((nameInput().instance() as any).value).toEqual("")
   })
 
   it("does not pre-populate with available details when returning to the payment route", () => {
