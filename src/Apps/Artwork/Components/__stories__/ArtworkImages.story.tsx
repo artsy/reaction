@@ -2,6 +2,7 @@ import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Col } from "Styleguide/Elements/Grid"
 import { Section } from "Styleguide/Utils/Section"
+import { ArtworkImagesQueryRenderer } from "../ArtworkImages"
 import { ImageCarousel } from "../ImageCarousel"
 
 export function imageData(width: number, height: number, imageIndex?: number) {
@@ -17,6 +18,7 @@ function generateStory(imageCount: number) {
   const times = cb => [...new Array(imageCount)].map((_, i) => cb(i))
   const src = (width: number, height: number) =>
     times(i => imageData(width, height, i))
+
   return () => {
     return (
       <React.Fragment>
@@ -55,6 +57,22 @@ function generateStory(imageCount: number) {
   }
 }
 
-storiesOf("Styleguide/Artwork/ImageCarousel", module)
+storiesOf("Styleguide/Artwork/ArtworkImages", module)
+  .add("With live data", () => {
+    return (
+      <>
+        <Section title="Multiple images">
+          <Col sm="8">
+            <ArtworkImagesQueryRenderer artworkID="andy-warhol-lenin-fs-ii-dot-402-1" />
+          </Col>
+        </Section>
+        <Section title="Single image">
+          <Col sm="8">
+            <ArtworkImagesQueryRenderer artworkID="pablo-picasso-david-et-bethsabee" />
+          </Col>
+        </Section>
+      </>
+    )
+  })
   .add("With a single image", generateStory(1))
   .add("With multiple images", generateStory(3))
