@@ -210,6 +210,7 @@ class PaymentForm extends Component<PaymentFormProps, PaymentFormState> {
               addressTouched: {},
             })
             this.cardElement && this.cardElement.cardInputElement.clear()
+            window.scrollTo(0, 0)
           } else {
             this.onMutationError(
               errors || creditCardOrError.mutationError,
