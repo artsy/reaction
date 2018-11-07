@@ -41,6 +41,7 @@ import { Collapse } from "Styleguide/Components"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { get } from "Utils/get"
+import createLogger from "Utils/logger"
 import { Responsive } from "Utils/Responsive"
 
 export interface ShippingProps {
@@ -60,6 +61,9 @@ export interface ShippingState {
   errorModalTitle: string
   errorModalMessage: string
 }
+
+const logger = createLogger("Order/Routes/Shipping/index.tsx")
+
 @track()
 export class ShippingRoute extends Component<ShippingProps, ShippingState> {
   state = {
@@ -214,7 +218,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
   }
 
   onMutationError(errors, errorModalTitle?, errorModalMessage?) {
-    console.error("Shipping/index.tsx", errors)
+    logger.error(errors)
     this.setState({
       isCommittingMutation: false,
       isErrorModalOpen: true,

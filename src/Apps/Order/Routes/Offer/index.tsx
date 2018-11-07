@@ -18,6 +18,7 @@ import {
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { get } from "Utils/get"
+import createLogger from "Utils/logger"
 import { Responsive } from "Utils/Responsive"
 import { OrderStepper } from "../../Components/OrderStepper"
 
@@ -35,6 +36,8 @@ export interface OfferState {
   errorModalTitle: string
   errorModalMessage: string
 }
+
+const logger = createLogger("Order/Routes/Offer/index.tsx")
 
 export class OfferRoute extends Component<OfferProps, OfferState> {
   state = {
@@ -102,7 +105,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
   }
 
   onMutationError(errors, errorModalTitle?, errorModalMessage?) {
-    console.error("Offer/index.tsx", errors)
+    logger.error(errors)
     this.setState({
       isCommittingMutation: false,
       isErrorModalOpen: true,

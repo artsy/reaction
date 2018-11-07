@@ -809,6 +809,12 @@ type Artwork implements Node & Sellable {
   medium: String
   metric: String @deprecated(reason: "Prefer dimensions instead.")
   meta: ArtworkMeta
+
+  # [DO NOT USE] Weekly pageview data (static).
+  pageviews: Int
+    @deprecated(
+      reason: "Do not use! This is for an AB test and will be imminently deprecated."
+    )
   partner(
     # Use whatever is in the original response instead of making a request
     shallow: Boolean
@@ -1539,6 +1545,12 @@ type ArtworkItem implements Node & Sellable {
   medium: String
   metric: String @deprecated(reason: "Prefer dimensions instead.")
   meta: ArtworkMeta
+
+  # [DO NOT USE] Weekly pageview data (static).
+  pageviews: Int
+    @deprecated(
+      reason: "Do not use! This is for an AB test and will be imminently deprecated."
+    )
   partner(
     # Use whatever is in the original response instead of making a request
     shallow: Boolean
@@ -1642,6 +1654,26 @@ enum ArtworkSorts {
   PUBLISHED_AT_DESC
   TITLE_ASC
   TITLE_DESC
+}
+
+type ArtworkVersion {
+  # ID of the order line item
+  id: ID!
+
+  # Artwork title
+  title: String
+
+  # The Image id
+  defaultImageID: String
+
+  # The artists related to this Artwork Version
+  artists: String
+
+  # The names for the artists related to this Artwork Version
+  artistNames: String
+
+  # The image representing the Artwork Version
+  image: Image
 }
 
 # An asset which is assigned to a consignment submission
@@ -1970,7 +2002,15 @@ type City {
   slug: String
   name: String
   coordinates: LatLng
-  shows(size: Int, sort: PartnerShowSorts, status: EventStatus): [Show]
+  shows(
+    size: Int
+    sort: PartnerShowSorts
+    status: EventStatus
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): ShowConnection
   fairs(size: Int, sort: FairSorts, status: EventStatus): [Fair]
 }
 
@@ -4054,7 +4094,7 @@ type Image {
 }
 
 input InitialOfferInput {
-  # BSON ID of artwork
+  # ID of order
   orderId: ID!
 
   # Offer amount in cents
@@ -4737,6 +4777,9 @@ type Offer {
   # Id of the user who created the order
   creatorId: String
 
+  # Creator of this order
+  creator: User
+
   # The type of the party who made the offer
   from: OrderParty
 
@@ -5057,6 +5100,9 @@ type OrderLineItem {
 
   # Artwork that is being ordered
   artwork: Artwork
+
+  # Artwork version that is being ordered
+  artworkVersion: ArtworkVersion
 
   # ID of the selected Edition set from the artwork
   editionSetId: String
