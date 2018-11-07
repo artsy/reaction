@@ -5,6 +5,8 @@ import momentTz from "moment-timezone"
 import url from "url"
 import { ArticleData, DateFormat } from "../Publishing/Typings"
 
+const APP_URL = process.env.APP_URL || "https://www.artsy.net"
+
 /**
  * Matches for Email / Instant Articles
  */
@@ -28,8 +30,7 @@ export const getArticleHref = slug => `/article/${slug}`
 /**
  * Absolute path to article
  */
-export const getArticleFullHref = slug =>
-  `https://www.artsy.net/article/${slug}`
+export const getArticleFullHref = slug => `${APP_URL}/article/${slug}`
 
 /**
  * Get the pre-slug part of URL
@@ -53,13 +54,13 @@ export const getEditorialHref = (layout, slug) => {
  */
 export const getFullEditorialHref = (layout, slug) => {
   const layoutType = getPreSlugPath(layout)
-  return `https://www.artsy.net/${layoutType}/${slug}`
+  return `${APP_URL}/${layoutType}/${slug}`
 }
 
 /**
  * Absolute path to artsy entity
  */
-export const getFullArtsyHref = slug => `https://www.artsy.net/${slug}`
+export const getFullArtsyHref = slug => `${APP_URL}/${slug}`
 
 /**
  * ByLine helpers

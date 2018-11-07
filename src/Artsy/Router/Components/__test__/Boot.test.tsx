@@ -1,5 +1,6 @@
 import { Boot } from "Artsy/Router"
 import { ContextConsumer } from "Artsy/Router"
+import { ErrorBoundary } from "Components/ErrorBoundary"
 import { mount } from "enzyme"
 import React from "react"
 
@@ -54,5 +55,21 @@ describe("Boot", () => {
 
   it("injects Grid", () => {
     expect(mount(<Boot {...bootProps} />).find("Grid").length).toEqual(1)
+  })
+
+  it("catches errors with componentDidCatch", () => {
+    console.error = jest.fn()
+    const BrokenComponent = () => {
+      throw new Error("error message")
+      return <div>error</div>
+    }
+
+    jest.spyOn(ErrorBoundary.prototype, "componentDidCatch")
+    mount(
+      <Boot {...bootProps}>
+        <BrokenComponent />
+      </Boot>
+    )
+    expect(ErrorBoundary.prototype.componentDidCatch).toHaveBeenCalled()
   })
 })

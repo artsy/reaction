@@ -9,7 +9,7 @@ export type FillwidthItem_artwork = {
     readonly image: ({
         readonly placeholder: string | null;
         readonly url: string | null;
-        readonly aspect_ratio: number | null;
+        readonly aspect_ratio: number;
     }) | null;
     readonly href: string | null;
     readonly " $fragmentRefs": Metadata_artwork$ref & Save_artwork$ref;

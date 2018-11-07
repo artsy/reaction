@@ -1,17 +1,24 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
 declare const _TransactionSummary_order$ref: unique symbol;
 export type TransactionSummary_order$ref = typeof _TransactionSummary_order$ref;
 export type TransactionSummary_order = {
+    readonly mode: OrderModeEnum | null;
     readonly shippingTotal: string | null;
     readonly shippingTotalCents: number | null;
     readonly taxTotal: string | null;
     readonly taxTotalCents: number | null;
     readonly itemsTotal: string | null;
+    readonly offerTotal: string | null;
     readonly buyerTotal: string | null;
     readonly seller: ({
         readonly name?: string | null;
+    }) | null;
+    readonly lastOffer: ({
+        readonly id: string | null;
+        readonly amountCents: number | null;
     }) | null;
     readonly lineItems: ({
         readonly edges: ReadonlyArray<({
@@ -68,9 +75,16 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "shippingTotal",
+      "name": "offerTotal",
       "args": v0,
-      "storageKey": "shippingTotal(precision:2)"
+      "storageKey": "offerTotal(precision:2)"
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "mode",
+      "args": null,
+      "storageKey": null
     },
     {
       "kind": "ScalarField",
@@ -103,6 +117,13 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
+      "name": "shippingTotal",
+      "args": v0,
+      "storageKey": "shippingTotal(precision:2)"
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
       "name": "buyerTotal",
       "args": v0,
       "storageKey": "buyerTotal(precision:2)"
@@ -130,6 +151,32 @@ return {
             }
           ]
         }
+      ]
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "lastOffer",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Offer",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "id",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "amountCents",
+          "args": null,
+          "storageKey": null
+        },
+        v2
       ]
     },
     {
@@ -246,5 +293,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '4f991b676af8fbbbe34e0c86f83e398d';
+(node as any).hash = '1fd6eb8047fd63d7177974221c7799de';
 export default node;

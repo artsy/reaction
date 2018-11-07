@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 
 import Icon from "Components/Icon"
+import { Lightbox } from "Styleguide/Components"
 import { Arrow } from "Styleguide/Elements/Arrow"
 import { Responsive } from "Utils/Responsive"
 
@@ -49,7 +50,6 @@ const ImageContainer = styled.div`
 `
 
 const BaseImage = styled.img`
-  cursor: zoom-in;
   max-width: 100%;
 `
 
@@ -129,7 +129,7 @@ const ActionButtonsContainer = styled.div`
 `
 
 interface ImageCarouselProps {
-  images: Array<{ uri: string; aspectRatio: number }>
+  images: any // Array<{ uri: string; aspectRatio: number }>
 }
 
 interface ImageCarouselState {
@@ -208,11 +208,12 @@ export class ImageCarousel extends React.Component<
                   />
                 )}
                 <ImageContainer>
-                  <Image
-                    src={image.uri}
-                    // tslint:disable-next-line:no-console
-                    onClick={() => console.log("Zoom")}
-                  />
+                  <Lightbox
+                    deepZoom={image.deepZoom}
+                    enabled={image.is_zoomable}
+                  >
+                    <Image src={image.uri} />
+                  </Lightbox>
                 </ImageContainer>
                 {showNavigation && (
                   <NavigationButton
@@ -241,6 +242,8 @@ export class ImageCarousel extends React.Component<
                   </ActionButtons>
                 </ActionButtonsContainer>
               </ControlsContainer>
+
+              <div id="lightbox-container" />
             </Container>
           )
         }}
