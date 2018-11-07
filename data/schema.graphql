@@ -809,6 +809,12 @@ type Artwork implements Node & Sellable {
   medium: String
   metric: String @deprecated(reason: "Prefer dimensions instead.")
   meta: ArtworkMeta
+
+  # [DO NOT USE] Weekly pageview data (static).
+  pageviews: Int
+    @deprecated(
+      reason: "Do not use! This is for an AB test and will be imminently deprecated."
+    )
   partner(
     # Use whatever is in the original response instead of making a request
     shallow: Boolean
@@ -1539,6 +1545,12 @@ type ArtworkItem implements Node & Sellable {
   medium: String
   metric: String @deprecated(reason: "Prefer dimensions instead.")
   meta: ArtworkMeta
+
+  # [DO NOT USE] Weekly pageview data (static).
+  pageviews: Int
+    @deprecated(
+      reason: "Do not use! This is for an AB test and will be imminently deprecated."
+    )
   partner(
     # Use whatever is in the original response instead of making a request
     shallow: Boolean
@@ -1642,6 +1654,26 @@ enum ArtworkSorts {
   PUBLISHED_AT_DESC
   TITLE_ASC
   TITLE_DESC
+}
+
+type ArtworkVersion {
+  # ID of the order line item
+  id: ID!
+
+  # Artwork title
+  title: String
+
+  # The Image id
+  defaultImageID: String
+
+  # The artists related to this Artwork Version
+  artists: String
+
+  # The names for the artists related to this Artwork Version
+  artistNames: String
+
+  # The image representing the Artwork Version
+  image: Image
 }
 
 # An asset which is assigned to a consignment submission
@@ -1966,6 +1998,22 @@ enum CategoryType {
   INSTITUTION
 }
 
+type City {
+  slug: String
+  name: String
+  coordinates: LatLng
+  shows(
+    size: Int
+    sort: PartnerShowSorts
+    status: EventStatus
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): ShowConnection
+  fairs(size: Int, sort: FairSorts, status: EventStatus): [Fair]
+}
+
 type Collection implements Node {
   # A globally unique ID.
   __id: ID!
@@ -2282,11 +2330,6 @@ type ConversationResponder {
   initials(length: Int = 3): String
 }
 
-type coordinates {
-  lat: Float
-  lng: Float
-}
-
 input CreateBidderInput {
   sale_id: String!
   clientMutationId: String
@@ -2485,8 +2528,6 @@ type CreditCardConnection {
 
   # A list of edges.
   edges: [CreditCardEdge]
-  pageCursors: PageCursors
-  totalCount: Int
 }
 
 # An edge in a connection.
@@ -2510,6 +2551,7 @@ type CreditCardMutationFailure {
 
 type CreditCardMutationSuccess {
   creditCard: CreditCard
+  creditCardEdge: CreditCardEdge
 }
 
 union CreditCardMutationType =
@@ -4051,6 +4093,20 @@ type Image {
   versions: [String]
 }
 
+input InitialOfferInput {
+  # ID of order
+  orderId: ID!
+
+  # Offer amount in cents
+  amountCents: Int!
+  clientMutationId: String
+}
+
+type InitialOfferPayload {
+  orderOrError: OrderOrFailureUnionType
+  clientMutationId: String
+}
+
 enum Intents {
   BUY_ART_AND_DESIGN
   SELL_ART_AND_DESIGN
@@ -4101,6 +4157,11 @@ union Item = ArtistItem | ArtworkItem | FeaturedLinkItem | GeneItem
 # The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 scalar JSON
 
+type LatLng {
+  lat: Float
+  lng: Float
+}
+
 type Location {
   # A globally unique ID.
   __id: ID!
@@ -4112,7 +4173,7 @@ type Location {
   address_2: String
   city: String
   country: String
-  coordinates: coordinates
+  coordinates: LatLng
   day_schedules: [DaySchedule]
   display: String
   phone: String
@@ -4640,6 +4701,9 @@ type Mutation {
 
   # Submits an order
   ecommerceSubmitOrder(input: SubmitOrderInput!): SubmitOrderPayload
+
+  # Creates an order with an artwork
+  ecommerceInitialOffer(input: InitialOfferInput!): InitialOfferPayload
   recordArtworkView(input: RecordArtworkViewInput): RecordArtworkViewPayload
 }
 
@@ -4698,6 +4762,55 @@ enum NotificationsFeedItemStatus {
   UNREAD
 }
 
+type Offer {
+  # ID of the offer
+  id: ID
+  createdAt(
+    # This arg is deprecated, use timezone instead
+    convert_to_utc: Boolean
+    format: String
+
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    timezone: String
+  ): String
+
+  # Id of the user who created the order
+  creatorId: String
+
+  # Creator of this order
+  creator: User
+
+  # The type of the party who made the offer
+  from: OrderParty
+
+  # Offer amount in cents
+  amountCents: Int
+
+  # The order on which the offer was made
+  order: Order
+
+  # The order on which the offer was made
+  respondsTo: Offer
+}
+
+# A connection to a list of items.
+type OfferConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [OfferEdge]
+}
+
+# An edge in a connection.
+type OfferEdge {
+  # The item at the end of the edge
+  node: Offer
+
+  # A cursor for use in pagination
+  cursor: String!
+}
+
 type Order {
   # ID of the order
   id: ID
@@ -4719,6 +4832,24 @@ type Order {
 
   # Order Requested Fulfillment
   requestedFulfillment: RequestedFulfillment
+
+  # Latest offer
+  lastOffer: Offer
+  offerTotalCents: Int
+
+  # A formatted price with various currency formatting options.
+  offerTotal(
+    decimal: String = "."
+
+    # Allows control of symbol position (%v = value, %s = symbol)
+    format: String = "%s%v"
+    precision: Int = 0
+    symbol: String
+    thousand: String = ","
+  ): String
+
+  # List of offers made on this order so far
+  offers: OfferConnection
 
   # Item total in cents
   itemsTotalCents: Int
@@ -4969,6 +5100,9 @@ type OrderLineItem {
 
   # Artwork that is being ordered
   artwork: Artwork
+
+  # Artwork version that is being ordered
+  artworkVersion: ArtworkVersion
 
   # ID of the selected Edition set from the artwork
   editionSetId: String
@@ -5610,6 +5744,12 @@ type Query {
     # The id of the auction to participate in
     sale_id: String!
   ): String
+
+  # A city-based entry point for local discovery
+  city(
+    # A slug for the city, conforming to Gravity's city slug naming conventions
+    slug: String!
+  ): City
   collection(
     # The slug or ID of the Collection
     id: String!
@@ -7234,6 +7374,12 @@ type Viewer {
     # The id of the auction to participate in
     sale_id: String!
   ): String
+
+  # A city-based entry point for local discovery
+  city(
+    # A slug for the city, conforming to Gravity's city slug naming conventions
+    slug: String!
+  ): City
   collection(
     # The slug or ID of the Collection
     id: String!

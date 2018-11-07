@@ -4,8 +4,13 @@ import React from "react"
 import { Provider } from "unstated"
 
 import { Button, RadioGroup } from "@artsy/palette"
-import { UntouchedOrder } from "Apps/__test__/Fixtures/Order"
+import { UntouchedBuyOrder } from "Apps/__test__/Fixtures/Order"
 import { Address } from "Apps/Order/Components/AddressForm"
+import {
+  fillCountrySelect,
+  fillIn,
+  validAddress,
+} from "Apps/Order/Routes/__tests__/Utils/addressForm"
 import Input, { InputProps } from "Components/Input"
 import { ModalButton } from "Components/Modal/ErrorModal"
 import { ErrorModal } from "Components/Modal/ErrorModal"
@@ -18,11 +23,6 @@ import {
   settingOrderShipmentSuccess,
 } from "../__fixtures__/MutationResults"
 import { ShippingRoute } from "../Shipping"
-import {
-  fillCountrySelect,
-  fillIn,
-  validAddress,
-} from "../testSupport/addressForm"
 
 const commitMutation = _commitMutation as any
 
@@ -60,7 +60,7 @@ describe("Shipping", () => {
   let testProps: any
   beforeEach(() => {
     testProps = {
-      order: { ...UntouchedOrder, id: "1234" },
+      order: { ...UntouchedBuyOrder, id: "1234" },
       relay: { environment: {} } as RelayProp,
       router: { push: jest.fn() },
       mediator: { trigger: jest.fn() },
@@ -272,7 +272,7 @@ describe("Shipping", () => {
     beforeEach(() => {
       commitMutation.mockReset()
       const shipOrder = {
-        ...UntouchedOrder,
+        ...UntouchedBuyOrder,
         requestedFulfillment: {
           __typename: "Ship",
         },

@@ -2,7 +2,7 @@ import { mount } from "enzyme"
 import React from "react"
 
 import { Button } from "@artsy/palette"
-import { UntouchedOrder } from "Apps/__test__/Fixtures/Order"
+import { UntouchedBuyOrder } from "Apps/__test__/Fixtures/Order"
 import { ErrorModal, ModalButton } from "Components/Modal/ErrorModal"
 import { commitMutation } from "react-relay"
 import { StepSummaryItem } from "Styleguide/Components/StepSummaryItem"
@@ -21,7 +21,7 @@ jest.mock("react-relay", () => ({
 
 const pushMock = jest.fn()
 const defaultProps = {
-  order: { ...UntouchedOrder, id: "1234" },
+  order: { ...UntouchedBuyOrder, id: "1234" },
   router: {
     push: pushMock,
   },

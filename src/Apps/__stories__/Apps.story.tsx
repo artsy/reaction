@@ -11,7 +11,7 @@ storiesOf("Apps", module)
     return (
       <MockRouter
         routes={artworkRoutes}
-        initialRoute="/artwork2/pablo-picasso-david-et-bethsabee"
+        initialRoute="/artwork2/pablo-picasso-femme-assise-dans-un-fauteuil-tresse"
       />
     )
   })
