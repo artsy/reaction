@@ -2,6 +2,7 @@ import { sendErrorToService } from "Utils/errors"
 import createLogger from "Utils/logger"
 
 jest.mock("Utils/errors")
+jest.unmock("Utils/logger")
 
 describe("logger", () => {
   describe("#createLogger", () => {

@@ -218,7 +218,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
   }
 
   onMutationError(errors, errorModalTitle?, errorModalMessage?) {
-    jest === undefined && logger.error(errors)
+    logger.error(errors)
     this.setState({
       isCommittingMutation: false,
       isErrorModalOpen: true,

@@ -184,7 +184,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
     errorModalMessage?,
     errorModalCtaAction?
   ) {
-    jest === undefined && logger.error(errors)
+    logger.error(errors)
     this.setState({
       isSubmitting: false,
       isErrorModalOpen: true,

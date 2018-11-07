@@ -407,7 +407,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
   }
 
   private onMutationError(errors, errorModalMessage?) {
-    jest === undefined && logger.error(errors)
+    logger.error(errors)
     this.setState({
       isCommittingMutation: false,
       isErrorModalOpen: true,
