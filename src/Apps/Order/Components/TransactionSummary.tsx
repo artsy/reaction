@@ -2,6 +2,7 @@ import { TransactionSummary_order } from "__generated__/TransactionSummary_order
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { get } from "Utils/get"
+import { Responsive } from "Utils/Responsive"
 
 import {
   Box,
@@ -96,7 +97,7 @@ export class TransactionSummary extends React.Component<
             <>
               <Entry label="Your offer" value={offerOverride || offerTotal} />
               {Boolean(itemsTotal) && (
-                <Entry label="List price" secondary value={itemsTotal} />
+                <SecondaryEntry label="List price" value={itemsTotal} />
               )}
 
               <Spacer mb={2} />
@@ -135,39 +136,54 @@ const Entry = ({
   label,
   value,
   final,
-  secondary,
 }: {
   label: React.ReactNode
   value: React.ReactNode
   final?: boolean
-  secondary?: boolean
+}) => (
+  <Responsive>
+    {({ xs }) => {
+      const size = xs ? "2" : "3"
+
+      return (
+        <Flex justifyContent="space-between" alignItems="baseline">
+          <div>
+            <Serif size={size} color="black60">
+              {label}
+            </Serif>
+          </div>
+          <div>
+            <Serif
+              size={size}
+              color={final ? "black100" : "black60"}
+              weight={final ? "semibold" : "regular"}
+            >
+              {value}
+            </Serif>
+          </div>
+        </Flex>
+      )
+    }}
+  </Responsive>
+)
+
+const SecondaryEntry = ({
+  label,
+  value,
+}: {
+  label: React.ReactNode
+  value: React.ReactNode
 }) => (
   <Flex justifyContent="space-between" alignItems="baseline">
     <div>
-      {secondary ? (
-        <Sans size="2" color="black30">
-          {label}
-        </Sans>
-      ) : (
-        <Serif size="2" color="black60">
-          {label}
-        </Serif>
-      )}
+      <Sans size="2" color="black60">
+        {label}
+      </Sans>
     </div>
     <div>
-      {secondary ? (
-        <Sans size="2" color="black30">
-          {value}
-        </Sans>
-      ) : (
-        <Serif
-          size="2"
-          color={final ? "black100" : "black60"}
-          weight={final ? "semibold" : "regular"}
-        >
-          {value}
-        </Serif>
-      )}
+      <Sans size="2" color="black60">
+        {value}
+      </Sans>
     </div>
   </Flex>
 )
