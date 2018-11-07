@@ -72,7 +72,8 @@ workflows:
           requires:
             - pre-deploy
 
-      - pre-deploy
+      - pre-deploy:
+          context: circleci-api
 
       - deploy:
           # The deploy job is the _only_ job that should have access to our npm
