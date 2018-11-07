@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+import { ArtworkBanner_artwork$ref } from "./ArtworkBanner_artwork.graphql";
 import { ArtworkDetails_artwork$ref } from "./ArtworkDetails_artwork.graphql";
 import { ArtworkImages_artwork$ref } from "./ArtworkImages_artwork.graphql";
 import { ArtworkSidebar_artwork$ref } from "./ArtworkSidebar_artwork.graphql";
@@ -11,7 +12,7 @@ export type ArtworkApp_artwork = {
     readonly artist: ({
         readonly id: string;
     }) | null;
-    readonly " $fragmentRefs": ArtworkSidebar_artwork$ref & ArtworkDetails_artwork$ref & ArtworkImages_artwork$ref;
+    readonly " $fragmentRefs": ArtworkSidebar_artwork$ref & ArtworkDetails_artwork$ref & ArtworkBanner_artwork$ref & ArtworkImages_artwork$ref;
     readonly " $refType": ArtworkApp_artwork$ref;
 };
 
@@ -65,6 +66,11 @@ return {
     },
     {
       "kind": "FragmentSpread",
+      "name": "ArtworkBanner_artwork",
+      "args": null
+    },
+    {
+      "kind": "FragmentSpread",
       "name": "ArtworkImages_artwork",
       "args": null
     },
@@ -72,5 +78,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '77786833f4235abbfa068f7b2943ee05';
+(node as any).hash = '418810c99f1f1a38cea793fe5fd14396';
 export default node;
