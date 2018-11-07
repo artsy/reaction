@@ -4,7 +4,7 @@ import { ConcreteRequest } from "relay-runtime";
 export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
 export type InitialOfferInput = {
     readonly orderId: string;
-    readonly offerAmount?: MoneyInput | null;
+    readonly offerPrice?: MoneyInput | null;
     readonly clientMutationId?: string | null;
 };
 export type MoneyInput = {

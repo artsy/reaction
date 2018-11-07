@@ -80,7 +80,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
           variables: {
             input: {
               orderId: this.props.order.id,
-              offerAmount: {
+              offerPrice: {
                 amount: offerValue,
                 currencyCode: "USD",
               },
