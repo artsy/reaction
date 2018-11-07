@@ -105,7 +105,7 @@ storiesOf("Apps/Order Page/Components", module)
             },
             lastOffer: {
               id: "2345",
-              amountCents: 1024.89,
+              amountCents: 102489,
             },
           }}
         />
