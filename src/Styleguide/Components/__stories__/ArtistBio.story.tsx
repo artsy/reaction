@@ -1,4 +1,4 @@
-import { bio } from "Apps/__test__/Fixtures/ArtistBio"
+import { bio } from "Apps/__tests__/Fixtures/ArtistBio"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"

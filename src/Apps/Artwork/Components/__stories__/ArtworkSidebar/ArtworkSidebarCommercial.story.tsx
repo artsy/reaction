@@ -3,7 +3,7 @@ import {
   FoSaleArtworkNoEditions,
   FoSaleArtworkWithMultipleEditions,
   FoSaleArtworkWithOneEdition,
-} from "Apps/__test__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarCommercial"
+} from "Apps/__tests__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarCommercial"
 import { ArtworkSidebarCommercial as Commercial } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarCommercial"
 import { RelayStubProvider } from "DevTools/RelayStubProvider"
 import React from "react"

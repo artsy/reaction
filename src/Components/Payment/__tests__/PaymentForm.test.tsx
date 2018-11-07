@@ -11,7 +11,7 @@ jest.mock("react-relay", () => ({
 }))
 
 jest.mock("react-stripe-elements", () => ({
-  CardElement: props => <div {...props} />,
+  CardElement: ({ hidePostalCode, onReady, ...props }) => <div {...props} />,
   injectStripe: args => args,
 }))
 
@@ -23,6 +23,7 @@ import {
 } from "Apps/Order/Routes/__tests__/Utils/addressForm"
 import { ErrorModal, ModalButton } from "Components/Modal/ErrorModal"
 import PaymentForm, { PaymentFormProps } from "Components/Payment/PaymentForm"
+import { MockBoot } from "DevTools"
 import { commitMutation, RelayProp } from "react-relay"
 import Input from "../../Input"
 
@@ -47,8 +48,16 @@ const fillAddressForm = (component: any, address: Address) => {
 describe("PaymentForm", () => {
   let stripeMock
   let testPaymentFormProps: PaymentFormProps
+
+  function getWrapper() {
+    return mount(
+      <MockBoot breakpoint="xs">
+        <PaymentForm {...testPaymentFormProps} />
+      </MockBoot>
+    )
+  }
+
   beforeEach(() => {
-    console.error = jest.fn() // Silences component logging.
     mutationMock.mockReset()
 
     stripeMock = {
@@ -63,7 +72,7 @@ describe("PaymentForm", () => {
   })
 
   it("shows an empty address form", () => {
-    const paymentWrapper = mount(<PaymentForm {...testPaymentFormProps} />)
+    const paymentWrapper = getWrapper()
 
     expect(paymentWrapper.find(AddressForm).props().value).toEqual({
       name: "",
@@ -81,7 +90,7 @@ describe("PaymentForm", () => {
     const thenMock = jest.fn()
     stripeMock.createToken.mockReturnValue({ then: thenMock })
 
-    const paymentWrapper = mount(<PaymentForm {...testPaymentFormProps} />)
+    const paymentWrapper = getWrapper()
     fillAddressForm(paymentWrapper, validAddress)
     paymentWrapper.find(Button).simulate("click")
 
@@ -114,7 +123,7 @@ describe("PaymentForm", () => {
       then: func => func(stripeToken),
     })
 
-    const paymentWrapper = mount(<PaymentForm {...testPaymentFormProps} />)
+    const paymentWrapper = getWrapper()
     fillAddressForm(paymentWrapper, validAddress)
     paymentWrapper.find(Button).simulate("click")
 
@@ -143,7 +152,7 @@ describe("PaymentForm", () => {
       then: func => func(stripeError),
     })
 
-    const paymentWrapper = mount(<PaymentForm {...testPaymentFormProps} />)
+    const paymentWrapper = getWrapper()
     fillAddressForm(paymentWrapper, validAddress)
     paymentWrapper.find(Button).simulate("click")
 
@@ -164,7 +173,7 @@ describe("PaymentForm", () => {
       onCompleted(creatingCreditCardFailed)
     )
 
-    const paymentWrapper = mount(<PaymentForm {...testPaymentFormProps} />)
+    const paymentWrapper = getWrapper()
     fillAddressForm(paymentWrapper, validAddress)
     paymentWrapper.find(Button).simulate("click")
 
@@ -187,7 +196,7 @@ describe("PaymentForm", () => {
       onError(new TypeError("Network request failed"))
     )
 
-    const paymentWrapper = mount(<PaymentForm {...testPaymentFormProps} />)
+    const paymentWrapper = getWrapper()
     fillAddressForm(paymentWrapper, validAddress)
     paymentWrapper.find(Button).simulate("click")
 
@@ -196,7 +205,7 @@ describe("PaymentForm", () => {
 
   describe("Validations", () => {
     it("says a required field is required", () => {
-      const paymentWrapper = mount(<PaymentForm {...testPaymentFormProps} />)
+      const paymentWrapper = getWrapper()
       paymentWrapper.find(Button).simulate("click")
 
       paymentWrapper.update()
@@ -207,7 +216,7 @@ describe("PaymentForm", () => {
     })
 
     it("after submit, shows all validation errors on inputs that have been touched", () => {
-      const paymentWrapper = mount(<PaymentForm {...testPaymentFormProps} />)
+      const paymentWrapper = getWrapper()
       fillIn(paymentWrapper, { title: "Full name", value: "Erik David" })
 
       paymentWrapper.find(Button).simulate("click")
@@ -220,20 +229,20 @@ describe("PaymentForm", () => {
     })
 
     it("does not submit an empty form with billing address", () => {
-      const paymentWrapper = mount(<PaymentForm {...testPaymentFormProps} />)
+      const paymentWrapper = getWrapper()
       paymentWrapper.find(Button).simulate("click")
       expect(commitMutation).not.toBeCalled()
     })
 
     it("does not submit the mutation with an incomplete billing address", () => {
-      const paymentWrapper = mount(<PaymentForm {...testPaymentFormProps} />)
+      const paymentWrapper = getWrapper()
       fillIn(paymentWrapper, { title: "Full name", value: "Air Bud" })
       paymentWrapper.find(Button).simulate("click")
       expect(commitMutation).not.toBeCalled()
     })
 
     it("allows a missing postal code if the selected country is not US or Canada", () => {
-      const paymentWrapper = mount(<PaymentForm {...testPaymentFormProps} />)
+      const paymentWrapper = getWrapper()
       stripeMock.createToken.mockReturnValue({ then: jest.fn() })
 
       const address = {
@@ -252,7 +261,7 @@ describe("PaymentForm", () => {
     })
 
     it("allows a missing state/province if the selected country is not US or Canada", () => {
-      const paymentWrapper = mount(<PaymentForm {...testPaymentFormProps} />)
+      const paymentWrapper = getWrapper()
       stripeMock.createToken.mockReturnValue({ then: jest.fn() })
       const address = {
         name: "Erik David",

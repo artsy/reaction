@@ -9,7 +9,7 @@ import {
   NotRegisteredToBid,
   RegistedBidderWithBids,
   RegisteredBidder,
-} from "Apps/__test__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarBidAction"
+} from "Apps/__tests__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarBidAction"
 import { ArtworkSidebarBidAction as BidAction } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarBidAction"
 import { merge as _merge } from "lodash"
 import React from "react"

@@ -1,5 +1,5 @@
 import { Breakpoint } from "@artsy/palette"
-import { SingleNonFollowedArtist } from "Apps/__test__/Fixtures/Artists"
+import { SingleNonFollowedArtist } from "Apps/__tests__/Fixtures/Artists"
 import { MockBoot } from "DevTools"
 import { RelayStubProvider } from "DevTools/RelayStubProvider"
 import { mount, ReactWrapper } from "enzyme"

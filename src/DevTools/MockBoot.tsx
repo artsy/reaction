@@ -5,7 +5,7 @@ import { Breakpoint } from "Utils/Responsive"
 export const MockBoot: React.SFC<{
   breakpoint?: Breakpoint
   headTags?: JSX.Element[]
-}> = ({ breakpoint, headTags, children }) => {
+}> = ({ breakpoint = "xl", headTags, children }) => {
   return (
     <Boot
       initialMatchingMediaQueries={[breakpoint]}

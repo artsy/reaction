@@ -4,7 +4,7 @@ import { PreloadLink } from "Artsy/Router"
 import { groupBy, toPairs } from "lodash"
 import React, { SFC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Responsive } from "Utils/Responsive"
+import { Media } from "Utils/Responsive"
 
 const MIN_FOR_SELECTED_EXHIBITIONS = 3
 const MIN_EXHIBITIONS = 2
@@ -21,13 +21,15 @@ export interface SelectedExhibitionsProps {
   Container?: (props: { children: JSX.Element }) => JSX.Element
 }
 export const SelectedExhibitions: SFC<SelectedExhibitionsProps> = props => {
-  return (
-    <Responsive>
-      {({ xs }) => {
-        if (xs) return <SelectedExhibitionsContainer collapsible {...props} />
-        else return <SelectedExhibitionsContainer {...props} />
-      }}
-    </Responsive>
+  return props.exhibitions.length === 0 ? null : (
+    <>
+      <Media at="xs">
+        <SelectedExhibitionsContainer collapsible {...props} />
+      </Media>
+      <Media greaterThan="xs">
+        <SelectedExhibitionsContainer {...props} />
+      </Media>
+    </>
   )
 }
 

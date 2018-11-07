@@ -1,11 +1,12 @@
 import { Box } from "@artsy/palette"
 import { CollectionApp_collection } from "__generated__/CollectionApp_collection.graphql"
+import { FrameWithRecentlyViewed } from "Components/FrameWithRecentlyViewed"
 import { HttpError } from "found"
 import React, { Component } from "react"
-import { Meta, Title } from "react-head"
+import { Link, Meta, Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
-import { CollectFrame } from "./CollectFrame"
+import truncate from "trunc-html"
 import { CollectionFilterFragmentContainer as CollectionFilterContainer } from "./Components/Collection/CollectionFilterContainer"
 import { CollectionHeader } from "./Components/Collection/Header"
 
@@ -26,19 +27,28 @@ export class CollectionApp extends Component<CollectionAppProps> {
 
   render() {
     const { collection } = this.props
-    const { title, slug, headerImage } = collection
+    const { title, slug, headerImage, description } = collection
+    const collectionHref = `${sd.APP_URL}/collection/${slug}`
+    const metadataDescription = description
+      ? `Buy, bid, and inquire on ${title} on Artsy. ` +
+        truncate(description, 158).text
+      : `Buy, bid, and inquire on ${title} on Artsy.`
 
     return (
-      <CollectFrame>
+      <FrameWithRecentlyViewed>
         <Title>{title} | Collect on Artsy</Title>
-        <Meta property="og:url" content={`${sd.APP_URL}/collection/${slug}`} />
+        <Meta name="description" content={metadataDescription} />
+        <Meta property="og:url" content={collectionHref} />
         <Meta property="og:image" content={headerImage} />
+        <Meta property="og:description" content={metadataDescription} />
+        <Meta property="twitter:description" content={metadataDescription} />
+        <Link rel="canonical" href={collectionHref} />
 
         <CollectionHeader collection={collection} />
         <Box>
           <CollectionFilterContainer collection={collection} />
         </Box>
-      </CollectFrame>
+      </FrameWithRecentlyViewed>
     )
   }
 }

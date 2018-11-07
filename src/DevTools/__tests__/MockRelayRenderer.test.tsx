@@ -12,6 +12,12 @@ import {
 jest.unmock("react-relay")
 
 describe("MockRelayRenderer", () => {
+  const originalConsoleError = console.error
+
+  afterAll(() => {
+    console.error = originalConsoleError
+  })
+
   it("renders a Relay tree", async () => {
     const tree = await renderUntil(
       wrapper => wrapper.text().includes("Mona Lisa"),

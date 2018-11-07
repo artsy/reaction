@@ -13,7 +13,7 @@ import {
   RegularArtworkWithOneEdition,
   RegularNonEditionedArtwork,
   VideoArtwork,
-} from "Apps/__test__/Fixtures/Artworks"
+} from "Apps/__tests__/Fixtures/Artworks"
 import { RelayStubProvider } from "DevTools/RelayStubProvider"
 
 storiesOf("Styleguide/Artwork", module)

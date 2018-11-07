@@ -1,7 +1,8 @@
-import { ArtworkDetailsFixture } from "Apps/__test__/Fixtures/Artwork/ArtworkDetails"
+import { ArtworkDetailsFixture } from "Apps/__tests__/Fixtures/Artwork/ArtworkDetails"
 import { ArtworkDetailsFragmentContainer } from "Apps/Artwork/Components/ArtworkDetails"
-import { renderRelayTree } from "DevTools"
+import { MockBoot, renderRelayTree } from "DevTools"
 import { cloneDeep } from "lodash"
+import React from "react"
 import { graphql } from "react-relay"
 
 jest.unmock("react-relay")
@@ -17,6 +18,7 @@ describe("ArtworkDetails", () => {
           }
         }
       `,
+      wrapper: n => <MockBoot breakpoint="xs">{n}</MockBoot>,
       mockResolvers: {
         Artwork: () => response,
       },
