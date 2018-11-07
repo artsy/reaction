@@ -1,4 +1,4 @@
-import { CVFixture } from "Apps/__test__/Fixtures/Artist/Routes/CV"
+import { CVFixture } from "Apps/__tests__/Fixtures/Artist/Routes/CV"
 import { CVRouteFragmentContainer as CVRoute } from "Apps/Artist/Routes/CV"
 import { MockBoot, renderRelayTree } from "DevTools"
 import { ReactWrapper } from "enzyme"

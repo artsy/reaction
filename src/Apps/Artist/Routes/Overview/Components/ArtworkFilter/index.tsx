@@ -8,6 +8,7 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { Toggle } from "Styleguide/Components"
 import { Subscribe } from "unstated"
 import { Responsive } from "Utils/Responsive"
+import { Media } from "Utils/Responsive"
 import { ArtworkFilterRefetchContainer as ArtworkFilter } from "./ArtworkFilterRefetch"
 import { MobileActionSheet } from "./MobileActionSheet"
 
@@ -294,21 +295,20 @@ class Filter extends Component<Props> {
                 return (
                   <>
                     <Flex>
-                      {xs ? (
-                        // Mobile
-                        filterState.state.showActionSheet && (
+                      <Media at="xs">
+                        {filterState.state.showActionSheet && (
                           <MobileActionSheet
                             onClose={() => filterState.showActionSheet(false)}
                           >
                             <Filters />
                           </MobileActionSheet>
-                        )
-                      ) : (
-                        // Desktop
+                        )}
+                      </Media>
+                      <Media greaterThan="xs">
                         <Sidebar width="25%" mr={2}>
                           <Filters />
                         </Sidebar>
-                      )}
+                      </Media>
 
                       {/* Main Artwork Grid */}
                       <Box width={xs ? "100%" : "75%"}>

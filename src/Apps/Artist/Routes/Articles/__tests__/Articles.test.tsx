@@ -1,4 +1,4 @@
-import { ArticlesFixture } from "Apps/__test__/Fixtures/Artist/Routes/ArticlesFixture"
+import { ArticlesFixture } from "Apps/__tests__/Fixtures/Artist/Routes/ArticlesFixture"
 import { ArticlesRouteFragmentContainer as ArticlesRoute } from "Apps/Artist/Routes/Articles"
 import { MockBoot, renderRelayTree } from "DevTools"
 import { ReactWrapper } from "enzyme"

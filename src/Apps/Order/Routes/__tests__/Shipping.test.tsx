@@ -1,10 +1,9 @@
 import { mount } from "enzyme"
 import { cloneDeep } from "lodash"
 import React from "react"
-import { Provider } from "unstated"
 
 import { Button, RadioGroup } from "@artsy/palette"
-import { UntouchedBuyOrder } from "Apps/__test__/Fixtures/Order"
+import { UntouchedBuyOrder } from "Apps/__tests__/Fixtures/Order"
 import { Address } from "Apps/Order/Components/AddressForm"
 import {
   fillCountrySelect,
@@ -14,6 +13,7 @@ import {
 import Input, { InputProps } from "Components/Input"
 import { ModalButton } from "Components/Modal/ErrorModal"
 import { ErrorModal } from "Components/Modal/ErrorModal"
+import { MockBoot } from "DevTools"
 import { commitMutation as _commitMutation, RelayProp } from "react-relay"
 import { CountrySelect } from "Styleguide/Components"
 import {
@@ -51,9 +51,9 @@ const fillAddressForm = (component: any, address: Address) => {
 describe("Shipping", () => {
   const getWrapper = someProps => {
     return mount(
-      <Provider>
+      <MockBoot breakpoint="xs">
         <ShippingRoute {...someProps} />
-      </Provider>
+      </MockBoot>
     )
   }
 
@@ -128,7 +128,6 @@ describe("Shipping", () => {
 
   describe("mutation", () => {
     beforeEach(() => {
-      console.error = jest.fn() // Silences component logging.
       commitMutation.mockReset()
     })
 

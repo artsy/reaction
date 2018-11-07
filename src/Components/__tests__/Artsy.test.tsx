@@ -38,10 +38,10 @@ describe("Artsy context", () => {
   }
 
   describe("concerning the current user", () => {
-    let originalEnv = null
+    const originalEnv = process.env
+    const originalConsoleError = console.error
 
     beforeAll(() => {
-      originalEnv = process.env
       process.env = Object.assign({}, originalEnv, {
         USER_ID: "user-id-from-env",
         USER_ACCESS_TOKEN: "user-access-token-from-env",
@@ -50,6 +50,7 @@ describe("Artsy context", () => {
 
     afterAll(() => {
       process.env = originalEnv
+      console.error = originalConsoleError
     })
 
     it("exposes the currently signed-in user", () => {
@@ -121,14 +122,14 @@ describe("Artsy context", () => {
   })
 
   it("throws an error when not embedded in a context provider", () => {
-    global.console.error = jest.fn()
+    console.error = jest.fn()
     expect(() => {
       renderer.create(<WithCurrentUser />)
     }).toThrowErrorMatchingSnapshot()
   })
 
   it("throws an error when trying to embed more than a single child in a context provider", () => {
-    global.console.error = jest.fn()
+    console.error = jest.fn()
     expect(() => {
       renderer.create(
         <Artsy.ContextProvider>

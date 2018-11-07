@@ -1,4 +1,4 @@
-import { NavigationTabsFixture } from "Apps/__test__/Fixtures/Artist/Components/NavigationTabs"
+import { NavigationTabsFixture } from "Apps/__tests__/Fixtures/Artist/Components/NavigationTabs"
 import { NavigationTabsFragmentContainer as NavigationTabs } from "Apps/Artist/Components/NavigationTabs"
 import { renderRelayTree } from "DevTools"
 import { graphql } from "react-relay"

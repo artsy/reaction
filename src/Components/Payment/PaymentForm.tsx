@@ -15,6 +15,7 @@ import React, { Component } from "react"
 import { commitMutation, graphql, RelayProp } from "react-relay"
 import { injectStripe, ReactStripeElements } from "react-stripe-elements"
 import { ConnectionHandler } from "relay-runtime"
+import createLogger from "Utils/logger"
 import { Responsive } from "Utils/Responsive"
 
 export interface PaymentFormProps
@@ -33,6 +34,8 @@ interface PaymentFormState {
   addressErrors: AddressErrors
   addressTouched: AddressTouched
 }
+
+const logger = createLogger("Components/Payment/PaymentForm.tsx")
 
 class PaymentForm extends Component<PaymentFormProps, PaymentFormState> {
   private cardElement
@@ -253,7 +256,7 @@ class PaymentForm extends Component<PaymentFormProps, PaymentFormState> {
   }
 
   private onMutationError(errors, errorModalMessage?) {
-    console.error("PaymentForm.tsx", errors)
+    logger.error(errors)
     this.setState({
       isCommittingMutation: false,
       isErrorModalOpen: true,

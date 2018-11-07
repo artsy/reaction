@@ -3,7 +3,7 @@ import {
   mockResolver,
   OrderWithShippingDetails,
   PickupOrder,
-} from "Apps/__test__/Fixtures/Order"
+} from "Apps/__tests__/Fixtures/Order"
 import { ContextProvider } from "Artsy"
 import { MockBoot, renderRelayTree } from "DevTools"
 import { render } from "enzyme"
