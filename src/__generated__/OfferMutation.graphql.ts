@@ -4,8 +4,12 @@ import { ConcreteRequest } from "relay-runtime";
 export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
 export type InitialOfferInput = {
     readonly orderId: string;
-    readonly amountCents: number;
+    readonly offerAmount?: MoneyInput | null;
     readonly clientMutationId?: string | null;
+};
+export type MoneyInput = {
+    readonly amount: number;
+    readonly currencyCode: string;
 };
 export type OfferMutationVariables = {
     readonly input: InitialOfferInput;
