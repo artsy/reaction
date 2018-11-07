@@ -180,7 +180,7 @@ const TabContainer = styled.div`
   ${styles.tabContainer};
 `
 
-const ActiveTabContainer = styled.div`
+export const ActiveTabContainer = styled.div`
   ${styles.activeTabContainer};
 `
 

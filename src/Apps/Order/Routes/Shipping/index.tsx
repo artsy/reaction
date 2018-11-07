@@ -307,7 +307,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
             <Col>
               <OrderStepper
                 currentStep="Shipping"
-                offerFlow={false /* TODO: order.isOfferable or whatever */}
+                offerFlow={this.props.order.mode === "OFFER"}
               />
             </Col>
           </Row>
@@ -420,6 +420,7 @@ export const ShippingFragmentContainer = createFragmentContainer(
   graphql`
     fragment Shipping_order on Order {
       id
+      mode
       state
       requestedFulfillment {
         __typename

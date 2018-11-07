@@ -2,10 +2,12 @@
 
 import { ConcreteFragment } from "relay-runtime";
 import { TransactionSummary_order$ref } from "./TransactionSummary_order.graphql";
+export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
 declare const _Shipping_order$ref: unique symbol;
 export type Shipping_order$ref = typeof _Shipping_order$ref;
 export type Shipping_order = {
     readonly id: string | null;
+    readonly mode: OrderModeEnum | null;
     readonly state: string | null;
     readonly requestedFulfillment: ({
         readonly __typename: "Ship";
@@ -62,6 +64,13 @@ return {
   "argumentDefinitions": [],
   "selections": [
     v0,
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "mode",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "ScalarField",
       "alias": null,
@@ -225,5 +234,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '47697c5e3326df8ac42b252fea2c60d7';
+(node as any).hash = '2568ec3cd454f38834a0bc1a723d4473';
 export default node;
