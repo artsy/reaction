@@ -1,4 +1,4 @@
-const actual = jest.requireActual("Utils/logger")
+const actual = require.requireActual("Utils/logger")
 
 export const shouldCaptureError = actual.shouldCaptureError
 
