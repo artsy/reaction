@@ -6,7 +6,7 @@ import React from "react"
 import {
   OrderWithShippingDetails,
   PickupOrder,
-} from "Apps/__test__/Fixtures/Order"
+} from "Apps/__tests__/Fixtures/Order"
 import {
   fillCountrySelect,
   fillIn,
@@ -31,7 +31,6 @@ jest.mock("react-stripe-elements", () => ({
   CardElement: ({ onReady, hidePostalCode, ...props }) => <div {...props} />,
   injectStripe: args => args,
 }))
-
 jest.unmock("react-tracking")
 
 import { MockBoot } from "DevTools"

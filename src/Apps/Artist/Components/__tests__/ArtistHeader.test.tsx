@@ -1,4 +1,4 @@
-import { ArtistHeaderFixture } from "Apps/__test__/Fixtures/Artist/Components/ArtistHeader"
+import { ArtistHeaderFixture } from "Apps/__tests__/Fixtures/Artist/Components/ArtistHeader"
 import { ArtistHeaderFragmentContainer as ArtistHeader } from "Apps/Artist/Components/ArtistHeader"
 import { renderRelayTree } from "DevTools"
 import { graphql } from "react-relay"

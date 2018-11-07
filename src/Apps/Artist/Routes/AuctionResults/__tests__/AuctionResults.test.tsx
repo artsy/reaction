@@ -1,4 +1,4 @@
-import { AuctionResultsFixture } from "Apps/__test__/Fixtures/Artist/Routes/AuctionResultsFixture"
+import { AuctionResultsFixture } from "Apps/__tests__/Fixtures/Artist/Routes/AuctionResultsFixture"
 import { AuctionResultsRouteFragmentContainer as AuctionResultsRoute } from "Apps/Artist/Routes/AuctionResults"
 import { MockBoot, renderRelayTree } from "DevTools"
 import { ReactWrapper } from "enzyme"

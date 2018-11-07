@@ -2,7 +2,7 @@ import { mount } from "enzyme"
 import React from "react"
 
 import { Button } from "@artsy/palette"
-import { UntouchedBuyOrder } from "Apps/__test__/Fixtures/Order"
+import { UntouchedBuyOrder } from "Apps/__tests__/Fixtures/Order"
 import { ErrorModal, ModalButton } from "Components/Modal/ErrorModal"
 import { MockBoot } from "DevTools"
 import { commitMutation } from "react-relay"

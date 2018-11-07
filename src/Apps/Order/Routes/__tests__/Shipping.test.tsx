@@ -3,7 +3,7 @@ import { cloneDeep } from "lodash"
 import React from "react"
 
 import { Button, RadioGroup } from "@artsy/palette"
-import { UntouchedBuyOrder } from "Apps/__test__/Fixtures/Order"
+import { UntouchedBuyOrder } from "Apps/__tests__/Fixtures/Order"
 import { Address } from "Apps/Order/Components/AddressForm"
 import {
   fillCountrySelect,

@@ -6,7 +6,7 @@ import { mount } from "enzyme"
 import React from "react"
 import { RelayProp } from "react-relay"
 import { commitMutation as _commitMutation } from "react-relay"
-import { UntouchedOfferOrder } from "../../../__test__/Fixtures/Order"
+import { UntouchedOfferOrder } from "../../../__tests__/Fixtures/Order"
 import { TransactionSummary } from "../../Components/TransactionSummary"
 import {
   initialOfferFailedCannotOffer,
@@ -136,7 +136,7 @@ describe("Offer InitialMutation", () => {
 // import React from "react"
 // import { graphql } from "react-relay"
 // import { commitMutation as _commitMutation } from "react-relay"
-// import { UntouchedOfferOrder } from "../../../__test__/Fixtures/Order"
+// import { UntouchedOfferOrder } from "../../../__tests__/Fixtures/Order"
 // import { TransactionSummary } from "../../Components/TransactionSummary"
 // import { OfferFragmentContainer as OfferRoute } from "../Offer"
 

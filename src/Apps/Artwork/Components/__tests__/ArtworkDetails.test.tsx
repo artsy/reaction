@@ -1,4 +1,4 @@
-import { ArtworkDetailsFixture } from "Apps/__test__/Fixtures/Artwork/ArtworkDetails"
+import { ArtworkDetailsFixture } from "Apps/__tests__/Fixtures/Artwork/ArtworkDetails"
 import { ArtworkDetailsFragmentContainer } from "Apps/Artwork/Components/ArtworkDetails"
 import { MockBoot, renderRelayTree } from "DevTools"
 import { cloneDeep } from "lodash"

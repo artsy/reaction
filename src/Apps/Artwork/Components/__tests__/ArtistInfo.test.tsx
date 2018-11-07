@@ -1,4 +1,4 @@
-import { ArtistInfoFixture } from "Apps/__test__/Fixtures/Artwork/ArtistInfo"
+import { ArtistInfoFixture } from "Apps/__tests__/Fixtures/Artwork/ArtistInfo"
 import { ArtistInfoFragmentContainer } from "Apps/Artwork/Components/ArtistInfo"
 import { MockBoot, renderRelayTree } from "DevTools"
 import { cloneDeep } from "lodash"

@@ -3,7 +3,7 @@ import { graphql } from "react-relay"
 
 import { Provider } from "unstated"
 import { MockBoot, MockRelayRenderer, renderUntil } from "../../../DevTools"
-import { CollectionAppFixture } from "../../__test__/Fixtures/Collect/CollectionAppFixture"
+import { CollectionAppFixture } from "../../__tests__/Fixtures/Collect/CollectionAppFixture"
 import { CollectionAppFragmentContainer as CollectionApp } from "../CollectionApp"
 import { FilterContainer } from "../Components/Filters"
 import { FilterState } from "../FilterState"

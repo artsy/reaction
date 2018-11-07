@@ -4,7 +4,7 @@ import { mount, ReactWrapper } from "enzyme"
 import React from "react"
 import { Breakpoint } from "Utils/Responsive"
 
-import { ShowsFixture } from "Apps/__test__/Fixtures/Artist/Routes/ShowsFixture"
+import { ShowsFixture } from "Apps/__tests__/Fixtures/Artist/Routes/ShowsFixture"
 import { RelayStubProvider } from "DevTools/RelayStubProvider"
 
 describe("Shows Route", () => {

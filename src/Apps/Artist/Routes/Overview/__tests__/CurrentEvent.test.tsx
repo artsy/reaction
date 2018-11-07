@@ -1,4 +1,4 @@
-import { CurrentEventFixture } from "Apps/__test__/Fixtures/Artist/Routes/Overview/CurrentEvent"
+import { CurrentEventFixture } from "Apps/__tests__/Fixtures/Artist/Routes/Overview/CurrentEvent"
 import { CurrentEventFragmentContainer as CurrentEvent } from "Apps/Artist/Routes/Overview/Components/CurrentEvent"
 import { renderRelayTree } from "DevTools"
 import { ReactWrapper } from "enzyme"
