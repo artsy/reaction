@@ -4,10 +4,12 @@ import { ConcreteFragment } from "relay-runtime";
 import { ItemReview_artwork$ref } from "./ItemReview_artwork.graphql";
 import { ShippingAndPaymentReview_order$ref } from "./ShippingAndPaymentReview_order.graphql";
 import { TransactionSummary_order$ref } from "./TransactionSummary_order.graphql";
+export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
 declare const _Review_order$ref: unique symbol;
 export type Review_order$ref = typeof _Review_order$ref;
 export type Review_order = {
     readonly id: string | null;
+    readonly mode: OrderModeEnum | null;
     readonly lineItems: ({
         readonly edges: ReadonlyArray<({
             readonly node: ({
@@ -57,6 +59,13 @@ return {
   "argumentDefinitions": [],
   "selections": [
     v0,
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "mode",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -136,5 +145,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '370d9da157fd82506e919b9e2bcd44a3';
+(node as any).hash = '8ed0c48e8b5169b670c63a98e1f83479';
 export default node;

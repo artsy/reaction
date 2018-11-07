@@ -2,10 +2,18 @@ import { mount } from "enzyme"
 import React from "react"
 
 import { Button } from "@artsy/palette"
-import { UntouchedBuyOrder } from "Apps/__tests__/Fixtures/Order"
+import {
+  OrderWithShippingDetails,
+  UntouchedBuyOrder,
+} from "Apps/__tests__/Fixtures/Order"
 import { ErrorModal, ModalButton } from "Components/Modal/ErrorModal"
 import { MockBoot } from "DevTools"
 import { commitMutation } from "react-relay"
+import {
+  ActiveTabContainer,
+  CheckMarkWrapper,
+  Stepper,
+} from "Styleguide/Components"
 import { StepSummaryItem } from "Styleguide/Components/StepSummaryItem"
 import {
   submitOrderWithFailure,
@@ -145,5 +153,15 @@ describe("Review", () => {
 
     component.find(ModalButton).simulate("click")
     expect(window.location.assign).toBeCalledWith("/artist/artistId")
+  })
+
+  describe("Offer-mode orders", () => {
+    it("shows an active offer stepper if the order is an Offer Order", () => {
+      const offerOrder = { ...OrderWithShippingDetails, mode: "OFFER" }
+      const component = getWrapper({ ...defaultProps, order: offerOrder })
+      expect(component.find(ActiveTabContainer).text()).toEqual("Review")
+      expect(component.find(Stepper).props().currentStepIndex).toEqual(3)
+      expect(component.find(CheckMarkWrapper).length).toEqual(3)
+    })
   })
 })
