@@ -1,12 +1,12 @@
 import { Box } from "@artsy/palette"
 import { CollectionApp_collection } from "__generated__/CollectionApp_collection.graphql"
+import { FrameWithRecentlyViewed } from "Components/FrameWithRecentlyViewed"
 import { HttpError } from "found"
 import React, { Component } from "react"
 import { Link, Meta, Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import truncate from "trunc-html"
-import { CollectFrame } from "./CollectFrame"
 import { CollectionFilterFragmentContainer as CollectionFilterContainer } from "./Components/Collection/CollectionFilterContainer"
 import { CollectionHeader } from "./Components/Collection/Header"
 
@@ -35,7 +35,7 @@ export class CollectionApp extends Component<CollectionAppProps> {
       : `Buy, bid, and inquire on ${title} on Artsy.`
 
     return (
-      <CollectFrame>
+      <FrameWithRecentlyViewed>
         <Title>{title} | Collect on Artsy</Title>
         <Meta name="description" content={metadataDescription} />
         <Meta property="og:url" content={collectionHref} />
@@ -48,7 +48,7 @@ export class CollectionApp extends Component<CollectionAppProps> {
         <Box>
           <CollectionFilterContainer collection={collection} />
         </Box>
-      </CollectFrame>
+      </FrameWithRecentlyViewed>
     )
   }
 }
