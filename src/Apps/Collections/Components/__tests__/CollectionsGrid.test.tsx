@@ -27,7 +27,7 @@ describe("CollectionsGrid", () => {
   })
 
   it("Renders a categoryName if provided", () => {
-    props.categoryName = "Collectible Sculptures"
+    props.name = "Collectible Sculptures"
     const component = getWrapper(props)
 
     expect(component.text()).toMatch("Collectible Sculptures")

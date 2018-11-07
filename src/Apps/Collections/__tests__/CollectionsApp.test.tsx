@@ -11,11 +11,7 @@ describe("CollectionApp", () => {
   it("renders a relay tree correctly", async () => {
     const getRelayWrapper = async () => {
       return await renderRelayTree({
-        Component: ({ collections }) => (
-          <MockBoot breakpoint="lg">
-            <CollectionsApp collections={collections} />
-          </MockBoot>
-        ),
+        Component: CollectionsApp,
         query: graphql`
           query CollectionsAppQuery {
             collections: marketingCollections {
@@ -25,9 +21,10 @@ describe("CollectionApp", () => {
         `,
         mockResolvers: {
           Query: () => ({
-            marketingCollections: CollectionsFixture,
+            marketingCollections: () => CollectionsFixture,
           }),
         },
+        wrapper: children => <MockBoot breakpoint="lg">{children}</MockBoot>,
       })
     }
     const tree = await getRelayWrapper()
