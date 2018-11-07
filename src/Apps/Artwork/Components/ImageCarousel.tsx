@@ -4,6 +4,7 @@ import styled from "styled-components"
 import Icon from "Components/Icon"
 import { Arrow } from "Styleguide/Elements/Arrow"
 import { Responsive } from "Utils/Responsive"
+import { SaveActionIcon, ShareActionIcon } from "./ActionIcons"
 
 const Container = styled.div`
   display: flex;
@@ -232,12 +233,8 @@ export class ImageCarousel extends React.Component<
                 {xs && <Spacer />}
                 <ActionButtonsContainer>
                   <ActionButtons>
-                    <Button href="#TODO">
-                      <Icon name="heart" color="black" />
-                    </Button>
-                    <Button href="#TODO">
-                      <Icon name="share" color="black" />
-                    </Button>
+                    <SaveActionIcon />
+                    <ShareActionIcon />
                   </ActionButtons>
                 </ActionButtonsContainer>
               </ControlsContainer>
