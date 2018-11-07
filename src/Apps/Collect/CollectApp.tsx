@@ -1,10 +1,10 @@
 import { Box, Serif } from "@artsy/palette"
 import { CollectApp_viewer } from "__generated__/CollectApp_viewer.graphql"
+import { FrameWithRecentlyViewed } from "Components/FrameWithRecentlyViewed"
 import React, { Component } from "react"
 import { Link, Meta, Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
-import { CollectFrame } from "./CollectFrame"
 import { getMetadataForMedium } from "./CollectMediumMetadata"
 import { CollectFilterFragmentContainer as ArtworkGrid } from "./Components/Base/CollectFilterContainer"
 
@@ -25,7 +25,7 @@ export class CollectApp extends Component<CollectAppProps> {
       : `${sd.APP_URL}/collect`
 
     return (
-      <CollectFrame>
+      <FrameWithRecentlyViewed>
         <Title>{title}</Title>
         <Meta property="og:url" content={`${sd.APP_URL}/collect`} />
         <Meta
@@ -43,7 +43,7 @@ export class CollectApp extends Component<CollectAppProps> {
         <Box>
           <ArtworkGrid viewer={this.props.viewer} />
         </Box>
-      </CollectFrame>
+      </FrameWithRecentlyViewed>
     )
   }
 }

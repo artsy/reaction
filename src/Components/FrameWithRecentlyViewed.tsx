@@ -13,7 +13,7 @@ export interface Props {
   name?: string
 }
 
-export const CollectFrame: React.SFC<Props> = ({ children }) => {
+export const FrameWithRecentlyViewed: React.SFC<Props> = ({ children }) => {
   return (
     <HorizontalPadding>
       <Flex flexDirection="column">
