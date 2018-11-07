@@ -1,11 +1,10 @@
-import { Box, Sans, Serif } from "@artsy/palette"
+import { Flex, Sans, Serif } from "@artsy/palette"
 import { CollectionsApp_collections } from "__generated__/CollectionsApp_collections.graphql"
 import { FrameWithRecentlyViewed } from "Components/FrameWithRecentlyViewed"
 import React, { Component } from "react"
 import { Meta, Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
-import styled from "styled-components"
 import { CollectionsGrid } from "./Components/CollectionsGrid"
 
 interface CollectionsAppProps {
@@ -23,28 +22,24 @@ export class CollectionsApp extends Component<CollectionsAppProps> {
         {/* TODO: Confirm title/meta details */}
 
         <FrameWithRecentlyViewed>
-          <HeaderContainer mt={3} mb={4}>
+          <Flex
+            mt={3}
+            mb={4}
+            justifyContent="space-between"
+            alignItems="flex-end"
+          >
             <Serif size="8">Collections</Serif>
 
             <Sans size="3" weight="medium">
               <a href="/collect">View works</a>
             </Sans>
-          </HeaderContainer>
-
-          <Box>
-            <CollectionsGrid collections={collections} />
-          </Box>
+          </Flex>
+          <CollectionsGrid collections={collections} />
         </FrameWithRecentlyViewed>
       </>
     )
   }
 }
-
-const HeaderContainer = styled(Box)`
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-`
 
 export const CollectionsAppFragmentContainer = createFragmentContainer(
   CollectionsApp,
