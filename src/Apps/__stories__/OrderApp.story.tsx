@@ -4,7 +4,7 @@ import {
   PickupOrder,
   UntouchedBuyOrder,
   UntouchedOfferOrder,
-} from "Apps/__test__/Fixtures/Order"
+} from "Apps/__tests__/Fixtures/Order"
 import { MockRouter } from "DevTools/MockRouter"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"

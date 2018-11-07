@@ -8,7 +8,7 @@ import {
   OpenAuctionReserveMetWithMyWinningBid,
   OpenAuctionReserveNoBids,
   OpenAuctionReserveNotMetWithBids,
-} from "Apps/__test__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarCurrentBidInfo"
+} from "Apps/__tests__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarCurrentBidInfo"
 import { ArtworkSidebarCurrentBidInfo as CurrentBidInfo } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarCurrentBidInfo"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"

@@ -3,7 +3,7 @@ import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
 import { ArtworkDetails, ArtworkDetailsQueryRenderer } from "../ArtworkDetails"
 
-import { AllAdditionalDetailsPresent } from "Apps/__test__/Fixtures/Artworks"
+import { AllAdditionalDetailsPresent } from "Apps/__tests__/Fixtures/Artworks"
 import { RelayStubProvider } from "DevTools/RelayStubProvider"
 
 storiesOf("Styleguide/Artwork", module)

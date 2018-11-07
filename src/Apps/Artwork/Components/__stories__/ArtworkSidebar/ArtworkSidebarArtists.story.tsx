@@ -2,7 +2,7 @@ import {
   MultipleArtists,
   SingleFollowedArtist,
   SingleNonFollowedArtist,
-} from "Apps/__test__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarArtists"
+} from "Apps/__tests__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarArtists"
 import { ArtworkSidebarArtists as Artists } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarArtists"
 import { RelayStubProvider } from "DevTools/RelayStubProvider"
 import React from "react"
