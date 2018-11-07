@@ -12,7 +12,7 @@ import { ArtworkDetailsFragmentContainer as ArtworkDetails } from "./Components/
 import { ArtworkImagesFragmentContainer as ArtworkImages } from "./Components/ArtworkImages"
 import { ArtworkSidebarFragmentContainer as ArtworkSidebar } from "./Components/ArtworkSidebar"
 
-import { ArtworkBannerFragmentContainer as ArtworkBanner } from "./Components/ArtworkBanner"
+import { Banner } from "./Components/Banner"
 // import { OtherWorks } from "./Components/OtherWorks"
 
 import {
@@ -29,7 +29,12 @@ export const ArtworkApp: React.SFC<Props> = props => {
     <HorizontalPadding>
       <Row>
         <Col sm={8}>
-          <ArtworkBanner artwork={props.artwork} />
+          <Banner
+            src="https://picsum.photos/110/110/?random"
+            badge="In show"
+            headline="Francesca DiMattio: Boucherouite"
+            subHeadline="Salon 94"
+          />
         </Col>
       </Row>
       <Row>
@@ -147,7 +152,6 @@ export const ArtworkAppFragmentContainer = createFragmentContainer(
       }
       ...ArtworkSidebar_artwork
       ...ArtworkDetails_artwork
-      ...ArtworkBanner_artwork
       ...ArtworkImages_artwork
     }
   `

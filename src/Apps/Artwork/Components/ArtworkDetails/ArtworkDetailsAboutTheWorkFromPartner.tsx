@@ -1,4 +1,11 @@
-import { Box, Sans, Serif, Spacer, StackableBorderBox } from "@artsy/palette"
+import {
+  Avatar,
+  Box,
+  Sans,
+  Serif,
+  Spacer,
+  StackableBorderBox,
+} from "@artsy/palette"
 import { filterLocations } from "Apps/Artwork/Utils/filterLocations"
 import { limitWithCount } from "Apps/Artwork/Utils/limitWithCount"
 import { ContextConsumer } from "Artsy/Router"
@@ -32,6 +39,10 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
   })
   trackReadMoreClick() {
     // noop
+  }
+
+  renderProfileImage(imageUrl?: string, initials?: string) {
+    return <Avatar size="xs" src={imageUrl} initials={initials} mr={1} />
   }
 
   render() {
