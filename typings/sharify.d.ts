@@ -21,6 +21,7 @@ declare module "sharify" {
       readonly GEMINI_CLOUDFRONT_URL: string
       readonly METAPHYSICS_ENDPOINT: string
       readonly NODE_ENV: string
+      readonly SENTRY_PUBLIC_DSN: string
       readonly STRIPE_PUBLISHABLE_KEY: string
       readonly XAPP_TOKEN: string
     }
