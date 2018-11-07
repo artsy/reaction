@@ -13,7 +13,12 @@ import {
   validAddress,
 } from "Apps/Order/Routes/__tests__/Utils/addressForm"
 import { Input } from "../../../../Components/Input"
-import { Collapse } from "../../../../Styleguide/Components"
+import {
+  ActiveTabContainer,
+  CheckMarkWrapper,
+  Collapse,
+  Stepper,
+} from "../../../../Styleguide/Components"
 import { CreditCardInput } from "../../Components/CreditCardInput"
 import {
   creatingCreditCardFailed,
@@ -531,6 +536,16 @@ describe("Payment", () => {
 
       paymentRoute.find("Button").simulate("click")
       expect(stripeMock.createToken).toBeCalled()
+    })
+  })
+
+  describe("Offer-mode orders", () => {
+    it("shows an active offer stepper if the order is an Offer Order", () => {
+      const offerOrder = { ...OrderWithShippingDetails, mode: "OFFER" }
+      const component = getWrapper({ ...testProps, order: offerOrder })
+      expect(component.find(ActiveTabContainer).text()).toEqual("Payment")
+      expect(component.find(Stepper).props().currentStepIndex).toEqual(2)
+      expect(component.find(CheckMarkWrapper).length).toEqual(2)
     })
   })
 })
