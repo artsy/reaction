@@ -253,7 +253,7 @@ class PaymentForm extends Component<PaymentFormProps, PaymentFormState> {
   }
 
   private onMutationError(errors, errorModalMessage?) {
-    console.error("PaymentForm.tsx", errors)
+    jest === undefined && console.error("PaymentForm.tsx", errors)
     this.setState({
       isCommittingMutation: false,
       isErrorModalOpen: true,

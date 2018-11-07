@@ -28,7 +28,7 @@ jest.mock("react-relay", () => ({
 }))
 
 jest.mock("react-stripe-elements", () => ({
-  CardElement: ({ hidePostalCode, ...props }) => <div {...props} />,
+  CardElement: ({ onReady, hidePostalCode, ...props }) => <div {...props} />,
   injectStripe: args => args,
 }))
 
