@@ -47,20 +47,22 @@ export const ArtworkApp: React.SFC<Props> = props => {
           <ArtworkDetails artwork={props.artwork} />
         </Col>
       </Row>
-      <Row>
-        <Col sm={8}>
-          <ArtistInfo artistID={props.artwork.artist.id} />
-        </Col>
-      </Row>
-
-      {typeof window !== "undefined" && (
+      {props.artwork.artist && (
         <Row>
-          <Col>
-            <LazyLoadComponent threshold={1000}>
-              <RecentlyViewed />
-            </LazyLoadComponent>
+          <Col sm={8}>
+            <ArtistInfo artistID={props.artwork.artist.id} />
           </Col>
         </Row>
+      )}
+
+      {typeof window !== "undefined" && (
+        <LazyLoadComponent threshold={1000}>
+          <Row>
+            <Col>
+              <RecentlyViewed />
+            </Col>
+          </Row>
+        </LazyLoadComponent>
       )}
 
       <Row>
