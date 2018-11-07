@@ -242,6 +242,7 @@
       "raf/polyfill"
     ],
     "setupTestFrameworkScriptFile": "<rootDir>/src/setup_jest.ts",
+    "testURL": "http://localhost/",
     "moduleNameMapper": {
       "Assets(.*)$": "<rootDir>/src/Assets/$1",
       "^Components(.*)$": "<rootDir>/src/Components/$1"
