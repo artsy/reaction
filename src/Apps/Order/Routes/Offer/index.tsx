@@ -1,4 +1,4 @@
-import { Button, Flex, Sans, Spacer } from "@artsy/palette"
+import { Button, Flex, Message, Sans, Spacer } from "@artsy/palette"
 import { Offer_order } from "__generated__/Offer_order.graphql"
 import { OfferMutation } from "__generated__/OfferMutation.graphql"
 import { Helper } from "Apps/Order/Components/Helper"
@@ -168,7 +168,12 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
                         List price: {order.itemsTotal}
                       </Sans>
                     )}
-                    <Spacer mb={3} />
+                    <Spacer mb={[2, 3]} />
+                    <Message p={[2, 3]}>
+                      If your offer is accepted the seller will confirm and ship
+                      the work to you immediately.
+                    </Message>
+                    <Spacer mb={[2, 3]} />
                     {!xs && (
                       <Button
                         onClick={this.onContinueButtonPressed}
