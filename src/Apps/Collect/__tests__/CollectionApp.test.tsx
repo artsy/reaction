@@ -48,6 +48,8 @@ describe("CollectionApp", () => {
       </MockBoot>
     )
 
+    const title = tree.find("Title")
+    expect(title.at(0).text()).toContain("KAWS: Companions | Collect on Artsy")
     const items = tree.find("GridItem__ArtworkGridItem")
     expect(items.length).toEqual(4)
     expect(items.at(0).text()).toContain("Pinocchio, 2018")

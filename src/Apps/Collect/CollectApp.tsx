@@ -1,25 +1,41 @@
 import { Box, Serif } from "@artsy/palette"
 import { CollectApp_viewer } from "__generated__/CollectApp_viewer.graphql"
 import React, { Component } from "react"
-import { Meta, Title } from "react-head"
+import { Link, Meta, Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import { CollectFrame } from "./CollectFrame"
+import { getMetadataForMedium } from "./CollectMediumMetadata"
 import { CollectFilterFragmentContainer as ArtworkGrid } from "./Components/Base/CollectFilterContainer"
+
 export interface CollectAppProps {
   viewer?: CollectApp_viewer
+  params?: {
+    medium: string
+  }
 }
 
 export class CollectApp extends Component<CollectAppProps> {
   render() {
+    const { params } = this.props
+    const medium = params && params.medium
+    const { description, title } = getMetadataForMedium(medium)
+    const canonicalHref = medium
+      ? `${sd.APP_URL}/collect/${medium}`
+      : `${sd.APP_URL}/collect`
+
     return (
       <CollectFrame>
-        <Title>Collect | Artsy</Title>
+        <Title>{title}</Title>
         <Meta property="og:url" content={`${sd.APP_URL}/collect`} />
         <Meta
           property="og:image"
           content={`${sd.APP_URL}/images/og_image.jpg`}
         />
+        <Meta name="description" content={description} />
+        <Meta property="og:description" content={description} />
+        <Meta property="twitter:description" content={description} />
+        <Link rel="canonical" href={canonicalHref} />
 
         <Box mt={3} mb={4}>
           <Serif size="8">Collect art and design online</Serif>
