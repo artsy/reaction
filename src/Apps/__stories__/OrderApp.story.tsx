@@ -2,8 +2,9 @@ import {
   mockResolver,
   OrderWithShippingDetails,
   PickupOrder,
-  UntouchedOrder,
-} from "Apps/__test__/Fixtures/Order"
+  UntouchedBuyOrder,
+  UntouchedOfferOrder,
+} from "Apps/__tests__/Fixtures/Order"
 import { MockRouter } from "DevTools/MockRouter"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
@@ -24,7 +25,13 @@ const Router = props => (
 )
 
 storiesOf("Apps/Order Page/Offer", module).add("Empty", () => (
-  <Router initialRoute="/orders/123/offer" />
+  <Router
+    initialRoute="/orders/123/offer"
+    mockResolvers={mockResolver({
+      ...UntouchedOfferOrder,
+      requestedFulfillment: null,
+    })}
+  />
 ))
 
 storiesOf("Apps/Order Page", module)
@@ -33,10 +40,10 @@ storiesOf("Apps/Order Page", module)
   ))
   .add("Shipping - Untouched Order", () => (
     <Router
-      // The UntouchedOrder has a specified requestedFulfillment, but it should be null.
-      // Unfortunately, enough of our tests use UntouchedOrder to change it, so we'll specify it here to avoid breaking our story.
+      // The UntouchedBuyOrder has a specified requestedFulfillment, but it should be null.
+      // Unfortunately, enough of our tests use UntouchedBuyOrder to change it, so we'll specify it here to avoid breaking our story.
       mockResolvers={mockResolver({
-        ...UntouchedOrder,
+        ...UntouchedBuyOrder,
         requestedFulfillment: null,
       })}
       initialRoute="/orders/123/shipping"

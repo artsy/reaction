@@ -8,7 +8,7 @@ export type Artwork_artwork = {
     readonly id: string;
     readonly image: ({
         readonly url: string | null;
-        readonly aspect_ratio: number | null;
+        readonly aspect_ratio: number;
     }) | null;
     readonly " $fragmentRefs": Metadata_artwork$ref;
     readonly " $refType": Artwork_artwork$ref;

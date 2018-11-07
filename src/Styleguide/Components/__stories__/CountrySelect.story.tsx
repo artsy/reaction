@@ -1,4 +1,4 @@
-import { selectProps } from "Apps/__test__/Fixtures/Select"
+import { selectProps } from "Apps/__tests__/Fixtures/Select"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { CountrySelect } from "Styleguide/Components"

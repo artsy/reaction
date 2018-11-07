@@ -1,7 +1,7 @@
 import { Box, Flex, Spacer } from "@artsy/palette"
 import React from "react"
 import { Col, Row } from "Styleguide/Elements/Grid"
-import { Responsive } from "Utils/Responsive"
+import { Media } from "Utils/Responsive"
 
 const CONTENT_SPAN = 7
 const SIDEBAR_SPAN = 4
@@ -14,26 +14,35 @@ export const TwoColumnSplit = ({ children, ...props }) => {
   const [firstColumn, secondColumn] = React.Children.toArray(children)
 
   return (
-    <Responsive>
-      {({ xs }) => (
-        <Flex flexDirection={xs ? "column" : "row"} {...props}>
-          <Box width={xs ? "100%" : columnRatioWidth(4, CONTENT_SPAN)}>
-            {firstColumn}
-          </Box>
-          <Spacer mr={xs ? null : COL_SPACE} mb={xs ? ROW_SPACE : null} />
-          <Box width={xs ? "100%" : columnRatioWidth(3, CONTENT_SPAN)}>
-            {secondColumn}
-          </Box>
+    <>
+      <Media at="xs">
+        <Flex flexDirection={"column"} {...props}>
+          <Box width="100%">{firstColumn}</Box>
+          <Spacer mr={null} mb={ROW_SPACE} />
+          <Box width="100%">{secondColumn}</Box>
         </Flex>
-      )}
-    </Responsive>
+      </Media>
+
+      <Media greaterThan="xs">
+        <Flex flexDirection="row" {...props}>
+          <Box width={columnRatioWidth(4, CONTENT_SPAN)}>{firstColumn}</Box>
+          <Spacer mr={COL_SPACE} mb={null} />
+          <Box width={columnRatioWidth(3, CONTENT_SPAN)}>{secondColumn}</Box>
+        </Flex>
+      </Media>
+    </>
   )
 }
 
 export const TwoColumnLayout = props => (
-  <Responsive>
-    {({ xs }) => (xs ? <XsLayout {...props} /> : <DefaultLayout {...props} />)}
-  </Responsive>
+  <>
+    <Media at="xs">
+      <XsLayout {...props} />
+    </Media>
+    <Media greaterThan="xs">
+      <DefaultLayout {...props} />
+    </Media>
+  </>
 )
 
 const DefaultLayout = ({ Content, Sidebar }) => (

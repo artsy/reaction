@@ -8,12 +8,13 @@ const track = _track as jest.Mock<typeof _track>
 track.mockImplementation(y => x => x)
 
 jest.mock("react-sizeme", () => jest.fn(c => d => d))
+jest.mock("Utils/logger")
 
 /**
  * We want each test to have assertions, otherwise it’s too easy to write async
  * tests that never end up making any, leading to false positives.
  */
-beforeEach(() => expect.hasAssertions())
+afterEach(() => expect.hasAssertions())
 
 import "DevTools/renderUntil"
 Enzyme.configure({ adapter: new Adapter() })

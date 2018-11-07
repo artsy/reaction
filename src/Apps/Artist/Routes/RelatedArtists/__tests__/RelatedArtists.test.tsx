@@ -1,4 +1,4 @@
-import { RelatedArtistsFixture } from "Apps/__test__/Fixtures/Artist/Routes/RelatedArtistsFixture"
+import { RelatedArtistsFixture } from "Apps/__tests__/Fixtures/Artist/Routes/RelatedArtistsFixture"
 import { RelatedArtistsRouteFragmentContainer as RelatedArtists } from "Apps/Artist/Routes/RelatedArtists"
 import { MockBoot, renderRelayTree } from "DevTools"
 import { ReactWrapper } from "enzyme"

@@ -1,4 +1,4 @@
-import { ArtworkSidebarFixture } from "Apps/__test__/Fixtures/Artwork/ArtworkSidebar"
+import { ArtworkSidebarFixture } from "Apps/__tests__/Fixtures/Artwork/ArtworkSidebar"
 import { ArtworkSidebarFragmentContainer } from "Apps/Artwork/Components/ArtworkSidebar"
 import { ArtworkSidebarArtists } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarArtists"
 import { ArtworkSidebarMetadata } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarMetadata"

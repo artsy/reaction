@@ -1,5 +1,5 @@
 import React from "react"
-import { Responsive } from "Utils/Responsive"
+import { Media } from "Utils/Responsive"
 
 import {
   BorderBox,
@@ -20,12 +20,14 @@ export interface AuctionCardProps {
 export class AuctionCard extends React.Component<AuctionCardProps> {
   render() {
     return (
-      <Responsive>
-        {({ xs }) => {
-          if (xs) return <SmallAuctionCard {...this.props} />
-          else return <LargeAuctionCard {...this.props} />
-        }}
-      </Responsive>
+      <>
+        <Media at="xs">
+          <SmallAuctionCard {...this.props} />
+        </Media>
+        <Media greaterThan="xs">
+          <LargeAuctionCard {...this.props} />
+        </Media>
+      </>
     )
   }
 }

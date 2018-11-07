@@ -1,7 +1,6 @@
 // @ts-check
 
 const env = require("dotenv")
-const fs = require("fs")
 const path = require("path")
 const sharify = require("./sharify")
 
@@ -11,6 +10,8 @@ const SimpleProgressWebpackPlugin = require("simple-progress-webpack-plugin")
 
 const webpack = require("webpack")
 const merge = require("webpack-merge")
+
+const package = require("../package.json")
 
 env.load()
 
@@ -24,6 +25,7 @@ const {
   METAPHYSICS_ENDPOINT,
   NETLIFY,
   NODE_ENV,
+  STRIPE_PUBLISHABLE_KEY,
   USER_ACCESS_TOKEN,
   USER_ID,
   USER_LAB_FEATURES,
@@ -45,6 +47,7 @@ const sharifyPath = sharify({
   GEMINI_CLOUDFRONT_URL,
   METAPHYSICS_ENDPOINT,
   NODE_ENV,
+  STRIPE_PUBLISHABLE_KEY,
   XAPP_TOKEN,
 })
 
@@ -123,7 +126,7 @@ module.exports = (baseConfig, env) => {
         {
           test: /\.tsx?$/,
           include: [/src/],
-          exclude: [/node_modules/, /__tests__/],
+          exclude: [/node_modules/, new RegExp(package.jest.testRegex)],
           use: [
             {
               loader: "cache-loader",

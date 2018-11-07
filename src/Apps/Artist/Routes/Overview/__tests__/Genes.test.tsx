@@ -1,4 +1,4 @@
-import { GenesFixture } from "Apps/__test__/Fixtures/Artist/Routes/Overview/Genes"
+import { GenesFixture } from "Apps/__tests__/Fixtures/Artist/Routes/Overview/Genes"
 import { renderRelayTree } from "DevTools"
 import { ReactWrapper } from "enzyme"
 import { graphql } from "react-relay"

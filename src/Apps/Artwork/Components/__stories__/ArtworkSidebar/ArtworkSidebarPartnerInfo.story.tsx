@@ -2,7 +2,7 @@ import {
   ArtworkFromPartnerWithLocations,
   ArtworkFromPartnerWithoutLocations,
   ArtworkWithCollectingInstitution,
-} from "Apps/__test__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarPartnerInfo"
+} from "Apps/__tests__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarPartnerInfo"
 import { ArtworkSidebarPartnerInfo as PartnerInfo } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarPartnerInfo"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"

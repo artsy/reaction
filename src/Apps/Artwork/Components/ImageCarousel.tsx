@@ -2,9 +2,9 @@ import React from "react"
 import styled from "styled-components"
 
 import Icon from "Components/Icon"
+import { Lightbox } from "Styleguide/Components"
 import { Arrow } from "Styleguide/Elements/Arrow"
-import { Responsive } from "Utils/Responsive"
-import { SaveActionIcon, ShareActionIcon } from "./ActionIcons"
+import { Media } from "Utils/Responsive"
 
 const Container = styled.div`
   display: flex;
@@ -50,7 +50,6 @@ const ImageContainer = styled.div`
 `
 
 const BaseImage = styled.img`
-  cursor: zoom-in;
   max-width: 100%;
 `
 
@@ -130,7 +129,7 @@ const ActionButtonsContainer = styled.div`
 `
 
 interface ImageCarouselProps {
-  images: Array<{ uri: string; aspectRatio: number }>
+  images: any // Array<{ uri: string; aspectRatio: number }>
 }
 
 interface ImageCarouselState {
@@ -178,70 +177,112 @@ export class ImageCarousel extends React.Component<
     currentImage: 0,
   }
 
+  get image() {
+    const image = this.props.images[this.state.currentImage]
+    return image
+  }
+
+  get hasMultipleImages() {
+    const hasMultipleImages = this.props.images.length > 1
+    return hasMultipleImages
+  }
+
   changeCurrentImage(by: number) {
     this.setState({
       currentImage: (this.state.currentImage + by) % this.props.images.length,
     })
   }
 
+  renderImage(breakpoint?: string) {
+    const xs = breakpoint === "xs"
+    const Image = xs ? SmallImage : LargeImage
+
+    return (
+      <Lightbox deepZoom={this.image.deepZoom} enabled={this.image.is_zoomable}>
+        <Image src={this.image.uri} />
+      </Lightbox>
+    )
+  }
+
+  renderImageArea(breakpoint?: string) {
+    const xs = breakpoint === "xs"
+    const ImageArea = xs ? SmallImageArea : LargeImageArea
+
+    return (
+      <ImageArea aspectRatio={this.image.aspectRatio}>
+        {this.hasMultipleImages && (
+          <Media greaterThan="xs">
+            <NavigationButton
+              direction="left"
+              onClick={this.changeCurrentImage.bind(this, -1)}
+            />
+          </Media>
+        )}
+
+        <ImageContainer>
+          <Media at="xs">{this.renderImage("xs")}</Media>
+          <Media greaterThan="xs">{this.renderImage()}</Media>
+        </ImageContainer>
+
+        {this.hasMultipleImages && (
+          <Media greaterThan="xs">
+            <NavigationButton
+              direction="right"
+              onClick={this.changeCurrentImage.bind(this, +1)}
+            />
+          </Media>
+        )}
+      </ImageArea>
+    )
+  }
+
+  renderControlsContainer(breakpoint?: string) {
+    const xs = breakpoint === "xs"
+    const ControlsContainer = xs
+      ? LargeControlsContainer
+      : SmallControlsContainer
+
+    return (
+      <ControlsContainer>
+        {this.hasMultipleImages && (
+          <PageIndicators
+            size={this.props.images.length}
+            highlightIndex={this.state.currentImage}
+            onSelect={i => this.setState({ currentImage: i })}
+          />
+        )}
+
+        <Media at="xs">
+          <Spacer />
+        </Media>
+
+        <ActionButtonsContainer>
+          <ActionButtons>
+            <Button href="#TODO">
+              <Icon name="heart" color="black" />
+            </Button>
+            <Button href="#TODO">
+              <Icon name="share" color="black" />
+            </Button>
+          </ActionButtons>
+        </ActionButtonsContainer>
+      </ControlsContainer>
+    )
+  }
+
   render() {
     return (
-      <Responsive>
-        {({ xs }) => {
-          const hasMultipleImages = this.props.images.length > 1
-          const showNavigation = !xs && hasMultipleImages
+      <Container>
+        <Media at="xs">
+          {this.renderImageArea("xs")}
+          {this.renderControlsContainer("xs")}
+        </Media>
 
-          const image = this.props.images[this.state.currentImage]
-
-          const Image = xs ? SmallImage : LargeImage
-          const ImageArea = xs ? SmallImageArea : LargeImageArea
-          const ControlsContainer = showNavigation
-            ? LargeControlsContainer
-            : SmallControlsContainer
-
-          return (
-            <Container>
-              <ImageArea aspectRatio={image.aspectRatio}>
-                {showNavigation && (
-                  <NavigationButton
-                    direction="left"
-                    onClick={this.changeCurrentImage.bind(this, -1)}
-                  />
-                )}
-                <ImageContainer>
-                  <Image
-                    src={image.uri}
-                    // tslint:disable-next-line:no-console
-                    onClick={() => console.log("Zoom")}
-                  />
-                </ImageContainer>
-                {showNavigation && (
-                  <NavigationButton
-                    direction="right"
-                    onClick={this.changeCurrentImage.bind(this, +1)}
-                  />
-                )}
-              </ImageArea>
-              <ControlsContainer>
-                {hasMultipleImages && (
-                  <PageIndicators
-                    size={this.props.images.length}
-                    highlightIndex={this.state.currentImage}
-                    onSelect={i => this.setState({ currentImage: i })}
-                  />
-                )}
-                {xs && <Spacer />}
-                <ActionButtonsContainer>
-                  <ActionButtons>
-                    <SaveActionIcon />
-                    <ShareActionIcon />
-                  </ActionButtons>
-                </ActionButtonsContainer>
-              </ControlsContainer>
-            </Container>
-          )
-        }}
-      </Responsive>
+        <Media greaterThan="xs">
+          {this.renderImageArea()}
+          {this.renderControlsContainer()}
+        </Media>
+      </Container>
     )
   }
 }

@@ -1,17 +1,18 @@
 import { Sans } from "@artsy/palette"
 import React from "react"
 import { Col } from "Styleguide/Elements/Grid"
-import { Responsive } from "Utils/Responsive"
+import { Media } from "Utils/Responsive"
 
 export const TableColumns = () => {
   return (
-    <Responsive>
-      {({ xs, sm, md }) => {
-        if (xs) return null
-        else if (sm || md) return <SmallTableColumns />
-        else return <LargeTableColumns />
-      }}
-    </Responsive>
+    <>
+      <Media between={["sm", "lg"]}>
+        <SmallTableColumns />
+      </Media>
+      <Media greaterThanOrEqual="lg">
+        <LargeTableColumns />
+      </Media>
+    </>
   )
 }
 
