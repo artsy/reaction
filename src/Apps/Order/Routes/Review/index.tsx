@@ -19,6 +19,7 @@ import {
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { get } from "Utils/get"
+import createLogger from "Utils/logger"
 import { Responsive } from "Utils/Responsive"
 import { Helper } from "../../Components/Helper"
 import { TransactionSummaryFragmentContainer as TransactionSummary } from "../../Components/TransactionSummary"
@@ -39,6 +40,8 @@ interface ReviewState {
   errorModalTitle: string
   errorModalCtaAction: () => null
 }
+
+const logger = createLogger("Order/Routes/Review/index.tsx")
 
 @track()
 export class ReviewRoute extends Component<ReviewProps, ReviewState> {
@@ -181,7 +184,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
     errorModalMessage?,
     errorModalCtaAction?
   ) {
-    console.error("Order/Routes/Review/index.tsx", errors)
+    logger.error(errors)
     this.setState({
       isSubmitting: false,
       isErrorModalOpen: true,
