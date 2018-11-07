@@ -34,8 +34,7 @@ jobs:
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
       - run: yarn semantic-release
   pre-deploy:
-    docker:
-      - image: eddiewebb/circleci-queue:latest
+    executor: node/build
     steps:
       - queue/until_front_of_line:
           time: "2" # Timeout after 2 minutes of waiting and fail the build
