@@ -24,17 +24,7 @@ const Router = props => (
   />
 )
 
-storiesOf("Apps/Order Page/Offer", module).add("Empty", () => (
-  <Router
-    initialRoute="/orders/123/offer"
-    mockResolvers={mockResolver({
-      ...UntouchedOfferOrder,
-      requestedFulfillment: null,
-    })}
-  />
-))
-
-storiesOf("Apps/Order Page", module)
+storiesOf("Apps/Order Page/Buy Now/Shipping", module)
   .add("Shipping - Pre-filled", () => (
     <Router initialRoute="/orders/123/shipping" />
   ))
@@ -49,9 +39,21 @@ storiesOf("Apps/Order Page", module)
       initialRoute="/orders/123/shipping"
     />
   ))
-  .add("Review", () => <Router initialRoute="/orders/123/review" />)
 
-storiesOf("Apps/Order Page/Status", module)
+storiesOf("Apps/Order Page/Buy Now/Review", module).add("Review", () => (
+  <Router initialRoute="/orders/123/review" />
+))
+
+storiesOf("Apps/Order Page/Buy Now/Payment", module)
+  .add("With 'Ship'", () => <Router initialRoute="/orders/123/payment" />)
+  .add("With 'Pickup'", () => (
+    <Router
+      initialRoute="/orders/123/payment"
+      mockResolvers={mockResolver(PickupOrder)}
+    />
+  ))
+
+storiesOf("Apps/Order Page/Buy Now/Status", module)
   .add("submitted (ship)", () => (
     <Router
       initialRoute="/orders/123/status"
@@ -116,11 +118,62 @@ storiesOf("Apps/Order Page/Status", module)
     />
   ))
 
-storiesOf("Apps/Order Page/Payment", module)
-  .add("With 'Ship'", () => <Router initialRoute="/orders/123/payment" />)
+storiesOf("Apps/Order Page/Make Offer/Offer", module).add("Empty", () => (
+  <Router
+    initialRoute="/orders/123/offer"
+    mockResolvers={mockResolver({
+      ...UntouchedOfferOrder,
+      requestedFulfillment: null,
+    })}
+  />
+))
+
+storiesOf("Apps/Order Page/Make Offer/Shipping", module)
+  .add("Shipping - Pre-filled", () => (
+    <Router
+      initialRoute="/orders/123/shipping"
+      mockResolvers={mockResolver({
+        ...OrderWithShippingDetails,
+        mode: "OFFER",
+      })}
+    />
+  ))
+  .add("Shipping - Untouched Order", () => (
+    <Router
+      // The UntouchedBuyOrder has a specified requestedFulfillment, but it should be null.
+      // Unfortunately, enough of our tests use UntouchedBuyOrder to change it, so we'll specify it here to avoid breaking our story.
+      mockResolvers={mockResolver({
+        ...UntouchedBuyOrder,
+        requestedFulfillment: null,
+        mode: "OFFER",
+      })}
+      initialRoute="/orders/123/shipping"
+    />
+  ))
+
+storiesOf("Apps/Order Page/Make Offer/Payment", module)
+  .add("With 'Ship'", () => (
+    <Router
+      initialRoute="/orders/123/payment"
+      mockResolvers={mockResolver({
+        ...OrderWithShippingDetails,
+        mode: "OFFER",
+      })}
+    />
+  ))
   .add("With 'Pickup'", () => (
     <Router
       initialRoute="/orders/123/payment"
-      mockResolvers={mockResolver(PickupOrder)}
+      mockResolvers={mockResolver({ ...PickupOrder, mode: "OFFER" })}
     />
   ))
+
+storiesOf("Apps/Order Page/Make Offer/Review", module).add("Review", () => (
+  <Router
+    initialRoute="/orders/123/review"
+    mockResolvers={mockResolver({
+      ...OrderWithShippingDetails,
+      mode: "OFFER",
+    })}
+  />
+))

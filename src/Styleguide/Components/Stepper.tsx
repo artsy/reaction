@@ -89,7 +89,7 @@ const ChevronWrapper = styled.span`
   line-height: normal;
 `
 
-const CheckMarkWrapper = styled.span`
+export const CheckMarkWrapper = styled.span`
   margin-right: ${space(1)}px;
   line-height: normal;
 `

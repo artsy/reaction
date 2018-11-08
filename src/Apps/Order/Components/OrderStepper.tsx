@@ -4,15 +4,22 @@ import { Step, Stepper } from "Styleguide/Components"
 const offerFlow = ["Offer", "Shipping", "Payment", "Review"]
 const buyNowFlow = ["Shipping", "Payment", "Review"]
 
-type OrderStepperProps =
-  | {
-      currentStep: "Offer" | "Shipping" | "Payment" | "Review"
-      offerFlow: true
-    }
-  | {
-      currentStep: "Shipping" | "Payment" | "Review"
-      offerFlow: false
-    }
+// TODO: This currently fails as TS is unable to coerce a boolean type into
+// "true" or "false" as this conditional expects.
+// type OrderStepperProps =
+//   | {
+//       currentStep: "Offer" | "Shipping" | "Payment" | "Review"
+//       offerFlow: true
+//     }
+//   | {
+//       currentStep: "Shipping" | "Payment" | "Review"
+//       offerFlow: false
+//     }
+
+interface OrderStepperProps {
+  currentStep: "Offer" | "Shipping" | "Payment" | "Review"
+  offerFlow: boolean
+}
 
 export const OrderStepper: React.SFC<OrderStepperProps> = ({
   currentStep,
