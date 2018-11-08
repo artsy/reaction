@@ -34,37 +34,17 @@ commands:
           name: Queue Until Front of Line
           command: |
             # just confirm our required variables are present
-            # : ${CIRCLECI_API_KEY:?"Required Env Variable not found!"}
-            # : ${CIRCLE_BUILD_NUM:?"Required Env Variable not found!"}
-            # : ${CIRCLE_PROJECT_USERNAME:?"Required Env Variable not found!"}
-            # : ${CIRCLE_PROJECT_REPONAME:?"Required Env Variable not found!"}
-            # : ${CIRCLE_REPOSITORY_URL:?"Required Env Variable not found!"}
-            # : ${CIRCLE_JOB:?"Required Env Variable not found!"}
+            : ${CIRCLECI_API_KEY:?"Required Env Variable not found!"}
+            : ${CIRCLE_BUILD_NUM:?"Required Env Variable not found!"}
+            : ${CIRCLE_PROJECT_USERNAME:?"Required Env Variable not found!"}
+            : ${CIRCLE_PROJECT_REPONAME:?"Required Env Variable not found!"}
+            : ${CIRCLE_REPOSITORY_URL:?"Required Env Variable not found!"}
+            : ${CIRCLE_JOB:?"Required Env Variable not found!"}
 
-            echo "Env vars are fine..."
-
-            if [ "<<parameters.consider-branch>>" == "true" ]; then
-              QUEUE_BRANCH="true"
-            else
-              QUEUE_BRANCH="false"
-            fi
-            echo "queue branch is good"
-            if [ "<<parameters.consider-job>>" == "true" ]; then
-              QUEUE_JOB="true"
-            else
-              QUEUE_JOB="false"
-            fi
-            QUEUE_TIME="<<parameters.time>>"
-            echo "queue time is good"
-            QUEUE_ONLY="<<parameters.only-on-branch>>"
-            echo "queue only is good"
-
-            echo "queue vars are fine..."
-
-            if [ "$QUEUE_ONLY" = "*" ] || [ "$QUEUE_ONLY" = "${CIRCLE_BRANCH}" ]; then
+            if [ "<<parameters.only-on-branch>>" = "*" ] || [ "<<parameters.only-on-branch>>" = "${CIRCLE_BRANCH}" ]; then
               echo "${CIRCLE_BRANCH} queueable"
             else
-              echo "Queueing only happens on ${QUEUE_ONLY}, skipping queue"
+              echo "Queueing only happens on <<parameters.only-on-branch>> branch, skipping queue"
               exit 0
             fi
 
@@ -116,7 +96,7 @@ commands:
 
 
 
-            max_time=${QUEUE_TIME}
+            max_time=<<parameters.time>>
             echo "This build will block until all previous builds complete."
             echo "Max Queue Time: ${max_time} minutes."
 
