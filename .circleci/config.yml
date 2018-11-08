@@ -1,9 +1,9 @@
 version: 2.1
 
 orbs:
-  node: artsy/node@volatile
-  yarn: artsy/yarn@volatile
-  queue: eddiewebb/queue@volatile
+  node: artsy/node@0.0.1
+  yarn: artsy/yarn@0.0.1
+  queue: eddiewebb/queue@1.0.107
 
 jobs:
   relay:
