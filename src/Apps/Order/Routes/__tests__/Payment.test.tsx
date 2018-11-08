@@ -13,7 +13,12 @@ import {
   validAddress,
 } from "Apps/Order/Routes/__tests__/Utils/addressForm"
 import { Input } from "../../../../Components/Input"
-import { Collapse } from "../../../../Styleguide/Components"
+import {
+  ActiveTabContainer,
+  CheckMarkWrapper,
+  Collapse,
+  Stepper,
+} from "../../../../Styleguide/Components"
 import { CreditCardInput } from "../../Components/CreditCardInput"
 import {
   creatingCreditCardFailed,
@@ -202,7 +207,6 @@ describe("Payment", () => {
 
     const paymentRoute = getWrapper(testProps)
     ;(paymentRoute.find(Checkbox).props() as CheckboxProps).onSelect(false)
-    paymentRoute.update()
 
     fillAddressForm(paymentRoute, validAddress)
     paymentRoute.find(ContinueButton).simulate("click")
@@ -434,19 +438,17 @@ describe("Payment", () => {
     it("says a required field is required with billing address exposed", () => {
       const paymentRoute = getWrapper(testProps)
       ;(paymentRoute.find(Checkbox).props() as CheckboxProps).onSelect(false)
-      paymentRoute.update()
 
       paymentRoute.find(ContinueButton).simulate("click")
-      paymentRoute.update()
       const input = paymentRoute
         .find(Input)
         .filterWhere(wrapper => wrapper.props().title === "Full name")
       expect(input.props().error).toEqual("This field is required")
     })
+
     it("before submit, only shows a validation error on inputs that have been touched", () => {
       const component = getWrapper(testProps)
       ;(component.find(Checkbox).props() as CheckboxProps).onSelect(false)
-      component.update()
 
       fillIn(component, { title: "Full name", value: "Erik David" })
       fillIn(component, { title: "Address line 1", value: "" })
@@ -461,10 +463,10 @@ describe("Payment", () => {
       expect(addressInput.props().error).toBeTruthy()
       expect(cityInput.props().error).toBeFalsy()
     })
+
     it("after submit, shows all validation errors on inputs that have been touched", () => {
       const component = getWrapper(testProps)
       ;(component.find(Checkbox).props() as CheckboxProps).onSelect(false)
-      component.update()
 
       fillIn(component, { title: "Full name", value: "Erik David" })
 
@@ -480,7 +482,6 @@ describe("Payment", () => {
     it("does not submit an empty form with billing address exposed", () => {
       const paymentRoute = getWrapper(testProps)
       ;(paymentRoute.find(Checkbox).props() as CheckboxProps).onSelect(false)
-      paymentRoute.update()
 
       paymentRoute.find(ContinueButton).simulate("click")
       expect(commitMutation).not.toBeCalled()
@@ -489,7 +490,6 @@ describe("Payment", () => {
     it("does not submit the mutation with an incomplete form with billing address exposed", () => {
       const paymentRoute = getWrapper(testProps)
       ;(paymentRoute.find(Checkbox).props() as CheckboxProps).onSelect(false)
-      paymentRoute.update()
       fillIn(paymentRoute, { title: "Full name", value: "Air Bud" })
       paymentRoute.find(ContinueButton).simulate("click")
       expect(commitMutation).not.toBeCalled()
@@ -531,6 +531,16 @@ describe("Payment", () => {
 
       paymentRoute.find("Button").simulate("click")
       expect(stripeMock.createToken).toBeCalled()
+    })
+  })
+
+  describe("Offer-mode orders", () => {
+    it("shows an active offer stepper if the order is an Offer Order", () => {
+      const offerOrder = { ...OrderWithShippingDetails, mode: "OFFER" }
+      const component = getWrapper({ ...testProps, order: offerOrder })
+      expect(component.find(ActiveTabContainer).text()).toEqual("Payment")
+      expect(component.find(Stepper).props().currentStepIndex).toEqual(2)
+      expect(component.find(CheckMarkWrapper).length).toEqual(2)
     })
   })
 })
