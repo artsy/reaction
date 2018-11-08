@@ -3,7 +3,7 @@ version: 2.1
 orbs:
   node: artsy/node@volatile
   yarn: artsy/yarn@volatile
-  queue: eddiewebb/queue@dev:branch-patch-0bea949978b6ccf3ce5e1a69b7b7557c125c6902
+  queue: eddiewebb/queue@volatile
 
 jobs:
   relay:
