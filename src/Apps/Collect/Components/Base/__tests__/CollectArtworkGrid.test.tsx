@@ -8,7 +8,7 @@ import {
   MockRelayRenderer,
   renderUntil,
 } from "../../../../../DevTools"
-import { CollectionAppFixture } from "../../../../__test__/Fixtures/Collect/CollectionAppFixture"
+import { CollectionAppFixture } from "../../../../__tests__/Fixtures/Collect/CollectionAppFixture"
 import { FilterState } from "../../../FilterState"
 import { CollectArtworkGridRefreshContainer as CollectArtworkGridRelay } from "../CollectArtworkGrid"
 

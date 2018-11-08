@@ -2,10 +2,12 @@
 
 import { ConcreteFragment } from "relay-runtime";
 import { TransactionSummary_order$ref } from "./TransactionSummary_order.graphql";
+export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
 declare const _Payment_order$ref: unique symbol;
 export type Payment_order$ref = typeof _Payment_order$ref;
 export type Payment_order = {
     readonly id: string | null;
+    readonly mode: OrderModeEnum | null;
     readonly creditCard: ({
         readonly name: string | null;
         readonly street1: string | null;
@@ -98,6 +100,13 @@ return {
   "argumentDefinitions": [],
   "selections": [
     v0,
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "mode",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -265,5 +274,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'd04e90e3364e639fb25aa49292a041d2';
+(node as any).hash = '65cd38f5a432aa99d5d0dc39e6d28c80';
 export default node;

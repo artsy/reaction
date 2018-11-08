@@ -43,8 +43,9 @@ export class ArtistInfo extends Component<ArtistInfoProps> {
   }
 
   render() {
-    const showArtistBio = !!this.props.artist.biography_blurb.text
-    const imageUrl = get(this.props, p => p.artist.image.cropped.url)
+    const { biography_blurb, image } = this.props.artist
+    const showArtistBio = !!biography_blurb.text
+    const imageUrl = get(this.props, p => image.cropped.url)
 
     return (
       <ContextConsumer>

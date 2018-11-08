@@ -34,7 +34,7 @@ import { Collapse } from "Styleguide/Components"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import createLogger from "Utils/logger"
-import { Responsive } from "Utils/Responsive"
+import { Media } from "Utils/Responsive"
 
 export const ContinueButton = props => (
   <Button size="large" width="100%" {...props}>
@@ -190,91 +190,77 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
             <Col>
               <OrderStepper
                 currentStep="Payment"
-                offerFlow={false /* TODO: order.isOfferable or whatever */}
+                offerFlow={order.mode === "OFFER"}
               />
             </Col>
           </Row>
         </HorizontalPadding>
 
-        <Responsive>
-          {({ xs }) => (
-            <HorizontalPadding>
-              <TwoColumnLayout
-                Content={
-                  <Flex
-                    flexDirection="column"
-                    style={
-                      isCommittingMutation ? { pointerEvents: "none" } : {}
-                    }
-                  >
-                    <Join separator={<Spacer mb={3} />}>
-                      <Flex flexDirection="column">
-                        <Serif
-                          mb={1}
-                          size="3t"
-                          color="black100"
-                          lineHeight={18}
-                        >
-                          Credit card
-                        </Serif>
-                        <CreditCardInput
-                          error={stripeError}
-                          onChange={response => {
-                            this.setState({ stripeError: response.error })
-                          }}
-                        />
-                      </Flex>
-
-                      {!this.isPickup() && (
-                        <Checkbox
-                          selected={this.state.hideBillingAddress}
-                          onSelect={this.handleChangeHideBillingAddress.bind(
-                            this
-                          )}
-                        >
-                          Billing and shipping addresses are the same
-                        </Checkbox>
-                      )}
-                      <Collapse open={this.needsAddress()}>
-                        <AddressForm
-                          value={address}
-                          errors={addressErrors}
-                          touched={addressTouched}
-                          onChange={this.onAddressChange}
-                          billing
-                        />
-                      </Collapse>
-                      {!xs && (
-                        <ContinueButton
-                          onClick={this.onContinue}
-                          loading={isCommittingMutation}
-                        />
-                      )}
-                    </Join>
-                    <Spacer mb={3} />
-                  </Flex>
-                }
-                Sidebar={
+        <HorizontalPadding>
+          <TwoColumnLayout
+            Content={
+              <Flex
+                flexDirection="column"
+                style={isCommittingMutation ? { pointerEvents: "none" } : {}}
+              >
+                <Join separator={<Spacer mb={3} />}>
                   <Flex flexDirection="column">
-                    <TransactionSummary order={order} mb={[2, 3]} />
-                    <Helper
-                      artworkId={order.lineItems.edges[0].node.artwork.id}
+                    <Serif mb={1} size="3t" color="black100" lineHeight={18}>
+                      Credit card
+                    </Serif>
+                    <CreditCardInput
+                      error={stripeError}
+                      onChange={response => {
+                        this.setState({ stripeError: response.error })
+                      }}
                     />
-                    {xs && (
-                      <>
-                        <Spacer mb={3} />
-                        <ContinueButton
-                          onClick={this.onContinue}
-                          loading={isCommittingMutation}
-                        />
-                      </>
-                    )}
                   </Flex>
-                }
-              />
-            </HorizontalPadding>
-          )}
-        </Responsive>
+
+                  {!this.isPickup() && (
+                    <Checkbox
+                      selected={this.state.hideBillingAddress}
+                      onSelect={this.handleChangeHideBillingAddress.bind(this)}
+                    >
+                      Billing and shipping addresses are the same
+                    </Checkbox>
+                  )}
+                  <Collapse open={this.needsAddress()}>
+                    <AddressForm
+                      value={address}
+                      errors={addressErrors}
+                      touched={addressTouched}
+                      onChange={this.onAddressChange}
+                      billing
+                    />
+                  </Collapse>
+
+                  <Media greaterThan="xs">
+                    <ContinueButton
+                      onClick={this.onContinue}
+                      loading={isCommittingMutation}
+                    />
+                  </Media>
+                </Join>
+                <Spacer mb={3} />
+              </Flex>
+            }
+            Sidebar={
+              <Flex flexDirection="column">
+                <TransactionSummary order={order} mb={[2, 3]} />
+                <Helper artworkId={order.lineItems.edges[0].node.artwork.id} />
+                <Media at="xs">
+                  <>
+                    <Spacer mb={3} />
+                    <ContinueButton
+                      onClick={this.onContinue}
+                      loading={isCommittingMutation}
+                    />
+                  </>
+                </Media>
+              </Flex>
+            }
+          />
+        </HorizontalPadding>
 
         <ErrorModal
           onClose={this.onCloseModal}
@@ -451,6 +437,7 @@ export const PaymentFragmentContainer = createFragmentContainer(
   graphql`
     fragment Payment_order on Order {
       id
+      mode
       creditCard {
         name
         street1

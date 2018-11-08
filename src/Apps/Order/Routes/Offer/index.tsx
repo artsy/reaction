@@ -1,4 +1,4 @@
-import { Button, Flex, Sans, Spacer } from "@artsy/palette"
+import { Button, Flex, Message, Sans, Spacer } from "@artsy/palette"
 import { Offer_order } from "__generated__/Offer_order.graphql"
 import { OfferMutation } from "__generated__/OfferMutation.graphql"
 import { Helper } from "Apps/Order/Components/Helper"
@@ -19,7 +19,7 @@ import { Col, Row } from "Styleguide/Elements/Grid"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
-import { Responsive } from "Utils/Responsive"
+import { Media } from "Utils/Responsive"
 import { OrderStepper } from "../../Components/OrderStepper"
 
 export interface OfferProps {
@@ -83,7 +83,10 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
           variables: {
             input: {
               orderId: this.props.order.id,
-              amountCents: offerValue,
+              offerPrice: {
+                amount: offerValue,
+                currencyCode: "USD",
+              },
             },
           },
           onCompleted: data => {
@@ -136,85 +139,84 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
           </Row>
         </HorizontalPadding>
 
-        <Responsive>
-          {({ xs }) => (
-            <HorizontalPadding>
-              <TwoColumnLayout
-                Content={
-                  <Flex
-                    flexDirection="column"
-                    style={
-                      isCommittingMutation ? { pointerEvents: "none" } : {}
+        <HorizontalPadding>
+          <TwoColumnLayout
+            Content={
+              <Flex
+                flexDirection="column"
+                style={isCommittingMutation ? { pointerEvents: "none" } : {}}
+              >
+                <Flex flexDirection="column">
+                  <Input
+                    id="OfferForm_offerValue"
+                    title="Your offer"
+                    type="number"
+                    defaultValue={null}
+                    onChange={ev =>
+                      this.setState({
+                        offerValue: Math.floor(
+                          Number(ev.currentTarget.value || "0")
+                        ),
+                      })
                     }
+                    block
+                  />
+                </Flex>
+                {Boolean(order.itemsTotal) && (
+                  <Sans size="2" color="black60">
+                    List price: {order.itemsTotal}
+                  </Sans>
+                )}
+                <Spacer mb={[2, 3]} />
+                <Message p={[2, 3]}>
+                  If your offer is accepted the seller will confirm and ship the
+                  work to you immediately.
+                </Message>
+                <Spacer mb={[2, 3]} />
+                <Media greaterThan="xs">
+                  <Button
+                    onClick={this.onContinueButtonPressed}
+                    loading={isCommittingMutation}
+                    size="large"
+                    width="100%"
                   >
-                    <Flex flexDirection="column">
-                      <Input
-                        id="OfferForm_offerValue"
-                        title="Your offer"
-                        type="number"
-                        defaultValue={null}
-                        onChange={ev =>
-                          this.setState({
-                            offerValue: Math.floor(
-                              Number(ev.currentTarget.value || "0")
-                            ),
-                          })
-                        }
-                        block
-                      />
-                    </Flex>
-                    {Boolean(order.itemsTotal) && (
-                      <Sans size="2" color="black60">
-                        List price: {order.itemsTotal}
-                      </Sans>
-                    )}
+                    Continue
+                  </Button>
+                </Media>
+              </Flex>
+            }
+            Sidebar={
+              <Flex flexDirection="column">
+                <TransactionSummary
+                  order={order}
+                  mb={[2, 3]}
+                  offerOverride={
+                    this.state.offerValue &&
+                    this.state.offerValue.toLocaleString("en-US", {
+                      style: "currency",
+                      currency: "USD",
+                      minimumFractionDigits: 2,
+                    })
+                  }
+                />
+                <Helper artworkId={artwork.id} />
+                <Media at="xs">
+                  <>
                     <Spacer mb={3} />
-                    {!xs && (
-                      <Button
-                        onClick={this.onContinueButtonPressed}
-                        loading={isCommittingMutation}
-                        size="large"
-                        width="100%"
-                      >
-                        Continue
-                      </Button>
-                    )}
-                  </Flex>
-                }
-                Sidebar={
-                  <Flex flexDirection="column">
-                    <TransactionSummary
-                      order={order}
-                      mb={[2, 3]}
-                      offerOverride={
-                        this.state.offerValue &&
-                        this.state.offerValue.toLocaleString("en-US", {
-                          style: "currency",
-                          currency: "USD",
-                          minimumFractionDigits: 2,
-                        })
-                      }
-                    />
-                    <Helper artworkId={artwork.id} />
-                    {xs && (
-                      <>
-                        <Spacer mb={3} />
-                        <Button
-                          onClick={this.onContinueButtonPressed}
-                          loading={isCommittingMutation}
-                          size="large"
-                          width="100%"
-                        >
-                          Continue
-                        </Button>
-                      </>
-                    )}
-                  </Flex>
-                }
-              />
-            </HorizontalPadding>
-          )}
-        </Responsive>
+                    <Button
+                      onClick={this.onContinueButtonPressed}
+                      loading={isCommittingMutation}
+                      size="large"
+                      width="100%"
+                    >
+                      Continue
+                    </Button>
+                  </>
+                </Media>
+              </Flex>
+            }
+          />
+        </HorizontalPadding>
 
         <ErrorModal
           onClose={this.onCloseModal}

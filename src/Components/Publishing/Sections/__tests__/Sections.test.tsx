@@ -48,26 +48,27 @@ describe("Sections", () => {
   })
 
   describe("units", () => {
-    it("doesnt throw an error on invalid markup", () => {
-      const originalConsoleError = console.error
-      try {
-        console.error = jest.fn()
+    const originalConsoleError = console.error
 
-        expect(() => {
-          const article = cloneDeep(StandardArticle)
-          article.sections = [
-            {
-              type: "text",
-              body: "<p>busted",
-            },
-          ]
-          props.article = article
-          mountWrapper(props)
-          expect(console.error).toHaveBeenCalled()
-        }).not.toThrowError()
-      } finally {
-        console.error = originalConsoleError
-      }
+    afterAll(() => {
+      console.error = originalConsoleError
+    })
+
+    it("doesnt throw an error on invalid markup", () => {
+      console.error = jest.fn()
+
+      expect(() => {
+        const article = cloneDeep(StandardArticle)
+        article.sections = [
+          {
+            type: "text",
+            body: "<p>busted",
+          },
+        ]
+        props.article = article
+        mountWrapper(props)
+        expect(console.error).toHaveBeenCalled()
+      }).not.toThrowError()
     })
 
     it("does not inject if feature", () => {

@@ -1,12 +1,12 @@
 import { Button } from "@artsy/palette"
 import { Input } from "Components/Input"
 import { ErrorModal, ModalButton } from "Components/Modal/ErrorModal"
+import { MockBoot } from "DevTools"
 import { mount } from "enzyme"
 import React from "react"
 import { RelayProp } from "react-relay"
 import { commitMutation as _commitMutation } from "react-relay"
-import { Provider } from "unstated"
-import { UntouchedOfferOrder } from "../../../__test__/Fixtures/Order"
+import { UntouchedOfferOrder } from "../../../__tests__/Fixtures/Order"
 import { TransactionSummary } from "../../Components/TransactionSummary"
 import {
   initialOfferFailedCannotOffer,
@@ -24,9 +24,9 @@ jest.mock("react-relay", () => ({
 describe("Offer InitialMutation", () => {
   const getWrapper = someProps => {
     return mount(
-      <Provider>
+      <MockBoot>
         <OfferRoute {...someProps} />
-      </Provider>
+      </MockBoot>
     )
   }
 
@@ -64,9 +64,15 @@ describe("Offer InitialMutation", () => {
   })
 
   describe("mutation", () => {
+    const errorLogger = console.error
+
     beforeEach(() => {
       console.error = jest.fn() // Silences component logging.
       commitMutation.mockReset()
+    })
+
+    afterEach(() => {
+      console.error = errorLogger
     })
 
     it("routes to shipping screen after mutation completes", () => {

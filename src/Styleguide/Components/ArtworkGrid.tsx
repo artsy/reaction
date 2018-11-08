@@ -1,21 +1,19 @@
 import React from "react"
 import { ArtworkGridExample } from "Styleguide/Components"
-import { Responsive } from "Utils/Responsive"
+import { Media } from "Utils/Responsive"
 
 export const FullArtworkGrid = props => (
-  <Responsive>
-    {({ xs, sm }) => {
-      let columns
-      if (xs) {
-        columns = 2
-      } else if (sm) {
-        columns = 3
-      } else {
-        columns = 4
-      }
-      return <ArtworkGridExample columnCount={columns} {...props} />
-    }}
-  </Responsive>
+  <>
+    <Media at="xs">
+      <ArtworkGridExample columnCount={2} {...props} />
+    </Media>
+    <Media at="sm">
+      <ArtworkGridExample columnCount={3} {...props} />
+    </Media>
+    <Media greaterThanOrEqual="md">
+      <ArtworkGridExample columnCount={4} {...props} />
+    </Media>
+  </>
 )
 
 export const ArtworkGrid = ArtworkGridExample

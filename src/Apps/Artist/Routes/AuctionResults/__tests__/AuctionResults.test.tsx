@@ -1,4 +1,4 @@
-import { AuctionResultsFixture } from "Apps/__test__/Fixtures/Artist/Routes/AuctionResultsFixture"
+import { AuctionResultsFixture } from "Apps/__tests__/Fixtures/Artist/Routes/AuctionResultsFixture"
 import { AuctionResultsRouteFragmentContainer as AuctionResultsRoute } from "Apps/Artist/Routes/AuctionResults"
 import { MockBoot, renderRelayTree } from "DevTools"
 import { ReactWrapper } from "enzyme"
@@ -94,7 +94,8 @@ describe("AuctionResults", () => {
     })
 
     it("renders proper elements", () => {
-      expect(wrapper.find("TableColumns").html()).toBe(null)
+      expect(wrapper.find("LargeTableColumns").length).toBe(0)
+      expect(wrapper.find("SmallTableColumns").length).toBe(0)
       expect(wrapper.find("SmallTableSidebar").length).toBe(1)
     })
   })

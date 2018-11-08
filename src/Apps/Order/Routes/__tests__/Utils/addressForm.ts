@@ -20,12 +20,10 @@ export const fillIn = (
   const input = component
     .find(Input)
     .filterWhere(wrapper => wrapper.props().title === inputData.title)
-
   input.props().onChange({ currentTarget: { value: inputData.value } } as any)
 }
 
 export const fillCountrySelect = (component, value) => {
   const input = component.find(CountrySelect)
-
   input.props().onSelect(value)
 }

@@ -72,12 +72,10 @@ export class ReadMore extends Component<ReadMoreProps, ReadMoreState> {
 
   render() {
     const content = this.getContent()
+    const isExpanded = this.state.isExpanded || this.props.isExpanded
 
     return (
-      <Container
-        onClick={this.expandText.bind(this)}
-        isExpanded={this.state.isExpanded || this.props.isExpanded}
-      >
+      <Container onClick={this.expandText.bind(this)} isExpanded={isExpanded}>
         <span
           dangerouslySetInnerHTML={{
             __html: content,

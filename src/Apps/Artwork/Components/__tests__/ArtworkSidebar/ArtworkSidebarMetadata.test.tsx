@@ -7,7 +7,7 @@ import {
   FilledOutMetadataNoEditions,
   FilledOutMetadataOneEditionSet,
   MetadataForAuctionWork,
-} from "../../../../__test__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarMetadata"
+} from "../../../../__tests__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarMetadata"
 import { ArtworkSidebarClassification } from "../../ArtworkSidebar/ArtworkSidebarClassification"
 import { ArtworkSidebarMetadataFragmentContainer } from "../../ArtworkSidebar/ArtworkSidebarMetadata"
 import { ArtworkSidebarSizeInfo } from "../../ArtworkSidebar/ArtworkSidebarSizeInfo"

@@ -1,7 +1,7 @@
 import React from "react"
 
 import { ArtistBio_bio } from "__generated__/ArtistBio_bio.graphql"
-import { renderRelayTree } from "DevTools"
+import { MockBoot, renderRelayTree } from "DevTools"
 import { graphql } from "react-relay"
 import {
   ArtistBioFragmentContainer as ArtistBio,
@@ -20,7 +20,11 @@ describe("ArtistBio", () => {
 
   const getWrapper = (props: Partial<ArtistBioProps> = {}) => {
     return renderRelayTree({
-      Component: ({ bio }: any) => <ArtistBio bio={bio} {...props} />,
+      Component: ({ bio }: any) => (
+        <MockBoot breakpoint="xl">
+          <ArtistBio bio={bio} {...props} />
+        </MockBoot>
+      ),
       query: graphql`
         query ArtistBioTestQuery {
           bio: artist(id: "unused") {

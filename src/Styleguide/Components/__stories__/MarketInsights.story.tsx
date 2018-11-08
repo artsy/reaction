@@ -1,4 +1,4 @@
-import { artistResponse } from "Apps/__test__/Fixtures/MarketInsights"
+import { artistResponse } from "Apps/__tests__/Fixtures/MarketInsights"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"

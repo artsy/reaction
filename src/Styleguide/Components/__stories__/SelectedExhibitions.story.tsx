@@ -1,4 +1,4 @@
-import { exhibitions } from "Apps/__test__/Fixtures/SelectedExhibitions"
+import { exhibitions } from "Apps/__tests__/Fixtures/SelectedExhibitions"
 import { MockRouter } from "DevTools/MockRouter"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
