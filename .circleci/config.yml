@@ -37,14 +37,22 @@ commands:
             : ${CIRCLE_REPOSITORY_URL:?"Required Env Variable not found!"}
             : ${CIRCLE_JOB:?"Required Env Variable not found!"}
 
+            echo "Env vars are fine..."
 
             QUEUE_BRANCH=[ "<<parameters.consider-branch>>" == "true" ]
             QUEUE_JOB=[ "<<parameters.consider-job>>" == "true" ]
             QUEUE_TIME=<<parameters.time>>
             QUEUE_BRUTE=[ "<<parameters.dont-quit>>" == "true" ]
+            QUEUE_ONLY=<<parameters.only-on-branch>>
 
+            echo "queue vars are fine..."
 
-
+            if [ "$QUEUE_ONLY" = "*" ] || [ "$QUEUE_ONLY" = "${CIRCLE_BRANCH}" ]; then
+              echo "${CIRCLE_BRANCH} queueable"
+            else
+              echo "Queueing only happens on ${QUEUE_ONLY}, skipping queue"
+              exit 0
+            fi
 
             VCS_TYPE="github"
             if [[ *"bitbucket"* = $CIRCLE_REPOSITORY_URL ]]; then
