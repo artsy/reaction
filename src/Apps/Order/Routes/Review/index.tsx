@@ -217,7 +217,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
             <Col>
               <OrderStepper
                 currentStep="Review"
-                offerFlow={false /* TODO: order.isOfferable or whatever */}
+                offerFlow={order.mode === "OFFER"}
               />
             </Col>
           </Row>
@@ -328,6 +328,7 @@ export const ReviewFragmentContainer = createFragmentContainer(
   graphql`
     fragment Review_order on Order {
       id
+      mode
       lineItems {
         edges {
           node {

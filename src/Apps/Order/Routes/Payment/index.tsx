@@ -190,7 +190,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
             <Col>
               <OrderStepper
                 currentStep="Payment"
-                offerFlow={false /* TODO: order.isOfferable or whatever */}
+                offerFlow={order.mode === "OFFER"}
               />
             </Col>
           </Row>
@@ -437,6 +437,7 @@ export const PaymentFragmentContainer = createFragmentContainer(
   graphql`
     fragment Payment_order on Order {
       id
+      mode
       creditCard {
         name
         street1
