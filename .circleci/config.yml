@@ -30,12 +30,12 @@ commands:
           name: Queue Until Front of Line
           command: |
             # just confirm our required variables are present
-            : ${CIRCLECI_API_KEY:?"Required Env Variable not found!"}
-            : ${CIRCLE_BUILD_NUM:?"Required Env Variable not found!"}
-            : ${CIRCLE_PROJECT_USERNAME:?"Required Env Variable not found!"}
-            : ${CIRCLE_PROJECT_REPONAME:?"Required Env Variable not found!"}
-            : ${CIRCLE_REPOSITORY_URL:?"Required Env Variable not found!"}
-            : ${CIRCLE_JOB:?"Required Env Variable not found!"}
+            # : ${CIRCLECI_API_KEY:?"Required Env Variable not found!"}
+            # : ${CIRCLE_BUILD_NUM:?"Required Env Variable not found!"}
+            # : ${CIRCLE_PROJECT_USERNAME:?"Required Env Variable not found!"}
+            # : ${CIRCLE_PROJECT_REPONAME:?"Required Env Variable not found!"}
+            # : ${CIRCLE_REPOSITORY_URL:?"Required Env Variable not found!"}
+            # : ${CIRCLE_JOB:?"Required Env Variable not found!"}
 
             echo "Env vars are fine..."
 
