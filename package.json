@@ -154,7 +154,7 @@
   },
   "dependencies": {
     "@artsy/palette": "^2.19.9",
-    "@artsy/react-responsive-media": "^1.0.8",
+    "@artsy/react-responsive-media": "^1.0.9",
     "@sentry/browser": "^4.2.3",
     "cheerio": "^1.0.0-rc.2",
     "farce": "^0.2.6",
