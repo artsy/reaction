@@ -25,6 +25,10 @@ commands:
         type: boolean
         default: false
         description: "Quiting is for losers. Force job through once time expires instead of failing."
+      only-on-branch:
+        type: string
+        default: "*"
+        description: "Only queue on specified branch"
     steps:
       - run:
           name: Queue Until Front of Line
