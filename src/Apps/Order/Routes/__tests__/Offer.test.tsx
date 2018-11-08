@@ -54,13 +54,13 @@ describe("Offer InitialMutation", () => {
     expect(transactionSummary.text()).toContain("Your offer")
 
     input.props().onChange({ currentTarget: { value: "1" } } as any)
-    expect(transactionSummary.update().text()).toContain("Your offer$1")
+    expect(transactionSummary.text()).toContain("Your offer$1")
 
     input.props().onChange({ currentTarget: { value: "1.23" } } as any)
-    expect(transactionSummary.update().text()).toContain("Your offer$1")
+    expect(transactionSummary.text()).toContain("Your offer$1")
 
     input.props().onChange({ currentTarget: { value: "1023.23" } } as any)
-    expect(transactionSummary.update().text()).toContain("Your offer$1,023")
+    expect(transactionSummary.text()).toContain("Your offer$1,023")
   })
 
   describe("mutation", () => {
