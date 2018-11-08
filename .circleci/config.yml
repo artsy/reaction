@@ -5,6 +5,129 @@ orbs:
   yarn: artsy/yarn@volatile
   queue: eddiewebb/queue@volatile
 
+commands:
+  until_front_of_line:
+    parameters:
+      consider-branch:
+        type: boolean
+        default: true
+        description: "Should we only consider jobs running on the same branch?"
+      consider-job:
+        type: boolean
+        # this is true at command level as intention it to only block current job.
+        default: true
+        description: "Should we only consider occurences of this job (otherwise entire workflow is restricted)?"
+      time:
+        type: string
+        default: "10"
+        description: "How long to wait before giving up."
+      dont-quit:
+        type: boolean
+        default: false
+        description: "Quiting is for losers. Force job through once time expires instead of failing."
+    steps:
+      - run:
+          name: Queue Until Front of Line
+          command: |
+            # just confirm our required variables are present
+            : ${CIRCLECI_API_KEY:?"Required Env Variable not found!"}
+            : ${CIRCLE_BUILD_NUM:?"Required Env Variable not found!"}
+            : ${CIRCLE_PROJECT_USERNAME:?"Required Env Variable not found!"}
+            : ${CIRCLE_PROJECT_REPONAME:?"Required Env Variable not found!"}
+            : ${CIRCLE_REPOSITORY_URL:?"Required Env Variable not found!"}
+            : ${CIRCLE_JOB:?"Required Env Variable not found!"}
+
+
+            QUEUE_BRANCH=[ "<<parameters.consider-branch>>" == "true" ]
+            QUEUE_JOB=[ "<<parameters.consider-job>>" == "true" ]
+            QUEUE_TIME=<<parameters.time>>
+            QUEUE_BRUTE=[ "<<parameters.dont-quit>>" == "true" ]
+
+
+
+
+            VCS_TYPE="github"
+            if [[ *"bitbucket"* = $CIRCLE_REPOSITORY_URL ]]; then
+              VCS_TYPE = "bitbucket"
+            fi
+
+            if [ "<<parameters.consider-branch>>" != "true" ];then
+              echo "Orb parameter 'consider-branch' is false, will block previous builds on any branch."
+              jobs_api_url_template="https://circleci.com/api/v1.1/project/${VCS_TYPE}/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}?circle-token=${CIRCLECI_API_KEY}&filter=running"
+            else
+              echo "Only blocking execution if running previous jobs on branch: ${CIRCLE_BRANCH}"
+              jobs_api_url_template="https://circleci.com/api/v1.1/project/${VCS_TYPE}/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/tree/${CIRCLE_BRANCH}?circle-token=${CIRCLECI_API_KEY}&filter=running"
+            fi
+
+
+
+            load_oldest_running_build_num(){
+              curl -s $jobs_api_url_template > /tmp/jobstatus.json
+              if [ -f $TESTING_MOCK_RESPONSE ];then cat $TESTING_MOCK_RESPONSE > /tmp/jobstatus.json; fi
+
+              #negative index grabs last (oldest) job in returned results.
+              if [ "<<parameters.consider-job>>" != "true" ];then
+                echo "Orb parameter 'consider-job' is false, will block for any running jobs in this workflow."
+                oldest=`jq '.[-1].build_num' /tmp/jobstatus.json`
+              else
+                echo "Only blocking execution if running previous jobs matching: ${CIRCLE_JOB}"
+                oldest=`jq ". | map(select(.build_parameters.CIRCLE_JOB==\"${CIRCLE_JOB}\")) | .[-1].build_num" /tmp/jobstatus.json`
+              fi
+              echo "Oldest job: $oldest"
+              if [ -z $oldest ];then
+                echo "API Call for existing jobs failed, failing this build.  Please check API token"
+                exit 1
+              elif [ "null" == "$oldest" ];then
+                echo "No running builds found, this is likely a bug in queue script"
+                exit 1
+              else
+                oldest_running_build_num=$oldest
+              fi
+            }
+
+
+            cancel_current_build(){
+              echo "Cancelleing build ${CIRCLE_BUILD_NUM}"
+              cancel_api_url_template="https://circleci.com/api/v1.1/project/${VCS_TYPE}/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BUILD_NUM}/cancel?circle-token=${CIRCLECI_API_KEY}"
+              curl -s -X POST $cancel_api_url_template > /dev/null
+            }
+
+
+
+            max_time=${QUEUE_TIME}
+            echo "This build will block until all previous builds complete."
+            echo "Max Queue Time: ${max_time} minutes."
+
+            wait_time=0
+            loop_time=11
+            max_time_seconds=$((max_time * 60))
+            while true; do
+
+              load_oldest_running_build_num
+              if [ ${CIRCLE_BUILD_NUM} -le $oldest_running_build_num ]; then
+                echo "Front of the line, WooHoo!, Build continuing"
+                break
+              else
+                echo "This build (${CIRCLE_BUILD_NUM}) is queued, waiting for build number (${oldest_running_build_num}) to complete."
+                echo "Total Queue time: ${wait_time} seconds."
+              fi
+
+              if [ $wait_time -ge $max_time_seconds ]; then
+                echo "Max wait time exceeded, considering response."
+                if [ "<<parameters.dont-quit>>" == "true" ];then
+                  echo "Orb parameter dont-quit is set to true, letting this job proceed!"
+                  exit 0
+                else
+                  cancel_current_build
+                  sleep 10 #waut for APi to cancel this job, rather than showing as failure
+                  exit 1 # but just in case, fail job
+                fi
+              fi
+
+              sleep $loop_time
+              wait_time=$(( loop_time + wait_time ))
+            done
+
 jobs:
   relay:
     executor: node/build
@@ -33,7 +156,7 @@ jobs:
       # Setup the .npmrc with the proper registry and auth token to publish
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
       - run: yarn semantic-release
-  pre-deploy:
+  queue:
     executor: node/build
     steps:
       - queue/until_front_of_line:
@@ -58,21 +181,21 @@ workflows:
     jobs:
       - update-cache:
           requires:
-            - pre-deploy
+            - queue
       - relay:
           requires:
-            - pre-deploy
+            - queue
       - lint:
           requires:
-            - pre-deploy
+            - queue
       - type-check:
           requires:
-            - pre-deploy
+            - queue
       - test:
           requires:
-            - pre-deploy
+            - queue
 
-      - pre-deploy:
+      - queue:
           context: circleci-api
 
       - deploy:
