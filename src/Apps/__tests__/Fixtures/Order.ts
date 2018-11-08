@@ -19,7 +19,7 @@ export const UntouchedBuyOrder = {
   code: "abcdefg",
   state: "PENDING",
   itemsTotal: "$12,000",
-  offerTotal: null,
+  totalListPrice: "$12,000",
   shippingTotal: null,
   taxTotal: null,
   buyerTotal: "$12,000",
@@ -92,6 +92,7 @@ export const UntouchedBuyOrder = {
 export const UntouchedOfferOrder = {
   ...UntouchedBuyOrder,
   mode: "OFFER",
+  totalListPrice: "$16,000",
 }
 
 export const OrderWithShippingDetails = {

@@ -29,7 +29,7 @@ export class TransactionSummary extends React.Component<
       order: {
         itemsTotal,
         mode,
-        offerTotal,
+        totalListPrice,
         shippingTotal,
         shippingTotalCents,
         taxTotal,
@@ -95,9 +95,9 @@ export class TransactionSummary extends React.Component<
         <StackableBorderBox flexDirection="column">
           {isOfferFlow ? (
             <>
-              <Entry label="Your offer" value={offerOverride || offerTotal} />
+              <Entry label="Your offer" value={offerOverride || itemsTotal} />
               {Boolean(itemsTotal) && (
-                <SecondaryEntry label="List price" value={itemsTotal} />
+                <SecondaryEntry label="List price" value={totalListPrice} />
               )}
 
               <Spacer mb={2} />
@@ -198,7 +198,7 @@ export const TransactionSummaryFragmentContainer = createFragmentContainer(
       taxTotal(precision: 2)
       taxTotalCents
       itemsTotal(precision: 2)
-      offerTotal(precision: 2)
+      totalListPrice(precision: 2)
       buyerTotal(precision: 2)
       seller {
         ... on Partner {
