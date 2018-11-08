@@ -3,7 +3,7 @@ version: 2.1
 orbs:
   node: artsy/node@volatile
   yarn: artsy/yarn@volatile
-  queue: eddiewebb/queue@volatile
+  # queue: eddiewebb/queue@volatile
 
 commands:
   until_front_of_line:
@@ -167,7 +167,7 @@ jobs:
   queue:
     executor: node/build
     steps:
-      - queue/until_front_of_line:
+      - until_front_of_line:
           time: "2" # Timeout after 2 minutes of waiting and fail the build
           consider-job: false # Block on entire workflow instead of just this job
           only-on-branch: master
