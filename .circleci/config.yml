@@ -47,7 +47,7 @@ commands:
             QUEUE_JOB=[ "<<parameters.consider-job>>" == "true" ]
             QUEUE_TIME=<<parameters.time>>
             QUEUE_BRUTE=[ "<<parameters.dont-quit>>" == "true" ]
-            QUEUE_ONLY=<<parameters.only-on-branch>>
+            QUEUE_ONLY="<<parameters.only-on-branch>>"
 
             echo "queue vars are fine..."
 
