@@ -68,7 +68,7 @@ export class AddressForm extends React.Component<
 
   onChangeValue = (key: keyof Address, value: string) => {
     this.setState({ address: { ...this.state.address, [key]: value } }, () => {
-      this.props.onChange({ ...this.state.address }, key)
+      this.props.onChange(this.state.address, key)
     })
   }
 
