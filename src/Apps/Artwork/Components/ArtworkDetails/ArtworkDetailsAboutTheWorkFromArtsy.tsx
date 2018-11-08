@@ -2,11 +2,12 @@ import { Box, Serif } from "@artsy/palette"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { ReadMore } from "Styleguide/Components"
+import { Media } from "Utils/Responsive"
 
 import { ArtworkDetailsAboutTheWorkFromArtsy_artwork } from "__generated__/ArtworkDetailsAboutTheWorkFromArtsy_artwork.graphql"
+
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { Media } from "Utils/Responsive"
 
 export const READ_MORE_MAX_CHARS = {
   xs: 100,
@@ -28,7 +29,7 @@ export class ArtworkDetailsAboutTheWorkFromArtsy extends Component<
     type: Schema.Type.Button,
     label: Schema.Label.ReadMore,
   })
-  trackReadMoreClicked() {
+  trackReadMoreClick() {
     // noop
   }
 
@@ -41,7 +42,7 @@ export class ArtworkDetailsAboutTheWorkFromArtsy extends Component<
       <ReadMore
         maxChars={maxChars}
         content={description}
-        onReadMoreClicked={this.trackReadMoreClicked}
+        onReadMoreClicked={this.trackReadMoreClick}
       />
     )
   }

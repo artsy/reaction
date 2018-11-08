@@ -7,7 +7,7 @@ import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { EntityHeader, ReadMore } from "Styleguide/Components"
 import { get } from "Utils/get"
-import { Responsive } from "Utils/Responsive"
+import { Media } from "Utils/Responsive"
 import { READ_MORE_MAX_CHARS } from "./ArtworkDetailsAboutTheWorkFromArtsy"
 
 import { ArtworkDetailsAboutTheWorkFromPartner_artwork } from "__generated__/ArtworkDetailsAboutTheWorkFromPartner_artwork.graphql"
@@ -34,6 +34,20 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
     // noop
   }
 
+  renderReadMore(breakpoint?: string) {
+    const { additional_information } = this.props.artwork
+    const xs = breakpoint === "xs"
+    const maxChars = xs ? READ_MORE_MAX_CHARS.xs : READ_MORE_MAX_CHARS.default
+
+    return (
+      <ReadMore
+        maxChars={maxChars}
+        content={additional_information}
+        onReadMoreClicked={this.trackReadMoreClick}
+      />
+    )
+  }
+
   render() {
     const { artwork } = this.props
     const { additional_information, partner } = artwork
@@ -49,79 +63,65 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
       <ContextConsumer>
         {({ user, mediator }) => {
           return (
-            <Responsive>
-              {({ xs }) => {
-                const maxChars = xs
-                  ? READ_MORE_MAX_CHARS.xs
-                  : READ_MORE_MAX_CHARS.default
-
-                return (
-                  <StackableBorderBox p={2}>
-                    <Box>
-                      <EntityHeader
-                        name={partner.name}
-                        meta={locationNames}
-                        imageUrl={imageUrl}
-                        initials={partner.initials}
-                        FollowButton={
-                          partner.type !== "Auction House" &&
-                          partner.profile && (
-                            <FollowProfileButton
-                              profile={partner.profile}
-                              user={user}
-                              onOpenAuthModal={() => {
-                                mediator &&
-                                  mediator.trigger("open:auth", {
-                                    mode: "signup",
-                                    copy: `Sign up to follow ${partner.name}`,
-                                    signupIntent: "follow gallery",
-                                    afterSignUpAction: {
-                                      kind: "profile",
-                                      action: "follow",
-                                      objectId:
-                                        partner.profile && partner.profile.id,
-                                    },
-                                  })
-                              }}
-                              render={profile => {
-                                const is_followed = profile.is_followed || false
-                                return (
-                                  <Sans
-                                    size="2"
-                                    weight="medium"
-                                    color="black"
-                                    style={{
-                                      cursor: "pointer",
-                                      textDecoration: "underline",
-                                    }}
-                                  >
-                                    {is_followed ? "Following" : "Follow"}
-                                  </Sans>
-                                )
+            <StackableBorderBox p={2}>
+              <Box>
+                <EntityHeader
+                  name={partner.name}
+                  meta={locationNames}
+                  imageUrl={imageUrl}
+                  initials={partner.initials}
+                  FollowButton={
+                    partner.type !== "Auction House" &&
+                    partner.profile && (
+                      <FollowProfileButton
+                        profile={partner.profile}
+                        user={user}
+                        onOpenAuthModal={() => {
+                          mediator &&
+                            mediator.trigger("open:auth", {
+                              mode: "signup",
+                              copy: `Sign up to follow ${partner.name}`,
+                              signupIntent: "follow gallery",
+                              afterSignUpAction: {
+                                kind: "profile",
+                                action: "follow",
+                                objectId: partner.profile && partner.profile.id,
+                              },
+                            })
+                        }}
+                        render={profile => {
+                          const is_followed = profile.is_followed || false
+                          return (
+                            <Sans
+                              size="2"
+                              weight="medium"
+                              color="black"
+                              style={{
+                                cursor: "pointer",
+                                textDecoration: "underline",
                               }}
                             >
-                              Follow
-                            </FollowProfileButton>
+                              {is_followed ? "Following" : "Follow"}
+                            </Sans>
                           )
-                        }
-                      />
-                      {additional_information && (
-                        <React.Fragment>
-                          <Spacer mb={1} />
-                          <Serif size="3">
-                            <ReadMore
-                              maxChars={maxChars}
-                              content={additional_information}
-                              onReadMoreClicked={this.trackReadMoreClick}
-                            />
-                          </Serif>
-                        </React.Fragment>
-                      )}
-                    </Box>
-                  </StackableBorderBox>
-                )
-              }}
-            </Responsive>
+                        }}
+                      >
+                        Follow
+                      </FollowProfileButton>
+                    )
+                  }
+                />
+                {additional_information && (
+                  <React.Fragment>
+                    <Spacer mb={1} />
+                    <Serif size="3">
+                      <Media at="xs">{this.renderReadMore("xs")}</Media>
+                      <Media greaterThan="xs">{this.renderReadMore()}</Media>
+                    </Serif>
+                  </React.Fragment>
+                )}
+              </Box>
+            </StackableBorderBox>
           )
         }}
       </ContextConsumer>
