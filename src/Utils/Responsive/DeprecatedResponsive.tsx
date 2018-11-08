@@ -19,7 +19,7 @@ export class Responsive extends React.Component<
 > {
   static displayName = "DeprecatedResponsive"
 
-  render() {
+  componentDidMount() {
     // TODO: We should look into making React’s __DEV__ available and have
     //       webpack completely compile these away.
     if (sharify.data.NODE_ENV !== "production" && typeof jest === "undefined") {
@@ -36,6 +36,9 @@ export class Responsive extends React.Component<
           }`
       )
     }
+  }
+
+  render() {
     return <ResponsiveComponents.Consumer {...this.props} />
   }
 }
