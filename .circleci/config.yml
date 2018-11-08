@@ -1,89 +1,117 @@
 version: 2.1
 
-orbs:
-  node: artsy/node@0.0.1
-  yarn: artsy/yarn@0.0.1
-  queue: eddiewebb/queue@1.0.107
+# The section below specifies YAML anchors to create reusable configuration
+# To Learn more about YAML anchors: https://blog.daemonl.com/2016/02/yaml.html
+
+setup_workspace: &setup_workspace
+  working_directory: ~/artsy/reaction
+  docker:
+    - image: circleci/node:8
+
+# https://circleci.com/docs/2.0/caching/#basic-example-of-dependency-caching
+save_cache: &save_cache
+  save_cache:
+    key: yarn-deps-{{ checksum "yarn.lock" }}
+    paths:
+      - ./node_modules
+
+# https://circleci.com/docs/2.0/caching/#restoring-cache
+restore_cache: &restore_cache
+  restore_cache:
+    # If there isn't a match to the first key, it'll do a partial match of the
+    # second. That means after the first cache save there will always be a cache
+    # hit, but it might be an older version of the cache
+    keys:
+      - yarn-deps-{{ checksum "yarn.lock" }}
+      - yarn-deps-
+
+# By default when yarn runs it does not check the filesystem to ensure the
+# packages it expects to be installed are actually installed. Using the
+# --check-files flag ensures that any packages or files missing or out of date
+# on the file system (i.e. those which might be restored from cache) match what
+# the yarn.lock file specifies
+verify_dependencies: &verify_dependencies
+  run: yarn --check-files
+
+filter_master: &filter_master
+  filters:
+    branches:
+      only:
+        - master
 
 jobs:
   relay:
-    executor: node/build
-    steps:
-      - yarn/setup
-      - run: yarn relay
-  lint:
-    executor: node/build
-    steps:
-      - yarn/setup
-      - run: yarn lint
-  type-check:
-    executor: node/build
-    steps:
-      - yarn/setup
-      - run: yarn type-check
-  deploy:
-    executor: node/build
-    # Deploy doesn't use yarn/setup intentially. It's assumed that update-cache
-    # has already ran by the time deploy executes so the dependencies in the
-    # cache should be up-to-date therefore not requiring check_and_install to be
-    # executed
+    <<: *setup_workspace
     steps:
       - checkout
-      - yarn/load_dependencies
+      - <<: *restore_cache
+      - <<: *verify_dependencies
+      - run: yarn relay
+  lint:
+    <<: *setup_workspace
+    steps:
+      - checkout
+      - <<: *restore_cache
+      - <<: *verify_dependencies
+      - run: yarn lint
+  type-check:
+    <<: *setup_workspace
+    steps:
+      - checkout
+      - <<: *restore_cache
+      - <<: *verify_dependencies
+      - run: yarn type-check
+
+  deploy:
+    <<: *setup_workspace
+    steps:
+      # Note that the deploy job doesn't call verify_dependencies. It's this
+      # way for two reasons:
+      #   1) It waits for the update-cache job to run so it's guarenteed that
+      #      the cache will contain the packages needed for this deployment
+      #      process. (i.e. there's not reason to run yarn install)
+      #   2) When npm/yarn install runs it executes the pre and post install
+      #      hooks of dependencies which means child packages could read any
+      #      environment variables available. While this doesn't 100% protect
+      #      us, it does reduce that attack surface. Note that this job is the
+      #      _only_ job with the environment variables needed to publish thanks
+      #      to the context being specified in the workflow.
+      - checkout
+      - <<: *restore_cache
       # Setup the .npmrc with the proper registry and auth token to publish
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
       - run: yarn semantic-release
-  queue:
-    executor: node/build
-    steps:
-      - queue/until_front_of_line:
-          time: "2" # Timeout after 2 minutes of waiting and fail the build
-          consider-job: false # Block on entire workflow instead of just this job
-          only-on-branch: master
   test:
-    executor: node/build
+    <<: *setup_workspace
     steps:
-      - yarn/setup
+      - checkout
+      - <<: *restore_cache
+      - <<: *verify_dependencies
       # Runs jest tests with 4 concurrent workers. Without limiting it to 4
       # workers Jest will spawn many memory hungry workers and ultimately
       # starve the job for memory.
       - run: yarn test -w 4
   update-cache:
-    executor: node/build
+    <<: *setup_workspace
     steps:
-      - yarn/update_dependencies
-
+      - checkout
+      - <<: *restore_cache
+      - <<: *verify_dependencies
+      - <<: *save_cache
 workflows:
   build_and_verify:
     jobs:
-      - update-cache:
-          requires:
-            - queue
-      - relay:
-          requires:
-            - queue
-      - lint:
-          requires:
-            - queue
-      - type-check:
-          requires:
-            - queue
-      - test:
-          requires:
-            - queue
-
-      - queue:
-          context: circleci-api
-
+      - update-cache
+      - relay
+      - lint
+      - type-check
+      - test
       - deploy:
           # The deploy job is the _only_ job that should have access to our npm
           # tokens. We include a context that has our publish credentials
           # explicitly in this step. https://circleci.com/docs/2.0/contexts/
           context: npm-deploy
-          filters:
-            branches:
-              only:
-                - master
+          <<: *filter_master
           requires:
             - test
             - relay
