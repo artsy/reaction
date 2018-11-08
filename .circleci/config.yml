@@ -43,10 +43,17 @@ commands:
 
             echo "Env vars are fine..."
 
-            QUEUE_BRANCH=[ "<<parameters.consider-branch>>" == "true" ]
+            if [ "<<parameters.consider-branch>>" == "true" ]; then
+              QUEUE_BRANCH="true"
+            else
+              QUEUE_BRANCH="false"
+            fi
             echo "queue branch is good"
-            QUEUE_JOB=[ "<<parameters.consider-job>>" == "true" ]
-            echo "queue job is good"
+            if [ "<<parameters.consider-job>>" == "true" ]; then
+              QUEUE_JOB="true"
+            else
+              QUEUE_JOB="false"
+            fi
             QUEUE_TIME="<<parameters.time>>"
             echo "queue time is good"
             QUEUE_ONLY="<<parameters.only-on-branch>>"
