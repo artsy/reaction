@@ -22,13 +22,8 @@ jobs:
       - run: yarn type-check
   deploy:
     executor: node/build
-    # Deploy doesn't use yarn/setup intentially. It's assumed that update-cache
-    # has already ran by the time deploy executes so the dependencies in the
-    # cache should be up-to-date therefore not requiring check_and_install to be
-    # executed
     steps:
-      - checkout
-      - yarn/load_dependencies
+      - yarn/setup
       # Setup the .npmrc with the proper registry and auth token to publish
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
       - run: yarn semantic-release
