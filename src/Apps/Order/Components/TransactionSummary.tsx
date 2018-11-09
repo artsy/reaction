@@ -2,7 +2,6 @@ import { TransactionSummary_order } from "__generated__/TransactionSummary_order
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { get } from "Utils/get"
-import { Media } from "Utils/Responsive"
 
 import {
   Box,
@@ -141,21 +140,16 @@ interface EntryProps extends SecondaryEntryProps {
   final?: boolean
 }
 
-const EntryContents: React.SFC<{ size: "2" | "3" } & EntryProps> = ({
-  label,
-  value,
-  final,
-  size,
-}) => (
+const Entry: React.SFC<EntryProps> = ({ label, value, final }) => (
   <Flex justifyContent="space-between" alignItems="baseline">
     <div>
-      <Serif size={size} color="black60">
+      <Serif size={["2", "3"]} color="black60">
         {label}
       </Serif>
     </div>
     <div>
       <Serif
-        size={size}
+        size={["2", "3"]}
         color={final ? "black100" : "black60"}
         weight={final ? "semibold" : "regular"}
       >
@@ -163,19 +157,6 @@ const EntryContents: React.SFC<{ size: "2" | "3" } & EntryProps> = ({
       </Serif>
     </div>
   </Flex>
-)
-
-// TODO: Make use of the responsive typography prop
-// https://github.com/artsy/palette/pull/125
-const Entry: React.SFC<EntryProps> = props => (
-  <>
-    <Media at="xs">
-      <EntryContents size="2" {...props} />
-    </Media>
-    <Media greaterThan="xs">
-      <EntryContents size="3" {...props} />
-    </Media>
-  </>
 )
 
 const SecondaryEntry: React.SFC<SecondaryEntryProps> = ({ label, value }) => (

@@ -108,7 +108,10 @@ class ArtistShows extends Component<ArtistShowsProps, LoadingAreaState> {
                         <Spacer mb={2} />
                         <LoadingArea isLoading={this.state.isLoading}>
                           {this.props.status === "running" ? (
-                            <Flex flexDirection={blockDirection} flexWrap>
+                            <Flex
+                              flexDirection={blockDirection}
+                              flexWrap="wrap"
+                            >
                               {this.props.artist.showsConnection.edges.map(
                                 ({ node }, index) => {
                                   return (
