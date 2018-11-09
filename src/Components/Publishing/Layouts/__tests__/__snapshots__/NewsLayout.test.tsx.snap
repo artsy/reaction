@@ -804,7 +804,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
                   "fontWeight": 500,
                 }
               }
-              fontSize={14}
+              fontSize="14px"
             >
               <div
                 className="c18 c19"
@@ -1721,7 +1721,7 @@ exports[`News Layout renders the news layout properly 1`] = `
                   "fontWeight": 500,
                 }
               }
-              fontSize={14}
+              fontSize="14px"
             >
               <div
                 className="c18 c19"

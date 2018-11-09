@@ -24,7 +24,7 @@ exports[`Date Snapshots renders a condensed date 1`] = `
         "fontWeight": 500,
       }
     }
-    fontSize={12}
+    fontSize="12px"
   >
     May 19, 2017
   </div>
@@ -55,7 +55,7 @@ exports[`Date Snapshots renders a date 1`] = `
         "fontWeight": 500,
       }
     }
-    fontSize={14}
+    fontSize="14px"
   >
     May 19, 2017 9:09 am
   </div>
