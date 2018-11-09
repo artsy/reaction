@@ -25,7 +25,8 @@ export class Responsive extends React.Component<
     if (sharify.data.NODE_ENV !== "production" && typeof jest === "undefined") {
       let ownerName
       try {
-        ownerName = (this as any)._reactInternalFiber._debugOwner.type.name
+        const owner = (this as any)._reactInternalFiber._debugOwner.type
+        ownerName = owner.displayName || owner.name
       } catch (err) {
         // no-op
       }
