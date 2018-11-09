@@ -586,6 +586,7 @@ export const Sponsor = {
     partner_dark_logo:
       "https://artsy-media-uploads.s3.amazonaws.com/AjncVmjZHFM4Z-0b6nPz8A%2FGUCCI.png",
     partner_logo_link: "http://artsy.net",
+    pixel_tracking_code: "http://sometrackingcodeurl.com/12345",
   },
 }
 
