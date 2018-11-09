@@ -1,79 +1,29 @@
-import { themeProps } from "@artsy/palette"
-import React from "react"
-import {
-  createResponsiveComponents,
-  ResponsiveProviderProps as _ResponsiveProviderProps,
-} from "./Responsive"
+export * from "./DeprecatedResponsive"
+import * as theme from "@artsy/palette"
+import { createMedia } from "@artsy/react-responsive-media"
 
-type MediaQuery = keyof typeof themeProps["mediaQueries"]
-
-const ResponsiveComponents = createResponsiveComponents<MediaQuery>()
-
-export const Responsive = ResponsiveComponents.Consumer
-
-// TODO Once we consider the deprecation period of the previous ‘breakpoint’
-//      centric API to be over, we can replace the wrapper with just this line.
-//
-// export const ResponsiveProvider = Responsive.Provider
-
-export type Breakpoint = keyof typeof themeProps["grid"]["breakpoints"]
-
-export interface DeprecatedResponsiveProviderProps {
-  initialBreakpoint?: Breakpoint
-  breakpoints: { [K in Breakpoint]: string }
-  children: React.ReactNode
+// TODO: We need this to be 0-based, whereas currently in palette xs is defined
+//       as 767. We should move this up to palette, but we need to give the
+//       migration path for users of the current Responsive component some
+//       serious thought.
+const newThemeBreakpoints = {
+  xs: 0,
+  sm: 768,
+  md: 900,
+  lg: 1024,
+  xl: 1192,
 }
 
-export type NewResponsiveProviderProps = _ResponsiveProviderProps<MediaQuery>
-export type MatchingMediaQueries = NewResponsiveProviderProps["initialMatchingMediaQueries"]
+const ReactionMedia = createMedia({
+  breakpoints: newThemeBreakpoints,
+  interactions: {
+    // TODO: Haven’t actually tested this negated version yet
+    hover: negated =>
+      negated
+        ? `not all and ${theme.themeProps.mediaQueries.hover}`
+        : theme.themeProps.mediaQueries.hover,
+  },
+})
 
-// Using a union here means that the component can either be used using the new
-// API or the deprecated one.
-export type ResponsiveProviderProps =
-  | NewResponsiveProviderProps
-  | DeprecatedResponsiveProviderProps
-
-export const ResponsiveProvider: React.SFC<ResponsiveProviderProps> = props => {
-  const {
-    initialMatchingMediaQueries,
-    mediaQueries,
-  } = props as NewResponsiveProviderProps
-  const {
-    initialBreakpoint,
-    breakpoints,
-  } = props as DeprecatedResponsiveProviderProps
-
-  if (initialBreakpoint) {
-    console.warn(
-      "[Responsive] The usage of `initialBreakpoint` is deprecated, use " +
-        "`initialMatchingMediaQueries` instead."
-    )
-  }
-
-  if (breakpoints) {
-    console.warn(
-      "[Responsive] The usage of `breakpoints` is deprecated, use " +
-        "`mediaQueries` instead."
-    )
-  } else if (!mediaQueries) {
-    throw new Error(
-      "[Responsive] If no `breakpoints` are specified, then `mediaQueries` " +
-        "is required."
-    )
-  }
-
-  return (
-    <ResponsiveComponents.Provider
-      mediaQueries={
-        mediaQueries ||
-        (breakpoints as NewResponsiveProviderProps["mediaQueries"])
-      }
-      initialMatchingMediaQueries={
-        initialMatchingMediaQueries ||
-        (initialBreakpoint && [initialBreakpoint])
-      }
-    >
-      {props.children}
-    </ResponsiveComponents.Provider>
-  )
-}
+export const Media = ReactionMedia.Media
+export const MediaContextProvider = ReactionMedia.MediaContextProvider

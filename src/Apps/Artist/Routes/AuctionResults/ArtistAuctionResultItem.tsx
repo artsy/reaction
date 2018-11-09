@@ -6,7 +6,7 @@ import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Subscribe } from "unstated"
-import { Responsive } from "Utils/Responsive"
+import { Media } from "Utils/Responsive"
 import { AuctionResultsState } from "./state"
 
 import {
@@ -35,36 +35,19 @@ export const ArtistAuctionResultItem: SFC<Props> = props => {
       {({ user, mediator }) => {
         return (
           <Row>
-            <Responsive>
-              {({ xs, sm, md }) => {
-                if (xs) {
-                  return (
-                    <ExtraSmallAuctionItem
-                      {...props}
-                      mediator={mediator}
-                      user={user}
-                    />
-                  )
-                } else if (sm || md) {
-                  return (
-                    <SmallAuctionItem
-                      {...props}
-                      mediator={mediator}
-                      user={user}
-                    />
-                  )
-                } else {
-                  return (
-                    <LargeAuctionItem
-                      {...props}
-                      mediator={mediator}
-                      user={user}
-                    />
-                  )
-                }
-              }}
-            </Responsive>
-
+            <Media at="xs">
+              <ExtraSmallAuctionItem
+                {...props}
+                mediator={mediator}
+                user={user}
+              />
+            </Media>
+            <Media between={["sm", "lg"]}>
+              <SmallAuctionItem {...props} mediator={mediator} user={user} />
+            </Media>
+            <Media greaterThanOrEqual="lg">
+              <LargeAuctionItem {...props} mediator={mediator} user={user} />
+            </Media>
             <Col>
               <Box pt={2} pb={1}>
                 {!props.lastChild && <Separator />}

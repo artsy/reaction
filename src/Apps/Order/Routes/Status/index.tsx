@@ -7,7 +7,6 @@ import { Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { get } from "Utils/get"
-import { Responsive } from "Utils/Responsive"
 import { Helper } from "../../Components/Helper"
 import { ShippingAndPaymentSummaryFragmentContainer as ShippingAndPaymentSummary } from "../../Components/ShippingAndPaymentSummary"
 import { TransactionSummaryFragmentContainer as TransactionSummary } from "../../Components/TransactionSummary"
@@ -110,41 +109,37 @@ export class StatusRoute extends Component<StatusProps> {
     const message = this.messageCopy()
 
     return (
-      <Responsive>
-        {({ xs }) => (
-          <HorizontalPadding>
-            <Serif size="6" weight="regular" color="black100">
-              {this.stateCopy()}
-            </Serif>
-            <Sans size="2" weight="regular" color="black60" mb={[2, 3]}>
-              Order #{order.code}
-            </Sans>
-            <TwoColumnLayout
-              Content={
-                <>
-                  <Title>Order status | Artsy</Title>
-                  <Join separator={<Spacer mb={[2, 3]} />}>
-                    {message && <Message>{message}</Message>}
-                    <TransactionSummary order={order} />
-                  </Join>
-                  <Spacer mb={[2, 3]} />
-                </>
-              }
-              Sidebar={
-                <Flex flexDirection="column">
-                  <ShippingAndPaymentSummary order={order} mb={[2, 3]} />
-                  <Helper
-                    artworkId={get(
-                      order,
-                      o => o.lineItems.edges[0].node.artwork.id
-                    )}
-                  />
-                </Flex>
-              }
-            />
-          </HorizontalPadding>
-        )}
-      </Responsive>
+      <HorizontalPadding>
+        <Serif size="6" weight="regular" color="black100">
+          {this.stateCopy()}
+        </Serif>
+        <Sans size="2" weight="regular" color="black60" mb={[2, 3]}>
+          Order #{order.code}
+        </Sans>
+        <TwoColumnLayout
+          Content={
+            <>
+              <Title>Order status | Artsy</Title>
+              <Join separator={<Spacer mb={[2, 3]} />}>
+                {message && <Message>{message}</Message>}
+                <TransactionSummary order={order} />
+              </Join>
+              <Spacer mb={[2, 3]} />
+            </>
+          }
+          Sidebar={
+            <Flex flexDirection="column">
+              <ShippingAndPaymentSummary order={order} mb={[2, 3]} />
+              <Helper
+                artworkId={get(
+                  order,
+                  o => o.lineItems.edges[0].node.artwork.id
+                )}
+              />
+            </Flex>
+          }
+        />
+      </HorizontalPadding>
     )
   }
 }

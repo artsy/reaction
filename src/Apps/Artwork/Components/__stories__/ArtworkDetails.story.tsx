@@ -3,7 +3,7 @@ import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
 import { ArtworkDetails, ArtworkDetailsQueryRenderer } from "../ArtworkDetails"
 
-import { AllAdditionalDetailsPresent } from "Apps/__test__/Fixtures/Artworks"
+import { AllAdditionalDetailsPresent } from "Apps/__tests__/Fixtures/Artworks"
 import { RelayStubProvider } from "DevTools/RelayStubProvider"
 
 storiesOf("Styleguide/Artwork", module)
@@ -15,9 +15,6 @@ storiesOf("Styleguide/Artwork", module)
           <ArtworkDetails artwork={AllAdditionalDetailsPresent as any} />
         </Section>
         <Section title="ArtworkDetailsQueryRenderer containing Provanance tab">
-          <ArtworkDetailsQueryRenderer artworkID="charles-negre-model-reclining-in-the-artists-studio" />
-        </Section>
-        <Section title="ArtworkDetailsQueryRenderer for andy-warhol-s-and-h-green-stamps-feldman-and-schellman-11-dot-9">
           <ArtworkDetailsQueryRenderer artworkID="andy-warhol-s-and-h-green-stamps-feldman-and-schellman-11-dot-9" />
         </Section>
         <Section title="ArtworkDetailsQueryRenderer for one tab">

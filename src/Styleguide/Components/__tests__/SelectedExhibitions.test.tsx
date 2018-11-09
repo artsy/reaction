@@ -1,4 +1,4 @@
-import { exhibitions } from "Apps/__test__/Fixtures/SelectedExhibitions"
+import { exhibitions } from "Apps/__tests__/Fixtures/SelectedExhibitions"
 import { MockBoot } from "DevTools/MockBoot"
 import { mount } from "enzyme"
 import React from "react"

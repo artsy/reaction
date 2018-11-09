@@ -1,5 +1,5 @@
 import { Box } from "@artsy/palette"
-import { artworkBricks } from "Apps/__test__/Fixtures/Carousel"
+import { artworkBricks } from "Apps/__tests__/Fixtures/Carousel"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { RecentlyViewed } from "Styleguide/Components"

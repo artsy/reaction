@@ -2,11 +2,19 @@ import { mount } from "enzyme"
 import React from "react"
 
 import { Button } from "@artsy/palette"
-import { UntouchedOrder } from "Apps/__test__/Fixtures/Order"
+import {
+  OrderWithShippingDetails,
+  UntouchedBuyOrder,
+} from "Apps/__tests__/Fixtures/Order"
 import { ErrorModal, ModalButton } from "Components/Modal/ErrorModal"
+import { MockBoot } from "DevTools"
 import { commitMutation } from "react-relay"
+import {
+  ActiveTabContainer,
+  CheckMarkWrapper,
+  Stepper,
+} from "Styleguide/Components"
 import { StepSummaryItem } from "Styleguide/Components/StepSummaryItem"
-import { Provider } from "unstated"
 import {
   submitOrderWithFailure,
   submitOrderWithNoInventoryFailure,
@@ -21,7 +29,7 @@ jest.mock("react-relay", () => ({
 
 const pushMock = jest.fn()
 const defaultProps = {
-  order: { ...UntouchedOrder, id: "1234" },
+  order: { ...UntouchedBuyOrder, id: "1234" },
   router: {
     push: pushMock,
   },
@@ -37,9 +45,9 @@ const defaultProps = {
 describe("Review", () => {
   const getWrapper = props => {
     return mount(
-      <Provider>
+      <MockBoot breakpoint="xs">
         <ReviewRoute {...props} />
-      </Provider>
+      </MockBoot>
     )
   }
 
@@ -75,8 +83,6 @@ describe("Review", () => {
   })
 
   it("shows an error modal when there is an error in submitOrderPayload", () => {
-    console.error = jest.fn() // Silences component logging.
-
     const component = getWrapper(defaultProps)
 
     expect(component.find(ErrorModal).props().show).toBe(false)
@@ -94,8 +100,6 @@ describe("Review", () => {
   })
 
   it("shows an error modal when there is a network error", () => {
-    console.error = jest.fn() // Silences component logging.
-
     const component = getWrapper(defaultProps)
     ;(commitMutation as jest.Mock<any>).mockImplementationOnce(
       (_, { onError }) => onError(new TypeError("Network request failed"))
@@ -107,7 +111,6 @@ describe("Review", () => {
   })
 
   it("shows a modal that redirects to the artwork page if there is an artwork_version_mismatch", () => {
-    console.error = jest.fn() // Silences component logging.
     window.location.assign = jest.fn()
 
     const component = getWrapper(defaultProps)
@@ -131,7 +134,6 @@ describe("Review", () => {
   })
 
   it("shows a modal that redirects to the artist page if there is an insufficient inventory", () => {
-    console.error = jest.fn() // Silences component logging.
     window.location.assign = jest.fn()
 
     const component = getWrapper(defaultProps)
@@ -151,5 +153,15 @@ describe("Review", () => {
 
     component.find(ModalButton).simulate("click")
     expect(window.location.assign).toBeCalledWith("/artist/artistId")
+  })
+
+  describe("Offer-mode orders", () => {
+    it("shows an active offer stepper if the order is an Offer Order", () => {
+      const offerOrder = { ...OrderWithShippingDetails, mode: "OFFER" }
+      const component = getWrapper({ ...defaultProps, order: offerOrder })
+      expect(component.find(ActiveTabContainer).text()).toEqual("Review")
+      expect(component.find(Stepper).props().currentStepIndex).toEqual(3)
+      expect(component.find(CheckMarkWrapper).length).toEqual(3)
+    })
   })
 })

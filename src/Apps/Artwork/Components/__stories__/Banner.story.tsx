@@ -1,32 +1,35 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
-import { Banner, LargeBanner, SmallBanner } from "../Banner"
+import { Banner, LargeBanner, SmallBanner } from "../ArtworkBanner/Banner"
 
-storiesOf("Styleguide/Artwork", module).add("Banner", () => {
+storiesOf("Styleguide/Artwork", module).add("ResponsiveBanner", () => {
   return (
     <React.Fragment>
-      <Section title="Responsive">
+      <Section title="Responsive banner with image">
         <Banner
-          src="https://picsum.photos/110/110/?random"
-          badge="In show"
-          headline="Francesca DiMattio: Boucherouite"
+          imageUrl="https://picsum.photos/110/110/?random"
+          initials="S9"
+          meta="In show"
+          name="Francesca DiMattio: Boucherouite"
           subHeadline="Salon 94"
         />
       </Section>
-      <Section title="Large Banner">
+      <Section title="Large Banner no image with initials">
         <LargeBanner
-          src="https://picsum.photos/110/110/?random"
-          badge="In show"
-          headline="Francesca DiMattio: Boucherouite"
+          imageUrl={null}
+          initials="S9"
+          meta="In show"
+          name="Francesca DiMattio: Boucherouite"
           subHeadline="Salon 94"
         />
       </Section>
       <Section title="Small Banner">
         <SmallBanner
-          src="https://picsum.photos/110/110/?random"
-          badge="In show"
-          headline="Francesca DiMattio: Boucherouite"
+          imageUrl="https://picsum.photos/110/110/?random"
+          initials="S9"
+          meta="In show"
+          name="Francesca DiMattio: Boucherouite"
           subHeadline="Salon 94"
         />
       </Section>
