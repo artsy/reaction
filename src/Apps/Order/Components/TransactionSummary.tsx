@@ -2,7 +2,7 @@ import { TransactionSummary_order } from "__generated__/TransactionSummary_order
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { get } from "Utils/get"
-import { Responsive } from "Utils/Responsive"
+import { Media } from "Utils/Responsive"
 
 import {
   Box,
@@ -132,48 +132,53 @@ export class TransactionSummary extends React.Component<
   }
 }
 
-const Entry = ({
+interface SecondaryEntryProps {
+  label: React.ReactNode
+  value: React.ReactNode
+}
+
+interface EntryProps extends SecondaryEntryProps {
+  final?: boolean
+}
+
+const EntryContents: React.SFC<{ size: "2" | "3" } & EntryProps> = ({
   label,
   value,
   final,
-}: {
-  label: React.ReactNode
-  value: React.ReactNode
-  final?: boolean
+  size,
 }) => (
-  <Responsive>
-    {({ xs }) => {
-      const size = xs ? "2" : "3"
-
-      return (
-        <Flex justifyContent="space-between" alignItems="baseline">
-          <div>
-            <Serif size={size} color="black60">
-              {label}
-            </Serif>
-          </div>
-          <div>
-            <Serif
-              size={size}
-              color={final ? "black100" : "black60"}
-              weight={final ? "semibold" : "regular"}
-            >
-              {value}
-            </Serif>
-          </div>
-        </Flex>
-      )
-    }}
-  </Responsive>
+  <Flex justifyContent="space-between" alignItems="baseline">
+    <div>
+      <Serif size={size} color="black60">
+        {label}
+      </Serif>
+    </div>
+    <div>
+      <Serif
+        size={size}
+        color={final ? "black100" : "black60"}
+        weight={final ? "semibold" : "regular"}
+      >
+        {value}
+      </Serif>
+    </div>
+  </Flex>
 )
 
-const SecondaryEntry = ({
-  label,
-  value,
-}: {
-  label: React.ReactNode
-  value: React.ReactNode
-}) => (
+// TODO: Make use of the responsive typography prop
+// https://github.com/artsy/palette/pull/125
+const Entry: React.SFC<EntryProps> = props => (
+  <>
+    <Media at="xs">
+      <EntryContents size="2" {...props} />
+    </Media>
+    <Media greaterThan="xs">
+      <EntryContents size="3" {...props} />
+    </Media>
+  </>
+)
+
+const SecondaryEntry: React.SFC<SecondaryEntryProps> = ({ label, value }) => (
   <Flex justifyContent="space-between" alignItems="baseline">
     <div>
       <Sans size="2" color="black60">
