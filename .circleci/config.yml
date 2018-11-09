@@ -86,7 +86,7 @@ jobs:
       # Runs jest tests with 4 concurrent workers. Without limiting it to 4
       # workers Jest will spawn many memory hungry workers and ultimately
       # starve the job for memory.
-      - run: yarn test -w 4
+      - run: yarn test -w 5
   update-cache:
     <<: *setup_workspace
     steps:
