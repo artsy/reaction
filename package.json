@@ -48,7 +48,8 @@
     "test:watch": "jest --watch --runInBand",
     "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
     "type-check": "tsc --pretty --noEmit",
-    "watch": "concurrently --raw --kill-others 'yarn relay --watch' 'yarn compile -w' 'yarn emit-types --watch'"
+    "watch": "concurrently --raw --kill-others 'yarn relay --watch' 'yarn compile -w' 'yarn emit-types --watch'",
+    "server:start": "babel-node --extensions .js,.jsx,.ts,.tsx -r node_modules/dotenv/config src/Apps/Artist/server.tsx"
   },
   "resolutions": {
     "@types/react": "16.4.13",
@@ -60,8 +61,10 @@
     "react-relay": "https://github.com/alloy/relay/releases/download/v1.5.0-artsy.3/react-relay-1.5.0-artsy.3.tgz"
   },
   "devDependencies": {
+    "@artsy/stitch": "^3.0.0",
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
+    "@babel/node": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
     "@babel/plugin-proposal-decorators": "^7.0.0",
     "@babel/plugin-proposal-json-strings": "^7.0.0",
@@ -77,7 +80,9 @@
     "@storybook/cli": "^4.0.0-alpha.24",
     "@storybook/react": "^4.0.0-alpha.24",
     "@types/dd-trace": "^0.6.0",
+    "@types/dotenv": "^4.0.3",
     "@types/enzyme": "^3.1.0",
+    "@types/express": "^4.16.0",
     "@types/isomorphic-fetch": "^0.0.34",
     "@types/jest": "^20.0.7",
     "@types/lodash": "^4.14.111",
@@ -107,7 +112,7 @@
     "concurrently": "^3.5.0",
     "conventional-changelog-ember": "^0.3.4",
     "dd-trace": "^0.6.0",
-    "dotenv": "^4.0.0",
+    "dotenv": "^6.1.0",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "1.5.0",
     "fork-ts-checker-notifier-webpack-plugin": "^0.6.2",
@@ -155,6 +160,7 @@
   "dependencies": {
     "@artsy/palette": "^2.19.1",
     "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.4",
     "farce": "^0.2.6",
     "formik": "^0.11.11",
     "found": "^0.3.14",
