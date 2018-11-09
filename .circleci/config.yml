@@ -18,20 +18,16 @@ save_cache: &save_cache
 # https://circleci.com/docs/2.0/caching/#restoring-cache
 restore_cache: &restore_cache
   restore_cache:
-    # If there isn't a match to the first key, it'll do a partial match of the
-    # second. That means after the first cache save there will always be a cache
-    # hit, but it might be an older version of the cache
     keys:
       - yarn-deps-{{ checksum "yarn.lock" }}
-      - yarn-deps-
 
 # By default when yarn runs it does not check the filesystem to ensure the
 # packages it expects to be installed are actually installed. Using the
 # --check-files flag ensures that any packages or files missing or out of date
 # on the file system (i.e. those which might be restored from cache) match what
 # the yarn.lock file specifies
-verify_dependencies: &verify_dependencies
-  run: yarn --check-files
+install_dependencies: &install_dependencies
+  run: yarn
 
 filter_master: &filter_master
   filters:
@@ -45,27 +41,27 @@ jobs:
     steps:
       - checkout
       - <<: *restore_cache
-      - <<: *verify_dependencies
+      - <<: *install_dependencies
       - run: yarn relay
   lint:
     <<: *setup_workspace
     steps:
       - checkout
       - <<: *restore_cache
-      - <<: *verify_dependencies
+      - <<: *install_dependencies
       - run: yarn lint
   type-check:
     <<: *setup_workspace
     steps:
       - checkout
       - <<: *restore_cache
-      - <<: *verify_dependencies
+      - <<: *install_dependencies
       - run: yarn type-check
 
   deploy:
     <<: *setup_workspace
     steps:
-      # Note that the deploy job doesn't call verify_dependencies. It's this
+      # Note that the deploy job doesn't call install_dependencies. It's this
       # way for two reasons:
       #   1) It waits for the update-cache job to run so it's guarenteed that
       #      the cache will contain the packages needed for this deployment
@@ -86,17 +82,17 @@ jobs:
     steps:
       - checkout
       - <<: *restore_cache
-      - <<: *verify_dependencies
+      - <<: *install_dependencies
       # Runs jest tests with 4 concurrent workers. Without limiting it to 4
       # workers Jest will spawn many memory hungry workers and ultimately
       # starve the job for memory.
-      - run: yarn test -w 4
+      - run: yarn test -w 6
   update-cache:
     <<: *setup_workspace
     steps:
       - checkout
       - <<: *restore_cache
-      - <<: *verify_dependencies
+      - <<: *install_dependencies
       - <<: *save_cache
 workflows:
   build_and_verify:
