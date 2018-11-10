@@ -75,7 +75,7 @@ export class Share extends React.Component<ShareProps> {
           </a>
         </Flex>
         <Separator />
-        <Flex flexDirection="row" flexWrap>
+        <Flex flexDirection="row" flexWrap="wrap">
           <Platform iconName="facebook" title="Facebook" />
           <Platform iconName="twitter" title="Twitter" />
           <Platform iconName="mail" title="Email" />
