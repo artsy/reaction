@@ -18,8 +18,6 @@ const ReactionMedia = createMedia({
   breakpoints: newThemeBreakpoints,
   interactions: {
     hover: theme.themeProps.mediaQueries.hover,
-    // TODO: See if we even really need this negated version
-    notHover: `not all and ${theme.themeProps.mediaQueries.hover}`,
   },
 })
 
