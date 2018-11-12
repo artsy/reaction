@@ -68,8 +68,8 @@ describe("buildServerApp", () => {
     })
     // Enzyme won't render the right results for the title for whatever reason
     // It renders fine with renderToString though. ¯\_(ツ)_/¯
-    expect(headTags[0].type).toBe("title")
-    expect(headTags[0].props.children).toBe("test")
+    expect(headTags[headTags.length - 1].type).toBe("title")
+    expect(headTags[headTags.length - 1].props.children).toBe("test")
   })
 
   it("passes items along in context option", async done => {
