@@ -76,7 +76,7 @@ const LargeAuctionItem: SFC<Props> = props => {
     <Subscribe to={[AuctionResultsState]}>
       {({ state, showDetailsModal }: AuctionResultsState) => {
         return (
-          <>
+          <Flex>
             <Col sm={1}>
               <Box height="auto" pr={2}>
                 <Image width="70px" src={images.thumbnail.url} />
@@ -117,7 +117,7 @@ const LargeAuctionItem: SFC<Props> = props => {
                 "lg"
               )}
             </Col>
-          </>
+          </Flex>
         )
       }}
     </Subscribe>
@@ -133,7 +133,7 @@ const SmallAuctionItem: SFC<Props> = props => {
   } = getProps(props)
 
   return (
-    <>
+    <Flex>
       <Col sm={6}>
         <Flex>
           <Box height="auto">
@@ -164,7 +164,7 @@ const SmallAuctionItem: SFC<Props> = props => {
           "sm"
         )}
       </Col>
-    </>
+    </Flex>
   )
 }
 
