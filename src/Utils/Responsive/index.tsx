@@ -17,13 +17,12 @@ const newThemeBreakpoints = {
 const ReactionMedia = createMedia({
   breakpoints: newThemeBreakpoints,
   interactions: {
-    // TODO: Haven’t actually tested this negated version yet
-    hover: negated =>
-      negated
-        ? `not all and ${theme.themeProps.mediaQueries.hover}`
-        : theme.themeProps.mediaQueries.hover,
+    hover: theme.themeProps.mediaQueries.hover,
+    // TODO: See if we even really need this negated version
+    notHover: `not all and ${theme.themeProps.mediaQueries.hover}`,
   },
 })
 
 export const Media = ReactionMedia.Media
 export const MediaContextProvider = ReactionMedia.MediaContextProvider
+export const MediaStyle = ReactionMedia.MediaStyle

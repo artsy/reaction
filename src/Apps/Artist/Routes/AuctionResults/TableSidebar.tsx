@@ -43,27 +43,25 @@ const LargeTableSidebar = (props: Props) => {
       {(filters: AuctionResultsState) => {
         return (
           <>
-            <Col sm={2} pr={2}>
-              <Row>
-                <Col>{renderCount(props.count)}</Col>
-              </Row>
+            <Row>
+              <Col>{renderCount(props.count)}</Col>
+            </Row>
 
-              <Box pt={0.5}>
-                <Separator />
-              </Box>
+            <Box pt={0.5}>
+              <Separator />
+            </Box>
 
-              <Spacer mt={3} />
+            <Spacer mt={3} />
 
-              <Row>
-                <Col>
-                  <LargeSelect
-                    options={SORTS}
-                    selected={filters.state.sort}
-                    onSelect={filters.setSort}
-                  />
-                </Col>
-              </Row>
-            </Col>
+            <Row>
+              <Col>
+                <LargeSelect
+                  options={SORTS}
+                  selected={filters.state.sort}
+                  onSelect={filters.setSort}
+                />
+              </Col>
+            </Row>
           </>
         )
       }}
@@ -76,19 +74,17 @@ const SmallTableSidebar = (props: Props) => {
     <Subscribe to={[AuctionResultsState]}>
       {(filters: AuctionResultsState) => {
         return (
-          <Col>
-            <Flex flexDirection="column" alignItems="center">
-              <Box mb={2}>{renderCount(props.count)}</Box>
+          <Flex flexDirection="column" alignItems="center">
+            <Box mb={2}>{renderCount(props.count)}</Box>
 
-              <LargeSelect
-                options={SORTS}
-                selected={filters.state.sort}
-                onSelect={filters.setSort}
-              />
+            <LargeSelect
+              options={SORTS}
+              selected={filters.state.sort}
+              onSelect={filters.setSort}
+            />
 
-              <Spacer mb={2} />
-            </Flex>
-          </Col>
+            <Spacer mb={2} />
+          </Flex>
         )
       }}
     </Subscribe>
