@@ -185,7 +185,14 @@ const ImageCaption = styled(Box)`
 `
 
 const ExtendedSerif = styled(Serif)`
-  div span span p {
-    display: inline;
+  div span {
+    span p {
+      display: inline;
+    }
+
+    div p {
+      display: inline;
+      ${unica("s12")};
+    }
   }
 `
