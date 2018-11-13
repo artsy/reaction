@@ -41,6 +41,7 @@ describe("FilterContainer", () => {
     const wrapper = mount(
       <Provider inject={[filterState]}>
         <FilterContainer
+          isMobile
           mediator={mockMediator}
           mediums={mediums}
           user={user}

@@ -12,13 +12,13 @@ import { WaysToBuyFilter } from "./WaysToBuyFilter"
 
 import { Box, Flex, Separator, Spacer } from "@artsy/palette"
 import { Toggle } from "Styleguide/Components"
-import { Media } from "Utils/Responsive"
 
 export interface FilterContainerProps {
   user?: any
   mediator: Mediator
   mediums: Array<{ id: string; name: string }>
   timePeriods?: Array<{ name: string }>
+  isMobile?: boolean
 }
 
 export interface FilterContainerState {
@@ -28,6 +28,10 @@ export class FilterContainer extends React.Component<
   FilterContainerProps,
   FilterContainerState
 > {
+  static defaultProps = {
+    isMobile: false,
+  }
+
   state = {
     showMobileActionSheet: false,
   }
@@ -39,13 +43,11 @@ export class FilterContainer extends React.Component<
   }
 
   renderFilters(filters: FilterState) {
-    const { mediums, timePeriods } = this.props
+    const { mediums, timePeriods, isMobile } = this.props
 
     return (
       <>
-        <Media greaterThan="xs">
-          <Separator mb={2} mt={-1} />
-        </Media>
+        {!isMobile && <Separator mb={2} mt={-1} />}
 
         <Flex flexDirection="column" alignItems="left" mt={-1} mb={1}>
           <WaysToBuyFilter filters={filters} />
@@ -70,6 +72,7 @@ export class FilterContainer extends React.Component<
   }
 
   render() {
+    const { isMobile } = this.props
     const Filters = ({ filters }) => this.renderFilters(filters)
 
     // tslint:disable-next-line:ban-types
@@ -95,22 +98,20 @@ export class FilterContainer extends React.Component<
         {(filters: FilterState) => {
           return (
             <Flex>
-              <Media at="xs">
+              {isMobile ? (
                 <Mobile filters={filters} />
-              </Media>
-              <Media greaterThan="xs">
+              ) : (
                 <Desktop filters={filters} />
-              </Media>
+              )}
 
               <span id="jump--collectArtworkGrid" />
 
-              <Box width={["100%", "75%"]}>
-                <Media greaterThan="xs">
-                  <Separator mb={2} mt={-1} />
-                </Media>
+              <Box width={isMobile ? "100%" : "75%"}>
+                {!isMobile && <Separator mb={2} mt={-1} />}
 
                 <SortFilter
                   filters={filters}
+                  xs={isMobile}
                   onShow={() => this.setState({ showMobileActionSheet: true })}
                 />
 
