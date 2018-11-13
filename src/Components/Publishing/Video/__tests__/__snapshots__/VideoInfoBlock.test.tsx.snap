@@ -1,6 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Video Info Block matches the snapshot 1`] = `
+.c2 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+}
+
 .c0 {
   box-sizing: border-box;
   display: -webkit-box;
@@ -30,7 +36,7 @@ exports[`Video Info Block matches the snapshot 1`] = `
   text-decoration: none;
 }
 
-.c2 {
+.c3 {
   position: relative;
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -43,14 +49,14 @@ exports[`Video Info Block matches the snapshot 1`] = `
     className="c0"
   >
     <div
-      className="c1 KtFsv hjZErb"
+      className="c1 c2"
       fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
       fontSize="14px"
     >
       The Future of Art
     </div>
     <div
-      className="KtFsv hjZErb"
+      className="c2"
       fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
       fontSize="14px"
     >
@@ -61,7 +67,7 @@ exports[`Video Info Block matches the snapshot 1`] = `
     className="c0"
   >
     <span
-      className="c2"
+      className="c3"
     >
       Trevor Paglan
     </span>
@@ -70,6 +76,12 @@ exports[`Video Info Block matches the snapshot 1`] = `
 `;
 
 exports[`Video Info Block matches the snapshot with edit props 1`] = `
+.c2 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+}
+
 .c0 {
   box-sizing: border-box;
   display: -webkit-box;
@@ -99,7 +111,7 @@ exports[`Video Info Block matches the snapshot with edit props 1`] = `
   text-decoration: none;
 }
 
-.c2 {
+.c3 {
   position: relative;
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -112,14 +124,14 @@ exports[`Video Info Block matches the snapshot with edit props 1`] = `
     className="c0"
   >
     <div
-      className="c1 KtFsv hjZErb"
+      className="c1 c2"
       fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
       fontSize="14px"
     >
       The Future of Art
     </div>
     <div
-      className="KtFsv hjZErb"
+      className="c2"
       fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
       fontSize="14px"
     >
@@ -130,7 +142,7 @@ exports[`Video Info Block matches the snapshot with edit props 1`] = `
     className="c0"
   >
     <span
-      className="c2"
+      className="c3"
     >
       <div>
         Child 

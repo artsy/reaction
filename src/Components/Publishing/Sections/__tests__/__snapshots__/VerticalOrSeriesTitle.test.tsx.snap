@@ -1,6 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders properly for a feature article 1`] = `
+.c1 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+}
+
 .c0 a {
   color: black;
   -webkit-text-decoration: none;
@@ -8,7 +15,7 @@ exports[`renders properly for a feature article 1`] = `
 }
 
 <div
-  className="c0 KtFsv gBgzyb"
+  className="c0 c1"
   fontFamily={
     Object {
       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -24,6 +31,13 @@ exports[`renders properly for a feature article 1`] = `
 `;
 
 exports[`renders properly for a standard article 1`] = `
+.c1 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+}
+
 .c0 a {
   color: black;
   -webkit-text-decoration: none;
@@ -31,7 +45,7 @@ exports[`renders properly for a standard article 1`] = `
 }
 
 <div
-  className="c0 KtFsv gBgzyb"
+  className="c0 c1"
   fontFamily={
     Object {
       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",

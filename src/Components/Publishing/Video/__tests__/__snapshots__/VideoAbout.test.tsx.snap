@@ -28,15 +28,6 @@ exports[`Video About matches the snapshot 1`] = `
   padding-left: 0.5rem;
 }
 
-.c15 {
-  box-sizing: border-box;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
-}
-
 .c16 {
   box-sizing: border-box;
   -webkit-flex: 0 0 auto;
@@ -46,12 +37,28 @@ exports[`Video About matches the snapshot 1`] = `
   padding-left: 0.5rem;
 }
 
+.c17 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.c10 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+}
+
 .c9 {
   margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
-.c11 {
+.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -65,22 +72,22 @@ exports[`Video About matches the snapshot 1`] = `
   margin-top: 5px;
 }
 
-.c13 {
+.c14 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c13:hover {
+.c14:hover {
   opacity: 0.6;
 }
 
-.c13:first-child {
+.c14:first-child {
   padding-left: 0;
 }
 
-.c12 {
+.c13 {
   margin: 5px 10px 5px 0px;
 }
 
@@ -293,7 +300,7 @@ exports[`Video About matches the snapshot 1`] = `
   padding: 0;
 }
 
-.c14 {
+.c15 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -357,7 +364,7 @@ exports[`Video About matches the snapshot 1`] = `
 }
 
 @media only screen and (min-width:0em) {
-  .c15 {
+  .c16 {
     -webkit-flex-basis: 100%;
     -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
@@ -367,7 +374,7 @@ exports[`Video About matches the snapshot 1`] = `
 }
 
 @media only screen and (min-width:48em) {
-  .c15 {
+  .c16 {
     -webkit-flex-basis: 66.66666666666667%;
     -ms-flex-preferred-size: 66.66666666666667%;
     flex-basis: 66.66666666666667%;
@@ -377,7 +384,7 @@ exports[`Video About matches the snapshot 1`] = `
 }
 
 @media only screen and (min-width:0em) {
-  .c16 {
+  .c17 {
     -webkit-flex-basis: 100%;
     -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
@@ -387,13 +394,13 @@ exports[`Video About matches the snapshot 1`] = `
 }
 
 @media only screen and (min-width:48em) {
-  .c16 {
+  .c17 {
     display: none;
   }
 }
 
 @media (max-width:48em) {
-  .c8 .c10 {
+  .c8 .c11 {
     margin-top: 0px;
   }
 }
@@ -526,7 +533,7 @@ exports[`Video About matches the snapshot 1`] = `
           className="c9"
         >
           <div
-            className="KtFsv gBgzyb"
+            className="c10"
             fontFamily={
               Object {
                 "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -539,10 +546,10 @@ exports[`Video About matches the snapshot 1`] = `
           </div>
         </div>
         <div
-          className="c10 c11"
+          className="c11 c12"
         >
           <div
-            className="c12 KtFsv gBgzyb"
+            className="c13 c10"
             fontFamily={
               Object {
                 "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -554,7 +561,7 @@ exports[`Video About matches the snapshot 1`] = `
             Share
           </div>
           <a
-            className="c13"
+            className="c14"
             href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form"
             onClick={[Function]}
             target="_blank"
@@ -580,7 +587,7 @@ exports[`Video About matches the snapshot 1`] = `
             </svg>
           </a>
           <a
-            className="c13"
+            className="c14"
             href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&text=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&url=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&via=artsy"
             onClick={[Function]}
             target="_blank"
@@ -606,7 +613,7 @@ exports[`Video About matches the snapshot 1`] = `
             </svg>
           </a>
           <a
-            className="c13"
+            className="c14"
             href="mailto:?subject=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&body=Check out New Study Shows the Gender Pay Gap for Artists Is Not So Simple on Artsy: https://www.artsy.net/video/joanne-artman-gallery-poetry-naturerefinement-form"
             onClick={[Function]}
             target="_blank"
@@ -636,7 +643,7 @@ exports[`Video About matches the snapshot 1`] = `
     </div>
   </div>
   <div
-    className="c14 c15"
+    className="c15 c16"
   >
     <div
       className="c3"
@@ -661,7 +668,7 @@ exports[`Video About matches the snapshot 1`] = `
       </div>
     </div>
     <div
-      className="c16"
+      className="c17"
     >
       <div
         className="c7 c8"
@@ -670,7 +677,7 @@ exports[`Video About matches the snapshot 1`] = `
           className="c9"
         >
           <div
-            className="KtFsv gBgzyb"
+            className="c10"
             fontFamily={
               Object {
                 "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -683,10 +690,10 @@ exports[`Video About matches the snapshot 1`] = `
           </div>
         </div>
         <div
-          className="c10 c11"
+          className="c11 c12"
         >
           <div
-            className="c12 KtFsv gBgzyb"
+            className="c13 c10"
             fontFamily={
               Object {
                 "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -698,7 +705,7 @@ exports[`Video About matches the snapshot 1`] = `
             Share
           </div>
           <a
-            className="c13"
+            className="c14"
             href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form"
             onClick={[Function]}
             target="_blank"
@@ -724,7 +731,7 @@ exports[`Video About matches the snapshot 1`] = `
             </svg>
           </a>
           <a
-            className="c13"
+            className="c14"
             href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&text=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&url=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&via=artsy"
             onClick={[Function]}
             target="_blank"
@@ -750,7 +757,7 @@ exports[`Video About matches the snapshot 1`] = `
             </svg>
           </a>
           <a
-            className="c13"
+            className="c14"
             href="mailto:?subject=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&body=Check out New Study Shows the Gender Pay Gap for Artists Is Not So Simple on Artsy: https://www.artsy.net/video/joanne-artman-gallery-poetry-naturerefinement-form"
             onClick={[Function]}
             target="_blank"
@@ -810,15 +817,6 @@ exports[`Video About matches the snapshot with editable props 1`] = `
   padding-left: 0.5rem;
 }
 
-.c15 {
-  box-sizing: border-box;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
-}
-
 .c16 {
   box-sizing: border-box;
   -webkit-flex: 0 0 auto;
@@ -828,12 +826,28 @@ exports[`Video About matches the snapshot with editable props 1`] = `
   padding-left: 0.5rem;
 }
 
+.c17 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.c10 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+}
+
 .c9 {
   margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
-.c11 {
+.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -847,22 +861,22 @@ exports[`Video About matches the snapshot with editable props 1`] = `
   margin-top: 5px;
 }
 
-.c13 {
+.c14 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c13:hover {
+.c14:hover {
   opacity: 0.6;
 }
 
-.c13:first-child {
+.c14:first-child {
   padding-left: 0;
 }
 
-.c12 {
+.c13 {
   margin: 5px 10px 5px 0px;
 }
 
@@ -1075,7 +1089,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
   padding: 0;
 }
 
-.c14 {
+.c15 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -1139,7 +1153,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
 }
 
 @media only screen and (min-width:0em) {
-  .c15 {
+  .c16 {
     -webkit-flex-basis: 100%;
     -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
@@ -1149,7 +1163,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
 }
 
 @media only screen and (min-width:48em) {
-  .c15 {
+  .c16 {
     -webkit-flex-basis: 66.66666666666667%;
     -ms-flex-preferred-size: 66.66666666666667%;
     flex-basis: 66.66666666666667%;
@@ -1159,7 +1173,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
 }
 
 @media only screen and (min-width:0em) {
-  .c16 {
+  .c17 {
     -webkit-flex-basis: 100%;
     -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
@@ -1169,13 +1183,13 @@ exports[`Video About matches the snapshot with editable props 1`] = `
 }
 
 @media only screen and (min-width:48em) {
-  .c16 {
+  .c17 {
     display: none;
   }
 }
 
 @media (max-width:48em) {
-  .c8 .c10 {
+  .c8 .c11 {
     margin-top: 0px;
   }
 }
@@ -1305,7 +1319,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
           className="c9"
         >
           <div
-            className="KtFsv gBgzyb"
+            className="c10"
             fontFamily={
               Object {
                 "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1318,10 +1332,10 @@ exports[`Video About matches the snapshot with editable props 1`] = `
           </div>
         </div>
         <div
-          className="c10 c11"
+          className="c11 c12"
         >
           <div
-            className="c12 KtFsv gBgzyb"
+            className="c13 c10"
             fontFamily={
               Object {
                 "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1333,7 +1347,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
             Share
           </div>
           <a
-            className="c13"
+            className="c14"
             href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form"
             onClick={[Function]}
             target="_blank"
@@ -1359,7 +1373,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
             </svg>
           </a>
           <a
-            className="c13"
+            className="c14"
             href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&text=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&url=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&via=artsy"
             onClick={[Function]}
             target="_blank"
@@ -1385,7 +1399,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
             </svg>
           </a>
           <a
-            className="c13"
+            className="c14"
             href="mailto:?subject=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&body=Check out New Study Shows the Gender Pay Gap for Artists Is Not So Simple on Artsy: https://www.artsy.net/video/joanne-artman-gallery-poetry-naturerefinement-form"
             onClick={[Function]}
             target="_blank"
@@ -1415,7 +1429,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
     </div>
   </div>
   <div
-    className="c14 c15"
+    className="c15 c16"
   >
     <div
       className="c3"
@@ -1437,7 +1451,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
       </div>
     </div>
     <div
-      className="c16"
+      className="c17"
     >
       <div
         className="c7 c8"
@@ -1446,7 +1460,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
           className="c9"
         >
           <div
-            className="KtFsv gBgzyb"
+            className="c10"
             fontFamily={
               Object {
                 "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1459,10 +1473,10 @@ exports[`Video About matches the snapshot with editable props 1`] = `
           </div>
         </div>
         <div
-          className="c10 c11"
+          className="c11 c12"
         >
           <div
-            className="c12 KtFsv gBgzyb"
+            className="c13 c10"
             fontFamily={
               Object {
                 "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1474,7 +1488,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
             Share
           </div>
           <a
-            className="c13"
+            className="c14"
             href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form"
             onClick={[Function]}
             target="_blank"
@@ -1500,7 +1514,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
             </svg>
           </a>
           <a
-            className="c13"
+            className="c14"
             href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&text=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&url=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&via=artsy"
             onClick={[Function]}
             target="_blank"
@@ -1526,7 +1540,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
             </svg>
           </a>
           <a
-            className="c13"
+            className="c14"
             href="mailto:?subject=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&body=Check out New Study Shows the Gender Pay Gap for Artists Is Not So Simple on Artsy: https://www.artsy.net/video/joanne-artman-gallery-poetry-naturerefinement-form"
             onClick={[Function]}
             target="_blank"

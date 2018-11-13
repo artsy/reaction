@@ -2,10 +2,17 @@
 
 exports[`Byline renders a byline 1`] = `
 .c1 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.c2 {
   margin: 10px 20px 0 0;
 }
 
-.c1:before {
+.c2:before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -15,12 +22,12 @@ exports[`Byline renders a byline 1`] = `
   background-color: black;
 }
 
-.c2 {
+.c3 {
   margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
-.c3 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -34,18 +41,18 @@ exports[`Byline renders a byline 1`] = `
   margin-top: 5px;
 }
 
-.c4 {
+.c5 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c4:hover {
+.c5:hover {
   opacity: 0.6;
 }
 
-.c4:first-child {
+.c5:first-child {
   padding-left: 0;
 }
 
@@ -69,7 +76,7 @@ exports[`Byline renders a byline 1`] = `
   color="black"
 >
   <div
-    className="sc-htpNat KtFsv sc-bwzfXH gBgzyb"
+    className="c1"
     fontFamily={
       Object {
         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -79,17 +86,17 @@ exports[`Byline renders a byline 1`] = `
     fontSize="14px"
   >
     <div
-      className="c1"
+      className="c2"
       color="black"
     >
       Casey Lesser
     </div>
   </div>
   <div
-    className="c2"
+    className="c3"
   >
     <div
-      className="sc-htpNat KtFsv sc-bwzfXH gBgzyb"
+      className="c1"
       fontFamily={
         Object {
           "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -102,10 +109,10 @@ exports[`Byline renders a byline 1`] = `
     </div>
   </div>
   <div
-    className="c3"
+    className="c4"
   >
     <a
-      className="c4"
+      className="c5"
       href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district"
       onClick={[Function]}
       target="_blank"
@@ -131,7 +138,7 @@ exports[`Byline renders a byline 1`] = `
       </svg>
     </a>
     <a
-      className="c4"
+      className="c5"
       href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district&text=New York's Next Art District&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district&via=artsy"
       onClick={[Function]}
       target="_blank"
@@ -157,7 +164,7 @@ exports[`Byline renders a byline 1`] = `
       </svg>
     </a>
     <a
-      className="c4"
+      className="c5"
       href="mailto:?subject=New York's Next Art District&body=Check out New York's Next Art District on Artsy: https://www.artsy.net/article/new-yorks-next-art-district"
       onClick={[Function]}
       target="_blank"
