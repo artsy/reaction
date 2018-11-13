@@ -13,8 +13,11 @@ const StyledBox = styled(Box)`
   /* opacity: 0; */
 `
 
-const BreakpointText = ({ breakpoint }) => (
-  <Media at={breakpoint}>
+const BreakpointText: React.SFC<{ breakpoint: string; max?: boolean }> = ({
+  breakpoint,
+  max,
+}) => (
+  <Media {...{ [max ? "greaterThanOrEqual" : "at"]: breakpoint }}>
     <Display size="8">{breakpoint}</Display>
   </Media>
 )
@@ -29,7 +32,7 @@ export const BreakpointVisualizer: React.SFC = () => (
           <BreakpointText breakpoint="sm" />
           <BreakpointText breakpoint="md" />
           <BreakpointText breakpoint="lg" />
-          <BreakpointText breakpoint="xl" />
+          <BreakpointText breakpoint="xl" max />
         </StyledBox>
       )}
   </React.Fragment>
