@@ -205,7 +205,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
               >
                 <Join separator={<Spacer mb={3} />}>
                   <Flex flexDirection="column">
-                    <Serif mb={1} size="3t" color="black100" lineHeight={18}>
+                    <Serif mb={1} size="3t" color="black100" lineHeight="1.1em">
                       Credit card
                     </Serif>
                     <CreditCardInput

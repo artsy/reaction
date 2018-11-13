@@ -1,30 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
-.c2 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 28px;
-  line-height: 36px;
-}
-
 .c8 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 16px;
-  line-height: 20px;
-}
-
-.c10 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
-}
-
-.c11 {
   margin: 10px 20px 0 0;
 }
 
-.c11:before {
+.c8:before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -34,12 +15,12 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
   background-color: black;
 }
 
-.c12 {
+.c9 {
   margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
-.c9 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -54,7 +35,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
   color: black;
 }
 
-.c6 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -67,7 +48,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
   text-decoration: none;
 }
 
-.c5 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -81,7 +62,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
   color: black;
 }
 
-.c7 {
+.c6 {
   display: block;
   width: 278px;
   height: 185px;
@@ -105,7 +86,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
   margin-bottom: 20px;
 }
 
-.c4 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -117,26 +98,26 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
   overflow-x: scroll;
 }
 
-.c4::-webkit-scrollbar {
+.c3::-webkit-scrollbar {
   display: none;
 }
 
-.c4 a {
+.c3 a {
   margin-right: 30px;
 }
 
-.c4 a:last-child {
+.c3 a:last-child {
   margin-right: 0;
 }
 
 @media (max-width:720px) {
-  .c5 {
+  .c4 {
     width: 225px;
   }
 }
 
 @media (max-width:720px) {
-  .c7 {
+  .c6 {
     width: 225px;
     height: 150px;
   }
@@ -155,27 +136,27 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
 }
 
 @media (max-width:720px) {
-  .c3 {
+  .c2 {
     display: block;
   }
 }
 
 @media (max-width:1280px) {
-  .c4 a {
+  .c3 a {
     margin: 0 10px;
   }
 
-  .c4 a:first-child {
+  .c3 a:first-child {
     margin-left: 40px;
   }
 
-  .c4 a:last-child {
+  .c3 a:last-child {
     border-right: 20px solid white;
   }
 }
 
 @media (max-width:720px) {
-  .c4 a:first-child {
+  .c3 a:first-child {
     margin-left: 20px;
   }
 }
@@ -184,13 +165,13 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
   className="c0"
 >
   <div
-    className="c1 c2"
+    className="c1 sc-htpNat KtFsv sc-bwzfXH sedPR"
     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
     fontSize="28px"
   >
     Further Reading in 
     <span
-      className="c3"
+      className="c2"
     >
       Art Market
     </span>
@@ -203,23 +184,23 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
     }
   />
   <div
-    className="c4"
+    className="c3"
   >
     <a
-      className="c5"
+      className="c4"
       href="/article/artsy-editorial-15-top-art-schools-united-states"
       onClick={[Function]}
     >
       <div
-        className="c6"
+        className="c5"
       >
         <img
           alt="The 15 Top Art Schools in the United States"
-          className="c7"
+          className="c6"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F4Tq-iYkN8dOpshFoKRXyYw%252Fcustom-Custom_Size___PoetterHall_Exterior%2Bcopy.jpg&width=510&height=340&quality=95"
         />
         <div
-          className="c8"
+          className="sc-bxivhb bUZGRr sc-bwzfXH fTshGg"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="16px"
         >
@@ -227,11 +208,11 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
         </div>
       </div>
       <div
-        className="Byline c9"
+        className="Byline c7"
         color="black"
       >
         <div
-          className="c10"
+          className="sc-htpNat KtFsv sc-bwzfXH jdtzSX"
           fontFamily={
             Object {
               "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -241,17 +222,17 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
           fontSize="12px"
         >
           <div
-            className="c11"
+            className="c8"
             color="black"
           >
             Anna Louis-Sussman and Kana Abe
           </div>
         </div>
         <div
-          className="c12"
+          className="c9"
         >
           <div
-            className="c10"
+            className="sc-htpNat KtFsv sc-bwzfXH jdtzSX"
             fontFamily={
               Object {
                 "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -266,20 +247,20 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
       </div>
     </a>
     <a
-      className="c5"
+      className="c4"
       href="/article/artsy-editorial-four-years-walter-de-marias-death-final-work-complete"
       onClick={[Function]}
     >
       <div
-        className="c6"
+        className="c5"
       >
         <img
           alt="Four Years after Walter De Maria’s Death, His Final Work Is Complete"
-          className="c7"
+          className="c6"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F6IqxBTQCkExip2auQ7ZWCA%252FDEMAR-2011.0006-B.jpg&width=510&height=340&quality=95"
         />
         <div
-          className="c8"
+          className="sc-bxivhb bUZGRr sc-bwzfXH fTshGg"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="16px"
         >
@@ -287,11 +268,11 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
         </div>
       </div>
       <div
-        className="Byline c9"
+        className="Byline c7"
         color="black"
       >
         <div
-          className="c10"
+          className="sc-htpNat KtFsv sc-bwzfXH jdtzSX"
           fontFamily={
             Object {
               "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -301,17 +282,17 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
           fontSize="12px"
         >
           <div
-            className="c11"
+            className="c8"
             color="black"
           >
             Halley Johnson
           </div>
         </div>
         <div
-          className="c12"
+          className="c9"
         >
           <div
-            className="c10"
+            className="sc-htpNat KtFsv sc-bwzfXH jdtzSX"
             fontFamily={
               Object {
                 "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -326,20 +307,20 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
       </div>
     </a>
     <a
-      className="c5"
+      className="c4"
       href="/series/artsy-editorial-french-art-history-in-a-nutshell"
       onClick={[Function]}
     >
       <div
-        className="c6"
+        className="c5"
       >
         <img
           alt="French Art History in a Nutshell"
-          className="c7"
+          className="c6"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FlEcCm2XbfZ7bPAVgLlM21w%252Flarger-21.jpg&width=510&height=340&quality=95"
         />
         <div
-          className="c8"
+          className="sc-bxivhb bUZGRr sc-bwzfXH fTshGg"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="16px"
         >
@@ -347,11 +328,11 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
         </div>
       </div>
       <div
-        className="Byline c9"
+        className="Byline c7"
         color="black"
       >
         <div
-          className="c10"
+          className="sc-htpNat KtFsv sc-bwzfXH jdtzSX"
           fontFamily={
             Object {
               "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -361,17 +342,17 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
           fontSize="12px"
         >
           <div
-            className="c11"
+            className="c8"
             color="black"
           >
             Casey Lesser
           </div>
         </div>
         <div
-          className="c12"
+          className="c9"
         >
           <div
-            className="c10"
+            className="sc-htpNat KtFsv sc-bwzfXH jdtzSX"
             fontFamily={
               Object {
                 "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -386,20 +367,20 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
       </div>
     </a>
     <a
-      className="c5"
+      className="c4"
       href="/news/artsy-editorial-miami-artists-museums-brace-hurricane-irma"
       onClick={[Function]}
     >
       <div
-        className="c6"
+        className="c5"
       >
         <img
           alt="Miami Artists and Museums Brace for Hurricane Irma"
-          className="c7"
+          className="c6"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FjAu4NaKnr_m53OnnMaDe_w%252Fmag.jpg&width=510&height=340&quality=95"
         />
         <div
-          className="c8"
+          className="sc-bxivhb bUZGRr sc-bwzfXH fTshGg"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="16px"
         >
@@ -407,11 +388,11 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
         </div>
       </div>
       <div
-        className="Byline c9"
+        className="Byline c7"
         color="black"
       >
         <div
-          className="c10"
+          className="sc-htpNat KtFsv sc-bwzfXH jdtzSX"
           fontFamily={
             Object {
               "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -421,17 +402,17 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
           fontSize="12px"
         >
           <div
-            className="c11"
+            className="c8"
             color="black"
           >
             Owen Dodd
           </div>
         </div>
         <div
-          className="c12"
+          className="c9"
         >
           <div
-            className="c10"
+            className="sc-htpNat KtFsv sc-bwzfXH jdtzSX"
             fontFamily={
               Object {
                 "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",

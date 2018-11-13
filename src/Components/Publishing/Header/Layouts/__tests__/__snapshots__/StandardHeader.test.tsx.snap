@@ -1,26 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Standard Header Snapshots renders editable props properly 1`] = `
-.c7 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-.c4 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-  color: #C2C2C2;
-}
-
-.c8 {
+.c6 {
   margin: 10px 20px 0 0;
 }
 
-.c8:before {
+.c6:before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -30,12 +15,12 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
   background-color: black;
 }
 
-.c9 {
+.c7 {
   margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
-.c10 {
+.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -49,22 +34,22 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
   margin-top: 5px;
 }
 
-.c11 {
+.c9 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c11:hover {
+.c9:hover {
   opacity: 0.6;
 }
 
-.c11:first-child {
+.c9:first-child {
   padding-left: 0;
 }
 
-.c6 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -103,7 +88,7 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
   box-sizing: border-box;
 }
 
-.c5 {
+.c4 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 50px;
   line-height: 1.1em;
@@ -128,7 +113,7 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c5 {
+  .c4 {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
@@ -146,7 +131,7 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
       className="c2"
     >
       <div
-        className="c3 c4"
+        className="c3 sc-htpNat KtFsv sc-bwzfXH cFZiZ"
         color="#C2C2C2"
         fontFamily={
           Object {
@@ -165,7 +150,7 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
       </div>
     </div>
     <div
-      className="c5"
+      className="c4"
     >
       <div>
         Child 
@@ -173,11 +158,11 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
       </div>
     </div>
     <div
-      className="Byline c6"
+      className="Byline c5"
       color="black"
     >
       <div
-        className="c7"
+        className="sc-htpNat KtFsv sc-bwzfXH gBgzyb"
         fontFamily={
           Object {
             "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -187,17 +172,17 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
         fontSize="14px"
       >
         <div
-          className="c8"
+          className="c6"
           color="black"
         >
           Casey Lesser
         </div>
       </div>
       <div
-        className="c9"
+        className="c7"
       >
         <div
-          className="c7"
+          className="sc-htpNat KtFsv sc-bwzfXH gBgzyb"
           fontFamily={
             Object {
               "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -210,10 +195,10 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
         </div>
       </div>
       <div
-        className="c10"
+        className="c8"
       >
         <a
-          className="c11"
+          className="c9"
           href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district"
           onClick={[Function]}
           target="_blank"
@@ -239,7 +224,7 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
           </svg>
         </a>
         <a
-          className="c11"
+          className="c9"
           href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district&text=New York's Next Art District&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district&via=artsy"
           onClick={[Function]}
           target="_blank"
@@ -265,7 +250,7 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
           </svg>
         </a>
         <a
-          className="c11"
+          className="c9"
           href="mailto:?subject=New York's Next Art District&body=Check out New York's Next Art District on Artsy: https://www.artsy.net/article/new-yorks-next-art-district"
           onClick={[Function]}
           target="_blank"
@@ -297,18 +282,11 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
 `;
 
 exports[`Standard Header Snapshots renders properly 1`] = `
-.c4 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-.c7 {
+.c6 {
   margin: 10px 20px 0 0;
 }
 
-.c7:before {
+.c6:before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -318,12 +296,12 @@ exports[`Standard Header Snapshots renders properly 1`] = `
   background-color: black;
 }
 
-.c8 {
+.c7 {
   margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
-.c9 {
+.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -337,22 +315,22 @@ exports[`Standard Header Snapshots renders properly 1`] = `
   margin-top: 5px;
 }
 
-.c10 {
+.c9 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c10:hover {
+.c9:hover {
   opacity: 0.6;
 }
 
-.c10:first-child {
+.c9:first-child {
   padding-left: 0;
 }
 
-.c6 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -391,7 +369,7 @@ exports[`Standard Header Snapshots renders properly 1`] = `
   box-sizing: border-box;
 }
 
-.c5 {
+.c4 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 50px;
   line-height: 1.1em;
@@ -416,7 +394,7 @@ exports[`Standard Header Snapshots renders properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c5 {
+  .c4 {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
@@ -434,7 +412,7 @@ exports[`Standard Header Snapshots renders properly 1`] = `
       className="c2"
     >
       <div
-        className="c3 c4"
+        className="c3 sc-htpNat KtFsv sc-bwzfXH gBgzyb"
         fontFamily={
           Object {
             "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -449,16 +427,16 @@ exports[`Standard Header Snapshots renders properly 1`] = `
       </div>
     </div>
     <div
-      className="c5"
+      className="c4"
     >
       New York's Next Art District
     </div>
     <div
-      className="Byline c6"
+      className="Byline c5"
       color="black"
     >
       <div
-        className="c4"
+        className="sc-htpNat KtFsv sc-bwzfXH gBgzyb"
         fontFamily={
           Object {
             "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -468,17 +446,17 @@ exports[`Standard Header Snapshots renders properly 1`] = `
         fontSize="14px"
       >
         <div
-          className="c7"
+          className="c6"
           color="black"
         >
           Casey Lesser
         </div>
       </div>
       <div
-        className="c8"
+        className="c7"
       >
         <div
-          className="c4"
+          className="sc-htpNat KtFsv sc-bwzfXH gBgzyb"
           fontFamily={
             Object {
               "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -491,10 +469,10 @@ exports[`Standard Header Snapshots renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c9"
+        className="c8"
       >
         <a
-          className="c10"
+          className="c9"
           href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district"
           onClick={[Function]}
           target="_blank"
@@ -520,7 +498,7 @@ exports[`Standard Header Snapshots renders properly 1`] = `
           </svg>
         </a>
         <a
-          className="c10"
+          className="c9"
           href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district&text=New York's Next Art District&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district&via=artsy"
           onClick={[Function]}
           target="_blank"
@@ -546,7 +524,7 @@ exports[`Standard Header Snapshots renders properly 1`] = `
           </svg>
         </a>
         <a
-          className="c10"
+          className="c9"
           href="mailto:?subject=New York's Next Art District&body=Check out New York's Next Art District on Artsy: https://www.artsy.net/article/new-yorks-next-art-district"
           onClick={[Function]}
           target="_blank"
