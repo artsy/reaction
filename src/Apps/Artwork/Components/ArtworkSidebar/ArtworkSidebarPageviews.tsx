@@ -32,8 +32,8 @@ export const ArtworkSidebarPageviews: SFC<Props> = props => {
         <Sans color="black60" size="2" weight="regular">
           {pageviews ? (
             <>
-              It has been viewed <strong>{pageviews.toLocaleString()}</strong>{" "}
-              times
+              It has been viewed{" "}
+              <strong>{pageviews.toLocaleString()} times</strong> this week
             </>
           ) : (
             "Explore artwork details or ask a specialist to learn more"

@@ -35,75 +35,177 @@ describe("Status", () => {
     })
   }
 
-  it("should should have a title containing status", async () => {
-    const headTags: JSX.Element[] = []
-    await getWrapper(OrderWithShippingDetails, headTags)
-    expect(headTags.length).toEqual(1)
-    expect(render(headTags[0]).text()).toBe("Order status | Artsy")
-  })
+  describe("offers", () => {
+    it("should should have a title containing status", async () => {
+      const headTags: JSX.Element[] = []
+      await getWrapper({ ...OrderWithShippingDetails, mode: "OFFER" }, headTags)
+      expect(headTags.length).toEqual(1)
+      expect(render(headTags[0]).text()).toBe("Offer status | Artsy")
+    })
 
-  describe("submitted", () => {
-    it("should say order submitted and have message box", async () => {
-      const wrapper = await getWrapper({
-        ...OrderWithShippingDetails,
-        state: "SUBMITTED",
+    describe("submitted", () => {
+      it("should say order submitted and have message box", async () => {
+        const wrapper = await getWrapper({
+          ...OrderWithShippingDetails,
+          state: "SUBMITTED",
+          mode: "OFFER",
+        })
+        expect(wrapper.text()).toContain("Your order has been submitted.")
+        expect(wrapper.find(Message).length).toBe(1)
       })
-      expect(wrapper.text()).toContain("Your order has been submitted.")
-      expect(wrapper.find(Message).length).toBe(1)
+
+      it("should not warn the user about having the artwork bought while artwork is not available for buy now", async () => {
+        const order = OrderWithShippingDetails
+        order.lineItems.edges[0].node.artwork.is_acquireable = false
+        const wrapper = await getWrapper({
+          ...order,
+          state: "SUBMITTED",
+          mode: "OFFER",
+        })
+        expect(wrapper.text()).not.toContain("or buy now at list price.")
+        expect(wrapper.find(Message).length).toBe(1)
+      })
+    })
+
+    describe("approved", () => {
+      it("should say confirmed", async () => {
+        const wrapper = await getWrapper({
+          ...OrderWithShippingDetails,
+          state: "APPROVED",
+          mode: "OFFER",
+        })
+        expect(wrapper.text()).toContain("Your order is confirmed.")
+      })
+    })
+
+    describe("fulfilled (ship)", () => {
+      it("should say order has shipped and have message box", async () => {
+        const wrapper = await getWrapper({
+          ...OrderWithShippingDetails,
+          state: "FULFILLED",
+          mode: "OFFER",
+        })
+        expect(wrapper.text()).toContain("Your order has shipped.")
+        expect(wrapper.find(Message).length).toBe(1)
+      })
+    })
+
+    describe("fulfilled (pickup)", () => {
+      it("should say order has been picked up and NOT have message box", async () => {
+        const wrapper = await getWrapper({
+          ...PickupOrder,
+          state: "FULFILLED",
+          mode: "OFFER",
+        })
+        expect(wrapper.text()).toContain("Your order has been picked up.")
+        expect(wrapper.find(Message).length).toBe(0)
+      })
+    })
+
+    describe("canceled (ship)", () => {
+      it("should say that order was canceled", async () => {
+        const wrapper = await getWrapper({
+          ...OrderWithShippingDetails,
+          state: "CANCELED",
+          mode: "OFFER",
+        })
+        expect(wrapper.text()).toContain(
+          "Your order was canceled and refunded."
+        )
+        expect(wrapper.find(Message).length).toBe(1)
+      })
+    })
+
+    describe("canceled (pickup)", () => {
+      it("should say that order was canceled", async () => {
+        const wrapper = await getWrapper({
+          ...PickupOrder,
+          state: "CANCELED",
+          mode: "OFFER",
+        })
+        expect(wrapper.text()).toContain(
+          "Your order was canceled and refunded."
+        )
+        expect(wrapper.find(Message).length).toBe(1)
+      })
     })
   })
 
-  describe("approved", () => {
-    it("should say confirmed", async () => {
-      const wrapper = await getWrapper({
-        ...OrderWithShippingDetails,
-        state: "APPROVED",
-      })
-      expect(wrapper.text()).toContain("Your order is confirmed.")
+  describe("orders", () => {
+    it("should should have a title containing status", async () => {
+      const headTags: JSX.Element[] = []
+      await getWrapper(OrderWithShippingDetails, headTags)
+      expect(headTags.length).toEqual(1)
+      expect(render(headTags[0]).text()).toBe("Order status | Artsy")
     })
-  })
 
-  describe("fulfilled (ship)", () => {
-    it("should say order has shipped and have message box", async () => {
-      const wrapper = await getWrapper({
-        ...OrderWithShippingDetails,
-        state: "FULFILLED",
+    describe("submitted", () => {
+      it("should say order submitted and have message box", async () => {
+        const wrapper = await getWrapper({
+          ...OrderWithShippingDetails,
+          state: "SUBMITTED",
+        })
+        expect(wrapper.text()).toContain("Your order has been submitted.")
+        expect(wrapper.find(Message).length).toBe(1)
       })
-      expect(wrapper.text()).toContain("Your order has shipped.")
-      expect(wrapper.find(Message).length).toBe(1)
     })
-  })
 
-  describe("fulfilled (pickup)", () => {
-    it("should say order has been picked up and NOT have message box", async () => {
-      const wrapper = await getWrapper({
-        ...PickupOrder,
-        state: "FULFILLED",
+    describe("approved", () => {
+      it("should say confirmed", async () => {
+        const wrapper = await getWrapper({
+          ...OrderWithShippingDetails,
+          state: "APPROVED",
+        })
+        expect(wrapper.text()).toContain("Your order is confirmed.")
       })
-      expect(wrapper.text()).toContain("Your order has been picked up.")
-      expect(wrapper.find(Message).length).toBe(0)
     })
-  })
 
-  describe("canceled (ship)", () => {
-    it("should say that order was canceled", async () => {
-      const wrapper = await getWrapper({
-        ...OrderWithShippingDetails,
-        state: "CANCELED",
+    describe("fulfilled (ship)", () => {
+      it("should say order has shipped and have message box", async () => {
+        const wrapper = await getWrapper({
+          ...OrderWithShippingDetails,
+          state: "FULFILLED",
+        })
+        expect(wrapper.text()).toContain("Your order has shipped.")
+        expect(wrapper.find(Message).length).toBe(1)
       })
-      expect(wrapper.text()).toContain("Your order was canceled and refunded.")
-      expect(wrapper.find(Message).length).toBe(1)
     })
-  })
 
-  describe("canceled (pickup)", () => {
-    it("should say that order was canceled", async () => {
-      const wrapper = await getWrapper({
-        ...PickupOrder,
-        state: "CANCELED",
+    describe("fulfilled (pickup)", () => {
+      it("should say order has been picked up and NOT have message box", async () => {
+        const wrapper = await getWrapper({
+          ...PickupOrder,
+          state: "FULFILLED",
+        })
+        expect(wrapper.text()).toContain("Your order has been picked up.")
+        expect(wrapper.find(Message).length).toBe(0)
       })
-      expect(wrapper.text()).toContain("Your order was canceled and refunded.")
-      expect(wrapper.find(Message).length).toBe(1)
+    })
+
+    describe("canceled (ship)", () => {
+      it("should say that order was canceled", async () => {
+        const wrapper = await getWrapper({
+          ...OrderWithShippingDetails,
+          state: "CANCELED",
+        })
+        expect(wrapper.text()).toContain(
+          "Your order was canceled and refunded."
+        )
+        expect(wrapper.find(Message).length).toBe(1)
+      })
+    })
+
+    describe("canceled (pickup)", () => {
+      it("should say that order was canceled", async () => {
+        const wrapper = await getWrapper({
+          ...PickupOrder,
+          state: "CANCELED",
+        })
+        expect(wrapper.text()).toContain(
+          "Your order was canceled and refunded."
+        )
+        expect(wrapper.find(Message).length).toBe(1)
+      })
     })
   })
 })
