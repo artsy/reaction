@@ -5,6 +5,7 @@ import Icon from "Components/Icon"
 import { Lightbox } from "Styleguide/Components"
 import { Arrow } from "Styleguide/Elements/Arrow"
 import { Media } from "Utils/Responsive"
+import { SaveActionIcon, ShareActionIcon } from "./ActionIcons"
 
 const Container = styled.div`
   display: flex;
@@ -239,8 +240,8 @@ export class ImageCarousel extends React.Component<
   renderControlsContainer(breakpoint?: string) {
     const xs = breakpoint === "xs"
     const ControlsContainer = xs
-      ? LargeControlsContainer
-      : SmallControlsContainer
+      ? SmallControlsContainer
+      : LargeControlsContainer
 
     return (
       <ControlsContainer>
@@ -251,19 +252,14 @@ export class ImageCarousel extends React.Component<
             onSelect={i => this.setState({ currentImage: i })}
           />
         )}
-
         <Media at="xs">
           <Spacer />
         </Media>
 
         <ActionButtonsContainer>
           <ActionButtons>
-            <Button href="#TODO">
-              <Icon name="heart" color="black" />
-            </Button>
-            <Button href="#TODO">
-              <Icon name="share" color="black" />
-            </Button>
+            <SaveActionIcon />
+            <ShareActionIcon />
           </ActionButtons>
         </ActionButtonsContainer>
       </ControlsContainer>

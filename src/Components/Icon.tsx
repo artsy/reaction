@@ -30,6 +30,7 @@ export interface IconProps
   name: IconName
   fontSize?: string
   style?: any
+  cursor?: string
   onClick?: () => void
 }
 
@@ -45,6 +46,7 @@ export default styled(Icon)`
   font-family: ${props => props.font || "artsy-icons"};
   color: ${props => props.color || "purple"};
   font-size: ${props => props.fontSize || "24px"};
+  cursor: ${props => props.cursor || "text"};
   margin: 0 5px;
   display: inline-block;
   letter-spacing: 0;
