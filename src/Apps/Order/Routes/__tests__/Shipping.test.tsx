@@ -15,7 +15,12 @@ import { ModalButton } from "Components/Modal/ErrorModal"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { MockBoot } from "DevTools"
 import { commitMutation as _commitMutation, RelayProp } from "react-relay"
-import { CountrySelect } from "Styleguide/Components"
+import {
+  ActiveTabContainer,
+  CheckMarkWrapper,
+  CountrySelect,
+  Stepper,
+} from "Styleguide/Components"
 import {
   settingOrderShipmentFailure,
   settingOrderShipmentMissingCountryFailure,
@@ -381,6 +386,16 @@ describe("Shipping", () => {
       fillAddressForm(component, address)
       component.find("Button").simulate("click")
       expect(commitMutation).toBeCalled()
+    })
+  })
+
+  describe("Offer-mode orders", () => {
+    it("shows an active offer stepper if the order is an Offer Order", () => {
+      const offerOrder = { ...UntouchedBuyOrder, mode: "OFFER" }
+      const component = getWrapper({ ...testProps, order: offerOrder })
+      expect(component.find(ActiveTabContainer).text()).toEqual("Shipping")
+      expect(component.find(Stepper).props().currentStepIndex).toEqual(1)
+      expect(component.find(CheckMarkWrapper).length).toEqual(1)
     })
   })
 })

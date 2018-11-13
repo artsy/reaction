@@ -64,7 +64,7 @@ exports[`RelatedArticlesPanel renders the related articles panel 1`] = `
         "fontWeight": 500,
       }
     }
-    fontSize={14}
+    fontSize="14px"
   >
     Related Stories
   </div>
@@ -91,7 +91,7 @@ exports[`RelatedArticlesPanel renders the related articles panel 1`] = `
         className="c6"
         color="#000"
         fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
-        fontSize={18}
+        fontSize="18px"
       >
         The 15 Top Art Schools in the United States
       </div>
@@ -109,7 +109,7 @@ exports[`RelatedArticlesPanel renders the related articles panel 1`] = `
         className="c6"
         color="#000"
         fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
-        fontSize={18}
+        fontSize="18px"
       >
         Four Years after Walter De Maria’s Death, His Final Work Is Complete
       </div>
@@ -127,7 +127,7 @@ exports[`RelatedArticlesPanel renders the related articles panel 1`] = `
         className="c6"
         color="#000"
         fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
-        fontSize={18}
+        fontSize="18px"
       >
         French Art History in a Nutshell
       </div>

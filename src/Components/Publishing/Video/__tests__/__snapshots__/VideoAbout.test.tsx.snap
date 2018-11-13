@@ -540,7 +540,7 @@ exports[`Video About matches the snapshot 1`] = `
                 "fontWeight": 500,
               }
             }
-            fontSize={14}
+            fontSize="14px"
           >
             Jul 28, 2017 4:38 pm
           </div>
@@ -556,7 +556,7 @@ exports[`Video About matches the snapshot 1`] = `
                 "fontWeight": 500,
               }
             }
-            fontSize={14}
+            fontSize="14px"
           >
             Share
           </div>
@@ -684,7 +684,7 @@ exports[`Video About matches the snapshot 1`] = `
                 "fontWeight": 500,
               }
             }
-            fontSize={14}
+            fontSize="14px"
           >
             Jul 28, 2017 4:38 pm
           </div>
@@ -700,7 +700,7 @@ exports[`Video About matches the snapshot 1`] = `
                 "fontWeight": 500,
               }
             }
-            fontSize={14}
+            fontSize="14px"
           >
             Share
           </div>
@@ -1326,7 +1326,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
                 "fontWeight": 500,
               }
             }
-            fontSize={14}
+            fontSize="14px"
           >
             Jul 28, 2017 4:38 pm
           </div>
@@ -1342,7 +1342,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
                 "fontWeight": 500,
               }
             }
-            fontSize={14}
+            fontSize="14px"
           >
             Share
           </div>
@@ -1467,7 +1467,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
                 "fontWeight": 500,
               }
             }
-            fontSize={14}
+            fontSize="14px"
           >
             Jul 28, 2017 4:38 pm
           </div>
@@ -1483,7 +1483,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
                 "fontWeight": 500,
               }
             }
-            fontSize={14}
+            fontSize="14px"
           >
             Share
           </div>

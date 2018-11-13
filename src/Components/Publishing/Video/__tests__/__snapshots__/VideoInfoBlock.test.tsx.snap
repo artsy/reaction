@@ -51,14 +51,14 @@ exports[`Video Info Block matches the snapshot 1`] = `
     <div
       className="c1 c2"
       fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-      fontSize={14}
+      fontSize="14px"
     >
       The Future of Art
     </div>
     <div
       className="c2"
       fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-      fontSize={14}
+      fontSize="14px"
     >
       02:28
     </div>
@@ -126,14 +126,14 @@ exports[`Video Info Block matches the snapshot with edit props 1`] = `
     <div
       className="c1 c2"
       fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-      fontSize={14}
+      fontSize="14px"
     >
       The Future of Art
     </div>
     <div
       className="c2"
       fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-      fontSize={14}
+      fontSize="14px"
     >
       02:28
     </div>

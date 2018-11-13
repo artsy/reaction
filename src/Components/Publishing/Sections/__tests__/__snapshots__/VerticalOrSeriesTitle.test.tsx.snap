@@ -22,7 +22,7 @@ exports[`renders properly for a feature article 1`] = `
       "fontWeight": 500,
     }
   }
-  fontSize={14}
+  fontSize="14px"
 >
   <span>
     Creativity
@@ -52,7 +52,7 @@ exports[`renders properly for a standard article 1`] = `
       "fontWeight": 500,
     }
   }
-  fontSize={14}
+  fontSize="14px"
 >
   <span>
     Creativity

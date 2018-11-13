@@ -1881,7 +1881,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                 <div
                   className="c41 c42"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-                  fontSize={14}
+                  fontSize="14px"
                 >
                   <a
                     href="/series/future-of-art"
@@ -1892,7 +1892,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                 <div
                   className="c42"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-                  fontSize={14}
+                  fontSize="14px"
                 >
                   02:28
                 </div>
@@ -1969,7 +1969,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                     "fontWeight": 500,
                   }
                 }
-                fontSize={14}
+                fontSize="14px"
               >
                 Jul 28, 2017 4:38 pm
               </div>
@@ -1985,7 +1985,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                     "fontWeight": 500,
                   }
                 }
-                fontSize={14}
+                fontSize="14px"
               >
                 Share
               </div>
@@ -2113,7 +2113,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                     "fontWeight": 500,
                   }
                 }
-                fontSize={14}
+                fontSize="14px"
               >
                 Jul 28, 2017 4:38 pm
               </div>
@@ -2129,7 +2129,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                     "fontWeight": 500,
                   }
                 }
-                fontSize={14}
+                fontSize="14px"
               >
                 Share
               </div>
@@ -2236,7 +2236,7 @@ exports[`Video Layout matches the snapshot 1`] = `
               "fontWeight": 500,
             }
           }
-          fontSize={14}
+          fontSize="14px"
         >
           More in 
           <a
@@ -2271,7 +2271,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                       "fontWeight": 500,
                     }
                   }
-                  fontSize={14}
+                  fontSize="14px"
                 >
                   The Future of Art
                 </div>
@@ -2297,7 +2297,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                       "fontWeight": 500,
                     }
                   }
-                  fontSize={14}
+                  fontSize="14px"
                 >
                   Aug 28, 2017
                 </div>
@@ -2341,7 +2341,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                       "fontWeight": 500,
                     }
                   }
-                  fontSize={14}
+                  fontSize="14px"
                 >
                   02:28
                 </div>
@@ -2370,7 +2370,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                       "fontWeight": 500,
                     }
                   }
-                  fontSize={14}
+                  fontSize="14px"
                 >
                   The Future of Art
                 </div>
@@ -2397,7 +2397,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                       "fontWeight": 500,
                     }
                   }
-                  fontSize={14}
+                  fontSize="14px"
                 >
                   <div
                     className="c85"
@@ -2417,7 +2417,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                         "fontWeight": 500,
                       }
                     }
-                    fontSize={14}
+                    fontSize="14px"
                   >
                     May 19, 2017
                   </div>

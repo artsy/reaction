@@ -1,4 +1,4 @@
-export * from "./SuperDeprecatedResponsive"
+export * from "./DeprecatedResponsive"
 import * as theme from "@artsy/palette"
 import { createMedia } from "@artsy/react-responsive-media"
 
