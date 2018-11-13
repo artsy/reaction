@@ -31,7 +31,7 @@ describe("ArtworkSidebarArtists", () => {
     it("displays the pageview count and content", () => {
       const html = wrapper.html()
       expect(html).toContain("This work is getting noticed")
-      expect(html).toMatch(/It has been viewed.*10.*times/)
+      expect(html).toMatch(/It has been viewed.*10 times.* this week/)
     })
   })
 
