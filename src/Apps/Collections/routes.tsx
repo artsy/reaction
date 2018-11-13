@@ -9,8 +9,8 @@ export const routes: RouteConfig[] = [
     Component: CollectionsApp,
     query: graphql`
       query routes_MarketingCollectionsAppQuery {
-        collections: marketingCollections {
-          ...CollectionsApp_collections
+        categories: marketingCategories {
+          ...CollectionsApp_categories
         }
       }
     `,
