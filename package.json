@@ -12,10 +12,6 @@
     "dist",
     "docs"
   ],
-  "engines": {
-    "node": "8.12.x",
-    "npm": "5.4.x"
-  },
   "peerDependencies": {
     "dd-trace": "^0.6.0",
     "react": "^16.5.0",
