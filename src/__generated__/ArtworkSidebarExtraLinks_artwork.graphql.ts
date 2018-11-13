@@ -7,6 +7,8 @@ export type ArtworkSidebarExtraLinks_artwork = {
     readonly __id: string;
     readonly is_in_auction: boolean | null;
     readonly is_for_sale: boolean | null;
+    readonly is_acquireable: boolean | null;
+    readonly is_inquireable: boolean | null;
     readonly artists: ReadonlyArray<({
         readonly __id: string;
         readonly is_consignable: boolean | null;
@@ -46,6 +48,20 @@ return {
       "kind": "ScalarField",
       "alias": null,
       "name": "is_for_sale",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "is_acquireable",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "is_inquireable",
       "args": null,
       "storageKey": null
     },
@@ -90,5 +106,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '617f85197a2af859fd4e83f20c962f54';
+(node as any).hash = 'ad4704153be0bb6ae2063dd305417241';
 export default node;
