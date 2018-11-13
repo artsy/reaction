@@ -36,7 +36,7 @@ export class ArtistInfo extends Component<ArtistInfoProps> {
   @track({
     flow: Schema.Flow.ArtworkAboutTheArtist,
     type: Schema.Type.Button,
-    label: Schema.Label.ReadMore,
+    subject: Schema.Subject.ReadMore,
   })
   trackArtistBioReadMoreClick() {
     // noop
