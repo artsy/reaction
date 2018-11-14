@@ -293,8 +293,8 @@ class Filter extends Component<Props> {
                   })
 
                 return (
-                  <>
-                    <Flex>
+                  <Flex flexDirection={["column", "row"]}>
+                    <Box width={["100%", "25%"]} mr={2}>
                       <Media at="xs">
                         {filterState.state.showActionSheet && (
                           <MobileActionSheet
@@ -305,39 +305,36 @@ class Filter extends Component<Props> {
                         )}
                       </Media>
                       <Media greaterThan="xs">
-                        <Sidebar width="25%" mr={2}>
-                          <Filters />
-                        </Sidebar>
+                        <Filters />
                       </Media>
+                    </Box>
+                    {/* Main Artwork Grid */}
+                    <Box width={["100%", "75%"]}>
+                      {!hideTopBorder && <Separator mb={2} mt={-1} />}
 
-                      {/* Main Artwork Grid */}
-                      <Box width={xs ? "100%" : "75%"}>
-                        {!hideTopBorder && <Separator mb={2} mt={-1} />}
+                      {this.renderSelect({
+                        filterState,
+                        mediator,
+                        xs,
+                      })}
 
-                        {this.renderSelect({
-                          filterState,
+                      <Spacer mb={2} />
+
+                      {this.showZeroState ? (
+                        this.renderZeroState({
+                          user,
                           mediator,
-                          xs,
-                        })}
-
-                        <Spacer mb={2} />
-
-                        {this.showZeroState ? (
-                          this.renderZeroState({
-                            user,
-                            mediator,
-                          })
-                        ) : (
-                          <ArtworkFilter
-                            artist={this.props.artist}
-                            artistID={this.props.artist.id}
-                            columnCount={xs || sm || md ? 2 : 3}
-                            filters={filterState.state}
-                          />
-                        )}
-                      </Box>
-                    </Flex>
-                  </>
+                        })
+                      ) : (
+                        <ArtworkFilter
+                          artist={this.props.artist}
+                          artistID={this.props.artist.id}
+                          columnCount={xs || sm || md ? 2 : 3}
+                          filters={filterState.state}
+                        />
+                      )}
+                    </Box>
+                  </Flex>
                 )
               }}
             </Responsive>
@@ -409,5 +406,3 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(
     }
   `
 )
-
-const Sidebar = Box
