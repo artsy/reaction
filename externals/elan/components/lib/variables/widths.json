@@ -1,0 +1,13 @@
+{
+  "content-margin-top": "10px",
+  "home-logo-size": "52px",
+  "body-min-width": "950px",
+  "default-max-page-width": "1250px",
+  "main-header-height": "53px",
+  "welcome-header-height": "85px",
+  "layout-side-margin": "55px",
+  "golden-ratio-small-percent": "38%",
+  "feed-max-width": "1084px",
+  "default-modal-padding": "30px",
+  "default-icon-font-size": "32px"
+}

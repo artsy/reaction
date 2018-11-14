@@ -1,0 +1,24 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true,
+    "jasmine": true,
+    "es6": true
+  },
+  "plugins": ["promise"],
+  "extends": ["react-app", "plugin:promise/recommended"],
+  "parser": "babel-eslint",
+  "rules": {
+    "import/first": 0,
+    "no-useless-escape": 0,
+    "no-empty-pattern": 0,
+    "promise/no-nesting": 0
+  },
+  "globals": {
+    "expect": false,
+    "schema": false,
+    "sinon": false,
+    "expectPromiseRejectionToMatch": false
+  }
+}

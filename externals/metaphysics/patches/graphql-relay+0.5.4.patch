@@ -1,0 +1,31 @@
+patch-package
+--- a/node_modules/graphql-relay/lib/connection/arrayconnection.js
++++ b/node_modules/graphql-relay/lib/connection/arrayconnection.js
+@@ -60,7 +60,8 @@ function connectionFromArraySlice(arraySlice, args, meta) {
+       first = args.first,
+       last = args.last;
+   var sliceStart = meta.sliceStart,
+-      arrayLength = meta.arrayLength;
++      arrayLength = meta.arrayLength,
++      resolveNode= meta.resolveNode;
+ 
+   var sliceEnd = sliceStart + arraySlice.length;
+   var beforeOffset = getOffsetWithDefault(before, arrayLength);
+@@ -87,10 +88,15 @@ function connectionFromArraySlice(arraySlice, args, meta) {
+   var slice = arraySlice.slice(Math.max(startOffset - sliceStart, 0), arraySlice.length - (sliceEnd - endOffset));
+ 
+   var edges = slice.map(function (value, index) {
+-    return {
++    const newEdge = {
+       cursor: offsetToCursor(startOffset + index),
+-      node: value
++      node: !!resolveNode ? resolveNode(value) : value,
+     };
++
++    if (resolveNode) {
++      return { ...value, ...newEdge };
++    }
++    return newEdge;
+   });
+ 
+   var firstEdge = edges[0];

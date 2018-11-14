@@ -1,0 +1,33 @@
+{
+  "editor.rulers": [80],
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "[json]": {
+    "editor.formatOnSave": false
+  },
+  "eslint.autoFixOnSave": false,
+  "javascript.validate.enable": true,
+  "search.exclude": {
+    "**/node_modules": true
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/build": true
+  },
+  "path-intellisense.mappings": {
+    "/": "${workspaceRoot}",
+    "lib": "${workspaceRoot}/lib",
+    "schema": "${workspaceRoot}/schema",
+    "test": "${workspaceRoot}/test"
+  },
+  "cSpell.words": [
+    "Ecommerce",
+    "Refetch",
+    "Reloadable",
+    "consignable",
+    "mockxchange",
+    "urljoin",
+    "kaws"
+  ],
+  "debug.node.autoAttach": "on"
+}

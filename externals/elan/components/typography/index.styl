@@ -1,0 +1,7 @@
+typeSizes = json('../lib/variables/typography.json', { hash: true })
+
+for fontName, sizes in typeSizes
+  for size, styles in sizes
+    .{fontName}-{size}
+      {fontName}()
+      {styles}

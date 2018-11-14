@@ -1,0 +1,49 @@
+/* eslint-disable promise/always-return */
+import gql from "lib/gql"
+import { mockxchange } from "test/fixtures/exchange/mockxchange"
+import exchangeOrderJSON from "test/fixtures/exchange/order.json"
+import { sampleOrder } from "test/fixtures/results/sample_order"
+import { runQuery } from "test/utils"
+import { OrderSellerFields } from "./order_fields"
+
+let rootValue
+
+describe("Approve Order Mutation", () => {
+  beforeEach(() => {
+    const resolvers = {
+      Mutation: {
+        approveOrder: () => ({
+          orderOrError: { order: exchangeOrderJSON },
+        }),
+      },
+    }
+
+    rootValue = mockxchange(resolvers)
+  })
+  it("approves order and returns order", () => {
+    const mutation = gql`
+      mutation {
+        approveOrder(input: { orderId: "111" }) {
+          orderOrError {
+            ... on OrderWithMutationSuccess {
+              order {
+                ${OrderSellerFields}
+              }
+            }
+            ... on OrderWithMutationFailure {
+              error {
+                type
+                code
+                data
+              }
+            }
+          }
+        }
+      }
+    `
+
+    return runQuery(mutation, rootValue).then(data => {
+      expect(data!.approveOrder.orderOrError.order).toEqual(sampleOrder())
+    })
+  })
+})

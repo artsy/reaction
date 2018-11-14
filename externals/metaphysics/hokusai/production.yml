@@ -1,0 +1,137 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: metaphysics-web
+  namespace: default
+spec:
+  strategy:
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 20%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: metaphysics
+        layer: application
+        component: web
+      name: metaphysics-web
+    spec:
+      containers:
+      - name: metaphysics-web
+        env:
+        - name: DD_TRACER_HOSTNAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        - name: STATSD_HOST
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        envFrom:
+        - configMapRef:
+            name: metaphysics-environment
+        image: 585031190124.dkr.ecr.us-east-1.amazonaws.com/metaphysics:production
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        resources:
+          requests:
+            cpu: 500m
+            memory: 1Gi
+          limits:
+            memory: 1536Mi
+        readinessProbe:
+          httpGet:
+            port: 3000
+            path: /health
+            httpHeaders:
+            - name: X-FORWARDED-PROTO
+              value: https
+          initialDelaySeconds: 5
+          periodSeconds: 5
+      - name: metaphysics-goreplay
+        envFrom:
+        - configMapRef:
+            name: metaphysics-environment
+        image: 585031190124.dkr.ecr.us-east-1.amazonaws.com/metaphysics:production
+        imagePullPolicy: Always
+        args: ["./scripts/run-goreplay.sh"]
+        securityContext:
+          capabilities:
+            add:
+            - NET_RAW
+            - NET_ADMIN
+      dnsPolicy: ClusterFirst
+      dnsConfig:
+        options:
+        - name: ndots
+          value: "1"
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: tier
+                operator: In
+                values:
+                - api
+                - foreground
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            preference:
+              matchExpressions:
+              - key: tier
+                operator: In
+                values:
+                - api
+
+---
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: metaphysics-web
+  namespace: default
+spec:
+  scaleTargetRef:
+    apiVersion: extensions/v1beta1
+    kind: Deployment
+    name: metaphysics-web
+  minReplicas: 7
+  maxReplicas: 15
+  targetCPUUtilizationPercentage: 70
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: metaphysics
+    layer: application
+    component: web
+  name: metaphysics-web
+  namespace: default
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: "arn:aws:iam::585031190124:server-certificate/2018-01-17_artsy-net-wildcard"
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "http"
+    service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "443"
+    service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
+    service.beta.kubernetes.io/aws-load-balancer-connection-draining-enabled: "true"
+    service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout: "300"
+spec:
+  ports:
+  - port: 443
+    protocol: TCP
+    name: https
+    targetPort: 3000
+  - port: 80
+    protocol: TCP
+    name: http
+    targetPort: 3000
+  selector:
+    app: metaphysics
+    layer: application
+    component: web
+  sessionAffinity: None
+  type: LoadBalancer
