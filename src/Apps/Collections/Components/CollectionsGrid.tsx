@@ -1,6 +1,7 @@
 import { Box, Flex, Sans, Separator } from "@artsy/palette"
 import React, { Component } from "react"
 import { EntityHeader } from "Styleguide/Components/EntityHeader"
+import { slugify } from "underscore.string"
 import { crop } from "Utils/resizer"
 import { Media } from "Utils/Responsive"
 
@@ -21,8 +22,8 @@ export class CollectionsGrid extends Component<CollectionsGridProps> {
     const hasShortRow = collections.length % 3 !== 0 // Preserve left align
 
     return (
-      <Box pb={80}>
-        <Sans size="3" weight="medium">
+      <Box pb={80} id={slugify(name)}>
+        <Sans size="3" weight="medium" pb={15}>
           {name}
         </Sans>
 
