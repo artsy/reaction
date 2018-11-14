@@ -3,6 +3,7 @@ import { mockTracking } from "Artsy/Analytics"
 import { mount } from "enzyme"
 import React from "react"
 
+import { Collapse } from "@artsy/palette"
 import {
   OrderWithShippingDetails,
   PickupOrder,
@@ -16,7 +17,6 @@ import { Input } from "../../../../Components/Input"
 import {
   ActiveTabContainer,
   CheckMarkWrapper,
-  Collapse,
   Stepper,
 } from "../../../../Styleguide/Components"
 import { CreditCardInput } from "../../Components/CreditCardInput"
