@@ -3,7 +3,7 @@ import { groupBy } from "lodash"
 import React, { Component } from "react"
 import styled from "styled-components"
 import { Col, Row } from "Styleguide/Elements/Grid"
-import { Responsive } from "Utils/Responsive"
+import { Media } from "Utils/Responsive"
 
 import {
   Box,
@@ -91,84 +91,89 @@ class CVItem extends Component<CVItemProps, CVItemState> {
       }
     )
 
-    return (
-      <Responsive>
-        {({ xs, sm, md }) => {
-          // Element spacing - correction for lineheight
-          const sectionSpace = space(4) - 4
+    // Element spacing - correction for lineheight
+    const sectionSpace = space(4) - 4
 
-          return (
-            <CVItems className="cvItems">
-              {(xs || sm || md) && (
-                <Row>
-                  <Col>
-                    <Category size={xs ? "2" : "3"} weight="medium">
-                      {this.props.category}
-                    </Category>
-                    <Spacer mb={xs ? 0.5 : 1} />
-                  </Col>
-                </Row>
-              )}
-              {Object.keys(groupedByYear)
-                .sort()
-                .reverse()
-                .map((year, index) => {
-                  const isFirst = index === 0
-                  const yearGroup = groupedByYear[year]
-                  return xs ? (
-                    <Flex key={index}>
-                      <Year size="2" mr={1}>
+    return (
+      <CVItems className="cvItems">
+        <Media lessThan="lg">
+          <Row>
+            <Col>
+              <Category size={["2", "3"]} weight="medium">
+                {this.props.category}
+              </Category>
+              <Spacer mb={[0.5, 1]} />
+            </Col>
+          </Row>
+        </Media>
+        {Object.keys(groupedByYear)
+          .sort()
+          .reverse()
+          .map((year, index) => {
+            const isFirst = index === 0
+            const yearGroup = groupedByYear[year]
+            return (
+              <>
+                <Media at="xs">
+                  <Flex>
+                    <Year size="2" mr={1}>
+                      {year}
+                    </Year>
+                    <Box>{this.renderEntries(yearGroup, "2")}</Box>
+                  </Flex>
+                </Media>
+                <Media greaterThan="xs">
+                  <Row>
+                    <Media greaterThan="md">
+                      <Col xl={2} lg={2}>
+                        {isFirst && (
+                          <Category size="3" weight="medium">
+                            {this.props.category}
+                          </Category>
+                        )}
+                      </Col>
+                    </Media>
+                    <Col lg={1} md={2} sm={2}>
+                      <Year mr={2} size="3">
                         {year}
                       </Year>
-                      <Box>{this.renderEntries(yearGroup, "2")}</Box>
-                    </Flex>
-                  ) : (
-                    <Row key={index}>
-                      {!sm &&
-                        !md && (
-                          <Col xl={2} lg={2}>
-                            {isFirst && (
-                              <Category size="3" weight="medium">
-                                {this.props.category}
-                              </Category>
-                            )}
-                          </Col>
-                        )}
-                      <Col lg={1} md={2} sm={2}>
-                        <Year mr={2} size="3">
-                          {year}
-                        </Year>
-                      </Col>
-                      <Col md={8} lg={9} xl={9} sm={10}>
-                        {this.renderEntries(yearGroup)}
-                      </Col>
-                    </Row>
-                  )
-                })}
+                    </Col>
+                    <Col md={8} lg={9} xl={9} sm={10}>
+                      {this.renderEntries(yearGroup)}
+                    </Col>
+                  </Row>
+                </Media>
+              </>
+            )
+          })}
 
-              {this.hasMore && (
-                <Row>
-                  <Col xs={0} sm={0} md={0} lg={2} xl={2} />
-                  <Col lgOffset={2} xlOffset={2} lg={10} xl={10}>
-                    <ShowMoreButton
-                      onClick={() => this.loadMore()}
-                      loading={this.state.isLoading ? true : false}
-                      width={xs ? "100%" : ""}
-                      mt={xs ? 1 : 2}
-                    />
+        {this.hasMore && (
+          <Row>
+            <Col xs={0} sm={0} md={0} lg={2} xl={2} />
+            <Col lgOffset={2} xlOffset={2} lg={10} xl={10}>
+              <ShowMoreButton
+                onClick={() => this.loadMore()}
+                loading={this.state.isLoading ? true : false}
+                width={["100%", ""]}
+                mt={[1, 2]}
+              />
 
-                    {xs && <Spacer mb={1} />}
-                  </Col>
-                </Row>
-              )}
+              <Media at="xs">
+                <Spacer mb={1} />
+              </Media>
+            </Col>
+          </Row>
+        )}
 
-              <div className="cvSeparator">
-                {xs ? <Spacer mt={1} /> : <Separator my={sectionSpace} />}
-              </div>
-            </CVItems>
-          )
-        }}
-      </Responsive>
+        <div className="cvSeparator">
+          <Media at="xs">
+            <Spacer mt={1} />
+          </Media>
+          <Media greaterThan="xs">
+            <Separator my={sectionSpace} />
+          </Media>
+        </div>
+      </CVItems>
     )
   }
 }

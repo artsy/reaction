@@ -221,12 +221,9 @@ class Filter extends Component<Props> {
     )
   }
 
-  renderSelect({ filterState, mediator, xs }) {
+  renderSelect({ filterState, mediator }) {
     return (
-      <Flex
-        justifyContent={xs ? "space-between" : "flex-end"}
-        alignItems="center"
-      >
+      <Flex justifyContent={["space-between", "flex-end"]} alignItems="center">
         <SmallSelect
           mt="-8px"
           options={[
@@ -257,7 +254,7 @@ class Filter extends Component<Props> {
           }}
         />
 
-        {xs && (
+        <Media at="xs">
           <Button
             size="small"
             mt={-1}
@@ -269,7 +266,7 @@ class Filter extends Component<Props> {
               Filter
             </Flex>
           </Button>
-        )}
+        </Media>
       </Flex>
     )
   }
@@ -282,7 +279,7 @@ class Filter extends Component<Props> {
           return (
             <Responsive>
               {({ xs, sm, md }) => {
-                const hideTopBorder = this.props.hideTopBorder || xs
+                const hideTopBorder = this.props.hideTopBorder
 
                 const Filters = () =>
                   this.renderFilters({
@@ -311,13 +308,14 @@ class Filter extends Component<Props> {
                       </Media>
 
                       {/* Main Artwork Grid */}
-                      <Box width={xs ? "100%" : "75%"}>
-                        {!hideTopBorder && <Separator mb={2} mt={-1} />}
+                      <Box width={["100%", "75%"]}>
+                        <Media greaterThan="xs">
+                          {!hideTopBorder && <Separator mb={2} mt={-1} />}
+                        </Media>
 
                         {this.renderSelect({
                           filterState,
                           mediator,
-                          xs,
                         })}
 
                         <Spacer mb={2} />
