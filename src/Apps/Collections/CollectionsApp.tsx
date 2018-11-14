@@ -29,7 +29,7 @@ export class CollectionsApp extends Component<CollectionsAppProps> {
             alignItems="flex-end"
           >
             <Serif size="8">
-              <h1 className="title">Collections</h1>
+              <h1>Collections</h1>
             </Serif>
 
             <Sans size="3" weight="medium">
