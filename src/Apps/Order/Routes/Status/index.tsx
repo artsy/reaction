@@ -33,72 +33,6 @@ export class StatusRoute extends Component<StatusProps> {
     }
   }
 
-  messageCopy = () => {
-    const { order } = this.props
-    const { state, requestedFulfillment } = order
-    switch (state) {
-      case "SUBMITTED":
-        return (
-          <>
-            Thank you for your purchase. You will receive a confirmation email
-            within 2 days.
-          </>
-        )
-      case "APPROVED":
-        return requestedFulfillment.__typename === "Ship" ? (
-          <>
-            Thank you for your purchase. You will be notified when the work has
-            shipped, typically within 5–7 business days.
-          </>
-        ) : (
-          <>
-            Thank you for your purchase. A specialist will contact you within 2
-            business days to coordinate pickup.
-          </>
-        )
-      case "FULFILLED":
-        const fulfillment = get(
-          order,
-          o => o.lineItems.edges[0].node.fulfillments.edges[0].node
-        )
-        if (!fulfillment) {
-          return false
-        }
-        return requestedFulfillment.__typename === "Ship" ? (
-          <>
-            <>Your work is on its way.</>
-            <br />
-            <br />
-            {fulfillment.courier && (
-              <>
-                Shipper: {fulfillment.courier} <br />
-              </>
-            )}
-            {fulfillment.trackingId && (
-              <>
-                <>Tracking Info: {fulfillment.trackingId}</>
-                <br />
-              </>
-            )}
-            {fulfillment.estimatedDelivery && (
-              <>Estimated delivery: {fulfillment.estimatedDelivery}</>
-            )}
-          </>
-        ) : (
-          false
-        )
-      case "CANCELED":
-        return (
-          <>
-            Please allow 5–7 business days for the refund to appear on your bank
-            statement. Contact{" "}
-            <a href="mailto:orders@artsy.net">orders@artsy.net</a> with any
-            questions.
-          </>
-        )
-    }
-  }
-
   componentDidMount() {
     this.props.mediator.trigger("order:status")
   }
@@ -106,7 +40,12 @@ export class StatusRoute extends Component<StatusProps> {
   render() {
     const { order } = this.props
 
-    const message = this.messageCopy()
+    const isOfferFlow = order.mode === "OFFER"
+    const message = isOfferFlow
+      ? offerMessages[order.state] || orderMessages[order.state]
+      : orderMessages[order.state]
+    const flowName = isOfferFlow ? "Offer" : "Order"
+    const userMessage = message && message(this.props)
 
     return (
       <HorizontalPadding>
@@ -114,14 +53,14 @@ export class StatusRoute extends Component<StatusProps> {
           {this.stateCopy()}
         </Serif>
         <Sans size="2" weight="regular" color="black60" mb={[2, 3]}>
-          Order #{order.code}
+          #{flowName} #{order.code}
         </Sans>
         <TwoColumnLayout
           Content={
             <>
-              <Title>Order status | Artsy</Title>
+              <Title>{flowName} status | Artsy</Title>
               <Join separator={<Spacer mb={[2, 3]} />}>
-                {message && <Message>{message}</Message>}
+                {userMessage && <Message p={[2, 3]}>{userMessage}</Message>}
                 <TransactionSummary order={order} />
               </Join>
               <Spacer mb={[2, 3]} />
@@ -152,6 +91,104 @@ const StatusRouteWrapper = props => (
   </ContextConsumer>
 )
 
+const offerMessages = {
+  SUBMITTED: (props: StatusProps) => {
+    const artwork = get(props.order, o => o.lineItems.edges[0].node.artwork)
+    return (
+      <>
+        You’ll receive a confirmation email. The seller has{" "}
+        <Sans size="3t" weight="medium" display="inline">
+          48 hours
+        </Sans>{" "}
+        to respond to your offer. If the gallery doesn’t respond in time, your
+        offer will be canceled.
+        <br />
+        <br />
+        {artwork.is_acquireable ? (
+          <>
+            <Sans size="3t" weight="medium" display="inline">
+              Keep in mind
+            </Sans>{" "}
+            making an offer doesn’t guarantee you the work. Another buyer could
+            make a higher offer or{" "}
+            <a href={`/artwork/${artwork.id}`}>buy now</a> at list price.
+          </>
+        ) : (
+          <>
+            <Sans size="3t" weight="medium" display="inline">
+              Keep in mind
+            </Sans>{" "}
+            making an offer doesn’t guarantee you the work. Another buyer could
+            make a higher offer.
+          </>
+        )}
+      </>
+    )
+  },
+}
+const orderMessages = {
+  SUBMITTED: () => (
+    <>
+      Thank you for your purchase. You will receive a confirmation email within
+      2 days.
+    </>
+  ),
+  APPROVED: ({ order: { requestedFulfillment } }) => {
+    return requestedFulfillment.__typename === "Ship" ? (
+      <>
+        Thank you for your purchase. You will be notified when the work has
+        shipped, typically within 5–7 business days.
+      </>
+    ) : (
+      <>
+        Thank you for your purchase. A specialist will contact you within 2
+        business days to coordinate pickup.
+      </>
+    )
+  },
+  FULFILLED: ({ order }) => {
+    const fulfillment = get(
+      order,
+      o => o.lineItems.edges[0].node.fulfillments.edges[0].node
+    )
+    if (!fulfillment) {
+      return false
+    }
+    const { requestedFulfillment } = order
+    return requestedFulfillment.__typename === "Ship" ? (
+      <>
+        Your work is on its way.
+        <br />
+        <br />
+        {fulfillment.courier && (
+          <>
+            Shipper: {fulfillment.courier}
+            <br />
+          </>
+        )}
+        {fulfillment.trackingId && (
+          <>
+            <>Tracking Info: {fulfillment.trackingId}</>
+            <br />
+          </>
+        )}
+        {fulfillment.estimatedDelivery && (
+          <>Estimated delivery: {fulfillment.estimatedDelivery}</>
+        )}
+      </>
+    ) : (
+      false
+    )
+  },
+  CANCELED: () => (
+    <>
+      Please allow 5–7 business days for the refund to appear on your bank
+      statement. Contact <a href="mailto:orders@artsy.net">orders@artsy.net</a>{" "}
+      with any questions.
+    </>
+  ),
+}
+
 export const StatusFragmentContainer = createFragmentContainer(
   StatusRouteWrapper,
   graphql`
@@ -159,6 +196,7 @@ export const StatusFragmentContainer = createFragmentContainer(
       id
       code
       state
+      mode
       requestedFulfillment {
         ... on Ship {
           __typename
@@ -183,6 +221,7 @@ export const StatusFragmentContainer = createFragmentContainer(
             }
             artwork {
               id
+              is_acquireable
               ...ItemReview_artwork
             }
           }

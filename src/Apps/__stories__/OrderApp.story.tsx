@@ -177,3 +177,85 @@ storiesOf("Apps/Order Page/Make Offer/Review", module).add("Review", () => (
     })}
   />
 ))
+
+storiesOf("Apps/Order Page/Make Offer/Status", module)
+  .add("submitted (ship)", () => (
+    <Router
+      initialRoute="/orders/123/status"
+      mockResolvers={mockResolver({
+        ...OrderWithShippingDetails,
+        state: "SUBMITTED",
+        mode: "OFFER",
+      })}
+    />
+  ))
+  .add("submitted (pickup)", () => (
+    <Router
+      initialRoute="/orders/123/status"
+      mockResolvers={mockResolver({
+        ...PickupOrder,
+        state: "SUBMITTED",
+        mode: "OFFER",
+      })}
+    />
+  ))
+  .add("approved (ship)", () => (
+    <Router
+      initialRoute="/orders/123/status"
+      mockResolvers={mockResolver({
+        ...OrderWithShippingDetails,
+        state: "APPROVED",
+        mode: "OFFER",
+      })}
+    />
+  ))
+  .add("approved (pickup)", () => (
+    <Router
+      initialRoute="/orders/123/status"
+      mockResolvers={mockResolver({
+        ...PickupOrder,
+        state: "APPROVED",
+        mode: "OFFER",
+      })}
+    />
+  ))
+  .add("fulfilled (ship)", () => (
+    <Router
+      initialRoute="/orders/123/status"
+      mockResolvers={mockResolver({
+        ...OrderWithShippingDetails,
+        state: "FULFILLED",
+        mode: "OFFER",
+      })}
+    />
+  ))
+  .add("fulfilled (pickup)", () => (
+    <Router
+      initialRoute="/orders/123/status"
+      mockResolvers={mockResolver({
+        ...PickupOrder,
+        state: "FULFILLED",
+        mode: "OFFER",
+      })}
+    />
+  ))
+  .add("canceled (ship)", () => (
+    <Router
+      initialRoute="/orders/123/status"
+      mockResolvers={mockResolver({
+        ...OrderWithShippingDetails,
+        state: "CANCELED",
+        mode: "OFFER",
+      })}
+    />
+  ))
+  .add("canceled (pickup)", () => (
+    <Router
+      initialRoute="/orders/123/status"
+      mockResolvers={mockResolver({
+        ...PickupOrder,
+        state: "CANCELED",
+        mode: "OFFER",
+      })}
+    />
+  ))
