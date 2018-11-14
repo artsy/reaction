@@ -2,7 +2,6 @@ import { TransactionSummary_order } from "__generated__/TransactionSummary_order
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { get } from "Utils/get"
-import { Responsive } from "Utils/Responsive"
 
 import {
   Box,
@@ -132,48 +131,35 @@ export class TransactionSummary extends React.Component<
   }
 }
 
-const Entry = ({
-  label,
-  value,
-  final,
-}: {
+interface SecondaryEntryProps {
   label: React.ReactNode
   value: React.ReactNode
-  final?: boolean
-}) => (
-  <Responsive>
-    {({ xs }) => {
-      const size = xs ? "2" : "3"
+}
 
-      return (
-        <Flex justifyContent="space-between" alignItems="baseline">
-          <div>
-            <Serif size={size} color="black60">
-              {label}
-            </Serif>
-          </div>
-          <div>
-            <Serif
-              size={size}
-              color={final ? "black100" : "black60"}
-              weight={final ? "semibold" : "regular"}
-            >
-              {value}
-            </Serif>
-          </div>
-        </Flex>
-      )
-    }}
-  </Responsive>
+interface EntryProps extends SecondaryEntryProps {
+  final?: boolean
+}
+
+const Entry: React.SFC<EntryProps> = ({ label, value, final }) => (
+  <Flex justifyContent="space-between" alignItems="baseline">
+    <div>
+      <Serif size={["2", "3"]} color="black60">
+        {label}
+      </Serif>
+    </div>
+    <div>
+      <Serif
+        size={["2", "3"]}
+        color={final ? "black100" : "black60"}
+        weight={final ? "semibold" : "regular"}
+      >
+        {value}
+      </Serif>
+    </div>
+  </Flex>
 )
 
-const SecondaryEntry = ({
-  label,
-  value,
-}: {
-  label: React.ReactNode
-  value: React.ReactNode
-}) => (
+const SecondaryEntry: React.SFC<SecondaryEntryProps> = ({ label, value }) => (
   <Flex justifyContent="space-between" alignItems="baseline">
     <div>
       <Sans size="2" color="black60">

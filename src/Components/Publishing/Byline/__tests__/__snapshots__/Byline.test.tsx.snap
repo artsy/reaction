@@ -83,7 +83,7 @@ exports[`Byline renders a byline 1`] = `
         "fontWeight": 500,
       }
     }
-    fontSize={14}
+    fontSize="14px"
   >
     <div
       className="c2"
@@ -103,7 +103,7 @@ exports[`Byline renders a byline 1`] = `
           "fontWeight": 500,
         }
       }
-      fontSize={14}
+      fontSize="14px"
     >
       May 19, 2017 9:09 am
     </div>

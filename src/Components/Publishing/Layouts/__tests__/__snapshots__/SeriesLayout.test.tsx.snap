@@ -903,7 +903,7 @@ exports[`renders a series properly 1`] = `
                     "fontWeight": 500,
                   }
                 }
-                fontSize={14}
+                fontSize="14px"
               >
                 The Future of Art
               </div>
@@ -929,7 +929,7 @@ exports[`renders a series properly 1`] = `
                     "fontWeight": 500,
                   }
                 }
-                fontSize={14}
+                fontSize="14px"
               >
                 Aug 28, 2017
               </div>
@@ -973,7 +973,7 @@ exports[`renders a series properly 1`] = `
                     "fontWeight": 500,
                   }
                 }
-                fontSize={14}
+                fontSize="14px"
               >
                 02:28
               </div>
@@ -1002,7 +1002,7 @@ exports[`renders a series properly 1`] = `
                     "fontWeight": 500,
                   }
                 }
-                fontSize={14}
+                fontSize="14px"
               >
                 The Future of Art
               </div>
@@ -1029,7 +1029,7 @@ exports[`renders a series properly 1`] = `
                     "fontWeight": 500,
                   }
                 }
-                fontSize={14}
+                fontSize="14px"
               >
                 <div
                   className="c33"
@@ -1049,7 +1049,7 @@ exports[`renders a series properly 1`] = `
                       "fontWeight": 500,
                     }
                   }
-                  fontSize={14}
+                  fontSize="14px"
                 >
                   May 19, 2017
                 </div>
@@ -2128,7 +2128,7 @@ exports[`renders a sponsored series properly 1`] = `
                     "fontWeight": 500,
                   }
                 }
-                fontSize={14}
+                fontSize="14px"
               >
                 The Future of Art
               </div>
@@ -2154,7 +2154,7 @@ exports[`renders a sponsored series properly 1`] = `
                     "fontWeight": 500,
                   }
                 }
-                fontSize={14}
+                fontSize="14px"
               >
                 Aug 28, 2017
               </div>
@@ -2198,7 +2198,7 @@ exports[`renders a sponsored series properly 1`] = `
                     "fontWeight": 500,
                   }
                 }
-                fontSize={14}
+                fontSize="14px"
               >
                 02:28
               </div>
@@ -2227,7 +2227,7 @@ exports[`renders a sponsored series properly 1`] = `
                     "fontWeight": 500,
                   }
                 }
-                fontSize={14}
+                fontSize="14px"
               >
                 The Future of Art
               </div>
@@ -2254,7 +2254,7 @@ exports[`renders a sponsored series properly 1`] = `
                     "fontWeight": 500,
                   }
                 }
-                fontSize={14}
+                fontSize="14px"
               >
                 <div
                   className="c40"
@@ -2274,7 +2274,7 @@ exports[`renders a sponsored series properly 1`] = `
                       "fontWeight": 500,
                     }
                   }
-                  fontSize={14}
+                  fontSize="14px"
                 >
                   May 19, 2017
                 </div>

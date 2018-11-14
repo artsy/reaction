@@ -331,7 +331,7 @@ exports[`ArticleCard renders properly 1`] = `
             "fontWeight": 500,
           }
         }
-        fontSize={14}
+        fontSize="14px"
       >
         More in 
         <span>
@@ -379,7 +379,7 @@ exports[`ArticleCard renders properly 1`] = `
                     "fontWeight": 500,
                   }
                 }
-                fontSize={14}
+                fontSize="14px"
               >
                 <div
                   className="c17"
@@ -399,7 +399,7 @@ exports[`ArticleCard renders properly 1`] = `
                       "fontWeight": 500,
                     }
                   }
-                  fontSize={14}
+                  fontSize="14px"
                 >
                   May 19, 2017
                 </div>
@@ -451,7 +451,7 @@ exports[`ArticleCard renders properly 1`] = `
                     "fontWeight": 500,
                   }
                 }
-                fontSize={14}
+                fontSize="14px"
               >
                 Aug 28, 2017
               </div>
@@ -495,7 +495,7 @@ exports[`ArticleCard renders properly 1`] = `
                     "fontWeight": 500,
                   }
                 }
-                fontSize={14}
+                fontSize="14px"
               >
                 02:28
               </div>

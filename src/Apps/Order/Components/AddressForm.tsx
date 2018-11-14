@@ -102,7 +102,7 @@ export class AddressForm extends React.Component<
 
         <TwoColumnSplit>
           <Flex flexDirection="column" pb={1}>
-            <Serif mb={1} size="3t" color="black100" lineHeight={18}>
+            <Serif mb={1} size="3t" color="black100" lineHeight="1.1em">
               Country
             </Serif>
             <CountrySelect
