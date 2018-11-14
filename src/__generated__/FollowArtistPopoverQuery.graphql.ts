@@ -47,9 +47,19 @@ fragment FollowArtistPopoverRow_artist on Artist {
   __id
   name
   image {
-    cropped(width: 100, height: 100) {
+    cropped(width: 45, height: 45) {
       url
     }
+  }
+  ...FollowArtistButton_artist
+}
+
+fragment FollowArtistButton_artist on Artist {
+  __id
+  id
+  is_followed
+  counts {
+    follows
   }
 }
 */
@@ -83,7 +93,7 @@ return {
   "operationKind": "query",
   "name": "FollowArtistPopoverQuery",
   "id": null,
-  "text": "query FollowArtistPopoverQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...FollowArtistPopover_suggested\n    __id\n  }\n}\n\nfragment FollowArtistPopover_suggested on Artist {\n  related {\n    suggested(first: 3, exclude_followed_artists: true) {\n      edges {\n        node {\n          __id\n          ...FollowArtistPopoverRow_artist\n        }\n      }\n    }\n  }\n  __id\n}\n\nfragment FollowArtistPopoverRow_artist on Artist {\n  id\n  _id\n  __id\n  name\n  image {\n    cropped(width: 100, height: 100) {\n      url\n    }\n  }\n}\n",
+  "text": "query FollowArtistPopoverQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...FollowArtistPopover_suggested\n    __id\n  }\n}\n\nfragment FollowArtistPopover_suggested on Artist {\n  related {\n    suggested(first: 3, exclude_followed_artists: true) {\n      edges {\n        node {\n          __id\n          ...FollowArtistPopoverRow_artist\n        }\n      }\n    }\n  }\n  __id\n}\n\nfragment FollowArtistPopoverRow_artist on Artist {\n  id\n  _id\n  __id\n  name\n  image {\n    cropped(width: 45, height: 45) {\n      url\n    }\n  }\n  ...FollowArtistButton_artist\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -209,18 +219,18 @@ return {
                                 "kind": "LinkedField",
                                 "alias": null,
                                 "name": "cropped",
-                                "storageKey": "cropped(height:100,width:100)",
+                                "storageKey": "cropped(height:45,width:45)",
                                 "args": [
                                   {
                                     "kind": "Literal",
                                     "name": "height",
-                                    "value": 100,
+                                    "value": 45,
                                     "type": "Int!"
                                   },
                                   {
                                     "kind": "Literal",
                                     "name": "width",
-                                    "value": 100,
+                                    "value": 45,
                                     "type": "Int!"
                                   }
                                 ],
@@ -235,6 +245,31 @@ return {
                                     "storageKey": null
                                   }
                                 ]
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "is_followed",
+                            "args": null,
+                            "storageKey": null
+                          },
+                          {
+                            "kind": "LinkedField",
+                            "alias": null,
+                            "name": "counts",
+                            "storageKey": null,
+                            "args": null,
+                            "concreteType": "ArtistCounts",
+                            "plural": false,
+                            "selections": [
+                              {
+                                "kind": "ScalarField",
+                                "alias": null,
+                                "name": "follows",
+                                "args": null,
+                                "storageKey": null
                               }
                             ]
                           }
