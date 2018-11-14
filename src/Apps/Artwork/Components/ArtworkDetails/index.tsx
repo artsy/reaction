@@ -16,14 +16,20 @@ import { ArtworkDetailsQuery } from "__generated__/ArtworkDetailsQuery.graphql"
 
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
+import Events from "Utils/Events"
 
 export interface ArtworkDetailsProps {
   artwork: ArtworkDetails_artwork
 }
 
-@track({
-  context_module: Schema.ContextModule.ArtworkTabs,
-})
+@track(
+  {
+    context_module: Schema.ContextModule.ArtworkTabs,
+  },
+  {
+    dispatch: data => Events.postEvent(data),
+  }
+)
 export class ArtworkDetails extends Component<ArtworkDetailsProps> {
   @track((_props, _state, [{ data }]) => {
     return {

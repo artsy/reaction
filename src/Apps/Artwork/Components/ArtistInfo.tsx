@@ -18,6 +18,7 @@ import {
   MarketInsightsFragmentContainer as MarketInsights,
   SelectedExhibitionFragmentContainer as SelectedExhibitions,
 } from "Styleguide/Components"
+import Events from "Utils/Events"
 
 interface ArtistInfoProps {
   artist: ArtistInfo_artist
@@ -29,9 +30,14 @@ const Container = ({ children }) => (
   <StackableBorderBox p={2}>{children}</StackableBorderBox>
 )
 
-@track({
-  context_module: Schema.ContextModule.Biography,
-})
+@track(
+  {
+    context_module: Schema.ContextModule.Biography,
+  },
+  {
+    dispatch: data => Events.postEvent(data),
+  }
+)
 export class ArtistInfo extends Component<ArtistInfoProps> {
   @track({
     flow: Schema.Flow.ArtworkAboutTheArtist,
