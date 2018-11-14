@@ -28,7 +28,9 @@ export class CollectionsApp extends Component<CollectionsAppProps> {
             justifyContent="space-between"
             alignItems="flex-end"
           >
-            <Serif size="8">Collections</Serif>
+            <Serif size="8">
+              <h1 className="title">Collections</h1>
+            </Serif>
 
             <Sans size="3" weight="medium">
               <a href="/collect">View works</a>
