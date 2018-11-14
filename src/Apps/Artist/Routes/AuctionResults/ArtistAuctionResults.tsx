@@ -110,7 +110,7 @@ class AuctionResultsContainer extends Component<
           return (
             <>
               <Row>
-                <Col sm={2} pr={2}>
+                <Col sm={2} pr={[0, 2]}>
                   <TableSidebar count={totalCount} />
                 </Col>
 

@@ -26,31 +26,58 @@ export interface Props extends ContextProps {
   user: User
 }
 
+// TODO: This whole component should be refactored to use less `Media` decisions
 export const ArtistAuctionResultItem: SFC<Props> = props => {
   return (
     <ContextConsumer>
       {({ user, mediator }) => {
         return (
-          <Row>
+          <>
             <Media at="xs">
-              <ExtraSmallAuctionItem
-                {...props}
-                mediator={mediator}
-                user={user}
-              />
+              {(className, renderChildren) => (
+                <Row className={className}>
+                  {renderChildren && (
+                    <ExtraSmallAuctionItem
+                      {...props}
+                      mediator={mediator}
+                      user={user}
+                    />
+                  )}
+                </Row>
+              )}
             </Media>
             <Media between={["sm", "lg"]}>
-              <SmallAuctionItem {...props} mediator={mediator} user={user} />
+              {(className, renderChildren) => (
+                <Row className={className}>
+                  {renderChildren && (
+                    <SmallAuctionItem
+                      {...props}
+                      mediator={mediator}
+                      user={user}
+                    />
+                  )}
+                </Row>
+              )}
             </Media>
             <Media greaterThanOrEqual="lg">
-              <LargeAuctionItem {...props} mediator={mediator} user={user} />
+              {(className, renderChildren) => (
+                <Row className={className}>
+                  {renderChildren && (
+                    <LargeAuctionItem
+                      {...props}
+                      mediator={mediator}
+                      user={user}
+                    />
+                  )}
+                </Row>
+              )}
             </Media>
             <Col>
               <Box pt={2} pb={1}>
                 {!props.lastChild && <Separator />}
               </Box>
             </Col>
-          </Row>
+          </>
         )
       }}
     </ContextConsumer>
@@ -76,7 +103,7 @@ const LargeAuctionItem: SFC<Props> = props => {
     <Subscribe to={[AuctionResultsState]}>
       {({ state, showDetailsModal }: AuctionResultsState) => {
         return (
-          <Flex>
+          <>
             <Col sm={1}>
               <Box height="auto" pr={2}>
                 <Image width="70px" src={images.thumbnail.url} />
@@ -117,7 +144,7 @@ const LargeAuctionItem: SFC<Props> = props => {
                 "lg"
               )}
             </Col>
-          </Flex>
+          </>
         )
       }}
     </Subscribe>
