@@ -203,6 +203,11 @@ export enum ContextModule {
    * Buy Now Make Offer ("Works For You")
    */
   BNMOBanner = "BNMO Banner",
+
+  /**
+   * Collection page
+   */
+  CollectionDescription = "CollectionDescription",
 }
 
 export enum Flow {
