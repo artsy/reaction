@@ -115,7 +115,6 @@ export class Details extends React.Component<Props, null> {
   saleInfoLine() {
     const { artwork } = this.props
     const { sale } = artwork
-    const isPreviewAuction = sale && sale.auction_state === "preview"
     const inClosedAuction = sale && sale.is_auction && sale.is_closed
 
     return (
@@ -129,7 +128,7 @@ export class Details extends React.Component<Props, null> {
           {inClosedAuction ? "Bidding closed" : this.saleMessageOrBidInfo()}{" "}
         </Sans>
         <Sans style={{ display: "inline" }} size={"2"} color={color("black60")}>
-          {!inClosedAuction && !isPreviewAuction && this.auctionInfo()}
+          {!inClosedAuction && this.auctionInfo()}
         </Sans>
         <Spacer mb={0.3} />
       </>
@@ -213,7 +212,6 @@ export const DetailsFragmentContainer = createFragmentContainer<Props>(
         is_open
         is_closed
         display_timely_at
-        auction_state
       }
       sale_artwork {
         highest_bid {
