@@ -63,7 +63,7 @@ export class CollectionHeader extends Component<Props> {
           const subtitleFontSize = xs ? "2" : "3"
 
           return (
-            <>
+            <header>
               <Flex flexDirection="column">
                 <Box>
                   <Background
@@ -120,7 +120,7 @@ export class CollectionHeader extends Component<Props> {
                 </Box>
               </Flex>
               <Spacer mb={2} />
-            </>
+            </header>
           )
         }}
       </Responsive>
