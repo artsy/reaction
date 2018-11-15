@@ -1,19 +1,19 @@
 import { Flex, Sans, Serif } from "@artsy/palette"
-import { CollectionsApp_collections } from "__generated__/CollectionsApp_collections.graphql"
+import { CollectionsApp_categories } from "__generated__/CollectionsApp_categories.graphql"
 import { FrameWithRecentlyViewed } from "Components/FrameWithRecentlyViewed"
 import React, { Component } from "react"
 import { Meta, Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
-import { CollectionsGrid } from "./Components/CollectionsGrid"
+import { CollectionEntity, CollectionsGrid } from "./Components/CollectionsGrid"
 
 interface CollectionsAppProps {
-  collections: CollectionsApp_collections
+  categories: CollectionsApp_categories
 }
 
 export class CollectionsApp extends Component<CollectionsAppProps> {
   render() {
-    const { collections } = this.props
+    const { categories } = this.props
 
     return (
       <>
@@ -28,13 +28,22 @@ export class CollectionsApp extends Component<CollectionsAppProps> {
             justifyContent="space-between"
             alignItems="flex-end"
           >
-            <Serif size="8">Collections</Serif>
+            <Serif size="8">
+              <h1>Collections</h1>
+            </Serif>
 
             <Sans size="3" weight="medium">
               <a href="/collect">View works</a>
             </Sans>
           </Flex>
-          <CollectionsGrid collections={collections} />
+          {categories &&
+            categories.map((category, index) => (
+              <CollectionsGrid
+                key={index}
+                name={category.name}
+                collections={category.collections as CollectionEntity[]}
+              />
+            ))}
         </FrameWithRecentlyViewed>
       </>
     )
@@ -44,11 +53,14 @@ export class CollectionsApp extends Component<CollectionsAppProps> {
 export const CollectionsAppFragmentContainer = createFragmentContainer(
   CollectionsApp,
   graphql`
-    fragment CollectionsApp_collections on MarketingCollection
+    fragment CollectionsApp_categories on MarketingCollectionCategory
       @relay(plural: true) {
-      slug
-      title
-      headerImage
+      name
+      collections {
+        slug
+        headerImage
+        title
+      }
     }
   `
 )
