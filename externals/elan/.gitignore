@@ -1,5 +1,0 @@
-.env
-.DS_Store
-.awspublish-*
-node_modules
-public

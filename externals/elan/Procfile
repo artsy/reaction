@@ -1,1 +1,0 @@
-web: coffee index.coffee
