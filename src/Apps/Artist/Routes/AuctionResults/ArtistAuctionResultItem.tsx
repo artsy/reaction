@@ -160,7 +160,7 @@ const SmallAuctionItem: SFC<Props> = props => {
   } = getProps(props)
 
   return (
-    <Flex>
+    <>
       <Col sm={6}>
         <Flex>
           <Box height="auto">
@@ -191,7 +191,7 @@ const SmallAuctionItem: SFC<Props> = props => {
           "sm"
         )}
       </Col>
-    </Flex>
+    </>
   )
 }
 
