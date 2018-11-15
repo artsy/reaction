@@ -1,12 +1,10 @@
+import { Flex } from "@artsy/palette"
 import { FollowArtistPopover_suggested } from "__generated__/FollowArtistPopover_suggested.graphql"
 import { FollowArtistPopoverQuery } from "__generated__/FollowArtistPopoverQuery.graphql"
 import { ContextConsumer, ContextProps } from "Artsy/SystemContext"
 import React, { SFC } from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
-import styled from "styled-components"
 import { FollowArtistPopoverRowFragmentContainer as FollowArtistPopoverRow } from "./FollowArtistPopoverRow"
-
-const Container = styled.div``
 
 interface Props extends ContextProps {
   suggested: FollowArtistPopover_suggested
@@ -16,7 +14,7 @@ const FollowArtistPopover: SFC<Props> = props => {
   const { suggested, user } = props
   const { related } = suggested
   return (
-    <Container>
+    <Flex flexDirection="column">
       {related.suggested.edges.map(({ node: artist }) => {
         return (
           <FollowArtistPopoverRow
@@ -26,7 +24,7 @@ const FollowArtistPopover: SFC<Props> = props => {
           />
         )
       })}
-    </Container>
+    </Flex>
   )
 }
 
