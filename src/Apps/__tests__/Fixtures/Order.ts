@@ -40,6 +40,7 @@ export const UntouchedBuyOrder = {
             shippingOrigin: "New York, NY",
             medium: "Oil and pencil on panel",
             shipsToContinentalUSOnly: false,
+            is_acquireable: true,
             dimensions: {
               in: "36 × 36 in",
               cm: "91.4 × 91.4 cm",

@@ -27,7 +27,7 @@ export class ArtworkDetailsAboutTheWorkFromArtsy extends Component<
   @track({
     flow: Schema.Flow.ArtworkAboutTheWork,
     type: Schema.Type.Button,
-    label: Schema.Label.ReadMore,
+    subject: Schema.Subject.ReadMore,
   })
   trackReadMoreClick() {
     // noop

@@ -4,12 +4,14 @@ import { ConcreteFragment } from "relay-runtime";
 import { ItemReview_artwork$ref } from "./ItemReview_artwork.graphql";
 import { ShippingAndPaymentSummary_order$ref } from "./ShippingAndPaymentSummary_order.graphql";
 import { TransactionSummary_order$ref } from "./TransactionSummary_order.graphql";
+export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
 declare const _Status_order$ref: unique symbol;
 export type Status_order$ref = typeof _Status_order$ref;
 export type Status_order = {
     readonly id: string | null;
     readonly code: string | null;
     readonly state: string | null;
+    readonly mode: OrderModeEnum | null;
     readonly requestedFulfillment: ({
         readonly __typename: "Ship";
     } | {
@@ -31,6 +33,7 @@ export type Status_order = {
                 }) | null;
                 readonly artwork: ({
                     readonly id: string;
+                    readonly is_acquireable: boolean | null;
                     readonly " $fragmentRefs": ItemReview_artwork$ref;
                 }) | null;
             }) | null;
@@ -85,6 +88,13 @@ return {
       "kind": "ScalarField",
       "alias": null,
       "name": "state",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "mode",
       "args": null,
       "storageKey": null
     },
@@ -219,6 +229,13 @@ return {
                   "selections": [
                     v0,
                     {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "is_acquireable",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    {
                       "kind": "FragmentSpread",
                       "name": "ItemReview_artwork",
                       "args": null
@@ -243,5 +260,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '6bb6f2de1184dbfa8b39ddd0f68d4cdf';
+(node as any).hash = '435533711b57499e79ad71667a492b8b';
 export default node;

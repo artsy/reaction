@@ -31,21 +31,7 @@ describe("ArtworkSidebarArtists", () => {
     it("displays the pageview count and content", () => {
       const html = wrapper.html()
       expect(html).toContain("This work is getting noticed")
-      expect(html).toMatch(/It has been viewed.*10.*times/)
-    })
-  })
-
-  describe("ArtworkSidebarArtists with multiple artists", () => {
-    beforeAll(async () => {
-      wrapper = await getWrapper({ id: "blah", pageviews: null })
-    })
-
-    it("displays the generic pageviews CTA", () => {
-      const html = wrapper.html()
-      expect(html).toContain("You're one of the first to view this work")
-      expect(html).toContain(
-        "Explore artwork details or ask a specialist to learn more"
-      )
+      expect(html).toMatch(/It has been viewed.*10 times.* this week/)
     })
   })
 })
