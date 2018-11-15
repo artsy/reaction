@@ -18,10 +18,16 @@ const Container = styled.div`
   background-color: #ffffff;
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
 `
-const CloseButton = styled.div`
+const CloseIconWrapper = styled.div`
   position: absolute;
   top: 10px;
   right: 10px;
+`
+
+const CloseIcon = styled(Icon)`
+  color: ${color("black30")};
+  cursor: pointer;
+  font-size: 12px;
 `
 
 const SansGrow = styled(Sans)`
@@ -68,15 +74,9 @@ export class Share extends React.Component<ShareProps> {
   render() {
     return (
       <Container>
-        <CloseButton>
-          <Icon
-            name="close"
-            color="black30"
-            cursor="pointer"
-            fontSize="12px"
-            onClick={this.props.handleClose}
-          />
-        </CloseButton>
+        <CloseIconWrapper>
+          <CloseIcon name="close" onClick={this.props.handleClose} />
+        </CloseIconWrapper>
         <Flex flexDirection="column" p={2}>
           <Flex flexDirection="row" mb={2}>
             <Sans size="3" weight="medium" color="black100">

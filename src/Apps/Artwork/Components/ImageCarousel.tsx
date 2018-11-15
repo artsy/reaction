@@ -1,11 +1,10 @@
-import React from "react"
+import React, { ReactChild } from "react"
 import styled from "styled-components"
 
 import Icon from "Components/Icon"
 import { Lightbox } from "Styleguide/Components"
 import { Arrow } from "Styleguide/Elements/Arrow"
 import { Media } from "Utils/Responsive"
-import { SaveActionIcon, ShareActionIcon } from "./ActionIcons"
 
 const Container = styled.div`
   display: flex;
@@ -131,6 +130,7 @@ const ActionButtonsContainer = styled.div`
 
 interface ImageCarouselProps {
   images: any // Array<{ uri: string; aspectRatio: number }>
+  actions?: ReactChild[]
 }
 
 interface ImageCarouselState {
@@ -257,10 +257,7 @@ export class ImageCarousel extends React.Component<
         </Media>
 
         <ActionButtonsContainer>
-          <ActionButtons>
-            <SaveActionIcon />
-            <ShareActionIcon />
-          </ActionButtons>
+          <ActionButtons>{this.props.actions}</ActionButtons>
         </ActionButtonsContainer>
       </ControlsContainer>
     )
