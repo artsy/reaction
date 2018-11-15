@@ -1,7 +1,5 @@
 import { Serif } from "@artsy/palette"
 import { ArtistBio_bio } from "__generated__/ArtistBio_bio.graphql"
-import { track } from "Artsy/Analytics"
-import * as Schema from "Artsy/Analytics/Schema"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Media } from "Utils/Responsive"
@@ -18,9 +16,6 @@ export const MAX_CHARS = {
   default: 320,
 }
 
-@track({
-  context_module: Schema.ContextModule.ArtistBio,
-})
 export class ArtistBio extends React.Component<ArtistBioProps> {
   renderReadMore = size => {
     return (
