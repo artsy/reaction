@@ -25,4 +25,6 @@ const ReactionMedia = createMedia({
 
 export const Media = ReactionMedia.Media
 export const MediaContextProvider = ReactionMedia.MediaContextProvider
-export const MediaStyle = ReactionMedia.MediaStyle
+export const createMediaStyle = ReactionMedia.createMediaStyle
+export const SortedBreakpoints = ReactionMedia.SortedBreakpoints
+export const findBreakpointsForWidth = ReactionMedia.findBreakpointsForWidth
