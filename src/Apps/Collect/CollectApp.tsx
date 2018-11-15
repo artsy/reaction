@@ -1,4 +1,4 @@
-import { Box, Serif } from "@artsy/palette"
+import { Box, Flex, Sans, Serif } from "@artsy/palette"
 import { CollectApp_viewer } from "__generated__/CollectApp_viewer.graphql"
 import { FrameWithRecentlyViewed } from "Components/FrameWithRecentlyViewed"
 import React, { Component } from "react"
@@ -37,9 +37,20 @@ export class CollectApp extends Component<CollectAppProps> {
         <Meta property="twitter:description" content={description} />
         <Link rel="canonical" href={canonicalHref} />
 
-        <Box mt={3} mb={4}>
-          <Serif size="8">Collect art and design online</Serif>
-        </Box>
+        <Flex
+          mt={3}
+          mb={4}
+          justifyContent="space-between"
+          alignItems="flex-end"
+        >
+          <Serif size="8">
+            <h1 className="title">Collect art and design online</h1>
+          </Serif>
+
+          <Sans size="3" weight="medium">
+            <a href="/collections">View collections</a>
+          </Sans>
+        </Flex>
         <Box>
           <ArtworkGrid viewer={this.props.viewer} />
         </Box>

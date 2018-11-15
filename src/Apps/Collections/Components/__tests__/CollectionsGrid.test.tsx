@@ -1,4 +1,4 @@
-import { CollectionsFixture } from "Apps/__test__/Fixtures/CollectionsFixture"
+import { CollectionsFixture } from "Apps/__tests__/Fixtures/Collections"
 import { mount } from "enzyme"
 import React from "react"
 import { EntityHeader } from "Styleguide/Components/EntityHeader"
@@ -21,9 +21,7 @@ describe("CollectionsGrid", () => {
 
     expect(component.find(EntityHeader).length).toBe(6)
     expect(component.text()).toMatch("Big Artists, Small Sculptures")
-    expect(component.html()).toMatch(
-      "http://files.artsy.net/images/pumpkinsbigartistsmallsculpture.png"
-    )
+    expect(component.html()).toMatch("pumpkinsbigartistsmallsculpture")
   })
 
   it("Renders a categoryName if provided", () => {
@@ -31,5 +29,12 @@ describe("CollectionsGrid", () => {
     const component = getWrapper(props)
 
     expect(component.text()).toMatch("Collectible Sculptures")
+  })
+
+  it("Renders category name as an #id", () => {
+    props.name = "Collectible Sculptures"
+    const component = getWrapper(props)
+
+    expect(component.find("#collectible-sculptures")).toBeTruthy()
   })
 })

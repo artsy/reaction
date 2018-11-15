@@ -5,24 +5,40 @@ import {
 import { mount } from "enzyme"
 import "jest-styled-components"
 import jsonp from "jsonp"
+import { defer } from "lodash"
 import React from "react"
 import { SocialEmbed, SocialEmbedProps } from "../SocialEmbed"
 
 jest.mock("jsonp", () => jest.fn())
+jest.mock("isomorphic-fetch")
+
+declare const global: any
+global.fetch = jest.fn(() =>
+  Promise.resolve({
+    status: 200,
+    json: () =>
+      Promise.resolve({
+        html: "<blockquote>Instagram</blockquote>",
+      }),
+  })
+)
 
 describe("Social Embed", () => {
   beforeEach(() => {
     jsonp.mockClear()
+    global.fetch.mockClear()
   })
 
-  it("fetches and embeds instagram html", () => {
-    const response = {
-      html: "<blockquote>Instagram</blockquote>",
-    }
+  it("fetches and embeds instagram html", done => {
     const component = mount(<SocialEmbed section={SocialEmbedInstagram} />)
-    expect(jsonp.mock.calls[0][0]).toMatch("api.instagram.com")
-    jsonp.mock.calls[0][1](null, response)
-    expect(component.find(SocialEmbed).html()).toMatch(response.html)
+    expect(global.fetch.mock.calls[0][0]).toMatch("api.instagram.com")
+
+    defer(() => {
+      expect(component.find(SocialEmbed).html()).toMatch(
+        "<blockquote>Instagram</blockquote>"
+      )
+      done()
+    }, 10)
   })
 
   it("fetches and embeds twitter html", () => {
