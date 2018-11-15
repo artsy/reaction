@@ -14,14 +14,20 @@ import { ArtworkDetailsAboutTheWorkFromPartner_artwork } from "__generated__/Art
 
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
+import Events from "Utils/Events"
 
 export interface ArtworkDetailsAboutTheWorkFromPartnerProps {
   artwork: ArtworkDetailsAboutTheWorkFromPartner_artwork
 }
 
-@track({
-  context_module: Schema.ContextModule.AboutTheWorkPartner,
-})
+@track(
+  {
+    context_module: Schema.ContextModule.AboutTheWorkPartner,
+  },
+  {
+    dispatch: data => Events.postEvent(data),
+  }
+)
 export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
   ArtworkDetailsAboutTheWorkFromPartnerProps
 > {
