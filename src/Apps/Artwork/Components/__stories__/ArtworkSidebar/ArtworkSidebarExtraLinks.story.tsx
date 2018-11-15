@@ -1,11 +1,12 @@
 import {
-  ArtworkFromLiveAuction,
-  ArtworkNotForSaleWithMultipleConsignableArtist,
-  ArtworkNotForSaleWithNoConsignableArtists,
-  ArtworkNotForSaleWithOneConsignableArtist,
-  ForSaleArtworkWithMultipleConsignableArtists,
-  ForSaleArtworkWithNoConsignableArtists,
-  ForSaleArtworkWithOneConsignableArtist,
+  AcquireableArtworkWithOneConsignableArtist,
+  InquireableArtworkWithMultipleConsignableArtists,
+  InquireableArtworkWithNoConsignableArtists,
+  InquireableArtworkWithOneConsignableArtist,
+  LiveAuctionArtwork,
+  NotForSaleArtworkWithMultipleConsignableArtist,
+  NotForSaleArtworkWithNoConsignableArtists,
+  NotForSaleArtworkWithOneConsignableArtist,
 } from "Apps/__tests__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarExtraLinks"
 import { ArtworkSidebarExtraLinks as ExtraLinks } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarExtraLinks"
 import React from "react"
@@ -17,32 +18,48 @@ storiesOf("Styleguide/Artwork/Sidebar", module).add("ExtraLinks", () => {
     <React.Fragment>
       <Section title="Not for sale artwork with no consignable artists">
         <ExtraLinks
-          artwork={ArtworkNotForSaleWithNoConsignableArtists as any}
+          artwork={NotForSaleArtworkWithNoConsignableArtists as any}
         />
       </Section>
-      <Section title="For sale artwork with no consignable artists">
-        <ExtraLinks artwork={ForSaleArtworkWithNoConsignableArtists as any} />
-      </Section>
-      <Section title="For sale artwork with one consignable artist">
-        <ExtraLinks artwork={ForSaleArtworkWithOneConsignableArtist as any} />
-      </Section>
-      <Section title="For sale artwork with multiple consignable artists">
-        <ExtraLinks
-          artwork={ForSaleArtworkWithMultipleConsignableArtists as any}
-        />
-      </Section>
+
       <Section title="Not for sale artwork with one consignable artist">
         <ExtraLinks
-          artwork={ArtworkNotForSaleWithOneConsignableArtist as any}
+          artwork={NotForSaleArtworkWithOneConsignableArtist as any}
         />
       </Section>
+
       <Section title="Not for sale artwork with multiple consignable artists">
         <ExtraLinks
-          artwork={ArtworkNotForSaleWithMultipleConsignableArtist as any}
+          artwork={NotForSaleArtworkWithMultipleConsignableArtist as any}
         />
       </Section>
+
       <Section title="Artwork from live auction">
-        <ExtraLinks artwork={ArtworkFromLiveAuction as any} />
+        <ExtraLinks artwork={LiveAuctionArtwork as any} />
+      </Section>
+
+      <Section title="Buy now artwork with one consignable artist">
+        <ExtraLinks
+          artwork={AcquireableArtworkWithOneConsignableArtist as any}
+        />
+      </Section>
+
+      <Section title="For sale inquireable artwork with no consignable artists">
+        <ExtraLinks
+          artwork={InquireableArtworkWithNoConsignableArtists as any}
+        />
+      </Section>
+
+      <Section title="For sale inquireable artwork with one consignable artist">
+        <ExtraLinks
+          artwork={InquireableArtworkWithOneConsignableArtist as any}
+        />
+      </Section>
+
+      <Section title="For sale inquireable artwork with multiple consignable artists">
+        <ExtraLinks
+          artwork={InquireableArtworkWithMultipleConsignableArtists as any}
+        />
       </Section>
     </React.Fragment>
   )

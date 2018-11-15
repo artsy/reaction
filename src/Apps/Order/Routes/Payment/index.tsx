@@ -1,4 +1,12 @@
-import { Button, Checkbox, Flex, Join, Serif, Spacer } from "@artsy/palette"
+import {
+  Button,
+  Checkbox,
+  Collapse,
+  Flex,
+  Join,
+  Serif,
+  Spacer,
+} from "@artsy/palette"
 import { Payment_order } from "__generated__/Payment_order.graphql"
 import { PaymentRouteCreateCreditCardMutation } from "__generated__/PaymentRouteCreateCreditCardMutation.graphql"
 import { PaymentRouteSetOrderPaymentMutation } from "__generated__/PaymentRouteSetOrderPaymentMutation.graphql"
@@ -30,7 +38,6 @@ import {
   RelayRefetchProp,
 } from "react-relay"
 import { injectStripe, ReactStripeElements } from "react-stripe-elements"
-import { Collapse } from "Styleguide/Components"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import createLogger from "Utils/logger"
@@ -205,7 +212,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
               >
                 <Join separator={<Spacer mb={3} />}>
                   <Flex flexDirection="column">
-                    <Serif mb={1} size="3t" color="black100" lineHeight={18}>
+                    <Serif mb={1} size="3t" color="black100" lineHeight="1.1em">
                       Credit card
                     </Serif>
                     <CreditCardInput
