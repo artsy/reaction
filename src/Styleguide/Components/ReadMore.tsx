@@ -50,6 +50,7 @@ export class ReadMore extends Component<ReadMoreProps, ReadMoreState> {
   @track({
     action_type: Schema.ActionType.Click,
     subject: "Read more",
+    type: "button",
   })
   expandText() {
     this.setState(
