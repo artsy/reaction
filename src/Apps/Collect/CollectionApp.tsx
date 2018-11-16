@@ -1,5 +1,7 @@
 import { Box } from "@artsy/palette"
 import { CollectionApp_collection } from "__generated__/CollectionApp_collection.graphql"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import { FrameWithRecentlyViewed } from "Components/FrameWithRecentlyViewed"
 import { HttpError } from "found"
 import React, { Component } from "react"
@@ -14,6 +16,9 @@ interface CollectionAppProps {
   collection: CollectionApp_collection
 }
 
+@track({
+  context_module: Schema.ContextModule.CollectionDescription,
+})
 export class CollectionApp extends Component<CollectionAppProps> {
   collectionNotFound = collection => {
     if (!collection) {

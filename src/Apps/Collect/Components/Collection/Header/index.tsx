@@ -4,6 +4,7 @@ import React, { Component } from "react"
 import styled from "styled-components"
 import { ReadMore } from "Styleguide/Components/ReadMore"
 import { Col, Grid, media, Row } from "Styleguide/Elements/Grid"
+import { slugify } from "underscore.string"
 import { resize } from "Utils/resizer"
 import { Responsive } from "Utils/Responsive"
 
@@ -60,6 +61,7 @@ export class CollectionHeader extends Component<Props> {
           const imageWidth = imageWidthSizes[size]
           const imageHeight = xs ? 160 : 240
           const chars = maxChars[size]
+          const categoryTarget = `/collections#${slugify(collection.category)}`
 
           return (
             <>
@@ -80,7 +82,7 @@ export class CollectionHeader extends Component<Props> {
                     <MetaContainer>
                       <SubtitlesContainer>
                         <Sans size={["2", "3"]} color="white100">
-                          {collection.category}
+                          <a href={categoryTarget}>{collection.category}</a>
                         </Sans>
                         <Sans size={["2", "3"]} color="white100" ml="auto">
                           <a href="/collect">View all artworks</a>
@@ -176,7 +178,14 @@ const ImageCaption = styled(Box)`
 `
 
 const ExtendedSerif = styled(Serif)`
-  div span span p {
-    display: inline;
+  div span {
+    span p {
+      display: inline;
+    }
+
+    div p {
+      display: inline;
+      ${unica("s12")};
+    }
   }
 `
