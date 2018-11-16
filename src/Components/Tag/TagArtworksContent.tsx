@@ -65,7 +65,7 @@ export class TagArtworksContent extends React.Component<Props, State> {
       <div>
         <ArtworkGrid
           artworks={this.props.filtered_artworks.artworks}
-          columnCount={4}
+          columnCount={[4]}
           itemMargin={40}
           onLoadMore={() => this.loadMoreArtworks()}
         />

@@ -6,7 +6,7 @@ import { ArtworkGridRefetchContainer as ArtworkGrid } from "./ArtworkFilterArtwo
 interface Props {
   artist: ArtworkFilterRefetch_artist
   relay: RelayRefetchProp
-  columnCount: number
+  columnCount: number[]
   filters: any
   artistID: string
 }
