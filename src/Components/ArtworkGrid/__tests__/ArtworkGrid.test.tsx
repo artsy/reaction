@@ -10,7 +10,6 @@ import ArtworkGrid, {
   ArtworkGridContainer,
   ArtworkGridContainerState,
   createSectionedArtworks,
-  valuesWithBreakpointProps,
 } from "../ArtworkGrid"
 import { ArtworkGridEmptyState } from "../ArtworkGridEmptyState"
 
@@ -31,26 +30,7 @@ const TestContainer = createFragmentContainer(
 )
 
 describe("ArtworkGrid", () => {
-  describe.only("state", () => {
-    it("maps breakpoints to props", () => {
-      expect(valuesWithBreakpointProps([1])).toEqual([
-        [1, { greaterThanOrEqual: "xs" }],
-      ])
-      expect(valuesWithBreakpointProps([1, 2])).toEqual([
-        [1, { at: "xs" }],
-        [2, { greaterThanOrEqual: "sm" }],
-      ])
-      expect(valuesWithBreakpointProps([1, 2, 2, 3])).toEqual([
-        [1, { at: "xs" }],
-        [2, { between: ["sm", "lg"] }],
-        [3, { greaterThanOrEqual: "lg" }],
-      ])
-      expect(valuesWithBreakpointProps([2, 2, 2, 3])).toEqual([
-        [2, { between: ["xs", "lg"] }],
-        [3, { greaterThanOrEqual: "lg" }],
-      ])
-    })
-
+  describe("state", () => {
     describe("concerning column layout", () => {
       const aspectRatios = [
         1.23,

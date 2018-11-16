@@ -1,5 +1,4 @@
 import { Flex } from "@artsy/palette"
-import { MediaBreakpointProps } from "@artsy/react-responsive-media/dist/Media"
 import { ArtworkGrid_artworks } from "__generated__/ArtworkGrid_artworks.graphql"
 import { Mediator } from "Artsy/SystemContext"
 import { ArtworkGridEmptyState } from "Components/ArtworkGrid/ArtworkGridEmptyState"
@@ -11,7 +10,7 @@ import ReactDOM from "react-dom"
 import { ComponentRef, createFragmentContainer, graphql } from "react-relay"
 // @ts-ignore
 import styled, { StyledComponentClass } from "styled-components"
-import { Media, SortedBreakpoints } from "Utils/Responsive"
+import { Media, valuesWithBreakpointProps } from "Utils/Responsive"
 import RelayGridItem, { ArtworkGridItem } from "../Artwork/GridItem"
 
 type SectionedArtworks = Array<Array<ArtworkGrid_artworks["edges"][0]["node"]>>
@@ -277,38 +276,4 @@ export function createSectionedArtworks(
   })
 
   return sectionedArtworks
-}
-
-type ValueBreakpoints<T> = [T, typeof SortedBreakpoints]
-type ValueBreakpointProps<T> = [T, MediaBreakpointProps<any>]
-
-export function valuesWithBreakpointProps<T>(
-  values: T[]
-): Array<[T, MediaBreakpointProps<any>]> {
-  const max = values.length
-  const valueBreakpoints: Array<ValueBreakpoints<T>> = []
-  let lastTuple: ValueBreakpoints<T>
-  SortedBreakpoints.forEach((breakpoint, i) => {
-    const value = values[i]
-    if (i < max && (!lastTuple || lastTuple[0] !== value)) {
-      lastTuple = [value, [breakpoint]]
-      valueBreakpoints.push(lastTuple)
-    } else {
-      lastTuple[1].push(breakpoint)
-    }
-  })
-
-  return valueBreakpoints.map(([value, breakpoints], i) => {
-    const props: MediaBreakpointProps<any> = {}
-    if (breakpoints.length === 1) {
-      props.at = breakpoints[0]
-    } else if (i === valueBreakpoints.length - 1) {
-      props.greaterThanOrEqual = breakpoints[0]
-    } else {
-      // TODO: This is less than ideal, would be good to have a `through`
-      //       prop, which unlike `between` is inclusive.
-      props.between = [breakpoints[0], valueBreakpoints[i + 1][1][0]]
-    }
-    return [value, props] as ValueBreakpointProps<T>
-  })
 }
