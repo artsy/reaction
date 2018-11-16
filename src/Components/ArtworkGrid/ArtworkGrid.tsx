@@ -65,7 +65,10 @@ export class ArtworkGridContainer extends React.Component<
     }
   }
 
-  columnBreakpoints = memoize(createColumnBreakpoints, isEqual)
+  columnBreakpointProps = memoize(
+    (columnCount: number[]) => valuesWithBreakpointProps(columnCount),
+    isEqual
+  )
 
   // TODO: This will still re-calculate column layout from scratch when new
   //       artworks are added (paginated). Ideally it would just continue
@@ -136,36 +139,39 @@ export class ArtworkGridContainer extends React.Component<
   }
 
   renderSectionsForAllBreakpoints() {
-    const columnBreakpoints = this.columnBreakpoints(this.props.columnCount)
-    const sectionedArtworksForAllBreakpoints = this.sectionedArtworksForAllBreakpoints(
-      this.props.artworks,
-      columnBreakpoints.map(([n]) => n)
-    )
-
     // Only 1 column ever, so no need to wrap.
-    if (columnBreakpoints.length === 1) {
+    if (this.props.columnCount.length === 1) {
       return this.renderSectionsForSingleBreakpoint(
-        columnBreakpoints[0][0],
-        sectionedArtworksForAllBreakpoints[0]
+        this.props.columnCount[0],
+        this.sectionedArtworksForAllBreakpoints(
+          this.props.artworks,
+          this.props.columnCount
+        )[0]
       )
     }
 
-    return columnBreakpointProps(columnBreakpoints).map((props, i) => {
-      const [columnCount, breakpoints] = columnBreakpoints[i]
-      return (
-        <Media {...props} key={breakpoints.join("-")}>
-          {(className, renderChildren) => (
-            <InnerContainer className={className}>
-              {renderChildren &&
-                this.renderSectionsForSingleBreakpoint(
-                  columnCount,
-                  sectionedArtworksForAllBreakpoints[i]
-                )}
-            </InnerContainer>
-          )}
-        </Media>
-      )
-    })
+    const columnBreakpointProps = this.columnBreakpointProps(
+      this.props.columnCount
+    )
+    const sectionedArtworksForAllBreakpoints = this.sectionedArtworksForAllBreakpoints(
+      this.props.artworks,
+      columnBreakpointProps.map(([n]) => n)
+    )
+
+    return columnBreakpointProps.map(([columnCount, props], i) => (
+      // We always create all Media instances, so using i as key is fine.
+      <Media {...props} key={i}>
+        {(className, renderChildren) => (
+          <InnerContainer className={className}>
+            {renderChildren &&
+              this.renderSectionsForSingleBreakpoint(
+                columnCount,
+                sectionedArtworksForAllBreakpoints[i]
+              )}
+          </InnerContainer>
+        )}
+      </Media>
+    ))
   }
 
   render() {
@@ -228,25 +234,7 @@ function areSectionedArtworksEqual(current: any, previous: any) {
   }
 }
 
-type ColumnBreakpointTuple = [number, typeof SortedBreakpoints]
-
-export function createColumnBreakpoints(columnCounts: number[]) {
-  const max = columnCounts.length
-  const breakpoints: ColumnBreakpointTuple[] = []
-  let lastTuple: ColumnBreakpointTuple
-  SortedBreakpoints.forEach((breakpoint, i) => {
-    const columnCount = columnCounts[i]
-    if (i < max && (!lastTuple || lastTuple[0] !== columnCount)) {
-      lastTuple = [columnCount, [breakpoint]]
-      breakpoints.push(lastTuple)
-    } else {
-      lastTuple[1].push(breakpoint)
-    }
-  })
-  return breakpoints
-}
-
-function createSectionedArtworks(
+export function createSectionedArtworks(
   artworksConnection: ArtworkGrid_artworks,
   columnCount: number
 ): SectionedArtworks {
@@ -291,20 +279,36 @@ function createSectionedArtworks(
   return sectionedArtworks
 }
 
-export function columnBreakpointProps(
-  columnBreakpoints: ColumnBreakpointTuple[]
-) {
-  return columnBreakpoints.map(([_, breakpoints]: ColumnBreakpointTuple, i) => {
-    const mediaProps: MediaBreakpointProps<any> = {}
+type ValueBreakpoints<T> = [T, typeof SortedBreakpoints]
+type ValueBreakpointProps<T> = [T, MediaBreakpointProps<any>]
+
+export function valuesWithBreakpointProps<T>(
+  values: T[]
+): Array<[T, MediaBreakpointProps<any>]> {
+  const max = values.length
+  const valueBreakpoints: Array<ValueBreakpoints<T>> = []
+  let lastTuple: ValueBreakpoints<T>
+  SortedBreakpoints.forEach((breakpoint, i) => {
+    const value = values[i]
+    if (i < max && (!lastTuple || lastTuple[0] !== value)) {
+      lastTuple = [value, [breakpoint]]
+      valueBreakpoints.push(lastTuple)
+    } else {
+      lastTuple[1].push(breakpoint)
+    }
+  })
+
+  return valueBreakpoints.map(([value, breakpoints], i) => {
+    const props: MediaBreakpointProps<any> = {}
     if (breakpoints.length === 1) {
-      mediaProps.at = breakpoints[0]
-    } else if (i === columnBreakpoints.length - 1) {
-      mediaProps.greaterThanOrEqual = breakpoints[0]
+      props.at = breakpoints[0]
+    } else if (i === valueBreakpoints.length - 1) {
+      props.greaterThanOrEqual = breakpoints[0]
     } else {
       // TODO: This is less than ideal, would be good to have a `through`
       //       prop, which unlike `between` is inclusive.
-      mediaProps.between = [breakpoints[0], columnBreakpoints[i + 1][1][0]]
+      props.between = [breakpoints[0], valueBreakpoints[i + 1][1][0]]
     }
-    return mediaProps
+    return [value, props] as ValueBreakpointProps<T>
   })
 }

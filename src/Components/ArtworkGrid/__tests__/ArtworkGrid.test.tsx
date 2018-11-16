@@ -9,9 +9,8 @@ import { ArtworkGridFixture } from "../__stories__/ArtworkGridFixture"
 import ArtworkGrid, {
   ArtworkGridContainer,
   ArtworkGridContainerState,
-  columnBreakpointProps,
-  createColumnBreakpoints,
   createSectionedArtworks,
+  valuesWithBreakpointProps,
 } from "../ArtworkGrid"
 import { ArtworkGridEmptyState } from "../ArtworkGridEmptyState"
 
@@ -32,36 +31,23 @@ const TestContainer = createFragmentContainer(
 )
 
 describe("ArtworkGrid", () => {
-  describe("state", () => {
-    it("maps column counts to breakpoint props", () => {
-      expect(createColumnBreakpoints([1])).toEqual([
-        [1, ["xs", "sm", "md", "lg", "xl"]],
-      ])
-      expect(createColumnBreakpoints([1, 2])).toEqual([
-        [1, ["xs"]],
-        [2, ["sm", "md", "lg", "xl"]],
-      ])
-      expect(createColumnBreakpoints([1, 2, 2, 3])).toEqual([
-        [1, ["xs"]],
-        [2, ["sm", "md"]],
-        [3, ["lg", "xl"]],
-      ])
-      expect(createColumnBreakpoints([2, 2, 2, 3])).toEqual([
-        [2, ["xs", "sm", "md"]],
-        [3, ["lg", "xl"]],
-      ])
-    })
-
+  describe.only("state", () => {
     it("maps breakpoints to props", () => {
-      expect(columnBreakpointProps(createColumnBreakpoints([1]))).toEqual([
-        { greaterThanOrEqual: "xs" },
+      expect(valuesWithBreakpointProps([1])).toEqual([
+        [1, { greaterThanOrEqual: "xs" }],
       ])
-      expect(
-        columnBreakpointProps(createColumnBreakpoints([1, 2, 2, 3]))
-      ).toEqual([
-        { at: "xs" },
-        { between: ["sm", "lg"] },
-        { greaterThanOrEqual: "lg" },
+      expect(valuesWithBreakpointProps([1, 2])).toEqual([
+        [1, { at: "xs" }],
+        [2, { greaterThanOrEqual: "sm" }],
+      ])
+      expect(valuesWithBreakpointProps([1, 2, 2, 3])).toEqual([
+        [1, { at: "xs" }],
+        [2, { between: ["sm", "lg"] }],
+        [3, { greaterThanOrEqual: "lg" }],
+      ])
+      expect(valuesWithBreakpointProps([2, 2, 2, 3])).toEqual([
+        [2, { between: ["xs", "lg"] }],
+        [3, { greaterThanOrEqual: "lg" }],
       ])
     })
 
