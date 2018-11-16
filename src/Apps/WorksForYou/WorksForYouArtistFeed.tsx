@@ -74,7 +74,7 @@ export class WorksForYouArtistFeed extends React.Component<Props, State> {
 
         <ArtworkGrid
           artworks={artist.artworks_connection}
-          columnCount={[3]}
+          columnCount={3}
           itemMargin={40}
           onLoadMore={() => this.loadMoreArtworks()}
           user={this.props.user}

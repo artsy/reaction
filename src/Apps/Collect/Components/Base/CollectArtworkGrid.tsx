@@ -14,7 +14,7 @@ import {
 } from "Apps/Artist/Components/LoadingArea"
 
 interface Props {
-  columnCount: number[]
+  columnCount: number | number[]
   filters?: any
   filtered_artworks: ArtworkFilterArtworkGrid_filtered_artworks
   isLoading?: boolean

@@ -18,7 +18,7 @@ type SectionedArtworks = Array<Array<ArtworkGrid_artworks["edges"][0]["node"]>>
 export interface ArtworkGridProps
   extends React.HTMLProps<ArtworkGridContainer> {
   artworks: ArtworkGrid_artworks
-  columnCount?: number[]
+  columnCount?: number | number[]
   sectionMargin?: number
   itemMargin?: number
   onClearFilters?: () => any
@@ -47,6 +47,11 @@ export class ArtworkGridContainer extends React.Component<
   state = {
     interval: null,
     loading: false,
+  }
+
+  private get _columnCount(): number[] {
+    const columnCount = this.props.columnCount
+    return typeof columnCount === "number" ? [columnCount] : columnCount
   }
 
   componentDidMount() {
@@ -138,33 +143,33 @@ export class ArtworkGridContainer extends React.Component<
   }
 
   renderSectionsForAllBreakpoints() {
+    const columnCount = this._columnCount
+
     // Only 1 column ever, so no need to wrap.
-    if (this.props.columnCount.length === 1) {
+    if (this._columnCount.length === 1) {
       return this.renderSectionsForSingleBreakpoint(
-        this.props.columnCount[0],
+        columnCount[0],
         this.sectionedArtworksForAllBreakpoints(
           this.props.artworks,
-          this.props.columnCount
+          columnCount
         )[0]
       )
     }
 
-    const columnBreakpointProps = this.columnBreakpointProps(
-      this.props.columnCount
-    )
+    const columnBreakpointProps = this.columnBreakpointProps(columnCount)
     const sectionedArtworksForAllBreakpoints = this.sectionedArtworksForAllBreakpoints(
       this.props.artworks,
       columnBreakpointProps.map(([n]) => n)
     )
 
-    return columnBreakpointProps.map(([columnCount, props], i) => (
+    return columnBreakpointProps.map(([count, props], i) => (
       // We always create all Media instances, so using i as key is fine.
       <Media {...props} key={i}>
         {(className, renderChildren) => (
           <InnerContainer className={className}>
             {renderChildren &&
               this.renderSectionsForSingleBreakpoint(
-                columnCount,
+                count,
                 sectionedArtworksForAllBreakpoints[i]
               )}
           </InnerContainer>
