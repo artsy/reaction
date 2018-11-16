@@ -1032,6 +1032,7 @@ type ArtworkContextFair {
   has_homepage_section: Boolean
   has_large_banner: Boolean
   has_listing: Boolean
+  hours: String
   href: String
   image: Image
 
@@ -2589,8 +2590,6 @@ type CurrentEvent {
   href: String
 }
 
-scalar DateTime
-
 type DaySchedule {
   start_time: Int
   end_time: Int
@@ -2787,6 +2786,7 @@ type Fair {
   has_homepage_section: Boolean
   has_large_banner: Boolean
   has_listing: Boolean
+  hours: String
   href: String
   image: Image
 
@@ -3758,6 +3758,7 @@ type HomePageModuleContextFair {
   has_homepage_section: Boolean
   has_large_banner: Boolean
   has_listing: Boolean
+  hours: String
   href: String
   image: Image
 
@@ -4224,8 +4225,8 @@ type MarketingCollection {
 
   # Structured object used to build filtered artworks query
   query: MarketingCollectionQuery!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  createdAt: MarketingDateTime!
+  updatedAt: MarketingDateTime!
   artworks(
     acquireable: Boolean
     aggregation_partner_cities: [String]
@@ -4263,6 +4264,11 @@ type MarketingCollection {
   ): FilterArtworks
 }
 
+type MarketingCollectionCategory {
+  name: String!
+  collections: [MarketingCollection!]!
+}
+
 type MarketingCollectionQuery {
   id: ID
   acquireable: Boolean
@@ -4295,6 +4301,8 @@ type MarketingCollectionQuery {
   tag_id: String
   keyword: String
 }
+
+scalar MarketingDateTime
 
 type Me implements Node {
   # A globally unique ID.
@@ -6235,6 +6243,7 @@ type Query {
   # Find partners by ID
   _unused_gravity_partners(ids: [ID]!): [DoNotUseThisPartner]
   marketingCollections: [MarketingCollection!]!
+  marketingCategories: [MarketingCollectionCategory!]!
   marketingCollection(slug: String!): MarketingCollection
 }
 
@@ -6481,7 +6490,7 @@ type SaleArtwork {
   minimum_next_bid_cents: Float @deprecated(reason: "Favor `minimum_next_bid`")
   opening_bid: SaleArtworkOpeningBid
   opening_bid_cents: Float @deprecated(reason: "Favor `opening_bid`")
-  position: Int
+  position: Float
   reserve: SaleArtworkReserve
   reserve_message: String
   reserve_status: String

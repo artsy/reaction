@@ -14,21 +14,28 @@ import { ArtworkDetailsAboutTheWorkFromPartner_artwork } from "__generated__/Art
 
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
+import Events from "Utils/Events"
 
 export interface ArtworkDetailsAboutTheWorkFromPartnerProps {
   artwork: ArtworkDetailsAboutTheWorkFromPartner_artwork
 }
 
-@track({
-  context_module: Schema.ContextModule.AboutTheWorkPartner,
-})
+@track(
+  {
+    context_module: Schema.ContextModule.AboutTheWorkPartner,
+  },
+  {
+    dispatch: data => Events.postEvent(data),
+  }
+)
 export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
   ArtworkDetailsAboutTheWorkFromPartnerProps
 > {
   @track({
+    action_type: Schema.ActionType.Click,
     flow: Schema.Flow.ArtworkAboutTheWork,
-    type: Schema.Type.Button,
     subject: Schema.Subject.ReadMore,
+    type: Schema.Type.Button,
   })
   trackReadMoreClick() {
     // noop
@@ -43,7 +50,7 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
       <ReadMore
         maxChars={maxChars}
         content={additional_information}
-        onReadMoreClicked={this.trackReadMoreClick}
+        onReadMoreClicked={this.trackReadMoreClick.bind(this)}
       />
     )
   }
@@ -76,6 +83,15 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
                       <FollowProfileButton
                         profile={partner.profile}
                         user={user}
+                        trackingData={{
+                          modelName: Schema.OwnerType.Partner,
+                          context_module: [
+                            Schema.ContextModule.Sidebar,
+                            Schema.ContextModule.Biography,
+                          ],
+                          entity_id: partner._id,
+                          entity_slug: partner.id,
+                        }}
                         onOpenAuthModal={() => {
                           mediator &&
                             mediator.trigger("open:auth", {
@@ -135,6 +151,8 @@ export const ArtworkDetailsAboutTheWorkFromPartnerFragmentContainer = createFrag
     fragment ArtworkDetailsAboutTheWorkFromPartner_artwork on Artwork {
       additional_information(format: HTML)
       partner {
+        _id
+        id
         type
         name
         initials

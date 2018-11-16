@@ -1,10 +1,11 @@
-import { Image } from "@artsy/palette"
+import { Avatar, Box, Button, Flex, Separator } from "@artsy/palette"
 import { FollowArtistPopoverRow_artist } from "__generated__/FollowArtistPopoverRow_artist.graphql"
 import { FollowArtistPopoverRowMutation } from "__generated__/FollowArtistPopoverRowMutation.graphql"
 import { ContextProps } from "Artsy"
 import React from "react"
 import { commitMutation, createFragmentContainer, graphql } from "react-relay"
 import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
+import styled from "styled-components"
 import { get } from "Utils/get"
 
 interface Props extends ContextProps {
@@ -59,14 +60,46 @@ class FollowArtistPopoverRow extends React.Component<Props, State> {
     const { swappedArtist } = this.state
     const artist = swappedArtist || originalArtist
     const imageUrl = get(artist, a => a.image.cropped.url)
+    const { _id: artistID } = artist
     return (
-      <div onClick={() => this.handleClick(artist._id)}>
-        <span>{artist.name}</span>
-        <Image src={imageUrl} />
-      </div>
+      <>
+        <Flex my={2}>
+          <Box mr={1}>
+            <Avatar size="xs" src={imageUrl} />
+          </Box>
+          <Box mr={2}>
+            <ArtistName>{artist.name}</ArtistName>
+          </Box>
+          <Box>
+            <FollowButtonContainer>
+              <Button
+                onClick={() => this.handleClick(artistID)}
+                variant="secondaryOutline"
+                size="small"
+                width="70px"
+              >
+                Follow
+              </Button>
+            </FollowButtonContainer>
+          </Box>
+        </Flex>
+        <Separator />
+      </>
     )
   }
 }
+
+const ArtistName = styled.div`
+  width: 115px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  line-height: 45px;
+`
+
+const FollowButtonContainer = styled.div`
+  line-height: 45px;
+`
 
 export const FollowArtistPopoverRowFragmentContainer = createFragmentContainer(
   FollowArtistPopoverRow,
@@ -77,10 +110,11 @@ export const FollowArtistPopoverRowFragmentContainer = createFragmentContainer(
       __id
       name
       image {
-        cropped(width: 100, height: 100) {
+        cropped(width: 45, height: 45) {
           url
         }
       }
+      ...FollowArtistButton_artist
     }
   `
 )

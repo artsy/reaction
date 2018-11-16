@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+import { FollowArtistButton_artist$ref } from "./FollowArtistButton_artist.graphql";
 declare const _FollowArtistPopoverRow_artist$ref: unique symbol;
 export type FollowArtistPopoverRow_artist$ref = typeof _FollowArtistPopoverRow_artist$ref;
 export type FollowArtistPopoverRow_artist = {
@@ -13,6 +14,7 @@ export type FollowArtistPopoverRow_artist = {
             readonly url: string | null;
         }) | null;
     }) | null;
+    readonly " $fragmentRefs": FollowArtistButton_artist$ref;
     readonly " $refType": FollowArtistPopoverRow_artist$ref;
 };
 
@@ -66,18 +68,18 @@ const node: ConcreteFragment = {
           "kind": "LinkedField",
           "alias": null,
           "name": "cropped",
-          "storageKey": "cropped(height:100,width:100)",
+          "storageKey": "cropped(height:45,width:45)",
           "args": [
             {
               "kind": "Literal",
               "name": "height",
-              "value": 100,
+              "value": 45,
               "type": "Int!"
             },
             {
               "kind": "Literal",
               "name": "width",
-              "value": 100,
+              "value": 45,
               "type": "Int!"
             }
           ],
@@ -94,8 +96,13 @@ const node: ConcreteFragment = {
           ]
         }
       ]
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "FollowArtistButton_artist",
+      "args": null
     }
   ]
 };
-(node as any).hash = '8069606dcf6ae98e515f26eb8e33abb9';
+(node as any).hash = '4b19a8031543e1009ad995cbb089c06a';
 export default node;
