@@ -18,6 +18,16 @@ import { NewsLayout } from "../Layouts/NewsLayout"
 import { SeriesLayout } from "../Layouts/SeriesLayout"
 import { VideoLayout } from "../Layouts/VideoLayout"
 
+jest.mock("isomorphic-fetch")
+
+declare const global: any
+global.fetch = jest.fn(() =>
+  Promise.resolve({
+    status: 200,
+    json: () => Promise.resolve({}),
+  })
+)
+
 jest.mock("../ToolTip/TooltipsDataLoader", () => ({
   TooltipsData: props => props.children,
 }))

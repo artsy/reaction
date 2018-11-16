@@ -11,6 +11,15 @@ import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
 import { ExpandButton, NewsArticleContainer, NewsLayout } from "../NewsLayout"
+jest.mock("isomorphic-fetch")
+
+declare const global: any
+global.fetch = jest.fn(() =>
+  Promise.resolve({
+    status: 200,
+    json: () => Promise.resolve({}),
+  })
+)
 
 describe("News Layout", () => {
   const dateNow = Date.now
