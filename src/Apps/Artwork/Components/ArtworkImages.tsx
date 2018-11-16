@@ -4,9 +4,8 @@ import { ContextConsumer } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
+import { SaveButton, ShareButton } from "./ActionButton"
 import { ImageCarousel } from "./ImageCarousel"
-import { SaveButton } from "./SaveButton"
-import { ShareButton } from "./ShareButton"
 
 interface ArtworkImagesProps {
   artwork: ArtworkImages_artwork
@@ -16,7 +15,12 @@ const ArtworkImages: React.SFC<ArtworkImagesProps> = props => {
   return (
     <ImageCarousel
       images={props.artwork.images}
-      actions={[<SaveButton />, <ShareButton />]}
+      actions={
+        <>
+          <SaveButton />
+          <ShareButton />
+        </>
+      }
     />
   )
 }

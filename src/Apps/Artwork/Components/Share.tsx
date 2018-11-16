@@ -1,4 +1,4 @@
-import { color, Flex, Sans, Separator } from "@artsy/palette"
+import { Box, color, Flex, Sans, Separator, space } from "@artsy/palette"
 import { IconName } from "Assets/Icons"
 import Icon from "Components/Icon"
 import React from "react"
@@ -6,7 +6,7 @@ import styled from "styled-components"
 
 interface ShareProps {
   url: string
-  handleClose?: () => void
+  onClose?: () => void
 }
 
 // TODO: We need to figure out if this is going to be a new re-usable panel type
@@ -17,11 +17,6 @@ const Container = styled.div`
   border-radius: 2px;
   background-color: #ffffff;
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
-`
-const CloseIconWrapper = styled.div`
-  position: absolute;
-  top: 10px;
-  right: 10px;
 `
 
 const CloseIcon = styled(Icon)`
@@ -74,9 +69,9 @@ export class Share extends React.Component<ShareProps> {
   render() {
     return (
       <Container>
-        <CloseIconWrapper>
-          <CloseIcon name="close" onClick={this.props.handleClose} />
-        </CloseIconWrapper>
+        <Box position="absolute" top={space(1)} right={space(1)}>
+          <CloseIcon name="close" onClick={this.props.onClose} />
+        </Box>
         <Flex flexDirection="column" p={2}>
           <Flex flexDirection="row" mb={2}>
             <Sans size="3" weight="medium" color="black100">

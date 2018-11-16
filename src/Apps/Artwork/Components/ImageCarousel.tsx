@@ -1,4 +1,4 @@
-import React, { ReactChild } from "react"
+import React from "react"
 import styled from "styled-components"
 
 import Icon from "Components/Icon"
@@ -130,7 +130,7 @@ const ActionButtonsContainer = styled.div`
 
 interface ImageCarouselProps {
   images: any // Array<{ uri: string; aspectRatio: number }>
-  actions?: ReactChild[]
+  actions?: JSX.Element
 }
 
 interface ImageCarouselState {
