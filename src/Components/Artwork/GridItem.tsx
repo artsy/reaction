@@ -107,11 +107,12 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
     }
   }
 
-  renderArtworkBadge({ is_biddable, is_acquireable, href }) {
+  renderArtworkBadge({ is_biddable, is_acquireable, href, sale }) {
+    const includeBidBadge = is_biddable || (sale && sale.is_preview)
     return (
       <React.Fragment>
         <Badges>
-          {is_biddable && (
+          {includeBidBadge && (
             <Badge>
               <Sans size="0">Bid</Sans>
             </Badge>
@@ -198,6 +199,9 @@ export default createFragmentContainer(
         aspect_ratio
       }
       is_biddable
+      sale {
+        is_preview
+      }
       is_acquireable
       href
       ...Metadata_artwork
