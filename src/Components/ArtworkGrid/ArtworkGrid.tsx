@@ -3,7 +3,7 @@ import { ArtworkGrid_artworks } from "__generated__/ArtworkGrid_artworks.graphql
 import { Mediator } from "Artsy/SystemContext"
 import { ArtworkGridEmptyState } from "Components/ArtworkGrid/ArtworkGridEmptyState"
 import { isEqual } from "lodash"
-import memoize from "memoize-one"
+import memoizeOnce from "memoize-one"
 import React from "react"
 import ReactDOM from "react-dom"
 // @ts-ignore
@@ -69,7 +69,7 @@ export class ArtworkGridContainer extends React.Component<
     }
   }
 
-  columnBreakpointProps = memoize(
+  columnBreakpointProps = memoizeOnce(
     (columnCount: number[]) => valuesWithBreakpointProps(columnCount),
     isEqual
   )
@@ -80,7 +80,7 @@ export class ArtworkGridContainer extends React.Component<
   sectionedArtworksForAllBreakpoints: (
     artworks: ArtworkGrid_artworks,
     columnCount: number[]
-  ) => SectionedArtworks[] = memoize(
+  ) => SectionedArtworks[] = memoizeOnce(
     (artworks, columnCount) =>
       columnCount.map(n => createSectionedArtworks(artworks, n)),
     areSectionedArtworksEqual
