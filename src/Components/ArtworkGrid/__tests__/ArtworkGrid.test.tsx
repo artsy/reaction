@@ -1,3 +1,4 @@
+import { ArtworkGrid_artworks } from "__generated__/ArtworkGrid_artworks.graphql"
 import { mount } from "enzyme"
 import { cloneDeep } from "lodash"
 import React from "react"
@@ -10,6 +11,7 @@ import ArtworkGrid, {
   ArtworkGridContainerState,
   columnBreakpointProps,
   createColumnBreakpoints,
+  createSectionedArtworks,
 } from "../ArtworkGrid"
 import { ArtworkGridEmptyState } from "../ArtworkGridEmptyState"
 
@@ -61,6 +63,70 @@ describe("ArtworkGrid", () => {
         { between: ["sm", "lg"] },
         { greaterThanOrEqual: "lg" },
       ])
+    })
+
+    describe("concerning column layout", () => {
+      const aspectRatios = [
+        1.23,
+        0.74,
+        0.75,
+        1.06,
+        0.73,
+        1.28,
+        0.77,
+        1.37,
+        1.37,
+        0.75,
+        0.74,
+        0.73,
+        0.78,
+        0.71,
+        0.75,
+        1.34,
+        1.2,
+        0.71,
+        1.27,
+        0.73,
+        0.75,
+        0.8,
+        0.8,
+        1.36,
+      ]
+
+      const artworks = {
+        " $refType": null,
+        edges: aspectRatios.reduce(
+          (acc, aspect_ratio) => [
+            ...acc,
+            { node: { image: { aspect_ratio } } },
+          ],
+          []
+        ),
+      } as ArtworkGrid_artworks
+
+      function expected(columnsRatios: number[][]) {
+        return columnsRatios.map(columnRatios =>
+          columnRatios.map(aspect_ratio => ({ image: { aspect_ratio } }))
+        )
+      }
+
+      it("tries to lay out artworks in columns such that they are similar in height, based on aspect ratio", () => {
+        expect(createSectionedArtworks(artworks, 3)).toEqual(
+          expected([
+            [1.23, 1.06, 0.77, 0.74, 0.71, 1.2, 0.73, 0.8],
+            [0.74, 1.28, 1.37, 0.75, 0.78, 1.34, 1.27, 0.75, 1.36],
+            [0.75, 0.73, 1.37, 0.73, 0.75, 0.71, 0.8],
+          ])
+        )
+        expect(createSectionedArtworks(artworks, 4)).toEqual(
+          expected([
+            [1.23, 0.73, 0.74, 0.75, 0.75],
+            [0.74, 1.37, 0.75, 0.71, 0.73, 1.36],
+            [0.75, 0.77, 0.78, 1.2, 1.27, 0.8],
+            [1.06, 1.28, 1.37, 0.73, 1.34, 0.71, 0.8],
+          ])
+        )
+      })
     })
   })
 
