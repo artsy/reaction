@@ -100,7 +100,7 @@ export class WorksForYouFeed extends Component<Props, State> {
 
                 <ArtworkGrid
                   artworks={node.artworksConnection}
-                  columnCount={3}
+                  columnCount={[3]}
                   itemMargin={40}
                   user={this.props.user}
                 />

@@ -8,6 +8,8 @@ import { ArtworkGridFixture } from "../__stories__/ArtworkGridFixture"
 import ArtworkGrid, {
   ArtworkGridContainer,
   ArtworkGridContainerState,
+  columnBreakpointProps,
+  createColumnBreakpoints,
 } from "../ArtworkGrid"
 import { ArtworkGridEmptyState } from "../ArtworkGridEmptyState"
 
@@ -28,88 +30,126 @@ const TestContainer = createFragmentContainer(
 )
 
 describe("ArtworkGrid", () => {
-  const getRelayWrapper = async (artworks = ArtworkGridFixture) => {
-    return await renderRelayTree({
-      Component: TestContainer,
-      query: graphql`
-        query ArtworkGrid_Test_Query {
-          artist(id: "pablo-picasso") {
-            ...ArtworkGrid_artist
-          }
-        }
-      `,
-      mockResolvers: {
-        Artist: () => ({ artworks_connection: artworks }),
-        ArtworkConnection: () => artworks,
-      },
+  describe("state", () => {
+    it("maps column counts to breakpoint props", () => {
+      expect(createColumnBreakpoints([1])).toEqual([
+        [1, ["xs", "sm", "md", "lg", "xl"]],
+      ])
+      expect(createColumnBreakpoints([1, 2])).toEqual([
+        [1, ["xs"]],
+        [2, ["sm", "md", "lg", "xl"]],
+      ])
+      expect(createColumnBreakpoints([1, 2, 2, 3])).toEqual([
+        [1, ["xs"]],
+        [2, ["sm", "md"]],
+        [3, ["lg", "xl"]],
+      ])
+      expect(createColumnBreakpoints([2, 2, 2, 3])).toEqual([
+        [2, ["xs", "sm", "md"]],
+        [3, ["lg", "xl"]],
+      ])
     })
-  }
 
-  let props
-  const getWrapper = passedProps => {
-    return mount(<ArtworkGridContainer {...passedProps} useRelay={false} />)
-  }
+    it("maps breakpoints to props", () => {
+      expect(columnBreakpointProps(createColumnBreakpoints([1]))).toEqual([
+        { greaterThanOrEqual: "xs" },
+      ])
+      expect(
+        columnBreakpointProps(createColumnBreakpoints([1, 2, 2, 3]))
+      ).toEqual([
+        { at: "xs" },
+        { between: ["sm", "lg"] },
+        { greaterThanOrEqual: "lg" },
+      ])
+    })
+  })
 
-  beforeEach(() => {
-    props = {
-      artworks: ArtworkGridFixture,
+  describe("when rendering", () => {
+    const getRelayWrapper = async (artworks = ArtworkGridFixture) => {
+      return await renderRelayTree({
+        Component: TestContainer,
+        query: graphql`
+          query ArtworkGrid_Test_Query {
+            artist(id: "pablo-picasso") {
+              ...ArtworkGrid_artist
+            }
+          }
+        `,
+        mockResolvers: {
+          Artist: () => ({ artworks_connection: artworks }),
+          ArtworkConnection: () => artworks,
+        },
+      })
     }
-  })
 
-  it("Renders artworks if present", async () => {
-    const wrapper = await getRelayWrapper()
-    expect(wrapper.text()).toMatch(ArtworkGridFixture.edges[0].node.title)
-    expect(wrapper.find(ArtworkGridItem).length).toBe(4)
-  })
+    let props
+    const getWrapper = passedProps => {
+      return mount(<ArtworkGridContainer {...passedProps} useRelay={false} />)
+    }
 
-  it("Renders empty message if no artworks", async () => {
-    const emptyArtworks = cloneDeep(ArtworkGridFixture)
-    emptyArtworks.edges = []
-    const wrapper = await getRelayWrapper(emptyArtworks)
-    expect(wrapper.find(ArtworkGridEmptyState).exists()).toBeTruthy()
-  })
+    beforeEach(() => {
+      props = {
+        artworks: ArtworkGridFixture,
+      }
+    })
 
-  it("Can call onClearFilters from empty message", () => {
-    const emptyArtworks = cloneDeep(ArtworkGridFixture)
-    emptyArtworks.edges = []
-    props.artworks = emptyArtworks
-    props.onClearFilters = jest.fn()
-    const wrapper = getWrapper(props)
-    wrapper.find("a").simulate("click")
-    expect(props.onClearFilters).toBeCalled()
-  })
+    it("Renders artworks if present", async () => {
+      const wrapper = await getRelayWrapper()
+      expect(wrapper.text()).toMatch(ArtworkGridFixture.edges[0].node.title)
+      expect(wrapper.find(ArtworkGridItem).length).toBe(4)
+    })
 
-  it("#componentDidMount sets state.interval if props.onLoadMore", () => {
-    props.onLoadMore = jest.fn()
-    const wrapper = getWrapper(props)
-    const { interval } = wrapper.state() as ArtworkGridContainerState
-    expect(interval).toBeGreaterThan(0)
-  })
+    it("Renders empty message if no artworks", async () => {
+      const emptyArtworks = cloneDeep(ArtworkGridFixture)
+      emptyArtworks.edges = []
+      const wrapper = await getRelayWrapper(emptyArtworks)
+      expect(wrapper.find(ArtworkGridEmptyState).exists()).toBeTruthy()
+    })
 
-  it("#componentWillUnmount calls #clearInterval if state.interval exists", () => {
-    props.onLoadMore = jest.fn()
-    const wrapper = getWrapper(props)
-    wrapper.instance().componentWillUnmount()
-    expect(global.clearInterval).toBeCalled()
-  })
+    it("Can call onClearFilters from empty message", () => {
+      const emptyArtworks = cloneDeep(ArtworkGridFixture)
+      emptyArtworks.edges = []
+      props.artworks = emptyArtworks
+      props.onClearFilters = jest.fn()
+      const wrapper = getWrapper(props)
+      wrapper.find("a").simulate("click")
+      expect(props.onClearFilters).toBeCalled()
+    })
 
-  it("#maybeLoadMore calls props.onLoadMore if scroll position is at end", () => {
-    props.onLoadMore = jest.fn()
-    const wrapper = getWrapper(props).instance() as ArtworkGridContainer
-    wrapper.maybeLoadMore()
-    expect(props.onLoadMore).toBeCalled()
-  })
+    it("#componentDidMount sets state.interval if props.onLoadMore", () => {
+      props.onLoadMore = jest.fn()
+      const wrapper = getWrapper(props)
+      const { interval } = wrapper.state() as ArtworkGridContainerState
+      expect(interval).toBeGreaterThan(0)
+    })
 
-  it("#sectionedArtworks divides artworks into columns", () => {
-    props.columnCount = 2
-    const wrapper = getWrapper(props).instance() as ArtworkGridContainer
-    const artworks = wrapper.sectionedArtworks()
-    expect(artworks.length).toBe(props.columnCount)
-  })
+    it("#componentWillUnmount calls #clearInterval if state.interval exists", () => {
+      props.onLoadMore = jest.fn()
+      const wrapper = getWrapper(props)
+      wrapper.instance().componentWillUnmount()
+      expect(global.clearInterval).toBeCalled()
+    })
 
-  it("Renders artworks if present", () => {
-    const wrapper = getWrapper(props)
-    expect(wrapper.text()).toMatch(ArtworkGridFixture.edges[0].node.title)
-    expect(wrapper.find(ArtworkGridItem).length).toBe(4)
+    it("#maybeLoadMore calls props.onLoadMore if scroll position is at end", () => {
+      props.onLoadMore = jest.fn()
+      const wrapper = getWrapper(props).instance() as ArtworkGridContainer
+      wrapper.maybeLoadMore()
+      expect(props.onLoadMore).toBeCalled()
+    })
+
+    it("#sectionedArtworks divides artworks into columns", () => {
+      const wrapper = getWrapper(props).instance() as ArtworkGridContainer
+      const artworks = wrapper.sectionedArtworksForAllBreakpoints(
+        props.artworks,
+        [2, 2, 2, 3]
+      )
+      expect(artworks[0].length).toBe(2)
+    })
+
+    it("Renders artworks if present", () => {
+      const wrapper = getWrapper(props)
+      expect(wrapper.text()).toMatch(ArtworkGridFixture.edges[0].node.title)
+      expect(wrapper.find(ArtworkGridItem).length).toBe(4)
+    })
   })
 })
