@@ -11,7 +11,7 @@ export type TransactionSummary_order = {
     readonly taxTotal: string | null;
     readonly taxTotalCents: number | null;
     readonly itemsTotal: string | null;
-    readonly offerTotal: string | null;
+    readonly totalListPrice: string | null;
     readonly buyerTotal: string | null;
     readonly seller: ({
         readonly name?: string | null;
@@ -75,9 +75,9 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "offerTotal",
+      "name": "totalListPrice",
       "args": v0,
-      "storageKey": "offerTotal(precision:2)"
+      "storageKey": "totalListPrice(precision:2)"
     },
     {
       "kind": "ScalarField",
@@ -293,5 +293,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '1fd6eb8047fd63d7177974221c7799de';
+(node as any).hash = '9d145949587afc07c22986838ef810d0';
 export default node;

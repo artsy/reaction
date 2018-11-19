@@ -65,7 +65,7 @@ export class CollectionHeader extends Component<Props> {
           const categoryTarget = `/collections#${slugify(collection.category)}`
 
           return (
-            <>
+            <header>
               <Flex flexDirection="column">
                 <Box>
                   <Background
@@ -122,7 +122,7 @@ export class CollectionHeader extends Component<Props> {
                 </Box>
               </Flex>
               <Spacer mb={2} />
-            </>
+            </header>
           )
         }}
       </Responsive>
