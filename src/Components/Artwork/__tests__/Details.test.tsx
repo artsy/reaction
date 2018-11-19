@@ -1,7 +1,7 @@
+import { renderRelayTree } from "DevTools"
 import { cloneDeep } from "lodash"
 import React from "react"
 import { graphql } from "react-relay"
-import { renderRelayTree } from "../../../DevTools"
 import { DetailsFragmentContainer } from "../Details"
 
 jest.unmock("react-relay")

@@ -1,6 +1,6 @@
+import { renderRelayTree } from "DevTools"
 import { ReactWrapper } from "enzyme"
 import { graphql } from "react-relay"
-import { renderRelayTree } from "../../../../../DevTools"
 import { ArtworkSidebarClassificationFragmentContainer } from "../../ArtworkSidebar/ArtworkSidebarClassification"
 import { ClassificationLink } from "../../ArtworkSidebar/ArtworkSidebarClassification"
 

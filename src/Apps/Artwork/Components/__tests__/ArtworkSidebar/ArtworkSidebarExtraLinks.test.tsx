@@ -4,8 +4,8 @@ import {
   LiveAuctionArtwork,
   NotForSaleArtworkWithOneConsignableArtist,
 } from "Apps/__tests__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarExtraLinks"
+import { renderRelayTree } from "DevTools"
 import { graphql } from "react-relay"
-import { renderRelayTree } from "../../../../../DevTools"
 import { ArtworkSidebarExtraLinksFragmentContainer } from "../../ArtworkSidebar/ArtworkSidebarExtraLinks"
 
 jest.unmock("react-relay")

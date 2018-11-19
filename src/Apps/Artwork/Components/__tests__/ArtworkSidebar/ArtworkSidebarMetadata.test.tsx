@@ -1,6 +1,6 @@
+import { renderRelayTree } from "DevTools"
 import { cloneDeep } from "lodash"
 import { graphql } from "react-relay"
-import { renderRelayTree } from "../../../../../DevTools"
 import {
   EmptyMetadataNoEditions,
   FilledOutMetadataMultipleEditionSets,
