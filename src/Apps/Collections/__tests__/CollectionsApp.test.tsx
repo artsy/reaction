@@ -1,9 +1,9 @@
 import { CategoriesFixture } from "Apps/__tests__/Fixtures/Collections"
 import { CollectionsGrid } from "Apps/Collections/Components/CollectionsGrid"
+import { MockBoot, renderRelayTree } from "DevTools"
 import React from "react"
 import { graphql } from "react-relay"
 import { EntityHeader } from "Styleguide/Components/EntityHeader"
-import { MockBoot, renderRelayTree } from "../../../DevTools"
 import { CollectionsAppFragmentContainer as CollectionsApp } from "../CollectionsApp"
 
 jest.unmock("react-relay")

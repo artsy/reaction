@@ -1,8 +1,8 @@
+import { renderRelayTree } from "DevTools"
 import { mount } from "enzyme"
 import { cloneDeep } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { renderRelayTree } from "../../../DevTools"
 import { ArtworkGridItem } from "../../Artwork/GridItem"
 import { ArtworkGridFixture } from "../__stories__/ArtworkGridFixture"
 import ArtworkGrid, {
