@@ -25,9 +25,10 @@ export class ArtworkDetailsAboutTheWorkFromArtsy extends Component<
   ArtworkDetailsAboutTheWorkFromArtsyProps
 > {
   @track({
+    action_type: Schema.ActionType.Click,
     flow: Schema.Flow.ArtworkAboutTheWork,
+    subject: Schema.Subject.ReadMore,
     type: Schema.Type.Button,
-    label: Schema.Label.ReadMore,
   })
   trackReadMoreClick() {
     // noop
@@ -42,7 +43,7 @@ export class ArtworkDetailsAboutTheWorkFromArtsy extends Component<
       <ReadMore
         maxChars={maxChars}
         content={description}
-        onReadMoreClicked={this.trackReadMoreClick}
+        onReadMoreClicked={this.trackReadMoreClick.bind(this)}
       />
     )
   }

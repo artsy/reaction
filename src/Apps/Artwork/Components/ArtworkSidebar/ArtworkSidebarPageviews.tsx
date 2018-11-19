@@ -15,6 +15,10 @@ export const ArtworkSidebarPageviews: SFC<Props> = props => {
   const { artwork } = props
   const { pageviews } = artwork
 
+  if (!pageviews) {
+    return null
+  }
+
   // TODO: Figure out why `jest` tests don't play nicely with this icon.
   return (
     <Flex>
@@ -25,19 +29,11 @@ export const ArtworkSidebarPageviews: SFC<Props> = props => {
       )}
       <Box ml={2}>
         <Sans weight="medium" size="2">
-          {pageviews
-            ? "This work is getting noticed!"
-            : "You're one of the first to view this work"}
+          This work is getting noticed!
         </Sans>
         <Sans color="black60" size="2" weight="regular">
-          {pageviews ? (
-            <>
-              It has been viewed{" "}
-              <strong>{pageviews.toLocaleString()} times</strong> this week
-            </>
-          ) : (
-            "Explore artwork details or ask a specialist to learn more"
-          )}
+          It has been viewed <strong>{pageviews.toLocaleString()} times</strong>{" "}
+          this week
         </Sans>
       </Box>
     </Flex>

@@ -18,6 +18,7 @@ import {
   MarketInsightsFragmentContainer as MarketInsights,
   SelectedExhibitionFragmentContainer as SelectedExhibitions,
 } from "Styleguide/Components"
+import Events from "Utils/Events"
 
 interface ArtistInfoProps {
   artist: ArtistInfo_artist
@@ -29,21 +30,27 @@ const Container = ({ children }) => (
   <StackableBorderBox p={2}>{children}</StackableBorderBox>
 )
 
-@track({
-  context_module: Schema.ContextModule.Biography,
-})
+@track(
+  {
+    context_module: Schema.ContextModule.Biography,
+  },
+  {
+    dispatch: data => Events.postEvent(data),
+  }
+)
 export class ArtistInfo extends Component<ArtistInfoProps> {
   @track({
+    action_type: Schema.ActionType.Click,
     flow: Schema.Flow.ArtworkAboutTheArtist,
+    subject: Schema.Subject.ReadMore,
     type: Schema.Type.Button,
-    label: Schema.Label.ReadMore,
   })
   trackArtistBioReadMoreClick() {
     // noop
   }
 
   render() {
-    const { biography_blurb, image } = this.props.artist
+    const { biography_blurb, image, id, _id } = this.props.artist
     const showArtistBio = !!biography_blurb.text
     const imageUrl = get(this.props, p => image.cropped.url)
 
@@ -61,6 +68,15 @@ export class ArtistInfo extends Component<ArtistInfoProps> {
                   <FollowArtistButton
                     artist={this.props.artist}
                     user={user}
+                    trackingData={{
+                      modelName: Schema.OwnerType.Artist,
+                      context_module: [
+                        Schema.ContextModule.Sidebar,
+                        Schema.ContextModule.Biography,
+                      ],
+                      entity_id: _id,
+                      entity_slug: id,
+                    }}
                     onOpenAuthModal={() => {
                       mediator.trigger("open:auth", {
                         mode: "signup",
@@ -96,7 +112,9 @@ export class ArtistInfo extends Component<ArtistInfoProps> {
                   <Spacer mb={1} />
                   <ArtistBio
                     bio={this.props.artist}
-                    onReadMoreClicked={this.trackArtistBioReadMoreClick}
+                    onReadMoreClicked={this.trackArtistBioReadMoreClick.bind(
+                      this
+                    )}
                   />
                 </>
               )}
@@ -129,6 +147,7 @@ export const ArtistInfoFragmentContainer = createFragmentContainer(
   ArtistInfo,
   graphql`
     fragment ArtistInfo_artist on Artist {
+      _id
       id
       name
       href

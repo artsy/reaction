@@ -7,6 +7,8 @@ export type ArtworkDetailsAboutTheWorkFromPartner_artwork$ref = typeof _ArtworkD
 export type ArtworkDetailsAboutTheWorkFromPartner_artwork = {
     readonly additional_information: string | null;
     readonly partner: ({
+        readonly _id: string;
+        readonly id: string;
         readonly type: string | null;
         readonly name: string | null;
         readonly initials: string | null;
@@ -28,6 +30,13 @@ export type ArtworkDetailsAboutTheWorkFromPartner_artwork = {
 
 const node: ConcreteFragment = (function(){
 var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v1 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__id",
@@ -67,6 +76,14 @@ return {
         {
           "kind": "ScalarField",
           "alias": null,
+          "name": "_id",
+          "args": null,
+          "storageKey": null
+        },
+        v0,
+        {
+          "kind": "ScalarField",
+          "alias": null,
           "name": "type",
           "args": null,
           "storageKey": null
@@ -101,7 +118,7 @@ return {
               "args": null,
               "storageKey": null
             },
-            v0
+            v1
           ]
         },
         {
@@ -118,13 +135,7 @@ return {
               "name": "FollowProfileButton_profile",
               "args": null
             },
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "id",
-              "args": null,
-              "storageKey": null
-            },
+            v0,
             {
               "kind": "LinkedField",
               "alias": null,
@@ -150,15 +161,15 @@ return {
                 }
               ]
             },
-            v0
+            v1
           ]
         },
-        v0
+        v1
       ]
     },
-    v0
+    v1
   ]
 };
 })();
-(node as any).hash = '5559b3906f01338536bb9b295df02fe6';
+(node as any).hash = 'fce4402841219c49eca1cc996a7c7bb2';
 export default node;

@@ -12,10 +12,6 @@
     "dist",
     "docs"
   ],
-  "engines": {
-    "node": "8.12.x",
-    "npm": "5.4.x"
-  },
   "peerDependencies": {
     "dd-trace": "^0.6.0",
     "react": "^16.5.0",
@@ -141,7 +137,7 @@
     "semantic-release": "^12.4.1",
     "simple-progress-webpack-plugin": "^1.1.2",
     "static-extend": "^0.1.2",
-    "storybook-addon-scissors": "^4.0.1",
+    "storybook-addon-scissors": "^4.0.2",
     "styled-components": "^3.4.5",
     "stylelint": "^9.6.0",
     "stylelint-config-standard": "^18.2.0",
@@ -158,7 +154,7 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
-    "@artsy/palette": "^2.19.9",
+    "@artsy/palette": "^2.21.0",
     "@artsy/react-responsive-media": "^1.0.12",
     "@sentry/browser": "^4.2.3",
     "cheerio": "^1.0.0-rc.2",
