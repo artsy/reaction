@@ -32,7 +32,7 @@ fragment Offer_order on Order {
   mode
   state
   itemsTotal(precision: 2)
-  offerTotal(precision: 2)
+  totalListPrice(precision: 2)
   lineItems {
     edges {
       node {
@@ -55,7 +55,7 @@ fragment TransactionSummary_order on Order {
   taxTotal(precision: 2)
   taxTotalCents
   itemsTotal(precision: 2)
-  offerTotal(precision: 2)
+  totalListPrice(precision: 2)
   buyerTotal(precision: 2)
   seller {
     __typename
@@ -148,7 +148,7 @@ return {
   "operationKind": "query",
   "name": "routes_OfferQuery",
   "id": null,
-  "text": "query routes_OfferQuery(\n  $orderID: String!\n) {\n  order: ecommerceOrder(id: $orderID) {\n    ...Offer_order\n    __id: id\n  }\n}\n\nfragment Offer_order on Order {\n  id\n  mode\n  state\n  itemsTotal(precision: 2)\n  offerTotal(precision: 2)\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  ...TransactionSummary_order\n  __id: id\n}\n\nfragment TransactionSummary_order on Order {\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  offerTotal(precision: 2)\n  buyerTotal(precision: 2)\n  seller {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n    ... on User {\n      __id\n    }\n  }\n  lastOffer {\n    id\n    amountCents\n    __id: id\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_transactionSummary: resized(width: 55) {\n              url\n            }\n          }\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n",
+  "text": "query routes_OfferQuery(\n  $orderID: String!\n) {\n  order: ecommerceOrder(id: $orderID) {\n    ...Offer_order\n    __id: id\n  }\n}\n\nfragment Offer_order on Order {\n  id\n  mode\n  state\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  ...TransactionSummary_order\n  __id: id\n}\n\nfragment TransactionSummary_order on Order {\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  buyerTotal(precision: 2)\n  seller {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n    ... on User {\n      __id\n    }\n  }\n  lastOffer {\n    id\n    amountCents\n    __id: id\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_transactionSummary: resized(width: 55) {\n              url\n            }\n          }\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -215,9 +215,9 @@ return {
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "offerTotal",
+            "name": "totalListPrice",
             "args": v4,
-            "storageKey": "offerTotal(precision:2)"
+            "storageKey": "totalListPrice(precision:2)"
           },
           {
             "kind": "LinkedField",
