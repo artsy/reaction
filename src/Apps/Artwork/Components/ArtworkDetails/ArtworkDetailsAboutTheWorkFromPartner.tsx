@@ -11,6 +11,7 @@ import { Media } from "Utils/Responsive"
 import { READ_MORE_MAX_CHARS } from "./ArtworkDetailsAboutTheWorkFromArtsy"
 
 import { ArtworkDetailsAboutTheWorkFromPartner_artwork } from "__generated__/ArtworkDetailsAboutTheWorkFromPartner_artwork.graphql"
+import { data as sd } from "sharify"
 
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
@@ -74,6 +75,7 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
               <Box>
                 <EntityHeader
                   name={partner.name}
+                  href={`${sd.APP_URL}${partner.href}`}
                   meta={locationNames}
                   imageUrl={imageUrl}
                   initials={partner.initials}
@@ -154,6 +156,7 @@ export const ArtworkDetailsAboutTheWorkFromPartnerFragmentContainer = createFrag
         _id
         id
         type
+        href
         name
         initials
         locations {
