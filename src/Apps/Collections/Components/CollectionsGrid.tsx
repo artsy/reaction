@@ -46,6 +46,8 @@ export class CollectionsGrid extends Component<CollectionsGridProps> {
                     href={`/collection/${collection.slug}`}
                     imageUrl={imageUrl}
                     name={collection.title}
+                    nameFontSize="4"
+                    nameFontWeight="regular"
                   />
                 </Box>
                 <Separator />

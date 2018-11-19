@@ -1,4 +1,12 @@
-import { Avatar, Box, Flex, Sans, Serif } from "@artsy/palette"
+import {
+  Avatar,
+  Box,
+  Flex,
+  Sans,
+  Serif,
+  SerifProps,
+  SerifSize,
+} from "@artsy/palette"
 import React, { SFC } from "react"
 import styled, { css } from "styled-components"
 
@@ -8,6 +16,8 @@ interface EntityHeaderProps {
   initials?: string
   meta?: string
   name: string
+  nameFontSize?: SerifSize
+  nameFontWeight?: SerifProps["weight"]
   showFollow?: boolean
   FollowButton?: JSX.Element
 }
@@ -17,6 +27,8 @@ export const EntityHeader: SFC<EntityHeaderProps> = ({
   imageUrl,
   initials,
   name,
+  nameFontSize,
+  nameFontWeight,
   meta,
   FollowButton,
 }) => {
@@ -35,7 +47,11 @@ export const EntityHeader: SFC<EntityHeaderProps> = ({
       )}
 
       <Flex flexDirection="column" justifyContent="center" width="100%">
-        <Serif size="3" weight="semibold" color="black100">
+        <Serif
+          size={nameFontSize ? nameFontSize : "3"}
+          weight={nameFontSize ? nameFontWeight : "semibold"}
+          color="black100"
+        >
           {name}
         </Serif>
 
