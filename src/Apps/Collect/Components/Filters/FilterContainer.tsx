@@ -85,9 +85,9 @@ export class FilterContainer extends React.Component<
       )
 
     const Desktop = props => (
-      <Sidebar width="25%" mr={2}>
+      <Box width="25%" mr={2}>
         <Filters {...props} />
-      </Sidebar>
+      </Box>
     )
 
     return (
@@ -99,7 +99,11 @@ export class FilterContainer extends React.Component<
                 <Mobile filters={filters} />
               </Media>
               <Media greaterThan="xs">
-                <Desktop filters={filters} />
+                {(className, renderChildren) =>
+                  renderChildren && (
+                    <Desktop filters={filters} className={className} />
+                  )
+                }
               </Media>
               <span id="jump--collectArtworkGrid" />
 
@@ -124,5 +128,3 @@ export class FilterContainer extends React.Component<
     )
   }
 }
-
-const Sidebar = Box
