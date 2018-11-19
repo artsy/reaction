@@ -4,7 +4,7 @@
   "description": "Force’s React Components",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction.git",
-  "author": "Eloy Durán <eloy.de.enige@gmail.com>",
+  "author": "Art.sy Inc <it@artsymail.com>",
   "license": "MIT",
   "files": [
     "assets",
