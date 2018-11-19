@@ -64,7 +64,7 @@ const PartnerInlineContainer = styled.div`
   align-items: center;
   margin: ${(props: DivProps) => props.margin};
   img {
-    max-height: 24px;
+    max-height: 32px;
     vertical-align: middle;
     -ms-interpolation-mode: bicubic;
   }
@@ -77,10 +77,10 @@ const PartnerInlineContainer = styled.div`
   }
   ${pMedia.sm`
     img {
-      max-height: 24px;
+      max-height: 32px;
     }
     ${Icon} {
-      font-size: 24px;
+      font-size: 32px;
     }
     ${IconPlus} {
       margin: 0 10px;
