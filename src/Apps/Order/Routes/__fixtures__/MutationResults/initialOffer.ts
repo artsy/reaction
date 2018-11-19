@@ -3,7 +3,8 @@ export const initialOfferSuccess = {
     orderOrError: {
       order: {
         id: "1234",
-        offerTotalCents: 400,
+        itemsTotalCents: 400,
+        totalListPriceCents: 600,
         lastOffer: {
           id: "2345",
           amountCents: 400,
