@@ -114,7 +114,6 @@ export const FollowArtistPopoverRowFragmentContainer = createFragmentContainer(
           url
         }
       }
-      ...FollowArtistButton_artist
     }
   `
 )

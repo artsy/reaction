@@ -213,6 +213,33 @@ fragment FollowArtistButton_artist on Artist {
   counts {
     follows
   }
+  ...FollowArtistPopover_suggested
+}
+
+fragment FollowArtistPopover_suggested on Artist {
+  related {
+    suggested(first: 3, exclude_followed_artists: true) {
+      edges {
+        node {
+          __id
+          ...FollowArtistPopoverRow_artist
+        }
+      }
+    }
+  }
+  __id
+}
+
+fragment FollowArtistPopoverRow_artist on Artist {
+  id
+  _id
+  __id
+  name
+  image {
+    cropped(width: 45, height: 45) {
+      url
+    }
+  }
 }
 */
 
@@ -276,11 +303,18 @@ v4 = [
 v5 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "name",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
 v6 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "name",
+  "args": null,
+  "storageKey": null
+},
+v7 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "href",
@@ -292,7 +326,7 @@ return {
   "operationKind": "query",
   "name": "ArtworkSidebar_Test_Query",
   "id": null,
-  "text": "query ArtworkSidebar_Test_Query {\n  artwork(id: \"josef-albers-homage-to-the-square-85\") {\n    ...ArtworkSidebar_artwork\n    __id\n  }\n}\n\nfragment ArtworkSidebar_artwork on Artwork {\n  is_in_auction\n  ...ArtworkSidebarArtists_artwork\n  ...ArtworkSidebarMetadata_artwork\n  ...ArtworkSidebarAuctionPartnerInfo_artwork\n  ...ArtworkSidebarCurrentBidInfo_artwork\n  ...ArtworkSidebarBidAction_artwork\n  ...ArtworkSidebarCommercial_artwork\n  ...ArtworkSidebarPartnerInfo_artwork\n  ...ArtworkSidebarExtraLinks_artwork\n  __id\n}\n\nfragment ArtworkSidebarArtists_artwork on Artwork {\n  artists {\n    __id\n    id\n    name\n    href\n    ...FollowArtistButton_artist\n  }\n  __id\n}\n\nfragment ArtworkSidebarMetadata_artwork on Artwork {\n  is_biddable\n  edition_sets {\n    __id\n  }\n  sale_artwork {\n    lot_label\n    __id\n  }\n  ...ArtworkSidebarTitleInfo_artwork\n  ...ArtworkSidebarSizeInfo_piece\n  ...ArtworkSidebarClassification_artwork\n  __id\n}\n\nfragment ArtworkSidebarAuctionPartnerInfo_artwork on Artwork {\n  is_biddable\n  partner {\n    __id\n    name\n  }\n  sale_artwork {\n    estimate\n    __id\n  }\n  sale {\n    is_with_buyers_premium\n    __id\n  }\n  __id\n}\n\nfragment ArtworkSidebarCurrentBidInfo_artwork on Artwork {\n  myLotStanding(live: true) {\n    active_bid {\n      is_winning\n      max_bid {\n        display\n      }\n      __id\n    }\n  }\n  sale {\n    is_open\n    is_closed\n    __id\n  }\n  sale_artwork {\n    lot_label\n    estimate\n    is_with_reserve\n    reserve_message\n    reserve_status\n    current_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n\nfragment ArtworkSidebarBidAction_artwork on Artwork {\n  myLotStanding(live: true) {\n    active_bid {\n      __id\n    }\n  }\n  sale {\n    registrationStatus {\n      qualified_for_bidding\n      __id\n    }\n    is_preview\n    is_open\n    is_live_open\n    is_closed\n    is_registration_closed\n    __id\n  }\n  sale_artwork {\n    increments {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment ArtworkSidebarCommercial_artwork on Artwork {\n  __id\n  sale_message\n  is_inquireable\n  edition_sets {\n    __id\n    ...ArtworkSidebarSizeInfo_piece\n  }\n}\n\nfragment ArtworkSidebarPartnerInfo_artwork on Artwork {\n  collecting_institution\n  partner {\n    __id\n    name\n    href\n    locations {\n      city\n      __id\n    }\n  }\n  __id\n}\n\nfragment ArtworkSidebarExtraLinks_artwork on Artwork {\n  __id\n  is_in_auction\n  is_for_sale\n  is_acquireable\n  is_inquireable\n  artists {\n    __id\n    is_consignable\n  }\n  sale {\n    is_closed\n    __id\n  }\n}\n\nfragment ArtworkSidebarSizeInfo_piece on Sellable {\n  dimensions {\n    in\n    cm\n  }\n  edition_of\n  ... on Node {\n    __id\n  }\n  ... on EditionSet {\n    __id\n  }\n}\n\nfragment ArtworkSidebarTitleInfo_artwork on Artwork {\n  title\n  date\n  medium\n  __id\n}\n\nfragment ArtworkSidebarClassification_artwork on Artwork {\n  attribution_class {\n    short_description\n  }\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n",
+  "text": "query ArtworkSidebar_Test_Query {\n  artwork(id: \"josef-albers-homage-to-the-square-85\") {\n    ...ArtworkSidebar_artwork\n    __id\n  }\n}\n\nfragment ArtworkSidebar_artwork on Artwork {\n  is_in_auction\n  ...ArtworkSidebarArtists_artwork\n  ...ArtworkSidebarMetadata_artwork\n  ...ArtworkSidebarAuctionPartnerInfo_artwork\n  ...ArtworkSidebarCurrentBidInfo_artwork\n  ...ArtworkSidebarBidAction_artwork\n  ...ArtworkSidebarCommercial_artwork\n  ...ArtworkSidebarPartnerInfo_artwork\n  ...ArtworkSidebarExtraLinks_artwork\n  __id\n}\n\nfragment ArtworkSidebarArtists_artwork on Artwork {\n  artists {\n    __id\n    id\n    name\n    href\n    ...FollowArtistButton_artist\n  }\n  __id\n}\n\nfragment ArtworkSidebarMetadata_artwork on Artwork {\n  is_biddable\n  edition_sets {\n    __id\n  }\n  sale_artwork {\n    lot_label\n    __id\n  }\n  ...ArtworkSidebarTitleInfo_artwork\n  ...ArtworkSidebarSizeInfo_piece\n  ...ArtworkSidebarClassification_artwork\n  __id\n}\n\nfragment ArtworkSidebarAuctionPartnerInfo_artwork on Artwork {\n  is_biddable\n  partner {\n    __id\n    name\n  }\n  sale_artwork {\n    estimate\n    __id\n  }\n  sale {\n    is_with_buyers_premium\n    __id\n  }\n  __id\n}\n\nfragment ArtworkSidebarCurrentBidInfo_artwork on Artwork {\n  myLotStanding(live: true) {\n    active_bid {\n      is_winning\n      max_bid {\n        display\n      }\n      __id\n    }\n  }\n  sale {\n    is_open\n    is_closed\n    __id\n  }\n  sale_artwork {\n    lot_label\n    estimate\n    is_with_reserve\n    reserve_message\n    reserve_status\n    current_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n\nfragment ArtworkSidebarBidAction_artwork on Artwork {\n  myLotStanding(live: true) {\n    active_bid {\n      __id\n    }\n  }\n  sale {\n    registrationStatus {\n      qualified_for_bidding\n      __id\n    }\n    is_preview\n    is_open\n    is_live_open\n    is_closed\n    is_registration_closed\n    __id\n  }\n  sale_artwork {\n    increments {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment ArtworkSidebarCommercial_artwork on Artwork {\n  __id\n  sale_message\n  is_inquireable\n  edition_sets {\n    __id\n    ...ArtworkSidebarSizeInfo_piece\n  }\n}\n\nfragment ArtworkSidebarPartnerInfo_artwork on Artwork {\n  collecting_institution\n  partner {\n    __id\n    name\n    href\n    locations {\n      city\n      __id\n    }\n  }\n  __id\n}\n\nfragment ArtworkSidebarExtraLinks_artwork on Artwork {\n  __id\n  is_in_auction\n  is_for_sale\n  is_acquireable\n  is_inquireable\n  artists {\n    __id\n    is_consignable\n  }\n  sale {\n    is_closed\n    __id\n  }\n}\n\nfragment ArtworkSidebarSizeInfo_piece on Sellable {\n  dimensions {\n    in\n    cm\n  }\n  edition_of\n  ... on Node {\n    __id\n  }\n  ... on EditionSet {\n    __id\n  }\n}\n\nfragment ArtworkSidebarTitleInfo_artwork on Artwork {\n  title\n  date\n  medium\n  __id\n}\n\nfragment ArtworkSidebarClassification_artwork on Artwork {\n  attribution_class {\n    short_description\n  }\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n  counts {\n    follows\n  }\n  ...FollowArtistPopover_suggested\n}\n\nfragment FollowArtistPopover_suggested on Artist {\n  related {\n    suggested(first: 3, exclude_followed_artists: true) {\n      edges {\n        node {\n          __id\n          ...FollowArtistPopoverRow_artist\n        }\n      }\n    }\n  }\n  __id\n}\n\nfragment FollowArtistPopoverRow_artist on Artist {\n  id\n  _id\n  __id\n  name\n  image {\n    cropped(width: 45, height: 45) {\n      url\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -481,15 +515,9 @@ return {
             "plural": true,
             "selections": [
               v1,
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "id",
-                "args": null,
-                "storageKey": null
-              },
               v5,
               v6,
+              v7,
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -512,6 +540,115 @@ return {
                     "name": "follows",
                     "args": null,
                     "storageKey": null
+                  }
+                ]
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "related",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "ArtistRelatedData",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "suggested",
+                    "storageKey": "suggested(exclude_followed_artists:true,first:3)",
+                    "args": [
+                      {
+                        "kind": "Literal",
+                        "name": "exclude_followed_artists",
+                        "value": true,
+                        "type": "Boolean"
+                      },
+                      {
+                        "kind": "Literal",
+                        "name": "first",
+                        "value": 3,
+                        "type": "Int"
+                      }
+                    ],
+                    "concreteType": "ArtistConnection",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "kind": "LinkedField",
+                        "alias": null,
+                        "name": "edges",
+                        "storageKey": null,
+                        "args": null,
+                        "concreteType": "ArtistEdge",
+                        "plural": true,
+                        "selections": [
+                          {
+                            "kind": "LinkedField",
+                            "alias": null,
+                            "name": "node",
+                            "storageKey": null,
+                            "args": null,
+                            "concreteType": "Artist",
+                            "plural": false,
+                            "selections": [
+                              v1,
+                              v5,
+                              {
+                                "kind": "ScalarField",
+                                "alias": null,
+                                "name": "_id",
+                                "args": null,
+                                "storageKey": null
+                              },
+                              v6,
+                              {
+                                "kind": "LinkedField",
+                                "alias": null,
+                                "name": "image",
+                                "storageKey": null,
+                                "args": null,
+                                "concreteType": "Image",
+                                "plural": false,
+                                "selections": [
+                                  {
+                                    "kind": "LinkedField",
+                                    "alias": null,
+                                    "name": "cropped",
+                                    "storageKey": "cropped(height:45,width:45)",
+                                    "args": [
+                                      {
+                                        "kind": "Literal",
+                                        "name": "height",
+                                        "value": 45,
+                                        "type": "Int!"
+                                      },
+                                      {
+                                        "kind": "Literal",
+                                        "name": "width",
+                                        "value": 45,
+                                        "type": "Int!"
+                                      }
+                                    ],
+                                    "concreteType": "CroppedImageUrl",
+                                    "plural": false,
+                                    "selections": [
+                                      {
+                                        "kind": "ScalarField",
+                                        "alias": null,
+                                        "name": "url",
+                                        "args": null,
+                                        "storageKey": null
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ]
               },
@@ -559,8 +696,8 @@ return {
             "plural": false,
             "selections": [
               v1,
-              v5,
               v6,
+              v7,
               {
                 "kind": "LinkedField",
                 "alias": null,
