@@ -9,6 +9,7 @@ import { getLoadableState } from "loadable-components/server"
 import React, { ComponentType } from "react"
 import ReactDOMServer from "react-dom/server"
 import { getUser } from "Utils/getUser"
+import { createMediaStyle } from "Utils/Responsive"
 import { trace } from "Utils/trace"
 import { RouterConfig } from "./"
 
@@ -18,6 +19,9 @@ interface Resolve {
   status?: string
   headTags?: any[]
 }
+
+// No need to invoke this for each request.
+const MediaStyle = createMediaStyle()
 
 export function buildServerApp(config: RouterConfig): Promise<Resolve> {
   return trace(
@@ -31,7 +35,7 @@ export function buildServerApp(config: RouterConfig): Promise<Resolve> {
         const historyMiddlewares = [queryMiddleware]
         const resolver = new Resolver(relayEnvironment)
         const render = createRender({})
-        const headTags = []
+        const headTags = [<style type="text/css">{MediaStyle}</style>]
 
         const { redirect, status, element } = await trace(
           "buildServerApp.farceResults",

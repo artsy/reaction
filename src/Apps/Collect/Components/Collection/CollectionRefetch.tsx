@@ -3,7 +3,6 @@ import { FilterState } from "Apps/Collect/FilterState"
 import { isEqual } from "lodash"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
-import { Responsive } from "Utils/Responsive"
 import { CollectArtworkGridRefreshContainer as ArtworkFilter } from "../Base/CollectArtworkGrid"
 
 interface CollectionRefetchProps {
@@ -61,16 +60,12 @@ export class CollectionRefetch extends Component<CollectionRefetchProps> {
     const { filtersState } = this.props
     const { filtered_artworks } = this.props.collection
     return (
-      <Responsive>
-        {({ xs, sm, md }) => (
-          <ArtworkFilter
-            filtered_artworks={filtered_artworks as any}
-            isLoading={this.isLoading}
-            columnCount={xs || sm || md ? 2 : 3}
-            filters={filtersState}
-          />
-        )}
-      </Responsive>
+      <ArtworkFilter
+        filtered_artworks={filtered_artworks as any}
+        isLoading={this.isLoading}
+        columnCount={[2, 2, 2, 3]}
+        filters={filtersState}
+      />
     )
   }
 }

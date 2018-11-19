@@ -15,7 +15,7 @@ import {
 
 interface Props {
   artistID: string
-  columnCount: number
+  columnCount: number | number[]
   filters: any
   filtered_artworks: ArtworkFilterArtworkGrid_filtered_artworks
   filterState?: FilterState
