@@ -40,6 +40,14 @@ describe("Details", () => {
       expect(html).toContain("ends in 14d")
     })
 
+    it("shows sale 'timely' data when auction is in a preview state", async () => {
+      const data = cloneDeep(artworkInAuction)
+      data.sale.is_open = false
+      const wrapper = await getWrapper(data)
+      const html = wrapper.html()
+      expect(html).toContain("ends in 14d")
+    })
+
     it("shows highest bid if sale open and highest bid", async () => {
       const data = cloneDeep(artworkInAuction)
       const wrapper = await getWrapper(data)
@@ -101,7 +109,6 @@ const artworkInAuction = {
     is_open: true,
     is_closed: false,
     display_timely_at: "ends in 14d",
-    auction_state: "open",
     __id: "U2FsZTpmb3J1bS1hdWN0aW9ucy1tdWx0aXBseQ==",
   },
   sale_artwork: {

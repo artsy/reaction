@@ -18,11 +18,12 @@ export enum OwnerType {
   Article = "Article",
   Artist = "Artist",
   Artwork = "Artwork",
+  Consignment = "ConsignmentSubmission",
   Conversation = "Conversation",
   Gene = "Gene",
-  Show = "Show",
   Invoice = "Invoice",
-  Consignment = "ConsignmentSubmission",
+  Partner = "Partner",
+  Show = "Show",
 }
 
 /**
@@ -180,6 +181,7 @@ export enum ContextModule {
   ArtistOverview = "ArtistOverview",
   ArtistBio = "ArtistBio",
   Biography = "Biography",
+  Sidebar = "Sidebar",
 
   /**
    * Artwork page
