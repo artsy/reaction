@@ -46,7 +46,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
     // no-op
   }
 
-  maybeShowGenes(xs) {
+  maybeShowGenes() {
     const { artist } = this.props
 
     let showGenes = false
@@ -80,6 +80,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
 
     // TODO: Hide right column if missing current event. Waiting on feedback
     const colNum = 9 // artist.currentEvent ? 9 : 12
+    const showGenes = this.maybeShowGenes()
 
     return (
       <>
@@ -115,13 +116,21 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
               </>
             )}
 
-            {this.maybeShowGenes && (
+            {this.maybeShowGenes() && (
               <>
                 <Media at="xs">
-                  {bioLen < MAX_CHARS.xs && <Genes artist={artist} />}
+                  {bioLen < MAX_CHARS.xs ? (
+                    <Genes artist={artist} />
+                  ) : (
+                    showGenes && <Genes artist={artist} />
+                  )}
                 </Media>
                 <Media greaterThan="xs">
-                  {bioLen < MAX_CHARS.default && <Genes artist={artist} />}
+                  {bioLen < MAX_CHARS.default ? (
+                    <Genes artist={artist} />
+                  ) : (
+                    showGenes && <Genes artist={artist} />
+                  )}
                 </Media>
                 <Spacer mb={1} />
               </>

@@ -19,6 +19,8 @@ import {
   Footer,
   RecentlyViewedQueryRenderer as RecentlyViewed,
 } from "Styleguide/Components"
+import { OtherWorksByArtistQueryRenderer as OtherWorksByArtist } from "./Components/OtherWorks/OtherWorksByArtist"
+import { OtherWorksFromAuctionQueryRenderer as OtherWorksFromAuction } from "./Components/OtherWorks/OtherWorksFromAuction"
 
 export interface Props {
   artwork: ArtworkApp_artwork
@@ -54,6 +56,20 @@ export const ArtworkApp: React.SFC<Props> = props => {
           </Col>
         </Row>
       )}
+      <Row>
+        <Col>
+          <Box mt={6}>
+            <OtherWorksFromAuction artworkID={props.artwork.id} />
+          </Box>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Box mt={6}>
+            <OtherWorksByArtist artworkID={props.artwork.id} />
+          </Box>
+        </Col>
+      </Row>
 
       {typeof window !== "undefined" && (
         <LazyLoadComponent threshold={1000}>

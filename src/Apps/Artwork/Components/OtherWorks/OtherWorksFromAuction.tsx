@@ -14,6 +14,7 @@ interface OtherWorksFromAuctionProps {
 export const OtherWorksFromAuction: React.SFC<
   OtherWorksFromAuctionProps
 > = props => {
+  console.log(props)
   return (
     <Flex flexDirection="column" alignItems="center">
       <Serif size="8" color="black100" mb={2}>
@@ -32,6 +33,24 @@ export const OtherWorksFromAuctionFragmentContainer = createFragmentContainer(
   OtherWorksFromAuction,
   graphql`
     fragment OtherWorksFromAuction_artwork on Artwork {
+      context {
+        ... on ArtworkContextAuction {
+          # FIXME: add exclude: [$id]
+          artworks(size: 10) {
+            id
+          }
+          eligible_sale_artworks_count
+          end_at
+          href
+          is_closed
+          is_live_open
+          is_preview
+          live_start_at
+          name
+          start_at
+          status
+        }
+      }
       artist {
         name
         href
@@ -41,7 +60,11 @@ export const OtherWorksFromAuctionFragmentContainer = createFragmentContainer(
 
         # FIXME: add exclude: [$artistID]), but it throws relay compiler error
 
-        artworks: artworks_connection(first: 20, sort: PUBLISHED_AT_DESC) {
+        artworks: artworks_connection(
+          first: 10
+          filter: [IS_FOR_SALE]
+          sort: PUBLISHED_AT_DESC
+        ) {
           ...ArtworkGrid_artworks
         }
       }

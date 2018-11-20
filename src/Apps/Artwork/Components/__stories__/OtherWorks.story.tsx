@@ -5,26 +5,23 @@ import { OtherWorksByArtistQueryRenderer as OtherWorksByArtist } from "../OtherW
 import { OtherWorksFromAuctionQueryRenderer as OtherWorksFromAuction } from "../OtherWorks/OtherWorksFromAuction"
 import { OtherWorksFromFairQueryRenderer as OtherWorksFromFair } from "../OtherWorks/OtherWorksFromFair"
 import { OtherWorksFromGalleryQueryRenderer as OtherWorksFromGallery } from "../OtherWorks/OtherWorksFromGallery"
-// import { RelatedWorksQueryRenderer as RelatedWorks } from "../OtherWorks/RelatedWorks"
+import { RelatedWorksQueryRenderer as RelatedWorks } from "../OtherWorks/RelatedWorks"
 
 storiesOf("Styleguide/Artwork/OtherWorks", module)
+  .add("From auction", () => {
+    return (
+      <>
+        <Section title="Other works from auction">
+          <OtherWorksFromAuction artworkID="jean-deyrolle-opus-46-les-portes-de-la-nuit" />
+        </Section>
+      </>
+    )
+  })
   .add("By artist", () => {
     return (
       <>
         <Section title="Other works by artist">
           <OtherWorksByArtist artworkID="pablo-picasso-femme-assise-dans-un-fauteuil-tresse" />
-        </Section>
-        <Section title="Other works from auction">
-          <OtherWorksFromAuction artworkID="pablo-picasso-femme-assise-dans-un-fauteuil-tresse" />
-        </Section>
-      </>
-    )
-  })
-  .add("From auction", () => {
-    return (
-      <>
-        <Section title="Other works from auction">
-          <OtherWorksFromAuction artworkID="pablo-picasso-femme-assise-dans-un-fauteuil-tresse" />
         </Section>
       </>
     )
@@ -51,7 +48,7 @@ storiesOf("Styleguide/Artwork/OtherWorks", module)
     return (
       <>
         <Section title="Related works">
-          <OtherWorksFromAuction artworkID="pablo-picasso-femme-assise-dans-un-fauteuil-tresse" />
+          <RelatedWorks artworkID="pablo-picasso-femme-assise-dans-un-fauteuil-tresse" />
         </Section>
       </>
     )

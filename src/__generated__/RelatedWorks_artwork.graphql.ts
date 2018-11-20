@@ -2,10 +2,9 @@
 
 import { ConcreteFragment } from "relay-runtime";
 import { ArtworkGrid_artworks$ref } from "./ArtworkGrid_artworks.graphql";
-declare const _OtherWorksByArtist_artwork$ref: unique symbol;
-export type OtherWorksByArtist_artwork$ref = typeof _OtherWorksByArtist_artwork$ref;
-export type OtherWorksByArtist_artwork = {
-    readonly id: string;
+declare const _RelatedWorks_artwork$ref: unique symbol;
+export type RelatedWorks_artwork$ref = typeof _RelatedWorks_artwork$ref;
+export type RelatedWorks_artwork = {
     readonly artist: ({
         readonly name: string | null;
         readonly href: string | null;
@@ -16,7 +15,7 @@ export type OtherWorksByArtist_artwork = {
             readonly " $fragmentRefs": ArtworkGrid_artworks$ref;
         }) | null;
     }) | null;
-    readonly " $refType": OtherWorksByArtist_artwork$ref;
+    readonly " $refType": RelatedWorks_artwork$ref;
 };
 
 
@@ -31,18 +30,11 @@ var v0 = {
 };
 return {
   "kind": "Fragment",
-  "name": "OtherWorksByArtist_artwork",
+  "name": "RelatedWorks_artwork",
   "type": "Artwork",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "id",
-      "args": null,
-      "storageKey": null
-    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -101,20 +93,12 @@ return {
           "kind": "LinkedField",
           "alias": "artworks",
           "name": "artworks_connection",
-          "storageKey": "artworks_connection(filter:[\"IS_FOR_SALE\"],first:10,sort:\"PUBLISHED_AT_DESC\")",
+          "storageKey": "artworks_connection(first:20,sort:\"PUBLISHED_AT_DESC\")",
           "args": [
             {
               "kind": "Literal",
-              "name": "filter",
-              "value": [
-                "IS_FOR_SALE"
-              ],
-              "type": "[ArtistArtworksFilters]"
-            },
-            {
-              "kind": "Literal",
               "name": "first",
-              "value": 10,
+              "value": 20,
               "type": "Int"
             },
             {
@@ -141,5 +125,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '26b5609a228a441a8c891e0d71fb0071';
+(node as any).hash = '0df8309cf7f0582fc5edc25df3231e27';
 export default node;

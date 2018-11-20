@@ -30,6 +30,8 @@ export const OtherWorksByArtistFragmentContainer = createFragmentContainer(
   OtherWorksByArtist,
   graphql`
     fragment OtherWorksByArtist_artwork on Artwork {
+      id
+
       artist {
         name
         href
@@ -39,7 +41,11 @@ export const OtherWorksByArtistFragmentContainer = createFragmentContainer(
 
         # FIXME: add exclude: [$artistID]), but it throws relay compiler error
 
-        artworks: artworks_connection(first: 20, sort: PUBLISHED_AT_DESC) {
+        artworks: artworks_connection(
+          first: 10
+          filter: [IS_FOR_SALE]
+          sort: PUBLISHED_AT_DESC
+        ) {
           ...ArtworkGrid_artworks
         }
       }

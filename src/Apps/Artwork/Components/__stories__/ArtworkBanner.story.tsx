@@ -10,6 +10,7 @@ import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
 import { ArtworkBanner, ArtworkBannerQueryRenderer } from "../ArtworkBanner"
+
 storiesOf("Styleguide/Artwork", module).add("ArtworkBanner", () => {
   return (
     <React.Fragment>

@@ -9,8 +9,8 @@ const StyledBox = styled(Box)`
   background-color: black;
   color: white;
   border-bottom-right-radius: 5px;
-  /* transition: opacity 0.3s ease-in-out; */
-  /* opacity: 0; */
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0.1;
 `
 
 const BreakpointText: React.SFC<{ breakpoint: string; max?: boolean }> = ({
