@@ -1,8 +1,11 @@
 import { Box, Sans, Spacer } from "@artsy/palette"
+import { ContextConsumer } from "Artsy/Router"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import styled from "styled-components"
 
 import { ArtworkSidebarExtraLinks_artwork } from "__generated__/ArtworkSidebarExtraLinks_artwork.graphql"
+import { data as sd } from "sharify"
 
 export interface ArtworkSidebarExtraLinksProps {
   artwork: ArtworkSidebarExtraLinks_artwork
@@ -14,41 +17,88 @@ const Container = ({ children }) => (
   </Sans>
 )
 
+const Link = styled.a`
+  text-decoration: underline;
+`
+
 export class ArtworkSidebarExtraLinks extends React.Component<
   ArtworkSidebarExtraLinksProps
 > {
-  renderAuctionTerms() {
+  onClickConditionsOfSale() {
+    window.open(`${sd.APP_URL}/conditions-of-sale`, "_blank")
+  }
+  onClickAuctionFAQ(mediator) {
+    mediator && mediator.trigger("openAuctionFAQModal")
+  }
+  onClickBuyNowFAQ() {
+    window.open(`${sd.APP_URL}/buy-now-feature-faq`, "_blank")
+  }
+  onClickCollectorFAQ(mediator) {
+    mediator && mediator.trigger("openCollectorFAQModal")
+  }
+  onClickAuctionAskSpecialist(mediator) {
+    mediator &&
+      mediator.trigger("openAuctionAskSpecialistModal", {
+        artworkId: this.props.artwork.__id,
+      })
+  }
+  onClickBuyNowAskSpecialist(mediator) {
+    mediator &&
+      mediator.trigger("openBuyNowAskSpecialistModal", {
+        artworkId: this.props.artwork.__id,
+      })
+  }
+  onClickConsign() {
+    window.open(`${sd.APP_URL}/consign`, "_blank")
+  }
+
+  renderAuctionTerms(mediator) {
     return (
       <Container>
         By placing your bid you agree to Artsy's{" "}
-        <a href="#">Conditions of Sale</a>.
+        <Link onClick={this.onClickConditionsOfSale.bind(this)}>
+          Conditions of Sale
+        </Link>.
         <Spacer mb={1} />
       </Container>
     )
   }
-  renderAuctionQuestionsLine() {
+  renderAuctionQuestionsLine(mediator) {
     return (
       <Container>
-        Have a question? Read our <a href="#">auction FAQs</a> or{" "}
-        <a href="#">ask a specialist</a>.
+        Have a question? Read our{" "}
+        <Link onClick={this.onClickAuctionFAQ.bind(this, mediator)}>
+          auction FAQs
+        </Link>{" "}
+        or{" "}
+        <Link onClick={this.onClickAuctionAskSpecialist.bind(this, mediator)}>
+          ask a specialist
+        </Link>.
       </Container>
     )
   }
-  renderForSaleQuestionsLine() {
+  renderForSaleQuestionsLine(mediator) {
     const { is_acquireable, is_inquireable } = this.props.artwork
 
     if (is_acquireable)
       return (
         <Container>
-          Have a question? <a href="#">Read our FAQ</a> or{" "}
-          <a href="#">ask a specialist</a>.
+          Have a question?{" "}
+          <Link onClick={this.onClickBuyNowFAQ.bind(this)}>Read our FAQ</Link>{" "}
+          or{" "}
+          <Link onClick={this.onClickBuyNowAskSpecialist.bind(this, mediator)}>
+            ask a specialist
+          </Link>.
         </Container>
       )
 
     if (is_inquireable)
       return (
         <Container>
-          Have a question? <a href="#">Read our FAQ</a>.
+          Have a question?{" "}
+          <Link onClick={this.onClickCollectorFAQ.bind(this, mediator)}>
+            Read our FAQ
+          </Link>.
         </Container>
       )
   }
@@ -58,7 +108,7 @@ export class ArtworkSidebarExtraLinks extends React.Component<
       <Container>
         Want to sell a work by{" "}
         {artistsCount === 1 ? "this artist" : "these artists"}?{" "}
-        <a href="#">Learn more</a>.
+        <Link onClick={this.onClickConsign.bind(this)}>Learn more</Link>.
       </Container>
     )
   }
@@ -75,15 +125,19 @@ export class ArtworkSidebarExtraLinks extends React.Component<
     if (!renderQuestionsLine && !!!consignableArtistsCount) return null
 
     return (
-      <Box mt={2}>
-        {isInOpenAuction && this.renderAuctionTerms()}
-        {renderQuestionsLine &&
-          (artwork.is_in_auction
-            ? this.renderAuctionQuestionsLine()
-            : this.renderForSaleQuestionsLine())}
-        {!!consignableArtistsCount &&
-          this.renderConsignmentsLine(consignableArtistsCount)}
-      </Box>
+      <ContextConsumer>
+        {({ mediator }) => (
+          <Box mt={2}>
+            {isInOpenAuction && this.renderAuctionTerms(mediator)}
+            {renderQuestionsLine &&
+              (artwork.is_in_auction
+                ? this.renderAuctionQuestionsLine(mediator)
+                : this.renderForSaleQuestionsLine(mediator))}
+            {!!consignableArtistsCount &&
+              this.renderConsignmentsLine(consignableArtistsCount)}
+          </Box>
+        )}
+      </ContextConsumer>
     )
   }
 }
