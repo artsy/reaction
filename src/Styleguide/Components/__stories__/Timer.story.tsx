@@ -16,7 +16,11 @@ storiesOf("Styleguide/Components", module).add("Timer", () => {
       </Section>
 
       <Section title="Timer (30 seconds from now)">
-        <Timer endDate={moment().add(30, "seconds")} />
+        <Timer
+          labelWithoutTimeRemaining="Oh no, out of time!"
+          labelWithTimeRemaining="There is still time left."
+          endDate={moment().add(30, "seconds")}
+        />
       </Section>
 
       <Section title="Timer (in the past)">

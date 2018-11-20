@@ -62,7 +62,8 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
                     order {
                       id
                       mode
-                      offerTotal
+                      itemsTotal
+                      totalListPrice
                       lastOffer {
                         id
                         amountCents
@@ -246,7 +247,7 @@ export const OfferFragmentContainer = createFragmentContainer(
       mode
       state
       itemsTotal(precision: 2)
-      offerTotal(precision: 2)
+      totalListPrice(precision: 2)
       lineItems {
         edges {
           node {

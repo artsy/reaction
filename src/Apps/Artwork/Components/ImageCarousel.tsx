@@ -130,6 +130,7 @@ const ActionButtonsContainer = styled.div`
 
 interface ImageCarouselProps {
   images: any // Array<{ uri: string; aspectRatio: number }>
+  actions?: JSX.Element
 }
 
 interface ImageCarouselState {
@@ -239,8 +240,8 @@ export class ImageCarousel extends React.Component<
   renderControlsContainer(breakpoint?: string) {
     const xs = breakpoint === "xs"
     const ControlsContainer = xs
-      ? LargeControlsContainer
-      : SmallControlsContainer
+      ? SmallControlsContainer
+      : LargeControlsContainer
 
     return (
       <ControlsContainer>
@@ -251,20 +252,12 @@ export class ImageCarousel extends React.Component<
             onSelect={i => this.setState({ currentImage: i })}
           />
         )}
-
         <Media at="xs">
           <Spacer />
         </Media>
 
         <ActionButtonsContainer>
-          <ActionButtons>
-            <Button href="#TODO">
-              <Icon name="heart" color="black" />
-            </Button>
-            <Button href="#TODO">
-              <Icon name="share" color="black" />
-            </Button>
-          </ActionButtons>
+          <ActionButtons>{this.props.actions}</ActionButtons>
         </ActionButtonsContainer>
       </ControlsContainer>
     )

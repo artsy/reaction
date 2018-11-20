@@ -4,6 +4,8 @@ import React from "react"
 
 interface Props {
   endDate: string
+  labelWithTimeRemaining?: string
+  labelWithoutTimeRemaining?: string
 }
 
 interface State {
@@ -36,30 +38,42 @@ export class Timer extends React.Component<Props, State> {
   }
 
   timer() {
-    const { msLeft } = this.state
-    const nextTick = msLeft - 1000
-    const hasEnded = nextTick < 0
-
-    if (hasEnded) {
+    if (this.hasEnded) {
       clearInterval(this.intervalId)
       this.setState({ msLeft: 0 })
     } else {
-      this.setState({ msLeft: nextTick })
+      this.setState({ msLeft: this.nextTick })
     }
+  }
+
+  get nextTick() {
+    const { msLeft } = this.state
+    return msLeft - 1000
+  }
+
+  get hasEnded() {
+    return this.nextTick < 0
   }
 
   render() {
     const { msLeft } = this.state
+    const { labelWithTimeRemaining, labelWithoutTimeRemaining } = this.props
     const duration = moment.duration(msLeft)
 
     return (
-      <Flex alignItems="center">
+      <Flex flexDirection="column" alignItems="center">
         <Sans size="4t" weight="medium">
           {this.padWithZero(duration.days())}d{"  "}
           {this.padWithZero(duration.hours())}h{"  "}
           {this.padWithZero(duration.minutes())}m{"  "}
           {this.padWithZero(duration.seconds())}s
         </Sans>
+        {(labelWithTimeRemaining || labelWithoutTimeRemaining) && (
+          <Sans size="3" weight="medium">
+            {!this.hasEnded && labelWithTimeRemaining}
+            {this.hasEnded && labelWithoutTimeRemaining}
+          </Sans>
+        )}
       </Flex>
     )
   }
