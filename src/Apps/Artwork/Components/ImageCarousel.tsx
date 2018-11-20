@@ -198,11 +198,17 @@ export class ImageCarousel extends React.Component<
     const xs = breakpoint === "xs"
     const Image = xs ? SmallImage : LargeImage
 
-    return (
-      <Lightbox deepZoom={this.image.deepZoom} enabled={this.image.is_zoomable}>
-        <Image src={this.image.uri} />
-      </Lightbox>
-    )
+    if (typeof window !== "undefined") {
+      return (
+        <Lightbox
+          deepZoom={this.image.deepZoom}
+          enabled={this.image.is_zoomable}
+        >
+          <Image src={this.image.uri} />
+        </Lightbox>
+      )
+    }
+    return <Image src={this.image.uri} />
   }
 
   renderImageArea(breakpoint?: string) {
