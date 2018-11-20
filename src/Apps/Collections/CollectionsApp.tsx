@@ -11,15 +11,21 @@ interface CollectionsAppProps {
   categories: CollectionsApp_categories
 }
 
+const META_DESCRIPTION =
+  "Discover collections of art curated by Artsy Specialists. From iconic artist series to trending design, shop " +
+  "collections on the world's largest online art marketplace."
+
 export class CollectionsApp extends Component<CollectionsAppProps> {
   render() {
     const { categories } = this.props
 
     return (
       <>
-        <Title>All Collections on Artsy</Title>
+        <Title>Collections | Artsy</Title>
         <Meta property="og:url" content={`${sd.APP_URL}/collections`} />
-        {/* TODO: Confirm title/meta details */}
+        <Meta name="description" content={META_DESCRIPTION} />
+        <Meta property="og:description" content={META_DESCRIPTION} />
+        <Meta property="twitter:description" content={META_DESCRIPTION} />
 
         <FrameWithRecentlyViewed>
           <Flex

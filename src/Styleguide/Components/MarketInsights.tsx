@@ -6,7 +6,7 @@ import {
 } from "Components/Artist/MarketInsights/MarketInsights"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Responsive } from "Utils/Responsive"
+import { Media } from "Utils/Responsive"
 
 export interface MarketInsightsProps {
   artist: MarketInsightsArtistPage_artist
@@ -30,8 +30,7 @@ export class MarketInsights extends React.Component<MarketInsightsProps> {
     border: true,
   }
 
-  renderAuctionHighlight(xs: boolean) {
-    const TextWrap = wrapper(xs)
+  renderAuctionHighlight() {
     if (
       !this.props.artist.auctionResults ||
       this.props.artist.auctionResults.edges.length < 1
@@ -53,8 +52,7 @@ export class MarketInsights extends React.Component<MarketInsightsProps> {
       </TextWrap>
     )
   }
-  renderGalleryRepresentation(xs: boolean) {
-    const TextWrap = wrapper(xs)
+  renderGalleryRepresentation() {
     const { highlights } = this.props.artist
     const { partners } = highlights
     if (partners && partners.edges && partners.edges.length > 0) {
@@ -71,8 +69,7 @@ export class MarketInsights extends React.Component<MarketInsightsProps> {
       )
     }
   }
-  renderPermanentCollection(xs: boolean) {
-    const TextWrap = wrapper(xs)
+  renderPermanentCollection() {
     const { collections } = this.props.artist
     if (!collections || collections.length === 0) {
       return null
@@ -111,17 +108,11 @@ export class MarketInsights extends React.Component<MarketInsightsProps> {
     return (
       <>
         <Container flexDirection="column">
-          <Responsive>
-            {({ xs }) => {
-              return (
-                <div>
-                  {this.renderAuctionHighlight(xs)}
-                  {this.renderGalleryRepresentation(xs)}
-                  {this.renderPermanentCollection(xs)}
-                </div>
-              )
-            }}
-          </Responsive>
+          <div>
+            {this.renderAuctionHighlight()}
+            {this.renderGalleryRepresentation()}
+            {this.renderPermanentCollection()}
+          </div>
         </Container>
 
         {this.props.children}
@@ -177,5 +168,13 @@ export const MarketInsightsFragmentContainer = createFragmentContainer(
   `
 )
 
-const wrapper = xs => props =>
-  xs ? <Flex flexDirection="column" mb={1} {...props} /> : <Box {...props} />
+const TextWrap = props => (
+  <>
+    <Media at="xs">
+      <Flex flexDirection="column" mb={1} {...props} />
+    </Media>
+    <Media greaterThan="xs">
+      <Box {...props} />
+    </Media>
+  </>
+)

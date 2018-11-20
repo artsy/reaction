@@ -2,18 +2,18 @@ import { Button, color, Flex, SmallSelect, Spacer } from "@artsy/palette"
 import { ContextConsumer } from "Artsy/SystemContext"
 import { FilterIcon } from "Assets/Icons/FilterIcon"
 import React from "react"
+import { Media } from "Utils/Responsive"
 import { FilterState } from "../../FilterState"
 
 export const SortFilter: React.SFC<{
   filters: FilterState
-  xs: boolean
   onShow?: () => void
-}> = ({ filters, xs, onShow }) => {
+}> = ({ filters, onShow }) => {
   return (
     <ContextConsumer>
       {({ mediator }) => (
         <Flex
-          justifyContent={xs ? "space-between" : "flex-end"}
+          justifyContent={["space-between", "flex-end"]}
           alignItems="center"
         >
           <SmallSelect
@@ -46,7 +46,7 @@ export const SortFilter: React.SFC<{
             }}
           />
 
-          {xs && (
+          <Media at="xs">
             <Button size="small" mt={-1} onClick={onShow}>
               <Flex justifyContent="space-between" alignItems="center">
                 <FilterIcon fill={color("white100")} />
@@ -54,7 +54,7 @@ export const SortFilter: React.SFC<{
                 Filter
               </Flex>
             </Button>
-          )}
+          </Media>
         </Flex>
       )}
     </ContextConsumer>
