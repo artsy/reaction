@@ -6,6 +6,7 @@ import { Provider } from "unstated"
 import { CollectionAppFixture } from "../../__tests__/Fixtures/Collect/CollectionAppFixture"
 import { CollectionAppFragmentContainer as CollectionApp } from "../CollectionApp"
 import { FilterContainer } from "../Components/Filters"
+import { BreadCrumbList } from "../Components/Seo"
 import { FilterState } from "../FilterState"
 
 jest.unmock("react-relay")
@@ -50,6 +51,13 @@ describe("CollectionApp", () => {
 
     const title = tree.find("Title")
     expect(title.at(0).text()).toContain("KAWS: Companions | Collect on Artsy")
+
+    const breadCrumbList = tree.find(BreadCrumbList)
+    expect(breadCrumbList.props().items).toEqual([
+      { path: "/collections", name: "Collections" },
+      { path: `/collection/kaws-companions`, name: "KAWS: Companions" },
+    ])
+
     const items = tree.find("GridItem__ArtworkGridItem")
     expect(items.length).toEqual(4)
     expect(items.at(0).text()).toContain("Pinocchio, 2018")

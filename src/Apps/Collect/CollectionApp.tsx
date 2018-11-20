@@ -11,6 +11,7 @@ import { data as sd } from "sharify"
 import truncate from "trunc-html"
 import { CollectionFilterFragmentContainer as CollectionFilterContainer } from "./Components/Collection/CollectionFilterContainer"
 import { CollectionHeader } from "./Components/Collection/Header"
+import { BreadCrumbList } from "./Components/Seo"
 
 interface CollectionAppProps {
   collection: CollectionApp_collection
@@ -48,6 +49,12 @@ export class CollectionApp extends Component<CollectionAppProps> {
         <Meta property="og:description" content={metadataDescription} />
         <Meta property="twitter:description" content={metadataDescription} />
         <Link rel="canonical" href={collectionHref} />
+        <BreadCrumbList
+          items={[
+            { path: "/collections", name: "Collections" },
+            { path: `/collection/${slug}`, name: title },
+          ]}
+        />
 
         <CollectionHeader collection={collection} />
         <Box>
