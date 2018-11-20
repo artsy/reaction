@@ -156,6 +156,7 @@
     "@artsy/react-responsive-media": "^2.0.0-beta.4",
     "@sentry/browser": "^4.2.3",
     "cheerio": "^1.0.0-rc.2",
+    "currency.js": "^1.2.1",
     "farce": "^0.2.6",
     "formik": "^0.11.11",
     "found": "^0.3.14",

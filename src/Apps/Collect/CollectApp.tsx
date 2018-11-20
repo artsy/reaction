@@ -8,6 +8,7 @@ import { data as sd } from "sharify"
 import { getMetadataForMedium } from "./CollectMediumMetadata"
 import { CollectFilterFragmentContainer as ArtworkGrid } from "./Components/Base/CollectFilterContainer"
 import { BreadCrumbList } from "./Components/Seo"
+import { SeoProductsForArtworks } from "./Components/Seo/SeoProductsForArtworks"
 
 export interface CollectAppProps {
   viewer?: CollectApp_viewer
@@ -49,6 +50,7 @@ export class CollectApp extends Component<CollectAppProps> {
             },
           ].filter(Boolean)}
         />
+        <SeoProductsForArtworks artworks={filter_artworks} />
 
         <Flex
           mt={3}
@@ -93,6 +95,9 @@ export const CollectAppFragmentContainer = createFragmentContainer(
         artist_id: { type: "String" }
         attribution_class: { type: "String" }
       ) {
+      filter_artworks(aggregations: $aggregations, size: 0) {
+        ...SeoProductsForArtworks_artworks
+      }
 
       ...CollectFilterContainer_viewer
         @arguments(

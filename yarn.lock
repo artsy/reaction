@@ -5110,6 +5110,11 @@ csstype@^2.2.0:
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.5.6.tgz#2ae1db2319642d8b80a668d2d025c6196071e788"
   integrity sha512-tKPyhy0FmfYD2KQYXD5GzkvAYLYj96cMLXr648CKGd3wBe0QqoPipImjGiLze9c8leJK8J3n7ap90tpk3E6HGQ==
 
+currency.js@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/currency.js/-/currency.js-1.2.1.tgz#18d42ac74d833795051f4a310c83f041013a882f"
+  integrity sha512-7t0jYDZeQYCcaxpgwNOiBz8GaG/qdqTdo+kcTYgCuCNx1p2jLMpJt8h34TJ5INtN9jhryAiLK/atmjwUf13t4A==
+
 currently-unhandled@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/currently-unhandled/-/currently-unhandled-0.4.1.tgz#988df33feab191ef799a61369dd76c17adf957ea"

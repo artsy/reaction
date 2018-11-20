@@ -2,6 +2,7 @@
 
 import { ConcreteFragment } from "relay-runtime";
 import { CollectionFilterContainer_collection$ref } from "./CollectionFilterContainer_collection.graphql";
+import { SeoProductsForArtworks_artworks$ref } from "./SeoProductsForArtworks_artworks.graphql";
 declare const _CollectionApp_collection$ref: unique symbol;
 export type CollectionApp_collection$ref = typeof _CollectionApp_collection$ref;
 export type CollectionApp_collection = {
@@ -17,6 +18,9 @@ export type CollectionApp_collection = {
         readonly artist_id: string | null;
         readonly gene_id: string | null;
     };
+    readonly artworks: ({
+        readonly " $fragmentRefs": SeoProductsForArtworks_artworks$ref;
+    }) | null;
     readonly " $fragmentRefs": CollectionFilterContainer_collection$ref;
     readonly " $refType": CollectionApp_collection$ref;
 };
@@ -37,6 +41,16 @@ return {
   "type": "MarketingCollection",
   "metadata": null,
   "argumentDefinitions": [
+    {
+      "kind": "LocalArgument",
+      "name": "aggregations",
+      "type": "[ArtworkAggregation]",
+      "defaultValue": [
+        "MEDIUM",
+        "MAJOR_PERIOD",
+        "TOTAL"
+      ]
+    },
     {
       "kind": "LocalArgument",
       "name": "medium",
@@ -96,14 +110,14 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "id",
+      "name": "category",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "slug",
+      "name": "id",
       "args": null,
       "storageKey": null
     },
@@ -131,7 +145,7 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "category",
+      "name": "slug",
       "args": null,
       "storageKey": null
     },
@@ -173,6 +187,42 @@ return {
           "storageKey": null
         },
         v0
+      ]
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "artworks",
+      "storageKey": null,
+      "args": [
+        {
+          "kind": "Variable",
+          "name": "aggregations",
+          "variableName": "aggregations",
+          "type": "[ArtworkAggregation]"
+        },
+        {
+          "kind": "Literal",
+          "name": "include_medium_filter_in_aggregation",
+          "value": true,
+          "type": "Boolean"
+        }
+      ],
+      "concreteType": "FilterArtworks",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "FragmentSpread",
+          "name": "SeoProductsForArtworks_artworks",
+          "args": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "__id",
+          "args": null,
+          "storageKey": null
+        }
       ]
     },
     {
@@ -233,5 +283,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'e1195f09281ee73655876afd55e15636';
+(node as any).hash = 'ad5d0a58156a553d9e164ff986b2bf64';
 export default node;

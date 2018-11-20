@@ -12,6 +12,7 @@ import truncate from "trunc-html"
 import { CollectionFilterFragmentContainer as CollectionFilterContainer } from "./Components/Collection/CollectionFilterContainer"
 import { CollectionHeader } from "./Components/Collection/Header"
 import { BreadCrumbList } from "./Components/Seo"
+import { SeoProductsForArtworks } from "./Components/Seo/SeoProductsForArtworks"
 
 interface CollectionAppProps {
   collection: CollectionApp_collection
@@ -33,7 +34,7 @@ export class CollectionApp extends Component<CollectionAppProps> {
 
   render() {
     const { collection } = this.props
-    const { title, slug, headerImage, description } = collection
+    const { title, slug, headerImage, description, artworks } = collection
     const collectionHref = `${sd.APP_URL}/collection/${slug}`
     const metadataDescription = description
       ? `Buy, bid, and inquire on ${title} on Artsy. ` +
@@ -55,6 +56,7 @@ export class CollectionApp extends Component<CollectionAppProps> {
             { path: `/collection/${slug}`, name: title },
           ]}
         />
+        <SeoProductsForArtworks artworks={artworks} />
 
         <CollectionHeader collection={collection} />
         <Box>
@@ -70,6 +72,10 @@ export const CollectionAppFragmentContainer = createFragmentContainer(
   graphql`
     fragment CollectionApp_collection on MarketingCollection
       @argumentDefinitions(
+        aggregations: {
+          type: "[ArtworkAggregation]"
+          defaultValue: [MEDIUM, MAJOR_PERIOD, TOTAL]
+        }
         medium: { type: "String", defaultValue: "*" }
         major_periods: { type: "[String]" }
         partner_id: { type: "ID" }
@@ -92,6 +98,13 @@ export const CollectionAppFragmentContainer = createFragmentContainer(
         artist_id
         gene_id
       }
+      artworks(
+        aggregations: $aggregations
+        include_medium_filter_in_aggregation: true
+      ) {
+        ...SeoProductsForArtworks_artworks
+      }
+
       ...CollectionFilterContainer_collection
         @arguments(
           medium: $medium
