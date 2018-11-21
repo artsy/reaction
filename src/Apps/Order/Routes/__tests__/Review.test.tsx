@@ -166,15 +166,6 @@ describe("Review", () => {
       expect(component.find(ActiveTabContainer).text()).toEqual("Review")
       expect(component.find(Stepper).props().currentStepIndex).toEqual(3)
       expect(component.find(CheckMarkWrapper).length).toEqual(3)
-      expect(component.find(StepSummaryItem).length).toEqual(3)
-
-      pushMock.mockReset()
-      component
-        .find(StepSummaryItem)
-        .first()
-        .find("a")
-        .simulate("click")
-      expect(pushMock).toBeCalledWith("/orders/offer-order-id/offer")
     })
 
     it("shows an offer section in the shipping and payment review", () => {
