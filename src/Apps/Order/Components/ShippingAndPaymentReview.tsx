@@ -29,7 +29,7 @@ export const ShippingAndPaymentReview = ({
     <Flex flexDirection="column" {...others}>
       {mode === "OFFER" && (
         <StepSummaryItem onChange={onChangeOffer} title="Your offer">
-          <Serif size="3t" color="black100">
+          <Serif size={["2", "3t"]} color="black100">
             {itemsTotal}
           </Serif>
           <Sans size="2" color="black60">
