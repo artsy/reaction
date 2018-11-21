@@ -2,7 +2,7 @@ import React from "react"
 
 // https://stripe.com/docs/api#card_object-brand
 export type CreditCardType =
-  | "Mastercard"
+  | "MasterCard"
   | "Visa"
   | "Discover"
   | "American Express"
