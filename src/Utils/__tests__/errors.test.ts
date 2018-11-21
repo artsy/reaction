@@ -1,24 +1,28 @@
 import * as Sentry from "@sentry/browser"
-import { isErrorInfo, sendErrorToService } from "Utils/errors"
+import { ErrorWithMetadata, sendErrorToService } from "Utils/errors"
 
 jest.mock("@sentry/browser")
 
 describe("errors", () => {
-  describe("#isErrorInfo", () => {
-    it("returns true if an object implements the ErrorInfo interface", () => {
-      const errorInfo = { componentStack: "someString", anotherKey: 0 }
-      expect(isErrorInfo(errorInfo)).toBe(true)
-    })
-    it("returns false if an object does not implement the ErrorInfo interface", () => {
-      const notErrorInfo = { anotherKey: 0 }
-      expect(isErrorInfo(notErrorInfo)).toBe(false)
-    })
+  describe("#ErrorWithMetadata", () => {
+    // todo
   })
   describe("#sendErrorToService", () => {
-    it("sends an error to Sentry", () => {
-      const errorInfo = { componentStack: "more error info" }
-      sendErrorToService(new Error("msg"), errorInfo)
-      expect(Sentry.withScope).toHaveBeenCalled()
+    describe("with an Error (without metadata)", () => {
+      it("sends an error to Sentry", () => {
+        sendErrorToService(new Error("msg"))
+        expect(Sentry.withScope).toHaveBeenCalled()
+      })
+    })
+    describe("with an ErrorWithMetadata", () => {
+      it("sends an error to Sentry", () => {
+        const errorMetadata = { someProp: "more error info" }
+        sendErrorToService(new ErrorWithMetadata("msg", errorMetadata))
+        expect(Sentry.withScope).toHaveBeenCalled()
+      })
+      it("sets metadata on Sentry scope", () => {
+        // todo
+      })
     })
   })
 })

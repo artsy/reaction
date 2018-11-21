@@ -1,4 +1,4 @@
-import { isErrorInfo, sendErrorToService } from "Utils/errors"
+import { sendErrorToService } from "Utils/errors"
 
 export const shouldCaptureError = (environment: string) =>
   environment === "staging" || environment === "production"
@@ -15,10 +15,9 @@ export default function createLogger(namespace = "reaction") {
     },
     error: (...errors) => {
       const error = errors.find(e => e instanceof Error)
-      const errorInfo = errors.find(isErrorInfo)
 
       if (error && shouldCaptureError(process.env.NODE_ENV)) {
-        sendErrorToService(error, errorInfo)
+        sendErrorToService(error)
       }
 
       console.error(formattedNamespace, ...errors, "\n")

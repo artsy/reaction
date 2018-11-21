@@ -17,6 +17,7 @@ import {
 } from "react-relay"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
+import { ErrorWithMetadata } from "Utils/errors"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
@@ -109,7 +110,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
   }
 
   onMutationError(errors, errorModalTitle?, errorModalMessage?) {
-    logger.error(errors)
+    logger.error(new ErrorWithMetadata(errors.message || errors.data, errors))
     this.setState({
       isCommittingMutation: false,
       isErrorModalOpen: true,

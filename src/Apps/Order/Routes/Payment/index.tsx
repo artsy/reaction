@@ -40,6 +40,7 @@ import {
 import { injectStripe, ReactStripeElements } from "react-stripe-elements"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
+import { ErrorWithMetadata } from "Utils/errors"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
 
@@ -414,7 +415,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
   }
 
   private onMutationError(errors, errorModalMessage?) {
-    logger.error(errors)
+    logger.error(new ErrorWithMetadata(errors.message || errors.data, errors))
     this.setState({
       isCommittingMutation: false,
       isErrorModalOpen: true,

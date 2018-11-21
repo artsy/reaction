@@ -15,6 +15,7 @@ import React, { Component } from "react"
 import { commitMutation, graphql, RelayProp } from "react-relay"
 import { injectStripe, ReactStripeElements } from "react-stripe-elements"
 import { ConnectionHandler } from "relay-runtime"
+import { ErrorWithMetadata } from "Utils/errors"
 import createLogger from "Utils/logger"
 import { Responsive } from "Utils/Responsive"
 
@@ -261,7 +262,7 @@ class PaymentForm extends Component<PaymentFormProps, PaymentFormState> {
   }
 
   private onMutationError(errors, errorModalMessage?) {
-    logger.error(errors)
+    logger.error(new ErrorWithMetadata(errors.message || errors.data, errors))
     this.setState({
       isCommittingMutation: false,
       isErrorModalOpen: true,
