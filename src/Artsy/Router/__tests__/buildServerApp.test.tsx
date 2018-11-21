@@ -23,7 +23,7 @@ describe("buildServerApp", () => {
     Component = defaultComponent,
     options = {},
   } = {}) => {
-    const { ServerApp, status, headTags } = await buildServerApp({
+    const { ServerApp, status, headTags, scripts } = await buildServerApp({
       routes: [
         {
           path: "/",
@@ -38,6 +38,7 @@ describe("buildServerApp", () => {
       wrapper: render(<ServerApp />),
       status,
       headTags,
+      scripts,
     }
   }
 
@@ -47,9 +48,9 @@ describe("buildServerApp", () => {
   })
 
   it("bootstraps relay and loadable-components SSR data", async () => {
-    const { wrapper } = await getWrapper()
-    expect(wrapper.html()).toContain("__RELAY_BOOTSTRAP__")
-    expect(wrapper.html()).toContain("__LOADABLE_STATE__")
+    const { scripts } = await getWrapper()
+    expect(scripts).toContain("__RELAY_BOOTSTRAP__")
+    expect(scripts).toContain("__LOADABLE_STATE__")
   })
 
   it("resolves with a 200 status if url matches request", async () => {
