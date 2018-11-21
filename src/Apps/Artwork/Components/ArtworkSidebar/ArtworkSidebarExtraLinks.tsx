@@ -30,36 +30,41 @@ const Link = styled.a`
 class ArtworkSidebarExtraLinksContainer extends React.Component<
   ArtworkSidebarExtraLinksContainerProps
 > {
+  onClickConditionsOfSale() {
+    window.open(sd.APP_URL + "/conditions-of-sale", "_blank")
+  }
   onClickAuctionFAQ() {
-    this.props.mediator &&
-      this.props.mediator.trigger &&
+    this.props.mediator.trigger &&
       this.props.mediator.trigger("openAuctionFAQModal")
   }
+  onClickBuyNowFAQ() {
+    window.open(sd.APP_URL + "/buy-now-feature-faq", "_blank")
+  }
   onClickCollectorFAQ() {
-    this.props.mediator &&
-      this.props.mediator.trigger &&
+    this.props.mediator.trigger &&
       this.props.mediator.trigger("openCollectorFAQModal")
   }
   onClickAuctionAskSpecialist() {
-    this.props.mediator &&
-      this.props.mediator.trigger &&
+    this.props.mediator.trigger &&
       this.props.mediator.trigger("openAuctionAskSpecialistModal", {
         artworkId: this.props.artwork.__id,
       })
   }
   onClickBuyNowAskSpecialist() {
-    this.props.mediator &&
-      this.props.mediator.trigger &&
+    this.props.mediator.trigger &&
       this.props.mediator.trigger("openBuyNowAskSpecialistModal", {
         artworkId: this.props.artwork.__id,
       })
+  }
+  onClickConsign() {
+    window.open(sd.APP_URL + "/consign", "_blank")
   }
 
   renderAuctionTerms() {
     return (
       <Container>
         By placing your bid you agree to Artsy's{" "}
-        <Link href={`${sd.APP_URL}/conditions-of-sale`} target="_blank">
+        <Link onClick={this.onClickConditionsOfSale.bind(this)}>
           Conditions of Sale
         </Link>.
         <Spacer mb={1} />
@@ -84,9 +89,7 @@ class ArtworkSidebarExtraLinksContainer extends React.Component<
       return (
         <Container>
           Have a question?{" "}
-          <Link href={`${sd.APP_URL}/buy-now-feature-faq`} target="_blank">
-            Read our FAQ
-          </Link>{" "}
+          <Link onClick={this.onClickBuyNowFAQ.bind(this)}>Read our FAQ</Link>{" "}
           or{" "}
           <Link onClick={this.onClickBuyNowAskSpecialist.bind(this)}>
             ask a specialist
@@ -110,9 +113,7 @@ class ArtworkSidebarExtraLinksContainer extends React.Component<
       <Container>
         Want to sell a work by{" "}
         {artistsCount === 1 ? "this artist" : "these artists"}?{" "}
-        <Link href={`${sd.APP_URL}/consign`} target="_blank">
-          Learn more
-        </Link>.
+        <Link onClick={this.onClickConsign.bind(this)}>Learn more</Link>.
       </Container>
     )
   }
