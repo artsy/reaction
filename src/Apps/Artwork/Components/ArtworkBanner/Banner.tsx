@@ -3,26 +3,29 @@ import React from "react"
 import { Media } from "Utils/Responsive"
 
 export interface BannerProps {
+  /** Image for avatar  */
   imageUrl?: string
+  /** Fallback partner initials in case image is not there. */
   initials?: string
+  /** in auction / at fair / in show */
   meta?: string
+  /** auction / fair / show name */
   name?: string
+  /** partner name */
   subHeadline?: string
 }
 
-export class Banner extends React.Component<BannerProps> {
-  render() {
-    return (
-      <>
-        <Media at="xs">
-          <SmallBanner {...this.props} />
-        </Media>
-        <Media greaterThan="xs">
-          <LargeBanner {...this.props} />
-        </Media>
-      </>
-    )
-  }
+export const Banner: React.SFC<BannerProps> = props => {
+  return (
+    <>
+      <Media at="xs">
+        <SmallBanner {...props} />
+      </Media>
+      <Media greaterThan="xs">
+        <LargeBanner {...props} />
+      </Media>
+    </>
+  )
 }
 
 export const LargeBanner = props => (

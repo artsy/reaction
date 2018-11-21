@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Artsy context throws an error when not embedded in a context provider 1`] = `"ShowCurrentUser, which needs Artsy props, was not wrapped inside a ContextProvider component."`;
-
-exports[`Artsy context throws an error when trying to embed more than a single child in a context provider 1`] = `"A ContextProvider expects a single child."`;
