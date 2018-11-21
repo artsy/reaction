@@ -44,8 +44,10 @@ describe("ArtworkSidebarExtraLinks", () => {
         "Want to sell a work by this artist? Learn more."
       )
     })
-    xit("displays proper links", () => {
-      // TODO: implement
+    it("displays proper links", () => {
+      expect(wrapper.html()).toContain("/conditions-of-sale")
+      expect(wrapper.html()).toContain("/consign")
+      expect(wrapper.html()).not.toContain("/buy-now-feature-faq")
     })
   })
 
@@ -61,8 +63,10 @@ describe("ArtworkSidebarExtraLinks", () => {
         "Want to sell a work by this artist? Learn more."
       )
     })
-    xit("displays proper links", () => {
-      // TODO: implement
+    it("displays proper links", () => {
+      expect(wrapper.html()).not.toContain("/conditions-of-sale")
+      expect(wrapper.html()).toContain("/consign")
+      expect(wrapper.html()).toContain("/buy-now-feature-faq")
     })
   })
 
@@ -79,8 +83,10 @@ describe("ArtworkSidebarExtraLinks", () => {
         "Want to sell a work by these artists? Learn more."
       )
     })
-    xit("displays proper links", () => {
-      // TODO: implement
+    it("displays proper links", () => {
+      expect(wrapper.html()).not.toContain("/conditions-of-sale")
+      expect(wrapper.html()).toContain("/consign")
+      expect(wrapper.html()).not.toContain("/buy-now-feature-faq")
     })
   })
 
@@ -94,8 +100,10 @@ describe("ArtworkSidebarExtraLinks", () => {
         "Want to sell a work by this artist? Learn more."
       )
     })
-    xit("displays proper links", () => {
-      // TODO: implement
+    it("displays proper links", () => {
+      expect(wrapper.html()).not.toContain("/conditions-of-sale")
+      expect(wrapper.html()).toContain("/consign")
+      expect(wrapper.html()).not.toContain("/buy-now-feature-faq")
     })
   })
 })
