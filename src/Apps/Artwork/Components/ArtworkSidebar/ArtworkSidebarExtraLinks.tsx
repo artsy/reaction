@@ -34,24 +34,28 @@ class ArtworkSidebarExtraLinksContainer extends React.Component<
     window.open(sd.APP_URL + "/conditions-of-sale", "_blank")
   }
   onClickAuctionFAQ() {
-    this.props.mediator.trigger &&
+    this.props.mediator &&
+      this.props.mediator.trigger &&
       this.props.mediator.trigger("openAuctionFAQModal")
   }
   onClickBuyNowFAQ() {
     window.open(sd.APP_URL + "/buy-now-feature-faq", "_blank")
   }
   onClickCollectorFAQ() {
-    this.props.mediator.trigger &&
+    this.props.mediator &&
+      this.props.mediator.trigger &&
       this.props.mediator.trigger("openCollectorFAQModal")
   }
   onClickAuctionAskSpecialist() {
-    this.props.mediator.trigger &&
+    this.props.mediator &&
+      this.props.mediator.trigger &&
       this.props.mediator.trigger("openAuctionAskSpecialistModal", {
         artworkId: this.props.artwork.__id,
       })
   }
   onClickBuyNowAskSpecialist() {
-    this.props.mediator.trigger &&
+    this.props.mediator &&
+      this.props.mediator.trigger &&
       this.props.mediator.trigger("openBuyNowAskSpecialistModal", {
         artworkId: this.props.artwork.__id,
       })
