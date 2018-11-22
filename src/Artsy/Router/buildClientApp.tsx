@@ -1,5 +1,6 @@
 import { createEnvironment } from "Artsy/Relay/createEnvironment"
 import { Boot } from "Artsy/Router/Components/Boot"
+import { Hydrator } from "Artsy/Router/Components/Hydrator"
 import BrowserProtocol from "farce/lib/BrowserProtocol"
 import HashProtocol from "farce/lib/HashProtocol"
 import MemoryProtocol from "farce/lib/MemoryProtocol"
@@ -80,7 +81,9 @@ export function buildClientApp(config: RouterConfig): Promise<Resolve> {
             resolver={resolver}
             routes={routes}
           >
-            <Router resolver={resolver} />
+            <Hydrator>
+              <Router resolver={resolver} />
+            </Hydrator>
           </Boot>
         )
       }
