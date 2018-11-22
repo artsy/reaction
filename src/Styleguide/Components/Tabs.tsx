@@ -1,7 +1,7 @@
-import { Box, color, Flex, Join, Sans, space } from "@artsy/palette"
+import { Box, color, Flex, FlexProps, Join, Sans, space } from "@artsy/palette"
 import React, { Ref } from "react"
 import styled, { css } from "styled-components"
-import { borders, JustifyContentProps, WidthProps } from "styled-system"
+import { JustifyContentProps, WidthProps } from "styled-system"
 import { media } from "Styleguide/Elements/Grid"
 
 export interface TabLike extends JSX.Element {
@@ -19,6 +19,9 @@ export interface TabInfo {
   /** Data associated with the newly selected Tab */
   data: any
 }
+
+// tslint:disable-next-line:ban-types
+type InnerRef<T> = Extract<Ref<T>, Function>
 
 export interface TabsProps extends WidthProps, JustifyContentProps {
   /** Function that will be called when a new Tab is selected */
@@ -150,27 +153,28 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
   }
 
   render() {
-    const { children = [], justifyContent, separator } = this.props
+    const { children = [], separator } = this.props
 
     return (
       <>
-        <TabsOuterContainer>
-          <TabsContainer
-            innerRef={ref => (this.containerRef = ref)}
-            mb={0.5}
-            width="100%"
-            justifyContent={justifyContent}
-          >
-            <TabsPaddingContainer>
-              <Join separator={separator}>{children.map(this.renderTab)}</Join>
-            </TabsPaddingContainer>
-          </TabsContainer>
-        </TabsOuterContainer>
+        <TabsContainer scrollRef={ref => (this.containerRef = ref)}>
+          <Join separator={separator}>{children.map(this.renderTab)}</Join>
+        </TabsContainer>
         <Box pt={3}>{children[this.state.activeTabIndex]}</Box>
       </>
     )
   }
 }
+
+export const TabsContainer: React.SFC<
+  FlexProps & { scrollRef?: InnerRef<HTMLDivElement> }
+> = ({ scrollRef, ...props }) => (
+  <TabsOuterContainer>
+    <TabsScrollContainer mb={0.5} width="100%" {...props} innerRef={scrollRef}>
+      <TabsPaddingContainer>{props.children}</TabsPaddingContainer>
+    </TabsScrollContainer>
+  </TabsOuterContainer>
+)
 
 interface TabProps {
   /** Display name of the Tab */
@@ -198,8 +202,7 @@ const TabButton = ({ children, ...props }) => (
 )
 
 const ActiveTabButton: React.SFC<{
-  // tslint:disable-next-line:ban-types
-  innerRef: Extract<Ref<HTMLDivElement>, Function>
+  innerRef: InnerRef<HTMLDivElement>
 }> = ({ children, innerRef }) => (
   <ActiveTabContainer innerRef={innerRef}>
     <Sans size="3t" weight="medium">
@@ -214,7 +217,6 @@ export const styles = {
     cursor: pointer;
     padding-bottom: 13px;
     white-space: nowrap;
-    ${borders};
   `,
   activeTabContainer: css`
     pointer-events: none;
@@ -241,8 +243,12 @@ const TabsPaddingContainer = styled(Flex)`
   `};
 `
 
-const TabsContainer = styled(Flex)`
-  overflow: hidden;
+const TabsScrollContainer = styled(Flex)`
+  ${media.xs`
+    overflow-y: hidden;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+  `};
   margin-bottom: 0px;
 `
 
