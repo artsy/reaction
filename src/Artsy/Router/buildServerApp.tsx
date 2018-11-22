@@ -15,8 +15,10 @@ import { RouterConfig } from "./"
 
 interface Resolve {
   ServerApp?: ComponentType<any>
-  redirect?: string
-  status?: string
+  redirect?: {
+    url: string
+  }
+  status?: number
   headTags?: any[]
 }
 
