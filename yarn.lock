@@ -1947,10 +1947,12 @@
   resolved "https://registry.yarnpkg.com/@types/stripe-v3/-/stripe-v3-3.0.8.tgz#9c2816acf34dcf0948236fc81ce99442344ebfb4"
   integrity sha512-66qa6x17+HCqc/tRTwYqSOYHsSAoGPAr4gLJFIQwY/em1JjePDXa2lcBqB3mUrVuMhFyn/CP4fJy2yIE6gwqjw==
 
-"@types/styled-system@^3.0.7":
-  version "3.0.7"
-  resolved "https://registry.yarnpkg.com/@types/styled-system/-/styled-system-3.0.7.tgz#1bb1b5161f2009f10aa37c4c627ecb78fa543cb3"
-  integrity sha512-5IVTchugOLqVdSQcF7C5b544k3zML1+EhA67pWnueMwz/wrr15GXHw8GvdOQqgm9mZ3HbgZSBMXDSH5Q0yZE8Q==
+"@types/styled-system@^3.0.9":
+  version "3.0.9"
+  resolved "https://registry.yarnpkg.com/@types/styled-system/-/styled-system-3.0.9.tgz#a17d78b3500ed5c76570fd4f692546616eed015c"
+  integrity sha512-QUtiOVULbaLCrdQYzZpqDdjx2QUwdfk+F9op2kZy1Xqjh5S6D0vMousLUByBRDf7tqL/ZdtX0E5/gFav1A6DCA==
+  dependencies:
+    csstype "^2.2.0"
 
 "@types/webpack-env@*":
   version "1.13.6"
