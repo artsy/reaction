@@ -1,5 +1,6 @@
 import { createEnvironment } from "Artsy/Relay/createEnvironment"
 import { Boot } from "Artsy/Router/Components/Boot"
+import { Hydrator } from "Artsy/Router/Components/Hydrator"
 import queryMiddleware from "farce/lib/queryMiddleware"
 import { Resolver } from "found-relay"
 import createRender from "found/lib/createRender"
@@ -7,7 +8,6 @@ import { getFarceResult } from "found/lib/server"
 import { getLoadableState } from "loadable-components/server"
 import React, { ComponentType } from "react"
 import ReactDOMServer from "react-dom/server"
-import serialize from "serialize-javascript"
 import { getUser } from "Utils/getUser"
 import { createMediaStyle } from "Utils/Responsive"
 import { trace } from "Utils/trace"
@@ -18,7 +18,6 @@ interface Resolve {
   redirect?: string
   status?: string
   headTags?: any[]
-  scripts?: string
 }
 
 // No need to invoke this for each request.
@@ -71,7 +70,13 @@ export function buildServerApp(config: RouterConfig): Promise<Resolve> {
               resolver={resolver}
               routes={routes}
             >
-              {element}
+              <Hydrator
+                data={props.data}
+                loadableState={props.loadableState}
+                url={url}
+              >
+                {element}
+              </Hydrator>
             </Boot>
           )
         }
@@ -87,14 +92,6 @@ export function buildServerApp(config: RouterConfig): Promise<Resolve> {
             return { relayData: data, loadableState: state }
           })()
         )
-
-        const scripts = []
-        loadableState && scripts.push(loadableState.getScriptTag())
-        scripts.push(`
-          <script>
-            var __RELAY_BOOTSTRAP__ = ${serializeRelayData(relayData)};
-          </script>
-        `)
 
         /**
          * FIXME: Relay SSR middleware is passing a _res object across which
@@ -116,10 +113,11 @@ export function buildServerApp(config: RouterConfig): Promise<Resolve> {
         }
 
         resolve({
-          ServerApp: props => <App {...props} />,
+          ServerApp: props => (
+            <App data={relayData} loadableState={loadableState} {...props} />
+          ),
           status,
           headTags,
-          scripts: scripts.join("\n"),
         })
       } catch (error) {
         console.error("[Artsy/Router/buildServerApp] Error:", error)
@@ -127,22 +125,4 @@ export function buildServerApp(config: RouterConfig): Promise<Resolve> {
       }
     })
   )
-}
-
-function serializeRelayData(relayData: any) {
-  let hydrationData
-  try {
-    hydrationData = serialize(relayData, {
-      isJSON: true,
-    })
-  } catch (error) {
-    hydrationData = "{}"
-    console.error(
-      "reaction/Router/buildServerApp Error serializing data:",
-      error
-    )
-  }
-  return serialize(hydrationData || {}, {
-    isJSON: true,
-  })
 }
