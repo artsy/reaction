@@ -51,16 +51,6 @@ fragment FollowArtistPopoverRow_artist on Artist {
       url
     }
   }
-  ...FollowArtistButton_artist
-}
-
-fragment FollowArtistButton_artist on Artist {
-  __id
-  id
-  is_followed
-  counts {
-    follows
-  }
 }
 */
 
@@ -93,7 +83,7 @@ return {
   "operationKind": "query",
   "name": "FollowArtistPopoverQuery",
   "id": null,
-  "text": "query FollowArtistPopoverQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...FollowArtistPopover_suggested\n    __id\n  }\n}\n\nfragment FollowArtistPopover_suggested on Artist {\n  related {\n    suggested(first: 3, exclude_followed_artists: true) {\n      edges {\n        node {\n          __id\n          ...FollowArtistPopoverRow_artist\n        }\n      }\n    }\n  }\n  __id\n}\n\nfragment FollowArtistPopoverRow_artist on Artist {\n  id\n  _id\n  __id\n  name\n  image {\n    cropped(width: 45, height: 45) {\n      url\n    }\n  }\n  ...FollowArtistButton_artist\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n",
+  "text": "query FollowArtistPopoverQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...FollowArtistPopover_suggested\n    __id\n  }\n}\n\nfragment FollowArtistPopover_suggested on Artist {\n  related {\n    suggested(first: 3, exclude_followed_artists: true) {\n      edges {\n        node {\n          __id\n          ...FollowArtistPopoverRow_artist\n        }\n      }\n    }\n  }\n  __id\n}\n\nfragment FollowArtistPopoverRow_artist on Artist {\n  id\n  _id\n  __id\n  name\n  image {\n    cropped(width: 45, height: 45) {\n      url\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -245,31 +235,6 @@ return {
                                     "storageKey": null
                                   }
                                 ]
-                              }
-                            ]
-                          },
-                          {
-                            "kind": "ScalarField",
-                            "alias": null,
-                            "name": "is_followed",
-                            "args": null,
-                            "storageKey": null
-                          },
-                          {
-                            "kind": "LinkedField",
-                            "alias": null,
-                            "name": "counts",
-                            "storageKey": null,
-                            "args": null,
-                            "concreteType": "ArtistCounts",
-                            "plural": false,
-                            "selections": [
-                              {
-                                "kind": "ScalarField",
-                                "alias": null,
-                                "name": "follows",
-                                "args": null,
-                                "storageKey": null
                               }
                             ]
                           }
