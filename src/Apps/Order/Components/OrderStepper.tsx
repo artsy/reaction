@@ -32,6 +32,7 @@ export const OrderStepper: React.SFC<OrderStepperProps> = ({
       initialTabIndex={stepIndex}
       currentStepIndex={stepIndex}
       disableNavigation
+      autoScroll
     >
       {steps.map(step => <Step name={step} key={step} />)}
     </Stepper>
