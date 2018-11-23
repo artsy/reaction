@@ -116,7 +116,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
                 {bioLen < MAX_CHARS.xs ? (
                   <>
                     <Genes artist={artist} />
-                    <Spacer mb={1} />}
+                    <Spacer mb={1} />
                   </>
                 ) : (
                   showGenes && <Genes artist={artist} />
@@ -126,7 +126,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
                 {bioLen < MAX_CHARS.default ? (
                   <>
                     <Genes artist={artist} />
-                    <Spacer mb={1} />}
+                    <Spacer mb={1} />
                   </>
                 ) : (
                   showGenes && <Genes artist={artist} />
