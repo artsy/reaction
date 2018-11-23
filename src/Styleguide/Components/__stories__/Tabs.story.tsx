@@ -97,6 +97,27 @@ storiesOf("Styleguide/Components", module).add("Tabs (Simple)", () => {
           <Tab name="Pricing" />
         </Tabs>
       </Section>
+      <Section title="Can auto scroll to center active tabs">
+        <Tabs autoScroll>
+          <Tab name="Pricing" />
+          <Tab name="Rainbows" />
+          <Tab name="Unicorns" />
+          <Tab name="Falafel" />
+          <Tab name="Delorean" />
+          <Tab name="Po-ta-toes" />
+          <Tab name="Jesuits" />
+          <Tab name="Mastadon" />
+          <Tab name="Funicular" />
+          <Tab name="DiCaprio" />
+          <Tab name="Fathomable" />
+          <Tab name="Shiny" />
+          <Tab name="Cyprus" />
+          <Tab name="UMass" />
+          <Tab name="Skiing" />
+          <Tab name="Liver" />
+          <Tab name="Magazine" />
+        </Tabs>
+      </Section>
     </>
   )
 })

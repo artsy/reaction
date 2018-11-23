@@ -112,7 +112,10 @@ export class CanvasContainerComponent extends React.Component<
 
       return (
         <CanvasLink {...linkProps}>
-          <Background backgroundUrl={backgroundUrl} />
+          <Background
+            backgroundUrl={backgroundUrl}
+            hasCoverOverlay={unit.has_cover_overlay}
+          />
           <CanvasText unit={unit} />
         </CanvasLink>
       )
@@ -172,6 +175,7 @@ export class CanvasContainerComponent extends React.Component<
 
 interface DivProps extends React.HTMLProps<HTMLDivElement> {
   backgroundUrl?: string
+  hasCoverOverlay?: boolean
 }
 
 interface ResponsiveProps extends React.HTMLProps<HTMLLinkElement> {
@@ -282,7 +286,7 @@ const Background = Div`
     background-size: cover;
     background-position: 50%;
     z-index: 1;
-    opacity: .7;
+    opacity: ${props => (props.hasCoverOverlay ? ".7" : "1")};
   }
 `
 

@@ -28,7 +28,7 @@ exports[`renders a series properly 1`] = `
 }
 
 .c3 img {
-  max-height: 24px;
+  max-height: 34px;
   vertical-align: middle;
   -ms-interpolation-mode: bicubic;
 }
@@ -1138,7 +1138,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 .c3 img {
-  max-height: 24px;
+  max-height: 34px;
   vertical-align: middle;
   -ms-interpolation-mode: bicubic;
 }

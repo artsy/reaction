@@ -28,6 +28,9 @@ const order: ShippingAndPaymentReview_order &
   ShippingAndPaymentSummary_order = {
   " $refType": null,
   state: "PENDING",
+  mode: "BUY",
+  itemsTotal: "$10,000",
+  totalListPrice: "$10,000",
   requestedFulfillment: {
     __typename: "Ship",
     ...ship,
@@ -107,13 +110,36 @@ storiesOf("Apps/Order Page/Components", module).add(
             query={orderQuery}
           />
         </Flex>
+        <h4>Offer</h4>
+        <Flex flexDirection="column" width={300}>
+          <MockRelayRenderer
+            Component={(props: any) => (
+              <ShippingAndPaymentReview
+                onChangePayment={() => alert("clicked")}
+                onChangeShipping={() => alert("clicked")}
+                onChangeOffer={() => alert("clicked")}
+                {...props}
+              />
+            )}
+            mockResolvers={{
+              Order: () => ({
+                ...order,
+                mode: "OFFER",
+                requestedFulfillment: {
+                  __typename: "Pickup",
+                },
+              }),
+            }}
+            query={orderQuery}
+          />
+        </Flex>
       </Section>
       <Section title="Credit card details">
         <Flex flexDirection="column" width={300} mb={2}>
           <CreditCardDetails {...order.creditCard} brand="Visa" />
         </Flex>
         <Flex flexDirection="column" width={300} mb={2}>
-          <CreditCardDetails {...order.creditCard} brand="Mastercard" />
+          <CreditCardDetails {...order.creditCard} brand="MasterCard" />
         </Flex>
         <Flex flexDirection="column" width={300} mb={2}>
           <CreditCardDetails {...order.creditCard} brand="Discover" />

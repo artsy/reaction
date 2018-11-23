@@ -28,7 +28,7 @@ exports[`Nav renders a Nav 1`] = `
 }
 
 .c2 img {
-  max-height: 24px;
+  max-height: 34px;
   vertical-align: middle;
   -ms-interpolation-mode: bicubic;
 }
@@ -179,7 +179,7 @@ exports[`Nav renders a sponsored nav 1`] = `
 }
 
 .c2 img {
-  max-height: 24px;
+  max-height: 34px;
   vertical-align: middle;
   -ms-interpolation-mode: bicubic;
 }
@@ -376,7 +376,7 @@ exports[`Nav renders a transparent nav 1`] = `
 }
 
 .c2 img {
-  max-height: 24px;
+  max-height: 34px;
   vertical-align: middle;
   -ms-interpolation-mode: bicubic;
 }

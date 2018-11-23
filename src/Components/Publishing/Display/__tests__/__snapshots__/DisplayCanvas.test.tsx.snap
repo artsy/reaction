@@ -102,7 +102,7 @@ exports[`snapshot renders the canvas in overlay layout 1`] = `
   background-size: cover;
   background-position: 50%;
   z-index: 1;
-  opacity: .7;
+  opacity: 1;
 }
 
 .c0 {

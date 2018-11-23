@@ -194,6 +194,10 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
     })
   }
 
+  onChangeOffer() {
+    this.props.router.push(`/orders/${this.props.order.id}/offer`)
+  }
+
   onChangePayment() {
     this.props.router.push(`/orders/${this.props.order.id}/payment`)
   }
@@ -232,6 +236,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                     order={order}
                     onChangePayment={this.onChangePayment.bind(this)}
                     onChangeShipping={this.onChangeShipping.bind(this)}
+                    onChangeOffer={this.onChangeOffer.bind(this)}
                     mb={[2, 3]}
                   />
 
