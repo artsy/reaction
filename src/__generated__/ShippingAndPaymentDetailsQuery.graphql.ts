@@ -19,6 +19,7 @@ export type ShippingAndPaymentDetailsQuery = {
 /*
 query ShippingAndPaymentDetailsQuery {
   order: ecommerceOrder(id: "foo") {
+    __typename
     ...ShippingAndPaymentSummary_order
     ...ShippingAndPaymentReview_order
     __id: id
@@ -112,6 +113,13 @@ v1 = {
 v2 = {
   "kind": "ScalarField",
   "alias": null,
+  "name": "__typename",
+  "args": null,
+  "storageKey": null
+},
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
   "name": "__id",
   "args": null,
   "storageKey": null
@@ -144,7 +152,7 @@ return {
         "name": "ecommerceOrder",
         "storageKey": "ecommerceOrder(id:\"foo\")",
         "args": v0,
-        "concreteType": "Order",
+        "concreteType": null,
         "plural": false,
         "selections": [
           {
@@ -173,9 +181,10 @@ return {
         "name": "ecommerceOrder",
         "storageKey": "ecommerceOrder(id:\"foo\")",
         "args": v0,
-        "concreteType": "Order",
+        "concreteType": null,
         "plural": false,
         "selections": [
+          v2,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -192,13 +201,7 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "__typename",
-                "args": null,
-                "storageKey": null
-              },
+              v2,
               {
                 "kind": "InlineFragment",
                 "type": "Ship",
@@ -306,7 +309,7 @@ return {
                             "args": null,
                             "storageKey": null
                           },
-                          v2
+                          v3
                         ]
                       },
                       v1
@@ -353,7 +356,7 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v2
+              v3
             ]
           },
           v1,
