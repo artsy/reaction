@@ -318,11 +318,15 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
               creditCardId: creditCardOrError.creditCard.id,
             })
           } else {
-            this.onMutationError(
-              errors || creditCardOrError.mutationError,
-              creditCardOrError.mutationError &&
-                creditCardOrError.mutationError.detail
-            )
+            if (errors) {
+              errors.map(err => this.onMutationError(err))
+            } else {
+              const mutationError = creditCardOrError.mutationError
+              this.onMutationError(
+                new ErrorWithMetadata(mutationError.message, mutationError),
+                mutationError.detail
+              )
+            }
           }
         },
         onError: this.onMutationError.bind(this),
@@ -369,7 +373,14 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
           if (orderOrError.order) {
             this.props.router.push(`/orders/${this.props.order.id}/review`)
           } else {
-            this.onMutationError(errors || orderOrError)
+            if (errors) {
+              errors.map(err => this.onMutationError(err))
+            } else {
+              const orderError = orderOrError.error
+              this.onMutationError(
+                new ErrorWithMetadata(orderError.code, orderError)
+              )
+            }
           }
         },
         onError: this.onMutationError.bind(this),
@@ -414,8 +425,8 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
     )
   }
 
-  private onMutationError(errors, errorModalMessage?) {
-    logger.error(new ErrorWithMetadata(errors.message || errors.data, errors))
+  private onMutationError(error, errorModalMessage?) {
+    logger.error(error)
     this.setState({
       isCommittingMutation: false,
       isErrorModalOpen: true,

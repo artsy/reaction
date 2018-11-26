@@ -98,7 +98,12 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
             } = data
 
             if (orderOrError.error) {
-              this.onMutationError(orderOrError.error)
+              this.onMutationError(
+                new ErrorWithMetadata(
+                  orderOrError.error.code,
+                  orderOrError.error
+                )
+              )
             } else {
               this.props.router.push(`/orders/${this.props.order.id}/shipping`)
             }
@@ -109,8 +114,8 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
     })
   }
 
-  onMutationError(errors, errorModalTitle?, errorModalMessage?) {
-    logger.error(new ErrorWithMetadata(errors.message || errors.data, errors))
+  onMutationError(error, errorModalTitle?, errorModalMessage?) {
+    logger.error(error)
     this.setState({
       isCommittingMutation: false,
       isErrorModalOpen: true,
