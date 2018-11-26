@@ -20,7 +20,7 @@ import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
-import { OrderStepper } from "../../Components/OrderStepper"
+import { offerFlowSteps, OrderStepper } from "../../Components/OrderStepper"
 
 export interface OfferProps {
   order: Offer_order
@@ -135,7 +135,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
         <HorizontalPadding px={[0, 4]}>
           <Row>
             <Col>
-              <OrderStepper currentStep="Offer" offerFlow />
+              <OrderStepper currentStep="Offer" steps={offerFlowSteps} />
             </Col>
           </Row>
         </HorizontalPadding>
