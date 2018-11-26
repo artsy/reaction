@@ -90,6 +90,12 @@ return {
       "name": "price_range",
       "type": "String",
       "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "marketable",
+      "type": "Boolean",
+      "defaultValue": null
     }
   ],
   "selections": [
@@ -211,6 +217,12 @@ return {
         },
         {
           "kind": "Variable",
+          "name": "marketable",
+          "variableName": "marketable",
+          "type": null
+        },
+        {
+          "kind": "Variable",
           "name": "medium",
           "variableName": "medium",
           "type": null
@@ -233,5 +245,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'e1195f09281ee73655876afd55e15636';
+(node as any).hash = '9ee734ce4af34bfde4417fa275dee19e';
 export default node;

@@ -14,7 +14,12 @@ const initializeVariablesWithFilterState = (params, props) => {
     }
   }
 
-  return { sort: "-decayed_merch", ...initialFilterState, ...params }
+  return {
+    marketable: true,
+    sort: "-decayed_merch",
+    ...initialFilterState,
+    ...params,
+  }
 }
 
 export const routes: RouteConfig[] = [
@@ -34,6 +39,7 @@ export const routes: RouteConfig[] = [
         $price_range: String
         $artist_id: String
         $attribution_class: [String]
+        $marketable: Boolean
       ) {
         viewer {
           ...CollectApp_viewer
@@ -49,6 +55,7 @@ export const routes: RouteConfig[] = [
               price_range: $price_range
               artist_id: $artist_id
               attribution_class: $attribution_class
+              marketable: $marketable
             )
         }
       }
@@ -76,6 +83,7 @@ export const routes: RouteConfig[] = [
         $acquireable: Boolean
         $inquireable_only: Boolean
         $price_range: String
+        $marketable: Boolean
       ) {
         collection: marketingCollection(slug: $slug) {
           ...CollectionApp_collection
@@ -88,6 +96,7 @@ export const routes: RouteConfig[] = [
               acquireable: $acquireable
               inquireable_only: $inquireable_only
               price_range: $price_range
+              marketable: $marketable
             )
         }
       }
