@@ -133,6 +133,8 @@ export const ArtworkApp: React.SFC<Props> = props => {
         </Col>
       </Row>
       */}
+
+      <div id="lightbox-container" />
     </HorizontalPadding>
   )
 }

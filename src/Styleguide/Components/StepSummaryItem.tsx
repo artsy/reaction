@@ -24,7 +24,7 @@ export const StepSummaryItem: React.SFC<StepSummaryItemProps> = ({
       {(title || onChange) && (
         <Flex justifyContent="space-between" alignItems="baseline" mb={1}>
           {title && (
-            <Serif size="3t" weight="semibold" color="black100">
+            <Serif size={["2", "3t"]} weight="semibold" color="black100">
               {title}
             </Serif>
           )}

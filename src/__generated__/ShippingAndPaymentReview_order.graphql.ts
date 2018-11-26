@@ -2,9 +2,13 @@
 
 import { ConcreteFragment } from "relay-runtime";
 import { ShippingAddress_ship$ref } from "./ShippingAddress_ship.graphql";
+export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
 declare const _ShippingAndPaymentReview_order$ref: unique symbol;
 export type ShippingAndPaymentReview_order$ref = typeof _ShippingAndPaymentReview_order$ref;
 export type ShippingAndPaymentReview_order = {
+    readonly mode: OrderModeEnum | null;
+    readonly totalListPrice: string | null;
+    readonly itemsTotal: string | null;
     readonly requestedFulfillment: ({
         readonly __typename: string;
         readonly " $fragmentRefs": ShippingAddress_ship$ref;
@@ -30,14 +34,22 @@ export type ShippingAndPaymentReview_order = {
 
 
 const node: ConcreteFragment = (function(){
-var v0 = {
+var v0 = [
+  {
+    "kind": "Literal",
+    "name": "precision",
+    "value": 2,
+    "type": "Int"
+  }
+],
+v1 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__id",
   "args": null,
   "storageKey": null
 },
-v1 = {
+v2 = {
   "kind": "ScalarField",
   "alias": "__id",
   "name": "id",
@@ -51,6 +63,27 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "mode",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "totalListPrice",
+      "args": v0,
+      "storageKey": "totalListPrice(precision:2)"
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "itemsTotal",
+      "args": v0,
+      "storageKey": "itemsTotal(precision:2)"
+    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -117,10 +150,10 @@ return {
                       "args": null,
                       "storageKey": null
                     },
-                    v0
+                    v1
                   ]
                 },
-                v1
+                v2
               ]
             }
           ]
@@ -164,12 +197,12 @@ return {
           "args": null,
           "storageKey": null
         },
-        v0
+        v1
       ]
     },
-    v1
+    v2
   ]
 };
 })();
-(node as any).hash = 'ed23bef55da56db41d823684da53e077';
+(node as any).hash = '3af72e2b9be198f280057aaf588161ac';
 export default node;

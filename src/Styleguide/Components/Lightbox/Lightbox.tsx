@@ -58,6 +58,7 @@ export interface LightboxState {
 
 export class Lightbox extends React.Component<LightboxProps, LightboxState> {
   static defaultProps = {
+    enabled: true,
     lightboxId: "lightbox-container",
   }
 
@@ -74,11 +75,7 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
       step: 0.001,
       value: 0,
     },
-
-    /**
-     * FIXME: convert to import('openseadragon) once force supports it
-     */
-    promisedDragon: Promise.resolve(require("openseadragon")),
+    promisedDragon: null,
   }
 
   show = event => {
@@ -185,6 +182,8 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
   componentDidMount() {
     this.setState({
       element: document.getElementById(this.props.lightboxId),
+      // FIXME: convert to import('openseadragon) once force supports it
+      promisedDragon: Promise.resolve(require("openseadragon")),
     })
   }
 
@@ -260,6 +259,12 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
 
   render() {
     const { children, enabled } = this.props
+
+    // Only render client-side
+    if (!this.state.element) {
+      return children
+    }
+
     const modifiedChildren = React.Children.map(
       children,
       (child: React.ReactElement<any>) => {

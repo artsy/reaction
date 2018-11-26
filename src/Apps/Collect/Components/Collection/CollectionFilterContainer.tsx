@@ -1,7 +1,6 @@
 import { ContextConsumer } from "Artsy"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Responsive } from "Utils/Responsive"
 import { CollectionRefetchContainer } from "./CollectionRefetch"
 
 import { CollectionFilterContainer_collection } from "__generated__/CollectionFilterContainer_collection.graphql"
@@ -29,26 +28,19 @@ export class CollectionFilterContainer extends Component<
       <ContextConsumer>
         {({ user, mediator }) => {
           return (
-            <Responsive>
-              {({ xs }) => {
-                return (
-                  <FilterContainer
-                    isMobile={xs}
-                    user={user}
-                    mediator={mediator}
-                    mediums={mediumAggregation.counts as any}
-                    timePeriods={timePeriodAggregation.counts as any}
-                  >
-                    {(filters: FilterState) => (
-                      <CollectionRefetchContainer
-                        collection={collection}
-                        filtersState={filters.state}
-                      />
-                    )}
-                  </FilterContainer>
-                )
-              }}
-            </Responsive>
+            <FilterContainer
+              user={user}
+              mediator={mediator}
+              mediums={mediumAggregation.counts as any}
+              timePeriods={timePeriodAggregation.counts as any}
+            >
+              {(filters: FilterState) => (
+                <CollectionRefetchContainer
+                  collection={collection}
+                  filtersState={filters.state}
+                />
+              )}
+            </FilterContainer>
           )
         }}
       </ContextConsumer>

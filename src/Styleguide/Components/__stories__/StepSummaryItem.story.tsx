@@ -3,7 +3,6 @@ import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { StepSummaryItem } from "Styleguide/Components"
 import { Section } from "Styleguide/Utils/Section"
-import { Responsive } from "Utils/Responsive"
 
 storiesOf("Styleguide/Components", module).add("StepSummaryItem", () => {
   return (
@@ -39,16 +38,12 @@ storiesOf("Styleguide/Components", module).add("StepSummaryItem", () => {
           width="100%"
           maxWidth={542}
         >
-          <Responsive>
-            {({ xs }) => (
-              <Serif size={xs ? "2" : "3"} color="black100">
-                Ebe Park<br />
-                315 8th Ave, Apt 5C<br />
-                New York, NY 10001<br />
-                United States
-              </Serif>
-            )}
-          </Responsive>
+          <Serif size={["2", "3"]} color="black100">
+            Ebe Park<br />
+            315 8th Ave, Apt 5C<br />
+            New York, NY 10001<br />
+            United States
+          </Serif>
         </StepSummaryItem>
       </Section>
     </>

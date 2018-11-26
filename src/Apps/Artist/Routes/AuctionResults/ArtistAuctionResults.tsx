@@ -5,7 +5,7 @@ import { PaginationFragmentContainer as Pagination } from "Styleguide/Components
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Subscribe } from "unstated"
 import { ArtistAuctionDetailsModal } from "./ArtistAuctionDetailsModal"
-import { AuctionResultItemFragmentContainer as AuctionResultsItem } from "./ArtistAuctionResultItem"
+import { AuctionResultItemFragmentContainer as AuctionResultItem } from "./ArtistAuctionResultItem"
 import { AuctionResultsState } from "./state"
 import { TableColumns } from "./TableColumns"
 import { TableSidebar } from "./TableSidebar"
@@ -110,12 +110,12 @@ class AuctionResultsContainer extends Component<
           return (
             <>
               <Row>
-                <TableSidebar count={totalCount} />
+                <Col sm={2} pr={[0, 2]}>
+                  <TableSidebar count={totalCount} />
+                </Col>
 
                 <Col sm={10}>
-                  <Row>
-                    <TableColumns />
-                  </Row>
+                  <TableColumns />
 
                   <Box pt={0.5}>
                     <Separator />
@@ -132,7 +132,7 @@ class AuctionResultsContainer extends Component<
                       ({ node }, index) => {
                         return (
                           <React.Fragment key={index}>
-                            <AuctionResultsItem
+                            <AuctionResultItem
                               auctionResult={node}
                               lastChild={index === auctionResultsLength - 1}
                             />

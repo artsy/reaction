@@ -46,9 +46,8 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
     // no-op
   }
 
-  maybeShowGenes(xs) {
+  maybeShowGenes() {
     const { artist } = this.props
-
     let showGenes = false
     if (artist.related.genes.edges.length) {
       if (this.state.isReadMoreExpanded) {
@@ -57,20 +56,16 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
         showGenes = true
       }
     }
-
     return showGenes
   }
 
   render() {
     const { artist } = this.props
-
     const showSelectedExhibitions = Boolean(artist.exhibition_highlights.length)
     const showArtistBio = Boolean(artist.biography_blurb.text)
     const showCurrentEvent = Boolean(artist.currentEvent)
     const showConsignable = Boolean(artist.is_consignable)
-
     const bioLen = artist.biography_blurb.text.length
-
     const hideMainOverviewSection =
       !showMarketInsights(this.props.artist) &&
       !showSelectedExhibitions &&
@@ -80,6 +75,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
 
     // TODO: Hide right column if missing current event. Waiting on feedback
     const colNum = 9 // artist.currentEvent ? 9 : 12
+    const showGenes = this.maybeShowGenes()
 
     return (
       <>
@@ -115,17 +111,30 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
               </>
             )}
 
-            {this.maybeShowGenes && (
-              <>
-                <Media at="xs">
-                  {bioLen < MAX_CHARS.xs && <Genes artist={artist} />}
-                </Media>
-                <Media greaterThan="xs">
-                  {bioLen < MAX_CHARS.default && <Genes artist={artist} />}
-                </Media>
-                <Spacer mb={1} />
-              </>
-            )}
+            <>
+              <Media at="xs">
+                {bioLen < MAX_CHARS.xs ? (
+                  <>
+                    <Genes artist={artist} />
+                    <Spacer mb={1} />
+                  </>
+                ) : (
+                  showGenes && <Genes artist={artist} />
+                )}
+              </Media>
+              <Media greaterThan="xs">
+                {bioLen < MAX_CHARS.default ? (
+                  <>
+                    <Genes artist={artist} />
+                    <Spacer mb={1} />
+                  </>
+                ) : (
+                  showGenes && <Genes artist={artist} />
+                )}
+              </Media>
+
+              {showGenes && <Spacer mb={1} />}
+            </>
 
             {showConsignable && (
               <>
@@ -209,22 +218,17 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
       counts {
         partner_shows
       }
-
       href
       is_consignable
-
       # NOTE: The following are used to determine whether sections
       # should be rendered.
-
       biography_blurb(format: HTML, partner_bio: true) {
         text
         credit
       }
-
       currentEvent {
         name
       }
-
       related {
         genes {
           edges {
@@ -234,7 +238,6 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
           }
         }
       }
-
       _id
       collections
       highlights {

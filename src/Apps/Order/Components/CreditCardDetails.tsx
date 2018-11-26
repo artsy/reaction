@@ -17,7 +17,7 @@ export const CreditCardDetails = ({
   <Flex alignItems="center">
     <CreditCardIcon type={brand} style={{ marginRight: space(1) }} />
     <Serif
-      size="3"
+      size={["2", "3"]}
       color="black100"
       style={{ position: "relative", top: "1px" }}
     >

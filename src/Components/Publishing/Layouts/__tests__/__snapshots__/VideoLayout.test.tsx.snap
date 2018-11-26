@@ -28,7 +28,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c4 img {
-  max-height: 24px;
+  max-height: 34px;
   vertical-align: middle;
   -ms-interpolation-mode: bicubic;
 }
