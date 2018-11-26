@@ -29,7 +29,7 @@ const ArticleWrapper = styled.div`
   }
   div[class^="Author__"] {
     color: white;
-    &:before {
+    &::before {
       background-color: white;
     }
   }

@@ -15,7 +15,7 @@ const ImageContainer = styled.div`
   position: relative;
   cursor: pointer;
 
-  &:before {
+  &::before {
     content: "";
     display: block;
     padding-bottom: 100%;

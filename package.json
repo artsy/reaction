@@ -145,7 +145,7 @@
     "tslint-plugin-relay": "^0.0.3",
     "tslint-react": "^2.4.0",
     "typescript": "^3.0.1",
-    "typescript-styled-plugin": "^0.11.0",
+    "typescript-styled-plugin": "^0.13.0",
     "webpack": "^4.20.2",
     "webpack-bundle-analyzer": "^2.13.1",
     "webpack-merge": "^4.1.0"

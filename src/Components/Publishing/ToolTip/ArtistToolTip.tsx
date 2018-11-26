@@ -114,9 +114,11 @@ const Wrapper = styled.div`
 
 export const ArtistContainer = styled.div`
   position: relative;
+
   a {
     text-decoration: none;
     color: black;
+
     &:hover {
       color: black;
     }
@@ -149,9 +151,11 @@ const Images = styled.a`
   margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
+
   div:first-child {
     margin-right: 15px;
   }
+
   img {
     width: 100%;
     height: auto;

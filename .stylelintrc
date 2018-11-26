@@ -13,6 +13,8 @@
     "value-list-comma-newline-after": null,
     "declaration-block-no-redundant-longhand-properties": null,
     "color-hex-length": null,
-    "block-no-empty": null
+    "block-no-empty": null,
+    "declaration-empty-line-before": null,
+    "function-calc-no-unspaced-operator": null
   }
 }

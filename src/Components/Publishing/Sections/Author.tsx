@@ -72,9 +72,11 @@ const AuthorContainer = styled.div`
 const AuthorInfo = styled.div`
   display: block;
   ${unica("s16", "medium")};
+
   a {
     color: black;
   }
+
   ${pMedia.xs`
     ${unica("s14", "medium")}
   `};
@@ -86,8 +88,9 @@ const TwitterHandle = styled.a`
   color: black;
   text-decoration: none;
   white-space: nowrap;
+
   ${Icon} {
     vertical-align: middle;
-    margin: 0px;
+    margin: 0;
   }
 `

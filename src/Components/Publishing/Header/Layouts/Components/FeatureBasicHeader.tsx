@@ -117,7 +117,7 @@ export const BasicHeaderContainer = styled.div.attrs<{ hasVideo: boolean }>({})`
   }
 
   ${Deck} {
-    padding-right: 0px;
+    padding-right: 0;
     margin-right: 0;
     padding-bottom: ${space(1)}px;
     max-width: 100%;

@@ -151,9 +151,11 @@ const FullWrapper = styled.div`
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
   padding: 20px;
   cursor: pointer;
+
   &:hover {
     background: rgba(0, 0, 0, 0.6);
     color: white;
+
     ${IconContainer} {
       fill: white;
     }
@@ -182,7 +184,8 @@ const MiniInner = styled.div`
   margin-left: 20px;
 `
 const Title = styled.div`
-  ${unica("s19", "medium")} margin-bottom: 8px;
+  ${unica("s19", "medium")};
+  margin-bottom: 8px;
   line-height: 1.1em;
   ${pMedia.xs`
     ${unica("s16", "medium")}
@@ -192,12 +195,14 @@ const SubTitle = styled.div`
   display: flex;
 `
 const SubTitlePrompt = styled.div`
-  ${unica("s14", "medium")} ${pMedia.xs`
+  ${unica("s14", "medium")};
+  ${pMedia.xs`
     ${unica("s12", "medium")}
   `};
 `
 const SubTitleCount = styled.div`
-  ${unica("s14")} margin-left: 20px;
+  ${unica("s14")};
+  margin-left: 20px;
   ${pMedia.xs`
     ${unica("s12")}
   `};

@@ -80,12 +80,15 @@ export const VideoControlsContainer = styled.div`
   margin: 20px;
   opacity: 0;
   transition: opacity 0.25s ease;
+
   ${Timestamp} {
     margin-right: 30px;
   }
+
   ${MuteUnmuteContainer} {
     margin-right: 20px;
   }
+
   ${IconVideoFullscreen} {
     cursor: pointer;
   }

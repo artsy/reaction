@@ -103,9 +103,11 @@ const CaptionContainer = styled.div`
   justify-content: space-between;
   background-color: ${Colors.gray};
   padding: 30px 60px;
+
   p {
-    margin: 0px;
+    margin: 0;
   }
+
   ${pMedia.sm`
     position: absolute;
     bottom: 0;

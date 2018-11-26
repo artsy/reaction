@@ -13,11 +13,12 @@ const Nav = styled.div`
 const NavIcon = styled.a`
   display: inline-block;
   font-size: 32px;
-  padding: 15px 0px 15px 22px;
+  padding: 15px 0 15px 22px;
   margin-right: 10px;
   flex: 0;
 `
 
+/* stylelint-disable-next-line max-empty-lines */
 injectGlobal`
   body {
     margin: 0;

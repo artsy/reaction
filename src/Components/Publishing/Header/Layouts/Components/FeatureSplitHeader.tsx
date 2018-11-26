@@ -62,13 +62,16 @@ const HeaderTextContainer = styled(Col)`
   padding-right: ${space(2)}px;
   padding-top: ${space(2)}px;
   padding-bottom: ${space(2)}px;
+
   ${TextContainer} {
     height: 100%;
     justify-content: space-between;
   }
+
   ${SubContentContainer} {
     display: block;
   }
+
   ${BylineContainer} {
     margin-top: ${space(3)}px;
   }

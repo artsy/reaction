@@ -35,11 +35,14 @@ const FollowingHover = styled.div`
   ${Unfollow} {
     display: none;
   }
+
   &:hover {
     color: ${color("red100")};
+
     ${Following} {
       display: none;
     }
+
     ${Unfollow} {
       display: block;
     }

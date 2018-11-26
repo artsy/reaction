@@ -53,11 +53,13 @@ const Button = styled.div`
   border-radius: 2px;
   ${unica("s14", "medium")};
   padding-top: 1px;
+
   &:hover {
     cursor: pointer;
     background-color: white;
     color: black;
   }
+
   ${pMedia.md`
     width: 100%;
   `};
