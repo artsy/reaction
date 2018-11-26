@@ -53,6 +53,7 @@ mutation OfferMutation(
       ... on OrderWithMutationSuccess {
         __typename
         order {
+          __typename
           id
           mode
           itemsTotal
@@ -148,70 +149,50 @@ v4 = {
 },
 v5 = {
   "kind": "ScalarField",
+  "alias": null,
+  "name": "mode",
+  "args": null,
+  "storageKey": null
+},
+v6 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "itemsTotal",
+  "args": null,
+  "storageKey": null
+},
+v7 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "totalListPrice",
+  "args": null,
+  "storageKey": null
+},
+v8 = {
+  "kind": "ScalarField",
   "alias": "__id",
   "name": "id",
   "args": null,
   "storageKey": null
 },
-v6 = {
-  "kind": "InlineFragment",
-  "type": "OrderWithMutationSuccess",
+v9 = {
+  "kind": "LinkedField",
+  "alias": null,
+  "name": "lastOffer",
+  "storageKey": null,
+  "args": null,
+  "concreteType": "Offer",
+  "plural": false,
   "selections": [
-    v3,
+    v4,
     {
-      "kind": "LinkedField",
+      "kind": "ScalarField",
       "alias": null,
-      "name": "order",
-      "storageKey": null,
+      "name": "amountCents",
       "args": null,
-      "concreteType": "Order",
-      "plural": false,
-      "selections": [
-        v4,
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "mode",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "itemsTotal",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "totalListPrice",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "lastOffer",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "Offer",
-          "plural": false,
-          "selections": [
-            v4,
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "amountCents",
-              "args": null,
-              "storageKey": null
-            },
-            v5
-          ]
-        },
-        v5
-      ]
-    }
+      "storageKey": null
+    },
+    v8
   ]
 };
 return {
@@ -219,7 +200,7 @@ return {
   "operationKind": "mutation",
   "name": "OfferMutation",
   "id": null,
-  "text": "mutation OfferMutation(\n  $input: InitialOfferInput!\n) {\n  ecommerceInitialOffer(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        __typename\n        order {\n          id\n          mode\n          itemsTotal\n          totalListPrice\n          lastOffer {\n            id\n            amountCents\n            __id: id\n          }\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation OfferMutation(\n  $input: InitialOfferInput!\n) {\n  ecommerceInitialOffer(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          id\n          mode\n          itemsTotal\n          totalListPrice\n          lastOffer {\n            id\n            amountCents\n            __id: id\n          }\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -247,7 +228,30 @@ return {
             "plural": false,
             "selections": [
               v2,
-              v6
+              {
+                "kind": "InlineFragment",
+                "type": "OrderWithMutationSuccess",
+                "selections": [
+                  v3,
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "order",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": null,
+                    "plural": false,
+                    "selections": [
+                      v4,
+                      v5,
+                      v6,
+                      v7,
+                      v9,
+                      v8
+                    ]
+                  }
+                ]
+              }
             ]
           }
         ]
@@ -279,7 +283,31 @@ return {
             "selections": [
               v3,
               v2,
-              v6
+              {
+                "kind": "InlineFragment",
+                "type": "OrderWithMutationSuccess",
+                "selections": [
+                  v3,
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "order",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": null,
+                    "plural": false,
+                    "selections": [
+                      v3,
+                      v4,
+                      v5,
+                      v6,
+                      v7,
+                      v9,
+                      v8
+                    ]
+                  }
+                ]
+              }
             ]
           }
         ]
