@@ -9,7 +9,6 @@ export class ErrorWithMetadata extends Error {
   decoratedMessage: string
   constructor(message, metadata = {}) {
     super(message)
-    this.decoratedMessage = message + " | " + JSON.stringify(metadata)
     this.metadata = metadata
     if (Error.captureStackTrace) {
       Error.captureStackTrace(this, this.constructor)
@@ -17,13 +16,15 @@ export class ErrorWithMetadata extends Error {
   }
 }
 
+export const reportError = error => scope => {
+  if (error instanceof ErrorWithMetadata) {
+    Object.keys(error.metadata).forEach(key => {
+      scope.setExtra(key, error.metadata[key])
+    })
+  }
+  Sentry.captureException(error)
+}
+
 export const sendErrorToService = (error: Error | ErrorWithMetadata) => {
-  Sentry.withScope(scope => {
-    if (error instanceof ErrorWithMetadata) {
-      Object.keys(error.metadata).forEach(key => {
-        scope.setExtra(key, error.metadata[key])
-      })
-    }
-    Sentry.captureException(error)
-  })
+  Sentry.withScope(reportError(error))
 }
