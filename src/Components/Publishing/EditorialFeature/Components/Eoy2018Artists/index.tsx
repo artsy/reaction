@@ -38,7 +38,7 @@ export class Eoy2018Artists extends React.Component<ArticleProps> {
     return (
       <ArtistHeaderSection key={i}>
         <ArtistHeaderTitle dangerouslySetInnerHTML={{ __html: section.body }} />
-        <ArtistHeaderImg src={src} />
+        <ArtistHeaderImg src={src || undefined} />
       </ArtistHeaderSection>
     )
   }

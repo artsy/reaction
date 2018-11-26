@@ -5,7 +5,7 @@ import styled from "styled-components"
 import { BORDER_WIDTH } from "./index"
 
 export class Eoy2018ArticleHeader extends React.Component<{
-  images?: string[]
+  images?: any
 }> {
   render() {
     return (
@@ -44,10 +44,13 @@ const HeaderGrid = styled(Flex)`
   overflow: hidden;
 `
 
-const GridItem = styled(Box)`
+const GridItem = styled(Box)<{ src?: string }>`
   border: ${BORDER_WIDTH / 2}px solid ${color("purple100")};
   width: 25%;
   height: 30vh;
+  &:hover {
+    background-color: ${color("purple100")};
+  }
 `
 
 const ArticleHeader = styled.div`
