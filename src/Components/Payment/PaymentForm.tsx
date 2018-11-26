@@ -222,7 +222,7 @@ class PaymentForm extends Component<PaymentFormProps, PaymentFormState> {
             window.scrollTo(0, 0)
           } else {
             if (errors) {
-              errors.map(err => this.onMutationError(err))
+              errors.forEach(this.onMutationError.bind(this))
             } else {
               const mutationError = creditCardOrError.mutationError
               this.onMutationError(

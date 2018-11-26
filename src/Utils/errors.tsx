@@ -6,7 +6,7 @@ export class NetworkError extends Error {
 
 export class ErrorWithMetadata extends Error {
   metadata: object
-  decoratedMessage: string
+
   constructor(message, metadata = {}) {
     super(message)
     this.metadata = metadata
@@ -18,8 +18,8 @@ export class ErrorWithMetadata extends Error {
 
 export const reportError = error => scope => {
   if (error instanceof ErrorWithMetadata) {
-    Object.keys(error.metadata).forEach(key => {
-      scope.setExtra(key, error.metadata[key])
+    Object.entries(error.metadata).forEach(([key, value]) => {
+      scope.setExtra(key, value)
     })
   }
   Sentry.captureException(error)

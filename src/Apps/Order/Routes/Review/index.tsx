@@ -139,7 +139,9 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                     break
                   }
                   default: {
-                    this.onMutationError(error)
+                    this.onMutationError(
+                      new ErrorWithMetadata(error.code, error)
+                    )
                     break
                   }
                 }

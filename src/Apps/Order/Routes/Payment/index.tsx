@@ -319,7 +319,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
             })
           } else {
             if (errors) {
-              errors.map(err => this.onMutationError(err))
+              errors.forEach(this.onMutationError.bind(this))
             } else {
               const mutationError = creditCardOrError.mutationError
               this.onMutationError(
@@ -374,7 +374,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
             this.props.router.push(`/orders/${this.props.order.id}/review`)
           } else {
             if (errors) {
-              errors.map(err => this.onMutationError(err))
+              errors.forEach(this.onMutationError.bind(this))
             } else {
               const orderError = orderOrError.error
               this.onMutationError(
