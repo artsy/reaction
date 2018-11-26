@@ -19,6 +19,7 @@ export type ShippingAndPaymentDetailsQuery = {
 /*
 query ShippingAndPaymentDetailsQuery {
   order: ecommerceOrder(id: "foo") {
+    __typename
     ...ShippingAndPaymentSummary_order
     ...ShippingAndPaymentReview_order
     __id: id
@@ -112,11 +113,18 @@ v1 = {
 v2 = {
   "kind": "ScalarField",
   "alias": null,
+  "name": "__typename",
+  "args": null,
+  "storageKey": null
+},
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
   "name": "__id",
   "args": null,
   "storageKey": null
 },
-v3 = [
+v4 = [
   {
     "kind": "Literal",
     "name": "precision",
@@ -129,7 +137,7 @@ return {
   "operationKind": "query",
   "name": "ShippingAndPaymentDetailsQuery",
   "id": null,
-  "text": "query ShippingAndPaymentDetailsQuery {\n  order: ecommerceOrder(id: \"foo\") {\n    ...ShippingAndPaymentSummary_order\n    ...ShippingAndPaymentReview_order\n    __id: id\n  }\n}\n\nfragment ShippingAndPaymentSummary_order on Order {\n  state\n  requestedFulfillment {\n    __typename\n    ...ShippingAddress_ship\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  creditCard {\n    brand\n    last_digits\n    expiration_year\n    expiration_month\n    __id\n  }\n  __id: id\n}\n\nfragment ShippingAndPaymentReview_order on Order {\n  mode\n  totalListPrice(precision: 2)\n  itemsTotal(precision: 2)\n  requestedFulfillment {\n    __typename\n    ...ShippingAddress_ship\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  creditCard {\n    brand\n    last_digits\n    expiration_year\n    expiration_month\n    __id\n  }\n  __id: id\n}\n\nfragment ShippingAddress_ship on Ship {\n  name\n  addressLine1\n  addressLine2\n  city\n  postalCode\n  region\n  country\n  phoneNumber\n}\n",
+  "text": "query ShippingAndPaymentDetailsQuery {\n  order: ecommerceOrder(id: \"foo\") {\n    __typename\n    ...ShippingAndPaymentSummary_order\n    ...ShippingAndPaymentReview_order\n    __id: id\n  }\n}\n\nfragment ShippingAndPaymentSummary_order on Order {\n  state\n  requestedFulfillment {\n    __typename\n    ...ShippingAddress_ship\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  creditCard {\n    brand\n    last_digits\n    expiration_year\n    expiration_month\n    __id\n  }\n  __id: id\n}\n\nfragment ShippingAndPaymentReview_order on Order {\n  mode\n  totalListPrice(precision: 2)\n  itemsTotal(precision: 2)\n  requestedFulfillment {\n    __typename\n    ...ShippingAddress_ship\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  creditCard {\n    brand\n    last_digits\n    expiration_year\n    expiration_month\n    __id\n  }\n  __id: id\n}\n\nfragment ShippingAddress_ship on Ship {\n  name\n  addressLine1\n  addressLine2\n  city\n  postalCode\n  region\n  country\n  phoneNumber\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -144,7 +152,7 @@ return {
         "name": "ecommerceOrder",
         "storageKey": "ecommerceOrder(id:\"foo\")",
         "args": v0,
-        "concreteType": "Order",
+        "concreteType": null,
         "plural": false,
         "selections": [
           {
@@ -173,9 +181,10 @@ return {
         "name": "ecommerceOrder",
         "storageKey": "ecommerceOrder(id:\"foo\")",
         "args": v0,
-        "concreteType": "Order",
+        "concreteType": null,
         "plural": false,
         "selections": [
+          v2,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -192,13 +201,7 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "__typename",
-                "args": null,
-                "storageKey": null
-              },
+              v2,
               {
                 "kind": "InlineFragment",
                 "type": "Ship",
@@ -306,7 +309,7 @@ return {
                             "args": null,
                             "storageKey": null
                           },
-                          v2
+                          v3
                         ]
                       },
                       v1
@@ -353,7 +356,7 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v2
+              v3
             ]
           },
           v1,
@@ -368,14 +371,14 @@ return {
             "kind": "ScalarField",
             "alias": null,
             "name": "totalListPrice",
-            "args": v3,
+            "args": v4,
             "storageKey": "totalListPrice(precision:2)"
           },
           {
             "kind": "ScalarField",
             "alias": null,
             "name": "itemsTotal",
-            "args": v3,
+            "args": v4,
             "storageKey": "itemsTotal(precision:2)"
           }
         ]
