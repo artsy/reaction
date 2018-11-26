@@ -65,7 +65,6 @@ exports[`renders a series properly 1`] = `
   align-items: center;
   height: 52px;
   width: 100%;
-  color: white;
   z-index: 10;
 }
 
@@ -82,6 +81,7 @@ exports[`renders a series properly 1`] = `
   width: 100%;
   text-align: center;
   font-weight: 600;
+  color: white;
 }
 
 .c6 a {
@@ -822,6 +822,7 @@ exports[`renders a series properly 1`] = `
   <div>
     <div
       className="c1 c2"
+      color="white"
     >
       <div
         className="PartnerInline c3"
@@ -839,6 +840,7 @@ exports[`renders a series properly 1`] = `
       </div>
       <div
         className="c6"
+        color="white"
       >
         <a
           href="/magazine"
@@ -1175,7 +1177,6 @@ exports[`renders a sponsored series properly 1`] = `
   align-items: center;
   height: 52px;
   width: 100%;
-  color: white;
   z-index: 10;
 }
 
@@ -1192,6 +1193,7 @@ exports[`renders a sponsored series properly 1`] = `
   width: 100%;
   text-align: center;
   font-weight: 600;
+  color: white;
 }
 
 .c8 a {
@@ -1698,11 +1700,11 @@ exports[`renders a sponsored series properly 1`] = `
   margin-bottom: 30px;
 }
 
-.fKzgLF .c14 {
+.jxoMuW .c14 {
   margin-bottom: 90px;
 }
 
-.fKzgLF .c41 {
+.jxoMuW .c41 {
   padding-top: 60px;
 }
 
@@ -1963,7 +1965,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .fKzgLF .c41 {
+  .jxoMuW .c41 {
     padding-top: 60px;
   }
 }
@@ -1981,6 +1983,7 @@ exports[`renders a sponsored series properly 1`] = `
   <div>
     <div
       className="c1 c2"
+      color="white"
     >
       <div
         className="PartnerInline c3"
@@ -2042,6 +2045,7 @@ exports[`renders a sponsored series properly 1`] = `
       </div>
       <div
         className="c8"
+        color="white"
       >
         <a
           href="/magazine"

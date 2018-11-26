@@ -63,7 +63,6 @@ exports[`Nav renders a Nav 1`] = `
   align-items: center;
   height: 52px;
   width: 100%;
-  color: white;
   z-index: 10;
 }
 
@@ -80,6 +79,7 @@ exports[`Nav renders a Nav 1`] = `
   width: 100%;
   text-align: center;
   font-weight: 600;
+  color: white;
 }
 
 .c5 a {
@@ -111,6 +111,7 @@ exports[`Nav renders a Nav 1`] = `
 <div>
   <div
     className="c0 c1"
+    color="white"
   >
     <div
       className="PartnerInline c2"
@@ -128,6 +129,7 @@ exports[`Nav renders a Nav 1`] = `
     </div>
     <div
       className="c5"
+      color="white"
     >
       <a
         href="/magazine"
@@ -214,7 +216,6 @@ exports[`Nav renders a sponsored nav 1`] = `
   align-items: center;
   height: 52px;
   width: 100%;
-  color: white;
   z-index: 10;
 }
 
@@ -231,6 +232,7 @@ exports[`Nav renders a sponsored nav 1`] = `
   width: 100%;
   text-align: center;
   font-weight: 600;
+  color: white;
 }
 
 .c7 a {
@@ -269,6 +271,7 @@ exports[`Nav renders a sponsored nav 1`] = `
 <div>
   <div
     className="c0 c1"
+    color="white"
   >
     <div
       className="PartnerInline c2"
@@ -330,6 +333,7 @@ exports[`Nav renders a sponsored nav 1`] = `
     </div>
     <div
       className="c7"
+      color="white"
     >
       <a
         href="/magazine"
@@ -413,7 +417,6 @@ exports[`Nav renders a transparent nav 1`] = `
   align-items: center;
   height: 52px;
   width: 100%;
-  color: white;
   z-index: 10;
 }
 
@@ -430,6 +433,7 @@ exports[`Nav renders a transparent nav 1`] = `
   width: 100%;
   text-align: center;
   font-weight: 600;
+  color: white;
 }
 
 .c5 a {
@@ -461,6 +465,7 @@ exports[`Nav renders a transparent nav 1`] = `
 <div>
   <div
     className="c0 c1"
+    color="white"
   >
     <div
       className="PartnerInline c2"
@@ -478,6 +483,7 @@ exports[`Nav renders a transparent nav 1`] = `
     </div>
     <div
       className="c5"
+      color="white"
     >
       <a
         href="/magazine"

@@ -123,6 +123,8 @@ const Title = styled.div<{ color: string }>`
   width: 100%;
   text-align: center;
   font-weight: 600;
+  color: ${props => props.color};
+
   a {
     color: ${props => props.color};
     text-decoration: none;
