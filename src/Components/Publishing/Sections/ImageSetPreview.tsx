@@ -115,13 +115,18 @@ export class ImageSetPreview extends React.PureComponent<Props, null> {
   render() {
     const image = this.props.section.layout === "full" ? this.image() : null
     return (
-      <div style={{ position: "relative", width: "100%" }}>
+      <ImageSetWrapper>
         {this.wrapper()}
         {image}
-      </div>
+      </ImageSetWrapper>
     )
   }
 }
+
+export const ImageSetWrapper = styled.div`
+  position: relative;
+  width: 100%;
+`
 
 const IconContainer = styled.div`
   height: 45px;

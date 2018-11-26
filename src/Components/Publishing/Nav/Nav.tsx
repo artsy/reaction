@@ -1,9 +1,9 @@
 import { garamond } from "Assets/Fonts"
 import { pMedia } from "Components/Helpers"
+import { PartnerInline } from "Components/Publishing/Partner/PartnerInline"
 import React from "react"
 import Waypoint from "react-waypoint"
-import styled, { StyledFunction } from "styled-components"
-import { PartnerInline } from "../Partner/PartnerInline"
+import styled from "styled-components"
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
   canFix?: boolean
@@ -13,11 +13,6 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
 }
 
 interface State {
-  isFixed: boolean
-}
-
-interface DivProps {
-  transparent: boolean
   isFixed: boolean
 }
 
@@ -70,10 +65,10 @@ export class NavComponent extends React.Component<Props, State> {
   }
 }
 
-const Div: StyledFunction<DivProps & React.HTMLProps<HTMLDivElement>> =
-  styled.div
-
-const NavContainer = Div`
+export const NavContainer = styled.div<{
+  transparent: boolean
+  isFixed: boolean
+}>`
   background-color: ${props => (props.transparent ? "transparent" : "black")};
   border-bottom: 1px solid white;
   ${props =>
@@ -82,7 +77,7 @@ const NavContainer = Div`
     `
     position: absolute;
     top: 0;
-  `}
+  `};
   ${props =>
     props.isFixed &&
     `
@@ -90,7 +85,7 @@ const NavContainer = Div`
     top: 0;
     left: 0;
     right: 0;
-  `}
+  `};
 `
 export const Nav = styled(NavComponent)`
   position: relative;
