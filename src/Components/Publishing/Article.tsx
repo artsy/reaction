@@ -14,6 +14,7 @@ import { ArticleData, DisplayData } from "./Typings"
 
 export interface ArticleProps {
   article: ArticleData
+  customEditorial?: string
   relatedArticles?: any
   relatedArticlesForPanel?: any
   relatedArticlesForCanvas?: any
