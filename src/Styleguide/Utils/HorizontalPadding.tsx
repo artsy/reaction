@@ -1,10 +1,10 @@
 import { space } from "@artsy/palette"
 import styled, { css } from "styled-components"
-import { ResponsiveSpaceValue } from "styled-system"
+import { SpaceProps } from "styled-system"
 import { media } from "Styleguide/Elements/Grid"
 
 export interface HorizontalPaddingProps {
-  px?: ResponsiveSpaceValue
+  px?: SpaceProps["px"]
 }
 
 export const HorizontalPadding = styled.div<HorizontalPaddingProps>`

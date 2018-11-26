@@ -1,17 +1,18 @@
 import { Box, Image, Serif } from "@artsy/palette"
 import React, { SFC } from "react"
+import { SpaceProps, WidthProps } from "styled-system"
 
 interface ArtistShowBlockItemProps {
   imageUrl: string
-  blockWidth: string
+  blockWidth: WidthProps["width"]
   name: string
   exhibitionInfo: string
   partner: string
   href: string
   city?: string
   // FIXME: Fix container directly by making responsive
-  pr?: number
-  pb?: number
+  pr?: SpaceProps["pr"]
+  pb?: SpaceProps["pb"]
 }
 
 export const ArtistShowBlockItem: SFC<ArtistShowBlockItemProps> = props => {

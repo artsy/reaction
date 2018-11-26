@@ -156,12 +156,39 @@ describe("Review", () => {
   })
 
   describe("Offer-mode orders", () => {
+    const offerOrder = {
+      ...OrderWithShippingDetails,
+      mode: "OFFER",
+      id: "offer-order-id",
+    }
     it("shows an active offer stepper if the order is an Offer Order", () => {
-      const offerOrder = { ...OrderWithShippingDetails, mode: "OFFER" }
       const component = getWrapper({ ...defaultProps, order: offerOrder })
       expect(component.find(ActiveTabContainer).text()).toEqual("Review")
       expect(component.find(Stepper).props().currentStepIndex).toEqual(3)
       expect(component.find(CheckMarkWrapper).length).toEqual(3)
+    })
+
+    it("shows an offer section in the shipping and payment review", () => {
+      const component = getWrapper({ ...defaultProps, order: offerOrder })
+
+      expect(component.find(StepSummaryItem).length).toEqual(3)
+
+      expect(
+        component
+          .find(StepSummaryItem)
+          .first()
+          .text()
+      ).toMatch("Your offer")
+
+      pushMock.mockReset()
+
+      component
+        .find(StepSummaryItem)
+        .first()
+        .find("a")
+        .simulate("click")
+
+      expect(pushMock).toBeCalledWith("/orders/offer-order-id/offer")
     })
   })
 })

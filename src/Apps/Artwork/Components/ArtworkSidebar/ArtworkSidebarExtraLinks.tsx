@@ -1,11 +1,20 @@
 import { Box, Sans, Spacer } from "@artsy/palette"
-import React from "react"
+import { ContextConsumer } from "Artsy/Router"
+import React, { SFC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import styled from "styled-components"
 
 import { ArtworkSidebarExtraLinks_artwork } from "__generated__/ArtworkSidebarExtraLinks_artwork.graphql"
+import { Mediator } from "Artsy/SystemContext"
+import { data as sd } from "sharify"
 
 export interface ArtworkSidebarExtraLinksProps {
   artwork: ArtworkSidebarExtraLinks_artwork
+}
+
+interface ArtworkSidebarExtraLinksContainerProps
+  extends ArtworkSidebarExtraLinksProps {
+  mediator: Mediator
 }
 
 const Container = ({ children }) => (
@@ -14,14 +23,54 @@ const Container = ({ children }) => (
   </Sans>
 )
 
-export class ArtworkSidebarExtraLinks extends React.Component<
-  ArtworkSidebarExtraLinksProps
+const Link = styled.a`
+  text-decoration: underline;
+`
+
+class ArtworkSidebarExtraLinksContainer extends React.Component<
+  ArtworkSidebarExtraLinksContainerProps
 > {
+  onClickConditionsOfSale() {
+    window.open(sd.APP_URL + "/conditions-of-sale", "_blank")
+  }
+  onClickAuctionFAQ() {
+    this.props.mediator &&
+      this.props.mediator.trigger &&
+      this.props.mediator.trigger("openAuctionFAQModal")
+  }
+  onClickBuyNowFAQ() {
+    window.open(sd.APP_URL + "/buy-now-feature-faq", "_blank")
+  }
+  onClickCollectorFAQ() {
+    this.props.mediator &&
+      this.props.mediator.trigger &&
+      this.props.mediator.trigger("openCollectorFAQModal")
+  }
+  onClickAuctionAskSpecialist() {
+    this.props.mediator &&
+      this.props.mediator.trigger &&
+      this.props.mediator.trigger("openAuctionAskSpecialistModal", {
+        artworkId: this.props.artwork.__id,
+      })
+  }
+  onClickBuyNowAskSpecialist() {
+    this.props.mediator &&
+      this.props.mediator.trigger &&
+      this.props.mediator.trigger("openBuyNowAskSpecialistModal", {
+        artworkId: this.props.artwork.__id,
+      })
+  }
+  onClickConsign() {
+    window.open(sd.APP_URL + "/consign", "_blank")
+  }
+
   renderAuctionTerms() {
     return (
       <Container>
         By placing your bid you agree to Artsy's{" "}
-        <a href="#">Conditions of Sale</a>.
+        <Link onClick={this.onClickConditionsOfSale.bind(this)}>
+          Conditions of Sale
+        </Link>.
         <Spacer mb={1} />
       </Container>
     )
@@ -29,8 +78,11 @@ export class ArtworkSidebarExtraLinks extends React.Component<
   renderAuctionQuestionsLine() {
     return (
       <Container>
-        Have a question? Read our <a href="#">auction FAQs</a> or{" "}
-        <a href="#">ask a specialist</a>.
+        Have a question? Read our{" "}
+        <Link onClick={this.onClickAuctionFAQ.bind(this)}>auction FAQs</Link> or{" "}
+        <Link onClick={this.onClickAuctionAskSpecialist.bind(this)}>
+          ask a specialist
+        </Link>.
       </Container>
     )
   }
@@ -40,15 +92,22 @@ export class ArtworkSidebarExtraLinks extends React.Component<
     if (is_acquireable)
       return (
         <Container>
-          Have a question? <a href="#">Read our FAQ</a> or{" "}
-          <a href="#">ask a specialist</a>.
+          Have a question?{" "}
+          <Link onClick={this.onClickBuyNowFAQ.bind(this)}>Read our FAQ</Link>{" "}
+          or{" "}
+          <Link onClick={this.onClickBuyNowAskSpecialist.bind(this)}>
+            ask a specialist
+          </Link>.
         </Container>
       )
 
     if (is_inquireable)
       return (
         <Container>
-          Have a question? <a href="#">Read our FAQ</a>.
+          Have a question?{" "}
+          <Link onClick={this.onClickCollectorFAQ.bind(this)}>
+            Read our FAQ
+          </Link>.
         </Container>
       )
   }
@@ -58,7 +117,7 @@ export class ArtworkSidebarExtraLinks extends React.Component<
       <Container>
         Want to sell a work by{" "}
         {artistsCount === 1 ? "this artist" : "these artists"}?{" "}
-        <a href="#">Learn more</a>.
+        <Link onClick={this.onClickConsign.bind(this)}>Learn more</Link>.
       </Container>
     )
   }
@@ -71,7 +130,6 @@ export class ArtworkSidebarExtraLinks extends React.Component<
     const isInOpenAuction =
       artwork.is_in_auction && artwork.sale && !artwork.sale.is_closed
     const renderQuestionsLine = artwork.is_for_sale || isInOpenAuction
-
     if (!renderQuestionsLine && !!!consignableArtistsCount) return null
 
     return (
@@ -86,6 +144,18 @@ export class ArtworkSidebarExtraLinks extends React.Component<
       </Box>
     )
   }
+}
+
+export const ArtworkSidebarExtraLinks: SFC<
+  ArtworkSidebarExtraLinksProps
+> = props => {
+  return (
+    <ContextConsumer>
+      {({ mediator }) => (
+        <ArtworkSidebarExtraLinksContainer {...props} mediator={mediator} />
+      )}
+    </ContextConsumer>
+  )
 }
 
 export const ArtworkSidebarExtraLinksFragmentContainer = createFragmentContainer(

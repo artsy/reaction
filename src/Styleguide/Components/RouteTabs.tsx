@@ -1,25 +1,15 @@
-import { color, Flex, Sans, space } from "@artsy/palette"
+import { color, Sans, space } from "@artsy/palette"
 import { PreloadLink, PreloadLinkProps } from "Artsy/Router"
 import React from "react"
 import styled from "styled-components"
-import { styles } from "./Tabs"
+import { styles, TabsContainer } from "./Tabs"
 
-export const RouteTabs = styled(Flex)`
-  ${styles.tabsContainer};
-
-  ${(props: { size: string }) => {
-    if (props.size === "xs") {
-      return `
-        -webkit-overflow-scrolling: touch;
-        overflow-x: scroll;
-        overflow-y: hidden;
-      `
-    }
-  }};
-
+export const RouteTabs = styled(TabsContainer)`
   a {
     ${styles.tabContainer};
-    margin-right: ${space(3)}px;
+    :not(:last-child) {
+      margin-right: ${space(3)}px;
+    }
     color: ${color("black30")};
     text-decoration: none;
 

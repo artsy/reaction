@@ -1,5 +1,4 @@
 export * from "./DeprecatedResponsive"
-import * as theme from "@artsy/palette"
 import { createMedia } from "@artsy/react-responsive-media"
 
 // TODO: We need this to be 0-based, whereas currently in palette xs is defined
@@ -17,13 +16,16 @@ const newThemeBreakpoints = {
 const ReactionMedia = createMedia({
   breakpoints: newThemeBreakpoints,
   interactions: {
-    // TODO: Haven’t actually tested this negated version yet
-    hover: negated =>
-      negated
-        ? `not all and ${theme.themeProps.mediaQueries.hover}`
-        : theme.themeProps.mediaQueries.hover,
+    // TODO: These should go into palette
+    hover: "(pointer: coarse), (-moz-touch-enabled: 1)",
+    notHover:
+      "not all and (pointer: coarse), not all and (-moz-touch-enabled: 1)",
   },
 })
 
 export const Media = ReactionMedia.Media
 export const MediaContextProvider = ReactionMedia.MediaContextProvider
+export const createMediaStyle = ReactionMedia.createMediaStyle
+export const SortedBreakpoints = ReactionMedia.SortedBreakpoints
+export const findBreakpointsForWidth = ReactionMedia.findBreakpointsForWidth
+export const valuesWithBreakpointProps = ReactionMedia.valuesWithBreakpointProps

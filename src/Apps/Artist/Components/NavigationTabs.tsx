@@ -1,3 +1,4 @@
+import { Flex } from "@artsy/palette"
 import { NavigationTabs_artist } from "__generated__/NavigationTabs_artist.graphql"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
@@ -6,7 +7,6 @@ import { Mediator } from "Artsy/SystemContext"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { RouteTab, RouteTabs } from "Styleguide/Components"
-import { Media } from "Utils/Responsive"
 
 interface Props {
   artist: NavigationTabs_artist
@@ -52,19 +52,16 @@ export class NavigationTabs extends React.Component<Props> {
     )
   }
 
-  renderTabs(breakpoint?: string) {
+  renderTabs() {
     const {
       artist: { id, statuses },
       mediator,
     } = this.props
 
     const route = path => `/artist/${id}${path}`
-    const xs = breakpoint === "xs"
 
     return (
       <>
-        {xs && <span style={{ paddingLeft: 20 }} />}
-
         {this.renderTab("Overview", route(""), {
           exact: true,
           mediator,
@@ -91,16 +88,9 @@ export class NavigationTabs extends React.Component<Props> {
   render() {
     return (
       <>
-        <Media at="xs">
-          <RouteTabs mx={-4} size={"xs"}>
-            {this.renderTabs("xs")}
-          </RouteTabs>
-        </Media>
-        <Media greaterThan="xs">
-          <RouteTabs mx={0} size={null}>
-            {this.renderTabs()}
-          </RouteTabs>
-        </Media>
+        <Flex mx={[-2, 0]}>
+          <RouteTabs>{this.renderTabs()}</RouteTabs>
+        </Flex>
       </>
     )
   }
