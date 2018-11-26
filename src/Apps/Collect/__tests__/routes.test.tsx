@@ -44,6 +44,7 @@ describe("Routes", () => {
 
     it("sends correct default variables for query", () => {
       expect(route.prepareVariables(params, {})).toEqual({
+        marketable: true,
         sort: "-decayed_merch",
       })
     })
@@ -58,6 +59,7 @@ describe("Routes", () => {
       }
 
       expect(route.prepareVariables(params, props)).toEqual({
+        marketable: true,
         sort: "-published_at",
       })
     })
