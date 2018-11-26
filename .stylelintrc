@@ -1,11 +1,16 @@
 {
   "processors": ["stylelint-processor-styled-components"],
-  "extends": "stylelint-config-standard",
+  "extends": [ 
+    "stylelint-config-standard",
+    "stylelint-config-styled-components"
+  ],
   "syntax": "scss",
   "rules": {
     "property-no-unknown": [true, { "ignoreProperties": ["resize-mode"] }],
     "block-opening-brace-space-after": null,
     "block-closing-brace-space-before": null,
+    "declaration-colon-newline-after": null,
+    "value-list-comma-newline-after": null,
     "declaration-block-no-redundant-longhand-properties": null,
     "color-hex-length": null,
     "block-no-empty": null
