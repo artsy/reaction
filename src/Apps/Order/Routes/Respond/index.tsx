@@ -8,6 +8,7 @@ import {
 } from "@artsy/palette"
 import { Respond_order } from "__generated__/Respond_order.graphql"
 import { Helper } from "Apps/Order/Components/Helper"
+import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { Input } from "Components/Input"
@@ -22,10 +23,13 @@ import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
+import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "../../Components/ArtworkSummaryItem"
+import { CreditCardSummaryItemFragmentContainer as CreditCardSummaryItem } from "../../Components/CreditCardSummaryItem"
 import {
   counterofferFlowSteps,
   OrderStepper,
 } from "../../Components/OrderStepper"
+import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "../../Components/ShippingSummaryItem"
 
 export interface RespondProps {
   order: Respond_order
@@ -111,9 +115,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                   <StepSummaryItem>
                     <Placeholder name="Offer history" />
                   </StepSummaryItem>
-                  <StepSummaryItem>
-                    <Placeholder name="Transaction Details" />
-                  </StepSummaryItem>
+                  <TransactionDetailsSummaryItem order={order} />
                 </Flex>
                 <Spacer mb={[2, 3]} />
                 <RadioGroup
@@ -167,15 +169,9 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
             Sidebar={
               <Flex flexDirection="column">
                 <Flex flexDirection="column">
-                  <StepSummaryItem>
-                    <Placeholder name="Artwork summary" />
-                  </StepSummaryItem>
-                  <StepSummaryItem>
-                    <Placeholder name="Shipping summary" />
-                  </StepSummaryItem>
-                  <StepSummaryItem>
-                    <Placeholder name="Transaction details" />
-                  </StepSummaryItem>
+                  <ArtworkSummaryItem order={order} />
+                  <ShippingSummaryItem order={order} locked />
+                  <CreditCardSummaryItem order={order} locked />
                 </Flex>
                 <Spacer mb={[2, 3]} />
                 <Helper artworkId={artwork.id} />
@@ -235,6 +231,10 @@ export const RespondFragmentContainer = createFragmentContainer(
           }
         }
       }
+      ...TransactionDetailsSummaryItem_order
+      ...ArtworkSummaryItem_order
+      ...ShippingSummaryItem_order
+      ...CreditCardSummaryItem_order
     }
   `
 )

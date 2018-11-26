@@ -1,13 +1,15 @@
 import { Button, Flex, Join, Sans, Spacer } from "@artsy/palette"
 import { Review_order } from "__generated__/Review_order.graphql"
 import { ReviewSubmitOrderMutation } from "__generated__/ReviewSubmitOrderMutation.graphql"
+import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
 import { ItemReviewFragmentContainer as ItemReview } from "Apps/Order/Components/ItemReview"
 import {
   buyNowFlowSteps,
   offerFlowSteps,
   OrderStepper,
 } from "Apps/Order/Components/OrderStepper"
-import { ShippingAndPaymentReviewFragmentContainer as ShippingAndPaymentReview } from "Apps/Order/Components/ShippingAndPaymentReview"
+import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "Apps/Order/Components/ShippingSummaryItem"
+import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
@@ -25,8 +27,9 @@ import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
+import { CreditCardSummaryItemFragmentContainer as CreditCardSummaryItem } from "../../Components/CreditCardSummaryItem"
 import { Helper } from "../../Components/Helper"
-import { TransactionSummaryFragmentContainer as TransactionSummary } from "../../Components/TransactionSummary"
+import { OfferSummaryItemFragmentContainer as OfferSummaryItem } from "../../Components/OfferSummaryItem"
 import { TwoColumnLayout } from "../../Components/TwoColumnLayout"
 
 export interface ReviewProps {
@@ -198,15 +201,15 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
     })
   }
 
-  onChangeOffer() {
+  onChangeOffer = () => {
     this.props.router.push(`/orders/${this.props.order.id}/offer`)
   }
 
-  onChangePayment() {
+  onChangePayment = () => {
     this.props.router.push(`/orders/${this.props.order.id}/payment`)
   }
 
-  onChangeShipping() {
+  onChangeShipping = () => {
     this.props.router.push(`/orders/${this.props.order.id}/shipping`)
   }
 
@@ -238,14 +241,23 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
             Content={
               <>
                 <Join separator={<Spacer mb={3} />}>
-                  <ShippingAndPaymentReview
-                    order={order}
-                    onChangePayment={this.onChangePayment.bind(this)}
-                    onChangeShipping={this.onChangeShipping.bind(this)}
-                    onChangeOffer={this.onChangeOffer.bind(this)}
-                    mb={[2, 3]}
-                  />
-
+                  <Flex flexDirection="column" mb={[2, 3]}>
+                    {order.mode === "OFFER" && (
+                      <OfferSummaryItem
+                        order={order}
+                        onChange={this.onChangeOffer}
+                      />
+                    )}
+                    <ShippingSummaryItem
+                      order={order}
+                      onChange={this.onChangeShipping}
+                    />
+                    <CreditCardSummaryItem
+                      order={order}
+                      onChange={this.onChangePayment}
+                      title="Payment method"
+                    />
+                  </Flex>
                   <Media greaterThan="xs">
                     <ItemReview
                       artwork={order.lineItems.edges[0].node.artwork}
@@ -277,7 +289,11 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
             }
             Sidebar={
               <Flex flexDirection="column">
-                <TransactionSummary order={order} mb={[2, 3]} />
+                <Flex flexDirection="column">
+                  <ArtworkSummaryItem order={order} />
+                  <TransactionDetailsSummaryItem order={order} />
+                </Flex>
+                <Spacer mb={[2, 3]} />
                 <Media greaterThan="xs">
                   <Helper
                     artworkId={order.lineItems.edges[0].node.artwork.id}
@@ -353,8 +369,11 @@ export const ReviewFragmentContainer = createFragmentContainer(
           }
         }
       }
-      ...TransactionSummary_order
-      ...ShippingAndPaymentReview_order
+      ...ArtworkSummaryItem_order
+      ...TransactionDetailsSummaryItem_order
+      ...ShippingSummaryItem_order
+      ...CreditCardSummaryItem_order
+      ...OfferSummaryItem_order
     }
   `
 )
