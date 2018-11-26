@@ -40,6 +40,7 @@ import {
 import { injectStripe, ReactStripeElements } from "react-stripe-elements"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
+import { ErrorWithMetadata } from "Utils/errors"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
 
@@ -317,11 +318,15 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
               creditCardId: creditCardOrError.creditCard.id,
             })
           } else {
-            this.onMutationError(
-              errors || creditCardOrError.mutationError,
-              creditCardOrError.mutationError &&
-                creditCardOrError.mutationError.detail
-            )
+            if (errors) {
+              errors.forEach(this.onMutationError.bind(this))
+            } else {
+              const mutationError = creditCardOrError.mutationError
+              this.onMutationError(
+                new ErrorWithMetadata(mutationError.message, mutationError),
+                mutationError.detail
+              )
+            }
           }
         },
         onError: this.onMutationError.bind(this),
@@ -368,7 +373,14 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
           if (orderOrError.order) {
             this.props.router.push(`/orders/${this.props.order.id}/review`)
           } else {
-            this.onMutationError(errors || orderOrError)
+            if (errors) {
+              errors.forEach(this.onMutationError.bind(this))
+            } else {
+              const orderError = orderOrError.error
+              this.onMutationError(
+                new ErrorWithMetadata(orderError.code, orderError)
+              )
+            }
           }
         },
         onError: this.onMutationError.bind(this),
@@ -413,8 +425,8 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
     )
   }
 
-  private onMutationError(errors, errorModalMessage?) {
-    logger.error(errors)
+  private onMutationError(error, errorModalMessage?) {
+    logger.error(error)
     this.setState({
       isCommittingMutation: false,
       isErrorModalOpen: true,
