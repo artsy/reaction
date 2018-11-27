@@ -1,7 +1,7 @@
 import { BorderBox, Box, Button, Collapse, Flex, Spacer } from "@artsy/palette"
 import { storiesOf } from "@storybook/react"
 import React from "react"
-import { WebCollapse } from "../WebCollapse"
+import { StaticCollapse } from "../StaticCollapse"
 
 class CollapseStory extends React.Component {
   state = { open: true }
@@ -19,9 +19,9 @@ class CollapseStory extends React.Component {
           <Spacer mb={4} />
           <Flex alignItems="flex-start">
             <BorderBox width="300px" flexDirection="column">
-              <WebCollapse open={this.state.open}>
-                <Box>Hello I am some content inside WebCollapse</Box>
-              </WebCollapse>
+              <StaticCollapse open={this.state.open}>
+                <Box>Hello I am some content inside StaticCollapse</Box>
+              </StaticCollapse>
             </BorderBox>
             <Spacer ml={4} />
             <BorderBox width="300px" flexDirection="column">
@@ -36,4 +36,4 @@ class CollapseStory extends React.Component {
   }
 }
 
-storiesOf("WebCollapse", module).add("Collapses", () => <CollapseStory />)
+storiesOf("StaticCollapse", module).add("Collapses", () => <CollapseStory />)

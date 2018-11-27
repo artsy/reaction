@@ -13,7 +13,7 @@ import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { Input } from "Components/Input"
 import { ErrorModal } from "Components/Modal/ErrorModal"
-import { WebCollapse } from "Components/WebCollapse"
+import { StaticCollapse } from "Components/StaticCollapse"
 import { Router } from "found"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql, RelayProp } from "react-relay"
@@ -131,7 +131,9 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
 
                   <BorderedRadio value="COUNTER">
                     Send a counteroffer
-                    <WebCollapse open={this.state.responseOption === "COUNTER"}>
+                    <StaticCollapse
+                      open={this.state.responseOption === "COUNTER"}
+                    >
                       <Spacer mb={2} />
                       <Input
                         id="RespondForm_RespondValue"
@@ -147,18 +149,20 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                         }
                         block
                       />
-                    </WebCollapse>
+                    </StaticCollapse>
                   </BorderedRadio>
                   <BorderedRadio value="DECLINE">
                     Decline seller's offer
-                    <WebCollapse open={this.state.responseOption === "DECLINE"}>
+                    <StaticCollapse
+                      open={this.state.responseOption === "DECLINE"}
+                    >
                       <Spacer mb={1} />
                       <Sans size="2" color="black60">
                         Declining an offer permanently ends the negotiation
                         process. The seller will not be able to make a
                         counteroffer.
                       </Sans>
-                    </WebCollapse>
+                    </StaticCollapse>
                   </BorderedRadio>
                 </RadioGroup>
                 <Spacer mb={3} />

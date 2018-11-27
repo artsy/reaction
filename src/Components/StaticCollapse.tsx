@@ -1,6 +1,7 @@
 import React from "react"
 
-export class WebCollapse extends React.Component<{ open: boolean }> {
+export class StaticCollapse extends React.Component<{ open: boolean }> {
+  wrapperModifyTimeout: ReturnType<typeof setTimeout>
   wrapperRef: HTMLDivElement | null = null
   onTransitionEnd = () => {
     if (!this.wrapperRef) {
@@ -27,17 +28,21 @@ export class WebCollapse extends React.Component<{ open: boolean }> {
       this.wrapperRef.style.height = "auto"
       const actualHeight = this.wrapperRef.offsetHeight
       this.wrapperRef.style.height = "0px"
-      setTimeout(() => {
+      this.wrapperModifyTimeout = setTimeout(() => {
         this.wrapperRef.style.height = actualHeight + "px"
       }, 10)
     } else if (!this.props.open && this.wrapperRef.style.height !== "0px") {
       // close
       const actualHeight = this.wrapperRef.offsetHeight
       this.wrapperRef.style.height = actualHeight + "px"
-      setTimeout(() => {
+      this.wrapperModifyTimeout = setTimeout(() => {
         this.wrapperRef.style.height = 0 + "px"
       }, 10)
     }
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.wrapperModifyTimeout)
   }
 
   render() {
