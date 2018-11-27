@@ -19,6 +19,7 @@ export interface VideoPlayerProps extends React.HTMLProps<HTMLDivElement> {
   notifyPlayToggle?: (e) => void
   forcePlay?: boolean
   tracking?: TrackingProp
+  loadedMetadata?: (event: CustomEvent) => void
 }
 
 export interface VideoPlayerState {
@@ -76,6 +77,7 @@ export class VideoPlayer extends Component<VideoPlayerProps, VideoPlayerState> {
     }
 
     this.video.removeEventListener("timeupdate", this.updateTime)
+    this.video.removeEventListener("loadedmetadata", this.setDuration)
 
     document.removeEventListener("mousemove", this.resetTimer)
     document.removeEventListener("keypress", this.resetTimer)
@@ -106,6 +108,10 @@ export class VideoPlayer extends Component<VideoPlayerProps, VideoPlayerState> {
   }
 
   setDuration = e => {
+    if (this.props.loadedMetadata) {
+      this.props.loadedMetadata(e)
+    }
+
     this.setState({
       duration: e.target.duration,
     })
