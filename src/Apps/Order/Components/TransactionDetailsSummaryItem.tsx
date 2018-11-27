@@ -20,76 +20,49 @@ export class TransactionDetailsSummaryItem extends React.Component<
   TransactionDetailsSummaryItemProps
 > {
   render() {
-    const {
-      offerOverride,
-      order: { mode, myLastOffer },
-      order,
-      ...others
-    } = this.props
+    const { offerOverride, order, ...others } = this.props
     return (
       <StackableBorderBox flexDirection="column" {...others}>
-        {mode === "OFFER"
-          ? this.offerTotalsComponent(order, myLastOffer, offerOverride)
-          : this.orderTotalsComponent(order)}
+        {/* TODO: Seller's offer / Your offer (/ Buyer's offer? Will sellers see this component?) */}
+        {this.priceDisplayComponent(order, offerOverride)}
+        <Spacer mb={2} />
+        <Entry label="Shipping" value={this.shippingDisplayAmount(order)} />
+
+        <Entry label="Tax" value={this.taxDisplayAmount(order)} />
+        <Spacer mb={2} />
+        <Entry label="Total" value={order.buyerTotal} final />
       </StackableBorderBox>
     )
   }
 
-  private offerTotalsComponent = (order, offer, offerOverride) => {
-    return (
-      <>
-        {/* TODO: Seller's offer / Your offer (/ Buyer's offer? Will sellers see this component?) */}
-        <Entry label="Your offer" value={offerOverride || offer.amount} />
-        <SecondaryEntry label="List price" value={order.totalListPrice} />
-        <Spacer mb={2} />
-        <Entry
-          label="Shipping"
-          value={
-            this.formattedAmount(
-              offer.shippingTotal,
-              offer.shippingTotalCents
-            ) || "—"
-          }
-        />
-        <Entry
-          label="Tax"
-          value={
-            this.formattedAmount(offer.taxTotal, offer.taxTotalCents) || "—"
-          }
-        />
-        <Spacer mb={2} />
-        <Entry
-          label="Total"
-          value={
-            offer.taxTotalCents + offer.shippingTotalCents + offer.amountCents
-          }
-          final
-        />
-      </>
-    )
+  private shippingDisplayAmount = order => {
+    return order.mode === "BUY"
+      ? this.formattedAmount(order.shippingTotal, order.shippingTotalCents) ||
+          "—"
+      : this.formattedAmount(
+          order.myLastOffer.shippingTotal,
+          order.myLastOffer.shippingTotalCents
+        ) || "—"
+  }
+  private taxDisplayAmount = order => {
+    return order.mode === "BUY"
+      ? this.formattedAmount(order.taxTotal, order.taxTotalCents) || "—"
+      : this.formattedAmount(
+          order.myLastOffer.taxTotal,
+          order.myLastOffer.taxTotalCents
+        ) || "—"
   }
 
-  private orderTotalsComponent = order => {
-    return (
+  private priceDisplayComponent = (order, offerOverride) => {
+    return order.mode === "BUY" ? (
+      <Entry label="Price" value={order.itemsTotal} />
+    ) : (
       <>
-        <Entry label="Price" value={order.itemsTotal} />
         <Entry
-          label="Shipping"
-          value={
-            this.formattedAmount(
-              order.shippingTotal,
-              order.shippingTotalCents
-            ) || "—"
-          }
+          label="Your offer"
+          value={offerOverride || order.myLastOffer.amount}
         />
-        <Entry
-          label="Tax"
-          value={
-            this.formattedAmount(order.taxTotal, order.taxTotalCents) || "—"
-          }
-        />
-        <Spacer mb={2} />
-        <Entry label="Total" value={order.buyerTotal} final />
+        <SecondaryEntry label="List price" value={order.totalListPrice} />
       </>
     )
   }
