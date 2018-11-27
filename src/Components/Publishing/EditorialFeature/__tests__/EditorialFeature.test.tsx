@@ -34,14 +34,14 @@ describe("EditorialFeature", () => {
     expect(component.find(FeatureLayout)).toBeTruthy()
   })
 
-  it("Renders template for EOY_2018_1 article", () => {
-    props.customEditorial = "EOY_2018_1"
+  it("Renders template for EOY_2018_ARTISTS article", () => {
+    props.customEditorial = "EOY_2018_ARTISTS"
     const component = getWrapper(props)
     expect(component.find(Eoy2018Artists)).toBeTruthy()
   })
 
-  it("Renders template for EOY_2018_2 article", () => {
-    props.customEditorial = "EOY_2018_2"
+  it("Renders template for EOY_2018_CULTURE article", () => {
+    props.customEditorial = "EOY_2018_CULTURE"
     const component = getWrapper(props)
     expect(component.find(Eoy2018Culture)).toBeTruthy()
   })

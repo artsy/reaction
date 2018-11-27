@@ -38,6 +38,7 @@ mutation ReviewSubmitOrderMutation(
       __typename
       ... on OrderWithMutationSuccess {
         order {
+          __typename
           state
           __id: id
         }
@@ -110,42 +111,32 @@ v2 = {
   ]
 },
 v3 = {
-  "kind": "InlineFragment",
-  "type": "OrderWithMutationSuccess",
-  "selections": [
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "order",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "Order",
-      "plural": false,
-      "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "state",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": "__id",
-          "name": "id",
-          "args": null,
-          "storageKey": null
-        }
-      ]
-    }
-  ]
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "state",
+  "args": null,
+  "storageKey": null
+},
+v4 = {
+  "kind": "ScalarField",
+  "alias": "__id",
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v5 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__typename",
+  "args": null,
+  "storageKey": null
 };
 return {
   "kind": "Request",
   "operationKind": "mutation",
   "name": "ReviewSubmitOrderMutation",
   "id": null,
-  "text": "mutation ReviewSubmitOrderMutation(\n  $input: SubmitOrderInput!\n) {\n  ecommerceSubmitOrder(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        order {\n          state\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation ReviewSubmitOrderMutation(\n  $input: SubmitOrderInput!\n) {\n  ecommerceSubmitOrder(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        order {\n          __typename\n          state\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -173,7 +164,25 @@ return {
             "plural": false,
             "selections": [
               v2,
-              v3
+              {
+                "kind": "InlineFragment",
+                "type": "OrderWithMutationSuccess",
+                "selections": [
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "order",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": null,
+                    "plural": false,
+                    "selections": [
+                      v3,
+                      v4
+                    ]
+                  }
+                ]
+              }
             ]
           }
         ]
@@ -203,15 +212,28 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "__typename",
-                "args": null,
-                "storageKey": null
-              },
+              v5,
               v2,
-              v3
+              {
+                "kind": "InlineFragment",
+                "type": "OrderWithMutationSuccess",
+                "selections": [
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "order",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": null,
+                    "plural": false,
+                    "selections": [
+                      v5,
+                      v3,
+                      v4
+                    ]
+                  }
+                ]
+              }
             ]
           }
         ]

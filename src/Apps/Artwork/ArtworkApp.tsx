@@ -3,7 +3,6 @@ import { ArtworkApp_artwork } from "__generated__/ArtworkApp_artwork.graphql"
 import React from "react"
 import { LazyLoadComponent } from "react-lazy-load-image-component"
 import { createFragmentContainer, graphql } from "react-relay"
-// import { FullArtworkGrid, Tab, Tabs } from "Styleguide/Components"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { ArtistInfoQueryRenderer as ArtistInfo } from "./Components/ArtistInfo"
@@ -12,8 +11,8 @@ import { ArtworkBannerFragmentContainer as ArtworkBanner } from "./Components/Ar
 import { ArtworkDetailsFragmentContainer as ArtworkDetails } from "./Components/ArtworkDetails"
 import { ArtworkImagesFragmentContainer as ArtworkImages } from "./Components/ArtworkImages"
 import { ArtworkSidebarFragmentContainer as ArtworkSidebar } from "./Components/ArtworkSidebar"
-
-// import { OtherWorks } from "./Components/OtherWorks"
+// import { FullArtworkGrid, Tab, Tabs } from "Styleguide/Components"
+// import { OtherWorksQueryRenderer as OtherWorks } from "./Components/OtherWorks"
 
 import {
   Footer,
@@ -54,6 +53,12 @@ export const ArtworkApp: React.SFC<Props> = props => {
           </Col>
         </Row>
       )}
+
+      <Row>
+        <Col>
+          <Box mt={6}>{/* <OtherWorks artworkID={props.artwork.id} /> */}</Box>
+        </Col>
+      </Row>
 
       {typeof window !== "undefined" && (
         <LazyLoadComponent threshold={1000}>
