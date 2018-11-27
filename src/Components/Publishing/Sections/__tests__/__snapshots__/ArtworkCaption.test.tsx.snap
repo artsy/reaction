@@ -16,7 +16,7 @@ exports[`ArtworkCaption snapshot renders a classic caption properly 1`] = `
   font-weight: bold;
 }
 
-.c0 .ArtworkCaption__ArtistNames-t0bcvj-0:after {
+.c0 .ArtworkCaption__ArtistNames-t0bcvj-0::after {
   content: ", ";
 }
 
@@ -56,6 +56,14 @@ exports[`ArtworkCaption snapshot renders a fullscreen caption properly 1`] = `
   color: black;
 }
 
+.c0 a {
+  color: black;
+  font-family: Unica77LLWebMedium,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
 .c0 .title {
   font-family: Unica77LLWebMediumItalic,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -66,14 +74,6 @@ exports[`ArtworkCaption snapshot renders a fullscreen caption properly 1`] = `
 .c0 .title,
 .c0 .title a {
   font-family: Unica77LLWebMediumItalic,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-.c0 a {
-  color: black;
-  font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -177,14 +177,6 @@ exports[`ArtworkCaption snapshot renders a standard caption properly 1`] = `
   line-height: 1.4em;
 }
 
-.c0 .title,
-.c0 .title a {
-  font-family: Unica77LLWebItalic,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
-}
-
 .c0 a {
   color: #999999;
   font-family: Unica77LLWebRegular,Arial,serif;
@@ -193,12 +185,20 @@ exports[`ArtworkCaption snapshot renders a standard caption properly 1`] = `
   line-height: 1.4em;
 }
 
-.iKwEjk .c1 {
+.c0 .title,
+.c0 .title a {
+  font-family: Unica77LLWebItalic,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.4em;
+}
+
+.CQPVJ .c1 {
   margin-right: 0;
   font-weight: bold;
 }
 
-.iKwEjk .c1:after {
+.CQPVJ .c1::after {
   content: ", ";
 }
 

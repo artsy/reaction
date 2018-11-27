@@ -39,7 +39,7 @@ export const StyledAuthor = styled.div.attrs<{
 
 const bullet = (color, condensed = false) => {
   return `
-    &:before {
+    &::before {
       content: "";
       display: inline-block;
       width: 8px;

@@ -104,16 +104,18 @@ const InstantArticleEmailContainer = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 500px;
-  padding: 30px 0px;
-  margin: 0px 20px;
+  padding: 30px 0;
+  margin: 0 20px;
   border-top: 1px solid ${Colors.grayRegular};
   border-bottom: 1px solid ${Colors.grayRegular};
 `
 const Title = styled.div`
-  ${Fonts.garamond("s23")} margin-bottom: 30px;
+  ${Fonts.garamond("s23")};
+  margin-bottom: 30px;
 `
 const Subtitle = styled.div`
-  ${Fonts.avantgarde("s11")} margin-bottom: 10px;
+  ${Fonts.avantgarde("s11")};
+  margin-bottom: 10px;
 `
 const StyledButton = styled(InvertedButton)`
   border-radius: 2px;

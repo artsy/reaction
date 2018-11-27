@@ -14,6 +14,7 @@ import { Layout } from "./Layout"
 const OptionsContainer = styled.div`
   width: 450px;
   margin: 0 auto 100px;
+
   &:last-child {
     border-bottom: 1px solid ${Colors.grayRegular};
   }

@@ -73,6 +73,7 @@ const HeaderTextContainer = styled.div.attrs<{ hasLogos?: boolean }>({})`
   display: flex;
   flex-direction: column;
   justify-content: ${props => (props.hasLogos ? "space-between" : "flex-end")};
+
   .PartnerInline {
     position: relative;
   }

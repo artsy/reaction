@@ -20,7 +20,7 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
   margin: 10px 20px 0 0;
 }
 
-.c8:before {
+.c8::before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -308,7 +308,7 @@ exports[`Standard Header Snapshots renders properly 1`] = `
   margin: 10px 20px 0 0;
 }
 
-.c7:before {
+.c7::before {
   content: "";
   display: inline-block;
   width: 8px;

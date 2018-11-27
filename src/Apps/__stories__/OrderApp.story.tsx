@@ -178,6 +178,16 @@ storiesOf("Apps/Order Page/Make Offer/Review", module).add("Review", () => (
   />
 ))
 
+storiesOf("Apps/Order Page/Counter Offer", module).add("Respond", () => (
+  <Router
+    initialRoute="/orders/123/respond"
+    mockResolvers={mockResolver({
+      ...OrderWithShippingDetails,
+      mode: "OFFER",
+    })}
+  />
+))
+
 storiesOf("Apps/Order Page/Make Offer/Status", module)
   .add("submitted (ship)", () => (
     <Router

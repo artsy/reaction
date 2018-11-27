@@ -126,7 +126,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   text-align: center;
 }
 
-.c6 h1:before {
+.c6 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -207,7 +207,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   background: none transparent;
 }
 
-.c6 .artist-follow:before {
+.c6 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -215,7 +215,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   font-size: 32px;
 }
 
-.c6 .artist-follow:after {
+.c6 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -539,7 +539,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   text-align: center;
 }
 
-.c6 h1:before {
+.c6 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -620,7 +620,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   background: none transparent;
 }
 
-.c6 .artist-follow:before {
+.c6 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -628,7 +628,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   font-size: 32px;
 }
 
-.c6 .artist-follow:after {
+.c6 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -945,7 +945,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   text-align: center;
 }
 
-.c6 h1:before {
+.c6 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -1026,7 +1026,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   background: none transparent;
 }
 
-.c6 .artist-follow:before {
+.c6 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -1034,7 +1034,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   font-size: 32px;
 }
 
-.c6 .artist-follow:after {
+.c6 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -1380,7 +1380,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   text-align: center;
 }
 
-.c10 h1:before {
+.c10 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -1461,7 +1461,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   background: none transparent;
 }
 
-.c10 .artist-follow:before {
+.c10 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -1469,7 +1469,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   font-size: 32px;
 }
 
-.c10 .artist-follow:after {
+.c10 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;

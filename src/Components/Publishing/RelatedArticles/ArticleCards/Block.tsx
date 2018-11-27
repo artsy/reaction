@@ -58,6 +58,7 @@ ArticleCardsBlock.defaultProps = {
 
 export const ArticleCardsContainer = styled.div`
   color: ${props => props.color};
+
   ${MaxRow} {
     margin: auto;
   }

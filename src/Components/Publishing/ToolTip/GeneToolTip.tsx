@@ -78,6 +78,7 @@ export class GeneToolTip extends React.Component<GeneProps> {
 
 const Wrapper = styled.div`
   width: 240px;
+
   a:hover {
     color: black;
   }
@@ -107,6 +108,7 @@ export const ToolTipFooter = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   ${NewFeatureContainer} {
     display: flex;
     flex-direction: column;

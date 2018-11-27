@@ -97,7 +97,7 @@ exports[`SectionContainer Snapshots renders column_width properly 1`] = `
   text-align: center;
 }
 
-.c1 h1:before {
+.c1 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -178,7 +178,7 @@ exports[`SectionContainer Snapshots renders column_width properly 1`] = `
   background: none transparent;
 }
 
-.c1 .artist-follow:before {
+.c1 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -186,7 +186,7 @@ exports[`SectionContainer Snapshots renders column_width properly 1`] = `
   font-size: 32px;
 }
 
-.c1 .artist-follow:after {
+.c1 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -382,7 +382,7 @@ exports[`SectionContainer Snapshots renders fillwidth properly 1`] = `
   text-align: center;
 }
 
-.c1 h1:before {
+.c1 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -463,7 +463,7 @@ exports[`SectionContainer Snapshots renders fillwidth properly 1`] = `
   background: none transparent;
 }
 
-.c1 .artist-follow:before {
+.c1 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -471,7 +471,7 @@ exports[`SectionContainer Snapshots renders fillwidth properly 1`] = `
   font-size: 32px;
 }
 
-.c1 .artist-follow:after {
+.c1 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -667,7 +667,7 @@ exports[`SectionContainer Snapshots renders overflow_fillwidth properly 1`] = `
   text-align: center;
 }
 
-.c1 h1:before {
+.c1 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -748,7 +748,7 @@ exports[`SectionContainer Snapshots renders overflow_fillwidth properly 1`] = `
   background: none transparent;
 }
 
-.c1 .artist-follow:before {
+.c1 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -756,7 +756,7 @@ exports[`SectionContainer Snapshots renders overflow_fillwidth properly 1`] = `
   font-size: 32px;
 }
 
-.c1 .artist-follow:after {
+.c1 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;

@@ -29,6 +29,7 @@ export const ModalCta: SFC<{
 
 const Cta = styled.div.attrs<{ isFixed?: boolean; hasImage?: boolean }>({})`
   padding: ${space(2)}px 0 ${space(3)}px 0;
+
   button {
     margin: 0;
     width: 100%;

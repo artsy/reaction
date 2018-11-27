@@ -49,7 +49,6 @@ export const Title = styled.div.attrs<{ color?: string }>({})`
   ${unica("s100")};
   margin-bottom: 75px;
   letter-spacing: -0.035em;
-
   ${pMedia.xl`
     ${unica("s80")}
   `};
@@ -86,7 +85,6 @@ export const SubContentContainer = styled.div`
   justify-content: space-between;
   align-items: flex-end;
   flex-direction: row;
-
   ${pMedia.sm`
     align-items: flex-start;
     flex-direction: column;
@@ -96,7 +94,6 @@ export const SubContentContainer = styled.div`
 export const Deck = styled(Sans)`
   max-width: 460px;
   margin-right: ${space(3)}px;
-
   ${pMedia.sm`
     margin-bottom: ${space(3)}px;
   `};

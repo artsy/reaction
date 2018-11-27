@@ -498,6 +498,7 @@ const Body = styled.div`
   ${garamond("s17")};
   line-height: 1.53em;
   margin-bottom: 20px;
+
   a {
     color: black;
   }
@@ -513,6 +514,7 @@ const VideoContainer = styled(Image)`
   overflow: hidden;
   display: flex;
   align-items: center;
+
   video {
     object-fit: cover;
     object-position: 50%;

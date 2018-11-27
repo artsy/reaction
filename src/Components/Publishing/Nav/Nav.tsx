@@ -101,6 +101,7 @@ export const Nav = styled(NavComponent)`
   width: 100%;
   color: white;
   z-index: 10;
+
   a {
     z-index: 10;
   }
@@ -111,6 +112,7 @@ const Title = styled.div`
   width: 100%;
   text-align: center;
   font-weight: 600;
+
   a {
     color: white;
     text-decoration: none;

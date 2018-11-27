@@ -65,6 +65,7 @@ const DateSourceContainer = styled.div`
   display: flex;
   ${unica("s14")};
 
+  /* stylelint-disable-next-line */
   ${pMedia.sm`
     ${unica("s12")}
   `} a {

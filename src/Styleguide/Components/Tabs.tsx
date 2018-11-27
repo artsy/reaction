@@ -231,6 +231,7 @@ const TabsOuterContainer = styled(Flex)`
   border-bottom: 1px solid ${color("black10")};
   position: relative;
   top: -1px;
+
   > div {
     position: relative;
     top: 1px;
@@ -249,7 +250,7 @@ const TabsScrollContainer = styled(Flex)`
     overflow-x: scroll;
     -webkit-overflow-scrolling: touch;
   `};
-  margin-bottom: 0px;
+  margin-bottom: 0;
 `
 
 const TabContainer = styled.div`

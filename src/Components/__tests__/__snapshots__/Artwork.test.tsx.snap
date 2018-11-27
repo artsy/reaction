@@ -57,7 +57,7 @@ exports[`Artwork renders correctly 1`] = `
   cursor: pointer;
 }
 
-.c1:before {
+.c1::before {
   content: "";
   display: block;
   padding-bottom: 100%;

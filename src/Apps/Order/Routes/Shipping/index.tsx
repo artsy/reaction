@@ -20,9 +20,14 @@ import {
   AddressTouched,
   emptyAddress,
 } from "Apps/Order/Components/AddressForm"
+import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
 import { Helper } from "Apps/Order/Components/Helper"
-import { OrderStepper } from "Apps/Order/Components/OrderStepper"
-import { TransactionSummaryFragmentContainer as TransactionSummary } from "Apps/Order/Components/TransactionSummary"
+import {
+  buyNowFlowSteps,
+  offerFlowSteps,
+  OrderStepper,
+} from "Apps/Order/Components/OrderStepper"
+import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { validatePresence } from "Apps/Order/Utils/formValidators"
 import { track } from "Artsy/Analytics"
@@ -319,7 +324,9 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
             <Col>
               <OrderStepper
                 currentStep="Shipping"
-                offerFlow={this.props.order.mode === "OFFER"}
+                steps={
+                  order.mode === "OFFER" ? offerFlowSteps : buyNowFlowSteps
+                }
               />
             </Col>
           </Row>
@@ -389,7 +396,11 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
             }
             Sidebar={
               <Flex flexDirection="column">
-                <TransactionSummary order={order} mb={[2, 3]} />
+                <Flex flexDirection="column">
+                  <ArtworkSummaryItem order={order} />
+                  <TransactionDetailsSummaryItem order={order} />
+                </Flex>
+                <Spacer mb={[2, 3]} />
                 <Helper artworkId={artwork.id} />
                 <Media at="xs">
                   <Spacer mb={3} />
@@ -458,7 +469,8 @@ export const ShippingFragmentContainer = createFragmentContainer(
           }
         }
       }
-      ...TransactionSummary_order
+      ...ArtworkSummaryItem_order
+      ...TransactionDetailsSummaryItem_order
     }
   `
 )

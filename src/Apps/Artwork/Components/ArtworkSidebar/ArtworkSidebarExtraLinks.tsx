@@ -1,12 +1,14 @@
 import { Box, Sans, Spacer } from "@artsy/palette"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import { ContextConsumer } from "Artsy/Router"
+import { Mediator } from "Artsy/SystemContext"
 import React, { SFC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { data as sd } from "sharify"
 import styled from "styled-components"
 
 import { ArtworkSidebarExtraLinks_artwork } from "__generated__/ArtworkSidebarExtraLinks_artwork.graphql"
-import { Mediator } from "Artsy/SystemContext"
-import { data as sd } from "sharify"
 
 export interface ArtworkSidebarExtraLinksProps {
   artwork: ArtworkSidebarExtraLinks_artwork
@@ -27,25 +29,57 @@ const Link = styled.a`
   text-decoration: underline;
 `
 
+@track({
+  context_module: Schema.ContextModule.Sidebar,
+})
 class ArtworkSidebarExtraLinksContainer extends React.Component<
   ArtworkSidebarExtraLinksContainerProps
 > {
+  @track(() => ({
+    action_type: Schema.ActionType.Click,
+    subject: Schema.Subject.AuctionConditionsOfSale,
+    type: Schema.Type.Link,
+  }))
   onClickConditionsOfSale() {
     window.open(sd.APP_URL + "/conditions-of-sale", "_blank")
   }
+
+  @track(() => ({
+    action_type: Schema.ActionType.Click,
+    subject: Schema.Subject.AuctionFAQ,
+    type: Schema.Type.Link,
+  }))
   onClickAuctionFAQ() {
     this.props.mediator &&
       this.props.mediator.trigger &&
       this.props.mediator.trigger("openAuctionFAQModal")
   }
+
+  @track(() => ({
+    action_type: Schema.ActionType.Click,
+    subject: Schema.Subject.BNMOReadFAQ,
+    type: Schema.Type.Link,
+  }))
   onClickBuyNowFAQ() {
     window.open(sd.APP_URL + "/buy-now-feature-faq", "_blank")
   }
+
+  @track(() => ({
+    action_type: Schema.ActionType.Click,
+    subject: Schema.Subject.CollectorFAQ,
+    type: Schema.Type.Link,
+  }))
   onClickCollectorFAQ() {
     this.props.mediator &&
       this.props.mediator.trigger &&
       this.props.mediator.trigger("openCollectorFAQModal")
   }
+
+  @track(() => ({
+    action_type: Schema.ActionType.Click,
+    subject: Schema.Subject.AuctionAskSpecialist,
+    type: Schema.Type.Link,
+  }))
   onClickAuctionAskSpecialist() {
     this.props.mediator &&
       this.props.mediator.trigger &&
@@ -53,6 +87,12 @@ class ArtworkSidebarExtraLinksContainer extends React.Component<
         artworkId: this.props.artwork.__id,
       })
   }
+
+  @track(() => ({
+    action_type: Schema.ActionType.Click,
+    subject: Schema.Subject.BNMOAskSpecialist,
+    type: Schema.Type.Link,
+  }))
   onClickBuyNowAskSpecialist() {
     this.props.mediator &&
       this.props.mediator.trigger &&
@@ -60,6 +100,12 @@ class ArtworkSidebarExtraLinksContainer extends React.Component<
         artworkId: this.props.artwork.__id,
       })
   }
+
+  @track(() => ({
+    action_type: Schema.ActionType.Click,
+    subject: Schema.Subject.ConsignLearnMore,
+    type: Schema.Type.Link,
+  }))
   onClickConsign() {
     window.open(sd.APP_URL + "/consign", "_blank")
   }

@@ -164,6 +164,7 @@ const NavItem = styled.div`
   border-bottom: 1px solid #333;
   padding: 15px 18px 10px 18px;
   text-transform: capitalize;
+
   &:hover {
     background: ${colors.grayBold};
   }

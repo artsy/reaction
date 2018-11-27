@@ -52,7 +52,7 @@ exports[`Sections snapshots renders properly 1`] = `
 
 .c43 .c44 {
   vertical-align: middle;
-  margin: 0px;
+  margin: 0;
 }
 
 .c39 {
@@ -102,17 +102,17 @@ exports[`Sections snapshots renders properly 1`] = `
   line-height: 1.4em;
 }
 
-.c17 .title,
-.c17 .title a {
-  font-family: Unica77LLWebItalic,Arial,serif;
+.c17 a {
+  color: #999999;
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
 }
 
-.c17 a {
-  color: #999999;
-  font-family: Unica77LLWebRegular,Arial,serif;
+.c17 .title,
+.c17 .title a {
+  font-family: Unica77LLWebItalic,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -498,7 +498,7 @@ exports[`Sections snapshots renders properly 1`] = `
   text-align: center;
 }
 
-.c2 h1:before {
+.c2 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -579,7 +579,7 @@ exports[`Sections snapshots renders properly 1`] = `
   background: none transparent;
 }
 
-.c2 .artist-follow:before {
+.c2 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -587,7 +587,7 @@ exports[`Sections snapshots renders properly 1`] = `
   font-size: 32px;
 }
 
-.c2 .artist-follow:after {
+.c2 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;

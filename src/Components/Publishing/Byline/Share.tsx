@@ -135,13 +135,15 @@ const IconWrapper = styled.a`
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
+
   &:hover {
     opacity: 0.6;
   }
+
   &:first-child {
     padding-left: 0;
   }
 `
 const ShareLabel = styled(Sans)`
-  margin: 5px 10px 5px 0px;
+  margin: 5px 10px 5px 0;
 `
