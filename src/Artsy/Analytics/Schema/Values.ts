@@ -164,6 +164,14 @@ export enum Subject {
   BNMOProvideShipping = "provide shipping address",
   BNMOArrangePickup = "arrange for pickup",
   BNMOUseShippingAddress = "use shipping address",
+
+  AuctionConditionsOfSale = "conditions of sale",
+  AuctionFAQ = "auction faq",
+  AuctionAskSpecialist = "ask a specialist",
+
+  CollectorFAQ = "collector faq",
+
+  ConsignLearnMore = "learn more",
 }
 
 /**
@@ -228,4 +236,5 @@ export enum Label {
 export enum Type {
   Button = "Button",
   Tab = "Tab",
+  Link = "Link",
 }
