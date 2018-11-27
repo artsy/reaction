@@ -1,8 +1,9 @@
 import { storiesOf } from "@storybook/react"
+import { FullScreenProvider } from "Components/Publishing/Sections/FullscreenViewer/FullScreenProvider"
+import { ImageSetPreview } from "Components/Publishing/Sections/ImageSetPreview"
+import { ImageSetLabel } from "Components/Publishing/Sections/ImageSetPreview/ImageSetLabel"
+import { ImageSetPreviewClassic } from "Components/Publishing/Sections/ImageSetPreview/ImageSetPreviewClassic"
 import React from "react"
-import { FullScreenProvider } from "../Sections/FullscreenViewer/FullScreenProvider"
-import { ImageSetPreview } from "../Sections/ImageSetPreview"
-import { ImageSetPreviewClassic } from "../Sections/ImageSetPreviewClassic"
 
 import {
   Images,
@@ -55,5 +56,20 @@ storiesOf("Publishing/Sections/Image Set/Editorial/Mini", module)
           <ImageSetPreview section={ImageSetMiniSansTitle} />
         </div>
       </FullScreenProvider>
+    )
+  })
+storiesOf("Publishing/Sections/Image Set/Editorial/Label", module)
+  .add("Label", () => {
+    return (
+      <div style={{ maxWidth: 680, width: "100%" }}>
+        <ImageSetLabel section={ImageSetFull} />
+      </div>
+    )
+  })
+  .add("No title", () => {
+    return (
+      <div style={{ maxWidth: 680, width: "100%" }}>
+        <ImageSetLabel section={ImageSetFullSansTitle} />
+      </div>
     )
   })

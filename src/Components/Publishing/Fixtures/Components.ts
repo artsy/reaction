@@ -4,7 +4,7 @@ import {
   RelatedArticlePanelData,
 } from "Components/Publishing/Typings"
 import { cloneDeep, extend, flatten } from "lodash"
-import { Props as ImageSetPreviewProps } from "../Sections/ImageSetPreview"
+import { ImageSetPreviewProps } from "../Sections/ImageSetPreview"
 import { SocialEmbedProps } from "../Sections/SocialEmbed"
 import { ArtistToolTipProps } from "../ToolTip/ArtistToolTip"
 import { GeneProps } from "../ToolTip/GeneToolTip"
