@@ -6,6 +6,17 @@ export const mockResolver = (orderDetails: any = OrderWithShippingDetails) => ({
   }),
   Order: (_, { id, ...others }) => {
     return {
+      __typename: "BuyOrder",
+      ...orderDetails,
+      id,
+      ...others,
+      __resolveType(obj, _context, _info) {
+        return "BuyOrder"
+      },
+    }
+  },
+  BuyOrder: (_, { id, ...others }) => {
+    return {
       ...orderDetails,
       id,
       ...others,
@@ -14,6 +25,7 @@ export const mockResolver = (orderDetails: any = OrderWithShippingDetails) => ({
 })
 
 export const UntouchedBuyOrder = {
+  __typename: "BuyOrder",
   id: "2939023",
   mode: "BUY",
   code: "abcdefg",
