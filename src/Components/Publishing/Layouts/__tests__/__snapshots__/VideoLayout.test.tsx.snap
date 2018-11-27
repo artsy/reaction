@@ -111,11 +111,11 @@ exports[`Video Layout matches the snapshot 1`] = `
   color: white;
 }
 
-.c85 {
+.c86 {
   margin: 10px 20px 0 0;
 }
 
-.c85:before {
+.c86:before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -163,7 +163,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin: 5px 10px 5px 0px;
 }
 
-.c84 {
+.c85 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -279,6 +279,10 @@ exports[`Video Layout matches the snapshot 1`] = `
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
+}
+
+.c84 {
+  display: none;
 }
 
 .c82 svg {
@@ -757,17 +761,17 @@ exports[`Video Layout matches the snapshot 1`] = `
   text-transform: none;
 }
 
-.c87 {
+.c88 {
   color: white;
   max-width: 1200px;
   width: 100%;
 }
 
-.c88 .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
+.c89 .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
   display: none;
 }
 
-.c88:first-of-type {
+.c89:first-of-type {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -781,12 +785,12 @@ exports[`Video Layout matches the snapshot 1`] = `
   flex-direction: column;
 }
 
-.c88:first-of-type .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
+.c89:first-of-type .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
   display: block;
   margin-bottom: 10px;
 }
 
-.c89 {
+.c90 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -1092,7 +1096,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   border-bottom: 2px solid;
 }
 
-.c66 .c86 {
+.c66 .c87 {
   margin: 60px 0 100px 0;
 }
 
@@ -1541,18 +1545,18 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:48em) {
-  .c88:first-of-type .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
+  .c89:first-of-type .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
     display: none;
   }
 
-  .c88 .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
+  .c89 .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
     margin-top: 60px;
     display: block;
   }
 }
 
 @media (max-width:48em) {
-  .c89 {
+  .c90 {
     margin-bottom: 20px;
   }
 }
@@ -1606,7 +1610,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:48em) {
-  .c66 .c86 {
+  .c66 .c87 {
     margin: 40px 0 100px 0;
   }
 }
@@ -1889,13 +1893,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                     The Future of Art
                   </a>
                 </div>
-                <div
-                  className="c42"
-                  fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-                  fontSize="14px"
-                >
-                  02:28
-                </div>
+                0
               </div>
               <div
                 className="c37"
@@ -2345,6 +2343,11 @@ exports[`Video Layout matches the snapshot 1`] = `
                 >
                   02:28
                 </div>
+                <video
+                  className="c84"
+                  preload="metadata"
+                  src="https://artsy-vanity-files-production.s3.amazonaws.com/videos/scenic_mono_3.mp4"
+                />
               </div>
             </div>
           </a>
@@ -2386,7 +2389,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                 </div>
               </div>
               <div
-                className="Byline c84"
+                className="Byline c85"
                 color="white"
               >
                 <div
@@ -2400,7 +2403,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                   fontSize="14px"
                 >
                   <div
-                    className="c85"
+                    className="c86"
                     color="white"
                   >
                     Casey Lesser
@@ -2440,20 +2443,20 @@ exports[`Video Layout matches the snapshot 1`] = `
       className="c35 c36 c37"
     >
       <div
-        className="c86 c87 c37"
+        className="c87 c88 c37"
         color="white"
       >
         <div
-          className="c88 c49"
+          className="c89 c49"
         >
           <div
-            className="c89"
+            className="c90"
           >
             About the Series
           </div>
         </div>
         <div
-          className="c88 c63"
+          className="c89 c63"
         >
           <div
             className="SeriesAbout__description"

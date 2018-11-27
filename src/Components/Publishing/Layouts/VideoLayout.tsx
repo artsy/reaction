@@ -21,6 +21,7 @@ interface Props {
 interface State {
   isPlaying: boolean
   hideCover: boolean
+  duration: number
 }
 
 @track(
@@ -39,6 +40,7 @@ export class VideoLayout extends Component<Props, State> {
   state = {
     isPlaying: false,
     hideCover: false,
+    duration: 0,
   }
 
   playVideo = () => {
@@ -70,12 +72,17 @@ export class VideoLayout extends Component<Props, State> {
     }
   }
 
+  onLoadedMetadata = event => {
+    this.setState({ duration: event.target.duration })
+  }
+
   render() {
     const { article, relatedArticles } = this.props
     const { media, seriesArticle } = article
     const sponsor = seriesArticle ? seriesArticle.sponsor : article.sponsor
     const seriesLink =
       seriesArticle && getEditorialHref("series", seriesArticle.slug)
+
     return (
       <VideoLayoutContainer>
         <Nav transparent sponsor={sponsor} canFix={false} />
@@ -85,10 +92,11 @@ export class VideoLayout extends Component<Props, State> {
             title={media.title}
             forcePlay={this.state.isPlaying}
             notifyPlayToggle={this.onPlayToggle}
+            loadedMetadata={this.onLoadedMetadata}
           />
           <VideoCover
             article={article}
-            media={media}
+            media={{ ...media, duration: this.state.duration }}
             seriesTitle={seriesArticle && seriesArticle.title}
             seriesLink={seriesLink}
             playVideo={this.playVideo}

@@ -363,6 +363,10 @@ exports[`ArticleCard renders an article with children properly 1`] = `
   align-items: flex-end;
 }
 
+.c12 {
+  display: none;
+}
+
 .c9 svg {
   width: 40px;
 }
@@ -513,6 +517,11 @@ exports[`ArticleCard renders an article with children properly 1`] = `
       >
         02:28
       </div>
+      <video
+        className="c12"
+        preload="metadata"
+        src="https://artsy-vanity-files-production.s3.amazonaws.com/videos/scenic_mono_3.mp4"
+      />
     </div>
   </div>
 </a>
@@ -632,6 +641,10 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
+}
+
+.c14 {
+  display: none;
 }
 
 .c11 svg {
@@ -779,6 +792,11 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
       >
         02:28
       </div>
+      <video
+        className="c14"
+        preload="metadata"
+        src="https://artsy-vanity-files-production.s3.amazonaws.com/videos/scenic_mono_3.mp4"
+      />
     </div>
   </div>
 </a>

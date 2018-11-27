@@ -192,6 +192,10 @@ exports[`ArticleCard renders properly 1`] = `
   align-items: flex-end;
 }
 
+.c26 {
+  display: none;
+}
+
 .c23 svg {
   width: 40px;
 }
@@ -499,6 +503,11 @@ exports[`ArticleCard renders properly 1`] = `
               >
                 02:28
               </div>
+              <video
+                className="c26"
+                preload="metadata"
+                src="https://artsy-vanity-files-production.s3.amazonaws.com/videos/scenic_mono_3.mp4"
+              />
             </div>
           </div>
         </a>

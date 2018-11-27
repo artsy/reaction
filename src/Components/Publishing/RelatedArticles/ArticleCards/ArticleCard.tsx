@@ -23,13 +23,23 @@ interface Props {
   tracking?: TrackingProp
 }
 
+interface ArticleCardState {
+  duration: number
+}
+
 interface LinkProps extends Props, React.HTMLProps<HTMLLinkElement> {
   published: boolean
 }
 
 @track()
-export class ArticleCard extends Component<Props, null> {
+export class ArticleCard extends Component<Props, ArticleCardState> {
+  public video: HTMLVideoElement
+
   public static defaultProps: Partial<Props>
+
+  state = {
+    duration: null,
+  }
 
   isUnpublishedMedia() {
     const { media, layout } = this.props.article
@@ -86,6 +96,7 @@ export class ArticleCard extends Component<Props, null> {
 
   renderMediaCoverInfo = () => {
     const { article, color } = this.props
+    const duration = this.state.duration || article.media.duration
 
     if (this.isUnpublishedMedia()) {
       return <MediaComingSoon>Coming Soon</MediaComingSoon>
@@ -94,8 +105,13 @@ export class ArticleCard extends Component<Props, null> {
         <MediaPlay>
           <IconVideoPlay color={color} />
           <Sans size="3t" weight="medium">
-            {formatTime(article.media.duration)}
+            {formatTime(duration)}
           </Sans>
+          <HiddenVideo
+            src={article.media.url}
+            innerRef={video => (this.video = video)}
+            preload="metadata"
+          />
         </MediaPlay>
       )
     }
@@ -112,6 +128,24 @@ export class ArticleCard extends Component<Props, null> {
       action: "Click",
       label: "Related article card",
     })
+  }
+
+  setDuration = e => {
+    this.setState({
+      duration: e.target.duration,
+    })
+  }
+
+  componentDidMount() {
+    if (this.video) {
+      this.video.addEventListener("loadedmetadata", this.setDuration)
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.video) {
+      this.video.removeEventListener("loadedmetadata", this.setDuration)
+    }
   }
 
   render() {
@@ -269,6 +303,10 @@ const Media = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+`
+
+const HiddenVideo = styled.video`
+  display: none;
 `
 
 const MediaPlay = styled(Media)`
