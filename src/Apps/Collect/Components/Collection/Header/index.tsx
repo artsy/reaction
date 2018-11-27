@@ -134,6 +134,7 @@ const Background = styled(Box)<{
   background-image: url(${props => props.headerImageUrl});
   background-size: cover;
   background-position: center;
+
   ${media.xs} {
     margin-left: -20px;
     margin-right: -20px;

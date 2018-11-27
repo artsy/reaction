@@ -25,7 +25,7 @@ exports[`MarketInsights snapshots renders correctly 1`] = `
   margin-bottom: -2px;
 }
 
-.c3:before {
+.c3::before {
   display: block;
   top: 0;
   left: 0;
@@ -41,17 +41,17 @@ exports[`MarketInsights snapshots renders correctly 1`] = `
   color: white;
 }
 
-.c3:hover:before {
+.c3:hover::before {
   visibility: hidden;
 }
 
-.c3:hover:after {
+.c3:hover::after {
   opacity: 1;
   z-index: 3;
   visibility: visible;
 }
 
-.c3:after {
+.c3::after {
   display: block;
   top: 0;
   bottom: inherit;

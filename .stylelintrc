@@ -6,7 +6,8 @@
   ],
   "syntax": "scss",
   "rules": {
-    "property-no-unknown": [true, { "ignoreProperties": ["resize-mode"] }],
+    "selector-type-no-unknown": [true, { "ignoreTypes": ["checkbox", "twitterwidget"] }],
+    "property-no-unknown": [true, { "ignoreProperties": ["resize-mode", "flexgrow"] }],
     "block-opening-brace-space-after": null,
     "block-closing-brace-space-before": null,
     "declaration-colon-newline-after": null,

@@ -67,6 +67,7 @@ const PartnerInlineContainer = styled.div`
   img {
     max-height: 34px;
     vertical-align: middle;
+    /* stylelint-disable-next-line */
     -ms-interpolation-mode: bicubic;
   }
 

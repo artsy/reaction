@@ -18,7 +18,7 @@ const NavIcon = styled.a`
   flex: 0;
 `
 
-/* stylelint-disable-next-line max-empty-lines */
+/* stylelint-disable-next-line */
 injectGlobal`
   body {
     margin: 0;

@@ -37,6 +37,7 @@ ArticleCards.defaultProps = {
 
 const ArticleCardsContainer = styled.div`
   color: ${props => props.color};
+
   ${ArticleCardContainer} {
     margin-bottom: 60px;
   }

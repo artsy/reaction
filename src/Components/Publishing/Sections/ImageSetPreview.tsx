@@ -128,6 +128,7 @@ const IconContainer = styled.div`
   position: relative;
   margin-left: 40px;
   text-align: right;
+
   > svg {
     height: 98%;
   }

@@ -88,7 +88,7 @@ exports[`Video About matches the snapshot 1`] = `
 }
 
 .c13 {
-  margin: 5px 10px 5px 0px;
+  margin: 5px 10px 5px 0;
 }
 
 .c8 {
@@ -183,7 +183,7 @@ exports[`Video About matches the snapshot 1`] = `
   text-align: center;
 }
 
-.c5 h1:before {
+.c5 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -264,7 +264,7 @@ exports[`Video About matches the snapshot 1`] = `
   background: none transparent;
 }
 
-.c5 .artist-follow:before {
+.c5 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -272,7 +272,7 @@ exports[`Video About matches the snapshot 1`] = `
   font-size: 32px;
 }
 
-.c5 .artist-follow:after {
+.c5 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -877,7 +877,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
 }
 
 .c13 {
-  margin: 5px 10px 5px 0px;
+  margin: 5px 10px 5px 0;
 }
 
 .c8 {
@@ -972,7 +972,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
   text-align: center;
 }
 
-.c5 h1:before {
+.c5 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -1053,7 +1053,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
   background: none transparent;
 }
 
-.c5 .artist-follow:before {
+.c5 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -1061,7 +1061,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
   font-size: 32px;
 }
 
-.c5 .artist-follow:after {
+.c5 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;

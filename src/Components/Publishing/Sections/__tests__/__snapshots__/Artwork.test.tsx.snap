@@ -33,17 +33,17 @@ exports[`Artwork snapshots renders properly 1`] = `
   line-height: 1.4em;
 }
 
-.c7 .title,
-.c7 .title a {
-  font-family: Unica77LLWebItalic,Arial,serif;
+.c7 a {
+  color: #999999;
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
 }
 
-.c7 a {
-  color: #999999;
-  font-family: Unica77LLWebRegular,Arial,serif;
+.c7 .title,
+.c7 .title a {
+  font-family: Unica77LLWebItalic,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;

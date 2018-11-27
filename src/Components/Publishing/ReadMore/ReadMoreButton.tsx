@@ -77,7 +77,8 @@ export const ReadMoreContainer = styled.div`
   ${pMedia.xl`
     padding: 20px;
     padding-left: 0px;
-  `} ${pMedia.sm`
+  `};
+  ${pMedia.sm`
     padding: 20px;
   `};
 `

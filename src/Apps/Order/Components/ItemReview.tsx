@@ -11,6 +11,7 @@ interface ItemReviewProps {
 
 const ImageBox = styled.div`
   flex: 0 1 auto;
+
   img {
     max-width: 185px;
     max-height: 375px;

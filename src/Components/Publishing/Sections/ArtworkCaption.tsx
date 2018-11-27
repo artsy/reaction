@@ -311,6 +311,7 @@ const StyledFullscreenCaption = styled.div`
   display: flex;
   color: black;
 
+  /* stylelint-disable-next-line */
   a {
     color: black;
     ${unica("s16", "medium")};

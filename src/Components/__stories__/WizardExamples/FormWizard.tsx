@@ -145,6 +145,7 @@ const Fields = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+
   input,
   checkbox {
     margin-top: 20px;

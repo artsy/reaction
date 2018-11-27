@@ -27,14 +27,18 @@ const ArticleWrapper = styled.div`
   div[class^="FeatureInnerContent__"] {
     color: white;
   }
+
   div[class^="Author__"] {
     color: white;
+
     &::before {
       background-color: white;
     }
   }
+
   .Byline {
     color: white;
+
     svg path {
       fill: white;
     }
