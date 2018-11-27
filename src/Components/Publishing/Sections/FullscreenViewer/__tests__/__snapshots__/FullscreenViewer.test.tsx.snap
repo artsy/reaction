@@ -45,6 +45,14 @@ exports[`renders properly 1`] = `
   color: black;
 }
 
+.c8 a {
+  color: black;
+  font-family: Unica77LLWebMedium,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
 .c8 .title {
   font-family: Unica77LLWebMediumItalic,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -55,14 +63,6 @@ exports[`renders properly 1`] = `
 .c8 .title,
 .c8 .title a {
   font-family: Unica77LLWebMediumItalic,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-.c8 a {
-  color: black;
-  font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -106,7 +106,7 @@ exports[`renders properly 1`] = `
 }
 
 .c4 p {
-  margin: 0px;
+  margin: 0;
 }
 
 .c5 {

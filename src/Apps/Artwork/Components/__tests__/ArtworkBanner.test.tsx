@@ -8,7 +8,9 @@ import { ArtworkBannerFragmentContainer } from "Apps/Artwork/Components/ArtworkB
 import { renderRelayTree } from "DevTools"
 import { GraphQLResolveInfo } from "graphql"
 import { graphql } from "react-relay"
+
 jest.unmock("react-relay")
+
 describe("ArtworkBanner", () => {
   const getWrapper = async (response = ArtwrorkNoBannerFixture) => {
     return await renderRelayTree({
@@ -33,7 +35,9 @@ describe("ArtworkBanner", () => {
       },
     })
   }
+
   let wrapper
+
   describe("ArtworkBanner for artwork with no banner", () => {
     beforeAll(async () => {
       wrapper = await getWrapper()
@@ -43,6 +47,7 @@ describe("ArtworkBanner", () => {
       expect(html).toBe(null)
     })
   })
+
   describe("ArtworkBanner for artwork with auction banner", () => {
     beforeAll(async () => {
       wrapper = await getWrapper(ArtworkAuctionBannerFixture)
@@ -54,10 +59,12 @@ describe("ArtworkBanner", () => {
       expect(html).toContain("Doyle")
     })
   })
+
   describe("ArtworkBanner for artwork with fair banner", () => {
     beforeAll(async () => {
       wrapper = await getWrapper(ArtworkFairBannerFixture)
     })
+
     it("renders a correct data for the fair", () => {
       const html = wrapper.html()
       expect(html).toContain("At fair")
@@ -65,10 +72,12 @@ describe("ArtworkBanner", () => {
       expect(html).toContain("White Cube")
     })
   })
+
   describe("ArtworkBanner for artwork with partner show banner", () => {
     beforeAll(async () => {
       wrapper = await getWrapper(ArtworkUpcomingShowBannerFixture)
     })
+
     it("renders a correct data for the show", () => {
       const html = wrapper.html()
       expect(html).toContain("In upcoming show")

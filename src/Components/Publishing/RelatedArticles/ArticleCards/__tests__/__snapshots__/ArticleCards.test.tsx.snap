@@ -12,7 +12,7 @@ exports[`ArticleCard renders properly 1`] = `
   margin: 10px 20px 0 0;
 }
 
-.c9:before {
+.c9::before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -65,7 +65,6 @@ exports[`ArticleCard renders properly 1`] = `
 }
 
 .c3 {
-  display: block;
   border: 1px solid;
   border-radius: 2px;
   color: black;

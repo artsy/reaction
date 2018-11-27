@@ -88,6 +88,7 @@ const FeatureLayoutContainer = styled.div`
   ${Nav} {
     position: absolute;
   }
+
   ${ArticleCardsContainer} {
     padding-top: 60px;
   }

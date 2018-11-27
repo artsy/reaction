@@ -1,9 +1,11 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+import { ArtworkSummaryItem_order$ref } from "./ArtworkSummaryItem_order.graphql";
+import { CreditCardSummaryItem_order$ref } from "./CreditCardSummaryItem_order.graphql";
 import { ItemReview_artwork$ref } from "./ItemReview_artwork.graphql";
-import { ShippingAndPaymentSummary_order$ref } from "./ShippingAndPaymentSummary_order.graphql";
-import { TransactionSummary_order$ref } from "./TransactionSummary_order.graphql";
+import { ShippingSummaryItem_order$ref } from "./ShippingSummaryItem_order.graphql";
+import { TransactionDetailsSummaryItem_order$ref } from "./TransactionDetailsSummaryItem_order.graphql";
 export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
 declare const _Status_order$ref: unique symbol;
 export type Status_order$ref = typeof _Status_order$ref;
@@ -40,7 +42,7 @@ export type Status_order = {
             }) | null;
         }) | null> | null;
     }) | null;
-    readonly " $fragmentRefs": TransactionSummary_order$ref & ShippingAndPaymentSummary_order$ref;
+    readonly " $fragmentRefs": ArtworkSummaryItem_order$ref & TransactionDetailsSummaryItem_order$ref & ShippingSummaryItem_order$ref & CreditCardSummaryItem_order$ref;
     readonly " $refType": Status_order$ref;
 };
 
@@ -54,16 +56,16 @@ var v0 = {
   "args": null,
   "storageKey": null
 },
-v1 = {
+v1 = [
+  v0
+],
+v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
   "args": null,
   "storageKey": null
 },
-v2 = [
-  v0
-],
 v3 = {
   "kind": "ScalarField",
   "alias": "__id",
@@ -78,8 +80,12 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
+    {
+      "kind": "FragmentSpread",
+      "name": "ArtworkSummaryItem_order",
+      "args": null
+    },
     v0,
-    v1,
     {
       "kind": "ScalarField",
       "alias": null,
@@ -113,23 +119,29 @@ return {
         {
           "kind": "InlineFragment",
           "type": "Pickup",
-          "selections": v2
+          "selections": v1
         },
         {
           "kind": "InlineFragment",
           "type": "Ship",
-          "selections": v2
+          "selections": v1
         }
       ]
     },
+    v2,
     {
       "kind": "FragmentSpread",
-      "name": "TransactionSummary_order",
+      "name": "TransactionDetailsSummaryItem_order",
       "args": null
     },
     {
       "kind": "FragmentSpread",
-      "name": "ShippingAndPaymentSummary_order",
+      "name": "ShippingSummaryItem_order",
+      "args": null
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "CreditCardSummaryItem_order",
       "args": null
     },
     {
@@ -230,7 +242,7 @@ return {
                   "concreteType": "Artwork",
                   "plural": false,
                   "selections": [
-                    v1,
+                    v2,
                     {
                       "kind": "ScalarField",
                       "alias": null,
@@ -263,5 +275,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '9e525e6757a5dead1392f313bc16d3b4';
+(node as any).hash = 'b8029530d6a6538ad36dfad5ee1c6542';
 export default node;

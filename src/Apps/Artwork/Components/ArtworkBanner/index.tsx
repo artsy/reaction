@@ -6,9 +6,11 @@ import React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 import { get } from "Utils/get"
 import { Banner } from "./Banner"
+
 export interface ArtworkBannerProps {
   artwork: ArtworkBanner_artwork
 }
+
 export const ArtworkBanner: React.SFC<ArtworkBannerProps> = props => {
   const {
     artworkContextAuction,
@@ -16,11 +18,8 @@ export const ArtworkBanner: React.SFC<ArtworkBannerProps> = props => {
     artworkContextPartnerShow,
     partner,
   } = props.artwork
-  // imageUrl: image for avatar
-  // initials: fallback partner initials in case image is not there.
-  // meta: in auction / at fair / in show
-  // name:  auction / fair / show name
-  // subHeadline: partner name
+
+  // Auction
   if (
     artworkContextAuction &&
     artworkContextAuction.__typename === "ArtworkContextAuction"
@@ -36,6 +35,8 @@ export const ArtworkBanner: React.SFC<ArtworkBannerProps> = props => {
       />
     )
   }
+
+  // Fair
   if (
     artworkContextFair &&
     artworkContextFair.__typename === "ArtworkContextFair"
@@ -52,6 +53,8 @@ export const ArtworkBanner: React.SFC<ArtworkBannerProps> = props => {
       />
     )
   }
+
+  // Partner Show
   if (
     artworkContextPartnerShow &&
     artworkContextPartnerShow.__typename === "ArtworkContextPartnerShow"

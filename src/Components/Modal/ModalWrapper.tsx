@@ -134,12 +134,13 @@ const Wrapper = styled.div.attrs<{ isShown?: boolean }>({})`
 
 const slideUp = keyframes`
   from {
-    transform: translate(-50%,-40%);
+    transform: translate(-50%, -40%);
     opacity: 0;
+    /* stylelint-disable-next-line */
   },
 
   to {
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     opacity: 1;
   }
 `

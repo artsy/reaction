@@ -1,9 +1,15 @@
 import { Button, Flex, Join, Sans, Spacer } from "@artsy/palette"
 import { Review_order } from "__generated__/Review_order.graphql"
 import { ReviewSubmitOrderMutation } from "__generated__/ReviewSubmitOrderMutation.graphql"
+import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
 import { ItemReviewFragmentContainer as ItemReview } from "Apps/Order/Components/ItemReview"
-import { OrderStepper } from "Apps/Order/Components/OrderStepper"
-import { ShippingAndPaymentReviewFragmentContainer as ShippingAndPaymentReview } from "Apps/Order/Components/ShippingAndPaymentReview"
+import {
+  buyNowFlowSteps,
+  offerFlowSteps,
+  OrderStepper,
+} from "Apps/Order/Components/OrderStepper"
+import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "Apps/Order/Components/ShippingSummaryItem"
+import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
@@ -18,11 +24,13 @@ import {
 } from "react-relay"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
+import { ErrorWithMetadata } from "Utils/errors"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
+import { CreditCardSummaryItemFragmentContainer as CreditCardSummaryItem } from "../../Components/CreditCardSummaryItem"
 import { Helper } from "../../Components/Helper"
-import { TransactionSummaryFragmentContainer as TransactionSummary } from "../../Components/TransactionSummary"
+import { OfferSummaryItemFragmentContainer as OfferSummaryItem } from "../../Components/OfferSummaryItem"
 import { TwoColumnLayout } from "../../Components/TwoColumnLayout"
 
 export interface ReviewProps {
@@ -112,7 +120,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                   case "insufficient_inventory": {
                     const artistId = this.artistId()
                     this.onMutationError(
-                      error,
+                      new ErrorWithMetadata(error.code, error),
                       "Not available",
                       "Sorry, the work is no longer available.",
                       artistId ? this.routeToArtistPage.bind(this) : null
@@ -122,7 +130,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                   case "failed_charge_authorize": {
                     const parsedData = JSON.parse(error.data)
                     this.onMutationError(
-                      error,
+                      new ErrorWithMetadata(error.code, error),
                       "An error occurred",
                       parsedData.failure_message
                     )
@@ -130,7 +138,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                   }
                   case "artwork_version_mismatch": {
                     this.onMutationError(
-                      error,
+                      new ErrorWithMetadata(error.code, error),
                       "Work has been updated",
                       "Something about the work changed since you started checkout. Please review the work before submitting your order.",
                       this.routeToArtworkPage.bind(this)
@@ -138,7 +146,9 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                     break
                   }
                   default: {
-                    this.onMutationError(error)
+                    this.onMutationError(
+                      new ErrorWithMetadata(error.code, error)
+                    )
                     break
                   }
                 }
@@ -179,12 +189,12 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
   }
 
   private onMutationError(
-    errors,
+    error,
     errorModalTitle?,
     errorModalMessage?,
     errorModalCtaAction?
   ) {
-    logger.error(errors)
+    logger.error(error)
     this.setState({
       isSubmitting: false,
       isErrorModalOpen: true,
@@ -194,15 +204,15 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
     })
   }
 
-  onChangeOffer() {
+  onChangeOffer = () => {
     this.props.router.push(`/orders/${this.props.order.id}/offer`)
   }
 
-  onChangePayment() {
+  onChangePayment = () => {
     this.props.router.push(`/orders/${this.props.order.id}/payment`)
   }
 
-  onChangeShipping() {
+  onChangeShipping = () => {
     this.props.router.push(`/orders/${this.props.order.id}/shipping`)
   }
 
@@ -221,7 +231,9 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
             <Col>
               <OrderStepper
                 currentStep="Review"
-                offerFlow={order.mode === "OFFER"}
+                steps={
+                  order.mode === "OFFER" ? offerFlowSteps : buyNowFlowSteps
+                }
               />
             </Col>
           </Row>
@@ -232,14 +244,23 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
             Content={
               <>
                 <Join separator={<Spacer mb={3} />}>
-                  <ShippingAndPaymentReview
-                    order={order}
-                    onChangePayment={this.onChangePayment.bind(this)}
-                    onChangeShipping={this.onChangeShipping.bind(this)}
-                    onChangeOffer={this.onChangeOffer.bind(this)}
-                    mb={[2, 3]}
-                  />
-
+                  <Flex flexDirection="column" mb={[2, 3]}>
+                    {order.mode === "OFFER" && (
+                      <OfferSummaryItem
+                        order={order}
+                        onChange={this.onChangeOffer}
+                      />
+                    )}
+                    <ShippingSummaryItem
+                      order={order}
+                      onChange={this.onChangeShipping}
+                    />
+                    <CreditCardSummaryItem
+                      order={order}
+                      onChange={this.onChangePayment}
+                      title="Payment method"
+                    />
+                  </Flex>
                   <Media greaterThan="xs">
                     <ItemReview
                       artwork={order.lineItems.edges[0].node.artwork}
@@ -271,7 +292,11 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
             }
             Sidebar={
               <Flex flexDirection="column">
-                <TransactionSummary order={order} mb={[2, 3]} />
+                <Flex flexDirection="column">
+                  <ArtworkSummaryItem order={order} />
+                  <TransactionDetailsSummaryItem order={order} />
+                </Flex>
+                <Spacer mb={[2, 3]} />
                 <Media greaterThan="xs">
                   <Helper
                     artworkId={order.lineItems.edges[0].node.artwork.id}
@@ -347,8 +372,11 @@ export const ReviewFragmentContainer = createFragmentContainer(
           }
         }
       }
-      ...TransactionSummary_order
-      ...ShippingAndPaymentReview_order
+      ...ArtworkSummaryItem_order
+      ...TransactionDetailsSummaryItem_order
+      ...ShippingSummaryItem_order
+      ...CreditCardSummaryItem_order
+      ...OfferSummaryItem_order
     }
   `
 )

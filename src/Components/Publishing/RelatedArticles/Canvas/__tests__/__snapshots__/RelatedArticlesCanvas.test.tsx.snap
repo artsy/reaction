@@ -24,7 +24,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
   margin: 10px 20px 0 0;
 }
 
-.c11:before {
+.c11::before {
   content: "";
   display: inline-block;
   width: 8px;

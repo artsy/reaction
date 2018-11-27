@@ -97,6 +97,7 @@ const StyledImageWrapper = styled.div`
     }
   }
 
+  /* stylelint-disable-next-line declaration-block-semicolon-newline-after */
   ${pMedia.sm`
     ${Fullscreen} {
       opacity: 1;

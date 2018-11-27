@@ -1,8 +1,9 @@
 import { Button, Flex, Message, Sans, Spacer } from "@artsy/palette"
 import { Offer_order } from "__generated__/Offer_order.graphql"
 import { OfferMutation } from "__generated__/OfferMutation.graphql"
+import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
 import { Helper } from "Apps/Order/Components/Helper"
-import { TransactionSummaryFragmentContainer as TransactionSummary } from "Apps/Order/Components/TransactionSummary"
+import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { Input } from "Components/Input"
@@ -17,10 +18,11 @@ import {
 } from "react-relay"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
+import { ErrorWithMetadata } from "Utils/errors"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
-import { OrderStepper } from "../../Components/OrderStepper"
+import { offerFlowSteps, OrderStepper } from "../../Components/OrderStepper"
 
 export interface OfferProps {
   order: Offer_order
@@ -97,7 +99,12 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
             } = data
 
             if (orderOrError.error) {
-              this.onMutationError(orderOrError.error)
+              this.onMutationError(
+                new ErrorWithMetadata(
+                  orderOrError.error.code,
+                  orderOrError.error
+                )
+              )
             } else {
               this.props.router.push(`/orders/${this.props.order.id}/shipping`)
             }
@@ -108,8 +115,8 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
     })
   }
 
-  onMutationError(errors, errorModalTitle?, errorModalMessage?) {
-    logger.error(errors)
+  onMutationError(error, errorModalTitle?, errorModalMessage?) {
+    logger.error(error)
     this.setState({
       isCommittingMutation: false,
       isErrorModalOpen: true,
@@ -135,7 +142,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
         <HorizontalPadding px={[0, 4]}>
           <Row>
             <Col>
-              <OrderStepper currentStep="Offer" offerFlow />
+              <OrderStepper currentStep="Offer" steps={offerFlowSteps} />
             </Col>
           </Row>
         </HorizontalPadding>
@@ -188,18 +195,21 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
             }
             Sidebar={
               <Flex flexDirection="column">
-                <TransactionSummary
-                  order={order}
-                  mb={[2, 3]}
-                  offerOverride={
-                    this.state.offerValue &&
-                    this.state.offerValue.toLocaleString("en-US", {
-                      style: "currency",
-                      currency: "USD",
-                      minimumFractionDigits: 2,
-                    })
-                  }
-                />
+                <Flex flexDirection="column">
+                  <ArtworkSummaryItem order={order} />
+                  <TransactionDetailsSummaryItem
+                    order={order}
+                    offerOverride={
+                      this.state.offerValue &&
+                      this.state.offerValue.toLocaleString("en-US", {
+                        style: "currency",
+                        currency: "USD",
+                        minimumFractionDigits: 2,
+                      })
+                    }
+                  />
+                </Flex>
+                <Spacer mb={[2, 3]} />
                 <Helper artworkId={artwork.id} />
                 <Media at="xs">
                   <>
@@ -257,7 +267,8 @@ export const OfferFragmentContainer = createFragmentContainer(
           }
         }
       }
-      ...TransactionSummary_order
+      ...ArtworkSummaryItem_order
+      ...TransactionDetailsSummaryItem_order
     }
   `
 )

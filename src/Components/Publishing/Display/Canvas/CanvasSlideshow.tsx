@@ -284,6 +284,7 @@ const Image = responsiveImage`
   `}
 `
 const Caption = styled.div`
-  ${garamond("s11")} color: ${Colors.grayMedium};
+  ${garamond("s11")};
+  color: ${Colors.grayMedium};
   margin-top: 10px;
 `

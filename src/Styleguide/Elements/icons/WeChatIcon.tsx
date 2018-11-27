@@ -61,7 +61,7 @@ const QRToolTip = styled.div`
   background-color: white;
   box-shadow: 0 10px 20px ${color("black10")};
 
-  &:after {
+  &::after {
     content: " ";
     position: absolute;
     width: 0;

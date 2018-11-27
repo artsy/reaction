@@ -134,6 +134,7 @@ const Background = styled(Box)<{
   background-image: url(${props => props.headerImageUrl});
   background-size: cover;
   background-position: center;
+
   ${media.xs} {
     margin-left: -20px;
     margin-right: -20px;
@@ -164,13 +165,13 @@ const SubtitlesContainer = styled(Box)`
   display: flex;
 
   ${Sans} {
-    text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    text-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   }
 `
 
 const Title = styled(Serif)`
   text-transform: capitalize;
-  text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 `
 
 const ImageCaption = styled(Box)`

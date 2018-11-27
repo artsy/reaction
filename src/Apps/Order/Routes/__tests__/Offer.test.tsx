@@ -7,7 +7,7 @@ import React from "react"
 import { RelayProp } from "react-relay"
 import { commitMutation as _commitMutation } from "react-relay"
 import { UntouchedOfferOrder } from "../../../__tests__/Fixtures/Order"
-import { TransactionSummary } from "../../Components/TransactionSummary"
+import { TransactionDetailsSummaryItem } from "../../Components/TransactionDetailsSummaryItem"
 import {
   initialOfferFailedCannotOffer,
   initialOfferSuccess,
@@ -49,7 +49,7 @@ describe("Offer InitialMutation", () => {
   it("can receive input, which updates the transaction summary", () => {
     const component = getWrapper(testProps)
     const input = component.find(Input)
-    const transactionSummary = component.find(TransactionSummary)
+    const transactionSummary = component.find(TransactionDetailsSummaryItem)
 
     expect(transactionSummary.text()).toContain("Your offer")
 

@@ -1,5 +1,4 @@
 import { Serif } from "@artsy/palette"
-import { garamond } from "Assets/Fonts"
 import { PartnerInline } from "Components/Publishing/Partner/PartnerInline"
 import React from "react"
 import Waypoint from "react-waypoint"

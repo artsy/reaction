@@ -115,7 +115,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin: 10px 20px 0 0;
 }
 
-.c85:before {
+.c85::before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -160,7 +160,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c60 {
-  margin: 5px 10px 5px 0px;
+  margin: 5px 10px 5px 0;
 }
 
 .c84 {
@@ -201,7 +201,6 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c73 {
-  display: block;
   border: 1px solid;
   border-radius: 2px;
   color: white;
@@ -473,7 +472,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   text-align: center;
 }
 
-.c52 h1:before {
+.c52 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -554,7 +553,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   background: none transparent;
 }
 
-.c52 .artist-follow:before {
+.c52 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -562,7 +561,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   font-size: 32px;
 }
 
-.c52 .artist-follow:after {
+.c52 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -659,7 +658,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   text-align: center;
 }
 
-.c64 h1:before {
+.c64 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -740,7 +739,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   background: none transparent;
 }
 
-.c64 .artist-follow:before {
+.c64 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -748,7 +747,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   font-size: 32px;
 }
 
-.c64 .artist-follow:after {
+.c64 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;

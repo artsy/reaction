@@ -1,7 +1,8 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-import { TransactionSummary_order$ref } from "./TransactionSummary_order.graphql";
+import { ArtworkSummaryItem_order$ref } from "./ArtworkSummaryItem_order.graphql";
+import { TransactionDetailsSummaryItem_order$ref } from "./TransactionDetailsSummaryItem_order.graphql";
 export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
 declare const _Shipping_order$ref: unique symbol;
 export type Shipping_order$ref = typeof _Shipping_order$ref;
@@ -35,7 +36,7 @@ export type Shipping_order = {
             }) | null;
         }) | null> | null;
     }) | null;
-    readonly " $fragmentRefs": TransactionSummary_order$ref;
+    readonly " $fragmentRefs": ArtworkSummaryItem_order$ref & TransactionDetailsSummaryItem_order$ref;
     readonly " $refType": Shipping_order$ref;
 };
 
@@ -227,12 +228,17 @@ return {
     },
     {
       "kind": "FragmentSpread",
-      "name": "TransactionSummary_order",
+      "name": "ArtworkSummaryItem_order",
+      "args": null
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "TransactionDetailsSummaryItem_order",
       "args": null
     },
     v1
   ]
 };
 })();
-(node as any).hash = '2568ec3cd454f38834a0bc1a723d4473';
+(node as any).hash = 'ddc48eefaaa41842044ccffcd2d55e4f';
 export default node;

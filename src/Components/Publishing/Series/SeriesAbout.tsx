@@ -118,6 +118,7 @@ const StyledCol = styled(Col)`
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+
     ${PartnerBlockContainer} {
       display: block;
       margin-bottom: 10px;
