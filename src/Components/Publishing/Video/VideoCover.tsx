@@ -8,13 +8,36 @@ import { IconVideoPlay } from "../Icon/IconVideoPlay"
 import { MaxRow } from "./Shared"
 import { VideoInfoBlock } from "./VideoInfoBlock"
 
+interface Media {
+  url: string
+  duration: number
+
+  /*
+   * ISO-8601 formatted date
+   */
+  release_date: string
+
+  published: boolean
+  cover_image_url: string
+
+  /*
+   * string that includes HTML tags
+   */
+  description: string
+
+  /*
+   * string that includes HTML tags
+   */
+  credits: string
+}
+
 interface Props {
   article: any
   description?: string
   editDescription?: any
   editTitle?: any
   hideCover?: boolean
-  media: any
+  media: Media
   playVideo?: () => void
   seriesLink?: string
   seriesTitle?: string

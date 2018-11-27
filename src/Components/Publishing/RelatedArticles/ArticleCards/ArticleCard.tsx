@@ -5,13 +5,14 @@ import { Byline } from "Components/Publishing/Byline/Byline"
 import { Date } from "Components/Publishing/Byline/Date"
 import { formatTime, getMediaDate } from "Components/Publishing/Constants"
 import { IconVideoPlay } from "Components/Publishing/Icon/IconVideoPlay"
+import { ArticleData } from "Components/Publishing/Typings"
 import React, { Component } from "react"
 import track, { TrackingProp } from "react-tracking"
 import styled from "styled-components"
 import { crop } from "Utils/resizer"
 
 interface Props {
-  article?: any
+  article?: ArticleData
   color?: string
   editing?: boolean
   editDate?: any
