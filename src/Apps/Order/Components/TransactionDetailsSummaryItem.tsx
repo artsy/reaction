@@ -35,6 +35,8 @@ export class TransactionDetailsSummaryItem extends React.Component<
       ...others
     } = this.props
 
+    console.log("FUXKKC", this.props.order)
+
     return (
       <StackableBorderBox flexDirection="column" {...others}>
         {mode === "OFFER" ? (

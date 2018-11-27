@@ -1,5 +1,6 @@
 import { Flex } from "@artsy/palette"
 import { TransactionDetailsSummaryItem_order } from "__generated__/TransactionDetailsSummaryItem_order.graphql"
+import { mockResolver } from "Apps/__tests__/Fixtures/Order"
 import { MockRelayRenderer } from "DevTools"
 import React from "react"
 import { graphql } from "react-relay"
@@ -39,12 +40,10 @@ const render = (
     Component={(props: any) => (
       <TransactionDetailsSummaryItem {...extraComponentProps} {...props} />
     )}
-    mockResolvers={{
-      Order: () => ({
-        ...order,
-        ...extraOrderProps,
-      }),
-    }}
+    mockResolvers={mockResolver({
+      ...order,
+      ...extraOrderProps,
+    })}
     query={orderQuery}
   />
 )

@@ -22,6 +22,7 @@ query routes_ReviewQuery(
   $orderID: String!
 ) {
   order: ecommerceOrder(id: $orderID) {
+    __typename
     ...Review_order
     __id: id
   }
@@ -202,18 +203,25 @@ v2 = {
 v3 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
+  "name": "__typename",
   "args": null,
   "storageKey": null
 },
 v4 = {
   "kind": "ScalarField",
   "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v5 = {
+  "kind": "ScalarField",
+  "alias": null,
   "name": "__id",
   "args": null,
   "storageKey": null
 },
-v5 = [
+v6 = [
   {
     "kind": "ScalarField",
     "alias": null,
@@ -222,13 +230,6 @@ v5 = [
     "storageKey": null
   }
 ],
-v6 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__typename",
-  "args": null,
-  "storageKey": null
-},
 v7 = {
   "kind": "ScalarField",
   "alias": null,
@@ -249,7 +250,7 @@ return {
   "operationKind": "query",
   "name": "routes_ReviewQuery",
   "id": null,
-  "text": "query routes_ReviewQuery(\n  $orderID: String!\n) {\n  order: ecommerceOrder(id: $orderID) {\n    ...Review_order\n    __id: id\n  }\n}\n\nfragment Review_order on Order {\n  id\n  mode\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          artists {\n            id\n            __id\n          }\n          ...ItemReview_artwork\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  ...ArtworkSummaryItem_order\n  ...TransactionDetailsSummaryItem_order\n  ...ShippingSummaryItem_order\n  ...CreditCardSummaryItem_order\n  ...OfferSummaryItem_order\n  __id: id\n}\n\nfragment ItemReview_artwork on Artwork {\n  artist_names\n  title\n  date\n  medium\n  dimensions {\n    in\n    cm\n  }\n  attribution_class {\n    short_description\n  }\n  image {\n    resized(width: 185) {\n      url\n    }\n  }\n  __id\n}\n\nfragment ArtworkSummaryItem_order on Order {\n  seller {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n    ... on User {\n      __id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n          }\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n\nfragment TransactionDetailsSummaryItem_order on Order {\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  buyerTotal(precision: 2)\n  lastOffer {\n    id\n    amountCents\n    __id: id\n  }\n  __id: id\n}\n\nfragment ShippingSummaryItem_order on Order {\n  state\n  requestedFulfillment {\n    __typename\n    ...ShippingAddress_ship\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n\nfragment CreditCardSummaryItem_order on Order {\n  creditCard {\n    brand\n    last_digits\n    expiration_year\n    expiration_month\n    __id\n  }\n  __id: id\n}\n\nfragment OfferSummaryItem_order on Order {\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  __id: id\n}\n\nfragment ShippingAddress_ship on Ship {\n  name\n  addressLine1\n  addressLine2\n  city\n  postalCode\n  region\n  country\n  phoneNumber\n}\n",
+  "text": "query routes_ReviewQuery(\n  $orderID: String!\n) {\n  order: ecommerceOrder(id: $orderID) {\n    __typename\n    ...Review_order\n    __id: id\n  }\n}\n\nfragment Review_order on Order {\n  id\n  mode\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          artists {\n            id\n            __id\n          }\n          ...ItemReview_artwork\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  ...ArtworkSummaryItem_order\n  ...TransactionDetailsSummaryItem_order\n  ...ShippingSummaryItem_order\n  ...CreditCardSummaryItem_order\n  ...OfferSummaryItem_order\n  __id: id\n}\n\nfragment ItemReview_artwork on Artwork {\n  artist_names\n  title\n  date\n  medium\n  dimensions {\n    in\n    cm\n  }\n  attribution_class {\n    short_description\n  }\n  image {\n    resized(width: 185) {\n      url\n    }\n  }\n  __id\n}\n\nfragment ArtworkSummaryItem_order on Order {\n  seller {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n    ... on User {\n      __id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n          }\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n\nfragment TransactionDetailsSummaryItem_order on Order {\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  buyerTotal(precision: 2)\n  lastOffer {\n    id\n    amountCents\n    __id: id\n  }\n  __id: id\n}\n\nfragment ShippingSummaryItem_order on Order {\n  state\n  requestedFulfillment {\n    __typename\n    ...ShippingAddress_ship\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n\nfragment CreditCardSummaryItem_order on Order {\n  creditCard {\n    brand\n    last_digits\n    expiration_year\n    expiration_month\n    __id\n  }\n  __id: id\n}\n\nfragment OfferSummaryItem_order on Order {\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  __id: id\n}\n\nfragment ShippingAddress_ship on Ship {\n  name\n  addressLine1\n  addressLine2\n  city\n  postalCode\n  region\n  country\n  phoneNumber\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -264,7 +265,7 @@ return {
         "name": "ecommerceOrder",
         "storageKey": null,
         "args": v1,
-        "concreteType": "Order",
+        "concreteType": null,
         "plural": false,
         "selections": [
           {
@@ -288,9 +289,10 @@ return {
         "name": "ecommerceOrder",
         "storageKey": null,
         "args": v1,
-        "concreteType": "Order",
+        "concreteType": null,
         "plural": false,
         "selections": [
+          v3,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -298,7 +300,7 @@ return {
             "args": null,
             "storageKey": null
           },
-          v3,
+          v4,
           {
             "kind": "LinkedField",
             "alias": null,
@@ -342,7 +344,7 @@ return {
                             "args": null,
                             "storageKey": null
                           },
-                          v3,
+                          v4,
                           {
                             "kind": "ScalarField",
                             "alias": null,
@@ -373,8 +375,8 @@ return {
                             "concreteType": "Artist",
                             "plural": true,
                             "selections": [
-                              v3,
-                              v4
+                              v4,
+                              v5
                             ]
                           },
                           {
@@ -444,7 +446,7 @@ return {
                                 ],
                                 "concreteType": "ResizedImageUrl",
                                 "plural": false,
-                                "selections": v5
+                                "selections": v6
                               },
                               {
                                 "kind": "LinkedField",
@@ -461,11 +463,11 @@ return {
                                 ],
                                 "concreteType": "ResizedImageUrl",
                                 "plural": false,
-                                "selections": v5
+                                "selections": v6
                               }
                             ]
                           },
-                          v4,
+                          v5,
                           {
                             "kind": "ScalarField",
                             "alias": null,
@@ -491,8 +493,8 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v6,
-              v4,
+              v3,
+              v5,
               {
                 "kind": "InlineFragment",
                 "type": "Partner",
@@ -561,7 +563,7 @@ return {
             "concreteType": "Offer",
             "plural": false,
             "selections": [
-              v3,
+              v4,
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -588,7 +590,7 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v6,
+              v3,
               {
                 "kind": "InlineFragment",
                 "type": "Ship",
@@ -684,7 +686,7 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v4
+              v5
             ]
           }
         ]

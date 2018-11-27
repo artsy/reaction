@@ -5,6 +5,7 @@ import React from "react"
 import { graphql } from "react-relay"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
+import { mockResolver } from "../../../__tests__/Fixtures/Order"
 import { ArtworkSummaryItemFragmentContainer } from "../ArtworkSummaryItem"
 
 const makeLineItems = ({ artistName, artworkTitle }) => ({
@@ -52,7 +53,7 @@ const render = (extraOrderProps?: Partial<ArtworkSummaryItem_order>) => {
     <MockRelayRenderer
       Component={ArtworkSummaryItemFragmentContainer}
       mockResolvers={{
-        Order: () => ({
+        ...mockResolver({
           ...order,
           ...extraOrderProps,
           seller: undefined,

@@ -18,6 +18,7 @@ export type ArtworkSummaryItemStoryQuery = {
 /*
 query ArtworkSummaryItemStoryQuery {
   order: ecommerceOrder(id: "foo") {
+    __typename
     ...ArtworkSummaryItem_order
     __id: id
   }
@@ -78,6 +79,13 @@ v1 = {
 v2 = {
   "kind": "ScalarField",
   "alias": null,
+  "name": "__typename",
+  "args": null,
+  "storageKey": null
+},
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
   "name": "__id",
   "args": null,
   "storageKey": null
@@ -87,7 +95,7 @@ return {
   "operationKind": "query",
   "name": "ArtworkSummaryItemStoryQuery",
   "id": null,
-  "text": "query ArtworkSummaryItemStoryQuery {\n  order: ecommerceOrder(id: \"foo\") {\n    ...ArtworkSummaryItem_order\n    __id: id\n  }\n}\n\nfragment ArtworkSummaryItem_order on Order {\n  seller {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n    ... on User {\n      __id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n          }\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n",
+  "text": "query ArtworkSummaryItemStoryQuery {\n  order: ecommerceOrder(id: \"foo\") {\n    __typename\n    ...ArtworkSummaryItem_order\n    __id: id\n  }\n}\n\nfragment ArtworkSummaryItem_order on Order {\n  seller {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n    ... on User {\n      __id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n          }\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -102,7 +110,7 @@ return {
         "name": "ecommerceOrder",
         "storageKey": "ecommerceOrder(id:\"foo\")",
         "args": v0,
-        "concreteType": "Order",
+        "concreteType": null,
         "plural": false,
         "selections": [
           {
@@ -126,9 +134,10 @@ return {
         "name": "ecommerceOrder",
         "storageKey": "ecommerceOrder(id:\"foo\")",
         "args": v0,
-        "concreteType": "Order",
+        "concreteType": null,
         "plural": false,
         "selections": [
+          v2,
           {
             "kind": "LinkedField",
             "alias": null,
@@ -138,14 +147,8 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "__typename",
-                "args": null,
-                "storageKey": null
-              },
               v2,
+              v3,
               {
                 "kind": "InlineFragment",
                 "type": "Partner",
@@ -261,7 +264,7 @@ return {
                               }
                             ]
                           },
-                          v2
+                          v3
                         ]
                       },
                       v1

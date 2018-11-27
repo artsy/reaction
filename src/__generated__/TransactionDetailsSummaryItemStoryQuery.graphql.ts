@@ -18,6 +18,7 @@ export type TransactionDetailsSummaryItemStoryQuery = {
 /*
 query TransactionDetailsSummaryItemStoryQuery {
   order: ecommerceOrder(id: "foo") {
+    __typename
     ...TransactionDetailsSummaryItem_order
     __id: id
   }
@@ -70,7 +71,7 @@ return {
   "operationKind": "query",
   "name": "TransactionDetailsSummaryItemStoryQuery",
   "id": null,
-  "text": "query TransactionDetailsSummaryItemStoryQuery {\n  order: ecommerceOrder(id: \"foo\") {\n    ...TransactionDetailsSummaryItem_order\n    __id: id\n  }\n}\n\nfragment TransactionDetailsSummaryItem_order on Order {\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  buyerTotal(precision: 2)\n  lastOffer {\n    id\n    amountCents\n    __id: id\n  }\n  __id: id\n}\n",
+  "text": "query TransactionDetailsSummaryItemStoryQuery {\n  order: ecommerceOrder(id: \"foo\") {\n    __typename\n    ...TransactionDetailsSummaryItem_order\n    __id: id\n  }\n}\n\nfragment TransactionDetailsSummaryItem_order on Order {\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  buyerTotal(precision: 2)\n  lastOffer {\n    id\n    amountCents\n    __id: id\n  }\n  __id: id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -85,7 +86,7 @@ return {
         "name": "ecommerceOrder",
         "storageKey": "ecommerceOrder(id:\"foo\")",
         "args": v0,
-        "concreteType": "Order",
+        "concreteType": null,
         "plural": false,
         "selections": [
           {
@@ -109,9 +110,16 @@ return {
         "name": "ecommerceOrder",
         "storageKey": "ecommerceOrder(id:\"foo\")",
         "args": v0,
-        "concreteType": "Order",
+        "concreteType": null,
         "plural": false,
         "selections": [
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "__typename",
+            "args": null,
+            "storageKey": null
+          },
           {
             "kind": "ScalarField",
             "alias": null,

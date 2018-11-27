@@ -10,6 +10,7 @@ export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
 declare const _Status_order$ref: unique symbol;
 export type Status_order$ref = typeof _Status_order$ref;
 export type Status_order = {
+    readonly __typename: string;
     readonly id: string | null;
     readonly code: string | null;
     readonly state: string | null;
@@ -41,7 +42,6 @@ export type Status_order = {
             }) | null;
         }) | null> | null;
     }) | null;
-    readonly __typename: "Order";
     readonly " $fragmentRefs": ArtworkSummaryItem_order$ref & TransactionDetailsSummaryItem_order$ref & ShippingSummaryItem_order$ref & CreditCardSummaryItem_order$ref;
     readonly " $refType": Status_order$ref;
 };

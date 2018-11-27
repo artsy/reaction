@@ -18,6 +18,7 @@ export type ShippingSummaryItemStoryQuery = {
 /*
 query ShippingSummaryItemStoryQuery {
   order: ecommerceOrder(id: "foo") {
+    __typename
     ...ShippingSummaryItem_order
     __id: id
   }
@@ -70,13 +71,20 @@ v1 = {
   "name": "id",
   "args": null,
   "storageKey": null
+},
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__typename",
+  "args": null,
+  "storageKey": null
 };
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "ShippingSummaryItemStoryQuery",
   "id": null,
-  "text": "query ShippingSummaryItemStoryQuery {\n  order: ecommerceOrder(id: \"foo\") {\n    ...ShippingSummaryItem_order\n    __id: id\n  }\n}\n\nfragment ShippingSummaryItem_order on Order {\n  state\n  requestedFulfillment {\n    __typename\n    ...ShippingAddress_ship\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n\nfragment ShippingAddress_ship on Ship {\n  name\n  addressLine1\n  addressLine2\n  city\n  postalCode\n  region\n  country\n  phoneNumber\n}\n",
+  "text": "query ShippingSummaryItemStoryQuery {\n  order: ecommerceOrder(id: \"foo\") {\n    __typename\n    ...ShippingSummaryItem_order\n    __id: id\n  }\n}\n\nfragment ShippingSummaryItem_order on Order {\n  state\n  requestedFulfillment {\n    __typename\n    ...ShippingAddress_ship\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n\nfragment ShippingAddress_ship on Ship {\n  name\n  addressLine1\n  addressLine2\n  city\n  postalCode\n  region\n  country\n  phoneNumber\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -91,7 +99,7 @@ return {
         "name": "ecommerceOrder",
         "storageKey": "ecommerceOrder(id:\"foo\")",
         "args": v0,
-        "concreteType": "Order",
+        "concreteType": null,
         "plural": false,
         "selections": [
           {
@@ -115,9 +123,10 @@ return {
         "name": "ecommerceOrder",
         "storageKey": "ecommerceOrder(id:\"foo\")",
         "args": v0,
-        "concreteType": "Order",
+        "concreteType": null,
         "plural": false,
         "selections": [
+          v2,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -134,13 +143,7 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "__typename",
-                "args": null,
-                "storageKey": null
-              },
+              v2,
               {
                 "kind": "InlineFragment",
                 "type": "Ship",

@@ -1,6 +1,7 @@
 import { Flex } from "@artsy/palette"
 import { ShippingAddress_ship } from "__generated__/ShippingAddress_ship.graphql"
 import { ShippingSummaryItem_order } from "__generated__/ShippingSummaryItem_order.graphql"
+import { mockResolver } from "Apps/__tests__/Fixtures/Order"
 import { MockRelayRenderer } from "DevTools/MockRelayRenderer"
 import React from "react"
 import { graphql } from "react-relay"
@@ -49,9 +50,7 @@ storiesOf("Apps/Order Page/Components", module).add(
         <Flex flexDirection="column" width={300}>
           <MockRelayRenderer
             Component={ShippingSummaryItemFragmentContainer}
-            mockResolvers={{
-              Order: () => order,
-            }}
+            mockResolvers={mockResolver(order)}
             query={orderQuery}
           />
         </Flex>
@@ -60,14 +59,12 @@ storiesOf("Apps/Order Page/Components", module).add(
         <Flex flexDirection="column" width={300}>
           <MockRelayRenderer
             Component={ShippingSummaryItemFragmentContainer}
-            mockResolvers={{
-              Order: () => ({
-                ...order,
-                requestedFulfillment: {
-                  __typename: "Pickup",
-                },
-              }),
-            }}
+            mockResolvers={mockResolver({
+              ...order,
+              requestedFulfillment: {
+                __typename: "Pickup",
+              },
+            })}
             query={orderQuery}
           />
         </Flex>
@@ -81,9 +78,7 @@ storiesOf("Apps/Order Page/Components", module).add(
                 onChange={() => alert("clicked")}
               />
             )}
-            mockResolvers={{
-              Order: () => order,
-            }}
+            mockResolvers={mockResolver(order)}
             query={orderQuery}
           />
         </Flex>
@@ -97,14 +92,12 @@ storiesOf("Apps/Order Page/Components", module).add(
                 onChange={() => alert("clicked")}
               />
             )}
-            mockResolvers={{
-              Order: () => ({
-                ...order,
-                requestedFulfillment: {
-                  __typename: "Pickup",
-                },
-              }),
-            }}
+            mockResolvers={mockResolver({
+              ...order,
+              requestedFulfillment: {
+                __typename: "Pickup",
+              },
+            })}
             query={orderQuery}
           />
         </Flex>
@@ -119,9 +112,7 @@ storiesOf("Apps/Order Page/Components", module).add(
                 onChange={() => alert("clicked")}
               />
             )}
-            mockResolvers={{
-              Order: () => order,
-            }}
+            mockResolvers={mockResolver(order)}
             query={orderQuery}
           />
         </Flex>

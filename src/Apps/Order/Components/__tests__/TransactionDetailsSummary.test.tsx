@@ -1,3 +1,4 @@
+import { mockResolver } from "Apps/__tests__/Fixtures/Order"
 import { renderRelayTree } from "DevTools"
 import { graphql } from "react-relay"
 import { TransactionDetailsSummaryItemFragmentContainer } from "../TransactionDetailsSummaryItem"
@@ -17,11 +18,9 @@ const transactionSummaryOrder = {
 const render = order =>
   renderRelayTree({
     Component: TransactionDetailsSummaryItemFragmentContainer,
-    mockResolvers: {
-      Order: () => ({
-        ...order,
-      }),
-    },
+    mockResolvers: mockResolver({
+      ...order,
+    }),
     query: graphql`
       query TransactionDetailsSummaryItemTestQuery {
         order: ecommerceOrder(id: "whatevs") {
