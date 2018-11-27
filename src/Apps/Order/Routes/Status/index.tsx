@@ -193,6 +193,7 @@ export const StatusFragmentContainer = createFragmentContainer(
   StatusRouteWrapper,
   graphql`
     fragment Status_order on Order {
+      __typename
       id
       code
       state

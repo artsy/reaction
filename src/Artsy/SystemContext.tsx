@@ -1,5 +1,4 @@
 import { createEnvironment } from "Artsy/Relay/createEnvironment"
-import { ContextProps as _ContextProps } from "Components/Artsy"
 import React, { SFC } from "react"
 import { Environment } from "relay-runtime"
 import { getUser } from "Utils/getUser"

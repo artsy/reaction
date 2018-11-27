@@ -53,7 +53,7 @@ describe("logger", () => {
         it("sends errors to service", () => {
           const err = new Error("msg")
           logger.error(err)
-          expect(sendErrorToService).toHaveBeenCalledWith(err, undefined)
+          expect(sendErrorToService).toHaveBeenCalledWith(err)
         })
       })
 
