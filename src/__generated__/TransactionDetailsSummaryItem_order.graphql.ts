@@ -5,6 +5,7 @@ export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
 declare const _TransactionDetailsSummaryItem_order$ref: unique symbol;
 export type TransactionDetailsSummaryItem_order$ref = typeof _TransactionDetailsSummaryItem_order$ref;
 export type TransactionDetailsSummaryItem_order = {
+    readonly __typename: string;
     readonly mode: OrderModeEnum | null;
     readonly shippingTotal: string | null;
     readonly shippingTotalCents: number | null;
@@ -43,30 +44,30 @@ var v0 = [
 v1 = {
   "kind": "ScalarField",
   "alias": null,
+  "name": "shippingTotal",
+  "args": v0,
+  "storageKey": "shippingTotal(precision:2)"
+},
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
   "name": "shippingTotalCents",
   "args": null,
   "storageKey": null
 },
-v2 = {
+v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "taxTotal",
   "args": v0,
   "storageKey": "taxTotal(precision:2)"
 },
-v3 = {
+v4 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "taxTotalCents",
   "args": null,
   "storageKey": null
-},
-v4 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "shippingTotal",
-  "args": v0,
-  "storageKey": "shippingTotal(precision:2)"
 },
 v5 = {
   "kind": "ScalarField",
@@ -106,7 +107,7 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "mode",
+      "name": "__typename",
       "args": null,
       "storageKey": null
     },
@@ -114,6 +115,13 @@ return {
     v2,
     v3,
     v4,
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "mode",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "ScalarField",
       "alias": null,
@@ -165,10 +173,10 @@ return {
               "storageKey": "amount(precision:2)"
             },
             v6,
-            v4,
             v1,
             v2,
             v3,
+            v4,
             v7
           ]
         }
@@ -177,5 +185,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '572218d40712dc6d1da5d4c0c584c730';
+(node as any).hash = 'e928c850ea4ef2e82434b5f387ae5e6a';
 export default node;

@@ -124,6 +124,7 @@ export const TransactionDetailsSummaryItemFragmentContainer = createFragmentCont
   TransactionDetailsSummaryItem,
   graphql`
     fragment TransactionDetailsSummaryItem_order on Order {
+      __typename
       mode
       shippingTotal(precision: 2)
       shippingTotalCents
