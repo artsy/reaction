@@ -100,7 +100,7 @@ export const StyledText = div`
     margin: 0;
     position: relative;
     text-align: center;
-    &:before {
+    &::before {
       content: "";
       width: 8px;
       height: 8px;
@@ -195,14 +195,14 @@ export const StyledText = div`
     margin-left: 10px;
     cursor: pointer;
     background: none transparent;
-    &:before {
+    &::before {
       font-family: "artsy-icons";
       content: "\ue629";
       vertical-align: -8.5px;
       line-height: 32px;
       font-size: 32px;
     }
-    &:after {
+    &::after {
       content: "Follow";
       ${garamond("s17")}
       text-transform: none;

@@ -22,7 +22,7 @@ const TooltipContainer = Div`
   height: 14px;
   margin-bottom: -2px;
 
-  &:before {
+  &::before {
     display: block;
     top: 0;
     left: 0;
@@ -38,16 +38,16 @@ const TooltipContainer = Div`
     color: white;
   }
   &:hover {
-    &:before {
+    &::before {
       visibility: hidden;
     }
-    &:after {
+    &::after {
       opacity: 1;
       z-index: 3;
       visibility: visible;
     }
   }
-  &:after {
+  &::after {
     display: block;
     top: ${props => (props.verticalAlign === "top" ? `0` : "inherit")}
     bottom: ${props => (props.verticalAlign === "bottom" ? `-7px` : "inherit")}

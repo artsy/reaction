@@ -91,6 +91,7 @@ const StyledBorderedPulldown = styled(BorderedPulldown)`
   position: relative;
   border: 2px solid ${colors.grayMedium};
   text-align: left;
+
   &.is-disabled {
     .bordered-pulldown-toggle {
       cursor: default;
@@ -120,13 +121,14 @@ const PulldownOptions = styled.div`
   left: -2px;
   right: -2px;
   z-index: 2;
+
   > a {
     text-decoration: none;
     overflow: ellipsis;
     display: block;
     padding: 8px 10px 6px;
-    text-decoration: none;
     cursor: pointer;
+
     &:hover {
       background-color: ${colors.gray};
     }

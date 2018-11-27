@@ -47,6 +47,7 @@ export const SeriesTitleContainer = styled.div`
   ${ImageContainer} {
     padding-top: 5px;
     padding-bottom: 40px;
+
     img {
       margin-left: auto;
       margin-right: auto;

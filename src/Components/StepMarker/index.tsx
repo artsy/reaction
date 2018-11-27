@@ -114,7 +114,7 @@ const Mark = styled.div`
       text-align: center;
       width: 100%;
 
-      &:before {
+      &::before {
         background: ${bgColor};
         border-radius: 50%;
         border: 2px solid ${circleBorderColor};
@@ -127,7 +127,7 @@ const Mark = styled.div`
         z-index: 2;
       }
 
-      &:after {
+      &::after {
         border-top: 2px solid ${connectingBorderColor};
         width: 100%;
         left: 50%;

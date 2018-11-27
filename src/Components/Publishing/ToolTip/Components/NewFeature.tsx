@@ -20,6 +20,7 @@ export const NewFeature: React.SFC = () => {
 export const NewFeatureContainer = styled.div`
   ${unica("s10")};
   color: ${Colors.grayMedium};
+
   a {
     color: ${Colors.grayMedium};
     border-bottom: 1px solid ${Colors.grayRegular};

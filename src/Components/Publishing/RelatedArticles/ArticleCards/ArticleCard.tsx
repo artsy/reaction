@@ -194,7 +194,6 @@ const ImageContainer = styled.div`
 `
 
 export const ArticleCardContainer = styled.a`
-  display: block;
   border: 1px solid;
   border-radius: 2px;
   color: ${(props: LinkProps) => props.color};
@@ -202,14 +201,17 @@ export const ArticleCardContainer = styled.a`
   text-decoration: none;
   padding: 30px;
   display: flex;
+
   ${Image} {
     opacity: ${(props: LinkProps) => (props.published ? "1" : "0.7")};
   }
+
   &:hover {
     ${Image} {
       opacity: 0.7;
     }
   }
+
   ${ImageContainer} {
     background: ${(props: LinkProps) =>
       props.color === "white" ? "black" : "white"};
@@ -255,6 +257,7 @@ const Description = styled.div`
 const MediaDate = styled(Sans)`
   display: flex;
   align-items: flex-end;
+
   span {
     margin-right: 5px;
   }

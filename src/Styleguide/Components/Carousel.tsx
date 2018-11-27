@@ -147,7 +147,7 @@ const CarouselContainer = styled.div<{ height?: number }>`
     width: 0;
 
     button {
-      &:before {
+      &::before {
         font-size: 4px;
       }
     }

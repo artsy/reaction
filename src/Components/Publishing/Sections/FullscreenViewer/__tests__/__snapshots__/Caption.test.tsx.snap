@@ -31,6 +31,14 @@ exports[`renders an artwork caption properly 1`] = `
   color: black;
 }
 
+.c4 a {
+  color: black;
+  font-family: Unica77LLWebMedium,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
 .c4 .title {
   font-family: Unica77LLWebMediumItalic,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -41,14 +49,6 @@ exports[`renders an artwork caption properly 1`] = `
 .c4 .title,
 .c4 .title a {
   font-family: Unica77LLWebMediumItalic,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-.c4 a {
-  color: black;
-  font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -92,7 +92,7 @@ exports[`renders an artwork caption properly 1`] = `
 }
 
 .c0 p {
-  margin: 0px;
+  margin: 0;
 }
 
 .c1 {
@@ -311,7 +311,7 @@ exports[`renders an image caption properly 1`] = `
 }
 
 .c0 p {
-  margin: 0px;
+  margin: 0;
 }
 
 .c1 {

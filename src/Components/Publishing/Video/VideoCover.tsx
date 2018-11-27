@@ -106,6 +106,7 @@ const VideoCoverInfo = styled.div`
   box-sizing: border-box;
   padding-bottom: 60px;
   z-index: 1;
+
   ${IconVideoPlay} {
     height: 60px;
     width: 44px;

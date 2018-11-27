@@ -14,7 +14,6 @@ const Message: React.SFC<MessageProps> = props => {
 export default styled(Message)`
   color: ${colors.graySemibold};
   width: 100%;
-  text-align: left;
   padding: 15px 30px;
   border: 1px solid
     ${props => (props.error ? colors.redMedium : colors.yellowMedium)};

@@ -43,7 +43,7 @@ exports[`renders ShareDate properly 1`] = `
 }
 
 .c5 {
-  margin: 5px 10px 5px 0px;
+  margin: 5px 10px 5px 0;
 }
 
 .c0 {
