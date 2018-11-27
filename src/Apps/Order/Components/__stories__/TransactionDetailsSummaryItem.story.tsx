@@ -1,6 +1,6 @@
 import { Flex } from "@artsy/palette"
 import { TransactionDetailsSummaryItem_order } from "__generated__/TransactionDetailsSummaryItem_order.graphql"
-import { mockResolver } from "Apps/__tests__/Fixtures/Order"
+import { mockResolver, UntouchedBuyOrder } from "Apps/__tests__/Fixtures/Order"
 import { MockRelayRenderer } from "DevTools"
 import React from "react"
 import { graphql } from "react-relay"
@@ -11,7 +11,7 @@ import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSum
 
 const order: TransactionDetailsSummaryItem_order = {
   " $refType": null,
-  mode: "BUY",
+  ...UntouchedBuyOrder,
   itemsTotal: "£3,024.89",
   totalListPrice: "£3,024.89",
   shippingTotal: "£132.32",
@@ -63,10 +63,16 @@ storiesOf("Apps/Order Page/Components", module)
     <Section title="Offer Transaction Summary">
       <Flex width={280} flexDirection="column">
         {render({
+          __typename: "OfferOrder",
           mode: "OFFER",
-          lastOffer: {
+          myLastOffer: {
             id: "2345",
+            amount: "$102489",
             amountCents: 102489,
+            shippingTotal: "$200",
+            shippingTotalCents: 20000,
+            taxTotal: "$100",
+            taxTotalCents: 10000,
           },
         })}
       </Flex>
@@ -78,10 +84,16 @@ storiesOf("Apps/Order Page/Components", module)
       <Flex width={280} flexDirection="column">
         {render(
           {
+            __typename: "OfferOrder",
             mode: "OFFER",
-            lastOffer: {
+            myLastOffer: {
               id: "2345",
+              amount: "$102489",
               amountCents: 102489,
+              shippingTotal: "$200",
+              shippingTotalCents: 20000,
+              taxTotal: "$100",
+              taxTotalCents: 10000,
             },
           },
           {
