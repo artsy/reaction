@@ -3,11 +3,13 @@ import React from "react"
 export class StaticCollapse extends React.Component<{ open: boolean }> {
   wrapperModifyTimeout: ReturnType<typeof setTimeout>
   wrapperRef: HTMLDivElement | null = null
-  onTransitionEnd = () => {
+  onTransitionEnd = (ev: TransitionEvent) => {
     if (!this.wrapperRef) {
       return
     }
-    this.wrapperRef.style.height = this.props.open ? "auto" : "0px"
+    if (ev.propertyName === "height") {
+      this.wrapperRef.style.height = this.props.open ? "auto" : "0px"
+    }
   }
 
   componentDidMount() {
