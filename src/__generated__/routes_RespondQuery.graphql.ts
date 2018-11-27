@@ -184,7 +184,14 @@ v2 = {
   "args": null,
   "storageKey": null
 },
-v3 = [
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v4 = [
   {
     "kind": "Literal",
     "name": "precision",
@@ -192,47 +199,40 @@ v3 = [
     "type": "Int"
   }
 ],
-v4 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "taxTotal",
-  "args": v3,
-  "storageKey": "taxTotal(precision:2)"
-},
 v5 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v6 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__id",
   "args": null,
   "storageKey": null
 },
-v7 = {
+v6 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__typename",
   "args": null,
   "storageKey": null
 },
-v8 = {
+v7 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "shippingTotal",
-  "args": v3,
+  "args": v4,
   "storageKey": "shippingTotal(precision:2)"
 },
-v9 = {
+v8 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "shippingTotalCents",
   "args": null,
   "storageKey": null
+},
+v9 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "taxTotal",
+  "args": v4,
+  "storageKey": "taxTotal(precision:2)"
 },
 v10 = {
   "kind": "ScalarField",
@@ -302,8 +302,14 @@ return {
         "concreteType": null,
         "plural": false,
         "selections": [
-          v4,
-          v5,
+          v3,
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "mode",
+            "args": null,
+            "storageKey": null
+          },
           {
             "kind": "ScalarField",
             "alias": null,
@@ -315,14 +321,14 @@ return {
             "kind": "ScalarField",
             "alias": null,
             "name": "itemsTotal",
-            "args": v3,
+            "args": v4,
             "storageKey": "itemsTotal(precision:2)"
           },
           {
             "kind": "ScalarField",
             "alias": null,
             "name": "totalListPrice",
-            "args": v3,
+            "args": v4,
             "storageKey": "totalListPrice(precision:2)"
           },
           {
@@ -361,8 +367,8 @@ return {
                         "concreteType": "Artwork",
                         "plural": false,
                         "selections": [
+                          v3,
                           v5,
-                          v6,
                           {
                             "kind": "ScalarField",
                             "alias": null,
@@ -436,22 +442,16 @@ return {
               }
             ]
           },
+          v6,
           v7,
           v8,
           v9,
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "mode",
-            "args": null,
-            "storageKey": null
-          },
           v10,
           {
             "kind": "ScalarField",
             "alias": null,
             "name": "buyerTotal",
-            "args": v3,
+            "args": v4,
             "storageKey": "buyerTotal(precision:2)"
           },
           {
@@ -463,9 +463,30 @@ return {
             "concreteType": "Offer",
             "plural": false,
             "selections": [
-              v5,
+              v3,
               v11,
               v2
+            ]
+          },
+          v2,
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "seller",
+            "storageKey": null,
+            "args": null,
+            "concreteType": null,
+            "plural": false,
+            "selections": [
+              v6,
+              v5,
+              {
+                "kind": "InlineFragment",
+                "type": "Partner",
+                "selections": [
+                  v12
+                ]
+              }
             ]
           },
           {
@@ -477,7 +498,7 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v7,
+              v6,
               {
                 "kind": "InlineFragment",
                 "type": "Ship",
@@ -536,27 +557,6 @@ return {
               }
             ]
           },
-          v2,
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "name": "seller",
-            "storageKey": null,
-            "args": null,
-            "concreteType": null,
-            "plural": false,
-            "selections": [
-              v7,
-              v6,
-              {
-                "kind": "InlineFragment",
-                "type": "Partner",
-                "selections": [
-                  v12
-                ]
-              }
-            ]
-          },
           {
             "kind": "LinkedField",
             "alias": null,
@@ -594,7 +594,7 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v6
+              v5
             ]
           },
           {
@@ -610,18 +610,18 @@ return {
                 "concreteType": "Offer",
                 "plural": false,
                 "selections": [
-                  v5,
+                  v3,
                   {
                     "kind": "ScalarField",
                     "alias": null,
                     "name": "amount",
-                    "args": v3,
+                    "args": v4,
                     "storageKey": "amount(precision:2)"
                   },
                   v11,
+                  v7,
                   v8,
                   v9,
-                  v4,
                   v10,
                   v2
                 ]

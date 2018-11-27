@@ -143,7 +143,14 @@ v2 = {
   "args": null,
   "storageKey": null
 },
-v3 = [
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "href",
+  "args": null,
+  "storageKey": null
+},
+v4 = [
   {
     "kind": "Literal",
     "name": "shallow",
@@ -151,13 +158,6 @@ v3 = [
     "type": "Boolean"
   }
 ],
-v4 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "href",
-  "args": null,
-  "storageKey": null
-},
 v5 = {
   "kind": "ScalarField",
   "alias": null,
@@ -220,52 +220,9 @@ return {
         "plural": false,
         "selections": [
           {
-            "kind": "LinkedField",
-            "alias": null,
-            "name": "artists",
-            "storageKey": "artists(shallow:true)",
-            "args": v3,
-            "concreteType": "Artist",
-            "plural": true,
-            "selections": [
-              v2,
-              v4,
-              v5
-            ]
-          },
-          {
             "kind": "ScalarField",
             "alias": null,
             "name": "id",
-            "args": null,
-            "storageKey": null
-          },
-          v4,
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "title",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "date",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "sale_message",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "cultural_maker",
             "args": null,
             "storageKey": null
           },
@@ -301,6 +258,49 @@ return {
               }
             ]
           },
+          v3,
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "title",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "date",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "sale_message",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "cultural_maker",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "artists",
+            "storageKey": "artists(shallow:true)",
+            "args": v4,
+            "concreteType": "Artist",
+            "plural": true,
+            "selections": [
+              v2,
+              v3,
+              v5
+            ]
+          },
           {
             "kind": "ScalarField",
             "alias": null,
@@ -313,12 +313,12 @@ return {
             "alias": null,
             "name": "partner",
             "storageKey": "partner(shallow:true)",
-            "args": v3,
+            "args": v4,
             "concreteType": "Partner",
             "plural": false,
             "selections": [
               v5,
-              v4,
+              v3,
               v2,
               {
                 "kind": "ScalarField",

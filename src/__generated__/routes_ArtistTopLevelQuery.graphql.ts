@@ -141,14 +141,14 @@ v3 = {
 v4 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "name",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
 v5 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
+  "name": "name",
   "args": null,
   "storageKey": null
 },
@@ -206,6 +206,23 @@ return {
         "concreteType": "Artist",
         "plural": false,
         "selections": [
+          v3,
+          v4,
+          v5,
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "nationality",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "years",
+            "args": null,
+            "storageKey": null
+          },
           {
             "kind": "LinkedField",
             "alias": null,
@@ -224,23 +241,6 @@ return {
               }
             ]
           },
-          v3,
-          v4,
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "nationality",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "years",
-            "args": null,
-            "storageKey": null
-          },
-          v5,
           {
             "kind": "LinkedField",
             "alias": null,
@@ -361,9 +361,9 @@ return {
                         "plural": false,
                         "selections": [
                           v2,
-                          v5,
-                          v3,
                           v4,
+                          v3,
+                          v5,
                           {
                             "kind": "LinkedField",
                             "alias": null,

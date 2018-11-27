@@ -1,28 +1,18 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-export type SetOrderPaymentInput = {
-    readonly orderId: string;
-    readonly creditCardId: string;
+export type SubmitOrderWithOfferInput = {
+    readonly offerId: string;
     readonly clientMutationId?: string | null;
 };
-export type PaymentRouteSetOrderPaymentMutationVariables = {
-    readonly input: SetOrderPaymentInput;
+export type ReviewSubmitOfferOrderMutationVariables = {
+    readonly input: SubmitOrderWithOfferInput;
 };
-export type PaymentRouteSetOrderPaymentMutationResponse = {
-    readonly ecommerceSetOrderPayment: ({
+export type ReviewSubmitOfferOrderMutationResponse = {
+    readonly ecommerceSubmitOrderWithOffer: ({
         readonly orderOrError: ({
             readonly order?: ({
-                readonly creditCard: ({
-                    readonly id: string;
-                    readonly name: string | null;
-                    readonly street1: string | null;
-                    readonly street2: string | null;
-                    readonly city: string | null;
-                    readonly state: string | null;
-                    readonly country: string | null;
-                    readonly postal_code: string | null;
-                }) | null;
+                readonly state: string | null;
             }) | null;
             readonly error?: ({
                 readonly type: string;
@@ -32,34 +22,24 @@ export type PaymentRouteSetOrderPaymentMutationResponse = {
         }) | null;
     }) | null;
 };
-export type PaymentRouteSetOrderPaymentMutation = {
-    readonly response: PaymentRouteSetOrderPaymentMutationResponse;
-    readonly variables: PaymentRouteSetOrderPaymentMutationVariables;
+export type ReviewSubmitOfferOrderMutation = {
+    readonly response: ReviewSubmitOfferOrderMutationResponse;
+    readonly variables: ReviewSubmitOfferOrderMutationVariables;
 };
 
 
 
 /*
-mutation PaymentRouteSetOrderPaymentMutation(
-  $input: SetOrderPaymentInput!
+mutation ReviewSubmitOfferOrderMutation(
+  $input: SubmitOrderWithOfferInput!
 ) {
-  ecommerceSetOrderPayment(input: $input) {
+  ecommerceSubmitOrderWithOffer(input: $input) {
     orderOrError {
       __typename
       ... on OrderWithMutationSuccess {
         order {
           __typename
-          creditCard {
-            id
-            name
-            street1
-            street2
-            city
-            state
-            country
-            postal_code
-            __id
-          }
+          state
           __id: id
         }
       }
@@ -80,7 +60,7 @@ var v0 = [
   {
     "kind": "LocalArgument",
     "name": "input",
-    "type": "SetOrderPaymentInput!",
+    "type": "SubmitOrderWithOfferInput!",
     "defaultValue": null
   }
 ],
@@ -89,82 +69,15 @@ v1 = [
     "kind": "Variable",
     "name": "input",
     "variableName": "input",
-    "type": "SetOrderPaymentInput!"
+    "type": "SubmitOrderWithOfferInput!"
   }
 ],
 v2 = {
-  "kind": "LinkedField",
+  "kind": "ScalarField",
   "alias": null,
-  "name": "creditCard",
-  "storageKey": null,
+  "name": "state",
   "args": null,
-  "concreteType": "CreditCard",
-  "plural": false,
-  "selections": [
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "id",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "name",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "street1",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "street2",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "city",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "state",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "country",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "postal_code",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
-    }
-  ]
+  "storageKey": null
 },
 v3 = {
   "kind": "ScalarField",
@@ -221,13 +134,13 @@ v5 = {
 return {
   "kind": "Request",
   "operationKind": "mutation",
-  "name": "PaymentRouteSetOrderPaymentMutation",
+  "name": "ReviewSubmitOfferOrderMutation",
   "id": null,
-  "text": "mutation PaymentRouteSetOrderPaymentMutation(\n  $input: SetOrderPaymentInput!\n) {\n  ecommerceSetOrderPayment(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        order {\n          __typename\n          creditCard {\n            id\n            name\n            street1\n            street2\n            city\n            state\n            country\n            postal_code\n            __id\n          }\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation ReviewSubmitOfferOrderMutation(\n  $input: SubmitOrderWithOfferInput!\n) {\n  ecommerceSubmitOrderWithOffer(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        order {\n          __typename\n          state\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "PaymentRouteSetOrderPaymentMutation",
+    "name": "ReviewSubmitOfferOrderMutation",
     "type": "Mutation",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -235,10 +148,10 @@ return {
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "ecommerceSetOrderPayment",
+        "name": "ecommerceSubmitOrderWithOffer",
         "storageKey": null,
         "args": v1,
-        "concreteType": "SetOrderPaymentPayload",
+        "concreteType": "SubmitOrderWithOfferPayload",
         "plural": false,
         "selections": [
           {
@@ -278,16 +191,16 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "PaymentRouteSetOrderPaymentMutation",
+    "name": "ReviewSubmitOfferOrderMutation",
     "argumentDefinitions": v0,
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "ecommerceSetOrderPayment",
+        "name": "ecommerceSubmitOrderWithOffer",
         "storageKey": null,
         "args": v1,
-        "concreteType": "SetOrderPaymentPayload",
+        "concreteType": "SubmitOrderWithOfferPayload",
         "plural": false,
         "selections": [
           {
@@ -329,5 +242,5 @@ return {
   }
 };
 })();
-(node as any).hash = '788e14cf29d4978ff12b9d07d8bce050';
+(node as any).hash = '58df6696dd7d98059101a7fed178c970';
 export default node;
