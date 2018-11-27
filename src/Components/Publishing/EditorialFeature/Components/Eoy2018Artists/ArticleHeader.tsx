@@ -1,28 +1,39 @@
 import { Box, color, Flex } from "@artsy/palette"
 import { unica } from "Assets/Fonts"
+import { flatten, map } from "lodash"
 import React from "react"
 import styled from "styled-components"
-import { BORDER_WIDTH } from "./index"
+import { resize } from "Utils/resizer"
 
 export class Eoy2018ArticleHeader extends React.Component<{
   images?: any
 }> {
+  getImageUrls = gridSize => {
+    const bgImages = map(flatten(this.props.images), "url")
+    const resizedImages = bgImages.map(url => resize(url, { width: 300 }))
+    const urls = []
+
+    let i = 0
+    for (i; i < gridSize; i++) {
+      const bgIndex = Math.floor(
+        Math.random() * Math.floor(resizedImages.length)
+      )
+      urls.push(resizedImages[bgIndex])
+    }
+    return urls
+  }
+
   render() {
+    const gridSize = 12 // TODO: responsive gridSize
+    const imageUrls = this.getImageUrls(gridSize)
     return (
       <ArticleHeader>
         <HeaderGrid flexWrap="wrap">
-          <GridItem />
-          <GridItem />
-          <GridItem />
-          <GridItem />
-          <GridItem />
-          <GridItem />
-          <GridItem />
-          <GridItem />
-          <GridItem />
-          <GridItem />
-          <GridItem />
-          <GridItem />
+          {imageUrls.map((src, i) => (
+            <GridItem key={i}>
+              <Img src={src} />
+            </GridItem>
+          ))}
         </HeaderGrid>
 
         <Title>
@@ -37,25 +48,46 @@ export class Eoy2018ArticleHeader extends React.Component<{
 
 const HeaderGrid = styled(Flex)`
   position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   overflow: hidden;
 `
 
-const GridItem = styled(Box)<{ src?: string }>`
-  border: ${BORDER_WIDTH / 2}px solid ${color("purple100")};
+const Img = styled.div<{ src?: string }>`
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s;
+
+  ${({ src }) =>
+    src &&
+    `
+    background: url(${src});
+    background-size: cover;
+    background-position: 50%;
+    mix-blend-mode: screen;
+    filter: grayscale(100%);
+  `};
+`
+
+const GridItem = styled(Box)`
+  border: 3px solid ${color("purple100")};
   width: 25%;
-  height: 30vh;
+  transition: background-color 0.5s;
+
   &:hover {
     background-color: ${color("purple100")};
+    ${Img} {
+      opacity: 1;
+    }
   }
 `
 
 const ArticleHeader = styled.div`
   height: 90vh;
-  border: ${BORDER_WIDTH}px solid ${color("purple100")};
+  border: 3px solid ${color("purple100")};
   display: flex;
   align-items: center;
   position: relative;

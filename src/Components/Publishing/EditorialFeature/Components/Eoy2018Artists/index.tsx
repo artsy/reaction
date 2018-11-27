@@ -1,44 +1,56 @@
-import { color, Serif } from "@artsy/palette"
+import { color, Flex, Serif, space } from "@artsy/palette"
+import { compact, find, map } from "lodash"
+import React from "react"
+import styled from "styled-components"
+
 import { unica } from "Assets/Fonts"
+import { Byline, BylineContainer } from "Components/Publishing/Byline/Byline"
 import { ArticleProps } from "Components/Publishing/Layouts/FeatureLayout"
 import { Nav } from "Components/Publishing/Nav/Nav"
 import { ImageSetPreview } from "Components/Publishing/Sections/ImageSetPreview"
-import React from "react"
-import styled from "styled-components"
+import { resize } from "Utils/resizer"
 import { Eoy2018ArticleHeader } from "./ArticleHeader"
 
-export const BORDER_WIDTH = 4
-
 export class Eoy2018Artists extends React.Component<ArticleProps> {
+  getHeaderSections = () => {
+    const { sections } = this.props.article
+    const headers = []
+
+    sections.map((section, index) => {
+      let headerSection
+      const sectionAfter = sections[index + 1]
+      const sectionAfterisImage =
+        sectionAfter && sectionAfter.type === "image_collection"
+
+      if (this.sectionIsHeader(section)) {
+        headerSection = {
+          index,
+          section,
+        }
+        if (sectionAfterisImage) {
+          headerSection.imageSection = sectionAfter
+        }
+        headers.push(headerSection)
+      }
+    })
+    return headers
+  }
+
   sectionIsHeader = section => {
     const isText = section.type === "text"
     const isHeader = isText && section.body.includes("<h1>")
     return isHeader
   }
 
-  sectionIsHeaderImage = (section, i) => {
-    const {
-      article: { sections },
-    } = this.props
-    const isImage = section.type === "image_collection"
-    const sectionBefore = i !== 0 && sections[i - 1]
-    const sectionBeforeIsHeader = this.sectionIsHeader(sectionBefore)
-
-    return isImage && sectionBeforeIsHeader
-  }
-
-  sectionHeader = (section, i) => {
-    const {
-      article: { sections },
-    } = this.props
-    const sectionAfter = sections[i + 1]
-    const sectionAfterisImage = this.sectionIsHeaderImage(sectionAfter, i + 1)
-    const src = sectionAfterisImage && sectionAfter.images[0].url
+  sectionArtistHeader = (section, i) => {
+    const headerSections = this.getHeaderSections()
+    const { imageSection } = find(headerSections, ["section", section])
+    const src = imageSection && imageSection.images[0].url
 
     return (
       <ArtistHeaderSection key={i}>
         <ArtistHeaderTitle dangerouslySetInnerHTML={{ __html: section.body }} />
-        <ArtistHeaderImg src={src || undefined} />
+        <ArtistHeaderImg src={src && resize(src, { width: 700 })} />
       </ArtistHeaderSection>
     )
   }
@@ -63,17 +75,20 @@ export class Eoy2018Artists extends React.Component<ArticleProps> {
     const {
       article: { sections },
     } = this.props
+    const headerSections = this.getHeaderSections()
+    const headerTextIndexes = map(headerSections, "index")
+    const headerImages = map(headerSections, "image")
 
     const renderedSections = sections.map((section, i) => {
-      const isHeader = this.sectionIsHeader(section)
-      const isHeaderImage = this.sectionIsHeaderImage(section, i)
+      const isHeader = headerTextIndexes.includes(i)
+      const isHeaderImage = headerImages.includes(section)
 
       if (isHeader) {
-        return this.sectionHeader(section, i)
+        return this.sectionArtistHeader(section, i)
       } else if (isHeaderImage) {
         return null
       } else {
-        if (section.type === "text") {
+        if (section.type === "text" && i !== 0) {
           return this.sectionText(section, i)
         } else if (section.type === "image_set") {
           return this.sectionImageSet(section, i)
@@ -86,19 +101,32 @@ export class Eoy2018Artists extends React.Component<ArticleProps> {
   }
 
   render() {
+    const { article } = this.props
+    const introText = this.sectionText(article.sections[0], 0)
+    const headerImages = map(
+      compact(map(this.getHeaderSections(), "imageSection")),
+      "images"
+    )
+
     return (
       <React.Fragment>
         <Nav canFix />
-
         <ArticleWrapper>
-          <Eoy2018ArticleHeader />
-
-          <ArticleContent>{this.getSections()}</ArticleContent>
+          <Eoy2018ArticleHeader images={headerImages} />
+          <ArticleContent>
+            <IntroSection alignItems="flex-start" pl={20}>
+              <Byline article={article} />
+              {introText}
+            </IntroSection>
+            {this.getSections()}
+          </ArticleContent>
         </ArticleWrapper>
       </React.Fragment>
     )
   }
 }
+
+const BORDER_WIDTH = 6
 
 const ArticleWrapper = styled.div`
   padding: 0 40px;
@@ -114,7 +142,8 @@ const ArticleContent = styled.div`
 `
 
 const ArtistHeaderSection = styled.div`
-  height: 55vh;
+  height: 60vh;
+  min-height: 450px;
   border: ${BORDER_WIDTH}px solid ${color("purple100")};
   border-left: none;
   display: flex;
@@ -129,14 +158,20 @@ const ArtistHeaderTitle = styled.div`
     ${unica("s65")};
     width: 100%;
     height: 50%;
-    padding: 20px;
+    min-height: fit-content;
+    padding: ${space(2)}px;
     border-bottom: ${BORDER_WIDTH}px solid ${color("purple100")};
+    &:hover {
+      background: ${color("purple100")};
+      color: white;
+    }
   }
 
   h2 {
     ${unica("s25")};
     width: 50%;
     height: 50%;
+    min-height: fit-content;
     display: inline-flex;
     padding: 20px;
     &:last-child {
@@ -151,6 +186,7 @@ const ArtistHeaderTitle = styled.div`
 
 const ArtistHeaderImg = styled.div<{ src?: string }>`
   flex: 1;
+  background: ${color("purple100")};
   ${props =>
     props.src &&
     `
@@ -160,13 +196,25 @@ const ArtistHeaderImg = styled.div<{ src?: string }>`
   `};
 `
 
+const IntroSection = styled(Flex)`
+  ${BylineContainer} {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+`
+
 const TextSection = styled(Serif)`
   max-width: 75%;
   margin-left: auto;
   padding-bottom: 60px;
 
   p {
-    font-size: 24;
+    font-size: 24px;
+    text-indent: 2em;
+
+    &:first-child {
+      text-indent: 0;
+    }
   }
 `
 const ImageSetWrapper = styled.div`
