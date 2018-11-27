@@ -1,9 +1,9 @@
 import { garamond } from "Assets/Fonts"
 import { pMedia } from "Components/Helpers"
-import { PartnerInline } from "Components/Publishing/Partner/PartnerInline"
 import React from "react"
 import Waypoint from "react-waypoint"
-import styled from "styled-components"
+import styled, { StyledFunction } from "styled-components"
+import { PartnerInline } from "../Partner/PartnerInline"
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
   canFix?: boolean
@@ -13,6 +13,11 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
 }
 
 interface State {
+  isFixed: boolean
+}
+
+interface DivProps {
+  transparent: boolean
   isFixed: boolean
 }
 
@@ -65,10 +70,10 @@ export class NavComponent extends React.Component<Props, State> {
   }
 }
 
-export const NavContainer = styled.div<{
-  transparent: boolean
-  isFixed: boolean
-}>`
+const Div: StyledFunction<DivProps & React.HTMLProps<HTMLDivElement>> =
+  styled.div
+
+const NavContainer = Div`
   background-color: ${props => (props.transparent ? "transparent" : "black")};
   border-bottom: 1px solid white;
   ${props =>
@@ -77,7 +82,7 @@ export const NavContainer = styled.div<{
     `
     position: absolute;
     top: 0;
-  `};
+  `}
   ${props =>
     props.isFixed &&
     `
@@ -85,7 +90,7 @@ export const NavContainer = styled.div<{
     top: 0;
     left: 0;
     right: 0;
-  `};
+  `}
 `
 export const Nav = styled(NavComponent)`
   position: relative;
@@ -96,6 +101,7 @@ export const Nav = styled(NavComponent)`
   width: 100%;
   color: white;
   z-index: 10;
+
   a {
     z-index: 10;
   }
@@ -106,6 +112,7 @@ const Title = styled.div`
   width: 100%;
   text-align: center;
   font-weight: 600;
+
   a {
     color: white;
     text-decoration: none;

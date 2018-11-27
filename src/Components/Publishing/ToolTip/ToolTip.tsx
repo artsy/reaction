@@ -95,9 +95,11 @@ const Content = styled.div.attrs<{ orientation: string; arrowLeft?: string }>(
   background: white;
   margin-bottom: 15px;
   width: fit-content;
+
   a {
     background-image: none;
   }
+
   ${ArrowContainer} {
     left: ${props =>
       props.arrowLeft ? `${props.arrowLeft}px` : `calc(50% - 15px)`};

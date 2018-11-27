@@ -35,19 +35,24 @@ export const StyledFollowButton = styled.div`
   font-size: 16px;
   align-items: center;
   margin-left: 5px;
-  &:after {
+
+  &::after {
     content: "Follow";
   }
+
   &:hover {
     color: ${colors.purpleRegular};
   }
+
   &[data-followed="true"] {
-    &:after {
+    &::after {
       content: "Following";
     }
+
     &:hover {
       color: ${colors.redBold};
-      &:after {
+
+      &::after {
         content: "Unfollow";
       }
     }

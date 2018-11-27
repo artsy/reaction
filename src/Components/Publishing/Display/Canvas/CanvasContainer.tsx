@@ -274,7 +274,7 @@ const Background = Div`
   top: 0;
   bottom: 0;
   z-index: -1;
-  &:before {
+  &::before {
     content: '';
     background-image: url(${props =>
       props.backgroundUrl && props.backgroundUrl});

@@ -33,17 +33,17 @@ exports[`renders a single image properly 1`] = `
   line-height: 1.4em;
 }
 
-.c9 .title,
-.c9 .title a {
-  font-family: Unica77LLWebItalic,Arial,serif;
+.c9 a {
+  color: #999999;
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
 }
 
-.c9 a {
-  color: #999999;
-  font-family: Unica77LLWebRegular,Arial,serif;
+.c9 .title,
+.c9 .title a {
+  font-family: Unica77LLWebItalic,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
@@ -342,17 +342,17 @@ exports[`renders properly 1`] = `
   line-height: 1.4em;
 }
 
-.c9 .title,
-.c9 .title a {
-  font-family: Unica77LLWebItalic,Arial,serif;
+.c9 a {
+  color: #999999;
+  font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
 }
 
-.c9 a {
-  color: #999999;
-  font-family: Unica77LLWebRegular,Arial,serif;
+.c9 .title,
+.c9 .title a {
+  font-family: Unica77LLWebItalic,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;

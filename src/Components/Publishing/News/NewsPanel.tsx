@@ -37,8 +37,10 @@ const NewsPanelContainer = styled.div`
   padding: 20px;
   border: 1px solid ${colors.grayRegular};
   border-radius: 3px;
+
   a {
     color: black;
+
     &:hover {
       color: ${colors.grayDark};
     }
@@ -73,7 +75,8 @@ const ArticlesContainer = styled.div`
 `
 
 const ArticleHeadline = styled.a`
-  ${garamond("s18")} padding: 10px 0;
+  ${garamond("s18")};
+  padding: 10px 0;
   cursor: pointer;
   text-decoration: none;
   ${pMedia.sm`

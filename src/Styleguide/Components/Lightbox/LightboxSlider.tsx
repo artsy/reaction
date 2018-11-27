@@ -24,9 +24,12 @@ const StyledSlider = styled.input`
   margin: 0 ${space(1)}px;
 
   &::-webkit-slider-thumb {
+    /* stylelint-disable-next-line property-no-vendor-prefix */
     -webkit-appearance: none;
     margin-top: -9px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
-    ${knobStyles};
+
+    /* prettier-ignore */
+    ${knobStyles}
   }
 
   /* All the same stuff for Firefox */

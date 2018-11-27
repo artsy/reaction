@@ -115,24 +115,20 @@ export class ImageSetPreview extends React.PureComponent<Props, null> {
   render() {
     const image = this.props.section.layout === "full" ? this.image() : null
     return (
-      <ImageSetWrapper>
+      <div style={{ position: "relative", width: "100%" }}>
         {this.wrapper()}
         {image}
-      </ImageSetWrapper>
+      </div>
     )
   }
 }
-
-export const ImageSetWrapper = styled.div`
-  position: relative;
-  width: 100%;
-`
 
 const IconContainer = styled.div`
   height: 45px;
   position: relative;
   margin-left: 40px;
   text-align: right;
+
   > svg {
     height: 98%;
   }
@@ -156,9 +152,11 @@ const FullWrapper = styled.div`
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
   padding: 20px;
   cursor: pointer;
+
   &:hover {
     background: rgba(0, 0, 0, 0.6);
     color: white;
+
     ${IconContainer} {
       fill: white;
     }
@@ -187,7 +185,8 @@ const MiniInner = styled.div`
   margin-left: 20px;
 `
 const Title = styled.div`
-  ${unica("s19", "medium")} margin-bottom: 8px;
+  ${unica("s19", "medium")};
+  margin-bottom: 8px;
   line-height: 1.1em;
   ${pMedia.xs`
     ${unica("s16", "medium")}
@@ -197,12 +196,14 @@ const SubTitle = styled.div`
   display: flex;
 `
 const SubTitlePrompt = styled.div`
-  ${unica("s14", "medium")} ${pMedia.xs`
+  ${unica("s14", "medium")};
+  ${pMedia.xs`
     ${unica("s12", "medium")}
   `};
 `
 const SubTitleCount = styled.div`
-  ${unica("s14")} margin-left: 20px;
+  ${unica("s14")};
+  margin-left: 20px;
   ${pMedia.xs`
     ${unica("s12")}
   `};

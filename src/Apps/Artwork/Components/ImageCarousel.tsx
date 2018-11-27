@@ -117,6 +117,7 @@ const PageIndicatorsContainer = styled(ControlsContainerItem)`
   justify-content: center;
   align-items: center;
 
+  /* stylelint-disable-next-line */
   ${PageIndicator} + ${PageIndicator} {
     margin-left: 5px;
   }

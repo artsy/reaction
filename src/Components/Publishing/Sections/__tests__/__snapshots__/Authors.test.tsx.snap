@@ -70,7 +70,7 @@ exports[`renders properly 1`] = `
 
 .c5 .c6 {
   vertical-align: middle;
-  margin: 0px;
+  margin: 0;
 }
 
 .c0 {

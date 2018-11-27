@@ -54,16 +54,17 @@ const ItemContainer = styled.div`
 const FixedButttonContainer = styled.div`
   width: 100%;
   position: fixed;
-  bottom: 0px;
-  left: 0px;
+  bottom: 0;
+  left: 0;
 `
 
 /* Mobile safari doesn't support for the fixed position property:
  *   https://www.eventbrite.com/engineering/mobile-safari-why/
  **/
 const StickyButtonContainer = styled.div`
+  /* stylelint-disable-next-line value-no-vendor-prefix */
   position: -webkit-sticky;
-  bottom: 0px;
+  bottom: 0;
   background: linear-gradient(
     rgba(255, 255, 255, 0) 0%,
     rgba(255, 255, 255, 0.5) 17%,
@@ -75,7 +76,7 @@ const StickyButtonContainer = styled.div`
 `
 
 const NextButton = styled(MultiStateButton)`
-  margin: 50px 0px;
+  margin: 50px 0;
   display: block;
   width: 250px;
 

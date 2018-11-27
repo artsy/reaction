@@ -17,7 +17,7 @@ exports[`ArticleCard renders an article properly 1`] = `
   margin: 10px 20px 0 0;
 }
 
-.c7:before {
+.c7::before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -60,7 +60,6 @@ exports[`ArticleCard renders an article properly 1`] = `
 }
 
 .c0 {
-  display: block;
   border: 1px solid;
   border-radius: 2px;
   color: black;
@@ -268,7 +267,6 @@ exports[`ArticleCard renders an article with children properly 1`] = `
 }
 
 .c0 {
-  display: block;
   border: 1px solid;
   border-radius: 2px;
   color: black;
@@ -554,7 +552,6 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
 }
 
 .c0 {
-  display: block;
   border: 1px solid;
   border-radius: 2px;
   color: black;

@@ -132,7 +132,7 @@ const Image = styled.div.attrs<{ image: string }>({})`
   background-position: center;
   position: absolute;
   top: 0;
-  bottom: 0px;
+  bottom: 0;
   left: 0;
   right: 50%;
   ${media.sm`

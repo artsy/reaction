@@ -270,14 +270,17 @@ const StyledArtworkCaption = styled.div`
   display: flex;
   color: ${Colors.grayDark};
   ${unica("s14")};
-  .title,
-  .title a {
-    ${unica("s14", "italic")};
-  }
+
   a {
     color: ${Colors.grayDark};
     ${unica("s14")};
   }
+
+  .title,
+  .title a {
+    ${unica("s14", "italic")};
+  }
+
   ${pMedia.xs`
     padding: 0 10px;
   `};
@@ -292,7 +295,8 @@ const StyledClassicCaption = styled.div`
   ${ArtistNames} {
     margin-right: 0;
     font-weight: bold;
-    &:after {
+
+    &::after {
       content: ", ";
     }
   }
@@ -307,6 +311,12 @@ const StyledFullscreenCaption = styled.div`
   display: flex;
   color: black;
 
+  /* stylelint-disable-next-line */
+  a {
+    color: black;
+    ${unica("s16", "medium")};
+  }
+
   .title {
     ${unica("s16", "mediumItalic")};
   }
@@ -314,10 +324,6 @@ const StyledFullscreenCaption = styled.div`
   .title,
   .title a {
     ${unica("s16", "mediumItalic")};
-  }
-  a {
-    color: black;
-    ${unica("s16", "medium")};
   }
 
   ${pMedia.sm`

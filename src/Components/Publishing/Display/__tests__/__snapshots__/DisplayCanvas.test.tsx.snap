@@ -91,7 +91,7 @@ exports[`snapshot renders the canvas in overlay layout 1`] = `
   z-index: -1;
 }
 
-.c3:before {
+.c3::before {
   content: '';
   background-image: url(https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg);
   position: absolute;

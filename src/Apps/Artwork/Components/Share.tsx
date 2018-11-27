@@ -36,9 +36,11 @@ const URLInput = styled.input`
   display: flex;
   flex-grow: 1;
   color: inherit;
+
   &:hover {
     color: ${color("black100")};
   }
+
   &::selection {
     color: ${color("white100")};
     background: ${color("purple100")};

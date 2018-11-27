@@ -147,7 +147,7 @@ exports[`renders a series properly 1`] = `
   margin: 10px 20px 0 0;
 }
 
-.c33:before {
+.c33::before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -200,7 +200,6 @@ exports[`renders a series properly 1`] = `
 }
 
 .c18 {
-  display: block;
   border: 1px solid;
   border-radius: 2px;
   color: white;
@@ -412,7 +411,7 @@ exports[`renders a series properly 1`] = `
   text-align: center;
 }
 
-.c41 h1:before {
+.c41 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -493,7 +492,7 @@ exports[`renders a series properly 1`] = `
   background: none transparent;
 }
 
-.c41 .artist-follow:before {
+.c41 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -501,7 +500,7 @@ exports[`renders a series properly 1`] = `
   font-size: 32px;
 }
 
-.c41 .artist-follow:after {
+.c41 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -1257,7 +1256,7 @@ exports[`renders a sponsored series properly 1`] = `
   margin: 10px 20px 0 0;
 }
 
-.c40:before {
+.c40::before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -1310,7 +1309,6 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 .c25 {
-  display: block;
   border: 1px solid;
   border-radius: 2px;
   color: white;
@@ -1541,7 +1539,7 @@ exports[`renders a sponsored series properly 1`] = `
   text-align: center;
 }
 
-.c48 h1:before {
+.c48 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -1622,7 +1620,7 @@ exports[`renders a sponsored series properly 1`] = `
   background: none transparent;
 }
 
-.c48 .artist-follow:before {
+.c48 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -1630,7 +1628,7 @@ exports[`renders a sponsored series properly 1`] = `
   font-size: 32px;
 }
 
-.c48 .artist-follow:after {
+.c48 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
