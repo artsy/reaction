@@ -152,7 +152,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                   <BorderedRadio value="DECLINE">
                     Decline seller's offer
                     <WebCollapse open={this.state.responseOption === "DECLINE"}>
-                      <Spacer mb={2} />
+                      <Spacer mb={1} />
                       <Sans size="2" color="black60">
                         Declining an offer permanently ends the negotiation
                         process. The seller will not be able to make a
