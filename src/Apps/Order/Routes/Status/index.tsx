@@ -239,6 +239,17 @@ export const StatusFragmentContainer = createFragmentContainer(
           }
         }
       }
+      ... on OfferOrder {
+        myLastOffer {
+          id
+          amount(precision: 2)
+          amountCents
+          shippingTotal(precision: 2)
+          shippingTotalCents
+          taxTotal(precision: 2)
+          taxTotalCents
+        }
+      }
     }
   `
 )

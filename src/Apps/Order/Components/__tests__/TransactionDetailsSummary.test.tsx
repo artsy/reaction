@@ -1,4 +1,4 @@
-import { mockResolver } from "Apps/__tests__/Fixtures/Order"
+import { mockResolver, UntouchedBuyOrder } from "Apps/__tests__/Fixtures/Order"
 import { renderRelayTree } from "DevTools"
 import { graphql } from "react-relay"
 import { TransactionDetailsSummaryItemFragmentContainer } from "../TransactionDetailsSummaryItem"
@@ -6,7 +6,7 @@ import { TransactionDetailsSummaryItemFragmentContainer } from "../TransactionDe
 jest.unmock("react-relay")
 
 const transactionSummaryOrder = {
-  mode: "BUY",
+  ...UntouchedBuyOrder,
   shippingTotal: "$12.00",
   shippingTotalCents: "1200",
   taxTotal: "$3.25",
