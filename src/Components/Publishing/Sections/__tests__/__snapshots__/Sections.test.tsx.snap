@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Sections snapshots renders properly 1`] = `
-.c43 {
+.c45 {
   font-family: artsy-icons;
   color: black;
   font-size: 24px;
@@ -15,7 +15,7 @@ exports[`Sections snapshots renders properly 1`] = `
   color: black;
 }
 
-.c38 {
+.c40 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -27,7 +27,7 @@ exports[`Sections snapshots renders properly 1`] = `
   margin-bottom: 20px;
 }
 
-.c39 {
+.c41 {
   display: block;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -35,27 +35,27 @@ exports[`Sections snapshots renders properly 1`] = `
   line-height: 1.1em;
 }
 
-.c39 a {
+.c41 a {
   color: black;
 }
 
-.c40 {
+.c42 {
   margin-left: 20px;
 }
 
-.c41 {
+.c43 {
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
   white-space: nowrap;
 }
 
-.c41 .c42 {
+.c43 .c44 {
   vertical-align: middle;
   margin: 0px;
 }
 
-.c37 {
+.c39 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -265,24 +265,18 @@ exports[`Sections snapshots renders properly 1`] = `
   justify-content: center;
 }
 
-.c35 {
+.c36 {
   height: 45px;
   position: relative;
   margin-left: 40px;
   text-align: right;
 }
 
-.c35 > svg {
+.c36 > svg {
   height: 98%;
 }
 
-.c28 {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  min-height: 50px;
-  width: auto;
-  max-width: calc(100% - 80px);
+.c30 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -295,23 +289,11 @@ exports[`Sections snapshots renders properly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  border-radius: 2px;
-  background: rgba(255,255,255,0.8);
-  box-shadow: 0 0 10px 0 rgba(0,0,0,0.3);
   padding: 20px;
-  cursor: pointer;
+  width: 100%;
 }
 
-.c28:hover {
-  background: rgba(0,0,0,0.6);
-  color: white;
-}
-
-.c28:hover .c34 {
-  fill: white;
-}
-
-.c29 {
+.c31 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -323,10 +305,9 @@ exports[`Sections snapshots renders properly 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  height: 50px;
 }
 
-.c30 {
+.c32 {
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -335,26 +316,58 @@ exports[`Sections snapshots renders properly 1`] = `
   line-height: 1.1em;
 }
 
-.c31 {
+.c33 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c32 {
+.c34 {
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
 }
 
-.c33 {
+.c35 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
   line-height: 1.4em;
   margin-left: 20px;
+}
+
+.c28 {
+  position: relative;
+  width: 100%;
+}
+
+.c29 {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  min-height: 50px;
+  width: auto;
+  max-width: calc(100% - 80px);
+  border-radius: 2px;
+  background: rgba(255,255,255,0.8);
+  box-shadow: 0 0 10px 0 rgba(0,0,0,0.3);
+  cursor: pointer;
+}
+
+.c29:hover {
+  background: rgba(0,0,0,0.6);
+  color: white;
+}
+
+.c29:hover path,
+.c29:hover polygon {
+  fill: white;
+}
+
+.c37 {
+  height: 100%;
 }
 
 .c1 {
@@ -389,7 +402,7 @@ exports[`Sections snapshots renders properly 1`] = `
   max-width: 100%;
 }
 
-.c36 {
+.c38 {
   box-sizing: border-box;
   margin: auto;
   margin-bottom: 40px;
@@ -601,7 +614,7 @@ exports[`Sections snapshots renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c39 {
+  .c41 {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
@@ -691,13 +704,7 @@ exports[`Sections snapshots renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c35 {
-    display: none;
-  }
-}
-
-@media (max-width:600px) {
-  .c30 {
+  .c32 {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -706,7 +713,7 @@ exports[`Sections snapshots renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c32 {
+  .c34 {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
@@ -715,7 +722,7 @@ exports[`Sections snapshots renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c33 {
+  .c35 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
@@ -772,7 +779,7 @@ exports[`Sections snapshots renders properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c36 {
+  .c38 {
     padding: 0 20px;
   }
 }
@@ -2001,67 +2008,68 @@ exports[`Sections snapshots renders properly 1`] = `
     className="c27"
   >
     <div
-      style={
-        Object {
-          "position": "relative",
-          "width": "100%",
-        }
-      }
+      className="c28"
     >
       <div
-        className="c28"
+        className="c29"
         onClick={[Function]}
       >
         <div
-          className="c29"
+          className="c30"
         >
-          <div
-            className="c30"
-          >
-            The Work of Bruce M. Sherman
-          </div>
           <div
             className="c31"
           >
             <div
               className="c32"
             >
-              View Slideshow
+              The Work of Bruce M. Sherman
             </div>
             <div
               className="c33"
             >
-              3
-               Images
+              <div
+                className="c34"
+              >
+                View Slideshow
+              </div>
+              <div
+                className="c35"
+              >
+                3 Images
+              </div>
             </div>
           </div>
-        </div>
-        <div
-          className="c34 c35"
-        >
-          <svg
-            className="image-set"
-            viewBox="0 0 44 44"
-            xmlns="http://www.w3.org/2000/svg"
+          <div
+            className="rrm-container rrm-greaterThanOrEqual-sm"
           >
-            <path
-              d="M6760.67,551.72h-32v-32h32v32Zm-30-2h28v-28h-28v28Z"
-              transform="translate(-6728.67 -507.72)"
-            />
-            <polygon
-              points="38 37 36 37 36 8 7 8 7 6 38 6 38 37"
-            />
-            <polygon
-              points="44 31 42 31 42 2 13 2 13 0 44 0 44 31"
-            />
-          </svg>
+            <div
+              className="c36"
+            >
+              <svg
+                className="image-set"
+                viewBox="0 0 44 44"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6760.67,551.72h-32v-32h32v32Zm-30-2h28v-28h-28v28Z"
+                  transform="translate(-6728.67 -507.72)"
+                />
+                <polygon
+                  points="38 37 36 37 36 8 7 8 7 6 38 6 38 37"
+                />
+                <polygon
+                  points="44 31 42 31 42 2 13 2 13 0 44 0 44 31"
+                />
+              </svg>
+            </div>
+          </div>
         </div>
       </div>
       <img
         alt="The Work of Bruce M. Sherman"
-        height="auto"
-        src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FCzofaZln2q-XhtXFqIio5A%252F07272017133815-0001%2B%2528dragged%2529%2Bcopy.jpg&width=1200&quality=80"
-        width="100%"
+        className="c37"
+        src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FCzofaZln2q-XhtXFqIio5A%252F07272017133815-0001%2B%2528dragged%2529%2Bcopy.jpg&width=800&quality=80"
       />
     </div>
   </div>
@@ -2194,16 +2202,16 @@ exports[`Sections snapshots renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c36"
+    className="c38"
   >
     <div
-      className="c37"
+      className="c39"
     >
       <div
-        className="c38"
+        className="c40"
       >
         <div
-          className="c39"
+          className="c41"
         >
           <span>
             <a
@@ -2214,14 +2222,14 @@ exports[`Sections snapshots renders properly 1`] = `
              is a well-known author and a long-time baker.
           </span>
           <span
-            className="c40"
+            className="c42"
           >
             <a
-              className="c41"
+              className="c43"
               href="http://twitter.com/caseylesser"
             >
               <div
-                className="c42 c43"
+                className="c44 c45"
               >
                 
               </div>

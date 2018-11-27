@@ -39,6 +39,7 @@ storiesOf("Publishing/Sections/Image Set/Editorial/Full", module)
       </FullScreenProvider>
     )
   })
+
 storiesOf("Publishing/Sections/Image Set/Editorial/Mini", module)
   .add("Mini", () => {
     return (
