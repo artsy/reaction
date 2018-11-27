@@ -47,14 +47,11 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
   }
 
   maybeShowGenes() {
-    const { artist } = this.props
     let showGenes = false
-    if (artist.related.genes.edges.length) {
-      if (this.state.isReadMoreExpanded) {
-        showGenes = true
-      } else if (!artist.biography_blurb.text) {
-        showGenes = true
-      }
+    if (this.state.isReadMoreExpanded) {
+      showGenes = true
+    } else if (!this.props.artist.biography_blurb.text) {
+      showGenes = true
     }
     return showGenes
   }
