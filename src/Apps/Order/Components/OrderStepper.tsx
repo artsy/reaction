@@ -14,12 +14,12 @@ export const offerFlowSteps = typedArray(
 export const buyNowFlowSteps = typedArray("Shipping", "Payment", "Review")
 export const counterofferFlowSteps = typedArray("Respond", "Review")
 
-export function OrderStepper<StepName extends string>({
+export function OrderStepper<Steps extends string[]>({
   currentStep,
   steps,
 }: {
-  steps: StepName[]
-  currentStep: StepName
+  steps: Steps
+  currentStep: Steps extends Array<infer K> ? K : never
 }) {
   const stepIndex = steps.indexOf(currentStep)
   return (
