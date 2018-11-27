@@ -74,7 +74,7 @@
     "@types/dd-trace": "^0.6.0",
     "@types/enzyme": "^3.1.0",
     "@types/isomorphic-fetch": "^0.0.34",
-    "@types/jest": "^20.0.7",
+    "@types/jest": "^23.3.9",
     "@types/lodash": "^4.14.111",
     "@types/memoize-one": "^3.1.1",
     "@types/prop-types": "^15.5.1",

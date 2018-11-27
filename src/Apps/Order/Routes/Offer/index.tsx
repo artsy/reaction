@@ -18,6 +18,7 @@ import {
 } from "react-relay"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
+import { ErrorWithMetadata } from "Utils/errors"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
@@ -98,7 +99,12 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
             } = data
 
             if (orderOrError.error) {
-              this.onMutationError(orderOrError.error)
+              this.onMutationError(
+                new ErrorWithMetadata(
+                  orderOrError.error.code,
+                  orderOrError.error
+                )
+              )
             } else {
               this.props.router.push(`/orders/${this.props.order.id}/shipping`)
             }
@@ -109,8 +115,8 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
     })
   }
 
-  onMutationError(errors, errorModalTitle?, errorModalMessage?) {
-    logger.error(errors)
+  onMutationError(error, errorModalTitle?, errorModalMessage?) {
+    logger.error(error)
     this.setState({
       isCommittingMutation: false,
       isErrorModalOpen: true,

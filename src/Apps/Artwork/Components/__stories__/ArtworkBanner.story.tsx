@@ -1,3 +1,9 @@
+import { AllAdditionalDetailsPresent } from "Apps/__tests__/Fixtures/Artworks"
+import React from "react"
+import { storiesOf } from "storybook/storiesOf"
+import { Section } from "Styleguide/Utils/Section"
+import { ArtworkBanner, ArtworkBannerQueryRenderer } from "../ArtworkBanner"
+
 import {
   ArtworkAuctionBannerFixture,
   ArtworkCurrentShowBannerFixture,
@@ -5,11 +11,7 @@ import {
   ArtworkPastShowBannerFixture,
   ArtworkUpcomingShowBannerFixture,
 } from "Apps/__tests__/Fixtures/Artwork/ArtworkBanner"
-import { AllAdditionalDetailsPresent } from "Apps/__tests__/Fixtures/Artworks"
-import React from "react"
-import { storiesOf } from "storybook/storiesOf"
-import { Section } from "Styleguide/Utils/Section"
-import { ArtworkBanner, ArtworkBannerQueryRenderer } from "../ArtworkBanner"
+
 storiesOf("Styleguide/Artwork", module).add("ArtworkBanner", () => {
   return (
     <React.Fragment>

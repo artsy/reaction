@@ -45,6 +45,7 @@ import {
 } from "react-relay"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
+import { ErrorWithMetadata } from "Utils/errors"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
@@ -195,7 +196,10 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                   errorCode === "missing_postal_code"
                 ) {
                   this.onMutationError(
-                    orderOrError.error,
+                    new ErrorWithMetadata(
+                      orderOrError.error.code,
+                      orderOrError.error
+                    ),
                     "Invalid address",
                     "There was an error processing your address. Please review and try again."
                   )
@@ -204,12 +208,20 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                   errorData.failure_code === "domestic_shipping_only"
                 ) {
                   this.onMutationError(
-                    orderOrError.error,
+                    new ErrorWithMetadata(
+                      orderOrError.error.code,
+                      orderOrError.error
+                    ),
                     "Can't ship to that address",
                     "This work can only be shipped to the continental United States."
                   )
                 } else {
-                  this.onMutationError(orderOrError.error)
+                  this.onMutationError(
+                    new ErrorWithMetadata(
+                      orderOrError.error.code,
+                      orderOrError.error
+                    )
+                  )
                 }
               } else {
                 this.props.router.push(`/orders/${this.props.order.id}/payment`)
@@ -222,8 +234,8 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     })
   }
 
-  onMutationError(errors, errorModalTitle?, errorModalMessage?) {
-    logger.error(errors)
+  onMutationError(error, errorModalTitle?, errorModalMessage?) {
+    logger.error(error)
     this.setState({
       isCommittingMutation: false,
       isErrorModalOpen: true,

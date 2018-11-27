@@ -41,6 +41,7 @@ export type Status_order = {
             }) | null;
         }) | null> | null;
     }) | null;
+    readonly __typename: "Order";
     readonly " $fragmentRefs": ArtworkSummaryItem_order$ref & TransactionDetailsSummaryItem_order$ref & ShippingSummaryItem_order$ref & CreditCardSummaryItem_order$ref;
     readonly " $refType": Status_order$ref;
 };
@@ -51,20 +52,21 @@ const node: ConcreteFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
+  "name": "__typename",
   "args": null,
   "storageKey": null
 },
 v1 = [
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "__typename",
-    "args": null,
-    "storageKey": null
-  }
+  v0
 ],
 v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v3 = {
   "kind": "ScalarField",
   "alias": "__id",
   "name": "id",
@@ -84,6 +86,13 @@ return {
       "args": null
     },
     v0,
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "code",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "ScalarField",
       "alias": null,
@@ -119,13 +128,7 @@ return {
         }
       ]
     },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "code",
-      "args": null,
-      "storageKey": null
-    },
+    v2,
     {
       "kind": "FragmentSpread",
       "name": "TransactionDetailsSummaryItem_order",
@@ -223,7 +226,7 @@ return {
                               ],
                               "storageKey": "estimatedDelivery(format:\"MMM Do, YYYY\")"
                             },
-                            v2
+                            v3
                           ]
                         }
                       ]
@@ -239,7 +242,7 @@ return {
                   "concreteType": "Artwork",
                   "plural": false,
                   "selections": [
-                    v0,
+                    v2,
                     {
                       "kind": "ScalarField",
                       "alias": null,
@@ -261,16 +264,16 @@ return {
                     }
                   ]
                 },
-                v2
+                v3
               ]
             }
           ]
         }
       ]
     },
-    v2
+    v3
   ]
 };
 })();
-(node as any).hash = 'f7bcb894a599e7defcff2d49e817acbb';
+(node as any).hash = 'b8029530d6a6538ad36dfad5ee1c6542';
 export default node;

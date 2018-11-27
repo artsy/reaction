@@ -41,7 +41,7 @@ interface CVItemState {
   isLoading: boolean
 }
 
-class CVItem extends Component<CVItemProps, CVItemState> {
+export class CVItem extends Component<CVItemProps, CVItemState> {
   state = {
     isLoading: false,
   }
