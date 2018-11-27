@@ -1,31 +1,30 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { ShippingAndPaymentReview_order$ref } from "./ShippingAndPaymentReview_order.graphql";
-import { ShippingAndPaymentSummary_order$ref } from "./ShippingAndPaymentSummary_order.graphql";
-export type ShippingAndPaymentDetailsQueryVariables = {};
-export type ShippingAndPaymentDetailsQueryResponse = {
+import { ShippingSummaryItem_order$ref } from "./ShippingSummaryItem_order.graphql";
+export type ShippingSummaryItemStoryQueryVariables = {};
+export type ShippingSummaryItemStoryQueryResponse = {
     readonly order: ({
-        readonly " $fragmentRefs": ShippingAndPaymentSummary_order$ref & ShippingAndPaymentReview_order$ref;
+        readonly " $fragmentRefs": ShippingSummaryItem_order$ref;
     }) | null;
 };
-export type ShippingAndPaymentDetailsQuery = {
-    readonly response: ShippingAndPaymentDetailsQueryResponse;
-    readonly variables: ShippingAndPaymentDetailsQueryVariables;
+export type ShippingSummaryItemStoryQuery = {
+    readonly response: ShippingSummaryItemStoryQueryResponse;
+    readonly variables: ShippingSummaryItemStoryQueryVariables;
 };
 
 
 
 /*
-query ShippingAndPaymentDetailsQuery {
+query ShippingSummaryItemStoryQuery {
   order: ecommerceOrder(id: "foo") {
-    ...ShippingAndPaymentSummary_order
-    ...ShippingAndPaymentReview_order
+    __typename
+    ...ShippingSummaryItem_order
     __id: id
   }
 }
 
-fragment ShippingAndPaymentSummary_order on Order {
+fragment ShippingSummaryItem_order on Order {
   state
   requestedFulfillment {
     __typename
@@ -41,42 +40,6 @@ fragment ShippingAndPaymentSummary_order on Order {
         __id: id
       }
     }
-  }
-  creditCard {
-    brand
-    last_digits
-    expiration_year
-    expiration_month
-    __id
-  }
-  __id: id
-}
-
-fragment ShippingAndPaymentReview_order on Order {
-  mode
-  totalListPrice(precision: 2)
-  itemsTotal(precision: 2)
-  requestedFulfillment {
-    __typename
-    ...ShippingAddress_ship
-  }
-  lineItems {
-    edges {
-      node {
-        artwork {
-          shippingOrigin
-          __id
-        }
-        __id: id
-      }
-    }
-  }
-  creditCard {
-    brand
-    last_digits
-    expiration_year
-    expiration_month
-    __id
   }
   __id: id
 }
@@ -112,28 +75,20 @@ v1 = {
 v2 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "__typename",
   "args": null,
   "storageKey": null
-},
-v3 = [
-  {
-    "kind": "Literal",
-    "name": "precision",
-    "value": 2,
-    "type": "Int"
-  }
-];
+};
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "ShippingAndPaymentDetailsQuery",
+  "name": "ShippingSummaryItemStoryQuery",
   "id": null,
-  "text": "query ShippingAndPaymentDetailsQuery {\n  order: ecommerceOrder(id: \"foo\") {\n    ...ShippingAndPaymentSummary_order\n    ...ShippingAndPaymentReview_order\n    __id: id\n  }\n}\n\nfragment ShippingAndPaymentSummary_order on Order {\n  state\n  requestedFulfillment {\n    __typename\n    ...ShippingAddress_ship\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  creditCard {\n    brand\n    last_digits\n    expiration_year\n    expiration_month\n    __id\n  }\n  __id: id\n}\n\nfragment ShippingAndPaymentReview_order on Order {\n  mode\n  totalListPrice(precision: 2)\n  itemsTotal(precision: 2)\n  requestedFulfillment {\n    __typename\n    ...ShippingAddress_ship\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  creditCard {\n    brand\n    last_digits\n    expiration_year\n    expiration_month\n    __id\n  }\n  __id: id\n}\n\nfragment ShippingAddress_ship on Ship {\n  name\n  addressLine1\n  addressLine2\n  city\n  postalCode\n  region\n  country\n  phoneNumber\n}\n",
+  "text": "query ShippingSummaryItemStoryQuery {\n  order: ecommerceOrder(id: \"foo\") {\n    __typename\n    ...ShippingSummaryItem_order\n    __id: id\n  }\n}\n\nfragment ShippingSummaryItem_order on Order {\n  state\n  requestedFulfillment {\n    __typename\n    ...ShippingAddress_ship\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n\nfragment ShippingAddress_ship on Ship {\n  name\n  addressLine1\n  addressLine2\n  city\n  postalCode\n  region\n  country\n  phoneNumber\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "ShippingAndPaymentDetailsQuery",
+    "name": "ShippingSummaryItemStoryQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": [],
@@ -144,17 +99,12 @@ return {
         "name": "ecommerceOrder",
         "storageKey": "ecommerceOrder(id:\"foo\")",
         "args": v0,
-        "concreteType": "Order",
+        "concreteType": null,
         "plural": false,
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "ShippingAndPaymentSummary_order",
-            "args": null
-          },
-          {
-            "kind": "FragmentSpread",
-            "name": "ShippingAndPaymentReview_order",
+            "name": "ShippingSummaryItem_order",
             "args": null
           },
           v1
@@ -164,7 +114,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "ShippingAndPaymentDetailsQuery",
+    "name": "ShippingSummaryItemStoryQuery",
     "argumentDefinitions": [],
     "selections": [
       {
@@ -173,9 +123,10 @@ return {
         "name": "ecommerceOrder",
         "storageKey": "ecommerceOrder(id:\"foo\")",
         "args": v0,
-        "concreteType": "Order",
+        "concreteType": null,
         "plural": false,
         "selections": [
+          v2,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -192,13 +143,7 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "__typename",
-                "args": null,
-                "storageKey": null
-              },
+              v2,
               {
                 "kind": "InlineFragment",
                 "type": "Ship",
@@ -306,7 +251,13 @@ return {
                             "args": null,
                             "storageKey": null
                           },
-                          v2
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "__id",
+                            "args": null,
+                            "storageKey": null
+                          }
                         ]
                       },
                       v1
@@ -316,73 +267,12 @@ return {
               }
             ]
           },
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "name": "creditCard",
-            "storageKey": null,
-            "args": null,
-            "concreteType": "CreditCard",
-            "plural": false,
-            "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "brand",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "last_digits",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "expiration_year",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "expiration_month",
-                "args": null,
-                "storageKey": null
-              },
-              v2
-            ]
-          },
-          v1,
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "mode",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "totalListPrice",
-            "args": v3,
-            "storageKey": "totalListPrice(precision:2)"
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "itemsTotal",
-            "args": v3,
-            "storageKey": "itemsTotal(precision:2)"
-          }
+          v1
         ]
       }
     ]
   }
 };
 })();
-(node as any).hash = '12d0982905e17e0658cff7975cc336af';
+(node as any).hash = 'cc1556c2c69db25ef96b8e5395fdc082';
 export default node;

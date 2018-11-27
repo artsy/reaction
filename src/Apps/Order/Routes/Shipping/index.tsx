@@ -20,9 +20,14 @@ import {
   AddressTouched,
   emptyAddress,
 } from "Apps/Order/Components/AddressForm"
+import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
 import { Helper } from "Apps/Order/Components/Helper"
-import { OrderStepper } from "Apps/Order/Components/OrderStepper"
-import { TransactionSummaryFragmentContainer as TransactionSummary } from "Apps/Order/Components/TransactionSummary"
+import {
+  buyNowFlowSteps,
+  offerFlowSteps,
+  OrderStepper,
+} from "Apps/Order/Components/OrderStepper"
+import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { validatePresence } from "Apps/Order/Utils/formValidators"
 import { track } from "Artsy/Analytics"
@@ -40,6 +45,7 @@ import {
 } from "react-relay"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
+import { ErrorWithMetadata } from "Utils/errors"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
@@ -190,7 +196,10 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                   errorCode === "missing_postal_code"
                 ) {
                   this.onMutationError(
-                    orderOrError.error,
+                    new ErrorWithMetadata(
+                      orderOrError.error.code,
+                      orderOrError.error
+                    ),
                     "Invalid address",
                     "There was an error processing your address. Please review and try again."
                   )
@@ -199,12 +208,20 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                   errorData.failure_code === "domestic_shipping_only"
                 ) {
                   this.onMutationError(
-                    orderOrError.error,
+                    new ErrorWithMetadata(
+                      orderOrError.error.code,
+                      orderOrError.error
+                    ),
                     "Can't ship to that address",
                     "This work can only be shipped to the continental United States."
                   )
                 } else {
-                  this.onMutationError(orderOrError.error)
+                  this.onMutationError(
+                    new ErrorWithMetadata(
+                      orderOrError.error.code,
+                      orderOrError.error
+                    )
+                  )
                 }
               } else {
                 this.props.router.push(`/orders/${this.props.order.id}/payment`)
@@ -217,8 +234,8 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     })
   }
 
-  onMutationError(errors, errorModalTitle?, errorModalMessage?) {
-    logger.error(errors)
+  onMutationError(error, errorModalTitle?, errorModalMessage?) {
+    logger.error(error)
     this.setState({
       isCommittingMutation: false,
       isErrorModalOpen: true,
@@ -307,7 +324,9 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
             <Col>
               <OrderStepper
                 currentStep="Shipping"
-                offerFlow={this.props.order.mode === "OFFER"}
+                steps={
+                  order.mode === "OFFER" ? offerFlowSteps : buyNowFlowSteps
+                }
               />
             </Col>
           </Row>
@@ -377,7 +396,11 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
             }
             Sidebar={
               <Flex flexDirection="column">
-                <TransactionSummary order={order} mb={[2, 3]} />
+                <Flex flexDirection="column">
+                  <ArtworkSummaryItem order={order} />
+                  <TransactionDetailsSummaryItem order={order} />
+                </Flex>
+                <Spacer mb={[2, 3]} />
                 <Helper artworkId={artwork.id} />
                 <Media at="xs">
                   <Spacer mb={3} />
@@ -446,7 +469,8 @@ export const ShippingFragmentContainer = createFragmentContainer(
           }
         }
       }
-      ...TransactionSummary_order
+      ...ArtworkSummaryItem_order
+      ...TransactionDetailsSummaryItem_order
     }
   `
 )

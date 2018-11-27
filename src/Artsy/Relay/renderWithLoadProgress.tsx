@@ -27,13 +27,18 @@ export function renderWithLoadProgress<P>(
       }
 
       const networkError = error as any
+      if (error.message) {
+        console.error(error.message)
+      }
       if (networkError.response && networkError.response._bodyInit) {
-        let data = networkError.response._bodyInit || "{}"
-        try {
-          data = JSON.parse(data)
-          // tslint:disable-next-line:no-empty
-        } catch (e) {}
-        console.error(`Metaphysics Error: ${error.message}\n`, data)
+        let data = networkError.response._bodyInit
+        if (data) {
+          try {
+            data = JSON.parse(data)
+            console.error(`Metaphysics Error data:`, data)
+            // tslint:disable-next-line:no-empty
+          } catch (e) {}
+        }
       }
 
       // if (retrying) {

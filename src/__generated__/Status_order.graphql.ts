@@ -1,13 +1,16 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+import { ArtworkSummaryItem_order$ref } from "./ArtworkSummaryItem_order.graphql";
+import { CreditCardSummaryItem_order$ref } from "./CreditCardSummaryItem_order.graphql";
 import { ItemReview_artwork$ref } from "./ItemReview_artwork.graphql";
-import { ShippingAndPaymentSummary_order$ref } from "./ShippingAndPaymentSummary_order.graphql";
-import { TransactionSummary_order$ref } from "./TransactionSummary_order.graphql";
+import { ShippingSummaryItem_order$ref } from "./ShippingSummaryItem_order.graphql";
+import { TransactionDetailsSummaryItem_order$ref } from "./TransactionDetailsSummaryItem_order.graphql";
 export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
 declare const _Status_order$ref: unique symbol;
 export type Status_order$ref = typeof _Status_order$ref;
 export type Status_order = {
+    readonly __typename: string;
     readonly id: string | null;
     readonly code: string | null;
     readonly state: string | null;
@@ -39,7 +42,7 @@ export type Status_order = {
             }) | null;
         }) | null> | null;
     }) | null;
-    readonly " $fragmentRefs": TransactionSummary_order$ref & ShippingAndPaymentSummary_order$ref;
+    readonly " $fragmentRefs": ArtworkSummaryItem_order$ref & TransactionDetailsSummaryItem_order$ref & ShippingSummaryItem_order$ref & CreditCardSummaryItem_order$ref;
     readonly " $refType": Status_order$ref;
 };
 
@@ -49,20 +52,21 @@ const node: ConcreteFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
+  "name": "__typename",
   "args": null,
   "storageKey": null
 },
 v1 = [
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "__typename",
-    "args": null,
-    "storageKey": null
-  }
+  v0
 ],
 v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v3 = {
   "kind": "ScalarField",
   "alias": "__id",
   "name": "id",
@@ -76,6 +80,11 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
+    {
+      "kind": "FragmentSpread",
+      "name": "ArtworkSummaryItem_order",
+      "args": null
+    },
     v0,
     {
       "kind": "ScalarField",
@@ -119,14 +128,20 @@ return {
         }
       ]
     },
+    v2,
     {
       "kind": "FragmentSpread",
-      "name": "TransactionSummary_order",
+      "name": "TransactionDetailsSummaryItem_order",
       "args": null
     },
     {
       "kind": "FragmentSpread",
-      "name": "ShippingAndPaymentSummary_order",
+      "name": "ShippingSummaryItem_order",
+      "args": null
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "CreditCardSummaryItem_order",
       "args": null
     },
     {
@@ -211,7 +226,7 @@ return {
                               ],
                               "storageKey": "estimatedDelivery(format:\"MMM Do, YYYY\")"
                             },
-                            v2
+                            v3
                           ]
                         }
                       ]
@@ -227,7 +242,7 @@ return {
                   "concreteType": "Artwork",
                   "plural": false,
                   "selections": [
-                    v0,
+                    v2,
                     {
                       "kind": "ScalarField",
                       "alias": null,
@@ -249,16 +264,16 @@ return {
                     }
                   ]
                 },
-                v2
+                v3
               ]
             }
           ]
         }
       ]
     },
-    v2
+    v3
   ]
 };
 })();
-(node as any).hash = '435533711b57499e79ad71667a492b8b';
+(node as any).hash = 'b8029530d6a6538ad36dfad5ee1c6542';
 export default node;

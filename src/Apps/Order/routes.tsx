@@ -6,6 +6,7 @@ import { OrderApp } from "./OrderApp"
 
 import { OfferFragmentContainer as OfferRoute } from "Apps/Order/Routes/Offer"
 import { PaymentFragmentContainer as PaymentRoute } from "Apps/Order/Routes/Payment"
+import { RespondFragmentContainer as RespondRoute } from "Apps/Order/Routes/Respond"
 import { ReviewFragmentContainer as ReviewRoute } from "Apps/Order/Routes/Review"
 import { ShippingFragmentContainer as ShippingRoute } from "Apps/Order/Routes/Shipping"
 import { StatusFragmentContainer as StatusRoute } from "Apps/Order/Routes/Status"
@@ -64,6 +65,21 @@ export const routes: RouteConfig[] = [
       }
     },
     children: [
+      {
+        path: "respond",
+        Component: RespondRoute,
+        onTransition: confirmRouteExit,
+        query: graphql`
+          query routes_RespondQuery($orderID: String!) {
+            order: ecommerceOrder(id: $orderID) {
+              ...Respond_order
+            }
+          }
+        `,
+        cacheConfig: {
+          force: true,
+        },
+      },
       {
         path: "offer",
         Component: OfferRoute,

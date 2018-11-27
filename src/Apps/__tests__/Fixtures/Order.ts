@@ -6,6 +6,17 @@ export const mockResolver = (orderDetails: any = OrderWithShippingDetails) => ({
   }),
   Order: (_, { id, ...others }) => {
     return {
+      __typename: "BuyOrder",
+      ...orderDetails,
+      id,
+      ...others,
+      __resolveType(obj, _context, _info) {
+        return "BuyOrder"
+      },
+    }
+  },
+  BuyOrder: (_, { id, ...others }) => {
+    return {
       ...orderDetails,
       id,
       ...others,
@@ -14,6 +25,7 @@ export const mockResolver = (orderDetails: any = OrderWithShippingDetails) => ({
 })
 
 export const UntouchedBuyOrder = {
+  __typename: "BuyOrder",
   id: "2939023",
   mode: "BUY",
   code: "abcdefg",
@@ -56,7 +68,7 @@ export const UntouchedBuyOrder = {
                 url:
                   "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=185&height=184&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FtOfWds4sIX_9WpRf3RqaQQ%2Flarge.jpg",
               },
-              resized_transactionSummary: {
+              resized_ArtworkSummaryItem: {
                 url:
                   "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=185&height=184&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FtOfWds4sIX_9WpRf3RqaQQ%2Flarge.jpg",
               },

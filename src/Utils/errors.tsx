@@ -4,22 +4,27 @@ export class NetworkError extends Error {
   response: any
 }
 
-interface ErrorInfo {
-  componentStack: string
+export class ErrorWithMetadata extends Error {
+  metadata: object
+
+  constructor(message, metadata = {}) {
+    super(message)
+    this.metadata = metadata
+    if (Error.captureStackTrace) {
+      Error.captureStackTrace(this, this.constructor)
+    }
+  }
 }
 
-// We don't know what we'll receive through `logger.error` but sometimes
-// we expect an ErrorInfo object if an error is thrown in an error boundary.
-// We want to be able to check if an object implements the expected ErrorInfo
-// interface so we can pass it along to Sentry.
-export const isErrorInfo = (arg: any): arg is ErrorInfo =>
-  !!(arg && arg.componentStack && typeof arg.componentStack === "string")
-
-export const sendErrorToService = (error: Error, errorInfo?: ErrorInfo) => {
-  Sentry.withScope(scope => {
-    Object.keys(errorInfo).forEach(key => {
-      scope.setExtra(key, errorInfo[key])
+export const reportError = error => scope => {
+  if (error instanceof ErrorWithMetadata) {
+    Object.entries(error.metadata).forEach(([key, value]) => {
+      scope.setExtra(key, value)
     })
-    Sentry.captureException(error)
-  })
+  }
+  Sentry.captureException(error)
+}
+
+export const sendErrorToService = (error: Error | ErrorWithMetadata) => {
+  Sentry.withScope(reportError(error))
 }

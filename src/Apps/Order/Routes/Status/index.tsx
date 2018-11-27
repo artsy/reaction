@@ -1,5 +1,6 @@
 import { Flex, Join, Message, Sans, Serif, Spacer } from "@artsy/palette"
 import { Status_order } from "__generated__/Status_order.graphql"
+import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import React, { Component } from "react"
@@ -7,9 +8,10 @@ import { Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { get } from "Utils/get"
+import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "../../Components/ArtworkSummaryItem"
+import { CreditCardSummaryItemFragmentContainer as CreditCardSummaryItem } from "../../Components/CreditCardSummaryItem"
 import { Helper } from "../../Components/Helper"
-import { ShippingAndPaymentSummaryFragmentContainer as ShippingAndPaymentSummary } from "../../Components/ShippingAndPaymentSummary"
-import { TransactionSummaryFragmentContainer as TransactionSummary } from "../../Components/TransactionSummary"
+import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "../../Components/ShippingSummaryItem"
 
 export interface StatusProps {
   order: Status_order
@@ -61,14 +63,21 @@ export class StatusRoute extends Component<StatusProps> {
               <Title>{flowName} status | Artsy</Title>
               <Join separator={<Spacer mb={[2, 3]} />}>
                 {userMessage && <Message p={[2, 3]}>{userMessage}</Message>}
-                <TransactionSummary order={order} />
+                <Flex flexDirection="column">
+                  <ArtworkSummaryItem order={order} />
+                  <TransactionDetailsSummaryItem order={order} />
+                </Flex>
               </Join>
               <Spacer mb={[2, 3]} />
             </>
           }
           Sidebar={
             <Flex flexDirection="column">
-              <ShippingAndPaymentSummary order={order} mb={[2, 3]} />
+              <Flex flexDirection="column">
+                <ShippingSummaryItem order={order} />
+                <CreditCardSummaryItem order={order} />
+              </Flex>
+              <Spacer mb={[2, 3]} />
               <Helper
                 artworkId={get(
                   order,
@@ -193,6 +202,7 @@ export const StatusFragmentContainer = createFragmentContainer(
   StatusRouteWrapper,
   graphql`
     fragment Status_order on Order {
+      __typename
       id
       code
       state
@@ -205,8 +215,10 @@ export const StatusFragmentContainer = createFragmentContainer(
           __typename
         }
       }
-      ...TransactionSummary_order
-      ...ShippingAndPaymentSummary_order
+      ...ArtworkSummaryItem_order
+      ...TransactionDetailsSummaryItem_order
+      ...ShippingSummaryItem_order
+      ...CreditCardSummaryItem_order
       lineItems {
         edges {
           node {
