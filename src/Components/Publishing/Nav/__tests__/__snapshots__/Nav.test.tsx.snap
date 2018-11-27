@@ -1,6 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Nav renders a Nav 1`] = `
+.c6 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 32px;
+  color: white;
+  text-align: center;
+}
+
 .c4 {
   font-family: artsy-icons;
   color: white;
@@ -71,14 +80,24 @@ exports[`Nav renders a Nav 1`] = `
 }
 
 .c5 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 17px;
-  line-height: 1.1em;
-  -webkit-font-smoothing: antialiased;
   position: absolute;
   width: 100%;
-  text-align: center;
-  font-weight: 600;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   color: white;
 }
 
@@ -102,12 +121,6 @@ exports[`Nav renders a Nav 1`] = `
   }
 }
 
-@media (max-width:720px) {
-  .c5 {
-    display: none;
-  }
-}
-
 <div>
   <div
     className="c0 c1"
@@ -128,14 +141,25 @@ exports[`Nav renders a Nav 1`] = `
       
     </div>
     <div
-      className="c5"
-      color="white"
+      className="rrm-container rrm-greaterThan-xs"
     >
-      <a
-        href="/magazine"
+      <div
+        className="c5 c6"
+        color="white"
+        fontFamily={
+          Object {
+            "fontFamily": "'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif",
+            "fontWeight": 600,
+          }
+        }
+        fontSize="22px"
       >
-        Artsy Editorial
-      </a>
+        <a
+          href="/magazine"
+        >
+          Artsy Editorial
+        </a>
+      </div>
     </div>
   </div>
   <span
@@ -149,6 +173,15 @@ exports[`Nav renders a Nav 1`] = `
 `;
 
 exports[`Nav renders a sponsored nav 1`] = `
+.c8 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 32px;
+  color: white;
+  text-align: center;
+}
+
 .c4 {
   font-family: artsy-icons;
   color: white;
@@ -224,14 +257,24 @@ exports[`Nav renders a sponsored nav 1`] = `
 }
 
 .c7 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 17px;
-  line-height: 1.1em;
-  -webkit-font-smoothing: antialiased;
   position: absolute;
   width: 100%;
-  text-align: center;
-  font-weight: 600;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   color: white;
 }
 
@@ -259,12 +302,6 @@ exports[`Nav renders a sponsored nav 1`] = `
 
   .c2 .c5 {
     margin: 0 10px;
-  }
-}
-
-@media (max-width:720px) {
-  .c7 {
-    display: none;
   }
 }
 
@@ -332,14 +369,25 @@ exports[`Nav renders a sponsored nav 1`] = `
       </a>
     </div>
     <div
-      className="c7"
-      color="white"
+      className="rrm-container rrm-greaterThan-xs"
     >
-      <a
-        href="/magazine"
+      <div
+        className="c7 c8"
+        color="white"
+        fontFamily={
+          Object {
+            "fontFamily": "'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif",
+            "fontWeight": 600,
+          }
+        }
+        fontSize="22px"
       >
-        Artsy Editorial
-      </a>
+        <a
+          href="/magazine"
+        >
+          Artsy Editorial
+        </a>
+      </div>
     </div>
   </div>
   <span
@@ -353,6 +401,15 @@ exports[`Nav renders a sponsored nav 1`] = `
 `;
 
 exports[`Nav renders a transparent nav 1`] = `
+.c6 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 32px;
+  color: white;
+  text-align: center;
+}
+
 .c4 {
   font-family: artsy-icons;
   color: white;
@@ -425,14 +482,24 @@ exports[`Nav renders a transparent nav 1`] = `
 }
 
 .c5 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 17px;
-  line-height: 1.1em;
-  -webkit-font-smoothing: antialiased;
   position: absolute;
   width: 100%;
-  text-align: center;
-  font-weight: 600;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   color: white;
 }
 
@@ -456,12 +523,6 @@ exports[`Nav renders a transparent nav 1`] = `
   }
 }
 
-@media (max-width:720px) {
-  .c5 {
-    display: none;
-  }
-}
-
 <div>
   <div
     className="c0 c1"
@@ -482,14 +543,25 @@ exports[`Nav renders a transparent nav 1`] = `
       
     </div>
     <div
-      className="c5"
-      color="white"
+      className="rrm-container rrm-greaterThan-xs"
     >
-      <a
-        href="/magazine"
+      <div
+        className="c5 c6"
+        color="white"
+        fontFamily={
+          Object {
+            "fontFamily": "'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif",
+            "fontWeight": 600,
+          }
+        }
+        fontSize="22px"
       >
-        Artsy Editorial
-      </a>
+        <a
+          href="/magazine"
+        >
+          Artsy Editorial
+        </a>
+      </div>
     </div>
   </div>
   <span
