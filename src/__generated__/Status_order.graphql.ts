@@ -8,6 +8,7 @@ export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
 declare const _Status_order$ref: unique symbol;
 export type Status_order$ref = typeof _Status_order$ref;
 export type Status_order = {
+    readonly __typename: string;
     readonly id: string | null;
     readonly code: string | null;
     readonly state: string | null;
@@ -49,20 +50,21 @@ const node: ConcreteFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
+  "name": "__typename",
+  "args": null,
+  "storageKey": null
+},
+v1 = {
+  "kind": "ScalarField",
+  "alias": null,
   "name": "id",
   "args": null,
   "storageKey": null
 },
-v1 = [
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "__typename",
-    "args": null,
-    "storageKey": null
-  }
+v2 = [
+  v0
 ],
-v2 = {
+v3 = {
   "kind": "ScalarField",
   "alias": "__id",
   "name": "id",
@@ -77,6 +79,7 @@ return {
   "argumentDefinitions": [],
   "selections": [
     v0,
+    v1,
     {
       "kind": "ScalarField",
       "alias": null,
@@ -110,12 +113,12 @@ return {
         {
           "kind": "InlineFragment",
           "type": "Pickup",
-          "selections": v1
+          "selections": v2
         },
         {
           "kind": "InlineFragment",
           "type": "Ship",
-          "selections": v1
+          "selections": v2
         }
       ]
     },
@@ -211,7 +214,7 @@ return {
                               ],
                               "storageKey": "estimatedDelivery(format:\"MMM Do, YYYY\")"
                             },
-                            v2
+                            v3
                           ]
                         }
                       ]
@@ -227,7 +230,7 @@ return {
                   "concreteType": "Artwork",
                   "plural": false,
                   "selections": [
-                    v0,
+                    v1,
                     {
                       "kind": "ScalarField",
                       "alias": null,
@@ -249,16 +252,16 @@ return {
                     }
                   ]
                 },
-                v2
+                v3
               ]
             }
           ]
         }
       ]
     },
-    v2
+    v3
   ]
 };
 })();
-(node as any).hash = '435533711b57499e79ad71667a492b8b';
+(node as any).hash = '9e525e6757a5dead1392f313bc16d3b4';
 export default node;

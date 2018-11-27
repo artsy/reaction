@@ -18,6 +18,7 @@ import {
 } from "react-relay"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
+import { ErrorWithMetadata } from "Utils/errors"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
@@ -112,7 +113,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                   case "insufficient_inventory": {
                     const artistId = this.artistId()
                     this.onMutationError(
-                      error,
+                      new ErrorWithMetadata(error.code, error),
                       "Not available",
                       "Sorry, the work is no longer available.",
                       artistId ? this.routeToArtistPage.bind(this) : null
@@ -122,7 +123,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                   case "failed_charge_authorize": {
                     const parsedData = JSON.parse(error.data)
                     this.onMutationError(
-                      error,
+                      new ErrorWithMetadata(error.code, error),
                       "An error occurred",
                       parsedData.failure_message
                     )
@@ -130,7 +131,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                   }
                   case "artwork_version_mismatch": {
                     this.onMutationError(
-                      error,
+                      new ErrorWithMetadata(error.code, error),
                       "Work has been updated",
                       "Something about the work changed since you started checkout. Please review the work before submitting your order.",
                       this.routeToArtworkPage.bind(this)
@@ -138,7 +139,9 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                     break
                   }
                   default: {
-                    this.onMutationError(error)
+                    this.onMutationError(
+                      new ErrorWithMetadata(error.code, error)
+                    )
                     break
                   }
                 }
@@ -179,12 +182,12 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
   }
 
   private onMutationError(
-    errors,
+    error,
     errorModalTitle?,
     errorModalMessage?,
     errorModalCtaAction?
   ) {
-    logger.error(errors)
+    logger.error(error)
     this.setState({
       isSubmitting: false,
       isErrorModalOpen: true,

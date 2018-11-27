@@ -1,3 +1,4 @@
+import { EditorialFeature } from "Components/Publishing/EditorialFeature/EditorialFeature"
 import { cloneDeep, extend, includes, map } from "lodash"
 import React from "react"
 import track from "react-tracking"
@@ -62,6 +63,7 @@ export class ArticleWithFullScreen extends React.Component<
     const { article, fullscreenImages } = this.state
     const {
       closeViewer,
+      customEditorial,
       slideIndex,
       viewerIsOpen,
       onOpenAuthModal,
@@ -76,7 +78,11 @@ export class ArticleWithFullScreen extends React.Component<
         onOpenAuthModal={onOpenAuthModal}
       >
         {article.layout === "feature" ? (
-          <FeatureLayout {...articleProps} />
+          customEditorial ? (
+            <EditorialFeature {...articleProps} />
+          ) : (
+            <FeatureLayout {...articleProps} />
+          )
         ) : (
           <StandardLayout {...articleProps} />
         )}
