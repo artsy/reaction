@@ -1,35 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a full image set properly 1`] = `
-.c8 {
-  height: 45px;
-  position: relative;
-  margin-left: 40px;
-  text-align: right;
-}
-
-.c8 > svg {
-  height: 98%;
-}
-
-.c2 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 20px;
-  width: 100%;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
 
-.c3 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -43,35 +30,49 @@ exports[`renders a full image set properly 1`] = `
   justify-content: space-between;
 }
 
-.c4 {
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 19px;
-  line-height: 1.5em;
-  margin-bottom: 8px;
-  line-height: 1.1em;
-}
-
-.c5 {
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c6 {
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
+.c5 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 26px;
+  padding-bottom: 8px;
 }
 
 .c7 {
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
-  margin-left: 20px;
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.c8 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  padding-left: 20px;
+}
+
+.c9 {
+  height: 45px;
+  position: relative;
+  margin-left: 40px;
+  text-align: right;
+}
+
+.c9 > svg {
+  height: 98%;
+}
+
+.c2 {
+  padding: 20px;
+  width: 100%;
 }
 
 .c0 {
@@ -102,34 +103,43 @@ exports[`renders a full image set properly 1`] = `
   fill: white;
 }
 
-.c9 {
+.c10 {
   height: 100%;
 }
 
-@media (max-width:600px) {
-  .c4 {
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 16px;
-    line-height: 1.1em;
+@media screen and (min-width:40em) {
+  .c5 {
+    font-size: 18px;
   }
 }
 
-@media (max-width:600px) {
-  .c6 {
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 12px;
-    line-height: 1.4em;
+@media screen and (min-width:40em) {
+  .c5 {
+    line-height: 30px;
   }
 }
 
-@media (max-width:600px) {
+@media screen and (min-width:40em) {
   .c7 {
-    font-family: Unica77LLWebRegular,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 12px;
-    line-height: 1.4em;
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c7 {
+    line-height: 24px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c8 {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c8 {
+    line-height: 24px;
   }
 }
 
@@ -141,26 +151,57 @@ exports[`renders a full image set properly 1`] = `
     onClick={[Function]}
   >
     <div
-      className="c2"
+      className="c2 c3"
     >
       <div
-        className="c3"
+        className="c4"
       >
         <div
-          className="c4"
+          className="c5"
+          fontFamily={
+            Object {
+              "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+              "fontWeight": 500,
+            }
+          }
+          fontSize={
+            Array [
+              "16px",
+              "18px",
+            ]
+          }
         >
           The Work of Bruce M. Sherman
         </div>
         <div
-          className="c5"
+          className="c6"
         >
           <div
-            className="c6"
+            className="c7"
+            fontFamily={
+              Object {
+                "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                "fontWeight": 500,
+              }
+            }
+            fontSize={
+              Array [
+                "12px",
+                "14px",
+              ]
+            }
           >
             View Slideshow
           </div>
           <div
-            className="c7"
+            className="c8"
+            fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+            fontSize={
+              Array [
+                "12px",
+                "14px",
+              ]
+            }
           >
             3 Images
           </div>
@@ -170,7 +211,7 @@ exports[`renders a full image set properly 1`] = `
         className="rrm-container rrm-greaterThanOrEqual-sm"
       >
         <div
-          className="c8"
+          className="c9"
         >
           <svg
             className="image-set"
@@ -194,14 +235,14 @@ exports[`renders a full image set properly 1`] = `
   </div>
   <img
     alt="The Work of Bruce M. Sherman"
-    className="c9"
+    className="c10"
     src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=800&quality=80"
   />
 </div>
 `;
 
 exports[`renders a mini image set properly 1`] = `
-.c2 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -210,37 +251,13 @@ exports[`renders a mini image set properly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-}
-
-.c10 {
-  height: 45px;
-  position: relative;
-  margin-left: 40px;
-  text-align: right;
-}
-
-.c10 > svg {
-  height: 98%;
-}
-
-.c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  padding: 20px;
-  width: 100%;
 }
 
-.c5 {
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -254,35 +271,60 @@ exports[`renders a mini image set properly 1`] = `
   justify-content: space-between;
 }
 
-.c6 {
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 19px;
-  line-height: 1.5em;
-  margin-bottom: 8px;
-  line-height: 1.1em;
-}
-
-.c7 {
+.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c8 {
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c7 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 26px;
+  padding-bottom: 8px;
 }
 
 .c9 {
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
-  margin-left: 20px;
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.c10 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  padding-left: 20px;
+}
+
+.c11 {
+  height: 45px;
+  position: relative;
+  margin-left: 40px;
+  text-align: right;
+}
+
+.c11 > svg {
+  height: 98%;
+}
+
+.c4 {
+  padding: 20px;
+  width: 100%;
 }
 
 .c0 {
@@ -301,30 +343,39 @@ exports[`renders a mini image set properly 1`] = `
   cursor: pointer;
 }
 
-@media (max-width:600px) {
-  .c6 {
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 16px;
-    line-height: 1.1em;
+@media screen and (min-width:40em) {
+  .c7 {
+    font-size: 18px;
   }
 }
 
-@media (max-width:600px) {
-  .c8 {
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 12px;
-    line-height: 1.4em;
+@media screen and (min-width:40em) {
+  .c7 {
+    line-height: 30px;
   }
 }
 
-@media (max-width:600px) {
+@media screen and (min-width:40em) {
   .c9 {
-    font-family: Unica77LLWebRegular,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 12px;
-    line-height: 1.4em;
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c9 {
+    line-height: 24px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c10 {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c10 {
+    line-height: 24px;
   }
 }
 
@@ -341,26 +392,57 @@ exports[`renders a mini image set properly 1`] = `
       src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=200&quality=80"
     />
     <div
-      className="c4"
+      className="c4 c5"
     >
       <div
-        className="c5"
+        className="c6"
       >
         <div
-          className="c6"
+          className="c7"
+          fontFamily={
+            Object {
+              "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+              "fontWeight": 500,
+            }
+          }
+          fontSize={
+            Array [
+              "16px",
+              "18px",
+            ]
+          }
         >
           The Work of Bruce M. Sherman
         </div>
         <div
-          className="c7"
+          className="c8"
         >
           <div
-            className="c8"
+            className="c9"
+            fontFamily={
+              Object {
+                "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                "fontWeight": 500,
+              }
+            }
+            fontSize={
+              Array [
+                "12px",
+                "14px",
+              ]
+            }
           >
             View Slideshow
           </div>
           <div
-            className="c9"
+            className="c10"
+            fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+            fontSize={
+              Array [
+                "12px",
+                "14px",
+              ]
+            }
           >
             3 Images
           </div>
@@ -370,7 +452,7 @@ exports[`renders a mini image set properly 1`] = `
         className="rrm-container rrm-greaterThanOrEqual-sm"
       >
         <div
-          className="c10"
+          className="c11"
         >
           <svg
             className="image-set"

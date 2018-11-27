@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Sections snapshots renders properly 1`] = `
-.c45 {
+.c46 {
   font-family: artsy-icons;
   color: black;
   font-size: 24px;
@@ -15,7 +15,7 @@ exports[`Sections snapshots renders properly 1`] = `
   color: black;
 }
 
-.c40 {
+.c41 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -27,7 +27,7 @@ exports[`Sections snapshots renders properly 1`] = `
   margin-bottom: 20px;
 }
 
-.c41 {
+.c42 {
   display: block;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -35,27 +35,27 @@ exports[`Sections snapshots renders properly 1`] = `
   line-height: 1.1em;
 }
 
-.c41 a {
+.c42 a {
   color: black;
 }
 
-.c42 {
+.c43 {
   margin-left: 20px;
 }
 
-.c43 {
+.c44 {
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
   white-space: nowrap;
 }
 
-.c43 .c44 {
+.c44 .c45 {
   vertical-align: middle;
   margin: 0;
 }
 
-.c39 {
+.c40 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -265,35 +265,22 @@ exports[`Sections snapshots renders properly 1`] = `
   justify-content: center;
 }
 
-.c36 {
-  height: 45px;
-  position: relative;
-  margin-left: 40px;
-  text-align: right;
-}
-
-.c36 > svg {
-  height: 98%;
-}
-
-.c30 {
+.c31 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 20px;
-  width: 100%;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
 
-.c31 {
+.c32 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -307,35 +294,49 @@ exports[`Sections snapshots renders properly 1`] = `
   justify-content: space-between;
 }
 
-.c32 {
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 19px;
-  line-height: 1.5em;
-  margin-bottom: 8px;
-  line-height: 1.1em;
-}
-
-.c33 {
+.c34 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c34 {
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
+.c33 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 26px;
+  padding-bottom: 8px;
 }
 
 .c35 {
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
-  margin-left: 20px;
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.c36 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  padding-left: 20px;
+}
+
+.c37 {
+  height: 45px;
+  position: relative;
+  margin-left: 40px;
+  text-align: right;
+}
+
+.c37 > svg {
+  height: 98%;
+}
+
+.c30 {
+  padding: 20px;
+  width: 100%;
 }
 
 .c28 {
@@ -366,7 +367,7 @@ exports[`Sections snapshots renders properly 1`] = `
   fill: white;
 }
 
-.c37 {
+.c38 {
   height: 100%;
 }
 
@@ -402,7 +403,7 @@ exports[`Sections snapshots renders properly 1`] = `
   max-width: 100%;
 }
 
-.c38 {
+.c39 {
   box-sizing: border-box;
   margin: auto;
   margin-bottom: 40px;
@@ -614,7 +615,7 @@ exports[`Sections snapshots renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c41 {
+  .c42 {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
@@ -703,30 +704,39 @@ exports[`Sections snapshots renders properly 1`] = `
   }
 }
 
-@media (max-width:600px) {
-  .c32 {
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 16px;
-    line-height: 1.1em;
+@media screen and (min-width:40em) {
+  .c33 {
+    font-size: 18px;
   }
 }
 
-@media (max-width:600px) {
-  .c34 {
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 12px;
-    line-height: 1.4em;
+@media screen and (min-width:40em) {
+  .c33 {
+    line-height: 30px;
   }
 }
 
-@media (max-width:600px) {
+@media screen and (min-width:40em) {
   .c35 {
-    font-family: Unica77LLWebRegular,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 12px;
-    line-height: 1.4em;
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c35 {
+    line-height: 24px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c36 {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c36 {
+    line-height: 24px;
   }
 }
 
@@ -779,7 +789,7 @@ exports[`Sections snapshots renders properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c38 {
+  .c39 {
     padding: 0 20px;
   }
 }
@@ -2015,26 +2025,57 @@ exports[`Sections snapshots renders properly 1`] = `
         onClick={[Function]}
       >
         <div
-          className="c30"
+          className="c30 c31"
         >
           <div
-            className="c31"
+            className="c32"
           >
             <div
-              className="c32"
+              className="c33"
+              fontFamily={
+                Object {
+                  "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                  "fontWeight": 500,
+                }
+              }
+              fontSize={
+                Array [
+                  "16px",
+                  "18px",
+                ]
+              }
             >
               The Work of Bruce M. Sherman
             </div>
             <div
-              className="c33"
+              className="c34"
             >
               <div
-                className="c34"
+                className="c35"
+                fontFamily={
+                  Object {
+                    "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                    "fontWeight": 500,
+                  }
+                }
+                fontSize={
+                  Array [
+                    "12px",
+                    "14px",
+                  ]
+                }
               >
                 View Slideshow
               </div>
               <div
-                className="c35"
+                className="c36"
+                fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+                fontSize={
+                  Array [
+                    "12px",
+                    "14px",
+                  ]
+                }
               >
                 3 Images
               </div>
@@ -2044,7 +2085,7 @@ exports[`Sections snapshots renders properly 1`] = `
             className="rrm-container rrm-greaterThanOrEqual-sm"
           >
             <div
-              className="c36"
+              className="c37"
             >
               <svg
                 className="image-set"
@@ -2068,7 +2109,7 @@ exports[`Sections snapshots renders properly 1`] = `
       </div>
       <img
         alt="The Work of Bruce M. Sherman"
-        className="c37"
+        className="c38"
         src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FCzofaZln2q-XhtXFqIio5A%252F07272017133815-0001%2B%2528dragged%2529%2Bcopy.jpg&width=800&quality=80"
       />
     </div>
@@ -2202,16 +2243,16 @@ exports[`Sections snapshots renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c38"
+    className="c39"
   >
     <div
-      className="c39"
+      className="c40"
     >
       <div
-        className="c40"
+        className="c41"
       >
         <div
-          className="c41"
+          className="c42"
         >
           <span>
             <a
@@ -2222,14 +2263,14 @@ exports[`Sections snapshots renders properly 1`] = `
              is a well-known author and a long-time baker.
           </span>
           <span
-            className="c42"
+            className="c43"
           >
             <a
-              className="c43"
+              className="c44"
               href="http://twitter.com/caseylesser"
             >
               <div
-                className="c44 c45"
+                className="c45 c46"
               >
                 
               </div>
