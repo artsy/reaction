@@ -1,50 +1,39 @@
-import { Box, Sans } from "@artsy/palette"
 import { OtherWorks_artwork } from "__generated__/OtherWorks_artwork.graphql"
 import { OtherWorksQuery } from "__generated__/OtherWorksQuery.graphql"
 import { ContextConsumer } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
+import { ArtworkContextArtistQueryRenderer as ArtworkContextArtist } from "./ArtworkContexts/ArtworkContextArtist"
+import { ArtworkContextAuctionQueryRenderer as ArtworkContextAuction } from "./ArtworkContexts/ArtworkContextAuction"
+import { ArtworkContextFair } from "./ArtworkContexts/ArtworkContextFair"
+import { ArtworkContextPartnerShow } from "./ArtworkContexts/ArtworkContextPartnerShow"
 
-import {
-  ArtworkContextArtist,
-  ArtworkContextAuction,
-  ArtworkContextFair,
-  ArtworkContextPartnerShow,
-} from "./ArtworkContexts"
-
-interface OtherWorksProps {
+export const OtherWorks: React.SFC<{
   artwork: OtherWorks_artwork
-}
-
-export const OtherWorks: React.SFC<OtherWorksProps> = props => {
+}> = props => {
   const contextType = props.artwork.context && props.artwork.context.__typename
-  const ArtworkContext = getArtworkContextComponent(contextType)
+  const artworkID = props.artwork.id
 
-  return (
-    <>
-      <ArtworkContext artworkID={props.artwork.id} />
-
-      {/* Debugger */}
-      <Box mt={6}>
-        <Sans size="3">{props.artwork.id}</Sans>
-        <Sans size="3">{contextType}</Sans>
-      </Box>
-    </>
-  )
-}
-
-const getArtworkContextComponent = (context: string | boolean): any => {
-  // FIXME: add type
-  switch (context) {
-    case "ArtworkContextAuction":
-      return ArtworkContextAuction
-    case "ArtworkContextFair":
-      return ArtworkContextFair
-    case "ArtworkContextPartnerShow":
-      return ArtworkContextPartnerShow
-    default:
-      return ArtworkContextArtist
+  switch (contextType) {
+    case "ArtworkContextAuction": {
+      return (
+        <ArtworkContextAuction
+          artworkID={artworkID}
+          artworkMongoID={props.artwork._id}
+          isClosed={props.artwork.sale.is_closed}
+        />
+      )
+    }
+    case "ArtworkContextFair": {
+      return <ArtworkContextFair />
+    }
+    case "ArtworkContextPartnerShow": {
+      return <ArtworkContextPartnerShow />
+    }
+    default: {
+      return <ArtworkContextArtist artworkID={artworkID} />
+    }
   }
 }
 
@@ -53,10 +42,13 @@ export const OtherWorksFragmentContainer = createFragmentContainer(
   graphql`
     fragment OtherWorks_artwork on Artwork {
       id
+      _id
+      sale {
+        is_closed
+      }
       context {
         __typename
       }
-      ...ArtworkContextArtist_artwork
     }
   `
 )

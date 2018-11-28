@@ -1,15 +1,17 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-import { ArtworkContextArtist_artwork$ref } from "./ArtworkContextArtist_artwork.graphql";
 declare const _OtherWorks_artwork$ref: unique symbol;
 export type OtherWorks_artwork$ref = typeof _OtherWorks_artwork$ref;
 export type OtherWorks_artwork = {
     readonly id: string;
+    readonly _id: string;
+    readonly sale: ({
+        readonly is_closed: boolean | null;
+    }) | null;
     readonly context: ({
         readonly __typename: string;
     }) | null;
-    readonly " $fragmentRefs": ArtworkContextArtist_artwork$ref;
     readonly " $refType": OtherWorks_artwork$ref;
 };
 
@@ -38,6 +40,32 @@ return {
       "storageKey": null
     },
     {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "_id",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "sale",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Sale",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "is_closed",
+          "args": null,
+          "storageKey": null
+        },
+        v0
+      ]
+    },
+    {
       "kind": "LinkedField",
       "alias": null,
       "name": "context",
@@ -56,14 +84,9 @@ return {
         v0
       ]
     },
-    {
-      "kind": "FragmentSpread",
-      "name": "ArtworkContextArtist_artwork",
-      "args": null
-    },
     v0
   ]
 };
 })();
-(node as any).hash = '36e03b7e36a72ce4dc1afb0635369554';
+(node as any).hash = '24830aa2f6870a4b63c8e6d40cb389e5';
 export default node;

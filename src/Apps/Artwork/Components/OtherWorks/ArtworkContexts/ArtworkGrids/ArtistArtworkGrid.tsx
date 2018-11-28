@@ -2,13 +2,23 @@ import { ArtistArtworkGrid_artwork } from "__generated__/ArtistArtworkGrid_artwo
 import ArtworkGrid from "Components/ArtworkGrid"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { data as sd } from "sharify"
+import { Header } from "../../Header"
 
 interface ArtistArtworkGridProps {
   artwork: ArtistArtworkGrid_artwork
 }
 
 export const ArtistArtworkGrid: React.SFC<ArtistArtworkGridProps> = props => {
-  return <ArtworkGrid artworks={props.artwork.artist.artworks_connection} />
+  return (
+    <>
+      <Header
+        title={`Other works by ${props.artwork.artist.name}`}
+        buttonHref={sd.APP_URL + props.artwork.artist.href}
+      />
+      <ArtworkGrid artworks={props.artwork.artist.artworks_connection} />
+    </>
+  )
 }
 
 export const ArtistArtworkGridFragmentContainer = createFragmentContainer(
