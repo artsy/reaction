@@ -1,6 +1,6 @@
 import { Flex } from "@artsy/palette"
 import { TransactionDetailsSummaryItem_order } from "__generated__/TransactionDetailsSummaryItem_order.graphql"
-import { mockResolver, UntouchedBuyOrder } from "Apps/__tests__/Fixtures/Order"
+import { mockResolver } from "Apps/__tests__/Fixtures/Order"
 import { MockRelayRenderer } from "DevTools"
 import React from "react"
 import { graphql } from "react-relay"
