@@ -1,13 +1,8 @@
-import { Sans, Spacer } from "@artsy/palette"
+import { Link, Sans, Spacer } from "@artsy/palette"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { ContextConsumer } from "Artsy/Router"
 import React, { Component } from "react"
-import styled from "styled-components"
-
-const Link = styled.a`
-  text-decoration: underline;
-`
 
 interface HelperProps {
   artworkId: string | null
