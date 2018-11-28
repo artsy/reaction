@@ -36,21 +36,34 @@ export class TransactionDetailsSummaryItem extends React.Component<
   }
 
   shippingDisplayAmount = order => {
-    return order.mode === "BUY"
-      ? this.formattedAmount(order.shippingTotal, order.shippingTotalCents) ||
+    switch (order.mode) {
+      case "BUY":
+        return (
+          this.formattedAmount(order.shippingTotal, order.shippingTotalCents) ||
           "—"
-      : this.formattedAmount(
-          order.myLastOffer.shippingTotal,
-          order.myLastOffer.shippingTotalCents
-        ) || "—"
+        )
+      case "OFFER":
+        return order.myLastOffer
+          ? this.formattedAmount(
+              order.myLastOffer.shippingTotal,
+              order.myLastOffer.shippingTotalCents
+            ) || "—"
+          : "—"
+    }
   }
+
   taxDisplayAmount = order => {
-    return order.mode === "BUY"
-      ? this.formattedAmount(order.taxTotal, order.taxTotalCents) || "—"
-      : this.formattedAmount(
-          order.myLastOffer.taxTotal,
-          order.myLastOffer.taxTotalCents
-        ) || "—"
+    switch (order.mode) {
+      case "BUY":
+        return this.formattedAmount(order.taxTotal, order.taxTotalCents) || "—"
+      case "OFFER":
+        return order.myLastOffer
+          ? this.formattedAmount(
+              order.myLastOffer.taxTotal,
+              order.myLastOffer.taxTotalCents
+            ) || "—"
+          : "—"
+    }
   }
 
   renderPriceEntry = (order, offerOverride) => {
@@ -60,7 +73,11 @@ export class TransactionDetailsSummaryItem extends React.Component<
       <>
         <Entry
           label="Your offer"
-          value={offerOverride || order.myLastOffer.amount}
+          value={
+            offerOverride ||
+            (order.myLastOffer && order.myLastOffer.amount) ||
+            "—"
+          }
         />
         <SecondaryEntry label="List price" value={order.totalListPrice} />
       </>
