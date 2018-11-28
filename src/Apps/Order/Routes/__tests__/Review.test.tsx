@@ -3,7 +3,7 @@ import React from "react"
 
 import { Button } from "@artsy/palette"
 import {
-  OrderWithShippingDetails,
+  OfferOrderWithShippingDetails,
   UntouchedBuyOrder,
 } from "Apps/__tests__/Fixtures/Order"
 import { ErrorModal, ModalButton } from "Components/Modal/ErrorModal"
@@ -157,8 +157,7 @@ describe("Review", () => {
 
   describe("Offer-mode orders", () => {
     const offerOrder = {
-      ...OrderWithShippingDetails,
-      mode: "OFFER",
+      ...OfferOrderWithShippingDetails,
       id: "offer-order-id",
     }
     it("shows an active offer stepper if the order is an Offer Order", () => {

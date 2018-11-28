@@ -5,8 +5,9 @@ import React from "react"
 
 import { Collapse } from "@artsy/palette"
 import {
-  OrderWithShippingDetails,
-  PickupOrder,
+  BuyOrderPickup,
+  BuyOrderWithShippingDetails,
+  UntouchedOfferOrder,
 } from "Apps/__tests__/Fixtures/Order"
 import {
   fillCountrySelect,
@@ -85,7 +86,7 @@ describe("Payment", () => {
     }
 
     testProps = {
-      order: { ...OrderWithShippingDetails, id: "1234" },
+      order: { ...BuyOrderWithShippingDetails, id: "1234" },
       relay: { environment: {} } as RelayProp,
       router: { push: jest.fn() },
       stripe: stripeMock,
@@ -97,7 +98,7 @@ describe("Payment", () => {
     const paymentRoute = getWrapper({
       ...testProps,
       order: {
-        ...PickupOrder,
+        ...BuyOrderPickup,
         id: "1234",
       },
     })
@@ -130,7 +131,7 @@ describe("Payment", () => {
     const paymentRoute = getWrapper({
       ...testProps,
       order: {
-        ...PickupOrder,
+        ...BuyOrderPickup,
         id: "1234",
         creditCard: {
           name: "Artsy UK Ltd",
@@ -163,7 +164,7 @@ describe("Payment", () => {
     const paymentRoute = getWrapper({
       ...testProps,
       order: {
-        ...PickupOrder,
+        ...BuyOrderPickup,
         id: "1234",
       },
     })
@@ -536,7 +537,10 @@ describe("Payment", () => {
 
   describe("Offer-mode orders", () => {
     it("shows an active offer stepper if the order is an Offer Order", () => {
-      const offerOrder = { ...OrderWithShippingDetails, mode: "OFFER" }
+      const offerOrder = {
+        ...BuyOrderWithShippingDetails,
+        ...UntouchedOfferOrder,
+      }
       const component = getWrapper({ ...testProps, order: offerOrder })
       expect(component.find(ActiveTabContainer).text()).toEqual("Payment")
       expect(component.find(Stepper).props().currentStepIndex).toEqual(2)

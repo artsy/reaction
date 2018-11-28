@@ -1,7 +1,9 @@
 import {
+  BuyOrderPickup,
+  BuyOrderWithShippingDetails,
   mockResolver,
-  OrderWithShippingDetails,
-  PickupOrder,
+  OfferOrderPickup,
+  OfferOrderWithShippingDetails,
   UntouchedBuyOrder,
   UntouchedOfferOrder,
 } from "Apps/__tests__/Fixtures/Order"
@@ -49,7 +51,7 @@ storiesOf("Apps/Order Page/Buy Now/Payment", module)
   .add("With 'Pickup'", () => (
     <Router
       initialRoute="/orders/123/payment"
-      mockResolvers={mockResolver(PickupOrder)}
+      mockResolvers={mockResolver(BuyOrderPickup)}
     />
   ))
 
@@ -58,7 +60,7 @@ storiesOf("Apps/Order Page/Buy Now/Status", module)
     <Router
       initialRoute="/orders/123/status"
       mockResolvers={mockResolver({
-        ...OrderWithShippingDetails,
+        ...BuyOrderWithShippingDetails,
         state: "SUBMITTED",
       })}
     />
@@ -67,7 +69,7 @@ storiesOf("Apps/Order Page/Buy Now/Status", module)
     <Router
       initialRoute="/orders/123/status"
       mockResolvers={mockResolver({
-        ...PickupOrder,
+        ...BuyOrderPickup,
         state: "SUBMITTED",
       })}
     />
@@ -76,7 +78,7 @@ storiesOf("Apps/Order Page/Buy Now/Status", module)
     <Router
       initialRoute="/orders/123/status"
       mockResolvers={mockResolver({
-        ...OrderWithShippingDetails,
+        ...BuyOrderWithShippingDetails,
         state: "APPROVED",
       })}
     />
@@ -84,14 +86,14 @@ storiesOf("Apps/Order Page/Buy Now/Status", module)
   .add("approved (pickup)", () => (
     <Router
       initialRoute="/orders/123/status"
-      mockResolvers={mockResolver({ ...PickupOrder, state: "APPROVED" })}
+      mockResolvers={mockResolver({ ...BuyOrderPickup, state: "APPROVED" })}
     />
   ))
   .add("fulfilled (ship)", () => (
     <Router
       initialRoute="/orders/123/status"
       mockResolvers={mockResolver({
-        ...OrderWithShippingDetails,
+        ...BuyOrderWithShippingDetails,
         state: "FULFILLED",
       })}
     />
@@ -99,14 +101,14 @@ storiesOf("Apps/Order Page/Buy Now/Status", module)
   .add("fulfilled (pickup)", () => (
     <Router
       initialRoute="/orders/123/status"
-      mockResolvers={mockResolver({ ...PickupOrder, state: "FULFILLED" })}
+      mockResolvers={mockResolver({ ...BuyOrderPickup, state: "FULFILLED" })}
     />
   ))
   .add("canceled (ship)", () => (
     <Router
       initialRoute="/orders/123/status"
       mockResolvers={mockResolver({
-        ...OrderWithShippingDetails,
+        ...BuyOrderWithShippingDetails,
         state: "CANCELED",
       })}
     />
@@ -114,7 +116,7 @@ storiesOf("Apps/Order Page/Buy Now/Status", module)
   .add("canceled (pickup)", () => (
     <Router
       initialRoute="/orders/123/status"
-      mockResolvers={mockResolver({ ...PickupOrder, state: "CANCELED" })}
+      mockResolvers={mockResolver({ ...BuyOrderPickup, state: "CANCELED" })}
     />
   ))
 
@@ -132,10 +134,7 @@ storiesOf("Apps/Order Page/Make Offer/Shipping", module)
   .add("Shipping - Pre-filled", () => (
     <Router
       initialRoute="/orders/123/shipping"
-      mockResolvers={mockResolver({
-        ...OrderWithShippingDetails,
-        mode: "OFFER",
-      })}
+      mockResolvers={mockResolver(OfferOrderWithShippingDetails)}
     />
   ))
   .add("Shipping - Untouched Order", () => (
@@ -143,9 +142,8 @@ storiesOf("Apps/Order Page/Make Offer/Shipping", module)
       // The UntouchedBuyOrder has a specified requestedFulfillment, but it should be null.
       // Unfortunately, enough of our tests use UntouchedBuyOrder to change it, so we'll specify it here to avoid breaking our story.
       mockResolvers={mockResolver({
-        ...UntouchedBuyOrder,
+        ...UntouchedOfferOrder,
         requestedFulfillment: null,
-        mode: "OFFER",
       })}
       initialRoute="/orders/123/shipping"
     />
@@ -155,36 +153,27 @@ storiesOf("Apps/Order Page/Make Offer/Payment", module)
   .add("With 'Ship'", () => (
     <Router
       initialRoute="/orders/123/payment"
-      mockResolvers={mockResolver({
-        ...OrderWithShippingDetails,
-        mode: "OFFER",
-      })}
+      mockResolvers={mockResolver(OfferOrderWithShippingDetails)}
     />
   ))
   .add("With 'Pickup'", () => (
     <Router
       initialRoute="/orders/123/payment"
-      mockResolvers={mockResolver({ ...PickupOrder, mode: "OFFER" })}
+      mockResolvers={mockResolver(OfferOrderPickup)}
     />
   ))
 
 storiesOf("Apps/Order Page/Make Offer/Review", module).add("Review", () => (
   <Router
     initialRoute="/orders/123/review"
-    mockResolvers={mockResolver({
-      ...OrderWithShippingDetails,
-      mode: "OFFER",
-    })}
+    mockResolvers={mockResolver(OfferOrderWithShippingDetails)}
   />
 ))
 
 storiesOf("Apps/Order Page/Counter Offer", module).add("Respond", () => (
   <Router
     initialRoute="/orders/123/respond"
-    mockResolvers={mockResolver({
-      ...OrderWithShippingDetails,
-      mode: "OFFER",
-    })}
+    mockResolvers={mockResolver(OfferOrderWithShippingDetails)}
   />
 ))
 
@@ -193,9 +182,8 @@ storiesOf("Apps/Order Page/Make Offer/Status", module)
     <Router
       initialRoute="/orders/123/status"
       mockResolvers={mockResolver({
-        ...OrderWithShippingDetails,
+        ...OfferOrderWithShippingDetails,
         state: "SUBMITTED",
-        mode: "OFFER",
       })}
     />
   ))
@@ -203,9 +191,8 @@ storiesOf("Apps/Order Page/Make Offer/Status", module)
     <Router
       initialRoute="/orders/123/status"
       mockResolvers={mockResolver({
-        ...PickupOrder,
+        ...OfferOrderPickup,
         state: "SUBMITTED",
-        mode: "OFFER",
       })}
     />
   ))
@@ -213,9 +200,8 @@ storiesOf("Apps/Order Page/Make Offer/Status", module)
     <Router
       initialRoute="/orders/123/status"
       mockResolvers={mockResolver({
-        ...OrderWithShippingDetails,
+        ...OfferOrderWithShippingDetails,
         state: "APPROVED",
-        mode: "OFFER",
       })}
     />
   ))
@@ -223,9 +209,8 @@ storiesOf("Apps/Order Page/Make Offer/Status", module)
     <Router
       initialRoute="/orders/123/status"
       mockResolvers={mockResolver({
-        ...PickupOrder,
+        ...OfferOrderPickup,
         state: "APPROVED",
-        mode: "OFFER",
       })}
     />
   ))
@@ -233,9 +218,8 @@ storiesOf("Apps/Order Page/Make Offer/Status", module)
     <Router
       initialRoute="/orders/123/status"
       mockResolvers={mockResolver({
-        ...OrderWithShippingDetails,
+        ...OfferOrderWithShippingDetails,
         state: "FULFILLED",
-        mode: "OFFER",
       })}
     />
   ))
@@ -243,9 +227,8 @@ storiesOf("Apps/Order Page/Make Offer/Status", module)
     <Router
       initialRoute="/orders/123/status"
       mockResolvers={mockResolver({
-        ...PickupOrder,
+        ...OfferOrderPickup,
         state: "FULFILLED",
-        mode: "OFFER",
       })}
     />
   ))
@@ -253,9 +236,8 @@ storiesOf("Apps/Order Page/Make Offer/Status", module)
     <Router
       initialRoute="/orders/123/status"
       mockResolvers={mockResolver({
-        ...OrderWithShippingDetails,
+        ...OfferOrderWithShippingDetails,
         state: "CANCELED",
-        mode: "OFFER",
       })}
     />
   ))
@@ -263,9 +245,8 @@ storiesOf("Apps/Order Page/Make Offer/Status", module)
     <Router
       initialRoute="/orders/123/status"
       mockResolvers={mockResolver({
-        ...PickupOrder,
+        ...OfferOrderPickup,
         state: "CANCELED",
-        mode: "OFFER",
       })}
     />
   ))

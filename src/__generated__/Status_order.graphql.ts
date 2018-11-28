@@ -42,6 +42,15 @@ export type Status_order = {
             }) | null;
         }) | null> | null;
     }) | null;
+    readonly myLastOffer?: ({
+        readonly id: string | null;
+        readonly amount: string | null;
+        readonly amountCents: number | null;
+        readonly shippingTotal: string | null;
+        readonly shippingTotalCents: number | null;
+        readonly taxTotal: string | null;
+        readonly taxTotalCents: number | null;
+    }) | null;
     readonly " $fragmentRefs": ArtworkSummaryItem_order$ref & TransactionDetailsSummaryItem_order$ref & ShippingSummaryItem_order$ref & CreditCardSummaryItem_order$ref;
     readonly " $refType": Status_order$ref;
 };
@@ -72,7 +81,15 @@ v3 = {
   "name": "id",
   "args": null,
   "storageKey": null
-};
+},
+v4 = [
+  {
+    "kind": "Literal",
+    "name": "precision",
+    "value": 2,
+    "type": "Int"
+  }
+];
 return {
   "kind": "Fragment",
   "name": "Status_order",
@@ -271,9 +288,70 @@ return {
         }
       ]
     },
-    v3
+    v3,
+    {
+      "kind": "InlineFragment",
+      "type": "OfferOrder",
+      "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "myLastOffer",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "Offer",
+          "plural": false,
+          "selections": [
+            v2,
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "amount",
+              "args": v4,
+              "storageKey": "amount(precision:2)"
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "amountCents",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "shippingTotal",
+              "args": v4,
+              "storageKey": "shippingTotal(precision:2)"
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "shippingTotalCents",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "taxTotal",
+              "args": v4,
+              "storageKey": "taxTotal(precision:2)"
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "taxTotalCents",
+              "args": null,
+              "storageKey": null
+            },
+            v3
+          ]
+        }
+      ]
+    }
   ]
 };
 })();
-(node as any).hash = 'b8029530d6a6538ad36dfad5ee1c6542';
+(node as any).hash = 'be2aef203905a1dc495abbdf5301a285';
 export default node;

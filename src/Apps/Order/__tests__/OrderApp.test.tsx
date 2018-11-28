@@ -9,7 +9,11 @@ import React from "react"
 import { HeadProvider, Meta } from "react-head"
 import { OrderApp } from "../OrderApp"
 
-import { mockResolver } from "Apps/__tests__/Fixtures/Order"
+import {
+  BuyOrderPickup,
+  mockResolver,
+  UntouchedBuyOrder,
+} from "Apps/__tests__/Fixtures/Order"
 import { createMockNetworkLayer } from "DevTools/createMockNetworkLayer"
 import { Environment, RecordSource, Store } from "relay-runtime"
 
@@ -40,11 +44,9 @@ describe("OrderApp routing redirects", () => {
     const { redirect } = await render(
       "/orders/1234/shipping",
       mockResolver({
+        ...BuyOrderPickup,
         id: 1234,
         state: "PENDING",
-        requestedFulfillment: {
-          __typename: "Pickup",
-        },
       })
     )
     expect(redirect).toBe(undefined)
@@ -54,11 +56,9 @@ describe("OrderApp routing redirects", () => {
     const { redirect } = await render(
       "/orders/1234/shipping",
       mockResolver({
+        ...BuyOrderPickup,
         id: 1234,
         state: "SUBMITTED",
-        requestedFulfillment: {
-          __typename: "Pickup",
-        },
       })
     )
     expect(redirect.url).toBe("/orders/1234/status")
@@ -68,11 +68,9 @@ describe("OrderApp routing redirects", () => {
     const { redirect } = await render(
       "/orders/1234/shipping",
       mockResolver({
+        ...BuyOrderPickup,
         id: 1234,
         state: "ABANDONED",
-        requestedFulfillment: {
-          __typename: "Pickup",
-        },
         lineItems: {
           edges: [
             {
@@ -93,11 +91,9 @@ describe("OrderApp routing redirects", () => {
     const { redirect } = await render(
       "/orders/1234/shipping",
       mockResolver({
+        ...BuyOrderPickup,
         id: 1234,
         state: "ABANDONED",
-        requestedFulfillment: {
-          __typename: "Pickup",
-        },
         lineItems: null,
       })
     )
@@ -108,6 +104,7 @@ describe("OrderApp routing redirects", () => {
     const { redirect } = await render(
       "/orders/1234/shipping",
       mockResolver({
+        ...UntouchedBuyOrder,
         id: 1234,
         state: "PENDING",
         requestedFulfillment: null,
@@ -120,6 +117,7 @@ describe("OrderApp routing redirects", () => {
     const { redirect } = await render(
       "/orders/1234/payment",
       mockResolver({
+        ...UntouchedBuyOrder,
         id: 1234,
         state: "PENDING",
         requestedFulfillment: null,
@@ -132,6 +130,7 @@ describe("OrderApp routing redirects", () => {
     const { redirect } = await render(
       "/orders/1234/payment",
       mockResolver({
+        ...UntouchedBuyOrder,
         id: 1234,
         state: "PENDING",
         requestedFulfillment: {
@@ -147,6 +146,7 @@ describe("OrderApp routing redirects", () => {
     const { redirect } = await render(
       "/orders/1234/review",
       mockResolver({
+        ...UntouchedBuyOrder,
         id: 1234,
         state: "PENDING",
         requestedFulfillment: null,
@@ -160,6 +160,7 @@ describe("OrderApp routing redirects", () => {
     const { redirect } = await render(
       "/orders/1234/review",
       mockResolver({
+        ...UntouchedBuyOrder,
         id: 1234,
         state: "PENDING",
         requestedFulfillment: {
@@ -175,6 +176,7 @@ describe("OrderApp routing redirects", () => {
     const { redirect } = await render(
       "/orders/1234/review",
       mockResolver({
+        ...UntouchedBuyOrder,
         id: 1234,
         state: "PENDING",
         requestedFulfillment: {

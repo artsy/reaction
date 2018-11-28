@@ -20,53 +20,54 @@ export class TransactionDetailsSummaryItem extends React.Component<
   TransactionDetailsSummaryItemProps
 > {
   render() {
-    const {
-      offerOverride,
-      order: {
-        itemsTotal,
-        mode,
-        totalListPrice,
-        shippingTotal,
-        shippingTotalCents,
-        taxTotal,
-        taxTotalCents,
-        buyerTotal,
-      },
-      ...others
-    } = this.props
-
-    console.log("FUXKKC", this.props.order)
-
+    const { offerOverride, order, ...others } = this.props
     return (
       <StackableBorderBox flexDirection="column" {...others}>
-        {mode === "OFFER" ? (
-          <>
-            {/* TODO: Seller's offer / Your offer (/ Buyer's offer? Will sellers see this component?) */}
-            <Entry label="Your offer" value={offerOverride || itemsTotal} />
-            {Boolean(itemsTotal) && (
-              <SecondaryEntry label="List price" value={totalListPrice} />
-            )}
-
-            <Spacer mb={2} />
-          </>
-        ) : (
-          <Entry label="Price" value={itemsTotal} />
-        )}
-        <Entry
-          label="Shipping"
-          value={this.formattedAmount(shippingTotal, shippingTotalCents) || "—"}
-        />
-        <Entry
-          label="Tax"
-          value={this.formattedAmount(taxTotal, taxTotalCents) || "—"}
-        />
+        {/* TODO: Seller's offer / Your offer (/ Buyer's offer? Will sellers see this component?) */}
+        {this.renderPriceEntry(order, offerOverride)}
         <Spacer mb={2} />
-        <Entry label="Total" value={buyerTotal} final />
+        <Entry label="Shipping" value={this.shippingDisplayAmount(order)} />
+
+        <Entry label="Tax" value={this.taxDisplayAmount(order)} />
+        <Spacer mb={2} />
+        <Entry label="Total" value={order.buyerTotal} final />
       </StackableBorderBox>
     )
   }
 
-  private formattedAmount = (amount, amountCents) => {
+  shippingDisplayAmount = order => {
+    return order.mode === "BUY"
+      ? this.formattedAmount(order.shippingTotal, order.shippingTotalCents) ||
+          "—"
+      : this.formattedAmount(
+          order.myLastOffer.shippingTotal,
+          order.myLastOffer.shippingTotalCents
+        ) || "—"
+  }
+  taxDisplayAmount = order => {
+    return order.mode === "BUY"
+      ? this.formattedAmount(order.taxTotal, order.taxTotalCents) || "—"
+      : this.formattedAmount(
+          order.myLastOffer.taxTotal,
+          order.myLastOffer.taxTotalCents
+        ) || "—"
+  }
+
+  renderPriceEntry = (order, offerOverride) => {
+    return order.mode === "BUY" ? (
+      <Entry label="Price" value={order.itemsTotal} />
+    ) : (
+      <>
+        <Entry
+          label="Your offer"
+          value={offerOverride || order.myLastOffer.amount}
+        />
+        <SecondaryEntry label="List price" value={order.totalListPrice} />
+      </>
+    )
+  }
+
+  formattedAmount = (amount, amountCents) => {
     // FIXME: Use actual currency code
     if (amount) {
       return amount
@@ -123,6 +124,7 @@ export const TransactionDetailsSummaryItemFragmentContainer = createFragmentCont
   TransactionDetailsSummaryItem,
   graphql`
     fragment TransactionDetailsSummaryItem_order on Order {
+      __typename
       mode
       shippingTotal(precision: 2)
       shippingTotalCents
@@ -134,6 +136,17 @@ export const TransactionDetailsSummaryItemFragmentContainer = createFragmentCont
       lastOffer {
         id
         amountCents
+      }
+      ... on OfferOrder {
+        myLastOffer {
+          id
+          amount(precision: 2)
+          amountCents
+          shippingTotal(precision: 2)
+          shippingTotalCents
+          taxTotal(precision: 2)
+          taxTotalCents
+        }
       }
     }
   `

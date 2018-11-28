@@ -3,7 +3,10 @@ import { cloneDeep } from "lodash"
 import React from "react"
 
 import { Button, RadioGroup } from "@artsy/palette"
-import { UntouchedBuyOrder } from "Apps/__tests__/Fixtures/Order"
+import {
+  UntouchedBuyOrder,
+  UntouchedOfferOrder,
+} from "Apps/__tests__/Fixtures/Order"
 import { Address } from "Apps/Order/Components/AddressForm"
 import {
   fillCountrySelect,
@@ -391,7 +394,7 @@ describe("Shipping", () => {
 
   describe("Offer-mode orders", () => {
     it("shows an active offer stepper if the order is an Offer Order", () => {
-      const offerOrder = { ...UntouchedBuyOrder, mode: "OFFER" }
+      const offerOrder = UntouchedOfferOrder
       const component = getWrapper({ ...testProps, order: offerOrder })
       expect(component.find(ActiveTabContainer).text()).toEqual("Shipping")
       expect(component.find(Stepper).props().currentStepIndex).toEqual(1)

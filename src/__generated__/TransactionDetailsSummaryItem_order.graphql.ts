@@ -5,6 +5,7 @@ export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
 declare const _TransactionDetailsSummaryItem_order$ref: unique symbol;
 export type TransactionDetailsSummaryItem_order$ref = typeof _TransactionDetailsSummaryItem_order$ref;
 export type TransactionDetailsSummaryItem_order = {
+    readonly __typename: string;
     readonly mode: OrderModeEnum | null;
     readonly shippingTotal: string | null;
     readonly shippingTotalCents: number | null;
@@ -16,6 +17,15 @@ export type TransactionDetailsSummaryItem_order = {
     readonly lastOffer: ({
         readonly id: string | null;
         readonly amountCents: number | null;
+    }) | null;
+    readonly myLastOffer?: ({
+        readonly id: string | null;
+        readonly amount: string | null;
+        readonly amountCents: number | null;
+        readonly shippingTotal: string | null;
+        readonly shippingTotalCents: number | null;
+        readonly taxTotal: string | null;
+        readonly taxTotalCents: number | null;
     }) | null;
     readonly " $refType": TransactionDetailsSummaryItem_order$ref;
 };
@@ -33,6 +43,48 @@ var v0 = [
 ],
 v1 = {
   "kind": "ScalarField",
+  "alias": null,
+  "name": "shippingTotal",
+  "args": v0,
+  "storageKey": "shippingTotal(precision:2)"
+},
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "shippingTotalCents",
+  "args": null,
+  "storageKey": null
+},
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "taxTotal",
+  "args": v0,
+  "storageKey": "taxTotal(precision:2)"
+},
+v4 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "taxTotalCents",
+  "args": null,
+  "storageKey": null
+},
+v5 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v6 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "amountCents",
+  "args": null,
+  "storageKey": null
+},
+v7 = {
+  "kind": "ScalarField",
   "alias": "__id",
   "name": "id",
   "args": null,
@@ -48,44 +100,27 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "mode",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "shippingTotal",
-      "args": v0,
-      "storageKey": "shippingTotal(precision:2)"
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "shippingTotalCents",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "taxTotal",
-      "args": v0,
-      "storageKey": "taxTotal(precision:2)"
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "taxTotalCents",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
       "name": "itemsTotal",
       "args": v0,
       "storageKey": "itemsTotal(precision:2)"
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "__typename",
+      "args": null,
+      "storageKey": null
+    },
+    v1,
+    v2,
+    v3,
+    v4,
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "mode",
+      "args": null,
+      "storageKey": null
     },
     {
       "kind": "ScalarField",
@@ -110,26 +145,45 @@ return {
       "concreteType": "Offer",
       "plural": false,
       "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "id",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "amountCents",
-          "args": null,
-          "storageKey": null
-        },
-        v1
+        v5,
+        v6,
+        v7
       ]
     },
-    v1
+    v7,
+    {
+      "kind": "InlineFragment",
+      "type": "OfferOrder",
+      "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "myLastOffer",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "Offer",
+          "plural": false,
+          "selections": [
+            v5,
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "amount",
+              "args": v0,
+              "storageKey": "amount(precision:2)"
+            },
+            v6,
+            v1,
+            v2,
+            v3,
+            v4,
+            v7
+          ]
+        }
+      ]
+    }
   ]
 };
 })();
-(node as any).hash = 'f89dfcb17a7246d4e0fa3c2614a9b82d';
+(node as any).hash = 'e928c850ea4ef2e82434b5f387ae5e6a';
 export default node;
