@@ -110,7 +110,7 @@ export class Eoy2018Artists extends React.Component<ArticleProps> {
 
     return (
       <React.Fragment>
-        <Nav canFix />
+        <Nav canFix color={color("black100")} backgroundColor="white" />
         <ArticleWrapper>
           <Eoy2018ArticleHeader images={headerImages} />
           <ArticleContent>
