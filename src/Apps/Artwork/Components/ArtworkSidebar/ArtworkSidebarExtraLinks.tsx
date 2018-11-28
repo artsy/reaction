@@ -1,4 +1,4 @@
-import { Box, Sans, Spacer } from "@artsy/palette"
+import { Box, Link, Sans, Spacer } from "@artsy/palette"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { ContextConsumer } from "Artsy/Router"
@@ -6,7 +6,6 @@ import { Mediator } from "Artsy/SystemContext"
 import React, { SFC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
-import styled from "styled-components"
 
 import { ArtworkSidebarExtraLinks_artwork } from "__generated__/ArtworkSidebarExtraLinks_artwork.graphql"
 
@@ -14,7 +13,7 @@ export interface ArtworkSidebarExtraLinksProps {
   artwork: ArtworkSidebarExtraLinks_artwork
 }
 
-interface ArtworkSidebarExtraLinksContainerProps
+export interface ArtworkSidebarExtraLinksContainerProps
   extends ArtworkSidebarExtraLinksProps {
   mediator: Mediator
 }
@@ -24,10 +23,6 @@ const Container = ({ children }) => (
     {children}
   </Sans>
 )
-
-const Link = styled.a`
-  text-decoration: underline;
-`
 
 @track({
   context_module: Schema.ContextModule.Sidebar,
