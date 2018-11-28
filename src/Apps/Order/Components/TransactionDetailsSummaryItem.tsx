@@ -24,7 +24,7 @@ export class TransactionDetailsSummaryItem extends React.Component<
     return (
       <StackableBorderBox flexDirection="column" {...others}>
         {/* TODO: Seller's offer / Your offer (/ Buyer's offer? Will sellers see this component?) */}
-        {this.priceDisplayComponent(order, offerOverride)}
+        {this.renderPriceEntry(order, offerOverride)}
         <Spacer mb={2} />
         <Entry label="Shipping" value={this.shippingDisplayAmount(order)} />
 
@@ -35,7 +35,7 @@ export class TransactionDetailsSummaryItem extends React.Component<
     )
   }
 
-  private shippingDisplayAmount = order => {
+  shippingDisplayAmount = order => {
     return order.mode === "BUY"
       ? this.formattedAmount(order.shippingTotal, order.shippingTotalCents) ||
           "—"
@@ -44,7 +44,7 @@ export class TransactionDetailsSummaryItem extends React.Component<
           order.myLastOffer.shippingTotalCents
         ) || "—"
   }
-  private taxDisplayAmount = order => {
+  taxDisplayAmount = order => {
     return order.mode === "BUY"
       ? this.formattedAmount(order.taxTotal, order.taxTotalCents) || "—"
       : this.formattedAmount(
@@ -53,7 +53,7 @@ export class TransactionDetailsSummaryItem extends React.Component<
         ) || "—"
   }
 
-  private priceDisplayComponent = (order, offerOverride) => {
+  renderPriceEntry = (order, offerOverride) => {
     return order.mode === "BUY" ? (
       <Entry label="Price" value={order.itemsTotal} />
     ) : (
@@ -67,7 +67,7 @@ export class TransactionDetailsSummaryItem extends React.Component<
     )
   }
 
-  private formattedAmount = (amount, amountCents) => {
+  formattedAmount = (amount, amountCents) => {
     // FIXME: Use actual currency code
     if (amount) {
       return amount

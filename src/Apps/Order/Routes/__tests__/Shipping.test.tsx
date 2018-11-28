@@ -394,7 +394,7 @@ describe("Shipping", () => {
 
   describe("Offer-mode orders", () => {
     it("shows an active offer stepper if the order is an Offer Order", () => {
-      const offerOrder = { ...UntouchedBuyOrder, ...UntouchedOfferOrder }
+      const offerOrder = UntouchedOfferOrder
       const component = getWrapper({ ...testProps, order: offerOrder })
       expect(component.find(ActiveTabContainer).text()).toEqual("Shipping")
       expect(component.find(Stepper).props().currentStepIndex).toEqual(1)
