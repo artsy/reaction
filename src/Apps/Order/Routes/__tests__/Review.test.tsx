@@ -58,6 +58,7 @@ describe("Review", () => {
 
   beforeEach(() => {
     mutationMock.mockReset()
+    pushMock.mockReset()
   })
 
   describe("buy-mode orders", () => {
@@ -88,7 +89,7 @@ describe("Review", () => {
         .last()
         .find("a")
         .simulate("click")
-      expect(pushMock).toBeCalledWith("/orders/1234/shipping")
+      expect(pushMock).toBeCalledWith("/orders/1234/payment")
     })
 
     it("shows an error modal when there is an error in submitOrderPayload", () => {
