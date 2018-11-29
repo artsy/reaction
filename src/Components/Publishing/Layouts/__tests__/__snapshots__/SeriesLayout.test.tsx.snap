@@ -10,11 +10,19 @@ exports[`renders a series properly 1`] = `
   text-align: center;
 }
 
-.c22 {
+.c21 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
+}
+
+.c16 {
+  color: white;
+}
+
+.c17 {
+  margin-bottom: 40px;
 }
 
 .c5 {
@@ -116,57 +124,11 @@ exports[`renders a series properly 1`] = `
   text-decoration: none;
 }
 
-.c37 {
-  box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 0 1 auto;
-  -ms-flex: 0 1 auto;
-  flex: 0 1 auto;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin-right: -0.5rem;
-  margin-left: -0.5rem;
-}
-
-.c17 {
-  box-sizing: border-box;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
-}
-
-.c39 {
-  box-sizing: border-box;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
-}
-
-.c41 {
-  box-sizing: border-box;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
-}
-
-.c34 {
+.c33 {
   margin: 10px 20px 0 0;
 }
 
-.c34::before {
+.c33::before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -176,12 +138,12 @@ exports[`renders a series properly 1`] = `
   background-color: white;
 }
 
-.c25 {
+.c24 {
   margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
-.c33 {
+.c32 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -196,12 +158,12 @@ exports[`renders a series properly 1`] = `
   color: white;
 }
 
-.c32 {
+.c31 {
   width: 32px;
   height: 32px;
 }
 
-.c29 {
+.c28 {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -211,14 +173,14 @@ exports[`renders a series properly 1`] = `
   display: block;
 }
 
-.c27 {
+.c26 {
   position: relative;
   width: 50%;
   height: inherit;
   margin-left: 30px;
 }
 
-.c19 {
+.c18 {
   border: 1px solid;
   border-radius: 2px;
   color: white;
@@ -232,19 +194,19 @@ exports[`renders a series properly 1`] = `
   display: flex;
 }
 
-.c19 .c28 {
+.c18 .c27 {
   opacity: 1;
 }
 
-.c19:hover .c28 {
+.c18:hover .c27 {
   opacity: 0.7;
 }
 
-.c19 .c26 {
+.c18 .c25 {
   background: black;
 }
 
-.c20 {
+.c19 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -260,7 +222,7 @@ exports[`renders a series properly 1`] = `
   margin-bottom: 5px;
 }
 
-.c23 {
+.c22 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 45px;
@@ -268,18 +230,18 @@ exports[`renders a series properly 1`] = `
   margin-bottom: 30px;
 }
 
-.c21 {
+.c20 {
   margin-bottom: 10px;
 }
 
-.c24 {
+.c23 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
   -webkit-font-smoothing: antialiased;
 }
 
-.c31 {
+.c30 {
   position: absolute;
   left: 20px;
   bottom: 20px;
@@ -298,16 +260,8 @@ exports[`renders a series properly 1`] = `
   align-items: flex-end;
 }
 
-.c30 svg {
+.c29 svg {
   width: 40px;
-}
-
-.c16 {
-  color: white;
-}
-
-.c16 .c18 {
-  margin-bottom: 60px;
 }
 
 .c8 {
@@ -342,12 +296,49 @@ exports[`renders a series properly 1`] = `
   z-index: -1;
 }
 
-.c42 {
+.c36 {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -0.5rem;
+  margin-left: -0.5rem;
+}
+
+.c38 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.c40 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.c41 {
   position: relative;
   width: 100%;
 }
 
-.c42 a {
+.c41 a {
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -357,22 +348,22 @@ exports[`renders a series properly 1`] = `
   background-position: bottom;
 }
 
-.c42 a:hover {
+.c41 a:hover {
   color: white;
   opacity: .65;
 }
 
-.c42 div[class*='ToolTip'] a {
+.c41 div[class*='ToolTip'] a {
   background-image: none;
   opacity: 1;
   color: inherit;
 }
 
-.c42 p,
-.c42 ul,
-.c42 ol,
-.c42 .paragraph,
-.c42 div[data-block=true] .public-DraftStyleDefault-block {
+.c41 p,
+.c41 ul,
+.c41 ol,
+.c41 .paragraph,
+.c41 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -383,32 +374,32 @@ exports[`renders a series properly 1`] = `
   font-style: inherit;
 }
 
-.c42 p:first-child,
-.c42 .paragraph:first-child,
-.c42 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c41 p:first-child,
+.c41 .paragraph:first-child,
+.c41 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c42 p:last-child,
-.c42 .paragraph:last-child,
-.c42 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c41 p:last-child,
+.c41 .paragraph:last-child,
+.c41 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c42 ul,
-.c42 ol {
+.c41 ul,
+.c41 ol {
   padding-left: 1em;
 }
 
-.c42 ul {
+.c41 ul {
   list-style: disc;
 }
 
-.c42 ol {
+.c41 ol {
   list-style: decimal;
 }
 
-.c42 li {
+.c41 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -417,7 +408,7 @@ exports[`renders a series properly 1`] = `
   padding-bottom: .5em;
 }
 
-.c42 h1 {
+.c41 h1 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -430,7 +421,7 @@ exports[`renders a series properly 1`] = `
   text-align: center;
 }
 
-.c42 h1::before {
+.c41 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -441,7 +432,7 @@ exports[`renders a series properly 1`] = `
   right: calc(50% - 4px);
 }
 
-.c42 h2 {
+.c41 h2 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -450,15 +441,15 @@ exports[`renders a series properly 1`] = `
   margin: 0;
 }
 
-.c42 h2 a {
+.c41 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c42 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
+.c41 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
   background-position: bottom !important;
 }
 
-.c42 h3 {
+.c41 h3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -468,7 +459,7 @@ exports[`renders a series properly 1`] = `
   margin: 0;
 }
 
-.c42 h3 strong {
+.c41 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -476,11 +467,11 @@ exports[`renders a series properly 1`] = `
   line-height: 1.5em;
 }
 
-.c42 h3 a {
+.c41 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c42 blockquote {
+.c41 blockquote {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 40px;
   line-height: 1.1em;
@@ -493,7 +484,7 @@ exports[`renders a series properly 1`] = `
   word-break: break-word;
 }
 
-.c42 .content-end {
+.c41 .content-end {
   display: inline-block;
   content: "";
   width: 8px;
@@ -504,14 +495,14 @@ exports[`renders a series properly 1`] = `
   margin-bottom: 1px;
 }
 
-.c42 .artist-follow {
+.c41 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c42 .artist-follow::before {
+.c41 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -519,7 +510,7 @@ exports[`renders a series properly 1`] = `
   font-size: 32px;
 }
 
-.c42 .artist-follow::after {
+.c41 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -528,17 +519,17 @@ exports[`renders a series properly 1`] = `
   text-transform: none;
 }
 
-.c36 {
+.c35 {
   color: white;
   max-width: 1200px;
   width: 100%;
 }
 
-.c38 .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
+.c37 .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
   display: none;
 }
 
-.c38:first-of-type {
+.c37:first-of-type {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -552,12 +543,12 @@ exports[`renders a series properly 1`] = `
   flex-direction: column;
 }
 
-.c38:first-of-type .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
+.c37:first-of-type .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
   display: block;
   margin-bottom: 10px;
 }
 
-.c40 {
+.c39 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -597,7 +588,7 @@ exports[`renders a series properly 1`] = `
   margin-bottom: 90px;
 }
 
-.c12 .c35 {
+.c12 .c34 {
   padding-top: 60px;
 }
 
@@ -607,6 +598,12 @@ exports[`renders a series properly 1`] = `
 
 .c0 .c11 {
   padding: 90px 20px 150px;
+}
+
+@media screen and (min-width:40em) {
+  .c17 {
+    margin-bottom: 60px;
+  }
 }
 
 @media (max-width:720px) {
@@ -623,58 +620,8 @@ exports[`renders a series properly 1`] = `
   }
 }
 
-@media only screen and (min-width:0em) {
-  .c17 {
-    -webkit-flex-basis: 100%;
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
-    max-width: 100%;
-    display: block;
-  }
-}
-
-@media only screen and (min-width:0em) {
-  .c39 {
-    -webkit-flex-basis: 100%;
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
-    max-width: 100%;
-    display: block;
-  }
-}
-
-@media only screen and (min-width:48em) {
-  .c39 {
-    -webkit-flex-basis: 33.333333333333336%;
-    -ms-flex-preferred-size: 33.333333333333336%;
-    flex-basis: 33.333333333333336%;
-    max-width: 33.333333333333336%;
-    display: block;
-  }
-}
-
-@media only screen and (min-width:0em) {
-  .c41 {
-    -webkit-flex-basis: 100%;
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
-    max-width: 100%;
-    display: block;
-  }
-}
-
-@media only screen and (min-width:48em) {
-  .c41 {
-    -webkit-flex-basis: 66.66666666666667%;
-    -ms-flex-preferred-size: 66.66666666666667%;
-    flex-basis: 66.66666666666667%;
-    max-width: 66.66666666666667%;
-    display: block;
-  }
-}
-
 @media (max-width:900px) {
-  .c27 {
+  .c26 {
     width: 100%;
     margin-left: 0;
     margin-bottom: 10px;
@@ -682,7 +629,7 @@ exports[`renders a series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c19 {
+  .c18 {
     -webkit-flex-direction: column-reverse;
     -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
@@ -691,14 +638,14 @@ exports[`renders a series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c20 {
+  .c19 {
     width: 100%;
     margin-bottom: 0;
   }
 }
 
 @media (max-width:900px) {
-  .c23 {
+  .c22 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
@@ -707,7 +654,7 @@ exports[`renders a series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c24 {
+  .c23 {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
@@ -717,50 +664,84 @@ exports[`renders a series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c30 svg {
+  .c29 svg {
     width: 30px;
   }
 }
 
-@media (max-width:64em) {
-  .c16 .c18 {
-    margin-bottom: 40px;
+@media only screen and (min-width:0em) {
+  .c38 {
+    -webkit-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    max-width: 100%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:48em) {
+  .c38 {
+    -webkit-flex-basis: 33.333333333333336%;
+    -ms-flex-preferred-size: 33.333333333333336%;
+    flex-basis: 33.333333333333336%;
+    max-width: 33.333333333333336%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:0em) {
+  .c40 {
+    -webkit-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    max-width: 100%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:48em) {
+  .c40 {
+    -webkit-flex-basis: 66.66666666666667%;
+    -ms-flex-preferred-size: 66.66666666666667%;
+    flex-basis: 66.66666666666667%;
+    max-width: 66.66666666666667%;
+    display: block;
   }
 }
 
 @media (max-width:600px) {
-  .c42 p,
-  .c42 ul,
-  .c42 ol,
-  .c42 div[data-block=true] .public-DraftStyleDefault-block {
+  .c41 p,
+  .c41 ul,
+  .c41 ol,
+  .c41 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c42 li {
+  .c41 li {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c42 h1 {
+  .c41 h1 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c42 h2 {
+  .c41 h2 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c42 h3 {
+  .c41 h3 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -768,14 +749,14 @@ exports[`renders a series properly 1`] = `
     line-height: 1.5em;
   }
 
-  .c42 h3 strong {
+  .c41 h3 strong {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c42 blockquote {
+  .c41 blockquote {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
@@ -783,24 +764,24 @@ exports[`renders a series properly 1`] = `
     margin: 0;
   }
 
-  .c42 .content-start {
+  .c41 .content-start {
     font-size: 55px;
   }
 }
 
 @media (max-width:48em) {
-  .c38:first-of-type .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
+  .c37:first-of-type .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
     display: none;
   }
 
-  .c38 .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
+  .c37 .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
     margin-top: 60px;
     display: block;
   }
 }
 
 @media (max-width:48em) {
-  .c40 {
+  .c39 {
     margin-bottom: 20px;
   }
 }
@@ -822,7 +803,7 @@ exports[`renders a series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c12 .c35 {
+  .c12 .c34 {
     padding-top: 60px;
   }
 }
@@ -911,17 +892,17 @@ exports[`renders a series properly 1`] = `
         className="c17"
       >
         <a
-          className="ArticleCard c18 c19"
+          className="ArticleCard c18"
           color="white"
           href="joanne-artman-gallery-poetry-naturerefinement-form"
           onClick={[Function]}
         >
           <div
-            className="c20"
+            className="c19"
           >
             <div>
               <div
-                className="c21 c22"
+                className="c20 c21"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -933,21 +914,21 @@ exports[`renders a series properly 1`] = `
                 The Future of Art
               </div>
               <div
-                className="c23"
+                className="c22"
               >
                 New Study Shows the Gender Pay Gap for Artists Is Not So Simple
               </div>
               <div
-                className="c24"
+                className="c23"
               >
                 The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
               </div>
             </div>
             <div
-              className="c25"
+              className="c24"
             >
               <div
-                className="c22"
+                className="c21"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -961,17 +942,17 @@ exports[`renders a series properly 1`] = `
             </div>
           </div>
           <div
-            className="c26 c27"
+            className="c25 c26"
           >
             <img
-              className="c28 c29"
+              className="c27 c28"
               src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
             />
             <div
-              className="c30 c31"
+              className="c29 c30"
             >
               <svg
-                className="c32"
+                className="c31"
                 version="1.1"
                 viewBox="0 0 40 56"
                 x="0px"
@@ -991,7 +972,7 @@ exports[`renders a series properly 1`] = `
                 </g>
               </svg>
               <div
-                className="c22"
+                className="c21"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1010,17 +991,17 @@ exports[`renders a series properly 1`] = `
         className="c17"
       >
         <a
-          className="ArticleCard c18 c19"
+          className="ArticleCard c18"
           color="white"
           href="new-yorks-next-art-district"
           onClick={[Function]}
         >
           <div
-            className="c20"
+            className="c19"
           >
             <div>
               <div
-                className="c21 c22"
+                className="c20 c21"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1032,22 +1013,22 @@ exports[`renders a series properly 1`] = `
                 The Future of Art
               </div>
               <div
-                className="c23"
+                className="c22"
               >
                 New York's Next Art District
               </div>
               <div
-                className="c24"
+                className="c23"
               >
                 Land exhibitions, make influential contacts, and gain valuable feedback about your work.
               </div>
             </div>
             <div
-              className="Byline c33"
+              className="Byline c32"
               color="white"
             >
               <div
-                className="c22"
+                className="c21"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1057,17 +1038,17 @@ exports[`renders a series properly 1`] = `
                 fontSize="14px"
               >
                 <div
-                  className="c34"
+                  className="c33"
                   color="white"
                 >
                   Casey Lesser
                 </div>
               </div>
               <div
-                className="c25"
+                className="c24"
               >
                 <div
-                  className="c22"
+                  className="c21"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1082,10 +1063,10 @@ exports[`renders a series properly 1`] = `
             </div>
           </div>
           <div
-            className="c26 c27"
+            className="c25 c26"
           >
             <img
-              className="c28 c29"
+              className="c27 c28"
               src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=95"
             />
           </div>
@@ -1093,26 +1074,26 @@ exports[`renders a series properly 1`] = `
       </div>
     </div>
     <div
-      className="c35 c36 c37"
+      className="c34 c35 c36"
       color="white"
     >
       <div
-        className="c38 c39"
+        className="c37 c38"
       >
         <div
-          className="c40"
+          className="c39"
         >
           About the Series
         </div>
       </div>
       <div
-        className="c38 c41"
+        className="c37 c40"
       >
         <div
           className="SeriesAbout__description"
         >
           <div
-            className="article__text-section c42"
+            className="article__text-section c41"
             color="white"
           >
             <div
@@ -1140,11 +1121,19 @@ exports[`renders a sponsored series properly 1`] = `
   text-align: center;
 }
 
-.c29 {
+.c28 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
+}
+
+.c23 {
+  color: white;
+}
+
+.c24 {
+  margin-bottom: 40px;
 }
 
 .c5 {
@@ -1251,57 +1240,11 @@ exports[`renders a sponsored series properly 1`] = `
   text-decoration: none;
 }
 
-.c44 {
-  box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 0 1 auto;
-  -ms-flex: 0 1 auto;
-  flex: 0 1 auto;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin-right: -0.5rem;
-  margin-left: -0.5rem;
-}
-
-.c24 {
-  box-sizing: border-box;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
-}
-
-.c46 {
-  box-sizing: border-box;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
-}
-
-.c48 {
-  box-sizing: border-box;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
-}
-
-.c41 {
+.c40 {
   margin: 10px 20px 0 0;
 }
 
-.c41::before {
+.c40::before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -1311,12 +1254,12 @@ exports[`renders a sponsored series properly 1`] = `
   background-color: white;
 }
 
-.c32 {
+.c31 {
   margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
-.c40 {
+.c39 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1331,12 +1274,12 @@ exports[`renders a sponsored series properly 1`] = `
   color: white;
 }
 
-.c39 {
+.c38 {
   width: 32px;
   height: 32px;
 }
 
-.c36 {
+.c35 {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1346,14 +1289,14 @@ exports[`renders a sponsored series properly 1`] = `
   display: block;
 }
 
-.c34 {
+.c33 {
   position: relative;
   width: 50%;
   height: inherit;
   margin-left: 30px;
 }
 
-.c26 {
+.c25 {
   border: 1px solid;
   border-radius: 2px;
   color: white;
@@ -1367,19 +1310,19 @@ exports[`renders a sponsored series properly 1`] = `
   display: flex;
 }
 
-.c26 .c35 {
+.c25 .c34 {
   opacity: 1;
 }
 
-.c26:hover .c35 {
+.c25:hover .c34 {
   opacity: 0.7;
 }
 
-.c26 .c33 {
+.c25 .c32 {
   background: black;
 }
 
-.c27 {
+.c26 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1395,7 +1338,7 @@ exports[`renders a sponsored series properly 1`] = `
   margin-bottom: 5px;
 }
 
-.c30 {
+.c29 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 45px;
@@ -1403,18 +1346,18 @@ exports[`renders a sponsored series properly 1`] = `
   margin-bottom: 30px;
 }
 
-.c28 {
+.c27 {
   margin-bottom: 10px;
 }
 
-.c31 {
+.c30 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
   -webkit-font-smoothing: antialiased;
 }
 
-.c38 {
+.c37 {
   position: absolute;
   left: 20px;
   bottom: 20px;
@@ -1433,16 +1376,8 @@ exports[`renders a sponsored series properly 1`] = `
   align-items: flex-end;
 }
 
-.c37 svg {
+.c36 svg {
   width: 40px;
-}
-
-.c23 {
-  color: white;
-}
-
-.c23 .c25 {
-  margin-bottom: 60px;
 }
 
 .c10 {
@@ -1477,6 +1412,43 @@ exports[`renders a sponsored series properly 1`] = `
   z-index: -1;
 }
 
+.c43 {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -0.5rem;
+  margin-left: -0.5rem;
+}
+
+.c45 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.c47 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
 .c19 {
   display: block;
 }
@@ -1496,12 +1468,12 @@ exports[`renders a sponsored series properly 1`] = `
   margin-bottom: 20px;
 }
 
-.c49 {
+.c48 {
   position: relative;
   width: 100%;
 }
 
-.c49 a {
+.c48 a {
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -1511,22 +1483,22 @@ exports[`renders a sponsored series properly 1`] = `
   background-position: bottom;
 }
 
-.c49 a:hover {
+.c48 a:hover {
   color: white;
   opacity: .65;
 }
 
-.c49 div[class*='ToolTip'] a {
+.c48 div[class*='ToolTip'] a {
   background-image: none;
   opacity: 1;
   color: inherit;
 }
 
-.c49 p,
-.c49 ul,
-.c49 ol,
-.c49 .paragraph,
-.c49 div[data-block=true] .public-DraftStyleDefault-block {
+.c48 p,
+.c48 ul,
+.c48 ol,
+.c48 .paragraph,
+.c48 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -1537,32 +1509,32 @@ exports[`renders a sponsored series properly 1`] = `
   font-style: inherit;
 }
 
-.c49 p:first-child,
-.c49 .paragraph:first-child,
-.c49 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c48 p:first-child,
+.c48 .paragraph:first-child,
+.c48 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c49 p:last-child,
-.c49 .paragraph:last-child,
-.c49 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c48 p:last-child,
+.c48 .paragraph:last-child,
+.c48 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c49 ul,
-.c49 ol {
+.c48 ul,
+.c48 ol {
   padding-left: 1em;
 }
 
-.c49 ul {
+.c48 ul {
   list-style: disc;
 }
 
-.c49 ol {
+.c48 ol {
   list-style: decimal;
 }
 
-.c49 li {
+.c48 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -1571,7 +1543,7 @@ exports[`renders a sponsored series properly 1`] = `
   padding-bottom: .5em;
 }
 
-.c49 h1 {
+.c48 h1 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -1584,7 +1556,7 @@ exports[`renders a sponsored series properly 1`] = `
   text-align: center;
 }
 
-.c49 h1::before {
+.c48 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -1595,7 +1567,7 @@ exports[`renders a sponsored series properly 1`] = `
   right: calc(50% - 4px);
 }
 
-.c49 h2 {
+.c48 h2 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -1604,15 +1576,15 @@ exports[`renders a sponsored series properly 1`] = `
   margin: 0;
 }
 
-.c49 h2 a {
+.c48 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c49 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
+.c48 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
   background-position: bottom !important;
 }
 
-.c49 h3 {
+.c48 h3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -1622,7 +1594,7 @@ exports[`renders a sponsored series properly 1`] = `
   margin: 0;
 }
 
-.c49 h3 strong {
+.c48 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -1630,11 +1602,11 @@ exports[`renders a sponsored series properly 1`] = `
   line-height: 1.5em;
 }
 
-.c49 h3 a {
+.c48 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c49 blockquote {
+.c48 blockquote {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 40px;
   line-height: 1.1em;
@@ -1647,7 +1619,7 @@ exports[`renders a sponsored series properly 1`] = `
   word-break: break-word;
 }
 
-.c49 .content-end {
+.c48 .content-end {
   display: inline-block;
   content: "";
   width: 8px;
@@ -1658,14 +1630,14 @@ exports[`renders a sponsored series properly 1`] = `
   margin-bottom: 1px;
 }
 
-.c49 .artist-follow {
+.c48 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c49 .artist-follow::before {
+.c48 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -1673,7 +1645,7 @@ exports[`renders a sponsored series properly 1`] = `
   font-size: 32px;
 }
 
-.c49 .artist-follow::after {
+.c48 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -1682,17 +1654,17 @@ exports[`renders a sponsored series properly 1`] = `
   text-transform: none;
 }
 
-.c43 {
+.c42 {
   color: white;
   max-width: 1200px;
   width: 100%;
 }
 
-.c45 .c18 {
+.c44 .c18 {
   display: none;
 }
 
-.c45:first-of-type {
+.c44:first-of-type {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1706,12 +1678,12 @@ exports[`renders a sponsored series properly 1`] = `
   flex-direction: column;
 }
 
-.c45:first-of-type .c18 {
+.c44:first-of-type .c18 {
   display: block;
   margin-bottom: 10px;
 }
 
-.c47 {
+.c46 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -1745,7 +1717,7 @@ exports[`renders a sponsored series properly 1`] = `
   margin-bottom: 90px;
 }
 
-.fKzgLF .c42 {
+.fKzgLF .c41 {
   padding-top: 60px;
 }
 
@@ -1759,7 +1731,7 @@ exports[`renders a sponsored series properly 1`] = `
   margin-bottom: 60px;
 }
 
-.c14 .c42 {
+.c14 .c41 {
   padding-top: 60px;
 }
 
@@ -1769,6 +1741,12 @@ exports[`renders a sponsored series properly 1`] = `
 
 .c0 .c13 {
   padding: 90px 20px 150px;
+}
+
+@media screen and (min-width:40em) {
+  .c24 {
+    margin-bottom: 60px;
+  }
 }
 
 @media (max-width:900px) {
@@ -1792,58 +1770,8 @@ exports[`renders a sponsored series properly 1`] = `
   }
 }
 
-@media only screen and (min-width:0em) {
-  .c24 {
-    -webkit-flex-basis: 100%;
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
-    max-width: 100%;
-    display: block;
-  }
-}
-
-@media only screen and (min-width:0em) {
-  .c46 {
-    -webkit-flex-basis: 100%;
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
-    max-width: 100%;
-    display: block;
-  }
-}
-
-@media only screen and (min-width:48em) {
-  .c46 {
-    -webkit-flex-basis: 33.333333333333336%;
-    -ms-flex-preferred-size: 33.333333333333336%;
-    flex-basis: 33.333333333333336%;
-    max-width: 33.333333333333336%;
-    display: block;
-  }
-}
-
-@media only screen and (min-width:0em) {
-  .c48 {
-    -webkit-flex-basis: 100%;
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
-    max-width: 100%;
-    display: block;
-  }
-}
-
-@media only screen and (min-width:48em) {
-  .c48 {
-    -webkit-flex-basis: 66.66666666666667%;
-    -ms-flex-preferred-size: 66.66666666666667%;
-    flex-basis: 66.66666666666667%;
-    max-width: 66.66666666666667%;
-    display: block;
-  }
-}
-
 @media (max-width:900px) {
-  .c34 {
+  .c33 {
     width: 100%;
     margin-left: 0;
     margin-bottom: 10px;
@@ -1851,7 +1779,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c26 {
+  .c25 {
     -webkit-flex-direction: column-reverse;
     -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
@@ -1860,14 +1788,14 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c27 {
+  .c26 {
     width: 100%;
     margin-bottom: 0;
   }
 }
 
 @media (max-width:900px) {
-  .c30 {
+  .c29 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
@@ -1876,7 +1804,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c31 {
+  .c30 {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
@@ -1886,14 +1814,48 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c37 svg {
+  .c36 svg {
     width: 30px;
   }
 }
 
-@media (max-width:64em) {
-  .c23 .c25 {
-    margin-bottom: 40px;
+@media only screen and (min-width:0em) {
+  .c45 {
+    -webkit-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    max-width: 100%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:48em) {
+  .c45 {
+    -webkit-flex-basis: 33.333333333333336%;
+    -ms-flex-preferred-size: 33.333333333333336%;
+    flex-basis: 33.333333333333336%;
+    max-width: 33.333333333333336%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:0em) {
+  .c47 {
+    -webkit-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    max-width: 100%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:48em) {
+  .c47 {
+    -webkit-flex-basis: 66.66666666666667%;
+    -ms-flex-preferred-size: 66.66666666666667%;
+    flex-basis: 66.66666666666667%;
+    max-width: 66.66666666666667%;
+    display: block;
   }
 }
 
@@ -1907,38 +1869,38 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c49 p,
-  .c49 ul,
-  .c49 ol,
-  .c49 div[data-block=true] .public-DraftStyleDefault-block {
+  .c48 p,
+  .c48 ul,
+  .c48 ol,
+  .c48 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c49 li {
+  .c48 li {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c49 h1 {
+  .c48 h1 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c49 h2 {
+  .c48 h2 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c49 h3 {
+  .c48 h3 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -1946,14 +1908,14 @@ exports[`renders a sponsored series properly 1`] = `
     line-height: 1.5em;
   }
 
-  .c49 h3 strong {
+  .c48 h3 strong {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c49 blockquote {
+  .c48 blockquote {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
@@ -1961,24 +1923,24 @@ exports[`renders a sponsored series properly 1`] = `
     margin: 0;
   }
 
-  .c49 .content-start {
+  .c48 .content-start {
     font-size: 55px;
   }
 }
 
 @media (max-width:48em) {
-  .c45:first-of-type .c18 {
+  .c44:first-of-type .c18 {
     display: none;
   }
 
-  .c45 .c18 {
+  .c44 .c18 {
     margin-top: 60px;
     display: block;
   }
 }
 
 @media (max-width:48em) {
-  .c47 {
+  .c46 {
     margin-bottom: 20px;
   }
 }
@@ -2000,13 +1962,13 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .fKzgLF .c42 {
+  .fKzgLF .c41 {
     padding-top: 60px;
   }
 }
 
 @media (max-width:900px) {
-  .c14 .c42 {
+  .c14 .c41 {
     padding-top: 60px;
   }
 }
@@ -2161,17 +2123,17 @@ exports[`renders a sponsored series properly 1`] = `
         className="c24"
       >
         <a
-          className="ArticleCard c25 c26"
+          className="ArticleCard c25"
           color="white"
           href="joanne-artman-gallery-poetry-naturerefinement-form"
           onClick={[Function]}
         >
           <div
-            className="c27"
+            className="c26"
           >
             <div>
               <div
-                className="c28 c29"
+                className="c27 c28"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2183,21 +2145,21 @@ exports[`renders a sponsored series properly 1`] = `
                 The Future of Art
               </div>
               <div
-                className="c30"
+                className="c29"
               >
                 New Study Shows the Gender Pay Gap for Artists Is Not So Simple
               </div>
               <div
-                className="c31"
+                className="c30"
               >
                 The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
               </div>
             </div>
             <div
-              className="c32"
+              className="c31"
             >
               <div
-                className="c29"
+                className="c28"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2211,17 +2173,17 @@ exports[`renders a sponsored series properly 1`] = `
             </div>
           </div>
           <div
-            className="c33 c34"
+            className="c32 c33"
           >
             <img
-              className="c35 c36"
+              className="c34 c35"
               src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
             />
             <div
-              className="c37 c38"
+              className="c36 c37"
             >
               <svg
-                className="c39"
+                className="c38"
                 version="1.1"
                 viewBox="0 0 40 56"
                 x="0px"
@@ -2241,7 +2203,7 @@ exports[`renders a sponsored series properly 1`] = `
                 </g>
               </svg>
               <div
-                className="c29"
+                className="c28"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2260,17 +2222,17 @@ exports[`renders a sponsored series properly 1`] = `
         className="c24"
       >
         <a
-          className="ArticleCard c25 c26"
+          className="ArticleCard c25"
           color="white"
           href="new-yorks-next-art-district"
           onClick={[Function]}
         >
           <div
-            className="c27"
+            className="c26"
           >
             <div>
               <div
-                className="c28 c29"
+                className="c27 c28"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2282,22 +2244,22 @@ exports[`renders a sponsored series properly 1`] = `
                 The Future of Art
               </div>
               <div
-                className="c30"
+                className="c29"
               >
                 New York's Next Art District
               </div>
               <div
-                className="c31"
+                className="c30"
               >
                 Land exhibitions, make influential contacts, and gain valuable feedback about your work.
               </div>
             </div>
             <div
-              className="Byline c40"
+              className="Byline c39"
               color="white"
             >
               <div
-                className="c29"
+                className="c28"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2307,17 +2269,17 @@ exports[`renders a sponsored series properly 1`] = `
                 fontSize="14px"
               >
                 <div
-                  className="c41"
+                  className="c40"
                   color="white"
                 >
                   Casey Lesser
                 </div>
               </div>
               <div
-                className="c32"
+                className="c31"
               >
                 <div
-                  className="c29"
+                  className="c28"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2332,10 +2294,10 @@ exports[`renders a sponsored series properly 1`] = `
             </div>
           </div>
           <div
-            className="c33 c34"
+            className="c32 c33"
           >
             <img
-              className="c35 c36"
+              className="c34 c35"
               src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=95"
             />
           </div>
@@ -2343,14 +2305,14 @@ exports[`renders a sponsored series properly 1`] = `
       </div>
     </div>
     <div
-      className="c42 c43 c44"
+      className="c41 c42 c43"
       color="white"
     >
       <div
-        className="c45 c46"
+        className="c44 c45"
       >
         <div
-          className="c47"
+          className="c46"
         >
           About the Series
         </div>
@@ -2378,13 +2340,13 @@ exports[`renders a sponsored series properly 1`] = `
         </div>
       </div>
       <div
-        className="c45 c48"
+        className="c44 c47"
       >
         <div
           className="SeriesAbout__description"
         >
           <div
-            className="article__text-section c49"
+            className="article__text-section c48"
             color="white"
           >
             <div

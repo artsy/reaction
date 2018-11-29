@@ -16,7 +16,7 @@ export const ArticleCards: React.SFC<Props> = props => {
     <Box color={color}>
       {relatedArticles.map((relatedArticle, i) => {
         return (
-          <Box mb={[40, 60]}>
+          <Box mb={[40, 60]} key={i}>
             <ArticleCard
               article={relatedArticle}
               color={color}

@@ -368,7 +368,8 @@ exports[`Sections snapshots renders properly 1`] = `
 }
 
 .c38 {
-  height: 100%;
+  height: auto;
+  width: 100%;
 }
 
 .c1 {
