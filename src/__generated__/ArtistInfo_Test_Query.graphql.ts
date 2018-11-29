@@ -170,24 +170,21 @@ v1 = {
 v2 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "_id",
-  "args": null,
-  "storageKey": null
-},
-v3 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v4 = {
-  "kind": "ScalarField",
-  "alias": null,
   "name": "name",
   "args": null,
   "storageKey": null
 },
+v3 = [
+  v2
+],
+v4 = [
+  {
+    "kind": "Literal",
+    "name": "format",
+    "value": "YYYY",
+    "type": "String"
+  }
+],
 v5 = [
   {
     "kind": "ScalarField",
@@ -197,17 +194,20 @@ v5 = [
     "storageKey": null
   }
 ],
-v6 = [
-  v4
-],
-v7 = [
-  {
-    "kind": "Literal",
-    "name": "format",
-    "value": "YYYY",
-    "type": "String"
-  }
-];
+v6 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "_id",
+  "args": null,
+  "storageKey": null
+},
+v7 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+};
 return {
   "kind": "Request",
   "operationKind": "query",
@@ -255,9 +255,105 @@ return {
         "concreteType": "Artist",
         "plural": false,
         "selections": [
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "exhibition_highlights",
+            "storageKey": "exhibition_highlights(size:3)",
+            "args": [
+              {
+                "kind": "Literal",
+                "name": "size",
+                "value": 3,
+                "type": "Int"
+              }
+            ],
+            "concreteType": "Show",
+            "plural": true,
+            "selections": [
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "partner",
+                "storageKey": null,
+                "args": null,
+                "concreteType": null,
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "__typename",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  v1,
+                  {
+                    "kind": "InlineFragment",
+                    "type": "Partner",
+                    "selections": v3
+                  },
+                  {
+                    "kind": "InlineFragment",
+                    "type": "ExternalPartner",
+                    "selections": v3
+                  }
+                ]
+              },
+              v2,
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "start_at",
+                "args": v4,
+                "storageKey": "start_at(format:\"YYYY\")"
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "cover_image",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "Image",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "cropped",
+                    "storageKey": "cropped(height:600,width:800)",
+                    "args": [
+                      {
+                        "kind": "Literal",
+                        "name": "height",
+                        "value": 600,
+                        "type": "Int!"
+                      },
+                      {
+                        "kind": "Literal",
+                        "name": "width",
+                        "value": 800,
+                        "type": "Int!"
+                      }
+                    ],
+                    "concreteType": "CroppedImageUrl",
+                    "plural": false,
+                    "selections": v5
+                  }
+                ]
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "city",
+                "args": null,
+                "storageKey": null
+              },
+              v1
+            ]
+          },
+          v6,
           v2,
-          v3,
-          v4,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -331,103 +427,7 @@ return {
               }
             ]
           },
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "name": "exhibition_highlights",
-            "storageKey": "exhibition_highlights(size:3)",
-            "args": [
-              {
-                "kind": "Literal",
-                "name": "size",
-                "value": 3,
-                "type": "Int"
-              }
-            ],
-            "concreteType": "Show",
-            "plural": true,
-            "selections": [
-              {
-                "kind": "LinkedField",
-                "alias": null,
-                "name": "partner",
-                "storageKey": null,
-                "args": null,
-                "concreteType": null,
-                "plural": false,
-                "selections": [
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "__typename",
-                    "args": null,
-                    "storageKey": null
-                  },
-                  v1,
-                  {
-                    "kind": "InlineFragment",
-                    "type": "ExternalPartner",
-                    "selections": v6
-                  },
-                  {
-                    "kind": "InlineFragment",
-                    "type": "Partner",
-                    "selections": v6
-                  }
-                ]
-              },
-              v4,
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "start_at",
-                "args": v7,
-                "storageKey": "start_at(format:\"YYYY\")"
-              },
-              {
-                "kind": "LinkedField",
-                "alias": null,
-                "name": "cover_image",
-                "storageKey": null,
-                "args": null,
-                "concreteType": "Image",
-                "plural": false,
-                "selections": [
-                  {
-                    "kind": "LinkedField",
-                    "alias": null,
-                    "name": "cropped",
-                    "storageKey": "cropped(height:600,width:800)",
-                    "args": [
-                      {
-                        "kind": "Literal",
-                        "name": "height",
-                        "value": 600,
-                        "type": "Int!"
-                      },
-                      {
-                        "kind": "Literal",
-                        "name": "width",
-                        "value": 800,
-                        "type": "Int!"
-                      }
-                    ],
-                    "concreteType": "CroppedImageUrl",
-                    "plural": false,
-                    "selections": v5
-                  }
-                ]
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "city",
-                "args": null,
-                "storageKey": null
-              },
-              v1
-            ]
-          },
+          v7,
           {
             "kind": "LinkedField",
             "alias": null,
@@ -548,7 +548,7 @@ return {
                             "concreteType": "Category",
                             "plural": true,
                             "selections": [
-                              v3
+                              v7
                             ]
                           },
                           v1
@@ -643,7 +643,7 @@ return {
                         "kind": "ScalarField",
                         "alias": null,
                         "name": "sale_date",
-                        "args": v7,
+                        "args": v4,
                         "storageKey": "sale_date(format:\"YYYY\")"
                       },
                       v1
@@ -710,9 +710,9 @@ return {
                         "plural": false,
                         "selections": [
                           v1,
-                          v3,
+                          v7,
+                          v6,
                           v2,
-                          v4,
                           {
                             "kind": "LinkedField",
                             "alias": null,

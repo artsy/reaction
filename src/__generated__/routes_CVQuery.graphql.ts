@@ -290,17 +290,17 @@ v12 = [
               v8,
               {
                 "kind": "InlineFragment",
-                "type": "ExternalPartner",
-                "selections": [
-                  v10
-                ]
-              },
-              {
-                "kind": "InlineFragment",
                 "type": "Partner",
                 "selections": [
                   v10,
                   v11
+                ]
+              },
+              {
+                "kind": "InlineFragment",
+                "type": "ExternalPartner",
+                "selections": [
+                  v10
                 ]
               }
             ]

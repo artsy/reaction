@@ -204,14 +204,14 @@ return {
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
-          v3,
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "title",
+            "name": "collecting_institution",
             "args": null,
             "storageKey": null
           },
+          v3,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -250,7 +250,7 @@ return {
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "collecting_institution",
+            "name": "title",
             "args": null,
             "storageKey": null
           },
