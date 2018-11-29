@@ -2,7 +2,7 @@ import React from "react"
 
 // https://stripe.com/docs/api#card_object-brand
 export type CreditCardType =
-  | "Mastercard"
+  | "MasterCard"
   | "Visa"
   | "Discover"
   | "American Express"
@@ -15,7 +15,7 @@ export const CreditCardIcon = ({
   type?: CreditCardType | string
 }) => {
   switch (type) {
-    case "Mastercard":
+    case "MasterCard":
       return <MastercardIcon {...others} />
     case "Visa":
       return <VisaIcon {...others} />

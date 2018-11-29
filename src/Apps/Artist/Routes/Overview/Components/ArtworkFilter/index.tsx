@@ -7,7 +7,7 @@ import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Toggle } from "Styleguide/Components"
 import { Subscribe } from "unstated"
-import { Responsive } from "Utils/Responsive"
+import { Media } from "Utils/Responsive"
 import { ArtworkFilterRefetchContainer as ArtworkFilter } from "./ArtworkFilterRefetch"
 import { MobileActionSheet } from "./MobileActionSheet"
 
@@ -220,12 +220,9 @@ class Filter extends Component<Props> {
     )
   }
 
-  renderSelect({ filterState, mediator, xs }) {
+  renderSelect({ filterState, mediator }) {
     return (
-      <Flex
-        justifyContent={xs ? "space-between" : "flex-end"}
-        alignItems="center"
-      >
+      <Flex justifyContent={["space-between", "flex-end"]} alignItems="center">
         <SmallSelect
           mt="-8px"
           options={[
@@ -256,7 +253,7 @@ class Filter extends Component<Props> {
           }}
         />
 
-        {xs && (
+        <Media at="xs">
           <Button
             size="small"
             mt={-1}
@@ -268,7 +265,7 @@ class Filter extends Component<Props> {
               Filter
             </Flex>
           </Button>
-        )}
+        </Media>
       </Flex>
     )
   }
@@ -278,69 +275,60 @@ class Filter extends Component<Props> {
     return (
       <ContextConsumer>
         {({ user, mediator }) => {
+          const hideTopBorder = this.props.hideTopBorder
+
+          const Filters = () =>
+            this.renderFilters({
+              user,
+              filterState,
+              mediator,
+              hideTopBorder,
+            })
+
           return (
-            <Responsive>
-              {({ xs, sm, md }) => {
-                const hideTopBorder = this.props.hideTopBorder || xs
+            <Flex flexDirection={["column", "row"]}>
+              <Box width={["100%", "25%"]} mr={2}>
+                <Media at="xs">
+                  {filterState.state.showActionSheet && (
+                    <MobileActionSheet
+                      onClose={() => filterState.showActionSheet(false)}
+                    >
+                      <Filters />
+                    </MobileActionSheet>
+                  )}
+                </Media>
+                <Media greaterThan="xs">
+                  <Filters />
+                </Media>
+              </Box>
+              {/* Main Artwork Grid */}
+              <Box width={["100%", "75%"]}>
+                <Media greaterThan="xs">
+                  {!hideTopBorder && <Separator mb={2} mt={-1} />}
+                </Media>
 
-                const Filters = () =>
-                  this.renderFilters({
+                {this.renderSelect({
+                  filterState,
+                  mediator,
+                })}
+
+                <Spacer mb={2} />
+
+                {this.showZeroState ? (
+                  this.renderZeroState({
                     user,
-                    filterState,
                     mediator,
-                    hideTopBorder,
                   })
-
-                return (
-                  <>
-                    <Flex>
-                      {xs ? (
-                        // Mobile
-                        filterState.state.showActionSheet && (
-                          <MobileActionSheet
-                            onClose={() => filterState.showActionSheet(false)}
-                          >
-                            <Filters />
-                          </MobileActionSheet>
-                        )
-                      ) : (
-                        // Desktop
-                        <Sidebar width="25%" mr={2}>
-                          <Filters />
-                        </Sidebar>
-                      )}
-
-                      {/* Main Artwork Grid */}
-                      <Box width={xs ? "100%" : "75%"}>
-                        {!hideTopBorder && <Separator mb={2} mt={-1} />}
-
-                        {this.renderSelect({
-                          filterState,
-                          mediator,
-                          xs,
-                        })}
-
-                        <Spacer mb={2} />
-
-                        {this.showZeroState ? (
-                          this.renderZeroState({
-                            user,
-                            mediator,
-                          })
-                        ) : (
-                          <ArtworkFilter
-                            artist={this.props.artist}
-                            artistID={this.props.artist.id}
-                            columnCount={xs || sm || md ? 2 : 3}
-                            filters={filterState.state}
-                          />
-                        )}
-                      </Box>
-                    </Flex>
-                  </>
-                )
-              }}
-            </Responsive>
+                ) : (
+                  <ArtworkFilter
+                    artist={this.props.artist}
+                    artistID={this.props.artist.id}
+                    columnCount={[2, 2, 2, 3]}
+                    filters={filterState.state}
+                  />
+                )}
+              </Box>
+            </Flex>
           )
         }}
       </ContextConsumer>
@@ -409,5 +397,3 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(
     }
   `
 )
-
-const Sidebar = Box

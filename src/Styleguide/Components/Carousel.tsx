@@ -5,7 +5,7 @@ import styled from "styled-components"
 import { left, LeftProps, right, RightProps } from "styled-system"
 import { Arrow } from "Styleguide/Elements/Arrow"
 import { media } from "Styleguide/Elements/Grid"
-import { Responsive } from "Utils/Responsive"
+import { Media } from "Utils/Responsive"
 
 interface Props {
   settings?: Settings
@@ -21,12 +21,14 @@ export class Carousel extends React.Component<Props> {
 
   render() {
     return (
-      <Responsive>
-        {({ xs }) => {
-          if (xs) return <SmallCarousel {...this.props} />
-          else return <LargeCarousel {...this.props} />
-        }}
-      </Responsive>
+      <>
+        <Media at="xs">
+          <SmallCarousel {...this.props} />
+        </Media>
+        <Media greaterThan="xs">
+          <LargeCarousel {...this.props} />
+        </Media>
+      </>
     )
   }
 }
@@ -145,7 +147,7 @@ const CarouselContainer = styled.div<{ height?: number }>`
     width: 0;
 
     button {
-      &:before {
+      &::before {
         font-size: 4px;
       }
     }

@@ -41,7 +41,7 @@ interface CVItemState {
   isLoading: boolean
 }
 
-class CVItem extends Component<CVItemProps, CVItemState> {
+export class CVItem extends Component<CVItemProps, CVItemState> {
   state = {
     isLoading: false,
   }
@@ -271,3 +271,6 @@ export const CVPaginationContainer = createPaginationContainer(
 const CVItems = styled(Box)``
 const Year = Serif
 const Category = Sans
+
+Year.displayName = "Year"
+Category.displayName = "Category"

@@ -1,9 +1,15 @@
-import { Button, Checkbox, Flex, Join, Serif, Spacer } from "@artsy/palette"
+import {
+  Button,
+  Checkbox,
+  Collapse,
+  Flex,
+  Join,
+  Serif,
+  Spacer,
+} from "@artsy/palette"
 import { Payment_order } from "__generated__/Payment_order.graphql"
 import { PaymentRouteCreateCreditCardMutation } from "__generated__/PaymentRouteCreateCreditCardMutation.graphql"
 import { PaymentRouteSetOrderPaymentMutation } from "__generated__/PaymentRouteSetOrderPaymentMutation.graphql"
-import { validatePresence } from "Apps/Order/Components/Validators"
-
 import {
   Address,
   AddressChangeHandler,
@@ -13,11 +19,17 @@ import {
   emptyAddress,
 } from "Apps/Order/Components/AddressForm"
 
+import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
 import { CreditCardInput } from "Apps/Order/Components/CreditCardInput"
 import { Helper } from "Apps/Order/Components/Helper"
-import { OrderStepper } from "Apps/Order/Components/OrderStepper"
-import { TransactionSummaryFragmentContainer as TransactionSummary } from "Apps/Order/Components/TransactionSummary"
+import {
+  buyNowFlowSteps,
+  offerFlowSteps,
+  OrderStepper,
+} from "Apps/Order/Components/OrderStepper"
+import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
+import { validateAddress } from "Apps/Order/Utils/formValidators"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
@@ -31,10 +43,11 @@ import {
   RelayRefetchProp,
 } from "react-relay"
 import { injectStripe, ReactStripeElements } from "react-stripe-elements"
-import { Collapse } from "Styleguide/Components"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
-import { Responsive } from "Utils/Responsive"
+import { ErrorWithMetadata } from "Utils/errors"
+import createLogger from "Utils/logger"
+import { Media } from "Utils/Responsive"
 
 export const ContinueButton = props => (
   <Button size="large" width="100%" {...props}>
@@ -59,6 +72,8 @@ interface PaymentState {
   isErrorModalOpen: boolean
   errorModalMessage: string
 }
+
+const logger = createLogger("Order/Routes/Payment/index.tsx")
 
 @track()
 export class PaymentRoute extends Component<PaymentProps, PaymentState> {
@@ -100,8 +115,8 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
   onContinue: () => void = () => {
     this.setState({ isCommittingMutation: true }, () => {
       if (this.needsAddress()) {
-        const errors = this.validateAddress(this.state.address)
-        if (Object.keys(errors).filter(key => errors[key]).length > 0) {
+        const { errors, hasErrors } = validateAddress(this.state.address)
+        if (hasErrors) {
           this.setState({
             isCommittingMutation: false,
             addressErrors: errors,
@@ -126,19 +141,6 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
           }
         })
     })
-  }
-
-  private validateAddress(address: Address) {
-    const { name, addressLine1, city, region, country, postalCode } = address
-    const usOrCanada = country === "US" || country === "CA"
-    return {
-      name: validatePresence(name),
-      addressLine1: validatePresence(addressLine1),
-      city: validatePresence(city),
-      region: usOrCanada && validatePresence(region),
-      country: validatePresence(country),
-      postalCode: usOrCanada && validatePresence(postalCode),
-    }
   }
 
   @track((props, state, args) => {
@@ -166,11 +168,12 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
   }
 
   onAddressChange: AddressChangeHandler = (address, key) => {
+    const { errors } = validateAddress(address)
     this.setState({
       address,
       addressErrors: {
         ...this.state.addressErrors,
-        [key]: this.validateAddress(address)[key],
+        [key]: errors[key],
       },
       addressTouched: {
         ...this.state.addressTouched,
@@ -200,91 +203,83 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
             <Col>
               <OrderStepper
                 currentStep="Payment"
-                offerFlow={false /* TODO: order.isOfferable or whatever */}
+                steps={
+                  order.mode === "OFFER" ? offerFlowSteps : buyNowFlowSteps
+                }
               />
             </Col>
           </Row>
         </HorizontalPadding>
 
-        <Responsive>
-          {({ xs }) => (
-            <HorizontalPadding>
-              <TwoColumnLayout
-                Content={
-                  <Flex
-                    flexDirection="column"
-                    style={
-                      isCommittingMutation ? { pointerEvents: "none" } : {}
-                    }
-                  >
-                    <Join separator={<Spacer mb={3} />}>
-                      <Flex flexDirection="column">
-                        <Serif
-                          mb={1}
-                          size="3t"
-                          color="black100"
-                          lineHeight={18}
-                        >
-                          Credit card
-                        </Serif>
-                        <CreditCardInput
-                          error={stripeError}
-                          onChange={response => {
-                            this.setState({ stripeError: response.error })
-                          }}
-                        />
-                      </Flex>
-
-                      {!this.isPickup() && (
-                        <Checkbox
-                          selected={this.state.hideBillingAddress}
-                          onSelect={this.handleChangeHideBillingAddress.bind(
-                            this
-                          )}
-                        >
-                          Billing and shipping addresses are the same
-                        </Checkbox>
-                      )}
-                      <Collapse open={this.needsAddress()}>
-                        <AddressForm
-                          value={address}
-                          errors={addressErrors}
-                          touched={addressTouched}
-                          onChange={this.onAddressChange}
-                          billing
-                        />
-                      </Collapse>
-                      {!xs && (
-                        <ContinueButton
-                          onClick={this.onContinue}
-                          loading={isCommittingMutation}
-                        />
-                      )}
-                    </Join>
-                    <Spacer mb={3} />
-                  </Flex>
-                }
-                Sidebar={
+        <HorizontalPadding>
+          <TwoColumnLayout
+            Content={
+              <Flex
+                flexDirection="column"
+                style={isCommittingMutation ? { pointerEvents: "none" } : {}}
+              >
+                <Join separator={<Spacer mb={3} />}>
                   <Flex flexDirection="column">
-                    <TransactionSummary order={order} mb={[2, 3]} />
-                    <Helper
-                      artworkId={order.lineItems.edges[0].node.artwork.id}
+                    <Serif mb={1} size="3t" color="black100" lineHeight="1.1em">
+                      Credit card
+                    </Serif>
+                    <CreditCardInput
+                      error={stripeError}
+                      onChange={response => {
+                        this.setState({ stripeError: response.error })
+                      }}
                     />
-                    {xs && (
-                      <>
-                        <Spacer mb={3} />
-                        <ContinueButton
-                          onClick={this.onContinue}
-                          loading={isCommittingMutation}
-                        />
-                      </>
-                    )}
                   </Flex>
-                }
-              />
-            </HorizontalPadding>
-          )}
-        </Responsive>
+
+                  {!this.isPickup() && (
+                    <Checkbox
+                      selected={this.state.hideBillingAddress}
+                      onSelect={this.handleChangeHideBillingAddress.bind(this)}
+                    >
+                      Billing and shipping addresses are the same
+                    </Checkbox>
+                  )}
+                  <Collapse open={this.needsAddress()}>
+                    <AddressForm
+                      value={address}
+                      errors={addressErrors}
+                      touched={addressTouched}
+                      onChange={this.onAddressChange}
+                      billing
+                    />
+                  </Collapse>
+
+                  <Media greaterThan="xs">
+                    <ContinueButton
+                      onClick={this.onContinue}
+                      loading={isCommittingMutation}
+                    />
+                  </Media>
+                </Join>
+                <Spacer mb={3} />
+              </Flex>
+            }
+            Sidebar={
+              <Flex flexDirection="column">
+                <Flex flexDirection="column">
+                  <ArtworkSummaryItem order={order} />
+                  <TransactionDetailsSummaryItem order={order} />
+                </Flex>
+                <Spacer mb={[2, 3]} />
+                <Helper artworkId={order.lineItems.edges[0].node.artwork.id} />
+                <Media at="xs">
+                  <>
+                    <Spacer mb={3} />
+                    <ContinueButton
+                      onClick={this.onContinue}
+                      loading={isCommittingMutation}
+                    />
+                  </>
+                </Media>
+              </Flex>
+            }
+          />
+        </HorizontalPadding>
 
         <ErrorModal
           onClose={this.onCloseModal}
@@ -334,11 +329,15 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
               creditCardId: creditCardOrError.creditCard.id,
             })
           } else {
-            this.onMutationError(
-              errors || creditCardOrError.mutationError,
-              creditCardOrError.mutationError &&
-                creditCardOrError.mutationError.detail
-            )
+            if (errors) {
+              errors.forEach(this.onMutationError.bind(this))
+            } else {
+              const mutationError = creditCardOrError.mutationError
+              this.onMutationError(
+                new ErrorWithMetadata(mutationError.message, mutationError),
+                mutationError.detail
+              )
+            }
           }
         },
         onError: this.onMutationError.bind(this),
@@ -385,7 +384,14 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
           if (orderOrError.order) {
             this.props.router.push(`/orders/${this.props.order.id}/review`)
           } else {
-            this.onMutationError(errors || orderOrError)
+            if (errors) {
+              errors.forEach(this.onMutationError.bind(this))
+            } else {
+              const orderError = orderOrError.error
+              this.onMutationError(
+                new ErrorWithMetadata(orderError.code, orderError)
+              )
+            }
           }
         },
         onError: this.onMutationError.bind(this),
@@ -430,8 +436,8 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
     )
   }
 
-  private onMutationError(errors, errorModalMessage?) {
-    console.error("Order/Routes/Payment/index.tsx", errors)
+  private onMutationError(error, errorModalMessage?) {
+    logger.error(error)
     this.setState({
       isCommittingMutation: false,
       isErrorModalOpen: true,
@@ -461,6 +467,7 @@ export const PaymentFragmentContainer = createFragmentContainer(
   graphql`
     fragment Payment_order on Order {
       id
+      mode
       creditCard {
         name
         street1
@@ -494,7 +501,8 @@ export const PaymentFragmentContainer = createFragmentContainer(
           }
         }
       }
-      ...TransactionSummary_order
+      ...ArtworkSummaryItem_order
+      ...TransactionDetailsSummaryItem_order
     }
   `
 )

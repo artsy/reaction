@@ -18,11 +18,12 @@ export enum OwnerType {
   Article = "Article",
   Artist = "Artist",
   Artwork = "Artwork",
+  Consignment = "ConsignmentSubmission",
   Conversation = "Conversation",
   Gene = "Gene",
-  Show = "Show",
   Invoice = "Invoice",
-  Consignment = "ConsignmentSubmission",
+  Partner = "Partner",
+  Show = "Show",
 }
 
 /**
@@ -163,6 +164,14 @@ export enum Subject {
   BNMOProvideShipping = "provide shipping address",
   BNMOArrangePickup = "arrange for pickup",
   BNMOUseShippingAddress = "use shipping address",
+
+  AuctionConditionsOfSale = "conditions of sale",
+  AuctionFAQ = "auction faq",
+  AuctionAskSpecialist = "ask a specialist",
+
+  CollectorFAQ = "collector faq",
+
+  ConsignLearnMore = "learn more",
 }
 
 /**
@@ -180,6 +189,7 @@ export enum ContextModule {
   ArtistOverview = "ArtistOverview",
   ArtistBio = "ArtistBio",
   Biography = "Biography",
+  Sidebar = "Sidebar",
 
   /**
    * Artwork page
@@ -203,6 +213,11 @@ export enum ContextModule {
    * Buy Now Make Offer ("Works For You")
    */
   BNMOBanner = "BNMO Banner",
+
+  /**
+   * Collection page
+   */
+  CollectionDescription = "CollectionDescription",
 }
 
 export enum Flow {
@@ -221,4 +236,5 @@ export enum Label {
 export enum Type {
   Button = "Button",
   Tab = "Tab",
+  Link = "Link",
 }

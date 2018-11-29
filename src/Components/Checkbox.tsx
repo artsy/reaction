@@ -92,7 +92,7 @@ const CheckboxInput = styled.input.attrs<CheckboxProps>({})`
   left: 0;
   border: none;
 
-  // The after represents the square box
+  /* The after represents the square box */
   &::after {
     transition: all 0.25s;
     content: "";

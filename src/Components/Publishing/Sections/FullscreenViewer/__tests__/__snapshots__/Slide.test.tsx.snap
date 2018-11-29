@@ -31,6 +31,14 @@ exports[`renders properly 1`] = `
   color: black;
 }
 
+.c7 a {
+  color: black;
+  font-family: Unica77LLWebMedium,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
 .c7 .title {
   font-family: Unica77LLWebMediumItalic,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -41,14 +49,6 @@ exports[`renders properly 1`] = `
 .c7 .title,
 .c7 .title a {
   font-family: Unica77LLWebMediumItalic,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-.c7 a {
-  color: black;
-  font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   line-height: 1.1em;
@@ -92,7 +92,7 @@ exports[`renders properly 1`] = `
 }
 
 .c3 p {
-  margin: 0px;
+  margin: 0;
 }
 
 .c4 {
@@ -120,7 +120,7 @@ exports[`renders properly 1`] = `
 
 .c2 {
   display: block;
-  background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=1200&quality=95) no-repeat center;
+  background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=1200&quality=80) no-repeat center;
   background-size: contain;
   -webkit-flex: 1;
   -ms-flex: 1;
@@ -238,7 +238,7 @@ exports[`renders properly 1`] = `
     </div>
     <div
       className="c2"
-      src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=1200&quality=95"
+      src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=1200&quality=80"
     />
     <div
       className="c3"

@@ -57,6 +57,7 @@ export class BannerWrapper extends Component<{ article: ArticleData }, State> {
     return (
       <MinimalCtaBanner
         href={`/sign_up?${qs.stringify({
+          action: "editorialSignup",
           intent: "viewed editorial",
           trigger: "click",
           contextModule: "auth minimal cta banner",

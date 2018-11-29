@@ -1,7 +1,8 @@
-import { ArtistInfoFixture } from "Apps/__test__/Fixtures/Artwork/ArtistInfo"
+import { ArtistInfoFixture } from "Apps/__tests__/Fixtures/Artwork/ArtistInfo"
 import { ArtistInfoFragmentContainer } from "Apps/Artwork/Components/ArtistInfo"
-import { renderRelayTree } from "DevTools"
+import { MockBoot, renderRelayTree } from "DevTools"
 import { cloneDeep } from "lodash"
+import React from "react"
 import { graphql } from "react-relay"
 
 jest.unmock("react-relay")
@@ -17,24 +18,31 @@ describe("ArtistInfo", () => {
           }
         }
       `,
+      wrapper: n => <MockBoot breakpoint="xs">{n}</MockBoot>,
       mockResolvers: {
         Artist: () => response,
       },
     })
   }
+  let wrapper
 
-  it("renders a correct component tree", async () => {
-    const wrapper = await getWrapper()
-    expect(wrapper.find("EntityHeader").length).toBe(1)
-    expect(wrapper.find("ArtistBio").length).toBe(1)
-    expect(wrapper.find("MarketInsights").length).toBe(1)
-    expect(wrapper.find("SelectedExhibitions").length).toBe(1)
+  describe("ArtistInfo for artwort with complete artist info", () => {
+    beforeAll(async () => {
+      wrapper = await getWrapper()
+    })
+
+    it("renders a correct component tree", () => {
+      expect(wrapper.find("EntityHeader").length).toBe(1)
+      expect(wrapper.find("ArtistBio").length).toBe(1)
+      expect(wrapper.find("MarketInsights").length).toBe(1)
+      expect(wrapper.find("SelectedExhibitions").length).toBe(1)
+    })
   })
 
   it("hides ArtistBio if no data", async () => {
     const data = cloneDeep(ArtistInfoFixture)
     data.biography_blurb.text = null
-    const wrapper = await getWrapper(data)
+    wrapper = await getWrapper(data)
     expect(wrapper.find("ArtistBio").length).toBe(0)
   })
 
@@ -43,14 +51,14 @@ describe("ArtistInfo", () => {
     data.highlights.partners = null
     data.collections = null
     data.auctionResults = null
-    const wrapper = await getWrapper(data)
+    wrapper = await getWrapper(data)
     expect(wrapper.find("MarketInsights").html()).toBe(null)
   })
 
   it("hides SelectedExhibitions if no data", async () => {
     const data = cloneDeep(ArtistInfoFixture)
     data.exhibition_highlights = []
-    const wrapper = await getWrapper(data)
+    wrapper = await getWrapper(data)
     expect(wrapper.find("SelectedExhibitions").html()).toBe(null)
   })
 })

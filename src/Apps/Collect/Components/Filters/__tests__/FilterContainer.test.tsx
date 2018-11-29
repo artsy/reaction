@@ -1,3 +1,4 @@
+import { MockBoot } from "DevTools"
 import { mount } from "enzyme"
 import React from "react"
 import { Provider } from "unstated"
@@ -39,14 +40,15 @@ describe("FilterContainer", () => {
 
   it("renders mobile version", () => {
     const wrapper = mount(
-      <Provider inject={[filterState]}>
-        <FilterContainer
-          isMobile
-          mediator={mockMediator}
-          mediums={mediums}
-          user={user}
-        />
-      </Provider>
+      <MockBoot breakpoint="xs">
+        <Provider inject={[filterState]}>
+          <FilterContainer
+            mediator={mockMediator}
+            mediums={mediums}
+            user={user}
+          />
+        </Provider>
+      </MockBoot>
     )
 
     wrapper.update()
@@ -57,13 +59,15 @@ describe("FilterContainer", () => {
 
   it("renders desktop version", () => {
     const wrapper = mount(
-      <Provider inject={[filterState]}>
-        <FilterContainer
-          mediator={mockMediator}
-          mediums={mediums}
-          user={user}
-        />
-      </Provider>
+      <MockBoot breakpoint="lg">
+        <Provider inject={[filterState]}>
+          <FilterContainer
+            mediator={mockMediator}
+            mediums={mediums}
+            user={user}
+          />
+        </Provider>
+      </MockBoot>
     )
 
     wrapper.update()

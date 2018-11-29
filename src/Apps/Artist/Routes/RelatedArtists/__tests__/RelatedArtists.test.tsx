@@ -1,4 +1,4 @@
-import { RelatedArtistsFixture } from "Apps/__test__/Fixtures/Artist/Routes/RelatedArtistsFixture"
+import { RelatedArtistsFixture } from "Apps/__tests__/Fixtures/Artist/Routes/RelatedArtistsFixture"
 import { RelatedArtistsRouteFragmentContainer as RelatedArtists } from "Apps/Artist/Routes/RelatedArtists"
 import { MockBoot, renderRelayTree } from "DevTools"
 import { ReactWrapper } from "enzyme"
@@ -23,9 +23,9 @@ describe("RelatedArtists Route", () => {
       `,
       mockResolvers: {
         Viewer: () => ({
-          mainArtists: RelatedArtistsFixture.viewer.mainArtists,
+          mainArtists: RelatedArtistsFixture.mainArtists,
         }),
-        Artist: () => RelatedArtistsFixture.viewer.mainArtists,
+        Artist: () => RelatedArtistsFixture.mainArtists,
       },
       variables: {
         artistID: "pablo-picasso",
@@ -45,7 +45,7 @@ describe("RelatedArtists Route", () => {
     })
 
     it("renders proper components", () => {
-      expect(artistCardWrapper.length).toEqual(2)
+      expect(artistCardWrapper.length).toBe(2)
       expect(wrapper.find("Pagination").length).toBe(1)
     })
 

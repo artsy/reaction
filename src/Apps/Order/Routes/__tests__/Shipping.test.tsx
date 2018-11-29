@@ -1,16 +1,29 @@
 import { mount } from "enzyme"
 import { cloneDeep } from "lodash"
 import React from "react"
-import { Provider } from "unstated"
 
 import { Button, RadioGroup } from "@artsy/palette"
-import { UntouchedOrder } from "Apps/__test__/Fixtures/Order"
+import {
+  UntouchedBuyOrder,
+  UntouchedOfferOrder,
+} from "Apps/__tests__/Fixtures/Order"
 import { Address } from "Apps/Order/Components/AddressForm"
+import {
+  fillCountrySelect,
+  fillIn,
+  validAddress,
+} from "Apps/Order/Routes/__tests__/Utils/addressForm"
 import Input, { InputProps } from "Components/Input"
 import { ModalButton } from "Components/Modal/ErrorModal"
 import { ErrorModal } from "Components/Modal/ErrorModal"
+import { MockBoot } from "DevTools"
 import { commitMutation as _commitMutation, RelayProp } from "react-relay"
-import { CountrySelect } from "Styleguide/Components"
+import {
+  ActiveTabContainer,
+  CheckMarkWrapper,
+  CountrySelect,
+  Stepper,
+} from "Styleguide/Components"
 import {
   settingOrderShipmentFailure,
   settingOrderShipmentMissingCountryFailure,
@@ -18,11 +31,6 @@ import {
   settingOrderShipmentSuccess,
 } from "../__fixtures__/MutationResults"
 import { ShippingRoute } from "../Shipping"
-import {
-  fillCountrySelect,
-  fillIn,
-  validAddress,
-} from "../testSupport/addressForm"
 
 const commitMutation = _commitMutation as any
 
@@ -51,16 +59,16 @@ const fillAddressForm = (component: any, address: Address) => {
 describe("Shipping", () => {
   const getWrapper = someProps => {
     return mount(
-      <Provider>
+      <MockBoot breakpoint="xs">
         <ShippingRoute {...someProps} />
-      </Provider>
+      </MockBoot>
     )
   }
 
   let testProps: any
   beforeEach(() => {
     testProps = {
-      order: { ...UntouchedOrder, id: "1234" },
+      order: { ...UntouchedBuyOrder, id: "1234" },
       relay: { environment: {} } as RelayProp,
       router: { push: jest.fn() },
       mediator: { trigger: jest.fn() },
@@ -128,7 +136,6 @@ describe("Shipping", () => {
 
   describe("mutation", () => {
     beforeEach(() => {
-      console.error = jest.fn() // Silences component logging.
       commitMutation.mockReset()
     })
 
@@ -272,7 +279,7 @@ describe("Shipping", () => {
     beforeEach(() => {
       commitMutation.mockReset()
       const shipOrder = {
-        ...UntouchedOrder,
+        ...UntouchedBuyOrder,
         requestedFulfillment: {
           __typename: "Ship",
         },
@@ -382,6 +389,16 @@ describe("Shipping", () => {
       fillAddressForm(component, address)
       component.find("Button").simulate("click")
       expect(commitMutation).toBeCalled()
+    })
+  })
+
+  describe("Offer-mode orders", () => {
+    it("shows an active offer stepper if the order is an Offer Order", () => {
+      const offerOrder = UntouchedOfferOrder
+      const component = getWrapper({ ...testProps, order: offerOrder })
+      expect(component.find(ActiveTabContainer).text()).toEqual("Shipping")
+      expect(component.find(Stepper).props().currentStepIndex).toEqual(1)
+      expect(component.find(CheckMarkWrapper).length).toEqual(1)
     })
   })
 })

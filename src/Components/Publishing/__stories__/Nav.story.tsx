@@ -13,6 +13,13 @@ storiesOf("Publishing/Nav", module)
         <br />
         Sponsored:
         <Nav sponsor={SponsoredArticle.sponsor} />
+        <br />
+        Custom color:
+        <Nav
+          sponsor={SponsoredArticle.sponsor}
+          color="tomato"
+          backgroundColor="purple"
+        />
       </div>
     )
   })

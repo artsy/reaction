@@ -1,7 +1,7 @@
+import { renderRelayTree } from "DevTools"
 import { cloneDeep } from "lodash"
 import React from "react"
 import { graphql } from "react-relay"
-import { renderRelayTree } from "../../../DevTools"
 import { DetailsFragmentContainer } from "../Details"
 
 jest.unmock("react-relay")
@@ -35,6 +35,14 @@ describe("Details", () => {
 
     it("shows sale 'timely' data", async () => {
       const data = cloneDeep(artworkInAuction)
+      const wrapper = await getWrapper(data)
+      const html = wrapper.html()
+      expect(html).toContain("ends in 14d")
+    })
+
+    it("shows sale 'timely' data when auction is in a preview state", async () => {
+      const data = cloneDeep(artworkInAuction)
+      data.sale.is_open = false
       const wrapper = await getWrapper(data)
       const html = wrapper.html()
       expect(html).toContain("ends in 14d")
@@ -101,7 +109,6 @@ const artworkInAuction = {
     is_open: true,
     is_closed: false,
     display_timely_at: "ends in 14d",
-    auction_state: "open",
     __id: "U2FsZTpmb3J1bS1hdWN0aW9ucy1tdWx0aXBseQ==",
   },
   sale_artwork: {

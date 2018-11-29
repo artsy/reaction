@@ -1,11 +1,14 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-import { TransactionSummary_order$ref } from "./TransactionSummary_order.graphql";
+import { ArtworkSummaryItem_order$ref } from "./ArtworkSummaryItem_order.graphql";
+import { TransactionDetailsSummaryItem_order$ref } from "./TransactionDetailsSummaryItem_order.graphql";
+export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
 declare const _Payment_order$ref: unique symbol;
 export type Payment_order$ref = typeof _Payment_order$ref;
 export type Payment_order = {
     readonly id: string | null;
+    readonly mode: OrderModeEnum | null;
     readonly creditCard: ({
         readonly name: string | null;
         readonly street1: string | null;
@@ -41,7 +44,7 @@ export type Payment_order = {
             }) | null;
         }) | null> | null;
     }) | null;
-    readonly " $fragmentRefs": TransactionSummary_order$ref;
+    readonly " $fragmentRefs": ArtworkSummaryItem_order$ref & TransactionDetailsSummaryItem_order$ref;
     readonly " $refType": Payment_order$ref;
 };
 
@@ -98,6 +101,13 @@ return {
   "argumentDefinitions": [],
   "selections": [
     v0,
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "mode",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -159,19 +169,6 @@ return {
         },
         {
           "kind": "InlineFragment",
-          "type": "Pickup",
-          "selections": [
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "fulfillmentType",
-              "args": null,
-              "storageKey": null
-            }
-          ]
-        },
-        {
-          "kind": "InlineFragment",
           "type": "Ship",
           "selections": [
             v1,
@@ -202,6 +199,19 @@ return {
               "kind": "ScalarField",
               "alias": null,
               "name": "postalCode",
+              "args": null,
+              "storageKey": null
+            }
+          ]
+        },
+        {
+          "kind": "InlineFragment",
+          "type": "Pickup",
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "fulfillmentType",
               "args": null,
               "storageKey": null
             }
@@ -258,12 +268,17 @@ return {
     },
     {
       "kind": "FragmentSpread",
-      "name": "TransactionSummary_order",
+      "name": "ArtworkSummaryItem_order",
+      "args": null
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "TransactionDetailsSummaryItem_order",
       "args": null
     },
     v5
   ]
 };
 })();
-(node as any).hash = 'd04e90e3364e639fb25aa49292a041d2';
+(node as any).hash = '102767f2f8a5433437a8cc1ee379ecea';
 export default node;

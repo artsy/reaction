@@ -2,7 +2,7 @@ import {
   ArtworkNoEstimateNoPremium,
   ArtworkWithEstimateAndPremium,
   ArtworkWithEstimateNoPremium,
-} from "Apps/__test__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarAuctionPartnerInfo"
+} from "Apps/__tests__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarAuctionPartnerInfo"
 import { ArtworkSidebarAuctionPartnerInfo as AuctionPartnerInfo } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarAuctionPartnerInfo"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"

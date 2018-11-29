@@ -8,12 +8,13 @@ const track = _track as jest.Mock<typeof _track>
 track.mockImplementation(y => x => x)
 
 jest.mock("react-sizeme", () => jest.fn(c => d => d))
+jest.mock("Utils/logger")
 
 /**
  * We want each test to have assertions, otherwise it’s too easy to write async
  * tests that never end up making any, leading to false positives.
  */
-beforeEach(() => expect.hasAssertions())
+afterEach(() => expect.hasAssertions())
 
 import "DevTools/renderUntil"
 Enzyme.configure({ adapter: new Adapter() })
@@ -38,6 +39,14 @@ if (typeof window !== "undefined") {
 const logAndThrow = loggerFn => {
   // tslint:disable-next-line:only-arrow-functions
   const imp = function(message) {
+    // Dont log warnings from RelayStubProvier
+    if (
+      typeof message === "string" &&
+      message.includes("Warning: RelayModernSelector")
+    ) {
+      return false
+    }
+
     // Keep default logging behaviour
     loggerFn.apply(console, arguments)
     if (message instanceof Error) {

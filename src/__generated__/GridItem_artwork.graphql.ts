@@ -9,9 +9,12 @@ export type GridItem_artwork = {
     readonly image: ({
         readonly placeholder: string | null;
         readonly url: string | null;
-        readonly aspect_ratio: number | null;
+        readonly aspect_ratio: number;
     }) | null;
     readonly is_biddable: boolean | null;
+    readonly sale: ({
+        readonly is_preview: boolean | null;
+    }) | null;
     readonly is_acquireable: boolean | null;
     readonly href: string | null;
     readonly " $fragmentRefs": Metadata_artwork$ref & Save_artwork$ref;
@@ -20,7 +23,15 @@ export type GridItem_artwork = {
 
 
 
-const node: ConcreteFragment = {
+const node: ConcreteFragment = (function(){
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
+};
+return {
   "kind": "Fragment",
   "name": "GridItem_artwork",
   "type": "Artwork",
@@ -74,6 +85,25 @@ const node: ConcreteFragment = {
       "storageKey": null
     },
     {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "sale",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Sale",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "is_preview",
+          "args": null,
+          "storageKey": null
+        },
+        v0
+      ]
+    },
+    {
       "kind": "ScalarField",
       "alias": null,
       "name": "is_acquireable",
@@ -97,14 +127,9 @@ const node: ConcreteFragment = {
       "name": "Save_artwork",
       "args": null
     },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
-    }
+    v0
   ]
 };
-(node as any).hash = '7d787e18a67dccb515e738babcc841fc';
+})();
+(node as any).hash = '219059d721b4d3f76d2bcd3d6f602b5b';
 export default node;

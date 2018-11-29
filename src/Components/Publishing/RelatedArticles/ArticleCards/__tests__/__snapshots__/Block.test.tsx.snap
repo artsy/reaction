@@ -63,7 +63,7 @@ exports[`ArticleCard renders properly 1`] = `
   margin: 10px 20px 0 0;
 }
 
-.c17:before {
+.c17::before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -116,7 +116,6 @@ exports[`ArticleCard renders properly 1`] = `
 }
 
 .c11 {
-  display: block;
   border: 1px solid;
   border-radius: 2px;
   color: black;
@@ -331,7 +330,7 @@ exports[`ArticleCard renders properly 1`] = `
             "fontWeight": 500,
           }
         }
-        fontSize={14}
+        fontSize="14px"
       >
         More in 
         <span>
@@ -379,7 +378,7 @@ exports[`ArticleCard renders properly 1`] = `
                     "fontWeight": 500,
                   }
                 }
-                fontSize={14}
+                fontSize="14px"
               >
                 <div
                   className="c17"
@@ -399,7 +398,7 @@ exports[`ArticleCard renders properly 1`] = `
                       "fontWeight": 500,
                     }
                   }
-                  fontSize={14}
+                  fontSize="14px"
                 >
                   May 19, 2017
                 </div>
@@ -451,7 +450,7 @@ exports[`ArticleCard renders properly 1`] = `
                     "fontWeight": 500,
                   }
                 }
-                fontSize={14}
+                fontSize="14px"
               >
                 Aug 28, 2017
               </div>
@@ -495,7 +494,7 @@ exports[`ArticleCard renders properly 1`] = `
                     "fontWeight": 500,
                   }
                 }
-                fontSize={14}
+                fontSize="14px"
               >
                 02:28
               </div>

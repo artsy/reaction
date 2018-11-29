@@ -1,7 +1,7 @@
-import { Box, color, Flex, Join, Sans, space } from "@artsy/palette"
-import React from "react"
+import { Box, color, Flex, FlexProps, Join, Sans, space } from "@artsy/palette"
+import React, { Ref } from "react"
 import styled, { css } from "styled-components"
-import { borders, JustifyContentProps, WidthProps } from "styled-system"
+import { JustifyContentProps, WidthProps } from "styled-system"
 import { media } from "Styleguide/Elements/Grid"
 
 export interface TabLike extends JSX.Element {
@@ -20,6 +20,9 @@ export interface TabInfo {
   data: any
 }
 
+// tslint:disable-next-line:ban-types
+type InnerRef<T> = Extract<Ref<T>, Function>
+
 export interface TabsProps extends WidthProps, JustifyContentProps {
   /** Function that will be called when a new Tab is selected */
   onChange?: (tabInfo?: TabInfo) => void
@@ -37,6 +40,10 @@ export interface TabsProps extends WidthProps, JustifyContentProps {
   ) => JSX.Element
 
   separator?: JSX.Element
+
+  // If the tabs do not fit on screen, should the list automatically scroll
+  // to keep the active tab in view
+  autoScroll?: boolean
 
   children: TabLike[]
 }
@@ -75,6 +82,51 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
     }
   }
 
+  containerRef: HTMLDivElement | null = null
+  activeTabRef: HTMLDivElement | null = null
+
+  handleScroll = () => {
+    if (!this.props.autoScroll || !this.containerRef || !this.activeTabRef) {
+      return
+    }
+
+    const contentWidth = this.containerRef.scrollWidth
+    const boxWidth = this.containerRef.offsetWidth
+
+    if (boxWidth >= contentWidth) {
+      return
+    }
+
+    const containerRect = this.containerRef.getBoundingClientRect()
+    const activeTabRect = this.activeTabRef.getBoundingClientRect()
+
+    const activeTabOffset = activeTabRect.left - containerRect.left
+
+    const desiredActiveTabOffset =
+      containerRect.width / 2 - activeTabRect.width / 2
+
+    const offsetDiff = activeTabOffset - desiredActiveTabOffset
+
+    const currentScroll = this.containerRef.scrollLeft
+
+    const desiredScroll = currentScroll + offsetDiff
+
+    this.containerRef.scrollTo({ left: desiredScroll })
+  }
+
+  componentDidMount() {
+    window.addEventListener("resize", this.handleScroll)
+    this.handleScroll()
+  }
+
+  componentDidUpdate() {
+    this.handleScroll()
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.handleScroll)
+  }
+
   renderTab = (tab, index) => {
     if (!tab) {
       return false
@@ -82,7 +134,12 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
     const { name } = tab.props
     return this.state.activeTabIndex === index
       ? this.props.transformTabBtn(
-          <ActiveTabButton key={index}>{name}</ActiveTabButton>,
+          <ActiveTabButton
+            key={index}
+            innerRef={ref => (this.activeTabRef = ref)}
+          >
+            {name}
+          </ActiveTabButton>,
           index,
           this.props
         )
@@ -96,11 +153,11 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
   }
 
   render() {
-    const { children = [], justifyContent, separator } = this.props
+    const { children = [], separator } = this.props
 
     return (
       <>
-        <TabsContainer mb={0.5} width="100%" justifyContent={justifyContent}>
+        <TabsContainer scrollRef={ref => (this.containerRef = ref)}>
           <Join separator={separator}>{children.map(this.renderTab)}</Join>
         </TabsContainer>
         <Box pt={3}>{children[this.state.activeTabIndex]}</Box>
@@ -108,6 +165,16 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
     )
   }
 }
+
+export const TabsContainer: React.SFC<
+  FlexProps & { scrollRef?: InnerRef<HTMLDivElement> }
+> = ({ scrollRef, ...props }) => (
+  <TabsOuterContainer>
+    <TabsScrollContainer mb={0.5} width="100%" {...props} innerRef={scrollRef}>
+      <TabsPaddingContainer>{props.children}</TabsPaddingContainer>
+    </TabsScrollContainer>
+  </TabsOuterContainer>
+)
 
 interface TabProps {
   /** Display name of the Tab */
@@ -134,8 +201,10 @@ const TabButton = ({ children, ...props }) => (
   </TabContainer>
 )
 
-const ActiveTabButton = ({ children }) => (
-  <ActiveTabContainer>
+const ActiveTabButton: React.SFC<{
+  innerRef: InnerRef<HTMLDivElement>
+}> = ({ children, innerRef }) => (
+  <ActiveTabContainer innerRef={innerRef}>
     <Sans size="3t" weight="medium">
       {children}
     </Sans>
@@ -144,43 +213,51 @@ const ActiveTabButton = ({ children }) => (
 
 // Share with <RouterTabs />
 export const styles = {
-  tabsContainer: css`
-    border-bottom: 1px solid ${color("black10")};
-    ${media.xs`
-      padding-left: ${space(2)}px;
-    `};
-  `,
   tabContainer: css`
     cursor: pointer;
     padding-bottom: 13px;
-    margin-bottom: -1px;
     white-space: nowrap;
-    ${borders};
-
-    ${media.xs`
-      &:last-child {
-        padding-right: ${space(4)}px;
-      }
-    `};
   `,
   activeTabContainer: css`
     pointer-events: none;
     padding-bottom: 13px;
-    margin-bottom: -1px;
     white-space: nowrap;
     border-bottom: 1px solid ${color("black60")};
   `,
 }
 
-const TabsContainer = styled(Flex)`
-  ${styles.tabsContainer};
+const TabsOuterContainer = styled(Flex)`
+  width: 100%;
+  border-bottom: 1px solid ${color("black10")};
+  position: relative;
+  top: -1px;
+
+  > div {
+    position: relative;
+    top: 1px;
+  }
+`
+
+const TabsPaddingContainer = styled(Flex)`
+  ${media.xs`
+    padding: 0 ${space(2)}px;
+  `};
+`
+
+const TabsScrollContainer = styled(Flex)`
+  ${media.xs`
+    overflow-y: hidden;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+  `};
+  margin-bottom: 0;
 `
 
 const TabContainer = styled.div`
   ${styles.tabContainer};
 `
 
-const ActiveTabContainer = styled.div`
+export const ActiveTabContainer = styled.div`
   ${styles.activeTabContainer};
 `
 

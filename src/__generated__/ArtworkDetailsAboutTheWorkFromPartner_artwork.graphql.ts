@@ -5,9 +5,12 @@ import { FollowProfileButton_profile$ref } from "./FollowProfileButton_profile.g
 declare const _ArtworkDetailsAboutTheWorkFromPartner_artwork$ref: unique symbol;
 export type ArtworkDetailsAboutTheWorkFromPartner_artwork$ref = typeof _ArtworkDetailsAboutTheWorkFromPartner_artwork$ref;
 export type ArtworkDetailsAboutTheWorkFromPartner_artwork = {
-    readonly is_in_auction: boolean | null;
     readonly additional_information: string | null;
     readonly partner: ({
+        readonly _id: string;
+        readonly id: string;
+        readonly type: string | null;
+        readonly href: string | null;
         readonly name: string | null;
         readonly initials: string | null;
         readonly locations: ReadonlyArray<({
@@ -30,6 +33,13 @@ const node: ConcreteFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v1 = {
+  "kind": "ScalarField",
+  "alias": null,
   "name": "__id",
   "args": null,
   "storageKey": null
@@ -41,13 +51,6 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "is_in_auction",
-      "args": null,
-      "storageKey": null
-    },
     {
       "kind": "ScalarField",
       "alias": null,
@@ -71,6 +74,28 @@ return {
       "concreteType": "Partner",
       "plural": false,
       "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "_id",
+          "args": null,
+          "storageKey": null
+        },
+        v0,
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "type",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "href",
+          "args": null,
+          "storageKey": null
+        },
         {
           "kind": "ScalarField",
           "alias": null,
@@ -101,7 +126,7 @@ return {
               "args": null,
               "storageKey": null
             },
-            v0
+            v1
           ]
         },
         {
@@ -118,13 +143,7 @@ return {
               "name": "FollowProfileButton_profile",
               "args": null
             },
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "id",
-              "args": null,
-              "storageKey": null
-            },
+            v0,
             {
               "kind": "LinkedField",
               "alias": null,
@@ -150,15 +169,15 @@ return {
                 }
               ]
             },
-            v0
+            v1
           ]
         },
-        v0
+        v1
       ]
     },
-    v0
+    v1
   ]
 };
 })();
-(node as any).hash = '51a6fffa151f481c11434597ab8f755c';
+(node as any).hash = 'f3c163194ede58c6121958362bbe9c73';
 export default node;

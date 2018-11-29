@@ -2,12 +2,23 @@ import { mount } from "enzyme"
 import React from "react"
 
 import { Button } from "@artsy/palette"
-import { UntouchedOrder } from "Apps/__test__/Fixtures/Order"
-import { ErrorModal, ModalButton } from "Components/Modal/ErrorModal"
-import { commitMutation } from "react-relay"
-import { StepSummaryItem } from "Styleguide/Components/StepSummaryItem"
-import { Provider } from "unstated"
 import {
+  OfferOrderWithShippingDetails,
+  UntouchedBuyOrder,
+} from "Apps/__tests__/Fixtures/Order"
+import { ErrorModal, ModalButton } from "Components/Modal/ErrorModal"
+import { MockBoot } from "DevTools"
+import { commitMutation } from "react-relay"
+import {
+  ActiveTabContainer,
+  CheckMarkWrapper,
+  Stepper,
+} from "Styleguide/Components"
+import { StepSummaryItem } from "Styleguide/Components/StepSummaryItem"
+import {
+  submitOfferOrderWithFailure,
+  submitOfferOrderWithNoInventoryFailure,
+  submitOfferOrderWithVersionMismatchFailure,
   submitOrderWithFailure,
   submitOrderWithNoInventoryFailure,
   submitOrderWithVersionMismatchFailure,
@@ -21,7 +32,7 @@ jest.mock("react-relay", () => ({
 
 const pushMock = jest.fn()
 const defaultProps = {
-  order: { ...UntouchedOrder, id: "1234" },
+  order: { ...UntouchedBuyOrder, id: "1234" },
   router: {
     push: pushMock,
   },
@@ -34,122 +45,249 @@ const defaultProps = {
   mediator: { trigger: jest.fn() },
 }
 
+const mutationMock = commitMutation as jest.Mock<any>
+
 describe("Review", () => {
   const getWrapper = props => {
     return mount(
-      <Provider>
+      <MockBoot breakpoint="xs">
         <ReviewRoute {...props} />
-      </Provider>
+      </MockBoot>
     )
   }
 
-  it("enables the button and routes to the payoff page", () => {
-    const component = getWrapper(defaultProps)
-    ;(commitMutation as jest.Mock<any>).mockImplementationOnce(
-      (_, { onCompleted }) =>
+  beforeEach(() => {
+    mutationMock.mockReset()
+    pushMock.mockReset()
+  })
+
+  describe("buy-mode orders", () => {
+    it("enables the button and routes to the payoff page", () => {
+      const component = getWrapper(defaultProps)
+      mutationMock.mockImplementationOnce((_, { onCompleted }) =>
         onCompleted({ ecommerceSubmitOrder: { orderOrError: { order: {} } } })
-    )
-    component.find(Button).simulate("click")
-    expect(commitMutation).toHaveBeenCalledTimes(1)
-    expect(pushMock).toBeCalledWith("/orders/1234/status")
+      )
+      component.find(Button).simulate("click")
+      expect(mutationMock).toHaveBeenCalledTimes(1)
+      expect(pushMock).toBeCalledWith("/orders/1234/status")
+    })
+
+    it("takes the user back to the /shipping view", () => {
+      const component = getWrapper(defaultProps)
+      component
+        .find(StepSummaryItem)
+        .first()
+        .find("a")
+        .simulate("click")
+      expect(pushMock).toBeCalledWith("/orders/1234/shipping")
+    })
+
+    it("takes the user back to the /payment view", () => {
+      const component = getWrapper(defaultProps)
+      component
+        .find(StepSummaryItem)
+        .last()
+        .find("a")
+        .simulate("click")
+      expect(pushMock).toBeCalledWith("/orders/1234/payment")
+    })
+
+    it("shows an error modal when there is an error in submitOrderPayload", () => {
+      const component = getWrapper(defaultProps)
+
+      expect(component.find(ErrorModal).props().show).toBe(false)
+      mutationMock.mockImplementationOnce((_, { onCompleted }) =>
+        onCompleted(submitOrderWithFailure)
+      )
+
+      component.find(Button).simulate("click")
+
+      expect(component.find(ErrorModal).props().show).toBe(true)
+
+      component.find(ModalButton).simulate("click")
+
+      expect(component.find(ErrorModal).props().show).toBe(false)
+    })
+
+    it("shows an error modal when there is a network error", () => {
+      const component = getWrapper(defaultProps)
+      mutationMock.mockImplementationOnce((_, { onError }) =>
+        onError(new TypeError("Network request failed"))
+      )
+
+      component.find(Button).simulate("click")
+
+      expect(component.find(ErrorModal).props().show).toBe(true)
+    })
+
+    it("shows a modal that redirects to the artwork page if there is an artwork_version_mismatch", () => {
+      window.location.assign = jest.fn()
+
+      const component = getWrapper(defaultProps)
+
+      expect(component.find(ErrorModal).props().show).toBe(false)
+      mutationMock.mockImplementationOnce((_, { onCompleted }) =>
+        onCompleted(submitOrderWithVersionMismatchFailure)
+      )
+
+      component.find(Button).simulate("click")
+
+      const errorComponent = component.find(ErrorModal)
+      expect(errorComponent.props().show).toBe(true)
+      expect(errorComponent.text()).toContain(
+        "Something about the work changed since you started checkout. Please review the work before submitting your order."
+      )
+
+      component.find(ModalButton).simulate("click")
+
+      expect(window.location.assign).toBeCalledWith("/artwork/artworkId")
+    })
+
+    it("shows a modal that redirects to the artist page if there is an insufficient inventory", () => {
+      window.location.assign = jest.fn()
+
+      const component = getWrapper(defaultProps)
+
+      expect(component.find(ErrorModal).props().show).toBe(false)
+      mutationMock.mockImplementationOnce((_, { onCompleted }) =>
+        onCompleted(submitOrderWithNoInventoryFailure)
+      )
+
+      component.find(Button).simulate("click")
+
+      const errorComponent = component.find(ErrorModal)
+      expect(errorComponent.props().show).toBe(true)
+      expect(errorComponent.text()).toContain(
+        "Sorry, the work is no longer available."
+      )
+
+      component.find(ModalButton).simulate("click")
+      expect(window.location.assign).toBeCalledWith("/artist/artistId")
+    })
   })
 
-  it("takes the user back to the /shipping view", () => {
-    const component = getWrapper(defaultProps)
-    component
-      .find(StepSummaryItem)
-      .first()
-      .find("a")
-      .simulate("click")
-    expect(pushMock).toBeCalledWith("/orders/1234/shipping")
-  })
+  describe("Offer-mode orders", () => {
+    const offerOrderProps = {
+      ...defaultProps,
+      order: {
+        ...OfferOrderWithShippingDetails,
+        id: "offer-order-id",
+      },
+    }
 
-  it("takes the user back to the /payment view", () => {
-    const component = getWrapper(defaultProps)
-    component
-      .find(StepSummaryItem)
-      .last()
-      .find("a")
-      .simulate("click")
-    expect(pushMock).toBeCalledWith("/orders/1234/shipping")
-  })
+    it("shows an active offer stepper if the order is an Offer Order", () => {
+      const component = getWrapper(offerOrderProps)
+      expect(component.find(ActiveTabContainer).text()).toEqual("Review")
+      expect(component.find(Stepper).props().currentStepIndex).toEqual(3)
+      expect(component.find(CheckMarkWrapper).length).toEqual(3)
+    })
 
-  it("shows an error modal when there is an error in submitOrderPayload", () => {
-    console.error = jest.fn() // Silences component logging.
+    it("shows an offer section in the shipping and payment review", () => {
+      const component = getWrapper(offerOrderProps)
 
-    const component = getWrapper(defaultProps)
+      expect(component.find(StepSummaryItem).length).toEqual(3)
 
-    expect(component.find(ErrorModal).props().show).toBe(false)
-    ;(commitMutation as jest.Mock<any>).mockImplementationOnce(
-      (_, { onCompleted }) => onCompleted(submitOrderWithFailure)
-    )
+      expect(
+        component
+          .find(StepSummaryItem)
+          .first()
+          .text()
+      ).toMatch("Your offer")
 
-    component.find(Button).simulate("click")
+      pushMock.mockReset()
 
-    expect(component.find(ErrorModal).props().show).toBe(true)
+      component
+        .find(StepSummaryItem)
+        .first()
+        .find("a")
+        .simulate("click")
 
-    component.find(ModalButton).simulate("click")
+      expect(pushMock).toBeCalledWith("/orders/offer-order-id/offer")
+    })
 
-    expect(component.find(ErrorModal).props().show).toBe(false)
-  })
+    it("enables the button and routes to the payoff page", () => {
+      const component = getWrapper(offerOrderProps)
+      mutationMock.mockImplementationOnce((_, { onCompleted }) =>
+        onCompleted({
+          ecommerceSubmitOrderWithOffer: { orderOrError: { order: {} } },
+        })
+      )
+      component.find(Button).simulate("click")
+      expect(mutationMock).toHaveBeenCalledTimes(1)
+      expect(pushMock).toBeCalledWith("/orders/offer-order-id/status")
+    })
 
-  it("shows an error modal when there is a network error", () => {
-    console.error = jest.fn() // Silences component logging.
+    it("shows an error modal when there is an error in submitOrderPayload", () => {
+      const component = getWrapper(offerOrderProps)
 
-    const component = getWrapper(defaultProps)
-    ;(commitMutation as jest.Mock<any>).mockImplementationOnce(
-      (_, { onError }) => onError(new TypeError("Network request failed"))
-    )
+      expect(component.find(ErrorModal).props().show).toBe(false)
+      mutationMock.mockImplementationOnce((_, { onCompleted }) =>
+        onCompleted(submitOfferOrderWithFailure)
+      )
 
-    component.find(Button).simulate("click")
+      component.find(Button).simulate("click")
 
-    expect(component.find(ErrorModal).props().show).toBe(true)
-  })
+      expect(component.find(ErrorModal).props().show).toBe(true)
 
-  it("shows a modal that redirects to the artwork page if there is an artwork_version_mismatch", () => {
-    console.error = jest.fn() // Silences component logging.
-    window.location.assign = jest.fn()
+      component.find(ModalButton).simulate("click")
 
-    const component = getWrapper(defaultProps)
+      expect(component.find(ErrorModal).props().show).toBe(false)
+    })
 
-    expect(component.find(ErrorModal).props().show).toBe(false)
-    ;(commitMutation as jest.Mock<any>).mockImplementationOnce(
-      (_, { onCompleted }) => onCompleted(submitOrderWithVersionMismatchFailure)
-    )
+    it("shows an error modal when there is a network error", () => {
+      const component = getWrapper(offerOrderProps)
+      mutationMock.mockImplementationOnce((_, { onError }) =>
+        onError(new TypeError("Network request failed"))
+      )
 
-    component.find(Button).simulate("click")
+      component.find(Button).simulate("click")
 
-    const errorComponent = component.find(ErrorModal)
-    expect(errorComponent.props().show).toBe(true)
-    expect(errorComponent.text()).toContain(
-      "Something about the work changed since you started checkout. Please review the work before submitting your order."
-    )
+      expect(component.find(ErrorModal).props().show).toBe(true)
+    })
 
-    component.find(ModalButton).simulate("click")
+    it("shows a modal that redirects to the artwork page if there is an artwork_version_mismatch", () => {
+      window.location.assign = jest.fn()
 
-    expect(window.location.assign).toBeCalledWith("/artwork/artworkId")
-  })
+      const component = getWrapper(offerOrderProps)
 
-  it("shows a modal that redirects to the artist page if there is an insufficient inventory", () => {
-    console.error = jest.fn() // Silences component logging.
-    window.location.assign = jest.fn()
+      expect(component.find(ErrorModal).props().show).toBe(false)
+      mutationMock.mockImplementationOnce((_, { onCompleted }) =>
+        onCompleted(submitOfferOrderWithVersionMismatchFailure)
+      )
 
-    const component = getWrapper(defaultProps)
+      component.find(Button).simulate("click")
 
-    expect(component.find(ErrorModal).props().show).toBe(false)
-    ;(commitMutation as jest.Mock<any>).mockImplementationOnce(
-      (_, { onCompleted }) => onCompleted(submitOrderWithNoInventoryFailure)
-    )
+      const errorComponent = component.find(ErrorModal)
+      expect(errorComponent.props().show).toBe(true)
+      expect(errorComponent.text()).toContain(
+        "Something about the work changed since you started checkout. Please review the work before submitting your order."
+      )
 
-    component.find(Button).simulate("click")
+      component.find(ModalButton).simulate("click")
 
-    const errorComponent = component.find(ErrorModal)
-    expect(errorComponent.props().show).toBe(true)
-    expect(errorComponent.text()).toContain(
-      "Sorry, the work is no longer available."
-    )
+      expect(window.location.assign).toBeCalledWith("/artwork/artworkId")
+    })
 
-    component.find(ModalButton).simulate("click")
-    expect(window.location.assign).toBeCalledWith("/artist/artistId")
+    it("shows a modal that redirects to the artist page if there is an insufficient inventory", () => {
+      window.location.assign = jest.fn()
+
+      const component = getWrapper(offerOrderProps)
+
+      expect(component.find(ErrorModal).props().show).toBe(false)
+      mutationMock.mockImplementationOnce((_, { onCompleted }) =>
+        onCompleted(submitOfferOrderWithNoInventoryFailure)
+      )
+
+      component.find(Button).simulate("click")
+
+      const errorComponent = component.find(ErrorModal)
+      expect(errorComponent.props().show).toBe(true)
+      expect(errorComponent.text()).toContain(
+        "Sorry, the work is no longer available."
+      )
+
+      component.find(ModalButton).simulate("click")
+      expect(window.location.assign).toBeCalledWith("/artist/artistId")
+    })
   })
 })

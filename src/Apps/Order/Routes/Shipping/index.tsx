@@ -1,6 +1,7 @@
 import {
   BorderedRadio,
   Button,
+  Collapse,
   Flex,
   RadioGroup,
   Sans,
@@ -19,11 +20,16 @@ import {
   AddressTouched,
   emptyAddress,
 } from "Apps/Order/Components/AddressForm"
+import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
 import { Helper } from "Apps/Order/Components/Helper"
-import { OrderStepper } from "Apps/Order/Components/OrderStepper"
-import { TransactionSummaryFragmentContainer as TransactionSummary } from "Apps/Order/Components/TransactionSummary"
+import {
+  buyNowFlowSteps,
+  offerFlowSteps,
+  OrderStepper,
+} from "Apps/Order/Components/OrderStepper"
+import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
-import { validatePresence } from "Apps/Order/Components/Validators"
+import { validatePresence } from "Apps/Order/Utils/formValidators"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
@@ -37,11 +43,12 @@ import {
   graphql,
   RelayProp,
 } from "react-relay"
-import { Collapse } from "Styleguide/Components"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
+import { ErrorWithMetadata } from "Utils/errors"
 import { get } from "Utils/get"
-import { Responsive } from "Utils/Responsive"
+import createLogger from "Utils/logger"
+import { Media } from "Utils/Responsive"
 
 export interface ShippingProps {
   order: Shipping_order
@@ -60,6 +67,9 @@ export interface ShippingState {
   errorModalTitle: string
   errorModalMessage: string
 }
+
+const logger = createLogger("Order/Routes/Shipping/index.tsx")
+
 @track()
 export class ShippingRoute extends Component<ShippingProps, ShippingState> {
   state = {
@@ -108,10 +118,8 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
       const { address, shippingOption } = this.state
 
       if (this.state.shippingOption === "SHIP") {
-        const errors = this.validateAddress(this.state.address)
-        const thereAreErrors =
-          Object.keys(errors).filter(key => errors[key]).length > 0
-        if (thereAreErrors) {
+        const { errors, hasErrors } = this.validateAddress(this.state.address)
+        if (hasErrors) {
           this.setState({
             isCommittingMutation: false,
             addressErrors: errors,
@@ -188,7 +196,10 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                   errorCode === "missing_postal_code"
                 ) {
                   this.onMutationError(
-                    orderOrError.error,
+                    new ErrorWithMetadata(
+                      orderOrError.error.code,
+                      orderOrError.error
+                    ),
                     "Invalid address",
                     "There was an error processing your address. Please review and try again."
                   )
@@ -197,12 +208,20 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                   errorData.failure_code === "domestic_shipping_only"
                 ) {
                   this.onMutationError(
-                    orderOrError.error,
+                    new ErrorWithMetadata(
+                      orderOrError.error.code,
+                      orderOrError.error
+                    ),
                     "Can't ship to that address",
                     "This work can only be shipped to the continental United States."
                   )
                 } else {
-                  this.onMutationError(orderOrError.error)
+                  this.onMutationError(
+                    new ErrorWithMetadata(
+                      orderOrError.error.code,
+                      orderOrError.error
+                    )
+                  )
                 }
               } else {
                 this.props.router.push(`/orders/${this.props.order.id}/payment`)
@@ -215,8 +234,8 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     })
   }
 
-  onMutationError(errors, errorModalTitle?, errorModalMessage?) {
-    console.error("Shipping/index.tsx", errors)
+  onMutationError(error, errorModalTitle?, errorModalMessage?) {
+    logger.error(error)
     this.setState({
       isCommittingMutation: false,
       isErrorModalOpen: true,
@@ -236,7 +255,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
       phoneNumber,
     } = address
     const usOrCanada = country === "US" || country === "CA"
-    return {
+    const errors = {
       name: validatePresence(name),
       addressLine1: validatePresence(addressLine1),
       city: validatePresence(city),
@@ -245,6 +264,12 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
       postalCode: usOrCanada && validatePresence(postalCode),
       phoneNumber: validatePresence(phoneNumber),
     }
+    const hasErrors = Object.keys(errors).filter(key => errors[key]).length > 0
+
+    return {
+      errors,
+      hasErrors,
+    }
   }
 
   onCloseModal = () => {
@@ -252,11 +277,12 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
   }
 
   onAddressChange: AddressChangeHandler = (address, key) => {
+    const { errors } = this.validateAddress(address)
     this.setState({
       address,
       addressErrors: {
         ...this.state.addressErrors,
-        ...this.validateAddress(address),
+        ...errors,
       },
       addressTouched: {
         ...this.state.addressTouched,
@@ -298,103 +324,99 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
             <Col>
               <OrderStepper
                 currentStep="Shipping"
-                offerFlow={false /* TODO: order.isOfferable or whatever */}
+                steps={
+                  order.mode === "OFFER" ? offerFlowSteps : buyNowFlowSteps
+                }
               />
             </Col>
           </Row>
         </HorizontalPadding>
 
-        <Responsive>
-          {({ xs }) => (
-            <HorizontalPadding>
-              <TwoColumnLayout
-                Content={
-                  <Flex
-                    flexDirection="column"
-                    style={
-                      isCommittingMutation ? { pointerEvents: "none" } : {}
-                    }
-                  >
-                    {/* TODO: Make RadioGroup generic for the allowed values,
+        <HorizontalPadding>
+          <TwoColumnLayout
+            Content={
+              <Flex
+                flexDirection="column"
+                style={isCommittingMutation ? { pointerEvents: "none" } : {}}
+              >
+                {/* TODO: Make RadioGroup generic for the allowed values,
                     which could also ensure the children only use
                     allowed values. */}
-                    {artwork.pickup_available && (
-                      <>
-                        <RadioGroup
-                          onSelect={this.onSelectShippingOption.bind(this)}
-                          defaultValue={this.state.shippingOption}
-                        >
-                          <BorderedRadio value="SHIP">
-                            Add shipping address
-                          </BorderedRadio>
-
-                          <BorderedRadio value="PICKUP">
-                            Arrange for pickup (free)
-                            <Collapse
-                              open={this.state.shippingOption === "PICKUP"}
-                            >
-                              <Sans size="2" color="black60">
-                                After your order is confirmed, a specialist will
-                                contact you within 2 business days to coordinate
-                                pickup.
-                              </Sans>
-                            </Collapse>
-                          </BorderedRadio>
-                        </RadioGroup>
-                        <Spacer mb={3} />
-                      </>
-                    )}
-
-                    <Collapse
-                      open={
-                        !artwork.pickup_available ||
-                        this.state.shippingOption === "SHIP"
-                      }
+                {artwork.pickup_available && (
+                  <>
+                    <RadioGroup
+                      onSelect={this.onSelectShippingOption.bind(this)}
+                      defaultValue={this.state.shippingOption}
                     >
-                      <AddressForm
-                        value={address}
-                        errors={addressErrors}
-                        touched={addressTouched}
-                        onChange={this.onAddressChange}
-                        continentalUsOnly={artwork.shipsToContinentalUSOnly}
-                      />
-                    </Collapse>
+                      <BorderedRadio value="SHIP">
+                        Add shipping address
+                      </BorderedRadio>
 
-                    {!xs && (
-                      <Button
-                        onClick={this.onContinueButtonPressed}
-                        loading={isCommittingMutation}
-                        size="large"
-                        width="100%"
-                      >
-                        Continue
-                      </Button>
-                    )}
-                  </Flex>
-                }
-                Sidebar={
-                  <Flex flexDirection="column">
-                    <TransactionSummary order={order} mb={xs ? 2 : 3} />
-                    <Helper artworkId={artwork.id} />
-                    {xs && (
-                      <>
-                        <Spacer mb={3} />
-                        <Button
-                          onClick={this.onContinueButtonPressed}
-                          loading={isCommittingMutation}
-                          size="large"
-                          width="100%"
-                        >
-                          Continue
-                        </Button>
-                      </>
-                    )}
-                  </Flex>
-                }
-              />
-            </HorizontalPadding>
-          )}
-        </Responsive>
+                      <BorderedRadio value="PICKUP">
+                        Arrange for pickup (free)
+                        <Collapse open={this.state.shippingOption === "PICKUP"}>
+                          <Sans size="2" color="black60">
+                            After your order is confirmed, a specialist will
+                            contact you within 2 business days to coordinate
+                            pickup.
+                          </Sans>
+                        </Collapse>
+                      </BorderedRadio>
+                    </RadioGroup>
+                    <Spacer mb={3} />
+                  </>
+                )}
+
+                <Collapse
+                  open={
+                    !artwork.pickup_available ||
+                    this.state.shippingOption === "SHIP"
+                  }
+                >
+                  <AddressForm
+                    value={address}
+                    errors={addressErrors}
+                    touched={addressTouched}
+                    onChange={this.onAddressChange}
+                    continentalUsOnly={artwork.shipsToContinentalUSOnly}
+                  />
+                </Collapse>
+
+                <Media greaterThan="xs">
+                  <Button
+                    onClick={this.onContinueButtonPressed}
+                    loading={isCommittingMutation}
+                    size="large"
+                    width="100%"
+                  >
+                    Continue
+                  </Button>
+                </Media>
+              </Flex>
+            }
+            Sidebar={
+              <Flex flexDirection="column">
+                <Flex flexDirection="column">
+                  <ArtworkSummaryItem order={order} />
+                  <TransactionDetailsSummaryItem order={order} />
+                </Flex>
+                <Spacer mb={[2, 3]} />
+                <Helper artworkId={artwork.id} />
+                <Media at="xs">
+                  <Spacer mb={3} />
+                  <Button
+                    onClick={this.onContinueButtonPressed}
+                    loading={isCommittingMutation}
+                    size="large"
+                    width="100%"
+                  >
+                    Continue
+                  </Button>
+                </Media>
+              </Flex>
+            }
+          />
+        </HorizontalPadding>
 
         <ErrorModal
           onClose={this.onCloseModal}
@@ -421,6 +443,7 @@ export const ShippingFragmentContainer = createFragmentContainer(
   graphql`
     fragment Shipping_order on Order {
       id
+      mode
       state
       requestedFulfillment {
         __typename
@@ -446,7 +469,8 @@ export const ShippingFragmentContainer = createFragmentContainer(
           }
         }
       }
-      ...TransactionSummary_order
+      ...ArtworkSummaryItem_order
+      ...TransactionDetailsSummaryItem_order
     }
   `
 )

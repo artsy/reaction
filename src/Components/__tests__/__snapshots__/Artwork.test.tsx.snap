@@ -57,7 +57,7 @@ exports[`Artwork renders correctly 1`] = `
   cursor: pointer;
 }
 
-.c1:before {
+.c1::before {
   content: "";
   display: block;
   padding-bottom: 100%;
@@ -129,7 +129,7 @@ exports[`Artwork renders correctly 1`] = `
               "fontWeight": 500,
             }
           }
-          fontSize={12}
+          fontSize="12px"
           style={
             Object {
               "display": "inline",
@@ -143,7 +143,7 @@ exports[`Artwork renders correctly 1`] = `
           className="c6"
           color="#666"
           fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-          fontSize={12}
+          fontSize="12px"
           style={
             Object {
               "display": "inline",

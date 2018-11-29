@@ -51,5 +51,6 @@ const DisplayContainer = styled.div.attrs<{ hasBorder?: boolean }>({})`
     props.hasBorder &&
     `
     border-top: 1px solid ${color("black10")}; 
-  `} padding-bottom: 20px;
+  `};
+  padding-bottom: 20px;
 `

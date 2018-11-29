@@ -43,7 +43,6 @@ const Div: StyledFunction<DivProps> = styled.div
 const Img: StyledFunction<DivProps> = styled.img
 
 const Logo = Img`
-  width: 100%;
   height: 100%;
   object-fit: contain;
   object-position: left;

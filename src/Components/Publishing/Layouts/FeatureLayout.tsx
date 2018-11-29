@@ -12,6 +12,7 @@ import { CanvasFooter } from "./Components/CanvasFooter"
 
 export interface ArticleProps {
   article: ArticleData
+  customEditorial?: string
   display?: DisplayData
   isMobile?: boolean
   isSuper?: boolean
@@ -23,6 +24,7 @@ export interface ArticleProps {
 export const FeatureLayout: React.SFC<ArticleProps> = props => {
   const {
     article,
+    customEditorial,
     display,
     isMobile,
     isSuper,
@@ -62,14 +64,15 @@ export const FeatureLayout: React.SFC<ArticleProps> = props => {
 
       {seriesArticle && <ArticleCardsBlock {...props} />}
 
-      {(hasRelated || display) && (
-        <CanvasFooter
-          article={article}
-          display={display}
-          relatedArticles={relatedArticlesForCanvas}
-          renderTime={renderTime}
-        />
-      )}
+      {(hasRelated || display) &&
+        !customEditorial && (
+          <CanvasFooter
+            article={article}
+            display={display}
+            relatedArticles={relatedArticlesForCanvas}
+            renderTime={renderTime}
+          />
+        )}
     </FeatureLayoutContainer>
   )
 }
@@ -85,6 +88,7 @@ const FeatureLayoutContainer = styled.div`
   ${Nav} {
     position: absolute;
   }
+
   ${ArticleCardsContainer} {
     padding-top: 60px;
   }

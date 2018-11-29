@@ -1,10 +1,10 @@
 import React from "react"
 import { graphql } from "react-relay"
 
+import { MockBoot, MockRelayRenderer, renderUntil } from "DevTools"
 import { Provider } from "unstated"
-import { MockBoot, MockRelayRenderer, renderUntil } from "../../../DevTools"
+import { CollectionAppFixture } from "../../__tests__/Fixtures/Collect/CollectionAppFixture"
 import { CollectionAppFragmentContainer as CollectionApp } from "../CollectionApp"
-import { CollectionAppFixture } from "../CollectionAppFixture"
 import { FilterContainer } from "../Components/Filters"
 import { FilterState } from "../FilterState"
 
@@ -48,6 +48,8 @@ describe("CollectionApp", () => {
       </MockBoot>
     )
 
+    const title = tree.find("Title")
+    expect(title.at(0).text()).toContain("KAWS: Companions | Collect on Artsy")
     const items = tree.find("GridItem__ArtworkGridItem")
     expect(items.length).toEqual(4)
     expect(items.at(0).text()).toContain("Pinocchio, 2018")

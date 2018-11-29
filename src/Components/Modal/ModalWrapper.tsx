@@ -134,12 +134,13 @@ const Wrapper = styled.div.attrs<{ isShown?: boolean }>({})`
 
 const slideUp = keyframes`
   from {
-    transform: translate(-50%,-40%);
+    transform: translate(-50%, -40%);
     opacity: 0;
+    /* stylelint-disable-next-line */
   },
 
   to {
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     opacity: 1;
   }
 `
@@ -187,12 +188,11 @@ export const ModalContainer = styled.div.attrs<{
         `};
 `
 
-const ModalInner = styled.div.attrs<{ fullscreenResponsiveModal?: boolean }>(
-  {}
-)`
-  /* disabling scrolling until custom scrollbars are implemented */
-  /* overflow-y: scroll; */
+const ModalInner = styled.div.attrs<{
+  fullscreenResponsiveModal?: boolean
+}>({})`
   max-height: calc(100vh - 80px);
+  overflow-y: auto;
   ${props =>
     props.fullscreenResponsiveModal &&
     media.sm`

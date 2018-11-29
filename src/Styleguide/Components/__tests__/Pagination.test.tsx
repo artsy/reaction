@@ -1,4 +1,4 @@
-import { paginationProps } from "Apps/__test__/Fixtures/Pagination"
+import { paginationProps } from "Apps/__tests__/Fixtures/Pagination"
 import { MockBoot } from "DevTools/MockBoot"
 import { mount } from "enzyme"
 import { set } from "lodash/fp"

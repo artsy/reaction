@@ -17,6 +17,7 @@ function generateStory(imageCount: number) {
   const times = cb => [...new Array(imageCount)].map((_, i) => cb(i))
   const src = (width: number, height: number) =>
     times(i => imageData(width, height, i))
+
   return () => {
     return (
       <React.Fragment>

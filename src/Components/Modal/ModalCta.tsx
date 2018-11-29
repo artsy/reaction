@@ -1,5 +1,4 @@
-import { color, space } from "@artsy/palette"
-import InvertedButton from "Components/Buttons/Inverted"
+import { Button, color, space } from "@artsy/palette"
 import React, { SFC } from "react"
 import styled from "styled-components"
 import { media } from "../Helpers"
@@ -23,13 +22,14 @@ export const ModalCta: SFC<{
 
   return (
     <Cta isFixed={isFixed} hasImage={hasImage}>
-      <InvertedButton onClick={onClick || onClose}>{text}</InvertedButton>
+      <Button onClick={onClick || onClose}>{text}</Button>
     </Cta>
   )
 }
 
 const Cta = styled.div.attrs<{ isFixed?: boolean; hasImage?: boolean }>({})`
   padding: ${space(2)}px 0 ${space(3)}px 0;
+
   button {
     margin: 0;
     width: 100%;

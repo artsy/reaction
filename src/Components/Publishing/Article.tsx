@@ -3,6 +3,7 @@ import track, { TrackingProp } from "react-tracking"
 import Events from "../../Utils/Events"
 
 import { BannerWrapper } from "./Banner/Banner"
+import { PixelTracker } from "./Display/ExternalTrackers"
 import ArticleWithFullScreen from "./Layouts/ArticleWithFullScreen"
 import { ClassicLayout } from "./Layouts/ClassicLayout"
 import { NewsLayout } from "./Layouts/NewsLayout"
@@ -13,6 +14,7 @@ import { ArticleData, DisplayData } from "./Typings"
 
 export interface ArticleProps {
   article: ArticleData
+  customEditorial?: string
   relatedArticles?: any
   relatedArticlesForPanel?: any
   relatedArticlesForCanvas?: any
@@ -80,13 +82,29 @@ export class Article extends React.Component<ArticleProps> {
     )
   }
 
+  sponsorPixelTrackingCode = article => {
+    if (article.sponsor && article.sponsor.pixel_tracking_code) {
+      return article.sponsor
+    } else if (
+      article.seriesArticle &&
+      article.seriesArticle.sponsor &&
+      article.seriesArticle.sponsor.pixel_tracking_code
+    ) {
+      return article.seriesArticle.sponsor
+    }
+  }
+
   render() {
+    const { article } = this.props
+    const trackingCode = this.sponsorPixelTrackingCode(article)
+
     return (
       <FullScreenProvider>
         {this.getArticleLayout()}
-        {this.shouldRenderSignUpCta() && (
-          <BannerWrapper article={this.props.article} />
+        {trackingCode && (
+          <PixelTracker unit={trackingCode} date={this.props.renderTime} />
         )}
+        {this.shouldRenderSignUpCta() && <BannerWrapper article={article} />}
       </FullScreenProvider>
     )
   }

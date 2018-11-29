@@ -68,7 +68,7 @@ export class AddressForm extends React.Component<
 
   onChangeValue = (key: keyof Address, value: string) => {
     this.setState({ address: { ...this.state.address, [key]: value } }, () => {
-      this.props.onChange({ ...this.state.address }, key)
+      this.props.onChange(this.state.address, key)
     })
   }
 
@@ -102,7 +102,7 @@ export class AddressForm extends React.Component<
 
         <TwoColumnSplit>
           <Flex flexDirection="column" pb={1}>
-            <Serif mb={1} size="3t" color="black100" lineHeight={18}>
+            <Serif mb={1} size="3t" color="black100" lineHeight="1.1em">
               Country
             </Serif>
             <CountrySelect

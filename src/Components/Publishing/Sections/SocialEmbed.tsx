@@ -1,3 +1,4 @@
+import "isomorphic-fetch"
 import jsonp from "jsonp"
 import React from "react"
 import EmbedContainer from "react-oembed-container"
@@ -25,13 +26,35 @@ export class SocialEmbed extends React.Component<
     const url = this.getEmbedUrl()
 
     if (url) {
-      jsonp(url, (err, data) => {
-        if (err) {
-          return
-        }
+      if (url.includes("instagram")) {
+        this.getInstagramEmbed(url)
+      } else {
+        this.getTwitterEmbed(url)
+      }
+    }
+  }
+
+  getTwitterEmbed = url => {
+    jsonp(url, (err, data) => {
+      if (err) {
+        return
+      }
+      this.setState({ html: data.html })
+    })
+  }
+
+  getInstagramEmbed = url => {
+    fetch(url)
+      .then(response => {
+        return response.json()
+      })
+      .then(data => {
         this.setState({ html: data.html })
       })
-    }
+      .catch(err => {
+        console.log(err)
+        return
+      })
   }
 
   getEmbedUrl = () => {

@@ -1,11 +1,14 @@
 import { Box } from "@artsy/palette"
 import { CollectionApp_collection } from "__generated__/CollectionApp_collection.graphql"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
+import { FrameWithRecentlyViewed } from "Components/FrameWithRecentlyViewed"
 import { HttpError } from "found"
 import React, { Component } from "react"
-import { Meta, Title } from "react-head"
+import { Link, Meta, Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
-import { CollectFrame } from "./CollectFrame"
+import truncate from "trunc-html"
 import { CollectionFilterFragmentContainer as CollectionFilterContainer } from "./Components/Collection/CollectionFilterContainer"
 import { CollectionHeader } from "./Components/Collection/Header"
 
@@ -13,6 +16,9 @@ interface CollectionAppProps {
   collection: CollectionApp_collection
 }
 
+@track({
+  context_module: Schema.ContextModule.CollectionDescription,
+})
 export class CollectionApp extends Component<CollectionAppProps> {
   collectionNotFound = collection => {
     if (!collection) {
@@ -26,19 +32,28 @@ export class CollectionApp extends Component<CollectionAppProps> {
 
   render() {
     const { collection } = this.props
-    const { title, slug, headerImage } = collection
+    const { title, slug, headerImage, description } = collection
+    const collectionHref = `${sd.APP_URL}/collection/${slug}`
+    const metadataDescription = description
+      ? `Buy, bid, and inquire on ${title} on Artsy. ` +
+        truncate(description, 158).text
+      : `Buy, bid, and inquire on ${title} on Artsy.`
 
     return (
-      <CollectFrame>
+      <FrameWithRecentlyViewed>
         <Title>{title} | Collect on Artsy</Title>
-        <Meta property="og:url" content={`${sd.APP_URL}/collection/${slug}`} />
+        <Meta name="description" content={metadataDescription} />
+        <Meta property="og:url" content={collectionHref} />
         <Meta property="og:image" content={headerImage} />
+        <Meta property="og:description" content={metadataDescription} />
+        <Meta property="twitter:description" content={metadataDescription} />
+        <Link rel="canonical" href={collectionHref} />
 
         <CollectionHeader collection={collection} />
         <Box>
           <CollectionFilterContainer collection={collection} />
         </Box>
-      </CollectFrame>
+      </FrameWithRecentlyViewed>
     )
   }
 }
@@ -46,7 +61,18 @@ export class CollectionApp extends Component<CollectionAppProps> {
 export const CollectionAppFragmentContainer = createFragmentContainer(
   CollectionApp,
   graphql`
-    fragment CollectionApp_collection on MarketingCollection {
+    fragment CollectionApp_collection on MarketingCollection
+      @argumentDefinitions(
+        medium: { type: "String", defaultValue: "*" }
+        major_periods: { type: "[String]" }
+        partner_id: { type: "ID" }
+        for_sale: { type: "Boolean" }
+        at_auction: { type: "Boolean" }
+        acquireable: { type: "Boolean" }
+        inquireable_only: { type: "Boolean" }
+        sort: { type: "String", defaultValue: "-partner_updated_at" }
+        price_range: { type: "String" }
+      ) {
       id
       slug
       title
@@ -60,6 +86,16 @@ export const CollectionAppFragmentContainer = createFragmentContainer(
         gene_id
       }
       ...CollectionFilterContainer_collection
+        @arguments(
+          medium: $medium
+          major_periods: $major_periods
+          for_sale: $for_sale
+          sort: $sort
+          acquireable: $acquireable
+          at_auction: $at_auction
+          inquireable_only: $inquireable_only
+          price_range: $price_range
+        )
     }
   `
 )

@@ -1,7 +1,7 @@
 import {
   MultipleArtists,
   SingleFollowedArtist,
-} from "Apps/__test__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarArtists"
+} from "Apps/__tests__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarArtists"
 import { ArtworkSidebarArtistsFragmentContainer } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarArtists"
 import { renderRelayTree } from "DevTools"
 import { graphql } from "react-relay"
@@ -62,8 +62,7 @@ describe("ArtworkSidebarArtists", () => {
       ).toBe(1)
     })
 
-    it("does not display follow buttons", async () => {
-      wrapper = await getWrapper(MultipleArtists)
+    it("does not display follow buttons", () => {
       expect(wrapper.html()).not.toContain("Follow")
     })
 

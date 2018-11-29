@@ -4,13 +4,14 @@ import React from "react"
 import { routes as artistRoutes } from "../Artist/routes"
 import { routes as artworkRoutes } from "../Artwork/routes"
 import { routes as collectRoutes } from "../Collect/routes"
+import { routes as collectionsRoutes } from "../Collections/routes"
 
 storiesOf("Apps", module)
   .add("Artwork Page", () => {
     return (
       <MockRouter
         routes={artworkRoutes}
-        initialRoute="/artwork2/pablo-picasso-david-et-bethsabee"
+        initialRoute="/artwork2/pablo-picasso-femme-assise-dans-un-fauteuil-tresse"
       />
     )
   })
@@ -18,7 +19,7 @@ storiesOf("Apps", module)
     return (
       <MockRouter
         routes={artistRoutes}
-        initialRoute="/artist/pablo-picasso/auction-results"
+        initialRoute="/artist/pablo-picasso"
         context={{
           mediator: {
             trigger: x => x,
@@ -50,6 +51,15 @@ storiesOf("Apps", module)
             trigger: x => x,
           },
         }}
+      />
+    )
+  })
+  .add("Collections Page", () => {
+    return (
+      <MockRouter
+        routes={collectionsRoutes}
+        initialRoute="/collections"
+        context={{}}
       />
     )
   })

@@ -1,30 +1,33 @@
 import React from "react"
 import { Step, Stepper } from "Styleguide/Components"
 
-const offerFlow = ["Offer", "Shipping", "Payment", "Review"]
-const buyNowFlow = ["Shipping", "Payment", "Review"]
+function typedArray<T extends string>(...elems: T[]): T[] {
+  return elems
+}
 
-type OrderStepperProps =
-  | {
-      currentStep: "Offer" | "Shipping" | "Payment" | "Review"
-      offerFlow: true
-    }
-  | {
-      currentStep: "Shipping" | "Payment" | "Review"
-      offerFlow: false
-    }
+export const offerFlowSteps = typedArray(
+  "Offer",
+  "Shipping",
+  "Payment",
+  "Review"
+)
+export const buyNowFlowSteps = typedArray("Shipping", "Payment", "Review")
+export const counterofferFlowSteps = typedArray("Respond", "Review")
 
-export const OrderStepper: React.SFC<OrderStepperProps> = ({
+export function OrderStepper<Steps extends string[]>({
   currentStep,
-  ...more
-}) => {
-  const steps = more.offerFlow ? offerFlow : buyNowFlow
+  steps,
+}: {
+  steps: Steps
+  currentStep: Steps extends Array<infer K> ? K : never
+}) {
   const stepIndex = steps.indexOf(currentStep)
   return (
     <Stepper
       initialTabIndex={stepIndex}
       currentStepIndex={stepIndex}
       disableNavigation
+      autoScroll
     >
       {steps.map(step => <Step name={step} key={step} />)}
     </Stepper>

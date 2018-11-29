@@ -1,9 +1,16 @@
 import { Button, Flex, Join, Sans, Spacer } from "@artsy/palette"
 import { Review_order } from "__generated__/Review_order.graphql"
+import { ReviewSubmitOfferOrderMutation } from "__generated__/ReviewSubmitOfferOrderMutation.graphql"
 import { ReviewSubmitOrderMutation } from "__generated__/ReviewSubmitOrderMutation.graphql"
+import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
 import { ItemReviewFragmentContainer as ItemReview } from "Apps/Order/Components/ItemReview"
-import { OrderStepper } from "Apps/Order/Components/OrderStepper"
-import { ShippingAndPaymentReviewFragmentContainer as ShippingAndPaymentReview } from "Apps/Order/Components/ShippingAndPaymentReview"
+import {
+  buyNowFlowSteps,
+  offerFlowSteps,
+  OrderStepper,
+} from "Apps/Order/Components/OrderStepper"
+import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "Apps/Order/Components/ShippingSummaryItem"
+import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
@@ -18,10 +25,13 @@ import {
 } from "react-relay"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
+import { ErrorWithMetadata } from "Utils/errors"
 import { get } from "Utils/get"
-import { Responsive } from "Utils/Responsive"
+import createLogger from "Utils/logger"
+import { Media } from "Utils/Responsive"
+import { CreditCardSummaryItemFragmentContainer as CreditCardSummaryItem } from "../../Components/CreditCardSummaryItem"
 import { Helper } from "../../Components/Helper"
-import { TransactionSummaryFragmentContainer as TransactionSummary } from "../../Components/TransactionSummary"
+import { OfferSummaryItemFragmentContainer as OfferSummaryItem } from "../../Components/OfferSummaryItem"
 import { TwoColumnLayout } from "../../Components/TwoColumnLayout"
 
 export interface ReviewProps {
@@ -39,6 +49,8 @@ interface ReviewState {
   errorModalTitle: string
   errorModalCtaAction: () => null
 }
+
+const logger = createLogger("Order/Routes/Review/index.tsx")
 
 @track()
 export class ReviewRoute extends Component<ReviewProps, ReviewState> {
@@ -65,6 +77,12 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
   }))
   onSuccessfulSubmit() {
     this.props.router.push(`/orders/${this.props.order.id}/status`)
+  }
+
+  onSubmit() {
+    this.props.order.mode === "BUY"
+      ? this.onOrderSubmitted()
+      : this.onOfferOrderSubmitted()
   }
 
   onOrderSubmitted() {
@@ -102,46 +120,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
               const {
                 ecommerceSubmitOrder: { orderOrError },
               } = result
-
-              const error = orderOrError.error
-              if (error) {
-                switch (error.code) {
-                  case "insufficient_inventory": {
-                    const artistId = this.artistId()
-                    this.onMutationError(
-                      error,
-                      "Not available",
-                      "Sorry, the work is no longer available.",
-                      artistId ? this.routeToArtistPage.bind(this) : null
-                    )
-                    break
-                  }
-                  case "failed_charge_authorize": {
-                    const parsedData = JSON.parse(error.data)
-                    this.onMutationError(
-                      error,
-                      "An error occurred",
-                      parsedData.failure_message
-                    )
-                    break
-                  }
-                  case "artwork_version_mismatch": {
-                    this.onMutationError(
-                      error,
-                      "Work has been updated",
-                      "Something about the work changed since you started checkout. Please review the work before submitting your order.",
-                      this.routeToArtworkPage.bind(this)
-                    )
-                    break
-                  }
-                  default: {
-                    this.onMutationError(error)
-                    break
-                  }
-                }
-              } else {
-                this.onSuccessfulSubmit()
-              }
+              this.onSubmitCompleted(orderOrError)
             },
             onError: this.onMutationError.bind(this),
           }
@@ -150,14 +129,102 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
     }
   }
 
-  private artistId() {
+  onOfferOrderSubmitted() {
+    if (this.props.relay && this.props.relay.environment) {
+      this.setState({ isSubmitting: true }, () =>
+        commitMutation<ReviewSubmitOfferOrderMutation>(
+          this.props.relay.environment,
+          {
+            mutation: graphql`
+              mutation ReviewSubmitOfferOrderMutation(
+                $input: SubmitOrderWithOfferInput!
+              ) {
+                ecommerceSubmitOrderWithOffer(input: $input) {
+                  orderOrError {
+                    ... on OrderWithMutationSuccess {
+                      order {
+                        state
+                      }
+                    }
+                    ... on OrderWithMutationFailure {
+                      error {
+                        type
+                        code
+                        data
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+            variables: {
+              input: {
+                offerId: this.props.order.myLastOffer.id,
+              },
+            },
+            onCompleted: result => {
+              const {
+                ecommerceSubmitOrderWithOffer: { orderOrError },
+              } = result
+              this.onSubmitCompleted(orderOrError)
+            },
+            onError: this.onMutationError.bind(this),
+          }
+        )
+      )
+    }
+  }
+
+  onSubmitCompleted = orderOrError => {
+    const error = orderOrError.error
+    if (error) {
+      switch (error.code) {
+        case "insufficient_inventory": {
+          const artistId = this.artistId()
+          this.onMutationError(
+            new ErrorWithMetadata(error.code, error),
+            "Not available",
+            "Sorry, the work is no longer available.",
+            artistId ? this.routeToArtistPage.bind(this) : null
+          )
+          break
+        }
+        case "failed_charge_authorize": {
+          const parsedData = JSON.parse(error.data)
+          this.onMutationError(
+            new ErrorWithMetadata(error.code, error),
+            "An error occurred",
+            parsedData.failure_message
+          )
+          break
+        }
+        case "artwork_version_mismatch": {
+          this.onMutationError(
+            new ErrorWithMetadata(error.code, error),
+            "Work has been updated",
+            "Something about the work changed since you started checkout. Please review the work before submitting your order.",
+            this.routeToArtworkPage.bind(this)
+          )
+          break
+        }
+        default: {
+          this.onMutationError(new ErrorWithMetadata(error.code, error))
+          break
+        }
+      }
+    } else {
+      this.onSuccessfulSubmit()
+    }
+  }
+
+  artistId() {
     return get(
       this.props.order,
       o => o.lineItems.edges[0].node.artwork.artists[0].id
     )
   }
 
-  private routeToArtworkPage() {
+  routeToArtworkPage() {
     const artworkId = get(
       this.props.order,
       o => o.lineItems.edges[0].node.artwork.id
@@ -167,7 +234,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
     window.location.assign(`/artwork/${artworkId}`)
   }
 
-  private routeToArtistPage() {
+  routeToArtistPage() {
     const artistId = this.artistId()
 
     // Don't confirm whether or not you want to leave the page
@@ -175,13 +242,13 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
     window.location.assign(`/artist/${artistId}`)
   }
 
-  private onMutationError(
-    errors,
+  onMutationError(
+    error,
     errorModalTitle?,
     errorModalMessage?,
     errorModalCtaAction?
   ) {
-    console.error("Order/Routes/Review/index.tsx", errors)
+    logger.error(error)
     this.setState({
       isSubmitting: false,
       isErrorModalOpen: true,
@@ -191,11 +258,15 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
     })
   }
 
-  onChangePayment() {
+  onChangeOffer = () => {
+    this.props.router.push(`/orders/${this.props.order.id}/offer`)
+  }
+
+  onChangePayment = () => {
     this.props.router.push(`/orders/${this.props.order.id}/payment`)
   }
 
-  onChangeShipping() {
+  onChangeShipping = () => {
     this.props.router.push(`/orders/${this.props.order.id}/shipping`)
   }
 
@@ -214,98 +285,106 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
             <Col>
               <OrderStepper
                 currentStep="Review"
-                offerFlow={false /* TODO: order.isOfferable or whatever */}
+                steps={
+                  order.mode === "OFFER" ? offerFlowSteps : buyNowFlowSteps
+                }
               />
             </Col>
           </Row>
         </HorizontalPadding>
 
-        <Responsive>
-          {({ xs }) => (
-            <HorizontalPadding>
-              <TwoColumnLayout
-                Content={
-                  <>
-                    <Join separator={<Spacer mb={3} />}>
-                      <ShippingAndPaymentReview
+        <HorizontalPadding>
+          <TwoColumnLayout
+            Content={
+              <>
+                <Join separator={<Spacer mb={3} />}>
+                  <Flex flexDirection="column" mb={[2, 3]}>
+                    {order.mode === "OFFER" && (
+                      <OfferSummaryItem
                         order={order}
-                        onChangePayment={this.onChangePayment.bind(this)}
-                        onChangeShipping={this.onChangeShipping.bind(this)}
-                        mb={xs ? 2 : 3}
-                      />
-
-                      {!xs && (
-                        <>
-                          <ItemReview
-                            artwork={order.lineItems.edges[0].node.artwork}
-                          />
-                          <Spacer mb={3} />
-                          <Button
-                            size="large"
-                            width="100%"
-                            loading={isSubmitting}
-                            onClick={() => this.onOrderSubmitted()}
-                          >
-                            Submit
-                          </Button>
-                          <Spacer mb={2} />
-                          <Sans textAlign="center" size="2" color="black60">
-                            By clicking Submit, I agree to Artsy’s{" "}
-                            <a
-                              href="https://www.artsy.net/conditions-of-sale"
-                              target="_blank"
-                            >
-                              Conditions of Sale
-                            </a>
-                            .
-                          </Sans>
-                        </>
-                      )}
-                    </Join>
-                    <Spacer mb={3} />
-                  </>
-                }
-                Sidebar={
-                  <Flex flexDirection="column">
-                    <TransactionSummary order={order} mb={xs ? 2 : 3} />
-                    {!xs && (
-                      <Helper
-                        artworkId={order.lineItems.edges[0].node.artwork.id}
+                        onChange={this.onChangeOffer}
                       />
                     )}
-                    {xs && (
-                      <>
-                        <Button
-                          size="large"
-                          width="100%"
-                          loading={isSubmitting}
-                          onClick={() => this.onOrderSubmitted()}
-                        >
-                          Submit
-                        </Button>
-                        <Spacer mb={2} />
-                        <Sans size="2" color="black60">
-                          By clicking Submit, I agree to Artsy’s{" "}
-                          <a
-                            href="https://www.artsy.net/conditions-of-sale"
-                            target="_blank"
-                          >
-                            Conditions of Sale
-                          </a>
-                          .
-                        </Sans>
-                        <Spacer mb={2} />
-                        <Helper
-                          artworkId={order.lineItems.edges[0].node.artwork.id}
-                        />
-                      </>
-                    )}
+                    <ShippingSummaryItem
+                      order={order}
+                      onChange={this.onChangeShipping}
+                    />
+                    <CreditCardSummaryItem
+                      order={order}
+                      onChange={this.onChangePayment}
+                      title="Payment method"
+                    />
                   </Flex>
-                }
-              />
-            </HorizontalPadding>
-          )}
-        </Responsive>
+                  <Media greaterThan="xs">
+                    <ItemReview
+                      artwork={order.lineItems.edges[0].node.artwork}
+                    />
+                    <Spacer mb={3} />
+                    <Button
+                      size="large"
+                      width="100%"
+                      loading={isSubmitting}
+                      onClick={() => this.onSubmit()}
+                    >
+                      Submit
+                    </Button>
+                    <Spacer mb={2} />
+                    <Sans textAlign="center" size="2" color="black60">
+                      By clicking Submit, I agree to Artsy’s{" "}
+                      <a
+                        href="https://www.artsy.net/conditions-of-sale"
+                        target="_blank"
+                      >
+                        Conditions of Sale
+                      </a>
+                      .
+                    </Sans>
+                  </Media>
+                </Join>
+                <Spacer mb={3} />
+              </>
+            }
+            Sidebar={
+              <Flex flexDirection="column">
+                <Flex flexDirection="column">
+                  <ArtworkSummaryItem order={order} />
+                  <TransactionDetailsSummaryItem order={order} />
+                </Flex>
+                <Spacer mb={[2, 3]} />
+                <Media greaterThan="xs">
+                  <Helper
+                    artworkId={order.lineItems.edges[0].node.artwork.id}
+                  />
+                </Media>
+                <Media at="xs">
+                  <Button
+                    size="large"
+                    width="100%"
+                    loading={isSubmitting}
+                    onClick={() => this.onSubmit()}
+                  >
+                    Submit
+                  </Button>
+                  <Spacer mb={2} />
+                  <Sans size="2" color="black60">
+                    By clicking Submit, I agree to Artsy’s{" "}
+                    <a
+                      href="https://www.artsy.net/conditions-of-sale"
+                      target="_blank"
+                    >
+                      Conditions of Sale
+                    </a>
+                    .
+                  </Sans>
+                  <Spacer mb={2} />
+                  <Helper
+                    artworkId={order.lineItems.edges[0].node.artwork.id}
+                  />
+                </Media>
+              </Flex>
+            }
+          />
+        </HorizontalPadding>
 
         <ErrorModal
           onClose={this.onCloseModal}
@@ -333,6 +412,7 @@ export const ReviewFragmentContainer = createFragmentContainer(
   graphql`
     fragment Review_order on Order {
       id
+      mode
       lineItems {
         edges {
           node {
@@ -346,8 +426,16 @@ export const ReviewFragmentContainer = createFragmentContainer(
           }
         }
       }
-      ...TransactionSummary_order
-      ...ShippingAndPaymentReview_order
+      ... on OfferOrder {
+        myLastOffer {
+          id
+        }
+      }
+      ...ArtworkSummaryItem_order
+      ...TransactionDetailsSummaryItem_order
+      ...ShippingSummaryItem_order
+      ...CreditCardSummaryItem_order
+      ...OfferSummaryItem_order
     }
   `
 )

@@ -9,6 +9,11 @@ import React from "react"
 import { HeadProvider, Meta } from "react-head"
 import { OrderApp } from "../OrderApp"
 
+import {
+  BuyOrderPickup,
+  mockResolver,
+  UntouchedBuyOrder,
+} from "Apps/__tests__/Fixtures/Order"
 import { createMockNetworkLayer } from "DevTools/createMockNetworkLayer"
 import { Environment, RecordSource, Store } from "relay-runtime"
 
@@ -36,39 +41,36 @@ describe("OrderApp routing redirects", () => {
   }
 
   it("does not redirect to the status route if the order is pending", async () => {
-    const { redirect } = await render("/orders/1234/shipping", {
-      Order: () => ({
+    const { redirect } = await render(
+      "/orders/1234/shipping",
+      mockResolver({
+        ...BuyOrderPickup,
         id: 1234,
         state: "PENDING",
-        requestedFulfillment: {
-          __typename: "Pickup",
-        },
-      }),
-    })
+      })
+    )
     expect(redirect).toBe(undefined)
   })
 
   it("redirects to the status route if the order is not pending", async () => {
-    const { redirect } = await render("/orders/1234/shipping", {
-      Order: () => ({
+    const { redirect } = await render(
+      "/orders/1234/shipping",
+      mockResolver({
+        ...BuyOrderPickup,
         id: 1234,
         state: "SUBMITTED",
-        requestedFulfillment: {
-          __typename: "Pickup",
-        },
-      }),
-    })
+      })
+    )
     expect(redirect.url).toBe("/orders/1234/status")
   })
 
   it("redirects to the artwork page if the order is abandoned", async () => {
-    const { redirect } = await render("/orders/1234/shipping", {
-      Order: () => ({
+    const { redirect } = await render(
+      "/orders/1234/shipping",
+      mockResolver({
+        ...BuyOrderPickup,
         id: 1234,
         state: "ABANDONED",
-        requestedFulfillment: {
-          __typename: "Pickup",
-        },
         lineItems: {
           edges: [
             {
@@ -80,90 +82,101 @@ describe("OrderApp routing redirects", () => {
             },
           ],
         },
-      }),
-    })
+      })
+    )
     expect(redirect.url).toBe("/artwork/artwork-id")
   })
 
   it("redirects to the home page if the order is abandoned and has no ID", async () => {
-    const { redirect } = await render("/orders/1234/shipping", {
-      Order: () => ({
+    const { redirect } = await render(
+      "/orders/1234/shipping",
+      mockResolver({
+        ...BuyOrderPickup,
         id: 1234,
         state: "ABANDONED",
-        requestedFulfillment: {
-          __typename: "Pickup",
-        },
         lineItems: null,
-      }),
-    })
+      })
+    )
     expect(redirect.url).toBe("/")
   })
 
   it("stays on the shipping route if no shipping option is set", async () => {
-    const { redirect } = await render("/orders/1234/shipping", {
-      Order: () => ({
+    const { redirect } = await render(
+      "/orders/1234/shipping",
+      mockResolver({
+        ...UntouchedBuyOrder,
         id: 1234,
         state: "PENDING",
         requestedFulfillment: null,
-      }),
-    })
+      })
+    )
     expect(redirect).toBe(undefined)
   })
 
   it("redirects to the shipping route from the payment route if no shipping option was set", async () => {
-    const { redirect } = await render("/orders/1234/payment", {
-      Order: () => ({
+    const { redirect } = await render(
+      "/orders/1234/payment",
+      mockResolver({
+        ...UntouchedBuyOrder,
         id: 1234,
         state: "PENDING",
         requestedFulfillment: null,
-      }),
-    })
+      })
+    )
     expect(redirect.url).toBe("/orders/1234/shipping")
   })
 
   it("stays on the payment route if there is shipping but no payment info", async () => {
-    const { redirect } = await render("/orders/1234/payment", {
-      Order: () => ({
+    const { redirect } = await render(
+      "/orders/1234/payment",
+      mockResolver({
+        ...UntouchedBuyOrder,
         id: 1234,
         state: "PENDING",
         requestedFulfillment: {
           __typename: "Ship",
         },
         creditCard: null,
-      }),
-    })
+      })
+    )
     expect(redirect).toBe(undefined)
   })
 
   it("redirects to the shipping route from the review route if no shipping option was set", async () => {
-    const { redirect } = await render("/orders/1234/review", {
-      Order: () => ({
+    const { redirect } = await render(
+      "/orders/1234/review",
+      mockResolver({
+        ...UntouchedBuyOrder,
         id: 1234,
         state: "PENDING",
         requestedFulfillment: null,
         creditCard: null,
-      }),
-    })
+      })
+    )
     expect(redirect.url).toBe("/orders/1234/shipping")
   })
 
   it("redirects to the payment route from the review route if no credit card is set", async () => {
-    const { redirect } = await render("/orders/1234/review", {
-      Order: () => ({
+    const { redirect } = await render(
+      "/orders/1234/review",
+      mockResolver({
+        ...UntouchedBuyOrder,
         id: 1234,
         state: "PENDING",
         requestedFulfillment: {
           __typename: "Ship",
         },
         creditCard: null,
-      }),
-    })
+      })
+    )
     expect(redirect.url).toBe("/orders/1234/payment")
   })
 
   it("stays on the review route if there are payment and shipping options set", async () => {
-    const { redirect } = await render("/orders/1234/review", {
-      Order: () => ({
+    const { redirect } = await render(
+      "/orders/1234/review",
+      mockResolver({
+        ...UntouchedBuyOrder,
         id: 1234,
         state: "PENDING",
         requestedFulfillment: {
@@ -172,8 +185,8 @@ describe("OrderApp routing redirects", () => {
         creditCard: {
           id: "12345",
         },
-      }),
-    })
+      })
+    )
     expect(redirect).toBe(undefined)
   })
 })

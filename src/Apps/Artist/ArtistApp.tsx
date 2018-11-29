@@ -67,11 +67,13 @@ export class ArtistApp extends React.Component<ArtistAppProps> {
         </Row>
 
         {typeof window !== "undefined" && (
-          <>
-            <LazyLoadComponent threshold={1000}>
-              <RecentlyViewed />
-            </LazyLoadComponent>
-          </>
+          <LazyLoadComponent threshold={1000}>
+            <Row>
+              <Col>
+                <RecentlyViewed />
+              </Col>
+            </Row>
+          </LazyLoadComponent>
         )}
 
         <Separator mt={6} mb={3} />

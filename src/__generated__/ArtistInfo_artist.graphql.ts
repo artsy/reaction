@@ -8,6 +8,7 @@ import { SelectedExhibitions_exhibitions$ref } from "./SelectedExhibitions_exhib
 declare const _ArtistInfo_artist$ref: unique symbol;
 export type ArtistInfo_artist$ref = typeof _ArtistInfo_artist$ref;
 export type ArtistInfo_artist = {
+    readonly _id: string;
     readonly id: string;
     readonly name: string | null;
     readonly href: string | null;
@@ -48,33 +49,23 @@ return {
   "argumentDefinitions": [],
   "selections": [
     {
-      "kind": "LinkedField",
+      "kind": "ScalarField",
       "alias": null,
-      "name": "exhibition_highlights",
-      "storageKey": "exhibition_highlights(size:3)",
-      "args": [
-        {
-          "kind": "Literal",
-          "name": "size",
-          "value": 3,
-          "type": "Int"
-        }
-      ],
-      "concreteType": "Show",
-      "plural": true,
-      "selections": [
-        {
-          "kind": "FragmentSpread",
-          "name": "SelectedExhibitions_exhibitions",
-          "args": null
-        },
-        v0
-      ]
+      "name": "_id",
+      "args": null,
+      "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
       "name": "id",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "name",
       "args": null,
       "storageKey": null
     },
@@ -153,11 +144,28 @@ return {
       ]
     },
     {
-      "kind": "ScalarField",
+      "kind": "LinkedField",
       "alias": null,
-      "name": "name",
-      "args": null,
-      "storageKey": null
+      "name": "exhibition_highlights",
+      "storageKey": "exhibition_highlights(size:3)",
+      "args": [
+        {
+          "kind": "Literal",
+          "name": "size",
+          "value": 3,
+          "type": "Int"
+        }
+      ],
+      "concreteType": "Show",
+      "plural": true,
+      "selections": [
+        {
+          "kind": "FragmentSpread",
+          "name": "SelectedExhibitions_exhibitions",
+          "args": null
+        },
+        v0
+      ]
     },
     {
       "kind": "FragmentSpread",
@@ -209,5 +217,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '99cec4a7918d467c6a63bf7cbf44ec6f';
+(node as any).hash = '6abe6443f1943cccc465434221c1fb21';
 export default node;

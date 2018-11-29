@@ -12,7 +12,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   margin: 10px 20px 0 0;
 }
 
-.c19:before {
+.c19::before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -267,7 +267,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   text-align: center;
 }
 
-.c13 h1:before {
+.c13 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -356,7 +356,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   background: none transparent;
 }
 
-.c13 .artist-follow:before {
+.c13 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -364,7 +364,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   font-size: 32px;
 }
 
-.c13 .artist-follow:after {
+.c13 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -804,7 +804,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
                   "fontWeight": 500,
                 }
               }
-              fontSize={14}
+              fontSize="14px"
             >
               <div
                 className="c18 c19"
@@ -935,7 +935,7 @@ exports[`News Layout renders the news layout properly 1`] = `
   margin: 10px 20px 0 0;
 }
 
-.c19:before {
+.c19::before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -1190,7 +1190,7 @@ exports[`News Layout renders the news layout properly 1`] = `
   text-align: center;
 }
 
-.c13 h1:before {
+.c13 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -1279,7 +1279,7 @@ exports[`News Layout renders the news layout properly 1`] = `
   background: none transparent;
 }
 
-.c13 .artist-follow:before {
+.c13 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -1287,7 +1287,7 @@ exports[`News Layout renders the news layout properly 1`] = `
   font-size: 32px;
 }
 
-.c13 .artist-follow:after {
+.c13 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -1721,7 +1721,7 @@ exports[`News Layout renders the news layout properly 1`] = `
                   "fontWeight": 500,
                 }
               }
-              fontSize={14}
+              fontSize="14px"
             >
               <div
                 className="c18 c19"

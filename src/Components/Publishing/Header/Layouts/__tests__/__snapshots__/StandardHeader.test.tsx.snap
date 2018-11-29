@@ -20,7 +20,7 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
   margin: 10px 20px 0 0;
 }
 
-.c8:before {
+.c8::before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -154,7 +154,7 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
             "fontWeight": 500,
           }
         }
-        fontSize={14}
+        fontSize="14px"
       >
         <span>
           <div>
@@ -184,7 +184,7 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
             "fontWeight": 500,
           }
         }
-        fontSize={14}
+        fontSize="14px"
       >
         <div
           className="c8"
@@ -204,7 +204,7 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
               "fontWeight": 500,
             }
           }
-          fontSize={14}
+          fontSize="14px"
         >
           Jun 19, 2015 9:09 am
         </div>
@@ -308,7 +308,7 @@ exports[`Standard Header Snapshots renders properly 1`] = `
   margin: 10px 20px 0 0;
 }
 
-.c7:before {
+.c7::before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -441,7 +441,7 @@ exports[`Standard Header Snapshots renders properly 1`] = `
             "fontWeight": 500,
           }
         }
-        fontSize={14}
+        fontSize="14px"
       >
         <span>
           Art Market
@@ -465,7 +465,7 @@ exports[`Standard Header Snapshots renders properly 1`] = `
             "fontWeight": 500,
           }
         }
-        fontSize={14}
+        fontSize="14px"
       >
         <div
           className="c7"
@@ -485,7 +485,7 @@ exports[`Standard Header Snapshots renders properly 1`] = `
               "fontWeight": 500,
             }
           }
-          fontSize={14}
+          fontSize="14px"
         >
           May 19, 2017 9:09 am
         </div>

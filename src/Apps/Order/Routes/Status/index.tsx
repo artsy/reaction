@@ -1,5 +1,6 @@
 import { Flex, Join, Message, Sans, Serif, Spacer } from "@artsy/palette"
 import { Status_order } from "__generated__/Status_order.graphql"
+import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import React, { Component } from "react"
@@ -7,10 +8,10 @@ import { Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { get } from "Utils/get"
-import { Responsive } from "Utils/Responsive"
+import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "../../Components/ArtworkSummaryItem"
+import { CreditCardSummaryItemFragmentContainer as CreditCardSummaryItem } from "../../Components/CreditCardSummaryItem"
 import { Helper } from "../../Components/Helper"
-import { ShippingAndPaymentSummaryFragmentContainer as ShippingAndPaymentSummary } from "../../Components/ShippingAndPaymentSummary"
-import { TransactionSummaryFragmentContainer as TransactionSummary } from "../../Components/TransactionSummary"
+import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "../../Components/ShippingSummaryItem"
 
 export interface StatusProps {
   order: Status_order
@@ -34,72 +35,6 @@ export class StatusRoute extends Component<StatusProps> {
     }
   }
 
-  messageCopy = () => {
-    const { order } = this.props
-    const { state, requestedFulfillment } = order
-    switch (state) {
-      case "SUBMITTED":
-        return (
-          <>
-            Thank you for your purchase. You will receive a confirmation email
-            within 2 days.
-          </>
-        )
-      case "APPROVED":
-        return requestedFulfillment.__typename === "Ship" ? (
-          <>
-            Thank you for your purchase. You will be notified when the work has
-            shipped, typically within 5–7 business days.
-          </>
-        ) : (
-          <>
-            Thank you for your purchase. A specialist will contact you within 2
-            business days to coordinate pickup.
-          </>
-        )
-      case "FULFILLED":
-        const fulfillment = get(
-          order,
-          o => o.lineItems.edges[0].node.fulfillments.edges[0].node
-        )
-        if (!fulfillment) {
-          return false
-        }
-        return requestedFulfillment.__typename === "Ship" ? (
-          <>
-            <>Your work is on its way.</>
-            <br />
-            <br />
-            {fulfillment.courier && (
-              <>
-                Shipper: {fulfillment.courier} <br />
-              </>
-            )}
-            {fulfillment.trackingId && (
-              <>
-                <>Tracking Info: {fulfillment.trackingId}</>
-                <br />
-              </>
-            )}
-            {fulfillment.estimatedDelivery && (
-              <>Estimated delivery: {fulfillment.estimatedDelivery}</>
-            )}
-          </>
-        ) : (
-          false
-        )
-      case "CANCELED":
-        return (
-          <>
-            Please allow 5–7 business days for the refund to appear on your bank
-            statement. Contact{" "}
-            <a href="mailto:orders@artsy.net">orders@artsy.net</a> with any
-            questions.
-          </>
-        )
-    }
-  }
-
   componentDidMount() {
     this.props.mediator.trigger("order:status")
   }
@@ -107,44 +42,52 @@ export class StatusRoute extends Component<StatusProps> {
   render() {
     const { order } = this.props
 
-    const message = this.messageCopy()
+    const isOfferFlow = order.mode === "OFFER"
+    const message = isOfferFlow
+      ? offerMessages[order.state] || orderMessages[order.state]
+      : orderMessages[order.state]
+    const flowName = isOfferFlow ? "Offer" : "Order"
+    const userMessage = message && message(this.props)
 
     return (
-      <Responsive>
-        {({ xs }) => (
-          <HorizontalPadding>
-            <Serif size="6" weight="regular" color="black100">
-              {this.stateCopy()}
-            </Serif>
-            <Sans size="2" weight="regular" color="black60" mb={[2, 3]}>
-              Order #{order.code}
-            </Sans>
-            <TwoColumnLayout
-              Content={
-                <>
-                  <Title>Order status | Artsy</Title>
-                  <Join separator={<Spacer mb={[2, 3]} />}>
-                    {message && <Message>{message}</Message>}
-                    <TransactionSummary order={order} />
-                  </Join>
-                  <Spacer mb={[2, 3]} />
-                </>
-              }
-              Sidebar={
+      <HorizontalPadding>
+        <Serif size="6" weight="regular" color="black100">
+          {this.stateCopy()}
+        </Serif>
+        <Sans size="2" weight="regular" color="black60" mb={[2, 3]}>
+          #{flowName} #{order.code}
+        </Sans>
+        <TwoColumnLayout
+          Content={
+            <>
+              <Title>{flowName} status | Artsy</Title>
+              <Join separator={<Spacer mb={[2, 3]} />}>
+                {userMessage && <Message p={[2, 3]}>{userMessage}</Message>}
                 <Flex flexDirection="column">
-                  <ShippingAndPaymentSummary order={order} mb={[2, 3]} />
-                  <Helper
-                    artworkId={get(
-                      order,
-                      o => o.lineItems.edges[0].node.artwork.id
-                    )}
-                  />
+                  <ArtworkSummaryItem order={order} />
+                  <TransactionDetailsSummaryItem order={order} />
                 </Flex>
-              }
-            />
-          </HorizontalPadding>
-        )}
-      </Responsive>
+              </Join>
+              <Spacer mb={[2, 3]} />
+            </>
+          }
+          Sidebar={
+            <Flex flexDirection="column">
+              <Flex flexDirection="column">
+                <ShippingSummaryItem order={order} />
+                <CreditCardSummaryItem order={order} />
+              </Flex>
+              <Spacer mb={[2, 3]} />
+              <Helper
+                artworkId={get(
+                  order,
+                  o => o.lineItems.edges[0].node.artwork.id
+                )}
+              />
+            </Flex>
+          }
+        />
+      </HorizontalPadding>
     )
   }
 }
@@ -157,13 +100,113 @@ const StatusRouteWrapper = props => (
   </ContextConsumer>
 )
 
+const offerMessages = {
+  SUBMITTED: (props: StatusProps) => {
+    const artwork = get(props.order, o => o.lineItems.edges[0].node.artwork)
+    return (
+      <>
+        You’ll receive a confirmation email. The seller has{" "}
+        <Sans size="3t" weight="medium" display="inline">
+          48 hours
+        </Sans>{" "}
+        to respond to your offer. If the gallery doesn’t respond in time, your
+        offer will be canceled.
+        <br />
+        <br />
+        {artwork.is_acquireable ? (
+          <>
+            <Sans size="3t" weight="medium" display="inline">
+              Keep in mind
+            </Sans>{" "}
+            making an offer doesn’t guarantee you the work. Another buyer could
+            make a higher offer or{" "}
+            <a href={`/artwork/${artwork.id}`}>buy now</a> at list price.
+          </>
+        ) : (
+          <>
+            <Sans size="3t" weight="medium" display="inline">
+              Keep in mind
+            </Sans>{" "}
+            making an offer doesn’t guarantee you the work. Another buyer could
+            make a higher offer.
+          </>
+        )}
+      </>
+    )
+  },
+}
+const orderMessages = {
+  SUBMITTED: () => (
+    <>
+      Thank you for your purchase. You will receive a confirmation email within
+      2 days.
+    </>
+  ),
+  APPROVED: ({ order: { requestedFulfillment } }) => {
+    return requestedFulfillment.__typename === "Ship" ? (
+      <>
+        Thank you for your purchase. You will be notified when the work has
+        shipped, typically within 5–7 business days.
+      </>
+    ) : (
+      <>
+        Thank you for your purchase. A specialist will contact you within 2
+        business days to coordinate pickup.
+      </>
+    )
+  },
+  FULFILLED: ({ order }) => {
+    const fulfillment = get(
+      order,
+      o => o.lineItems.edges[0].node.fulfillments.edges[0].node
+    )
+    if (!fulfillment) {
+      return false
+    }
+    const { requestedFulfillment } = order
+    return requestedFulfillment.__typename === "Ship" ? (
+      <>
+        Your work is on its way.
+        <br />
+        <br />
+        {fulfillment.courier && (
+          <>
+            Shipper: {fulfillment.courier}
+            <br />
+          </>
+        )}
+        {fulfillment.trackingId && (
+          <>
+            <>Tracking Info: {fulfillment.trackingId}</>
+            <br />
+          </>
+        )}
+        {fulfillment.estimatedDelivery && (
+          <>Estimated delivery: {fulfillment.estimatedDelivery}</>
+        )}
+      </>
+    ) : (
+      false
+    )
+  },
+  CANCELED: () => (
+    <>
+      Please allow 5–7 business days for the refund to appear on your bank
+      statement. Contact <a href="mailto:orders@artsy.net">orders@artsy.net</a>{" "}
+      with any questions.
+    </>
+  ),
+}
+
 export const StatusFragmentContainer = createFragmentContainer(
   StatusRouteWrapper,
   graphql`
     fragment Status_order on Order {
+      __typename
       id
       code
       state
+      mode
       requestedFulfillment {
         ... on Ship {
           __typename
@@ -172,8 +215,10 @@ export const StatusFragmentContainer = createFragmentContainer(
           __typename
         }
       }
-      ...TransactionSummary_order
-      ...ShippingAndPaymentSummary_order
+      ...ArtworkSummaryItem_order
+      ...TransactionDetailsSummaryItem_order
+      ...ShippingSummaryItem_order
+      ...CreditCardSummaryItem_order
       lineItems {
         edges {
           node {
@@ -188,9 +233,21 @@ export const StatusFragmentContainer = createFragmentContainer(
             }
             artwork {
               id
+              is_acquireable
               ...ItemReview_artwork
             }
           }
+        }
+      }
+      ... on OfferOrder {
+        myLastOffer {
+          id
+          amount(precision: 2)
+          amountCents
+          shippingTotal(precision: 2)
+          shippingTotalCents
+          taxTotal(precision: 2)
+          taxTotalCents
         }
       }
     }

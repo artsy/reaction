@@ -1,23 +1,24 @@
 import { Sans } from "@artsy/palette"
 import React from "react"
-import { Col } from "Styleguide/Elements/Grid"
-import { Responsive } from "Utils/Responsive"
+import { Col, Row } from "Styleguide/Elements/Grid"
+import { Media } from "Utils/Responsive"
 
 export const TableColumns = () => {
   return (
-    <Responsive>
-      {({ xs, sm, md }) => {
-        if (xs) return null
-        else if (sm || md) return <SmallTableColumns />
-        else return <LargeTableColumns />
-      }}
-    </Responsive>
+    <>
+      <Media between={["sm", "lg"]}>
+        <SmallTableColumns />
+      </Media>
+      <Media greaterThanOrEqual="lg">
+        <LargeTableColumns />
+      </Media>
+    </>
   )
 }
 
 const LargeTableColumns = () => {
   return (
-    <>
+    <Row>
       <Col sm={5}>
         <Sans size="2" weight="medium">
           Work
@@ -33,13 +34,13 @@ const LargeTableColumns = () => {
           Price
         </Sans>
       </Col>
-    </>
+    </Row>
   )
 }
 
 const SmallTableColumns = () => {
   return (
-    <>
+    <Row>
       <Col col={6}>
         <Sans size="2" weight="medium">
           Work
@@ -50,6 +51,6 @@ const SmallTableColumns = () => {
           Price
         </Sans>
       </Col>
-    </>
+    </Row>
   )
 }

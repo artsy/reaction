@@ -6,7 +6,7 @@ import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Subscribe } from "unstated"
-import { Responsive } from "Utils/Responsive"
+import { Media } from "Utils/Responsive"
 import { AuctionResultsState } from "./state"
 
 import {
@@ -26,48 +26,58 @@ export interface Props extends ContextProps {
   user: User
 }
 
+// TODO: This whole component should be refactored to use less `Media` decisions
 export const ArtistAuctionResultItem: SFC<Props> = props => {
   return (
     <ContextConsumer>
       {({ user, mediator }) => {
         return (
-          <Row>
-            <Responsive>
-              {({ xs, sm, md }) => {
-                if (xs) {
-                  return (
+          <>
+            <Media at="xs">
+              {(className, renderChildren) => (
+                <Row className={className}>
+                  {renderChildren && (
                     <ExtraSmallAuctionItem
                       {...props}
                       mediator={mediator}
                       user={user}
                     />
-                  )
-                } else if (sm || md) {
-                  return (
+                  )}
+                </Row>
+              )}
+            </Media>
+            <Media between={["sm", "lg"]}>
+              {(className, renderChildren) => (
+                <Row className={className}>
+                  {renderChildren && (
                     <SmallAuctionItem
                       {...props}
                       mediator={mediator}
                       user={user}
                     />
-                  )
-                } else {
-                  return (
+                  )}
+                </Row>
+              )}
+            </Media>
+            <Media greaterThanOrEqual="lg">
+              {(className, renderChildren) => (
+                <Row className={className}>
+                  {renderChildren && (
                     <LargeAuctionItem
                       {...props}
                       mediator={mediator}
                       user={user}
                     />
-                  )
-                }
-              }}
-            </Responsive>
-
+                  )}
+                </Row>
+              )}
+            </Media>
             <Col>
               <Box pt={2} pb={1}>
                 {!props.lastChild && <Separator />}
               </Box>
             </Col>
-          </Row>
+          </>
         )
       }}
     </ContextConsumer>

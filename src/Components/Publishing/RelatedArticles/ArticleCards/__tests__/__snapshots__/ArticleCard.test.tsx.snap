@@ -17,7 +17,7 @@ exports[`ArticleCard renders an article properly 1`] = `
   margin: 10px 20px 0 0;
 }
 
-.c7:before {
+.c7::before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -60,7 +60,6 @@ exports[`ArticleCard renders an article properly 1`] = `
 }
 
 .c0 {
-  display: block;
   border: 1px solid;
   border-radius: 2px;
   color: black;
@@ -182,7 +181,7 @@ exports[`ArticleCard renders an article properly 1`] = `
             "fontWeight": 500,
           }
         }
-        fontSize={14}
+        fontSize="14px"
       >
         The Future of Art
       </div>
@@ -209,7 +208,7 @@ exports[`ArticleCard renders an article properly 1`] = `
             "fontWeight": 500,
           }
         }
-        fontSize={14}
+        fontSize="14px"
       >
         <div
           className="c7"
@@ -229,7 +228,7 @@ exports[`ArticleCard renders an article properly 1`] = `
               "fontWeight": 500,
             }
           }
-          fontSize={14}
+          fontSize="14px"
         >
           May 19, 2017
         </div>
@@ -268,7 +267,6 @@ exports[`ArticleCard renders an article with children properly 1`] = `
 }
 
 .c0 {
-  display: block;
   border: 1px solid;
   border-radius: 2px;
   color: black;
@@ -434,7 +432,7 @@ exports[`ArticleCard renders an article with children properly 1`] = `
             "fontWeight": 500,
           }
         }
-        fontSize={14}
+        fontSize="14px"
       >
         The Future of Art
       </div>
@@ -463,7 +461,7 @@ exports[`ArticleCard renders an article with children properly 1`] = `
           "fontWeight": 500,
         }
       }
-      fontSize={14}
+      fontSize="14px"
     >
       <div>
         Child 
@@ -509,7 +507,7 @@ exports[`ArticleCard renders an article with children properly 1`] = `
             "fontWeight": 500,
           }
         }
-        fontSize={14}
+        fontSize="14px"
       >
         02:28
       </div>
@@ -554,7 +552,6 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
 }
 
 .c0 {
-  display: block;
   border: 1px solid;
   border-radius: 2px;
   color: black;
@@ -705,7 +702,7 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
             "fontWeight": 500,
           }
         }
-        fontSize={14}
+        fontSize="14px"
       >
         The Future of Art
       </div>
@@ -731,7 +728,7 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
             "fontWeight": 500,
           }
         }
-        fontSize={14}
+        fontSize="14px"
       >
         Aug 28, 2017
       </div>
@@ -775,7 +772,7 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
             "fontWeight": 500,
           }
         }
-        fontSize={14}
+        fontSize="14px"
       >
         02:28
       </div>

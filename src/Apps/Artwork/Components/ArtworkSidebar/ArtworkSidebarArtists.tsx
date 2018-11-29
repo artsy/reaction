@@ -46,6 +46,7 @@ export class ArtworkSidebarArtists extends React.Component<ArtistsProps> {
               },
             })
           }}
+          triggerSuggestions
           render={({ is_followed }) => {
             return <FollowIcon isFollowed={is_followed} />
           }}

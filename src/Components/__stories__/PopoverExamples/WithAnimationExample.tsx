@@ -20,6 +20,7 @@ injectGlobal`
     opacity: 0;
     transition: opacity ${FADE_DURATION}ms linear;
   }
+  
   .in {
     opacity: 1;
   }
