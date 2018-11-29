@@ -53,6 +53,7 @@ jobs:
 workflows:
   build_and_verify:
     jobs:
+      - workflow-queue
       - update-cache:
           requires:
             - workflow-queue
