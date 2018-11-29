@@ -73,18 +73,6 @@ return {
     v0,
     {
       "kind": "Condition",
-      "passingValue": true,
-      "condition": "isClosed",
-      "selections": [
-        {
-          "kind": "FragmentSpread",
-          "name": "ArtistArtworkGrid_artwork",
-          "args": null
-        }
-      ]
-    },
-    {
-      "kind": "Condition",
       "passingValue": false,
       "condition": "isClosed",
       "selections": [
@@ -99,6 +87,18 @@ return {
               "type": null
             }
           ]
+        }
+      ]
+    },
+    {
+      "kind": "Condition",
+      "passingValue": true,
+      "condition": "isClosed",
+      "selections": [
+        {
+          "kind": "FragmentSpread",
+          "name": "ArtistArtworkGrid_artwork",
+          "args": null
         }
       ]
     }

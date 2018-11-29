@@ -74,6 +74,37 @@ v1 = [
 ],
 v2 = {
   "kind": "InlineFragment",
+  "type": "CreditCardMutationSuccess",
+  "selections": [
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "creditCard",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "CreditCard",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "id",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "__id",
+          "args": null,
+          "storageKey": null
+        }
+      ]
+    }
+  ]
+},
+v3 = {
+  "kind": "InlineFragment",
   "type": "CreditCardMutationFailure",
   "selections": [
     {
@@ -103,37 +134,6 @@ v2 = {
           "kind": "ScalarField",
           "alias": null,
           "name": "detail",
-          "args": null,
-          "storageKey": null
-        }
-      ]
-    }
-  ]
-},
-v3 = {
-  "kind": "InlineFragment",
-  "type": "CreditCardMutationSuccess",
-  "selections": [
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "creditCard",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "CreditCard",
-      "plural": false,
-      "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "id",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "__id",
           "args": null,
           "storageKey": null
         }

@@ -162,7 +162,49 @@ v2 = {
   "args": null,
   "storageKey": null
 },
-v3 = [
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v4 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "name",
+  "args": null,
+  "storageKey": null
+},
+v5 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "city",
+  "args": null,
+  "storageKey": null
+},
+v6 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "country",
+  "args": null,
+  "storageKey": null
+},
+v7 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
+},
+v8 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__typename",
+  "args": null,
+  "storageKey": null
+},
+v9 = [
   {
     "kind": "Literal",
     "name": "precision",
@@ -170,54 +212,12 @@ v3 = [
     "type": "Int"
   }
 ],
-v4 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "shippingTotal",
-  "args": v3,
-  "storageKey": "shippingTotal(precision:2)"
-},
-v5 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v6 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "name",
-  "args": null,
-  "storageKey": null
-},
-v7 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "city",
-  "args": null,
-  "storageKey": null
-},
-v8 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "country",
-  "args": null,
-  "storageKey": null
-},
-v9 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
 v10 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__typename",
-  "args": null,
-  "storageKey": null
+  "name": "shippingTotal",
+  "args": v9,
+  "storageKey": "shippingTotal(precision:2)"
 },
 v11 = {
   "kind": "ScalarField",
@@ -230,7 +230,7 @@ v12 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "taxTotal",
-  "args": v3,
+  "args": v9,
   "storageKey": "taxTotal(precision:2)"
 },
 v13 = {
@@ -294,8 +294,14 @@ return {
         "concreteType": null,
         "plural": false,
         "selections": [
-          v4,
-          v5,
+          v3,
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "mode",
+            "args": null,
+            "storageKey": null
+          },
           {
             "kind": "LinkedField",
             "alias": null,
@@ -305,7 +311,7 @@ return {
             "concreteType": "CreditCard",
             "plural": false,
             "selections": [
-              v6,
+              v4,
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -320,7 +326,7 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v7,
+              v5,
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -328,7 +334,7 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v8,
+              v6,
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -336,7 +342,7 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v9
+              v7
             ]
           },
           {
@@ -348,25 +354,12 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v10,
-              {
-                "kind": "InlineFragment",
-                "type": "Pickup",
-                "selections": [
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "fulfillmentType",
-                    "args": null,
-                    "storageKey": null
-                  }
-                ]
-              },
+              v8,
               {
                 "kind": "InlineFragment",
                 "type": "Ship",
                 "selections": [
-                  v6,
+                  v4,
                   {
                     "kind": "ScalarField",
                     "alias": null,
@@ -381,7 +374,7 @@ return {
                     "args": null,
                     "storageKey": null
                   },
-                  v7,
+                  v5,
                   {
                     "kind": "ScalarField",
                     "alias": null,
@@ -389,11 +382,24 @@ return {
                     "args": null,
                     "storageKey": null
                   },
-                  v8,
+                  v6,
                   {
                     "kind": "ScalarField",
                     "alias": null,
                     "name": "postalCode",
+                    "args": null,
+                    "storageKey": null
+                  }
+                ]
+              },
+              {
+                "kind": "InlineFragment",
+                "type": "Pickup",
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "fulfillmentType",
                     "args": null,
                     "storageKey": null
                   }
@@ -437,8 +443,8 @@ return {
                         "concreteType": "Artwork",
                         "plural": false,
                         "selections": [
-                          v5,
-                          v9,
+                          v3,
+                          v7,
                           {
                             "kind": "ScalarField",
                             "alias": null,
@@ -521,26 +527,20 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v10,
-              v9,
+              v8,
+              v7,
               {
                 "kind": "InlineFragment",
                 "type": "Partner",
                 "selections": [
-                  v6
+                  v4
                 ]
               }
             ]
           },
           v2,
+          v8,
           v10,
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "mode",
-            "args": null,
-            "storageKey": null
-          },
           v11,
           v12,
           v13,
@@ -548,21 +548,21 @@ return {
             "kind": "ScalarField",
             "alias": null,
             "name": "itemsTotal",
-            "args": v3,
+            "args": v9,
             "storageKey": "itemsTotal(precision:2)"
           },
           {
             "kind": "ScalarField",
             "alias": null,
             "name": "totalListPrice",
-            "args": v3,
+            "args": v9,
             "storageKey": "totalListPrice(precision:2)"
           },
           {
             "kind": "ScalarField",
             "alias": null,
             "name": "buyerTotal",
-            "args": v3,
+            "args": v9,
             "storageKey": "buyerTotal(precision:2)"
           },
           {
@@ -574,7 +574,7 @@ return {
             "concreteType": "Offer",
             "plural": false,
             "selections": [
-              v5,
+              v3,
               v14,
               v2
             ]
@@ -592,16 +592,16 @@ return {
                 "concreteType": "Offer",
                 "plural": false,
                 "selections": [
-                  v5,
+                  v3,
                   {
                     "kind": "ScalarField",
                     "alias": null,
                     "name": "amount",
-                    "args": v3,
+                    "args": v9,
                     "storageKey": "amount(precision:2)"
                   },
                   v14,
-                  v4,
+                  v10,
                   v11,
                   v12,
                   v13,

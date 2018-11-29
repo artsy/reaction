@@ -136,15 +136,13 @@ return {
   ],
   "selections": [
     {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "href",
-      "args": null,
-      "storageKey": null
+      "kind": "FragmentSpread",
+      "name": "ArtistBio_bio",
+      "args": null
     },
     {
       "kind": "FragmentSpread",
-      "name": "ArtistBio_bio",
+      "name": "CurrentEvent_artist",
       "args": null
     },
     {
@@ -255,9 +253,11 @@ return {
       ]
     },
     {
-      "kind": "FragmentSpread",
-      "name": "CurrentEvent_artist",
-      "args": null
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "href",
+      "args": null,
+      "storageKey": null
     },
     {
       "kind": "ScalarField",

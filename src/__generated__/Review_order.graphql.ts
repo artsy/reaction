@@ -26,6 +26,9 @@ export type Review_order = {
             }) | null;
         }) | null> | null;
     }) | null;
+    readonly myLastOffer?: ({
+        readonly id: string | null;
+    }) | null;
     readonly " $fragmentRefs": ArtworkSummaryItem_order$ref & TransactionDetailsSummaryItem_order$ref & ShippingSummaryItem_order$ref & CreditCardSummaryItem_order$ref & OfferSummaryItem_order$ref;
     readonly " $refType": Review_order$ref;
 };
@@ -159,9 +162,28 @@ return {
       "name": "OfferSummaryItem_order",
       "args": null
     },
-    v2
+    v2,
+    {
+      "kind": "InlineFragment",
+      "type": "OfferOrder",
+      "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "myLastOffer",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "Offer",
+          "plural": false,
+          "selections": [
+            v0,
+            v2
+          ]
+        }
+      ]
+    }
   ]
 };
 })();
-(node as any).hash = 'c214b5d08a48a702089c79e79fe5fdb6';
+(node as any).hash = '2e2ebc23046f1f864bbe9e35e1a97a11';
 export default node;

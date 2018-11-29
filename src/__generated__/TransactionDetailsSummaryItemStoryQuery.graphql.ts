@@ -171,14 +171,14 @@ return {
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "itemsTotal",
-            "args": v2,
-            "storageKey": "itemsTotal(precision:2)"
+            "name": "__typename",
+            "args": null,
+            "storageKey": null
           },
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "__typename",
+            "name": "mode",
             "args": null,
             "storageKey": null
           },
@@ -189,9 +189,9 @@ return {
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "mode",
-            "args": null,
-            "storageKey": null
+            "name": "itemsTotal",
+            "args": v2,
+            "storageKey": "itemsTotal(precision:2)"
           },
           {
             "kind": "ScalarField",
