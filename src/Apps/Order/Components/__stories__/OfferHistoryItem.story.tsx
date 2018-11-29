@@ -56,9 +56,7 @@ storiesOf("Apps/Order Page/Components", module).add("OfferHistoryItem", () => {
           style={{ maxWidth: "540px", width: "100%" }}
           flexDirection="column"
         >
-          {render({
-            offers: { edges: Offers },
-          })}
+          {render({ offers: { edges: Offers as any } })}
         </Flex>
       </Section>
     </>

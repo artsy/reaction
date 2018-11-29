@@ -49,6 +49,7 @@ fragment OfferHistoryItem_order on Order {
     }
   }
   lastOffer {
+    id
     from {
       __typename
       ... on Node {
@@ -151,7 +152,7 @@ return {
   "operationKind": "query",
   "name": "OfferHistoryItemStoryQuery",
   "id": null,
-  "text": "query OfferHistoryItemStoryQuery {\n  order: ecommerceOrder(id: \"foo\") {\n    __typename\n    ...OfferHistoryItem_order\n    __id: id\n  }\n}\n\nfragment OfferHistoryItem_order on Order {\n  offers {\n    edges {\n      node {\n        id\n        from {\n          __typename\n          ... on Partner {\n            id\n          }\n          ... on User {\n            id\n            __id\n          }\n          ... on Node {\n            __id\n          }\n        }\n        amount(precision: 2)\n        createdAt(format: \"MMM D\")\n        __id: id\n      }\n    }\n  }\n  lastOffer {\n    from {\n      __typename\n      ... on Node {\n        __id\n      }\n      ... on User {\n        __id\n      }\n    }\n    amount(precision: 2)\n    shippingTotal(precision: 2)\n    taxTotal(precision: 2)\n    __id: id\n  }\n  totalListPrice(precision: 2)\n  buyer {\n    __typename\n    ... on User {\n      id\n      __id\n    }\n    ... on Partner {\n      id\n    }\n    ... on Node {\n      __id\n    }\n  }\n  __id: id\n}\n",
+  "text": "query OfferHistoryItemStoryQuery {\n  order: ecommerceOrder(id: \"foo\") {\n    __typename\n    ...OfferHistoryItem_order\n    __id: id\n  }\n}\n\nfragment OfferHistoryItem_order on Order {\n  offers {\n    edges {\n      node {\n        id\n        from {\n          __typename\n          ... on Partner {\n            id\n          }\n          ... on User {\n            id\n            __id\n          }\n          ... on Node {\n            __id\n          }\n        }\n        amount(precision: 2)\n        createdAt(format: \"MMM D\")\n        __id: id\n      }\n    }\n  }\n  lastOffer {\n    id\n    from {\n      __typename\n      ... on Node {\n        __id\n      }\n      ... on User {\n        __id\n      }\n    }\n    amount(precision: 2)\n    shippingTotal(precision: 2)\n    taxTotal(precision: 2)\n    __id: id\n  }\n  totalListPrice(precision: 2)\n  buyer {\n    __typename\n    ... on User {\n      id\n      __id\n    }\n    ... on Partner {\n      id\n    }\n    ... on Node {\n      __id\n    }\n  }\n  __id: id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -268,6 +269,7 @@ return {
             "concreteType": "Offer",
             "plural": false,
             "selections": [
+              v3,
               {
                 "kind": "LinkedField",
                 "alias": null,

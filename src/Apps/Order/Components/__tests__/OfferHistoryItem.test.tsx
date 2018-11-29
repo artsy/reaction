@@ -56,13 +56,13 @@ describe("OfferHistoryItem", () => {
   })
 
   it("does show the 'show offer history' button if there are other offers", async () => {
-    const offerHistory = await render({ offers: { edges: Offers } })
+    const offerHistory = await render({ offers: { edges: Offers as any } })
 
     expect(offerHistory.find(Button)).toHaveLength(1)
   })
 
   it("shows the other offers if you click the button", async () => {
-    const offerHistory = await render({ offers: { edges: Offers } })
+    const offerHistory = await render({ offers: { edges: Offers as any } })
 
     const button = offerHistory.find(Button)
     expect(button).toHaveLength(1)

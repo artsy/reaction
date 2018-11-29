@@ -22,6 +22,7 @@ export type OfferHistoryItem_order = {
         }) | null> | null;
     }) | null;
     readonly lastOffer: ({
+        readonly id: string | null;
         readonly from: ({
             readonly __typename: string;
         }) | null;
@@ -176,6 +177,7 @@ return {
       "concreteType": "Offer",
       "plural": false,
       "selections": [
+        v0,
         {
           "kind": "LinkedField",
           "alias": null,
@@ -232,5 +234,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '2bc6fdb12cff1ca56a2a5f537204cac6';
+(node as any).hash = '0ec2ab467712414dcc6655279a926db4';
 export default node;
