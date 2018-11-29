@@ -175,7 +175,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
     }
   }
 
-  private onSubmitCompleted = orderOrError => {
+  onSubmitCompleted = orderOrError => {
     const error = orderOrError.error
     if (error) {
       switch (error.code) {
@@ -217,14 +217,14 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
     }
   }
 
-  private artistId() {
+  artistId() {
     return get(
       this.props.order,
       o => o.lineItems.edges[0].node.artwork.artists[0].id
     )
   }
 
-  private routeToArtworkPage() {
+  routeToArtworkPage() {
     const artworkId = get(
       this.props.order,
       o => o.lineItems.edges[0].node.artwork.id
@@ -234,7 +234,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
     window.location.assign(`/artwork/${artworkId}`)
   }
 
-  private routeToArtistPage() {
+  routeToArtistPage() {
     const artistId = this.artistId()
 
     // Don't confirm whether or not you want to leave the page
@@ -242,7 +242,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
     window.location.assign(`/artist/${artistId}`)
   }
 
-  private onMutationError(
+  onMutationError(
     error,
     errorModalTitle?,
     errorModalMessage?,
