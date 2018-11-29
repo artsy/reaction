@@ -41,7 +41,7 @@ export class CollectionApp extends Component<CollectionAppProps> {
 
     return (
       <FrameWithRecentlyViewed>
-        <Title>{title} | Collect on Artsy</Title>
+        <Title>{`${title} | Collect on Artsy`}</Title>
         <Meta name="description" content={metadataDescription} />
         <Meta property="og:url" content={collectionHref} />
         <Meta property="og:image" content={headerImage} />
