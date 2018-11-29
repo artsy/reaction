@@ -152,7 +152,7 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
-    "@artsy/palette": "^2.21.3",
+    "@artsy/palette": "^2.22.0",
     "@artsy/react-responsive-media": "^2.0.0-beta.4",
     "@sentry/browser": "^4.2.3",
     "cheerio": "^1.0.0-rc.2",
