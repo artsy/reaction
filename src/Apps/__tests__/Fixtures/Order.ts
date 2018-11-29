@@ -130,7 +130,7 @@ export const UntouchedOfferOrder = {
   totalListPrice: "$16,000",
   myLastOffer: OfferWithTotals,
   offers: {
-    edges: [OfferWithTotals],
+    edges: [{ node: OfferWithTotals }],
   },
 }
 
