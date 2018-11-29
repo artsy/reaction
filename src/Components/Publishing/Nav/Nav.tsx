@@ -1,6 +1,6 @@
 import { Serif } from "@artsy/palette"
 import { PartnerInline } from "Components/Publishing/Partner/PartnerInline"
-import React from "react"
+import React, { ReactNode } from "react"
 import Waypoint from "react-waypoint"
 import styled from "styled-components"
 import { Media } from "Utils/Responsive"
@@ -8,6 +8,7 @@ import { Media } from "Utils/Responsive"
 interface Props extends React.HTMLProps<HTMLDivElement> {
   backgroundColor?: string
   canFix?: boolean
+  children?: ReactNode
   color?: string
   sponsor?: any
   title?: string
@@ -42,6 +43,7 @@ export class NavComponent extends React.Component<Props, State> {
   render() {
     const {
       backgroundColor,
+      children,
       color,
       sponsor,
       className,
@@ -66,11 +68,13 @@ export class NavComponent extends React.Component<Props, State> {
             color={color}
             margin="0 10px"
           />
+
           <Media greaterThan="xs">
             <Title size="5" color={color} weight="semibold" textAlign="center">
               {title ? title : <a href="/magazine">Artsy Editorial</a>}
             </Title>
           </Media>
+          {children}
         </NavContainer>
 
         <Waypoint
@@ -82,7 +86,7 @@ export class NavComponent extends React.Component<Props, State> {
   }
 }
 
-const NavContainer = styled.div<{
+export const NavContainer = styled.div<{
   backgroundColor: string
   transparent: boolean
   isFixed: boolean
