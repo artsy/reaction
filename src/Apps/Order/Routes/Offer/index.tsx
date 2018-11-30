@@ -56,8 +56,8 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
         const { offerValue } = this.state
         commitMutation<OfferMutation>(this.props.relay.environment, {
           mutation: graphql`
-            mutation OfferMutation($input: InitialOfferInput!) {
-              ecommerceInitialOffer(input: $input) {
+            mutation OfferMutation($input: AddInitialOfferToOrderInput!) {
+              ecommerceAddInitialOfferToOrder(input: $input) {
                 orderOrError {
                   ... on OrderWithMutationSuccess {
                     __typename
@@ -95,7 +95,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
           onCompleted: data => {
             this.setState({ isCommittingMutation: false })
             const {
-              ecommerceInitialOffer: { orderOrError },
+              ecommerceAddInitialOfferToOrder: { orderOrError },
             } = data
 
             if (orderOrError.error) {

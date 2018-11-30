@@ -1,32 +1,18 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
-export type AddInitialOfferToOrderInput = {
-    readonly orderId: string;
-    readonly offerPrice?: MoneyInput | null;
+export type SubmitOrderWithOfferInput = {
+    readonly offerId: string;
     readonly clientMutationId?: string | null;
 };
-export type MoneyInput = {
-    readonly amount: number;
-    readonly currencyCode: string;
+export type ReviewSubmitOfferOrderMutationVariables = {
+    readonly input: SubmitOrderWithOfferInput;
 };
-export type OfferMutationVariables = {
-    readonly input: AddInitialOfferToOrderInput;
-};
-export type OfferMutationResponse = {
-    readonly ecommerceAddInitialOfferToOrder: ({
+export type ReviewSubmitOfferOrderMutationResponse = {
+    readonly ecommerceSubmitOrderWithOffer: ({
         readonly orderOrError: ({
-            readonly __typename: "OrderWithMutationSuccess";
             readonly order?: ({
-                readonly id: string | null;
-                readonly mode: OrderModeEnum | null;
-                readonly itemsTotal: string | null;
-                readonly totalListPrice: string | null;
-                readonly lastOffer: ({
-                    readonly id: string | null;
-                    readonly amountCents: number | null;
-                }) | null;
+                readonly state: string | null;
             }) | null;
             readonly error?: ({
                 readonly type: string;
@@ -36,33 +22,24 @@ export type OfferMutationResponse = {
         }) | null;
     }) | null;
 };
-export type OfferMutation = {
-    readonly response: OfferMutationResponse;
-    readonly variables: OfferMutationVariables;
+export type ReviewSubmitOfferOrderMutation = {
+    readonly response: ReviewSubmitOfferOrderMutationResponse;
+    readonly variables: ReviewSubmitOfferOrderMutationVariables;
 };
 
 
 
 /*
-mutation OfferMutation(
-  $input: AddInitialOfferToOrderInput!
+mutation ReviewSubmitOfferOrderMutation(
+  $input: SubmitOrderWithOfferInput!
 ) {
-  ecommerceAddInitialOfferToOrder(input: $input) {
+  ecommerceSubmitOrderWithOffer(input: $input) {
     orderOrError {
       __typename
       ... on OrderWithMutationSuccess {
-        __typename
         order {
           __typename
-          id
-          mode
-          itemsTotal
-          totalListPrice
-          lastOffer {
-            id
-            amountCents
-            __id: id
-          }
+          state
           __id: id
         }
       }
@@ -83,7 +60,7 @@ var v0 = [
   {
     "kind": "LocalArgument",
     "name": "input",
-    "type": "AddInitialOfferToOrderInput!",
+    "type": "SubmitOrderWithOfferInput!",
     "defaultValue": null
   }
 ],
@@ -92,7 +69,7 @@ v1 = [
     "kind": "Variable",
     "name": "input",
     "variableName": "input",
-    "type": "AddInitialOfferToOrderInput!"
+    "type": "SubmitOrderWithOfferInput!"
   }
 ],
 v2 = {
@@ -136,13 +113,13 @@ v2 = {
 v3 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__typename",
+  "name": "state",
   "args": null,
   "storageKey": null
 },
 v4 = {
   "kind": "ScalarField",
-  "alias": null,
+  "alias": "__id",
   "name": "id",
   "args": null,
   "storageKey": null
@@ -150,61 +127,20 @@ v4 = {
 v5 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "mode",
+  "name": "__typename",
   "args": null,
   "storageKey": null
-},
-v6 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "itemsTotal",
-  "args": null,
-  "storageKey": null
-},
-v7 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "totalListPrice",
-  "args": null,
-  "storageKey": null
-},
-v8 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v9 = {
-  "kind": "LinkedField",
-  "alias": null,
-  "name": "lastOffer",
-  "storageKey": null,
-  "args": null,
-  "concreteType": "Offer",
-  "plural": false,
-  "selections": [
-    v4,
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "amountCents",
-      "args": null,
-      "storageKey": null
-    },
-    v8
-  ]
 };
 return {
   "kind": "Request",
   "operationKind": "mutation",
-  "name": "OfferMutation",
+  "name": "ReviewSubmitOfferOrderMutation",
   "id": null,
-  "text": "mutation OfferMutation(\n  $input: AddInitialOfferToOrderInput!\n) {\n  ecommerceAddInitialOfferToOrder(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          id\n          mode\n          itemsTotal\n          totalListPrice\n          lastOffer {\n            id\n            amountCents\n            __id: id\n          }\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation ReviewSubmitOfferOrderMutation(\n  $input: SubmitOrderWithOfferInput!\n) {\n  ecommerceSubmitOrderWithOffer(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        order {\n          __typename\n          state\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "OfferMutation",
+    "name": "ReviewSubmitOfferOrderMutation",
     "type": "Mutation",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -212,10 +148,10 @@ return {
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "ecommerceAddInitialOfferToOrder",
+        "name": "ecommerceSubmitOrderWithOffer",
         "storageKey": null,
         "args": v1,
-        "concreteType": "AddInitialOfferToOrderPayload",
+        "concreteType": "SubmitOrderWithOfferPayload",
         "plural": false,
         "selections": [
           {
@@ -232,7 +168,6 @@ return {
                 "kind": "InlineFragment",
                 "type": "OrderWithMutationSuccess",
                 "selections": [
-                  v3,
                   {
                     "kind": "LinkedField",
                     "alias": null,
@@ -242,12 +177,8 @@ return {
                     "concreteType": null,
                     "plural": false,
                     "selections": [
-                      v4,
-                      v5,
-                      v6,
-                      v7,
-                      v9,
-                      v8
+                      v3,
+                      v4
                     ]
                   }
                 ]
@@ -260,16 +191,16 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "OfferMutation",
+    "name": "ReviewSubmitOfferOrderMutation",
     "argumentDefinitions": v0,
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "ecommerceAddInitialOfferToOrder",
+        "name": "ecommerceSubmitOrderWithOffer",
         "storageKey": null,
         "args": v1,
-        "concreteType": "AddInitialOfferToOrderPayload",
+        "concreteType": "SubmitOrderWithOfferPayload",
         "plural": false,
         "selections": [
           {
@@ -281,13 +212,12 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v3,
+              v5,
               v2,
               {
                 "kind": "InlineFragment",
                 "type": "OrderWithMutationSuccess",
                 "selections": [
-                  v3,
                   {
                     "kind": "LinkedField",
                     "alias": null,
@@ -297,13 +227,9 @@ return {
                     "concreteType": null,
                     "plural": false,
                     "selections": [
-                      v3,
-                      v4,
                       v5,
-                      v6,
-                      v7,
-                      v9,
-                      v8
+                      v3,
+                      v4
                     ]
                   }
                 ]
@@ -316,5 +242,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'b40b228542707e958e2c6cdbd2ffb6cf';
+(node as any).hash = '58df6696dd7d98059101a7fed178c970';
 export default node;
