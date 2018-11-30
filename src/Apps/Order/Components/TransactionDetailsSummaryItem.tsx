@@ -70,7 +70,8 @@ export class TransactionDetailsSummaryItem extends React.Component<
     }
   }
 
-  buyerTotalDisplayAmount = order => {
+  buyerTotalDisplayAmount = () => {
+    const { order } = this.props
     switch (order.mode) {
       case "BUY":
         return order.buyerTotal
