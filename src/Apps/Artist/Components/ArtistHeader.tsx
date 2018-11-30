@@ -14,10 +14,7 @@ import { Media } from "Utils/Responsive"
  * This H1 and H2 were added for SEO purposes
  * TODO: Remove when palette provides the ability to override typography element
  */
-interface HeadingProps {
-  as?: string
-}
-const H1 = styled.h1<HeadingProps>`
+const H1 = styled.h1`
   all: initial;
   all: unset;
   margin: 0;
