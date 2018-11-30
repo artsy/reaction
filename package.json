@@ -65,7 +65,6 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.0.0",
-    "@playlyfe/gql": "^2.3.2",
     "@storybook/addon-info": "^4.0.0-alpha.24",
     "@storybook/addon-options": "^4.0.0-alpha.24",
     "@storybook/addons": "^4.0.0-alpha.24",
