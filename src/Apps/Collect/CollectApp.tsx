@@ -7,6 +7,8 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import { getMetadataForMedium } from "./CollectMediumMetadata"
 import { CollectFilterFragmentContainer as ArtworkGrid } from "./Components/Base/CollectFilterContainer"
+import { BreadCrumbList } from "./Components/Seo"
+import { SeoProductsForArtworks } from "./Components/Seo/SeoProductsForArtworks"
 
 export interface CollectAppProps {
   viewer?: CollectApp_viewer
@@ -17,9 +19,12 @@ export interface CollectAppProps {
 
 export class CollectApp extends Component<CollectAppProps> {
   render() {
-    const { params } = this.props
+    const {
+      params,
+      viewer: { filter_artworks },
+    } = this.props
     const medium = params && params.medium
-    const { description, title } = getMetadataForMedium(medium)
+    const { description, breadcrumbTitle, title } = getMetadataForMedium(medium)
     const canonicalHref = medium
       ? `${sd.APP_URL}/collect/${medium}`
       : `${sd.APP_URL}/collect`
@@ -36,6 +41,16 @@ export class CollectApp extends Component<CollectAppProps> {
         <Meta property="og:description" content={description} />
         <Meta property="twitter:description" content={description} />
         <Link rel="canonical" href={canonicalHref} />
+        <BreadCrumbList
+          items={[
+            { path: "/collect", name: "Collect" },
+            medium && {
+              path: `/collect/${medium}`,
+              name: breadcrumbTitle,
+            },
+          ].filter(Boolean)}
+        />
+        <SeoProductsForArtworks artworks={filter_artworks} />
 
         <Flex
           mt={3}
@@ -80,6 +95,10 @@ export const CollectAppFragmentContainer = createFragmentContainer(
         artist_id: { type: "String" }
         attribution_class: { type: "String" }
       ) {
+      filter_artworks(aggregations: $aggregations, size: 0) {
+        ...SeoProductsForArtworks_artworks
+      }
+
       ...CollectFilterContainer_viewer
         @arguments(
           medium: $medium
