@@ -5,7 +5,10 @@
  */
 
 import OctoKit from "@octokit/rest"
+import { readFile } from "fs"
+import { join } from "path"
 import semver from "semver"
+import { promisify } from "util"
 
 import {
   readChangelog,
@@ -23,13 +26,15 @@ import {
 
 import { PullRequest } from "./github"
 
-// const requiredEnvs = ["GITHUB_API_TOKEN", "GITHUB_EMAIL", "GITHUB_USER"]
+const read = promisify(readFile)
 
-// requiredEnvs.forEach(env => {
-//   if (!process.env[env]) {
-//     throw new Error(`Needs ${env} to be set`)
-//   }
-// })
+const requiredEnvs = ["GITHUB_API_TOKEN"]
+
+requiredEnvs.forEach(env => {
+  if (!process.env[env]) {
+    throw new Error(`Needs ${env} to be set`)
+  }
+})
 
 export const run = async () => {
   const octokit = new OctoKit()
@@ -58,8 +63,6 @@ export const run = async () => {
   }
 
   const repoString = "artsy/reaction"
-  // const owner = "artsy"
-  // const repo = "reaction"
 
   /**
    * Finds all pull requests between master and the last release
@@ -98,10 +101,11 @@ export const run = async () => {
     .then(changelog => console.log(changelog))
   // .then(changelog => writeChangelog(changelog))
 
-  // const pkgPath = path.join(__dirname, "../package.json")
-  // const pkg = JSON.parse(await read(pkgPath, "UTF-8"))
-  // pkg.version = currentVersion
-  // write(pkgPath, format(JSON.stringify(pkg)))
+  const pkgPath = join(__dirname, "../package.json")
+  const pkg = JSON.parse(await read(pkgPath, "UTF-8"))
+  pkg.version = currentVersion
+  console.log("updating package.json", pkgPath, JSON.stringify(pkg, null, 2))
+  // write(pkgPath, JSON.stringify(pkg, null, 2))
 }
 
 run()
