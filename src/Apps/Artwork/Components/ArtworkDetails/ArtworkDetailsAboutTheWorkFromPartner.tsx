@@ -75,7 +75,10 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
               <Box>
                 <EntityHeader
                   name={partner.name}
-                  href={`${sd.APP_URL}${partner.href}`}
+                  href={
+                    partner.is_default_profile_public &&
+                    `${sd.APP_URL}${partner.href}`
+                  }
                   meta={locationNames}
                   imageUrl={imageUrl}
                   initials={partner.initials}
@@ -162,6 +165,7 @@ export const ArtworkDetailsAboutTheWorkFromPartnerFragmentContainer = createFrag
         locations {
           city
         }
+        is_default_profile_public
         profile {
           ...FollowProfileButton_profile
           id
