@@ -40,14 +40,7 @@ export type Details_artwork = {
 
 
 const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "href",
-  "args": null,
-  "storageKey": null
-},
-v1 = [
+var v0 = [
   {
     "kind": "Literal",
     "name": "shallow",
@@ -55,10 +48,17 @@ v1 = [
     "type": "Boolean"
   }
 ],
-v2 = {
+v1 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__id",
+  "args": null,
+  "storageKey": null
+},
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "href",
   "args": null,
   "storageKey": null
 },
@@ -83,14 +83,21 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    v0,
     {
-      "kind": "ScalarField",
+      "kind": "LinkedField",
       "alias": null,
-      "name": "title",
-      "args": null,
-      "storageKey": null
+      "name": "artists",
+      "storageKey": "artists(shallow:true)",
+      "args": v0,
+      "concreteType": "Artist",
+      "plural": true,
+      "selections": [
+        v1,
+        v2,
+        v3
+      ]
     },
+    v2,
     {
       "kind": "ScalarField",
       "alias": null,
@@ -113,18 +120,11 @@ return {
       "storageKey": null
     },
     {
-      "kind": "LinkedField",
+      "kind": "ScalarField",
       "alias": null,
-      "name": "artists",
-      "storageKey": "artists(shallow:true)",
-      "args": v1,
-      "concreteType": "Artist",
-      "plural": true,
-      "selections": [
-        v2,
-        v0,
-        v3
-      ]
+      "name": "title",
+      "args": null,
+      "storageKey": null
     },
     {
       "kind": "ScalarField",
@@ -138,13 +138,13 @@ return {
       "alias": null,
       "name": "partner",
       "storageKey": "partner(shallow:true)",
-      "args": v1,
+      "args": v0,
       "concreteType": "Partner",
       "plural": false,
       "selections": [
         v3,
-        v0,
-        v2
+        v2,
+        v1
       ]
     },
     {
@@ -191,7 +191,7 @@ return {
           "args": null,
           "storageKey": null
         },
-        v2
+        v1
       ]
     },
     {
@@ -234,10 +234,10 @@ return {
             v4
           ]
         },
-        v2
+        v1
       ]
     },
-    v2
+    v1
   ]
 };
 })();

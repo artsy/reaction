@@ -169,6 +169,19 @@ return {
         },
         {
           "kind": "InlineFragment",
+          "type": "Pickup",
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "fulfillmentType",
+              "args": null,
+              "storageKey": null
+            }
+          ]
+        },
+        {
+          "kind": "InlineFragment",
           "type": "Ship",
           "selections": [
             v1,
@@ -199,19 +212,6 @@ return {
               "kind": "ScalarField",
               "alias": null,
               "name": "postalCode",
-              "args": null,
-              "storageKey": null
-            }
-          ]
-        },
-        {
-          "kind": "InlineFragment",
-          "type": "Pickup",
-          "selections": [
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "fulfillmentType",
               "args": null,
               "storageKey": null
             }

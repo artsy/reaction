@@ -93,6 +93,44 @@ v1 = [
   }
 ],
 v2 = {
+  "kind": "InlineFragment",
+  "type": "OrderWithMutationFailure",
+  "selections": [
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "error",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "EcommerceError",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "type",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "code",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "data",
+          "args": null,
+          "storageKey": null
+        }
+      ]
+    }
+  ]
+},
+v3 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "creditCard",
@@ -166,50 +204,12 @@ v2 = {
     }
   ]
 },
-v3 = {
+v4 = {
   "kind": "ScalarField",
   "alias": "__id",
   "name": "id",
   "args": null,
   "storageKey": null
-},
-v4 = {
-  "kind": "InlineFragment",
-  "type": "OrderWithMutationFailure",
-  "selections": [
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "error",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "EcommerceError",
-      "plural": false,
-      "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "type",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "code",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "data",
-          "args": null,
-          "storageKey": null
-        }
-      ]
-    }
-  ]
 },
 v5 = {
   "kind": "ScalarField",
@@ -250,6 +250,7 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
+              v2,
               {
                 "kind": "InlineFragment",
                 "type": "OrderWithMutationSuccess",
@@ -263,13 +264,12 @@ return {
                     "concreteType": null,
                     "plural": false,
                     "selections": [
-                      v2,
-                      v3
+                      v3,
+                      v4
                     ]
                   }
                 ]
-              },
-              v4
+              }
             ]
           }
         ]
@@ -300,6 +300,7 @@ return {
             "plural": false,
             "selections": [
               v5,
+              v2,
               {
                 "kind": "InlineFragment",
                 "type": "OrderWithMutationSuccess",
@@ -314,13 +315,12 @@ return {
                     "plural": false,
                     "selections": [
                       v5,
-                      v2,
-                      v3
+                      v3,
+                      v4
                     ]
                   }
                 ]
-              },
-              v4
+              }
             ]
           }
         ]

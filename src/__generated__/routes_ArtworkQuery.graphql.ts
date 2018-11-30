@@ -711,20 +711,14 @@ return {
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
-          v3,
           {
-            "kind": "LinkedField",
+            "kind": "ScalarField",
             "alias": null,
-            "name": "artist",
-            "storageKey": null,
+            "name": "sale_message",
             "args": null,
-            "concreteType": "Artist",
-            "plural": false,
-            "selections": [
-              v3,
-              v2
-            ]
+            "storageKey": null
           },
+          v3,
           {
             "kind": "LinkedField",
             "alias": null,
@@ -1223,6 +1217,13 @@ return {
           v15,
           v16,
           {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "image_title",
+            "args": null,
+            "storageKey": null
+          },
+          {
             "kind": "LinkedField",
             "alias": null,
             "name": "attribution_class",
@@ -1349,11 +1350,17 @@ return {
             ]
           },
           {
-            "kind": "ScalarField",
+            "kind": "LinkedField",
             "alias": null,
-            "name": "sale_message",
+            "name": "artist",
+            "storageKey": null,
             "args": null,
-            "storageKey": null
+            "concreteType": "Artist",
+            "plural": false,
+            "selections": [
+              v3,
+              v2
+            ]
           },
           {
             "kind": "ScalarField",
@@ -1566,13 +1573,6 @@ return {
             "kind": "ScalarField",
             "alias": "image_alt",
             "name": "to_s",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "image_title",
             "args": null,
             "storageKey": null
           },

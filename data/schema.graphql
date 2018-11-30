@@ -412,6 +412,14 @@ type ArtistEdge {
   cursor: String!
 }
 
+type ArtistGroup {
+  # Letter artists group belongs to
+  letter: String
+
+  # Artists sorted by last name
+  items: [Artist]
+}
+
 type ArtistHighlights {
   partners(
     represented_by: Boolean
@@ -1117,18 +1125,31 @@ type ArtworkContextPartnerShow implements Node {
   _id: String!
   cached: Int
   artists: [Artist]
-  artworks(
-    all: Boolean
 
+  # The artworks featured in the show
+  artworks(
     # List of artwork IDs to exclude from the response (irrespective of size)
     exclude: [String]
     for_sale: Boolean
     published: Boolean = true
+    all: Boolean
     page: Int = 1
 
     # Number of artworks to return
     size: Int = 25
   ): [Artwork]
+
+  # A connection of artworks featured in the show
+  artworksConnection(
+    # List of artwork IDs to exclude from the response (irrespective of size)
+    exclude: [String]
+    for_sale: Boolean
+    published: Boolean = true
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): ArtworkConnection
   counts: PartnerShowCounts
   cover_image: Image
   created_at(
@@ -3361,6 +3382,11 @@ enum Format {
   markdown @deprecated(reason: "deprecated")
 }
 
+type FormattedDaySchedules {
+  days: String
+  hours: String
+}
+
 # The `FormattedNumber` type represents a number that can optionally be returnedas
 # a formatted String. It does not try to coerce the type.
 scalar FormattedNumber
@@ -3788,18 +3814,31 @@ type HighlightedShow implements Node {
   _id: String!
   cached: Int
   artists: [Artist]
-  artworks(
-    all: Boolean
 
+  # The artworks featured in the show
+  artworks(
     # List of artwork IDs to exclude from the response (irrespective of size)
     exclude: [String]
     for_sale: Boolean
     published: Boolean = true
+    all: Boolean
     page: Int = 1
 
     # Number of artworks to return
     size: Int = 25
   ): [Artwork]
+
+  # A connection of artworks featured in the show
+  artworksConnection(
+    # List of artwork IDs to exclude from the response (irrespective of size)
+    exclude: [String]
+    for_sale: Boolean
+    published: Boolean = true
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): ArtworkConnection
   counts: PartnerShowCounts
   cover_image: Image
   created_at(
@@ -4473,6 +4512,7 @@ type Location {
   country: String
   coordinates: LatLng
   day_schedules: [DaySchedule]
+  displayDaySchedules: [FormattedDaySchedules]
   display: String
   phone: String
   postal_code: String
@@ -5112,6 +5152,9 @@ type Offer {
   # The type of the party who made the offer
   from: OrderParty
 
+  # the order participant who created the offer
+  fromParticipant: OrderParticipantEnum
+
   # Offer amount in cents
   amountCents: Int
 
@@ -5156,6 +5199,20 @@ type Offer {
 
   # The order on which the offer was made
   order: Order
+
+  # Offer amount in cents
+  buyerTotalCents: Int
+
+  # A formatted price with various currency formatting options.
+  buyerTotal(
+    decimal: String = "."
+
+    # Allows control of symbol position (%v = value, %s = symbol)
+    format: String = "%s%v"
+    precision: Int = 0
+    symbol: String
+    thousand: String = ","
+  ): String
 
   # The order on which the offer was made
   respondsTo: Offer
@@ -5889,11 +5946,22 @@ type Partner implements Node {
   _id: String!
   cached: Int
   artworks(
-    size: Int
     for_sale: Boolean
     sort: ArtworkSorts
     exclude: [String]
+    size: Int
   ): [Artwork]
+
+  # A connection of artworks from a Partner.
+  artworksConnection(
+    for_sale: Boolean
+    sort: ArtworkSorts
+    exclude: [String]
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): ArtworkConnection
   categories: [Category]
   collecting_institution: String
   contact_message: String
@@ -6129,18 +6197,31 @@ type PartnerShow implements Node {
   _id: String!
   cached: Int
   artists: [Artist]
-  artworks(
-    all: Boolean
 
+  # The artworks featured in the show
+  artworks(
     # List of artwork IDs to exclude from the response (irrespective of size)
     exclude: [String]
     for_sale: Boolean
     published: Boolean = true
+    all: Boolean
     page: Int = 1
 
     # Number of artworks to return
     size: Int = 25
   ): [Artwork]
+
+  # A connection of artworks featured in the show
+  artworksConnection(
+    # List of artwork IDs to exclude from the response (irrespective of size)
+    exclude: [String]
+    for_sale: Boolean
+    published: Boolean = true
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): ArtworkConnection
   counts: PartnerShowCounts
   cover_image: Image
   created_at(
@@ -7491,28 +7572,23 @@ type Show implements Node {
 
   # The artworks featured in this show
   artworks(
-    # Number of artworks to return
-    size: Int = 25
-    published: Boolean = true
-    page: Int = 1
-    all: Boolean
-    for_sale: Boolean
-
     # List of artwork IDs to exclude from the response (irrespective of size)
     exclude: [String]
+    for_sale: Boolean
+    published: Boolean = true
+    all: Boolean
+    page: Int = 1
+
+    # Number of artworks to return
+    size: Int = 25
   ): [Artwork] @deprecated(reason: "Use artworks_connection instead")
 
   # The artworks featured in the show
   artworks_connection(
-    # Number of artworks to return
-    size: Int = 25
-    published: Boolean = true
-    page: Int = 1
-    all: Boolean
-    for_sale: Boolean
-
     # List of artwork IDs to exclude from the response (irrespective of size)
     exclude: [String]
+    for_sale: Boolean
+    published: Boolean = true
     after: String
     first: Int
     before: String
@@ -7521,6 +7597,9 @@ type Show implements Node {
 
   # Artists inside the show who do not have artworks present
   artists_without_artworks: [Artist]
+
+  # Artists in the show grouped by last name
+  artists_grouped_by_name: [ArtistGroup]
 
   # The general city, derived from a fair location, a show location or a potential city
   city: String

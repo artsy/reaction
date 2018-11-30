@@ -65,16 +65,16 @@ var v0 = {
   "args": null,
   "storageKey": null
 },
-v1 = {
+v1 = [
+  v0
+],
+v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
   "args": null,
   "storageKey": null
 },
-v2 = [
-  v0
-],
 v3 = {
   "kind": "ScalarField",
   "alias": "__id",
@@ -97,8 +97,12 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
+    {
+      "kind": "FragmentSpread",
+      "name": "ArtworkSummaryItem_order",
+      "args": null
+    },
     v0,
-    v1,
     {
       "kind": "ScalarField",
       "alias": null,
@@ -131,21 +135,17 @@ return {
       "selections": [
         {
           "kind": "InlineFragment",
-          "type": "Ship",
-          "selections": v2
+          "type": "Pickup",
+          "selections": v1
         },
         {
           "kind": "InlineFragment",
-          "type": "Pickup",
-          "selections": v2
+          "type": "Ship",
+          "selections": v1
         }
       ]
     },
-    {
-      "kind": "FragmentSpread",
-      "name": "ArtworkSummaryItem_order",
-      "args": null
-    },
+    v2,
     {
       "kind": "FragmentSpread",
       "name": "TransactionDetailsSummaryItem_order",
@@ -259,7 +259,7 @@ return {
                   "concreteType": "Artwork",
                   "plural": false,
                   "selections": [
-                    v1,
+                    v2,
                     {
                       "kind": "ScalarField",
                       "alias": null,
@@ -302,7 +302,7 @@ return {
           "concreteType": "Offer",
           "plural": false,
           "selections": [
-            v1,
+            v2,
             {
               "kind": "ScalarField",
               "alias": null,

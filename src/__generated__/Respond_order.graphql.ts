@@ -3,6 +3,7 @@
 import { ConcreteFragment } from "relay-runtime";
 import { ArtworkSummaryItem_order$ref } from "./ArtworkSummaryItem_order.graphql";
 import { CreditCardSummaryItem_order$ref } from "./CreditCardSummaryItem_order.graphql";
+import { OfferHistoryItem_order$ref } from "./OfferHistoryItem_order.graphql";
 import { ShippingSummaryItem_order$ref } from "./ShippingSummaryItem_order.graphql";
 import { TransactionDetailsSummaryItem_order$ref } from "./TransactionDetailsSummaryItem_order.graphql";
 export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
@@ -23,7 +24,7 @@ export type Respond_order = {
             }) | null;
         }) | null> | null;
     }) | null;
-    readonly " $fragmentRefs": TransactionDetailsSummaryItem_order$ref & ArtworkSummaryItem_order$ref & ShippingSummaryItem_order$ref & CreditCardSummaryItem_order$ref;
+    readonly " $fragmentRefs": TransactionDetailsSummaryItem_order$ref & ArtworkSummaryItem_order$ref & ShippingSummaryItem_order$ref & CreditCardSummaryItem_order$ref & OfferHistoryItem_order$ref;
     readonly " $refType": Respond_order$ref;
 };
 
@@ -59,14 +60,12 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    v0,
     {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "mode",
-      "args": null,
-      "storageKey": null
+      "kind": "FragmentSpread",
+      "name": "TransactionDetailsSummaryItem_order",
+      "args": null
     },
+    v0,
     {
       "kind": "ScalarField",
       "alias": null,
@@ -142,9 +141,11 @@ return {
       ]
     },
     {
-      "kind": "FragmentSpread",
-      "name": "TransactionDetailsSummaryItem_order",
-      "args": null
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "mode",
+      "args": null,
+      "storageKey": null
     },
     {
       "kind": "FragmentSpread",
@@ -161,9 +162,14 @@ return {
       "name": "CreditCardSummaryItem_order",
       "args": null
     },
+    {
+      "kind": "FragmentSpread",
+      "name": "OfferHistoryItem_order",
+      "args": null
+    },
     v2
   ]
 };
 })();
-(node as any).hash = '4c1b2315bea394936d61a64d662973ea';
+(node as any).hash = '5e84111095cb1a4523b2760deda7062b';
 export default node;

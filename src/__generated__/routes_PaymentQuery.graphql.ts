@@ -162,49 +162,7 @@ v2 = {
   "args": null,
   "storageKey": null
 },
-v3 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v4 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "name",
-  "args": null,
-  "storageKey": null
-},
-v5 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "city",
-  "args": null,
-  "storageKey": null
-},
-v6 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "country",
-  "args": null,
-  "storageKey": null
-},
-v7 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v8 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__typename",
-  "args": null,
-  "storageKey": null
-},
-v9 = [
+v3 = [
   {
     "kind": "Literal",
     "name": "precision",
@@ -212,12 +170,54 @@ v9 = [
     "type": "Int"
   }
 ],
-v10 = {
+v4 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "shippingTotal",
-  "args": v9,
+  "args": v3,
   "storageKey": "shippingTotal(precision:2)"
+},
+v5 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v6 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "name",
+  "args": null,
+  "storageKey": null
+},
+v7 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "city",
+  "args": null,
+  "storageKey": null
+},
+v8 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "country",
+  "args": null,
+  "storageKey": null
+},
+v9 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
+},
+v10 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__typename",
+  "args": null,
+  "storageKey": null
 },
 v11 = {
   "kind": "ScalarField",
@@ -230,7 +230,7 @@ v12 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "taxTotal",
-  "args": v9,
+  "args": v3,
   "storageKey": "taxTotal(precision:2)"
 },
 v13 = {
@@ -294,14 +294,8 @@ return {
         "concreteType": null,
         "plural": false,
         "selections": [
-          v3,
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "mode",
-            "args": null,
-            "storageKey": null
-          },
+          v4,
+          v5,
           {
             "kind": "LinkedField",
             "alias": null,
@@ -311,7 +305,7 @@ return {
             "concreteType": "CreditCard",
             "plural": false,
             "selections": [
-              v4,
+              v6,
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -326,7 +320,7 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v5,
+              v7,
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -334,7 +328,7 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v6,
+              v8,
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -342,7 +336,7 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v7
+              v9
             ]
           },
           {
@@ -354,12 +348,25 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v8,
+              v10,
+              {
+                "kind": "InlineFragment",
+                "type": "Pickup",
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "fulfillmentType",
+                    "args": null,
+                    "storageKey": null
+                  }
+                ]
+              },
               {
                 "kind": "InlineFragment",
                 "type": "Ship",
                 "selections": [
-                  v4,
+                  v6,
                   {
                     "kind": "ScalarField",
                     "alias": null,
@@ -374,7 +381,7 @@ return {
                     "args": null,
                     "storageKey": null
                   },
-                  v5,
+                  v7,
                   {
                     "kind": "ScalarField",
                     "alias": null,
@@ -382,24 +389,11 @@ return {
                     "args": null,
                     "storageKey": null
                   },
-                  v6,
+                  v8,
                   {
                     "kind": "ScalarField",
                     "alias": null,
                     "name": "postalCode",
-                    "args": null,
-                    "storageKey": null
-                  }
-                ]
-              },
-              {
-                "kind": "InlineFragment",
-                "type": "Pickup",
-                "selections": [
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "fulfillmentType",
                     "args": null,
                     "storageKey": null
                   }
@@ -443,8 +437,8 @@ return {
                         "concreteType": "Artwork",
                         "plural": false,
                         "selections": [
-                          v3,
-                          v7,
+                          v5,
+                          v9,
                           {
                             "kind": "ScalarField",
                             "alias": null,
@@ -527,20 +521,26 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v8,
-              v7,
+              v10,
+              v9,
               {
                 "kind": "InlineFragment",
                 "type": "Partner",
                 "selections": [
-                  v4
+                  v6
                 ]
               }
             ]
           },
           v2,
-          v8,
           v10,
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "mode",
+            "args": null,
+            "storageKey": null
+          },
           v11,
           v12,
           v13,
@@ -548,21 +548,21 @@ return {
             "kind": "ScalarField",
             "alias": null,
             "name": "itemsTotal",
-            "args": v9,
+            "args": v3,
             "storageKey": "itemsTotal(precision:2)"
           },
           {
             "kind": "ScalarField",
             "alias": null,
             "name": "totalListPrice",
-            "args": v9,
+            "args": v3,
             "storageKey": "totalListPrice(precision:2)"
           },
           {
             "kind": "ScalarField",
             "alias": null,
             "name": "buyerTotal",
-            "args": v9,
+            "args": v3,
             "storageKey": "buyerTotal(precision:2)"
           },
           {
@@ -574,7 +574,7 @@ return {
             "concreteType": "Offer",
             "plural": false,
             "selections": [
-              v3,
+              v5,
               v14,
               v2
             ]
@@ -592,16 +592,16 @@ return {
                 "concreteType": "Offer",
                 "plural": false,
                 "selections": [
-                  v3,
+                  v5,
                   {
                     "kind": "ScalarField",
                     "alias": null,
                     "name": "amount",
-                    "args": v9,
+                    "args": v3,
                     "storageKey": "amount(precision:2)"
                   },
                   v14,
-                  v10,
+                  v4,
                   v11,
                   v12,
                   v13,
