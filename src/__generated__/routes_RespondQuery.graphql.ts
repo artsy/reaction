@@ -63,11 +63,6 @@ fragment TransactionDetailsSummaryItem_order on Order {
   itemsTotal(precision: 2)
   totalListPrice(precision: 2)
   buyerTotal(precision: 2)
-  lastOffer {
-    id
-    amountCents
-    __id: id
-  }
   ... on OfferOrder {
     myLastOffer {
       id
@@ -77,6 +72,13 @@ fragment TransactionDetailsSummaryItem_order on Order {
       shippingTotalCents
       taxTotal(precision: 2)
       taxTotalCents
+      buyerTotal(precision: 2)
+      buyerTotalCents
+      __id: id
+    }
+    lastOffer {
+      id
+      amountCents
       __id: id
     }
   }
@@ -231,14 +233,14 @@ v5 = {
   "args": null,
   "storageKey": null
 },
-v6 = {
+v7 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__id",
   "args": null,
   "storageKey": null
 },
-v7 = {
+v8 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__typename",
@@ -269,9 +271,9 @@ v10 = {
 v11 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "amountCents",
-  "args": null,
-  "storageKey": null
+  "name": "buyerTotal",
+  "args": v5,
+  "storageKey": "buyerTotal(precision:2)"
 },
 v12 = {
   "kind": "ScalarField",
@@ -291,6 +293,13 @@ v14 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "name",
+  "args": null,
+  "storageKey": null
+},
+v13 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "amountCents",
   "args": null,
   "storageKey": null
 };
@@ -572,6 +581,9 @@ return {
               }
             ]
           },
+          v9,
+          v10,
+          v11,
           {
             "kind": "LinkedField",
             "alias": null,
@@ -636,6 +648,27 @@ return {
                     "args": null,
                     "storageKey": null
                   }
+                ]
+              }
+            ]
+          },
+          v2,
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "seller",
+            "storageKey": null,
+            "args": null,
+            "concreteType": null,
+            "plural": false,
+            "selections": [
+              v7,
+              v6,
+              {
+                "kind": "InlineFragment",
+                "type": "Partner",
+                "selections": [
+                  v12
                 ]
               }
             ]
@@ -708,9 +741,32 @@ return {
                   v13,
                   v11,
                   v8,
+                  v3,
                   v9,
                   v4,
                   v10,
+                  v11,
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "buyerTotalCents",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  v2
+                ]
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "lastOffer",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "Offer",
+                "plural": false,
+                "selections": [
+                  v4,
+                  v13,
                   v2
                 ]
               }

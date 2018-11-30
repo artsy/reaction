@@ -30,7 +30,11 @@ export class TransactionDetailsSummaryItem extends React.Component<
 
         <Entry label="Tax" value={this.taxDisplayAmount(order)} />
         <Spacer mb={2} />
-        <Entry label="Total" value={order.buyerTotal} final />
+        <Entry
+          label="Total"
+          value={this.buyerTotalDisplayAmount(order)}
+          final
+        />
       </StackableBorderBox>
     )
   }
@@ -63,6 +67,15 @@ export class TransactionDetailsSummaryItem extends React.Component<
               order.myLastOffer.taxTotalCents
             ) || "—"
           : "—"
+    }
+  }
+
+  buyerTotalDisplayAmount = order => {
+    switch (order.mode) {
+      case "BUY":
+        return order.buyerTotal
+      case "OFFER":
+        return order.myLastOffer && order.myLastOffer.buyerTotal
     }
   }
 
@@ -150,10 +163,6 @@ export const TransactionDetailsSummaryItemFragmentContainer = createFragmentCont
       itemsTotal(precision: 2)
       totalListPrice(precision: 2)
       buyerTotal(precision: 2)
-      lastOffer {
-        id
-        amountCents
-      }
       ... on OfferOrder {
         myLastOffer {
           id
@@ -163,6 +172,12 @@ export const TransactionDetailsSummaryItemFragmentContainer = createFragmentCont
           shippingTotalCents
           taxTotal(precision: 2)
           taxTotalCents
+          buyerTotal(precision: 2)
+          buyerTotalCents
+        }
+        lastOffer {
+          id
+          amountCents
         }
       }
     }

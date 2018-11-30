@@ -20,7 +20,6 @@ const order: TransactionDetailsSummaryItem_order = {
   taxTotal: "£232.23",
   taxTotalCents: 23223,
   buyerTotal: "£1,200,823.33",
-  lastOffer: null,
 }
 
 const orderQuery = graphql`
@@ -74,7 +73,10 @@ storiesOf("Apps/Order Page/Components", module)
             shippingTotalCents: 20000,
             taxTotal: "$100",
             taxTotalCents: 10000,
+            buyerTotal: "$102789",
+            buyerTotalCents: 10278900,
           },
+          lastOffer: null,
         })}
       </Flex>
     </Section>
@@ -95,6 +97,8 @@ storiesOf("Apps/Order Page/Components", module)
               shippingTotalCents: 20000,
               taxTotal: "$100",
               taxTotalCents: 10000,
+              buyerTotal: "$102789",
+              buyerTotalCents: 10278900,
             },
           },
           {

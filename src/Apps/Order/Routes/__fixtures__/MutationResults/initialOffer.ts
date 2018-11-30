@@ -5,10 +5,11 @@ export const initialOfferSuccess = {
         id: "1234",
         itemsTotalCents: 400,
         totalListPriceCents: 600,
-        lastOffer: {
+        myLastOffer: {
           id: "2345",
           amountCents: 400,
         },
+        lastOffer: null,
       },
     },
   },
