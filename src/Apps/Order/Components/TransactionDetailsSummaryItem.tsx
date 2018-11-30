@@ -24,22 +24,19 @@ export class TransactionDetailsSummaryItem extends React.Component<
     return (
       <StackableBorderBox flexDirection="column" {...others}>
         {/* TODO: Seller's offer / Your offer (/ Buyer's offer? Will sellers see this component?) */}
-        {this.renderPriceEntry(order, offerOverride)}
+        {this.renderPriceEntry()}
         <Spacer mb={2} />
-        <Entry label="Shipping" value={this.shippingDisplayAmount(order)} />
+        <Entry label="Shipping" value={this.shippingDisplayAmount()} />
 
-        <Entry label="Tax" value={this.taxDisplayAmount(order)} />
+        <Entry label="Tax" value={this.taxDisplayAmount()} />
         <Spacer mb={2} />
-        <Entry
-          label="Total"
-          value={this.buyerTotalDisplayAmount(order)}
-          final
-        />
+        <Entry label="Total" value={this.buyerTotalDisplayAmount()} final />
       </StackableBorderBox>
     )
   }
 
-  shippingDisplayAmount = order => {
+  shippingDisplayAmount = () => {
+    const { order } = this.props
     switch (order.mode) {
       case "BUY":
         return (
@@ -56,7 +53,8 @@ export class TransactionDetailsSummaryItem extends React.Component<
     }
   }
 
-  taxDisplayAmount = order => {
+  taxDisplayAmount = () => {
+    const { order } = this.props
     switch (order.mode) {
       case "BUY":
         return this.formattedAmount(order.taxTotal, order.taxTotalCents) || "—"
@@ -80,7 +78,8 @@ export class TransactionDetailsSummaryItem extends React.Component<
     }
   }
 
-  renderPriceEntry = (order, offerOverride) => {
+  renderPriceEntry = () => {
+    const { order, offerOverride } = this.props
     return order.mode === "BUY" ? (
       <Entry label="Price" value={order.itemsTotal} />
     ) : (
