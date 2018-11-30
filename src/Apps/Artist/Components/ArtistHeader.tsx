@@ -13,19 +13,25 @@ import { Media } from "Utils/Responsive"
 /**
  * This H1 and H2 were added for SEO purposes
  */
-const H1 = styled.h1`
+interface HeadingProps {
+  as?: string
+}
+const H1 = styled.h1<HeadingProps>`
   all: initial;
   all: unset;
   margin: 0;
   padding: 0;
+  font: normal;
+  font-family: inherit;
+  font-size: medium;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  letter-spacing: normal;
+  line-height: normal;
 `
 
-const H2 = styled.h2`
-  all: initial;
-  all: unset;
-  margin: 0;
-  padding: 0;
-`
+const H2 = (...props) => <H1 as="h2" {...props} />
 
 interface Props {
   artist: ArtistHeader_artist
