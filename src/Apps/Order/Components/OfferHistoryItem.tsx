@@ -17,11 +17,11 @@ class OfferHistoryItem extends React.Component<
   state = { showingFullHistory: false }
   render() {
     const {
-      order: { totalListPrice, lastOffer, offers: _offers, buyer },
+      order: { totalListPrice, lastOffer, offers, buyer },
       ...others
     } = this.props
     const { showingFullHistory } = this.state
-    const offers = _offers.edges.filter(
+    const previousOffers = offers.edges.filter(
       ({ node: { id } }) => id !== lastOffer.id
     )
     return (
@@ -42,7 +42,7 @@ class OfferHistoryItem extends React.Component<
             List price: {totalListPrice}
           </Sans>
         </Row>
-        {offers.length > 0 && (
+        {previousOffers.length > 0 && (
           <>
             <StaticCollapse open={!showingFullHistory}>
               <Row>
@@ -60,7 +60,7 @@ class OfferHistoryItem extends React.Component<
             </StaticCollapse>
             <StaticCollapse open={showingFullHistory}>
               <Flex m={0} flexDirection="column">
-                {offers.map(({ node: offer }) => (
+                {previousOffers.map(({ node: offer }) => (
                   <Row key={offer.id}>
                     <Serif size={["2", "3"]} color="black60">
                       {/* TODO: use new field that says whether the offer was from buyer or seller */}
