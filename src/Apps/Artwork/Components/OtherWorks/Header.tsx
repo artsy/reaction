@@ -9,7 +9,7 @@ interface HeaderProps {
 export const Header: React.SFC<HeaderProps> = props => {
   return (
     <Flex flexDirection="column" alignItems="center">
-      <Serif size="8" color="black100" mb={2}>
+      <Serif size="8" color="black100" mb={2} textAlign="center">
         {props.title}
       </Serif>
       <Button

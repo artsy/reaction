@@ -8,10 +8,10 @@ storiesOf("Styleguide/Artwork/OtherWorks", module)
     return (
       <>
         <Section title="Open Auction">
-          <OtherWorks artworkID="yavuz-tanyeli-self-portrait" />
+          <OtherWorks artworkID="david-hockney-diptychon-3" />
         </Section>
         <Section title="Closed Auction">
-          <OtherWorks artworkID="william-wegman-tall" />
+          <OtherWorks artworkID="patrick-hughes-poppy-1" />
         </Section>
       </>
     )
@@ -23,17 +23,17 @@ storiesOf("Styleguide/Artwork/OtherWorks", module)
       </Section>
     )
   })
-  .add("Gallery", () => {
+  .add("Fair", () => {
     return (
-      <Section title="Gallery">
-        <OtherWorks artworkID="on-kawara-i-went-1" />
+      <Section title="Fair">
+        <OtherWorks artworkID="lucio-fontana-concetto-spaziale-attese-139" />
       </Section>
     )
   })
-  .add("Partner Show", () => {
+  .add("Partner Show (Gallery)", () => {
     return (
-      <Section title="Partner Show">
-        <OtherWorks artworkID="jacky-tsai-kissers-1" />
+      <Section title="Gallery">
+        <OtherWorks artworkID="david-hockney-early-morning-4" />
       </Section>
     )
   })

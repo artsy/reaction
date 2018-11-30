@@ -3,16 +3,16 @@
 import { ConcreteFragment } from "relay-runtime";
 import { ArtistArtworkGrid_artwork$ref } from "./ArtistArtworkGrid_artwork.graphql";
 import { PartnerShowArtworkGrid_artwork$ref } from "./PartnerShowArtworkGrid_artwork.graphql";
-declare const _ArtworkContextArtist_artwork$ref: unique symbol;
-export type ArtworkContextArtist_artwork$ref = typeof _ArtworkContextArtist_artwork$ref;
-export type ArtworkContextArtist_artwork = {
+declare const _ArtworkContextPartnerShow_artwork$ref: unique symbol;
+export type ArtworkContextPartnerShow_artwork$ref = typeof _ArtworkContextPartnerShow_artwork$ref;
+export type ArtworkContextPartnerShow_artwork = {
     readonly id: string;
     readonly artist: ({
         readonly name: string | null;
         readonly href: string | null;
     }) | null;
-    readonly " $fragmentRefs": ArtistArtworkGrid_artwork$ref & PartnerShowArtworkGrid_artwork$ref;
-    readonly " $refType": ArtworkContextArtist_artwork$ref;
+    readonly " $fragmentRefs": PartnerShowArtworkGrid_artwork$ref & ArtistArtworkGrid_artwork$ref;
+    readonly " $refType": ArtworkContextPartnerShow_artwork$ref;
 };
 
 
@@ -27,7 +27,7 @@ var v0 = {
 };
 return {
   "kind": "Fragment",
-  "name": "ArtworkContextArtist_artwork",
+  "name": "ArtworkContextPartnerShow_artwork",
   "type": "Artwork",
   "metadata": null,
   "argumentDefinitions": [],
@@ -67,17 +67,17 @@ return {
     },
     {
       "kind": "FragmentSpread",
-      "name": "ArtistArtworkGrid_artwork",
+      "name": "PartnerShowArtworkGrid_artwork",
       "args": null
     },
     {
       "kind": "FragmentSpread",
-      "name": "PartnerShowArtworkGrid_artwork",
+      "name": "ArtistArtworkGrid_artwork",
       "args": null
     },
     v0
   ]
 };
 })();
-(node as any).hash = 'ed693596da68658c7b188aee167bfca3';
+(node as any).hash = '20de301e68ab7c1d839861a839c2fe98';
 export default node;

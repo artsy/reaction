@@ -1,11 +1,11 @@
-import React from "react"
-import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
-
 import { ArtworkContextAuction_artwork } from "__generated__/ArtworkContextAuction_artwork.graphql"
 import { ArtworkContextAuctionQuery } from "__generated__/ArtworkContextAuctionQuery.graphql"
 import { ContextConsumer } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
+import React from "react"
+import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 
+import { Join, Spacer } from "@artsy/palette"
 import {
   ArtistArtworkGrid,
   AuctionArtworkGrid,
@@ -69,10 +69,10 @@ export const ArtworkContextAuction: React.SFC<{
     return <AuctionArtworkGrid artwork={props.artwork} />
   } else {
     return (
-      <>
+      <Join separator={<Spacer my={2} />}>
         <ArtistArtworkGrid artwork={props.artwork} />
         <RelatedWorksArtworkGrid />
-      </>
+      </Join>
     )
   }
 }

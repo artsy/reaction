@@ -1,20 +1,20 @@
-import { ArtworkContextArtistFixture } from "Apps/__tests__/Fixtures/Artwork/OtherWorks/ArtworkContexts/ArtworkContextArtist.fixture"
+import { ArtworkContextFairFixture } from "Apps/__tests__/Fixtures/Artwork/OtherWorks/ArtworkContexts/ArtworkContextFair.fixture"
 import { MockBoot, renderRelayTree } from "DevTools"
 import { ReactWrapper } from "enzyme"
 import React from "react"
 import { graphql } from "react-relay"
-import { ArtworkContextArtistFragmentContainer } from "../ArtworkContextArtist"
+import { ArtworkContextFairFragmentContainer } from "../ArtworkContextFair"
 
 jest.unmock("react-relay")
 
-describe("ArtworkContextArtist", () => {
-  const getWrapper = async (response = ArtworkContextArtistFixture) => {
+describe("ArtworkContextFair", () => {
+  const getWrapper = async (response = ArtworkContextFairFixture) => {
     return await renderRelayTree({
-      Component: ArtworkContextArtistFragmentContainer,
+      Component: ArtworkContextFairFragmentContainer,
       query: graphql`
-        query ArtworkContextArtist_Test_Query {
-          artwork(id: "on-kawara-9-jan-1973") {
-            ...ArtworkContextArtist_artwork
+        query ArtworkContextFair_Test_Query {
+          artwork(id: "lucio-fontana-concetto-spaziale-attese-139") {
+            ...ArtworkContextFair_artwork
           }
         }
       `,
@@ -33,9 +33,9 @@ describe("ArtworkContextArtist", () => {
       wrapper = await getWrapper()
     })
 
-    it("renders the artist name", () => {
+    it("renders the title", () => {
       const html = wrapper.html()
-      expect(html).toContain("Other works by On Kawara")
+      expect(html).toContain("Other works from the booth")
     })
 
     it("renders a view all button", () => {
@@ -44,8 +44,9 @@ describe("ArtworkContextArtist", () => {
     })
 
     it("renders correct artwork grids", () => {
-      expect(wrapper.find("ArtistArtworkGrid").length).toBe(1)
+      expect(wrapper.find("FairArtworkGrid").length).toBe(1)
       expect(wrapper.find("PartnerShowArtworkGrid").length).toBe(1)
+      expect(wrapper.find("ArtistArtworkGrid").length).toBe(1)
       expect(wrapper.find("RelatedWorksArtworkGrid").length).toBe(1)
     })
   })

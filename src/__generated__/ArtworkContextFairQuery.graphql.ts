@@ -1,37 +1,65 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { ArtworkContextArtist_artwork$ref } from "./ArtworkContextArtist_artwork.graphql";
-export type ArtworkContextArtist_Test_QueryVariables = {};
-export type ArtworkContextArtist_Test_QueryResponse = {
+import { ArtworkContextFair_artwork$ref } from "./ArtworkContextFair_artwork.graphql";
+export type ArtworkContextFairQueryVariables = {
+    readonly artworkID: string;
+};
+export type ArtworkContextFairQueryResponse = {
     readonly artwork: ({
-        readonly " $fragmentRefs": ArtworkContextArtist_artwork$ref;
+        readonly " $fragmentRefs": ArtworkContextFair_artwork$ref;
     }) | null;
 };
-export type ArtworkContextArtist_Test_Query = {
-    readonly response: ArtworkContextArtist_Test_QueryResponse;
-    readonly variables: ArtworkContextArtist_Test_QueryVariables;
+export type ArtworkContextFairQuery = {
+    readonly response: ArtworkContextFairQueryResponse;
+    readonly variables: ArtworkContextFairQueryVariables;
 };
 
 
 
 /*
-query ArtworkContextArtist_Test_Query {
-  artwork(id: "on-kawara-9-jan-1973") {
-    ...ArtworkContextArtist_artwork
+query ArtworkContextFairQuery(
+  $artworkID: String!
+) {
+  artwork(id: $artworkID) {
+    ...ArtworkContextFair_artwork
     __id
   }
 }
 
-fragment ArtworkContextArtist_artwork on Artwork {
+fragment ArtworkContextFair_artwork on Artwork {
   id
   artist {
     name
     href
     __id
   }
-  ...ArtistArtworkGrid_artwork
+  ...FairArtworkGrid_artwork
   ...PartnerShowArtworkGrid_artwork
+  ...ArtistArtworkGrid_artwork
+  __id
+}
+
+fragment FairArtworkGrid_artwork on Artwork {
+  fair: show(at_a_fair: true) {
+    artworksConnection(first: 20) {
+      ...ArtworkGrid_artworks
+    }
+    href
+    __id
+  }
+  __id
+}
+
+fragment PartnerShowArtworkGrid_artwork on Artwork {
+  show {
+    artworksConnection(first: 20) {
+      ...ArtworkGrid_artworks
+    }
+    href
+    name
+    __id
+  }
   __id
 }
 
@@ -46,18 +74,6 @@ fragment ArtistArtworkGrid_artwork on Artwork {
     artworks_connection(first: 10, filter: [IS_FOR_SALE], sort: PUBLISHED_AT_DESC) {
       ...ArtworkGrid_artworks
     }
-    __id
-  }
-  __id
-}
-
-fragment PartnerShowArtworkGrid_artwork on Artwork {
-  show {
-    artworksConnection(first: 20) {
-      ...ArtworkGrid_artworks
-    }
-    href
-    name
     __id
   }
   __id
@@ -179,41 +195,49 @@ fragment Contact_artwork on Artwork {
 const node: ConcreteRequest = (function(){
 var v0 = [
   {
-    "kind": "Literal",
+    "kind": "LocalArgument",
+    "name": "artworkID",
+    "type": "String!",
+    "defaultValue": null
+  }
+],
+v1 = [
+  {
+    "kind": "Variable",
     "name": "id",
-    "value": "on-kawara-9-jan-1973",
+    "variableName": "artworkID",
     "type": "String!"
   }
 ],
-v1 = {
+v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__id",
   "args": null,
   "storageKey": null
 },
-v2 = {
+v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
   "args": null,
   "storageKey": null
 },
-v3 = {
+v4 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "name",
   "args": null,
   "storageKey": null
 },
-v4 = {
+v5 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "href",
   "args": null,
   "storageKey": null
 },
-v5 = [
+v6 = [
   {
     "kind": "Literal",
     "name": "shallow",
@@ -221,14 +245,14 @@ v5 = [
     "type": "Boolean"
   }
 ],
-v6 = {
+v7 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "display",
   "args": null,
   "storageKey": null
 },
-v7 = [
+v8 = [
   {
     "kind": "LinkedField",
     "alias": null,
@@ -254,7 +278,7 @@ v7 = [
             "args": null,
             "storageKey": null
           },
-          v1,
+          v2,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -278,7 +302,7 @@ v7 = [
                 "args": null,
                 "storageKey": null
               },
-              v1,
+              v2,
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -323,7 +347,7 @@ v7 = [
             "args": null,
             "storageKey": null
           },
-          v4,
+          v5,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -389,13 +413,13 @@ v7 = [
             "alias": null,
             "name": "artists",
             "storageKey": "artists(shallow:true)",
-            "args": v5,
+            "args": v6,
             "concreteType": "Artist",
             "plural": true,
             "selections": [
-              v1,
-              v4,
-              v3
+              v2,
+              v5,
+              v4
             ]
           },
           {
@@ -410,13 +434,13 @@ v7 = [
             "alias": null,
             "name": "partner",
             "storageKey": "partner(shallow:true)",
-            "args": v5,
+            "args": v6,
             "concreteType": "Partner",
             "plural": false,
             "selections": [
-              v3,
               v4,
-              v1,
+              v5,
+              v2,
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -444,7 +468,7 @@ v7 = [
                 "concreteType": "SaleArtworkHighestBid",
                 "plural": false,
                 "selections": [
-                  v6,
+                  v7,
                   {
                     "kind": "ScalarField",
                     "alias": "__id",
@@ -463,10 +487,10 @@ v7 = [
                 "concreteType": "SaleArtworkOpeningBid",
                 "plural": false,
                 "selections": [
-                  v6
+                  v7
                 ]
               },
-              v1,
+              v2,
               {
                 "kind": "LinkedField",
                 "alias": null,
@@ -501,7 +525,7 @@ v7 = [
             "args": null,
             "storageKey": null
           },
-          v2,
+          v3,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -513,55 +537,72 @@ v7 = [
       }
     ]
   }
-];
+],
+v9 = {
+  "kind": "LinkedField",
+  "alias": null,
+  "name": "artworksConnection",
+  "storageKey": "artworksConnection(first:20)",
+  "args": [
+    {
+      "kind": "Literal",
+      "name": "first",
+      "value": 20,
+      "type": "Int"
+    }
+  ],
+  "concreteType": "ArtworkConnection",
+  "plural": false,
+  "selections": v8
+};
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "ArtworkContextArtist_Test_Query",
+  "name": "ArtworkContextFairQuery",
   "id": null,
-  "text": "query ArtworkContextArtist_Test_Query {\n  artwork(id: \"on-kawara-9-jan-1973\") {\n    ...ArtworkContextArtist_artwork\n    __id\n  }\n}\n\nfragment ArtworkContextArtist_artwork on Artwork {\n  id\n  artist {\n    name\n    href\n    __id\n  }\n  ...ArtistArtworkGrid_artwork\n  ...PartnerShowArtworkGrid_artwork\n  __id\n}\n\nfragment ArtistArtworkGrid_artwork on Artwork {\n  id\n  artist {\n    name\n    href\n    counts {\n      artworks(format: \"0,0\", label: \"work\")\n    }\n    artworks_connection(first: 10, filter: [IS_FOR_SALE], sort: PUBLISHED_AT_DESC) {\n      ...ArtworkGrid_artworks\n    }\n    __id\n  }\n  __id\n}\n\nfragment PartnerShowArtworkGrid_artwork on Artwork {\n  show {\n    artworksConnection(first: 20) {\n      ...ArtworkGrid_artworks\n    }\n    href\n    name\n    __id\n  }\n  __id\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  is_biddable\n  sale {\n    is_preview\n    __id\n  }\n  is_acquireable\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    display_timely_at\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
+  "text": "query ArtworkContextFairQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...ArtworkContextFair_artwork\n    __id\n  }\n}\n\nfragment ArtworkContextFair_artwork on Artwork {\n  id\n  artist {\n    name\n    href\n    __id\n  }\n  ...FairArtworkGrid_artwork\n  ...PartnerShowArtworkGrid_artwork\n  ...ArtistArtworkGrid_artwork\n  __id\n}\n\nfragment FairArtworkGrid_artwork on Artwork {\n  fair: show(at_a_fair: true) {\n    artworksConnection(first: 20) {\n      ...ArtworkGrid_artworks\n    }\n    href\n    __id\n  }\n  __id\n}\n\nfragment PartnerShowArtworkGrid_artwork on Artwork {\n  show {\n    artworksConnection(first: 20) {\n      ...ArtworkGrid_artworks\n    }\n    href\n    name\n    __id\n  }\n  __id\n}\n\nfragment ArtistArtworkGrid_artwork on Artwork {\n  id\n  artist {\n    name\n    href\n    counts {\n      artworks(format: \"0,0\", label: \"work\")\n    }\n    artworks_connection(first: 10, filter: [IS_FOR_SALE], sort: PUBLISHED_AT_DESC) {\n      ...ArtworkGrid_artworks\n    }\n    __id\n  }\n  __id\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  is_biddable\n  sale {\n    is_preview\n    __id\n  }\n  is_acquireable\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    display_timely_at\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "ArtworkContextArtist_Test_Query",
+    "name": "ArtworkContextFairQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": [],
+    "argumentDefinitions": v0,
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "artwork",
-        "storageKey": "artwork(id:\"on-kawara-9-jan-1973\")",
-        "args": v0,
+        "storageKey": null,
+        "args": v1,
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "ArtworkContextArtist_artwork",
+            "name": "ArtworkContextFair_artwork",
             "args": null
           },
-          v1
+          v2
         ]
       }
     ]
   },
   "operation": {
     "kind": "Operation",
-    "name": "ArtworkContextArtist_Test_Query",
-    "argumentDefinitions": [],
+    "name": "ArtworkContextFairQuery",
+    "argumentDefinitions": v0,
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "artwork",
-        "storageKey": "artwork(id:\"on-kawara-9-jan-1973\")",
-        "args": v0,
+        "storageKey": null,
+        "args": v1,
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
-          v2,
+          v3,
           {
             "kind": "LinkedField",
             "alias": null,
@@ -571,9 +612,9 @@ return {
             "concreteType": "Artist",
             "plural": false,
             "selections": [
-              v3,
               v4,
-              v1,
+              v5,
+              v2,
               {
                 "kind": "LinkedField",
                 "alias": null,
@@ -634,11 +675,32 @@ return {
                 ],
                 "concreteType": "ArtworkConnection",
                 "plural": false,
-                "selections": v7
+                "selections": v8
               }
             ]
           },
-          v1,
+          {
+            "kind": "LinkedField",
+            "alias": "fair",
+            "name": "show",
+            "storageKey": "show(at_a_fair:true)",
+            "args": [
+              {
+                "kind": "Literal",
+                "name": "at_a_fair",
+                "value": true,
+                "type": "Boolean"
+              }
+            ],
+            "concreteType": "PartnerShow",
+            "plural": false,
+            "selections": [
+              v9,
+              v5,
+              v2
+            ]
+          },
+          v2,
           {
             "kind": "LinkedField",
             "alias": null,
@@ -648,26 +710,10 @@ return {
             "concreteType": "PartnerShow",
             "plural": false,
             "selections": [
-              {
-                "kind": "LinkedField",
-                "alias": null,
-                "name": "artworksConnection",
-                "storageKey": "artworksConnection(first:20)",
-                "args": [
-                  {
-                    "kind": "Literal",
-                    "name": "first",
-                    "value": 20,
-                    "type": "Int"
-                  }
-                ],
-                "concreteType": "ArtworkConnection",
-                "plural": false,
-                "selections": v7
-              },
+              v9,
+              v5,
               v4,
-              v3,
-              v1
+              v2
             ]
           }
         ]
@@ -676,5 +722,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'e257ace3146cfbfb1d9f86d83fe04f69';
+(node as any).hash = '68381ecdaca54088c6d65b81e0e9a5f6';
 export default node;

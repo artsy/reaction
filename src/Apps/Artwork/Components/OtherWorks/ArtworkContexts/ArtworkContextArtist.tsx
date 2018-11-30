@@ -1,12 +1,14 @@
+import { Join, Spacer } from "@artsy/palette"
 import { ArtworkContextArtist_artwork } from "__generated__/ArtworkContextArtist_artwork.graphql"
 import { ArtworkContextArtistQuery } from "__generated__/ArtworkContextArtistQuery.graphql"
 import { ContextConsumer } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
+
 import {
   ArtistArtworkGrid,
-  PartnerArtworkGrid,
+  PartnerShowArtworkGrid,
   RelatedWorksArtworkGrid,
 } from "./ArtworkGrids"
 
@@ -43,11 +45,11 @@ export const ArtworkContextArtist: React.SFC<{
   artwork: ArtworkContextArtist_artwork
 }> = props => {
   return (
-    <>
+    <Join separator={<Spacer my={2} />}>
       <ArtistArtworkGrid artwork={props.artwork} />
-      <PartnerArtworkGrid />
+      <PartnerShowArtworkGrid artwork={props.artwork} />
       <RelatedWorksArtworkGrid />
-    </>
+    </Join>
   )
 }
 
@@ -61,6 +63,7 @@ export const ArtworkContextArtistFragmentContainer = createFragmentContainer(
         href
       }
       ...ArtistArtworkGrid_artwork
+      ...PartnerShowArtworkGrid_artwork
     }
   `
 )

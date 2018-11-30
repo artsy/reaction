@@ -1,20 +1,20 @@
-import { ArtworkContextArtistFixture } from "Apps/__tests__/Fixtures/Artwork/OtherWorks/ArtworkContexts/ArtworkContextArtist.fixture"
+import { ArtworkContextPartnerShowFixture } from "Apps/__tests__/Fixtures/Artwork/OtherWorks/ArtworkContexts/ArtworkContextPartnerShow.fixture"
 import { MockBoot, renderRelayTree } from "DevTools"
 import { ReactWrapper } from "enzyme"
 import React from "react"
 import { graphql } from "react-relay"
-import { ArtworkContextArtistFragmentContainer } from "../ArtworkContextArtist"
+import { ArtworkContextPartnerShowFragmentContainer } from "../ArtworkContextPartnerShow"
 
 jest.unmock("react-relay")
 
-describe("ArtworkContextArtist", () => {
-  const getWrapper = async (response = ArtworkContextArtistFixture) => {
+describe("ArtworkContextPartnerShow", () => {
+  const getWrapper = async (response = ArtworkContextPartnerShowFixture) => {
     return await renderRelayTree({
-      Component: ArtworkContextArtistFragmentContainer,
+      Component: ArtworkContextPartnerShowFragmentContainer,
       query: graphql`
-        query ArtworkContextArtist_Test_Query {
-          artwork(id: "on-kawara-9-jan-1973") {
-            ...ArtworkContextArtist_artwork
+        query ArtworkContextPartnerShow_Test_Query {
+          artwork(id: "jacky-tsai-kissers-1") {
+            ...ArtworkContextPartnerShow_artwork
           }
         }
       `,
@@ -33,9 +33,9 @@ describe("ArtworkContextArtist", () => {
       wrapper = await getWrapper()
     })
 
-    it("renders the artist name", () => {
+    it("renders the title", () => {
       const html = wrapper.html()
-      expect(html).toContain("Other works by On Kawara")
+      expect(html).toContain("Other works from Jacky Tsai | Reincarnation")
     })
 
     it("renders a view all button", () => {
@@ -44,8 +44,8 @@ describe("ArtworkContextArtist", () => {
     })
 
     it("renders correct artwork grids", () => {
-      expect(wrapper.find("ArtistArtworkGrid").length).toBe(1)
       expect(wrapper.find("PartnerShowArtworkGrid").length).toBe(1)
+      expect(wrapper.find("ArtistArtworkGrid").length).toBe(1)
       expect(wrapper.find("RelatedWorksArtworkGrid").length).toBe(1)
     })
   })
