@@ -178,23 +178,29 @@ v8 = {
   "storageKey": null
 },
 v9 = {
-  "kind": "LinkedField",
-  "alias": null,
-  "name": "lastOffer",
-  "storageKey": null,
-  "args": null,
-  "concreteType": "Offer",
-  "plural": false,
+  "kind": "InlineFragment",
+  "type": "OfferOrder",
   "selections": [
-    v4,
     {
-      "kind": "ScalarField",
+      "kind": "LinkedField",
       "alias": null,
-      "name": "amountCents",
+      "name": "myLastOffer",
+      "storageKey": null,
       "args": null,
-      "storageKey": null
-    },
-    v8
+      "concreteType": "Offer",
+      "plural": false,
+      "selections": [
+        v4,
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "amountCents",
+          "args": null,
+          "storageKey": null
+        },
+        v8
+      ]
+    }
   ]
 };
 return {
@@ -248,8 +254,8 @@ return {
                       v5,
                       v6,
                       v7,
-                      v9,
-                      v8
+                      v8,
+                      v9
                     ]
                   }
                 ]
@@ -304,8 +310,8 @@ return {
                       v5,
                       v6,
                       v7,
-                      v9,
-                      v8
+                      v8,
+                      v9
                     ]
                   }
                 ]

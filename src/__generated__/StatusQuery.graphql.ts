@@ -718,27 +718,7 @@ return {
             "args": v2,
             "storageKey": "totalListPrice(precision:2)"
           },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "buyerTotal",
-            "args": v2,
-            "storageKey": "buyerTotal(precision:2)"
-          },
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "name": "lastOffer",
-            "storageKey": null,
-            "args": null,
-            "concreteType": "Offer",
-            "plural": false,
-            "selections": [
-              v8,
-              v12,
-              v1
-            ]
-          },
+          v12,
           {
             "kind": "LinkedField",
             "alias": null,
@@ -800,13 +780,6 @@ return {
                     "args": v2,
                     "storageKey": "amount(precision:2)"
                   },
-<<<<<<< HEAD
-<<<<<<< HEAD
-                  v12,
-=======
-                  v13,
->>>>>>> Add offer buyer total
-=======
                   {
                     "kind": "ScalarField",
                     "alias": null,
@@ -814,7 +787,6 @@ return {
                     "args": null,
                     "storageKey": null
                   },
->>>>>>> Remove unused lastOffer
                   v3,
                   v9,
                   v10,

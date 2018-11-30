@@ -730,27 +730,7 @@ return {
             "args": v3,
             "storageKey": "totalListPrice(precision:2)"
           },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "buyerTotal",
-            "args": v3,
-            "storageKey": "buyerTotal(precision:2)"
-          },
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "name": "lastOffer",
-            "storageKey": null,
-            "args": null,
-            "concreteType": "Offer",
-            "plural": false,
-            "selections": [
-              v9,
-              v13,
-              v2
-            ]
-          },
+          v13,
           {
             "kind": "LinkedField",
             "alias": null,
@@ -812,7 +792,13 @@ return {
                     "args": v3,
                     "storageKey": "amount(precision:2)"
                   },
-                  v13,
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "amountCents",
+                    "args": null,
+                    "storageKey": null
+                  },
                   v4,
                   v10,
                   v11,

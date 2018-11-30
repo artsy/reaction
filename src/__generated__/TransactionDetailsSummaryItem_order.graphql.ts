@@ -92,9 +92,9 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "itemsTotal",
-      "args": v0,
-      "storageKey": "itemsTotal(precision:2)"
+      "name": "__typename",
+      "args": null,
+      "storageKey": null
     },
     v2,
     v3,
@@ -102,16 +102,16 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "__typename",
+      "name": "mode",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "mode",
-      "args": null,
-      "storageKey": null
+      "name": "itemsTotal",
+      "args": v1,
+      "storageKey": "itemsTotal(precision:2)"
     },
     {
       "kind": "ScalarField",
