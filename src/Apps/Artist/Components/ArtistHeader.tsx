@@ -12,6 +12,7 @@ import { Media } from "Utils/Responsive"
 
 /**
  * This H1 and H2 were added for SEO purposes
+ * TODO: Remove when palette provides the ability to override typography element
  */
 interface HeadingProps {
   as?: string
@@ -31,7 +32,7 @@ const H1 = styled.h1<HeadingProps>`
   line-height: normal;
 `
 
-const H2 = (...props) => <H1 as="h2" {...props} />
+const H2 = H1.withComponent("h2")
 
 interface Props {
   artist: ArtistHeader_artist
