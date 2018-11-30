@@ -47,11 +47,6 @@ fragment TransactionDetailsSummaryItem_order on Order {
       buyerTotalCents
       __id: id
     }
-    lastOffer {
-      id
-      amountCents
-      __id: id
-    }
   }
   __id: id
 }
@@ -115,27 +110,13 @@ v7 = {
   "name": "buyerTotal",
   "args": v3,
   "storageKey": "buyerTotal(precision:2)"
-},
-v8 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v9 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "amountCents",
-  "args": null,
-  "storageKey": null
 };
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "TransactionDetailsSummaryItemTestQuery",
   "id": null,
-  "text": "query TransactionDetailsSummaryItemTestQuery {\n  order: ecommerceOrder(id: \"whatevs\") {\n    __typename\n    ...TransactionDetailsSummaryItem_order\n    __id: id\n  }\n}\n\nfragment TransactionDetailsSummaryItem_order on Order {\n  __typename\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  buyerTotal(precision: 2)\n  ... on OfferOrder {\n    myLastOffer {\n      id\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      __id: id\n    }\n    lastOffer {\n      id\n      amountCents\n      __id: id\n    }\n  }\n  __id: id\n}\n",
+  "text": "query TransactionDetailsSummaryItemTestQuery {\n  order: ecommerceOrder(id: \"whatevs\") {\n    __typename\n    ...TransactionDetailsSummaryItem_order\n    __id: id\n  }\n}\n\nfragment TransactionDetailsSummaryItem_order on Order {\n  __typename\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  buyerTotal(precision: 2)\n  ... on OfferOrder {\n    myLastOffer {\n      id\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      __id: id\n    }\n  }\n  __id: id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -224,7 +205,13 @@ return {
                 "concreteType": "Offer",
                 "plural": false,
                 "selections": [
-                  v8,
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "id",
+                    "args": null,
+                    "storageKey": null
+                  },
                   {
                     "kind": "ScalarField",
                     "alias": null,
@@ -232,7 +219,13 @@ return {
                     "args": v3,
                     "storageKey": "amount(precision:2)"
                   },
-                  v9,
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "amountCents",
+                    "args": null,
+                    "storageKey": null
+                  },
                   v4,
                   v5,
                   v6,
@@ -245,20 +238,6 @@ return {
                     "args": null,
                     "storageKey": null
                   },
-                  v1
-                ]
-              },
-              {
-                "kind": "LinkedField",
-                "alias": null,
-                "name": "lastOffer",
-                "storageKey": null,
-                "args": null,
-                "concreteType": "Offer",
-                "plural": false,
-                "selections": [
-                  v8,
-                  v9,
                   v1
                 ]
               }

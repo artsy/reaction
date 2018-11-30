@@ -76,7 +76,6 @@ storiesOf("Apps/Order Page/Components", module)
             buyerTotal: "$102789",
             buyerTotalCents: 10278900,
           },
-          lastOffer: null,
         })}
       </Flex>
     </Section>

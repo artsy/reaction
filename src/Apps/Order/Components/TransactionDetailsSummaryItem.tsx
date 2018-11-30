@@ -175,10 +175,6 @@ export const TransactionDetailsSummaryItemFragmentContainer = createFragmentCont
           buyerTotal(precision: 2)
           buyerTotalCents
         }
-        lastOffer {
-          id
-          amountCents
-        }
       }
     }
   `

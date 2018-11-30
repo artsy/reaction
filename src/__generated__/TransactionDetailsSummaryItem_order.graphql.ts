@@ -25,10 +25,6 @@ export type TransactionDetailsSummaryItem_order = {
         readonly buyerTotal: string | null;
         readonly buyerTotalCents: number | null;
     }) | null;
-    readonly lastOffer?: ({
-        readonly id: string | null;
-        readonly amountCents: number | null;
-    }) | null;
     readonly " $refType": TransactionDetailsSummaryItem_order$ref;
 };
 
@@ -82,20 +78,6 @@ v6 = {
   "kind": "ScalarField",
   "alias": "__id",
   "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v7 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v8 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "amountCents",
   "args": null,
   "storageKey": null
 };
@@ -153,7 +135,13 @@ return {
           "concreteType": "Offer",
           "plural": false,
           "selections": [
-            v7,
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "id",
+              "args": null,
+              "storageKey": null
+            },
             {
               "kind": "ScalarField",
               "alias": null,
@@ -161,7 +149,13 @@ return {
               "args": v1,
               "storageKey": "amount(precision:2)"
             },
-            v8,
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "amountCents",
+              "args": null,
+              "storageKey": null
+            },
             v2,
             v3,
             v4,
@@ -176,25 +170,11 @@ return {
             },
             v6
           ]
-        },
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "lastOffer",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "Offer",
-          "plural": false,
-          "selections": [
-            v7,
-            v8,
-            v6
-          ]
         }
       ]
     }
   ]
 };
 })();
-(node as any).hash = 'ee91d7e2098228c5dc2dc7435d4bf997';
+(node as any).hash = '0675e1c66a22a6379ff11a9c1a612a7d';
 export default node;

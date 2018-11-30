@@ -76,11 +76,6 @@ fragment TransactionDetailsSummaryItem_order on Order {
       buyerTotalCents
       __id: id
     }
-    lastOffer {
-      id
-      amountCents
-      __id: id
-    }
   }
   __id: id
 }
@@ -293,13 +288,6 @@ v14 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "name",
-  "args": null,
-  "storageKey": null
-},
-v13 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "amountCents",
   "args": null,
   "storageKey": null
 };
@@ -753,20 +741,6 @@ return {
                     "args": null,
                     "storageKey": null
                   },
-                  v2
-                ]
-              },
-              {
-                "kind": "LinkedField",
-                "alias": null,
-                "name": "lastOffer",
-                "storageKey": null,
-                "args": null,
-                "concreteType": "Offer",
-                "plural": false,
-                "selections": [
-                  v4,
-                  v13,
                   v2
                 ]
               }
