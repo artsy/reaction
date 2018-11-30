@@ -17,7 +17,7 @@ class OfferHistoryItem extends React.Component<
   state = { showingFullHistory: false }
   render() {
     const {
-      order: { totalListPrice, lastOffer, offers, buyer },
+      order: { totalListPrice, lastOffer, offers },
       ...others
     } = this.props
     const { showingFullHistory } = this.state
@@ -28,9 +28,9 @@ class OfferHistoryItem extends React.Component<
       <StepSummaryItem {...others}>
         <Row>
           <Serif size={["2", "3"]} color="black60">
-            {/* TODO: use new field that says whether the offer was from buyer or seller */}
-            {/* then we can re-use this in contexts where the buyer has made the most recent offer */}
-            Seller's offer
+            {lastOffer.fromParticipant === "SELLER"
+              ? "Seller's offer"
+              : "Your offer"}
           </Serif>
           <Serif size={["2", "3"]} color="black100">
             {lastOffer.amount}
@@ -63,9 +63,7 @@ class OfferHistoryItem extends React.Component<
                 {previousOffers.map(({ node: offer }) => (
                   <Row key={offer.id}>
                     <Serif size={["2", "3"]} color="black60">
-                      {/* TODO: use new field that says whether the offer was from buyer or seller */}
-                      {"id" in offer.from &&
-                        (offer.from.id === buyer.id ? "You" : "Seller")}
+                      {offer.fromParticipant === "BUYER" ? "You" : "Seller"}
                       {` (${offer.createdAt})`}
                     </Serif>
                     <Serif size={["2", "3"]} color="black60">
@@ -96,38 +94,20 @@ export const OfferHistoryItemFragmentContainer = createFragmentContainer(
         edges {
           node {
             id
-            from {
-              __typename
-              ... on Partner {
-                id
-              }
-              ... on User {
-                id
-              }
-            }
             amount(precision: 2)
             createdAt(format: "MMM D")
+            fromParticipant
           }
         }
       }
       lastOffer {
         id
-        from {
-          __typename
-        }
+        fromParticipant
         amount(precision: 2)
         shippingTotal(precision: 2)
         taxTotal(precision: 2)
       }
       totalListPrice(precision: 2)
-      buyer {
-        ... on User {
-          id
-        }
-        ... on Partner {
-          id
-        }
-      }
     }
   `
 )

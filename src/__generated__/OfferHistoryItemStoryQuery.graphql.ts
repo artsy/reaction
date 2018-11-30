@@ -29,55 +29,22 @@ fragment OfferHistoryItem_order on Order {
     edges {
       node {
         id
-        from {
-          __typename
-          ... on Partner {
-            id
-          }
-          ... on User {
-            id
-            __id
-          }
-          ... on Node {
-            __id
-          }
-        }
         amount(precision: 2)
         createdAt(format: "MMM D")
+        fromParticipant
         __id: id
       }
     }
   }
   lastOffer {
     id
-    from {
-      __typename
-      ... on Node {
-        __id
-      }
-      ... on User {
-        __id
-      }
-    }
+    fromParticipant
     amount(precision: 2)
     shippingTotal(precision: 2)
     taxTotal(precision: 2)
     __id: id
   }
   totalListPrice(precision: 2)
-  buyer {
-    __typename
-    ... on User {
-      id
-      __id
-    }
-    ... on Partner {
-      id
-    }
-    ... on Node {
-      __id
-    }
-  }
   __id: id
 }
 */
@@ -101,38 +68,11 @@ v1 = {
 v2 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__typename",
-  "args": null,
-  "storageKey": null
-},
-v3 = {
-  "kind": "ScalarField",
-  "alias": null,
   "name": "id",
   "args": null,
   "storageKey": null
 },
-v4 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v5 = [
-  v3
-],
-v6 = {
-  "kind": "InlineFragment",
-  "type": "User",
-  "selections": v5
-},
-v7 = {
-  "kind": "InlineFragment",
-  "type": "Partner",
-  "selections": v5
-},
-v8 = [
+v3 = [
   {
     "kind": "Literal",
     "name": "precision",
@@ -140,19 +80,26 @@ v8 = [
     "type": "Int"
   }
 ],
-v9 = {
+v4 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "amount",
-  "args": v8,
+  "args": v3,
   "storageKey": "amount(precision:2)"
+},
+v5 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "fromParticipant",
+  "args": null,
+  "storageKey": null
 };
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "OfferHistoryItemStoryQuery",
   "id": null,
-  "text": "query OfferHistoryItemStoryQuery {\n  order: ecommerceOrder(id: \"foo\") {\n    __typename\n    ...OfferHistoryItem_order\n    __id: id\n  }\n}\n\nfragment OfferHistoryItem_order on Order {\n  offers {\n    edges {\n      node {\n        id\n        from {\n          __typename\n          ... on Partner {\n            id\n          }\n          ... on User {\n            id\n            __id\n          }\n          ... on Node {\n            __id\n          }\n        }\n        amount(precision: 2)\n        createdAt(format: \"MMM D\")\n        __id: id\n      }\n    }\n  }\n  lastOffer {\n    id\n    from {\n      __typename\n      ... on Node {\n        __id\n      }\n      ... on User {\n        __id\n      }\n    }\n    amount(precision: 2)\n    shippingTotal(precision: 2)\n    taxTotal(precision: 2)\n    __id: id\n  }\n  totalListPrice(precision: 2)\n  buyer {\n    __typename\n    ... on User {\n      id\n      __id\n    }\n    ... on Partner {\n      id\n    }\n    ... on Node {\n      __id\n    }\n  }\n  __id: id\n}\n",
+  "text": "query OfferHistoryItemStoryQuery {\n  order: ecommerceOrder(id: \"foo\") {\n    __typename\n    ...OfferHistoryItem_order\n    __id: id\n  }\n}\n\nfragment OfferHistoryItem_order on Order {\n  offers {\n    edges {\n      node {\n        id\n        amount(precision: 2)\n        createdAt(format: \"MMM D\")\n        fromParticipant\n        __id: id\n      }\n    }\n  }\n  lastOffer {\n    id\n    fromParticipant\n    amount(precision: 2)\n    shippingTotal(precision: 2)\n    taxTotal(precision: 2)\n    __id: id\n  }\n  totalListPrice(precision: 2)\n  __id: id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -194,7 +141,13 @@ return {
         "concreteType": null,
         "plural": false,
         "selections": [
-          v2,
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "__typename",
+            "args": null,
+            "storageKey": null
+          },
           {
             "kind": "LinkedField",
             "alias": null,
@@ -222,23 +175,8 @@ return {
                     "concreteType": "Offer",
                     "plural": false,
                     "selections": [
-                      v3,
-                      {
-                        "kind": "LinkedField",
-                        "alias": null,
-                        "name": "from",
-                        "storageKey": null,
-                        "args": null,
-                        "concreteType": null,
-                        "plural": false,
-                        "selections": [
-                          v2,
-                          v4,
-                          v6,
-                          v7
-                        ]
-                      },
-                      v9,
+                      v2,
+                      v4,
                       {
                         "kind": "ScalarField",
                         "alias": null,
@@ -253,6 +191,7 @@ return {
                         ],
                         "storageKey": "createdAt(format:\"MMM D\")"
                       },
+                      v5,
                       v1
                     ]
                   }
@@ -269,33 +208,21 @@ return {
             "concreteType": "Offer",
             "plural": false,
             "selections": [
-              v3,
-              {
-                "kind": "LinkedField",
-                "alias": null,
-                "name": "from",
-                "storageKey": null,
-                "args": null,
-                "concreteType": null,
-                "plural": false,
-                "selections": [
-                  v2,
-                  v4
-                ]
-              },
-              v9,
+              v2,
+              v5,
+              v4,
               {
                 "kind": "ScalarField",
                 "alias": null,
                 "name": "shippingTotal",
-                "args": v8,
+                "args": v3,
                 "storageKey": "shippingTotal(precision:2)"
               },
               {
                 "kind": "ScalarField",
                 "alias": null,
                 "name": "taxTotal",
-                "args": v8,
+                "args": v3,
                 "storageKey": "taxTotal(precision:2)"
               },
               v1
@@ -305,23 +232,8 @@ return {
             "kind": "ScalarField",
             "alias": null,
             "name": "totalListPrice",
-            "args": v8,
+            "args": v3,
             "storageKey": "totalListPrice(precision:2)"
-          },
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "name": "buyer",
-            "storageKey": null,
-            "args": null,
-            "concreteType": null,
-            "plural": false,
-            "selections": [
-              v2,
-              v4,
-              v7,
-              v6
-            ]
           },
           v1
         ]

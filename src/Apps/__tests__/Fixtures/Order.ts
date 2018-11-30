@@ -121,6 +121,7 @@ export const OfferWithTotals = {
   shippingTotalCents: 20000,
   taxTotal: "$120",
   taxTotalCents: 12000,
+  fromParticipant: "SELLER",
 }
 
 export const UntouchedOfferOrder = {
@@ -200,7 +201,7 @@ export const Offers = [
   {
     node: {
       id: OfferWithTotals.id,
-      from: Seller,
+      fromParticipant: OfferWithTotals.fromParticipant,
       amount: OfferWithTotals.amount,
       createdAt: "May 22",
     },
@@ -208,7 +209,7 @@ export const Offers = [
   {
     node: {
       id: "0",
-      from: Buyer,
+      fromParticipant: "BUYER",
       amount: "$1,200.00",
       createdAt: "May 21",
     },
@@ -216,7 +217,7 @@ export const Offers = [
   {
     node: {
       id: "1",
-      from: Seller,
+      fromParticipant: "SELLER",
       amount: "$1,500.00",
       createdAt: "Apr 30",
     },
@@ -224,7 +225,7 @@ export const Offers = [
   {
     node: {
       id: "2",
-      from: Buyer,
+      fromParticipant: "BUYER",
       amount: "$1,100.00",
       createdAt: "Apr 5",
     },

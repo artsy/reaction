@@ -84,4 +84,17 @@ describe("OfferHistoryItem", () => {
     expect(text).toMatch("Seller (Apr 30)$1,500.00")
     expect(text).toMatch("You (Apr 5)$1,100.00")
   })
+
+  it("shows right copy if the last submitted offer was from the buyer", async () => {
+    const offerHistory = await render({
+      lastOffer: {
+        ...OfferWithTotals,
+        fromParticipant: "BUYER",
+      } as any,
+    })
+
+    const text = offerHistory.text()
+
+    expect(text).toMatch("Your offer$14,000")
+  })
 })

@@ -59,6 +59,20 @@ storiesOf("Apps/Order Page/Components", module).add("OfferHistoryItem", () => {
           {render({ offers: { edges: Offers as any } })}
         </Flex>
       </Section>
+      <Section title="Last offer was from buyer">
+        <Flex
+          style={{ maxWidth: "540px", width: "100%" }}
+          flexDirection="column"
+        >
+          {render({
+            lastOffer: {
+              ...OfferWithTotals,
+              ...Offers[1].node,
+            } as any,
+            offers: { edges: Offers.slice(1) as any },
+          })}
+        </Flex>
+      </Section>
     </>
   )
 })
