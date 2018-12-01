@@ -12,6 +12,7 @@ import { getUser } from "Utils/getUser"
 import { createMediaStyle } from "Utils/Responsive"
 import { trace } from "Utils/trace"
 import { RouterConfig } from "./"
+import { matchingMediaQueriesForUserAgent } from "./matchingMediaQueriesForUserAgent"
 
 interface Resolve {
   ServerApp?: ComponentType<any>
@@ -26,19 +27,19 @@ interface Resolve {
 // No need to invoke this for each request.
 const MediaStyle = createMediaStyle()
 
-export function buildServerApp(config: RouterConfig): Promise<Resolve> {
+export function buildServerApp(
+  config: RouterConfig & { userAgent: string | undefined }
+): Promise<Resolve> {
   return trace(
     "buildServerApp",
     new Promise(async (resolve, reject) => {
       try {
-        const { context = {}, routes = [], url } = config
-        const { initialMatchingMediaQueries, user } = context
-        const _user = getUser(user)
-        const relayEnvironment = createEnvironment({ user: _user })
+        const { context = {}, routes = [], url, userAgent } = config
+        const user = getUser(context.user)
+        const relayEnvironment = createEnvironment({ user })
         const historyMiddlewares = [queryMiddleware]
         const resolver = new Resolver(relayEnvironment)
         const render = createRender({})
-        const headTags = [<style type="text/css">{MediaStyle}</style>]
 
         const { redirect, status, element } = await trace(
           "buildServerApp.farceResults",
@@ -62,13 +63,17 @@ export function buildServerApp(config: RouterConfig): Promise<Resolve> {
           return
         }
 
-        const App = props => {
+        const headTags = [<style type="text/css">{MediaStyle}</style>]
+        const matchingMediaQueries =
+          userAgent && matchingMediaQueriesForUserAgent(userAgent)
+
+        const ServerApp = () => {
           return (
             <Boot
               context={context}
-              user={_user}
+              user={user}
               headTags={headTags}
-              initialMatchingMediaQueries={initialMatchingMediaQueries}
+              onlyMatchMediaQueries={matchingMediaQueries}
               relayEnvironment={relayEnvironment}
               resolver={resolver}
               routes={routes}
@@ -82,10 +87,11 @@ export function buildServerApp(config: RouterConfig): Promise<Resolve> {
           "buildServerApp.fetch",
           (async () => {
             // Kick off relay requests to prime cache
-            ReactDOMServer.renderToString(<App />)
+            // TODO: Remove the need to do this by using persisted queries.
+            ReactDOMServer.renderToString(<ServerApp />)
             // Serializable data to be rehydrated on client
             const data = await relayEnvironment.relaySSRMiddleware.getCache()
-            const state = await getLoadableState(<App />)
+            const state = await getLoadableState(<ServerApp />)
             return { relayData: data, loadableState: state }
           })()
         )
@@ -118,7 +124,7 @@ export function buildServerApp(config: RouterConfig): Promise<Resolve> {
         }
 
         resolve({
-          ServerApp: props => <App {...props} />,
+          ServerApp,
           status,
           headTags,
           scripts: scripts.join("\n"),

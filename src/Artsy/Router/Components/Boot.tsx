@@ -24,7 +24,7 @@ import {
 export interface BootProps {
   context: object
   user: User
-  initialMatchingMediaQueries?: MatchingMediaQueries
+  onlyMatchMediaQueries?: MatchingMediaQueries
   relayEnvironment: Environment
   resolver: ResolverUtils
   routes: RouteConfig
@@ -54,13 +54,11 @@ export class Boot extends React.Component<BootProps> {
         <HeadProvider headTags={headTags}>
           <StateProvider>
             <Artsy.ContextProvider {...contextProps}>
-              <MediaContextProvider
-                onlyMatch={props.initialMatchingMediaQueries}
-              >
+              <MediaContextProvider onlyMatch={props.onlyMatchMediaQueries}>
                 <ResponsiveProvider
                   mediaQueries={themeProps.mediaQueries}
                   initialMatchingMediaQueries={
-                    props.initialMatchingMediaQueries
+                    props.onlyMatchMediaQueries as any
                   }
                 >
                   <Theme>

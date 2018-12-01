@@ -8,7 +8,7 @@ export const MockBoot: React.SFC<{
 }> = ({ breakpoint = "xl", headTags, children }) => {
   return (
     <Boot
-      initialMatchingMediaQueries={[breakpoint]}
+      onlyMatchMediaQueries={[breakpoint]}
       headTags={headTags}
       context={null as any}
       user={null as any}
