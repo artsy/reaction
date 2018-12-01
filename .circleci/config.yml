@@ -49,6 +49,7 @@ jobs:
       - queue/until_front_of_line:
           time: "2" # how long a queue will wait until the job exits
           only-on-branch: master # restrict queueing to a specific branch (default *)
+          consider-job: false # block whole workflow if any job still running
 
 workflows:
   build_and_verify:
