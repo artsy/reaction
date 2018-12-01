@@ -3,6 +3,7 @@ version: 2.1
 orbs:
   node: artsy/node@0.1.0
   yarn: artsy/yarn@0.0.2
+  queue: eddiewebb/queue@1.0.110
 
 jobs:
   relay:
@@ -40,14 +41,34 @@ jobs:
     steps:
       - yarn/update_dependencies
 
+  # A job responsible for ensuring only 1 master build runs at a time so that
+  # there are no deployment race conditions
+  workflow-queue:
+    executor: node/build
+    steps:
+      - queue/until_front_of_line:
+          time: "2" # how long a queue will wait until the job exits
+          only-on-branch: master # restrict queueing to a specific branch (default *)
+
 workflows:
   build_and_verify:
     jobs:
-      - update-cache
-      - relay
-      - lint
-      - type-check
-      - test
+      - workflow-queue
+      - update-cache:
+          requires:
+            - workflow-queue
+      - relay:
+          requires:
+            - workflow-queue
+      - lint:
+          requires:
+            - workflow-queue
+      - type-check:
+          requires:
+            - workflow-queue
+      - test:
+          requires:
+            - workflow-queue
       - deploy:
           # The deploy job is the _only_ job that should have access to our npm
           # tokens. We include a context that has our publish credentials
