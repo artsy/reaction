@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@artsy/detect-responsive-traits@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@artsy/detect-responsive-traits/-/detect-responsive-traits-0.0.1.tgz#3d83384bf3323fbd4679a2d73155ab85dc73e850"
+  integrity sha512-jqrC40t1P6w9zIvsJJhWe8pxLWdEC/kJQmDc4/b3vAnGy1EsJpcIJGUys37kwut7tDYPiypUF06SImtZVLGQnQ==
+
 "@artsy/palette@^2.22.0":
   version "2.22.0"
   resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-2.22.0.tgz#3f9a6b203e301cf82a63781cc861e77387997670"
@@ -12,10 +17,10 @@
     react-spring "^5.7.2"
     styled-system "^3.1.11"
 
-"@artsy/react-responsive-media@^2.0.0-beta.4":
-  version "2.0.0-beta.4"
-  resolved "https://registry.yarnpkg.com/@artsy/react-responsive-media/-/react-responsive-media-2.0.0-beta.4.tgz#ed70fbee99f6e2b167ad26f599ce4e5b4ea1f4b0"
-  integrity sha512-w0Aa92ENdshUoHoxRvlsgggAIZ5yOc/jDW141Rbl3IjJZuGe03lgaPUlhVZe+ohqEiB/JHIA+Hjmq8RPHc7WDw==
+"@artsy/react-responsive-media@^2.0.0-beta.5":
+  version "2.0.0-beta.5"
+  resolved "https://registry.yarnpkg.com/@artsy/react-responsive-media/-/react-responsive-media-2.0.0-beta.5.tgz#d61e1a9f215d38d90ec2bb97dc1ff7409d0346fa"
+  integrity sha512-XRYA77v/j3mVInwy5EYb8NtmMkkAD1/XDxDi45BO0oduv4hsljJfjtjK7jN0ziJ6JUm2QTx/t6QwuaT9E7vTuA==
 
 "@babel/cli@^7.0.0":
   version "7.0.0"

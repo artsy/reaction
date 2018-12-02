@@ -7,6 +7,7 @@ import { buildServerApp } from "Artsy/Router/buildServerApp"
 import { render } from "enzyme"
 import React from "react"
 import { Title } from "react-head"
+import { Media } from "Utils/Responsive"
 
 jest.mock("loadable-components/server", () => ({
   getLoadableState: () =>
@@ -31,6 +32,7 @@ describe("buildServerApp", () => {
         },
       ],
       url,
+      userAgent: "A random user-agent",
       ...options,
     })
 
@@ -80,8 +82,8 @@ describe("buildServerApp", () => {
           {context => {
             expect(Object.keys(context).sort()).toEqual([
               "foo",
-              "initialMatchingMediaQueries",
               "mediator",
+              "onlyMatchMediaQueries",
               "relayEnvironment",
               "resolver",
               "routes",
@@ -104,6 +106,64 @@ describe("buildServerApp", () => {
           },
         },
       },
+    })
+  })
+
+  describe("concerning device detection", () => {
+    const MediaComponent = () => (
+      <div>
+        <Media at="xs">
+          <span>xs</span>
+        </Media>
+        <Media at="lg">
+          <span>lg</span>
+        </Media>
+        <Media interaction="hover">
+          <span>hover</span>
+        </Media>
+        <Media interaction="notHover">
+          <span>notHover</span>
+        </Media>
+      </div>
+    )
+
+    it("renders all media queries when no user-agent exists", async () => {
+      const { wrapper } = await getWrapper({
+        Component: MediaComponent,
+        options: { userAgent: undefined },
+      })
+      expect(
+        wrapper
+          .find("span")
+          .map((_, el) => el.firstChild.data)
+          .get()
+      ).toEqual(["xs", "lg", "hover", "notHover"])
+    })
+
+    it("renders all media queries for unknown devices", async () => {
+      const { wrapper } = await getWrapper({
+        Component: MediaComponent,
+        options: { userAgent: "Unknown device" },
+      })
+      expect(
+        wrapper
+          .find("span")
+          .map((_, el) => el.firstChild.data)
+          .get()
+      ).toEqual(["xs", "lg", "hover", "notHover"])
+    })
+
+    it("renders some media queries for known devices", async () => {
+      const { wrapper } = await getWrapper({
+        Component: MediaComponent,
+        options: { userAgent: "Something iPhone; something" },
+      })
+      expect(
+        wrapper
+          .find("span")
+          .map((_, el) => el.firstChild.data)
+          .get()
+      ).toEqual(["xs", "notHover"])
     })
   })
 })

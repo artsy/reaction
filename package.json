@@ -151,8 +151,9 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
+    "@artsy/detect-responsive-traits": "^0.0.1",
     "@artsy/palette": "^2.22.0",
-    "@artsy/react-responsive-media": "^2.0.0-beta.4",
+    "@artsy/react-responsive-media": "^2.0.0-beta.5",
     "@sentry/browser": "^4.2.3",
     "cheerio": "^1.0.0-rc.2",
     "currency.js": "^1.2.1",
