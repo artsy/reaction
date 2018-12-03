@@ -11,6 +11,7 @@ import {
   UntouchedOfferOrder,
 } from "Apps/__tests__/Fixtures/Order"
 import { MockRouter } from "DevTools/MockRouter"
+import moment from "moment"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { routes as orderRoutes } from "../Order/routes"
@@ -178,7 +179,12 @@ storiesOf("Apps/Order Page/Counter Offer", module).add("Respond", () => (
     initialRoute="/orders/123/respond"
     mockResolvers={mockResolver({
       ...OfferOrderWithShippingDetails,
-      lastOffer: OfferWithTotals,
+      lastOffer: {
+        ...OfferWithTotals,
+        createdAt: moment()
+          .subtract(1, "day")
+          .toLocaleString(),
+      },
       offers: { edges: Offers },
       buyer: Buyer,
     })}

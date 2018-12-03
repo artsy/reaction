@@ -15,11 +15,11 @@ import { Input } from "Components/Input"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { StaticCollapse } from "Components/StaticCollapse"
 import { Router } from "found"
+import moment from "moment"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql, RelayProp } from "react-relay"
-import { StepSummaryItem } from "Styleguide/Components"
+import { CountdownTimer } from "Styleguide/Components/CountdownTimer"
 import { Col, Row } from "Styleguide/Elements/Grid"
-import { Placeholder } from "Styleguide/Utils"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
@@ -111,9 +111,17 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                 style={isCommittingMutation ? { pointerEvents: "none" } : {}}
               >
                 <Flex flexDirection="column">
-                  <StepSummaryItem>
-                    <Placeholder name="Timer" />
-                  </StepSummaryItem>
+                  <CountdownTimer
+                    action="Respond"
+                    note="Expired offers end the negotiation process permanently"
+                    countdownStart={moment(
+                      order.lastOffer.createdAt
+                    ).toISOString()}
+                    // TODO: get offer expiry info from exchange
+                    countdownEnd={moment(order.lastOffer.createdAt)
+                      .add(2, "days")
+                      .toISOString()}
+                  />
                   <OfferHistoryItem order={order} />
                   <TransactionDetailsSummaryItem order={order} />
                 </Flex>
@@ -234,6 +242,9 @@ export const RespondFragmentContainer = createFragmentContainer(
       state
       itemsTotal(precision: 2)
       totalListPrice(precision: 2)
+      lastOffer {
+        createdAt
+      }
       lineItems {
         edges {
           node {
