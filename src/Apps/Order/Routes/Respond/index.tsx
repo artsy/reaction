@@ -113,7 +113,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                 <Flex flexDirection="column">
                   <CountdownTimer
                     action="Respond"
-                    note="Expired offers end the negotiation process permanently"
+                    note="Expired offers end the negotiation process permanently."
                     countdownStart={moment(
                       order.lastOffer.createdAt
                     ).toISOString()}
