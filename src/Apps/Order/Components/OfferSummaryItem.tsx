@@ -8,7 +8,7 @@ import {
 } from "Styleguide/Components/StepSummaryItem"
 
 const OfferSummaryItem = ({
-  order: { totalListPrice, itemsTotal },
+  order,
   ...others
 }: {
   order: OfferSummaryItem_order
@@ -16,10 +16,10 @@ const OfferSummaryItem = ({
   return (
     <StepSummaryItem title="Your offer" {...others}>
       <Serif size={["2", "3t"]} color="black100">
-        {itemsTotal}
+        {order.myLastOffer.amount}
       </Serif>
       <Sans size="2" color="black60">
-        List price: {totalListPrice}
+        List price: {order.totalListPrice}
       </Sans>
     </StepSummaryItem>
   )
@@ -29,8 +29,12 @@ export const OfferSummaryItemFragmentContainer = createFragmentContainer(
   OfferSummaryItem,
   graphql`
     fragment OfferSummaryItem_order on Order {
-      itemsTotal(precision: 2)
       totalListPrice(precision: 2)
+      ... on OfferOrder {
+        myLastOffer {
+          amount(precision: 2)
+        }
+      }
     }
   `
 )
