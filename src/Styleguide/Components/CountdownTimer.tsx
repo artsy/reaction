@@ -64,14 +64,11 @@ const ProgressBar: React.SFC<{
     moment(currentTime),
     "seconds"
   )
-  const secondsSinceStart = moment(currentTime).diff(
+  const totalSeconds = moment(countdownEnd).diff(
     moment(countdownStart),
     "seconds"
   )
-  const progress = Math.max(
-    0,
-    (secondsRemaining * 100) / (secondsSinceStart + secondsRemaining)
-  )
+  const progress = Math.max(0, (secondsRemaining * 100) / totalSeconds)
   return (
     <ProgressBarBackground>
       <div
