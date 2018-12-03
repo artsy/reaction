@@ -24,18 +24,19 @@ export class TransactionDetailsSummaryItem extends React.Component<
     return (
       <StackableBorderBox flexDirection="column" {...others}>
         {/* TODO: Seller's offer / Your offer (/ Buyer's offer? Will sellers see this component?) */}
-        {this.renderPriceEntry(order, offerOverride)}
+        {this.renderPriceEntry()}
         <Spacer mb={2} />
-        <Entry label="Shipping" value={this.shippingDisplayAmount(order)} />
+        <Entry label="Shipping" value={this.shippingDisplayAmount()} />
 
-        <Entry label="Tax" value={this.taxDisplayAmount(order)} />
+        <Entry label="Tax" value={this.taxDisplayAmount()} />
         <Spacer mb={2} />
-        <Entry label="Total" value={order.buyerTotal} final />
+        <Entry label="Total" value={this.buyerTotalDisplayAmount()} final />
       </StackableBorderBox>
     )
   }
 
-  shippingDisplayAmount = order => {
+  shippingDisplayAmount = () => {
+    const { order } = this.props
     switch (order.mode) {
       case "BUY":
         return (
@@ -52,7 +53,8 @@ export class TransactionDetailsSummaryItem extends React.Component<
     }
   }
 
-  taxDisplayAmount = order => {
+  taxDisplayAmount = () => {
+    const { order } = this.props
     switch (order.mode) {
       case "BUY":
         return this.formattedAmount(order.taxTotal, order.taxTotalCents) || "—"
@@ -66,7 +68,18 @@ export class TransactionDetailsSummaryItem extends React.Component<
     }
   }
 
-  renderPriceEntry = (order, offerOverride) => {
+  buyerTotalDisplayAmount = () => {
+    const { order } = this.props
+    switch (order.mode) {
+      case "BUY":
+        return order.buyerTotal
+      case "OFFER":
+        return order.myLastOffer && order.myLastOffer.buyerTotal
+    }
+  }
+
+  renderPriceEntry = () => {
+    const { order, offerOverride } = this.props
     return order.mode === "BUY" ? (
       <Entry label="Price" value={order.itemsTotal} />
     ) : (
@@ -150,10 +163,6 @@ export const TransactionDetailsSummaryItemFragmentContainer = createFragmentCont
       itemsTotal(precision: 2)
       totalListPrice(precision: 2)
       buyerTotal(precision: 2)
-      lastOffer {
-        id
-        amountCents
-      }
       ... on OfferOrder {
         myLastOffer {
           id
@@ -163,6 +172,8 @@ export const TransactionDetailsSummaryItemFragmentContainer = createFragmentCont
           shippingTotalCents
           taxTotal(precision: 2)
           taxTotalCents
+          buyerTotal(precision: 2)
+          buyerTotalCents
         }
       }
     }

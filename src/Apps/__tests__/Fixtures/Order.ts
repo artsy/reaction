@@ -122,6 +122,8 @@ export const OfferWithTotals = {
   taxTotal: "$120",
   taxTotalCents: 12000,
   fromParticipant: "SELLER",
+  buyerTotal: "$14,320",
+  buyerTotalCents: 1432000,
 }
 
 export const UntouchedOfferOrder = {
