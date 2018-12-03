@@ -102,7 +102,7 @@ const StaticCountdownTimer: React.SFC<{
       : "purple100"
 
   return (
-    <StackableBorderBox p={[2, 3]} flexDirection="column">
+    <StackableBorderBox flexDirection="column">
       <Flex justifyContent="flex-start">
         <TimerIcon
           width="14"
