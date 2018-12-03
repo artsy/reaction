@@ -15,6 +15,7 @@ export type Respond_order = {
     readonly state: string | null;
     readonly itemsTotal: string | null;
     readonly totalListPrice: string | null;
+    readonly stateExpiresAt: string | null;
     readonly lastOffer: ({
         readonly createdAt: string | null;
     }) | null;
@@ -139,6 +140,13 @@ return {
       "storageKey": "totalListPrice(precision:2)"
     },
     {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "stateExpiresAt",
+      "args": null,
+      "storageKey": null
+    },
+    {
       "kind": "LinkedField",
       "alias": null,
       "name": "lastOffer",
@@ -193,5 +201,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '85029ff059ba6556c45187dcee8f0bad';
+(node as any).hash = '3e27c4c9c1b23e952868c0dbe827a8d4';
 export default node;

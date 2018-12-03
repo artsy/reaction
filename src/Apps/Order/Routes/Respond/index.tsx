@@ -15,7 +15,6 @@ import { Input } from "Components/Input"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { StaticCollapse } from "Components/StaticCollapse"
 import { Router } from "found"
-import moment from "moment"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql, RelayProp } from "react-relay"
 import { CountdownTimer } from "Styleguide/Components/CountdownTimer"
@@ -114,13 +113,8 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                   <CountdownTimer
                     action="Respond"
                     note="Expired offers end the negotiation process permanently."
-                    countdownStart={moment(
-                      order.lastOffer.createdAt
-                    ).toISOString()}
-                    // TODO: get offer expiry info from exchange
-                    countdownEnd={moment(order.lastOffer.createdAt)
-                      .add(2, "days")
-                      .toISOString()}
+                    countdownStart={order.lastOffer.createdAt}
+                    countdownEnd={order.stateExpiresAt}
                   />
                   <OfferHistoryItem order={order} />
                   <TransactionDetailsSummaryItem order={order} />
@@ -242,6 +236,7 @@ export const RespondFragmentContainer = createFragmentContainer(
       state
       itemsTotal(precision: 2)
       totalListPrice(precision: 2)
+      stateExpiresAt
       lastOffer {
         createdAt
       }
