@@ -58,4 +58,11 @@ export const readChangelog = (changelogPath = CHANGELOG_PATH) =>
 export const writeChangelog = (
   changelogMarkdown: string,
   changelogPath = CHANGELOG_PATH
-) => write(changelogPath, changelogMarkdown)
+) => {
+  console.log(`Writing changelog to ${changelogPath}.\n`)
+  if (process.env.CI) {
+    write(changelogPath, changelogMarkdown)
+  } else {
+    console.log(changelogMarkdown, "\n")
+  }
+}

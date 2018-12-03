@@ -5,7 +5,8 @@
  */
 
 import OctoKit from "@octokit/rest"
-import { readFile } from "fs"
+import { spawn } from "child_process"
+import { readFile, writeFile } from "fs"
 import { join } from "path"
 import semver from "semver"
 import { promisify } from "util"
@@ -13,12 +14,19 @@ import { promisify } from "util"
 import {
   readChangelog,
   updateChangelogWithRelease,
-  // writeChangelog,
+  writeChangelog,
 } from "./changelog"
 
-import { getCommitForTag, getLastTag, getLatestMasterCommit } from "./git"
+import {
+  addAndCommitChanges,
+  getCommitForTag,
+  getLastTag,
+  getLatestMasterCommit,
+} from "./git"
+
 import {
   getLargestReleaseLabel,
+  incrementVersionByReleaseLabel,
   ReleaseLabel,
   strToReleaseLabel,
   validReleaseLabels,
@@ -27,7 +35,21 @@ import {
 import { PullRequest } from "./github"
 
 const read = promisify(readFile)
+const write = promisify(writeFile)
 
+const npm = (args: string) => {
+  const dryRun = process.env.CI ? "" : "--dry-run"
+  const child = spawn("npm", [args, dryRun], {
+    shell: true,
+    cwd: process.cwd(),
+    env: process.env,
+  })
+
+  child.stdout.on("data", d => console.log(d))
+  child.stdout.on("error", e => console.error(e))
+}
+
+const repoString = "artsy/reaction"
 const requiredEnvs = ["GITHUB_API_TOKEN"]
 
 requiredEnvs.forEach(env => {
@@ -62,8 +84,6 @@ export const run = async () => {
     return
   }
 
-  const repoString = "artsy/reaction"
-
   /**
    * Finds all pull requests between master and the last release
    */
@@ -75,37 +95,58 @@ export const run = async () => {
 
   console.log(pullRequests.map(pr => pr.html_url))
 
-  validReleaseLabels(pullRequests)
+  if (!validReleaseLabels(pullRequests)) {
+    process.exit(1)
+  }
 
+  // TODO: Add extra docs about what's happening here
   // Determine the release type by the largest label present on the PRs
-  releaseType = pullRequests
+  const releaseLabels = pullRequests
     .map(pr => pr.labels)
     .reduce((acc, curr) => acc.concat(curr), [])
     .map(label => strToReleaseLabel(label.name))
-    .filter(label => !!label)
-    .reduce(
-      (acc, curr, index, labels) =>
-        getLargestReleaseLabel(labels as ReleaseLabel[]),
-      ReleaseLabel.None
-    ) as ReleaseLabel
+    .filter(label => !!label) as ReleaseLabel[]
 
-  console.log(releaseType)
+  releaseType = getLargestReleaseLabel(releaseLabels)
 
-  // if (releaseType === ReleaseLabel.None) {
-  //   // No release is required, skip everything else
-  //   return
-  // }
+  if (releaseType === ReleaseLabel.None) {
+    console.log("Release type is none, skipping release.")
+    return
+  }
 
-  readChangelog()
-    .then(changelog => updateChangelogWithRelease(changelog, currentVersion))
-    .then(changelog => console.log(changelog))
-  // .then(changelog => writeChangelog(changelog))
+  console.log(`Release of interface {releaseType} detected.`)
 
-  const pkgPath = join(__dirname, "../package.json")
+  const newVersion = incrementVersionByReleaseLabel(currentVersion, releaseType)
+  console.log("Upgrading", currentVersion, "->", newVersion)
+
+  // TODO: Check PR for changes entry
+
+  await readChangelog()
+    .then(changelog => updateChangelogWithRelease(changelog, newVersion))
+    .then(changelog => writeChangelog(changelog))
+
+  const pkgPath = join(__dirname, "../../package.json")
   const pkg = JSON.parse(await read(pkgPath, "UTF-8"))
-  pkg.version = currentVersion
-  console.log("updating package.json", pkgPath, JSON.stringify(pkg, null, 2))
-  // write(pkgPath, JSON.stringify(pkg, null, 2))
+  pkg.version = newVersion
+
+  console.log("Writing to package.json at ", pkgPath)
+  if (process.env.CI) {
+    await write(pkgPath, JSON.stringify(pkg, null, 2))
+  } else {
+    console.log(JSON.stringify(pkg, null, 2), "\n")
+  }
+
+  await addAndCommitChanges(newVersion)
+
+  // TODO: Publish changes
+  write(
+    join(process.cwd(), ".npmrc"),
+    `//registry.npmjs.org/:_authToken=${process.env.NPM_TOKEN}`
+  )
+
+  console.log("beginning publish")
+
+  npm("publish")
 }
 
 run()
