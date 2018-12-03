@@ -11,7 +11,6 @@ import {
 import { ArticleData } from "Components/Publishing/Typings"
 import { MaxRow } from "Components/Publishing/Video/Shared"
 import React from "react"
-import { Col } from "react-styled-flexboxgrid"
 import styled from "styled-components"
 import { ArticleCards } from "./ArticleCards"
 
@@ -29,13 +28,11 @@ export const ArticleCardsBlock: React.SFC<Props> = props => {
     <ArticleCardsContainer color={color}>
       {(relatedArticles || article.relatedArticles) && (
         <MaxRow>
-          <Col>
-            <VerticalOrSeriesTitle
-              article={article}
-              color={color}
-              prefix="More in "
-            />
-          </Col>
+          <VerticalOrSeriesTitle
+            article={article}
+            color={color}
+            prefix="More in "
+          />
           <ArticleCards
             relatedArticles={relatedArticles || article.relatedArticles}
             series={seriesArticle}

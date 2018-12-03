@@ -100,7 +100,8 @@ export const FullLabel = styled.div`
 `
 
 export const Img = styled.img`
-  height: 100%;
+  height: auto;
+  width: 100%;
 `
 
 const MiniWrapper = styled(Flex)`
@@ -108,4 +109,9 @@ const MiniWrapper = styled(Flex)`
   padding: 10px 0 10px 10px;
   border: 1px solid ${color("black10")};
   cursor: pointer;
+
+  ${Img} {
+    height: 100%;
+    width: auto;
+  }
 `
