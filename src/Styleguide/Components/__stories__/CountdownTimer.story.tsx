@@ -30,6 +30,16 @@ storiesOf("Styleguide/Components", module).add("CountdownTimer", () => {
             .toISOString()}
         />
       </StepSummaryItem>
+      <StepSummaryItem title="Moves fast!" width="100%" maxWidth="542px">
+        <CountdownTimer
+          action="Respond"
+          note="Expired offers end the negotiation process permanently."
+          countdownEnd={moment()
+            .add(10, "seconds")
+            .toISOString()}
+          countdownStart={moment().toISOString()}
+        />
+      </StepSummaryItem>
       <StepSummaryItem
         title="Only an hour left to go!"
         width="100%"
@@ -40,22 +50,6 @@ storiesOf("Styleguide/Components", module).add("CountdownTimer", () => {
           note="Expired offers end the negotiation process permanently."
           countdownEnd={moment()
             .add(1, "hour")
-            .toISOString()}
-          countdownStart={moment()
-            .subtract(2, "days")
-            .toISOString()}
-        />
-      </StepSummaryItem>
-      <StepSummaryItem
-        title="Only 10 seconds to go!"
-        width="100%"
-        maxWidth="542px"
-      >
-        <CountdownTimer
-          action="Respond"
-          note="Expired offers end the negotiation process permanently."
-          countdownEnd={moment()
-            .add(10, "seconds")
             .toISOString()}
           countdownStart={moment()
             .subtract(2, "days")

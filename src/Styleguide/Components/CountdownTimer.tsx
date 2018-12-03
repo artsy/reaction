@@ -26,7 +26,7 @@ const TimeRemaining: React.SFC<{
   )
   return (
     <Sans size="3" color={highlight} weight="medium">
-      {timeRemaining.asSeconds() <= 0 ? (
+      {Math.floor(timeRemaining.asSeconds()) <= 0 ? (
         "0 days"
       ) : (
         <>
@@ -76,6 +76,7 @@ const ProgressBar: React.SFC<{
     <ProgressBarBackground>
       <div
         style={{
+          transition: "width 0.34s ease",
           backgroundColor: color(highlight),
           width: progress + "%",
         }}
