@@ -17,7 +17,7 @@ export const Timer: React.SFC<{
       const duration = moment.duration(
         Math.max(moment(endDate).diff(moment(currentTime)), 0)
       )
-      const hasEnded = Math.floor(duration.asSeconds())
+      const hasEnded = Math.floor(duration.asSeconds()) <= 0
 
       return (
         <Flex flexDirection="column" alignItems="center">
