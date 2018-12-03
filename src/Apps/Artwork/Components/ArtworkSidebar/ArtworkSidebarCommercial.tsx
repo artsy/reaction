@@ -35,6 +35,18 @@ export class ArtworkSidebarCommercial extends React.Component<
     })
   }
 
+  handleCreateInquiry = e => {
+    console.log("Creating inquiry")
+  }
+
+  handleCreateOrder = e => {
+    console.log("Creating order")
+  }
+
+  handleCreateOfferOrder = e => {
+    console.log("Creating offer")
+  }
+
   render() {
     const { artwork } = this.props
     if (!artwork.sale_message && !artwork.is_inquireable) {
@@ -49,9 +61,49 @@ export class ArtworkSidebarCommercial extends React.Component<
         ) : (
           this.renderEditions()
         )}
+        {(artwork.is_acquireable || artwork.is_offerable) &&
+          artwork.shippingInfo && (
+            <Serif size="2" color="black60">
+              {artwork.shippingInfo}
+            </Serif>
+          )}
+        {(artwork.is_acquireable || artwork.is_offerable) &&
+          artwork.shippingOrigin && (
+            <Serif size="2" color="black60">
+              Ships from {artwork.shippingOrigin}
+            </Serif>
+          )}
         {artwork.is_inquireable && (
-          <Button width="100%" size="medium" mt={1}>
+          <Button
+            width="100%"
+            size="medium"
+            mt={1}
+            onClick={this.handleCreateInquiry}
+          >
             Contact Gallery
+          </Button>
+        )}
+        {artwork.is_acquireable && (
+          <Button
+            width="100%"
+            size="medium"
+            mt={1}
+            onClick={this.handleCreateOrder}
+          >
+            Buy Now
+          </Button>
+        )}
+        {artwork.is_offerable && (
+          <Button
+            variant={
+              artwork.is_acquireable ? "secondaryOutline" : "primaryBlack"
+            }
+            width="100%"
+            size="medium"
+            mt={1}
+            onClick={this.handleCreateOfferOrder}
+          >
+            Make Offer
           </Button>
         )}
       </Box>
@@ -64,8 +116,12 @@ export const ArtworkSidebarCommercialFragmentContainer = createFragmentContainer
   graphql`
     fragment ArtworkSidebarCommercial_artwork on Artwork {
       __id
-      sale_message
+      is_acquireable
       is_inquireable
+      is_offerable
+      sale_message
+      shippingInfo
+      shippingOrigin
       edition_sets {
         __id
         ...ArtworkSidebarSizeInfo_piece

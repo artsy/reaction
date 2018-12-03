@@ -71,3 +71,51 @@ export const ContactForPriceWork = {
     },
   ],
 }
+
+export const ArtworkBuyNow = {
+  __id: "artwork_buy_now",
+  sale_message: "$10,000",
+  is_acquireable: true,
+  is_inquireable: false,
+  is_offerable: false,
+  pickup_available: false,
+  edition_sets: [],
+  shippingInfo: "Shipping: Free shipping worldwide",
+  shippingOrigin: "New York, New York, US",
+}
+
+export const ArtworkSold = {
+  __id: "artwork_sold",
+  sale_message: "Sold",
+  is_acquireable: false,
+  is_inquireable: false,
+  is_offerable: false,
+  pickup_available: false,
+  edition_sets: [],
+  shippingInfo: null,
+  shippingOrigin: null,
+}
+
+export const ArtworkMakeOffer = {
+  __id: "artwork_sold",
+  sale_message: "$10,000",
+  is_acquireable: false,
+  is_inquireable: false,
+  is_offerable: true,
+  pickup_available: false,
+  edition_sets: [],
+  shippingInfo: "Shipping: Free shipping worldwide",
+  shippingOrigin: "New York, New York, US",
+}
+
+export const ArtworkBuyNowMakeOffer = {
+  __id: "artwork_buy_now_make_offer",
+  sale_message: "$10,000",
+  is_acquireable: true,
+  is_inquireable: false,
+  is_offerable: true,
+  pickup_available: false,
+  edition_sets: [],
+  shippingInfo: "Shipping: Free shipping worldwide",
+  shippingOrigin: "New York, New York, US",
+}

@@ -6,8 +6,12 @@ declare const _ArtworkSidebarCommercial_artwork$ref: unique symbol;
 export type ArtworkSidebarCommercial_artwork$ref = typeof _ArtworkSidebarCommercial_artwork$ref;
 export type ArtworkSidebarCommercial_artwork = {
     readonly __id: string;
-    readonly sale_message: string | null;
+    readonly is_acquireable: boolean | null;
     readonly is_inquireable: boolean | null;
+    readonly is_offerable: boolean | null;
+    readonly sale_message: string | null;
+    readonly shippingInfo: string | null;
+    readonly shippingOrigin: string | null;
     readonly edition_sets: ReadonlyArray<({
         readonly __id: string;
         readonly " $fragmentRefs": ArtworkSidebarSizeInfo_piece$ref;
@@ -36,7 +40,7 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "sale_message",
+      "name": "is_acquireable",
       "args": null,
       "storageKey": null
     },
@@ -44,6 +48,34 @@ return {
       "kind": "ScalarField",
       "alias": null,
       "name": "is_inquireable",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "is_offerable",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "sale_message",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "shippingInfo",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "shippingOrigin",
       "args": null,
       "storageKey": null
     },
@@ -67,5 +99,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '669c7d0f6925c8d65a091eec906d463e';
+(node as any).hash = '1f611316292840b9c4f00738a1b274fe';
 export default node;
