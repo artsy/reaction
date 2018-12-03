@@ -15,6 +15,10 @@ export type Respond_order = {
     readonly state: string | null;
     readonly itemsTotal: string | null;
     readonly totalListPrice: string | null;
+    readonly stateExpiresAt: string | null;
+    readonly lastOffer: ({
+        readonly createdAt: string | null;
+    }) | null;
     readonly lineItems: ({
         readonly edges: ReadonlyArray<({
             readonly node: ({
@@ -38,21 +42,21 @@ var v0 = {
   "args": null,
   "storageKey": null
 },
-v1 = [
+v1 = {
+  "kind": "ScalarField",
+  "alias": "__id",
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v2 = [
   {
     "kind": "Literal",
     "name": "precision",
     "value": 2,
     "type": "Int"
   }
-],
-v2 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
-};
+];
 return {
   "kind": "Fragment",
   "name": "Respond_order",
@@ -60,33 +64,6 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    {
-      "kind": "FragmentSpread",
-      "name": "TransactionDetailsSummaryItem_order",
-      "args": null
-    },
-    v0,
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "state",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "itemsTotal",
-      "args": v1,
-      "storageKey": "itemsTotal(precision:2)"
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "totalListPrice",
-      "args": v1,
-      "storageKey": "totalListPrice(precision:2)"
-    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -133,11 +110,59 @@ return {
                     }
                   ]
                 },
-                v2
+                v1
               ]
             }
           ]
         }
+      ]
+    },
+    v0,
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "state",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "itemsTotal",
+      "args": v2,
+      "storageKey": "itemsTotal(precision:2)"
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "totalListPrice",
+      "args": v2,
+      "storageKey": "totalListPrice(precision:2)"
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "stateExpiresAt",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "lastOffer",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Offer",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "createdAt",
+          "args": null,
+          "storageKey": null
+        },
+        v1
       ]
     },
     {
@@ -146,6 +171,11 @@ return {
       "name": "mode",
       "args": null,
       "storageKey": null
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "TransactionDetailsSummaryItem_order",
+      "args": null
     },
     {
       "kind": "FragmentSpread",
@@ -167,9 +197,9 @@ return {
       "name": "OfferHistoryItem_order",
       "args": null
     },
-    v2
+    v1
   ]
 };
 })();
-(node as any).hash = '5e84111095cb1a4523b2760deda7062b';
+(node as any).hash = '3e27c4c9c1b23e952868c0dbe827a8d4';
 export default node;

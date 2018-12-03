@@ -1,22 +1,22 @@
 import { Sans } from "@artsy/palette"
+import moment from "moment"
 import React from "react"
 import * as renderer from "react-test-renderer"
 import { Timer } from "../Timer"
 
-const SECONDS = 1000
-const MINUTES = 60 * SECONDS
+jest.useFakeTimers()
 
-const dateNow = 1525983752000 // Thursday, May 10, 2018 8:22:32.000 PM UTC in milliseconds
+jest.mock("Utils/getCurrentTimeAsIsoString", () => ({
+  // Thursday, May 10, 2018 8:22:32.000 PM UTC in milliseconds
+  getCurrentTimeAsIsoString: jest.fn(() => "2018-05-10T20:22:32.000Z"),
+}))
+
+const currentTimeMock: jest.Mock<
+  string
+> = require("Utils/getCurrentTimeAsIsoString").getCurrentTimeAsIsoString
 
 const getTimerText = timerComponent =>
   timerComponent.root.findAllByType(Sans)[0].props.children.join("")
-
-beforeEach(() => {
-  jest.useFakeTimers()
-
-  // Thursday, May 10, 2018 8:22:32.000 PM UTC
-  Date.now = () => dateNow
-})
 
 it("formats the remaining time in '00d  00h  00m  00s'", () => {
   let timer
@@ -42,9 +42,11 @@ it("counts down to zero", () => {
   const timer = renderer.create(<Timer endDate="2018-05-14T10:23:10+00:00" />)
   expect(getTimerText(timer)).toEqual("03d  14h  00m  38s")
 
-  jest.runTimersToTime(2 * SECONDS)
+  currentTimeMock.mockReturnValue(moment(currentTimeMock()).add(2, "seconds"))
+  jest.runOnlyPendingTimers()
   expect(getTimerText(timer)).toEqual("03d  14h  00m  36s")
 
-  jest.runTimersToTime(1 * MINUTES)
+  currentTimeMock.mockReturnValue(moment(currentTimeMock()).add(1, "minutes"))
+  jest.runOnlyPendingTimers()
   expect(getTimerText(timer)).toEqual("03d  13h  59m  36s")
 })
