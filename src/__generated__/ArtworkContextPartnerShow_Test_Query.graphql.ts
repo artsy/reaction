@@ -1,37 +1,49 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { ArtworkContextArtist_artwork$ref } from "./ArtworkContextArtist_artwork.graphql";
-export type ArtworkContextArtist_Test_QueryVariables = {};
-export type ArtworkContextArtist_Test_QueryResponse = {
+import { ArtworkContextPartnerShow_artwork$ref } from "./ArtworkContextPartnerShow_artwork.graphql";
+export type ArtworkContextPartnerShow_Test_QueryVariables = {};
+export type ArtworkContextPartnerShow_Test_QueryResponse = {
     readonly artwork: ({
-        readonly " $fragmentRefs": ArtworkContextArtist_artwork$ref;
+        readonly " $fragmentRefs": ArtworkContextPartnerShow_artwork$ref;
     }) | null;
 };
-export type ArtworkContextArtist_Test_Query = {
-    readonly response: ArtworkContextArtist_Test_QueryResponse;
-    readonly variables: ArtworkContextArtist_Test_QueryVariables;
+export type ArtworkContextPartnerShow_Test_Query = {
+    readonly response: ArtworkContextPartnerShow_Test_QueryResponse;
+    readonly variables: ArtworkContextPartnerShow_Test_QueryVariables;
 };
 
 
 
 /*
-query ArtworkContextArtist_Test_Query {
-  artwork(id: "on-kawara-9-jan-1973") {
-    ...ArtworkContextArtist_artwork
+query ArtworkContextPartnerShow_Test_Query {
+  artwork(id: "jacky-tsai-kissers-1") {
+    ...ArtworkContextPartnerShow_artwork
     __id
   }
 }
 
-fragment ArtworkContextArtist_artwork on Artwork {
+fragment ArtworkContextPartnerShow_artwork on Artwork {
   id
   artist {
     name
     href
     __id
   }
-  ...ArtistArtworkGrid_artwork
   ...PartnerShowArtworkGrid_artwork
+  ...ArtistArtworkGrid_artwork
+  __id
+}
+
+fragment PartnerShowArtworkGrid_artwork on Artwork {
+  show {
+    artworksConnection(first: 20) {
+      ...ArtworkGrid_artworks
+    }
+    href
+    name
+    __id
+  }
   __id
 }
 
@@ -46,18 +58,6 @@ fragment ArtistArtworkGrid_artwork on Artwork {
     artworks_connection(first: 10, filter: [IS_FOR_SALE], sort: PUBLISHED_AT_DESC) {
       ...ArtworkGrid_artworks
     }
-    __id
-  }
-  __id
-}
-
-fragment PartnerShowArtworkGrid_artwork on Artwork {
-  show {
-    artworksConnection(first: 20) {
-      ...ArtworkGrid_artworks
-    }
-    href
-    name
     __id
   }
   __id
@@ -181,7 +181,7 @@ var v0 = [
   {
     "kind": "Literal",
     "name": "id",
-    "value": "on-kawara-9-jan-1973",
+    "value": "jacky-tsai-kissers-1",
     "type": "String!"
   }
 ],
@@ -517,13 +517,13 @@ v7 = [
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "ArtworkContextArtist_Test_Query",
+  "name": "ArtworkContextPartnerShow_Test_Query",
   "id": null,
-  "text": "query ArtworkContextArtist_Test_Query {\n  artwork(id: \"on-kawara-9-jan-1973\") {\n    ...ArtworkContextArtist_artwork\n    __id\n  }\n}\n\nfragment ArtworkContextArtist_artwork on Artwork {\n  id\n  artist {\n    name\n    href\n    __id\n  }\n  ...ArtistArtworkGrid_artwork\n  ...PartnerShowArtworkGrid_artwork\n  __id\n}\n\nfragment ArtistArtworkGrid_artwork on Artwork {\n  id\n  artist {\n    name\n    href\n    counts {\n      artworks(format: \"0,0\", label: \"work\")\n    }\n    artworks_connection(first: 10, filter: [IS_FOR_SALE], sort: PUBLISHED_AT_DESC) {\n      ...ArtworkGrid_artworks\n    }\n    __id\n  }\n  __id\n}\n\nfragment PartnerShowArtworkGrid_artwork on Artwork {\n  show {\n    artworksConnection(first: 20) {\n      ...ArtworkGrid_artworks\n    }\n    href\n    name\n    __id\n  }\n  __id\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  is_biddable\n  sale {\n    is_preview\n    __id\n  }\n  is_acquireable\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    display_timely_at\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
+  "text": "query ArtworkContextPartnerShow_Test_Query {\n  artwork(id: \"jacky-tsai-kissers-1\") {\n    ...ArtworkContextPartnerShow_artwork\n    __id\n  }\n}\n\nfragment ArtworkContextPartnerShow_artwork on Artwork {\n  id\n  artist {\n    name\n    href\n    __id\n  }\n  ...PartnerShowArtworkGrid_artwork\n  ...ArtistArtworkGrid_artwork\n  __id\n}\n\nfragment PartnerShowArtworkGrid_artwork on Artwork {\n  show {\n    artworksConnection(first: 20) {\n      ...ArtworkGrid_artworks\n    }\n    href\n    name\n    __id\n  }\n  __id\n}\n\nfragment ArtistArtworkGrid_artwork on Artwork {\n  id\n  artist {\n    name\n    href\n    counts {\n      artworks(format: \"0,0\", label: \"work\")\n    }\n    artworks_connection(first: 10, filter: [IS_FOR_SALE], sort: PUBLISHED_AT_DESC) {\n      ...ArtworkGrid_artworks\n    }\n    __id\n  }\n  __id\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  is_biddable\n  sale {\n    is_preview\n    __id\n  }\n  is_acquireable\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    display_timely_at\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "ArtworkContextArtist_Test_Query",
+    "name": "ArtworkContextPartnerShow_Test_Query",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": [],
@@ -532,14 +532,14 @@ return {
         "kind": "LinkedField",
         "alias": null,
         "name": "artwork",
-        "storageKey": "artwork(id:\"on-kawara-9-jan-1973\")",
+        "storageKey": "artwork(id:\"jacky-tsai-kissers-1\")",
         "args": v0,
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "ArtworkContextArtist_artwork",
+            "name": "ArtworkContextPartnerShow_artwork",
             "args": null
           },
           v1
@@ -549,14 +549,14 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "ArtworkContextArtist_Test_Query",
+    "name": "ArtworkContextPartnerShow_Test_Query",
     "argumentDefinitions": [],
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "artwork",
-        "storageKey": "artwork(id:\"on-kawara-9-jan-1973\")",
+        "storageKey": "artwork(id:\"jacky-tsai-kissers-1\")",
         "args": v0,
         "concreteType": "Artwork",
         "plural": false,
@@ -638,7 +638,6 @@ return {
               }
             ]
           },
-          v1,
           {
             "kind": "LinkedField",
             "alias": null,
@@ -669,12 +668,13 @@ return {
               v3,
               v1
             ]
-          }
+          },
+          v1
         ]
       }
     ]
   }
 };
 })();
-(node as any).hash = 'e257ace3146cfbfb1d9f86d83fe04f69';
+(node as any).hash = 'dd2401d2f22699e80cdeaeceae983520';
 export default node;

@@ -6,13 +6,15 @@ import React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 import { ArtworkContextArtistQueryRenderer as ArtworkContextArtist } from "./ArtworkContexts/ArtworkContextArtist"
 import { ArtworkContextAuctionQueryRenderer as ArtworkContextAuction } from "./ArtworkContexts/ArtworkContextAuction"
-import { ArtworkContextFair } from "./ArtworkContexts/ArtworkContextFair"
-import { ArtworkContextPartnerShow } from "./ArtworkContexts/ArtworkContextPartnerShow"
+import { ArtworkContextFairQueryRenderer as ArtworkContextFair } from "./ArtworkContexts/ArtworkContextFair"
+import { ArtworkContextPartnerShowQueryRenderer as ArtworkContextPartnerShow } from "./ArtworkContexts/ArtworkContextPartnerShow"
 
 export const OtherWorks: React.SFC<{
   artwork: OtherWorks_artwork
 }> = props => {
   const contextType = props.artwork.context && props.artwork.context.__typename
+
+  // FIXME: Rename `artworkID` to artworkSlug
   const artworkID = props.artwork.id
 
   switch (contextType) {
@@ -26,10 +28,10 @@ export const OtherWorks: React.SFC<{
       )
     }
     case "ArtworkContextFair": {
-      return <ArtworkContextFair />
+      return <ArtworkContextFair artworkID={artworkID} />
     }
     case "ArtworkContextPartnerShow": {
-      return <ArtworkContextPartnerShow />
+      return <ArtworkContextPartnerShow artworkID={artworkID} />
     }
     default: {
       return <ArtworkContextArtist artworkID={artworkID} />

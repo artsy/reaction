@@ -6,7 +6,12 @@ export {
   AuctionArtworkGridFragmentContainer as AuctionArtworkGrid,
 } from "./AuctionArtworkGrid"
 
-export { FairArtworkGrid } from "./FairArtworkGrid"
-export { PartnerArtworkGrid } from "./PartnerArtworkGrid"
+export {
+  FairArtworkGridFragmentContainer as FairArtworkGrid,
+} from "./FairArtworkGrid"
+
+export {
+  PartnerShowArtworkGridFragmentContainer as PartnerShowArtworkGrid,
+} from "./PartnerShowArtworkGrid"
+
 export { RelatedWorksArtworkGrid } from "./RelatedWorksArtworkGrid"
-export { ShowArtworkGrid } from "./ShowArtworkGrid"
