@@ -4,6 +4,7 @@ import { MockBoot, renderRelayTree } from "DevTools"
 import React from "react"
 import { graphql } from "react-relay"
 import { EntityHeader } from "Styleguide/Components/EntityHeader"
+import { BreadCrumbList } from "../../Collect/Components/Seo"
 import { CollectionsAppFragmentContainer as CollectionsApp } from "../CollectionsApp"
 
 jest.unmock("react-relay")
@@ -34,5 +35,11 @@ describe("CollectionApp", () => {
     expect(tree.find(EntityHeader).length).toBe(10)
     expect(tree.text()).toMatch("Abstract Art")
     expect(tree.text()).toMatch("Keith Haring: Pop")
+
+    const breadCrumbList = tree.find(BreadCrumbList)
+
+    expect(breadCrumbList.props().items).toEqual([
+      { path: "/collections", name: "Collections" },
+    ])
   })
 })

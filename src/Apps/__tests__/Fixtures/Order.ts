@@ -121,6 +121,9 @@ export const OfferWithTotals = {
   shippingTotalCents: 20000,
   taxTotal: "$120",
   taxTotalCents: 12000,
+  fromParticipant: "SELLER",
+  buyerTotal: "$14,320",
+  buyerTotalCents: 1432000,
 }
 
 export const UntouchedOfferOrder = {
@@ -129,6 +132,9 @@ export const UntouchedOfferOrder = {
   mode: "OFFER",
   totalListPrice: "$16,000",
   myLastOffer: OfferWithTotals,
+  offers: {
+    edges: [{ node: OfferWithTotals }],
+  },
 }
 
 export const ShippingDetails = {
@@ -182,3 +188,48 @@ export const OfferOrderPickup = {
     __typename: "Pickup",
   },
 }
+
+export const Buyer = {
+  __typename: "User",
+  id: "buyer",
+}
+
+export const Seller = {
+  __typename: "Partner",
+  id: "seller",
+}
+
+export const Offers = [
+  {
+    node: {
+      id: OfferWithTotals.id,
+      fromParticipant: OfferWithTotals.fromParticipant,
+      amount: OfferWithTotals.amount,
+      createdAt: "May 22",
+    },
+  },
+  {
+    node: {
+      id: "0",
+      fromParticipant: "BUYER",
+      amount: "$1,200.00",
+      createdAt: "May 21",
+    },
+  },
+  {
+    node: {
+      id: "1",
+      fromParticipant: "SELLER",
+      amount: "$1,500.00",
+      createdAt: "Apr 30",
+    },
+  },
+  {
+    node: {
+      id: "2",
+      fromParticipant: "BUYER",
+      amount: "$1,100.00",
+      createdAt: "Apr 5",
+    },
+  },
+]

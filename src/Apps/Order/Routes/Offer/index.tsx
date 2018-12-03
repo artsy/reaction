@@ -66,9 +66,11 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
                       mode
                       itemsTotal
                       totalListPrice
-                      lastOffer {
-                        id
-                        amountCents
+                      ... on OfferOrder {
+                        myLastOffer {
+                          id
+                          amountCents
+                        }
                       }
                     }
                   }

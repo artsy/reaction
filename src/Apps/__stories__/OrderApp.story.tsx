@@ -1,9 +1,12 @@
 import {
+  Buyer,
   BuyOrderPickup,
   BuyOrderWithShippingDetails,
   mockResolver,
   OfferOrderPickup,
   OfferOrderWithShippingDetails,
+  Offers,
+  OfferWithTotals,
   UntouchedBuyOrder,
   UntouchedOfferOrder,
 } from "Apps/__tests__/Fixtures/Order"
@@ -173,7 +176,12 @@ storiesOf("Apps/Order Page/Make Offer/Review", module).add("Review", () => (
 storiesOf("Apps/Order Page/Counter Offer", module).add("Respond", () => (
   <Router
     initialRoute="/orders/123/respond"
-    mockResolvers={mockResolver(OfferOrderWithShippingDetails)}
+    mockResolvers={mockResolver({
+      ...OfferOrderWithShippingDetails,
+      lastOffer: OfferWithTotals,
+      offers: { edges: Offers },
+      buyer: Buyer,
+    })}
   />
 ))
 

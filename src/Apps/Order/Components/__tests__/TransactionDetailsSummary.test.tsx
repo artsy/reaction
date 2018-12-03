@@ -102,7 +102,7 @@ describe("TransactionDetailsSummaryItem", () => {
       expect(text).toMatch("Your offer$14,000")
       expect(text).toMatch("Shipping$200")
       expect(text).toMatch("Tax$120")
-      expect(text).toMatch("Total$215.25")
+      expect(text).toMatch("Total$14,320")
     })
 
     it("shows the shipping and tax price as dashes if null", async () => {
@@ -114,6 +114,8 @@ describe("TransactionDetailsSummaryItem", () => {
           taxTotalCents: null,
           shippingTotal: null,
           shippingTotalCents: null,
+          buyerTotal: null,
+          buyerTotalCents: null,
         },
       })
 
@@ -122,7 +124,7 @@ describe("TransactionDetailsSummaryItem", () => {
       expect(text).toMatch("Your offer$14,000")
       expect(text).toMatch("Shipping—")
       expect(text).toMatch("Tax—")
-      expect(text).toMatch("Total$215.25")
+      expect(text).toMatch("Total")
     })
 
     it("shows the shipping and tax price as $0.00 if zero cents", async () => {
@@ -134,6 +136,8 @@ describe("TransactionDetailsSummaryItem", () => {
           taxTotalCents: 0,
           shippingTotal: null,
           shippingTotalCents: 0,
+          buyerTotal: "$14,000",
+          buyerTotalCents: 1400000,
         },
       } as any)
 
@@ -142,7 +146,7 @@ describe("TransactionDetailsSummaryItem", () => {
       expect(text).toMatch("Your offer$14,000")
       expect(text).toMatch("Shipping$0.00")
       expect(text).toMatch("Tax$0.00")
-      expect(text).toMatch("Total$215.25")
+      expect(text).toMatch("Total$14,000")
     })
 
     it("shows empty fields when there are no myLastOffer yet", async () => {
@@ -156,7 +160,7 @@ describe("TransactionDetailsSummaryItem", () => {
       expect(text).toMatch("Your offer—")
       expect(text).toMatch("Shipping—")
       expect(text).toMatch("Tax—")
-      expect(text).toMatch("Total$215.25")
+      expect(text).toMatch("Total")
     })
   })
 })
