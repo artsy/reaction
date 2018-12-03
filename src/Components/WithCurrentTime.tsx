@@ -1,5 +1,5 @@
-import moment from "moment"
 import React from "react"
+import { getCurrentTimeAsIsoString } from "Utils/getCurrentTimeAsIsoString"
 
 /**
  * Render prop component to provide the current time as an ISO string.
@@ -24,7 +24,7 @@ export class WithCurrentTime extends React.Component<
   { currentTime: string }
 > {
   state = {
-    currentTime: moment().toISOString(),
+    currentTime: getCurrentTimeAsIsoString(),
   }
 
   intervalId: NodeJS.Timer
@@ -41,7 +41,7 @@ export class WithCurrentTime extends React.Component<
   }
 
   setCurrentTime = () => {
-    this.setState({ currentTime: moment().toISOString() })
+    this.setState({ currentTime: getCurrentTimeAsIsoString() })
   }
 
   render() {
