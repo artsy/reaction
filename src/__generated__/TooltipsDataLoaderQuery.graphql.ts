@@ -110,7 +110,6 @@ fragment FollowArtistButton_artist on Artist {
   counts {
     follows
   }
-  ...FollowArtistPopover_suggested
 }
 
 fragment GeneToolTip_gene on Gene {
@@ -129,32 +128,6 @@ fragment FollowGeneButton_gene on Gene {
   __id
   id
   is_followed
-}
-
-fragment FollowArtistPopover_suggested on Artist {
-  related {
-    suggested(first: 3, exclude_followed_artists: true) {
-      edges {
-        node {
-          __id
-          ...FollowArtistPopoverRow_artist
-        }
-      }
-    }
-  }
-  __id
-}
-
-fragment FollowArtistPopoverRow_artist on Artist {
-  id
-  _id
-  __id
-  name
-  image {
-    cropped(width: 45, height: 45) {
-      url
-    }
-  }
 }
 */
 
@@ -227,13 +200,6 @@ v7 = {
 v8 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "url",
-  "args": null,
-  "storageKey": null
-},
-v9 = {
-  "kind": "ScalarField",
-  "alias": null,
   "name": "is_followed",
   "args": null,
   "storageKey": null
@@ -243,7 +209,7 @@ return {
   "operationKind": "query",
   "name": "TooltipsDataLoaderQuery",
   "id": null,
-  "text": "query TooltipsDataLoaderQuery(\n  $artistSlugs: [String!]\n  $geneSlugs: [String!]\n) {\n  artists(slugs: $artistSlugs) {\n    id\n    _id\n    ...ArtistToolTip_artist\n    ...MarketDataSummary_artist\n    ...FollowArtistButton_artist\n    __id\n  }\n  genes(slugs: $geneSlugs) {\n    id\n    _id\n    ...GeneToolTip_gene\n    ...FollowGeneButton_gene\n    __id\n  }\n}\n\nfragment ArtistToolTip_artist on Artist {\n  name\n  id\n  _id\n  formatted_nationality_and_birthday\n  href\n  blurb\n  carousel {\n    images {\n      resized(height: 200) {\n        url\n        width\n        height\n      }\n    }\n  }\n  genes {\n    name\n    __id\n  }\n  __id\n}\n\nfragment MarketDataSummary_artist on Artist {\n  _id\n  collections\n  highlights {\n    partners(first: 10, display_on_partner_profile: true, represented_by: true, partner_category: [\"blue-chip\", \"top-established\", \"top-emerging\"]) {\n      edges {\n        node {\n          categories {\n            id\n          }\n          __id\n        }\n        __id\n      }\n    }\n  }\n  auctionResults(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {\n    edges {\n      node {\n        price_realized {\n          display(format: \"0a\")\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n  counts {\n    follows\n  }\n  ...FollowArtistPopover_suggested\n}\n\nfragment GeneToolTip_gene on Gene {\n  description\n  href\n  id\n  _id\n  image {\n    url(version: \"tall\")\n  }\n  name\n  __id\n}\n\nfragment FollowGeneButton_gene on Gene {\n  __id\n  id\n  is_followed\n}\n\nfragment FollowArtistPopover_suggested on Artist {\n  related {\n    suggested(first: 3, exclude_followed_artists: true) {\n      edges {\n        node {\n          __id\n          ...FollowArtistPopoverRow_artist\n        }\n      }\n    }\n  }\n  __id\n}\n\nfragment FollowArtistPopoverRow_artist on Artist {\n  id\n  _id\n  __id\n  name\n  image {\n    cropped(width: 45, height: 45) {\n      url\n    }\n  }\n}\n",
+  "text": "query TooltipsDataLoaderQuery(\n  $artistSlugs: [String!]\n  $geneSlugs: [String!]\n) {\n  artists(slugs: $artistSlugs) {\n    id\n    _id\n    ...ArtistToolTip_artist\n    ...MarketDataSummary_artist\n    ...FollowArtistButton_artist\n    __id\n  }\n  genes(slugs: $geneSlugs) {\n    id\n    _id\n    ...GeneToolTip_gene\n    ...FollowGeneButton_gene\n    __id\n  }\n}\n\nfragment ArtistToolTip_artist on Artist {\n  name\n  id\n  _id\n  formatted_nationality_and_birthday\n  href\n  blurb\n  carousel {\n    images {\n      resized(height: 200) {\n        url\n        width\n        height\n      }\n    }\n  }\n  genes {\n    name\n    __id\n  }\n  __id\n}\n\nfragment MarketDataSummary_artist on Artist {\n  _id\n  collections\n  highlights {\n    partners(first: 10, display_on_partner_profile: true, represented_by: true, partner_category: [\"blue-chip\", \"top-established\", \"top-emerging\"]) {\n      edges {\n        node {\n          categories {\n            id\n          }\n          __id\n        }\n        __id\n      }\n    }\n  }\n  auctionResults(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {\n    edges {\n      node {\n        price_realized {\n          display(format: \"0a\")\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n\nfragment GeneToolTip_gene on Gene {\n  description\n  href\n  id\n  _id\n  image {\n    url(version: \"tall\")\n  }\n  name\n  __id\n}\n\nfragment FollowGeneButton_gene on Gene {\n  __id\n  id\n  is_followed\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -385,7 +351,13 @@ return {
                     "concreteType": "ResizedImageUrl",
                     "plural": false,
                     "selections": [
-                      v8,
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "url",
+                        "args": null,
+                        "storageKey": null
+                      },
                       {
                         "kind": "ScalarField",
                         "alias": null,
@@ -580,7 +552,7 @@ return {
               }
             ]
           },
-          v9,
+          v8,
           {
             "kind": "LinkedField",
             "alias": null,
@@ -596,103 +568,6 @@ return {
                 "name": "follows",
                 "args": null,
                 "storageKey": null
-              }
-            ]
-          },
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "name": "related",
-            "storageKey": null,
-            "args": null,
-            "concreteType": "ArtistRelatedData",
-            "plural": false,
-            "selections": [
-              {
-                "kind": "LinkedField",
-                "alias": null,
-                "name": "suggested",
-                "storageKey": "suggested(exclude_followed_artists:true,first:3)",
-                "args": [
-                  {
-                    "kind": "Literal",
-                    "name": "exclude_followed_artists",
-                    "value": true,
-                    "type": "Boolean"
-                  },
-                  {
-                    "kind": "Literal",
-                    "name": "first",
-                    "value": 3,
-                    "type": "Int"
-                  }
-                ],
-                "concreteType": "ArtistConnection",
-                "plural": false,
-                "selections": [
-                  {
-                    "kind": "LinkedField",
-                    "alias": null,
-                    "name": "edges",
-                    "storageKey": null,
-                    "args": null,
-                    "concreteType": "ArtistEdge",
-                    "plural": true,
-                    "selections": [
-                      {
-                        "kind": "LinkedField",
-                        "alias": null,
-                        "name": "node",
-                        "storageKey": null,
-                        "args": null,
-                        "concreteType": "Artist",
-                        "plural": false,
-                        "selections": [
-                          v4,
-                          v2,
-                          v3,
-                          v6,
-                          {
-                            "kind": "LinkedField",
-                            "alias": null,
-                            "name": "image",
-                            "storageKey": null,
-                            "args": null,
-                            "concreteType": "Image",
-                            "plural": false,
-                            "selections": [
-                              {
-                                "kind": "LinkedField",
-                                "alias": null,
-                                "name": "cropped",
-                                "storageKey": "cropped(height:45,width:45)",
-                                "args": [
-                                  {
-                                    "kind": "Literal",
-                                    "name": "height",
-                                    "value": 45,
-                                    "type": "Int!"
-                                  },
-                                  {
-                                    "kind": "Literal",
-                                    "name": "width",
-                                    "value": 45,
-                                    "type": "Int!"
-                                  }
-                                ],
-                                "concreteType": "CroppedImageUrl",
-                                "plural": false,
-                                "selections": [
-                                  v8
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
               }
             ]
           }
@@ -744,7 +619,7 @@ return {
           },
           v6,
           v4,
-          v9
+          v8
         ]
       }
     ]

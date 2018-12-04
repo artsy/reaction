@@ -98,33 +98,6 @@ fragment FollowArtistButton_artist on Artist {
   counts {
     follows
   }
-  ...FollowArtistPopover_suggested
-}
-
-fragment FollowArtistPopover_suggested on Artist {
-  related {
-    suggested(first: 3, exclude_followed_artists: true) {
-      edges {
-        node {
-          __id
-          ...FollowArtistPopoverRow_artist
-        }
-      }
-    }
-  }
-  __id
-}
-
-fragment FollowArtistPopoverRow_artist on Artist {
-  id
-  _id
-  __id
-  name
-  image {
-    cropped(width: 45, height: 45) {
-      url
-    }
-  }
 }
 */
 
@@ -172,22 +145,6 @@ v4 = [
 v5 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "name",
-  "args": null,
-  "storageKey": null
-},
-v6 = [
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "url",
-    "args": null,
-    "storageKey": null
-  }
-],
-v7 = {
-  "kind": "ScalarField",
-  "alias": null,
   "name": "__id",
   "args": null,
   "storageKey": null
@@ -197,7 +154,7 @@ return {
   "operationKind": "query",
   "name": "routes_RelatedArtistsQuery",
   "id": null,
-  "text": "query routes_RelatedArtistsQuery(\n  $artistID: String!\n) {\n  viewer {\n    ...RelatedArtists_viewer\n  }\n}\n\nfragment RelatedArtists_viewer on Viewer {\n  mainArtists: artist(id: $artistID) {\n    ...RelatedArtistsList_artist_hdyd3\n    __id\n  }\n}\n\nfragment RelatedArtistsList_artist_hdyd3 on Artist {\n  id\n  related {\n    artists(first: 16, kind: MAIN) {\n      pageInfo {\n        hasNextPage\n        endCursor\n      }\n      pageCursors {\n        ...Pagination_pageCursors\n      }\n      edges {\n        node {\n          ...ArtistCard_artist\n          __id\n        }\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n\nfragment ArtistCard_artist on Artist {\n  name\n  id\n  href\n  image {\n    cropped(width: 400, height: 300) {\n      url\n    }\n  }\n  formatted_nationality_and_birthday\n  ...FollowArtistButton_artist\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n  counts {\n    follows\n  }\n  ...FollowArtistPopover_suggested\n}\n\nfragment FollowArtistPopover_suggested on Artist {\n  related {\n    suggested(first: 3, exclude_followed_artists: true) {\n      edges {\n        node {\n          __id\n          ...FollowArtistPopoverRow_artist\n        }\n      }\n    }\n  }\n  __id\n}\n\nfragment FollowArtistPopoverRow_artist on Artist {\n  id\n  _id\n  __id\n  name\n  image {\n    cropped(width: 45, height: 45) {\n      url\n    }\n  }\n}\n",
+  "text": "query routes_RelatedArtistsQuery(\n  $artistID: String!\n) {\n  viewer {\n    ...RelatedArtists_viewer\n  }\n}\n\nfragment RelatedArtists_viewer on Viewer {\n  mainArtists: artist(id: $artistID) {\n    ...RelatedArtistsList_artist_hdyd3\n    __id\n  }\n}\n\nfragment RelatedArtistsList_artist_hdyd3 on Artist {\n  id\n  related {\n    artists(first: 16, kind: MAIN) {\n      pageInfo {\n        hasNextPage\n        endCursor\n      }\n      pageCursors {\n        ...Pagination_pageCursors\n      }\n      edges {\n        node {\n          ...ArtistCard_artist\n          __id\n        }\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n\nfragment ArtistCard_artist on Artist {\n  name\n  id\n  href\n  image {\n    cropped(width: 400, height: 300) {\n      url\n    }\n  }\n  formatted_nationality_and_birthday\n  ...FollowArtistButton_artist\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -383,7 +340,13 @@ return {
                             "concreteType": "Artist",
                             "plural": false,
                             "selections": [
-                              v5,
+                              {
+                                "kind": "ScalarField",
+                                "alias": null,
+                                "name": "name",
+                                "args": null,
+                                "storageKey": null
+                              },
                               v1,
                               {
                                 "kind": "ScalarField",
@@ -422,7 +385,15 @@ return {
                                     ],
                                     "concreteType": "CroppedImageUrl",
                                     "plural": false,
-                                    "selections": v6
+                                    "selections": [
+                                      {
+                                        "kind": "ScalarField",
+                                        "alias": null,
+                                        "name": "url",
+                                        "args": null,
+                                        "storageKey": null
+                                      }
+                                    ]
                                   }
                                 ]
                               },
@@ -433,7 +404,7 @@ return {
                                 "args": null,
                                 "storageKey": null
                               },
-                              v7,
+                              v5,
                               {
                                 "kind": "ScalarField",
                                 "alias": null,
@@ -458,107 +429,6 @@ return {
                                     "storageKey": null
                                   }
                                 ]
-                              },
-                              {
-                                "kind": "LinkedField",
-                                "alias": null,
-                                "name": "related",
-                                "storageKey": null,
-                                "args": null,
-                                "concreteType": "ArtistRelatedData",
-                                "plural": false,
-                                "selections": [
-                                  {
-                                    "kind": "LinkedField",
-                                    "alias": null,
-                                    "name": "suggested",
-                                    "storageKey": "suggested(exclude_followed_artists:true,first:3)",
-                                    "args": [
-                                      {
-                                        "kind": "Literal",
-                                        "name": "exclude_followed_artists",
-                                        "value": true,
-                                        "type": "Boolean"
-                                      },
-                                      {
-                                        "kind": "Literal",
-                                        "name": "first",
-                                        "value": 3,
-                                        "type": "Int"
-                                      }
-                                    ],
-                                    "concreteType": "ArtistConnection",
-                                    "plural": false,
-                                    "selections": [
-                                      {
-                                        "kind": "LinkedField",
-                                        "alias": null,
-                                        "name": "edges",
-                                        "storageKey": null,
-                                        "args": null,
-                                        "concreteType": "ArtistEdge",
-                                        "plural": true,
-                                        "selections": [
-                                          {
-                                            "kind": "LinkedField",
-                                            "alias": null,
-                                            "name": "node",
-                                            "storageKey": null,
-                                            "args": null,
-                                            "concreteType": "Artist",
-                                            "plural": false,
-                                            "selections": [
-                                              v7,
-                                              v1,
-                                              {
-                                                "kind": "ScalarField",
-                                                "alias": null,
-                                                "name": "_id",
-                                                "args": null,
-                                                "storageKey": null
-                                              },
-                                              v5,
-                                              {
-                                                "kind": "LinkedField",
-                                                "alias": null,
-                                                "name": "image",
-                                                "storageKey": null,
-                                                "args": null,
-                                                "concreteType": "Image",
-                                                "plural": false,
-                                                "selections": [
-                                                  {
-                                                    "kind": "LinkedField",
-                                                    "alias": null,
-                                                    "name": "cropped",
-                                                    "storageKey": "cropped(height:45,width:45)",
-                                                    "args": [
-                                                      {
-                                                        "kind": "Literal",
-                                                        "name": "height",
-                                                        "value": 45,
-                                                        "type": "Int!"
-                                                      },
-                                                      {
-                                                        "kind": "Literal",
-                                                        "name": "width",
-                                                        "value": 45,
-                                                        "type": "Int!"
-                                                      }
-                                                    ],
-                                                    "concreteType": "CroppedImageUrl",
-                                                    "plural": false,
-                                                    "selections": v6
-                                                  }
-                                                ]
-                                              }
-                                            ]
-                                          }
-                                        ]
-                                      }
-                                    ]
-                                  }
-                                ]
                               }
                             ]
                           }
@@ -568,7 +438,7 @@ return {
                   }
                 ]
               },
-              v7
+              v5
             ]
           }
         ]
