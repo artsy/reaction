@@ -1,3 +1,4 @@
+import { routes_OrderQueryResponse } from "__generated__/routes_OrderQuery.graphql"
 import { Location, RedirectException, RouteConfig, Router } from "found"
 import { get } from "Utils/get"
 import { OrderApp } from "./OrderApp"
@@ -28,9 +29,18 @@ export const confirmRouteExit = (
   return LEAVE_MESSAGING
 }
 
-export const shouldRedirect = props => {
-  const { location, order, params } = props as any
-
+export const shouldRedirect = ({
+  location,
+  order,
+  params,
+}: {
+  // note: these types were originally based on what this function was using
+  // rather than what it was being given. Feel free to extend if it needs
+  // to use more things.
+  location: Location
+  order: routes_OrderQueryResponse["order"]
+  params: { orderID: string }
+}) => {
   if (!order) {
     // error
     return false
@@ -42,14 +52,29 @@ export const shouldRedirect = props => {
     throw new RedirectException(artworkID ? `/artwork/${artworkID}` : "/")
   }
 
-  if (order.state !== "PENDING" && !location.pathname.includes("status")) {
+  if (
+    order.state !== "PENDING" &&
+    !location.pathname.includes("status") &&
+    order.mode !== "OFFER"
+  ) {
     // Redirect to status page if the order is no longer PENDING (means it can't be edited anymore)
     throw new RedirectException(`/orders/${params.orderID}/status`)
   }
 
+  if (
+    location.pathname.includes("respond") &&
+    order.awaitingResponseFrom !== "BUYER"
+  ) {
+    // redirect to status page if there is nothing to respond to
+    throw new RedirectException(`/orders/${params.orderID}/status`)
+  }
+
   if (location.pathname.includes("offer")) {
-    // TODO: more validation
-    return false
+    if (order.state !== "PENDING") {
+      throw new RedirectException(`/orders/${params.orderID}/status`)
+    } else if (order.mode !== "OFFER") {
+      throw new RedirectException(`/orders/${params.orderID}/shipping`)
+    }
   }
 
   if (!order.requestedFulfillment && !location.pathname.includes("shipping")) {

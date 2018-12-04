@@ -1,6 +1,8 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
+export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
+export type OrderParticipantEnum = "BUYER" | "SELLER" | "%future added value";
 export type routes_OrderQueryVariables = {
     readonly orderID: string;
 };
@@ -9,6 +11,7 @@ export type routes_OrderQueryResponse = {
         readonly name: string | null;
     }) | null;
     readonly order: ({
+        readonly mode: OrderModeEnum | null;
         readonly state: string | null;
         readonly requestedFulfillment: ({
             readonly __typename: string;
@@ -25,6 +28,7 @@ export type routes_OrderQueryResponse = {
         readonly creditCard: ({
             readonly id: string;
         }) | null;
+        readonly awaitingResponseFrom?: OrderParticipantEnum | null;
     }) | null;
 };
 export type routes_OrderQuery = {
@@ -44,6 +48,7 @@ query routes_OrderQuery(
   }
   order: ecommerceOrder(id: $orderID) {
     __typename
+    mode
     state
     requestedFulfillment {
       __typename
@@ -62,6 +67,9 @@ query routes_OrderQuery(
     creditCard {
       id
       __id
+    }
+    ... on OfferOrder {
+      awaitingResponseFrom
     }
     __id: id
   }
@@ -114,18 +122,25 @@ v3 = [
 v4 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "state",
+  "name": "mode",
   "args": null,
   "storageKey": null
 },
 v5 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__typename",
+  "name": "state",
   "args": null,
   "storageKey": null
 },
 v6 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__typename",
+  "args": null,
+  "storageKey": null
+},
+v7 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "requestedFulfillment",
@@ -134,10 +149,10 @@ v6 = {
   "concreteType": null,
   "plural": false,
   "selections": [
-    v5
+    v6
   ]
 },
-v7 = [
+v8 = [
   {
     "kind": "ScalarField",
     "alias": null,
@@ -147,14 +162,14 @@ v7 = [
   },
   v1
 ],
-v8 = {
+v9 = {
   "kind": "ScalarField",
   "alias": "__id",
   "name": "id",
   "args": null,
   "storageKey": null
 },
-v9 = {
+v10 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "lineItems",
@@ -189,16 +204,16 @@ v9 = {
               "args": null,
               "concreteType": "Artwork",
               "plural": false,
-              "selections": v7
+              "selections": v8
             },
-            v8
+            v9
           ]
         }
       ]
     }
   ]
 },
-v10 = {
+v11 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "creditCard",
@@ -206,14 +221,27 @@ v10 = {
   "args": null,
   "concreteType": "CreditCard",
   "plural": false,
-  "selections": v7
+  "selections": v8
+},
+v12 = {
+  "kind": "InlineFragment",
+  "type": "OfferOrder",
+  "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "awaitingResponseFrom",
+      "args": null,
+      "storageKey": null
+    }
+  ]
 };
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "routes_OrderQuery",
   "id": null,
-  "text": "query routes_OrderQuery(\n  $orderID: String!\n) {\n  me {\n    name\n    __id\n  }\n  order: ecommerceOrder(id: $orderID) {\n    __typename\n    state\n    requestedFulfillment {\n      __typename\n    }\n    lineItems {\n      edges {\n        node {\n          artwork {\n            id\n            __id\n          }\n          __id: id\n        }\n      }\n    }\n    creditCard {\n      id\n      __id\n    }\n    __id: id\n  }\n}\n",
+  "text": "query routes_OrderQuery(\n  $orderID: String!\n) {\n  me {\n    name\n    __id\n  }\n  order: ecommerceOrder(id: $orderID) {\n    __typename\n    mode\n    state\n    requestedFulfillment {\n      __typename\n    }\n    lineItems {\n      edges {\n        node {\n          artwork {\n            id\n            __id\n          }\n          __id: id\n        }\n      }\n    }\n    creditCard {\n      id\n      __id\n    }\n    ... on OfferOrder {\n      awaitingResponseFrom\n    }\n    __id: id\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -233,10 +261,12 @@ return {
         "plural": false,
         "selections": [
           v4,
-          v6,
-          v9,
+          v5,
+          v7,
           v10,
-          v8
+          v11,
+          v9,
+          v12
         ]
       }
     ]
@@ -256,17 +286,19 @@ return {
         "concreteType": null,
         "plural": false,
         "selections": [
-          v5,
-          v4,
           v6,
-          v9,
+          v4,
+          v5,
+          v7,
           v10,
-          v8
+          v11,
+          v9,
+          v12
         ]
       }
     ]
   }
 };
 })();
-(node as any).hash = 'a5f42ca394d331b958b93e77a997506d';
+(node as any).hash = '041cd59a0d9e656aaaf1061ac1991a1f';
 export default node;

@@ -188,6 +188,7 @@ storiesOf("Apps/Order Page/Counter Offer", module).add("Respond", () => (
           .subtract(1, "day")
           .toISOString(),
       },
+      awaitingResponseFrom: "BUYER",
       offers: { edges: Offers },
       buyer: Buyer,
     })}
