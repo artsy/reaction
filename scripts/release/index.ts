@@ -58,7 +58,7 @@ const npm = (args: string) =>
   })
 
 const repoString = "artsy/reaction"
-const requiredEnvs = ["GITHUB_API_TOKEN"]
+const requiredEnvs = ["GITHUB_API_TOKEN", "NPM_TOKEN"]
 
 requiredEnvs.forEach(env => {
   if (!process.env[env]) {
