@@ -46,8 +46,8 @@ const npm = (args: string) =>
       env: process.env,
     })
 
-    child.stdout.on("data", d => console.log(d))
-    child.stdout.on("error", e => console.error(e))
+    child.stdout.on("data", d => console.log(d.toString()))
+    child.stdout.on("error", e => console.error(e.toString()))
     child.on("close", code => {
       if (code !== 0) {
         console.log(`npm command ${args} failed`)
@@ -151,7 +151,7 @@ export const run = async () => {
     `//registry.npmjs.org/:_authToken=${process.env.NPM_TOKEN}`
   )
 
-  console.log("beginning publish")
+  console.log("\nBeginning publish...\n")
 
   npm("publish")
 }
