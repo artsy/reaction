@@ -96,7 +96,7 @@ export const ArtworkSidebarArtistsFragmentContainer = createFragmentContainer(
   graphql`
     fragment ArtworkSidebarArtists_artwork on Artwork
       @argumentDefinitions(
-        showFollowSuggestions: { type: "Boolean", defaultValue: false }
+        showFollowSuggestions: { type: "Boolean", defaultValue: true }
       ) {
       artists {
         __id

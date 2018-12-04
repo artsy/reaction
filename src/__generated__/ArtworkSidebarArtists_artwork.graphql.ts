@@ -35,7 +35,7 @@ return {
       "kind": "LocalArgument",
       "name": "showFollowSuggestions",
       "type": "Boolean",
-      "defaultValue": false
+      "defaultValue": true
     }
   ],
   "selections": [
@@ -88,5 +88,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '80719a108cc99cd251e922f64b192e94';
+(node as any).hash = '13362cc7f0cf86563149eb636de3337e';
 export default node;

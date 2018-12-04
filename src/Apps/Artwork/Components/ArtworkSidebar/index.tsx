@@ -56,13 +56,9 @@ export class ArtworkSidebar extends Component<ArtworkSidebarProps> {
 export const ArtworkSidebarFragmentContainer = createFragmentContainer(
   ArtworkSidebar,
   graphql`
-    fragment ArtworkSidebar_artwork on Artwork
-      @argumentDefinitions(
-        showFollowSuggestions: { type: "Boolean", defaultValue: false }
-      ) {
+    fragment ArtworkSidebar_artwork on Artwork {
       is_in_auction
       ...ArtworkSidebarArtists_artwork
-        @arguments(showFollowSuggestions: $showFollowSuggestions)
       ...ArtworkSidebarMetadata_artwork
       ...ArtworkSidebarAuctionPartnerInfo_artwork
       ...ArtworkSidebarCurrentBidInfo_artwork

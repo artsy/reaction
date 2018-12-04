@@ -147,17 +147,13 @@ export const ArtworkApp: React.SFC<Props> = props => {
 export const ArtworkAppFragmentContainer = createFragmentContainer(
   ArtworkApp,
   graphql`
-    fragment ArtworkApp_artwork on Artwork
-      @argumentDefinitions(
-        showFollowSuggestions: { type: "Boolean", defaultValue: false }
-      ) {
+    fragment ArtworkApp_artwork on Artwork {
       id
       artist {
         id
       }
       ...ArtworkBanner_artwork
       ...ArtworkSidebar_artwork
-        @arguments(showFollowSuggestions: $showFollowSuggestions)
       ...ArtworkDetails_artwork
       ...ArtworkImages_artwork
     }

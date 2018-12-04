@@ -9,22 +9,11 @@ export const routes = [
     path: "/artwork2/:artworkID",
     Component: ArtworkApp,
     query: graphql`
-      query routes_ArtworkQuery(
-        $artworkID: String!
-        $showFollowSuggestions: Boolean!
-      ) {
+      query routes_ArtworkQuery($artworkID: String!) {
         artwork(id: $artworkID) {
           ...ArtworkApp_artwork
-            @arguments(showFollowSuggestions: $showFollowSuggestions)
         }
       }
     `,
-    prepareVariables: params => {
-      const newParams = {
-        showFollowSuggestions: true,
-        ...params,
-      }
-      return newParams
-    },
   },
 ]
