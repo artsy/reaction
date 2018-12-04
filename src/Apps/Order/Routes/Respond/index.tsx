@@ -237,9 +237,6 @@ export const RespondFragmentContainer = createFragmentContainer(
       itemsTotal(precision: 2)
       totalListPrice(precision: 2)
       stateExpiresAt
-      lastOffer {
-        createdAt
-      }
       lineItems {
         edges {
           node {
@@ -247,6 +244,11 @@ export const RespondFragmentContainer = createFragmentContainer(
               id
             }
           }
+        }
+      }
+      ... on OfferOrder {
+        lastOffer {
+          createdAt
         }
       }
       ...TransactionDetailsSummaryItem_order
