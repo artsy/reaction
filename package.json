@@ -6,12 +6,6 @@
   "repository": "https://github.com/artsy/reaction.git",
   "author": "Art.sy Inc <it@artsymail.com>",
   "license": "MIT",
-  "files": [
-    "assets",
-    "data",
-    "dist",
-    "docs"
-  ],
   "peerDependencies": {
     "dd-trace": "^0.6.0",
     "react": "^16.5.0",
