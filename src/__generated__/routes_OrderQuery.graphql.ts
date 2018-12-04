@@ -11,6 +11,7 @@ export type routes_OrderQueryResponse = {
         readonly name: string | null;
     }) | null;
     readonly order: ({
+        readonly id: string | null;
         readonly mode: OrderModeEnum | null;
         readonly state: string | null;
         readonly requestedFulfillment: ({
@@ -27,6 +28,9 @@ export type routes_OrderQueryResponse = {
         }) | null;
         readonly creditCard: ({
             readonly id: string;
+        }) | null;
+        readonly myLastOffer?: ({
+            readonly id: string | null;
         }) | null;
         readonly awaitingResponseFrom?: OrderParticipantEnum | null;
     }) | null;
@@ -48,8 +52,16 @@ query routes_OrderQuery(
   }
   order: ecommerceOrder(id: $orderID) {
     __typename
+    id
     mode
     state
+    ... on OfferOrder {
+      myLastOffer {
+        id
+        __id: id
+      }
+      awaitingResponseFrom
+    }
     requestedFulfillment {
       __typename
     }
@@ -67,9 +79,6 @@ query routes_OrderQuery(
     creditCard {
       id
       __id
-    }
-    ... on OfferOrder {
-      awaitingResponseFrom
     }
     __id: id
   }
@@ -122,25 +131,32 @@ v3 = [
 v4 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "mode",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
 v5 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "state",
+  "name": "mode",
   "args": null,
   "storageKey": null
 },
 v6 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__typename",
+  "name": "state",
   "args": null,
   "storageKey": null
 },
 v7 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__typename",
+  "args": null,
+  "storageKey": null
+},
+v8 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "requestedFulfillment",
@@ -149,27 +165,21 @@ v7 = {
   "concreteType": null,
   "plural": false,
   "selections": [
-    v6
+    v7
   ]
 },
-v8 = [
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "id",
-    "args": null,
-    "storageKey": null
-  },
+v9 = [
+  v4,
   v1
 ],
-v9 = {
+v10 = {
   "kind": "ScalarField",
   "alias": "__id",
   "name": "id",
   "args": null,
   "storageKey": null
 },
-v10 = {
+v11 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "lineItems",
@@ -204,16 +214,16 @@ v10 = {
               "args": null,
               "concreteType": "Artwork",
               "plural": false,
-              "selections": v8
+              "selections": v9
             },
-            v9
+            v10
           ]
         }
       ]
     }
   ]
 },
-v11 = {
+v12 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "creditCard",
@@ -221,12 +231,25 @@ v11 = {
   "args": null,
   "concreteType": "CreditCard",
   "plural": false,
-  "selections": v8
+  "selections": v9
 },
-v12 = {
+v13 = {
   "kind": "InlineFragment",
   "type": "OfferOrder",
   "selections": [
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "myLastOffer",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Offer",
+      "plural": false,
+      "selections": [
+        v4,
+        v10
+      ]
+    },
     {
       "kind": "ScalarField",
       "alias": null,
@@ -241,7 +264,7 @@ return {
   "operationKind": "query",
   "name": "routes_OrderQuery",
   "id": null,
-  "text": "query routes_OrderQuery(\n  $orderID: String!\n) {\n  me {\n    name\n    __id\n  }\n  order: ecommerceOrder(id: $orderID) {\n    __typename\n    mode\n    state\n    requestedFulfillment {\n      __typename\n    }\n    lineItems {\n      edges {\n        node {\n          artwork {\n            id\n            __id\n          }\n          __id: id\n        }\n      }\n    }\n    creditCard {\n      id\n      __id\n    }\n    ... on OfferOrder {\n      awaitingResponseFrom\n    }\n    __id: id\n  }\n}\n",
+  "text": "query routes_OrderQuery(\n  $orderID: String!\n) {\n  me {\n    name\n    __id\n  }\n  order: ecommerceOrder(id: $orderID) {\n    __typename\n    id\n    mode\n    state\n    ... on OfferOrder {\n      myLastOffer {\n        id\n        __id: id\n      }\n      awaitingResponseFrom\n    }\n    requestedFulfillment {\n      __typename\n    }\n    lineItems {\n      edges {\n        node {\n          artwork {\n            id\n            __id\n          }\n          __id: id\n        }\n      }\n    }\n    creditCard {\n      id\n      __id\n    }\n    __id: id\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -262,11 +285,12 @@ return {
         "selections": [
           v4,
           v5,
-          v7,
-          v10,
+          v6,
+          v8,
           v11,
-          v9,
-          v12
+          v12,
+          v10,
+          v13
         ]
       }
     ]
@@ -286,19 +310,20 @@ return {
         "concreteType": null,
         "plural": false,
         "selections": [
-          v6,
+          v7,
           v4,
           v5,
-          v7,
-          v10,
+          v6,
+          v8,
           v11,
-          v9,
-          v12
+          v12,
+          v10,
+          v13
         ]
       }
     ]
   }
 };
 })();
-(node as any).hash = '041cd59a0d9e656aaaf1061ac1991a1f';
+(node as any).hash = '3108a4804a568117e7648269beeac008';
 export default node;

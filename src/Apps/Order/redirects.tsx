@@ -29,69 +29,153 @@ export const confirmRouteExit = (
   return LEAVE_MESSAGING
 }
 
-export const shouldRedirect = ({
-  location,
-  order,
-  params,
-}: {
-  // note: these types were originally based on what this function was using
-  // rather than what it was being given. Feel free to extend if it needs
-  // to use more things.
-  location: Location
-  order: routes_OrderQueryResponse["order"]
-  params: { orderID: string }
-}) => {
-  if (!order) {
-    // error
-    return false
+type RedirectPredicate = (
+  args: {
+    order: routes_OrderQueryResponse["order"]
   }
+) => string | void
 
+interface RedirectRecord {
+  path: string
+  rules: RedirectPredicate[]
+  children?: RedirectRecord[]
+}
+
+const goToStatusIf = (
+  pred: (order: routes_OrderQueryResponse["order"]) => boolean
+): RedirectPredicate => ({ order }) => {
+  if (pred(order)) {
+    return `/orders/${order.id}/status`
+  }
+}
+
+const goToArtworkIfOrderWasAbandoned: RedirectPredicate = ({ order }) => {
   if (order.state === "ABANDONED") {
     const artworkID = get(order, o => o.lineItems.edges[0].node.artwork.id)
     // If an artwork ID can't be found, redirect back to home page.
-    throw new RedirectException(artworkID ? `/artwork/${artworkID}` : "/")
+    return artworkID ? `/artwork/${artworkID}` : "/"
   }
+}
 
-  if (
-    order.state !== "PENDING" &&
-    !location.pathname.includes("status") &&
-    order.mode !== "OFFER"
-  ) {
-    // Redirect to status page if the order is no longer PENDING (means it can't be edited anymore)
-    throw new RedirectException(`/orders/${params.orderID}/status`)
+const goToStatusIfOrderIsNotPending = goToStatusIf(
+  order => order.state !== "PENDING"
+)
+
+const goToShippingIfShippingIsNotCompleted: RedirectPredicate = ({ order }) => {
+  if (!order.requestedFulfillment) {
+    return `/orders/${order.id}/shipping`
   }
+}
 
-  if (
-    location.pathname.includes("respond") &&
-    order.awaitingResponseFrom !== "BUYER"
-  ) {
-    // redirect to status page if there is nothing to respond to
-    throw new RedirectException(`/orders/${params.orderID}/status`)
+const goToPaymentIfPaymentIsNotCompleted: RedirectPredicate = ({ order }) => {
+  if (!order.creditCard) {
+    return `/orders/${order.id}/payment`
   }
+}
 
-  if (location.pathname.includes("offer")) {
-    if (order.state !== "PENDING") {
-      throw new RedirectException(`/orders/${params.orderID}/status`)
-    } else if (order.mode !== "OFFER") {
-      throw new RedirectException(`/orders/${params.orderID}/shipping`)
+const goToShippingIfOrderIsNotOfferOrder: RedirectPredicate = ({ order }) => {
+  if (order.mode !== "OFFER") {
+    return `/orders/${order.id}/shipping`
+  }
+}
+
+const goToOfferIfNoOfferMade: RedirectPredicate = ({ order }) => {
+  if (order.mode === "OFFER" && !order.myLastOffer) {
+    return `/orders/${order.id}/offer`
+  }
+}
+
+const goToStatusIfNotOfferOrder = goToStatusIf(order => order.mode !== "OFFER")
+
+const goToStatusIfNotAwaitingBuyerResponse = goToStatusIf(
+  order => order.awaitingResponseFrom !== "BUYER"
+)
+
+const goToStatusIfOrderIsNotSubmitted = goToStatusIf(
+  order => order.state !== "SUBMITTED"
+)
+
+const goToReviewIfOrderIsPending: RedirectPredicate = ({ order }) => {
+  if (order.state === "PENDING") {
+    return `/orders/${order.id}/review`
+  }
+}
+
+const redirects: RedirectRecord = {
+  path: "",
+  rules: [goToArtworkIfOrderWasAbandoned],
+  children: [
+    {
+      path: "respond",
+      rules: [
+        goToStatusIfNotOfferOrder,
+        goToStatusIfNotAwaitingBuyerResponse,
+        goToStatusIfOrderIsNotSubmitted,
+      ],
+    },
+    {
+      path: "offer",
+      rules: [
+        goToStatusIfOrderIsNotPending,
+        goToShippingIfOrderIsNotOfferOrder,
+      ],
+    },
+    {
+      path: "shipping",
+      rules: [goToStatusIfOrderIsNotPending, goToOfferIfNoOfferMade],
+    },
+    {
+      path: "payment",
+      rules: [
+        goToStatusIfOrderIsNotPending,
+        goToShippingIfShippingIsNotCompleted,
+      ],
+    },
+    {
+      path: "review",
+      rules: [
+        goToStatusIfOrderIsNotPending,
+        goToShippingIfShippingIsNotCompleted,
+        goToPaymentIfPaymentIsNotCompleted,
+      ],
+    },
+    {
+      path: "status",
+      rules: [
+        goToReviewIfOrderIsPending,
+        goToShippingIfShippingIsNotCompleted,
+        goToPaymentIfPaymentIsNotCompleted,
+      ],
+    },
+  ],
+}
+
+export const shouldRedirect = ({
+  location,
+  order,
+}: {
+  location: Location
+  order: routes_OrderQueryResponse["order"]
+}) => {
+  const locationParts = location.pathname.split("/").slice(3)
+
+  function traverse(node: RedirectRecord, path: string[]): void {
+    node.rules.forEach(rule => {
+      const redirectPath = rule({ order })
+      if (redirectPath) {
+        throw new RedirectException(redirectPath)
+      }
+    })
+    if (path.length > 0 && node.children) {
+      node.children.forEach(child => {
+        if (child.path === path[0]) {
+          traverse(child, path.slice(1))
+        }
+      })
     }
   }
 
-  if (!order.requestedFulfillment && !location.pathname.includes("shipping")) {
-    // Redirect to shipping page if no shipping info has been set
-    throw new RedirectException(`/orders/${params.orderID}/shipping`)
-  }
-
-  if (
-    !order.creditCard &&
-    !(
-      location.pathname.includes("payment") ||
-      location.pathname.includes("shipping")
-    )
-  ) {
-    // Redirect to payment page if there is shipping but _no_ credit card
-    throw new RedirectException(`/orders/${params.orderID}/payment`)
-  }
+  traverse(redirects, locationParts)
 
   return false
 }

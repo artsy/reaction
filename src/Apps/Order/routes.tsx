@@ -38,8 +38,14 @@ export const routes: RouteConfig[] = [
           name
         }
         order: ecommerceOrder(id: $orderID) {
+          id
           mode
           state
+          ... on OfferOrder {
+            myLastOffer {
+              id
+            }
+          }
           requestedFulfillment {
             __typename
           }
