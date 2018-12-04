@@ -37,17 +37,25 @@ import { PullRequest } from "./github"
 const read = promisify(readFile)
 const write = promisify(writeFile)
 
-const npm = (args: string) => {
-  const dryRun = process.env.CI ? "" : "--dry-run"
-  const child = spawn("npm", [args, dryRun], {
-    shell: true,
-    cwd: process.cwd(),
-    env: process.env,
-  })
+const npm = (args: string) =>
+  new Promise(resolve => {
+    const dryRun = process.env.CI ? "" : "--dry-run"
+    const child = spawn("npm", [args, dryRun], {
+      shell: true,
+      cwd: process.cwd(),
+      env: process.env,
+    })
 
-  child.stdout.on("data", d => console.log(d))
-  child.stdout.on("error", e => console.error(e))
-}
+    child.stdout.on("data", d => console.log(d))
+    child.stdout.on("error", e => console.error(e))
+    child.on("close", code => {
+      if (code !== 0) {
+        console.log(`npm command ${args} failed`)
+        process.exit(1)
+      }
+      resolve()
+    })
+  })
 
 const repoString = "artsy/reaction"
 const requiredEnvs = ["GITHUB_API_TOKEN"]
