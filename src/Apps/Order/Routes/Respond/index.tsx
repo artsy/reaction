@@ -62,7 +62,9 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
 
   onContinueButtonPressed: () => void = () => {
     this.setState({ isCommittingMutation: true }, () => {
-      window.alert("You did a click!")
+      if (this.state.responseOption === "ACCEPT") {
+        this.props.router.push(`/orders/${this.props.order.id}/review/accept`)
+      }
       this.setState({ isCommittingMutation: false })
     })
   }
