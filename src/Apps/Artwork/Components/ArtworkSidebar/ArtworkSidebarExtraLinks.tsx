@@ -79,7 +79,7 @@ class ArtworkSidebarExtraLinksContainer extends React.Component<
     this.props.mediator &&
       this.props.mediator.trigger &&
       this.props.mediator.trigger("openAuctionAskSpecialistModal", {
-        artworkId: this.props.artwork.__id,
+        artworkId: this.props.artwork._id,
       })
   }
 
@@ -92,7 +92,7 @@ class ArtworkSidebarExtraLinksContainer extends React.Component<
     this.props.mediator &&
       this.props.mediator.trigger &&
       this.props.mediator.trigger("openBuyNowAskSpecialistModal", {
-        artworkId: this.props.artwork.__id,
+        artworkId: this.props.artwork._id,
       })
   }
 
@@ -203,16 +203,17 @@ export const ArtworkSidebarExtraLinksFragmentContainer = createFragmentContainer
   ArtworkSidebarExtraLinks,
   graphql`
     fragment ArtworkSidebarExtraLinks_artwork on Artwork {
-      __id
+      _id
       is_in_auction
       is_for_sale
       is_acquireable
       is_inquireable
       artists {
-        __id
+        _id
         is_consignable
       }
       sale {
+        _id
         is_closed
       }
     }
