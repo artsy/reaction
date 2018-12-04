@@ -38,7 +38,14 @@ return {
   "name": "ArtworkApp_artwork",
   "type": "Artwork",
   "metadata": null,
-  "argumentDefinitions": [],
+  "argumentDefinitions": [
+    {
+      "kind": "LocalArgument",
+      "name": "showFollowSuggestions",
+      "type": "Boolean",
+      "defaultValue": false
+    }
+  ],
   "selections": [
     v0,
     {
@@ -62,7 +69,14 @@ return {
     {
       "kind": "FragmentSpread",
       "name": "ArtworkSidebar_artwork",
-      "args": null
+      "args": [
+        {
+          "kind": "Variable",
+          "name": "showFollowSuggestions",
+          "variableName": "showFollowSuggestions",
+          "type": null
+        }
+      ]
     },
     {
       "kind": "FragmentSpread",
@@ -78,5 +92,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '7e896f0fdcc50c6e8b2305de6b45a9c6';
+(node as any).hash = '7023a88b8227052816dee800023a111d';
 export default node;

@@ -24,7 +24,14 @@ const node: ConcreteFragment = {
   "name": "ArtworkSidebar_artwork",
   "type": "Artwork",
   "metadata": null,
-  "argumentDefinitions": [],
+  "argumentDefinitions": [
+    {
+      "kind": "LocalArgument",
+      "name": "showFollowSuggestions",
+      "type": "Boolean",
+      "defaultValue": false
+    }
+  ],
   "selections": [
     {
       "kind": "ScalarField",
@@ -36,7 +43,14 @@ const node: ConcreteFragment = {
     {
       "kind": "FragmentSpread",
       "name": "ArtworkSidebarArtists_artwork",
-      "args": null
+      "args": [
+        {
+          "kind": "Variable",
+          "name": "showFollowSuggestions",
+          "variableName": "showFollowSuggestions",
+          "type": null
+        }
+      ]
     },
     {
       "kind": "FragmentSpread",
@@ -82,5 +96,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'ef35603ebb4962f5dda7f9b37731efef';
+(node as any).hash = '9da7732742418d85a5d355d586ec0acc';
 export default node;
