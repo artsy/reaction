@@ -5,6 +5,7 @@
 .env
 .storybook/.DS_Store
 .storybook/manager.js
+.npmrc
 .vscode/cSpell.json
 assets/reaction-force.js
 public/assets/fonts

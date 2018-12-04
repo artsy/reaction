@@ -122,7 +122,7 @@ export const run = async () => {
     return
   }
 
-  console.log(`Release of interface {releaseType} detected.`)
+  console.log(`Release of interface ${releaseType} detected.`)
 
   const newVersion = incrementVersionByReleaseLabel(currentVersion, releaseType)
   console.log("Upgrading", currentVersion, "->", newVersion)
@@ -146,7 +146,6 @@ export const run = async () => {
 
   await addAndCommitChanges(newVersion)
 
-  // TODO: Publish changes
   write(
     join(process.cwd(), ".npmrc"),
     `//registry.npmjs.org/:_authToken=${process.env.NPM_TOKEN}`
