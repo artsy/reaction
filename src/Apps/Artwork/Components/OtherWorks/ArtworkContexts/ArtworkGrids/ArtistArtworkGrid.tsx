@@ -36,7 +36,7 @@ export const ArtistArtworkGridFragmentContainer = createFragmentContainer(
         artworks_connection(
           first: 10
           filter: [IS_FOR_SALE]
-          sort: PUBLISHED_AT_DESC # exclude: [$artworkID]
+          sort: PUBLISHED_AT_DESC # exclude: [$artworkSlug]
         ) {
           ...ArtworkGrid_artworks
         }

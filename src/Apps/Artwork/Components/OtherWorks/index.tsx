@@ -14,27 +14,27 @@ export const OtherWorks: React.SFC<{
 }> = props => {
   const contextType = props.artwork.context && props.artwork.context.__typename
 
-  // FIXME: Rename `artworkID` to artworkSlug
-  const artworkID = props.artwork.id
+  // FIXME: Rename `artworkSlug` to artworkSlug
+  const artworkSlug = props.artwork.id
 
   switch (contextType) {
     case "ArtworkContextAuction": {
       return (
         <ArtworkContextAuction
-          artworkID={artworkID}
-          artworkMongoID={props.artwork._id}
+          artworkSlug={artworkSlug}
+          artworkID={props.artwork._id}
           isClosed={props.artwork.sale.is_closed}
         />
       )
     }
     case "ArtworkContextFair": {
-      return <ArtworkContextFair artworkID={artworkID} />
+      return <ArtworkContextFair artworkSlug={artworkSlug} />
     }
     case "ArtworkContextPartnerShow": {
-      return <ArtworkContextPartnerShow artworkID={artworkID} />
+      return <ArtworkContextPartnerShow artworkSlug={artworkSlug} />
     }
     default: {
-      return <ArtworkContextArtist artworkID={artworkID} />
+      return <ArtworkContextArtist artworkSlug={artworkSlug} />
     }
   }
 }
@@ -56,9 +56,9 @@ export const OtherWorksFragmentContainer = createFragmentContainer(
 )
 
 export const OtherWorksQueryRenderer = ({
-  artworkID,
+  artworkSlug,
 }: {
-  artworkID: string
+  artworkSlug: string
 }) => {
   return (
     <ContextConsumer>
@@ -66,10 +66,10 @@ export const OtherWorksQueryRenderer = ({
         return (
           <QueryRenderer<OtherWorksQuery>
             environment={relayEnvironment}
-            variables={{ artworkID }}
+            variables={{ artworkSlug }}
             query={graphql`
-              query OtherWorksQuery($artworkID: String!) {
-                artwork(id: $artworkID) {
+              query OtherWorksQuery($artworkSlug: String!) {
+                artwork(id: $artworkSlug) {
                   ...OtherWorks_artwork
                 }
               }

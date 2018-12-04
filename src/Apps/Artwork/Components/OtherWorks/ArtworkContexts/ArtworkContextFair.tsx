@@ -14,9 +14,9 @@ import {
 } from "./ArtworkGrids"
 
 export const ArtworkContextFairQueryRenderer = ({
-  artworkID,
+  artworkSlug,
 }: {
-  artworkID: string
+  artworkSlug: string
 }) => {
   return (
     <ContextConsumer>
@@ -24,10 +24,10 @@ export const ArtworkContextFairQueryRenderer = ({
         return (
           <QueryRenderer<ArtworkContextFairQuery>
             environment={relayEnvironment}
-            variables={{ artworkID }}
+            variables={{ artworkSlug }}
             query={graphql`
-              query ArtworkContextFairQuery($artworkID: String!) {
-                artwork(id: $artworkID) {
+              query ArtworkContextFairQuery($artworkSlug: String!) {
+                artwork(id: $artworkSlug) {
                   ...ArtworkContextFair_artwork
                 }
               }
