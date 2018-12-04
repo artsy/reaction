@@ -25,13 +25,28 @@ var v0 = {
   "name": "__id",
   "args": null,
   "storageKey": null
-};
+},
+v1 = [
+  {
+    "kind": "Variable",
+    "name": "excludeArtworkIDs",
+    "variableName": "excludeArtworkIDs",
+    "type": null
+  }
+];
 return {
   "kind": "Fragment",
   "name": "ArtworkContextFair_artwork",
   "type": "Artwork",
   "metadata": null,
-  "argumentDefinitions": [],
+  "argumentDefinitions": [
+    {
+      "kind": "LocalArgument",
+      "name": "excludeArtworkIDs",
+      "type": "[String!]",
+      "defaultValue": null
+    }
+  ],
   "selections": [
     {
       "kind": "ScalarField",
@@ -69,12 +84,12 @@ return {
     {
       "kind": "FragmentSpread",
       "name": "FairArtworkGrid_artwork",
-      "args": null
+      "args": v1
     },
     {
       "kind": "FragmentSpread",
       "name": "PartnerShowArtworkGrid_artwork",
-      "args": null
+      "args": v1
     },
     {
       "kind": "FragmentSpread",
@@ -85,5 +100,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '167cefe738a69a2d780a89f662da5cdb';
+(node as any).hash = '2d41af62fb7f557dc7557f7fc5122fc0';
 export default node;

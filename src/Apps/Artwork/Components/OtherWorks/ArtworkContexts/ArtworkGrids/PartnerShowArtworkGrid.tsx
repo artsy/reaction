@@ -32,9 +32,10 @@ export const PartnerShowArtworkGrid: React.SFC<
 export const PartnerShowArtworkGridFragmentContainer = createFragmentContainer(
   PartnerShowArtworkGrid,
   graphql`
-    fragment PartnerShowArtworkGrid_artwork on Artwork {
+    fragment PartnerShowArtworkGrid_artwork on Artwork
+      @argumentDefinitions(excludeArtworkIDs: { type: "[String!]" }) {
       show {
-        artworksConnection(first: 20) {
+        artworksConnection(first: 20, exclude: $excludeArtworkIDs) {
           ...ArtworkGrid_artworks
         }
         href

@@ -93,7 +93,10 @@ export const ArtworkContextAuctionFragmentContainer = createFragmentContainer(
         @skip(if: $isClosed)
         @arguments(excludeArtworkIDs: $excludeArtworkIDs)
 
-      ...ArtistArtworkGrid_artwork @include(if: $isClosed)
+      ...ArtistArtworkGrid_artwork
+        @include(if: $isClosed)
+        @arguments(excludeArtworkIDs: $excludeArtworkIDs)
+
       # TODO:
       # ...RelatedArtworkGrid_artwork @include(if: $isClosed)
     }

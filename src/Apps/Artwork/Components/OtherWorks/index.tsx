@@ -28,13 +28,28 @@ export const OtherWorks: React.SFC<{
       )
     }
     case "ArtworkContextFair": {
-      return <ArtworkContextFair artworkSlug={artworkSlug} />
+      return (
+        <ArtworkContextFair
+          artworkSlug={artworkSlug}
+          artworkID={props.artwork._id}
+        />
+      )
     }
     case "ArtworkContextPartnerShow": {
-      return <ArtworkContextPartnerShow artworkSlug={artworkSlug} />
+      return (
+        <ArtworkContextPartnerShow
+          artworkSlug={artworkSlug}
+          artworkID={props.artwork._id}
+        />
+      )
     }
     default: {
-      return <ArtworkContextArtist artworkSlug={artworkSlug} />
+      return (
+        <ArtworkContextArtist
+          artworkSlug={artworkSlug}
+          artworkID={props.artwork._id}
+        />
+      )
     }
   }
 }

@@ -4,6 +4,7 @@ import { ConcreteRequest } from "relay-runtime";
 import { ArtworkContextPartnerShow_artwork$ref } from "./ArtworkContextPartnerShow_artwork.graphql";
 export type ArtworkContextPartnerShowQueryVariables = {
     readonly artworkSlug: string;
+    readonly excludeArtworkIDs?: ReadonlyArray<string> | null;
 };
 export type ArtworkContextPartnerShowQueryResponse = {
     readonly artwork: ({
@@ -20,28 +21,29 @@ export type ArtworkContextPartnerShowQuery = {
 /*
 query ArtworkContextPartnerShowQuery(
   $artworkSlug: String!
+  $excludeArtworkIDs: [String!]
 ) {
   artwork(id: $artworkSlug) {
-    ...ArtworkContextPartnerShow_artwork
+    ...ArtworkContextPartnerShow_artwork_4wpKaB
     __id
   }
 }
 
-fragment ArtworkContextPartnerShow_artwork on Artwork {
+fragment ArtworkContextPartnerShow_artwork_4wpKaB on Artwork {
   id
   artist {
     name
     href
     __id
   }
-  ...PartnerShowArtworkGrid_artwork
+  ...PartnerShowArtworkGrid_artwork_4wpKaB
   ...ArtistArtworkGrid_artwork
   __id
 }
 
-fragment PartnerShowArtworkGrid_artwork on Artwork {
+fragment PartnerShowArtworkGrid_artwork_4wpKaB on Artwork {
   show {
-    artworksConnection(first: 20) {
+    artworksConnection(first: 20, exclude: $excludeArtworkIDs) {
       ...ArtworkGrid_artworks
     }
     href
@@ -186,6 +188,12 @@ var v0 = [
     "kind": "LocalArgument",
     "name": "artworkSlug",
     "type": "String!",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "excludeArtworkIDs",
+    "type": "[String!]",
     "defaultValue": null
   }
 ],
@@ -531,7 +539,7 @@ return {
   "operationKind": "query",
   "name": "ArtworkContextPartnerShowQuery",
   "id": null,
-  "text": "query ArtworkContextPartnerShowQuery(\n  $artworkSlug: String!\n) {\n  artwork(id: $artworkSlug) {\n    ...ArtworkContextPartnerShow_artwork\n    __id\n  }\n}\n\nfragment ArtworkContextPartnerShow_artwork on Artwork {\n  id\n  artist {\n    name\n    href\n    __id\n  }\n  ...PartnerShowArtworkGrid_artwork\n  ...ArtistArtworkGrid_artwork\n  __id\n}\n\nfragment PartnerShowArtworkGrid_artwork on Artwork {\n  show {\n    artworksConnection(first: 20) {\n      ...ArtworkGrid_artworks\n    }\n    href\n    name\n    __id\n  }\n  __id\n}\n\nfragment ArtistArtworkGrid_artwork on Artwork {\n  id\n  artist {\n    name\n    href\n    counts {\n      artworks(format: \"0,0\", label: \"work\")\n    }\n    artworks_connection(first: 10, filter: [IS_FOR_SALE], sort: PUBLISHED_AT_DESC) {\n      ...ArtworkGrid_artworks\n    }\n    __id\n  }\n  __id\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  is_biddable\n  sale {\n    is_preview\n    __id\n  }\n  is_acquireable\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    display_timely_at\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
+  "text": "query ArtworkContextPartnerShowQuery(\n  $artworkSlug: String!\n  $excludeArtworkIDs: [String!]\n) {\n  artwork(id: $artworkSlug) {\n    ...ArtworkContextPartnerShow_artwork_4wpKaB\n    __id\n  }\n}\n\nfragment ArtworkContextPartnerShow_artwork_4wpKaB on Artwork {\n  id\n  artist {\n    name\n    href\n    __id\n  }\n  ...PartnerShowArtworkGrid_artwork_4wpKaB\n  ...ArtistArtworkGrid_artwork\n  __id\n}\n\nfragment PartnerShowArtworkGrid_artwork_4wpKaB on Artwork {\n  show {\n    artworksConnection(first: 20, exclude: $excludeArtworkIDs) {\n      ...ArtworkGrid_artworks\n    }\n    href\n    name\n    __id\n  }\n  __id\n}\n\nfragment ArtistArtworkGrid_artwork on Artwork {\n  id\n  artist {\n    name\n    href\n    counts {\n      artworks(format: \"0,0\", label: \"work\")\n    }\n    artworks_connection(first: 10, filter: [IS_FOR_SALE], sort: PUBLISHED_AT_DESC) {\n      ...ArtworkGrid_artworks\n    }\n    __id\n  }\n  __id\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  is_biddable\n  sale {\n    is_preview\n    __id\n  }\n  is_acquireable\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    display_timely_at\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -552,7 +560,14 @@ return {
           {
             "kind": "FragmentSpread",
             "name": "ArtworkContextPartnerShow_artwork",
-            "args": null
+            "args": [
+              {
+                "kind": "Variable",
+                "name": "excludeArtworkIDs",
+                "variableName": "excludeArtworkIDs",
+                "type": null
+              }
+            ]
           },
           v2
         ]
@@ -663,8 +678,14 @@ return {
                 "kind": "LinkedField",
                 "alias": null,
                 "name": "artworksConnection",
-                "storageKey": "artworksConnection(first:20)",
+                "storageKey": null,
                 "args": [
+                  {
+                    "kind": "Variable",
+                    "name": "exclude",
+                    "variableName": "excludeArtworkIDs",
+                    "type": "[String]"
+                  },
                   {
                     "kind": "Literal",
                     "name": "first",
@@ -688,5 +709,5 @@ return {
   }
 };
 })();
-(node as any).hash = '7b3b320aba867f32f757ca2fc9c7bad6';
+(node as any).hash = '6b0ca5a475894d9e5f23ef8d052650d0';
 export default node;

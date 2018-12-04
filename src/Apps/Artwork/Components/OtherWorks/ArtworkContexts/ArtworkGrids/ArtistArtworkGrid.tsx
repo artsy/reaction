@@ -24,7 +24,8 @@ export const ArtistArtworkGrid: React.SFC<ArtistArtworkGridProps> = props => {
 export const ArtistArtworkGridFragmentContainer = createFragmentContainer(
   ArtistArtworkGrid,
   graphql`
-    fragment ArtistArtworkGrid_artwork on Artwork {
+    fragment ArtistArtworkGrid_artwork on Artwork
+      @argumentDefinitions(excludeArtworkIDs: { type: "[String!]" }) {
       id
       artist {
         name
@@ -32,11 +33,11 @@ export const ArtistArtworkGridFragmentContainer = createFragmentContainer(
         counts {
           artworks(format: "0,0", label: "work")
         }
-        # FIXME: add exclude: [$artistID]), but it throws relay compiler error
         artworks_connection(
           first: 10
           filter: [IS_FOR_SALE]
-          sort: PUBLISHED_AT_DESC # exclude: [$artworkSlug]
+          sort: PUBLISHED_AT_DESC
+          exclude: $excludeArtworkIDs
         ) {
           ...ArtworkGrid_artworks
         }

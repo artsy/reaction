@@ -152,9 +152,11 @@ type Artist implements Node {
     exclude: [String]
   ): [Artwork]
   artworks_connection(
-    sort: ArtworkSorts
+    # List of artwork IDs to exclude from the response.
+    exclude: [String]
     filter: [ArtistArtworksFilters]
     published: Boolean = true
+    sort: ArtworkSorts
     after: String
     first: Int
     before: String
@@ -472,9 +474,11 @@ type ArtistItem implements Node {
     exclude: [String]
   ): [Artwork]
   artworks_connection(
-    sort: ArtworkSorts
+    # List of artwork IDs to exclude from the response.
+    exclude: [String]
     filter: [ArtistArtworksFilters]
     published: Boolean = true
+    sort: ArtworkSorts
     after: String
     first: Int
     before: String
@@ -1112,6 +1116,9 @@ type ArtworkContextFair {
   published: Boolean
     @deprecated(reason: "Prefix Boolean returning fields with `is_`")
   tagline: String
+
+  # The exhibitors with booths in this fair.
+  exhibitors_grouped_by_name: [FairExhibitorsGroup]
 }
 
 type ArtworkContextPartnerShow implements Node {
@@ -1679,6 +1686,14 @@ type ArtworkLayer {
   # A type-specific ID.
   id: String!
   artworks: [Artwork]
+
+  # A connection of artworks from a Layer.
+  artworksConnection(
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): ArtworkConnection
   description: String
   href: String
   name: String
@@ -2029,6 +2044,17 @@ type BidIncrementsFormatted {
   display: String
 }
 
+input buyerAcceptOfferInput {
+  # Offer ID
+  offerId: String!
+  clientMutationId: String
+}
+
+type buyerAcceptOfferPayload {
+  orderOrError: OrderOrFailureUnionType
+  clientMutationId: String
+}
+
 type BuyersPremium {
   # A globally unique ID.
   __id: ID!
@@ -2275,6 +2301,14 @@ type BuyOrder implements Order {
     symbol: String
     thousand: String = ","
   ): String
+}
+
+enum CancelReasonType {
+  SELLER_LAPSED
+  SELLER_REJECTED_OFFER_TOO_LOW
+  SELLER_REJECTED_SHIPPING_UNAVAILABLE
+  SELLER_REJECTED_ARTWORK_UNAVAILABLE
+  SELLER_REJECTED_OTHER
 }
 
 # Fields of partner category (currently from Gravity).
@@ -3119,6 +3153,17 @@ type Fair {
   published: Boolean
     @deprecated(reason: "Prefix Boolean returning fields with `is_`")
   tagline: String
+
+  # The exhibitors with booths in this fair.
+  exhibitors_grouped_by_name: [FairExhibitorsGroup]
+}
+
+type FairExhibitorsGroup {
+  # Letter exhibitors group belongs to
+  letter: String
+
+  # Exhibitors sorted by name
+  exhibitors: [String]
 }
 
 enum FairSorts {
@@ -4121,6 +4166,9 @@ type HomePageModuleContextFair {
   published: Boolean
     @deprecated(reason: "Prefix Boolean returning fields with `is_`")
   tagline: String
+
+  # The exhibitors with booths in this fair.
+  exhibitors_grouped_by_name: [FairExhibitorsGroup]
 }
 
 type HomePageModuleContextFollowArtists {
@@ -4430,20 +4478,6 @@ type Image {
   versions: [String]
 }
 
-input InitialOfferInput {
-  # ID of order
-  orderId: ID!
-
-  # Offer price
-  offerPrice: MoneyInput
-  clientMutationId: String
-}
-
-type InitialOfferPayload {
-  orderOrError: OrderOrFailureUnionType
-  clientMutationId: String
-}
-
 enum Intents {
   BUY_ART_AND_DESIGN
   SELL_ART_AND_DESIGN
@@ -4512,6 +4546,9 @@ type Location {
   country: String
   coordinates: LatLng
   day_schedules: [DaySchedule]
+
+  # Alternate Markdown-supporting free text representation of a location's opening hours
+  day_schedule_text: String
   displayDaySchedules: [FormattedDaySchedules]
   display: String
   phone: String
@@ -5018,10 +5055,20 @@ type Mutation {
   # Approves an order with payment
   ecommerceApproveOrder(input: ApproveOrderInput!): ApproveOrderPayload
 
+  # Buyer accepts a submitted offer from seller
+  ecommerceBuyerAcceptOffer(
+    input: buyerAcceptOfferInput!
+  ): buyerAcceptOfferPayload
+
   # Approves an order with payment
   ecommerceSellerAcceptOffer(
     input: sellerAcceptOfferInput!
   ): sellerAcceptOfferPayload
+
+  # Rejects an offer
+  ecommerceSellerRejectOffer(
+    input: sellerRejectOfferInput!
+  ): sellerRejectOfferPayload
 
   # Confirms pickup for an ecommerce order
   ecommerceConfirmPickup(input: ConfirmPickupInput!): ConfirmPickupPayload
@@ -5069,10 +5116,6 @@ type Mutation {
 
   # Submits an order
   submitOrder(input: SubmitOrderInput!): SubmitOrderPayload
-
-  # Deprecated.
-  ecommerceInitialOffer(input: InitialOfferInput!): InitialOfferPayload
-    @deprecated(reason: "Use AddInitialOfferToOrder instead.")
   recordArtworkView(input: RecordArtworkViewInput): RecordArtworkViewPayload
 }
 
@@ -5200,7 +5243,7 @@ type Offer {
   # The order on which the offer was made
   order: Order
 
-  # Offer amount in cents
+  # Total of amount, shipping and tax in cents
   buyerTotalCents: Int
 
   # A formatted price with various currency formatting options.
@@ -7449,6 +7492,20 @@ type sellerAcceptOfferPayload {
   clientMutationId: String
 }
 
+input sellerRejectOfferInput {
+  # Offer ID
+  offerId: String!
+
+  # Reason for rejecting offer
+  rejectReason: CancelReasonType
+  clientMutationId: String
+}
+
+type sellerRejectOfferPayload {
+  orderOrError: OrderOrFailureUnionType
+  clientMutationId: String
+}
+
 input SendConversationMessageMutationInput {
   # The id of the conversation to be updated
   id: String!
@@ -7659,6 +7716,9 @@ type Show implements Node {
 
   # Is it a stubbed show?
   is_reference: Boolean
+
+  # Is it an outsourced local discovery stub show?
+  is_local_discovery: Boolean
 
   # Whether the show is in a fair, group or solo
   kind: String

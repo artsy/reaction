@@ -34,7 +34,14 @@ return {
   "name": "ArtistArtworkGrid_artwork",
   "type": "Artwork",
   "metadata": null,
-  "argumentDefinitions": [],
+  "argumentDefinitions": [
+    {
+      "kind": "LocalArgument",
+      "name": "excludeArtworkIDs",
+      "type": "[String!]",
+      "defaultValue": null
+    }
+  ],
   "selections": [
     {
       "kind": "ScalarField",
@@ -101,8 +108,14 @@ return {
           "kind": "LinkedField",
           "alias": null,
           "name": "artworks_connection",
-          "storageKey": "artworks_connection(filter:[\"IS_FOR_SALE\"],first:10,sort:\"PUBLISHED_AT_DESC\")",
+          "storageKey": null,
           "args": [
+            {
+              "kind": "Variable",
+              "name": "exclude",
+              "variableName": "excludeArtworkIDs",
+              "type": "[String]"
+            },
             {
               "kind": "Literal",
               "name": "filter",
@@ -141,5 +154,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'cc473448a2eed83f3c52816bb1d6c07a';
+(node as any).hash = 'b9150c8de42d6e9d4e1fcd0865c25f9b';
 export default node;

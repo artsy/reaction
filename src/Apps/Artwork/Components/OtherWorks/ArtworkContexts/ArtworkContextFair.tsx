@@ -15,8 +15,10 @@ import {
 
 export const ArtworkContextFairQueryRenderer = ({
   artworkSlug,
+  artworkID,
 }: {
   artworkSlug: string
+  artworkID: string
 }) => {
   return (
     <ContextConsumer>
@@ -24,11 +26,18 @@ export const ArtworkContextFairQueryRenderer = ({
         return (
           <QueryRenderer<ArtworkContextFairQuery>
             environment={relayEnvironment}
-            variables={{ artworkSlug }}
+            variables={{
+              artworkSlug,
+              excludeArtworkIDs: [artworkID],
+            }}
             query={graphql`
-              query ArtworkContextFairQuery($artworkSlug: String!) {
+              query ArtworkContextFairQuery(
+                $artworkSlug: String!
+                $excludeArtworkIDs: [String!]
+              ) {
                 artwork(id: $artworkSlug) {
                   ...ArtworkContextFair_artwork
+                    @arguments(excludeArtworkIDs: $excludeArtworkIDs)
                 }
               }
             `}
@@ -56,15 +65,20 @@ export const ArtworkContextFair: React.SFC<{
 export const ArtworkContextFairFragmentContainer = createFragmentContainer(
   ArtworkContextFair,
   graphql`
-    fragment ArtworkContextFair_artwork on Artwork {
+    fragment ArtworkContextFair_artwork on Artwork
+      @argumentDefinitions(excludeArtworkIDs: { type: "[String!]" }) {
       id
       artist {
         name
         href
       }
       ...FairArtworkGrid_artwork
+        @arguments(excludeArtworkIDs: $excludeArtworkIDs)
       ...PartnerShowArtworkGrid_artwork
+        @arguments(excludeArtworkIDs: $excludeArtworkIDs)
+
       ...ArtistArtworkGrid_artwork
+      # TODO: Pass in arguments
     }
   `
 )
