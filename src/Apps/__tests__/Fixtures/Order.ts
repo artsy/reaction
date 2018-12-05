@@ -131,7 +131,12 @@ export const UntouchedOfferOrder = {
   __typename: "OfferOrder",
   mode: "OFFER",
   totalListPrice: "$16,000",
-  myLastOffer: OfferWithTotals,
+  lastOffer: OfferWithTotals,
+  myLastOffer: {
+    ...OfferWithTotals,
+    id: "my-last-offer-id",
+    fromParticipant: "BUYER",
+  },
   offers: {
     edges: [{ node: OfferWithTotals }],
   },

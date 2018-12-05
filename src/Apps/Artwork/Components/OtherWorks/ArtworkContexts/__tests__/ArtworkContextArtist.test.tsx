@@ -1,6 +1,7 @@
 import { ArtworkContextArtistFixture } from "Apps/__tests__/Fixtures/Artwork/OtherWorks/ArtworkContexts/ArtworkContextArtist.fixture"
-import { renderRelayTree } from "DevTools"
+import { MockBoot, renderRelayTree } from "DevTools"
 import { ReactWrapper } from "enzyme"
+import React from "react"
 import { graphql } from "react-relay"
 import { ArtworkContextArtistFragmentContainer } from "../ArtworkContextArtist"
 
@@ -21,6 +22,7 @@ describe("ArtworkContextArtist", () => {
         Artwork: () => response.artwork,
         ArtworkConnection: () => response.artwork.artist.artworks_connection,
       },
+      wrapper: children => <MockBoot>{children}</MockBoot>,
     })
   }
 
@@ -41,10 +43,9 @@ describe("ArtworkContextArtist", () => {
       expect(html).toContain("View all")
     })
 
-    // FIXME: Implement and figure out how to get artwork connection resolvers to
-    // come through.
-    it("renders an artwork grid", () => {
-      expect(true).toBe(true)
+    it("renders correct artwork grids", () => {
+      expect(wrapper.find("ArtistArtworkGrid").length).toBe(1)
+      expect(wrapper.find("RelatedWorksArtworkGrid").length).toBe(1)
     })
   })
 })

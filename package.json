@@ -6,12 +6,6 @@
   "repository": "https://github.com/artsy/reaction.git",
   "author": "Art.sy Inc <it@artsymail.com>",
   "license": "MIT",
-  "files": [
-    "assets",
-    "data",
-    "dist",
-    "docs"
-  ],
   "peerDependencies": {
     "dd-trace": "^0.6.0",
     "react": "^16.5.0",
@@ -144,7 +138,7 @@
     "tslint-config-prettier": "^1.1.0",
     "tslint-plugin-relay": "^0.0.3",
     "tslint-react": "^2.4.0",
-    "typescript": "^3.0.1",
+    "typescript": "~3.1",
     "typescript-styled-plugin": "^0.13.0",
     "webpack": "^4.20.2",
     "webpack-bundle-analyzer": "^2.13.1",

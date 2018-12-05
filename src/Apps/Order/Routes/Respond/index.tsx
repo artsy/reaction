@@ -17,9 +17,8 @@ import { StaticCollapse } from "Components/StaticCollapse"
 import { Router } from "found"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql, RelayProp } from "react-relay"
-import { StepSummaryItem } from "Styleguide/Components"
+import { CountdownTimer } from "Styleguide/Components/CountdownTimer"
 import { Col, Row } from "Styleguide/Elements/Grid"
-import { Placeholder } from "Styleguide/Utils"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
@@ -111,9 +110,12 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                 style={isCommittingMutation ? { pointerEvents: "none" } : {}}
               >
                 <Flex flexDirection="column">
-                  <StepSummaryItem>
-                    <Placeholder name="Timer" />
-                  </StepSummaryItem>
+                  <CountdownTimer
+                    action="Respond"
+                    note="Expired offers end the negotiation process permanently."
+                    countdownStart={order.lastOffer.createdAt}
+                    countdownEnd={order.stateExpiresAt}
+                  />
                   <OfferHistoryItem order={order} />
                   <TransactionDetailsSummaryItem order={order} />
                 </Flex>
@@ -234,6 +236,10 @@ export const RespondFragmentContainer = createFragmentContainer(
       state
       itemsTotal(precision: 2)
       totalListPrice(precision: 2)
+      stateExpiresAt
+      lastOffer {
+        createdAt
+      }
       lineItems {
         edges {
           node {

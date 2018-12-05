@@ -1,4 +1,4 @@
-import { color, Flex, Serif, space } from "@artsy/palette"
+import { Box, color, Flex, Sans, Serif, space } from "@artsy/palette"
 import { compact, find, map } from "lodash"
 import React from "react"
 import styled from "styled-components"
@@ -6,8 +6,13 @@ import styled from "styled-components"
 import { unica } from "Assets/Fonts"
 import { Byline, BylineContainer } from "Components/Publishing/Byline/Byline"
 import { ArticleProps } from "Components/Publishing/Layouts/FeatureLayout"
-import { Nav } from "Components/Publishing/Nav/Nav"
-import { ImageSetPreview } from "Components/Publishing/Sections/ImageSetPreview"
+import { Nav, NavContainer } from "Components/Publishing/Nav/Nav"
+import { ArticleCards } from "Components/Publishing/RelatedArticles/ArticleCards/ArticleCards"
+import {
+  FullLabel,
+  ImageSetContainer,
+  ImageSetPreview,
+} from "Components/Publishing/Sections/ImageSetPreview"
 import { resize } from "Utils/resizer"
 import { Eoy2018ArticleHeader } from "./ArticleHeader"
 
@@ -48,7 +53,7 @@ export class Eoy2018Artists extends React.Component<ArticleProps> {
     const src = imageSection && imageSection.images[0].url
 
     return (
-      <ArtistHeaderSection key={i}>
+      <ArtistHeaderSection key={i} mb={40}>
         <ArtistHeaderTitle dangerouslySetInnerHTML={{ __html: section.body }} />
         <ArtistHeaderImg src={src && resize(src, { width: 700 })} />
       </ArtistHeaderSection>
@@ -57,7 +62,7 @@ export class Eoy2018Artists extends React.Component<ArticleProps> {
 
   sectionText = (section, i) => {
     return (
-      <TextSection size="5" key={i}>
+      <TextSection size="5" key={i} pb={60}>
         <div dangerouslySetInnerHTML={{ __html: section.body }} />
       </TextSection>
     )
@@ -65,8 +70,14 @@ export class Eoy2018Artists extends React.Component<ArticleProps> {
 
   sectionImageSet = (section, i) => {
     return (
-      <ImageSetWrapper key={i}>
-        <ImageSetPreview section={section} />
+      <ImageSetWrapper key={i} mb={60}>
+        <ImageSetPreview section={section}>
+          <CaptionWrapper size="4">
+            <ImageSetCaption
+              dangerouslySetInnerHTML={{ __html: section.images[0].caption }}
+            />
+          </CaptionWrapper>
+        </ImageSetPreview>
       </ImageSetWrapper>
     )
   }
@@ -109,45 +120,64 @@ export class Eoy2018Artists extends React.Component<ArticleProps> {
     )
 
     return (
-      <React.Fragment>
-        <Nav canFix color={color("black100")} backgroundColor="white" />
-        <ArticleWrapper>
+      <AricleWrapper>
+        <Nav canFix color={color("black100")} backgroundColor="white">
+          <NavBorder />
+        </Nav>
+
+        <Box px={55}>
           <Eoy2018ArticleHeader images={headerImages} />
-          <ArticleContent>
+
+          <ArticleContent py={40}>
             <IntroSection alignItems="flex-start" pl={20}>
               <Byline article={article} />
               {introText}
             </IntroSection>
             {this.getSections()}
           </ArticleContent>
-        </ArticleWrapper>
-      </React.Fragment>
+        </Box>
+
+        {article.relatedArticles && (
+          <Box pl={55} pr={55} my={40} mx="auto">
+            <ArticleCards relatedArticles={article.relatedArticles} />
+          </Box>
+        )}
+      </AricleWrapper>
     )
   }
 }
 
 const BORDER_WIDTH = 6
 
-const ArticleWrapper = styled.div`
-  padding: 0 40px;
-`
-
-const ArticleContent = styled.div`
-  padding: 40px 0;
-  border-left: ${BORDER_WIDTH}px solid ${color("purple100")};
-
-  blockquote {
-    ${unica("s34")};
+const AricleWrapper = styled.div`
+  ${NavContainer} {
+    border-bottom: none;
   }
 `
 
-const ArtistHeaderSection = styled.div`
+const NavBorder = styled.div`
+  border-bottom: ${BORDER_WIDTH}px solid ${color("purple100")};
+  position: absolute;
+  top: 100%;
+  left: 55px;
+  right: 55px;
+`
+
+const ArticleContent = styled(Box)`
+  border-left: ${BORDER_WIDTH}px solid ${color("purple100")};
+  border-bottom: ${BORDER_WIDTH}px solid ${color("purple100")};
+
+  blockquote {
+    ${unica("s34")};
+    line-height: 1.3em;
+  }
+`
+
+const ArtistHeaderSection = styled(Flex)`
   height: 60vh;
   min-height: 450px;
   border: ${BORDER_WIDTH}px solid ${color("purple100")};
   border-left: none;
-  display: flex;
-  margin-bottom: 40px;
 `
 
 const ArtistHeaderTitle = styled.div`
@@ -173,7 +203,7 @@ const ArtistHeaderTitle = styled.div`
     height: 50%;
     min-height: fit-content;
     display: inline-flex;
-    padding: 20px;
+    padding: ${space(2)}px;
     &:last-child {
       border-left: ${BORDER_WIDTH}px solid ${color("purple100")};
     }
@@ -206,7 +236,6 @@ const IntroSection = styled(Flex)`
 const TextSection = styled(Serif)`
   max-width: 75%;
   margin-left: auto;
-  padding-bottom: 60px;
 
   p {
     font-size: 24px;
@@ -217,8 +246,44 @@ const TextSection = styled(Serif)`
     }
   }
 `
-const ImageSetWrapper = styled.div`
-  margin-bottom: 60px;
+const CaptionWrapper = styled(Sans)`
+  flex: 1;
+`
+
+const ImageSetCaption = styled.div`
+  height: 100%;
+  padding: ${space(2)}px;
+  background: white;
+  color: black;
+  border-bottom: ${BORDER_WIDTH}px solid ${color("purple100")};
+`
+
+const ImageSetWrapper = styled(Box)`
   border: ${BORDER_WIDTH}px solid ${color("purple100")};
   border-left: none;
+
+  ${ImageSetContainer} {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  ${FullLabel} {
+    position: relative;
+    display: flex;
+    flex-direction: column-reverse;
+    flex: 1;
+    left: auto;
+    bottom: auto;
+    max-width: inherit;
+    border-radius: 0;
+    box-shadow: none;
+    &:hover {
+      background-color: ${color("purple100")};
+    }
+  }
+
+  img {
+    flex: 3;
+    border-right: ${BORDER_WIDTH}px solid ${color("purple100")};
+  }
 `

@@ -30,7 +30,14 @@ return {
   "name": "ArtworkSidebarArtists_artwork",
   "type": "Artwork",
   "metadata": null,
-  "argumentDefinitions": [],
+  "argumentDefinitions": [
+    {
+      "kind": "LocalArgument",
+      "name": "showFollowSuggestions",
+      "type": "Boolean",
+      "defaultValue": true
+    }
+  ],
   "selections": [
     {
       "kind": "LinkedField",
@@ -66,7 +73,14 @@ return {
         {
           "kind": "FragmentSpread",
           "name": "FollowArtistButton_artist",
-          "args": null
+          "args": [
+            {
+              "kind": "Variable",
+              "name": "showFollowSuggestions",
+              "variableName": "showFollowSuggestions",
+              "type": null
+            }
+          ]
         }
       ]
     },
@@ -74,5 +88,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '078b2375943c21b18376b77d8ceb6d15';
+(node as any).hash = '13362cc7f0cf86563149eb636de3337e';
 export default node;

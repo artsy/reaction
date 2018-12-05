@@ -201,7 +201,7 @@ return {
             {
               "kind": "Literal",
               "name": "sort",
-              "value": "published_at_desc",
+              "value": "PUBLISHED_AT_DESC",
               "type": "ArtworkSorts"
             }
           ],
@@ -283,5 +283,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '60ccb8fe8c9a15b986acc163d33073df';
+(node as any).hash = '5cbe0566f4e5fc5e85dfa1d0b436f337';
 export default node;

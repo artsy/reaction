@@ -168,6 +168,7 @@ export enum Subject {
   AuctionConditionsOfSale = "conditions of sale",
   AuctionFAQ = "auction faq",
   AuctionAskSpecialist = "ask a specialist",
+  AuctionBuyerPremium = "Buyer premium",
 
   CollectorFAQ = "collector faq",
 

@@ -11,8 +11,7 @@ import { ArtworkBannerFragmentContainer as ArtworkBanner } from "./Components/Ar
 import { ArtworkDetailsFragmentContainer as ArtworkDetails } from "./Components/ArtworkDetails"
 import { ArtworkImagesFragmentContainer as ArtworkImages } from "./Components/ArtworkImages"
 import { ArtworkSidebarFragmentContainer as ArtworkSidebar } from "./Components/ArtworkSidebar"
-// import { FullArtworkGrid, Tab, Tabs } from "Styleguide/Components"
-// import { OtherWorksQueryRenderer as OtherWorks } from "./Components/OtherWorks"
+import { OtherWorksFragmentContainer as OtherWorks } from "./Components/OtherWorks"
 
 import {
   Footer,
@@ -56,7 +55,9 @@ export const ArtworkApp: React.SFC<Props> = props => {
 
       <Row>
         <Col>
-          <Box mt={6}>{/* <OtherWorks artworkID={props.artwork.id} /> */}</Box>
+          <Box mt={6}>
+            <OtherWorks artwork={props.artwork} />
+          </Box>
         </Col>
       </Row>
 
@@ -156,17 +157,7 @@ export const ArtworkAppFragmentContainer = createFragmentContainer(
       ...ArtworkSidebar_artwork
       ...ArtworkDetails_artwork
       ...ArtworkImages_artwork
+      ...OtherWorks_artwork
     }
   `
 )
-
-// const FollowButton = styled.div``
-// const Name = styled.div``
-// const Metadata = styled.div``
-// const GridBlock = styled.div``
-// const Title = styled.div``
-// const ViewAllButton = styled.div``
-// const RelatedWorks = styled.div``
-// const RelatedArtists = styled.div``
-// const RelatedArtistItem = styled.div``
-// const Image = styled.div``

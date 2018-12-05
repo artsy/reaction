@@ -38,7 +38,14 @@ export const routes: RouteConfig[] = [
           name
         }
         order: ecommerceOrder(id: $orderID) {
+          id
+          mode
           state
+          ... on OfferOrder {
+            myLastOffer {
+              id
+            }
+          }
           requestedFulfillment {
             __typename
           }
@@ -54,12 +61,15 @@ export const routes: RouteConfig[] = [
           creditCard {
             id
           }
+          ... on OfferOrder {
+            awaitingResponseFrom
+          }
         }
       }
     `,
     render: ({ Component, props }) => {
       if (Component && props) {
-        if (!shouldRedirect(props)) {
+        if (!shouldRedirect(props as any)) {
           return <Component {...props} />
         }
       }

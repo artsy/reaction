@@ -48,37 +48,3 @@ describe("ArtworkContextAuction", () => {
     })
   })
 })
-
-// FIXME: Start using this when `mockResolver` issue is figured out
-
-// import { renderRelayTree } from "DevTools"
-// import { graphql } from "react-relay"
-
-// jest.unmock("react-relay")
-
-// const getWrapper = async (response = ArtworkContextAuctionFixture) => {
-//   return await renderRelayTree({
-//     Component: ArtworkContextAuctionFragmentContainer,
-//     query: graphql`
-//       query ArtworkContextAuction_Test_Query {
-//         artwork(id: "yavuz-tanyeli-self-portrait") {
-//           ...ArtworkContextAuction_artwork
-//         }
-//       }
-//     `,
-//     mockResolvers: {
-//       Artwork: () => response.artwork,
-//       Sale: () => response.artwork.sale,
-//       Artworks: () => response.artwork.sale.artworksConnection.edges[0].node,
-//     },
-//     variables: {
-//       isClosed: false,
-//       excludeArtworkIDs: ["5bfb5f6b94a94d0007afe818"],
-//     },
-//   })
-// }
-
-// it("excludes a given artwork", () => {
-//   const html = wrapper.html()
-//   expect(html).not.toContain("/artwork/yavuz-tanyeli-self-portrait")
-// })
