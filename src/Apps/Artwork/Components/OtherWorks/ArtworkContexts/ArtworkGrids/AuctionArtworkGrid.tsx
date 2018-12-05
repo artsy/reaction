@@ -36,3 +36,5 @@ export const AuctionArtworkGridFragmentContainer = createFragmentContainer<{
     }
   `
 )
+
+AuctionArtworkGridFragmentContainer.displayName = "AuctionArtworkGrid"

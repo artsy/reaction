@@ -45,3 +45,5 @@ export const ArtistArtworkGridFragmentContainer = createFragmentContainer<{
     }
   `
 )
+
+ArtistArtworkGridFragmentContainer.displayName = "ArtistArtworkGrid"

@@ -36,3 +36,5 @@ export const PartnerShowArtworkGridFragmentContainer = createFragmentContainer<{
     }
   `
 )
+
+PartnerShowArtworkGridFragmentContainer.displayName = "PartnerShowArtworkGrid"

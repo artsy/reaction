@@ -35,3 +35,5 @@ export const FairArtworkGridFragmentContainer = createFragmentContainer<{
     }
   `
 )
+
+FairArtworkGridFragmentContainer.displayName = "FairArtworkGrid"

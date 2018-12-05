@@ -45,7 +45,6 @@ describe("ArtworkContextArtist", () => {
 
     it("renders correct artwork grids", () => {
       expect(wrapper.find("ArtistArtworkGrid").length).toBe(1)
-      expect(wrapper.find("PartnerShowArtworkGrid").length).toBe(1)
       expect(wrapper.find("RelatedWorksArtworkGrid").length).toBe(1)
     })
   })
