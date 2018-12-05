@@ -17,15 +17,15 @@ import { StaticCollapse } from "Components/StaticCollapse"
 import { Router } from "found"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql, RelayProp } from "react-relay"
-import { StepSummaryItem } from "Styleguide/Components"
+import { CountdownTimer } from "Styleguide/Components/CountdownTimer"
 import { Col, Row } from "Styleguide/Elements/Grid"
-import { Placeholder } from "Styleguide/Utils"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "../../Components/ArtworkSummaryItem"
 import { CreditCardSummaryItemFragmentContainer as CreditCardSummaryItem } from "../../Components/CreditCardSummaryItem"
+import { OfferHistoryItemFragmentContainer as OfferHistoryItem } from "../../Components/OfferHistoryItem"
 import {
   counterofferFlowSteps,
   OrderStepper,
@@ -110,12 +110,13 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                 style={isCommittingMutation ? { pointerEvents: "none" } : {}}
               >
                 <Flex flexDirection="column">
-                  <StepSummaryItem>
-                    <Placeholder name="Timer" />
-                  </StepSummaryItem>
-                  <StepSummaryItem>
-                    <Placeholder name="Offer history" />
-                  </StepSummaryItem>
+                  <CountdownTimer
+                    action="Respond"
+                    note="Expired offers end the negotiation process permanently."
+                    countdownStart={order.lastOffer.createdAt}
+                    countdownEnd={order.stateExpiresAt}
+                  />
+                  <OfferHistoryItem order={order} />
                   <TransactionDetailsSummaryItem order={order} />
                 </Flex>
                 <Spacer mb={[2, 3]} />
@@ -235,6 +236,10 @@ export const RespondFragmentContainer = createFragmentContainer(
       state
       itemsTotal(precision: 2)
       totalListPrice(precision: 2)
+      stateExpiresAt
+      lastOffer {
+        createdAt
+      }
       lineItems {
         edges {
           node {
@@ -248,6 +253,7 @@ export const RespondFragmentContainer = createFragmentContainer(
       ...ArtworkSummaryItem_order
       ...ShippingSummaryItem_order
       ...CreditCardSummaryItem_order
+      ...OfferHistoryItem_order
     }
   `
 )

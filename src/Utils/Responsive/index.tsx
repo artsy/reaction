@@ -27,5 +27,11 @@ export const Media = ReactionMedia.Media
 export const MediaContextProvider = ReactionMedia.MediaContextProvider
 export const createMediaStyle = ReactionMedia.createMediaStyle
 export const SortedBreakpoints = ReactionMedia.SortedBreakpoints
-export const findBreakpointsForWidth = ReactionMedia.findBreakpointsForWidth
+export const findBreakpointsForWidths = ReactionMedia.findBreakpointsForWidths
+export const findBreakpointAtWidth = ReactionMedia.findBreakpointAtWidth
 export const valuesWithBreakpointProps = ReactionMedia.valuesWithBreakpointProps
+
+// TODO: Simplify this hideous typing.
+export type MatchingMediaQueries = Array<
+  "hover" | "notHover" | (typeof SortedBreakpoints)[0]
+>

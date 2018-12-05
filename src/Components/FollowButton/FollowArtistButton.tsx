@@ -192,14 +192,17 @@ export const FollowArtistButtonFragmentContainer = track({})(
   createFragmentContainer(
     Artsy.withContext(FollowArtistButton),
     graphql`
-      fragment FollowArtistButton_artist on Artist {
+      fragment FollowArtistButton_artist on Artist
+        @argumentDefinitions(
+          showFollowSuggestions: { type: "Boolean", defaultValue: false }
+        ) {
         __id
         id
         is_followed
         counts {
           follows
         }
-        ...FollowArtistPopover_suggested
+        ...FollowArtistPopover_suggested @include(if: $showFollowSuggestions)
       }
     `
   )

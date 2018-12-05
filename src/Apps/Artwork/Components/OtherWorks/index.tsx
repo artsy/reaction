@@ -1,70 +1,86 @@
-import { Box, Sans } from "@artsy/palette"
 import { OtherWorks_artwork } from "__generated__/OtherWorks_artwork.graphql"
 import { OtherWorksQuery } from "__generated__/OtherWorksQuery.graphql"
 import { ContextConsumer } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
+import { ArtworkContextArtistQueryRenderer as ArtworkContextArtist } from "./ArtworkContexts/ArtworkContextArtist"
+import { ArtworkContextAuctionQueryRenderer as ArtworkContextAuction } from "./ArtworkContexts/ArtworkContextAuction"
+import { ArtworkContextFairQueryRenderer as ArtworkContextFair } from "./ArtworkContexts/ArtworkContextFair"
+import { ArtworkContextPartnerShowQueryRenderer as ArtworkContextPartnerShow } from "./ArtworkContexts/ArtworkContextPartnerShow"
 
-import {
-  ArtworkContextArtist,
-  ArtworkContextAuction,
-  ArtworkContextFair,
-  ArtworkContextPartnerShow,
-} from "./ArtworkContexts"
+export interface OtherWorksContextProps {
+  /** The artworkSlug to query */
+  artworkSlug: string
+  /** Used to exclude the current work from the currently-shown work from grid */
+  artworkID: string
+}
 
-interface OtherWorksProps {
+export const OtherWorksFragmentContainer = createFragmentContainer<{
   artwork: OtherWorks_artwork
-}
+}>(
+  props => {
+    const contextType =
+      props.artwork.context && props.artwork.context.__typename
+    const artworkSlug = props.artwork.id
 
-export const OtherWorks: React.SFC<OtherWorksProps> = props => {
-  const contextType = props.artwork.context && props.artwork.context.__typename
-  const ArtworkContext = getArtworkContextComponent(contextType)
+    // FIXME: Remove
+    console.warn("-----------------------", "\n", contextType)
 
-  return (
-    <>
-      <ArtworkContext artworkID={props.artwork.id} />
-
-      {/* Debugger */}
-      <Box mt={6}>
-        <Sans size="3">{props.artwork.id}</Sans>
-        <Sans size="3">{contextType}</Sans>
-      </Box>
-    </>
-  )
-}
-
-const getArtworkContextComponent = (context: string | boolean): any => {
-  // FIXME: add type
-  switch (context) {
-    case "ArtworkContextAuction":
-      return ArtworkContextAuction
-    case "ArtworkContextFair":
-      return ArtworkContextFair
-    case "ArtworkContextPartnerShow":
-      return ArtworkContextPartnerShow
-    default:
-      return ArtworkContextArtist
-  }
-}
-
-export const OtherWorksFragmentContainer = createFragmentContainer(
-  OtherWorks,
+    switch (contextType) {
+      case "ArtworkContextAuction": {
+        return (
+          <ArtworkContextAuction
+            artworkSlug={artworkSlug}
+            artworkID={props.artwork._id}
+            isClosed={props.artwork.sale.is_closed}
+          />
+        )
+      }
+      case "ArtworkContextFair": {
+        return (
+          <ArtworkContextFair
+            artworkSlug={artworkSlug}
+            artworkID={props.artwork._id}
+          />
+        )
+      }
+      case "ArtworkContextPartnerShow": {
+        return (
+          <ArtworkContextPartnerShow
+            artworkSlug={artworkSlug}
+            artworkID={props.artwork._id}
+          />
+        )
+      }
+      default: {
+        return (
+          <ArtworkContextArtist
+            artworkSlug={artworkSlug}
+            artworkID={props.artwork._id}
+          />
+        )
+      }
+    }
+  },
   graphql`
     fragment OtherWorks_artwork on Artwork {
       id
+      _id
+      sale {
+        is_closed
+      }
       context {
         __typename
       }
-      ...ArtworkContextArtist_artwork
     }
   `
 )
 
 export const OtherWorksQueryRenderer = ({
-  artworkID,
+  artworkSlug,
 }: {
-  artworkID: string
+  artworkSlug: string
 }) => {
   return (
     <ContextConsumer>
@@ -72,10 +88,10 @@ export const OtherWorksQueryRenderer = ({
         return (
           <QueryRenderer<OtherWorksQuery>
             environment={relayEnvironment}
-            variables={{ artworkID }}
+            variables={{ artworkSlug }}
             query={graphql`
-              query OtherWorksQuery($artworkID: String!) {
-                artwork(id: $artworkID) {
+              query OtherWorksQuery($artworkSlug: String!) {
+                artwork(id: $artworkSlug) {
                   ...OtherWorks_artwork
                 }
               }

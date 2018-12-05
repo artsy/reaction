@@ -1,6 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a series properly 1`] = `
+.c7 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 32px;
+  color: white;
+  text-align: center;
+}
+
+.c21 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.c16 {
+  color: white;
+}
+
+.c17 {
+  margin-bottom: 40px;
+}
+
 .c5 {
   font-family: artsy-icons;
   color: white;
@@ -65,7 +89,6 @@ exports[`renders a series properly 1`] = `
   align-items: center;
   height: 52px;
   width: 100%;
-  color: white;
   z-index: 10;
 }
 
@@ -74,73 +97,31 @@ exports[`renders a series properly 1`] = `
 }
 
 .c6 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 17px;
-  line-height: 1.1em;
-  -webkit-font-smoothing: antialiased;
   position: absolute;
   width: 100%;
-  text-align: center;
-  font-weight: 600;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: white;
 }
 
 .c6 a {
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
-}
-
-.c36 {
-  box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 0 1 auto;
-  -ms-flex: 0 1 auto;
-  flex: 0 1 auto;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin-right: -0.5rem;
-  margin-left: -0.5rem;
-}
-
-.c16 {
-  box-sizing: border-box;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
-}
-
-.c38 {
-  box-sizing: border-box;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
-}
-
-.c40 {
-  box-sizing: border-box;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
-}
-
-.c21 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
 }
 
 .c33 {
@@ -283,15 +264,7 @@ exports[`renders a series properly 1`] = `
   width: 40px;
 }
 
-.c15 {
-  color: white;
-}
-
-.c15 .c17 {
-  margin-bottom: 60px;
-}
-
-.c7 {
+.c8 {
   background-color: black;
   position: fixed;
   top: 0;
@@ -301,7 +274,7 @@ exports[`renders a series properly 1`] = `
   z-index: -1;
 }
 
-.c8 {
+.c9 {
   background-image: url(https://artsy-media-uploads.s3.amazonaws.com/GXvnaBYBdP2z6LKIBQF7XA%2FArtboard.jpg);
   background-size: cover;
   background-position: 50%;
@@ -313,7 +286,7 @@ exports[`renders a series properly 1`] = `
   z-index: -2;
 }
 
-.c9 {
+.c10 {
   background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.6));
   position: fixed;
   top: 0;
@@ -321,6 +294,43 @@ exports[`renders a series properly 1`] = `
   right: 0;
   bottom: 0;
   z-index: -1;
+}
+
+.c36 {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -0.5rem;
+  margin-left: -0.5rem;
+}
+
+.c38 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.c40 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
 }
 
 .c41 {
@@ -545,22 +555,22 @@ exports[`renders a series properly 1`] = `
   line-height: 1.1em;
 }
 
-.c13 {
+.c14 {
   color: white;
   text-align: center;
 }
 
-.c13 .PartnerBlock__ImageContainer-ydgi2-1 {
+.c14 .PartnerBlock__ImageContainer-ydgi2-1 {
   padding-top: 5px;
   padding-bottom: 40px;
 }
 
-.c13 .PartnerBlock__ImageContainer-ydgi2-1 img {
+.c14 .PartnerBlock__ImageContainer-ydgi2-1 img {
   margin-left: auto;
   margin-right: auto;
 }
 
-.c14 {
+.c15 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 120px;
@@ -568,17 +578,17 @@ exports[`renders a series properly 1`] = `
   margin-bottom: 30px;
 }
 
-.c11 {
+.c12 {
   max-width: 1200px;
   min-height: 100vh;
   margin: 0 auto;
 }
 
-.c11 .c12 {
+.c12 .c13 {
   margin-bottom: 90px;
 }
 
-.c11 .c34 {
+.c12 .c34 {
   padding-top: 60px;
 }
 
@@ -586,8 +596,14 @@ exports[`renders a series properly 1`] = `
   color: white;
 }
 
-.c0 .c10 {
+.c0 .c11 {
   padding: 90px 20px 150px;
+}
+
+@media screen and (min-width:40em) {
+  .c17 {
+    margin-bottom: 60px;
+  }
 }
 
 @media (max-width:720px) {
@@ -601,62 +617,6 @@ exports[`renders a series properly 1`] = `
 
   .c3 .IconPlus-s1uyfpws-0 {
     margin: 0 10px;
-  }
-}
-
-@media (max-width:720px) {
-  .c6 {
-    display: none;
-  }
-}
-
-@media only screen and (min-width:0em) {
-  .c16 {
-    -webkit-flex-basis: 100%;
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
-    max-width: 100%;
-    display: block;
-  }
-}
-
-@media only screen and (min-width:0em) {
-  .c38 {
-    -webkit-flex-basis: 100%;
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
-    max-width: 100%;
-    display: block;
-  }
-}
-
-@media only screen and (min-width:48em) {
-  .c38 {
-    -webkit-flex-basis: 33.333333333333336%;
-    -ms-flex-preferred-size: 33.333333333333336%;
-    flex-basis: 33.333333333333336%;
-    max-width: 33.333333333333336%;
-    display: block;
-  }
-}
-
-@media only screen and (min-width:0em) {
-  .c40 {
-    -webkit-flex-basis: 100%;
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
-    max-width: 100%;
-    display: block;
-  }
-}
-
-@media only screen and (min-width:48em) {
-  .c40 {
-    -webkit-flex-basis: 66.66666666666667%;
-    -ms-flex-preferred-size: 66.66666666666667%;
-    flex-basis: 66.66666666666667%;
-    max-width: 66.66666666666667%;
-    display: block;
   }
 }
 
@@ -709,9 +669,43 @@ exports[`renders a series properly 1`] = `
   }
 }
 
-@media (max-width:64em) {
-  .c15 .c17 {
-    margin-bottom: 40px;
+@media only screen and (min-width:0em) {
+  .c38 {
+    -webkit-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    max-width: 100%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:48em) {
+  .c38 {
+    -webkit-flex-basis: 33.333333333333336%;
+    -ms-flex-preferred-size: 33.333333333333336%;
+    flex-basis: 33.333333333333336%;
+    max-width: 33.333333333333336%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:0em) {
+  .c40 {
+    -webkit-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    max-width: 100%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:48em) {
+  .c40 {
+    -webkit-flex-basis: 66.66666666666667%;
+    -ms-flex-preferred-size: 66.66666666666667%;
+    flex-basis: 66.66666666666667%;
+    max-width: 66.66666666666667%;
+    display: block;
   }
 }
 
@@ -793,13 +787,13 @@ exports[`renders a series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c13 .PartnerBlock__ImageContainer-ydgi2-1 {
+  .c14 .PartnerBlock__ImageContainer-ydgi2-1 {
     padding-bottom: 0;
   }
 }
 
 @media (max-width:900px) {
-  .c14 {
+  .c15 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 65px;
@@ -809,7 +803,7 @@ exports[`renders a series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c11 .c34 {
+  .c12 .c34 {
     padding-top: 60px;
   }
 }
@@ -821,6 +815,7 @@ exports[`renders a series properly 1`] = `
   <div>
     <div
       className="c1 c2"
+      color="white"
     >
       <div
         className="PartnerInline c3"
@@ -837,13 +832,25 @@ exports[`renders a series properly 1`] = `
         
       </div>
       <div
-        className="c6"
+        className="rrm-container rrm-greaterThan-xs"
       >
-        <a
-          href="/magazine"
+        <div
+          className="c6 c7"
+          color="white"
+          fontFamily={
+            Object {
+              "fontFamily": "'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif",
+              "fontWeight": 600,
+            }
+          }
+          fontSize="22px"
         >
-          Artsy Editorial
-        </a>
+          <a
+            href="/magazine"
+          >
+            Artsy Editorial
+          </a>
+        </div>
       </div>
     </div>
     <span
@@ -855,37 +862,37 @@ exports[`renders a series properly 1`] = `
     />
   </div>
   <div
-    className="c7"
+    className="c8"
   >
-    <div
-      className="c8"
-    />
     <div
       className="c9"
     />
+    <div
+      className="c10"
+    />
   </div>
   <div
-    className="c10 c11"
+    className="c11 c12"
   >
     <div
-      className="SeriesTitle c12 c13"
+      className="SeriesTitle c13 c14"
       color="white"
     >
       <div
-        className="c14"
+        className="c15"
       >
         The Future of Art
       </div>
     </div>
     <div
-      className="c15"
+      className="c16"
       color="white"
     >
       <div
-        className="c16"
+        className="c17"
       >
         <a
-          className="ArticleCard c17 c18"
+          className="ArticleCard c18"
           color="white"
           href="joanne-artman-gallery-poetry-naturerefinement-form"
           onClick={[Function]}
@@ -981,10 +988,10 @@ exports[`renders a series properly 1`] = `
         </a>
       </div>
       <div
-        className="c16"
+        className="c17"
       >
         <a
-          className="ArticleCard c17 c18"
+          className="ArticleCard c18"
           color="white"
           href="new-yorks-next-art-district"
           onClick={[Function]}
@@ -1105,6 +1112,30 @@ exports[`renders a series properly 1`] = `
 `;
 
 exports[`renders a sponsored series properly 1`] = `
+.c9 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 32px;
+  color: white;
+  text-align: center;
+}
+
+.c28 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.c23 {
+  color: white;
+}
+
+.c24 {
+  margin-bottom: 40px;
+}
+
 .c5 {
   font-family: artsy-icons;
   color: white;
@@ -1174,7 +1205,6 @@ exports[`renders a sponsored series properly 1`] = `
   align-items: center;
   height: 52px;
   width: 100%;
-  color: white;
   z-index: 10;
 }
 
@@ -1183,73 +1213,31 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 .c8 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 17px;
-  line-height: 1.1em;
-  -webkit-font-smoothing: antialiased;
   position: absolute;
   width: 100%;
-  text-align: center;
-  font-weight: 600;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: white;
 }
 
 .c8 a {
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
-}
-
-.c43 {
-  box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 0 1 auto;
-  -ms-flex: 0 1 auto;
-  flex: 0 1 auto;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin-right: -0.5rem;
-  margin-left: -0.5rem;
-}
-
-.c23 {
-  box-sizing: border-box;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
-}
-
-.c45 {
-  box-sizing: border-box;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
-}
-
-.c47 {
-  box-sizing: border-box;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
-}
-
-.c28 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
 }
 
 .c40 {
@@ -1392,15 +1380,7 @@ exports[`renders a sponsored series properly 1`] = `
   width: 40px;
 }
 
-.c22 {
-  color: white;
-}
-
-.c22 .c24 {
-  margin-bottom: 60px;
-}
-
-.c9 {
+.c10 {
   background-color: black;
   position: fixed;
   top: 0;
@@ -1410,7 +1390,7 @@ exports[`renders a sponsored series properly 1`] = `
   z-index: -1;
 }
 
-.c10 {
+.c11 {
   background-image: url(https://artsy-media-uploads.s3.amazonaws.com/GXvnaBYBdP2z6LKIBQF7XA%2FArtboard.jpg);
   background-size: cover;
   background-position: 50%;
@@ -1422,7 +1402,7 @@ exports[`renders a sponsored series properly 1`] = `
   z-index: -2;
 }
 
-.c11 {
+.c12 {
   background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.6));
   position: fixed;
   top: 0;
@@ -1432,18 +1412,55 @@ exports[`renders a sponsored series properly 1`] = `
   z-index: -1;
 }
 
-.c18 {
+.c43 {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -0.5rem;
+  margin-left: -0.5rem;
+}
+
+.c45 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.c47 {
+  box-sizing: border-box;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.c19 {
   display: block;
 }
 
-.c21 img {
+.c22 img {
   max-width: 240px;
   max-height: 40px;
   object-fit: contain;
   object-position: left;
 }
 
-.c19 {
+.c20 {
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
@@ -1643,7 +1660,7 @@ exports[`renders a sponsored series properly 1`] = `
   width: 100%;
 }
 
-.c44 .c17 {
+.c44 .c18 {
   display: none;
 }
 
@@ -1661,7 +1678,7 @@ exports[`renders a sponsored series properly 1`] = `
   flex-direction: column;
 }
 
-.c44:first-of-type .c17 {
+.c44:first-of-type .c18 {
   display: block;
   margin-bottom: 10px;
 }
@@ -1673,22 +1690,22 @@ exports[`renders a sponsored series properly 1`] = `
   line-height: 1.1em;
 }
 
-.c15 {
+.c16 {
   color: white;
   text-align: center;
 }
 
-.c15 .c20 {
+.c16 .c21 {
   padding-top: 5px;
   padding-bottom: 40px;
 }
 
-.c15 .c20 img {
+.c16 .c21 img {
   margin-left: auto;
   margin-right: auto;
 }
 
-.c16 {
+.c17 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 120px;
@@ -1696,7 +1713,7 @@ exports[`renders a sponsored series properly 1`] = `
   margin-bottom: 30px;
 }
 
-.fKzgLF .c14 {
+.fKzgLF .c15 {
   margin-bottom: 90px;
 }
 
@@ -1704,17 +1721,17 @@ exports[`renders a sponsored series properly 1`] = `
   padding-top: 60px;
 }
 
-.c13 {
+.c14 {
   max-width: 1200px;
   min-height: 100vh;
   margin: 0 auto;
 }
 
-.c13 .c14 {
+.c14 .c15 {
   margin-bottom: 60px;
 }
 
-.c13 .c41 {
+.c14 .c41 {
   padding-top: 60px;
 }
 
@@ -1722,8 +1739,14 @@ exports[`renders a sponsored series properly 1`] = `
   color: white;
 }
 
-.c0 .c12 {
+.c0 .c13 {
   padding: 90px 20px 150px;
+}
+
+@media screen and (min-width:40em) {
+  .c24 {
+    margin-bottom: 60px;
+  }
 }
 
 @media (max-width:900px) {
@@ -1744,62 +1767,6 @@ exports[`renders a sponsored series properly 1`] = `
 
   .c3 .c6 {
     margin: 0 10px;
-  }
-}
-
-@media (max-width:720px) {
-  .c8 {
-    display: none;
-  }
-}
-
-@media only screen and (min-width:0em) {
-  .c23 {
-    -webkit-flex-basis: 100%;
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
-    max-width: 100%;
-    display: block;
-  }
-}
-
-@media only screen and (min-width:0em) {
-  .c45 {
-    -webkit-flex-basis: 100%;
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
-    max-width: 100%;
-    display: block;
-  }
-}
-
-@media only screen and (min-width:48em) {
-  .c45 {
-    -webkit-flex-basis: 33.333333333333336%;
-    -ms-flex-preferred-size: 33.333333333333336%;
-    flex-basis: 33.333333333333336%;
-    max-width: 33.333333333333336%;
-    display: block;
-  }
-}
-
-@media only screen and (min-width:0em) {
-  .c47 {
-    -webkit-flex-basis: 100%;
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
-    max-width: 100%;
-    display: block;
-  }
-}
-
-@media only screen and (min-width:48em) {
-  .c47 {
-    -webkit-flex-basis: 66.66666666666667%;
-    -ms-flex-preferred-size: 66.66666666666667%;
-    flex-basis: 66.66666666666667%;
-    max-width: 66.66666666666667%;
-    display: block;
   }
 }
 
@@ -1852,14 +1819,48 @@ exports[`renders a sponsored series properly 1`] = `
   }
 }
 
-@media (max-width:64em) {
-  .c22 .c24 {
-    margin-bottom: 40px;
+@media only screen and (min-width:0em) {
+  .c45 {
+    -webkit-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    max-width: 100%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:48em) {
+  .c45 {
+    -webkit-flex-basis: 33.333333333333336%;
+    -ms-flex-preferred-size: 33.333333333333336%;
+    flex-basis: 33.333333333333336%;
+    max-width: 33.333333333333336%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:0em) {
+  .c47 {
+    -webkit-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    max-width: 100%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width:48em) {
+  .c47 {
+    -webkit-flex-basis: 66.66666666666667%;
+    -ms-flex-preferred-size: 66.66666666666667%;
+    flex-basis: 66.66666666666667%;
+    max-width: 66.66666666666667%;
+    display: block;
   }
 }
 
 @media (max-width:720px) {
-  .c19 {
+  .c20 {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
@@ -1928,11 +1929,11 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:48em) {
-  .c44:first-of-type .c17 {
+  .c44:first-of-type .c18 {
     display: none;
   }
 
-  .c44 .c17 {
+  .c44 .c18 {
     margin-top: 60px;
     display: block;
   }
@@ -1945,13 +1946,13 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c15 .c20 {
+  .c16 .c21 {
     padding-bottom: 0;
   }
 }
 
 @media (max-width:900px) {
-  .c16 {
+  .c17 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 65px;
@@ -1967,7 +1968,7 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c13 .c41 {
+  .c14 .c41 {
     padding-top: 60px;
   }
 }
@@ -1979,6 +1980,7 @@ exports[`renders a sponsored series properly 1`] = `
   <div>
     <div
       className="c1 c2"
+      color="white"
     >
       <div
         className="PartnerInline c3"
@@ -2039,13 +2041,25 @@ exports[`renders a sponsored series properly 1`] = `
         </a>
       </div>
       <div
-        className="c8"
+        className="rrm-container rrm-greaterThan-xs"
       >
-        <a
-          href="/magazine"
+        <div
+          className="c8 c9"
+          color="white"
+          fontFamily={
+            Object {
+              "fontFamily": "'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif",
+              "fontWeight": 600,
+            }
+          }
+          fontSize="22px"
         >
-          Artsy Editorial
-        </a>
+          <a
+            href="/magazine"
+          >
+            Artsy Editorial
+          </a>
+        </div>
       </div>
     </div>
     <span
@@ -2057,37 +2071,37 @@ exports[`renders a sponsored series properly 1`] = `
     />
   </div>
   <div
-    className="c9"
+    className="c10"
   >
-    <div
-      className="c10"
-    />
     <div
       className="c11"
     />
+    <div
+      className="c12"
+    />
   </div>
   <div
-    className="c12 c13"
+    className="c13 c14"
   >
     <div
-      className="SeriesTitle c14 c15"
+      className="SeriesTitle c15 c16"
       color="white"
     >
       <div
-        className="c16"
+        className="c17"
       >
         The Future of Art
       </div>
       <div
-        className="PartnerBlock c17 c18"
+        className="PartnerBlock c18 c19"
       >
         <div
-          className="c19"
+          className="c20"
         >
           Presented in Partnership with
         </div>
         <div
-          className="c20 c21"
+          className="c21 c22"
         >
           <a
             href="http://artsy.net"
@@ -2102,14 +2116,14 @@ exports[`renders a sponsored series properly 1`] = `
       </div>
     </div>
     <div
-      className="c22"
+      className="c23"
       color="white"
     >
       <div
-        className="c23"
+        className="c24"
       >
         <a
-          className="ArticleCard c24 c25"
+          className="ArticleCard c25"
           color="white"
           href="joanne-artman-gallery-poetry-naturerefinement-form"
           onClick={[Function]}
@@ -2205,10 +2219,10 @@ exports[`renders a sponsored series properly 1`] = `
         </a>
       </div>
       <div
-        className="c23"
+        className="c24"
       >
         <a
-          className="ArticleCard c24 c25"
+          className="ArticleCard c25"
           color="white"
           href="new-yorks-next-art-district"
           onClick={[Function]}
@@ -2303,15 +2317,15 @@ exports[`renders a sponsored series properly 1`] = `
           About the Series
         </div>
         <div
-          className="PartnerBlock c17 c18"
+          className="PartnerBlock c18 c19"
         >
           <div
-            className="c19"
+            className="c20"
           >
             Presented in Partnership with
           </div>
           <div
-            className="c20 c21"
+            className="c21 c22"
           >
             <a
               href="http://artsy.net"
@@ -2345,15 +2359,15 @@ exports[`renders a sponsored series properly 1`] = `
           </div>
         </div>
         <div
-          className="PartnerBlock c17 c18"
+          className="PartnerBlock c18 c19"
         >
           <div
-            className="c19"
+            className="c20"
           >
             Presented in Partnership with
           </div>
           <div
-            className="c20 c21"
+            className="c21 c22"
           >
             <a
               href="http://artsy.net"

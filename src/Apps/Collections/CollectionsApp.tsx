@@ -5,6 +5,7 @@ import React, { Component } from "react"
 import { Meta, Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
+import { BreadCrumbList } from "../Collect/Components/Seo"
 import { CollectionEntity, CollectionsGrid } from "./Components/CollectionsGrid"
 
 interface CollectionsAppProps {
@@ -26,6 +27,9 @@ export class CollectionsApp extends Component<CollectionsAppProps> {
         <Meta name="description" content={META_DESCRIPTION} />
         <Meta property="og:description" content={META_DESCRIPTION} />
         <Meta property="twitter:description" content={META_DESCRIPTION} />
+        <BreadCrumbList
+          items={[{ path: "/collections", name: "Collections" }]}
+        />
 
         <FrameWithRecentlyViewed>
           <Flex

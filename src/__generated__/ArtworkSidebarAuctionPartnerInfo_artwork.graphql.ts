@@ -4,15 +4,17 @@ import { ConcreteFragment } from "relay-runtime";
 declare const _ArtworkSidebarAuctionPartnerInfo_artwork$ref: unique symbol;
 export type ArtworkSidebarAuctionPartnerInfo_artwork$ref = typeof _ArtworkSidebarAuctionPartnerInfo_artwork$ref;
 export type ArtworkSidebarAuctionPartnerInfo_artwork = {
-    readonly is_biddable: boolean | null;
+    readonly _id: string;
     readonly partner: ({
-        readonly __id: string;
+        readonly _id: string;
         readonly name: string | null;
     }) | null;
     readonly sale_artwork: ({
         readonly estimate: string | null;
     }) | null;
     readonly sale: ({
+        readonly _id: string;
+        readonly is_closed: boolean | null;
         readonly is_with_buyers_premium: boolean | null;
     }) | null;
     readonly " $refType": ArtworkSidebarAuctionPartnerInfo_artwork$ref;
@@ -22,6 +24,13 @@ export type ArtworkSidebarAuctionPartnerInfo_artwork = {
 
 const node: ConcreteFragment = (function(){
 var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "_id",
+  "args": null,
+  "storageKey": null
+},
+v1 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__id",
@@ -35,13 +44,7 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "is_biddable",
-      "args": null,
-      "storageKey": null
-    },
+    v0,
     {
       "kind": "LinkedField",
       "alias": null,
@@ -58,7 +61,8 @@ return {
           "name": "name",
           "args": null,
           "storageKey": null
-        }
+        },
+        v1
       ]
     },
     {
@@ -77,7 +81,7 @@ return {
           "args": null,
           "storageKey": null
         },
-        v0
+        v1
       ]
     },
     {
@@ -89,6 +93,14 @@ return {
       "concreteType": "Sale",
       "plural": false,
       "selections": [
+        v0,
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "is_closed",
+          "args": null,
+          "storageKey": null
+        },
         {
           "kind": "ScalarField",
           "alias": null,
@@ -96,12 +108,12 @@ return {
           "args": null,
           "storageKey": null
         },
-        v0
+        v1
       ]
     },
-    v0
+    v1
   ]
 };
 })();
-(node as any).hash = '6bd15df43a0432c47130b031be2830e1';
+(node as any).hash = 'e1fe54df68d7f574fbcb85149c14f99e';
 export default node;

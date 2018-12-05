@@ -1,21 +1,22 @@
 export const initialOfferSuccess = {
-  ecommerceInitialOffer: {
+  ecommerceAddInitialOfferToOrder: {
     orderOrError: {
       order: {
         id: "1234",
         itemsTotalCents: 400,
         totalListPriceCents: 600,
-        lastOffer: {
+        myLastOffer: {
           id: "2345",
           amountCents: 400,
         },
+        lastOffer: null,
       },
     },
   },
 }
 
 export const initialOfferFailedCannotOffer = {
-  ecommerceInitialOffer: {
+  ecommerceAddInitialOfferToOrder: {
     orderOrError: {
       error: {
         type: "validation",

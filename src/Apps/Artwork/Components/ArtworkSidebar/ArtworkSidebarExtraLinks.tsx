@@ -1,4 +1,4 @@
-import { Box, Sans, Spacer } from "@artsy/palette"
+import { Box, Link, Sans, Spacer } from "@artsy/palette"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { ContextConsumer } from "Artsy/Router"
@@ -6,7 +6,6 @@ import { Mediator } from "Artsy/SystemContext"
 import React, { SFC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
-import styled from "styled-components"
 
 import { ArtworkSidebarExtraLinks_artwork } from "__generated__/ArtworkSidebarExtraLinks_artwork.graphql"
 
@@ -14,7 +13,7 @@ export interface ArtworkSidebarExtraLinksProps {
   artwork: ArtworkSidebarExtraLinks_artwork
 }
 
-interface ArtworkSidebarExtraLinksContainerProps
+export interface ArtworkSidebarExtraLinksContainerProps
   extends ArtworkSidebarExtraLinksProps {
   mediator: Mediator
 }
@@ -24,10 +23,6 @@ const Container = ({ children }) => (
     {children}
   </Sans>
 )
-
-const Link = styled.a`
-  text-decoration: underline;
-`
 
 @track({
   context_module: Schema.ContextModule.Sidebar,
@@ -84,7 +79,7 @@ class ArtworkSidebarExtraLinksContainer extends React.Component<
     this.props.mediator &&
       this.props.mediator.trigger &&
       this.props.mediator.trigger("openAuctionAskSpecialistModal", {
-        artworkId: this.props.artwork.__id,
+        artworkId: this.props.artwork._id,
       })
   }
 
@@ -97,7 +92,7 @@ class ArtworkSidebarExtraLinksContainer extends React.Component<
     this.props.mediator &&
       this.props.mediator.trigger &&
       this.props.mediator.trigger("openBuyNowAskSpecialistModal", {
-        artworkId: this.props.artwork.__id,
+        artworkId: this.props.artwork._id,
       })
   }
 
@@ -208,16 +203,17 @@ export const ArtworkSidebarExtraLinksFragmentContainer = createFragmentContainer
   ArtworkSidebarExtraLinks,
   graphql`
     fragment ArtworkSidebarExtraLinks_artwork on Artwork {
-      __id
+      _id
       is_in_auction
       is_for_sale
       is_acquireable
       is_inquireable
       artists {
-        __id
+        _id
         is_consignable
       }
       sale {
+        _id
         is_closed
       }
     }

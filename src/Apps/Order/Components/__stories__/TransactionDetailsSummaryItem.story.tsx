@@ -11,6 +11,7 @@ import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSum
 
 const order: TransactionDetailsSummaryItem_order = {
   " $refType": null,
+  __typename: "BuyOrder",
   mode: "BUY",
   itemsTotal: "£3,024.89",
   totalListPrice: "£3,024.89",
@@ -19,7 +20,6 @@ const order: TransactionDetailsSummaryItem_order = {
   taxTotal: "£232.23",
   taxTotalCents: 23223,
   buyerTotal: "£1,200,823.33",
-  lastOffer: null,
 }
 
 const orderQuery = graphql`
@@ -48,46 +48,112 @@ const render = (
   />
 )
 
-storiesOf("Apps/Order Page/Components", module)
-  .add("TransactionDetailsSummary", () => {
+storiesOf("Apps/Order Page/Components", module).add(
+  "TransactionDetailsSummary",
+  () => {
     return (
-      <Section title="Transaction Summary">
-        <Flex width={280} flexDirection="column">
-          {render()}
-        </Flex>
-      </Section>
+      <>
+        <Section title="Transaction Summary">
+          <Flex width={280} flexDirection="column">
+            {render()}
+          </Flex>
+        </Section>
+        <Section title="Offer Transaction Summary">
+          <Flex width={280} flexDirection="column">
+            {render({
+              __typename: "OfferOrder",
+              mode: "OFFER",
+              myLastOffer: {
+                id: "2345",
+                amount: "$102489",
+                amountCents: 102489,
+                shippingTotal: "$200",
+                shippingTotalCents: 20000,
+                taxTotal: "$100",
+                taxTotalCents: 10000,
+                buyerTotal: "$102789",
+                buyerTotalCents: 10278900,
+                fromParticipant: "BUYER",
+              },
+            })}
+          </Flex>
+        </Section>
+        <Section title="Transaction Summary (offer override)">
+          <Flex width={280} flexDirection="column">
+            {render(
+              {
+                __typename: "OfferOrder",
+                mode: "OFFER",
+                myLastOffer: {
+                  id: "2345",
+                  amount: "$102489",
+                  amountCents: 102489,
+                  shippingTotal: "$200",
+                  shippingTotalCents: 20000,
+                  taxTotal: "$100",
+                  taxTotalCents: 10000,
+                  buyerTotal: "$102789",
+                  buyerTotalCents: 10278900,
+                  fromParticipant: "BUYER",
+                },
+              },
+              {
+                offerOverride: "£123.00",
+              }
+            )}
+          </Flex>
+        </Section>
+        <Section title="Transaction Summary (using last submitted offer)">
+          <Flex width={280} flexDirection="column">
+            {render(
+              {
+                __typename: "OfferOrder",
+                mode: "OFFER",
+                lastOffer: {
+                  id: "2345",
+                  amount: "$102489",
+                  amountCents: 102489,
+                  shippingTotal: "$200",
+                  shippingTotalCents: 20000,
+                  taxTotal: "$100",
+                  taxTotalCents: 10000,
+                  buyerTotal: "$102789",
+                  buyerTotalCents: 10278900,
+                  fromParticipant: "BUYER",
+                },
+              },
+              {
+                useLastSubmittedOffer: true,
+              }
+            )}
+          </Flex>
+        </Section>
+        <Section title="Transaction Summary (seller offer)">
+          <Flex width={280} flexDirection="column">
+            {render(
+              {
+                __typename: "OfferOrder",
+                mode: "OFFER",
+                lastOffer: {
+                  id: "2345",
+                  amount: "$102489",
+                  amountCents: 102489,
+                  shippingTotal: "$200",
+                  shippingTotalCents: 20000,
+                  taxTotal: "$100",
+                  taxTotalCents: 10000,
+                  buyerTotal: "$102789",
+                  buyerTotalCents: 10278900,
+                  fromParticipant: "SELLER",
+                },
+              },
+              {
+                useLastSubmittedOffer: true,
+              }
+            )}
+          </Flex>
+        </Section>
+      </>
     )
-  })
-
-  .add("TransactionDetailsSummary (Offer)", () => (
-    <Section title="Offer Transaction Summary">
-      <Flex width={280} flexDirection="column">
-        {render({
-          mode: "OFFER",
-          lastOffer: {
-            id: "2345",
-            amountCents: 102489,
-          },
-        })}
-      </Flex>
-    </Section>
-  ))
-
-  .add("TransactionDetailsSummary (Offer override)", () => (
-    <Section title="Transaction Summary (offer should be 123)">
-      <Flex width={280} flexDirection="column">
-        {render(
-          {
-            mode: "OFFER",
-            lastOffer: {
-              id: "2345",
-              amountCents: 102489,
-            },
-          },
-          {
-            offerOverride: "£123.00",
-          }
-        )}
-      </Flex>
-    </Section>
-  ))
+  }
+)

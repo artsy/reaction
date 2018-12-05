@@ -1,37 +1,110 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+import { ArtistArtworkGrid_artwork$ref } from "./ArtistArtworkGrid_artwork.graphql";
+import { AuctionArtworkGrid_artwork$ref } from "./AuctionArtworkGrid_artwork.graphql";
 declare const _ArtworkContextAuction_artwork$ref: unique symbol;
 export type ArtworkContextAuction_artwork$ref = typeof _ArtworkContextAuction_artwork$ref;
 export type ArtworkContextAuction_artwork = {
-    readonly id: string;
+    readonly sale: ({
+        readonly href: string | null;
+        readonly is_closed: boolean | null;
+    }) | null;
+    readonly " $fragmentRefs": AuctionArtworkGrid_artwork$ref & ArtistArtworkGrid_artwork$ref;
     readonly " $refType": ArtworkContextAuction_artwork$ref;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ConcreteFragment = (function(){
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
+},
+v1 = [
+  {
+    "kind": "Variable",
+    "name": "excludeArtworkIDs",
+    "variableName": "excludeArtworkIDs",
+    "type": null
+  }
+];
+return {
   "kind": "Fragment",
   "name": "ArtworkContextAuction_artwork",
   "type": "Artwork",
   "metadata": null,
-  "argumentDefinitions": [],
-  "selections": [
+  "argumentDefinitions": [
     {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "id",
-      "args": null,
-      "storageKey": null
+      "kind": "LocalArgument",
+      "name": "isClosed",
+      "type": "Boolean",
+      "defaultValue": null
     },
     {
-      "kind": "ScalarField",
+      "kind": "LocalArgument",
+      "name": "excludeArtworkIDs",
+      "type": "[String!]",
+      "defaultValue": null
+    }
+  ],
+  "selections": [
+    {
+      "kind": "LinkedField",
       "alias": null,
-      "name": "__id",
+      "name": "sale",
+      "storageKey": null,
       "args": null,
-      "storageKey": null
+      "concreteType": "Sale",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "href",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "is_closed",
+          "args": null,
+          "storageKey": null
+        },
+        v0
+      ]
+    },
+    v0,
+    {
+      "kind": "Condition",
+      "passingValue": true,
+      "condition": "isClosed",
+      "selections": [
+        {
+          "kind": "FragmentSpread",
+          "name": "ArtistArtworkGrid_artwork",
+          "args": v1
+        }
+      ]
+    },
+    {
+      "kind": "Condition",
+      "passingValue": false,
+      "condition": "isClosed",
+      "selections": [
+        {
+          "kind": "FragmentSpread",
+          "name": "AuctionArtworkGrid_artwork",
+          "args": v1
+        }
+      ]
     }
   ]
 };
-(node as any).hash = 'f52c87e490f8626344e6fe74bcbcd3d3';
+})();
+(node as any).hash = '84fcefcc7dad02d2fcaef5cca8a47397';
 export default node;

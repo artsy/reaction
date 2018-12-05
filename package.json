@@ -6,12 +6,6 @@
   "repository": "https://github.com/artsy/reaction.git",
   "author": "Art.sy Inc <it@artsymail.com>",
   "license": "MIT",
-  "files": [
-    "assets",
-    "data",
-    "dist",
-    "docs"
-  ],
   "peerDependencies": {
     "dd-trace": "^0.6.0",
     "react": "^16.5.0",
@@ -65,7 +59,6 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.0.0",
-    "@playlyfe/gql": "^2.3.2",
     "@storybook/addon-info": "^4.0.0-alpha.24",
     "@storybook/addon-options": "^4.0.0-alpha.24",
     "@storybook/addons": "^4.0.0-alpha.24",
@@ -145,17 +138,19 @@
     "tslint-config-prettier": "^1.1.0",
     "tslint-plugin-relay": "^0.0.3",
     "tslint-react": "^2.4.0",
-    "typescript": "^3.0.1",
+    "typescript": "~3.1",
     "typescript-styled-plugin": "^0.13.0",
     "webpack": "^4.20.2",
     "webpack-bundle-analyzer": "^2.13.1",
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
-    "@artsy/palette": "^2.21.3",
-    "@artsy/react-responsive-media": "^2.0.0-beta.4",
+    "@artsy/detect-responsive-traits": "^0.0.1",
+    "@artsy/palette": "^2.22.0",
+    "@artsy/react-responsive-media": "^2.0.0-beta.5",
     "@sentry/browser": "^4.2.3",
     "cheerio": "^1.0.0-rc.2",
+    "currency.js": "^1.2.1",
     "farce": "^0.2.6",
     "formik": "^0.11.11",
     "found": "^0.3.14",

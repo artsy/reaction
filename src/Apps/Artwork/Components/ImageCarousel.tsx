@@ -69,6 +69,7 @@ const Button = styled.a`
 `
 
 const NavigationButtonContainer = styled.div`
+  height: 100%;
   width: 40px;
   display: flex;
   flex-direction: column;

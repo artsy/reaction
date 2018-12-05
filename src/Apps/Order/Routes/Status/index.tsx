@@ -65,7 +65,10 @@ export class StatusRoute extends Component<StatusProps> {
                 {userMessage && <Message p={[2, 3]}>{userMessage}</Message>}
                 <Flex flexDirection="column">
                   <ArtworkSummaryItem order={order} />
-                  <TransactionDetailsSummaryItem order={order} />
+                  <TransactionDetailsSummaryItem
+                    order={order}
+                    useLastSubmittedOffer
+                  />
                 </Flex>
               </Join>
               <Spacer mb={[2, 3]} />
@@ -237,6 +240,17 @@ export const StatusFragmentContainer = createFragmentContainer(
               ...ItemReview_artwork
             }
           }
+        }
+      }
+      ... on OfferOrder {
+        myLastOffer {
+          id
+          amount(precision: 2)
+          amountCents
+          shippingTotal(precision: 2)
+          shippingTotalCents
+          taxTotal(precision: 2)
+          taxTotalCents
         }
       }
     }

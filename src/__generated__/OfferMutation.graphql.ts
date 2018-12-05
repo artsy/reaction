@@ -2,7 +2,7 @@
 
 import { ConcreteRequest } from "relay-runtime";
 export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
-export type InitialOfferInput = {
+export type AddInitialOfferToOrderInput = {
     readonly orderId: string;
     readonly offerPrice?: MoneyInput | null;
     readonly clientMutationId?: string | null;
@@ -12,10 +12,10 @@ export type MoneyInput = {
     readonly currencyCode: string;
 };
 export type OfferMutationVariables = {
-    readonly input: InitialOfferInput;
+    readonly input: AddInitialOfferToOrderInput;
 };
 export type OfferMutationResponse = {
-    readonly ecommerceInitialOffer: ({
+    readonly ecommerceAddInitialOfferToOrder: ({
         readonly orderOrError: ({
             readonly __typename: "OrderWithMutationSuccess";
             readonly order?: ({
@@ -23,7 +23,7 @@ export type OfferMutationResponse = {
                 readonly mode: OrderModeEnum | null;
                 readonly itemsTotal: string | null;
                 readonly totalListPrice: string | null;
-                readonly lastOffer: ({
+                readonly myLastOffer?: ({
                     readonly id: string | null;
                     readonly amountCents: number | null;
                 }) | null;
@@ -45,9 +45,9 @@ export type OfferMutation = {
 
 /*
 mutation OfferMutation(
-  $input: InitialOfferInput!
+  $input: AddInitialOfferToOrderInput!
 ) {
-  ecommerceInitialOffer(input: $input) {
+  ecommerceAddInitialOfferToOrder(input: $input) {
     orderOrError {
       __typename
       ... on OrderWithMutationSuccess {
@@ -58,10 +58,12 @@ mutation OfferMutation(
           mode
           itemsTotal
           totalListPrice
-          lastOffer {
-            id
-            amountCents
-            __id: id
+          ... on OfferOrder {
+            myLastOffer {
+              id
+              amountCents
+              __id: id
+            }
           }
           __id: id
         }
@@ -83,7 +85,7 @@ var v0 = [
   {
     "kind": "LocalArgument",
     "name": "input",
-    "type": "InitialOfferInput!",
+    "type": "AddInitialOfferToOrderInput!",
     "defaultValue": null
   }
 ],
@@ -92,7 +94,7 @@ v1 = [
     "kind": "Variable",
     "name": "input",
     "variableName": "input",
-    "type": "InitialOfferInput!"
+    "type": "AddInitialOfferToOrderInput!"
   }
 ],
 v2 = {
@@ -176,23 +178,29 @@ v8 = {
   "storageKey": null
 },
 v9 = {
-  "kind": "LinkedField",
-  "alias": null,
-  "name": "lastOffer",
-  "storageKey": null,
-  "args": null,
-  "concreteType": "Offer",
-  "plural": false,
+  "kind": "InlineFragment",
+  "type": "OfferOrder",
   "selections": [
-    v4,
     {
-      "kind": "ScalarField",
+      "kind": "LinkedField",
       "alias": null,
-      "name": "amountCents",
+      "name": "myLastOffer",
+      "storageKey": null,
       "args": null,
-      "storageKey": null
-    },
-    v8
+      "concreteType": "Offer",
+      "plural": false,
+      "selections": [
+        v4,
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "amountCents",
+          "args": null,
+          "storageKey": null
+        },
+        v8
+      ]
+    }
   ]
 };
 return {
@@ -200,7 +208,7 @@ return {
   "operationKind": "mutation",
   "name": "OfferMutation",
   "id": null,
-  "text": "mutation OfferMutation(\n  $input: InitialOfferInput!\n) {\n  ecommerceInitialOffer(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          id\n          mode\n          itemsTotal\n          totalListPrice\n          lastOffer {\n            id\n            amountCents\n            __id: id\n          }\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation OfferMutation(\n  $input: AddInitialOfferToOrderInput!\n) {\n  ecommerceAddInitialOfferToOrder(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          id\n          mode\n          itemsTotal\n          totalListPrice\n          ... on OfferOrder {\n            myLastOffer {\n              id\n              amountCents\n              __id: id\n            }\n          }\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -212,10 +220,10 @@ return {
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "ecommerceInitialOffer",
+        "name": "ecommerceAddInitialOfferToOrder",
         "storageKey": null,
         "args": v1,
-        "concreteType": "InitialOfferPayload",
+        "concreteType": "AddInitialOfferToOrderPayload",
         "plural": false,
         "selections": [
           {
@@ -246,8 +254,8 @@ return {
                       v5,
                       v6,
                       v7,
-                      v9,
-                      v8
+                      v8,
+                      v9
                     ]
                   }
                 ]
@@ -266,10 +274,10 @@ return {
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "ecommerceInitialOffer",
+        "name": "ecommerceAddInitialOfferToOrder",
         "storageKey": null,
         "args": v1,
-        "concreteType": "InitialOfferPayload",
+        "concreteType": "AddInitialOfferToOrderPayload",
         "plural": false,
         "selections": [
           {
@@ -302,8 +310,8 @@ return {
                       v5,
                       v6,
                       v7,
-                      v9,
-                      v8
+                      v8,
+                      v9
                     ]
                   }
                 ]
@@ -316,5 +324,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'f430270cd032c421335ec34f30585233';
+(node as any).hash = '1552f4300994d6916797385dc4bbef83';
 export default node;

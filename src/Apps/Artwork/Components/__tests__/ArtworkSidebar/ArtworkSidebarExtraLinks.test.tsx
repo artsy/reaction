@@ -34,7 +34,6 @@ describe("ArtworkSidebarExtraLinks", () => {
       wrapper = await getWrapper(LiveAuctionArtwork)
     })
     it("displays proper text", () => {
-      console.log(wrapper.text())
       expect(wrapper.text()).toContain(
         "By placing your bid you agree to Artsy's Conditions of Sale."
       )

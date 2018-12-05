@@ -1,4 +1,4 @@
-import { Box, Flex, Sans, Separator } from "@artsy/palette"
+import { Box, Flex, Sans, Separator, Spacer } from "@artsy/palette"
 import React, { Component } from "react"
 import { EntityHeader } from "Styleguide/Components/EntityHeader"
 import { slugify } from "underscore.string"
@@ -53,9 +53,13 @@ export class CollectionsGrid extends Component<CollectionsGridProps> {
             )
           })}
 
-          <Media greaterThan="xs">
-            {hasShortRow && <Box width={["100%", "30%"]} />}
-          </Media>
+          {hasShortRow && (
+            <Media greaterThan="xs">
+              {(_, renderChildren) =>
+                renderChildren && <Spacer width={["100%", "30%"]} />
+              }
+            </Media>
+          )}
         </Flex>
       </Box>
     )

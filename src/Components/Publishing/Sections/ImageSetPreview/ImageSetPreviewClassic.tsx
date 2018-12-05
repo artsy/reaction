@@ -1,8 +1,8 @@
 import { avantgarde } from "Assets/Fonts"
 import React, { Component } from "react"
 import styled, { StyledFunction } from "styled-components"
-import { resize } from "../../../Utils/resizer"
-import { IconImageSet } from "../Icon/IconImageSet"
+import { resize } from "../../../../Utils/resizer"
+import { IconImageSet } from "../../Icon/IconImageSet"
 
 interface LengthProps extends React.HTMLProps<HTMLDivElement> {
   imgLength: number

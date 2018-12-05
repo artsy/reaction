@@ -3,6 +3,7 @@
 import { ConcreteFragment } from "relay-runtime";
 import { ArtworkSummaryItem_order$ref } from "./ArtworkSummaryItem_order.graphql";
 import { CreditCardSummaryItem_order$ref } from "./CreditCardSummaryItem_order.graphql";
+import { OfferHistoryItem_order$ref } from "./OfferHistoryItem_order.graphql";
 import { ShippingSummaryItem_order$ref } from "./ShippingSummaryItem_order.graphql";
 import { TransactionDetailsSummaryItem_order$ref } from "./TransactionDetailsSummaryItem_order.graphql";
 export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
@@ -14,6 +15,10 @@ export type Respond_order = {
     readonly state: string | null;
     readonly itemsTotal: string | null;
     readonly totalListPrice: string | null;
+    readonly stateExpiresAt: string | null;
+    readonly lastOffer: ({
+        readonly createdAt: string | null;
+    }) | null;
     readonly lineItems: ({
         readonly edges: ReadonlyArray<({
             readonly node: ({
@@ -23,7 +28,7 @@ export type Respond_order = {
             }) | null;
         }) | null> | null;
     }) | null;
-    readonly " $fragmentRefs": TransactionDetailsSummaryItem_order$ref & ArtworkSummaryItem_order$ref & ShippingSummaryItem_order$ref & CreditCardSummaryItem_order$ref;
+    readonly " $fragmentRefs": TransactionDetailsSummaryItem_order$ref & ArtworkSummaryItem_order$ref & ShippingSummaryItem_order$ref & CreditCardSummaryItem_order$ref & OfferHistoryItem_order$ref;
     readonly " $refType": Respond_order$ref;
 };
 
@@ -137,6 +142,32 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
+      "name": "stateExpiresAt",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "lastOffer",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Offer",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "createdAt",
+          "args": null,
+          "storageKey": null
+        },
+        v1
+      ]
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
       "name": "mode",
       "args": null,
       "storageKey": null
@@ -161,9 +192,14 @@ return {
       "name": "CreditCardSummaryItem_order",
       "args": null
     },
+    {
+      "kind": "FragmentSpread",
+      "name": "OfferHistoryItem_order",
+      "args": null
+    },
     v1
   ]
 };
 })();
-(node as any).hash = '4c1b2315bea394936d61a64d662973ea';
+(node as any).hash = '3e27c4c9c1b23e952868c0dbe827a8d4';
 export default node;

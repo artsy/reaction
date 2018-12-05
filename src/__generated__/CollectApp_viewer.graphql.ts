@@ -2,9 +2,13 @@
 
 import { ConcreteFragment } from "relay-runtime";
 import { CollectFilterContainer_viewer$ref } from "./CollectFilterContainer_viewer.graphql";
+import { SeoProductsForArtworks_artworks$ref } from "./SeoProductsForArtworks_artworks.graphql";
 declare const _CollectApp_viewer$ref: unique symbol;
 export type CollectApp_viewer$ref = typeof _CollectApp_viewer$ref;
 export type CollectApp_viewer = {
+    readonly filter_artworks: ({
+        readonly " $fragmentRefs": SeoProductsForArtworks_artworks$ref;
+    }) | null;
     readonly " $fragmentRefs": CollectFilterContainer_viewer$ref;
     readonly " $refType": CollectApp_viewer$ref;
 };
@@ -95,6 +99,42 @@ const node: ConcreteFragment = {
   ],
   "selections": [
     {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "filter_artworks",
+      "storageKey": null,
+      "args": [
+        {
+          "kind": "Variable",
+          "name": "aggregations",
+          "variableName": "aggregations",
+          "type": "[ArtworkAggregation]"
+        },
+        {
+          "kind": "Literal",
+          "name": "size",
+          "value": 0,
+          "type": "Int"
+        }
+      ],
+      "concreteType": "FilterArtworks",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "FragmentSpread",
+          "name": "SeoProductsForArtworks_artworks",
+          "args": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "__id",
+          "args": null,
+          "storageKey": null
+        }
+      ]
+    },
+    {
       "kind": "FragmentSpread",
       "name": "CollectFilterContainer_viewer",
       "args": [
@@ -168,5 +208,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'dbb0e07f08a0aaf88a6c210ca4fdf614';
+(node as any).hash = '573b3805b5ffc0b05e2f1fb59dd8116a';
 export default node;

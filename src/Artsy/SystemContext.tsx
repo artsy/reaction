@@ -2,7 +2,6 @@ import { createEnvironment } from "Artsy/Relay/createEnvironment"
 import React, { SFC } from "react"
 import { Environment } from "relay-runtime"
 import { getUser } from "Utils/getUser"
-import { MatchingMediaQueries } from "Utils/Responsive"
 
 export interface Mediator {
   trigger: (action: string, config?: object) => void
@@ -16,12 +15,6 @@ export interface SystemProps {
    * and `USER_ACCESS_TOKEN` environment variables if available.
    */
   user?: User
-
-  /**
-   * Media queries that are passed to Responsive when an app first mounts. Useful
-   * for SSR rendering views for mobile devices.
-   */
-  initialMatchingMediaQueries?: MatchingMediaQueries
 
   /**
    * A PubSub hub typically used for communicating with Force.

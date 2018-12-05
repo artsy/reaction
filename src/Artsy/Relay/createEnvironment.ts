@@ -113,6 +113,7 @@ export function createEnvironment(config: Config = {}) {
 
   const source = new RecordSource()
   const store = new Store(source)
+
   const environment = new Environment({
     network,
     store,
