@@ -179,6 +179,7 @@ storiesOf("Apps/Order Page/Counter Offer", module).add("Respond", () => (
     initialRoute="/orders/123/respond"
     mockResolvers={mockResolver({
       ...OfferOrderWithShippingDetails,
+      state: "SUBMITTED",
       stateExpiresAt: moment()
         .add(1, "day")
         .toISOString(),
