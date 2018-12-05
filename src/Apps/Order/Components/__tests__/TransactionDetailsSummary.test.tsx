@@ -5,7 +5,9 @@ import {
   UntouchedOfferOrder,
 } from "Apps/__tests__/Fixtures/Order"
 import { renderRelayTree } from "DevTools"
+import React from "react"
 import { graphql } from "react-relay"
+import { ExtractProps } from "Utils/ExtractProps"
 import { TransactionDetailsSummaryItemFragmentContainer } from "../TransactionDetailsSummaryItem"
 
 jest.unmock("react-relay")
@@ -30,9 +32,19 @@ const transactionSummaryOfferOrder = {
   buyerTotal: "$215.25",
 }
 
-const render = order =>
+const render = (
+  order,
+  extraProps?: Partial<
+    ExtractProps<typeof TransactionDetailsSummaryItemFragmentContainer>
+  >
+) =>
   renderRelayTree({
-    Component: TransactionDetailsSummaryItemFragmentContainer,
+    Component: (props: any) => (
+      <TransactionDetailsSummaryItemFragmentContainer
+        {...props}
+        {...extraProps}
+      />
+    ),
     mockResolvers: mockResolver({
       ...order,
     }),
@@ -116,6 +128,7 @@ describe("TransactionDetailsSummaryItem", () => {
           shippingTotalCents: null,
           buyerTotal: null,
           buyerTotalCents: null,
+          fromParticipant: "BUYER",
         },
       })
 
@@ -138,6 +151,7 @@ describe("TransactionDetailsSummaryItem", () => {
           shippingTotalCents: 0,
           buyerTotal: "$14,000",
           buyerTotalCents: 1400000,
+          fromParticipant: "BUYER",
         },
       } as any)
 
@@ -161,6 +175,67 @@ describe("TransactionDetailsSummaryItem", () => {
       expect(text).toMatch("Shipping—")
       expect(text).toMatch("Tax—")
       expect(text).toMatch("Total")
+    })
+
+    it("shows the last submitted offer if requested", async () => {
+      const transactionSummary = await render(
+        {
+          ...transactionSummaryOfferOrder,
+          lastOffer: {
+            ...OfferWithTotals,
+            id: "last-offer",
+            amount: "£poundz",
+            fromParticipant: "SELLER",
+          },
+          myLastOffer: {
+            ...OfferWithTotals,
+            id: "my-last-offer",
+            amount: "$dollaz",
+            fromParticipant: "BUYER",
+          },
+        },
+        { useLastSubmittedOffer: true }
+      )
+
+      const text = transactionSummary.text()
+
+      expect(text).toMatch("Seller's offer£poundz")
+    })
+
+    it("says 'seller's offer' when the last submitted offer is from the seller", async () => {
+      const transactionSummary = await render(
+        {
+          ...transactionSummaryOfferOrder,
+          lastOffer: {
+            ...OfferWithTotals,
+            amount: "£405.00",
+            fromParticipant: "SELLER",
+          },
+        },
+        { useLastSubmittedOffer: true }
+      )
+
+      const text = transactionSummary.text()
+
+      expect(text).toMatch("Seller's offer£405.00")
+    })
+
+    it("takes an offer override parameter", async () => {
+      const transactionSummary = await render(
+        {
+          ...transactionSummaryOfferOrder,
+          lastOffer: {
+            ...OfferWithTotals,
+            amount: "£405.00",
+            fromParticipant: "SELLER",
+          },
+        },
+        { useLastSubmittedOffer: true, offerOverride: "$1billion" }
+      )
+
+      const text = transactionSummary.text()
+
+      expect(text).toMatch("Your offer$1billion")
     })
   })
 })
