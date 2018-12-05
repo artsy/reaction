@@ -24,6 +24,8 @@ export const OtherWorksFragmentContainer = createFragmentContainer<{
       props.artwork.context && props.artwork.context.__typename
     const artworkSlug = props.artwork.id
 
+    console.warn("-----------------------", "\n", contextType)
+
     switch (contextType) {
       case "ArtworkContextAuction": {
         return (

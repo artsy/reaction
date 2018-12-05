@@ -7,11 +7,7 @@ import React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 import { OtherWorksContextProps } from ".."
 
-import {
-  ArtistArtworkGrid,
-  PartnerShowArtworkGrid,
-  RelatedWorksArtworkGrid,
-} from "./ArtworkGrids"
+import { ArtistArtworkGrid, RelatedWorksArtworkGrid } from "./ArtworkGrids"
 
 export const ArtworkContextArtistQueryRenderer: React.SFC<
   OtherWorksContextProps
@@ -54,7 +50,6 @@ export const ArtworkContextArtistFragmentContainer = createFragmentContainer<{
     return (
       <Join separator={<Spacer my={2} />}>
         <ArtistArtworkGrid artwork={props.artwork} />
-        <PartnerShowArtworkGrid artwork={props.artwork} />
         <RelatedWorksArtworkGrid />
       </Join>
     )
@@ -68,8 +63,6 @@ export const ArtworkContextArtistFragmentContainer = createFragmentContainer<{
         href
       }
       ...ArtistArtworkGrid_artwork
-        @arguments(excludeArtworkIDs: $excludeArtworkIDs)
-      ...PartnerShowArtworkGrid_artwork
         @arguments(excludeArtworkIDs: $excludeArtworkIDs)
     }
   `
