@@ -5,7 +5,7 @@ import { ArtworkSidebarSizeInfo_piece$ref } from "./ArtworkSidebarSizeInfo_piece
 declare const _ArtworkSidebarCommercial_artwork$ref: unique symbol;
 export type ArtworkSidebarCommercial_artwork$ref = typeof _ArtworkSidebarCommercial_artwork$ref;
 export type ArtworkSidebarCommercial_artwork = {
-    readonly __id: string;
+    readonly id: string;
     readonly is_acquireable: boolean | null;
     readonly is_inquireable: boolean | null;
     readonly is_offerable: boolean | null;
@@ -36,7 +36,13 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    v0,
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "id",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "ScalarField",
       "alias": null,
@@ -95,9 +101,10 @@ return {
           "args": null
         }
       ]
-    }
+    },
+    v0
   ]
 };
 })();
-(node as any).hash = '1f611316292840b9c4f00738a1b274fe';
+(node as any).hash = 'cb3fa8922f44f60f3d830bbb85702e00';
 export default node;

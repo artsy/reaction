@@ -24,7 +24,7 @@ query ArtworkSidebarCommercial_Test_Query {
 }
 
 fragment ArtworkSidebarCommercial_artwork on Artwork {
-  __id
+  id
   is_acquireable
   is_inquireable
   is_offerable
@@ -35,6 +35,7 @@ fragment ArtworkSidebarCommercial_artwork on Artwork {
     __id
     ...ArtworkSidebarSizeInfo_piece
   }
+  __id
 }
 
 fragment ArtworkSidebarSizeInfo_piece on Sellable {
@@ -73,7 +74,7 @@ return {
   "operationKind": "query",
   "name": "ArtworkSidebarCommercial_Test_Query",
   "id": null,
-  "text": "query ArtworkSidebarCommercial_Test_Query {\n  artwork(id: \"commercial_artwork\") {\n    ...ArtworkSidebarCommercial_artwork\n    __id\n  }\n}\n\nfragment ArtworkSidebarCommercial_artwork on Artwork {\n  __id\n  is_acquireable\n  is_inquireable\n  is_offerable\n  sale_message\n  shippingInfo\n  shippingOrigin\n  edition_sets {\n    __id\n    ...ArtworkSidebarSizeInfo_piece\n  }\n}\n\nfragment ArtworkSidebarSizeInfo_piece on Sellable {\n  dimensions {\n    in\n    cm\n  }\n  edition_of\n  ... on Node {\n    __id\n  }\n  ... on EditionSet {\n    __id\n  }\n}\n",
+  "text": "query ArtworkSidebarCommercial_Test_Query {\n  artwork(id: \"commercial_artwork\") {\n    ...ArtworkSidebarCommercial_artwork\n    __id\n  }\n}\n\nfragment ArtworkSidebarCommercial_artwork on Artwork {\n  id\n  is_acquireable\n  is_inquireable\n  is_offerable\n  sale_message\n  shippingInfo\n  shippingOrigin\n  edition_sets {\n    __id\n    ...ArtworkSidebarSizeInfo_piece\n  }\n  __id\n}\n\nfragment ArtworkSidebarSizeInfo_piece on Sellable {\n  dimensions {\n    in\n    cm\n  }\n  edition_of\n  ... on Node {\n    __id\n  }\n  ... on EditionSet {\n    __id\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -115,7 +116,13 @@ return {
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
-          v1,
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "id",
+            "args": null,
+            "storageKey": null
+          },
           {
             "kind": "ScalarField",
             "alias": null,
@@ -201,7 +208,8 @@ return {
                 "storageKey": null
               }
             ]
-          }
+          },
+          v1
         ]
       }
     ]
