@@ -9,6 +9,7 @@ import { OtherWorksContextProps } from ".."
 
 import {
   ArtistArtworkGrid,
+  PartnerArtworkGrid,
   PartnerShowArtworkGrid,
   RelatedWorksArtworkGrid,
 } from "./ArtworkGrids"
@@ -55,6 +56,7 @@ export const ArtworkContextPartnerShowFragmentContainer = createFragmentContaine
       <Join separator={<Spacer my={2} />}>
         <PartnerShowArtworkGrid artwork={props.artwork} />
         <ArtistArtworkGrid artwork={props.artwork} />
+        <PartnerArtworkGrid artwork={props.artwork} />
         <RelatedWorksArtworkGrid />
       </Join>
     )
@@ -70,6 +72,8 @@ export const ArtworkContextPartnerShowFragmentContainer = createFragmentContaine
       ...PartnerShowArtworkGrid_artwork
         @arguments(excludeArtworkIDs: $excludeArtworkIDs)
       ...ArtistArtworkGrid_artwork
+        @arguments(excludeArtworkIDs: $excludeArtworkIDs)
+      ...PartnerArtworkGrid_artwork
         @arguments(excludeArtworkIDs: $excludeArtworkIDs)
     }
   `
