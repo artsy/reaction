@@ -5,25 +5,25 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import { Header } from "../../Header"
 
-interface AuctionArtworkGridProps {
+export const AuctionArtworkGridFragmentContainer = createFragmentContainer<{
   artwork: AuctionArtworkGrid_artwork
-}
+}>(
+  ({
+    artwork: {
+      sale: { artworksConnection, href },
+    },
+  }) => {
+    return (
+      <>
+        <Header
+          title="Other works from the auction"
+          buttonHref={sd.APP_URL + href}
+        />
 
-export const AuctionArtworkGrid: React.SFC<AuctionArtworkGridProps> = props => {
-  return (
-    <>
-      <Header
-        title="Other works from the auction"
-        buttonHref={sd.APP_URL + props.artwork.sale.href}
-      />
-
-      <ArtworkGrid artworks={props.artwork.sale.artworksConnection} />
-    </>
-  )
-}
-
-export const AuctionArtworkGridFragmentContainer = createFragmentContainer(
-  AuctionArtworkGrid,
+        <ArtworkGrid artworks={artworksConnection} />
+      </>
+    )
+  },
   graphql`
     fragment AuctionArtworkGrid_artwork on Artwork
       @argumentDefinitions(excludeArtworkIDs: { type: "[String!]" }) {
@@ -36,3 +36,5 @@ export const AuctionArtworkGridFragmentContainer = createFragmentContainer(
     }
   `
 )
+
+AuctionArtworkGridFragmentContainer.displayName = "AuctionArtworkGrid"

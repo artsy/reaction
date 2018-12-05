@@ -2,6 +2,7 @@
 
 import { ConcreteFragment } from "relay-runtime";
 export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
+export type OrderParticipantEnum = "BUYER" | "SELLER" | "%future added value";
 declare const _TransactionDetailsSummaryItem_order$ref: unique symbol;
 export type TransactionDetailsSummaryItem_order$ref = typeof _TransactionDetailsSummaryItem_order$ref;
 export type TransactionDetailsSummaryItem_order = {
@@ -14,6 +15,18 @@ export type TransactionDetailsSummaryItem_order = {
     readonly itemsTotal: string | null;
     readonly totalListPrice: string | null;
     readonly buyerTotal: string | null;
+    readonly lastOffer?: ({
+        readonly id: string | null;
+        readonly amount: string | null;
+        readonly amountCents: number | null;
+        readonly shippingTotal: string | null;
+        readonly shippingTotalCents: number | null;
+        readonly taxTotal: string | null;
+        readonly taxTotalCents: number | null;
+        readonly buyerTotal: string | null;
+        readonly buyerTotalCents: number | null;
+        readonly fromParticipant: OrderParticipantEnum | null;
+    }) | null;
     readonly myLastOffer?: ({
         readonly id: string | null;
         readonly amount: string | null;
@@ -24,6 +37,7 @@ export type TransactionDetailsSummaryItem_order = {
         readonly taxTotalCents: number | null;
         readonly buyerTotal: string | null;
         readonly buyerTotalCents: number | null;
+        readonly fromParticipant: OrderParticipantEnum | null;
     }) | null;
     readonly " $refType": TransactionDetailsSummaryItem_order$ref;
 };
@@ -80,7 +94,50 @@ v6 = {
   "name": "id",
   "args": null,
   "storageKey": null
-};
+},
+v7 = [
+  v4,
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "id",
+    "args": null,
+    "storageKey": null
+  },
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "amountCents",
+    "args": null,
+    "storageKey": null
+  },
+  v2,
+  v3,
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "amount",
+    "args": v1,
+    "storageKey": "amount(precision:2)"
+  },
+  v0,
+  v5,
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "buyerTotalCents",
+    "args": null,
+    "storageKey": null
+  },
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "fromParticipant",
+    "args": null,
+    "storageKey": null
+  },
+  v6
+];
 return {
   "kind": "Fragment",
   "name": "TransactionDetailsSummaryItem_order",
@@ -129,52 +186,27 @@ return {
         {
           "kind": "LinkedField",
           "alias": null,
+          "name": "lastOffer",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "Offer",
+          "plural": false,
+          "selections": v7
+        },
+        {
+          "kind": "LinkedField",
+          "alias": null,
           "name": "myLastOffer",
           "storageKey": null,
           "args": null,
           "concreteType": "Offer",
           "plural": false,
-          "selections": [
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "id",
-              "args": null,
-              "storageKey": null
-            },
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "amount",
-              "args": v1,
-              "storageKey": "amount(precision:2)"
-            },
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "amountCents",
-              "args": null,
-              "storageKey": null
-            },
-            v2,
-            v3,
-            v4,
-            v0,
-            v5,
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "buyerTotalCents",
-              "args": null,
-              "storageKey": null
-            },
-            v6
-          ]
+          "selections": v7
         }
       ]
     }
   ]
 };
 })();
-(node as any).hash = '0675e1c66a22a6379ff11a9c1a612a7d';
+(node as any).hash = '0a089f0405da382d428db51dfd1fe013';
 export default node;

@@ -104,11 +104,7 @@ const _PreloadLink: React.SFC<PreloadLinkProps> = preloadLinkProps => {
      *   {
      *     path: '/home',
      *     Component: () => <div>Home!</div>
-     *     query: graphql`
-     *       query routes_HomeQuery {
-     *         ...
-     *       }
-     *     `
+     *     query: ...
      *   }
      * ]
      */
