@@ -5,6 +5,7 @@ import { ContextConsumer } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
+import { OtherWorksContextProps } from ".."
 
 import {
   ArtistArtworkGrid,
@@ -12,13 +13,9 @@ import {
   RelatedWorksArtworkGrid,
 } from "./ArtworkGrids"
 
-export const ArtworkContextPartnerShowQueryRenderer = ({
-  artworkSlug,
-  artworkID,
-}: {
-  artworkSlug: string
-  artworkID: string
-}) => {
+export const ArtworkContextPartnerShowQueryRenderer: React.SFC<
+  OtherWorksContextProps
+> = ({ artworkSlug, artworkID }) => {
   return (
     <ContextConsumer>
       {({ relayEnvironment }) => {
@@ -50,20 +47,18 @@ export const ArtworkContextPartnerShowQueryRenderer = ({
   )
 }
 
-export const ArtworkContextPartnerShow: React.SFC<{
+export const ArtworkContextPartnerShowFragmentContainer = createFragmentContainer<{
   artwork: ArtworkContextPartnerShow_artwork
-}> = props => {
-  return (
-    <Join separator={<Spacer my={2} />}>
-      <PartnerShowArtworkGrid artwork={props.artwork} />
-      <ArtistArtworkGrid artwork={props.artwork} />
-      <RelatedWorksArtworkGrid />
-    </Join>
-  )
-}
-
-export const ArtworkContextPartnerShowFragmentContainer = createFragmentContainer(
-  ArtworkContextPartnerShow,
+}>(
+  props => {
+    return (
+      <Join separator={<Spacer my={2} />}>
+        <PartnerShowArtworkGrid artwork={props.artwork} />
+        <ArtistArtworkGrid artwork={props.artwork} />
+        <RelatedWorksArtworkGrid />
+      </Join>
+    )
+  },
   graphql`
     fragment ArtworkContextPartnerShow_artwork on Artwork
       @argumentDefinitions(excludeArtworkIDs: { type: "[String!]" }) {
@@ -74,9 +69,8 @@ export const ArtworkContextPartnerShowFragmentContainer = createFragmentContaine
       }
       ...PartnerShowArtworkGrid_artwork
         @arguments(excludeArtworkIDs: $excludeArtworkIDs)
-
       ...ArtistArtworkGrid_artwork
-      # TODO: Pass in arguments
+        @arguments(excludeArtworkIDs: $excludeArtworkIDs)
     }
   `
 )

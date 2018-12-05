@@ -5,30 +5,24 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import { Header } from "../../Header"
 
-interface FairArtworkGridProps {
+export const FairArtworkGridFragmentContainer = createFragmentContainer<{
   artwork: FairArtworkGrid_artwork
-}
-
-export const FairArtworkGrid: React.SFC<FairArtworkGridProps> = props => {
-  const {
+}>(
+  ({
     artwork: {
       fair: { href, artworksConnection },
     },
-  } = props
-
-  return (
-    <>
-      <Header
-        title={"Other works from the booth"}
-        buttonHref={sd.APP_URL + href}
-      />
-      <ArtworkGrid artworks={artworksConnection} />
-    </>
-  )
-}
-
-export const FairArtworkGridFragmentContainer = createFragmentContainer(
-  FairArtworkGrid,
+  }) => {
+    return (
+      <>
+        <Header
+          title={"Other works from the booth"}
+          buttonHref={sd.APP_URL + href}
+        />
+        <ArtworkGrid artworks={artworksConnection} />
+      </>
+    )
+  },
   graphql`
     fragment FairArtworkGrid_artwork on Artwork
       @argumentDefinitions(excludeArtworkIDs: { type: "[String!]" }) {
@@ -41,3 +35,5 @@ export const FairArtworkGridFragmentContainer = createFragmentContainer(
     }
   `
 )
+
+FairArtworkGridFragmentContainer.displayName = "FairArtworkGrid"
