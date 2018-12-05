@@ -99,16 +99,11 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
 
     const containerRect = this.containerRef.getBoundingClientRect()
     const activeTabRect = this.activeTabRef.getBoundingClientRect()
-
     const activeTabOffset = activeTabRect.left - containerRect.left
-
     const desiredActiveTabOffset =
       containerRect.width / 2 - activeTabRect.width / 2
-
     const offsetDiff = activeTabOffset - desiredActiveTabOffset
-
     const currentScroll = this.containerRef.scrollLeft
-
     const desiredScroll = currentScroll + offsetDiff
 
     this.containerRef.scrollTo({ left: desiredScroll })
@@ -157,7 +152,10 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
 
     return (
       <>
-        <TabsContainer scrollRef={ref => (this.containerRef = ref)}>
+        <TabsContainer
+          scrollRef={ref => (this.containerRef = ref)}
+          justifyContent={this.props.justifyContent}
+        >
           <Join separator={separator}>{children.map(this.renderTab)}</Join>
         </TabsContainer>
         <Box pt={3}>{children[this.state.activeTabIndex]}</Box>

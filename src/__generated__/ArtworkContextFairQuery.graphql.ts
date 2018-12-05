@@ -39,6 +39,7 @@ fragment ArtworkContextFair_artwork_4wpKaB on Artwork {
   ...FairArtworkGrid_artwork_4wpKaB
   ...PartnerShowArtworkGrid_artwork_4wpKaB
   ...ArtistArtworkGrid_artwork_4wpKaB
+  ...RelatedWorksArtworkGrid_artwork
   __id
 }
 
@@ -74,6 +75,17 @@ fragment ArtistArtworkGrid_artwork_4wpKaB on Artwork {
       artworks(format: "0,0", label: "work")
     }
     artworks_connection(first: 10, filter: [IS_FOR_SALE], sort: PUBLISHED_AT_DESC, exclude: $excludeArtworkIDs) {
+      ...ArtworkGrid_artworks
+    }
+    __id
+  }
+  __id
+}
+
+fragment RelatedWorksArtworkGrid_artwork on Artwork {
+  layers {
+    name
+    artworksConnection(first: 20) {
       ...ArtworkGrid_artworks
     }
     __id
@@ -554,18 +566,19 @@ v9 = [
   }
 ],
 v10 = {
+  "kind": "Literal",
+  "name": "first",
+  "value": 20,
+  "type": "Int"
+},
+v11 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "artworksConnection",
   "storageKey": null,
   "args": [
     v6,
-    {
-      "kind": "Literal",
-      "name": "first",
-      "value": 20,
-      "type": "Int"
-    }
+    v10
   ],
   "concreteType": "ArtworkConnection",
   "plural": false,
@@ -719,7 +732,7 @@ return {
             "concreteType": "PartnerShow",
             "plural": false,
             "selections": [
-              v10,
+              v11,
               v5,
               v2
             ]
@@ -734,9 +747,34 @@ return {
             "concreteType": "PartnerShow",
             "plural": false,
             "selections": [
-              v10,
+              v11,
               v5,
               v4,
+              v2
+            ]
+          },
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "layers",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "ArtworkLayer",
+            "plural": true,
+            "selections": [
+              v4,
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "artworksConnection",
+                "storageKey": "artworksConnection(first:20)",
+                "args": [
+                  v10
+                ],
+                "concreteType": "ArtworkConnection",
+                "plural": false,
+                "selections": v9
+              },
               v2
             ]
           }

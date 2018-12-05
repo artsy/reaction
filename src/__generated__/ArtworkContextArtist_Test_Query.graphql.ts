@@ -32,6 +32,7 @@ fragment ArtworkContextArtist_artwork on Artwork {
   }
   ...ArtistArtworkGrid_artwork_2Lx1mV
   ...PartnerArtworkGrid_artwork_2Lx1mV
+  ...RelatedWorksArtworkGrid_artwork
   __id
 }
 
@@ -58,6 +59,17 @@ fragment PartnerArtworkGrid_artwork_2Lx1mV on Artwork {
     }
     href
     name
+    __id
+  }
+  __id
+}
+
+fragment RelatedWorksArtworkGrid_artwork on Artwork {
+  layers {
+    name
+    artworksConnection(first: 20) {
+      ...ArtworkGrid_artworks
+    }
     __id
   }
   __id
@@ -514,7 +526,24 @@ v7 = [
       }
     ]
   }
-];
+],
+v8 = {
+  "kind": "LinkedField",
+  "alias": null,
+  "name": "artworksConnection",
+  "storageKey": "artworksConnection(first:20)",
+  "args": [
+    {
+      "kind": "Literal",
+      "name": "first",
+      "value": 20,
+      "type": "Int"
+    }
+  ],
+  "concreteType": "ArtworkConnection",
+  "plural": false,
+  "selections": v7
+};
 return {
   "kind": "Request",
   "operationKind": "query",
@@ -649,25 +678,23 @@ return {
             "concreteType": "Partner",
             "plural": false,
             "selections": [
-              {
-                "kind": "LinkedField",
-                "alias": null,
-                "name": "artworksConnection",
-                "storageKey": "artworksConnection(first:20)",
-                "args": [
-                  {
-                    "kind": "Literal",
-                    "name": "first",
-                    "value": 20,
-                    "type": "Int"
-                  }
-                ],
-                "concreteType": "ArtworkConnection",
-                "plural": false,
-                "selections": v7
-              },
+              v8,
               v4,
               v3,
+              v1
+            ]
+          },
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "layers",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "ArtworkLayer",
+            "plural": true,
+            "selections": [
+              v3,
+              v8,
               v1
             ]
           }

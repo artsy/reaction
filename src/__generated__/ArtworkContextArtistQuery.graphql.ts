@@ -38,6 +38,7 @@ fragment ArtworkContextArtist_artwork_4wpKaB on Artwork {
   }
   ...ArtistArtworkGrid_artwork_4wpKaB
   ...PartnerArtworkGrid_artwork_4wpKaB
+  ...RelatedWorksArtworkGrid_artwork
   __id
 }
 
@@ -64,6 +65,17 @@ fragment PartnerArtworkGrid_artwork_4wpKaB on Artwork {
     }
     href
     name
+    __id
+  }
+  __id
+}
+
+fragment RelatedWorksArtworkGrid_artwork on Artwork {
+  layers {
+    name
+    artworksConnection(first: 20) {
+      ...ArtworkGrid_artworks
+    }
     __id
   }
   __id
@@ -540,7 +552,13 @@ v9 = [
       }
     ]
   }
-];
+],
+v10 = {
+  "kind": "Literal",
+  "name": "first",
+  "value": 20,
+  "type": "Int"
+};
 return {
   "kind": "Request",
   "operationKind": "query",
@@ -690,12 +708,7 @@ return {
                 "storageKey": null,
                 "args": [
                   v6,
-                  {
-                    "kind": "Literal",
-                    "name": "first",
-                    "value": 20,
-                    "type": "Int"
-                  }
+                  v10
                 ],
                 "concreteType": "ArtworkConnection",
                 "plural": false,
@@ -703,6 +716,31 @@ return {
               },
               v5,
               v4,
+              v2
+            ]
+          },
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "layers",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "ArtworkLayer",
+            "plural": true,
+            "selections": [
+              v4,
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "artworksConnection",
+                "storageKey": "artworksConnection(first:20)",
+                "args": [
+                  v10
+                ],
+                "concreteType": "ArtworkConnection",
+                "plural": false,
+                "selections": v9
+              },
               v2
             ]
           }

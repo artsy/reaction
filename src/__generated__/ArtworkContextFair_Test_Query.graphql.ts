@@ -33,6 +33,7 @@ fragment ArtworkContextFair_artwork on Artwork {
   ...FairArtworkGrid_artwork_2Lx1mV
   ...PartnerShowArtworkGrid_artwork_2Lx1mV
   ...ArtistArtworkGrid_artwork_2Lx1mV
+  ...RelatedWorksArtworkGrid_artwork
   __id
 }
 
@@ -68,6 +69,17 @@ fragment ArtistArtworkGrid_artwork_2Lx1mV on Artwork {
       artworks(format: "0,0", label: "work")
     }
     artworks_connection(first: 10, filter: [IS_FOR_SALE], sort: PUBLISHED_AT_DESC) {
+      ...ArtworkGrid_artworks
+    }
+    __id
+  }
+  __id
+}
+
+fragment RelatedWorksArtworkGrid_artwork on Artwork {
+  layers {
+    name
+    artworksConnection(first: 20) {
       ...ArtworkGrid_artworks
     }
     __id
@@ -702,6 +714,20 @@ return {
               v8,
               v4,
               v3,
+              v1
+            ]
+          },
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "layers",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "ArtworkLayer",
+            "plural": true,
+            "selections": [
+              v3,
+              v8,
               v1
             ]
           }
