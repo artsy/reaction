@@ -206,7 +206,7 @@ const StyledInput = styled.input`
   ${block(24)};
 `
 
-const InputComponent = styled.input.attrs<{ showLabel: boolean }>({})`
+export const InputComponent = styled.input.attrs<{ showLabel: boolean }>({})`
   ${garamond("s17")};
   border: 0;
   font-size: 17px;
@@ -250,7 +250,7 @@ const Label = styled.label.attrs<{ out: boolean }>({})`
   z-index: 1;
 `
 
-const Title = styled.div`
+export const Title = styled.div`
   ${garamond("s17")};
 `
 
