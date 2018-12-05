@@ -157,6 +157,10 @@ export const shouldRedirect = ({
   location: Location
   order: routes_OrderQueryResponse["order"]
 }) => {
+  if (!order) {
+    return false
+  }
+
   const locationParts = location.pathname.split("/").slice(3)
 
   function traverse(node: RedirectRecord, path: string[]): void {
