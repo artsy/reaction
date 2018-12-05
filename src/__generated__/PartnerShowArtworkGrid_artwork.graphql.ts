@@ -30,7 +30,14 @@ return {
   "name": "PartnerShowArtworkGrid_artwork",
   "type": "Artwork",
   "metadata": null,
-  "argumentDefinitions": [],
+  "argumentDefinitions": [
+    {
+      "kind": "LocalArgument",
+      "name": "excludeArtworkIDs",
+      "type": "[String!]",
+      "defaultValue": null
+    }
+  ],
   "selections": [
     {
       "kind": "LinkedField",
@@ -45,8 +52,14 @@ return {
           "kind": "LinkedField",
           "alias": null,
           "name": "artworksConnection",
-          "storageKey": "artworksConnection(first:20)",
+          "storageKey": null,
           "args": [
+            {
+              "kind": "Variable",
+              "name": "exclude",
+              "variableName": "excludeArtworkIDs",
+              "type": "[String]"
+            },
             {
               "kind": "Literal",
               "name": "first",
@@ -85,5 +98,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '6c38e9e6fe662e749c545a7a0b1f2494';
+(node as any).hash = '18720201722a633bb7627eb4fcb53300';
 export default node;

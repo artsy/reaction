@@ -13,17 +13,17 @@ import {
 } from "./ArtworkGrids"
 
 interface ArtworkContextAuctionProps {
-  /** The artworkID to query */
-  artworkID: string
+  /** The artworkSlug to query */
+  artworkSlug: string
   /** Used to exclude the current work from the currently-shown work from grid */
-  artworkMongoID: string
+  artworkID: string
   /** If the artwork  */
   isClosed: boolean
 }
 
 export const ArtworkContextAuctionQueryRenderer: React.SFC<
   ArtworkContextAuctionProps
-> = ({ artworkID, artworkMongoID, isClosed }) => {
+> = ({ artworkSlug, artworkID, isClosed }) => {
   return (
     <ContextConsumer>
       {({ relayEnvironment }) => {
@@ -31,17 +31,17 @@ export const ArtworkContextAuctionQueryRenderer: React.SFC<
           <QueryRenderer<ArtworkContextAuctionQuery>
             environment={relayEnvironment}
             variables={{
-              artworkID,
-              excludeArtworkIDs: [artworkMongoID],
+              artworkSlug,
+              excludeArtworkIDs: [artworkID],
               isClosed,
             }}
             query={graphql`
               query ArtworkContextAuctionQuery(
-                $artworkID: String!
+                $artworkSlug: String!
                 $excludeArtworkIDs: [String!]
                 $isClosed: Boolean!
               ) {
-                artwork(id: $artworkID) {
+                artwork(id: $artworkSlug) {
                   ...ArtworkContextAuction_artwork
                     @arguments(
                       excludeArtworkIDs: $excludeArtworkIDs
@@ -93,7 +93,10 @@ export const ArtworkContextAuctionFragmentContainer = createFragmentContainer(
         @skip(if: $isClosed)
         @arguments(excludeArtworkIDs: $excludeArtworkIDs)
 
-      ...ArtistArtworkGrid_artwork @include(if: $isClosed)
+      ...ArtistArtworkGrid_artwork
+        @include(if: $isClosed)
+        @arguments(excludeArtworkIDs: $excludeArtworkIDs)
+
       # TODO:
       # ...RelatedArtworkGrid_artwork @include(if: $isClosed)
     }

@@ -13,8 +13,10 @@ import {
 } from "./ArtworkGrids"
 
 export const ArtworkContextArtistQueryRenderer = ({
+  artworkSlug,
   artworkID,
 }: {
+  artworkSlug: string
   artworkID: string
 }) => {
   return (
@@ -23,11 +25,18 @@ export const ArtworkContextArtistQueryRenderer = ({
         return (
           <QueryRenderer<ArtworkContextArtistQuery>
             environment={relayEnvironment}
-            variables={{ artworkID }}
+            variables={{
+              artworkSlug,
+              excludeArtworkIDs: [artworkID],
+            }}
             query={graphql`
-              query ArtworkContextArtistQuery($artworkID: String!) {
-                artwork(id: $artworkID) {
+              query ArtworkContextArtistQuery(
+                $artworkSlug: String!
+                $excludeArtworkIDs: [String!]
+              ) {
+                artwork(id: $artworkSlug) {
                   ...ArtworkContextArtist_artwork
+                    @arguments(excludeArtworkIDs: $excludeArtworkIDs)
                 }
               }
             `}
@@ -56,14 +65,17 @@ export const ArtworkContextArtist: React.SFC<{
 export const ArtworkContextArtistFragmentContainer = createFragmentContainer(
   ArtworkContextArtist,
   graphql`
-    fragment ArtworkContextArtist_artwork on Artwork {
+    fragment ArtworkContextArtist_artwork on Artwork
+      @argumentDefinitions(excludeArtworkIDs: { type: "[String!]" }) {
       id
       artist {
         name
         href
       }
       ...ArtistArtworkGrid_artwork
+        @arguments(excludeArtworkIDs: $excludeArtworkIDs)
       ...PartnerShowArtworkGrid_artwork
+        @arguments(excludeArtworkIDs: $excludeArtworkIDs)
     }
   `
 )

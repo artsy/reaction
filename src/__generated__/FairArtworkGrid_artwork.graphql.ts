@@ -29,7 +29,14 @@ return {
   "name": "FairArtworkGrid_artwork",
   "type": "Artwork",
   "metadata": null,
-  "argumentDefinitions": [],
+  "argumentDefinitions": [
+    {
+      "kind": "LocalArgument",
+      "name": "excludeArtworkIDs",
+      "type": "[String!]",
+      "defaultValue": null
+    }
+  ],
   "selections": [
     {
       "kind": "LinkedField",
@@ -51,8 +58,14 @@ return {
           "kind": "LinkedField",
           "alias": null,
           "name": "artworksConnection",
-          "storageKey": "artworksConnection(first:20)",
+          "storageKey": null,
           "args": [
+            {
+              "kind": "Variable",
+              "name": "exclude",
+              "variableName": "excludeArtworkIDs",
+              "type": "[String]"
+            },
             {
               "kind": "Literal",
               "name": "first",
@@ -84,5 +97,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '7a4c0606331edab101623fbe3855de21';
+(node as any).hash = 'd4dc860766d7d68e7a494f3cf1129744';
 export default node;

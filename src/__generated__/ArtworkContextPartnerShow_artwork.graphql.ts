@@ -30,7 +30,14 @@ return {
   "name": "ArtworkContextPartnerShow_artwork",
   "type": "Artwork",
   "metadata": null,
-  "argumentDefinitions": [],
+  "argumentDefinitions": [
+    {
+      "kind": "LocalArgument",
+      "name": "excludeArtworkIDs",
+      "type": "[String!]",
+      "defaultValue": null
+    }
+  ],
   "selections": [
     {
       "kind": "ScalarField",
@@ -68,7 +75,14 @@ return {
     {
       "kind": "FragmentSpread",
       "name": "PartnerShowArtworkGrid_artwork",
-      "args": null
+      "args": [
+        {
+          "kind": "Variable",
+          "name": "excludeArtworkIDs",
+          "variableName": "excludeArtworkIDs",
+          "type": null
+        }
+      ]
     },
     {
       "kind": "FragmentSpread",
@@ -79,5 +93,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '20de301e68ab7c1d839861a839c2fe98';
+(node as any).hash = '0a41432c29a508d718e9b169ef6db39d';
 export default node;

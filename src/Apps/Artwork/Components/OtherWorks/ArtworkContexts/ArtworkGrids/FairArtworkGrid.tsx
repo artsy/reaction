@@ -19,7 +19,7 @@ export const FairArtworkGrid: React.SFC<FairArtworkGridProps> = props => {
   return (
     <>
       <Header
-        title={`Other works from the booth`}
+        title={"Other works from the booth"}
         buttonHref={sd.APP_URL + href}
       />
       <ArtworkGrid artworks={artworksConnection} />
@@ -30,9 +30,10 @@ export const FairArtworkGrid: React.SFC<FairArtworkGridProps> = props => {
 export const FairArtworkGridFragmentContainer = createFragmentContainer(
   FairArtworkGrid,
   graphql`
-    fragment FairArtworkGrid_artwork on Artwork {
+    fragment FairArtworkGrid_artwork on Artwork
+      @argumentDefinitions(excludeArtworkIDs: { type: "[String!]" }) {
       fair: show(at_a_fair: true) {
-        artworksConnection(first: 20) {
+        artworksConnection(first: 20, exclude: $excludeArtworkIDs) {
           ...ArtworkGrid_artworks
         }
         href
