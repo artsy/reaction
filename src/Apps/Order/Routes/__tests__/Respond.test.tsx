@@ -1,9 +1,16 @@
+import { Button } from "@artsy/palette"
 import {
   Buyer,
   OfferOrderWithShippingDetails,
   Offers,
   OfferWithTotals,
 } from "Apps/__tests__/Fixtures/Order"
+import { ArtworkSummaryItemFragmentContainer } from "Apps/Order/Components/ArtworkSummaryItem"
+import { CreditCardSummaryItemFragmentContainer } from "Apps/Order/Components/CreditCardSummaryItem"
+import { OfferHistoryItemFragmentContainer } from "Apps/Order/Components/OfferHistoryItem"
+import { OrderStepper } from "Apps/Order/Components/OrderStepper"
+import { ShippingSummaryItemFragmentContainer } from "Apps/Order/Components/ShippingSummaryItem"
+import { TransactionDetailsSummaryItemFragmentContainer } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { Input } from "Components/Input"
 import { MockBoot } from "DevTools"
 import { mount } from "enzyme"
@@ -70,6 +77,12 @@ describe("Offer InitialMutation", () => {
     expect(input.text()).toContain("Your offer")
   })
 
+  it("Shows the stepper", () => {
+    const component = getWrapper()
+    const stepper = component.find(OrderStepper)
+    expect(stepper.text()).toMatch("RespondReview")
+  })
+
   it("shows the countdown timer", () => {
     const component = getWrapper({
       stateExpiresAt: moment(NOW)
@@ -82,12 +95,60 @@ describe("Offer InitialMutation", () => {
     expect(timer.text()).toContain("01d 04h 22m 59s left")
   })
 
+  it("shows the offer history item", () => {
+    const component = getWrapper()
+    const offerHistory = component.find(OfferHistoryItemFragmentContainer)
+    expect(offerHistory).toHaveLength(1)
+
+    const button = offerHistory.find(Button)
+    expect(button.text()).toMatch("Show offer history")
+
+    button.props().onClick({})
+
+    expect(offerHistory.text()).toMatch(
+      "You (May 21)$1,200.00Seller (Apr 30)$1,500.00You (Apr 5)$1,100.00"
+    )
+  })
+
+  it("shows the transaction summary", () => {
+    const component = getWrapper()
+    const transactionSummary = component.find(
+      TransactionDetailsSummaryItemFragmentContainer
+    )
+    expect(transactionSummary).toHaveLength(1)
+
+    expect(transactionSummary.text()).toMatch("Seller's offer$14,000")
+  })
+
+  it("shows the artwork summary", () => {
+    const component = getWrapper()
+    const artworkSummary = component.find(ArtworkSummaryItemFragmentContainer)
+    expect(artworkSummary).toHaveLength(1)
+
+    expect(artworkSummary.text()).toMatch("Lisa BreslowGramercy Park South")
+  })
+
+  it("shows the shipping details", () => {
+    const component = getWrapper()
+    const shippingSummary = component.find(ShippingSummaryItemFragmentContainer)
+    expect(shippingSummary).toHaveLength(1)
+
+    expect(shippingSummary.text()).toMatch("Ship toJoelle Van Dyne401 Broadway")
+  })
+
+  it("shows the payment details", () => {
+    const component = getWrapper()
+    const paymentSummary = component.find(
+      CreditCardSummaryItemFragmentContainer
+    )
+    expect(paymentSummary).toHaveLength(1)
+
+    expect(paymentSummary.text()).toMatchInlineSnapshot(`"•••• 4444  Exp 3/21"`)
+  })
+
   // radio buttons
   // - accept
   // - decline
   // - counter
   //   - input number
-
-  // timer
-  // - is visible
 })
