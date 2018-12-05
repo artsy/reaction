@@ -1,4 +1,6 @@
 import {
+  ArtworkAuctionPreview,
+  ArtworkClosedAuction,
   ArtworkNoEstimateNoPremium,
   ArtworkWithEstimateAndPremium,
   ArtworkWithEstimateNoPremium,
@@ -21,6 +23,12 @@ storiesOf("Styleguide/Artwork/Sidebar", module).add(
         </Section>
         <Section title="Artwork with estimate and buyer's premium">
           <AuctionPartnerInfo artwork={ArtworkWithEstimateAndPremium as any} />
+        </Section>
+        <Section title="Closed Auction">
+          <AuctionPartnerInfo artwork={ArtworkClosedAuction as any} />
+        </Section>
+        <Section title="Auction in preview">
+          <AuctionPartnerInfo artwork={ArtworkAuctionPreview as any} />
         </Section>
       </React.Fragment>
     )
