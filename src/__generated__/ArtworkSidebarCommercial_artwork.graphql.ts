@@ -5,9 +5,13 @@ import { ArtworkSidebarSizeInfo_piece$ref } from "./ArtworkSidebarSizeInfo_piece
 declare const _ArtworkSidebarCommercial_artwork$ref: unique symbol;
 export type ArtworkSidebarCommercial_artwork$ref = typeof _ArtworkSidebarCommercial_artwork$ref;
 export type ArtworkSidebarCommercial_artwork = {
-    readonly __id: string;
-    readonly sale_message: string | null;
+    readonly id: string;
+    readonly is_acquireable: boolean | null;
     readonly is_inquireable: boolean | null;
+    readonly is_offerable: boolean | null;
+    readonly sale_message: string | null;
+    readonly shippingInfo: string | null;
+    readonly shippingOrigin: string | null;
     readonly edition_sets: ReadonlyArray<({
         readonly __id: string;
         readonly " $fragmentRefs": ArtworkSidebarSizeInfo_piece$ref;
@@ -32,7 +36,34 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    v0,
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "id",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "is_acquireable",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "is_inquireable",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "is_offerable",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "ScalarField",
       "alias": null,
@@ -43,7 +74,14 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "is_inquireable",
+      "name": "shippingInfo",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "shippingOrigin",
       "args": null,
       "storageKey": null
     },
@@ -63,9 +101,10 @@ return {
           "args": null
         }
       ]
-    }
+    },
+    v0
   ]
 };
 })();
-(node as any).hash = '669c7d0f6925c8d65a091eec906d463e';
+(node as any).hash = 'cb3fa8922f44f60f3d830bbb85702e00';
 export default node;
