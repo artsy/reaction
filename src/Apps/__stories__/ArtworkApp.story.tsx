@@ -12,6 +12,14 @@ storiesOf("Apps/Artwork Page", module)
       />
     )
   })
+  .add("Inquireable", () => {
+    return (
+      <MockRouter
+        routes={artworkRoutes}
+        initialRoute="/artwork2/andy-warhol-skull"
+      />
+    )
+  })
   .add("Open Auction", () => {
     return (
       <MockRouter

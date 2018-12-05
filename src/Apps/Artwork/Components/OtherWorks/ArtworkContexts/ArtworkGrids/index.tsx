@@ -14,4 +14,8 @@ export {
   PartnerShowArtworkGridFragmentContainer as PartnerShowArtworkGrid,
 } from "./PartnerShowArtworkGrid"
 
+export {
+  PartnerArtworkGridFragmentContainer as PartnerArtworkGrid,
+} from "./PartnerArtworkGrid"
+
 export { RelatedWorksArtworkGrid } from "./RelatedWorksArtworkGrid"
