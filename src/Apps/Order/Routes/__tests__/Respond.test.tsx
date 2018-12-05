@@ -1,4 +1,4 @@
-import { Button } from "@artsy/palette"
+import { BorderedRadio, Button } from "@artsy/palette"
 import {
   Buyer,
   OfferOrderWithShippingDetails,
@@ -146,9 +146,84 @@ describe("Offer InitialMutation", () => {
     expect(paymentSummary.text()).toMatchInlineSnapshot(`"•••• 4444  Exp 3/21"`)
   })
 
-  // radio buttons
-  // - accept
-  // - decline
-  // - counter
-  //   - input number
+  it("shows the continue button", () => {
+    const component = getWrapper()
+    const continueButton = component.find(Button).last()
+    expect(continueButton.text()).toBe("Continue")
+  })
+
+  it("shows three radio buttons with response choices", () => {
+    const component = getWrapper()
+    const radios = component.find(BorderedRadio)
+    expect(radios).toHaveLength(3)
+
+    expect(radios.first().text()).toMatch("Accept seller's offer")
+    expect(radios.at(1).text()).toMatch("Send a counteroffer")
+    expect(radios.at(2).text()).toMatch("Decline seller's offer")
+  })
+
+  describe("taking action", () => {
+    // TODO: get rid of window.alert
+    const _alert = window.alert
+    beforeEach(() => {
+      window.alert = jest.fn()
+    })
+    afterEach(() => {
+      window.alert = _alert
+    })
+    it("Accepting the seller's offer works", () => {
+      const component = getWrapper()
+      const acceptRadio = component.find(BorderedRadio).first()
+
+      acceptRadio.props().onSelect({ selected: true, value: "ACCEPT" })
+
+      component
+        .find(Button)
+        .last()
+        .props()
+        .onClick({})
+
+      // TODO: get rid of window.alert
+      expect(window.alert).toHaveBeenCalledWith(`You decided to ACCEPT.`)
+    })
+
+    it("Declining the seller's offer works", () => {
+      const component = getWrapper()
+      const declineRadio = component.find(BorderedRadio).last()
+
+      declineRadio.props().onSelect({ selected: true, value: "DECLINE" })
+
+      component
+        .find(Button)
+        .last()
+        .props()
+        .onClick({})
+
+      // TODO: get rid of window.alert
+      expect(window.alert).toHaveBeenCalledWith(`You decided to DECLINE.`)
+    })
+
+    it("Countering the seller's offer works", () => {
+      const component = getWrapper()
+      const counterRadio = component.find(BorderedRadio).at(1)
+
+      counterRadio.props().onSelect({ selected: true, value: "COUNTER" })
+
+      counterRadio
+        .find(Input)
+        .props()
+        .onChange({ currentTarget: { value: "84838" } } as any)
+
+      component
+        .find(Button)
+        .last()
+        .props()
+        .onClick({})
+
+      // TODO: get rid of window.alert
+      expect(window.alert).toHaveBeenCalledWith(
+        `You decided to COUNTER with 84838.`
+      )
+    })
+  })
 })

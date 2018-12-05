@@ -58,11 +58,16 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
     isErrorModalOpen: false,
     errorModalTitle: null,
     errorModalMessage: null,
-  }
+  } as RespondState
 
   onContinueButtonPressed: () => void = () => {
+    const { offerValue, responseOption } = this.state
     this.setState({ isCommittingMutation: true }, () => {
-      window.alert("You did a click!")
+      if (responseOption === "COUNTER") {
+        window.alert(`You decided to COUNTER with ${offerValue}.`)
+      } else {
+        window.alert(`You decided to ${responseOption}.`)
+      }
       this.setState({ isCommittingMutation: false })
     })
   }
