@@ -2,6 +2,7 @@
 
 import { ConcreteFragment } from "relay-runtime";
 export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
+export type OrderParticipantEnum = "BUYER" | "SELLER" | "%future added value";
 declare const _TransactionDetailsSummaryItem_order$ref: unique symbol;
 export type TransactionDetailsSummaryItem_order$ref = typeof _TransactionDetailsSummaryItem_order$ref;
 export type TransactionDetailsSummaryItem_order = {
@@ -14,6 +15,10 @@ export type TransactionDetailsSummaryItem_order = {
     readonly itemsTotal: string | null;
     readonly totalListPrice: string | null;
     readonly buyerTotal: string | null;
+    readonly lastOffer?: ({
+        readonly id: string | null;
+        readonly fromParticipant: OrderParticipantEnum | null;
+    }) | null;
     readonly myLastOffer?: ({
         readonly id: string | null;
         readonly amount: string | null;
@@ -80,6 +85,13 @@ v6 = {
   "name": "id",
   "args": null,
   "storageKey": null
+},
+v7 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
 };
 return {
   "kind": "Fragment",
@@ -129,19 +141,33 @@ return {
         {
           "kind": "LinkedField",
           "alias": null,
+          "name": "lastOffer",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "Offer",
+          "plural": false,
+          "selections": [
+            v7,
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "fromParticipant",
+              "args": null,
+              "storageKey": null
+            },
+            v6
+          ]
+        },
+        {
+          "kind": "LinkedField",
+          "alias": null,
           "name": "myLastOffer",
           "storageKey": null,
           "args": null,
           "concreteType": "Offer",
           "plural": false,
           "selections": [
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "id",
-              "args": null,
-              "storageKey": null
-            },
+            v7,
             {
               "kind": "ScalarField",
               "alias": null,
@@ -176,5 +202,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '0675e1c66a22a6379ff11a9c1a612a7d';
+(node as any).hash = '56aab750d34e2abc8ecea16e50c3af3d';
 export default node;

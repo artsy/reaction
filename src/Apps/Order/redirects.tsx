@@ -42,10 +42,10 @@ export const shouldRedirect = props => {
     throw new RedirectException(artworkID ? `/artwork/${artworkID}` : "/")
   }
 
-  if (order.state !== "PENDING" && !location.pathname.includes("status")) {
-    // Redirect to status page if the order is no longer PENDING (means it can't be edited anymore)
-    throw new RedirectException(`/orders/${params.orderID}/status`)
-  }
+  // if (order.state !== "PENDING" && !location.pathname.includes("status")) {
+  //   // Redirect to status page if the order is no longer PENDING (means it can't be edited anymore)
+  //   throw new RedirectException(`/orders/${params.orderID}/status`)
+  // }
 
   if (location.pathname.includes("offer")) {
     // TODO: more validation

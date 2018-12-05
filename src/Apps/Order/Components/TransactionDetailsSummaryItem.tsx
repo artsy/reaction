@@ -14,6 +14,7 @@ import {
 export interface TransactionDetailsSummaryItemProps extends FlexProps {
   order: TransactionDetailsSummaryItem_order
   offerOverride?: string | null
+  renderHeaderEntry?(): any
 }
 
 export class TransactionDetailsSummaryItem extends React.Component<
@@ -23,6 +24,7 @@ export class TransactionDetailsSummaryItem extends React.Component<
     const { offerOverride, order, ...others } = this.props
     return (
       <StackableBorderBox flexDirection="column" {...others}>
+        {this.props.renderHeaderEntry ? this.props.renderHeaderEntry() : null}
         {/* TODO: Seller's offer / Your offer (/ Buyer's offer? Will sellers see this component?) */}
         {this.renderPriceEntry()}
         <Spacer mb={2} />
@@ -80,20 +82,30 @@ export class TransactionDetailsSummaryItem extends React.Component<
 
   renderPriceEntry = () => {
     const { order, offerOverride } = this.props
+    const offerPriceEntry = () => {
+      const labelText =
+        order.lastOffer.fromParticipant === "SELLER"
+          ? "Seller's offer"
+          : "Your offer"
+      return (
+        <>
+          <Entry
+            label={labelText}
+            value={
+              offerOverride ||
+              (order.myLastOffer && order.myLastOffer.amount) ||
+              "—"
+            }
+          />
+          <SecondaryEntry label="List price" value={order.totalListPrice} />
+        </>
+      )
+    }
+
     return order.mode === "BUY" ? (
       <Entry label="Price" value={order.itemsTotal} />
     ) : (
-      <>
-        <Entry
-          label="Your offer"
-          value={
-            offerOverride ||
-            (order.myLastOffer && order.myLastOffer.amount) ||
-            "—"
-          }
-        />
-        <SecondaryEntry label="List price" value={order.totalListPrice} />
-      </>
+      offerPriceEntry()
     )
   }
 
@@ -164,6 +176,10 @@ export const TransactionDetailsSummaryItemFragmentContainer = createFragmentCont
       totalListPrice(precision: 2)
       buyerTotal(precision: 2)
       ... on OfferOrder {
+        lastOffer {
+          id
+          fromParticipant
+        }
         myLastOffer {
           id
           amount(precision: 2)
