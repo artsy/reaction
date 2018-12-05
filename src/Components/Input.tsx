@@ -201,12 +201,12 @@ const Container = styled.div`
   padding-bottom: 5px;
 `
 
-const StyledInput = styled.input`
+export const StyledInput = styled.input`
   ${borderedInput};
   ${block(24)};
 `
 
-export const InputComponent = styled.input.attrs<{ showLabel: boolean }>({})`
+const InputComponent = styled.input.attrs<{ showLabel: boolean }>({})`
   ${garamond("s17")};
   border: 0;
   font-size: 17px;
