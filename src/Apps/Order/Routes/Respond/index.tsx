@@ -117,7 +117,10 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                     countdownEnd={order.stateExpiresAt}
                   />
                   <OfferHistoryItem order={order} />
-                  <TransactionDetailsSummaryItem order={order} />
+                  <TransactionDetailsSummaryItem
+                    order={order}
+                    useLastSubmittedOffer
+                  />
                 </Flex>
                 <Spacer mb={[2, 3]} />
                 <RadioGroup
