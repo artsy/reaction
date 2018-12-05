@@ -5,6 +5,7 @@ import { ContextConsumer } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
+import { OtherWorksContextProps } from ".."
 
 import {
   ArtistArtworkGrid,
@@ -12,13 +13,9 @@ import {
   RelatedWorksArtworkGrid,
 } from "./ArtworkGrids"
 
-export const ArtworkContextArtistQueryRenderer = ({
-  artworkSlug,
-  artworkID,
-}: {
-  artworkSlug: string
-  artworkID: string
-}) => {
+export const ArtworkContextArtistQueryRenderer: React.SFC<
+  OtherWorksContextProps
+> = ({ artworkSlug, artworkID }) => {
   return (
     <ContextConsumer>
       {({ relayEnvironment }) => {
@@ -50,20 +47,18 @@ export const ArtworkContextArtistQueryRenderer = ({
   )
 }
 
-export const ArtworkContextArtist: React.SFC<{
+export const ArtworkContextArtistFragmentContainer = createFragmentContainer<{
   artwork: ArtworkContextArtist_artwork
-}> = props => {
-  return (
-    <Join separator={<Spacer my={2} />}>
-      <ArtistArtworkGrid artwork={props.artwork} />
-      <PartnerShowArtworkGrid artwork={props.artwork} />
-      <RelatedWorksArtworkGrid />
-    </Join>
-  )
-}
-
-export const ArtworkContextArtistFragmentContainer = createFragmentContainer(
-  ArtworkContextArtist,
+}>(
+  props => {
+    return (
+      <Join separator={<Spacer my={2} />}>
+        <ArtistArtworkGrid artwork={props.artwork} />
+        <PartnerShowArtworkGrid artwork={props.artwork} />
+        <RelatedWorksArtworkGrid />
+      </Join>
+    )
+  },
   graphql`
     fragment ArtworkContextArtist_artwork on Artwork
       @argumentDefinitions(excludeArtworkIDs: { type: "[String!]" }) {

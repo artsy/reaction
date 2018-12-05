@@ -94,11 +94,11 @@ return {
     {
       "kind": "FragmentSpread",
       "name": "ArtistArtworkGrid_artwork",
-      "args": null
+      "args": v1
     },
     v0
   ]
 };
 })();
-(node as any).hash = '2d41af62fb7f557dc7557f7fc5122fc0';
+(node as any).hash = 'b200b133193dc396d1e69108be4727f8';
 export default node;

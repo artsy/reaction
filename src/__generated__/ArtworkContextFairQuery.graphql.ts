@@ -38,7 +38,7 @@ fragment ArtworkContextFair_artwork_4wpKaB on Artwork {
   }
   ...FairArtworkGrid_artwork_4wpKaB
   ...PartnerShowArtworkGrid_artwork_4wpKaB
-  ...ArtistArtworkGrid_artwork
+  ...ArtistArtworkGrid_artwork_4wpKaB
   __id
 }
 
@@ -65,7 +65,7 @@ fragment PartnerShowArtworkGrid_artwork_4wpKaB on Artwork {
   __id
 }
 
-fragment ArtistArtworkGrid_artwork on Artwork {
+fragment ArtistArtworkGrid_artwork_4wpKaB on Artwork {
   id
   artist {
     name
@@ -73,7 +73,7 @@ fragment ArtistArtworkGrid_artwork on Artwork {
     counts {
       artworks(format: "0,0", label: "work")
     }
-    artworks_connection(first: 10, filter: [IS_FOR_SALE], sort: PUBLISHED_AT_DESC) {
+    artworks_connection(first: 10, filter: [IS_FOR_SALE], sort: PUBLISHED_AT_DESC, exclude: $excludeArtworkIDs) {
       ...ArtworkGrid_artworks
     }
     __id
@@ -245,7 +245,13 @@ v5 = {
   "args": null,
   "storageKey": null
 },
-v6 = [
+v6 = {
+  "kind": "Variable",
+  "name": "exclude",
+  "variableName": "excludeArtworkIDs",
+  "type": "[String]"
+},
+v7 = [
   {
     "kind": "Literal",
     "name": "shallow",
@@ -253,14 +259,14 @@ v6 = [
     "type": "Boolean"
   }
 ],
-v7 = {
+v8 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "display",
   "args": null,
   "storageKey": null
 },
-v8 = [
+v9 = [
   {
     "kind": "LinkedField",
     "alias": null,
@@ -421,7 +427,7 @@ v8 = [
             "alias": null,
             "name": "artists",
             "storageKey": "artists(shallow:true)",
-            "args": v6,
+            "args": v7,
             "concreteType": "Artist",
             "plural": true,
             "selections": [
@@ -442,7 +448,7 @@ v8 = [
             "alias": null,
             "name": "partner",
             "storageKey": "partner(shallow:true)",
-            "args": v6,
+            "args": v7,
             "concreteType": "Partner",
             "plural": false,
             "selections": [
@@ -476,7 +482,7 @@ v8 = [
                 "concreteType": "SaleArtworkHighestBid",
                 "plural": false,
                 "selections": [
-                  v7,
+                  v8,
                   {
                     "kind": "ScalarField",
                     "alias": "__id",
@@ -495,7 +501,7 @@ v8 = [
                 "concreteType": "SaleArtworkOpeningBid",
                 "plural": false,
                 "selections": [
-                  v7
+                  v8
                 ]
               },
               v2,
@@ -546,18 +552,13 @@ v8 = [
     ]
   }
 ],
-v9 = {
+v10 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "artworksConnection",
   "storageKey": null,
   "args": [
-    {
-      "kind": "Variable",
-      "name": "exclude",
-      "variableName": "excludeArtworkIDs",
-      "type": "[String]"
-    },
+    v6,
     {
       "kind": "Literal",
       "name": "first",
@@ -567,14 +568,14 @@ v9 = {
   ],
   "concreteType": "ArtworkConnection",
   "plural": false,
-  "selections": v8
+  "selections": v9
 };
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "ArtworkContextFairQuery",
   "id": null,
-  "text": "query ArtworkContextFairQuery(\n  $artworkSlug: String!\n  $excludeArtworkIDs: [String!]\n) {\n  artwork(id: $artworkSlug) {\n    ...ArtworkContextFair_artwork_4wpKaB\n    __id\n  }\n}\n\nfragment ArtworkContextFair_artwork_4wpKaB on Artwork {\n  id\n  artist {\n    name\n    href\n    __id\n  }\n  ...FairArtworkGrid_artwork_4wpKaB\n  ...PartnerShowArtworkGrid_artwork_4wpKaB\n  ...ArtistArtworkGrid_artwork\n  __id\n}\n\nfragment FairArtworkGrid_artwork_4wpKaB on Artwork {\n  fair: show(at_a_fair: true) {\n    artworksConnection(first: 20, exclude: $excludeArtworkIDs) {\n      ...ArtworkGrid_artworks\n    }\n    href\n    __id\n  }\n  __id\n}\n\nfragment PartnerShowArtworkGrid_artwork_4wpKaB on Artwork {\n  show {\n    artworksConnection(first: 20, exclude: $excludeArtworkIDs) {\n      ...ArtworkGrid_artworks\n    }\n    href\n    name\n    __id\n  }\n  __id\n}\n\nfragment ArtistArtworkGrid_artwork on Artwork {\n  id\n  artist {\n    name\n    href\n    counts {\n      artworks(format: \"0,0\", label: \"work\")\n    }\n    artworks_connection(first: 10, filter: [IS_FOR_SALE], sort: PUBLISHED_AT_DESC) {\n      ...ArtworkGrid_artworks\n    }\n    __id\n  }\n  __id\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  is_biddable\n  sale {\n    is_preview\n    __id\n  }\n  is_acquireable\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    display_timely_at\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
+  "text": "query ArtworkContextFairQuery(\n  $artworkSlug: String!\n  $excludeArtworkIDs: [String!]\n) {\n  artwork(id: $artworkSlug) {\n    ...ArtworkContextFair_artwork_4wpKaB\n    __id\n  }\n}\n\nfragment ArtworkContextFair_artwork_4wpKaB on Artwork {\n  id\n  artist {\n    name\n    href\n    __id\n  }\n  ...FairArtworkGrid_artwork_4wpKaB\n  ...PartnerShowArtworkGrid_artwork_4wpKaB\n  ...ArtistArtworkGrid_artwork_4wpKaB\n  __id\n}\n\nfragment FairArtworkGrid_artwork_4wpKaB on Artwork {\n  fair: show(at_a_fair: true) {\n    artworksConnection(first: 20, exclude: $excludeArtworkIDs) {\n      ...ArtworkGrid_artworks\n    }\n    href\n    __id\n  }\n  __id\n}\n\nfragment PartnerShowArtworkGrid_artwork_4wpKaB on Artwork {\n  show {\n    artworksConnection(first: 20, exclude: $excludeArtworkIDs) {\n      ...ArtworkGrid_artworks\n    }\n    href\n    name\n    __id\n  }\n  __id\n}\n\nfragment ArtistArtworkGrid_artwork_4wpKaB on Artwork {\n  id\n  artist {\n    name\n    href\n    counts {\n      artworks(format: \"0,0\", label: \"work\")\n    }\n    artworks_connection(first: 10, filter: [IS_FOR_SALE], sort: PUBLISHED_AT_DESC, exclude: $excludeArtworkIDs) {\n      ...ArtworkGrid_artworks\n    }\n    __id\n  }\n  __id\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  is_biddable\n  sale {\n    is_preview\n    __id\n  }\n  is_acquireable\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    display_timely_at\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -671,8 +672,9 @@ return {
                 "kind": "LinkedField",
                 "alias": null,
                 "name": "artworks_connection",
-                "storageKey": "artworks_connection(filter:[\"IS_FOR_SALE\"],first:10,sort:\"PUBLISHED_AT_DESC\")",
+                "storageKey": null,
                 "args": [
+                  v6,
                   {
                     "kind": "Literal",
                     "name": "filter",
@@ -696,7 +698,7 @@ return {
                 ],
                 "concreteType": "ArtworkConnection",
                 "plural": false,
-                "selections": v8
+                "selections": v9
               }
             ]
           },
@@ -716,7 +718,7 @@ return {
             "concreteType": "PartnerShow",
             "plural": false,
             "selections": [
-              v9,
+              v10,
               v5,
               v2
             ]
@@ -731,7 +733,7 @@ return {
             "concreteType": "PartnerShow",
             "plural": false,
             "selections": [
-              v9,
+              v10,
               v5,
               v4,
               v2

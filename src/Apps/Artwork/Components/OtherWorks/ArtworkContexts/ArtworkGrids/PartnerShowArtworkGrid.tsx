@@ -5,32 +5,24 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import { Header } from "../../Header"
 
-interface PartnerShowArtworkGridProps {
+export const PartnerShowArtworkGridFragmentContainer = createFragmentContainer<{
   artwork: PartnerShowArtworkGrid_artwork
-}
-
-export const PartnerShowArtworkGrid: React.SFC<
-  PartnerShowArtworkGridProps
-> = props => {
-  const {
+}>(
+  ({
     artwork: {
       show: { artworksConnection, href, name },
     },
-  } = props
-
-  return (
-    <>
-      <Header
-        title={`Other works from ${name}`}
-        buttonHref={sd.APP_URL + href}
-      />
-      <ArtworkGrid artworks={artworksConnection} />
-    </>
-  )
-}
-
-export const PartnerShowArtworkGridFragmentContainer = createFragmentContainer(
-  PartnerShowArtworkGrid,
+  }) => {
+    return (
+      <>
+        <Header
+          title={`Other works from ${name}`}
+          buttonHref={sd.APP_URL + href}
+        />
+        <ArtworkGrid artworks={artworksConnection} />
+      </>
+    )
+  },
   graphql`
     fragment PartnerShowArtworkGrid_artwork on Artwork
       @argumentDefinitions(excludeArtworkIDs: { type: "[String!]" }) {
