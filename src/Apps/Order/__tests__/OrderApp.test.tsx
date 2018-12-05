@@ -11,8 +11,11 @@ import { OrderApp } from "../OrderApp"
 
 import {
   BuyOrderPickup,
+  BuyOrderWithShippingDetails,
   mockResolver,
+  OfferOrderWithShippingDetails,
   UntouchedBuyOrder,
+  UntouchedOfferOrder,
 } from "Apps/__tests__/Fixtures/Order"
 import { createMockNetworkLayer } from "DevTools/createMockNetworkLayer"
 import { Environment, RecordSource, Store } from "relay-runtime"
@@ -185,6 +188,115 @@ describe("OrderApp routing redirects", () => {
         creditCard: {
           id: "12345",
         },
+      })
+    )
+    expect(redirect).toBe(undefined)
+  })
+
+  it("redirects from the status route to the review route if the order is pending", async () => {
+    const { redirect } = await render(
+      "/orders/1234/status",
+      mockResolver({
+        ...UntouchedBuyOrder,
+        id: 1234,
+        state: "PENDING",
+        requestedFulfillment: {
+          __typename: "Ship",
+        },
+        creditCard: {
+          id: "12345",
+        },
+      })
+    )
+    expect(redirect.url).toBe("/orders/1234/review")
+  })
+
+  it("stays on the status page if the order is submitted", async () => {
+    const { redirect } = await render(
+      "/orders/1234/status",
+      mockResolver({
+        ...UntouchedBuyOrder,
+        id: 1234,
+        state: "SUBMITTED",
+        requestedFulfillment: {
+          __typename: "Ship",
+        },
+        creditCard: {
+          id: "12345",
+        },
+      })
+    )
+    expect(redirect).toBe(undefined)
+  })
+
+  it("stays on the offer route if the order is an offer order", async () => {
+    const { redirect } = await render(
+      "/orders/1234/offer",
+      mockResolver({
+        ...UntouchedOfferOrder,
+        id: 1234,
+      })
+    )
+    expect(redirect).toBe(undefined)
+  })
+
+  it("redirects from the offer route to the shipping route if the order is not an offer order", async () => {
+    const { redirect } = await render(
+      "/orders/1234/offer",
+      mockResolver({
+        ...UntouchedBuyOrder,
+        id: 1234,
+        requestedFulfillment: null,
+      })
+    )
+    expect(redirect.url).toBe("/orders/1234/shipping")
+  })
+
+  it("redirects from the offer route to the status route if the order is not pending", async () => {
+    const { redirect } = await render(
+      "/orders/1234/offer",
+      mockResolver({
+        ...BuyOrderWithShippingDetails,
+        id: 1234,
+        state: "SUBMITTED",
+      })
+    )
+    expect(redirect.url).toBe("/orders/1234/status")
+  })
+
+  it("redirects from the respond route to the status route if not offer order", async () => {
+    const { redirect } = await render(
+      "/orders/1234/respond",
+      mockResolver({
+        ...BuyOrderWithShippingDetails,
+        id: 1234,
+        state: "SUBMITTED",
+      })
+    )
+    expect(redirect.url).toBe("/orders/1234/status")
+  })
+
+  it("redirects from the respond route to the status route if order is not submitted", async () => {
+    const { redirect } = await render(
+      "/orders/1234/respond",
+      mockResolver({
+        ...OfferOrderWithShippingDetails,
+        id: 1234,
+        state: "PENDING",
+        awaitingResponseFrom: "BUYER",
+      })
+    )
+    expect(redirect.url).toBe("/orders/1234/status")
+  })
+
+  it("Stays on the respond page if all the appropriate conditions are met", async () => {
+    const { redirect } = await render(
+      "/orders/1234/respond",
+      mockResolver({
+        ...OfferOrderWithShippingDetails,
+        id: 1234,
+        state: "SUBMITTED",
+        awaitingResponseFrom: "BUYER",
       })
     )
     expect(redirect).toBe(undefined)
