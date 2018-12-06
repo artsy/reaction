@@ -31,6 +31,7 @@ fragment ArtworkImages_artwork on Artwork {
   title
   image_alt: to_s
   image_title
+  href
   images {
     id
     uri: url(version: ["larger", "large"])
@@ -86,7 +87,7 @@ return {
   "operationKind": "query",
   "name": "ArtworkImagesQuery",
   "id": null,
-  "text": "query ArtworkImagesQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...ArtworkImages_artwork\n    __id\n  }\n}\n\nfragment ArtworkImages_artwork on Artwork {\n  title\n  image_alt: to_s\n  image_title\n  images {\n    id\n    uri: url(version: [\"larger\", \"large\"])\n    placeholder: resized(width: 30, height: 30, version: \"small\") {\n      url\n    }\n    aspectRatio: aspect_ratio\n    is_zoomable\n    deepZoom: deep_zoom {\n      Image {\n        xmlns\n        Url\n        Format\n        TileSize\n        Overlap\n        Size {\n          Width\n          Height\n        }\n      }\n    }\n  }\n  __id\n}\n",
+  "text": "query ArtworkImagesQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...ArtworkImages_artwork\n    __id\n  }\n}\n\nfragment ArtworkImages_artwork on Artwork {\n  title\n  image_alt: to_s\n  image_title\n  href\n  images {\n    id\n    uri: url(version: [\"larger\", \"large\"])\n    placeholder: resized(width: 30, height: 30, version: \"small\") {\n      url\n    }\n    aspectRatio: aspect_ratio\n    is_zoomable\n    deepZoom: deep_zoom {\n      Image {\n        xmlns\n        Url\n        Format\n        TileSize\n        Overlap\n        Size {\n          Width\n          Height\n        }\n      }\n    }\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -146,6 +147,13 @@ return {
             "kind": "ScalarField",
             "alias": null,
             "name": "image_title",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "href",
             "args": null,
             "storageKey": null
           },
