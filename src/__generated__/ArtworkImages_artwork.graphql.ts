@@ -7,6 +7,7 @@ export type ArtworkImages_artwork = {
     readonly title: string | null;
     readonly image_alt: string | null;
     readonly image_title: string | null;
+    readonly href: string | null;
     readonly images: ReadonlyArray<({
         readonly id: string | null;
         readonly uri: string | null;
@@ -59,6 +60,13 @@ const node: ConcreteFragment = {
       "kind": "ScalarField",
       "alias": null,
       "name": "image_title",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "href",
       "args": null,
       "storageKey": null
     },
@@ -239,5 +247,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '1cb76d714f435fb21f95f1d49a462ddd';
+(node as any).hash = 'e3a040742d710e298d73e60b41a503ac';
 export default node;
