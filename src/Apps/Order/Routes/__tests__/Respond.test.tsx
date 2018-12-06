@@ -17,6 +17,7 @@ import { mount } from "enzyme"
 import moment from "moment"
 import React from "react"
 import { commitMutation as _commitMutation } from "react-relay"
+import { Stepper } from "Styleguide/Components"
 import { CountdownTimer } from "Styleguide/Components/CountdownTimer"
 import { RespondFragmentContainer as RespondRoute } from "../Respond"
 
@@ -81,6 +82,9 @@ describe("Offer InitialMutation", () => {
     const component = getWrapper()
     const stepper = component.find(OrderStepper)
     expect(stepper.text()).toMatch("RespondReview")
+
+    const index = component.find(Stepper).props().currentStepIndex
+    expect(index).toBe(0)
   })
 
   it("shows the countdown timer", () => {
