@@ -3,7 +3,7 @@ import { ContextProps } from "Artsy/SystemContext"
 import { createMockNetworkLayer } from "DevTools/createMockNetworkLayer"
 import { HistoryOptions } from "farce"
 import { RouteConfig } from "found"
-import { IMocks } from "graphql-tools/dist/Interfaces"
+import { IResolvers } from "graphql-tools/dist/Interfaces"
 import React from "react"
 import { getUser } from "Utils/getUser"
 import { MatchingMediaQueries } from "Utils/Responsive"
@@ -14,7 +14,7 @@ interface Props {
   initialRoute?: string
   initialState?: object
   historyOptions?: HistoryOptions
-  mockResolvers?: IMocks
+  mockResolvers?: IResolvers
   context?: ContextProps
 }
 
