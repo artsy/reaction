@@ -5,6 +5,7 @@ import { FollowArtistButton_artist$ref } from "./FollowArtistButton_artist.graph
 declare const _ArtworkSidebarArtists_artwork$ref: unique symbol;
 export type ArtworkSidebarArtists_artwork$ref = typeof _ArtworkSidebarArtists_artwork$ref;
 export type ArtworkSidebarArtists_artwork = {
+    readonly cultural_maker: string | null;
     readonly artists: ReadonlyArray<({
         readonly __id: string;
         readonly id: string;
@@ -39,6 +40,13 @@ return {
     }
   ],
   "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "cultural_maker",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -88,5 +96,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '13362cc7f0cf86563149eb636de3337e';
+(node as any).hash = '908f150d5c84ab8e9cdf3a75aa804d96';
 export default node;

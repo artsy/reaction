@@ -1,4 +1,5 @@
 import {
+  CulturalMakerWork,
   MultipleArtists,
   SingleFollowedArtist,
 } from "Apps/__tests__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarArtists"
@@ -68,6 +69,16 @@ describe("ArtworkSidebarArtists", () => {
 
     it("separates artist names by comma", () => {
       expect(wrapper.text()).toBe("Josef Albers, Ed Ruscha")
+    })
+  })
+
+  describe("ArtworkSidebarArtists with cultural maker work", () => {
+    beforeAll(async () => {
+      wrapper = await getWrapper(CulturalMakerWork)
+    })
+
+    it("displays cultural maker", () => {
+      expect(wrapper.html()).toContain("American 18th Century")
     })
   })
 })
