@@ -164,20 +164,23 @@ export class Accept extends Component<AcceptProps, AcceptState> {
     const { id } = this.props.order
 
     return (
-      <Flex justifyContent="space-between" alignItems="baseline">
-        <div>
-          <Serif size={["2", "3t"]} weight="semibold" color="black100">
-            Accept seller's offer
-          </Serif>
-        </div>
-        <div>
-          <Sans size="2">
-            <a className="colorLink" href={`/orders/${id}/review`}>
-              Change
-            </a>
-          </Sans>
-        </div>
-      </Flex>
+      <>
+        <Flex justifyContent="space-between" alignItems="baseline">
+          <div>
+            <Serif size={["2", "3t"]} weight="semibold" color="black100">
+              Accept seller's offer
+            </Serif>
+          </div>
+          <div>
+            <Sans size="2">
+              <a className="colorLink" href={`/orders/${id}/review`}>
+                Change
+              </a>
+            </Sans>
+          </div>
+        </Flex>
+        <Spacer mb={2} />
+      </>
     )
   }
 }

@@ -14,7 +14,7 @@ import {
 export interface TransactionDetailsSummaryItemProps extends FlexProps {
   order: TransactionDetailsSummaryItem_order
   offerOverride?: string | null
-  renderHeaderEntry?(): any
+  renderHeaderEntry?: () => React.StatelessComponent
 }
 
 export class TransactionDetailsSummaryItem extends React.Component<
