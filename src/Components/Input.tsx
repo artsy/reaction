@@ -201,7 +201,7 @@ const Container = styled.div`
   padding-bottom: 5px;
 `
 
-const StyledInput = styled.input`
+export const StyledInput = styled.input`
   ${borderedInput};
   ${block(24)};
 `
@@ -250,7 +250,7 @@ const Label = styled.label.attrs<{ out: boolean }>({})`
   z-index: 1;
 `
 
-const Title = styled.div`
+export const Title = styled.div`
   ${garamond("s17")};
 `
 

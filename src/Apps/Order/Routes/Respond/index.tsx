@@ -58,12 +58,21 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
     isErrorModalOpen: false,
     errorModalTitle: null,
     errorModalMessage: null,
-  }
+  } as RespondState
 
   onContinueButtonPressed: () => void = () => {
+    const { offerValue, responseOption } = this.state
     this.setState({ isCommittingMutation: true }, () => {
-      if (this.state.responseOption === "ACCEPT") {
-        this.props.router.push(`/orders/${this.props.order.id}/review/accept`)
+      switch (responseOption) {
+        case "COUNTER":
+          window.alert(`You decided to COUNTER with ${offerValue}.`)
+          break
+        case "ACCEPT":
+          this.props.router.push(`/orders/${this.props.order.id}/accept`)
+          break
+        default:
+          window.alert(`You decided to ${responseOption}.`)
+          break
       }
       this.setState({ isCommittingMutation: false })
     })
@@ -119,7 +128,10 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                     countdownEnd={order.stateExpiresAt}
                   />
                   <OfferHistoryItem order={order} />
-                  <TransactionDetailsSummaryItem order={order} />
+                  <TransactionDetailsSummaryItem
+                    order={order}
+                    useLastSubmittedOffer
+                  />
                 </Flex>
                 <Spacer mb={[2, 3]} />
                 <RadioGroup
@@ -239,9 +251,6 @@ export const RespondFragmentContainer = createFragmentContainer(
       itemsTotal(precision: 2)
       totalListPrice(precision: 2)
       stateExpiresAt
-      lastOffer {
-        createdAt
-      }
       lineItems {
         edges {
           node {
@@ -249,6 +258,11 @@ export const RespondFragmentContainer = createFragmentContainer(
               id
             }
           }
+        }
+      }
+      ... on OfferOrder {
+        lastOffer {
+          createdAt
         }
       }
       ...TransactionDetailsSummaryItem_order

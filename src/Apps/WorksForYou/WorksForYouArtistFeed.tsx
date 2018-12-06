@@ -117,7 +117,7 @@ export const WorksForYouArtistFeedPaginationContainer = createPaginationContaine
             }
           }
           artworks_connection(
-            sort: published_at_desc
+            sort: PUBLISHED_AT_DESC
             first: $count
             after: $cursor
             filter: $filter

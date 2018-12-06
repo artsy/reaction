@@ -2,17 +2,17 @@
 
 import { ConcreteFragment } from "relay-runtime";
 import { ArtworkGrid_artworks$ref } from "./ArtworkGrid_artworks.graphql";
-declare const _PartnerShowArtworkGrid_artwork$ref: unique symbol;
-export type PartnerShowArtworkGrid_artwork$ref = typeof _PartnerShowArtworkGrid_artwork$ref;
-export type PartnerShowArtworkGrid_artwork = {
-    readonly show: ({
+declare const _PartnerArtworkGrid_artwork$ref: unique symbol;
+export type PartnerArtworkGrid_artwork$ref = typeof _PartnerArtworkGrid_artwork$ref;
+export type PartnerArtworkGrid_artwork = {
+    readonly partner: ({
         readonly artworksConnection: ({
             readonly " $fragmentRefs": ArtworkGrid_artworks$ref;
         }) | null;
         readonly href: string | null;
         readonly name: string | null;
     }) | null;
-    readonly " $refType": PartnerShowArtworkGrid_artwork$ref;
+    readonly " $refType": PartnerArtworkGrid_artwork$ref;
 };
 
 
@@ -27,7 +27,7 @@ var v0 = {
 };
 return {
   "kind": "Fragment",
-  "name": "PartnerShowArtworkGrid_artwork",
+  "name": "PartnerArtworkGrid_artwork",
   "type": "Artwork",
   "metadata": null,
   "argumentDefinitions": [
@@ -42,10 +42,10 @@ return {
     {
       "kind": "LinkedField",
       "alias": null,
-      "name": "show",
+      "name": "partner",
       "storageKey": null,
       "args": null,
-      "concreteType": "PartnerShow",
+      "concreteType": "Partner",
       "plural": false,
       "selections": [
         {
@@ -98,5 +98,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '18720201722a633bb7627eb4fcb53300';
+(node as any).hash = '1d49f31f894622d6090559002386cd10';
 export default node;

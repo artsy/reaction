@@ -15,6 +15,7 @@ export interface TransactionDetailsSummaryItemProps extends FlexProps {
   order: TransactionDetailsSummaryItem_order
   offerOverride?: string | null
   renderHeaderEntry?: () => React.StatelessComponent
+  useLastSubmittedOffer?: boolean
 }
 
 export class TransactionDetailsSummaryItem extends React.Component<
@@ -25,7 +26,6 @@ export class TransactionDetailsSummaryItem extends React.Component<
     return (
       <StackableBorderBox flexDirection="column" {...others}>
         {this.props.renderHeaderEntry ? this.props.renderHeaderEntry() : null}
-        {/* TODO: Seller's offer / Your offer (/ Buyer's offer? Will sellers see this component?) */}
         {this.renderPriceEntry()}
         <Spacer mb={2} />
         <Entry label="Shipping" value={this.shippingDisplayAmount()} />
@@ -37,6 +37,12 @@ export class TransactionDetailsSummaryItem extends React.Component<
     )
   }
 
+  getOffer(): TransactionDetailsSummaryItem_order["lastOffer"] | null {
+    return this.props.useLastSubmittedOffer
+      ? this.props.order.lastOffer
+      : this.props.order.myLastOffer
+  }
+
   shippingDisplayAmount = () => {
     const { order } = this.props
     switch (order.mode) {
@@ -46,10 +52,11 @@ export class TransactionDetailsSummaryItem extends React.Component<
           "—"
         )
       case "OFFER":
-        return order.myLastOffer
+        const offer = this.getOffer()
+        return offer
           ? this.formattedAmount(
-              order.myLastOffer.shippingTotal,
-              order.myLastOffer.shippingTotalCents
+              offer.shippingTotal,
+              offer.shippingTotalCents
             ) || "—"
           : "—"
     }
@@ -61,11 +68,9 @@ export class TransactionDetailsSummaryItem extends React.Component<
       case "BUY":
         return this.formattedAmount(order.taxTotal, order.taxTotalCents) || "—"
       case "OFFER":
-        return order.myLastOffer
-          ? this.formattedAmount(
-              order.myLastOffer.taxTotal,
-              order.myLastOffer.taxTotalCents
-            ) || "—"
+        const offer = this.getOffer()
+        return offer
+          ? this.formattedAmount(offer.taxTotal, offer.taxTotalCents) || "—"
           : "—"
     }
   }
@@ -76,36 +81,28 @@ export class TransactionDetailsSummaryItem extends React.Component<
       case "BUY":
         return order.buyerTotal
       case "OFFER":
-        return order.myLastOffer && order.myLastOffer.buyerTotal
+        const offer = this.getOffer()
+        return offer && offer.buyerTotal
     }
   }
 
   renderPriceEntry = () => {
     const { order, offerOverride } = this.props
-    const offerPriceEntry = () => {
-      const labelText =
-        order.lastOffer.fromParticipant === "SELLER"
-          ? "Seller's offer"
-          : "Your offer"
-      return (
-        <>
-          <Entry
-            label={labelText}
-            value={
-              offerOverride ||
-              (order.myLastOffer && order.myLastOffer.amount) ||
-              "—"
-            }
-          />
-          <SecondaryEntry label="List price" value={order.totalListPrice} />
-        </>
-      )
+    if (order.mode === "BUY") {
+      return <Entry label="Price" value={order.itemsTotal} />
     }
+    const offer = this.getOffer()
+    const isBuyerOffer =
+      offerOverride != null || !offer || offer.fromParticipant === "BUYER"
 
-    return order.mode === "BUY" ? (
-      <Entry label="Price" value={order.itemsTotal} />
-    ) : (
-      offerPriceEntry()
+    return (
+      <>
+        <Entry
+          label={isBuyerOffer ? "Your offer" : "Seller's offer"}
+          value={offerOverride || (offer && offer.amount) || "—"}
+        />
+        <SecondaryEntry label="List price" value={order.totalListPrice} />
+      </>
     )
   }
 
@@ -162,6 +159,21 @@ const SecondaryEntry: React.SFC<SecondaryEntryProps> = ({ label, value }) => (
   </Flex>
 )
 
+graphql`
+  fragment TransactionDetailsSummaryItemOfferProperties on Offer {
+    id
+    amount(precision: 2)
+    amountCents
+    shippingTotal(precision: 2)
+    shippingTotalCents
+    taxTotal(precision: 2)
+    taxTotalCents
+    buyerTotal(precision: 2)
+    buyerTotalCents
+    fromParticipant
+  }
+`
+
 export const TransactionDetailsSummaryItemFragmentContainer = createFragmentContainer(
   TransactionDetailsSummaryItem,
   graphql`
@@ -177,19 +189,10 @@ export const TransactionDetailsSummaryItemFragmentContainer = createFragmentCont
       buyerTotal(precision: 2)
       ... on OfferOrder {
         lastOffer {
-          id
-          fromParticipant
+          ...TransactionDetailsSummaryItemOfferProperties @relay(mask: false)
         }
         myLastOffer {
-          id
-          amount(precision: 2)
-          amountCents
-          shippingTotal(precision: 2)
-          shippingTotalCents
-          taxTotal(precision: 2)
-          taxTotalCents
-          buyerTotal(precision: 2)
-          buyerTotalCents
+          ...TransactionDetailsSummaryItemOfferProperties @relay(mask: false)
         }
       }
     }

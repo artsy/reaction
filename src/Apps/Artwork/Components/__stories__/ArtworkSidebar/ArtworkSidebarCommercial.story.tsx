@@ -1,4 +1,8 @@
 import {
+  ArtworkBuyNow,
+  ArtworkBuyNowMakeOffer,
+  ArtworkMakeOffer,
+  ArtworkSold,
   ContactForPriceWork,
   FoSaleArtworkNoEditions,
   FoSaleArtworkWithMultipleEditions,
@@ -14,7 +18,7 @@ storiesOf("Styleguide/Artwork/Sidebar", module)
   .addDecorator(story => <RelayStubProvider>{story()}</RelayStubProvider>)
   .add("Commercial", () => {
     return (
-      <React.Fragment>
+      <>
         <Section title="For sale artwork with no editions">
           <Commercial artwork={FoSaleArtworkNoEditions as any} />
         </Section>
@@ -27,6 +31,18 @@ storiesOf("Styleguide/Artwork/Sidebar", module)
         <Section title="Contact for price work">
           <Commercial artwork={ContactForPriceWork as any} />
         </Section>
-      </React.Fragment>
+        <Section title="Buy Now / Work available for sale">
+          <Commercial artwork={ArtworkBuyNow as any} />
+        </Section>
+        <Section title="Buy Now / Work sold">
+          <Commercial artwork={ArtworkSold as any} />
+        </Section>
+        <Section title="Make Offer / Work available for sale">
+          <Commercial artwork={ArtworkMakeOffer as any} />
+        </Section>
+        <Section title="Buy Now &amp; Make Offer / Work available for sale">
+          <Commercial artwork={ArtworkBuyNowMakeOffer as any} />
+        </Section>
+      </>
     )
   })

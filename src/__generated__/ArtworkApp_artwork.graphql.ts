@@ -5,6 +5,7 @@ import { ArtworkBanner_artwork$ref } from "./ArtworkBanner_artwork.graphql";
 import { ArtworkDetails_artwork$ref } from "./ArtworkDetails_artwork.graphql";
 import { ArtworkImages_artwork$ref } from "./ArtworkImages_artwork.graphql";
 import { ArtworkSidebar_artwork$ref } from "./ArtworkSidebar_artwork.graphql";
+import { OtherWorks_artwork$ref } from "./OtherWorks_artwork.graphql";
 declare const _ArtworkApp_artwork$ref: unique symbol;
 export type ArtworkApp_artwork$ref = typeof _ArtworkApp_artwork$ref;
 export type ArtworkApp_artwork = {
@@ -12,7 +13,7 @@ export type ArtworkApp_artwork = {
     readonly artist: ({
         readonly id: string;
     }) | null;
-    readonly " $fragmentRefs": ArtworkBanner_artwork$ref & ArtworkSidebar_artwork$ref & ArtworkDetails_artwork$ref & ArtworkImages_artwork$ref;
+    readonly " $fragmentRefs": ArtworkBanner_artwork$ref & ArtworkSidebar_artwork$ref & ArtworkDetails_artwork$ref & ArtworkImages_artwork$ref & OtherWorks_artwork$ref;
     readonly " $refType": ArtworkApp_artwork$ref;
 };
 
@@ -74,9 +75,14 @@ return {
       "name": "ArtworkImages_artwork",
       "args": null
     },
+    {
+      "kind": "FragmentSpread",
+      "name": "OtherWorks_artwork",
+      "args": null
+    },
     v1
   ]
 };
 })();
-(node as any).hash = '7e896f0fdcc50c6e8b2305de6b45a9c6';
+(node as any).hash = 'b01d55d8d0d7c48145ef6f5fc452b812';
 export default node;

@@ -9,38 +9,60 @@ import { ArtworkContextAuctionQueryRenderer as ArtworkContextAuction } from "./A
 import { ArtworkContextFairQueryRenderer as ArtworkContextFair } from "./ArtworkContexts/ArtworkContextFair"
 import { ArtworkContextPartnerShowQueryRenderer as ArtworkContextPartnerShow } from "./ArtworkContexts/ArtworkContextPartnerShow"
 
-export const OtherWorks: React.SFC<{
-  artwork: OtherWorks_artwork
-}> = props => {
-  const contextType = props.artwork.context && props.artwork.context.__typename
-
-  // FIXME: Rename `artworkID` to artworkSlug
-  const artworkID = props.artwork.id
-
-  switch (contextType) {
-    case "ArtworkContextAuction": {
-      return (
-        <ArtworkContextAuction
-          artworkID={artworkID}
-          artworkMongoID={props.artwork._id}
-          isClosed={props.artwork.sale.is_closed}
-        />
-      )
-    }
-    case "ArtworkContextFair": {
-      return <ArtworkContextFair artworkID={artworkID} />
-    }
-    case "ArtworkContextPartnerShow": {
-      return <ArtworkContextPartnerShow artworkID={artworkID} />
-    }
-    default: {
-      return <ArtworkContextArtist artworkID={artworkID} />
-    }
-  }
+export interface OtherWorksContextProps {
+  /** The artworkSlug to query */
+  artworkSlug: string
+  /** Used to exclude the current work from the currently-shown work from grid */
+  artworkID: string
 }
 
-export const OtherWorksFragmentContainer = createFragmentContainer(
-  OtherWorks,
+export const OtherWorksFragmentContainer = createFragmentContainer<{
+  artwork: OtherWorks_artwork
+}>(
+  props => {
+    const contextType =
+      props.artwork.context && props.artwork.context.__typename
+    const artworkSlug = props.artwork.id
+
+    // FIXME: Remove
+    console.warn("-----------------------", "\n", contextType)
+
+    switch (contextType) {
+      case "ArtworkContextAuction": {
+        return (
+          <ArtworkContextAuction
+            artworkSlug={artworkSlug}
+            artworkID={props.artwork._id}
+            isClosed={props.artwork.sale.is_closed}
+          />
+        )
+      }
+      case "ArtworkContextFair": {
+        return (
+          <ArtworkContextFair
+            artworkSlug={artworkSlug}
+            artworkID={props.artwork._id}
+          />
+        )
+      }
+      case "ArtworkContextPartnerShow": {
+        return (
+          <ArtworkContextPartnerShow
+            artworkSlug={artworkSlug}
+            artworkID={props.artwork._id}
+          />
+        )
+      }
+      default: {
+        return (
+          <ArtworkContextArtist
+            artworkSlug={artworkSlug}
+            artworkID={props.artwork._id}
+          />
+        )
+      }
+    }
+  },
   graphql`
     fragment OtherWorks_artwork on Artwork {
       id
@@ -56,9 +78,9 @@ export const OtherWorksFragmentContainer = createFragmentContainer(
 )
 
 export const OtherWorksQueryRenderer = ({
-  artworkID,
+  artworkSlug,
 }: {
-  artworkID: string
+  artworkSlug: string
 }) => {
   return (
     <ContextConsumer>
@@ -66,10 +88,10 @@ export const OtherWorksQueryRenderer = ({
         return (
           <QueryRenderer<OtherWorksQuery>
             environment={relayEnvironment}
-            variables={{ artworkID }}
+            variables={{ artworkSlug }}
             query={graphql`
-              query OtherWorksQuery($artworkID: String!) {
-                artwork(id: $artworkID) {
+              query OtherWorksQuery($artworkSlug: String!) {
+                artwork(id: $artworkSlug) {
                   ...OtherWorks_artwork
                 }
               }

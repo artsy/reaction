@@ -5,6 +5,7 @@ import { ContextConsumer } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
+import { OtherWorksContextProps } from ".."
 
 import {
   ArtistArtworkGrid,
@@ -13,22 +14,27 @@ import {
   RelatedWorksArtworkGrid,
 } from "./ArtworkGrids"
 
-export const ArtworkContextFairQueryRenderer = ({
-  artworkID,
-}: {
-  artworkID: string
-}) => {
+export const ArtworkContextFairQueryRenderer: React.SFC<
+  OtherWorksContextProps
+> = ({ artworkSlug, artworkID }) => {
   return (
     <ContextConsumer>
       {({ relayEnvironment }) => {
         return (
           <QueryRenderer<ArtworkContextFairQuery>
             environment={relayEnvironment}
-            variables={{ artworkID }}
+            variables={{
+              artworkSlug,
+              excludeArtworkIDs: [artworkID],
+            }}
             query={graphql`
-              query ArtworkContextFairQuery($artworkID: String!) {
-                artwork(id: $artworkID) {
+              query ArtworkContextFairQuery(
+                $artworkSlug: String!
+                $excludeArtworkIDs: [String!]
+              ) {
+                artwork(id: $artworkSlug) {
                   ...ArtworkContextFair_artwork
+                    @arguments(excludeArtworkIDs: $excludeArtworkIDs)
                 }
               }
             `}
@@ -40,31 +46,33 @@ export const ArtworkContextFairQueryRenderer = ({
   )
 }
 
-export const ArtworkContextFair: React.SFC<{
+export const ArtworkContextFairFragmentContainer = createFragmentContainer<{
   artwork: ArtworkContextFair_artwork
-}> = props => {
-  return (
-    <Join separator={<Spacer my={2} />}>
-      <FairArtworkGrid artwork={props.artwork} />
-      <PartnerShowArtworkGrid artwork={props.artwork} />
-      <ArtistArtworkGrid artwork={props.artwork} />
-      <RelatedWorksArtworkGrid />
-    </Join>
-  )
-}
-
-export const ArtworkContextFairFragmentContainer = createFragmentContainer(
-  ArtworkContextFair,
+}>(
+  props => {
+    return (
+      <Join separator={<Spacer my={2} />}>
+        <FairArtworkGrid artwork={props.artwork} />
+        <PartnerShowArtworkGrid artwork={props.artwork} />
+        <ArtistArtworkGrid artwork={props.artwork} />
+        <RelatedWorksArtworkGrid />
+      </Join>
+    )
+  },
   graphql`
-    fragment ArtworkContextFair_artwork on Artwork {
+    fragment ArtworkContextFair_artwork on Artwork
+      @argumentDefinitions(excludeArtworkIDs: { type: "[String!]" }) {
       id
       artist {
         name
         href
       }
       ...FairArtworkGrid_artwork
+        @arguments(excludeArtworkIDs: $excludeArtworkIDs)
       ...PartnerShowArtworkGrid_artwork
+        @arguments(excludeArtworkIDs: $excludeArtworkIDs)
       ...ArtistArtworkGrid_artwork
+        @arguments(excludeArtworkIDs: $excludeArtworkIDs)
     }
   `
 )

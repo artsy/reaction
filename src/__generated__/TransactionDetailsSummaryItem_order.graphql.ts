@@ -17,6 +17,14 @@ export type TransactionDetailsSummaryItem_order = {
     readonly buyerTotal: string | null;
     readonly lastOffer?: ({
         readonly id: string | null;
+        readonly amount: string | null;
+        readonly amountCents: number | null;
+        readonly shippingTotal: string | null;
+        readonly shippingTotalCents: number | null;
+        readonly taxTotal: string | null;
+        readonly taxTotalCents: number | null;
+        readonly buyerTotal: string | null;
+        readonly buyerTotalCents: number | null;
         readonly fromParticipant: OrderParticipantEnum | null;
     }) | null;
     readonly myLastOffer?: ({
@@ -29,6 +37,7 @@ export type TransactionDetailsSummaryItem_order = {
         readonly taxTotalCents: number | null;
         readonly buyerTotal: string | null;
         readonly buyerTotalCents: number | null;
+        readonly fromParticipant: OrderParticipantEnum | null;
     }) | null;
     readonly " $refType": TransactionDetailsSummaryItem_order$ref;
 };
@@ -86,13 +95,49 @@ v6 = {
   "args": null,
   "storageKey": null
 },
-v7 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-};
+v7 = [
+  v4,
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "id",
+    "args": null,
+    "storageKey": null
+  },
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "amountCents",
+    "args": null,
+    "storageKey": null
+  },
+  v2,
+  v3,
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "amount",
+    "args": v1,
+    "storageKey": "amount(precision:2)"
+  },
+  v0,
+  v5,
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "buyerTotalCents",
+    "args": null,
+    "storageKey": null
+  },
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "fromParticipant",
+    "args": null,
+    "storageKey": null
+  },
+  v6
+];
 return {
   "kind": "Fragment",
   "name": "TransactionDetailsSummaryItem_order",
@@ -146,17 +191,7 @@ return {
           "args": null,
           "concreteType": "Offer",
           "plural": false,
-          "selections": [
-            v7,
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "fromParticipant",
-              "args": null,
-              "storageKey": null
-            },
-            v6
-          ]
+          "selections": v7
         },
         {
           "kind": "LinkedField",
@@ -166,41 +201,12 @@ return {
           "args": null,
           "concreteType": "Offer",
           "plural": false,
-          "selections": [
-            v7,
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "amount",
-              "args": v1,
-              "storageKey": "amount(precision:2)"
-            },
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "amountCents",
-              "args": null,
-              "storageKey": null
-            },
-            v2,
-            v3,
-            v4,
-            v0,
-            v5,
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "buyerTotalCents",
-              "args": null,
-              "storageKey": null
-            },
-            v6
-          ]
+          "selections": v7
         }
       ]
     }
   ]
 };
 })();
-(node as any).hash = '56aab750d34e2abc8ecea16e50c3af3d';
+(node as any).hash = '0a089f0405da382d428db51dfd1fe013';
 export default node;
