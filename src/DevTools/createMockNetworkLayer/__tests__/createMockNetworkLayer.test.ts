@@ -88,7 +88,7 @@ describe("createMockNetworkLayer", () => {
     // it("calls the default fieldresolver if undefined", () => {})
   })
 
-  it("Complains with a helpful error when selected field is not present", async () => {
+  it("complains with a helpful error when selected field is not present", async () => {
     const network = createMockNetworkLayer({
       Query: { artwork: () => ({ __id: "blah" }) },
     })
@@ -115,5 +115,38 @@ describe("createMockNetworkLayer", () => {
         `"RelayMockNetworkLayerError: A mock for field at path 'artwork/title' of type 'String' was expected but not found."`
       )
     }
+  })
+
+  it("uses data provided with an aliased name", async () => {
+    const network = createMockNetworkLayer({
+      Query: {
+        artwork: () => ({
+          aliasedTitle1: "Untitled 1",
+          aliasedTitle2: "Untitled 2",
+          __id: "id",
+        }),
+      },
+    })
+    const source = new RecordSource()
+    const store = new Store(source)
+    const environment = new Environment({ network, store })
+
+    const query = graphql`
+      query createMockNetworkLayerQuery($artworkID: String!) {
+        artwork(id: $artworkID) {
+          aliasedTitle1: title
+          aliasedTitle2: title
+        }
+      }
+    `
+
+    const variables = {
+      artworkID: "110798995619330",
+    }
+
+    await fetchQuery(environment, query, variables).then(data => {
+      expect(data.artwork.aliasedTitle1).toEqual("Untitled 1")
+      expect(data.artwork.aliasedTitle2).toEqual("Untitled 2")
+    })
   })
 })

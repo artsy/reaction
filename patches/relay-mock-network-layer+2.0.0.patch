@@ -9,16 +9,18 @@ patch-package
  
      /** https://www.apollographql.com/docs/graphql-tools/mocking.html#Mocking-interfaces */
      preserveResolvers = false,
-@@ -51,7 +52,7 @@ module.exports = function getNetworkLayer({
+@@ -51,7 +52,9 @@ module.exports = function getNetworkLayer({
          });
  
          // Add mocks, modifies schema in place
 -        addMockFunctionsToSchema({ schema: executableSchema, mocks, preserveResolvers });
-+        // addMockFunctionsToSchema({ schema: executableSchema, mocks, preserveResolvers, defaultFieldResolver: fieldResolver });
++        if (mocks) {
++            addMockFunctionsToSchema({ schema: executableSchema, mocks, preserveResolvers, defaultFieldResolver: fieldResolver });
++        }
  
          const query =
              (resolveQueryFromOperation && resolveQueryFromOperation(operation)) || operation.text;
-@@ -62,7 +63,15 @@ module.exports = function getNetworkLayer({
+@@ -62,7 +65,15 @@ module.exports = function getNetworkLayer({
              );
          }
  
@@ -35,7 +37,7 @@ patch-package
              // Trigger Relay error in case of GraphQL errors (or errors in mutation response)
              // See https://github.com/facebook/relay/issues/1816
  
-@@ -74,4 +83,4 @@ module.exports = function getNetworkLayer({
+@@ -74,4 +85,4 @@ module.exports = function getNetworkLayer({
              }
          );
      };

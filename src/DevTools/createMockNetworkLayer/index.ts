@@ -15,9 +15,11 @@ const complain = (info, type) => {
 export const createMockNetworkLayer = (mockResolvers: IResolvers) => {
   return Network.create(
     getNetworkLayer({
-      fieldResolver: ((_source, _args, _context, info) => {
-        if (_source && info.fieldName in _source) {
-          return _source[info.fieldName]
+      fieldResolver: ((source, _args, _context, info) => {
+        if (source) {
+          if (info.fieldName in source) {
+            return source[info.fieldName]
+          }
         }
         complain(info, info.returnType.inspect())
       }) as GraphQLFieldResolver<any, any>,
