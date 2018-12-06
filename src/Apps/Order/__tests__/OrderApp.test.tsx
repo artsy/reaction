@@ -14,6 +14,8 @@ import {
   BuyOrderWithShippingDetails,
   mockResolver,
   OfferOrderWithShippingDetails,
+  PaymentDetails,
+  ShippingDetails,
   UntouchedBuyOrder,
   UntouchedOfferOrder,
 } from "Apps/__tests__/Fixtures/Order"
@@ -80,6 +82,13 @@ describe("OrderApp routing redirects", () => {
               node: {
                 artwork: {
                   id: "artwork-id",
+                  pickup_available: null,
+                  shipsToContinentalUSOnly: null,
+                  artist_names: null,
+                  title: null,
+                  date: null,
+                  shippingOrigin: null,
+                  image: null,
                 },
               },
             },
@@ -136,9 +145,7 @@ describe("OrderApp routing redirects", () => {
         ...UntouchedBuyOrder,
         id: 1234,
         state: "PENDING",
-        requestedFulfillment: {
-          __typename: "Ship",
-        },
+        ...ShippingDetails,
         creditCard: null,
       })
     )
@@ -166,9 +173,7 @@ describe("OrderApp routing redirects", () => {
         ...UntouchedBuyOrder,
         id: 1234,
         state: "PENDING",
-        requestedFulfillment: {
-          __typename: "Ship",
-        },
+        ...ShippingDetails,
         creditCard: null,
       })
     )
@@ -182,12 +187,8 @@ describe("OrderApp routing redirects", () => {
         ...UntouchedBuyOrder,
         id: 1234,
         state: "PENDING",
-        requestedFulfillment: {
-          __typename: "Ship",
-        },
-        creditCard: {
-          id: "12345",
-        },
+        ...ShippingDetails,
+        ...PaymentDetails,
       })
     )
     expect(redirect).toBe(undefined)
@@ -200,12 +201,8 @@ describe("OrderApp routing redirects", () => {
         ...UntouchedBuyOrder,
         id: 1234,
         state: "PENDING",
-        requestedFulfillment: {
-          __typename: "Ship",
-        },
-        creditCard: {
-          id: "12345",
-        },
+        ...ShippingDetails,
+        ...PaymentDetails,
       })
     )
     expect(redirect.url).toBe("/orders/1234/review")
@@ -218,12 +215,8 @@ describe("OrderApp routing redirects", () => {
         ...UntouchedBuyOrder,
         id: 1234,
         state: "SUBMITTED",
-        requestedFulfillment: {
-          __typename: "Ship",
-        },
-        creditCard: {
-          id: "12345",
-        },
+        ...ShippingDetails,
+        ...PaymentDetails,
       })
     )
     expect(redirect).toBe(undefined)
@@ -271,6 +264,8 @@ describe("OrderApp routing redirects", () => {
         ...BuyOrderWithShippingDetails,
         id: 1234,
         state: "SUBMITTED",
+        lastOffer: null,
+        offers: null,
       })
     )
     expect(redirect.url).toBe("/orders/1234/status")

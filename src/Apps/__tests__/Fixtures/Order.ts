@@ -1,11 +1,10 @@
 export const mockResolver = (
   orderDetails: any = BuyOrderWithShippingDetails
 ) => ({
-  Query: () => ({
-    me: {
-      name: "Alice Jane",
-    },
+  Me: () => ({
+    name: "Alice Jane",
   }),
+  Query: () => ({}),
   Order: (_, { id, ...others }) => {
     return {
       ...orderDetails,
@@ -39,8 +38,12 @@ export const UntouchedOrder = {
   itemsTotal: "$12,000",
   totalListPrice: "$12,000",
   shippingTotal: null,
+  shippingTotalCents: null,
   taxTotal: null,
+  taxTotalCents: null,
   buyerTotal: "$12,000",
+  creditCard: null,
+  stateExpiresAt: null,
   requestedFulfillment: {
     __typename: "%other",
   },
@@ -124,6 +127,7 @@ export const OfferWithTotals = {
   fromParticipant: "SELLER",
   buyerTotal: "$14,320",
   buyerTotalCents: 1432000,
+  createdAt: "2018-05-10T20:22:32.000Z",
 }
 
 export const UntouchedOfferOrder = {
@@ -159,6 +163,7 @@ export const ShippingDetails = {
 
 export const PaymentDetails = {
   creditCard: {
+    id: "credit-card-id",
     brand: "Visa",
     last_digits: "4444",
     expiration_month: 3,
