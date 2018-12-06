@@ -1,5 +1,5 @@
 import { Box, Button, Separator, Serif } from "@artsy/palette"
-import React from "react"
+import React, { SFC } from "react"
 import {
   commitMutation,
   createFragmentContainer,
@@ -9,23 +9,25 @@ import {
 
 import { ArtworkSidebarCommercial_artwork } from "__generated__/ArtworkSidebarCommercial_artwork.graphql"
 import { ArtworkSidebarCommercialOrderMutation } from "__generated__/ArtworkSidebarCommercialOrderMutation.graphql"
+import { ContextConsumer } from "Artsy/Router"
+import { Mediator } from "Artsy/SystemContext"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { ErrorWithMetadata } from "Utils/errors"
 import { ArtworkSidebarSizeInfoFragmentContainer as SizeInfo } from "./ArtworkSidebarSizeInfo"
 
-export interface ArtworkSidebarCommercialProps {
-  artwork: ArtworkSidebarCommercial_artwork
-  relay?: RelayProp
+export interface ArtworkSidebarCommercialContainerProps
+  extends ArtworkSidebarCommercialProps {
+  mediator: Mediator
 }
 
-export interface ArtworkSidebarCommercialState {
+export interface ArtworkSidebarCommercialContainerState {
   isCommittingCreateOrderMutation: boolean
   isErrorModalOpen: boolean
 }
 
-export class ArtworkSidebarCommercial extends React.Component<
-  ArtworkSidebarCommercialProps,
-  ArtworkSidebarCommercialState
+export class ArtworkSidebarCommercialContainer extends React.Component<
+  ArtworkSidebarCommercialContainerProps,
+  ArtworkSidebarCommercialContainerState
 > {
   state = {
     isCommittingCreateOrderMutation: false,
@@ -64,6 +66,14 @@ export class ArtworkSidebarCommercial extends React.Component<
 
   onCloseModal = () => {
     this.setState({ isErrorModalOpen: false })
+  }
+
+  handleInquiry = () => {
+    this.props.mediator &&
+      this.props.mediator.trigger &&
+      this.props.mediator.trigger("launchInquiryFlow", {
+        artworkId: this.props.artwork.id,
+      })
   }
 
   handleCreateOrder = e => {
@@ -155,7 +165,12 @@ export class ArtworkSidebarCommercial extends React.Component<
             </Serif>
           )}
         {artwork.is_inquireable && (
-          <Button width="100%" size="medium" mt={1}>
+          <Button
+            width="100%"
+            size="medium"
+            mt={1}
+            onClick={this.handleInquiry}
+          >
             Contact Gallery
           </Button>
         )}
@@ -191,6 +206,23 @@ export class ArtworkSidebarCommercial extends React.Component<
       </Box>
     )
   }
+}
+
+interface ArtworkSidebarCommercialProps {
+  artwork: ArtworkSidebarCommercial_artwork
+  relay?: RelayProp
+}
+
+export const ArtworkSidebarCommercial: SFC<
+  ArtworkSidebarCommercialProps
+> = props => {
+  return (
+    <ContextConsumer>
+      {({ mediator }) => (
+        <ArtworkSidebarCommercialContainer {...props} mediator={mediator} />
+      )}
+    </ContextConsumer>
+  )
 }
 
 export const ArtworkSidebarCommercialFragmentContainer = createFragmentContainer(
