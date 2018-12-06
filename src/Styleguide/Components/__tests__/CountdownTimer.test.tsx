@@ -11,21 +11,7 @@ require("moment-timezone").tz.guess = guessTimezone
 const DATE = "2018-12-03T13:50:31.641Z"
 const SUMMER_DATE = "2018-08-03T13:50:31.641Z"
 
-jest.mock("Utils/getCurrentTimeAsIsoString", () => {
-  let returnSummer = false
-  return {
-    getCurrentTimeAsIsoString: () => {
-      if (returnSummer) {
-        returnSummer = false
-        return "2018-08-03T13:50:31.641Z"
-      }
-      return "2018-12-03T13:50:31.641Z"
-    },
-    returnSummerOnce() {
-      returnSummer = true
-    },
-  }
-})
+jest.mock("Utils/getCurrentTimeAsIsoString")
 
 const defaultProps: ExtractProps<typeof CountdownTimer> = {
   action: "Respond",
@@ -59,6 +45,10 @@ const getPropsWithTimeRemaining = (duration: moment.Duration) => ({
 })
 
 describe("CountdownTimer", () => {
+  beforeEach(() => {
+    require("Utils/getCurrentTimeAsIsoString").__setCurrentTime(DATE)
+  })
+
   describe("in winter", () => {
     it("shows timezone as EST", () => {
       const timer = mount(<CountdownTimer {...defaultProps} />)
@@ -82,7 +72,7 @@ describe("CountdownTimer", () => {
 
   describe("in summer", () => {
     beforeEach(() => {
-      require("Utils/getCurrentTimeAsIsoString").returnSummerOnce()
+      require("Utils/getCurrentTimeAsIsoString").__setCurrentTime(SUMMER_DATE)
     })
     it("shows timezone as EDT", () => {
       const timer = mount(<CountdownTimer {...summerProps} />)
