@@ -25,24 +25,26 @@ query OfferHistoryItemStoryQuery {
 }
 
 fragment OfferHistoryItem_order on Order {
-  offers {
-    edges {
-      node {
-        id
-        amount(precision: 2)
-        createdAt(format: "MMM D")
-        fromParticipant
-        __id: id
+  ... on OfferOrder {
+    offers {
+      edges {
+        node {
+          id
+          amount(precision: 2)
+          createdAt(format: "MMM D")
+          fromParticipant
+          __id: id
+        }
       }
     }
-  }
-  lastOffer {
-    id
-    fromParticipant
-    amount(precision: 2)
-    shippingTotal(precision: 2)
-    taxTotal(precision: 2)
-    __id: id
+    lastOffer {
+      id
+      fromParticipant
+      amount(precision: 2)
+      shippingTotal(precision: 2)
+      taxTotal(precision: 2)
+      __id: id
+    }
   }
   totalListPrice(precision: 2)
   __id: id
@@ -65,14 +67,7 @@ v1 = {
   "args": null,
   "storageKey": null
 },
-v2 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v3 = [
+v2 = [
   {
     "kind": "Literal",
     "name": "precision",
@@ -80,11 +75,18 @@ v3 = [
     "type": "Int"
   }
 ],
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
 v4 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "amount",
-  "args": v3,
+  "args": v2,
   "storageKey": "amount(precision:2)"
 },
 v5 = {
@@ -99,7 +101,7 @@ return {
   "operationKind": "query",
   "name": "OfferHistoryItemStoryQuery",
   "id": null,
-  "text": "query OfferHistoryItemStoryQuery {\n  order: ecommerceOrder(id: \"foo\") {\n    __typename\n    ...OfferHistoryItem_order\n    __id: id\n  }\n}\n\nfragment OfferHistoryItem_order on Order {\n  offers {\n    edges {\n      node {\n        id\n        amount(precision: 2)\n        createdAt(format: \"MMM D\")\n        fromParticipant\n        __id: id\n      }\n    }\n  }\n  lastOffer {\n    id\n    fromParticipant\n    amount(precision: 2)\n    shippingTotal(precision: 2)\n    taxTotal(precision: 2)\n    __id: id\n  }\n  totalListPrice(precision: 2)\n  __id: id\n}\n",
+  "text": "query OfferHistoryItemStoryQuery {\n  order: ecommerceOrder(id: \"foo\") {\n    __typename\n    ...OfferHistoryItem_order\n    __id: id\n  }\n}\n\nfragment OfferHistoryItem_order on Order {\n  ... on OfferOrder {\n    offers {\n      edges {\n        node {\n          id\n          amount(precision: 2)\n          createdAt(format: \"MMM D\")\n          fromParticipant\n          __id: id\n        }\n      }\n    }\n    lastOffer {\n      id\n      fromParticipant\n      amount(precision: 2)\n      shippingTotal(precision: 2)\n      taxTotal(precision: 2)\n      __id: id\n    }\n  }\n  totalListPrice(precision: 2)\n  __id: id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -149,93 +151,99 @@ return {
             "storageKey": null
           },
           {
-            "kind": "LinkedField",
+            "kind": "ScalarField",
             "alias": null,
-            "name": "offers",
-            "storageKey": null,
-            "args": null,
-            "concreteType": "OfferConnection",
-            "plural": false,
+            "name": "totalListPrice",
+            "args": v2,
+            "storageKey": "totalListPrice(precision:2)"
+          },
+          v1,
+          {
+            "kind": "InlineFragment",
+            "type": "OfferOrder",
             "selections": [
               {
                 "kind": "LinkedField",
                 "alias": null,
-                "name": "edges",
+                "name": "offers",
                 "storageKey": null,
                 "args": null,
-                "concreteType": "OfferEdge",
-                "plural": true,
+                "concreteType": "OfferConnection",
+                "plural": false,
                 "selections": [
                   {
                     "kind": "LinkedField",
                     "alias": null,
-                    "name": "node",
+                    "name": "edges",
                     "storageKey": null,
                     "args": null,
-                    "concreteType": "Offer",
-                    "plural": false,
+                    "concreteType": "OfferEdge",
+                    "plural": true,
                     "selections": [
-                      v2,
-                      v4,
                       {
-                        "kind": "ScalarField",
+                        "kind": "LinkedField",
                         "alias": null,
-                        "name": "createdAt",
-                        "args": [
+                        "name": "node",
+                        "storageKey": null,
+                        "args": null,
+                        "concreteType": "Offer",
+                        "plural": false,
+                        "selections": [
+                          v3,
+                          v4,
                           {
-                            "kind": "Literal",
-                            "name": "format",
-                            "value": "MMM D",
-                            "type": "String"
-                          }
-                        ],
-                        "storageKey": "createdAt(format:\"MMM D\")"
-                      },
-                      v5,
-                      v1
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "createdAt",
+                            "args": [
+                              {
+                                "kind": "Literal",
+                                "name": "format",
+                                "value": "MMM D",
+                                "type": "String"
+                              }
+                            ],
+                            "storageKey": "createdAt(format:\"MMM D\")"
+                          },
+                          v5,
+                          v1
+                        ]
+                      }
                     ]
                   }
                 ]
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "lastOffer",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "Offer",
+                "plural": false,
+                "selections": [
+                  v3,
+                  v5,
+                  v4,
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "shippingTotal",
+                    "args": v2,
+                    "storageKey": "shippingTotal(precision:2)"
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "taxTotal",
+                    "args": v2,
+                    "storageKey": "taxTotal(precision:2)"
+                  },
+                  v1
+                ]
               }
             ]
-          },
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "name": "lastOffer",
-            "storageKey": null,
-            "args": null,
-            "concreteType": "Offer",
-            "plural": false,
-            "selections": [
-              v2,
-              v5,
-              v4,
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "shippingTotal",
-                "args": v3,
-                "storageKey": "shippingTotal(precision:2)"
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "taxTotal",
-                "args": v3,
-                "storageKey": "taxTotal(precision:2)"
-              },
-              v1
-            ]
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "totalListPrice",
-            "args": v3,
-            "storageKey": "totalListPrice(precision:2)"
-          },
-          v1
+          }
         ]
       }
     ]

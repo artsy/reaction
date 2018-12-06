@@ -90,22 +90,24 @@ export const OfferHistoryItemFragmentContainer = createFragmentContainer(
   OfferHistoryItem,
   graphql`
     fragment OfferHistoryItem_order on Order {
-      offers {
-        edges {
-          node {
-            id
-            amount(precision: 2)
-            createdAt(format: "MMM D")
-            fromParticipant
+      ... on OfferOrder {
+        offers {
+          edges {
+            node {
+              id
+              amount(precision: 2)
+              createdAt(format: "MMM D")
+              fromParticipant
+            }
           }
         }
-      }
-      lastOffer {
-        id
-        fromParticipant
-        amount(precision: 2)
-        shippingTotal(precision: 2)
-        taxTotal(precision: 2)
+        lastOffer {
+          id
+          fromParticipant
+          amount(precision: 2)
+          shippingTotal(precision: 2)
+          taxTotal(precision: 2)
+        }
       }
       totalListPrice(precision: 2)
     }
