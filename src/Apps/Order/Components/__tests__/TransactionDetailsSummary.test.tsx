@@ -237,5 +237,30 @@ describe("TransactionDetailsSummaryItem", () => {
 
       expect(text).toMatch("Your offer$1billion")
     })
+
+    it("lets you specify whether to use list price or last offer as context price", async () => {
+      const transactionSummary = await render(
+        {
+          ...transactionSummaryOfferOrder,
+          lastOffer: {
+            ...OfferWithTotals,
+            amount: "£405.00",
+            id: "last-offer",
+            fromParticipant: "SELLER",
+          },
+          myLastOffer: {
+            ...OfferWithTotals,
+            id: "my-last-offer",
+            amount: "£400.00",
+            fromParticipant: "BUYER",
+          },
+        },
+        { offerContextPrice: "LAST_OFFER" }
+      )
+
+      const text = transactionSummary.text()
+
+      expect(text).toContain("Your offer£400.00Seller's offer£405.00")
+    })
   })
 })
