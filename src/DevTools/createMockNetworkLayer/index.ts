@@ -20,6 +20,10 @@ export const createMockNetworkLayer = (mockResolvers: IResolvers) => {
           if (info.fieldName in source) {
             return source[info.fieldName]
           }
+          const alias = info.fieldNodes[0].alias
+          if (alias && alias.value in source) {
+            return source[alias.value]
+          }
         }
         complain(info, info.returnType.inspect())
       }) as GraphQLFieldResolver<any, any>,

@@ -1,57 +1,53 @@
+import { IResolvers } from "graphql-tools/dist/Interfaces"
 import { graphql } from "react-relay"
-import { Environment, fetchQuery, RecordSource, Store } from "relay-runtime"
+import {
+  Environment,
+  fetchQuery,
+  GraphQLTaggedNode,
+  RecordSource,
+  Store,
+} from "relay-runtime"
 import { createMockNetworkLayer } from "../index"
 
 describe("createMockNetworkLayer", () => {
+  function fetchQueryWithResolvers(
+    resolvers: IResolvers,
+    query?: GraphQLTaggedNode
+  ) {
+    const network = createMockNetworkLayer(resolvers)
+
+    const source = new RecordSource()
+    const store = new Store(source)
+    const environment = new Environment({ network, store })
+
+    return fetchQuery(
+      environment,
+      query ||
+        graphql`
+          query createMockNetworkLayerTestQuery {
+            artwork(id: "untitled") {
+              __id
+              title
+            }
+          }
+        `,
+      {}
+    )
+  }
+
   describe("preserves the upstream behaviour", () => {
     it("returns the data if present", async () => {
-      const network = createMockNetworkLayer({
-        Query: { artwork: () => ({ title: "lol", __id: "blah" }) },
+      const data = await fetchQueryWithResolvers({
+        Query: { artwork: () => ({ title: "Untitled", __id: "untitled" }) },
       })
-      const source = new RecordSource()
-      const store = new Store(source)
-      const environment = new Environment({ network, store })
-
-      const query = graphql`
-        query createMockNetworkLayerQuery($artworkID: String!) {
-          artwork(id: $artworkID) {
-            title
-          }
-        }
-      `
-
-      const variables = {
-        artworkID: "110798995619330",
-      }
-
-      await fetchQuery(environment, query, variables).then(data => {
-        expect(data.artwork.title).toEqual("lol")
-      })
+      expect(data.artwork.title).toEqual("Untitled")
     })
 
     it("returns null for nullable fields which are given as null", async () => {
-      const network = createMockNetworkLayer({
-        Query: { artwork: () => ({ title: null, __id: "id" }) },
+      const data = await fetchQueryWithResolvers({
+        Query: { artwork: () => ({ title: null, __id: "null" }) },
       })
-      const source = new RecordSource()
-      const store = new Store(source)
-      const environment = new Environment({ network, store })
-
-      const query = graphql`
-        query createMockNetworkLayerQuery($artworkID: String!) {
-          artwork(id: $artworkID) {
-            title
-          }
-        }
-      `
-
-      const variables = {
-        artworkID: "110798995619330",
-      }
-
-      await fetchQuery(environment, query, variables).then(data => {
-        expect(data.artwork.title).toEqual(null)
-      })
+      expect(data.artwork.title).toEqual(null)
     })
 
     // // TODO: figure out what graphql-js does with `undefined`
@@ -89,27 +85,10 @@ describe("createMockNetworkLayer", () => {
   })
 
   it("complains with a helpful error when selected field is not present", async () => {
-    const network = createMockNetworkLayer({
-      Query: { artwork: () => ({ __id: "blah" }) },
-    })
-    const source = new RecordSource()
-    const store = new Store(source)
-    const environment = new Environment({ network, store })
-
-    const query = graphql`
-      query createMockNetworkLayerQuery($artworkID: String!) {
-        artwork(id: $artworkID) {
-          title
-        }
-      }
-    `
-
-    const variables = {
-      artworkID: "110798995619330",
-    }
-
     try {
-      await fetchQuery(environment, query, variables)
+      await fetchQueryWithResolvers({
+        Query: { artwork: () => ({ __id: "blah" }) },
+      })
     } catch (e) {
       expect(e.message).toMatchInlineSnapshot(
         `"RelayMockNetworkLayerError: A mock for field at path 'artwork/title' of type 'String' was expected but not found."`
@@ -118,35 +97,32 @@ describe("createMockNetworkLayer", () => {
   })
 
   it("uses data provided with an aliased name", async () => {
-    const network = createMockNetworkLayer({
-      Query: {
-        artwork: () => ({
-          aliasedTitle1: "Untitled 1",
-          aliasedTitle2: "Untitled 2",
-          __id: "id",
-        }),
+    const data = await fetchQueryWithResolvers(
+      {
+        Query: {
+          artist: () => ({
+            forSaleArtworks: [{ __id: "for-sale-work" }],
+            notForSaleArtworks: [{ __id: "no-for-sale-work" }],
+            __id: "id",
+          }),
+        },
       },
-    })
-    const source = new RecordSource()
-    const store = new Store(source)
-    const environment = new Environment({ network, store })
-
-    const query = graphql`
-      query createMockNetworkLayerQuery($artworkID: String!) {
-        artwork(id: $artworkID) {
-          aliasedTitle1: title
-          aliasedTitle2: title
+      graphql`
+        query createMockNetworkLayerTestAliasQuery {
+          artist(id: "banksy") {
+            forSaleArtworks: artworks(filter: IS_FOR_SALE) {
+              __id
+            }
+            notForSaleArtworks: artworks(filter: IS_NOT_FOR_SALE) {
+              __id
+            }
+          }
         }
-      }
-    `
-
-    const variables = {
-      artworkID: "110798995619330",
-    }
-
-    await fetchQuery(environment, query, variables).then(data => {
-      expect(data.artwork.aliasedTitle1).toEqual("Untitled 1")
-      expect(data.artwork.aliasedTitle2).toEqual("Untitled 2")
-    })
+      `
+    )
+    expect(data.artist.forSaleArtworks).toEqual([{ __id: "for-sale-work" }])
+    expect(data.artist.notForSaleArtworks).toEqual([
+      { __id: "no-for-sale-work" },
+    ])
   })
 })
