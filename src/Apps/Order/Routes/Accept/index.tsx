@@ -71,9 +71,9 @@ export class Accept extends Component<AcceptProps, AcceptState> {
                 style={isCommittingMutation ? { pointerEvents: "none" } : {}}
               >
                 <Media at="xs">
-                  <ArtworkSummaryItem order={order} />
-                </Media>
-                <Media at="xs">
+                  <Flex flexDirection="column">
+                    <ArtworkSummaryItem order={order} />
+                  </Flex>
                   <Spacer mb={2} />
                 </Media>
                 <Flex flexDirection="column">
