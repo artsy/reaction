@@ -14,6 +14,7 @@ export type ArtworkSidebarCommercial_artwork = {
     readonly shippingOrigin: string | null;
     readonly edition_sets: ReadonlyArray<({
         readonly __id: string;
+        readonly sale_message: string | null;
         readonly " $fragmentRefs": ArtworkSidebarSizeInfo_piece$ref;
     }) | null> | null;
     readonly " $refType": ArtworkSidebarCommercial_artwork$ref;
@@ -23,6 +24,13 @@ export type ArtworkSidebarCommercial_artwork = {
 
 const node: ConcreteFragment = (function(){
 var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "sale_message",
+  "args": null,
+  "storageKey": null
+},
+v1 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__id",
@@ -64,13 +72,7 @@ return {
       "args": null,
       "storageKey": null
     },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "sale_message",
-      "args": null,
-      "storageKey": null
-    },
+    v0,
     {
       "kind": "ScalarField",
       "alias": null,
@@ -94,6 +96,7 @@ return {
       "concreteType": "EditionSet",
       "plural": true,
       "selections": [
+        v1,
         v0,
         {
           "kind": "FragmentSpread",
@@ -102,9 +105,9 @@ return {
         }
       ]
     },
-    v0
+    v1
   ]
 };
 })();
-(node as any).hash = 'cb3fa8922f44f60f3d830bbb85702e00';
+(node as any).hash = 'f8b1627dc2e4a57c2ffa7451545414c9';
 export default node;

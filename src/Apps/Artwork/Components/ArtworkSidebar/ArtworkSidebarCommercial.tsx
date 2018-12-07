@@ -89,7 +89,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
     const editionsFragment = editions.map((edition, index) => {
       return (
         <React.Fragment key={edition.__id}>
-          <Box p={2}>{this.renderEdition(edition)}</Box>
+          <Box py={2}>{this.renderEdition(edition)}</Box>
           {index !== editions.length - 1 && <Separator />}
         </React.Fragment>
       )
@@ -282,6 +282,7 @@ export const ArtworkSidebarCommercialFragmentContainer = createFragmentContainer
       shippingOrigin
       edition_sets {
         __id
+        sale_message
         ...ArtworkSidebarSizeInfo_piece
       }
     }

@@ -33,6 +33,7 @@ fragment ArtworkSidebarCommercial_artwork on Artwork {
   shippingOrigin
   edition_sets {
     __id
+    sale_message
     ...ArtworkSidebarSizeInfo_piece
   }
   __id
@@ -68,13 +69,20 @@ v1 = {
   "name": "__id",
   "args": null,
   "storageKey": null
+},
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "sale_message",
+  "args": null,
+  "storageKey": null
 };
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "ArtworkSidebarCommercial_Test_Query",
   "id": null,
-  "text": "query ArtworkSidebarCommercial_Test_Query {\n  artwork(id: \"commercial_artwork\") {\n    ...ArtworkSidebarCommercial_artwork\n    __id\n  }\n}\n\nfragment ArtworkSidebarCommercial_artwork on Artwork {\n  id\n  is_acquireable\n  is_inquireable\n  is_offerable\n  sale_message\n  shippingInfo\n  shippingOrigin\n  edition_sets {\n    __id\n    ...ArtworkSidebarSizeInfo_piece\n  }\n  __id\n}\n\nfragment ArtworkSidebarSizeInfo_piece on Sellable {\n  dimensions {\n    in\n    cm\n  }\n  edition_of\n  ... on Node {\n    __id\n  }\n  ... on EditionSet {\n    __id\n  }\n}\n",
+  "text": "query ArtworkSidebarCommercial_Test_Query {\n  artwork(id: \"commercial_artwork\") {\n    ...ArtworkSidebarCommercial_artwork\n    __id\n  }\n}\n\nfragment ArtworkSidebarCommercial_artwork on Artwork {\n  id\n  is_acquireable\n  is_inquireable\n  is_offerable\n  sale_message\n  shippingInfo\n  shippingOrigin\n  edition_sets {\n    __id\n    sale_message\n    ...ArtworkSidebarSizeInfo_piece\n  }\n  __id\n}\n\nfragment ArtworkSidebarSizeInfo_piece on Sellable {\n  dimensions {\n    in\n    cm\n  }\n  edition_of\n  ... on Node {\n    __id\n  }\n  ... on EditionSet {\n    __id\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -144,13 +152,7 @@ return {
             "args": null,
             "storageKey": null
           },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "sale_message",
-            "args": null,
-            "storageKey": null
-          },
+          v2,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -175,6 +177,7 @@ return {
             "plural": true,
             "selections": [
               v1,
+              v2,
               {
                 "kind": "LinkedField",
                 "alias": null,
