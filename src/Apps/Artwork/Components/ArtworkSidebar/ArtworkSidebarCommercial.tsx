@@ -53,7 +53,11 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
   }
 
   renderEdition(edition) {
-    const isEcommerceEnrolled = edition.is_acquireable || edition.is_inquireable
+    const { artwork } = this.props
+    const isEcommerceEnrolled =
+      (artwork.is_acquireable || artwork.is_offerable) &&
+      (edition.is_acquireable || edition.is_offerable)
+
     const editionFragment = (
       <>
         <SizeInfo piece={edition} />
@@ -62,20 +66,23 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
         </Serif>
       </>
     )
-
-    return (
-      <Row>
-        <Radio
-          mr="1"
-          onSelect={e => {
-            this.setState({ selectedEditionId: edition.__id } as any)
-          }}
-          selected={this.state.selectedEditionId === edition.__id}
-          disabled={!isEcommerceEnrolled}
-        />
-        {editionFragment}
-      </Row>
-    )
+    if (isEcommerceEnrolled) {
+      return (
+        <Row>
+          <Radio
+            mr="1"
+            onSelect={e => {
+              this.setState({ selectedEditionId: edition.__id } as any)
+            }}
+            selected={this.state.selectedEditionId === edition.__id}
+            disabled={!isEcommerceEnrolled}
+          />
+          {editionFragment}
+        </Row>
+      )
+    } else {
+      return <Row>{editionFragment}</Row>
+    }
   }
   renderEditions() {
     const editions = this.props.artwork.edition_sets
