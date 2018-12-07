@@ -14,10 +14,12 @@ import {
   BuyOrderWithShippingDetails,
   mockResolver,
   OfferOrderWithShippingDetails,
+  OfferWithTotals,
   UntouchedBuyOrder,
   UntouchedOfferOrder,
 } from "Apps/__tests__/Fixtures/Order"
 import { createMockNetworkLayer } from "DevTools/createMockNetworkLayer"
+import moment from "moment"
 import { Environment, RecordSource, Store } from "relay-runtime"
 
 jest.mock("react-stripe-elements", () => ({
@@ -300,6 +302,82 @@ describe("OrderApp routing redirects", () => {
       })
     )
     expect(redirect).toBe(undefined)
+  })
+
+  describe.only("visiting the /review/counter page", () => {
+    const counterOfferOrder = {
+      ...OfferOrderWithShippingDetails,
+      id: 1234,
+      state: "SUBMITTED",
+      lastOffer: {
+        ...OfferWithTotals,
+        id: "last-offer",
+        createdAt: moment()
+          .subtract(1, "days")
+          .toISOString(),
+      },
+      myLastOffer: {
+        id: "my-last-offer",
+        createdAt: moment().toISOString(),
+      },
+      awaitingResponseFrom: "BUYER",
+    }
+    it("stays on the /review/counter page if all conditions are met", async () => {
+      const { redirect } = await render(
+        "/orders/1234/review/counter",
+        mockResolver(counterOfferOrder)
+      )
+      expect(redirect).toBe(undefined)
+    })
+    // goToStatusIfNotOfferOrder,
+    it("redirects to /status if not an offer order", async () => {
+      const { redirect } = await render(
+        "/orders/1234/review/counter",
+        mockResolver({
+          ...counterOfferOrder,
+          mode: "BUY",
+        })
+      )
+      expect(redirect.url).toBe("/orders/1234/status")
+    })
+    // goToStatusIfNotAwaitingBuyerResponse,
+    it("redirects to /status if not awaiting a buyer response", async () => {
+      const { redirect } = await render(
+        "/orders/1234/review/counter",
+        mockResolver({
+          ...counterOfferOrder,
+          awaitingResponseFrom: "SELLER",
+        })
+      )
+      expect(redirect.url).toBe("/orders/1234/status")
+    })
+    // goToStatusIfOrderIsNotSubmitted,
+    it("redirects to /status if order is not submitted", async () => {
+      const { redirect } = await render(
+        "/orders/1234/review/counter",
+        mockResolver({
+          ...counterOfferOrder,
+          state: "PENDING",
+        })
+      )
+      expect(redirect.url).toBe("/orders/1234/status")
+    })
+    // goToRespondIfMyLastOfferIsNotMostRecentOffer,
+    it("redirects to /respond if myLastOffer is not more recent than lastOffer", async () => {
+      const { redirect } = await render(
+        "/orders/1234/review/counter",
+        mockResolver({
+          ...counterOfferOrder,
+          myLastOffer: {
+            ...counterOfferOrder.myLastOffer,
+            createdAt: moment()
+              .subtract(2, "days")
+              .toISOString(),
+          },
+        })
+      )
+      expect(redirect.url).toBe("/orders/1234/respond")
+    })
   })
 })
 
