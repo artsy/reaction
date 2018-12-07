@@ -45,7 +45,6 @@ export class Accept extends Component<AcceptProps, AcceptState> {
 
   render() {
     const { order } = this.props
-    console.log("ORDER", order)
     const { isCommittingMutation } = this.state
     const artwork = get(
       this.props,
@@ -87,6 +86,7 @@ export class Accept extends Component<AcceptProps, AcceptState> {
                   <TransactionDetailsSummaryItem
                     order={order}
                     renderHeaderEntry={this.renderHeaderEntry.bind(this)}
+                    useLastSubmittedOffer={true}
                   />
                 </Flex>
                 <Spacer mb={[2, 3]} />
