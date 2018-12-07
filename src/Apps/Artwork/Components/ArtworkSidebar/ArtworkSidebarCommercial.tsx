@@ -1,4 +1,13 @@
-import { Box, Button, Separator, Serif } from "@artsy/palette"
+import {
+  Box,
+  Button,
+  Flex,
+  FlexProps,
+  Radio,
+  RadioGroup,
+  Separator,
+  Serif,
+} from "@artsy/palette"
 import React, { SFC } from "react"
 import {
   commitMutation,
@@ -23,7 +32,13 @@ export interface ArtworkSidebarCommercialContainerProps
 export interface ArtworkSidebarCommercialContainerState {
   isCommittingCreateOrderMutation: boolean
   isErrorModalOpen: boolean
+  selectedEditionId: string
 }
+const Row: React.SFC<FlexProps> = ({ children, ...others }) => (
+  <Flex justifyContent="left" alignItems="top" {...others}>
+    {children}
+  </Flex>
+)
 
 export class ArtworkSidebarCommercialContainer extends React.Component<
   ArtworkSidebarCommercialContainerProps,
@@ -32,29 +47,48 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
   state = {
     isCommittingCreateOrderMutation: false,
     isErrorModalOpen: false,
+    selectedEditionId:
+      this.props.artwork.edition_sets[0] &&
+      this.props.artwork.edition_sets[0].__id,
   }
 
-  renderSaleMessage() {
+  renderEdition(edition) {
+    const isEcommerceEnrolled = edition.is_acquireable || edition.is_inquireable
+    const editionFragment = (
+      <>
+        <SizeInfo piece={edition} />
+        <Serif ml="auto" size="2">
+          {edition.sale_message}
+        </Serif>
+      </>
+    )
+
     return (
-      <Serif size="5t" weight="semibold">
-        {this.props.artwork.sale_message}
-      </Serif>
+      <Row>
+        <Radio
+          mr="1"
+          onSelect={e => {
+            this.setState({ selectedEditionId: edition.__id } as any)
+          }}
+          selected={this.state.selectedEditionId === edition.__id}
+          disabled={!isEcommerceEnrolled}
+        />
+        {editionFragment}
+      </Row>
     )
   }
-
   renderEditions() {
     const editions = this.props.artwork.edition_sets
-    return editions.map((edition, index) => {
+    const editionsFragment = editions.map((edition, index) => {
       return (
         <React.Fragment key={edition.__id}>
-          <Box pb={2}>
-            {this.renderSaleMessage()}
-            <SizeInfo piece={edition} />
-          </Box>
+          <Box p={2}>{this.renderEdition(edition)}</Box>
           {index !== editions.length - 1 && <Separator />}
         </React.Fragment>
       )
     })
+
+    return <RadioGroup>{editionsFragment}</RadioGroup>
   }
 
   onMutationError(error) {
@@ -139,6 +173,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
   render() {
     const { artwork } = this.props
     const { isCommittingCreateOrderMutation } = this.state
+    const isEcommerceEnrolled = artwork.is_acquireable || artwork.is_offerable
 
     if (!artwork.sale_message && !artwork.is_inquireable) {
       return null
@@ -147,18 +182,20 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
       <Box pb={3} textAlign="left">
         {artwork.edition_sets.length < 2 && artwork.sale_message ? (
           <Box pb={2} pt={1}>
-            {this.renderSaleMessage()}
+            <Serif size="5t" weight="semibold">
+              {artwork.sale_message}
+            </Serif>
           </Box>
         ) : (
           this.renderEditions()
         )}
-        {(artwork.is_acquireable || artwork.is_offerable) &&
+        {isEcommerceEnrolled &&
           artwork.shippingInfo && (
             <Serif size="2" color="black60">
               {artwork.shippingInfo}
             </Serif>
           )}
-        {(artwork.is_acquireable || artwork.is_offerable) &&
+        {isEcommerceEnrolled &&
           artwork.shippingOrigin && (
             <Serif size="2" color="black60">
               Ships from {artwork.shippingOrigin}
