@@ -23,16 +23,19 @@ const logger = createLogger("RelatedWorksArtworkGrid.tsx")
 
 const MAX_TAB_ITEMS = 3
 
-interface Props {
+interface RelatedWorksArtworkGridProps {
   relay: RelayRefetchProp
   artwork: RelatedWorksArtworkGrid_artwork
 }
 
-interface State {
+interface RelatedWorksArtworkGridState {
   isLoading: boolean
 }
 
-class RelatedWorksArtworkGrid extends React.Component<Props, State> {
+class RelatedWorksArtworkGrid extends React.Component<
+  RelatedWorksArtworkGridProps,
+  RelatedWorksArtworkGridState
+> {
   state = {
     isLoading: false,
   }
@@ -93,7 +96,7 @@ class RelatedWorksArtworkGrid extends React.Component<Props, State> {
 }
 
 export const RelatedWorksArtworkGridRefetchContainer = createRefetchContainer<
-  Props
+  RelatedWorksArtworkGridProps
 >(
   RelatedWorksArtworkGrid,
   graphql`
@@ -122,6 +125,8 @@ export const RelatedWorksArtworkGridRefetchContainer = createRefetchContainer<
     }
   `
 )
+
+// FIXME: Move to storybooks
 
 export const RelatedWorksArtworkGridQueryRenderer: React.SFC<{
   artworkSlug: string

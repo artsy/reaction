@@ -24,9 +24,6 @@ export const OtherWorksFragmentContainer = createFragmentContainer<{
       props.artwork.context && props.artwork.context.__typename
     const artworkSlug = props.artwork.id
 
-    // FIXME: Remove
-    console.warn("-----------------------", "\n", contextType)
-
     switch (contextType) {
       case "ArtworkContextAuction": {
         return (
@@ -76,6 +73,8 @@ export const OtherWorksFragmentContainer = createFragmentContainer<{
     }
   `
 )
+
+// FIXME: Move to storybooks file
 
 export const OtherWorksQueryRenderer = ({
   artworkSlug,

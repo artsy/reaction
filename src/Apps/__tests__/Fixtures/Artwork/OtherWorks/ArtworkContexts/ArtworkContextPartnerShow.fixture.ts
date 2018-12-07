@@ -1,4 +1,4 @@
-import { LayerFixture, LayersFixture } from "./RelatedArtworks.fixture"
+import { LayerFixture, LayersFixture } from "./RelatedWorksArtworkGrid.fixture"
 
 export const ArtworkContextPartnerShowFixture = {
   artwork: {
