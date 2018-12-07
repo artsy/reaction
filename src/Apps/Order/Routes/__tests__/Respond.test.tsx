@@ -175,6 +175,7 @@ describe("Offer InitialMutation", () => {
     afterEach(() => {
       window.alert = _alert
     })
+
     it("Accepting the seller's offer works", () => {
       const component = getWrapper()
       const acceptRadio = component.find(BorderedRadio).first()
@@ -187,8 +188,9 @@ describe("Offer InitialMutation", () => {
         .props()
         .onClick({})
 
-      // TODO: get rid of window.alert
-      expect(window.alert).toHaveBeenCalledWith(`You decided to ACCEPT.`)
+      expect(mockPushRoute).toHaveBeenCalledWith(
+        `/orders/${testOrder.id}/accept`
+      )
     })
 
     it("Declining the seller's offer works", () => {
