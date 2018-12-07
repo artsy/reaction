@@ -6,6 +6,7 @@ declare const _ArtworkSidebarCommercial_artwork$ref: unique symbol;
 export type ArtworkSidebarCommercial_artwork$ref = typeof _ArtworkSidebarCommercial_artwork$ref;
 export type ArtworkSidebarCommercial_artwork = {
     readonly id: string;
+    readonly collecting_institution: string | null;
     readonly is_acquireable: boolean | null;
     readonly is_inquireable: boolean | null;
     readonly is_offerable: boolean | null;
@@ -40,6 +41,13 @@ return {
       "kind": "ScalarField",
       "alias": null,
       "name": "id",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "collecting_institution",
       "args": null,
       "storageKey": null
     },
@@ -106,5 +114,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'cb3fa8922f44f60f3d830bbb85702e00';
+(node as any).hash = '3884bcc91a6e31fdd19c2995bc180688';
 export default node;
