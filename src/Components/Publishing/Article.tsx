@@ -12,6 +12,9 @@ import { VideoLayout } from "./Layouts/VideoLayout"
 import { FullScreenProvider } from "./Sections/FullscreenViewer/FullScreenProvider"
 import { ArticleData, DisplayData } from "./Typings"
 
+import { Theme, themeProps } from "@artsy/palette"
+import { GridThemeProvider } from "styled-bootstrap-grid"
+
 export interface ArticleProps {
   article: ArticleData
   customEditorial?: string
@@ -99,13 +102,19 @@ export class Article extends React.Component<ArticleProps> {
     const trackingCode = this.sponsorPixelTrackingCode(article)
 
     return (
-      <FullScreenProvider>
-        {this.getArticleLayout()}
-        {trackingCode && (
-          <PixelTracker unit={trackingCode} date={this.props.renderTime} />
-        )}
-        {this.shouldRenderSignUpCta() && <BannerWrapper article={article} />}
-      </FullScreenProvider>
+      <Theme>
+        <GridThemeProvider gridTheme={themeProps.grid}>
+          <FullScreenProvider>
+            {this.getArticleLayout()}
+            {trackingCode && (
+              <PixelTracker unit={trackingCode} date={this.props.renderTime} />
+            )}
+            {this.shouldRenderSignUpCta() && (
+              <BannerWrapper article={article} />
+            )}
+          </FullScreenProvider>
+        </GridThemeProvider>
+      </Theme>
     )
   }
 }

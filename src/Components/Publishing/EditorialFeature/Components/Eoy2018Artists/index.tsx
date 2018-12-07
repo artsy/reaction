@@ -1,9 +1,18 @@
-import { Box, color, Flex, Sans, Serif, space } from "@artsy/palette"
+import {
+  Box,
+  color,
+  Flex,
+  Sans,
+  Serif,
+  space,
+  themeProps,
+} from "@artsy/palette"
 import { compact, find, map } from "lodash"
 import React from "react"
 import styled from "styled-components"
 
 import { unica } from "Assets/Fonts"
+import { media } from "Components/Helpers"
 import { Byline, BylineContainer } from "Components/Publishing/Byline/Byline"
 import { ArticleProps } from "Components/Publishing/Layouts/FeatureLayout"
 import { Nav, NavContainer } from "Components/Publishing/Nav/Nav"
@@ -12,6 +21,7 @@ import {
   FullLabel,
   ImageSetContainer,
   ImageSetPreview,
+  ImgContainer,
 } from "Components/Publishing/Sections/ImageSetPreview"
 import { resize } from "Utils/resizer"
 import { Eoy2018ArticleHeader } from "./ArticleHeader"
@@ -53,7 +63,11 @@ export class Eoy2018Artists extends React.Component<ArticleProps> {
     const src = imageSection && imageSection.images[0].url
 
     return (
-      <ArtistHeaderSection key={i} mb={40}>
+      <ArtistHeaderSection
+        key={i}
+        mb={40}
+        flexDirection={["column", "column", "row"]}
+      >
         <ArtistHeaderTitle dangerouslySetInnerHTML={{ __html: section.body }} />
         <ArtistHeaderImg src={src && resize(src, { width: 700 })} />
       </ArtistHeaderSection>
@@ -62,9 +76,11 @@ export class Eoy2018Artists extends React.Component<ArticleProps> {
 
   sectionText = (section, i) => {
     return (
-      <TextSection size="5" key={i} pb={60}>
-        <div dangerouslySetInnerHTML={{ __html: section.body }} />
-      </TextSection>
+      <Box maxWidth={["100%", "75%"]} ml="auto" px={[20, 0]}>
+        <TextSection size="5" key={i} pb={60}>
+          <div dangerouslySetInnerHTML={{ __html: section.body }} />
+        </TextSection>
+      </Box>
     )
   }
 
@@ -125,11 +141,15 @@ export class Eoy2018Artists extends React.Component<ArticleProps> {
           <NavBorder />
         </Nav>
 
-        <Box px={55}>
+        <Box px={[10, 10, 55]}>
           <Eoy2018ArticleHeader images={headerImages} />
 
           <ArticleContent py={40}>
-            <IntroSection alignItems="flex-start" pl={20}>
+            <IntroSection
+              alignItems="flex-start"
+              flexDirection={["column", "row"]}
+              pl={20}
+            >
               <Byline article={article} />
               {introText}
             </IntroSection>
@@ -138,7 +158,7 @@ export class Eoy2018Artists extends React.Component<ArticleProps> {
         </Box>
 
         {article.relatedArticles && (
-          <Box pl={55} pr={55} my={40} mx="auto">
+          <Box px={[10, 10, 55]} my={40} mx="auto">
             <ArticleCards relatedArticles={article.relatedArticles} />
           </Box>
         )}
@@ -161,6 +181,11 @@ const NavBorder = styled.div`
   top: 100%;
   left: 55px;
   right: 55px;
+
+  ${media.sm`
+    left: 10px;
+    right: 10px;
+  `};
 `
 
 const ArticleContent = styled(Box)`
@@ -170,6 +195,11 @@ const ArticleContent = styled(Box)`
   blockquote {
     ${unica("s34")};
     line-height: 1.3em;
+
+    ${media.sm`
+      ${unica("s25")};
+      line-height: 1.3em;
+    `};
   }
 `
 
@@ -177,12 +207,13 @@ const ArtistHeaderSection = styled(Flex)`
   height: 60vh;
   min-height: 450px;
   border: ${BORDER_WIDTH}px solid ${color("purple100")};
-  border-left: none;
+  border-left-width: 0;
 `
 
 const ArtistHeaderTitle = styled.div`
   flex: 1;
   border-right: ${BORDER_WIDTH}px solid ${color("purple100")};
+  overflow: hidden;
 
   h1 {
     ${unica("s65")};
@@ -212,6 +243,11 @@ const ArtistHeaderTitle = styled.div`
       color: white;
     }
   }
+
+  ${media.xs`
+    border-right: none;
+    border-bottom: ${BORDER_WIDTH}px solid ${color("purple100")};
+  `};
 `
 
 const ArtistHeaderImg = styled.div<{ src?: string }>`
@@ -234,9 +270,6 @@ const IntroSection = styled(Flex)`
 `
 
 const TextSection = styled(Serif)`
-  max-width: 75%;
-  margin-left: auto;
-
   p {
     font-size: 24px;
     text-indent: 2em;
@@ -265,6 +298,10 @@ const ImageSetWrapper = styled(Box)`
   ${ImageSetContainer} {
     display: flex;
     flex-direction: row-reverse;
+
+    ${media.sm`
+      flex-direction: column-reverse;
+    `};
   }
 
   ${FullLabel} {
@@ -282,8 +319,18 @@ const ImageSetWrapper = styled(Box)`
     }
   }
 
-  img {
+  ${ImgContainer} {
     flex: 3;
     border-right: ${BORDER_WIDTH}px solid ${color("purple100")};
+    img {
+      object-fit: cover;
+      object-position: center;
+      height: 100%;
+    }
+
+    ${media.sm`
+      border-right: none;
+      border-bottom: ${BORDER_WIDTH}px solid ${color("purple100")};
+  `};
   }
 `

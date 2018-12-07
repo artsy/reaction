@@ -12,10 +12,10 @@ export default {
       lg: 76, // rem
     },
     breakpoints: {
-      xs: 0, // em
-      sm: 48, // em
-      md: 64, // em
-      lg: 75, // em
+      xs: 768, // px
+      sm: 900, // px
+      md: 1024, // px
+      lg: 1192, // px
     },
   },
   publishing: {
