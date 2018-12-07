@@ -2,38 +2,40 @@
 
 import { ConcreteRequest } from "relay-runtime";
 import { RelatedWorksArtworkGrid_artwork$ref } from "./RelatedWorksArtworkGrid_artwork.graphql";
-export type RelatedWorksArtworkGridQueryVariables = {
+export type RelatedWorksArtworkGridRefetchQueryVariables = {
     readonly artworkSlug: string;
+    readonly layerId: string;
 };
-export type RelatedWorksArtworkGridQueryResponse = {
+export type RelatedWorksArtworkGridRefetchQueryResponse = {
     readonly artwork: ({
         readonly " $fragmentRefs": RelatedWorksArtworkGrid_artwork$ref;
     }) | null;
 };
-export type RelatedWorksArtworkGridQuery = {
-    readonly response: RelatedWorksArtworkGridQueryResponse;
-    readonly variables: RelatedWorksArtworkGridQueryVariables;
+export type RelatedWorksArtworkGridRefetchQuery = {
+    readonly response: RelatedWorksArtworkGridRefetchQueryResponse;
+    readonly variables: RelatedWorksArtworkGridRefetchQueryVariables;
 };
 
 
 
 /*
-query RelatedWorksArtworkGridQuery(
+query RelatedWorksArtworkGridRefetchQuery(
   $artworkSlug: String!
+  $layerId: String!
 ) {
   artwork(id: $artworkSlug) {
-    ...RelatedWorksArtworkGrid_artwork
+    ...RelatedWorksArtworkGrid_artwork_hOSfN
     __id
   }
 }
 
-fragment RelatedWorksArtworkGrid_artwork on Artwork {
+fragment RelatedWorksArtworkGrid_artwork_hOSfN on Artwork {
   layers {
     name
     id
     __id
   }
-  layer {
+  layer(id: $layerId) {
     name
     artworksConnection(first: 20) {
       ...ArtworkGrid_artworks
@@ -164,6 +166,12 @@ var v0 = [
     "name": "artworkSlug",
     "type": "String!",
     "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "layerId",
+    "type": "String!",
+    "defaultValue": null
   }
 ],
 v1 = [
@@ -220,13 +228,13 @@ v7 = {
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "RelatedWorksArtworkGridQuery",
+  "name": "RelatedWorksArtworkGridRefetchQuery",
   "id": null,
-  "text": "query RelatedWorksArtworkGridQuery(\n  $artworkSlug: String!\n) {\n  artwork(id: $artworkSlug) {\n    ...RelatedWorksArtworkGrid_artwork\n    __id\n  }\n}\n\nfragment RelatedWorksArtworkGrid_artwork on Artwork {\n  layers {\n    name\n    id\n    __id\n  }\n  layer {\n    name\n    artworksConnection(first: 20) {\n      ...ArtworkGrid_artworks\n    }\n    __id\n  }\n  __id\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  _id\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  is_biddable\n  sale {\n    is_preview\n    __id\n  }\n  is_acquireable\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    display_timely_at\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
+  "text": "query RelatedWorksArtworkGridRefetchQuery(\n  $artworkSlug: String!\n  $layerId: String!\n) {\n  artwork(id: $artworkSlug) {\n    ...RelatedWorksArtworkGrid_artwork_hOSfN\n    __id\n  }\n}\n\nfragment RelatedWorksArtworkGrid_artwork_hOSfN on Artwork {\n  layers {\n    name\n    id\n    __id\n  }\n  layer(id: $layerId) {\n    name\n    artworksConnection(first: 20) {\n      ...ArtworkGrid_artworks\n    }\n    __id\n  }\n  __id\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  _id\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  is_biddable\n  sale {\n    is_preview\n    __id\n  }\n  is_acquireable\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    display_timely_at\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "RelatedWorksArtworkGridQuery",
+    "name": "RelatedWorksArtworkGridRefetchQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -243,7 +251,14 @@ return {
           {
             "kind": "FragmentSpread",
             "name": "RelatedWorksArtworkGrid_artwork",
-            "args": null
+            "args": [
+              {
+                "kind": "Variable",
+                "name": "layerId",
+                "variableName": "layerId",
+                "type": null
+              }
+            ]
           },
           v2
         ]
@@ -252,7 +267,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "RelatedWorksArtworkGridQuery",
+    "name": "RelatedWorksArtworkGridRefetchQuery",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -283,7 +298,14 @@ return {
             "alias": null,
             "name": "layer",
             "storageKey": null,
-            "args": null,
+            "args": [
+              {
+                "kind": "Variable",
+                "name": "id",
+                "variableName": "layerId",
+                "type": "String"
+              }
+            ],
             "concreteType": "ArtworkLayer",
             "plural": false,
             "selections": [
@@ -600,5 +622,5 @@ return {
   }
 };
 })();
-(node as any).hash = '1d9c727e9d8d3fa3704e969d63825dec';
+(node as any).hash = 'b9bb3b794827decc1ba6134e62e41ef2';
 export default node;

@@ -2,7 +2,7 @@ import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
 import { OtherWorksQueryRenderer as OtherWorks } from "../OtherWorks"
-import { ArtworkContextArtistQueryRenderer as RelatedWorksArtworkGrid } from "../OtherWorks/ArtworkContexts/ArtworkGrids/RelatedWorksArtworkGrid"
+import { RelatedWorksArtworkGridQueryRenderer as RelatedWorksArtworkGrid } from "../OtherWorks/ArtworkContexts/ArtworkGrids/RelatedWorksArtworkGrid"
 
 storiesOf("Styleguide/Artwork/OtherWorks", module)
   .add("Auctions", () => {

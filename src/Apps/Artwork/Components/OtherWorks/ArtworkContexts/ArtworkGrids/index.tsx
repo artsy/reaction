@@ -19,5 +19,5 @@ export {
 } from "./PartnerArtworkGrid"
 
 export {
-  RelatedWorksArtworkGridFragmentContainer as RelatedWorksArtworkGrid,
+  RelatedWorksArtworkGridRefetchContainer as RelatedWorksArtworkGrid,
 } from "./RelatedWorksArtworkGrid"
