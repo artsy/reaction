@@ -1,6 +1,7 @@
-import { Button, Flex, Link, Sans, Spacer } from "@artsy/palette"
+import { Button, Flex, Spacer } from "@artsy/palette"
 import { Counter_order } from "__generated__/Counter_order.graphql"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
+import { ConditionsOfSaleDisclaimer } from "Apps/Order/Components/ConditionsOfSaleDisclaimer"
 import { CreditCardSummaryItemFragmentContainer as CreditCardSummaryItem } from "Apps/Order/Components/CreditCardSummaryItem"
 import {
   counterofferFlowSteps,
@@ -119,7 +120,7 @@ export class CounterRoute extends Component<CounterProps, CounterState> {
                   >
                     Submit
                   </Button>
-                  <ConditionsOfSaleDisclaimer />
+                  <ConditionsOfSaleDisclaimer textAlign="center" />
                 </Media>
               </Flex>
             }
@@ -141,6 +142,7 @@ export class CounterRoute extends Component<CounterProps, CounterState> {
                     >
                       Submit
                     </Button>
+                    <Spacer mb={2} />
                     <ConditionsOfSaleDisclaimer />
                     <Spacer mb={[2, 3]} />
                   </>
@@ -161,18 +163,6 @@ export class CounterRoute extends Component<CounterProps, CounterState> {
     )
   }
 }
-
-const ConditionsOfSaleDisclaimer = () => (
-  <>
-    <Spacer mb={2} />
-    <Sans size="2" color="black60">
-      By clicking Submit, I agree to Artsy’s{" "}
-      <Link href="https://www.artsy.net/conditions-of-sale">
-        Conditions of Sale.
-      </Link>
-    </Sans>
-  </>
-)
 
 const CounterRouteWrapper = props => (
   <ContextConsumer>
