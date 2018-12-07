@@ -18,4 +18,6 @@ export {
   PartnerArtworkGridFragmentContainer as PartnerArtworkGrid,
 } from "./PartnerArtworkGrid"
 
-export { RelatedWorksArtworkGrid } from "./RelatedWorksArtworkGrid"
+export {
+  RelatedWorksArtworkGridRefetchContainer as RelatedWorksArtworkGrid,
+} from "./RelatedWorksArtworkGrid"

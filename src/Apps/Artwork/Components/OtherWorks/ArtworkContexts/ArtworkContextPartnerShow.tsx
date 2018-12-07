@@ -57,7 +57,7 @@ export const ArtworkContextPartnerShowFragmentContainer = createFragmentContaine
         <PartnerShowArtworkGrid artwork={props.artwork} />
         <ArtistArtworkGrid artwork={props.artwork} />
         <PartnerArtworkGrid artwork={props.artwork} />
-        <RelatedWorksArtworkGrid />
+        <RelatedWorksArtworkGrid artwork={props.artwork} />
       </Join>
     )
   },
@@ -75,6 +75,7 @@ export const ArtworkContextPartnerShowFragmentContainer = createFragmentContaine
         @arguments(excludeArtworkIDs: $excludeArtworkIDs)
       ...PartnerArtworkGrid_artwork
         @arguments(excludeArtworkIDs: $excludeArtworkIDs)
+      ...RelatedWorksArtworkGrid_artwork
     }
   `
 )

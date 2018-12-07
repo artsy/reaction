@@ -1,4 +1,4 @@
-import Spinner from "Components/Spinner"
+import { Spinner } from "@artsy/palette"
 import React from "react"
 import { ReadyState, RelayContainer } from "react-relay"
 import styled from "styled-components"

@@ -39,6 +39,7 @@ fragment ArtworkContextAuction_artwork_JhSHv on Artwork {
   }
   ...AuctionArtworkGrid_artwork_4wpKaB @skip(if: $isClosed)
   ...ArtistArtworkGrid_artwork_4wpKaB @include(if: $isClosed)
+  ...RelatedWorksArtworkGrid_artwork
   __id
 }
 
@@ -62,6 +63,22 @@ fragment ArtistArtworkGrid_artwork_4wpKaB on Artwork {
       artworks(format: "0,0", label: "work")
     }
     artworks_connection(first: 10, filter: [IS_FOR_SALE], sort: PUBLISHED_AT_DESC, exclude: $excludeArtworkIDs) {
+      ...ArtworkGrid_artworks
+    }
+    __id
+  }
+  __id
+}
+
+fragment RelatedWorksArtworkGrid_artwork on Artwork {
+  layers {
+    name
+    id
+    __id
+  }
+  layer {
+    name
+    artworksConnection(first: 20) {
       ...ArtworkGrid_artworks
     }
     __id
@@ -236,30 +253,18 @@ v4 = {
 v5 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
+  "name": "name",
   "args": null,
   "storageKey": null
 },
 v6 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "name",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
-v7 = {
-  "kind": "Variable",
-  "name": "exclude",
-  "variableName": "excludeArtworkIDs",
-  "type": "[String]"
-},
-v8 = {
-  "kind": "Literal",
-  "name": "first",
-  "value": 10,
-  "type": "Int"
-},
-v9 = [
+v7 = [
   {
     "kind": "Literal",
     "name": "shallow",
@@ -267,14 +272,14 @@ v9 = [
     "type": "Boolean"
   }
 ],
-v10 = {
+v8 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "display",
   "args": null,
   "storageKey": null
 },
-v11 = [
+v9 = [
   {
     "kind": "LinkedField",
     "alias": null,
@@ -436,13 +441,13 @@ v11 = [
             "alias": null,
             "name": "artists",
             "storageKey": "artists(shallow:true)",
-            "args": v9,
+            "args": v7,
             "concreteType": "Artist",
             "plural": true,
             "selections": [
               v2,
               v3,
-              v6
+              v5
             ]
           },
           {
@@ -457,11 +462,11 @@ v11 = [
             "alias": null,
             "name": "partner",
             "storageKey": "partner(shallow:true)",
-            "args": v9,
+            "args": v7,
             "concreteType": "Partner",
             "plural": false,
             "selections": [
-              v6,
+              v5,
               v3,
               v2,
               {
@@ -491,7 +496,7 @@ v11 = [
                 "concreteType": "SaleArtworkHighestBid",
                 "plural": false,
                 "selections": [
-                  v10,
+                  v8,
                   {
                     "kind": "ScalarField",
                     "alias": "__id",
@@ -510,7 +515,7 @@ v11 = [
                 "concreteType": "SaleArtworkOpeningBid",
                 "plural": false,
                 "selections": [
-                  v10
+                  v8
                 ]
               },
               v2,
@@ -541,7 +546,7 @@ v11 = [
             "args": null,
             "storageKey": null
           },
-          v5,
+          v6,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -553,13 +558,25 @@ v11 = [
       }
     ]
   }
-];
+],
+v10 = {
+  "kind": "Variable",
+  "name": "exclude",
+  "variableName": "excludeArtworkIDs",
+  "type": "[String]"
+},
+v11 = {
+  "kind": "Literal",
+  "name": "first",
+  "value": 10,
+  "type": "Int"
+};
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "ArtworkContextAuctionQuery",
   "id": null,
-  "text": "query ArtworkContextAuctionQuery(\n  $artworkSlug: String!\n  $excludeArtworkIDs: [String!]\n  $isClosed: Boolean!\n) {\n  artwork(id: $artworkSlug) {\n    ...ArtworkContextAuction_artwork_JhSHv\n    __id\n  }\n}\n\nfragment ArtworkContextAuction_artwork_JhSHv on Artwork {\n  sale {\n    href\n    is_closed\n    __id\n  }\n  ...AuctionArtworkGrid_artwork_4wpKaB @skip(if: $isClosed)\n  ...ArtistArtworkGrid_artwork_4wpKaB @include(if: $isClosed)\n  __id\n}\n\nfragment AuctionArtworkGrid_artwork_4wpKaB on Artwork {\n  sale {\n    href\n    artworksConnection(first: 10, exclude: $excludeArtworkIDs) {\n      ...ArtworkGrid_artworks\n    }\n    __id\n  }\n  __id\n}\n\nfragment ArtistArtworkGrid_artwork_4wpKaB on Artwork {\n  id\n  artist {\n    name\n    href\n    counts {\n      artworks(format: \"0,0\", label: \"work\")\n    }\n    artworks_connection(first: 10, filter: [IS_FOR_SALE], sort: PUBLISHED_AT_DESC, exclude: $excludeArtworkIDs) {\n      ...ArtworkGrid_artworks\n    }\n    __id\n  }\n  __id\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  _id\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  is_biddable\n  sale {\n    is_preview\n    __id\n  }\n  is_acquireable\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    display_timely_at\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
+  "text": "query ArtworkContextAuctionQuery(\n  $artworkSlug: String!\n  $excludeArtworkIDs: [String!]\n  $isClosed: Boolean!\n) {\n  artwork(id: $artworkSlug) {\n    ...ArtworkContextAuction_artwork_JhSHv\n    __id\n  }\n}\n\nfragment ArtworkContextAuction_artwork_JhSHv on Artwork {\n  sale {\n    href\n    is_closed\n    __id\n  }\n  ...AuctionArtworkGrid_artwork_4wpKaB @skip(if: $isClosed)\n  ...ArtistArtworkGrid_artwork_4wpKaB @include(if: $isClosed)\n  ...RelatedWorksArtworkGrid_artwork\n  __id\n}\n\nfragment AuctionArtworkGrid_artwork_4wpKaB on Artwork {\n  sale {\n    href\n    artworksConnection(first: 10, exclude: $excludeArtworkIDs) {\n      ...ArtworkGrid_artworks\n    }\n    __id\n  }\n  __id\n}\n\nfragment ArtistArtworkGrid_artwork_4wpKaB on Artwork {\n  id\n  artist {\n    name\n    href\n    counts {\n      artworks(format: \"0,0\", label: \"work\")\n    }\n    artworks_connection(first: 10, filter: [IS_FOR_SALE], sort: PUBLISHED_AT_DESC, exclude: $excludeArtworkIDs) {\n      ...ArtworkGrid_artworks\n    }\n    __id\n  }\n  __id\n}\n\nfragment RelatedWorksArtworkGrid_artwork on Artwork {\n  layers {\n    name\n    id\n    __id\n  }\n  layer {\n    name\n    artworksConnection(first: 20) {\n      ...ArtworkGrid_artworks\n    }\n    __id\n  }\n  __id\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  _id\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  is_biddable\n  sale {\n    is_preview\n    __id\n  }\n  is_acquireable\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    display_timely_at\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -628,13 +645,57 @@ return {
               v2
             ]
           },
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "layers",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "ArtworkLayer",
+            "plural": true,
+            "selections": [
+              v5,
+              v6,
+              v2
+            ]
+          },
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "layer",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "ArtworkLayer",
+            "plural": false,
+            "selections": [
+              v5,
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "artworksConnection",
+                "storageKey": "artworksConnection(first:20)",
+                "args": [
+                  {
+                    "kind": "Literal",
+                    "name": "first",
+                    "value": 20,
+                    "type": "Int"
+                  }
+                ],
+                "concreteType": "ArtworkConnection",
+                "plural": false,
+                "selections": v9
+              },
+              v2
+            ]
+          },
           v2,
           {
             "kind": "Condition",
             "passingValue": true,
             "condition": "isClosed",
             "selections": [
-              v5,
+              v6,
               {
                 "kind": "LinkedField",
                 "alias": null,
@@ -644,7 +705,7 @@ return {
                 "concreteType": "Artist",
                 "plural": false,
                 "selections": [
-                  v6,
+                  v5,
                   v3,
                   {
                     "kind": "LinkedField",
@@ -683,7 +744,7 @@ return {
                     "name": "artworks_connection",
                     "storageKey": null,
                     "args": [
-                      v7,
+                      v10,
                       {
                         "kind": "Literal",
                         "name": "filter",
@@ -692,7 +753,7 @@ return {
                         ],
                         "type": "[ArtistArtworksFilters]"
                       },
-                      v8,
+                      v11,
                       {
                         "kind": "Literal",
                         "name": "sort",
@@ -702,7 +763,7 @@ return {
                     ],
                     "concreteType": "ArtworkConnection",
                     "plural": false,
-                    "selections": v11
+                    "selections": v9
                   },
                   v2
                 ]
@@ -729,12 +790,12 @@ return {
                     "name": "artworksConnection",
                     "storageKey": null,
                     "args": [
-                      v7,
-                      v8
+                      v10,
+                      v11
                     ],
                     "concreteType": "ArtworkConnection",
                     "plural": false,
-                    "selections": v11
+                    "selections": v9
                   }
                 ]
               }
