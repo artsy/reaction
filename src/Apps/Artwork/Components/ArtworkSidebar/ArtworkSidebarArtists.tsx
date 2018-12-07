@@ -71,9 +71,16 @@ export class ArtworkSidebarArtists extends React.Component<ArtistsProps> {
     })
   }
 
+  renderCulturalMaker(cultural_maker: string) {
+    return (
+      <Serif size="5t" display="inline-block" weight="semibold">
+        {cultural_maker}
+      </Serif>
+    )
+  }
   render() {
     const {
-      artwork: { artists },
+      artwork: { artists, cultural_maker },
     } = this.props
     return (
       <ContextConsumer>
@@ -83,6 +90,9 @@ export class ArtworkSidebarArtists extends React.Component<ArtistsProps> {
               {artists.length === 1
                 ? this.renderSingleArtist(artists[0], user, mediator)
                 : this.renderMultipleArtists()}
+              {artists.length === 0 &&
+                cultural_maker &&
+                this.renderCulturalMaker(cultural_maker)}
             </Box>
           )
         }}
@@ -98,6 +108,7 @@ export const ArtworkSidebarArtistsFragmentContainer = createFragmentContainer(
       @argumentDefinitions(
         showFollowSuggestions: { type: "Boolean", defaultValue: true }
       ) {
+      cultural_maker
       artists {
         __id
         id
