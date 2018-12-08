@@ -4,6 +4,7 @@ import { ConcreteFragment } from "relay-runtime";
 declare const _ArtworkSidebarPartnerInfo_artwork$ref: unique symbol;
 export type ArtworkSidebarPartnerInfo_artwork$ref = typeof _ArtworkSidebarPartnerInfo_artwork$ref;
 export type ArtworkSidebarPartnerInfo_artwork = {
+    readonly collecting_institution: string | null;
     readonly partner: ({
         readonly __id: string;
         readonly name: string | null;
@@ -32,6 +33,13 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "collecting_institution",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -81,5 +89,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '9d17679de672d65ee853e2aa975d3949';
+(node as any).hash = '044e0e74528fa406c2c37e3c15fec992';
 export default node;
