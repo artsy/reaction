@@ -39,10 +39,6 @@ export class ArtworkSidebarPartnerInfo extends React.Component<
 
   render() {
     const { artwork } = this.props
-    const { collecting_institution } = artwork
-    if (collecting_institution) {
-      return null
-    }
     const locationNames =
       artwork &&
       artwork.partner &&
@@ -76,7 +72,6 @@ export const ArtworkSidebarPartnerInfoFragmentContainer = createFragmentContaine
   ArtworkSidebarPartnerInfo,
   graphql`
     fragment ArtworkSidebarPartnerInfo_artwork on Artwork {
-      collecting_institution
       partner {
         __id
         name
