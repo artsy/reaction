@@ -297,6 +297,19 @@ describe("Payment", () => {
     ).toContain("Your card number is invalid.")
   })
 
+  it("shows an error modal when CreateToken raises an error", () => {
+    stripeMock.createToken.mockImplementation(() => {
+      throw new Error("something failed")
+    })
+
+    const paymentRoute = getWrapper(testProps)
+    fillAddressForm(paymentRoute, validAddress)
+
+    paymentRoute.find(ContinueButton).simulate("click")
+
+    expect(paymentRoute.find(ErrorModal).props().show).toBe(true)
+  })
+
   it("commits setOrderPayment mutation with Gravity credit card id", () => {
     stripeMock.createToken.mockReturnValue({
       then: func => func({ token: { id: "tokenId" } }),
