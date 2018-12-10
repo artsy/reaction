@@ -16,18 +16,7 @@ import {
 import React from "react"
 import styled from "styled-components"
 
-interface State {
-  chapters: any[]
-}
-
-export class Eoy2018Culture extends React.Component<ArticleProps, State> {
-  constructor(props) {
-    super(props)
-    this.state = {
-      chapters: this.makeSectionArrays(),
-    }
-  }
-
+export class Eoy2018Culture extends React.Component<ArticleProps> {
   sectionText = (section, i) => {
     return (
       <TextContainer key={i} px={[20, 55]} py={30} mx="auto">
@@ -76,10 +65,7 @@ export class Eoy2018Culture extends React.Component<ArticleProps, State> {
     return isHeader
   }
 
-  makeSectionArrays = () => {
-    const {
-      article: { sections },
-    } = this.props
+  makeSectionArrays = sections => {
     const chapters = []
     let currentChapter = null
 
@@ -128,7 +114,7 @@ export class Eoy2018Culture extends React.Component<ArticleProps, State> {
 
   render() {
     const { article } = this.props
-    const { chapters } = this.state
+    const chapters = this.makeSectionArrays(article.sections)
     const introText =
       article.sections && article.sections[0] && article.sections[0].body
 
@@ -211,6 +197,9 @@ const ChapterWrapper = styled.div<{ isDark?: boolean }>`
     `
     color: white;
     background-color: ${color("black100")};
+    a {
+      color: white;
+    }
   `};
 `
 
