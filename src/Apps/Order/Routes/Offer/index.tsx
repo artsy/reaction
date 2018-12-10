@@ -64,7 +64,6 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
                     order {
                       id
                       mode
-                      itemsTotal
                       totalListPrice
                       ... on OfferOrder {
                         myLastOffer {
@@ -155,6 +154,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
               <Flex
                 flexDirection="column"
                 style={isCommittingMutation ? { pointerEvents: "none" } : {}}
+                id="offer-page-left-column"
               >
                 <Flex flexDirection="column">
                   <Input
@@ -172,9 +172,9 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
                     block
                   />
                 </Flex>
-                {Boolean(order.itemsTotal) && (
+                {Boolean(order.totalListPrice) && (
                   <Sans size="2" color="black60">
-                    List price: {order.itemsTotal}
+                    List price: {order.totalListPrice}
                   </Sans>
                 )}
                 <Spacer mb={[2, 3]} />
@@ -258,7 +258,6 @@ export const OfferFragmentContainer = createFragmentContainer(
       id
       mode
       state
-      itemsTotal(precision: 2)
       totalListPrice(precision: 2)
       lineItems {
         edges {

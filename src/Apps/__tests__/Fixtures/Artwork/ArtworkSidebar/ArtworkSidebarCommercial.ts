@@ -5,6 +5,7 @@ export const FoSaleArtworkNoEditions = {
   is_inquireable: true,
   is_price_range: true,
   edition_sets: [],
+  collecting_institution: "",
 }
 
 export const FoSaleArtworkWithOneEdition = {
@@ -21,6 +22,7 @@ export const FoSaleArtworkWithOneEdition = {
       edition_of: "",
     },
   ],
+  collecting_institution: "",
 }
 
 export const FoSaleArtworkWithMultipleEditions = {
@@ -29,6 +31,7 @@ export const FoSaleArtworkWithMultipleEditions = {
   sale_message: "$2,500 - 5,000",
   is_inquireable: true,
   is_price_range: false,
+  collecting_institution: "",
   edition_sets: [
     {
       __id: "for_sale_multiple_editions_edition_1",
@@ -63,6 +66,7 @@ export const ContactForPriceWork = {
   sale_message: "Contact For Price",
   is_inquireable: true,
   is_price_range: false,
+  collecting_institution: "",
   edition_sets: [
     {
       __id: "contact_for_price_edition_1",
@@ -82,6 +86,7 @@ export const ArtworkBuyNow = {
   edition_sets: [],
   shippingInfo: "Shipping: Free shipping worldwide",
   shippingOrigin: "New York, New York, US",
+  collecting_institution: "",
 }
 
 export const ArtworkSold = {
@@ -94,6 +99,7 @@ export const ArtworkSold = {
   edition_sets: [],
   shippingInfo: null,
   shippingOrigin: null,
+  collecting_institution: "",
 }
 
 export const ArtworkMakeOffer = {
@@ -106,6 +112,7 @@ export const ArtworkMakeOffer = {
   edition_sets: [],
   shippingInfo: "Shipping: Free shipping worldwide",
   shippingOrigin: "New York, New York, US",
+  collecting_institution: "",
 }
 
 export const ArtworkBuyNowMakeOffer = {
@@ -118,4 +125,5 @@ export const ArtworkBuyNowMakeOffer = {
   edition_sets: [],
   shippingInfo: "Shipping: Free shipping worldwide",
   shippingOrigin: "New York, New York, US",
+  collecting_institution: "",
 }

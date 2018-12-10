@@ -31,6 +31,11 @@ export type routes_OrderQueryResponse = {
         }) | null;
         readonly myLastOffer?: ({
             readonly id: string | null;
+            readonly createdAt: string | null;
+        }) | null;
+        readonly lastOffer?: ({
+            readonly id: string | null;
+            readonly createdAt: string | null;
         }) | null;
         readonly awaitingResponseFrom?: OrderParticipantEnum | null;
     }) | null;
@@ -58,6 +63,12 @@ query routes_OrderQuery(
     ... on OfferOrder {
       myLastOffer {
         id
+        createdAt
+        __id: id
+      }
+      lastOffer {
+        id
+        createdAt
         __id: id
       }
       awaitingResponseFrom
@@ -233,7 +244,18 @@ v12 = {
   "plural": false,
   "selections": v9
 },
-v13 = {
+v13 = [
+  v4,
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "createdAt",
+    "args": null,
+    "storageKey": null
+  },
+  v10
+],
+v14 = {
   "kind": "InlineFragment",
   "type": "OfferOrder",
   "selections": [
@@ -245,10 +267,17 @@ v13 = {
       "args": null,
       "concreteType": "Offer",
       "plural": false,
-      "selections": [
-        v4,
-        v10
-      ]
+      "selections": v13
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "lastOffer",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Offer",
+      "plural": false,
+      "selections": v13
     },
     {
       "kind": "ScalarField",
@@ -264,7 +293,7 @@ return {
   "operationKind": "query",
   "name": "routes_OrderQuery",
   "id": null,
-  "text": "query routes_OrderQuery(\n  $orderID: String!\n) {\n  me {\n    name\n    __id\n  }\n  order: ecommerceOrder(id: $orderID) {\n    __typename\n    id\n    mode\n    state\n    ... on OfferOrder {\n      myLastOffer {\n        id\n        __id: id\n      }\n      awaitingResponseFrom\n    }\n    requestedFulfillment {\n      __typename\n    }\n    lineItems {\n      edges {\n        node {\n          artwork {\n            id\n            __id\n          }\n          __id: id\n        }\n      }\n    }\n    creditCard {\n      id\n      __id\n    }\n    __id: id\n  }\n}\n",
+  "text": "query routes_OrderQuery(\n  $orderID: String!\n) {\n  me {\n    name\n    __id\n  }\n  order: ecommerceOrder(id: $orderID) {\n    __typename\n    id\n    mode\n    state\n    ... on OfferOrder {\n      myLastOffer {\n        id\n        createdAt\n        __id: id\n      }\n      lastOffer {\n        id\n        createdAt\n        __id: id\n      }\n      awaitingResponseFrom\n    }\n    requestedFulfillment {\n      __typename\n    }\n    lineItems {\n      edges {\n        node {\n          artwork {\n            id\n            __id\n          }\n          __id: id\n        }\n      }\n    }\n    creditCard {\n      id\n      __id\n    }\n    __id: id\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -290,7 +319,7 @@ return {
           v11,
           v12,
           v10,
-          v13
+          v14
         ]
       }
     ]
@@ -318,12 +347,12 @@ return {
           v11,
           v12,
           v10,
-          v13
+          v14
         ]
       }
     ]
   }
 };
 })();
-(node as any).hash = '3108a4804a568117e7648269beeac008';
+(node as any).hash = '980157379498cf9019d77ed1e2e06bbf';
 export default node;

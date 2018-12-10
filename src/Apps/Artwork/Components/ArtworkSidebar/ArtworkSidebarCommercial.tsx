@@ -182,9 +182,21 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
     const { isCommittingCreateOrderMutation } = this.state
     const isEcommerceEnrolled = artwork.is_acquireable || artwork.is_offerable
 
+    const { collecting_institution } = artwork
+    if (collecting_institution) {
+      return (
+        <Box pb={1}>
+          <Serif size="3" weight="regular">
+            {collecting_institution}
+          </Serif>
+        </Box>
+      )
+    }
+
     if (!artwork.sale_message && !artwork.is_inquireable) {
       return null
     }
+
     return (
       <Box pb={3} textAlign="left">
         {artwork.edition_sets.length < 2 && artwork.sale_message ? (
@@ -274,6 +286,7 @@ export const ArtworkSidebarCommercialFragmentContainer = createFragmentContainer
   graphql`
     fragment ArtworkSidebarCommercial_artwork on Artwork {
       id
+      collecting_institution
       is_acquireable
       is_inquireable
       is_offerable

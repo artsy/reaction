@@ -10,6 +10,7 @@ import { RespondFragmentContainer as RespondRoute } from "Apps/Order/Routes/Resp
 import { ReviewFragmentContainer as ReviewRoute } from "Apps/Order/Routes/Review"
 import { ShippingFragmentContainer as ShippingRoute } from "Apps/Order/Routes/Shipping"
 import { StatusFragmentContainer as StatusRoute } from "Apps/Order/Routes/Status"
+import { CounterFragmentContainer as CounterRoute } from "./Routes/Counter"
 
 // @ts-ignore
 import { ComponentClass, StatelessComponent } from "react"
@@ -44,6 +45,11 @@ export const routes: RouteConfig[] = [
           ... on OfferOrder {
             myLastOffer {
               id
+              createdAt
+            }
+            lastOffer {
+              id
+              createdAt
             }
           }
           requestedFulfillment {
@@ -128,6 +134,21 @@ export const routes: RouteConfig[] = [
           query routes_PaymentQuery($orderID: String!) {
             order: ecommerceOrder(id: $orderID) {
               ...Payment_order
+            }
+          }
+        `,
+        cacheConfig: {
+          force: true,
+        },
+      },
+      {
+        path: "review/counter",
+        Component: CounterRoute,
+        onTransition: confirmRouteExit,
+        query: graphql`
+          query routes_CounterQuery($orderID: String!) {
+            order: ecommerceOrder(id: $orderID) {
+              ...Counter_order
             }
           }
         `,
