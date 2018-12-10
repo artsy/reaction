@@ -1,8 +1,9 @@
-import { Button, Flex, Join, Sans, Spacer } from "@artsy/palette"
+import { Button, Flex, Join, Spacer } from "@artsy/palette"
 import { Review_order } from "__generated__/Review_order.graphql"
 import { ReviewSubmitOfferOrderMutation } from "__generated__/ReviewSubmitOfferOrderMutation.graphql"
 import { ReviewSubmitOrderMutation } from "__generated__/ReviewSubmitOrderMutation.graphql"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
+import { ConditionsOfSaleDisclaimer } from "Apps/Order/Components/ConditionsOfSaleDisclaimer"
 import { ItemReviewFragmentContainer as ItemReview } from "Apps/Order/Components/ItemReview"
 import {
   buyNowFlowSteps,
@@ -329,16 +330,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                       Submit
                     </Button>
                     <Spacer mb={2} />
-                    <Sans textAlign="center" size="2" color="black60">
-                      By clicking Submit, I agree to Artsy’s{" "}
-                      <a
-                        href="https://www.artsy.net/conditions-of-sale"
-                        target="_blank"
-                      >
-                        Conditions of Sale
-                      </a>
-                      .
-                    </Sans>
+                    <ConditionsOfSaleDisclaimer textAlign="center" />
                   </Media>
                 </Join>
                 <Spacer mb={3} />
@@ -366,16 +358,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                     Submit
                   </Button>
                   <Spacer mb={2} />
-                  <Sans size="2" color="black60">
-                    By clicking Submit, I agree to Artsy’s{" "}
-                    <a
-                      href="https://www.artsy.net/conditions-of-sale"
-                      target="_blank"
-                    >
-                      Conditions of Sale
-                    </a>
-                    .
-                  </Sans>
+                  <ConditionsOfSaleDisclaimer />
                   <Spacer mb={2} />
                   <Helper
                     artworkId={order.lineItems.edges[0].node.artwork.id}
