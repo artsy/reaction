@@ -68,3 +68,11 @@ storiesOf("Apps/Artwork Page", module)
       />
     )
   })
+  .add("Wide image", () => {
+    return (
+      <MockRouter
+        routes={artworkRoutes}
+        initialRoute="/artwork2/thelma-appel-sea-garden-iv"
+      />
+    )
+  })
