@@ -21,7 +21,6 @@ export type OfferMutationResponse = {
             readonly order?: ({
                 readonly id: string | null;
                 readonly mode: OrderModeEnum | null;
-                readonly itemsTotal: string | null;
                 readonly totalListPrice: string | null;
                 readonly myLastOffer?: ({
                     readonly id: string | null;
@@ -56,7 +55,6 @@ mutation OfferMutation(
           __typename
           id
           mode
-          itemsTotal
           totalListPrice
           ... on OfferOrder {
             myLastOffer {
@@ -159,25 +157,18 @@ v5 = {
 v6 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "itemsTotal",
-  "args": null,
-  "storageKey": null
-},
-v7 = {
-  "kind": "ScalarField",
-  "alias": null,
   "name": "totalListPrice",
   "args": null,
   "storageKey": null
 },
-v8 = {
+v7 = {
   "kind": "ScalarField",
   "alias": "__id",
   "name": "id",
   "args": null,
   "storageKey": null
 },
-v9 = {
+v8 = {
   "kind": "InlineFragment",
   "type": "OfferOrder",
   "selections": [
@@ -198,7 +189,7 @@ v9 = {
           "args": null,
           "storageKey": null
         },
-        v8
+        v7
       ]
     }
   ]
@@ -208,7 +199,7 @@ return {
   "operationKind": "mutation",
   "name": "OfferMutation",
   "id": null,
-  "text": "mutation OfferMutation(\n  $input: AddInitialOfferToOrderInput!\n) {\n  ecommerceAddInitialOfferToOrder(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          id\n          mode\n          itemsTotal\n          totalListPrice\n          ... on OfferOrder {\n            myLastOffer {\n              id\n              amountCents\n              __id: id\n            }\n          }\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation OfferMutation(\n  $input: AddInitialOfferToOrderInput!\n) {\n  ecommerceAddInitialOfferToOrder(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          id\n          mode\n          totalListPrice\n          ... on OfferOrder {\n            myLastOffer {\n              id\n              amountCents\n              __id: id\n            }\n          }\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -254,8 +245,7 @@ return {
                       v5,
                       v6,
                       v7,
-                      v8,
-                      v9
+                      v8
                     ]
                   }
                 ]
@@ -310,8 +300,7 @@ return {
                       v5,
                       v6,
                       v7,
-                      v8,
-                      v9
+                      v8
                     ]
                   }
                 ]
@@ -324,5 +313,5 @@ return {
   }
 };
 })();
-(node as any).hash = '1552f4300994d6916797385dc4bbef83';
+(node as any).hash = '8508c485628923f3ffe4d5226a7fbb8d';
 export default node;
