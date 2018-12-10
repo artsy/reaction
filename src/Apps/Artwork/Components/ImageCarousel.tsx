@@ -37,9 +37,8 @@ const SmallImageArea = styled(BaseImageArea)`
 `
 
 const LargeImageArea = styled(BaseImageArea)`
-  /* FIXME: Is this still needed? */
-  /* min-height: 450px;
-  height: calc(100vh - 160px); */
+  min-height: 450px;
+  height: calc(100vh - 160px);
 `
 
 const ImageContainer = styled.div`
@@ -61,7 +60,6 @@ const SmallImage = styled(BaseImage)`
 
 const LargeImage = styled(BaseImage)`
   max-height: 550px;
-  height: 65vh;
   padding: 0 ${space(2)}px;
 `
 
@@ -73,6 +71,7 @@ const Button = styled.a`
 `
 
 const NavigationButtonContainer = styled.div`
+  cursor: pointer;
   height: 100%;
   width: 40px;
   display: flex;
@@ -163,14 +162,13 @@ const NavigationButton: React.SFC<{
   direction: "left" | "right"
   onClick: () => void
 }> = ({ direction, onClick }) => (
-  <NavigationButtonContainer>
-    <Button
-      href="#"
-      onClick={e => {
-        e.preventDefault()
-        onClick()
-      }}
-    >
+  <NavigationButtonContainer
+    onClick={e => {
+      e.preventDefault()
+      onClick()
+    }}
+  >
+    <Button href="#">
       <Arrow direction={direction} fontSize="24px" />
     </Button>
   </NavigationButtonContainer>
@@ -195,8 +193,12 @@ export class ImageCarousel extends React.Component<
   }
 
   changeCurrentImage(by: number) {
+    const currentImage = Math.abs(
+      (this.state.currentImage + by) % this.props.images.length
+    )
+
     this.setState({
-      currentImage: (this.state.currentImage + by) % this.props.images.length,
+      currentImage,
     })
   }
 
