@@ -107,7 +107,7 @@ export class Accept extends Component<AcceptProps, AcceptState> {
                     Submit
                   </Button>
                   <Spacer mb={2} />
-                  <ConditionsOfSaleDisclaimer />
+                  <ConditionsOfSaleDisclaimer textAlign="center" />
                 </Media>
               </Flex>
             }
