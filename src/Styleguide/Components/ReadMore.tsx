@@ -1,5 +1,4 @@
 import { track } from "Artsy/Analytics"
-import * as Schema from "Artsy/Analytics/Schema"
 import { isString } from "lodash"
 import React, { Component } from "react"
 import { renderToStaticMarkup } from "react-dom/server"
@@ -47,11 +46,6 @@ export class ReadMore extends Component<ReadMoreProps, ReadMoreState> {
     }
   }
 
-  @track({
-    action_type: Schema.ActionType.Click,
-    subject: "Read more",
-    type: "button",
-  })
   expandText() {
     this.setState(
       {
