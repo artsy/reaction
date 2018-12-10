@@ -10,7 +10,6 @@ export type Offer_order = {
     readonly id: string | null;
     readonly mode: OrderModeEnum | null;
     readonly state: string | null;
-    readonly itemsTotal: string | null;
     readonly totalListPrice: string | null;
     readonly lineItems: ({
         readonly edges: ReadonlyArray<({
@@ -35,15 +34,7 @@ var v0 = {
   "args": null,
   "storageKey": null
 },
-v1 = [
-  {
-    "kind": "Literal",
-    "name": "precision",
-    "value": 2,
-    "type": "Int"
-  }
-],
-v2 = {
+v1 = {
   "kind": "ScalarField",
   "alias": "__id",
   "name": "id",
@@ -75,15 +66,15 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "itemsTotal",
-      "args": v1,
-      "storageKey": "itemsTotal(precision:2)"
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
       "name": "totalListPrice",
-      "args": v1,
+      "args": [
+        {
+          "kind": "Literal",
+          "name": "precision",
+          "value": 2,
+          "type": "Int"
+        }
+      ],
       "storageKey": "totalListPrice(precision:2)"
     },
     {
@@ -132,7 +123,7 @@ return {
                     }
                   ]
                 },
-                v2
+                v1
               ]
             }
           ]
@@ -149,9 +140,9 @@ return {
       "name": "TransactionDetailsSummaryItem_order",
       "args": null
     },
-    v2
+    v1
   ]
 };
 })();
-(node as any).hash = '867d9554eda7c1e15e9e9785acaf4db4';
+(node as any).hash = '3850326a36d217a9f606d88caa3b66e0';
 export default node;
