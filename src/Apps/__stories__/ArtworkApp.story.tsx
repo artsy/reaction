@@ -16,7 +16,7 @@ storiesOf("Apps/Artwork Page", module)
     return (
       <MockRouter
         routes={artworkRoutes}
-        initialRoute="/artwork2/andy-warhol-skull"
+        initialRoute="/artwork2/jerry-freedner-approaching-storm"
       />
     )
   })
