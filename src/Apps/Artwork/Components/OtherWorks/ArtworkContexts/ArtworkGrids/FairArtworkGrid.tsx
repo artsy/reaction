@@ -27,7 +27,7 @@ export const FairArtworkGridFragmentContainer = createFragmentContainer<{
     fragment FairArtworkGrid_artwork on Artwork
       @argumentDefinitions(excludeArtworkIDs: { type: "[String!]" }) {
       fair: show(at_a_fair: true) {
-        artworksConnection(first: 20, exclude: $excludeArtworkIDs) {
+        artworksConnection(first: 8, exclude: $excludeArtworkIDs) {
           ...ArtworkGrid_artworks
         }
         href

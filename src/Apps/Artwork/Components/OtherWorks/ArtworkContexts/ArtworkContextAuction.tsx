@@ -67,7 +67,7 @@ export const ArtworkContextAuctionFragmentContainer = createFragmentContainer<{
       return <AuctionArtworkGrid artwork={props.artwork} />
     } else {
       return (
-        <Join separator={<Spacer my={2} />}>
+        <Join separator={<Spacer my={6} />}>
           <ArtistArtworkGrid artwork={props.artwork} />
           <RelatedWorksArtworkGrid artwork={props.artwork} />
         </Join>
