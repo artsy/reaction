@@ -63,10 +63,16 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
   onContinueButtonPressed: () => void = () => {
     const { offerValue, responseOption } = this.state
     this.setState({ isCommittingMutation: true }, () => {
-      if (responseOption === "COUNTER") {
-        window.alert(`You decided to COUNTER with ${offerValue}.`)
-      } else {
-        window.alert(`You decided to ${responseOption}.`)
+      switch (responseOption) {
+        case "COUNTER":
+          window.alert(`You decided to COUNTER with ${offerValue}.`)
+          break
+        case "ACCEPT":
+          this.props.router.push(`/orders/${this.props.order.id}/accept`)
+          break
+        default:
+          window.alert(`You decided to ${responseOption}.`)
+          break
       }
       this.setState({ isCommittingMutation: false })
     })

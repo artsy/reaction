@@ -228,6 +228,29 @@ storiesOf("Apps/Order Page/Counter Offer", module)
     />
   ))
 
+storiesOf("Apps/Order Page/Accept Offer", module).add("Review (accept)", () => (
+  <Router
+    initialRoute="/orders/123/accept"
+    mockResolvers={mockResolver({
+      ...OfferOrderWithShippingDetails,
+      state: "SUBMITTED",
+      stateExpiresAt: moment()
+        .add(1, "day")
+        .toISOString(),
+      lastOffer: {
+        ...OfferWithTotals,
+        id: "last-offer",
+        createdAt: moment()
+          .subtract(1, "day")
+          .toISOString(),
+      },
+      awaitingResponseFrom: "BUYER",
+      offers: { edges: Offers },
+      buyer: Buyer,
+    })}
+  />
+))
+
 storiesOf("Apps/Order Page/Make Offer/Status", module)
   .add("submitted (ship)", () => (
     <Router

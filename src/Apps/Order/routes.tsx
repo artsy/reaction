@@ -4,6 +4,7 @@ import * as React from "react"
 import { graphql } from "react-relay"
 import { OrderApp } from "./OrderApp"
 
+import { AcceptFragmentContainer as AcceptRoute } from "Apps/Order/Routes/Accept"
 import { OfferFragmentContainer as OfferRoute } from "Apps/Order/Routes/Offer"
 import { PaymentFragmentContainer as PaymentRoute } from "Apps/Order/Routes/Payment"
 import { RespondFragmentContainer as RespondRoute } from "Apps/Order/Routes/Respond"
@@ -170,6 +171,17 @@ export const routes: RouteConfig[] = [
         cacheConfig: {
           force: true,
         },
+      },
+      {
+        path: "review/accept",
+        Component: AcceptRoute,
+        query: graphql`
+          query routes_AcceptQuery($orderID: String!) {
+            order: ecommerceOrder(id: $orderID) {
+              ...Accept_order
+            }
+          }
+        `,
       },
       {
         path: "status",
