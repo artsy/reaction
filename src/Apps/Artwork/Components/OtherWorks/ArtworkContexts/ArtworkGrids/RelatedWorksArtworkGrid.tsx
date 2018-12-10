@@ -108,7 +108,7 @@ export const RelatedWorksArtworkGridRefetchContainer = createRefetchContainer<
       }
       layer(id: $layerId) {
         name
-        artworksConnection(first: 20) {
+        artworksConnection(first: 8) {
           ...ArtworkGrid_artworks
         }
       }
