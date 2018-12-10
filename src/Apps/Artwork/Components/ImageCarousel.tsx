@@ -1,3 +1,4 @@
+import { space } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
 
@@ -36,8 +37,9 @@ const SmallImageArea = styled(BaseImageArea)`
 `
 
 const LargeImageArea = styled(BaseImageArea)`
-  min-height: 450px;
-  height: calc(100vh - 160px);
+  /* FIXME: Is this still needed? */
+  /* min-height: 450px;
+  height: calc(100vh - 160px); */
 `
 
 const ImageContainer = styled.div`
@@ -58,7 +60,9 @@ const SmallImage = styled(BaseImage)`
 `
 
 const LargeImage = styled(BaseImage)`
-  max-height: 100%;
+  max-height: 550px;
+  height: 65vh;
+  padding: 0 ${space(2)}px;
 `
 
 // TODO: Should Icon have this styling by default?
@@ -199,10 +203,11 @@ export class ImageCarousel extends React.Component<
   renderImage(breakpoint?: string) {
     const xs = breakpoint === "xs"
     const Image = xs ? SmallImage : LargeImage
+    const key = `image-${this.state.currentImage}` // update reconciler to show download on image change
 
     return (
       <Lightbox deepZoom={this.image.deepZoom} enabled={this.image.is_zoomable}>
-        <Image src={this.image.uri} />
+        <Image src={this.image.uri} key={key} />
       </Lightbox>
     )
   }
