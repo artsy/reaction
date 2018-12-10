@@ -193,9 +193,11 @@ export class ImageCarousel extends React.Component<
   }
 
   changeCurrentImage(by: number) {
-    const currentImage = Math.abs(
-      (this.state.currentImage + by) % this.props.images.length
-    )
+    let currentImage = (this.state.currentImage + by) % this.props.images.length
+
+    if (currentImage < 0) {
+      currentImage = this.props.images.length - 1
+    }
 
     this.setState({
       currentImage,
