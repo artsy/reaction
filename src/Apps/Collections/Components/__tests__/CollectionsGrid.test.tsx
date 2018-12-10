@@ -1,7 +1,7 @@
+import { Link } from "@artsy/palette"
 import { CollectionsFixture } from "Apps/__tests__/Fixtures/Collections"
 import { mount } from "enzyme"
 import React from "react"
-import { EntityHeader } from "Styleguide/Components/EntityHeader"
 import { CollectionsGrid } from "../CollectionsGrid"
 
 describe("CollectionsGrid", () => {
@@ -19,7 +19,7 @@ describe("CollectionsGrid", () => {
   it("Renders a list of collections", () => {
     const component = getWrapper(props)
 
-    expect(component.find(EntityHeader).length).toBe(6)
+    expect(component.find(Link).length).toBe(6)
     expect(component.text()).toMatch("Big Artists, Small Sculptures")
     expect(component.html()).toMatch("pumpkinsbigartistsmallsculpture")
   })

@@ -1,6 +1,15 @@
-import { Box, Flex, Sans, Separator, Spacer } from "@artsy/palette"
+import {
+  Avatar,
+  Box,
+  Flex,
+  Link,
+  Sans,
+  Separator,
+  Serif,
+  Spacer,
+} from "@artsy/palette"
 import React, { Component } from "react"
-import { EntityHeader } from "Styleguide/Components/EntityHeader"
+import styled from "styled-components"
 import { slugify } from "underscore.string"
 import { crop } from "Utils/resizer"
 import { Media } from "Utils/Responsive"
@@ -41,13 +50,19 @@ export class CollectionsGrid extends Component<CollectionsGridProps> {
                 <Media at="xs">{index === 0 && <Separator />}</Media>
                 <Media greaterThan="xs">{index < 3 && <Separator />}</Media>
 
-                <Box py={2}>
-                  <EntityHeader
-                    href={`/collection/${collection.slug}`}
-                    imageUrl={imageUrl}
-                    name={collection.title}
-                  />
-                </Box>
+                <LinkWithoutBorder
+                  noUnderline
+                  color="black100"
+                  href={`/collection/${collection.slug}`}
+                >
+                  <Flex py={2} alignItems="center">
+                    <Avatar size="xs" src={imageUrl} />
+
+                    <Serif ml={1} size="4t">
+                      {collection.title}
+                    </Serif>
+                  </Flex>
+                </LinkWithoutBorder>
                 <Separator />
               </Flex>
             )
@@ -65,3 +80,9 @@ export class CollectionsGrid extends Component<CollectionsGridProps> {
     )
   }
 }
+
+const LinkWithoutBorder = styled(Link)`
+  &:focus {
+    border: none;
+  }
+`

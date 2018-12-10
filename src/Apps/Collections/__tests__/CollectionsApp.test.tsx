@@ -1,9 +1,9 @@
+import { Link } from "@artsy/palette"
 import { CategoriesFixture } from "Apps/__tests__/Fixtures/Collections"
 import { CollectionsGrid } from "Apps/Collections/Components/CollectionsGrid"
 import { MockBoot, renderRelayTree } from "DevTools"
 import React from "react"
 import { graphql } from "react-relay"
-import { EntityHeader } from "Styleguide/Components/EntityHeader"
 import { BreadCrumbList } from "../../Collect/Components/Seo"
 import { CollectionsAppFragmentContainer as CollectionsApp } from "../CollectionsApp"
 
@@ -32,7 +32,7 @@ describe("CollectionApp", () => {
     const tree = await getRelayWrapper()
 
     expect(tree.find(CollectionsGrid).length).toBe(3)
-    expect(tree.find(EntityHeader).length).toBe(10)
+    expect(tree.find(Link).length).toBe(10)
     expect(tree.text()).toMatch("Abstract Art")
     expect(tree.text()).toMatch("Keith Haring: Pop")
 
