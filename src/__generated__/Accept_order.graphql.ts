@@ -11,6 +11,7 @@ export type Accept_order = {
     readonly id: string | null;
     readonly stateExpiresAt: string | null;
     readonly lastOffer: ({
+        readonly id: string | null;
         readonly createdAt: string | null;
     }) | null;
     readonly lineItems: ({
@@ -67,6 +68,7 @@ return {
       "concreteType": "Offer",
       "plural": false,
       "selections": [
+        v0,
         {
           "kind": "ScalarField",
           "alias": null,
@@ -154,5 +156,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '51614bd86721ab2cf6fb938ff08a99f5';
+(node as any).hash = '4da70a63c78fb1819efe4c8ab0cc35e5';
 export default node;

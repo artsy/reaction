@@ -6,7 +6,12 @@ import { ContextConsumer } from "Artsy"
 import { Mediator } from "Artsy/SystemContext"
 import { RouteConfig, Router } from "found"
 import React, { Component } from "react"
-import { createFragmentContainer, graphql, RelayProp } from "react-relay"
+import {
+  commitMutation,
+  createFragmentContainer,
+  graphql,
+  RelayProp,
+} from "react-relay"
 import { Col, Row } from "Styleguide/Elements"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { Media } from "Utils/Responsive"
@@ -15,11 +20,15 @@ import {
   OrderStepper,
 } from "../../Components/OrderStepper"
 
+import { AcceptMutation } from "__generated__/AcceptMutation.graphql"
 import { ConditionsOfSaleDisclaimer } from "Apps/Order/Components/ConditionsOfSaleDisclaimer"
 import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "Apps/Order/Components/ShippingSummaryItem"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
+import { ErrorModal } from "Components/Modal/ErrorModal"
 import { CountdownTimer } from "Styleguide/Components/CountdownTimer"
+import { ErrorWithMetadata } from "Utils/errors"
 import { get } from "Utils/get"
+import createLogger from "Utils/logger"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "../../Components/ArtworkSummaryItem"
 import { CreditCardSummaryItemFragmentContainer as CreditCardSummaryItem } from "../../Components/CreditCardSummaryItem"
 
@@ -33,20 +42,92 @@ interface AcceptProps {
 
 interface AcceptState {
   isCommittingMutation: boolean
+  isErrorModalOpen: boolean
+  errorModalTitle: string
+  errorModalMessage: string
 }
+
+const logger = createLogger("Order/Routes/Offer/index.tsx")
 
 export class Accept extends Component<AcceptProps, AcceptState> {
   state = {
     isCommittingMutation: false,
+    isErrorModalOpen: false,
+    errorModalTitle: null,
+    errorModalMessage: null,
   }
 
   onSubmit: () => void = () => {
-    console.log("SUBMITTED!")
+    this.setState({ isCommittingMutation: true }, () => {
+      if (this.props.relay && this.props.relay.environment) {
+        commitMutation<AcceptMutation>(this.props.relay.environment, {
+          mutation: graphql`
+            mutation AcceptMutation($input: buyerAcceptOfferInput!) {
+              ecommerceBuyerAcceptOffer(input: $input) {
+                orderOrError {
+                  ... on OrderWithMutationSuccess {
+                    __typename
+                    order {
+                      id
+                      mode
+                    }
+                  }
+                  ... on OrderWithMutationFailure {
+                    error {
+                      type
+                      code
+                      data
+                    }
+                  }
+                }
+              }
+            }
+          `,
+          variables: {
+            input: {
+              offerId: this.props.order.lastOffer.id,
+            },
+          },
+          onCompleted: data => {
+            this.setState({ isCommittingMutation: false })
+            const {
+              ecommerceBuyerAcceptOffer: { orderOrError },
+            } = data
+
+            if (orderOrError.error) {
+              this.onMutationError(
+                new ErrorWithMetadata(
+                  orderOrError.error.code,
+                  orderOrError.error
+                )
+              )
+            } else {
+              this.props.router.push(`/orders/${this.props.order.id}/status`)
+            }
+          },
+          onError: this.onMutationError.bind(this),
+        })
+      }
+    })
+  }
+
+  onMutationError(error, errorModalTitle?, errorModalMessage?) {
+    logger.error(error)
+    this.setState({
+      isCommittingMutation: false,
+      isErrorModalOpen: true,
+      errorModalTitle,
+      errorModalMessage,
+    })
   }
 
   onChangeResponse = () => {
     const { order } = this.props
     this.props.router.push(`/orders/${order.id}/respond`)
+  }
+
+  onCloseModal = () => {
+    this.setState({ isErrorModalOpen: false })
   }
 
   render() {
@@ -145,6 +226,13 @@ export class Accept extends Component<AcceptProps, AcceptState> {
             }
           />
         </HorizontalPadding>
+        <ErrorModal
+          onClose={this.onCloseModal}
+          show={this.state.isErrorModalOpen}
+          contactEmail="orders@artsy.net"
+          detailText={this.state.errorModalMessage}
+          headerText={this.state.errorModalTitle}
+        />
       </>
     )
   }
@@ -165,6 +253,7 @@ export const AcceptFragmentContainer = createFragmentContainer(
       id
       stateExpiresAt
       lastOffer {
+        id
         createdAt
       }
       lineItems {
