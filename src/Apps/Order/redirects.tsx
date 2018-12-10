@@ -163,6 +163,14 @@ const redirects: RedirectRecord = {
       ],
     },
     {
+      path: "review/accept",
+      rules: [
+        goToStatusIfNotOfferOrder,
+        goToStatusIfNotAwaitingBuyerResponse,
+        goToStatusIfOrderIsNotSubmitted,
+      ],
+    },
+    {
       path: "status",
       rules: [
         goToReviewIfOrderIsPending,

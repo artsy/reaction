@@ -173,7 +173,7 @@ export const routes: RouteConfig[] = [
         },
       },
       {
-        path: "accept",
+        path: "review/accept",
         Component: AcceptRoute,
         query: graphql`
           query routes_AcceptQuery($orderID: String!) {

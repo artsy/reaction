@@ -1,4 +1,4 @@
-import { Button, Flex, Sans, Serif, Spacer } from "@artsy/palette"
+import { Button, Flex, Spacer } from "@artsy/palette"
 import { Accept_order } from "__generated__/Accept_order.graphql"
 import { Helper } from "Apps/Order/Components/Helper"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
@@ -15,6 +15,7 @@ import {
   OrderStepper,
 } from "../../Components/OrderStepper"
 
+import { ConditionsOfSaleDisclaimer } from "Apps/Order/Components/ConditionsOfSaleDisclaimer"
 import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "Apps/Order/Components/ShippingSummaryItem"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { CountdownTimer } from "Styleguide/Components/CountdownTimer"
@@ -41,6 +42,11 @@ export class Accept extends Component<AcceptProps, AcceptState> {
 
   onSubmit: () => void = () => {
     console.log("SUBMITTED!")
+  }
+
+  onChangeResponse = () => {
+    const { order } = this.props
+    this.props.router.push(`/orders/${order.id}/respond`)
   }
 
   render() {
@@ -85,8 +91,9 @@ export class Accept extends Component<AcceptProps, AcceptState> {
                   />
                   <TransactionDetailsSummaryItem
                     order={order}
-                    renderHeaderEntry={this.renderHeaderEntry.bind(this)}
+                    title="Accept seller's offer"
                     useLastSubmittedOffer={true}
+                    onChange={this.onChangeResponse}
                   />
                 </Flex>
                 <Spacer mb={[2, 3]} />
@@ -100,16 +107,7 @@ export class Accept extends Component<AcceptProps, AcceptState> {
                     Submit
                   </Button>
                   <Spacer mb={2} />
-                  <Sans textAlign="center" size="2" color="black60">
-                    By clicking Submit, I agree to Artsy’s{" "}
-                    <a
-                      href="https://www.artsy.net/conditions-of-sale"
-                      target="_blank"
-                    >
-                      Conditions of Sale
-                    </a>
-                    .
-                  </Sans>
+                  <ConditionsOfSaleDisclaimer />
                 </Media>
               </Flex>
             }
@@ -138,16 +136,7 @@ export class Accept extends Component<AcceptProps, AcceptState> {
                       Submit
                     </Button>
                     <Spacer mb={2} />
-                    <Sans size="2" color="black60">
-                      By clicking Submit, I agree to Artsy’s{" "}
-                      <a
-                        href="https://www.artsy.net/conditions-of-sale"
-                        target="_blank"
-                      >
-                        Conditions of Sale
-                      </a>
-                      .
-                    </Sans>
+                    <ConditionsOfSaleDisclaimer />
                     <Spacer mb={2} />
                     <Helper artworkId={artwork.id} />
                   </>
@@ -156,30 +145,6 @@ export class Accept extends Component<AcceptProps, AcceptState> {
             }
           />
         </HorizontalPadding>
-      </>
-    )
-  }
-
-  renderHeaderEntry() {
-    const { id } = this.props.order
-
-    return (
-      <>
-        <Flex justifyContent="space-between" alignItems="baseline">
-          <div>
-            <Serif size={["2", "3t"]} weight="semibold" color="black100">
-              Accept seller's offer
-            </Serif>
-          </div>
-          <div>
-            <Sans size="2">
-              <a className="colorLink" href={`/orders/${id}/review`}>
-                Change
-              </a>
-            </Sans>
-          </div>
-        </Flex>
-        <Spacer mb={2} />
       </>
     )
   }
