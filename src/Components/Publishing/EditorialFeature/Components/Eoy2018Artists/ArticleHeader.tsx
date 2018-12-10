@@ -4,7 +4,6 @@ import { flatten, map } from "lodash"
 import React from "react"
 import styled from "styled-components"
 import { resize } from "Utils/resizer"
-import { Media } from "Utils/Responsive"
 
 export class Eoy2018ArticleHeader extends React.Component<{
   images?: any

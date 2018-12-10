@@ -1,12 +1,4 @@
-import {
-  Box,
-  color,
-  Flex,
-  Sans,
-  Serif,
-  space,
-  themeProps,
-} from "@artsy/palette"
+import { Box, color, Flex, Sans, Serif, space } from "@artsy/palette"
 import { compact, find, map } from "lodash"
 import React from "react"
 import styled from "styled-components"
@@ -23,6 +15,7 @@ import {
   ImageSetPreview,
   ImgContainer,
 } from "Components/Publishing/Sections/ImageSetPreview"
+import { LabelWrapper } from "Components/Publishing/Sections/ImageSetPreview/ImageSetLabel"
 import { resize } from "Utils/resizer"
 import { Eoy2018ArticleHeader } from "./ArticleHeader"
 
@@ -66,7 +59,7 @@ export class Eoy2018Artists extends React.Component<ArticleProps> {
       <ArtistHeaderSection
         key={i}
         mb={40}
-        flexDirection={["column", "column", "row"]}
+        flexDirection={["column", "column", "column", "row"]}
       >
         <ArtistHeaderTitle dangerouslySetInnerHTML={{ __html: section.body }} />
         <ArtistHeaderImg src={src && resize(src, { width: 700 })} />
@@ -76,8 +69,8 @@ export class Eoy2018Artists extends React.Component<ArticleProps> {
 
   sectionText = (section, i) => {
     return (
-      <Box maxWidth={["100%", "75%"]} ml="auto" px={[20, 0]}>
-        <TextSection size="5" key={i} pb={60}>
+      <Box maxWidth={["100%", "75%", "75%"]} ml="auto" px={[20, 0]}>
+        <TextSection size="5" key={i} pb={[40, 60]}>
           <div dangerouslySetInnerHTML={{ __html: section.body }} />
         </TextSection>
       </Box>
@@ -88,7 +81,7 @@ export class Eoy2018Artists extends React.Component<ArticleProps> {
     return (
       <ImageSetWrapper key={i} mb={60}>
         <ImageSetPreview section={section}>
-          <CaptionWrapper size="4">
+          <CaptionWrapper size={["3", "4"]}>
             <ImageSetCaption
               dangerouslySetInnerHTML={{ __html: section.images[0].caption }}
             />
@@ -148,7 +141,7 @@ export class Eoy2018Artists extends React.Component<ArticleProps> {
             <IntroSection
               alignItems="flex-start"
               flexDirection={["column", "row"]}
-              pl={20}
+              pl={[0, 20]}
             >
               <Byline article={article} />
               {introText}
@@ -208,12 +201,17 @@ const ArtistHeaderSection = styled(Flex)`
   min-height: 450px;
   border: ${BORDER_WIDTH}px solid ${color("purple100")};
   border-left-width: 0;
+
+  ${media.md`
+    height: fit-content;
+  `};
 `
 
 const ArtistHeaderTitle = styled.div`
   flex: 1;
   border-right: ${BORDER_WIDTH}px solid ${color("purple100")};
   overflow: hidden;
+  min-height: min-content;
 
   h1 {
     ${unica("s65")};
@@ -222,10 +220,22 @@ const ArtistHeaderTitle = styled.div`
     min-height: fit-content;
     padding: ${space(2)}px;
     border-bottom: ${BORDER_WIDTH}px solid ${color("purple100")};
-    &:hover {
-      background: ${color("purple100")};
-      color: white;
-    }
+
+    ${media.md`
+      width: 60%;
+      float: right;
+      height: 100%;
+      border-bottom: none;
+      border-left: ${BORDER_WIDTH}px solid ${color("purple100")};
+    `};
+
+    ${media.xs`
+      border-bottom: ${BORDER_WIDTH}px solid ${color("purple100")};
+      border-left: none;
+      width: 100%;
+      height: 50%;
+      float: none;
+    `};
   }
 
   h2 {
@@ -238,13 +248,28 @@ const ArtistHeaderTitle = styled.div`
     &:last-child {
       border-left: ${BORDER_WIDTH}px solid ${color("purple100")};
     }
-    &:hover {
-      background: ${color("purple100")};
-      color: white;
-    }
+
+    ${media.md`
+      width: 40%;
+      float: left;
+      &:last-child {
+        border-left: none;
+        border-top: ${BORDER_WIDTH}px solid ${color("purple100")};
+      }
+    `};
+
+    ${media.xs`
+      width: 50%;
+      float: none;
+      &:last-child {
+        border-left: ${BORDER_WIDTH}px solid ${color("purple100")};
+        border-top: none;
+      }
+    `};
   }
 
-  ${media.xs`
+  ${media.md`
+    height: 65vh;
     border-right: none;
     border-bottom: ${BORDER_WIDTH}px solid ${color("purple100")};
   `};
@@ -260,12 +285,19 @@ const ArtistHeaderImg = styled.div<{ src?: string }>`
     background-size: cover;
     background-position: center;
   `};
+
+  ${media.md`
+    min-height: 70vw;
+  `};
 `
 
 const IntroSection = styled(Flex)`
   ${BylineContainer} {
     flex-direction: column;
     align-items: flex-start;
+    ${media.md`
+      padding: 0 20px 20px;
+    `};
   }
 `
 
@@ -281,6 +313,10 @@ const TextSection = styled(Serif)`
 `
 const CaptionWrapper = styled(Sans)`
   flex: 1;
+
+  ${media.sm`
+    min-width: 50%;
+  `};
 `
 
 const ImageSetCaption = styled.div`
@@ -289,6 +325,11 @@ const ImageSetCaption = styled.div`
   background: white;
   color: black;
   border-bottom: ${BORDER_WIDTH}px solid ${color("purple100")};
+
+  ${media.sm`
+    border-bottom: none;
+    border-right: ${BORDER_WIDTH}px solid ${color("purple100")};
+  `};
 `
 
 const ImageSetWrapper = styled(Box)`
@@ -317,6 +358,13 @@ const ImageSetWrapper = styled(Box)`
     &:hover {
       background-color: ${color("purple100")};
     }
+    ${media.sm`
+      flex-direction: row-reverse;
+
+      ${LabelWrapper} {
+        max-width: 50%;
+      }
+    `};
   }
 
   ${ImgContainer} {
@@ -331,6 +379,6 @@ const ImageSetWrapper = styled(Box)`
     ${media.sm`
       border-right: none;
       border-bottom: ${BORDER_WIDTH}px solid ${color("purple100")};
-  `};
+    `};
   }
 `
