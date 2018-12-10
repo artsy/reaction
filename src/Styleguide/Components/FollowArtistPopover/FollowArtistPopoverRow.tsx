@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Flex, Separator } from "@artsy/palette"
+import { Avatar, Box, Button, Flex, Serif } from "@artsy/palette"
 import { FollowArtistPopoverRow_artist } from "__generated__/FollowArtistPopoverRow_artist.graphql"
 import { FollowArtistPopoverRowMutation } from "__generated__/FollowArtistPopoverRowMutation.graphql"
 import { ContextProps } from "Artsy"
@@ -15,6 +15,14 @@ interface Props extends ContextProps {
 interface State {
   swappedArtist: FollowArtistPopoverRow_artist
 }
+
+const ArtistName = styled(Serif)`
+  width: 125px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+`
+const FollowButtonContainer = Box
 
 class FollowArtistPopoverRow extends React.Component<Props, State> {
   state = {
@@ -62,44 +70,25 @@ class FollowArtistPopoverRow extends React.Component<Props, State> {
     const imageUrl = get(artist, a => a.image.cropped.url)
     const { _id: artistID } = artist
     return (
-      <>
-        <Flex my={2}>
-          <Box mr={1}>
-            <Avatar size="xs" src={imageUrl} />
-          </Box>
-          <Box mr={2}>
-            <ArtistName>{artist.name}</ArtistName>
-          </Box>
-          <Box>
-            <FollowButtonContainer>
-              <Button
-                onClick={() => this.handleClick(artistID)}
-                variant="secondaryOutline"
-                size="small"
-                width="70px"
-              >
-                Follow
-              </Button>
-            </FollowButtonContainer>
-          </Box>
-        </Flex>
-        <Separator />
-      </>
+      <Flex alignItems="center" mb={1} mt={1}>
+        <Avatar size="xs" src={imageUrl} />
+        <ArtistName size="3t" color="black100" ml={1} mr={1}>
+          {artist.name}
+        </ArtistName>
+        <FollowButtonContainer>
+          <Button
+            onClick={() => this.handleClick(artistID)}
+            variant="secondaryOutline"
+            size="small"
+            width="70px"
+          >
+            Follow
+          </Button>
+        </FollowButtonContainer>
+      </Flex>
     )
   }
 }
-
-const ArtistName = styled.div`
-  width: 115px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  line-height: 45px;
-`
-
-const FollowButtonContainer = styled.div`
-  line-height: 45px;
-`
 
 export const FollowArtistPopoverRowFragmentContainer = createFragmentContainer(
   FollowArtistPopoverRow,

@@ -1,20 +1,17 @@
+import { Box, ButtonProps } from "@artsy/palette"
 import { FollowArtistButtonMutation } from "__generated__/FollowArtistButtonMutation.graphql"
 import * as Artsy from "Artsy/SystemContext"
 import { extend } from "lodash"
 import React from "react"
-import Popover from "react-popover"
 import track, { TrackingProp } from "react-tracking"
 import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
-import {
-  FollowArtistPopoverFragmentContainer as SuggestionsPopover,
-  FollowArtistPopoverTitle as PopoverTitle,
-} from "Styleguide/Components/FollowArtistPopover"
+import styled from "styled-components"
+import { FollowArtistPopoverFragmentContainer as SuggestionsPopover } from "Styleguide/Components/FollowArtistPopover"
 import { FollowArtistButton_artist } from "../../__generated__/FollowArtistButton_artist.graphql"
 import { FollowButton } from "./Button"
 import { FollowButtonDeprecated } from "./ButtonDeprecated"
 import { FollowTrackingData } from "./Typings"
 
-import { ButtonProps } from "@artsy/palette"
 import {
   commitMutation,
   createFragmentContainer,
@@ -52,6 +49,11 @@ interface State {
   openSuggestions: boolean
 }
 
+const SuggestionsPopoverContainer = styled(Box)`
+  position: absolute;
+  z-index: 1000;
+`
+
 export class FollowArtistButton extends React.Component<Props, State> {
   static defaultProps = {
     useDeprecatedButtonStyle: true,
@@ -59,9 +61,7 @@ export class FollowArtistButton extends React.Component<Props, State> {
     triggerSuggestions: false,
   }
 
-  state = {
-    openSuggestions: false,
-  }
+  state = { openSuggestions: false }
 
   trackFollow = () => {
     const {
@@ -104,7 +104,10 @@ export class FollowArtistButton extends React.Component<Props, State> {
           }
         `,
         variables: {
-          input: { artist_id: artist.id, unfollow: artist.is_followed },
+          input: {
+            artist_id: artist.id,
+            unfollow: artist.is_followed,
+          },
         },
         optimisticResponse: {
           followArtist: {
@@ -155,36 +158,31 @@ export class FollowArtistButton extends React.Component<Props, State> {
       ? FollowButtonDeprecated
       : FollowButton
 
-    const popoverBody = [
-      <PopoverTitle onClose={() => this.closePopover()} />,
-      <SuggestionsPopover user={user} suggested={artist} />,
-    ]
     // Custom button renderer
-    if (render) {
-      return (
-        <Popover
-          onOuterAction={() => this.closePopover()}
-          isOpen={openSuggestions}
-          body={popoverBody}
-        >
-          <span onClick={this.handleFollow}>{render(artist)}</span>
-        </Popover>
-      )
-    } else {
-      return (
-        <Popover
-          onOuterAction={() => this.closePopover()}
-          isOpen={openSuggestions}
-          body={popoverBody}
-        >
-          <Button
-            isFollowed={artist && artist.is_followed}
-            handleFollow={this.handleFollow}
-            buttonProps={buttonProps}
-          />
-        </Popover>
-      )
-    }
+    const content = render ? (
+      <span onClick={this.handleFollow}> {render(artist)}</span>
+    ) : (
+      <Button
+        isFollowed={artist && artist.is_followed}
+        handleFollow={this.handleFollow}
+        buttonProps={buttonProps}
+      />
+    )
+
+    return (
+      <>
+        {content}
+        {openSuggestions && (
+          <SuggestionsPopoverContainer>
+            <SuggestionsPopover
+              user={user}
+              suggested={artist}
+              onClose={() => this.closePopover()}
+            />
+          </SuggestionsPopoverContainer>
+        )}
+      </>
+    )
   }
 }
 
