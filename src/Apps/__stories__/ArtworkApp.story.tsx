@@ -52,3 +52,19 @@ storiesOf("Apps/Artwork Page", module)
       />
     )
   })
+  .add("Cultural Maker Artwork", () => {
+    return (
+      <MockRouter
+        routes={artworkRoutes}
+        initialRoute="/artwork2/american-18th-century-lady-wearing-a-large-white-cap"
+      />
+    )
+  })
+  .add("Collecting Institution", () => {
+    return (
+      <MockRouter
+        routes={artworkRoutes}
+        initialRoute="/artwork2/arlington-weithers-white-crossing"
+      />
+    )
+  })

@@ -1,5 +1,6 @@
 import { routes_OrderQueryResponse } from "__generated__/routes_OrderQuery.graphql"
 import { Location, RedirectException, RouteConfig, Router } from "found"
+import moment from "moment"
 import { get } from "Utils/get"
 import { OrderApp } from "./OrderApp"
 
@@ -101,6 +102,19 @@ const goToReviewIfOrderIsPending: RedirectPredicate = ({ order }) => {
   }
 }
 
+const goToRespondIfMyLastOfferIsNotMostRecentOffer: RedirectPredicate = ({
+  order,
+}) => {
+  if (
+    order.myLastOffer &&
+    order.lastOffer &&
+    moment(order.myLastOffer.createdAt).isAfter(order.lastOffer.createdAt)
+  ) {
+    return
+  }
+  return `/orders/${order.id}/respond`
+}
+
 const redirects: RedirectRecord = {
   path: "",
   rules: [goToArtworkIfOrderWasAbandoned],
@@ -140,6 +154,15 @@ const redirects: RedirectRecord = {
       ],
     },
     {
+      path: "review/counter",
+      rules: [
+        goToStatusIfNotOfferOrder,
+        goToStatusIfNotAwaitingBuyerResponse,
+        goToStatusIfOrderIsNotSubmitted,
+        goToRespondIfMyLastOfferIsNotMostRecentOffer,
+      ],
+    },
+    {
       path: "status",
       rules: [
         goToReviewIfOrderIsPending,
@@ -161,9 +184,7 @@ export const shouldRedirect = ({
     return false
   }
 
-  const locationParts = location.pathname.split("/").slice(3)
-
-  function traverse(node: RedirectRecord, path: string[]): void {
+  function traverse(node: RedirectRecord, path: string): void {
     node.rules.forEach(rule => {
       const redirectPath = rule({ order })
       if (redirectPath) {
@@ -171,15 +192,26 @@ export const shouldRedirect = ({
       }
     })
     if (path.length > 0 && node.children) {
-      node.children.forEach(child => {
-        if (child.path === path[0]) {
-          traverse(child, path.slice(1))
-        }
-      })
+      // find most specific matching child (i.e. longest path match)
+      const matchingChild = node.children
+        .filter(child => path.startsWith(child.path))
+        .sort((a, b) => a.path.split("/").length - b.path.split("/").length)
+        .pop()
+      if (matchingChild) {
+        traverse(
+          matchingChild,
+          trimLeadingSlashes(path.slice(matchingChild.path.length))
+        )
+      }
     }
   }
 
-  traverse(redirects, locationParts)
+  traverse(
+    redirects,
+    trimLeadingSlashes(location.pathname.replace(/order(2|s)\/[^\/]+/, ""))
+  )
 
   return false
 }
+
+const trimLeadingSlashes = (s: string) => s.replace(/^\/+/, "")

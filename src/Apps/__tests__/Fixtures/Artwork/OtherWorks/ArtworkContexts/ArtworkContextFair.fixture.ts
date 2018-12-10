@@ -1,5 +1,10 @@
+import { LayerFixture, LayersFixture } from "./RelatedWorksArtworkGrid.fixture"
+
 export const ArtworkContextFairFixture = {
   artwork: {
+    ...LayerFixture,
+    ...LayersFixture,
+
     id: "lucio-fontana-concetto-spaziale-attese-139",
     artist: {
       name: "Lucio Fontana",

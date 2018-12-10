@@ -1,5 +1,14 @@
-import { Box, Button, Separator, Serif } from "@artsy/palette"
-import React from "react"
+import {
+  Box,
+  Button,
+  Flex,
+  FlexProps,
+  Radio,
+  RadioGroup,
+  Separator,
+  Serif,
+} from "@artsy/palette"
+import React, { SFC } from "react"
 import {
   commitMutation,
   createFragmentContainer,
@@ -9,50 +18,84 @@ import {
 
 import { ArtworkSidebarCommercial_artwork } from "__generated__/ArtworkSidebarCommercial_artwork.graphql"
 import { ArtworkSidebarCommercialOrderMutation } from "__generated__/ArtworkSidebarCommercialOrderMutation.graphql"
+import { ContextConsumer } from "Artsy/Router"
+import { Mediator } from "Artsy/SystemContext"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { ErrorWithMetadata } from "Utils/errors"
 import { ArtworkSidebarSizeInfoFragmentContainer as SizeInfo } from "./ArtworkSidebarSizeInfo"
 
-export interface ArtworkSidebarCommercialProps {
-  artwork: ArtworkSidebarCommercial_artwork
-  relay?: RelayProp
+export interface ArtworkSidebarCommercialContainerProps
+  extends ArtworkSidebarCommercialProps {
+  mediator: Mediator
 }
 
-export interface ArtworkSidebarCommercialState {
+export interface ArtworkSidebarCommercialContainerState {
   isCommittingCreateOrderMutation: boolean
   isErrorModalOpen: boolean
+  selectedEditionId: string
 }
+const Row: React.SFC<FlexProps> = ({ children, ...others }) => (
+  <Flex justifyContent="left" alignItems="top" {...others}>
+    {children}
+  </Flex>
+)
 
-export class ArtworkSidebarCommercial extends React.Component<
-  ArtworkSidebarCommercialProps,
-  ArtworkSidebarCommercialState
+export class ArtworkSidebarCommercialContainer extends React.Component<
+  ArtworkSidebarCommercialContainerProps,
+  ArtworkSidebarCommercialContainerState
 > {
   state = {
     isCommittingCreateOrderMutation: false,
     isErrorModalOpen: false,
+    selectedEditionId:
+      this.props.artwork.edition_sets[0] &&
+      this.props.artwork.edition_sets[0].__id,
   }
 
-  renderSaleMessage() {
-    return (
-      <Serif size="5t" weight="semibold">
-        {this.props.artwork.sale_message}
-      </Serif>
+  renderEdition(edition) {
+    const { artwork } = this.props
+    const isEcommerceEnrolled =
+      (artwork.is_acquireable || artwork.is_offerable) &&
+      (edition.is_acquireable || edition.is_offerable)
+
+    const editionFragment = (
+      <>
+        <SizeInfo piece={edition} />
+        <Serif ml="auto" size="2">
+          {edition.sale_message}
+        </Serif>
+      </>
     )
+    if (isEcommerceEnrolled) {
+      return (
+        <Row>
+          <Radio
+            mr="1"
+            onSelect={e => {
+              this.setState({ selectedEditionId: edition.__id } as any)
+            }}
+            selected={this.state.selectedEditionId === edition.__id}
+            disabled={!isEcommerceEnrolled}
+          />
+          {editionFragment}
+        </Row>
+      )
+    } else {
+      return <Row>{editionFragment}</Row>
+    }
   }
-
   renderEditions() {
     const editions = this.props.artwork.edition_sets
-    return editions.map((edition, index) => {
+    const editionsFragment = editions.map((edition, index) => {
       return (
         <React.Fragment key={edition.__id}>
-          <Box pb={2}>
-            {this.renderSaleMessage()}
-            <SizeInfo piece={edition} />
-          </Box>
+          <Box p={2}>{this.renderEdition(edition)}</Box>
           {index !== editions.length - 1 && <Separator />}
         </React.Fragment>
       )
     })
+
+    return <RadioGroup>{editionsFragment}</RadioGroup>
   }
 
   onMutationError(error) {
@@ -64,6 +107,14 @@ export class ArtworkSidebarCommercial extends React.Component<
 
   onCloseModal = () => {
     this.setState({ isErrorModalOpen: false })
+  }
+
+  handleInquiry = () => {
+    this.props.mediator &&
+      this.props.mediator.trigger &&
+      this.props.mediator.trigger("launchInquiryFlow", {
+        artworkId: this.props.artwork.id,
+      })
   }
 
   handleCreateOrder = e => {
@@ -129,33 +180,53 @@ export class ArtworkSidebarCommercial extends React.Component<
   render() {
     const { artwork } = this.props
     const { isCommittingCreateOrderMutation } = this.state
+    const isEcommerceEnrolled = artwork.is_acquireable || artwork.is_offerable
+
+    const { collecting_institution } = artwork
+    if (collecting_institution) {
+      return (
+        <Box pb={1}>
+          <Serif size="3" weight="regular">
+            {collecting_institution}
+          </Serif>
+        </Box>
+      )
+    }
 
     if (!artwork.sale_message && !artwork.is_inquireable) {
       return null
     }
+
     return (
       <Box pb={3} textAlign="left">
         {artwork.edition_sets.length < 2 && artwork.sale_message ? (
           <Box pb={2} pt={1}>
-            {this.renderSaleMessage()}
+            <Serif size="5t" weight="semibold">
+              {artwork.sale_message}
+            </Serif>
           </Box>
         ) : (
           this.renderEditions()
         )}
-        {(artwork.is_acquireable || artwork.is_offerable) &&
+        {isEcommerceEnrolled &&
           artwork.shippingInfo && (
             <Serif size="2" color="black60">
               {artwork.shippingInfo}
             </Serif>
           )}
-        {(artwork.is_acquireable || artwork.is_offerable) &&
+        {isEcommerceEnrolled &&
           artwork.shippingOrigin && (
             <Serif size="2" color="black60">
               Ships from {artwork.shippingOrigin}
             </Serif>
           )}
         {artwork.is_inquireable && (
-          <Button width="100%" size="medium" mt={1}>
+          <Button
+            width="100%"
+            size="medium"
+            mt={1}
+            onClick={this.handleInquiry}
+          >
             Contact Gallery
           </Button>
         )}
@@ -193,11 +264,29 @@ export class ArtworkSidebarCommercial extends React.Component<
   }
 }
 
+interface ArtworkSidebarCommercialProps {
+  artwork: ArtworkSidebarCommercial_artwork
+  relay?: RelayProp
+}
+
+export const ArtworkSidebarCommercial: SFC<
+  ArtworkSidebarCommercialProps
+> = props => {
+  return (
+    <ContextConsumer>
+      {({ mediator }) => (
+        <ArtworkSidebarCommercialContainer {...props} mediator={mediator} />
+      )}
+    </ContextConsumer>
+  )
+}
+
 export const ArtworkSidebarCommercialFragmentContainer = createFragmentContainer(
   ArtworkSidebarCommercial,
   graphql`
     fragment ArtworkSidebarCommercial_artwork on Artwork {
       id
+      collecting_institution
       is_acquireable
       is_inquireable
       is_offerable

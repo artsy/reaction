@@ -2,30 +2,27 @@ import { TransactionDetailsSummaryItem_order } from "__generated__/TransactionDe
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 
-import {
-  Flex,
-  FlexProps,
-  Sans,
-  Serif,
-  Spacer,
-  StackableBorderBox,
-} from "@artsy/palette"
+import { Flex, Sans, Serif, Spacer } from "@artsy/palette"
+import { StepSummaryItem, StepSummaryItemProps } from "Styleguide/Components"
 
-export interface TransactionDetailsSummaryItemProps extends FlexProps {
+export interface TransactionDetailsSummaryItemProps
+  extends StepSummaryItemProps {
   order: TransactionDetailsSummaryItem_order
   offerOverride?: string | null
-  renderHeaderEntry?: () => React.StatelessComponent
   useLastSubmittedOffer?: boolean
+  offerContextPrice?: "LIST_PRICE" | "LAST_OFFER"
 }
 
 export class TransactionDetailsSummaryItem extends React.Component<
   TransactionDetailsSummaryItemProps
 > {
+  static defaultProps: Partial<TransactionDetailsSummaryItemProps> = {
+    offerContextPrice: "LIST_PRICE",
+  }
   render() {
     const { offerOverride, order, ...others } = this.props
     return (
-      <StackableBorderBox flexDirection="column" {...others}>
-        {this.props.renderHeaderEntry ? this.props.renderHeaderEntry() : null}
+      <StepSummaryItem {...others}>
         {this.renderPriceEntry()}
         <Spacer mb={2} />
         <Entry label="Shipping" value={this.shippingDisplayAmount()} />
@@ -33,7 +30,7 @@ export class TransactionDetailsSummaryItem extends React.Component<
         <Entry label="Tax" value={this.taxDisplayAmount()} />
         <Spacer mb={2} />
         <Entry label="Total" value={this.buyerTotalDisplayAmount()} final />
-      </StackableBorderBox>
+      </StepSummaryItem>
     )
   }
 
@@ -87,7 +84,7 @@ export class TransactionDetailsSummaryItem extends React.Component<
   }
 
   renderPriceEntry = () => {
-    const { order, offerOverride } = this.props
+    const { order, offerOverride, offerContextPrice } = this.props
     if (order.mode === "BUY") {
       return <Entry label="Price" value={order.itemsTotal} />
     }
@@ -101,7 +98,19 @@ export class TransactionDetailsSummaryItem extends React.Component<
           label={isBuyerOffer ? "Your offer" : "Seller's offer"}
           value={offerOverride || (offer && offer.amount) || "—"}
         />
-        <SecondaryEntry label="List price" value={order.totalListPrice} />
+        {offerContextPrice === "LIST_PRICE" ? (
+          <SecondaryEntry label="List price" value={order.totalListPrice} />
+        ) : (
+          // show last offer
+          <SecondaryEntry
+            label={
+              order.lastOffer.fromParticipant === "SELLER"
+                ? "Seller's offer"
+                : "Your offer"
+            }
+            value={order.lastOffer.amount}
+          />
+        )}
       </>
     )
   }

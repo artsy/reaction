@@ -2,6 +2,7 @@ import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
 import { OtherWorksQueryRenderer as OtherWorks } from "../OtherWorks"
+import { RelatedWorksArtworkGridQueryRenderer as RelatedWorksArtworkGrid } from "../OtherWorks/ArtworkContexts/ArtworkGrids/RelatedWorksArtworkGrid"
 
 storiesOf("Styleguide/Artwork/OtherWorks", module)
   .add("Auctions", () => {
@@ -34,6 +35,13 @@ storiesOf("Styleguide/Artwork/OtherWorks", module)
     return (
       <Section title="Gallery">
         <OtherWorks artworkSlug="david-hockney-early-morning-4" />
+      </Section>
+    )
+  })
+  .add("Related", () => {
+    return (
+      <Section title="Related">
+        <RelatedWorksArtworkGrid artworkSlug="david-hockney-early-morning-4" />
       </Section>
     )
   })

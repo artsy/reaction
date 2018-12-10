@@ -6,6 +6,7 @@ import { Save_artwork$ref } from "./Save_artwork.graphql";
 declare const _GridItem_artwork$ref: unique symbol;
 export type GridItem_artwork$ref = typeof _GridItem_artwork$ref;
 export type GridItem_artwork = {
+    readonly _id: string;
     readonly image: ({
         readonly placeholder: string | null;
         readonly url: string | null;
@@ -38,6 +39,13 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "_id",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -131,5 +139,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '219059d721b4d3f76d2bcd3d6f602b5b';
+(node as any).hash = '94cf0d18984ef360ba6a89202179127c';
 export default node;

@@ -6,6 +6,8 @@ import {
   OfferOrderWithShippingDetails,
   UntouchedBuyOrder,
 } from "Apps/__tests__/Fixtures/Order"
+import { CreditCardSummaryItemFragmentContainer } from "Apps/Order/Components/CreditCardSummaryItem"
+import { ShippingSummaryItemFragmentContainer } from "Apps/Order/Components/ShippingSummaryItem"
 import { ErrorModal, ModalButton } from "Components/Modal/ErrorModal"
 import { MockBoot } from "DevTools"
 import { commitMutation } from "react-relay"
@@ -75,8 +77,7 @@ describe("Review", () => {
     it("takes the user back to the /shipping view", () => {
       const component = getWrapper(defaultProps)
       component
-        .find(StepSummaryItem)
-        .first()
+        .find(ShippingSummaryItemFragmentContainer)
         .find("a")
         .simulate("click")
       expect(pushMock).toBeCalledWith("/orders/1234/shipping")
@@ -85,8 +86,7 @@ describe("Review", () => {
     it("takes the user back to the /payment view", () => {
       const component = getWrapper(defaultProps)
       component
-        .find(StepSummaryItem)
-        .last()
+        .find(CreditCardSummaryItemFragmentContainer)
         .find("a")
         .simulate("click")
       expect(pushMock).toBeCalledWith("/orders/1234/payment")
@@ -185,7 +185,7 @@ describe("Review", () => {
     it("shows an offer section in the shipping and payment review", () => {
       const component = getWrapper(offerOrderProps)
 
-      expect(component.find(StepSummaryItem).length).toEqual(3)
+      expect(component.find(StepSummaryItem).length).toEqual(4)
 
       expect(
         component

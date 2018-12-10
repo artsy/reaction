@@ -11,6 +11,6 @@ storiesOf("Styleguide/Artwork/ActionButtons", module)
   ))
   .add("Share button", () => (
     <Flex justifyContent="center" alignItems="flex-end" height="500px">
-      <ShareButton />
+      <ShareButton href="/some/artwork/href" />
     </Flex>
   ))

@@ -174,27 +174,59 @@ storiesOf("Apps/Order Page/Make Offer/Review", module).add("Review", () => (
   />
 ))
 
-storiesOf("Apps/Order Page/Counter Offer", module).add("Respond", () => (
-  <Router
-    initialRoute="/orders/123/respond"
-    mockResolvers={mockResolver({
-      ...OfferOrderWithShippingDetails,
-      state: "SUBMITTED",
-      stateExpiresAt: moment()
-        .add(1, "day")
-        .toISOString(),
-      lastOffer: {
-        ...OfferWithTotals,
-        createdAt: moment()
-          .subtract(1, "day")
+storiesOf("Apps/Order Page/Counter Offer", module)
+  .add("Respond", () => (
+    <Router
+      initialRoute="/orders/123/respond"
+      mockResolvers={mockResolver({
+        ...OfferOrderWithShippingDetails,
+        state: "SUBMITTED",
+        stateExpiresAt: moment()
+          .add(1, "day")
           .toISOString(),
-      },
-      awaitingResponseFrom: "BUYER",
-      offers: { edges: Offers },
-      buyer: Buyer,
-    })}
-  />
-))
+        lastOffer: {
+          ...OfferWithTotals,
+          createdAt: moment()
+            .subtract(1, "day")
+            .toISOString(),
+        },
+        awaitingResponseFrom: "BUYER",
+        offers: { edges: Offers },
+        buyer: Buyer,
+      })}
+    />
+  ))
+
+  .add("Review (counter)", () => (
+    <Router
+      initialRoute="/orders/123/review/counter"
+      mockResolvers={mockResolver({
+        ...OfferOrderWithShippingDetails,
+        state: "SUBMITTED",
+        stateExpiresAt: moment()
+          .add(1, "day")
+          .toISOString(),
+        lastOffer: {
+          ...OfferWithTotals,
+          id: "last-offer",
+          createdAt: moment()
+            .subtract(1, "day")
+            .toISOString(),
+        },
+        myLastOffer: {
+          ...OfferWithTotals,
+          id: "my-last-offer",
+          fromParticipant: "BUYER",
+          createdAt: moment()
+            .subtract(1, "minute")
+            .toISOString(),
+        },
+        awaitingResponseFrom: "BUYER",
+        offers: { edges: Offers },
+        buyer: Buyer,
+      })}
+    />
+  ))
 
 storiesOf("Apps/Order Page/Accept Offer", module).add("Review (accept)", () => (
   <Router

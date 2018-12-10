@@ -16,6 +16,9 @@ import {
   LoadingArea,
   LoadingAreaState,
 } from "Apps/Artist/Components/LoadingArea"
+import createLogger from "Utils/logger"
+
+const logger = createLogger("ArtistAuctionResults.tsx")
 
 const PAGE_SIZE = 10
 
@@ -66,7 +69,7 @@ class AuctionResultsContainer extends Component<
       null,
       error => {
         if (error) {
-          console.error(error)
+          logger.error(error)
         }
       }
     )

@@ -18,7 +18,7 @@ const ArtworkImages: React.SFC<ArtworkImagesProps> = props => {
       actions={
         <>
           <SaveButton />
-          <ShareButton />
+          <ShareButton href={props.artwork.href} />
         </>
       }
     />
@@ -32,6 +32,7 @@ export const ArtworkImagesFragmentContainer = createFragmentContainer(
       title
       image_alt: to_s
       image_title
+      href
       images {
         id
         uri: url(version: ["larger", "large"])

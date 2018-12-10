@@ -49,7 +49,10 @@ describe("ArtworkSidebarMetadata", () => {
     })
 
     it("displays dimentions", () => {
-      expect(wrapper.html()).toContain("97 × 15 in; 246.4 × 38.1 cm")
+      const html = wrapper.html()
+
+      expect(html).toContain("97 × 15 in")
+      expect(html).toContain("246.4 × 38.1 cm")
     })
 
     it("displays classification", () => {
@@ -71,7 +74,9 @@ describe("ArtworkSidebarMetadata", () => {
     })
 
     it("displays edition dimentions", () => {
-      expect(wrapper.html()).toContain("14 × 18 in; 35.6 × 45.7 cm")
+      const html = wrapper.html()
+      expect(html).toContain("14 × 18 in")
+      expect(html).toContain("35.6 × 45.7 cm")
     })
 
     it("displays edition details", () => {
@@ -99,7 +104,8 @@ describe("ArtworkSidebarMetadata", () => {
     it("does not render edition dimentions or details", () => {
       expect(wrapper.find(ArtworkSidebarSizeInfo).length).toBe(0)
       const html = wrapper.html()
-      expect(html).not.toContain("40 × 42 in; cm: 101.6 × 106.7 cm")
+      expect(html).not.toContain("40 × 42 in")
+      expect(html).not.toContain("101.6 × 106.7 cm")
       expect(html).not.toContain("Edition of 3000")
     })
 
@@ -146,7 +152,10 @@ describe("ArtworkSidebarMetadata", () => {
     })
 
     it("displays edition dimentions", () => {
-      expect(wrapper.html()).toContain("17 × 13 in; 43.2 × 33 cm")
+      const html = wrapper.html()
+
+      expect(html).toContain("17 × 13 in")
+      expect(html).toContain("43.2 × 33 cm")
     })
 
     it("displays classification", () => {

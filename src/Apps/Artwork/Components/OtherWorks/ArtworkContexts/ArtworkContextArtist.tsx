@@ -55,7 +55,7 @@ export const ArtworkContextArtistFragmentContainer = createFragmentContainer<{
       <Join separator={<Spacer my={2} />}>
         <ArtistArtworkGrid artwork={props.artwork} />
         <PartnerArtworkGrid artwork={props.artwork} />
-        <RelatedWorksArtworkGrid />
+        <RelatedWorksArtworkGrid artwork={props.artwork} />
       </Join>
     )
   },
@@ -71,6 +71,7 @@ export const ArtworkContextArtistFragmentContainer = createFragmentContainer<{
         @arguments(excludeArtworkIDs: $excludeArtworkIDs)
       ...PartnerArtworkGrid_artwork
         @arguments(excludeArtworkIDs: $excludeArtworkIDs)
+      ...RelatedWorksArtworkGrid_artwork
     }
   `
 )
