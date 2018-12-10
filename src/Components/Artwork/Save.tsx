@@ -37,7 +37,7 @@ interface State {
 }
 
 @track()
-export class SaveButtonContainer extends React.Component<Props, State> {
+class SaveButtonContainer extends React.Component<Props, State> {
   static defaultProps = {
     useRelay: true,
   }
