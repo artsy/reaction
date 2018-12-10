@@ -60,11 +60,3 @@ storiesOf("Apps/Artwork Page", module)
       />
     )
   })
-  .add("Collecting Institution", () => {
-    return (
-      <MockRouter
-        routes={artworkRoutes}
-        initialRoute="/artwork2/arlington-weithers-white-crossing"
-      />
-    )
-  })
