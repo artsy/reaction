@@ -69,9 +69,10 @@ class FollowArtistPopoverRow extends React.Component<Props, State> {
     const artist = swappedArtist || originalArtist
     const imageUrl = get(artist, a => a.image.cropped.url)
     const { _id: artistID } = artist
+    const key = `avatar-${artistID}`
     return (
       <Flex alignItems="center" mb={1} mt={1}>
-        <Avatar size="xs" src={imageUrl} />
+        <Avatar size="xs" src={imageUrl} key={key} />
         <ArtistName size="3t" color="black100" ml={1} mr={1}>
           {artist.name}
         </ArtistName>
