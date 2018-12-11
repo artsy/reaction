@@ -97,6 +97,15 @@ Release versions (major, minor, patch) are triggered [by commit messages](https:
 [BREAKING publishing] Replace children with props for caption editing
 ```
 
+### Troubleshooting Semantic Release
+
+> npm ERR! You cannot publish over the previously published versions
+
+This race condition can happen when multiple PRs are published at the same time, leading to a discrepency between the tag representing the latest release and the version that's currently published to NPM. There are two possible ways to fix this:
+
+1) Update `package.json` with the next patch version, save, and then run `yarn publish --access public` from the command line. Return to CircleCI and rerun failing build. 
+1) Create a [new release](https://github.com/artsy/reaction/releases/new) and ensure the `Tag version` is incremented one patch version higher than the previous release. Then navigate to CircleCI and rerun the failing build. 
+
 ## Emitting types
 
 We recently started shipping Reaction builds with declaration files (`.d.ts`) so consumers have access to the interfaces and types we add to our components. Because of that, you will notice errors resembling the following:
