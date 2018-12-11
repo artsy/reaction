@@ -1,6 +1,7 @@
 import {
   ArtworkBuyNow,
   ArtworkBuyNowMakeOffer,
+  ArtworkBuyNowWithMultipleEditions,
   ArtworkMakeOffer,
   ArtworkSold,
   ContactForPriceWork,
@@ -42,6 +43,9 @@ storiesOf("Styleguide/Artwork/Sidebar", module)
         </Section>
         <Section title="Buy Now &amp; Make Offer / Work available for sale">
           <Commercial artwork={ArtworkBuyNowMakeOffer as any} />
+        </Section>
+        <Section title="Buy Now artwork with multiple edition sets">
+          <Commercial artwork={ArtworkBuyNowWithMultipleEditions as any} />
         </Section>
       </>
     )

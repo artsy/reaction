@@ -1,3 +1,4 @@
+import { space } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
 
@@ -58,7 +59,8 @@ const SmallImage = styled(BaseImage)`
 `
 
 const LargeImage = styled(BaseImage)`
-  max-height: 100%;
+  max-height: 550px;
+  padding: 0 ${space(2)}px;
 `
 
 // TODO: Should Icon have this styling by default?
@@ -69,6 +71,7 @@ const Button = styled.a`
 `
 
 const NavigationButtonContainer = styled.div`
+  cursor: pointer;
   height: 100%;
   width: 40px;
   display: flex;
@@ -159,14 +162,13 @@ const NavigationButton: React.SFC<{
   direction: "left" | "right"
   onClick: () => void
 }> = ({ direction, onClick }) => (
-  <NavigationButtonContainer>
-    <Button
-      href="#"
-      onClick={e => {
-        e.preventDefault()
-        onClick()
-      }}
-    >
+  <NavigationButtonContainer
+    onClick={e => {
+      e.preventDefault()
+      onClick()
+    }}
+  >
+    <Button href="#">
       <Arrow direction={direction} fontSize="24px" />
     </Button>
   </NavigationButtonContainer>
@@ -191,18 +193,25 @@ export class ImageCarousel extends React.Component<
   }
 
   changeCurrentImage(by: number) {
+    let currentImage = (this.state.currentImage + by) % this.props.images.length
+
+    if (currentImage < 0) {
+      currentImage = this.props.images.length - 1
+    }
+
     this.setState({
-      currentImage: (this.state.currentImage + by) % this.props.images.length,
+      currentImage,
     })
   }
 
   renderImage(breakpoint?: string) {
     const xs = breakpoint === "xs"
     const Image = xs ? SmallImage : LargeImage
+    const key = `image-${this.state.currentImage}` // update reconciler to show download on image change
 
     return (
       <Lightbox deepZoom={this.image.deepZoom} enabled={this.image.is_zoomable}>
-        <Image src={this.image.uri} />
+        <Image src={this.image.uri} key={key} />
       </Lightbox>
     )
   }

@@ -69,7 +69,7 @@ return {
             {
               "kind": "Literal",
               "name": "first",
-              "value": 10,
+              "value": 8,
               "type": "Int"
             }
           ],
@@ -90,5 +90,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '5fb44194e5e965e802ff537b7052a738';
+(node as any).hash = 'b0556a1b65313f8d35c6300cf52634ef';
 export default node;

@@ -60,11 +60,19 @@ storiesOf("Apps/Artwork Page", module)
       />
     )
   })
-  .add("Collecting Institution", () => {
+  .add("Tall image", () => {
     return (
       <MockRouter
         routes={artworkRoutes}
-        initialRoute="/artwork2/arlington-weithers-white-crossing"
+        initialRoute="/artwork2/nissa-kauppila-wu-ti-35-degrees-45-35-dot-5-n-81-degrees-21-16-dot-2-w"
+      />
+    )
+  })
+  .add("Wide image", () => {
+    return (
+      <MockRouter
+        routes={artworkRoutes}
+        initialRoute="/artwork2/thelma-appel-sea-garden-iv"
       />
     )
   })

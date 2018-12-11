@@ -29,7 +29,7 @@ export const AuctionArtworkGridFragmentContainer = createFragmentContainer<{
       @argumentDefinitions(excludeArtworkIDs: { type: "[String!]" }) {
       sale {
         href
-        artworksConnection(first: 10, exclude: $excludeArtworkIDs) {
+        artworksConnection(first: 8, exclude: $excludeArtworkIDs) {
           ...ArtworkGrid_artworks
         }
       }
