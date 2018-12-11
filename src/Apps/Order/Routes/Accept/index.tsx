@@ -69,7 +69,6 @@ export class Accept extends Component<AcceptProps, AcceptState> {
                     __typename
                     order {
                       id
-                      mode
                     }
                   }
                   ... on OrderWithMutationFailure {
