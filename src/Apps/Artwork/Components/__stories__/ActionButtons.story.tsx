@@ -1,7 +1,7 @@
 import { Flex } from "@artsy/palette"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { ShareButton } from "../ActionButton"
+import { ShareButton } from "../ImageBrowser/ActionButton"
 
 storiesOf("Styleguide/Artwork/ActionButtons", module).add(
   "Share button",

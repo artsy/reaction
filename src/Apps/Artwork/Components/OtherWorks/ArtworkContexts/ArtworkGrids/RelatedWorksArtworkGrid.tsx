@@ -157,6 +157,7 @@ export const RelatedWorksArtworkGridQueryRenderer: React.SFC<{
   )
 }
 
+// Set min-height so that spinner doesn't collapse area on tab switch
 const ArtworksContainer = styled.div`
   position: relative;
   min-height: 500px;

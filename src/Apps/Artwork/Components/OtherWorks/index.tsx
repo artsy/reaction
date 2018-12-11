@@ -1,9 +1,6 @@
 import { OtherWorks_artwork } from "__generated__/OtherWorks_artwork.graphql"
-import { OtherWorksQuery } from "__generated__/OtherWorksQuery.graphql"
-import { ContextConsumer } from "Artsy"
-import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import React from "react"
-import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
+import { createFragmentContainer, graphql } from "react-relay"
 import { ArtworkContextArtistQueryRenderer as ArtworkContextArtist } from "./ArtworkContexts/ArtworkContextArtist"
 import { ArtworkContextAuctionQueryRenderer as ArtworkContextAuction } from "./ArtworkContexts/ArtworkContextAuction"
 import { ArtworkContextFairQueryRenderer as ArtworkContextFair } from "./ArtworkContexts/ArtworkContextFair"
@@ -73,32 +70,3 @@ export const OtherWorksFragmentContainer = createFragmentContainer<{
     }
   `
 )
-
-// FIXME: Move to storybooks file
-
-export const OtherWorksQueryRenderer = ({
-  artworkSlug,
-}: {
-  artworkSlug: string
-}) => {
-  return (
-    <ContextConsumer>
-      {({ relayEnvironment }) => {
-        return (
-          <QueryRenderer<OtherWorksQuery>
-            environment={relayEnvironment}
-            variables={{ artworkSlug }}
-            query={graphql`
-              query OtherWorksQuery($artworkSlug: String!) {
-                artwork(id: $artworkSlug) {
-                  ...OtherWorks_artwork
-                }
-              }
-            `}
-            render={renderWithLoadProgress(OtherWorksFragmentContainer)}
-          />
-        )
-      }}
-    </ContextConsumer>
-  )
-}

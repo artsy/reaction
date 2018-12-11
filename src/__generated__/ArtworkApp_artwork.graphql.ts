@@ -3,8 +3,8 @@
 import { ConcreteFragment } from "relay-runtime";
 import { ArtworkBanner_artwork$ref } from "./ArtworkBanner_artwork.graphql";
 import { ArtworkDetails_artwork$ref } from "./ArtworkDetails_artwork.graphql";
-import { ArtworkImages_artwork$ref } from "./ArtworkImages_artwork.graphql";
 import { ArtworkSidebar_artwork$ref } from "./ArtworkSidebar_artwork.graphql";
+import { ImageBrowser_artwork$ref } from "./ImageBrowser_artwork.graphql";
 import { OtherWorks_artwork$ref } from "./OtherWorks_artwork.graphql";
 declare const _ArtworkApp_artwork$ref: unique symbol;
 export type ArtworkApp_artwork$ref = typeof _ArtworkApp_artwork$ref;
@@ -13,7 +13,7 @@ export type ArtworkApp_artwork = {
     readonly artist: ({
         readonly id: string;
     }) | null;
-    readonly " $fragmentRefs": ArtworkBanner_artwork$ref & ArtworkSidebar_artwork$ref & ArtworkDetails_artwork$ref & ArtworkImages_artwork$ref & OtherWorks_artwork$ref;
+    readonly " $fragmentRefs": ArtworkBanner_artwork$ref & ArtworkSidebar_artwork$ref & ArtworkDetails_artwork$ref & ImageBrowser_artwork$ref & OtherWorks_artwork$ref;
     readonly " $refType": ArtworkApp_artwork$ref;
 };
 
@@ -72,7 +72,7 @@ return {
     },
     {
       "kind": "FragmentSpread",
-      "name": "ArtworkImages_artwork",
+      "name": "ImageBrowser_artwork",
       "args": null
     },
     {
@@ -84,5 +84,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'b01d55d8d0d7c48145ef6f5fc452b812';
+(node as any).hash = '56a5cd3eb3d5ab6bc64528401dd92596';
 export default node;

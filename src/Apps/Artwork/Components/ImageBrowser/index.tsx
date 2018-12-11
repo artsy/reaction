@@ -1,38 +1,41 @@
-import { Flex } from "@artsy/palette"
-import { ArtworkImages_artwork } from "__generated__/ArtworkImages_artwork.graphql"
-import { ArtworkImagesQuery } from "__generated__/ArtworkImagesQuery.graphql"
+import { Flex, Spacer } from "@artsy/palette"
+import { ImageBrowser_artwork } from "__generated__/ImageBrowser_artwork.graphql"
+import { ImageBrowserQuery } from "__generated__/ImageBrowserQuery.graphql"
 import { ContextConsumer } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import SaveButton from "Components/Artwork/Save"
 import React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
+import { Media } from "Utils/Responsive"
 import { ShareButton } from "./ActionButton"
-import { ImageCarousel } from "./ImageCarousel"
+import { LargeImageCarousel, SmallImageCarousel } from "./ImageCarousel2"
 
-interface ArtworkImagesProps {
-  artwork: ArtworkImages_artwork
+interface ImageBrowserProps {
+  artwork: ImageBrowser_artwork
 }
 
-const ArtworkImages: React.SFC<ArtworkImagesProps> = props => {
+const ImageBrowser: React.SFC<ImageBrowserProps> = props => {
   return (
-    <ImageCarousel
-      images={props.artwork.images}
-      actions={
-        <>
-          <Flex justifyContent="center" position="relative">
-            <SaveButton artwork={props.artwork} />
-          </Flex>
+    <>
+      <Media at="xs">
+        <SmallImageCarousel images={props.artwork.images} />
+      </Media>
+      <Media greaterThan="xs">
+        <LargeImageCarousel images={props.artwork.images} />
+        <Spacer my={4} />
+        <Flex justifyContent="center" position="relative" pl={2}>
+          <SaveButton artwork={props.artwork} />
           <ShareButton href={props.artwork.href} />
-        </>
-      }
-    />
+        </Flex>
+      </Media>
+    </>
   )
 }
 
-export const ArtworkImagesFragmentContainer = createFragmentContainer(
-  ArtworkImages,
+export const ImageBrowserFragmentContainer = createFragmentContainer(
+  ImageBrowser,
   graphql`
-    fragment ArtworkImages_artwork on Artwork {
+    fragment ImageBrowser_artwork on Artwork {
       title
       image_alt: to_s
       image_title
@@ -64,7 +67,7 @@ export const ArtworkImagesFragmentContainer = createFragmentContainer(
   `
 )
 
-export const ArtworkImagesQueryRenderer = ({
+export const ImageBrowserQueryRenderer = ({
   artworkID,
 }: {
   artworkID: string
@@ -73,17 +76,17 @@ export const ArtworkImagesQueryRenderer = ({
     <ContextConsumer>
       {({ user, mediator, relayEnvironment }) => {
         return (
-          <QueryRenderer<ArtworkImagesQuery>
+          <QueryRenderer<ImageBrowserQuery>
             environment={relayEnvironment}
             variables={{ artworkID }}
             query={graphql`
-              query ArtworkImagesQuery($artworkID: String!) {
+              query ImageBrowserQuery($artworkID: String!) {
                 artwork(id: $artworkID) {
-                  ...ArtworkImages_artwork
+                  ...ImageBrowser_artwork
                 }
               }
             `}
-            render={renderWithLoadProgress(ArtworkImagesFragmentContainer)}
+            render={renderWithLoadProgress(ImageBrowserFragmentContainer)}
           />
         )
       }}
