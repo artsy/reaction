@@ -182,6 +182,9 @@ export const routes: RouteConfig[] = [
             }
           }
         `,
+        cacheConfig: {
+          force: true,
+        },
       },
       {
         path: "status",
