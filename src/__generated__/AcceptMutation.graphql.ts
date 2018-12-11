@@ -1,7 +1,6 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
 export type buyerAcceptOfferInput = {
     readonly offerId: string;
     readonly clientMutationId?: string | null;
@@ -15,7 +14,6 @@ export type AcceptMutationResponse = {
             readonly __typename: "OrderWithMutationSuccess";
             readonly order?: ({
                 readonly id: string | null;
-                readonly mode: OrderModeEnum | null;
             }) | null;
             readonly error?: ({
                 readonly type: string;
@@ -44,7 +42,6 @@ mutation AcceptMutation(
         order {
           __typename
           id
-          mode
           __id: id
         }
       }
@@ -131,13 +128,6 @@ v4 = {
 },
 v5 = {
   "kind": "ScalarField",
-  "alias": null,
-  "name": "mode",
-  "args": null,
-  "storageKey": null
-},
-v6 = {
-  "kind": "ScalarField",
   "alias": "__id",
   "name": "id",
   "args": null,
@@ -148,7 +138,7 @@ return {
   "operationKind": "mutation",
   "name": "AcceptMutation",
   "id": null,
-  "text": "mutation AcceptMutation(\n  $input: buyerAcceptOfferInput!\n) {\n  ecommerceBuyerAcceptOffer(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          id\n          mode\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation AcceptMutation(\n  $input: buyerAcceptOfferInput!\n) {\n  ecommerceBuyerAcceptOffer(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          id\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -191,8 +181,7 @@ return {
                     "plural": false,
                     "selections": [
                       v4,
-                      v5,
-                      v6
+                      v5
                     ]
                   }
                 ]
@@ -244,8 +233,7 @@ return {
                     "selections": [
                       v3,
                       v4,
-                      v5,
-                      v6
+                      v5
                     ]
                   }
                 ]
@@ -258,5 +246,5 @@ return {
   }
 };
 })();
-(node as any).hash = '39bbefdbf14e3ccf7e322482a13e9af6';
+(node as any).hash = '876b5420c87cf7d42fc5ccc164bc84aa';
 export default node;
