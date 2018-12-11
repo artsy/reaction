@@ -111,6 +111,7 @@ export const NavContainer = styled.div<{
     right: 0;
   `};
 `
+
 export const Nav = styled(NavComponent)`
   position: relative;
   display: flex;

@@ -26,7 +26,7 @@ export const Date: React.SFC<DateProps> = props => {
   )
 }
 
-const DateContainer = styled.div.attrs<{ condensed?: boolean }>({})`
+export const DateContainer = styled.div.attrs<{ condensed?: boolean }>({})`
   margin: 5px 20px 0 0;
   white-space: nowrap;
 `
