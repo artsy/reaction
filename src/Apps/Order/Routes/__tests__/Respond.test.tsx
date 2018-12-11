@@ -189,7 +189,7 @@ describe("Offer InitialMutation", () => {
         .onClick({})
 
       expect(mockPushRoute).toHaveBeenCalledWith(
-        `/orders/${testOrder.id}/accept`
+        `/orders/${testOrder.id}/review/accept`
       )
     })
 

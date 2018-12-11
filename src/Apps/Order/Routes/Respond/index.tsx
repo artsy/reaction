@@ -68,7 +68,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
           window.alert(`You decided to COUNTER with ${offerValue}.`)
           break
         case "ACCEPT":
-          this.props.router.push(`/orders/${this.props.order.id}/accept`)
+          this.props.router.push(`/orders/${this.props.order.id}/review/accept`)
           break
         default:
           window.alert(`You decided to ${responseOption}.`)
