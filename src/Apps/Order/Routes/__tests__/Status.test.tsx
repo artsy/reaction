@@ -68,12 +68,13 @@ describe("Status", () => {
     })
 
     describe("approved", () => {
-      it("should say confirmed", async () => {
+      it("should say confirmed and have message box", async () => {
         const wrapper = await getWrapper({
           ...OfferOrderWithShippingDetails,
           state: "APPROVED",
         })
-        expect(wrapper.text()).toContain("Your order is confirmed.")
+        expect(wrapper.text()).toContain("Offer accepted")
+        expect(wrapper.find(Message).length).toBe(1)
       })
     })
 
