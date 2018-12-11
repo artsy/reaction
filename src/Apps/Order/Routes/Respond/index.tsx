@@ -48,7 +48,7 @@ export interface RespondState {
   errorModalMessage: string
 }
 
-const logger = createLogger("Order/Routes/Respond/index.tsx")
+export const logger = createLogger("Order/Routes/Respond/index.tsx")
 
 export class RespondRoute extends Component<RespondProps, RespondState> {
   state = {
@@ -71,7 +71,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
           this.props.router.push(`/orders/${this.props.order.id}/review/accept`)
           break
         default:
-          window.alert(`You decided to ${responseOption}.`)
+          logger.error(new Error("Unrecognized response option"))
           break
       }
       this.setState({ isCommittingMutation: false })

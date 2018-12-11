@@ -19,9 +19,10 @@ import React from "react"
 import { commitMutation as _commitMutation } from "react-relay"
 import { Stepper } from "Styleguide/Components"
 import { CountdownTimer } from "Styleguide/Components/CountdownTimer"
-import { RespondFragmentContainer as RespondRoute } from "../Respond"
+import { logger, RespondFragmentContainer as RespondRoute } from "../Respond"
 
 jest.mock("Utils/getCurrentTimeAsIsoString")
+jest.mock("Utils/logger")
 
 const NOW = "2018-12-05T13:47:16.446Z"
 
@@ -193,11 +194,13 @@ describe("Offer InitialMutation", () => {
       )
     })
 
-    it("Declining the seller's offer works", () => {
+    it("Logging an error with an unrecognized action", () => {
       const component = getWrapper()
       const declineRadio = component.find(BorderedRadio).last()
 
-      declineRadio.props().onSelect({ selected: true, value: "DECLINE" })
+      declineRadio
+        .props()
+        .onSelect({ selected: true, value: "UNRECOGNIZED VALUE" })
 
       component
         .find(Button)
@@ -205,8 +208,9 @@ describe("Offer InitialMutation", () => {
         .props()
         .onClick({})
 
-      // TODO: get rid of window.alert
-      expect(window.alert).toHaveBeenCalledWith(`You decided to DECLINE.`)
+      expect(logger.error).toHaveBeenCalledWith(
+        new Error("Unrecognized response option")
+      )
     })
 
     it("Countering the seller's offer works", () => {
