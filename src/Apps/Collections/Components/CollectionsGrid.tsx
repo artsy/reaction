@@ -41,13 +41,12 @@ export class CollectionsGrid extends Component<CollectionsGridProps> {
                 <Media at="xs">{index === 0 && <Separator />}</Media>
                 <Media greaterThan="xs">{index < 3 && <Separator />}</Media>
 
-                <Box py={2}>
-                  <EntityHeader
-                    href={`/collection/${collection.slug}`}
-                    imageUrl={imageUrl}
-                    name={collection.title}
-                  />
-                </Box>
+                <EntityHeader
+                  py={2}
+                  href={`/collection/${collection.slug}`}
+                  imageUrl={imageUrl}
+                  name={collection.title}
+                />
                 <Separator />
               </Flex>
             )
