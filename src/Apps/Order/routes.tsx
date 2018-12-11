@@ -7,6 +7,7 @@ import { OrderApp } from "./OrderApp"
 import { AcceptFragmentContainer as AcceptRoute } from "Apps/Order/Routes/Accept"
 import { OfferFragmentContainer as OfferRoute } from "Apps/Order/Routes/Offer"
 import { PaymentFragmentContainer as PaymentRoute } from "Apps/Order/Routes/Payment"
+import { RejectFragmentContainer as RejectRoute } from "Apps/Order/Routes/Reject"
 import { RespondFragmentContainer as RespondRoute } from "Apps/Order/Routes/Respond"
 import { ReviewFragmentContainer as ReviewRoute } from "Apps/Order/Routes/Review"
 import { ShippingFragmentContainer as ShippingRoute } from "Apps/Order/Routes/Shipping"
@@ -179,6 +180,17 @@ export const routes: RouteConfig[] = [
           query routes_AcceptQuery($orderID: String!) {
             order: ecommerceOrder(id: $orderID) {
               ...Accept_order
+            }
+          }
+        `,
+      },
+      {
+        path: "review/reject",
+        Component: RejectRoute,
+        query: graphql`
+          query routes_RejectQuery($orderID: String!) {
+            order: ecommerceOrder(id: $orderID) {
+              ...Reject_order
             }
           }
         `,
