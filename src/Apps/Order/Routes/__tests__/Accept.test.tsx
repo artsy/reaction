@@ -174,7 +174,7 @@ describe("Accept seller offer", () => {
       submitButton.simulate("click")
     })
 
-    it("hides the button spinner mutation completes", () => {
+    it("hides the button spinner when the mutation completes", () => {
       const component = getWrapper()
       const mockCommitMutation = commitMutation as jest.Mock<any>
       mockCommitMutation.mockImplementationOnce(
