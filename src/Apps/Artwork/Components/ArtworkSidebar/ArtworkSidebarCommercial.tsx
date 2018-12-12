@@ -8,6 +8,11 @@ import {
   Separator,
   Serif,
 } from "@artsy/palette"
+import { ArtworkSidebarCommercial_artwork } from "__generated__/ArtworkSidebarCommercial_artwork.graphql"
+import { ArtworkSidebarCommercialOrderMutation } from "__generated__/ArtworkSidebarCommercialOrderMutation.graphql"
+import { ContextConsumer } from "Artsy/Router"
+import { Mediator } from "Artsy/SystemContext"
+import { ErrorModal } from "Components/Modal/ErrorModal"
 import React, { SFC } from "react"
 import {
   commitMutation,
@@ -15,14 +20,10 @@ import {
   graphql,
   RelayProp,
 } from "react-relay"
-
-import { ArtworkSidebarCommercial_artwork } from "__generated__/ArtworkSidebarCommercial_artwork.graphql"
-import { ArtworkSidebarCommercialOrderMutation } from "__generated__/ArtworkSidebarCommercialOrderMutation.graphql"
-import { ContextConsumer } from "Artsy/Router"
-import { Mediator } from "Artsy/SystemContext"
-import { ErrorModal } from "Components/Modal/ErrorModal"
 import { ErrorWithMetadata } from "Utils/errors"
 import { ArtworkSidebarSizeInfoFragmentContainer as SizeInfo } from "./ArtworkSidebarSizeInfo"
+
+type EditionSet = ArtworkSidebarCommercial_artwork["edition_sets"][0]
 
 export interface ArtworkSidebarCommercialContainerProps
   extends ArtworkSidebarCommercialProps {
@@ -32,7 +33,7 @@ export interface ArtworkSidebarCommercialContainerProps
 export interface ArtworkSidebarCommercialContainerState {
   isCommittingCreateOrderMutation: boolean
   isErrorModalOpen: boolean
-  selectedEditionId: string
+  selectedEditionSet: EditionSet
 }
 const Row: React.SFC<FlexProps> = ({ children, ...others }) => (
   <Flex justifyContent="left" alignItems="top" {...others}>
@@ -44,23 +45,39 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
   ArtworkSidebarCommercialContainerProps,
   ArtworkSidebarCommercialContainerState
 > {
-  state = {
+  state: ArtworkSidebarCommercialContainerState = {
     isCommittingCreateOrderMutation: false,
     isErrorModalOpen: false,
-    selectedEditionId:
-      this.props.artwork.edition_sets[0] &&
-      this.props.artwork.edition_sets[0].__id,
+    selectedEditionSet: this.firstAvailableEcommerceEditionSet(),
   }
 
-  renderEdition(edition, includeSelectOption) {
+  firstAvailableEcommerceEditionSet(): EditionSet {
+    const editionSets = this.props.artwork.edition_sets
+
+    return editionSets.find(editionSet => {
+      return editionSet.is_acquireable || editionSet.is_offerable
+    })
+  }
+
+  renderSaleMessage(saleMessage: string) {
+    return (
+      <Box pb={2} pt={1}>
+        <Serif size="5t" weight="semibold">
+          {saleMessage}
+        </Serif>
+      </Box>
+    )
+  }
+
+  renderEditionSet(editionSet: EditionSet, includeSelectOption: boolean) {
     const editionEcommerceAvailable =
-      edition.is_acquireable || edition.is_offerable
+      editionSet.is_acquireable || editionSet.is_offerable
 
     const editionFragment = (
       <>
-        <SizeInfo piece={edition} />
+        <SizeInfo piece={editionSet} />
         <Serif ml="auto" size="2">
-          {edition.sale_message}
+          {editionSet.sale_message}
         </Serif>
       </>
     )
@@ -70,9 +87,9 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
           <Radio
             mr="1"
             onSelect={e => {
-              this.setState({ selectedEditionId: edition.__id } as any)
+              this.setState({ selectedEditionSet: editionSet })
             }}
-            selected={this.state.selectedEditionId === edition.__id}
+            selected={this.state.selectedEditionSet === editionSet}
             disabled={!editionEcommerceAvailable}
           />
           {editionFragment}
@@ -82,21 +99,25 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
       return <Row>{editionFragment}</Row>
     }
   }
-  renderEditions(includeSelectOption) {
-    const editions = this.props.artwork.edition_sets
-    const editionsFragment = editions.map((edition, index) => {
+
+  renderEditionSets(includeSelectOption: boolean) {
+    const editionSets = this.props.artwork.edition_sets
+
+    const editionSetsFragment = editionSets.map((editionSet, index) => {
       return (
-        <React.Fragment key={edition.__id}>
-          <Box py={2}>{this.renderEdition(edition, includeSelectOption)}</Box>
-          {index !== editions.length - 1 && <Separator />}
+        <React.Fragment key={editionSet.__id}>
+          <Box py={2}>
+            {this.renderEditionSet(editionSet, includeSelectOption)}
+          </Box>
+          {index !== editionSets.length - 1 && <Separator />}
         </React.Fragment>
       )
     })
 
-    return <RadioGroup>{editionsFragment}</RadioGroup>
+    return <RadioGroup>{editionSetsFragment}</RadioGroup>
   }
 
-  onMutationError(error) {
+  onMutationError(error: ErrorWithMetadata) {
     this.setState({
       isCommittingCreateOrderMutation: false,
       isErrorModalOpen: true,
@@ -115,9 +136,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
       })
   }
 
-  handleCreateOrder = e => {
-    console.log("Creating order")
-
+  handleCreateOrder = () => {
     this.setState({ isCommittingCreateOrderMutation: true }, () => {
       if (this.props.relay && this.props.relay.environment) {
         commitMutation<ArtworkSidebarCommercialOrderMutation>(
@@ -150,6 +169,9 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
             variables: {
               input: {
                 artworkId: this.props.artwork.id,
+                editionSetId:
+                  this.state.selectedEditionSet &&
+                  this.state.selectedEditionSet.id,
               },
             },
             onCompleted: data => {
@@ -177,7 +199,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
 
   render() {
     const { artwork } = this.props
-    const { isCommittingCreateOrderMutation } = this.state
+    const { isCommittingCreateOrderMutation, selectedEditionSet } = this.state
     const artworkEcommerceAvailable =
       artwork.is_acquireable || artwork.is_offerable
 
@@ -187,13 +209,13 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
     return (
       <Box pb={3} textAlign="left">
         {artwork.edition_sets.length < 2 && artwork.sale_message ? (
-          <Box pb={2} pt={1}>
-            <Serif size="5t" weight="semibold">
-              {artwork.sale_message}
-            </Serif>
-          </Box>
+          this.renderSaleMessage(artwork.sale_message)
         ) : (
-          this.renderEditions(artworkEcommerceAvailable)
+          <>
+            {this.renderEditionSets(artworkEcommerceAvailable)}
+            {selectedEditionSet &&
+              this.renderSaleMessage(selectedEditionSet.sale_message)}
+          </>
         )}
         {artworkEcommerceAvailable &&
           artwork.shippingInfo && (
@@ -280,7 +302,10 @@ export const ArtworkSidebarCommercialFragmentContainer = createFragmentContainer
       shippingInfo
       shippingOrigin
       edition_sets {
+        id
         __id
+        is_acquireable
+        is_offerable
         sale_message
         ...ArtworkSidebarSizeInfo_piece
       }

@@ -1,13 +1,14 @@
 import {
   ArtworkBuyNow,
   ArtworkBuyNowMakeOffer,
+  ArtworkBuyNowSoldWithMultipleEditions,
   ArtworkBuyNowWithMultipleEditions,
   ArtworkMakeOffer,
   ArtworkSold,
   ContactForPriceWork,
-  FoSaleArtworkNoEditions,
-  FoSaleArtworkWithMultipleEditions,
-  FoSaleArtworkWithOneEdition,
+  ForSaleArtworkNoEditions,
+  ForSaleArtworkWithMultipleEditions,
+  ForSaleArtworkWithOneEdition,
 } from "Apps/__tests__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarCommercial"
 import { ArtworkSidebarCommercial as Commercial } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarCommercial"
 import { RelayStubProvider } from "DevTools/RelayStubProvider"
@@ -21,13 +22,13 @@ storiesOf("Styleguide/Artwork/Sidebar", module)
     return (
       <>
         <Section title="For sale artwork with no editions">
-          <Commercial artwork={FoSaleArtworkNoEditions as any} />
+          <Commercial artwork={ForSaleArtworkNoEditions as any} />
         </Section>
         <Section title="For sale artwork with one edition set">
-          <Commercial artwork={FoSaleArtworkWithOneEdition as any} />
+          <Commercial artwork={ForSaleArtworkWithOneEdition as any} />
         </Section>
         <Section title="For sale artwork with multiple edition sets">
-          <Commercial artwork={FoSaleArtworkWithMultipleEditions as any} />
+          <Commercial artwork={ForSaleArtworkWithMultipleEditions as any} />
         </Section>
         <Section title="Contact for price work">
           <Commercial artwork={ContactForPriceWork as any} />
@@ -46,6 +47,9 @@ storiesOf("Styleguide/Artwork/Sidebar", module)
         </Section>
         <Section title="Buy Now artwork with multiple edition sets">
           <Commercial artwork={ArtworkBuyNowWithMultipleEditions as any} />
+        </Section>
+        <Section title="Buy Now artwork sold with multiple edition sets">
+          <Commercial artwork={ArtworkBuyNowSoldWithMultipleEditions as any} />
         </Section>
       </>
     )

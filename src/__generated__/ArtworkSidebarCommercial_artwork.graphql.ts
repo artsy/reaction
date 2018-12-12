@@ -13,7 +13,10 @@ export type ArtworkSidebarCommercial_artwork = {
     readonly shippingInfo: string | null;
     readonly shippingOrigin: string | null;
     readonly edition_sets: ReadonlyArray<({
+        readonly id: string;
         readonly __id: string;
+        readonly is_acquireable: boolean | null;
+        readonly is_offerable: boolean | null;
         readonly sale_message: string | null;
         readonly " $fragmentRefs": ArtworkSidebarSizeInfo_piece$ref;
     }) | null> | null;
@@ -26,11 +29,32 @@ const node: ConcreteFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "sale_message",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
 v1 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "is_acquireable",
+  "args": null,
+  "storageKey": null
+},
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "is_offerable",
+  "args": null,
+  "storageKey": null
+},
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "sale_message",
+  "args": null,
+  "storageKey": null
+},
+v4 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__id",
@@ -44,20 +68,8 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "id",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "is_acquireable",
-      "args": null,
-      "storageKey": null
-    },
+    v0,
+    v1,
     {
       "kind": "ScalarField",
       "alias": null,
@@ -65,14 +77,8 @@ return {
       "args": null,
       "storageKey": null
     },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "is_offerable",
-      "args": null,
-      "storageKey": null
-    },
-    v0,
+    v2,
+    v3,
     {
       "kind": "ScalarField",
       "alias": null,
@@ -96,8 +102,11 @@ return {
       "concreteType": "EditionSet",
       "plural": true,
       "selections": [
-        v1,
         v0,
+        v4,
+        v1,
+        v2,
+        v3,
         {
           "kind": "FragmentSpread",
           "name": "ArtworkSidebarSizeInfo_piece",
@@ -105,9 +114,9 @@ return {
         }
       ]
     },
-    v1
+    v4
   ]
 };
 })();
-(node as any).hash = 'f8b1627dc2e4a57c2ffa7451545414c9';
+(node as any).hash = 'dea7bdb4aeab98872d716975121f8779';
 export default node;
