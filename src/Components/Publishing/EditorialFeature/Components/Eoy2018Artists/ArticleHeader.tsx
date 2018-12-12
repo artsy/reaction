@@ -1,9 +1,11 @@
 import { Box, color, Flex } from "@artsy/palette"
 import { unica } from "Assets/Fonts"
+import { media } from "Components/Helpers"
 import { flatten, map } from "lodash"
 import React from "react"
 import styled from "styled-components"
 import { resize } from "Utils/resizer"
+import { Media } from "Utils/Responsive"
 
 export class Eoy2018ArticleHeader extends React.Component<{
   images?: any
@@ -19,27 +21,43 @@ export class Eoy2018ArticleHeader extends React.Component<{
         Math.random() * Math.floor(resizedImages.length)
       )
       urls.push(resizedImages[bgIndex])
+      // TODO: make unique
     }
     return urls
   }
 
-  render() {
-    const gridSize = 12 // TODO: responsive gridSize
+  imagesGrid = gridSize => {
     const imageUrls = this.getImageUrls(gridSize)
+    return imageUrls.map((src, i) => (
+      <GridItem key={i} width={[1 / 2, 1 / 3, 1 / 4]}>
+        <Img src={src} />
+      </GridItem>
+    ))
+  }
+
+  render() {
     return (
       <ArticleHeader>
-        <HeaderGrid flexWrap="wrap">
-          {imageUrls.map((src, i) => (
-            <GridItem key={i}>
-              <Img src={src} />
-            </GridItem>
-          ))}
-        </HeaderGrid>
+        <Media at="xs">
+          <HeaderGrid flexWrap="wrap">{this.imagesGrid(8)}</HeaderGrid>
+        </Media>
+        <Media greaterThan="xs">
+          <HeaderGrid flexWrap="wrap">{this.imagesGrid(12)}</HeaderGrid>
+        </Media>
 
         <Title>
           <TitleBlock>The Most </TitleBlock>
           <TitleBlock>Influential </TitleBlock>
-          <TitleBlock>Artists of 2018</TitleBlock>
+          <Media lessThan="md">
+            <TitleBlock>Artists</TitleBlock>
+          </Media>
+          <Media lessThan="md">
+            <TitleBlock textAlign="right"> of 2018</TitleBlock>
+          </Media>
+
+          <Media greaterThan="sm">
+            <TitleBlock>Artists of 2018</TitleBlock>
+          </Media>
         </Title>
       </ArticleHeader>
     )
@@ -52,7 +70,6 @@ const HeaderGrid = styled(Flex)`
   left: 0;
   right: 0;
   bottom: 0;
-  overflow: hidden;
 `
 
 const Img = styled.div<{ src?: string }>`
@@ -74,7 +91,6 @@ const Img = styled.div<{ src?: string }>`
 
 const GridItem = styled(Box)`
   border: 3px solid ${color("purple100")};
-  width: 25%;
   transition: background-color 0.5s;
 
   &:hover {
@@ -87,23 +103,27 @@ const GridItem = styled(Box)`
 
 const ArticleHeader = styled.div`
   height: 90vh;
+  max-height: 1000px;
   border: 3px solid ${color("purple100")};
   display: flex;
   align-items: center;
   position: relative;
+  overflow: hidden;
 `
 
 const Title = styled.h1`
+  min-height: 100%;
+  min-width: 100%;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  height: 100%;
   justify-content: space-between;
-  width: 100%;
-  padding: 20px;
   ${unica("s100")};
 `
 
-const TitleBlock = styled.span`
+// TODO: min-max font size responsive to vp
+// font-size: calc([minimum size] + ([maximum size] - [minimum size]) * ((100vw - [minimum viewport width]) / ([maximum viewport width] - [minimum viewport width])))
+const TitleBlock = styled.span<{ textAlign?: string }>`
   display: block;
   font-size: 20vh;
   line-height: initial;
@@ -111,4 +131,12 @@ const TitleBlock = styled.span`
   &:nth-child(2) {
     text-align: right;
   }
+  ${props =>
+    props.textAlign &&
+    `
+    text-align: ${props.textAlign};
+  `};
+  ${media.xs`
+    font-size: 15vw;
+  `};
 `

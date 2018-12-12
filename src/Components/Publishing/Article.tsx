@@ -2,6 +2,9 @@ import React from "react"
 import track, { TrackingProp } from "react-tracking"
 import Events from "../../Utils/Events"
 
+import { Theme, themeProps } from "@artsy/palette"
+import { GridThemeProvider } from "styled-bootstrap-grid"
+import { MediaContextProvider } from "Utils/Responsive"
 import { BannerWrapper } from "./Banner/Banner"
 import { PixelTracker } from "./Display/ExternalTrackers"
 import ArticleWithFullScreen from "./Layouts/ArticleWithFullScreen"
@@ -11,9 +14,6 @@ import { SeriesLayout } from "./Layouts/SeriesLayout"
 import { VideoLayout } from "./Layouts/VideoLayout"
 import { FullScreenProvider } from "./Sections/FullscreenViewer/FullScreenProvider"
 import { ArticleData, DisplayData } from "./Typings"
-
-import { Theme, themeProps } from "@artsy/palette"
-import { GridThemeProvider } from "styled-bootstrap-grid"
 
 export interface ArticleProps {
   article: ArticleData
@@ -102,19 +102,24 @@ export class Article extends React.Component<ArticleProps> {
     const trackingCode = this.sponsorPixelTrackingCode(article)
 
     return (
-      <Theme>
-        <GridThemeProvider gridTheme={themeProps.grid}>
-          <FullScreenProvider>
-            {this.getArticleLayout()}
-            {trackingCode && (
-              <PixelTracker unit={trackingCode} date={this.props.renderTime} />
-            )}
-            {this.shouldRenderSignUpCta() && (
-              <BannerWrapper article={article} />
-            )}
-          </FullScreenProvider>
-        </GridThemeProvider>
-      </Theme>
+      <MediaContextProvider>
+        <Theme>
+          <GridThemeProvider gridTheme={themeProps.grid}>
+            <FullScreenProvider>
+              {this.getArticleLayout()}
+              {trackingCode && (
+                <PixelTracker
+                  unit={trackingCode}
+                  date={this.props.renderTime}
+                />
+              )}
+              {this.shouldRenderSignUpCta() && (
+                <BannerWrapper article={article} />
+              )}
+            </FullScreenProvider>
+          </GridThemeProvider>
+        </Theme>
+      </MediaContextProvider>
     )
   }
 }

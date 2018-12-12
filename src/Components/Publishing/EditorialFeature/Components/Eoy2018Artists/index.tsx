@@ -69,8 +69,8 @@ export class Eoy2018Artists extends React.Component<ArticleProps> {
 
   sectionText = (section, i) => {
     return (
-      <Box maxWidth={["100%", "75%", "75%"]} ml="auto" px={[20, 0]}>
-        <TextSection size="5" key={i} pb={[40, 60]}>
+      <Box maxWidth={["100%", "75%", "75%"]} ml="auto" px={[20, 0]} key={i}>
+        <TextSection size="5" pb={[40, 60]}>
           <div dangerouslySetInnerHTML={{ __html: section.body }} />
         </TextSection>
       </Box>
@@ -134,7 +134,7 @@ export class Eoy2018Artists extends React.Component<ArticleProps> {
           <NavBorder />
         </Nav>
 
-        <Box px={[10, 10, 55]}>
+        <Box px={[10, 10, 55]} maxWidth={1600} mx="auto">
           <Eoy2018ArticleHeader images={headerImages} />
 
           <ArticleContent py={40}>
@@ -174,6 +174,8 @@ const NavBorder = styled.div`
   top: 100%;
   left: 55px;
   right: 55px;
+  max-width: calc(1600px - 110px);
+  margin: 0 auto;
 
   ${media.sm`
     left: 10px;
@@ -230,6 +232,7 @@ const ArtistHeaderTitle = styled.div`
     `};
 
     ${media.xs`
+      ${unica("s45")};
       border-bottom: ${BORDER_WIDTH}px solid ${color("purple100")};
       border-left: none;
       width: 100%;
@@ -259,6 +262,7 @@ const ArtistHeaderTitle = styled.div`
     `};
 
     ${media.xs`
+      ${unica("s19")};
       width: 50%;
       float: none;
       &:last-child {
