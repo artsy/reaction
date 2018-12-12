@@ -256,21 +256,21 @@ storiesOf("Apps/Order Page/Reject Offer", module).add("Review (reject)", () => (
   <Router
     initialRoute="/orders/123/review/reject"
     mockResolvers={mockResolver({
-      // ...OfferOrderWithShippingDetails,
-      // state: "SUBMITTED",
-      // stateExpiresAt: moment()
-      //   .add(1, "day")
-      //   .toISOString(),
-      // lastOffer: {
-      //   ...OfferWithTotals,
-      //   id: "last-offer",
-      //   createdAt: moment()
-      //     .subtract(1, "day")
-      //     .toISOString(),
-      // },
-      // awaitingResponseFrom: "BUYER",
-      // offers: { edges: Offers },
-      // buyer: Buyer,
+      ...OfferOrderWithShippingDetails,
+      state: "SUBMITTED",
+      stateExpiresAt: moment()
+        .add(1, "day")
+        .toISOString(),
+      lastOffer: {
+        ...OfferWithTotals,
+        id: "last-offer",
+        createdAt: moment()
+          .subtract(1, "day")
+          .toISOString(),
+      },
+      awaitingResponseFrom: "BUYER",
+      offers: { edges: Offers },
+      buyer: Buyer,
     })}
   />
 ))
