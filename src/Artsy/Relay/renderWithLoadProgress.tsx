@@ -3,7 +3,13 @@ import React from "react"
 import { ReadyState, RelayContainer } from "react-relay"
 import styled from "styled-components"
 
-const SpinnerContainer = styled.div`
+/**
+ * WARNING: Do _not_ change this element to something common like a div. If the
+ * element of this container is the same as the element used in the RelayContainer
+ * then rehydration can fail and cause the RelayContainer to receive styles
+ * from the SpinnerContainer and Spinner.
+ */
+const SpinnerContainer = styled.figure`
   width: 100%;
   height: 100px;
   position: relative;
