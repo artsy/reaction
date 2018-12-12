@@ -21,6 +21,7 @@ import {
   RelayProp,
 } from "react-relay"
 import { ErrorWithMetadata } from "Utils/errors"
+import createLogger from "Utils/logger"
 import { ArtworkSidebarSizeInfoFragmentContainer as SizeInfo } from "./ArtworkSidebarSizeInfo"
 
 type EditionSet = ArtworkSidebarCommercial_artwork["edition_sets"][0]
@@ -35,10 +36,15 @@ export interface ArtworkSidebarCommercialContainerState {
   isErrorModalOpen: boolean
   selectedEditionSet: EditionSet
 }
+
 const Row: React.SFC<FlexProps> = ({ children, ...others }) => (
   <Flex justifyContent="left" alignItems="top" {...others}>
     {children}
   </Flex>
+)
+
+const logger = createLogger(
+  "Artwork/Components/ArtworkSidebar/ArtworkSidebarCommercial.tsx"
 )
 
 export class ArtworkSidebarCommercialContainer extends React.Component<
@@ -118,6 +124,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
   }
 
   onMutationError(error: ErrorWithMetadata) {
+    logger.error(error)
     this.setState({
       isCommittingCreateOrderMutation: false,
       isErrorModalOpen: true,
