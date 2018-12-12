@@ -1,4 +1,4 @@
-import { Box, Separator } from "@artsy/palette"
+import { Box, Separator, Spacer } from "@artsy/palette"
 import { ArtworkApp_artwork } from "__generated__/ArtworkApp_artwork.graphql"
 import React from "react"
 import { LazyLoadComponent } from "react-lazy-load-image-component"
@@ -28,6 +28,7 @@ export const ArtworkApp: React.SFC<Props> = props => {
       <Row>
         <Col sm={8}>
           <ArtworkBanner artwork={props.artwork} />
+          <Spacer mb={4} />
         </Col>
       </Row>
       <Row>

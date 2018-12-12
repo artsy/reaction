@@ -31,7 +31,7 @@ export const ArtistArtworkGridFragmentContainer = createFragmentContainer<{
           artworks(format: "0,0", label: "work")
         }
         artworks_connection(
-          first: 10
+          first: 8
           filter: [IS_FOR_SALE]
           sort: PUBLISHED_AT_DESC
           exclude: $excludeArtworkIDs

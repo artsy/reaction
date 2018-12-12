@@ -1,6 +1,6 @@
 {
   "name": "@artsy/reaction",
-  "version": "0.0.0-development",
+  "version": "9.1.6",
   "description": "Force’s React Components",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction.git",
@@ -145,7 +145,7 @@
   },
   "dependencies": {
     "@artsy/detect-responsive-traits": "^0.0.1",
-    "@artsy/palette": "^2.22.0",
+    "@artsy/palette": "^2.23.1",
     "@artsy/react-responsive-media": "^2.0.0-beta.5",
     "@sentry/browser": "^4.2.3",
     "cheerio": "^1.0.0-rc.2",

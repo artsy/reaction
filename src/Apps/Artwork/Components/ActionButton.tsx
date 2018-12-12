@@ -32,7 +32,7 @@ export class ShareButton extends React.Component<Props, State> {
 
   render() {
     return (
-      <Flex justifyContent="center" position="relative">
+      <Flex mt={1} justifyContent="center" position="relative">
         {this.state.isOpen && (
           <Box bottom={space(4)} position="absolute">
             <Share
@@ -45,12 +45,4 @@ export class ShareButton extends React.Component<Props, State> {
       </Flex>
     )
   }
-}
-
-export const SaveButton: React.SFC = () => {
-  return (
-    <Flex justifyContent="center" position="relative">
-      <ActionIcon name="heart" />
-    </Flex>
-  )
 }

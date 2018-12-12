@@ -194,6 +194,23 @@ describe("Offer InitialMutation", () => {
       )
     })
 
+    it("Declining the seller's offer works", () => {
+      const component = getWrapper()
+      const declineRadio = component.find(BorderedRadio).last()
+
+      declineRadio.props().onSelect({ selected: true, value: "DECLINE" })
+
+      component
+        .find(Button)
+        .last()
+        .props()
+        .onClick({})
+
+      expect(mockPushRoute).toHaveBeenCalledWith(
+        `/orders/${testOrder.id}/review/decline`
+      )
+    })
+
     it("Logging an error with an unrecognized action", () => {
       const component = getWrapper()
       const declineRadio = component.find(BorderedRadio).last()

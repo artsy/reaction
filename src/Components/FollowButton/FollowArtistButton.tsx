@@ -51,7 +51,7 @@ interface State {
 
 const SuggestionsPopoverContainer = styled(Box)`
   position: absolute;
-  z-index: 1000;
+  z-index: 1;
 `
 
 export class FollowArtistButton extends React.Component<Props, State> {

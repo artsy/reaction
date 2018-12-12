@@ -70,6 +70,11 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
         case "ACCEPT":
           this.props.router.push(`/orders/${this.props.order.id}/review/accept`)
           break
+        case "DECLINE":
+          this.props.router.push(
+            `/orders/${this.props.order.id}/review/decline`
+          )
+          break
         default:
           logger.error(new Error("Unrecognized response option"))
           break
