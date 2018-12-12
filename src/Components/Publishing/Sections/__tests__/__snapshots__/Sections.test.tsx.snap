@@ -2108,11 +2108,15 @@ exports[`Sections snapshots renders properly 1`] = `
           </div>
         </div>
       </div>
-      <img
-        alt="The Work of Bruce M. Sherman"
-        className="c38"
-        src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FCzofaZln2q-XhtXFqIio5A%252F07272017133815-0001%2B%2528dragged%2529%2Bcopy.jpg&width=800&quality=80"
-      />
+      <div
+        className=""
+      >
+        <img
+          alt="The Work of Bruce M. Sherman"
+          className="c38"
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FCzofaZln2q-XhtXFqIio5A%252F07272017133815-0001%2B%2528dragged%2529%2Bcopy.jpg&width=800&quality=80"
+        />
+      </div>
     </div>
   </div>
   <div

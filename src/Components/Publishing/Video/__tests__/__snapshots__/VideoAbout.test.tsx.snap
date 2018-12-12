@@ -399,7 +399,7 @@ exports[`Video About matches the snapshot 1`] = `
   }
 }
 
-@media (max-width:48em) {
+@media (max-width:900px) {
   .c8 .c11 {
     margin-top: 0px;
   }
@@ -1188,7 +1188,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
   }
 }
 
-@media (max-width:48em) {
+@media (max-width:900px) {
   .c8 .c11 {
     margin-top: 0px;
   }

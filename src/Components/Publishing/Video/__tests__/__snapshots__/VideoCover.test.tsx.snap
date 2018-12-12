@@ -211,20 +211,20 @@ exports[`Video Cover matches the snapshot 1`] = `
   }
 }
 
-@media (max-width:48em) {
+@media (max-width:900px) {
   .c10 {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
 }
 
-@media (max-width:48em) {
+@media (max-width:900px) {
   .c6 {
     padding-bottom: 40px;
   }
 }
 
-@media (max-width:48em) {
+@media (max-width:900px) {
   .c19 {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
@@ -532,20 +532,20 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
   }
 }
 
-@media (max-width:48em) {
+@media (max-width:900px) {
   .c10 {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
 }
 
-@media (max-width:48em) {
+@media (max-width:900px) {
   .c6 {
     padding-bottom: 40px;
   }
 }
 
-@media (max-width:48em) {
+@media (max-width:900px) {
   .c19 {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;

@@ -1549,7 +1549,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   }
 }
 
-@media (max-width:48em) {
+@media (max-width:900px) {
   .c88:first-of-type .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
     display: none;
   }
@@ -1560,13 +1560,13 @@ exports[`Video Layout matches the snapshot 1`] = `
   }
 }
 
-@media (max-width:48em) {
+@media (max-width:900px) {
   .c89 {
     margin-bottom: 20px;
   }
 }
 
-@media (max-width:48em) {
+@media (max-width:900px) {
   .c56 .c59 {
     margin-top: 0px;
   }
@@ -1602,32 +1602,32 @@ exports[`Video Layout matches the snapshot 1`] = `
   }
 }
 
-@media (max-width:48em) {
+@media (max-width:900px) {
   .c67 .c68 a {
     display: block;
   }
 }
 
-@media (max-width:48em) {
+@media (max-width:900px) {
   .c67 .c86 {
     margin: 40px 0 100px 0;
   }
 }
 
-@media (max-width:48em) {
+@media (max-width:900px) {
   .c39 {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
 }
 
-@media (max-width:48em) {
+@media (max-width:900px) {
   .c34 {
     padding-bottom: 40px;
   }
 }
 
-@media (max-width:48em) {
+@media (max-width:900px) {
   .c46 {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
@@ -1636,7 +1636,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   }
 }
 
-@media (max-width:48em) {
+@media (max-width:900px) {
   .c0 .c47 {
     margin: 40px 0 100px 0;
   }

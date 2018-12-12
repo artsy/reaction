@@ -271,13 +271,13 @@ exports[`ArticleCard renders properly 1`] = `
   }
 }
 
-@media (max-width:48em) {
+@media (max-width:900px) {
   .c0 .c4 a {
     display: block;
   }
 }
 
-@media (max-width:48em) {
+@media (max-width:900px) {
   .c0 .SeriesAbout__SeriesAboutContainer-s1xh0wwc-0 {
     margin: 40px 0 100px 0;
   }

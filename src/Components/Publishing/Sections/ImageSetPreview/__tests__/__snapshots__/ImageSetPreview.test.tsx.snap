@@ -234,11 +234,15 @@ exports[`renders a full image set properly 1`] = `
       </div>
     </div>
   </div>
-  <img
-    alt="The Work of Bruce M. Sherman"
-    className="c10"
-    src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=800&quality=80"
-  />
+  <div
+    className=""
+  >
+    <img
+      alt="The Work of Bruce M. Sherman"
+      className="c10"
+      src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=800&quality=80"
+    />
+  </div>
 </div>
 `;
 
