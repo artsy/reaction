@@ -20,7 +20,7 @@ import {
   OrderStepper,
 } from "../../Components/OrderStepper"
 
-import { AcceptMutation } from "__generated__/AcceptMutation.graphql"
+import { AcceptOfferMutation } from "__generated__/AcceptOfferMutation.graphql"
 import { ConditionsOfSaleDisclaimer } from "Apps/Order/Components/ConditionsOfSaleDisclaimer"
 import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "Apps/Order/Components/ShippingSummaryItem"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
@@ -60,9 +60,9 @@ export class Accept extends Component<AcceptProps, AcceptState> {
   onSubmit: () => void = () => {
     this.setState({ isCommittingMutation: true }, () => {
       if (this.props.relay && this.props.relay.environment) {
-        commitMutation<AcceptMutation>(this.props.relay.environment, {
+        commitMutation<AcceptOfferMutation>(this.props.relay.environment, {
           mutation: graphql`
-            mutation AcceptMutation($input: buyerAcceptOfferInput!) {
+            mutation AcceptOfferMutation($input: buyerAcceptOfferInput!) {
               ecommerceBuyerAcceptOffer(input: $input) {
                 orderOrError {
                   ... on OrderWithMutationSuccess {

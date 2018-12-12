@@ -5,10 +5,10 @@ export type buyerAcceptOfferInput = {
     readonly offerId: string;
     readonly clientMutationId?: string | null;
 };
-export type AcceptMutationVariables = {
+export type AcceptOfferMutationVariables = {
     readonly input: buyerAcceptOfferInput;
 };
-export type AcceptMutationResponse = {
+export type AcceptOfferMutationResponse = {
     readonly ecommerceBuyerAcceptOffer: ({
         readonly orderOrError: ({
             readonly __typename: "OrderWithMutationSuccess";
@@ -23,15 +23,15 @@ export type AcceptMutationResponse = {
         }) | null;
     }) | null;
 };
-export type AcceptMutation = {
-    readonly response: AcceptMutationResponse;
-    readonly variables: AcceptMutationVariables;
+export type AcceptOfferMutation = {
+    readonly response: AcceptOfferMutationResponse;
+    readonly variables: AcceptOfferMutationVariables;
 };
 
 
 
 /*
-mutation AcceptMutation(
+mutation AcceptOfferMutation(
   $input: buyerAcceptOfferInput!
 ) {
   ecommerceBuyerAcceptOffer(input: $input) {
@@ -136,13 +136,13 @@ v5 = {
 return {
   "kind": "Request",
   "operationKind": "mutation",
-  "name": "AcceptMutation",
+  "name": "AcceptOfferMutation",
   "id": null,
-  "text": "mutation AcceptMutation(\n  $input: buyerAcceptOfferInput!\n) {\n  ecommerceBuyerAcceptOffer(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          id\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation AcceptOfferMutation(\n  $input: buyerAcceptOfferInput!\n) {\n  ecommerceBuyerAcceptOffer(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          id\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "AcceptMutation",
+    "name": "AcceptOfferMutation",
     "type": "Mutation",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -194,7 +194,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "AcceptMutation",
+    "name": "AcceptOfferMutation",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -246,5 +246,5 @@ return {
   }
 };
 })();
-(node as any).hash = '876b5420c87cf7d42fc5ccc164bc84aa';
+(node as any).hash = '3c03e86ceed373404129410f6464b598';
 export default node;
