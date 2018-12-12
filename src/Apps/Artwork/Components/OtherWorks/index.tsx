@@ -4,10 +4,10 @@ import { ContextConsumer } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
-import { ArtworkContextArtistQueryRenderer as ArtworkContextArtist } from "./ArtworkContexts/ArtworkContextArtist"
-import { ArtworkContextAuctionQueryRenderer as ArtworkContextAuction } from "./ArtworkContexts/ArtworkContextAuction"
-import { ArtworkContextFairQueryRenderer as ArtworkContextFair } from "./ArtworkContexts/ArtworkContextFair"
-import { ArtworkContextPartnerShowQueryRenderer as ArtworkContextPartnerShow } from "./ArtworkContexts/ArtworkContextPartnerShow"
+import { ArtworkContextArtistFragmentContainer as ArtworkContextArtist } from "./ArtworkContexts/ArtworkContextArtist"
+import { ArtworkContextAuctionFragmentContainer as ArtworkContextAuction } from "./ArtworkContexts/ArtworkContextAuction"
+import { ArtworkContextFairFragmentContainer as ArtworkContextFair } from "./ArtworkContexts/ArtworkContextFair"
+import { ArtworkContextPartnerShowFragmentContainer as ArtworkContextPartnerShow } from "./ArtworkContexts/ArtworkContextPartnerShow"
 
 export interface OtherWorksContextProps {
   /** The artworkSlug to query */
@@ -19,44 +19,21 @@ export interface OtherWorksContextProps {
 export const OtherWorksFragmentContainer = createFragmentContainer<{
   artwork: OtherWorks_artwork
 }>(
-  props => {
-    const contextType =
-      props.artwork.context && props.artwork.context.__typename
-    const artworkSlug = props.artwork.id
+  ({ artwork }) => {
+    const contextType = artwork.context && artwork.context.__typename
 
     switch (contextType) {
       case "ArtworkContextAuction": {
-        return (
-          <ArtworkContextAuction
-            artworkSlug={artworkSlug}
-            artworkID={props.artwork._id}
-            isClosed={props.artwork.sale.is_closed}
-          />
-        )
+        return <ArtworkContextAuction artwork={artwork} />
       }
       case "ArtworkContextFair": {
-        return (
-          <ArtworkContextFair
-            artworkSlug={artworkSlug}
-            artworkID={props.artwork._id}
-          />
-        )
+        return <ArtworkContextFair artwork={artwork} />
       }
       case "ArtworkContextPartnerShow": {
-        return (
-          <ArtworkContextPartnerShow
-            artworkSlug={artworkSlug}
-            artworkID={props.artwork._id}
-          />
-        )
+        return <ArtworkContextPartnerShow artwork={artwork} />
       }
       default: {
-        return (
-          <ArtworkContextArtist
-            artworkSlug={artworkSlug}
-            artworkID={props.artwork._id}
-          />
-        )
+        return <ArtworkContextArtist artwork={artwork} />
       }
     }
   },
@@ -70,6 +47,10 @@ export const OtherWorksFragmentContainer = createFragmentContainer<{
       context {
         __typename
       }
+      ...ArtworkContextFair_artwork
+      ...ArtworkContextAuction_artwork
+      ...ArtworkContextPartnerShow_artwork
+      ...ArtworkContextArtist_artwork
     }
   `
 )

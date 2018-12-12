@@ -22,7 +22,6 @@ import Events from "Utils/Events"
 
 interface ArtistInfoProps {
   artist: ArtistInfo_artist
-  user: User
   mediator?: Mediator
 }
 

@@ -5,7 +5,7 @@ import { LazyLoadComponent } from "react-lazy-load-image-component"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
-import { ArtistInfoQueryRenderer as ArtistInfo } from "./Components/ArtistInfo"
+import { ArtistInfoFragmentContainer as ArtistInfo } from "./Components/ArtistInfo"
 
 import { ArtworkBannerFragmentContainer as ArtworkBanner } from "./Components/ArtworkBanner"
 import { ArtworkDetailsFragmentContainer as ArtworkDetails } from "./Components/ArtworkDetails"
@@ -49,7 +49,7 @@ export const ArtworkApp: React.SFC<Props> = props => {
       {props.artwork.artist && (
         <Row>
           <Col sm={8}>
-            <ArtistInfo artistID={props.artwork.artist.id} />
+            <ArtistInfo artist={props.artwork.artist} />
           </Col>
         </Row>
       )}
@@ -64,11 +64,11 @@ export const ArtworkApp: React.SFC<Props> = props => {
 
       {typeof window !== "undefined" && (
         <LazyLoadComponent threshold={1000}>
-          <Row>
-            <Col>
-              <RecentlyViewed />
-            </Col>
-          </Row>
+        <Row>
+          <Col>
+            <RecentlyViewed />
+          </Col>
+        </Row>
         </LazyLoadComponent>
       )}
 
@@ -153,6 +153,7 @@ export const ArtworkAppFragmentContainer = createFragmentContainer(
       id
       artist {
         id
+        ...ArtistInfo_artist
       }
       ...ArtworkBanner_artwork
       ...ArtworkSidebar_artwork
