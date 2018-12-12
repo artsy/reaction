@@ -1,10 +1,11 @@
 import { Box, Flex, Sans, Serif } from "@artsy/palette"
+import { LosingBid } from "Assets/Icons/LosingBid"
+import { WinningBid } from "Assets/Icons/WinningBid"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { get } from "Utils/get"
 
 import { ArtworkSidebarCurrentBidInfo_artwork } from "__generated__/ArtworkSidebarCurrentBidInfo_artwork.graphql"
-import { LoosingBid } from "Assets/Icons/LoosingBid"
-import { WinningBid } from "Assets/Icons/WinningBid"
 
 export interface ArtworkSidebarCurrentBidInfoProps {
   artwork: ArtworkSidebarCurrentBidInfo_artwork
@@ -16,6 +17,9 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
   render() {
     const { artwork } = this.props
 
+    // We do not have reliable Bid info on Live sales in progress
+    if (artwork.sale && artwork.sale.is_live_open) return null
+
     if (artwork.sale && artwork.sale.is_closed) {
       return (
         <Box pt={2} pb={2}>
@@ -26,8 +30,8 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
       )
     }
 
-    const bidsPresent = artwork.sale_artwork.counts.bidder_positions > 0
-    const bidPrompt = bidsPresent ? "Current bid" : "Starting Bid"
+    const bidsCount = get(artwork, a => a.sale_artwork.counts.bidder_positions)
+    const bidsPresent = bidsCount > 0
     const bidColor =
       artwork.sale_artwork.is_with_reserve &&
       bidsPresent &&
@@ -35,15 +39,16 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
         ? "red100"
         : "black60"
     const bidTextParts = []
+    let reserveMessage = artwork.sale_artwork.reserve_message
     if (bidsPresent) {
-      bidTextParts.push(
-        artwork.sale_artwork.counts.bidder_positions === 1
-          ? "1 bid"
-          : artwork.sale_artwork.counts.bidder_positions + " bids"
-      )
+      bidTextParts.push(bidsCount === 1 ? "1 bid" : bidsCount + " bids")
+      if (reserveMessage) reserveMessage = reserveMessage.toLocaleLowerCase()
     }
-    artwork.sale_artwork.reserve_message &&
-      bidTextParts.push(artwork.sale_artwork.reserve_message)
+    if (reserveMessage) {
+      reserveMessage = reserveMessage + "."
+      bidTextParts.push(reserveMessage)
+    }
+
     const bidText = bidTextParts.join(", ")
 
     /**
@@ -58,7 +63,7 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
       <Box pt={2} pb={2}>
         <Flex width="100%" flexDirection="row" justifyContent="space-between">
           <Serif size="5t" weight="semibold" pr={1}>
-            {bidPrompt}
+            {bidsPresent ? "Current bid" : "Starting bid"}
           </Serif>
           <Flex
             flexDirection="row"
@@ -67,7 +72,7 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
           >
             {myBidPresent && (
               <Box pt={0.5}>
-                {activeBid.is_winning ? <WinningBid /> : <LoosingBid />}
+                {activeBid.is_winning ? <WinningBid /> : <LosingBid />}
               </Box>
             )}
             <Serif size="5t" weight="semibold" pl={0.5}>
@@ -95,21 +100,12 @@ export const ArtworkSidebarCurrentBidInfoFragmentContainer = createFragmentConta
   ArtworkSidebarCurrentBidInfo,
   graphql`
     fragment ArtworkSidebarCurrentBidInfo_artwork on Artwork {
-      myLotStanding(live: true) {
-        active_bid {
-          is_winning
-          max_bid {
-            display
-          }
-        }
-      }
+      _id
       sale {
-        is_open
         is_closed
+        is_live_open
       }
       sale_artwork {
-        lot_label
-        estimate
         is_with_reserve
         reserve_message
         reserve_status
@@ -118,6 +114,14 @@ export const ArtworkSidebarCurrentBidInfoFragmentContainer = createFragmentConta
         }
         counts {
           bidder_positions
+        }
+      }
+      myLotStanding(live: true) {
+        active_bid {
+          is_winning
+          max_bid {
+            display
+          }
         }
       }
     }
