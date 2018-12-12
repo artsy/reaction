@@ -6,7 +6,7 @@ import styled from "styled-components"
 /**
  * WARNING: Do _not_ change this element to something common like a div. If the
  * element of this container is the same as the element used in the RelayContainer
- * then then rehydration can fail and cause the RelayContainer to recieve styles
+ * then rehydration can fail and cause the RelayContainer to receive styles
  * from the SpinnerContainer and Spinner.
  */
 const SpinnerContainer = styled.figure`
