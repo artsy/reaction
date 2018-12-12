@@ -41,7 +41,7 @@ export interface RespondProps {
 
 export interface RespondState {
   offerValue: number | null
-  responseOption: "ACCEPT" | "COUNTER" | "DECLINE" | null
+  responseOption: "ACCEPT" | "COUNTER" | "DECLINE"
   isCommittingMutation: boolean
   isErrorModalOpen: boolean
   errorModalTitle: string
@@ -74,9 +74,6 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
           this.props.router.push(
             `/orders/${this.props.order.id}/review/decline`
           )
-          break
-        default:
-          logger.error(new Error("Unrecognized response option"))
           break
       }
       this.setState({ isCommittingMutation: false })
