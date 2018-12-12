@@ -20,12 +20,13 @@ export interface StatusProps {
 
 export class StatusRoute extends Component<StatusProps> {
   stateCopy = () => {
-    const { state, requestedFulfillment } = this.props.order
+    const { state, requestedFulfillment, mode } = this.props.order
+    const isOfferFlow = mode === "OFFER"
     switch (state) {
       case "SUBMITTED":
         return "Your order has been submitted."
       case "APPROVED":
-        return "Your order is confirmed."
+        return isOfferFlow ? "Offer accepted" : "Your order is confirmed."
       case "FULFILLED":
         return requestedFulfillment.__typename === "Ship"
           ? "Your order has shipped."
@@ -137,6 +138,14 @@ const offerMessages = {
       </>
     )
   },
+  APPROVED: () => (
+    <>
+      Thank you for your purchase. You will receive a confirmation email. The
+      seller will notify you when your order has shipped, typically 5–7 business
+      days. If you have questions, please contact{" "}
+      <a href="mailto:orders@artsy.net">orders@artsy.net</a>.
+    </>
+  ),
 }
 const orderMessages = {
   SUBMITTED: () => (
