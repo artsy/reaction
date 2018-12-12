@@ -1,3 +1,4 @@
+import { breakpoints } from "@artsy/palette"
 import Colors from "./Colors"
 
 export default {
@@ -12,10 +13,11 @@ export default {
       lg: 76, // rem
     },
     breakpoints: {
-      xs: 768, // px
-      sm: 900, // px
-      md: 1024, // px
-      lg: 1192, // px
+      xs: breakpoints.xs, // px
+      sm: breakpoints.sm,
+      md: breakpoints.md,
+      lg: breakpoints.lg,
+      xl: breakpoints.xl,
     },
   },
   publishing: {

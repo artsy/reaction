@@ -4,6 +4,7 @@ import { media } from "Components/Helpers"
 import { flatten, map } from "lodash"
 import React from "react"
 import styled from "styled-components"
+import { textAlign } from "styled-system"
 import { resize } from "Utils/resizer"
 import { Media } from "Utils/Responsive"
 
@@ -47,7 +48,7 @@ export class Eoy2018ArticleHeader extends React.Component<{
 
         <Title>
           <TitleBlock>The Most </TitleBlock>
-          <TitleBlock>Influential </TitleBlock>
+          <TitleBlock textAlign="right">Influential </TitleBlock>
           <Media lessThan="md">
             <TitleBlock>Artists</TitleBlock>
           </Media>
@@ -127,15 +128,8 @@ const TitleBlock = styled.span<{ textAlign?: string }>`
   display: block;
   font-size: 20vh;
   line-height: initial;
+  ${textAlign};
 
-  &:nth-child(2) {
-    text-align: right;
-  }
-  ${props =>
-    props.textAlign &&
-    `
-    text-align: ${props.textAlign};
-  `};
   ${media.xs`
     font-size: 15vw;
   `};

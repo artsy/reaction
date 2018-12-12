@@ -59,7 +59,7 @@ export class Eoy2018Artists extends React.Component<ArticleProps> {
       <ArtistHeaderSection
         key={i}
         mb={40}
-        flexDirection={["column", "column", "column", "row"]}
+        flexDirection={["column", "column", "row", "row"]}
       >
         <ArtistHeaderTitle dangerouslySetInnerHTML={{ __html: section.body }} />
         <ArtistHeaderImg src={src && resize(src, { width: 700 })} />
@@ -177,7 +177,7 @@ const NavBorder = styled.div`
   max-width: calc(1600px - 110px);
   margin: 0 auto;
 
-  ${media.sm`
+  ${media.md`
     left: 10px;
     right: 10px;
   `};
@@ -282,6 +282,7 @@ const ArtistHeaderTitle = styled.div`
 const ArtistHeaderImg = styled.div<{ src?: string }>`
   flex: 1;
   background: ${color("purple100")};
+
   ${props =>
     props.src &&
     `
@@ -374,6 +375,7 @@ const ImageSetWrapper = styled(Box)`
   ${ImgContainer} {
     flex: 3;
     border-right: ${BORDER_WIDTH}px solid ${color("purple100")};
+
     img {
       object-fit: cover;
       object-position: center;

@@ -769,7 +769,7 @@ exports[`renders a series properly 1`] = `
   }
 }
 
-@media (max-width:900px) {
+@media (max-width:768px) {
   .c37:first-of-type .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
     display: none;
   }
@@ -780,7 +780,7 @@ exports[`renders a series properly 1`] = `
   }
 }
 
-@media (max-width:900px) {
+@media (max-width:768px) {
   .c39 {
     margin-bottom: 20px;
   }
@@ -1928,7 +1928,7 @@ exports[`renders a sponsored series properly 1`] = `
   }
 }
 
-@media (max-width:900px) {
+@media (max-width:768px) {
   .c44:first-of-type .c18 {
     display: none;
   }
@@ -1939,7 +1939,7 @@ exports[`renders a sponsored series properly 1`] = `
   }
 }
 
-@media (max-width:900px) {
+@media (max-width:768px) {
   .c46 {
     margin-bottom: 20px;
   }
