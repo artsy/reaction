@@ -5,13 +5,13 @@ import {
   OpenAuctionNoReserveNoBids,
   OpenAuctionNoReserveWithBids,
   OpenAuctionReserveMetWithBids,
-  OpenAuctionReserveMetWithMyLoosingBid,
+  OpenAuctionReserveMetWithMyLosingBid,
   OpenAuctionReserveMetWithMyWinningBid,
   OpenAuctionReserveNoBids,
   OpenAuctionReserveNotMetWithBids,
 } from "Apps/__tests__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarCurrentBidInfo"
 import { ArtworkSidebarCurrentBidInfoFragmentContainer } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarCurrentBidInfo"
-import { LoosingBid } from "Assets/Icons/LoosingBid"
+import { LosingBid } from "Assets/Icons/LosingBid"
 import { WinningBid } from "Assets/Icons/WinningBid"
 import { renderRelayTree } from "DevTools"
 import { graphql } from "react-relay"
@@ -119,12 +119,12 @@ describe("ArtworkSidebarCurrentBidInfo", () => {
       })
     })
 
-    describe("for open auction with my bid loosing", () => {
-      it("displays max bid and loosing indicator", async () => {
-        const wrapper = await getWrapper(OpenAuctionReserveMetWithMyLoosingBid)
+    describe("for open auction with my bid losing", () => {
+      it("displays max bid and losing indicator", async () => {
+        const wrapper = await getWrapper(OpenAuctionReserveMetWithMyLosingBid)
 
         expect(wrapper.text()).toContain("Your max: $400")
-        expect(wrapper.find(LoosingBid).length).toBe(1)
+        expect(wrapper.find(LosingBid).length).toBe(1)
       })
     })
   })

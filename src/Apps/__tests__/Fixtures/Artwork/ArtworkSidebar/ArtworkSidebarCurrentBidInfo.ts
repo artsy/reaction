@@ -154,8 +154,8 @@ export const OpenAuctionReserveMetWithMyWinningBid = {
   ],
 }
 
-export const OpenAuctionReserveMetWithMyLoosingBid = {
-  _id: "open_auction_reserve_met_my_loosing_bid",
+export const OpenAuctionReserveMetWithMyLosingBid = {
+  _id: "open_auction_reserve_met_my_losing_bid",
   ...OpenAuctionReserveMetWithBids,
   myLotStanding: [
     {

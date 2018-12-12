@@ -1,5 +1,5 @@
 import { Box, Flex, Sans, Serif } from "@artsy/palette"
-import { LoosingBid } from "Assets/Icons/LoosingBid"
+import { LosingBid } from "Assets/Icons/LosingBid"
 import { WinningBid } from "Assets/Icons/WinningBid"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -72,7 +72,7 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
           >
             {myBidPresent && (
               <Box pt={0.5}>
-                {activeBid.is_winning ? <WinningBid /> : <LoosingBid />}
+                {activeBid.is_winning ? <WinningBid /> : <LosingBid />}
               </Box>
             )}
             <Serif size="5t" weight="semibold" pl={0.5}>
