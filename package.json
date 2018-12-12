@@ -11,7 +11,8 @@
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
     "react-router": "^4.2.0",
-    "styled-components": "^2 || ^3"
+    "styled-components": "^2 || ^3",
+    "@artsy/palette": "^2.23.1"
   },
   "scripts": {
     "clean": "rm -rf dist",
@@ -49,6 +50,7 @@
     "react-relay": "https://github.com/alloy/relay/releases/download/v1.5.0-artsy.3/react-relay-1.5.0-artsy.3.tgz"
   },
   "devDependencies": {
+    "@artsy/palette": "2.23.2",
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
@@ -145,7 +147,6 @@
   },
   "dependencies": {
     "@artsy/detect-responsive-traits": "^0.0.1",
-    "@artsy/palette": "^2.23.1",
     "@artsy/react-responsive-media": "^2.0.0-beta.5",
     "@sentry/browser": "^4.2.3",
     "cheerio": "^1.0.0-rc.2",

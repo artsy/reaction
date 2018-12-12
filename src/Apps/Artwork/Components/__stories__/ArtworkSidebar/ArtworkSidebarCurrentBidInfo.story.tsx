@@ -1,10 +1,11 @@
 import {
+  AuctionPreview,
   ClosedAuctionArtwork,
   LiveAuctionInProgeress,
   OpenAuctionNoReserveNoBids,
   OpenAuctionNoReserveWithBids,
   OpenAuctionReserveMetWithBids,
-  OpenAuctionReserveMetWithMyLoosingBid,
+  OpenAuctionReserveMetWithMyLosingBid,
   OpenAuctionReserveMetWithMyWinningBid,
   OpenAuctionReserveNoBids,
   OpenAuctionReserveNotMetWithBids,
@@ -40,10 +41,11 @@ storiesOf("Styleguide/Artwork/Sidebar", module).add("CurrentBidInfo", () => {
           artwork={OpenAuctionReserveMetWithMyWinningBid as any}
         />
       </Section>
-      <Section title="Open auction with my bid loosing">
-        <CurrentBidInfo
-          artwork={OpenAuctionReserveMetWithMyLoosingBid as any}
-        />
+      <Section title="Open auction with my bid losing">
+        <CurrentBidInfo artwork={OpenAuctionReserveMetWithMyLosingBid as any} />
+      </Section>
+      <Section title="Auction preview">
+        <CurrentBidInfo artwork={AuctionPreview as any} />
       </Section>
       <Section title="Live auction in progress">
         <CurrentBidInfo artwork={LiveAuctionInProgeress as any} />
