@@ -38,6 +38,24 @@ export const AuctionPreview = {
   myLotStanding: null,
 }
 
+export const AuctionPreviewNoStartingBid = {
+  _id: "artwork_from_auction_preview",
+  sale: {
+    is_closed: false,
+    is_live_open: false,
+  },
+  sale_artwork: {
+    is_with_reserve: false,
+    reserve_message: null,
+    reserve_status: "no_reserve",
+    current_bid: null,
+    counts: {
+      bidder_positions: 0,
+    },
+  },
+  myLotStanding: null,
+}
+
 export const OpenAuctionNoReserveNoBids = {
   _id: "open_auction_no_reserve_no_bids",
   sale: {
