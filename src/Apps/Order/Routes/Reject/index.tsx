@@ -17,7 +17,6 @@ export class Reject extends Component<RejectProps, RejectState> {
   }
 
   render() {
-    console.log("Hello!")
     return <Serif size="2">"Hello world"</Serif>
   }
 }

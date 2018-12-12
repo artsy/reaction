@@ -171,7 +171,7 @@ const redirects: RedirectRecord = {
       ],
     },
     {
-      path: "review/reject",
+      path: "review/decline",
       rules: [
         goToStatusIfNotOfferOrder,
         goToStatusIfNotAwaitingBuyerResponse,

@@ -71,7 +71,9 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
           this.props.router.push(`/orders/${this.props.order.id}/accept`)
           break
         case "DECLINE":
-          this.props.router.push(`/orders/${this.props.order.id}/review/reject`)
+          this.props.router.push(
+            `/orders/${this.props.order.id}/review/decline`
+          )
           break
         default:
           window.alert(`You decided to ${responseOption}.`)

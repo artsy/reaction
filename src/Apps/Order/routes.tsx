@@ -185,7 +185,7 @@ export const routes: RouteConfig[] = [
         `,
       },
       {
-        path: "review/reject",
+        path: "review/decline",
         Component: RejectRoute,
         query: graphql`
           query routes_RejectQuery($orderID: String!) {

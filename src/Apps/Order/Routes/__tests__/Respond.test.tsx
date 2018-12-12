@@ -206,7 +206,7 @@ describe("Offer InitialMutation", () => {
         .onClick({})
 
       expect(mockPushRoute).toHaveBeenCalledWith(
-        `/orders/${testOrder.id}/review/reject` // TODO: Change to /review/decline
+        `/orders/${testOrder.id}/review/decline`
       )
     })
 

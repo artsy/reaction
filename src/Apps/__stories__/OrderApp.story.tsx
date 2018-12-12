@@ -254,7 +254,7 @@ storiesOf("Apps/Order Page/Accept Offer", module).add("Review (accept)", () => (
 storiesOf("Apps/Order Page/Reject Offer", module).add("Review (reject)", () => (
   // Steve was going to look into sharing these stubbed data sets, check with him before merging.
   <Router
-    initialRoute="/orders/123/review/reject"
+    initialRoute="/orders/123/review/decline"
     mockResolvers={mockResolver({
       ...OfferOrderWithShippingDetails,
       state: "SUBMITTED",
