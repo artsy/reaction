@@ -4,7 +4,20 @@ const React = require("react")
 // can’t have ref props on it.
 class MockSlider extends React.Component {
   render() {
-    return React.createElement("div", null, this.props.children)
+    const { children, customPaging } = this.props
+
+    return (
+      <div>
+        {children}
+        {customPaging && (
+          <div>
+            {children.map((_child, index) => {
+              return <div key={index}>{customPaging()}</div>
+            })}
+          </div>
+        )}
+      </div>
+    )
   }
 }
 

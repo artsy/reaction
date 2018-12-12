@@ -33,7 +33,7 @@ export const ArtworkApp: React.SFC<Props> = props => {
       </Row>
       <Row>
         <Col sm={8}>
-          <Box px={4}>
+          <Box px={[0, 4]}>
             <ImageBrowser artwork={props.artwork} />
           </Box>
         </Col>

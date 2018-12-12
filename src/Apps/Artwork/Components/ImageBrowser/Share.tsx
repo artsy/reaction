@@ -60,6 +60,7 @@ const Platform: React.SFC<{ iconName: IconName; title: string }> = ({
 )
 
 export class Share extends React.Component<ShareProps> {
+  // static displayName = "Share"
   private input: HTMLInputElement
 
   selectURL = () => {

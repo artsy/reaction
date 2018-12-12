@@ -1,39 +1,28 @@
-import { Flex, Spacer } from "@artsy/palette"
+import React from "react"
+import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
+
 import { ImageBrowser_artwork } from "__generated__/ImageBrowser_artwork.graphql"
 import { ImageBrowserQuery } from "__generated__/ImageBrowserQuery.graphql"
 import { ContextConsumer } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
-import SaveButton from "Components/Artwork/Save"
-import React from "react"
-import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
-import { Media } from "Utils/Responsive"
-import { ShareButton } from "./ActionButton"
-import { LargeImageCarousel, SmallImageCarousel } from "./ImageCarousel2"
+import { ActionButtons } from "./ActionButtons"
+import { ImageBrowser } from "./ImageBrowser"
 
-interface ImageBrowserProps {
+export interface ImageBrowserProps {
   artwork: ImageBrowser_artwork
 }
 
-const ImageBrowser: React.SFC<ImageBrowserProps> = props => {
-  return (
-    <>
-      <Media at="xs">
-        <SmallImageCarousel images={props.artwork.images} />
-      </Media>
-      <Media greaterThan="xs">
-        <LargeImageCarousel images={props.artwork.images} />
-        <Spacer my={4} />
-        <Flex justifyContent="center" position="relative" pl={2}>
-          <SaveButton artwork={props.artwork} />
-          <ShareButton href={props.artwork.href} />
-        </Flex>
-      </Media>
-    </>
-  )
-}
-
-export const ImageBrowserFragmentContainer = createFragmentContainer(
-  ImageBrowser,
+export const ImageBrowserFragmentContainer = createFragmentContainer<
+  ImageBrowserProps
+>(
+  props => {
+    return (
+      <>
+        <ImageBrowser images={props.artwork.images} />
+        <ActionButtons artwork={props.artwork} />
+      </>
+    )
+  },
   graphql`
     fragment ImageBrowser_artwork on Artwork {
       title
