@@ -52,11 +52,9 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
       this.props.artwork.edition_sets[0].__id,
   }
 
-  renderEdition(edition) {
-    const { artwork } = this.props
-    const isEcommerceEnrolled =
-      (artwork.is_acquireable || artwork.is_offerable) &&
-      (edition.is_acquireable || edition.is_offerable)
+  renderEdition(edition, includeSelectOption) {
+    const editionEcommerceAvailable =
+      edition.is_acquireable || edition.is_offerable
 
     const editionFragment = (
       <>
@@ -66,7 +64,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
         </Serif>
       </>
     )
-    if (isEcommerceEnrolled) {
+    if (includeSelectOption) {
       return (
         <Row>
           <Radio
@@ -75,7 +73,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
               this.setState({ selectedEditionId: edition.__id } as any)
             }}
             selected={this.state.selectedEditionId === edition.__id}
-            disabled={!isEcommerceEnrolled}
+            disabled={!editionEcommerceAvailable}
           />
           {editionFragment}
         </Row>
@@ -84,12 +82,12 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
       return <Row>{editionFragment}</Row>
     }
   }
-  renderEditions() {
+  renderEditions(includeSelectOption) {
     const editions = this.props.artwork.edition_sets
     const editionsFragment = editions.map((edition, index) => {
       return (
         <React.Fragment key={edition.__id}>
-          <Box py={2}>{this.renderEdition(edition)}</Box>
+          <Box py={2}>{this.renderEdition(edition, includeSelectOption)}</Box>
           {index !== editions.length - 1 && <Separator />}
         </React.Fragment>
       )
@@ -180,7 +178,8 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
   render() {
     const { artwork } = this.props
     const { isCommittingCreateOrderMutation } = this.state
-    const isEcommerceEnrolled = artwork.is_acquireable || artwork.is_offerable
+    const artworkEcommerceAvailable =
+      artwork.is_acquireable || artwork.is_offerable
 
     if (!artwork.sale_message && !artwork.is_inquireable) {
       return null
@@ -194,15 +193,15 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
             </Serif>
           </Box>
         ) : (
-          this.renderEditions()
+          this.renderEditions(artworkEcommerceAvailable)
         )}
-        {isEcommerceEnrolled &&
+        {artworkEcommerceAvailable &&
           artwork.shippingInfo && (
             <Serif size="2" color="black60">
               {artwork.shippingInfo}
             </Serif>
           )}
-        {isEcommerceEnrolled &&
+        {artworkEcommerceAvailable &&
           artwork.shippingOrigin && (
             <Serif size="2" color="black60">
               Ships from {artwork.shippingOrigin}
