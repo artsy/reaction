@@ -205,8 +205,9 @@ describe("Offer InitialMutation", () => {
         .props()
         .onClick({})
 
-      // TODO: get rid of window.alert
-      expect(window.alert).toHaveBeenCalledWith(`You decided to DECLINE.`)
+      expect(mockPushRoute).toHaveBeenCalledWith(
+        `/orders/${testOrder.id}/review/decline`
+      )
     })
 
     it("Countering the seller's offer works", () => {
