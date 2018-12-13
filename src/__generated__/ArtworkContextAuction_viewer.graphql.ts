@@ -58,9 +58,10 @@ return {
       "defaultValue": null
     },
     {
-      "kind": "RootArgument",
+      "kind": "LocalArgument",
       "name": "artworkSlug",
-      "type": "String!"
+      "type": "String!",
+      "defaultValue": null
     }
   ],
   "selections": [
@@ -171,5 +172,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '774ad797fa70d46fe2b0d90e5795cb64';
+(node as any).hash = '670a872718ffbe900e684a1d0e8dce37';
 export default node;

@@ -45,6 +45,7 @@ export const ArtworkContextAuctionQueryRenderer: React.SFC<
                     @arguments(
                       excludeArtworkIDs: $excludeArtworkIDs
                       isClosed: $isClosed
+                      artworkSlug: $artworkSlug
                     )
                 }
               }
@@ -66,15 +67,19 @@ export const ArtworkContextAuctionFragmentContainer = createFragmentContainer<{
     const { artwork, sales } = props.viewer
     const isClosed = artwork.sale.is_closed
 
+    const OtherAuctionsList = (
+      <OtherAuctions>
+        {sales.map(sale => {
+          return <AuctionCard sale={sale} />
+        })}
+      </OtherAuctions>
+    )
+
     if (!isClosed) {
       return (
         <Join separator={<Spacer my={6} />}>
           <AuctionArtworkGrid artwork={artwork} />
-          <OtherAuctions>
-            {sales.map(sale => {
-              return <AuctionCard sale={sale} />
-            })}
-          </OtherAuctions>
+          {OtherAuctionsList}
         </Join>
       )
     } else {
@@ -82,11 +87,7 @@ export const ArtworkContextAuctionFragmentContainer = createFragmentContainer<{
         <Join separator={<Spacer my={6} />}>
           <ArtistArtworkGrid artwork={artwork} />
           <RelatedWorksArtworkGrid artwork={artwork} />
-          <OtherAuctions>
-            {sales.map(sale => {
-              return <AuctionCard sale={sale} />
-            })}
-          </OtherAuctions>
+          {OtherAuctionsList}
         </Join>
       )
     }
@@ -96,6 +97,7 @@ export const ArtworkContextAuctionFragmentContainer = createFragmentContainer<{
       @argumentDefinitions(
         isClosed: { type: "Boolean" }
         excludeArtworkIDs: { type: "[String!]" }
+        artworkSlug: { type: "String!" }
       ) {
       artwork(id: $artworkSlug) {
         sale {
