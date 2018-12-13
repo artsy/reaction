@@ -243,7 +243,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
             mt={1}
             onClick={this.handleInquiry}
           >
-            Contact Gallery
+            Contact gallery
           </Button>
         )}
         {artwork.is_acquireable && (

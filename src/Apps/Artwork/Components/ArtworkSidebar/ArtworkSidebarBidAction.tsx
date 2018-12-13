@@ -1,8 +1,8 @@
-import { Box, Button, Flex, Serif } from "@artsy/palette"
+import { Box, Button, Flex, LargeSelect, Serif, Tooltip } from "@artsy/palette"
 import { Help } from "Assets/Icons/Help"
-import { Tooltip } from "Components/Tooltip"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { get } from "Utils/get"
 
 import { ArtworkSidebarBidAction_artwork } from "__generated__/ArtworkSidebarBidAction_artwork.graphql"
 
@@ -10,11 +10,28 @@ export interface ArtworkSidebarBidActionProps {
   artwork: ArtworkSidebarBidAction_artwork
 }
 
+export interface ArtworkSidebarBidActionState {
+  nextMaxBidCents?: number
+}
+
 export class ArtworkSidebarBidAction extends React.Component<
-  ArtworkSidebarBidActionProps
+  ArtworkSidebarBidActionProps,
+  ArtworkSidebarBidActionState
 > {
+  state: ArtworkSidebarBidActionState = {
+    nextMaxBidCents:
+      get(this.props.artwork, a => a.sale_artwork.increments[0].cents) || null,
+  }
+
+  setMaxBid = (newVal: number) => {
+    this.setState({ nextMaxBidCents: newVal })
+  }
+
   render() {
     const { artwork } = this.props
+
+    if (artwork.sale.is_closed) return null
+
     const registrationAttempted = !!artwork.sale.registrationStatus
     const registeredToBid =
       registrationAttempted &&
@@ -26,7 +43,7 @@ export class ArtworkSidebarBidAction extends React.Component<
      *       likely design work to be done too, so we can adjust this then.
      */
     const myLotStanding = artwork.myLotStanding && artwork.myLotStanding[0]
-    const hasPreviousBids = !!(myLotStanding && myLotStanding.active_bid)
+    const hasMyBids = !!(myLotStanding && myLotStanding.active_bid)
 
     if (artwork.sale.is_preview) {
       return (
@@ -69,39 +86,49 @@ export class ArtworkSidebarBidAction extends React.Component<
     }
 
     if (artwork.sale.is_open) {
-      return (
-        <Box>
-          {registrationAttempted &&
-            !registeredToBid && (
-              <Button width="100%" size="medium" mt={1} disabled>
-                Registration pending
-              </Button>
-            )}
-          {(!artwork.sale.is_registration_closed && !registrationAttempted) ||
-          registeredToBid ? (
-            <Box>
-              <Flex width="100%" flexDirection="row">
-                <Serif size="3t" color="black100">
-                  Place max bid
-                </Serif>
-                <Tooltip message="Set the maximum amount you would like Artsy to bid up to on your behalf">
-                  <Help />
-                </Tooltip>
-              </Flex>
-              <Button width="100%" size="medium" mt={1}>
-                {hasPreviousBids ? "Increase max bid" : "Bid"}
-              </Button>
-            </Box>
-          ) : (
+      if (registrationAttempted && !registeredToBid) {
+        return (
+          <Box>
+            <Button width="100%" size="medium" mt={1} disabled>
+              Registration pending
+            </Button>
+          </Box>
+        )
+      }
+      if (artwork.sale.is_registration_closed && !registeredToBid) {
+        return (
+          <Box>
             <Button width="100%" size="medium" mt={1} disabled>
               Registration closed
             </Button>
-          )}
+          </Box>
+        )
+      }
+
+      const selectOptions = artwork.sale_artwork.increments.map(increment => ({
+        value: increment.cents.toString(),
+        text: increment.display,
+      }))
+      return (
+        <Box>
+          <Flex width="100%" flexDirection="row">
+            <Serif size="3t" color="black100" mr={1}>
+              Place max bid
+            </Serif>
+            <Tooltip
+              content="Set the maximum amount you would like Artsy to bid up to
+            on your behalf"
+            >
+              <Help />
+            </Tooltip>
+          </Flex>
+          <LargeSelect options={selectOptions} onSelect={this.setMaxBid} />
+          <Button width="100%" size="medium" mt={1}>
+            {hasMyBids ? "Increase max bid" : "Bid"}
+          </Button>
         </Box>
       )
     }
-
-    return null
   }
 }
 
@@ -111,7 +138,7 @@ export const ArtworkSidebarBidActionFragmentContainer = createFragmentContainer(
     fragment ArtworkSidebarBidAction_artwork on Artwork {
       myLotStanding(live: true) {
         active_bid {
-          __id
+          is_winning
         }
       }
       sale {
@@ -126,6 +153,7 @@ export const ArtworkSidebarBidActionFragmentContainer = createFragmentContainer(
       }
       sale_artwork {
         increments {
+          cents
           display
         }
       }

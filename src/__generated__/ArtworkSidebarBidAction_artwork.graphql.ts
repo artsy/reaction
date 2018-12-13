@@ -6,7 +6,7 @@ export type ArtworkSidebarBidAction_artwork$ref = typeof _ArtworkSidebarBidActio
 export type ArtworkSidebarBidAction_artwork = {
     readonly myLotStanding: ReadonlyArray<{
         readonly active_bid: ({
-            readonly __id: string;
+            readonly is_winning: boolean | null;
         }) | null;
     }> | null;
     readonly sale: ({
@@ -21,6 +21,7 @@ export type ArtworkSidebarBidAction_artwork = {
     }) | null;
     readonly sale_artwork: ({
         readonly increments: ReadonlyArray<({
+            readonly cents: number | null;
             readonly display: string | null;
         }) | null> | null;
     }) | null;
@@ -69,6 +70,13 @@ return {
           "concreteType": "BidderPosition",
           "plural": false,
           "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "is_winning",
+              "args": null,
+              "storageKey": null
+            },
             v0
           ]
         }
@@ -161,6 +169,13 @@ return {
             {
               "kind": "ScalarField",
               "alias": null,
+              "name": "cents",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
               "name": "display",
               "args": null,
               "storageKey": null
@@ -174,5 +189,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '0c13eb232a51adf1298a9db92aedd3fb';
+(node as any).hash = 'a378c3dafc4544bdf397a3b83bd32859';
 export default node;
