@@ -1,5 +1,6 @@
 import { Button, Flex, Sans, Spacer } from "@artsy/palette"
 import { Reject_order } from "__generated__/Reject_order.graphql"
+import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
 import { ConditionsOfSaleDisclaimer } from "Apps/Order/Components/ConditionsOfSaleDisclaimer"
 import {
   counterofferFlowSteps,
@@ -14,7 +15,6 @@ import { CountdownTimer } from "Styleguide/Components/CountdownTimer"
 import { Col, Row } from "Styleguide/Elements"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { Media } from "Utils/Responsive"
-import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "../../Components/ArtworkSummaryItem"
 
 interface RejectProps {
   order: Reject_order
