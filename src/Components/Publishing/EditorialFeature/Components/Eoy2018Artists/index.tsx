@@ -5,8 +5,8 @@ import styled from "styled-components"
 
 import { unica } from "Assets/Fonts"
 import { media } from "Components/Helpers"
+import { ArticleProps } from "Components/Publishing/Article"
 import { Byline, BylineContainer } from "Components/Publishing/Byline/Byline"
-import { ArticleProps } from "Components/Publishing/Layouts/FeatureLayout"
 import { Nav, NavContainer } from "Components/Publishing/Nav/Nav"
 import { ArticleCards } from "Components/Publishing/RelatedArticles/ArticleCards/ArticleCards"
 import {
@@ -79,7 +79,11 @@ export class Eoy2018Artists extends React.Component<ArticleProps> {
 
   sectionImageSet = (section, i) => {
     return (
-      <ImageSetWrapper key={i} mb={60}>
+      <ImageSetWrapper
+        key={i}
+        mb={60}
+        maxWidth={["100%", "100%", "100%", "75%"]}
+      >
         <ImageSetPreview section={section}>
           <CaptionWrapper size={["3", "4"]}>
             <ImageSetCaption
@@ -121,7 +125,7 @@ export class Eoy2018Artists extends React.Component<ArticleProps> {
   }
 
   render() {
-    const { article } = this.props
+    const { article, isMobile, isTablet } = this.props
     const introText = this.sectionText(article.sections[0], 0)
     const headerImages = map(
       compact(map(this.getHeaderSections(), "imageSection")),
@@ -135,7 +139,11 @@ export class Eoy2018Artists extends React.Component<ArticleProps> {
         </Nav>
 
         <Box px={[10, 10, 55]} maxWidth={1600} mx="auto">
-          <Eoy2018ArticleHeader images={headerImages} />
+          <Eoy2018ArticleHeader
+            images={headerImages}
+            isMobile={isMobile}
+            isTablet={isTablet}
+          />
 
           <ArticleContent py={40}>
             <IntroSection

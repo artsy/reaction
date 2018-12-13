@@ -10,6 +10,8 @@ import { Media } from "Utils/Responsive"
 
 export class Eoy2018ArticleHeader extends React.Component<{
   images?: any
+  isMobile?: boolean
+  isTablet?: boolean
 }> {
   getImageUrls = gridSize => {
     const bgImages = map(flatten(this.props.images), "url")
@@ -28,12 +30,20 @@ export class Eoy2018ArticleHeader extends React.Component<{
   }
 
   imagesGrid = gridSize => {
+    const { isMobile, isTablet } = this.props
     const imageUrls = this.getImageUrls(gridSize)
-    return imageUrls.map((src, i) => (
-      <GridItem key={i} width={[1 / 2, 1 / 3, 1 / 4]}>
-        <Img src={src} />
-      </GridItem>
-    ))
+
+    return imageUrls.map((src, i) => {
+      const isMobileItem = isMobile && (i === 5 || i === 6)
+      const isTabletItem = isTablet && [2, 3, 9].includes(i)
+      const isVisible = isMobileItem || isTabletItem
+
+      return (
+        <GridItem key={i} width={[1 / 2, 1 / 3, 1 / 4]} isVisible={isVisible}>
+          <Img src={src} isVisible={isVisible} />
+        </GridItem>
+      )
+    })
   }
 
   render() {
@@ -73,7 +83,7 @@ const HeaderGrid = styled(Flex)`
   bottom: 0;
 `
 
-const Img = styled.div<{ src?: string }>`
+const Img = styled.div<{ src?: string; isVisible?: boolean }>`
   width: 100%;
   height: 100%;
   opacity: 0;
@@ -88,12 +98,23 @@ const Img = styled.div<{ src?: string }>`
     mix-blend-mode: screen;
     filter: grayscale(100%);
   `};
+
+  ${props =>
+    props.isVisible &&
+    `
+      opacity: 1;
+    `};
 `
 
-const GridItem = styled(Box)`
+const GridItem = styled(Box)<{ isVisible?: boolean }>`
   border: 3px solid ${color("purple100")};
   transition: background-color 0.5s;
 
+  ${props =>
+    props.isVisible &&
+    `
+    background-color: ${color("purple100")};
+  `};
   &:hover {
     background-color: ${color("purple100")};
     ${Img} {

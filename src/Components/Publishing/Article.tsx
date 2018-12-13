@@ -26,6 +26,7 @@ export interface ArticleProps {
   isHovered?: boolean
   isLoggedIn?: boolean
   isMobile?: boolean
+  isTablet?: boolean
   infiniteScrollEntrySlug?: string
   isSuper?: boolean
   isTruncated?: boolean
