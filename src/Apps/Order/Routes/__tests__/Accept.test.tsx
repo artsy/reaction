@@ -20,6 +20,7 @@ import { Stepper } from "Styleguide/Components"
 import { CountdownTimer } from "Styleguide/Components/CountdownTimer"
 import {
   acceptOfferFailed,
+  AcceptOfferPaymentFailed,
   acceptOfferSuccess,
 } from "../__fixtures__/MutationResults"
 import { AcceptFragmentContainer as AcceptRoute } from "../Accept"
@@ -209,6 +210,29 @@ describe("Accept seller offer", () => {
       expect(errorComponent.text()).toContain("An error occurred")
       expect(errorComponent.text()).toContain(
         "Something went wrong. Please try again or contact orders@artsy.net."
+      )
+
+      component.find(ModalButton).simulate("click")
+      expect(component.find(ErrorModal).props().show).toBe(false)
+    })
+
+    it("shows an error modal if there is a capture_failed error", () => {
+      const component = getWrapper()
+      const mockCommitMutation = commitMutation as jest.Mock<any>
+      mockCommitMutation.mockImplementationOnce(
+        (_environment, { onCompleted }) => {
+          onCompleted(AcceptOfferPaymentFailed)
+        }
+      )
+
+      const submitButton = component.find(Button).last()
+      submitButton.simulate("click")
+
+      const errorComponent = component.find(ErrorModal)
+      expect(errorComponent.props().show).toBe(true)
+      expect(errorComponent.text()).toContain("An error occurred")
+      expect(errorComponent.text()).toContain(
+        "There was an error processing your payment. Please try again or contact orders@artsy.net."
       )
 
       component.find(ModalButton).simulate("click")
