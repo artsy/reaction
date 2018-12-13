@@ -17,7 +17,7 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
   render() {
     const { artwork } = this.props
 
-    // We do not have reliable Bid info on Live sales in progress
+    // We do not have reliable Bid info for artworks in Live sales in progress
     if (artwork.sale.is_live_open) return null
 
     if (artwork.sale.is_closed) {
@@ -30,7 +30,7 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
       )
     }
 
-    // Don't display anything of there is no starting bid info
+    // Don't display anything if there is no starting bid info
     if (!artwork.sale_artwork || !artwork.sale_artwork.current_bid) return null
 
     const bidsCount = get(artwork, a => a.sale_artwork.counts.bidder_positions)
