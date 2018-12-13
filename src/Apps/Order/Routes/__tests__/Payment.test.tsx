@@ -261,8 +261,6 @@ describe("Payment", () => {
 
     paymentRoute.find(ContinueButton).simulate("click")
 
-    await flushPromiseQueue()
-
     expect(isButtonLoading()).toBeTruthy()
   })
 
