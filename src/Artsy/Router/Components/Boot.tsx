@@ -37,7 +37,8 @@ export interface BootProps {
 })
 export class Boot extends React.Component<BootProps> {
   componentDidMount() {
-    if (sd.NODE_ENV !== "development") {
+    const env = sd.NODE_ENV || (process.env && process.env.NODE_ENV)
+    if (env === "production") {
       Sentry.init({ dsn: sd.SENTRY_PUBLIC_DSN })
     }
   }
