@@ -254,7 +254,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
             loading={isCommittingCreateOrderMutation}
             onClick={this.handleCreateOrder}
           >
-            Buy Now
+            Buy now
           </Button>
         )}
         {artwork.is_offerable && (
@@ -266,7 +266,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
             size="medium"
             mt={1}
           >
-            Make Offer
+            Make offer
           </Button>
         )}
 
