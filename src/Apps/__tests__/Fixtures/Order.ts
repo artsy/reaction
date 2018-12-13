@@ -1,33 +1,16 @@
 export const mockResolver = (
   orderDetails: any = BuyOrderWithShippingDetails
 ) => ({
-  Me: () => ({
-    name: "Alice Jane",
-  }),
-  Query: () => ({}),
-  Order: (_, { id, ...others }) => {
-    return {
+  Query: {
+    me: () => ({
+      name: "Alice Jane",
+    }),
+    ecommerceOrder: () => ({
       ...orderDetails,
-      id,
-      ...others,
       __resolveType(obj, _context, _info) {
         return obj.mode === "BUY" ? "BuyOrder" : "OfferOrder"
       },
-    }
-  },
-  BuyOrder: (_, { id, ...others }) => {
-    return {
-      ...orderDetails,
-      id,
-      ...others,
-    }
-  },
-  OfferOrder: (_, { id, ...others }) => {
-    return {
-      ...orderDetails,
-      id,
-      ...others,
-    }
+    }),
   },
 })
 
@@ -44,6 +27,7 @@ export const UntouchedOrder = {
   buyerTotal: "$12,000",
   creditCard: null,
   stateExpiresAt: null,
+  awaitingResponseFrom: null,
   requestedFulfillment: {
     __typename: "%other",
   },

@@ -299,7 +299,7 @@ describe("OrderApp routing redirects", () => {
     expect(redirect).toBe(undefined)
   })
 
-  describe.only("visiting the /review/counter page", () => {
+  describe("visiting the /review/counter page", () => {
     const counterOfferOrder = {
       ...OfferOrderWithShippingDetails,
       id: 1234,
@@ -312,6 +312,7 @@ describe("OrderApp routing redirects", () => {
           .toISOString(),
       },
       myLastOffer: {
+        ...OfferWithTotals,
         id: "my-last-offer",
         createdAt: moment().toISOString(),
       },
