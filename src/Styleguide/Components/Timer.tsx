@@ -7,6 +7,8 @@ function padWithZero(num: number) {
   return num.toString().padStart(2, "0")
 }
 
+const SEPARATOR = <>&nbsp;&nbsp;</>
+
 export const Timer: React.SFC<{
   endDate: string
   labelWithTimeRemaining?: string
@@ -22,9 +24,9 @@ export const Timer: React.SFC<{
       return (
         <Flex flexDirection="column" alignItems="center">
           <Sans size="4t" weight="medium">
-            {padWithZero(duration.days())}d{"  "}
-            {padWithZero(duration.hours())}h{"  "}
-            {padWithZero(duration.minutes())}m{"  "}
+            {padWithZero(duration.days())}d{SEPARATOR}
+            {padWithZero(duration.hours())}h{SEPARATOR}
+            {padWithZero(duration.minutes())}m{SEPARATOR}
             {padWithZero(duration.seconds())}s
           </Sans>
           {(labelWithTimeRemaining || labelWithoutTimeRemaining) && (

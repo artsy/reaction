@@ -1,4 +1,4 @@
-import { ArtworkContextAuction_artwork } from "__generated__/ArtworkContextAuction_artwork.graphql"
+import { ArtworkContextAuction_viewer } from "__generated__/ArtworkContextAuction_viewer.graphql"
 import { ArtworkContextAuctionQuery } from "__generated__/ArtworkContextAuctionQuery.graphql"
 import { ContextConsumer } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
@@ -6,6 +6,8 @@ import React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 
 import { Join, Spacer } from "@artsy/palette"
+import { OtherAuctions } from "Apps/Artwork/Components/OtherAuctions"
+import { AuctionCardFragmentContainer as AuctionCard } from "Styleguide/Components/AuctionCard"
 import { OtherWorksContextProps } from ".."
 import {
   ArtistArtworkGrid,
@@ -38,8 +40,8 @@ export const ArtworkContextAuctionQueryRenderer: React.SFC<
                 $excludeArtworkIDs: [String!]
                 $isClosed: Boolean!
               ) {
-                artwork(id: $artworkSlug) {
-                  ...ArtworkContextAuction_artwork
+                viewer {
+                  ...ArtworkContextAuction_viewer
                     @arguments(
                       excludeArtworkIDs: $excludeArtworkIDs
                       isClosed: $isClosed
@@ -58,39 +60,59 @@ export const ArtworkContextAuctionQueryRenderer: React.SFC<
 }
 
 export const ArtworkContextAuctionFragmentContainer = createFragmentContainer<{
-  artwork: ArtworkContextAuction_artwork
+  viewer: ArtworkContextAuction_viewer
 }>(
   props => {
-    const isClosed = props.artwork.sale.is_closed
+    const { artwork, sales } = props.viewer
+    const isClosed = artwork.sale.is_closed
 
     if (!isClosed) {
-      return <AuctionArtworkGrid artwork={props.artwork} />
+      return (
+        <Join separator={<Spacer my={6} />}>
+          <AuctionArtworkGrid artwork={artwork} />
+          <OtherAuctions>
+            {sales.map(sale => {
+              return <AuctionCard sale={sale} />
+            })}
+          </OtherAuctions>
+        </Join>
+      )
     } else {
       return (
         <Join separator={<Spacer my={6} />}>
-          <ArtistArtworkGrid artwork={props.artwork} />
-          <RelatedWorksArtworkGrid artwork={props.artwork} />
+          <ArtistArtworkGrid artwork={artwork} />
+          <RelatedWorksArtworkGrid artwork={artwork} />
+          <OtherAuctions>
+            {sales.map(sale => {
+              return <AuctionCard sale={sale} />
+            })}
+          </OtherAuctions>
         </Join>
       )
     }
   },
   graphql`
-    fragment ArtworkContextAuction_artwork on Artwork
+    fragment ArtworkContextAuction_viewer on Viewer
       @argumentDefinitions(
         isClosed: { type: "Boolean" }
         excludeArtworkIDs: { type: "[String!]" }
       ) {
-      sale {
-        href
-        is_closed
+      artwork(id: $artworkSlug) {
+        sale {
+          href
+          is_closed
+        }
+        ...AuctionArtworkGrid_artwork
+          @skip(if: $isClosed)
+          @arguments(excludeArtworkIDs: $excludeArtworkIDs)
+        ...ArtistArtworkGrid_artwork
+          @include(if: $isClosed)
+          @arguments(excludeArtworkIDs: $excludeArtworkIDs)
+        ...RelatedWorksArtworkGrid_artwork
       }
-      ...AuctionArtworkGrid_artwork
-        @skip(if: $isClosed)
-        @arguments(excludeArtworkIDs: $excludeArtworkIDs)
-      ...ArtistArtworkGrid_artwork
-        @include(if: $isClosed)
-        @arguments(excludeArtworkIDs: $excludeArtworkIDs)
-      ...RelatedWorksArtworkGrid_artwork
+      sales(size: 4, sort: TIMELY_AT_NAME_ASC) {
+        ...AuctionCard_sale
+      }
     }
   `
 )

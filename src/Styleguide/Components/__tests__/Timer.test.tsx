@@ -19,30 +19,51 @@ it("formats the remaining time in '00d  00h  00m  00s'", () => {
 
   // Thursday, May 14, 2018 10:24:31.000 AM UTC
   timer = renderer.create(<Timer endDate="2018-05-14T10:24:31+00:00" />)
-  expect(getTimerText(timer)).toEqual("03d  14h  01m  59s")
+  expect(getTimerText(timer)).toMatch("03d")
+  expect(getTimerText(timer)).toMatch("14h")
+  expect(getTimerText(timer)).toMatch("01m")
+  expect(getTimerText(timer)).toMatch("59s")
 
   // Thursday, May 10, 2018 8:42:32.000 PM UTC
   timer = renderer.create(<Timer endDate="2018-05-10T20:42:32+00:00" />)
-  expect(getTimerText(timer)).toEqual("00d  00h  20m  00s")
+  expect(getTimerText(timer)).toMatch("00d")
+  expect(getTimerText(timer)).toMatch("00h")
+  expect(getTimerText(timer)).toMatch("20m")
+  expect(getTimerText(timer)).toMatch("00s")
 
   // Thursday, May 10, 2018 8:22:42.000 PM UTC
   timer = renderer.create(<Timer endDate="2018-05-10T20:22:42+00:00" />)
-  expect(getTimerText(timer)).toEqual("00d  00h  00m  10s")
+  expect(getTimerText(timer)).toMatch("00d")
+  expect(getTimerText(timer)).toMatch("00h")
+  expect(getTimerText(timer)).toMatch("0m")
+  expect(getTimerText(timer)).toMatch("10s")
 
   // In the past
   timer = renderer.create(<Timer endDate="2018-04-10T20:22:42+00:00" />)
-  expect(getTimerText(timer)).toEqual("00d  00h  00m  00s")
+  expect(getTimerText(timer)).toMatch("00d")
+  expect(getTimerText(timer)).toMatch("00h")
+  expect(getTimerText(timer)).toMatch("00m")
+  expect(getTimerText(timer)).toMatch("00s")
 })
 
 it("counts down to zero", () => {
   const timer = renderer.create(<Timer endDate="2018-05-14T10:23:10+00:00" />)
-  expect(getTimerText(timer)).toEqual("03d  14h  00m  38s")
+  expect(getTimerText(timer)).toMatch("03d")
+  expect(getTimerText(timer)).toMatch("14h")
+  expect(getTimerText(timer)).toMatch("00m")
+  expect(getTimerText(timer)).toMatch("38s")
 
   require("Utils/getCurrentTimeAsIsoString").__advance(2 * 1000)
   jest.runOnlyPendingTimers()
-  expect(getTimerText(timer)).toEqual("03d  14h  00m  36s")
+  expect(getTimerText(timer)).toMatch("03d")
+  expect(getTimerText(timer)).toMatch("14h")
+  expect(getTimerText(timer)).toMatch("00m")
+  expect(getTimerText(timer)).toMatch("36s")
 
   require("Utils/getCurrentTimeAsIsoString").__advance(60 * 1000)
   jest.runOnlyPendingTimers()
-  expect(getTimerText(timer)).toEqual("03d  13h  59m  36s")
+  expect(getTimerText(timer)).toMatch("03d")
+  expect(getTimerText(timer)).toMatch("13h")
+  expect(getTimerText(timer)).toMatch("59m")
+  expect(getTimerText(timer)).toMatch("36s")
 })
