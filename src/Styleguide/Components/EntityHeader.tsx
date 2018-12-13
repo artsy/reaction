@@ -1,8 +1,16 @@
-import { Avatar, Box, Flex, Sans, Serif } from "@artsy/palette"
+import {
+  Avatar,
+  Box,
+  Flex,
+  Link,
+  Sans,
+  Serif,
+  SpacerProps,
+} from "@artsy/palette"
 import React, { SFC } from "react"
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 
-interface EntityHeaderProps {
+interface EntityHeaderProps extends SpacerProps {
   href?: string
   imageUrl?: string
   initials?: string
@@ -19,15 +27,15 @@ export const EntityHeader: SFC<EntityHeaderProps> = ({
   name,
   meta,
   FollowButton,
+  ...remainderProps
 }) => {
-  const handleContainerClick = () => {
-    if (href) {
-      location.href = href
-    }
-  }
+  const ContainerComponent = href ? FlexLink : Flex
+  const containerProps = href
+    ? { color: "black100", noUnderline: true, href }
+    : {}
 
   return (
-    <Container onClick={() => handleContainerClick()} hasLink={!!href}>
+    <ContainerComponent {...remainderProps} {...containerProps}>
       {(imageUrl || initials) && (
         <Flex mr={1}>
           <Avatar size="xs" src={imageUrl} initials={initials} />
@@ -63,18 +71,12 @@ export const EntityHeader: SFC<EntityHeaderProps> = ({
           )}
         </Sans>
       </Flex>
-    </Container>
+    </ContainerComponent>
   )
 }
 
-const Container = styled(Flex)<{ hasLink: boolean }>`
-  ${props => {
-    if (props.hasLink) {
-      return css`
-        cursor: pointer;
-      `
-    }
-  }};
+const FlexLink = styled(Link)`
+  display: flex;
 `
 
 EntityHeader.displayName = "EntityHeader"
