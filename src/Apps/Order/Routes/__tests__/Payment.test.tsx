@@ -1,4 +1,4 @@
-import { Checkbox, CheckboxProps, Sans } from "@artsy/palette"
+import { Button, Checkbox, CheckboxProps } from "@artsy/palette"
 import { mockTracking } from "Artsy/Analytics"
 import { mount } from "enzyme"
 import React from "react"
@@ -20,7 +20,6 @@ import {
   CheckMarkWrapper,
   Stepper,
 } from "../../../../Styleguide/Components"
-import { CreditCardInput } from "../../Components/CreditCardInput"
 import {
   creatingCreditCardFailed,
   creatingCreditCardSuccess,
@@ -82,7 +81,7 @@ describe("Payment", () => {
     mutationMock.mockReset()
 
     stripeMock = {
-      createToken: jest.fn(),
+      createToken: jest.fn(() => Promise.resolve()),
     }
 
     testProps = {
@@ -158,9 +157,6 @@ describe("Payment", () => {
   })
 
   it("always uses the billing address for stripe tokenization when the user selected 'pick' shipping option", () => {
-    const thenMock = jest.fn()
-    stripeMock.createToken.mockReturnValue({ then: thenMock })
-
     const paymentRoute = getWrapper({
       ...testProps,
       order: {
@@ -184,9 +180,6 @@ describe("Payment", () => {
   })
 
   it("tokenizes credit card information using shipping address as billing address", () => {
-    const thenMock = jest.fn()
-    stripeMock.createToken.mockReturnValue({ then: thenMock })
-
     const paymentRoute = getWrapper(testProps)
     paymentRoute.find(ContinueButton).simulate("click")
 
@@ -199,13 +192,9 @@ describe("Payment", () => {
       address_zip: "10013",
       address_country: "US",
     })
-    expect(thenMock.mock.calls.length).toBe(1)
   })
 
   it("tokenizes credit card information with a different billing address", () => {
-    const thenMock = jest.fn()
-    stripeMock.createToken.mockReturnValue({ then: thenMock })
-
     const paymentRoute = getWrapper(testProps)
     ;(paymentRoute.find(Checkbox).props() as CheckboxProps).onSelect(false)
 
@@ -221,10 +210,9 @@ describe("Payment", () => {
       address_zip: "E1 8PY",
       address_country: "UK",
     })
-    expect(thenMock.mock.calls.length).toBe(1)
   })
 
-  it("commits createCreditCard mutation with stripe token id", () => {
+  it("commits createCreditCard mutation with stripe token id", async () => {
     const stripeToken: stripe.TokenResponse = {
       token: {
         id: "tokenId",
@@ -237,11 +225,17 @@ describe("Payment", () => {
       },
     }
 
-    stripeMock.createToken.mockReturnValue({ then: func => func(stripeToken) })
+    stripeMock.createToken.mockReturnValue(Promise.resolve(stripeToken))
 
     const paymentRoute = getWrapper(testProps)
     fillAddressForm(paymentRoute, validAddress)
-    paymentRoute.find(ContinueButton).simulate("click")
+    paymentRoute
+      .find(ContinueButton)
+      .props()
+      .onClick()
+
+    // flush the promise queue
+    await Promise.resolve()
 
     expect(mutationMock.mock.calls[0][1]).toMatchObject({
       variables: {
@@ -252,25 +246,27 @@ describe("Payment", () => {
     })
   })
 
-  it("shows the button spinner while loading the mutation", () => {
+  it("shows the button spinner while loading the mutation", async () => {
     const paymentRoute = getWrapper(testProps)
-    const thenMock = jest.fn()
-    stripeMock.createToken.mockReturnValue({ then: thenMock })
-
-    thenMock.mockImplementationOnce(() => {
-      const buttonProps = paymentRoute
-        .update() // We need to wait for the paymentRoute to re-render
-        .find("Button")
-        .props() as any
-      expect(buttonProps.loading).toBeTruthy()
-    })
 
     fillAddressForm(paymentRoute, validAddress)
 
+    const isButtonLoading = () =>
+      paymentRoute
+        .update()
+        .find(Button)
+        .props().loading
+
+    expect(isButtonLoading()).toBeFalsy()
+
     paymentRoute.find(ContinueButton).simulate("click")
+
+    await Promise.resolve()
+
+    expect(isButtonLoading()).toBeTruthy()
   })
 
-  it("shows an error message when CreateToken passes in an error", () => {
+  it("shows an error message when CreateToken passes in an error", async () => {
     const stripeError: stripe.TokenResponse = {
       error: {
         type: null,
@@ -282,25 +278,45 @@ describe("Payment", () => {
       },
     }
 
-    stripeMock.createToken.mockReturnValue({ then: func => func(stripeError) })
+    stripeMock.createToken.mockReturnValue(Promise.resolve(stripeError))
 
     const paymentRoute = getWrapper(testProps)
     fillAddressForm(paymentRoute, validAddress)
 
+    expect(paymentRoute.text()).not.toContain("Your card number is invalid.")
+
     paymentRoute.find(ContinueButton).simulate("click")
+
+    // flush the promise queue
+    await Promise.resolve()
+
+    expect(paymentRoute.text()).toContain("Your card number is invalid.")
+  })
+
+  it("shows an error modal when CreateToken raises an error", async () => {
+    stripeMock.createToken.mockReturnValue(
+      Promise.reject(new Error("something failed"))
+    )
+    const paymentRoute = getWrapper(testProps)
+    fillAddressForm(paymentRoute, validAddress)
+    paymentRoute.find(ContinueButton).simulate("click")
+
+    // flush promise queue
+    await Promise.resolve()
+    await Promise.resolve()
 
     expect(
       paymentRoute
-        .find(CreditCardInput)
-        .find(Sans)
-        .html()
-    ).toContain("Your card number is invalid.")
+        .update()
+        .find(ErrorModal)
+        .props().show
+    ).toBe(true)
   })
 
-  it("commits setOrderPayment mutation with Gravity credit card id", () => {
-    stripeMock.createToken.mockReturnValue({
-      then: func => func({ token: { id: "tokenId" } }),
-    })
+  it("commits setOrderPayment mutation with Gravity credit card id", async () => {
+    stripeMock.createToken.mockReturnValue(
+      Promise.resolve({ token: { id: "tokenId" } })
+    )
 
     mutationMock.mockImplementationOnce((_, { onCompleted }) =>
       onCompleted(creatingCreditCardSuccess)
@@ -309,6 +325,9 @@ describe("Payment", () => {
     const paymentRoute = getWrapper(testProps)
     fillAddressForm(paymentRoute, validAddress)
     paymentRoute.find(ContinueButton).simulate("click")
+
+    // flush promise queue
+    await Promise.resolve()
 
     expect(mutationMock.mock.calls[1][1]).toMatchObject({
       variables: {
@@ -320,10 +339,10 @@ describe("Payment", () => {
     })
   })
 
-  it("takes the user to the review step", () => {
-    stripeMock.createToken.mockReturnValue({
-      then: func => func({ token: { id: "tokenId" } }),
-    })
+  it("takes the user to the review step", async () => {
+    stripeMock.createToken.mockReturnValue(
+      Promise.resolve({ token: { id: "tokenId" } })
+    )
 
     mutationMock
       .mockImplementationOnce((_, { onCompleted }) =>
@@ -336,13 +355,15 @@ describe("Payment", () => {
     fillAddressForm(paymentRoute, validAddress)
     paymentRoute.find(ContinueButton).simulate("click")
 
+    await Promise.resolve()
+
     expect(testProps.router.push).toHaveBeenCalledWith("/orders/1234/review")
   })
 
-  it("shows an error modal when there is an error in CreateCreditCardPayload", () => {
-    stripeMock.createToken.mockReturnValue({
-      then: func => func({ token: { id: "tokenId" } }),
-    })
+  it("shows an error modal when there is an error in CreateCreditCardPayload", async () => {
+    stripeMock.createToken.mockReturnValue(
+      Promise.resolve({ token: { id: "tokenId" } })
+    )
 
     mutationMock.mockImplementationOnce((_, { onCompleted }) =>
       onCompleted(creatingCreditCardFailed)
@@ -354,6 +375,9 @@ describe("Payment", () => {
 
     component.find(ContinueButton).simulate("click")
 
+    await Promise.resolve()
+    component.update()
+
     expect(component.find(ErrorModal).props().show).toBe(true)
     expect(component.find(ErrorModal).props().detailText).toBe(
       "No such token: fake-token"
@@ -364,10 +388,10 @@ describe("Payment", () => {
     expect(component.find(ErrorModal).props().show).toBe(false)
   })
 
-  it("shows an error modal when there is an error in SetOrderPaymentPayload", () => {
-    stripeMock.createToken.mockReturnValue({
-      then: func => func({ token: { id: "tokenId" } }),
-    })
+  it("shows an error modal when there is an error in SetOrderPaymentPayload", async () => {
+    stripeMock.createToken.mockReturnValue(
+      Promise.resolve({ token: { id: "tokenId" } })
+    )
 
     const component = getWrapper(testProps)
 
@@ -381,13 +405,17 @@ describe("Payment", () => {
 
     component.find(ContinueButton).simulate("click")
 
+    // flush promise queue
+    await Promise.resolve()
+    component.update()
+
     expect(component.find(ErrorModal).props().show).toBe(true)
   })
 
-  it("shows an error modal when there is a network error", () => {
-    stripeMock.createToken.mockReturnValue({
-      then: func => func({ token: { id: "tokenId" } }),
-    })
+  it("shows an error modal when there is a network error", async () => {
+    stripeMock.createToken.mockReturnValue(
+      Promise.resolve({ token: { id: "tokenId" } })
+    )
 
     const component = getWrapper(testProps)
 
@@ -396,6 +424,10 @@ describe("Payment", () => {
     )
 
     component.find(ContinueButton).simulate("click")
+
+    // flush promise queue
+    await Promise.resolve()
+    component.update()
 
     expect(component.find(ErrorModal).props().show).toBe(true)
   })
@@ -498,7 +530,6 @@ describe("Payment", () => {
 
     it("allows a missing postal code if the selected country is not US or Canada", () => {
       const paymentRoute = getWrapper(testProps)
-      stripeMock.createToken.mockReturnValue({ then: jest.fn() })
 
       const address = {
         name: "Erik David",
@@ -517,7 +548,6 @@ describe("Payment", () => {
 
     it("allows a missing state/province if the selected country is not US or Canada", () => {
       const paymentRoute = getWrapper(testProps)
-      stripeMock.createToken.mockReturnValue({ then: jest.fn() })
       const address = {
         name: "Erik David",
         addressLine1: "401 Broadway",

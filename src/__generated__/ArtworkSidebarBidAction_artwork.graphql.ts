@@ -21,6 +21,7 @@ export type ArtworkSidebarBidAction_artwork = {
     }) | null;
     readonly sale_artwork: ({
         readonly increments: ReadonlyArray<({
+            readonly cents: number | null;
             readonly display: string | null;
         }) | null> | null;
     }) | null;
@@ -168,6 +169,13 @@ return {
             {
               "kind": "ScalarField",
               "alias": null,
+              "name": "cents",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
               "name": "display",
               "args": null,
               "storageKey": null
@@ -181,5 +189,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '770ba1f4d6781c38144b1bc8e686bd43';
+(node as any).hash = 'a378c3dafc4544bdf397a3b83bd32859';
 export default node;

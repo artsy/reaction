@@ -3,6 +3,7 @@ import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { ContextConsumer } from "Artsy/Router"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
+import { AuctionTimerFragmentContainer as AuctionTimer } from "Styleguide/Components/AuctionTimer"
 import { ArtworkSidebarArtistsFragmentContainer as Artists } from "./ArtworkSidebarArtists"
 import { ArtworkSidebarAuctionPartnerInfoFragmentContainer as AuctionPartnerInfo } from "./ArtworkSidebarAuctionPartnerInfo"
 import { ArtworkSidebarBidActionFragmentContainer as BidAction } from "./ArtworkSidebarBidAction"
@@ -24,6 +25,7 @@ const ArtworkSidebarContainer = Box
 export class ArtworkSidebar extends Component<ArtworkSidebarProps> {
   render() {
     const { artwork } = this.props
+
     return (
       <ArtworkSidebarContainer>
         <Artists artwork={artwork} />
@@ -37,6 +39,11 @@ export class ArtworkSidebar extends Component<ArtworkSidebarProps> {
             <Separator />
             <CurrentBidInfo artwork={artwork} />
             <BidAction artwork={artwork} />
+            {!artwork.sale.is_closed && (
+              <Box py={2}>
+                <AuctionTimer sale={artwork.sale} />
+              </Box>
+            )}
           </React.Fragment>
         ) : (
           <React.Fragment>
@@ -66,6 +73,10 @@ export const ArtworkSidebarFragmentContainer = createFragmentContainer(
       ...ArtworkSidebarCommercial_artwork
       ...ArtworkSidebarPartnerInfo_artwork
       ...ArtworkSidebarExtraLinks_artwork
+      sale {
+        is_closed
+        ...AuctionTimer_sale
+      }
     }
   `
 )

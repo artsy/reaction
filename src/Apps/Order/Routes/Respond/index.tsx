@@ -41,14 +41,14 @@ export interface RespondProps {
 
 export interface RespondState {
   offerValue: number | null
-  responseOption: "ACCEPT" | "COUNTER" | "DECLINE" | null
+  responseOption: "ACCEPT" | "COUNTER" | "DECLINE"
   isCommittingMutation: boolean
   isErrorModalOpen: boolean
   errorModalTitle: string
   errorModalMessage: string
 }
 
-const logger = createLogger("Order/Routes/Respond/index.tsx")
+export const logger = createLogger("Order/Routes/Respond/index.tsx")
 
 export class RespondRoute extends Component<RespondProps, RespondState> {
   state = {
@@ -68,15 +68,12 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
           window.alert(`You decided to COUNTER with ${offerValue}.`)
           break
         case "ACCEPT":
-          this.props.router.push(`/orders/${this.props.order.id}/accept`)
+          this.props.router.push(`/orders/${this.props.order.id}/review/accept`)
           break
         case "DECLINE":
           this.props.router.push(
             `/orders/${this.props.order.id}/review/decline`
           )
-          break
-        default:
-          window.alert(`You decided to ${responseOption}.`)
           break
       }
       this.setState({ isCommittingMutation: false })

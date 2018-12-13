@@ -22,6 +22,7 @@ import { CountdownTimer } from "Styleguide/Components/CountdownTimer"
 import { RespondFragmentContainer as RespondRoute } from "../Respond"
 
 jest.mock("Utils/getCurrentTimeAsIsoString")
+jest.mock("Utils/logger")
 
 const NOW = "2018-12-05T13:47:16.446Z"
 
@@ -189,7 +190,7 @@ describe("Offer InitialMutation", () => {
         .onClick({})
 
       expect(mockPushRoute).toHaveBeenCalledWith(
-        `/orders/${testOrder.id}/accept`
+        `/orders/${testOrder.id}/review/accept`
       )
     })
 
