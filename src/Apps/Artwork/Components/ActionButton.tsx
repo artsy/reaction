@@ -13,7 +13,11 @@ interface State {
   isOpen: boolean
 }
 
-export class ShareButton extends React.Component<any, State> {
+interface Props {
+  href: string
+}
+
+export class ShareButton extends React.Component<Props, State> {
   state = {
     isOpen: false,
   }
@@ -28,22 +32,17 @@ export class ShareButton extends React.Component<any, State> {
 
   render() {
     return (
-      <Flex justifyContent="center" position="relative">
+      <Flex mt={1} justifyContent="center" position="relative">
         {this.state.isOpen && (
           <Box bottom={space(4)} position="absolute">
-            <Share url={sd.APP_URL} onClose={this.handleClose} />
+            <Share
+              url={sd.APP_URL + this.props.href}
+              onClose={this.handleClose}
+            />
           </Box>
         )}
         <ActionIcon name="share" onClick={this.handleOpen} />
       </Flex>
     )
   }
-}
-
-export const SaveButton: React.SFC = () => {
-  return (
-    <Flex justifyContent="center" position="relative">
-      <ActionIcon name="heart" />
-    </Flex>
-  )
 }

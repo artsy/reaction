@@ -1,10 +1,12 @@
+import { Flex } from "@artsy/palette"
 import { ArtworkImages_artwork } from "__generated__/ArtworkImages_artwork.graphql"
 import { ArtworkImagesQuery } from "__generated__/ArtworkImagesQuery.graphql"
 import { ContextConsumer } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
+import SaveButton from "Components/Artwork/Save"
 import React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
-import { SaveButton, ShareButton } from "./ActionButton"
+import { ShareButton } from "./ActionButton"
 import { ImageCarousel } from "./ImageCarousel"
 
 interface ArtworkImagesProps {
@@ -17,8 +19,10 @@ const ArtworkImages: React.SFC<ArtworkImagesProps> = props => {
       images={props.artwork.images}
       actions={
         <>
-          <SaveButton />
-          <ShareButton />
+          <Flex justifyContent="center" position="relative">
+            <SaveButton artwork={props.artwork} />
+          </Flex>
+          <ShareButton href={props.artwork.href} />
         </>
       }
     />
@@ -32,6 +36,8 @@ export const ArtworkImagesFragmentContainer = createFragmentContainer(
       title
       image_alt: to_s
       image_title
+      href
+      ...Save_artwork
       images {
         id
         uri: url(version: ["larger", "large"])

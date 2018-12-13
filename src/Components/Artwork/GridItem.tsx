@@ -146,7 +146,12 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
       <Responsive>
         {({ hover, ...breakpoints }) => {
           return (
-            <div className={className} style={style}>
+            <div
+              // the 'artwork-item' className and data-id={artwork._id} are required to track Artwork impressions
+              className={`${className} artwork-item`}
+              style={style}
+              data-id={artwork._id}
+            >
               <Placeholder style={{ paddingBottom: artwork.image.placeholder }}>
                 <a href={artwork.href}>
                   <Image src={this.getImageUrl(breakpoints)} />
@@ -193,6 +198,7 @@ export default createFragmentContainer(
   ArtworkGridItem,
   graphql`
     fragment GridItem_artwork on Artwork {
+      _id
       image {
         placeholder
         url(version: "large")

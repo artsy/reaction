@@ -1,6 +1,6 @@
 import React from "react"
 
-export const LoosingBid = props => (
+export const LosingBid = props => (
   <svg width="17" height="17" viewBox="0 0 17 17">
     <g
       fill="none"

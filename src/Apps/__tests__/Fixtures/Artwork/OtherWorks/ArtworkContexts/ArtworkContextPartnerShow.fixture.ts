@@ -1,5 +1,10 @@
+import { LayerFixture, LayersFixture } from "./RelatedWorksArtworkGrid.fixture"
+
 export const ArtworkContextPartnerShowFixture = {
   artwork: {
+    ...LayerFixture,
+    ...LayersFixture,
+
     id: "jacky-tsai-kissers-1",
     artist: {
       name: "Jacky Tsai",

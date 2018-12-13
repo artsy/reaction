@@ -153,6 +153,43 @@ storiesOf("Apps/Order Page/Components", module).add(
             )}
           </Flex>
         </Section>
+        <Section title="Transaction Summary (last offer context)">
+          <Flex width={280} flexDirection="column">
+            {render(
+              {
+                __typename: "OfferOrder",
+                mode: "OFFER",
+                lastOffer: {
+                  id: "2345",
+                  amount: "$102",
+                  amountCents: 102489,
+                  shippingTotal: "$200",
+                  shippingTotalCents: 20000,
+                  taxTotal: "$100",
+                  taxTotalCents: 10000,
+                  buyerTotal: "$102789",
+                  buyerTotalCents: 10278900,
+                  fromParticipant: "SELLER",
+                },
+                myLastOffer: {
+                  id: "23456",
+                  amount: "$100",
+                  amountCents: 102489,
+                  shippingTotal: "$200",
+                  shippingTotalCents: 20000,
+                  taxTotal: "$100",
+                  taxTotalCents: 10000,
+                  buyerTotal: "$102789",
+                  buyerTotalCents: 10278900,
+                  fromParticipant: "BUYER",
+                },
+              },
+              {
+                offerContextPrice: "LAST_OFFER",
+              }
+            )}
+          </Flex>
+        </Section>
       </>
     )
   }

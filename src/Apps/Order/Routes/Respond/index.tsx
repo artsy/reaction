@@ -41,14 +41,14 @@ export interface RespondProps {
 
 export interface RespondState {
   offerValue: number | null
-  responseOption: "ACCEPT" | "COUNTER" | "DECLINE" | null
+  responseOption: "ACCEPT" | "COUNTER" | "DECLINE"
   isCommittingMutation: boolean
   isErrorModalOpen: boolean
   errorModalTitle: string
   errorModalMessage: string
 }
 
-const logger = createLogger("Order/Routes/Respond/index.tsx")
+export const logger = createLogger("Order/Routes/Respond/index.tsx")
 
 export class RespondRoute extends Component<RespondProps, RespondState> {
   state = {
@@ -58,11 +58,24 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
     isErrorModalOpen: false,
     errorModalTitle: null,
     errorModalMessage: null,
-  }
+  } as RespondState
 
   onContinueButtonPressed: () => void = () => {
+    const { offerValue, responseOption } = this.state
     this.setState({ isCommittingMutation: true }, () => {
-      window.alert("You did a click!")
+      switch (responseOption) {
+        case "COUNTER":
+          window.alert(`You decided to COUNTER with ${offerValue}.`)
+          break
+        case "ACCEPT":
+          this.props.router.push(`/orders/${this.props.order.id}/review/accept`)
+          break
+        case "DECLINE":
+          this.props.router.push(
+            `/orders/${this.props.order.id}/review/decline`
+          )
+          break
+      }
       this.setState({ isCommittingMutation: false })
     })
   }
@@ -117,7 +130,10 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                     countdownEnd={order.stateExpiresAt}
                   />
                   <OfferHistoryItem order={order} />
-                  <TransactionDetailsSummaryItem order={order} />
+                  <TransactionDetailsSummaryItem
+                    order={order}
+                    useLastSubmittedOffer
+                  />
                 </Flex>
                 <Spacer mb={[2, 3]} />
                 <RadioGroup
@@ -237,9 +253,6 @@ export const RespondFragmentContainer = createFragmentContainer(
       itemsTotal(precision: 2)
       totalListPrice(precision: 2)
       stateExpiresAt
-      lastOffer {
-        createdAt
-      }
       lineItems {
         edges {
           node {
@@ -247,6 +260,11 @@ export const RespondFragmentContainer = createFragmentContainer(
               id
             }
           }
+        }
+      }
+      ... on OfferOrder {
+        lastOffer {
+          createdAt
         }
       }
       ...TransactionDetailsSummaryItem_order

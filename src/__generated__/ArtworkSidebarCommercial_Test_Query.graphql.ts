@@ -32,7 +32,11 @@ fragment ArtworkSidebarCommercial_artwork on Artwork {
   shippingInfo
   shippingOrigin
   edition_sets {
+    id
     __id
+    is_acquireable
+    is_offerable
+    sale_message
     ...ArtworkSidebarSizeInfo_piece
   }
   __id
@@ -68,13 +72,41 @@ v1 = {
   "name": "__id",
   "args": null,
   "storageKey": null
+},
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "is_acquireable",
+  "args": null,
+  "storageKey": null
+},
+v4 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "is_offerable",
+  "args": null,
+  "storageKey": null
+},
+v5 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "sale_message",
+  "args": null,
+  "storageKey": null
 };
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "ArtworkSidebarCommercial_Test_Query",
   "id": null,
-  "text": "query ArtworkSidebarCommercial_Test_Query {\n  artwork(id: \"commercial_artwork\") {\n    ...ArtworkSidebarCommercial_artwork\n    __id\n  }\n}\n\nfragment ArtworkSidebarCommercial_artwork on Artwork {\n  id\n  is_acquireable\n  is_inquireable\n  is_offerable\n  sale_message\n  shippingInfo\n  shippingOrigin\n  edition_sets {\n    __id\n    ...ArtworkSidebarSizeInfo_piece\n  }\n  __id\n}\n\nfragment ArtworkSidebarSizeInfo_piece on Sellable {\n  dimensions {\n    in\n    cm\n  }\n  edition_of\n  ... on Node {\n    __id\n  }\n  ... on EditionSet {\n    __id\n  }\n}\n",
+  "text": "query ArtworkSidebarCommercial_Test_Query {\n  artwork(id: \"commercial_artwork\") {\n    ...ArtworkSidebarCommercial_artwork\n    __id\n  }\n}\n\nfragment ArtworkSidebarCommercial_artwork on Artwork {\n  id\n  is_acquireable\n  is_inquireable\n  is_offerable\n  sale_message\n  shippingInfo\n  shippingOrigin\n  edition_sets {\n    id\n    __id\n    is_acquireable\n    is_offerable\n    sale_message\n    ...ArtworkSidebarSizeInfo_piece\n  }\n  __id\n}\n\nfragment ArtworkSidebarSizeInfo_piece on Sellable {\n  dimensions {\n    in\n    cm\n  }\n  edition_of\n  ... on Node {\n    __id\n  }\n  ... on EditionSet {\n    __id\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -116,20 +148,8 @@ return {
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "id",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "is_acquireable",
-            "args": null,
-            "storageKey": null
-          },
+          v2,
+          v3,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -137,20 +157,8 @@ return {
             "args": null,
             "storageKey": null
           },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "is_offerable",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "sale_message",
-            "args": null,
-            "storageKey": null
-          },
+          v4,
+          v5,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -174,7 +182,11 @@ return {
             "concreteType": "EditionSet",
             "plural": true,
             "selections": [
+              v2,
               v1,
+              v3,
+              v4,
+              v5,
               {
                 "kind": "LinkedField",
                 "alias": null,

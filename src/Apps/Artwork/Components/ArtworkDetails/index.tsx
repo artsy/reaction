@@ -36,6 +36,7 @@ export class ArtworkDetails extends Component<ArtworkDetailsProps> {
       flow: Schema.Flow.ArtworkAboutTheArtist,
       type: Schema.Type.Tab,
       label: data.trackingLabel,
+      action_type: Schema.ActionType.Click,
     }
   })
   trackTabChange() {

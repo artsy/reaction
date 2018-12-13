@@ -55,7 +55,7 @@ export const ArtworkContextFairFragmentContainer = createFragmentContainer<{
         <FairArtworkGrid artwork={props.artwork} />
         <PartnerShowArtworkGrid artwork={props.artwork} />
         <ArtistArtworkGrid artwork={props.artwork} />
-        <RelatedWorksArtworkGrid />
+        <RelatedWorksArtworkGrid artwork={props.artwork} />
       </Join>
     )
   },
@@ -73,6 +73,7 @@ export const ArtworkContextFairFragmentContainer = createFragmentContainer<{
         @arguments(excludeArtworkIDs: $excludeArtworkIDs)
       ...ArtistArtworkGrid_artwork
         @arguments(excludeArtworkIDs: $excludeArtworkIDs)
+      ...RelatedWorksArtworkGrid_artwork
     }
   `
 )

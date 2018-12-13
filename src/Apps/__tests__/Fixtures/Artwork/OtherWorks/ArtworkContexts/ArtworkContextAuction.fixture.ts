@@ -1,5 +1,10 @@
+import { LayerFixture, LayersFixture } from "./RelatedWorksArtworkGrid.fixture"
+
 export const ArtworkContextAuctionFixture = {
   artwork: {
+    ...LayerFixture,
+    ...LayersFixture,
+
     artist: {
       name: "Allison Baker",
       href: "/artist/foo",

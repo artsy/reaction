@@ -32,7 +32,7 @@ export const Caption: React.SFC<CaptionProps> = props => {
   )
 }
 
-const CaptionContainer = styled.div`
+export const CaptionContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 10px 0 10px 0;

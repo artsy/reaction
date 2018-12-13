@@ -6,11 +6,10 @@ export const SingleFollowedArtist = {
       name: "Josef Albers",
       href: "/artist/josef-albers",
       is_followed: false,
-      counts: {
-        follows: 9346,
-      },
+      counts: { follows: 9346 },
     },
   ],
+  cultural_maker: null,
 }
 
 export const SingleNonFollowedArtist = {
@@ -24,6 +23,7 @@ export const SingleNonFollowedArtist = {
       counts: { follows: 9346 },
     },
   ],
+  cultural_maker: null,
 }
 
 export const MultipleArtists = {
@@ -45,4 +45,10 @@ export const MultipleArtists = {
       counts: { follows: 15431 },
     },
   ],
+  cultural_maker: null,
+}
+
+export const CulturalMakerWork = {
+  artists: [],
+  cultural_maker: "American 18th Century",
 }

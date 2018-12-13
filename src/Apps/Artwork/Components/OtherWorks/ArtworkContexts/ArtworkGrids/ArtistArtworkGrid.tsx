@@ -8,18 +8,15 @@ import { Header } from "../../Header"
 export const ArtistArtworkGridFragmentContainer = createFragmentContainer<{
   artwork: ArtistArtworkGrid_artwork
 }>(
-  ({
-    artwork: {
-      artist: { artworks_connection, href, name },
-    },
-  }) => {
+  ({ artwork: { artist } }) => {
+    if (!artist) return null
     return (
       <>
         <Header
-          title={`Other works by ${name}`}
-          buttonHref={sd.APP_URL + href}
+          title={`Other works by ${artist.name}`}
+          buttonHref={sd.APP_URL + artist.href}
         />
-        <ArtworkGrid artworks={artworks_connection} />
+        <ArtworkGrid artworks={artist.artworks_connection} />
       </>
     )
   },
@@ -34,7 +31,7 @@ export const ArtistArtworkGridFragmentContainer = createFragmentContainer<{
           artworks(format: "0,0", label: "work")
         }
         artworks_connection(
-          first: 10
+          first: 8
           filter: [IS_FOR_SALE]
           sort: PUBLISHED_AT_DESC
           exclude: $excludeArtworkIDs

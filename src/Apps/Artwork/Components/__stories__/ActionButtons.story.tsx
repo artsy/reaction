@@ -1,16 +1,13 @@
 import { Flex } from "@artsy/palette"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { SaveButton, ShareButton } from "../ActionButton"
+import { ShareButton } from "../ActionButton"
 
-storiesOf("Styleguide/Artwork/ActionButtons", module)
-  .add("Save button", () => (
+storiesOf("Styleguide/Artwork/ActionButtons", module).add(
+  "Share button",
+  () => (
     <Flex justifyContent="center" alignItems="flex-end" height="500px">
-      <SaveButton />
+      <ShareButton href="/some/artwork/href" />
     </Flex>
-  ))
-  .add("Share button", () => (
-    <Flex justifyContent="center" alignItems="flex-end" height="500px">
-      <ShareButton />
-    </Flex>
-  ))
+  )
+)

@@ -16,7 +16,7 @@ storiesOf("Apps/Artwork Page", module)
     return (
       <MockRouter
         routes={artworkRoutes}
-        initialRoute="/artwork2/andy-warhol-skull"
+        initialRoute="/artwork2/jerry-freedner-approaching-storm"
       />
     )
   })
@@ -49,6 +49,30 @@ storiesOf("Apps/Artwork Page", module)
       <MockRouter
         routes={artworkRoutes}
         initialRoute="/artwork2/victor-vasarely-darac-ii"
+      />
+    )
+  })
+  .add("Cultural Maker Artwork", () => {
+    return (
+      <MockRouter
+        routes={artworkRoutes}
+        initialRoute="/artwork2/american-18th-century-lady-wearing-a-large-white-cap"
+      />
+    )
+  })
+  .add("Tall image", () => {
+    return (
+      <MockRouter
+        routes={artworkRoutes}
+        initialRoute="/artwork2/nissa-kauppila-wu-ti-35-degrees-45-35-dot-5-n-81-degrees-21-16-dot-2-w"
+      />
+    )
+  })
+  .add("Wide image", () => {
+    return (
+      <MockRouter
+        routes={artworkRoutes}
+        initialRoute="/artwork2/thelma-appel-sea-garden-iv"
       />
     )
   })

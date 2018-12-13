@@ -4,12 +4,15 @@ import * as React from "react"
 import { graphql } from "react-relay"
 import { OrderApp } from "./OrderApp"
 
+import { AcceptFragmentContainer as AcceptRoute } from "Apps/Order/Routes/Accept"
 import { OfferFragmentContainer as OfferRoute } from "Apps/Order/Routes/Offer"
 import { PaymentFragmentContainer as PaymentRoute } from "Apps/Order/Routes/Payment"
+import { RejectFragmentContainer as RejectRoute } from "Apps/Order/Routes/Reject"
 import { RespondFragmentContainer as RespondRoute } from "Apps/Order/Routes/Respond"
 import { ReviewFragmentContainer as ReviewRoute } from "Apps/Order/Routes/Review"
 import { ShippingFragmentContainer as ShippingRoute } from "Apps/Order/Routes/Shipping"
 import { StatusFragmentContainer as StatusRoute } from "Apps/Order/Routes/Status"
+import { CounterFragmentContainer as CounterRoute } from "./Routes/Counter"
 
 // @ts-ignore
 import { ComponentClass, StatelessComponent } from "react"
@@ -44,6 +47,11 @@ export const routes: RouteConfig[] = [
           ... on OfferOrder {
             myLastOffer {
               id
+              createdAt
+            }
+            lastOffer {
+              id
+              createdAt
             }
           }
           requestedFulfillment {
@@ -136,6 +144,21 @@ export const routes: RouteConfig[] = [
         },
       },
       {
+        path: "review/counter",
+        Component: CounterRoute,
+        onTransition: confirmRouteExit,
+        query: graphql`
+          query routes_CounterQuery($orderID: String!) {
+            order: ecommerceOrder(id: $orderID) {
+              ...Counter_order
+            }
+          }
+        `,
+        cacheConfig: {
+          force: true,
+        },
+      },
+      {
         path: "review",
         Component: ReviewRoute,
         onTransition: confirmRouteExit,
@@ -149,6 +172,31 @@ export const routes: RouteConfig[] = [
         cacheConfig: {
           force: true,
         },
+      },
+      {
+        path: "review/accept",
+        Component: AcceptRoute,
+        query: graphql`
+          query routes_AcceptQuery($orderID: String!) {
+            order: ecommerceOrder(id: $orderID) {
+              ...Accept_order
+            }
+          }
+        `,
+        cacheConfig: {
+          force: true,
+        },
+      },
+      {
+        path: "review/decline",
+        Component: RejectRoute,
+        query: graphql`
+          query routes_RejectQuery($orderID: String!) {
+            order: ecommerceOrder(id: $orderID) {
+              ...Reject_order
+            }
+          }
+        `,
       },
       {
         path: "status",

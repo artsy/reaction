@@ -67,9 +67,9 @@ export const ArtworkContextAuctionFragmentContainer = createFragmentContainer<{
       return <AuctionArtworkGrid artwork={props.artwork} />
     } else {
       return (
-        <Join separator={<Spacer my={2} />}>
+        <Join separator={<Spacer my={6} />}>
           <ArtistArtworkGrid artwork={props.artwork} />
-          <RelatedWorksArtworkGrid />
+          <RelatedWorksArtworkGrid artwork={props.artwork} />
         </Join>
       )
     }
@@ -90,9 +90,7 @@ export const ArtworkContextAuctionFragmentContainer = createFragmentContainer<{
       ...ArtistArtworkGrid_artwork
         @include(if: $isClosed)
         @arguments(excludeArtworkIDs: $excludeArtworkIDs)
-
-      # TODO:
-      # ...RelatedArtworkGrid_artwork @include(if: $isClosed)
+      ...RelatedWorksArtworkGrid_artwork
     }
   `
 )

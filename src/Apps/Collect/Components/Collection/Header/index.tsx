@@ -8,6 +8,9 @@ import { slugify } from "underscore.string"
 import { resize } from "Utils/resizer"
 import { Responsive } from "Utils/Responsive"
 
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
+
 interface Props {
   collection: {
     artist_ids?: string[]
@@ -51,7 +54,19 @@ const imageWidthSizes = {
   xl: 1112,
 }
 
+@track({
+  context_module: Schema.ContextModule.CollectionDescription,
+})
 export class CollectionHeader extends Component<Props> {
+  @track({
+    subject: Schema.Subject.ReadMore,
+    type: Schema.Type.Button,
+    action_type: Schema.ActionType.Click,
+  })
+  trackReadMoreClick() {
+    // noop
+  }
+
   render() {
     const { collection } = this.props
     return (
@@ -100,7 +115,9 @@ export class CollectionHeader extends Component<Props> {
                         <Col xl="8" lg="8" md="10" sm="12" xs="12">
                           <ExtendedSerif size="5" px={[0, 1]}>
                             <ReadMore
-                              onReadMoreClicked={() => false}
+                              onReadMoreClicked={this.trackReadMoreClick.bind(
+                                this
+                              )}
                               maxChars={chars}
                               content={getReadMoreContent(
                                 collection.description,

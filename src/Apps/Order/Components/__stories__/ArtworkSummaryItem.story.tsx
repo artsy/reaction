@@ -1,11 +1,11 @@
 import { Flex } from "@artsy/palette"
 import { ArtworkSummaryItem_order } from "__generated__/ArtworkSummaryItem_order.graphql"
+import { mockResolver, UntouchedBuyOrder } from "Apps/__tests__/Fixtures/Order"
 import { MockRelayRenderer } from "DevTools"
 import React from "react"
 import { graphql } from "react-relay"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
-import { mockResolver } from "../../../__tests__/Fixtures/Order"
 import { ArtworkSummaryItemFragmentContainer } from "../ArtworkSummaryItem"
 
 const makeLineItems = ({ artistName, artworkTitle }) => ({
@@ -29,17 +29,6 @@ const makeLineItems = ({ artistName, artworkTitle }) => ({
   ],
 })
 
-const order: ArtworkSummaryItem_order = {
-  " $refType": null,
-  lineItems: makeLineItems({
-    artistName: "Francesca DiMattio",
-    artworkTitle: "The Fox",
-  }) as any,
-  seller: {
-    name: "Salon 94",
-  },
-}
-
 const orderQuery = graphql`
   query ArtworkSummaryItemStoryQuery {
     order: ecommerceOrder(id: "foo") {
@@ -52,17 +41,10 @@ const render = (extraOrderProps?: Partial<ArtworkSummaryItem_order>) => {
   return (
     <MockRelayRenderer
       Component={ArtworkSummaryItemFragmentContainer}
-      mockResolvers={{
-        ...mockResolver({
-          ...order,
-          ...extraOrderProps,
-          seller: undefined,
-        }),
-        OrderParty: () => ({
-          ...order.seller,
-          __typename: "User",
-        }),
-      }}
+      mockResolvers={mockResolver({
+        ...UntouchedBuyOrder,
+        ...extraOrderProps,
+      })}
       query={orderQuery}
     />
   )
@@ -86,8 +68,9 @@ storiesOf("Apps/Order Page/Components", module)
             artworkTitle: "Some quite long title you know how artists can be",
           }) as any,
           seller: {
+            __typename: "Partner",
             name: "Salon Nineteen Eighty Four and Three Quarters",
-          },
+          } as any,
         })}
       </Flex>
     </Section>

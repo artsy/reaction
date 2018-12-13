@@ -1,12 +1,14 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+import { Save_artwork$ref } from "./Save_artwork.graphql";
 declare const _ArtworkImages_artwork$ref: unique symbol;
 export type ArtworkImages_artwork$ref = typeof _ArtworkImages_artwork$ref;
 export type ArtworkImages_artwork = {
     readonly title: string | null;
     readonly image_alt: string | null;
     readonly image_title: string | null;
+    readonly href: string | null;
     readonly images: ReadonlyArray<({
         readonly id: string | null;
         readonly uri: string | null;
@@ -29,6 +31,7 @@ export type ArtworkImages_artwork = {
             }) | null;
         }) | null;
     }) | null> | null;
+    readonly " $fragmentRefs": Save_artwork$ref;
     readonly " $refType": ArtworkImages_artwork$ref;
 };
 
@@ -61,6 +64,18 @@ const node: ConcreteFragment = {
       "name": "image_title",
       "args": null,
       "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "href",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "Save_artwork",
+      "args": null
     },
     {
       "kind": "LinkedField",
@@ -239,5 +254,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '1cb76d714f435fb21f95f1d49a462ddd';
+(node as any).hash = 'd67d02f9065b84bc7ab46237ec98b335';
 export default node;
