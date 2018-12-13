@@ -7,6 +7,7 @@ import {
   Spacer,
 } from "@artsy/palette"
 import { Respond_order } from "__generated__/Respond_order.graphql"
+import { RespondCounterOfferMutation } from "__generated__/RespondCounterOfferMutation.graphql"
 import { Helper } from "Apps/Order/Components/Helper"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
@@ -16,10 +17,16 @@ import { ErrorModal } from "Components/Modal/ErrorModal"
 import { StaticCollapse } from "Components/StaticCollapse"
 import { Router } from "found"
 import React, { Component } from "react"
-import { createFragmentContainer, graphql, RelayProp } from "react-relay"
+import {
+  commitMutation,
+  createFragmentContainer,
+  graphql,
+  RelayProp,
+} from "react-relay"
 import { CountdownTimer } from "Styleguide/Components/CountdownTimer"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
+import { ErrorWithMetadata } from "Utils/errors"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
@@ -61,11 +68,17 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
   } as RespondState
 
   onContinueButtonPressed: () => void = () => {
-    const { offerValue, responseOption } = this.state
+    const { responseOption } = this.state
     this.setState({ isCommittingMutation: true }, () => {
       switch (responseOption) {
         case "COUNTER":
-          window.alert(`You decided to COUNTER with ${offerValue}.`)
+          this.createCounterOffer(Number(this.state.offerValue || "0"))
+            .then(() => {
+              this.props.router.push(
+                `/orders/${this.props.order.id}/review/counter`
+              )
+            })
+            .catch(this.onMutationError)
           break
         case "ACCEPT":
           this.props.router.push(`/orders/${this.props.order.id}/review/accept`)
@@ -80,7 +93,62 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
     })
   }
 
-  onMutationError(errors, errorModalTitle?, errorModalMessage?) {
+  createCounterOffer(price: number) {
+    return new Promise((resolve, reject) =>
+      commitMutation<RespondCounterOfferMutation>(
+        this.props.relay.environment,
+        {
+          mutation: graphql`
+            mutation RespondCounterOfferMutation(
+              $input: buyerCounterOfferInput!
+            ) {
+              ecommerceBuyerCounterOffer(input: $input) {
+                orderOrError {
+                  ... on OrderWithMutationSuccess {
+                    order {
+                      ...Respond_order
+                    }
+                  }
+                  ... on OrderWithMutationFailure {
+                    error {
+                      type
+                      code
+                      data
+                    }
+                  }
+                }
+              }
+            }
+          `,
+          variables: {
+            input: {
+              offerId: this.props.order.lastOffer.id,
+              offerPrice: {
+                amount: price,
+                currencyCode: "USD",
+              },
+            },
+          },
+          onCompleted: result => {
+            const orderOrError = result.ecommerceBuyerCounterOffer.orderOrError
+            if (orderOrError.error) {
+              reject(
+                new ErrorWithMetadata(
+                  orderOrError.error.code,
+                  orderOrError.error
+                )
+              )
+            } else {
+              resolve(orderOrError.order)
+            }
+          },
+          onError: reject,
+        }
+      )
+    )
+  }
+
+  onMutationError = (errors, errorModalTitle?, errorModalMessage?) => {
     logger.error(errors)
     this.setState({
       isCommittingMutation: false,
@@ -265,6 +333,7 @@ export const RespondFragmentContainer = createFragmentContainer(
       ... on OfferOrder {
         lastOffer {
           createdAt
+          id
         }
       }
       ...TransactionDetailsSummaryItem_order
