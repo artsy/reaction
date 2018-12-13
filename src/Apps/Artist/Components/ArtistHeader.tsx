@@ -6,8 +6,30 @@ import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import React, { Component, Fragment } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import styled from "styled-components"
 import { Carousel } from "Styleguide/Components"
 import { Media } from "Utils/Responsive"
+
+/**
+ * This H1 and H2 were added for SEO purposes
+ * TODO: Remove when palette provides the ability to override typography element
+ */
+const H1 = styled.h1`
+  all: initial;
+  all: unset;
+  margin: 0;
+  padding: 0;
+  font: normal;
+  font-family: inherit;
+  font-size: medium;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  letter-spacing: normal;
+  line-height: normal;
+`
+
+const H2 = H1.withComponent("h2")
 
 interface Props {
   artist: ArtistHeader_artist
@@ -104,12 +126,16 @@ export class LargeArtistHeader extends Component<Props> {
 
         <Flex justifyContent="space-between">
           <Box>
-            <Serif size="10">{props.artist.name}</Serif>
+            <H1>
+              <Serif size="10">{props.artist.name}</Serif>
+            </H1>
             <Flex>
-              <Serif size="3">
-                {props.artist.nationality && `${props.artist.nationality}, `}
-                {props.artist.years}
-              </Serif>
+              <H2>
+                <Serif size="3">
+                  {props.artist.nationality && `${props.artist.nationality}, `}
+                  {props.artist.years}
+                </Serif>
+              </H2>
               <Spacer mr={2} />
               {props.artist.counts.follows > 50 && (
                 <Serif size="3">
@@ -194,13 +220,17 @@ export class SmallArtistHeader extends Component<Props> {
 
         <span id="jumpto-ArtistHeader" />
         <Flex flexDirection="column" alignItems="center">
-          <Serif size="5">{props.artist.name}</Serif>
+          <H1>
+            <Serif size="5">{props.artist.name}</Serif>
+          </H1>
           <Flex>
             <Box mx={1}>
-              <Serif size="2">
-                {props.artist.nationality && `${props.artist.nationality}, `}
-                {props.artist.years}
-              </Serif>
+              <H2>
+                <Serif size="2">
+                  {props.artist.nationality && `${props.artist.nationality}, `}
+                  {props.artist.years}
+                </Serif>
+              </H2>
             </Box>
             {props.artist.counts.follows > 50 && (
               <Serif size="2">

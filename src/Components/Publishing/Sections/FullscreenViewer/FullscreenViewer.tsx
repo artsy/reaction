@@ -3,7 +3,7 @@ import Icon from "Components/Icon"
 import { map } from "lodash"
 import PropTypes from "prop-types"
 import React, { Component, HTMLProps } from "react"
-import Slider from "react-slick"
+import Slider, { Settings } from "react-slick"
 import styled, { StyledFunction } from "styled-components"
 import { Slide } from "./Slide"
 
@@ -74,13 +74,13 @@ export class FullscreenViewer extends Component<
   }
 
   render() {
-    const sliderSettings = {
+    const sliderSettings: Settings = {
       dots: false,
       infinite: false,
       slidesToShow: 1,
       slidesToScroll: 1,
       accessibility: true,
-      lazyLoad: true,
+      lazyLoad: "ondemand",
       draggable: true,
       nextArrow: <RightArrow />,
       prevArrow: <LeftArrow />,

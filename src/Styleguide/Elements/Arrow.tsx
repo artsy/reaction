@@ -17,6 +17,9 @@ export const Arrow: React.SFC<ArrowProps> = ({
       name={`chevron-${direction}` as any}
       fontSize={fontSize}
       {...rest as any}
+      style={{
+        userSelect: "none",
+      }}
     />
   )
 }

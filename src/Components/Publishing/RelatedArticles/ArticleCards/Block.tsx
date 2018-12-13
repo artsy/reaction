@@ -1,3 +1,4 @@
+import { Box } from "@artsy/palette"
 import { unica } from "Assets/Fonts"
 import { media } from "Components/Helpers"
 import {
@@ -9,7 +10,6 @@ import {
   SeriesAboutContainer,
 } from "Components/Publishing/Series/SeriesAbout"
 import { ArticleData } from "Components/Publishing/Typings"
-import { MaxRow } from "Components/Publishing/Video/Shared"
 import React from "react"
 import styled from "styled-components"
 import { ArticleCards } from "./ArticleCards"
@@ -27,7 +27,7 @@ export const ArticleCardsBlock: React.SFC<Props> = props => {
   return (
     <ArticleCardsContainer color={color}>
       {(relatedArticles || article.relatedArticles) && (
-        <MaxRow>
+        <Box maxWidth={1200} mx="auto">
           <VerticalOrSeriesTitle
             article={article}
             color={color}
@@ -38,12 +38,12 @@ export const ArticleCardsBlock: React.SFC<Props> = props => {
             series={seriesArticle}
             color={color}
           />
-        </MaxRow>
+        </Box>
       )}
       {seriesArticle && (
-        <MaxRow>
+        <Box maxWidth={1200} mx="auto">
           <SeriesAbout article={seriesArticle} color={color} />
-        </MaxRow>
+        </Box>
       )}
     </ArticleCardsContainer>
   )
@@ -55,10 +55,6 @@ ArticleCardsBlock.defaultProps = {
 
 export const ArticleCardsContainer = styled.div`
   color: ${props => props.color};
-
-  ${MaxRow} {
-    margin: auto;
-  }
 
   ${Vertical} {
     ${unica("s32")};
@@ -74,12 +70,12 @@ export const ArticleCardsContainer = styled.div`
   }
 
   ${SeriesAboutContainer} {
-    margin: 60px 0 100px 0;
+    margin: 60px auto 100px auto;
   }
 
   ${media.sm`
     ${SeriesAboutContainer} {
-      margin: 40px 0 100px 0;
+      margin: 40px auto 100px auto;
     }
   `};
 `
