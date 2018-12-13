@@ -26,9 +26,9 @@ type Media = { [S in keyof typeof sizes]: typeof css }
 export const media: Media = Object.keys(sizes).reduce((accumulator, label) => {
   // using px in breakpoints to maintain uniform units with flexbox-grid
   // https://zellwk.com/blog/media-query-units/
-  const emSize = sizes[label]
+  const pxSize = sizes[label]
   accumulator[label] = (strings, ...args) => css`
-    @media (max-width: ${emSize}em) {
+    @media (max-width: ${pxSize}px) {
       ${css(strings, ...args)};
     }
   `

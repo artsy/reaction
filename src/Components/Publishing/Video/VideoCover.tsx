@@ -1,3 +1,4 @@
+import { Box, Flex } from "@artsy/palette"
 import { garamond } from "Assets/Fonts"
 import { Col } from "Components/Grid"
 import React, { Component } from "react"
@@ -5,7 +6,6 @@ import track, { TrackingProp } from "react-tracking"
 import styled, { StyledFunction } from "styled-components"
 import { media as mediaQueries } from "../../Helpers"
 import { IconVideoPlay } from "../Icon/IconVideoPlay"
-import { MaxRow } from "./Shared"
 import { VideoInfoBlock } from "./VideoInfoBlock"
 
 interface Props {
@@ -57,27 +57,29 @@ export class VideoCover extends Component<Props, null> {
         <VideoCoverAsset src={media.cover_image_url} />
         <VideoCoverOverlay />
         <VideoCoverInfo>
-          <VideoCoverInfoRow>
-            <Col xs={2} sm={1} onClick={this.onPlayClick}>
-              <IconVideoPlay color="white" />
-            </Col>
-            <Col xs={10} sm={6}>
-              <VideoInfoBlock
-                media={media}
-                subTitle={
-                  seriesTitle || (article.vertical && article.vertical.name)
-                }
-                subTitleLink={seriesLink}
-                title={article.title}
-                editTitle={editTitle}
-              />
-            </Col>
+          <Box maxWidth={1200} mx="auto" pb="12px">
+            <Flex>
+              <Col xs={2} sm={1} onClick={this.onPlayClick}>
+                <IconVideoPlay color="white" />
+              </Col>
+              <Col xs={10} sm={6}>
+                <VideoInfoBlock
+                  media={media}
+                  subTitle={
+                    seriesTitle || (article.vertical && article.vertical.name)
+                  }
+                  subTitleLink={seriesLink}
+                  title={article.title}
+                  editTitle={editTitle}
+                />
+              </Col>
+            </Flex>
             <Col xs={12} sm={7}>
               <MediaDescription>
                 {editDescription || article.description}
               </MediaDescription>
             </Col>
-          </VideoCoverInfoRow>
+          </Box>
         </VideoCoverInfo>
       </VideoCoverContainer>
     )
@@ -93,11 +95,6 @@ export const VideoCoverAsset = Div`
 
 const VideoCoverOverlay = styled.div`
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
-`
-
-const VideoCoverInfoRow = styled(MaxRow)`
-  width: 100%;
-  align-items: flex-end;
 `
 
 const VideoCoverInfo = styled.div`

@@ -56,7 +56,9 @@ export class ImageSetPreview extends React.PureComponent<
             <ImageSetLabel {...this.props} />
             {children}
           </FullLabel>
-          <Img src={src} alt={alt} />
+          <ImgContainer>
+            <Img src={src} alt={alt} />
+          </ImgContainer>
         </ImageSetContainer>
       )
     } else {
@@ -103,6 +105,8 @@ export const Img = styled.img`
   height: auto;
   width: 100%;
 `
+
+export const ImgContainer = styled.div``
 
 const MiniWrapper = styled(Flex)`
   height: 100px;

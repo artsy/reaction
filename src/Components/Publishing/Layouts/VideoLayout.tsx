@@ -8,7 +8,6 @@ import { Nav } from "../Nav/Nav"
 import { ArticleCardsBlock } from "../RelatedArticles/ArticleCards/Block"
 import { ArticleData } from "../Typings"
 import { VideoContainer, VideoPlayer } from "../Video/Player/VideoPlayer"
-import { MaxRow } from "../Video/Shared"
 import { VideoAbout, VideoAboutContainer } from "../Video/VideoAbout"
 import { VideoCover } from "../Video/VideoCover"
 
@@ -95,9 +94,8 @@ export class VideoLayout extends Component<Props, State> {
             hideCover={this.state.hideCover}
           />
         </VideoPlayerContainer>
-        <MaxRow>
-          <VideoAbout article={article} color="white" />
-        </MaxRow>
+        <VideoAbout article={article} color="white" />
+
         {(relatedArticles || seriesArticle) && (
           <ArticleCardsBlock {...this.props} color="white" />
         )}
@@ -117,12 +115,12 @@ const VideoLayoutContainer = styled.div`
   }
 
   ${VideoAboutContainer} {
-    margin: 60px 0 100px 0;
+    margin: 60px auto 100px auto;
   }
 
   ${mediaQueries.sm`
     ${VideoAboutContainer} {
-      margin: 40px 0 100px 0;
+      margin: 40px auto 100px auto;
     }
   `};
 `

@@ -1,3 +1,4 @@
+import { Flex } from "@artsy/palette"
 import { unica } from "Assets/Fonts"
 import React, { Component } from "react"
 import { Col } from "react-styled-flexboxgrid"
@@ -25,7 +26,7 @@ export class VideoAbout extends Component<VideoAboutProps, null> {
     } = article
 
     return (
-      <VideoAboutContainer>
+      <VideoAboutContainer maxWidth={1200} mx="auto">
         <Credits xs={12} sm={4}>
           <Col xs={12}>
             <Title color={color}>Credits</Title>
@@ -90,9 +91,7 @@ const About = styled(Col)`
   flex: 1;
 `
 
-export const VideoAboutContainer = styled.div`
-  display: flex;
-
+export const VideoAboutContainer = styled(Flex)`
   ${ShareDate} {
     margin-top: 40px;
   }

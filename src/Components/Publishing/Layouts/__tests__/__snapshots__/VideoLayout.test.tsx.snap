@@ -1,6 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Video Layout matches the snapshot 1`] = `
+.c36 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c48 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+}
+
 .c8 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-weight: 600;
@@ -10,7 +27,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   text-align: center;
 }
 
-.c43 {
+.c42 {
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 14px;
   line-height: 20px;
@@ -23,7 +40,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   line-height: 20px;
 }
 
-.c70 {
+.c71 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
   font-size: 14px;
@@ -31,11 +48,24 @@ exports[`Video Layout matches the snapshot 1`] = `
   color: white;
 }
 
-.c71 {
-  color: white;
+.c35 {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 12px;
+}
+
+.c68 {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .c72 {
+  color: white;
+}
+
+.c73 {
   margin-bottom: 40px;
 }
 
@@ -138,11 +168,11 @@ exports[`Video Layout matches the snapshot 1`] = `
   text-decoration: none;
 }
 
-.c85 {
+.c86 {
   margin: 10px 20px 0 0;
 }
 
-.c85::before {
+.c86::before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -190,7 +220,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin: 5px 10px 5px 0;
 }
 
-.c84 {
+.c85 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -210,7 +240,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   height: 32px;
 }
 
-.c81 {
+.c82 {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -220,14 +250,14 @@ exports[`Video Layout matches the snapshot 1`] = `
   display: block;
 }
 
-.c79 {
+.c80 {
   position: relative;
   width: 50%;
   height: inherit;
   margin-left: 30px;
 }
 
-.c73 {
+.c74 {
   border: 1px solid;
   border-radius: 2px;
   color: white;
@@ -241,19 +271,19 @@ exports[`Video Layout matches the snapshot 1`] = `
   display: flex;
 }
 
-.c73 .c80 {
+.c74 .c81 {
   opacity: 1;
 }
 
-.c73:hover .c80 {
+.c74:hover .c81 {
   opacity: 0.7;
 }
 
-.c73 .c78 {
+.c74 .c79 {
   background: black;
 }
 
-.c74 {
+.c75 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -269,7 +299,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin-bottom: 5px;
 }
 
-.c76 {
+.c77 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 45px;
@@ -277,18 +307,18 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin-bottom: 30px;
 }
 
-.c75 {
+.c76 {
   margin-bottom: 10px;
 }
 
-.c77 {
+.c78 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
   -webkit-font-smoothing: antialiased;
 }
 
-.c83 {
+.c84 {
   position: absolute;
   left: 20px;
   bottom: 20px;
@@ -307,11 +337,11 @@ exports[`Video Layout matches the snapshot 1`] = `
   align-items: flex-end;
 }
 
-.c82 svg {
+.c83 svg {
   width: 40px;
 }
 
-.c38 {
+.c40 {
   box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
@@ -330,7 +360,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin-left: -0.5rem;
 }
 
-.c40 {
+.c38 {
   box-sizing: border-box;
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
@@ -339,7 +369,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   padding-left: 0.5rem;
 }
 
-.c41 {
+.c39 {
   box-sizing: border-box;
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
@@ -348,7 +378,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   padding-left: 0.5rem;
 }
 
-.c45 {
+.c44 {
   box-sizing: border-box;
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
@@ -774,17 +804,17 @@ exports[`Video Layout matches the snapshot 1`] = `
   text-transform: none;
 }
 
-.c87 {
+.c88 {
   color: white;
   max-width: 1200px;
   width: 100%;
 }
 
-.c88 .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
+.c89 .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
   display: none;
 }
 
-.c88:first-of-type {
+.c89:first-of-type {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -798,12 +828,12 @@ exports[`Video Layout matches the snapshot 1`] = `
   flex-direction: column;
 }
 
-.c88:first-of-type .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
+.c89:first-of-type .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
   display: block;
   margin-bottom: 10px;
 }
 
-.c89 {
+.c90 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -1057,38 +1087,21 @@ exports[`Video Layout matches the snapshot 1`] = `
   flex: 1;
 }
 
-.c48 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c48 .c55 {
+.c47 .c55 {
   margin-top: 40px;
 }
 
-.c69 a {
+.c70 a {
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
-}
-
-.c37 {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 12px;
 }
 
 .c67 {
   color: white;
 }
 
-.c67 .c36 {
-  margin: auto;
-}
-
-.c67 .c68 {
+.c67 .c69 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -1097,25 +1110,25 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin-bottom: 40px;
 }
 
-.c67 .c68 a {
+.c67 .c69 a {
   border-bottom: 2px solid;
 }
 
-.c67 .c86 {
-  margin: 60px 0 100px 0;
+.c67 .c87 {
+  margin: 60px auto 100px auto;
 }
 
-.c42 {
+.c41 {
   margin-right: 20px;
 }
 
-.c42 a {
+.c41 a {
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c44 {
+.c43 {
   position: relative;
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -1131,14 +1144,6 @@ exports[`Video Layout matches the snapshot 1`] = `
 
 .c32 {
   background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.6));
-}
-
-.c35 {
-  width: 100%;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
 }
 
 .c34 {
@@ -1183,7 +1188,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   height: 100%;
 }
 
-.c46 {
+.c45 {
   position: relative;
   margin-top: 30px;
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
@@ -1203,8 +1208,8 @@ exports[`Video Layout matches the snapshot 1`] = `
   top: 0;
 }
 
-.c0 .c47 {
-  margin: 60px 0 100px 0;
+.c0 .c46 {
+  margin: 60px auto 100px auto;
 }
 
 .c9 {
@@ -1219,7 +1224,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .c72 {
+  .c73 {
     margin-bottom: 60px;
   }
 }
@@ -1239,7 +1244,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:900px) {
-  .c79 {
+  .c80 {
     width: 100%;
     margin-left: 0;
     margin-bottom: 10px;
@@ -1247,7 +1252,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:900px) {
-  .c73 {
+  .c74 {
     -webkit-flex-direction: column-reverse;
     -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
@@ -1256,14 +1261,14 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:900px) {
-  .c74 {
+  .c75 {
     width: 100%;
     margin-bottom: 0;
   }
 }
 
 @media (max-width:900px) {
-  .c76 {
+  .c77 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
@@ -1272,7 +1277,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:900px) {
-  .c77 {
+  .c78 {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
@@ -1282,13 +1287,13 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:900px) {
-  .c82 svg {
+  .c83 svg {
     width: 30px;
   }
 }
 
 @media only screen and (min-width:0em) {
-  .c40 {
+  .c38 {
     -webkit-flex-basis: 16.666666666666668%;
     -ms-flex-preferred-size: 16.666666666666668%;
     flex-basis: 16.666666666666668%;
@@ -1298,7 +1303,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media only screen and (min-width:48em) {
-  .c40 {
+  .c38 {
     -webkit-flex-basis: 8.333333333333334%;
     -ms-flex-preferred-size: 8.333333333333334%;
     flex-basis: 8.333333333333334%;
@@ -1308,7 +1313,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media only screen and (min-width:0em) {
-  .c41 {
+  .c39 {
     -webkit-flex-basis: 83.33333333333334%;
     -ms-flex-preferred-size: 83.33333333333334%;
     flex-basis: 83.33333333333334%;
@@ -1318,7 +1323,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media only screen and (min-width:48em) {
-  .c41 {
+  .c39 {
     -webkit-flex-basis: 50%;
     -ms-flex-preferred-size: 50%;
     flex-basis: 50%;
@@ -1328,7 +1333,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media only screen and (min-width:0em) {
-  .c45 {
+  .c44 {
     -webkit-flex-basis: 100%;
     -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
@@ -1338,7 +1343,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media only screen and (min-width:48em) {
-  .c45 {
+  .c44 {
     -webkit-flex-basis: 58.333333333333336%;
     -ms-flex-preferred-size: 58.333333333333336%;
     flex-basis: 58.333333333333336%;
@@ -1549,24 +1554,24 @@ exports[`Video Layout matches the snapshot 1`] = `
   }
 }
 
-@media (max-width:48em) {
-  .c88:first-of-type .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
+@media (max-width:768px) {
+  .c89:first-of-type .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
     display: none;
   }
 
-  .c88 .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
+  .c89 .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
     margin-top: 60px;
     display: block;
   }
 }
 
-@media (max-width:48em) {
-  .c89 {
+@media (max-width:768px) {
+  .c90 {
     margin-bottom: 20px;
   }
 }
 
-@media (max-width:48em) {
+@media (max-width:768px) {
   .c56 .c59 {
     margin-top: 0px;
   }
@@ -1595,40 +1600,40 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media (max-width:720px) {
-  .c48 {
+  .c47 {
     -webkit-flex-direction: column-reverse;
     -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
   }
 }
 
-@media (max-width:48em) {
-  .c67 .c68 a {
+@media (max-width:768px) {
+  .c67 .c69 a {
     display: block;
   }
 }
 
-@media (max-width:48em) {
-  .c67 .c86 {
-    margin: 40px 0 100px 0;
+@media (max-width:768px) {
+  .c67 .c87 {
+    margin: 40px auto 100px auto;
   }
 }
 
-@media (max-width:48em) {
-  .c39 {
+@media (max-width:768px) {
+  .c37 {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
 }
 
-@media (max-width:48em) {
+@media (max-width:768px) {
   .c34 {
     padding-bottom: 40px;
   }
 }
 
-@media (max-width:48em) {
-  .c46 {
+@media (max-width:768px) {
+  .c45 {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
@@ -1636,9 +1641,9 @@ exports[`Video Layout matches the snapshot 1`] = `
   }
 }
 
-@media (max-width:48em) {
-  .c0 .c47 {
-    margin: 40px 0 100px 0;
+@media (max-width:768px) {
+  .c0 .c46 {
+    margin: 40px auto 100px auto;
   }
 }
 
@@ -1860,75 +1865,79 @@ exports[`Video Layout matches the snapshot 1`] = `
         className="c33 c34"
       >
         <div
-          className="c35 c36 c37 c38"
+          className="c35"
         >
           <div
-            className="c39 c40"
-            onClick={[Function]}
+            className="c36"
           >
-            <svg
-              className="c18 c19"
-              version="1.1"
-              viewBox="0 0 40 56"
-              x="0px"
-              xmlns="http://www.w3.org/2000/svg"
-              y="0px"
+            <div
+              className="c37 c38"
+              onClick={[Function]}
             >
-              <g
-                fill="none"
-                fillRule="evenodd"
-                stroke="none"
-                strokeWidth="1"
+              <svg
+                className="c18 c19"
+                version="1.1"
+                viewBox="0 0 40 56"
+                x="0px"
+                xmlns="http://www.w3.org/2000/svg"
+                y="0px"
               >
-                <polygon
-                  fill="white"
-                  points="0 0 0 56 39.3600006 28"
-                />
-              </g>
-            </svg>
-          </div>
-          <div
-            className="c39 c41"
-          >
-            <div>
-              <div
-                className="c38"
-              >
-                <div
-                  className="c42 c43"
-                  fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-                  fontSize="14px"
+                <g
+                  fill="none"
+                  fillRule="evenodd"
+                  stroke="none"
+                  strokeWidth="1"
                 >
-                  <a
-                    href="/series/future-of-art"
+                  <polygon
+                    fill="white"
+                    points="0 0 0 56 39.3600006 28"
+                  />
+                </g>
+              </svg>
+            </div>
+            <div
+              className="c37 c39"
+            >
+              <div>
+                <div
+                  className="c40"
+                >
+                  <div
+                    className="c41 c42"
+                    fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+                    fontSize="14px"
                   >
-                    The Future of Art
-                  </a>
+                    <a
+                      href="/series/future-of-art"
+                    >
+                      The Future of Art
+                    </a>
+                  </div>
+                  <div
+                    className="c42"
+                    fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+                    fontSize="14px"
+                  >
+                    02:28
+                  </div>
                 </div>
                 <div
-                  className="c43"
-                  fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-                  fontSize="14px"
+                  className="c40"
                 >
-                  02:28
+                  <span
+                    className="c43"
+                  >
+                    Trevor Paglan
+                  </span>
                 </div>
-              </div>
-              <div
-                className="c38"
-              >
-                <span
-                  className="c44"
-                >
-                  Trevor Paglan
-                </span>
               </div>
             </div>
           </div>
           <div
-            className="c39 c45"
+            className="c37 c44"
           >
             <div
-              className="c46"
+              className="c45"
             >
               The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
             </div>
@@ -1938,296 +1947,292 @@ exports[`Video Layout matches the snapshot 1`] = `
     </div>
   </div>
   <div
-    className="c36 c37 c38"
+    className="c46 c47 c48"
   >
     <div
-      className="c47 c48"
+      className="c49 c50"
     >
       <div
-        className="c49 c50"
+        className="c51"
       >
         <div
-          className="c51"
+          className="c52"
+          color="white"
         >
-          <div
-            className="c52"
-            color="white"
-          >
-            Credits
-          </div>
-          <div
-            className="article__text-section c53"
-            color="black"
-          >
-            <div
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "<p><b>Director</b></p><p>Marina Cashdan</p><p><b>Featuring</b></p><p>Trevor Paglan</p>",
-                }
-              }
-            />
-          </div>
+          Credits
         </div>
         <div
-          className="c54"
+          className="article__text-section c53"
+          color="black"
         >
           <div
-            className="c55 c56"
-          >
-            <div
-              className="c57"
-            >
-              <div
-                className="c58"
-                fontFamily={
-                  Object {
-                    "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
-                    "fontWeight": 500,
-                  }
-                }
-                fontSize="14px"
-              >
-                Jul 28, 2017 4:38 pm
-              </div>
-            </div>
-            <div
-              className="c59 c60"
-            >
-              <div
-                className="c61 c58"
-                fontFamily={
-                  Object {
-                    "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
-                    "fontWeight": 500,
-                  }
-                }
-                fontSize="14px"
-              >
-                Share
-              </div>
-              <a
-                className="c62"
-                href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form"
-                onClick={[Function]}
-                target="_blank"
-              >
-                <svg
-                  height="14px"
-                  version="1.1"
-                  viewBox="0 0 14 14"
-                  width="14px"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g
-                    fill="none"
-                    fillRule="evenodd"
-                    stroke="none"
-                    strokeWidth="1"
-                  >
-                    <path
-                      d="M13.22846,-0.00014 L0.77266,-0.00014 C0.34566,-0.00014 -0.00014,0.34636 -0.00014,0.77266 L-0.00014,13.22706 C-0.00014,13.65336 0.34566,13.99986 0.77266,13.99986 L7.47866,13.99986 L7.47866,8.57836 L5.65376,8.57836 L5.65376,6.46576 L7.47866,6.46576 L7.47866,4.90686 C7.47866,3.09876 8.58256,2.11456 10.19606,2.11456 C10.74066,2.11246 11.28526,2.14046 11.82706,2.19786 L11.82706,4.08576 L10.70776,4.08576 C9.83066,4.08576 9.65846,4.50366 9.65846,5.11476 L9.65846,6.46366 L11.75146,6.46366 L11.47846,8.57696 L9.65986,8.57696 L9.65986,13.99986 L13.22776,13.99986 C13.65406,13.99986 13.99986,13.65406 13.99986,13.22706 L13.99986,0.77266 C13.99986,0.34636 13.65406,-0.00014 13.22776,-0.00014"
-                      fill="white"
-                    />
-                  </g>
-                </svg>
-              </a>
-              <a
-                className="c62"
-                href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&text=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&url=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&via=artsy"
-                onClick={[Function]}
-                target="_blank"
-              >
-                <svg
-                  height="14px"
-                  version="1.1"
-                  viewBox="0 0 16 14"
-                  width="16px"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g
-                    fill="none"
-                    fillRule="evenodd"
-                    stroke="none"
-                    strokeWidth="1"
-                  >
-                    <path
-                      d="M15.9786472,1.9961647 C15.3802193,2.26166928 14.7456495,2.43612386 14.0957888,2.51257805 C14.7810964,2.1018105 15.2933396,1.45542502 15.537298,0.69435824 C14.8936926,1.07732426 14.189619,1.34699907 13.4542686,1.49087197 C12.8342946,0.828500604 11.967582,0.45318 11.0598622,0.45318 C9.25067784,0.458740305 7.78762253,1.92735593 7.78831756,3.73584521 C7.78762253,3.98744902 7.81542405,4.23835779 7.87033207,4.48370626 C5.23335731,4.35095397 2.77639743,3.10475056 1.11108601,1.05577808 C0.819169985,1.55620555 0.665566552,2.1254418 0.666261591,2.70510362 C0.664871514,3.80256887 1.21256158,4.82775015 2.12653675,5.4352135 C1.60595318,5.42061769 1.09649021,5.28021999 0.642630293,5.02583602 L0.642630293,5.06684327 C0.639155103,6.62859401 1.74009554,7.97488291 3.27195963,8.28139474 C2.99116422,8.36062909 2.70063827,8.40163634 2.40941728,8.40302642 C2.20229591,8.40372145 1.99517454,8.38426039 1.7922234,8.34603329 C2.22106194,9.68120158 3.45127948,10.5958718 4.85317144,10.6229783 C3.69315276,11.5362584 2.25928904,12.0311256 0.783028001,12.0283454 C0.520998616,12.0283454 0.25966427,12.0130546 -0.00028,11.9810828 C1.49961234,12.9437107 3.24554818,13.4552588 5.02762601,13.4531737 C11.0612522,13.4531737 14.3585132,8.45584932 14.3585132,4.12298146 C14.3585132,3.9798036 14.3585132,3.83940589 14.3473926,3.69970322 C14.9896079,3.23611277 15.5442483,2.66201126 15.9855976,2.00311509"
-                      fill="white"
-                    />
-                  </g>
-                </svg>
-              </a>
-              <a
-                className="c62"
-                href="mailto:?subject=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&body=Check out New Study Shows the Gender Pay Gap for Artists Is Not So Simple on Artsy: https://www.artsy.net/video/joanne-artman-gallery-poetry-naturerefinement-form"
-                onClick={[Function]}
-                target="_blank"
-              >
-                <svg
-                  height="14px"
-                  version="1.1"
-                  viewBox="0 0 17 14"
-                  width="17px"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g
-                    fill="none"
-                    fillRule="evenodd"
-                    stroke="none"
-                    strokeWidth="1"
-                  >
-                    <path
-                      d="M8.09330005,8.15962873 L16.0866701,1.92619024 L16.0866701,1.14909566 C16.0866701,0.764718818 15.7752762,0.45402 15.3915944,0.45402 L0.795005656,0.45402 C0.411323894,0.45402 0.09993,0.764718818 0.09993,1.14909566 L0.09993,1.92619024 L8.09330005,8.15962873 Z M16.0866701,3.68820703 L16.0866701,12.7589443 C16.0866701,13.1426261 15.7752762,13.45402 15.3915944,13.45402 L0.795005656,13.45402 C0.411323894,13.45402 0.09993,13.1426261 0.09993,12.7589443 L0.09993,3.68820703 L7.66582852,9.58939935 C7.79163721,9.68740502 7.94246863,9.73606031 8.09330005,9.73606031 C8.24413147,9.73606031 8.39496288,9.68740502 8.52077158,9.58939935 L16.0866701,3.68820703 Z"
-                      fill="white"
-                    />
-                  </g>
-                </svg>
-              </a>
-            </div>
-          </div>
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<p><b>Director</b></p><p>Marina Cashdan</p><p><b>Featuring</b></p><p>Trevor Paglan</p>",
+              }
+            }
+          />
         </div>
       </div>
       <div
-        className="c63 c64"
+        className="c54"
       >
         <div
-          className="c51"
+          className="c55 c56"
         >
           <div
-            className="c52"
-            color="white"
-          >
-            About the Film
-          </div>
-          <div
-            className="article__text-section c65"
-            color="white"
+            className="c57"
           >
             <div
-              dangerouslySetInnerHTML={
+              className="c58"
+              fontFamily={
                 Object {
-                  "__html": "<p>Integer posuere erat a ante venenatis <a href='artsy.net'>dapibus posuere velit</a> aliquet. Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
+                  "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                  "fontWeight": 500,
                 }
               }
-            />
+              fontSize="14px"
+            >
+              Jul 28, 2017 4:38 pm
+            </div>
           </div>
-        </div>
-        <div
-          className="c66"
-        >
           <div
-            className="c55 c56"
+            className="c59 c60"
           >
             <div
-              className="c57"
-            >
-              <div
-                className="c58"
-                fontFamily={
-                  Object {
-                    "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
-                    "fontWeight": 500,
-                  }
+              className="c61 c58"
+              fontFamily={
+                Object {
+                  "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                  "fontWeight": 500,
                 }
-                fontSize="14px"
-              >
-                Jul 28, 2017 4:38 pm
-              </div>
+              }
+              fontSize="14px"
+            >
+              Share
             </div>
+            <a
+              className="c62"
+              href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form"
+              onClick={[Function]}
+              target="_blank"
+            >
+              <svg
+                height="14px"
+                version="1.1"
+                viewBox="0 0 14 14"
+                width="14px"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g
+                  fill="none"
+                  fillRule="evenodd"
+                  stroke="none"
+                  strokeWidth="1"
+                >
+                  <path
+                    d="M13.22846,-0.00014 L0.77266,-0.00014 C0.34566,-0.00014 -0.00014,0.34636 -0.00014,0.77266 L-0.00014,13.22706 C-0.00014,13.65336 0.34566,13.99986 0.77266,13.99986 L7.47866,13.99986 L7.47866,8.57836 L5.65376,8.57836 L5.65376,6.46576 L7.47866,6.46576 L7.47866,4.90686 C7.47866,3.09876 8.58256,2.11456 10.19606,2.11456 C10.74066,2.11246 11.28526,2.14046 11.82706,2.19786 L11.82706,4.08576 L10.70776,4.08576 C9.83066,4.08576 9.65846,4.50366 9.65846,5.11476 L9.65846,6.46366 L11.75146,6.46366 L11.47846,8.57696 L9.65986,8.57696 L9.65986,13.99986 L13.22776,13.99986 C13.65406,13.99986 13.99986,13.65406 13.99986,13.22706 L13.99986,0.77266 C13.99986,0.34636 13.65406,-0.00014 13.22776,-0.00014"
+                    fill="white"
+                  />
+                </g>
+              </svg>
+            </a>
+            <a
+              className="c62"
+              href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&text=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&url=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&via=artsy"
+              onClick={[Function]}
+              target="_blank"
+            >
+              <svg
+                height="14px"
+                version="1.1"
+                viewBox="0 0 16 14"
+                width="16px"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g
+                  fill="none"
+                  fillRule="evenodd"
+                  stroke="none"
+                  strokeWidth="1"
+                >
+                  <path
+                    d="M15.9786472,1.9961647 C15.3802193,2.26166928 14.7456495,2.43612386 14.0957888,2.51257805 C14.7810964,2.1018105 15.2933396,1.45542502 15.537298,0.69435824 C14.8936926,1.07732426 14.189619,1.34699907 13.4542686,1.49087197 C12.8342946,0.828500604 11.967582,0.45318 11.0598622,0.45318 C9.25067784,0.458740305 7.78762253,1.92735593 7.78831756,3.73584521 C7.78762253,3.98744902 7.81542405,4.23835779 7.87033207,4.48370626 C5.23335731,4.35095397 2.77639743,3.10475056 1.11108601,1.05577808 C0.819169985,1.55620555 0.665566552,2.1254418 0.666261591,2.70510362 C0.664871514,3.80256887 1.21256158,4.82775015 2.12653675,5.4352135 C1.60595318,5.42061769 1.09649021,5.28021999 0.642630293,5.02583602 L0.642630293,5.06684327 C0.639155103,6.62859401 1.74009554,7.97488291 3.27195963,8.28139474 C2.99116422,8.36062909 2.70063827,8.40163634 2.40941728,8.40302642 C2.20229591,8.40372145 1.99517454,8.38426039 1.7922234,8.34603329 C2.22106194,9.68120158 3.45127948,10.5958718 4.85317144,10.6229783 C3.69315276,11.5362584 2.25928904,12.0311256 0.783028001,12.0283454 C0.520998616,12.0283454 0.25966427,12.0130546 -0.00028,11.9810828 C1.49961234,12.9437107 3.24554818,13.4552588 5.02762601,13.4531737 C11.0612522,13.4531737 14.3585132,8.45584932 14.3585132,4.12298146 C14.3585132,3.9798036 14.3585132,3.83940589 14.3473926,3.69970322 C14.9896079,3.23611277 15.5442483,2.66201126 15.9855976,2.00311509"
+                    fill="white"
+                  />
+                </g>
+              </svg>
+            </a>
+            <a
+              className="c62"
+              href="mailto:?subject=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&body=Check out New Study Shows the Gender Pay Gap for Artists Is Not So Simple on Artsy: https://www.artsy.net/video/joanne-artman-gallery-poetry-naturerefinement-form"
+              onClick={[Function]}
+              target="_blank"
+            >
+              <svg
+                height="14px"
+                version="1.1"
+                viewBox="0 0 17 14"
+                width="17px"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g
+                  fill="none"
+                  fillRule="evenodd"
+                  stroke="none"
+                  strokeWidth="1"
+                >
+                  <path
+                    d="M8.09330005,8.15962873 L16.0866701,1.92619024 L16.0866701,1.14909566 C16.0866701,0.764718818 15.7752762,0.45402 15.3915944,0.45402 L0.795005656,0.45402 C0.411323894,0.45402 0.09993,0.764718818 0.09993,1.14909566 L0.09993,1.92619024 L8.09330005,8.15962873 Z M16.0866701,3.68820703 L16.0866701,12.7589443 C16.0866701,13.1426261 15.7752762,13.45402 15.3915944,13.45402 L0.795005656,13.45402 C0.411323894,13.45402 0.09993,13.1426261 0.09993,12.7589443 L0.09993,3.68820703 L7.66582852,9.58939935 C7.79163721,9.68740502 7.94246863,9.73606031 8.09330005,9.73606031 C8.24413147,9.73606031 8.39496288,9.68740502 8.52077158,9.58939935 L16.0866701,3.68820703 Z"
+                    fill="white"
+                  />
+                </g>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="c63 c64"
+    >
+      <div
+        className="c51"
+      >
+        <div
+          className="c52"
+          color="white"
+        >
+          About the Film
+        </div>
+        <div
+          className="article__text-section c65"
+          color="white"
+        >
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<p>Integer posuere erat a ante venenatis <a href='artsy.net'>dapibus posuere velit</a> aliquet. Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
+              }
+            }
+          />
+        </div>
+      </div>
+      <div
+        className="c66"
+      >
+        <div
+          className="c55 c56"
+        >
+          <div
+            className="c57"
+          >
             <div
-              className="c59 c60"
-            >
-              <div
-                className="c61 c58"
-                fontFamily={
-                  Object {
-                    "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
-                    "fontWeight": 500,
-                  }
+              className="c58"
+              fontFamily={
+                Object {
+                  "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                  "fontWeight": 500,
                 }
-                fontSize="14px"
-              >
-                Share
-              </div>
-              <a
-                className="c62"
-                href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form"
-                onClick={[Function]}
-                target="_blank"
-              >
-                <svg
-                  height="14px"
-                  version="1.1"
-                  viewBox="0 0 14 14"
-                  width="14px"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g
-                    fill="none"
-                    fillRule="evenodd"
-                    stroke="none"
-                    strokeWidth="1"
-                  >
-                    <path
-                      d="M13.22846,-0.00014 L0.77266,-0.00014 C0.34566,-0.00014 -0.00014,0.34636 -0.00014,0.77266 L-0.00014,13.22706 C-0.00014,13.65336 0.34566,13.99986 0.77266,13.99986 L7.47866,13.99986 L7.47866,8.57836 L5.65376,8.57836 L5.65376,6.46576 L7.47866,6.46576 L7.47866,4.90686 C7.47866,3.09876 8.58256,2.11456 10.19606,2.11456 C10.74066,2.11246 11.28526,2.14046 11.82706,2.19786 L11.82706,4.08576 L10.70776,4.08576 C9.83066,4.08576 9.65846,4.50366 9.65846,5.11476 L9.65846,6.46366 L11.75146,6.46366 L11.47846,8.57696 L9.65986,8.57696 L9.65986,13.99986 L13.22776,13.99986 C13.65406,13.99986 13.99986,13.65406 13.99986,13.22706 L13.99986,0.77266 C13.99986,0.34636 13.65406,-0.00014 13.22776,-0.00014"
-                      fill="white"
-                    />
-                  </g>
-                </svg>
-              </a>
-              <a
-                className="c62"
-                href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&text=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&url=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&via=artsy"
-                onClick={[Function]}
-                target="_blank"
-              >
-                <svg
-                  height="14px"
-                  version="1.1"
-                  viewBox="0 0 16 14"
-                  width="16px"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g
-                    fill="none"
-                    fillRule="evenodd"
-                    stroke="none"
-                    strokeWidth="1"
-                  >
-                    <path
-                      d="M15.9786472,1.9961647 C15.3802193,2.26166928 14.7456495,2.43612386 14.0957888,2.51257805 C14.7810964,2.1018105 15.2933396,1.45542502 15.537298,0.69435824 C14.8936926,1.07732426 14.189619,1.34699907 13.4542686,1.49087197 C12.8342946,0.828500604 11.967582,0.45318 11.0598622,0.45318 C9.25067784,0.458740305 7.78762253,1.92735593 7.78831756,3.73584521 C7.78762253,3.98744902 7.81542405,4.23835779 7.87033207,4.48370626 C5.23335731,4.35095397 2.77639743,3.10475056 1.11108601,1.05577808 C0.819169985,1.55620555 0.665566552,2.1254418 0.666261591,2.70510362 C0.664871514,3.80256887 1.21256158,4.82775015 2.12653675,5.4352135 C1.60595318,5.42061769 1.09649021,5.28021999 0.642630293,5.02583602 L0.642630293,5.06684327 C0.639155103,6.62859401 1.74009554,7.97488291 3.27195963,8.28139474 C2.99116422,8.36062909 2.70063827,8.40163634 2.40941728,8.40302642 C2.20229591,8.40372145 1.99517454,8.38426039 1.7922234,8.34603329 C2.22106194,9.68120158 3.45127948,10.5958718 4.85317144,10.6229783 C3.69315276,11.5362584 2.25928904,12.0311256 0.783028001,12.0283454 C0.520998616,12.0283454 0.25966427,12.0130546 -0.00028,11.9810828 C1.49961234,12.9437107 3.24554818,13.4552588 5.02762601,13.4531737 C11.0612522,13.4531737 14.3585132,8.45584932 14.3585132,4.12298146 C14.3585132,3.9798036 14.3585132,3.83940589 14.3473926,3.69970322 C14.9896079,3.23611277 15.5442483,2.66201126 15.9855976,2.00311509"
-                      fill="white"
-                    />
-                  </g>
-                </svg>
-              </a>
-              <a
-                className="c62"
-                href="mailto:?subject=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&body=Check out New Study Shows the Gender Pay Gap for Artists Is Not So Simple on Artsy: https://www.artsy.net/video/joanne-artman-gallery-poetry-naturerefinement-form"
-                onClick={[Function]}
-                target="_blank"
-              >
-                <svg
-                  height="14px"
-                  version="1.1"
-                  viewBox="0 0 17 14"
-                  width="17px"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g
-                    fill="none"
-                    fillRule="evenodd"
-                    stroke="none"
-                    strokeWidth="1"
-                  >
-                    <path
-                      d="M8.09330005,8.15962873 L16.0866701,1.92619024 L16.0866701,1.14909566 C16.0866701,0.764718818 15.7752762,0.45402 15.3915944,0.45402 L0.795005656,0.45402 C0.411323894,0.45402 0.09993,0.764718818 0.09993,1.14909566 L0.09993,1.92619024 L8.09330005,8.15962873 Z M16.0866701,3.68820703 L16.0866701,12.7589443 C16.0866701,13.1426261 15.7752762,13.45402 15.3915944,13.45402 L0.795005656,13.45402 C0.411323894,13.45402 0.09993,13.1426261 0.09993,12.7589443 L0.09993,3.68820703 L7.66582852,9.58939935 C7.79163721,9.68740502 7.94246863,9.73606031 8.09330005,9.73606031 C8.24413147,9.73606031 8.39496288,9.68740502 8.52077158,9.58939935 L16.0866701,3.68820703 Z"
-                      fill="white"
-                    />
-                  </g>
-                </svg>
-              </a>
+              }
+              fontSize="14px"
+            >
+              Jul 28, 2017 4:38 pm
             </div>
+          </div>
+          <div
+            className="c59 c60"
+          >
+            <div
+              className="c61 c58"
+              fontFamily={
+                Object {
+                  "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                  "fontWeight": 500,
+                }
+              }
+              fontSize="14px"
+            >
+              Share
+            </div>
+            <a
+              className="c62"
+              href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form"
+              onClick={[Function]}
+              target="_blank"
+            >
+              <svg
+                height="14px"
+                version="1.1"
+                viewBox="0 0 14 14"
+                width="14px"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g
+                  fill="none"
+                  fillRule="evenodd"
+                  stroke="none"
+                  strokeWidth="1"
+                >
+                  <path
+                    d="M13.22846,-0.00014 L0.77266,-0.00014 C0.34566,-0.00014 -0.00014,0.34636 -0.00014,0.77266 L-0.00014,13.22706 C-0.00014,13.65336 0.34566,13.99986 0.77266,13.99986 L7.47866,13.99986 L7.47866,8.57836 L5.65376,8.57836 L5.65376,6.46576 L7.47866,6.46576 L7.47866,4.90686 C7.47866,3.09876 8.58256,2.11456 10.19606,2.11456 C10.74066,2.11246 11.28526,2.14046 11.82706,2.19786 L11.82706,4.08576 L10.70776,4.08576 C9.83066,4.08576 9.65846,4.50366 9.65846,5.11476 L9.65846,6.46366 L11.75146,6.46366 L11.47846,8.57696 L9.65986,8.57696 L9.65986,13.99986 L13.22776,13.99986 C13.65406,13.99986 13.99986,13.65406 13.99986,13.22706 L13.99986,0.77266 C13.99986,0.34636 13.65406,-0.00014 13.22776,-0.00014"
+                    fill="white"
+                  />
+                </g>
+              </svg>
+            </a>
+            <a
+              className="c62"
+              href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&text=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&url=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&via=artsy"
+              onClick={[Function]}
+              target="_blank"
+            >
+              <svg
+                height="14px"
+                version="1.1"
+                viewBox="0 0 16 14"
+                width="16px"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g
+                  fill="none"
+                  fillRule="evenodd"
+                  stroke="none"
+                  strokeWidth="1"
+                >
+                  <path
+                    d="M15.9786472,1.9961647 C15.3802193,2.26166928 14.7456495,2.43612386 14.0957888,2.51257805 C14.7810964,2.1018105 15.2933396,1.45542502 15.537298,0.69435824 C14.8936926,1.07732426 14.189619,1.34699907 13.4542686,1.49087197 C12.8342946,0.828500604 11.967582,0.45318 11.0598622,0.45318 C9.25067784,0.458740305 7.78762253,1.92735593 7.78831756,3.73584521 C7.78762253,3.98744902 7.81542405,4.23835779 7.87033207,4.48370626 C5.23335731,4.35095397 2.77639743,3.10475056 1.11108601,1.05577808 C0.819169985,1.55620555 0.665566552,2.1254418 0.666261591,2.70510362 C0.664871514,3.80256887 1.21256158,4.82775015 2.12653675,5.4352135 C1.60595318,5.42061769 1.09649021,5.28021999 0.642630293,5.02583602 L0.642630293,5.06684327 C0.639155103,6.62859401 1.74009554,7.97488291 3.27195963,8.28139474 C2.99116422,8.36062909 2.70063827,8.40163634 2.40941728,8.40302642 C2.20229591,8.40372145 1.99517454,8.38426039 1.7922234,8.34603329 C2.22106194,9.68120158 3.45127948,10.5958718 4.85317144,10.6229783 C3.69315276,11.5362584 2.25928904,12.0311256 0.783028001,12.0283454 C0.520998616,12.0283454 0.25966427,12.0130546 -0.00028,11.9810828 C1.49961234,12.9437107 3.24554818,13.4552588 5.02762601,13.4531737 C11.0612522,13.4531737 14.3585132,8.45584932 14.3585132,4.12298146 C14.3585132,3.9798036 14.3585132,3.83940589 14.3473926,3.69970322 C14.9896079,3.23611277 15.5442483,2.66201126 15.9855976,2.00311509"
+                    fill="white"
+                  />
+                </g>
+              </svg>
+            </a>
+            <a
+              className="c62"
+              href="mailto:?subject=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&body=Check out New Study Shows the Gender Pay Gap for Artists Is Not So Simple on Artsy: https://www.artsy.net/video/joanne-artman-gallery-poetry-naturerefinement-form"
+              onClick={[Function]}
+              target="_blank"
+            >
+              <svg
+                height="14px"
+                version="1.1"
+                viewBox="0 0 17 14"
+                width="17px"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g
+                  fill="none"
+                  fillRule="evenodd"
+                  stroke="none"
+                  strokeWidth="1"
+                >
+                  <path
+                    d="M8.09330005,8.15962873 L16.0866701,1.92619024 L16.0866701,1.14909566 C16.0866701,0.764718818 15.7752762,0.45402 15.3915944,0.45402 L0.795005656,0.45402 C0.411323894,0.45402 0.09993,0.764718818 0.09993,1.14909566 L0.09993,1.92619024 L8.09330005,8.15962873 Z M16.0866701,3.68820703 L16.0866701,12.7589443 C16.0866701,13.1426261 15.7752762,13.45402 15.3915944,13.45402 L0.795005656,13.45402 C0.411323894,13.45402 0.09993,13.1426261 0.09993,12.7589443 L0.09993,3.68820703 L7.66582852,9.58939935 C7.79163721,9.68740502 7.94246863,9.73606031 8.09330005,9.73606031 C8.24413147,9.73606031 8.39496288,9.68740502 8.52077158,9.58939935 L16.0866701,3.68820703 Z"
+                    fill="white"
+                  />
+                </g>
+              </svg>
+            </a>
           </div>
         </div>
       </div>
@@ -2238,10 +2243,10 @@ exports[`Video Layout matches the snapshot 1`] = `
     color="white"
   >
     <div
-      className="c36 c37 c38"
+      className="c68"
     >
       <div
-        className="c68 c69 c70"
+        className="c69 c70 c71"
         color="white"
         fontFamily={
           Object {
@@ -2259,24 +2264,24 @@ exports[`Video Layout matches the snapshot 1`] = `
         </a>
       </div>
       <div
-        className="c71"
+        className="c72"
         color="white"
       >
         <div
-          className="c72"
+          className="c73"
         >
           <a
-            className="ArticleCard c73"
+            className="ArticleCard c74"
             color="white"
             href="joanne-artman-gallery-poetry-naturerefinement-form"
             onClick={[Function]}
           >
             <div
-              className="c74"
+              className="c75"
             >
               <div>
                 <div
-                  className="c75 c58"
+                  className="c76 c58"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2288,12 +2293,12 @@ exports[`Video Layout matches the snapshot 1`] = `
                   The Future of Art
                 </div>
                 <div
-                  className="c76"
+                  className="c77"
                 >
                   New Study Shows the Gender Pay Gap for Artists Is Not So Simple
                 </div>
                 <div
-                  className="c77"
+                  className="c78"
                 >
                   The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
                 </div>
@@ -2316,14 +2321,14 @@ exports[`Video Layout matches the snapshot 1`] = `
               </div>
             </div>
             <div
-              className="c78 c79"
+              className="c79 c80"
             >
               <img
-                className="c80 c81"
+                className="c81 c82"
                 src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
               />
               <div
-                className="c82 c83"
+                className="c83 c84"
               >
                 <svg
                   className="c18 c19"
@@ -2362,20 +2367,20 @@ exports[`Video Layout matches the snapshot 1`] = `
           </a>
         </div>
         <div
-          className="c72"
+          className="c73"
         >
           <a
-            className="ArticleCard c73"
+            className="ArticleCard c74"
             color="white"
             href="new-yorks-next-art-district"
             onClick={[Function]}
           >
             <div
-              className="c74"
+              className="c75"
             >
               <div>
                 <div
-                  className="c75 c58"
+                  className="c76 c58"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2387,18 +2392,18 @@ exports[`Video Layout matches the snapshot 1`] = `
                   The Future of Art
                 </div>
                 <div
-                  className="c76"
+                  className="c77"
                 >
                   New York's Next Art District
                 </div>
                 <div
-                  className="c77"
+                  className="c78"
                 >
                   Land exhibitions, make influential contacts, and gain valuable feedback about your work.
                 </div>
               </div>
               <div
-                className="Byline c84"
+                className="Byline c85"
                 color="white"
               >
                 <div
@@ -2412,7 +2417,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                   fontSize="14px"
                 >
                   <div
-                    className="c85"
+                    className="c86"
                     color="white"
                   >
                     Casey Lesser
@@ -2437,10 +2442,10 @@ exports[`Video Layout matches the snapshot 1`] = `
               </div>
             </div>
             <div
-              className="c78 c79"
+              className="c79 c80"
             >
               <img
-                className="c80 c81"
+                className="c81 c82"
                 src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=95"
               />
             </div>
@@ -2449,23 +2454,23 @@ exports[`Video Layout matches the snapshot 1`] = `
       </div>
     </div>
     <div
-      className="c36 c37 c38"
+      className="c68"
     >
       <div
-        className="c86 c87 c38"
+        className="c87 c88 c40"
         color="white"
       >
         <div
-          className="c88 c50"
+          className="c89 c50"
         >
           <div
-            className="c89"
+            className="c90"
           >
             About the Series
           </div>
         </div>
         <div
-          className="c88 c64"
+          className="c89 c64"
         >
           <div
             className="SeriesAbout__description"
