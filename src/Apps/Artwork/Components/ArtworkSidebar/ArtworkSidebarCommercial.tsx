@@ -67,7 +67,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
 
   renderSaleMessage(saleMessage: string) {
     return (
-      <Box pb={2} pt={1}>
+      <Box mb={1} mt={1}>
         <Serif size="5t" weight="semibold">
           {saleMessage}
         </Serif>
@@ -232,7 +232,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
           )}
         {artworkEcommerceAvailable &&
           artwork.shippingOrigin && (
-            <Serif size="2" color="black60">
+            <Serif mb={2} size="2" color="black60">
               Ships from {artwork.shippingOrigin}
             </Serif>
           )}
