@@ -1,33 +1,33 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { ArtworkImages_artwork$ref } from "./ArtworkImages_artwork.graphql";
-export type ArtworkImagesQueryVariables = {
+import { ImageBrowser_artwork$ref } from "./ImageBrowser_artwork.graphql";
+export type ImageBrowserQueryVariables = {
     readonly artworkID: string;
 };
-export type ArtworkImagesQueryResponse = {
+export type ImageBrowserQueryResponse = {
     readonly artwork: ({
-        readonly " $fragmentRefs": ArtworkImages_artwork$ref;
+        readonly " $fragmentRefs": ImageBrowser_artwork$ref;
     }) | null;
 };
-export type ArtworkImagesQuery = {
-    readonly response: ArtworkImagesQueryResponse;
-    readonly variables: ArtworkImagesQueryVariables;
+export type ImageBrowserQuery = {
+    readonly response: ImageBrowserQueryResponse;
+    readonly variables: ImageBrowserQueryVariables;
 };
 
 
 
 /*
-query ArtworkImagesQuery(
+query ImageBrowserQuery(
   $artworkID: String!
 ) {
   artwork(id: $artworkID) {
-    ...ArtworkImages_artwork
+    ...ImageBrowser_artwork
     __id
   }
 }
 
-fragment ArtworkImages_artwork on Artwork {
+fragment ImageBrowser_artwork on Artwork {
   title
   image_alt: to_s
   image_title
@@ -99,13 +99,13 @@ v3 = {
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "ArtworkImagesQuery",
+  "name": "ImageBrowserQuery",
   "id": null,
-  "text": "query ArtworkImagesQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...ArtworkImages_artwork\n    __id\n  }\n}\n\nfragment ArtworkImages_artwork on Artwork {\n  title\n  image_alt: to_s\n  image_title\n  href\n  ...Save_artwork\n  images {\n    id\n    uri: url(version: [\"larger\", \"large\"])\n    placeholder: resized(width: 30, height: 30, version: \"small\") {\n      url\n    }\n    aspectRatio: aspect_ratio\n    is_zoomable\n    deepZoom: deep_zoom {\n      Image {\n        xmlns\n        Url\n        Format\n        TileSize\n        Overlap\n        Size {\n          Width\n          Height\n        }\n      }\n    }\n  }\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n",
+  "text": "query ImageBrowserQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...ImageBrowser_artwork\n    __id\n  }\n}\n\nfragment ImageBrowser_artwork on Artwork {\n  title\n  image_alt: to_s\n  image_title\n  href\n  ...Save_artwork\n  images {\n    id\n    uri: url(version: [\"larger\", \"large\"])\n    placeholder: resized(width: 30, height: 30, version: \"small\") {\n      url\n    }\n    aspectRatio: aspect_ratio\n    is_zoomable\n    deepZoom: deep_zoom {\n      Image {\n        xmlns\n        Url\n        Format\n        TileSize\n        Overlap\n        Size {\n          Width\n          Height\n        }\n      }\n    }\n  }\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "ArtworkImagesQuery",
+    "name": "ImageBrowserQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -121,7 +121,7 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "ArtworkImages_artwork",
+            "name": "ImageBrowser_artwork",
             "args": null
           },
           v2
@@ -131,7 +131,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "ArtworkImagesQuery",
+    "name": "ImageBrowserQuery",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -348,5 +348,5 @@ return {
   }
 };
 })();
-(node as any).hash = '420048efdddabb5389ca64258b211e7c';
+(node as any).hash = '337518b59350e9352c6360b3f342d22d';
 export default node;

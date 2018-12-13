@@ -1,9 +1,9 @@
 import { Flex } from "@artsy/palette"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { ShareButton } from "../ActionButton"
+import { ShareButton } from "../../ImageBrowser/ActionButtons"
 
-storiesOf("Styleguide/Artwork/ActionButtons", module).add(
+storiesOf("Styleguide/Artwork/ImageBrowser/ActionButtons", module).add(
   "Share button",
   () => (
     <Flex justifyContent="center" alignItems="flex-end" height="500px">

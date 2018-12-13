@@ -1,8 +1,35 @@
+import { OtherWorksQuery } from "__generated__/OtherWorksQuery.graphql"
+import { ContextConsumer } from "Artsy"
+import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import React from "react"
+import { graphql, QueryRenderer } from "react-relay"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
-import { OtherWorksQueryRenderer as OtherWorks } from "../OtherWorks"
+import { OtherWorksFragmentContainer } from "../OtherWorks"
 import { RelatedWorksArtworkGridQueryRenderer as RelatedWorksArtworkGrid } from "../OtherWorks/ArtworkContexts/ArtworkGrids/RelatedWorksArtworkGrid"
+
+export const OtherWorks = ({ artworkSlug }: { artworkSlug: string }) => {
+  return (
+    <ContextConsumer>
+      {({ relayEnvironment }) => {
+        return (
+          <QueryRenderer<OtherWorksQuery>
+            environment={relayEnvironment}
+            variables={{ artworkSlug }}
+            query={graphql`
+              query OtherWorksQuery($artworkSlug: String!) {
+                artwork(id: $artworkSlug) {
+                  ...OtherWorks_artwork
+                }
+              }
+            `}
+            render={renderWithLoadProgress(OtherWorksFragmentContainer)}
+          />
+        )
+      }}
+    </ContextConsumer>
+  )
+}
 
 storiesOf("Styleguide/Artwork/OtherWorks", module)
   .add("Auctions", () => {
