@@ -1,7 +1,7 @@
 import { ContextProvider } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { ContextConsumer } from "Artsy/SystemContext"
-import { IMocks } from "graphql-tools/dist/Interfaces"
+import { IResolvers } from "graphql-tools/dist/Interfaces"
 import React from "react"
 import { QueryRenderer, RelayContainer } from "react-relay"
 import {
@@ -20,7 +20,7 @@ export interface MockRelayRendererProps<
   Component: RelayContainer<T["response"]>
   variables?: T["variables"]
   query: GraphQLTaggedNode
-  mockResolvers: IMocks
+  mockResolvers: IResolvers
 }
 
 export interface MockRelayRendererState {
@@ -139,7 +139,6 @@ export class MockRelayRenderer<
     const { Component, variables, query, mockResolvers } = this.props
 
     const network = createMockNetworkLayer({
-      Query: () => ({}),
       ...mockResolvers,
     })
     const source = new RecordSource()

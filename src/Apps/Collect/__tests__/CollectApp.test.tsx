@@ -39,7 +39,7 @@ describe("CollectApp", () => {
                 }
               }
             `}
-            mockResolvers={{ Viewer: () => CollectAppFixture }}
+            mockResolvers={{ Query: { viewer: () => CollectAppFixture } }}
           />
         </Provider>
       </MockBoot>
@@ -74,7 +74,7 @@ describe("CollectApp", () => {
                 }
               }
             `}
-            mockResolvers={{ Viewer: () => CollectAppFixture }}
+            mockResolvers={{ Query: { viewer: () => CollectAppFixture } }}
           />
         </Provider>
       </MockBoot>
