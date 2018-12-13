@@ -8,7 +8,11 @@ import { media } from "Components/Helpers"
 import { ArticleProps } from "Components/Publishing/Article"
 import { Byline, BylineContainer } from "Components/Publishing/Byline/Byline"
 import { Nav, NavContainer } from "Components/Publishing/Nav/Nav"
-import { ArticleCards } from "Components/Publishing/RelatedArticles/ArticleCards/ArticleCards"
+import { ArticleCardContainer } from "Components/Publishing/RelatedArticles/ArticleCards/ArticleCard"
+import {
+  ArticleCards,
+  ArticlesWrapper,
+} from "Components/Publishing/RelatedArticles/ArticleCards/ArticleCards"
 import {
   FullLabel,
   ImageSetContainer,
@@ -159,8 +163,10 @@ export class Eoy2018Artists extends React.Component<ArticleProps> {
         </Box>
 
         {article.relatedArticles && (
-          <Box px={[10, 10, 55]} my={40} mx="auto">
-            <ArticleCards relatedArticles={article.relatedArticles} />
+          <Box px={[10, 10, 55]} mb={40} mx="auto">
+            <RelatedArticleWrapper>
+              <ArticleCards relatedArticles={article.relatedArticles} />
+            </RelatedArticleWrapper>
           </Box>
         )}
       </AricleWrapper>
@@ -394,5 +400,19 @@ const ImageSetWrapper = styled(Box)`
       border-right: none;
       border-bottom: ${BORDER_WIDTH}px solid ${color("purple100")};
     `};
+  }
+`
+
+const RelatedArticleWrapper = styled.div`
+  border-right: ${BORDER_WIDTH}px solid ${color("purple100")};
+  border-bottom: ${BORDER_WIDTH}px solid ${color("purple100")};
+
+  ${ArticlesWrapper} {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+
+  ${ArticleCardContainer} {
+    border: none;
   }
 `

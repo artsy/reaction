@@ -40,7 +40,7 @@ export class Eoy2018ArticleHeader extends React.Component<{
 
       return (
         <GridItem key={i} width={[1 / 2, 1 / 3, 1 / 4]} isVisible={isVisible}>
-          <Img src={src} isVisible={isVisible} />
+          <Img src={src} />
         </GridItem>
       )
     })
@@ -83,7 +83,7 @@ const HeaderGrid = styled(Flex)`
   bottom: 0;
 `
 
-const Img = styled.div<{ src?: string; isVisible?: boolean }>`
+const Img = styled.div<{ src?: string }>`
   width: 100%;
   height: 100%;
   opacity: 0;
@@ -98,29 +98,31 @@ const Img = styled.div<{ src?: string; isVisible?: boolean }>`
     mix-blend-mode: screen;
     filter: grayscale(100%);
   `};
-
-  ${props =>
-    props.isVisible &&
-    `
-      opacity: 1;
-    `};
 `
 
 const GridItem = styled(Box)<{ isVisible?: boolean }>`
   border: 3px solid ${color("purple100")};
   transition: background-color 0.5s;
+  ${Img} {
+    ${props =>
+      props.isVisible &&
+      `
+    opacity: 1;
+    `};
+  }
 
-  ${props =>
-    props.isVisible &&
-    `
-    background-color: ${color("purple100")};
-  `};
   &:hover {
     background-color: ${color("purple100")};
     ${Img} {
       opacity: 1;
     }
   }
+
+  ${props =>
+    props.isVisible &&
+    `
+    background-color: ${color("purple100")};
+  `};
 `
 
 const ArticleHeader = styled.div`
