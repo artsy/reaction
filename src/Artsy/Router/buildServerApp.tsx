@@ -96,14 +96,6 @@ export function buildServerApp(
           })()
         )
 
-        const scripts = []
-        loadableState && scripts.push(loadableState.getScriptTag())
-        scripts.push(`
-          <script>
-            var __RELAY_BOOTSTRAP__ = ${serializeRelayData(relayData)};
-          </script>
-        `)
-
         /**
          * FIXME: Relay SSR middleware is passing a _res object across which
          * has circular references, leading to issues *ONLY* on staging / prod
@@ -122,6 +114,14 @@ export function buildServerApp(
             error
           )
         }
+
+        const scripts = []
+        loadableState && scripts.push(loadableState.getScriptTag())
+        scripts.push(`
+          <script>
+            var __RELAY_BOOTSTRAP__ = ${serializeRelayData(relayData)};
+          </script>
+        `)
 
         resolve({
           ServerApp,
