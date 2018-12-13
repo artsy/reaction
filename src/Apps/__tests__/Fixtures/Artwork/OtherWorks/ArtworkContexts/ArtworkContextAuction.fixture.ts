@@ -1,6 +1,7 @@
 import { LayerFixture, LayersFixture } from "./RelatedWorksArtworkGrid.fixture"
 
 export const ArtworkContextAuctionFixture = {
+  sales: [],
   artwork: {
     ...LayerFixture,
     ...LayersFixture,
@@ -197,7 +198,11 @@ export const ArtworkContextAuctionFixture = {
               sale_message: "Contact For Price",
               cultural_maker: null,
               artists: [
-                { __id: "QXJ0aXN0OmFkbA==", href: "/artist/adl", name: "ADL" },
+                {
+                  __id: "QXJ0aXN0OmFkbA==",
+                  href: "/artist/adl",
+                  name: "ADL",
+                },
               ],
               collecting_institution: null,
               partner: {
