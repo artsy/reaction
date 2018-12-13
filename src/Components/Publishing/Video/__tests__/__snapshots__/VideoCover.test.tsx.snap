@@ -1,7 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Video Cover matches the snapshot 1`] = `
-.c9 {
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c16 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.c7 {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 12px;
+}
+
+.c14 {
   box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
@@ -20,7 +40,7 @@ exports[`Video Cover matches the snapshot 1`] = `
   margin-left: -0.5rem;
 }
 
-.c11 {
+.c10 {
   box-sizing: border-box;
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
@@ -29,7 +49,7 @@ exports[`Video Cover matches the snapshot 1`] = `
   padding-left: 0.5rem;
 }
 
-.c14 {
+.c13 {
   box-sizing: border-box;
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
@@ -47,21 +67,9 @@ exports[`Video Cover matches the snapshot 1`] = `
   padding-left: 0.5rem;
 }
 
-.c13 {
+.c12 {
   width: 32px;
   height: 32px;
-}
-
-.c8 {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 12px;
-}
-
-.c16 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 14px;
-  line-height: 20px;
 }
 
 .c15 {
@@ -92,14 +100,6 @@ exports[`Video Cover matches the snapshot 1`] = `
   background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.6));
 }
 
-.c7 {
-  width: 100%;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
-}
-
 .c6 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -114,7 +114,7 @@ exports[`Video Cover matches the snapshot 1`] = `
   z-index: 1;
 }
 
-.c6 .c12 {
+.c6 .c11 {
   height: 60px;
   width: 44px;
   margin-right: 15px;
@@ -152,7 +152,7 @@ exports[`Video Cover matches the snapshot 1`] = `
 }
 
 @media only screen and (min-width:0em) {
-  .c11 {
+  .c10 {
     -webkit-flex-basis: 16.666666666666668%;
     -ms-flex-preferred-size: 16.666666666666668%;
     flex-basis: 16.666666666666668%;
@@ -162,7 +162,7 @@ exports[`Video Cover matches the snapshot 1`] = `
 }
 
 @media only screen and (min-width:48em) {
-  .c11 {
+  .c10 {
     -webkit-flex-basis: 8.333333333333334%;
     -ms-flex-preferred-size: 8.333333333333334%;
     flex-basis: 8.333333333333334%;
@@ -172,7 +172,7 @@ exports[`Video Cover matches the snapshot 1`] = `
 }
 
 @media only screen and (min-width:0em) {
-  .c14 {
+  .c13 {
     -webkit-flex-basis: 83.33333333333334%;
     -ms-flex-preferred-size: 83.33333333333334%;
     flex-basis: 83.33333333333334%;
@@ -182,7 +182,7 @@ exports[`Video Cover matches the snapshot 1`] = `
 }
 
 @media only screen and (min-width:48em) {
-  .c14 {
+  .c13 {
     -webkit-flex-basis: 50%;
     -ms-flex-preferred-size: 50%;
     flex-basis: 50%;
@@ -211,20 +211,20 @@ exports[`Video Cover matches the snapshot 1`] = `
   }
 }
 
-@media (max-width:48em) {
-  .c10 {
+@media (max-width:768px) {
+  .c9 {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
 }
 
-@media (max-width:48em) {
+@media (max-width:768px) {
   .c6 {
     padding-bottom: 40px;
   }
 }
 
-@media (max-width:48em) {
+@media (max-width:768px) {
   .c19 {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
@@ -247,68 +247,72 @@ exports[`Video Cover matches the snapshot 1`] = `
     className="c5 c6"
   >
     <div
-      className="c7 c8 c9"
+      className="c7"
     >
       <div
-        className="c10 c11"
-        onClick={[Function]}
+        className="c8"
       >
-        <svg
-          className="c12 c13"
-          version="1.1"
-          viewBox="0 0 40 56"
-          x="0px"
-          xmlns="http://www.w3.org/2000/svg"
-          y="0px"
+        <div
+          className="c9 c10"
+          onClick={[Function]}
         >
-          <g
-            fill="none"
-            fillRule="evenodd"
-            stroke="none"
-            strokeWidth="1"
+          <svg
+            className="c11 c12"
+            version="1.1"
+            viewBox="0 0 40 56"
+            x="0px"
+            xmlns="http://www.w3.org/2000/svg"
+            y="0px"
           >
-            <polygon
-              fill="white"
-              points="0 0 0 56 39.3600006 28"
-            />
-          </g>
-        </svg>
-      </div>
-      <div
-        className="c10 c14"
-      >
-        <div>
-          <div
-            className="c9"
-          >
-            <div
-              className="c15 c16"
-              fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-              fontSize="14px"
+            <g
+              fill="none"
+              fillRule="evenodd"
+              stroke="none"
+              strokeWidth="1"
             >
-              Future of Art
+              <polygon
+                fill="white"
+                points="0 0 0 56 39.3600006 28"
+              />
+            </g>
+          </svg>
+        </div>
+        <div
+          className="c9 c13"
+        >
+          <div>
+            <div
+              className="c14"
+            >
+              <div
+                className="c15 c16"
+                fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+                fontSize="14px"
+              >
+                Future of Art
+              </div>
+              <div
+                className="c16"
+                fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+                fontSize="14px"
+              >
+                02:28
+              </div>
             </div>
             <div
-              className="c16"
-              fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-              fontSize="14px"
+              className="c14"
             >
-              02:28
+              <span
+                className="c17"
+              >
+                Trevor Paglan
+              </span>
             </div>
-          </div>
-          <div
-            className="c9"
-          >
-            <span
-              className="c17"
-            >
-              Trevor Paglan
-            </span>
           </div>
         </div>
       </div>
       <div
-        className="c10 c18"
+        className="c9 c18"
       >
         <div
           className="c19"
@@ -322,7 +326,27 @@ exports[`Video Cover matches the snapshot 1`] = `
 `;
 
 exports[`Video Cover matches the snapshot with edit props 1`] = `
-.c9 {
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c16 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.c7 {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 12px;
+}
+
+.c14 {
   box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
@@ -341,7 +365,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
   margin-left: -0.5rem;
 }
 
-.c11 {
+.c10 {
   box-sizing: border-box;
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
@@ -350,7 +374,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
   padding-left: 0.5rem;
 }
 
-.c14 {
+.c13 {
   box-sizing: border-box;
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
@@ -368,21 +392,9 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
   padding-left: 0.5rem;
 }
 
-.c13 {
+.c12 {
   width: 32px;
   height: 32px;
-}
-
-.c8 {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 12px;
-}
-
-.c16 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 14px;
-  line-height: 20px;
 }
 
 .c15 {
@@ -413,14 +425,6 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
   background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.6));
 }
 
-.c7 {
-  width: 100%;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
-}
-
 .c6 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -435,7 +439,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
   z-index: 1;
 }
 
-.c6 .c12 {
+.c6 .c11 {
   height: 60px;
   width: 44px;
   margin-right: 15px;
@@ -473,7 +477,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
 }
 
 @media only screen and (min-width:0em) {
-  .c11 {
+  .c10 {
     -webkit-flex-basis: 16.666666666666668%;
     -ms-flex-preferred-size: 16.666666666666668%;
     flex-basis: 16.666666666666668%;
@@ -483,7 +487,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
 }
 
 @media only screen and (min-width:48em) {
-  .c11 {
+  .c10 {
     -webkit-flex-basis: 8.333333333333334%;
     -ms-flex-preferred-size: 8.333333333333334%;
     flex-basis: 8.333333333333334%;
@@ -493,7 +497,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
 }
 
 @media only screen and (min-width:0em) {
-  .c14 {
+  .c13 {
     -webkit-flex-basis: 83.33333333333334%;
     -ms-flex-preferred-size: 83.33333333333334%;
     flex-basis: 83.33333333333334%;
@@ -503,7 +507,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
 }
 
 @media only screen and (min-width:48em) {
-  .c14 {
+  .c13 {
     -webkit-flex-basis: 50%;
     -ms-flex-preferred-size: 50%;
     flex-basis: 50%;
@@ -532,20 +536,20 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
   }
 }
 
-@media (max-width:48em) {
-  .c10 {
+@media (max-width:768px) {
+  .c9 {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
 }
 
-@media (max-width:48em) {
+@media (max-width:768px) {
   .c6 {
     padding-bottom: 40px;
   }
 }
 
-@media (max-width:48em) {
+@media (max-width:768px) {
   .c19 {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
@@ -568,71 +572,75 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
     className="c5 c6"
   >
     <div
-      className="c7 c8 c9"
+      className="c7"
     >
       <div
-        className="c10 c11"
-        onClick={[Function]}
+        className="c8"
       >
-        <svg
-          className="c12 c13"
-          version="1.1"
-          viewBox="0 0 40 56"
-          x="0px"
-          xmlns="http://www.w3.org/2000/svg"
-          y="0px"
+        <div
+          className="c9 c10"
+          onClick={[Function]}
         >
-          <g
-            fill="none"
-            fillRule="evenodd"
-            stroke="none"
-            strokeWidth="1"
+          <svg
+            className="c11 c12"
+            version="1.1"
+            viewBox="0 0 40 56"
+            x="0px"
+            xmlns="http://www.w3.org/2000/svg"
+            y="0px"
           >
-            <polygon
-              fill="white"
-              points="0 0 0 56 39.3600006 28"
-            />
-          </g>
-        </svg>
-      </div>
-      <div
-        className="c10 c14"
-      >
-        <div>
-          <div
-            className="c9"
-          >
+            <g
+              fill="none"
+              fillRule="evenodd"
+              stroke="none"
+              strokeWidth="1"
+            >
+              <polygon
+                fill="white"
+                points="0 0 0 56 39.3600006 28"
+              />
+            </g>
+          </svg>
+        </div>
+        <div
+          className="c9 c13"
+        >
+          <div>
             <div
-              className="c15 c16"
-              fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-              fontSize="14px"
+              className="c14"
             >
-              Future of Art
-            </div>
-            <div
-              className="c16"
-              fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-              fontSize="14px"
-            >
-              02:28
-            </div>
-          </div>
-          <div
-            className="c9"
-          >
-            <span
-              className="c17"
-            >
-              <div>
-                Child 
-                title
+              <div
+                className="c15 c16"
+                fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+                fontSize="14px"
+              >
+                Future of Art
               </div>
-            </span>
+              <div
+                className="c16"
+                fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+                fontSize="14px"
+              >
+                02:28
+              </div>
+            </div>
+            <div
+              className="c14"
+            >
+              <span
+                className="c17"
+              >
+                <div>
+                  Child 
+                  title
+                </div>
+              </span>
+            </div>
           </div>
         </div>
       </div>
       <div
-        className="c10 c18"
+        className="c9 c18"
       >
         <div
           className="c19"

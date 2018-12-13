@@ -1870,10 +1870,10 @@
     "@types/react" "*"
     "@types/relay-runtime" "*"
 
-"@types/react-slick@^0.14.1":
-  version "0.14.1"
-  resolved "https://registry.yarnpkg.com/@types/react-slick/-/react-slick-0.14.1.tgz#33393647e5b4db678cbedcd96b70c17fc83ead22"
-  integrity sha512-C2mTTYiBvVhBUPIW8i4x4sUAxuVIUDnvRyV3p1t/O+L3g+W9YEzexV/NUy2cBHAmhPDDRRuddMTyz6ipxqzhHw==
+"@types/react-slick@^0.23.2":
+  version "0.23.2"
+  resolved "https://registry.yarnpkg.com/@types/react-slick/-/react-slick-0.23.2.tgz#f1c3c6b36b363b8b500ad433f53468428345f802"
+  integrity sha512-i9o9zzz8uVFXsKoQ/3Bi8JAb0635jjpVaV/J6sR4J9/KVPL2Wee0wBf+19D6dEPPZ3F1lrwW9Ul5KxUXPjU0MQ==
   dependencies:
     "@types/react" "*"
 

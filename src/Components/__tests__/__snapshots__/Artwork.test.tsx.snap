@@ -89,7 +89,7 @@ exports[`Artwork renders correctly 1`] = `
   right: 0;
 }
 
-@media (min-width:49px) {
+@media (min-width:769px) {
   .c1:hover .overlay-container.hovered {
     opacity: 1;
     visibility: visible;

@@ -4,15 +4,22 @@ import React from "react"
 import styled from "styled-components"
 
 import { unica } from "Assets/Fonts"
+import { media } from "Components/Helpers"
+import { ArticleProps } from "Components/Publishing/Article"
 import { Byline, BylineContainer } from "Components/Publishing/Byline/Byline"
-import { ArticleProps } from "Components/Publishing/Layouts/FeatureLayout"
 import { Nav, NavContainer } from "Components/Publishing/Nav/Nav"
-import { ArticleCards } from "Components/Publishing/RelatedArticles/ArticleCards/ArticleCards"
+import { ArticleCardContainer } from "Components/Publishing/RelatedArticles/ArticleCards/ArticleCard"
+import {
+  ArticleCards,
+  ArticlesWrapper,
+} from "Components/Publishing/RelatedArticles/ArticleCards/ArticleCards"
 import {
   FullLabel,
   ImageSetContainer,
   ImageSetPreview,
+  ImgContainer,
 } from "Components/Publishing/Sections/ImageSetPreview"
+import { LabelWrapper } from "Components/Publishing/Sections/ImageSetPreview/ImageSetLabel"
 import { resize } from "Utils/resizer"
 import { Eoy2018ArticleHeader } from "./ArticleHeader"
 
@@ -53,7 +60,11 @@ export class Eoy2018Artists extends React.Component<ArticleProps> {
     const src = imageSection && imageSection.images[0].url
 
     return (
-      <ArtistHeaderSection key={i} mb={40}>
+      <ArtistHeaderSection
+        key={i}
+        mb={40}
+        flexDirection={["column", "column", "row", "row"]}
+      >
         <ArtistHeaderTitle dangerouslySetInnerHTML={{ __html: section.body }} />
         <ArtistHeaderImg src={src && resize(src, { width: 700 })} />
       </ArtistHeaderSection>
@@ -62,17 +73,23 @@ export class Eoy2018Artists extends React.Component<ArticleProps> {
 
   sectionText = (section, i) => {
     return (
-      <TextSection size="5" key={i} pb={60}>
-        <div dangerouslySetInnerHTML={{ __html: section.body }} />
-      </TextSection>
+      <Box maxWidth={["100%", "75%", "75%"]} ml="auto" px={[20, 0]} key={i}>
+        <TextSection size="5" pb={[40, 60]}>
+          <div dangerouslySetInnerHTML={{ __html: section.body }} />
+        </TextSection>
+      </Box>
     )
   }
 
   sectionImageSet = (section, i) => {
     return (
-      <ImageSetWrapper key={i} mb={60}>
+      <ImageSetWrapper
+        key={i}
+        mb={60}
+        maxWidth={["100%", "100%", "100%", "75%"]}
+      >
         <ImageSetPreview section={section}>
-          <CaptionWrapper size="4">
+          <CaptionWrapper size={["3", "4"]}>
             <ImageSetCaption
               dangerouslySetInnerHTML={{ __html: section.images[0].caption }}
             />
@@ -112,7 +129,7 @@ export class Eoy2018Artists extends React.Component<ArticleProps> {
   }
 
   render() {
-    const { article } = this.props
+    const { article, isMobile, isTablet } = this.props
     const introText = this.sectionText(article.sections[0], 0)
     const headerImages = map(
       compact(map(this.getHeaderSections(), "imageSection")),
@@ -125,11 +142,19 @@ export class Eoy2018Artists extends React.Component<ArticleProps> {
           <NavBorder />
         </Nav>
 
-        <Box px={55}>
-          <Eoy2018ArticleHeader images={headerImages} />
+        <Box px={[10, 10, 55]} maxWidth={1600} mx="auto">
+          <Eoy2018ArticleHeader
+            images={headerImages}
+            isMobile={isMobile}
+            isTablet={isTablet}
+          />
 
           <ArticleContent py={40}>
-            <IntroSection alignItems="flex-start" pl={20}>
+            <IntroSection
+              alignItems="flex-start"
+              flexDirection={["column", "row"]}
+              pl={[0, 20]}
+            >
               <Byline article={article} />
               {introText}
             </IntroSection>
@@ -138,8 +163,10 @@ export class Eoy2018Artists extends React.Component<ArticleProps> {
         </Box>
 
         {article.relatedArticles && (
-          <Box pl={55} pr={55} my={40} mx="auto">
-            <ArticleCards relatedArticles={article.relatedArticles} />
+          <Box px={[10, 10, 55]} mb={40} mx="auto">
+            <RelatedArticleWrapper>
+              <ArticleCards relatedArticles={article.relatedArticles} />
+            </RelatedArticleWrapper>
           </Box>
         )}
       </AricleWrapper>
@@ -161,6 +188,13 @@ const NavBorder = styled.div`
   top: 100%;
   left: 55px;
   right: 55px;
+  max-width: calc(1600px - 110px);
+  margin: 0 auto;
+
+  ${media.md`
+    left: 10px;
+    right: 10px;
+  `};
 `
 
 const ArticleContent = styled(Box)`
@@ -170,6 +204,11 @@ const ArticleContent = styled(Box)`
   blockquote {
     ${unica("s34")};
     line-height: 1.3em;
+
+    ${media.sm`
+      ${unica("s25")};
+      line-height: 1.3em;
+    `};
   }
 `
 
@@ -177,12 +216,18 @@ const ArtistHeaderSection = styled(Flex)`
   height: 60vh;
   min-height: 450px;
   border: ${BORDER_WIDTH}px solid ${color("purple100")};
-  border-left: none;
+  border-left-width: 0;
+
+  ${media.md`
+    height: fit-content;
+  `};
 `
 
 const ArtistHeaderTitle = styled.div`
   flex: 1;
   border-right: ${BORDER_WIDTH}px solid ${color("purple100")};
+  overflow: hidden;
+  min-height: min-content;
 
   h1 {
     ${unica("s65")};
@@ -191,10 +236,23 @@ const ArtistHeaderTitle = styled.div`
     min-height: fit-content;
     padding: ${space(2)}px;
     border-bottom: ${BORDER_WIDTH}px solid ${color("purple100")};
-    &:hover {
-      background: ${color("purple100")};
-      color: white;
-    }
+
+    ${media.md`
+      width: 60%;
+      float: right;
+      height: 100%;
+      border-bottom: none;
+      border-left: ${BORDER_WIDTH}px solid ${color("purple100")};
+    `};
+
+    ${media.xs`
+      ${unica("s45")};
+      border-bottom: ${BORDER_WIDTH}px solid ${color("purple100")};
+      border-left: none;
+      width: 100%;
+      height: 50%;
+      float: none;
+    `};
   }
 
   h2 {
@@ -207,16 +265,38 @@ const ArtistHeaderTitle = styled.div`
     &:last-child {
       border-left: ${BORDER_WIDTH}px solid ${color("purple100")};
     }
-    &:hover {
-      background: ${color("purple100")};
-      color: white;
-    }
+
+    ${media.md`
+      width: 40%;
+      float: left;
+      &:last-child {
+        border-left: none;
+        border-top: ${BORDER_WIDTH}px solid ${color("purple100")};
+      }
+    `};
+
+    ${media.xs`
+      ${unica("s19")};
+      width: 50%;
+      float: none;
+      &:last-child {
+        border-left: ${BORDER_WIDTH}px solid ${color("purple100")};
+        border-top: none;
+      }
+    `};
   }
+
+  ${media.md`
+    height: 65vh;
+    border-right: none;
+    border-bottom: ${BORDER_WIDTH}px solid ${color("purple100")};
+  `};
 `
 
 const ArtistHeaderImg = styled.div<{ src?: string }>`
   flex: 1;
   background: ${color("purple100")};
+
   ${props =>
     props.src &&
     `
@@ -224,19 +304,23 @@ const ArtistHeaderImg = styled.div<{ src?: string }>`
     background-size: cover;
     background-position: center;
   `};
+
+  ${media.md`
+    min-height: 70vw;
+  `};
 `
 
 const IntroSection = styled(Flex)`
   ${BylineContainer} {
     flex-direction: column;
     align-items: flex-start;
+    ${media.md`
+      padding: 0 20px 20px;
+    `};
   }
 `
 
 const TextSection = styled(Serif)`
-  max-width: 75%;
-  margin-left: auto;
-
   p {
     font-size: 24px;
     text-indent: 2em;
@@ -248,6 +332,10 @@ const TextSection = styled(Serif)`
 `
 const CaptionWrapper = styled(Sans)`
   flex: 1;
+
+  ${media.sm`
+    min-width: 50%;
+  `};
 `
 
 const ImageSetCaption = styled.div`
@@ -256,6 +344,11 @@ const ImageSetCaption = styled.div`
   background: white;
   color: black;
   border-bottom: ${BORDER_WIDTH}px solid ${color("purple100")};
+
+  ${media.sm`
+    border-bottom: none;
+    border-right: ${BORDER_WIDTH}px solid ${color("purple100")};
+  `};
 `
 
 const ImageSetWrapper = styled(Box)`
@@ -265,6 +358,10 @@ const ImageSetWrapper = styled(Box)`
   ${ImageSetContainer} {
     display: flex;
     flex-direction: row-reverse;
+
+    ${media.sm`
+      flex-direction: column-reverse;
+    `};
   }
 
   ${FullLabel} {
@@ -280,10 +377,42 @@ const ImageSetWrapper = styled(Box)`
     &:hover {
       background-color: ${color("purple100")};
     }
+    ${media.sm`
+      flex-direction: row-reverse;
+
+      ${LabelWrapper} {
+        max-width: 50%;
+      }
+    `};
   }
 
-  img {
+  ${ImgContainer} {
     flex: 3;
     border-right: ${BORDER_WIDTH}px solid ${color("purple100")};
+
+    img {
+      object-fit: cover;
+      object-position: center;
+      height: 100%;
+    }
+
+    ${media.sm`
+      border-right: none;
+      border-bottom: ${BORDER_WIDTH}px solid ${color("purple100")};
+    `};
+  }
+`
+
+const RelatedArticleWrapper = styled.div`
+  border-right: ${BORDER_WIDTH}px solid ${color("purple100")};
+  border-bottom: ${BORDER_WIDTH}px solid ${color("purple100")};
+
+  ${ArticlesWrapper} {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+
+  ${ArticleCardContainer} {
+    border: none;
   }
 `
