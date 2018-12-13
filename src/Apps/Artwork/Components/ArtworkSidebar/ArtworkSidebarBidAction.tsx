@@ -24,8 +24,7 @@ export class ArtworkSidebarBidAction extends React.Component<
   }
 
   setMaxBid = (newVal: number) => {
-    this.state.nextMaxBidCents = newVal
-    console.log("set state nextMaxBidCents to " + this.state.nextMaxBidCents)
+    this.setState({ nextMaxBidCents: newVal })
   }
 
   render() {
