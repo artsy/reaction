@@ -1,4 +1,4 @@
-export const FoSaleArtworkNoEditions = {
+export const ForSaleArtworkNoEditions = {
   __id: "for_sale_no_editions_artwrok",
   availability: "for sale",
   sale_message: "$40,000 - 50,000",
@@ -7,7 +7,7 @@ export const FoSaleArtworkNoEditions = {
   edition_sets: [],
 }
 
-export const FoSaleArtworkWithOneEdition = {
+export const ForSaleArtworkWithOneEdition = {
   __id: "for_sale_one_edition_artwrok",
   availability: "for sale",
   sale_message: "$2,222",
@@ -23,7 +23,7 @@ export const FoSaleArtworkWithOneEdition = {
   ],
 }
 
-export const FoSaleArtworkWithMultipleEditions = {
+export const ForSaleArtworkWithMultipleEditions = {
   __id: "for_sale_multiple_editions_artwrok",
   availability: "for sale",
   sale_message: "$2,500 - 5,000",
@@ -86,27 +86,66 @@ export const ArtworkBuyNow = {
 
 export const ArtworkBuyNowWithMultipleEditions = {
   __id: "artwork_buy_now_multiple_editions",
-  sale_message: "$10,000",
+  sale_message: "$2,000 - $2,500",
   is_acquireable: true,
   is_inquireable: false,
   is_offerable: false,
   pickup_available: false,
+  is_price_range: true,
   shippingInfo: "Shipping: Free shipping worldwide",
   shippingOrigin: "New York, New York, US",
   edition_sets: [
     {
+      id: "buy_now_multiple_editions_edition_1",
       __id: "buy_now_multiple_editions_edition_1",
+      sale_message: "$2,000",
+      is_acquireable: true,
+      dimensions: { in: "13 × 9 1/10 × 12 3/5 in", cm: "33 × 23 × 32 cm" },
+      edition_of: "Editions 11-20 of 123 + 0AP",
+    },
+    {
+      id: "buy_now_multiple_editions_edition_2",
+      __id: "buy_now_multiple_editions_edition_2",
       sale_message: "$2,500",
       is_acquireable: true,
       dimensions: { in: "13 × 9 1/10 × 12 3/5 in", cm: "33 × 23 × 32 cm" },
       edition_of: "Editions 3, 5, 8-10 of 123 + 0AP",
     },
     {
+      id: "for_sale_multiple_editions_edition_3",
+      __id: "for_sale_multiple_editions_edition_3",
+      is_acquireable: false,
+      sale_message: "Sold",
+      dimensions: { in: "1 × 2 × 3 in", cm: "2.5 × 5.1 × 7.6 cm" },
+      edition_of: "",
+    },
+  ],
+}
+
+export const ArtworkBuyNowSoldWithMultipleEditions = {
+  __id: "artwork_buy_now_multiple_editions",
+  sale_message: "Sold",
+  is_acquireable: false,
+  is_inquireable: false,
+  is_offerable: false,
+  is_price_range: false,
+  pickup_available: false,
+  shippingInfo: "Shipping: Free shipping worldwide",
+  shippingOrigin: "New York, New York, US",
+  edition_sets: [
+    {
       __id: "for_sale_multiple_editions_edition_4",
       is_acquireable: false,
       sale_message: "Sold",
       dimensions: { in: "1 × 2 × 3 in", cm: "2.5 × 5.1 × 7.6 cm" },
       edition_of: "",
+    },
+    {
+      __id: "buy_now_multiple_editions_edition_1",
+      sale_message: "Sold",
+      is_acquireable: false,
+      dimensions: { in: "13 × 9 1/10 × 12 3/5 in", cm: "33 × 23 × 32 cm" },
+      edition_of: "Editions 3, 5, 8-10 of 123 + 0AP",
     },
   ],
 }
