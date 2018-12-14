@@ -72,6 +72,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
     this.setState({ isCommittingMutation: true }, () => {
       switch (responseOption) {
         case "COUNTER":
+          // TODO: proper validation 😅
           this.createCounterOffer(Number(this.state.offerValue || "0"))
             .then(() => {
               this.props.router.push(
