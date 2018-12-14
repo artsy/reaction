@@ -1,18 +1,18 @@
-import { ImageBrowserFixture } from "Apps/__tests__/Fixtures/Artwork/ImageBrowser.fixture"
+import { ArtworkBrowserFixture } from "Apps/__tests__/Fixtures/Artwork/ArtworkBrowser.fixture"
 import { MockBoot } from "DevTools"
 import { RelayStubProvider } from "DevTools/RelayStubProvider"
 import { mount, ReactWrapper } from "enzyme"
 import React from "react"
 import { Breakpoint } from "Utils/Responsive"
-import { ImageBrowserFragmentContainer } from "../"
+import { ArtworkBrowserFragmentContainer } from "../"
 
-describe("ImageBrowser", () => {
+describe("ArtworkBrowser", () => {
   const getWrapper = (breakpoint: Breakpoint = "lg") => {
     return mount(
       <RelayStubProvider>
         <MockBoot breakpoint={breakpoint}>
-          <ImageBrowserFragmentContainer
-            artwork={ImageBrowserFixture.artwork as any}
+          <ArtworkBrowserFragmentContainer
+            artwork={ArtworkBrowserFixture.artwork as any}
           />
         </MockBoot>
       </RelayStubProvider>
@@ -27,7 +27,7 @@ describe("ImageBrowser", () => {
     })
 
     it("renders correct container components", () => {
-      expect(wrapper.find("ImageBrowser").length).toBe(1)
+      expect(wrapper.find("ArtworkBrowser").length).toBe(1)
       expect(wrapper.find("ActionButtons").length).toBe(1)
     })
 
@@ -66,7 +66,7 @@ describe("ImageBrowser", () => {
     })
 
     it("renders correct container components", () => {
-      expect(wrapper.find("ImageBrowser").length).toBe(1)
+      expect(wrapper.find("ArtworkBrowser").length).toBe(1)
       expect(wrapper.find("ActionButtons").length).toBe(1)
     })
 

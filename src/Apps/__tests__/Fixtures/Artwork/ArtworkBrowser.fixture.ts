@@ -1,4 +1,4 @@
-export const ImageBrowserFixture = {
+export const ArtworkBrowserFixture = {
   artwork: {
     title: "LENIN FS II.402",
     image_alt: "Andy Warhol, ‘LENIN FS II.402’, 1987, Gallery Art",

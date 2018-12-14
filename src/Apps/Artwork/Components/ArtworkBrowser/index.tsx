@@ -1,30 +1,30 @@
 import React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 
-import { ImageBrowser_artwork } from "__generated__/ImageBrowser_artwork.graphql"
-import { ImageBrowserQuery } from "__generated__/ImageBrowserQuery.graphql"
+import { ArtworkBrowser_artwork } from "__generated__/ArtworkBrowser_artwork.graphql"
+import { ArtworkBrowserQuery } from "__generated__/ArtworkBrowserQuery.graphql"
 import { ContextConsumer } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { ActionButtons } from "./ActionButtons"
-import { ImageBrowser } from "./ImageBrowser"
+import { ArtworkBrowser } from "./ArtworkBrowser"
 
 export interface ImageBrowserProps {
-  artwork: ImageBrowser_artwork
+  artwork: ArtworkBrowser_artwork
 }
 
-export const ImageBrowserFragmentContainer = createFragmentContainer<
+export const ArtworkBrowserFragmentContainer = createFragmentContainer<
   ImageBrowserProps
 >(
   props => {
     return (
       <>
-        <ImageBrowser images={props.artwork.images} />
+        <ArtworkBrowser images={props.artwork.images} />
         <ActionButtons artwork={props.artwork} />
       </>
     )
   },
   graphql`
-    fragment ImageBrowser_artwork on Artwork {
+    fragment ArtworkBrowser_artwork on Artwork {
       title
       image_alt: to_s
       image_title
@@ -65,17 +65,17 @@ export const ImageBrowserQueryRenderer = ({
     <ContextConsumer>
       {({ user, mediator, relayEnvironment }) => {
         return (
-          <QueryRenderer<ImageBrowserQuery>
+          <QueryRenderer<ArtworkBrowserQuery>
             environment={relayEnvironment}
             variables={{ artworkID }}
             query={graphql`
-              query ImageBrowserQuery($artworkID: String!) {
+              query ArtworkBrowserQuery($artworkID: String!) {
                 artwork(id: $artworkID) {
-                  ...ImageBrowser_artwork
+                  ...ArtworkBrowser_artwork
                 }
               }
             `}
-            render={renderWithLoadProgress(ImageBrowserFragmentContainer)}
+            render={renderWithLoadProgress(ArtworkBrowserFragmentContainer)}
           />
         )
       }}

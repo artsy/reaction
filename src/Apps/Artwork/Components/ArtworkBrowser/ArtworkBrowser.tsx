@@ -1,5 +1,5 @@
 import { Box, color, Flex, ResponsiveImage } from "@artsy/palette"
-import { ImageBrowser_artwork } from "__generated__/ImageBrowser_artwork.graphql"
+import { ArtworkBrowser_artwork } from "__generated__/ArtworkBrowser_artwork.graphql"
 import React from "react"
 import Slider, { Settings } from "react-slick"
 import styled from "styled-components"
@@ -7,30 +7,28 @@ import { Col, media, Row } from "Styleguide/Elements/Grid"
 import { Media } from "Utils/Responsive"
 import { ArrowButton } from "./ArrowButton"
 
-interface ImageBrowserProps {
-  images: ImageBrowser_artwork["images"]
+interface ArtworkBrowserProps {
+  images: ArtworkBrowser_artwork["images"]
 }
 
-export const ImageBrowser: React.SFC<ImageBrowserProps> = props => {
+export const ArtworkBrowser: React.SFC<ArtworkBrowserProps> = props => {
   return (
     <>
       <Media at="xs">
-        <SmallImageCarousel images={props.images} />
+        <SmallArtworkBrowser images={props.images} />
       </Media>
       <Media greaterThan="xs">
-        <LargeImageCarousel images={props.images} />
+        <LargeArtworkBrowser images={props.images} />
       </Media>
     </>
   )
 }
 
-export class SmallImageCarousel extends React.Component<ImageBrowserProps> {
+export class SmallArtworkBrowser extends React.Component<ArtworkBrowserProps> {
   get settings(): Settings {
     return {
       arrows: false,
-      customPaging: () => {
-        return <PageIndicator />
-      },
+      customPaging: () => <PageIndicator />,
       dots: true,
       infinite: false,
       // TODO: Future optimization should it be needed
@@ -63,15 +61,13 @@ export class SmallImageCarousel extends React.Component<ImageBrowserProps> {
   }
 }
 
-export class LargeImageCarousel extends React.Component<ImageBrowserProps> {
+export class LargeArtworkBrowser extends React.Component<ArtworkBrowserProps> {
   slider: Slider
 
   get settings(): Settings {
     return {
       arrows: false,
-      customPaging: () => {
-        return <PageIndicator />
-      },
+      customPaging: () => <PageIndicator />,
       dots: true,
       infinite: false,
       lazyLoad: "ondemand",
@@ -151,7 +147,7 @@ const Container = styled(Box)`
 `
 
 const DesktopImage = styled(ResponsiveImage)`
-  padding-bottom: 500px; /* Responsive max height */
+  padding-bottom: 660px; /* Responsive max height */
 `
 
 const PageIndicator = styled.span`
