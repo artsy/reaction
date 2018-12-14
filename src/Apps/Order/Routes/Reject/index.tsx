@@ -79,7 +79,6 @@ export class Reject extends Component<RejectProps, RejectState> {
             },
           },
           onCompleted: data => {
-            console.log(data)
             this.setState({ isCommittingMutation: false })
             const {
               ecommerceBuyerRejectOffer: { orderOrError },
