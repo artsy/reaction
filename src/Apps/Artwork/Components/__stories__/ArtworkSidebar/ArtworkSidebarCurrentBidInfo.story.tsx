@@ -16,45 +16,50 @@ import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
 
-storiesOf("Styleguide/Artwork/Sidebar", module).add("CurrentBidInfo", () => {
-  return (
-    <React.Fragment>
-      <Section title="Closed auction">
-        <CurrentBidInfo artwork={ClosedAuctionArtwork as any} />
-      </Section>
-      <Section title="Open auction no reserve no bids">
-        <CurrentBidInfo artwork={OpenAuctionNoReserveNoBids as any} />
-      </Section>
-      <Section title="Open auction no reserve with bids">
-        <CurrentBidInfo artwork={OpenAuctionNoReserveWithBids as any} />
-      </Section>
-      <Section title="Open auction with reserve and no bids">
-        <CurrentBidInfo artwork={OpenAuctionReserveNoBids as any} />
-      </Section>
-      <Section title="Open auction reserve not met with bids">
-        <CurrentBidInfo artwork={OpenAuctionReserveNotMetWithBids as any} />
-      </Section>
-      <Section title="Open auction reserve met with bids">
-        <CurrentBidInfo artwork={OpenAuctionReserveMetWithBids as any} />
-      </Section>
-      <Section title="Open auction with my bid winning">
-        <CurrentBidInfo
-          artwork={OpenAuctionReserveMetWithMyWinningBid as any}
-        />
-      </Section>
-      <Section title="Open auction with my bid losing">
-        <CurrentBidInfo artwork={OpenAuctionReserveMetWithMyLosingBid as any} />
-      </Section>
-      <Section title="Auction preview">
-        <CurrentBidInfo artwork={AuctionPreview as any} />
-      </Section>
-      <Section title="Auction preview with no start bid">
-        <CurrentBidInfo artwork={AuctionPreviewNoStartingBid as any} />
-      </Section>
+storiesOf("Apps/Artwork Page/Components/Sidebar", module).add(
+  "CurrentBidInfo",
+  () => {
+    return (
+      <React.Fragment>
+        <Section title="Closed auction">
+          <CurrentBidInfo artwork={ClosedAuctionArtwork as any} />
+        </Section>
+        <Section title="Open auction no reserve no bids">
+          <CurrentBidInfo artwork={OpenAuctionNoReserveNoBids as any} />
+        </Section>
+        <Section title="Open auction no reserve with bids">
+          <CurrentBidInfo artwork={OpenAuctionNoReserveWithBids as any} />
+        </Section>
+        <Section title="Open auction with reserve and no bids">
+          <CurrentBidInfo artwork={OpenAuctionReserveNoBids as any} />
+        </Section>
+        <Section title="Open auction reserve not met with bids">
+          <CurrentBidInfo artwork={OpenAuctionReserveNotMetWithBids as any} />
+        </Section>
+        <Section title="Open auction reserve met with bids">
+          <CurrentBidInfo artwork={OpenAuctionReserveMetWithBids as any} />
+        </Section>
+        <Section title="Open auction with my bid winning">
+          <CurrentBidInfo
+            artwork={OpenAuctionReserveMetWithMyWinningBid as any}
+          />
+        </Section>
+        <Section title="Open auction with my bid losing">
+          <CurrentBidInfo
+            artwork={OpenAuctionReserveMetWithMyLosingBid as any}
+          />
+        </Section>
+        <Section title="Auction preview">
+          <CurrentBidInfo artwork={AuctionPreview as any} />
+        </Section>
+        <Section title="Auction preview with no start bid">
+          <CurrentBidInfo artwork={AuctionPreviewNoStartingBid as any} />
+        </Section>
 
-      <Section title="Live auction in progress">
-        <CurrentBidInfo artwork={LiveAuctionInProgeress as any} />
-      </Section>
-    </React.Fragment>
-  )
-})
+        <Section title="Live auction in progress">
+          <CurrentBidInfo artwork={LiveAuctionInProgeress as any} />
+        </Section>
+      </React.Fragment>
+    )
+  }
+)

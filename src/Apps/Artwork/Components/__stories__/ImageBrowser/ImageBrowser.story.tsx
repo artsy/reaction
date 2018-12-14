@@ -5,7 +5,7 @@ import { storiesOf } from "storybook/storiesOf"
 import { Col } from "Styleguide/Elements/Grid"
 import { Section } from "Styleguide/Utils/Section"
 
-storiesOf("Styleguide/Artwork/ArtworkBrowser", module).add(
+storiesOf("Apps/Artwork Page/Components/ArtworkBrowser", module).add(
   "ImageBrowser",
   () => {
     return (
