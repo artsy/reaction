@@ -40,6 +40,7 @@ jest.unmock("react-tracking")
 
 import { MockBoot } from "DevTools"
 import { commitMutation, RelayProp } from "react-relay"
+import { flushPromiseQueue } from "Utils/flushPromiseQueue"
 import { Breakpoint } from "Utils/Responsive"
 import {
   ErrorModal,
@@ -234,8 +235,7 @@ describe("Payment", () => {
       .props()
       .onClick()
 
-    // flush the promise queue
-    await Promise.resolve()
+    await flushPromiseQueue()
 
     expect(mutationMock.mock.calls[0][1]).toMatchObject({
       variables: {
@@ -261,8 +261,6 @@ describe("Payment", () => {
 
     paymentRoute.find(ContinueButton).simulate("click")
 
-    await Promise.resolve()
-
     expect(isButtonLoading()).toBeTruthy()
   })
 
@@ -287,8 +285,7 @@ describe("Payment", () => {
 
     paymentRoute.find(ContinueButton).simulate("click")
 
-    // flush the promise queue
-    await Promise.resolve()
+    await flushPromiseQueue()
 
     expect(paymentRoute.text()).toContain("Your card number is invalid.")
   })
@@ -301,9 +298,7 @@ describe("Payment", () => {
     fillAddressForm(paymentRoute, validAddress)
     paymentRoute.find(ContinueButton).simulate("click")
 
-    // flush promise queue
-    await Promise.resolve()
-    await Promise.resolve()
+    await flushPromiseQueue()
 
     expect(
       paymentRoute
@@ -326,8 +321,7 @@ describe("Payment", () => {
     fillAddressForm(paymentRoute, validAddress)
     paymentRoute.find(ContinueButton).simulate("click")
 
-    // flush promise queue
-    await Promise.resolve()
+    await flushPromiseQueue()
 
     expect(mutationMock.mock.calls[1][1]).toMatchObject({
       variables: {
@@ -355,7 +349,7 @@ describe("Payment", () => {
     fillAddressForm(paymentRoute, validAddress)
     paymentRoute.find(ContinueButton).simulate("click")
 
-    await Promise.resolve()
+    await flushPromiseQueue()
 
     expect(testProps.router.push).toHaveBeenCalledWith("/orders/1234/review")
   })
@@ -375,7 +369,7 @@ describe("Payment", () => {
 
     component.find(ContinueButton).simulate("click")
 
-    await Promise.resolve()
+    await flushPromiseQueue()
     component.update()
 
     expect(component.find(ErrorModal).props().show).toBe(true)
@@ -405,8 +399,7 @@ describe("Payment", () => {
 
     component.find(ContinueButton).simulate("click")
 
-    // flush promise queue
-    await Promise.resolve()
+    await flushPromiseQueue()
     component.update()
 
     expect(component.find(ErrorModal).props().show).toBe(true)
@@ -425,8 +418,7 @@ describe("Payment", () => {
 
     component.find(ContinueButton).simulate("click")
 
-    // flush promise queue
-    await Promise.resolve()
+    await flushPromiseQueue()
     component.update()
 
     expect(component.find(ErrorModal).props().show).toBe(true)

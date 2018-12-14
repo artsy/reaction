@@ -5,8 +5,10 @@ declare const _ArtworkSidebarBidAction_artwork$ref: unique symbol;
 export type ArtworkSidebarBidAction_artwork$ref = typeof _ArtworkSidebarBidAction_artwork$ref;
 export type ArtworkSidebarBidAction_artwork = {
     readonly myLotStanding: ReadonlyArray<{
-        readonly active_bid: ({
-            readonly is_winning: boolean | null;
+        readonly most_recent_bid: ({
+            readonly max_bid: ({
+                readonly cents: number | null;
+            }) | null;
         }) | null;
     }> | null;
     readonly sale: ({
@@ -32,6 +34,13 @@ export type ArtworkSidebarBidAction_artwork = {
 
 const node: ConcreteFragment = (function(){
 var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "cents",
+  "args": null,
+  "storageKey": null
+},
+v1 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__id",
@@ -64,20 +73,25 @@ return {
         {
           "kind": "LinkedField",
           "alias": null,
-          "name": "active_bid",
+          "name": "most_recent_bid",
           "storageKey": null,
           "args": null,
           "concreteType": "BidderPosition",
           "plural": false,
           "selections": [
             {
-              "kind": "ScalarField",
+              "kind": "LinkedField",
               "alias": null,
-              "name": "is_winning",
+              "name": "max_bid",
+              "storageKey": null,
               "args": null,
-              "storageKey": null
+              "concreteType": "BidderPositionMaxBid",
+              "plural": false,
+              "selections": [
+                v0
+              ]
             },
-            v0
+            v1
           ]
         }
       ]
@@ -107,7 +121,7 @@ return {
               "args": null,
               "storageKey": null
             },
-            v0
+            v1
           ]
         },
         {
@@ -145,7 +159,7 @@ return {
           "args": null,
           "storageKey": null
         },
-        v0
+        v1
       ]
     },
     {
@@ -166,13 +180,7 @@ return {
           "concreteType": "BidIncrementsFormatted",
           "plural": true,
           "selections": [
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "cents",
-              "args": null,
-              "storageKey": null
-            },
+            v0,
             {
               "kind": "ScalarField",
               "alias": null,
@@ -182,12 +190,12 @@ return {
             }
           ]
         },
-        v0
+        v1
       ]
     },
-    v0
+    v1
   ]
 };
 })();
-(node as any).hash = 'a378c3dafc4544bdf397a3b83bd32859';
+(node as any).hash = '79319c5282f5aedc518f765f7cea015e';
 export default node;
