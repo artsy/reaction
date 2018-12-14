@@ -16,7 +16,6 @@ import { MockBoot } from "DevTools"
 import { mount } from "enzyme"
 import moment from "moment"
 import React from "react"
-import { commitMutation as _commitMutation } from "react-relay"
 import { Stepper } from "Styleguide/Components"
 import { CountdownTimer } from "Styleguide/Components/CountdownTimer"
 import { RespondFragmentContainer as RespondRoute } from "../Respond"
@@ -32,6 +31,12 @@ jest.mock("react-relay", () => ({
   commitMutation: jest.fn(),
   createFragmentContainer: component => component,
 }))
+
+import { ErrorModal } from "Components/Modal/ErrorModal"
+import { commitMutation } from "react-relay"
+import { flushPromiseQueue } from "Utils/flushPromiseQueue"
+
+const commitMutationMock = commitMutation as jest.Mock<any>
 
 const testOrder = {
   ...OfferOrderWithShippingDetails,
@@ -71,6 +76,7 @@ describe("Offer InitialMutation", () => {
   beforeEach(() => {
     mockPushRoute = jest.fn()
     mockMediatorTrigger = jest.fn()
+    commitMutationMock.mockReset()
   })
 
   it("renders", () => {
@@ -211,7 +217,12 @@ describe("Offer InitialMutation", () => {
       )
     })
 
-    it("Countering the seller's offer works", () => {
+    it("Countering the seller's offer works", async () => {
+      commitMutationMock.mockImplementationOnce((_, { onCompleted }) => {
+        onCompleted({
+          ecommerceBuyerCounterOffer: { orderOrError: { order: {} } },
+        })
+      })
       const component = getWrapper()
       const counterRadio = component.find(BorderedRadio).at(1)
 
@@ -222,16 +233,103 @@ describe("Offer InitialMutation", () => {
         .props()
         .onChange({ currentTarget: { value: "84838" } } as any)
 
+      expect(commitMutationMock).toHaveBeenCalledTimes(0)
+
       component
         .find(Button)
         .last()
         .props()
         .onClick({})
 
-      // TODO: get rid of window.alert
-      expect(window.alert).toHaveBeenCalledWith(
-        `You decided to COUNTER with 84838.`
+      expect(commitMutationMock).toHaveBeenCalledTimes(1)
+
+      expect(commitMutationMock.mock.calls[0][1].variables)
+        .toMatchInlineSnapshot(`
+Object {
+  "input": Object {
+    "offerId": "myoffer-id",
+    "offerPrice": Object {
+      "amount": 84838,
+      "currencyCode": "USD",
+    },
+  },
+}
+`)
+      await flushPromiseQueue()
+
+      expect(mockPushRoute).toHaveBeenCalledWith(
+        "/orders/2939023/review/counter"
       )
     })
+  })
+
+  it("shows the error modal if submitting a counter offer fails at network level", async () => {
+    commitMutationMock.mockImplementationOnce((_, { onError }) =>
+      onError(new TypeError("Network request failed"))
+    )
+    const component = getWrapper()
+    const counterRadio = component.find(BorderedRadio).at(1)
+
+    counterRadio.props().onSelect({ selected: true, value: "COUNTER" })
+
+    counterRadio
+      .find(Input)
+      .props()
+      .onChange({ currentTarget: { value: "84838" } } as any)
+
+    expect(commitMutationMock).toHaveBeenCalledTimes(0)
+
+    component
+      .find(Button)
+      .last()
+      .props()
+      .onClick({})
+
+    expect(commitMutationMock).toHaveBeenCalledTimes(1)
+
+    await flushPromiseQueue()
+
+    expect(
+      component
+        .update()
+        .find(ErrorModal)
+        .props().show
+    ).toBe(true)
+  })
+
+  it("shows the error modal if submitting a counter offer fails for business reasons", async () => {
+    commitMutationMock.mockImplementationOnce((_, { onCompleted }) => {
+      onCompleted({
+        ecommerceBuyerCounterOffer: { orderOrError: { error: {} } },
+      })
+    })
+    const component = getWrapper()
+    const counterRadio = component.find(BorderedRadio).at(1)
+
+    counterRadio.props().onSelect({ selected: true, value: "COUNTER" })
+
+    counterRadio
+      .find(Input)
+      .props()
+      .onChange({ currentTarget: { value: "84838" } } as any)
+
+    expect(commitMutationMock).toHaveBeenCalledTimes(0)
+
+    component
+      .find(Button)
+      .last()
+      .props()
+      .onClick({})
+
+    expect(commitMutationMock).toHaveBeenCalledTimes(1)
+
+    await flushPromiseQueue()
+
+    expect(
+      component
+        .update()
+        .find(ErrorModal)
+        .props().show
+    ).toBe(true)
   })
 })

@@ -2,7 +2,6 @@ import { Box, Button, Flex, LargeSelect, Serif, Tooltip } from "@artsy/palette"
 import { Help } from "Assets/Icons/Help"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { get } from "Utils/get"
 
 import { ArtworkSidebarBidAction_artwork } from "__generated__/ArtworkSidebarBidAction_artwork.graphql"
 
@@ -19,8 +18,7 @@ export class ArtworkSidebarBidAction extends React.Component<
   ArtworkSidebarBidActionState
 > {
   state: ArtworkSidebarBidActionState = {
-    nextMaxBidCents:
-      get(this.props.artwork, a => a.sale_artwork.increments[0].cents) || null,
+    nextMaxBidCents: null,
   }
 
   setMaxBid = (newVal: number) => {
@@ -43,7 +41,7 @@ export class ArtworkSidebarBidAction extends React.Component<
      *       likely design work to be done too, so we can adjust this then.
      */
     const myLotStanding = artwork.myLotStanding && artwork.myLotStanding[0]
-    const hasMyBids = !!(myLotStanding && myLotStanding.active_bid)
+    const hasMyBids = !!(myLotStanding && myLotStanding.most_recent_bid)
 
     if (artwork.sale.is_preview) {
       return (
@@ -105,10 +103,16 @@ export class ArtworkSidebarBidAction extends React.Component<
         )
       }
 
-      const selectOptions = artwork.sale_artwork.increments.map(increment => ({
+      const myLastMaxBid =
+        hasMyBids && myLotStanding.most_recent_bid.max_bid.cents
+      const increments = artwork.sale_artwork.increments.filter(
+        increment => increment.cents > (myLastMaxBid || 0)
+      )
+      const selectOptions = increments.map(increment => ({
         value: increment.cents.toString(),
         text: increment.display,
       }))
+
       return (
         <Box>
           <Flex width="100%" flexDirection="row">
@@ -137,8 +141,10 @@ export const ArtworkSidebarBidActionFragmentContainer = createFragmentContainer(
   graphql`
     fragment ArtworkSidebarBidAction_artwork on Artwork {
       myLotStanding(live: true) {
-        active_bid {
-          is_winning
+        most_recent_bid {
+          max_bid {
+            cents
+          }
         }
       }
       sale {

@@ -27,6 +27,7 @@ export type Respond_order = {
     }) | null;
     readonly lastOffer?: ({
         readonly createdAt: string | null;
+        readonly id: string | null;
     }) | null;
     readonly " $fragmentRefs": TransactionDetailsSummaryItem_order$ref & ArtworkSummaryItem_order$ref & ShippingSummaryItem_order$ref & CreditCardSummaryItem_order$ref & OfferHistoryItem_order$ref;
     readonly " $refType": Respond_order$ref;
@@ -199,6 +200,7 @@ return {
               "args": null,
               "storageKey": null
             },
+            v0,
             v1
           ]
         }
@@ -207,5 +209,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '60b2d58e40269167d3d6d089c108b689';
+(node as any).hash = '0e23882905462af3f8d02d58e7b4d8cb';
 export default node;

@@ -5233,6 +5233,16 @@ type Mutation {
     input: sellerRejectOfferInput!
   ): sellerRejectOfferPayload
 
+  # Seller counters buyers offer
+  ecommerceSellerCounterOffer(
+    input: sellerCounterOfferInput!
+  ): sellerCounterOfferPayload
+
+  # Buyer counters sellers offer
+  ecommerceBuyerCounterOffer(
+    input: buyerCounterOfferInput!
+  ): buyerCounterOfferPayload
+
   # Confirms pickup for an ecommerce order
   ecommerceConfirmPickup(input: ConfirmPickupInput!): ConfirmPickupPayload
 
