@@ -125,6 +125,18 @@ describe("Status", () => {
         expect(wrapper.find(Message).length).toBe(1)
       })
     })
+
+    describe("buyer rejected", () => {
+      it("should say that offer was declined", async () => {
+        const wrapper = await getWrapper({
+          ...OfferOrderPickup,
+          state: "CANCELED",
+          stateReason: "buyer_rejected",
+        })
+        expect(wrapper.text()).toContain("Offer declined")
+        expect(wrapper.find(Message).length).toBe(1)
+      })
+    })
   })
 
   describe("orders", () => {
