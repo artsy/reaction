@@ -180,7 +180,7 @@ const offerMessages = {
     props.order.stateReason === "buyer_rejected" ? (
       <>
         <p>
-          Thank you for your response. The seller will be informed of your
+          Thank you for your repsonse. The seller will be informed of your
           decision to end the negotiation process.
         </p>
         <p>
