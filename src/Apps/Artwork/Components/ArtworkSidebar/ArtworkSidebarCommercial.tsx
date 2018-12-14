@@ -5,6 +5,7 @@ import {
   FlexProps,
   Radio,
   RadioGroup,
+  Sans,
   Separator,
   Serif,
 } from "@artsy/palette"
@@ -226,15 +227,15 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
         )}
         {artworkEcommerceAvailable &&
           artwork.shippingInfo && (
-            <Serif size="2" color="black60">
+            <Sans mb={2} size="2" color="black60">
               {artwork.shippingInfo}
-            </Serif>
+            </Sans>
           )}
         {artworkEcommerceAvailable &&
           artwork.shippingOrigin && (
-            <Serif mb={2} size="2" color="black60">
+            <Sans size="2" color="black60">
               Ships from {artwork.shippingOrigin}
-            </Serif>
+            </Sans>
           )}
         {artwork.is_inquireable && (
           <Button
