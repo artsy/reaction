@@ -41,6 +41,7 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
       artwork.sale_artwork.reserve_status === "reserve_not_met"
         ? "red100"
         : "black60"
+
     const bidTextParts = []
     let reserveMessage = artwork.sale_artwork.reserve_message
     if (bidsPresent) {
@@ -51,7 +52,6 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
       reserveMessage = reserveMessage + "."
       bidTextParts.push(reserveMessage)
     }
-
     const bidText = bidTextParts.join(", ")
 
     /**
@@ -61,6 +61,10 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
      */
     const myLotStanding = artwork.myLotStanding && artwork.myLotStanding[0]
     const activeBid = myLotStanding && myLotStanding.active_bid
+    const myMaxBid = get(
+      myLotStanding,
+      ls => ls.most_recent_bid.max_bid.display
+    )
     const myBidPresent = !!activeBid
     return (
       <Box pt={2} pb={2}>
@@ -87,12 +91,11 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
           <Sans size="2" color={bidColor} pr={1}>
             {bidText}
           </Sans>
-          {myBidPresent &&
-            activeBid.max_bid && (
-              <Sans size="2" color="black60" pl={1}>
-                Your max: {activeBid.max_bid.display}
-              </Sans>
-            )}
+          {myMaxBid && (
+            <Sans size="2" color="black60" pl={1}>
+              Your max: {myMaxBid}
+            </Sans>
+          )}
         </Flex>
       </Box>
     )
@@ -120,11 +123,13 @@ export const ArtworkSidebarCurrentBidInfoFragmentContainer = createFragmentConta
         }
       }
       myLotStanding(live: true) {
-        active_bid {
-          is_winning
+        most_recent_bid {
           max_bid {
             display
           }
+        }
+        active_bid {
+          is_winning
         }
       }
     }
