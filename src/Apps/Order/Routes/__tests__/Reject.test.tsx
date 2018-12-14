@@ -172,4 +172,16 @@ describe("Buyer rejects seller offer", () => {
     component.find(ModalButton).simulate("click")
     expect(component.find(ErrorModal).props().show).toBe(false)
   })
+
+  it("shows an error modal when there is a network error", () => {
+    const component = getWrapper()
+    const mockCommitMutation = commitMutation as jest.Mock<any>
+    mockCommitMutation.mockImplementationOnce((_, { onError }) =>
+      onError(new TypeError("Network request failed"))
+    )
+
+    component.find(Button).simulate("click")
+
+    expect(component.find(ErrorModal).props().show).toBe(true)
+  })
 })

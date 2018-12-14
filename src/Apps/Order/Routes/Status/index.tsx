@@ -176,19 +176,22 @@ const offerMessages = {
       <a href="mailto:orders@artsy.net">orders@artsy.net</a>.
     </>
   ),
-  CANCELED: () => (
-    <>
-      <p>
-        Thank you for your repsonse. The seller will be informed of your
-        decision to end the negotiation process.
-      </p>
-      <p>
-        We’d love to get your feedback. Contact{" "}
-        <a href="mailto:orders@artsy.net">orders@artsy.net</a> with any comments
-        you have.
-      </p>
-    </>
-  ),
+  CANCELED: (props: StatusProps) =>
+    props.order.stateReason === "buyer_rejected" ? (
+      <>
+        <p>
+          Thank you for your repsonse. The seller will be informed of your
+          decision to end the negotiation process.
+        </p>
+        <p>
+          We’d love to get your feedback. Contact{" "}
+          <a href="mailto:orders@artsy.net">orders@artsy.net</a> with any
+          comments you have.
+        </p>
+      </>
+    ) : (
+      canceledOrderMessage
+    ),
 }
 const orderMessages = {
   SUBMITTED: () => (
@@ -244,14 +247,16 @@ const orderMessages = {
       false
     )
   },
-  CANCELED: () => (
-    <>
-      Please allow 5–7 business days for the refund to appear on your bank
-      statement. Contact <a href="mailto:orders@artsy.net">orders@artsy.net</a>{" "}
-      with any questions.
-    </>
-  ),
+  CANCELED: () => canceledOrderMessage,
 }
+
+const canceledOrderMessage = (
+  <>
+    Please allow 5–7 business days for the refund to appear on your bank
+    statement. Contact <a href="mailto:orders@artsy.net">orders@artsy.net</a>{" "}
+    with any questions.
+  </>
+)
 
 export const StatusFragmentContainer = createFragmentContainer(
   StatusRouteWrapper,
