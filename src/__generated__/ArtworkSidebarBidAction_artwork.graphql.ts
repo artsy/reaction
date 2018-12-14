@@ -12,6 +12,7 @@ export type ArtworkSidebarBidAction_artwork = {
         }) | null;
     }> | null;
     readonly sale: ({
+        readonly id: string;
         readonly registrationStatus: ({
             readonly qualified_for_bidding: boolean | null;
         }) | null;
@@ -106,6 +107,13 @@ return {
       "plural": false,
       "selections": [
         {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "id",
+          "args": null,
+          "storageKey": null
+        },
+        {
           "kind": "LinkedField",
           "alias": null,
           "name": "registrationStatus",
@@ -197,5 +205,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '79319c5282f5aedc518f765f7cea015e';
+(node as any).hash = 'f404ef3fafea6d88fe529fb22f6550c8';
 export default node;

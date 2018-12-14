@@ -25,6 +25,10 @@ export class ArtworkSidebarBidAction extends React.Component<
     this.setState({ nextMaxBidCents: newVal })
   }
 
+  redirectToRegister = () => {
+    window.location.href = `/auction-registration/${this.props.artwork.sale.id}`
+  }
+
   render() {
     const { artwork } = this.props
 
@@ -47,7 +51,12 @@ export class ArtworkSidebarBidAction extends React.Component<
       return (
         <Box>
           {!registrationAttempted && (
-            <Button width="100%" size="medium" mt={1}>
+            <Button
+              width="100%"
+              size="medium"
+              mt={1}
+              onClick={() => this.redirectToRegister()}
+            >
               Register to bid
             </Button>
           )}
@@ -148,6 +157,7 @@ export const ArtworkSidebarBidActionFragmentContainer = createFragmentContainer(
         }
       }
       sale {
+        id
         registrationStatus {
           qualified_for_bidding
         }
