@@ -10,6 +10,7 @@ import {
   Serif,
 } from "@artsy/palette"
 import { ArtworkSidebarCommercial_artwork } from "__generated__/ArtworkSidebarCommercial_artwork.graphql"
+import { ArtworkSidebarCommercialOfferOrderMutation } from "__generated__/ArtworkSidebarCommercialOfferOrderMutation.graphql"
 import { ArtworkSidebarCommercialOrderMutation } from "__generated__/ArtworkSidebarCommercialOrderMutation.graphql"
 import { ContextConsumer } from "Artsy/Router"
 import { Mediator } from "Artsy/SystemContext"
@@ -34,6 +35,7 @@ export interface ArtworkSidebarCommercialContainerProps
 
 export interface ArtworkSidebarCommercialContainerState {
   isCommittingCreateOrderMutation: boolean
+  isCommittingCreateOfferOrderMutation: boolean
   isErrorModalOpen: boolean
   selectedEditionSet: EditionSet
 }
@@ -54,6 +56,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
 > {
   state: ArtworkSidebarCommercialContainerState = {
     isCommittingCreateOrderMutation: false,
+    isCommittingCreateOfferOrderMutation: false,
     isErrorModalOpen: false,
     selectedEditionSet: this.firstAvailableEcommerceEditionSet(),
   }
@@ -205,9 +208,74 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
     })
   }
 
+  handleCreateOfferOrder = () => {
+    this.setState({ isCommittingCreateOfferOrderMutation: true }, () => {
+      if (this.props.relay && this.props.relay.environment) {
+        commitMutation<ArtworkSidebarCommercialOfferOrderMutation>(
+          this.props.relay.environment,
+          {
+            mutation: graphql`
+              mutation ArtworkSidebarCommercialOfferOrderMutation(
+                $input: CreateOfferOrderWithArtworkInput!
+              ) {
+                ecommerceCreateOfferOrderWithArtwork(input: $input) {
+                  orderOrError {
+                    ... on OrderWithMutationSuccess {
+                      __typename
+                      order {
+                        id
+                        mode
+                      }
+                    }
+                    ... on OrderWithMutationFailure {
+                      error {
+                        type
+                        code
+                        data
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+            variables: {
+              input: {
+                artworkId: this.props.artwork.id,
+                editionSetId:
+                  this.state.selectedEditionSet &&
+                  this.state.selectedEditionSet.id,
+              },
+            },
+            onCompleted: data => {
+              this.setState({ isCommittingCreateOrderMutation: false })
+              const {
+                ecommerceCreateOfferOrderWithArtwork: { orderOrError },
+              } = data
+              if (orderOrError.error) {
+                this.onMutationError(
+                  new ErrorWithMetadata(
+                    orderOrError.error.code,
+                    orderOrError.error
+                  )
+                )
+              } else {
+                window.location.assign(`/orders/${orderOrError.order.id}/offer`)
+              }
+            },
+            onError: this.onMutationError.bind(this),
+          }
+        )
+      }
+    })
+  }
+
   render() {
     const { artwork } = this.props
-    const { isCommittingCreateOrderMutation, selectedEditionSet } = this.state
+    const {
+      isCommittingCreateOrderMutation,
+      isCommittingCreateOfferOrderMutation,
+      selectedEditionSet,
+    } = this.state
     const artworkEcommerceAvailable =
       artwork.is_acquireable || artwork.is_offerable
 
@@ -266,6 +334,8 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
             width="100%"
             size="medium"
             mt={1}
+            loading={isCommittingCreateOfferOrderMutation}
+            onClick={this.handleCreateOfferOrder}
           >
             Make offer
           </Button>
