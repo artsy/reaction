@@ -3,6 +3,7 @@ import { ArtworkBrowser_artwork } from "__generated__/ArtworkBrowser_artwork.gra
 import React from "react"
 import Slider, { Settings } from "react-slick"
 import styled from "styled-components"
+import { Lightbox } from "Styleguide/Components"
 import { Col, media, Row } from "Styleguide/Elements/Grid"
 import { Media } from "Utils/Responsive"
 import { ArrowButton } from "./ArrowButton"
@@ -22,43 +23,6 @@ export const ArtworkBrowser: React.SFC<ArtworkBrowserProps> = props => {
       </Media>
     </>
   )
-}
-
-export class SmallArtworkBrowser extends React.Component<ArtworkBrowserProps> {
-  get settings(): Settings {
-    return {
-      arrows: false,
-      customPaging: () => <PageIndicator />,
-      dots: true,
-      infinite: false,
-      // TODO: Future optimization should it be needed
-      // lazyLoad: "ondemand",
-      speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-    }
-  }
-
-  render() {
-    return (
-      <Container>
-        <Slider {...this.settings}>
-          {this.props.images.map(image => {
-            return (
-              <Flex
-                flexDirection="column"
-                justifyContent="center"
-                px={1}
-                key={image.id}
-              >
-                <ResponsiveImage src={image.uri} width="100%" />
-              </Flex>
-            )
-          })}
-        </Slider>
-      </Container>
-    )
-  }
 }
 
 export class LargeArtworkBrowser extends React.Component<ArtworkBrowserProps> {
@@ -102,7 +66,12 @@ export class LargeArtworkBrowser extends React.Component<ArtworkBrowserProps> {
                     px={3}
                     key={image.id}
                   >
-                    <DesktopImage src={image.uri} width="100%" />
+                    <Lightbox
+                      deepZoom={image.deepZoom}
+                      enabled={image.is_zoomable}
+                    >
+                      <DesktopImage src={image.uri} width="100%" />
+                    </Lightbox>
                   </Flex>
                 )
               })}
@@ -117,6 +86,78 @@ export class LargeArtworkBrowser extends React.Component<ArtworkBrowserProps> {
             </Col>
           )}
         </Row>
+      </Container>
+    )
+  }
+}
+
+interface ArtworkBrowserState {
+  isLocked: boolean
+}
+
+export class SmallArtworkBrowser extends React.Component<
+  ArtworkBrowserProps,
+  ArtworkBrowserState
+> {
+  state = {
+    isLocked: false,
+  }
+
+  get settings(): Settings {
+    return {
+      arrows: false,
+      customPaging: () => <PageIndicator />,
+      dots: true,
+      infinite: false,
+      // TODO: Future optimization should it be needed
+      // lazyLoad: "ondemand",
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+    }
+  }
+
+  lock = () => {
+    this.setState({
+      isLocked: true,
+    })
+  }
+
+  unlock = () => {
+    setTimeout(() => {
+      this.setState({
+        isLocked: false,
+      })
+    }, 10)
+  }
+
+  render() {
+    return (
+      <Container
+        onMouseMove={this.lock}
+        onMouseUp={this.unlock}
+        onTouchMove={this.lock}
+        onTouchCancel={this.unlock}
+      >
+        <Slider {...this.settings}>
+          {this.props.images.map(image => {
+            return (
+              <Flex
+                flexDirection="column"
+                justifyContent="center"
+                px={1}
+                key={image.id}
+              >
+                <Lightbox
+                  deepZoom={image.deepZoom}
+                  enabled={!this.state.isLocked && image.is_zoomable}
+                >
+                  <ResponsiveImage src={image.uri} width="100%" />
+                </Lightbox>
+              </Flex>
+            )
+          })}
+        </Slider>
       </Container>
     )
   }
