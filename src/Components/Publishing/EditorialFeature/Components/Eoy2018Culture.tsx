@@ -13,6 +13,7 @@ import {
   ImageSetContainer,
   ImageSetPreview,
 } from "Components/Publishing/Sections/ImageSetPreview"
+import { SocialEmbed } from "Components/Publishing/Sections/SocialEmbed"
 import React from "react"
 import styled from "styled-components"
 
@@ -34,6 +35,14 @@ export class Eoy2018Culture extends React.Component<ArticleProps> {
       <SectionHeader key={i}>
         <div dangerouslySetInnerHTML={{ __html: section.body }} />
       </SectionHeader>
+    )
+  }
+
+  sectionSocialEmbed = (section, i) => {
+    return (
+      <SectionWrapper key={i} px={55} py={40}>
+        <SocialEmbed section={section} />
+      </SectionWrapper>
     )
   }
 
@@ -104,6 +113,9 @@ export class Eoy2018Culture extends React.Component<ArticleProps> {
           case "image_set": {
             return this.sectionImageSet(section, i)
           }
+          case "social_embed": {
+            return this.sectionSocialEmbed(section, i)
+          }
           default: {
             return null
           }
@@ -122,13 +134,13 @@ export class Eoy2018Culture extends React.Component<ArticleProps> {
       <ArticleWrapper>
         <Nav canFix color="black" backgroundColor="white" />
 
-        <ArticleHeader>
+        <SectionWrapper>
           <ArticleTitle size="16" weight="medium" px={55} pb={10} pt={20}>
             <div>Year In Visual Culture</div>
             <div>2018</div>
           </ArticleTitle>
           <HeaderImg src={article.hero_section.url} />
-        </ArticleHeader>
+        </SectionWrapper>
 
         <TextContainer px={[20, 55]} py={30} mx="auto">
           <Box maxWidth={1400} mx="auto">
@@ -203,9 +215,11 @@ const ChapterWrapper = styled.div<{ isDark?: boolean }>`
   `};
 `
 
-const TextContainer = styled(Box)`
+const SectionWrapper = styled(Box)`
   border-bottom: ${BORDER_WIDTH}px solid;
+`
 
+const TextContainer = styled(SectionWrapper)`
   blockquote {
     ${unica("s34")};
     padding: 20px 0;
@@ -262,12 +276,7 @@ const HeaderImg = styled.img`
   width: 100%;
 `
 
-const ArticleHeader = styled.div`
-  border-bottom: ${BORDER_WIDTH}px solid black;
-`
-
-const ImageWrapper = styled.div`
-  border-bottom: ${BORDER_WIDTH}px solid;
+const ImageWrapper = styled(SectionWrapper)`
   img {
     max-height: calc(100vh - 50px);
     min-height: 400px;
@@ -276,12 +285,19 @@ const ImageWrapper = styled.div`
   }
 
   ${CaptionContainer} {
-    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 5px;
+
+    p {
+      font-size: 10px;
+      color: white;
+      opacity: 0.6;
+      text-shadow: 0 0 5px black;
+    }
   }
 `
-const ImageSetWrapper = styled(Box)`
-  border-bottom: ${BORDER_WIDTH}px solid;
-
+const ImageSetWrapper = styled(SectionWrapper)`
   ${ImageSetContainer} {
     width: 70%;
     max-width: 1000px;
