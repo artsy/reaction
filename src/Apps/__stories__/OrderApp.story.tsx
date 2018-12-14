@@ -230,7 +230,7 @@ storiesOf("Apps/Order Page/Counter Offer", module)
 
 storiesOf("Apps/Order Page/Accept Offer", module).add("Review (accept)", () => (
   <Router
-    initialRoute="/orders/123/accept"
+    initialRoute="/orders/123/review/accept"
     mockResolvers={mockResolver({
       ...OfferOrderWithShippingDetails,
       state: "SUBMITTED",
@@ -344,6 +344,16 @@ storiesOf("Apps/Order Page/Make Offer/Status", module)
       initialRoute="/orders/123/status"
       mockResolvers={mockResolver({
         ...OfferOrderPickup,
+        state: "CANCELED",
+      })}
+    />
+  ))
+  .add("buyer rejected", () => (
+    <Router
+      initialRoute="/orders/123/status"
+      mockResolvers={mockResolver({
+        ...OfferOrderWithShippingDetails,
+        stateReason: "buyer_rejected",
         state: "CANCELED",
       })}
     />

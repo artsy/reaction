@@ -25,10 +25,7 @@ const NOW = "2018-12-05T13:47:16.446Z"
 
 require("Utils/getCurrentTimeAsIsoString").__setCurrentTime(NOW)
 
-jest.mock("react-relay", () => ({
-  commitMutation: jest.fn(),
-  createFragmentContainer: component => component,
-}))
+jest.mock("react-relay")
 
 const testOrder = {
   ...OfferOrderWithShippingDetails,
