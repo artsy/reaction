@@ -17,6 +17,7 @@ declare module "sharify" {
      */
     export interface GlobalData {
       readonly APP_URL: string
+      readonly FACEBOOK_APP_NAMESPACE: string
       readonly FORCE_CLOUDFRONT_URL: string
       readonly GEMINI_CLOUDFRONT_URL: string
       readonly METAPHYSICS_ENDPOINT: string
