@@ -162,11 +162,6 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   color: black;
 }
 
-.c7 {
-  margin-right: 0px;
-  width: 100%;
-}
-
 .c6 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -177,6 +172,11 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+}
+
+.c7 {
+  margin-right: 0px;
+  width: 100%;
 }
 
 .c13 {
@@ -493,16 +493,16 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 }
 
 @media (max-width:600px) {
-  .c7 {
-    margin-bottom: 10px;
-  }
-}
-
-@media (max-width:600px) {
   .c6 {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
+  }
+}
+
+@media (max-width:600px) {
+  .c7 {
+    margin-bottom: 10px;
   }
 }
 
@@ -1085,11 +1085,6 @@ exports[`News Layout renders the news layout properly 1`] = `
   color: black;
 }
 
-.c7 {
-  margin-right: 0px;
-  width: 100%;
-}
-
 .c6 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1100,6 +1095,11 @@ exports[`News Layout renders the news layout properly 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+}
+
+.c7 {
+  margin-right: 0px;
+  width: 100%;
 }
 
 .c13 {
@@ -1410,16 +1410,16 @@ exports[`News Layout renders the news layout properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c7 {
-    margin-bottom: 10px;
-  }
-}
-
-@media (max-width:600px) {
   .c6 {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
+  }
+}
+
+@media (max-width:600px) {
+  .c7 {
+    margin-bottom: 10px;
   }
 }
 
