@@ -1,5 +1,6 @@
 import { Button, Flex, Sans, Spacer } from "@artsy/palette"
 import { Reject_order } from "__generated__/Reject_order.graphql"
+import { RejectOfferMutation } from "__generated__/RejectOfferMutation.graphql"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
 import { ConditionsOfSaleDisclaimer } from "Apps/Order/Components/ConditionsOfSaleDisclaimer"
 import {
@@ -7,36 +8,117 @@ import {
   OrderStepper,
 } from "Apps/Order/Components/OrderStepper"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
+import { ContextConsumer, Mediator } from "Artsy/SystemContext"
+import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
 import React, { Component } from "react"
-import { createFragmentContainer, graphql } from "react-relay"
+import {
+  commitMutation,
+  createFragmentContainer,
+  graphql,
+  RelayProp,
+} from "react-relay"
 import { StepSummaryItem } from "Styleguide/Components"
 import { CountdownTimer } from "Styleguide/Components/CountdownTimer"
 import { Col, Row } from "Styleguide/Elements"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
+import { ErrorWithMetadata } from "Utils/errors"
 import { Media } from "Utils/Responsive"
+import { logger } from "../Respond"
 
 interface RejectProps {
+  mediator: Mediator
   order: Reject_order
+  relay?: RelayProp
   router: Router
 }
 
 interface RejectState {
   isCommittingMutation: boolean
+  isErrorModalOpen: boolean
+  errorModalTitle: string
+  errorModalMessage: string
 }
 
 export class Reject extends Component<RejectProps, RejectState> {
   state = {
     isCommittingMutation: false,
+    isErrorModalOpen: false,
+    errorModalTitle: null,
+    errorModalMessage: null,
   }
 
   onSubmit: () => void = () => {
-    console.log("DECLINED!")
+    this.setState({ isCommittingMutation: true }, () => {
+      if (this.props.relay && this.props.relay.environment) {
+        commitMutation<RejectOfferMutation>(this.props.relay.environment, {
+          mutation: graphql`
+            mutation RejectOfferMutation($input: buyerRejectOfferInput!) {
+              ecommerceBuyerRejectOffer(input: $input) {
+                orderOrError {
+                  ... on OrderWithMutationSuccess {
+                    __typename
+                    order {
+                      id
+                    }
+                  }
+                  ... on OrderWithMutationFailure {
+                    error {
+                      type
+                      code
+                      data
+                    }
+                  }
+                }
+              }
+            }
+          `,
+          variables: {
+            input: {
+              offerId: this.props.order.lastOffer.id,
+            },
+          },
+          onCompleted: data => {
+            console.log(data)
+            this.setState({ isCommittingMutation: false })
+            const {
+              ecommerceBuyerRejectOffer: { orderOrError },
+            } = data
+
+            if (orderOrError.error) {
+              this.onMutationError(
+                new ErrorWithMetadata(
+                  orderOrError.error.code,
+                  orderOrError.error
+                )
+              )
+            } else {
+              this.props.router.push(`/orders/${this.props.order.id}/status`)
+            }
+          },
+          onError: this.onMutationError.bind(this),
+        })
+      }
+    })
+  }
+
+  onMutationError(error, errorModalTitle?, errorModalMessage?) {
+    logger.error(error)
+    this.setState({
+      isCommittingMutation: false,
+      isErrorModalOpen: true,
+      errorModalTitle,
+      errorModalMessage,
+    })
   }
 
   onChangeResponse = () => {
     const { order } = this.props
     this.props.router.push(`/orders/${order.id}/respond`)
+  }
+
+  onCloseModal = () => {
+    this.setState({ isErrorModalOpen: false })
   }
 
   render() {
@@ -126,18 +208,34 @@ export class Reject extends Component<RejectProps, RejectState> {
             }
           />
         </HorizontalPadding>
+        <ErrorModal
+          onClose={this.onCloseModal}
+          show={this.state.isErrorModalOpen}
+          contactEmail="orders@artsy.net"
+          detailText={this.state.errorModalMessage}
+          headerText={this.state.errorModalTitle}
+        />
       </>
     )
   }
 }
 
+const RejectRouteWrapper = props => (
+  <ContextConsumer>
+    {({ mediator }) => {
+      return <Reject {...props} mediator={mediator} />
+    }}
+  </ContextConsumer>
+)
+
 export const RejectFragmentContainer = createFragmentContainer(
-  Reject,
+  RejectRouteWrapper,
   graphql`
     fragment Reject_order on Order {
       id
       stateExpiresAt
       lastOffer {
+        id
         createdAt
       }
       ...ArtworkSummaryItem_order

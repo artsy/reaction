@@ -15,6 +15,7 @@ export type Status_order = {
     readonly code: string | null;
     readonly state: string | null;
     readonly mode: OrderModeEnum | null;
+    readonly stateReason: string | null;
     readonly requestedFulfillment: ({
         readonly __typename: "Ship";
     } | {
@@ -121,6 +122,13 @@ return {
       "kind": "ScalarField",
       "alias": null,
       "name": "mode",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "stateReason",
       "args": null,
       "storageKey": null
     },
@@ -353,5 +361,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'be2aef203905a1dc495abbdf5301a285';
+(node as any).hash = '58dbee7c81be7b6c21b1f6ccd276295b';
 export default node;

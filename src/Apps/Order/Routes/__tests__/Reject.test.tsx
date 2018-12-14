@@ -1,16 +1,27 @@
+import { Button } from "@artsy/palette"
 import { OfferOrderWithShippingDetails } from "Apps/__tests__/Fixtures/Order"
 import { OrderStepper } from "Apps/Order/Components/OrderStepper"
+import { ErrorModal, ModalButton } from "Components/Modal/ErrorModal"
 import { MockBoot } from "DevTools"
 import { mount } from "enzyme"
 import moment from "moment"
 import React from "react"
+import { commitMutation as _commitMutation } from "react-relay"
 import { Stepper, StepSummaryItem } from "Styleguide/Components"
 import { CountdownTimer } from "Styleguide/Components/CountdownTimer"
+import {
+  rejectOfferFailed,
+  rejectOfferSuccess,
+} from "../__fixtures__/MutationResults/rejectOffer"
 import { RejectFragmentContainer as RejectRoute } from "../Reject"
+
+const commitMutation = _commitMutation as jest.Mock<any>
 
 jest.mock("Utils/getCurrentTimeAsIsoString")
 const NOW = "2018-12-05T13:47:16.446Z"
 require("Utils/getCurrentTimeAsIsoString").__setCurrentTime(NOW)
+
+jest.mock("react-relay")
 
 const testOrder = {
   ...OfferOrderWithShippingDetails,
@@ -31,7 +42,8 @@ describe("Buyer rejects seller offer", () => {
     return mount(
       <MockBoot>
         <RejectRoute
-          router={{ push: mockPushRoute } as any}
+          relay={{ environment: {} }}
+          router={{ push: mockPushRoute }}
           order={
             {
               ...testOrder,
@@ -81,5 +93,83 @@ describe("Buyer rejects seller offer", () => {
     expect(mockPushRoute).toHaveBeenCalledWith(
       `/orders/${testOrder.id}/respond`
     )
+  })
+
+  describe("mutation", () => {
+    beforeEach(() => {
+      commitMutation.mockReset()
+    })
+
+    it("routes to status page after mutation completes", () => {
+      const component = getWrapper()
+      const mockCommitMutation = commitMutation as jest.Mock<any>
+      mockCommitMutation.mockImplementationOnce(
+        (_environment, { onCompleted }) => {
+          onCompleted(rejectOfferSuccess)
+        }
+      )
+      const submitButton = component.find(Button).last()
+      submitButton.simulate("click")
+
+      expect(mockPushRoute).toHaveBeenCalledWith(
+        `/orders/${testOrder.id}/status`
+      )
+    })
+
+    it("shows the button spinner while loading the mutation", () => {
+      const component = getWrapper()
+      const mockCommitMutation = commitMutation as jest.Mock<any>
+      mockCommitMutation.mockImplementationOnce(() => {
+        const buttonProps = component
+          .update()
+          .find("Button")
+          .props() as any
+        expect(buttonProps.loading).toBeTruthy()
+      })
+
+      const submitButton = component.find(Button).last()
+      submitButton.simulate("click")
+    })
+
+    it("hides the button spinner when the mutation completes", () => {
+      const component = getWrapper()
+      const mockCommitMutation = commitMutation as jest.Mock<any>
+      mockCommitMutation.mockImplementationOnce(
+        (_environment, { onCompleted }) => {
+          onCompleted(rejectOfferSuccess)
+        }
+      )
+      const submitButton = component.find(Button).last()
+      submitButton.simulate("click")
+
+      const buttonProps = component
+        .update()
+        .find("Button")
+        .props() as any
+      expect(buttonProps.loading).toBeFalsy()
+    })
+  })
+
+  it("shows an error modal when there is an error from the server", () => {
+    const component = getWrapper()
+    const mockCommitMutation = commitMutation as jest.Mock<any>
+    mockCommitMutation.mockImplementationOnce(
+      (_environment, { onCompleted }) => {
+        onCompleted(rejectOfferFailed)
+      }
+    )
+
+    const submitButton = component.find(Button).last()
+    submitButton.simulate("click")
+
+    const errorComponent = component.find(ErrorModal)
+    expect(errorComponent.props().show).toBe(true)
+    expect(errorComponent.text()).toContain("An error occurred")
+    expect(errorComponent.text()).toContain(
+      "Something went wrong. Please try again or contact orders@artsy.net."
+    )
+
+    component.find(ModalButton).simulate("click")
+    expect(component.find(ErrorModal).props().show).toBe(false)
   })
 })

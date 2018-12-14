@@ -1,8 +1,17 @@
-import { Flex, Join, Message, Sans, Serif, Spacer } from "@artsy/palette"
+import {
+  Button,
+  Flex,
+  Join,
+  Message,
+  Sans,
+  Serif,
+  Spacer,
+} from "@artsy/palette"
 import { Status_order } from "__generated__/Status_order.graphql"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
+import { Router } from "found"
 import React, { Component } from "react"
 import { Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -16,12 +25,14 @@ import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "../
 export interface StatusProps {
   order: Status_order
   mediator: Mediator
+  router: Router
 }
 
 export class StatusRoute extends Component<StatusProps> {
   stateCopy = () => {
-    const { state, requestedFulfillment, mode } = this.props.order
+    const { state, requestedFulfillment, mode, stateReason } = this.props.order
     const isOfferFlow = mode === "OFFER"
+    const buyerRejectedOffer = stateReason === "buyer_rejected"
     switch (state) {
       case "SUBMITTED":
         return "Your order has been submitted."
@@ -32,7 +43,11 @@ export class StatusRoute extends Component<StatusProps> {
           ? "Your order has shipped."
           : "Your order has been picked up."
       case "CANCELED":
-        return "Your order was canceled and refunded."
+        if (buyerRejectedOffer) {
+          return "Offer declined"
+        } else {
+          return "Your order was canceled and refunded."
+        }
     }
   }
 
@@ -44,6 +59,7 @@ export class StatusRoute extends Component<StatusProps> {
     const { order } = this.props
 
     const isOfferFlow = order.mode === "OFFER"
+    const buyerRejectedOffer = order.stateReason === "buyer_rejected"
     const message = isOfferFlow
       ? offerMessages[order.state] || orderMessages[order.state]
       : orderMessages[order.state]
@@ -64,31 +80,45 @@ export class StatusRoute extends Component<StatusProps> {
               <Title>{flowName} status | Artsy</Title>
               <Join separator={<Spacer mb={[2, 3]} />}>
                 {userMessage && <Message p={[2, 3]}>{userMessage}</Message>}
-                <Flex flexDirection="column">
-                  <ArtworkSummaryItem order={order} />
-                  <TransactionDetailsSummaryItem
-                    order={order}
-                    useLastSubmittedOffer
-                  />
-                </Flex>
+                {buyerRejectedOffer ? (
+                  <Button
+                    onClick={() => {
+                      this.props.router.push(`/`)
+                    }}
+                    size="large"
+                    width="100%"
+                  >
+                    Back to Artsy
+                  </Button>
+                ) : (
+                  <Flex flexDirection="column">
+                    <ArtworkSummaryItem order={order} />
+                    <TransactionDetailsSummaryItem
+                      order={order}
+                      useLastSubmittedOffer
+                    />
+                  </Flex>
+                )}
               </Join>
               <Spacer mb={[2, 3]} />
             </>
           }
           Sidebar={
-            <Flex flexDirection="column">
+            !buyerRejectedOffer && (
               <Flex flexDirection="column">
-                <ShippingSummaryItem order={order} />
-                <CreditCardSummaryItem order={order} />
+                <Flex flexDirection="column">
+                  <ShippingSummaryItem order={order} />
+                  <CreditCardSummaryItem order={order} />
+                </Flex>
+                <Spacer mb={[2, 3]} />
+                <Helper
+                  artworkId={get(
+                    order,
+                    o => o.lineItems.edges[0].node.artwork.id
+                  )}
+                />
               </Flex>
-              <Spacer mb={[2, 3]} />
-              <Helper
-                artworkId={get(
-                  order,
-                  o => o.lineItems.edges[0].node.artwork.id
-                )}
-              />
-            </Flex>
+            )
           }
         />
       </HorizontalPadding>
@@ -144,6 +174,19 @@ const offerMessages = {
       seller will notify you when your order has shipped, typically 5–7 business
       days. If you have questions, please contact{" "}
       <a href="mailto:orders@artsy.net">orders@artsy.net</a>.
+    </>
+  ),
+  CANCELED: () => (
+    <>
+      <p>
+        Thank you for your repsonse. The seller will be informed of your
+        decision to end the negotiation process.
+      </p>
+      <p>
+        We’d love to get your feedback. Contact{" "}
+        <a href="mailto:orders@artsy.net">orders@artsy.net</a> with any comments
+        you have.
+      </p>
     </>
   ),
 }
@@ -219,6 +262,7 @@ export const StatusFragmentContainer = createFragmentContainer(
       code
       state
       mode
+      stateReason
       requestedFulfillment {
         ... on Ship {
           __typename

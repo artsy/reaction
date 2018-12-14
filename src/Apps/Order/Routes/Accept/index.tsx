@@ -92,22 +92,38 @@ export class Accept extends Component<AcceptProps, AcceptState> {
             const {
               ecommerceBuyerAcceptOffer: { orderOrError },
             } = data
-
-            if (orderOrError.error) {
-              this.onMutationError(
-                new ErrorWithMetadata(
-                  orderOrError.error.code,
-                  orderOrError.error
-                )
-              )
-            } else {
-              this.props.router.push(`/orders/${this.props.order.id}/status`)
-            }
+            this.onSubmitCompleted(orderOrError)
           },
           onError: this.onMutationError.bind(this),
         })
       }
     })
+  }
+
+  onSubmitCompleted(orderOrError) {
+    const error = orderOrError.error
+    if (error) {
+      switch (error.code) {
+        case "capture_failed": {
+          this.onMutationError(
+            new ErrorWithMetadata(error.code, error),
+            "An error occurred",
+            "There was an error processing your payment. Please try again or contact orders@artsy.net."
+          )
+          break
+        }
+        default: {
+          this.onMutationError(new ErrorWithMetadata(error.code, error))
+          break
+        }
+      }
+    } else {
+      this.onSuccessfulSubmit()
+    }
+  }
+
+  onSuccessfulSubmit() {
+    this.props.router.push(`/orders/${this.props.order.id}/status`)
   }
 
   onMutationError(error, errorModalTitle?, errorModalMessage?) {

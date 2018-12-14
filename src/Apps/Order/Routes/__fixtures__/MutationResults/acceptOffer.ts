@@ -18,3 +18,14 @@ export const acceptOfferFailed = {
     },
   },
 }
+export const AcceptOfferPaymentFailed = {
+  ecommerceBuyerAcceptOffer: {
+    orderOrError: {
+      error: {
+        type: "processing",
+        code: "capture_failed",
+        data: { some_details: "more details" },
+      },
+    },
+  },
+}
