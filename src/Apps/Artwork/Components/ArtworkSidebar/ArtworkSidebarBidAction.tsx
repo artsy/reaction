@@ -5,6 +5,7 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 
 import { ArtworkSidebarBidAction_artwork } from "__generated__/ArtworkSidebarBidAction_artwork.graphql"
+import { ContextConsumer } from "Artsy/SystemContext"
 
 export interface ArtworkSidebarBidActionProps {
   artwork: ArtworkSidebarBidAction_artwork
@@ -37,6 +38,16 @@ export class ArtworkSidebarBidAction extends React.Component<
     window.location.href = `${sd.APP_URL}/auction/${
       sale.id
     }/bid/${id}?bid=${bid}`
+  }
+
+  redirectToLiveBidding = (user: User) => {
+    const { id } = this.props.artwork.sale
+    const liveUrl = `${sd.PREDICTION_URL}/${id}`
+    if (user) {
+      window.location.href = `${liveUrl}/login`
+    } else {
+      window.location.href = liveUrl
+    }
   }
 
   render() {
@@ -88,17 +99,28 @@ export class ArtworkSidebarBidAction extends React.Component<
 
     if (artwork.sale.is_live_open) {
       return (
-        <Box>
-          {artwork.sale.is_registration_closed && !registeredToBid ? (
-            <Button width="100%" size="medium" mt={1} disabled>
-              Registration closed
-            </Button>
-          ) : (
-            <Button width="100%" size="medium" mt={1}>
-              Enter live bidding
-            </Button>
-          )}
-        </Box>
+        <ContextConsumer>
+          {({ user }) => {
+            return (
+              <Box>
+                {artwork.sale.is_registration_closed && !registeredToBid ? (
+                  <Button width="100%" size="medium" mt={1} disabled>
+                    Registration closed
+                  </Button>
+                ) : (
+                  <Button
+                    width="100%"
+                    size="medium"
+                    mt={1}
+                    onClick={() => this.redirectToLiveBidding(user)}
+                  >
+                    Enter live bidding
+                  </Button>
+                )}
+              </Box>
+            )
+          }}
+        </ContextConsumer>
       )
     }
 
