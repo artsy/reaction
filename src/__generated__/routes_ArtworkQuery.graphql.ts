@@ -421,6 +421,7 @@ fragment ArtworkSidebarBidAction_artwork on Artwork {
       __id
     }
   }
+  id
   sale {
     id
     registrationStatus {

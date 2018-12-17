@@ -12,7 +12,7 @@ export interface ArtworkSidebarBidActionProps {
 }
 
 export interface ArtworkSidebarBidActionState {
-  nextMaxBidCents?: number
+  selectedMaxBidCents?: number
 }
 
 export class ArtworkSidebarBidAction extends React.Component<
@@ -20,11 +20,24 @@ export class ArtworkSidebarBidAction extends React.Component<
   ArtworkSidebarBidActionState
 > {
   state: ArtworkSidebarBidActionState = {
-    nextMaxBidCents: null,
+    selectedMaxBidCents: null,
   }
 
   setMaxBid = (newVal: number) => {
-    this.setState({ nextMaxBidCents: newVal })
+    this.setState({ selectedMaxBidCents: newVal })
+  }
+
+  redirectToRegister = () => {
+    const { sale } = this.props.artwork
+    window.location.href = `${sd.APP_URL}/auction-registration/${sale.id}`
+  }
+
+  redirectToBid = (firstIncrement: number) => {
+    const { id, sale } = this.props.artwork
+    const bid = this.state.selectedMaxBidCents || firstIncrement
+    window.location.href = `${sd.APP_URL}/auction/${
+      sale.id
+    }/bid/${id}?bid=${bid}`
   }
 
   redirectToLiveBidding = (user: User) => {
@@ -59,7 +72,12 @@ export class ArtworkSidebarBidAction extends React.Component<
       return (
         <Box>
           {!registrationAttempted && (
-            <Button width="100%" size="medium" mt={1}>
+            <Button
+              width="100%"
+              size="medium"
+              mt={1}
+              onClick={() => this.redirectToRegister()}
+            >
               Register to bid
             </Button>
           )}
@@ -131,6 +149,7 @@ export class ArtworkSidebarBidAction extends React.Component<
       const increments = artwork.sale_artwork.increments.filter(
         increment => increment.cents > (myLastMaxBid || 0)
       )
+      const firstIncrement = increments[0]
       const selectOptions = increments.map(increment => ({
         value: increment.cents.toString(),
         text: increment.display,
@@ -150,7 +169,12 @@ export class ArtworkSidebarBidAction extends React.Component<
             </Tooltip>
           </Flex>
           <LargeSelect options={selectOptions} onSelect={this.setMaxBid} />
-          <Button width="100%" size="medium" mt={1}>
+          <Button
+            width="100%"
+            size="medium"
+            mt={1}
+            onClick={() => this.redirectToBid(firstIncrement.cents)}
+          >
             {hasMyBids ? "Increase max bid" : "Bid"}
           </Button>
         </Box>
@@ -170,6 +194,7 @@ export const ArtworkSidebarBidActionFragmentContainer = createFragmentContainer(
           }
         }
       }
+      id
       sale {
         id
         registrationStatus {
