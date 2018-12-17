@@ -12,6 +12,7 @@ import {
   Serif,
 } from "@artsy/palette"
 import { createFragmentContainer, graphql } from "react-relay"
+import { get } from "Utils/get"
 
 const zone = time => {
   return moment(time).tz("America/New_York")
@@ -108,10 +109,13 @@ export const AuctionCardFragmentContainer = createFragmentContainer<{
       sale.is_live_open,
       sale.is_preview
     )
+
+    const imageURL = get(sale, s => s.cover_image.cropped.url)
+    const partnerName = get(sale, s => s.partner.name)
     return (
       <AuctionCard
-        src={sale.cover_image.cropped.url}
-        headline={sale.partner.name}
+        src={imageURL}
+        headline={partnerName}
         subHeadline={sale.name}
         badge={statusLabel}
       />

@@ -138,7 +138,7 @@ export const CountdownTimer: React.SFC<{
   countdownEnd: string
 }> = props => (
   <WithCurrentTime>
-    {currentTime => (
+    {({ currentTime }) => (
       <StaticCountdownTimer currentTime={currentTime} {...props} />
     )}
   </WithCurrentTime>
