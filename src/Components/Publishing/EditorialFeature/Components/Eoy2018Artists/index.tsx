@@ -19,7 +19,10 @@ import {
   ImageSetPreview,
   ImgContainer,
 } from "Components/Publishing/Sections/ImageSetPreview"
-import { LabelWrapper } from "Components/Publishing/Sections/ImageSetPreview/ImageSetLabel"
+import {
+  LabelWrapper,
+  SlideshowTitle,
+} from "Components/Publishing/Sections/ImageSetPreview/ImageSetLabel"
 import { resize } from "Utils/resizer"
 import { Eoy2018ArticleHeader } from "./ArticleHeader"
 
@@ -82,9 +85,15 @@ export class Eoy2018Artists extends React.Component<ArticleProps> {
   }
 
   sectionText = (section, i) => {
+    const {
+      article: { sections },
+    } = this.props
+    const isChapterStart =
+      sections[i - 1] && sections[i - 1].type === "image_collection"
+
     return (
       <Box maxWidth={["100%", "75%", "75%"]} ml="auto" px={[20, 0]} key={i}>
-        <TextSection size="5" pb={[40, 60]}>
+        <TextSection size="5" pb={[40, 60]} isChapterStart={isChapterStart}>
           <div dangerouslySetInnerHTML={{ __html: section.body }} />
         </TextSection>
       </Box>
@@ -334,14 +343,17 @@ const IntroSection = styled(Flex)`
   }
 `
 
-const TextSection = styled(Serif)`
+const TextSection = styled(Serif)<{ isChapterStart?: boolean }>`
   p {
     font-size: 24px;
     text-indent: 2em;
-
-    &:first-child {
-      text-indent: 0;
-    }
+    ${props =>
+      props.isChapterStart &&
+      `
+        &:first-child {
+          text-indent: 0;
+        }
+    `};
   }
 `
 const CaptionWrapper = styled(Sans)`
@@ -398,6 +410,10 @@ const ImageSetWrapper = styled(Box)`
         max-width: 50%;
       }
     `};
+  }
+
+  ${SlideshowTitle} {
+    display: none;
   }
 
   ${ImgContainer} {

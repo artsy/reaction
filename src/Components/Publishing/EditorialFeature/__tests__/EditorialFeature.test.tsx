@@ -34,7 +34,7 @@ describe("EditorialFeature", () => {
     expect(component.find(FeatureLayout)).toBeTruthy()
   })
 
-  it("Renders template for EOY_2018_ARTISTS article", () => {
+  xit("Renders template for EOY_2018_ARTISTS article", () => {
     props.customEditorial = "EOY_2018_ARTISTS"
     const component = getWrapper(props)
     expect(component.find(Eoy2018Artists)).toBeTruthy()
