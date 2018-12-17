@@ -9,7 +9,7 @@ import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
 
-storiesOf("Styleguide/Artwork/Sidebar", module)
+storiesOf("Apps/Artwork Page/Components/Sidebar", module)
   .addDecorator(story => <RelayStubProvider>{story()}</RelayStubProvider>)
   .add("Artists", () => {
     return (

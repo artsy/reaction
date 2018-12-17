@@ -9,9 +9,9 @@ import { ArtistInfoQueryRenderer as ArtistInfo } from "./Components/ArtistInfo"
 
 import { ArtworkBannerFragmentContainer as ArtworkBanner } from "./Components/ArtworkBanner"
 import { ArtworkDetailsFragmentContainer as ArtworkDetails } from "./Components/ArtworkDetails"
+import { ArtworkImageBrowserFragmentContainer as ArtworkImageBrowser } from "./Components/ArtworkImageBrowser"
 import { ArtworkMetaFragmentContainer as ArtworkMeta } from "./Components/ArtworkMeta"
 import { ArtworkSidebarFragmentContainer as ArtworkSidebar } from "./Components/ArtworkSidebar"
-import { ImageBrowserFragmentContainer as ImageBrowser } from "./Components/ImageBrowser"
 import { OtherWorksFragmentContainer as OtherWorks } from "./Components/OtherWorks"
 
 import {
@@ -35,7 +35,7 @@ export const ArtworkApp: React.SFC<Props> = props => {
       <Row>
         <Col sm={8}>
           <Box px={[0, 4]}>
-            <ImageBrowser artwork={props.artwork} />
+            <ArtworkImageBrowser artwork={props.artwork} />
           </Box>
         </Col>
         <Col sm={4}>
@@ -98,7 +98,7 @@ export const ArtworkAppFragmentContainer = createFragmentContainer(
       ...ArtworkBanner_artwork
       ...ArtworkSidebar_artwork
       ...ArtworkDetails_artwork
-      ...ImageBrowser_artwork
+      ...ArtworkImageBrowser_artwork
       ...OtherWorks_artwork
     }
   `

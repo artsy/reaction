@@ -70,7 +70,7 @@ export const ArtworkContextAuctionFragmentContainer = createFragmentContainer<{
     const OtherAuctionsList = (
       <OtherAuctions>
         {sales.map(sale => {
-          return <AuctionCard sale={sale} />
+          return <AuctionCard sale={sale} key={(sale as any).id} />
         })}
       </OtherAuctions>
     )

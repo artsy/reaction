@@ -10,7 +10,7 @@ import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
 
-storiesOf("Styleguide/Artwork/Sidebar", module).add(
+storiesOf("Apps/Artwork Page/Components/Sidebar", module).add(
   "AuctionPartnerInfo",
   () => {
     return (
