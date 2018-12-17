@@ -23,6 +23,7 @@ import {
   RelayProp,
 } from "react-relay"
 import { ErrorWithMetadata } from "Utils/errors"
+import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { ArtworkSidebarSizeInfoFragmentContainer as SizeInfo } from "./ArtworkSidebarSizeInfo"
 
@@ -140,8 +141,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
   }
 
   handleInquiry = () => {
-    this.props.mediator &&
-      this.props.mediator.trigger &&
+    get(this.props, props => props.mediator.trigger) &&
       this.props.mediator.trigger("launchInquiryFlow", {
         artworkId: this.props.artwork.id,
       })
@@ -149,7 +149,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
 
   handleCreateOrder = () => {
     this.setState({ isCommittingCreateOrderMutation: true }, () => {
-      if (this.props.relay && this.props.relay.environment) {
+      if (get(this.props, props => props.relay.environment)) {
         commitMutation<ArtworkSidebarCommercialOrderMutation>(
           this.props.relay.environment,
           {
@@ -180,9 +180,10 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
             variables: {
               input: {
                 artworkId: this.props.artwork.id,
-                editionSetId:
-                  this.state.selectedEditionSet &&
-                  this.state.selectedEditionSet.id,
+                editionSetId: get(
+                  this.state,
+                  state => state.selectedEditionSet.id
+                ),
               },
             },
             onCompleted: data => {
@@ -210,7 +211,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
 
   handleCreateOfferOrder = () => {
     this.setState({ isCommittingCreateOfferOrderMutation: true }, () => {
-      if (this.props.relay && this.props.relay.environment) {
+      if (get(this.props, props => props.relay.environment)) {
         commitMutation<ArtworkSidebarCommercialOfferOrderMutation>(
           this.props.relay.environment,
           {
@@ -241,9 +242,10 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
             variables: {
               input: {
                 artworkId: this.props.artwork.id,
-                editionSetId:
-                  this.state.selectedEditionSet &&
-                  this.state.selectedEditionSet.id,
+                editionSetId: get(
+                  this.state,
+                  state => state.selectedEditionSet.id
+                ),
               },
             },
             onCompleted: data => {
