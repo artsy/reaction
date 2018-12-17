@@ -2,8 +2,8 @@
 
 import { ConcreteFragment } from "relay-runtime";
 import { ArtworkBanner_artwork$ref } from "./ArtworkBanner_artwork.graphql";
-import { ArtworkBrowser_artwork$ref } from "./ArtworkBrowser_artwork.graphql";
 import { ArtworkDetails_artwork$ref } from "./ArtworkDetails_artwork.graphql";
+import { ArtworkImageBrowser_artwork$ref } from "./ArtworkImageBrowser_artwork.graphql";
 import { ArtworkMeta_artwork$ref } from "./ArtworkMeta_artwork.graphql";
 import { ArtworkSidebar_artwork$ref } from "./ArtworkSidebar_artwork.graphql";
 import { OtherWorks_artwork$ref } from "./OtherWorks_artwork.graphql";
@@ -14,7 +14,7 @@ export type ArtworkApp_artwork = {
     readonly artist: ({
         readonly id: string;
     }) | null;
-    readonly " $fragmentRefs": ArtworkMeta_artwork$ref & ArtworkBanner_artwork$ref & ArtworkSidebar_artwork$ref & ArtworkDetails_artwork$ref & ArtworkBrowser_artwork$ref & OtherWorks_artwork$ref;
+    readonly " $fragmentRefs": ArtworkMeta_artwork$ref & ArtworkBanner_artwork$ref & ArtworkSidebar_artwork$ref & ArtworkDetails_artwork$ref & ArtworkImageBrowser_artwork$ref & OtherWorks_artwork$ref;
     readonly " $refType": ArtworkApp_artwork$ref;
 };
 
@@ -78,7 +78,7 @@ return {
     },
     {
       "kind": "FragmentSpread",
-      "name": "ArtworkBrowser_artwork",
+      "name": "ArtworkImageBrowser_artwork",
       "args": null
     },
     {
@@ -90,5 +90,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '5516d696f9f0c0f95a55f557822c4f67';
+(node as any).hash = 'f0a25539873a649c954d18c1b5a30957';
 export default node;

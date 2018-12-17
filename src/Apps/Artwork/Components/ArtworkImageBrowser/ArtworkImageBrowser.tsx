@@ -1,5 +1,5 @@
 import { Box, color, Flex, ResponsiveImage } from "@artsy/palette"
-import { ArtworkBrowser_artwork } from "__generated__/ArtworkBrowser_artwork.graphql"
+import { ArtworkImageBrowser_artwork } from "__generated__/ArtworkImageBrowser_artwork.graphql"
 import React from "react"
 import Slider, { Settings } from "react-slick"
 import styled from "styled-components"
@@ -9,23 +9,25 @@ import { Media } from "Utils/Responsive"
 import { ArrowButton } from "./ArrowButton"
 
 interface ArtworkBrowserProps {
-  images: ArtworkBrowser_artwork["images"]
+  images: ArtworkImageBrowser_artwork["images"]
 }
 
-export const ArtworkBrowser: React.SFC<ArtworkBrowserProps> = props => {
+export const ArtworkImageBrowser: React.SFC<ArtworkBrowserProps> = props => {
   return (
     <>
       <Media at="xs">
-        <SmallArtworkBrowser images={props.images} />
+        <SmallArtworkImageBrowser images={props.images} />
       </Media>
       <Media greaterThan="xs">
-        <LargeArtworkBrowser images={props.images} />
+        <LargeArtworkImageBrowser images={props.images} />
       </Media>
     </>
   )
 }
 
-export class LargeArtworkBrowser extends React.Component<ArtworkBrowserProps> {
+export class LargeArtworkImageBrowser extends React.Component<
+  ArtworkBrowserProps
+> {
   slider: Slider
 
   get settings(): Settings {
@@ -95,7 +97,7 @@ interface ArtworkBrowserState {
   isLocked: boolean
 }
 
-export class SmallArtworkBrowser extends React.Component<
+export class SmallArtworkImageBrowser extends React.Component<
   ArtworkBrowserProps,
   ArtworkBrowserState
 > {

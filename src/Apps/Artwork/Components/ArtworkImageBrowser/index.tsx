@@ -1,30 +1,30 @@
 import React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 
-import { ArtworkBrowser_artwork } from "__generated__/ArtworkBrowser_artwork.graphql"
-import { ArtworkBrowserQuery } from "__generated__/ArtworkBrowserQuery.graphql"
+import { ArtworkImageBrowser_artwork } from "__generated__/ArtworkImageBrowser_artwork.graphql"
+import { ArtworkImageBrowserQuery } from "__generated__/ArtworkImageBrowserQuery.graphql"
 import { ContextConsumer } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { ActionButtons } from "./ActionButtons"
-import { ArtworkBrowser } from "./ArtworkBrowser"
+import { ArtworkImageBrowser } from "./ArtworkImageBrowser"
 
 export interface ImageBrowserProps {
-  artwork: ArtworkBrowser_artwork
+  artwork: ArtworkImageBrowser_artwork
 }
 
-export const ArtworkBrowserFragmentContainer = createFragmentContainer<
+export const ArtworkImageBrowserFragmentContainer = createFragmentContainer<
   ImageBrowserProps
 >(
   props => {
     return (
       <>
-        <ArtworkBrowser images={props.artwork.images} />
+        <ArtworkImageBrowser images={props.artwork.images} />
         <ActionButtons artwork={props.artwork} />
       </>
     )
   },
   graphql`
-    fragment ArtworkBrowser_artwork on Artwork {
+    fragment ArtworkImageBrowser_artwork on Artwork {
       title
       image_alt: to_s
       image_title
@@ -56,7 +56,7 @@ export const ArtworkBrowserFragmentContainer = createFragmentContainer<
   `
 )
 
-export const ImageBrowserQueryRenderer = ({
+export const ArtworkImageBrowserQueryRenderer = ({
   artworkID,
 }: {
   artworkID: string
@@ -65,17 +65,19 @@ export const ImageBrowserQueryRenderer = ({
     <ContextConsumer>
       {({ user, mediator, relayEnvironment }) => {
         return (
-          <QueryRenderer<ArtworkBrowserQuery>
+          <QueryRenderer<ArtworkImageBrowserQuery>
             environment={relayEnvironment}
             variables={{ artworkID }}
             query={graphql`
-              query ArtworkBrowserQuery($artworkID: String!) {
+              query ArtworkImageBrowserQuery($artworkID: String!) {
                 artwork(id: $artworkID) {
-                  ...ArtworkBrowser_artwork
+                  ...ArtworkImageBrowser_artwork
                 }
               }
             `}
-            render={renderWithLoadProgress(ArtworkBrowserFragmentContainer)}
+            render={renderWithLoadProgress(
+              ArtworkImageBrowserFragmentContainer
+            )}
           />
         )
       }}
