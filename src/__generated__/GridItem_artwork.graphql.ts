@@ -17,6 +17,7 @@ export type GridItem_artwork = {
         readonly is_preview: boolean | null;
     }) | null;
     readonly is_acquireable: boolean | null;
+    readonly is_offerable: boolean | null;
     readonly href: string | null;
     readonly " $fragmentRefs": Metadata_artwork$ref & Save_artwork$ref;
     readonly " $refType": GridItem_artwork$ref;
@@ -121,6 +122,13 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
+      "name": "is_offerable",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
       "name": "href",
       "args": null,
       "storageKey": null
@@ -139,5 +147,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '94cf0d18984ef360ba6a89202179127c';
+(node as any).hash = 'e36a0aaa7b13fcdcaf4d835a4fa80bfd';
 export default node;

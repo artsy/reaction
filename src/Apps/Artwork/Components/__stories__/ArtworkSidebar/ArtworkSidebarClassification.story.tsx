@@ -7,15 +7,18 @@ import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
 
-storiesOf("Styleguide/Artwork/Sidebar", module).add("Classification", () => {
-  return (
-    <React.Fragment>
-      <Section title="Artwork with Classification">
-        <Classification artwork={ArtworkWithClassification as any} />
-      </Section>
-      <Section title="Artwork without Classification">
-        <Classification artwork={ArtworkWithoutClassification as any} />
-      </Section>
-    </React.Fragment>
-  )
-})
+storiesOf("Apps/Artwork Page/Components/Sidebar", module).add(
+  "Classification",
+  () => {
+    return (
+      <React.Fragment>
+        <Section title="Artwork with Classification">
+          <Classification artwork={ArtworkWithClassification as any} />
+        </Section>
+        <Section title="Artwork without Classification">
+          <Classification artwork={ArtworkWithoutClassification as any} />
+        </Section>
+      </React.Fragment>
+    )
+  }
+)

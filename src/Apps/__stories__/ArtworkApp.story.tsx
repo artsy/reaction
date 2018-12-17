@@ -24,7 +24,7 @@ storiesOf("Apps/Artwork Page", module)
     return (
       <MockRouter
         routes={artworkRoutes}
-        initialRoute="/artwork2/julian-opie-woman-taking-off-mans-shirt-11"
+        initialRoute="/artwork2/danny-minnick-bull-in-a-china-shop-1"
       />
     )
   })

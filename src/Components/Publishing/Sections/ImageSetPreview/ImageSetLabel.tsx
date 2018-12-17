@@ -17,9 +17,9 @@ export const ImageSetLabel = (props: ImageSetPreviewProps) => {
   return (
     <LabelWrapper alignItems="center" justifyContent="space-between">
       <Flex flexDirection="column" justifyContent="space-between">
-        <Sans size={["4", "5"]} weight="medium" pb={2}>
+        <SlideshowTitle size={["4", "5"]} weight="medium" pb={2}>
           {primaryTitle}
-        </Sans>
+        </SlideshowTitle>
 
         <Flex>
           <Sans size={["2", "3"]} weight="medium">
@@ -57,3 +57,6 @@ export const LabelWrapper = styled(Flex)`
   padding: ${space(2)}px;
   width: 100%;
 `
+
+// exported for targeting from outside components
+export const SlideshowTitle = styled(Sans)``

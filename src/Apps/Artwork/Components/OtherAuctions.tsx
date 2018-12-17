@@ -54,6 +54,8 @@ const SmallOtherAuctions = props => (
       View All
     </Button>
     <hr />
-    {take(props.children, 3)}
+    {take(props.children, 3).map((child, index) => {
+      return <span key={`card-${index}-`}>{child}</span>
+    })}
   </React.Fragment>
 )

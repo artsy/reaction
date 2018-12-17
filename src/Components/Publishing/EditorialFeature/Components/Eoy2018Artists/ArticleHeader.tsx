@@ -19,12 +19,14 @@ export class Eoy2018ArticleHeader extends React.Component<{
     const urls = []
 
     let i = 0
-    for (i; i < gridSize; i++) {
+    for (i; i < gridSize; ) {
       const bgIndex = Math.floor(
         Math.random() * Math.floor(resizedImages.length)
       )
-      urls.push(resizedImages[bgIndex])
-      // TODO: make unique
+      if (!urls.includes(resizedImages[bgIndex])) {
+        urls.push(resizedImages[bgIndex])
+        i = i + 1
+      }
     }
     return urls
   }

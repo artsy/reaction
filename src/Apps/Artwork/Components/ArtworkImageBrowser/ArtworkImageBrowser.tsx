@@ -1,77 +1,39 @@
 import { Box, color, Flex, ResponsiveImage } from "@artsy/palette"
-import { ImageBrowser_artwork } from "__generated__/ImageBrowser_artwork.graphql"
+import { ArtworkImageBrowser_artwork } from "__generated__/ArtworkImageBrowser_artwork.graphql"
 import React from "react"
 import Slider, { Settings } from "react-slick"
 import styled from "styled-components"
+import { Lightbox } from "Styleguide/Components"
 import { Col, media, Row } from "Styleguide/Elements/Grid"
 import { Media } from "Utils/Responsive"
 import { ArrowButton } from "./ArrowButton"
 
-interface ImageBrowserProps {
-  images: ImageBrowser_artwork["images"]
+interface ArtworkBrowserProps {
+  images: ArtworkImageBrowser_artwork["images"]
 }
 
-export const ImageBrowser: React.SFC<ImageBrowserProps> = props => {
+export const ArtworkImageBrowser: React.SFC<ArtworkBrowserProps> = props => {
   return (
     <>
       <Media at="xs">
-        <SmallImageCarousel images={props.images} />
+        <SmallArtworkImageBrowser images={props.images} />
       </Media>
       <Media greaterThan="xs">
-        <LargeImageCarousel images={props.images} />
+        <LargeArtworkImageBrowser images={props.images} />
       </Media>
     </>
   )
 }
 
-export class SmallImageCarousel extends React.Component<ImageBrowserProps> {
-  get settings(): Settings {
-    return {
-      arrows: false,
-      customPaging: () => {
-        return <PageIndicator />
-      },
-      dots: true,
-      infinite: false,
-      // TODO: Future optimization should it be needed
-      // lazyLoad: "ondemand",
-      speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-    }
-  }
-
-  render() {
-    return (
-      <Container>
-        <Slider {...this.settings}>
-          {this.props.images.map(image => {
-            return (
-              <Flex
-                flexDirection="column"
-                justifyContent="center"
-                px={1}
-                key={image.id}
-              >
-                <ResponsiveImage src={image.uri} width="100%" />
-              </Flex>
-            )
-          })}
-        </Slider>
-      </Container>
-    )
-  }
-}
-
-export class LargeImageCarousel extends React.Component<ImageBrowserProps> {
+export class LargeArtworkImageBrowser extends React.Component<
+  ArtworkBrowserProps
+> {
   slider: Slider
 
   get settings(): Settings {
     return {
       arrows: false,
-      customPaging: () => {
-        return <PageIndicator />
-      },
+      customPaging: () => <PageIndicator />,
       dots: true,
       infinite: false,
       lazyLoad: "ondemand",
@@ -106,7 +68,12 @@ export class LargeImageCarousel extends React.Component<ImageBrowserProps> {
                     px={3}
                     key={image.id}
                   >
-                    <DesktopImage src={image.uri} width="100%" />
+                    <Lightbox
+                      deepZoom={image.deepZoom}
+                      enabled={image.is_zoomable}
+                    >
+                      <DesktopImage src={image.uri} width="100%" />
+                    </Lightbox>
                   </Flex>
                 )
               })}
@@ -121,6 +88,78 @@ export class LargeImageCarousel extends React.Component<ImageBrowserProps> {
             </Col>
           )}
         </Row>
+      </Container>
+    )
+  }
+}
+
+interface ArtworkBrowserState {
+  isLocked: boolean
+}
+
+export class SmallArtworkImageBrowser extends React.Component<
+  ArtworkBrowserProps,
+  ArtworkBrowserState
+> {
+  state = {
+    isLocked: false,
+  }
+
+  get settings(): Settings {
+    return {
+      arrows: false,
+      customPaging: () => <PageIndicator />,
+      dots: true,
+      infinite: false,
+      // TODO: Future optimization should it be needed
+      // lazyLoad: "ondemand",
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+    }
+  }
+
+  lock = () => {
+    this.setState({
+      isLocked: true,
+    })
+  }
+
+  unlock = () => {
+    setTimeout(() => {
+      this.setState({
+        isLocked: false,
+      })
+    }, 10)
+  }
+
+  render() {
+    return (
+      <Container
+        onMouseMove={this.lock}
+        onMouseUp={this.unlock}
+        onTouchMove={this.lock}
+        onTouchCancel={this.unlock}
+      >
+        <Slider {...this.settings}>
+          {this.props.images.map(image => {
+            return (
+              <Flex
+                flexDirection="column"
+                justifyContent="center"
+                px={1}
+                key={image.id}
+              >
+                <Lightbox
+                  deepZoom={image.deepZoom}
+                  enabled={!this.state.isLocked && image.is_zoomable}
+                >
+                  <ResponsiveImage src={image.uri} width="100%" />
+                </Lightbox>
+              </Flex>
+            )
+          })}
+        </Slider>
       </Container>
     )
   }
@@ -151,7 +190,7 @@ const Container = styled(Box)`
 `
 
 const DesktopImage = styled(ResponsiveImage)`
-  padding-bottom: 500px; /* Responsive max height */
+  padding-bottom: 660px; /* Responsive max height */
 `
 
 const PageIndicator = styled.span`

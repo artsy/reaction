@@ -11,6 +11,7 @@ export type ArtworkSidebarBidAction_artwork = {
             }) | null;
         }) | null;
     }> | null;
+    readonly id: string;
     readonly sale: ({
         readonly id: string;
         readonly registrationStatus: ({
@@ -45,6 +46,13 @@ v1 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__id",
+  "args": null,
+  "storageKey": null
+},
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
   "args": null,
   "storageKey": null
 };
@@ -97,6 +105,7 @@ return {
         }
       ]
     },
+    v2,
     {
       "kind": "LinkedField",
       "alias": null,
@@ -106,13 +115,7 @@ return {
       "concreteType": "Sale",
       "plural": false,
       "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "id",
-          "args": null,
-          "storageKey": null
-        },
+        v2,
         {
           "kind": "LinkedField",
           "alias": null,
@@ -205,5 +208,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'f404ef3fafea6d88fe529fb22f6550c8';
+(node as any).hash = '0159e1eb4d2fdee5ed62f71337414743';
 export default node;

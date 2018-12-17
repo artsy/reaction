@@ -6,7 +6,7 @@ import { ArtworkDetails, ArtworkDetailsQueryRenderer } from "../ArtworkDetails"
 import { AllAdditionalDetailsPresent } from "Apps/__tests__/Fixtures/Artworks"
 import { RelayStubProvider } from "DevTools/RelayStubProvider"
 
-storiesOf("Styleguide/Artwork", module)
+storiesOf("Apps/Artwork Page/Components", module)
   .addDecorator(story => <RelayStubProvider>{story()}</RelayStubProvider>)
   .add("ArtworkDetails", () => {
     return (
