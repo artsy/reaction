@@ -20,6 +20,7 @@ const cacheDirectory = path.resolve(__dirname, "../", ".cache")
 const {
   CI,
   APP_URL,
+  FACEBOOK_APP_NAMESPACE,
   PREDICTION_URL,
   FORCE_CLOUDFRONT_URL,
   GEMINI_CLOUDFRONT_URL,
@@ -44,6 +45,7 @@ const notOnCI = value => (isCI ? [] : [value])
  */
 const sharifyPath = sharify({
   APP_URL,
+  FACEBOOK_APP_NAMESPACE,
   PREDICTION_URL,
   FORCE_CLOUDFRONT_URL,
   GEMINI_CLOUDFRONT_URL,
