@@ -27,6 +27,7 @@ export interface Props
   relayEnvironment?: RelayRuntimeTypes.Environment
   useRelay?: boolean
   mediator?: Artsy.Mediator
+  render?: (props, state) => JSX.Element
 }
 
 // TODO: This will be refactored out once Artworks / Grids are full Relay in Force
@@ -37,7 +38,7 @@ interface State {
 }
 
 @track()
-class SaveButtonContainer extends React.Component<Props, State> {
+export class SaveButton extends React.Component<Props, State> {
   static defaultProps = {
     useRelay: true,
   }
@@ -151,7 +152,23 @@ class SaveButtonContainer extends React.Component<Props, State> {
     }
   }
 
-  render() {
+  mixinButtonActions() {
+    return {
+      onClick: () => this.handleSave(),
+      onMouseEnter: () => {
+        this.setState({
+          isHovered: true,
+        })
+      },
+      onMouseLeave: () => {
+        this.setState({
+          isHovered: false,
+        })
+      },
+    }
+  }
+
+  renderDefaultButton() {
     const { style } = this.props
     const saveStyle = this.isSaved ? { opacity: 1.0 } : {}
     const fullStyle = { ...style, ...saveStyle }
@@ -163,28 +180,37 @@ class SaveButtonContainer extends React.Component<Props, State> {
       <div
         className={this.props.className}
         style={fullStyle}
-        onClick={() => this.handleSave()}
-        data-saved={this.isSaved}
-        onMouseEnter={() => {
-          this.setState({ isHovered: true })
-        }}
-        onMouseLeave={() => {
-          this.setState({ isHovered: false })
-        }}
+        {...this.mixinButtonActions()}
       >
-        <Icon
-          name={iconName}
-          height={SIZE}
-          color="white"
-          fontSize={iconFontSize}
-          style={{ verticalAlign: "middle" }}
-        />
+        <Container data-saved={this.isSaved}>
+          <Icon
+            name={iconName}
+            height={SIZE}
+            color="white"
+            fontSize={iconFontSize}
+            style={{ verticalAlign: "middle" }}
+          />
+        </Container>
       </div>
     )
   }
+
+  renderCustomButton() {
+    return (
+      <div {...this.mixinButtonActions()}>
+        {this.props.render(this.props, this.state)}
+      </div>
+    )
+  }
+
+  render() {
+    return this.props.render
+      ? this.renderCustomButton()
+      : this.renderDefaultButton()
+  }
 }
 
-export const SaveButton = styled(SaveButtonContainer)`
+export const Container = styled.div`
   display: block;
   width: ${SIZE}px;
   height: ${SIZE}px;
