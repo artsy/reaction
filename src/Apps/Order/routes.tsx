@@ -1,4 +1,5 @@
-import { confirmRouteExit, shouldRedirect } from "Apps/Order/redirects"
+import { confirmRouteExit, redirects } from "Apps/Order/redirects"
+import { maybeThrowRedirectException } from "Apps/Order/shouldRedirect"
 import { Redirect, RouteConfig } from "found"
 import * as React from "react"
 import { graphql } from "react-relay"
@@ -77,9 +78,12 @@ export const routes: RouteConfig[] = [
     `,
     render: ({ Component, props }) => {
       if (Component && props) {
-        if (!shouldRedirect(props as any)) {
-          return <Component {...props} />
-        }
+        const { location, order } = props as any
+        const path = location.pathname.replace(/order(2|s)\/[^\/]+/, "")
+
+        maybeThrowRedirectException(redirects, path, { order })
+
+        return <Component {...props} />
       }
     },
     children: [
