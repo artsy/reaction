@@ -127,7 +127,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
     return <RadioGroup>{editionSetsFragment}</RadioGroup>
   }
 
-  onMutationError(error: ErrorWithMetadata) {
+  onMutationError = (error: ErrorWithMetadata) => {
     logger.error(error)
     this.setState({
       isCommittingCreateOrderMutation: false,
@@ -201,7 +201,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
                 window.location.assign(`/orders/${orderOrError.order.id}`)
               }
             },
-            onError: this.onMutationError.bind(this),
+            onError: this.onMutationError,
           }
         )
       }
@@ -262,7 +262,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
                 window.location.assign(`/orders/${orderOrError.order.id}/offer`)
               }
             },
-            onError: this.onMutationError.bind(this),
+            onError: this.onMutationError,
           }
         )
       }
