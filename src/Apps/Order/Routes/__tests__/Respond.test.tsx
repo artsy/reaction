@@ -231,7 +231,7 @@ describe("Offer InitialMutation", () => {
       counterRadio
         .find(Input)
         .props()
-        .onChange({ currentTarget: { value: "84838" } } as any)
+        .onChange({ currentTarget: { value: "100.05" } } as any)
 
       expect(commitMutationMock).toHaveBeenCalledTimes(0)
 
@@ -249,7 +249,7 @@ Object {
   "input": Object {
     "offerId": "myoffer-id",
     "offerPrice": Object {
-      "amount": 84838,
+      "amount": 100.05,
       "currencyCode": "USD",
     },
   },

@@ -162,13 +162,13 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
                     title="Your offer"
                     type="number"
                     defaultValue={null}
-                    onChange={ev =>
+                    onChange={ev => {
                       this.setState({
-                        offerValue: Math.floor(
-                          Number(ev.currentTarget.value || "0")
-                        ),
+                        offerValue: +Number(
+                          ev.currentTarget.value || "0"
+                        ).toFixed(2),
                       })
-                    }
+                    }}
                     block
                   />
                 </Flex>

@@ -228,9 +228,9 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                         defaultValue={null}
                         onChange={ev =>
                           this.setState({
-                            offerValue: Math.floor(
-                              Number(ev.currentTarget.value || "0")
-                            ),
+                            offerValue: +Number(
+                              ev.currentTarget.value || "0"
+                            ).toFixed(2),
                           })
                         }
                         block
