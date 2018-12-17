@@ -2,8 +2,8 @@ import { routes_OrderQueryResponse } from "__generated__/routes_OrderQuery.graph
 import { Location, RouteConfig, Router } from "found"
 import moment from "moment"
 import { get } from "Utils/get"
+import { RedirectPredicate, RedirectRecord } from "./getRedirect"
 import { OrderApp } from "./OrderApp"
-import { RedirectPredicate, RedirectRecord } from "./shouldRedirect"
 
 const LEAVE_MESSAGING =
   "Are you sure you want to refresh? Your changes will not be saved."

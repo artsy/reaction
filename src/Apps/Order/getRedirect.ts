@@ -1,5 +1,3 @@
-import { RedirectException } from "found"
-
 export type RedirectPredicate<Arguments = any> = (
   args: Arguments
 ) => string | void
@@ -12,19 +10,20 @@ export interface RedirectRecord<Arguments> {
 
 export const trimLeadingSlashes = (s: string) => s.replace(/^\/+/, "")
 
-export function maybeThrowRedirectException<Arguments>(
+export function getRedirect<Arguments>(
   redirects: RedirectRecord<Arguments>,
   location: string,
   args: Arguments
-) {
+): string | null {
   const trimmedLocation = trimLeadingSlashes(location)
 
-  redirects.rules.forEach(rule => {
+  for (const rule of redirects.rules) {
     const redirectPath = rule(args)
     if (redirectPath) {
-      throw new RedirectException(redirectPath)
+      return redirectPath
     }
-  })
+  }
+
   if (trimmedLocation.length > 0 && redirects.children) {
     // find most specific matching child (i.e. longest path match)
     const matchingChild = redirects.children
@@ -32,7 +31,7 @@ export function maybeThrowRedirectException<Arguments>(
       .sort((a, b) => a.path.split("/").length - b.path.split("/").length)
       .pop()
     if (matchingChild) {
-      return maybeThrowRedirectException(
+      return getRedirect(
         matchingChild,
         trimmedLocation.slice(matchingChild.path.length),
         args
@@ -40,5 +39,5 @@ export function maybeThrowRedirectException<Arguments>(
     }
   }
 
-  return false
+  return null
 }
