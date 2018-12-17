@@ -10,6 +10,7 @@ import {
   Serif,
 } from "@artsy/palette"
 import { ArtworkSidebarCommercial_artwork } from "__generated__/ArtworkSidebarCommercial_artwork.graphql"
+import { ArtworkSidebarCommercialOfferOrderMutation } from "__generated__/ArtworkSidebarCommercialOfferOrderMutation.graphql"
 import { ArtworkSidebarCommercialOrderMutation } from "__generated__/ArtworkSidebarCommercialOrderMutation.graphql"
 import { ContextConsumer } from "Artsy/Router"
 import { Mediator } from "Artsy/SystemContext"
@@ -22,6 +23,7 @@ import {
   RelayProp,
 } from "react-relay"
 import { ErrorWithMetadata } from "Utils/errors"
+import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { ArtworkSidebarSizeInfoFragmentContainer as SizeInfo } from "./ArtworkSidebarSizeInfo"
 
@@ -34,6 +36,7 @@ export interface ArtworkSidebarCommercialContainerProps
 
 export interface ArtworkSidebarCommercialContainerState {
   isCommittingCreateOrderMutation: boolean
+  isCommittingCreateOfferOrderMutation: boolean
   isErrorModalOpen: boolean
   selectedEditionSet: EditionSet
 }
@@ -54,6 +57,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
 > {
   state: ArtworkSidebarCommercialContainerState = {
     isCommittingCreateOrderMutation: false,
+    isCommittingCreateOfferOrderMutation: false,
     isErrorModalOpen: false,
     selectedEditionSet: this.firstAvailableEcommerceEditionSet(),
   }
@@ -124,7 +128,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
     return <RadioGroup>{editionSetsFragment}</RadioGroup>
   }
 
-  onMutationError(error: ErrorWithMetadata) {
+  onMutationError = (error: ErrorWithMetadata) => {
     logger.error(error)
     this.setState({
       isCommittingCreateOrderMutation: false,
@@ -137,8 +141,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
   }
 
   handleInquiry = () => {
-    this.props.mediator &&
-      this.props.mediator.trigger &&
+    get(this.props, props => props.mediator.trigger) &&
       this.props.mediator.trigger("launchInquiryFlow", {
         artworkId: this.props.artwork.id,
       })
@@ -146,7 +149,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
 
   handleCreateOrder = () => {
     this.setState({ isCommittingCreateOrderMutation: true }, () => {
-      if (this.props.relay && this.props.relay.environment) {
+      if (get(this.props, props => props.relay.environment)) {
         commitMutation<ArtworkSidebarCommercialOrderMutation>(
           this.props.relay.environment,
           {
@@ -177,9 +180,10 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
             variables: {
               input: {
                 artworkId: this.props.artwork.id,
-                editionSetId:
-                  this.state.selectedEditionSet &&
-                  this.state.selectedEditionSet.id,
+                editionSetId: get(
+                  this.state,
+                  state => state.selectedEditionSet.id
+                ),
               },
             },
             onCompleted: data => {
@@ -198,7 +202,69 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
                 window.location.assign(`/orders/${orderOrError.order.id}`)
               }
             },
-            onError: this.onMutationError.bind(this),
+            onError: this.onMutationError,
+          }
+        )
+      }
+    })
+  }
+
+  handleCreateOfferOrder = () => {
+    this.setState({ isCommittingCreateOfferOrderMutation: true }, () => {
+      if (get(this.props, props => props.relay.environment)) {
+        commitMutation<ArtworkSidebarCommercialOfferOrderMutation>(
+          this.props.relay.environment,
+          {
+            mutation: graphql`
+              mutation ArtworkSidebarCommercialOfferOrderMutation(
+                $input: CreateOfferOrderWithArtworkInput!
+              ) {
+                ecommerceCreateOfferOrderWithArtwork(input: $input) {
+                  orderOrError {
+                    ... on OrderWithMutationSuccess {
+                      __typename
+                      order {
+                        id
+                        mode
+                      }
+                    }
+                    ... on OrderWithMutationFailure {
+                      error {
+                        type
+                        code
+                        data
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+            variables: {
+              input: {
+                artworkId: this.props.artwork.id,
+                editionSetId: get(
+                  this.state,
+                  state => state.selectedEditionSet.id
+                ),
+              },
+            },
+            onCompleted: data => {
+              this.setState({ isCommittingCreateOrderMutation: false })
+              const {
+                ecommerceCreateOfferOrderWithArtwork: { orderOrError },
+              } = data
+              if (orderOrError.error) {
+                this.onMutationError(
+                  new ErrorWithMetadata(
+                    orderOrError.error.code,
+                    orderOrError.error
+                  )
+                )
+              } else {
+                window.location.assign(`/orders/${orderOrError.order.id}/offer`)
+              }
+            },
+            onError: this.onMutationError,
           }
         )
       }
@@ -207,7 +273,11 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
 
   render() {
     const { artwork } = this.props
-    const { isCommittingCreateOrderMutation, selectedEditionSet } = this.state
+    const {
+      isCommittingCreateOrderMutation,
+      isCommittingCreateOfferOrderMutation,
+      selectedEditionSet,
+    } = this.state
     const artworkEcommerceAvailable =
       artwork.is_acquireable || artwork.is_offerable
 
@@ -266,6 +336,8 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
             width="100%"
             size="medium"
             mt={1}
+            loading={isCommittingCreateOfferOrderMutation}
+            onClick={this.handleCreateOfferOrder}
           >
             Make offer
           </Button>
