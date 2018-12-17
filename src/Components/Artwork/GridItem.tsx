@@ -107,7 +107,13 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
     }
   }
 
-  renderArtworkBadge({ is_biddable, is_acquireable, href, sale }) {
+  renderArtworkBadge({
+    is_biddable,
+    is_acquireable,
+    is_offerable,
+    href,
+    sale,
+  }) {
     const includeBidBadge = is_biddable || (sale && sale.is_preview)
     return (
       <React.Fragment>
@@ -124,6 +130,16 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
                 style={{ textDecoration: "none", cursor: "pointer" }}
               >
                 <Sans size="0">Buy Now</Sans>
+              </a>
+            </Badge>
+          )}
+          {is_offerable && (
+            <Badge>
+              <a
+                href={href}
+                style={{ textDecoration: "none", cursor: "pointer" }}
+              >
+                <Sans size="0">Make Offer</Sans>
               </a>
             </Badge>
           )}
@@ -209,6 +225,7 @@ export default createFragmentContainer(
         is_preview
       }
       is_acquireable
+      is_offerable
       href
       ...Metadata_artwork
       ...Save_artwork
