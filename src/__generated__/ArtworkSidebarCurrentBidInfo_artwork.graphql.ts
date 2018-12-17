@@ -21,11 +21,13 @@ export type ArtworkSidebarCurrentBidInfo_artwork = {
         }) | null;
     }) | null;
     readonly myLotStanding: ReadonlyArray<{
-        readonly active_bid: ({
-            readonly is_winning: boolean | null;
+        readonly most_recent_bid: ({
             readonly max_bid: ({
                 readonly display: string | null;
             }) | null;
+        }) | null;
+        readonly active_bid: ({
+            readonly is_winning: boolean | null;
         }) | null;
     }> | null;
     readonly " $refType": ArtworkSidebarCurrentBidInfo_artwork$ref;
@@ -170,6 +172,28 @@ return {
         {
           "kind": "LinkedField",
           "alias": null,
+          "name": "most_recent_bid",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "BidderPosition",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "max_bid",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "BidderPositionMaxBid",
+              "plural": false,
+              "selections": v1
+            },
+            v0
+          ]
+        },
+        {
+          "kind": "LinkedField",
+          "alias": null,
           "name": "active_bid",
           "storageKey": null,
           "args": null,
@@ -183,16 +207,6 @@ return {
               "args": null,
               "storageKey": null
             },
-            {
-              "kind": "LinkedField",
-              "alias": null,
-              "name": "max_bid",
-              "storageKey": null,
-              "args": null,
-              "concreteType": "BidderPositionMaxBid",
-              "plural": false,
-              "selections": v1
-            },
             v0
           ]
         }
@@ -202,5 +216,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '5d48a625096977b1d236e05c99bf4bb5';
+(node as any).hash = '680492e9583527bb9b01c124d63412a3';
 export default node;

@@ -6,6 +6,7 @@ var Relay = require.requireActual("react-relay")
 
 module.exports = {
   graphql: Relay.graphql,
+  commitMutation: jest.fn(),
   QueryRenderer: props => React.createElement("div", {}),
   createFragmentContainer: component => component,
   createPaginationContainer: component => component,

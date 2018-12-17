@@ -34,7 +34,7 @@ describe("ArtworkSidebarCommercial", () => {
 
     const wrapper = await getWrapper(artwork)
 
-    expect(wrapper.text()).toContain(artwork.sale_message)
+    expect(wrapper.text()).toContain("Buy now")
   })
 
   it("displays sold acquireable artwork", async () => {
@@ -50,7 +50,7 @@ describe("ArtworkSidebarCommercial", () => {
 
     const wrapper = await getWrapper(artwork)
 
-    expect(wrapper.text()).toContain("Make Offer")
+    expect(wrapper.text()).toContain("Make offer")
   })
 
   it("displays artwork enrolled in both Buy Now and Make Offer", async () => {
@@ -58,7 +58,7 @@ describe("ArtworkSidebarCommercial", () => {
 
     const wrapper = await getWrapper(artwork)
 
-    expect(wrapper.text()).toContain("Buy Now")
-    expect(wrapper.text()).toContain("Make Offer")
+    expect(wrapper.text()).toContain("Buy now")
+    expect(wrapper.text()).toContain("Make offer")
   })
 })

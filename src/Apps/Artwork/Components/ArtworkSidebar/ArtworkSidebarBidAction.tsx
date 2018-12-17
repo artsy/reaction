@@ -2,16 +2,17 @@ import { Box, Button, Flex, LargeSelect, Serif, Tooltip } from "@artsy/palette"
 import { Help } from "Assets/Icons/Help"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { get } from "Utils/get"
+import { data as sd } from "sharify"
 
 import { ArtworkSidebarBidAction_artwork } from "__generated__/ArtworkSidebarBidAction_artwork.graphql"
+import { ContextConsumer } from "Artsy/SystemContext"
 
 export interface ArtworkSidebarBidActionProps {
   artwork: ArtworkSidebarBidAction_artwork
 }
 
 export interface ArtworkSidebarBidActionState {
-  nextMaxBidCents?: number
+  selectedMaxBidCents?: number
 }
 
 export class ArtworkSidebarBidAction extends React.Component<
@@ -19,12 +20,34 @@ export class ArtworkSidebarBidAction extends React.Component<
   ArtworkSidebarBidActionState
 > {
   state: ArtworkSidebarBidActionState = {
-    nextMaxBidCents:
-      get(this.props.artwork, a => a.sale_artwork.increments[0].cents) || null,
+    selectedMaxBidCents: null,
   }
 
   setMaxBid = (newVal: number) => {
-    this.setState({ nextMaxBidCents: newVal })
+    this.setState({ selectedMaxBidCents: newVal })
+  }
+
+  redirectToRegister = () => {
+    const { sale } = this.props.artwork
+    window.location.href = `${sd.APP_URL}/auction-registration/${sale.id}`
+  }
+
+  redirectToBid = (firstIncrement: number) => {
+    const { id, sale } = this.props.artwork
+    const bid = this.state.selectedMaxBidCents || firstIncrement
+    window.location.href = `${sd.APP_URL}/auction/${
+      sale.id
+    }/bid/${id}?bid=${bid}`
+  }
+
+  redirectToLiveBidding = (user: User) => {
+    const { id } = this.props.artwork.sale
+    const liveUrl = `${sd.PREDICTION_URL}/${id}`
+    if (user) {
+      window.location.href = `${liveUrl}/login`
+    } else {
+      window.location.href = liveUrl
+    }
   }
 
   render() {
@@ -43,13 +66,18 @@ export class ArtworkSidebarBidAction extends React.Component<
      *       likely design work to be done too, so we can adjust this then.
      */
     const myLotStanding = artwork.myLotStanding && artwork.myLotStanding[0]
-    const hasMyBids = !!(myLotStanding && myLotStanding.active_bid)
+    const hasMyBids = !!(myLotStanding && myLotStanding.most_recent_bid)
 
     if (artwork.sale.is_preview) {
       return (
         <Box>
           {!registrationAttempted && (
-            <Button width="100%" size="medium" mt={1}>
+            <Button
+              width="100%"
+              size="medium"
+              mt={1}
+              onClick={() => this.redirectToRegister()}
+            >
               Register to bid
             </Button>
           )}
@@ -71,17 +99,28 @@ export class ArtworkSidebarBidAction extends React.Component<
 
     if (artwork.sale.is_live_open) {
       return (
-        <Box>
-          {artwork.sale.is_registration_closed && !registeredToBid ? (
-            <Button width="100%" size="medium" mt={1} disabled>
-              Registration closed
-            </Button>
-          ) : (
-            <Button width="100%" size="medium" mt={1}>
-              Enter live bidding
-            </Button>
-          )}
-        </Box>
+        <ContextConsumer>
+          {({ user }) => {
+            return (
+              <Box>
+                {artwork.sale.is_registration_closed && !registeredToBid ? (
+                  <Button width="100%" size="medium" mt={1} disabled>
+                    Registration closed
+                  </Button>
+                ) : (
+                  <Button
+                    width="100%"
+                    size="medium"
+                    mt={1}
+                    onClick={() => this.redirectToLiveBidding(user)}
+                  >
+                    Enter live bidding
+                  </Button>
+                )}
+              </Box>
+            )
+          }}
+        </ContextConsumer>
       )
     }
 
@@ -105,10 +144,17 @@ export class ArtworkSidebarBidAction extends React.Component<
         )
       }
 
-      const selectOptions = artwork.sale_artwork.increments.map(increment => ({
+      const myLastMaxBid =
+        hasMyBids && myLotStanding.most_recent_bid.max_bid.cents
+      const increments = artwork.sale_artwork.increments.filter(
+        increment => increment.cents > (myLastMaxBid || 0)
+      )
+      const firstIncrement = increments[0]
+      const selectOptions = increments.map(increment => ({
         value: increment.cents.toString(),
         text: increment.display,
       }))
+
       return (
         <Box>
           <Flex width="100%" flexDirection="row">
@@ -123,7 +169,12 @@ export class ArtworkSidebarBidAction extends React.Component<
             </Tooltip>
           </Flex>
           <LargeSelect options={selectOptions} onSelect={this.setMaxBid} />
-          <Button width="100%" size="medium" mt={1}>
+          <Button
+            width="100%"
+            size="medium"
+            mt={1}
+            onClick={() => this.redirectToBid(firstIncrement.cents)}
+          >
             {hasMyBids ? "Increase max bid" : "Bid"}
           </Button>
         </Box>
@@ -137,11 +188,15 @@ export const ArtworkSidebarBidActionFragmentContainer = createFragmentContainer(
   graphql`
     fragment ArtworkSidebarBidAction_artwork on Artwork {
       myLotStanding(live: true) {
-        active_bid {
-          is_winning
+        most_recent_bid {
+          max_bid {
+            cents
+          }
         }
       }
+      id
       sale {
+        id
         registrationStatus {
           qualified_for_bidding
         }

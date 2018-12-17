@@ -61,6 +61,7 @@ export class Eoy2018Artists extends React.Component<ArticleProps> {
     const headerSections = this.getHeaderSections()
     const { imageSection } = find(headerSections, ["section", section])
     const src = imageSection && imageSection.images[0].url
+    const caption = imageSection && imageSection.images[0].caption
 
     return (
       <ArtistHeaderSection
@@ -69,7 +70,16 @@ export class Eoy2018Artists extends React.Component<ArticleProps> {
         flexDirection={["column", "column", "row", "row"]}
       >
         <ArtistHeaderTitle dangerouslySetInnerHTML={{ __html: section.body }} />
-        <ArtistHeaderImg src={src && resize(src, { width: 700 })} />
+        <ArtistHeaderImg
+          src={src && resize(src, { width: 700 })}
+          alignItems="flex-end"
+        >
+          {caption && (
+            <Sans size="1" color="white" px={10} py={5}>
+              <div dangerouslySetInnerHTML={{ __html: caption }} />
+            </Sans>
+          )}
+        </ArtistHeaderImg>
       </ArtistHeaderSection>
     )
   }
@@ -302,9 +312,13 @@ const ArtistHeaderTitle = styled.div`
   `};
 `
 
-const ArtistHeaderImg = styled.div<{ src?: string }>`
+const ArtistHeaderImg = styled(Flex)<{ src?: string }>`
   flex: 1;
   background: ${color("purple100")};
+  p {
+    text-shadow: 0 0 5px black;
+    opacity: 0.6;
+  }
 
   ${props =>
     props.src &&

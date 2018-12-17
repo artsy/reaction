@@ -276,6 +276,18 @@ exports[`Sections snapshots renders properly 1`] = `
   color: black;
 }
 
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
 .c6 {
   margin-right: 10px;
   width: 197px;
@@ -309,18 +321,6 @@ exports[`Sections snapshots renders properly 1`] = `
 .c26 {
   margin-right: 0px;
   width: 222px;
-}
-
-.c5 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
 }
 
 .c37 {
@@ -692,6 +692,14 @@ exports[`Sections snapshots renders properly 1`] = `
 }
 
 @media (max-width:600px) {
+  .c5 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media (max-width:600px) {
   .c6 {
     margin-bottom: 10px;
   }
@@ -730,14 +738,6 @@ exports[`Sections snapshots renders properly 1`] = `
 @media (max-width:600px) {
   .c26 {
     margin-bottom: 10px;
-  }
-}
-
-@media (max-width:600px) {
-  .c5 {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
   }
 }
 

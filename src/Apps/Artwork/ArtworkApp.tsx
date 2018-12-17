@@ -9,6 +9,7 @@ import { ArtistInfoQueryRenderer as ArtistInfo } from "./Components/ArtistInfo"
 
 import { ArtworkBannerFragmentContainer as ArtworkBanner } from "./Components/ArtworkBanner"
 import { ArtworkDetailsFragmentContainer as ArtworkDetails } from "./Components/ArtworkDetails"
+import { ArtworkMetaFragmentContainer as ArtworkMeta } from "./Components/ArtworkMeta"
 import { ArtworkSidebarFragmentContainer as ArtworkSidebar } from "./Components/ArtworkSidebar"
 import { ImageBrowserFragmentContainer as ImageBrowser } from "./Components/ImageBrowser"
 import { OtherWorksFragmentContainer as OtherWorks } from "./Components/OtherWorks"
@@ -80,6 +81,7 @@ export const ArtworkApp: React.SFC<Props> = props => {
       </Row>
 
       <div id="lightbox-container" />
+      <ArtworkMeta artwork={props.artwork} />
     </HorizontalPadding>
   )
 }
@@ -92,6 +94,7 @@ export const ArtworkAppFragmentContainer = createFragmentContainer(
       artist {
         id
       }
+      ...ArtworkMeta_artwork
       ...ArtworkBanner_artwork
       ...ArtworkSidebar_artwork
       ...ArtworkDetails_artwork
