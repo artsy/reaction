@@ -6,7 +6,7 @@ import { Col } from "Styleguide/Elements/Grid"
 import { Section } from "Styleguide/Utils/Section"
 
 storiesOf("Apps/Artwork Page/Components/ArtworkBrowser", module).add(
-  "ImageBrowser",
+  "ArtworkBrowser",
   () => {
     return (
       <>
