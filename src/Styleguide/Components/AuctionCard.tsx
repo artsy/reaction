@@ -101,6 +101,8 @@ export const AuctionCardFragmentContainer = createFragmentContainer<{
   props => {
     const { sale } = props
 
+    if (!sale) return
+
     const statusLabel = upcomingLabel(
       sale.start_at,
       sale.end_at,
