@@ -1,5 +1,6 @@
-import { Box, color, Flex, Sans, Serif, space } from "@artsy/palette"
+import { Box, color, Flex, Sans, Serif } from "@artsy/palette"
 import { unica } from "Assets/Fonts"
+import { media, pMedia } from "Components/Helpers"
 import { Author, StyledAuthor } from "Components/Publishing/Byline/Author"
 import { Date, DateContainer } from "Components/Publishing/Byline/Date"
 import { Share } from "Components/Publishing/Byline/Share"
@@ -8,19 +9,23 @@ import { ArticleProps } from "Components/Publishing/Layouts/FeatureLayout"
 import { Nav, NavContainer } from "Components/Publishing/Nav/Nav"
 import { ArticleCards } from "Components/Publishing/RelatedArticles/ArticleCards/ArticleCards"
 import { CaptionContainer } from "Components/Publishing/Sections/Caption"
-import { ImageCollection } from "Components/Publishing/Sections/ImageCollection"
+import {
+  ImageCollection,
+  ImageCollectionItem,
+} from "Components/Publishing/Sections/ImageCollection"
 import {
   ImageSetContainer,
   ImageSetPreview,
 } from "Components/Publishing/Sections/ImageSetPreview"
+import { SocialEmbed } from "Components/Publishing/Sections/SocialEmbed"
 import React from "react"
 import styled from "styled-components"
 
 export class Eoy2018Culture extends React.Component<ArticleProps> {
   sectionText = (section, i) => {
     return (
-      <TextContainer key={i} px={[20, 55]} py={30} mx="auto">
-        <Box width={["100%", "70%"]} mx="auto" maxWidth={1000}>
+      <TextContainer key={i} px={[10, 10, 55]} py={30} mx="auto">
+        <Box width={["100%", "100%", "70%"]} mx="auto" maxWidth={1000}>
           <Serif size="5">
             <div dangerouslySetInnerHTML={{ __html: section.body }} />
           </Serif>
@@ -31,9 +36,17 @@ export class Eoy2018Culture extends React.Component<ArticleProps> {
 
   sectionHeaderText = (section, i) => {
     return (
-      <SectionHeader key={i}>
+      <SectionHeader key={i} pt={10} pb={[10, 10, 20]} px={[10, 10, 55]}>
         <div dangerouslySetInnerHTML={{ __html: section.body }} />
       </SectionHeader>
+    )
+  }
+
+  sectionSocialEmbed = (section, i) => {
+    return (
+      <SectionWrapper key={i} px={[10, 10, 55]} py={40}>
+        <SocialEmbed section={section} />
+      </SectionWrapper>
     )
   }
 
@@ -53,7 +66,7 @@ export class Eoy2018Culture extends React.Component<ArticleProps> {
 
   sectionImageSet = (section, i) => {
     return (
-      <ImageSetWrapper key={i} px={55}>
+      <ImageSetWrapper key={i} px={[0, 0, 55]}>
         <ImageSetPreview section={section} />
       </ImageSetWrapper>
     )
@@ -104,6 +117,9 @@ export class Eoy2018Culture extends React.Component<ArticleProps> {
           case "image_set": {
             return this.sectionImageSet(section, i)
           }
+          case "social_embed": {
+            return this.sectionSocialEmbed(section, i)
+          }
           default: {
             return null
           }
@@ -122,34 +138,40 @@ export class Eoy2018Culture extends React.Component<ArticleProps> {
       <ArticleWrapper>
         <Nav canFix color="black" backgroundColor="white" />
 
-        <ArticleHeader>
-          <ArticleTitle size="16" weight="medium" px={55} pb={10} pt={20}>
+        <SectionWrapper>
+          <ArticleTitle
+            size="16"
+            weight="medium"
+            px={[10, 10, 55]}
+            pb={10}
+            pt={20}
+          >
             <div>Year In Visual Culture</div>
             <div>2018</div>
           </ArticleTitle>
           <HeaderImg src={article.hero_section.url} />
-        </ArticleHeader>
+        </SectionWrapper>
 
-        <TextContainer px={[20, 55]} py={30} mx="auto">
+        <TextContainer px={[10, 10, 55]} py={30} mx="auto">
           <Box maxWidth={1400} mx="auto">
             <Flex
               pb={20}
               alignItems="center"
               flexDirection={["row-reverse", "row"]}
             >
-              <Box width={["100%", "15%"]}>
+              <Box width={["100%", "100%", "15%"]}>
                 <Share
                   url={getArticleFullHref(article.slug)}
                   title={article.social_title || article.thumbnail_title}
                 />
               </Box>
-              <Flex width={["100%", "70%"]} maxWidth={1000}>
+              <Flex width={["100%", "100%", "70%"]} maxWidth={1000}>
                 <Author authors={article.authors} />
                 <Date date={article.published_at} />
               </Flex>
             </Flex>
 
-            <Box width={["100%", "70%"]} maxWidth={1000} mx="auto">
+            <Box width={["100%", "100%", "70%"]} maxWidth={1000} mx="auto">
               {introText && (
                 <div dangerouslySetInnerHTML={{ __html: introText }} />
               )}
@@ -167,7 +189,7 @@ export class Eoy2018Culture extends React.Component<ArticleProps> {
         })}
 
         {article.relatedArticles && (
-          <Box pl={55} pr={55} my={40} mx="auto">
+          <Box px={[10, 10, 55]} my={40} mx="auto">
             <ArticleCards relatedArticles={article.relatedArticles} />
           </Box>
         )}
@@ -188,6 +210,10 @@ const ArticleWrapper = styled.div`
   }
   ${StyledAuthor} {
     margin-top: 0;
+
+    ${media.xs`
+      width: max-content;
+    `};
   }
 `
 
@@ -203,9 +229,12 @@ const ChapterWrapper = styled.div<{ isDark?: boolean }>`
   `};
 `
 
-const TextContainer = styled(Box)`
+const SectionWrapper = styled(Box)`
   border-bottom: ${BORDER_WIDTH}px solid;
+  position: relative;
+`
 
+const TextContainer = styled(SectionWrapper)`
   blockquote {
     ${unica("s34")};
     padding: 20px 0;
@@ -220,6 +249,12 @@ const TextContainer = styled(Box)`
       text-indent: 0;
     }
   }
+
+  ${media.sm`
+    blockquote {
+      font-size: 24px;
+    }
+  `};
 `
 
 const ArticleTitle = styled(Sans)`
@@ -229,9 +264,8 @@ const ArticleTitle = styled(Sans)`
   line-height: 1em;
 `
 
-const SectionHeader = styled.div<{ isDark?: boolean }>`
+const SectionHeader = styled(Box)<{ isDark?: boolean }>`
   border-bottom: ${BORDER_WIDTH}px solid;
-  padding: ${space(2)}px ${space(4)}px ${space(1)}px;
 
   > div {
     max-width: 1600px;
@@ -252,6 +286,24 @@ const SectionHeader = styled.div<{ isDark?: boolean }>`
     line-height: 1em;
     text-align: right;
   }
+
+  ${media.md`
+    h1 {
+      font-size: 45px;;
+    }
+    h2 {
+      font-size: 30px;
+    }
+  `};
+
+  ${media.xs`
+    h1 {
+      font-size: 30px;;
+    }
+    h2 {
+      font-size: 20px;
+    }
+`};
 `
 
 const HeaderImg = styled.img`
@@ -262,12 +314,7 @@ const HeaderImg = styled.img`
   width: 100%;
 `
 
-const ArticleHeader = styled.div`
-  border-bottom: ${BORDER_WIDTH}px solid black;
-`
-
-const ImageWrapper = styled.div`
-  border-bottom: ${BORDER_WIDTH}px solid;
+const ImageWrapper = styled(SectionWrapper)`
   img {
     max-height: calc(100vh - 50px);
     min-height: 400px;
@@ -275,13 +322,26 @@ const ImageWrapper = styled.div`
     object-position: center;
   }
 
+  ${ImageCollectionItem} {
+    ${pMedia.xs`
+      margin-bottom: 0;
+    `};
+  }
+
   ${CaptionContainer} {
-    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 5px;
+
+    p {
+      font-size: 10px;
+      color: white;
+      opacity: 0.6;
+      text-shadow: 0 0 5px black;
+    }
   }
 `
-const ImageSetWrapper = styled(Box)`
-  border-bottom: ${BORDER_WIDTH}px solid;
-
+const ImageSetWrapper = styled(SectionWrapper)`
   ${ImageSetContainer} {
     width: 70%;
     max-width: 1000px;
@@ -291,5 +351,8 @@ const ImageSetWrapper = styled(Box)`
     img {
       width: 100%;
     }
+    ${media.md`
+      width: 100%;
+    `};
   }
 `

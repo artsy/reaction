@@ -21,21 +21,22 @@ const DeepZoomContainer = styled.div`
   background-color: ${color("black100")};
 `
 
-export interface LightboxProps {
-  deepZoom: {
-    Image: {
-      xmlns: string
-      Url: string
-      Format: string
-      Overlap: number
-      TileSize: number
-      Size: {
-        Width: number
-        Height: number
-      }
+export interface DeepZoomProps {
+  Image: {
+    xmlns: string
+    Url: string
+    Format: string
+    Overlap: number
+    TileSize: number
+    Size: {
+      Width: number
+      Height: number
     }
   }
+}
 
+export interface LightboxProps {
+  deepZoom: DeepZoomProps
   enabled?: boolean
 
   /**

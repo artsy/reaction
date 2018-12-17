@@ -8,7 +8,6 @@ import { SIZE_ME_REFRESH_RATE } from "../Constants"
 import { ArticleLayout, SectionLayout } from "../Typings"
 import { Artwork } from "./Artwork"
 import { Image } from "./Image"
-import { ImageCollectionItem } from "./ImageCollectionItem"
 
 interface ImageCollectionProps {
   images: any
@@ -107,6 +106,18 @@ const ImageCollectionContainer = styled.div`
 
   ${pMedia.xs`
     flex-direction: column;
+  `};
+`
+
+export const ImageCollectionItem = styled.div<{
+  margin?: number
+  width?: number
+}>`
+  margin-right: ${props => (props.margin ? props.margin + "px" : "0px")};
+  width: ${props => (props.width ? props.width + "px" : "100%")};
+
+  ${pMedia.xs`
+    margin-bottom: 10px;
   `};
 `
 

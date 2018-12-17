@@ -1,6 +1,64 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Sections snapshots renders properly 1`] = `
+.c31 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c32 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c34 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c33 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 26px;
+  padding-bottom: 8px;
+}
+
+.c35 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.c36 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  padding-left: 20px;
+}
+
 .c46 {
   font-family: artsy-icons;
   color: black;
@@ -218,6 +276,18 @@ exports[`Sections snapshots renders properly 1`] = `
   color: black;
 }
 
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
 .c6 {
   margin-right: 10px;
   width: 197px;
@@ -251,76 +321,6 @@ exports[`Sections snapshots renders properly 1`] = `
 .c26 {
   margin-right: 0px;
   width: 222px;
-}
-
-.c5 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-}
-
-.c31 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
-
-.c32 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
-
-.c34 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c33 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 26px;
-  padding-bottom: 8px;
-}
-
-.c35 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
-}
-
-.c36 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 12px;
-  line-height: 16px;
-  padding-left: 20px;
 }
 
 .c37 {
@@ -615,6 +615,42 @@ exports[`Sections snapshots renders properly 1`] = `
   max-width: 780px;
 }
 
+@media screen and (min-width:40em) {
+  .c33 {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c33 {
+    line-height: 30px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c35 {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c35 {
+    line-height: 24px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c36 {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c36 {
+    line-height: 24px;
+  }
+}
+
 @media (max-width:600px) {
   .c42 {
     font-family: Unica77LLWebMedium,Arial,serif;
@@ -652,6 +688,14 @@ exports[`Sections snapshots renders properly 1`] = `
 @media (max-width:600px) {
   .c13 {
     padding: 0px;
+  }
+}
+
+@media (max-width:600px) {
+  .c5 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
   }
 }
 
@@ -694,50 +738,6 @@ exports[`Sections snapshots renders properly 1`] = `
 @media (max-width:600px) {
   .c26 {
     margin-bottom: 10px;
-  }
-}
-
-@media (max-width:600px) {
-  .c5 {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c33 {
-    font-size: 18px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c33 {
-    line-height: 30px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c35 {
-    font-size: 14px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c35 {
-    line-height: 24px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c36 {
-    font-size: 14px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c36 {
-    line-height: 24px;
   }
 }
 
@@ -2108,11 +2108,15 @@ exports[`Sections snapshots renders properly 1`] = `
           </div>
         </div>
       </div>
-      <img
-        alt="The Work of Bruce M. Sherman"
-        className="c38"
-        src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FCzofaZln2q-XhtXFqIio5A%252F07272017133815-0001%2B%2528dragged%2529%2Bcopy.jpg&width=800&quality=80"
-      />
+      <div
+        className=""
+      >
+        <img
+          alt="The Work of Bruce M. Sherman"
+          className="c38"
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FCzofaZln2q-XhtXFqIio5A%252F07272017133815-0001%2B%2528dragged%2529%2Bcopy.jpg&width=800&quality=80"
+        />
+      </div>
     </div>
   </div>
   <div

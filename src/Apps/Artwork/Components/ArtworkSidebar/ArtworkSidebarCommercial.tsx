@@ -5,6 +5,7 @@ import {
   FlexProps,
   Radio,
   RadioGroup,
+  Sans,
   Separator,
   Serif,
 } from "@artsy/palette"
@@ -67,7 +68,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
 
   renderSaleMessage(saleMessage: string) {
     return (
-      <Box pb={2} pt={1}>
+      <Box mb={1} mt={1}>
         <Serif size="5t" weight="semibold">
           {saleMessage}
         </Serif>
@@ -225,16 +226,16 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
           </>
         )}
         {artworkEcommerceAvailable &&
-          artwork.shippingInfo && (
-            <Serif size="2" color="black60">
-              {artwork.shippingInfo}
-            </Serif>
+          artwork.shippingOrigin && (
+            <Sans size="2" color="black60">
+              Ships from {artwork.shippingOrigin}
+            </Sans>
           )}
         {artworkEcommerceAvailable &&
-          artwork.shippingOrigin && (
-            <Serif size="2" color="black60">
-              Ships from {artwork.shippingOrigin}
-            </Serif>
+          artwork.shippingInfo && (
+            <Sans mb={2} size="2" color="black60">
+              {artwork.shippingInfo}
+            </Sans>
           )}
         {artwork.is_inquireable && (
           <Button
@@ -243,7 +244,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
             mt={1}
             onClick={this.handleInquiry}
           >
-            Contact Gallery
+            Contact gallery
           </Button>
         )}
         {artwork.is_acquireable && (
@@ -254,7 +255,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
             loading={isCommittingCreateOrderMutation}
             onClick={this.handleCreateOrder}
           >
-            Buy Now
+            Buy now
           </Button>
         )}
         {artwork.is_offerable && (
@@ -266,7 +267,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
             size="medium"
             mt={1}
           >
-            Make Offer
+            Make offer
           </Button>
         )}
 

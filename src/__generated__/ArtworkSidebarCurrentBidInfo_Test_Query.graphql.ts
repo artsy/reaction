@@ -43,11 +43,14 @@ fragment ArtworkSidebarCurrentBidInfo_artwork on Artwork {
     __id
   }
   myLotStanding(live: true) {
-    active_bid {
-      is_winning
+    most_recent_bid {
       max_bid {
         display
       }
+      __id
+    }
+    active_bid {
+      is_winning
       __id
     }
   }
@@ -85,7 +88,7 @@ return {
   "operationKind": "query",
   "name": "ArtworkSidebarCurrentBidInfo_Test_Query",
   "id": null,
-  "text": "query ArtworkSidebarCurrentBidInfo_Test_Query {\n  artwork(id: \"auction_artwork_estimate_premium\") {\n    ...ArtworkSidebarCurrentBidInfo_artwork\n    __id\n  }\n}\n\nfragment ArtworkSidebarCurrentBidInfo_artwork on Artwork {\n  _id\n  sale {\n    is_closed\n    is_live_open\n    __id\n  }\n  sale_artwork {\n    is_with_reserve\n    reserve_message\n    reserve_status\n    current_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  myLotStanding(live: true) {\n    active_bid {\n      is_winning\n      max_bid {\n        display\n      }\n      __id\n    }\n  }\n  __id\n}\n",
+  "text": "query ArtworkSidebarCurrentBidInfo_Test_Query {\n  artwork(id: \"auction_artwork_estimate_premium\") {\n    ...ArtworkSidebarCurrentBidInfo_artwork\n    __id\n  }\n}\n\nfragment ArtworkSidebarCurrentBidInfo_artwork on Artwork {\n  _id\n  sale {\n    is_closed\n    is_live_open\n    __id\n  }\n  sale_artwork {\n    is_with_reserve\n    reserve_message\n    reserve_status\n    current_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  myLotStanding(live: true) {\n    most_recent_bid {\n      max_bid {\n        display\n      }\n      __id\n    }\n    active_bid {\n      is_winning\n      __id\n    }\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -240,6 +243,28 @@ return {
               {
                 "kind": "LinkedField",
                 "alias": null,
+                "name": "most_recent_bid",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "BidderPosition",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "max_bid",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "BidderPositionMaxBid",
+                    "plural": false,
+                    "selections": v2
+                  },
+                  v1
+                ]
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
                 "name": "active_bid",
                 "storageKey": null,
                 "args": null,
@@ -252,16 +277,6 @@ return {
                     "name": "is_winning",
                     "args": null,
                     "storageKey": null
-                  },
-                  {
-                    "kind": "LinkedField",
-                    "alias": null,
-                    "name": "max_bid",
-                    "storageKey": null,
-                    "args": null,
-                    "concreteType": "BidderPositionMaxBid",
-                    "plural": false,
-                    "selections": v2
                   },
                   v1
                 ]

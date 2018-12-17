@@ -1,5 +1,6 @@
 import {
   AuctionPreview,
+  AuctionPreviewNoStartingBid,
   ClosedAuctionArtwork,
   LiveAuctionInProgeress,
   OpenAuctionNoReserveNoBids,
@@ -47,6 +48,10 @@ storiesOf("Styleguide/Artwork/Sidebar", module).add("CurrentBidInfo", () => {
       <Section title="Auction preview">
         <CurrentBidInfo artwork={AuctionPreview as any} />
       </Section>
+      <Section title="Auction preview with no start bid">
+        <CurrentBidInfo artwork={AuctionPreviewNoStartingBid as any} />
+      </Section>
+
       <Section title="Live auction in progress">
         <CurrentBidInfo artwork={LiveAuctionInProgeress as any} />
       </Section>

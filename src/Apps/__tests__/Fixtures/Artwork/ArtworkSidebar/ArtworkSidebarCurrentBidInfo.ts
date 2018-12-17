@@ -38,6 +38,24 @@ export const AuctionPreview = {
   myLotStanding: null,
 }
 
+export const AuctionPreviewNoStartingBid = {
+  _id: "artwork_from_auction_preview",
+  sale: {
+    is_closed: false,
+    is_live_open: false,
+  },
+  sale_artwork: {
+    is_with_reserve: false,
+    reserve_message: null,
+    reserve_status: "no_reserve",
+    current_bid: null,
+    counts: {
+      bidder_positions: 0,
+    },
+  },
+  myLotStanding: null,
+}
+
 export const OpenAuctionNoReserveNoBids = {
   _id: "open_auction_no_reserve_no_bids",
   sale: {
@@ -144,11 +162,13 @@ export const OpenAuctionReserveMetWithMyWinningBid = {
   ...OpenAuctionReserveMetWithBids,
   myLotStanding: [
     {
-      active_bid: {
-        is_winning: true,
+      most_recent_bid: {
         max_bid: {
           display: "$15,000",
         },
+      },
+      active_bid: {
+        is_winning: true,
       },
     },
   ],
@@ -159,11 +179,13 @@ export const OpenAuctionReserveMetWithMyLosingBid = {
   ...OpenAuctionReserveMetWithBids,
   myLotStanding: [
     {
-      active_bid: {
-        is_winning: false,
+      most_recent_bid: {
         max_bid: {
           display: "$400",
         },
+      },
+      active_bid: {
+        is_winning: false,
       },
     },
   ],

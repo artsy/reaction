@@ -8,6 +8,7 @@ export type Reject_order = {
     readonly id: string | null;
     readonly stateExpiresAt: string | null;
     readonly lastOffer: ({
+        readonly id: string | null;
         readonly createdAt: string | null;
     }) | null;
     readonly " $fragmentRefs": ArtworkSummaryItem_order$ref;
@@ -18,6 +19,13 @@ export type Reject_order = {
 
 const node: ConcreteFragment = (function(){
 var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v1 = {
   "kind": "ScalarField",
   "alias": "__id",
   "name": "id",
@@ -31,13 +39,7 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "id",
-      "args": null,
-      "storageKey": null
-    },
+    v0,
     {
       "kind": "ScalarField",
       "alias": null,
@@ -54,6 +56,7 @@ return {
       "concreteType": "Offer",
       "plural": false,
       "selections": [
+        v0,
         {
           "kind": "ScalarField",
           "alias": null,
@@ -61,7 +64,7 @@ return {
           "args": null,
           "storageKey": null
         },
-        v0
+        v1
       ]
     },
     {
@@ -69,9 +72,9 @@ return {
       "name": "ArtworkSummaryItem_order",
       "args": null
     },
-    v0
+    v1
   ]
 };
 })();
-(node as any).hash = 'd746efa662d0fedb92f9cabe02e4c049';
+(node as any).hash = '73a56b9bef18b094bacc24c3be7c684c';
 export default node;

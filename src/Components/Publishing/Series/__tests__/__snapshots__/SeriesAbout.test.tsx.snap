@@ -360,7 +360,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   }
 }
 
-@media (max-width:48em) {
+@media (max-width:768px) {
   .c2:first-of-type .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
     display: none;
   }
@@ -371,7 +371,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   }
 }
 
-@media (max-width:48em) {
+@media (max-width:768px) {
   .c4 {
     margin-bottom: 20px;
   }
@@ -773,7 +773,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   }
 }
 
-@media (max-width:48em) {
+@media (max-width:768px) {
   .c2:first-of-type .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
     display: none;
   }
@@ -784,7 +784,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   }
 }
 
-@media (max-width:48em) {
+@media (max-width:768px) {
   .c4 {
     margin-bottom: 20px;
   }
@@ -1179,7 +1179,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   }
 }
 
-@media (max-width:48em) {
+@media (max-width:768px) {
   .c2:first-of-type .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
     display: none;
   }
@@ -1190,7 +1190,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   }
 }
 
-@media (max-width:48em) {
+@media (max-width:768px) {
   .c4 {
     margin-bottom: 20px;
   }
@@ -1623,7 +1623,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   }
 }
 
-@media (max-width:48em) {
+@media (max-width:768px) {
   .c2:first-of-type .c5 {
     display: none;
   }
@@ -1634,7 +1634,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   }
 }
 
-@media (max-width:48em) {
+@media (max-width:768px) {
   .c4 {
     margin-bottom: 20px;
   }

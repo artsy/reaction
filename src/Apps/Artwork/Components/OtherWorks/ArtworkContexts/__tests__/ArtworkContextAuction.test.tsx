@@ -1,4 +1,5 @@
 import { ArtworkContextAuctionFixture } from "Apps/__tests__/Fixtures/Artwork/OtherWorks/ArtworkContexts/ArtworkContextAuction.fixture"
+import { MockBoot } from "DevTools"
 import { RelayStubProvider } from "DevTools/RelayStubProvider"
 import { mount } from "enzyme"
 import { cloneDeep } from "lodash"
@@ -9,9 +10,9 @@ describe("ArtworkContextAuction", () => {
   const getWrapper = (props = ArtworkContextAuctionFixture) => {
     return mount(
       <RelayStubProvider>
-        <ArtworkContextAuctionFragmentContainer
-          artwork={props.artwork as any}
-        />
+        <MockBoot breakpoint="lg">
+          <ArtworkContextAuctionFragmentContainer viewer={props as any} />
+        </MockBoot>
       </RelayStubProvider>
     )
   }

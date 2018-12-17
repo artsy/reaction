@@ -17,10 +17,10 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
   render() {
     const { artwork } = this.props
 
-    // We do not have reliable Bid info on Live sales in progress
-    if (artwork.sale && artwork.sale.is_live_open) return null
+    // We do not have reliable Bid info for artworks in Live sales in progress
+    if (artwork.sale.is_live_open) return null
 
-    if (artwork.sale && artwork.sale.is_closed) {
+    if (artwork.sale.is_closed) {
       return (
         <Box pt={2} pb={2}>
           <Serif size="5t" weight="semibold" color="black100">
@@ -30,6 +30,9 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
       )
     }
 
+    // Don't display anything if there is no starting bid info
+    if (!artwork.sale_artwork || !artwork.sale_artwork.current_bid) return null
+
     const bidsCount = get(artwork, a => a.sale_artwork.counts.bidder_positions)
     const bidsPresent = bidsCount > 0
     const bidColor =
@@ -38,6 +41,7 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
       artwork.sale_artwork.reserve_status === "reserve_not_met"
         ? "red100"
         : "black60"
+
     const bidTextParts = []
     let reserveMessage = artwork.sale_artwork.reserve_message
     if (bidsPresent) {
@@ -48,7 +52,6 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
       reserveMessage = reserveMessage + "."
       bidTextParts.push(reserveMessage)
     }
-
     const bidText = bidTextParts.join(", ")
 
     /**
@@ -58,6 +61,10 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
      */
     const myLotStanding = artwork.myLotStanding && artwork.myLotStanding[0]
     const activeBid = myLotStanding && myLotStanding.active_bid
+    const myMaxBid = get(
+      myLotStanding,
+      ls => ls.most_recent_bid.max_bid.display
+    )
     const myBidPresent = !!activeBid
     return (
       <Box pt={2} pb={2}>
@@ -84,12 +91,11 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
           <Sans size="2" color={bidColor} pr={1}>
             {bidText}
           </Sans>
-          {myBidPresent &&
-            activeBid.max_bid && (
-              <Sans size="2" color="black60" pl={1}>
-                Your max: {activeBid.max_bid.display}
-              </Sans>
-            )}
+          {myMaxBid && (
+            <Sans size="2" color="black60" pl={1}>
+              Your max: {myMaxBid}
+            </Sans>
+          )}
         </Flex>
       </Box>
     )
@@ -117,11 +123,13 @@ export const ArtworkSidebarCurrentBidInfoFragmentContainer = createFragmentConta
         }
       }
       myLotStanding(live: true) {
-        active_bid {
-          is_winning
+        most_recent_bid {
           max_bid {
             display
           }
+        }
+        active_bid {
+          is_winning
         }
       }
     }

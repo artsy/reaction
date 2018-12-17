@@ -17,6 +17,7 @@ declare module "sharify" {
      */
     export interface GlobalData {
       readonly APP_URL: string
+      readonly PREDICTION_URL: string
       readonly FORCE_CLOUDFRONT_URL: string
       readonly GEMINI_CLOUDFRONT_URL: string
       readonly METAPHYSICS_ENDPOINT: string

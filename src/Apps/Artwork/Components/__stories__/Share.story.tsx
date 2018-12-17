@@ -1,5 +1,5 @@
 import { Flex } from "@artsy/palette"
-import { Share } from "Apps/Artwork/Components/Share"
+import { Share } from "Apps/Artwork/Components/ImageBrowser/Share"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 
