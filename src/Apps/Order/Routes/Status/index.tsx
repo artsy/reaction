@@ -35,7 +35,9 @@ export class StatusRoute extends Component<StatusProps> {
     const buyerRejectedOffer = stateReason === "buyer_rejected"
     switch (state) {
       case "SUBMITTED":
-        return "Your order has been submitted."
+        return isOfferFlow
+          ? "Your offer has been submitted."
+          : "Your order has been submitted."
       case "APPROVED":
         return isOfferFlow ? "Offer accepted" : "Your order is confirmed."
       case "FULFILLED":
@@ -72,7 +74,7 @@ export class StatusRoute extends Component<StatusProps> {
           {this.stateCopy()}
         </Serif>
         <Sans size="2" weight="regular" color="black60" mb={[2, 3]}>
-          #{flowName} #{order.code}
+          {flowName} #{order.code}
         </Sans>
         <TwoColumnLayout
           Content={
