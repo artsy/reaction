@@ -50,5 +50,5 @@ const NewsNavContainer = styled.div`
   border-bottom: 1px solid ${colors.grayRegular};
   padding: 10px 0;
   background: white;
-  z-index: 1;
+  z-index: 11;
 `
