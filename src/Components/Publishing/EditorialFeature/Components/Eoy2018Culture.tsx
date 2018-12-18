@@ -17,6 +17,10 @@ import {
   ImageSetContainer,
   ImageSetPreview,
 } from "Components/Publishing/Sections/ImageSetPreview"
+import {
+  SlideshowCta,
+  SlideshowTitle,
+} from "Components/Publishing/Sections/ImageSetPreview/ImageSetLabel"
 import { SocialEmbed } from "Components/Publishing/Sections/SocialEmbed"
 import React from "react"
 import styled from "styled-components"
@@ -355,6 +359,16 @@ const ImageSetWrapper = styled(SectionWrapper)`
 
     img {
       width: 100%;
+    }
+
+    ${SlideshowTitle} {
+      display: none;
+    }
+    ${SlideshowCta} {
+      flex-direction: column;
+      > div {
+        padding: 0;
+      }
     }
     ${media.md`
       width: 100%;

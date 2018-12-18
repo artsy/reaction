@@ -21,6 +21,7 @@ import {
 } from "Components/Publishing/Sections/ImageSetPreview"
 import {
   LabelWrapper,
+  SlideshowCta,
   SlideshowTitle,
 } from "Components/Publishing/Sections/ImageSetPreview/ImageSetLabel"
 import { resize } from "Utils/resizer"
@@ -414,6 +415,12 @@ const ImageSetWrapper = styled(Box)`
 
   ${SlideshowTitle} {
     display: none;
+  }
+  ${SlideshowCta} {
+    flex-direction: column;
+    > div {
+      padding: 0;
+    }
   }
 
   ${ImgContainer} {

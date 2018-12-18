@@ -1,6 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a series properly 1`] = `
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .c7 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-weight: 600;
@@ -66,34 +73,15 @@ exports[`renders a series properly 1`] = `
   vertical-align: middle;
 }
 
-.c2 {
+.c1 {
   background-color: transparent;
   border-bottom: 1px solid white;
-  position: absolute;
-  top: 0;
-}
-
-.c1 {
   position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   height: 52px;
   width: 100%;
   z-index: 10;
-}
-
-.c1 a {
-  z-index: 10;
+  position: absolute;
+  top: 0;
 }
 
 .c6 {
@@ -122,6 +110,7 @@ exports[`renders a series properly 1`] = `
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
+  z-index: 10;
 }
 
 .c33 {
@@ -1112,6 +1101,13 @@ exports[`renders a series properly 1`] = `
 `;
 
 exports[`renders a sponsored series properly 1`] = `
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .c9 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-weight: 600;
@@ -1182,34 +1178,15 @@ exports[`renders a sponsored series properly 1`] = `
   vertical-align: middle;
 }
 
-.c2 {
+.c1 {
   background-color: transparent;
   border-bottom: 1px solid white;
-  position: absolute;
-  top: 0;
-}
-
-.c1 {
   position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   height: 52px;
   width: 100%;
   z-index: 10;
-}
-
-.c1 a {
-  z-index: 10;
+  position: absolute;
+  top: 0;
 }
 
 .c8 {
@@ -1238,6 +1215,7 @@ exports[`renders a sponsored series properly 1`] = `
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
+  z-index: 10;
 }
 
 .c40 {
