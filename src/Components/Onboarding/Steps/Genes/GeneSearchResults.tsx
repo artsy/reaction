@@ -137,24 +137,27 @@ class GeneSearchResultsContent extends React.Component<Props, null> {
   }
 
   render() {
-    const items = this.props.viewer.match_gene.map((item, index) => (
-      <LinkContainer key={`gene-search-results-${index}`}>
-        <ReplaceTransition
-          transitionEnterTimeout={1000}
-          transitionLeaveTimeout={400}
-        >
-          <ItemLink
-            href="#"
-            item={item}
-            key={item.id}
-            id={item.id}
-            name={item.name}
-            image_url={get(item, i => i.image.cropped.url)}
-            onClick={() => this.followedGene(item)}
-          />
-        </ReplaceTransition>
-      </LinkContainer>
-    ))
+    const items = this.props.viewer.match_gene.map((item, index) => {
+      const imageUrl = get(item, i => i.image.cropped.url)
+      return (
+        <LinkContainer key={`gene-search-results-${index}`}>
+          <ReplaceTransition
+            transitionEnterTimeout={1000}
+            transitionLeaveTimeout={400}
+          >
+            <ItemLink
+              href="#"
+              item={item}
+              key={item.id}
+              id={item.id}
+              name={item.name}
+              image_url={imageUrl}
+              onClick={() => this.followedGene(item)}
+            />
+          </ReplaceTransition>
+        </LinkContainer>
+      )
+    })
 
     if (items.length < 1) {
       return <NoResultsContainer>No Results Found</NoResultsContainer>

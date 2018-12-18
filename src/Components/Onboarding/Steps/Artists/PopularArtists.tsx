@@ -164,24 +164,27 @@ class PopularArtistsContent extends React.Component<Props, null> {
   render() {
     const artistItems = this.props.popular_artists.artists
       .filter(Boolean)
-      .map((artist, index) => (
-        <LinkContainer key={`popular-artists-${index}`}>
-          <ReplaceTransition
-            transitionEnterTimeout={1000}
-            transitionLeaveTimeout={400}
-          >
-            <ItemLink
-              href="#"
-              item={artist}
-              key={artist.id}
-              id={artist.id}
-              name={artist.name}
-              image_url={get(artist, a => a.image.cropped.url)}
-              onClick={() => this.onFollowedArtist(artist)}
-            />
-          </ReplaceTransition>
-        </LinkContainer>
-      ))
+      .map((artist, index) => {
+        const imageUrl = get(artist, a => a.image.cropped.url)
+        return (
+          <LinkContainer key={`popular-artists-${index}`}>
+            <ReplaceTransition
+              transitionEnterTimeout={1000}
+              transitionLeaveTimeout={400}
+            >
+              <ItemLink
+                href="#"
+                item={artist}
+                key={artist.id}
+                id={artist.id}
+                name={artist.name}
+                image_url={imageUrl}
+                onClick={() => this.onFollowedArtist(artist)}
+              />
+            </ReplaceTransition>
+          </LinkContainer>
+        )
+      })
 
     return <div>{artistItems}</div>
   }

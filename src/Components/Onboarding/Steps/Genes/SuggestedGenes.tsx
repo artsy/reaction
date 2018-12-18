@@ -121,25 +121,28 @@ class SuggestedGenesContent extends React.Component<Props> {
   }
 
   render() {
-    const items = this.props.suggested_genes.map((item, index) => (
-      <LinkContainer key={`suggested-genes-${index}`}>
-        <ReplaceTransition
-          transitionEnterTimeout={1000}
-          transitionLeaveTimeout={400}
-        >
-          <ItemLink
-            href="#"
-            item={item}
-            key={item.id}
-            id={item.id}
-            _id={item._id}
-            name={item.name}
-            image_url={get(item, i => i.image.cropped.url)}
-            onClick={() => this.followedGene(item)}
-          />
-        </ReplaceTransition>
-      </LinkContainer>
-    ))
+    const items = this.props.suggested_genes.map((item, index) => {
+      const imageUrl = get(item, i => i.image.cropped.url)
+      return (
+        <LinkContainer key={`suggested-genes-${index}`}>
+          <ReplaceTransition
+            transitionEnterTimeout={1000}
+            transitionLeaveTimeout={400}
+          >
+            <ItemLink
+              href="#"
+              item={item}
+              key={item.id}
+              id={item.id}
+              _id={item._id}
+              name={item.name}
+              image_url={imageUrl}
+              onClick={() => this.followedGene(item)}
+            />
+          </ReplaceTransition>
+        </LinkContainer>
+      )
+    })
 
     return <div>{items}</div>
   }

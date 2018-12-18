@@ -153,24 +153,28 @@ class ArtistSearchResultsContent extends React.Component<Props, null> {
   }
 
   render() {
-    const artistItems = this.props.viewer.match_artist.map((artist, index) => (
-      <LinkContainer key={`artist-search-results-${index}`}>
-        <ReplaceTransition
-          transitionEnterTimeout={1000}
-          transitionLeaveTimeout={400}
-        >
-          <ItemLink
-            href="#"
-            item={artist}
-            key={artist.id}
-            id={artist.id}
-            name={artist.name}
-            image_url={artist && get(artist, a => a.image.cropped.url)}
-            onClick={() => this.onFollowedArtist(artist)}
-          />
-        </ReplaceTransition>
-      </LinkContainer>
-    ))
+    const artistItems = this.props.viewer.match_artist.map((artist, index) => {
+      const imageUrl = get(artist, a => a.image.cropped.url)
+
+      return (
+        <LinkContainer key={`artist-search-results-${index}`}>
+          <ReplaceTransition
+            transitionEnterTimeout={1000}
+            transitionLeaveTimeout={400}
+          >
+            <ItemLink
+              href="#"
+              item={artist}
+              key={artist.id}
+              id={artist.id}
+              name={artist.name}
+              image_url={imageUrl}
+              onClick={() => this.onFollowedArtist(artist)}
+            />
+          </ReplaceTransition>
+        </LinkContainer>
+      )
+    })
 
     return <div>{artistItems}</div>
   }
