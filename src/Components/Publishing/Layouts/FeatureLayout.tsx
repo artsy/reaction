@@ -40,7 +40,7 @@ export const FeatureLayout: React.SFC<ArticleProps> = props => {
     article.hero_section &&
     article.hero_section.type === "fullscreen"
   const sponsor = (seriesArticle && seriesArticle.sponsor) || article.sponsor
-  const hasRelated = relatedArticlesForCanvas && !isSuper && !seriesArticle
+  const seriesOrSuper = isSuper || seriesArticle
 
   return (
     <FeatureLayoutContainer>
@@ -64,7 +64,8 @@ export const FeatureLayout: React.SFC<ArticleProps> = props => {
 
       {seriesArticle && <ArticleCardsBlock {...props} />}
 
-      {(hasRelated || display) &&
+      {(relatedArticlesForCanvas || display) &&
+        !seriesOrSuper &&
         !customEditorial && (
           <CanvasFooter
             article={article}

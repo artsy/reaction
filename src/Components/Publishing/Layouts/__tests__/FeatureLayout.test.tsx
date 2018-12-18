@@ -1,9 +1,13 @@
+import { DisplayCanvas } from "Components/Publishing/Display/Canvas"
 import {
   FeatureArticle,
   SeriesArticle,
   SeriesArticleSponsored,
 } from "Components/Publishing/Fixtures/Articles"
-import { RelatedCanvas } from "Components/Publishing/Fixtures/Components"
+import {
+  Display,
+  RelatedCanvas,
+} from "Components/Publishing/Fixtures/Components"
 import { Nav } from "Components/Publishing/Nav/Nav"
 import { ArticleCardsBlock } from "Components/Publishing/RelatedArticles/ArticleCards/Block"
 import { RelatedArticlesCanvas } from "Components/Publishing/RelatedArticles/Canvas/RelatedArticlesCanvas"
@@ -21,7 +25,7 @@ jest.mock(
   })
 )
 
-it("renders RelatedArticlesCanvas", () => {
+it("renders RelatedArticlesCanvas if article is not super or in a series", () => {
   const article = mount(
     <FeatureLayout
       article={FeatureArticle}
@@ -31,10 +35,36 @@ it("renders RelatedArticlesCanvas", () => {
   expect(article.find(RelatedArticlesCanvas).length).toBe(1)
 })
 
-it("Does not render RelatedArticlesCanvas if isSuper", () => {
+it("Does not render RelatedArticlesCanvas if article is super", () => {
   const article = mount(
     <FeatureLayout
       article={FeatureArticle}
+      relatedArticlesForCanvas={RelatedCanvas}
+      isSuper
+    />
+  )
+  expect(article.find(RelatedArticlesCanvas).length).toBe(0)
+})
+
+it("Does not render RelatedArticlesCanvas if article is super and display is not undefined", () => {
+  const article = mount(
+    <FeatureLayout
+      article={FeatureArticle}
+      relatedArticlesForCanvas={RelatedCanvas}
+      display={Display("feature")}
+      isSuper
+    />
+  )
+  expect(article.find(RelatedArticlesCanvas).length).toBe(0)
+})
+
+it("Does not render RelatedArticlesCanvas if article is in a series", () => {
+  const Article = extend(cloneDeep(FeatureArticle), {
+    seriesArticle: SeriesArticle,
+  })
+  const article = mount(
+    <FeatureLayout
+      article={Article}
       relatedArticlesForCanvas={RelatedCanvas}
       isSuper
     />
@@ -50,6 +80,43 @@ it("renders a nav if article is in a series", () => {
     <FeatureLayout article={Article} relatedArticlesForCanvas={RelatedCanvas} />
   )
   expect(article.find(Nav).length).toBe(1)
+})
+
+it("renders display if article is not super or in a series", () => {
+  const article = mount(
+    <FeatureLayout
+      article={FeatureArticle}
+      relatedArticlesForCanvas={RelatedCanvas}
+      display={Display("feature")}
+    />
+  )
+  expect(article.find(DisplayCanvas).length).toBe(1)
+})
+
+it("does not render display if article is in a series", () => {
+  const Article = extend(cloneDeep(FeatureArticle), {
+    seriesArticle: SeriesArticle,
+  })
+  const article = mount(
+    <FeatureLayout
+      article={Article}
+      relatedArticlesForCanvas={RelatedCanvas}
+      display={Display("feature")}
+    />
+  )
+  expect(article.find(DisplayCanvas).length).toBe(0)
+})
+
+it("does not render display if article is super", () => {
+  const article = mount(
+    <FeatureLayout
+      article={FeatureArticle}
+      relatedArticlesForCanvas={RelatedCanvas}
+      display={Display("feature")}
+      isSuper
+    />
+  )
+  expect(article.find(DisplayCanvas).length).toBe(0)
 })
 
 it("does not render a nav if article has a non-fullscreen header", () => {
