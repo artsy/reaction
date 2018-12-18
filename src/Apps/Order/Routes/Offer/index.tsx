@@ -8,7 +8,7 @@ import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { Input } from "Components/Input"
 import { ErrorModal } from "Components/Modal/ErrorModal"
-import { Router } from "found"
+import { RouteConfig, Router } from "found"
 import React, { Component } from "react"
 import {
   commitMutation,
@@ -29,6 +29,7 @@ export interface OfferProps {
   mediator: Mediator
   relay?: RelayProp
   router: Router
+  route: RouteConfig
 }
 
 export interface OfferState {
@@ -37,6 +38,7 @@ export interface OfferState {
   isErrorModalOpen: boolean
   errorModalTitle: string
   errorModalMessage: string
+  errorModalCtaAction: () => null
 }
 
 const logger = createLogger("Order/Routes/Offer/index.tsx")
@@ -48,6 +50,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
     isErrorModalOpen: false,
     errorModalTitle: null,
     errorModalMessage: null,
+    errorModalCtaAction: null,
   }
 
   onContinueButtonPressed: () => void = () => {
@@ -98,14 +101,24 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
             const {
               ecommerceAddInitialOfferToOrder: { orderOrError },
             } = data
+            const error = orderOrError.error
 
-            if (orderOrError.error) {
-              this.onMutationError(
-                new ErrorWithMetadata(
-                  orderOrError.error.code,
-                  orderOrError.error
-                )
-              )
+            if (error) {
+              switch (error.code) {
+                case "artwork_version_mismatch": {
+                  this.onMutationError(
+                    new ErrorWithMetadata(error.code, error),
+                    "Work has been updated",
+                    "Something about the work changed since you started checkout. Please review before submitting.",
+                    this.routeToArtworkPage.bind(this)
+                  )
+                  break
+                }
+                default: {
+                  this.onMutationError(new ErrorWithMetadata(error.code, error))
+                  break
+                }
+              }
             } else {
               this.props.router.push(`/orders/${this.props.order.id}/shipping`)
             }
@@ -116,13 +129,29 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
     })
   }
 
-  onMutationError(error, errorModalTitle?, errorModalMessage?) {
+  routeToArtworkPage() {
+    const artworkId = get(
+      this.props.order,
+      o => o.lineItems.edges[0].node.artwork.id
+    )
+    // Don't confirm whether or not you want to leave the page
+    this.props.route.onTransition = () => null
+    window.location.assign(`/artwork/${artworkId}`)
+  }
+
+  onMutationError(
+    error,
+    errorModalTitle?,
+    errorModalMessage?,
+    errorModalCtaAction?
+  ) {
     logger.error(error)
     this.setState({
       isCommittingMutation: false,
       isErrorModalOpen: true,
       errorModalTitle,
       errorModalMessage,
+      errorModalCtaAction,
     })
   }
 
@@ -237,6 +266,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
           contactEmail="orders@artsy.net"
           detailText={this.state.errorModalMessage}
           headerText={this.state.errorModalTitle}
+          ctaAction={this.state.errorModalCtaAction}
         />
       </>
     )

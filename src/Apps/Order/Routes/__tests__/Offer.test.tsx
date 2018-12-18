@@ -10,6 +10,7 @@ import { UntouchedOfferOrder } from "../../../__tests__/Fixtures/Order"
 import { TransactionDetailsSummaryItem } from "../../Components/TransactionDetailsSummaryItem"
 import {
   initialOfferFailedCannotOffer,
+  initialOfferFailedVersionMismatch,
   initialOfferSuccess,
 } from "../__fixtures__/MutationResults"
 import { OfferFragmentContainer as OfferRoute } from "../Offer"
@@ -37,6 +38,7 @@ describe("Offer InitialMutation", () => {
       relay: { environment: {} } as RelayProp,
       router: { push: jest.fn() },
       mediator: { trigger: jest.fn() },
+      route: { onTransition: jest.fn() },
     } as any
   })
 
@@ -131,6 +133,30 @@ describe("Offer InitialMutation", () => {
 
       component.find(ModalButton).simulate("click")
       expect(component.find(ErrorModal).props().show).toBe(false)
+    })
+
+    it("shows an error modal if the underlying artwork has been updated while making offer", () => {
+      window.location.assign = jest.fn()
+
+      const component = getWrapper(testProps)
+      const mockCommitMutation = commitMutation as jest.Mock<any>
+      mockCommitMutation.mockImplementationOnce(
+        (_environment, { onCompleted }) => {
+          onCompleted(initialOfferFailedVersionMismatch)
+        }
+      )
+
+      component.find(Button).simulate("click")
+
+      const errorComponent = component.find(ErrorModal)
+      expect(errorComponent.props().show).toBe(true)
+      expect(errorComponent.text()).toContain(
+        "Something about the work changed since you started checkout. Please review before submitting."
+      )
+
+      component.find(ModalButton).simulate("click")
+
+      expect(window.location.assign).toBeCalledWith("/artwork/artworkId")
     })
   })
 })

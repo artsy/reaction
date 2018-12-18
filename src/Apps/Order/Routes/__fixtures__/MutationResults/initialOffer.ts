@@ -26,3 +26,14 @@ export const initialOfferFailedCannotOffer = {
     },
   },
 }
+
+export const initialOfferFailedVersionMismatch = {
+  ecommerceAddInitialOfferToOrder: {
+    orderOrError: {
+      error: {
+        type: "processing",
+        code: "artwork_version_mismatch",
+      },
+    },
+  },
+}
