@@ -104,14 +104,15 @@ class ArtistShows extends Component<ArtistShowsProps, LoadingAreaState> {
                       <Flex flexDirection={["column", "row"]} flexWrap="wrap">
                         {this.props.artist.showsConnection.edges.map(
                           ({ node }, index) => {
+                            const imageUrl = get(
+                              node,
+                              n => n.cover_image.cropped.url
+                            )
                             return (
                               <React.Fragment key={index}>
                                 <ArtistShowBlockItem
                                   blockWidth={["100%", "50%"]}
-                                  imageUrl={get(
-                                    node,
-                                    n => n.cover_image.cropped.url
-                                  )}
+                                  imageUrl={imageUrl}
                                   partner={node.partner && node.partner.name}
                                   name={node.name}
                                   exhibitionInfo={node.exhibition_period}

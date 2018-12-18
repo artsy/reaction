@@ -176,7 +176,7 @@ class PopularArtistsContent extends React.Component<Props, null> {
               key={artist.id}
               id={artist.id}
               name={artist.name}
-              image_url={artist.image && get(artist.image, i => i.cropped.url)}
+              image_url={get(artist, a => a.image.cropped.url)}
               onClick={() => this.onFollowedArtist(artist)}
             />
           </ReplaceTransition>
