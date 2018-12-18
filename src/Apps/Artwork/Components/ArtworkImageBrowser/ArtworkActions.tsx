@@ -1,6 +1,7 @@
 import { color, Flex } from "@artsy/palette"
 import { ArtworkActions_artwork } from "__generated__/ArtworkActions_artwork.graphql"
-import SaveButton from "Components/Artwork/Save"
+import { Heart } from "Assets/Icons/Heart"
+import SaveButton, { SaveProps, SaveState } from "Components/Artwork/Save"
 import Icon from "Components/Icon"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -33,7 +34,7 @@ export class ArtworkActions extends React.Component<
   render() {
     return (
       <Container>
-        <SaveButton artwork={this.props.artwork} />
+        <SaveButton artwork={this.props.artwork} render={Save} />
         <ShareButton onClick={this.toggleSharePanel} />
 
         {this.state.showSharePanel && (
@@ -73,3 +74,12 @@ const ShareButton = styled(Icon).attrs({
   cursor: pointer;
   user-select: false;
 `
+
+/**
+ * Custom renderer for SaveButton
+ */
+const Save = (props: SaveProps, state: SaveState) => {
+  const { is_saved, isHovered } = state
+  const fill = is_saved || isHovered ? color("purple100") : color("black100")
+  return <Heart fill={fill} style={{ cursor: "pointer" }} />
+}

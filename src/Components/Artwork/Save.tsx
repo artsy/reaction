@@ -18,7 +18,7 @@ import Icon from "../Icon"
 
 const SIZE = 40
 
-export interface Props
+export interface SaveProps
   extends Artsy.ContextProps,
     React.HTMLProps<React.ComponentType> {
   artwork: Save_artwork
@@ -32,13 +32,13 @@ export interface Props
 
 // TODO: This will be refactored out once Artworks / Grids are full Relay in Force
 // and intermediate local state becomes unnecessary
-interface State {
+export interface SaveState {
   is_saved: boolean
   isHovered: boolean
 }
 
 @track()
-export class SaveButton extends React.Component<Props, State> {
+export class SaveButton extends React.Component<SaveProps, SaveState> {
   static defaultProps = {
     useRelay: true,
   }
@@ -56,7 +56,7 @@ export class SaveButton extends React.Component<Props, State> {
     return isSaved
   }
 
-  @track<Props>(
+  @track<SaveProps>(
     props =>
       ({
         action_type: props.artwork.is_saved
@@ -117,7 +117,7 @@ export class SaveButton extends React.Component<Props, State> {
         },
         onError: error => {
           // Revert optimistic update
-          if (!useRelay) {
+          if (!useRelay || this.props.render) {
             this.setState({
               is_saved: this.isSaved,
             })
@@ -126,7 +126,8 @@ export class SaveButton extends React.Component<Props, State> {
           console.error("Artwork/Save Error saving artwork: ", error)
         },
         onCompleted: ({ saveArtwork }) => {
-          if (!useRelay) {
+          // FIXME:
+          if (!useRelay || this.props.render) {
             this.setState({
               is_saved: saveArtwork.artwork.is_saved,
             })
