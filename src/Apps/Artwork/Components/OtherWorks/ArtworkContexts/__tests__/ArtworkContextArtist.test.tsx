@@ -1,9 +1,10 @@
-import { ArtworkContextArtistFixture } from "Apps/__tests__/Fixtures/Artwork/OtherWorks/ArtworkContexts/ArtworkContextArtist.fixture"
-import { MockBoot, renderRelayTree } from "DevTools"
 import { ReactWrapper } from "enzyme"
 import React from "react"
 import { graphql } from "react-relay"
-import { ArtworkContextArtistFragmentContainer } from "../ArtworkContextArtist"
+
+import { ArtworkContextArtistFixture } from "Apps/__tests__/Fixtures/Artwork/OtherWorks/ArtworkContexts/ArtworkContextArtist.fixture"
+import { MockBoot, renderRelayTree } from "DevTools"
+import { ArtworkContextArtistFragmentContainer } from "../ArtworkContexts/ArtworkContextArtist"
 
 jest.unmock("react-relay")
 

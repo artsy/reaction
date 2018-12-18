@@ -1,9 +1,9 @@
 import { RelatedWorksArtworkGridFixture } from "Apps/__tests__/Fixtures/Artwork/OtherWorks/ArtworkContexts/RelatedWorksArtworkGrid.fixture"
+import { RelatedWorksArtworkGridRefetchContainer } from "Apps/Artwork/Components/OtherWorks/ArtworkGrids/RelatedWorksArtworkGrid"
 import { MockBoot, renderRelayTree } from "DevTools"
 import { ReactWrapper } from "enzyme"
 import React from "react"
 import { graphql } from "react-relay"
-import { RelatedWorksArtworkGridRefetchContainer } from "../ArtworkGrids/RelatedWorksArtworkGrid"
 
 jest.unmock("react-relay")
 

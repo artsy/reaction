@@ -1,18 +1,19 @@
 import { Join, Spacer } from "@artsy/palette"
-import { ArtworkContextPartnerShow_artwork } from "__generated__/ArtworkContextPartnerShow_artwork.graphql"
-import { ArtworkContextPartnerShowQuery } from "__generated__/ArtworkContextPartnerShowQuery.graphql"
-import { ContextConsumer } from "Artsy"
-import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
-import { OtherWorksContextProps } from ".."
+
+import { ArtworkContextPartnerShow_artwork } from "__generated__/ArtworkContextPartnerShow_artwork.graphql"
+import { ArtworkContextPartnerShowQuery } from "__generated__/ArtworkContextPartnerShowQuery.graphql"
+import { OtherWorksContextProps } from "Apps/Artwork/Components/OtherWorks"
+import { ContextConsumer } from "Artsy"
+import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 
 import {
   ArtistArtworkGrid,
   PartnerArtworkGrid,
   PartnerShowArtworkGrid,
   RelatedWorksArtworkGrid,
-} from "./ArtworkGrids"
+} from "Apps/Artwork/Components/OtherWorks/ArtworkGrids"
 
 export const ArtworkContextPartnerShowQueryRenderer: React.SFC<
   OtherWorksContextProps

@@ -1,9 +1,9 @@
 import { ArtistArtworkGrid_artwork } from "__generated__/ArtistArtworkGrid_artwork.graphql"
+import { Header } from "Apps/Artwork/Components/OtherWorks/Header"
 import ArtworkGrid from "Components/ArtworkGrid"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
-import { Header } from "../../Header"
 
 export const ArtistArtworkGridFragmentContainer = createFragmentContainer<{
   artwork: ArtistArtworkGrid_artwork

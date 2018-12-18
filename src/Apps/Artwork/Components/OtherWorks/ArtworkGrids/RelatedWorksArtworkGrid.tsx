@@ -1,23 +1,22 @@
-import { take } from "lodash"
-import React from "react"
-
+import { Spinner } from "@artsy/palette"
+import { RelatedWorksArtworkGrid_artwork } from "__generated__/RelatedWorksArtworkGrid_artwork.graphql"
+import { RelatedWorksArtworkGridQuery } from "__generated__/RelatedWorksArtworkGridQuery.graphql"
+import { Header } from "Apps/Artwork/Components/OtherWorks/Header"
 import { ContextConsumer } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
+import ArtworkGrid from "Components/ArtworkGrid"
+import { take } from "lodash"
+import React from "react"
+import styled from "styled-components"
+import { Tab, Tabs } from "Styleguide/Components"
+import createLogger from "Utils/logger"
+
 import {
   createRefetchContainer,
   graphql,
   QueryRenderer,
   RelayRefetchProp,
 } from "react-relay"
-
-import { Spinner } from "@artsy/palette"
-import { RelatedWorksArtworkGrid_artwork } from "__generated__/RelatedWorksArtworkGrid_artwork.graphql"
-import { RelatedWorksArtworkGridQuery } from "__generated__/RelatedWorksArtworkGridQuery.graphql"
-import { Header } from "Apps/Artwork/Components/OtherWorks/Header"
-import ArtworkGrid from "Components/ArtworkGrid"
-import styled from "styled-components"
-import { Tab, Tabs } from "Styleguide/Components"
-import createLogger from "Utils/logger"
 
 const logger = createLogger("RelatedWorksArtworkGrid.tsx")
 

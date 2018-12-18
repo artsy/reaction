@@ -1,22 +1,22 @@
-import { ArtworkContextAuction_viewer } from "__generated__/ArtworkContextAuction_viewer.graphql"
-import { ArtworkContextAuctionQuery } from "__generated__/ArtworkContextAuctionQuery.graphql"
-import { ContextConsumer } from "Artsy"
-import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
+import { Join, Spacer } from "@artsy/palette"
 import React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 
-import { Join, Spacer } from "@artsy/palette"
+import { ArtworkContextAuction_viewer } from "__generated__/ArtworkContextAuction_viewer.graphql"
+import { ArtworkContextAuctionQuery } from "__generated__/ArtworkContextAuctionQuery.graphql"
 import { OtherAuctions } from "Apps/Artwork/Components/OtherAuctions"
+import { OtherWorksContextProps } from "Apps/Artwork/Components/OtherWorks"
+import { ContextConsumer } from "Artsy"
+import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { AuctionCardFragmentContainer as AuctionCard } from "Styleguide/Components/AuctionCard"
-import { OtherWorksContextProps } from ".."
+
 import {
   ArtistArtworkGrid,
   AuctionArtworkGrid,
   RelatedWorksArtworkGrid,
-} from "./ArtworkGrids"
+} from "Apps/Artwork/Components/OtherWorks/ArtworkGrids"
 
 interface ArtworkContextAuctionProps extends OtherWorksContextProps {
-  /** If the artwork  */
   isClosed: boolean
 }
 

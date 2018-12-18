@@ -1,22 +1,22 @@
-import { PartnerArtworkGrid_artwork } from "__generated__/PartnerArtworkGrid_artwork.graphql"
+import { FairArtworkGrid_artwork } from "__generated__/FairArtworkGrid_artwork.graphql"
+import { Header } from "Apps/Artwork/Components/OtherWorks/Header"
 import ArtworkGrid from "Components/ArtworkGrid"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
-import { Header } from "../../Header"
 
-export const PartnerArtworkGridFragmentContainer = createFragmentContainer<{
-  artwork: PartnerArtworkGrid_artwork
+export const FairArtworkGridFragmentContainer = createFragmentContainer<{
+  artwork: FairArtworkGrid_artwork
 }>(
   ({
     artwork: {
-      partner: { artworksConnection, href, name },
+      fair: { href, artworksConnection },
     },
   }) => {
     return (
       <>
         <Header
-          title={`Other works from ${name}`}
+          title={"Other works from the booth"}
           buttonHref={sd.APP_URL + href}
         />
         <ArtworkGrid artworks={artworksConnection} columnCount={[2, 3, 4]} />
@@ -24,17 +24,16 @@ export const PartnerArtworkGridFragmentContainer = createFragmentContainer<{
     )
   },
   graphql`
-    fragment PartnerArtworkGrid_artwork on Artwork
+    fragment FairArtworkGrid_artwork on Artwork
       @argumentDefinitions(excludeArtworkIDs: { type: "[String!]" }) {
-      partner {
+      fair: show(at_a_fair: true) {
         artworksConnection(first: 8, exclude: $excludeArtworkIDs) {
           ...ArtworkGrid_artworks
         }
         href
-        name
       }
     }
   `
 )
 
-PartnerArtworkGridFragmentContainer.displayName = "PartnerArtworkGrid"
+FairArtworkGridFragmentContainer.displayName = "FairArtworkGrid"
