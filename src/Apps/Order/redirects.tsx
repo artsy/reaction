@@ -1,7 +1,8 @@
 import { routes_OrderQueryResponse } from "__generated__/routes_OrderQuery.graphql"
-import { Location, RedirectException, RouteConfig, Router } from "found"
+import { Location, RouteConfig, Router } from "found"
 import moment from "moment"
 import { get } from "Utils/get"
+import { RedirectPredicate, RedirectRecord } from "./getRedirect"
 import { OrderApp } from "./OrderApp"
 
 const LEAVE_MESSAGING =
@@ -28,18 +29,6 @@ export const confirmRouteExit = (
   }
 
   return LEAVE_MESSAGING
-}
-
-type RedirectPredicate = (
-  args: {
-    order: routes_OrderQueryResponse["order"]
-  }
-) => string | void
-
-interface RedirectRecord {
-  path: string
-  rules: RedirectPredicate[]
-  children?: RedirectRecord[]
 }
 
 const goToStatusIf = (
@@ -115,7 +104,9 @@ const goToRespondIfMyLastOfferIsNotMostRecentOffer: RedirectPredicate = ({
   return `/orders/${order.id}/respond`
 }
 
-const redirects: RedirectRecord = {
+export const redirects: RedirectRecord<{
+  order: routes_OrderQueryResponse["order"]
+}> = {
   path: "",
   rules: [goToArtworkIfOrderWasAbandoned],
   children: [
@@ -188,46 +179,3 @@ const redirects: RedirectRecord = {
     },
   ],
 }
-
-export const shouldRedirect = ({
-  location,
-  order,
-}: {
-  location: Location
-  order: routes_OrderQueryResponse["order"]
-}) => {
-  if (!order) {
-    return false
-  }
-
-  function traverse(node: RedirectRecord, path: string): void {
-    node.rules.forEach(rule => {
-      const redirectPath = rule({ order })
-      if (redirectPath) {
-        throw new RedirectException(redirectPath)
-      }
-    })
-    if (path.length > 0 && node.children) {
-      // find most specific matching child (i.e. longest path match)
-      const matchingChild = node.children
-        .filter(child => path.startsWith(child.path))
-        .sort((a, b) => a.path.split("/").length - b.path.split("/").length)
-        .pop()
-      if (matchingChild) {
-        traverse(
-          matchingChild,
-          trimLeadingSlashes(path.slice(matchingChild.path.length))
-        )
-      }
-    }
-  }
-
-  traverse(
-    redirects,
-    trimLeadingSlashes(location.pathname.replace(/order(2|s)\/[^\/]+/, ""))
-  )
-
-  return false
-}
-
-const trimLeadingSlashes = (s: string) => s.replace(/^\/+/, "")
