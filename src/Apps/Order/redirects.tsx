@@ -104,6 +104,12 @@ const goToRespondIfMyLastOfferIsNotMostRecentOffer: RedirectPredicate = ({
   return `/orders/${order.id}/respond`
 }
 
+const goToRespondIfAwaitingBuyerResponse: RedirectPredicate = ({ order }) => {
+  if (order.awaitingResponseFrom === "BUYER") {
+    return `/orders/${order.id}/respond`
+  }
+}
+
 export const redirects: RedirectRecord<{
   order: routes_OrderQueryResponse["order"]
 }> = {
@@ -175,6 +181,7 @@ export const redirects: RedirectRecord<{
         goToReviewIfOrderIsPending,
         goToShippingIfShippingIsNotCompleted,
         goToPaymentIfPaymentIsNotCompleted,
+        goToRespondIfAwaitingBuyerResponse,
       ],
     },
   ],
