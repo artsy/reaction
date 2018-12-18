@@ -45,18 +45,16 @@ export class WithCurrentTime extends React.Component<
   intervalId: NodeJS.Timer
 
   componentDidMount() {
+    if (this.props.syncWithServer) {
+      getOffsetBetweenGravityClock().then(timeOffsetInMilliseconds => {
+        this.setState({ timeOffsetInMilliseconds })
+      })
+    }
+
     this.intervalId = setInterval(
       this.setCurrentTime,
       this.props.interval || 1000
     )
-  }
-
-  async componentWillMount() {
-    if (this.props.syncWithServer) {
-      const timeOffsetInMilliseconds = await getOffsetBetweenGravityClock()
-
-      this.setState({ timeOffsetInMilliseconds })
-    }
   }
 
   componentWillUnmount() {
