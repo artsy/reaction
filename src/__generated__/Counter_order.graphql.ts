@@ -19,6 +19,9 @@ export type Counter_order = {
     readonly lastOffer?: ({
         readonly createdAt: string | null;
     }) | null;
+    readonly myLastOffer?: ({
+        readonly id: string | null;
+    }) | null;
     readonly " $fragmentRefs": TransactionDetailsSummaryItem_order$ref & ArtworkSummaryItem_order$ref & ShippingSummaryItem_order$ref & CreditCardSummaryItem_order$ref & OfferHistoryItem_order$ref;
     readonly " $refType": Counter_order$ref;
 };
@@ -28,12 +31,19 @@ export type Counter_order = {
 const node: ConcreteFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v1 = {
+  "kind": "ScalarField",
   "alias": "__id",
   "name": "id",
   "args": null,
   "storageKey": null
 },
-v1 = [
+v2 = [
   {
     "kind": "Literal",
     "name": "precision",
@@ -48,14 +58,8 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "id",
-      "args": null,
-      "storageKey": null
-    },
     v0,
+    v1,
     {
       "kind": "ScalarField",
       "alias": null,
@@ -67,14 +71,14 @@ return {
       "kind": "ScalarField",
       "alias": null,
       "name": "itemsTotal",
-      "args": v1,
+      "args": v2,
       "storageKey": "itemsTotal(precision:2)"
     },
     {
       "kind": "ScalarField",
       "alias": null,
       "name": "totalListPrice",
-      "args": v1,
+      "args": v2,
       "storageKey": "totalListPrice(precision:2)"
     },
     {
@@ -136,7 +140,20 @@ return {
               "args": null,
               "storageKey": null
             },
-            v0
+            v1
+          ]
+        },
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "myLastOffer",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "Offer",
+          "plural": false,
+          "selections": [
+            v0,
+            v1
           ]
         }
       ]
@@ -144,5 +161,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '53059a64667f6767a97fbacce52642d3';
+(node as any).hash = '3416f55c8b2ec2f82884106ddf1b5cb2';
 export default node;

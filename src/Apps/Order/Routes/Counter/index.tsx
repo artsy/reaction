@@ -1,5 +1,6 @@
 import { Button, Flex, Spacer } from "@artsy/palette"
 import { Counter_order } from "__generated__/Counter_order.graphql"
+import { CounterSubmitMutation } from "__generated__/CounterSubmitMutation.graphql"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
 import { ConditionsOfSaleDisclaimer } from "Apps/Order/Components/ConditionsOfSaleDisclaimer"
 import { CreditCardSummaryItemFragmentContainer as CreditCardSummaryItem } from "Apps/Order/Components/CreditCardSummaryItem"
@@ -14,10 +15,16 @@ import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
 import React, { Component } from "react"
-import { createFragmentContainer, graphql, RelayProp } from "react-relay"
+import {
+  commitMutation,
+  createFragmentContainer,
+  graphql,
+  RelayProp,
+} from "react-relay"
 import { CountdownTimer } from "Styleguide/Components/CountdownTimer"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
+import { ErrorWithMetadata } from "Utils/errors"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
 
@@ -47,8 +54,40 @@ export class CounterRoute extends Component<CounterProps, CounterState> {
 
   onSubmitButtonPressed: () => void = () => {
     this.setState({ isCommittingMutation: true }, () => {
-      window.alert("You clicked submit.")
-      this.setState({ isCommittingMutation: false })
+      commitMutation<CounterSubmitMutation>(this.props.relay.environment, {
+        mutation: graphql`
+          mutation CounterSubmitMutation($input: submitPendingOfferInput!) {
+            ecommerceSubmitPendingOffer(input: $input) {
+              orderOrError {
+                ... on OrderWithMutationSuccess {
+                  order {
+                    state
+                  }
+                }
+                ... on OrderWithMutationFailure {
+                  error {
+                    type
+                    code
+                    data
+                  }
+                }
+              }
+            }
+          }
+        `,
+        variables: {
+          input: {
+            offerId: this.props.order.myLastOffer.id,
+          },
+        },
+        onCompleted: result => {
+          const {
+            ecommerceSubmitPendingOffer: { orderOrError },
+          } = result
+          this.onSubmitCompleted(orderOrError)
+        },
+        onError: this.onMutationError.bind(this),
+      })
     })
   }
 
@@ -60,6 +99,17 @@ export class CounterRoute extends Component<CounterProps, CounterState> {
       errorModalTitle,
       errorModalMessage,
     })
+  }
+
+  onSubmitCompleted = orderOrError => {
+    if (orderOrError.error) {
+      this.onMutationError(
+        new ErrorWithMetadata(orderOrError.error.code, orderOrError.error)
+      )
+    } else {
+      this.setState({ isCommittingMutation: false })
+      this.props.router.push(`/orders/${this.props.order.id}/status`)
+    }
   }
 
   onCloseModal = () => {
@@ -185,6 +235,9 @@ export const CounterFragmentContainer = createFragmentContainer(
       ... on OfferOrder {
         lastOffer {
           createdAt
+        }
+        myLastOffer {
+          id
         }
       }
       ...TransactionDetailsSummaryItem_order
