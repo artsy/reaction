@@ -80,6 +80,6 @@ const ShareButton = styled(Icon).attrs({
  */
 const Save = (props: SaveProps, state: SaveState) => {
   const { is_saved, isHovered } = state
-  const fill = is_saved || isHovered ? color("purple100") : color("black100")
-  return <Heart fill={fill} style={{ cursor: "pointer" }} />
+  const fill = isHovered ? color("purple100") : color("black100")
+  return <Heart fill={fill} selected={is_saved} style={{ cursor: "pointer" }} />
 }

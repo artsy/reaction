@@ -75,16 +75,8 @@ fragment ArtworkSharePanel_artwork on Artwork {
   images {
     url
   }
-  imageDescription: description
-  title
-  date
-  artists {
-    name
-    __id
-  }
-  partner {
-    name
-    __id
+  artworkMeta: meta {
+    description
   }
   __id
 }
@@ -127,23 +119,13 @@ v4 = {
   "name": "url",
   "args": null,
   "storageKey": null
-},
-v5 = [
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "name",
-    "args": null,
-    "storageKey": null
-  },
-  v2
-];
+};
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "ArtworkImageBrowserQuery",
   "id": null,
-  "text": "query ArtworkImageBrowserQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...ArtworkImageBrowser_artwork\n    __id\n  }\n}\n\nfragment ArtworkImageBrowser_artwork on Artwork {\n  title\n  image_alt: to_s\n  image_title\n  href\n  ...ArtworkActions_artwork\n  images {\n    id\n    uri: url(version: [\"larger\", \"large\"])\n    placeholder: resized(width: 30, height: 30, version: \"small\") {\n      url\n    }\n    aspectRatio: aspect_ratio\n    is_zoomable\n    deepZoom: deep_zoom {\n      Image {\n        xmlns\n        Url\n        Format\n        TileSize\n        Overlap\n        Size {\n          Width\n          Height\n        }\n      }\n    }\n  }\n  __id\n}\n\nfragment ArtworkActions_artwork on Artwork {\n  ...Save_artwork\n  ...ArtworkSharePanel_artwork\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment ArtworkSharePanel_artwork on Artwork {\n  href\n  images {\n    url\n  }\n  imageDescription: description\n  title\n  date\n  artists {\n    name\n    __id\n  }\n  partner {\n    name\n    __id\n  }\n  __id\n}\n",
+  "text": "query ArtworkImageBrowserQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...ArtworkImageBrowser_artwork\n    __id\n  }\n}\n\nfragment ArtworkImageBrowser_artwork on Artwork {\n  title\n  image_alt: to_s\n  image_title\n  href\n  ...ArtworkActions_artwork\n  images {\n    id\n    uri: url(version: [\"larger\", \"large\"])\n    placeholder: resized(width: 30, height: 30, version: \"small\") {\n      url\n    }\n    aspectRatio: aspect_ratio\n    is_zoomable\n    deepZoom: deep_zoom {\n      Image {\n        xmlns\n        Url\n        Format\n        TileSize\n        Overlap\n        Size {\n          Width\n          Height\n        }\n      }\n    }\n  }\n  __id\n}\n\nfragment ArtworkActions_artwork on Artwork {\n  ...Save_artwork\n  ...ArtworkSharePanel_artwork\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment ArtworkSharePanel_artwork on Artwork {\n  href\n  images {\n    url\n  }\n  artworkMeta: meta {\n    description\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -188,14 +170,14 @@ return {
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "is_saved",
+            "name": "title",
             "args": null,
             "storageKey": null
           },
           {
             "kind": "ScalarField",
-            "alias": null,
-            "name": "title",
+            "alias": "image_alt",
+            "name": "to_s",
             "args": null,
             "storageKey": null
           },
@@ -217,8 +199,8 @@ return {
           v3,
           {
             "kind": "ScalarField",
-            "alias": "image_alt",
-            "name": "to_s",
+            "alias": null,
+            "name": "is_saved",
             "args": null,
             "storageKey": null
           },
@@ -380,38 +362,22 @@ return {
             ]
           },
           {
-            "kind": "ScalarField",
-            "alias": "imageDescription",
-            "name": "description",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "date",
-            "args": null,
-            "storageKey": null
-          },
-          {
             "kind": "LinkedField",
-            "alias": null,
-            "name": "artists",
+            "alias": "artworkMeta",
+            "name": "meta",
             "storageKey": null,
             "args": null,
-            "concreteType": "Artist",
-            "plural": true,
-            "selections": v5
-          },
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "name": "partner",
-            "storageKey": null,
-            "args": null,
-            "concreteType": "Partner",
+            "concreteType": "ArtworkMeta",
             "plural": false,
-            "selections": v5
+            "selections": [
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "description",
+                "args": null,
+                "storageKey": null
+              }
+            ]
           }
         ]
       }

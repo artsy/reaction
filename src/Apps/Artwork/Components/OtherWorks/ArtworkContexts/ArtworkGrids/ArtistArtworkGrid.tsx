@@ -16,7 +16,10 @@ export const ArtistArtworkGridFragmentContainer = createFragmentContainer<{
           title={`Other works by ${artist.name}`}
           buttonHref={sd.APP_URL + artist.href}
         />
-        <ArtworkGrid artworks={artist.artworks_connection} />
+        <ArtworkGrid
+          artworks={artist.artworks_connection}
+          columnCount={[2, 3, 4]}
+        />
       </>
     )
   },

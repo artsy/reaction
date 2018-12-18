@@ -126,7 +126,6 @@ export class SaveButton extends React.Component<SaveProps, SaveState> {
           console.error("Artwork/Save Error saving artwork: ", error)
         },
         onCompleted: ({ saveArtwork }) => {
-          // FIXME:
           if (!useRelay || this.props.render) {
             this.setState({
               is_saved: saveArtwork.artwork.is_saved,

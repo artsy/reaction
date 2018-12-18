@@ -20,7 +20,7 @@ export const AuctionArtworkGridFragmentContainer = createFragmentContainer<{
           buttonHref={sd.APP_URL + href}
         />
 
-        <ArtworkGrid artworks={artworksConnection} />
+        <ArtworkGrid artworks={artworksConnection} columnCount={[2, 3, 4]} />
       </>
     )
   },

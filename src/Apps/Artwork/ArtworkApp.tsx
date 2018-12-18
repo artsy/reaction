@@ -54,7 +54,6 @@ export const ArtworkApp: React.SFC<Props> = props => {
           </Col>
         </Row>
       )}
-
       <Row>
         <Col>
           <Box mt={6}>

@@ -46,7 +46,7 @@ export class ArtworkDetails extends Component<ArtworkDetailsProps> {
   render() {
     const { artwork } = this.props
     return (
-      <ArtworkDetailsContainer pb={4}>
+      <ArtworkDetailsContainer mt={[4, 0]} pb={4}>
         <Tabs onChange={this.trackTabChange.bind(this)}>
           <Tab name="About the work" data={{ trackingLabel: "about_the_work" }}>
             <AboutTheWorkFromArtsy artwork={artwork} />

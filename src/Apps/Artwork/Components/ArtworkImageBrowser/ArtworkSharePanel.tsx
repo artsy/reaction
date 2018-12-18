@@ -3,6 +3,7 @@ import { ArtworkSharePanel_artwork } from "__generated__/ArtworkSharePanel_artwo
 import Icon from "Components/Icon"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { data as sd } from "sharify"
 import styled from "styled-components"
 
 interface ArtworkSharePanelProps {
@@ -59,7 +60,7 @@ export class ArtworkSharePanel extends React.Component<
     }
   }
 
-  openShareModal = ({ service, href }) => event => {
+  openShareModal = ({ service, url }) => event => {
     event.preventDefault()
 
     // Extracted from https://github.com/artsy/force/blob/master/src/desktop/components/share/view.coffee#L19
@@ -80,10 +81,10 @@ export class ArtworkSharePanel extends React.Component<
       .map(([key, value]) => `${key}=${value}`)
       .join(",")
 
-    window.open(href, service, options)
+    window.open(url, service, options)
   }
 
-  renderShareButton({ service, label, message, href }) {
+  renderShareButton({ service, label, message, url }) {
     return (
       <Flex
         flexDirection="row"
@@ -91,7 +92,7 @@ export class ArtworkSharePanel extends React.Component<
         mt={2}
         onClick={this.openShareModal({
           service,
-          href,
+          url,
         })}
       >
         <Icon name={service} color="black" />
@@ -104,10 +105,11 @@ export class ArtworkSharePanel extends React.Component<
 
   render() {
     const {
-      artwork: { href, imageDescription, images },
+      artwork: { href, artworkMeta, images },
     } = this.props
 
     const shareImageUrl = images && images[0].url
+    const url = sd.APP_URL + href
 
     return (
       <Container>
@@ -125,7 +127,7 @@ export class ArtworkSharePanel extends React.Component<
               <URLInput
                 type="text"
                 readOnly
-                value={href}
+                value={url}
                 innerRef={input => (this.input = input)}
                 onClick={this.handleCopy}
               />
@@ -140,31 +142,31 @@ export class ArtworkSharePanel extends React.Component<
               service: "facebook",
               label: "Facebook",
               message: "Post to Facebook",
-              href: `https://www.facebook.com/sharer/sharer.php?u=${href}`,
+              url: `https://www.facebook.com/sharer/sharer.php?u=${url}`,
             })}
             {this.renderShareButton({
               service: "twitter",
               label: "Twitter",
               message: "Share on Twitter",
-              href: `https://twitter.com/intent/tweet?original_referer=${href}&text=${imageDescription}&url=${href}&via=artsy`,
+              url: `https://twitter.com/intent/tweet?original_referer=${url}&text=${artworkMeta}&url=${url}&via=artsy`,
             })}
             {this.renderShareButton({
               service: "mail",
               label: "Mail",
               message: "Share via email",
-              href: `mailto:?subject=${imageDescription}&body=Check out ${imageDescription} on Artsy: ${href}`,
+              url: `mailto:?subject=${artworkMeta}&body=Check out ${artworkMeta} on Artsy: ${url}`,
             })}
             {this.renderShareButton({
               service: "pinterest",
               label: "Pinterest",
               message: "Pin It on Pinterest",
-              href: `https://pinterest.com/pin/create/button/?url=${href}&media=${shareImageUrl}&description=${imageDescription}`,
+              url: `https://pinterest.com/pin/create/button/?url=${url}&media=${shareImageUrl}&description=${artworkMeta}`,
             })}
             {this.renderShareButton({
               service: "tumblr",
               label: "Tumblr",
               message: "",
-              href: `https://www.tumblr.com/share/photo?source=${shareImageUrl}&caption=${imageDescription}&clickthru=${href}`,
+              url: `https://www.tumblr.com/share/photo?source=${shareImageUrl}&caption=${artworkMeta}&clickthru=${url}`,
             })}
           </Flex>
         </Flex>
@@ -181,14 +183,8 @@ export const ArtworkSharePanelFragmentContainer = createFragmentContainer(
       images {
         url
       }
-      imageDescription: description
-      title
-      date
-      artists {
-        name
-      }
-      partner {
-        name
+      artworkMeta: meta {
+        description
       }
     }
   `

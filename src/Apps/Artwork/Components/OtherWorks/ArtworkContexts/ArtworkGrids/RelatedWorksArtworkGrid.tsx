@@ -83,7 +83,10 @@ class RelatedWorksArtworkGrid extends React.Component<
                   {this.state.isLoading ? (
                     <Spinner />
                   ) : (
-                    <ArtworkGrid artworks={artworksConnection} />
+                    <ArtworkGrid
+                      artworks={artworksConnection}
+                      columnCount={[2, 3, 4]}
+                    />
                   )}
                 </ArtworksContainer>
               </Tab>

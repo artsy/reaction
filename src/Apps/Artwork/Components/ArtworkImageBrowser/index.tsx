@@ -5,7 +5,6 @@ import { ArtworkImageBrowser_artwork } from "__generated__/ArtworkImageBrowser_a
 import { ArtworkImageBrowserQuery } from "__generated__/ArtworkImageBrowserQuery.graphql"
 import { ContextConsumer } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
-// import { Actions } from "./Actions"
 import { ArtworkActionsFragmentContainer as ArtworkActions } from "./ArtworkActions"
 import { ArtworkImageBrowser } from "./ArtworkImageBrowser"
 

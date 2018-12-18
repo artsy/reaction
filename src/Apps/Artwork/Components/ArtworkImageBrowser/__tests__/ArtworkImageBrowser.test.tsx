@@ -28,7 +28,6 @@ describe("ArtworkImageBrowser", () => {
 
     it("renders correct container components", () => {
       expect(wrapper.find("ArtworkImageBrowser").length).toBe(1)
-      expect(wrapper.find("ActionButtons").length).toBe(1)
     })
 
     it("renders correct number of images", () => {
@@ -37,20 +36,6 @@ describe("ArtworkImageBrowser", () => {
 
     it("renders custom pagination dots", () => {
       expect(wrapper.find("PageIndicator").length).toBe(4)
-    })
-
-    it("renders share icons", () => {
-      expect(wrapper.find("ShareButton").length).toBe(1)
-      expect(wrapper.find("SaveButton").length).toBe(1)
-    })
-
-    it("opens share panel share button click", () => {
-      wrapper
-        .find("ActionIcon")
-        .last()
-        .simulate("click")
-      wrapper.update()
-      expect(wrapper.find("Share").length).toBe(1)
     })
 
     it("renders directional arrows", () => {
@@ -67,7 +52,6 @@ describe("ArtworkImageBrowser", () => {
 
     it("renders correct container components", () => {
       expect(wrapper.find("ArtworkImageBrowser").length).toBe(1)
-      expect(wrapper.find("ActionButtons").length).toBe(1)
     })
 
     it("renders correct number of images", () => {
@@ -76,20 +60,6 @@ describe("ArtworkImageBrowser", () => {
 
     it("renders custom pagination dots", () => {
       expect(wrapper.find("PageIndicator").length).toBe(4)
-    })
-
-    it("renders share icons", () => {
-      expect(wrapper.find("ShareButton").length).toBe(1)
-      expect(wrapper.find("SaveButton").length).toBe(1)
-    })
-
-    it("opens share panel share button click", () => {
-      wrapper
-        .find("ActionIcon")
-        .last()
-        .simulate("click")
-      wrapper.update()
-      expect(wrapper.find("Share").length).toBe(1)
     })
 
     it("renders does not render directional arrows", () => {
