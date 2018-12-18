@@ -22,10 +22,20 @@ import {
   SlideshowTitle,
 } from "Components/Publishing/Sections/ImageSetPreview/ImageSetLabel"
 import { SocialEmbed } from "Components/Publishing/Sections/SocialEmbed"
+import { SectionData } from "Components/Publishing/Typings"
 import React from "react"
+import Waypoint from "react-waypoint"
 import styled from "styled-components"
 
-export class Eoy2018Culture extends React.Component<ArticleProps> {
+interface State {
+  stickyHeader: SectionData | null
+}
+
+export class Eoy2018Culture extends React.Component<ArticleProps, State> {
+  state = {
+    stickyHeader: null,
+  }
+
   sectionText = (section, i) => {
     return (
       <TextContainer key={i} px={[10, 10, 55]} py={30} mx="auto">
@@ -140,8 +150,13 @@ export class Eoy2018Culture extends React.Component<ArticleProps> {
 
     return (
       <ArticleWrapper>
-        <Nav canFix color="black" backgroundColor="white" />
-
+        <Nav canFix color="black" backgroundColor="white">
+          {this.state.stickyHeader && (
+            <StickyHeader>
+              {this.sectionHeaderText(this.state.stickyHeader, 0)}
+            </StickyHeader>
+          )}
+        </Nav>
         <SectionWrapper>
           <ArticleTitle
             size="16"
@@ -181,13 +196,37 @@ export class Eoy2018Culture extends React.Component<ArticleProps> {
               )}
             </Box>
           </Box>
+          <Waypoint
+            onEnter={({ previousPosition }) => {
+              if (previousPosition === "above") {
+                this.setState({ stickyHeader: null })
+              }
+            }}
+          />
         </TextContainer>
 
         {chapters.map((chapter, i) => {
           const isDark = i % 2 === 0
           return (
             <ChapterWrapper isDark={isDark} key={i}>
+              <Waypoint
+                onLeave={({ currentPosition, previousPosition }) => {
+                  if (
+                    previousPosition === "inside" &&
+                    currentPosition === "above"
+                  ) {
+                    this.setState({ stickyHeader: chapter[0] })
+                  }
+                }}
+              />
               {this.getSections(chapter)}
+              <Waypoint
+                onEnter={({ previousPosition }) => {
+                  if (previousPosition === "above") {
+                    this.setState({ stickyHeader: chapter[0] })
+                  }
+                }}
+              />
             </ChapterWrapper>
           )
         })}
@@ -374,4 +413,35 @@ const ImageSetWrapper = styled(SectionWrapper)`
       width: 100%;
     `};
   }
+`
+
+const StickyHeader = styled.div`
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  background: white;
+  border-top: ${BORDER_WIDTH}px solid;
+
+  h1 {
+    font-size: 40px;
+  }
+  h2 {
+    font-size: 35px;
+  }
+
+  ${SectionHeader} {
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 14px;
+  }
+
+  ${media.sm`
+    h1 {
+      font-size: 30px;;
+    }
+    h2 {
+      font-size: 20px;
+    }
+  `};
 `
