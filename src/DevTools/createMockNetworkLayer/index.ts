@@ -14,6 +14,7 @@ const complain = (info, type) => {
 }
 
 export const createMockNetworkLayer = (mockResolvers: IResolvers) => {
+  const idMap = new WeakMap()
   return Network.create(
     getNetworkLayer({
       fieldResolver: ((source, _args, _context, info) => {
@@ -30,11 +31,14 @@ export const createMockNetworkLayer = (mockResolvers: IResolvers) => {
             if ("id" in source) {
               return source.id
             }
-            if (!Object.isFrozen(source) && !Object.isSealed(source)) {
-              // automatically generate ids for fixtures.
-              source.__id = uuid()
-              return source.__id
+
+            if (idMap.has(source)) {
+              return idMap.get(source)
             }
+
+            const id = uuid()
+            idMap.set(source, id)
+            return id
           }
         }
         complain(info, info.returnType.inspect())
