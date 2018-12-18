@@ -51,7 +51,7 @@ describe("Status", () => {
           ...OfferOrderWithShippingDetails,
           state: "SUBMITTED",
         })
-        expect(wrapper.text()).toContain("Your order has been submitted.")
+        expect(wrapper.text()).toContain("Your offer has been submitted.")
         expect(wrapper.find(Message).length).toBe(1)
       })
 
