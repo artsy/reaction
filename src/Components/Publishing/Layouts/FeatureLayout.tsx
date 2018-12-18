@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { Header } from "../Header/Header"
-import { Nav } from "../Nav/Nav"
+import { Nav, NavContainer } from "../Nav/Nav"
 import {
   ArticleCardsBlock,
   ArticleCardsContainer,
@@ -85,7 +85,7 @@ const FeatureLayoutContent = styled.div`
 const FeatureLayoutContainer = styled.div`
   position: relative;
 
-  ${Nav} {
+  ${NavContainer} {
     position: absolute;
   }
 

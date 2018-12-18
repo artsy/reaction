@@ -4,7 +4,7 @@ import styled from "styled-components"
 import Events from "../../../Utils/Events"
 import { media as mediaQueries } from "../../Helpers"
 import { getEditorialHref } from "../Constants"
-import { Nav } from "../Nav/Nav"
+import { Nav, NavContainer } from "../Nav/Nav"
 import { ArticleCardsBlock } from "../RelatedArticles/ArticleCards/Block"
 import { ArticleData } from "../Typings"
 import { VideoContainer, VideoPlayer } from "../Video/Player/VideoPlayer"
@@ -109,7 +109,7 @@ const VideoLayoutContainer = styled.div`
   color: white;
   margin: auto;
 
-  ${Nav} {
+  ${NavContainer} {
     position: absolute;
     top: 0;
   }

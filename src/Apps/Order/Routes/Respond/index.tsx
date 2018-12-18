@@ -90,7 +90,6 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
           )
           break
       }
-      this.setState({ isCommittingMutation: false })
     })
   }
 

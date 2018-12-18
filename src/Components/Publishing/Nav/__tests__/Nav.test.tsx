@@ -3,7 +3,7 @@ import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
-import { Nav, NavComponent } from "../Nav"
+import { Nav } from "../Nav"
 
 describe("Nav", () => {
   it("renders a Nav", () => {
@@ -29,13 +29,13 @@ describe("Nav", () => {
   })
 
   it("setPosition sets the state if props.canFix", () => {
-    const nav = mount(<NavComponent />) as any
+    const nav = mount(<Nav />) as any
     nav.instance().setPosition(true)
     expect(nav.state().isFixed).toBe(true)
   })
 
   it("setPosition does not set state if without props.canFix", () => {
-    const nav = mount(<NavComponent canFix={false} />) as any
+    const nav = mount(<Nav canFix={false} />) as any
     nav.instance().setPosition(true)
     expect(nav.state().isFixed).toBe(false)
   })

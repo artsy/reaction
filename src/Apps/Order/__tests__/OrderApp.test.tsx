@@ -304,6 +304,19 @@ describe("OrderApp routing redirects", () => {
     expect(redirect).toBe(undefined)
   })
 
+  it("Redirects from the status route to the respond route if awaiting buyer response", async () => {
+    const { redirect } = await render(
+      "/orders/1234/status",
+      mockResolver({
+        ...OfferOrderWithShippingDetails,
+        id: 1234,
+        state: "SUBMITTED",
+        awaitingResponseFrom: "BUYER",
+      })
+    )
+    expect(redirect.url).toBe("/orders/1234/respond")
+  })
+
   describe("visiting the /review/counter page", () => {
     const counterOfferOrder = {
       ...OfferOrderWithShippingDetails,

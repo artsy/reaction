@@ -21,7 +21,7 @@ export const ImageSetLabel = (props: ImageSetPreviewProps) => {
           {primaryTitle}
         </SlideshowTitle>
 
-        <Flex>
+        <SlideshowCta>
           <Sans size={["2", "3"]} weight="medium">
             View Slideshow
           </Sans>
@@ -30,7 +30,7 @@ export const ImageSetLabel = (props: ImageSetPreviewProps) => {
               {imageCount}
             </Sans>
           )}
-        </Flex>
+        </SlideshowCta>
       </Flex>
 
       <Media greaterThanOrEqual="sm">
@@ -60,3 +60,4 @@ export const LabelWrapper = styled(Flex)`
 
 // exported for targeting from outside components
 export const SlideshowTitle = styled(Sans)``
+export const SlideshowCta = styled(Flex)``
