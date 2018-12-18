@@ -320,11 +320,16 @@ const ImageWrapper = styled(SectionWrapper)`
     min-height: 400px;
     object-fit: cover;
     object-position: center;
+
+    ${media.md`
+      min-height: unset;
+    `};
   }
 
   ${ImageCollectionItem} {
     ${pMedia.xs`
       margin-bottom: 0;
+      min-height: unset;
     `};
   }
 
