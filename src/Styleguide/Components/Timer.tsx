@@ -14,11 +14,10 @@ export const Timer: React.SFC<{
   labelWithTimeRemaining?: string
   labelWithoutTimeRemaining?: string
 }> = ({ endDate, labelWithTimeRemaining, labelWithoutTimeRemaining }) => (
-  <WithCurrentTime useServerAdjustment>
-    {({ currentTime, timeOffsetInMilliseconds }) => {
+  <WithCurrentTime syncWithServer>
+    {currentTime => {
       const duration = moment.duration(
-        Math.max(moment(endDate).diff(moment(currentTime)), 0) +
-          timeOffsetInMilliseconds
+        Math.max(moment(endDate).diff(moment(currentTime)), 0)
       )
       const hasEnded = Math.floor(duration.asSeconds()) <= 0
 

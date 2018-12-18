@@ -1,3 +1,4 @@
+import moment from "moment"
 import React from "react"
 import { getCurrentTimeAsIsoString } from "Utils/getCurrentTimeAsIsoString"
 import { getOffsetBetweenGravityClock } from "Utils/time"
@@ -6,14 +7,14 @@ import { getOffsetBetweenGravityClock } from "Utils/time"
  * Render prop component to provide the current time as an ISO string, and
  * an offset from the current time to the server time (in milliseconds).
  *
- * If the `useServerAdjustment` prop is provided the offset is calculated.
- * Any errors in offset calculation, or if that prop is not provided, will result
- * in the offset being returned as 0.
+ * If the `syncWithServer` prop is provided the offset is calculated and included
+ * with the current time. Any errors in offset calculation, or if that prop is not
+ * provided, will result in the offset being calculated as 0.
  *
  * Example usage:
  *
  *     <WithCurrentTime>
- *       {({ currentTime, timeOffsetInMilliseconds }) => (
+ *       {currentTime => (
  *          <>The current time is {currentTime}</>
  *       )}
  *     </WithCurrentTime>
@@ -31,8 +32,8 @@ interface State {
 export class WithCurrentTime extends React.Component<
   {
     interval?: number
-    useServerAdjustment?: boolean
-    children: (x: State) => React.ReactNode
+    syncWithServer?: boolean
+    children: (currentTime: string) => React.ReactNode
   },
   State
 > {
@@ -51,7 +52,7 @@ export class WithCurrentTime extends React.Component<
   }
 
   async componentWillMount() {
-    if (this.props.useServerAdjustment) {
+    if (this.props.syncWithServer) {
       const timeOffsetInMilliseconds = await getOffsetBetweenGravityClock()
 
       this.setState({ timeOffsetInMilliseconds })
@@ -63,10 +64,17 @@ export class WithCurrentTime extends React.Component<
   }
 
   setCurrentTime = () => {
-    this.setState({ currentTime: getCurrentTimeAsIsoString() })
+    this.setState({
+      currentTime: getCurrentTimeAsIsoString(),
+    })
   }
 
   render() {
-    return this.props.children(this.state)
+    const { currentTime, timeOffsetInMilliseconds } = this.state
+    return this.props.children(
+      moment(currentTime)
+        .subtract(timeOffsetInMilliseconds, "ms")
+        .toISOString()
+    )
   }
 }
