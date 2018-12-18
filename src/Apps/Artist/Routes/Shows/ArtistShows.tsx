@@ -4,6 +4,7 @@ import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { PaginationFragmentContainer as Pagination } from "Styleguide/Components"
 import { Col, Row } from "Styleguide/Elements/Grid"
+import { get } from "Utils/get"
 import { Media } from "Utils/Responsive"
 import { ArtistShowBlockItem } from "./ArtistShowBlockItem"
 import { ArtistShowListItem } from "./ArtistShowListItem"
@@ -107,7 +108,10 @@ class ArtistShows extends Component<ArtistShowsProps, LoadingAreaState> {
                               <React.Fragment key={index}>
                                 <ArtistShowBlockItem
                                   blockWidth={["100%", "50%"]}
-                                  imageUrl={node.cover_image.cropped.url}
+                                  imageUrl={get(
+                                    node,
+                                    n => n.cover_image.cropped.url
+                                  )}
                                   partner={node.partner && node.partner.name}
                                   name={node.name}
                                   exhibitionInfo={node.exhibition_period}
