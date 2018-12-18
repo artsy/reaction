@@ -5,6 +5,7 @@ import { Truncator } from "Components/Truncator"
 import React, { SFC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
+import { get } from "Utils/get"
 import { Media } from "Utils/Responsive"
 
 import {
@@ -49,7 +50,7 @@ export const LargeArtistCard: SFC<Props> = props => (
   <BorderBox hover flexDirection="column" width="100%" height="254px">
     <Flex flexDirection="column" flexGrow="0" alignItems="center" pt={1}>
       {props.artist.image && (
-        <Avatar src={props.artist.image.cropped.url} mb={1} />
+        <Avatar src={get(props.artist.image, i => i.cropped.url)} mb={1} />
       )}
 
       <Serif size="3t" weight="semibold" textAlign="center">
@@ -104,7 +105,11 @@ export const SmallArtistCard: SFC<Props> = props => (
     </Flex>
 
     {props.artist.image && (
-      <Avatar size="sm" src={props.artist.image.cropped.url} ml={2} />
+      <Avatar
+        size="sm"
+        src={get(props.artist.image, i => i.cropped.url)}
+        ml={2}
+      />
     )}
   </BorderBox>
 )
