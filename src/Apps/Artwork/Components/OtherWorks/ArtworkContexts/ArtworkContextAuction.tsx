@@ -7,7 +7,6 @@ import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 
 import { Join, Spacer } from "@artsy/palette"
 import { OtherAuctions } from "Apps/Artwork/Components/OtherAuctions"
-import { AuctionCardFragmentContainer as AuctionCard } from "Styleguide/Components/AuctionCard"
 import { OtherWorksContextProps } from ".."
 import {
   ArtistArtworkGrid,
@@ -67,19 +66,11 @@ export const ArtworkContextAuctionFragmentContainer = createFragmentContainer<{
     const { artwork, sales } = props.viewer
     const isClosed = artwork.sale.is_closed
 
-    const OtherAuctionsList = (
-      <OtherAuctions>
-        {sales.map(sale => {
-          return <AuctionCard sale={sale} key={(sale as any).id} />
-        })}
-      </OtherAuctions>
-    )
-
     if (!isClosed) {
       return (
         <Join separator={<Spacer my={6} />}>
           <AuctionArtworkGrid artwork={artwork} />
-          {OtherAuctionsList}
+          <OtherAuctions auctions={sales} />
         </Join>
       )
     } else {
@@ -87,7 +78,7 @@ export const ArtworkContextAuctionFragmentContainer = createFragmentContainer<{
         <Join separator={<Spacer my={6} />}>
           <ArtistArtworkGrid artwork={artwork} />
           <RelatedWorksArtworkGrid artwork={artwork} />
-          {OtherAuctionsList}
+          <OtherAuctions auctions={sales} />
         </Join>
       )
     }

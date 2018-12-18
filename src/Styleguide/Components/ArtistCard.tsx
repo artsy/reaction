@@ -4,7 +4,6 @@ import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Compo
 import { Truncator } from "Components/Truncator"
 import React, { SFC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import styled from "styled-components"
 import { get } from "Utils/get"
 import { Media } from "Utils/Responsive"
 
@@ -13,6 +12,7 @@ import {
   BorderBox,
   Button,
   Flex,
+  Link,
   Sans,
   Serif,
   space,
@@ -25,23 +25,17 @@ interface Props {
   mediator?: Mediator
 }
 
-const StyledLink = styled.a`
-  text-decoration: none;
-`
-
 export class ArtistCard extends React.Component<Props> {
   render() {
     return (
-      <StyledLink href={this.props.artist.href}>
-        <>
-          <Media at="xs">
-            <SmallArtistCard {...this.props} />
-          </Media>
-          <Media greaterThan="xs">
-            <LargeArtistCard {...this.props} />
-          </Media>
-        </>
-      </StyledLink>
+      <Link href={this.props.artist.href} noUnderline>
+        <Media at="xs">
+          <SmallArtistCard {...this.props} />
+        </Media>
+        <Media greaterThan="xs">
+          <LargeArtistCard {...this.props} />
+        </Media>
+      </Link>
     )
   }
 }

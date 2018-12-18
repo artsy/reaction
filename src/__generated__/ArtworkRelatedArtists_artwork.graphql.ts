@@ -6,6 +6,7 @@ declare const _ArtworkRelatedArtists_artwork$ref: unique symbol;
 export type ArtworkRelatedArtists_artwork$ref = typeof _ArtworkRelatedArtists_artwork$ref;
 export type ArtworkRelatedArtists_artwork = {
     readonly artist: ({
+        readonly _id: string;
         readonly related: ({
             readonly artists: ({
                 readonly edges: ReadonlyArray<({
@@ -45,6 +46,13 @@ return {
       "concreteType": "Artist",
       "plural": false,
       "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "_id",
+          "args": null,
+          "storageKey": null
+        },
         {
           "kind": "LinkedField",
           "alias": null,
@@ -115,5 +123,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '913e8714cddf8f087d66b3df5a04de8f';
+(node as any).hash = '6808dae8c36635683f11ae032b3f9925';
 export default node;

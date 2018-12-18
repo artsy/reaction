@@ -1,18 +1,20 @@
-import { AuctionCard_sale } from "__generated__/AuctionCard_sale.graphql"
-import moment from "moment-timezone"
-import React from "react"
-import { Media } from "Utils/Responsive"
-
 import {
   BorderBox,
+  Box,
   Flex,
   Image,
+  Link,
   ResponsiveImage,
   Sans,
   Serif,
 } from "@artsy/palette"
+import { AuctionCard_sale } from "__generated__/AuctionCard_sale.graphql"
+import { Truncator } from "Components/Truncator"
+import moment from "moment-timezone"
+import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { get } from "Utils/get"
+import { Media } from "Utils/Responsive"
 
 const zone = time => {
   return moment(time).tz("America/New_York")
@@ -45,6 +47,7 @@ const upcomingLabel = (
 
 export interface AuctionCardProps {
   src: string
+  href: string
   headline: string
   subHeadline: string
   badge: string
@@ -53,27 +56,31 @@ export interface AuctionCardProps {
 export class AuctionCard extends React.Component<AuctionCardProps> {
   render() {
     return (
-      <>
+      <Link href={this.props.href} noUnderline>
         <Media at="xs">
           <SmallAuctionCard {...this.props} />
         </Media>
         <Media greaterThan="xs">
           <LargeAuctionCard {...this.props} />
         </Media>
-      </>
+      </Link>
     )
   }
 }
 
 export const LargeAuctionCard = props => (
-  <BorderBox hover flexDirection="column">
+  <BorderBox hover flexDirection="column" height="300px">
     <Serif size="3t" weight="semibold">
-      {props.headline}
+      <Truncator maxLineCount={1}>{props.headline}</Truncator>
     </Serif>
-    <Serif size="3t">{props.subHeadline}</Serif>
-    <ResponsiveImage src={props.src} my={2} />
-    <Sans size="1" weight="medium">
-      {props.badge}
+    <Serif size="3t">
+      <Truncator maxLineCount={1}>{props.subHeadline}</Truncator>
+    </Serif>
+    <Box height="200px">
+      <ResponsiveImage src={props.src} my={2} />
+    </Box>
+    <Sans size="2" weight="medium">
+      <Truncator maxLineCount={1}>{props.badge}</Truncator>
     </Sans>
   </BorderBox>
 )
@@ -81,13 +88,15 @@ export const LargeAuctionCard = props => (
 export const SmallAuctionCard = props => (
   <Flex p={4} width="100%" justifyContent="space-between">
     <Flex flexDirection="column" justifyContent="space-between">
-      <div>
+      <Box>
         <Serif size="3t" weight="semibold">
           {props.headline}
         </Serif>
-        <Serif size="3t">{props.subHeadline}</Serif>
-      </div>
-      <Sans size="1" weight="medium">
+        <Serif size="3t">
+          <Truncator maxLineCount={2}>{props.subHeadline}</Truncator>
+        </Serif>
+      </Box>
+      <Sans size="2" weight="medium">
         {props.badge}
       </Sans>
     </Flex>
@@ -117,6 +126,7 @@ export const AuctionCardFragmentContainer = createFragmentContainer<{
     return (
       <AuctionCard
         src={imageURL}
+        href={sale.href}
         headline={partnerName}
         subHeadline={sale.name}
         badge={statusLabel}
