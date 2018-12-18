@@ -13,7 +13,12 @@ import {
 } from "../Fixtures/Articles"
 
 import { ContextProvider } from "Artsy"
-import { Display, RelatedCanvas, RelatedPanel } from "../Fixtures/Components"
+import {
+  Display,
+  HeroSections,
+  RelatedCanvas,
+  RelatedPanel,
+} from "../Fixtures/Components"
 import { ArticleData } from "../Typings"
 
 const story = storiesOf("Publishing/Articles/Standard", module)
@@ -29,10 +34,11 @@ const story = storiesOf("Publishing/Articles/Standard", module)
     )
   })
   .add("Super Article", () => {
+    const article = extend({}, SuperArticle, { hero_section: HeroSections[2] })
     return (
       <ContextProvider>
         <Article
-          article={StandardArticle}
+          article={article}
           relatedArticlesForPanel={RelatedPanel}
           relatedArticlesForCanvas={RelatedCanvas}
           isSuper
