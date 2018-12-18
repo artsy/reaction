@@ -1,6 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Nav renders a Nav 1`] = `
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .c6 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-weight: 600;
@@ -51,31 +58,12 @@ exports[`Nav renders a Nav 1`] = `
   vertical-align: middle;
 }
 
-.c1 {
+.c0 {
   background-color: black;
   border-bottom: 1px solid white;
-}
-
-.c0 {
   position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   height: 52px;
   width: 100%;
-  z-index: 10;
-}
-
-.c0 a {
   z-index: 10;
 }
 
@@ -105,6 +93,7 @@ exports[`Nav renders a Nav 1`] = `
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
+  z-index: 10;
 }
 
 @media (max-width:720px) {
@@ -173,6 +162,13 @@ exports[`Nav renders a Nav 1`] = `
 `;
 
 exports[`Nav renders a sponsored nav 1`] = `
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .c8 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-weight: 600;
@@ -228,31 +224,12 @@ exports[`Nav renders a sponsored nav 1`] = `
   vertical-align: middle;
 }
 
-.c1 {
+.c0 {
   background-color: black;
   border-bottom: 1px solid white;
-}
-
-.c0 {
   position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   height: 52px;
   width: 100%;
-  z-index: 10;
-}
-
-.c0 a {
   z-index: 10;
 }
 
@@ -282,6 +259,7 @@ exports[`Nav renders a sponsored nav 1`] = `
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
+  z-index: 10;
 }
 
 @media (max-width:900px) {
@@ -401,6 +379,13 @@ exports[`Nav renders a sponsored nav 1`] = `
 `;
 
 exports[`Nav renders a transparent nav 1`] = `
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .c6 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-weight: 600;
@@ -451,34 +436,15 @@ exports[`Nav renders a transparent nav 1`] = `
   vertical-align: middle;
 }
 
-.c1 {
+.c0 {
   background-color: transparent;
   border-bottom: 1px solid white;
-  position: absolute;
-  top: 0;
-}
-
-.c0 {
   position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   height: 52px;
   width: 100%;
   z-index: 10;
-}
-
-.c0 a {
-  z-index: 10;
+  position: absolute;
+  top: 0;
 }
 
 .c5 {
@@ -507,6 +473,7 @@ exports[`Nav renders a transparent nav 1`] = `
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
+  z-index: 10;
 }
 
 @media (max-width:720px) {

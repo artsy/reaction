@@ -1,4 +1,4 @@
-import { Serif } from "@artsy/palette"
+import { Flex, Serif } from "@artsy/palette"
 import { PartnerInline } from "Components/Publishing/Partner/PartnerInline"
 import React, { ReactNode } from "react"
 import Waypoint from "react-waypoint"
@@ -19,7 +19,7 @@ interface State {
   isFixed: boolean
 }
 
-export class NavComponent extends React.Component<Props, State> {
+export class Nav extends React.Component<Props, State> {
   static defaultProps = {
     backgroundColor: "black",
     canFix: true,
@@ -31,7 +31,7 @@ export class NavComponent extends React.Component<Props, State> {
     isFixed: false,
   }
 
-  setPosition = isFixed => {
+  setPosition = (isFixed: boolean) => {
     const { canFix } = this.props
     const currentPosition = this.state.isFixed
 
@@ -86,7 +86,7 @@ export class NavComponent extends React.Component<Props, State> {
   }
 }
 
-export const NavContainer = styled.div<{
+export const NavContainer = styled(Flex)<{
   backgroundColor: string
   transparent: boolean
   isFixed: boolean
@@ -94,6 +94,11 @@ export const NavContainer = styled.div<{
   background-color: ${props =>
     props.transparent ? "transparent" : props.backgroundColor};
   border-bottom: 1px solid ${props => props.color};
+  position: relative;
+  height: 52px;
+  width: 100%;
+  z-index: 10;
+
   ${props =>
     props.transparent &&
     !props.isFixed &&
@@ -112,20 +117,6 @@ export const NavContainer = styled.div<{
   `};
 `
 
-export const Nav = styled(NavComponent)`
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 52px;
-  width: 100%;
-  color: ${props => props.color};
-  z-index: 10;
-
-  a {
-    z-index: 10;
-  }
-`
 const Title = styled(Serif)<{ color: string }>`
   position: absolute;
   width: 100%;
@@ -141,5 +132,6 @@ const Title = styled(Serif)<{ color: string }>`
   a {
     color: ${props => props.color};
     text-decoration: none;
+    z-index: 10;
   }
 `
