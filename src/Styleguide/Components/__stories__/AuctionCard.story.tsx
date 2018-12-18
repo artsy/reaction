@@ -12,6 +12,7 @@ storiesOf("Styleguide/Components", module).add("AuctionCard", () => {
           headline="Sotheby’s"
           subHeadline="Contemporary Day Sale"
           badge="In progress"
+          href="#"
         />
       </Section>
       <Section title="Large Auction Card">
@@ -20,6 +21,7 @@ storiesOf("Styleguide/Components", module).add("AuctionCard", () => {
           headline="Sotheby’s"
           subHeadline="Contemporary Day Sale"
           badge="In progress"
+          href="#"
         />
       </Section>
       <Section title="Small Auction Card">
@@ -28,6 +30,7 @@ storiesOf("Styleguide/Components", module).add("AuctionCard", () => {
           headline="Sotheby’s"
           subHeadline="Contemporary Day Sale"
           badge="In progress"
+          href="#"
         />
       </Section>
     </React.Fragment>

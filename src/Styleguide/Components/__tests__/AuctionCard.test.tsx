@@ -9,6 +9,7 @@ describe("AuctionCard", () => {
     headline: "Sotheby’s",
     subHeadline: "Contemporary Day Sale",
     badge: "In progress",
+    href: "#",
   }
 
   beforeAll(() => {
