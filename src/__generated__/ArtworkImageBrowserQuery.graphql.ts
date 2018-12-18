@@ -32,7 +32,7 @@ fragment ArtworkImageBrowser_artwork on Artwork {
   image_alt: to_s
   image_title
   href
-  ...Save_artwork
+  ...ArtworkActions_artwork
   images {
     id
     uri: url(version: ["larger", "large"])
@@ -58,10 +58,27 @@ fragment ArtworkImageBrowser_artwork on Artwork {
   __id
 }
 
+fragment ArtworkActions_artwork on Artwork {
+  ...Save_artwork
+  ...ArtworkSharePanel_artwork
+  __id
+}
+
 fragment Save_artwork on Artwork {
   __id
   id
   is_saved
+}
+
+fragment ArtworkSharePanel_artwork on Artwork {
+  href
+  images {
+    url
+  }
+  artworkMeta: meta {
+    description
+  }
+  __id
 }
 */
 
@@ -95,13 +112,20 @@ v3 = {
   "name": "id",
   "args": null,
   "storageKey": null
+},
+v4 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "url",
+  "args": null,
+  "storageKey": null
 };
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "ArtworkImageBrowserQuery",
   "id": null,
-  "text": "query ArtworkImageBrowserQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...ArtworkImageBrowser_artwork\n    __id\n  }\n}\n\nfragment ArtworkImageBrowser_artwork on Artwork {\n  title\n  image_alt: to_s\n  image_title\n  href\n  ...Save_artwork\n  images {\n    id\n    uri: url(version: [\"larger\", \"large\"])\n    placeholder: resized(width: 30, height: 30, version: \"small\") {\n      url\n    }\n    aspectRatio: aspect_ratio\n    is_zoomable\n    deepZoom: deep_zoom {\n      Image {\n        xmlns\n        Url\n        Format\n        TileSize\n        Overlap\n        Size {\n          Width\n          Height\n        }\n      }\n    }\n  }\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n",
+  "text": "query ArtworkImageBrowserQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...ArtworkImageBrowser_artwork\n    __id\n  }\n}\n\nfragment ArtworkImageBrowser_artwork on Artwork {\n  title\n  image_alt: to_s\n  image_title\n  href\n  ...ArtworkActions_artwork\n  images {\n    id\n    uri: url(version: [\"larger\", \"large\"])\n    placeholder: resized(width: 30, height: 30, version: \"small\") {\n      url\n    }\n    aspectRatio: aspect_ratio\n    is_zoomable\n    deepZoom: deep_zoom {\n      Image {\n        xmlns\n        Url\n        Format\n        TileSize\n        Overlap\n        Size {\n          Width\n          Height\n        }\n      }\n    }\n  }\n  __id\n}\n\nfragment ArtworkActions_artwork on Artwork {\n  ...Save_artwork\n  ...ArtworkSharePanel_artwork\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment ArtworkSharePanel_artwork on Artwork {\n  href\n  images {\n    url\n  }\n  artworkMeta: meta {\n    description\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -189,6 +213,7 @@ return {
             "concreteType": "Image",
             "plural": true,
             "selections": [
+              v4,
               v3,
               {
                 "kind": "ScalarField",
@@ -235,13 +260,7 @@ return {
                 "concreteType": "ResizedImageUrl",
                 "plural": false,
                 "selections": [
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "url",
-                    "args": null,
-                    "storageKey": null
-                  }
+                  v4
                 ]
               },
               {
@@ -339,6 +358,24 @@ return {
                     ]
                   }
                 ]
+              }
+            ]
+          },
+          {
+            "kind": "LinkedField",
+            "alias": "artworkMeta",
+            "name": "meta",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "ArtworkMeta",
+            "plural": false,
+            "selections": [
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "description",
+                "args": null,
+                "storageKey": null
               }
             ]
           }

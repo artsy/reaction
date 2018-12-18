@@ -18,7 +18,7 @@ import Icon from "../Icon"
 
 const SIZE = 40
 
-export interface Props
+export interface SaveProps
   extends Artsy.ContextProps,
     React.HTMLProps<React.ComponentType> {
   artwork: Save_artwork
@@ -27,17 +27,18 @@ export interface Props
   relayEnvironment?: RelayRuntimeTypes.Environment
   useRelay?: boolean
   mediator?: Artsy.Mediator
+  render?: (props, state) => JSX.Element
 }
 
 // TODO: This will be refactored out once Artworks / Grids are full Relay in Force
 // and intermediate local state becomes unnecessary
-interface State {
+export interface SaveState {
   is_saved: boolean
   isHovered: boolean
 }
 
 @track()
-class SaveButtonContainer extends React.Component<Props, State> {
+export class SaveButton extends React.Component<SaveProps, SaveState> {
   static defaultProps = {
     useRelay: true,
   }
@@ -55,7 +56,7 @@ class SaveButtonContainer extends React.Component<Props, State> {
     return isSaved
   }
 
-  @track<Props>(
+  @track<SaveProps>(
     props =>
       ({
         action_type: props.artwork.is_saved
@@ -116,7 +117,7 @@ class SaveButtonContainer extends React.Component<Props, State> {
         },
         onError: error => {
           // Revert optimistic update
-          if (!useRelay) {
+          if (!useRelay || this.props.render) {
             this.setState({
               is_saved: this.isSaved,
             })
@@ -125,7 +126,7 @@ class SaveButtonContainer extends React.Component<Props, State> {
           console.error("Artwork/Save Error saving artwork: ", error)
         },
         onCompleted: ({ saveArtwork }) => {
-          if (!useRelay) {
+          if (!useRelay || this.props.render) {
             this.setState({
               is_saved: saveArtwork.artwork.is_saved,
             })
@@ -151,7 +152,23 @@ class SaveButtonContainer extends React.Component<Props, State> {
     }
   }
 
-  render() {
+  mixinButtonActions() {
+    return {
+      onClick: () => this.handleSave(),
+      onMouseEnter: () => {
+        this.setState({
+          isHovered: true,
+        })
+      },
+      onMouseLeave: () => {
+        this.setState({
+          isHovered: false,
+        })
+      },
+    }
+  }
+
+  renderDefaultButton() {
     const { style } = this.props
     const saveStyle = this.isSaved ? { opacity: 1.0 } : {}
     const fullStyle = { ...style, ...saveStyle }
@@ -163,28 +180,37 @@ class SaveButtonContainer extends React.Component<Props, State> {
       <div
         className={this.props.className}
         style={fullStyle}
-        onClick={() => this.handleSave()}
-        data-saved={this.isSaved}
-        onMouseEnter={() => {
-          this.setState({ isHovered: true })
-        }}
-        onMouseLeave={() => {
-          this.setState({ isHovered: false })
-        }}
+        {...this.mixinButtonActions()}
       >
-        <Icon
-          name={iconName}
-          height={SIZE}
-          color="white"
-          fontSize={iconFontSize}
-          style={{ verticalAlign: "middle" }}
-        />
+        <Container data-saved={this.isSaved}>
+          <Icon
+            name={iconName}
+            height={SIZE}
+            color="white"
+            fontSize={iconFontSize}
+            style={{ verticalAlign: "middle" }}
+          />
+        </Container>
       </div>
     )
   }
+
+  renderCustomButton() {
+    return (
+      <div {...this.mixinButtonActions()}>
+        {this.props.render(this.props, this.state)}
+      </div>
+    )
+  }
+
+  render() {
+    return this.props.render
+      ? this.renderCustomButton()
+      : this.renderDefaultButton()
+  }
 }
 
-export const SaveButton = styled(SaveButtonContainer)`
+export const Container = styled.div`
   display: block;
   width: ${SIZE}px;
   height: ${SIZE}px;

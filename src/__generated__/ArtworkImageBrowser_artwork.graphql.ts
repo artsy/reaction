@@ -1,7 +1,7 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-import { Save_artwork$ref } from "./Save_artwork.graphql";
+import { ArtworkActions_artwork$ref } from "./ArtworkActions_artwork.graphql";
 declare const _ArtworkImageBrowser_artwork$ref: unique symbol;
 export type ArtworkImageBrowser_artwork$ref = typeof _ArtworkImageBrowser_artwork$ref;
 export type ArtworkImageBrowser_artwork = {
@@ -31,7 +31,7 @@ export type ArtworkImageBrowser_artwork = {
             }) | null;
         }) | null;
     }) | null> | null;
-    readonly " $fragmentRefs": Save_artwork$ref;
+    readonly " $fragmentRefs": ArtworkActions_artwork$ref;
     readonly " $refType": ArtworkImageBrowser_artwork$ref;
 };
 
@@ -74,7 +74,7 @@ const node: ConcreteFragment = {
     },
     {
       "kind": "FragmentSpread",
-      "name": "Save_artwork",
+      "name": "ArtworkActions_artwork",
       "args": null
     },
     {
@@ -254,5 +254,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '9cf50191a5ad51f2c42176976aa1fc09';
+(node as any).hash = '7ba3e87f4eccf6493397bc6caab748fa';
 export default node;

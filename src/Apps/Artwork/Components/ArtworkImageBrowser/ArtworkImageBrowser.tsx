@@ -4,9 +4,9 @@ import React from "react"
 import Slider, { Settings } from "react-slick"
 import styled from "styled-components"
 import { Lightbox } from "Styleguide/Components"
+import { Arrow } from "Styleguide/Elements"
 import { Col, media, Row } from "Styleguide/Elements/Grid"
 import { Media } from "Utils/Responsive"
-import { ArrowButton } from "./ArrowButton"
 
 interface ArtworkBrowserProps {
   images: ArtworkImageBrowser_artwork["images"]
@@ -164,6 +164,29 @@ export class SmallArtworkImageBrowser extends React.Component<
     )
   }
 }
+
+const ArrowButton = ({ direction, onClick }) => {
+  return (
+    <ArrowButtonContainer
+      flexDirection="column"
+      justifyContent="center"
+      height="100%"
+      onClick={onClick}
+    >
+      <Arrow direction={direction} fontSize="24px" />
+    </ArrowButtonContainer>
+  )
+}
+
+const ArrowButtonContainer = styled(Flex)`
+  cursor: pointer;
+  opacity: 0.1;
+  transition: opacity 0.25s;
+
+  &:hover {
+    opacity: 1;
+  }
+`
 
 const Container = styled(Box)`
   ${media.xs`

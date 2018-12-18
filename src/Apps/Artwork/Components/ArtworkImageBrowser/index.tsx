@@ -5,7 +5,7 @@ import { ArtworkImageBrowser_artwork } from "__generated__/ArtworkImageBrowser_a
 import { ArtworkImageBrowserQuery } from "__generated__/ArtworkImageBrowserQuery.graphql"
 import { ContextConsumer } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
-import { ActionButtons } from "./ActionButtons"
+import { ArtworkActionsFragmentContainer as ArtworkActions } from "./ArtworkActions"
 import { ArtworkImageBrowser } from "./ArtworkImageBrowser"
 
 export interface ImageBrowserProps {
@@ -19,7 +19,7 @@ export const ArtworkImageBrowserFragmentContainer = createFragmentContainer<
     return (
       <>
         <ArtworkImageBrowser images={props.artwork.images} />
-        <ActionButtons artwork={props.artwork} />
+        <ArtworkActions artwork={props.artwork} />
       </>
     )
   },
@@ -29,7 +29,9 @@ export const ArtworkImageBrowserFragmentContainer = createFragmentContainer<
       image_alt: to_s
       image_title
       href
-      ...Save_artwork
+
+      ...ArtworkActions_artwork
+
       images {
         id
         uri: url(version: ["larger", "large"])

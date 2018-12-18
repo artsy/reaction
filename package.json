@@ -177,7 +177,7 @@
     "react-oembed-container": "^0.3.0",
     "react-overlays": "^0.8.3",
     "react-relay": "https://github.com/alloy/relay/releases/download/v1.5.0-artsy.3/react-relay-1.5.0-artsy.3.tgz",
-    "react-relay-network-modern": "^2.4.0",
+    "react-relay-network-modern": "^2.5.0",
     "react-relay-network-modern-ssr": "^1.2.2",
     "react-responsive-decorator": "^0.0.1",
     "react-router": "^4.2.0",
