@@ -107,6 +107,7 @@ export class CounterRoute extends Component<CounterProps, CounterState> {
         new ErrorWithMetadata(orderOrError.error.code, orderOrError.error)
       )
     } else {
+      this.setState({ isCommittingMutation: false })
       this.props.router.push(`/orders/${this.props.order.id}/status`)
     }
   }
