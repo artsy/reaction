@@ -111,10 +111,13 @@ export const AuctionCardFragmentContainer = createFragmentContainer<{
       sale.is_live_open,
       sale.is_preview
     )
+
+    const imageURL = get(sale, s => s.cover_image.cropped.url)
+    const partnerName = get(sale, s => s.partner.name)
     return (
       <AuctionCard
-        src={get(sale, s => s.cover_image.cropped.url)}
-        headline={get(sale, s => s.partner.name)}
+        src={imageURL}
+        headline={partnerName}
         subHeadline={sale.name}
         badge={statusLabel}
       />

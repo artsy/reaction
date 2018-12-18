@@ -14,7 +14,7 @@ export const Timer: React.SFC<{
   labelWithTimeRemaining?: string
   labelWithoutTimeRemaining?: string
 }> = ({ endDate, labelWithTimeRemaining, labelWithoutTimeRemaining }) => (
-  <WithCurrentTime>
+  <WithCurrentTime syncWithServer>
     {currentTime => {
       const duration = moment.duration(
         Math.max(moment(endDate).diff(moment(currentTime)), 0)
