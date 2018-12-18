@@ -35,6 +35,44 @@ describe("getRedirect", () => {
     expect(result).toEqual("the-root")
   })
 
+  it("passes the arguments through to the rules", () => {
+    const data = {}
+    const isData = arg => {
+      expect(arg).toBe(data)
+      return null
+    }
+    const rule: RedirectRecord<{}> = {
+      path: "",
+      rules: [isData],
+      children: [
+        {
+          path: "hello",
+          rules: [isData],
+        },
+      ],
+    }
+
+    getRedirect(rule, "/hello", data)
+
+    expect.assertions(2)
+  })
+
+  it("takes the first matching redirect if multiple rules are present", () => {
+    const rule: RedirectRecord<number> = {
+      path: "",
+      rules: [
+        n => (n === 1 ? "/one" : null),
+        n => (n === 2 ? "/two" : null),
+        n => (n === 3 ? "/three" : null),
+      ],
+    }
+
+    expect(getRedirect(rule, "/hello", 1)).toBe("/one")
+    expect(getRedirect(rule, "/hello", 2)).toBe("/two")
+    expect(getRedirect(rule, "/hello", 3)).toBe("/three")
+    expect(getRedirect(rule, "/hello", 4)).toBe(null)
+  })
+
   describe("matching child rules", () => {
     it("doesn't match child routes when the user isn't in this section of the app", () => {
       const rule = aRuleWithChildren([
@@ -100,9 +138,6 @@ describe("getRedirect", () => {
         },
       ])
 
-      // REVIEW: this test fails if we change the path to
-      //  "/this-section////this-subsection/this-page"
-      // Is the intention to ignore extra slashes at ALL levels?
       const result = getRedirect(
         rule,
         "///this-section/this-subsection/this-page",
