@@ -37,6 +37,7 @@ export interface OfferState {
   isErrorModalOpen: boolean
   errorModalTitle: string
   errorModalMessage: string
+  formIsDirty: boolean
 }
 
 const logger = createLogger("Order/Routes/Offer/index.tsx")
@@ -48,9 +49,19 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
     isErrorModalOpen: false,
     errorModalTitle: null,
     errorModalMessage: null,
+    formIsDirty: false,
+  }
+
+  isOfferValueValid() {
+    const { offerValue } = this.state
+    return typeof offerValue === "number" && offerValue > 0
   }
 
   onContinueButtonPressed: () => void = () => {
+    if (!this.isOfferValueValid()) {
+      this.setState({ formIsDirty: true })
+      return
+    }
     this.setState({ isCommittingMutation: true }, () => {
       if (this.props.relay && this.props.relay.environment) {
         const { offerValue } = this.state
@@ -132,7 +143,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
 
   render() {
     const { order } = this.props
-    const { isCommittingMutation } = this.state
+    const { isCommittingMutation, formIsDirty } = this.state
     const artwork = get(
       this.props,
       props => order.lineItems.edges[0].node.artwork
@@ -162,6 +173,11 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
                     title="Your offer"
                     type="number"
                     defaultValue={null}
+                    error={
+                      formIsDirty && !this.isOfferValueValid()
+                        ? "Offer amount missing or invalid."
+                        : null
+                    }
                     onChange={ev =>
                       this.setState({
                         offerValue: Math.floor(
