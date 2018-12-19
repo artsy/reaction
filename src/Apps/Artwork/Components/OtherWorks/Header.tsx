@@ -3,7 +3,7 @@ import React from "react"
 
 interface HeaderProps {
   buttonHref?: string
-  children?: JSX.Element
+  children?: JSX.Element | string
   title: string
 }
 

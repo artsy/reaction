@@ -195,7 +195,8 @@ export const ArtworkSharePanelFragmentContainer = createFragmentContainer(
 const Container = styled.div`
   position: absolute;
   width: 300px;
-  top: -230px;
+  /* FIXME: Move this to a container */
+  /* top: -230px; */
   border-radius: 2px;
   background-color: #ffffff;
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);

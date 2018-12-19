@@ -11,9 +11,9 @@ describe("OtherWorks", () => {
     return await renderRelayTree({
       Component: OtherWorksFragmentContainer,
       query: graphql`
-        query ArtworkSidebar_Test_Query {
+        query OtherWorks_Test_Query {
           artwork(id: "josef-albers-homage-to-the-square-85") {
-            ...ArtworkSidebar_artwork
+            ...OtherWorks_artwork
           }
         }
       `,

@@ -11,9 +11,9 @@ describe("ArtworkSharePanel", () => {
     return await renderRelayTree({
       Component: ArtworkSharePanelFragmentContainer,
       query: graphql`
-        query ArtworkSidebar_Test_Query {
+        query ArtworkSharePanel_Test_Query {
           artwork(id: "josef-albers-homage-to-the-square-85") {
-            ...ArtworkSidebar_artwork
+            ...ArtworkSharePanel_artwork
           }
         }
       `,
