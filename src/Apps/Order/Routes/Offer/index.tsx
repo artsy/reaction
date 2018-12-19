@@ -5,9 +5,12 @@ import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/
 import { Helper } from "Apps/Order/Components/Helper"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
+import {
+  ErrorModalContext,
+  ErrorModalProps,
+} from "Apps/Order/ErrorModalContext"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { Input } from "Components/Input"
-import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
 import React, { Component } from "react"
 import {
@@ -24,7 +27,7 @@ import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
 import { offerFlowSteps, OrderStepper } from "../../Components/OrderStepper"
 
-export interface OfferProps {
+export interface OfferProps extends ErrorModalProps {
   order: Offer_order
   mediator: Mediator
   relay?: RelayProp
@@ -34,9 +37,6 @@ export interface OfferProps {
 export interface OfferState {
   offerValue: number | null
   isCommittingMutation: boolean
-  isErrorModalOpen: boolean
-  errorModalTitle: string
-  errorModalMessage: string
 }
 
 const logger = createLogger("Order/Routes/Offer/index.tsx")
@@ -45,15 +45,13 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
   state = {
     offerValue: null,
     isCommittingMutation: false,
-    isErrorModalOpen: false,
-    errorModalTitle: null,
-    errorModalMessage: null,
   }
 
   onContinueButtonPressed: () => void = () => {
     this.setState({ isCommittingMutation: true }, () => {
       if (this.props.relay && this.props.relay.environment) {
         const { offerValue } = this.state
+
         commitMutation<OfferMutation>(this.props.relay.environment, {
           mutation: graphql`
             mutation OfferMutation($input: AddInitialOfferToOrderInput!) {
@@ -116,18 +114,10 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
     })
   }
 
-  onMutationError(error, errorModalTitle?, errorModalMessage?) {
+  onMutationError(error, title?, message?) {
+    this.setState({ isCommittingMutation: false })
+    this.props.showErrorModal({ title, message })
     logger.error(error)
-    this.setState({
-      isCommittingMutation: false,
-      isErrorModalOpen: true,
-      errorModalTitle,
-      errorModalMessage,
-    })
-  }
-
-  onCloseModal = () => {
-    this.setState({ isErrorModalOpen: false })
   }
 
   render() {
@@ -231,25 +221,27 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
             }
           />
         </HorizontalPadding>
-
-        <ErrorModal
-          onClose={this.onCloseModal}
-          show={this.state.isErrorModalOpen}
-          contactEmail="orders@artsy.net"
-          detailText={this.state.errorModalMessage}
-          headerText={this.state.errorModalTitle}
-        />
       </>
     )
   }
 }
 
 const OfferRouteWrapper = props => (
-  <ContextConsumer>
-    {({ mediator }) => {
-      return <OfferRoute {...props} mediator={mediator} />
-    }}
-  </ContextConsumer>
+  <ErrorModalContext.Consumer>
+    {({ showErrorModal }) => (
+      <ContextConsumer>
+        {({ mediator }) => {
+          return (
+            <OfferRoute
+              showErrorModal={showErrorModal}
+              mediator={mediator}
+              {...props}
+            />
+          )
+        }}
+      </ContextConsumer>
+    )}
+  </ErrorModalContext.Consumer>
 )
 
 export const OfferFragmentContainer = createFragmentContainer(

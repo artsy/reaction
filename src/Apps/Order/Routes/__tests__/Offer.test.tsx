@@ -1,6 +1,5 @@
 import { Button } from "@artsy/palette"
 import { Input } from "Components/Input"
-import { ErrorModal, ModalButton } from "Components/Modal/ErrorModal"
 import { MockBoot } from "DevTools"
 import { mount } from "enzyme"
 import React from "react"
@@ -37,6 +36,7 @@ describe("Offer InitialMutation", () => {
       relay: { environment: {} } as RelayProp,
       router: { push: jest.fn() },
       mediator: { trigger: jest.fn() },
+      showErrorModal: jest.fn(),
     } as any
   })
 
@@ -111,7 +111,7 @@ describe("Offer InitialMutation", () => {
       component.find(Button).simulate("click")
     })
 
-    it("shows an error modal when there is an error from the server", () => {
+    it.only("shows an error modal when there is an error from the server", () => {
       const component = getWrapper(testProps)
       const mockCommitMutation = commitMutation as jest.Mock<any>
       mockCommitMutation.mockImplementationOnce(
@@ -120,17 +120,11 @@ describe("Offer InitialMutation", () => {
         }
       )
 
+      expect(testProps.showErrorModal).not.toHaveBeenCalled()
+
       component.find(Button).simulate("click")
 
-      const errorComponent = component.find(ErrorModal)
-      expect(errorComponent.props().show).toBe(true)
-      expect(errorComponent.text()).toContain("An error occurred")
-      expect(errorComponent.text()).toContain(
-        "Something went wrong. Please try again or contact orders@artsy.net."
-      )
-
-      component.find(ModalButton).simulate("click")
-      expect(component.find(ErrorModal).props().show).toBe(false)
+      expect(testProps.showErrorModal).toHaveBeenCalled()
     })
   })
 })

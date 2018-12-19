@@ -2,10 +2,12 @@ import { Spacer } from "@artsy/palette"
 import { routes_OrderQueryResponse } from "__generated__/routes_OrderQuery.graphql"
 import { ContextConsumer } from "Artsy/SystemContext"
 import { ErrorPage } from "Components/ErrorPage"
+import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Location, RouteConfig, Router } from "found"
 import React from "react"
 import { Meta, Title } from "react-head"
 import { Elements, StripeProvider } from "react-stripe-elements"
+import { ErrorModalContext } from "./ErrorModalContext"
 
 declare global {
   interface Window {
@@ -36,10 +38,22 @@ export interface OrderAppProps extends routes_OrderQueryResponse {
 
 interface OrderAppState {
   stripe: stripe.Stripe
+  isErrorModalOpen: boolean
+  errorModalTitle: string
+  errorModalMessage: string
+  errorModalCtaAction: string
 }
 
 export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
-  state = { stripe: null }
+  state = {
+    isCommittingMutation: false,
+    isErrorModalOpen: false,
+    errorModalTitle: null,
+    errorModalMessage: null,
+    errorModalCtaAction: null,
+    stripe: null,
+  }
+
   removeTransitionHook: () => void
 
   componentDidMount() {
@@ -80,6 +94,19 @@ export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
     return true
   }
 
+  showErrorModal = ({ title, message, ctaAction }) => {
+    this.setState({
+      isErrorModalOpen: true,
+      errorModalCtaAction: ctaAction,
+      errorModalMessage: message,
+      errorModalTitle: title,
+    })
+  }
+
+  hideErrorModal = () => {
+    this.setState({ isErrorModalOpen: false })
+  }
+
   render() {
     const { children, order } = this.props
 
@@ -99,13 +126,25 @@ export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
               />
             ) : null}
             <StripeProvider stripe={this.state.stripe}>
-              <Elements>
-                <>
-                  {children}
-                  <Spacer mb={6} />
-                </>
-              </Elements>
+              <ErrorModalContext.Provider
+                value={{ showErrorModal: this.showErrorModal }}
+              >
+                <Elements>
+                  <>
+                    {children}
+                    <Spacer mb={6} />
+                  </>
+                </Elements>
+              </ErrorModalContext.Provider>
             </StripeProvider>
+            <ErrorModal
+              show={this.state.isErrorModalOpen}
+              detailText={this.state.errorModalMessage}
+              contactEmail="orders@artsy.net"
+              headerText={this.state.errorModalTitle}
+              ctaAction={this.state.errorModalCtaAction}
+              onClose={this.hideErrorModal}
+            />
           </>
         )}
       </ContextConsumer>
