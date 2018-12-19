@@ -1,3 +1,7 @@
+import { mount } from "enzyme"
+import React from "react"
+import renderer from "react-test-renderer"
+
 import { Eoy2018Artists as Eoy2018ArtistsFixture } from "Components/Publishing/EditorialFeature/Fixtures/Eoy2018Artists"
 import { Eoy2018Culture as Eoy2018CultureFixture } from "Components/Publishing/EditorialFeature/Fixtures/Eoy2018Culture"
 import { FeatureArticle } from "Components/Publishing/Fixtures/Articles"
@@ -5,13 +9,20 @@ import {
   ArticleProps,
   FeatureLayout,
 } from "Components/Publishing/Layouts/FeatureLayout"
+import { TooltipsData } from "Components/Publishing/ToolTip/TooltipsDataLoader"
 import { ArticleData } from "Components/Publishing/Typings"
-import { mount } from "enzyme"
-import React from "react"
-import renderer from "react-test-renderer"
 import { Eoy2018Artists } from "../Components/Eoy2018Artists"
 import { Eoy2018Culture } from "../Components/Eoy2018Culture"
 import { EditorialFeature } from "../EditorialFeature"
+
+jest.mock("isomorphic-fetch")
+declare const global: any
+global.fetch = jest.fn(() =>
+  Promise.resolve({
+    status: 200,
+    json: () => Promise.resolve({}),
+  })
+)
 
 jest.mock(
   "Components/Publishing/Sections/FullscreenViewer/withFullScreen",
@@ -23,7 +34,17 @@ jest.mock(
 describe("EditorialFeature", () => {
   let props: ArticleProps
   const getWrapper = (passedProps = props) => {
-    return mount(<EditorialFeature {...passedProps} />)
+    return mount(
+      <TooltipsData article={props.article} onOpenAuthModal={jest.fn()}>
+        <EditorialFeature {...passedProps} />
+      </TooltipsData>
+    )
+  }
+
+  const getSnapshot = (passedProps = props) => {
+    return renderer.create(
+      <EditorialFeature {...passedProps} showTooltips={false} isTest />
+    )
   }
 
   beforeEach(() => {
@@ -47,12 +68,12 @@ describe("EditorialFeature", () => {
     })
 
     it("Renders template for EOY_2018_ARTISTS article", () => {
-      const component = getWrapper(props)
+      const component = getWrapper()
       expect(component.find(Eoy2018Artists)).toBeTruthy()
     })
 
     it("Matches snapshot", () => {
-      const component = renderer.create(<EditorialFeature {...props} />)
+      const component = getSnapshot()
       expect(component).toMatchSnapshot()
     })
   })
@@ -66,12 +87,12 @@ describe("EditorialFeature", () => {
     })
 
     it("Renders template for EOY_2018_CULTURE article", () => {
-      const component = getWrapper(props)
+      const component = getWrapper()
       expect(component.find(Eoy2018Culture)).toBeTruthy()
     })
 
     it("Matches snapshot", () => {
-      const component = renderer.create(<EditorialFeature {...props} />)
+      const component = getSnapshot()
       expect(component).toMatchSnapshot()
     })
   })
