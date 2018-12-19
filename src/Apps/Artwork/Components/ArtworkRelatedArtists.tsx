@@ -2,6 +2,7 @@ import { Box, Flex } from "@artsy/palette"
 import { ContextConsumer } from "Artsy/Router"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { data as sd } from "sharify"
 import { ArtistCardFragmentContainer as ArtistCard } from "Styleguide/Components"
 import { Header } from "./OtherWorks/Header"
 
@@ -18,16 +19,14 @@ export class ArtworkRelatedArtists extends React.Component<
     const {
       artwork: { artist },
     } = this.props
+    const relatedUrl = sd.APP_URL + artist.href + "/related_artists"
 
     return (
       <ContextConsumer>
         {({ user, mediator }) => {
           return (
             <Box mt={6}>
-              <Header
-                title="Related artists"
-                buttonHref={artist.href + "/related_artists"}
-              />
+              <Header title="Related artists" buttonHref={relatedUrl} />
               <Flex flexWrap="wrap" mr={-2} width="100%">
                 {artist.related.artists.edges.map(({ node }, index) => {
                   return (
