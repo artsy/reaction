@@ -144,6 +144,7 @@ const Title = styled.h1`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin: 0;
   ${unica("s100")};
 `
 

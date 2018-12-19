@@ -322,12 +322,14 @@ const SectionHeader = styled(Box)<{ isDark?: boolean }>`
     ${unica("s65", "medium")};
     text-transform: uppercase;
     flex: 2;
+    margin: 0;
   }
   h2 {
     font-size: 50px;
     width: fit-content;
     line-height: 1em;
     text-align: right;
+    margin: 0;
   }
 
   ${media.md`

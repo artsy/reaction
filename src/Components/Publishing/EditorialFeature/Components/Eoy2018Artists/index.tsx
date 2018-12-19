@@ -224,6 +224,7 @@ const ArticleContent = styled(Box)`
   blockquote {
     ${unica("s34")};
     line-height: 1.3em;
+    margin: 0;
 
     ${media.sm`
       ${unica("s25")};
@@ -256,6 +257,7 @@ const ArtistHeaderTitle = styled.div`
     min-height: fit-content;
     padding: ${space(2)}px;
     border-bottom: ${BORDER_WIDTH}px solid ${color("purple100")};
+    margin: 0;
 
     ${media.md`
       width: 60%;
@@ -282,6 +284,8 @@ const ArtistHeaderTitle = styled.div`
     min-height: fit-content;
     display: inline-flex;
     padding: ${space(2)}px;
+    margin: 0;
+
     &:last-child {
       border-left: ${BORDER_WIDTH}px solid ${color("purple100")};
     }
