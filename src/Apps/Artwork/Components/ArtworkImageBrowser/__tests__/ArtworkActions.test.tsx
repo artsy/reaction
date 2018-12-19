@@ -1,4 +1,4 @@
-import { ArtworkActionsFixture } from "Apps/__tests__/Fixtures/Artwork/ArtworkActions/ArtworkGrids/ArtworkActions.fixture"
+import { ArtworkActionsFixture } from "Apps/__tests__/Fixtures/Artwork/ArtworkImageBrowser/ArtworkActions.fixture"
 import { renderRelayTree } from "DevTools"
 import { ReactWrapper } from "enzyme"
 import { graphql } from "react-relay"

@@ -1,8 +1,8 @@
-import { OtherWorksFixture } from "Apps/__tests__/Fixtures/Artwork/OtherWorks/ArtworkGrids/OtherWorks.fixture"
+import { OtherWorksFixture } from "Apps/__tests__/Fixtures/Artwork/OtherWorks/OtherWorks.fixture"
+import { OtherWorksFragmentContainer } from "Apps/Artwork/Components/OtherWorks"
 import { renderRelayTree } from "DevTools"
 import { ReactWrapper } from "enzyme"
 import { graphql } from "react-relay"
-import { OtherWorksFragmentContainer } from "../OtherWorks"
 
 describe("OtherWorks", () => {
   let wrapper: ReactWrapper

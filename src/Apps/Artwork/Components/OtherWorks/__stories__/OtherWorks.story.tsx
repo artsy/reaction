@@ -1,12 +1,13 @@
-import { OtherWorksQuery } from "__generated__/OtherWorksQuery.graphql"
-import { ContextConsumer } from "Artsy"
-import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import React from "react"
 import { graphql, QueryRenderer } from "react-relay"
 import { storiesOf } from "storybook/storiesOf"
+
+import { OtherWorksQuery } from "__generated__/OtherWorksQuery.graphql"
+import { OtherWorksFragmentContainer } from "Apps/Artwork/Components/OtherWorks"
+import { RelatedWorksArtworkGridQueryRenderer as RelatedWorksArtworkGrid } from "Apps/Artwork/Components/OtherWorks/ArtworkGrids/RelatedWorksArtworkGrid"
+import { ContextConsumer } from "Artsy"
+import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { Section } from "Styleguide/Utils/Section"
-import { OtherWorksFragmentContainer } from "../OtherWorks"
-import { RelatedWorksArtworkGridQueryRenderer as RelatedWorksArtworkGrid } from "../OtherWorks/ArtworkContexts/ArtworkGrids/RelatedWorksArtworkGrid"
 
 export const OtherWorks = ({ artworkSlug }: { artworkSlug: string }) => {
   return (

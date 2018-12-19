@@ -1,7 +1,12 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
-import { Banner, LargeBanner, SmallBanner } from "../ArtworkBanner/Banner"
+
+import {
+  Banner,
+  LargeBanner,
+  SmallBanner,
+} from "Apps/Artwork/Components/ArtworkBanner/Banner"
 
 storiesOf("Apps/Artwork Page/Components", module).add(
   "ResponsiveBanner",

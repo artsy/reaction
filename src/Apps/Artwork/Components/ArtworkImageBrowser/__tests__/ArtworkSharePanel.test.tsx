@@ -1,4 +1,4 @@
-import { ArtworkSharePanelFixture } from "Apps/__tests__/Fixtures/Artwork/ArtworkSharePanel/ArtworkGrids/ArtworkSharePanel.fixture"
+import { ArtworkSharePanelFixture } from "Apps/__tests__/Fixtures/Artwork/ArtworkImageBrowser/ArtworkSharePanel.fixture"
 import { renderRelayTree } from "DevTools"
 import { ReactWrapper } from "enzyme"
 import { graphql } from "react-relay"

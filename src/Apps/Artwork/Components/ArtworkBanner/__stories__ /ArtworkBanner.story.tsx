@@ -1,8 +1,13 @@
-import { AllAdditionalDetailsPresent } from "Apps/__tests__/Fixtures/Artworks"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Styleguide/Utils/Section"
-import { ArtworkBanner, ArtworkBannerQueryRenderer } from "../ArtworkBanner"
+
+import {
+  ArtworkBanner,
+  ArtworkBannerQueryRenderer,
+} from "Apps/Artwork/Components/ArtworkBanner"
+
+import { AllAdditionalDetailsPresent } from "Apps/__tests__/Fixtures/Artworks"
 
 import {
   ArtworkAuctionBannerFixture,

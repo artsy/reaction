@@ -1,13 +1,13 @@
-import { ArtistArtworkGridFixture } from "Apps/__tests__/Fixtures/Artwork/OtherWorks/ArtworkGrids/ArtistArtworkGrid.fixture"
+import { HeaderFixture } from "Apps/__tests__/Fixtures/Artwork/OtherWorks/Header.fixture"
+import { Header } from "Apps/Artwork/Components/OtherWorks/Header"
 import { renderRelayTree } from "DevTools"
 import { ReactWrapper } from "enzyme"
 import { graphql } from "react-relay"
-import { Header } from "../Header"
 
 describe("Header", () => {
   let wrapper: ReactWrapper
 
-  const getWrapper = (response = ArtistArtworkGridFixture) => {}
+  const getWrapper = (response = HeaderFixture) => {}
 
   beforeAll(() => {
     wrapper = getWrapper()

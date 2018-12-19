@@ -3,8 +3,8 @@ import React from "react"
 import { graphql } from "react-relay"
 
 import { ArtworkContextArtistFixture } from "Apps/__tests__/Fixtures/Artwork/OtherWorks/ArtworkContexts/ArtworkContextArtist.fixture"
+import { ArtworkContextArtistFragmentContainer } from "Apps/Artwork/Components/OtherWorks/ArtworkContexts/ArtworkContextArtist"
 import { MockBoot, renderRelayTree } from "DevTools"
-import { ArtworkContextArtistFragmentContainer } from "../ArtworkContexts/ArtworkContextArtist"
 
 jest.unmock("react-relay")
 
