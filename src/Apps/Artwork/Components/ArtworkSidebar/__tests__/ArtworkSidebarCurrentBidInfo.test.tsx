@@ -77,7 +77,7 @@ describe("ArtworkSidebarCurrentBidInfo", () => {
     })
   })
 
-  describe("open auction with no reserve with bids present ", () => {
+  describe("open auction with no reserve with bids present", () => {
     it("displays proper current bid info including bid count", async () => {
       const wrapper = await getWrapper(OpenAuctionNoReserveWithBids)
 

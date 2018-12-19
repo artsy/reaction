@@ -22,12 +22,10 @@ export type ArtworkSidebarCurrentBidInfo_artwork = {
     }) | null;
     readonly myLotStanding: ReadonlyArray<{
         readonly most_recent_bid: ({
+            readonly is_winning: boolean | null;
             readonly max_bid: ({
                 readonly display: string | null;
             }) | null;
-        }) | null;
-        readonly active_bid: ({
-            readonly is_winning: boolean | null;
         }) | null;
     }> | null;
     readonly " $refType": ArtworkSidebarCurrentBidInfo_artwork$ref;
@@ -179,6 +177,13 @@ return {
           "plural": false,
           "selections": [
             {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "is_winning",
+              "args": null,
+              "storageKey": null
+            },
+            {
               "kind": "LinkedField",
               "alias": null,
               "name": "max_bid",
@@ -190,25 +195,6 @@ return {
             },
             v0
           ]
-        },
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "active_bid",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "BidderPosition",
-          "plural": false,
-          "selections": [
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "is_winning",
-              "args": null,
-              "storageKey": null
-            },
-            v0
-          ]
         }
       ]
     },
@@ -216,5 +202,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '680492e9583527bb9b01c124d63412a3';
+(node as any).hash = '200b71a0eea2583cc2f3717af588fd4a';
 export default node;
