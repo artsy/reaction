@@ -44,20 +44,6 @@ class OfferHistoryItem extends React.Component<
         </Row>
         {previousOffers.length > 0 && (
           <>
-            <StaticCollapse open={!showingFullHistory}>
-              <Row>
-                <div />
-                <Button
-                  variant="secondaryGray"
-                  size="small"
-                  onClick={() => {
-                    this.setState({ showingFullHistory: true })
-                  }}
-                >
-                  Show offer history
-                </Button>
-              </Row>
-            </StaticCollapse>
             <StaticCollapse open={showingFullHistory}>
               <Flex m={0} flexDirection="column">
                 {previousOffers.map(({ node: offer }) => (
@@ -72,6 +58,20 @@ class OfferHistoryItem extends React.Component<
                   </Row>
                 ))}
               </Flex>
+            </StaticCollapse>
+            <StaticCollapse open={!showingFullHistory}>
+              <Row>
+                <div />
+                <Button
+                  variant="secondaryGray"
+                  size="small"
+                  onClick={() => {
+                    this.setState({ showingFullHistory: true })
+                  }}
+                >
+                  Show offer history
+                </Button>
+              </Row>
             </StaticCollapse>
           </>
         )}
