@@ -1,5 +1,6 @@
-import { Avatar, Flex, Sans, Serif } from "@artsy/palette"
+import { Avatar, Flex, Link, Sans, Serif } from "@artsy/palette"
 import React from "react"
+import styled from "styled-components"
 import { Media } from "Utils/Responsive"
 
 export interface BannerProps {
@@ -13,16 +14,33 @@ export interface BannerProps {
   name?: string
   /** partner name */
   subHeadline?: string
+  href?: string
+}
+
+const StyledLink = styled(Link)`
+  &:hover {
+    text-decoration: none;
+  }
+`
+
+const withLink = (href: string, children: React.ReactNode) => {
+  if (href) {
+    return (
+      <StyledLink noUnderline href={href}>
+        {children}
+      </StyledLink>
+    )
+  }
+
+  return children
 }
 
 export const Banner: React.SFC<BannerProps> = props => {
   return (
     <>
-      <Media at="xs">
-        <SmallBanner {...props} />
-      </Media>
+      <Media at="xs">{withLink(props.href, <SmallBanner {...props} />)}</Media>
       <Media greaterThan="xs">
-        <LargeBanner {...props} />
+        {withLink(props.href, <LargeBanner {...props} />)}
       </Media>
     </>
   )
