@@ -164,9 +164,10 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
                     defaultValue={null}
                     onChange={ev =>
                       this.setState({
-                        offerValue: Math.floor(
-                          Number(ev.currentTarget.value || "0")
-                        ),
+                        offerValue:
+                          Math.round(
+                            Number(ev.currentTarget.value || "0") * 100
+                          ) / 100,
                       })
                     }
                     block
