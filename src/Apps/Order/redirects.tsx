@@ -1,12 +1,19 @@
 import { routes_OrderQueryResponse } from "__generated__/routes_OrderQuery.graphql"
 import { Location, RouteConfig, Router } from "found"
 import moment from "moment"
+import { graphql } from "react-relay"
 import { get } from "Utils/get"
 import { RedirectPredicate, RedirectRecord } from "./getRedirect"
 import { OrderApp } from "./OrderApp"
 
+import { redirects_order } from "__generated__/redirects_order.graphql"
+
 const LEAVE_MESSAGING =
   "Are you sure you want to refresh? Your changes will not be saved."
+
+interface OrderQuery {
+  order: redirects_order
+}
 
 export const confirmRouteExit = (
   newLocation: Location,
@@ -33,13 +40,15 @@ export const confirmRouteExit = (
 
 const goToStatusIf = (
   pred: (order: routes_OrderQueryResponse["order"]) => boolean
-): RedirectPredicate => ({ order }) => {
+): RedirectPredicate<OrderQuery> => ({ order }) => {
   if (pred(order)) {
     return `/orders/${order.id}/status`
   }
 }
 
-const goToArtworkIfOrderWasAbandoned: RedirectPredicate = ({ order }) => {
+const goToArtworkIfOrderWasAbandoned: RedirectPredicate<OrderQuery> = ({
+  order,
+}) => {
   if (order.state === "ABANDONED") {
     const artworkID = get(order, o => o.lineItems.edges[0].node.artwork.id)
     // If an artwork ID can't be found, redirect back to home page.
@@ -51,25 +60,31 @@ const goToStatusIfOrderIsNotPending = goToStatusIf(
   order => order.state !== "PENDING"
 )
 
-const goToShippingIfShippingIsNotCompleted: RedirectPredicate = ({ order }) => {
+const goToShippingIfShippingIsNotCompleted: RedirectPredicate<OrderQuery> = ({
+  order,
+}) => {
   if (!order.requestedFulfillment) {
     return `/orders/${order.id}/shipping`
   }
 }
 
-const goToPaymentIfPaymentIsNotCompleted: RedirectPredicate = ({ order }) => {
+const goToPaymentIfPaymentIsNotCompleted: RedirectPredicate<OrderQuery> = ({
+  order,
+}) => {
   if (!order.creditCard) {
     return `/orders/${order.id}/payment`
   }
 }
 
-const goToShippingIfOrderIsNotOfferOrder: RedirectPredicate = ({ order }) => {
+const goToShippingIfOrderIsNotOfferOrder: RedirectPredicate<OrderQuery> = ({
+  order,
+}) => {
   if (order.mode !== "OFFER") {
     return `/orders/${order.id}/shipping`
   }
 }
 
-const goToOfferIfNoOfferMade: RedirectPredicate = ({ order }) => {
+const goToOfferIfNoOfferMade: RedirectPredicate<OrderQuery> = ({ order }) => {
   if (order.mode === "OFFER" && !order.myLastOffer) {
     return `/orders/${order.id}/offer`
   }
@@ -85,15 +100,17 @@ const goToStatusIfOrderIsNotSubmitted = goToStatusIf(
   order => order.state !== "SUBMITTED"
 )
 
-const goToReviewIfOrderIsPending: RedirectPredicate = ({ order }) => {
+const goToReviewIfOrderIsPending: RedirectPredicate<OrderQuery> = ({
+  order,
+}) => {
   if (order.state === "PENDING") {
     return `/orders/${order.id}/review`
   }
 }
 
-const goToRespondIfMyLastOfferIsNotMostRecentOffer: RedirectPredicate = ({
-  order,
-}) => {
+const goToRespondIfMyLastOfferIsNotMostRecentOffer: RedirectPredicate<
+  OrderQuery
+> = ({ order }) => {
   if (
     order.myLastOffer &&
     order.lastOffer &&
@@ -104,7 +121,9 @@ const goToRespondIfMyLastOfferIsNotMostRecentOffer: RedirectPredicate = ({
   return `/orders/${order.id}/respond`
 }
 
-const goToRespondIfAwaitingBuyerResponse: RedirectPredicate = ({ order }) => {
+const goToRespondIfAwaitingBuyerResponse: RedirectPredicate<OrderQuery> = ({
+  order,
+}) => {
   if (order.awaitingResponseFrom === "BUYER") {
     return `/orders/${order.id}/respond`
   }
@@ -186,3 +205,39 @@ export const redirects: RedirectRecord<{
     },
   ],
 }
+
+graphql`
+  fragment redirects_order on Order {
+    id
+    mode
+    state
+    ... on OfferOrder {
+      myLastOffer {
+        id
+        createdAt
+      }
+      lastOffer {
+        id
+        createdAt
+      }
+    }
+    requestedFulfillment {
+      __typename
+    }
+    lineItems {
+      edges {
+        node {
+          artwork {
+            id
+          }
+        }
+      }
+    }
+    creditCard {
+      id
+    }
+    ... on OfferOrder {
+      awaitingResponseFrom
+    }
+  }
+`

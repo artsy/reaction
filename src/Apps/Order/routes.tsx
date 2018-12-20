@@ -42,37 +42,7 @@ export const routes: RouteConfig[] = [
           name
         }
         order: ecommerceOrder(id: $orderID) {
-          id
-          mode
-          state
-          ... on OfferOrder {
-            myLastOffer {
-              id
-              createdAt
-            }
-            lastOffer {
-              id
-              createdAt
-            }
-          }
-          requestedFulfillment {
-            __typename
-          }
-          lineItems {
-            edges {
-              node {
-                artwork {
-                  id
-                }
-              }
-            }
-          }
-          creditCard {
-            id
-          }
-          ... on OfferOrder {
-            awaitingResponseFrom
-          }
+          ...redirects_order @relay(mask: false)
         }
       }
     `,
