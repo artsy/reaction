@@ -8,6 +8,88 @@ exports[`renders a series properly 1`] = `
   display: flex;
 }
 
+.c19 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column-reverse;
+  -ms-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+  padding: 20px;
+}
+
+.c20 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 0px;
+  width: 100%;
+}
+
+.c31 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c37 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.c38 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.c40 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+}
+
 .c7 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-weight: 600;
@@ -22,6 +104,42 @@ exports[`renders a series properly 1`] = `
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
+  margin-bottom: 4px;
+}
+
+.c22 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 28px;
+  line-height: 36px;
+  margin-bottom: 20px;
+}
+
+.c23 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 18px;
+  line-height: 26px;
+  margin-bottom: 20px;
+}
+
+.c25 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.c33 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1em;
+}
+
+.c39 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 28px;
+  line-height: 36px;
+  margin-bottom: 20px;
 }
 
 .c16 {
@@ -30,6 +148,19 @@ exports[`renders a series properly 1`] = `
 
 .c17 {
   margin-bottom: 40px;
+}
+
+.c27 {
+  margin-bottom: 10px;
+  margin-left: 0px;
+  width: 100%;
+}
+
+.c36 {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 40px;
 }
 
 .c5 {
@@ -113,11 +244,11 @@ exports[`renders a series properly 1`] = `
   z-index: 10;
 }
 
-.c33 {
+.c35 {
   margin: 10px 20px 0 0;
 }
 
-.c33::before {
+.c35::before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -132,7 +263,7 @@ exports[`renders a series properly 1`] = `
   white-space: nowrap;
 }
 
-.c32 {
+.c34 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -147,12 +278,12 @@ exports[`renders a series properly 1`] = `
   color: white;
 }
 
-.c31 {
+.c32 {
   width: 32px;
   height: 32px;
 }
 
-.c28 {
+.c29 {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -164,9 +295,8 @@ exports[`renders a series properly 1`] = `
 
 .c26 {
   position: relative;
-  width: 50%;
   height: inherit;
-  margin-left: 30px;
+  background: white;
 }
 
 .c18 {
@@ -176,85 +306,30 @@ exports[`renders a series properly 1`] = `
   cursor: pointer;
   -webkit-text-decoration: none;
   text-decoration: none;
-  padding: 30px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: block;
 }
 
-.c18 .c27 {
+.c18 .c28 {
   opacity: 1;
 }
 
-.c18:hover .c27 {
+.c18:hover .c28 {
   opacity: 0.7;
-}
-
-.c18 .c25 {
-  background: black;
-}
-
-.c19 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  width: 50%;
-  margin-bottom: 5px;
-}
-
-.c22 {
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 45px;
-  line-height: 1.2em;
-  margin-bottom: 30px;
-}
-
-.c20 {
-  margin-bottom: 10px;
-}
-
-.c23 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 23px;
-  line-height: 1.5em;
-  -webkit-font-smoothing: antialiased;
 }
 
 .c30 {
   position: absolute;
   left: 20px;
-  bottom: 20px;
   right: 20px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
+  bottom: 20px;
 }
 
-.c29 svg {
-  width: 40px;
+.c30 svg {
+  height: 40px;
 }
 
 .c8 {
-  background-color: black;
+  background-color: #000;
   position: fixed;
   top: 0;
   left: 0;
@@ -283,43 +358,6 @@ exports[`renders a series properly 1`] = `
   right: 0;
   bottom: 0;
   z-index: -1;
-}
-
-.c36 {
-  box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 0 1 auto;
-  -ms-flex: 0 1 auto;
-  flex: 0 1 auto;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin-right: -0.5rem;
-  margin-left: -0.5rem;
-}
-
-.c38 {
-  box-sizing: border-box;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
-}
-
-.c40 {
-  box-sizing: border-box;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
 }
 
 .c41 {
@@ -508,42 +546,6 @@ exports[`renders a series properly 1`] = `
   text-transform: none;
 }
 
-.c35 {
-  color: white;
-  max-width: 1200px;
-  width: 100%;
-}
-
-.c37 .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
-  display: none;
-}
-
-.c37:first-of-type {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c37:first-of-type .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
-  display: block;
-  margin-bottom: 10px;
-}
-
-.c39 {
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 32px;
-  line-height: 1.1em;
-}
-
 .c14 {
   color: white;
   text-align: center;
@@ -577,10 +579,6 @@ exports[`renders a series properly 1`] = `
   margin-bottom: 90px;
 }
 
-.c12 .c34 {
-  padding-top: 60px;
-}
-
 .c0 {
   color: white;
 }
@@ -590,8 +588,287 @@ exports[`renders a series properly 1`] = `
 }
 
 @media screen and (min-width:40em) {
+  .c19 {
+    -webkit-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c19 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c19 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c19 {
+    padding: 20px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c19 {
+    padding: 30px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c19 {
+    padding: 30px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c20 {
+    margin-bottom: 0px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c20 {
+    margin-bottom: 5px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c20 {
+    margin-bottom: 5px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c20 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c20 {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c20 {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c37 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c37 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c37 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c38 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c38 {
+    width: 33.33333333333333%;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c38 {
+    width: 33.33333333333333%;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c40 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c40 {
+    width: 66.66666666666666%;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c40 {
+    width: 66.66666666666666%;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c22 {
+    font-size: 28px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c22 {
+    font-size: 42px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c22 {
+    font-size: 42px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c22 {
+    line-height: 36px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c22 {
+    line-height: 50px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c22 {
+    line-height: 50px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c23 {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c23 {
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c23 {
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c23 {
+    line-height: 26px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c23 {
+    line-height: 32px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c23 {
+    line-height: 32px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c39 {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c39 {
+    margin-bottom: 0px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c39 {
+    margin-bottom: 0px;
+  }
+}
+
+@media screen and (min-width:40em) {
   .c17 {
     margin-bottom: 60px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c27 {
+    margin-bottom: 10px;
+    margin-left: 0px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c27 {
+    margin-bottom: 0px;
+    margin-left: 30px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c27 {
+    margin-bottom: 0px;
+    margin-left: 30px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c27 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c27 {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c27 {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c36 {
+    padding-top: 40px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c36 {
+    padding-top: 60px;
   }
 }
 
@@ -610,91 +887,8 @@ exports[`renders a series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c26 {
-    width: 100%;
-    margin-left: 0;
-    margin-bottom: 10px;
-  }
-}
-
-@media (max-width:900px) {
-  .c18 {
-    -webkit-flex-direction: column-reverse;
-    -ms-flex-direction: column-reverse;
-    flex-direction: column-reverse;
-    padding: 20px;
-  }
-}
-
-@media (max-width:900px) {
-  .c19 {
-    width: 100%;
-    margin-bottom: 0;
-  }
-}
-
-@media (max-width:900px) {
-  .c22 {
-    font-family: Unica77LLWebRegular,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 32px;
-    line-height: 1.1em;
-  }
-}
-
-@media (max-width:900px) {
-  .c23 {
-    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-    font-size: 19px;
-    line-height: 1.5em;
-    -webkit-font-smoothing: antialiased;
-    margin-bottom: 20px;
-  }
-}
-
-@media (max-width:900px) {
-  .c29 svg {
-    width: 30px;
-  }
-}
-
-@media only screen and (min-width:0em) {
-  .c38 {
-    -webkit-flex-basis: 100%;
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
-    max-width: 100%;
-    display: block;
-  }
-}
-
-@media only screen and (min-width:48em) {
-  .c38 {
-    -webkit-flex-basis: 33.333333333333336%;
-    -ms-flex-preferred-size: 33.333333333333336%;
-    flex-basis: 33.333333333333336%;
-    max-width: 33.333333333333336%;
-    display: block;
-  }
-}
-
-@media only screen and (min-width:0em) {
-  .c40 {
-    -webkit-flex-basis: 100%;
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
-    max-width: 100%;
-    display: block;
-  }
-}
-
-@media only screen and (min-width:48em) {
-  .c40 {
-    -webkit-flex-basis: 66.66666666666667%;
-    -ms-flex-preferred-size: 66.66666666666667%;
-    flex-basis: 66.66666666666667%;
-    max-width: 66.66666666666667%;
-    display: block;
+  .c30 svg {
+    height: 30px;
   }
 }
 
@@ -758,23 +952,6 @@ exports[`renders a series properly 1`] = `
   }
 }
 
-@media (max-width:768px) {
-  .c37:first-of-type .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
-    display: none;
-  }
-
-  .c37 .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
-    margin-top: 60px;
-    display: block;
-  }
-}
-
-@media (max-width:768px) {
-  .c39 {
-    margin-bottom: 20px;
-  }
-}
-
 @media (max-width:900px) {
   .c14 .PartnerBlock__ImageContainer-ydgi2-1 {
     padding-bottom: 0;
@@ -788,12 +965,6 @@ exports[`renders a series properly 1`] = `
     font-size: 65px;
     line-height: 1em;
     margin-bottom: 20px;
-  }
-}
-
-@media (max-width:900px) {
-  .c12 .c34 {
-    padding-top: 60px;
   }
 }
 
@@ -889,88 +1060,126 @@ exports[`renders a series properly 1`] = `
           <div
             className="c19"
           >
-            <div>
-              <div
-                className="c20 c21"
-                fontFamily={
-                  Object {
-                    "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
-                    "fontWeight": 500,
-                  }
-                }
-                fontSize="14px"
-              >
-                The Future of Art
-              </div>
-              <div
-                className="c22"
-              >
-                New Study Shows the Gender Pay Gap for Artists Is Not So Simple
-              </div>
-              <div
-                className="c23"
-              >
-                The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
-              </div>
-            </div>
             <div
-              className="c24"
+              className="c20"
+              width={
+                Array [
+                  "100%",
+                  "100%",
+                  "50%",
+                  "50%",
+                ]
+              }
             >
-              <div
-                className="c21"
-                fontFamily={
-                  Object {
-                    "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
-                    "fontWeight": 500,
+              <div>
+                <div
+                  className="c21"
+                  fontFamily={
+                    Object {
+                      "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                      "fontWeight": 500,
+                    }
                   }
-                }
-                fontSize="14px"
-              >
-                Aug 28, 2017
-              </div>
-            </div>
-          </div>
-          <div
-            className="c25 c26"
-          >
-            <img
-              className="c27 c28"
-              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
-            />
-            <div
-              className="c29 c30"
-            >
-              <svg
-                className="c31"
-                version="1.1"
-                viewBox="0 0 40 56"
-                x="0px"
-                xmlns="http://www.w3.org/2000/svg"
-                y="0px"
-              >
-                <g
-                  fill="none"
-                  fillRule="evenodd"
-                  stroke="none"
-                  strokeWidth="1"
+                  fontSize="14px"
                 >
-                  <polygon
-                    fill="white"
-                    points="0 0 0 56 39.3600006 28"
-                  />
-                </g>
-              </svg>
-              <div
-                className="c21"
-                fontFamily={
-                  Object {
-                    "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
-                    "fontWeight": 500,
+                  The Future of Art
+                </div>
+                <div
+                  className="c22"
+                  fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+                  fontSize={
+                    Array [
+                      "28px",
+                      "28px",
+                      "42px",
+                      "42px",
+                    ]
                   }
-                }
-                fontSize="14px"
+                >
+                  New Study Shows the Gender Pay Gap for Artists Is Not So Simple
+                </div>
+                <div
+                  className="c23"
+                  fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
+                  fontSize={
+                    Array [
+                      "18px",
+                      "18px",
+                      "22px",
+                      "22px",
+                    ]
+                  }
+                >
+                  The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
+                </div>
+              </div>
+              <div
+                className="c24"
               >
-                02:28
+                <div
+                  className="c25"
+                  fontFamily={
+                    Object {
+                      "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                      "fontWeight": 500,
+                    }
+                  }
+                  fontSize="14px"
+                >
+                  Aug 28, 2017
+                </div>
+              </div>
+            </div>
+            <div
+              className="c26 c27"
+              width={
+                Array [
+                  "100%",
+                  "100%",
+                  "50%",
+                  "50%",
+                ]
+              }
+            >
+              <img
+                className="c28 c29"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
+              />
+              <div
+                className="c30 c31"
+              >
+                <svg
+                  className="c32"
+                  version="1.1"
+                  viewBox="0 0 40 56"
+                  x="0px"
+                  xmlns="http://www.w3.org/2000/svg"
+                  y="0px"
+                >
+                  <g
+                    fill="none"
+                    fillRule="evenodd"
+                    stroke="none"
+                    strokeWidth="1"
+                  >
+                    <polygon
+                      fill="white"
+                      points="0 0 0 56 39.3600006 28"
+                    />
+                  </g>
+                </svg>
+                <div
+                  className="c33"
+                  fontFamily={
+                    Object {
+                      "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                      "fontWeight": 500,
+                    }
+                  }
+                  fontSize="14px"
+                >
+                  02:28
+                </div>
               </div>
             </div>
           </div>
@@ -988,54 +1197,18 @@ exports[`renders a series properly 1`] = `
           <div
             className="c19"
           >
-            <div>
-              <div
-                className="c20 c21"
-                fontFamily={
-                  Object {
-                    "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
-                    "fontWeight": 500,
-                  }
-                }
-                fontSize="14px"
-              >
-                The Future of Art
-              </div>
-              <div
-                className="c22"
-              >
-                New York's Next Art District
-              </div>
-              <div
-                className="c23"
-              >
-                Land exhibitions, make influential contacts, and gain valuable feedback about your work.
-              </div>
-            </div>
             <div
-              className="Byline c32"
-              color="white"
+              className="c20"
+              width={
+                Array [
+                  "100%",
+                  "100%",
+                  "50%",
+                  "50%",
+                ]
+              }
             >
-              <div
-                className="c21"
-                fontFamily={
-                  Object {
-                    "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
-                    "fontWeight": 500,
-                  }
-                }
-                fontSize="14px"
-              >
-                <div
-                  className="c33"
-                  color="white"
-                >
-                  Casey Lesser
-                </div>
-              </div>
-              <div
-                className="c24"
-              >
+              <div>
                 <div
                   className="c21"
                   fontFamily={
@@ -1046,53 +1219,156 @@ exports[`renders a series properly 1`] = `
                   }
                   fontSize="14px"
                 >
-                  May 19, 2017
+                  The Future of Art
+                </div>
+                <div
+                  className="c22"
+                  fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+                  fontSize={
+                    Array [
+                      "28px",
+                      "28px",
+                      "42px",
+                      "42px",
+                    ]
+                  }
+                >
+                  New York's Next Art District
+                </div>
+                <div
+                  className="c23"
+                  fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
+                  fontSize={
+                    Array [
+                      "18px",
+                      "18px",
+                      "22px",
+                      "22px",
+                    ]
+                  }
+                >
+                  Land exhibitions, make influential contacts, and gain valuable feedback about your work.
+                </div>
+              </div>
+              <div
+                className="Byline c34"
+                color="white"
+              >
+                <div
+                  className="c25"
+                  fontFamily={
+                    Object {
+                      "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                      "fontWeight": 500,
+                    }
+                  }
+                  fontSize="14px"
+                >
+                  <div
+                    className="c35"
+                    color="white"
+                  >
+                    Casey Lesser
+                  </div>
+                </div>
+                <div
+                  className="c24"
+                >
+                  <div
+                    className="c25"
+                    fontFamily={
+                      Object {
+                        "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                        "fontWeight": 500,
+                      }
+                    }
+                    fontSize="14px"
+                  >
+                    May 19, 2017
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div
-            className="c25 c26"
-          >
-            <img
-              className="c27 c28"
-              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=95"
-            />
+            <div
+              className="c26 c27"
+              width={
+                Array [
+                  "100%",
+                  "100%",
+                  "50%",
+                  "50%",
+                ]
+              }
+            >
+              <img
+                className="c28 c29"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=95"
+              />
+            </div>
           </div>
         </a>
       </div>
     </div>
     <div
-      className="c34 c35 c36"
-      color="white"
+      className="c36"
     >
       <div
-        className="c37 c38"
+        className="c37"
+        color="white"
+        width="100%"
       >
         <div
-          className="c39"
-        >
-          About the Series
-        </div>
-      </div>
-      <div
-        className="c37 c40"
-      >
-        <div
-          className="SeriesAbout__description"
+          className="c38"
+          width={
+            Array [
+              1,
+              1,
+              0.3333333333333333,
+              0.3333333333333333,
+            ]
+          }
         >
           <div
-            className="article__text-section c41"
-            color="white"
+            className="c39"
+            fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+            fontSize="28px"
+          >
+            About the Series
+          </div>
+          <div
+            className="rrm-container rrm-greaterThanOrEqual-md"
+          />
+        </div>
+        <div
+          className="c40"
+          width={
+            Array [
+              1,
+              1,
+              0.6666666666666666,
+              0.6666666666666666,
+            ]
+          }
+        >
+          <div
+            className="SeriesAbout__description"
           >
             <div
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. <a href='http://artsy.net'>Curabitur blandit</a> tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
+              className="article__text-section c41"
+              color="white"
+            >
+              <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. <a href='http://artsy.net'>Curabitur blandit</a> tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
+                  }
                 }
-              }
-            />
+              />
+            </div>
           </div>
+          <div
+            className="rrm-container rrm-lessThan-md"
+          />
         </div>
       </div>
     </div>
@@ -1108,6 +1384,88 @@ exports[`renders a sponsored series properly 1`] = `
   display: flex;
 }
 
+.c25 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column-reverse;
+  -ms-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+  padding: 20px;
+}
+
+.c26 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 0px;
+  width: 100%;
+}
+
+.c37 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c43 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.c44 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.c47 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+}
+
 .c9 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-weight: 600;
@@ -1117,19 +1475,76 @@ exports[`renders a sponsored series properly 1`] = `
   text-align: center;
 }
 
+.c27 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 4px;
+}
+
 .c28 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 28px;
+  line-height: 36px;
+  margin-bottom: 20px;
+}
+
+.c29 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 18px;
+  line-height: 26px;
+  margin-bottom: 20px;
+}
+
+.c31 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
 }
 
-.c23 {
+.c39 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1em;
+}
+
+.c45 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 28px;
+  line-height: 36px;
+  margin-bottom: 20px;
+}
+
+.c22 {
   color: white;
 }
 
-.c24 {
+.c23 {
   margin-bottom: 40px;
+}
+
+.c33 {
+  margin-bottom: 10px;
+  margin-left: 0px;
+  width: 100%;
+}
+
+.c42 {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 40px;
+}
+
+.c46 {
+  margin-bottom: 4px;
+}
+
+.c49 {
+  margin-top: 60px;
 }
 
 .c5 {
@@ -1218,11 +1633,11 @@ exports[`renders a sponsored series properly 1`] = `
   z-index: 10;
 }
 
-.c40 {
+.c41 {
   margin: 10px 20px 0 0;
 }
 
-.c40::before {
+.c41::before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -1232,12 +1647,12 @@ exports[`renders a sponsored series properly 1`] = `
   background-color: white;
 }
 
-.c31 {
+.c30 {
   margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
-.c39 {
+.c40 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1267,99 +1682,43 @@ exports[`renders a sponsored series properly 1`] = `
   display: block;
 }
 
-.c33 {
+.c32 {
   position: relative;
-  width: 50%;
   height: inherit;
-  margin-left: 30px;
+  background: white;
 }
 
-.c25 {
+.c24 {
   border: 1px solid;
   border-radius: 2px;
   color: white;
   cursor: pointer;
   -webkit-text-decoration: none;
   text-decoration: none;
-  padding: 30px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: block;
 }
 
-.c25 .c34 {
+.c24 .c34 {
   opacity: 1;
 }
 
-.c25:hover .c34 {
+.c24:hover .c34 {
   opacity: 0.7;
 }
 
-.c25 .c32 {
-  background: black;
-}
-
-.c26 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  width: 50%;
-  margin-bottom: 5px;
-}
-
-.c29 {
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 45px;
-  line-height: 1.2em;
-  margin-bottom: 30px;
-}
-
-.c27 {
-  margin-bottom: 10px;
-}
-
-.c30 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 23px;
-  line-height: 1.5em;
-  -webkit-font-smoothing: antialiased;
-}
-
-.c37 {
+.c36 {
   position: absolute;
   left: 20px;
-  bottom: 20px;
   right: 20px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
+  bottom: 20px;
 }
 
 .c36 svg {
-  width: 40px;
+  height: 40px;
 }
 
 .c10 {
-  background-color: black;
+  background-color: #000;
   position: fixed;
   top: 0;
   left: 0;
@@ -1390,55 +1749,18 @@ exports[`renders a sponsored series properly 1`] = `
   z-index: -1;
 }
 
-.c43 {
-  box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 0 1 auto;
-  -ms-flex: 0 1 auto;
-  flex: 0 1 auto;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin-right: -0.5rem;
-  margin-left: -0.5rem;
-}
-
-.c45 {
-  box-sizing: border-box;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
-}
-
-.c47 {
-  box-sizing: border-box;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
-}
-
-.c19 {
+.c18 {
   display: block;
 }
 
-.c22 img {
+.c21 img {
   max-width: 240px;
   max-height: 40px;
   object-fit: contain;
   object-position: left;
 }
 
-.c20 {
+.c19 {
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
@@ -1632,53 +1954,17 @@ exports[`renders a sponsored series properly 1`] = `
   text-transform: none;
 }
 
-.c42 {
-  color: white;
-  max-width: 1200px;
-  width: 100%;
-}
-
-.c44 .c18 {
-  display: none;
-}
-
-.c44:first-of-type {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c44:first-of-type .c18 {
-  display: block;
-  margin-bottom: 10px;
-}
-
-.c46 {
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 32px;
-  line-height: 1.1em;
-}
-
 .c16 {
   color: white;
   text-align: center;
 }
 
-.c16 .c21 {
+.c16 .c20 {
   padding-top: 5px;
   padding-bottom: 40px;
 }
 
-.c16 .c21 img {
+.c16 .c20 img {
   margin-left: auto;
   margin-right: auto;
 }
@@ -1691,12 +1977,8 @@ exports[`renders a sponsored series properly 1`] = `
   margin-bottom: 30px;
 }
 
-.eMbNCF .c15 {
+.ikXwHe .c15 {
   margin-bottom: 90px;
-}
-
-.eMbNCF .c41 {
-  padding-top: 60px;
 }
 
 .c14 {
@@ -1709,10 +1991,6 @@ exports[`renders a sponsored series properly 1`] = `
   margin-bottom: 60px;
 }
 
-.c14 .c41 {
-  padding-top: 60px;
-}
-
 .c0 {
   color: white;
 }
@@ -1722,8 +2000,287 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .c24 {
+  .c25 {
+    -webkit-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c25 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c25 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c25 {
+    padding: 20px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c25 {
+    padding: 30px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c25 {
+    padding: 30px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c26 {
+    margin-bottom: 0px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c26 {
+    margin-bottom: 5px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c26 {
+    margin-bottom: 5px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c26 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c26 {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c26 {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c43 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c43 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c43 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c44 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c44 {
+    width: 33.33333333333333%;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c44 {
+    width: 33.33333333333333%;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c47 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c47 {
+    width: 66.66666666666666%;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c47 {
+    width: 66.66666666666666%;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c28 {
+    font-size: 28px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c28 {
+    font-size: 42px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c28 {
+    font-size: 42px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c28 {
+    line-height: 36px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c28 {
+    line-height: 50px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c28 {
+    line-height: 50px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c29 {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c29 {
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c29 {
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c29 {
+    line-height: 26px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c29 {
+    line-height: 32px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c29 {
+    line-height: 32px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c45 {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c45 {
+    margin-bottom: 0px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c45 {
+    margin-bottom: 0px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c23 {
     margin-bottom: 60px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c33 {
+    margin-bottom: 10px;
+    margin-left: 0px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c33 {
+    margin-bottom: 0px;
+    margin-left: 30px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c33 {
+    margin-bottom: 0px;
+    margin-left: 30px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c33 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c33 {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c33 {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c42 {
+    padding-top: 40px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c42 {
+    padding-top: 60px;
   }
 }
 
@@ -1749,96 +2306,13 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c33 {
-    width: 100%;
-    margin-left: 0;
-    margin-bottom: 10px;
-  }
-}
-
-@media (max-width:900px) {
-  .c25 {
-    -webkit-flex-direction: column-reverse;
-    -ms-flex-direction: column-reverse;
-    flex-direction: column-reverse;
-    padding: 20px;
-  }
-}
-
-@media (max-width:900px) {
-  .c26 {
-    width: 100%;
-    margin-bottom: 0;
-  }
-}
-
-@media (max-width:900px) {
-  .c29 {
-    font-family: Unica77LLWebRegular,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 32px;
-    line-height: 1.1em;
-  }
-}
-
-@media (max-width:900px) {
-  .c30 {
-    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-    font-size: 19px;
-    line-height: 1.5em;
-    -webkit-font-smoothing: antialiased;
-    margin-bottom: 20px;
-  }
-}
-
-@media (max-width:900px) {
   .c36 svg {
-    width: 30px;
-  }
-}
-
-@media only screen and (min-width:0em) {
-  .c45 {
-    -webkit-flex-basis: 100%;
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
-    max-width: 100%;
-    display: block;
-  }
-}
-
-@media only screen and (min-width:48em) {
-  .c45 {
-    -webkit-flex-basis: 33.333333333333336%;
-    -ms-flex-preferred-size: 33.333333333333336%;
-    flex-basis: 33.333333333333336%;
-    max-width: 33.333333333333336%;
-    display: block;
-  }
-}
-
-@media only screen and (min-width:0em) {
-  .c47 {
-    -webkit-flex-basis: 100%;
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
-    max-width: 100%;
-    display: block;
-  }
-}
-
-@media only screen and (min-width:48em) {
-  .c47 {
-    -webkit-flex-basis: 66.66666666666667%;
-    -ms-flex-preferred-size: 66.66666666666667%;
-    flex-basis: 66.66666666666667%;
-    max-width: 66.66666666666667%;
-    display: block;
+    height: 30px;
   }
 }
 
 @media (max-width:720px) {
-  .c20 {
+  .c19 {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
@@ -1906,25 +2380,8 @@ exports[`renders a sponsored series properly 1`] = `
   }
 }
 
-@media (max-width:768px) {
-  .c44:first-of-type .c18 {
-    display: none;
-  }
-
-  .c44 .c18 {
-    margin-top: 60px;
-    display: block;
-  }
-}
-
-@media (max-width:768px) {
-  .c46 {
-    margin-bottom: 20px;
-  }
-}
-
 @media (max-width:900px) {
-  .c16 .c21 {
+  .c16 .c20 {
     padding-bottom: 0;
   }
 }
@@ -1936,18 +2393,6 @@ exports[`renders a sponsored series properly 1`] = `
     font-size: 65px;
     line-height: 1em;
     margin-bottom: 20px;
-  }
-}
-
-@media (max-width:900px) {
-  .eMbNCF .c41 {
-    padding-top: 60px;
-  }
-}
-
-@media (max-width:900px) {
-  .c14 .c41 {
-    padding-top: 60px;
   }
 }
 
@@ -2071,15 +2516,15 @@ exports[`renders a sponsored series properly 1`] = `
         The Future of Art
       </div>
       <div
-        className="PartnerBlock c18 c19"
+        className="PartnerBlock c18"
       >
         <div
-          className="c20"
+          className="c19"
         >
           Presented in Partnership with
         </div>
         <div
-          className="c21 c22"
+          className="c20 c21"
         >
           <a
             href="http://artsy.net"
@@ -2094,170 +2539,35 @@ exports[`renders a sponsored series properly 1`] = `
       </div>
     </div>
     <div
-      className="c23"
+      className="c22"
       color="white"
     >
       <div
-        className="c24"
+        className="c23"
       >
         <a
-          className="ArticleCard c25"
+          className="ArticleCard c24"
           color="white"
           href="joanne-artman-gallery-poetry-naturerefinement-form"
           onClick={[Function]}
         >
           <div
-            className="c26"
+            className="c25"
           >
-            <div>
-              <div
-                className="c27 c28"
-                fontFamily={
-                  Object {
-                    "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
-                    "fontWeight": 500,
-                  }
-                }
-                fontSize="14px"
-              >
-                The Future of Art
-              </div>
-              <div
-                className="c29"
-              >
-                New Study Shows the Gender Pay Gap for Artists Is Not So Simple
-              </div>
-              <div
-                className="c30"
-              >
-                The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
-              </div>
-            </div>
             <div
-              className="c31"
+              className="c26"
+              width={
+                Array [
+                  "100%",
+                  "100%",
+                  "50%",
+                  "50%",
+                ]
+              }
             >
-              <div
-                className="c28"
-                fontFamily={
-                  Object {
-                    "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
-                    "fontWeight": 500,
-                  }
-                }
-                fontSize="14px"
-              >
-                Aug 28, 2017
-              </div>
-            </div>
-          </div>
-          <div
-            className="c32 c33"
-          >
-            <img
-              className="c34 c35"
-              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
-            />
-            <div
-              className="c36 c37"
-            >
-              <svg
-                className="c38"
-                version="1.1"
-                viewBox="0 0 40 56"
-                x="0px"
-                xmlns="http://www.w3.org/2000/svg"
-                y="0px"
-              >
-                <g
-                  fill="none"
-                  fillRule="evenodd"
-                  stroke="none"
-                  strokeWidth="1"
-                >
-                  <polygon
-                    fill="white"
-                    points="0 0 0 56 39.3600006 28"
-                  />
-                </g>
-              </svg>
-              <div
-                className="c28"
-                fontFamily={
-                  Object {
-                    "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
-                    "fontWeight": 500,
-                  }
-                }
-                fontSize="14px"
-              >
-                02:28
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div
-        className="c24"
-      >
-        <a
-          className="ArticleCard c25"
-          color="white"
-          href="new-yorks-next-art-district"
-          onClick={[Function]}
-        >
-          <div
-            className="c26"
-          >
-            <div>
-              <div
-                className="c27 c28"
-                fontFamily={
-                  Object {
-                    "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
-                    "fontWeight": 500,
-                  }
-                }
-                fontSize="14px"
-              >
-                The Future of Art
-              </div>
-              <div
-                className="c29"
-              >
-                New York's Next Art District
-              </div>
-              <div
-                className="c30"
-              >
-                Land exhibitions, make influential contacts, and gain valuable feedback about your work.
-              </div>
-            </div>
-            <div
-              className="Byline c39"
-              color="white"
-            >
-              <div
-                className="c28"
-                fontFamily={
-                  Object {
-                    "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
-                    "fontWeight": 500,
-                  }
-                }
-                fontSize="14px"
-              >
+              <div>
                 <div
-                  className="c40"
-                  color="white"
-                >
-                  Casey Lesser
-                </div>
-              </div>
-              <div
-                className="c31"
-              >
-                <div
-                  className="c28"
+                  className="c27"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2266,96 +2576,346 @@ exports[`renders a sponsored series properly 1`] = `
                   }
                   fontSize="14px"
                 >
-                  May 19, 2017
+                  The Future of Art
+                </div>
+                <div
+                  className="c28"
+                  fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+                  fontSize={
+                    Array [
+                      "28px",
+                      "28px",
+                      "42px",
+                      "42px",
+                    ]
+                  }
+                >
+                  New Study Shows the Gender Pay Gap for Artists Is Not So Simple
+                </div>
+                <div
+                  className="c29"
+                  fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
+                  fontSize={
+                    Array [
+                      "18px",
+                      "18px",
+                      "22px",
+                      "22px",
+                    ]
+                  }
+                >
+                  The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
+                </div>
+              </div>
+              <div
+                className="c30"
+              >
+                <div
+                  className="c31"
+                  fontFamily={
+                    Object {
+                      "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                      "fontWeight": 500,
+                    }
+                  }
+                  fontSize="14px"
+                >
+                  Aug 28, 2017
+                </div>
+              </div>
+            </div>
+            <div
+              className="c32 c33"
+              width={
+                Array [
+                  "100%",
+                  "100%",
+                  "50%",
+                  "50%",
+                ]
+              }
+            >
+              <img
+                className="c34 c35"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
+              />
+              <div
+                className="c36 c37"
+              >
+                <svg
+                  className="c38"
+                  version="1.1"
+                  viewBox="0 0 40 56"
+                  x="0px"
+                  xmlns="http://www.w3.org/2000/svg"
+                  y="0px"
+                >
+                  <g
+                    fill="none"
+                    fillRule="evenodd"
+                    stroke="none"
+                    strokeWidth="1"
+                  >
+                    <polygon
+                      fill="white"
+                      points="0 0 0 56 39.3600006 28"
+                    />
+                  </g>
+                </svg>
+                <div
+                  className="c39"
+                  fontFamily={
+                    Object {
+                      "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                      "fontWeight": 500,
+                    }
+                  }
+                  fontSize="14px"
+                >
+                  02:28
                 </div>
               </div>
             </div>
           </div>
+        </a>
+      </div>
+      <div
+        className="c23"
+      >
+        <a
+          className="ArticleCard c24"
+          color="white"
+          href="new-yorks-next-art-district"
+          onClick={[Function]}
+        >
           <div
-            className="c32 c33"
+            className="c25"
           >
-            <img
-              className="c34 c35"
-              src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=95"
-            />
+            <div
+              className="c26"
+              width={
+                Array [
+                  "100%",
+                  "100%",
+                  "50%",
+                  "50%",
+                ]
+              }
+            >
+              <div>
+                <div
+                  className="c27"
+                  fontFamily={
+                    Object {
+                      "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                      "fontWeight": 500,
+                    }
+                  }
+                  fontSize="14px"
+                >
+                  The Future of Art
+                </div>
+                <div
+                  className="c28"
+                  fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+                  fontSize={
+                    Array [
+                      "28px",
+                      "28px",
+                      "42px",
+                      "42px",
+                    ]
+                  }
+                >
+                  New York's Next Art District
+                </div>
+                <div
+                  className="c29"
+                  fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
+                  fontSize={
+                    Array [
+                      "18px",
+                      "18px",
+                      "22px",
+                      "22px",
+                    ]
+                  }
+                >
+                  Land exhibitions, make influential contacts, and gain valuable feedback about your work.
+                </div>
+              </div>
+              <div
+                className="Byline c40"
+                color="white"
+              >
+                <div
+                  className="c31"
+                  fontFamily={
+                    Object {
+                      "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                      "fontWeight": 500,
+                    }
+                  }
+                  fontSize="14px"
+                >
+                  <div
+                    className="c41"
+                    color="white"
+                  >
+                    Casey Lesser
+                  </div>
+                </div>
+                <div
+                  className="c30"
+                >
+                  <div
+                    className="c31"
+                    fontFamily={
+                      Object {
+                        "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                        "fontWeight": 500,
+                      }
+                    }
+                    fontSize="14px"
+                  >
+                    May 19, 2017
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className="c32 c33"
+              width={
+                Array [
+                  "100%",
+                  "100%",
+                  "50%",
+                  "50%",
+                ]
+              }
+            >
+              <img
+                className="c34 c35"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=95"
+              />
+            </div>
           </div>
         </a>
       </div>
     </div>
     <div
-      className="c41 c42 c43"
-      color="white"
+      className="c42"
     >
       <div
-        className="c44 c45"
+        className="c43"
+        color="white"
+        width="100%"
       >
         <div
-          className="c46"
-        >
-          About the Series
-        </div>
-        <div
-          className="PartnerBlock c18 c19"
+          className="c44"
+          width={
+            Array [
+              1,
+              1,
+              0.3333333333333333,
+              0.3333333333333333,
+            ]
+          }
         >
           <div
-            className="c20"
+            className="c45"
+            fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+            fontSize="28px"
           >
-            Presented in Partnership with
+            About the Series
           </div>
           <div
-            className="c21 c22"
-          >
-            <a
-              href="http://artsy.net"
-              onClick={[Function]}
-              target="_blank"
-            >
-              <img
-                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FGEu3iYW6CQhbVxsjpOYwZQ%252FGKL_Wort-Bildmarke_negative_rgb%2B2.png&width=240&quality=80"
-              />
-            </a>
-          </div>
-        </div>
-      </div>
-      <div
-        className="c44 c47"
-      >
-        <div
-          className="SeriesAbout__description"
-        >
-          <div
-            className="article__text-section c48"
-            color="white"
+            className="rrm-container rrm-greaterThanOrEqual-md"
           >
             <div
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. <a href='http://artsy.net'>Curabitur blandit</a> tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
-                }
-              }
-            />
+              className="c46"
+            >
+              <div
+                className="PartnerBlock c18"
+              >
+                <div
+                  className="c19"
+                >
+                  Presented in Partnership with
+                </div>
+                <div
+                  className="c20 c21"
+                >
+                  <a
+                    href="http://artsy.net"
+                    onClick={[Function]}
+                    target="_blank"
+                  >
+                    <img
+                      src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FGEu3iYW6CQhbVxsjpOYwZQ%252FGKL_Wort-Bildmarke_negative_rgb%2B2.png&width=240&quality=80"
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div
-          className="PartnerBlock c18 c19"
+          className="c47"
+          width={
+            Array [
+              1,
+              1,
+              0.6666666666666666,
+              0.6666666666666666,
+            ]
+          }
         >
           <div
-            className="c20"
+            className="SeriesAbout__description"
           >
-            Presented in Partnership with
+            <div
+              className="article__text-section c48"
+              color="white"
+            >
+              <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. <a href='http://artsy.net'>Curabitur blandit</a> tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
+                  }
+                }
+              />
+            </div>
           </div>
           <div
-            className="c21 c22"
+            className="rrm-container rrm-lessThan-md"
           >
-            <a
-              href="http://artsy.net"
-              onClick={[Function]}
-              target="_blank"
+            <div
+              className="c49"
             >
-              <img
-                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FGEu3iYW6CQhbVxsjpOYwZQ%252FGKL_Wort-Bildmarke_negative_rgb%2B2.png&width=240&quality=80"
-              />
-            </a>
+              <div
+                className="PartnerBlock c18"
+              >
+                <div
+                  className="c19"
+                >
+                  Presented in Partnership with
+                </div>
+                <div
+                  className="c20 c21"
+                >
+                  <a
+                    href="http://artsy.net"
+                    onClick={[Function]}
+                    target="_blank"
+                  >
+                    <img
+                      src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FGEu3iYW6CQhbVxsjpOYwZQ%252FGKL_Wort-Bildmarke_negative_rgb%2B2.png&width=240&quality=80"
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

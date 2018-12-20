@@ -1,14 +1,14 @@
 import { Box, color } from "@artsy/palette"
+import React from "react"
+import styled from "styled-components"
+
 import { unica } from "Assets/Fonts"
-import { media } from "Components/Helpers"
 import {
   Vertical,
   VerticalOrSeriesTitle,
 } from "Components/Publishing/Sections/VerticalOrSeriesTitle"
 import { SeriesAbout } from "Components/Publishing/Series/SeriesAbout"
 import { ArticleData } from "Components/Publishing/Typings"
-import React from "react"
-import styled from "styled-components"
 import { ArticleCards } from "./ArticleCards"
 
 interface Props {
@@ -60,9 +60,6 @@ export const ArticleCardsContainer = styled.div`
 
     a {
       border-bottom: 2px solid;
-      ${media.sm`
-        display: block;
-      `};
     }
   }
 `

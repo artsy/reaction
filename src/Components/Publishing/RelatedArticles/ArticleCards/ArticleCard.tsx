@@ -1,12 +1,13 @@
 import { Box, color, Flex, Sans, Serif } from "@artsy/palette"
+import React, { Component } from "react"
+import track, { TrackingProp } from "react-tracking"
+import styled from "styled-components"
+
 import { media } from "Components/Helpers"
 import { Byline } from "Components/Publishing/Byline/Byline"
 import { Date } from "Components/Publishing/Byline/Date"
 import { formatTime, getMediaDate } from "Components/Publishing/Constants"
 import { IconVideoPlay } from "Components/Publishing/Icon/IconVideoPlay"
-import React, { Component } from "react"
-import track, { TrackingProp } from "react-tracking"
-import styled from "styled-components"
 import { crop } from "Utils/resizer"
 
 interface Props {
@@ -92,7 +93,7 @@ export class ArticleCard extends Component<Props> {
     if (this.isUnpublishedMedia()) {
       return (
         <MediaContainer>
-          <Sans size={["8", "8", "8", "10"]}>Coming Soon</Sans>
+          <Sans size={["8", "8", "10", "10"]}>Coming Soon</Sans>
         </MediaContainer>
       )
     } else {
@@ -146,17 +147,12 @@ export class ArticleCard extends Component<Props> {
         onClick={this.openLink}
       >
         <Flex
-          flexDirection={[
-            "column-reverse",
-            "column-reverse",
-            "column-reverse",
-            "row",
-          ]}
-          p={[20, 20, 20, 30]}
+          flexDirection={["column-reverse", "column-reverse", "row", "row"]}
+          p={[20, 20, 30, 30]}
         >
           <Flex
-            width={["100%", "100%", "100%", "50%"]}
-            mb={[0, 0, 0, "5px"]}
+            width={["100%", "100%", "50%", "50%"]}
+            mb={[0, 0, "5px", "5px"]}
             flexDirection="column"
             justifyContent="space-between"
           >
@@ -166,11 +162,11 @@ export class ArticleCard extends Component<Props> {
                   {series.title}
                 </Sans>
               )}
-              <Sans size={["8", "8", "8", "10"]} mb={20}>
+              <Sans size={["8", "8", "10", "10"]} mb={20}>
                 {title}
               </Sans>
 
-              <Serif size={["4", "4", "4", "5"]} mb={20}>
+              <Serif size={["4", "4", "5", "5"]} mb={20}>
                 {description}
               </Serif>
             </div>
@@ -178,9 +174,9 @@ export class ArticleCard extends Component<Props> {
           </Flex>
 
           <ImageContainer
-            width={["100%", "100%", "100%", "50%"]}
-            ml={[0, 0, 0, 30]}
-            mb={[10, 10, 10, 0]}
+            width={["100%", "100%", "50%", "50%"]}
+            ml={[0, 0, 30, 30]}
+            mb={[10, 10, 0, 0]}
           >
             {editImage ? (
               editImage
