@@ -3,10 +3,10 @@ import { Offer_order } from "__generated__/Offer_order.graphql"
 import { OfferMutation } from "__generated__/OfferMutation.graphql"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
 import { Helper } from "Apps/Order/Components/Helper"
+import { OfferInput } from "Apps/Order/Components/OfferInput"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
-import { Input } from "Components/Input"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
 import React, { Component } from "react"
@@ -32,7 +32,7 @@ export interface OfferProps {
 }
 
 export interface OfferState {
-  offerValue: number | null
+  offerValue: number
   isCommittingMutation: boolean
   isErrorModalOpen: boolean
   errorModalTitle: string
@@ -44,7 +44,7 @@ const logger = createLogger("Order/Routes/Offer/index.tsx")
 
 export class OfferRoute extends Component<OfferProps, OfferState> {
   state = {
-    offerValue: null,
+    offerValue: 0,
     isCommittingMutation: false,
     isErrorModalOpen: false,
     errorModalTitle: null,
@@ -52,13 +52,8 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
     formIsDirty: false,
   }
 
-  isOfferValueValid() {
-    const { offerValue } = this.state
-    return typeof offerValue === "number" && offerValue > 0
-  }
-
   onContinueButtonPressed: () => void = () => {
-    if (!this.isOfferValueValid()) {
+    if (this.state.offerValue <= 0) {
       this.setState({ formIsDirty: true })
       return
     }
@@ -143,7 +138,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
 
   render() {
     const { order } = this.props
-    const { isCommittingMutation, formIsDirty } = this.state
+    const { isCommittingMutation } = this.state
     const artwork = get(
       this.props,
       props => order.lineItems.edges[0].node.artwork
@@ -168,24 +163,12 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
                 id="offer-page-left-column"
               >
                 <Flex flexDirection="column">
-                  <Input
+                  <OfferInput
                     id="OfferForm_offerValue"
-                    title="Your offer"
-                    type="number"
-                    defaultValue={null}
-                    error={
-                      formIsDirty && !this.isOfferValueValid()
-                        ? "Offer amount missing or invalid."
-                        : null
+                    showError={
+                      this.state.formIsDirty && this.state.offerValue > 0
                     }
-                    onChange={ev =>
-                      this.setState({
-                        offerValue: Math.floor(
-                          Number(ev.currentTarget.value || "0")
-                        ),
-                      })
-                    }
-                    block
+                    onChange={offerValue => this.setState({ offerValue })}
                   />
                 </Flex>
                 {Boolean(order.totalListPrice) && (

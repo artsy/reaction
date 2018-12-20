@@ -9,10 +9,10 @@ import {
 import { Respond_order } from "__generated__/Respond_order.graphql"
 import { RespondCounterOfferMutation } from "__generated__/RespondCounterOfferMutation.graphql"
 import { Helper } from "Apps/Order/Components/Helper"
+import { OfferInput } from "Apps/Order/Components/OfferInput"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
-import { Input } from "Components/Input"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { StaticCollapse } from "Components/StaticCollapse"
 import { Router } from "found"
@@ -47,7 +47,8 @@ export interface RespondProps {
 }
 
 export interface RespondState {
-  offerValue: number | null
+  offerValue: number
+  formIsDirty: boolean
   responseOption: "ACCEPT" | "COUNTER" | "DECLINE"
   isCommittingMutation: boolean
   isErrorModalOpen: boolean
@@ -57,99 +58,23 @@ export interface RespondState {
 
 export const logger = createLogger("Order/Routes/Respond/index.tsx")
 
-interface OfferInputProps {
-  id: string
-  onChange: (value: number) => void
-}
-
-interface OfferInputState {
-  offerValue: number | null
-  formIsDirty: boolean
-}
-
-function isValueValid(value) {
-  return typeof value === "number" && value > 0
-}
-
-class OfferInput extends Component<OfferInputProps, OfferInputState> {
-  state = {
-    offerValue: null,
-    formIsDirty: false,
-  }
-
-  inputRef = React.createRef<HTMLInputElement>()
-
-  isOfferValueValid() {
-    const { offerValue } = this.state
-    return isValueValid(offerValue)
-  }
-
-  render() {
-    const { id } = this.props
-    const { formIsDirty } = this.state
-
-    return (
-      <Input
-        id={id}
-        title="Your offer"
-        // note - Offer/index uses type="number"; Respond/index uses type="text"/pattern="[0-9]".
-        type="text"
-        pattern="[0-9]"
-        onBlur={() => {
-          if (this.inputRef) {
-            this.inputRef.current.value = Number(
-              this.state.offerValue || "0"
-            ).toFixed(2)
-          }
-        }}
-        onKeyDown={ev => {
-          const char = String.fromCharCode(ev.keyCode)
-          console.log(char)
-          if (char.match(/[.,\D]/)) {
-            ev.preventDefault()
-          }
-        }}
-        innerRef={this.inputRef}
-        defaultValue={null}
-        error={
-          formIsDirty && !this.isOfferValueValid()
-            ? "Offer amount missing or invalid."
-            : null
-        }
-        onChange={ev => {
-          const newValue = Math.floor(Number(ev.currentTarget.value || "0"))
-          this.setState({
-            offerValue: newValue,
-          })
-          this.props.onChange(newValue)
-        }}
-        block
-      />
-    )
-  }
-}
-
 export class RespondRoute extends Component<RespondProps, RespondState> {
-  state = {
-    offerValue: null,
+  state: RespondState = {
+    offerValue: 0,
     responseOption: null,
     isCommittingMutation: false,
     isErrorModalOpen: false,
     errorModalTitle: null,
     errorModalMessage: null,
-  } as RespondState
-
-  isOfferValueValid() {
-    const { offerValue } = this.state
-    return isValueValid(offerValue)
+    formIsDirty: false,
   }
 
   onContinueButtonPressed: () => void = () => {
-    if (!this.isOfferValueValid()) {
-      // TODO - figure out how to do this with extracted OfferInput.
-      // this.setState({ formIsDirty: true })
+    if (this.state.offerValue <= 0) {
+      this.setState({ formIsDirty: true })
       return
     }
+
     const { responseOption } = this.state
     this.setState({ isCommittingMutation: true }, () => {
       switch (responseOption) {
@@ -305,11 +230,10 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                       <Spacer mb={2} />
                       <OfferInput
                         id="RespondForm_RespondValue"
-                        onChange={value => {
-                          this.setState({
-                            offerValue: value,
-                          })
-                        }}
+                        showError={
+                          this.state.formIsDirty && this.state.offerValue > 0
+                        }
+                        onChange={offerValue => this.setState({ offerValue })}
                       />
                     </StaticCollapse>
                   </BorderedRadio>
