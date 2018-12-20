@@ -1,8 +1,9 @@
 import { color, Sans } from "@artsy/palette"
-import { getEditorialHref } from "Components/Publishing/Constants"
-import { ArticleData } from "Components/Publishing/Typings"
 import React from "react"
 import styled from "styled-components"
+
+import { getEditorialHref } from "Components/Publishing/Constants"
+import { ArticleData } from "Components/Publishing/Typings"
 
 interface Props {
   article?: ArticleData

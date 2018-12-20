@@ -1,12 +1,15 @@
+import { Box, color } from "@artsy/palette"
+import { Nav } from "Components/Publishing/Nav/Nav"
+import { ArticleCards } from "Components/Publishing/RelatedArticles/ArticleCards/ArticleCards"
+import { FixedBackground } from "Components/Publishing/Series/FixedBackground"
+import { SeriesAbout } from "Components/Publishing/Series/SeriesAbout"
+import {
+  SeriesTitle,
+  SeriesTitleContainer,
+} from "Components/Publishing/Series/SeriesTitle"
+import { ArticleData } from "Components/Publishing/Typings"
 import React, { Component } from "react"
 import styled, { StyledFunction } from "styled-components"
-import { pMedia } from "../../Helpers"
-import { Nav } from "../Nav/Nav"
-import { ArticleCards } from "../RelatedArticles/ArticleCards/ArticleCards"
-import { FixedBackground } from "../Series/FixedBackground"
-import { SeriesAbout, SeriesAboutContainer } from "../Series/SeriesAbout"
-import { SeriesTitle, SeriesTitleContainer } from "../Series/SeriesTitle"
-import { ArticleData } from "../Typings"
 
 interface Props {
   article?: ArticleData
@@ -19,13 +22,16 @@ export class SeriesLayout extends Component<Props, null> {
   public static defaultProps: Partial<Props>
 
   render() {
-    const { article, backgroundColor, color, relatedArticles } = this.props
+    const { article, backgroundColor, relatedArticles } = this.props
     const { hero_section, sponsor } = article
     const backgroundUrl =
       hero_section && hero_section.url ? hero_section.url : ""
 
     return (
-      <SeriesContainer color={color} backgroundColor={backgroundColor}>
+      <SeriesContainer
+        color={this.props.color}
+        backgroundColor={backgroundColor}
+      >
         <Nav transparent sponsor={sponsor} canFix={false} />
 
         <FixedBackground
@@ -34,17 +40,18 @@ export class SeriesLayout extends Component<Props, null> {
         />
 
         <SeriesContent sponsor={sponsor}>
-          <SeriesTitle article={article} color={color} />
+          <SeriesTitle article={article} color={this.props.color} />
 
           {relatedArticles && (
             <ArticleCards
               relatedArticles={relatedArticles}
               series={article}
-              color={color}
+              color={this.props.color}
             />
           )}
-
-          <SeriesAbout article={article} color={color} />
+          <Box maxWidth={1200} mx="auto" pt={[40, 40, 60]}>
+            <SeriesAbout article={article} color={this.props.color} />
+          </Box>
         </SeriesContent>
       </SeriesContainer>
     )
@@ -52,7 +59,7 @@ export class SeriesLayout extends Component<Props, null> {
 }
 
 SeriesLayout.defaultProps = {
-  backgroundColor: "black",
+  backgroundColor: color("black100"),
   color: "white",
 }
 
@@ -74,16 +81,6 @@ export const SeriesContent = Div`
   ${SeriesTitleContainer} {
     margin-bottom: ${props => (props.sponsor ? "60px" : "90px")};
   }
-
-  ${SeriesAboutContainer} {
-    padding-top: 60px;
-  }
-
-  ${pMedia.md`
-    ${SeriesAboutContainer} {
-      padding-top: 60px;
-    }
-  `}
 `
 export const SeriesContainer = Div`
   color: ${props => props.color};

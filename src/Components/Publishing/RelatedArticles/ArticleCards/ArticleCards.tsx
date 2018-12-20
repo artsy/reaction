@@ -1,7 +1,8 @@
 import { Box } from "@artsy/palette"
-import { ArticleData } from "Components/Publishing/Typings"
 import React from "react"
 import styled from "styled-components"
+
+import { ArticleData } from "Components/Publishing/Typings"
 import { ArticleCard } from "./ArticleCard"
 
 interface Props {

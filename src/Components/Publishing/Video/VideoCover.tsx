@@ -1,11 +1,9 @@
-import { Box, Flex } from "@artsy/palette"
-import { garamond } from "Assets/Fonts"
-import { Col } from "Components/Grid"
+import { Box, Flex, Serif } from "@artsy/palette"
 import React, { Component } from "react"
 import track, { TrackingProp } from "react-tracking"
-import styled, { StyledFunction } from "styled-components"
-import { media as mediaQueries } from "../../Helpers"
-import { IconVideoPlay } from "../Icon/IconVideoPlay"
+import styled from "styled-components"
+
+import { IconVideoPlay } from "Components/Publishing/Icon/IconVideoPlay"
 import { VideoInfoBlock } from "./VideoInfoBlock"
 
 interface Props {
@@ -56,13 +54,14 @@ export class VideoCover extends Component<Props, null> {
       <VideoCoverContainer hideCover={hideCover}>
         <VideoCoverAsset src={media.cover_image_url} />
         <VideoCoverOverlay />
-        <VideoCoverInfo>
+
+        <VideoCoverInfo alignItems="flex-end" pb={[40, 60]} px={20}>
           <Box maxWidth={1200} mx="auto" pb="12px">
             <Flex>
-              <Col xs={2} sm={1} onClick={this.onPlayClick}>
+              <Box width="60px" pr={20} onClick={this.onPlayClick}>
                 <IconVideoPlay color="white" />
-              </Col>
-              <Col xs={10} sm={6}>
+              </Box>
+              <Box>
                 <VideoInfoBlock
                   media={media}
                   subTitle={
@@ -72,13 +71,14 @@ export class VideoCover extends Component<Props, null> {
                   title={article.title}
                   editTitle={editTitle}
                 />
-              </Col>
+              </Box>
             </Flex>
-            <Col xs={12} sm={7}>
-              <MediaDescription>
+
+            <Box maxWidth={["100%", "60%"]}>
+              <MediaDescription size={["4", "5", "5", "5"]} pt={30}>
                 {editDescription || article.description}
               </MediaDescription>
-            </Col>
+            </Box>
           </Box>
         </VideoCoverInfo>
       </VideoCoverContainer>
@@ -86,8 +86,7 @@ export class VideoCover extends Component<Props, null> {
   }
 }
 
-const Div: StyledFunction<CoverAssetProps> = styled.div
-export const VideoCoverAsset = Div`
+export const VideoCoverAsset = styled.div<CoverAssetProps>`
   background: url(${props => props.src || ""}) no-repeat center center;
   background-size: cover;
   background-color: black;
@@ -97,26 +96,18 @@ const VideoCoverOverlay = styled.div`
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
 `
 
-const VideoCoverInfo = styled.div`
-  display: flex;
-  align-items: flex-end;
+const VideoCoverInfo = styled(Flex)`
   box-sizing: border-box;
-  padding-bottom: 60px;
   z-index: 1;
 
   ${IconVideoPlay} {
     height: 60px;
     width: 44px;
-    margin-right: 15px;
     cursor: pointer;
   }
-  ${mediaQueries.sm`
-    padding-bottom: 40px;
-  `};
 `
 
-const CoverDiv: StyledFunction<CoverProps> = styled.div
-export const VideoCoverContainer = CoverDiv`
+export const VideoCoverContainer = styled.div<CoverProps>`
   position: absolute;
   top: 0;
   left: 0;
@@ -126,6 +117,7 @@ export const VideoCoverContainer = CoverDiv`
   opacity: ${props => (props.hideCover ? "0" : "1")};
   visibility: ${props => (props.hideCover ? "hidden" : "visible")};
   transition: opacity 0.25s ease, visibility 0.25s ease;
+
   ${VideoCoverAsset}, ${VideoCoverOverlay}, ${VideoCoverInfo} {
     position: absolute;
     width: 100%;
@@ -133,11 +125,6 @@ export const VideoCoverContainer = CoverDiv`
   }
 `
 
-const MediaDescription = styled.div`
+const MediaDescription = styled(Serif)`
   position: relative;
-  margin-top: 30px;
-  ${garamond("s23")};
-  ${mediaQueries.sm`
-    ${garamond("s19")}
-  `};
 `

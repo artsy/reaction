@@ -1,3 +1,4 @@
+import { Box } from "@artsy/palette"
 import React, { Component } from "react"
 import track from "react-tracking"
 import styled from "styled-components"
@@ -94,11 +95,13 @@ export class VideoLayout extends Component<Props, State> {
             hideCover={this.state.hideCover}
           />
         </VideoPlayerContainer>
-        <VideoAbout article={article} color="white" />
+        <Box px={20}>
+          <VideoAbout article={article} color="white" />
 
-        {(relatedArticles || seriesArticle) && (
-          <ArticleCardsBlock {...this.props} color="white" />
-        )}
+          {(relatedArticles || seriesArticle) && (
+            <ArticleCardsBlock {...this.props} color="white" />
+          )}
+        </Box>
       </VideoLayoutContainer>
     )
   }
