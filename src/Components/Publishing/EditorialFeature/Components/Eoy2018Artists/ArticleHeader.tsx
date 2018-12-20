@@ -12,6 +12,7 @@ export class Eoy2018ArticleHeader extends React.Component<{
   images?: any
   isMobile?: boolean
   isTablet?: boolean
+  isTest?: boolean
 }> {
   getImageUrls = gridSize => {
     const bgImages = map(flatten(this.props.images), "url")
@@ -32,9 +33,13 @@ export class Eoy2018ArticleHeader extends React.Component<{
   }
 
   imagesGrid = gridSize => {
-    const { isMobile, isTablet } = this.props
+    const { isMobile, isTablet, isTest } = this.props
     const imageUrls = this.getImageUrls(gridSize)
 
+    if (isTest) {
+      // hide random elements in tests
+      return
+    }
     return imageUrls.map((src, i) => {
       const isMobileItem = isMobile && (i === 5 || i === 6)
       const isTabletItem = isTablet && [2, 3, 9].includes(i)
@@ -144,7 +149,9 @@ const Title = styled.h1`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin: 0;
   ${unica("s100")};
+  font-weight: inherit;
 `
 
 // TODO: min-max font size responsive to vp

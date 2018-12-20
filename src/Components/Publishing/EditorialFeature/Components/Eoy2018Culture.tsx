@@ -5,7 +5,7 @@ import { Author, StyledAuthor } from "Components/Publishing/Byline/Author"
 import { Date, DateContainer } from "Components/Publishing/Byline/Date"
 import { Share } from "Components/Publishing/Byline/Share"
 import { getArticleFullHref } from "Components/Publishing/Constants"
-import { ArticleProps } from "Components/Publishing/Layouts/FeatureLayout"
+import { EditorialFeaturesProps } from "Components/Publishing/EditorialFeature/EditorialFeature"
 import { Nav, NavContainer } from "Components/Publishing/Nav/Nav"
 import { ArticleCards } from "Components/Publishing/RelatedArticles/ArticleCards/ArticleCards"
 import { CaptionContainer } from "Components/Publishing/Sections/Caption"
@@ -22,6 +22,9 @@ import {
   SlideshowTitle,
 } from "Components/Publishing/Sections/ImageSetPreview/ImageSetLabel"
 import { SocialEmbed } from "Components/Publishing/Sections/SocialEmbed"
+import { StyledText } from "Components/Publishing/Sections/StyledText"
+import { Text } from "Components/Publishing/Sections/Text"
+import { ToolTipContainer } from "Components/Publishing/ToolTip/ToolTip"
 import { SectionData } from "Components/Publishing/Typings"
 import React from "react"
 import Waypoint from "react-waypoint"
@@ -31,17 +34,29 @@ interface State {
   stickyHeader: SectionData | null
 }
 
-export class Eoy2018Culture extends React.Component<ArticleProps, State> {
+export class Eoy2018Culture extends React.Component<
+  EditorialFeaturesProps,
+  State
+> {
   state = {
     stickyHeader: null,
   }
 
-  sectionText = (section, i) => {
+  sectionText = (section, i, isDark) => {
+    const {
+      showTooltips,
+      article: { layout },
+    } = this.props
     return (
       <TextContainer key={i} px={[10, 10, 55]} py={30} mx="auto">
         <Box width={["100%", "100%", "70%"]} mx="auto" maxWidth={1000}>
           <Serif size="5">
-            <div dangerouslySetInnerHTML={{ __html: section.body }} />
+            <Text
+              html={section.body}
+              layout={layout}
+              showTooltips={showTooltips}
+              color={isDark ? "white" : color("black100")}
+            />
           </Serif>
         </Box>
       </TextContainer>
@@ -116,14 +131,14 @@ export class Eoy2018Culture extends React.Component<ArticleProps, State> {
     return chapters
   }
 
-  getSections = sections => {
+  getSections = (sections, isDark) => {
     return sections.map((section, i) => {
       if (this.sectionIsHeader(section)) {
         return this.sectionHeaderText(section, i)
       } else {
         switch (section.type) {
           case "text": {
-            return this.sectionText(section, i)
+            return this.sectionText(section, i, isDark)
           }
           case "image_collection": {
             return this.sectionImageCollection(section, i)
@@ -219,7 +234,7 @@ export class Eoy2018Culture extends React.Component<ArticleProps, State> {
                   }
                 }}
               />
-              {this.getSections(chapter)}
+              {this.getSections(chapter, isDark)}
               <Waypoint
                 onEnter={({ previousPosition }) => {
                   if (previousPosition === "above") {
@@ -264,12 +279,13 @@ const ChapterWrapper = styled.div<{ isDark?: boolean }>`
   ${props =>
     props.isDark &&
     `
-    color: white;
-    background-color: ${color("black100")};
-    a {
       color: white;
-    }
+      background-color: ${color("black100")};
   `};
+
+  ${ToolTipContainer} {
+    color: ${color("black100")};
+  }
 `
 
 const SectionWrapper = styled(Box)`
@@ -282,14 +298,20 @@ const TextContainer = styled(SectionWrapper)`
     ${unica("s34")};
     padding: 20px 0;
     line-height: 1.25em;
+    margin: 0;
+    font-weight: inherit;
   }
 
-  p {
-    font-size: 24px;
-    text-indent: 2em;
+  ${StyledText} {
+    p,
+    .paragraph {
+      font-size: 24px;
+      text-indent: 2em;
+      padding: 0;
 
-    &:first-child {
-      text-indent: 0;
+      &:first-child {
+        text-indent: 0;
+      }
     }
   }
 
@@ -322,12 +344,16 @@ const SectionHeader = styled(Box)<{ isDark?: boolean }>`
     ${unica("s65", "medium")};
     text-transform: uppercase;
     flex: 2;
+    margin: 0;
+    font-weight: inherit;
   }
   h2 {
     font-size: 50px;
     width: fit-content;
     line-height: 1em;
     text-align: right;
+    margin: 0;
+    font-weight: inherit;
   }
 
   ${media.md`

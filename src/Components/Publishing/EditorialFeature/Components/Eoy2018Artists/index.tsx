@@ -5,8 +5,8 @@ import styled from "styled-components"
 
 import { unica } from "Assets/Fonts"
 import { media } from "Components/Helpers"
-import { ArticleProps } from "Components/Publishing/Article"
 import { Byline, BylineContainer } from "Components/Publishing/Byline/Byline"
+import { EditorialFeaturesProps } from "Components/Publishing/EditorialFeature/EditorialFeature"
 import { Nav, NavContainer } from "Components/Publishing/Nav/Nav"
 import { ArticleCardContainer } from "Components/Publishing/RelatedArticles/ArticleCards/ArticleCard"
 import {
@@ -24,10 +24,12 @@ import {
   SlideshowCta,
   SlideshowTitle,
 } from "Components/Publishing/Sections/ImageSetPreview/ImageSetLabel"
+import { StyledText } from "Components/Publishing/Sections/StyledText"
+import { Text } from "Components/Publishing/Sections/Text"
 import { resize } from "Utils/resizer"
 import { Eoy2018ArticleHeader } from "./ArticleHeader"
 
-export class Eoy2018Artists extends React.Component<ArticleProps> {
+export class Eoy2018Artists extends React.Component<EditorialFeaturesProps> {
   getHeaderSections = () => {
     const { sections } = this.props.article
     const headers = []
@@ -87,7 +89,8 @@ export class Eoy2018Artists extends React.Component<ArticleProps> {
 
   sectionText = (section, i) => {
     const {
-      article: { sections },
+      article: { sections, layout },
+      showTooltips,
     } = this.props
     const isChapterStart =
       sections[i - 1] && sections[i - 1].type === "image_collection"
@@ -95,7 +98,11 @@ export class Eoy2018Artists extends React.Component<ArticleProps> {
     return (
       <Box maxWidth={["100%", "75%", "75%"]} ml="auto" px={[20, 0]} key={i}>
         <TextSection size="5" pb={[40, 60]} isChapterStart={isChapterStart}>
-          <div dangerouslySetInnerHTML={{ __html: section.body }} />
+          <Text
+            html={section.body}
+            layout={layout}
+            showTooltips={showTooltips}
+          />
         </TextSection>
       </Box>
     )
@@ -149,7 +156,7 @@ export class Eoy2018Artists extends React.Component<ArticleProps> {
   }
 
   render() {
-    const { article, isMobile, isTablet } = this.props
+    const { article, isMobile, isTablet, isTest } = this.props
     const introText = this.sectionText(article.sections[0], 0)
     const headerImages = map(
       compact(map(this.getHeaderSections(), "imageSection")),
@@ -167,6 +174,7 @@ export class Eoy2018Artists extends React.Component<ArticleProps> {
             images={headerImages}
             isMobile={isMobile}
             isTablet={isTablet}
+            isTest={isTest}
           />
 
           <ArticleContent py={40}>
@@ -224,6 +232,8 @@ const ArticleContent = styled(Box)`
   blockquote {
     ${unica("s34")};
     line-height: 1.3em;
+    margin: 0;
+    font-weight: inherit;
 
     ${media.sm`
       ${unica("s25")};
@@ -256,6 +266,8 @@ const ArtistHeaderTitle = styled.div`
     min-height: fit-content;
     padding: ${space(2)}px;
     border-bottom: ${BORDER_WIDTH}px solid ${color("purple100")};
+    margin: 0;
+    font-weight: inherit;
 
     ${media.md`
       width: 60%;
@@ -282,6 +294,9 @@ const ArtistHeaderTitle = styled.div`
     min-height: fit-content;
     display: inline-flex;
     padding: ${space(2)}px;
+    margin: 0;
+    font-weight: inherit;
+
     &:last-child {
       border-left: ${BORDER_WIDTH}px solid ${color("purple100")};
     }
@@ -345,18 +360,28 @@ const IntroSection = styled(Flex)`
 `
 
 const TextSection = styled(Serif)<{ isChapterStart?: boolean }>`
-  p {
-    font-size: 24px;
-    text-indent: 2em;
-    ${props =>
-      props.isChapterStart &&
-      `
+  ${StyledText} {
+    blockquote {
+      padding: 0;
+    }
+
+    p,
+    .paragraph {
+      font-size: 24px;
+      text-indent: 2em;
+      padding: 0;
+
+      ${props =>
+        props.isChapterStart &&
+        `
         &:first-child {
           text-indent: 0;
         }
     `};
+    }
   }
 `
+
 const CaptionWrapper = styled(Sans)`
   flex: 1;
 

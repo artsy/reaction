@@ -21,7 +21,7 @@ interface State {
 export class Text extends Component<Props, State> {
   static defaultProps = {
     color: "black",
-    showToolTip: false,
+    showTooltips: false,
   }
 
   state = {
