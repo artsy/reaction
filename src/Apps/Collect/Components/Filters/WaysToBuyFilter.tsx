@@ -21,6 +21,14 @@ export const WaysToBuyFilter: React.SFC<{
           Buy now
         </Checkbox>
         <Checkbox
+          selected={filters.state.offerable}
+          onSelect={value => {
+            return filters.setFilter("offerable", value, mediator)
+          }}
+        >
+          Make offer
+        </Checkbox>
+        <Checkbox
           selected={filters.state.at_auction}
           onSelect={value => filters.setFilter("at_auction", value, mediator)}
           disabled={filters.isPriceSelected()}

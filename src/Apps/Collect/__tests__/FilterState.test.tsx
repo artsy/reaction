@@ -66,6 +66,7 @@ const initialState = {
   sort: "-decayed_merch",
   acquireable: null,
   at_auction: null,
+  offerable: null,
   inquireable_only: null,
   price_range: "*-*",
   attribution_class: [],

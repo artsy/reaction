@@ -9,6 +9,7 @@ interface State {
   for_sale?: boolean
   page?: number
   sort?: string
+  offerable?: boolean
   acquireable?: boolean
   at_auction?: boolean
   inquireable_only?: boolean
@@ -29,6 +30,7 @@ export const initialState = {
   partner_id: null,
   sort: initialSort,
   acquireable: null,
+  offerable: null,
   at_auction: null,
   inquireable_only: null,
   selectedFilters: [],
@@ -50,6 +52,7 @@ export class FilterState extends Container<State> {
             [
               "for_sale",
               "acquireable",
+              "offerable",
               "at_auction",
               "inquireable_only",
             ].includes(filter)
@@ -146,9 +149,13 @@ export class FilterState extends Container<State> {
     } else if (filter === "medium") {
       newPartialState = { medium: value, partner_id: null, major_periods: [] }
     } else if (
-      ["for_sale", "acquireable", "at_auction", "inquireable_only"].includes(
-        filter
-      )
+      [
+        "for_sale",
+        "offerable",
+        "acquireable",
+        "at_auction",
+        "inquireable_only",
+      ].includes(filter)
     ) {
       if (value) {
         selectedFilters = selectedFilters.concat([filter])

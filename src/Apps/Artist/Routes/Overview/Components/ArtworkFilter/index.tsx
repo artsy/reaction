@@ -42,6 +42,7 @@ class Filter extends Component<Props> {
     return {
       hasForSaleArtworks: artist.counts.for_sale_artworks > 0,
       hasBuyNowArtworks: artist.counts.ecommerce_artworks > 0,
+      hasMakeOfferArtworks: artist.counts.has_make_offer_artworks,
       hasAuctionArtworks: artist.counts.auction_artworks > 0,
       hasArtworks: artist.counts.artworks > 0,
     }
@@ -161,6 +162,15 @@ class Filter extends Component<Props> {
           }}
         >
           Buy now
+        </Checkbox>
+        <Checkbox
+          selected={filterState.state.offerable}
+          disabled={!this.existy.hasMakeOfferArtworks || this.showZeroState}
+          onSelect={value => {
+            return filterState.setFilter("offerable", value, mediator)
+          }}
+        >
+          Make offer
         </Checkbox>
         <Checkbox
           selected={filterState.state.at_auction}
@@ -355,6 +365,7 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(
         for_sale: { type: "Boolean" }
         at_auction: { type: "Boolean" }
         acquireable: { type: "Boolean" }
+        offerable: { type: "Boolean" }
         inquireable_only: { type: "Boolean" }
         aggregations: {
           type: "[ArtworkAggregation]"
@@ -370,6 +381,7 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(
         ecommerce_artworks
         auction_artworks
         artworks
+        has_make_offer_artworks
       }
       filtered_artworks(aggregations: $aggregations, size: 0) {
         aggregations {
@@ -388,6 +400,7 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(
           partner_id: $partner_id
           for_sale: $for_sale
           sort: $sort
+          offerable: $offerable
           acquireable: $acquireable
           at_auction: $at_auction
           inquireable_only: $inquireable_only
