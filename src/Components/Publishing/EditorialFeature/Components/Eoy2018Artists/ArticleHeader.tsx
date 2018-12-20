@@ -37,6 +37,7 @@ export class Eoy2018ArticleHeader extends React.Component<{
     const imageUrls = this.getImageUrls(gridSize)
 
     if (isTest) {
+      // hide random elements in tests
       return
     }
     return imageUrls.map((src, i) => {
