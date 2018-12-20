@@ -111,7 +111,7 @@ describe("Offer InitialMutation", () => {
       component.find(Button).simulate("click")
     })
 
-    it.only("shows an error modal when there is an error from the server", () => {
+    it("shows an error modal when there is an error from the server", () => {
       const component = getWrapper(testProps)
       const mockCommitMutation = commitMutation as jest.Mock<any>
       mockCommitMutation.mockImplementationOnce(

@@ -5,10 +5,7 @@ import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/
 import { Helper } from "Apps/Order/Components/Helper"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
-import {
-  ErrorModalContext,
-  ErrorModalProps,
-} from "Apps/Order/ErrorModalContext"
+import { ErrorModalContext, ShowErrorModal } from "Apps/Order/ErrorModalContext"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { Input } from "Components/Input"
 import { Router } from "found"
@@ -27,11 +24,12 @@ import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
 import { offerFlowSteps, OrderStepper } from "../../Components/OrderStepper"
 
-export interface OfferProps extends ErrorModalProps {
+export interface OfferProps {
   order: Offer_order
   mediator: Mediator
   relay?: RelayProp
   router: Router
+  showErrorModal: ShowErrorModal
 }
 
 export interface OfferState {
