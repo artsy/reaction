@@ -3,7 +3,7 @@ import React from "react"
 
 export interface OfferInputProps {
   id: string
-  showError: boolean
+  showError?: boolean
   onChange: (value: number) => void
 }
 
