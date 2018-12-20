@@ -41,18 +41,6 @@ it("renders a series if feature and fullscreen", () => {
   expect(component.text()).toMatch(SeriesArticleSponsored.title)
 })
 
-it("renders a vertical if feature and not fullscreen", () => {
-  const FeatureSeriesArticle = clone({
-    ...FeatureArticle,
-    hero_section: { type: "basic" },
-    seriesArticle: SeriesArticleSponsored,
-  })
-  const component = mount(
-    <VerticalOrSeriesTitle article={FeatureSeriesArticle} />
-  )
-  expect(component.text()).toMatch(FeatureArticle.vertical.name)
-})
-
 it("renders with props vertical", () => {
   const component = mount(
     <VerticalOrSeriesTitle

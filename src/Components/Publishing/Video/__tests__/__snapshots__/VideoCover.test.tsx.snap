@@ -41,7 +41,7 @@ exports[`Video Cover matches the snapshot 1`] = `
   line-height: 50px;
 }
 
-.c19 {
+.c18 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 18px;
   line-height: 26px;
@@ -117,10 +117,6 @@ exports[`Video Cover matches the snapshot 1`] = `
   height: 100%;
 }
 
-.c18 {
-  position: relative;
-}
-
 @media screen and (min-width:40em) {
   .c7 {
     padding-bottom: 60px;
@@ -128,37 +124,37 @@ exports[`Video Cover matches the snapshot 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .c19 {
+  .c18 {
     font-size: 22px;
   }
 }
 
 @media screen and (min-width:52em) {
-  .c19 {
+  .c18 {
     font-size: 22px;
   }
 }
 
 @media screen and (min-width:64em) {
-  .c19 {
+  .c18 {
     font-size: 22px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c19 {
+  .c18 {
     line-height: 32px;
   }
 }
 
 @media screen and (min-width:52em) {
-  .c19 {
+  .c18 {
     line-height: 32px;
   }
 }
 
 @media screen and (min-width:64em) {
-  .c19 {
+  .c18 {
     line-height: 32px;
   }
 }
@@ -250,7 +246,7 @@ exports[`Video Cover matches the snapshot 1`] = `
         className="c17"
       >
         <div
-          className="c18 c19"
+          className="c18"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize={
             Array [
@@ -310,7 +306,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
   line-height: 50px;
 }
 
-.c19 {
+.c18 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 18px;
   line-height: 26px;
@@ -386,10 +382,6 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
   height: 100%;
 }
 
-.c18 {
-  position: relative;
-}
-
 @media screen and (min-width:40em) {
   .c7 {
     padding-bottom: 60px;
@@ -397,37 +389,37 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .c19 {
+  .c18 {
     font-size: 22px;
   }
 }
 
 @media screen and (min-width:52em) {
-  .c19 {
+  .c18 {
     font-size: 22px;
   }
 }
 
 @media screen and (min-width:64em) {
-  .c19 {
+  .c18 {
     font-size: 22px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c19 {
+  .c18 {
     line-height: 32px;
   }
 }
 
 @media screen and (min-width:52em) {
-  .c19 {
+  .c18 {
     line-height: 32px;
   }
 }
 
 @media screen and (min-width:64em) {
-  .c19 {
+  .c18 {
     line-height: 32px;
   }
 }
@@ -522,7 +514,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
         className="c17"
       >
         <div
-          className="c18 c19"
+          className="c18"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize={
             Array [

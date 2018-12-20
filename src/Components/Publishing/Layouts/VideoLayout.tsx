@@ -103,8 +103,11 @@ export class VideoLayout extends Component<Props, State> {
           <Box pt={[40, 40, 60]}>
             <VideoAbout article={article} color="white" />
           </Box>
+
           {(relatedArticles || seriesArticle) && (
-            <ArticleCardsBlock {...this.props} color="white" />
+            <Box pt={[60, 60, 100]}>
+              <ArticleCardsBlock {...this.props} color="white" />
+            </Box>
           )}
         </Box>
       </VideoLayoutContainer>
