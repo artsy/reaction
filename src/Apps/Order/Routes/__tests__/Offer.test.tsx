@@ -1,4 +1,5 @@
 import { Button } from "@artsy/palette"
+import { OfferInput } from "Apps/Order/Components/OfferInput"
 import { Input } from "Components/Input"
 import { ErrorModal, ModalButton } from "Components/Modal/ErrorModal"
 import { MockBoot } from "DevTools"
@@ -90,6 +91,10 @@ describe("Offer InitialMutation", () => {
         }
       )
 
+      component
+        .find(OfferInput)
+        .props()
+        .onChange(123)
       component.find(Button).simulate("click")
 
       expect(testProps.router.push).toHaveBeenCalledWith(

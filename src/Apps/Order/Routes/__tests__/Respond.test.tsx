@@ -32,6 +32,7 @@ jest.mock("react-relay", () => ({
   createFragmentContainer: component => component,
 }))
 
+import { OfferInput } from "Apps/Order/Components/OfferInput"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { commitMutation } from "react-relay"
 import { flushPromiseQueue } from "Utils/flushPromiseQueue"
@@ -229,9 +230,9 @@ describe("Offer InitialMutation", () => {
       counterRadio.props().onSelect({ selected: true, value: "COUNTER" })
 
       counterRadio
-        .find(Input)
+        .find(OfferInput)
         .props()
-        .onChange({ currentTarget: { value: "100.05" } } as any)
+        .onChange(105)
 
       expect(commitMutationMock).toHaveBeenCalledTimes(0)
 
@@ -249,7 +250,7 @@ Object {
   "input": Object {
     "offerId": "myoffer-id",
     "offerPrice": Object {
-      "amount": 100.05,
+      "amount": 105,
       "currencyCode": "USD",
     },
   },

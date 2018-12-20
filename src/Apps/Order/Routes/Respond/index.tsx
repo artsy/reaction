@@ -70,7 +70,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
   }
 
   onContinueButtonPressed: () => void = () => {
-    if (this.state.offerValue <= 0) {
+    if (this.state.responseOption === "COUNTER" && this.state.offerValue <= 0) {
       this.setState({ formIsDirty: true })
       return
     }
