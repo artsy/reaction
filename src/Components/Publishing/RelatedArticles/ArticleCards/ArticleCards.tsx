@@ -32,7 +32,3 @@ export const ArticleCards: React.SFC<Props> = props => {
 
 // Used to target wrapper in other components
 export const ArticlesWrapper = styled(Box)``
-
-ArticleCards.defaultProps = {
-  color: "black",
-}
