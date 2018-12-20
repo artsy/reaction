@@ -47,8 +47,8 @@ export const Banner: React.SFC<BannerProps> = props => {
 }
 
 export const LargeBanner = props => (
-  <Flex flexDirection="row">
-    <Avatar size="sm" src={props.imageUrl} initials={props.initials} />
+  <Flex flexDirection="row" mt={4}>
+    <Avatar size="md" src={props.imageUrl} initials={props.initials} />
     <Flex flexDirection="column" justifyContent="center" ml={2}>
       <Sans weight="medium" size="2">
         {props.meta}
@@ -62,7 +62,7 @@ export const LargeBanner = props => (
 )
 
 export const SmallBanner = props => (
-  <Flex flexDirection="row" width="100%" justifyContent="space-between">
+  <Flex flexDirection="row" width="100%" justifyContent="space-between" mt={2}>
     <Flex flexDirection="column" justifyContent="center" mr={2}>
       <Sans weight="medium" size="2">
         {props.meta}
