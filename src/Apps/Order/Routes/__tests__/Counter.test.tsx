@@ -167,7 +167,6 @@ describe("Submit Pending Counter Offer", () => {
           onCompleted(submitPendingOfferSuccess)
         }
       )
-      console.log(component)
       const submitButton = component.find(Button).last()
       submitButton.simulate("click")
 

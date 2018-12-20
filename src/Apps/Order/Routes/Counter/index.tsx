@@ -62,6 +62,9 @@ export class CounterRoute extends Component<CounterProps, CounterState> {
                 ... on OrderWithMutationSuccess {
                   order {
                     state
+                    ... on OfferOrder {
+                      awaitingResponseFrom
+                    }
                   }
                 }
                 ... on OrderWithMutationFailure {

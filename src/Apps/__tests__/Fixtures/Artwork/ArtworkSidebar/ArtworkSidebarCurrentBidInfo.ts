@@ -162,14 +162,8 @@ export const OpenAuctionReserveMetWithMyWinningBid = {
   ...OpenAuctionReserveMetWithBids,
   myLotStanding: [
     {
-      most_recent_bid: {
-        max_bid: {
-          display: "$15,000",
-        },
-      },
-      active_bid: {
-        is_winning: true,
-      },
+      most_recent_bid: { is_winning: true, max_bid: { display: "$15,000" } },
+      active_bid: { is_winning: true },
     },
   ],
 }
@@ -179,14 +173,8 @@ export const OpenAuctionReserveMetWithMyLosingBid = {
   ...OpenAuctionReserveMetWithBids,
   myLotStanding: [
     {
-      most_recent_bid: {
-        max_bid: {
-          display: "$400",
-        },
-      },
-      active_bid: {
-        is_winning: false,
-      },
+      most_recent_bid: { is_winning: false, max_bid: { display: "$400" } },
+      active_bid: null,
     },
   ],
 }

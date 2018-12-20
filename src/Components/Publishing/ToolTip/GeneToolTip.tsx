@@ -9,7 +9,6 @@ import styled from "styled-components"
 import { FollowTrackingData } from "../../FollowButton/Typings"
 import { getFullArtsyHref } from "../Constants"
 import { ToolTipDescription } from "./Components/Description"
-import { NewFeature, NewFeatureContainer } from "./Components/NewFeature"
 
 export interface GeneProps {
   gene: GeneToolTip_gene
@@ -69,7 +68,6 @@ export class GeneToolTip extends React.Component<GeneProps> {
             trackingData={trackingData}
             onOpenAuthModal={onOpenAuthModal}
           />
-          <NewFeature />
         </ToolTipFooter>
       </Wrapper>
     )
@@ -108,11 +106,6 @@ export const ToolTipFooter = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  ${NewFeatureContainer} {
-    display: flex;
-    flex-direction: column;
-  }
 `
 
 export const GeneToolTipContainer = track()(

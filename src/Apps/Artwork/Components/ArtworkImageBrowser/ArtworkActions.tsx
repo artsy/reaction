@@ -3,6 +3,7 @@ import { ArtworkActions_artwork } from "__generated__/ArtworkActions_artwork.gra
 import { Heart } from "Assets/Icons/Heart"
 import SaveButton, { SaveProps, SaveState } from "Components/Artwork/Save"
 import Icon from "Components/Icon"
+import { isNull } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
@@ -79,7 +80,10 @@ const ShareButton = styled(Icon).attrs({
  * Custom renderer for SaveButton
  */
 const Save = (props: SaveProps, state: SaveState) => {
-  const { is_saved, isHovered } = state
+  const { isHovered } = state
+  const isSaved = isNull(state.is_saved)
+    ? props.artwork.is_saved
+    : state.is_saved
   const fill = isHovered ? color("purple100") : color("black100")
-  return <Heart fill={fill} selected={is_saved} style={{ cursor: "pointer" }} />
+  return <Heart fill={fill} selected={isSaved} style={{ cursor: "pointer" }} />
 }
