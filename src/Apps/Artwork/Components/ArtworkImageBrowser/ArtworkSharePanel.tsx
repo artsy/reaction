@@ -105,7 +105,11 @@ export class ArtworkSharePanel extends React.Component<
 
   render() {
     const {
-      artwork: { href, artworkMeta, images },
+      artwork: {
+        href,
+        artworkMeta: { description },
+        images,
+      },
     } = this.props
 
     const shareImageUrl = images && images[0].url
@@ -148,25 +152,25 @@ export class ArtworkSharePanel extends React.Component<
               service: "twitter",
               label: "Twitter",
               message: "Share on Twitter",
-              url: `https://twitter.com/intent/tweet?original_referer=${url}&text=${artworkMeta}&url=${url}&via=artsy`,
+              url: `https://twitter.com/intent/tweet?original_referer=${url}&text=${description}&url=${url}&via=artsy`,
             })}
             {this.renderShareButton({
               service: "mail",
               label: "Mail",
               message: "Share via email",
-              url: `mailto:?subject=${artworkMeta}&body=Check out ${artworkMeta} on Artsy: ${url}`,
+              url: `mailto:?subject=${description}&body=Check out ${description} on Artsy: ${url}`,
             })}
             {this.renderShareButton({
               service: "pinterest",
               label: "Pinterest",
               message: "Pin It on Pinterest",
-              url: `https://pinterest.com/pin/create/button/?url=${url}&media=${shareImageUrl}&description=${artworkMeta}`,
+              url: `https://pinterest.com/pin/create/button/?url=${url}&media=${shareImageUrl}&description=${description}`,
             })}
             {this.renderShareButton({
               service: "tumblr",
               label: "Tumblr",
               message: "",
-              url: `https://www.tumblr.com/share/photo?source=${shareImageUrl}&caption=${artworkMeta}&clickthru=${url}`,
+              url: `https://www.tumblr.com/share/photo?source=${shareImageUrl}&caption=${description}&clickthru=${url}`,
             })}
           </Flex>
         </Flex>
