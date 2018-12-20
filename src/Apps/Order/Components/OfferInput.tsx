@@ -1,7 +1,7 @@
 import Input from "Components/Input"
 import React from "react"
 
-interface OfferInputProps {
+export interface OfferInputProps {
   id: string
   showError: boolean
   onChange: (value: number) => void
