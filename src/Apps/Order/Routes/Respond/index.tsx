@@ -231,7 +231,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                       <OfferInput
                         id="RespondForm_RespondValue"
                         showError={
-                          this.state.formIsDirty && this.state.offerValue > 0
+                          this.state.formIsDirty && this.state.offerValue <= 0
                         }
                         onChange={offerValue => this.setState({ offerValue })}
                       />

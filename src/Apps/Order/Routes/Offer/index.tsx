@@ -166,7 +166,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
                   <OfferInput
                     id="OfferForm_offerValue"
                     showError={
-                      this.state.formIsDirty && this.state.offerValue > 0
+                      this.state.formIsDirty && this.state.offerValue <= 0
                     }
                     onChange={offerValue => this.setState({ offerValue })}
                   />
