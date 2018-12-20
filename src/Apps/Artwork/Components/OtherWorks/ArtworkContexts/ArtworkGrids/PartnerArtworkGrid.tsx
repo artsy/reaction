@@ -27,7 +27,12 @@ export const PartnerArtworkGridFragmentContainer = createFragmentContainer<{
     fragment PartnerArtworkGrid_artwork on Artwork
       @argumentDefinitions(excludeArtworkIDs: { type: "[String!]" }) {
       partner {
-        artworksConnection(first: 8, exclude: $excludeArtworkIDs) {
+        artworksConnection(
+          first: 8
+          exclude: $excludeArtworkIDs
+          for_sale: true
+          sort: PUBLISHED_AT_DESC
+        ) {
           ...ArtworkGrid_artworks
         }
         href
