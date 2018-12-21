@@ -1,10 +1,11 @@
 import { Box, color, Flex, Sans } from "@artsy/palette"
-import { StyledText } from "Components/Publishing/Sections/StyledText"
-import { Text } from "Components/Publishing/Sections/Text"
 import React, { Component } from "react"
 import styled from "styled-components"
+
+import { ShareDate } from "Components/Publishing/Byline/ShareDate"
+import { StyledText } from "Components/Publishing/Sections/StyledText"
+import { Text } from "Components/Publishing/Sections/Text"
 import { Media } from "Utils/Responsive"
-import { ShareDate } from "../Byline/ShareDate"
 
 export interface VideoAboutProps {
   article: any

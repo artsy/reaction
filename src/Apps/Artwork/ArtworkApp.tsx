@@ -30,7 +30,7 @@ export const ArtworkApp: React.SFC<Props> = props => {
       <Row>
         <Col sm={8}>
           <ArtworkBanner artwork={props.artwork} />
-          <Spacer mb={4} />
+          <Spacer mb={[2, 4]} />
         </Col>
       </Row>
       <Row>

@@ -4,6 +4,8 @@ import { ArtworkAppFragmentContainer as ArtworkApp } from "./ArtworkApp"
 // @ts-ignore
 import { ComponentClass, StatelessComponent } from "react"
 
+// TODO: Investigate better error boundaries for runtime errors
+
 export const routes = [
   {
     path: "/artwork2/:artworkID",

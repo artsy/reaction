@@ -3,12 +3,15 @@ import {
   StandardArticle,
 } from "Components/Publishing/Fixtures/Articles"
 import { WrapperWithFullscreenContext } from "Components/Publishing/Fixtures/Helpers"
+import { SectionData } from "Components/Publishing/Typings"
 import { mount } from "enzyme"
 import "jest-styled-components"
-import { cloneDeep } from "lodash"
+import { cloneDeep, defer } from "lodash"
 import React from "react"
 import renderer from "react-test-renderer"
 import { Sections } from "../Sections"
+
+jest.mock("isomorphic-fetch")
 
 jest.mock("react-lines-ellipsis/lib/html", () => {
   // tslint:disable:no-shadowed-variable
@@ -20,6 +23,7 @@ jest.mock("react-dom/server", () => ({
   renderToStaticMarkup: x => x,
 }))
 
+declare const global: any
 const renderSnapshot = props => {
   return renderer
     .create(WrapperWithFullscreenContext(<Sections {...props} />))
@@ -39,7 +43,7 @@ describe("Sections", () => {
       isMobile: true,
     }))
 
-  describe("snapshots", () => {
+  describe("snapshots tests", () => {
     it("renders properly", () => {
       props.isMobile = false
       const sections = renderSnapshot(props)
@@ -47,7 +51,7 @@ describe("Sections", () => {
     })
   })
 
-  describe("units", () => {
+  describe("unit tests", () => {
     const originalConsoleError = console.error
 
     afterAll(() => {
@@ -136,6 +140,43 @@ describe("Sections", () => {
         .childAt(0)
         .instance() as any
       expect(wrapper.getContentEndIndex()).toBe(11)
+    })
+  })
+
+  describe("SocialEmbed", () => {
+    beforeEach(() => {
+      global.fetch = jest.fn(() =>
+        Promise.resolve({
+          status: 200,
+          json: () =>
+            Promise.resolve({
+              html: "<blockquote>Instagram</blockquote>",
+            }),
+        })
+      )
+    })
+
+    afterEach(() => {
+      global.fetch.mockClear()
+    })
+
+    it("Renders social embed section", done => {
+      const sections = [
+        {
+          type: "social_embed",
+          url: "https://instagram.com/p/965246051107164160",
+          layout: "column_width",
+        },
+      ] as SectionData[]
+      props.article = StandardArticle
+      props.isMobile = false
+      props.article.sections = sections
+      const component = mount(<Sections {...props} />)
+
+      defer(() => {
+        expect(component.html()).toContain("Instagram")
+        done()
+      }, 10)
     })
   })
 })

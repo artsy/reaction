@@ -2,15 +2,18 @@ import { Box } from "@artsy/palette"
 import React, { Component } from "react"
 import track from "react-tracking"
 import styled from "styled-components"
-import Events from "../../../Utils/Events"
-import { media as mediaQueries } from "../../Helpers"
-import { getEditorialHref } from "../Constants"
-import { Nav, NavContainer } from "../Nav/Nav"
-import { ArticleCardsBlock } from "../RelatedArticles/ArticleCards/Block"
-import { ArticleData } from "../Typings"
-import { VideoContainer, VideoPlayer } from "../Video/Player/VideoPlayer"
-import { VideoAbout, VideoAboutContainer } from "../Video/VideoAbout"
-import { VideoCover } from "../Video/VideoCover"
+
+import { getEditorialHref } from "Components/Publishing/Constants"
+import { Nav, NavContainer } from "Components/Publishing/Nav/Nav"
+import { ArticleCardsBlock } from "Components/Publishing/RelatedArticles/ArticleCards/Block"
+import { ArticleData } from "Components/Publishing/Typings"
+import {
+  VideoContainer,
+  VideoPlayer,
+} from "Components/Publishing/Video/Player/VideoPlayer"
+import { VideoAbout } from "Components/Publishing/Video/VideoAbout"
+import { VideoCover } from "Components/Publishing/Video/VideoCover"
+import Events from "Utils/Events"
 
 interface Props {
   article: ArticleData
@@ -95,11 +98,16 @@ export class VideoLayout extends Component<Props, State> {
             hideCover={this.state.hideCover}
           />
         </VideoPlayerContainer>
-        <Box px={20}>
-          <VideoAbout article={article} color="white" />
+
+        <Box px={20} maxWidth={1200} mx="auto">
+          <Box pt={[40, 40, 60]}>
+            <VideoAbout article={article} color="white" />
+          </Box>
 
           {(relatedArticles || seriesArticle) && (
-            <ArticleCardsBlock {...this.props} color="white" />
+            <Box pt={[60, 60, 100]}>
+              <ArticleCardsBlock {...this.props} color="white" />
+            </Box>
           )}
         </Box>
       </VideoLayoutContainer>
@@ -116,16 +124,6 @@ const VideoLayoutContainer = styled.div`
     position: absolute;
     top: 0;
   }
-
-  ${VideoAboutContainer} {
-    margin: 60px auto 100px auto;
-  }
-
-  ${mediaQueries.sm`
-    ${VideoAboutContainer} {
-      margin: 40px auto 100px auto;
-    }
-  `};
 `
 
 const VideoPlayerContainer = styled.div`

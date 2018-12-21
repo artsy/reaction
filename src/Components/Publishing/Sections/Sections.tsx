@@ -9,6 +9,7 @@ import { Embed } from "./Embed"
 import { ImageCollection } from "./ImageCollection"
 import { ImageSetPreview } from "./ImageSetPreview"
 import { SectionContainer } from "./SectionContainer"
+import { SocialEmbed } from "./SocialEmbed"
 import { Text } from "./Text"
 import { Video } from "./Video"
 
@@ -156,6 +157,7 @@ export class Sections extends Component<Props, State> {
       image_set: <ImageSetPreview section={section} />,
       video: <Video section={section} />,
       embed: <Embed section={section} />,
+      social_embed: <SocialEmbed section={section} />,
       text: (
         <Text
           html={section.body}

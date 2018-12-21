@@ -1,7 +1,8 @@
 import { Flex, Sans } from "@artsy/palette"
 import React, { Component } from "react"
 import styled from "styled-components"
-import { formatTime } from "../Constants"
+
+import { formatTime } from "Components/Publishing/Constants"
 
 interface Props {
   editTitle?: any

@@ -1,4 +1,7 @@
 import { Box, color } from "@artsy/palette"
+import React, { Component } from "react"
+import styled from "styled-components"
+
 import { Nav } from "Components/Publishing/Nav/Nav"
 import { ArticleCards } from "Components/Publishing/RelatedArticles/ArticleCards/ArticleCards"
 import { FixedBackground } from "Components/Publishing/Series/FixedBackground"
@@ -8,8 +11,6 @@ import {
   SeriesTitleContainer,
 } from "Components/Publishing/Series/SeriesTitle"
 import { ArticleData } from "Components/Publishing/Typings"
-import React, { Component } from "react"
-import styled, { StyledFunction } from "styled-components"
 
 interface Props {
   article?: ArticleData
@@ -68,12 +69,7 @@ interface ContainerProps {
   sponsor?: any
 }
 
-const Div: StyledFunction<
-  Props & ContainerProps & React.HTMLProps<HTMLDivElement>
-> =
-  styled.div
-
-export const SeriesContent = Div`
+export const SeriesContent = styled.div<Props & ContainerProps>`
   max-width: 1200px;
   min-height: 100vh;
   margin: 0 auto;
@@ -82,7 +78,7 @@ export const SeriesContent = Div`
     margin-bottom: ${props => (props.sponsor ? "60px" : "90px")};
   }
 `
-export const SeriesContainer = Div`
+export const SeriesContainer = styled.div<Props & ContainerProps>`
   color: ${props => props.color};
 
   ${SeriesContent} {

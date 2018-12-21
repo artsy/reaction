@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Sections snapshots renders properly 1`] = `
+exports[`Sections snapshots tests renders properly 1`] = `
 .c31 {
   display: -webkit-box;
   display: -webkit-flex;

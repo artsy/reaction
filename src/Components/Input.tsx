@@ -21,6 +21,7 @@ export interface InputProps extends React.HTMLProps<HTMLInputElement> {
   title?: string
   quick?: boolean
   touchedOnChange?: boolean
+  innerRef?: React.RefObject<HTMLInputElement>
 }
 
 export interface InputState {
@@ -161,6 +162,7 @@ export class Input extends React.Component<InputProps, InputState> {
             <Label out={!showLabel}>{label}</Label>
             {!!leftView && leftView}
             <InputComponent
+              innerRef={this.props.innerRef}
               {...newProps}
               onFocus={this.onFocus}
               onBlur={this.onBlur}

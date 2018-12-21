@@ -75,9 +75,9 @@ export class VideoCover extends Component<Props, null> {
             </Flex>
 
             <Box maxWidth={["100%", "60%"]}>
-              <MediaDescription size={["4", "5", "5", "5"]} pt={30}>
+              <Serif size={["4", "5", "5", "5"]} pt={30}>
                 {editDescription || article.description}
-              </MediaDescription>
+              </Serif>
             </Box>
           </Box>
         </VideoCoverInfo>
@@ -123,8 +123,4 @@ export const VideoCoverContainer = styled.div<CoverProps>`
     width: 100%;
     height: 100%;
   }
-`
-
-const MediaDescription = styled(Serif)`
-  position: relative;
 `
