@@ -24,7 +24,7 @@ import { AcceptOfferMutation } from "__generated__/AcceptOfferMutation.graphql"
 import { ConditionsOfSaleDisclaimer } from "Apps/Order/Components/ConditionsOfSaleDisclaimer"
 import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "Apps/Order/Components/ShippingSummaryItem"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
-import { ErrorModal } from "Components/Modal/ErrorModal"
+import { ErrorModalContext, ShowErrorModal } from "Apps/Order/ErrorModalContext"
 import { CountdownTimer } from "Styleguide/Components/CountdownTimer"
 import { ErrorWithMetadata } from "Utils/errors"
 import { get } from "Utils/get"
@@ -38,23 +38,18 @@ interface AcceptProps {
   relay?: RelayProp
   router: Router
   route: RouteConfig
+  showErrorModal: ShowErrorModal
 }
 
 interface AcceptState {
   isCommittingMutation: boolean
-  isErrorModalOpen: boolean
-  errorModalTitle: string
-  errorModalMessage: string
 }
 
 const logger = createLogger("Order/Routes/Offer/index.tsx")
 
 export class Accept extends Component<AcceptProps, AcceptState> {
-  state = {
+  state: AcceptState = {
     isCommittingMutation: false,
-    isErrorModalOpen: false,
-    errorModalTitle: null,
-    errorModalMessage: null,
   }
 
   onSubmit: () => void = () => {
@@ -126,23 +121,15 @@ export class Accept extends Component<AcceptProps, AcceptState> {
     this.props.router.push(`/orders/${this.props.order.id}/status`)
   }
 
-  onMutationError(error, errorModalTitle?, errorModalMessage?) {
+  onMutationError(error, title?, message?) {
     logger.error(error)
-    this.setState({
-      isCommittingMutation: false,
-      isErrorModalOpen: true,
-      errorModalTitle,
-      errorModalMessage,
-    })
+    this.props.showErrorModal({ title, message })
+    this.setState({ isCommittingMutation: false })
   }
 
   onChangeResponse = () => {
     const { order } = this.props
     this.props.router.push(`/orders/${order.id}/respond`)
-  }
-
-  onCloseModal = () => {
-    this.setState({ isErrorModalOpen: false })
   }
 
   render() {
@@ -241,24 +228,27 @@ export class Accept extends Component<AcceptProps, AcceptState> {
             }
           />
         </HorizontalPadding>
-        <ErrorModal
-          onClose={this.onCloseModal}
-          show={this.state.isErrorModalOpen}
-          contactEmail="orders@artsy.net"
-          detailText={this.state.errorModalMessage}
-          headerText={this.state.errorModalTitle}
-        />
       </>
     )
   }
 }
 
 const AcceptRouteWrapper = props => (
-  <ContextConsumer>
-    {({ mediator }) => {
-      return <Accept {...props} mediator={mediator} />
-    }}
-  </ContextConsumer>
+  <ErrorModalContext.Consumer>
+    {({ showErrorModal }) => (
+      <ContextConsumer>
+        {({ mediator }) => {
+          return (
+            <Accept
+              showErrorModal={showErrorModal}
+              mediator={mediator}
+              {...props}
+            />
+          )
+        }}
+      </ContextConsumer>
+    )}
+  </ErrorModalContext.Consumer>
 )
 
 export const AcceptFragmentContainer = createFragmentContainer(

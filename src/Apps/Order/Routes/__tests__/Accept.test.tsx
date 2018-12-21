@@ -10,7 +10,6 @@ import { CreditCardSummaryItemFragmentContainer } from "Apps/Order/Components/Cr
 import { OrderStepper } from "Apps/Order/Components/OrderStepper"
 import { ShippingSummaryItemFragmentContainer } from "Apps/Order/Components/ShippingSummaryItem"
 import { TransactionDetailsSummaryItemFragmentContainer } from "Apps/Order/Components/TransactionDetailsSummaryItem"
-import { ErrorModal, ModalButton } from "Components/Modal/ErrorModal"
 import { MockBoot } from "DevTools"
 import { mount } from "enzyme"
 import moment from "moment"
@@ -51,6 +50,7 @@ const testOrder = {
 }
 let mockPushRoute: jest.Mock<string>
 let mockMediatorTrigger: jest.Mock<string>
+let mockShowErrorModal: jest.Mock
 describe("Accept seller offer", () => {
   const getWrapper = (extraOrderProps?) => {
     return mount(
@@ -59,6 +59,7 @@ describe("Accept seller offer", () => {
           relay={{ environment: {} }}
           router={{ push: mockPushRoute }}
           mediator={{ trigger: mockMediatorTrigger }}
+          showErrorModal={mockShowErrorModal}
           order={{
             ...testOrder,
             ...extraOrderProps,
@@ -68,6 +69,7 @@ describe("Accept seller offer", () => {
     )
   }
   beforeEach(() => {
+    mockShowErrorModal = jest.fn()
     mockPushRoute = jest.fn()
     mockMediatorTrigger = jest.fn()
   })
@@ -201,18 +203,16 @@ describe("Accept seller offer", () => {
         }
       )
 
+      expect(mockShowErrorModal).not.toHaveBeenCalled()
+
       const submitButton = component.find(Button).last()
       submitButton.simulate("click")
 
-      const errorComponent = component.find(ErrorModal)
-      expect(errorComponent.props().show).toBe(true)
-      expect(errorComponent.text()).toContain("An error occurred")
-      expect(errorComponent.text()).toContain(
-        "Something went wrong. Please try again or contact orders@artsy.net."
-      )
-
-      component.find(ModalButton).simulate("click")
-      expect(component.find(ErrorModal).props().show).toBe(false)
+      expect(mockShowErrorModal).toHaveBeenCalledTimes(1)
+      expect(mockShowErrorModal).toHaveBeenCalledWith({
+        message: undefined,
+        title: undefined,
+      })
     })
 
     it("shows an error modal if there is a capture_failed error", () => {
@@ -224,18 +224,17 @@ describe("Accept seller offer", () => {
         }
       )
 
+      expect(mockShowErrorModal).not.toHaveBeenCalled()
+
       const submitButton = component.find(Button).last()
       submitButton.simulate("click")
 
-      const errorComponent = component.find(ErrorModal)
-      expect(errorComponent.props().show).toBe(true)
-      expect(errorComponent.text()).toContain("An error occurred")
-      expect(errorComponent.text()).toContain(
-        "There was an error processing your payment. Please try again or contact orders@artsy.net."
-      )
-
-      component.find(ModalButton).simulate("click")
-      expect(component.find(ErrorModal).props().show).toBe(false)
+      expect(mockShowErrorModal).toHaveBeenCalledTimes(1)
+      expect(mockShowErrorModal).toHaveBeenCalledWith({
+        message:
+          "There was an error processing your payment. Please try again or contact orders@artsy.net.",
+        title: "An error occurred",
+      })
     })
   })
 })
