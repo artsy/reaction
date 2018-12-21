@@ -1,12 +1,21 @@
 import { routes_OrderQueryResponse } from "__generated__/routes_OrderQuery.graphql"
 import { Location, RouteConfig, Router } from "found"
 import moment from "moment"
+import { graphql } from "react-relay"
 import { get } from "Utils/get"
 import { RedirectPredicate, RedirectRecord } from "./getRedirect"
 import { OrderApp } from "./OrderApp"
 
+import { redirects_order } from "__generated__/redirects_order.graphql"
+
 const LEAVE_MESSAGING =
   "Are you sure you want to refresh? Your changes will not be saved."
+
+interface OrderQuery {
+  order: redirects_order
+}
+
+type OrderPredicate = RedirectPredicate<OrderQuery>
 
 export const confirmRouteExit = (
   newLocation: Location,
@@ -33,13 +42,13 @@ export const confirmRouteExit = (
 
 const goToStatusIf = (
   pred: (order: routes_OrderQueryResponse["order"]) => boolean
-): RedirectPredicate => ({ order }) => {
+): OrderPredicate => ({ order }) => {
   if (pred(order)) {
     return `/orders/${order.id}/status`
   }
 }
 
-const goToArtworkIfOrderWasAbandoned: RedirectPredicate = ({ order }) => {
+const goToArtworkIfOrderWasAbandoned: OrderPredicate = ({ order }) => {
   if (order.state === "ABANDONED") {
     const artworkID = get(order, o => o.lineItems.edges[0].node.artwork.id)
     // If an artwork ID can't be found, redirect back to home page.
@@ -51,25 +60,25 @@ const goToStatusIfOrderIsNotPending = goToStatusIf(
   order => order.state !== "PENDING"
 )
 
-const goToShippingIfShippingIsNotCompleted: RedirectPredicate = ({ order }) => {
+const goToShippingIfShippingIsNotCompleted: OrderPredicate = ({ order }) => {
   if (!order.requestedFulfillment) {
     return `/orders/${order.id}/shipping`
   }
 }
 
-const goToPaymentIfPaymentIsNotCompleted: RedirectPredicate = ({ order }) => {
+const goToPaymentIfPaymentIsNotCompleted: OrderPredicate = ({ order }) => {
   if (!order.creditCard) {
     return `/orders/${order.id}/payment`
   }
 }
 
-const goToShippingIfOrderIsNotOfferOrder: RedirectPredicate = ({ order }) => {
+const goToShippingIfOrderIsNotOfferOrder: OrderPredicate = ({ order }) => {
   if (order.mode !== "OFFER") {
     return `/orders/${order.id}/shipping`
   }
 }
 
-const goToOfferIfNoOfferMade: RedirectPredicate = ({ order }) => {
+const goToOfferIfNoOfferMade: OrderPredicate = ({ order }) => {
   if (order.mode === "OFFER" && !order.myLastOffer) {
     return `/orders/${order.id}/offer`
   }
@@ -85,13 +94,13 @@ const goToStatusIfOrderIsNotSubmitted = goToStatusIf(
   order => order.state !== "SUBMITTED"
 )
 
-const goToReviewIfOrderIsPending: RedirectPredicate = ({ order }) => {
+const goToReviewIfOrderIsPending: OrderPredicate = ({ order }) => {
   if (order.state === "PENDING") {
     return `/orders/${order.id}/review`
   }
 }
 
-const goToRespondIfMyLastOfferIsNotMostRecentOffer: RedirectPredicate = ({
+const goToRespondIfMyLastOfferIsNotMostRecentOffer: OrderPredicate = ({
   order,
 }) => {
   if (
@@ -104,15 +113,13 @@ const goToRespondIfMyLastOfferIsNotMostRecentOffer: RedirectPredicate = ({
   return `/orders/${order.id}/respond`
 }
 
-const goToRespondIfAwaitingBuyerResponse: RedirectPredicate = ({ order }) => {
+const goToRespondIfAwaitingBuyerResponse: OrderPredicate = ({ order }) => {
   if (order.awaitingResponseFrom === "BUYER") {
     return `/orders/${order.id}/respond`
   }
 }
 
-export const redirects: RedirectRecord<{
-  order: routes_OrderQueryResponse["order"]
-}> = {
+export const redirects: RedirectRecord<OrderQuery> = {
   path: "",
   rules: [goToArtworkIfOrderWasAbandoned],
   children: [
@@ -186,3 +193,37 @@ export const redirects: RedirectRecord<{
     },
   ],
 }
+
+graphql`
+  fragment redirects_order on Order {
+    id
+    mode
+    state
+    ... on OfferOrder {
+      myLastOffer {
+        id
+        createdAt
+      }
+      lastOffer {
+        id
+        createdAt
+      }
+      awaitingResponseFrom
+    }
+    requestedFulfillment {
+      __typename
+    }
+    lineItems {
+      edges {
+        node {
+          artwork {
+            id
+          }
+        }
+      }
+    }
+    creditCard {
+      id
+    }
+  }
+`
