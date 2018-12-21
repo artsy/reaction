@@ -9,6 +9,7 @@ import {
   OpenAuctionReserveMetWithMyLosingBid,
   OpenAuctionReserveMetWithMyWinningBid,
   OpenAuctionReserveNoBids,
+  OpenAuctionReserveNotMetIncreasingOwnBid,
   OpenAuctionReserveNotMetWithBids,
 } from "Apps/__tests__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarCurrentBidInfo"
 import { ArtworkSidebarCurrentBidInfo as CurrentBidInfo } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarCurrentBidInfo"
@@ -44,6 +45,11 @@ storiesOf("Apps/Artwork Page/Components/Sidebar", module).add(
             artwork={OpenAuctionReserveMetWithMyWinningBid as any}
           />
         </Section>
+        <Section title="Open auction with me increasing my max bid while winning">
+          <CurrentBidInfo
+            artwork={OpenAuctionReserveNotMetIncreasingOwnBid as any}
+          />
+        </Section>
         <Section title="Open auction with my bid losing">
           <CurrentBidInfo
             artwork={OpenAuctionReserveMetWithMyLosingBid as any}
@@ -55,7 +61,6 @@ storiesOf("Apps/Artwork Page/Components/Sidebar", module).add(
         <Section title="Auction preview with no start bid">
           <CurrentBidInfo artwork={AuctionPreviewNoStartingBid as any} />
         </Section>
-
         <Section title="Live auction in progress">
           <CurrentBidInfo artwork={LiveAuctionInProgeress as any} />
         </Section>
