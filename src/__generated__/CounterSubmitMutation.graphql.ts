@@ -78,6 +78,33 @@ v1 = [
   }
 ],
 v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "state",
+  "args": null,
+  "storageKey": null
+},
+v3 = {
+  "kind": "ScalarField",
+  "alias": "__id",
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v4 = {
+  "kind": "InlineFragment",
+  "type": "OfferOrder",
+  "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "awaitingResponseFrom",
+      "args": null,
+      "storageKey": null
+    }
+  ]
+},
+v5 = {
   "kind": "InlineFragment",
   "type": "OrderWithMutationFailure",
   "selections": [
@@ -112,33 +139,6 @@ v2 = {
           "storageKey": null
         }
       ]
-    }
-  ]
-},
-v3 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "state",
-  "args": null,
-  "storageKey": null
-},
-v4 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v5 = {
-  "kind": "InlineFragment",
-  "type": "OfferOrder",
-  "selections": [
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "awaitingResponseFrom",
-      "args": null,
-      "storageKey": null
     }
   ]
 },
@@ -181,7 +181,6 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v2,
               {
                 "kind": "InlineFragment",
                 "type": "OrderWithMutationSuccess",
@@ -195,13 +194,14 @@ return {
                     "concreteType": null,
                     "plural": false,
                     "selections": [
+                      v2,
                       v3,
-                      v4,
-                      v5
+                      v4
                     ]
                   }
                 ]
-              }
+              },
+              v5
             ]
           }
         ]
@@ -232,7 +232,6 @@ return {
             "plural": false,
             "selections": [
               v6,
-              v2,
               {
                 "kind": "InlineFragment",
                 "type": "OrderWithMutationSuccess",
@@ -247,13 +246,14 @@ return {
                     "plural": false,
                     "selections": [
                       v6,
+                      v2,
                       v3,
-                      v4,
-                      v5
+                      v4
                     ]
                   }
                 ]
-              }
+              },
+              v5
             ]
           }
         ]

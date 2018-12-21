@@ -338,14 +338,46 @@ v11 = [
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "date",
-            "args": null,
-            "storageKey": null
-          },
           v3,
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "image",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "Image",
+            "plural": false,
+            "selections": [
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "aspect_ratio",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "placeholder",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "url",
+                "args": [
+                  {
+                    "kind": "Literal",
+                    "name": "version",
+                    "value": "large",
+                    "type": "[String]"
+                  }
+                ],
+                "storageKey": "url(version:\"large\")"
+              }
+            ]
+          },
           {
             "kind": "ScalarField",
             "alias": null,
@@ -419,43 +451,11 @@ v11 = [
             "storageKey": null
           },
           {
-            "kind": "LinkedField",
+            "kind": "ScalarField",
             "alias": null,
-            "name": "image",
-            "storageKey": null,
+            "name": "date",
             "args": null,
-            "concreteType": "Image",
-            "plural": false,
-            "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "aspect_ratio",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "placeholder",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "url",
-                "args": [
-                  {
-                    "kind": "Literal",
-                    "name": "version",
-                    "value": "large",
-                    "type": "[String]"
-                  }
-                ],
-                "storageKey": "url(version:\"large\")"
-              }
-            ]
+            "storageKey": null
           },
           {
             "kind": "ScalarField",
@@ -737,6 +737,37 @@ return {
               v3,
               {
                 "kind": "Condition",
+                "passingValue": false,
+                "condition": "isClosed",
+                "selections": [
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "sale",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "Sale",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "kind": "LinkedField",
+                        "alias": null,
+                        "name": "artworksConnection",
+                        "storageKey": null,
+                        "args": [
+                          v12,
+                          v6
+                        ],
+                        "concreteType": "ArtworkConnection",
+                        "plural": false,
+                        "selections": v11
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Condition",
                 "passingValue": true,
                 "condition": "isClosed",
                 "selections": [
@@ -814,37 +845,6 @@ return {
                     ]
                   }
                 ]
-              },
-              {
-                "kind": "Condition",
-                "passingValue": false,
-                "condition": "isClosed",
-                "selections": [
-                  {
-                    "kind": "LinkedField",
-                    "alias": null,
-                    "name": "sale",
-                    "storageKey": null,
-                    "args": null,
-                    "concreteType": "Sale",
-                    "plural": false,
-                    "selections": [
-                      {
-                        "kind": "LinkedField",
-                        "alias": null,
-                        "name": "artworksConnection",
-                        "storageKey": null,
-                        "args": [
-                          v12,
-                          v6
-                        ],
-                        "concreteType": "ArtworkConnection",
-                        "plural": false,
-                        "selections": v11
-                      }
-                    ]
-                  }
-                ]
               }
             ]
           },
@@ -870,13 +870,6 @@ return {
             "concreteType": "Sale",
             "plural": true,
             "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "live_start_at",
-                "args": null,
-                "storageKey": null
-              },
               {
                 "kind": "LinkedField",
                 "alias": null,
@@ -919,6 +912,13 @@ return {
                   }
                 ]
               },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "end_at",
+                "args": null,
+                "storageKey": null
+              },
               v1,
               v5,
               v8,
@@ -926,7 +926,7 @@ return {
               {
                 "kind": "ScalarField",
                 "alias": null,
-                "name": "end_at",
+                "name": "live_start_at",
                 "args": null,
                 "storageKey": null
               },

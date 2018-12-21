@@ -287,20 +287,8 @@ return {
         "concreteType": "Artist",
         "plural": true,
         "selections": [
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "name": "genes",
-            "storageKey": null,
-            "args": null,
-            "concreteType": "Gene",
-            "plural": true,
-            "selections": [
-              v6,
-              v4
-            ]
-          },
           v2,
+          v3,
           v6,
           {
             "kind": "ScalarField",
@@ -378,7 +366,19 @@ return {
               }
             ]
           },
-          v3,
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "genes",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "Gene",
+            "plural": true,
+            "selections": [
+              v6,
+              v4
+            ]
+          },
           v4,
           {
             "kind": "ScalarField",

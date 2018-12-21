@@ -133,16 +133,21 @@ return {
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "medium",
+            "name": "is_biddable",
             "args": null,
             "storageKey": null
           },
           {
-            "kind": "ScalarField",
+            "kind": "LinkedField",
             "alias": null,
-            "name": "is_biddable",
+            "name": "edition_sets",
+            "storageKey": null,
             "args": null,
-            "storageKey": null
+            "concreteType": "EditionSet",
+            "plural": true,
+            "selections": [
+              v1
+            ]
           },
           {
             "kind": "LinkedField",
@@ -178,16 +183,11 @@ return {
             "storageKey": null
           },
           {
-            "kind": "LinkedField",
+            "kind": "ScalarField",
             "alias": null,
-            "name": "edition_sets",
-            "storageKey": null,
+            "name": "medium",
             "args": null,
-            "concreteType": "EditionSet",
-            "plural": true,
-            "selections": [
-              v1
-            ]
+            "storageKey": null
           },
           v1,
           {

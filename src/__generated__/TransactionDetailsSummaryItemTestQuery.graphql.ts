@@ -82,14 +82,7 @@ v1 = {
   "args": null,
   "storageKey": null
 },
-v2 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "taxTotalCents",
-  "args": null,
-  "storageKey": null
-},
-v3 = [
+v2 = [
   {
     "kind": "Literal",
     "name": "precision",
@@ -97,36 +90,42 @@ v3 = [
     "type": "Int"
   }
 ],
-v4 = {
+v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "shippingTotal",
-  "args": v3,
+  "args": v2,
   "storageKey": "shippingTotal(precision:2)"
 },
-v5 = {
+v4 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "shippingTotalCents",
   "args": null,
   "storageKey": null
 },
-v6 = {
+v5 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "taxTotal",
-  "args": v3,
+  "args": v2,
   "storageKey": "taxTotal(precision:2)"
+},
+v6 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "taxTotalCents",
+  "args": null,
+  "storageKey": null
 },
 v7 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "buyerTotal",
-  "args": v3,
+  "args": v2,
   "storageKey": "buyerTotal(precision:2)"
 },
 v8 = [
-  v6,
   {
     "kind": "ScalarField",
     "alias": null,
@@ -137,20 +136,21 @@ v8 = [
   {
     "kind": "ScalarField",
     "alias": null,
+    "name": "amount",
+    "args": v2,
+    "storageKey": "amount(precision:2)"
+  },
+  {
+    "kind": "ScalarField",
+    "alias": null,
     "name": "amountCents",
     "args": null,
     "storageKey": null
   },
+  v3,
   v4,
   v5,
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "amount",
-    "args": v3,
-    "storageKey": "amount(precision:2)"
-  },
-  v2,
+  v6,
   v7,
   {
     "kind": "ScalarField",
@@ -215,7 +215,6 @@ return {
         "concreteType": null,
         "plural": false,
         "selections": [
-          v2,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -223,9 +222,6 @@ return {
             "args": null,
             "storageKey": null
           },
-          v4,
-          v5,
-          v6,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -233,18 +229,22 @@ return {
             "args": null,
             "storageKey": null
           },
+          v3,
+          v4,
+          v5,
+          v6,
           {
             "kind": "ScalarField",
             "alias": null,
             "name": "itemsTotal",
-            "args": v3,
+            "args": v2,
             "storageKey": "itemsTotal(precision:2)"
           },
           {
             "kind": "ScalarField",
             "alias": null,
             "name": "totalListPrice",
-            "args": v3,
+            "args": v2,
             "storageKey": "totalListPrice(precision:2)"
           },
           v7,

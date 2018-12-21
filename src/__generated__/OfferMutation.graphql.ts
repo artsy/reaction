@@ -96,6 +96,67 @@ v1 = [
   }
 ],
 v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__typename",
+  "args": null,
+  "storageKey": null
+},
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v4 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "mode",
+  "args": null,
+  "storageKey": null
+},
+v5 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "totalListPrice",
+  "args": null,
+  "storageKey": null
+},
+v6 = {
+  "kind": "ScalarField",
+  "alias": "__id",
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v7 = {
+  "kind": "InlineFragment",
+  "type": "OfferOrder",
+  "selections": [
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "myLastOffer",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Offer",
+      "plural": false,
+      "selections": [
+        v3,
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "amountCents",
+          "args": null,
+          "storageKey": null
+        },
+        v6
+      ]
+    }
+  ]
+},
+v8 = {
   "kind": "InlineFragment",
   "type": "OrderWithMutationFailure",
   "selections": [
@@ -132,67 +193,6 @@ v2 = {
       ]
     }
   ]
-},
-v3 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__typename",
-  "args": null,
-  "storageKey": null
-},
-v4 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v5 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "mode",
-  "args": null,
-  "storageKey": null
-},
-v6 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "totalListPrice",
-  "args": null,
-  "storageKey": null
-},
-v7 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v8 = {
-  "kind": "InlineFragment",
-  "type": "OfferOrder",
-  "selections": [
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "myLastOffer",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "Offer",
-      "plural": false,
-      "selections": [
-        v4,
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "amountCents",
-          "args": null,
-          "storageKey": null
-        },
-        v7
-      ]
-    }
-  ]
 };
 return {
   "kind": "Request",
@@ -226,12 +226,11 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v2,
               {
                 "kind": "InlineFragment",
                 "type": "OrderWithMutationSuccess",
                 "selections": [
-                  v3,
+                  v2,
                   {
                     "kind": "LinkedField",
                     "alias": null,
@@ -241,15 +240,16 @@ return {
                     "concreteType": null,
                     "plural": false,
                     "selections": [
+                      v3,
                       v4,
                       v5,
                       v6,
-                      v7,
-                      v8
+                      v7
                     ]
                   }
                 ]
-              }
+              },
+              v8
             ]
           }
         ]
@@ -279,13 +279,12 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v3,
               v2,
               {
                 "kind": "InlineFragment",
                 "type": "OrderWithMutationSuccess",
                 "selections": [
-                  v3,
+                  v2,
                   {
                     "kind": "LinkedField",
                     "alias": null,
@@ -295,16 +294,17 @@ return {
                     "concreteType": null,
                     "plural": false,
                     "selections": [
+                      v2,
                       v3,
                       v4,
                       v5,
                       v6,
-                      v7,
-                      v8
+                      v7
                     ]
                   }
                 ]
-              }
+              },
+              v8
             ]
           }
         ]

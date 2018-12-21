@@ -200,32 +200,25 @@ v2 = {
 v3 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "taxTotalCents",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
 v4 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
+  "name": "__id",
   "args": null,
   "storageKey": null
 },
 v5 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v6 = {
-  "kind": "ScalarField",
-  "alias": null,
   "name": "__typename",
   "args": null,
   "storageKey": null
 },
-v7 = [
+v6 = [
   {
     "kind": "Literal",
     "name": "precision",
@@ -233,32 +226,39 @@ v7 = [
     "type": "Int"
   }
 ],
-v8 = {
+v7 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "shippingTotal",
-  "args": v7,
+  "args": v6,
   "storageKey": "shippingTotal(precision:2)"
 },
-v9 = {
+v8 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "shippingTotalCents",
   "args": null,
   "storageKey": null
 },
-v10 = {
+v9 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "taxTotal",
-  "args": v7,
+  "args": v6,
   "storageKey": "taxTotal(precision:2)"
+},
+v10 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "taxTotalCents",
+  "args": null,
+  "storageKey": null
 },
 v11 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "buyerTotal",
-  "args": v7,
+  "args": v6,
   "storageKey": "buyerTotal(precision:2)"
 },
 v12 = {
@@ -271,16 +271,16 @@ v12 = {
 v13 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "amountCents",
-  "args": null,
-  "storageKey": null
+  "name": "amount",
+  "args": v6,
+  "storageKey": "amount(precision:2)"
 },
 v14 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "amount",
-  "args": v7,
-  "storageKey": "amount(precision:2)"
+  "name": "amountCents",
+  "args": null,
+  "storageKey": null
 },
 v15 = {
   "kind": "ScalarField",
@@ -344,7 +344,13 @@ return {
         "plural": false,
         "selections": [
           v3,
-          v4,
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "stateExpiresAt",
+            "args": null,
+            "storageKey": null
+          },
           {
             "kind": "LinkedField",
             "alias": null,
@@ -354,7 +360,7 @@ return {
             "concreteType": "Offer",
             "plural": false,
             "selections": [
-              v4,
+              v3,
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -401,8 +407,8 @@ return {
                         "concreteType": "Artwork",
                         "plural": false,
                         "selections": [
+                          v3,
                           v4,
-                          v5,
                           {
                             "kind": "ScalarField",
                             "alias": null,
@@ -476,7 +482,7 @@ return {
               }
             ]
           },
-          v6,
+          v5,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -484,31 +490,53 @@ return {
             "args": null,
             "storageKey": null
           },
+          v7,
           v8,
           v9,
           v10,
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "stateExpiresAt",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
             "name": "itemsTotal",
-            "args": v7,
+            "args": v6,
             "storageKey": "itemsTotal(precision:2)"
           },
           {
             "kind": "ScalarField",
             "alias": null,
             "name": "totalListPrice",
-            "args": v7,
+            "args": v6,
             "storageKey": "totalListPrice(precision:2)"
           },
           v11,
+          v2,
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "seller",
+            "storageKey": null,
+            "args": null,
+            "concreteType": null,
+            "plural": false,
+            "selections": [
+              v5,
+              v4,
+              {
+                "kind": "InlineFragment",
+                "type": "Partner",
+                "selections": [
+                  v12
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "state",
+            "args": null,
+            "storageKey": null
+          },
           {
             "kind": "LinkedField",
             "alias": null,
@@ -518,7 +546,7 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v6,
+              v5,
               {
                 "kind": "InlineFragment",
                 "type": "Ship",
@@ -577,34 +605,6 @@ return {
               }
             ]
           },
-          v2,
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "name": "seller",
-            "storageKey": null,
-            "args": null,
-            "concreteType": null,
-            "plural": false,
-            "selections": [
-              v6,
-              v5,
-              {
-                "kind": "InlineFragment",
-                "type": "Partner",
-                "selections": [
-                  v12
-                ]
-              }
-            ]
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "state",
-            "args": null,
-            "storageKey": null
-          },
           {
             "kind": "LinkedField",
             "alias": null,
@@ -642,7 +642,7 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v5
+              v4
             ]
           },
           {
@@ -658,12 +658,12 @@ return {
                 "concreteType": "Offer",
                 "plural": false,
                 "selections": [
-                  v10,
                   v13,
+                  v14,
+                  v7,
                   v8,
                   v9,
-                  v14,
-                  v3,
+                  v10,
                   v11,
                   v15,
                   v16
@@ -678,13 +678,13 @@ return {
                 "concreteType": "Offer",
                 "plural": false,
                 "selections": [
-                  v10,
-                  v4,
+                  v3,
                   v13,
+                  v14,
+                  v7,
                   v8,
                   v9,
-                  v14,
-                  v3,
+                  v10,
                   v11,
                   v15,
                   v16,

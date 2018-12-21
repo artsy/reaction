@@ -236,17 +236,11 @@ return {
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "series",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
             "name": "description",
             "args": v2,
             "storageKey": "description(format:\"HTML\")"
           },
+          v1,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -401,7 +395,13 @@ return {
             "plural": false,
             "selections": v6
           },
-          v1,
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "series",
+            "args": null,
+            "storageKey": null
+          },
           {
             "kind": "ScalarField",
             "alias": null,

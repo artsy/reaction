@@ -69,6 +69,9 @@ export class Accept extends Component<AcceptProps, AcceptState> {
                     __typename
                     order {
                       id
+                      ... on OfferOrder {
+                        awaitingResponseFrom
+                      }
                     }
                   }
                   ... on OrderWithMutationFailure {

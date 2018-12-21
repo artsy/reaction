@@ -247,18 +247,25 @@ v2 = {
 v3 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "name",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
 v4 = {
   "kind": "ScalarField",
   "alias": null,
+  "name": "name",
+  "args": null,
+  "storageKey": null
+},
+v5 = {
+  "kind": "ScalarField",
+  "alias": null,
   "name": "__id",
   "args": null,
   "storageKey": null
 },
-v5 = [
+v6 = [
   {
     "kind": "ScalarField",
     "alias": null,
@@ -267,13 +274,6 @@ v5 = [
     "storageKey": null
   }
 ],
-v6 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
 v7 = [
   {
     "kind": "Literal",
@@ -318,8 +318,14 @@ v12 = {
   "storageKey": "buyerTotal(precision:2)"
 },
 v13 = [
-  v10,
-  v6,
+  v3,
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "amount",
+    "args": v7,
+    "storageKey": "amount(precision:2)"
+  },
   {
     "kind": "ScalarField",
     "alias": null,
@@ -329,13 +335,7 @@ v13 = [
   },
   v8,
   v9,
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "amount",
-    "args": v7,
-    "storageKey": "amount(precision:2)"
-  },
+  v10,
   v11,
   v12,
   {
@@ -401,8 +401,8 @@ return {
         "concreteType": null,
         "plural": false,
         "selections": [
-          v1,
           v2,
+          v3,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -445,7 +445,7 @@ return {
                 "kind": "InlineFragment",
                 "type": "Ship",
                 "selections": [
-                  v3,
+                  v4,
                   {
                     "kind": "ScalarField",
                     "alias": null,
@@ -509,12 +509,12 @@ return {
             "plural": false,
             "selections": [
               v2,
-              v4,
+              v5,
               {
                 "kind": "InlineFragment",
                 "type": "Partner",
                 "selections": [
-                  v3
+                  v4
                 ]
               }
             ]
@@ -555,11 +555,17 @@ return {
                         "concreteType": "Artwork",
                         "plural": false,
                         "selections": [
-                          v4,
                           {
                             "kind": "ScalarField",
                             "alias": null,
                             "name": "artist_names",
+                            "args": null,
+                            "storageKey": null
+                          },
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "title",
                             "args": null,
                             "storageKey": null
                           },
@@ -601,7 +607,7 @@ return {
                                 ],
                                 "concreteType": "ResizedImageUrl",
                                 "plural": false,
-                                "selections": v5
+                                "selections": v6
                               },
                               {
                                 "kind": "LinkedField",
@@ -618,18 +624,12 @@ return {
                                 ],
                                 "concreteType": "ResizedImageUrl",
                                 "plural": false,
-                                "selections": v5
+                                "selections": v6
                               }
                             ]
                           },
-                          {
-                            "kind": "ScalarField",
-                            "alias": null,
-                            "name": "title",
-                            "args": null,
-                            "storageKey": null
-                          },
-                          v6,
+                          v5,
+                          v3,
                           {
                             "kind": "ScalarField",
                             "alias": null,
@@ -758,7 +758,7 @@ return {
               }
             ]
           },
-          v6,
+          v1,
           v8,
           v9,
           v10,
@@ -815,7 +815,7 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v4
+              v5
             ]
           },
           {

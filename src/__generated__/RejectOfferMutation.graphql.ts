@@ -2,6 +2,7 @@
 
 import { ConcreteRequest } from "relay-runtime";
 export type CancelReasonType = "BUYER_REJECTED" | "SELLER_LAPSED" | "SELLER_REJECTED" | "SELLER_REJECTED_ARTWORK_UNAVAILABLE" | "SELLER_REJECTED_OFFER_TOO_LOW" | "SELLER_REJECTED_OTHER" | "SELLER_REJECTED_SHIPPING_UNAVAILABLE" | "%future added value";
+export type OrderParticipantEnum = "BUYER" | "SELLER" | "%future added value";
 export type buyerRejectOfferInput = {
     readonly offerId: string;
     readonly rejectReason?: CancelReasonType | null;
@@ -16,6 +17,7 @@ export type RejectOfferMutationResponse = {
             readonly __typename: "OrderWithMutationSuccess";
             readonly order?: ({
                 readonly id: string | null;
+                readonly awaitingResponseFrom?: OrderParticipantEnum | null;
             }) | null;
             readonly error?: ({
                 readonly type: string;
@@ -44,6 +46,9 @@ mutation RejectOfferMutation(
         order {
           __typename
           id
+          ... on OfferOrder {
+            awaitingResponseFrom
+          }
           __id: id
         }
       }
@@ -77,6 +82,40 @@ v1 = [
   }
 ],
 v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__typename",
+  "args": null,
+  "storageKey": null
+},
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v4 = {
+  "kind": "ScalarField",
+  "alias": "__id",
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v5 = {
+  "kind": "InlineFragment",
+  "type": "OfferOrder",
+  "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "awaitingResponseFrom",
+      "args": null,
+      "storageKey": null
+    }
+  ]
+},
+v6 = {
   "kind": "InlineFragment",
   "type": "OrderWithMutationFailure",
   "selections": [
@@ -113,34 +152,13 @@ v2 = {
       ]
     }
   ]
-},
-v3 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__typename",
-  "args": null,
-  "storageKey": null
-},
-v4 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v5 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
 };
 return {
   "kind": "Request",
   "operationKind": "mutation",
   "name": "RejectOfferMutation",
   "id": null,
-  "text": "mutation RejectOfferMutation(\n  $input: buyerRejectOfferInput!\n) {\n  ecommerceBuyerRejectOffer(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          id\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation RejectOfferMutation(\n  $input: buyerRejectOfferInput!\n) {\n  ecommerceBuyerRejectOffer(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          id\n          ... on OfferOrder {\n            awaitingResponseFrom\n          }\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -167,12 +185,11 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v2,
               {
                 "kind": "InlineFragment",
                 "type": "OrderWithMutationSuccess",
                 "selections": [
-                  v3,
+                  v2,
                   {
                     "kind": "LinkedField",
                     "alias": null,
@@ -182,12 +199,14 @@ return {
                     "concreteType": null,
                     "plural": false,
                     "selections": [
+                      v3,
                       v4,
                       v5
                     ]
                   }
                 ]
-              }
+              },
+              v6
             ]
           }
         ]
@@ -217,13 +236,12 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v3,
               v2,
               {
                 "kind": "InlineFragment",
                 "type": "OrderWithMutationSuccess",
                 "selections": [
-                  v3,
+                  v2,
                   {
                     "kind": "LinkedField",
                     "alias": null,
@@ -233,13 +251,15 @@ return {
                     "concreteType": null,
                     "plural": false,
                     "selections": [
+                      v2,
                       v3,
                       v4,
                       v5
                     ]
                   }
                 ]
-              }
+              },
+              v6
             ]
           }
         ]
@@ -248,5 +268,5 @@ return {
   }
 };
 })();
-(node as any).hash = '6d2f6e5ccc97bac6502a0136c8085d41';
+(node as any).hash = '5e296dc504d7c9f69f520ab2058baa1f';
 export default node;

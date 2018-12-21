@@ -110,14 +110,14 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "category",
+      "name": "id",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "id",
+      "name": "slug",
       "args": null,
       "storageKey": null
     },
@@ -145,7 +145,7 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "slug",
+      "name": "category",
       "args": null,
       "storageKey": null
     },

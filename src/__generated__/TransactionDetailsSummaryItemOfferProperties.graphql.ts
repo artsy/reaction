@@ -39,16 +39,16 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "taxTotal",
-      "args": v0,
-      "storageKey": "taxTotal(precision:2)"
+      "name": "id",
+      "args": null,
+      "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "id",
-      "args": null,
-      "storageKey": null
+      "name": "amount",
+      "args": v0,
+      "storageKey": "amount(precision:2)"
     },
     {
       "kind": "ScalarField",
@@ -74,9 +74,9 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "amount",
+      "name": "taxTotal",
       "args": v0,
-      "storageKey": "amount(precision:2)"
+      "storageKey": "taxTotal(precision:2)"
     },
     {
       "kind": "ScalarField",
