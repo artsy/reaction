@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
+export type OrderParticipantEnum = "BUYER" | "SELLER" | "%future added value";
 export type buyerAcceptOfferInput = {
     readonly offerId: string;
     readonly clientMutationId?: string | null;
@@ -14,6 +15,7 @@ export type AcceptOfferMutationResponse = {
             readonly __typename: "OrderWithMutationSuccess";
             readonly order?: ({
                 readonly id: string | null;
+                readonly awaitingResponseFrom?: OrderParticipantEnum | null;
             }) | null;
             readonly error?: ({
                 readonly type: string;
@@ -42,6 +44,9 @@ mutation AcceptOfferMutation(
         order {
           __typename
           id
+          ... on OfferOrder {
+            awaitingResponseFrom
+          }
           __id: id
         }
       }
@@ -132,13 +137,26 @@ v5 = {
   "name": "id",
   "args": null,
   "storageKey": null
+},
+v6 = {
+  "kind": "InlineFragment",
+  "type": "OfferOrder",
+  "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "awaitingResponseFrom",
+      "args": null,
+      "storageKey": null
+    }
+  ]
 };
 return {
   "kind": "Request",
   "operationKind": "mutation",
   "name": "AcceptOfferMutation",
   "id": null,
-  "text": "mutation AcceptOfferMutation(\n  $input: buyerAcceptOfferInput!\n) {\n  ecommerceBuyerAcceptOffer(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          id\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation AcceptOfferMutation(\n  $input: buyerAcceptOfferInput!\n) {\n  ecommerceBuyerAcceptOffer(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          id\n          ... on OfferOrder {\n            awaitingResponseFrom\n          }\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -181,7 +199,8 @@ return {
                     "plural": false,
                     "selections": [
                       v4,
-                      v5
+                      v5,
+                      v6
                     ]
                   }
                 ]
@@ -233,7 +252,8 @@ return {
                     "selections": [
                       v3,
                       v4,
-                      v5
+                      v5,
+                      v6
                     ]
                   }
                 ]
@@ -246,5 +266,5 @@ return {
   }
 };
 })();
-(node as any).hash = '3c03e86ceed373404129410f6464b598';
+(node as any).hash = '73e3ed3a8fcf9d874db6ba8783be79bd';
 export default node;

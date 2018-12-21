@@ -60,6 +60,9 @@ export class Reject extends Component<RejectProps, RejectState> {
                     __typename
                     order {
                       id
+                      ... on OfferOrder {
+                        awaitingResponseFrom
+                      }
                     }
                   }
                   ... on OrderWithMutationFailure {
