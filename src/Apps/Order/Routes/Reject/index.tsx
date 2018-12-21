@@ -8,8 +8,8 @@ import {
   OrderStepper,
 } from "Apps/Order/Components/OrderStepper"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
+import { ShowErrorModal } from "Apps/Order/ErrorModalContext"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
-import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
 import React, { Component } from "react"
 import {
@@ -31,21 +31,16 @@ interface RejectProps {
   order: Reject_order
   relay?: RelayProp
   router: Router
+  showErrorModal: ShowErrorModal
 }
 
 interface RejectState {
   isCommittingMutation: boolean
-  isErrorModalOpen: boolean
-  errorModalTitle: string
-  errorModalMessage: string
 }
 
 export class Reject extends Component<RejectProps, RejectState> {
   state = {
     isCommittingMutation: false,
-    isErrorModalOpen: false,
-    errorModalTitle: null,
-    errorModalMessage: null,
   }
 
   onSubmit: () => void = () => {
@@ -101,23 +96,17 @@ export class Reject extends Component<RejectProps, RejectState> {
     })
   }
 
-  onMutationError(error, errorModalTitle?, errorModalMessage?) {
+  onMutationError(error, title?, message?) {
     logger.error(error)
+    this.props.showErrorModal({ title, message })
     this.setState({
       isCommittingMutation: false,
-      isErrorModalOpen: true,
-      errorModalTitle,
-      errorModalMessage,
     })
   }
 
   onChangeResponse = () => {
     const { order } = this.props
     this.props.router.push(`/orders/${order.id}/respond`)
-  }
-
-  onCloseModal = () => {
-    this.setState({ isErrorModalOpen: false })
   }
 
   render() {
@@ -207,13 +196,6 @@ export class Reject extends Component<RejectProps, RejectState> {
             }
           />
         </HorizontalPadding>
-        <ErrorModal
-          onClose={this.onCloseModal}
-          show={this.state.isErrorModalOpen}
-          contactEmail="orders@artsy.net"
-          detailText={this.state.errorModalMessage}
-          headerText={this.state.errorModalTitle}
-        />
       </>
     )
   }
