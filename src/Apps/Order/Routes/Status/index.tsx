@@ -36,19 +36,19 @@ export class StatusRoute extends Component<StatusProps> {
     switch (state) {
       case "SUBMITTED":
         return isOfferFlow
-          ? "Your offer has been submitted."
-          : "Your order has been submitted."
+          ? "Your offer has been submitted"
+          : "Your order has been submitted"
       case "APPROVED":
-        return isOfferFlow ? "Offer accepted" : "Your order is confirmed."
+        return isOfferFlow ? "Offer accepted" : "Your order is confirmed"
       case "FULFILLED":
         return requestedFulfillment.__typename === "Ship"
-          ? "Your order has shipped."
-          : "Your order has been picked up."
+          ? "Your order has shipped"
+          : "Your order has been picked up"
       case "CANCELED":
         if (buyerRejectedOffer) {
           return "Offer declined"
         } else {
-          return "Your order was canceled and refunded."
+          return "Your order was canceled and refunded"
         }
     }
   }
@@ -137,49 +137,19 @@ const StatusRouteWrapper = props => (
 )
 
 const offerMessages = {
-  SUBMITTED: (props: StatusProps) => {
-    const artwork = get(props.order, o => o.lineItems.edges[0].node.artwork)
+  SUBMITTED: () => {
     return (
       <>
-        You’ll receive a confirmation email. The seller has{" "}
-        <Sans size="3t" weight="medium" display="inline">
-          48 hours
-        </Sans>{" "}
-        to respond to your offer. If the gallery doesn’t respond in time, your
-        offer will be canceled.
-        <br />
-        <br />
-        {artwork.is_acquireable ? (
-          <>
-            <Sans size="3t" weight="medium" display="inline">
-              Keep in mind
-            </Sans>{" "}
-            making an offer doesn’t guarantee you the work. Another buyer could
-            make a higher offer or{" "}
-            <a href={`/artwork/${artwork.id}`}>buy now</a> at list price.
-          </>
-        ) : (
-          <>
-            <Sans size="3t" weight="medium" display="inline">
-              Keep in mind
-            </Sans>{" "}
-            making an offer doesn’t guarantee you the work. Another buyer could
-            make a higher offer.
-          </>
-        )}
+        The seller has 48 hours to respond to your offer. Keep in mind making an
+        offer doesn’t guarantee you the work.
       </>
     )
   },
-  APPROVED: () => (
-    <>
-      Thank you for your purchase. You will receive a confirmation email. The
-      seller will notify you when your order has shipped, typically 5–7 business
-      days. If you have questions, please contact{" "}
-      <a href="mailto:orders@artsy.net">orders@artsy.net</a>.
-    </>
-  ),
-  CANCELED: (props: StatusProps) =>
-    props.order.stateReason === "buyer_rejected" ? (
+  CANCELED: (props: StatusProps) => {
+    if (props.order.stateReason === "buyer_rejected") {
+      return false
+    }
+    return (
       <>
         <p>
           Thank you for your response. The seller will be informed of your
@@ -191,10 +161,10 @@ const offerMessages = {
           comments you have.
         </p>
       </>
-    ) : (
-      canceledOrderMessage
-    ),
+    )
+  },
 }
+
 const orderMessages = {
   SUBMITTED: () => (
     <>
@@ -224,7 +194,11 @@ const orderMessages = {
       return false
     }
     const { requestedFulfillment } = order
-    return requestedFulfillment.__typename === "Ship" ? (
+    if (requestedFulfillment.__typename !== "Ship") {
+      return false
+    }
+
+    return (
       <>
         Your work is on its way.
         <br />
@@ -237,7 +211,7 @@ const orderMessages = {
         )}
         {fulfillment.trackingId && (
           <>
-            <>Tracking Info: {fulfillment.trackingId}</>
+            <>Tracking info: {fulfillment.trackingId}</>
             <br />
           </>
         )}
@@ -245,20 +219,16 @@ const orderMessages = {
           <>Estimated delivery: {fulfillment.estimatedDelivery}</>
         )}
       </>
-    ) : (
-      false
     )
   },
-  CANCELED: () => canceledOrderMessage,
+  CANCELED: () => (
+    <>
+      Please allow 5–7 business days for the refund to appear on your bank
+      statement. Contact <a href="mailto:orders@artsy.net">orders@artsy.net</a>{" "}
+      with any questions.
+    </>
+  ),
 }
-
-const canceledOrderMessage = (
-  <>
-    Please allow 5–7 business days for the refund to appear on your bank
-    statement. Contact <a href="mailto:orders@artsy.net">orders@artsy.net</a>{" "}
-    with any questions.
-  </>
-)
 
 export const StatusFragmentContainer = createFragmentContainer(
   StatusRouteWrapper,
