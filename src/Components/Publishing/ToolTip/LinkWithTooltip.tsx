@@ -278,6 +278,7 @@ export const Link = styled.div.attrs<{ onMouseEnter: any; show: boolean }>({})`
   display: inline-block;
   position: relative;
   cursor: pointer;
+  text-indent: initial;
   z-index: ${props => (props.show ? 10 : 0)};
 
   ${FadeContainer} {
