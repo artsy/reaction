@@ -29,11 +29,11 @@ import {
 } from "Apps/Order/Components/OrderStepper"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
+import { ErrorModalContext, ShowErrorModal } from "Apps/Order/ErrorModalContext"
 import { validateAddress } from "Apps/Order/Utils/formValidators"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
-import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
 import React, { Component } from "react"
 import {
@@ -60,6 +60,7 @@ export interface PaymentProps extends ReactStripeElements.InjectedStripeProps {
   order: Payment_order
   relay?: RelayRefetchProp
   router: Router
+  showErrorModal: ShowErrorModal
 }
 
 interface PaymentState {
@@ -69,8 +70,6 @@ interface PaymentState {
   addressTouched: AddressTouched
   stripeError: stripe.Error
   isCommittingMutation: boolean
-  isErrorModalOpen: boolean
-  errorModalMessage: string
 }
 
 const logger = createLogger("Order/Routes/Payment/index.tsx")
@@ -81,8 +80,6 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
     hideBillingAddress: true,
     stripeError: null,
     isCommittingMutation: false,
-    isErrorModalOpen: false,
-    errorModalMessage: null,
     address: this.startingAddress(),
     addressErrors: {},
     addressTouched: {},
@@ -185,10 +182,6 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
     })
   }
 
-  onCloseModal = () => {
-    this.setState({ isErrorModalOpen: false })
-  }
-
   render() {
     const { order } = this.props
     const {
@@ -283,13 +276,6 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
             }
           />
         </HorizontalPadding>
-
-        <ErrorModal
-          onClose={this.onCloseModal}
-          show={this.state.isErrorModalOpen}
-          contactEmail="orders@artsy.net"
-          detailText={this.state.errorModalMessage}
-        />
       </>
     )
   }
@@ -439,12 +425,11 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
     )
   }
 
-  private onMutationError(error, errorModalMessage?) {
+  private onMutationError(error, message?) {
     logger.error(error)
+    this.props.showErrorModal({ message })
     this.setState({
       isCommittingMutation: false,
-      isErrorModalOpen: true,
-      errorModalMessage,
     })
   }
 
@@ -458,11 +443,21 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
 }
 
 const PaymentRouteWrapper = props => (
-  <ContextConsumer>
-    {({ mediator }) => {
-      return <PaymentRoute {...props} mediator={mediator} />
-    }}
-  </ContextConsumer>
+  <ErrorModalContext.Consumer>
+    {({ showErrorModal }) => (
+      <ContextConsumer>
+        {({ mediator }) => {
+          return (
+            <PaymentRoute
+              showErrorModal={showErrorModal}
+              mediator={mediator}
+              {...props}
+            />
+          )
+        }}
+      </ContextConsumer>
+    )}
+  </ErrorModalContext.Consumer>
 )
 
 export const PaymentFragmentContainer = createFragmentContainer(

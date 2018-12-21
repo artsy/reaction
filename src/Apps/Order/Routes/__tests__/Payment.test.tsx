@@ -42,10 +42,6 @@ import { MockBoot } from "DevTools"
 import { commitMutation, RelayProp } from "react-relay"
 import { flushPromiseQueue } from "Utils/flushPromiseQueue"
 import { Breakpoint } from "Utils/Responsive"
-import {
-  ErrorModal,
-  ModalButton,
-} from "../../../../Components/Modal/ErrorModal"
 import { Address, AddressForm } from "../../Components/AddressForm"
 
 const mutationMock = commitMutation as jest.Mock<any>
@@ -91,6 +87,7 @@ describe("Payment", () => {
       router: { push: jest.fn() },
       stripe: stripeMock,
       mediator: { trigger: jest.fn() },
+      showErrorModal: jest.fn(),
     } as any
   })
 
@@ -296,16 +293,17 @@ describe("Payment", () => {
     )
     const paymentRoute = getWrapper(testProps)
     fillAddressForm(paymentRoute, validAddress)
+
+    expect(testProps.showErrorModal).not.toHaveBeenCalled()
+
     paymentRoute.find(ContinueButton).simulate("click")
 
     await flushPromiseQueue()
 
-    expect(
-      paymentRoute
-        .update()
-        .find(ErrorModal)
-        .props().show
-    ).toBe(true)
+    expect(testProps.showErrorModal).toHaveBeenCalledTimes(1)
+    expect(testProps.showErrorModal).toHaveBeenCalledWith({
+      message: undefined,
+    })
   })
 
   it("commits setOrderPayment mutation with Gravity credit card id", async () => {
@@ -365,21 +363,17 @@ describe("Payment", () => {
 
     const component = getWrapper(testProps)
 
-    expect(component.find(ErrorModal).props().show).toBe(false)
+    expect(testProps.showErrorModal).not.toHaveBeenCalled()
 
     component.find(ContinueButton).simulate("click")
 
     await flushPromiseQueue()
     component.update()
 
-    expect(component.find(ErrorModal).props().show).toBe(true)
-    expect(component.find(ErrorModal).props().detailText).toBe(
-      "No such token: fake-token"
-    )
-
-    component.find(ModalButton).simulate("click")
-
-    expect(component.find(ErrorModal).props().show).toBe(false)
+    expect(testProps.showErrorModal).toHaveBeenCalledTimes(1)
+    expect(testProps.showErrorModal).toHaveBeenCalledWith({
+      message: "No such token: fake-token",
+    })
   })
 
   it("shows an error modal when there is an error in SetOrderPaymentPayload", async () => {
@@ -397,12 +391,16 @@ describe("Payment", () => {
         onCompleted(settingOrderPaymentFailed)
       )
 
+    expect(testProps.showErrorModal).not.toHaveBeenCalled()
+
     component.find(ContinueButton).simulate("click")
 
     await flushPromiseQueue()
-    component.update()
 
-    expect(component.find(ErrorModal).props().show).toBe(true)
+    expect(testProps.showErrorModal).toHaveBeenCalledTimes(1)
+    expect(testProps.showErrorModal).toHaveBeenCalledWith({
+      message: undefined,
+    })
   })
 
   it("shows an error modal when there is a network error", async () => {
@@ -416,12 +414,16 @@ describe("Payment", () => {
       onError(new TypeError("Network request failed"))
     )
 
+    expect(testProps.showErrorModal).not.toHaveBeenCalled()
+
     component.find(ContinueButton).simulate("click")
 
     await flushPromiseQueue()
-    component.update()
 
-    expect(component.find(ErrorModal).props().show).toBe(true)
+    expect(testProps.showErrorModal).toHaveBeenCalledTimes(1)
+    expect(testProps.showErrorModal).toHaveBeenCalledWith({
+      message: undefined,
+    })
   })
 
   describe("Analytics", () => {
