@@ -1,49 +1,59 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SeriesAbout snapshots Renders properly 1`] = `
-.c1 {
-  box-sizing: border-box;
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 0 1 auto;
-  -ms-flex: 0 1 auto;
-  flex: 0 1 auto;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin-right: -0.5rem;
-  margin-left: -0.5rem;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .c3 {
-  box-sizing: border-box;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
 }
 
-.c5 {
-  box-sizing: border-box;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
+.c2 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 28px;
+  line-height: 36px;
+  margin-bottom: 20px;
 }
 
-.c6 {
+.c4 {
   position: relative;
   width: 100%;
 }
 
-.c6 a {
+.c4 a {
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -53,22 +63,22 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   background-position: bottom;
 }
 
-.c6 a:hover {
+.c4 a:hover {
   color: #999999;
   opacity: 1;
 }
 
-.c6 div[class*='ToolTip'] a {
+.c4 div[class*='ToolTip'] a {
   background-image: none;
   opacity: 1;
   color: inherit;
 }
 
-.c6 p,
-.c6 ul,
-.c6 ol,
-.c6 .paragraph,
-.c6 div[data-block=true] .public-DraftStyleDefault-block {
+.c4 p,
+.c4 ul,
+.c4 ol,
+.c4 .paragraph,
+.c4 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -79,32 +89,32 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   font-style: inherit;
 }
 
-.c6 p:first-child,
-.c6 .paragraph:first-child,
-.c6 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c4 p:first-child,
+.c4 .paragraph:first-child,
+.c4 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c6 p:last-child,
-.c6 .paragraph:last-child,
-.c6 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c4 p:last-child,
+.c4 .paragraph:last-child,
+.c4 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c6 ul,
-.c6 ol {
+.c4 ul,
+.c4 ol {
   padding-left: 1em;
 }
 
-.c6 ul {
+.c4 ul {
   list-style: disc;
 }
 
-.c6 ol {
+.c4 ol {
   list-style: decimal;
 }
 
-.c6 li {
+.c4 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -113,7 +123,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   padding-bottom: .5em;
 }
 
-.c6 h1 {
+.c4 h1 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -126,7 +136,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   text-align: center;
 }
 
-.c6 h1::before {
+.c4 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -137,7 +147,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   right: calc(50% - 4px);
 }
 
-.c6 h2 {
+.c4 h2 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -146,15 +156,15 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   margin: 0;
 }
 
-.c6 h2 a {
+.c4 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c6 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
+.c4 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
   background-position: bottom !important;
 }
 
-.c6 h3 {
+.c4 h3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -164,7 +174,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   margin: 0;
 }
 
-.c6 h3 strong {
+.c4 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -172,11 +182,11 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   line-height: 1.5em;
 }
 
-.c6 h3 a {
+.c4 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c6 blockquote {
+.c4 blockquote {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 40px;
   line-height: 1.1em;
@@ -189,7 +199,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   word-break: break-word;
 }
 
-.c6 .content-end {
+.c4 .content-end {
   display: inline-block;
   content: "";
   width: 8px;
@@ -200,14 +210,14 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   margin-bottom: 1px;
 }
 
-.c6 .artist-follow {
+.c4 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c6 .artist-follow::before {
+.c4 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -215,7 +225,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   font-size: 32px;
 }
 
-.c6 .artist-follow::after {
+.c4 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -224,115 +234,117 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   text-transform: none;
 }
 
-.c0 {
-  color: black;
-  max-width: 1200px;
-  width: 100%;
+@media screen and (min-width:40em) {
+  .c0 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
 }
 
-.c2 .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
-  display: none;
+@media screen and (min-width:52em) {
+  .c0 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
 }
 
-.c2:first-of-type {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+@media screen and (min-width:64em) {
+  .c0 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
 }
 
-.c2:first-of-type .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
-  display: block;
-  margin-bottom: 10px;
+@media screen and (min-width:40em) {
+  .c1 {
+    width: 100%;
+  }
 }
 
-.c4 {
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 32px;
-  line-height: 1.1em;
+@media screen and (min-width:52em) {
+  .c1 {
+    width: 33.33333333333333%;
+  }
 }
 
-@media only screen and (min-width:0em) {
+@media screen and (min-width:64em) {
+  .c1 {
+    width: 33.33333333333333%;
+  }
+}
+
+@media screen and (min-width:40em) {
   .c3 {
-    -webkit-flex-basis: 100%;
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
-    max-width: 100%;
-    display: block;
+    width: 100%;
   }
 }
 
-@media only screen and (min-width:48em) {
+@media screen and (min-width:52em) {
   .c3 {
-    -webkit-flex-basis: 33.333333333333336%;
-    -ms-flex-preferred-size: 33.333333333333336%;
-    flex-basis: 33.333333333333336%;
-    max-width: 33.333333333333336%;
-    display: block;
+    width: 66.66666666666666%;
   }
 }
 
-@media only screen and (min-width:0em) {
-  .c5 {
-    -webkit-flex-basis: 100%;
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
-    max-width: 100%;
-    display: block;
+@media screen and (min-width:64em) {
+  .c3 {
+    width: 66.66666666666666%;
   }
 }
 
-@media only screen and (min-width:48em) {
-  .c5 {
-    -webkit-flex-basis: 66.66666666666667%;
-    -ms-flex-preferred-size: 66.66666666666667%;
-    flex-basis: 66.66666666666667%;
-    max-width: 66.66666666666667%;
-    display: block;
+@media screen and (min-width:40em) {
+  .c2 {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c2 {
+    margin-bottom: 0px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c2 {
+    margin-bottom: 0px;
   }
 }
 
 @media (max-width:600px) {
-  .c6 p,
-  .c6 ul,
-  .c6 ol,
-  .c6 div[data-block=true] .public-DraftStyleDefault-block {
+  .c4 p,
+  .c4 ul,
+  .c4 ol,
+  .c4 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c6 li {
+  .c4 li {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c6 h1 {
+  .c4 h1 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c6 h2 {
+  .c4 h2 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c6 h3 {
+  .c4 h3 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -340,14 +352,14 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
     line-height: 1.5em;
   }
 
-  .c6 h3 strong {
+  .c4 h3 strong {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c6 blockquote {
+  .c4 blockquote {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
@@ -355,49 +367,54 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
     margin: 0;
   }
 
-  .c6 .content-start {
+  .c4 .content-start {
     font-size: 55px;
   }
 }
 
-@media (max-width:768px) {
-  .c2:first-of-type .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
-    display: none;
-  }
-
-  .c2 .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
-    margin-top: 60px;
-    display: block;
-  }
-}
-
-@media (max-width:768px) {
-  .c4 {
-    margin-bottom: 20px;
-  }
-}
-
 <div
-  className="c0 c1"
+  className="c0"
   color="black"
+  width="100%"
 >
   <div
-    className="c2 c3"
+    className="c1"
+    width={
+      Array [
+        1,
+        1,
+        0.3333333333333333,
+        0.3333333333333333,
+      ]
+    }
   >
     <div
-      className="c4"
+      className="c2"
+      fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+      fontSize="28px"
     >
       About the Series
     </div>
+    <div
+      className="rrm-container rrm-greaterThanOrEqual-md"
+    />
   </div>
   <div
-    className="c2 c5"
+    className="c3"
+    width={
+      Array [
+        1,
+        1,
+        0.6666666666666666,
+        0.6666666666666666,
+      ]
+    }
   >
     <div
       className="SeriesAbout__description"
     >
       <div
-        className="article__text-section c6"
+        className="article__text-section c4"
         color="black"
       >
         <div
@@ -409,54 +426,67 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
         />
       </div>
     </div>
+    <div
+      className="rrm-container rrm-lessThan-md"
+    />
   </div>
 </div>
 `;
 
 exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
-.c1 {
-  box-sizing: border-box;
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 0 1 auto;
-  -ms-flex: 0 1 auto;
-  flex: 0 1 auto;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin-right: -0.5rem;
-  margin-left: -0.5rem;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .c3 {
-  box-sizing: border-box;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
 }
 
-.c5 {
-  box-sizing: border-box;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
+.c2 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 28px;
+  line-height: 36px;
+  margin-bottom: 20px;
 }
 
-.c6 {
+.c4 {
   position: relative;
   width: 100%;
 }
 
-.c6 a {
+.c4 a {
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -466,22 +496,22 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   background-position: bottom;
 }
 
-.c6 a:hover {
+.c4 a:hover {
   color: #999999;
   opacity: 1;
 }
 
-.c6 div[class*='ToolTip'] a {
+.c4 div[class*='ToolTip'] a {
   background-image: none;
   opacity: 1;
   color: inherit;
 }
 
-.c6 p,
-.c6 ul,
-.c6 ol,
-.c6 .paragraph,
-.c6 div[data-block=true] .public-DraftStyleDefault-block {
+.c4 p,
+.c4 ul,
+.c4 ol,
+.c4 .paragraph,
+.c4 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -492,32 +522,32 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   font-style: inherit;
 }
 
-.c6 p:first-child,
-.c6 .paragraph:first-child,
-.c6 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c4 p:first-child,
+.c4 .paragraph:first-child,
+.c4 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c6 p:last-child,
-.c6 .paragraph:last-child,
-.c6 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c4 p:last-child,
+.c4 .paragraph:last-child,
+.c4 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c6 ul,
-.c6 ol {
+.c4 ul,
+.c4 ol {
   padding-left: 1em;
 }
 
-.c6 ul {
+.c4 ul {
   list-style: disc;
 }
 
-.c6 ol {
+.c4 ol {
   list-style: decimal;
 }
 
-.c6 li {
+.c4 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -526,7 +556,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   padding-bottom: .5em;
 }
 
-.c6 h1 {
+.c4 h1 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -539,7 +569,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   text-align: center;
 }
 
-.c6 h1::before {
+.c4 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -550,7 +580,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   right: calc(50% - 4px);
 }
 
-.c6 h2 {
+.c4 h2 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -559,15 +589,15 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   margin: 0;
 }
 
-.c6 h2 a {
+.c4 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c6 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
+.c4 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
   background-position: bottom !important;
 }
 
-.c6 h3 {
+.c4 h3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -577,7 +607,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   margin: 0;
 }
 
-.c6 h3 strong {
+.c4 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -585,11 +615,11 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   line-height: 1.5em;
 }
 
-.c6 h3 a {
+.c4 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c6 blockquote {
+.c4 blockquote {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 40px;
   line-height: 1.1em;
@@ -602,7 +632,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   word-break: break-word;
 }
 
-.c6 .content-end {
+.c4 .content-end {
   display: inline-block;
   content: "";
   width: 8px;
@@ -613,14 +643,14 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   margin-bottom: 1px;
 }
 
-.c6 .artist-follow {
+.c4 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c6 .artist-follow::before {
+.c4 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -628,7 +658,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   font-size: 32px;
 }
 
-.c6 .artist-follow::after {
+.c4 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -637,115 +667,117 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   text-transform: none;
 }
 
-.c0 {
-  color: black;
-  max-width: 1200px;
-  width: 100%;
+@media screen and (min-width:40em) {
+  .c0 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
 }
 
-.c2 .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
-  display: none;
+@media screen and (min-width:52em) {
+  .c0 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
 }
 
-.c2:first-of-type {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+@media screen and (min-width:64em) {
+  .c0 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
 }
 
-.c2:first-of-type .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
-  display: block;
-  margin-bottom: 10px;
+@media screen and (min-width:40em) {
+  .c1 {
+    width: 100%;
+  }
 }
 
-.c4 {
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 32px;
-  line-height: 1.1em;
+@media screen and (min-width:52em) {
+  .c1 {
+    width: 33.33333333333333%;
+  }
 }
 
-@media only screen and (min-width:0em) {
+@media screen and (min-width:64em) {
+  .c1 {
+    width: 33.33333333333333%;
+  }
+}
+
+@media screen and (min-width:40em) {
   .c3 {
-    -webkit-flex-basis: 100%;
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
-    max-width: 100%;
-    display: block;
+    width: 100%;
   }
 }
 
-@media only screen and (min-width:48em) {
+@media screen and (min-width:52em) {
   .c3 {
-    -webkit-flex-basis: 33.333333333333336%;
-    -ms-flex-preferred-size: 33.333333333333336%;
-    flex-basis: 33.333333333333336%;
-    max-width: 33.333333333333336%;
-    display: block;
+    width: 66.66666666666666%;
   }
 }
 
-@media only screen and (min-width:0em) {
-  .c5 {
-    -webkit-flex-basis: 100%;
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
-    max-width: 100%;
-    display: block;
+@media screen and (min-width:64em) {
+  .c3 {
+    width: 66.66666666666666%;
   }
 }
 
-@media only screen and (min-width:48em) {
-  .c5 {
-    -webkit-flex-basis: 66.66666666666667%;
-    -ms-flex-preferred-size: 66.66666666666667%;
-    flex-basis: 66.66666666666667%;
-    max-width: 66.66666666666667%;
-    display: block;
+@media screen and (min-width:40em) {
+  .c2 {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c2 {
+    margin-bottom: 0px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c2 {
+    margin-bottom: 0px;
   }
 }
 
 @media (max-width:600px) {
-  .c6 p,
-  .c6 ul,
-  .c6 ol,
-  .c6 div[data-block=true] .public-DraftStyleDefault-block {
+  .c4 p,
+  .c4 ul,
+  .c4 ol,
+  .c4 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c6 li {
+  .c4 li {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c6 h1 {
+  .c4 h1 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c6 h2 {
+  .c4 h2 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c6 h3 {
+  .c4 h3 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -753,14 +785,14 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
     line-height: 1.5em;
   }
 
-  .c6 h3 strong {
+  .c4 h3 strong {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c6 blockquote {
+  .c4 blockquote {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
@@ -768,46 +800,51 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
     margin: 0;
   }
 
-  .c6 .content-start {
+  .c4 .content-start {
     font-size: 55px;
   }
 }
 
-@media (max-width:768px) {
-  .c2:first-of-type .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
-    display: none;
-  }
-
-  .c2 .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
-    margin-top: 60px;
-    display: block;
-  }
-}
-
-@media (max-width:768px) {
-  .c4 {
-    margin-bottom: 20px;
-  }
-}
-
 <div
-  className="c0 c1"
+  className="c0"
   color="black"
+  width="100%"
 >
   <div
-    className="c2 c3"
+    className="c1"
+    width={
+      Array [
+        1,
+        1,
+        0.3333333333333333,
+        0.3333333333333333,
+      ]
+    }
   >
     <div
-      className="c4"
+      className="c2"
+      fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+      fontSize="28px"
     >
       About the Series
     </div>
+    <div
+      className="rrm-container rrm-greaterThanOrEqual-md"
+    />
   </div>
   <div
-    className="c2 c5"
+    className="c3"
+    width={
+      Array [
+        1,
+        1,
+        0.6666666666666666,
+        0.6666666666666666,
+      ]
+    }
   >
     <div
-      className="article__text-section c6"
+      className="article__text-section c4"
       color="black"
     >
       <div>
@@ -815,54 +852,67 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
         description
       </div>
     </div>
+    <div
+      className="rrm-container rrm-lessThan-md"
+    />
   </div>
 </div>
 `;
 
 exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
-.c1 {
-  box-sizing: border-box;
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 0 1 auto;
-  -ms-flex: 0 1 auto;
-  flex: 0 1 auto;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin-right: -0.5rem;
-  margin-left: -0.5rem;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .c3 {
-  box-sizing: border-box;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
 }
 
-.c5 {
-  box-sizing: border-box;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
+.c2 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 28px;
+  line-height: 36px;
+  margin-bottom: 20px;
 }
 
-.c6 {
+.c4 {
   position: relative;
   width: 100%;
 }
 
-.c6 a {
+.c4 a {
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -872,22 +922,22 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   background-position: bottom;
 }
 
-.c6 a:hover {
+.c4 a:hover {
   color: #999999;
   opacity: 1;
 }
 
-.c6 div[class*='ToolTip'] a {
+.c4 div[class*='ToolTip'] a {
   background-image: none;
   opacity: 1;
   color: inherit;
 }
 
-.c6 p,
-.c6 ul,
-.c6 ol,
-.c6 .paragraph,
-.c6 div[data-block=true] .public-DraftStyleDefault-block {
+.c4 p,
+.c4 ul,
+.c4 ol,
+.c4 .paragraph,
+.c4 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -898,32 +948,32 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   font-style: inherit;
 }
 
-.c6 p:first-child,
-.c6 .paragraph:first-child,
-.c6 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c4 p:first-child,
+.c4 .paragraph:first-child,
+.c4 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c6 p:last-child,
-.c6 .paragraph:last-child,
-.c6 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c4 p:last-child,
+.c4 .paragraph:last-child,
+.c4 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c6 ul,
-.c6 ol {
+.c4 ul,
+.c4 ol {
   padding-left: 1em;
 }
 
-.c6 ul {
+.c4 ul {
   list-style: disc;
 }
 
-.c6 ol {
+.c4 ol {
   list-style: decimal;
 }
 
-.c6 li {
+.c4 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -932,7 +982,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   padding-bottom: .5em;
 }
 
-.c6 h1 {
+.c4 h1 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -945,7 +995,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   text-align: center;
 }
 
-.c6 h1::before {
+.c4 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -956,7 +1006,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   right: calc(50% - 4px);
 }
 
-.c6 h2 {
+.c4 h2 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -965,15 +1015,15 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   margin: 0;
 }
 
-.c6 h2 a {
+.c4 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c6 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
+.c4 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
   background-position: bottom !important;
 }
 
-.c6 h3 {
+.c4 h3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -983,7 +1033,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   margin: 0;
 }
 
-.c6 h3 strong {
+.c4 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -991,11 +1041,11 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   line-height: 1.5em;
 }
 
-.c6 h3 a {
+.c4 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c6 blockquote {
+.c4 blockquote {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 40px;
   line-height: 1.1em;
@@ -1008,7 +1058,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   word-break: break-word;
 }
 
-.c6 .content-end {
+.c4 .content-end {
   display: inline-block;
   content: "";
   width: 8px;
@@ -1019,14 +1069,14 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   margin-bottom: 1px;
 }
 
-.c6 .artist-follow {
+.c4 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c6 .artist-follow::before {
+.c4 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -1034,7 +1084,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   font-size: 32px;
 }
 
-.c6 .artist-follow::after {
+.c4 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -1043,115 +1093,117 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   text-transform: none;
 }
 
-.c0 {
-  color: black;
-  max-width: 1200px;
-  width: 100%;
+@media screen and (min-width:40em) {
+  .c0 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
 }
 
-.c2 .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
-  display: none;
+@media screen and (min-width:52em) {
+  .c0 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
 }
 
-.c2:first-of-type {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+@media screen and (min-width:64em) {
+  .c0 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
 }
 
-.c2:first-of-type .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
-  display: block;
-  margin-bottom: 10px;
+@media screen and (min-width:40em) {
+  .c1 {
+    width: 100%;
+  }
 }
 
-.c4 {
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 32px;
-  line-height: 1.1em;
+@media screen and (min-width:52em) {
+  .c1 {
+    width: 33.33333333333333%;
+  }
 }
 
-@media only screen and (min-width:0em) {
+@media screen and (min-width:64em) {
+  .c1 {
+    width: 33.33333333333333%;
+  }
+}
+
+@media screen and (min-width:40em) {
   .c3 {
-    -webkit-flex-basis: 100%;
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
-    max-width: 100%;
-    display: block;
+    width: 100%;
   }
 }
 
-@media only screen and (min-width:48em) {
+@media screen and (min-width:52em) {
   .c3 {
-    -webkit-flex-basis: 33.333333333333336%;
-    -ms-flex-preferred-size: 33.333333333333336%;
-    flex-basis: 33.333333333333336%;
-    max-width: 33.333333333333336%;
-    display: block;
+    width: 66.66666666666666%;
   }
 }
 
-@media only screen and (min-width:0em) {
-  .c5 {
-    -webkit-flex-basis: 100%;
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
-    max-width: 100%;
-    display: block;
+@media screen and (min-width:64em) {
+  .c3 {
+    width: 66.66666666666666%;
   }
 }
 
-@media only screen and (min-width:48em) {
-  .c5 {
-    -webkit-flex-basis: 66.66666666666667%;
-    -ms-flex-preferred-size: 66.66666666666667%;
-    flex-basis: 66.66666666666667%;
-    max-width: 66.66666666666667%;
-    display: block;
+@media screen and (min-width:40em) {
+  .c2 {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c2 {
+    margin-bottom: 0px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c2 {
+    margin-bottom: 0px;
   }
 }
 
 @media (max-width:600px) {
-  .c6 p,
-  .c6 ul,
-  .c6 ol,
-  .c6 div[data-block=true] .public-DraftStyleDefault-block {
+  .c4 p,
+  .c4 ul,
+  .c4 ol,
+  .c4 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c6 li {
+  .c4 li {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c6 h1 {
+  .c4 h1 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c6 h2 {
+  .c4 h2 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c6 h3 {
+  .c4 h3 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -1159,14 +1211,14 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
     line-height: 1.5em;
   }
 
-  .c6 h3 strong {
+  .c4 h3 strong {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c6 blockquote {
+  .c4 blockquote {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
@@ -1174,52 +1226,57 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
     margin: 0;
   }
 
-  .c6 .content-start {
+  .c4 .content-start {
     font-size: 55px;
   }
 }
 
-@media (max-width:768px) {
-  .c2:first-of-type .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
-    display: none;
-  }
-
-  .c2 .PartnerBlock__PartnerBlockContainer-ydgi2-0 {
-    margin-top: 60px;
-    display: block;
-  }
-}
-
-@media (max-width:768px) {
-  .c4 {
-    margin-bottom: 20px;
-  }
-}
-
 <div
-  className="c0 c1"
+  className="c0"
   color="black"
+  width="100%"
 >
   <div
-    className="c2 c3"
+    className="c1"
+    width={
+      Array [
+        1,
+        1,
+        0.3333333333333333,
+        0.3333333333333333,
+      ]
+    }
   >
     <div
-      className="c4"
+      className="c2"
+      fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+      fontSize="28px"
     >
       <div>
         Child 
         sub_title
       </div>
     </div>
+    <div
+      className="rrm-container rrm-greaterThanOrEqual-md"
+    />
   </div>
   <div
-    className="c2 c5"
+    className="c3"
+    width={
+      Array [
+        1,
+        1,
+        0.6666666666666666,
+        0.6666666666666666,
+      ]
+    }
   >
     <div
       className="SeriesAbout__description"
     >
       <div
-        className="article__text-section c6"
+        className="article__text-section c4"
         color="black"
       >
         <div
@@ -1231,60 +1288,81 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
         />
       </div>
     </div>
+    <div
+      className="rrm-container rrm-lessThan-md"
+    />
   </div>
 </div>
 `;
 
 exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
-.c1 {
-  box-sizing: border-box;
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 0 1 auto;
-  -ms-flex: 0 1 auto;
-  flex: 0 1 auto;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin-right: -0.5rem;
-  margin-left: -0.5rem;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+}
+
+.c2 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 28px;
+  line-height: 36px;
+  margin-bottom: 20px;
 }
 
 .c3 {
-  box-sizing: border-box;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
+  margin-bottom: 4px;
 }
 
 .c9 {
-  box-sizing: border-box;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
+  margin-top: 60px;
 }
 
-.c6 {
+.c4 {
   display: block;
 }
 
-.c8 img {
+.c6 img {
   max-width: 240px;
   max-height: 40px;
   object-fit: contain;
   object-position: left;
 }
 
-.c7 {
+.c5 {
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
@@ -1292,12 +1370,12 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   margin-bottom: 20px;
 }
 
-.c10 {
+.c8 {
   position: relative;
   width: 100%;
 }
 
-.c10 a {
+.c8 a {
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -1307,22 +1385,22 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   background-position: bottom;
 }
 
-.c10 a:hover {
+.c8 a:hover {
   color: #999999;
   opacity: 1;
 }
 
-.c10 div[class*='ToolTip'] a {
+.c8 div[class*='ToolTip'] a {
   background-image: none;
   opacity: 1;
   color: inherit;
 }
 
-.c10 p,
-.c10 ul,
-.c10 ol,
-.c10 .paragraph,
-.c10 div[data-block=true] .public-DraftStyleDefault-block {
+.c8 p,
+.c8 ul,
+.c8 ol,
+.c8 .paragraph,
+.c8 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -1333,32 +1411,32 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   font-style: inherit;
 }
 
-.c10 p:first-child,
-.c10 .paragraph:first-child,
-.c10 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c8 p:first-child,
+.c8 .paragraph:first-child,
+.c8 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c10 p:last-child,
-.c10 .paragraph:last-child,
-.c10 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c8 p:last-child,
+.c8 .paragraph:last-child,
+.c8 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c10 ul,
-.c10 ol {
+.c8 ul,
+.c8 ol {
   padding-left: 1em;
 }
 
-.c10 ul {
+.c8 ul {
   list-style: disc;
 }
 
-.c10 ol {
+.c8 ol {
   list-style: decimal;
 }
 
-.c10 li {
+.c8 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -1367,7 +1445,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   padding-bottom: .5em;
 }
 
-.c10 h1 {
+.c8 h1 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -1380,7 +1458,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   text-align: center;
 }
 
-.c10 h1::before {
+.c8 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -1391,7 +1469,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   right: calc(50% - 4px);
 }
 
-.c10 h2 {
+.c8 h2 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -1400,15 +1478,15 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   margin: 0;
 }
 
-.c10 h2 a {
+.c8 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c10 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
+.c8 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
   background-position: bottom !important;
 }
 
-.c10 h3 {
+.c8 h3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -1418,7 +1496,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   margin: 0;
 }
 
-.c10 h3 strong {
+.c8 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -1426,11 +1504,11 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   line-height: 1.5em;
 }
 
-.c10 h3 a {
+.c8 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c10 blockquote {
+.c8 blockquote {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 40px;
   line-height: 1.1em;
@@ -1443,7 +1521,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   word-break: break-word;
 }
 
-.c10 .content-end {
+.c8 .content-end {
   display: inline-block;
   content: "";
   width: 8px;
@@ -1454,14 +1532,14 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   margin-bottom: 1px;
 }
 
-.c10 .artist-follow {
+.c8 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c10 .artist-follow::before {
+.c8 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -1469,7 +1547,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   font-size: 32px;
 }
 
-.c10 .artist-follow::after {
+.c8 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -1478,84 +1556,86 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   text-transform: none;
 }
 
-.c0 {
-  color: black;
-  max-width: 1200px;
-  width: 100%;
-}
-
-.c2 .c5 {
-  display: none;
-}
-
-.c2:first-of-type {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c2:first-of-type .c5 {
-  display: block;
-  margin-bottom: 10px;
-}
-
-.c4 {
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 32px;
-  line-height: 1.1em;
-}
-
-@media only screen and (min-width:0em) {
-  .c3 {
-    -webkit-flex-basis: 100%;
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
-    max-width: 100%;
-    display: block;
+@media screen and (min-width:40em) {
+  .c0 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
   }
 }
 
-@media only screen and (min-width:48em) {
-  .c3 {
-    -webkit-flex-basis: 33.333333333333336%;
-    -ms-flex-preferred-size: 33.333333333333336%;
-    flex-basis: 33.333333333333336%;
-    max-width: 33.333333333333336%;
-    display: block;
+@media screen and (min-width:52em) {
+  .c0 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
   }
 }
 
-@media only screen and (min-width:0em) {
-  .c9 {
-    -webkit-flex-basis: 100%;
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
-    max-width: 100%;
-    display: block;
+@media screen and (min-width:64em) {
+  .c0 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
   }
 }
 
-@media only screen and (min-width:48em) {
-  .c9 {
-    -webkit-flex-basis: 66.66666666666667%;
-    -ms-flex-preferred-size: 66.66666666666667%;
-    flex-basis: 66.66666666666667%;
-    max-width: 66.66666666666667%;
-    display: block;
+@media screen and (min-width:40em) {
+  .c1 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c1 {
+    width: 33.33333333333333%;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c1 {
+    width: 33.33333333333333%;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c7 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c7 {
+    width: 66.66666666666666%;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c7 {
+    width: 66.66666666666666%;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c2 {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c2 {
+    margin-bottom: 0px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c2 {
+    margin-bottom: 0px;
   }
 }
 
 @media (max-width:720px) {
-  .c7 {
+  .c5 {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
@@ -1564,38 +1644,38 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
 }
 
 @media (max-width:600px) {
-  .c10 p,
-  .c10 ul,
-  .c10 ol,
-  .c10 div[data-block=true] .public-DraftStyleDefault-block {
+  .c8 p,
+  .c8 ul,
+  .c8 ol,
+  .c8 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c10 li {
+  .c8 li {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c10 h1 {
+  .c8 h1 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c10 h2 {
+  .c8 h2 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c10 h3 {
+  .c8 h3 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -1603,14 +1683,14 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
     line-height: 1.5em;
   }
 
-  .c10 h3 strong {
+  .c8 h3 strong {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c10 blockquote {
+  .c8 blockquote {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
@@ -1618,71 +1698,81 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
     margin: 0;
   }
 
-  .c10 .content-start {
+  .c8 .content-start {
     font-size: 55px;
   }
 }
 
-@media (max-width:768px) {
-  .c2:first-of-type .c5 {
-    display: none;
-  }
-
-  .c2 .c5 {
-    margin-top: 60px;
-    display: block;
-  }
-}
-
-@media (max-width:768px) {
-  .c4 {
-    margin-bottom: 20px;
-  }
-}
-
 <div
-  className="c0 c1"
+  className="c0"
   color="black"
+  width="100%"
 >
   <div
-    className="c2 c3"
+    className="c1"
+    width={
+      Array [
+        1,
+        1,
+        0.3333333333333333,
+        0.3333333333333333,
+      ]
+    }
   >
     <div
-      className="c4"
+      className="c2"
+      fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+      fontSize="28px"
     >
       About the Series
     </div>
     <div
-      className="PartnerBlock c5 c6"
+      className="rrm-container rrm-greaterThanOrEqual-md"
     >
       <div
-        className="c7"
+        className="c3"
       >
-        Presented in Partnership with
-      </div>
-      <div
-        className="c8"
-      >
-        <a
-          href="http://artsy.net"
-          onClick={[Function]}
-          target="_blank"
+        <div
+          className="PartnerBlock c4"
         >
-          <img
-            src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FAjncVmjZHFM4Z-0b6nPz8A%252FGUCCI.png&width=240&quality=80"
-          />
-        </a>
+          <div
+            className="c5"
+          >
+            Presented in Partnership with
+          </div>
+          <div
+            className="c6"
+          >
+            <a
+              href="http://artsy.net"
+              onClick={[Function]}
+              target="_blank"
+            >
+              <img
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FAjncVmjZHFM4Z-0b6nPz8A%252FGUCCI.png&width=240&quality=80"
+              />
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
   <div
-    className="c2 c9"
+    className="c7"
+    width={
+      Array [
+        1,
+        1,
+        0.6666666666666666,
+        0.6666666666666666,
+      ]
+    }
   >
     <div
       className="SeriesAbout__description"
     >
       <div
-        className="article__text-section c10"
+        className="article__text-section c8"
         color="black"
       >
         <div
@@ -1695,25 +1785,33 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
       </div>
     </div>
     <div
-      className="PartnerBlock c5 c6"
+      className="rrm-container rrm-lessThan-md"
     >
       <div
-        className="c7"
+        className="c9"
       >
-        Presented in Partnership with
-      </div>
-      <div
-        className="c8"
-      >
-        <a
-          href="http://artsy.net"
-          onClick={[Function]}
-          target="_blank"
+        <div
+          className="PartnerBlock c4"
         >
-          <img
-            src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FAjncVmjZHFM4Z-0b6nPz8A%252FGUCCI.png&width=240&quality=80"
-          />
-        </a>
+          <div
+            className="c5"
+          >
+            Presented in Partnership with
+          </div>
+          <div
+            className="c6"
+          >
+            <a
+              href="http://artsy.net"
+              onClick={[Function]}
+              target="_blank"
+            >
+              <img
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FAjncVmjZHFM4Z-0b6nPz8A%252FGUCCI.png&width=240&quality=80"
+              />
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </div>

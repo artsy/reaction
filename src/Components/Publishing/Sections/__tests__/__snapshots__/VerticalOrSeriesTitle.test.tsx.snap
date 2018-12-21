@@ -5,17 +5,19 @@ exports[`renders properly for a feature article 1`] = `
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
   font-size: 14px;
-  line-height: 20px;
+  line-height: 24px;
+  color: #000;
 }
 
 .c0 a {
-  color: black;
+  color: #000;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
 <div
   className="c0 c1"
+  color="#000"
   fontFamily={
     Object {
       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -35,17 +37,19 @@ exports[`renders properly for a standard article 1`] = `
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
   font-size: 14px;
-  line-height: 20px;
+  line-height: 24px;
+  color: #000;
 }
 
 .c0 a {
-  color: black;
+  color: #000;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
 <div
   className="c0 c1"
+  color="#000"
   fontFamily={
     Object {
       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",

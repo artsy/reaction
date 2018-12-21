@@ -1,7 +1,8 @@
 import { Box } from "@artsy/palette"
-import { ArticleData } from "Components/Publishing/Typings"
 import React from "react"
 import styled from "styled-components"
+
+import { ArticleData } from "Components/Publishing/Typings"
 import { ArticleCard } from "./ArticleCard"
 
 interface Props {
@@ -32,7 +33,3 @@ export const ArticleCards: React.SFC<Props> = props => {
 
 // Used to target wrapper in other components
 export const ArticlesWrapper = styled(Box)``
-
-ArticleCards.defaultProps = {
-  color: "black",
-}
