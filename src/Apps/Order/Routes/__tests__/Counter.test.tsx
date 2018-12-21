@@ -10,7 +10,6 @@ import { CreditCardSummaryItemFragmentContainer } from "Apps/Order/Components/Cr
 import { OrderStepper } from "Apps/Order/Components/OrderStepper"
 import { ShippingSummaryItemFragmentContainer } from "Apps/Order/Components/ShippingSummaryItem"
 import { TransactionDetailsSummaryItemFragmentContainer } from "Apps/Order/Components/TransactionDetailsSummaryItem"
-import { ErrorModal, ModalButton } from "Components/Modal/ErrorModal"
 import { MockBoot } from "DevTools"
 import { mount } from "enzyme"
 import moment from "moment"
@@ -59,6 +58,7 @@ const testOrder = {
 
 let mockPushRoute: jest.Mock<string>
 let mockMediatorTrigger: jest.Mock<string>
+let mockShowErrorModal: jest.Mock
 
 describe("Submit Pending Counter Offer", () => {
   const getWrapper = (extraOrderProps?) => {
@@ -68,6 +68,7 @@ describe("Submit Pending Counter Offer", () => {
           relay={{ environment: {} }}
           router={{ push: mockPushRoute }}
           mediator={{ trigger: mockMediatorTrigger }}
+          showErrorModal={mockShowErrorModal}
           order={{
             ...testOrder,
             ...extraOrderProps,
@@ -80,6 +81,7 @@ describe("Submit Pending Counter Offer", () => {
   beforeEach(() => {
     mockPushRoute = jest.fn()
     mockMediatorTrigger = jest.fn()
+    mockShowErrorModal = jest.fn()
   })
 
   it("Shows the stepper", () => {
@@ -167,7 +169,6 @@ describe("Submit Pending Counter Offer", () => {
           onCompleted(submitPendingOfferSuccess)
         }
       )
-      console.log(component)
       const submitButton = component.find(Button).last()
       submitButton.simulate("click")
 
@@ -219,18 +220,16 @@ describe("Submit Pending Counter Offer", () => {
       }
     )
 
+    expect(mockShowErrorModal).not.toHaveBeenCalled()
+
     const submitButton = component.find(Button).last()
     submitButton.simulate("click")
 
-    const errorComponent = component.find(ErrorModal)
-    expect(errorComponent.props().show).toBe(true)
-    expect(errorComponent.text()).toContain("An error occurred")
-    expect(errorComponent.text()).toContain(
-      "Something went wrong. Please try again or contact orders@artsy.net."
-    )
-
-    component.find(ModalButton).simulate("click")
-    expect(component.find(ErrorModal).props().show).toBe(false)
+    expect(mockShowErrorModal).toHaveBeenCalledTimes(1)
+    expect(mockShowErrorModal).toHaveBeenCalledWith({
+      title: undefined,
+      message: undefined,
+    })
   })
 
   it("shows an error modal when there is a network error", () => {
@@ -240,8 +239,17 @@ describe("Submit Pending Counter Offer", () => {
       onError(new TypeError("Network request failed"))
     )
 
-    component.find(Button).simulate("click")
+    expect(mockShowErrorModal).not.toHaveBeenCalled()
 
-    expect(component.find(ErrorModal).props().show).toBe(true)
+    component
+      .find(Button)
+      .last()
+      .simulate("click")
+
+    expect(mockShowErrorModal).toHaveBeenCalledTimes(1)
+    expect(mockShowErrorModal).toHaveBeenCalledWith({
+      title: undefined,
+      message: undefined,
+    })
   })
 })

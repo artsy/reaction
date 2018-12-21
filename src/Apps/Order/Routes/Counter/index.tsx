@@ -11,8 +11,8 @@ import {
 import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "Apps/Order/Components/ShippingSummaryItem"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
+import { ErrorModalContext, ShowErrorModal } from "Apps/Order/ErrorModalContext"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
-import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
 import React, { Component } from "react"
 import {
@@ -33,13 +33,11 @@ export interface CounterProps {
   mediator: Mediator
   relay?: RelayProp
   router: Router
+  showErrorModal: ShowErrorModal
 }
 
 export interface CounterState {
   isCommittingMutation: boolean
-  isErrorModalOpen: boolean
-  errorModalTitle: string
-  errorModalMessage: string
 }
 
 const logger = createLogger("Order/Routes/Counter/index.tsx")
@@ -47,9 +45,6 @@ const logger = createLogger("Order/Routes/Counter/index.tsx")
 export class CounterRoute extends Component<CounterProps, CounterState> {
   state = {
     isCommittingMutation: false,
-    isErrorModalOpen: false,
-    errorModalTitle: null,
-    errorModalMessage: null,
   } as CounterState
 
   onSubmitButtonPressed: () => void = () => {
@@ -91,13 +86,11 @@ export class CounterRoute extends Component<CounterProps, CounterState> {
     })
   }
 
-  onMutationError(errors, errorModalTitle?, errorModalMessage?) {
+  onMutationError(errors, title?, message?) {
     logger.error(errors)
+    this.props.showErrorModal({ title, message })
     this.setState({
       isCommittingMutation: false,
-      isErrorModalOpen: true,
-      errorModalTitle,
-      errorModalMessage,
     })
   }
 
@@ -110,10 +103,6 @@ export class CounterRoute extends Component<CounterProps, CounterState> {
       this.setState({ isCommittingMutation: false })
       this.props.router.push(`/orders/${this.props.order.id}/status`)
     }
-  }
-
-  onCloseModal = () => {
-    this.setState({ isErrorModalOpen: false })
   }
 
   onChangeResponse = () => {
@@ -201,25 +190,27 @@ export class CounterRoute extends Component<CounterProps, CounterState> {
             }
           />
         </HorizontalPadding>
-
-        <ErrorModal
-          onClose={this.onCloseModal}
-          show={this.state.isErrorModalOpen}
-          contactEmail="orders@artsy.net"
-          detailText={this.state.errorModalMessage}
-          headerText={this.state.errorModalTitle}
-        />
       </>
     )
   }
 }
 
 const CounterRouteWrapper = props => (
-  <ContextConsumer>
-    {({ mediator }) => {
-      return <CounterRoute {...props} mediator={mediator} />
-    }}
-  </ContextConsumer>
+  <ErrorModalContext.Consumer>
+    {({ showErrorModal }) => (
+      <ContextConsumer>
+        {({ mediator }) => {
+          return (
+            <CounterRoute
+              mediator={mediator}
+              showErrorModal={showErrorModal}
+              {...props}
+            />
+          )
+        }}
+      </ContextConsumer>
+    )}
+  </ErrorModalContext.Consumer>
 )
 
 export const CounterFragmentContainer = createFragmentContainer(
