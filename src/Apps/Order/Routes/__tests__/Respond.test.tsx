@@ -32,7 +32,6 @@ jest.mock("react-relay", () => ({
   createFragmentContainer: component => component,
 }))
 
-import { ErrorModal } from "Components/Modal/ErrorModal"
 import { commitMutation } from "react-relay"
 import { flushPromiseQueue } from "Utils/flushPromiseQueue"
 
@@ -57,6 +56,7 @@ let mockPushRoute: jest.Mock<string>
 let mockMediatorTrigger: jest.Mock<string>
 
 describe("Offer InitialMutation", () => {
+  let showErrorModalMock: jest.Mock
   const getWrapper = (extraOrderProps?) => {
     return mount(
       <MockBoot>
@@ -64,6 +64,7 @@ describe("Offer InitialMutation", () => {
           relay={{ environment: {} }}
           router={{ push: mockPushRoute }}
           mediator={{ trigger: mockMediatorTrigger }}
+          showErrorModal={showErrorModalMock}
           order={{
             ...testOrder,
             ...extraOrderProps,
@@ -74,6 +75,7 @@ describe("Offer InitialMutation", () => {
   }
 
   beforeEach(() => {
+    showErrorModalMock = jest.fn()
     mockPushRoute = jest.fn()
     mockMediatorTrigger = jest.fn()
     commitMutationMock.mockReset()
@@ -279,6 +281,8 @@ Object {
 
     expect(commitMutationMock).toHaveBeenCalledTimes(0)
 
+    expect(showErrorModalMock).not.toHaveBeenCalled()
+
     component
       .find(Button)
       .last()
@@ -289,12 +293,7 @@ Object {
 
     await flushPromiseQueue()
 
-    expect(
-      component
-        .update()
-        .find(ErrorModal)
-        .props().show
-    ).toBe(true)
+    expect(showErrorModalMock).toHaveBeenCalledTimes(1)
   })
 
   it("shows the error modal if submitting a counter offer fails for business reasons", async () => {
@@ -314,6 +313,7 @@ Object {
       .onChange({ currentTarget: { value: "84838" } } as any)
 
     expect(commitMutationMock).toHaveBeenCalledTimes(0)
+    expect(showErrorModalMock).not.toHaveBeenCalled()
 
     component
       .find(Button)
@@ -325,11 +325,6 @@ Object {
 
     await flushPromiseQueue()
 
-    expect(
-      component
-        .update()
-        .find(ErrorModal)
-        .props().show
-    ).toBe(true)
+    expect(showErrorModalMock).toHaveBeenCalledTimes(1)
   })
 })

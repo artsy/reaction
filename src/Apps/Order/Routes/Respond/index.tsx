@@ -11,9 +11,9 @@ import { RespondCounterOfferMutation } from "__generated__/RespondCounterOfferMu
 import { Helper } from "Apps/Order/Components/Helper"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
+import { ErrorModalContext, ShowErrorModal } from "Apps/Order/ErrorModalContext"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { Input } from "Components/Input"
-import { ErrorModal } from "Components/Modal/ErrorModal"
 import { StaticCollapse } from "Components/StaticCollapse"
 import { Router } from "found"
 import React, { Component } from "react"
@@ -44,28 +44,23 @@ export interface RespondProps {
   mediator: Mediator
   relay?: RelayProp
   router: Router
+  showErrorModal: ShowErrorModal
 }
 
 export interface RespondState {
   offerValue: number | null
   responseOption: "ACCEPT" | "COUNTER" | "DECLINE"
   isCommittingMutation: boolean
-  isErrorModalOpen: boolean
-  errorModalTitle: string
-  errorModalMessage: string
 }
 
 export const logger = createLogger("Order/Routes/Respond/index.tsx")
 
 export class RespondRoute extends Component<RespondProps, RespondState> {
-  state = {
+  state: RespondState = {
     offerValue: null,
     responseOption: null,
     isCommittingMutation: false,
-    isErrorModalOpen: false,
-    errorModalTitle: null,
-    errorModalMessage: null,
-  } as RespondState
+  }
 
   onContinueButtonPressed: () => void = () => {
     const { responseOption } = this.state
@@ -148,18 +143,9 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
     )
   }
 
-  onMutationError = (errors, errorModalTitle?, errorModalMessage?) => {
+  onMutationError = (errors, title?, message?) => {
     logger.error(errors)
-    this.setState({
-      isCommittingMutation: false,
-      isErrorModalOpen: true,
-      errorModalTitle,
-      errorModalMessage,
-    })
-  }
-
-  onCloseModal = () => {
-    this.setState({ isErrorModalOpen: false })
+    this.props.showErrorModal({ title, message })
   }
 
   render() {
@@ -291,25 +277,27 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
             }
           />
         </HorizontalPadding>
-
-        <ErrorModal
-          onClose={this.onCloseModal}
-          show={this.state.isErrorModalOpen}
-          contactEmail="orders@artsy.net"
-          detailText={this.state.errorModalMessage}
-          headerText={this.state.errorModalTitle}
-        />
       </>
     )
   }
 }
 
 const RespondRouteWrapper = props => (
-  <ContextConsumer>
-    {({ mediator }) => {
-      return <RespondRoute {...props} mediator={mediator} />
-    }}
-  </ContextConsumer>
+  <ErrorModalContext.Consumer>
+    {({ showErrorModal }) => (
+      <ContextConsumer>
+        {({ mediator }) => {
+          return (
+            <RespondRoute
+              mediator={mediator}
+              showErrorModal={showErrorModal}
+              {...props}
+            />
+          )
+        }}
+      </ContextConsumer>
+    )}
+  </ErrorModalContext.Consumer>
 )
 
 export const RespondFragmentContainer = createFragmentContainer(
