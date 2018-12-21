@@ -225,7 +225,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                 <Flex flexDirection="column">
                   <CountdownTimer
                     action="Respond"
-                    note="Expired offers end the negotiation process permanently."
+                    note="Expiration will end negotiations on this offer. Keep in mind the work can be sold to another buyer in the meantime."
                     countdownStart={order.lastOffer.createdAt}
                     countdownEnd={order.stateExpiresAt}
                   />
@@ -247,7 +247,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                   </BorderedRadio>
 
                   <BorderedRadio value="COUNTER">
-                    Send a counteroffer
+                    Send counteroffer
                     <StaticCollapse
                       open={this.state.responseOption === "COUNTER"}
                     >
@@ -268,9 +268,8 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                     >
                       <Spacer mb={1} />
                       <Sans size="2" color="black60">
-                        Declining an offer permanently ends the negotiation
-                        process. The seller will not be able to make a
-                        counteroffer.
+                        Declining an offer will end the negotiation process on
+                        this offer.
                       </Sans>
                     </StaticCollapse>
                   </BorderedRadio>
