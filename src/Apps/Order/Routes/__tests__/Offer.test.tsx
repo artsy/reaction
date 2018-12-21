@@ -82,11 +82,17 @@ describe("Offer InitialMutation", () => {
     it("doesn't let the user continue if they haven't typed anything in", () => {
       const component = getWrapper(testProps)
 
+      expect(component.find(OfferInput).text()).not.toMatch(
+        "Offer amount missing or invalid."
+      )
       expect(component.find(OfferInput).props().showError).toBe(false)
 
       component.find(Button).simulate("click")
 
       expect(component.find(OfferInput).props().showError).toBe(true)
+      expect(component.find(OfferInput).text()).toMatch(
+        "Offer amount missing or invalid."
+      )
 
       expect(commitMutation).not.toHaveBeenCalled()
     })
@@ -99,11 +105,17 @@ describe("Offer InitialMutation", () => {
         .props()
         .onChange(0)
 
+      expect(component.find(OfferInput).text()).not.toMatch(
+        "Offer amount missing or invalid."
+      )
       expect(component.find(OfferInput).props().showError).toBe(false)
 
       component.find(Button).simulate("click")
 
       expect(component.find(OfferInput).props().showError).toBe(true)
+      expect(component.find(OfferInput).text()).toMatch(
+        "Offer amount missing or invalid."
+      )
 
       expect(commitMutation).not.toHaveBeenCalled()
     })
