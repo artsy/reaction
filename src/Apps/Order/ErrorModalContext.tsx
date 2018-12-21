@@ -1,7 +1,7 @@
 import React from "react"
 
 export type ShowErrorModal = (
-  props: { title?: string; message?: string; ctaAction?: string }
+  props: { title?: string; message?: string; ctaAction?: () => void }
 ) => void
 export interface ErrorModalContext {
   showErrorModal: ShowErrorModal

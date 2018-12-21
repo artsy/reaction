@@ -7,7 +7,7 @@ import { Location, RouteConfig, Router } from "found"
 import React from "react"
 import { Meta, Title } from "react-head"
 import { Elements, StripeProvider } from "react-stripe-elements"
-import { ErrorModalContext } from "./ErrorModalContext"
+import { ErrorModalContext, ShowErrorModal } from "./ErrorModalContext"
 
 declare global {
   interface Window {
@@ -41,11 +41,12 @@ interface OrderAppState {
   isErrorModalOpen: boolean
   errorModalTitle: string
   errorModalMessage: string
-  errorModalCtaAction: string
+  errorModalCtaAction: () => void
+  isCommittingMutation: boolean
 }
 
 export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
-  state = {
+  state: OrderAppState = {
     isCommittingMutation: false,
     isErrorModalOpen: false,
     errorModalTitle: null,
@@ -94,7 +95,7 @@ export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
     return true
   }
 
-  showErrorModal = ({ title, message, ctaAction }) => {
+  showErrorModal: ShowErrorModal = ({ title, message, ctaAction }) => {
     this.setState({
       isErrorModalOpen: true,
       errorModalCtaAction: ctaAction,
