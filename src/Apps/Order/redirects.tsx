@@ -15,6 +15,8 @@ interface OrderQuery {
   order: redirects_order
 }
 
+type OrderPredicate = RedirectPredicate<OrderQuery>
+
 export const confirmRouteExit = (
   newLocation: Location,
   oldLocation: Location,
@@ -40,15 +42,13 @@ export const confirmRouteExit = (
 
 const goToStatusIf = (
   pred: (order: routes_OrderQueryResponse["order"]) => boolean
-): RedirectPredicate<OrderQuery> => ({ order }) => {
+): OrderPredicate => ({ order }) => {
   if (pred(order)) {
     return `/orders/${order.id}/status`
   }
 }
 
-const goToArtworkIfOrderWasAbandoned: RedirectPredicate<OrderQuery> = ({
-  order,
-}) => {
+const goToArtworkIfOrderWasAbandoned: OrderPredicate = ({ order }) => {
   if (order.state === "ABANDONED") {
     const artworkID = get(order, o => o.lineItems.edges[0].node.artwork.id)
     // If an artwork ID can't be found, redirect back to home page.
@@ -60,31 +60,25 @@ const goToStatusIfOrderIsNotPending = goToStatusIf(
   order => order.state !== "PENDING"
 )
 
-const goToShippingIfShippingIsNotCompleted: RedirectPredicate<OrderQuery> = ({
-  order,
-}) => {
+const goToShippingIfShippingIsNotCompleted: OrderPredicate = ({ order }) => {
   if (!order.requestedFulfillment) {
     return `/orders/${order.id}/shipping`
   }
 }
 
-const goToPaymentIfPaymentIsNotCompleted: RedirectPredicate<OrderQuery> = ({
-  order,
-}) => {
+const goToPaymentIfPaymentIsNotCompleted: OrderPredicate = ({ order }) => {
   if (!order.creditCard) {
     return `/orders/${order.id}/payment`
   }
 }
 
-const goToShippingIfOrderIsNotOfferOrder: RedirectPredicate<OrderQuery> = ({
-  order,
-}) => {
+const goToShippingIfOrderIsNotOfferOrder: OrderPredicate = ({ order }) => {
   if (order.mode !== "OFFER") {
     return `/orders/${order.id}/shipping`
   }
 }
 
-const goToOfferIfNoOfferMade: RedirectPredicate<OrderQuery> = ({ order }) => {
+const goToOfferIfNoOfferMade: OrderPredicate = ({ order }) => {
   if (order.mode === "OFFER" && !order.myLastOffer) {
     return `/orders/${order.id}/offer`
   }
@@ -100,17 +94,15 @@ const goToStatusIfOrderIsNotSubmitted = goToStatusIf(
   order => order.state !== "SUBMITTED"
 )
 
-const goToReviewIfOrderIsPending: RedirectPredicate<OrderQuery> = ({
-  order,
-}) => {
+const goToReviewIfOrderIsPending: OrderPredicate = ({ order }) => {
   if (order.state === "PENDING") {
     return `/orders/${order.id}/review`
   }
 }
 
-const goToRespondIfMyLastOfferIsNotMostRecentOffer: RedirectPredicate<
-  OrderQuery
-> = ({ order }) => {
+const goToRespondIfMyLastOfferIsNotMostRecentOffer: OrderPredicate = ({
+  order,
+}) => {
   if (
     order.myLastOffer &&
     order.lastOffer &&
@@ -121,17 +113,13 @@ const goToRespondIfMyLastOfferIsNotMostRecentOffer: RedirectPredicate<
   return `/orders/${order.id}/respond`
 }
 
-const goToRespondIfAwaitingBuyerResponse: RedirectPredicate<OrderQuery> = ({
-  order,
-}) => {
+const goToRespondIfAwaitingBuyerResponse: OrderPredicate = ({ order }) => {
   if (order.awaitingResponseFrom === "BUYER") {
     return `/orders/${order.id}/respond`
   }
 }
 
-export const redirects: RedirectRecord<{
-  order: routes_OrderQueryResponse["order"]
-}> = {
+export const redirects: RedirectRecord<OrderQuery> = {
   path: "",
   rules: [goToArtworkIfOrderWasAbandoned],
   children: [
@@ -220,6 +208,7 @@ graphql`
         id
         createdAt
       }
+      awaitingResponseFrom
     }
     requestedFulfillment {
       __typename
@@ -235,9 +224,6 @@ graphql`
     }
     creditCard {
       id
-    }
-    ... on OfferOrder {
-      awaitingResponseFrom
     }
   }
 `
