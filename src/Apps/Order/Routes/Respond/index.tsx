@@ -9,10 +9,10 @@ import {
 import { Respond_order } from "__generated__/Respond_order.graphql"
 import { RespondCounterOfferMutation } from "__generated__/RespondCounterOfferMutation.graphql"
 import { Helper } from "Apps/Order/Components/Helper"
+import { OfferInput } from "Apps/Order/Components/OfferInput"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
-import { Input } from "Components/Input"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { StaticCollapse } from "Components/StaticCollapse"
 import { Router } from "found"
@@ -47,7 +47,8 @@ export interface RespondProps {
 }
 
 export interface RespondState {
-  offerValue: number | null
+  offerValue: number
+  formIsDirty: boolean
   responseOption: "ACCEPT" | "COUNTER" | "DECLINE"
   isCommittingMutation: boolean
   isErrorModalOpen: boolean
@@ -58,22 +59,27 @@ export interface RespondState {
 export const logger = createLogger("Order/Routes/Respond/index.tsx")
 
 export class RespondRoute extends Component<RespondProps, RespondState> {
-  state = {
-    offerValue: null,
+  state: RespondState = {
+    offerValue: 0,
     responseOption: null,
     isCommittingMutation: false,
     isErrorModalOpen: false,
     errorModalTitle: null,
     errorModalMessage: null,
-  } as RespondState
+    formIsDirty: false,
+  }
 
   onContinueButtonPressed: () => void = () => {
+    if (this.state.responseOption === "COUNTER" && this.state.offerValue <= 0) {
+      this.setState({ formIsDirty: true })
+      return
+    }
+
     const { responseOption } = this.state
     this.setState({ isCommittingMutation: true }, () => {
       switch (responseOption) {
         case "COUNTER":
-          // TODO: proper validation 😅
-          this.createCounterOffer(Number(this.state.offerValue || "0"))
+          this.createCounterOffer(this.state.offerValue)
             .then(() => {
               this.props.router.push(
                 `/orders/${this.props.order.id}/review/counter`
@@ -162,6 +168,8 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
     this.setState({ isErrorModalOpen: false })
   }
 
+  inputRef = React.createRef<HTMLInputElement>()
+
   render() {
     const { order } = this.props
     const { isCommittingMutation } = this.state
@@ -220,20 +228,12 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                       open={this.state.responseOption === "COUNTER"}
                     >
                       <Spacer mb={2} />
-                      <Input
+                      <OfferInput
                         id="RespondForm_RespondValue"
-                        title="Your offer"
-                        type="number"
-                        defaultValue={null}
-                        onChange={ev =>
-                          this.setState({
-                            offerValue:
-                              Math.round(
-                                Number(ev.currentTarget.value || "0") * 100
-                              ) / 100,
-                          })
+                        showError={
+                          this.state.formIsDirty && this.state.offerValue <= 0
                         }
-                        block
+                        onChange={offerValue => this.setState({ offerValue })}
                       />
                     </StaticCollapse>
                   </BorderedRadio>

@@ -3,10 +3,10 @@ import { Offer_order } from "__generated__/Offer_order.graphql"
 import { OfferMutation } from "__generated__/OfferMutation.graphql"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
 import { Helper } from "Apps/Order/Components/Helper"
+import { OfferInput } from "Apps/Order/Components/OfferInput"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
-import { Input } from "Components/Input"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
 import React, { Component } from "react"
@@ -32,25 +32,31 @@ export interface OfferProps {
 }
 
 export interface OfferState {
-  offerValue: number | null
+  offerValue: number
   isCommittingMutation: boolean
   isErrorModalOpen: boolean
   errorModalTitle: string
   errorModalMessage: string
+  formIsDirty: boolean
 }
 
 const logger = createLogger("Order/Routes/Offer/index.tsx")
 
 export class OfferRoute extends Component<OfferProps, OfferState> {
   state = {
-    offerValue: null,
+    offerValue: 0,
     isCommittingMutation: false,
     isErrorModalOpen: false,
     errorModalTitle: null,
     errorModalMessage: null,
+    formIsDirty: false,
   }
 
   onContinueButtonPressed: () => void = () => {
+    if (this.state.offerValue <= 0) {
+      this.setState({ formIsDirty: true })
+      return
+    }
     this.setState({ isCommittingMutation: true }, () => {
       if (this.props.relay && this.props.relay.environment) {
         const { offerValue } = this.state
@@ -157,20 +163,12 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
                 id="offer-page-left-column"
               >
                 <Flex flexDirection="column">
-                  <Input
+                  <OfferInput
                     id="OfferForm_offerValue"
-                    title="Your offer"
-                    type="number"
-                    defaultValue={null}
-                    onChange={ev =>
-                      this.setState({
-                        offerValue:
-                          Math.round(
-                            Number(ev.currentTarget.value || "0") * 100
-                          ) / 100,
-                      })
+                    showError={
+                      this.state.formIsDirty && this.state.offerValue <= 0
                     }
-                    block
+                    onChange={offerValue => this.setState({ offerValue })}
                   />
                 </Flex>
                 {Boolean(order.totalListPrice) && (
