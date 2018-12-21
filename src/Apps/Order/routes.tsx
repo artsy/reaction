@@ -1,5 +1,6 @@
 import { getRedirect } from "Apps/Order/getRedirect"
 import { confirmRouteExit, redirects } from "Apps/Order/redirects"
+import { Route } from "Artsy/Router/Route"
 import { Redirect, RedirectException, RouteConfig } from "found"
 import * as React from "react"
 import { graphql } from "react-relay"
@@ -33,7 +34,7 @@ import { StatusProps } from "./Routes/Status"
 // FIXME:
 // * `render` functions requires casting
 export const routes: RouteConfig[] = [
-  {
+  new Route({
     path: "/order(2|s)/:orderID",
     Component: OrderApp,
     query: graphql`
@@ -65,7 +66,7 @@ export const routes: RouteConfig[] = [
       }
     },
     children: [
-      {
+      new Route({
         path: "respond",
         Component: RespondRoute,
         onTransition: confirmRouteExit,
@@ -79,8 +80,8 @@ export const routes: RouteConfig[] = [
         cacheConfig: {
           force: true,
         },
-      },
-      {
+      }),
+      new Route({
         path: "offer",
         Component: OfferRoute,
         onTransition: confirmRouteExit,
@@ -94,8 +95,8 @@ export const routes: RouteConfig[] = [
         cacheConfig: {
           force: true,
         },
-      },
-      {
+      }),
+      new Route({
         path: "shipping",
         Component: ShippingRoute,
         onTransition: confirmRouteExit,
@@ -109,8 +110,8 @@ export const routes: RouteConfig[] = [
         cacheConfig: {
           force: true,
         },
-      },
-      {
+      }),
+      new Route({
         path: "payment",
         Component: PaymentRoute,
         onTransition: confirmRouteExit,
@@ -124,8 +125,8 @@ export const routes: RouteConfig[] = [
         cacheConfig: {
           force: true,
         },
-      },
-      {
+      }),
+      new Route({
         path: "review/counter",
         Component: CounterRoute,
         onTransition: confirmRouteExit,
@@ -139,8 +140,8 @@ export const routes: RouteConfig[] = [
         cacheConfig: {
           force: true,
         },
-      },
-      {
+      }),
+      new Route({
         path: "review",
         Component: ReviewRoute,
         onTransition: confirmRouteExit,
@@ -154,8 +155,8 @@ export const routes: RouteConfig[] = [
         cacheConfig: {
           force: true,
         },
-      },
-      {
+      }),
+      new Route({
         path: "review/accept",
         Component: AcceptRoute,
         query: graphql`
@@ -168,8 +169,8 @@ export const routes: RouteConfig[] = [
         cacheConfig: {
           force: true,
         },
-      },
-      {
+      }),
+      new Route({
         path: "review/decline",
         Component: RejectRoute,
         query: graphql`
@@ -179,8 +180,8 @@ export const routes: RouteConfig[] = [
             }
           }
         `,
-      },
-      {
+      }),
+      new Route({
         path: "status",
         Component: StatusRoute,
         query: graphql`
@@ -193,18 +194,18 @@ export const routes: RouteConfig[] = [
         cacheConfig: {
           force: true,
         },
-      },
+      }),
       new Redirect({
         // For now, redirect the empty route to the shipping page
         from: "/",
         to: "/orders/:orderID/shipping",
       }) as any,
-      {
+      new Route({
         path: "*",
         Component: props => {
           return <ErrorPage code={404} />
         },
-      },
+      }),
     ],
-  },
+  }),
 ]

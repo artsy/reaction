@@ -1,5 +1,6 @@
 import { routes_OverviewQueryRendererQueryResponse } from "__generated__/routes_OverviewQueryRendererQuery.graphql"
 import { FilterState, initialState } from "Apps/Artist/Routes/Overview/state"
+import { Route } from "Artsy/Router/Route"
 import { Redirect, RouteConfig } from "found"
 import React from "react"
 import { graphql } from "react-relay"
@@ -36,7 +37,7 @@ import { ShowProps } from "./Routes/Shows"
 // * `render` functions requires casting
 // * `Redirect` needs to be casted, as it’s not compatible with `RouteConfig`
 export const routes: RouteConfig[] = [
-  {
+  new Route({
     path: "/artist/:artistID",
     Component: ArtistApp,
     query: graphql`
@@ -47,7 +48,7 @@ export const routes: RouteConfig[] = [
       }
     `,
     children: [
-      {
+      new Route({
         path: "/",
         Component: OverviewRoute,
         render: ({ props, Component }) => {
@@ -104,8 +105,8 @@ export const routes: RouteConfig[] = [
             }
           }
         `,
-      },
-      {
+      }),
+      new Route({
         path: "cv",
         Component: CVRoute,
         query: graphql`
@@ -115,8 +116,8 @@ export const routes: RouteConfig[] = [
             }
           }
         `,
-      },
-      {
+      }),
+      new Route({
         path: "articles",
         Component: ArticlesRoute,
         query: graphql`
@@ -126,8 +127,8 @@ export const routes: RouteConfig[] = [
             }
           }
         `,
-      },
-      {
+      }),
+      new Route({
         path: "shows",
         Component: ShowsRoute,
         query: graphql`
@@ -137,8 +138,8 @@ export const routes: RouteConfig[] = [
             }
           }
         `,
-      },
-      {
+      }),
+      new Route({
         path: "auction-results",
         Component: AuctionResultsRoute,
         query: graphql`
@@ -148,8 +149,8 @@ export const routes: RouteConfig[] = [
             }
           }
         `,
-      },
-      {
+      }),
+      new Route({
         path: "related-artists",
         Component: RelatedArtistsRoute,
         query: graphql`
@@ -159,7 +160,7 @@ export const routes: RouteConfig[] = [
             }
           }
         `,
-      }, // Redirect all unhandled tabs to the artist page.
+      }), // Redirect all unhandled tabs to the artist page.
       // Note: there is a deep-linked standalone auction-lot page
       // in Force, under /artist/:artistID/auction-result/:id.
       // That app needs to be mounted before this app for that to work,
@@ -169,5 +170,5 @@ export const routes: RouteConfig[] = [
         to: "/artist/:artistID",
       }) as any,
     ],
-  },
+  }),
 ]

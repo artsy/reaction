@@ -30,11 +30,13 @@ export function buildClientApp(config: RouterConfig): Promise<Resolve> {
       const { relayNetwork, user } = context
       const relayBootstrap = JSON.parse(window.__RELAY_BOOTSTRAP__ || "{}")
       const _user = getUser(user)
-      const relayEnvironment = createEnvironment({
-        cache: relayBootstrap,
-        user: _user,
-        relayNetwork,
-      })
+      const relayEnvironment =
+        context.relayEnvironment ||
+        createEnvironment({
+          cache: relayBootstrap,
+          user: _user,
+          relayNetwork,
+        })
 
       const getHistoryProtocol = () => {
         switch (history.protocol) {
@@ -90,6 +92,7 @@ export function buildClientApp(config: RouterConfig): Promise<Resolve> {
       })
     } catch (error) {
       console.error("[Artsy/Router/buildClientApp]", error)
+      reject(error)
     }
   })
 }

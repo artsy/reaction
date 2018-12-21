@@ -37,7 +37,7 @@ interface Config {
   relayNetwork?: RelayNetwork
 }
 
-interface RelayEnvironment extends Environment {
+export interface RelayEnvironment extends Environment {
   relaySSRMiddleware: RelayClientSSR | RelayServerSSR
 }
 

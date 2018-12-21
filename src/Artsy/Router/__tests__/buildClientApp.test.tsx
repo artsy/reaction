@@ -1,7 +1,11 @@
 import { ContextConsumer } from "Artsy"
+import { createEnvironment } from "Artsy/Relay/createEnvironment"
 import { buildClientApp } from "Artsy/Router/buildClientApp"
+import { createMockNetworkLayer } from "DevTools"
 import { mount } from "enzyme"
 import React from "react"
+import { graphql } from "react-relay"
+import { Route } from "../Route"
 
 describe("buildClientApp", () => {
   it("resolves with a <ClientApp /> component", async () => {
@@ -118,5 +122,53 @@ describe("buildClientApp", () => {
     })
 
     mount(<ClientApp />)
+  })
+
+  describe("concerning GraphQL errors", () => {
+    const consoleError = console.error
+
+    beforeAll(() => {
+      console.error = jest.fn()
+    })
+
+    afterAll(() => {
+      console.error = consoleError
+    })
+
+    it("rejects with a GraphQL error", async () => {
+      const relayNetwork = createMockNetworkLayer({
+        Query: () => ({
+          me: () => {
+            throw new Error("Oh noes")
+          },
+        }),
+      })
+      const relayEnvironment = createEnvironment({ relayNetwork })
+
+      try {
+        const { ClientApp } = await buildClientApp({
+          history: {
+            protocol: "memory",
+          },
+          routes: [
+            new Route({
+              path: "/",
+              Component: () => null,
+              query: graphql`
+                query buildClientAppTestQuery {
+                  me {
+                    __id
+                  }
+                }
+              `,
+            }),
+          ],
+          context: { relayEnvironment },
+        })
+        mount(<ClientApp />)
+      } catch (error) {
+        expect(error.message).toMatch(/Oh noes/)
+      }
+    })
   })
 })

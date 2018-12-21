@@ -1,5 +1,6 @@
 import { HistoryOptions, HistoryProtocol } from "farce"
 import { RouteConfig } from "found"
+import { Environment } from "relay-runtime"
 import { ContextProps } from "../SystemContext"
 
 // API Exports for either client or server
@@ -11,11 +12,11 @@ export { ContextProvider, ContextConsumer } from "Artsy/SystemContext"
 /**
  * Configuration used when creating a new Router app
  */
-export interface RouterConfig {
+export interface RouterConfig<E extends Environment = Environment> {
   /**
    * Context values to be passed to ArtsyContext
    */
-  context?: ContextProps
+  context?: ContextProps & { relayEnvironment?: E }
 
   /**
    * Configuration options to be passed to Found router

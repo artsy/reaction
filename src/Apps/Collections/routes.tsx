@@ -1,10 +1,11 @@
+import { Route } from "Artsy/Router/Route"
 import { RouteConfig } from "found"
 import React from "react"
 import { graphql } from "react-relay"
 import { CollectionsAppFragmentContainer as CollectionsApp } from "./CollectionsApp"
 
 export const routes: RouteConfig[] = [
-  {
+  new Route({
     path: "/collections",
     Component: CollectionsApp,
     query: graphql`
@@ -21,5 +22,5 @@ export const routes: RouteConfig[] = [
 
       return <Component {...props} />
     },
-  },
+  }),
 ]
