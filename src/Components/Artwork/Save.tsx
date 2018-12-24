@@ -240,6 +240,9 @@ export default createFragmentContainer(
       __id
       id
       is_saved
+      sale {
+        is_closed
+      }
     }
   `
 )

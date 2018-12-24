@@ -1,5 +1,6 @@
 import { Avatar, Flex, Link, Sans, Serif } from "@artsy/palette"
 import React from "react"
+import { data as sd } from "sharify"
 import styled from "styled-components"
 import { Media } from "Utils/Responsive"
 
@@ -8,12 +9,13 @@ export interface BannerProps {
   imageUrl?: string
   /** Fallback partner initials in case image is not there. */
   initials?: string
-  /** in auction / at fair / in show */
+  /** In auction / at fair / in show */
   meta?: string
-  /** auction / fair / show name */
+  /** Auction / fair / show name */
   name?: string
-  /** partner name */
+  /** Partner name */
   subHeadline?: string
+  /** Link to auction */
   href?: string
 }
 
@@ -26,7 +28,7 @@ const StyledLink = styled(Link)`
 const withLink = (href: string, children: React.ReactNode) => {
   if (href) {
     return (
-      <StyledLink noUnderline href={href}>
+      <StyledLink noUnderline href={sd.APP_URL + href}>
         {children}
       </StyledLink>
     )

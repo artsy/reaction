@@ -6,13 +6,24 @@ import { Save_artwork$ref } from "./Save_artwork.graphql";
 declare const _ArtworkActions_artwork$ref: unique symbol;
 export type ArtworkActions_artwork$ref = typeof _ArtworkActions_artwork$ref;
 export type ArtworkActions_artwork = {
+    readonly sale: ({
+        readonly is_closed: boolean | null;
+    }) | null;
     readonly " $fragmentRefs": Save_artwork$ref & ArtworkSharePanel_artwork$ref;
     readonly " $refType": ArtworkActions_artwork$ref;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ConcreteFragment = (function(){
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
+};
+return {
   "kind": "Fragment",
   "name": "ArtworkActions_artwork",
   "type": "Artwork",
@@ -30,13 +41,27 @@ const node: ConcreteFragment = {
       "args": null
     },
     {
-      "kind": "ScalarField",
+      "kind": "LinkedField",
       "alias": null,
-      "name": "__id",
+      "name": "sale",
+      "storageKey": null,
       "args": null,
-      "storageKey": null
-    }
+      "concreteType": "Sale",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "is_closed",
+          "args": null,
+          "storageKey": null
+        },
+        v0
+      ]
+    },
+    v0
   ]
 };
-(node as any).hash = '0388bb935d2209985e850df1bccfddaa';
+})();
+(node as any).hash = '81c13a41a21ac548a5b73e31af5b9aa2';
 export default node;
