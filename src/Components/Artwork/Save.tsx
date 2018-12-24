@@ -240,6 +240,10 @@ export default createFragmentContainer(
       __id
       id
       is_saved
+      # There are instances where save icon is swapped when in Sale
+      sale {
+        is_closed
+      }
     }
   `
 )

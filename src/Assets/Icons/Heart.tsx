@@ -34,6 +34,7 @@ export const Heart: React.SFC<IconProps> = ({
       </g>
     </svg>
   ) : (
+    // Not selected
     <svg
       width={`${width}px`}
       height={`${height}px`}

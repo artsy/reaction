@@ -1,5 +1,6 @@
 import { color, Flex } from "@artsy/palette"
 import { ArtworkActions_artwork } from "__generated__/ArtworkActions_artwork.graphql"
+import { Bell } from "Assets/Icons/Bell"
 import { Heart } from "Assets/Icons/Heart"
 import SaveButton, { SaveProps, SaveState } from "Components/Artwork/Save"
 import Icon from "Components/Icon"
@@ -55,6 +56,10 @@ export const ArtworkActionsFragmentContainer = createFragmentContainer(
     fragment ArtworkActions_artwork on Artwork {
       ...Save_artwork
       ...ArtworkSharePanel_artwork
+
+      sale {
+        is_closed
+      }
     }
   `
 )
@@ -66,24 +71,30 @@ const Container = styled(Flex).attrs({
   pt: [0, 3],
 })`
   position: relative;
+  user-select: none;
+  cursor: pointer;
 `
 
 const ShareButton = styled(Icon).attrs({
   name: "share",
   color: color("black100"),
-})`
-  cursor: pointer;
-  user-select: false;
-`
+})``
+
+ShareButton.displayName = "ShareButton"
 
 /**
  * Custom renderer for SaveButton
  */
 const Save = (props: SaveProps, state: SaveState) => {
   const { isHovered } = state
+  const isOpenSale = props.artwork.sale && !props.artwork.sale.is_closed
   const isSaved = isNull(state.is_saved)
     ? props.artwork.is_saved
     : state.is_saved
   const fill = isHovered ? color("purple100") : color("black100")
-  return <Heart fill={fill} selected={isSaved} style={{ cursor: "pointer" }} />
+  return isOpenSale ? (
+    <Bell fill={fill} selected={isSaved} style={{ cursor: "pointer" }} />
+  ) : (
+    <Heart fill={fill} selected={isSaved} style={{ cursor: "pointer" }} />
+  )
 }
