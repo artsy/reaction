@@ -85,7 +85,12 @@ ShareButton.displayName = "ShareButton"
 /**
  * Custom renderer for SaveButton
  */
-const Save = (props: SaveProps, state: SaveState) => {
+const Save = (
+  props: SaveProps & {
+    artwork: { sale: { is_closed: boolean } }
+  },
+  state: SaveState
+) => {
   const { isHovered } = state
   const isOpenSale = props.artwork.sale && !props.artwork.sale.is_closed
   const isSaved = isNull(state.is_saved)
