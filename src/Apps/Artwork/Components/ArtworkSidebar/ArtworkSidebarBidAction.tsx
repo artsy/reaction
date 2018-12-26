@@ -74,7 +74,7 @@ export class ArtworkSidebarBidAction extends React.Component<
           {!registrationAttempted && (
             <Button
               width="100%"
-              size="medium"
+              size="large"
               mt={1}
               onClick={() => this.redirectToRegister()}
             >
@@ -83,13 +83,13 @@ export class ArtworkSidebarBidAction extends React.Component<
           )}
           {registrationAttempted &&
             !registeredToBid && (
-              <Button width="100%" size="medium" mt={1} disabled>
+              <Button width="100%" size="large" mt={1} disabled>
                 Registration pending
               </Button>
             )}
           {registrationAttempted &&
             registeredToBid && (
-              <Button width="100%" size="medium" mt={1} disabled>
+              <Button width="100%" size="large" mt={1} disabled>
                 Registration complete
               </Button>
             )}
@@ -104,13 +104,13 @@ export class ArtworkSidebarBidAction extends React.Component<
             return (
               <Box>
                 {artwork.sale.is_registration_closed && !registeredToBid ? (
-                  <Button width="100%" size="medium" mt={1} disabled>
+                  <Button width="100%" size="large" mt={1} disabled>
                     Registration closed
                   </Button>
                 ) : (
                   <Button
                     width="100%"
-                    size="medium"
+                    size="large"
                     mt={1}
                     onClick={() => this.redirectToLiveBidding(user)}
                   >
@@ -128,7 +128,7 @@ export class ArtworkSidebarBidAction extends React.Component<
       if (registrationAttempted && !registeredToBid) {
         return (
           <Box>
-            <Button width="100%" size="medium" mt={1} disabled>
+            <Button width="100%" size="large" mt={1} disabled>
               Registration pending
             </Button>
           </Box>
@@ -137,7 +137,7 @@ export class ArtworkSidebarBidAction extends React.Component<
       if (artwork.sale.is_registration_closed && !registeredToBid) {
         return (
           <Box>
-            <Button width="100%" size="medium" mt={1} disabled>
+            <Button width="100%" size="large" mt={1} disabled>
               Registration closed
             </Button>
           </Box>
@@ -171,7 +171,7 @@ export class ArtworkSidebarBidAction extends React.Component<
           <LargeSelect options={selectOptions} onSelect={this.setMaxBid} />
           <Button
             width="100%"
-            size="medium"
+            size="large"
             mt={1}
             onClick={() => this.redirectToBid(firstIncrement.cents)}
           >

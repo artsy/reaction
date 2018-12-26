@@ -43,7 +43,7 @@ export class ArtistCard extends React.Component<Props> {
 
 export const LargeArtistCard: SFC<Props> = props => (
   <BorderBox hover flexDirection="column" width="100%" height="254px">
-    <Flex flexDirection="column" flexGrow="0" alignItems="center" pt={1}>
+    <Flex flexDirection="column" flexGrow="0" alignItems="center" pt={1} mb={1}>
       {props.artist.image && (
         <Box mb={1}>
           <Avatar src={get(props.artist.image, i => i.cropped.url)} />
@@ -56,8 +56,6 @@ export const LargeArtistCard: SFC<Props> = props => (
 
       <Sans size="2">{props.artist.formatted_nationality_and_birthday}</Sans>
     </Flex>
-
-    <Spacer mb={1} />
 
     <Flex flexDirection="column" alignItems="center" mt={3}>
       <FollowArtistButton

@@ -72,7 +72,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
 
   renderSaleMessage(saleMessage: string) {
     return (
-      <Box mb={1} mt={1}>
+      <Box mb={1} mt={2}>
         <Serif size="5t" weight="semibold">
           {saleMessage}
         </Serif>
@@ -308,19 +308,14 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
             </Sans>
           )}
         {artwork.is_inquireable && (
-          <Button
-            width="100%"
-            size="medium"
-            mt={1}
-            onClick={this.handleInquiry}
-          >
+          <Button width="100%" size="large" mt={1} onClick={this.handleInquiry}>
             Contact gallery
           </Button>
         )}
         {artwork.is_acquireable && (
           <Button
             width="100%"
-            size="medium"
+            size="large"
             mt={1}
             loading={isCommittingCreateOrderMutation}
             onClick={this.handleCreateOrder}
@@ -334,7 +329,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
               artwork.is_acquireable ? "secondaryOutline" : "primaryBlack"
             }
             width="100%"
-            size="medium"
+            size="large"
             mt={1}
             loading={isCommittingCreateOfferOrderMutation}
             onClick={this.handleCreateOfferOrder}
