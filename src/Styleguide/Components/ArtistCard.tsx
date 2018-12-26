@@ -10,6 +10,7 @@ import { Media } from "Utils/Responsive"
 import {
   Avatar,
   BorderBox,
+  Box,
   Button,
   Flex,
   Link,
@@ -44,7 +45,9 @@ export const LargeArtistCard: SFC<Props> = props => (
   <BorderBox hover flexDirection="column" width="100%" height="254px">
     <Flex flexDirection="column" flexGrow="0" alignItems="center" pt={1}>
       {props.artist.image && (
-        <Avatar src={get(props.artist.image, i => i.cropped.url)} mb={1} />
+        <Box mb={1}>
+          <Avatar src={get(props.artist.image, i => i.cropped.url)} />
+        </Box>
       )}
 
       <Serif size="3t" weight="semibold" textAlign="center">
@@ -56,7 +59,7 @@ export const LargeArtistCard: SFC<Props> = props => (
 
     <Spacer mb={1} />
 
-    <Flex flexDirection="column" alignItems="center">
+    <Flex flexDirection="column" alignItems="center" mt={3}>
       <FollowArtistButton
         artist={props.artist}
         user={props.user}
@@ -74,8 +77,13 @@ export const LargeArtistCard: SFC<Props> = props => (
 )
 
 export const SmallArtistCard: SFC<Props> = props => (
-  <BorderBox hover width="100%" justifyContent="space-between">
-    <Flex flexDirection="column" justifyContent="center">
+  <BorderBox hover width="100%">
+    {props.artist.image && (
+      <Box mr={2}>
+        <Avatar size="xs" src={get(props.artist.image, i => i.cropped.url)} />
+      </Box>
+    )}
+    <Flex flexDirection="column">
       <Serif size="3t" weight="semibold">
         <Truncator maxLineCount={2}>{props.artist.name}</Truncator>
       </Serif>
@@ -97,14 +105,6 @@ export const SmallArtistCard: SFC<Props> = props => (
         }}
       />
     </Flex>
-
-    {props.artist.image && (
-      <Avatar
-        size="sm"
-        src={get(props.artist.image, i => i.cropped.url)}
-        ml={2}
-      />
-    )}
   </BorderBox>
 )
 
