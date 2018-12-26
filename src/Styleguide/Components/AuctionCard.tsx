@@ -76,9 +76,11 @@ export const LargeAuctionCard = props => (
     <Serif size="3t">
       <Truncator maxLineCount={1}>{props.subHeadline}</Truncator>
     </Serif>
-    <Box height="200px">
-      <ResponsiveImage src={props.src} my={2} />
-    </Box>
+    {props.src && (
+      <Box height="200px">
+        <ResponsiveImage src={props.src} my={2} />
+      </Box>
+    )}
     <Sans size="2" weight="medium">
       <Truncator maxLineCount={1}>{props.badge}</Truncator>
     </Sans>
@@ -86,22 +88,24 @@ export const LargeAuctionCard = props => (
 )
 
 export const SmallAuctionCard = props => (
-  <Flex p={4} width="100%" justifyContent="space-between">
+  <BorderBox hover width="100%" justifyContent="space-between">
     <Flex flexDirection="column" justifyContent="space-between">
       <Box>
         <Serif size="3t" weight="semibold">
-          {props.headline}
+          <Truncator maxLineCount={1}>{props.headline}</Truncator>
         </Serif>
-        <Serif size="3t">
-          <Truncator maxLineCount={2}>{props.subHeadline}</Truncator>
-        </Serif>
+        {props.subHeadline && (
+          <Serif size="3t">
+            <Truncator maxLineCount={2}>{props.subHeadline}</Truncator>
+          </Serif>
+        )}
       </Box>
       <Sans size="2" weight="medium">
-        {props.badge}
+        <Truncator maxLineCount={1}>{props.badge}</Truncator>
       </Sans>
     </Flex>
-    <Image src={props.src} height="82px" mx={2} />
-  </Flex>
+    {props.src && <Image src={props.src} height="82px" ml={2} />}
+  </BorderBox>
 )
 
 export const AuctionCardFragmentContainer = createFragmentContainer<{
