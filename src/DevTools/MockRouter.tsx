@@ -1,5 +1,5 @@
+import { RouterConfig } from "Artsy/Router"
 import { buildClientApp } from "Artsy/Router/buildClientApp"
-import { ContextProps } from "Artsy/SystemContext"
 import { createMockNetworkLayer } from "DevTools/createMockNetworkLayer"
 import { HistoryOptions } from "farce"
 import { RouteConfig } from "found"
@@ -15,7 +15,7 @@ interface Props {
   initialState?: object
   historyOptions?: HistoryOptions
   mockResolvers?: IMocks
-  context?: ContextProps
+  context?: RouterConfig["context"]
 }
 
 export class MockRouter extends React.Component<Props> {

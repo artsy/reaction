@@ -1,5 +1,5 @@
 import { ContextConsumer } from "Artsy"
-import { createEnvironment } from "Artsy/Relay/createEnvironment"
+import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
 import { buildClientApp } from "Artsy/Router/buildClientApp"
 import { createMockNetworkLayer } from "DevTools"
 import { mount } from "enzyme"
@@ -142,7 +142,7 @@ describe("buildClientApp", () => {
           },
         }),
       })
-      const relayEnvironment = createEnvironment({ relayNetwork })
+      const relayEnvironment = createRelaySSREnvironment({ relayNetwork })
 
       try {
         const { ClientApp } = await buildClientApp({

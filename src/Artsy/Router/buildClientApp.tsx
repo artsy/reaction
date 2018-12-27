@@ -1,4 +1,4 @@
-import { createEnvironment } from "Artsy/Relay/createEnvironment"
+import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
 import { Boot } from "Artsy/Router/Components/Boot"
 import BrowserProtocol from "farce/lib/BrowserProtocol"
 import HashProtocol from "farce/lib/HashProtocol"
@@ -33,7 +33,7 @@ export function buildClientApp(config: RouterConfig): Promise<Resolve> {
       const _user = getUser(user)
       const relayEnvironment =
         context.relayEnvironment ||
-        createEnvironment({
+        createRelaySSREnvironment({
           cache: relayBootstrap,
           user: _user,
           relayNetwork,

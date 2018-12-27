@@ -1,7 +1,4 @@
-import {
-  createEnvironment,
-  RelayEnvironment,
-} from "Artsy/Relay/createEnvironment"
+import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
 import { Boot } from "Artsy/Router/Components/Boot"
 import queryMiddleware from "farce/lib/queryMiddleware"
 import { Resolver } from "found-relay"
@@ -31,7 +28,7 @@ interface Resolve {
 // No need to invoke this for each request.
 const MediaStyle = createMediaStyle()
 
-export interface ServerRouterConfig extends RouterConfig<RelayEnvironment> {
+export interface ServerRouterConfig extends RouterConfig {
   userAgent?: string
 }
 
@@ -43,7 +40,7 @@ export function buildServerApp(config: ServerRouterConfig): Promise<Resolve> {
         const { context = {}, routes = [], url, userAgent } = config
         const user = getUser(context.user)
         const relayEnvironment =
-          context.relayEnvironment || createEnvironment({ user })
+          context.relayEnvironment || createRelaySSREnvironment({ user })
         const historyMiddlewares = [queryMiddleware]
         const resolver = new Resolver(relayEnvironment)
         const render = createRender({})

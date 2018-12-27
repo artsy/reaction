@@ -3,7 +3,7 @@
  */
 
 import { ContextConsumer } from "Artsy"
-import { createEnvironment } from "Artsy/Relay/createEnvironment"
+import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
 import { buildServerApp, ServerRouterConfig } from "Artsy/Router/buildServerApp"
 import { createMockNetworkLayer } from "DevTools"
 import { render } from "enzyme"
@@ -198,7 +198,7 @@ describe("buildServerApp", () => {
           },
         }),
       })
-      const relayEnvironment = createEnvironment({ relayNetwork })
+      const relayEnvironment = createRelaySSREnvironment({ relayNetwork })
       try {
         await getWrapper({
           url: "/relay",
