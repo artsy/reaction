@@ -29,11 +29,11 @@ import {
 } from "Apps/Order/Components/OrderStepper"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
+import { ErrorModalContext, ShowErrorModal } from "Apps/Order/ErrorModalContext"
 import { validatePresence } from "Apps/Order/Utils/formValidators"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
-import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
 import { pick } from "lodash"
 import React, { Component } from "react"
@@ -55,6 +55,7 @@ export interface ShippingProps {
   mediator: Mediator
   relay?: RelayProp
   router: Router
+  showErrorModal: ShowErrorModal
 }
 
 export interface ShippingState {
@@ -63,26 +64,20 @@ export interface ShippingState {
   addressErrors: AddressErrors
   addressTouched: AddressTouched
   isCommittingMutation: boolean
-  isErrorModalOpen: boolean
-  errorModalTitle: string
-  errorModalMessage: string
 }
 
 const logger = createLogger("Order/Routes/Shipping/index.tsx")
 
 @track()
 export class ShippingRoute extends Component<ShippingProps, ShippingState> {
-  state = {
+  state: ShippingState = {
     shippingOption: ((this.props.order.requestedFulfillment &&
       this.props.order.requestedFulfillment.__typename.toUpperCase()) ||
       "SHIP") as OrderFulfillmentType,
     isCommittingMutation: false,
-    isErrorModalOpen: false,
     address: this.startingAddress,
     addressErrors: {},
     addressTouched: {},
-    errorModalTitle: null,
-    errorModalMessage: null,
   }
 
   componentDidMount() {
@@ -234,14 +229,10 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     })
   }
 
-  onMutationError(error, errorModalTitle?, errorModalMessage?) {
+  onMutationError(error, title?, message?) {
     logger.error(error)
-    this.setState({
-      isCommittingMutation: false,
-      isErrorModalOpen: true,
-      errorModalTitle,
-      errorModalMessage,
-    })
+    this.props.showErrorModal({ title, message })
+    this.setState({ isCommittingMutation: false })
   }
 
   private validateAddress(address: Address) {
@@ -270,10 +261,6 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
       errors,
       hasErrors,
     }
-  }
-
-  onCloseModal = () => {
-    this.setState({ isErrorModalOpen: false })
   }
 
   onAddressChange: AddressChangeHandler = (address, key) => {
@@ -417,25 +404,27 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
             }
           />
         </HorizontalPadding>
-
-        <ErrorModal
-          onClose={this.onCloseModal}
-          show={this.state.isErrorModalOpen}
-          contactEmail="orders@artsy.net"
-          detailText={this.state.errorModalMessage}
-          headerText={this.state.errorModalTitle}
-        />
       </>
     )
   }
 }
 
 const ShippingRouteWrapper = props => (
-  <ContextConsumer>
-    {({ mediator }) => {
-      return <ShippingRoute {...props} mediator={mediator} />
-    }}
-  </ContextConsumer>
+  <ErrorModalContext.Consumer>
+    {({ showErrorModal }) => (
+      <ContextConsumer>
+        {({ mediator }) => {
+          return (
+            <ShippingRoute
+              showErrorModal={showErrorModal}
+              mediator={mediator}
+              {...props}
+            />
+          )
+        }}
+      </ContextConsumer>
+    )}
+  </ErrorModalContext.Consumer>
 )
 
 export const ShippingFragmentContainer = createFragmentContainer(

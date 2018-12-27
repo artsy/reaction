@@ -14,8 +14,6 @@ import {
   validAddress,
 } from "Apps/Order/Routes/__tests__/Utils/addressForm"
 import Input, { InputProps } from "Components/Input"
-import { ModalButton } from "Components/Modal/ErrorModal"
-import { ErrorModal } from "Components/Modal/ErrorModal"
 import { MockBoot } from "DevTools"
 import { commitMutation as _commitMutation, RelayProp } from "react-relay"
 import {
@@ -33,6 +31,8 @@ import {
 import { ShippingRoute } from "../Shipping"
 
 const commitMutation = _commitMutation as any
+
+const mockShowErrorModal = jest.fn()
 
 jest.mock("react-relay", () => ({
   commitMutation: jest.fn(),
@@ -67,11 +67,13 @@ describe("Shipping", () => {
 
   let testProps: any
   beforeEach(() => {
+    mockShowErrorModal.mockReset()
     testProps = {
       order: { ...UntouchedBuyOrder, id: "1234" },
       relay: { environment: {} } as RelayProp,
       router: { push: jest.fn() },
       mediator: { trigger: jest.fn() },
+      showErrorModal: mockShowErrorModal,
     } as any
   })
 
@@ -170,68 +172,68 @@ describe("Shipping", () => {
 
     it("shows an error modal when there is an error from the server", () => {
       const component = getWrapper(testProps)
-      expect(component.find(ErrorModal).props().show).toBe(false)
+
       const mockCommitMutation = commitMutation as jest.Mock<any>
       mockCommitMutation.mockImplementationOnce((_, { onCompleted }) =>
         onCompleted(settingOrderShipmentFailure)
       )
-      component.find("Button").simulate("click")
-      expect(component.find(ErrorModal).props().show).toBe(true)
 
-      component.find(ModalButton).simulate("click")
-      expect(component.find(ErrorModal).props().show).toBe(false)
+      expect(mockShowErrorModal).not.toHaveBeenCalled()
+      component.find("Button").simulate("click")
+      expect(mockShowErrorModal).toHaveBeenCalledWith({
+        message: undefined,
+        title: undefined,
+      })
     })
 
     it("shows an error modal when there is a network error", () => {
       const component = getWrapper(testProps)
-      expect(component.find(ErrorModal).props().show).toBe(false)
       const mockCommitMutation = commitMutation as jest.Mock<any>
       mockCommitMutation.mockImplementationOnce((_, { onError }) =>
         onError(new TypeError("Network request failed"))
       )
-      component.find("Button").simulate("click")
-      expect(component.find(ErrorModal).props().show).toBe(true)
 
-      component.find(ModalButton).simulate("click")
-      expect(component.find(ErrorModal).props().show).toBe(false)
+      expect(mockShowErrorModal).not.toHaveBeenCalled()
+      component.find("Button").simulate("click")
+      expect(mockShowErrorModal).toHaveBeenCalledWith({
+        message: undefined,
+        title: undefined,
+      })
     })
 
     it("shows a validation error modal when there is a missing_country error from the server", () => {
       const component = getWrapper(testProps)
-      expect(component.find(ErrorModal).props().show).toBe(false)
+
       const mockCommitMutation = commitMutation as jest.Mock<any>
       mockCommitMutation.mockImplementationOnce((_, { onCompleted }) =>
         onCompleted(settingOrderShipmentMissingCountryFailure)
       )
-      component.find("Button").simulate("click")
-      const errorComponent = component.find(ErrorModal)
-      expect(errorComponent.props().show).toBe(true)
-      expect(errorComponent.text()).toContain("Invalid address")
-      expect(errorComponent.text()).toContain(
-        "There was an error processing your address. Please review and try again."
-      )
 
-      component.find(ModalButton).simulate("click")
-      expect(component.find(ErrorModal).props().show).toBe(false)
+      expect(mockShowErrorModal).not.toHaveBeenCalled()
+      component.find("Button").simulate("click")
+
+      expect(mockShowErrorModal).toHaveBeenCalledWith({
+        title: "Invalid address",
+        message:
+          "There was an error processing your address. Please review and try again.",
+      })
     })
 
     it("shows a validation error modal when there is a missing_region error from the server", () => {
       const component = getWrapper(testProps) as any
-      expect(component.find(ErrorModal).props().show).toBe(false)
+
       const mockCommitMutation = commitMutation as jest.Mock<any>
       mockCommitMutation.mockImplementationOnce((_, { onCompleted }) =>
         onCompleted(settingOrderShipmentMissingRegionFailure)
       )
+      expect(mockShowErrorModal).not.toHaveBeenCalled()
       component.find("Button").simulate("click")
-      const errorComponent = component.find(ErrorModal)
-      expect(errorComponent.props().show).toBe(true)
-      expect(errorComponent.text()).toContain("Invalid address")
-      expect(errorComponent.text()).toContain(
-        "There was an error processing your address. Please review and try again."
-      )
 
-      component.find(ModalButton).simulate("click")
-      expect(component.find(ErrorModal).props().show).toBe(false)
+      expect(mockShowErrorModal).toHaveBeenCalledWith({
+        title: "Invalid address",
+        message:
+          "There was an error processing your address. Please review and try again.",
+      })
     })
   })
 
