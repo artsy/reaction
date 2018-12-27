@@ -6,8 +6,9 @@ import { Helper } from "Apps/Order/Components/Helper"
 import { OfferInput } from "Apps/Order/Components/OfferInput"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
-import { ErrorModalContext, ShowErrorModal } from "Apps/Order/ErrorModalContext"
-import { ContextConsumer, Mediator } from "Artsy/SystemContext"
+import { ShowErrorModal } from "Apps/Order/ErrorModalContext"
+import { wrapOrderAppPage } from "Apps/Order/OrderApp"
+import { Mediator } from "Artsy/SystemContext"
 import { Router } from "found"
 import React, { Component } from "react"
 import {
@@ -222,26 +223,8 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
   }
 }
 
-const OfferRouteWrapper = props => (
-  <ErrorModalContext.Consumer>
-    {({ showErrorModal }) => (
-      <ContextConsumer>
-        {({ mediator }) => {
-          return (
-            <OfferRoute
-              showErrorModal={showErrorModal}
-              mediator={mediator}
-              {...props}
-            />
-          )
-        }}
-      </ContextConsumer>
-    )}
-  </ErrorModalContext.Consumer>
-)
-
 export const OfferFragmentContainer = createFragmentContainer(
-  OfferRouteWrapper,
+  wrapOrderAppPage(OfferRoute),
   graphql`
     fragment Offer_order on Order {
       id

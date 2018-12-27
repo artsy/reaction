@@ -65,8 +65,9 @@ describe("Submit Pending Counter Offer", () => {
     return mount(
       <MockBoot>
         <CounterRoute
+          // @ts-ignore relay prop injection
           relay={{ environment: {} }}
-          router={{ push: mockPushRoute }}
+          router={{ push: mockPushRoute } as any}
           mediator={{ trigger: mockMediatorTrigger }}
           showErrorModal={mockShowErrorModal}
           order={{

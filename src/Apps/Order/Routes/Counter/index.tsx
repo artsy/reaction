@@ -11,8 +11,9 @@ import {
 import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "Apps/Order/Components/ShippingSummaryItem"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
-import { ErrorModalContext, ShowErrorModal } from "Apps/Order/ErrorModalContext"
-import { ContextConsumer, Mediator } from "Artsy/SystemContext"
+import { ShowErrorModal } from "Apps/Order/ErrorModalContext"
+import { wrapOrderAppPage } from "Apps/Order/OrderApp"
+import { Mediator } from "Artsy/SystemContext"
 import { Router } from "found"
 import React, { Component } from "react"
 import {
@@ -198,26 +199,8 @@ export class CounterRoute extends Component<CounterProps, CounterState> {
   }
 }
 
-const CounterRouteWrapper = props => (
-  <ErrorModalContext.Consumer>
-    {({ showErrorModal }) => (
-      <ContextConsumer>
-        {({ mediator }) => {
-          return (
-            <CounterRoute
-              mediator={mediator}
-              showErrorModal={showErrorModal}
-              {...props}
-            />
-          )
-        }}
-      </ContextConsumer>
-    )}
-  </ErrorModalContext.Consumer>
-)
-
 export const CounterFragmentContainer = createFragmentContainer(
-  CounterRouteWrapper,
+  wrapOrderAppPage(CounterRoute),
   graphql`
     fragment Counter_order on Order {
       id

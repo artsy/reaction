@@ -29,11 +29,12 @@ import {
 } from "Apps/Order/Components/OrderStepper"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
-import { ErrorModalContext, ShowErrorModal } from "Apps/Order/ErrorModalContext"
+import { ShowErrorModal } from "Apps/Order/ErrorModalContext"
+import { wrapOrderAppPage } from "Apps/Order/OrderApp"
 import { validateAddress } from "Apps/Order/Utils/formValidators"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ContextConsumer, Mediator } from "Artsy/SystemContext"
+import { Mediator } from "Artsy/SystemContext"
 import { Router } from "found"
 import React, { Component } from "react"
 import {
@@ -442,26 +443,8 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
   }
 }
 
-const PaymentRouteWrapper = props => (
-  <ErrorModalContext.Consumer>
-    {({ showErrorModal }) => (
-      <ContextConsumer>
-        {({ mediator }) => {
-          return (
-            <PaymentRoute
-              showErrorModal={showErrorModal}
-              mediator={mediator}
-              {...props}
-            />
-          )
-        }}
-      </ContextConsumer>
-    )}
-  </ErrorModalContext.Consumer>
-)
-
 export const PaymentFragmentContainer = createFragmentContainer(
-  injectStripe(PaymentRouteWrapper),
+  injectStripe(wrapOrderAppPage(PaymentRoute)),
   graphql`
     fragment Payment_order on Order {
       id

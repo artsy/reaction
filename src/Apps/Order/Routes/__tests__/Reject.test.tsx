@@ -42,8 +42,9 @@ describe("Buyer rejects seller offer", () => {
     return mount(
       <MockBoot>
         <RejectRoute
+          // @ts-ignore relay prop injection
           relay={{ environment: {} }}
-          router={{ push: mockPushRoute }}
+          router={{ push: mockPushRoute } as any}
           showErrorModal={mockShowErrorModal}
           order={
             {

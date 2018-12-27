@@ -12,8 +12,9 @@ import { Helper } from "Apps/Order/Components/Helper"
 import { OfferInput } from "Apps/Order/Components/OfferInput"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
-import { ErrorModalContext, ShowErrorModal } from "Apps/Order/ErrorModalContext"
-import { ContextConsumer, Mediator } from "Artsy/SystemContext"
+import { ShowErrorModal } from "Apps/Order/ErrorModalContext"
+import { wrapOrderAppPage } from "Apps/Order/OrderApp"
+import { Mediator } from "Artsy/SystemContext"
 import { StaticCollapse } from "Components/StaticCollapse"
 import { Router } from "found"
 import React, { Component } from "react"
@@ -282,26 +283,8 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
   }
 }
 
-const RespondRouteWrapper = props => (
-  <ErrorModalContext.Consumer>
-    {({ showErrorModal }) => (
-      <ContextConsumer>
-        {({ mediator }) => {
-          return (
-            <RespondRoute
-              mediator={mediator}
-              showErrorModal={showErrorModal}
-              {...props}
-            />
-          )
-        }}
-      </ContextConsumer>
-    )}
-  </ErrorModalContext.Consumer>
-)
-
 export const RespondFragmentContainer = createFragmentContainer(
-  RespondRouteWrapper,
+  wrapOrderAppPage(RespondRoute),
   graphql`
     fragment Respond_order on Order {
       id

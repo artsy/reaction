@@ -1,6 +1,6 @@
 import { Spacer } from "@artsy/palette"
 import { routes_OrderQueryResponse } from "__generated__/routes_OrderQuery.graphql"
-import { ContextConsumer } from "Artsy/SystemContext"
+import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { ErrorPage } from "Components/ErrorPage"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Location, RouteConfig, Router } from "found"
@@ -151,4 +151,39 @@ export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
       </ContextConsumer>
     )
   }
+}
+
+export interface OrderAppPageProps {
+  showErrorModal: ShowErrorModal
+  mediator: Mediator
+}
+
+export function wrapOrderAppPage<T extends React.ComponentType>(
+  Page: T
+): T extends React.ComponentType<infer R>
+  ? React.ComponentType<
+      // strip out mediator and showErrorModal
+      { [K in Exclude<keyof R, keyof OrderAppPageProps>]: R[K] } &
+        // then add them back in as optional so they can be overridden
+        { [K in Extract<keyof R, keyof OrderAppPageProps>]?: R[K] }
+    >
+  : never {
+  return (props => (
+    <ErrorModalContext.Consumer>
+      {({ showErrorModal }) => (
+        <ContextConsumer>
+          {({ mediator }) => {
+            return (
+              // @ts-ignore weird bug saying that Page has no construct signature
+              <Page
+                showErrorModal={showErrorModal}
+                mediator={mediator}
+                {...props}
+              />
+            )
+          }}
+        </ContextConsumer>
+      )}
+    </ErrorModalContext.Consumer>
+  )) as any
 }

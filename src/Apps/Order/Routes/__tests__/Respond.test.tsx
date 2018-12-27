@@ -62,8 +62,9 @@ describe("Offer InitialMutation", () => {
     return mount(
       <MockBoot>
         <RespondRoute
+          // @ts-ignore relay prop injection
           relay={{ environment: {} }}
-          router={{ push: mockPushRoute }}
+          router={{ push: mockPushRoute } as any}
           mediator={{ trigger: mockMediatorTrigger }}
           showErrorModal={showErrorModalMock}
           order={{

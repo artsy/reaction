@@ -2,9 +2,8 @@ import { Button, Flex, Spacer } from "@artsy/palette"
 import { Accept_order } from "__generated__/Accept_order.graphql"
 import { Helper } from "Apps/Order/Components/Helper"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
-import { ContextConsumer } from "Artsy"
 import { Mediator } from "Artsy/SystemContext"
-import { RouteConfig, Router } from "found"
+import { Router } from "found"
 import React, { Component } from "react"
 import {
   commitMutation,
@@ -24,7 +23,8 @@ import { AcceptOfferMutation } from "__generated__/AcceptOfferMutation.graphql"
 import { ConditionsOfSaleDisclaimer } from "Apps/Order/Components/ConditionsOfSaleDisclaimer"
 import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "Apps/Order/Components/ShippingSummaryItem"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
-import { ErrorModalContext, ShowErrorModal } from "Apps/Order/ErrorModalContext"
+import { ShowErrorModal } from "Apps/Order/ErrorModalContext"
+import { wrapOrderAppPage } from "Apps/Order/OrderApp"
 import { CountdownTimer } from "Styleguide/Components/CountdownTimer"
 import { ErrorWithMetadata } from "Utils/errors"
 import { get } from "Utils/get"
@@ -37,7 +37,6 @@ interface AcceptProps {
   order: Accept_order
   relay?: RelayProp
   router: Router
-  route: RouteConfig
   showErrorModal: ShowErrorModal
 }
 
@@ -233,26 +232,8 @@ export class Accept extends Component<AcceptProps, AcceptState> {
   }
 }
 
-const AcceptRouteWrapper = props => (
-  <ErrorModalContext.Consumer>
-    {({ showErrorModal }) => (
-      <ContextConsumer>
-        {({ mediator }) => {
-          return (
-            <Accept
-              showErrorModal={showErrorModal}
-              mediator={mediator}
-              {...props}
-            />
-          )
-        }}
-      </ContextConsumer>
-    )}
-  </ErrorModalContext.Consumer>
-)
-
 export const AcceptFragmentContainer = createFragmentContainer(
-  AcceptRouteWrapper,
+  wrapOrderAppPage(Accept),
   graphql`
     fragment Accept_order on Order {
       id

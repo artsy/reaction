@@ -56,8 +56,9 @@ describe("Accept seller offer", () => {
     return mount(
       <MockBoot>
         <AcceptRoute
+          // @ts-ignore relay prop injection
           relay={{ environment: {} }}
-          router={{ push: mockPushRoute }}
+          router={{ push: mockPushRoute } as any}
           mediator={{ trigger: mockMediatorTrigger }}
           showErrorModal={mockShowErrorModal}
           order={{

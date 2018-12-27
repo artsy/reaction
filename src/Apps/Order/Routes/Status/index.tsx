@@ -10,7 +10,8 @@ import {
 import { Status_order } from "__generated__/Status_order.graphql"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
-import { ContextConsumer, Mediator } from "Artsy/SystemContext"
+import { wrapOrderAppPage } from "Apps/Order/OrderApp"
+import { Mediator } from "Artsy/SystemContext"
 import { Router } from "found"
 import React, { Component } from "react"
 import { Title } from "react-head"
@@ -127,14 +128,6 @@ export class StatusRoute extends Component<StatusProps> {
     )
   }
 }
-
-const StatusRouteWrapper = props => (
-  <ContextConsumer>
-    {({ mediator }) => {
-      return <StatusRoute {...props} mediator={mediator} />
-    }}
-  </ContextConsumer>
-)
 
 const offerMessages = {
   SUBMITTED: (props: StatusProps) => {
@@ -261,7 +254,7 @@ const canceledOrderMessage = (
 )
 
 export const StatusFragmentContainer = createFragmentContainer(
-  StatusRouteWrapper,
+  wrapOrderAppPage(StatusRoute),
   graphql`
     fragment Status_order on Order {
       __typename
