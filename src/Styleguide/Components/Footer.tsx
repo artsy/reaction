@@ -171,5 +171,8 @@ const PolicyLinks = () => (
     <UnstyledLink href="https://www.artsy.net/security">
       <Serif size="2">Security</Serif>
     </UnstyledLink>
+    <UnstyledLink href="https://www.artsy.net/conditions-of-sale">
+      <Serif size="2">Conditions of Sale</Serif>
+    </UnstyledLink>
   </React.Fragment>
 )

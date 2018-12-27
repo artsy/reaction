@@ -70,7 +70,7 @@ const Container = styled(Flex).attrs({
   justifyContent: ["left", "center"],
   mb: [2, 0],
   ml: [-0.5, 1],
-  pt: [0, 3],
+  pt: [2, 3],
 })`
   position: relative;
   user-select: none;
