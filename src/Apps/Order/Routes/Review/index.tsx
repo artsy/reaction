@@ -12,10 +12,10 @@ import {
 } from "Apps/Order/Components/OrderStepper"
 import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "Apps/Order/Components/ShippingSummaryItem"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
+import { ErrorModalContext, ShowErrorModal } from "Apps/Order/ErrorModalContext"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
-import { ErrorModal } from "Components/Modal/ErrorModal"
 import { RouteConfig, Router } from "found"
 import React, { Component } from "react"
 import {
@@ -41,26 +41,19 @@ export interface ReviewProps {
   relay?: RelayProp
   router: Router
   route: RouteConfig
+  showErrorModal: ShowErrorModal
 }
 
 interface ReviewState {
   isSubmitting: boolean
-  isErrorModalOpen: boolean
-  errorModalMessage: string
-  errorModalTitle: string
-  errorModalCtaAction: () => null
 }
 
 const logger = createLogger("Order/Routes/Review/index.tsx")
 
 @track()
 export class ReviewRoute extends Component<ReviewProps, ReviewState> {
-  state = {
+  state: ReviewState = {
     isSubmitting: false,
-    isErrorModalOpen: false,
-    errorModalMessage: null,
-    errorModalTitle: null,
-    errorModalCtaAction: null,
   }
 
   constructor(props) {
@@ -243,20 +236,10 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
     window.location.assign(`/artist/${artistId}`)
   }
 
-  onMutationError(
-    error,
-    errorModalTitle?,
-    errorModalMessage?,
-    errorModalCtaAction?
-  ) {
+  onMutationError(error, title?, message?, ctaAction?) {
     logger.error(error)
-    this.setState({
-      isSubmitting: false,
-      isErrorModalOpen: true,
-      errorModalTitle,
-      errorModalMessage,
-      errorModalCtaAction,
-    })
+    this.props.showErrorModal({ title, message, ctaAction })
+    this.setState({ isSubmitting: false })
   }
 
   onChangeOffer = () => {
@@ -269,10 +252,6 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
 
   onChangeShipping = () => {
     this.props.router.push(`/orders/${this.props.order.id}/shipping`)
-  }
-
-  onCloseModal = () => {
-    this.setState({ isErrorModalOpen: false })
   }
 
   render() {
@@ -368,26 +347,27 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
             }
           />
         </HorizontalPadding>
-
-        <ErrorModal
-          onClose={this.onCloseModal}
-          show={this.state.isErrorModalOpen}
-          detailText={this.state.errorModalMessage}
-          contactEmail="orders@artsy.net"
-          headerText={this.state.errorModalTitle}
-          ctaAction={this.state.errorModalCtaAction}
-        />
       </>
     )
   }
 }
 
 const ReviewRouteWrapper = props => (
-  <ContextConsumer>
-    {({ mediator }) => {
-      return <ReviewRoute {...props} mediator={mediator} />
-    }}
-  </ContextConsumer>
+  <ErrorModalContext.Consumer>
+    {({ showErrorModal }) => (
+      <ContextConsumer>
+        {({ mediator }) => {
+          return (
+            <ReviewRoute
+              mediator={mediator}
+              showErrorModal={showErrorModal}
+              {...props}
+            />
+          )
+        }}
+      </ContextConsumer>
+    )}
+  </ErrorModalContext.Consumer>
 )
 
 export const ReviewFragmentContainer = createFragmentContainer(
