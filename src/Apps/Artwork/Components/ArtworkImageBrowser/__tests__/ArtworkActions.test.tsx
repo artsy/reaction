@@ -39,6 +39,7 @@ describe("ArtworkActions", () => {
 
     it("renders bell icon when sale is open", async () => {
       const data = cloneDeep(ArtworkActionsFixture)
+      data.artwork.sale.is_auction = true
       data.artwork.sale.is_closed = false
       const wrapper = getWrapper(data)
       expect(wrapper.find("Heart").length).toBe(0)
