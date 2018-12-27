@@ -8,6 +8,7 @@ export type ArtworkActions_artwork$ref = typeof _ArtworkActions_artwork$ref;
 export type ArtworkActions_artwork = {
     readonly sale: ({
         readonly is_closed: boolean | null;
+        readonly is_auction: boolean | null;
     }) | null;
     readonly " $fragmentRefs": Save_artwork$ref & ArtworkSharePanel_artwork$ref;
     readonly " $refType": ArtworkActions_artwork$ref;
@@ -56,6 +57,13 @@ return {
           "args": null,
           "storageKey": null
         },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "is_auction",
+          "args": null,
+          "storageKey": null
+        },
         v0
       ]
     },
@@ -63,5 +71,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '81c13a41a21ac548a5b73e31af5b9aa2';
+(node as any).hash = 'a8dada00c54810c0036837a4c2d4b12c';
 export default node;

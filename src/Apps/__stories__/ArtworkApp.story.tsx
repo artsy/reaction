@@ -24,7 +24,7 @@ storiesOf("Apps/Artwork Page", module)
     return (
       <MockRouter
         routes={artworkRoutes}
-        initialRoute="/artwork2/rembrandt-van-rijn-beggar-man-and-beggar-woman-conversing-1"
+        initialRoute="/artwork2/rembrandt-van-rijn-man-crying-out-bust-directed-three-quarter-to-the-left"
       />
     )
   })

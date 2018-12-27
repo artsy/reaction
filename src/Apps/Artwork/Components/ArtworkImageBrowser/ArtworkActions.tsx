@@ -1,4 +1,4 @@
-import { color, Flex } from "@artsy/palette"
+import { color, Flex, Spacer } from "@artsy/palette"
 import { ArtworkActions_artwork } from "__generated__/ArtworkActions_artwork.graphql"
 import { Bell } from "Assets/Icons/Bell"
 import { Heart } from "Assets/Icons/Heart"
@@ -36,7 +36,8 @@ export class ArtworkActions extends React.Component<
   render() {
     return (
       <Container>
-        <SaveButton artwork={this.props.artwork} render={Save} />
+        <SaveButton artwork={this.props.artwork} render={Save(this.props)} />
+        <Spacer mx={0.5} />
         <ShareButton onClick={this.toggleSharePanel} />
 
         {this.state.showSharePanel && (
@@ -59,6 +60,7 @@ export const ArtworkActionsFragmentContainer = createFragmentContainer(
 
       sale {
         is_closed
+        is_auction
       }
     }
   `
@@ -85,21 +87,29 @@ ShareButton.displayName = "ShareButton"
 /**
  * Custom renderer for SaveButton
  */
-const Save = (
-  props: SaveProps & {
-    artwork: { sale: { is_closed: boolean } }
-  },
+const Save = (actionProps: ArtworkActionsProps) => (
+  props: SaveProps,
   state: SaveState
 ) => {
   const { isHovered } = state
-  const isOpenSale = props.artwork.sale && !props.artwork.sale.is_closed
+  const fill = isHovered ? color("purple100") : color("black100")
+
+  // Grab props from ArtworkActions to check if sale is open
+  const {
+    artwork: { sale },
+  } = actionProps
+
+  const isOpenSale = sale && sale.is_auction && !sale.is_closed
+
+  // Check if saved by evaluating props from SaveButton
   const isSaved = isNull(state.is_saved)
     ? props.artwork.is_saved
     : state.is_saved
-  const fill = isHovered ? color("purple100") : color("black100")
-  return isOpenSale ? (
-    <Bell fill={fill} selected={isSaved} style={{ cursor: "pointer" }} />
-  ) : (
-    <Heart fill={fill} selected={isSaved} style={{ cursor: "pointer" }} />
+
+  // If an Auction, use Bell (for notifications); if a standard artwork use Heart
+  const SaveIcon = isOpenSale ? Bell : Heart
+
+  return (
+    <SaveIcon fill={fill} selected={isSaved} style={{ cursor: "pointer" }} />
   )
 }

@@ -25,6 +25,7 @@ export const ArtworkActionsFixture = {
     },
     sale: {
       is_closed: true,
+      is_auction: false,
     },
   },
 }
