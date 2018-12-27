@@ -237,6 +237,7 @@ describe("OrderApp routing redirects", () => {
       mockResolver({
         ...UntouchedOfferOrder,
         id: 1234,
+        requestedFulfillment: null,
       })
     )
     expect(redirect).toBe(undefined)

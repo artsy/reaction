@@ -37,11 +37,11 @@ interface Config {
   relayNetwork?: RelayNetwork
 }
 
-interface RelayEnvironment extends Environment {
+export interface RelaySSREnvironment extends Environment {
   relaySSRMiddleware: RelayClientSSR | RelayServerSSR
 }
 
-export function createEnvironment(config: Config = {}) {
+export function createRelaySSREnvironment(config: Config = {}) {
   const { cache = {}, checkStatus, user, relayNetwork } = config
 
   const relaySSRMiddleware = isServer
@@ -117,7 +117,7 @@ export function createEnvironment(config: Config = {}) {
   const environment = new Environment({
     network,
     store,
-  }) as RelayEnvironment
+  }) as RelaySSREnvironment
 
   environment.relaySSRMiddleware = relaySSRMiddleware
 

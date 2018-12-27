@@ -1,4 +1,4 @@
-import { createEnvironment } from "Artsy/Relay/createEnvironment"
+import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
 import React, { SFC } from "react"
 import { Environment } from "relay-runtime"
 import { getUser } from "Utils/getUser"
@@ -55,7 +55,7 @@ export const ContextProvider: SFC<ContextProps<any>> = ({
 }) => {
   const _user = getUser(props.user)
   const relayEnvironment =
-    props.relayEnvironment || createEnvironment({ user: _user })
+    props.relayEnvironment || createRelaySSREnvironment({ user: _user })
 
   const providerValues = {
     ...props,

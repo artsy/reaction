@@ -159,7 +159,8 @@ export const routes: RouteConfig[] = [
             }
           }
         `,
-      }, // Redirect all unhandled tabs to the artist page.
+      },
+      // Redirect all unhandled tabs to the artist page.
       // Note: there is a deep-linked standalone auction-lot page
       // in Force, under /artist/:artistID/auction-result/:id.
       // That app needs to be mounted before this app for that to work,

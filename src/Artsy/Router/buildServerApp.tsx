@@ -1,4 +1,4 @@
-import { createEnvironment } from "Artsy/Relay/createEnvironment"
+import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
 import { Boot } from "Artsy/Router/Components/Boot"
 import queryMiddleware from "farce/lib/queryMiddleware"
 import { Resolver } from "found-relay"
@@ -12,7 +12,8 @@ import { getUser } from "Utils/getUser"
 import { createMediaStyle } from "Utils/Responsive"
 import { trace } from "Utils/trace"
 import { RouterConfig } from "./"
-import { matchingMediaQueriesForUserAgent } from "./matchingMediaQueriesForUserAgent"
+import { createRouteConfig } from "./Utils/createRouteConfig"
+import { matchingMediaQueriesForUserAgent } from "./Utils/matchingMediaQueriesForUserAgent"
 
 interface Resolve {
   ServerApp?: ComponentType<any>
@@ -27,16 +28,19 @@ interface Resolve {
 // No need to invoke this for each request.
 const MediaStyle = createMediaStyle()
 
-export function buildServerApp(
-  config: RouterConfig & { userAgent: string | undefined }
-): Promise<Resolve> {
+export interface ServerRouterConfig extends RouterConfig {
+  userAgent?: string
+}
+
+export function buildServerApp(config: ServerRouterConfig): Promise<Resolve> {
   return trace(
     "buildServerApp",
     new Promise(async (resolve, reject) => {
       try {
         const { context = {}, routes = [], url, userAgent } = config
         const user = getUser(context.user)
-        const relayEnvironment = createEnvironment({ user })
+        const relayEnvironment =
+          context.relayEnvironment || createRelaySSREnvironment({ user })
         const historyMiddlewares = [queryMiddleware]
         const resolver = new Resolver(relayEnvironment)
         const render = createRender({})
@@ -46,7 +50,7 @@ export function buildServerApp(
           getFarceResult({
             url,
             historyMiddlewares,
-            routeConfig: routes,
+            routeConfig: createRouteConfig(routes),
             resolver,
             render,
           })
