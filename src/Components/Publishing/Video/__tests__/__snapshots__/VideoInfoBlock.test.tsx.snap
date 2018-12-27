@@ -1,47 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Video Info Block matches the snapshot 1`] = `
-.c2 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 14px;
-  line-height: 20px;
-}
-
 .c0 {
-  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 0 1 auto;
-  -ms-flex: 0 1 auto;
-  flex: 0 1 auto;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin-right: -0.5rem;
-  margin-left: -0.5rem;
 }
 
-.c1 {
+.c2 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 24px;
   margin-right: 20px;
+}
+
+.c3 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.c4 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 42px;
+  line-height: 50px;
 }
 
 .c1 a {
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
-}
-
-.c3 {
-  position: relative;
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 45px;
-  line-height: 1.2em;
 }
 
 <div>
@@ -56,7 +45,7 @@ exports[`Video Info Block matches the snapshot 1`] = `
       The Future of Art
     </div>
     <div
-      className="c2"
+      className="c3"
       fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
       fontSize="14px"
     >
@@ -64,59 +53,46 @@ exports[`Video Info Block matches the snapshot 1`] = `
     </div>
   </div>
   <div
-    className="c0"
+    className="c4"
+    fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+    fontSize="42px"
   >
-    <span
-      className="c3"
-    >
-      Trevor Paglan
-    </span>
+    Trevor Paglan
   </div>
 </div>
 `;
 
 exports[`Video Info Block matches the snapshot with edit props 1`] = `
-.c2 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 14px;
-  line-height: 20px;
-}
-
 .c0 {
-  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 0 1 auto;
-  -ms-flex: 0 1 auto;
-  flex: 0 1 auto;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin-right: -0.5rem;
-  margin-left: -0.5rem;
 }
 
-.c1 {
+.c2 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 24px;
   margin-right: 20px;
+}
+
+.c3 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.c4 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 42px;
+  line-height: 50px;
 }
 
 .c1 a {
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
-}
-
-.c3 {
-  position: relative;
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 45px;
-  line-height: 1.2em;
 }
 
 <div>
@@ -131,7 +107,7 @@ exports[`Video Info Block matches the snapshot with edit props 1`] = `
       The Future of Art
     </div>
     <div
-      className="c2"
+      className="c3"
       fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
       fontSize="14px"
     >
@@ -139,16 +115,14 @@ exports[`Video Info Block matches the snapshot with edit props 1`] = `
     </div>
   </div>
   <div
-    className="c0"
+    className="c4"
+    fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+    fontSize="42px"
   >
-    <span
-      className="c3"
-    >
-      <div>
-        Child 
-        title
-      </div>
-    </span>
+    <div>
+      Child 
+      title
+    </div>
   </div>
 </div>
 `;

@@ -11577,6 +11577,13 @@ react-overlays@^0.8.3:
     react-transition-group "^2.2.0"
     warning "^3.0.0"
 
+react-powerplug@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-powerplug/-/react-powerplug-1.0.0.tgz#f9c10a761ece115661b8fd10920c4e573ea95909"
+  integrity sha512-H7U+1sNiOqlaPgZpfciVZ3BMHtXHsd0tkXrOmrwV7ZTpK+YGRddK7+Um1RT2OTe+4G+1muXfyFMAwcnasABMtA==
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+
 react-redux@^5.0.7:
   version "5.0.7"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-5.0.7.tgz#0dc1076d9afb4670f993ffaef44b8f8c1155a4c8"
@@ -11594,10 +11601,10 @@ react-relay-network-modern-ssr@^1.2.2:
   resolved "https://registry.yarnpkg.com/react-relay-network-modern-ssr/-/react-relay-network-modern-ssr-1.2.2.tgz#9f611872113cc91839600939b0d4edf97a4f8adc"
   integrity sha512-35SHsvHS6IhZ7Sh9qXwjMhC5nZHhv5P9ERS5oti9u/B6GsQEC3cTwVCeSKIJNs+SxWkwQ6Z7DmzhPMWu1sNI0Q==
 
-react-relay-network-modern@^2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/react-relay-network-modern/-/react-relay-network-modern-2.4.0.tgz#639ea0745545ab148d0c78714330e93dca7e031c"
-  integrity sha512-LR/RhHcJclDCVEiwRhlRtf1iltSnbGSxS2rag+bAljMFJ0kOVSYUK3+NDPRbcHLRqbha1FuQXBVfHjjPE6jhMA==
+react-relay-network-modern@^2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/react-relay-network-modern/-/react-relay-network-modern-2.5.0.tgz#24166dbdcf491aa6c519ae99e5402b41c73040f6"
+  integrity sha512-J7/wpDos+0CQTbCF+LkJ2pNeEAQbtT3N4R/4c4sg9gsKzRKQxOxUisdso5S4wiWYJt3y5vZF0Ov5IAVVQlhEaw==
 
 "react-relay@https://github.com/alloy/relay/releases/download/v1.5.0-artsy.3/react-relay-1.5.0-artsy.3.tgz":
   version "1.5.0-artsy.3"

@@ -1,4 +1,5 @@
 import { Button } from "@artsy/palette"
+import { OfferInput } from "Apps/Order/Components/OfferInput"
 import { Input } from "Components/Input"
 import { MockBoot } from "DevTools"
 import { mount } from "enzyme"
@@ -54,19 +55,16 @@ describe("Offer InitialMutation", () => {
 
   it("can receive input, which updates the transaction summary", () => {
     const component = getWrapper(testProps)
-    const input = component.find(Input)
+    const input = component.find(OfferInput)
     const transactionSummary = component.find(TransactionDetailsSummaryItem)
 
     expect(transactionSummary.text()).toContain("Your offer")
 
-    input.props().onChange({ currentTarget: { value: "1" } } as any)
-    expect(transactionSummary.text()).toContain("Your offer$1")
+    input.props().onChange(1)
+    expect(transactionSummary.text()).toContain("Your offer$1.00")
 
-    input.props().onChange({ currentTarget: { value: "1.23" } } as any)
-    expect(transactionSummary.text()).toContain("Your offer$1.23")
-
-    input.props().onChange({ currentTarget: { value: "1023.23" } } as any)
-    expect(transactionSummary.text()).toContain("Your offer$1,023.23")
+    input.props().onChange(1023)
+    expect(transactionSummary.text()).toContain("Your offer$1,023.00")
   })
 
   describe("mutation", () => {
@@ -81,6 +79,47 @@ describe("Offer InitialMutation", () => {
       console.error = errorLogger
     })
 
+    it("doesn't let the user continue if they haven't typed anything in", () => {
+      const component = getWrapper(testProps)
+
+      expect(component.find(OfferInput).text()).not.toMatch(
+        "Offer amount missing or invalid."
+      )
+      expect(component.find(OfferInput).props().showError).toBe(false)
+
+      component.find(Button).simulate("click")
+
+      expect(component.find(OfferInput).props().showError).toBe(true)
+      expect(component.find(OfferInput).text()).toMatch(
+        "Offer amount missing or invalid."
+      )
+
+      expect(commitMutation).not.toHaveBeenCalled()
+    })
+
+    it("doesn't let the user continue if the offer value is not positive", () => {
+      const component = getWrapper(testProps)
+
+      component
+        .find(OfferInput)
+        .props()
+        .onChange(0)
+
+      expect(component.find(OfferInput).text()).not.toMatch(
+        "Offer amount missing or invalid."
+      )
+      expect(component.find(OfferInput).props().showError).toBe(false)
+
+      component.find(Button).simulate("click")
+
+      expect(component.find(OfferInput).props().showError).toBe(true)
+      expect(component.find(OfferInput).text()).toMatch(
+        "Offer amount missing or invalid."
+      )
+
+      expect(commitMutation).not.toHaveBeenCalled()
+    })
+
     it("routes to shipping screen after mutation completes", () => {
       const component = getWrapper(testProps)
       const mockCommitMutation = commitMutation as jest.Mock<any>
@@ -90,6 +129,10 @@ describe("Offer InitialMutation", () => {
         }
       )
 
+      component
+        .find(OfferInput)
+        .props()
+        .onChange(123)
       component.find(Button).simulate("click")
 
       expect(testProps.router.push).toHaveBeenCalledWith(
@@ -97,7 +140,7 @@ describe("Offer InitialMutation", () => {
       )
     })
 
-    it("shows the button spinner while loading the mutation", () => {
+    it("shows the button spinner while committing the mutation", () => {
       const component = getWrapper(testProps)
       const mockCommitMutation = commitMutation as jest.Mock<any>
       mockCommitMutation.mockImplementationOnce(() => {
@@ -107,6 +150,11 @@ describe("Offer InitialMutation", () => {
           .props() as any
         expect(buttonProps.loading).toBeTruthy()
       })
+
+      component
+        .find(OfferInput)
+        .props()
+        .onChange(1)
 
       component.find(Button).simulate("click")
     })
@@ -121,6 +169,11 @@ describe("Offer InitialMutation", () => {
       )
 
       expect(testProps.showErrorModal).not.toHaveBeenCalled()
+
+      component
+        .find(OfferInput)
+        .props()
+        .onChange(1)
 
       component.find(Button).simulate("click")
 

@@ -32,6 +32,7 @@ jest.mock("react-relay", () => ({
   createFragmentContainer: component => component,
 }))
 
+import { OfferInput } from "Apps/Order/Components/OfferInput"
 import { commitMutation } from "react-relay"
 import { flushPromiseQueue } from "Utils/flushPromiseQueue"
 
@@ -219,49 +220,92 @@ describe("Offer InitialMutation", () => {
       )
     })
 
-    it("Countering the seller's offer works", async () => {
-      commitMutationMock.mockImplementationOnce((_, { onCompleted }) => {
-        onCompleted({
-          ecommerceBuyerCounterOffer: { orderOrError: { order: {} } },
-        })
+    describe("countering the seller's offer", () => {
+      it("doesn't work if nothing was typed in", () => {
+        const component = getWrapper()
+
+        const counterRadio = component.find(BorderedRadio).at(1)
+        counterRadio.props().onSelect({ selected: true, value: "COUNTER" })
+
+        expect(component.find(OfferInput).props().showError).toBe(false)
+
+        component
+          .find(Button)
+          .last()
+          .simulate("click")
+
+        expect(component.find(OfferInput).props().showError).toBe(true)
+
+        expect(commitMutation).not.toHaveBeenCalled()
       })
-      const component = getWrapper()
-      const counterRadio = component.find(BorderedRadio).at(1)
 
-      counterRadio.props().onSelect({ selected: true, value: "COUNTER" })
+      it("doesn't let the user continue if the offer value is not positive", () => {
+        const component = getWrapper()
 
-      counterRadio
-        .find(Input)
-        .props()
-        .onChange({ currentTarget: { value: "100.05" } } as any)
+        const counterRadio = component.find(BorderedRadio).at(1)
+        counterRadio.props().onSelect({ selected: true, value: "COUNTER" })
 
-      expect(commitMutationMock).toHaveBeenCalledTimes(0)
+        component
+          .find(OfferInput)
+          .props()
+          .onChange(0)
 
-      component
-        .find(Button)
-        .last()
-        .props()
-        .onClick({})
+        expect(component.find(OfferInput).props().showError).toBe(false)
 
-      expect(commitMutationMock).toHaveBeenCalledTimes(1)
+        component
+          .find(Button)
+          .last()
+          .simulate("click")
 
-      expect(commitMutationMock.mock.calls[0][1].variables)
-        .toMatchInlineSnapshot(`
+        expect(component.find(OfferInput).props().showError).toBe(true)
+
+        expect(commitMutation).not.toHaveBeenCalled()
+      })
+
+      it("works when a valid number is inputted", async () => {
+        commitMutationMock.mockImplementationOnce((_, { onCompleted }) => {
+          onCompleted({
+            ecommerceBuyerCounterOffer: { orderOrError: { order: {} } },
+          })
+        })
+        const component = getWrapper()
+        const counterRadio = component.find(BorderedRadio).at(1)
+
+        counterRadio.props().onSelect({ selected: true, value: "COUNTER" })
+
+        counterRadio
+          .find(OfferInput)
+          .props()
+          .onChange(105)
+
+        expect(commitMutationMock).toHaveBeenCalledTimes(0)
+
+        component
+          .find(Button)
+          .last()
+          .props()
+          .onClick({})
+
+        expect(commitMutationMock).toHaveBeenCalledTimes(1)
+
+        expect(commitMutationMock.mock.calls[0][1].variables)
+          .toMatchInlineSnapshot(`
 Object {
   "input": Object {
     "offerId": "myoffer-id",
     "offerPrice": Object {
-      "amount": 100.05,
+      "amount": 105,
       "currencyCode": "USD",
     },
   },
 }
 `)
-      await flushPromiseQueue()
+        await flushPromiseQueue()
 
-      expect(mockPushRoute).toHaveBeenCalledWith(
-        "/orders/2939023/review/counter"
-      )
+        expect(mockPushRoute).toHaveBeenCalledWith(
+          "/orders/2939023/review/counter"
+        )
+      })
     })
   })
 

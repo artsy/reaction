@@ -19,18 +19,14 @@ export class ArtworkRelatedArtists extends React.Component<
     const {
       artwork: { artist },
     } = this.props
+    const relatedUrl = sd.APP_URL + artist.href + "/related_artists"
 
     return (
       <ContextConsumer>
         {({ user, mediator }) => {
           return (
             <Box mt={6}>
-              <Header
-                title="Related artists"
-                buttonHref={
-                  sd.APP_URL + "/artist/" + artist._id + "/related_artists"
-                }
-              />
+              <Header title="Related artists" buttonHref={relatedUrl} />
               <Flex flexWrap="wrap" mr={-2} width="100%">
                 {artist.related.artists.edges.map(({ node }, index) => {
                   return (
@@ -57,7 +53,7 @@ export const ArtworkRelatedArtistsFragmentContainer = createFragmentContainer(
   graphql`
     fragment ArtworkRelatedArtists_artwork on Artwork {
       artist {
-        _id
+        href
         related {
           artists(kind: MAIN, first: 4) {
             edges {

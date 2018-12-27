@@ -60,12 +60,11 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
      *       likely design work to be done too, so we can adjust this then.
      */
     const myLotStanding = artwork.myLotStanding && artwork.myLotStanding[0]
-    const activeBid = myLotStanding && myLotStanding.active_bid
-    const myMaxBid = get(
-      myLotStanding,
-      ls => ls.most_recent_bid.max_bid.display
-    )
-    const myBidPresent = !!activeBid
+    const myBidPresent = !!(myLotStanding && myLotStanding.most_recent_bid)
+    const myMostRecent = myBidPresent && myLotStanding.most_recent_bid
+    const myBidWinning =
+      myBidPresent && get(myLotStanding, s => s.active_bid.is_winning)
+    const myMaxBid = get(myMostRecent, bid => bid.max_bid.display)
     return (
       <Box pt={2} pb={2}>
         <Flex width="100%" flexDirection="row" justifyContent="space-between">
@@ -79,7 +78,7 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
           >
             {myBidPresent && (
               <Box pt={0.5}>
-                {activeBid.is_winning ? <WinningBid /> : <LosingBid />}
+                {myBidWinning ? <WinningBid /> : <LosingBid />}
               </Box>
             )}
             <Serif size="5t" weight="semibold" pl={0.5}>
@@ -123,13 +122,14 @@ export const ArtworkSidebarCurrentBidInfoFragmentContainer = createFragmentConta
         }
       }
       myLotStanding(live: true) {
+        active_bid {
+          is_winning
+        }
         most_recent_bid {
+          is_winning
           max_bid {
             display
           }
-        }
-        active_bid {
-          is_winning
         }
       }
     }

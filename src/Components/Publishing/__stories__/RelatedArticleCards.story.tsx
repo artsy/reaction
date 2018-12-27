@@ -42,6 +42,22 @@ storiesOf("Publishing/Related Articles/ArticleCards", module)
       </MaxWidthContainer>
     )
   })
+  .add("Block: Custom color", () => {
+    const article = clone({
+      ...StandardArticle,
+      seriesArticle: SeriesArticleSponsored,
+    } as ArticleData)
+
+    return (
+      <MaxWidthContainer>
+        <ArticleCardsBlock
+          color="coral"
+          article={article}
+          relatedArticles={[StandardArticle, VideoArticle]}
+        />
+      </MaxWidthContainer>
+    )
+  })
   .add("ArticleCards", () => {
     return (
       <MaxWidthContainer>

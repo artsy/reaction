@@ -1,13 +1,13 @@
-import { Sans } from "@artsy/palette"
-import { garamond, unica } from "Assets/Fonts"
-import { pMedia } from "Components/Helpers"
+import { Box, color, Flex, Sans, Serif } from "@artsy/palette"
+import React, { Component } from "react"
+import track, { TrackingProp } from "react-tracking"
+import styled from "styled-components"
+
+import { media } from "Components/Helpers"
 import { Byline } from "Components/Publishing/Byline/Byline"
 import { Date } from "Components/Publishing/Byline/Date"
 import { formatTime, getMediaDate } from "Components/Publishing/Constants"
 import { IconVideoPlay } from "Components/Publishing/Icon/IconVideoPlay"
-import React, { Component } from "react"
-import track, { TrackingProp } from "react-tracking"
-import styled from "styled-components"
 import { crop } from "Utils/resizer"
 
 interface Props {
@@ -22,17 +22,15 @@ interface Props {
   tracking?: TrackingProp
 }
 
-interface LinkProps extends Props, React.HTMLProps<HTMLLinkElement> {
-  published: boolean
-}
-
 @track()
-export class ArticleCard extends Component<Props, null> {
+export class ArticleCard extends Component<Props> {
   public static defaultProps: Partial<Props>
 
-  isUnpublishedMedia() {
-    const { media, layout } = this.props.article
-    return layout === "video" && media && !media.published
+  isUnpublishedMedia = () => {
+    const { article } = this.props
+    return (
+      article.layout === "video" && article.media && !article.media.published
+    )
   }
 
   isEditing = () => {
@@ -48,20 +46,24 @@ export class ArticleCard extends Component<Props, null> {
   }
 
   renderDate = () => {
-    const { article, color, editDate } = this.props
-    const { media } = article
+    const { article, editDate } = this.props
 
     if (editDate) {
       return (
-        <MediaDate size="3t" weight="medium">
+        <Sans size="3t" weight="medium">
           {editDate}
-        </MediaDate>
+        </Sans>
       )
-    } else if (media) {
+    } else if (article.media) {
       return this.renderMediaDate()
     } else {
       return (
-        <Byline article={article} color={color} size="3t" layout="condensed" />
+        <Byline
+          article={article}
+          color={this.props.color}
+          size="3t"
+          layout="condensed"
+        />
       )
     }
   }
@@ -73,10 +75,12 @@ export class ArticleCard extends Component<Props, null> {
 
     if (this.isUnpublishedMedia()) {
       return (
-        <MediaDate size="3t" weight="medium">
-          <span>Available </span>
-          <Date format="monthYear" date={mediaDate} />
-        </MediaDate>
+        <Sans size="3t" weight="medium">
+          <Flex alignItems="flex-end">
+            <Box mr="5px">Available</Box>
+            <Date format="monthYear" date={mediaDate} />
+          </Flex>
+        </Sans>
       )
     } else {
       return <Date layout="condensed" size="3t" date={date} />
@@ -84,18 +88,22 @@ export class ArticleCard extends Component<Props, null> {
   }
 
   renderMediaCoverInfo = () => {
-    const { article, color } = this.props
+    const { article } = this.props
 
     if (this.isUnpublishedMedia()) {
-      return <MediaComingSoon>Coming Soon</MediaComingSoon>
+      return (
+        <MediaContainer>
+          <Sans size={["8", "8", "10", "10"]}>Coming Soon</Sans>
+        </MediaContainer>
+      )
     } else {
       return (
-        <MediaPlay>
-          <IconVideoPlay color={color} />
-          <Sans size="3t" weight="medium">
+        <MediaContainer justifyContent="space-between" alignItems="flex-end">
+          <IconVideoPlay color={this.props.color} />
+          <Sans size="3t" weight="medium" lineHeight="1em">
             {formatTime(article.media.duration)}
           </Sans>
-        </MediaPlay>
+        </MediaContainer>
       )
     }
   }
@@ -116,13 +124,12 @@ export class ArticleCard extends Component<Props, null> {
   render() {
     const {
       article,
-      color,
       editDescription,
       editImage,
       editTitle,
       series,
     } = this.props
-    const { layout, media } = article
+    const { layout } = article
     const isUnpublishedMedia = this.isUnpublishedMedia()
 
     const description = editDescription ? editDescription : article.description
@@ -134,42 +141,60 @@ export class ArticleCard extends Component<Props, null> {
     return (
       <ArticleCardContainer
         href={isUnpublishedMedia ? "" : article.slug}
-        color={color}
+        color={this.props.color}
         className="ArticleCard"
         published={!isUnpublishedMedia}
         onClick={this.openLink}
       >
-        <TextContainer>
-          <div>
-            {series && (
-              <SeriesTitle size="3t" weight="medium">
-                {series.title}
-              </SeriesTitle>
+        <Flex
+          flexDirection={["column-reverse", "column-reverse", "row", "row"]}
+          p={[20, 20, 30, 30]}
+        >
+          <Flex
+            width={["100%", "100%", "50%", "50%"]}
+            mb={[0, 0, "5px", "5px"]}
+            flexDirection="column"
+            justifyContent="space-between"
+          >
+            <div>
+              {series && (
+                <Sans size="3t" weight="medium" mb={1}>
+                  {series.title}
+                </Sans>
+              )}
+              <Sans size={["8", "8", "10", "10"]} mb={20}>
+                {title}
+              </Sans>
+
+              <Serif size={["4", "4", "5", "5"]} mb={20}>
+                {description}
+              </Serif>
+            </div>
+            {this.renderDate()}
+          </Flex>
+
+          <ImageContainer
+            width={["100%", "100%", "50%", "50%"]}
+            ml={[0, 0, 30, 30]}
+            mb={[10, 10, 0, 0]}
+          >
+            {editImage ? (
+              editImage
+            ) : (
+              <Image
+                src={crop(article.thumbnail_image, { width: 680, height: 450 })}
+              />
             )}
-            <Title>{title}</Title>
-
-            <Description>{description}</Description>
-          </div>
-          {this.renderDate()}
-        </TextContainer>
-
-        <ImageContainer>
-          {editImage ? (
-            editImage
-          ) : (
-            <Image
-              src={crop(article.thumbnail_image, { width: 680, height: 450 })}
-            />
-          )}
-          {media && layout === "video" && this.renderMediaCoverInfo()}
-        </ImageContainer>
+            {article.media && layout === "video" && this.renderMediaCoverInfo()}
+          </ImageContainer>
+        </Flex>
       </ArticleCardContainer>
     )
   }
 }
 
 ArticleCard.defaultProps = {
-  color: "black",
+  color: color("black100"),
 }
 
 const Image = styled.img`
@@ -181,29 +206,22 @@ const Image = styled.img`
   display: block;
 `
 
-const ImageContainer = styled.div`
+const ImageContainer = styled(Box)`
   position: relative;
-  width: 50%;
   height: inherit;
-  margin-left: 30px;
-  ${pMedia.md`
-    width: 100%;
-    margin-left: 0;
-    margin-bottom: 10px;
-  `};
+  background: white;
 `
 
-export const ArticleCardContainer = styled.a`
+export const ArticleCardContainer = styled.a<{ published: boolean }>`
   border: 1px solid;
   border-radius: 2px;
-  color: ${(props: LinkProps) => props.color};
-  cursor: ${(props: LinkProps) => (props.published ? "pointer" : "default")};
+  color: ${props => props.color};
+  cursor: ${props => (props.published ? "pointer" : "default")};
   text-decoration: none;
-  padding: 30px;
-  display: flex;
+  display: block;
 
   ${Image} {
-    opacity: ${(props: LinkProps) => (props.published ? "1" : "0.7")};
+    opacity: ${props => (props.published ? "1" : "0.7")};
   }
 
   &:hover {
@@ -211,82 +229,20 @@ export const ArticleCardContainer = styled.a`
       opacity: 0.7;
     }
   }
-
-  ${ImageContainer} {
-    background: ${(props: LinkProps) =>
-      props.color === "white" ? "black" : "white"};
-  }
-  ${pMedia.md`
-    flex-direction: column-reverse;
-    padding: 20px;
-  `};
 `
 
-const TextContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 50%;
-  margin-bottom: 5px;
-  ${pMedia.md`
-    width: 100%;
-    margin-bottom: 0;
-  `};
-`
-
-const Title = styled.div`
-  ${unica("s45")};
-  margin-bottom: 30px;
-  ${pMedia.md`
-    ${unica("s32")}
-  `};
-`
-
-const SeriesTitle = styled(Sans)`
-  margin-bottom: 10px;
-`
-
-const Description = styled.div`
-  ${garamond("s23")};
-  ${pMedia.md`
-    ${garamond("s19")}
-    margin-bottom: 20px;
-  `};
-`
-
-const MediaDate = styled(Sans)`
-  display: flex;
-  align-items: flex-end;
-
-  span {
-    margin-right: 5px;
-  }
-`
-
-const Media = styled.div`
+const MediaContainer = styled(Flex)`
   position: absolute;
   left: 20px;
-  bottom: 20px;
   right: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-`
+  bottom: 20px;
 
-const MediaPlay = styled(Media)`
   svg {
-    width: 40px;
+    height: 40px;
   }
-  ${pMedia.md`
+  ${media.md`
     svg {
-      width: 30px;
+      height: 30px;
     }
-  `};
-`
-
-const MediaComingSoon = styled(Media)`
-  ${unica("s45")};
-  ${pMedia.md`
-    ${unica("s32")}
   `};
 `

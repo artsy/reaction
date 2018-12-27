@@ -65,6 +65,18 @@ return {
               "name": "first",
               "value": 8,
               "type": "Int"
+            },
+            {
+              "kind": "Literal",
+              "name": "for_sale",
+              "value": true,
+              "type": "Boolean"
+            },
+            {
+              "kind": "Literal",
+              "name": "sort",
+              "value": "PUBLISHED_AT_DESC",
+              "type": "ArtworkSorts"
             }
           ],
           "concreteType": "ArtworkConnection",
@@ -98,5 +110,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'a07df11b73078e49df3a780ff9c6897d';
+(node as any).hash = '2c9dee6778e5f4a563e50d380ae3ef61';
 export default node;

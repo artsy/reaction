@@ -32,6 +32,7 @@ export const ArtworkBanner: React.SFC<ArtworkBannerProps> = props => {
         meta="In auction"
         name={artworkContextAuction.name}
         subHeadline={partner.name}
+        href={artworkContextAuction.href}
       />
     )
   }
@@ -50,6 +51,7 @@ export const ArtworkBanner: React.SFC<ArtworkBannerProps> = props => {
         meta="At fair"
         name={artworkContextFair.name}
         subHeadline={partner.name}
+        href={artworkContextFair.href}
       />
     )
   }
@@ -73,6 +75,7 @@ export const ArtworkBanner: React.SFC<ArtworkBannerProps> = props => {
         meta={showLine}
         name={artworkContextPartnerShow.name}
         subHeadline={partner.name}
+        href={artworkContextPartnerShow.href}
       />
     )
   }
@@ -90,6 +93,7 @@ export const ArtworkBannerFragmentContainer = createFragmentContainer(
           icon {
             url(version: "square140")
           }
+          href
         }
       }
       # This aliasing selection of the context is done to work around a type generator bug, see below.

@@ -1,6 +1,4 @@
-export type RedirectPredicate<Arguments = any> = (
-  args: Arguments
-) => string | void
+export type RedirectPredicate<Arguments> = (args: Arguments) => string | void
 
 export interface RedirectRecord<Arguments> {
   path: string

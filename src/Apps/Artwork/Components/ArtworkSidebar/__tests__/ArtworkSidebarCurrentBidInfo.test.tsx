@@ -9,6 +9,7 @@ import {
   OpenAuctionReserveMetWithMyLosingBid,
   OpenAuctionReserveMetWithMyWinningBid,
   OpenAuctionReserveNoBids,
+  OpenAuctionReserveNotMetIncreasingOwnBid,
   OpenAuctionReserveNotMetWithBids,
 } from "Apps/__tests__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarCurrentBidInfo"
 import { ArtworkSidebarCurrentBidInfoFragmentContainer } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarCurrentBidInfo"
@@ -77,7 +78,7 @@ describe("ArtworkSidebarCurrentBidInfo", () => {
     })
   })
 
-  describe("open auction with no reserve with bids present ", () => {
+  describe("open auction with no reserve with bids present", () => {
     it("displays proper current bid info including bid count", async () => {
       const wrapper = await getWrapper(OpenAuctionNoReserveWithBids)
 
@@ -132,6 +133,15 @@ describe("ArtworkSidebarCurrentBidInfo", () => {
 
       expect(wrapper.text()).toContain("Your max: $400")
       expect(wrapper.find(LosingBid).length).toBe(1)
+    })
+  })
+
+  describe("for open auction with me increasing my max bid while winning", () => {
+    it("displays max bid and winning indicator", async () => {
+      const wrapper = await getWrapper(OpenAuctionReserveNotMetIncreasingOwnBid)
+
+      expect(wrapper.text()).toContain("Your max: $15,000")
+      expect(wrapper.find(WinningBid).length).toBe(1)
     })
   })
 })

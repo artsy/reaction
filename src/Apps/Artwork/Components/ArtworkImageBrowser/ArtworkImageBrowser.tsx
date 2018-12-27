@@ -65,7 +65,7 @@ export class LargeArtworkImageBrowser extends React.Component<
                   <Flex
                     flexDirection="column"
                     justifyContent="center"
-                    px={3}
+                    px={hasMultipleImages ? 3 : 0}
                     key={image.id}
                   >
                     <Lightbox
@@ -213,7 +213,7 @@ const Container = styled(Box)`
 `
 
 const DesktopImage = styled(ResponsiveImage)`
-  padding-bottom: 660px; /* Responsive max height */
+  padding-bottom: 60vh; /* Responsive max height */
 `
 
 const PageIndicator = styled.span`

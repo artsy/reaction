@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
+export type OrderParticipantEnum = "BUYER" | "SELLER" | "%future added value";
 export type submitPendingOfferInput = {
     readonly offerId: string;
     readonly clientMutationId?: string | null;
@@ -13,6 +14,7 @@ export type CounterSubmitMutationResponse = {
         readonly orderOrError: ({
             readonly order?: ({
                 readonly state: string | null;
+                readonly awaitingResponseFrom?: OrderParticipantEnum | null;
             }) | null;
             readonly error?: ({
                 readonly type: string;
@@ -40,6 +42,9 @@ mutation CounterSubmitMutation(
         order {
           __typename
           state
+          ... on OfferOrder {
+            awaitingResponseFrom
+          }
           __id: id
         }
       }
@@ -125,6 +130,19 @@ v4 = {
   "storageKey": null
 },
 v5 = {
+  "kind": "InlineFragment",
+  "type": "OfferOrder",
+  "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "awaitingResponseFrom",
+      "args": null,
+      "storageKey": null
+    }
+  ]
+},
+v6 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__typename",
@@ -136,7 +154,7 @@ return {
   "operationKind": "mutation",
   "name": "CounterSubmitMutation",
   "id": null,
-  "text": "mutation CounterSubmitMutation(\n  $input: submitPendingOfferInput!\n) {\n  ecommerceSubmitPendingOffer(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        order {\n          __typename\n          state\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation CounterSubmitMutation(\n  $input: submitPendingOfferInput!\n) {\n  ecommerceSubmitPendingOffer(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        order {\n          __typename\n          state\n          ... on OfferOrder {\n            awaitingResponseFrom\n          }\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -178,7 +196,8 @@ return {
                     "plural": false,
                     "selections": [
                       v3,
-                      v4
+                      v4,
+                      v5
                     ]
                   }
                 ]
@@ -212,7 +231,7 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v5,
+              v6,
               v2,
               {
                 "kind": "InlineFragment",
@@ -227,9 +246,10 @@ return {
                     "concreteType": null,
                     "plural": false,
                     "selections": [
-                      v5,
+                      v6,
                       v3,
-                      v4
+                      v4,
+                      v5
                     ]
                   }
                 ]
@@ -242,5 +262,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'ca6648f9c2ff6add7b5bc3bf264610b8';
+(node as any).hash = '519236c531b3a3899043ee97c452894d';
 export default node;

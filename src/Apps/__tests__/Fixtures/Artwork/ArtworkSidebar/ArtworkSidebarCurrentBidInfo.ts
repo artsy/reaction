@@ -157,19 +157,29 @@ export const OpenAuctionReserveMetWithBids = {
   myLotStanding: null,
 }
 
+export const OpenAuctionReserveNotMetIncreasingOwnBid = {
+  _id: "open_auction_reserve_not_met_increading_own_bid",
+  ...OpenAuctionReserveNotMetWithBids,
+  myLotStanding: [
+    {
+      most_recent_bid: {
+        is_winning: false,
+        max_bid: { display: "$15,000" },
+      },
+      active_bid: {
+        is_winning: true,
+      },
+    },
+  ],
+}
+
 export const OpenAuctionReserveMetWithMyWinningBid = {
   _id: "open_auction_reserve_met_my_winning_bid",
   ...OpenAuctionReserveMetWithBids,
   myLotStanding: [
     {
-      most_recent_bid: {
-        max_bid: {
-          display: "$15,000",
-        },
-      },
-      active_bid: {
-        is_winning: true,
-      },
+      most_recent_bid: { is_winning: true, max_bid: { display: "$15,000" } },
+      active_bid: { is_winning: true },
     },
   ],
 }
@@ -179,14 +189,8 @@ export const OpenAuctionReserveMetWithMyLosingBid = {
   ...OpenAuctionReserveMetWithBids,
   myLotStanding: [
     {
-      most_recent_bid: {
-        max_bid: {
-          display: "$400",
-        },
-      },
-      active_bid: {
-        is_winning: false,
-      },
+      most_recent_bid: { is_winning: false, max_bid: { display: "$400" } },
+      active_bid: null,
     },
   ],
 }

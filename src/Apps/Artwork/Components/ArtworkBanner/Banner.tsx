@@ -1,5 +1,7 @@
-import { Avatar, Flex, Sans, Serif } from "@artsy/palette"
+import { Avatar, Flex, Link, Sans, Serif } from "@artsy/palette"
 import React from "react"
+import { data as sd } from "sharify"
+import styled from "styled-components"
 import { Media } from "Utils/Responsive"
 
 export interface BannerProps {
@@ -7,30 +9,48 @@ export interface BannerProps {
   imageUrl?: string
   /** Fallback partner initials in case image is not there. */
   initials?: string
-  /** in auction / at fair / in show */
+  /** In auction / at fair / in show */
   meta?: string
-  /** auction / fair / show name */
+  /** Auction / fair / show name */
   name?: string
-  /** partner name */
+  /** Partner name */
   subHeadline?: string
+  /** Link to auction */
+  href?: string
+}
+
+const StyledLink = styled(Link)`
+  &:hover {
+    text-decoration: none;
+  }
+`
+
+const withLink = (href: string, children: React.ReactNode) => {
+  if (href) {
+    return (
+      <StyledLink noUnderline href={sd.APP_URL + href}>
+        {children}
+      </StyledLink>
+    )
+  }
+
+  return children
 }
 
 export const Banner: React.SFC<BannerProps> = props => {
   return (
     <>
-      <Media at="xs">
-        <SmallBanner {...props} />
-      </Media>
+      <Media at="xs">{withLink(props.href, <SmallBanner {...props} />)}</Media>
       <Media greaterThan="xs">
-        <LargeBanner {...props} />
+        {withLink(props.href, <LargeBanner {...props} />)}
       </Media>
     </>
   )
 }
 
 export const LargeBanner = props => (
-  <Flex flexDirection="row">
-    <Avatar size="sm" src={props.imageUrl} initials={props.initials} />
+  <Flex flexDirection="row" mt={4}>
+    <Avatar size="md" src={props.imageUrl} initials={props.initials} />
     <Flex flexDirection="column" justifyContent="center" ml={2}>
       <Sans weight="medium" size="2">
         {props.meta}
@@ -44,7 +64,7 @@ export const LargeBanner = props => (
 )
 
 export const SmallBanner = props => (
-  <Flex flexDirection="row" width="100%" justifyContent="space-between">
+  <Flex flexDirection="row" width="100%" justifyContent="space-between" mt={2}>
     <Flex flexDirection="column" justifyContent="center" mr={2}>
       <Sans weight="medium" size="2">
         {props.meta}
