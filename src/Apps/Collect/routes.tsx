@@ -1,4 +1,3 @@
-import { Route } from "Artsy/Router/Route"
 import { RouteConfig } from "found"
 import React from "react"
 import { graphql } from "react-relay"
@@ -19,7 +18,7 @@ const initializeVariablesWithFilterState = (params, props) => {
 }
 
 export const routes: RouteConfig[] = [
-  new Route({
+  {
     path: "/collect/:medium?",
     Component: CollectApp,
     query: graphql`
@@ -62,8 +61,8 @@ export const routes: RouteConfig[] = [
       return <AnalyticsProvider {...props} Component={Component} />
     },
     prepareVariables: initializeVariablesWithFilterState,
-  }),
-  new Route({
+  },
+  {
     path: "/collection/:slug",
     Component: CollectionApp,
     query: graphql`
@@ -101,5 +100,5 @@ export const routes: RouteConfig[] = [
       return <AnalyticsProvider {...props} Component={Component} />
     },
     prepareVariables: initializeVariablesWithFilterState,
-  }),
+  },
 ]

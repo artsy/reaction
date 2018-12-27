@@ -12,6 +12,7 @@ import { loadComponents } from "loadable-components"
 import React, { ComponentType } from "react"
 import { getUser } from "Utils/getUser"
 import { RouterConfig } from "./"
+import { createRouteConfig } from "./Utils/createRouteConfig"
 
 interface Resolve {
   ClientApp: ComponentType<any>
@@ -58,7 +59,7 @@ export function buildClientApp(config: RouterConfig): Promise<Resolve> {
         historyProtocol: getHistoryProtocol(),
         historyMiddlewares,
         historyOptions: history.options,
-        routeConfig: routes,
+        routeConfig: createRouteConfig(routes),
         resolver,
         render: renderArgs => (
           <ScrollManager renderArgs={renderArgs}>

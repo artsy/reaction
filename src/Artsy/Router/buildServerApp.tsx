@@ -15,7 +15,8 @@ import { getUser } from "Utils/getUser"
 import { createMediaStyle } from "Utils/Responsive"
 import { trace } from "Utils/trace"
 import { RouterConfig } from "./"
-import { matchingMediaQueriesForUserAgent } from "./matchingMediaQueriesForUserAgent"
+import { createRouteConfig } from "./Utils/createRouteConfig"
+import { matchingMediaQueriesForUserAgent } from "./Utils/matchingMediaQueriesForUserAgent"
 
 interface Resolve {
   ServerApp?: ComponentType<any>
@@ -52,7 +53,7 @@ export function buildServerApp(config: ServerRouterConfig): Promise<Resolve> {
           getFarceResult({
             url,
             historyMiddlewares,
-            routeConfig: routes,
+            routeConfig: createRouteConfig(routes),
             resolver,
             render,
           })

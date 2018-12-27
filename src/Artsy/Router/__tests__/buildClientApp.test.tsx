@@ -5,7 +5,6 @@ import { createMockNetworkLayer } from "DevTools"
 import { mount } from "enzyme"
 import React from "react"
 import { graphql } from "react-relay"
-import { Route } from "../Route"
 
 describe("buildClientApp", () => {
   it("resolves with a <ClientApp /> component", async () => {
@@ -151,7 +150,7 @@ describe("buildClientApp", () => {
             protocol: "memory",
           },
           routes: [
-            new Route({
+            {
               path: "/",
               Component: () => null,
               query: graphql`
@@ -161,7 +160,7 @@ describe("buildClientApp", () => {
                   }
                 }
               `,
-            }),
+            },
           ],
           context: { relayEnvironment },
         })

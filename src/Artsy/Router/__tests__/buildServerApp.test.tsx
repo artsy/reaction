@@ -11,7 +11,6 @@ import React from "react"
 import { Title } from "react-head"
 import { graphql } from "react-relay"
 import { Media } from "Utils/Responsive"
-import { Route } from "../Route"
 
 jest.mock("loadable-components/server", () => ({
   getLoadableState: () =>
@@ -33,11 +32,11 @@ describe("buildServerApp", () => {
   > = {}) => {
     const { ServerApp, ...rest } = await buildServerApp({
       routes: [
-        new Route({
+        {
           path: "/",
           Component,
-        }),
-        new Route({
+        },
+        {
           path: "/relay",
           Component,
           query: graphql`
@@ -47,7 +46,7 @@ describe("buildServerApp", () => {
               }
             }
           `,
-        }),
+        },
       ],
       url,
       userAgent: "A random user-agent",
