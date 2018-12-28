@@ -1,4 +1,5 @@
 import { PartnerArtworkGrid_artwork } from "__generated__/PartnerArtworkGrid_artwork.graphql"
+import { withContext } from "Artsy/SystemContext"
 import ArtworkGrid from "Components/ArtworkGrid"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -8,21 +9,28 @@ import { Header } from "../../Header"
 export const PartnerArtworkGridFragmentContainer = createFragmentContainer<{
   artwork: PartnerArtworkGrid_artwork
 }>(
-  ({
-    artwork: {
-      partner: { artworksConnection, href, name },
-    },
-  }) => {
-    return (
-      <>
-        <Header
-          title={`Other works from ${name}`}
-          buttonHref={sd.APP_URL + href}
-        />
-        <ArtworkGrid artworks={artworksConnection} columnCount={[2, 3, 4]} />
-      </>
-    )
-  },
+  withContext(
+    ({
+      artwork: {
+        partner: { artworksConnection, href, name },
+      },
+      mediator,
+    }) => {
+      return (
+        <>
+          <Header
+            title={`Other works from ${name}`}
+            buttonHref={sd.APP_URL + href}
+          />
+          <ArtworkGrid
+            artworks={artworksConnection}
+            columnCount={[2, 3, 4]}
+            mediator={mediator}
+          />
+        </>
+      )
+    }
+  ),
   graphql`
     fragment PartnerArtworkGrid_artwork on Artwork
       @argumentDefinitions(excludeArtworkIDs: { type: "[String!]" }) {
