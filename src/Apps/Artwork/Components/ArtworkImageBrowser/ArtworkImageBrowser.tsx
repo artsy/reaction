@@ -113,7 +113,7 @@ export class SmallArtworkImageBrowser extends React.Component<
       infinite: false,
       // TODO: Future optimization should it be needed
       // lazyLoad: "ondemand",
-      speed: 500,
+      speed: 300,
       slidesToShow: 1,
       slidesToScroll: 1,
     }

@@ -32,9 +32,6 @@ export const RecentlyViewed: React.SFC<RecentlyViewedProps> = props => {
               <Spacer mb={3} />
 
               <Carousel
-                settings={{
-                  slidesToScroll: 5,
-                }}
                 data={me.recentlyViewedArtworks.edges as object[]}
                 render={artwork => {
                   const {

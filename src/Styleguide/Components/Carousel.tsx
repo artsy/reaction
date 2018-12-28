@@ -40,6 +40,7 @@ export const LargeCarousel = (props: Props) => {
     infinite: true,
     speed: 500,
     variableWidth: true,
+    slidesToScroll: 5,
     ...props.settings,
   }
 
@@ -74,10 +75,10 @@ export const LargeCarousel = (props: Props) => {
 export const SmallCarousel = (props: Props) => {
   const slickConfig = {
     arrows: false,
-    dots: true,
-    infinite: true,
+    dots: false,
+    speed: 300,
     slidesToShow: 1,
-    speed: 500,
+    slidesToScroll: 1,
     swipeToSlide: true,
     touchThreshold: 60,
     variableWidth: true,
