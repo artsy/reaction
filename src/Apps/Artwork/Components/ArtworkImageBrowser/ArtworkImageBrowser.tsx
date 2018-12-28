@@ -189,6 +189,8 @@ const ArrowButtonContainer = styled(Flex)`
 `
 
 const Container = styled(Box)`
+  user-select: none;
+
   ${media.xs`
     .slick-dots {
       display: inline-block;

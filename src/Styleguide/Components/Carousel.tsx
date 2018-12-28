@@ -37,7 +37,7 @@ export const LargeCarousel = (props: Props) => {
   const slickConfig = {
     arrows: false,
     draggable: false,
-    infinite: true,
+    infinite: false,
     speed: 500,
     variableWidth: true,
     slidesToScroll: 5,
