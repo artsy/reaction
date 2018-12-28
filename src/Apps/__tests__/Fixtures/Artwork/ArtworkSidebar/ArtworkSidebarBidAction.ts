@@ -62,7 +62,7 @@ export const ArtworkFromTimedAuctionRegistrationClosed = {
 }
 
 export const ArtworkFromLiveAuctionRegistrationOpen = {
-  _id: "artwork_from_open_non_live_auction",
+  _id: "artwork_from_open_live_auction_open_registration",
   sale: {
     registrationStatus: null,
     is_preview: false,
@@ -83,7 +83,7 @@ export const ArtworkFromLiveAuctionRegistrationOpen = {
 }
 
 export const ArtworkFromLiveAuctionRegistrationClosed = {
-  _id: "artwork_from_open_non_live_auction",
+  _id: "artwork_from_open_live_auction_closed_registration",
   sale: {
     registrationStatus: null,
     is_preview: false,
@@ -104,7 +104,7 @@ export const ArtworkFromLiveAuctionRegistrationClosed = {
 }
 
 export const ArtworkFromClosedAuction = {
-  _id: "artwork_from_open_non_live_auction",
+  _id: "artwork_from_closed_auction",
   sale: {
     registrationStatus: null,
     is_preview: false,

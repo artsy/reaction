@@ -1,4 +1,5 @@
 import { Avatar, Flex, Link, Sans, Serif } from "@artsy/palette"
+import { Truncator } from "Components/Truncator"
 import React from "react"
 import { data as sd } from "sharify"
 import styled from "styled-components"
@@ -49,8 +50,8 @@ export const Banner: React.SFC<BannerProps> = props => {
 }
 
 export const LargeBanner = props => (
-  <Flex flexDirection="row" mt={4}>
-    <Avatar size="md" src={props.imageUrl} initials={props.initials} />
+  <Flex flexDirection="row" mt={2}>
+    <Avatar size="sm" src={props.imageUrl} initials={props.initials} />
     <Flex flexDirection="column" justifyContent="center" ml={2}>
       <Sans weight="medium" size="2">
         {props.meta}
@@ -67,11 +68,13 @@ export const SmallBanner = props => (
   <Flex flexDirection="row" width="100%" justifyContent="space-between" mt={2}>
     <Flex flexDirection="column" justifyContent="center" mr={2}>
       <Sans weight="medium" size="2">
-        {props.meta}
+        <Truncator maxLineCount={1}>{props.meta}</Truncator>
       </Sans>
-      <Serif size="4t">{props.name}</Serif>
+      <Serif size="4t">
+        <Truncator maxLineCount={1}>{props.name}</Truncator>
+      </Serif>
       <Serif size="4t" color="black60">
-        {props.subHeadline}
+        <Truncator maxLineCount={1}>{props.subHeadline}</Truncator>
       </Serif>
     </Flex>
     <Avatar size="sm" src={props.imageUrl} initials={props.initials} />
