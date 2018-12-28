@@ -1,3 +1,5 @@
+import { get } from "Utils/get"
+
 export {
   ArtistArtworkGridFragmentContainer as ArtistArtworkGrid,
 } from "./ArtistArtworkGrid"
@@ -21,3 +23,12 @@ export {
 export {
   RelatedWorksArtworkGridRefetchContainer as RelatedWorksArtworkGrid,
 } from "./RelatedWorksArtworkGrid"
+
+// Utils
+
+/**
+ * Check to see if a connection's edges have a length; if false hide the grid.
+ */
+export function hideGrid(artworksConnection): boolean {
+  return Boolean(get(artworksConnection, p => !p.edges.length))
+}

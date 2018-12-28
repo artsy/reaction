@@ -1,4 +1,5 @@
 import { FairArtworkGrid_artwork } from "__generated__/FairArtworkGrid_artwork.graphql"
+import { hideGrid } from "Apps/Artwork/Components/OtherWorks/ArtworkContexts/ArtworkGrids"
 import { withContext } from "Artsy/SystemContext"
 import ArtworkGrid from "Components/ArtworkGrid"
 import React from "react"
@@ -16,6 +17,9 @@ export const FairArtworkGridFragmentContainer = createFragmentContainer<{
       },
       mediator,
     }) => {
+      if (hideGrid(artworksConnection)) {
+        return null
+      }
       return (
         <>
           <Header
@@ -35,10 +39,18 @@ export const FairArtworkGridFragmentContainer = createFragmentContainer<{
     fragment FairArtworkGrid_artwork on Artwork
       @argumentDefinitions(excludeArtworkIDs: { type: "[String!]" }) {
       fair: show(at_a_fair: true) {
+        href
+
         artworksConnection(first: 8, exclude: $excludeArtworkIDs) {
           ...ArtworkGrid_artworks
+
+          # Used to check for content
+          edges {
+            node {
+              id
+            }
+          }
         }
-        href
       }
     }
   `

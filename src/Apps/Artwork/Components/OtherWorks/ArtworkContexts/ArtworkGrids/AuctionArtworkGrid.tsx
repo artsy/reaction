@@ -1,4 +1,5 @@
 import { AuctionArtworkGrid_artwork } from "__generated__/AuctionArtworkGrid_artwork.graphql"
+import { hideGrid } from "Apps/Artwork/Components/OtherWorks/ArtworkContexts/ArtworkGrids"
 import { withContext } from "Artsy/SystemContext"
 import ArtworkGrid from "Components/ArtworkGrid"
 import React from "react"
@@ -16,6 +17,9 @@ export const AuctionArtworkGridFragmentContainer = createFragmentContainer<{
       },
       mediator,
     }) => {
+      if (hideGrid(artworksConnection)) {
+        return null
+      }
       return (
         <>
           <Header
@@ -39,6 +43,13 @@ export const AuctionArtworkGridFragmentContainer = createFragmentContainer<{
         href
         artworksConnection(first: 8, exclude: $excludeArtworkIDs) {
           ...ArtworkGrid_artworks
+
+          # Used to check for content
+          edges {
+            node {
+              id
+            }
+          }
         }
       }
     }

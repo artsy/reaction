@@ -7,6 +7,7 @@ import { ArtistCardFragmentContainer as ArtistCard } from "Styleguide/Components
 import { Header } from "./OtherWorks/Header"
 
 import { ArtworkRelatedArtists_artwork } from "__generated__/ArtworkRelatedArtists_artwork.graphql"
+import { hideGrid } from "./OtherWorks/ArtworkContexts/ArtworkGrids"
 
 export interface ArtworkRelatedArtistsProps {
   artwork: ArtworkRelatedArtists_artwork
@@ -19,6 +20,10 @@ export class ArtworkRelatedArtists extends React.Component<
     const {
       artwork: { artist },
     } = this.props
+    if (hideGrid(artist.related.artists)) {
+      return null
+    }
+
     const relatedUrl = sd.APP_URL + artist.href + "/related_artists"
 
     return (

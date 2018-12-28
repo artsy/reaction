@@ -8,6 +8,11 @@ export type AuctionArtworkGrid_artwork = {
     readonly sale: ({
         readonly href: string | null;
         readonly artworksConnection: ({
+            readonly edges: ReadonlyArray<({
+                readonly node: ({
+                    readonly id: string;
+                }) | null;
+            }) | null> | null;
             readonly " $fragmentRefs": ArtworkGrid_artworks$ref;
         }) | null;
     }) | null;
@@ -80,6 +85,36 @@ return {
               "kind": "FragmentSpread",
               "name": "ArtworkGrid_artworks",
               "args": null
+            },
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "edges",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "ArtworkEdge",
+              "plural": true,
+              "selections": [
+                {
+                  "kind": "LinkedField",
+                  "alias": null,
+                  "name": "node",
+                  "storageKey": null,
+                  "args": null,
+                  "concreteType": "Artwork",
+                  "plural": false,
+                  "selections": [
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "id",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    v0
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -90,5 +125,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'b0556a1b65313f8d35c6300cf52634ef';
+(node as any).hash = '574cf83b49d6d325fe788fc409cd6162';
 export default node;
