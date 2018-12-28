@@ -9,7 +9,7 @@ export type ArtworkSharePanel_artwork = {
         readonly url: string | null;
     }) | null> | null;
     readonly artworkMeta: ({
-        readonly description: string | null;
+        readonly share: string | null;
     }) | null;
     readonly " $refType": ArtworkSharePanel_artwork$ref;
 };
@@ -60,7 +60,7 @@ const node: ConcreteFragment = {
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "description",
+          "name": "share",
           "args": null,
           "storageKey": null
         }
@@ -75,5 +75,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '5e7a26ee0021dc37141b1ee03f88ec8d';
+(node as any).hash = '1aa535d73c67f2bc420065b91e091f3c';
 export default node;
