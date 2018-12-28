@@ -214,13 +214,15 @@ export class Accept extends Component<AcceptProps, AcceptState> {
               <Flex flexDirection="column">
                 <Flex flexDirection="column">
                   <Media greaterThan="xs">
-                    <ArtworkSummaryItem order={order} />
+                    {className => (
+                      <ArtworkSummaryItem className={className} order={order} />
+                    )}
                   </Media>
                   <ShippingSummaryItem order={order} locked />
                   <CreditCardSummaryItem order={order} locked />
                 </Flex>
                 <Media greaterThan="xs">
-                  <Spacer mb={3} />
+                  <Spacer mb={2} />
                   <Helper artworkId={artwork.id} />
                 </Media>
                 <Media at="xs">
