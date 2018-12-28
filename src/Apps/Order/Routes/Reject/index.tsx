@@ -3,6 +3,7 @@ import { Reject_order } from "__generated__/Reject_order.graphql"
 import { RejectOfferMutation } from "__generated__/RejectOfferMutation.graphql"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
 import { ConditionsOfSaleDisclaimer } from "Apps/Order/Components/ConditionsOfSaleDisclaimer"
+import { Helper } from "Apps/Order/Components/Helper"
 import {
   counterofferFlowSteps,
   OrderStepper,
@@ -23,6 +24,7 @@ import { CountdownTimer } from "Styleguide/Components/CountdownTimer"
 import { Col, Row } from "Styleguide/Elements"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { ErrorWithMetadata } from "Utils/errors"
+import { get } from "Utils/get"
 import { Media } from "Utils/Responsive"
 import { logger } from "../Respond"
 
@@ -126,6 +128,10 @@ export class Reject extends Component<RejectProps, RejectState> {
   render() {
     const { order } = this.props
     const { isCommittingMutation } = this.state
+    const artwork = get(
+      this.props,
+      props => order.lineItems.edges[0].node.artwork
+    )
 
     return (
       <>
@@ -187,11 +193,13 @@ export class Reject extends Component<RejectProps, RejectState> {
             }
             Sidebar={
               <Flex flexDirection="column">
-                <Flex flexDirection="column">
-                  <Media greaterThan="xs">
+                <Media greaterThan="xs">
+                  <Flex flexDirection="column">
                     <ArtworkSummaryItem order={order} />
-                  </Media>
-                </Flex>
+                  </Flex>
+                  <Spacer mb={2} />
+                  <Helper artworkId={artwork.id} />
+                </Media>
                 <Media at="xs">
                   <>
                     <Button
@@ -204,6 +212,8 @@ export class Reject extends Component<RejectProps, RejectState> {
                     </Button>
                     <Spacer mb={2} />
                     <ConditionsOfSaleDisclaimer />
+                    <Spacer mb={2} />
+                    <Helper artworkId={artwork.id} />
                   </>
                 </Media>
               </Flex>
@@ -239,6 +249,15 @@ export const RejectFragmentContainer = createFragmentContainer(
       lastOffer {
         id
         createdAt
+      }
+      lineItems {
+        edges {
+          node {
+            artwork {
+              id
+            }
+          }
+        }
       }
       ...ArtworkSummaryItem_order
     }

@@ -11,6 +11,15 @@ export type Reject_order = {
         readonly id: string | null;
         readonly createdAt: string | null;
     }) | null;
+    readonly lineItems: ({
+        readonly edges: ReadonlyArray<({
+            readonly node: ({
+                readonly artwork: ({
+                    readonly id: string;
+                }) | null;
+            }) | null;
+        }) | null> | null;
+    }) | null;
     readonly " $fragmentRefs": ArtworkSummaryItem_order$ref;
     readonly " $refType": Reject_order$ref;
 };
@@ -68,6 +77,59 @@ return {
       ]
     },
     {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "lineItems",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "OrderLineItemConnection",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "edges",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "OrderLineItemEdge",
+          "plural": true,
+          "selections": [
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "node",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "OrderLineItem",
+              "plural": false,
+              "selections": [
+                {
+                  "kind": "LinkedField",
+                  "alias": null,
+                  "name": "artwork",
+                  "storageKey": null,
+                  "args": null,
+                  "concreteType": "Artwork",
+                  "plural": false,
+                  "selections": [
+                    v0,
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "__id",
+                      "args": null,
+                      "storageKey": null
+                    }
+                  ]
+                },
+                v1
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
       "kind": "FragmentSpread",
       "name": "ArtworkSummaryItem_order",
       "args": null
@@ -76,5 +138,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '73a56b9bef18b094bacc24c3be7c684c';
+(node as any).hash = 'fc041097094648b1b88b8990f06d9d1a';
 export default node;

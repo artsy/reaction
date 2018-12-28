@@ -4,6 +4,7 @@ import { CounterSubmitMutation } from "__generated__/CounterSubmitMutation.graph
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
 import { ConditionsOfSaleDisclaimer } from "Apps/Order/Components/ConditionsOfSaleDisclaimer"
 import { CreditCardSummaryItemFragmentContainer as CreditCardSummaryItem } from "Apps/Order/Components/CreditCardSummaryItem"
+import { Helper } from "Apps/Order/Components/Helper"
 import {
   counterofferFlowSteps,
   OrderStepper,
@@ -25,6 +26,7 @@ import { CountdownTimer } from "Styleguide/Components/CountdownTimer"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { ErrorWithMetadata } from "Utils/errors"
+import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
 
@@ -128,6 +130,11 @@ export class CounterRoute extends Component<CounterProps, CounterState> {
     const { order } = this.props
     const { isCommittingMutation } = this.state
 
+    const artwork = get(
+      this.props,
+      props => order.lineItems.edges[0].node.artwork
+    )
+
     return (
       <>
         <HorizontalPadding px={[0, 4]}>
@@ -162,7 +169,7 @@ export class CounterRoute extends Component<CounterProps, CounterState> {
                     offerContextPrice="LAST_OFFER"
                   />
                 </Flex>
-                <Spacer mb={3} />
+                <Spacer mb={[2, 3]} />
                 <Flex flexDirection="column" />
                 <Media greaterThan="xs">
                   <Button
@@ -173,6 +180,7 @@ export class CounterRoute extends Component<CounterProps, CounterState> {
                   >
                     Submit
                   </Button>
+                  <Spacer mb={2} />
                   <ConditionsOfSaleDisclaimer textAlign="center" />
                 </Media>
               </Flex>
@@ -184,6 +192,10 @@ export class CounterRoute extends Component<CounterProps, CounterState> {
                   <ShippingSummaryItem order={order} locked />
                   <CreditCardSummaryItem order={order} locked />
                 </Flex>
+                <Media greaterThan="xs">
+                  <Spacer mb={2} />
+                  <Helper artworkId={artwork.id} />
+                </Media>
                 <Spacer mb={[2, 3]} />
                 <Media at="xs">
                   <>
@@ -197,7 +209,8 @@ export class CounterRoute extends Component<CounterProps, CounterState> {
                     </Button>
                     <Spacer mb={2} />
                     <ConditionsOfSaleDisclaimer />
-                    <Spacer mb={[2, 3]} />
+                    <Spacer mb={2} />
+                    <Helper artworkId={artwork.id} />
                   </>
                 </Media>
               </Flex>
@@ -241,6 +254,15 @@ export const CounterFragmentContainer = createFragmentContainer(
         }
         myLastOffer {
           id
+        }
+      }
+      lineItems {
+        edges {
+          node {
+            artwork {
+              id
+            }
+          }
         }
       }
       ...TransactionDetailsSummaryItem_order

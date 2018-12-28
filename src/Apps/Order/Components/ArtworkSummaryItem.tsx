@@ -14,6 +14,7 @@ import {
 
 export interface ArtworkSummaryItemProps extends FlexProps {
   order: ArtworkSummaryItem_order
+  className?: string
 }
 
 const ArtworkSummaryItem: React.SFC<ArtworkSummaryItemProps> = ({
@@ -21,6 +22,7 @@ const ArtworkSummaryItem: React.SFC<ArtworkSummaryItemProps> = ({
     lineItems,
     seller: { name },
   },
+  ...others
 }) => {
   const artwork = get({}, props => lineItems.edges[0].node.artwork)
 
@@ -41,7 +43,7 @@ const ArtworkSummaryItem: React.SFC<ArtworkSummaryItemProps> = ({
   } as any
 
   return (
-    <StackableBorderBox flexDirection="row">
+    <StackableBorderBox flexDirection="row" {...others}>
       <Box height="auto">
         <Image src={imageURL} width="55px" mr={1} />
       </Box>

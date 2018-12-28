@@ -251,7 +251,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                     </StaticCollapse>
                   </BorderedRadio>
                 </RadioGroup>
-                <Spacer mb={3} />
+                <Spacer mb={[2, 3]} />
                 <Flex flexDirection="column" />
                 <Media greaterThan="xs">
                   <Button
@@ -272,11 +272,9 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                   <ShippingSummaryItem order={order} locked />
                   <CreditCardSummaryItem order={order} locked />
                 </Flex>
-                <Spacer mb={[2, 3]} />
-                <Helper artworkId={artwork.id} />
+                <Spacer mb={2} />
                 <Media at="xs">
                   <>
-                    <Spacer mb={3} />
                     <Button
                       onClick={this.onContinueButtonPressed}
                       loading={isCommittingMutation}
@@ -285,8 +283,10 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                     >
                       Continue
                     </Button>
+                    <Spacer mb={2} />
                   </>
                 </Media>
+                <Helper artworkId={artwork.id} />
               </Flex>
             }
           />
