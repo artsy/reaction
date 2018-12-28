@@ -197,7 +197,7 @@ export class Reject extends Component<RejectProps, RejectState> {
                   <Flex flexDirection="column">
                     <ArtworkSummaryItem order={order} />
                   </Flex>
-                  <Spacer mb={3} />
+                  <Spacer mb={2} />
                   <Helper artworkId={artwork.id} />
                 </Media>
                 <Media at="xs">

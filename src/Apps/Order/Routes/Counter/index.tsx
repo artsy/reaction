@@ -169,7 +169,7 @@ export class CounterRoute extends Component<CounterProps, CounterState> {
                     offerContextPrice="LAST_OFFER"
                   />
                 </Flex>
-                <Spacer mb={3} />
+                <Spacer mb={[2, 3]} />
                 <Flex flexDirection="column" />
                 <Media greaterThan="xs">
                   <Button
@@ -210,6 +210,7 @@ export class CounterRoute extends Component<CounterProps, CounterState> {
                     <Spacer mb={2} />
                     <ConditionsOfSaleDisclaimer />
                     <Spacer mb={2} />
+                    <Helper artworkId={artwork.id} />
                   </>
                 </Media>
               </Flex>
