@@ -14,6 +14,7 @@ import { Spinner } from "@artsy/palette"
 import { RelatedWorksArtworkGrid_artwork } from "__generated__/RelatedWorksArtworkGrid_artwork.graphql"
 import { RelatedWorksArtworkGridQuery } from "__generated__/RelatedWorksArtworkGridQuery.graphql"
 import { Header } from "Apps/Artwork/Components/OtherWorks/Header"
+import { Mediator, withContext } from "Artsy/SystemContext"
 import ArtworkGrid from "Components/ArtworkGrid"
 import styled from "styled-components"
 import { Tab, Tabs } from "Styleguide/Components"
@@ -26,6 +27,7 @@ const MAX_TAB_ITEMS = 3
 interface RelatedWorksArtworkGridProps {
   relay: RelayRefetchProp
   artwork: RelatedWorksArtworkGrid_artwork
+  mediator?: Mediator
 }
 
 interface RelatedWorksArtworkGridState {
@@ -65,6 +67,7 @@ class RelatedWorksArtworkGrid extends React.Component<
         layers,
         layer: { artworksConnection },
       },
+      mediator,
     } = this.props
 
     const names = take(
@@ -86,6 +89,7 @@ class RelatedWorksArtworkGrid extends React.Component<
                     <ArtworkGrid
                       artworks={artworksConnection}
                       columnCount={[2, 3, 4]}
+                      mediator={mediator}
                     />
                   )}
                 </ArtworksContainer>
@@ -101,7 +105,7 @@ class RelatedWorksArtworkGrid extends React.Component<
 export const RelatedWorksArtworkGridRefetchContainer = createRefetchContainer<
   RelatedWorksArtworkGridProps
 >(
-  RelatedWorksArtworkGrid,
+  withContext(RelatedWorksArtworkGrid),
   graphql`
     fragment RelatedWorksArtworkGrid_artwork on Artwork
       @argumentDefinitions(layerId: { type: "String" }) {
