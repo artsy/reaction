@@ -1,4 +1,3 @@
-import { Flex, Sans, Separator, Serif, space, Spacer } from "@artsy/palette"
 import { ContextConsumer } from "Artsy/Router"
 import { Mediator } from "Artsy/SystemContext"
 import React from "react"
@@ -8,8 +7,10 @@ import { WeChatIcon } from "Styleguide/Elements/icons"
 import { FacebookIcon } from "Styleguide/Elements/icons/FacebookIcon"
 import { InstagramIcon } from "Styleguide/Elements/icons/InstagramIcon"
 import { TwitterIcon } from "Styleguide/Elements/icons/TwitterIcon"
-import { Mark } from "Styleguide/Elements/Logo"
+import { Mark as Logo } from "Styleguide/Elements/Logo"
 import { Media } from "Utils/Responsive"
+
+import { Flex, Sans, Separator, Serif, space, Spacer } from "@artsy/palette"
 
 interface Props {
   mediator?: Mediator
@@ -109,22 +110,30 @@ const FooterContainer: React.SFC<FlexDirectionProps & Props> = props => {
             </Link>
           </Serif>
         </Flex>
+
         <Media at="xs">
-          <Flex mb={1}>
+          <Flex mb={1} flexWrap="wrap">
             <PolicyLinks />
           </Flex>
         </Media>
       </Flex>
+
       <Separator mt={1} mb={2} />
-      <Flex justifyContent="space-between">
-        <Flex alignItems="center" mb={4}>
+
+      <Flex justifyContent="space-between" width="100%">
+        <Flex mb={4}>
           <Media at="xs">
-            <Mark width="20px" height="20px" mr={2} />
+            <Logo width="20px" height="20px" mr={2} />
           </Media>
+
           <Media greaterThan="xs">
-            <Mark width="30px" height="30px" mr={2} />
-            <Spacer mr={1} />
-            <PolicyLinks />
+            <Flex flexDirection="row">
+              <Logo width="30px" height="30px" mr={2} />
+              <Spacer mr={1} />
+              <Flex pt={"6px"} flexDirection="row">
+                <PolicyLinks />
+              </Flex>
+            </Flex>
           </Media>
         </Flex>
         <Flex>
@@ -157,7 +166,7 @@ const UnstyledLink = styled.a`
 `
 
 const PolicyLinks = () => (
-  <React.Fragment>
+  <>
     <Serif size="2">© 2018 Artsy</Serif>
     <Spacer mr={1} />
     <UnstyledLink href="https://www.artsy.net/terms">
@@ -171,8 +180,10 @@ const PolicyLinks = () => (
     <UnstyledLink href="https://www.artsy.net/security">
       <Serif size="2">Security</Serif>
     </UnstyledLink>
+    <Spacer mr={1} />
     <UnstyledLink href="https://www.artsy.net/conditions-of-sale">
       <Serif size="2">Conditions of Sale</Serif>
     </UnstyledLink>
-  </React.Fragment>
+    <Spacer mr={1} />
+  </>
 )
