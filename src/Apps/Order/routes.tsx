@@ -57,7 +57,14 @@ export const routes: RouteConfig[] = [
             { order }
           )
           if (redirect !== null) {
-            throw new RedirectException(redirect)
+            if (process.env.NODE_ENV === "development") {
+              console.error(
+                `Redirecting from ${location.pathname} to ${
+                  redirect.path
+                } because '${redirect.reason}'`
+              )
+            }
+            throw new RedirectException(redirect.path)
           }
         }
 

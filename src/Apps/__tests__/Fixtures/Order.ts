@@ -132,6 +132,7 @@ export const UntouchedOfferOrder = {
   mode: "OFFER",
   totalListPrice: "$16,000",
   lastOffer: OfferWithTotals,
+  awaitingResponseFrom: null,
   myLastOffer: {
     ...OfferWithTotals,
     id: "my-last-offer-id",

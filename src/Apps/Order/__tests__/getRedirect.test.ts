@@ -3,7 +3,7 @@ import { getRedirect, RedirectRecord } from "../getRedirect"
 describe("getRedirect", () => {
   const aNonMatchingPredicate = ({}) => null
   function aMatchingPredicateWithResult(matchedValue) {
-    return ({}) => matchedValue
+    return ({}) => ({ path: matchedValue, reason: "reason" })
   }
   function aRuleWithChildren(
     children: Array<RedirectRecord<{}>>
@@ -32,7 +32,7 @@ describe("getRedirect", () => {
     }
     const result = getRedirect(rule, "some-path", {})
 
-    expect(result).toEqual("the-root")
+    expect(result.path).toEqual("the-root")
   })
 
   it("passes the arguments through to the rules", () => {
@@ -61,15 +61,24 @@ describe("getRedirect", () => {
     const rule: RedirectRecord<number> = {
       path: "",
       rules: [
-        n => (n === 1 ? "/one" : null),
-        n => (n === 2 ? "/two" : null),
-        n => (n === 3 ? "/three" : null),
+        n => (n === 1 ? { path: "/one", reason: "first" } : null),
+        n => (n === 2 ? { path: "/two", reason: "second" } : null),
+        n => (n === 3 ? { path: "/three", reason: "third" } : null),
       ],
     }
 
-    expect(getRedirect(rule, "/hello", 1)).toBe("/one")
-    expect(getRedirect(rule, "/hello", 2)).toBe("/two")
-    expect(getRedirect(rule, "/hello", 3)).toBe("/three")
+    expect(getRedirect(rule, "/hello", 1)).toEqual({
+      path: "/one",
+      reason: "first",
+    })
+    expect(getRedirect(rule, "/hello", 2)).toEqual({
+      path: "/two",
+      reason: "second",
+    })
+    expect(getRedirect(rule, "/hello", 3)).toEqual({
+      path: "/three",
+      reason: "third",
+    })
     expect(getRedirect(rule, "/hello", 4)).toBe(null)
   })
 
@@ -97,7 +106,7 @@ describe("getRedirect", () => {
 
       const result = getRedirect(rule, "this-section", {})
 
-      expect(result).toEqual("this-section-route")
+      expect(result.path).toEqual("this-section-route")
     })
 
     it("matches child routes when the user is deep in this section", () => {
@@ -110,7 +119,7 @@ describe("getRedirect", () => {
 
       const result = getRedirect(rule, "this-section/and/this/page", {})
 
-      expect(result).toEqual("this-section-route")
+      expect(result.path).toEqual("this-section-route")
     })
 
     it("chooses the most specific matching child (i.e. longest path match", () => {
@@ -127,7 +136,7 @@ describe("getRedirect", () => {
 
       const result = getRedirect(rule, "this-section/and/this/page", {})
 
-      expect(result).toEqual("winning-route")
+      expect(result.path).toEqual("winning-route")
     })
 
     it("matches child routes despite slashes in current location", () => {
@@ -144,7 +153,7 @@ describe("getRedirect", () => {
         {}
       )
 
-      expect(result).toEqual("this-section-route")
+      expect(result.path).toEqual("this-section-route")
     })
   })
 })
