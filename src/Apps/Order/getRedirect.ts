@@ -1,4 +1,9 @@
-export type RedirectPredicate<Arguments> = (args: Arguments) => string | void
+export interface Redirect {
+  path: string
+  reason: string
+}
+
+export type RedirectPredicate<Arguments> = (args: Arguments) => Redirect | void
 
 export interface RedirectRecord<Arguments> {
   path: string
@@ -12,13 +17,13 @@ export function getRedirect<Arguments>(
   redirects: RedirectRecord<Arguments>,
   location: string,
   args: Arguments
-): string | null {
+): Redirect | null {
   const trimmedLocation = trimLeadingSlashes(location)
 
   for (const rule of redirects.rules) {
-    const redirectPath = rule(args)
-    if (redirectPath) {
-      return redirectPath
+    const redirect = rule(args)
+    if (redirect) {
+      return redirect
     }
   }
 

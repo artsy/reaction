@@ -85,7 +85,7 @@ export class StatusRoute extends Component<StatusProps> {
                 {buyerRejectedOffer ? (
                   <Button
                     onClick={() => {
-                      this.props.router.push(`/`)
+                      window.location.href = "/"
                     }}
                     size="large"
                     width="100%"
