@@ -14,6 +14,7 @@ interface Props extends ContextProps {
 
 interface State {
   swappedArtist: FollowArtistPopoverRow_artist
+  followed: boolean
 }
 
 const ArtistName = styled(Serif)`
@@ -27,6 +28,7 @@ const FollowButtonContainer = Box
 class FollowArtistPopoverRow extends React.Component<Props, State> {
   state = {
     swappedArtist: null,
+    followed: false,
   }
 
   handleClick(artistID: string) {
@@ -55,9 +57,28 @@ class FollowArtistPopoverRow extends React.Component<Props, State> {
         variables: {
           input: { artist_id: artistID, unfollow: false },
         },
+        optimisticUpdater: () => {
+          this.setState({
+            followed: true,
+          })
+        },
         updater: (store: RecordSourceSelectorProxy, data: SelectorData) => {
           const { node } = data.followArtist.artist.related.suggested.edges[0]
-          this.setState({ swappedArtist: node })
+
+          // Add slight delay to make UX seem a bit nicer
+          this.setState(
+            {
+              followed: true,
+            },
+            () => {
+              setTimeout(() => {
+                this.setState({
+                  swappedArtist: node,
+                  followed: false,
+                })
+              }, 500)
+            }
+          )
         },
       })
     }
@@ -83,7 +104,7 @@ class FollowArtistPopoverRow extends React.Component<Props, State> {
             size="small"
             width="70px"
           >
-            Follow
+            {this.state.followed ? "Followed" : "Follow"}
           </Button>
         </FollowButtonContainer>
       </Flex>
