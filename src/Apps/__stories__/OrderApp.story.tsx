@@ -174,7 +174,7 @@ storiesOf("Apps/Order Page/Make Offer/Review", module).add("Review", () => (
   />
 ))
 
-storiesOf("Apps/Order Page/Counter Offer", module)
+storiesOf("Apps/Order Page/Respond", module)
   .add("Respond", () => (
     <Router
       initialRoute="/orders/123/respond"
@@ -196,7 +196,6 @@ storiesOf("Apps/Order Page/Counter Offer", module)
       })}
     />
   ))
-
   .add("Review (counter)", () => (
     <Router
       initialRoute="/orders/123/review/counter"
@@ -227,53 +226,51 @@ storiesOf("Apps/Order Page/Counter Offer", module)
       })}
     />
   ))
-
-storiesOf("Apps/Order Page/Accept Offer", module).add("Review (accept)", () => (
-  <Router
-    initialRoute="/orders/123/review/accept"
-    mockResolvers={mockResolver({
-      ...OfferOrderWithShippingDetails,
-      state: "SUBMITTED",
-      stateExpiresAt: moment()
-        .add(1, "day")
-        .toISOString(),
-      lastOffer: {
-        ...OfferWithTotals,
-        id: "last-offer",
-        createdAt: moment()
-          .subtract(1, "day")
+  .add("Review (accept)", () => (
+    <Router
+      initialRoute="/orders/123/review/accept"
+      mockResolvers={mockResolver({
+        ...OfferOrderWithShippingDetails,
+        state: "SUBMITTED",
+        stateExpiresAt: moment()
+          .add(1, "day")
           .toISOString(),
-      },
-      awaitingResponseFrom: "BUYER",
-      offers: { edges: Offers },
-      buyer: Buyer,
-    })}
-  />
-))
-
-storiesOf("Apps/Order Page/Reject Offer", module).add("Review (reject)", () => (
-  // Steve was going to look into sharing these stubbed data sets, check with him before merging.
-  <Router
-    initialRoute="/orders/123/review/decline"
-    mockResolvers={mockResolver({
-      ...OfferOrderWithShippingDetails,
-      state: "SUBMITTED",
-      stateExpiresAt: moment()
-        .add(1, "day")
-        .toISOString(),
-      lastOffer: {
-        ...OfferWithTotals,
-        id: "last-offer",
-        createdAt: moment()
-          .subtract(1, "day")
+        lastOffer: {
+          ...OfferWithTotals,
+          id: "last-offer",
+          createdAt: moment()
+            .subtract(1, "day")
+            .toISOString(),
+        },
+        awaitingResponseFrom: "BUYER",
+        offers: { edges: Offers },
+        buyer: Buyer,
+      })}
+    />
+  ))
+  .add("Review (reject)", () => (
+    // Steve was going to look into sharing these stubbed data sets, check with him before merging.
+    <Router
+      initialRoute="/orders/123/review/decline"
+      mockResolvers={mockResolver({
+        ...OfferOrderWithShippingDetails,
+        state: "SUBMITTED",
+        stateExpiresAt: moment()
+          .add(1, "day")
           .toISOString(),
-      },
-      awaitingResponseFrom: "BUYER",
-      offers: { edges: Offers },
-      buyer: Buyer,
-    })}
-  />
-))
+        lastOffer: {
+          ...OfferWithTotals,
+          id: "last-offer",
+          createdAt: moment()
+            .subtract(1, "day")
+            .toISOString(),
+        },
+        awaitingResponseFrom: "BUYER",
+        offers: { edges: Offers },
+        buyer: Buyer,
+      })}
+    />
+  ))
 
 storiesOf("Apps/Order Page/Make Offer/Status", module)
   .add("submitted (ship)", () => (
