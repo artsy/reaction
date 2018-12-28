@@ -119,28 +119,9 @@ export class SmallArtworkImageBrowser extends React.Component<
     }
   }
 
-  lock = () => {
-    this.setState({
-      isLocked: true,
-    })
-  }
-
-  unlock = () => {
-    setTimeout(() => {
-      this.setState({
-        isLocked: false,
-      })
-    }, 10)
-  }
-
   render() {
     return (
-      <Container
-        onMouseMove={this.lock}
-        onMouseUp={this.unlock}
-        onTouchMove={this.lock}
-        onTouchCancel={this.unlock}
-      >
+      <Container>
         <Slider {...this.settings}>
           {this.props.images.map(image => {
             return (
@@ -193,6 +174,7 @@ const Container = styled(Box)`
 
   ${media.xs`
     .slick-dots {
+      bottom: -43px;
       display: inline-block;
       text-align: right;
     }
