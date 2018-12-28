@@ -6,11 +6,16 @@ declare const _PartnerShowArtworkGrid_artwork$ref: unique symbol;
 export type PartnerShowArtworkGrid_artwork$ref = typeof _PartnerShowArtworkGrid_artwork$ref;
 export type PartnerShowArtworkGrid_artwork = {
     readonly show: ({
-        readonly artworksConnection: ({
-            readonly " $fragmentRefs": ArtworkGrid_artworks$ref;
-        }) | null;
         readonly href: string | null;
         readonly name: string | null;
+        readonly artworksConnection: ({
+            readonly edges: ReadonlyArray<({
+                readonly node: ({
+                    readonly id: string;
+                }) | null;
+            }) | null> | null;
+            readonly " $fragmentRefs": ArtworkGrid_artworks$ref;
+        }) | null;
     }) | null;
     readonly " $refType": PartnerShowArtworkGrid_artwork$ref;
 };
@@ -49,6 +54,20 @@ return {
       "plural": false,
       "selections": [
         {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "href",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "name",
+          "args": null,
+          "storageKey": null
+        },
+        {
           "kind": "LinkedField",
           "alias": null,
           "name": "artworksConnection",
@@ -74,22 +93,38 @@ return {
               "kind": "FragmentSpread",
               "name": "ArtworkGrid_artworks",
               "args": null
+            },
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "edges",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "ArtworkEdge",
+              "plural": true,
+              "selections": [
+                {
+                  "kind": "LinkedField",
+                  "alias": null,
+                  "name": "node",
+                  "storageKey": null,
+                  "args": null,
+                  "concreteType": "Artwork",
+                  "plural": false,
+                  "selections": [
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "id",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    v0
+                  ]
+                }
+              ]
             }
           ]
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "href",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "name",
-          "args": null,
-          "storageKey": null
         },
         v0
       ]
@@ -98,5 +133,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '9b6cb04a7450f6c11ba2747f6524f0c5';
+(node as any).hash = '7141b8fc182a6bad45e6ed9c0133e35c';
 export default node;

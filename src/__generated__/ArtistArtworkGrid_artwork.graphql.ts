@@ -13,6 +13,11 @@ export type ArtistArtworkGrid_artwork = {
             readonly artworks: any | null;
         }) | null;
         readonly artworks_connection: ({
+            readonly edges: ReadonlyArray<({
+                readonly node: ({
+                    readonly id: string;
+                }) | null;
+            }) | null> | null;
             readonly " $fragmentRefs": ArtworkGrid_artworks$ref;
         }) | null;
     }) | null;
@@ -23,6 +28,13 @@ export type ArtistArtworkGrid_artwork = {
 
 const node: ConcreteFragment = (function(){
 var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v1 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__id",
@@ -43,13 +55,7 @@ return {
     }
   ],
   "selections": [
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "id",
-      "args": null,
-      "storageKey": null
-    },
+    v0,
     {
       "kind": "LinkedField",
       "alias": null,
@@ -144,15 +150,39 @@ return {
               "kind": "FragmentSpread",
               "name": "ArtworkGrid_artworks",
               "args": null
+            },
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "edges",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "ArtworkEdge",
+              "plural": true,
+              "selections": [
+                {
+                  "kind": "LinkedField",
+                  "alias": null,
+                  "name": "node",
+                  "storageKey": null,
+                  "args": null,
+                  "concreteType": "Artwork",
+                  "plural": false,
+                  "selections": [
+                    v0,
+                    v1
+                  ]
+                }
+              ]
             }
           ]
         },
-        v0
+        v1
       ]
     },
-    v0
+    v1
   ]
 };
 })();
-(node as any).hash = '0860539f2aec6c046d3b5b6418ab334d';
+(node as any).hash = 'aae34f84513daba2b1d30d535f54817c';
 export default node;

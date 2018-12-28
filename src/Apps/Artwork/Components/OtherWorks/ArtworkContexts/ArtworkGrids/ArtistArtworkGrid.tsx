@@ -1,4 +1,5 @@
 import { ArtistArtworkGrid_artwork } from "__generated__/ArtistArtworkGrid_artwork.graphql"
+import { hideGrid } from "Apps/Artwork/Components/OtherWorks/ArtworkContexts/ArtworkGrids"
 import { withContext } from "Artsy/SystemContext"
 import ArtworkGrid from "Components/ArtworkGrid"
 import React from "react"
@@ -10,7 +11,9 @@ export const ArtistArtworkGridFragmentContainer = createFragmentContainer<{
   artwork: ArtistArtworkGrid_artwork
 }>(
   withContext(({ artwork: { artist }, mediator }) => {
-    if (!artist) return null
+    if (!artist || hideGrid(artist.artworks_connection)) {
+      return null
+    }
     return (
       <>
         <Header
@@ -42,6 +45,13 @@ export const ArtistArtworkGridFragmentContainer = createFragmentContainer<{
           exclude: $excludeArtworkIDs
         ) {
           ...ArtworkGrid_artworks
+
+          # Used to check for content
+          edges {
+            node {
+              id
+            }
+          }
         }
       }
     }

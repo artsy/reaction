@@ -1,4 +1,5 @@
 import { PartnerArtworkGrid_artwork } from "__generated__/PartnerArtworkGrid_artwork.graphql"
+import { hideGrid } from "Apps/Artwork/Components/OtherWorks/ArtworkContexts/ArtworkGrids"
 import { withContext } from "Artsy/SystemContext"
 import ArtworkGrid from "Components/ArtworkGrid"
 import React from "react"
@@ -16,6 +17,9 @@ export const PartnerArtworkGridFragmentContainer = createFragmentContainer<{
       },
       mediator,
     }) => {
+      if (hideGrid(artworksConnection)) {
+        return null
+      }
       return (
         <>
           <Header
@@ -42,6 +46,13 @@ export const PartnerArtworkGridFragmentContainer = createFragmentContainer<{
           sort: PUBLISHED_AT_DESC
         ) {
           ...ArtworkGrid_artworks
+
+          # Used to check for content
+          edges {
+            node {
+              id
+            }
+          }
         }
         href
         name

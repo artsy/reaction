@@ -76,3 +76,11 @@ storiesOf("Apps/Artwork Page", module)
       />
     )
   })
+  .add("Related Grids (but no content)", () => {
+    return (
+      <MockRouter
+        routes={artworkRoutes}
+        initialRoute="/artwork2/robert-rauschenberg-and-susan-weil-female-figure"
+      />
+    )
+  })

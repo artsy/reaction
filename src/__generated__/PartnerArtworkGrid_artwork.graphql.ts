@@ -7,6 +7,11 @@ export type PartnerArtworkGrid_artwork$ref = typeof _PartnerArtworkGrid_artwork$
 export type PartnerArtworkGrid_artwork = {
     readonly partner: ({
         readonly artworksConnection: ({
+            readonly edges: ReadonlyArray<({
+                readonly node: ({
+                    readonly id: string;
+                }) | null;
+            }) | null> | null;
             readonly " $fragmentRefs": ArtworkGrid_artworks$ref;
         }) | null;
         readonly href: string | null;
@@ -86,6 +91,36 @@ return {
               "kind": "FragmentSpread",
               "name": "ArtworkGrid_artworks",
               "args": null
+            },
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "edges",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "ArtworkEdge",
+              "plural": true,
+              "selections": [
+                {
+                  "kind": "LinkedField",
+                  "alias": null,
+                  "name": "node",
+                  "storageKey": null,
+                  "args": null,
+                  "concreteType": "Artwork",
+                  "plural": false,
+                  "selections": [
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "id",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    v0
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -110,5 +145,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '2c9dee6778e5f4a563e50d380ae3ef61';
+(node as any).hash = '1d601ec42eddc7c9ec69441b09fb82f6';
 export default node;
