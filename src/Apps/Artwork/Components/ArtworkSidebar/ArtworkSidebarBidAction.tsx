@@ -103,20 +103,16 @@ export class ArtworkSidebarBidAction extends React.Component<
           {({ user }) => {
             return (
               <Box>
-                {artwork.sale.is_registration_closed && !registeredToBid ? (
-                  <Button width="100%" size="large" mt={1} disabled>
-                    Registration closed
-                  </Button>
-                ) : (
-                  <Button
-                    width="100%"
-                    size="large"
-                    mt={1}
-                    onClick={() => this.redirectToLiveBidding(user)}
-                  >
-                    Enter live bidding
-                  </Button>
-                )}
+                <Button
+                  width="100%"
+                  size="large"
+                  mt={1}
+                  onClick={() => this.redirectToLiveBidding(user)}
+                >
+                  {artwork.sale.is_registration_closed && !registeredToBid
+                    ? "Watch live bidding"
+                    : "Enter live bidding"}
+                </Button>
               </Box>
             )
           }}
