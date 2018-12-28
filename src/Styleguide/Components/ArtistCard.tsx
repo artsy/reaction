@@ -61,7 +61,7 @@ export const LargeArtistCard: SFC<Props> = props => (
       <FollowArtistButton
         artist={props.artist}
         user={props.user}
-        onOpenAuthModal={maybeAuthenticated}
+        onOpenAuthModal={() => maybeAuthenticated(props)}
         render={({ is_followed }) => {
           return (
             <Button variant="secondaryOutline" size="small" width={space(9)}>
@@ -93,7 +93,7 @@ export const SmallArtistCard: SFC<Props> = props => (
       <FollowArtistButton
         artist={props.artist}
         user={props.user}
-        onOpenAuthModal={maybeAuthenticated}
+        onOpenAuthModal={() => maybeAuthenticated(props)}
         render={({ is_followed }) => {
           return (
             <Button variant="secondaryOutline" size="small" width="70px">
