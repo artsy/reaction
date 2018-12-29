@@ -154,12 +154,22 @@ export class ArtworkSharePanel extends React.Component<
               message: "Share on Twitter",
               url: `https://twitter.com/intent/tweet?original_referer=${url}&text=${share}&url=${url}&via=artsy`,
             })}
-            {this.renderShareButton({
-              service: "mail",
-              label: "Mail",
-              message: "Share via email",
-              url: `mailto:?subject=${share}&body=Check out ${share} on Artsy: ${url}`,
-            })}
+
+            {/*
+              NOTE: Safari requires direct user interaction.
+              See: https://developer.apple.com/safari/technology-preview/release-notes/#r15
+            */}
+            <Flex flexDirection="row" flexBasis="50%" mt={2}>
+              <Icon name="mail" color="black" />
+              <Sans size="3" color="black60">
+                <UnstyledLink
+                  href={`mailto:?subject=${share}&body=Check out ${share} on Artsy: ${url}`}
+                >
+                  Mail
+                </UnstyledLink>
+              </Sans>
+            </Flex>
+
             {this.renderShareButton({
               service: "pinterest",
               label: "Pinterest",
@@ -230,5 +240,13 @@ const URLInput = styled.input`
   &::selection {
     color: ${color("white100")};
     background: ${color("purple100")};
+  }
+`
+
+const UnstyledLink = styled.a`
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
   }
 `
