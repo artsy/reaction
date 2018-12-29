@@ -5,8 +5,8 @@ import { LazyLoadComponent } from "react-lazy-load-image-component"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
-import { ArtistInfoQueryRenderer as ArtistInfo } from "./Components/ArtistInfo"
 
+import { ArtistInfoQueryRenderer as ArtistInfo } from "./Components/ArtistInfo"
 import { ArtworkBannerFragmentContainer as ArtworkBanner } from "./Components/ArtworkBanner"
 import { ArtworkDetailsFragmentContainer as ArtworkDetails } from "./Components/ArtworkDetails"
 import { ArtworkImageBrowserFragmentContainer as ArtworkImageBrowser } from "./Components/ArtworkImageBrowser"
@@ -25,6 +25,10 @@ export interface Props {
 }
 
 export const ArtworkApp: React.SFC<Props> = props => {
+  const {
+    artwork: { artists },
+  } = props
+
   return (
     <HorizontalPadding>
       <Row>
@@ -48,13 +52,24 @@ export const ArtworkApp: React.SFC<Props> = props => {
           <ArtworkDetails artwork={props.artwork} />
         </Col>
       </Row>
-      {props.artwork.artist && (
-        <Row>
-          <Col sm={8}>
-            <ArtistInfo artistID={props.artwork.artist.id} />
-          </Col>
-        </Row>
-      )}
+
+      {artists &&
+        artists.length && (
+          <>
+            {artists.map((artist, index) => {
+              const addSpacer = artists.length > 1 && index < artists.length - 1
+              return (
+                <Row key={artist.id}>
+                  <Col sm={8}>
+                    <ArtistInfo artistID={artist.id} />
+                    {addSpacer && <Spacer mb={2} />}
+                  </Col>
+                </Row>
+              )
+            })}
+          </>
+        )}
+
       <Row>
         <Col>
           <Box mt={6}>
@@ -99,6 +114,10 @@ export const ArtworkAppFragmentContainer = createFragmentContainer(
   graphql`
     fragment ArtworkApp_artwork on Artwork {
       id
+      artists {
+        _id
+        id
+      }
       artist {
         id
       }

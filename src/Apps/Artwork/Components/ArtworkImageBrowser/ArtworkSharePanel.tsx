@@ -152,7 +152,7 @@ export class ArtworkSharePanel extends React.Component<
               service: "twitter",
               label: "Twitter",
               message: "Share on Twitter",
-              url: `https://twitter.com/intent/tweet?original_referer=${url}&text=${share} ${url} via @artsy&url=${url}&via=artsy`,
+              url: `https://twitter.com/intent/tweet?original_referer=${url}&text=${share}&url=${url}&via=artsy`,
             })}
             {this.renderShareButton({
               service: "mail",

@@ -12,6 +12,10 @@ declare const _ArtworkApp_artwork$ref: unique symbol;
 export type ArtworkApp_artwork$ref = typeof _ArtworkApp_artwork$ref;
 export type ArtworkApp_artwork = {
     readonly id: string;
+    readonly artists: ReadonlyArray<({
+        readonly _id: string;
+        readonly id: string;
+    }) | null> | null;
     readonly artist: ({
         readonly id: string;
     }) | null;
@@ -43,6 +47,11 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
+    {
+      "kind": "FragmentSpread",
+      "name": "ArtworkBanner_artwork",
+      "args": null
+    },
     v0,
     {
       "kind": "LinkedField",
@@ -68,9 +77,24 @@ return {
       "args": null
     },
     {
-      "kind": "FragmentSpread",
-      "name": "ArtworkBanner_artwork",
-      "args": null
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "artists",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Artist",
+      "plural": true,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "_id",
+          "args": null,
+          "storageKey": null
+        },
+        v0,
+        v1
+      ]
     },
     {
       "kind": "FragmentSpread",
@@ -96,5 +120,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '7d5bed7cc7c0648b92e6529364ed00ec';
+(node as any).hash = 'fa0963755d111c944548379fea638d6c';
 export default node;
