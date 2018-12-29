@@ -84,3 +84,11 @@ storiesOf("Apps/Artwork Page", module)
       />
     )
   })
+  .add("Artwork with multiple artists", () => {
+    return (
+      <MockRouter
+        routes={artworkRoutes}
+        initialRoute="/artwork2/andy-warhol-twenty-years-1977-signed-slash-inscribed-by-leo-exhibition-catalogue-leo-castelli-gallery-1st-edition"
+      />
+    )
+  })

@@ -72,8 +72,8 @@ export const ExhibitionYearList: SFC<ExhibitionYearListProps> = props => {
     <Flex>
       <Sans size="2">{props.year}</Sans>
       <Flex flexDirection="column">
-        {props.exhibitions.map(exhibition => (
-          <Box key={exhibition.name} display="inline" ml={1}>
+        {props.exhibitions.map((exhibition, index) => (
+          <Box key={exhibition.name + "-" + index} display="inline" ml={1}>
             <Sans size="2" display="inline" verticalAlign="top">
               {exhibition.name}
               {", "}
