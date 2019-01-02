@@ -12,8 +12,8 @@ import { Helper } from "Apps/Order/Components/Helper"
 import { OfferInput } from "Apps/Order/Components/OfferInput"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
+import { DialogHelpers, injectDialogs } from "Apps/Order/Dialogs"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
-import { ErrorModal } from "Components/Modal/ErrorModal"
 import { StaticCollapse } from "Components/StaticCollapse"
 import { Router } from "found"
 import React, { Component } from "react"
@@ -44,6 +44,7 @@ export interface RespondProps {
   mediator: Mediator
   relay?: RelayProp
   router: Router
+  dialogs: DialogHelpers
 }
 
 export interface RespondState {
@@ -51,9 +52,6 @@ export interface RespondState {
   formIsDirty: boolean
   responseOption: "ACCEPT" | "COUNTER" | "DECLINE"
   isCommittingMutation: boolean
-  isErrorModalOpen: boolean
-  errorModalTitle: string
-  errorModalMessage: string
 }
 
 export const logger = createLogger("Order/Routes/Respond/index.tsx")
@@ -63,16 +61,30 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
     offerValue: 0,
     responseOption: null,
     isCommittingMutation: false,
-    isErrorModalOpen: false,
-    errorModalTitle: null,
-    errorModalMessage: null,
     formIsDirty: false,
   }
 
-  onContinueButtonPressed: () => void = () => {
-    if (this.state.responseOption === "COUNTER" && this.state.offerValue <= 0) {
-      this.setState({ formIsDirty: true })
-      return
+  onContinueButtonPressed = async () => {
+    if (this.state.responseOption === "COUNTER") {
+      if (this.state.offerValue <= 0) {
+        this.setState({ formIsDirty: true })
+        return
+      }
+      const listPriceCents = this.props.order.totalListPriceCents
+
+      if (this.state.offerValue * 100 < listPriceCents * 0.8) {
+        const decision = await this.confirmOfferTooLow()
+        if (!decision.accepted) {
+          return
+        }
+      }
+
+      if (this.state.offerValue * 100 > listPriceCents) {
+        const decision = await this.confirmOfferTooHigh()
+        if (!decision.accepted) {
+          return
+        }
+      }
     }
 
     const { responseOption } = this.state
@@ -96,6 +108,21 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
           )
           break
       }
+    })
+  }
+
+  confirmOfferTooLow() {
+    return this.props.dialogs.showAcceptDialog({
+      title: "Offer may be too low",
+      message:
+        "Offers within 20% of the list price are most likely to receive a response.",
+    })
+  }
+
+  confirmOfferTooHigh() {
+    return this.props.dialogs.showAcceptDialog({
+      title: "Offer higher than list price",
+      message: "You’re making an offer higher than the list price.",
     })
   }
 
@@ -154,18 +181,10 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
     )
   }
 
-  onMutationError = (errors, errorModalTitle?, errorModalMessage?) => {
+  onMutationError = (errors, title?, message?) => {
     logger.error(errors)
-    this.setState({
-      isCommittingMutation: false,
-      isErrorModalOpen: true,
-      errorModalTitle,
-      errorModalMessage,
-    })
-  }
-
-  onCloseModal = () => {
-    this.setState({ isErrorModalOpen: false })
+    this.props.dialogs.showErrorDialog({ title, message })
+    this.setState({ isCommittingMutation: false })
   }
 
   inputRef = React.createRef<HTMLInputElement>()
@@ -291,14 +310,6 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
             }
           />
         </HorizontalPadding>
-
-        <ErrorModal
-          onClose={this.onCloseModal}
-          show={this.state.isErrorModalOpen}
-          contactEmail="orders@artsy.net"
-          detailText={this.state.errorModalMessage}
-          headerText={this.state.errorModalTitle}
-        />
       </>
     )
   }
@@ -313,7 +324,7 @@ const RespondRouteWrapper = props => (
 )
 
 export const RespondFragmentContainer = createFragmentContainer(
-  RespondRouteWrapper,
+  injectDialogs(RespondRouteWrapper),
   graphql`
     fragment Respond_order on Order {
       id
@@ -321,6 +332,7 @@ export const RespondFragmentContainer = createFragmentContainer(
       state
       itemsTotal(precision: 2)
       totalListPrice(precision: 2)
+      totalListPriceCents
       stateExpiresAt
       lineItems {
         edges {
