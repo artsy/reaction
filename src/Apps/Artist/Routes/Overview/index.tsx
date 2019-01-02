@@ -15,6 +15,7 @@ import {
   ArtistBioFragmentContainer as ArtistBio,
   MarketInsightsFragmentContainer as MarketInsights,
   MAX_CHARS,
+  SelectedCareerAchievementsFragmentContainer as SelectedCareerAchievements,
   SelectedExhibitionFragmentContainer as SelectedExhibitions,
 } from "Styleguide/Components"
 
@@ -78,6 +79,12 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
       <>
         <Row>
           <Col sm={colNum}>
+            {showMarketInsights && (
+              <>
+                <SelectedCareerAchievements artist={artist} />
+                <Spacer mb={1} />
+              </>
+            )}
             {showMarketInsights && (
               <>
                 <MarketInsights artist={artist} />
@@ -197,6 +204,7 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
       ...ArtistBio_bio
       ...CurrentEvent_artist
       ...MarketInsightsArtistPage_artist
+      ...SelectedCareerAchievementsArtistPage_artist
       ...Genes_artist
       ...ArtworkFilter_artist
         @arguments(

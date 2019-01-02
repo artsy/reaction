@@ -6,6 +6,7 @@ import { ArtworkFilter_artist$ref } from "./ArtworkFilter_artist.graphql";
 import { CurrentEvent_artist$ref } from "./CurrentEvent_artist.graphql";
 import { Genes_artist$ref } from "./Genes_artist.graphql";
 import { MarketInsightsArtistPage_artist$ref } from "./MarketInsightsArtistPage_artist.graphql";
+import { SelectedCareerAchievementsArtistPage_artist$ref } from "./SelectedCareerAchievementsArtistPage_artist.graphql";
 import { SelectedExhibitions_exhibitions$ref } from "./SelectedExhibitions_exhibitions.graphql";
 declare const _Overview_artist$ref: unique symbol;
 export type Overview_artist$ref = typeof _Overview_artist$ref;
@@ -48,7 +49,7 @@ export type Overview_artist = {
             }) | null> | null;
         }) | null;
     }) | null;
-    readonly " $fragmentRefs": ArtistBio_bio$ref & CurrentEvent_artist$ref & MarketInsightsArtistPage_artist$ref & Genes_artist$ref & ArtworkFilter_artist$ref;
+    readonly " $fragmentRefs": ArtistBio_bio$ref & CurrentEvent_artist$ref & MarketInsightsArtistPage_artist$ref & SelectedCareerAchievementsArtistPage_artist$ref & Genes_artist$ref & ArtworkFilter_artist$ref;
     readonly " $refType": Overview_artist$ref;
 };
 
@@ -156,6 +157,11 @@ return {
     {
       "kind": "FragmentSpread",
       "name": "MarketInsightsArtistPage_artist",
+      "args": null
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "SelectedCareerAchievementsArtistPage_artist",
       "args": null
     },
     {
@@ -481,5 +487,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'b33db36f5022bac426bfc511d03a019a';
+(node as any).hash = '62ec95a95b945d36d707c9ac22964e9a';
 export default node;
