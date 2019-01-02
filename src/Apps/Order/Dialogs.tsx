@@ -125,22 +125,12 @@ export class DialogContainer extends Container<DialogState> {
   }
 }
 
-export type DialogHelpers = {
-  [k in Exclude<
-    keyof DialogContainer,
-    | "state"
-    | "setState"
-    | "subscribe"
-    | "unsubscribe"
-    | "maybeForceCloseExistingDialog"
-    | "setStatePromise"
-  >]: DialogContainer[k]
-}
-
 const extractDialogHelpers = ({
   showAcceptDialog,
   showErrorDialog,
-}: DialogContainer): DialogHelpers => ({ showAcceptDialog, showErrorDialog })
+}: DialogContainer) => ({ showAcceptDialog, showErrorDialog })
+
+export type DialogHelpers = ReturnType<typeof extractDialogHelpers>
 
 // make it safe to inject dialogs on components nested within a page by
 // only injecting the actual modal component if it hasn't been injected already
