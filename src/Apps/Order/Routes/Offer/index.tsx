@@ -8,7 +8,6 @@ import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSum
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { DialogHelpers, injectDialogs } from "Apps/Order/Dialogs"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
-import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
 import React, { Component } from "react"
 import {
