@@ -149,14 +149,10 @@ export function injectDialogs<R extends { dialogs: DialogHelpers }>(
       {({ isModalInTree }) => (
         <Subscribe to={[DialogContainer]}>
           {(dialogs: DialogContainer) => (
-            <>
+            <DialogContext.Provider value={{ isModalInTree: true }}>
               <Component dialogs={extractDialogHelpers(dialogs)} {...props} />
-              {!isModalInTree && (
-                <DialogContext.Provider value={{ isModalInTree: true }}>
-                  <ModalDialog {...dialogs.state.props} />
-                </DialogContext.Provider>
-              )}
-            </>
+              {!isModalInTree && <ModalDialog {...dialogs.state.props} />}
+            </DialogContext.Provider>
           )}
         </Subscribe>
       )}
