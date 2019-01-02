@@ -74,6 +74,9 @@ export enum ActionType {
    * BNMO
    */
   SubmittedOrder = "submitted_order",
+
+  ClickedBuyNow = "clicked_buy",
+  ClickedMakeOffer = "clicked_make_offer",
 }
 
 /**

@@ -10,6 +10,7 @@ import { CreditCardSummaryItemFragmentContainer } from "Apps/Order/Components/Cr
 import { OrderStepper } from "Apps/Order/Components/OrderStepper"
 import { ShippingSummaryItemFragmentContainer } from "Apps/Order/Components/ShippingSummaryItem"
 import { TransactionDetailsSummaryItemFragmentContainer } from "Apps/Order/Components/TransactionDetailsSummaryItem"
+import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { ErrorModal, ModalButton } from "Components/Modal/ErrorModal"
 import { MockBoot } from "DevTools"
 import { mount } from "enzyme"
@@ -31,6 +32,9 @@ const NOW = "2018-12-05T13:47:16.446Z"
 require("Utils/getCurrentTimeAsIsoString").__setCurrentTime(NOW)
 
 jest.mock("react-relay")
+jest.mock("Apps/Order/Utils/trackPageView", () => ({
+  trackPageView: jest.fn(),
+}))
 const commitMutation = _commitMutation as jest.Mock<any>
 
 const testOrder = {
@@ -80,6 +84,7 @@ describe("Submit Pending Counter Offer", () => {
   beforeEach(() => {
     mockPushRoute = jest.fn()
     mockMediatorTrigger = jest.fn()
+    ;(trackPageView as jest.Mock<void>).mockReset()
   })
 
   it("Shows the stepper", () => {
@@ -242,5 +247,11 @@ describe("Submit Pending Counter Offer", () => {
     component.find(Button).simulate("click")
 
     expect(component.find(ErrorModal).props().show).toBe(true)
+  })
+
+  it("tracks a pageview", () => {
+    getWrapper()
+
+    expect(trackPageView).toHaveBeenCalledTimes(1)
   })
 })

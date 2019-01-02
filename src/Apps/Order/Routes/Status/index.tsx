@@ -10,6 +10,7 @@ import {
 import { Status_order } from "__generated__/Status_order.graphql"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
+import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { Router } from "found"
 import React, { Component } from "react"
@@ -54,7 +55,7 @@ export class StatusRoute extends Component<StatusProps> {
   }
 
   componentDidMount() {
-    this.props.mediator.trigger("order:status")
+    trackPageView()
   }
 
   render() {

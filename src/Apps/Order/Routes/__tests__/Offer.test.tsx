@@ -1,5 +1,6 @@
 import { Button } from "@artsy/palette"
 import { OfferInput } from "Apps/Order/Components/OfferInput"
+import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { Input } from "Components/Input"
 import { ErrorModal, ModalButton } from "Components/Modal/ErrorModal"
 import { MockBoot } from "DevTools"
@@ -21,6 +22,9 @@ jest.mock("react-relay", () => ({
   commitMutation: jest.fn(),
   createFragmentContainer: component => component,
 }))
+jest.mock("Apps/Order/Utils/trackPageView", () => ({
+  trackPageView: jest.fn(),
+}))
 
 describe("Offer InitialMutation", () => {
   const getWrapper = someProps => {
@@ -39,6 +43,7 @@ describe("Offer InitialMutation", () => {
       router: { push: jest.fn() },
       mediator: { trigger: jest.fn() },
     } as any
+    ;(trackPageView as jest.Mock<void>).mockReset()
   })
 
   it("renders", () => {
@@ -185,5 +190,11 @@ describe("Offer InitialMutation", () => {
       component.find(ModalButton).simulate("click")
       expect(component.find(ErrorModal).props().show).toBe(false)
     })
+  })
+
+  it("tracks a pageview", () => {
+    getWrapper(testProps)
+
+    expect(trackPageView).toHaveBeenCalledTimes(1)
   })
 })

@@ -12,6 +12,7 @@ import {
 } from "Apps/Order/Components/OrderStepper"
 import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "Apps/Order/Components/ShippingSummaryItem"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
+import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
@@ -69,7 +70,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
   }
 
   componentDidMount() {
-    this.props.mediator.trigger("order:review")
+    trackPageView()
   }
 
   @track<ReviewProps>(props => ({

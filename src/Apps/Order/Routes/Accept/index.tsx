@@ -3,6 +3,7 @@ import { Accept_order } from "__generated__/Accept_order.graphql"
 import { Helper } from "Apps/Order/Components/Helper"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { ContextConsumer } from "Artsy"
+import { track } from "Artsy/Analytics"
 import { Mediator } from "Artsy/SystemContext"
 import { RouteConfig, Router } from "found"
 import React, { Component } from "react"
@@ -24,6 +25,7 @@ import { AcceptOfferMutation } from "__generated__/AcceptOfferMutation.graphql"
 import { ConditionsOfSaleDisclaimer } from "Apps/Order/Components/ConditionsOfSaleDisclaimer"
 import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "Apps/Order/Components/ShippingSummaryItem"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
+import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { CountdownTimer } from "Styleguide/Components/CountdownTimer"
 import { ErrorWithMetadata } from "Utils/errors"
@@ -49,12 +51,17 @@ interface AcceptState {
 
 const logger = createLogger("Order/Routes/Offer/index.tsx")
 
+@track()
 export class Accept extends Component<AcceptProps, AcceptState> {
   state = {
     isCommittingMutation: false,
     isErrorModalOpen: false,
     errorModalTitle: null,
     errorModalMessage: null,
+  }
+
+  componentDidMount() {
+    trackPageView()
   }
 
   onSubmit: () => void = () => {
@@ -261,7 +268,7 @@ export class Accept extends Component<AcceptProps, AcceptState> {
 const AcceptRouteWrapper = props => (
   <ContextConsumer>
     {({ mediator }) => {
-      return <Accept {...props} mediator={mediator} />
+      return <Accept mediator={mediator} {...props} />
     }}
   </ContextConsumer>
 )

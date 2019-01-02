@@ -6,6 +6,7 @@ import {
   OfferOrderPickup,
   OfferOrderWithShippingDetails,
 } from "Apps/__tests__/Fixtures/Order"
+import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { ContextProvider } from "Artsy"
 import { MockBoot, renderRelayTree } from "DevTools"
 import { render } from "enzyme"
@@ -14,6 +15,9 @@ import { graphql } from "react-relay"
 import { StatusFragmentContainer } from "../Status"
 
 jest.unmock("react-relay")
+jest.mock("Apps/Order/Utils/trackPageView", () => ({
+  trackPageView: jest.fn(),
+}))
 
 describe("Status", () => {
   const getWrapper = (order: any, headTags: JSX.Element[] = []) => {
@@ -36,6 +40,16 @@ describe("Status", () => {
       ),
     })
   }
+
+  beforeEach(() => {
+    ;(trackPageView as jest.Mock<void>).mockReset()
+  })
+
+  it("tracks a pageview", async () => {
+    await getWrapper(OfferOrderPickup)
+
+    expect(trackPageView).toHaveBeenCalledTimes(1)
+  })
 
   describe("offers", () => {
     it("should should have a title containing status", async () => {

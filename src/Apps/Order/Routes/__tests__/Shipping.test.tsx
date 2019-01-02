@@ -13,6 +13,7 @@ import {
   fillIn,
   validAddress,
 } from "Apps/Order/Routes/__tests__/Utils/addressForm"
+import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import Input, { InputProps } from "Components/Input"
 import { ModalButton } from "Components/Modal/ErrorModal"
 import { ErrorModal } from "Components/Modal/ErrorModal"
@@ -37,6 +38,9 @@ const commitMutation = _commitMutation as any
 jest.mock("react-relay", () => ({
   commitMutation: jest.fn(),
   createFragmentContainer: component => component,
+}))
+jest.mock("Apps/Order/Utils/trackPageView", () => ({
+  trackPageView: jest.fn(),
 }))
 
 const fillAddressForm = (component: any, address: Address) => {
@@ -73,6 +77,7 @@ describe("Shipping", () => {
       router: { push: jest.fn() },
       mediator: { trigger: jest.fn() },
     } as any
+    ;(trackPageView as jest.Mock<void>).mockReset()
   })
 
   it("removes radio group if pickup_available flag is false", () => {
@@ -400,5 +405,11 @@ describe("Shipping", () => {
       expect(component.find(Stepper).props().currentStepIndex).toEqual(1)
       expect(component.find(CheckMarkWrapper).length).toEqual(1)
     })
+  })
+
+  it("tracks a pageview", () => {
+    getWrapper(testProps)
+
+    expect(trackPageView).toHaveBeenCalledTimes(1)
   })
 })
