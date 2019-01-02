@@ -97,10 +97,10 @@ export class DialogContainer extends Container<DialogState> {
     message?: React.ReactNode
     supportEmail?: string
     continueButtonText?: string
-  }): Promise<{}> => {
+  }): Promise<void> => {
     await this.maybeForceCloseExistingDialog()
 
-    return new Promise<{ accepted: boolean }>(resolve => {
+    return new Promise<void>(resolve => {
       const onContinue = async () => {
         await this.setStatePromise({
           props: { ...this.state.props, show: false },
