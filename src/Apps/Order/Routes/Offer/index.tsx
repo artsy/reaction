@@ -6,6 +6,7 @@ import { Helper } from "Apps/Order/Components/Helper"
 import { OfferInput } from "Apps/Order/Components/OfferInput"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
+import { DialogHelpers, injectDialogs } from "Apps/Order/Dialogs"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
@@ -29,6 +30,7 @@ export interface OfferProps {
   mediator: Mediator
   relay?: RelayProp
   router: Router
+  dialogs: DialogHelpers
 }
 
 export interface OfferState {
@@ -52,11 +54,30 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
     formIsDirty: false,
   }
 
-  onContinueButtonPressed: () => void = () => {
+  onContinueButtonPressed: () => void = async () => {
     if (this.state.offerValue <= 0) {
       this.setState({ formIsDirty: true })
       return
     }
+
+    const listPrice = Number(
+      this.props.order.totalListPrice.replace(/[^\d.]/g, "")
+    )
+
+    if (this.state.offerValue < listPrice * 0.8) {
+      const decision = await this.confirmOfferTooLow()
+      if (!decision.accepted) {
+        return
+      }
+    }
+
+    if (this.state.offerValue > listPrice) {
+      const decision = await this.confirmOfferTooHigh()
+      if (!decision.accepted) {
+        return
+      }
+    }
+
     this.setState({ isCommittingMutation: true }, () => {
       if (this.props.relay && this.props.relay.environment) {
         const { offerValue } = this.state
@@ -129,6 +150,21 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
       isErrorModalOpen: true,
       errorModalTitle,
       errorModalMessage,
+    })
+  }
+
+  confirmOfferTooLow() {
+    return this.props.dialogs.showAcceptDialog({
+      title: "Offer may be too low",
+      message:
+        "Offers within 20% of the list price are most likely to receive a response.",
+    })
+  }
+
+  confirmOfferTooHigh() {
+    return this.props.dialogs.showAcceptDialog({
+      title: "Offer higher than list price",
+      message: "You’re making an offer higher than the list price.",
     })
   }
 
@@ -251,7 +287,7 @@ const OfferRouteWrapper = props => (
 )
 
 export const OfferFragmentContainer = createFragmentContainer(
-  OfferRouteWrapper,
+  injectDialogs(OfferRouteWrapper),
   graphql`
     fragment Offer_order on Order {
       id
