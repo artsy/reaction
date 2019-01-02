@@ -22,14 +22,16 @@ export class DialogContainer extends Container<DialogState> {
     forceCloseDialog: () => Promise.resolve(),
   }
 
-  setStatePromise(state: Partial<DialogState>): Promise<void> {
+  // closes the dialog without resolving consumers' promises
+  private closeDialog() {
     return new Promise(resolve => {
-      this.setState(state, resolve)
+      this.setState({ props: { ...this.state.props, show: false } }, resolve)
     })
   }
 
+  // closes the dialog and resolves consumers' promises
   // We are quite unlikely to need this, but let's err on the side of caution
-  async maybeForceCloseExistingDialog() {
+  private async maybeForceCloseExistingDialog() {
     if (this.state.props.show) {
       await this.state.forceCloseDialog()
     }
@@ -50,15 +52,11 @@ export class DialogContainer extends Container<DialogState> {
 
     return new Promise<{ accepted: boolean }>(resolve => {
       const accept = async () => {
-        await this.setStatePromise({
-          props: { ...this.state.props, show: false },
-        })
+        await this.closeDialog()
         resolve({ accepted: true })
       }
       const reject = async () => {
-        await this.setStatePromise({
-          props: { ...this.state.props, show: false },
-        })
+        await this.closeDialog()
         resolve({ accepted: false })
       }
 
@@ -102,9 +100,7 @@ export class DialogContainer extends Container<DialogState> {
 
     return new Promise<void>(resolve => {
       const onContinue = async () => {
-        await this.setStatePromise({
-          props: { ...this.state.props, show: false },
-        })
+        await this.closeDialog()
         resolve()
       }
 
