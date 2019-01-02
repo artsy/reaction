@@ -9,8 +9,8 @@ import {
   LiveAuctionArtwork,
   MultipleArtistsArtwork,
   OpenAuctionArtwork,
-  RegularArtwork2Editions,
   RegularArtworkWithOneEdition,
+  RegularArtworkWithTwoEditions,
   RegularNonEditionedArtwork,
   VideoArtwork,
 } from "Apps/__tests__/Fixtures/Artworks"
@@ -34,7 +34,7 @@ storiesOf("Apps/Artwork Page/Components", module)
           <ArtworkSidebar artwork={RegularArtworkWithOneEdition as any} />
         </Section>
         <Section title="Regular artwork with 2 editions">
-          <ArtworkSidebar artwork={RegularArtwork2Editions as any} />
+          <ArtworkSidebar artwork={RegularArtworkWithTwoEditions as any} />
         </Section>
         <Section title="Video artwork">
           <ArtworkSidebar artwork={VideoArtwork as any} />

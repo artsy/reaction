@@ -8,7 +8,15 @@ storiesOf("Apps/Artwork Page", module)
     return (
       <MockRouter
         routes={artworkRoutes}
-        initialRoute="/artwork2/pablo-picasso-femme-assise-dans-un-fauteuil-tresse"
+        initialRoute="/artwork/pablo-picasso-femme-assise-dans-un-fauteuil-tresse"
+      />
+    )
+  })
+  .add("Confirm Bid", () => {
+    return (
+      <MockRouter
+        routes={artworkRoutes}
+        initialRoute="/artwork/pablo-picasso-femme-assise-dans-un-fauteuil-tresse/confirm-bid"
       />
     )
   })
@@ -16,7 +24,7 @@ storiesOf("Apps/Artwork Page", module)
     return (
       <MockRouter
         routes={artworkRoutes}
-        initialRoute="/artwork2/jerry-freedner-approaching-storm"
+        initialRoute="/artwork/jerry-freedner-approaching-storm"
       />
     )
   })
@@ -24,7 +32,7 @@ storiesOf("Apps/Artwork Page", module)
     return (
       <MockRouter
         routes={artworkRoutes}
-        initialRoute="/artwork2/rembrandt-van-rijn-man-crying-out-bust-directed-three-quarter-to-the-left"
+        initialRoute="/artwork/rembrandt-van-rijn-man-crying-out-bust-directed-three-quarter-to-the-left"
       />
     )
   })
@@ -32,7 +40,7 @@ storiesOf("Apps/Artwork Page", module)
     return (
       <MockRouter
         routes={artworkRoutes}
-        initialRoute="/artwork2/victor-vasarely-folkokta-4"
+        initialRoute="/artwork/victor-vasarely-folkokta-4"
       />
     )
   })
@@ -40,7 +48,7 @@ storiesOf("Apps/Artwork Page", module)
     return (
       <MockRouter
         routes={artworkRoutes}
-        initialRoute="/artwork2/lucio-fontana-concetto-spaziale-attese-139"
+        initialRoute="/artwork/lucio-fontana-concetto-spaziale-attese-139"
       />
     )
   })
@@ -48,7 +56,7 @@ storiesOf("Apps/Artwork Page", module)
     return (
       <MockRouter
         routes={artworkRoutes}
-        initialRoute="/artwork2/victor-vasarely-darac-ii"
+        initialRoute="/artwork/victor-vasarely-darac-ii"
       />
     )
   })
@@ -56,7 +64,7 @@ storiesOf("Apps/Artwork Page", module)
     return (
       <MockRouter
         routes={artworkRoutes}
-        initialRoute="/artwork2/american-18th-century-lady-wearing-a-large-white-cap"
+        initialRoute="/artwork/american-18th-century-lady-wearing-a-large-white-cap"
       />
     )
   })
@@ -64,7 +72,7 @@ storiesOf("Apps/Artwork Page", module)
     return (
       <MockRouter
         routes={artworkRoutes}
-        initialRoute="/artwork2/nissa-kauppila-wu-ti-35-degrees-45-35-dot-5-n-81-degrees-21-16-dot-2-w"
+        initialRoute="/artwork/nissa-kauppila-wu-ti-35-degrees-45-35-dot-5-n-81-degrees-21-16-dot-2-w"
       />
     )
   })
@@ -72,7 +80,7 @@ storiesOf("Apps/Artwork Page", module)
     return (
       <MockRouter
         routes={artworkRoutes}
-        initialRoute="/artwork2/josef-albers-interlinear-n-65"
+        initialRoute="/artwork/josef-albers-interlinear-n-65"
       />
     )
   })
@@ -80,7 +88,7 @@ storiesOf("Apps/Artwork Page", module)
     return (
       <MockRouter
         routes={artworkRoutes}
-        initialRoute="/artwork2/robert-rauschenberg-and-susan-weil-female-figure"
+        initialRoute="/artwork/robert-rauschenberg-and-susan-weil-female-figure"
       />
     )
   })
@@ -88,7 +96,7 @@ storiesOf("Apps/Artwork Page", module)
     return (
       <MockRouter
         routes={artworkRoutes}
-        initialRoute="/artwork2/andy-warhol-twenty-years-1977-signed-slash-inscribed-by-leo-exhibition-catalogue-leo-castelli-gallery-1st-edition"
+        initialRoute="/artwork/andy-warhol-twenty-years-1977-signed-slash-inscribed-by-leo-exhibition-catalogue-leo-castelli-gallery-1st-edition"
       />
     )
   })
