@@ -36,21 +36,15 @@ export interface OfferProps {
 export interface OfferState {
   offerValue: number
   isCommittingMutation: boolean
-  isErrorModalOpen: boolean
-  errorModalTitle: string
-  errorModalMessage: string
   formIsDirty: boolean
 }
 
 const logger = createLogger("Order/Routes/Offer/index.tsx")
 
 export class OfferRoute extends Component<OfferProps, OfferState> {
-  state = {
+  state: OfferState = {
     offerValue: 0,
     isCommittingMutation: false,
-    isErrorModalOpen: false,
-    errorModalTitle: null,
-    errorModalMessage: null,
     formIsDirty: false,
   }
 
@@ -60,18 +54,16 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
       return
     }
 
-    const listPrice = Number(
-      this.props.order.totalListPrice.replace(/[^\d.]/g, "")
-    )
+    const listPriceCents = this.props.order.totalListPriceCents
 
-    if (this.state.offerValue < listPrice * 0.8) {
+    if (this.state.offerValue * 100 < listPriceCents * 0.8) {
       const decision = await this.confirmOfferTooLow()
       if (!decision.accepted) {
         return
       }
     }
 
-    if (this.state.offerValue > listPrice) {
+    if (this.state.offerValue * 100 > listPriceCents) {
       const decision = await this.confirmOfferTooHigh()
       if (!decision.accepted) {
         return
@@ -92,6 +84,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
                       id
                       mode
                       totalListPrice
+                      totalListPriceCents
                       ... on OfferOrder {
                         myLastOffer {
                           id
@@ -143,14 +136,10 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
     })
   }
 
-  onMutationError(error, errorModalTitle?, errorModalMessage?) {
+  onMutationError(error, title?, message?) {
     logger.error(error)
-    this.setState({
-      isCommittingMutation: false,
-      isErrorModalOpen: true,
-      errorModalTitle,
-      errorModalMessage,
-    })
+    this.props.dialogs.showErrorDialog({ title, message })
+    this.setState({ isCommittingMutation: false })
   }
 
   confirmOfferTooLow() {
@@ -166,10 +155,6 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
       title: "Offer higher than list price",
       message: "You’re making an offer higher than the list price.",
     })
-  }
-
-  onCloseModal = () => {
-    this.setState({ isErrorModalOpen: false })
   }
 
   render() {
@@ -265,14 +250,6 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
             }
           />
         </HorizontalPadding>
-
-        <ErrorModal
-          onClose={this.onCloseModal}
-          show={this.state.isErrorModalOpen}
-          contactEmail="orders@artsy.net"
-          detailText={this.state.errorModalMessage}
-          headerText={this.state.errorModalTitle}
-        />
       </>
     )
   }
@@ -294,6 +271,7 @@ export const OfferFragmentContainer = createFragmentContainer(
       mode
       state
       totalListPrice(precision: 2)
+      totalListPriceCents
       lineItems {
         edges {
           node {

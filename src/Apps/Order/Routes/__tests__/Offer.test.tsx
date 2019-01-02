@@ -1,13 +1,13 @@
 import { Button } from "@artsy/palette"
 import { OfferInput } from "Apps/Order/Components/OfferInput"
 import { Input } from "Components/Input"
-import { ErrorModal } from "Components/Modal/ErrorModal"
-import { ModalButton } from "Components/Modal/ModalDialog"
+import { ModalButton, ModalDialog } from "Components/Modal/ModalDialog"
 import { MockBoot } from "DevTools"
-import { mount } from "enzyme"
+import { mount, ReactWrapper } from "enzyme"
 import React from "react"
 import { commitMutation as _commitMutation } from "react-relay"
 import { RelayProp } from "react-relay"
+import { flushPromiseQueue } from "Utils/flushPromiseQueue"
 import { UntouchedOfferOrder } from "../../../__tests__/Fixtures/Order"
 import { TransactionDetailsSummaryItem } from "../../Components/TransactionDetailsSummaryItem"
 import {
@@ -133,7 +133,7 @@ describe("Offer InitialMutation", () => {
       component
         .find(OfferInput)
         .props()
-        .onChange(123)
+        .onChange(16000)
       component.find(Button).simulate("click")
 
       expect(testProps.router.push).toHaveBeenCalledWith(
@@ -155,12 +155,12 @@ describe("Offer InitialMutation", () => {
       component
         .find(OfferInput)
         .props()
-        .onChange(1)
+        .onChange(16000)
 
       component.find(Button).simulate("click")
     })
 
-    it("shows an error modal when there is an error from the server", () => {
+    it("shows an error modal when there is an error from the server", async () => {
       const component = getWrapper(testProps)
       const mockCommitMutation = commitMutation as jest.Mock<any>
       mockCommitMutation.mockImplementationOnce(
@@ -172,11 +172,14 @@ describe("Offer InitialMutation", () => {
       component
         .find(OfferInput)
         .props()
-        .onChange(1)
+        .onChange(16000)
 
       component.find(Button).simulate("click")
 
-      const errorComponent = component.find(ErrorModal)
+      await flushPromiseQueue()
+      component.update()
+
+      const errorComponent = component.find(ModalDialog)
       expect(errorComponent.props().show).toBe(true)
       expect(errorComponent.text()).toContain("An error occurred")
       expect(errorComponent.text()).toContain(
@@ -184,7 +187,137 @@ describe("Offer InitialMutation", () => {
       )
 
       component.find(ModalButton).simulate("click")
-      expect(component.find(ErrorModal).props().show).toBe(false)
+
+      await flushPromiseQueue()
+      component.update()
+
+      expect(component.find(ModalDialog).props().show).toBe(false)
+    })
+
+    describe("The 'amount too small' speed bump", () => {
+      let component: ReactWrapper
+      beforeEach(async () => {
+        component = getWrapper(testProps)
+
+        component
+          .find(OfferInput)
+          .props()
+          .onChange(1000)
+
+        component.find(Button).simulate("click")
+
+        await flushPromiseQueue()
+        component.update()
+      })
+
+      it("shows if the offer amount is too small", async () => {
+        expect(commitMutation).not.toHaveBeenCalled()
+
+        const dialog = component.find(ModalDialog)
+
+        expect(dialog).toHaveLength(1)
+        expect(dialog.props().show).toBe(true)
+
+        expect(dialog.text()).toMatchInlineSnapshot(
+          `"Offer may be too lowOffers within 20% of the list price are most likely to receive a response.CancelContinue"`
+        )
+
+        const buttons = component.find(ModalButton)
+        expect(buttons.length).toBe(2)
+        expect(buttons.first().text()).toBe("Cancel")
+        expect(buttons.last().text()).toBe("Continue")
+      })
+
+      it("goes away without mutations when clicking Cancel", async () => {
+        component
+          .find(ModalButton)
+          .first()
+          .simulate("click")
+
+        await flushPromiseQueue()
+        component.update()
+
+        const dialog = component.find(ModalDialog)
+        expect(dialog.props().show).toBe(false)
+        expect(commitMutation).not.toHaveBeenCalled()
+      })
+
+      it("goes away with mutations when clicking Continue", async () => {
+        component
+          .find(ModalButton)
+          .last()
+          .simulate("click")
+
+        await flushPromiseQueue()
+        component.update()
+
+        const dialog = component.find(ModalDialog)
+        expect(dialog.props().show).toBe(false)
+        expect(commitMutation).toHaveBeenCalled()
+      })
+    })
+
+    describe("The 'amount too high' speed bump", () => {
+      let component: ReactWrapper
+      beforeEach(async () => {
+        component = getWrapper(testProps)
+
+        component
+          .find(OfferInput)
+          .props()
+          .onChange(17000)
+
+        component.find(Button).simulate("click")
+
+        await flushPromiseQueue()
+        component.update()
+      })
+
+      it("shows if the offer amount is too high", async () => {
+        expect(commitMutation).not.toHaveBeenCalled()
+
+        const dialog = component.find(ModalDialog)
+
+        expect(dialog).toHaveLength(1)
+        expect(dialog.props().show).toBe(true)
+
+        expect(dialog.text()).toMatchInlineSnapshot(
+          `"Offer higher than list priceYou’re making an offer higher than the list price.CancelContinue"`
+        )
+
+        const buttons = component.find(ModalButton)
+        expect(buttons.length).toBe(2)
+        expect(buttons.first().text()).toBe("Cancel")
+        expect(buttons.last().text()).toBe("Continue")
+      })
+
+      it("goes away without mutations when clicking Cancel", async () => {
+        component
+          .find(ModalButton)
+          .first()
+          .simulate("click")
+
+        await flushPromiseQueue()
+        component.update()
+
+        const dialog = component.find(ModalDialog)
+        expect(dialog.props().show).toBe(false)
+        expect(commitMutation).not.toHaveBeenCalled()
+      })
+
+      it("goes away with mutations when clicking Continue", async () => {
+        component
+          .find(ModalButton)
+          .last()
+          .simulate("click")
+
+        await flushPromiseQueue()
+        component.update()
+
+        const dialog = component.find(ModalDialog)
+        expect(dialog.props().show).toBe(false)
+        expect(commitMutation).toHaveBeenCalled()
+      })
     })
   })
 })

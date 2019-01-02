@@ -12,6 +12,9 @@ interface ErrorModalProps {
   ctaAction?: () => void
 }
 
+/**
+ * @deprecated use `Dialogs` and `injectDialogs` instead
+ */
 export class ErrorModal extends React.Component<ErrorModalProps> {
   static defaultProps = {
     headerText: "An error occurred",
