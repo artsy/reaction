@@ -149,47 +149,45 @@ class Filter extends Component<Props> {
   }
 
   renderWaysToBuy(filterState, mediator, counts) {
+    const ways = [
+      {
+        hasWorks: this.existy.hasBuyNowArtworks,
+        name: "Buy now",
+        state: "acquireable",
+      },
+      {
+        hasWorks: this.existy.hasMakeOfferArtworks,
+        name: "Make offer",
+        state: "offerable",
+      },
+      {
+        hasWorks: this.existy.hasAuctionArtworks,
+        name: "Bid",
+        state: "at_auction",
+      },
+      {
+        hasWorks: this.existy.hasForSaleArtworks,
+        name: "Inquire",
+        state: "inquireable_only",
+      },
+    ]
+
+    const wayCheckboxes = ways.map((way, index) => {
+      const props = {
+        disabled: !way.hasWorks || this.showZeroState,
+        onSelect: value => filterState.setFilter(way.state, value, mediator),
+        selected: filterState.state[way.state],
+      }
+
+      return <Checkbox {...props}>{way.name}</Checkbox>
+    })
+
     return (
       <React.Fragment>
         <Sans size="2" weight="medium" color="black100" mt={0.3} mb={1}>
           Ways to Buy
         </Sans>
-        <Checkbox
-          selected={filterState.state.acquireable}
-          disabled={!this.existy.hasBuyNowArtworks || this.showZeroState}
-          onSelect={value => {
-            return filterState.setFilter("acquireable", value, mediator)
-          }}
-        >
-          Buy now
-        </Checkbox>
-        <Checkbox
-          selected={filterState.state.offerable}
-          disabled={!this.existy.hasMakeOfferArtworks || this.showZeroState}
-          onSelect={value => {
-            return filterState.setFilter("offerable", value, mediator)
-          }}
-        >
-          Make offer
-        </Checkbox>
-        <Checkbox
-          selected={filterState.state.at_auction}
-          disabled={!this.existy.hasAuctionArtworks || this.showZeroState}
-          onSelect={value => {
-            return filterState.setFilter("at_auction", value, mediator)
-          }}
-        >
-          Bid
-        </Checkbox>
-        <Checkbox
-          selected={filterState.state.inquireable_only}
-          disabled={!this.existy.hasForSaleArtworks || this.showZeroState}
-          onSelect={value => {
-            return filterState.setFilter("inquireable_only", value, mediator)
-          }}
-        >
-          Inquire
-        </Checkbox>
+        {wayCheckboxes}
       </React.Fragment>
     )
   }

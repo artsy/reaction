@@ -5,45 +5,55 @@ import { FilterState } from "../../FilterState"
 
 export const WaysToBuyFilter: React.SFC<{
   filters: FilterState
-}> = ({ filters }) => (
-  <ContextConsumer>
-    {({ mediator }) => (
-      <React.Fragment>
-        <Sans size="2" weight="medium" color="black100" my={1}>
-          Ways to buy
-        </Sans>
-        <Checkbox
-          selected={filters.state.acquireable}
-          onSelect={value => {
-            return filters.setFilter("acquireable", value, mediator)
-          }}
-        >
-          Buy now
-        </Checkbox>
-        <Checkbox
-          selected={filters.state.offerable}
-          onSelect={value => {
-            return filters.setFilter("offerable", value, mediator)
-          }}
-        >
-          Make offer
-        </Checkbox>
-        <Checkbox
-          selected={filters.state.at_auction}
-          onSelect={value => filters.setFilter("at_auction", value, mediator)}
-          disabled={filters.isPriceSelected()}
-        >
-          Bid
-        </Checkbox>
-        <Checkbox
-          selected={filters.state.inquireable_only}
-          onSelect={value =>
-            filters.setFilter("inquireable_only", value, mediator)
-          }
-        >
-          Inquire
-        </Checkbox>
-      </React.Fragment>
-    )}
-  </ContextConsumer>
-)
+}> = ({ filters }) => {
+  const ways = [
+    {
+      disabled: false,
+      hasWorks: this.existy.hasBuyNowArtworks,
+      name: "Buy now",
+      state: "acquireable",
+    },
+    {
+      disabled: false,
+      hasWorks: this.existy.hasMakeOfferArtworks,
+      name: "Make offer",
+      state: "offerable",
+    },
+    {
+      disabled: filters.isPriceSelected(),
+      hasWorks: this.existy.hasAuctionArtworks,
+      name: "Bid",
+      state: "at_auction",
+    },
+    {
+      disabled: false,
+      hasWorks: this.existy.hasForSaleArtworks,
+      name: "Inquire",
+      state: "inquireable_only",
+    },
+  ]
+
+  const constructCheckboxes = mediator =>
+    ways.map((way, index) => {
+      const props = {
+        disabled: way.disabled,
+        onSelect: value => filters.setFilter(way.state, value, mediator),
+        selected: filters.state[way.state],
+      }
+
+      return <Checkbox {...props}>{way.name}</Checkbox>
+    })
+
+  return (
+    <ContextConsumer>
+      {({ mediator }) => (
+        <React.Fragment>
+          <Sans size="2" weight="medium" color="black100" my={1}>
+            Ways to buy
+          </Sans>
+          {constructCheckboxes(mediator)}
+        </React.Fragment>
+      )}
+    </ContextConsumer>
+  )
+}
