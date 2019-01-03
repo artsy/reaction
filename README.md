@@ -77,6 +77,9 @@ Reaction uses [auto-release](https://github.com/intuit/auto-release#readme) to a
 
 Peril will automatically add "Version: Patch", if you don't set one on creating your PR. No release will happen on a `Trivial` update.
 
+If you're making a change but you don't want to immediate trigger a release (i.e. when 2 PRs need to go out together), specify the correct
+version and add the `Skip Release` label. That'll ensure when the next release happens the version is still bumped appropriately.
+
 ## Emitting types
 
 We recently started shipping Reaction builds with declaration files (`.d.ts`) so consumers have access to the interfaces and types we add to our components. Because of that, you will notice errors resembling the following:
