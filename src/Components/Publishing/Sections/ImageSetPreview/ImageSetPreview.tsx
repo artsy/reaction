@@ -1,4 +1,4 @@
-import { color, Flex } from "@artsy/palette"
+import { color as Color, Flex } from "@artsy/palette"
 import React, { ReactNode } from "react"
 import styled from "styled-components"
 
@@ -9,6 +9,7 @@ import { ImageSetLabel } from "./ImageSetLabel"
 type Layout = "mini" | "full"
 
 export interface ImageSetPreviewProps {
+  color?: string
   section: {
     type: string
     images: Array<{
@@ -44,6 +45,7 @@ export class ImageSetPreview extends React.PureComponent<
   render() {
     const {
       children,
+      color,
       section: { layout, title },
     } = this.props
     const alt = title || "Open Slideshow"
@@ -64,7 +66,7 @@ export class ImageSetPreview extends React.PureComponent<
     } else {
       return (
         <ImageSetContainer>
-          <MiniWrapper alignItems="center" onClick={this.onClick}>
+          <MiniWrapper alignItems="center" onClick={this.onClick} color={color}>
             <Img src={src} alt={alt} />
             <ImageSetLabel {...this.props} />
           </MiniWrapper>
@@ -111,7 +113,7 @@ export const ImgContainer = styled.div``
 const MiniWrapper = styled(Flex)`
   height: 100px;
   padding: 10px 0 10px 10px;
-  border: 1px solid ${color("black10")};
+  border: 1px solid ${props => (props.color ? props.color : Color("black10"))};
   cursor: pointer;
 
   ${Img} {

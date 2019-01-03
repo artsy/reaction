@@ -156,8 +156,8 @@ export class Sections extends Component<Props, State> {
           gutter={10}
         />
       ),
-      image_set: <ImageSetPreview section={section} />,
-      video: <Video section={section} />,
+      image_set: <ImageSetPreview section={section} color={color} />,
+      video: <Video section={section} color={color} />,
       embed: <Embed section={section} />,
       social_embed: <SocialEmbed section={section} />,
       text: (
