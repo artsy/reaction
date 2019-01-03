@@ -13,7 +13,7 @@ import { ShippingSummaryItemFragmentContainer } from "Apps/Order/Components/Ship
 import { TransactionDetailsSummaryItemFragmentContainer } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { Input } from "Components/Input"
 import { MockBoot } from "DevTools"
-import { mount } from "enzyme"
+import { mount, ReactWrapper } from "enzyme"
 import moment from "moment"
 import React from "react"
 import { Stepper } from "Styleguide/Components"
@@ -33,7 +33,8 @@ jest.mock("react-relay", () => ({
 }))
 
 import { OfferInput } from "Apps/Order/Components/OfferInput"
-import { ErrorModal } from "Components/Modal/ErrorModal"
+import { ConnectedModalDialog } from "Apps/Order/Dialogs"
+import { ModalButton, ModalDialog } from "Components/Modal/ModalDialog"
 import { commitMutation } from "react-relay"
 import { flushPromiseQueue } from "Utils/flushPromiseQueue"
 
@@ -70,6 +71,7 @@ describe("Offer InitialMutation", () => {
             ...extraOrderProps,
           }}
         />
+        <ConnectedModalDialog />
       </MockBoot>
     )
   }
@@ -274,7 +276,7 @@ describe("Offer InitialMutation", () => {
         counterRadio
           .find(OfferInput)
           .props()
-          .onChange(105)
+          .onChange(16000)
 
         expect(commitMutationMock).toHaveBeenCalledTimes(0)
 
@@ -292,7 +294,7 @@ Object {
   "input": Object {
     "offerId": "myoffer-id",
     "offerPrice": Object {
-      "amount": 105,
+      "amount": 16000,
       "currencyCode": "USD",
     },
   },
@@ -319,7 +321,7 @@ Object {
     counterRadio
       .find(Input)
       .props()
-      .onChange({ currentTarget: { value: "84838" } } as any)
+      .onChange({ currentTarget: { value: "16000" } } as any)
 
     expect(commitMutationMock).toHaveBeenCalledTimes(0)
 
@@ -336,7 +338,7 @@ Object {
     expect(
       component
         .update()
-        .find(ErrorModal)
+        .find(ModalDialog)
         .props().show
     ).toBe(true)
   })
@@ -355,7 +357,7 @@ Object {
     counterRadio
       .find(Input)
       .props()
-      .onChange({ currentTarget: { value: "84838" } } as any)
+      .onChange({ currentTarget: { value: "16000" } } as any)
 
     expect(commitMutationMock).toHaveBeenCalledTimes(0)
 
@@ -372,8 +374,146 @@ Object {
     expect(
       component
         .update()
-        .find(ErrorModal)
+        .find(ModalDialog)
         .props().show
     ).toBe(true)
+  })
+
+  describe("The 'amount too small' speed bump", () => {
+    let component: ReactWrapper
+    beforeEach(async () => {
+      component = getWrapper()
+      const counterRadio = component.find(BorderedRadio).at(1)
+      counterRadio.props().onSelect({ selected: true, value: "COUNTER" })
+
+      component
+        .find(OfferInput)
+        .props()
+        .onChange(1000)
+
+      component
+        .find(Button)
+        .last()
+        .props()
+        .onClick({})
+
+      await flushPromiseQueue()
+      component.update()
+    })
+
+    it("shows if the offer amount is too small", async () => {
+      expect(commitMutation).not.toHaveBeenCalled()
+
+      const dialog = component.find(ModalDialog)
+
+      expect(dialog).toHaveLength(1)
+      expect(dialog.props().show).toBe(true)
+
+      expect(dialog.text()).toMatchInlineSnapshot(
+        `"Offer may be too lowOffers within 20% of the list price are most likely to receive a response.CancelContinue"`
+      )
+
+      const buttons = component.find(ModalButton)
+      expect(buttons.length).toBe(2)
+      expect(buttons.first().text()).toBe("Cancel")
+      expect(buttons.last().text()).toBe("Continue")
+    })
+
+    it("goes away without mutations when clicking Cancel", async () => {
+      component
+        .find(ModalButton)
+        .first()
+        .simulate("click")
+
+      await flushPromiseQueue()
+      component.update()
+
+      const dialog = component.find(ModalDialog)
+      expect(dialog.props().show).toBe(false)
+      expect(commitMutation).not.toHaveBeenCalled()
+    })
+
+    it("goes away with mutations when clicking Continue", async () => {
+      component
+        .find(ModalButton)
+        .last()
+        .simulate("click")
+
+      await flushPromiseQueue()
+      component.update()
+
+      const dialog = component.find(ModalDialog)
+      expect(dialog.props().show).toBe(false)
+      expect(commitMutation).toHaveBeenCalled()
+    })
+  })
+
+  describe("The 'amount too high' speed bump", () => {
+    let component: ReactWrapper
+    beforeEach(async () => {
+      component = getWrapper()
+      const counterRadio = component.find(BorderedRadio).at(1)
+      counterRadio.props().onSelect({ selected: true, value: "COUNTER" })
+
+      component
+        .find(OfferInput)
+        .props()
+        .onChange(17000)
+
+      component
+        .find(Button)
+        .last()
+        .props()
+        .onClick({})
+
+      await flushPromiseQueue()
+      component.update()
+    })
+
+    it("shows if the offer amount is too high", async () => {
+      expect(commitMutation).not.toHaveBeenCalled()
+
+      const dialog = component.find(ModalDialog)
+
+      expect(dialog).toHaveLength(1)
+      expect(dialog.props().show).toBe(true)
+
+      expect(dialog.text()).toMatchInlineSnapshot(
+        `"Offer higher than list priceYou’re making an offer higher than the list price.CancelContinue"`
+      )
+
+      const buttons = component.find(ModalButton)
+      expect(buttons.length).toBe(2)
+      expect(buttons.first().text()).toBe("Cancel")
+      expect(buttons.last().text()).toBe("Continue")
+    })
+
+    it("goes away without mutations when clicking Cancel", async () => {
+      component
+        .find(ModalButton)
+        .first()
+        .simulate("click")
+
+      await flushPromiseQueue()
+      component.update()
+
+      const dialog = component.find(ModalDialog)
+      expect(dialog.props().show).toBe(false)
+      expect(commitMutation).not.toHaveBeenCalled()
+    })
+
+    it("goes away with mutations when clicking Continue", async () => {
+      component
+        .find(ModalButton)
+        .last()
+        .simulate("click")
+
+      await flushPromiseQueue()
+      component.update()
+
+      const dialog = component.find(ModalDialog)
+      expect(dialog.props().show).toBe(false)
+      expect(commitMutation).toHaveBeenCalled()
+    })
   })
 })

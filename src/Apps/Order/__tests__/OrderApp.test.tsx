@@ -19,6 +19,7 @@ import {
   UntouchedOfferOrder,
 } from "Apps/__tests__/Fixtures/Order"
 import { trackPageView } from "Apps/Order/Utils/trackPageView"
+import { MockBoot } from "DevTools"
 import { createMockNetworkLayer } from "DevTools/createMockNetworkLayer"
 import moment from "moment"
 import { Environment, RecordSource, Store } from "relay-runtime"
@@ -403,11 +404,13 @@ describe("OrderApp routing redirects", () => {
 describe("OrderApp", () => {
   const getWrapper = ({ props, context }: any) => {
     return mount(
-      <HeadProvider>
-        <ContextProvider {...context}>
-          <OrderApp {...props} />
-        </ContextProvider>
-      </HeadProvider>
+      <MockBoot>
+        <HeadProvider>
+          <ContextProvider {...context}>
+            <OrderApp {...props} />
+          </ContextProvider>
+        </HeadProvider>
+      </MockBoot>
     )
   }
   beforeAll(() => {

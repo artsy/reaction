@@ -38,14 +38,12 @@ jest.mock("react-stripe-elements", () => ({
 }))
 jest.unmock("react-tracking")
 
+import { ErrorModal } from "Components/Modal/ErrorModal"
+import { ModalButton } from "Components/Modal/ModalDialog"
 import { MockBoot } from "DevTools"
 import { commitMutation, RelayProp } from "react-relay"
 import { flushPromiseQueue } from "Utils/flushPromiseQueue"
 import { Breakpoint } from "Utils/Responsive"
-import {
-  ErrorModal,
-  ModalButton,
-} from "../../../../Components/Modal/ErrorModal"
 import { Address, AddressForm } from "../../Components/AddressForm"
 
 const mutationMock = commitMutation as jest.Mock<any>

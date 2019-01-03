@@ -21,7 +21,8 @@ import {
   fillIn,
   validAddress,
 } from "Apps/Order/Routes/__tests__/Utils/addressForm"
-import { ErrorModal, ModalButton } from "Components/Modal/ErrorModal"
+import { ErrorModal } from "Components/Modal/ErrorModal"
+import { ModalButton } from "Components/Modal/ModalDialog"
 import PaymentForm, { PaymentFormProps } from "Components/Payment/PaymentForm"
 import { MockBoot } from "DevTools"
 import { commitMutation, RelayProp } from "react-relay"

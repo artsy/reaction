@@ -15,6 +15,7 @@ export type Respond_order = {
     readonly state: string | null;
     readonly itemsTotal: string | null;
     readonly totalListPrice: string | null;
+    readonly totalListPriceCents: number | null;
     readonly stateExpiresAt: string | null;
     readonly lineItems: ({
         readonly edges: ReadonlyArray<({
@@ -65,36 +66,6 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    v0,
-    v1,
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "state",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "itemsTotal",
-      "args": v2,
-      "storageKey": "itemsTotal(precision:2)"
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "totalListPrice",
-      "args": v2,
-      "storageKey": "totalListPrice(precision:2)"
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "stateExpiresAt",
-      "args": null,
-      "storageKey": null
-    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -148,12 +119,53 @@ return {
         }
       ]
     },
+    v0,
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "state",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "itemsTotal",
+      "args": v2,
+      "storageKey": "itemsTotal(precision:2)"
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "totalListPrice",
+      "args": v2,
+      "storageKey": "totalListPrice(precision:2)"
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "totalListPriceCents",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "stateExpiresAt",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "ScalarField",
       "alias": null,
       "name": "mode",
       "args": null,
       "storageKey": null
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "OfferHistoryItem_order",
+      "args": null
     },
     {
       "kind": "FragmentSpread",
@@ -175,11 +187,7 @@ return {
       "name": "CreditCardSummaryItem_order",
       "args": null
     },
-    {
-      "kind": "FragmentSpread",
-      "name": "OfferHistoryItem_order",
-      "args": null
-    },
+    v1,
     {
       "kind": "InlineFragment",
       "type": "OfferOrder",
@@ -209,5 +217,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '0e23882905462af3f8d02d58e7b4d8cb';
+(node as any).hash = 'ab80eb6056646be71f79ec92ed34ba6a';
 export default node;
