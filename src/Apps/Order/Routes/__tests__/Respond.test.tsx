@@ -172,7 +172,7 @@ describe("Offer InitialMutation", () => {
     expect(radios).toHaveLength(3)
 
     expect(radios.first().text()).toMatch("Accept seller's offer")
-    expect(radios.at(1).text()).toMatch("Send a counteroffer")
+    expect(radios.at(1).text()).toMatch("Send counteroffer")
     expect(radios.at(2).text()).toMatch("Decline seller's offer")
   })
 
