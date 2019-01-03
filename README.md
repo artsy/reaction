@@ -66,45 +66,16 @@ To _unlink_ your local reaction from your local force, run (in **Force**):
         $ yarn add @artsy/reaction
         $ yarn start
 
-## Commits and Deployments
+## Deployments
 
-Circle CI is set up to publish releases to NPM automatically via [semantic-release](https://github.com/semantic-release/semantic-release) following every successful merge to master.
+Reaction uses [auto-release](https://github.com/intuit/auto-release#readme) to automatically release on every PR. Every PR should have a label that matches one of the following
 
-Release versions (major, minor, patch) are triggered [by commit messages](https://github.com/semantic-release/semantic-release#commit-message-format), when they adhere to [Ember conventions](https://github.com/conventional-changelog/conventional-changelog/blob/master/packages/conventional-changelog-ember/README.md):
+- Version: Trivial
+- Version: Patch
+- Version: Minor
+- Version: Major
 
-```
-[TAG context] commit message
-```
-
-[Valid tags](https://github.com/artsy/reaction/blob/master/package.json#L175) for release include PATCH, DOC, FIX (patch), FEATURE (minor), and BREAKING (major). A context is also required (note that this should be one word). Commits that do not adhere to this convention will not trigger an NPM release.
-
-##### Example Patch Release
-
-```
-[FIX onboarding] Modal does not open
-[PATCH tooling] Bump version
-```
-
-##### Example Minor (Feature) Release
-
-```
-[FEATURE auctions] Add relay-based slider component
-```
-
-##### Example Major (Breaking) Release
-
-```
-[BREAKING publishing] Replace children with props for caption editing
-```
-
-### Troubleshooting Semantic Release
-
-> npm ERR! You cannot publish over the previously published versions
-
-This race condition can happen when multiple PRs are published at the same time, leading to a discrepency between the tag representing the latest release and the version that's currently published to NPM. There are two possible ways to fix this:
-
-1) Update `package.json` with the next patch version, save, and then run `yarn publish --access public` from the command line. Return to CircleCI and rerun failing build. 
-1) Create a [new release](https://github.com/artsy/reaction/releases/new) and ensure the `Tag version` is incremented one patch version higher than the previous release. Then navigate to CircleCI and rerun the failing build. 
+No release will happen on a `Trivial` update.
 
 ## Emitting types
 
