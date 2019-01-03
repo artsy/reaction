@@ -4,13 +4,16 @@ import { Author } from "./Author"
 
 interface AuthorsProps {
   authors: object[]
+  color?: string
 }
 
 export const Authors: React.SFC<AuthorsProps> = props => {
-  const { authors } = props
+  const { authors, color } = props
   return (
     <AuthorsContainer>
-      {authors.map((author, i) => <Author author={author} key={i} />)}
+      {authors.map((author, i) => (
+        <Author author={author} key={i} color={color} />
+      ))}
     </AuthorsContainer>
   )
 }

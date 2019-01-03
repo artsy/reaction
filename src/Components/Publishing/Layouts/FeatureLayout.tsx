@@ -14,6 +14,7 @@ export const FeatureLayout: React.SFC<ArticleProps> = props => {
   const {
     article,
     backgroundColor,
+    color,
     customEditorial,
     display,
     isMobile,
@@ -37,16 +38,18 @@ export const FeatureLayout: React.SFC<ArticleProps> = props => {
       {hasNav && (
         <Nav
           canFix={false}
+          color={color}
           sponsor={sponsor}
           title={seriesArticle.title}
           transparent
         />
       )}
-      <Header article={article} />
+      <Header article={article} textColor={color} />
 
       <FeatureLayoutContent>
         <Sections
           article={article}
+          color={color}
           isMobile={isMobile}
           showTooltips={showTooltips}
         />
