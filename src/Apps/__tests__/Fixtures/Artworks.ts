@@ -316,7 +316,7 @@ export const RegularArtworkWithOneEdition = {
   is_for_sale: false,
 }
 
-export const RegularArtwork2Editions = {
+export const RegularArtworkWithTwoEditions = {
   __id: "QXJ0d29yazpib2ItY2FybG9zLWNsYXJrZS1mYWlyeS1idW0=",
   artists: [
     {
