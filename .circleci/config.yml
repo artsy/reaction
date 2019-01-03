@@ -29,7 +29,6 @@ jobs:
       # Setup the .npmrc with the proper registry and auth token to publish
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
       - run: npm whoami
-      - run: "npm config set _auth $NPM_TOKEN && npm config set registry https://registry.npmjs.org/ && npm config set always-auth=true && npm config set email=opensource@artsymail.com"
       - run: yarn release
   test:
     executor: node/build
