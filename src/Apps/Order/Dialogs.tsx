@@ -5,7 +5,7 @@ import { Container, Subscribe } from "unstated"
 
 interface DialogState {
   props: ModalDialogProps
-  forceCloseDialog: () => Promise<void>
+  onForceClose: () => Promise<void>
 }
 
 export class DialogContainer extends Container<DialogState> {
@@ -19,25 +19,76 @@ export class DialogContainer extends Container<DialogState> {
         action: () => void 0,
       },
     },
-    forceCloseDialog: () => Promise.resolve(),
+    onForceClose: () => Promise.resolve(),
   }
 
-  // closes the dialog without resolving consumers' promises
-  private closeDialog() {
+  /**
+   * Hides the the currently-showing dialog
+   */
+  hide = () => {
+    this.setState({ props: { ...this.state.props, show: false } })
+  }
+
+  /**
+   * @param props the props for the ModalDialog
+   * @param onForceClose if someone else shows a modal while yours is open this
+   * will be called before your modal is closed. It can return a promise if you
+   * need to do async stuff before the next modal is shown.
+   * @returns a promise that is resolved after your modal is shown
+   */
+  show = async ({
+    props,
+    onForceClose,
+  }: {
+    props: ModalDialogProps
+    onForceClose: () => any
+  }) => {
+    if (this.state.props.show) {
+      // need to gracefully allow existing modal to close
+      await Promise.resolve(this.state.onForceClose())
+      this.hide()
+      // give a little pause so the user can see a transition between the two
+      await new Promise(r => setTimeout(r, 400))
+    }
+
     return new Promise(resolve => {
-      this.setState({ props: { ...this.state.props, show: false } }, resolve)
+      this.setState({ props, onForceClose }, resolve)
     })
   }
+}
 
-  // closes the dialog and resolves consumers' promises
-  // We are quite unlikely to need this, but let's err on the side of caution
-  private async maybeForceCloseExistingDialog() {
-    if (this.state.props.show) {
-      await this.state.forceCloseDialog()
-    }
-  }
+const extractDialogHelpers = ({ show, hide }: DialogContainer) => ({
+  show,
+  hide,
+})
 
-  showAcceptDialog = async ({
+export type Dialog = ReturnType<typeof extractDialogHelpers>
+
+/**
+ * Injects the `dialog` prop into the given page component
+ * @param Component
+ */
+export function injectDialog<R extends { dialog: Dialog }>(
+  Component: React.ComponentType<R>
+): React.ComponentType<{ [K in Exclude<keyof R, "dialog">]: R[K] }> {
+  return props => (
+    <Subscribe to={[DialogContainer]}>
+      {(dialog: DialogContainer) => (
+        <Component dialog={extractDialogHelpers(dialog)} {...props} />
+      )}
+    </Subscribe>
+  )
+}
+
+export const ConnectedModalDialog = () => (
+  <Subscribe to={[DialogContainer]}>
+    {(dialogs: DialogContainer) => <ModalDialog {...dialogs.state.props} />}
+  </Subscribe>
+)
+
+export const showAcceptDialog = (
+  dialog: Dialog,
+  {
     title,
     message,
     continueButtonText = "Continue",
@@ -47,40 +98,41 @@ export class DialogContainer extends Container<DialogState> {
     message: React.ReactNode
     continueButtonText?: string
     cancelButtonText?: string
-  }): Promise<{ accepted: boolean }> => {
-    await this.maybeForceCloseExistingDialog()
-
-    return new Promise<{ accepted: boolean }>(resolve => {
-      const accept = async () => {
-        await this.closeDialog()
-        resolve({ accepted: true })
-      }
-      const reject = async () => {
-        await this.closeDialog()
-        resolve({ accepted: false })
-      }
-
-      this.setState({
-        props: {
-          show: true,
-          heading: title,
-          detail: message,
-          primaryCta: {
-            text: continueButtonText,
-            action: accept,
-          },
-          secondaryCta: {
-            text: cancelButtonText,
-            action: reject,
-          },
-          onClose: reject,
-        },
-        forceCloseDialog: reject,
-      })
-    })
   }
+): Promise<{ accepted: boolean }> => {
+  return new Promise<{ accepted: boolean }>(resolve => {
+    const accept = () => {
+      dialog.hide()
+      resolve({ accepted: true })
+    }
+    const reject = () => {
+      dialog.hide()
+      resolve({ accepted: false })
+    }
 
-  showErrorDialog = async ({
+    dialog.show({
+      props: {
+        show: true,
+        heading: title,
+        detail: message,
+        primaryCta: {
+          text: continueButtonText,
+          action: accept,
+        },
+        secondaryCta: {
+          text: cancelButtonText,
+          action: reject,
+        },
+        onClose: reject,
+      },
+      onForceClose: reject,
+    })
+  })
+}
+
+export const showErrorDialog = (
+  dialog: Dialog,
+  {
     title = "An error occurred",
     supportEmail = "orders@artsy.net",
     message = (
@@ -95,63 +147,26 @@ export class DialogContainer extends Container<DialogState> {
     message?: React.ReactNode
     supportEmail?: string
     continueButtonText?: string
-  }): Promise<void> => {
-    await this.maybeForceCloseExistingDialog()
-
-    return new Promise<void>(resolve => {
-      const onContinue = async () => {
-        await this.closeDialog()
-        resolve()
-      }
-
-      this.setState({
-        props: {
-          show: true,
-          heading: title,
-          detail: message,
-          primaryCta: {
-            text: continueButtonText,
-            action: onContinue,
-          },
-          onClose: onContinue,
-        },
-        forceCloseDialog: onContinue,
-      })
-    })
   }
-}
+): Promise<void> => {
+  return new Promise<void>(resolve => {
+    const onContinue = () => {
+      dialog.hide()
+      resolve()
+    }
 
-const extractDialogHelpers = ({
-  showAcceptDialog,
-  showErrorDialog,
-}: DialogContainer) => ({ showAcceptDialog, showErrorDialog })
-
-export type DialogHelpers = ReturnType<typeof extractDialogHelpers>
-
-// make it safe to inject dialogs on components nested within a page by
-// only injecting the actual modal component if it hasn't been injected already
-// otherwise you might end up with two or more instances of the modal appearing.
-const DialogContext = React.createContext({ isModalInTree: false })
-
-/**
- * Injects the `dialogs` prop into the given page component
- * @param Component
- */
-export function injectDialogs<R extends { dialogs: DialogHelpers }>(
-  Component: React.ComponentType<R>
-): React.ComponentType<{ [K in Exclude<keyof R, "dialogs">]: R[K] }> {
-  return props => (
-    <DialogContext.Consumer>
-      {({ isModalInTree }) => (
-        <Subscribe to={[DialogContainer]}>
-          {(dialogs: DialogContainer) => (
-            <DialogContext.Provider value={{ isModalInTree: true }}>
-              <Component dialogs={extractDialogHelpers(dialogs)} {...props} />
-              {!isModalInTree && <ModalDialog {...dialogs.state.props} />}
-            </DialogContext.Provider>
-          )}
-        </Subscribe>
-      )}
-    </DialogContext.Consumer>
-  )
+    dialog.show({
+      props: {
+        show: true,
+        heading: title,
+        detail: message,
+        primaryCta: {
+          text: continueButtonText,
+          action: onContinue,
+        },
+        onClose: onContinue,
+      },
+      onForceClose: onContinue,
+    })
+  })
 }

@@ -12,7 +12,12 @@ import { Helper } from "Apps/Order/Components/Helper"
 import { OfferInput } from "Apps/Order/Components/OfferInput"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
-import { DialogHelpers, injectDialogs } from "Apps/Order/Dialogs"
+import {
+  Dialog,
+  injectDialog,
+  showAcceptDialog,
+  showErrorDialog,
+} from "Apps/Order/Dialogs"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { StaticCollapse } from "Components/StaticCollapse"
 import { Router } from "found"
@@ -44,7 +49,7 @@ export interface RespondProps {
   mediator: Mediator
   relay?: RelayProp
   router: Router
-  dialogs: DialogHelpers
+  dialog: Dialog
 }
 
 export interface RespondState {
@@ -112,7 +117,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
   }
 
   confirmOfferTooLow() {
-    return this.props.dialogs.showAcceptDialog({
+    return showAcceptDialog(this.props.dialog, {
       title: "Offer may be too low",
       message:
         "Offers within 20% of the list price are most likely to receive a response.",
@@ -120,7 +125,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
   }
 
   confirmOfferTooHigh() {
-    return this.props.dialogs.showAcceptDialog({
+    return showAcceptDialog(this.props.dialog, {
       title: "Offer higher than list price",
       message: "You’re making an offer higher than the list price.",
     })
@@ -183,7 +188,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
 
   onMutationError = (errors, title?, message?) => {
     logger.error(errors)
-    this.props.dialogs.showErrorDialog({ title, message })
+    showErrorDialog(this.props.dialog, { title, message })
     this.setState({ isCommittingMutation: false })
   }
 
@@ -324,7 +329,7 @@ const RespondRouteWrapper = props => (
 )
 
 export const RespondFragmentContainer = createFragmentContainer(
-  injectDialogs(RespondRouteWrapper),
+  injectDialog(RespondRouteWrapper),
   graphql`
     fragment Respond_order on Order {
       id

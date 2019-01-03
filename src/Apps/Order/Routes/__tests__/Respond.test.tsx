@@ -33,6 +33,7 @@ jest.mock("react-relay", () => ({
 }))
 
 import { OfferInput } from "Apps/Order/Components/OfferInput"
+import { ConnectedModalDialog } from "Apps/Order/Dialogs"
 import { ModalButton, ModalDialog } from "Components/Modal/ModalDialog"
 import { commitMutation } from "react-relay"
 import { flushPromiseQueue } from "Utils/flushPromiseQueue"
@@ -70,6 +71,7 @@ describe("Offer InitialMutation", () => {
             ...extraOrderProps,
           }}
         />
+        <ConnectedModalDialog />
       </MockBoot>
     )
   }

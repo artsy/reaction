@@ -1,12 +1,13 @@
 import { Button } from "@artsy/palette"
 import { OfferInput } from "Apps/Order/Components/OfferInput"
+import { ConnectedModalDialog } from "Apps/Order/Dialogs"
 import { Input } from "Components/Input"
 import { ModalButton, ModalDialog } from "Components/Modal/ModalDialog"
 import { MockBoot } from "DevTools"
 import { mount, ReactWrapper } from "enzyme"
 import React from "react"
-import { commitMutation as _commitMutation } from "react-relay"
 import { RelayProp } from "react-relay"
+import { commitMutation as _commitMutation } from "react-relay"
 import { flushPromiseQueue } from "Utils/flushPromiseQueue"
 import { UntouchedOfferOrder } from "../../../__tests__/Fixtures/Order"
 import { TransactionDetailsSummaryItem } from "../../Components/TransactionDetailsSummaryItem"
@@ -28,6 +29,7 @@ describe("Offer InitialMutation", () => {
     return mount(
       <MockBoot>
         <OfferRoute {...someProps} />
+        <ConnectedModalDialog />
       </MockBoot>
     )
   }

@@ -6,6 +6,7 @@ import { Location, RouteConfig, Router } from "found"
 import React from "react"
 import { Meta, Title } from "react-head"
 import { Elements, StripeProvider } from "react-stripe-elements"
+import { ConnectedModalDialog } from "./Dialogs"
 
 declare global {
   interface Window {
@@ -106,6 +107,7 @@ export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
                 </>
               </Elements>
             </StripeProvider>
+            <ConnectedModalDialog />
           </>
         )}
       </ContextConsumer>

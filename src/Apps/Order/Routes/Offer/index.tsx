@@ -6,7 +6,12 @@ import { Helper } from "Apps/Order/Components/Helper"
 import { OfferInput } from "Apps/Order/Components/OfferInput"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
-import { DialogHelpers, injectDialogs } from "Apps/Order/Dialogs"
+import {
+  Dialog,
+  injectDialog,
+  showAcceptDialog,
+  showErrorDialog,
+} from "Apps/Order/Dialogs"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { Router } from "found"
 import React, { Component } from "react"
@@ -29,7 +34,7 @@ export interface OfferProps {
   mediator: Mediator
   relay?: RelayProp
   router: Router
-  dialogs: DialogHelpers
+  dialog: Dialog
 }
 
 export interface OfferState {
@@ -137,12 +142,12 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
 
   onMutationError(error, title?, message?) {
     logger.error(error)
-    this.props.dialogs.showErrorDialog({ title, message })
+    showErrorDialog(this.props.dialog, { title, message })
     this.setState({ isCommittingMutation: false })
   }
 
   confirmOfferTooLow() {
-    return this.props.dialogs.showAcceptDialog({
+    return showAcceptDialog(this.props.dialog, {
       title: "Offer may be too low",
       message:
         "Offers within 20% of the list price are most likely to receive a response.",
@@ -150,7 +155,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
   }
 
   confirmOfferTooHigh() {
-    return this.props.dialogs.showAcceptDialog({
+    return showAcceptDialog(this.props.dialog, {
       title: "Offer higher than list price",
       message: "You’re making an offer higher than the list price.",
     })
@@ -263,7 +268,7 @@ const OfferRouteWrapper = props => (
 )
 
 export const OfferFragmentContainer = createFragmentContainer(
-  injectDialogs(OfferRouteWrapper),
+  injectDialog(OfferRouteWrapper),
   graphql`
     fragment Offer_order on Order {
       id
