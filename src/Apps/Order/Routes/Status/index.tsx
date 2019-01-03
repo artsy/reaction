@@ -147,7 +147,7 @@ const offerMessages = {
   },
   CANCELED: (props: StatusProps) => {
     if (props.order.stateReason === "buyer_rejected") {
-      return false
+      return orderMessages.CANCELED()
     }
     return (
       <>
