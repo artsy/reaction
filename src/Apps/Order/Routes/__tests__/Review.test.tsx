@@ -8,7 +8,6 @@ import {
 } from "Apps/__tests__/Fixtures/Order"
 import { CreditCardSummaryItemFragmentContainer } from "Apps/Order/Components/CreditCardSummaryItem"
 import { ShippingSummaryItemFragmentContainer } from "Apps/Order/Components/ShippingSummaryItem"
-import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { ErrorModal, ModalButton } from "Components/Modal/ErrorModal"
 import { MockBoot } from "DevTools"
 import { commitMutation } from "react-relay"
@@ -31,9 +30,6 @@ import { ReviewRoute } from "../Review"
 jest.mock("react-relay", () => ({
   commitMutation: jest.fn(),
   createFragmentContainer: component => component,
-}))
-jest.mock("Apps/Order/Utils/trackPageView", () => ({
-  trackPageView: jest.fn(),
 }))
 
 const pushMock = jest.fn()
@@ -65,7 +61,6 @@ describe("Review", () => {
   beforeEach(() => {
     mutationMock.mockReset()
     pushMock.mockReset()
-    ;(trackPageView as jest.Mock<void>).mockReset()
   })
 
   describe("buy-mode orders", () => {
@@ -294,11 +289,5 @@ describe("Review", () => {
       component.find(ModalButton).simulate("click")
       expect(window.location.assign).toBeCalledWith("/artist/artistId")
     })
-  })
-
-  it("tracks a pageview", () => {
-    getWrapper(defaultProps)
-
-    expect(trackPageView).toHaveBeenCalledTimes(1)
   })
 })

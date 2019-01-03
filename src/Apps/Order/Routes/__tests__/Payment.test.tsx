@@ -14,7 +14,6 @@ import {
   fillIn,
   validAddress,
 } from "Apps/Order/Routes/__tests__/Utils/addressForm"
-import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { Input } from "../../../../Components/Input"
 import {
   ActiveTabContainer,
@@ -38,9 +37,6 @@ jest.mock("react-stripe-elements", () => ({
   injectStripe: args => args,
 }))
 jest.unmock("react-tracking")
-jest.mock("Apps/Order/Utils/trackPageView", () => ({
-  trackPageView: jest.fn(),
-}))
 
 import { MockBoot } from "DevTools"
 import { commitMutation, RelayProp } from "react-relay"
@@ -96,7 +92,6 @@ describe("Payment", () => {
       stripe: stripeMock,
       mediator: { trigger: jest.fn() },
     } as any
-    ;(trackPageView as jest.Mock<void>).mockReset()
   })
 
   it("always shows the billing address form without checkbox when the user selected 'pick' shipping option", () => {
@@ -430,12 +425,6 @@ describe("Payment", () => {
   })
 
   describe("Analytics", () => {
-    it("tracks a pageview", () => {
-      getWrapper(testProps)
-
-      expect(trackPageView).toHaveBeenCalledTimes(1)
-    })
-
     it("tracks click when use shipping address checkbox transitions from checked to unchecked but not from unchecked to checked", () => {
       const { Component, dispatch } = mockTracking(PaymentRoute)
       const component = mount(<Component {...testProps} />)

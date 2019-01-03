@@ -11,7 +11,6 @@ import { OfferHistoryItemFragmentContainer } from "Apps/Order/Components/OfferHi
 import { OrderStepper } from "Apps/Order/Components/OrderStepper"
 import { ShippingSummaryItemFragmentContainer } from "Apps/Order/Components/ShippingSummaryItem"
 import { TransactionDetailsSummaryItemFragmentContainer } from "Apps/Order/Components/TransactionDetailsSummaryItem"
-import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { Input } from "Components/Input"
 import { MockBoot } from "DevTools"
 import { mount } from "enzyme"
@@ -31,9 +30,6 @@ require("Utils/getCurrentTimeAsIsoString").__setCurrentTime(NOW)
 jest.mock("react-relay", () => ({
   commitMutation: jest.fn(),
   createFragmentContainer: component => component,
-}))
-jest.mock("Apps/Order/Utils/trackPageView", () => ({
-  trackPageView: jest.fn(),
 }))
 
 import { OfferInput } from "Apps/Order/Components/OfferInput"
@@ -82,7 +78,6 @@ describe("Offer InitialMutation", () => {
     mockPushRoute = jest.fn()
     mockMediatorTrigger = jest.fn()
     commitMutationMock.mockReset()
-    ;(trackPageView as jest.Mock<void>).mockReset()
   })
 
   it("renders", () => {
@@ -380,11 +375,5 @@ Object {
         .find(ErrorModal)
         .props().show
     ).toBe(true)
-  })
-
-  it("tracks a pageview", () => {
-    getWrapper()
-
-    expect(trackPageView).toHaveBeenCalledTimes(1)
   })
 })

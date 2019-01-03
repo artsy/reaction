@@ -9,7 +9,6 @@ import {
   OrderStepper,
 } from "Apps/Order/Components/OrderStepper"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
-import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
@@ -49,10 +48,6 @@ export class Reject extends Component<RejectProps, RejectState> {
     isErrorModalOpen: false,
     errorModalTitle: null,
     errorModalMessage: null,
-  }
-
-  componentDidMount() {
-    trackPageView()
   }
 
   onSubmit: () => void = () => {

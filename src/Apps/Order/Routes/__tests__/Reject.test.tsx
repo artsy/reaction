@@ -1,7 +1,6 @@
 import { Button } from "@artsy/palette"
 import { OfferOrderWithShippingDetails } from "Apps/__tests__/Fixtures/Order"
 import { OrderStepper } from "Apps/Order/Components/OrderStepper"
-import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { ErrorModal, ModalButton } from "Components/Modal/ErrorModal"
 import { MockBoot } from "DevTools"
 import { mount } from "enzyme"
@@ -23,9 +22,6 @@ const NOW = "2018-12-05T13:47:16.446Z"
 require("Utils/getCurrentTimeAsIsoString").__setCurrentTime(NOW)
 
 jest.mock("react-relay")
-jest.mock("Apps/Order/Utils/trackPageView", () => ({
-  trackPageView: jest.fn(),
-}))
 
 const testOrder = {
   ...OfferOrderWithShippingDetails,
@@ -61,7 +57,6 @@ describe("Buyer rejects seller offer", () => {
 
   beforeEach(() => {
     mockPushRoute = jest.fn()
-    ;(trackPageView as jest.Mock<void>).mockReset()
   })
 
   it("Shows the stepper", () => {
@@ -188,11 +183,5 @@ describe("Buyer rejects seller offer", () => {
     component.find(Button).simulate("click")
 
     expect(component.find(ErrorModal).props().show).toBe(true)
-  })
-
-  it("tracks a pageview", () => {
-    getWrapper()
-
-    expect(trackPageView).toHaveBeenCalledTimes(1)
   })
 })

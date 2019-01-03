@@ -12,7 +12,6 @@ import { Helper } from "Apps/Order/Components/Helper"
 import { OfferInput } from "Apps/Order/Components/OfferInput"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
-import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { StaticCollapse } from "Components/StaticCollapse"
@@ -68,10 +67,6 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
     errorModalTitle: null,
     errorModalMessage: null,
     formIsDirty: false,
-  }
-
-  componentDidMount() {
-    trackPageView()
   }
 
   onContinueButtonPressed: () => void = () => {

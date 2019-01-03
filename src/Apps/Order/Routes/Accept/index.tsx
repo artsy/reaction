@@ -25,7 +25,6 @@ import { AcceptOfferMutation } from "__generated__/AcceptOfferMutation.graphql"
 import { ConditionsOfSaleDisclaimer } from "Apps/Order/Components/ConditionsOfSaleDisclaimer"
 import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "Apps/Order/Components/ShippingSummaryItem"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
-import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { CountdownTimer } from "Styleguide/Components/CountdownTimer"
 import { ErrorWithMetadata } from "Utils/errors"
@@ -58,10 +57,6 @@ export class Accept extends Component<AcceptProps, AcceptState> {
     isErrorModalOpen: false,
     errorModalTitle: null,
     errorModalMessage: null,
-  }
-
-  componentDidMount() {
-    trackPageView()
   }
 
   onSubmit: () => void = () => {

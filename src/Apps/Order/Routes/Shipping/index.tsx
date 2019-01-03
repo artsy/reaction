@@ -30,7 +30,6 @@ import {
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { validatePresence } from "Apps/Order/Utils/formValidators"
-import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
@@ -84,10 +83,6 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     addressTouched: {},
     errorModalTitle: null,
     errorModalMessage: null,
-  }
-
-  componentDidMount() {
-    trackPageView()
   }
 
   get startingAddress() {

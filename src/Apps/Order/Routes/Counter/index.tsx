@@ -12,7 +12,6 @@ import {
 import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "Apps/Order/Components/ShippingSummaryItem"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
-import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
@@ -54,10 +53,6 @@ export class CounterRoute extends Component<CounterProps, CounterState> {
     errorModalTitle: null,
     errorModalMessage: null,
   } as CounterState
-
-  componentDidMount() {
-    trackPageView()
-  }
 
   onSubmitButtonPressed: () => void = () => {
     this.setState({ isCommittingMutation: true }, () => {
