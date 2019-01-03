@@ -7,6 +7,6 @@
     "major": "Version: Major",
     "minor": "Version: Minor",
     "patch": "Version: Patch",
-    "no-release": "Version: Trivial"
-  }
+  },
+  "noReleaseLabels": ["Version: Trivial", "Skip Release"]
 }
