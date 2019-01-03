@@ -18,7 +18,8 @@ import React from "react"
 import { commitMutation as _commitMutation, RelayProp } from "react-relay"
 
 import { ArtworkSidebarCommercial } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarCommercial"
-import { ErrorModal, ModalButton } from "Components/Modal/ErrorModal"
+import { ErrorModal } from "Components/Modal/ErrorModal"
+import { ModalButton } from "Components/Modal/ModalDialog"
 import { MockBoot } from "DevTools"
 
 const commitMutation = _commitMutation as jest.Mock<any>

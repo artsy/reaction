@@ -11,6 +11,7 @@ export type Offer_order = {
     readonly mode: OrderModeEnum | null;
     readonly state: string | null;
     readonly totalListPrice: string | null;
+    readonly totalListPriceCents: number | null;
     readonly lineItems: ({
         readonly edges: ReadonlyArray<({
             readonly node: ({
@@ -76,6 +77,13 @@ return {
         }
       ],
       "storageKey": "totalListPrice(precision:2)"
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "totalListPriceCents",
+      "args": null,
+      "storageKey": null
     },
     {
       "kind": "LinkedField",
@@ -144,5 +152,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '3850326a36d217a9f606d88caa3b66e0';
+(node as any).hash = '6ee0e0c309dc3f09604fa6cf229cfbac';
 export default node;

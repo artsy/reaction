@@ -8,7 +8,8 @@ import {
 } from "Apps/__tests__/Fixtures/Order"
 import { CreditCardSummaryItemFragmentContainer } from "Apps/Order/Components/CreditCardSummaryItem"
 import { ShippingSummaryItemFragmentContainer } from "Apps/Order/Components/ShippingSummaryItem"
-import { ErrorModal, ModalButton } from "Components/Modal/ErrorModal"
+import { ErrorModal } from "Components/Modal/ErrorModal"
+import { ModalButton } from "Components/Modal/ModalDialog"
 import { MockBoot } from "DevTools"
 import { commitMutation } from "react-relay"
 import {

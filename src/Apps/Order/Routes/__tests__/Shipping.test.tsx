@@ -14,8 +14,8 @@ import {
   validAddress,
 } from "Apps/Order/Routes/__tests__/Utils/addressForm"
 import Input, { InputProps } from "Components/Input"
-import { ModalButton } from "Components/Modal/ErrorModal"
 import { ErrorModal } from "Components/Modal/ErrorModal"
+import { ModalButton } from "Components/Modal/ModalDialog"
 import { MockBoot } from "DevTools"
 import { commitMutation as _commitMutation, RelayProp } from "react-relay"
 import {

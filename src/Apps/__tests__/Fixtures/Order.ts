@@ -38,6 +38,7 @@ export const UntouchedOrder = {
   state: "PENDING",
   itemsTotal: "$12,000",
   totalListPrice: "$12,000",
+  totalListPriceCents: 1200000,
   shippingTotal: null,
   taxTotal: null,
   buyerTotal: "$12,000",
@@ -131,6 +132,7 @@ export const UntouchedOfferOrder = {
   __typename: "OfferOrder",
   mode: "OFFER",
   totalListPrice: "$16,000",
+  totalListPriceCents: 1600000,
   lastOffer: OfferWithTotals,
   awaitingResponseFrom: null,
   myLastOffer: {

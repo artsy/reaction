@@ -6,8 +6,13 @@ import { Helper } from "Apps/Order/Components/Helper"
 import { OfferInput } from "Apps/Order/Components/OfferInput"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
+import {
+  Dialog,
+  injectDialog,
+  showAcceptDialog,
+  showErrorDialog,
+} from "Apps/Order/Dialogs"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
-import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
 import React, { Component } from "react"
 import {
@@ -29,34 +34,46 @@ export interface OfferProps {
   mediator: Mediator
   relay?: RelayProp
   router: Router
+  dialog: Dialog
 }
 
 export interface OfferState {
   offerValue: number
   isCommittingMutation: boolean
-  isErrorModalOpen: boolean
-  errorModalTitle: string
-  errorModalMessage: string
   formIsDirty: boolean
 }
 
 const logger = createLogger("Order/Routes/Offer/index.tsx")
 
 export class OfferRoute extends Component<OfferProps, OfferState> {
-  state = {
+  state: OfferState = {
     offerValue: 0,
     isCommittingMutation: false,
-    isErrorModalOpen: false,
-    errorModalTitle: null,
-    errorModalMessage: null,
     formIsDirty: false,
   }
 
-  onContinueButtonPressed: () => void = () => {
+  onContinueButtonPressed: () => void = async () => {
     if (this.state.offerValue <= 0) {
       this.setState({ formIsDirty: true })
       return
     }
+
+    const listPriceCents = this.props.order.totalListPriceCents
+
+    if (this.state.offerValue * 100 < listPriceCents * 0.8) {
+      const decision = await this.confirmOfferTooLow()
+      if (!decision.accepted) {
+        return
+      }
+    }
+
+    if (this.state.offerValue * 100 > listPriceCents) {
+      const decision = await this.confirmOfferTooHigh()
+      if (!decision.accepted) {
+        return
+      }
+    }
+
     this.setState({ isCommittingMutation: true }, () => {
       if (this.props.relay && this.props.relay.environment) {
         const { offerValue } = this.state
@@ -71,6 +88,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
                       id
                       mode
                       totalListPrice
+                      totalListPriceCents
                       ... on OfferOrder {
                         myLastOffer {
                           id
@@ -122,18 +140,25 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
     })
   }
 
-  onMutationError(error, errorModalTitle?, errorModalMessage?) {
+  onMutationError(error, title?, message?) {
     logger.error(error)
-    this.setState({
-      isCommittingMutation: false,
-      isErrorModalOpen: true,
-      errorModalTitle,
-      errorModalMessage,
+    showErrorDialog(this.props.dialog, { title, message })
+    this.setState({ isCommittingMutation: false })
+  }
+
+  confirmOfferTooLow() {
+    return showAcceptDialog(this.props.dialog, {
+      title: "Offer may be too low",
+      message:
+        "Offers within 20% of the list price are most likely to receive a response.",
     })
   }
 
-  onCloseModal = () => {
-    this.setState({ isErrorModalOpen: false })
+  confirmOfferTooHigh() {
+    return showAcceptDialog(this.props.dialog, {
+      title: "Offer higher than list price",
+      message: "You’re making an offer higher than the list price.",
+    })
   }
 
   render() {
@@ -229,14 +254,6 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
             }
           />
         </HorizontalPadding>
-
-        <ErrorModal
-          onClose={this.onCloseModal}
-          show={this.state.isErrorModalOpen}
-          contactEmail="orders@artsy.net"
-          detailText={this.state.errorModalMessage}
-          headerText={this.state.errorModalTitle}
-        />
       </>
     )
   }
@@ -251,13 +268,14 @@ const OfferRouteWrapper = props => (
 )
 
 export const OfferFragmentContainer = createFragmentContainer(
-  OfferRouteWrapper,
+  injectDialog(OfferRouteWrapper),
   graphql`
     fragment Offer_order on Order {
       id
       mode
       state
       totalListPrice(precision: 2)
+      totalListPriceCents
       lineItems {
         edges {
           node {
