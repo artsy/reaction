@@ -5,6 +5,7 @@ import { FilterIcon } from "Assets/Icons/FilterIcon"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { data as sd } from "sharify"
 import { Toggle } from "Styleguide/Components"
 import { Subscribe } from "unstated"
 import { Media } from "Utils/Responsive"
@@ -24,6 +25,8 @@ import {
   SmallSelect,
   Spacer,
 } from "@artsy/palette"
+
+const { ENABLE_MAKE_OFFER } = sd
 
 interface Props {
   artist: ArtworkFilter_artist
@@ -171,6 +174,10 @@ class Filter extends Component<Props> {
         state: "inquireable_only",
       },
     ]
+
+    if (!ENABLE_MAKE_OFFER) {
+      ways.splice(1, 1)
+    }
 
     const wayCheckboxes = ways.map((way, index) => {
       const props = {

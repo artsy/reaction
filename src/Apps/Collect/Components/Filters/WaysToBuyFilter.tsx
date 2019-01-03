@@ -1,7 +1,11 @@
 import { Checkbox, Sans } from "@artsy/palette"
 import { ContextConsumer } from "Artsy/SystemContext"
 import React from "react"
+import { data as sd } from "sharify"
 import { FilterState } from "../../FilterState"
+
+
+const { ENABLE_MAKE_OFFER } = sd
 
 export const WaysToBuyFilter: React.SFC<{
   filters: FilterState
@@ -32,6 +36,10 @@ export const WaysToBuyFilter: React.SFC<{
       state: "inquireable_only",
     },
   ]
+
+  if (!ENABLE_MAKE_OFFER) {
+    ways.splice(1, 1)
+  }
 
   const constructCheckboxes = mediator =>
     ways.map((way, index) => {
