@@ -27,7 +27,10 @@ jobs:
       - yarn/setup
       # Setup the .npmrc with the proper registry and auth token to publish
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-      - run: yarn semantic-release
+      # TODO: Figure out how to integrate same hash with other steps
+      - run: "git remote rm origin; git remote add origin https://${GH_TOKEN}@github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}.git"
+      - run: git pull origin master
+      - run: yarn release
   test:
     executor: node/build
     steps:
