@@ -17,6 +17,8 @@ import { ArticleData, DisplayData } from "./Typings"
 
 export interface ArticleProps {
   article: ArticleData
+  backgroundColor?: string
+  color?: string
   customEditorial?: string
   relatedArticles?: any
   relatedArticlesForPanel?: any

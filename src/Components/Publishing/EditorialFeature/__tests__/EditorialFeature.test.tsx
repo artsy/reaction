@@ -2,13 +2,11 @@ import { mount } from "enzyme"
 import React from "react"
 import renderer from "react-test-renderer"
 
+import { ArticleProps } from "Components/Publishing/Article"
 import { Eoy2018Artists as Eoy2018ArtistsFixture } from "Components/Publishing/EditorialFeature/Fixtures/Eoy2018Artists"
 import { Eoy2018Culture as Eoy2018CultureFixture } from "Components/Publishing/EditorialFeature/Fixtures/Eoy2018Culture"
 import { FeatureArticle } from "Components/Publishing/Fixtures/Articles"
-import {
-  ArticleProps,
-  FeatureLayout,
-} from "Components/Publishing/Layouts/FeatureLayout"
+import { FeatureLayout } from "Components/Publishing/Layouts/FeatureLayout"
 import { TooltipsData } from "Components/Publishing/ToolTip/TooltipsDataLoader"
 import { ArticleData } from "Components/Publishing/Typings"
 import { Eoy2018Artists } from "../Components/Eoy2018Artists"
