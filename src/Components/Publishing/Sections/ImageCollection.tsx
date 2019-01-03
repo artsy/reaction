@@ -10,6 +10,7 @@ import { Artwork } from "./Artwork"
 import { Image } from "./Image"
 
 interface ImageCollectionProps {
+  color?: string
   images: any
   targetHeight?: number
   gutter?: number
@@ -33,6 +34,7 @@ class ImageCollectionComponent extends React.PureComponent<
   renderImages(dimensions) {
     const {
       articleLayout,
+      color,
       gutter,
       images,
       sectionLayout,
@@ -54,6 +56,7 @@ class ImageCollectionComponent extends React.PureComponent<
         renderedImage = (
           <Image
             image={image}
+            color={color}
             sectionLayout={sectionLayout}
             layout={articleLayout}
             width={imageSize.width}
@@ -64,6 +67,7 @@ class ImageCollectionComponent extends React.PureComponent<
         renderedImage = (
           <Artwork
             artwork={image}
+            color={color}
             sectionLayout={sectionLayout}
             layout={articleLayout}
             width={imageSize.width}

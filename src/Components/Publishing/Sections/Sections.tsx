@@ -148,6 +148,7 @@ export class Sections extends Component<Props, State> {
     const sections = {
       image_collection: (
         <ImageCollection
+          color={color}
           sectionLayout={section.layout}
           articleLayout={article.layout}
           images={section.images}
