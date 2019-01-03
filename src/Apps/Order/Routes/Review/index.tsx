@@ -69,7 +69,10 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
   }
 
   @track<ReviewProps>(props => ({
-    action_type: Schema.ActionType.SubmittedOrder,
+    action_type:
+      props.order.mode === "BUY"
+        ? Schema.ActionType.SubmittedOrder
+        : Schema.ActionType.SubmittedOffer,
     order_id: props.order.id,
   }))
   onSuccessfulSubmit() {

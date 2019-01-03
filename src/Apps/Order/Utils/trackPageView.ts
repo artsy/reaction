@@ -1,10 +1,10 @@
 declare const window: any
 
 export function trackPageView(): void {
+  console.log("tracking page view!", window.analytics)
   if (typeof window.analytics !== "undefined") {
     window.analytics.page(
       { path: window.location.pathname },
-      // TODO: talk to will to see about this integration thing????
       { integrations: { Marketo: false } }
     )
     // Reset timers that track time on page since we're tracking each order
