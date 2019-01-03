@@ -75,7 +75,7 @@ Reaction uses [auto-release](https://github.com/intuit/auto-release#readme) to a
 - Version: Minor
 - Version: Major
 
-No release will happen on a `Trivial` update.
+Peril will automatically add "Version: Patch", if you don't set one on creating your PR. No release will happen on a `Trivial` update.
 
 ## Emitting types
 
