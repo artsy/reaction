@@ -45,6 +45,7 @@ export const WaysToBuyFilter: React.SFC<{
     ways.map((way, index) => {
       const props = {
         disabled: way.disabled,
+        key: index,
         onSelect: value => filters.setFilter(way.state, value, mediator),
         selected: filters.state[way.state],
       }

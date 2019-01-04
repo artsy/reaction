@@ -182,6 +182,7 @@ class Filter extends Component<Props> {
     const wayCheckboxes = ways.map((way, index) => {
       const props = {
         disabled: !way.hasWorks || this.showZeroState,
+        key: index,
         onSelect: value => filterState.setFilter(way.state, value, mediator),
         selected: filterState.state[way.state],
       }
