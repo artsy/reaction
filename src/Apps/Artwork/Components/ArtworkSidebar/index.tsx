@@ -1,4 +1,4 @@
-import { Box, Separator, Spacer } from "@artsy/palette"
+import { Box, Spacer } from "@artsy/palette"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { ContextConsumer } from "Artsy/Router"
 import React, { Component } from "react"
@@ -31,12 +31,11 @@ export class ArtworkSidebar extends Component<ArtworkSidebarProps> {
         <Artists artwork={artwork} />
         <Spacer mb={2} />
         <Metadata artwork={artwork} />
-        <Spacer mb={3} />
 
         {artwork.is_in_auction ? (
           <React.Fragment>
+            <Spacer mb={2} />
             <AuctionPartnerInfo artwork={artwork} />
-            <Separator />
             <CurrentBidInfo artwork={artwork} />
             <BidAction artwork={artwork} />
             {!artwork.sale.is_closed && (
@@ -47,6 +46,7 @@ export class ArtworkSidebar extends Component<ArtworkSidebarProps> {
           </React.Fragment>
         ) : (
           <React.Fragment>
+            <Spacer mb={3} />
             <Commercial artwork={artwork} />
             <PartnerInfo artwork={artwork} />
           </React.Fragment>

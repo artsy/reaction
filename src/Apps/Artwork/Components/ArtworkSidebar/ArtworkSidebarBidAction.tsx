@@ -1,4 +1,12 @@
-import { Box, Button, Flex, LargeSelect, Serif, Tooltip } from "@artsy/palette"
+import {
+  Button,
+  Flex,
+  LargeSelect,
+  Separator,
+  Serif,
+  Spacer,
+  Tooltip,
+} from "@artsy/palette"
 import { Help } from "Assets/Icons/Help"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -70,7 +78,7 @@ export class ArtworkSidebarBidAction extends React.Component<
 
     if (artwork.sale.is_preview) {
       return (
-        <Box>
+        <>
           {!registrationAttempted && (
             <Button
               width="100%"
@@ -93,7 +101,7 @@ export class ArtworkSidebarBidAction extends React.Component<
                 Registration complete
               </Button>
             )}
-        </Box>
+        </>
       )
     }
 
@@ -102,18 +110,17 @@ export class ArtworkSidebarBidAction extends React.Component<
         <ContextConsumer>
           {({ user }) => {
             return (
-              <Box>
+              <>
                 <Button
                   width="100%"
                   size="large"
-                  mt={1}
                   onClick={() => this.redirectToLiveBidding(user)}
                 >
                   {artwork.sale.is_registration_closed && !registeredToBid
                     ? "Watch live bidding"
                     : "Enter live bidding"}
                 </Button>
-              </Box>
+              </>
             )
           }}
         </ContextConsumer>
@@ -123,20 +130,20 @@ export class ArtworkSidebarBidAction extends React.Component<
     if (artwork.sale.is_open) {
       if (registrationAttempted && !registeredToBid) {
         return (
-          <Box>
-            <Button width="100%" size="large" mt={1} disabled>
+          <>
+            <Button width="100%" size="large" disabled>
               Registration pending
             </Button>
-          </Box>
+          </>
         )
       }
       if (artwork.sale.is_registration_closed && !registeredToBid) {
         return (
-          <Box>
-            <Button width="100%" size="large" mt={1} disabled>
+          <>
+            <Button width="100%" size="large" disabled>
               Registration closed
             </Button>
-          </Box>
+          </>
         )
       }
 
@@ -152,7 +159,8 @@ export class ArtworkSidebarBidAction extends React.Component<
       }))
 
       return (
-        <Box>
+        <>
+          <Separator mb={2} />
           <Flex width="100%" flexDirection="row">
             <Serif size="3t" color="black100" mr={1}>
               Place max bid
@@ -165,15 +173,15 @@ export class ArtworkSidebarBidAction extends React.Component<
             </Tooltip>
           </Flex>
           <LargeSelect options={selectOptions} onSelect={this.setMaxBid} />
+          <Spacer mb={2} />
           <Button
             width="100%"
             size="large"
-            mt={1}
             onClick={() => this.redirectToBid(firstIncrement.cents)}
           >
             {hasMyBids ? "Increase max bid" : "Bid"}
           </Button>
-        </Box>
+        </>
       )
     }
   }
