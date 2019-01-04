@@ -2689,10 +2689,10 @@ atob@^2.1.1:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.1.tgz#ae2d5a729477f289d60dd7f96a6314a22dd6c22a"
   integrity sha1-ri1acpR38onWDdf5amMUoi3Wwio=
 
-auto-release-cli@^0.37.6:
-  version "0.37.6"
-  resolved "https://registry.yarnpkg.com/auto-release-cli/-/auto-release-cli-0.37.6.tgz#e6ce42e2b4ff58a1e8a5d12f0d3e525071ab4e44"
-  integrity sha512-iCRcdLPV15m4F8SsDGdLjCieo5b9wAaADXuUbqGA8iL7gFXirVAPaUuMLkAQHtvLzv0k4iaK3wJFHfMDealEeQ==
+auto-release-cli@^0.37.8:
+  version "0.37.8"
+  resolved "https://registry.yarnpkg.com/auto-release-cli/-/auto-release-cli-0.37.8.tgz#bc8687951ba6cf3778c6d8d3d9750a65bf94a613"
+  integrity sha512-xxE7paHL0FGnw52gm5bKMPhIluojErUxoBvqrVc4M/x2z2Cg/p9Vjr/SQumq9mM51Bb/5OOpZN+UcdDZgkZcew==
   dependencies:
     "@octokit/rest" "^16.3.0"
     chalk "^2.4.1"
