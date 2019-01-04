@@ -13,25 +13,21 @@ export const WaysToBuyFilter: React.SFC<{
   const ways = [
     {
       disabled: false,
-      hasWorks: this.existy.hasBuyNowArtworks,
       name: "Buy now",
       state: "acquireable",
     },
     {
       disabled: false,
-      hasWorks: this.existy.hasMakeOfferArtworks,
       name: "Make offer",
       state: "offerable",
     },
     {
       disabled: filters.isPriceSelected(),
-      hasWorks: this.existy.hasAuctionArtworks,
       name: "Bid",
       state: "at_auction",
     },
     {
       disabled: false,
-      hasWorks: this.existy.hasForSaleArtworks,
       name: "Inquire",
       state: "inquireable_only",
     },
