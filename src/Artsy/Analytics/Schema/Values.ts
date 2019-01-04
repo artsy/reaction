@@ -229,6 +229,8 @@ export enum ContextModule {
 export enum Flow {
   ArtworkAboutTheWork = "Artwork about the work",
   ArtworkAboutTheArtist = "Artwork about the artist",
+  BuyNow = "Buy now",
+  MakeOffer = "Make offer",
 }
 
 export enum Label {

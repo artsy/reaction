@@ -152,8 +152,8 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
 
   @track((props, state, args) => ({
     action_type: Schema.ActionType.ClickedBuyNow,
-    flow: "buy now",
-    type: "button",
+    flow: Schema.Flow.BuyNow,
+    type: Schema.Type.Button,
   }))
   handleCreateOrder() {
     this.setState({ isCommittingCreateOrderMutation: true }, () => {
@@ -219,8 +219,8 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
 
   @track((props, state, args) => ({
     action_type: Schema.ActionType.ClickedMakeOffer,
-    flow: "make offer",
-    type: "button",
+    flow: Schema.Flow.MakeOffer,
+    type: Schema.Type.Button,
   }))
   handleCreateOfferOrder() {
     this.setState({ isCommittingCreateOfferOrderMutation: true }, () => {
