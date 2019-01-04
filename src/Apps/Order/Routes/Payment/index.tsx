@@ -30,9 +30,10 @@ import {
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { validateAddress } from "Apps/Order/Utils/formValidators"
+import { trackPageView } from "Apps/Order/Utils/trackPageView"
+import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
 import React, { Component } from "react"
@@ -56,7 +57,6 @@ export const ContinueButton = props => (
 )
 
 export interface PaymentProps extends ReactStripeElements.InjectedStripeProps {
-  mediator: Mediator
   order: Payment_order
   relay?: RelayRefetchProp
   router: Router
@@ -453,16 +453,8 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
   }
 }
 
-const PaymentRouteWrapper = props => (
-  <ContextConsumer>
-    {({ mediator }) => {
-      return <PaymentRoute {...props} mediator={mediator} />
-    }}
-  </ContextConsumer>
-)
-
 export const PaymentFragmentContainer = createFragmentContainer(
-  injectStripe(PaymentRouteWrapper),
+  injectStripe(trackPageViewWrapper(PaymentRoute)),
   graphql`
     fragment Payment_order on Order {
       id
