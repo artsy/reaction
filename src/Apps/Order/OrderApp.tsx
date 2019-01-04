@@ -1,4 +1,3 @@
-import { Spacer } from "@artsy/palette"
 import { routes_OrderQueryResponse } from "__generated__/routes_OrderQuery.graphql"
 import { ContextConsumer } from "Artsy/SystemContext"
 import { ErrorPage } from "Components/ErrorPage"
@@ -101,10 +100,7 @@ export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
             ) : null}
             <StripeProvider stripe={this.state.stripe}>
               <Elements>
-                <>
-                  {children}
-                  <Spacer mb={6} />
-                </>
+                <>{children}</>
               </Elements>
             </StripeProvider>
             <ConnectedModalDialog />
