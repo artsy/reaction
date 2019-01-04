@@ -182,20 +182,21 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 .c13 {
   position: relative;
   width: 100%;
+  color: black;
 }
 
 .c13 a {
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
-  background-image: linear-gradient( to bottom, transparent 0, #333333 1px, transparent 0 );
+  background-image: linear-gradient( to bottom,transparent 0,#333 1px,transparent 0 );
   background-size: 1.25px 4px;
   background-repeat: repeat-x;
   background-position: bottom;
 }
 
 .c13 a:hover {
-  color: #999999;
+  color: #C2C2C2;
   opacity: 1;
 }
 
@@ -1105,20 +1106,21 @@ exports[`News Layout renders the news layout properly 1`] = `
 .c13 {
   position: relative;
   width: 100%;
+  color: black;
 }
 
 .c13 a {
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
-  background-image: linear-gradient( to bottom, transparent 0, #333333 1px, transparent 0 );
+  background-image: linear-gradient( to bottom,transparent 0,#333 1px,transparent 0 );
   background-size: 1.25px 4px;
   background-repeat: repeat-x;
   background-position: bottom;
 }
 
 .c13 a:hover {
-  color: #999999;
+  color: #C2C2C2;
   opacity: 1;
 }
 

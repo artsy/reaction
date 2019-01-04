@@ -492,20 +492,21 @@ exports[`Video Layout matches the snapshot 1`] = `
 .c51 {
   position: relative;
   width: 100%;
+  color: black;
 }
 
 .c51 a {
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
-  background-image: linear-gradient( to bottom, transparent 0, #333333 1px, transparent 0 );
+  background-image: linear-gradient( to bottom,transparent 0,#333 1px,transparent 0 );
   background-size: 1.25px 4px;
   background-repeat: repeat-x;
   background-position: bottom;
 }
 
 .c51 a:hover {
-  color: #999999;
+  color: #C2C2C2;
   opacity: 1;
 }
 
@@ -678,13 +679,14 @@ exports[`Video Layout matches the snapshot 1`] = `
 .c61 {
   position: relative;
   width: 100%;
+  color: white;
 }
 
 .c61 a {
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
-  background-image: linear-gradient( to bottom, transparent 0, white 1px, transparent 0 );
+  background-image: linear-gradient( to bottom,transparent 0,white 1px,transparent 0 );
   background-size: 1.25px 4px;
   background-repeat: repeat-x;
   background-position: bottom;
@@ -767,7 +769,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   content: "";
   width: 8px;
   height: 8px;
-  background: black;
+  background: white;
   border-radius: 50%;
   position: absolute;
   top: 69px;
@@ -831,7 +833,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   content: "";
   width: 8px;
   height: 8px;
-  background: black;
+  background: white;
   border-radius: 50%;
   margin-left: 12px;
   margin-bottom: 1px;

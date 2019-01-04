@@ -1,21 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Artwork snapshots renders properly 1`] = `
-.c10 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 15px;
-  line-height: 1.25em;
-  -webkit-font-smoothing: antialiased;
-  color: #999;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
 .c8 {
-  margin-right: 30px;
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  color: #C2C2C2;
 }
 
 .c9 {
+  margin-right: 30px;
+}
+
+.c10 {
   white-space: nowrap;
 }
 
@@ -26,27 +23,17 @@ exports[`Artwork snapshots renders properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  color: #999999;
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
 }
 
 .c7 a {
-  color: #999999;
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
+  color: #C2C2C2;
+  -webkit-text-decoration: none;
+  text-decoration: none;
 }
 
 .c7 .title,
 .c7 .title a {
-  font-family: Unica77LLWebItalic,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
+  font-style: italic;
 }
 
 .c6 {
@@ -196,18 +183,19 @@ exports[`Artwork snapshots renders properly 1`] = `
   </a>
   <div>
     <div
-      className="display-artwork__caption c7"
+      className="c7 c8"
+      color="#C2C2C2"
+      fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+      fontSize="14px"
     >
       <span
-        className="c8"
+        className="c9"
       >
         <span
-          className="c9"
+          className="c10"
         >
           <a
-            className="c10"
             href="/artist/fernando-botero"
-            target="_self"
           >
             Fernando Botero
           </a>
@@ -221,13 +209,11 @@ exports[`Artwork snapshots renders properly 1`] = `
                 <span
                   className="title"
                 >
-                  <TextLink__StyledTextLink
-                    color="#999"
+                  <a
                     href="/artwork/fernando-botero-nude-on-the-beach"
-                    underline={false}
                   >
                     Nude on the Beach
-                  </TextLink__StyledTextLink>
+                  </a>
                 </span>
                 <span>
                   , 
@@ -245,13 +231,11 @@ exports[`Artwork snapshots renders properly 1`] = `
           dangerouslySetInnerHTML={
             Object {
               "__html": <span>
-                <TextLink__StyledTextLink
-                  color="#999"
+                <a
                   href="/gary-nader"
-                  underline={false}
                 >
                   Gary Nader
-                </TextLink__StyledTextLink>
+                </a>
                 <span>
                   . 
                 </span>
