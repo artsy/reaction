@@ -1,13 +1,14 @@
 import { Button } from "@artsy/palette"
 import { OfferInput } from "Apps/Order/Components/OfferInput"
 import { ConnectedModalDialog } from "Apps/Order/Dialogs"
+import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { Input } from "Components/Input"
 import { ModalButton, ModalDialog } from "Components/Modal/ModalDialog"
 import { MockBoot } from "DevTools"
 import { mount, ReactWrapper } from "enzyme"
 import React from "react"
-import { RelayProp } from "react-relay"
 import { commitMutation as _commitMutation } from "react-relay"
+import { RelayProp } from "react-relay"
 import { flushPromiseQueue } from "Utils/flushPromiseQueue"
 import { UntouchedOfferOrder } from "../../../__tests__/Fixtures/Order"
 import { TransactionDetailsSummaryItem } from "../../Components/TransactionDetailsSummaryItem"
@@ -16,6 +17,8 @@ import {
   initialOfferSuccess,
 } from "../__fixtures__/MutationResults"
 import { OfferFragmentContainer as OfferRoute } from "../Offer"
+
+jest.mock("Apps/Order/Utils/trackPageView")
 
 const commitMutation = _commitMutation as any
 
@@ -321,5 +324,11 @@ describe("Offer InitialMutation", () => {
         expect(commitMutation).toHaveBeenCalled()
       })
     })
+  })
+
+  it("tracks a pageview", () => {
+    getWrapper(testProps)
+
+    expect(trackPageView).toHaveBeenCalledTimes(1)
   })
 })

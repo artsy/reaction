@@ -1,7 +1,6 @@
 declare const window: any
 
 export function trackPageView(): void {
-  console.log("tracking page view!", window.analytics)
   if (typeof window.analytics !== "undefined") {
     window.analytics.page(
       { path: window.location.pathname },

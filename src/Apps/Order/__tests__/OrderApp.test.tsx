@@ -18,7 +18,6 @@ import {
   UntouchedBuyOrder,
   UntouchedOfferOrder,
 } from "Apps/__tests__/Fixtures/Order"
-import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { MockBoot } from "DevTools"
 import { createMockNetworkLayer } from "DevTools/createMockNetworkLayer"
 import moment from "moment"
@@ -29,10 +28,6 @@ jest.mock("react-stripe-elements", () => ({
   StripeProvider: ({ children }) => children,
   CardElement: () => jest.fn(),
   injectStripe: () => jest.fn(),
-}))
-
-jest.mock("Apps/Order/Utils/trackPageView", () => ({
-  trackPageView: jest.fn(),
 }))
 
 describe("OrderApp routing redirects", () => {
@@ -421,10 +416,6 @@ describe("OrderApp", () => {
     window.sd = { STRIPE_PUBLISHABLE_KEY: "" }
   })
 
-  beforeEach(() => {
-    ;(trackPageView as jest.Mock<void>).mockReset()
-  })
-
   const getProps = ({ state, location, replace }: any = {}) => {
     return {
       children: false,
@@ -475,13 +466,5 @@ describe("OrderApp", () => {
     expect(subject.find(ErrorPage).text()).toContain(
       "Sorry, the page you were looking for doesn’t exist at this URL."
     )
-  })
-
-  it("tracks a page view on mount", () => {
-    expect(trackPageView).not.toHaveBeenCalled()
-
-    getWrapper({ props: getProps() })
-
-    expect(trackPageView).toHaveBeenCalledTimes(1)
   })
 })

@@ -12,7 +12,7 @@ import {
   showAcceptDialog,
   showErrorDialog,
 } from "Apps/Order/Dialogs"
-import { ContextConsumer, Mediator } from "Artsy/SystemContext"
+import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { Router } from "found"
 import React, { Component } from "react"
 import {
@@ -31,7 +31,6 @@ import { offerFlowSteps, OrderStepper } from "../../Components/OrderStepper"
 
 export interface OfferProps {
   order: Offer_order
-  mediator: Mediator
   relay?: RelayProp
   router: Router
   dialog: Dialog
@@ -259,16 +258,8 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
   }
 }
 
-const OfferRouteWrapper = props => (
-  <ContextConsumer>
-    {({ mediator }) => {
-      return <OfferRoute {...props} mediator={mediator} />
-    }}
-  </ContextConsumer>
-)
-
 export const OfferFragmentContainer = createFragmentContainer(
-  injectDialog(OfferRouteWrapper),
+  injectDialog(trackPageViewWrapper(OfferRoute)),
   graphql`
     fragment Offer_order on Order {
       id
