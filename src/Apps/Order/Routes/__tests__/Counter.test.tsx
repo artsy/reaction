@@ -20,6 +20,7 @@ import { commitMutation as _commitMutation } from "react-relay"
 import { Stepper } from "Styleguide/Components"
 import { CountdownTimer } from "Styleguide/Components/CountdownTimer"
 import {
+  insufficientInventoryResponse,
   submitPendingOfferFailed,
   submitPendingOfferSuccess,
 } from "../__fixtures__/MutationResults/submitPendingOffer"
@@ -210,7 +211,27 @@ describe("Submit Pending Counter Offer", () => {
     })
   })
 
-  it("shows an error modal when there is an error from the server", () => {
+  it("shows an error modal with proper error when there is insufficient inventory", () => {
+    const component = getWrapper()
+    const mockCommitMutation = commitMutation as jest.Mock<any>
+    mockCommitMutation.mockImplementationOnce(
+      (_environment, { onCompleted }) => {
+        onCompleted(insufficientInventoryResponse)
+      }
+    )
+
+    const submitButton = component.find(Button).last()
+    submitButton.simulate("click")
+
+    const errorComponent = component.find(ErrorModal)
+    expect(errorComponent.props().show).toBe(true)
+    expect(errorComponent.text()).toContain("This work has already been sold.")
+    expect(errorComponent.text()).toContain(
+      "Please contact orders@artsy.com with any questions."
+    )
+  })
+
+  it("shows generic error modal when there is an error from the server", () => {
     const component = getWrapper()
     const mockCommitMutation = commitMutation as jest.Mock<any>
     mockCommitMutation.mockImplementationOnce(
