@@ -31,7 +31,7 @@ export class ArtworkSidebar extends Component<ArtworkSidebarProps> {
         <Artists artwork={artwork} />
         <Spacer mb={2} />
         <Metadata artwork={artwork} />
-        <Spacer mb={2} />
+        <Spacer mb={3} />
 
         {artwork.is_in_auction ? (
           <React.Fragment>
@@ -47,13 +47,11 @@ export class ArtworkSidebar extends Component<ArtworkSidebarProps> {
           </React.Fragment>
         ) : (
           <React.Fragment>
-            <Separator mt={3} mb={1} />
             <Commercial artwork={artwork} />
             <PartnerInfo artwork={artwork} />
           </React.Fragment>
         )}
 
-        <Separator />
         <ExtraLinks artwork={artwork} />
       </ArtworkSidebarContainer>
     )

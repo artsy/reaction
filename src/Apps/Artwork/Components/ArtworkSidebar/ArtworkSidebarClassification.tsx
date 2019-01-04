@@ -1,4 +1,4 @@
-import { Box, Sans, Serif } from "@artsy/palette"
+import { Box, Sans, Serif, Spacer } from "@artsy/palette"
 import Modal from "Components/Modal/Modal"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -45,7 +45,8 @@ export class ArtworkSidebarClassification extends React.Component<
         >
           <ClassificationDetails />
         </Modal>
-        <Box pt={2} color="black60" textAlign="left">
+        <Box color="black60" textAlign="left">
+          <Spacer mt={2} />
           <Serif size="2">
             <ClassificationLink onClick={this.openModal}>
               {artwork.attribution_class.short_description}
