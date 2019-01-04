@@ -17,7 +17,7 @@ import { mount } from "enzyme"
 import React from "react"
 import { commitMutation as _commitMutation, RelayProp } from "react-relay"
 
-import { ArtworkSidebarCommercial } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarCommercial"
+import { ArtworkSidebarCommercialContainer } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarCommercial"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { ModalButton } from "Components/Modal/ModalDialog"
 import { MockBoot } from "DevTools"
@@ -25,11 +25,15 @@ import { MockBoot } from "DevTools"
 const commitMutation = _commitMutation as jest.Mock<any>
 
 describe("ArtworkSidebarCommercial", () => {
+  const user = { id: "blah" }
+  const mediator = { trigger: jest.fn() }
   const getWrapper = artwork => {
     return mount(
       <MockBoot>
-        <ArtworkSidebarCommercial
+        <ArtworkSidebarCommercialContainer
           artwork={artwork as any}
+          user={user}
+          mediator={mediator}
           relay={{ environment: {} } as RelayProp}
         />
       </MockBoot>
