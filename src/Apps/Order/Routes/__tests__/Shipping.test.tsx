@@ -13,6 +13,7 @@ import {
   fillIn,
   validAddress,
 } from "Apps/Order/Routes/__tests__/Utils/addressForm"
+import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import Input, { InputProps } from "Components/Input"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { ModalButton } from "Components/Modal/ModalDialog"
@@ -30,10 +31,11 @@ import {
   settingOrderShipmentMissingRegionFailure,
   settingOrderShipmentSuccess,
 } from "../__fixtures__/MutationResults"
-import { ShippingRoute } from "../Shipping"
+import { ShippingFragmentContainer as ShippingRoute } from "../Shipping"
 
 const commitMutation = _commitMutation as any
 
+jest.mock("Apps/Order/Utils/trackPageView")
 jest.mock("react-relay", () => ({
   commitMutation: jest.fn(),
   createFragmentContainer: component => component,
@@ -400,5 +402,11 @@ describe("Shipping", () => {
       expect(component.find(Stepper).props().currentStepIndex).toEqual(1)
       expect(component.find(CheckMarkWrapper).length).toEqual(1)
     })
+  })
+
+  it("tracks a pageview", () => {
+    getWrapper(testProps)
+
+    expect(trackPageView).toHaveBeenCalledTimes(1)
   })
 })

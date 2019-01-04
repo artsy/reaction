@@ -30,9 +30,9 @@ import {
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { validatePresence } from "Apps/Order/Utils/formValidators"
+import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
 import { pick } from "lodash"
@@ -52,7 +52,6 @@ import { Media } from "Utils/Responsive"
 
 export interface ShippingProps {
   order: Shipping_order
-  mediator: Mediator
   relay?: RelayProp
   router: Router
 }
@@ -426,16 +425,8 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
   }
 }
 
-const ShippingRouteWrapper = props => (
-  <ContextConsumer>
-    {({ mediator }) => {
-      return <ShippingRoute {...props} mediator={mediator} />
-    }}
-  </ContextConsumer>
-)
-
 export const ShippingFragmentContainer = createFragmentContainer(
-  ShippingRouteWrapper,
+  trackPageViewWrapper(ShippingRoute),
   graphql`
     fragment Shipping_order on Order {
       id
