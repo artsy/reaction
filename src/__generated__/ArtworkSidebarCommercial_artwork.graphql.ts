@@ -6,6 +6,7 @@ declare const _ArtworkSidebarCommercial_artwork$ref: unique symbol;
 export type ArtworkSidebarCommercial_artwork$ref = typeof _ArtworkSidebarCommercial_artwork$ref;
 export type ArtworkSidebarCommercial_artwork = {
     readonly id: string;
+    readonly _id: string;
     readonly is_acquireable: boolean | null;
     readonly is_inquireable: boolean | null;
     readonly is_offerable: boolean | null;
@@ -69,6 +70,13 @@ return {
   "argumentDefinitions": [],
   "selections": [
     v0,
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "_id",
+      "args": null,
+      "storageKey": null
+    },
     v1,
     {
       "kind": "ScalarField",
@@ -118,5 +126,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'dea7bdb4aeab98872d716975121f8779';
+(node as any).hash = '769200d70df51f329e5c0effa7ba1345';
 export default node;

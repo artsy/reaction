@@ -24,3 +24,15 @@ export const submitPendingOfferFailed = {
     },
   },
 }
+
+export const insufficientInventoryResponse = {
+  ecommerceSubmitPendingOffer: {
+    orderOrError: {
+      error: {
+        type: "validation",
+        code: "insufficient_inventory",
+        data: null,
+      },
+    },
+  },
+}
