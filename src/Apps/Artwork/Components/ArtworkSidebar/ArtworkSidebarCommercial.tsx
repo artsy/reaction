@@ -8,6 +8,7 @@ import {
   Sans,
   Separator,
   Serif,
+  Spacer,
 } from "@artsy/palette"
 import { ArtworkSidebarCommercial_artwork } from "__generated__/ArtworkSidebarCommercial_artwork.graphql"
 import { ArtworkSidebarCommercialOfferOrderMutation } from "__generated__/ArtworkSidebarCommercialOfferOrderMutation.graphql"
@@ -72,11 +73,9 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
 
   renderSaleMessage(saleMessage: string) {
     return (
-      <Box mb={1} mt={2}>
-        <Serif size="5t" weight="semibold">
-          {saleMessage}
-        </Serif>
-      </Box>
+      <Serif size="5t" weight="semibold">
+        {saleMessage}
+      </Serif>
     )
   }
 
@@ -117,7 +116,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
     const editionSetsFragment = editionSets.map((editionSet, index) => {
       return (
         <React.Fragment key={editionSet.__id}>
-          <Box py={2}>
+          <Box py={3}>
             {this.renderEditionSet(editionSet, includeSelectOption)}
           </Box>
           {index !== editionSets.length - 1 && <Separator />}
@@ -285,16 +284,28 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
       return null
     }
     return (
-      <Box pb={3} textAlign="left">
+      <Box textAlign="left">
+        {artwork.sale_message && <Separator />}
+
         {artwork.edition_sets.length < 2 && artwork.sale_message ? (
-          this.renderSaleMessage(artwork.sale_message)
+          <>
+            <Spacer mb={3} />
+            {this.renderSaleMessage(artwork.sale_message)}
+          </>
         ) : (
           <>
             {this.renderEditionSets(artworkEcommerceAvailable)}
-            {selectedEditionSet &&
-              this.renderSaleMessage(selectedEditionSet.sale_message)}
+            {selectedEditionSet && (
+              <>
+                <Separator mb={3} />
+                {this.renderSaleMessage(selectedEditionSet.sale_message)}
+              </>
+            )}
           </>
         )}
+
+        {artworkEcommerceAvailable &&
+          (artwork.shippingOrigin || artwork.shippingInfo) && <Spacer mt={1} />}
         {artworkEcommerceAvailable &&
           artwork.shippingOrigin && (
             <Sans size="2" color="black60">
@@ -303,12 +314,20 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
           )}
         {artworkEcommerceAvailable &&
           artwork.shippingInfo && (
-            <Sans mb={2} size="2" color="black60">
+            <Sans size="2" color="black60">
               {artwork.shippingInfo}
             </Sans>
           )}
+
+        {artwork.is_inquireable ||
+        artwork.is_acquireable ||
+        artwork.is_offerable ? (
+          artwork.sale_message && <Spacer mb={3} />
+        ) : (
+          <Separator mb={3} mt={3} />
+        )}
         {artwork.is_inquireable && (
-          <Button width="100%" size="large" mt={1} onClick={this.handleInquiry}>
+          <Button width="100%" size="large" onClick={this.handleInquiry}>
             Contact gallery
           </Button>
         )}
@@ -316,7 +335,6 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
           <Button
             width="100%"
             size="large"
-            mt={1}
             loading={isCommittingCreateOrderMutation}
             onClick={this.handleCreateOrder}
           >
@@ -330,7 +348,6 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
             }
             width="100%"
             size="large"
-            mt={1}
             loading={isCommittingCreateOfferOrderMutation}
             onClick={this.handleCreateOfferOrder}
           >
