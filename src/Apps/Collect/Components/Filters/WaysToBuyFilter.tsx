@@ -2,15 +2,20 @@ import { Checkbox, Sans } from "@artsy/palette"
 import { ContextConsumer } from "Artsy/SystemContext"
 import React from "react"
 import { data as sd } from "sharify"
-import { FilterState } from "../../FilterState"
+import { FilterState, State } from "../../FilterState"
 
+interface WayToBuy {
+  disabled: any
+  name: string
+  state: keyof State
+}
 
 const { ENABLE_MAKE_OFFER } = sd
 
 export const WaysToBuyFilter: React.SFC<{
   filters: FilterState
 }> = ({ filters }) => {
-  const ways = [
+  const ways: WayToBuy[] = [
     {
       disabled: false,
       name: "Buy now",
