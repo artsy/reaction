@@ -75,16 +75,16 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
         this.setState({ formIsDirty: true })
         return
       }
-      const listPriceCents = this.props.order.totalListPriceCents
+      const currentOfferPrice = this.props.order.itemsTotalCents
 
-      if (this.state.offerValue * 100 < listPriceCents * 0.75) {
+      if (this.state.offerValue * 100 < currentOfferPrice * 0.75) {
         const decision = await this.confirmOfferTooLow()
         if (!decision.accepted) {
           return
         }
       }
 
-      if (this.state.offerValue * 100 > listPriceCents) {
+      if (this.state.offerValue * 100 > currentOfferPrice) {
         const decision = await this.confirmOfferTooHigh()
         if (!decision.accepted) {
           return
@@ -335,6 +335,7 @@ export const RespondFragmentContainer = createFragmentContainer(
       mode
       state
       itemsTotal(precision: 2)
+      itemsTotalCents
       totalListPrice(precision: 2)
       totalListPriceCents
       stateExpiresAt

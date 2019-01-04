@@ -53,6 +53,7 @@ const testOrder = {
   },
   offers: { edges: Offers },
   buyer: Buyer,
+  itemsTotalCents: 1000000,
 }
 
 let mockPushRoute: jest.Mock<string>
@@ -276,7 +277,7 @@ describe("Offer InitialMutation", () => {
         counterRadio
           .find(OfferInput)
           .props()
-          .onChange(16000)
+          .onChange(9000)
 
         expect(commitMutationMock).toHaveBeenCalledTimes(0)
 
@@ -294,7 +295,7 @@ Object {
   "input": Object {
     "offerId": "myoffer-id",
     "offerPrice": Object {
-      "amount": 16000,
+      "amount": 9000,
       "currencyCode": "USD",
     },
   },
@@ -321,7 +322,7 @@ Object {
     counterRadio
       .find(Input)
       .props()
-      .onChange({ currentTarget: { value: "16000" } } as any)
+      .onChange({ currentTarget: { value: "9000" } } as any)
 
     expect(commitMutationMock).toHaveBeenCalledTimes(0)
 
@@ -357,7 +358,7 @@ Object {
     counterRadio
       .find(Input)
       .props()
-      .onChange({ currentTarget: { value: "16000" } } as any)
+      .onChange({ currentTarget: { value: "9000" } } as any)
 
     expect(commitMutationMock).toHaveBeenCalledTimes(0)
 
@@ -389,7 +390,7 @@ Object {
       component
         .find(OfferInput)
         .props()
-        .onChange(1000)
+        .onChange(2499)
 
       component
         .find(Button)
@@ -458,7 +459,7 @@ Object {
       component
         .find(OfferInput)
         .props()
-        .onChange(17000)
+        .onChange(11000)
 
       component
         .find(Button)
