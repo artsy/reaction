@@ -24,10 +24,13 @@ jobs:
   deploy:
     executor: node/build
     steps:
+      - add_ssh_keys
       - yarn/setup
+      - run: git pull
       # Setup the .npmrc with the proper registry and auth token to publish
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-      - run: yarn semantic-release
+      - run: npm whoami
+      - run: yarn release
   test:
     executor: node/build
     steps:

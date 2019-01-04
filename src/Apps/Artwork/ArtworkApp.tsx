@@ -31,6 +31,9 @@ export const ArtworkApp: React.SFC<Props> = props => {
 
   return (
     <HorizontalPadding>
+      {/* NOTE: react-head automatically moves these tags to the <head> element */}
+      <ArtworkMeta artwork={props.artwork} />
+
       <Row>
         <Col sm={8}>
           <ArtworkBanner artwork={props.artwork} />
@@ -104,7 +107,6 @@ export const ArtworkApp: React.SFC<Props> = props => {
       </Row>
 
       <div id="lightbox-container" />
-      <ArtworkMeta artwork={props.artwork} />
     </HorizontalPadding>
   )
 }

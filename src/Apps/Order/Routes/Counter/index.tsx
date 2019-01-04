@@ -115,9 +115,18 @@ export class CounterRoute extends Component<CounterProps, CounterState> {
 
   onSubmitCompleted = orderOrError => {
     if (orderOrError.error) {
-      this.onMutationError(
-        new ErrorWithMetadata(orderOrError.error.code, orderOrError.error)
-      )
+      const errorCode = orderOrError.error.code
+      if (errorCode === "insufficient_inventory") {
+        this.onMutationError(
+          new ErrorWithMetadata(orderOrError.error.code, orderOrError.error),
+          "This work has already been sold.",
+          "Please contact orders@artsy.com with any questions."
+        )
+      } else {
+        this.onMutationError(
+          new ErrorWithMetadata(orderOrError.error.code, orderOrError.error)
+        )
+      }
     } else {
       this.onSuccessfulSubmit()
     }

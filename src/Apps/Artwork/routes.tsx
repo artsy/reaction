@@ -8,7 +8,7 @@ import { ComponentClass, StatelessComponent } from "react"
 
 export const routes = [
   {
-    path: "/artwork2/:artworkID",
+    path: "/artwork/:artworkID/(confirm-bid)?",
     Component: ArtworkApp,
     query: graphql`
       query routes_ArtworkQuery($artworkID: String!) {

@@ -224,7 +224,7 @@ describe("Offer InitialMutation", () => {
         expect(dialog.props().show).toBe(true)
 
         expect(dialog.text()).toMatchInlineSnapshot(
-          `"Offer may be too lowOffers within 20% of the list price are most likely to receive a response.CancelContinue"`
+          `"Offer may be too lowOffers within 25% of the list price are most likely to receive a response.CancelContinue"`
         )
 
         const buttons = component.find(ModalButton)

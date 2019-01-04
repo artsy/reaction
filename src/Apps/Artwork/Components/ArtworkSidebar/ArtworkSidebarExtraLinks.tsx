@@ -1,4 +1,4 @@
-import { Box, Link, Sans, Spacer } from "@artsy/palette"
+import { Box, Link, Sans, Separator, Spacer } from "@artsy/palette"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { ContextConsumer } from "Artsy/Router"
@@ -174,7 +174,8 @@ class ArtworkSidebarExtraLinksContainer extends React.Component<
     if (!renderQuestionsLine && !!!consignableArtistsCount) return null
 
     return (
-      <Box mt={2}>
+      <Box>
+        <Separator mb={3} />
         {isInOpenAuction && this.renderAuctionTerms()}
         {renderQuestionsLine &&
           (artwork.is_in_auction

@@ -50,7 +50,7 @@ describe("Status", () => {
           ...OfferOrderWithShippingDetails,
           state: "SUBMITTED",
         })
-        expect(wrapper.text()).toContain("Your offer has been submitted.")
+        expect(wrapper.text()).toContain("Your offer has been submitted")
         expect(wrapper.find(Message).length).toBe(1)
       })
 
@@ -61,7 +61,7 @@ describe("Status", () => {
           ...order,
           state: "SUBMITTED",
         })
-        expect(wrapper.text()).not.toContain("or buy now at list price.")
+        expect(wrapper.text()).not.toContain("or buy now at list price")
         expect(wrapper.find(Message).length).toBe(1)
       })
     })
@@ -83,7 +83,7 @@ describe("Status", () => {
           ...OfferOrderWithShippingDetails,
           state: "FULFILLED",
         })
-        expect(wrapper.text()).toContain("Your order has shipped.")
+        expect(wrapper.text()).toContain("Your order has shipped")
         expect(wrapper.find(Message).length).toBe(1)
       })
     })
@@ -94,7 +94,7 @@ describe("Status", () => {
           ...OfferOrderPickup,
           state: "FULFILLED",
         })
-        expect(wrapper.text()).toContain("Your order has been picked up.")
+        expect(wrapper.text()).toContain("Your order has been picked up")
         expect(wrapper.find(Message).length).toBe(0)
       })
     })
@@ -105,9 +105,7 @@ describe("Status", () => {
           ...OfferOrderWithShippingDetails,
           state: "CANCELED",
         })
-        expect(wrapper.text()).toContain(
-          "Your order was canceled and refunded."
-        )
+        expect(wrapper.text()).toContain("Your order was canceled and refunded")
         expect(wrapper.find(Message).length).toBe(1)
       })
     })
@@ -118,9 +116,7 @@ describe("Status", () => {
           ...OfferOrderPickup,
           state: "CANCELED",
         })
-        expect(wrapper.text()).toContain(
-          "Your order was canceled and refunded."
-        )
+        expect(wrapper.text()).toContain("Your order was canceled and refunded")
         expect(wrapper.find(Message).length).toBe(1)
       })
     })
@@ -152,7 +148,7 @@ describe("Status", () => {
           ...BuyOrderWithShippingDetails,
           state: "SUBMITTED",
         })
-        expect(wrapper.text()).toContain("Your order has been submitted.")
+        expect(wrapper.text()).toContain("Your order has been submitted")
         expect(wrapper.find(Message).length).toBe(1)
       })
     })
@@ -163,7 +159,7 @@ describe("Status", () => {
           ...BuyOrderWithShippingDetails,
           state: "APPROVED",
         })
-        expect(wrapper.text()).toContain("Your order is confirmed.")
+        expect(wrapper.text()).toContain("Your order is confirmed")
       })
     })
 
@@ -173,7 +169,7 @@ describe("Status", () => {
           ...BuyOrderWithShippingDetails,
           state: "FULFILLED",
         })
-        expect(wrapper.text()).toContain("Your order has shipped.")
+        expect(wrapper.text()).toContain("Your order has shipped")
         expect(wrapper.find(Message).length).toBe(1)
       })
     })
@@ -184,7 +180,7 @@ describe("Status", () => {
           ...BuyOrderPickup,
           state: "FULFILLED",
         })
-        expect(wrapper.text()).toContain("Your order has been picked up.")
+        expect(wrapper.text()).toContain("Your order has been picked up")
         expect(wrapper.find(Message).length).toBe(0)
       })
     })
@@ -195,9 +191,7 @@ describe("Status", () => {
           ...BuyOrderWithShippingDetails,
           state: "CANCELED",
         })
-        expect(wrapper.text()).toContain(
-          "Your order was canceled and refunded."
-        )
+        expect(wrapper.text()).toContain("Your order was canceled and refunded")
         expect(wrapper.find(Message).length).toBe(1)
       })
     })
@@ -208,9 +202,7 @@ describe("Status", () => {
           ...BuyOrderPickup,
           state: "CANCELED",
         })
-        expect(wrapper.text()).toContain(
-          "Your order was canceled and refunded."
-        )
+        expect(wrapper.text()).toContain("Your order was canceled and refunded")
         expect(wrapper.find(Message).length).toBe(1)
       })
     })

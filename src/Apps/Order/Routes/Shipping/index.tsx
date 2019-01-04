@@ -407,6 +407,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                   >
                     Continue
                   </Button>
+                  <Spacer mb={2} />
                 </Media>
               </Flex>
             }

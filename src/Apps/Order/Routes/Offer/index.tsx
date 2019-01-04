@@ -59,7 +59,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
 
     const listPriceCents = this.props.order.totalListPriceCents
 
-    if (this.state.offerValue * 100 < listPriceCents * 0.8) {
+    if (this.state.offerValue * 100 < listPriceCents * 0.75) {
       const decision = await this.confirmOfferTooLow()
       if (!decision.accepted) {
         return
@@ -149,7 +149,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
     return showAcceptDialog(this.props.dialog, {
       title: "Offer may be too low",
       message:
-        "Offers within 20% of the list price are most likely to receive a response.",
+        "Offers within 25% of the list price are most likely to receive a response.",
     })
   }
 
@@ -202,8 +202,9 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
                 )}
                 <Spacer mb={[2, 3]} />
                 <Message p={[2, 3]}>
-                  If your offer is accepted the seller will confirm and ship the
-                  work to you immediately.
+                  If your offer is accepted, your payment will be processed
+                  immediately. Keep in mind making an offer doesn’t guarantee
+                  you the work, as the seller might be receiving higher offers.
                 </Message>
                 <Spacer mb={[2, 3]} />
                 <Media greaterThan="xs">
@@ -247,6 +248,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
                     >
                       Continue
                     </Button>
+                    <Spacer mb={2} />
                   </>
                 </Media>
               </Flex>

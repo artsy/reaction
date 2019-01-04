@@ -76,7 +76,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
       }
       const listPriceCents = this.props.order.totalListPriceCents
 
-      if (this.state.offerValue * 100 < listPriceCents * 0.8) {
+      if (this.state.offerValue * 100 < listPriceCents * 0.75) {
         const decision = await this.confirmOfferTooLow()
         if (!decision.accepted) {
           return
@@ -119,7 +119,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
     return showAcceptDialog(this.props.dialog, {
       title: "Offer may be too low",
       message:
-        "Offers within 20% of the list price are most likely to receive a response.",
+        "Offers within 25% of the list price are most likely to receive a response.",
     })
   }
 
@@ -224,7 +224,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                 <Flex flexDirection="column">
                   <CountdownTimer
                     action="Respond"
-                    note="Expired offers end the negotiation process permanently."
+                    note="Expiration will end negotiations on this offer. Keep in mind the work can be sold to another buyer in the meantime."
                     countdownStart={order.lastOffer.createdAt}
                     countdownEnd={order.stateExpiresAt}
                   />
@@ -246,7 +246,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                   </BorderedRadio>
 
                   <BorderedRadio value="COUNTER">
-                    Send a counteroffer
+                    Send counteroffer
                     <StaticCollapse
                       open={this.state.responseOption === "COUNTER"}
                     >
@@ -267,9 +267,8 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                     >
                       <Spacer mb={1} />
                       <Sans size="2" color="black60">
-                        Declining an offer permanently ends the negotiation
-                        process. The seller will not be able to make a
-                        counteroffer.
+                        Declining an offer will end the negotiation process on
+                        this offer.
                       </Sans>
                     </StaticCollapse>
                   </BorderedRadio>

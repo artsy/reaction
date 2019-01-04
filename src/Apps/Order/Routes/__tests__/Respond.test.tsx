@@ -173,7 +173,7 @@ describe("Offer InitialMutation", () => {
     expect(radios).toHaveLength(3)
 
     expect(radios.first().text()).toMatch("Accept seller's offer")
-    expect(radios.at(1).text()).toMatch("Send a counteroffer")
+    expect(radios.at(1).text()).toMatch("Send counteroffer")
     expect(radios.at(2).text()).toMatch("Decline seller's offer")
   })
 
@@ -411,7 +411,7 @@ Object {
       expect(dialog.props().show).toBe(true)
 
       expect(dialog.text()).toMatchInlineSnapshot(
-        `"Offer may be too lowOffers within 20% of the list price are most likely to receive a response.CancelContinue"`
+        `"Offer may be too lowOffers within 25% of the list price are most likely to receive a response.CancelContinue"`
       )
 
       const buttons = component.find(ModalButton)

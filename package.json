@@ -1,6 +1,6 @@
 {
   "name": "@artsy/reaction",
-  "version": "9.1.6",
+  "version": "9.1.63",
   "description": "Force’s React Components",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction.git",
@@ -29,7 +29,7 @@
     "prettier-project": "yarn run prettier-write 'src/**/*.{ts,tsx}'",
     "prettier-write": "yarn run prettier --write",
     "relay": "relay-compiler --src ./src --schema data/schema.graphql --language typescript --artifactDirectory ./src/__generated__ --exclude '**/node_modules/**,**/__mocks__/**,**/__generated__/**'",
-    "semantic-release": "semantic-release",
+    "release": "auto shipit",
     "start": "yarn storybook",
     "storybook": "node verify-node-version.js && concurrently --raw --kill-others 'yarn relay --watch' 'start-storybook --quiet -s ./public -p 9001'",
     "sync-schema": "curl https://raw.githubusercontent.com/artsy/metaphysics/master/_schema.graphql -o data/schema.graphql; yarn prettier --write --parser graphql data/schema.graphql",
@@ -85,6 +85,7 @@
     "@types/storybook__react": "^3.0.5",
     "@types/styled-system": "^3.0.9",
     "@types/underscore.string": "^0.0.32",
+    "auto-release-cli": "^0.37.8",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.4",
@@ -127,7 +128,6 @@
     "react-test-renderer": "^16.2.0",
     "relay-compiler": "https://github.com/alloy/relay/releases/download/v1.5.0-artsy.3/relay-compiler-1.5.0-artsy.3.tgz",
     "relay-compiler-language-typescript": "^1.1.0",
-    "semantic-release": "^12.4.1",
     "simple-progress-webpack-plugin": "^1.1.2",
     "static-extend": "^0.1.2",
     "styled-components": "^3.4.5",
@@ -254,31 +254,7 @@
       "yarn prettier-write --"
     ]
   },
-  "release": {
-    "analyzeCommits": {
-      "preset": "ember",
-      "releaseRules": [
-        {
-          "tag": "DOC",
-          "release": "patch"
-        },
-        {
-          "tag": "FIX",
-          "release": "patch"
-        },
-        {
-          "tag": "PATCH",
-          "release": "patch"
-        },
-        {
-          "tag": "FEATURE",
-          "release": "minor"
-        },
-        {
-          "tag": "BREAKING",
-          "release": "major"
-        }
-      ]
-    }
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }
