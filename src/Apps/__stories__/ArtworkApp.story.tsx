@@ -100,3 +100,11 @@ storiesOf("Apps/Artwork Page", module)
       />
     )
   })
+  .add("Artwork with multiple images", () => {
+    return (
+      <MockRouter
+        routes={artworkRoutes}
+        initialRoute="/artwork/pablo-picasso-jamie-sebartes-a-los-toros-mit-picasso-bloch-1014-47-cramer-113-4"
+      />
+    )
+  })
