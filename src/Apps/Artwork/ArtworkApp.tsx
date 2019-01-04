@@ -19,96 +19,118 @@ import {
   Footer,
   RecentlyViewedQueryRenderer as RecentlyViewed,
 } from "Styleguide/Components"
+import { get } from "Utils/get"
+import { Media } from "Utils/Responsive"
 
 export interface Props {
   artwork: ArtworkApp_artwork
 }
 
-export const ArtworkApp: React.SFC<Props> = props => {
-  const {
-    artwork: { artists },
-  } = props
+export class ArtworkApp extends React.Component<Props> {
+  renderArtists() {
+    const artists = get(this.props, p => p.artwork.artists)
 
-  return (
-    <HorizontalPadding>
-      {/* NOTE: react-head automatically moves these tags to the <head> element */}
-      <ArtworkMeta artwork={props.artwork} />
+    if (!artists.length) {
+      return null
+    }
 
-      <Row>
-        <Col sm={8}>
-          <ArtworkBanner artwork={props.artwork} />
-          <Spacer mb={2} />
-        </Col>
-      </Row>
-      <Row>
-        <Col sm={8}>
-          <Box px={[0, 4]}>
-            <ArtworkImageBrowser artwork={props.artwork} />
-          </Box>
-        </Col>
-        <Col sm={4}>
-          <ArtworkSidebar artwork={props.artwork} />
-        </Col>
-      </Row>
-      <Row>
-        <Col sm={8}>
-          <ArtworkDetails artwork={props.artwork} />
-        </Col>
-      </Row>
+    return (
+      <>
+        {artists.map((artist, index) => {
+          const addSpacer = artists.length > 1 && index < artists.length - 1
+          return (
+            <Row key={artist.id}>
+              <Col>
+                <ArtistInfo artistID={artist.id} />
+                {addSpacer && <Spacer mb={2} />}
+              </Col>
+            </Row>
+          )
+        })}
+      </>
+    )
+  }
 
-      {artists &&
-        artists.length && (
-          <>
-            {artists.map((artist, index) => {
-              const addSpacer = artists.length > 1 && index < artists.length - 1
-              return (
-                <Row key={artist.id}>
-                  <Col sm={8}>
-                    <ArtistInfo artistID={artist.id} />
-                    {addSpacer && <Spacer mb={2} />}
-                  </Col>
-                </Row>
-              )
-            })}
-          </>
-        )}
+  render() {
+    const { artwork } = this.props
 
-      <Row>
-        <Col>
-          <Box mt={6}>
-            <OtherWorks artwork={props.artwork} />
-          </Box>
-        </Col>
-      </Row>
+    return (
+      <HorizontalPadding>
+        {/* NOTE: react-head automatically moves these tags to the <head> element */}
+        <ArtworkMeta artwork={artwork} />
 
-      {props.artwork.artist && (
         <Row>
-          <Col>
-            <RelatedArtists artwork={props.artwork} />
+          <Col sm={8}>
+            <ArtworkBanner artwork={artwork} />
+            <Spacer mb={2} />
           </Col>
         </Row>
-      )}
 
-      {typeof window !== "undefined" && (
-        <LazyLoadComponent threshold={1000}>
+        {/* Mobile */}
+        <Media at="xs">
           <Row>
             <Col>
-              <RecentlyViewed />
+              <ArtworkImageBrowser artwork={artwork} />
+              <ArtworkSidebar artwork={artwork} />
+              <ArtworkDetails artwork={artwork} />
+              {this.renderArtists()}
             </Col>
           </Row>
-        </LazyLoadComponent>
-      )}
+        </Media>
 
-      <Row>
-        <Col>
-          <Separator mt={6} mb={3} />
-          <Footer />
-        </Col>
-      </Row>
+        {/* Desktop */}
+        <Media greaterThan="xs">
+          <Row>
+            <Col sm={8}>
+              <Box pr={4}>
+                <ArtworkImageBrowser artwork={artwork} />
+                <ArtworkDetails artwork={artwork} />
+                {this.renderArtists()}
+              </Box>
+            </Col>
+            <Col sm={4}>
+              <ArtworkSidebar artwork={artwork} />
+            </Col>
+          </Row>
+        </Media>
 
-      <div id="lightbox-container" />
-    </HorizontalPadding>
-  )
+        <Row>
+          <Col>
+            <Box mt={6}>
+              <OtherWorks artwork={artwork} />
+            </Box>
+          </Col>
+        </Row>
+
+        {artwork.artist && (
+          <Row>
+            <Col>
+              <RelatedArtists artwork={artwork} />
+            </Col>
+          </Row>
+        )}
+
+        {typeof window !== "undefined" && (
+          <LazyLoadComponent threshold={1000}>
+            <Row>
+              <Col>
+                <RecentlyViewed />
+              </Col>
+            </Row>
+          </LazyLoadComponent>
+        )}
+
+        <Row>
+          <Col>
+            <Separator mt={6} mb={3} />
+            <Footer />
+          </Col>
+        </Row>
+
+        <div id="lightbox-container" />
+      </HorizontalPadding>
+    )
+  }
 }
 
 export const ArtworkAppFragmentContainer = createFragmentContainer(
