@@ -7,7 +7,6 @@ import React from "react"
 import { Meta, Title } from "react-head"
 import { Elements, StripeProvider } from "react-stripe-elements"
 import { ConnectedModalDialog } from "./Dialogs"
-import { trackPageView } from "./Utils/trackPageView"
 
 declare global {
   interface Window {
@@ -45,8 +44,6 @@ export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
   removeTransitionHook: () => void
 
   componentDidMount() {
-    trackPageView()
-
     if (!this.removeTransitionHook) {
       this.removeTransitionHook = this.props.router.addTransitionHook(
         this.onTransition
