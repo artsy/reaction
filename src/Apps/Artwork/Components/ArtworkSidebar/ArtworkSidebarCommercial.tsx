@@ -33,6 +33,7 @@ type EditionSet = ArtworkSidebarCommercial_artwork["edition_sets"][0]
 export interface ArtworkSidebarCommercialContainerProps
   extends ArtworkSidebarCommercialProps {
   mediator: Mediator
+  user: User
 }
 
 export interface ArtworkSidebarCommercialContainerState {
@@ -147,127 +148,139 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
   }
 
   handleCreateOrder = () => {
-    this.setState({ isCommittingCreateOrderMutation: true }, () => {
-      if (get(this.props, props => props.relay.environment)) {
-        commitMutation<ArtworkSidebarCommercialOrderMutation>(
-          this.props.relay.environment,
-          {
-            mutation: graphql`
-              mutation ArtworkSidebarCommercialOrderMutation(
-                $input: CreateOrderWithArtworkInput!
-              ) {
-                ecommerceCreateOrderWithArtwork(input: $input) {
-                  orderOrError {
-                    ... on OrderWithMutationSuccess {
-                      __typename
-                      order {
-                        id
-                        mode
+    const { user, mediator } = this.props
+    if (user && user.id) {
+      this.setState({ isCommittingCreateOrderMutation: true }, () => {
+        if (get(this.props, props => props.relay.environment)) {
+          commitMutation<ArtworkSidebarCommercialOrderMutation>(
+            this.props.relay.environment,
+            {
+              mutation: graphql`
+                mutation ArtworkSidebarCommercialOrderMutation(
+                  $input: CreateOrderWithArtworkInput!
+                ) {
+                  ecommerceCreateOrderWithArtwork(input: $input) {
+                    orderOrError {
+                      ... on OrderWithMutationSuccess {
+                        __typename
+                        order {
+                          id
+                          mode
+                        }
                       }
-                    }
-                    ... on OrderWithMutationFailure {
-                      error {
-                        type
-                        code
-                        data
+                      ... on OrderWithMutationFailure {
+                        error {
+                          type
+                          code
+                          data
+                        }
                       }
                     }
                   }
                 }
-              }
-            `,
-            variables: {
-              input: {
-                artworkId: this.props.artwork.id,
-                editionSetId: get(
-                  this.state,
-                  state => state.selectedEditionSet.id
-                ),
+              `,
+              variables: {
+                input: {
+                  artworkId: this.props.artwork._id,
+                  editionSetId: get(
+                    this.state,
+                    state => state.selectedEditionSet.id
+                  ),
+                },
               },
-            },
-            onCompleted: data => {
-              this.setState({ isCommittingCreateOrderMutation: false })
-              const {
-                ecommerceCreateOrderWithArtwork: { orderOrError },
-              } = data
-              if (orderOrError.error) {
-                this.onMutationError(
-                  new ErrorWithMetadata(
-                    orderOrError.error.code,
-                    orderOrError.error
+              onCompleted: data => {
+                this.setState({ isCommittingCreateOrderMutation: false })
+                const {
+                  ecommerceCreateOrderWithArtwork: { orderOrError },
+                } = data
+                if (orderOrError.error) {
+                  this.onMutationError(
+                    new ErrorWithMetadata(
+                      orderOrError.error.code,
+                      orderOrError.error
+                    )
                   )
-                )
-              } else {
-                window.location.assign(`/orders/${orderOrError.order.id}`)
-              }
-            },
-            onError: this.onMutationError,
-          }
-        )
-      }
-    })
+                } else {
+                  window.location.assign(`/orders/${orderOrError.order.id}`)
+                }
+              },
+              onError: this.onMutationError,
+            }
+          )
+        }
+      })
+    } else {
+      mediator.trigger("open:auth", { mode: "login" })
+    }
   }
 
   handleCreateOfferOrder = () => {
-    this.setState({ isCommittingCreateOfferOrderMutation: true }, () => {
-      if (get(this.props, props => props.relay.environment)) {
-        commitMutation<ArtworkSidebarCommercialOfferOrderMutation>(
-          this.props.relay.environment,
-          {
-            mutation: graphql`
-              mutation ArtworkSidebarCommercialOfferOrderMutation(
-                $input: CreateOfferOrderWithArtworkInput!
-              ) {
-                ecommerceCreateOfferOrderWithArtwork(input: $input) {
-                  orderOrError {
-                    ... on OrderWithMutationSuccess {
-                      __typename
-                      order {
-                        id
-                        mode
+    const { user, mediator } = this.props
+    if (user && user.id) {
+      this.setState({ isCommittingCreateOfferOrderMutation: true }, () => {
+        if (get(this.props, props => props.relay.environment)) {
+          commitMutation<ArtworkSidebarCommercialOfferOrderMutation>(
+            this.props.relay.environment,
+            {
+              mutation: graphql`
+                mutation ArtworkSidebarCommercialOfferOrderMutation(
+                  $input: CreateOfferOrderWithArtworkInput!
+                ) {
+                  ecommerceCreateOfferOrderWithArtwork(input: $input) {
+                    orderOrError {
+                      ... on OrderWithMutationSuccess {
+                        __typename
+                        order {
+                          id
+                          mode
+                        }
                       }
-                    }
-                    ... on OrderWithMutationFailure {
-                      error {
-                        type
-                        code
-                        data
+                      ... on OrderWithMutationFailure {
+                        error {
+                          type
+                          code
+                          data
+                        }
                       }
                     }
                   }
                 }
-              }
-            `,
-            variables: {
-              input: {
-                artworkId: this.props.artwork.id,
-                editionSetId: get(
-                  this.state,
-                  state => state.selectedEditionSet.id
-                ),
+              `,
+              variables: {
+                input: {
+                  artworkId: this.props.artwork._id,
+                  editionSetId: get(
+                    this.state,
+                    state => state.selectedEditionSet.id
+                  ),
+                },
               },
-            },
-            onCompleted: data => {
-              this.setState({ isCommittingCreateOrderMutation: false })
-              const {
-                ecommerceCreateOfferOrderWithArtwork: { orderOrError },
-              } = data
-              if (orderOrError.error) {
-                this.onMutationError(
-                  new ErrorWithMetadata(
-                    orderOrError.error.code,
-                    orderOrError.error
+              onCompleted: data => {
+                this.setState({ isCommittingCreateOrderMutation: false })
+                const {
+                  ecommerceCreateOfferOrderWithArtwork: { orderOrError },
+                } = data
+                if (orderOrError.error) {
+                  this.onMutationError(
+                    new ErrorWithMetadata(
+                      orderOrError.error.code,
+                      orderOrError.error
+                    )
                   )
-                )
-              } else {
-                window.location.assign(`/orders/${orderOrError.order.id}/offer`)
-              }
-            },
-            onError: this.onMutationError,
-          }
-        )
-      }
-    })
+                } else {
+                  window.location.assign(
+                    `/orders/${orderOrError.order.id}/offer`
+                  )
+                }
+              },
+              onError: this.onMutationError,
+            }
+          )
+        }
+      })
+    } else {
+      mediator.trigger("open:auth", { mode: "login" })
+    }
   }
 
   render() {
@@ -375,8 +388,12 @@ export const ArtworkSidebarCommercial: SFC<
 > = props => {
   return (
     <ContextConsumer>
-      {({ mediator }) => (
-        <ArtworkSidebarCommercialContainer {...props} mediator={mediator} />
+      {({ mediator, user }) => (
+        <ArtworkSidebarCommercialContainer
+          {...props}
+          mediator={mediator}
+          user={user}
+        />
       )}
     </ContextConsumer>
   )
@@ -387,6 +404,7 @@ export const ArtworkSidebarCommercialFragmentContainer = createFragmentContainer
   graphql`
     fragment ArtworkSidebarCommercial_artwork on Artwork {
       id
+      _id
       is_acquireable
       is_inquireable
       is_offerable
