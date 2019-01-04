@@ -10,6 +10,7 @@ import { CreditCardSummaryItemFragmentContainer } from "Apps/Order/Components/Cr
 import { OrderStepper } from "Apps/Order/Components/OrderStepper"
 import { ShippingSummaryItemFragmentContainer } from "Apps/Order/Components/ShippingSummaryItem"
 import { TransactionDetailsSummaryItemFragmentContainer } from "Apps/Order/Components/TransactionDetailsSummaryItem"
+import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { ModalButton } from "Components/Modal/ModalDialog"
 import { MockBoot } from "DevTools"
@@ -27,6 +28,8 @@ import {
 import { AcceptFragmentContainer as AcceptRoute } from "../Accept"
 
 const commitMutation = _commitMutation as jest.Mock<any>
+
+jest.mock("Apps/Order/Utils/trackPageView")
 
 jest.mock("Utils/getCurrentTimeAsIsoString")
 const NOW = "2018-12-05T13:47:16.446Z"
@@ -51,27 +54,25 @@ const testOrder = {
   buyer: Buyer,
 }
 let mockPushRoute: jest.Mock<string>
-let mockMediatorTrigger: jest.Mock<string>
 
 describe("Accept seller offer", () => {
   const getWrapper = (extraOrderProps?) => {
+    const props = {
+      relay: { environment: {} },
+      router: { push: mockPushRoute },
+      order: {
+        ...testOrder,
+        ...extraOrderProps,
+      },
+    }
     return mount(
       <MockBoot>
-        <AcceptRoute
-          relay={{ environment: {} }}
-          router={{ push: mockPushRoute }}
-          mediator={{ trigger: mockMediatorTrigger }}
-          order={{
-            ...testOrder,
-            ...extraOrderProps,
-          }}
-        />
+        <AcceptRoute {...props as any} />
       </MockBoot>
     )
   }
   beforeEach(() => {
     mockPushRoute = jest.fn()
-    mockMediatorTrigger = jest.fn()
   })
   it("Shows the stepper", () => {
     const component = getWrapper()
@@ -239,5 +240,11 @@ describe("Accept seller offer", () => {
       component.find(ModalButton).simulate("click")
       expect(component.find(ErrorModal).props().show).toBe(false)
     })
+  })
+
+  it("tracks a pageview", () => {
+    getWrapper()
+
+    expect(trackPageView).toHaveBeenCalledTimes(1)
   })
 })
