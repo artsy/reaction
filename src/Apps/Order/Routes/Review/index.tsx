@@ -12,9 +12,9 @@ import {
 } from "Apps/Order/Components/OrderStepper"
 import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "Apps/Order/Components/ShippingSummaryItem"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
+import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { RouteConfig, Router } from "found"
 import React, { Component } from "react"
@@ -36,7 +36,6 @@ import { OfferSummaryItemFragmentContainer as OfferSummaryItem } from "../../Com
 import { TwoColumnLayout } from "../../Components/TwoColumnLayout"
 
 export interface ReviewProps {
-  mediator: Mediator
   order: Review_order
   relay?: RelayProp
   router: Router
@@ -381,16 +380,8 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
   }
 }
 
-const ReviewRouteWrapper = props => (
-  <ContextConsumer>
-    {({ mediator }) => {
-      return <ReviewRoute {...props} mediator={mediator} />
-    }}
-  </ContextConsumer>
-)
-
 export const ReviewFragmentContainer = createFragmentContainer(
-  ReviewRouteWrapper,
+  trackPageViewWrapper(ReviewRoute),
   graphql`
     fragment Review_order on Order {
       id
