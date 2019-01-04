@@ -1,4 +1,4 @@
-import { Box, color, Flex, Sans, Separator, space } from "@artsy/palette"
+import { Box, color, Flex, media, Sans, Separator, space } from "@artsy/palette"
 import { ArtworkSharePanel_artwork } from "__generated__/ArtworkSharePanel_artwork.graphql"
 import Icon from "Components/Icon"
 import React from "react"
@@ -127,7 +127,7 @@ export class ArtworkSharePanel extends React.Component<
             </Sans>
           </Flex>
           <Flex flexDirection="row" mb={1}>
-            <SansGrow size="2" color="black60" mr={4}>
+            <SansGrow size={["3", "2"]} color="black60" mr={4}>
               <URLInput
                 type="text"
                 readOnly
@@ -136,7 +136,7 @@ export class ArtworkSharePanel extends React.Component<
                 onClick={this.handleCopy}
               />
             </SansGrow>
-            <Sans size="2" weight="medium" color="black60">
+            <Sans size={["3", "2"]} weight="medium" color="black60">
               <a onClick={this.handleCopy}>{this.state.copyLabelText}</a>
             </Sans>
           </Flex>
@@ -163,7 +163,7 @@ export class ArtworkSharePanel extends React.Component<
               <Icon name="mail" color="black" />
               <Sans size="3" color="black60">
                 <UnstyledLink
-                  href={`mailto:?subject=${share}&body=Check out ${share} on Artsy: ${url}`}
+                  href={`mailto:?subject=${share}&body=${share} on Artsy: ${url}`}
                 >
                   Mail
                 </UnstyledLink>
@@ -232,6 +232,11 @@ const URLInput = styled.input`
   display: flex;
   flex-grow: 1;
   color: inherit;
+  font-family: Arial, Helvetica, sans-serif;
+
+  ${media.xs`
+    font-size: 16px;
+  `};
 
   &:hover {
     color: ${color("black100")};
