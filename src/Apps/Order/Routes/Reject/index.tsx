@@ -9,7 +9,7 @@ import {
   OrderStepper,
 } from "Apps/Order/Components/OrderStepper"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
-import { ContextConsumer, Mediator } from "Artsy/SystemContext"
+import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
 import React, { Component } from "react"
@@ -29,7 +29,6 @@ import { Media } from "Utils/Responsive"
 import { logger } from "../Respond"
 
 interface RejectProps {
-  mediator: Mediator
   order: Reject_order
   relay?: RelayProp
   router: Router
@@ -232,16 +231,8 @@ export class Reject extends Component<RejectProps, RejectState> {
   }
 }
 
-const RejectRouteWrapper = props => (
-  <ContextConsumer>
-    {({ mediator }) => {
-      return <Reject {...props} mediator={mediator} />
-    }}
-  </ContextConsumer>
-)
-
 export const RejectFragmentContainer = createFragmentContainer(
-  RejectRouteWrapper,
+  trackPageViewWrapper(Reject),
   graphql`
     fragment Reject_order on Order {
       id
