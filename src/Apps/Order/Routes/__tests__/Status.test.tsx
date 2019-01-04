@@ -6,13 +6,14 @@ import {
   OfferOrderPickup,
   OfferOrderWithShippingDetails,
 } from "Apps/__tests__/Fixtures/Order"
-import { ContextProvider } from "Artsy"
+import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { MockBoot, renderRelayTree } from "DevTools"
 import { render } from "enzyme"
 import React from "react"
 import { graphql } from "react-relay"
 import { StatusFragmentContainer } from "../Status"
 
+jest.mock("Apps/Order/Utils/trackPageView")
 jest.unmock("react-relay")
 
 describe("Status", () => {
@@ -29,9 +30,7 @@ describe("Status", () => {
       mockResolvers: mockResolver(order),
       wrapper: renderer => (
         <MockBoot breakpoint="xs" headTags={headTags}>
-          <ContextProvider mediator={{ trigger: jest.fn() }}>
-            {renderer}
-          </ContextProvider>
+          {renderer}
         </MockBoot>
       ),
     })
@@ -215,5 +214,14 @@ describe("Status", () => {
         expect(wrapper.find(Message).length).toBe(1)
       })
     })
+  })
+
+  it("tracks a pageview", async () => {
+    await getWrapper({
+      ...OfferOrderWithShippingDetails,
+      state: "SUBMITTED",
+    })
+
+    expect(trackPageView).toHaveBeenCalledTimes(1)
   })
 })
