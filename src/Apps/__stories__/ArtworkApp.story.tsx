@@ -104,7 +104,7 @@ storiesOf("Apps/Artwork Page", module)
     return (
       <MockRouter
         routes={artworkRoutes}
-        initialRoute="/artwork/pablo-picasso-jamie-sebartes-a-los-toros-mit-picasso-bloch-1014-47-cramer-113-4"
+        initialRoute="/artwork/kees-van-dongen-femme-allongee"
       />
     )
   })
