@@ -22,13 +22,13 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
 
     if (artwork.sale.is_closed) {
       return (
-        <>
+        <Box>
           <Separator mb={3} />
           <Serif size="5t" weight="semibold" color="black100">
             Bidding closed
           </Serif>
           <Spacer mb={3} />
-        </>
+        </Box>
       )
     }
 
@@ -68,7 +68,7 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
       myBidPresent && get(myLotStanding, s => s.active_bid.is_winning)
     const myMaxBid = get(myMostRecent, bid => bid.max_bid.display)
     return (
-      <>
+      <Box>
         <Separator mb={3} />
         <Flex width="100%" flexDirection="row" justifyContent="space-between">
           <Serif size="5t" weight="semibold" pr={1}>
@@ -100,7 +100,7 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
           )}
         </Flex>
         <Spacer mb={3} />
-      </>
+      </Box>
     )
   }
 }
