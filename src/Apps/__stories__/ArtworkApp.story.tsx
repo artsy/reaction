@@ -100,3 +100,11 @@ storiesOf("Apps/Artwork Page", module)
       />
     )
   })
+  .add("Artwork with multiple images", () => {
+    return (
+      <MockRouter
+        routes={artworkRoutes}
+        initialRoute="/artwork/kees-van-dongen-femme-allongee"
+      />
+    )
+  })

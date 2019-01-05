@@ -68,7 +68,7 @@ export const ArtworkActionsFragmentContainer = createFragmentContainer(
 
 const Container = styled(Flex).attrs({
   justifyContent: ["left", "center"],
-  mb: [2, 0],
+  mb: [2, 2],
   ml: [-0.5, 1],
   pt: [2, 3],
 })`
