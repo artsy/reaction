@@ -65,6 +65,7 @@ export class LargeArtworkImageBrowser extends React.Component<
                   <Flex
                     flexDirection="column"
                     justifyContent="center"
+                    px={hasMultipleImages ? [2, 2, 0] : 0}
                     key={image.id}
                   >
                     <Lightbox
