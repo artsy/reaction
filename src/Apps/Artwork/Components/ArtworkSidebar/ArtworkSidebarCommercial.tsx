@@ -294,7 +294,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
       artwork.is_acquireable || artwork.is_offerable
 
     if (!artwork.sale_message && !artwork.is_inquireable) {
-      return null
+      return <Separator />
     }
     return (
       <Box textAlign="left">

@@ -48,7 +48,7 @@ storiesOf("Apps/Artwork Page", module)
     return (
       <MockRouter
         routes={artworkRoutes}
-        initialRoute="/artwork/lucio-fontana-concetto-spaziale-attese-139"
+        initialRoute="/artwork/donald-martiny-milyan"
       />
     )
   })

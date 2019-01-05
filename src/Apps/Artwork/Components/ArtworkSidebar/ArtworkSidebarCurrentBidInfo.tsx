@@ -1,4 +1,4 @@
-import { Box, Flex, Sans, Serif } from "@artsy/palette"
+import { Box, Flex, Sans, Separator, Serif, Spacer } from "@artsy/palette"
 import { LosingBid } from "Assets/Icons/LosingBid"
 import { WinningBid } from "Assets/Icons/WinningBid"
 import React from "react"
@@ -22,10 +22,12 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
 
     if (artwork.sale.is_closed) {
       return (
-        <Box pt={2} pb={2}>
+        <Box>
+          <Separator mb={3} />
           <Serif size="5t" weight="semibold" color="black100">
             Bidding closed
           </Serif>
+          <Spacer mb={3} />
         </Box>
       )
     }
@@ -66,7 +68,8 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
       myBidPresent && get(myLotStanding, s => s.active_bid.is_winning)
     const myMaxBid = get(myMostRecent, bid => bid.max_bid.display)
     return (
-      <Box pt={2} pb={2}>
+      <Box>
+        <Separator mb={3} />
         <Flex width="100%" flexDirection="row" justifyContent="space-between">
           <Serif size="5t" weight="semibold" pr={1}>
             {bidsPresent ? "Current bid" : "Starting bid"}
@@ -96,6 +99,7 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
             </Sans>
           )}
         </Flex>
+        <Spacer mb={3} />
       </Box>
     )
   }
