@@ -2,6 +2,7 @@ import {
   ArtworkBuyNow,
   ArtworkBuyNowMakeOffer,
   ArtworkMakeOffer,
+  ArtworkSingleEditionHiddenAvailability,
   ArtworkSold,
 } from "Apps/__tests__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarCommercial"
 
@@ -42,6 +43,16 @@ describe("ArtworkSidebarCommercial", () => {
 
   beforeEach(() => {
     commitMutation.mockReset()
+  })
+
+  it("displays singe editioned hidden availability inquire work", async () => {
+    const artwork = Object.assign({}, ArtworkSingleEditionHiddenAvailability)
+
+    const wrapper = await getWrapper(artwork)
+
+    expect(wrapper.text()).not.toContain("20 × 24 in")
+    expect(wrapper.text()).not.toContain("50.8 × 61 cm")
+    expect(wrapper.text()).toContain("Contact gallery")
   })
 
   it("displays artwork enrolled in Buy Now", async () => {

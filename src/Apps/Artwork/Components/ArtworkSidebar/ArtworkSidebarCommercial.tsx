@@ -321,11 +321,13 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
       <Box textAlign="left">
         {artwork.sale_message && <Separator />}
 
-        {artwork.edition_sets.length < 2 && artwork.sale_message ? (
-          <>
-            <Spacer mb={3} />
-            {this.renderSaleMessage(artwork.sale_message)}
-          </>
+        {artwork.edition_sets.length < 2 ? (
+          artwork.sale_message && (
+            <>
+              <Spacer mb={3} />
+              {this.renderSaleMessage(artwork.sale_message)}
+            </>
+          )
         ) : (
           <>
             {this.renderEditionSets(artworkEcommerceAvailable)}

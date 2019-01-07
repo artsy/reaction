@@ -185,3 +185,25 @@ export const ArtworkBuyNowMakeOffer = {
   shippingInfo: "Shipping: Free shipping worldwide",
   shippingOrigin: "New York, New York, US",
 }
+
+export const ArtworkSingleEditionHiddenAvailability = {
+  __id: "artwork_single_etition_hidden_availability",
+  is_acquireable: false,
+  is_inquireable: true,
+  is_offerable: false,
+  pickup_available: false,
+  sale_message: null,
+  shippingInfo: "Shipping, tax, and service quoted by seller",
+  shippingOrigin: null,
+  edition_sets: [
+    {
+      id: "5bfd7208773e1e6a1baa3b61",
+      __id: "RWRpdGlvblNldDo1YmZkNzIwODc3M2UxZTZhMWJhYTNiNjE=",
+      is_acquireable: false,
+      is_offerable: false,
+      sale_message: null,
+      dimensions: { in: "20 × 24 in", cm: "50.8 × 61 cm" },
+      edition_of: "Edition of 25",
+    },
+  ],
+}
