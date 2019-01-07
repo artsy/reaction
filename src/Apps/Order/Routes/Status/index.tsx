@@ -17,10 +17,19 @@ import { Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { get } from "Utils/get"
+import createLogger from "Utils/logger"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "../../Components/ArtworkSummaryItem"
 import { CreditCardSummaryItemFragmentContainer as CreditCardSummaryItem } from "../../Components/CreditCardSummaryItem"
 import { Helper } from "../../Components/Helper"
 import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "../../Components/ShippingSummaryItem"
+
+const logger = createLogger("Order/Routes/Status/index.tsx")
+
+interface StatusData {
+  title: React.ReactNode
+  description: React.ReactNode
+  backToArtsyHref?: string
+}
 
 export interface StatusProps {
   order: Status_order
@@ -28,161 +37,145 @@ export interface StatusProps {
 }
 
 export class StatusRoute extends Component<StatusProps> {
-  stateCopy = () => {
+  getStatusCopy(): StatusData {
     const { state, requestedFulfillment, mode, stateReason } = this.props.order
     const isOfferFlow = mode === "OFFER"
-    const buyerRejectedOffer = stateReason === "buyer_rejected"
+    const isShip = requestedFulfillment.__typename === "Ship"
+
     switch (state) {
       case "SUBMITTED":
         return isOfferFlow
-          ? "Your offer has been submitted"
-          : "Your order has been submitted"
+          ? {
+              title: "Your offer has been submitted",
+              description: (
+                <>
+                  The seller has 48 hours to respond to your offer. Keep in mind
+                  making an offer doesn’t guarantee you the work.
+                </>
+              ),
+            }
+          : {
+              title: "Your order has been submitted",
+              description: (
+                <>
+                  Thank you for your purchase. You will receive a confirmation
+                  email within 2 days.
+                </>
+              ),
+            }
       case "APPROVED":
-        return isOfferFlow ? "Offer accepted" : "Your order is confirmed"
-      case "FULFILLED":
-        return requestedFulfillment.__typename === "Ship"
-          ? "Your order has shipped"
-          : "Your order has been picked up"
-      case "CANCELED":
-        if (buyerRejectedOffer) {
-          return "Offer declined"
-        } else {
-          return "Your order was canceled and refunded"
-        }
-    }
-  }
-
-  render() {
-    const { order } = this.props
-
-    const isOfferFlow = order.mode === "OFFER"
-    const buyerRejectedOffer = order.stateReason === "buyer_rejected"
-    const message = isOfferFlow
-      ? offerMessages[order.state] || orderMessages[order.state]
-      : orderMessages[order.state]
-    const flowName = isOfferFlow ? "Offer" : "Order"
-    const userMessage = message && message(this.props)
-
-    return (
-      <HorizontalPadding>
-        <Serif size="6" weight="regular" color="black100">
-          {this.stateCopy()}
-        </Serif>
-        <Sans size="2" weight="regular" color="black60" mb={[2, 3]}>
-          {flowName} #{order.code}
-        </Sans>
-        <TwoColumnLayout
-          Content={
+        return {
+          title: isOfferFlow ? "Offer accepted" : "Your order is confirmed",
+          description: isShip ? (
             <>
-              <Title>{flowName} status | Artsy</Title>
-              <Join separator={<Spacer mb={[2, 3]} />}>
-                {userMessage && <Message p={[2, 3]}>{userMessage}</Message>}
-                {buyerRejectedOffer ? (
-                  <Button
-                    onClick={() => {
-                      window.location.href = "/"
-                    }}
-                    size="large"
-                    width="100%"
-                  >
-                    Back to Artsy
-                  </Button>
-                ) : (
-                  <Flex flexDirection="column">
-                    <ArtworkSummaryItem order={order} />
-                    <TransactionDetailsSummaryItem
-                      order={order}
-                      useLastSubmittedOffer
-                    />
-                  </Flex>
-                )}
-              </Join>
-              <Spacer mb={[2, 3]} />
+              Thank you for your purchase. You will be notified when the work
+              has shipped, typically within 5–7 business days.
             </>
+          ) : (
+            <>
+              Thank you for your purchase. A specialist will contact you within
+              2 business days to coordinate pickup.
+            </>
+          ),
+        }
+      case "FULFILLED": {
+        return isShip
+          ? {
+              title: "Your order has shipped",
+              description: this.getFulfilmentDescription(),
+            }
+          : {
+              title: "Your order has been picked up",
+              description: null,
+            }
+      }
+      case "CANCELED": {
+        if (!isOfferFlow) {
+          return {
+            title: "Your order was canceled and refunded",
+            description: (
+              <>
+                Please allow 5–7 business days for the refund to appear on your
+                bank statement. Contact{" "}
+                <a href="mailto:orders@artsy.net">orders@artsy.net</a> with any
+                questions.
+              </>
+            ),
           }
-          Sidebar={
-            !buyerRejectedOffer && (
-              <Flex flexDirection="column">
-                <Flex flexDirection="column">
-                  <ShippingSummaryItem order={order} />
-                  <CreditCardSummaryItem order={order} />
-                </Flex>
-                <Spacer mb={[2, 3]} />
-                <Helper
-                  artworkId={get(
-                    order,
-                    o => o.lineItems.edges[0].node.artwork.id
-                  )}
-                />
-              </Flex>
-            )
-          }
-        />
-      </HorizontalPadding>
-    )
-  }
-}
+        }
 
-const offerMessages = {
-  SUBMITTED: () => {
-    return (
-      <>
-        The seller has 48 hours to respond to your offer. Keep in mind making an
-        offer doesn’t guarantee you the work.
-      </>
-    )
-  },
-  CANCELED: (props: StatusProps) => {
-    if (props.order.stateReason === "buyer_rejected") {
-      return orderMessages.CANCELED()
+        switch (stateReason) {
+          case "buyer_rejected":
+            return {
+              title: "Offer declined",
+              description: (
+                <>
+                  <p>
+                    Thank you for your response. The seller will be informed of
+                    your decision to end the negotiation process.
+                  </p>
+                  <p>
+                    We’d love to get your feedback. Contact{" "}
+                    <a href="mailto:orders@artsy.net">orders@artsy.net</a> with
+                    any comments you have.
+                  </p>
+                </>
+              ),
+            }
+          case "seller_rejected_offer_too_low":
+          case "seller_rejected_shipping_unavailable":
+          case "seller_rejected":
+          case "seller_rejected_artwork_unavailable":
+          case "seller_rejected_other":
+            return {
+              title: "Offer declined",
+              description: (
+                <p>
+                  Sorry, the seller declined your offer and has ended the
+                  negotiation process.
+                </p>
+              ),
+            }
+          case "buyer_lapsed":
+            return {
+              title: "Offer expired",
+              description: (
+                <p>
+                  The seller’s offer expired because you didn’t respond in time.
+                </p>
+              ),
+            }
+          case "seller_lapsed":
+            return {
+              title: "Offer expired",
+              description: (
+                <p>
+                  Your offer expired because the seller didn’t respond to your
+                  offer in time.
+                </p>
+              ),
+            }
+          default:
+            // This should not happen. Check the cancel reasons are all accounted for:
+            // https://github.com/artsy/exchange/blob/master/app/models/order.rb
+            logger.error(`Unhandled cancellation reason: ${stateReason}`)
+            return {
+              title: "Offer declined",
+              description: null,
+            }
+        }
+      }
     }
-    return (
-      <>
-        <p>
-          Thank you for your response. The seller will be informed of your
-          decision to end the negotiation process.
-        </p>
-        <p>
-          We’d love to get your feedback. Contact{" "}
-          <a href="mailto:orders@artsy.net">orders@artsy.net</a> with any
-          comments you have.
-        </p>
-      </>
-    )
-  },
-}
+  }
 
-const orderMessages = {
-  SUBMITTED: () => (
-    <>
-      Thank you for your purchase. You will receive a confirmation email within
-      2 days.
-    </>
-  ),
-  APPROVED: ({ order: { requestedFulfillment } }) => {
-    return requestedFulfillment.__typename === "Ship" ? (
-      <>
-        Thank you for your purchase. You will be notified when the work has
-        shipped, typically within 5–7 business days.
-      </>
-    ) : (
-      <>
-        Thank you for your purchase. A specialist will contact you within 2
-        business days to coordinate pickup.
-      </>
-    )
-  },
-  FULFILLED: ({ order }) => {
+  getFulfilmentDescription(): React.ReactNode {
     const fulfillment = get(
-      order,
+      this.props.order,
       o => o.lineItems.edges[0].node.fulfillments.edges[0].node
     )
+
     if (!fulfillment) {
-      return false
-    }
-    const { requestedFulfillment } = order
-    if (requestedFulfillment.__typename !== "Ship") {
-      return false
+      return null
     }
 
     return (
@@ -207,14 +200,74 @@ const orderMessages = {
         )}
       </>
     )
-  },
-  CANCELED: () => (
-    <>
-      Please allow 5–7 business days for the refund to appear on your bank
-      statement. Contact <a href="mailto:orders@artsy.net">orders@artsy.net</a>{" "}
-      with any questions.
-    </>
-  ),
+  }
+
+  render() {
+    const { order } = this.props
+
+    const isOfferFlow = order.mode === "OFFER"
+    const offerOrderCanceled = isOfferFlow && order.state === "CANCELED"
+    const flowName = isOfferFlow ? "Offer" : "Order"
+    const { title, description } = this.getStatusCopy()
+
+    return (
+      <HorizontalPadding>
+        <Serif size="6" weight="regular" color="black100">
+          {title}
+        </Serif>
+        <Sans size="2" weight="regular" color="black60" mb={[2, 3]}>
+          {flowName} #{order.code}
+        </Sans>
+        <TwoColumnLayout
+          Content={
+            <>
+              <Title>{flowName} status | Artsy</Title>
+              <Join separator={<Spacer mb={[2, 3]} />}>
+                {description && <Message p={[2, 3]}>{description}</Message>}
+                {offerOrderCanceled ? (
+                  <Button
+                    onClick={() => {
+                      window.location.href = "/"
+                    }}
+                    size="large"
+                    width="100%"
+                  >
+                    Back to Artsy
+                  </Button>
+                ) : (
+                  <Flex flexDirection="column">
+                    <ArtworkSummaryItem order={order} />
+                    <TransactionDetailsSummaryItem
+                      order={order}
+                      useLastSubmittedOffer
+                    />
+                  </Flex>
+                )}
+              </Join>
+              <Spacer mb={[2, 3]} />
+            </>
+          }
+          Sidebar={
+            !offerOrderCanceled && (
+              <Flex flexDirection="column">
+                <Flex flexDirection="column">
+                  <ShippingSummaryItem order={order} />
+                  <CreditCardSummaryItem order={order} />
+                </Flex>
+                <Spacer mb={[2, 3]} />
+                <Helper
+                  artworkId={get(
+                    order,
+                    o => o.lineItems.edges[0].node.artwork.id
+                  )}
+                />
+              </Flex>
+            )
+          }
+        />
+      </HorizontalPadding>
+    )
+  }
 }
 
 export const StatusFragmentContainer = createFragmentContainer(

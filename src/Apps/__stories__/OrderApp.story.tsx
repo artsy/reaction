@@ -327,30 +327,42 @@ storiesOf("Apps/Order Page/Make Offer/Status", module)
       })}
     />
   ))
-  .add("canceled (ship)", () => (
-    <Router
-      initialRoute="/orders/123/status"
-      mockResolvers={mockResolver({
-        ...OfferOrderWithShippingDetails,
-        state: "CANCELED",
-      })}
-    />
-  ))
-  .add("canceled (pickup)", () => (
-    <Router
-      initialRoute="/orders/123/status"
-      mockResolvers={mockResolver({
-        ...OfferOrderPickup,
-        state: "CANCELED",
-      })}
-    />
-  ))
   .add("buyer rejected", () => (
     <Router
       initialRoute="/orders/123/status"
       mockResolvers={mockResolver({
         ...OfferOrderWithShippingDetails,
         stateReason: "buyer_rejected",
+        state: "CANCELED",
+      })}
+    />
+  ))
+  .add("seller rejected", () => (
+    <Router
+      initialRoute="/orders/123/status"
+      mockResolvers={mockResolver({
+        ...OfferOrderWithShippingDetails,
+        stateReason: "seller_rejected",
+        state: "CANCELED",
+      })}
+    />
+  ))
+  .add("buyer lapsed", () => (
+    <Router
+      initialRoute="/orders/123/status"
+      mockResolvers={mockResolver({
+        ...OfferOrderWithShippingDetails,
+        stateReason: "buyer_lapsed",
+        state: "CANCELED",
+      })}
+    />
+  ))
+  .add("seller lapsed", () => (
+    <Router
+      initialRoute="/orders/123/status"
+      mockResolvers={mockResolver({
+        ...OfferOrderWithShippingDetails,
+        stateReason: "seller_lapsed",
         state: "CANCELED",
       })}
     />
