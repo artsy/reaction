@@ -369,15 +369,6 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
         ) : (
           <Separator mb={3} mt={3} />
         )}
-        {artwork.is_inquireable && (
-          <Button
-            width="100%"
-            size="large"
-            onClick={this.handleInquiry.bind(this)}
-          >
-            Contact gallery
-          </Button>
-        )}
         {artwork.is_acquireable && (
           <Button
             width="100%"
@@ -404,6 +395,17 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
             </Button>
           </>
         )}
+        {artwork.is_inquireable &&
+          !artwork.is_acquireable &&
+          !artwork.is_offerable && (
+            <Button
+              width="100%"
+              size="large"
+              onClick={this.handleInquiry.bind(this)}
+            >
+              Contact gallery
+            </Button>
+          )}
 
         <ErrorModal
           onClose={this.onCloseModal}
