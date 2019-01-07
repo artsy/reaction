@@ -2,6 +2,7 @@ import {
   ArtworkBuyNow,
   ArtworkBuyNowMakeOffer,
   ArtworkMakeOffer,
+  ArtworkOfferableAndInquireable,
   ArtworkSingleEditionHiddenAvailability,
   ArtworkSold,
 } from "Apps/__tests__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarCommercial"
@@ -77,6 +78,15 @@ describe("ArtworkSidebarCommercial", () => {
     const wrapper = await getWrapper(artwork)
 
     expect(wrapper.text()).toContain("Make offer")
+  })
+
+  it("displays artwork enrolled in Make Offer when enbaled for both make offer and inquiry", async () => {
+    const artwork = Object.assign({}, ArtworkOfferableAndInquireable)
+
+    const wrapper = await getWrapper(artwork)
+
+    expect(wrapper.text()).toContain("Make offer")
+    expect(wrapper.text()).not.toContain("Contact gallery")
   })
 
   it("displays artwork enrolled in both Buy Now and Make Offer", async () => {
