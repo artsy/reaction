@@ -72,6 +72,18 @@ export const ContactForPriceWork = {
   ],
 }
 
+export const ArtworkOfferableAndInquireable = {
+  __id: "artwork_offer_inquireable",
+  sale_message: "$10,000",
+  is_acquireable: false,
+  is_inquireable: true,
+  is_offerable: true,
+  pickup_available: false,
+  edition_sets: [],
+  shippingInfo: "Shipping: Free shipping worldwide",
+  shippingOrigin: "New York, New York, US",
+}
+
 export const ArtworkBuyNow = {
   __id: "artwork_buy_now",
   sale_message: "$10,000",
