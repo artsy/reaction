@@ -197,20 +197,24 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
                 },
               },
               onCompleted: data => {
-                this.setState({ isCommittingCreateOrderMutation: false })
-                const {
-                  ecommerceCreateOrderWithArtwork: { orderOrError },
-                } = data
-                if (orderOrError.error) {
-                  this.onMutationError(
-                    new ErrorWithMetadata(
-                      orderOrError.error.code,
-                      orderOrError.error
-                    )
-                  )
-                } else {
-                  window.location.assign(`/orders/${orderOrError.order.id}`)
-                }
+                this.setState(
+                  { isCommittingCreateOrderMutation: false },
+                  () => {
+                    const {
+                      ecommerceCreateOrderWithArtwork: { orderOrError },
+                    } = data
+                    if (orderOrError.error) {
+                      this.onMutationError(
+                        new ErrorWithMetadata(
+                          orderOrError.error.code,
+                          orderOrError.error
+                        )
+                      )
+                    } else {
+                      window.location.assign(`/orders/${orderOrError.order.id}`)
+                    }
+                  }
+                )
               },
               onError: this.onMutationError,
             }
@@ -269,22 +273,26 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
                 },
               },
               onCompleted: data => {
-                this.setState({ isCommittingCreateOrderMutation: false })
-                const {
-                  ecommerceCreateOfferOrderWithArtwork: { orderOrError },
-                } = data
-                if (orderOrError.error) {
-                  this.onMutationError(
-                    new ErrorWithMetadata(
-                      orderOrError.error.code,
-                      orderOrError.error
-                    )
-                  )
-                } else {
-                  window.location.assign(
-                    `/orders/${orderOrError.order.id}/offer`
-                  )
-                }
+                this.setState(
+                  { isCommittingCreateOfferOrderMutation: false },
+                  () => {
+                    const {
+                      ecommerceCreateOfferOrderWithArtwork: { orderOrError },
+                    } = data
+                    if (orderOrError.error) {
+                      this.onMutationError(
+                        new ErrorWithMetadata(
+                          orderOrError.error.code,
+                          orderOrError.error
+                        )
+                      )
+                    } else {
+                      window.location.assign(
+                        `/orders/${orderOrError.order.id}/offer`
+                      )
+                    }
+                  }
+                )
               },
               onError: this.onMutationError,
             }
@@ -368,17 +376,20 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
           </Button>
         )}
         {artwork.is_offerable && (
-          <Button
-            variant={
-              artwork.is_acquireable ? "secondaryOutline" : "primaryBlack"
-            }
-            width="100%"
-            size="large"
-            loading={isCommittingCreateOfferOrderMutation}
-            onClick={this.handleCreateOfferOrder.bind(this)}
-          >
-            Make offer
-          </Button>
+          <>
+            <Spacer mb={2} />
+            <Button
+              variant={
+                artwork.is_acquireable ? "secondaryOutline" : "primaryBlack"
+              }
+              width="100%"
+              size="large"
+              loading={isCommittingCreateOfferOrderMutation}
+              onClick={this.handleCreateOfferOrder.bind(this)}
+            >
+              Make offer
+            </Button>
+          </>
         )}
 
         <ErrorModal
