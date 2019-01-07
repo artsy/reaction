@@ -80,7 +80,7 @@ describe("ArtworkSidebarCommercial", () => {
     expect(wrapper.text()).toContain("Make offer")
   })
 
-  it("displays artwork enrolled in Make Offer when enbaled for both make offer and inquiry", async () => {
+  it("displays artwork enrolled in Make Offer when enabled for both make offer and inquiry", async () => {
     const artwork = Object.assign({}, ArtworkOfferableAndInquireable)
 
     const wrapper = await getWrapper(artwork)
