@@ -25,6 +25,7 @@ import {
   graphql,
   RelayProp,
 } from "react-relay"
+import { TrackingProp } from "react-tracking"
 import { ErrorWithMetadata } from "Utils/errors"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
@@ -36,6 +37,7 @@ export interface ArtworkSidebarCommercialContainerProps
   extends ArtworkSidebarCommercialProps {
   mediator: Mediator
   user: User
+  tracking?: TrackingProp
 }
 
 export interface ArtworkSidebarCommercialContainerState {
@@ -148,6 +150,17 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
       this.props.mediator.trigger("launchInquiryFlow", {
         artworkId: this.props.artwork.id,
       })
+
+    const { tracking } = this.props
+    const trackingData = {
+      context_module: "Sidebar",
+      subject: "Contact Gallery",
+      type: "Button",
+      artwork_id: this.props.artwork._id,
+      action: "Click",
+    }
+
+    tracking.trackEvent(trackingData)
   }
 
   @track((props, state, args) => ({
