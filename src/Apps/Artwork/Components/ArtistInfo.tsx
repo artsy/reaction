@@ -70,10 +70,7 @@ export class ArtistInfo extends Component<ArtistInfoProps> {
                     user={user}
                     trackingData={{
                       modelName: Schema.OwnerType.Artist,
-                      context_module: [
-                        Schema.ContextModule.Sidebar,
-                        Schema.ContextModule.Biography,
-                      ],
+                      context_module: Schema.ContextModule.Biography,
                       entity_id: _id,
                       entity_slug: id,
                     }}

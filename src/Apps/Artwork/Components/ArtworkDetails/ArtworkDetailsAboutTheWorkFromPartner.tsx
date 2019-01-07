@@ -90,10 +90,7 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
                         user={user}
                         trackingData={{
                           modelName: Schema.OwnerType.Partner,
-                          context_module: [
-                            Schema.ContextModule.Sidebar,
-                            Schema.ContextModule.Biography,
-                          ],
+                          context_module: "About the work (partner)",
                           entity_id: partner._id,
                           entity_slug: partner.id,
                         }}
