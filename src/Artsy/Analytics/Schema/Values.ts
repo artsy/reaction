@@ -76,9 +76,6 @@ export enum ActionType {
   SubmittedOrder = "submitted_order",
   SubmittedOffer = "submitted_offer",
   SubmittedCounterOffer = "submitted_counter_offer",
-
-  ClickedBuyNow = "clicked_buy",
-  ClickedMakeOffer = "clicked_make_offer",
 }
 
 /**
@@ -179,6 +176,8 @@ export enum Subject {
 
   ConsignLearnMore = "learn more",
 
+  // Artwork Page
+  Classification = "Classification info",
   ContactGallery = "Contact Gallery",
 }
 
