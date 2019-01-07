@@ -142,6 +142,7 @@ const offerMessages = {
           Thank you for your response. The seller will be informed of your
           decision to end the negotiation process.
         </p>
+        <br />
         <p>
           We’d love to get your feedback. Contact{" "}
           <a href="mailto:orders@artsy.net">orders@artsy.net</a> with any
