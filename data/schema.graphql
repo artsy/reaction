@@ -4835,6 +4835,7 @@ type MarketingCollection {
   updatedAt: MarketingDateTime!
   artworks(
     acquireable: Boolean
+    offerable: Boolean
     aggregation_partner_cities: [String]
     aggregations: [ArtworkAggregation]
     artist_id: String

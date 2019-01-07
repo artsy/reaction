@@ -112,6 +112,7 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
       $partner_id: ID
       $acquireable: Boolean
       $at_auction: Boolean
+      $offerable: Boolean
       $inquireable_only: Boolean
       $for_sale: Boolean
       $sort: String
@@ -127,6 +128,7 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
               sort: $sort
               at_auction: $at_auction
               acquireable: $acquireable
+              offerable: $offerable
               inquireable_only: $inquireable_only
             )
         }

@@ -78,6 +78,12 @@ return {
     },
     {
       "kind": "LocalArgument",
+      "name": "offerable",
+      "type": "Boolean",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
       "name": "inquireable_only",
       "type": "Boolean",
       "defaultValue": null
@@ -214,6 +220,12 @@ return {
         },
         {
           "kind": "Variable",
+          "name": "offerable",
+          "variableName": "offerable",
+          "type": null
+        },
+        {
+          "kind": "Variable",
           "name": "price_range",
           "variableName": "price_range",
           "type": null
@@ -236,5 +248,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '15332b09f1719ead0eb9dedb125169a9';
+(node as any).hash = '62d2d9d676f68f795b315eeb3af0b26a';
 export default node;
