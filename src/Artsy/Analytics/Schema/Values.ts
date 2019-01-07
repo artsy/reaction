@@ -179,6 +179,8 @@ export enum Subject {
 
   ConsignLearnMore = "learn more",
 
+  // Artwork Page
+  Classification = "Classification info",
   ContactGallery = "Contact Gallery",
 }
 
