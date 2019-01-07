@@ -204,6 +204,7 @@ export enum ContextModule {
    */
   ArtworkTabs = "Artwork tabs",
   ShareButton = "Share button",
+  Zoom = "Zoom",
 
   /*
   * Articles
@@ -233,6 +234,7 @@ export enum Flow {
   ArtworkAboutTheWork = "Artwork about the work",
   ArtworkAboutTheArtist = "Artwork about the artist",
   ArtworkShare = "Artwork share",
+  ArtworkZoom = "Artwork zoom",
   Auctions = "Auctions",
   BuyNow = "Buy now",
   MakeOffer = "Make offer",
