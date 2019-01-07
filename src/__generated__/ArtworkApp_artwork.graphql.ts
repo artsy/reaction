@@ -14,6 +14,9 @@ export type ArtworkApp_artwork = {
     readonly id: string;
     readonly _id: string;
     readonly is_acquireable: boolean | null;
+    readonly is_offerable: boolean | null;
+    readonly availability: string | null;
+    readonly price: string | null;
     readonly is_in_auction: boolean | null;
     readonly artists: ReadonlyArray<({
         readonly _id: string;
@@ -39,14 +42,14 @@ var v0 = {
 v1 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "_id",
+  "name": "__id",
   "args": null,
   "storageKey": null
 },
 v2 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "_id",
   "args": null,
   "storageKey": null
 };
@@ -58,15 +61,44 @@ return {
   "argumentDefinitions": [],
   "selections": [
     {
-      "kind": "FragmentSpread",
-      "name": "ArtworkMeta_artwork",
-      "args": null
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "artist",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Artist",
+      "plural": false,
+      "selections": [
+        v0,
+        v1
+      ]
     },
     v0,
     {
       "kind": "ScalarField",
       "alias": null,
       "name": "is_acquireable",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "is_offerable",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "availability",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "price",
       "args": null,
       "storageKey": null
     },
@@ -86,30 +118,22 @@ return {
       "concreteType": "Artist",
       "plural": true,
       "selections": [
-        v1,
+        v2,
         v0,
-        v2
+        v1
       ]
     },
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "artist",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "Artist",
-      "plural": false,
-      "selections": [
-        v0,
-        v2
-      ]
-    },
+    v2,
     {
       "kind": "FragmentSpread",
       "name": "ArtworkRelatedArtists_artwork",
       "args": null
     },
-    v1,
+    {
+      "kind": "FragmentSpread",
+      "name": "ArtworkMeta_artwork",
+      "args": null
+    },
     {
       "kind": "FragmentSpread",
       "name": "ArtworkBanner_artwork",
@@ -135,9 +159,9 @@ return {
       "name": "OtherWorks_artwork",
       "args": null
     },
-    v2
+    v1
   ]
 };
 })();
-(node as any).hash = '23482a6c5523567e0d1933d733869764';
+(node as any).hash = 'e1cf6819365438d34487efedffb1a011';
 export default node;
