@@ -8,6 +8,7 @@ import {
 } from "Apps/__tests__/Fixtures/Order"
 import { CreditCardSummaryItemFragmentContainer } from "Apps/Order/Components/CreditCardSummaryItem"
 import { ShippingSummaryItemFragmentContainer } from "Apps/Order/Components/ShippingSummaryItem"
+import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { ModalButton } from "Components/Modal/ModalDialog"
 import { MockBoot } from "DevTools"
@@ -26,8 +27,9 @@ import {
   submitOrderWithNoInventoryFailure,
   submitOrderWithVersionMismatchFailure,
 } from "../__fixtures__/MutationResults"
-import { ReviewRoute } from "../Review"
+import { ReviewFragmentContainer as ReviewRoute } from "../Review"
 
+jest.mock("Apps/Order/Utils/trackPageView")
 jest.mock("react-relay", () => ({
   commitMutation: jest.fn(),
   createFragmentContainer: component => component,
@@ -290,5 +292,11 @@ describe("Review", () => {
       component.find(ModalButton).simulate("click")
       expect(window.location.assign).toBeCalledWith("/artist/artistId")
     })
+  })
+
+  it("tracks a pageview", () => {
+    getWrapper(defaultProps)
+
+    expect(trackPageView).toHaveBeenCalledTimes(1)
   })
 })

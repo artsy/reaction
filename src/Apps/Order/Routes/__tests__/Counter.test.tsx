@@ -10,6 +10,7 @@ import { CreditCardSummaryItemFragmentContainer } from "Apps/Order/Components/Cr
 import { OrderStepper } from "Apps/Order/Components/OrderStepper"
 import { ShippingSummaryItemFragmentContainer } from "Apps/Order/Components/ShippingSummaryItem"
 import { TransactionDetailsSummaryItemFragmentContainer } from "Apps/Order/Components/TransactionDetailsSummaryItem"
+import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { ModalButton } from "Components/Modal/ModalDialog"
 import { MockBoot } from "DevTools"
@@ -25,6 +26,8 @@ import {
   submitPendingOfferSuccess,
 } from "../__fixtures__/MutationResults/submitPendingOffer"
 import { CounterFragmentContainer as CounterRoute } from "../Counter"
+
+jest.mock("Apps/Order/Utils/trackPageView")
 
 jest.mock("Utils/getCurrentTimeAsIsoString")
 
@@ -60,28 +63,26 @@ const testOrder = {
 }
 
 let mockPushRoute: jest.Mock<string>
-let mockMediatorTrigger: jest.Mock<string>
 
 describe("Submit Pending Counter Offer", () => {
   const getWrapper = (extraOrderProps?) => {
+    const props = {
+      relay: { environment: {} },
+      router: { push: mockPushRoute },
+      order: {
+        ...testOrder,
+        ...extraOrderProps,
+      },
+    }
     return mount(
       <MockBoot>
-        <CounterRoute
-          relay={{ environment: {} }}
-          router={{ push: mockPushRoute }}
-          mediator={{ trigger: mockMediatorTrigger }}
-          order={{
-            ...testOrder,
-            ...extraOrderProps,
-          }}
-        />
+        <CounterRoute {...props as any} />
       </MockBoot>
     )
   }
 
   beforeEach(() => {
     mockPushRoute = jest.fn()
-    mockMediatorTrigger = jest.fn()
   })
 
   it("Shows the stepper", () => {
@@ -264,5 +265,11 @@ describe("Submit Pending Counter Offer", () => {
     component.find(Button).simulate("click")
 
     expect(component.find(ErrorModal).props().show).toBe(true)
+  })
+
+  it("tracks a pageview", () => {
+    getWrapper()
+
+    expect(trackPageView).toHaveBeenCalledTimes(1)
   })
 })

@@ -13,6 +13,8 @@ import {
 import { ArtworkSidebarCommercial_artwork } from "__generated__/ArtworkSidebarCommercial_artwork.graphql"
 import { ArtworkSidebarCommercialOfferOrderMutation } from "__generated__/ArtworkSidebarCommercialOfferOrderMutation.graphql"
 import { ArtworkSidebarCommercialOrderMutation } from "__generated__/ArtworkSidebarCommercialOrderMutation.graphql"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import { ContextConsumer } from "Artsy/Router"
 import { Mediator } from "Artsy/SystemContext"
 import { ErrorModal } from "Components/Modal/ErrorModal"
@@ -53,6 +55,7 @@ const logger = createLogger(
   "Artwork/Components/ArtworkSidebar/ArtworkSidebarCommercial.tsx"
 )
 
+@track()
 export class ArtworkSidebarCommercialContainer extends React.Component<
   ArtworkSidebarCommercialContainerProps,
   ArtworkSidebarCommercialContainerState
@@ -147,7 +150,12 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
       })
   }
 
-  handleCreateOrder = () => {
+  @track((props, state, args) => ({
+    action_type: Schema.ActionType.ClickedBuyNow,
+    flow: Schema.Flow.BuyNow,
+    type: Schema.Type.Button,
+  }))
+  handleCreateOrder() {
     const { user, mediator } = this.props
     if (user && user.id) {
       this.setState({ isCommittingCreateOrderMutation: true }, () => {
@@ -214,7 +222,12 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
     }
   }
 
-  handleCreateOfferOrder = () => {
+  @track((props, state, args) => ({
+    action_type: Schema.ActionType.ClickedMakeOffer,
+    flow: Schema.Flow.MakeOffer,
+    type: Schema.Type.Button,
+  }))
+  handleCreateOfferOrder() {
     const { user, mediator } = this.props
     if (user && user.id) {
       this.setState({ isCommittingCreateOfferOrderMutation: true }, () => {
@@ -349,7 +362,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
             width="100%"
             size="large"
             loading={isCommittingCreateOrderMutation}
-            onClick={this.handleCreateOrder}
+            onClick={this.handleCreateOrder.bind(this)}
           >
             Buy now
           </Button>
@@ -362,7 +375,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
             width="100%"
             size="large"
             loading={isCommittingCreateOfferOrderMutation}
-            onClick={this.handleCreateOfferOrder}
+            onClick={this.handleCreateOfferOrder.bind(this)}
           >
             Make offer
           </Button>

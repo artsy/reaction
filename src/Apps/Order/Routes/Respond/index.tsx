@@ -18,7 +18,7 @@ import {
   showAcceptDialog,
   showErrorDialog,
 } from "Apps/Order/Dialogs"
-import { ContextConsumer, Mediator } from "Artsy/SystemContext"
+import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { StaticCollapse } from "Components/StaticCollapse"
 import { Router } from "found"
 import React, { Component } from "react"
@@ -46,7 +46,6 @@ import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "../
 
 export interface RespondProps {
   order: Respond_order
-  mediator: Mediator
   relay?: RelayProp
   router: Router
   dialog: Dialog
@@ -319,16 +318,8 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
   }
 }
 
-const RespondRouteWrapper = props => (
-  <ContextConsumer>
-    {({ mediator }) => {
-      return <RespondRoute {...props} mediator={mediator} />
-    }}
-  </ContextConsumer>
-)
-
 export const RespondFragmentContainer = createFragmentContainer(
-  injectDialog(RespondRouteWrapper),
+  injectDialog(trackPageViewWrapper(RespondRoute)),
   graphql`
     fragment Respond_order on Order {
       id

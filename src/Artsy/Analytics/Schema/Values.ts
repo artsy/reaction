@@ -74,6 +74,11 @@ export enum ActionType {
    * BNMO
    */
   SubmittedOrder = "submitted_order",
+  SubmittedOffer = "submitted_offer",
+  SubmittedCounterOffer = "submitted_counter_offer",
+
+  ClickedBuyNow = "clicked_buy",
+  ClickedMakeOffer = "clicked_make_offer",
 }
 
 /**
@@ -224,6 +229,8 @@ export enum ContextModule {
 export enum Flow {
   ArtworkAboutTheWork = "Artwork about the work",
   ArtworkAboutTheArtist = "Artwork about the artist",
+  BuyNow = "Buy now",
+  MakeOffer = "Make offer",
 }
 
 export enum Label {

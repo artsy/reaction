@@ -20,6 +20,8 @@ import { Stepper } from "Styleguide/Components"
 import { CountdownTimer } from "Styleguide/Components/CountdownTimer"
 import { RespondFragmentContainer as RespondRoute } from "../Respond"
 
+jest.mock("Apps/Order/Utils/trackPageView")
+
 jest.mock("Utils/getCurrentTimeAsIsoString")
 jest.mock("Utils/logger")
 
@@ -34,6 +36,7 @@ jest.mock("react-relay", () => ({
 
 import { OfferInput } from "Apps/Order/Components/OfferInput"
 import { ConnectedModalDialog } from "Apps/Order/Dialogs"
+import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { ModalButton, ModalDialog } from "Components/Modal/ModalDialog"
 import { commitMutation } from "react-relay"
 import { flushPromiseQueue } from "Utils/flushPromiseQueue"
@@ -56,21 +59,20 @@ const testOrder = {
 }
 
 let mockPushRoute: jest.Mock<string>
-let mockMediatorTrigger: jest.Mock<string>
 
 describe("Offer InitialMutation", () => {
   const getWrapper = (extraOrderProps?) => {
+    const props = {
+      relay: { environment: {} },
+      router: { push: mockPushRoute },
+      order: {
+        ...testOrder,
+        ...extraOrderProps,
+      },
+    }
     return mount(
       <MockBoot>
-        <RespondRoute
-          relay={{ environment: {} }}
-          router={{ push: mockPushRoute }}
-          mediator={{ trigger: mockMediatorTrigger }}
-          order={{
-            ...testOrder,
-            ...extraOrderProps,
-          }}
-        />
+        <RespondRoute {...props as any} />
         <ConnectedModalDialog />
       </MockBoot>
     )
@@ -78,7 +80,6 @@ describe("Offer InitialMutation", () => {
 
   beforeEach(() => {
     mockPushRoute = jest.fn()
-    mockMediatorTrigger = jest.fn()
     commitMutationMock.mockReset()
   })
 
@@ -515,5 +516,11 @@ Object {
       expect(dialog.props().show).toBe(false)
       expect(commitMutation).toHaveBeenCalled()
     })
+  })
+
+  it("tracks a pageview", () => {
+    getWrapper()
+
+    expect(trackPageView).toHaveBeenCalledTimes(1)
   })
 })

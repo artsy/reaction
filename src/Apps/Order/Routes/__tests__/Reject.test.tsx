@@ -1,6 +1,7 @@
 import { Button } from "@artsy/palette"
 import { OfferOrderWithShippingDetails } from "Apps/__tests__/Fixtures/Order"
 import { OrderStepper } from "Apps/Order/Components/OrderStepper"
+import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { ModalButton } from "Components/Modal/ModalDialog"
 import { MockBoot } from "DevTools"
@@ -17,6 +18,8 @@ import {
 import { RejectFragmentContainer as RejectRoute } from "../Reject"
 
 const commitMutation = _commitMutation as jest.Mock<any>
+
+jest.mock("Apps/Order/Utils/trackPageView")
 
 jest.mock("Utils/getCurrentTimeAsIsoString")
 const NOW = "2018-12-05T13:47:16.446Z"
@@ -40,18 +43,17 @@ let mockPushRoute: jest.Mock<string>
 
 describe("Buyer rejects seller offer", () => {
   const getWrapper = (extraOrderProps?) => {
+    const props = {
+      relay: { environment: {} },
+      router: { push: mockPushRoute },
+      order: {
+        ...testOrder,
+        ...extraOrderProps,
+      },
+    }
     return mount(
       <MockBoot>
-        <RejectRoute
-          relay={{ environment: {} }}
-          router={{ push: mockPushRoute }}
-          order={
-            {
-              ...testOrder,
-              ...extraOrderProps,
-            } as any
-          }
-        />
+        <RejectRoute {...props as any} />
       </MockBoot>
     )
   }
@@ -184,5 +186,11 @@ describe("Buyer rejects seller offer", () => {
     component.find(Button).simulate("click")
 
     expect(component.find(ErrorModal).props().show).toBe(true)
+  })
+
+  it("tracks a pageview", () => {
+    getWrapper()
+
+    expect(trackPageView).toHaveBeenCalledTimes(1)
   })
 })

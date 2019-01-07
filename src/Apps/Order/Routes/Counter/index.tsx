@@ -12,7 +12,9 @@ import {
 import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "Apps/Order/Components/ShippingSummaryItem"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
-import { ContextConsumer, Mediator } from "Artsy/SystemContext"
+import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
 import React, { Component } from "react"
@@ -32,7 +34,6 @@ import { Media } from "Utils/Responsive"
 
 export interface CounterProps {
   order: Counter_order
-  mediator: Mediator
   relay?: RelayProp
   router: Router
 }
@@ -46,13 +47,19 @@ export interface CounterState {
 
 const logger = createLogger("Order/Routes/Counter/index.tsx")
 
+@track()
 export class CounterRoute extends Component<CounterProps, CounterState> {
-  state = {
+  state: CounterState = {
     isCommittingMutation: false,
     isErrorModalOpen: false,
     errorModalTitle: null,
     errorModalMessage: null,
-  } as CounterState
+  }
+
+  constructor(props: CounterProps) {
+    super(props)
+    this.onSuccessfulSubmit = this.onSuccessfulSubmit.bind(this)
+  }
 
   onSubmitButtonPressed: () => void = () => {
     this.setState({ isCommittingMutation: true }, () => {
@@ -121,9 +128,17 @@ export class CounterRoute extends Component<CounterProps, CounterState> {
         )
       }
     } else {
-      this.setState({ isCommittingMutation: false })
-      this.props.router.push(`/orders/${this.props.order.id}/status`)
+      this.onSuccessfulSubmit()
     }
+  }
+
+  @track<CounterProps>(props => ({
+    action_type: Schema.ActionType.SubmittedCounterOffer,
+    order_id: props.order.id,
+  }))
+  onSuccessfulSubmit() {
+    this.setState({ isCommittingMutation: false })
+    this.props.router.push(`/orders/${this.props.order.id}/status`)
   }
 
   onCloseModal = () => {
@@ -239,16 +254,8 @@ export class CounterRoute extends Component<CounterProps, CounterState> {
   }
 }
 
-const CounterRouteWrapper = props => (
-  <ContextConsumer>
-    {({ mediator }) => {
-      return <CounterRoute {...props} mediator={mediator} />
-    }}
-  </ContextConsumer>
-)
-
-export const CounterFragmentContainer = createFragmentContainer(
-  CounterRouteWrapper,
+export const CounterFragmentContainer = createFragmentContainer<CounterProps>(
+  trackPageViewWrapper(CounterRoute),
   graphql`
     fragment Counter_order on Order {
       id

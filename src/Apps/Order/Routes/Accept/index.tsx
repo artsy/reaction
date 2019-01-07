@@ -2,8 +2,7 @@ import { Button, Flex, Spacer } from "@artsy/palette"
 import { Accept_order } from "__generated__/Accept_order.graphql"
 import { Helper } from "Apps/Order/Components/Helper"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
-import { ContextConsumer } from "Artsy"
-import { Mediator } from "Artsy/SystemContext"
+import { track } from "Artsy/Analytics"
 import { RouteConfig, Router } from "found"
 import React, { Component } from "react"
 import {
@@ -24,6 +23,7 @@ import { AcceptOfferMutation } from "__generated__/AcceptOfferMutation.graphql"
 import { ConditionsOfSaleDisclaimer } from "Apps/Order/Components/ConditionsOfSaleDisclaimer"
 import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "Apps/Order/Components/ShippingSummaryItem"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
+import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { CountdownTimer } from "Styleguide/Components/CountdownTimer"
 import { ErrorWithMetadata } from "Utils/errors"
@@ -33,7 +33,6 @@ import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "../..
 import { CreditCardSummaryItemFragmentContainer as CreditCardSummaryItem } from "../../Components/CreditCardSummaryItem"
 
 interface AcceptProps {
-  mediator: Mediator
   order: Accept_order
   relay?: RelayProp
   router: Router
@@ -49,6 +48,7 @@ interface AcceptState {
 
 const logger = createLogger("Order/Routes/Offer/index.tsx")
 
+@track()
 export class Accept extends Component<AcceptProps, AcceptState> {
   state = {
     isCommittingMutation: false,
@@ -258,16 +258,8 @@ export class Accept extends Component<AcceptProps, AcceptState> {
   }
 }
 
-const AcceptRouteWrapper = props => (
-  <ContextConsumer>
-    {({ mediator }) => {
-      return <Accept {...props} mediator={mediator} />
-    }}
-  </ContextConsumer>
-)
-
 export const AcceptFragmentContainer = createFragmentContainer(
-  AcceptRouteWrapper,
+  trackPageViewWrapper(Accept),
   graphql`
     fragment Accept_order on Order {
       id

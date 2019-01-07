@@ -26,7 +26,11 @@ import {
   settingOrderPaymentFailed,
   settingOrderPaymentSuccess,
 } from "../__fixtures__/MutationResults"
-import { ContinueButton, PaymentProps, PaymentRoute } from "../Payment"
+import {
+  ContinueButton,
+  PaymentFragmentContainer as PaymentRoute,
+  PaymentProps,
+} from "../Payment"
 jest.mock("react-relay", () => ({
   commitMutation: jest.fn(),
   createFragmentContainer: component => component,
@@ -37,7 +41,9 @@ jest.mock("react-stripe-elements", () => ({
   injectStripe: args => args,
 }))
 jest.unmock("react-tracking")
+jest.mock("Apps/Order/Utils/trackPageView")
 
+import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { ModalButton } from "Components/Modal/ModalDialog"
 import { MockBoot } from "DevTools"
@@ -88,7 +94,6 @@ describe("Payment", () => {
       relay: { environment: {} } as RelayProp,
       router: { push: jest.fn() },
       stripe: stripeMock,
-      mediator: { trigger: jest.fn() },
     } as any
   })
 
@@ -425,7 +430,7 @@ describe("Payment", () => {
   describe("Analytics", () => {
     it("tracks click when use shipping address checkbox transitions from checked to unchecked but not from unchecked to checked", () => {
       const { Component, dispatch } = mockTracking(PaymentRoute)
-      const component = mount(<Component {...testProps} />)
+      const component = mount(<Component {...testProps as any} />)
       // Initial state is checked
       component
         .find(Checkbox)
@@ -447,13 +452,6 @@ describe("Payment", () => {
         .at(0)
         .simulate("click")
       expect(dispatch).not.toBeCalled()
-    })
-
-    it("triggers order:payment event on component did mount", () => {
-      const { Component } = mockTracking(PaymentRoute)
-      const component = mount(<Component {...testProps} />)
-      component.instance().componentDidMount()
-      expect(testProps.mediator.trigger).toHaveBeenCalledWith("order:payment")
     })
   })
 
@@ -566,5 +564,11 @@ describe("Payment", () => {
       expect(component.find(Stepper).props().currentStepIndex).toEqual(2)
       expect(component.find(CheckMarkWrapper).length).toEqual(2)
     })
+  })
+
+  it("tracks a pageview", () => {
+    getWrapper(testProps)
+
+    expect(trackPageView).toHaveBeenCalledTimes(1)
   })
 })
