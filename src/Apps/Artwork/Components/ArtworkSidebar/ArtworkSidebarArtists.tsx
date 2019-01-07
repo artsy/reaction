@@ -1,4 +1,5 @@
 import { Box, Serif } from "@artsy/palette"
+import * as Schema from "Artsy/Analytics/Schema"
 import { ContextConsumer } from "Artsy/Router"
 
 import React from "react"
@@ -34,6 +35,13 @@ export class ArtworkSidebarArtists extends React.Component<ArtistsProps> {
         <FollowArtistButton
           artist={artist}
           user={user}
+          trackingData={{
+            modelName: Schema.OwnerType.Artist,
+            context_module: Schema.ContextModule.Sidebar,
+            context_page: "Artwork page",
+            entity_id: artist._id,
+            entity_slug: artist.id,
+          }}
           onOpenAuthModal={() => {
             mediator.trigger("open:auth", {
               mode: "signup",
@@ -111,6 +119,7 @@ export const ArtworkSidebarArtistsFragmentContainer = createFragmentContainer(
       cultural_maker
       artists {
         __id
+        _id
         id
         name
         href
