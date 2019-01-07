@@ -1,5 +1,4 @@
 import { Box, color, Flex, space } from "@artsy/palette"
-import { track } from "Artsy/Analytics"
 import FadeTransition from "Components/Animation/FadeTransition"
 import { bind, once, throttle } from "lodash"
 import React from "react"

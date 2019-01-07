@@ -76,9 +76,6 @@ export enum ActionType {
   SubmittedOrder = "submitted_order",
   SubmittedOffer = "submitted_offer",
   SubmittedCounterOffer = "submitted_counter_offer",
-
-  ClickedBuyNow = "clicked_buy",
-  ClickedMakeOffer = "clicked_make_offer",
 }
 
 /**

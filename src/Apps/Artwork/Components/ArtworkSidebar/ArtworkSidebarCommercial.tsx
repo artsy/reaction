@@ -158,7 +158,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
   }
 
   @track((props, state, args) => ({
-    action_type: Schema.ActionType.ClickedBuyNow,
+    action_type: Schema.ActionType.Click,
     flow: Schema.Flow.BuyNow,
     type: Schema.Type.Button,
   }))
@@ -234,7 +234,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
   }
 
   @track((props, state, args) => ({
-    action_type: Schema.ActionType.ClickedMakeOffer,
+    action_type: Schema.ActionType.Click,
     flow: Schema.Flow.MakeOffer,
     type: Schema.Type.Button,
   }))
