@@ -38,6 +38,7 @@ export interface StatusProps {
 
 const Paragraph = styled.p`
   margin-top: 0;
+
   :last-child {
     margin-bottom: 0;
   }
