@@ -179,6 +179,7 @@ export enum Subject {
   // Artwork Page
   Classification = "Classification info",
   ContactGallery = "Contact Gallery",
+  EnterLiveAuction = "Enter live auction",
 }
 
 /**
@@ -232,6 +233,7 @@ export enum Flow {
   ArtworkAboutTheWork = "Artwork about the work",
   ArtworkAboutTheArtist = "Artwork about the artist",
   ArtworkShare = "Artwork share",
+  Auctions = "Auctions",
   BuyNow = "Buy now",
   MakeOffer = "Make offer",
 }

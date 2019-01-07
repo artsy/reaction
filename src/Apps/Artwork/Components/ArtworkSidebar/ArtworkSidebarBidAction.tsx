@@ -13,7 +13,9 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 
 import { ArtworkSidebarBidAction_artwork } from "__generated__/ArtworkSidebarBidAction_artwork.graphql"
+import * as Schema from "Artsy/Analytics/Schema"
 import { ContextConsumer } from "Artsy/SystemContext"
+import track from "react-tracking"
 
 export interface ArtworkSidebarBidActionProps {
   artwork: ArtworkSidebarBidAction_artwork
@@ -23,6 +25,7 @@ export interface ArtworkSidebarBidActionState {
   selectedMaxBidCents?: number
 }
 
+@track()
 export class ArtworkSidebarBidAction extends React.Component<
   ArtworkSidebarBidActionProps,
   ArtworkSidebarBidActionState
@@ -48,7 +51,14 @@ export class ArtworkSidebarBidAction extends React.Component<
     }/bid/${id}?bid=${bid}`
   }
 
-  redirectToLiveBidding = (user: User) => {
+  @track({
+    type: Schema.Type.Button,
+    flow: Schema.Flow.Auctions,
+    subject: Schema.Subject.EnterLiveAuction,
+    context_module: Schema.ContextModule.Sidebar,
+    action_type: Schema.ActionType.Click,
+  })
+  redirectToLiveBidding(user) {
     const { id } = this.props.artwork.sale
     const liveUrl = `${sd.PREDICTION_URL}/${id}`
     if (user) {
