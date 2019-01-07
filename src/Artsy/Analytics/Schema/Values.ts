@@ -178,6 +178,8 @@ export enum Subject {
   CollectorFAQ = "collector faq",
 
   ConsignLearnMore = "learn more",
+
+  ContactGallery = "Contact Gallery",
 }
 
 /**
@@ -201,6 +203,7 @@ export enum ContextModule {
    * Artwork page
    */
   ArtworkTabs = "Artwork tabs",
+  ShareButton = "Share button",
 
   /*
   * Articles
@@ -229,6 +232,7 @@ export enum ContextModule {
 export enum Flow {
   ArtworkAboutTheWork = "Artwork about the work",
   ArtworkAboutTheArtist = "Artwork about the artist",
+  ArtworkShare = "Artwork share",
   BuyNow = "Buy now",
   MakeOffer = "Make offer",
 }

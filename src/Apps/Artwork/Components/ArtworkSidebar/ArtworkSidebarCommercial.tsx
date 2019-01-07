@@ -25,7 +25,6 @@ import {
   graphql,
   RelayProp,
 } from "react-relay"
-import { TrackingProp } from "react-tracking"
 import { ErrorWithMetadata } from "Utils/errors"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
@@ -37,7 +36,6 @@ export interface ArtworkSidebarCommercialContainerProps
   extends ArtworkSidebarCommercialProps {
   mediator: Mediator
   user: User
-  tracking?: TrackingProp
 }
 
 export interface ArtworkSidebarCommercialContainerState {
@@ -145,22 +143,18 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
     this.setState({ isErrorModalOpen: false })
   }
 
-  handleInquiry = () => {
+  @track<ArtworkSidebarCommercialContainerProps>(props => ({
+    context_module: Schema.ContextModule.Sidebar,
+    type: Schema.Type.Button,
+    action_type: Schema.ActionType.Click,
+    subject: Schema.Subject.ContactGallery,
+    artwork_id: props.artwork._id,
+  }))
+  handleInquiry() {
     get(this.props, props => props.mediator.trigger) &&
       this.props.mediator.trigger("launchInquiryFlow", {
         artworkId: this.props.artwork.id,
       })
-
-    const { tracking } = this.props
-    const trackingData = {
-      context_module: "Sidebar",
-      subject: "Contact Gallery",
-      type: "Button",
-      artwork_id: this.props.artwork._id,
-      action: "Click",
-    }
-
-    tracking.trackEvent(trackingData)
   }
 
   @track((props, state, args) => ({
@@ -374,7 +368,11 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
           <Separator mb={3} mt={3} />
         )}
         {artwork.is_inquireable && (
-          <Button width="100%" size="large" onClick={this.handleInquiry}>
+          <Button
+            width="100%"
+            size="large"
+            onClick={this.handleInquiry.bind(this)}
+          >
             Contact gallery
           </Button>
         )}
