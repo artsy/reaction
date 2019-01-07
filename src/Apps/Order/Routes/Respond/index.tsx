@@ -120,14 +120,14 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
     return showAcceptDialog(this.props.dialog, {
       title: "Offer may be too low",
       message:
-        "Offers within 25% of the list price are most likely to receive a response.",
+        "Offers within 25% of the counteroffer are most likely to receive a response.",
     })
   }
 
   confirmOfferTooHigh() {
     return showAcceptDialog(this.props.dialog, {
       title: "Offer higher than list price",
-      message: "You’re making an offer higher than the list price.",
+      message: "You’re making an offer higher than the counteroffer.",
     })
   }
 
