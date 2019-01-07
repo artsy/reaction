@@ -15,6 +15,8 @@ import { ArtworkRelatedArtistsFragmentContainer as RelatedArtists } from "./Comp
 import { ArtworkSidebarFragmentContainer as ArtworkSidebar } from "./Components/ArtworkSidebar"
 import { OtherWorksFragmentContainer as OtherWorks } from "./Components/OtherWorks"
 
+import { track } from "Artsy/Analytics"
+import { TrackingProp } from "react-tracking"
 import {
   Footer,
   RecentlyViewedQueryRenderer as RecentlyViewed,
@@ -24,9 +26,24 @@ import { Media } from "Utils/Responsive"
 
 export interface Props {
   artwork: ArtworkApp_artwork
+  tracking?: TrackingProp
 }
 
+@track()
 export class ArtworkApp extends React.Component<Props> {
+  componentDidMount() {
+    const {
+      tracking,
+      artwork: { is_acquireable, is_in_auction, _id },
+    } = this.props
+    if (is_acquireable || is_in_auction) {
+      const trackingData = {
+        action_type: "Viewed Product",
+        id: _id,
+      }
+      if (tracking) tracking.trackEvent(trackingData)
+    }
+  }
   renderArtists() {
     const artists = get(this.props, p => p.artwork.artists)
 
@@ -138,6 +155,9 @@ export const ArtworkAppFragmentContainer = createFragmentContainer(
   graphql`
     fragment ArtworkApp_artwork on Artwork {
       id
+      _id
+      is_acquireable
+      is_in_auction
       artists {
         _id
         id
