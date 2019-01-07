@@ -74,16 +74,16 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
         this.setState({ formIsDirty: true })
         return
       }
-      const listPriceCents = this.props.order.totalListPriceCents
+      const currentOfferPrice = this.props.order.itemsTotalCents
 
-      if (this.state.offerValue * 100 < listPriceCents * 0.75) {
+      if (this.state.offerValue * 100 < currentOfferPrice * 0.75) {
         const decision = await this.confirmOfferTooLow()
         if (!decision.accepted) {
           return
         }
       }
 
-      if (this.state.offerValue * 100 > listPriceCents) {
+      if (this.state.offerValue * 100 > currentOfferPrice) {
         const decision = await this.confirmOfferTooHigh()
         if (!decision.accepted) {
           return
@@ -119,14 +119,14 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
     return showAcceptDialog(this.props.dialog, {
       title: "Offer may be too low",
       message:
-        "Offers within 25% of the list price are most likely to receive a response.",
+        "Offers within 25% of the counteroffer are most likely to receive a response.",
     })
   }
 
   confirmOfferTooHigh() {
     return showAcceptDialog(this.props.dialog, {
       title: "Offer higher than list price",
-      message: "You’re making an offer higher than the list price.",
+      message: "You’re making an offer higher than the counteroffer.",
     })
   }
 
@@ -326,6 +326,7 @@ export const RespondFragmentContainer = createFragmentContainer(
       mode
       state
       itemsTotal(precision: 2)
+      itemsTotalCents
       totalListPrice(precision: 2)
       totalListPriceCents
       stateExpiresAt

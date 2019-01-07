@@ -56,6 +56,7 @@ const testOrder = {
   },
   offers: { edges: Offers },
   buyer: Buyer,
+  itemsTotalCents: 1000000,
 }
 
 let mockPushRoute: jest.Mock<string>
@@ -277,7 +278,7 @@ describe("Offer InitialMutation", () => {
         counterRadio
           .find(OfferInput)
           .props()
-          .onChange(16000)
+          .onChange(9000)
 
         expect(commitMutationMock).toHaveBeenCalledTimes(0)
 
@@ -295,7 +296,7 @@ Object {
   "input": Object {
     "offerId": "myoffer-id",
     "offerPrice": Object {
-      "amount": 16000,
+      "amount": 9000,
       "currencyCode": "USD",
     },
   },
@@ -322,7 +323,7 @@ Object {
     counterRadio
       .find(Input)
       .props()
-      .onChange({ currentTarget: { value: "16000" } } as any)
+      .onChange({ currentTarget: { value: "9000" } } as any)
 
     expect(commitMutationMock).toHaveBeenCalledTimes(0)
 
@@ -358,7 +359,7 @@ Object {
     counterRadio
       .find(Input)
       .props()
-      .onChange({ currentTarget: { value: "16000" } } as any)
+      .onChange({ currentTarget: { value: "9000" } } as any)
 
     expect(commitMutationMock).toHaveBeenCalledTimes(0)
 
@@ -390,7 +391,7 @@ Object {
       component
         .find(OfferInput)
         .props()
-        .onChange(1000)
+        .onChange(2499)
 
       component
         .find(Button)
@@ -411,7 +412,7 @@ Object {
       expect(dialog.props().show).toBe(true)
 
       expect(dialog.text()).toMatchInlineSnapshot(
-        `"Offer may be too lowOffers within 25% of the list price are most likely to receive a response.CancelContinue"`
+        `"Offer may be too lowOffers within 25% of the counteroffer are most likely to receive a response.CancelContinue"`
       )
 
       const buttons = component.find(ModalButton)
@@ -459,7 +460,7 @@ Object {
       component
         .find(OfferInput)
         .props()
-        .onChange(17000)
+        .onChange(11000)
 
       component
         .find(Button)
@@ -480,7 +481,7 @@ Object {
       expect(dialog.props().show).toBe(true)
 
       expect(dialog.text()).toMatchInlineSnapshot(
-        `"Offer higher than list priceYou’re making an offer higher than the list price.CancelContinue"`
+        `"Offer higher than list priceYou’re making an offer higher than the counteroffer.CancelContinue"`
       )
 
       const buttons = component.find(ModalButton)

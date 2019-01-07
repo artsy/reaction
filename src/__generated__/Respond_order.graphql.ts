@@ -14,6 +14,7 @@ export type Respond_order = {
     readonly mode: OrderModeEnum | null;
     readonly state: string | null;
     readonly itemsTotal: string | null;
+    readonly itemsTotalCents: number | null;
     readonly totalListPrice: string | null;
     readonly totalListPriceCents: number | null;
     readonly stateExpiresAt: string | null;
@@ -137,6 +138,13 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
+      "name": "itemsTotalCents",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
       "name": "totalListPrice",
       "args": v2,
       "storageKey": "totalListPrice(precision:2)"
@@ -217,5 +225,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'ab80eb6056646be71f79ec92ed34ba6a';
+(node as any).hash = '6df305eda5909117b1cc7f9e1df12f0f';
 export default node;
