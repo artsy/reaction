@@ -61,6 +61,7 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.0.0",
+    "@omakase/cli": "^0.0.5",
     "@storybook/addon-info": "^4.0.12",
     "@storybook/addon-options": "^4.0.12",
     "@storybook/addons": "^4.0.12",
