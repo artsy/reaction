@@ -15,6 +15,7 @@ import { Router } from "found"
 import React, { Component } from "react"
 import { Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
+import styled from "styled-components"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
@@ -25,10 +26,9 @@ import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "../
 
 const logger = createLogger("Order/Routes/Status/index.tsx")
 
-interface StatusData {
+interface StatusCopy {
   title: React.ReactNode
   description: React.ReactNode
-  backToArtsyHref?: string
 }
 
 export interface StatusProps {
@@ -36,9 +36,16 @@ export interface StatusProps {
   router: Router
 }
 
+const Paragraph = styled.p`
+  margin-top: 0;
+  :last-child {
+    margin-bottom: 0;
+  }
+`
+
 export class StatusRoute extends Component<StatusProps> {
-  getStatusCopy(): StatusData {
-    const { state, requestedFulfillment, mode, stateReason } = this.props.order
+  getStatusCopy(): StatusCopy {
+    const { state, requestedFulfillment, mode } = this.props.order
     const isOfferFlow = mode === "OFFER"
     const isShip = requestedFulfillment.__typename === "Ship"
 
@@ -89,82 +96,92 @@ export class StatusRoute extends Component<StatusProps> {
               description: null,
             }
       }
-      case "CANCELED": {
-        if (!isOfferFlow) {
-          return {
-            title: "Your order was canceled and refunded",
-            description: (
-              <>
-                Please allow 5–7 business days for the refund to appear on your
-                bank statement. Contact{" "}
-                <a href="mailto:orders@artsy.net">orders@artsy.net</a> with any
-                questions.
-              </>
-            ),
-          }
-        }
-
-        switch (stateReason) {
-          case "buyer_rejected":
-            return {
-              title: "Offer declined",
+      case "CANCELED":
+      case "REFUNDED":
+        return isOfferFlow
+          ? this.getCanceledOfferOrderCopy()
+          : {
+              title: "Your order was canceled and refunded",
               description: (
                 <>
-                  <p>
-                    Thank you for your response. The seller will be informed of
-                    your decision to end the negotiation process.
-                  </p>
-                  <p>
-                    We’d love to get your feedback. Contact{" "}
-                    <a href="mailto:orders@artsy.net">orders@artsy.net</a> with
-                    any comments you have.
-                  </p>
+                  Please allow 5–7 business days for the refund to appear on
+                  your bank statement. Contact{" "}
+                  <a href="mailto:orders@artsy.net">orders@artsy.net</a> with
+                  any questions.
                 </>
               ),
             }
-          case "seller_rejected_offer_too_low":
-          case "seller_rejected_shipping_unavailable":
-          case "seller_rejected":
-          case "seller_rejected_artwork_unavailable":
-          case "seller_rejected_other":
-            return {
-              title: "Offer declined",
-              description: (
-                <p>
-                  Sorry, the seller declined your offer and has ended the
-                  negotiation process.
-                </p>
-              ),
-            }
-          case "buyer_lapsed":
-            return {
-              title: "Offer expired",
-              description: (
-                <p>
-                  The seller’s offer expired because you didn’t respond in time.
-                </p>
-              ),
-            }
-          case "seller_lapsed":
-            return {
-              title: "Offer expired",
-              description: (
-                <p>
-                  Your offer expired because the seller didn’t respond to your
-                  offer in time.
-                </p>
-              ),
-            }
-          default:
-            // This should not happen. Check the cancel reasons are all accounted for:
-            // https://github.com/artsy/exchange/blob/master/app/models/order.rb
-            logger.error(`Unhandled cancellation reason: ${stateReason}`)
-            return {
-              title: "Offer declined",
-              description: null,
-            }
+      default:
+        // This should not happen. Check the order states are all accounted for:
+        // https://github.com/artsy/exchange/blob/master/app/models/order.rb
+        // (Aside from PENDING and ABANDONED)
+        logger.error(`Unhandled order state: ${state}`)
+        return {
+          title: "Your order",
+          description: null,
         }
-      }
+    }
+  }
+
+  getCanceledOfferOrderCopy(): StatusCopy {
+    const { stateReason } = this.props.order
+    switch (stateReason) {
+      case "buyer_rejected":
+        return {
+          title: "Offer declined",
+          description: (
+            <>
+              <Paragraph>
+                Thank you for your response. The seller will be informed of your
+                decision to end the negotiation process.
+              </Paragraph>
+              <Paragraph>
+                We’d love to get your feedback. Contact{" "}
+                <a href="mailto:orders@artsy.net">orders@artsy.net</a> with any
+                comments you have.
+              </Paragraph>
+            </>
+          ),
+        }
+      case "seller_rejected_offer_too_low":
+      case "seller_rejected_shipping_unavailable":
+      case "seller_rejected":
+      case "seller_rejected_artwork_unavailable":
+      case "seller_rejected_other":
+        return {
+          title: "Offer declined",
+          description: (
+            <>
+              Sorry, the seller declined your offer and has ended the
+              negotiation process.
+            </>
+          ),
+        }
+      case "buyer_lapsed":
+        return {
+          title: "Offer expired",
+          description: (
+            <>The seller’s offer expired because you didn’t respond in time.</>
+          ),
+        }
+      case "seller_lapsed":
+        return {
+          title: "Offer expired",
+          description: (
+            <>
+              Your offer expired because the seller didn’t respond to your offer
+              in time.
+            </>
+          ),
+        }
+      default:
+        // This should not happen. Check the cancel reasons are all accounted for:
+        // https://github.com/artsy/exchange/blob/master/app/models/order.rb
+        logger.error(`Unhandled cancellation reason: ${stateReason}`)
+        return {
+          title: "Offer declined",
+          description: null,
+        }
     }
   }
 
