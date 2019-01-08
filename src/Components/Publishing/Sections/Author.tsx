@@ -11,8 +11,7 @@ interface AuthorProps {
   color?: string
 }
 
-export const Author: React.SFC<AuthorProps> = props => {
-  const { author, color } = props
+export const Author: React.SFC<AuthorProps> = ({ author, color = "black" }) => {
   const profileImage = author.image_url ? (
     <ProfileImage mr={20} src={resize(author.image_url, { width: 200 })} />
   ) : (
@@ -84,7 +83,3 @@ const TwitterHandle = styled.a`
     margin: 0;
   }
 `
-
-Author.defaultProps = {
-  color: "black",
-}
