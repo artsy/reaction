@@ -1,3 +1,23 @@
+# 9.3.10 (Tue Jan 08 2019)
+
+#### 🐛  Bug Fix
+
+- @oxaudo => Tweak some more analytics for the artwork page [#1828](https://github.com/artsy/reaction/pull/1828) ([@mzikherman](https://github.com/mzikherman))
+- Rename events for buy and make offer click tracking [#1827](https://github.com/artsy/reaction/pull/1827) ([@oxaudo](https://github.com/oxaudo))
+- Fix offer cancelled messages [#1807](https://github.com/artsy/reaction/pull/1807) ([@ds300](https://github.com/ds300))
+- Fix artsy.com typo [#1818](https://github.com/artsy/reaction/pull/1818) ([@starsirius](https://github.com/starsirius))
+- fix typo [#1826](https://github.com/artsy/reaction/pull/1826) ([@cavvia](https://github.com/cavvia))
+
+#### Authors: 5
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+- Oksana ([@oxaudo](https://github.com/oxaudo))
+- David Sheldrick ([@ds300](https://github.com/ds300))
+- Chung-Yi Chi ([@starsirius](https://github.com/starsirius))
+- Anil Bawa-Cavia ([@cavvia](https://github.com/cavvia))
+
+---
+
 # 9.3.9 (Tue Jan 08 2019)
 
 
