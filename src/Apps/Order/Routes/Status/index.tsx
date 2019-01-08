@@ -99,7 +99,7 @@ export class StatusRoute extends Component<StatusProps> {
       }
       case "CANCELED":
       case "REFUNDED":
-        return isOfferFlow
+        return isOfferFlow && state === "CANCELED"
           ? this.getCanceledOfferOrderCopy()
           : {
               title: "Your order was canceled and refunded",
