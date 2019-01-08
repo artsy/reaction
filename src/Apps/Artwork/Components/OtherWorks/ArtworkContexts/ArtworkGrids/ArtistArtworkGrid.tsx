@@ -20,6 +20,7 @@ interface ArtistArtworkGridProps {
 export class ArtistArtworkGrid extends React.Component<ArtistArtworkGridProps> {
   @track({
     type: Schema.Type.ArtworkBrick,
+    action_type: Schema.ActionType.Click,
   })
   trackBrickClick() {
     // noop

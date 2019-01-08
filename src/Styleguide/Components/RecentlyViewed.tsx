@@ -28,6 +28,7 @@ export class RecentlyViewed extends React.Component<RecentlyViewedProps> {
 
   @track({
     type: Schema.Type.Thumbnail,
+    action_type: Schema.ActionType.Click,
   })
   trackClick() {
     //

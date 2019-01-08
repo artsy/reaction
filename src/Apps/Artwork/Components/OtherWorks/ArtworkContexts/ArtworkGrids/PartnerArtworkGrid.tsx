@@ -20,6 +20,7 @@ interface PartnerArtworkGridProps {
 class PartnerArtworkGrid extends React.Component<PartnerArtworkGridProps> {
   @track({
     type: Schema.Type.ArtworkBrick,
+    action_type: Schema.ActionType.Click,
   })
   trackBrickClick() {
     // noop
