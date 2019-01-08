@@ -157,12 +157,12 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
       })
   }
 
-  @track((props, state, args) => ({
+  @track<ArtworkSidebarCommercialContainerProps>((props, state, args) => ({
     action_type: Schema.ActionType.ClickedBuyNow,
     flow: Schema.Flow.BuyNow,
     type: Schema.Type.Button,
-    artwork_id: this.props.artwork._id,
-    artwork_slug: this.props.artwork.id,
+    artwork_id: props.artwork._id,
+    artwork_slug: props.artwork.id,
   }))
   handleCreateOrder() {
     const { user, mediator } = this.props
@@ -235,12 +235,12 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
     }
   }
 
-  @track((props, state, args) => ({
+  @track<ArtworkSidebarCommercialContainerProps>((props, state, args) => ({
     action_type: Schema.ActionType.ClickedMakeOffer,
     flow: Schema.Flow.MakeOffer,
     type: Schema.Type.Button,
-    artwork_id: this.props.artwork._id,
-    artwork_slug: this.props.artwork.id,
+    artwork_id: props.artwork._id,
+    artwork_slug: props.artwork.id,
   }))
   handleCreateOfferOrder() {
     const { user, mediator } = this.props
