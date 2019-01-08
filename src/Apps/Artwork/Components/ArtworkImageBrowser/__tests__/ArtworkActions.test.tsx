@@ -16,8 +16,8 @@ describe("ArtworkActions", () => {
 
   it("renders proper components", () => {
     const wrapper = getWrapper()
-    expect(wrapper.find("SaveButton").length).toBe(1)
-    expect(wrapper.find("ShareButton").length).toBe(1)
+    expect(wrapper.find("Save").length).toBe(1)
+    expect(wrapper.find("Share").length).toBe(1)
   })
 
   describe("concerning SaveButton states icon states", () => {

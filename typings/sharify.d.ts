@@ -17,13 +17,15 @@ declare module "sharify" {
      */
     export interface GlobalData {
       readonly APP_URL: string
+      readonly CMS_URL: string
       readonly ENABLE_MAKE_OFFER: string
       readonly FACEBOOK_APP_NAMESPACE: string
-      readonly PREDICTION_URL: string
       readonly FORCE_CLOUDFRONT_URL: string
       readonly GEMINI_CLOUDFRONT_URL: string
+      readonly GENOME_URL: string
       readonly METAPHYSICS_ENDPOINT: string
       readonly NODE_ENV: string
+      readonly PREDICTION_URL: string
       readonly SENTRY_PUBLIC_DSN: string
       readonly STRIPE_PUBLISHABLE_KEY: string
       readonly XAPP_TOKEN: string
