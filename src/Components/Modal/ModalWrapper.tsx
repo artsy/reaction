@@ -151,7 +151,7 @@ export const ModalOverlay = styled.div`
   height: 100%;
   top: 0;
   left: 0;
-  background: rgba(200, 200, 200, 0.5);
+  background: rgba(0, 0, 0, 0.6);
 `
 
 export const ModalContainer = styled.div.attrs<{

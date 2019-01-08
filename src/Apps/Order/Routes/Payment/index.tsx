@@ -254,7 +254,6 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
                     />
                   </Media>
                 </Join>
-                <Spacer mb={3} />
               </Flex>
             }
             Sidebar={

@@ -15,7 +15,6 @@ import { Router } from "found"
 import React, { Component } from "react"
 import { Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
-import styled from "styled-components"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
@@ -37,14 +36,6 @@ export interface StatusProps {
   order: Status_order
   router: Router
 }
-
-const Paragraph = styled.p`
-  margin-top: 0;
-
-  :last-child {
-    margin-bottom: 0;
-  }
-`
 
 export class StatusRoute extends Component<StatusProps> {
   getStatusCopy(): StatusPageConfig {
@@ -139,15 +130,13 @@ export class StatusRoute extends Component<StatusProps> {
           title: "Offer declined",
           description: (
             <>
-              <Paragraph>
-                Thank you for your response. The seller will be informed of your
-                decision to end the negotiation process.
-              </Paragraph>
-              <Paragraph>
-                We’d love to get your feedback. Contact{" "}
-                <a href="mailto:orders@artsy.net">orders@artsy.net</a> with any
-                comments you have.
-              </Paragraph>
+              Thank you for your response. The seller will be informed of your
+              decision to end the negotiation process.
+              <br />
+              <br />
+              We’d love to get your feedback. Contact{" "}
+              <a href="mailto:orders@artsy.net">orders@artsy.net</a> with any
+              comments you have.
             </>
           ),
           showTransactionSummary: false,
