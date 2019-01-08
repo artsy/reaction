@@ -24,6 +24,7 @@ interface Props {
   artist: ArtistCard_artist
   user: User
   mediator?: Mediator
+  onClick?: () => void
 }
 
 export class ArtistCard extends React.Component<Props> {

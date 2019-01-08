@@ -1,5 +1,7 @@
 import { PartnerShowArtworkGrid_artwork } from "__generated__/PartnerShowArtworkGrid_artwork.graphql"
 import { hideGrid } from "Apps/Artwork/Components/OtherWorks/ArtworkContexts/ArtworkGrids"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import { Mediator, withContext } from "Artsy/SystemContext"
 import ArtworkGrid from "Components/ArtworkGrid"
 import React from "react"
@@ -12,9 +14,19 @@ interface PartnerShowArtworkGridProps {
   mediator?: Mediator
 }
 
+@track({
+  context_module: Schema.ContextModule.OtherWorksFromShow,
+})
 class PartnerShowArtworkGrid extends React.Component<
   PartnerShowArtworkGridProps
 > {
+  @track({
+    type: Schema.Type.ArtworkBrick,
+  })
+  trackBrickClick() {
+    // noop
+  }
+
   render() {
     const {
       artwork: {
@@ -37,9 +49,7 @@ class PartnerShowArtworkGrid extends React.Component<
           artworks={artworksConnection}
           columnCount={[2, 3, 4]}
           mediator={mediator}
-          onBrickClick={() => {
-            console.log("clicking partner show artwork grid")
-          }}
+          onBrickClick={this.trackBrickClick.bind(this)}
         />
       </>
     )

@@ -1,5 +1,7 @@
 import { ArtistArtworkGrid_artwork } from "__generated__/ArtistArtworkGrid_artwork.graphql"
 import { hideGrid } from "Apps/Artwork/Components/OtherWorks/ArtworkContexts/ArtworkGrids"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import { Mediator, withContext } from "Artsy/SystemContext"
 import ArtworkGrid from "Components/ArtworkGrid"
 import React from "react"
@@ -12,7 +14,17 @@ interface ArtistArtworkGridProps {
   mediator?: Mediator
 }
 
+@track({
+  context_module: Schema.ContextModule.OtherWorksByArtist,
+})
 export class ArtistArtworkGrid extends React.Component<ArtistArtworkGridProps> {
+  @track({
+    type: Schema.Type.ArtworkBrick,
+  })
+  trackBrickClick() {
+    // noop
+  }
+
   render() {
     const {
       artwork: { artist },
@@ -33,9 +45,7 @@ export class ArtistArtworkGrid extends React.Component<ArtistArtworkGridProps> {
           artworks={artist.artworks_connection}
           columnCount={[2, 3, 4]}
           mediator={mediator}
-          onBrickClick={() => {
-            console.log("clicking artist artwork grid")
-          }}
+          onBrickClick={this.trackBrickClick.bind(this)}
         />
       </>
     )

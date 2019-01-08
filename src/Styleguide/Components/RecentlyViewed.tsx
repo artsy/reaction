@@ -1,6 +1,8 @@
 import { Separator, Serif, Spacer } from "@artsy/palette"
 import { RecentlyViewed_me } from "__generated__/RecentlyViewed_me.graphql"
 import { RecentlyViewedQuery } from "__generated__/RecentlyViewedQuery.graphql"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { ContextConsumer } from "Artsy/Router"
 import { FillwidthItem } from "Components/Artwork/FillwidthItem"
@@ -16,54 +18,67 @@ export interface RecentlyViewedProps {
 
 const HEIGHT = 180
 
-export const RecentlyViewed: React.SFC<RecentlyViewedProps> = props => {
-  const { me } = props
+@track({
+  context_module: Schema.ContextModule.RecentlyViewedArtworks,
+})
+export class RecentlyViewed extends React.Component<RecentlyViewedProps> {
+  static defaultProps = {
+    useRelay: true,
+  }
 
-  return (
-    <ContextConsumer>
-      {({ user, mediator }) => {
-        return (
-          me && (
-            <React.Fragment>
-              <Separator my={6} />
+  @track({
+    type: Schema.Type.Thumbnail,
+  })
+  trackClick() {
+    //
+  }
 
-              <Serif size="6">Recently viewed</Serif>
+  render() {
+    const { me, useRelay } = this.props
 
-              <Spacer mb={3} />
+    return (
+      <ContextConsumer>
+        {({ user, mediator }) => {
+          return (
+            me && (
+              <React.Fragment>
+                <Separator my={6} />
 
-              <Carousel
-                data={me.recentlyViewedArtworks.edges as object[]}
-                render={artwork => {
-                  const {
-                    node: {
-                      image: { aspect_ratio },
-                    },
-                  } = artwork
+                <Serif size="6">Recently viewed</Serif>
 
-                  return (
-                    <FillwidthItem
-                      artwork={artwork.node}
-                      targetHeight={HEIGHT}
-                      imageHeight={HEIGHT}
-                      width={HEIGHT * aspect_ratio}
-                      margin={10}
-                      useRelay={props.useRelay}
-                      user={user}
-                      mediator={mediator}
-                    />
-                  )
-                }}
-              />
-            </React.Fragment>
+                <Spacer mb={3} />
+
+                <Carousel
+                  data={me.recentlyViewedArtworks.edges as object[]}
+                  render={artwork => {
+                    const {
+                      node: {
+                        image: { aspect_ratio },
+                      },
+                    } = artwork
+
+                    return (
+                      <FillwidthItem
+                        artwork={artwork.node}
+                        targetHeight={HEIGHT}
+                        imageHeight={HEIGHT}
+                        width={HEIGHT * aspect_ratio}
+                        margin={10}
+                        useRelay={useRelay}
+                        user={user}
+                        mediator={mediator}
+                        onClick={this.trackClick.bind(this)}
+                      />
+                    )
+                  }}
+                />
+              </React.Fragment>
+            )
           )
-        )
-      }}
-    </ContextConsumer>
-  )
-}
-
-RecentlyViewed.defaultProps = {
-  useRelay: true,
+        }}
+      </ContextConsumer>
+    )
+  }
 }
 
 export const RecentlyViewedFragmentContainer = createFragmentContainer(

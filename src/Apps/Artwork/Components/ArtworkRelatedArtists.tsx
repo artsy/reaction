@@ -1,21 +1,32 @@
 import { Box, Flex } from "@artsy/palette"
+import { ArtworkRelatedArtists_artwork } from "__generated__/ArtworkRelatedArtists_artwork.graphql"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import { ContextConsumer } from "Artsy/Router"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import { ArtistCardFragmentContainer as ArtistCard } from "Styleguide/Components"
-import { Header } from "./OtherWorks/Header"
-
-import { ArtworkRelatedArtists_artwork } from "__generated__/ArtworkRelatedArtists_artwork.graphql"
 import { hideGrid } from "./OtherWorks/ArtworkContexts/ArtworkGrids"
+import { Header } from "./OtherWorks/Header"
 
 export interface ArtworkRelatedArtistsProps {
   artwork: ArtworkRelatedArtists_artwork
 }
 
+@track({
+  context_module: Schema.ContextModule.RelatedArtists,
+})
 export class ArtworkRelatedArtists extends React.Component<
   ArtworkRelatedArtistsProps
 > {
+  @track({
+    type: Schema.Type.ArtistCard,
+  })
+  trackArtistCardClick() {
+    // noop
+  }
+
   render() {
     const {
       artwork: { artist },
@@ -40,6 +51,7 @@ export class ArtworkRelatedArtists extends React.Component<
                         artist={node}
                         mediator={mediator}
                         user={user}
+                        onClick={this.trackArtistCardClick.bind(this)}
                       />
                     </Box>
                   )

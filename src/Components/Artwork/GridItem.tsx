@@ -174,8 +174,7 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
               <Placeholder style={{ paddingBottom: artwork.image.placeholder }}>
                 <a
                   href={artwork.href}
-                  onClick={event => {
-                    event.preventDefault()
+                  onClick={() => {
                     if (this.props.onClick) {
                       this.props.onClick()
                     }
