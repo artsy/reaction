@@ -2760,7 +2760,7 @@ atob@^2.1.1:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.1.tgz#ae2d5a729477f289d60dd7f96a6314a22dd6c22a"
   integrity sha1-ri1acpR38onWDdf5amMUoi3Wwio=
 
-auto-release-cli@^2.0.3:
+auto-release-cli@2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/auto-release-cli/-/auto-release-cli-2.0.3.tgz#c06a315cffe76a1232a27b34b729a6df5b278b44"
   integrity sha512-FwxSUr+0ioM+Lg0l3sdTK8++v9U6huzeZmyV/lwmOqGI5ZZcCstTet60AnigFesrdA9N04omuV1ZILD+Yx4IJQ==
