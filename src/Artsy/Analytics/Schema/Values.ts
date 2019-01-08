@@ -41,6 +41,12 @@ export enum ActionType {
   Click = "Click",
 
   /**
+   * A click on 'Buy Now' or 'Make offer' buttons.
+   */
+  ClickedBuyNow = "Clicked buy now",
+  ClickedMakeOffer = "Clicked make offer",
+
+  /**
    * Triggers a pageview in force, skips segment
    */
   ClickedReadMore = "Clicked read more",
