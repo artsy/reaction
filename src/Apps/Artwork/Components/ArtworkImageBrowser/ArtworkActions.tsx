@@ -1,5 +1,7 @@
 import { color, Flex, Spacer } from "@artsy/palette"
 import { ArtworkActions_artwork } from "__generated__/ArtworkActions_artwork.graphql"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import { Bell } from "Assets/Icons/Bell"
 import { Heart } from "Assets/Icons/Heart"
 import SaveButton, { SaveProps, SaveState } from "Components/Artwork/Save"
@@ -18,6 +20,7 @@ interface ArtworkActionsState {
   showSharePanel: boolean
 }
 
+@track()
 export class ArtworkActions extends React.Component<
   ArtworkActionsProps,
   ArtworkActionsState
@@ -26,7 +29,13 @@ export class ArtworkActions extends React.Component<
     showSharePanel: false,
   }
 
-  toggleSharePanel = () => {
+  @track({
+    flow: Schema.Flow.ArtworkShare,
+    action_type: Schema.ActionType.Click,
+    context_module: Schema.ContextModule.ShareButton,
+    type: Schema.Type.Button,
+  })
+  toggleSharePanel() {
     const showSharePanel = !this.state.showSharePanel
     this.setState({
       showSharePanel,
@@ -38,7 +47,7 @@ export class ArtworkActions extends React.Component<
       <Container>
         <SaveButton artwork={this.props.artwork} render={Save(this.props)} />
         <Spacer mx={0.5} />
-        <ShareButton onClick={this.toggleSharePanel} />
+        <ShareButton onClick={this.toggleSharePanel.bind(this)} />
 
         {this.state.showSharePanel && (
           <ArtworkSharePanel

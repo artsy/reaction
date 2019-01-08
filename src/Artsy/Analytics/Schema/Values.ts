@@ -76,9 +76,7 @@ export enum ActionType {
   SubmittedOrder = "submitted_order",
   SubmittedOffer = "submitted_offer",
   SubmittedCounterOffer = "submitted_counter_offer",
-
-  ClickedBuyNow = "clicked_buy",
-  ClickedMakeOffer = "clicked_make_offer",
+  ViewedProduct = "Viewed Product",
 }
 
 /**
@@ -178,6 +176,11 @@ export enum Subject {
   CollectorFAQ = "collector faq",
 
   ConsignLearnMore = "learn more",
+
+  // Artwork Page
+  Classification = "Classification info",
+  ContactGallery = "Contact Gallery",
+  EnterLiveAuction = "Enter live auction",
 }
 
 /**
@@ -186,6 +189,7 @@ export enum Subject {
 export enum ContextModule {
   Header = "Header",
   NavigationTabs = "NavigationTabs",
+  RecentlyViewedArtworks = "recently_viewed_artworks",
 
   /**
    * Artist page
@@ -201,6 +205,15 @@ export enum ContextModule {
    * Artwork page
    */
   ArtworkTabs = "Artwork tabs",
+  OtherWorksByArtist = "Other works by artist",
+  OtherWorksInAuction = "Other works in auction",
+  OtherWorksInFair = "Other works in fair",
+  OtherWorksFromGallery = "Other works from gallery",
+  OtherWorksFromShow = "Other works from show",
+  RelatedArtists = "RelatedArtists",
+  RelatedWorks = "RelatedWorks",
+  ShareButton = "Share button",
+  Zoom = "Zoom",
 
   /*
   * Articles
@@ -229,6 +242,9 @@ export enum ContextModule {
 export enum Flow {
   ArtworkAboutTheWork = "Artwork about the work",
   ArtworkAboutTheArtist = "Artwork about the artist",
+  ArtworkShare = "Artwork share",
+  ArtworkZoom = "Artwork zoom",
+  Auctions = "Auctions",
   BuyNow = "Buy now",
   MakeOffer = "Make offer",
 }
@@ -242,7 +258,10 @@ export enum Label {
 }
 
 export enum Type {
+  ArtistCard = "Artist card",
+  ArtworkBrick = "Artwork brick",
   Button = "Button",
-  Tab = "Tab",
   Link = "Link",
+  Tab = "Tab",
+  Thumbnail = "thumbnail",
 }

@@ -33,13 +33,14 @@ const Placeholder = styled.div`
 export interface FillwidthItemContainerProps
   extends ContextProps,
     React.HTMLProps<FillwidthItemContainer> {
-  targetHeight?: number
-  imageHeight?: number
-  width?: number
-  margin?: number
-  useRelay?: boolean
   artwork: FillwidthItem_artwork
+  imageHeight?: number
+  margin?: number
   mediator?: Mediator
+  onClick?: () => void
+  targetHeight?: number
+  useRelay?: boolean
+  width?: number
 }
 
 export class FillwidthItemContainer extends React.Component<
@@ -90,13 +91,21 @@ export class FillwidthItemContainer extends React.Component<
     if (user) {
       userSpread = { user }
     }
-    const SaveButtonBlock = useRelay ? RelaySaveButton : SaveButton
-    const MetadataBlock = useRelay ? RelayMetadata : Metadata
+    // FIXME: Remove useRelay code
+    const SaveButtonBlock: any = useRelay ? RelaySaveButton : SaveButton
+    const MetadataBlock: any = useRelay ? RelayMetadata : Metadata
 
     return (
       <div className={className}>
         <Placeholder style={{ height: targetHeight }}>
-          <ImageLink href={artwork.href}>
+          <ImageLink
+            href={artwork.href}
+            onClick={() => {
+              if (this.props.onClick) {
+                this.props.onClick()
+              }
+            }}
+          >
             <Image src={this.getImageUrl()} height={imageHeight} />
           </ImageLink>
           <SaveButtonBlock

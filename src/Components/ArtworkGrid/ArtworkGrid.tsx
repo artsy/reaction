@@ -19,13 +19,14 @@ export interface ArtworkGridProps
   extends React.HTMLProps<ArtworkGridContainer> {
   artworks: ArtworkGrid_artworks
   columnCount?: number | number[]
-  sectionMargin?: number
   itemMargin?: number
+  mediator?: Mediator
+  onBrickClick?: () => void
   onClearFilters?: () => any
   onLoadMore?: () => any
-  useRelay?: boolean
+  sectionMargin?: number
   user?: User
-  mediator?: Mediator
+  useRelay?: boolean
 }
 
 export interface ArtworkGridContainerState {
@@ -117,6 +118,11 @@ export class ArtworkGridContainer extends React.Component<
             useRelay={this.props.useRelay}
             user={this.props.user}
             mediator={this.props.mediator}
+            onClick={() => {
+              if (this.props.onBrickClick) {
+                this.props.onBrickClick()
+              }
+            }}
           />
         )
         // Setting a marginBottom on the artwork component didn’t work, so using a spacer view instead.

@@ -54,6 +54,7 @@ const SuggestionsPopoverContainer = styled(Box)`
   z-index: 1;
 `
 
+@track()
 export class FollowArtistButton extends React.Component<Props, State> {
   static defaultProps = {
     useDeprecatedButtonStyle: true,
@@ -187,22 +188,20 @@ export class FollowArtistButton extends React.Component<Props, State> {
   }
 }
 
-export const FollowArtistButtonFragmentContainer = track({})(
-  createFragmentContainer(
-    Artsy.withContext(FollowArtistButton),
-    graphql`
-      fragment FollowArtistButton_artist on Artist
-        @argumentDefinitions(
-          showFollowSuggestions: { type: "Boolean", defaultValue: false }
-        ) {
-        __id
-        id
-        is_followed
-        counts {
-          follows
-        }
-        ...FollowArtistPopover_suggested @include(if: $showFollowSuggestions)
+export const FollowArtistButtonFragmentContainer = createFragmentContainer(
+  Artsy.withContext(FollowArtistButton),
+  graphql`
+    fragment FollowArtistButton_artist on Artist
+      @argumentDefinitions(
+        showFollowSuggestions: { type: "Boolean", defaultValue: false }
+      ) {
+      __id
+      id
+      is_followed
+      counts {
+        follows
       }
-    `
-  )
+      ...FollowArtistPopover_suggested @include(if: $showFollowSuggestions)
+    }
+  `
 )

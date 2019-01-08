@@ -1,5 +1,5 @@
 {
-  "no-version-prefix": true,
+  "noVersionPrefix": true,
   "name": "Artsy",
   "email": "it@artsymail.com",
   "labels": {
