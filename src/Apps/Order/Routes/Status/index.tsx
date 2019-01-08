@@ -26,9 +26,11 @@ import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "../
 
 const logger = createLogger("Order/Routes/Status/index.tsx")
 
-interface StatusCopy {
+interface StatusPageConfig {
   title: React.ReactNode
   description: React.ReactNode
+  // default showTransactionSummary is true
+  showTransactionSummary?: boolean
 }
 
 export interface StatusProps {
@@ -45,8 +47,8 @@ const Paragraph = styled.p`
 `
 
 export class StatusRoute extends Component<StatusProps> {
-  getStatusCopy(): StatusCopy {
-    const { state, requestedFulfillment, mode } = this.props.order
+  getStatusCopy(): StatusPageConfig {
+    const { state, requestedFulfillment, mode, stateReason } = this.props.order
     const isOfferFlow = mode === "OFFER"
     const isShip = requestedFulfillment.__typename === "Ship"
 
@@ -99,19 +101,24 @@ export class StatusRoute extends Component<StatusProps> {
       }
       case "CANCELED":
       case "REFUNDED":
-        return isOfferFlow && state === "CANCELED"
-          ? this.getCanceledOfferOrderCopy()
-          : {
-              title: "Your order was canceled and refunded",
-              description: (
-                <>
-                  Please allow 5–7 business days for the refund to appear on
-                  your bank statement. Contact{" "}
-                  <a href="mailto:orders@artsy.net">orders@artsy.net</a> with
-                  any questions.
-                </>
-              ),
-            }
+        if (!isOfferFlow || state === "REFUNDED" || stateReason === null) {
+          // stateReason === null for offer orders only if the order was rejected
+          // after the offer was accepted.
+          return {
+            title: "Your order was canceled and refunded",
+            description: (
+              <>
+                Please allow 5–7 business days for the refund to appear on your
+                bank statement. Contact{" "}
+                <a href="mailto:orders@artsy.net">orders@artsy.net</a> with any
+                questions.
+              </>
+            ),
+          }
+        }
+        // otherwise this was an offer order that was rejected before being
+        // accepted
+        return this.getCanceledOfferOrderCopy()
       default:
         // This should not happen. Check the order states are all accounted for:
         // https://github.com/artsy/exchange/blob/master/app/models/order.rb
@@ -124,7 +131,7 @@ export class StatusRoute extends Component<StatusProps> {
     }
   }
 
-  getCanceledOfferOrderCopy(): StatusCopy {
+  getCanceledOfferOrderCopy(): StatusPageConfig {
     const { stateReason } = this.props.order
     switch (stateReason) {
       case "buyer_rejected":
@@ -143,6 +150,7 @@ export class StatusRoute extends Component<StatusProps> {
               </Paragraph>
             </>
           ),
+          showTransactionSummary: false,
         }
       case "seller_rejected_offer_too_low":
       case "seller_rejected_shipping_unavailable":
@@ -157,6 +165,7 @@ export class StatusRoute extends Component<StatusProps> {
               negotiation process.
             </>
           ),
+          showTransactionSummary: false,
         }
       case "buyer_lapsed":
         return {
@@ -164,6 +173,7 @@ export class StatusRoute extends Component<StatusProps> {
           description: (
             <>The seller’s offer expired because you didn’t respond in time.</>
           ),
+          showTransactionSummary: false,
         }
       case "seller_lapsed":
         return {
@@ -174,6 +184,7 @@ export class StatusRoute extends Component<StatusProps> {
               in time.
             </>
           ),
+          showTransactionSummary: false,
         }
       default:
         // This should not happen. Check the cancel reasons are all accounted for:
@@ -182,6 +193,7 @@ export class StatusRoute extends Component<StatusProps> {
         return {
           title: "Offer declined",
           description: null,
+          showTransactionSummary: false,
         }
     }
   }
@@ -223,10 +235,12 @@ export class StatusRoute extends Component<StatusProps> {
   render() {
     const { order } = this.props
 
-    const isOfferFlow = order.mode === "OFFER"
-    const offerOrderCanceled = isOfferFlow && order.state === "CANCELED"
-    const flowName = isOfferFlow ? "Offer" : "Order"
-    const { title, description } = this.getStatusCopy()
+    const flowName = order.mode === "OFFER" ? "Offer" : "Order"
+    const {
+      title,
+      description,
+      showTransactionSummary = true,
+    } = this.getStatusCopy()
 
     return (
       <HorizontalPadding>
@@ -242,7 +256,15 @@ export class StatusRoute extends Component<StatusProps> {
               <Title>{flowName} status | Artsy</Title>
               <Join separator={<Spacer mb={[2, 3]} />}>
                 {description && <Message p={[2, 3]}>{description}</Message>}
-                {offerOrderCanceled ? (
+                {showTransactionSummary ? (
+                  <Flex flexDirection="column">
+                    <ArtworkSummaryItem order={order} />
+                    <TransactionDetailsSummaryItem
+                      order={order}
+                      useLastSubmittedOffer
+                    />
+                  </Flex>
+                ) : (
                   <Button
                     onClick={() => {
                       window.location.href = "/"
@@ -252,21 +274,13 @@ export class StatusRoute extends Component<StatusProps> {
                   >
                     Back to Artsy
                   </Button>
-                ) : (
-                  <Flex flexDirection="column">
-                    <ArtworkSummaryItem order={order} />
-                    <TransactionDetailsSummaryItem
-                      order={order}
-                      useLastSubmittedOffer
-                    />
-                  </Flex>
                 )}
               </Join>
               <Spacer mb={[2, 3]} />
             </>
           }
           Sidebar={
-            !offerOrderCanceled && (
+            showTransactionSummary && (
               <Flex flexDirection="column">
                 <Flex flexDirection="column">
                   <ShippingSummaryItem order={order} />

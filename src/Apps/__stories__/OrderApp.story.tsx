@@ -382,3 +382,13 @@ storiesOf("Apps/Order Page/Make Offer/Status", module)
       })}
     />
   ))
+  .add("cancelled after accept", () => (
+    <Router
+      initialRoute="/orders/123/status"
+      mockResolvers={mockResolver({
+        ...OfferOrderWithShippingDetails,
+        state: "CANCELED",
+        stateReason: null,
+      })}
+    />
+  ))

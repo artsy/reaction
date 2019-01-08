@@ -6,6 +6,7 @@ import {
   OfferOrderPickup,
   OfferOrderWithShippingDetails,
 } from "Apps/__tests__/Fixtures/Order"
+import { TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { MockBoot, renderRelayTree } from "DevTools"
 import { render } from "enzyme"
@@ -161,6 +162,19 @@ describe("Status", () => {
         })
         expect(wrapper.text()).toContain("Your order was canceled and refunded")
         expect(wrapper.find(Message).length).toBe(1)
+      })
+    })
+
+    describe("canceled after accpet", () => {
+      it("should say that order was canceled", async () => {
+        const wrapper = await getWrapper({
+          ...OfferOrderPickup,
+          state: "CANCELED",
+          stateReason: null,
+        })
+        expect(wrapper.text()).toContain("Your order was canceled and refunded")
+        expect(wrapper.find(Message).length).toBe(1)
+        expect(wrapper.find(TransactionDetailsSummaryItem).length).toBe(1)
       })
     })
   })
