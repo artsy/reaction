@@ -87,6 +87,7 @@ export const routes: RouteConfig[] = [
             $sort: String
             $at_auction: Boolean
             $acquireable: Boolean
+            $offerable: Boolean
             $inquireable_only: Boolean
           ) {
             artist(id: $artistID) {
@@ -100,6 +101,7 @@ export const routes: RouteConfig[] = [
                   at_auction: $at_auction
                   acquireable: $acquireable
                   inquireable_only: $inquireable_only
+                  offerable: $offerable
                 )
             }
           }

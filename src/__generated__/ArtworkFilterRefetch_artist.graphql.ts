@@ -75,6 +75,12 @@ return {
       "name": "sort",
       "type": "String",
       "defaultValue": "-decayed_merch"
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "offerable",
+      "type": "Boolean",
+      "defaultValue": null
     }
   ],
   "selections": [
@@ -131,6 +137,12 @@ return {
         },
         {
           "kind": "Variable",
+          "name": "offerable",
+          "variableName": "offerable",
+          "type": "Boolean"
+        },
+        {
+          "kind": "Variable",
           "name": "partner_id",
           "variableName": "partner_id",
           "type": "ID"
@@ -162,5 +174,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'b44bb77ab2b2cb07ffe48d8393926051';
+(node as any).hash = '2147f6c0a04d64072e36638c68460fbc';
 export default node;

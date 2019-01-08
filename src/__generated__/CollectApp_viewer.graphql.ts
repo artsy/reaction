@@ -59,6 +59,12 @@ const node: ConcreteFragment = {
     },
     {
       "kind": "LocalArgument",
+      "name": "offerable",
+      "type": "Boolean",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
       "name": "inquireable_only",
       "type": "Boolean",
       "defaultValue": null
@@ -188,6 +194,12 @@ const node: ConcreteFragment = {
         },
         {
           "kind": "Variable",
+          "name": "offerable",
+          "variableName": "offerable",
+          "type": null
+        },
+        {
+          "kind": "Variable",
           "name": "partner_id",
           "variableName": "partner_id",
           "type": null
@@ -208,5 +220,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '573b3805b5ffc0b05e2f1fb59dd8116a';
+(node as any).hash = '55225b3e1892afba36926e131f51597a';
 export default node;

@@ -186,6 +186,7 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
         for_sale: { type: "Boolean" }
         at_auction: { type: "Boolean" }
         acquireable: { type: "Boolean" }
+        offerable: { type: "Boolean" }
         inquireable_only: { type: "Boolean" }
         sort: { type: "String", defaultValue: "-decayed_merch" }
         partner_category: {
@@ -207,6 +208,7 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
           at_auction: $at_auction
           acquireable: $acquireable
           inquireable_only: $inquireable_only
+          offerable: $offerable
         )
       id
       exhibition_highlights(size: 3) {
