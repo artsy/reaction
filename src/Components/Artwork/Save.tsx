@@ -1,9 +1,8 @@
 import { Save_artwork } from "__generated__/Save_artwork.graphql"
 import { SaveArtworkMutation } from "__generated__/SaveArtworkMutation.graphql"
 import { track } from "Artsy/Analytics"
-import * as Schema from "Artsy/Analytics/Schema"
 import * as Artsy from "Artsy/SystemContext"
-import { isNull } from "lodash"
+import { extend, isNull } from "lodash"
 import React from "react"
 import {
   commitMutation,
@@ -11,12 +10,17 @@ import {
   graphql,
   RelayProp,
 } from "react-relay"
+import { TrackingProp } from "react-tracking"
 import * as RelayRuntimeTypes from "relay-runtime"
 import styled from "styled-components"
 import colors from "../../Assets/Colors"
 import Icon from "../Icon"
 
 const SIZE = 40
+
+export interface SaveTrackingProps {
+  context_page?: string
+}
 
 export interface SaveProps
   extends Artsy.ContextProps,
@@ -28,6 +32,8 @@ export interface SaveProps
   useRelay?: boolean
   mediator?: Artsy.Mediator
   render?: (props, state) => JSX.Element
+  trackingData?: SaveTrackingProps
+  tracking?: TrackingProp
 }
 
 // TODO: This will be refactored out once Artworks / Grids are full Relay in Force
@@ -56,15 +62,23 @@ export class SaveButton extends React.Component<SaveProps, SaveState> {
     return isSaved
   }
 
-  @track<SaveProps>(
-    props =>
-      ({
-        action_type: props.artwork.is_saved
-          ? "Removed Artwork"
-          : "Saved Artwork",
-        entity_slug: props.artwork.id,
-      } as Schema.Old)
-  )
+  trackSave = () => {
+    const {
+      tracking,
+      artwork: { is_saved, id, _id },
+    } = this.props
+    const trackingData: SaveTrackingProps = this.props.trackingData || {}
+    const action = is_saved ? "Removed Artwork" : "Saved Artwork"
+    const entityInfo = {
+      entity_slug: id,
+      entity_id: _id,
+    }
+
+    if (tracking) {
+      tracking.trackEvent(extend({ action }, entityInfo, trackingData))
+    }
+  }
+
   handleSave() {
     const { user, artwork, relay, relayEnvironment, useRelay } = this.props
     const environment = (relay && relay.environment) || relayEnvironment
@@ -133,6 +147,7 @@ export class SaveButton extends React.Component<SaveProps, SaveState> {
           }
         },
       })
+      this.trackSave()
     } else {
       if (this.props.mediator) {
         this.props.mediator.trigger("open:auth", {
@@ -238,6 +253,7 @@ export default createFragmentContainer(
   graphql`
     fragment Save_artwork on Artwork {
       __id
+      _id
       id
       is_saved
     }

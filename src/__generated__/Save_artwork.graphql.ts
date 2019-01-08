@@ -5,6 +5,7 @@ declare const _Save_artwork$ref: unique symbol;
 export type Save_artwork$ref = typeof _Save_artwork$ref;
 export type Save_artwork = {
     readonly __id: string;
+    readonly _id: string;
     readonly id: string;
     readonly is_saved: boolean | null;
     readonly " $refType": Save_artwork$ref;
@@ -29,6 +30,13 @@ const node: ConcreteFragment = {
     {
       "kind": "ScalarField",
       "alias": null,
+      "name": "_id",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
       "name": "id",
       "args": null,
       "storageKey": null
@@ -42,5 +50,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '0faa5a4a653d49f5187e7c576b95cba7';
+(node as any).hash = '2ad87b946416ba84bc82a9b6844aceb4';
 export default node;

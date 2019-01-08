@@ -145,8 +145,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
 
   @track<ArtworkSidebarCommercialContainerProps>(props => ({
     context_module: Schema.ContextModule.Sidebar,
-    type: Schema.Type.Button,
-    action_type: Schema.ActionType.Click,
+    action_type: Schema.ActionType.ClickedContactGallery,
     subject: Schema.Subject.ContactGallery,
     artwork_id: props.artwork._id,
     artwork_slug: props.artwork.id,

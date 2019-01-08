@@ -43,7 +43,13 @@ export class ArtworkSidebarBidAction extends React.Component<
     window.location.href = `${sd.APP_URL}/auction-registration/${sale.id}`
   }
 
-  redirectToBid = (firstIncrement: number) => {
+  @track((props: ArtworkSidebarBidActionProps) => ({
+    artwork_slug: props.artwork.id,
+    auction_slug: props.artwork.sale.id,
+    context_page: Schema.PageName.ArtworkPage,
+    action_type: Schema.ActionType.ClickedBid,
+  }))
+  redirectToBid(firstIncrement: number) {
     const { id, sale } = this.props.artwork
     const bid = this.state.selectedMaxBidCents || firstIncrement
     window.location.href = `${sd.APP_URL}/auction/${

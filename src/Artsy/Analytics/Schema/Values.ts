@@ -4,6 +4,7 @@
 export enum PageName {
   ArticlePage = "Article",
   ArtistPage = "Artist",
+  ArtworkPage = "Artwork page",
 }
 
 /**
@@ -45,6 +46,8 @@ export enum ActionType {
    */
   ClickedBuyNow = "Clicked buy now",
   ClickedMakeOffer = "Clicked make offer",
+  ClickedContactGallery = 'Clicked "Contact Gallery"',
+  ClickedBid = 'Clicked "Bid"',
 
   /**
    * Triggers a pageview in force, skips segment
