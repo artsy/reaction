@@ -45,7 +45,11 @@ export class ArtworkActions extends React.Component<
   render() {
     return (
       <Container>
-        <SaveButton artwork={this.props.artwork} render={Save(this.props)} />
+        <SaveButton
+          trackingData={{ context_page: Schema.PageName.ArtworkPage }}
+          artwork={this.props.artwork}
+          render={Save(this.props)}
+        />
         <Spacer mx={0.5} />
         <ShareButton onClick={this.toggleSharePanel.bind(this)} />
 
