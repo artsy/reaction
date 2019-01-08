@@ -228,7 +228,7 @@ describe("Submit Pending Counter Offer", () => {
     expect(errorComponent.props().show).toBe(true)
     expect(errorComponent.text()).toContain("This work has already been sold.")
     expect(errorComponent.text()).toContain(
-      "Please contact orders@artsy.com with any questions."
+      "Please contact orders@artsy.net with any questions."
     )
   })
 
