@@ -85,7 +85,6 @@ export class SelectedCareerAchievements extends React.Component<
   }
 
   render() {
-    console.log(this.props)
     if (!hasSections(this.props.artist)) {
       return null
     }
@@ -110,7 +109,7 @@ export class SelectedCareerAchievements extends React.Component<
             <Sans size="2" weight="medium">
               Selected Career Achievements
             </Sans>
-            <Flex flexDirection="row" alignItems="left" flexWrap="wrap">
+            <Flex flexDirection="row" flexWrap="wrap">
               {this.renderGalleryRepresentation()}
               {this.renderAuctionHighlight()}
 

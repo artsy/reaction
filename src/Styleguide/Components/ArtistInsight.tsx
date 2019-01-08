@@ -76,12 +76,11 @@ export class ArtistInsight extends React.Component<ArtistInsightProps> {
 
   render() {
     const { label, type, value, entities } = this.props
-    console.log(this.props)
 
     if (value || (entities && entities.length > 0)) {
       return (
-        <Flex mt={1} alignItems="top" width={260}>
-          <Flex mr={1} flexGrow={0} alignItems="top">
+        <Flex mt={1} mr={2} width={260}>
+          <Flex pr={1} alignItems="top">
             {this.renderIcon(type)}
           </Flex>
           <Flex flexDirection="column">

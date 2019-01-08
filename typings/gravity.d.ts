@@ -3,4 +3,5 @@ interface User {
   accessToken?: string
   appToken?: string
   lab_features?: string[]
+  type?: string
 }

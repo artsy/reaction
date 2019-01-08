@@ -8,11 +8,11 @@ storiesOf("Styleguide/Components", module).add(
   "SelectedCareerAchievements",
   () => {
     return (
-      <React.Fragment>
+      <>
         <Section title="Selected Career Achievements">
           <SelectedCareerAchievements artist={artistResponse as any} />
         </Section>
-      </React.Fragment>
+      </>
     )
   }
 )

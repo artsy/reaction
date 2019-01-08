@@ -49,6 +49,9 @@ export type Overview_artist = {
             }) | null> | null;
         }) | null;
     }) | null;
+    readonly insights: ReadonlyArray<({
+        readonly type: string | null;
+    }) | null> | null;
     readonly " $fragmentRefs": ArtistBio_bio$ref & CurrentEvent_artist$ref & MarketInsightsArtistPage_artist$ref & SelectedCareerAchievementsArtistPage_artist$ref & Genes_artist$ref & ArtworkFilter_artist$ref;
     readonly " $refType": Overview_artist$ref;
 };
@@ -483,9 +486,27 @@ return {
         }
       ]
     },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "insights",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "ArtistInsight",
+      "plural": true,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "type",
+          "args": null,
+          "storageKey": null
+        }
+      ]
+    },
     v1
   ]
 };
 })();
-(node as any).hash = '62ec95a95b945d36d707c9ac22964e9a';
+(node as any).hash = '5479019881ba7999741dc9f9f36945b8';
 export default node;

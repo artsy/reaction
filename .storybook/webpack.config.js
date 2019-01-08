@@ -30,6 +30,7 @@ const {
   STRIPE_PUBLISHABLE_KEY,
   USER_ACCESS_TOKEN,
   USER_ID,
+  USER_TYPE,
   USER_LAB_FEATURES,
   WEBPACK_DEVTOOL = "cheap-module-eval-source-map",
   XAPP_TOKEN,
@@ -76,6 +77,7 @@ if (USER_ID && USER_ACCESS_TOKEN) {
     new webpack.DefinePlugin({
       "process.env": {
         USER_ID: JSON.stringify(USER_ID),
+        USER_TYPE: JSON.stringify(USER_TYPE),
         USER_ACCESS_TOKEN: JSON.stringify(USER_ACCESS_TOKEN),
         USER_LAB_FEATURES: JSON.stringify(USER_LAB_FEATURES),
         XAPP_TOKEN: JSON.stringify(XAPP_TOKEN),
