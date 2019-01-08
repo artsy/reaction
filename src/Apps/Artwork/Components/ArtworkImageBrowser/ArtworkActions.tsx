@@ -1,15 +1,20 @@
-import { color, Flex, Spacer } from "@artsy/palette"
+import { Box, color, Flex, Link, Sans, Spacer } from "@artsy/palette"
 import { ArtworkActions_artwork } from "__generated__/ArtworkActions_artwork.graphql"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
+import { ContextConsumer } from "Artsy/SystemContext"
 import { Bell } from "Assets/Icons/Bell"
+import { Download } from "Assets/Icons/Download"
 import { Heart } from "Assets/Icons/Heart"
 import SaveButton, { SaveProps, SaveState } from "Components/Artwork/Save"
 import Icon from "Components/Icon"
 import { isNull } from "lodash"
+import { compact } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { data as sd } from "sharify"
 import styled from "styled-components"
+import { slugify } from "underscore.string"
 import { ArtworkSharePanelFragmentContainer as ArtworkSharePanel } from "./ArtworkSharePanel"
 
 interface ArtworkActionsProps {
@@ -42,20 +47,73 @@ export class ArtworkActions extends React.Component<
     })
   }
 
+  filename() {
+    const { artists, title, date } = this.props.artwork
+    return slugify(
+      compact([artists.map(({ name }) => name).join(", "), title, date]).join(
+        " "
+      )
+    )
+  }
+
+  canDownload(user) {
+    const { is_downloadable } = this.props.artwork
+    return is_downloadable || (user && user.type === "Admin")
+  }
+
+  downloadableImageUrl(user) {
+    const {
+      artwork: { href },
+    } = this.props
+
+    return `${sd.APP_URL}${href}/download/${this.filename()}.jpg`
+  }
+
   render() {
     return (
-      <Container>
-        <SaveButton artwork={this.props.artwork} render={Save(this.props)} />
-        <Spacer mx={0.5} />
-        <ShareButton onClick={this.toggleSharePanel.bind(this)} />
+      <ContextConsumer>
+        {({ user }) => {
+          return (
+            <Container
+              style={{
+                width: this.canDownload(user) ? "50%" : "100%",
+                marginLeft: this.canDownload(user) ? "50%" : "0%",
+              }}
+            >
+              <SaveButton
+                artwork={this.props.artwork}
+                render={Save(this.props)}
+              />
+              <Spacer mx={0.5} />
+              <ShareButton
+                style={{ cursor: "pointer" }}
+                onClick={this.toggleSharePanel.bind(this)}
+              />
 
-        {this.state.showSharePanel && (
-          <ArtworkSharePanel
-            artwork={this.props.artwork}
-            onClose={this.toggleSharePanel}
-          />
-        )}
-      </Container>
+              {this.state.showSharePanel && (
+                <ArtworkSharePanel
+                  artwork={this.props.artwork}
+                  onClose={this.toggleSharePanel.bind(this)}
+                />
+              )}
+              {this.canDownload(user) && (
+                <Box style={{ marginLeft: "auto" }}>
+                  <Link
+                    className="noUnderline"
+                    href={this.downloadableImageUrl(user)}
+                    target="_blank"
+                  >
+                    <Download />
+                    <Sans style={{ display: "inline-block" }} mt={1} size="1">
+                      Download
+                    </Sans>
+                  </Link>
+                </Box>
+              )}
+            </Container>
+          )
+        }}
+      </ContextConsumer>
     )
   }
 }
@@ -67,6 +125,16 @@ export const ArtworkActionsFragmentContainer = createFragmentContainer(
       ...Save_artwork
       ...ArtworkSharePanel_artwork
 
+      artists {
+        name
+      }
+      date
+      title
+      image {
+        id
+      }
+      href
+      is_downloadable
       sale {
         is_closed
         is_auction
@@ -83,7 +151,6 @@ const Container = styled(Flex).attrs({
 })`
   position: relative;
   user-select: none;
-  cursor: pointer;
 `
 
 const ShareButton = styled(Icon).attrs({
