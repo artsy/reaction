@@ -14,6 +14,9 @@ const initializeVariablesWithFilterState = (params, props) => {
     }
   }
 
+  if (initialFilterState.offerable === "true") {
+    initialFilterState.offerable = true
+  }
   return { sort: "-decayed_merch", ...initialFilterState, ...params }
 }
 
