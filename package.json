@@ -87,7 +87,7 @@
     "@types/storybook__react": "^3.0.5",
     "@types/styled-system": "^3.0.9",
     "@types/underscore.string": "^0.0.32",
-    "auto-release-cli": "2.0.3",
+    "auto-release-cli": "2.1.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.4",
