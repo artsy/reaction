@@ -1,3 +1,15 @@
+# 9.3.14 (Tue Jan 08 2019)
+
+#### 🐛  Bug Fix
+
+- @jonallured => Send `offerable` params everywhere! [#1829](https://github.com/artsy/reaction/pull/1829) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # 9.3.13 (Tue Jan 08 2019)
 
 
