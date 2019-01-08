@@ -22,6 +22,7 @@ class PartnerShowArtworkGrid extends React.Component<
 > {
   @track({
     type: Schema.Type.ArtworkBrick,
+    action_type: Schema.ActionType.Click,
   })
   trackBrickClick() {
     // noop

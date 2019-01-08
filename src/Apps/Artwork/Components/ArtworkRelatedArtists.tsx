@@ -22,6 +22,7 @@ export class ArtworkRelatedArtists extends React.Component<
 > {
   @track({
     type: Schema.Type.ArtistCard,
+    action_type: Schema.ActionType.Click,
   })
   trackArtistCardClick() {
     // noop

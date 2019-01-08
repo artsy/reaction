@@ -20,6 +20,7 @@ interface FairArtworkGridProps {
 class FairArtworkGrid extends React.Component<FairArtworkGridProps> {
   @track({
     type: Schema.Type.ArtworkBrick,
+    action_type: Schema.ActionType.Click,
   })
   trackBrickClick() {
     // noop
