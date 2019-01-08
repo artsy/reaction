@@ -56,9 +56,11 @@ export class ArtworkActions extends React.Component<
     )
   }
 
+  // TODO: Finish styling and enable.
   canDownload(user) {
-    const { is_downloadable } = this.props.artwork
-    return is_downloadable || (user && user.type === "Admin")
+    return false
+    // const { is_downloadable } = this.props.artwork
+    // return is_downloadable || (user && user.type === "Admin")
   }
 
   downloadableImageUrl(user) {
@@ -74,12 +76,7 @@ export class ArtworkActions extends React.Component<
       <ContextConsumer>
         {({ user }) => {
           return (
-            <Container
-              style={{
-                width: this.canDownload(user) ? "50%" : "100%",
-                marginLeft: this.canDownload(user) ? "50%" : "0%",
-              }}
-            >
+            <Container>
               <SaveButton
                 artwork={this.props.artwork}
                 render={Save(this.props)}
