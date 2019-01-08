@@ -4,6 +4,8 @@ import { RelatedWorksArtworkGridQuery } from "__generated__/RelatedWorksArtworkG
 import { hideGrid } from "Apps/Artwork/Components/OtherWorks/ArtworkContexts/ArtworkGrids"
 import { Header } from "Apps/Artwork/Components/OtherWorks/Header"
 import { ContextConsumer } from "Artsy"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { Mediator, withContext } from "Artsy/SystemContext"
 import ArtworkGrid from "Components/ArtworkGrid"
@@ -34,6 +36,9 @@ interface RelatedWorksArtworkGridState {
   isLoading: boolean
 }
 
+@track({
+  context_module: Schema.ContextModule.RelatedWorks,
+})
 class RelatedWorksArtworkGrid extends React.Component<
   RelatedWorksArtworkGridProps,
   RelatedWorksArtworkGridState
@@ -59,6 +64,13 @@ class RelatedWorksArtworkGrid extends React.Component<
         }
       }
     )
+  }
+
+  @track({
+    type: Schema.Type.ArtworkBrick,
+  })
+  trackBrickClick() {
+    // noop
   }
 
   render() {
@@ -94,6 +106,7 @@ class RelatedWorksArtworkGrid extends React.Component<
                       artworks={artworksConnection}
                       columnCount={[2, 3, 4]}
                       mediator={mediator}
+                      onBrickClick={this.trackBrickClick.bind(this)}
                     />
                   )}
                 </ArtworksContainer>

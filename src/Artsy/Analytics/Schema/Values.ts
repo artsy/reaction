@@ -189,6 +189,7 @@ export enum Subject {
 export enum ContextModule {
   Header = "Header",
   NavigationTabs = "NavigationTabs",
+  RecentlyViewedArtworks = "recently_viewed_artworks",
 
   /**
    * Artist page
@@ -204,6 +205,13 @@ export enum ContextModule {
    * Artwork page
    */
   ArtworkTabs = "Artwork tabs",
+  OtherWorksByArtist = "Other works by artist",
+  OtherWorksInAuction = "Other works in auction",
+  OtherWorksInFair = "Other works in fair",
+  OtherWorksFromGallery = "Other works from gallery",
+  OtherWorksFromShow = "Other works from show",
+  RelatedArtists = "RelatedArtists",
+  RelatedWorks = "RelatedWorks",
   ShareButton = "Share button",
   Zoom = "Zoom",
 
@@ -250,7 +258,10 @@ export enum Label {
 }
 
 export enum Type {
+  ArtistCard = "Artist card",
+  ArtworkBrick = "Artwork brick",
   Button = "Button",
-  Tab = "Tab",
   Link = "Link",
+  Tab = "Tab",
+  Thumbnail = "thumbnail",
 }
