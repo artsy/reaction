@@ -12,6 +12,12 @@ declare const _ArtworkApp_artwork$ref: unique symbol;
 export type ArtworkApp_artwork$ref = typeof _ArtworkApp_artwork$ref;
 export type ArtworkApp_artwork = {
     readonly id: string;
+    readonly _id: string;
+    readonly is_acquireable: boolean | null;
+    readonly is_offerable: boolean | null;
+    readonly availability: string | null;
+    readonly price: string | null;
+    readonly is_in_auction: boolean | null;
     readonly artists: ReadonlyArray<({
         readonly _id: string;
         readonly id: string;
@@ -39,6 +45,13 @@ v1 = {
   "name": "__id",
   "args": null,
   "storageKey": null
+},
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "_id",
+  "args": null,
+  "storageKey": null
 };
 return {
   "kind": "Fragment",
@@ -47,12 +60,6 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    {
-      "kind": "FragmentSpread",
-      "name": "ArtworkBanner_artwork",
-      "args": null
-    },
-    v0,
     {
       "kind": "LinkedField",
       "alias": null,
@@ -66,6 +73,57 @@ return {
         v1
       ]
     },
+    v0,
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "is_acquireable",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "is_offerable",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "availability",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "price",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "is_in_auction",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "artists",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Artist",
+      "plural": true,
+      "selections": [
+        v2,
+        v0,
+        v1
+      ]
+    },
+    v2,
     {
       "kind": "FragmentSpread",
       "name": "ArtworkRelatedArtists_artwork",
@@ -77,24 +135,9 @@ return {
       "args": null
     },
     {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "artists",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "Artist",
-      "plural": true,
-      "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "_id",
-          "args": null,
-          "storageKey": null
-        },
-        v0,
-        v1
-      ]
+      "kind": "FragmentSpread",
+      "name": "ArtworkBanner_artwork",
+      "args": null
     },
     {
       "kind": "FragmentSpread",
@@ -120,5 +163,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'fa0963755d111c944548379fea638d6c';
+(node as any).hash = 'e1cf6819365438d34487efedffb1a011';
 export default node;

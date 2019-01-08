@@ -6,6 +6,7 @@ import {
   OfferOrderPickup,
   OfferOrderWithShippingDetails,
 } from "Apps/__tests__/Fixtures/Order"
+import { TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { MockBoot, renderRelayTree } from "DevTools"
 import { render } from "enzyme"
@@ -39,7 +40,13 @@ describe("Status", () => {
   describe("offers", () => {
     it("should should have a title containing status", async () => {
       const headTags: JSX.Element[] = []
-      await getWrapper(OfferOrderWithShippingDetails, headTags)
+      await getWrapper(
+        {
+          ...OfferOrderWithShippingDetails,
+          state: "SUBMITTED",
+        },
+        headTags
+      )
       expect(headTags.length).toEqual(1)
       expect(render(headTags[0]).text()).toBe("Offer status | Artsy")
     })
@@ -99,28 +106,6 @@ describe("Status", () => {
       })
     })
 
-    describe("canceled (ship)", () => {
-      it("should say that order was canceled", async () => {
-        const wrapper = await getWrapper({
-          ...OfferOrderWithShippingDetails,
-          state: "CANCELED",
-        })
-        expect(wrapper.text()).toContain("Your order was canceled and refunded")
-        expect(wrapper.find(Message).length).toBe(1)
-      })
-    })
-
-    describe("canceled (pickup)", () => {
-      it("should say that order was canceled", async () => {
-        const wrapper = await getWrapper({
-          ...OfferOrderPickup,
-          state: "CANCELED",
-        })
-        expect(wrapper.text()).toContain("Your order was canceled and refunded")
-        expect(wrapper.find(Message).length).toBe(1)
-      })
-    })
-
     describe("buyer rejected", () => {
       it("should say that offer was declined", async () => {
         const wrapper = await getWrapper({
@@ -130,6 +115,66 @@ describe("Status", () => {
         })
         expect(wrapper.text()).toContain("Offer declined")
         expect(wrapper.find(Message).length).toBe(1)
+      })
+    })
+
+    describe("seller rejected", () => {
+      it("should say that offer was declined", async () => {
+        const wrapper = await getWrapper({
+          ...OfferOrderPickup,
+          state: "CANCELED",
+          stateReason: "seller_rejected",
+        })
+        expect(wrapper.text()).toContain("Offer declined")
+        expect(wrapper.find(Message).length).toBe(1)
+      })
+    })
+
+    describe("seller lapsed", () => {
+      it("should say that offer expired", async () => {
+        const wrapper = await getWrapper({
+          ...OfferOrderPickup,
+          state: "CANCELED",
+          stateReason: "seller_lapsed",
+        })
+        expect(wrapper.text()).toContain("offer expired")
+        expect(wrapper.find(Message).length).toBe(1)
+      })
+    })
+
+    describe("buyer lapsed", () => {
+      it("should say that offer expired", async () => {
+        const wrapper = await getWrapper({
+          ...OfferOrderPickup,
+          state: "CANCELED",
+          stateReason: "buyer_lapsed",
+        })
+        expect(wrapper.text()).toContain("offer expired")
+        expect(wrapper.find(Message).length).toBe(1)
+      })
+    })
+
+    describe("refunded", () => {
+      it("should say that order was canceled", async () => {
+        const wrapper = await getWrapper({
+          ...OfferOrderPickup,
+          state: "REFUNDED",
+        })
+        expect(wrapper.text()).toContain("Your order was canceled and refunded")
+        expect(wrapper.find(Message).length).toBe(1)
+      })
+    })
+
+    describe("canceled after accpet", () => {
+      it("should say that order was canceled", async () => {
+        const wrapper = await getWrapper({
+          ...OfferOrderPickup,
+          state: "CANCELED",
+          stateReason: null,
+        })
+        expect(wrapper.text()).toContain("Your order was canceled and refunded")
+        expect(wrapper.find(Message).length).toBe(1)
+        expect(wrapper.find(TransactionDetailsSummaryItem).length).toBe(1)
       })
     })
   })
@@ -201,6 +246,17 @@ describe("Status", () => {
         const wrapper = await getWrapper({
           ...BuyOrderPickup,
           state: "CANCELED",
+        })
+        expect(wrapper.text()).toContain("Your order was canceled and refunded")
+        expect(wrapper.find(Message).length).toBe(1)
+      })
+    })
+
+    describe("refunded", () => {
+      it("should say that order was canceled", async () => {
+        const wrapper = await getWrapper({
+          ...BuyOrderPickup,
+          state: "REFUNDED",
         })
         expect(wrapper.text()).toContain("Your order was canceled and refunded")
         expect(wrapper.find(Message).length).toBe(1)

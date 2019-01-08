@@ -28,6 +28,14 @@ storiesOf("Apps/Artwork Page", module)
       />
     )
   })
+  .add("Hidden availability/one edition", () => {
+    return (
+      <MockRouter
+        routes={artworkRoutes}
+        initialRoute="/artwork/5bfd71bd385402192a4750d4"
+      />
+    )
+  })
   .add("Open Auction", () => {
     return (
       <MockRouter

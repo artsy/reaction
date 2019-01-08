@@ -143,7 +143,14 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
     this.setState({ isErrorModalOpen: false })
   }
 
-  handleInquiry = () => {
+  @track<ArtworkSidebarCommercialContainerProps>(props => ({
+    context_module: Schema.ContextModule.Sidebar,
+    type: Schema.Type.Button,
+    action_type: Schema.ActionType.Click,
+    subject: Schema.Subject.ContactGallery,
+    artwork_id: props.artwork._id,
+  }))
+  handleInquiry() {
     get(this.props, props => props.mediator.trigger) &&
       this.props.mediator.trigger("launchInquiryFlow", {
         artworkId: this.props.artwork.id,
@@ -151,7 +158,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
   }
 
   @track((props, state, args) => ({
-    action_type: Schema.ActionType.ClickedBuyNow,
+    action_type: Schema.ActionType.Click,
     flow: Schema.Flow.BuyNow,
     type: Schema.Type.Button,
   }))
@@ -227,7 +234,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
   }
 
   @track((props, state, args) => ({
-    action_type: Schema.ActionType.ClickedMakeOffer,
+    action_type: Schema.ActionType.Click,
     flow: Schema.Flow.MakeOffer,
     type: Schema.Type.Button,
   }))
@@ -321,11 +328,13 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
       <Box textAlign="left">
         {artwork.sale_message && <Separator />}
 
-        {artwork.edition_sets.length < 2 && artwork.sale_message ? (
-          <>
-            <Spacer mb={3} />
-            {this.renderSaleMessage(artwork.sale_message)}
-          </>
+        {artwork.edition_sets.length < 2 ? (
+          artwork.sale_message && (
+            <>
+              <Spacer mb={3} />
+              {this.renderSaleMessage(artwork.sale_message)}
+            </>
+          )
         ) : (
           <>
             {this.renderEditionSets(artworkEcommerceAvailable)}
@@ -360,11 +369,6 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
         ) : (
           <Separator mb={3} mt={3} />
         )}
-        {artwork.is_inquireable && (
-          <Button width="100%" size="large" onClick={this.handleInquiry}>
-            Contact gallery
-          </Button>
-        )}
         {artwork.is_acquireable && (
           <Button
             width="100%"
@@ -391,6 +395,17 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
             </Button>
           </>
         )}
+        {artwork.is_inquireable &&
+          !artwork.is_acquireable &&
+          !artwork.is_offerable && (
+            <Button
+              width="100%"
+              size="large"
+              onClick={this.handleInquiry.bind(this)}
+            >
+              Contact gallery
+            </Button>
+          )}
 
         <ErrorModal
           onClose={this.onCloseModal}

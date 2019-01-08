@@ -2,6 +2,8 @@ import {
   ArtworkBuyNow,
   ArtworkBuyNowMakeOffer,
   ArtworkMakeOffer,
+  ArtworkOfferableAndInquireable,
+  ArtworkSingleEditionHiddenAvailability,
   ArtworkSold,
 } from "Apps/__tests__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarCommercial"
 
@@ -44,6 +46,16 @@ describe("ArtworkSidebarCommercial", () => {
     commitMutation.mockReset()
   })
 
+  it("displays singe editioned hidden availability inquire work", async () => {
+    const artwork = Object.assign({}, ArtworkSingleEditionHiddenAvailability)
+
+    const wrapper = await getWrapper(artwork)
+
+    expect(wrapper.text()).not.toContain("20 × 24 in")
+    expect(wrapper.text()).not.toContain("50.8 × 61 cm")
+    expect(wrapper.text()).toContain("Contact gallery")
+  })
+
   it("displays artwork enrolled in Buy Now", async () => {
     const artwork = Object.assign({}, ArtworkBuyNow)
 
@@ -66,6 +78,15 @@ describe("ArtworkSidebarCommercial", () => {
     const wrapper = await getWrapper(artwork)
 
     expect(wrapper.text()).toContain("Make offer")
+  })
+
+  it("displays artwork enrolled in Make Offer when enabled for both make offer and inquiry", async () => {
+    const artwork = Object.assign({}, ArtworkOfferableAndInquireable)
+
+    const wrapper = await getWrapper(artwork)
+
+    expect(wrapper.text()).toContain("Make offer")
+    expect(wrapper.text()).not.toContain("Contact gallery")
   })
 
   it("displays artwork enrolled in both Buy Now and Make Offer", async () => {

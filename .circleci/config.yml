@@ -1,79 +1,28 @@
 version: 2.1
 
 orbs:
-  node: artsy/node@0.1.0
-  yarn: artsy/yarn@0.0.2
-  queue: eddiewebb/queue@1.0.110
-
-jobs:
-  relay:
-    executor: node/build
-    steps:
-      - yarn/setup
-      - run: yarn relay
-  lint:
-    executor: node/build
-    steps:
-      - yarn/setup
-      - run: yarn lint
-  type-check:
-    executor: node/build
-    steps:
-      - yarn/setup
-      - run: yarn type-check
-  deploy:
-    executor: node/build
-    steps:
-      - add_ssh_keys
-      - yarn/setup
-      - run: git pull
-      # Setup the .npmrc with the proper registry and auth token to publish
-      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-      - run: npm whoami
-      - run: yarn release
-  test:
-    executor: node/build
-    steps:
-      - yarn/setup
-      # Runs jest tests with 6 concurrent workers. Without limiting it to 6
-      # workers Jest will spawn many memory hungry workers and ultimately
-      # starve the job for memory.
-      - run: yarn test -w 6
-  update-cache:
-    executor: node/build
-    steps:
-      - yarn/update_dependencies
-
-  # A job responsible for ensuring only 1 master build runs at a time so that
-  # there are no deployment race conditions
-  workflow-queue:
-    executor: node/build
-    steps:
-      - queue/until_front_of_line:
-          time: "2" # how long a queue will wait until the job exits
-          only-on-branch: master # restrict queueing to a specific branch (default *)
-          consider-job: false # block whole workflow if any job still running
+  yarn: artsy/yarn@0.0.5
 
 workflows:
   build_and_verify:
     jobs:
-      - workflow-queue
-      - update-cache:
+      - yarn/workflow-queue
+      - yarn/update-cache:
           requires:
-            - workflow-queue
-      - relay:
+            - yarn/workflow-queue
+      - yarn/relay:
           requires:
-            - workflow-queue
-      - lint:
+            - yarn/workflow-queue
+      - yarn/lint:
           requires:
-            - workflow-queue
-      - type-check:
+            - yarn/workflow-queue
+      - yarn/type-check:
           requires:
-            - workflow-queue
-      - test:
+            - yarn/workflow-queue
+      - yarn/test:
           requires:
-            - workflow-queue
-      - deploy:
+            - yarn/workflow-queue
+      - yarn/auto-release:
           # The deploy job is the _only_ job that should have access to our npm
           # tokens. We include a context that has our publish credentials
           # explicitly in this step. https://circleci.com/docs/2.0/contexts/
@@ -83,8 +32,8 @@ workflows:
               only:
                 - master
           requires:
-            - test
-            - relay
-            - lint
-            - type-check
-            - update-cache
+            - yarn/test
+            - yarn/relay
+            - yarn/lint
+            - yarn/type-check
+            - yarn/update-cache

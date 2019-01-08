@@ -8,6 +8,7 @@ export type ArtworkSidebarArtists_artwork = {
     readonly cultural_maker: string | null;
     readonly artists: ReadonlyArray<({
         readonly __id: string;
+        readonly _id: string;
         readonly id: string;
         readonly name: string | null;
         readonly href: string | null;
@@ -60,6 +61,13 @@ return {
         {
           "kind": "ScalarField",
           "alias": null,
+          "name": "_id",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
           "name": "id",
           "args": null,
           "storageKey": null
@@ -96,5 +104,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '908f150d5c84ab8e9cdf3a75aa804d96';
+(node as any).hash = 'aa97da2dfc57f1cf06cc2eb9fba3bbf5';
 export default node;

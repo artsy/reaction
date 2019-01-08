@@ -1,8 +1,10 @@
 import { Box, color, Flex, space } from "@artsy/palette"
+import * as Schema from "Artsy/Analytics/Schema"
 import FadeTransition from "Components/Animation/FadeTransition"
 import { bind, once, throttle } from "lodash"
 import React from "react"
 import ReactDOM from "react-dom"
+import track from "react-tracking"
 import styled from "styled-components"
 import { CloseButton } from "./CloseButton"
 import { Slider, SliderProps } from "./LightboxSlider"
@@ -57,6 +59,7 @@ export interface LightboxState {
   activityTimer?: NodeJS.Timer
 }
 
+@track({ context_module: Schema.ContextModule.Zoom })
 export class Lightbox extends React.Component<LightboxProps, LightboxState> {
   static defaultProps = {
     enabled: true,
@@ -79,7 +82,12 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
     promisedDragon: null,
   }
 
-  show = event => {
+  @track({
+    type: Schema.Type.Button,
+    flow: Schema.Flow.ArtworkZoom,
+    action_type: Schema.ActionType.Click,
+  })
+  show(event) {
     this.setState({ shown: true, showZoomSlider: true })
   }
 
@@ -272,7 +280,7 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
         return React.cloneElement(child, {
           ...(enabled && {
             style: { cursor: "zoom-in" },
-            onClick: this.show,
+            onClick: this.show.bind(this),
           }),
         })
       }

@@ -1,19 +1,41 @@
 import { ArtistArtworkGrid_artwork } from "__generated__/ArtistArtworkGrid_artwork.graphql"
 import { hideGrid } from "Apps/Artwork/Components/OtherWorks/ArtworkContexts/ArtworkGrids"
-import { withContext } from "Artsy/SystemContext"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
+import { Mediator, withContext } from "Artsy/SystemContext"
 import ArtworkGrid from "Components/ArtworkGrid"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import { Header } from "../../Header"
 
-export const ArtistArtworkGridFragmentContainer = createFragmentContainer<{
+interface ArtistArtworkGridProps {
   artwork: ArtistArtworkGrid_artwork
-}>(
-  withContext(({ artwork: { artist }, mediator }) => {
+  mediator?: Mediator
+}
+
+@track({
+  context_module: Schema.ContextModule.OtherWorksByArtist,
+})
+export class ArtistArtworkGrid extends React.Component<ArtistArtworkGridProps> {
+  @track({
+    type: Schema.Type.ArtworkBrick,
+    action_type: Schema.ActionType.Click,
+  })
+  trackBrickClick() {
+    // noop
+  }
+
+  render() {
+    const {
+      artwork: { artist },
+      mediator,
+    } = this.props
+
     if (!artist || hideGrid(artist.artworks_connection)) {
       return null
     }
+
     return (
       <>
         <Header
@@ -24,10 +46,15 @@ export const ArtistArtworkGridFragmentContainer = createFragmentContainer<{
           artworks={artist.artworks_connection}
           columnCount={[2, 3, 4]}
           mediator={mediator}
+          onBrickClick={this.trackBrickClick.bind(this)}
         />
       </>
     )
-  }),
+  }
+}
+
+export const ArtistArtworkGridFragmentContainer = createFragmentContainer(
+  withContext(ArtistArtworkGrid),
   graphql`
     fragment ArtistArtworkGrid_artwork on Artwork
       @argumentDefinitions(excludeArtworkIDs: { type: "[String!]" }) {
@@ -57,5 +84,3 @@ export const ArtistArtworkGridFragmentContainer = createFragmentContainer<{
     }
   `
 )
-
-ArtistArtworkGridFragmentContainer.displayName = "ArtistArtworkGrid"
