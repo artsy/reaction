@@ -123,6 +123,12 @@ storiesOf("Apps/Order Page/Buy Now/Status", module)
       mockResolvers={mockResolver({ ...BuyOrderPickup, state: "CANCELED" })}
     />
   ))
+  .add("refunded", () => (
+    <Router
+      initialRoute="/orders/123/status"
+      mockResolvers={mockResolver({ ...BuyOrderPickup, state: "REFUNDED" })}
+    />
+  ))
 
 storiesOf("Apps/Order Page/Make Offer/Offer", module).add("Empty", () => (
   <Router
@@ -364,6 +370,15 @@ storiesOf("Apps/Order Page/Make Offer/Status", module)
         ...OfferOrderWithShippingDetails,
         stateReason: "seller_lapsed",
         state: "CANCELED",
+      })}
+    />
+  ))
+  .add("refunded", () => (
+    <Router
+      initialRoute="/orders/123/status"
+      mockResolvers={mockResolver({
+        ...OfferOrderWithShippingDetails,
+        state: "REFUNDED",
       })}
     />
   ))

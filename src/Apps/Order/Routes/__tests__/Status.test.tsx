@@ -152,6 +152,17 @@ describe("Status", () => {
         expect(wrapper.find(Message).length).toBe(1)
       })
     })
+
+    describe("refunded", () => {
+      it("should say that order was canceled", async () => {
+        const wrapper = await getWrapper({
+          ...OfferOrderPickup,
+          state: "REFUNDED",
+        })
+        expect(wrapper.text()).toContain("Your order was canceled and refunded")
+        expect(wrapper.find(Message).length).toBe(1)
+      })
+    })
   })
 
   describe("orders", () => {
@@ -221,6 +232,17 @@ describe("Status", () => {
         const wrapper = await getWrapper({
           ...BuyOrderPickup,
           state: "CANCELED",
+        })
+        expect(wrapper.text()).toContain("Your order was canceled and refunded")
+        expect(wrapper.find(Message).length).toBe(1)
+      })
+    })
+
+    describe("refunded", () => {
+      it("should say that order was canceled", async () => {
+        const wrapper = await getWrapper({
+          ...BuyOrderPickup,
+          state: "REFUNDED",
         })
         expect(wrapper.text()).toContain("Your order was canceled and refunded")
         expect(wrapper.find(Message).length).toBe(1)
