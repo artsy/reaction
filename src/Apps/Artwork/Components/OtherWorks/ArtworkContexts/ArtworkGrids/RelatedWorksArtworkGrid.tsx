@@ -94,6 +94,9 @@ class RelatedWorksArtworkGrid extends React.Component<
                       artworks={artworksConnection}
                       columnCount={[2, 3, 4]}
                       mediator={mediator}
+                      onBrickClick={() => {
+                        console.log("clicking related works artwork grid")
+                      }}
                     />
                   )}
                 </ArtworksContainer>

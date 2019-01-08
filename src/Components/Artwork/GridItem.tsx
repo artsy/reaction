@@ -26,11 +26,13 @@ const Placeholder = styled.div`
 `
 
 interface Props extends React.HTMLProps<ArtworkGridItemContainer> {
-  useRelay?: boolean
   artwork: GridItem_artwork
+  mediator?: Mediator
+  onClick?: () => void
   style?: any
   user?: User
-  mediator?: Mediator
+  // FIXME: Remove
+  useRelay?: boolean
 }
 
 interface State {
@@ -150,8 +152,9 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
 
   render() {
     const { style, className, artwork, useRelay, user } = this.props
-    const SaveButtonBlock = useRelay ? RelaySaveButton : SaveButton
-    const MetadataBlock = useRelay ? RelayMetadata : Metadata
+    // FIXME: Remove `useRelay` branch + any
+    const SaveButtonBlock: any = useRelay ? RelaySaveButton : SaveButton
+    const MetadataBlock: any = useRelay ? RelayMetadata : Metadata
 
     let userSpread = {}
     if (user) {
@@ -169,7 +172,15 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
               data-id={artwork._id}
             >
               <Placeholder style={{ paddingBottom: artwork.image.placeholder }}>
-                <a href={artwork.href}>
+                <a
+                  href={artwork.href}
+                  onClick={event => {
+                    event.preventDefault()
+                    if (this.props.onClick) {
+                      this.props.onClick()
+                    }
+                  }}
+                >
                   <Image src={this.getImageUrl(breakpoints)} />
                 </a>
                 {this.renderArtworkBadge(artwork)}
