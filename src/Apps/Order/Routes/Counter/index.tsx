@@ -120,7 +120,7 @@ export class CounterRoute extends Component<CounterProps, CounterState> {
         this.onMutationError(
           new ErrorWithMetadata(orderOrError.error.code, orderOrError.error),
           "This work has already been sold.",
-          "Please contact orders@artsy.com with any questions."
+          "Please contact orders@artsy.net with any questions."
         )
       } else {
         this.onMutationError(
