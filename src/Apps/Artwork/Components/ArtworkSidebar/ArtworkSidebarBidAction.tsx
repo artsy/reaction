@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   Flex,
   LargeSelect,
@@ -126,17 +127,15 @@ export class ArtworkSidebarBidAction extends React.Component<
         <ContextConsumer>
           {({ user }) => {
             return (
-              <>
-                <Button
-                  width="100%"
-                  size="large"
-                  onClick={() => this.redirectToLiveBidding(user)}
-                >
-                  {artwork.sale.is_registration_closed && !registeredToBid
-                    ? "Watch live bidding"
-                    : "Enter live bidding"}
-                </Button>
-              </>
+              <Button
+                width="100%"
+                size="large"
+                onClick={() => this.redirectToLiveBidding(user)}
+              >
+                {artwork.sale.is_registration_closed && !registeredToBid
+                  ? "Watch live bidding"
+                  : "Enter live bidding"}
+              </Button>
             )
           }}
         </ContextConsumer>
@@ -146,20 +145,16 @@ export class ArtworkSidebarBidAction extends React.Component<
     if (artwork.sale.is_open) {
       if (registrationAttempted && !registeredToBid) {
         return (
-          <>
-            <Button width="100%" size="large" disabled>
-              Registration pending
-            </Button>
-          </>
+          <Button width="100%" size="large" disabled>
+            Registration pending
+          </Button>
         )
       }
       if (artwork.sale.is_registration_closed && !registeredToBid) {
         return (
-          <>
-            <Button width="100%" size="large" disabled>
-              Registration closed
-            </Button>
-          </>
+          <Button width="100%" size="large" disabled>
+            Registration closed
+          </Button>
         )
       }
 
@@ -175,7 +170,7 @@ export class ArtworkSidebarBidAction extends React.Component<
       }))
 
       return (
-        <>
+        <Box>
           <Separator mb={2} />
           <Flex width="100%" flexDirection="row">
             <Serif size="3t" color="black100" mr={1}>
@@ -197,7 +192,7 @@ export class ArtworkSidebarBidAction extends React.Component<
           >
             {hasMyBids ? "Increase max bid" : "Bid"}
           </Button>
-        </>
+        </Box>
       )
     }
   }
