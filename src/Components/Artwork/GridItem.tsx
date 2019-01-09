@@ -8,8 +8,8 @@ import { data as sd } from "sharify"
 import styled from "styled-components"
 import { Responsive } from "Utils/Responsive"
 import colors from "../../Assets/Colors"
-import RelayMetadata, { Metadata } from "./Metadata"
-import RelaySaveButton, { SaveButton } from "./Save"
+import Metadata from "./Metadata"
+import SaveButton from "./Save"
 
 const Image = styled.img`
   width: 100%;
@@ -31,8 +31,6 @@ interface Props extends React.HTMLProps<ArtworkGridItemContainer> {
   onClick?: () => void
   style?: any
   user?: User
-  // FIXME: Remove
-  useRelay?: boolean
 }
 
 interface State {
@@ -59,10 +57,6 @@ const Badges = styled(Flex)`
 `
 
 class ArtworkGridItemContainer extends React.Component<Props, State> {
-  static defaultProps = {
-    useRelay: true,
-  }
-
   state = {
     isMounted: false,
   }
@@ -151,10 +145,7 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
   }
 
   render() {
-    const { style, className, artwork, useRelay, user } = this.props
-    // FIXME: Remove `useRelay` branch + any
-    const SaveButtonBlock: any = useRelay ? RelaySaveButton : SaveButton
-    const MetadataBlock: any = useRelay ? RelayMetadata : Metadata
+    const { style, className, artwork, user } = this.props
 
     let userSpread = {}
     if (user) {
@@ -187,7 +178,7 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
                     Reaction code without wrapping the tree in a Responsive
                     provider component. */}
                 {(hover === undefined || hover) && (
-                  <SaveButtonBlock
+                  <SaveButton
                     className="artwork-save"
                     artwork={artwork}
                     style={{
@@ -195,13 +186,12 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
                       right: "10px",
                       bottom: "10px",
                     }}
-                    useRelay={useRelay}
                     {...userSpread}
                     mediator={this.props.mediator}
                   />
                 )}
               </Placeholder>
-              <MetadataBlock artwork={artwork} useRelay={useRelay} />
+              <Metadata artwork={artwork} />
             </div>
           )
         }}

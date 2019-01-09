@@ -3,8 +3,8 @@ import { ContextProps } from "Artsy"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
-import RelayMetadata, { Metadata } from "./Metadata"
-import RelaySaveButton, { SaveButton } from "./Save"
+import Metadata from "./Metadata"
+import SaveButton from "./Save"
 
 // @ts-ignore
 import { Mediator } from "Artsy/SystemContext"
@@ -39,17 +39,12 @@ export interface FillwidthItemContainerProps
   mediator?: Mediator
   onClick?: () => void
   targetHeight?: number
-  useRelay?: boolean
   width?: number
 }
 
 export class FillwidthItemContainer extends React.Component<
   FillwidthItemContainerProps
 > {
-  static defaultProps = {
-    useRelay: true,
-  }
-
   getImageUrl() {
     const imageURL = this.props.artwork.image.url
 
@@ -82,7 +77,6 @@ export class FillwidthItemContainer extends React.Component<
       className,
       targetHeight,
       imageHeight,
-      useRelay,
       user,
       mediator,
     } = this.props
@@ -91,9 +85,6 @@ export class FillwidthItemContainer extends React.Component<
     if (user) {
       userSpread = { user }
     }
-    // FIXME: Remove useRelay code
-    const SaveButtonBlock: any = useRelay ? RelaySaveButton : SaveButton
-    const MetadataBlock: any = useRelay ? RelayMetadata : Metadata
 
     return (
       <div className={className}>
@@ -108,16 +99,15 @@ export class FillwidthItemContainer extends React.Component<
           >
             <Image src={this.getImageUrl()} height={imageHeight} />
           </ImageLink>
-          <SaveButtonBlock
+          <SaveButton
             {...userSpread}
             mediator={mediator}
             className="artwork-save"
             artwork={artwork}
             style={{ position: "absolute", right: "5px", bottom: "5px" }}
-            useRelay={useRelay}
           />
         </Placeholder>
-        <MetadataBlock artwork={artwork} useRelay={useRelay} extended />
+        <Metadata artwork={artwork} extended />
       </div>
     )
   }

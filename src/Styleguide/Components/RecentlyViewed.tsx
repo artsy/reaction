@@ -13,7 +13,6 @@ import { Carousel } from "Styleguide/Components/Carousel"
 
 export interface RecentlyViewedProps {
   me: RecentlyViewed_me
-  useRelay?: boolean
 }
 
 const HEIGHT = 180
@@ -22,10 +21,6 @@ const HEIGHT = 180
   context_module: Schema.ContextModule.RecentlyViewedArtworks,
 })
 export class RecentlyViewed extends React.Component<RecentlyViewedProps> {
-  static defaultProps = {
-    useRelay: true,
-  }
-
   @track({
     type: Schema.Type.Thumbnail,
     action_type: Schema.ActionType.Click,
@@ -35,7 +30,7 @@ export class RecentlyViewed extends React.Component<RecentlyViewedProps> {
   }
 
   render() {
-    const { me, useRelay } = this.props
+    const { me } = this.props
 
     return (
       <ContextConsumer>
@@ -65,7 +60,6 @@ export class RecentlyViewed extends React.Component<RecentlyViewedProps> {
                         imageHeight={HEIGHT}
                         width={HEIGHT * aspect_ratio}
                         margin={10}
-                        useRelay={useRelay}
                         user={user}
                         mediator={mediator}
                         onClick={this.trackClick.bind(this)}

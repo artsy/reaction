@@ -29,7 +29,6 @@ export interface SaveProps
   style?: any
   relay?: RelayProp
   relayEnvironment?: RelayRuntimeTypes.Environment
-  useRelay?: boolean
   mediator?: Artsy.Mediator
   render?: (props, state) => JSX.Element
   trackingData?: SaveTrackingProps
@@ -45,10 +44,6 @@ export interface SaveState {
 
 @track()
 export class SaveButton extends React.Component<SaveProps, SaveState> {
-  static defaultProps = {
-    useRelay: true,
-  }
-
   state = {
     is_saved: null,
     isHovered: false,
@@ -80,28 +75,10 @@ export class SaveButton extends React.Component<SaveProps, SaveState> {
   }
 
   handleSave() {
-    const { user, artwork, relay, relayEnvironment, useRelay } = this.props
+    const { user, artwork, relay, relayEnvironment } = this.props
     const environment = (relay && relay.environment) || relayEnvironment
 
     if (environment && user && user.id) {
-      // Optimistic update for environments that don't have typical access to
-      // Relay, e.g., where new ArtworkGrids are used in old code via Stitch. Note
-      // that the prop `useRelay` refers to outer HOC wrappers. In cases where
-      // Save UI components are used it is possible to piggyback on ContextProvider
-      // environment for mutations, but since the component exists outside of a
-      // Relay HOC props are not updated when successful mutations occur -- hence
-      // the need for setState.
-      //
-      // TODO:
-      // Refactor out `useRelay` prop when Force artwork Grids have been moved
-      // completely over to Relay
-
-      if (!useRelay) {
-        this.setState({
-          is_saved: !this.isSaved,
-        })
-      }
-
       commitMutation<SaveArtworkMutation>(environment, {
         mutation: graphql`
           mutation SaveArtworkMutation($input: SaveArtworkInput!) {
@@ -131,7 +108,7 @@ export class SaveButton extends React.Component<SaveProps, SaveState> {
         },
         onError: error => {
           // Revert optimistic update
-          if (!useRelay || this.props.render) {
+          if (this.props.render) {
             this.setState({
               is_saved: this.isSaved,
             })
@@ -140,7 +117,7 @@ export class SaveButton extends React.Component<SaveProps, SaveState> {
           console.error("Artwork/Save Error saving artwork: ", error)
         },
         onCompleted: ({ saveArtwork }) => {
-          if (!useRelay || this.props.render) {
+          if (this.props.render) {
             this.setState({
               is_saved: saveArtwork.artwork.is_saved,
             })
@@ -237,11 +214,14 @@ export const Container = styled.div`
   border-radius: 50%;
   font-size: 16px;
   line-height: ${SIZE}px;
+
   &:hover {
     background-color: black;
   }
+
   &[data-saved="true"] {
     background-color: ${colors.purpleRegular};
+
     &:hover {
       background-color: ${colors.redMedium};
     }

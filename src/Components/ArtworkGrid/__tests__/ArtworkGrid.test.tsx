@@ -1,5 +1,6 @@
 import { ArtworkGrid_artworks } from "__generated__/ArtworkGrid_artworks.graphql"
 import { renderRelayTree } from "DevTools"
+import { RelayStubProvider } from "DevTools/RelayStubProvider"
 import { mount } from "enzyme"
 import { cloneDeep } from "lodash"
 import React from "react"
@@ -116,7 +117,11 @@ describe("ArtworkGrid", () => {
 
     let props
     const getWrapper = passedProps => {
-      return mount(<ArtworkGridContainer {...passedProps} useRelay={false} />)
+      return mount(
+        <RelayStubProvider>
+          <ArtworkGridContainer {...passedProps} />
+        </RelayStubProvider>
+      )
     }
 
     beforeEach(() => {
@@ -150,27 +155,31 @@ describe("ArtworkGrid", () => {
 
     it("#componentDidMount sets state.interval if props.onLoadMore", () => {
       props.onLoadMore = jest.fn()
-      const wrapper = getWrapper(props)
+      const wrapper = getWrapper(props).find(ArtworkGridContainer)
       const { interval } = wrapper.state() as ArtworkGridContainerState
       expect(interval).toBeGreaterThan(0)
     })
 
     it("#componentWillUnmount calls #clearInterval if state.interval exists", () => {
       props.onLoadMore = jest.fn()
-      const wrapper = getWrapper(props)
+      const wrapper = getWrapper(props).find(ArtworkGridContainer)
       wrapper.instance().componentWillUnmount()
       expect(global.clearInterval).toBeCalled()
     })
 
     it("#maybeLoadMore calls props.onLoadMore if scroll position is at end", () => {
       props.onLoadMore = jest.fn()
-      const wrapper = getWrapper(props).instance() as ArtworkGridContainer
+      const wrapper = getWrapper(props)
+        .find(ArtworkGridContainer)
+        .instance() as ArtworkGridContainer
       wrapper.maybeLoadMore()
       expect(props.onLoadMore).toBeCalled()
     })
 
     it("#sectionedArtworks divides artworks into columns", () => {
-      const wrapper = getWrapper(props).instance() as ArtworkGridContainer
+      const wrapper = getWrapper(props)
+        .find(ArtworkGridContainer)
+        .instance() as ArtworkGridContainer
       const artworks = wrapper.sectionedArtworksForAllBreakpoints(
         props.artworks,
         [2, 2, 2, 3]
@@ -179,7 +188,7 @@ describe("ArtworkGrid", () => {
     })
 
     it("Renders artworks if present", () => {
-      const wrapper = getWrapper(props)
+      const wrapper = getWrapper(props).find(ArtworkGridContainer)
       expect(wrapper.text()).toMatch(ArtworkGridFixture.edges[0].node.title)
       expect(wrapper.find(ArtworkGridItem).length).toBe(4)
     })
