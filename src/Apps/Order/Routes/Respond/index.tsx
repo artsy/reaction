@@ -90,7 +90,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
         this.props.dialog.showErrorDialog({
           title: "Offer may be too low",
           message:
-            "Offers within 25% of the counteroffer are most likely to receive a response.",
+            "Offers within 25% of the seller's offer are most likely to receive a response.",
           continueButtonText: "OK",
         })
         return
@@ -102,8 +102,8 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
       ) {
         this.setState({ highSpeedBumpEncountered: true })
         this.props.dialog.showErrorDialog({
-          title: "Offer higher than list price",
-          message: "You’re making an offer higher than the counteroffer.",
+          title: "Offer higher than seller's offer",
+          message: "You’re making an offer higher than the seller's offer.",
           continueButtonText: "OK",
         })
         return

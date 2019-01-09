@@ -408,7 +408,7 @@ Object {
       expect(dialog.props().show).toBe(true)
 
       expect(dialog.text()).toMatchInlineSnapshot(
-        `"Offer may be too lowOffers within 25% of the counteroffer are most likely to receive a response.OK"`
+        `"Offer may be too lowOffers within 25% of the seller's offer are most likely to receive a response.OK"`
       )
 
       const button = component.find(ModalButton)
@@ -464,7 +464,7 @@ Object {
       expect(dialog.props().show).toBe(true)
 
       expect(dialog.text()).toMatchInlineSnapshot(
-        `"Offer higher than list priceYou’re making an offer higher than the counteroffer.OK"`
+        `"Offer higher than seller's offerYou’re making an offer higher than the seller's offer.OK"`
       )
 
       const button = component.find(ModalButton)
