@@ -1,18 +1,36 @@
 import { Link, Sans, Separator, Serif } from "@artsy/palette"
 
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import { Modal } from "Components/Modal/Modal"
 import React from "react"
 
+@track(() => ({
+  context_module: Schema.ContextModule.ArtistInsights,
+}))
 export class ArtistInsightsModal extends React.Component {
   state = {
     showModal: false,
+  }
+
+  @track(() => ({
+    action_type: Schema.ActionType.Click,
+    subject: "Learn more",
+    type: "Link",
+  }))
+  handleOpen() {
+    this.setState({ showModal: true })
+  }
+
+  handleClose() {
+    this.setState({ showModal: false })
   }
 
   render() {
     return (
       <>
         <Modal
-          onClose={() => this.setState({ showModal: false })}
+          onClose={this.handleClose.bind(this)}
           show={this.state.showModal}
           style={{
             maxHeight: 540,
@@ -63,10 +81,8 @@ export class ArtistInsightsModal extends React.Component {
           </Serif>
         </Modal>
         <Sans mt={1} ml={1} size="2" color="black60">
-          <Link onClick={() => this.setState({ showModal: true })}>
-            Learn more
-          </Link>{" "}
-          about artist insights
+          <Link onClick={this.handleOpen.bind(this)}>Learn more</Link> about
+          artist insights
         </Sans>
       </>
     )
