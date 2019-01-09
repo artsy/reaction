@@ -1,3 +1,17 @@
+# 9.5.1 (Wed Jan 09 2019)
+
+#### 🐛  Bug Fix
+
+- Integrates WithCurrentTime into CountdownTimer component [#1831](https://github.com/artsy/reaction/pull/1831) ([@ashfurrow](https://github.com/ashfurrow))
+- [Refactor] Remove useRelay fork code for ArtworkGrid [#1834](https://github.com/artsy/reaction/pull/1834) ([@damassi](https://github.com/damassi))
+
+#### Authors: 2
+
+- Ash Furrow ([@ashfurrow](https://github.com/ashfurrow))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # 9.5.0 (Wed Jan 09 2019)
 
 #### 🚀  Enhancement
