@@ -1,3 +1,29 @@
+# 9.5.3 (Wed Jan 09 2019)
+
+#### 🐛  Bug Fix
+
+- add test for bidActions [#1840](https://github.com/artsy/reaction/pull/1840) ([@oxaudo](https://github.com/oxaudo))
+
+#### Authors: 1
+
+- Oksana ([@oxaudo](https://github.com/oxaudo))
+
+---
+
+# 9.5.2 (Wed Jan 09 2019)
+
+#### 🐛  Bug Fix
+
+- [Minor] Fix IconRemove component definition [#1841](https://github.com/artsy/reaction/pull/1841) ([@eessex](https://github.com/eessex))
+- Add event tracking for Read more / Learn more artist insight actions [#1839](https://github.com/artsy/reaction/pull/1839) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 2
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
 # 9.5.1 (Wed Jan 09 2019)
 
 #### 🐛  Bug Fix
