@@ -207,6 +207,7 @@ export enum ContextModule {
   AboutTheWorkPartner = "About the Work (Partner)",
   ArtistOverview = "ArtistOverview",
   ArtistBio = "ArtistBio",
+  ArtistInsights = "ArtistInsights",
   Biography = "Biography",
   Sidebar = "Sidebar",
 

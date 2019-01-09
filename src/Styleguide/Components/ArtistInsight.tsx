@@ -1,4 +1,6 @@
 import { Box, Flex, Link, Sans } from "@artsy/palette"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import {
   Auction,
   BlueChip,
@@ -31,9 +33,26 @@ const ICON_MAPPING = {
   TOP_EMERGING: TopEmerging,
 }
 
+@track<ArtistInsightProps>(props => ({
+  context_module: Schema.ContextModule.ArtistInsights,
+  context_submodule: props.type,
+}))
 export class ArtistInsight extends React.Component<ArtistInsightProps> {
   state = {
     expanded: false,
+  }
+
+  @track<ArtistInsightProps>(() => ({
+    action_type: Schema.ActionType.Click,
+    subject: "Read more",
+    type: "Link",
+  }))
+  handleExpand() {
+    this.setState({ expanded: true })
+  }
+
+  handleCollapse() {
+    this.setState({ expanded: false })
   }
 
   renderEntities() {
@@ -45,9 +64,7 @@ export class ArtistInsight extends React.Component<ArtistInsightProps> {
       return (
         <Sans size="2" verticalAlign="top" color="black60">
           {entities.join(", ")}.{" "}
-          <Link onClick={() => this.setState({ expanded: false })}>
-            Show less
-          </Link>
+          <Link onClick={this.handleCollapse.bind(this)}>Show less</Link>
         </Sans>
       )
     } else {
@@ -58,7 +75,7 @@ export class ArtistInsight extends React.Component<ArtistInsightProps> {
           {entities.length > 1 && (
             <>
               , and{" "}
-              <Link onClick={() => this.setState({ expanded: true })}>
+              <Link onClick={this.handleExpand.bind(this)}>
                 {entities.length - 1} more
               </Link>
             </>

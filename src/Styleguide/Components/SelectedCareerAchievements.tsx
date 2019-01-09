@@ -52,6 +52,7 @@ export class SelectedCareerAchievements extends React.Component<
 
     return (
       <ArtistInsight
+        key="HIGH_AUCTION"
         type="HIGH_AUCTION"
         label="High auction record"
         value={display}
@@ -63,10 +64,12 @@ export class SelectedCareerAchievements extends React.Component<
     const { partners } = highlights
     if (partners && partners.edges && partners.edges.length > 0) {
       const highCategory = highestCategory(partners.edges)
+      const type = highCategory.toUpperCase().replace("-", "_")
 
       return (
         <ArtistInsight
-          type={highCategory.toUpperCase().replace("-", "_")}
+          key={type}
+          type={type}
           label={CATEGORIES[highCategory]}
           value={CATEGORY_LABEL_MAP[highCategory]}
         />
@@ -74,10 +77,10 @@ export class SelectedCareerAchievements extends React.Component<
     }
   }
 
-  renderInsight(insight, key) {
+  renderInsight(insight) {
     return (
       <ArtistInsight
-        key={key}
+        key={insight.type}
         type={insight.type}
         label={insight.label}
         entities={insight.entities}
@@ -114,8 +117,8 @@ export class SelectedCareerAchievements extends React.Component<
               {this.renderGalleryRepresentation()}
               {this.renderAuctionHighlight()}
 
-              {this.props.artist.insights.map((insight, index) => {
-                return this.renderInsight(insight, index)
+              {this.props.artist.insights.map(insight => {
+                return this.renderInsight(insight)
               })}
             </Flex>
           </Flex>
