@@ -1,5 +1,8 @@
+import { ArtworkActionsFixture } from "./ArtworkActions.fixture"
+
 export const ArtworkImageBrowserFixture = {
   artwork: {
+    ...ArtworkActionsFixture.artwork,
     title: "LENIN FS II.402",
     image_alt: "Andy Warhol, ‘LENIN FS II.402’, 1987, Gallery Art",
     image_title: "Andy Warhol, ‘LENIN FS II.402’, 1987",

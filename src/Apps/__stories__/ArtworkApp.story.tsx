@@ -8,7 +8,7 @@ storiesOf("Apps/Artwork Page", module)
     return (
       <MockRouter
         routes={artworkRoutes}
-        initialRoute="/artwork/pablo-picasso-femme-assise-dans-un-fauteuil-tresse"
+        initialRoute="/artwork/andy-warhol-skull"
       />
     )
   })

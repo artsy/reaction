@@ -17,16 +17,14 @@ storiesOf("Apps/Artwork Page/Components/ArtworkImageBrowser", module).add(
       <Section title="Default Share">
         <Flex justifyContent="center" alignItems="flex-end" height="200px">
           <RelayStubProvider>
-            <ArtworkActions artwork={ArtworkActionsFixture.artwork as any} />
+            <ArtworkActions {...ArtworkActionsFixture as any} />
           </RelayStubProvider>
         </Flex>
       </Section>
       <Section title="Auction Share">
         <Flex justifyContent="center" alignItems="flex-end" height="200px">
           <RelayStubProvider>
-            <ArtworkActions
-              artwork={ArtworkActionsAuctionFixture.artwork as any}
-            />
+            <ArtworkActions {...ArtworkActionsAuctionFixture as any} />
           </RelayStubProvider>
         </Flex>
       </Section>
