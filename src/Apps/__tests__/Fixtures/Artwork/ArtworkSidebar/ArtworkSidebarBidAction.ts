@@ -149,7 +149,15 @@ export const RegisteredBidder = {
 }
 
 export const RegistedBidderWithBids = {
-  myLotStanding: [{ active_bid: { __id: "some bid present" } }],
+  myLotStanding: [
+    {
+      most_recent_bid: {
+        max_bid: {
+          cents: "30000",
+        },
+      },
+    },
+  ],
   sale: {
     registrationStatus: { id: "bidder_approved", qualified_for_bidding: true },
   },
