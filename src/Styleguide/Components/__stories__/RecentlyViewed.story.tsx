@@ -18,7 +18,6 @@ storiesOf("Styleguide/Components", module).add("Recently Viewed", () => {
                 },
               } as any
             }
-            useRelay={false}
           />
         </Box>
       </Section>

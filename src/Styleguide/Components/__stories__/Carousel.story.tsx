@@ -83,7 +83,6 @@ storiesOf("Styleguide/Components", module).add("Carousel", () => {
                   imageHeight={200}
                   width={200 * aspect_ratio}
                   margin={20}
-                  useRelay={false}
                 />
               )
             }}

@@ -3,8 +3,7 @@ import React from "react"
 import { graphql } from "react-relay"
 
 import { RootQueryRenderer } from "Artsy/Relay/RootQueryRenderer"
-import RelayArtworkGrid, { ArtworkGrid } from "../ArtworkGrid"
-import { ArtworkGridFixture } from "./ArtworkGridFixture"
+import ArtworkGrid from "../ArtworkGrid"
 
 export function ArtworkGridExample(props: {
   artistID: string
@@ -25,7 +24,7 @@ export function ArtworkGridExample(props: {
       render={readyState => {
         return (
           readyState.props && (
-            <RelayArtworkGrid {...readyState.props.artist as any} {...props} />
+            <ArtworkGrid {...readyState.props.artist as any} {...props} />
           )
         )
       }}
@@ -39,7 +38,4 @@ storiesOf("Components/Artworks/ArtworkGrid", module)
   })
   .add("An empty grid", () => {
     return <ArtworkGridExample artistID="sydney-shen" />
-  })
-  .add("Without Relay", () => {
-    return <ArtworkGrid artworks={ArtworkGridFixture as any} useRelay={false} />
   })

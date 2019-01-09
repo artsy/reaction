@@ -11,7 +11,7 @@ import { ComponentRef, createFragmentContainer, graphql } from "react-relay"
 // @ts-ignore
 import styled, { StyledComponentClass } from "styled-components"
 import { Media, valuesWithBreakpointProps } from "Utils/Responsive"
-import RelayGridItem, { ArtworkGridItem } from "../Artwork/GridItem"
+import GridItem from "../Artwork/GridItem"
 
 type SectionedArtworks = Array<Array<ArtworkGrid_artworks["edges"][0]["node"]>>
 
@@ -26,7 +26,6 @@ export interface ArtworkGridProps
   onLoadMore?: () => any
   sectionMargin?: number
   user?: User
-  useRelay?: boolean
 }
 
 export interface ArtworkGridContainerState {
@@ -42,7 +41,6 @@ export class ArtworkGridContainer extends React.Component<
     columnCount: [3],
     sectionMargin: 20,
     itemMargin: 20,
-    useRelay: true,
   }
 
   state = {
@@ -108,14 +106,10 @@ export class ArtworkGridContainer extends React.Component<
       const artworkComponents = []
       for (let j = 0; j < sectionedArtworks[i].length; j++) {
         const artwork = sectionedArtworks[i][j]
-        const GridItem: typeof RelayGridItem = (this.props.useRelay
-          ? RelayGridItem
-          : ArtworkGridItem) as any
         artworkComponents.push(
           <GridItem
             artwork={artwork}
             key={"artwork-" + j + "-" + artwork.__id}
-            useRelay={this.props.useRelay}
             user={this.props.user}
             mediator={this.props.mediator}
             onClick={() => {

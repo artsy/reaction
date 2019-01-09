@@ -31,3 +31,5 @@ const EmptyMessage = styled(Message)`
     cursor: pointer;
   }
 `
+
+EmptyMessage.displayName = "EmptyMessage"
