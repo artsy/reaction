@@ -9,14 +9,14 @@ describe("ArtworkActions", () => {
   const getWrapper = (props = ArtworkActionsFixture) => {
     return mount(
       <RelayStubProvider>
-        <ArtworkActionsFragmentContainer artwork={props.artwork as any} />
+        <ArtworkActionsFragmentContainer {...props as any} />
       </RelayStubProvider>
     )
   }
 
   it("renders proper components", () => {
     const wrapper = getWrapper()
-    expect(wrapper.find("Save").length).toBe(1)
+    expect(wrapper.find("Heart").length).toBe(1)
     expect(wrapper.find("Share").length).toBe(1)
   })
 
@@ -44,6 +44,42 @@ describe("ArtworkActions", () => {
       const wrapper = getWrapper(data)
       expect(wrapper.find("Heart").length).toBe(0)
       expect(wrapper.find("Bell").length).toBe(1)
+    })
+  })
+
+  describe("concerning other utility actions", () => {
+    describe("download link", () => {
+      it("renders link if is_downloadable", () => {
+        const data = cloneDeep(ArtworkActionsFixture)
+        data.artwork.is_downloadable = true
+        const wrapper = getWrapper(data)
+        expect(wrapper.find("Download").length).toBe(1)
+      })
+
+      it("renders link if admin", () => {
+        const data = cloneDeep(ArtworkActionsFixture)
+        data.user.type = "Admin"
+        const wrapper = getWrapper(data)
+        expect(wrapper.find("Download").length).toBe(1)
+      })
+
+      it("hides link if is_downloadable=false", () => {
+        const data = cloneDeep(ArtworkActionsFixture)
+        data.user.type = "not admin"
+        data.artwork.is_downloadable = false
+        const wrapper = getWrapper(data)
+        expect(wrapper.find("Download").length).toBe(0)
+      })
+    })
+
+    describe("admin actions", () => {
+      it("renders genome and edit if admin", () => {
+        const data = cloneDeep(ArtworkActionsFixture)
+        data.user.type = "Admin"
+        const wrapper = getWrapper(data)
+        expect(wrapper.find("Edit").length).toBe(1)
+        expect(wrapper.find("Genome").length).toBe(1)
+      })
     })
   })
 })

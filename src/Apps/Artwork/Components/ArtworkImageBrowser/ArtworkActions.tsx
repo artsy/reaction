@@ -23,9 +23,7 @@ interface ArtworkActionsState {
   showSharePanel: boolean
 }
 
-@track({
-  context_module: Schema.ContextModule.ShareButton,
-})
+@track()
 export class ArtworkActions extends React.Component<
   ArtworkActionsProps,
   ArtworkActionsState
@@ -37,6 +35,7 @@ export class ArtworkActions extends React.Component<
   @track({
     flow: Schema.Flow.ArtworkShare,
     action_type: Schema.ActionType.Click,
+    context_module: Schema.ContextModule.ShareButton,
     type: Schema.Type.Button,
   })
   toggleSharePanel() {
@@ -56,9 +55,7 @@ export class ArtworkActions extends React.Component<
       artwork: { is_downloadable, href, artists, title, date },
     } = this.props
 
-    const canDownload = is_downloadable || this.isAdmin
-
-    if (canDownload) {
+    if (is_downloadable || this.isAdmin) {
       const artistNames = artists.map(({ name }) => name).join(", ")
       const filename = slugify(compact([artistNames, title, date]).join(" "))
       const downloadableImageUrl = `${sd.APP_URL}${href}/download/${filename}.jpg` // prettier-ignore
@@ -77,7 +74,7 @@ export class ArtworkActions extends React.Component<
     return (
       <>
         <Container>
-          <Join separator={<Spacer mx={0.5} />}>
+          <Join separator={<Spacer mx={0} />}>
             <SaveButton
               artwork={this.props.artwork}
               render={Save(this.props)}
@@ -88,10 +85,10 @@ export class ArtworkActions extends React.Component<
             />
 
             {downloadableImageUrl && (
-              <UtilButton name="download" link={downloadableImageUrl} />
+              <UtilButton name="download" href={downloadableImageUrl} />
             )}
-            {this.isAdmin && <UtilButton name="edit" link={editUrl} />}
-            {this.isAdmin && <UtilButton name="genome" link={genomeUrl} />}
+            {this.isAdmin && <UtilButton name="edit" href={editUrl} />}
+            {this.isAdmin && <UtilButton name="genome" href={genomeUrl} />}
           </Join>
 
           {this.state.showSharePanel && (
@@ -142,8 +139,8 @@ export const ArtworkActionsFragmentContainer = createFragmentContainer(
 )
 
 interface UtilButtonProps {
-  link?: string
   name: "bell" | "edit" | "download" | "genome" | "heart" | "share"
+  href?: string
   onClick?: () => void
   selected?: boolean
 }
@@ -157,7 +154,7 @@ class UtilButton extends React.Component<
   }
 
   render() {
-    const { link, name, onClick, ...props } = this.props
+    const { href, name, onClick, ...props } = this.props
 
     const getIcon = () => {
       switch (name) {
@@ -187,8 +184,8 @@ class UtilButton extends React.Component<
         onMouseOut={() => this.setState({ hovered: false })}
         onClick={onClick}
       >
-        {link ? (
-          <Link className="noUnderline" href={link} target="_blank">
+        {href ? (
+          <Link className="noUnderline" href={href} target="_blank">
             <Icon {...props} fill={fill} />
           </Link>
         ) : (
@@ -211,7 +208,7 @@ const UtilButtonContainer = styled(Flex)`
 const Container = styled(Flex).attrs({
   justifyContent: ["left", "center"],
   mb: [2, 2],
-  ml: [-0.5, 1],
+  ml: [-0.5, 0.5],
   pt: [2, 3],
 })`
   position: relative;
