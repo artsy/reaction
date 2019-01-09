@@ -140,30 +140,42 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
       <>
         <Row>
           <Col sm={colNum}>
-            {showArtistInsightsV2 && showArtistBio && BioFragment}
-            {showArtistInsightsV2 && showGenes && GenesFragment}
-            {showArtistInsightsV2 &&
-              showConsignable && (
-                <>
-                  {ConsignmentFragment}
-                  <Spacer mb={1} />
-                </>
-              )}
-            {ArtistInsights && <ArtistInsights artist={artist} />}
-            {!showArtistInsightsV2 &&
-              showSelectedExhibitions && (
-                <>
-                  <SelectedExhibitions
-                    artistID={artist.id}
-                    totalExhibitions={this.props.artist.counts.partner_shows}
-                    exhibitions={this.props.artist.exhibition_highlights}
-                  />
-                  <Spacer mb={1} />
-                </>
-              )}
-            {!showArtistInsightsV2 && showArtistBio && BioFragment}
-            {!showArtistInsightsV2 && showGenes && GenesFragment}
-            {!showArtistInsightsV2 && showConsignable && ConsignmentFragment}
+            {showArtistInsightsV2 ? (
+              <>
+                {showArtistBio && BioFragment}
+                {showGenes && GenesFragment}
+                {showConsignable && (
+                  <>
+                    {ConsignmentFragment}
+                    <Spacer mb={1} />
+                  </>
+                )}
+                {ArtistInsights && <ArtistInsights artist={artist} />}
+              </>
+            ) : (
+              <>
+                {ArtistInsights && (
+                  <>
+                    <ArtistInsights artist={artist} />
+                    <Spacer mb={1} />
+                  </>
+                )}
+
+                {showSelectedExhibitions && (
+                  <>
+                    <SelectedExhibitions
+                      artistID={artist.id}
+                      totalExhibitions={this.props.artist.counts.partner_shows}
+                      exhibitions={this.props.artist.exhibition_highlights}
+                    />
+                    <Spacer mb={1} />
+                  </>
+                )}
+                {showArtistBio && BioFragment}
+                {showGenes && GenesFragment}
+                {showConsignable && ConsignmentFragment}
+              </>
+            )}
           </Col>
 
           {showCurrentEvent && (
