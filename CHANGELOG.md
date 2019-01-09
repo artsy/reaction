@@ -1,3 +1,15 @@
+# 9.5.3 (Wed Jan 09 2019)
+
+#### 🐛  Bug Fix
+
+- add test for bidActions [#1840](https://github.com/artsy/reaction/pull/1840) ([@oxaudo](https://github.com/oxaudo))
+
+#### Authors: 1
+
+- Oksana ([@oxaudo](https://github.com/oxaudo))
+
+---
+
 # 9.5.2 (Wed Jan 09 2019)
 
 #### 🐛  Bug Fix
