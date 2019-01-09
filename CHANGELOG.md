@@ -1,3 +1,15 @@
+# 9.5.0 (Wed Jan 09 2019)
+
+#### 🚀  Enhancement
+
+- Custom colors [#1790](https://github.com/artsy/reaction/pull/1790) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # 9.4.3 (Wed Jan 09 2019)
 
 #### 🐛  Bug Fix
