@@ -10,6 +10,7 @@ import { get } from "Utils/get"
 
 interface Props extends ContextProps {
   artist: FollowArtistPopoverRow_artist
+  suggestedIds: string[]
 }
 
 interface State {
@@ -26,6 +27,10 @@ const ArtistName = styled(Serif)`
 const FollowButtonContainer = Box
 
 class FollowArtistPopoverRow extends React.Component<Props, State> {
+  public static defaultProps = {
+    suggestedIds: [],
+  }
+
   state = {
     swappedArtist: null,
     followed: false,
@@ -41,7 +46,7 @@ class FollowArtistPopoverRow extends React.Component<Props, State> {
               artist {
                 __id
                 related {
-                  suggested(first: 1, exclude_followed_artists: true) {
+                  suggested(first: 3, exclude_followed_artists: true) {
                     edges {
                       node {
                         __id
@@ -63,7 +68,15 @@ class FollowArtistPopoverRow extends React.Component<Props, State> {
           })
         },
         updater: (store: RecordSourceSelectorProxy, data: SelectorData) => {
-          const { node } = data.followArtist.artist.related.suggested.edges[0]
+          const fetchedSuggestions =
+            data.followArtist.artist.related.suggested.edges
+          const nonSuggestedNodes = fetchedSuggestions.filter(
+            s => this.props.suggestedIds.indexOf(s.node.__id) === -1
+          )
+          const { node } = nonSuggestedNodes[0]
+          // Add new suggested artist id to suggestedIds property
+          // so that we can filter the suggested ones after next follow
+          this.props.suggestedIds.push(node.__id)
 
           // Add slight delay to make UX seem a bit nicer
           this.setState(
@@ -88,6 +101,8 @@ class FollowArtistPopoverRow extends React.Component<Props, State> {
     const { artist: originalArtist } = this.props
     const { swappedArtist } = this.state
     const artist = swappedArtist || originalArtist
+    if (!artist) return null
+
     const imageUrl = get(artist, a => a.image.cropped.url)
     const { _id: artistID } = artist
     const key = `avatar-${artistID}`

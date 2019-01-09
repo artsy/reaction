@@ -34,8 +34,8 @@ interface Props extends ContextProps {
 const FollowArtistPopover: SFC<Props> = props => {
   const { suggested, user } = props
   const { related } = suggested
-  const suggetionsCount = related.suggested.edges.length
-  if (suggetionsCount === 0) return null
+  const suggetedIds = related.suggested.edges.map(s => s.node.__id)
+  if (suggetedIds.length === 0) return null
   return (
     <BorderedContainer>
       <Container>
@@ -53,8 +53,12 @@ const FollowArtistPopover: SFC<Props> = props => {
           {related.suggested.edges.map(({ node: artist }, index) => {
             return (
               <React.Fragment key={artist.__id}>
-                <FollowArtistPopoverRow user={user} artist={artist} />
-                {index < suggetionsCount - 1 && <Separator />}
+                <FollowArtistPopoverRow
+                  user={user}
+                  artist={artist}
+                  suggestedIds={suggetedIds}
+                />
+                {index < suggetedIds.length - 1 && <Separator />}
               </React.Fragment>
             )
           })}

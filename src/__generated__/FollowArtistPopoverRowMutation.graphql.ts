@@ -48,7 +48,7 @@ mutation FollowArtistPopoverRowMutation(
     artist {
       __id
       related {
-        suggested(first: 1, exclude_followed_artists: true) {
+        suggested(first: 3, exclude_followed_artists: true) {
           edges {
             node {
               __id
@@ -125,7 +125,7 @@ v2 = [
                 "kind": "LinkedField",
                 "alias": null,
                 "name": "suggested",
-                "storageKey": "suggested(exclude_followed_artists:true,first:1)",
+                "storageKey": "suggested(exclude_followed_artists:true,first:3)",
                 "args": [
                   {
                     "kind": "Literal",
@@ -136,7 +136,7 @@ v2 = [
                   {
                     "kind": "Literal",
                     "name": "first",
-                    "value": 1,
+                    "value": 3,
                     "type": "Int"
                   }
                 ],
@@ -243,7 +243,7 @@ return {
   "operationKind": "mutation",
   "name": "FollowArtistPopoverRowMutation",
   "id": null,
-  "text": "mutation FollowArtistPopoverRowMutation(\n  $input: FollowArtistInput!\n) {\n  followArtist(input: $input) {\n    artist {\n      __id\n      related {\n        suggested(first: 1, exclude_followed_artists: true) {\n          edges {\n            node {\n              __id\n              id\n              _id\n              name\n              image {\n                cropped(width: 45, height: 45) {\n                  url\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation FollowArtistPopoverRowMutation(\n  $input: FollowArtistInput!\n) {\n  followArtist(input: $input) {\n    artist {\n      __id\n      related {\n        suggested(first: 3, exclude_followed_artists: true) {\n          edges {\n            node {\n              __id\n              id\n              _id\n              name\n              image {\n                cropped(width: 45, height: 45) {\n                  url\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -261,5 +261,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'd19415be63809708fc929740457bf12a';
+(node as any).hash = '4ef0efbe01b34c0cdb76fff2bd8a3141';
 export default node;
