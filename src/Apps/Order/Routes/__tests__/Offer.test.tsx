@@ -200,9 +200,8 @@ describe("Offer InitialMutation", () => {
     })
 
     describe("The 'amount too small' speed bump", () => {
-      let component: ReactWrapper
-      beforeEach(async () => {
-        component = getWrapper(testProps)
+      it("shows if the offer amount is too small", async () => {
+        const component = getWrapper(testProps)
 
         component
           .find(OfferInput)
@@ -213,59 +212,42 @@ describe("Offer InitialMutation", () => {
 
         await flushPromiseQueue()
         component.update()
-      })
-
-      it("shows if the offer amount is too small", async () => {
         expect(commitMutation).not.toHaveBeenCalled()
 
-        const dialog = component.find(ModalDialog)
+        let dialog = component.find(ModalDialog)
 
         expect(dialog).toHaveLength(1)
         expect(dialog.props().show).toBe(true)
 
         expect(dialog.text()).toMatchInlineSnapshot(
-          `"Offer may be too lowOffers within 25% of the list price are most likely to receive a response.CancelContinue"`
+          `"Offer may be too lowOffers within 25% of the list price are most likely to receive a response.OK"`
         )
 
-        const buttons = component.find(ModalButton)
-        expect(buttons.length).toBe(2)
-        expect(buttons.first().text()).toBe("Cancel")
-        expect(buttons.last().text()).toBe("Continue")
-      })
+        const button = component.find(ModalButton)
+        expect(button.length).toBe(1)
+        expect(button.text()).toBe("OK")
 
-      it("goes away without mutations when clicking Cancel", async () => {
-        component
-          .find(ModalButton)
-          .first()
-          .simulate("click")
+        // dismiss message
+        button.simulate("click")
 
         await flushPromiseQueue()
         component.update()
 
-        const dialog = component.find(ModalDialog)
+        dialog = component.find(ModalDialog)
         expect(dialog.props().show).toBe(false)
+
         expect(commitMutation).not.toHaveBeenCalled()
-      })
 
-      it("goes away with mutations when clicking Continue", async () => {
-        component
-          .find(ModalButton)
-          .last()
-          .simulate("click")
+        // submit again
+        component.find(Button).simulate("click")
 
-        await flushPromiseQueue()
-        component.update()
-
-        const dialog = component.find(ModalDialog)
-        expect(dialog.props().show).toBe(false)
-        expect(commitMutation).toHaveBeenCalled()
+        expect(commitMutation).toHaveBeenCalledTimes(1)
       })
     })
 
     describe("The 'amount too high' speed bump", () => {
-      let component: ReactWrapper
-      beforeEach(async () => {
-        component = getWrapper(testProps)
+      it("shows if the offer amount is too high", async () => {
+        const component = getWrapper(testProps)
 
         component
           .find(OfferInput)
@@ -276,52 +258,36 @@ describe("Offer InitialMutation", () => {
 
         await flushPromiseQueue()
         component.update()
-      })
-
-      it("shows if the offer amount is too high", async () => {
         expect(commitMutation).not.toHaveBeenCalled()
 
-        const dialog = component.find(ModalDialog)
+        let dialog = component.find(ModalDialog)
 
         expect(dialog).toHaveLength(1)
         expect(dialog.props().show).toBe(true)
 
         expect(dialog.text()).toMatchInlineSnapshot(
-          `"Offer higher than list priceYou’re making an offer higher than the list price.CancelContinue"`
+          `"Offer higher than list priceYou’re making an offer higher than the list price.OK"`
         )
 
-        const buttons = component.find(ModalButton)
-        expect(buttons.length).toBe(2)
-        expect(buttons.first().text()).toBe("Cancel")
-        expect(buttons.last().text()).toBe("Continue")
-      })
+        const button = component.find(ModalButton)
+        expect(button.length).toBe(1)
+        expect(button.text()).toBe("OK")
 
-      it("goes away without mutations when clicking Cancel", async () => {
-        component
-          .find(ModalButton)
-          .first()
-          .simulate("click")
+        // dismiss message
+        button.simulate("click")
 
         await flushPromiseQueue()
         component.update()
 
-        const dialog = component.find(ModalDialog)
+        dialog = component.find(ModalDialog)
         expect(dialog.props().show).toBe(false)
+
         expect(commitMutation).not.toHaveBeenCalled()
-      })
 
-      it("goes away with mutations when clicking Continue", async () => {
-        component
-          .find(ModalButton)
-          .last()
-          .simulate("click")
+        // submit again
+        component.find(Button).simulate("click")
 
-        await flushPromiseQueue()
-        component.update()
-
-        const dialog = component.find(ModalDialog)
-        expect(dialog.props().show).toBe(false)
-        expect(commitMutation).toHaveBeenCalled()
+        expect(commitMutation).toHaveBeenCalledTimes(1)
       })
     })
   })
