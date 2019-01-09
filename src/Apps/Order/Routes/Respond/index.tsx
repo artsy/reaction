@@ -12,7 +12,7 @@ import { Helper } from "Apps/Order/Components/Helper"
 import { OfferInput } from "Apps/Order/Components/OfferInput"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
-import { Dialog, injectDialog, showErrorDialog } from "Apps/Order/Dialogs"
+import { Dialog, injectDialog } from "Apps/Order/Dialogs"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { StaticCollapse } from "Components/StaticCollapse"
 import { Router } from "found"
@@ -87,7 +87,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
         offerValue * 100 < currentOfferPrice * 0.75
       ) {
         this.setState({ lowSpeedBumpEncountered: true })
-        showErrorDialog(this.props.dialog, {
+        this.props.dialog.showErrorDialog({
           title: "Offer may be too low",
           message:
             "Offers within 25% of the counteroffer are most likely to receive a response.",
@@ -101,7 +101,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
         this.state.offerValue * 100 > currentOfferPrice
       ) {
         this.setState({ highSpeedBumpEncountered: true })
-        showErrorDialog(this.props.dialog, {
+        this.props.dialog.showErrorDialog({
           title: "Offer higher than list price",
           message: "You’re making an offer higher than the counteroffer.",
           continueButtonText: "OK",
@@ -190,7 +190,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
 
   onMutationError = (errors, title?, message?) => {
     logger.error(errors)
-    showErrorDialog(this.props.dialog, { title, message })
+    this.props.dialog.showErrorDialog({ title, message })
     this.setState({ isCommittingMutation: false })
   }
 

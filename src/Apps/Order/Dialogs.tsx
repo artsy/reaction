@@ -55,11 +55,54 @@ export class DialogContainer extends Container<DialogState> {
       this.setState({ props, onForceClose }, resolve)
     })
   }
+
+  showErrorDialog = ({
+    title = "An error occurred",
+    supportEmail = "orders@artsy.net",
+    message = (
+      <>
+        Something went wrong. Please try again or contact{" "}
+        <Link href={`mailto:${supportEmail}}`}>{supportEmail}</Link>.
+      </>
+    ),
+    continueButtonText = "Continue",
+  }: {
+    title?: string
+    message?: React.ReactNode
+    supportEmail?: string
+    continueButtonText?: string
+  }): Promise<void> => {
+    return new Promise<void>(resolve => {
+      const onContinue = () => {
+        this.hide()
+        resolve()
+      }
+
+      this.show({
+        props: {
+          show: true,
+          heading: title,
+          detail: message,
+          primaryCta: {
+            text: continueButtonText,
+            action: onContinue,
+          },
+          onClose: onContinue,
+        },
+        onForceClose: onContinue,
+      })
+    })
+  }
 }
 
-const extractDialogHelpers = ({ show, hide }: DialogContainer) => ({
+const extractDialogHelpers = ({
   show,
   hide,
+  showErrorDialog,
+}: DialogContainer) => ({
+  show,
+  hide,
+  showErrorDialog,
 })
 
 export type Dialog = ReturnType<typeof extractDialogHelpers>
@@ -85,88 +128,3 @@ export const ConnectedModalDialog = () => (
     {(dialogs: DialogContainer) => <ModalDialog {...dialogs.state.props} />}
   </Subscribe>
 )
-
-export const showAcceptDialog = (
-  dialog: Dialog,
-  {
-    title,
-    message,
-    continueButtonText = "Continue",
-    cancelButtonText = "Cancel",
-  }: {
-    title: React.ReactNode
-    message: React.ReactNode
-    continueButtonText?: string
-    cancelButtonText?: string
-  }
-): Promise<{ accepted: boolean }> => {
-  return new Promise<{ accepted: boolean }>(resolve => {
-    const accept = () => {
-      dialog.hide()
-      resolve({ accepted: true })
-    }
-    const reject = () => {
-      dialog.hide()
-      resolve({ accepted: false })
-    }
-
-    dialog.show({
-      props: {
-        show: true,
-        heading: title,
-        detail: message,
-        primaryCta: {
-          text: continueButtonText,
-          action: accept,
-        },
-        secondaryCta: {
-          text: cancelButtonText,
-          action: reject,
-        },
-        onClose: reject,
-      },
-      onForceClose: reject,
-    })
-  })
-}
-
-export const showErrorDialog = (
-  dialog: Dialog,
-  {
-    title = "An error occurred",
-    supportEmail = "orders@artsy.net",
-    message = (
-      <>
-        Something went wrong. Please try again or contact{" "}
-        <Link href={`mailto:${supportEmail}}`}>{supportEmail}</Link>.
-      </>
-    ),
-    continueButtonText = "Continue",
-  }: {
-    title?: string
-    message?: React.ReactNode
-    supportEmail?: string
-    continueButtonText?: string
-  }
-): Promise<void> => {
-  return new Promise<void>(resolve => {
-    const onContinue = () => {
-      dialog.hide()
-      resolve()
-    }
-
-    dialog.show({
-      props: {
-        show: true,
-        heading: title,
-        detail: message,
-        primaryCta: {
-          text: continueButtonText,
-          action: onContinue,
-        },
-        onClose: onContinue,
-      },
-      onForceClose: onContinue,
-    })
-  })
-}
