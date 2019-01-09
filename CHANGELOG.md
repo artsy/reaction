@@ -1,3 +1,15 @@
+# 9.4.3 (Wed Jan 09 2019)
+
+#### 🐛  Bug Fix
+
+- Fix offer speedbump UX [#1837](https://github.com/artsy/reaction/pull/1837) ([@ds300](https://github.com/ds300))
+
+#### Authors: 1
+
+- David Sheldrick ([@ds300](https://github.com/ds300))
+
+---
+
 # 9.4.2 (Wed Jan 09 2019)
 
 #### 🐛  Bug Fix
