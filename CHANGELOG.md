@@ -1,3 +1,15 @@
+# 9.4.2 (Wed Jan 09 2019)
+
+#### 🐛  Bug Fix
+
+- Update dependency auto-release-cli to v2.1.4 [#1836](https://github.com/artsy/reaction/pull/1836) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 1
+
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # 9.4.1 (Wed Jan 09 2019)
 
 #### 🐛  Bug Fix
