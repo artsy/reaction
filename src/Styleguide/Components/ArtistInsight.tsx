@@ -51,10 +51,6 @@ export class ArtistInsight extends React.Component<ArtistInsightProps> {
     this.setState({ expanded: true })
   }
 
-  handleCollapse() {
-    this.setState({ expanded: false })
-  }
-
   renderEntities() {
     const { entities } = this.props
 
@@ -63,8 +59,7 @@ export class ArtistInsight extends React.Component<ArtistInsightProps> {
     } else if (this.state.expanded) {
       return (
         <Sans size="2" verticalAlign="top" color="black60">
-          {entities.join(", ")}.{" "}
-          <Link onClick={this.handleCollapse.bind(this)}>Show less</Link>
+          {entities.join(", ")}.
         </Sans>
       )
     } else {
@@ -76,7 +71,7 @@ export class ArtistInsight extends React.Component<ArtistInsightProps> {
             <>
               , and{" "}
               <Link onClick={this.handleExpand.bind(this)}>
-                {entities.length - 1} more
+                {entities.length - 1}&nbsp;more
               </Link>
             </>
           )}

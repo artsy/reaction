@@ -77,84 +77,103 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
     const colNum = 9 // artist.currentEvent ? 9 : 12
     const showGenes = this.maybeShowGenes()
 
-    let ArtistInsights
-    if (
+    const showArtistInsightsV2 =
       user &&
       user.type === "Admin" &&
       (showMarketInsights || artist.insights.length)
-    ) {
-      ArtistInsights = SelectedCareerAchievements
-    } else if (showMarketInsights) {
-      ArtistInsights = MarketInsights
-    }
+
+    const ArtistInsights = showArtistInsightsV2
+      ? SelectedCareerAchievements
+      : MarketInsights
+
+    const BioFragment = (
+      <>
+        <ArtistBio
+          onReadMoreClicked={() => {
+            this.setState({ isReadMoreExpanded: true })
+          }}
+          bio={artist}
+        />
+        <Spacer mb={1} />
+      </>
+    )
+
+    const GenesFragment = (
+      <>
+        <Media at="xs">
+          {bioLen < MAX_CHARS.xs ? (
+            <>
+              <Genes artist={artist} />
+              <Spacer mb={1} />
+            </>
+          ) : (
+            showGenes && <Genes artist={artist} />
+          )}
+        </Media>
+        <Media greaterThan="xs">
+          {bioLen < MAX_CHARS.default ? (
+            <>
+              <Genes artist={artist} />
+              <Spacer mb={1} />
+            </>
+          ) : (
+            showGenes && <Genes artist={artist} />
+          )}
+        </Media>
+        <Spacer mb={1} />
+      </>
+    )
+
+    const ConsignmentFragment = (
+      <>
+        <Spacer mb={2} />
+        <Sans size="2" color="black60">
+          Want to sell a work by this artist?{" "}
+          <a href="/consign" onClick={this.handleConsignClick.bind(this)}>
+            Learn more
+          </a>.
+        </Sans>
+      </>
+    )
 
     return (
       <>
         <Row>
           <Col sm={colNum}>
-            {ArtistInsights && (
+            {showArtistInsightsV2 ? (
               <>
-                <ArtistInsights artist={artist} />
-                <Spacer mb={1} />
-              </>
-            )}
-            {showSelectedExhibitions && (
-              <>
-                <SelectedExhibitions
-                  artistID={artist.id}
-                  totalExhibitions={this.props.artist.counts.partner_shows}
-                  exhibitions={this.props.artist.exhibition_highlights}
-                />
-                <Spacer mb={1} />
-              </>
-            )}
-            {showArtistBio && (
-              <>
-                <ArtistBio
-                  onReadMoreClicked={() => {
-                    this.setState({ isReadMoreExpanded: true })
-                  }}
-                  bio={artist}
-                />
-                <Spacer mb={1} />
-              </>
-            )}
-            <>
-              <Media at="xs">
-                {bioLen < MAX_CHARS.xs ? (
+                {showArtistBio && BioFragment}
+                {showGenes && GenesFragment}
+                {showConsignable && (
                   <>
-                    <Genes artist={artist} />
+                    {ConsignmentFragment}
                     <Spacer mb={1} />
                   </>
-                ) : (
-                  showGenes && <Genes artist={artist} />
                 )}
-              </Media>
-              <Media greaterThan="xs">
-                {bioLen < MAX_CHARS.default ? (
+                {ArtistInsights && <ArtistInsights artist={artist} />}
+              </>
+            ) : (
+              <>
+                {ArtistInsights && (
                   <>
-                    <Genes artist={artist} />
+                    <ArtistInsights artist={artist} />
                     <Spacer mb={1} />
                   </>
-                ) : (
-                  showGenes && <Genes artist={artist} />
                 )}
-              </Media>
 
-              {showGenes && <Spacer mb={1} />}
-            </>
-            {showConsignable && (
-              <>
-                <Spacer mb={2} />
-                <Sans size="2" color="black60">
-                  Want to sell a work by this artist?{" "}
-                  <a
-                    href="/consign"
-                    onClick={this.handleConsignClick.bind(this)}
-                  >
-                    Learn more
-                  </a>.
-                </Sans>
+                {showSelectedExhibitions && (
+                  <>
+                    <SelectedExhibitions
+                      artistID={artist.id}
+                      totalExhibitions={this.props.artist.counts.partner_shows}
+                      exhibitions={this.props.artist.exhibition_highlights}
+                    />
+                    <Spacer mb={1} />
+                  </>
+                )}
+                {showArtistBio && BioFragment}
+                {showGenes && GenesFragment}
+                {showConsignable && ConsignmentFragment}
               </>
             )}
           </Col>

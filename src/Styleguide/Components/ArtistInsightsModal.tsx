@@ -82,7 +82,7 @@ export class ArtistInsightsModal extends React.Component {
         </Modal>
         <Sans mt={1} ml={1} size="2" color="black60">
           <Link onClick={this.handleOpen.bind(this)}>Learn more</Link> about
-          artist insights
+          artist insights.
         </Sans>
       </>
     )
