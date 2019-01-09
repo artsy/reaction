@@ -13,6 +13,11 @@ const SUMMER_DATE = "2018-08-03T13:50:31.641Z"
 
 jest.mock("Utils/getCurrentTimeAsIsoString")
 
+jest.mock("Utils/time")
+import { renderUntil } from "DevTools"
+import { getOffsetBetweenGravityClock } from "Utils/time"
+const mockGetOffsetBetweenGravityClock = getOffsetBetweenGravityClock as jest.Mock
+
 const defaultProps: ExtractProps<typeof CountdownTimer> = {
   action: "Respond",
   note: "Expired offers end the negotiation process permanently.",
@@ -47,6 +52,7 @@ const getPropsWithTimeRemaining = (duration: moment.Duration) => ({
 describe("CountdownTimer", () => {
   beforeEach(() => {
     require("Utils/getCurrentTimeAsIsoString").__setCurrentTime(DATE)
+    mockGetOffsetBetweenGravityClock.mockReturnValue(Promise.resolve(0))
   })
 
   describe("in winter", () => {
@@ -92,6 +98,24 @@ describe("CountdownTimer", () => {
         `"01d 00s leftRespond by Aug 04, 2:50 PM BSTExpired offers end the negotiation process permanently."`
       )
     })
+  })
+
+  it("handles gravity time offsets", async () => {
+    let timeIsSynced = false
+    mockGetOffsetBetweenGravityClock.mockImplementation(async () => {
+      timeIsSynced = true
+      return 1800 * 1000 // The user's clock is a half hour off of gravity's.
+    })
+
+    const timer = await renderUntil(
+      _wrapper => timeIsSynced,
+      <CountdownTimer {...defaultProps} />
+    )
+
+    const text = timer.text()
+    expect(text).toMatchInlineSnapshot(
+      `"01d 30m 00s leftRespond by Dec 04, 8:50 AM ESTExpired offers end the negotiation process permanently."`
+    )
   })
 
   it("shows the time remaining properly", () => {
