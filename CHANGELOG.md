@@ -1,3 +1,15 @@
+# 9.4.0 (Wed Jan 09 2019)
+
+#### 🚀  Enhancement
+
+- Add Selected Career Achievements component (Artist Insights 2.0) [#1784](https://github.com/artsy/reaction/pull/1784) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
 # 9.3.14 (Tue Jan 08 2019)
 
 #### 🐛  Bug Fix
