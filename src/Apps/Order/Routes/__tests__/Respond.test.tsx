@@ -13,7 +13,7 @@ import { ShippingSummaryItemFragmentContainer } from "Apps/Order/Components/Ship
 import { TransactionDetailsSummaryItemFragmentContainer } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { Input } from "Components/Input"
 import { MockBoot } from "DevTools"
-import { mount, ReactWrapper } from "enzyme"
+import { mount } from "enzyme"
 import moment from "moment"
 import React from "react"
 import { Stepper } from "Styleguide/Components"
@@ -382,16 +382,15 @@ Object {
   })
 
   describe("The 'amount too small' speed bump", () => {
-    let component: ReactWrapper
-    beforeEach(async () => {
-      component = getWrapper()
+    it("shows if the offer amount is too small", async () => {
+      const component = getWrapper()
       const counterRadio = component.find(BorderedRadio).at(1)
       counterRadio.props().onSelect({ selected: true, value: "COUNTER" })
 
       component
         .find(OfferInput)
         .props()
-        .onChange(2499)
+        .onChange(1000)
 
       component
         .find(Button)
@@ -401,66 +400,53 @@ Object {
 
       await flushPromiseQueue()
       component.update()
-    })
-
-    it("shows if the offer amount is too small", async () => {
       expect(commitMutation).not.toHaveBeenCalled()
 
-      const dialog = component.find(ModalDialog)
+      let dialog = component.find(ModalDialog)
 
       expect(dialog).toHaveLength(1)
       expect(dialog.props().show).toBe(true)
 
       expect(dialog.text()).toMatchInlineSnapshot(
-        `"Offer may be too lowOffers within 25% of the counteroffer are most likely to receive a response.CancelContinue"`
+        `"Offer may be too lowOffers within 25% of the seller's offer are most likely to receive a response.OK"`
       )
 
-      const buttons = component.find(ModalButton)
-      expect(buttons.length).toBe(2)
-      expect(buttons.first().text()).toBe("Cancel")
-      expect(buttons.last().text()).toBe("Continue")
-    })
+      const button = component.find(ModalButton)
+      expect(button.length).toBe(1)
+      expect(button.text()).toBe("OK")
 
-    it("goes away without mutations when clicking Cancel", async () => {
-      component
-        .find(ModalButton)
-        .first()
-        .simulate("click")
+      // dismiss message
+      button.simulate("click")
 
       await flushPromiseQueue()
       component.update()
 
-      const dialog = component.find(ModalDialog)
+      dialog = component.find(ModalDialog)
       expect(dialog.props().show).toBe(false)
+
       expect(commitMutation).not.toHaveBeenCalled()
-    })
 
-    it("goes away with mutations when clicking Continue", async () => {
+      // submit again
       component
-        .find(ModalButton)
+        .find(Button)
         .last()
-        .simulate("click")
+        .props()
+        .onClick({})
 
-      await flushPromiseQueue()
-      component.update()
-
-      const dialog = component.find(ModalDialog)
-      expect(dialog.props().show).toBe(false)
-      expect(commitMutation).toHaveBeenCalled()
+      expect(commitMutation).toHaveBeenCalledTimes(1)
     })
   })
 
   describe("The 'amount too high' speed bump", () => {
-    let component: ReactWrapper
-    beforeEach(async () => {
-      component = getWrapper()
+    it("shows if the offer amount is too high", async () => {
+      const component = getWrapper()
       const counterRadio = component.find(BorderedRadio).at(1)
       counterRadio.props().onSelect({ selected: true, value: "COUNTER" })
 
       component
         .find(OfferInput)
         .props()
-        .onChange(11000)
+        .onChange(17000)
 
       component
         .find(Button)
@@ -470,52 +456,40 @@ Object {
 
       await flushPromiseQueue()
       component.update()
-    })
-
-    it("shows if the offer amount is too high", async () => {
       expect(commitMutation).not.toHaveBeenCalled()
 
-      const dialog = component.find(ModalDialog)
+      let dialog = component.find(ModalDialog)
 
       expect(dialog).toHaveLength(1)
       expect(dialog.props().show).toBe(true)
 
       expect(dialog.text()).toMatchInlineSnapshot(
-        `"Offer higher than list priceYou’re making an offer higher than the counteroffer.CancelContinue"`
+        `"Offer higher than seller's offerYou’re making an offer higher than the seller's offer.OK"`
       )
 
-      const buttons = component.find(ModalButton)
-      expect(buttons.length).toBe(2)
-      expect(buttons.first().text()).toBe("Cancel")
-      expect(buttons.last().text()).toBe("Continue")
-    })
+      const button = component.find(ModalButton)
+      expect(button.length).toBe(1)
+      expect(button.text()).toBe("OK")
 
-    it("goes away without mutations when clicking Cancel", async () => {
-      component
-        .find(ModalButton)
-        .first()
-        .simulate("click")
+      // dismiss message
+      button.simulate("click")
 
       await flushPromiseQueue()
       component.update()
 
-      const dialog = component.find(ModalDialog)
+      dialog = component.find(ModalDialog)
       expect(dialog.props().show).toBe(false)
+
       expect(commitMutation).not.toHaveBeenCalled()
-    })
 
-    it("goes away with mutations when clicking Continue", async () => {
+      // submit again
       component
-        .find(ModalButton)
+        .find(Button)
         .last()
-        .simulate("click")
+        .props()
+        .onClick({})
 
-      await flushPromiseQueue()
-      component.update()
-
-      const dialog = component.find(ModalDialog)
-      expect(dialog.props().show).toBe(false)
-      expect(commitMutation).toHaveBeenCalled()
+      expect(commitMutation).toHaveBeenCalledTimes(1)
     })
   })
 

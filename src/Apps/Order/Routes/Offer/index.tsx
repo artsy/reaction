@@ -6,12 +6,7 @@ import { Helper } from "Apps/Order/Components/Helper"
 import { OfferInput } from "Apps/Order/Components/OfferInput"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
-import {
-  Dialog,
-  injectDialog,
-  showAcceptDialog,
-  showErrorDialog,
-} from "Apps/Order/Dialogs"
+import { Dialog, injectDialog } from "Apps/Order/Dialogs"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { Router } from "found"
 import React, { Component } from "react"
@@ -40,6 +35,8 @@ export interface OfferState {
   offerValue: number
   isCommittingMutation: boolean
   formIsDirty: boolean
+  lowSpeedBumpEncountered: boolean
+  highSpeedBumpEncountered: boolean
 }
 
 const logger = createLogger("Order/Routes/Offer/index.tsx")
@@ -49,33 +46,50 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
     offerValue: 0,
     isCommittingMutation: false,
     formIsDirty: false,
+    lowSpeedBumpEncountered: false,
+    highSpeedBumpEncountered: false,
   }
 
   onContinueButtonPressed: () => void = async () => {
-    if (this.state.offerValue <= 0) {
+    const {
+      offerValue,
+      lowSpeedBumpEncountered,
+      highSpeedBumpEncountered,
+    } = this.state
+
+    if (offerValue <= 0) {
       this.setState({ formIsDirty: true })
       return
     }
 
     const listPriceCents = this.props.order.totalListPriceCents
 
-    if (this.state.offerValue * 100 < listPriceCents * 0.75) {
-      const decision = await this.confirmOfferTooLow()
-      if (!decision.accepted) {
-        return
-      }
+    if (!lowSpeedBumpEncountered && offerValue * 100 < listPriceCents * 0.75) {
+      this.setState({ lowSpeedBumpEncountered: true })
+      this.props.dialog.showErrorDialog({
+        title: "Offer may be too low",
+        message:
+          "Offers within 25% of the list price are most likely to receive a response.",
+        continueButtonText: "OK",
+      })
+      return
     }
 
-    if (this.state.offerValue * 100 > listPriceCents) {
-      const decision = await this.confirmOfferTooHigh()
-      if (!decision.accepted) {
-        return
-      }
+    if (
+      !highSpeedBumpEncountered &&
+      this.state.offerValue * 100 > listPriceCents
+    ) {
+      this.setState({ highSpeedBumpEncountered: true })
+      this.props.dialog.showErrorDialog({
+        title: "Offer higher than list price",
+        message: "You’re making an offer higher than the list price.",
+        continueButtonText: "OK",
+      })
+      return
     }
 
     this.setState({ isCommittingMutation: true }, () => {
       if (this.props.relay && this.props.relay.environment) {
-        const { offerValue } = this.state
         commitMutation<OfferMutation>(this.props.relay.environment, {
           mutation: graphql`
             mutation OfferMutation($input: AddInitialOfferToOrderInput!) {
@@ -141,23 +155,8 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
 
   onMutationError(error, title?, message?) {
     logger.error(error)
-    showErrorDialog(this.props.dialog, { title, message })
+    this.props.dialog.showErrorDialog({ title, message })
     this.setState({ isCommittingMutation: false })
-  }
-
-  confirmOfferTooLow() {
-    return showAcceptDialog(this.props.dialog, {
-      title: "Offer may be too low",
-      message:
-        "Offers within 25% of the list price are most likely to receive a response.",
-    })
-  }
-
-  confirmOfferTooHigh() {
-    return showAcceptDialog(this.props.dialog, {
-      title: "Offer higher than list price",
-      message: "You’re making an offer higher than the list price.",
-    })
   }
 
   render() {
