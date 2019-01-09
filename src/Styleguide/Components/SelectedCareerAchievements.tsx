@@ -111,7 +111,7 @@ export class SelectedCareerAchievements extends React.Component<
         <Container>
           <Flex flexDirection="column" alignItems="left">
             <Sans size="2" weight="medium">
-              Selected Career Achievements
+              Selected career achievements
             </Sans>
             <Flex flexDirection="row" flexWrap="wrap">
               {this.renderGalleryRepresentation()}
