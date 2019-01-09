@@ -1,3 +1,4 @@
+import { ArticleProps } from "Components/Publishing/Article"
 import React from "react"
 import styled from "styled-components"
 import { Header } from "../Header/Header"
@@ -7,23 +8,13 @@ import {
   ArticleCardsContainer,
 } from "../RelatedArticles/ArticleCards/Block"
 import { Sections } from "../Sections/Sections"
-import { ArticleData, DisplayData, RelatedArticleCanvasData } from "../Typings"
 import { CanvasFooter } from "./Components/CanvasFooter"
-
-export interface ArticleProps {
-  article: ArticleData
-  customEditorial?: string
-  display?: DisplayData
-  isMobile?: boolean
-  isSuper?: boolean
-  relatedArticlesForCanvas?: RelatedArticleCanvasData[]
-  renderTime?: number
-  showTooltips?: boolean
-}
 
 export const FeatureLayout: React.SFC<ArticleProps> = props => {
   const {
     article,
+    backgroundColor,
+    color,
     customEditorial,
     display,
     isMobile,
@@ -43,20 +34,22 @@ export const FeatureLayout: React.SFC<ArticleProps> = props => {
   const seriesOrSuper = isSuper || seriesArticle
 
   return (
-    <FeatureLayoutContainer>
+    <FeatureLayoutContainer backgroundColor={backgroundColor}>
       {hasNav && (
         <Nav
           canFix={false}
+          color={color}
           sponsor={sponsor}
           title={seriesArticle.title}
           transparent
         />
       )}
-      <Header article={article} />
+      <Header article={article} textColor={color} />
 
       <FeatureLayoutContent>
         <Sections
           article={article}
+          color={color}
           isMobile={isMobile}
           showTooltips={showTooltips}
         />
@@ -83,8 +76,13 @@ const FeatureLayoutContent = styled.div`
   width: 100%;
 `
 
-const FeatureLayoutContainer = styled.div`
+const FeatureLayoutContainer = styled.div<{ backgroundColor?: string }>`
   position: relative;
+  ${props =>
+    props.backgroundColor &&
+    `
+    background-color: ${props.backgroundColor};
+  `};
 
   ${NavContainer} {
     position: absolute;

@@ -37,6 +37,25 @@ exports[`Sections snapshots tests renders properly 1`] = `
   display: flex;
 }
 
+.c42 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.c18 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  color: #C2C2C2;
+}
+
 .c33 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
@@ -59,7 +78,14 @@ exports[`Sections snapshots tests renders properly 1`] = `
   padding-left: 20px;
 }
 
-.c46 {
+.c43 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.c47 {
   font-family: artsy-icons;
   color: black;
   font-size: 24px;
@@ -74,41 +100,24 @@ exports[`Sections snapshots tests renders properly 1`] = `
 }
 
 .c41 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.c42 {
-  display: block;
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-.c42 a {
   color: black;
 }
 
-.c43 {
-  margin-left: 20px;
+.c41 a {
+  color: black;
 }
 
 .c44 {
-  color: black;
+  margin-right: 20px;
+}
+
+.c45 {
   -webkit-text-decoration: none;
   text-decoration: none;
   white-space: nowrap;
 }
 
-.c44 .c45 {
+.c45 .c46 {
   vertical-align: middle;
   margin: 0;
 }
@@ -128,21 +137,11 @@ exports[`Sections snapshots tests renders properly 1`] = `
   height: 1000px;
 }
 
-.c20 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 15px;
-  line-height: 1.25em;
-  -webkit-font-smoothing: antialiased;
-  color: #999;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c18 {
+.c19 {
   margin-right: 30px;
 }
 
-.c19 {
+.c20 {
   white-space: nowrap;
 }
 
@@ -153,27 +152,17 @@ exports[`Sections snapshots tests renders properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  color: #999999;
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
 }
 
 .c17 a {
-  color: #999999;
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
+  color: #C2C2C2;
+  -webkit-text-decoration: none;
+  text-decoration: none;
 }
 
 .c17 .title,
 .c17 .title a {
-  font-family: Unica77LLWebItalic,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
+  font-style: italic;
 }
 
 .c11 {
@@ -415,20 +404,21 @@ exports[`Sections snapshots tests renders properly 1`] = `
 .c2 {
   position: relative;
   width: 100%;
+  color: black;
 }
 
 .c2 a {
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
-  background-image: linear-gradient( to bottom, transparent 0, #333333 1px, transparent 0 );
+  background-image: linear-gradient( to bottom,transparent 0,#333 1px,transparent 0 );
   background-size: 1.25px 4px;
   background-repeat: repeat-x;
   background-position: bottom;
 }
 
 .c2 a:hover {
-  color: #999999;
+  color: #C2C2C2;
   opacity: 1;
 }
 
@@ -648,15 +638,6 @@ exports[`Sections snapshots tests renders properly 1`] = `
 @media screen and (min-width:40em) {
   .c36 {
     line-height: 24px;
-  }
-}
-
-@media (max-width:600px) {
-  .c42 {
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
   }
 }
 
@@ -1203,18 +1184,19 @@ exports[`Sections snapshots tests renders properly 1`] = `
           </a>
           <div>
             <div
-              className="display-artwork__caption c17"
+              className="c17 c18"
+              color="#C2C2C2"
+              fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+              fontSize="14px"
             >
               <span
-                className="c18"
+                className="c19"
               >
                 <span
-                  className="c19"
+                  className="c20"
                 >
                   <a
-                    className="c20"
                     href="/artist/matt-devine"
-                    target="_self"
                   >
                     Matt Devine
                   </a>
@@ -1228,13 +1210,11 @@ exports[`Sections snapshots tests renders properly 1`] = `
                         <span
                           className="title"
                         >
-                          <TextLink__StyledTextLink
-                            color="#999"
+                          <a
                             href="/artwork/matt-devine-brass-tax"
-                            underline={false}
                           >
                             Brass Tax
-                          </TextLink__StyledTextLink>
+                          </a>
                         </span>
                         <span>
                           , 
@@ -1252,13 +1232,11 @@ exports[`Sections snapshots tests renders properly 1`] = `
                   dangerouslySetInnerHTML={
                     Object {
                       "__html": <span>
-                        <TextLink__StyledTextLink
-                          color="#999"
+                        <a
                           href="/joanne-artman-gallery"
-                          underline={false}
                         >
                           Joanne Artman Gallery
-                        </TextLink__StyledTextLink>
+                        </a>
                         <span>
                           . 
                         </span>
@@ -2095,12 +2073,15 @@ exports[`Sections snapshots tests renders properly 1`] = `
               >
                 <path
                   d="M6760.67,551.72h-32v-32h32v32Zm-30-2h28v-28h-28v28Z"
+                  fill="black"
                   transform="translate(-6728.67 -507.72)"
                 />
                 <polygon
+                  fill="black"
                   points="38 37 36 37 36 8 7 8 7 6 38 6 38 37"
                 />
                 <polygon
+                  fill="black"
                   points="44 31 42 31 42 2 13 2 13 0 44 0 44 31"
                 />
               </svg>
@@ -2254,28 +2235,38 @@ exports[`Sections snapshots tests renders properly 1`] = `
       className="c40"
     >
       <div
-        className="c41"
+        className="c41 c42"
+        color="black"
       >
         <div
-          className="c42"
+          className="c43"
+          fontFamily={
+            Object {
+              "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+              "fontWeight": 500,
+            }
+          }
+          fontSize="16px"
         >
+          <span
+            className="c44"
+          >
+            <span>
+              <a
+                href="http://artsy.net"
+              >
+                Casey Lesser
+              </a>
+               is a well-known author and a long-time baker.
+            </span>
+          </span>
           <span>
             <a
-              href="http://artsy.net"
-            >
-              Casey Lesser
-            </a>
-             is a well-known author and a long-time baker.
-          </span>
-          <span
-            className="c43"
-          >
-            <a
-              className="c44"
+              className="c45"
               href="http://twitter.com/caseylesser"
             >
               <div
-                className="c45 c46"
+                className="c46 c47"
               >
                 
               </div>

@@ -94,20 +94,21 @@ exports[`Video About matches the snapshot 1`] = `
 .c5 {
   position: relative;
   width: 100%;
+  color: black;
 }
 
 .c5 a {
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
-  background-image: linear-gradient( to bottom, transparent 0, #333333 1px, transparent 0 );
+  background-image: linear-gradient( to bottom,transparent 0,#333 1px,transparent 0 );
   background-size: 1.25px 4px;
   background-repeat: repeat-x;
   background-position: bottom;
 }
 
 .c5 a:hover {
-  color: #999999;
+  color: #C2C2C2;
   opacity: 1;
 }
 
@@ -280,13 +281,14 @@ exports[`Video About matches the snapshot 1`] = `
 .c15 {
   position: relative;
   width: 100%;
+  color: #000;
 }
 
 .c15 a {
   color: #000;
   -webkit-text-decoration: none;
   text-decoration: none;
-  background-image: linear-gradient( to bottom, transparent 0, #000 1px, transparent 0 );
+  background-image: linear-gradient( to bottom,transparent 0,#000 1px,transparent 0 );
   background-size: 1.25px 4px;
   background-repeat: repeat-x;
   background-position: bottom;
@@ -369,7 +371,7 @@ exports[`Video About matches the snapshot 1`] = `
   content: "";
   width: 8px;
   height: 8px;
-  background: black;
+  background: #000;
   border-radius: 50%;
   position: absolute;
   top: 69px;
@@ -433,7 +435,7 @@ exports[`Video About matches the snapshot 1`] = `
   content: "";
   width: 8px;
   height: 8px;
-  background: black;
+  background: #000;
   border-radius: 50%;
   margin-left: 12px;
   margin-bottom: 1px;
@@ -1079,20 +1081,21 @@ exports[`Video About matches the snapshot with editable props 1`] = `
 .c5 {
   position: relative;
   width: 100%;
+  color: black;
 }
 
 .c5 a {
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
-  background-image: linear-gradient( to bottom, transparent 0, #333333 1px, transparent 0 );
+  background-image: linear-gradient( to bottom,transparent 0,#333 1px,transparent 0 );
   background-size: 1.25px 4px;
   background-repeat: repeat-x;
   background-position: bottom;
 }
 
 .c5 a:hover {
-  color: #999999;
+  color: #C2C2C2;
   opacity: 1;
 }
 
@@ -1265,13 +1268,14 @@ exports[`Video About matches the snapshot with editable props 1`] = `
 .c15 {
   position: relative;
   width: 100%;
+  color: #000;
 }
 
 .c15 a {
   color: #000;
   -webkit-text-decoration: none;
   text-decoration: none;
-  background-image: linear-gradient( to bottom, transparent 0, #000 1px, transparent 0 );
+  background-image: linear-gradient( to bottom,transparent 0,#000 1px,transparent 0 );
   background-size: 1.25px 4px;
   background-repeat: repeat-x;
   background-position: bottom;
@@ -1354,7 +1358,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
   content: "";
   width: 8px;
   height: 8px;
-  background: black;
+  background: #000;
   border-radius: 50%;
   position: absolute;
   top: 69px;
@@ -1418,7 +1422,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
   content: "";
   width: 8px;
   height: 8px;
-  background: black;
+  background: #000;
   border-radius: 50%;
   margin-left: 12px;
   margin-bottom: 1px;

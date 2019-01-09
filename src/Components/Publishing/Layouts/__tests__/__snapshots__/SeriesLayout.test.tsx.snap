@@ -363,13 +363,14 @@ exports[`renders a series properly 1`] = `
 .c41 {
   position: relative;
   width: 100%;
+  color: white;
 }
 
 .c41 a {
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
-  background-image: linear-gradient( to bottom, transparent 0, white 1px, transparent 0 );
+  background-image: linear-gradient( to bottom,transparent 0,white 1px,transparent 0 );
   background-size: 1.25px 4px;
   background-repeat: repeat-x;
   background-position: bottom;
@@ -452,7 +453,7 @@ exports[`renders a series properly 1`] = `
   content: "";
   width: 8px;
   height: 8px;
-  background: black;
+  background: white;
   border-radius: 50%;
   position: absolute;
   top: 69px;
@@ -516,7 +517,7 @@ exports[`renders a series properly 1`] = `
   content: "";
   width: 8px;
   height: 8px;
-  background: black;
+  background: white;
   border-radius: 50%;
   margin-left: 12px;
   margin-bottom: 1px;
@@ -1771,13 +1772,14 @@ exports[`renders a sponsored series properly 1`] = `
 .c48 {
   position: relative;
   width: 100%;
+  color: white;
 }
 
 .c48 a {
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
-  background-image: linear-gradient( to bottom, transparent 0, white 1px, transparent 0 );
+  background-image: linear-gradient( to bottom,transparent 0,white 1px,transparent 0 );
   background-size: 1.25px 4px;
   background-repeat: repeat-x;
   background-position: bottom;
@@ -1860,7 +1862,7 @@ exports[`renders a sponsored series properly 1`] = `
   content: "";
   width: 8px;
   height: 8px;
-  background: black;
+  background: white;
   border-radius: 50%;
   position: absolute;
   top: 69px;
@@ -1924,7 +1926,7 @@ exports[`renders a sponsored series properly 1`] = `
   content: "";
   width: 8px;
   height: 8px;
-  background: black;
+  background: white;
   border-radius: 50%;
   margin-left: 12px;
   margin-bottom: 1px;

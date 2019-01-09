@@ -8,6 +8,7 @@ import { ImageWrapper } from "./ImageWrapper"
 
 export interface ArtworkProps {
   artwork: any
+  color?: string
   editing?: boolean
   layout?: ArticleLayout
   sectionLayout?: SectionLayout
