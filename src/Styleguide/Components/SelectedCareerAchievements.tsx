@@ -74,9 +74,10 @@ export class SelectedCareerAchievements extends React.Component<
     }
   }
 
-  renderInsight(insight) {
+  renderInsight(insight, key) {
     return (
       <ArtistInsight
+        key={key}
         type={insight.type}
         label={insight.label}
         entities={insight.entities}
@@ -113,8 +114,8 @@ export class SelectedCareerAchievements extends React.Component<
               {this.renderGalleryRepresentation()}
               {this.renderAuctionHighlight()}
 
-              {this.props.artist.insights.map(insight => {
-                return this.renderInsight(insight)
+              {this.props.artist.insights.map((insight, index) => {
+                return this.renderInsight(insight, index)
               })}
             </Flex>
           </Flex>

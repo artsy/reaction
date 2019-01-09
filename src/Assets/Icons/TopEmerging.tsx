@@ -3,7 +3,7 @@ import React from "react"
 export const TopEmerging: React.SFC = () => {
   return (
     <svg width="25" height="25" xmlns="http://www.w3.org/2000/svg">
-      <g fill="none" fill-rule="evenodd">
+      <g fill="none" fillRule="evenodd">
         <path d="M0 0h25v25H0z" />
         <circle
           cx="6.25"
