@@ -1,3 +1,15 @@
+# 9.5.4 (Wed Jan 09 2019)
+
+#### 🐛  Bug Fix
+
+- Tidy up design implementation and component ordering for Artist Insights v2 [#1843](https://github.com/artsy/reaction/pull/1843) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
 # 9.5.3 (Wed Jan 09 2019)
 
 #### 🐛  Bug Fix
