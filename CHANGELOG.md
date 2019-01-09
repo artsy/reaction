@@ -1,3 +1,16 @@
+# 9.4.1 (Wed Jan 09 2019)
+
+#### 🐛  Bug Fix
+
+- [Artwork] Refactor ActionPanel links [#1833](https://github.com/artsy/reaction/pull/1833) ([@mzikherman](https://github.com/mzikherman) [@damassi](https://github.com/damassi))
+
+#### Authors: 2
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # 9.4.0 (Wed Jan 09 2019)
 
 #### 🚀  Enhancement
