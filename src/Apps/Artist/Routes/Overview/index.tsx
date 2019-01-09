@@ -4,6 +4,7 @@ import { ArtworkFilterFragmentContainer as ArtworkFilter } from "Apps/Artist/Rou
 import { GenesFragmentContainer as Genes } from "Apps/Artist/Routes/Overview/Components/Genes"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
+import { withContext } from "Artsy/SystemContext"
 import { hasSections as showMarketInsights } from "Components/Artist/MarketInsights/MarketInsights"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -15,10 +16,12 @@ import {
   ArtistBioFragmentContainer as ArtistBio,
   MarketInsightsFragmentContainer as MarketInsights,
   MAX_CHARS,
+  SelectedCareerAchievementsFragmentContainer as SelectedCareerAchievements,
   SelectedExhibitionFragmentContainer as SelectedExhibitions,
 } from "Styleguide/Components"
 
 export interface OverviewRouteProps {
+  user: User
   artist: Overview_artist & {
     __fragments: object[]
   }
@@ -57,7 +60,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
   }
 
   render() {
-    const { artist } = this.props
+    const { artist, user } = this.props
     const showSelectedExhibitions = Boolean(artist.exhibition_highlights.length)
     const showArtistBio = Boolean(artist.biography_blurb.text)
     const showCurrentEvent = Boolean(artist.currentEvent)
@@ -74,17 +77,27 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
     const colNum = 9 // artist.currentEvent ? 9 : 12
     const showGenes = this.maybeShowGenes()
 
+    let ArtistInsights
+    if (
+      user &&
+      user.type === "Admin" &&
+      (showMarketInsights || artist.insights.length)
+    ) {
+      ArtistInsights = SelectedCareerAchievements
+    } else if (showMarketInsights) {
+      ArtistInsights = MarketInsights
+    }
+
     return (
       <>
         <Row>
           <Col sm={colNum}>
-            {showMarketInsights && (
+            {ArtistInsights && (
               <>
-                <MarketInsights artist={artist} />
+                <ArtistInsights artist={artist} />
                 <Spacer mb={1} />
               </>
             )}
-
             {showSelectedExhibitions && (
               <>
                 <SelectedExhibitions
@@ -95,7 +108,6 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
                 <Spacer mb={1} />
               </>
             )}
-
             {showArtistBio && (
               <>
                 <ArtistBio
@@ -107,7 +119,6 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
                 <Spacer mb={1} />
               </>
             )}
-
             <>
               <Media at="xs">
                 {bioLen < MAX_CHARS.xs ? (
@@ -132,7 +143,6 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
 
               {showGenes && <Spacer mb={1} />}
             </>
-
             {showConsignable && (
               <>
                 <Spacer mb={2} />
@@ -176,7 +186,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
 }
 
 export const OverviewRouteFragmentContainer = createFragmentContainer(
-  OverviewRoute,
+  withContext(OverviewRoute),
   graphql`
     fragment Overview_artist on Artist
       @argumentDefinitions(
@@ -197,6 +207,7 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
       ...ArtistBio_bio
       ...CurrentEvent_artist
       ...MarketInsightsArtistPage_artist
+      ...SelectedCareerAchievementsArtistPage_artist
       ...Genes_artist
       ...ArtworkFilter_artist
         @arguments(
@@ -254,6 +265,9 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
             }
           }
         }
+      }
+      insights {
+        type
       }
     }
   `

@@ -65,6 +65,33 @@ storiesOf("Components/Icons", module).add("All Icons", () => {
                 <Col p={1} width="auto">
                   <svgs.WinningBid />
                 </Col>
+                <Col p={1} width="auto">
+                  <svgs.BlueChip />
+                </Col>
+                <Col p={1} width="auto">
+                  <svgs.Solo />
+                </Col>
+                <Col p={1} width="auto">
+                  <svgs.Group />
+                </Col>
+                <Col p={1} width="auto">
+                  <svgs.Book />
+                </Col>
+                <Col p={1} width="auto">
+                  <svgs.Auction />
+                </Col>
+                <Col p={1} width="auto">
+                  <svgs.Fair />
+                </Col>
+                <Col p={1} width="auto">
+                  <svgs.Museum />
+                </Col>
+                <Col p={1} width="auto">
+                  <svgs.TopEmerging />
+                </Col>
+                <Col p={1} width="auto">
+                  <svgs.TopEstablished />
+                </Col>
               </Flex>
             </Row>
 
