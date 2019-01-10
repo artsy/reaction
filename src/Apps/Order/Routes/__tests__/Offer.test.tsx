@@ -7,8 +7,8 @@ import { ModalButton, ModalDialog } from "Components/Modal/ModalDialog"
 import { MockBoot } from "DevTools"
 import { mount } from "enzyme"
 import React from "react"
-import { commitMutation as _commitMutation } from "react-relay"
 import { RelayProp } from "react-relay"
+import { commitMutation as _commitMutation } from "react-relay"
 import { flushPromiseQueue } from "Utils/flushPromiseQueue"
 import { UntouchedOfferOrder } from "../../../__tests__/Fixtures/Order"
 import { TransactionDetailsSummaryItem } from "../../Components/TransactionDetailsSummaryItem"
@@ -17,6 +17,15 @@ import {
   initialOfferSuccess,
 } from "../__fixtures__/MutationResults"
 import { OfferFragmentContainer as OfferRoute } from "../Offer"
+
+// Need to mock Utils/Events instead of using mockTracking because
+// Boot's `dispatch` tracking prop overrides the one injected by
+// mockTracking
+jest.unmock("react-tracking")
+jest.mock("Utils/Events", () => ({
+  postEvent: jest.fn(),
+}))
+const mockPostEvent = require("Utils/Events").postEvent as jest.Mock
 
 jest.mock("Apps/Order/Utils/trackPageView")
 
@@ -39,6 +48,7 @@ describe("Offer InitialMutation", () => {
 
   let testProps: any
   beforeEach(() => {
+    mockPostEvent.mockReset()
     testProps = {
       order: { ...UntouchedOfferOrder, id: "1234" },
       relay: { environment: {} } as RelayProp,
@@ -292,9 +302,61 @@ describe("Offer InitialMutation", () => {
     })
   })
 
-  it("tracks a pageview", () => {
-    getWrapper(testProps)
+  describe("Analaytics", () => {
+    it("tracks a pageview", () => {
+      getWrapper(testProps)
 
-    expect(trackPageView).toHaveBeenCalledTimes(1)
+      expect(trackPageView).toHaveBeenCalledTimes(1)
+    })
+
+    it("tracks the offer input focus", () => {
+      const page = getWrapper(testProps)
+
+      expect(mockPostEvent).not.toHaveBeenCalled()
+
+      page.find("input").simulate("focus")
+
+      expect(mockPostEvent).toHaveBeenCalledTimes(1)
+      expect(mockPostEvent).toHaveBeenLastCalledWith({
+        action_type: "Focused on offer input",
+        flow: "Make offer",
+      })
+    })
+
+    it("tracks viwing the low offer speedbump", async () => {
+      const component = getWrapper(testProps)
+
+      component
+        .find(OfferInput)
+        .props()
+        .onChange(1000)
+
+      expect(mockPostEvent).not.toHaveBeenCalled()
+
+      component.find(Button).simulate("click")
+
+      expect(mockPostEvent).toHaveBeenLastCalledWith({
+        action_type: "Viewed offer too low",
+        flow: "Make offer",
+      })
+    })
+
+    it("tracks viwing the high offer speedbump", async () => {
+      const component = getWrapper(testProps)
+
+      component
+        .find(OfferInput)
+        .props()
+        .onChange(20000)
+
+      expect(mockPostEvent).not.toHaveBeenCalled()
+
+      component.find(Button).simulate("click")
+
+      expect(mockPostEvent).toHaveBeenLastCalledWith({
+        action_type: "Viewed offer higher than listed price",
+        flow: "Make offer",
+      })
+    })
   })
 })

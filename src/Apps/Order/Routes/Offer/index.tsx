@@ -8,6 +8,7 @@ import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSum
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { Dialog, injectDialog } from "Apps/Order/Dialogs"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
+import { ActionType, Flow, track } from "Artsy/Analytics"
 import { Router } from "found"
 import React, { Component } from "react"
 import {
@@ -41,6 +42,7 @@ export interface OfferState {
 
 const logger = createLogger("Order/Routes/Offer/index.tsx")
 
+@track()
 export class OfferRoute extends Component<OfferProps, OfferState> {
   state: OfferState = {
     offerValue: 0,
@@ -48,6 +50,41 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
     formIsDirty: false,
     lowSpeedBumpEncountered: false,
     highSpeedBumpEncountered: false,
+  }
+
+  @track({
+    action_type: ActionType.FocusedOnOfferInput,
+    flow: Flow.MakeOffer,
+  })
+  onOfferInputFocus() {
+    // noop
+  }
+
+  @track({
+    action_type: ActionType.ViewedOfferTooLow,
+    flow: Flow.MakeOffer,
+  })
+  showLowSpeedbump() {
+    this.setState({ lowSpeedBumpEncountered: true })
+    this.props.dialog.showErrorDialog({
+      title: "Offer may be too low",
+      message:
+        "Offers within 25% of the list price are most likely to receive a response.",
+      continueButtonText: "OK",
+    })
+  }
+
+  @track({
+    action_type: ActionType.ViewedOfferHigherThanListPrice,
+    flow: Flow.MakeOffer,
+  })
+  showHighSpeedbump() {
+    this.setState({ highSpeedBumpEncountered: true })
+    this.props.dialog.showErrorDialog({
+      title: "Offer higher than list price",
+      message: "You’re making an offer higher than the list price.",
+      continueButtonText: "OK",
+    })
   }
 
   onContinueButtonPressed: () => void = async () => {
@@ -65,13 +102,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
     const listPriceCents = this.props.order.totalListPriceCents
 
     if (!lowSpeedBumpEncountered && offerValue * 100 < listPriceCents * 0.75) {
-      this.setState({ lowSpeedBumpEncountered: true })
-      this.props.dialog.showErrorDialog({
-        title: "Offer may be too low",
-        message:
-          "Offers within 25% of the list price are most likely to receive a response.",
-        continueButtonText: "OK",
-      })
+      this.showLowSpeedbump()
       return
     }
 
@@ -79,12 +110,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
       !highSpeedBumpEncountered &&
       this.state.offerValue * 100 > listPriceCents
     ) {
-      this.setState({ highSpeedBumpEncountered: true })
-      this.props.dialog.showErrorDialog({
-        title: "Offer higher than list price",
-        message: "You’re making an offer higher than the list price.",
-        continueButtonText: "OK",
-      })
+      this.showHighSpeedbump()
       return
     }
 
@@ -192,6 +218,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
                       this.state.formIsDirty && this.state.offerValue <= 0
                     }
                     onChange={offerValue => this.setState({ offerValue })}
+                    onFocus={this.onOfferInputFocus.bind(this)}
                   />
                 </Flex>
                 {Boolean(order.totalListPrice) && (
