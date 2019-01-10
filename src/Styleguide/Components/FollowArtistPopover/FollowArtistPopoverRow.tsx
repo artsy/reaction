@@ -10,7 +10,7 @@ import { get } from "Utils/get"
 
 interface Props extends ContextProps {
   artist: FollowArtistPopoverRow_artist
-  suggestedIds: string[]
+  suggestedIds?: ReadonlyArray<string>
 }
 
 interface State {
@@ -27,13 +27,16 @@ const ArtistName = styled(Serif)`
 const FollowButtonContainer = Box
 
 class FollowArtistPopoverRow extends React.Component<Props, State> {
-  public static defaultProps = {
-    suggestedIds: [],
-  }
+  private excludedArtistIds: Set<string>
 
   state = {
     swappedArtist: null,
     followed: false,
+  }
+
+  constructor(props: Props, context: any) {
+    super(props, context)
+    this.excludedArtistIds = new Set(this.props.suggestedIds)
   }
 
   handleClick(artistID: string) {
@@ -41,12 +44,19 @@ class FollowArtistPopoverRow extends React.Component<Props, State> {
     if (user && user.id) {
       commitMutation<FollowArtistPopoverRowMutation>(relay.environment, {
         mutation: graphql`
-          mutation FollowArtistPopoverRowMutation($input: FollowArtistInput!) {
+          mutation FollowArtistPopoverRowMutation(
+            $input: FollowArtistInput!
+            $excludedArtistIds: [String]!
+          ) {
             followArtist(input: $input) {
               artist {
                 __id
                 related {
-                  suggested(first: 3, exclude_followed_artists: true) {
+                  suggested(
+                    first: 3
+                    exclude_followed_artists: true
+                    exclude_artist_ids: $excludedArtistIds
+                  ) {
                     edges {
                       node {
                         __id
@@ -61,6 +71,7 @@ class FollowArtistPopoverRow extends React.Component<Props, State> {
         `,
         variables: {
           input: { artist_id: artistID, unfollow: false },
+          excludedArtistIds: Array.from(this.excludedArtistIds),
         },
         optimisticUpdater: () => {
           this.setState({
@@ -68,15 +79,8 @@ class FollowArtistPopoverRow extends React.Component<Props, State> {
           })
         },
         updater: (store: RecordSourceSelectorProxy, data: SelectorData) => {
-          const fetchedSuggestions =
-            data.followArtist.artist.related.suggested.edges
-          const nonSuggestedNodes = fetchedSuggestions.filter(
-            s => this.props.suggestedIds.indexOf(s.node.__id) === -1
-          )
-          const { node } = nonSuggestedNodes[0]
-          // Add new suggested artist id to suggestedIds property
-          // so that we can filter the suggested ones after next follow
-          this.props.suggestedIds.push(node.__id)
+          const { node } = data.followArtist.artist.related.suggested.edges[0]
+          this.excludedArtistIds.add(node.__id)
 
           // Add slight delay to make UX seem a bit nicer
           this.setState(

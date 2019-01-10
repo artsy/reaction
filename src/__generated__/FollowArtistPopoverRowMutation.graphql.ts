@@ -8,6 +8,7 @@ export type FollowArtistInput = {
 };
 export type FollowArtistPopoverRowMutationVariables = {
     readonly input: FollowArtistInput;
+    readonly excludedArtistIds: ReadonlyArray<string | null>;
 };
 export type FollowArtistPopoverRowMutationResponse = {
     readonly followArtist: ({
@@ -43,12 +44,13 @@ export type FollowArtistPopoverRowMutation = {
 /*
 mutation FollowArtistPopoverRowMutation(
   $input: FollowArtistInput!
+  $excludedArtistIds: [String]!
 ) {
   followArtist(input: $input) {
     artist {
       __id
       related {
-        suggested(first: 3, exclude_followed_artists: true) {
+        suggested(first: 3, exclude_followed_artists: true, exclude_artist_ids: $excludedArtistIds) {
           edges {
             node {
               __id
@@ -75,6 +77,12 @@ var v0 = [
     "kind": "LocalArgument",
     "name": "input",
     "type": "FollowArtistInput!",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "excludedArtistIds",
+    "type": "[String]!",
     "defaultValue": null
   }
 ],
@@ -125,8 +133,14 @@ v2 = [
                 "kind": "LinkedField",
                 "alias": null,
                 "name": "suggested",
-                "storageKey": "suggested(exclude_followed_artists:true,first:3)",
+                "storageKey": null,
                 "args": [
+                  {
+                    "kind": "Variable",
+                    "name": "exclude_artist_ids",
+                    "variableName": "excludedArtistIds",
+                    "type": "[String]"
+                  },
                   {
                     "kind": "Literal",
                     "name": "exclude_followed_artists",
@@ -243,7 +257,7 @@ return {
   "operationKind": "mutation",
   "name": "FollowArtistPopoverRowMutation",
   "id": null,
-  "text": "mutation FollowArtistPopoverRowMutation(\n  $input: FollowArtistInput!\n) {\n  followArtist(input: $input) {\n    artist {\n      __id\n      related {\n        suggested(first: 3, exclude_followed_artists: true) {\n          edges {\n            node {\n              __id\n              id\n              _id\n              name\n              image {\n                cropped(width: 45, height: 45) {\n                  url\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation FollowArtistPopoverRowMutation(\n  $input: FollowArtistInput!\n  $excludedArtistIds: [String]!\n) {\n  followArtist(input: $input) {\n    artist {\n      __id\n      related {\n        suggested(first: 3, exclude_followed_artists: true, exclude_artist_ids: $excludedArtistIds) {\n          edges {\n            node {\n              __id\n              id\n              _id\n              name\n              image {\n                cropped(width: 45, height: 45) {\n                  url\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -261,5 +275,5 @@ return {
   }
 };
 })();
-(node as any).hash = '4ef0efbe01b34c0cdb76fff2bd8a3141';
+(node as any).hash = '85ec6ac2e7e0dd07a9b81b9d3feb90dd';
 export default node;
