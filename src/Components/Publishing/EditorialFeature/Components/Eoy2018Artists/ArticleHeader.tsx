@@ -110,6 +110,7 @@ const Img = styled.div<{ src?: string }>`
 const GridItem = styled(Box)<{ isVisible?: boolean }>`
   border: 3px solid ${color("purple100")};
   transition: background-color 0.5s;
+
   ${Img} {
     ${props =>
       props.isVisible &&
@@ -120,6 +121,7 @@ const GridItem = styled(Box)<{ isVisible?: boolean }>`
 
   &:hover {
     background-color: ${color("purple100")};
+
     ${Img} {
       opacity: 1;
     }
