@@ -14,7 +14,9 @@ import { ContextConsumer, ContextProps } from "Artsy/SystemContext"
 import React, { SFC } from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 import styled from "styled-components"
+import { Provider } from "unstated"
 import { FollowArtistPopoverRowFragmentContainer as FollowArtistPopoverRow } from "./FollowArtistPopoverRow"
+import { FollowArtistPopoverState } from "./state"
 
 // TODO: Revisit possibility of creating an Artsy popover for it.
 const BorderedContainer = styled(BorderBox)`
@@ -36,6 +38,9 @@ const FollowArtistPopover: SFC<Props> = props => {
   const { related } = suggested
   const suggetionsCount = related.suggested.edges.length
   if (suggetionsCount === 0) return null
+  const excludeArtistIds = related.suggested.edges.map(({ node: { _id } }) => {
+    return _id
+  })
   return (
     <BorderedContainer>
       <Container>
@@ -50,14 +55,18 @@ const FollowArtistPopover: SFC<Props> = props => {
           </Box>
         </TitleContainer>
         <Flex flexDirection="column">
-          {related.suggested.edges.map(({ node: artist }, index) => {
-            return (
-              <React.Fragment key={artist.__id}>
-                <FollowArtistPopoverRow user={user} artist={artist} />
-                {index < suggetionsCount - 1 && <Separator />}
-              </React.Fragment>
-            )
-          })}
+          <Provider
+            inject={[new FollowArtistPopoverState({ excludeArtistIds })]}
+          >
+            {related.suggested.edges.map(({ node: artist }, index) => {
+              return (
+                <React.Fragment key={artist.__id}>
+                  <FollowArtistPopoverRow user={user} artist={artist} />
+                  {index < suggetionsCount - 1 && <Separator />}
+                </React.Fragment>
+              )
+            })}
+          </Provider>
         </Flex>
       </Container>
     </BorderedContainer>
@@ -73,6 +82,7 @@ export const FollowArtistPopoverFragmentContainer = createFragmentContainer(
           edges {
             node {
               __id
+              _id
               ...FollowArtistPopoverRow_artist
             }
           }
