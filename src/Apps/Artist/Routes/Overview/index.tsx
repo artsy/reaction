@@ -4,10 +4,10 @@ import { ArtworkFilterFragmentContainer as ArtworkFilter } from "Apps/Artist/Rou
 import { GenesFragmentContainer as Genes } from "Apps/Artist/Routes/Overview/Components/Genes"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { withContext } from "Artsy/SystemContext"
 import { hasSections as showMarketInsights } from "Components/Artist/MarketInsights/MarketInsights"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { data as sd } from "sharify"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Media } from "Utils/Responsive"
 import { CurrentEventFragmentContainer as CurrentEvent } from "./Components/CurrentEvent"
@@ -21,7 +21,6 @@ import {
 } from "Styleguide/Components"
 
 export interface OverviewRouteProps {
-  user: User
   artist: Overview_artist & {
     __fragments: object[]
   }
@@ -60,14 +59,31 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
   }
 
   render() {
-    const { artist, user } = this.props
-    const showSelectedExhibitions = Boolean(artist.exhibition_highlights.length)
+    const { artist } = this.props
+    const artistInsightsVariation = sd.ARTIST_INSIGHTS
+    const showArtistInsightsV1 =
+      (artistInsightsVariation === undefined ||
+        artistInsightsVariation === "v1") &&
+      showMarketInsights(this.props.artist)
+    const showArtistInsightsV2BeforeBio =
+      artistInsightsVariation === "v2_before_bio" &&
+      (showMarketInsights(this.props.artist) || artist.insights.length)
+    const showArtistInsightsV2AfterBio =
+      artistInsightsVariation === "v2_after_bio" &&
+      (showMarketInsights(this.props.artist) || artist.insights.length)
+    const showArtistInsights =
+      showArtistInsightsV1 ||
+      showArtistInsightsV2BeforeBio ||
+      showArtistInsightsV2AfterBio
+    const showSelectedExhibitions =
+      Boolean(artist.exhibition_highlights.length) &&
+      !(showArtistInsightsV2BeforeBio || showArtistInsightsV2AfterBio)
     const showArtistBio = Boolean(artist.biography_blurb.text)
     const showCurrentEvent = Boolean(artist.currentEvent)
     const showConsignable = Boolean(artist.is_consignable)
     const bioLen = artist.biography_blurb.text.length
     const hideMainOverviewSection =
-      !showMarketInsights(this.props.artist) &&
+      !showArtistInsights &&
       !showSelectedExhibitions &&
       !showArtistBio &&
       !showCurrentEvent &&
@@ -77,121 +93,85 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
     const colNum = 9 // artist.currentEvent ? 9 : 12
     const showGenes = this.maybeShowGenes()
 
-    const showArtistInsightsV2 =
-      user &&
-      user.type === "Admin" &&
-      (showMarketInsights || artist.insights.length)
-
-    const ArtistInsightsFragment = showArtistInsightsV2 ? (
-      <SelectedCareerAchievements artist={artist} />
-    ) : (
-      showMarketInsights && <MarketInsights artist={artist} />
-    )
-
-    const BioFragment = (
-      <>
-        <ArtistBio
-          onReadMoreClicked={() => {
-            this.setState({ isReadMoreExpanded: true })
-          }}
-          bio={artist}
-        />
-      </>
-    )
-
-    const GenesFragment = (
-      <>
-        <Media at="xs">
-          {bioLen < MAX_CHARS.xs ? (
-            <>
-              <Genes artist={artist} />
-            </>
-          ) : (
-            showGenes && <Genes artist={artist} />
-          )}
-        </Media>
-        <Media greaterThan="xs">
-          {bioLen < MAX_CHARS.default ? (
-            <>
-              <Genes artist={artist} />
-            </>
-          ) : (
-            showGenes && <Genes artist={artist} />
-          )}
-        </Media>
-      </>
-    )
-
-    const ConsignmentFragment = (
-      <>
-        <Sans size="2" color="black60">
-          Want to sell a work by this artist?{" "}
-          <a href="/consign" onClick={this.handleConsignClick.bind(this)}>
-            Learn more
-          </a>.
-        </Sans>
-      </>
-    )
-
-    const SelectedExhibitionsFragment = (
-      <SelectedExhibitions
-        artistID={artist.id}
-        totalExhibitions={this.props.artist.counts.partner_shows}
-        exhibitions={this.props.artist.exhibition_highlights}
-      />
-    )
-
     return (
       <>
         <Row>
           <Col sm={colNum}>
-            {showArtistInsightsV2 ? (
-              <>
-                {showArtistBio && (
-                  <>
-                    {BioFragment}
-                    <Spacer mb={1} />
-                  </>
-                )}
-                {showGenes && (
-                  <>
-                    {GenesFragment}
-                    <Spacer mb={1} />
-                  </>
-                )}
-                {showConsignable && (
-                  <>
-                    {ConsignmentFragment}
-                    <Spacer mb={2} />
-                  </>
-                )}
-                {ArtistInsightsFragment}
-              </>
-            ) : (
-              <>
-                {ArtistInsightsFragment}
-                {ArtistInsightsFragment && <Spacer mb={1} />}
-                {showSelectedExhibitions && (
-                  <>
-                    {SelectedExhibitionsFragment}
-                    <Spacer mb={1} />
-                  </>
-                )}
-                {showArtistBio && (
-                  <>
-                    {BioFragment}
-                    <Spacer mb={1} />
-                  </>
-                )}
-                {showGenes && (
-                  <>
-                    {GenesFragment}
-                    <Spacer mb={1} />
-                  </>
-                )}
-                {showConsignable && ConsignmentFragment}
-              </>
-            )}
+            <>
+              {showArtistInsightsV2BeforeBio && (
+                <>
+                  <SelectedCareerAchievements artist={artist} />
+                  <Spacer mb={1} />
+                </>
+              )}
+              {showArtistInsightsV1 && (
+                <>
+                  <MarketInsights artist={artist} />
+                  <Spacer mb={1} />
+                </>
+              )}
+              {showSelectedExhibitions && (
+                <>
+                  <SelectedExhibitions
+                    artistID={artist.id}
+                    totalExhibitions={this.props.artist.counts.partner_shows}
+                    exhibitions={this.props.artist.exhibition_highlights}
+                  />
+                  <Spacer mb={1} />
+                </>
+              )}
+              {showArtistBio && (
+                <>
+                  <ArtistBio
+                    onReadMoreClicked={() => {
+                      this.setState({ isReadMoreExpanded: true })
+                    }}
+                    bio={artist}
+                  />
+                  <Spacer mb={1} />
+                </>
+              )}
+              {showGenes && (
+                <>
+                  <Media at="xs">
+                    {bioLen < MAX_CHARS.xs ? (
+                      <>
+                        <Genes artist={artist} />
+                      </>
+                    ) : (
+                      showGenes && <Genes artist={artist} />
+                    )}
+                  </Media>
+                  <Media greaterThan="xs">
+                    {bioLen < MAX_CHARS.default ? (
+                      <>
+                        <Genes artist={artist} />
+                      </>
+                    ) : (
+                      showGenes && <Genes artist={artist} />
+                    )}
+                  </Media>
+                  <Spacer mb={1} />
+                </>
+              )}
+              {showConsignable && (
+                <>
+                  <Sans size="2" color="black60">
+                    Want to sell a work by this artist?{" "}
+                    <a
+                      href="/consign"
+                      onClick={this.handleConsignClick.bind(this)}
+                    >
+                      Learn more
+                    </a>.
+                  </Sans>
+                  {showArtistInsightsV2AfterBio && <Spacer mb={2} />}
+                </>
+              )}
+              {showArtistInsightsV2AfterBio && (
+                <SelectedCareerAchievements artist={artist} />
+              )}
+            </>
           </Col>
 
           {showCurrentEvent && (
@@ -221,7 +201,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
 }
 
 export const OverviewRouteFragmentContainer = createFragmentContainer(
-  withContext(OverviewRoute),
+  OverviewRoute,
   graphql`
     fragment Overview_artist on Artist
       @argumentDefinitions(
