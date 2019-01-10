@@ -52,18 +52,20 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
     highSpeedBumpEncountered: false,
   }
 
-  @track({
+  @track<OfferProps>(props => ({
+    order_id: props.order.id,
     action_type: ActionType.FocusedOnOfferInput,
     flow: Flow.MakeOffer,
-  })
+  }))
   onOfferInputFocus() {
     // noop
   }
 
-  @track({
+  @track<OfferProps>(props => ({
+    order_id: props.order.id,
     action_type: ActionType.ViewedOfferTooLow,
     flow: Flow.MakeOffer,
-  })
+  }))
   showLowSpeedbump() {
     this.setState({ lowSpeedBumpEncountered: true })
     this.props.dialog.showErrorDialog({
@@ -74,10 +76,11 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
     })
   }
 
-  @track({
+  @track<OfferProps>(props => ({
+    order_id: props.order.id,
     action_type: ActionType.ViewedOfferHigherThanListPrice,
     flow: Flow.MakeOffer,
-  })
+  }))
   showHighSpeedbump() {
     this.setState({ highSpeedBumpEncountered: true })
     this.props.dialog.showErrorDialog({

@@ -69,18 +69,20 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
     highSpeedBumpEncountered: false,
   }
 
-  @track({
+  @track<RespondProps>(props => ({
+    order_id: props.order.id,
     action_type: ActionType.FocusedOnOfferInput,
     flow: Flow.MakeOffer,
-  })
+  }))
   onOfferInputFocus() {
     // noop
   }
 
-  @track({
+  @track<RespondProps>(props => ({
+    order_id: props.order.id,
     action_type: ActionType.ViewedOfferTooLow,
     flow: Flow.MakeOffer,
-  })
+  }))
   showLowSpeedbump() {
     this.setState({ lowSpeedBumpEncountered: true })
     this.props.dialog.showErrorDialog({
@@ -91,10 +93,11 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
     })
   }
 
-  @track({
+  @track<RespondProps>(props => ({
+    order_id: props.order.id,
     action_type: ActionType.ViewedOfferHigherThanListPrice,
     flow: Flow.MakeOffer,
-  })
+  }))
   showHighSpeedbump() {
     this.setState({ highSpeedBumpEncountered: true })
     this.props.dialog.showErrorDialog({

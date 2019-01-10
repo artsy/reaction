@@ -525,6 +525,7 @@ Object {
 
       expect(mockPostEvent).toHaveBeenCalledTimes(1)
       expect(mockPostEvent).toHaveBeenLastCalledWith({
+        order_id: "2939023",
         action_type: "Focused on offer input",
         flow: "Make offer",
       })
@@ -549,6 +550,7 @@ Object {
         .onClick({})
 
       expect(mockPostEvent).toHaveBeenLastCalledWith({
+        order_id: "2939023",
         action_type: "Viewed offer too low",
         flow: "Make offer",
       })
@@ -573,6 +575,7 @@ Object {
         .onClick({})
 
       expect(mockPostEvent).toHaveBeenLastCalledWith({
+        order_id: "2939023",
         action_type: "Viewed offer higher than listed price",
         flow: "Make offer",
       })

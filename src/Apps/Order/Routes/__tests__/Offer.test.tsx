@@ -318,6 +318,7 @@ describe("Offer InitialMutation", () => {
 
       expect(mockPostEvent).toHaveBeenCalledTimes(1)
       expect(mockPostEvent).toHaveBeenLastCalledWith({
+        order_id: "1234",
         action_type: "Focused on offer input",
         flow: "Make offer",
       })
@@ -336,6 +337,7 @@ describe("Offer InitialMutation", () => {
       component.find(Button).simulate("click")
 
       expect(mockPostEvent).toHaveBeenLastCalledWith({
+        order_id: "1234",
         action_type: "Viewed offer too low",
         flow: "Make offer",
       })
@@ -354,6 +356,7 @@ describe("Offer InitialMutation", () => {
       component.find(Button).simulate("click")
 
       expect(mockPostEvent).toHaveBeenLastCalledWith({
+        order_id: "1234",
         action_type: "Viewed offer higher than listed price",
         flow: "Make offer",
       })
