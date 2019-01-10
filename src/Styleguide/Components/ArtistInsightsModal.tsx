@@ -80,7 +80,7 @@ export class ArtistInsightsModal extends React.Component {
             <Link href="mailto:support@artsy.net">let us know</Link>.
           </Serif>
         </Modal>
-        <Sans mt={1} ml={1} size="2" color="black60">
+        <Sans mt={1} size="2" color="black60">
           <Link onClick={this.handleOpen.bind(this)}>Learn more</Link> about
           artist insights.
         </Sans>
