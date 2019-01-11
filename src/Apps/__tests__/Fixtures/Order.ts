@@ -46,9 +46,7 @@ export const UntouchedOrder = {
   taxTotalCents: null,
   creditCard: null,
   buyerTotal: "$12,000",
-  requestedFulfillment: {
-    __typename: "%other",
-  },
+  requestedFulfillment: null,
   lineItems: {
     edges: [
       {
@@ -118,14 +116,23 @@ export const UntouchedBuyOrder = {
   mode: "BUY",
 }
 
+export const TaxTotals = {
+  taxTotal: "$120",
+  taxTotalCents: 12000,
+}
+
+export const ShippingTotals = {
+  shippingTotal: "$200",
+  shippingTotalCents: 20000,
+}
+
 export const OfferWithTotals = {
   id: "myoffer-id",
   amount: "$14,000",
   amountCents: 1400000,
-  shippingTotal: "$200",
-  shippingTotalCents: 20000,
-  taxTotal: "$120",
-  taxTotalCents: 12000,
+  ...ShippingTotals,
+  ...TaxTotals,
+  createdAt: null,
   fromParticipant: "SELLER",
   buyerTotal: "$14,320",
   buyerTotalCents: 1432000,
@@ -139,15 +146,21 @@ export const UntouchedOfferOrder = {
   totalListPriceCents: 1600000,
   itemsTotal: "$16,000",
   itemsTotalCents: 1600000,
-  lastOffer: OfferWithTotals,
+  lastOffer: null,
   awaitingResponseFrom: null,
+  myLastOffer: null,
+  offers: {
+    edges: [{ node: OfferWithTotals }],
+  },
+}
+
+export const OfferOrderWithOffers = {
+  ...UntouchedOfferOrder,
+  lastOffer: OfferWithTotals,
   myLastOffer: {
     ...OfferWithTotals,
     id: "my-last-offer-id",
     fromParticipant: "BUYER",
-  },
-  offers: {
-    edges: [{ node: OfferWithTotals }],
   },
 }
 
@@ -155,6 +168,7 @@ export const ShippingDetails = {
   buyerPhoneNumber: "120938120983",
   requestedFulfillment: {
     __typename: "Ship",
+    fulfillmentType: "SHIP",
     name: "Joelle Van Dyne",
     addressLine1: "401 Broadway",
     addressLine2: "Suite 25",
@@ -168,6 +182,13 @@ export const ShippingDetails = {
 
 export const PaymentDetails = {
   creditCard: {
+    name: "Dr. Collector",
+    street1: "1 Art st",
+    street2: null,
+    city: "New York",
+    state: "NY",
+    country: "USA",
+    postal_code: "90210",
     brand: "Visa",
     last_digits: "4444",
     expiration_month: 3,
@@ -182,7 +203,7 @@ export const BuyOrderWithShippingDetails = {
 }
 
 export const OfferOrderWithShippingDetails = {
-  ...UntouchedOfferOrder,
+  ...OfferOrderWithOffers,
   ...ShippingDetails,
   ...PaymentDetails,
 }
@@ -192,14 +213,16 @@ export const BuyOrderPickup = {
   buyerPhoneNumber: "120938120983",
   requestedFulfillment: {
     __typename: "Pickup",
+    fulfillmentType: "PICKUP",
   },
 }
 
 export const OfferOrderPickup = {
-  ...UntouchedOfferOrder,
+  ...OfferOrderWithOffers,
   buyerPhoneNumber: "120938120983",
   requestedFulfillment: {
     __typename: "Pickup",
+    fulfillmentType: "PICKUP",
   },
 }
 

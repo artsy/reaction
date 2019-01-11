@@ -33,6 +33,8 @@ export const createMockNetworkLayer2 = (
   return Network.create(
     getNetworkLayer({
       fieldResolver: ((source, _args, _context, info) => {
+        // source is null for aliased root fields
+        source = source || queryData
         if (source) {
           if (info.fieldName in source) {
             return source[info.fieldName]
