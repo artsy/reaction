@@ -97,22 +97,13 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
     const artistInsightsVariation =
       this.props.ARTIST_INSIGHTS || sd.ARTIST_INSIGHTS
     const showArtistInsightsV1 =
-      (artistInsightsVariation === undefined ||
-        artistInsightsVariation === "v1") &&
-      showMarketInsights(this.props.artist)
-    const showArtistInsightsV2BeforeBio =
-      artistInsightsVariation === "v2_before_bio" &&
+      artistInsightsVariation === "v1" && showMarketInsights(this.props.artist)
+    const showArtistInsightsV2 =
+      artistInsightsVariation === "v2" &&
       (showMarketInsights(this.props.artist) || artist.insights.length)
-    const showArtistInsightsV2AfterBio =
-      artistInsightsVariation === "v2_after_bio" &&
-      (showMarketInsights(this.props.artist) || artist.insights.length)
-    const showArtistInsights =
-      showArtistInsightsV1 ||
-      showArtistInsightsV2BeforeBio ||
-      showArtistInsightsV2AfterBio
+    const showArtistInsights = showArtistInsightsV1 || showArtistInsightsV2
     const showSelectedExhibitions =
-      Boolean(artist.exhibition_highlights.length) &&
-      !(showArtistInsightsV2BeforeBio || showArtistInsightsV2AfterBio)
+      Boolean(artist.exhibition_highlights.length) && !showArtistInsightsV2
     const showArtistBio = Boolean(artist.biography_blurb.text)
     const showCurrentEvent = Boolean(artist.currentEvent)
     const showConsignable = Boolean(artist.is_consignable)
@@ -133,7 +124,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
         <Row>
           <Col sm={colNum}>
             <>
-              {showArtistInsightsV2BeforeBio && (
+              {showArtistInsightsV2 && (
                 <>
                   {this.renderArtistInsightsV2()}
                   <Spacer mb={1} />
@@ -200,10 +191,8 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
                       Learn more
                     </a>.
                   </Sans>
-                  {showArtistInsightsV2AfterBio && <Spacer mb={2} />}
                 </>
               )}
-              {showArtistInsightsV2AfterBio && this.renderArtistInsightsV2()}
             </>
           </Col>
 
