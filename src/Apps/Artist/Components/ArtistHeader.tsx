@@ -5,6 +5,7 @@ import * as Schema from "Artsy/Analytics/Schema"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import { Carousel } from "Components/v2"
+import { stringify } from "qs"
 import React, { Component, Fragment } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
@@ -246,16 +247,18 @@ export class SmallArtistHeader extends Component<Props> {
             buttonProps={{ width: "100%" }}
             user={user}
             onOpenAuthModal={() => {
-              props.mediator.trigger("open:auth", {
-                mode: "signup",
-                copy: `Sign up to follow ${props.artist.name}`,
-                signupIntent: "follow artist",
-                afterSignUpAction: {
-                  kind: "artist",
-                  action: "follow",
-                  objectId: props.artist.id,
-                },
+              const params = stringify({
+                action: "follow",
+                contextModule: "Artist page",
+                intent: "follow artist",
+                kind: "artist",
+                objectId: props.artist.id,
+                signUpIntent: "follow artist",
+                trigger: "click",
               })
+              const href = `/sign_up?redirect-to=${window.location}&${params}`
+
+              location.href = href
             }}
           >
             Follow
