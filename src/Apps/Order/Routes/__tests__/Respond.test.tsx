@@ -20,6 +20,15 @@ import { Stepper } from "Styleguide/Components"
 import { CountdownTimer } from "Styleguide/Components/CountdownTimer"
 import { RespondFragmentContainer as RespondRoute } from "../Respond"
 
+// Need to mock Utils/Events instead of using mockTracking because
+// Boot's `dispatch` tracking prop overrides the one injected by
+// mockTracking
+jest.unmock("react-tracking")
+jest.mock("Utils/Events", () => ({
+  postEvent: jest.fn(),
+}))
+const mockPostEvent = require("Utils/Events").postEvent as jest.Mock
+
 jest.mock("Apps/Order/Utils/trackPageView")
 
 jest.mock("Utils/getCurrentTimeAsIsoString")
@@ -80,6 +89,7 @@ describe("Offer InitialMutation", () => {
   }
 
   beforeEach(() => {
+    mockPostEvent.mockReset()
     mockPushRoute = jest.fn()
     commitMutationMock.mockReset()
   })
@@ -493,9 +503,82 @@ Object {
     })
   })
 
-  it("tracks a pageview", () => {
-    getWrapper()
+  describe("Analaytics", () => {
+    it("tracks a pageview", () => {
+      getWrapper()
 
-    expect(trackPageView).toHaveBeenCalledTimes(1)
+      expect(trackPageView).toHaveBeenCalledTimes(1)
+    })
+
+    it("tracks the offer input focus", () => {
+      const counter = getWrapper()
+
+      const counterRadio = counter.find(BorderedRadio).at(1)
+      counterRadio.props().onSelect({ selected: true, value: "COUNTER" })
+
+      expect(mockPostEvent).not.toHaveBeenCalled()
+
+      counter
+        .find(OfferInput)
+        .find("input")
+        .simulate("focus")
+
+      expect(mockPostEvent).toHaveBeenCalledTimes(1)
+      expect(mockPostEvent).toHaveBeenLastCalledWith({
+        order_id: "2939023",
+        action_type: "Focused on offer input",
+        flow: "Make offer",
+      })
+    })
+
+    it("tracks viwing the low offer speedbump", async () => {
+      const component = getWrapper()
+      const counterRadio = component.find(BorderedRadio).at(1)
+      counterRadio.props().onSelect({ selected: true, value: "COUNTER" })
+
+      component
+        .find(OfferInput)
+        .props()
+        .onChange(1000)
+
+      expect(mockPostEvent).not.toHaveBeenCalled()
+
+      component
+        .find(Button)
+        .last()
+        .props()
+        .onClick({})
+
+      expect(mockPostEvent).toHaveBeenLastCalledWith({
+        order_id: "2939023",
+        action_type: "Viewed offer too low",
+        flow: "Make offer",
+      })
+    })
+
+    it("tracks viwing the high offer speedbump", async () => {
+      const component = getWrapper()
+      const counterRadio = component.find(BorderedRadio).at(1)
+      counterRadio.props().onSelect({ selected: true, value: "COUNTER" })
+
+      component
+        .find(OfferInput)
+        .props()
+        .onChange(20000)
+
+      expect(mockPostEvent).not.toHaveBeenCalled()
+
+      component
+        .find(Button)
+        .last()
+        .props()
+        .onClick({})
+
+      expect(mockPostEvent).toHaveBeenLastCalledWith({
+        order_id: "2939023",
+        action_type: "Viewed offer higher than listed price",
+        flow: "Make offer",
+      })
+    })
   })
 })

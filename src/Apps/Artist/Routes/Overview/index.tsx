@@ -82,9 +82,11 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
       user.type === "Admin" &&
       (showMarketInsights || artist.insights.length)
 
-    const ArtistInsights = showArtistInsightsV2
-      ? SelectedCareerAchievements
-      : MarketInsights
+    const ArtistInsightsFragment = showArtistInsightsV2 ? (
+      <SelectedCareerAchievements artist={artist} />
+    ) : (
+      showMarketInsights && <MarketInsights artist={artist} />
+    )
 
     const BioFragment = (
       <>
@@ -94,7 +96,6 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
           }}
           bio={artist}
         />
-        <Spacer mb={1} />
       </>
     )
 
@@ -104,7 +105,6 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
           {bioLen < MAX_CHARS.xs ? (
             <>
               <Genes artist={artist} />
-              <Spacer mb={1} />
             </>
           ) : (
             showGenes && <Genes artist={artist} />
@@ -114,19 +114,16 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
           {bioLen < MAX_CHARS.default ? (
             <>
               <Genes artist={artist} />
-              <Spacer mb={1} />
             </>
           ) : (
             showGenes && <Genes artist={artist} />
           )}
         </Media>
-        <Spacer mb={1} />
       </>
     )
 
     const ConsignmentFragment = (
       <>
-        <Spacer mb={2} />
         <Sans size="2" color="black60">
           Want to sell a work by this artist?{" "}
           <a href="/consign" onClick={this.handleConsignClick.bind(this)}>
@@ -136,43 +133,62 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
       </>
     )
 
+    const SelectedExhibitionsFragment = (
+      <SelectedExhibitions
+        artistID={artist.id}
+        totalExhibitions={this.props.artist.counts.partner_shows}
+        exhibitions={this.props.artist.exhibition_highlights}
+      />
+    )
+
     return (
       <>
         <Row>
           <Col sm={colNum}>
             {showArtistInsightsV2 ? (
               <>
-                {showArtistBio && BioFragment}
-                {showGenes && GenesFragment}
+                {showArtistBio && (
+                  <>
+                    {BioFragment}
+                    <Spacer mb={1} />
+                  </>
+                )}
+                {showGenes && (
+                  <>
+                    {GenesFragment}
+                    <Spacer mb={1} />
+                  </>
+                )}
                 {showConsignable && (
                   <>
                     {ConsignmentFragment}
-                    <Spacer mb={1} />
+                    <Spacer mb={2} />
                   </>
                 )}
-                {ArtistInsights && <ArtistInsights artist={artist} />}
+                {ArtistInsightsFragment}
               </>
             ) : (
               <>
-                {ArtistInsights && (
-                  <>
-                    <ArtistInsights artist={artist} />
-                    <Spacer mb={1} />
-                  </>
-                )}
-
+                {ArtistInsightsFragment}
+                {ArtistInsightsFragment && <Spacer mb={1} />}
                 {showSelectedExhibitions && (
                   <>
-                    <SelectedExhibitions
-                      artistID={artist.id}
-                      totalExhibitions={this.props.artist.counts.partner_shows}
-                      exhibitions={this.props.artist.exhibition_highlights}
-                    />
+                    {SelectedExhibitionsFragment}
                     <Spacer mb={1} />
                   </>
                 )}
-                {showArtistBio && BioFragment}
-                {showGenes && GenesFragment}
+                {showArtistBio && (
+                  <>
+                    {BioFragment}
+                    <Spacer mb={1} />
+                  </>
+                )}
+                {showGenes && (
+                  <>
+                    {GenesFragment}
+                    <Spacer mb={1} />
+                  </>
+                )}
                 {showConsignable && ConsignmentFragment}
               </>
             )}

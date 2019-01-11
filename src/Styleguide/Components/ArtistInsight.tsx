@@ -91,7 +91,7 @@ export class ArtistInsight extends React.Component<ArtistInsightProps> {
 
     if (value || (entities && entities.length > 0)) {
       return (
-        <Flex mt={1} mr={2} width={260}>
+        <Flex mt={1} width={["100%", "50%"]}>
           <Flex pr={1} alignItems="top">
             {this.renderIcon(type)}
           </Flex>

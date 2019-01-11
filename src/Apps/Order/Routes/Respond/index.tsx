@@ -14,6 +14,8 @@ import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSum
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { Dialog, injectDialog } from "Apps/Order/Dialogs"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
+import { track } from "Artsy"
+import * as Schema from "Artsy/Analytics/Schema"
 import { StaticCollapse } from "Components/StaticCollapse"
 import { Router } from "found"
 import React, { Component } from "react"
@@ -57,6 +59,7 @@ export interface RespondState {
 
 export const logger = createLogger("Order/Routes/Respond/index.tsx")
 
+@track()
 export class RespondRoute extends Component<RespondProps, RespondState> {
   state: RespondState = {
     offerValue: 0,
@@ -65,6 +68,44 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
     formIsDirty: false,
     lowSpeedBumpEncountered: false,
     highSpeedBumpEncountered: false,
+  }
+
+  @track<RespondProps>(props => ({
+    order_id: props.order.id,
+    action_type: Schema.ActionType.FocusedOnOfferInput,
+    flow: Schema.Flow.MakeOffer,
+  }))
+  onOfferInputFocus() {
+    // noop
+  }
+
+  @track<RespondProps>(props => ({
+    order_id: props.order.id,
+    action_type: Schema.ActionType.ViewedOfferTooLow,
+    flow: Schema.Flow.MakeOffer,
+  }))
+  showLowSpeedbump() {
+    this.setState({ lowSpeedBumpEncountered: true })
+    this.props.dialog.showErrorDialog({
+      title: "Offer may be too low",
+      message:
+        "Offers within 25% of the seller's offer are most likely to receive a response.",
+      continueButtonText: "OK",
+    })
+  }
+
+  @track<RespondProps>(props => ({
+    order_id: props.order.id,
+    action_type: Schema.ActionType.ViewedOfferHigherThanListPrice,
+    flow: Schema.Flow.MakeOffer,
+  }))
+  showHighSpeedbump() {
+    this.setState({ highSpeedBumpEncountered: true })
+    this.props.dialog.showErrorDialog({
+      title: "Offer higher than seller's offer",
+      message: "You’re making an offer higher than the seller's offer.",
+      continueButtonText: "OK",
+    })
   }
 
   onContinueButtonPressed = async () => {
@@ -86,13 +127,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
         !lowSpeedBumpEncountered &&
         offerValue * 100 < currentOfferPrice * 0.75
       ) {
-        this.setState({ lowSpeedBumpEncountered: true })
-        this.props.dialog.showErrorDialog({
-          title: "Offer may be too low",
-          message:
-            "Offers within 25% of the seller's offer are most likely to receive a response.",
-          continueButtonText: "OK",
-        })
+        this.showLowSpeedbump()
         return
       }
 
@@ -100,12 +135,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
         !highSpeedBumpEncountered &&
         this.state.offerValue * 100 > currentOfferPrice
       ) {
-        this.setState({ highSpeedBumpEncountered: true })
-        this.props.dialog.showErrorDialog({
-          title: "Offer higher than seller's offer",
-          message: "You’re making an offer higher than the seller's offer.",
-          continueButtonText: "OK",
-        })
+        this.showHighSpeedbump()
         return
       }
     }
@@ -260,6 +290,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                           this.state.formIsDirty && this.state.offerValue <= 0
                         }
                         onChange={offerValue => this.setState({ offerValue })}
+                        onFocus={this.onOfferInputFocus.bind(this)}
                       />
                     </StaticCollapse>
                   </BorderedRadio>
