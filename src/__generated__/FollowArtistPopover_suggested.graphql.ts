@@ -10,6 +10,7 @@ export type FollowArtistPopover_suggested = {
             readonly edges: ReadonlyArray<({
                 readonly node: ({
                     readonly __id: string;
+                    readonly _id: string;
                     readonly " $fragmentRefs": FollowArtistPopoverRow_artist$ref;
                 }) | null;
             }) | null> | null;
@@ -86,6 +87,13 @@ return {
                   "selections": [
                     v0,
                     {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "_id",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    {
                       "kind": "FragmentSpread",
                       "name": "FollowArtistPopoverRow_artist",
                       "args": null
@@ -102,5 +110,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '34fdbb36224da332bca2449262f66464';
+(node as any).hash = '2aaa66b0aa88b4068cf423d512c5b234';
 export default node;

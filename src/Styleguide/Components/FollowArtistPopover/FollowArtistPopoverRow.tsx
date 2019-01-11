@@ -6,10 +6,13 @@ import React from "react"
 import { commitMutation, createFragmentContainer, graphql } from "react-relay"
 import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
 import styled from "styled-components"
+import { Subscribe } from "unstated"
 import { get } from "Utils/get"
+import { FollowArtistPopoverState } from "./state"
 
 interface Props extends ContextProps {
   artist: FollowArtistPopoverRow_artist
+  excludeArtistIdsState?: FollowArtistPopoverState
 }
 
 interface State {
@@ -23,7 +26,6 @@ const ArtistName = styled(Serif)`
   white-space: nowrap;
   overflow: hidden;
 `
-const FollowButtonContainer = Box
 
 class FollowArtistPopoverRow extends React.Component<Props, State> {
   state = {
@@ -32,19 +34,30 @@ class FollowArtistPopoverRow extends React.Component<Props, State> {
   }
 
   handleClick(artistID: string) {
-    const { user, relay } = this.props
+    const { user, relay, excludeArtistIdsState } = this.props
+    const {
+      state: { excludeArtistIds },
+    } = excludeArtistIdsState
     if (user && user.id) {
       commitMutation<FollowArtistPopoverRowMutation>(relay.environment, {
         mutation: graphql`
-          mutation FollowArtistPopoverRowMutation($input: FollowArtistInput!) {
+          mutation FollowArtistPopoverRowMutation(
+            $input: FollowArtistInput!
+            $excludeArtistIds: [String]!
+          ) {
             followArtist(input: $input) {
               artist {
                 __id
                 related {
-                  suggested(first: 1, exclude_followed_artists: true) {
+                  suggested(
+                    first: 1
+                    exclude_followed_artists: true
+                    exclude_artist_ids: $excludeArtistIds
+                  ) {
                     edges {
                       node {
                         __id
+                        _id
                         ...FollowArtistPopoverRow_artist @relay(mask: false)
                       }
                     }
@@ -56,6 +69,7 @@ class FollowArtistPopoverRow extends React.Component<Props, State> {
         `,
         variables: {
           input: { artist_id: artistID, unfollow: false },
+          excludeArtistIds,
         },
         optimisticUpdater: () => {
           this.setState({
@@ -79,6 +93,8 @@ class FollowArtistPopoverRow extends React.Component<Props, State> {
               }, 500)
             }
           )
+
+          excludeArtistIdsState.addArtist(node._id)
         },
       })
     }
@@ -97,7 +113,7 @@ class FollowArtistPopoverRow extends React.Component<Props, State> {
         <ArtistName size="3t" color="black100" ml={1} mr={1}>
           {artist.name}
         </ArtistName>
-        <FollowButtonContainer>
+        <Box>
           <Button
             onClick={() => this.handleClick(artistID)}
             variant="secondaryOutline"
@@ -106,14 +122,27 @@ class FollowArtistPopoverRow extends React.Component<Props, State> {
           >
             {this.state.followed ? "Followed" : "Follow"}
           </Button>
-        </FollowButtonContainer>
+        </Box>
       </Flex>
     )
   }
 }
 
 export const FollowArtistPopoverRowFragmentContainer = createFragmentContainer(
-  FollowArtistPopoverRow,
+  (props: Props) => {
+    return (
+      <Subscribe to={[FollowArtistPopoverState]}>
+        {(excludeArtistIdsState: FollowArtistPopoverState) => {
+          return (
+            <FollowArtistPopoverRow
+              excludeArtistIdsState={excludeArtistIdsState}
+              {...props}
+            />
+          )
+        }}
+      </Subscribe>
+    )
+  },
   graphql`
     fragment FollowArtistPopoverRow_artist on Artist {
       id
