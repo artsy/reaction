@@ -1,3 +1,17 @@
+# 9.5.9 (Fri Jan 11 2019)
+
+#### 🐛  Bug Fix
+
+- @oxaudo => Keep track of suggested artists that have been displayed (use `unstated`) [#1850](https://github.com/artsy/reaction/pull/1850) ([@mzikherman](https://github.com/mzikherman))
+- Update dependency @artsy/palette to v2.24.3 [#1851](https://github.com/artsy/reaction/pull/1851) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # 9.5.8 (Fri Jan 11 2019)
 
 
