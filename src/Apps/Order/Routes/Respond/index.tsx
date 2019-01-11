@@ -14,7 +14,8 @@ import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSum
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { Dialog, injectDialog } from "Apps/Order/Dialogs"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
-import { ActionType, Flow, track } from "Artsy"
+import { track } from "Artsy"
+import * as Schema from "Artsy/Analytics/Schema"
 import { StaticCollapse } from "Components/StaticCollapse"
 import { Router } from "found"
 import React, { Component } from "react"
@@ -71,8 +72,8 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
 
   @track<RespondProps>(props => ({
     order_id: props.order.id,
-    action_type: ActionType.FocusedOnOfferInput,
-    flow: Flow.MakeOffer,
+    action_type: Schema.ActionType.FocusedOnOfferInput,
+    flow: Schema.Flow.MakeOffer,
   }))
   onOfferInputFocus() {
     // noop
@@ -80,8 +81,8 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
 
   @track<RespondProps>(props => ({
     order_id: props.order.id,
-    action_type: ActionType.ViewedOfferTooLow,
-    flow: Flow.MakeOffer,
+    action_type: Schema.ActionType.ViewedOfferTooLow,
+    flow: Schema.Flow.MakeOffer,
   }))
   showLowSpeedbump() {
     this.setState({ lowSpeedBumpEncountered: true })
@@ -95,8 +96,8 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
 
   @track<RespondProps>(props => ({
     order_id: props.order.id,
-    action_type: ActionType.ViewedOfferHigherThanListPrice,
-    flow: Flow.MakeOffer,
+    action_type: Schema.ActionType.ViewedOfferHigherThanListPrice,
+    flow: Schema.Flow.MakeOffer,
   }))
   showHighSpeedbump() {
     this.setState({ highSpeedBumpEncountered: true })

@@ -8,7 +8,8 @@ import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSum
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { Dialog, injectDialog } from "Apps/Order/Dialogs"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
-import { ActionType, Flow, track } from "Artsy/Analytics"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics"
 import { Router } from "found"
 import React, { Component } from "react"
 import {
@@ -54,8 +55,8 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
 
   @track<OfferProps>(props => ({
     order_id: props.order.id,
-    action_type: ActionType.FocusedOnOfferInput,
-    flow: Flow.MakeOffer,
+    action_type: Schema.ActionType.FocusedOnOfferInput,
+    flow: Schema.Flow.MakeOffer,
   }))
   onOfferInputFocus() {
     // noop
@@ -63,8 +64,8 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
 
   @track<OfferProps>(props => ({
     order_id: props.order.id,
-    action_type: ActionType.ViewedOfferTooLow,
-    flow: Flow.MakeOffer,
+    action_type: Schema.ActionType.ViewedOfferTooLow,
+    flow: Schema.Flow.MakeOffer,
   }))
   showLowSpeedbump() {
     this.setState({ lowSpeedBumpEncountered: true })
@@ -78,8 +79,8 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
 
   @track<OfferProps>(props => ({
     order_id: props.order.id,
-    action_type: ActionType.ViewedOfferHigherThanListPrice,
-    flow: Flow.MakeOffer,
+    action_type: Schema.ActionType.ViewedOfferHigherThanListPrice,
+    flow: Schema.Flow.MakeOffer,
   }))
   showHighSpeedbump() {
     this.setState({ highSpeedBumpEncountered: true })
