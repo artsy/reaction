@@ -63,10 +63,12 @@ export class ModalWrapper extends React.Component<
 
   componentDidMount() {
     this.updateBodyScrollBlock()
+    this.updateEscapeKeyListener()
   }
 
   componentDidUpdate() {
     this.updateBodyScrollBlock()
+    this.updateEscapeKeyListener()
   }
 
   componentWillUnmount() {
@@ -95,6 +97,20 @@ export class ModalWrapper extends React.Component<
       document.body.style.overflowY = "hidden"
     } else {
       document.body.style.overflowY = "auto"
+    }
+  }
+
+  handleEscapeKey = event => {
+    if (event && event.key === "Escape") {
+      this.close()
+    }
+  }
+
+  updateEscapeKeyListener() {
+    if (this.props.show) {
+      document.addEventListener(KEYBOARD_EVENT, this.handleEscapeKey, true)
+    } else {
+      document.removeEventListener(KEYBOARD_EVENT, this.handleEscapeKey, true)
     }
   }
 
