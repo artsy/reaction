@@ -12,6 +12,7 @@ import { Col, Row } from "Styleguide/Elements/Grid"
 import { Media } from "Utils/Responsive"
 import { CurrentEventFragmentContainer as CurrentEvent } from "./Components/CurrentEvent"
 
+import { withContext } from "Artsy/SystemContext"
 import {
   ArtistBioFragmentContainer as ArtistBio,
   MarketInsightsFragmentContainer as MarketInsights,
@@ -24,6 +25,7 @@ export interface OverviewRouteProps {
   artist: Overview_artist & {
     __fragments: object[]
   }
+  ARTIST_INSIGHTS?: string
 }
 
 interface State {
@@ -60,7 +62,8 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
 
   render() {
     const { artist } = this.props
-    const artistInsightsVariation = sd.ARTIST_INSIGHTS
+    const artistInsightsVariation =
+      this.props.ARTIST_INSIGHTS || sd.ARTIST_INSIGHTS
     const showArtistInsightsV1 =
       (artistInsightsVariation === undefined ||
         artistInsightsVariation === "v1") &&
@@ -201,7 +204,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
 }
 
 export const OverviewRouteFragmentContainer = createFragmentContainer(
-  OverviewRoute,
+  withContext(OverviewRoute),
   graphql`
     fragment Overview_artist on Artist
       @argumentDefinitions(
