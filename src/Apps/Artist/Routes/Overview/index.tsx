@@ -4,15 +4,16 @@ import { ArtworkFilterFragmentContainer as ArtworkFilter } from "Apps/Artist/Rou
 import { GenesFragmentContainer as Genes } from "Apps/Artist/Routes/Overview/Components/Genes"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
+import { withContext } from "Artsy/SystemContext"
 import { hasSections as showMarketInsights } from "Components/Artist/MarketInsights/MarketInsights"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { TrackingProp } from "react-tracking"
 import { data as sd } from "sharify"
 import { Col, Row } from "Styleguide/Elements/Grid"
 import { Media } from "Utils/Responsive"
 import { CurrentEventFragmentContainer as CurrentEvent } from "./Components/CurrentEvent"
 
-import { withContext } from "Artsy/SystemContext"
 import {
   ArtistBioFragmentContainer as ArtistBio,
   MarketInsightsFragmentContainer as MarketInsights,
@@ -22,10 +23,11 @@ import {
 } from "Styleguide/Components"
 
 export interface OverviewRouteProps {
+  ARTIST_INSIGHTS?: string
   artist: Overview_artist & {
     __fragments: object[]
   }
-  ARTIST_INSIGHTS?: string
+  tracking?: TrackingProp
 }
 
 interface State {
@@ -58,6 +60,36 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
       showGenes = true
     }
     return showGenes
+  }
+
+  trackingData() {
+    const experiment = "artist_insights"
+    const variation = this.props.ARTIST_INSIGHTS || sd.ARTIST_INSIGHTS
+
+    return {
+      action_type: Schema.ActionType.ExperimentViewed,
+      experiment_id: experiment,
+      experiment_name: experiment,
+      variation_id: variation,
+      variation_name: variation,
+      nonInteraction: 1,
+    }
+  }
+
+  renderArtistInsightsV1() {
+    const { artist, tracking } = this.props
+
+    if (tracking) tracking.trackEvent(this.trackingData())
+
+    return <MarketInsights artist={artist} />
+  }
+
+  renderArtistInsightsV2() {
+    const { artist, tracking } = this.props
+
+    if (tracking) tracking.trackEvent(this.trackingData())
+
+    return <SelectedCareerAchievements artist={artist} />
   }
 
   render() {
@@ -103,13 +135,13 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
             <>
               {showArtistInsightsV2BeforeBio && (
                 <>
-                  <SelectedCareerAchievements artist={artist} />
+                  {this.renderArtistInsightsV2()}
                   <Spacer mb={1} />
                 </>
               )}
               {showArtistInsightsV1 && (
                 <>
-                  <MarketInsights artist={artist} />
+                  {this.renderArtistInsightsV1()}
                   <Spacer mb={1} />
                 </>
               )}
@@ -171,9 +203,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
                   {showArtistInsightsV2AfterBio && <Spacer mb={2} />}
                 </>
               )}
-              {showArtistInsightsV2AfterBio && (
-                <SelectedCareerAchievements artist={artist} />
-              )}
+              {showArtistInsightsV2AfterBio && this.renderArtistInsightsV2()}
             </>
           </Col>
 

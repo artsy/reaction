@@ -55,6 +55,11 @@ export enum ActionType {
   ClickedReadMore = "Clicked read more",
 
   /**
+   * A/B Test Experiments
+   */
+  ExperimentViewed = "Experiment Viewed",
+
+  /**
    * Moving the mouse pointer over a UI element or, when browsing on a mobile
    * device, by first tapping the UI element once making it switch into
    * continuous hover mode.
