@@ -16,6 +16,7 @@ declare module "sharify" {
      * These properties are set by Force and configured through environment variables.
      */
     export interface GlobalData {
+      readonly ARTIST_INSIGHTS: string
       readonly APP_URL: string
       readonly CMS_URL: string
       readonly ENABLE_MAKE_OFFER: string
