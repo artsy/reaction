@@ -12,7 +12,7 @@ import { FollowArtistPopoverState } from "./state"
 
 interface Props extends ContextProps {
   artist: FollowArtistPopoverRow_artist
-  excludeState?: FollowArtistPopoverState
+  excludeArtistIdsState?: FollowArtistPopoverState
 }
 
 interface State {
@@ -26,7 +26,6 @@ const ArtistName = styled(Serif)`
   white-space: nowrap;
   overflow: hidden;
 `
-const FollowButtonContainer = Box
 
 class FollowArtistPopoverRow extends React.Component<Props, State> {
   state = {
@@ -35,7 +34,10 @@ class FollowArtistPopoverRow extends React.Component<Props, State> {
   }
 
   handleClick(artistID: string) {
-    const { user, relay, excludeState } = this.props
+    const { user, relay, excludeArtistIdsState } = this.props
+    const {
+      state: { excludeArtistIds },
+    } = excludeArtistIdsState
     if (user && user.id) {
       commitMutation<FollowArtistPopoverRowMutation>(relay.environment, {
         mutation: graphql`
@@ -67,7 +69,7 @@ class FollowArtistPopoverRow extends React.Component<Props, State> {
         `,
         variables: {
           input: { artist_id: artistID, unfollow: false },
-          excludeArtistIds: excludeState.state.excludeArtistIds,
+          excludeArtistIds,
         },
         optimisticUpdater: () => {
           this.setState({
@@ -92,7 +94,7 @@ class FollowArtistPopoverRow extends React.Component<Props, State> {
             }
           )
 
-          excludeState.addArtist(node._id)
+          excludeArtistIdsState.addArtist(node._id)
         },
       })
     }
@@ -111,7 +113,7 @@ class FollowArtistPopoverRow extends React.Component<Props, State> {
         <ArtistName size="3t" color="black100" ml={1} mr={1}>
           {artist.name}
         </ArtistName>
-        <FollowButtonContainer>
+        <Box>
           <Button
             onClick={() => this.handleClick(artistID)}
             variant="secondaryOutline"
@@ -120,7 +122,7 @@ class FollowArtistPopoverRow extends React.Component<Props, State> {
           >
             {this.state.followed ? "Followed" : "Follow"}
           </Button>
-        </FollowButtonContainer>
+        </Box>
       </Flex>
     )
   }
@@ -130,9 +132,12 @@ export const FollowArtistPopoverRowFragmentContainer = createFragmentContainer(
   (props: Props) => {
     return (
       <Subscribe to={[FollowArtistPopoverState]}>
-        {(excludeState: FollowArtistPopoverState) => {
+        {(excludeArtistIdsState: FollowArtistPopoverState) => {
           return (
-            <FollowArtistPopoverRow excludeState={excludeState} {...props} />
+            <FollowArtistPopoverRow
+              excludeArtistIdsState={excludeArtistIdsState}
+              {...props}
+            />
           )
         }}
       </Subscribe>
