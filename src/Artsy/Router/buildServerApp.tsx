@@ -1,5 +1,6 @@
 import React from "react"
 import ReactDOMServer from "react-dom/server"
+import { RRNLRequestError } from "react-relay-network-modern"
 import serialize from "serialize-javascript"
 import { ServerStyleSheet } from "styled-components"
 
@@ -20,7 +21,9 @@ import { getUser } from "Utils/user"
 import { createRouteConfig } from "./Utils/createRouteConfig"
 import { matchingMediaQueriesForUserAgent } from "./Utils/matchingMediaQueriesForUserAgent"
 
+import { get } from "Utils/get"
 import { RouterConfig } from "./"
+import { HTTPError } from "./HTTPError"
 import { RenderError, RenderPending, RenderReady } from "./Utils/RenderStatus"
 
 interface Resolve {
@@ -160,7 +163,23 @@ export function buildServerApp(config: ServerRouterConfig): Promise<Resolve> {
         resolve(result)
       } catch (error) {
         logger.error(error)
-        reject(error)
+        if (
+          error instanceof RRNLRequestError &&
+          get(error, e => e.res.errors[0].extensions.httpStatusCodes.length) ===
+            1
+        ) {
+          const err = error.res.errors[0]
+          reject(
+            new HTTPError(
+              err.message,
+              err.extensions.httpStatusCodes[0],
+              error.res.body
+            )
+          )
+        } else {
+          console.error("[Artsy/Router/buildServerApp] Error:", error)
+          reject(error)
+        }
       }
     })
   )
