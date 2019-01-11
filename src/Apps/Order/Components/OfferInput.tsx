@@ -5,13 +5,14 @@ export interface OfferInputProps {
   id: string
   showError?: boolean
   onChange: (value: number) => void
+  onFocus?: () => void
 }
 
 export class OfferInput extends React.Component<OfferInputProps> {
   inputRef = React.createRef<HTMLInputElement>()
 
   render() {
-    const { id, showError } = this.props
+    const { id, showError, onFocus } = this.props
 
     return (
       <Input
@@ -22,6 +23,7 @@ export class OfferInput extends React.Component<OfferInputProps> {
         innerRef={this.inputRef}
         defaultValue={null}
         error={showError ? "Offer amount missing or invalid." : null}
+        onFocus={onFocus}
         onChange={ev => {
           const currentValue = ev.currentTarget.value
           const nonDigitMatch = currentValue.match(/\D/)

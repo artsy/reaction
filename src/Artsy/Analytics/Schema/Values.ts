@@ -86,6 +86,11 @@ export enum ActionType {
   SubmittedOffer = "submitted_offer",
   SubmittedCounterOffer = "submitted_counter_offer",
   ViewedProduct = "Viewed Product",
+  FocusedOnOfferInput = "Focused on offer input",
+
+  // MO speedbumps
+  ViewedOfferTooLow = "Viewed offer too low",
+  ViewedOfferHigherThanListPrice = "Viewed offer higher than listed price",
 }
 
 /**
