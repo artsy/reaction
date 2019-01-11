@@ -124,12 +124,6 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
         <Row>
           <Col sm={colNum}>
             <>
-              {showArtistInsightsV2 && (
-                <>
-                  {this.renderArtistInsightsV2()}
-                  <Spacer mb={1} />
-                </>
-              )}
               {showArtistInsightsV1 && (
                 <>
                   {this.renderArtistInsightsV1()}
@@ -191,8 +185,10 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
                       Learn more
                     </a>.
                   </Sans>
+                  {showArtistInsightsV2 && <Spacer mb={2} />}
                 </>
               )}
+              {showArtistInsightsV2 && this.renderArtistInsightsV2()}
             </>
           </Col>
 
