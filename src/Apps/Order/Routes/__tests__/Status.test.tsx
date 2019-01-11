@@ -2,7 +2,6 @@ import { Message } from "@artsy/palette"
 import {
   BuyOrderPickup,
   BuyOrderWithShippingDetails,
-  mockResolver,
   OfferOrderPickup,
   OfferOrderWithShippingDetails,
 } from "Apps/__tests__/Fixtures/Order"
@@ -28,7 +27,9 @@ describe("Status", () => {
           }
         }
       `,
-      mockResolvers: mockResolver(order),
+      mockData: {
+        order,
+      },
       wrapper: renderer => (
         <MockBoot breakpoint="xs" headTags={headTags}>
           {renderer}
