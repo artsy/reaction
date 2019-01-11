@@ -1,3 +1,16 @@
+# 9.5.7 (Fri Jan 11 2019)
+
+#### 🐛  Bug Fix
+
+- Switch between Artist Insights variations based on A/B enrollment [#1852](https://github.com/artsy/reaction/pull/1852) ([@dblandin](https://github.com/dblandin) [@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 2
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # 9.5.6 (Fri Jan 11 2019)
 
 
