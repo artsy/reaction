@@ -33,6 +33,8 @@ injectGlobal`
   }
 `
 
+const KEYBOARD_EVENT = "keyup"
+
 export class ModalWrapper extends React.Component<
   ModalWrapperProps,
   ModalWrapperState
@@ -59,6 +61,14 @@ export class ModalWrapper extends React.Component<
     }
   }
 
+  componentDidMount() {
+    this.updateBodyScrollBlock()
+  }
+
+  componentDidUpdate() {
+    this.updateBodyScrollBlock()
+  }
+
   componentWillUnmount() {
     this.removeBlurToContainers()
   }
@@ -77,6 +87,14 @@ export class ModalWrapper extends React.Component<
   removeBlurToContainers = () => {
     for (const container of this.state.blurContainers) {
       container.classList.remove("blurred")
+    }
+  }
+
+  updateBodyScrollBlock() {
+    if (this.props.show) {
+      document.body.style.overflowY = "hidden"
+    } else {
+      document.body.style.overflowY = "auto"
     }
   }
 
