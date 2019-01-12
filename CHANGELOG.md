@@ -1,3 +1,15 @@
+# 9.5.11 (Sat Jan 12 2019)
+
+#### 🐛  Bug Fix
+
+- Update condition for when to show Artist Insights V2 [#1860](https://github.com/artsy/reaction/pull/1860) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
 # 9.5.10 (Fri Jan 11 2019)
 
 
