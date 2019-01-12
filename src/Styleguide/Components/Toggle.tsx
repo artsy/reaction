@@ -1,8 +1,7 @@
-import { Flex, Sans, Separator } from "@artsy/palette"
+import { ChevronIcon, Flex, Sans, Separator } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
 import { space, SpaceProps } from "styled-system"
-import { Arrow } from "Styleguide/Elements/Arrow"
 
 export interface ToggleProps {
   disabled?: boolean
@@ -51,7 +50,7 @@ export class Toggle extends React.Component<ToggleProps> {
             </Sans>
             {!disabled && (
               <Flex justifyContent="right">
-                <Arrow direction={expanded ? "up" : "down"} />
+                <ChevronIcon direction={expanded ? "up" : "down"} />
               </Flex>
             )}
           </Flex>

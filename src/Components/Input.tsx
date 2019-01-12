@@ -1,9 +1,8 @@
 import { space } from "@artsy/palette"
+import { ClosedEyeIcon, OpenEyeIcon } from "@artsy/palette"
 import { fadeIn, fadeOut, growAndFadeIn } from "Assets/Animations"
 import Colors from "Assets/Colors"
 import { garamond, unica } from "Assets/Fonts"
-import { ClosedEye } from "Assets/Icons/ClosedEye"
-import { OpenEye } from "Assets/Icons/OpenEye"
 import React from "react"
 import styled from "styled-components"
 import { block } from "./Helpers"
@@ -110,9 +109,9 @@ export class Input extends React.Component<InputProps, InputState> {
 
   getRightViewForPassword() {
     const icon = this.state.showPassword ? (
-      <ClosedEye onClick={this.toggleShowPassword} />
+      <ClosedEyeIcon onClick={this.toggleShowPassword} />
     ) : (
-      <OpenEye onClick={this.toggleShowPassword} />
+      <OpenEyeIcon onClick={this.toggleShowPassword} />
     )
 
     return <Eye onClick={this.toggleShowPassword}>{icon}</Eye>

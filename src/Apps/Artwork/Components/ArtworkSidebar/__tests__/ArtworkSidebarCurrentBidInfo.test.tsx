@@ -1,3 +1,4 @@
+import { LosingBidIcon, WinningBidIcon } from "@artsy/palette"
 import {
   AuctionPreview,
   AuctionPreviewNoStartingBid,
@@ -13,8 +14,6 @@ import {
   OpenAuctionReserveNotMetWithBids,
 } from "Apps/__tests__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarCurrentBidInfo"
 import { ArtworkSidebarCurrentBidInfoFragmentContainer } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarCurrentBidInfo"
-import { LosingBid } from "Assets/Icons/LosingBid"
-import { WinningBid } from "Assets/Icons/WinningBid"
 import { renderRelayTree } from "DevTools"
 import { graphql } from "react-relay"
 
@@ -123,7 +122,7 @@ describe("ArtworkSidebarCurrentBidInfo", () => {
       const wrapper = await getWrapper(OpenAuctionReserveMetWithMyWinningBid)
 
       expect(wrapper.text()).toContain("Your max: $15,000")
-      expect(wrapper.find(WinningBid).length).toBe(1)
+      expect(wrapper.find(WinningBidIcon).length).toBe(1)
     })
   })
 
@@ -132,7 +131,7 @@ describe("ArtworkSidebarCurrentBidInfo", () => {
       const wrapper = await getWrapper(OpenAuctionReserveMetWithMyLosingBid)
 
       expect(wrapper.text()).toContain("Your max: $400")
-      expect(wrapper.find(LosingBid).length).toBe(1)
+      expect(wrapper.find(LosingBidIcon).length).toBe(1)
     })
   })
 
@@ -141,7 +140,7 @@ describe("ArtworkSidebarCurrentBidInfo", () => {
       const wrapper = await getWrapper(OpenAuctionReserveNotMetIncreasingOwnBid)
 
       expect(wrapper.text()).toContain("Your max: $15,000")
-      expect(wrapper.find(WinningBid).length).toBe(1)
+      expect(wrapper.find(WinningBidIcon).length).toBe(1)
     })
   })
 })

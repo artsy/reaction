@@ -1,10 +1,9 @@
-import { Box, color, Flex, ResponsiveImage } from "@artsy/palette"
+import { Box, ChevronIcon, color, Flex, ResponsiveImage } from "@artsy/palette"
 import { ArtworkImageBrowser_artwork } from "__generated__/ArtworkImageBrowser_artwork.graphql"
 import React from "react"
 import Slider, { Settings } from "react-slick"
 import styled from "styled-components"
 import { Lightbox } from "Styleguide/Components"
-import { Arrow } from "Styleguide/Elements"
 import { Col, media, Row } from "Styleguide/Elements/Grid"
 import { Media } from "Utils/Responsive"
 
@@ -155,7 +154,7 @@ const ArrowButton = ({ direction, onClick }) => {
       alignItems={direction === "left" ? "flex-start" : "flex-end"}
       onClick={onClick}
     >
-      <Arrow direction={direction} fontSize="24px" />
+      <ChevronIcon direction={direction} size={50} />
     </ArrowButtonContainer>
   )
 }

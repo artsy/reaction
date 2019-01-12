@@ -46,7 +46,7 @@ export interface ArtworkSidebarCommercialContainerState {
 }
 
 const Row: React.SFC<FlexProps> = ({ children, ...others }) => (
-  <Flex justifyContent="left" alignItems="top" {...others}>
+  <Flex justifyContent="left" {...others}>
     {children}
   </Flex>
 )

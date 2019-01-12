@@ -1,11 +1,10 @@
-import { Box, Flex, Sans } from "@artsy/palette"
+import { Box, Flex, PageviewsIcon, Sans } from "@artsy/palette"
 import { ArtworkSidebarPageviews_artwork } from "__generated__/ArtworkSidebarPageviews_artwork.graphql"
 import { ArtworkSidebarPageviewsQuery } from "__generated__/ArtworkSidebarPageviewsQuery.graphql"
 import { ContextConsumer } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import React, { SFC } from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
-import { PageviewsIcon } from "Styleguide/Elements/icons/Pageviews"
 
 interface Props {
   artwork: ArtworkSidebarPageviews_artwork

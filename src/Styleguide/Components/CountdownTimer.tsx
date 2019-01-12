@@ -5,12 +5,12 @@ import {
   space,
   Spacer,
   StackableBorderBox,
+  TimerIcon,
 } from "@artsy/palette"
 import { WithCurrentTime } from "Components/WithCurrentTime"
 import moment from "moment-timezone"
 import React from "react"
 import styled from "styled-components"
-import { TimerIcon } from "Styleguide/Elements/icons/TimerIcon"
 
 const FIVE_HOURS_IN_SECONDS = 60 * 60 * 5
 
@@ -74,7 +74,7 @@ const ProgressBar: React.SFC<{
       <div
         style={{
           transition: "width 0.34s ease",
-          backgroundColor: color(highlight),
+          backgroundColor: color(highlight as any),
           width: progress + "%",
         }}
       />
