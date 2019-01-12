@@ -1,4 +1,4 @@
-import { Theme, themeProps } from "@artsy/palette"
+import { injectGlobalStyles, Theme, themeProps } from "@artsy/palette"
 import * as Sentry from "@sentry/browser"
 import { track } from "Artsy/Analytics"
 import * as Artsy from "Artsy/SystemContext"
@@ -9,7 +9,6 @@ import { HeadProvider } from "react-head"
 import { Environment } from "relay-runtime"
 import { data as sd } from "sharify"
 import { GridThemeProvider } from "styled-bootstrap-grid"
-import { GlobalStyles } from "Styleguide/Elements/GlobalStyles"
 import { Grid } from "Styleguide/Elements/Grid"
 import { BreakpointVisualizer } from "Styleguide/Utils/BreakpointVisualizer"
 import { Provider as StateProvider } from "unstated"
@@ -30,6 +29,8 @@ export interface BootProps {
   routes: RouteConfig
   headTags?: JSX.Element[]
 }
+
+const { GlobalStyles } = injectGlobalStyles()
 
 // TODO: Do we want to let Force explicitly inject the analytics code?
 @track(null, {
@@ -83,3 +84,6 @@ export class Boot extends React.Component<BootProps> {
     )
   }
 }
+
+// Tests
+GlobalStyles.displayName = "GlobalStyles"
