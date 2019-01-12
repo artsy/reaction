@@ -99,8 +99,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
     const showArtistInsightsV1 =
       artistInsightsVariation === "v1" && showMarketInsights(this.props.artist)
     const showArtistInsightsV2 =
-      artistInsightsVariation === "v2" &&
-      (showMarketInsights(this.props.artist) || artist.insights.length)
+      artistInsightsVariation === "v2" && showMarketInsights(this.props.artist)
     const showArtistInsights = showArtistInsightsV1 || showArtistInsightsV2
     const showSelectedExhibitions =
       Boolean(artist.exhibition_highlights.length) && !showArtistInsightsV2
@@ -298,9 +297,6 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
             }
           }
         }
-      }
-      insights {
-        type
       }
     }
   `
