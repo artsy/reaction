@@ -1,3 +1,11 @@
+# 9.5.15 (Sat Jan 12 2019)
+
+#### 🐛  Bug Fix
+
+- [Styleguide] Remove <Grid> and move to palette [#1866](https://github.com/artsy/reaction/pull/1866) ([@damassi](https://github.com/damassi))
+
+---
+
 # 9.5.14 (Sat Jan 12 2019)
 
 #### 🐛  Bug Fix
