@@ -1,3 +1,11 @@
+# 9.5.14 (Sat Jan 12 2019)
+
+#### 🐛  Bug Fix
+
+- Move SVG icons from Reaction to Palette [#1863](https://github.com/artsy/reaction/pull/1863) ([@damassi](https://github.com/damassi))
+
+---
+
 # 9.5.13 (Sat Jan 12 2019)
 
 
