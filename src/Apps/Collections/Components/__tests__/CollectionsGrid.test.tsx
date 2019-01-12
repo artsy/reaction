@@ -1,7 +1,7 @@
 import { CollectionsFixture } from "Apps/__tests__/Fixtures/Collections"
+import { EntityHeader } from "Components/v2/EntityHeader"
 import { mount } from "enzyme"
 import React from "react"
-import { EntityHeader } from "Styleguide/Components/EntityHeader"
 import { CollectionsGrid } from "../CollectionsGrid"
 
 describe("CollectionsGrid", () => {

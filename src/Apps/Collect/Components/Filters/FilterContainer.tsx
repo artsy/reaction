@@ -11,7 +11,7 @@ import { TimePeriodFilter } from "./TimePeriodFilter"
 import { WaysToBuyFilter } from "./WaysToBuyFilter"
 
 import { Box, Flex, Separator, Spacer } from "@artsy/palette"
-import { Toggle } from "Styleguide/Components"
+import { Toggle } from "Components/v2"
 import { Media } from "Utils/Responsive"
 
 export interface FilterContainerProps {

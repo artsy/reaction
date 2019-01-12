@@ -7,7 +7,7 @@ import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import {
   ArtistCardFragmentContainer as ArtistCard,
   PaginationFragmentContainer as Pagination,
-} from "Styleguide/Components"
+} from "Components/v2"
 
 import {
   LoadingArea,

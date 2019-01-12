@@ -2,8 +2,8 @@ import { Serif } from "@artsy/palette"
 import React from "react"
 
 import { ShippingAddress_ship } from "__generated__/ShippingAddress_ship.graphql"
+import { COUNTRY_CODE_TO_COUNTRY_NAME } from "Components/v2"
 import { createFragmentContainer, graphql } from "react-relay"
-import { COUNTRY_CODE_TO_COUNTRY_NAME } from "Styleguide/Components"
 
 export interface ShippingAddressProps {
   ship: ShippingAddress_ship

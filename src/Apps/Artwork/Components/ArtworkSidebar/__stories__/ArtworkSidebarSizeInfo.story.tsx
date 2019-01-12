@@ -6,7 +6,7 @@ import {
 import { ArtworkSidebarSizeInfo as SizeInfo } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarSizeInfo"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Section } from "Styleguide/Utils/Section"
+import { Section } from "Utils/Section"
 
 storiesOf("Apps/Artwork Page/Components/Sidebar", module).add(
   "SizeInfo",

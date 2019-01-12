@@ -11,14 +11,10 @@ import { ShippingSummaryItemFragmentContainer } from "Apps/Order/Components/Ship
 import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { ModalButton } from "Components/Modal/ModalDialog"
+import { ActiveTabContainer, CheckMarkWrapper, Stepper } from "Components/v2"
+import { StepSummaryItem } from "Components/v2/StepSummaryItem"
 import { MockBoot } from "DevTools"
 import { commitMutation } from "react-relay"
-import {
-  ActiveTabContainer,
-  CheckMarkWrapper,
-  Stepper,
-} from "Styleguide/Components"
-import { StepSummaryItem } from "Styleguide/Components/StepSummaryItem"
 import {
   submitOfferOrderWithFailure,
   submitOfferOrderWithNoInventoryFailure,

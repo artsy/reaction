@@ -11,7 +11,7 @@ import { ArtworkSidebarMetadata as Metadata } from "Apps/Artwork/Components/Artw
 import { RelayStubProvider } from "DevTools/RelayStubProvider"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Section } from "Styleguide/Utils/Section"
+import { Section } from "Utils/Section"
 
 storiesOf("Apps/Artwork Page/Components/Sidebar", module)
   .addDecorator(story => <RelayStubProvider>{story()}</RelayStubProvider>)

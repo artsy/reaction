@@ -1,6 +1,6 @@
 import { Address } from "Apps/Order/Components/AddressForm"
 import Input from "Components/Input"
-import { CountrySelect } from "Styleguide/Components"
+import { CountrySelect } from "Components/v2"
 
 export const validAddress: Address = {
   name: "Artsy UK Ltd",

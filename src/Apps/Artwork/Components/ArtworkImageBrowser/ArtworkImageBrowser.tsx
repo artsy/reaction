@@ -1,8 +1,8 @@
 import { ArtworkImageBrowser_artwork } from "__generated__/ArtworkImageBrowser_artwork.graphql"
+import { Lightbox } from "Components/v2"
 import React from "react"
 import Slider, { Settings } from "react-slick"
 import styled from "styled-components"
-import { Lightbox } from "Styleguide/Components"
 import { Media } from "Utils/Responsive"
 
 import {

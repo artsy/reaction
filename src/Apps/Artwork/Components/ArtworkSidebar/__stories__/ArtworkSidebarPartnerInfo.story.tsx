@@ -6,7 +6,7 @@ import {
 import { ArtworkSidebarPartnerInfo as PartnerInfo } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarPartnerInfo"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Section } from "Styleguide/Utils/Section"
+import { Section } from "Utils/Section"
 
 storiesOf("Apps/Artwork Page/Components/Sidebar", module).add(
   "PartnerInfo",

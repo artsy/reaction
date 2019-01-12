@@ -2,7 +2,7 @@ import { Button, color, Serif, Spacer } from "@artsy/palette"
 import { garamond } from "Assets/Fonts"
 import React from "react"
 import styled from "styled-components"
-import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
+import { HorizontalPadding } from "Utils/HorizontalPadding"
 
 interface ErrorPageProps {
   code: number

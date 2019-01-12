@@ -4,13 +4,13 @@ import { OrderStepper } from "Apps/Order/Components/OrderStepper"
 import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { ModalButton } from "Components/Modal/ModalDialog"
+import { Stepper, StepSummaryItem } from "Components/v2"
+import { CountdownTimer } from "Components/v2/CountdownTimer"
 import { MockBoot } from "DevTools"
 import { mount } from "enzyme"
 import moment from "moment"
 import React from "react"
 import { commitMutation as _commitMutation } from "react-relay"
-import { Stepper, StepSummaryItem } from "Styleguide/Components"
-import { CountdownTimer } from "Styleguide/Components/CountdownTimer"
 import {
   rejectOfferFailed,
   rejectOfferSuccess,

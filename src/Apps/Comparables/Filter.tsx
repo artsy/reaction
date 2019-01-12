@@ -7,9 +7,9 @@ import { AttributionClassFilter } from "Apps/Comparables/Filter/AttributionClass
 import { MediumFilter } from "Apps/Comparables/Filter/MediumFilter"
 import { ContextProps } from "Artsy"
 import { SystemProps } from "Artsy/SystemContext"
+import { Toggle } from "Components/v2/Toggle"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Toggle } from "Styleguide/Components/Toggle"
 import { Subscribe } from "unstated"
 
 interface Props extends ContextProps {

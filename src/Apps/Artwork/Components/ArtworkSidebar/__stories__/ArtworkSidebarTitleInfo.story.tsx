@@ -7,7 +7,7 @@ import {
 import { ArtworkSidebarTitleInfo as TitleInfo } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarTitleInfo"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Section } from "Styleguide/Utils/Section"
+import { Section } from "Utils/Section"
 
 storiesOf("Apps/Artwork Page/Components/Sidebar", module).add(
   "TitleInfo",

@@ -3,7 +3,7 @@ import { ArtworkApp_artwork } from "__generated__/ArtworkApp_artwork.graphql"
 import React from "react"
 import { LazyLoadComponent } from "react-lazy-load-image-component"
 import { createFragmentContainer, graphql } from "react-relay"
-import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
+import { HorizontalPadding } from "Utils/HorizontalPadding"
 
 import { ArtistInfoQueryRenderer as ArtistInfo } from "./Components/ArtistInfo"
 import { ArtworkBannerFragmentContainer as ArtworkBanner } from "./Components/ArtworkBanner"
@@ -16,11 +16,11 @@ import { OtherWorksFragmentContainer as OtherWorks } from "./Components/OtherWor
 
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { TrackingProp } from "react-tracking"
 import {
   Footer,
   RecentlyViewedQueryRenderer as RecentlyViewed,
-} from "Styleguide/Components"
+} from "Components/v2"
+import { TrackingProp } from "react-tracking"
 import { get } from "Utils/get"
 import { Media } from "Utils/Responsive"
 

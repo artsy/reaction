@@ -4,10 +4,10 @@ import { track, Track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
+import { Carousel } from "Components/v2"
 import React, { Component, Fragment } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
-import { Carousel } from "Styleguide/Components"
 import { Media } from "Utils/Responsive"
 
 /**

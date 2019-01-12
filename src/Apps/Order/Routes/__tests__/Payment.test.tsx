@@ -14,12 +14,8 @@ import {
   fillIn,
   validAddress,
 } from "Apps/Order/Routes/__tests__/Utils/addressForm"
+import { ActiveTabContainer, CheckMarkWrapper, Stepper } from "Components/v2"
 import { Input } from "../../../../Components/Input"
-import {
-  ActiveTabContainer,
-  CheckMarkWrapper,
-  Stepper,
-} from "../../../../Styleguide/Components"
 import {
   creatingCreditCardFailed,
   creatingCreditCardSuccess,

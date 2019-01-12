@@ -2,9 +2,9 @@ import { Box, Serif } from "@artsy/palette"
 import * as Schema from "Artsy/Analytics/Schema"
 import { ContextConsumer } from "Artsy/Router"
 
+import { FollowIcon } from "Components/v2"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { FollowIcon } from "Styleguide/Components"
 
 import { ArtworkSidebarArtists_artwork } from "__generated__/ArtworkSidebarArtists_artwork.graphql"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"

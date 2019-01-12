@@ -1,12 +1,12 @@
 import { Button, Flex, FlexProps, Sans, Serif } from "@artsy/palette"
 import { OfferHistoryItem_order } from "__generated__/OfferHistoryItem_order.graphql"
 import { StaticCollapse } from "Components/StaticCollapse"
-import React, { HTMLProps } from "react"
-import { createFragmentContainer, graphql } from "react-relay"
 import {
   StepSummaryItem,
   StepSummaryItemProps,
-} from "Styleguide/Components/StepSummaryItem"
+} from "Components/v2/StepSummaryItem"
+import React, { HTMLProps } from "react"
+import { createFragmentContainer, graphql } from "react-relay"
 
 class OfferHistoryItem extends React.Component<
   {

@@ -4,7 +4,7 @@ import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import React from "react"
 import { graphql, QueryRenderer } from "react-relay"
 import { storiesOf } from "storybook/storiesOf"
-import { Section } from "Styleguide/Utils/Section"
+import { Section } from "Utils/Section"
 import { OtherWorksFragmentContainer } from "../OtherWorks"
 import { RelatedWorksArtworkGridQueryRenderer as RelatedWorksArtworkGrid } from "../OtherWorks/ArtworkContexts/ArtworkGrids/RelatedWorksArtworkGrid"
 

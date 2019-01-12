@@ -19,7 +19,7 @@ import {
   MAX_CHARS,
   SelectedCareerAchievementsFragmentContainer as SelectedCareerAchievements,
   SelectedExhibitionFragmentContainer as SelectedExhibitions,
-} from "Styleguide/Components"
+} from "Components/v2"
 
 export interface OverviewRouteProps {
   ARTIST_INSIGHTS?: string

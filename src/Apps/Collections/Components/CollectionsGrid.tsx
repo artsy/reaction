@@ -1,6 +1,6 @@
 import { Box, Flex, Sans, Separator, Spacer } from "@artsy/palette"
+import { EntityHeader } from "Components/v2/EntityHeader"
 import React, { Component } from "react"
-import { EntityHeader } from "Styleguide/Components/EntityHeader"
 import { slugify } from "underscore.string"
 import { crop } from "Utils/resizer"
 import { Media } from "Utils/Responsive"

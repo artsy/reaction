@@ -4,9 +4,9 @@ import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { withContext } from "Artsy/SystemContext"
 import { Mediator } from "Artsy/SystemContext"
+import { RouteTab, RouteTabs } from "Components/v2"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { RouteTab, RouteTabs } from "Styleguide/Components"
 
 interface Props {
   artist: NavigationTabs_artist
