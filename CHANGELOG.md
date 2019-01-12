@@ -1,3 +1,11 @@
+# 9.5.12 (Sat Jan 12 2019)
+
+#### 🐛  Bug Fix
+
+- Update dependency auto-release-cli to v2.3.0 [#1859](https://github.com/artsy/reaction/pull/1859) ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # 9.5.11 (Sat Jan 12 2019)
 
 #### 🐛  Bug Fix
