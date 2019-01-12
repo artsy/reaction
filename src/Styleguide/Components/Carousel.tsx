@@ -1,9 +1,8 @@
-import { Box, Flex } from "@artsy/palette"
+import { Box, ChevronIcon, Flex } from "@artsy/palette"
 import React, { ReactNode } from "react"
 import Slick, { Settings } from "react-slick"
 import styled from "styled-components"
 import { left, LeftProps, right, RightProps } from "styled-system"
-import { Arrow } from "Styleguide/Elements/Arrow"
 import { media } from "Styleguide/Elements/Grid"
 import { Media } from "Utils/Responsive"
 
@@ -54,7 +53,7 @@ export const LargeCarousel = (props: Props) => {
       height={props.height}
     >
       <ArrowButton left={-10} onClick={() => slickRef.slickPrev()}>
-        <Arrow direction="left" color="black100" fontSize="11px" />
+        <ChevronIcon direction="left" fill="black100" size={50} />
       </ArrowButton>
 
       <CarouselContainer height={props.height}>
@@ -66,7 +65,7 @@ export const LargeCarousel = (props: Props) => {
       </CarouselContainer>
 
       <ArrowButton right={-10} onClick={() => slickRef.slickNext()}>
-        <Arrow direction="right" color="black100" fontSize="11px" />
+        <ChevronIcon direction="right" fill="black100" size={50} />
       </ArrowButton>
     </Flex>
   )

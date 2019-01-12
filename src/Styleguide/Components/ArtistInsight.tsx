@@ -1,18 +1,19 @@
 import { Box, Flex, Link, Sans } from "@artsy/palette"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import {
-  Auction,
-  BlueChip,
-  Book,
-  Fair,
-  Group,
-  Museum,
-  Solo,
-  TopEmerging,
-  TopEstablished,
-} from "Assets/SVGIcons"
 import React from "react"
+
+import {
+  AuctionIcon,
+  BlueChipIcon,
+  BookIcon,
+  FairIcon,
+  GroupIcon,
+  MuseumIcon,
+  SoloIcon,
+  TopEmergingIcon,
+  TopEstablishedIcon,
+} from "@artsy/palette"
 
 interface ArtistInsightProps {
   type: string
@@ -22,15 +23,15 @@ interface ArtistInsightProps {
 }
 
 const ICON_MAPPING = {
-  HIGH_AUCTION: Auction,
-  SOLO_SHOW: Solo,
-  GROUP_SHOW: Group,
-  BIENNIAL: Fair,
-  REVIEWED: Book,
-  COLLECTED: Museum,
-  BLUE_CHIP: BlueChip,
-  TOP_ESTABLISHED: TopEstablished,
-  TOP_EMERGING: TopEmerging,
+  HIGH_AUCTION: AuctionIcon,
+  SOLO_SHOW: SoloIcon,
+  GROUP_SHOW: GroupIcon,
+  BIENNIAL: FairIcon,
+  REVIEWED: BookIcon,
+  COLLECTED: MuseumIcon,
+  BLUE_CHIP: BlueChipIcon,
+  TOP_ESTABLISHED: TopEstablishedIcon,
+  TOP_EMERGING: TopEmergingIcon,
 }
 
 @track<ArtistInsightProps>(props => ({
@@ -92,9 +93,7 @@ export class ArtistInsight extends React.Component<ArtistInsightProps> {
     if (value || (entities && entities.length > 0)) {
       return (
         <Flex mt={1} width={["100%", "50%"]}>
-          <Flex pr={1} alignItems="top">
-            {this.renderIcon(type)}
-          </Flex>
+          <Flex pr={1}>{this.renderIcon(type)}</Flex>
           <Flex flexDirection="column">
             <Box>
               <Sans size="2">{label}</Sans>

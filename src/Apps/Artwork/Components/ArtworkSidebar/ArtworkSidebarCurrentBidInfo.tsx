@@ -1,11 +1,19 @@
-import { Box, Flex, Sans, Separator, Serif, Spacer } from "@artsy/palette"
-import { LosingBid } from "Assets/Icons/LosingBid"
-import { WinningBid } from "Assets/Icons/WinningBid"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { get } from "Utils/get"
 
 import { ArtworkSidebarCurrentBidInfo_artwork } from "__generated__/ArtworkSidebarCurrentBidInfo_artwork.graphql"
+
+import {
+  Box,
+  Flex,
+  LosingBidIcon,
+  Sans,
+  Separator,
+  Serif,
+  Spacer,
+  WinningBidIcon,
+} from "@artsy/palette"
 
 export interface ArtworkSidebarCurrentBidInfoProps {
   artwork: ArtworkSidebarCurrentBidInfo_artwork
@@ -81,7 +89,7 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
           >
             {myBidPresent && (
               <Box pt={0.5}>
-                {myBidWinning ? <WinningBid /> : <LosingBid />}
+                {myBidWinning ? <WinningBidIcon /> : <LosingBidIcon />}
               </Box>
             )}
             <Serif size="5t" weight="semibold" pl={0.5}>

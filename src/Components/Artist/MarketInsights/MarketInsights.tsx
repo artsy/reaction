@@ -8,7 +8,7 @@ import { unica } from "Assets/Fonts"
 import TextLink from "../../TextLink"
 import { Tooltip } from "../../Tooltip"
 
-import { Help } from "../../../Assets/Icons/Help"
+import { HelpIcon } from "@artsy/palette"
 
 const MarketInsightsContainer = styled.div`
   ${unica("s14", "medium")};
@@ -29,6 +29,7 @@ const FeedbackContainer = styled.div`
   color: ${colors.graySemibold};
   padding: 8px 0;
   ${unica("s10")};
+
   a {
     ${unica("s10")};
   }
@@ -131,7 +132,7 @@ export class MarketInsights extends React.Component<Props, null> {
         <TooltipContainer>
           <Tooltip message={categoryTooltipContent}>
             <span style={{ verticalAlign: "text-top" }}>
-              <Help />
+              <HelpIcon />
             </span>
           </Tooltip>
         </TooltipContainer>

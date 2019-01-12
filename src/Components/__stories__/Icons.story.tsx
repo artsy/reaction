@@ -2,10 +2,10 @@ import { storiesOf } from "@storybook/react"
 import React from "react"
 
 import { Box, Flex, Theme, themeProps } from "@artsy/palette"
+import * as svgs from "@artsy/palette"
 import { GridThemeProvider } from "styled-bootstrap-grid"
 import { Col, Grid, Row } from "Styleguide/Elements/Grid"
 import icons, { IconName } from "../../Assets/Icons"
-import * as svgs from "../../Assets/SVGIcons"
 import CircleIcon from "../CircleIcon"
 import Icon from "../Icon"
 import Title from "../Title"
@@ -24,13 +24,13 @@ storiesOf("Components/Icons", module).add("All Icons", () => {
             <Row>
               <Flex flexDirection="row" flexWrap="wrap">
                 <Col p={1} width="auto">
-                  <svgs.Bell />
+                  <svgs.BellIcon />
                 </Col>
                 <Col p={1} width="auto">
                   <svgs.CheckIcon />
                 </Col>
                 <Col p={1} width="auto">
-                  <svgs.ChevronIcon width={20} height={20} />
+                  <svgs.ChevronIcon size={40} />
                 </Col>
                 <Col p={1} width="auto">
                   <svgs.CircleBlackCheckIcon width="25" height="25" />
@@ -39,58 +39,58 @@ storiesOf("Components/Icons", module).add("All Icons", () => {
                   <svgs.CircleWhiteCheckIcon width="25" height="25" />
                 </Col>
                 <Col p={1} width="auto">
-                  <svgs.ClosedEye />
+                  <svgs.ClosedEyeIcon />
                 </Col>
                 <Col p={1} width="auto">
                   <svgs.FilterIcon fill="#000" />
                 </Col>
                 <Col p={1} width="auto">
-                  <svgs.Heart />
+                  <svgs.HeartIcon />
                 </Col>
                 <Col p={1} width="auto">
-                  <svgs.Help />
+                  <svgs.HelpIcon />
                 </Col>
                 <Col p={1} width="auto">
-                  <svgs.Location />
+                  <svgs.LocationIcon />
                 </Col>
                 <Col p={1} width="auto">
-                  <svgs.LosingBid />
+                  <svgs.LosingBidIcon />
                 </Col>
                 <Col p={1} width="auto">
-                  <svgs.OpenEye />
+                  <svgs.OpenEyeIcon />
                 </Col>
                 <Col p={1} width="auto">
                   <svgs.PlusIcon width="25" height="25" />
                 </Col>
                 <Col p={1} width="auto">
-                  <svgs.WinningBid />
+                  <svgs.WinningBidIcon />
                 </Col>
                 <Col p={1} width="auto">
-                  <svgs.BlueChip />
+                  <svgs.BlueChipIcon />
                 </Col>
                 <Col p={1} width="auto">
-                  <svgs.Solo />
+                  <svgs.SoloIcon />
                 </Col>
                 <Col p={1} width="auto">
-                  <svgs.Group />
+                  <svgs.GroupIcon />
                 </Col>
                 <Col p={1} width="auto">
-                  <svgs.Book />
+                  <svgs.BookIcon />
                 </Col>
                 <Col p={1} width="auto">
-                  <svgs.Auction />
+                  <svgs.AuctionIcon />
                 </Col>
                 <Col p={1} width="auto">
-                  <svgs.Fair />
+                  <svgs.FairIcon />
                 </Col>
                 <Col p={1} width="auto">
-                  <svgs.Museum />
+                  <svgs.MuseumIcon />
                 </Col>
                 <Col p={1} width="auto">
-                  <svgs.TopEmerging />
+                  <svgs.TopEmergingIcon />
                 </Col>
                 <Col p={1} width="auto">
-                  <svgs.TopEstablished />
+                  <svgs.TopEstablishedIcon />
                 </Col>
               </Flex>
             </Row>

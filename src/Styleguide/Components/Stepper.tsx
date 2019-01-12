@@ -1,10 +1,16 @@
-import { color, Flex, Sans, space } from "@artsy/palette"
-import { CheckIcon } from "Assets/Icons/CheckIcon"
-import { ChevronIcon } from "Assets/Icons/ChevronIcon"
 import React from "react"
 import styled from "styled-components"
 import { Tab, Tabs, TabsProps } from "Styleguide/Components"
 import { styles } from "./Tabs"
+
+import {
+  CheckIcon,
+  ChevronIcon,
+  color,
+  Flex,
+  Sans,
+  space,
+} from "@artsy/palette"
 
 interface StepperProps extends TabsProps {
   /** The initial step stepper renders */
@@ -66,7 +72,7 @@ const transformTabBtn = (
     return (
       <Flex key={tabIndex}>
         <CheckMarkWrapper>
-          <CheckIcon fill={color("green100")} />
+          <CheckIcon fill="green100" />
         </CheckMarkWrapper>
         {returnDisabledButton && tabIndex !== initialTabIndex
           ? disabledButton
@@ -98,3 +104,8 @@ const DisabledStepContainer = styled.div`
   ${styles.tabContainer};
   cursor: default;
 `
+
+// @ts-ignore
+CheckIcon.displayName = "CheckIcon"
+// @ts-ignore
+ChevronIcon.displayName = "ChevronIcon"

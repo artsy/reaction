@@ -2,13 +2,13 @@ import {
   Box,
   Button,
   Flex,
+  HelpIcon,
   LargeSelect,
   Separator,
   Serif,
   Spacer,
   Tooltip,
 } from "@artsy/palette"
-import { Help } from "Assets/Icons/Help"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
@@ -180,7 +180,7 @@ export class ArtworkSidebarBidAction extends React.Component<
               content="Set the maximum amount you would like Artsy to bid up to
             on your behalf"
             >
-              <Help />
+              <HelpIcon />
             </Tooltip>
           </Flex>
           <LargeSelect options={selectOptions} onSelect={this.setMaxBid} />

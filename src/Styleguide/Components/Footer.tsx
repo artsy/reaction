@@ -3,14 +3,21 @@ import { Mediator } from "Artsy/SystemContext"
 import React from "react"
 import styled from "styled-components"
 import { FlexDirectionProps } from "styled-system"
-import { WeChatIcon } from "Styleguide/Elements/icons"
-import { FacebookIcon } from "Styleguide/Elements/icons/FacebookIcon"
-import { InstagramIcon } from "Styleguide/Elements/icons/InstagramIcon"
-import { TwitterIcon } from "Styleguide/Elements/icons/TwitterIcon"
-import { Mark as Logo } from "Styleguide/Elements/Logo"
 import { Media } from "Utils/Responsive"
 
-import { Flex, Sans, Separator, Serif, space, Spacer } from "@artsy/palette"
+import {
+  ArtsyMarkIcon,
+  FacebookIcon,
+  Flex,
+  InstagramIcon,
+  Sans,
+  Separator,
+  Serif,
+  space,
+  Spacer,
+  TwitterIcon,
+  WeChatIcon,
+} from "@artsy/palette"
 
 interface Props {
   mediator?: Mediator
@@ -123,12 +130,12 @@ const FooterContainer: React.SFC<FlexDirectionProps & Props> = props => {
       <Flex justifyContent="space-between" width="100%">
         <Flex mb={4}>
           <Media at="xs">
-            <Logo width="20px" height="20px" mr={2} />
+            <ArtsyMarkIcon width="20px" height="20px" mr={2} />
           </Media>
 
           <Media greaterThan="xs">
             <Flex flexDirection="row">
-              <Logo width="30px" height="30px" mr={2} />
+              <ArtsyMarkIcon width="30px" height="30px" mr={2} />
               <Spacer mr={1} />
               <Flex pt={"6px"} flexDirection="row">
                 <PolicyLinks />

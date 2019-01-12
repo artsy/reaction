@@ -1,7 +1,14 @@
-import { Box, color, Flex, Sans, Separator, space } from "@artsy/palette"
+import {
+  Box,
+  ChevronIcon,
+  color,
+  Flex,
+  Sans,
+  Separator,
+  space,
+} from "@artsy/palette"
 import React from "react"
 import styled, { css } from "styled-components"
-import { Arrow } from "Styleguide/Elements/Arrow"
 import { ScrollIntoView } from "Styleguide/Utils/ScrollIntoView"
 import { Media } from "Utils/Responsive"
 
@@ -125,7 +132,7 @@ export const SmallPagination = (props: Props) => {
             }
           }}
         >
-          <Arrow direction="left" />
+          <ChevronIcon direction="left" />
         </ButtonWithBorder>
       </PrevNextFlex>
       <PrevNextFlex
@@ -139,7 +146,7 @@ export const SmallPagination = (props: Props) => {
           justifyContent="flex-end"
           pr={1}
         >
-          <Arrow direction="right" />
+          <ChevronIcon direction="right" />
         </ButtonWithBorder>
       </PrevNextFlex>
     </Flex>
@@ -181,7 +188,7 @@ const PrevButton = ({ onClick, disabled }) => {
     <PrevNextContainer className={disabled ? "disabled" : null}>
       <Sans size="3" weight="medium" display="inline" mx={0.5}>
         <a onClick={() => onClick()} className="noUnderline">
-          <Arrow direction="left" /> Prev
+          <ChevronIcon direction="left" /> Prev
         </a>
       </Sans>
     </PrevNextContainer>
@@ -193,7 +200,7 @@ const NextButton = ({ onClick, disabled }) => {
     <PrevNextContainer className={disabled ? "disabled" : null}>
       <Sans size="3" weight="medium" display="inline" mx={0.5}>
         <a onClick={() => onClick()} className="noUnderline">
-          Next <Arrow direction="right" />
+          Next <ChevronIcon direction="right" />
         </a>
       </Sans>
     </PrevNextContainer>

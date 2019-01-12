@@ -1,9 +1,7 @@
-import { color, Flex, Join, Link, Spacer } from "@artsy/palette"
 import { ArtworkActions_artwork } from "__generated__/ArtworkActions_artwork.graphql"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { ContextConsumer } from "Artsy/SystemContext"
-import { Bell, Download, Edit, Genome, Heart, Share } from "Assets/SVGIcons"
 import SaveButton, { SaveProps, SaveState } from "Components/Artwork/Save"
 import { compact } from "lodash"
 import { isNull } from "lodash"
@@ -13,6 +11,20 @@ import { data as sd } from "sharify"
 import styled from "styled-components"
 import { slugify } from "underscore.string"
 import { ArtworkSharePanelFragmentContainer as ArtworkSharePanel } from "./ArtworkSharePanel"
+
+import {
+  BellIcon,
+  color,
+  DownloadIcon,
+  EditIcon,
+  Flex,
+  GenomeIcon,
+  HeartIcon,
+  Join,
+  Link,
+  ShareIcon,
+  Spacer,
+} from "@artsy/palette"
 
 interface ArtworkActionsProps {
   artwork: ArtworkActions_artwork
@@ -159,17 +171,17 @@ class UtilButton extends React.Component<
     const getIcon = () => {
       switch (name) {
         case "bell":
-          return Bell
+          return BellIcon
         case "download":
-          return Download
+          return DownloadIcon
         case "edit":
-          return Edit
+          return EditIcon
         case "genome":
-          return Genome
+          return GenomeIcon
         case "heart":
-          return Heart
+          return HeartIcon
         case "share":
-          return Share
+          return ShareIcon
       }
     }
 

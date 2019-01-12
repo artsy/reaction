@@ -1,6 +1,7 @@
 import { Box, Image } from "@artsy/palette"
 import { artworkBricks, images } from "Apps/__tests__/Fixtures/Carousel"
 import { FillwidthItem } from "Components/Artwork/FillwidthItem"
+import { RelayStubProvider } from "DevTools/RelayStubProvider"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import {
@@ -67,26 +68,28 @@ storiesOf("Styleguide/Components", module).add("Carousel", () => {
       </Section>
       <Section title="Artwork Brick">
         <Box width="70%">
-          <Carousel
-            data={artworkBricks}
-            render={artwork => {
-              const {
-                node: {
-                  image: { aspect_ratio },
-                },
-              } = artwork
+          <RelayStubProvider>
+            <Carousel
+              data={artworkBricks}
+              render={artwork => {
+                const {
+                  node: {
+                    image: { aspect_ratio },
+                  },
+                } = artwork
 
-              return (
-                <FillwidthItem
-                  artwork={artwork.node}
-                  targetHeight={200}
-                  imageHeight={200}
-                  width={200 * aspect_ratio}
-                  margin={20}
-                />
-              )
-            }}
-          />
+                return (
+                  <FillwidthItem
+                    artwork={artwork.node}
+                    targetHeight={200}
+                    imageHeight={200}
+                    width={200 * aspect_ratio}
+                    margin={20}
+                  />
+                )
+              }}
+            />
+          </RelayStubProvider>
         </Box>
       </Section>
     </React.Fragment>

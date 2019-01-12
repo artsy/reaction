@@ -1,9 +1,16 @@
-import { Button, color, Flex, SmallSelect, Spacer } from "@artsy/palette"
 import { ContextConsumer } from "Artsy/SystemContext"
-import { FilterIcon } from "Assets/Icons/FilterIcon"
 import React from "react"
 import { Media } from "Utils/Responsive"
 import { FilterState } from "../../FilterState"
+
+import {
+  Button,
+  color,
+  FilterIcon,
+  Flex,
+  SmallSelect,
+  Spacer,
+} from "@artsy/palette"
 
 export const SortFilter: React.SFC<{
   filters: FilterState
