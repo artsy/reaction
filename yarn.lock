@@ -7,7 +7,7 @@
   resolved "https://registry.yarnpkg.com/@artsy/detect-responsive-traits/-/detect-responsive-traits-0.0.1.tgz#3d83384bf3323fbd4679a2d73155ab85dc73e850"
   integrity sha512-jqrC40t1P6w9zIvsJJhWe8pxLWdEC/kJQmDc4/b3vAnGy1EsJpcIJGUys37kwut7tDYPiypUF06SImtZVLGQnQ==
 
-"@artsy/palette@^2.25.8":
+"@artsy/palette@2.25.8":
   version "2.25.8"
   resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-2.25.8.tgz#88fead723839288d2b58a07c508cb10252a25e63"
   integrity sha512-XbCfG0tIiLZhYifJlTx8lrcPHTOly1HDWgHz/PwmaE5tcqJr13PqGNvJDFfsZVA2e5qe9rQATaRXhPsW0R9jfA==
