@@ -1,4 +1,4 @@
-import { Button, Flex, Spacer } from "@artsy/palette"
+import { Button, Col, Flex, Row, Spacer } from "@artsy/palette"
 import { Counter_order } from "__generated__/Counter_order.graphql"
 import { CounterSubmitMutation } from "__generated__/CounterSubmitMutation.graphql"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
@@ -25,7 +25,6 @@ import {
   RelayProp,
 } from "react-relay"
 import { CountdownTimer } from "Styleguide/Components/CountdownTimer"
-import { Col, Row } from "Styleguide/Elements/Grid"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { ErrorWithMetadata } from "Utils/errors"
 import { get } from "Utils/get"

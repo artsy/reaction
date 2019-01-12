@@ -1,8 +1,10 @@
 import {
   BorderedRadio,
   Button,
+  Col,
   Flex,
   RadioGroup,
+  Row,
   Sans,
   Spacer,
 } from "@artsy/palette"
@@ -26,7 +28,6 @@ import {
   RelayProp,
 } from "react-relay"
 import { CountdownTimer } from "Styleguide/Components/CountdownTimer"
-import { Col, Row } from "Styleguide/Elements/Grid"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { ErrorWithMetadata } from "Utils/errors"
 import { get } from "Utils/get"

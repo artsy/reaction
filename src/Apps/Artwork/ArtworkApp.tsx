@@ -1,9 +1,8 @@
-import { Box, Separator, Spacer } from "@artsy/palette"
+import { Box, Col, Row, Separator, Spacer } from "@artsy/palette"
 import { ArtworkApp_artwork } from "__generated__/ArtworkApp_artwork.graphql"
 import React from "react"
 import { LazyLoadComponent } from "react-lazy-load-image-component"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Col, Row } from "Styleguide/Elements/Grid"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 
 import { ArtistInfoQueryRenderer as ArtistInfo } from "./Components/ArtistInfo"

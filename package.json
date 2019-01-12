@@ -7,7 +7,7 @@
   "author": "Art.sy Inc <it@artsymail.com>",
   "license": "MIT",
   "peerDependencies": {
-    "@artsy/palette": "^2.25.8",
+    "@artsy/palette": "^2.25.9",
     "dd-trace": "^0.6.0",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
@@ -51,7 +51,7 @@
     "react-relay": "https://github.com/alloy/relay/releases/download/v1.5.0-artsy.3/react-relay-1.5.0-artsy.3.tgz"
   },
   "devDependencies": {
-    "@artsy/palette": "2.25.8",
+    "@artsy/palette": "^2.25.9",
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
@@ -196,7 +196,6 @@
     "relay-runtime": "https://github.com/alloy/relay/releases/download/v1.5.0-artsy.3/relay-runtime-1.5.0-artsy.3.tgz",
     "serialize-javascript": "^1.5.0",
     "sharify": "^0.1.6",
-    "styled-bootstrap-grid": "1.0.4",
     "styled-system": "^3.1.11",
     "superagent": "^3.6.3",
     "trunc-html": "^1.1.2",

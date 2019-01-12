@@ -1,6 +1,6 @@
+import { media } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
-import { media } from "Styleguide/Elements/Grid"
 
 interface ScrollIntoViewProps {
   selector: string

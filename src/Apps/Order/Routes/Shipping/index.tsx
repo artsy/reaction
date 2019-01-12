@@ -1,9 +1,11 @@
 import {
   BorderedRadio,
   Button,
+  Col,
   Collapse,
   Flex,
   RadioGroup,
+  Row,
   Sans,
   Spacer,
 } from "@artsy/palette"
@@ -43,7 +45,6 @@ import {
   graphql,
   RelayProp,
 } from "react-relay"
-import { Col, Row } from "Styleguide/Elements/Grid"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { ErrorWithMetadata } from "Utils/errors"
 import { get } from "Utils/get"

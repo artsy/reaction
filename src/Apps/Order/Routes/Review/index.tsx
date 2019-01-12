@@ -1,4 +1,4 @@
-import { Button, Flex, Join, Spacer } from "@artsy/palette"
+import { Button, Col, Flex, Join, Row, Spacer } from "@artsy/palette"
 import { Review_order } from "__generated__/Review_order.graphql"
 import { ReviewSubmitOfferOrderMutation } from "__generated__/ReviewSubmitOfferOrderMutation.graphql"
 import { ReviewSubmitOrderMutation } from "__generated__/ReviewSubmitOrderMutation.graphql"
@@ -24,7 +24,6 @@ import {
   graphql,
   RelayProp,
 } from "react-relay"
-import { Col, Row } from "Styleguide/Elements/Grid"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { ErrorWithMetadata } from "Utils/errors"
 import { get } from "Utils/get"

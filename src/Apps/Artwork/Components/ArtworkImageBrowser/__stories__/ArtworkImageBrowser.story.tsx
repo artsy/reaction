@@ -1,8 +1,7 @@
-import { Box } from "@artsy/palette"
+import { Box, Col } from "@artsy/palette"
 import { ArtworkImageBrowserQueryRenderer } from "Apps/Artwork/Components/ArtworkImageBrowser"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Col } from "Styleguide/Elements/Grid"
 import { Section } from "Styleguide/Utils/Section"
 
 storiesOf("Apps/Artwork Page/Components/ArtworkImageBrowser", module).add(

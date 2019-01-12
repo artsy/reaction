@@ -1,12 +1,3 @@
-import {
-  Button,
-  Checkbox,
-  Collapse,
-  Flex,
-  Join,
-  Serif,
-  Spacer,
-} from "@artsy/palette"
 import { Payment_order } from "__generated__/Payment_order.graphql"
 import { PaymentRouteCreateCreditCardMutation } from "__generated__/PaymentRouteCreateCreditCardMutation.graphql"
 import { PaymentRouteSetOrderPaymentMutation } from "__generated__/PaymentRouteSetOrderPaymentMutation.graphql"
@@ -43,11 +34,22 @@ import {
   RelayRefetchProp,
 } from "react-relay"
 import { injectStripe, ReactStripeElements } from "react-stripe-elements"
-import { Col, Row } from "Styleguide/Elements/Grid"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { ErrorWithMetadata } from "Utils/errors"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
+
+import {
+  Button,
+  Checkbox,
+  Col,
+  Collapse,
+  Flex,
+  Join,
+  Row,
+  Serif,
+  Spacer,
+} from "@artsy/palette"
 
 export const ContinueButton = props => (
   <Button size="large" width="100%" {...props}>
