@@ -1,7 +1,6 @@
-import { space } from "@artsy/palette"
+import { media, space } from "@artsy/palette"
 import styled, { css } from "styled-components"
 import { SpaceProps } from "styled-system"
-import { media } from "Styleguide/Elements/Grid"
 
 export interface HorizontalPaddingProps {
   px?: SpaceProps["px"]
@@ -9,7 +8,7 @@ export interface HorizontalPaddingProps {
 
 export const HorizontalPadding = styled.div<HorizontalPaddingProps>`
   ${p =>
-    media.xs<HoprizontalPaddingProps>`
+    media.xs`
       padding-right: ${(p.px[0] && space(p.px[0])) || 0}px;
       padding-left: ${(p.px[0] && space(p.px[0])) || 0}px;
     `};

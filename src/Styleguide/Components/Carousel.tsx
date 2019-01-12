@@ -1,9 +1,8 @@
-import { Box, ChevronIcon, Flex } from "@artsy/palette"
+import { Box, ChevronIcon, Flex, media } from "@artsy/palette"
 import React, { ReactNode } from "react"
 import Slick, { Settings } from "react-slick"
 import styled from "styled-components"
 import { left, LeftProps, right, RightProps } from "styled-system"
-import { media } from "Styleguide/Elements/Grid"
 import { Media } from "Utils/Responsive"
 
 interface Props {

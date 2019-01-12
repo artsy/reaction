@@ -1,9 +1,17 @@
-import { Flex, LargeSelect, Sans, Separator, Spacer } from "@artsy/palette"
 import React from "react"
-import { Col, Row } from "Styleguide/Elements/Grid"
 import { Subscribe } from "unstated"
 import { Media } from "Utils/Responsive"
 import { AuctionResultsState } from "./state"
+
+import {
+  Col,
+  Flex,
+  LargeSelect,
+  Row,
+  Sans,
+  Separator,
+  Spacer,
+} from "@artsy/palette"
 
 const SORTS = [
   {

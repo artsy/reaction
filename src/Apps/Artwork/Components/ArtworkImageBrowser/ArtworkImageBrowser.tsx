@@ -1,11 +1,20 @@
-import { Box, ChevronIcon, color, Flex, ResponsiveImage } from "@artsy/palette"
 import { ArtworkImageBrowser_artwork } from "__generated__/ArtworkImageBrowser_artwork.graphql"
 import React from "react"
 import Slider, { Settings } from "react-slick"
 import styled from "styled-components"
 import { Lightbox } from "Styleguide/Components"
-import { Col, media, Row } from "Styleguide/Elements/Grid"
 import { Media } from "Utils/Responsive"
+
+import {
+  Box,
+  ChevronIcon,
+  Col,
+  color,
+  Flex,
+  media,
+  ResponsiveImage,
+  Row,
+} from "@artsy/palette"
 
 interface ArtworkBrowserProps {
   images: ArtworkImageBrowser_artwork["images"]

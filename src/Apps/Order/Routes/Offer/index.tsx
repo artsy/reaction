@@ -1,4 +1,4 @@
-import { Button, Flex, Message, Sans, Spacer } from "@artsy/palette"
+import { Button, Col, Flex, Message, Row, Sans, Spacer } from "@artsy/palette"
 import { Offer_order } from "__generated__/Offer_order.graphql"
 import { OfferMutation } from "__generated__/OfferMutation.graphql"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
@@ -8,8 +8,8 @@ import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSum
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { Dialog, injectDialog } from "Apps/Order/Dialogs"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
-import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics"
+import { track } from "Artsy/Analytics"
 import { Router } from "found"
 import React, { Component } from "react"
 import {
@@ -18,7 +18,6 @@ import {
   graphql,
   RelayProp,
 } from "react-relay"
-import { Col, Row } from "Styleguide/Elements/Grid"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { ErrorWithMetadata } from "Utils/errors"
 import { get } from "Utils/get"

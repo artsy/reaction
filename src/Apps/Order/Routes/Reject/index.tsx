@@ -1,32 +1,35 @@
-import { Button, Flex, Sans, Spacer } from "@artsy/palette"
+import { Button, Col, Flex, Row, Sans, Spacer } from "@artsy/palette"
 import { Reject_order } from "__generated__/Reject_order.graphql"
 import { RejectOfferMutation } from "__generated__/RejectOfferMutation.graphql"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
 import { ConditionsOfSaleDisclaimer } from "Apps/Order/Components/ConditionsOfSaleDisclaimer"
 import { Helper } from "Apps/Order/Components/Helper"
-import {
-  counterofferFlowSteps,
-  OrderStepper,
-} from "Apps/Order/Components/OrderStepper"
+
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
 import React, { Component } from "react"
+
+import { StepSummaryItem } from "Styleguide/Components"
+import { CountdownTimer } from "Styleguide/Components/CountdownTimer"
+import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
+import { ErrorWithMetadata } from "Utils/errors"
+import { get } from "Utils/get"
+import { Media } from "Utils/Responsive"
+import { logger } from "../Respond"
+
+import {
+  counterofferFlowSteps,
+  OrderStepper,
+} from "Apps/Order/Components/OrderStepper"
+
 import {
   commitMutation,
   createFragmentContainer,
   graphql,
   RelayProp,
 } from "react-relay"
-import { StepSummaryItem } from "Styleguide/Components"
-import { CountdownTimer } from "Styleguide/Components/CountdownTimer"
-import { Col, Row } from "Styleguide/Elements"
-import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
-import { ErrorWithMetadata } from "Utils/errors"
-import { get } from "Utils/get"
-import { Media } from "Utils/Responsive"
-import { logger } from "../Respond"
 
 interface RejectProps {
   order: Reject_order

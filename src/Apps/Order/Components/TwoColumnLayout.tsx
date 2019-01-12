@@ -1,6 +1,5 @@
-import { Box, Flex, Spacer } from "@artsy/palette"
+import { Box, Col, Flex, Row, Spacer } from "@artsy/palette"
 import React from "react"
-import { Col, Row } from "Styleguide/Elements/Grid"
 import { Media } from "Utils/Responsive"
 
 const CONTENT_SPAN = 7

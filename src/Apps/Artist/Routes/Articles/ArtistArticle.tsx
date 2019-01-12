@@ -1,5 +1,5 @@
+import { Col, Row } from "@artsy/palette"
 import React, { SFC } from "react"
-import { Col, Row } from "Styleguide/Elements/Grid"
 import { Media } from "Utils/Responsive"
 
 import {

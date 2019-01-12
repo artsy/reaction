@@ -1,15 +1,26 @@
-import { Box, color, Flex, Sans, Serif, Spacer } from "@artsy/palette"
 import { unica } from "Assets/Fonts"
 import React, { Component } from "react"
 import styled from "styled-components"
 import { ReadMore } from "Styleguide/Components/ReadMore"
-import { Col, Grid, media, Row } from "Styleguide/Elements/Grid"
 import { slugify } from "underscore.string"
 import { resize } from "Utils/resizer"
 import { Responsive } from "Utils/Responsive"
 
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
+
+import {
+  Box,
+  Col,
+  color,
+  Flex,
+  Grid,
+  media,
+  Row,
+  Sans,
+  Serif,
+  Spacer,
+} from "@artsy/palette"
 
 interface Props {
   collection: {
@@ -152,10 +163,10 @@ const Background = styled(Box)<{
   background-size: cover;
   background-position: center;
 
-  ${media.xs} {
+  ${media.xs`
     margin-left: -20px;
     margin-right: -20px;
-  }
+  `};
 `
 export const Overlay = styled.div`
   position: absolute;

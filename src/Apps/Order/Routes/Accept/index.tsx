@@ -1,23 +1,23 @@
-import { Button, Flex, Spacer } from "@artsy/palette"
+import { Button, Col, Flex, Row, Spacer } from "@artsy/palette"
 import { Accept_order } from "__generated__/Accept_order.graphql"
 import { Helper } from "Apps/Order/Components/Helper"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { track } from "Artsy/Analytics"
 import { RouteConfig, Router } from "found"
 import React, { Component } from "react"
-import {
-  commitMutation,
-  createFragmentContainer,
-  graphql,
-  RelayProp,
-} from "react-relay"
-import { Col, Row } from "Styleguide/Elements"
 import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { Media } from "Utils/Responsive"
 import {
   counterofferFlowSteps,
   OrderStepper,
 } from "../../Components/OrderStepper"
+
+import {
+  commitMutation,
+  createFragmentContainer,
+  graphql,
+  RelayProp,
+} from "react-relay"
 
 import { AcceptOfferMutation } from "__generated__/AcceptOfferMutation.graphql"
 import { ConditionsOfSaleDisclaimer } from "Apps/Order/Components/ConditionsOfSaleDisclaimer"
