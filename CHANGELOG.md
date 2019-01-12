@@ -1,3 +1,11 @@
+# 9.5.16 (Sat Jan 12 2019)
+
+#### 🐛  Bug Fix
+
+- Pin dependency @artsy/palette to 2.25.9 [#1867](https://github.com/artsy/reaction/pull/1867) ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # 9.5.15 (Sat Jan 12 2019)
 
 #### 🐛  Bug Fix
