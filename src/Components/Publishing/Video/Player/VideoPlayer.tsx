@@ -223,7 +223,7 @@ export class VideoPlayer extends Component<VideoPlayerProps, VideoPlayerState> {
 
     return (
       <VideoContainer
-        innerRef={container => (this.videoPlayer = container)}
+        ref={container => (this.videoPlayer = container)}
         showControls={this.state.showControls}
       >
         <video

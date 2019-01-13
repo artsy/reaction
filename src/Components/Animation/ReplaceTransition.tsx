@@ -1,8 +1,8 @@
 import * as React from "react"
 import ReactCSSTransitionReplace from "react-css-transition-replace"
-import { injectGlobal } from "styled-components"
+import { createGlobalStyle } from "styled-components"
 
-injectGlobal`
+const GlobalStyle = createGlobalStyle`
   .fade-wait-leave {
     opacity: 1;
   }
@@ -18,7 +18,7 @@ injectGlobal`
 
   .fade-wait-enter.fade-wait-enter-active {
     opacity: 1;
-    
+
     /* Delay the enter animation until the leave completes */
     transition: opacity 0.4s ease-in 0.6s;
   }
@@ -30,8 +30,11 @@ injectGlobal`
 
 export default props => {
   return (
-    <ReactCSSTransitionReplace transitionName="fade-wait" {...props}>
-      {{ ...props.children }}
-    </ReactCSSTransitionReplace>
+    <>
+      <GlobalStyle />
+      <ReactCSSTransitionReplace transitionName="fade-wait" {...props}>
+        {{ ...props.children }}
+      </ReactCSSTransitionReplace>
+    </>
   )
 }
