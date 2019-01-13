@@ -1,7 +1,7 @@
 import { ArtworkSidebarQueryRenderer } from "Apps/Artwork/Components/ArtworkSidebar"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Section } from "Styleguide/Utils/Section"
+import { Section } from "Utils/Section"
 
 import { RelayStubProvider } from "DevTools/RelayStubProvider"
 

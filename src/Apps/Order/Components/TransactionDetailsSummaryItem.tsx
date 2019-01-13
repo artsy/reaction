@@ -3,7 +3,7 @@ import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 
 import { Flex, Sans, Serif, Spacer } from "@artsy/palette"
-import { StepSummaryItem, StepSummaryItemProps } from "Styleguide/Components"
+import { StepSummaryItem, StepSummaryItemProps } from "Components/v2"
 
 export interface TransactionDetailsSummaryItemProps
   extends StepSummaryItemProps {

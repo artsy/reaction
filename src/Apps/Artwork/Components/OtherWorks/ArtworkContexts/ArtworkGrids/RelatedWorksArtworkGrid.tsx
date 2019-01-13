@@ -9,10 +9,10 @@ import * as Schema from "Artsy/Analytics/Schema"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { Mediator, withContext } from "Artsy/SystemContext"
 import ArtworkGrid from "Components/ArtworkGrid"
+import { Tab, Tabs } from "Components/v2"
 import { take } from "lodash"
 import React from "react"
 import styled from "styled-components"
-import { Tab, Tabs } from "Styleguide/Components"
 import createLogger from "Utils/logger"
 
 import {

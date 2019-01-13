@@ -24,9 +24,9 @@ import {
   graphql,
   RelayProp,
 } from "react-relay"
-import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { ErrorWithMetadata } from "Utils/errors"
 import { get } from "Utils/get"
+import { HorizontalPadding } from "Utils/HorizontalPadding"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
 import { CreditCardSummaryItemFragmentContainer as CreditCardSummaryItem } from "../../Components/CreditCardSummaryItem"

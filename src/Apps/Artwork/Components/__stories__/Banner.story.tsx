@@ -1,6 +1,6 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Section } from "Styleguide/Utils/Section"
+import { Section } from "Utils/Section"
 import { Banner, LargeBanner, SmallBanner } from "../ArtworkBanner/Banner"
 
 storiesOf("Apps/Artwork Page/Components", module).add(

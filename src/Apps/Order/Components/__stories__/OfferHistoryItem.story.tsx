@@ -11,8 +11,8 @@ import { MockRelayRenderer } from "DevTools"
 import React from "react"
 import { graphql } from "react-relay"
 import { storiesOf } from "storybook/storiesOf"
-import { Section } from "Styleguide/Utils/Section"
 import { ExtractProps } from "Utils/ExtractProps"
+import { Section } from "Utils/Section"
 import { OfferHistoryItemFragmentContainer as OfferHistoryItem } from "../OfferHistoryItem"
 const orderQuery = graphql`
   query OfferHistoryItemStoryQuery {

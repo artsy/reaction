@@ -14,7 +14,7 @@ import { ArtworkSidebarBidAction as BidAction } from "Apps/Artwork/Components/Ar
 import { merge as _merge } from "lodash"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Section } from "Styleguide/Utils/Section"
+import { Section } from "Utils/Section"
 
 const merge: (...args: object[]) => any = _merge
 

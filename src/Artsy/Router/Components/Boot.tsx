@@ -9,8 +9,8 @@ import { HeadProvider } from "react-head"
 import { Environment } from "relay-runtime"
 import { data as sd } from "sharify"
 import { GridThemeProvider } from "styled-bootstrap-grid"
-import { BreakpointVisualizer } from "Styleguide/Utils/BreakpointVisualizer"
 import { Provider as StateProvider } from "unstated"
+import { BreakpointVisualizer } from "Utils/BreakpointVisualizer"
 import Events from "Utils/Events"
 
 import {

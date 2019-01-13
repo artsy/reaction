@@ -1,11 +1,11 @@
 import { Serif } from "@artsy/palette"
 import { ShippingSummaryItem_order } from "__generated__/ShippingSummaryItem_order.graphql"
-import React from "react"
-import { createFragmentContainer, graphql } from "react-relay"
 import {
   StepSummaryItem,
   StepSummaryItemProps,
-} from "Styleguide/Components/StepSummaryItem"
+} from "Components/v2/StepSummaryItem"
+import React from "react"
+import { createFragmentContainer, graphql } from "react-relay"
 import { ShippingAddressFragmentContainer as ShippingAddress } from "./ShippingAddress"
 
 /**

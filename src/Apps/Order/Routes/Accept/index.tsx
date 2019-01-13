@@ -5,7 +5,7 @@ import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { track } from "Artsy/Analytics"
 import { RouteConfig, Router } from "found"
 import React, { Component } from "react"
-import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
+import { HorizontalPadding } from "Utils/HorizontalPadding"
 import { Media } from "Utils/Responsive"
 import {
   counterofferFlowSteps,
@@ -25,7 +25,7 @@ import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "App
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { ErrorModal } from "Components/Modal/ErrorModal"
-import { CountdownTimer } from "Styleguide/Components/CountdownTimer"
+import { CountdownTimer } from "Components/v2/CountdownTimer"
 import { ErrorWithMetadata } from "Utils/errors"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"

@@ -1,7 +1,7 @@
 import { Flex } from "@artsy/palette"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Section } from "Styleguide/Utils/Section"
+import { Section } from "Utils/Section"
 import { CreditCardDetails } from "../CreditCardDetails"
 
 const creditCard = {

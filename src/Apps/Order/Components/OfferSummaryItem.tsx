@@ -1,11 +1,11 @@
 import { Sans, Serif } from "@artsy/palette"
 import { OfferSummaryItem_order } from "__generated__/OfferSummaryItem_order.graphql"
-import React from "react"
-import { createFragmentContainer, graphql } from "react-relay"
 import {
   StepSummaryItem,
   StepSummaryItemProps,
-} from "Styleguide/Components/StepSummaryItem"
+} from "Components/v2/StepSummaryItem"
+import React from "react"
+import { createFragmentContainer, graphql } from "react-relay"
 
 const OfferSummaryItem = ({
   order,

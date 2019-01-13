@@ -1,7 +1,7 @@
 import { Box, Serif } from "@artsy/palette"
+import { ReadMore } from "Components/v2"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { ReadMore } from "Styleguide/Components"
 import { Media } from "Utils/Responsive"
 
 import { ArtworkDetailsAboutTheWorkFromArtsy_artwork } from "__generated__/ArtworkDetailsAboutTheWorkFromArtsy_artwork.graphql"

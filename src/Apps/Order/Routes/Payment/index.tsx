@@ -34,8 +34,8 @@ import {
   RelayRefetchProp,
 } from "react-relay"
 import { injectStripe, ReactStripeElements } from "react-stripe-elements"
-import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { ErrorWithMetadata } from "Utils/errors"
+import { HorizontalPadding } from "Utils/HorizontalPadding"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
 

@@ -1,5 +1,5 @@
+import { Step, Stepper } from "Components/v2"
 import React from "react"
-import { Step, Stepper } from "Styleguide/Components"
 
 function typedArray<T extends string>(...elems: T[]): T[] {
   return elems

@@ -8,7 +8,7 @@ import {
 import { ArtworkSidebarAuctionPartnerInfo as AuctionPartnerInfo } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarAuctionPartnerInfo"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Section } from "Styleguide/Utils/Section"
+import { Section } from "Utils/Section"
 
 storiesOf("Apps/Artwork Page/Components/Sidebar", module).add(
   "AuctionPartnerInfo",

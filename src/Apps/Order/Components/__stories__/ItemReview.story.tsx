@@ -1,7 +1,7 @@
 import { Flex } from "@artsy/palette"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Section } from "Styleguide/Utils/Section"
+import { Section } from "Utils/Section"
 import { ItemReview } from "../ItemReview"
 
 storiesOf("Apps/Order Page/Components", module).add("ItemReview", () => {

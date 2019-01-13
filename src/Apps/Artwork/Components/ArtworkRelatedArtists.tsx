@@ -3,10 +3,10 @@ import { ArtworkRelatedArtists_artwork } from "__generated__/ArtworkRelatedArtis
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { ContextConsumer } from "Artsy/Router"
+import { ArtistCardFragmentContainer as ArtistCard } from "Components/v2"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
-import { ArtistCardFragmentContainer as ArtistCard } from "Styleguide/Components"
 import { hideGrid } from "./OtherWorks/ArtworkContexts/ArtworkGrids"
 import { Header } from "./OtherWorks/Header"
 

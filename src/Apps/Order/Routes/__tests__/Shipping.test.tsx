@@ -17,14 +17,14 @@ import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import Input, { InputProps } from "Components/Input"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { ModalButton } from "Components/Modal/ModalDialog"
-import { MockBoot } from "DevTools"
-import { commitMutation as _commitMutation, RelayProp } from "react-relay"
 import {
   ActiveTabContainer,
   CheckMarkWrapper,
   CountrySelect,
   Stepper,
-} from "Styleguide/Components"
+} from "Components/v2"
+import { MockBoot } from "DevTools"
+import { commitMutation as _commitMutation, RelayProp } from "react-relay"
 import {
   settingOrderShipmentFailure,
   settingOrderShipmentMissingCountryFailure,

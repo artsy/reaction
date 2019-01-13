@@ -4,7 +4,7 @@ import { RelayStubProvider } from "DevTools/RelayStubProvider"
 import { cloneDeep } from "lodash"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Section } from "Styleguide/Utils"
+import { Section } from "Utils/Section"
 import { ArtworkActions } from "../ArtworkActions"
 
 const ArtworkActionsAuctionFixture = cloneDeep(ArtworkActionsFixture)

@@ -11,7 +11,7 @@ import {
 import { ArtworkSidebarExtraLinks as ExtraLinks } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarExtraLinks"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Section } from "Styleguide/Utils/Section"
+import { Section } from "Utils/Section"
 
 storiesOf("Apps/Artwork Page/Components/Sidebar", module).add(
   "ExtraLinks",

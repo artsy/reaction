@@ -1,7 +1,7 @@
 import { Box, Flex } from "@artsy/palette"
+import { AuctionCardFragmentContainer as AuctionCard } from "Components/v2/AuctionCard"
 import React from "react"
 import { data as sd } from "sharify"
-import { AuctionCardFragmentContainer as AuctionCard } from "Styleguide/Components/AuctionCard"
 import { Header } from "./OtherWorks/Header"
 
 interface OtherAuctionsProps {

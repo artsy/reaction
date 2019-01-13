@@ -1,7 +1,7 @@
 import { unica } from "Assets/Fonts"
+import { ReadMore } from "Components/v2/ReadMore"
 import React, { Component } from "react"
 import styled from "styled-components"
-import { ReadMore } from "Styleguide/Components/ReadMore"
 import { slugify } from "underscore.string"
 import { resize } from "Utils/resizer"
 import { Responsive } from "Utils/Responsive"
