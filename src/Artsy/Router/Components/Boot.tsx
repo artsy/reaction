@@ -8,7 +8,6 @@ import React from "react"
 import { HeadProvider } from "react-head"
 import { Environment } from "relay-runtime"
 import { data as sd } from "sharify"
-import { GridThemeProvider } from "styled-bootstrap-grid"
 import { Provider as StateProvider } from "unstated"
 import { BreakpointVisualizer } from "Utils/BreakpointVisualizer"
 import Events from "Utils/Events"
@@ -63,16 +62,14 @@ export class Boot extends React.Component<BootProps> {
                   }
                 >
                   <Theme>
-                    <GridThemeProvider gridTheme={themeProps.grid}>
-                      <Grid fluid>
-                        <GlobalStyles>
-                          {children}
-                          {process.env.NODE_ENV === "development" && (
-                            <BreakpointVisualizer />
-                          )}
-                        </GlobalStyles>
-                      </Grid>
-                    </GridThemeProvider>
+                    <Grid fluid>
+                      <GlobalStyles>
+                        {children}
+                        {process.env.NODE_ENV === "development" && (
+                          <BreakpointVisualizer />
+                        )}
+                      </GlobalStyles>
+                    </Grid>
                   </Theme>
                 </ResponsiveProvider>
               </MediaContextProvider>
