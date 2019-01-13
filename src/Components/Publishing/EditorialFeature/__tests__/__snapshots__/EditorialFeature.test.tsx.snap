@@ -4312,16 +4312,16 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
     </div>
   </div>
   <div
-    className="sc-gzVnrw dUpmT"
+    className="sc-VigVT budYUW"
   >
     <div
       className="Eoy2018Artists__RelatedArticleWrapper-apetgy-11 ilRGPE"
     >
       <div
-        className="sc-gzVnrw iHFmns"
+        className="sc-VigVT gZhOse"
       >
         <div
-          className="ArticleCards__ArticlesWrapper-s128ki95-0 heojko sc-gzVnrw bZYMlA"
+          className="ArticleCards__ArticlesWrapper-s128ki95-0 heojko sc-VigVT bbkBCC"
         >
           <a
             className="ArticleCard ArticleCard__ArticleCardContainer-nqsvxw-2 cVVhNQ"
@@ -4391,7 +4391,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
               </div>
               <div
-                className="ArticleCard__ImageContainer-nqsvxw-1 eORowf sc-gzVnrw ewzCdI"
+                className="ArticleCard__ImageContainer-nqsvxw-1 eORowf sc-VigVT fOifcW"
                 width={
                   Array [
                     "100%",
