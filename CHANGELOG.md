@@ -1,3 +1,12 @@
+# 10.0.0 (Sun Jan 13 2019)
+
+#### 💥  Breaking Change
+
+- [Release] Attempt 2 to send out major release [#1869](https://github.com/artsy/reaction/pull/1869) ([@damassi](https://github.com/damassi))
+- [Refactor] Move Styleguide/Components -> Components/v2 [#1868](https://github.com/artsy/reaction/pull/1868) ([@damassi](https://github.com/damassi))
+
+---
+
 # 9.5.16 (Sat Jan 12 2019)
 
 #### 🐛  Bug Fix
