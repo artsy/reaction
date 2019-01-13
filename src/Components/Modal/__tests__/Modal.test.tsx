@@ -1,4 +1,3 @@
-import Icon from "Components/Icon"
 import { mount } from "enzyme"
 import React from "react"
 import { Modal } from "../Modal"
@@ -40,7 +39,7 @@ describe("Modal", () => {
       const component = getWrapper(props)
 
       expect(component.find(ModalHeader)).toHaveLength(1)
-      expect(component.find(Icon)).toHaveLength(2)
+      expect(component.find("Icon")).toHaveLength(2)
     })
 
     it("Renders ModalCta if props.cta", () => {

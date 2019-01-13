@@ -2,7 +2,7 @@ import * as React from "react"
 import ReactCSSTransitionReplace from "react-css-transition-replace"
 import { createGlobalStyle } from "styled-components"
 
-const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle<{ suppressMultiMountWarning: boolean }>`
   .fade-wait-leave {
     opacity: 1;
   }
@@ -31,7 +31,7 @@ const GlobalStyle = createGlobalStyle`
 export default props => {
   return (
     <>
-      <GlobalStyle />
+      <GlobalStyle suppressMultiMountWarning />
       <ReactCSSTransitionReplace transitionName="fade-wait" {...props}>
         {{ ...props.children }}
       </ReactCSSTransitionReplace>

@@ -27,7 +27,7 @@ export interface ModalWrapperState {
   blurContainers: Element[]
 }
 
-const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle<{ suppressMultiMountWarning: boolean }>`
   .blurred {
     filter: blur(50px);
   }
@@ -126,8 +126,8 @@ export class ModalWrapper extends React.Component<
 
     return (
       <Theme>
-        <GlobalStyle />
         <Wrapper isShown={isShown || isAnimating}>
+          <GlobalStyle suppressMultiMountWarning />
           {isShown && <ModalOverlay onClick={this.close} />}
           <FadeTransition
             in={isShown}

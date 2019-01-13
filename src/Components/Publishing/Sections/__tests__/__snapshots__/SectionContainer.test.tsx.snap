@@ -122,7 +122,7 @@ exports[`SectionContainer Snapshots renders column_width properly 1`] = `
   background-size: 1.25px 1px;
 }
 
-.c1 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
+.c1 h2 .c2 {
   background-position: bottom !important;
 }
 
@@ -412,7 +412,7 @@ exports[`SectionContainer Snapshots renders fillwidth properly 1`] = `
   background-size: 1.25px 1px;
 }
 
-.c1 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
+.c1 h2 .c2 {
   background-position: bottom !important;
 }
 
@@ -702,7 +702,7 @@ exports[`SectionContainer Snapshots renders overflow_fillwidth properly 1`] = `
   background-size: 1.25px 1px;
 }
 
-.c1 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
+.c1 h2 .c2 {
   background-position: bottom !important;
 }
 

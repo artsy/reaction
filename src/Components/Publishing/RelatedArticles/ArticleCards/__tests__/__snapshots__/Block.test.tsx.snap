@@ -28,21 +28,6 @@ exports[`ArticleCard renders properly 1`] = `
   width: 100%;
 }
 
-.c21 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
-
 .c4 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
@@ -72,7 +57,7 @@ exports[`ArticleCard renders properly 1`] = `
   line-height: 20px;
 }
 
-.c23 {
+.c21 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
   font-size: 14px;
@@ -87,16 +72,6 @@ exports[`ArticleCard renders properly 1`] = `
 
 .c5 {
   color: #000;
-}
-
-.c6 {
-  margin-bottom: 40px;
-}
-
-.c17 {
-  margin-bottom: 10px;
-  margin-left: 0px;
-  width: 100%;
 }
 
 .c3 a {
@@ -139,12 +114,12 @@ exports[`ArticleCard renders properly 1`] = `
   color: #000;
 }
 
-.c22 {
+.c20 {
   width: 32px;
   height: 32px;
 }
 
-.c19 {
+.c18 {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -155,6 +130,9 @@ exports[`ArticleCard renders properly 1`] = `
 }
 
 .c16 {
+  margin-bottom: 10px;
+  margin-left: 0px;
+  width: 100%;
   position: relative;
   height: inherit;
   background: white;
@@ -170,23 +148,39 @@ exports[`ArticleCard renders properly 1`] = `
   display: block;
 }
 
-.c7 .c18 {
+.c7 .c17 {
   opacity: 1;
 }
 
-.c7:hover .c18 {
+.c7:hover .c17 {
   opacity: 0.7;
 }
 
-.c20 {
+.c19 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   position: absolute;
   left: 20px;
   right: 20px;
   bottom: 20px;
 }
 
-.c20 svg {
+.c19 svg {
   height: 40px;
+}
+
+.c6 {
+  margin-bottom: 40px;
 }
 
 .c0 {
@@ -357,53 +351,53 @@ exports[`ArticleCard renders properly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .c6 {
-    margin-bottom: 60px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c17 {
+  .c16 {
     margin-bottom: 10px;
     margin-left: 0px;
   }
 }
 
 @media screen and (min-width:52em) {
-  .c17 {
+  .c16 {
     margin-bottom: 0px;
     margin-left: 30px;
   }
 }
 
 @media screen and (min-width:64em) {
-  .c17 {
+  .c16 {
     margin-bottom: 0px;
     margin-left: 30px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c17 {
+  .c16 {
     width: 100%;
   }
 }
 
 @media screen and (min-width:52em) {
-  .c17 {
+  .c16 {
     width: 50%;
   }
 }
 
 @media screen and (min-width:64em) {
-  .c17 {
+  .c16 {
     width: 50%;
   }
 }
 
 @media (max-width:900px) {
-  .c20 svg {
+  .c19 svg {
     height: 30px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c6 {
+    margin-bottom: 60px;
   }
 }
 
@@ -527,7 +521,7 @@ exports[`ArticleCard renders properly 1`] = `
               </div>
             </div>
             <div
-              className="c16 c17"
+              className="c16"
               width={
                 Array [
                   "100%",
@@ -538,7 +532,7 @@ exports[`ArticleCard renders properly 1`] = `
               }
             >
               <img
-                className="c18 c19"
+                className="c17 c18"
                 src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=95"
               />
             </div>
@@ -616,7 +610,7 @@ exports[`ArticleCard renders properly 1`] = `
               </div>
             </div>
             <div
-              className="c16 c17"
+              className="c16"
               width={
                 Array [
                   "100%",
@@ -627,14 +621,14 @@ exports[`ArticleCard renders properly 1`] = `
               }
             >
               <img
-                className="c18 c19"
+                className="c17 c18"
                 src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
               />
               <div
-                className="c20 c21"
+                className="c19"
               >
                 <svg
-                  className="c22"
+                  className="c20"
                   version="1.1"
                   viewBox="0 0 40 56"
                   x="0px"
@@ -654,7 +648,7 @@ exports[`ArticleCard renders properly 1`] = `
                   </g>
                 </svg>
                 <div
-                  className="c23"
+                  className="c21"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",

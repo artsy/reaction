@@ -19,7 +19,7 @@ const NavIcon = styled.a`
 `
 
 /* stylelint-disable-next-line */
-const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle<{ suppressMultiMountWarning: boolean }>`
   body {
     margin: 0;
   }
@@ -31,7 +31,7 @@ export interface NavBarProps extends React.Props<HTMLDivElement> {
 
 const NavBar: React.SFC<NavBarProps> = props => (
   <Nav>
-    <GlobalStyle />
+    <GlobalStyle suppressMultiMountWarning />
     <NavIcon href={props.logoLink}>
       <Icon name="logotype" color="black" fontSize="40px" />
     </NavIcon>

@@ -15,7 +15,7 @@ const ENTERING = "entering"
 
 const FADE_DURATION = 200
 
-const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle<{ suppressMultiMountWarning: boolean }>`
   .fade {
     opacity: 0;
     transition: opacity ${FADE_DURATION}ms linear;
@@ -63,7 +63,7 @@ export class WithAnimationExample extends React.Component {
 
     return (
       <Container>
-        <GlobalStyle />
+        <GlobalStyle suppressMultiMountWarning />
         <OverlayTrigger
           show={show}
           placement="bottom"
