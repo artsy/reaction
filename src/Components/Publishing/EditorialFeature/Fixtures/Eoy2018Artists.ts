@@ -2086,4 +2086,18 @@ export const Eoy2018Artists = {
   description:
     "These 20 groundbreaking individuals have caused us to reconsider the very definitions of what art can look like, and what it can achieve.",
   seo_keyword: "",
+  relatedArticles: [
+    {
+      description:
+        "From Donald Glover and Hiro Murai to teamLab, Artsy’s editors select the people who had the biggest impact in changing the visual landscape this year.",
+      layout: "feature",
+      media: { duration: null, published: null, release_date: null },
+      published_at: "2018-12-19T17:12:00.000Z",
+      slug: "artsy-editorial-people-defined-visual-culture-2018",
+      thumbnail_image:
+        "https://artsy-media-uploads.s3.amazonaws.com/r3TUoJ9u8QhxGeWdjR4ccQ%2FVC-email-final.jpg",
+      thumbnail_title: "The People Who Defined Visual Culture in 2018",
+      title: "The Year In Visual Culture 2018",
+    },
+  ],
 }

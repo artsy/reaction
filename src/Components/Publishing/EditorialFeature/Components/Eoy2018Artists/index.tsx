@@ -242,7 +242,7 @@ const ArticleContent = styled(Box)`
   }
 `
 
-const ArtistHeaderSection = styled(Flex)`
+export const ArtistHeaderSection = styled(Flex)`
   height: 60vh;
   min-height: 450px;
   border: ${BORDER_WIDTH}px solid ${color("purple100")};
@@ -331,6 +331,7 @@ const ArtistHeaderTitle = styled.div`
 const ArtistHeaderImg = styled(Flex)<{ src?: string }>`
   flex: 1;
   background: ${color("purple100")};
+
   p {
     text-shadow: 0 0 5px black;
     opacity: 0.6;
@@ -426,6 +427,7 @@ const ImageSetWrapper = styled(Box)`
     max-width: inherit;
     border-radius: 0;
     box-shadow: none;
+
     &:hover {
       background-color: ${color("purple100")};
     }
@@ -441,8 +443,10 @@ const ImageSetWrapper = styled(Box)`
   ${SlideshowTitle} {
     display: none;
   }
+
   ${SlideshowCta} {
     flex-direction: column;
+
     > div {
       padding: 0;
     }

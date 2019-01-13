@@ -4311,6 +4311,107 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
       </div>
     </div>
   </div>
+  <div
+    className="sc-gzVnrw dUpmT"
+  >
+    <div
+      className="Eoy2018Artists__RelatedArticleWrapper-apetgy-11 ilRGPE"
+    >
+      <div
+        className="sc-gzVnrw iHFmns"
+      >
+        <div
+          className="ArticleCards__ArticlesWrapper-s128ki95-0 heojko sc-gzVnrw bZYMlA"
+        >
+          <a
+            className="ArticleCard ArticleCard__ArticleCardContainer-nqsvxw-2 cVVhNQ"
+            color="#000"
+            href="artsy-editorial-people-defined-visual-culture-2018"
+            onClick={[Function]}
+          >
+            <div
+              className="sc-bdVaJa efLhNB"
+            >
+              <div
+                className="sc-bdVaJa snrKj"
+                width={
+                  Array [
+                    "100%",
+                    "100%",
+                    "50%",
+                    "50%",
+                  ]
+                }
+              >
+                <div>
+                  <div
+                    className="sc-htpNat KtFsv sc-bwzfXH juFwka"
+                    fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+                    fontSize={
+                      Array [
+                        "28px",
+                        "28px",
+                        "42px",
+                        "42px",
+                      ]
+                    }
+                  >
+                    The People Who Defined Visual Culture in 2018
+                  </div>
+                  <div
+                    className="sc-bxivhb bUZGRr sc-bwzfXH NsrUl"
+                    fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
+                    fontSize={
+                      Array [
+                        "18px",
+                        "18px",
+                        "22px",
+                        "22px",
+                      ]
+                    }
+                  >
+                    From Donald Glover and Hiro Murai to teamLab, Artsy’s editors select the people who had the biggest impact in changing the visual landscape this year.
+                  </div>
+                </div>
+                <div
+                  className="Date__DateContainer-s1u78l60-0 cqHYNi"
+                >
+                  <div
+                    className="sc-htpNat KtFsv sc-bwzfXH gBgzyb"
+                    fontFamily={
+                      Object {
+                        "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                        "fontWeight": 500,
+                      }
+                    }
+                    fontSize="14px"
+                  >
+                    Dec 19, 2018
+                  </div>
+                </div>
+              </div>
+              <div
+                className="ArticleCard__ImageContainer-nqsvxw-1 eORowf sc-gzVnrw ewzCdI"
+                width={
+                  Array [
+                    "100%",
+                    "100%",
+                    "50%",
+                    "50%",
+                  ]
+                }
+              >
+                <img
+                  className="ArticleCard__Image-nqsvxw-0 gLdaqP"
+                  src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fr3TUoJ9u8QhxGeWdjR4ccQ%252FVC-email-final.jpg&width=680&height=450&quality=95"
+                />
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 `;
 
