@@ -1,3 +1,12 @@
+# 10.0.1 (Sun Jan 13 2019)
+
+#### 🐛  Bug Fix
+
+- Fix Carousel arrows [#1871](https://github.com/artsy/reaction/pull/1871) ([@damassi](https://github.com/damassi))
+- EOY artists unit tests [#1846](https://github.com/artsy/reaction/pull/1846) ([@eessex](https://github.com/eessex))
+
+---
+
 # 10.0.0 (Sun Jan 13 2019)
 
 #### 💥  Breaking Change
