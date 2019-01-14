@@ -1,5 +1,4 @@
-import { Box, Flex, space } from "@artsy/palette"
-import { media } from "Components/Helpers"
+import { Box, Flex, media, space } from "@artsy/palette"
 import { BylineContainer } from "Components/Publishing/Byline/Byline"
 import React from "react"
 import styled from "styled-components"
