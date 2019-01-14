@@ -43,11 +43,8 @@ interface RejectState {
 }
 
 export class Reject extends Component<RejectProps, RejectState> {
-  state = {
+  state: RejectState = {
     isCommittingMutation: false,
-    isErrorModalOpen: false,
-    errorModalTitle: null,
-    errorModalMessage: null,
   }
 
   onSubmit: () => void = () => {

@@ -50,11 +50,8 @@ const logger = createLogger("Order/Routes/Review/index.tsx")
 
 @track()
 export class ReviewRoute extends Component<ReviewProps, ReviewState> {
-  state = {
+  state: ReviewState = {
     isSubmitting: false,
-    isErrorModalOpen: false,
-    errorModalMessage: null,
-    errorModalTitle: null,
   }
 
   constructor(props) {

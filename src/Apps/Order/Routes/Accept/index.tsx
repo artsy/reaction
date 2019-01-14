@@ -3,7 +3,7 @@ import { Accept_order } from "__generated__/Accept_order.graphql"
 import { Helper } from "Apps/Order/Components/Helper"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { track } from "Artsy/Analytics"
-import { RouteConfig, Router } from "found"
+import { Router } from "found"
 import React, { Component } from "react"
 import { HorizontalPadding } from "Utils/HorizontalPadding"
 import { Media } from "Utils/Responsive"
@@ -36,25 +36,19 @@ interface AcceptProps {
   order: Accept_order
   relay?: RelayProp
   router: Router
-  route: RouteConfig
   dialog: Dialog
 }
 
 interface AcceptState {
   isCommittingMutation: boolean
-  errorModalTitle: string
-  errorModalMessage: string
 }
 
 const logger = createLogger("Order/Routes/Offer/index.tsx")
 
 @track()
 export class Accept extends Component<AcceptProps, AcceptState> {
-  state = {
+  state: AcceptState = {
     isCommittingMutation: false,
-    isErrorModalOpen: false,
-    errorModalTitle: null,
-    errorModalMessage: null,
   }
 
   onSubmit: () => void = () => {
