@@ -1,3 +1,11 @@
+# 10.0.5 (Mon Jan 14 2019)
+
+#### 🐛  Bug Fix
+
+- Ensure artist insights flex container uses 100% of available space [#1877](https://github.com/artsy/reaction/pull/1877) ([@dblandin](https://github.com/dblandin))
+
+---
+
 # 10.0.4 (Mon Jan 14 2019)
 
 
