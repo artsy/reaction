@@ -36,12 +36,18 @@ jest.mock("react-stripe-elements", () => ({
   CardElement: ({ onReady, hidePostalCode, ...props }) => <div {...props} />,
   injectStripe: args => args,
 }))
+
 jest.unmock("react-tracking")
+jest.mock("Utils/Events", () => ({
+  postEvent: jest.fn(),
+}))
+const mockPostEvent = require("Utils/Events").postEvent as jest.Mock
+
 jest.mock("Apps/Order/Utils/trackPageView")
 
+import { ConnectedModalDialog } from "Apps/Order/Dialogs"
 import { trackPageView } from "Apps/Order/Utils/trackPageView"
-import { ErrorModal } from "Components/Modal/ErrorModal"
-import { ModalButton } from "Components/Modal/ModalDialog"
+import { ModalButton, ModalDialog } from "Components/Modal/ModalDialog"
 import { MockBoot } from "DevTools"
 import { commitMutation, RelayProp } from "react-relay"
 import { flushPromiseQueue } from "Utils/flushPromiseQueue"
@@ -74,11 +80,13 @@ describe("Payment", () => {
     return mount(
       <MockBoot breakpoint={breakpoint}>
         <PaymentRoute {...props} />
+        <ConnectedModalDialog />
       </MockBoot>
     )
   }
 
   beforeEach(() => {
+    mockPostEvent.mockReset()
     mutationMock.mockReset()
 
     stripeMock = {
@@ -302,7 +310,7 @@ describe("Payment", () => {
     expect(
       paymentRoute
         .update()
-        .find(ErrorModal)
+        .find(ModalDialog)
         .props().show
     ).toBe(true)
   })
@@ -364,21 +372,24 @@ describe("Payment", () => {
 
     const component = getWrapper(testProps)
 
-    expect(component.find(ErrorModal).props().show).toBe(false)
+    expect(component.find(ModalDialog).props().show).toBe(false)
 
     component.find(ContinueButton).simulate("click")
 
     await flushPromiseQueue()
     component.update()
 
-    expect(component.find(ErrorModal).props().show).toBe(true)
-    expect(component.find(ErrorModal).props().detailText).toBe(
+    expect(component.find(ModalDialog).props().show).toBe(true)
+    expect(component.find(ModalDialog).text()).toContain(
       "No such token: fake-token"
     )
 
     component.find(ModalButton).simulate("click")
 
-    expect(component.find(ErrorModal).props().show).toBe(false)
+    await flushPromiseQueue()
+    component.update()
+
+    expect(component.find(ModalDialog).props().show).toBe(false)
   })
 
   it("shows an error modal when there is an error in SetOrderPaymentPayload", async () => {
@@ -401,7 +412,7 @@ describe("Payment", () => {
     await flushPromiseQueue()
     component.update()
 
-    expect(component.find(ErrorModal).props().show).toBe(true)
+    expect(component.find(ModalDialog).props().show).toBe(true)
   })
 
   it("shows an error modal when there is a network error", async () => {
@@ -420,34 +431,33 @@ describe("Payment", () => {
     await flushPromiseQueue()
     component.update()
 
-    expect(component.find(ErrorModal).props().show).toBe(true)
+    expect(component.find(ModalDialog).props().show).toBe(true)
   })
 
   describe("Analytics", () => {
     it("tracks click when use shipping address checkbox transitions from checked to unchecked but not from unchecked to checked", () => {
-      const { Component, dispatch } = mockTracking(PaymentRoute)
-      const component = mount(<Component {...testProps as any} />)
+      const component = getWrapper(testProps)
       // Initial state is checked
       component
         .find(Checkbox)
         .at(0)
         .simulate("click")
-      expect(dispatch).toBeCalledWith({
+      expect(mockPostEvent).toBeCalledWith({
         action_type: "Click",
         subject: "use shipping address",
         flow: "buy now",
         type: "checkbox",
       })
-      expect(dispatch).toHaveBeenCalledTimes(1)
+      expect(mockPostEvent).toHaveBeenCalledTimes(1)
 
-      dispatch.mockClear()
+      mockPostEvent.mockClear()
 
       // State is now unchecked
       component
         .find(Checkbox)
         .at(0)
         .simulate("click")
-      expect(dispatch).not.toBeCalled()
+      expect(mockPostEvent).not.toBeCalled()
     })
   })
 
