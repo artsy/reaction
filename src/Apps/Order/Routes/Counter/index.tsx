@@ -12,10 +12,10 @@ import {
 import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "Apps/Order/Components/ShippingSummaryItem"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
+import { Dialog, injectDialog } from "Apps/Order/Dialogs"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ErrorModal } from "Components/Modal/ErrorModal"
 import { CountdownTimer } from "Components/v2/CountdownTimer"
 import { Router } from "found"
 import React, { Component } from "react"
@@ -35,13 +35,11 @@ export interface CounterProps {
   order: Counter_order
   relay?: RelayProp
   router: Router
+  dialog: Dialog
 }
 
 export interface CounterState {
   isCommittingMutation: boolean
-  isErrorModalOpen: boolean
-  errorModalTitle: string
-  errorModalMessage: string
 }
 
 const logger = createLogger("Order/Routes/Counter/index.tsx")
@@ -50,9 +48,6 @@ const logger = createLogger("Order/Routes/Counter/index.tsx")
 export class CounterRoute extends Component<CounterProps, CounterState> {
   state: CounterState = {
     isCommittingMutation: false,
-    isErrorModalOpen: false,
-    errorModalTitle: null,
-    errorModalMessage: null,
   }
 
   constructor(props: CounterProps) {
@@ -102,13 +97,11 @@ export class CounterRoute extends Component<CounterProps, CounterState> {
     })
   }
 
-  onMutationError(errors, errorModalTitle?, errorModalMessage?) {
+  onMutationError(errors, title?, message?) {
     logger.error(errors)
+    this.props.dialog.showErrorDialog({ message, title })
     this.setState({
       isCommittingMutation: false,
-      isErrorModalOpen: true,
-      errorModalTitle,
-      errorModalMessage,
     })
   }
 
@@ -138,10 +131,6 @@ export class CounterRoute extends Component<CounterProps, CounterState> {
   onSuccessfulSubmit() {
     this.setState({ isCommittingMutation: false })
     this.props.router.push(`/orders/${this.props.order.id}/status`)
-  }
-
-  onCloseModal = () => {
-    this.setState({ isErrorModalOpen: false })
   }
 
   onChangeResponse = () => {
@@ -240,21 +229,13 @@ export class CounterRoute extends Component<CounterProps, CounterState> {
             }
           />
         </HorizontalPadding>
-
-        <ErrorModal
-          onClose={this.onCloseModal}
-          show={this.state.isErrorModalOpen}
-          contactEmail="orders@artsy.net"
-          detailText={this.state.errorModalMessage}
-          headerText={this.state.errorModalTitle}
-        />
       </>
     )
   }
 }
 
-export const CounterFragmentContainer = createFragmentContainer<CounterProps>(
-  trackPageViewWrapper(CounterRoute),
+export const CounterFragmentContainer = createFragmentContainer(
+  trackPageViewWrapper(injectDialog(CounterRoute)),
   graphql`
     fragment Counter_order on Order {
       id
