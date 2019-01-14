@@ -153,6 +153,7 @@ describe("ArtworkSidebarBidAction", () => {
       )
       const wrapper = await getWrapper(artwork)
 
+      expect(wrapper.text()).toContain("Registration closed")
       expect(wrapper.text()).toContain("Watch live bidding")
     })
 
