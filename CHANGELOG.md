@@ -1,3 +1,11 @@
+# 10.0.3 (Mon Jan 14 2019)
+
+#### 🐛  Bug Fix
+
+- Remove react-styled-flexboxgrid from feature split header [#1876](https://github.com/artsy/reaction/pull/1876) ([@eessex](https://github.com/eessex))
+
+---
+
 # 10.0.2 (Mon Jan 14 2019)
 
 #### 🐛  Bug Fix
