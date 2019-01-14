@@ -7,7 +7,6 @@ import { Helper } from "Apps/Order/Components/Helper"
 
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
-import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
 import React, { Component } from "react"
 
@@ -24,6 +23,7 @@ import {
   OrderStepper,
 } from "Apps/Order/Components/OrderStepper"
 
+import { Dialog, injectDialog } from "Apps/Order/Dialogs"
 import {
   commitMutation,
   createFragmentContainer,
@@ -35,13 +35,11 @@ interface RejectProps {
   order: Reject_order
   relay?: RelayProp
   router: Router
+  dialog: Dialog
 }
 
 interface RejectState {
   isCommittingMutation: boolean
-  isErrorModalOpen: boolean
-  errorModalTitle: string
-  errorModalMessage: string
 }
 
 export class Reject extends Component<RejectProps, RejectState> {
@@ -108,23 +106,17 @@ export class Reject extends Component<RejectProps, RejectState> {
     })
   }
 
-  onMutationError(error, errorModalTitle?, errorModalMessage?) {
+  onMutationError(error, title?, message?) {
     logger.error(error)
+    this.props.dialog.showErrorDialog({ title, message })
     this.setState({
       isCommittingMutation: false,
-      isErrorModalOpen: true,
-      errorModalTitle,
-      errorModalMessage,
     })
   }
 
   onChangeResponse = () => {
     const { order } = this.props
     this.props.router.push(`/orders/${order.id}/respond`)
-  }
-
-  onCloseModal = () => {
-    this.setState({ isErrorModalOpen: false })
   }
 
   render() {
@@ -222,20 +214,13 @@ export class Reject extends Component<RejectProps, RejectState> {
             }
           />
         </HorizontalPadding>
-        <ErrorModal
-          onClose={this.onCloseModal}
-          show={this.state.isErrorModalOpen}
-          contactEmail="orders@artsy.net"
-          detailText={this.state.errorModalMessage}
-          headerText={this.state.errorModalTitle}
-        />
       </>
     )
   }
 }
 
 export const RejectFragmentContainer = createFragmentContainer(
-  trackPageViewWrapper(Reject),
+  trackPageViewWrapper(injectDialog(Reject)),
   graphql`
     fragment Reject_order on Order {
       id

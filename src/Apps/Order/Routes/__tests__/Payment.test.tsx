@@ -1,5 +1,4 @@
 import { Button, Checkbox, CheckboxProps } from "@artsy/palette"
-import { mockTracking } from "Artsy/Analytics"
 import { mount } from "enzyme"
 import React from "react"
 
