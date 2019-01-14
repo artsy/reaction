@@ -1,3 +1,11 @@
+# 10.0.2 (Mon Jan 14 2019)
+
+#### 🐛  Bug Fix
+
+- Incremental relay mocking fixes [#1854](https://github.com/artsy/reaction/pull/1854) ([@ds300](https://github.com/ds300))
+
+---
+
 # 10.0.1 (Sun Jan 13 2019)
 
 #### 🐛  Bug Fix
