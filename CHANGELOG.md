@@ -1,3 +1,11 @@
+# 10.0.6 (Mon Jan 14 2019)
+
+#### 🐛  Bug Fix
+
+- Refactor error modals [#1875](https://github.com/artsy/reaction/pull/1875) ([@ds300](https://github.com/ds300))
+
+---
+
 # 10.0.5 (Mon Jan 14 2019)
 
 #### 🐛  Bug Fix
