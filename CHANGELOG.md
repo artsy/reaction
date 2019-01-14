@@ -1,3 +1,11 @@
+# 10.0.7 (Mon Jan 14 2019)
+
+#### 🐛  Bug Fix
+
+- add information about closed registration for live auctions if the user is not registered [#1878](https://github.com/artsy/reaction/pull/1878) ([@oxaudo](https://github.com/oxaudo))
+
+---
+
 # 10.0.6 (Mon Jan 14 2019)
 
 #### 🐛  Bug Fix
