@@ -3,7 +3,7 @@ import { Accept_order } from "__generated__/Accept_order.graphql"
 import { Helper } from "Apps/Order/Components/Helper"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { track } from "Artsy/Analytics"
-import { RouteConfig, Router } from "found"
+import { Router } from "found"
 import React, { Component } from "react"
 import { HorizontalPadding } from "Utils/HorizontalPadding"
 import { Media } from "Utils/Responsive"
@@ -23,8 +23,8 @@ import { AcceptOfferMutation } from "__generated__/AcceptOfferMutation.graphql"
 import { ConditionsOfSaleDisclaimer } from "Apps/Order/Components/ConditionsOfSaleDisclaimer"
 import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "Apps/Order/Components/ShippingSummaryItem"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
+import { Dialog, injectDialog } from "Apps/Order/Dialogs"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
-import { ErrorModal } from "Components/Modal/ErrorModal"
 import { CountdownTimer } from "Components/v2/CountdownTimer"
 import { ErrorWithMetadata } from "Utils/errors"
 import { get } from "Utils/get"
@@ -36,25 +36,19 @@ interface AcceptProps {
   order: Accept_order
   relay?: RelayProp
   router: Router
-  route: RouteConfig
+  dialog: Dialog
 }
 
 interface AcceptState {
   isCommittingMutation: boolean
-  isErrorModalOpen: boolean
-  errorModalTitle: string
-  errorModalMessage: string
 }
 
 const logger = createLogger("Order/Routes/Offer/index.tsx")
 
 @track()
 export class Accept extends Component<AcceptProps, AcceptState> {
-  state = {
+  state: AcceptState = {
     isCommittingMutation: false,
-    isErrorModalOpen: false,
-    errorModalTitle: null,
-    errorModalMessage: null,
   }
 
   onSubmit: () => void = () => {
@@ -129,23 +123,17 @@ export class Accept extends Component<AcceptProps, AcceptState> {
     this.props.router.push(`/orders/${this.props.order.id}/status`)
   }
 
-  onMutationError(error, errorModalTitle?, errorModalMessage?) {
+  onMutationError(error, title?, message?) {
     logger.error(error)
+    this.props.dialog.showErrorDialog({ title, message })
     this.setState({
       isCommittingMutation: false,
-      isErrorModalOpen: true,
-      errorModalTitle,
-      errorModalMessage,
     })
   }
 
   onChangeResponse = () => {
     const { order } = this.props
     this.props.router.push(`/orders/${order.id}/respond`)
-  }
-
-  onCloseModal = () => {
-    this.setState({ isErrorModalOpen: false })
   }
 
   render() {
@@ -246,20 +234,13 @@ export class Accept extends Component<AcceptProps, AcceptState> {
             }
           />
         </HorizontalPadding>
-        <ErrorModal
-          onClose={this.onCloseModal}
-          show={this.state.isErrorModalOpen}
-          contactEmail="orders@artsy.net"
-          detailText={this.state.errorModalMessage}
-          headerText={this.state.errorModalTitle}
-        />
       </>
     )
   }
 }
 
 export const AcceptFragmentContainer = createFragmentContainer(
-  trackPageViewWrapper(Accept),
+  injectDialog(trackPageViewWrapper(Accept)),
   graphql`
     fragment Accept_order on Order {
       id
