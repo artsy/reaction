@@ -4,6 +4,7 @@ import {
   Flex,
   HelpIcon,
   LargeSelect,
+  Sans,
   Separator,
   Serif,
   Spacer,
@@ -127,15 +128,23 @@ export class ArtworkSidebarBidAction extends React.Component<
         <ContextConsumer>
           {({ user }) => {
             return (
-              <Button
-                width="100%"
-                size="large"
-                onClick={() => this.redirectToLiveBidding(user)}
-              >
-                {artwork.sale.is_registration_closed && !registeredToBid
-                  ? "Watch live bidding"
-                  : "Enter live bidding"}
-              </Button>
+              <Box>
+                {artwork.sale.is_registration_closed &&
+                  !registeredToBid && (
+                    <Sans size="2" color="black60" pb={1} textAlign="center">
+                      Registration closed
+                    </Sans>
+                  )}
+                <Button
+                  width="100%"
+                  size="large"
+                  onClick={() => this.redirectToLiveBidding(user)}
+                >
+                  {artwork.sale.is_registration_closed && !registeredToBid
+                    ? "Watch live bidding"
+                    : "Enter live bidding"}
+                </Button>
+              </Box>
             )
           }}
         </ContextConsumer>
