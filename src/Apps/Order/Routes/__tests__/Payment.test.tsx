@@ -7,7 +7,7 @@ import { Collapse } from "@artsy/palette"
 import {
   BuyOrderPickup,
   BuyOrderWithShippingDetails,
-  UntouchedOfferOrder,
+  OfferOrderWithShippingDetails,
 } from "Apps/__tests__/Fixtures/Order"
 import {
   fillCountrySelect,
@@ -552,8 +552,7 @@ describe("Payment", () => {
   describe("Offer-mode orders", () => {
     it("shows an active offer stepper if the order is an Offer Order", () => {
       const offerOrder = {
-        ...BuyOrderWithShippingDetails,
-        ...UntouchedOfferOrder,
+        ...OfferOrderWithShippingDetails,
       }
       const component = getWrapper({ ...testProps, order: offerOrder })
       expect(component.find(ActiveTabContainer).text()).toEqual("Payment")

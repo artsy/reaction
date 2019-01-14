@@ -3,8 +3,8 @@ import React from "react"
 
 import { Button } from "@artsy/palette"
 import {
+  BuyOrderWithShippingDetails,
   OfferOrderWithShippingDetails,
-  UntouchedBuyOrder,
 } from "Apps/__tests__/Fixtures/Order"
 import { CreditCardSummaryItemFragmentContainer } from "Apps/Order/Components/CreditCardSummaryItem"
 import { ShippingSummaryItemFragmentContainer } from "Apps/Order/Components/ShippingSummaryItem"
@@ -33,7 +33,7 @@ jest.mock("react-relay", () => ({
 
 const pushMock = jest.fn()
 const defaultProps = {
-  order: { ...UntouchedBuyOrder, id: "1234" },
+  order: { ...BuyOrderWithShippingDetails, id: "1234" },
   router: {
     push: pushMock,
   },

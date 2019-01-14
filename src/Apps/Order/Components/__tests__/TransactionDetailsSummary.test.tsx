@@ -1,8 +1,8 @@
 import {
   mockResolver,
+  OfferOrderWithOffers,
   OfferWithTotals,
   UntouchedBuyOrder,
-  UntouchedOfferOrder,
 } from "Apps/__tests__/Fixtures/Order"
 import { renderRelayTree } from "DevTools"
 import React from "react"
@@ -23,7 +23,7 @@ const transactionSummaryBuyOrder = {
 }
 
 const transactionSummaryOfferOrder = {
-  ...UntouchedOfferOrder,
+  ...OfferOrderWithOffers,
   shippingTotal: "$12.00",
   shippingTotalCents: "1200",
   taxTotal: "$3.25",

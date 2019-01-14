@@ -12,7 +12,10 @@ import {
   RecordSource,
   Store,
 } from "relay-runtime"
-import { createMockNetworkLayer } from "./createMockNetworkLayer"
+import {
+  createMockNetworkLayer,
+  createMockNetworkLayer2,
+} from "./createMockNetworkLayer"
 
 export interface MockRelayRendererProps<
   T extends OperationBase = OperationDefaults
@@ -20,7 +23,26 @@ export interface MockRelayRendererProps<
   Component: RelayContainer<T["response"]>
   variables?: T["variables"]
   query: GraphQLTaggedNode
-  mockResolvers: IMocks
+  /**
+   * @deprecated use mockData and mockMutationResults
+   */
+  mockResolvers?: IMocks
+  /**
+   * @example
+   * mockData={{order: {id: "my-order-id", lineItems: {...}}}}
+   */
+  mockData?: object
+  /**
+   * @example
+   * mockMutationResults={{
+   *   ecommerceCreateOrderWithArtworkId: {
+   *     orderOrError: {
+   *       order: {id: "my-order-id"}
+   *     }
+   *   }
+   * }}
+   */
+  mockMutationResults?: object
 }
 
 export interface MockRelayRendererState {
@@ -51,6 +73,7 @@ export interface MockRelayRendererState {
  * The root GraphQL query.
  *
  * @param params.mockResolvers
+ * @deprecated use params.mockData and params.mockMutationResults
  * A list of types/fields, that are part of metaphysics’ schema, and the data to
  * return for those. See {@link https://www.apollographql.com/docs/graphql-tools/mocking.html#Customizing-mocks}
  *
@@ -103,8 +126,10 @@ export interface MockRelayRendererState {
      }, 10)
    })
    ```
- *
- */
+  * @param params.mockMutationResults
+  * @param params.mockData
+  *
+  */
 export class MockRelayRenderer<
   T extends OperationBase = OperationDefaults
 > extends React.Component<MockRelayRendererProps<T>, MockRelayRendererState> {
@@ -136,12 +161,30 @@ export class MockRelayRenderer<
       return `Error occurred while rendering Relay component: ${error}`
     }
 
-    const { Component, variables, query, mockResolvers } = this.props
+    const {
+      Component,
+      variables,
+      query,
+      mockResolvers,
+      mockData,
+      mockMutationResults,
+    } = this.props
 
-    const network = createMockNetworkLayer({
-      Query: () => ({}),
-      ...mockResolvers,
-    })
+    if ((mockData || mockMutationResults) && mockResolvers) {
+      throw new Error(
+        "You cannot use mockResolvers with either mockData or mockMutationResults"
+      )
+    }
+    if (!mockData && !mockResolvers && !mockMutationResults) {
+      throw new Error("You must supply mockData and/or mockMutationResults")
+    }
+
+    const network = mockData
+      ? createMockNetworkLayer2(mockData, mockMutationResults)
+      : createMockNetworkLayer({
+          Query: () => ({}),
+          ...mockResolvers,
+        })
     const source = new RecordSource()
     const store = new Store(source)
     const environment = new Environment({

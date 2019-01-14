@@ -103,6 +103,8 @@ export function renderRelayTree<
     Component,
     query,
     mockResolvers,
+    mockData,
+    mockMutationResults,
     renderUntil: renderUntilPredicate,
     variables,
     wrapper,
@@ -113,6 +115,8 @@ export function renderRelayTree<
       mockResolvers={mockResolvers}
       query={query}
       variables={variables}
+      mockData={mockData}
+      mockMutationResults={mockMutationResults}
     />
   )
   return mount<C, P, S>(wrapper ? wrapper(renderer) : renderer).renderUntil(

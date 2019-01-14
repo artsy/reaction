@@ -1,6 +1,9 @@
 import { RouterConfig } from "Artsy/Router"
 import { buildClientApp } from "Artsy/Router/buildClientApp"
-import { createMockNetworkLayer } from "DevTools/createMockNetworkLayer"
+import {
+  createMockNetworkLayer,
+  createMockNetworkLayer2,
+} from "DevTools/createMockNetworkLayer"
 import { HistoryOptions } from "farce"
 import { RouteConfig } from "found"
 import { IMocks } from "graphql-tools/dist/Interfaces"
@@ -15,6 +18,8 @@ interface Props {
   initialState?: object
   historyOptions?: HistoryOptions
   mockResolvers?: IMocks
+  mockData?: object
+  mockMutationResults?: object
   context?: RouterConfig["context"]
 }
 
@@ -34,11 +39,19 @@ export class MockRouter extends React.Component<Props> {
       historyOptions,
       initialMatchingMediaQueries,
       mockResolvers,
+      mockData,
+      mockMutationResults,
       context,
     } = this.props
 
     try {
       const user = getUser(context && context.user)
+
+      const relayNetwork = mockResolvers
+        ? createMockNetworkLayer(mockResolvers)
+        : mockData || mockMutationResults
+          ? createMockNetworkLayer2(mockData, mockMutationResults)
+          : undefined
 
       const { ClientApp } = await buildClientApp({
         routes,
@@ -51,7 +64,7 @@ export class MockRouter extends React.Component<Props> {
           ...context,
           user,
           initialMatchingMediaQueries,
-          relayNetwork: mockResolvers && createMockNetworkLayer(mockResolvers),
+          relayNetwork,
         },
       })
 
