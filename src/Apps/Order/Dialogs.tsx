@@ -56,6 +56,10 @@ export class DialogContainer extends Container<DialogState> {
     })
   }
 
+  /**
+   * returns a promise that resolves to `true` if the user clicked the
+   * continue button, and `false` if the modal was dismissed through other means.
+   */
   showErrorDialog = ({
     title = "An error occurred",
     supportEmail = "orders@artsy.net",
@@ -71,11 +75,16 @@ export class DialogContainer extends Container<DialogState> {
     message?: React.ReactNode
     supportEmail?: string
     continueButtonText?: string
-  }): Promise<void> => {
-    return new Promise<void>(resolve => {
+  }): Promise<boolean> => {
+    return new Promise<boolean>(resolve => {
       const onContinue = () => {
         this.hide()
-        resolve()
+        resolve(true)
+      }
+
+      const onDismiss = () => {
+        this.hide()
+        resolve(false)
       }
 
       this.show({
@@ -87,9 +96,9 @@ export class DialogContainer extends Container<DialogState> {
             text: continueButtonText,
             action: onContinue,
           },
-          onClose: onContinue,
+          onClose: onDismiss,
         },
-        onForceClose: onContinue,
+        onForceClose: onDismiss,
       })
     })
   }

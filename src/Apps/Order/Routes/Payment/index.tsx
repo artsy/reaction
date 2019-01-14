@@ -24,7 +24,6 @@ import { validateAddress } from "Apps/Order/Utils/formValidators"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
 import React, { Component } from "react"
 import {
@@ -50,6 +49,7 @@ import {
   Serif,
   Spacer,
 } from "@artsy/palette"
+import { Dialog, injectDialog } from "Apps/Order/Dialogs"
 
 export const ContinueButton = props => (
   <Button size="large" width="100%" {...props}>
@@ -61,6 +61,7 @@ export interface PaymentProps extends ReactStripeElements.InjectedStripeProps {
   order: Payment_order
   relay?: RelayRefetchProp
   router: Router
+  dialog: Dialog
 }
 
 interface PaymentState {
@@ -70,8 +71,6 @@ interface PaymentState {
   addressTouched: AddressTouched
   stripeError: stripe.Error
   isCommittingMutation: boolean
-  isErrorModalOpen: boolean
-  errorModalMessage: string
 }
 
 const logger = createLogger("Order/Routes/Payment/index.tsx")
@@ -82,8 +81,6 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
     hideBillingAddress: true,
     stripeError: null,
     isCommittingMutation: false,
-    isErrorModalOpen: false,
-    errorModalMessage: null,
     address: this.startingAddress(),
     addressErrors: {},
     addressTouched: {},
@@ -182,10 +179,6 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
     })
   }
 
-  onCloseModal = () => {
-    this.setState({ isErrorModalOpen: false })
-  }
-
   render() {
     const { order } = this.props
     const {
@@ -280,13 +273,6 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
             }
           />
         </HorizontalPadding>
-
-        <ErrorModal
-          onClose={this.onCloseModal}
-          show={this.state.isErrorModalOpen}
-          contactEmail="orders@artsy.net"
-          detailText={this.state.errorModalMessage}
-        />
       </>
     )
   }
@@ -436,13 +422,10 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
     )
   }
 
-  private onMutationError(error, errorModalMessage?) {
+  private onMutationError(error, message?) {
     logger.error(error)
-    this.setState({
-      isCommittingMutation: false,
-      isErrorModalOpen: true,
-      errorModalMessage,
-    })
+    this.props.dialog.showErrorDialog({ message })
+    this.setState({ isCommittingMutation: false })
   }
 
   private isPickup = () => {
@@ -455,7 +438,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
 }
 
 export const PaymentFragmentContainer = createFragmentContainer(
-  injectStripe(trackPageViewWrapper(PaymentRoute)),
+  injectStripe(trackPageViewWrapper(injectDialog(PaymentRoute))),
   graphql`
     fragment Payment_order on Order {
       id
