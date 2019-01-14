@@ -2,12 +2,12 @@ import { Separator } from "@artsy/palette"
 import { Box, Flex } from "@artsy/palette"
 import React from "react"
 import { LazyLoadComponent } from "react-lazy-load-image-component"
-import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
+import { HorizontalPadding } from "Utils/HorizontalPadding"
 
 import {
   Footer,
   RecentlyViewedQueryRenderer as RecentlyViewed,
-} from "Styleguide/Components"
+} from "Components/v2"
 
 export interface Props {
   name?: string

@@ -6,22 +6,25 @@ injectGlobal`
   .fade-wait-leave {
     opacity: 1;
   }
+
   .fade-wait-leave.fade-wait-leave-active {
     opacity: 0;
-    transition: opacity .4s ease-in;
+    transition: opacity 0.4s ease-in;
   }
 
   .fade-wait-enter {
     opacity: 0;
   }
+
   .fade-wait-enter.fade-wait-enter-active {
     opacity: 1;
+    
     /* Delay the enter animation until the leave completes */
-    transition: opacity .4s ease-in .6s;
+    transition: opacity 0.4s ease-in 0.6s;
   }
 
   .fade-wait-height {
-    transition: height .6s ease-in-out;
+    transition: height 0.6s ease-in-out;
   }
 `
 

@@ -2,7 +2,7 @@ import { Button, color, Serif, Spacer } from "@artsy/palette"
 import { garamond } from "Assets/Fonts"
 import React from "react"
 import styled from "styled-components"
-import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
+import { HorizontalPadding } from "Utils/HorizontalPadding"
 
 interface ErrorPageProps {
   code: number
@@ -65,7 +65,7 @@ const ErrorInner = styled.div`
   max-height: 115px;
   max-width: 75%;
   font-family: "Menlo", "Monaco", "Andale Mono", "lucida console", "Courier New",
-    "monospace";
+    monospace;
   overflow-x: auto;
   padding: 5px 9px;
   text-align: left;
@@ -82,7 +82,7 @@ const ErrorCodeBackground = styled<ErrorCodeBackgroundProps, any>("div")`
   left: 50%;
   transform: translate(-50%, -50%);
 
-  &:before {
+  &::before {
     content: "${(props: ErrorCodeBackgroundProps) => `${props.code}`}";
     display: block;
     position: absolute;

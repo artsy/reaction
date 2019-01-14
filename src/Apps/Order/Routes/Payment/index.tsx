@@ -1,4 +1,3 @@
-import { Button, Checkbox, Flex, Join, Serif, Spacer } from "@artsy/palette"
 import { Payment_order } from "__generated__/Payment_order.graphql"
 import { PaymentRouteCreateCreditCardMutation } from "__generated__/PaymentRouteCreateCreditCardMutation.graphql"
 import { PaymentRouteSetOrderPaymentMutation } from "__generated__/PaymentRouteSetOrderPaymentMutation.graphql"
@@ -11,15 +10,20 @@ import {
   emptyAddress,
 } from "Apps/Order/Components/AddressForm"
 
+import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
 import { CreditCardInput } from "Apps/Order/Components/CreditCardInput"
 import { Helper } from "Apps/Order/Components/Helper"
-import { OrderStepper } from "Apps/Order/Components/OrderStepper"
-import { TransactionSummaryFragmentContainer as TransactionSummary } from "Apps/Order/Components/TransactionSummary"
+import {
+  buyNowFlowSteps,
+  offerFlowSteps,
+  OrderStepper,
+} from "Apps/Order/Components/OrderStepper"
+import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { validateAddress } from "Apps/Order/Utils/formValidators"
+import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
 import React, { Component } from "react"
@@ -30,11 +34,22 @@ import {
   RelayRefetchProp,
 } from "react-relay"
 import { injectStripe, ReactStripeElements } from "react-stripe-elements"
-import { Collapse } from "Styleguide/Components"
-import { Col, Row } from "Styleguide/Elements/Grid"
-import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
+import { ErrorWithMetadata } from "Utils/errors"
+import { HorizontalPadding } from "Utils/HorizontalPadding"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
+
+import {
+  Button,
+  Checkbox,
+  Col,
+  Collapse,
+  Flex,
+  Join,
+  Row,
+  Serif,
+  Spacer,
+} from "@artsy/palette"
 
 export const ContinueButton = props => (
   <Button size="large" width="100%" {...props}>
@@ -43,7 +58,6 @@ export const ContinueButton = props => (
 )
 
 export interface PaymentProps extends ReactStripeElements.InjectedStripeProps {
-  mediator: Mediator
   order: Payment_order
   relay?: RelayRefetchProp
   router: Router
@@ -73,10 +87,6 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
     address: this.startingAddress(),
     addressErrors: {},
     addressTouched: {},
-  }
-
-  componentDidMount() {
-    this.props.mediator.trigger("order:payment")
   }
 
   startingAddress(): Address {
@@ -126,6 +136,9 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
           } else {
             this.createCreditCard({ token: token.id, oneTimeUse: true })
           }
+        })
+        .catch(e => {
+          this.onMutationError(new ErrorWithMetadata(e))
         })
     })
   }
@@ -190,7 +203,9 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
             <Col>
               <OrderStepper
                 currentStep="Payment"
-                offerFlow={order.mode === "OFFER"}
+                steps={
+                  order.mode === "OFFER" ? offerFlowSteps : buyNowFlowSteps
+                }
               />
             </Col>
           </Row>
@@ -205,7 +220,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
               >
                 <Join separator={<Spacer mb={3} />}>
                   <Flex flexDirection="column">
-                    <Serif mb={1} size="3t" color="black100" lineHeight={18}>
+                    <Serif mb={1} size="3t" color="black100" lineHeight="1.1em">
                       Credit card
                     </Serif>
                     <CreditCardInput
@@ -241,12 +256,15 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
                     />
                   </Media>
                 </Join>
-                <Spacer mb={3} />
               </Flex>
             }
             Sidebar={
               <Flex flexDirection="column">
-                <TransactionSummary order={order} mb={[2, 3]} />
+                <Flex flexDirection="column">
+                  <ArtworkSummaryItem order={order} />
+                  <TransactionDetailsSummaryItem order={order} />
+                </Flex>
+                <Spacer mb={[2, 3]} />
                 <Helper artworkId={order.lineItems.edges[0].node.artwork.id} />
                 <Media at="xs">
                   <>
@@ -255,6 +273,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
                       onClick={this.onContinue}
                       loading={isCommittingMutation}
                     />
+                    <Spacer mb={2} />
                   </>
                 </Media>
               </Flex>
@@ -310,11 +329,15 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
               creditCardId: creditCardOrError.creditCard.id,
             })
           } else {
-            this.onMutationError(
-              errors || creditCardOrError.mutationError,
-              creditCardOrError.mutationError &&
-                creditCardOrError.mutationError.detail
-            )
+            if (errors) {
+              errors.forEach(this.onMutationError.bind(this))
+            } else {
+              const mutationError = creditCardOrError.mutationError
+              this.onMutationError(
+                new ErrorWithMetadata(mutationError.message, mutationError),
+                mutationError.detail
+              )
+            }
           }
         },
         onError: this.onMutationError.bind(this),
@@ -361,7 +384,14 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
           if (orderOrError.order) {
             this.props.router.push(`/orders/${this.props.order.id}/review`)
           } else {
-            this.onMutationError(errors || orderOrError)
+            if (errors) {
+              errors.forEach(this.onMutationError.bind(this))
+            } else {
+              const orderError = orderOrError.error
+              this.onMutationError(
+                new ErrorWithMetadata(orderError.code, orderError)
+              )
+            }
           }
         },
         onError: this.onMutationError.bind(this),
@@ -406,8 +436,8 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
     )
   }
 
-  private onMutationError(errors, errorModalMessage?) {
-    logger.error(errors)
+  private onMutationError(error, errorModalMessage?) {
+    logger.error(error)
     this.setState({
       isCommittingMutation: false,
       isErrorModalOpen: true,
@@ -424,16 +454,8 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
   }
 }
 
-const PaymentRouteWrapper = props => (
-  <ContextConsumer>
-    {({ mediator }) => {
-      return <PaymentRoute {...props} mediator={mediator} />
-    }}
-  </ContextConsumer>
-)
-
 export const PaymentFragmentContainer = createFragmentContainer(
-  injectStripe(PaymentRouteWrapper),
+  injectStripe(trackPageViewWrapper(PaymentRoute)),
   graphql`
     fragment Payment_order on Order {
       id
@@ -471,7 +493,8 @@ export const PaymentFragmentContainer = createFragmentContainer(
           }
         }
       }
-      ...TransactionSummary_order
+      ...ArtworkSummaryItem_order
+      ...TransactionDetailsSummaryItem_order
     }
   `
 )

@@ -1,7 +1,7 @@
 import { Box, Button, Sans, Spacer } from "@artsy/palette"
+import { MobileTopBar } from "Components/v2"
 import React, { SFC } from "react"
 import styled from "styled-components"
-import { MobileTopBar } from "Styleguide/Components"
 import { Subscribe } from "unstated"
 import { FilterState } from "../FilterState"
 
@@ -51,6 +51,7 @@ export const MobileActionSheet: SFC<MobileActionSheet> = ({
 
 const Container = styled(Box)`
   position: fixed;
+
   /* The z-index after Force's mobile top-nav header */
   z-index: 971;
   top: 0;

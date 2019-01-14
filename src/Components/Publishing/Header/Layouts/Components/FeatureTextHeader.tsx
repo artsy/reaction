@@ -69,7 +69,9 @@ const TextHeaderContainer = styled.div.attrs<{ isEditing?: boolean }>({})`
     props.isEditing &&
     `
     margin-top: 0;
-  `} ${Title} {
+  `};
+
+  ${Title} {
     margin-bottom: 150px;
   }
 

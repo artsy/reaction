@@ -1,8 +1,9 @@
-import { Sans } from "@artsy/palette"
+import { color, Sans } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
-import { getEditorialHref } from "../Constants"
-import { ArticleData } from "../Typings"
+
+import { getEditorialHref } from "Components/Publishing/Constants"
+import { ArticleData } from "Components/Publishing/Typings"
 
 interface Props {
   article?: ArticleData
@@ -12,24 +13,19 @@ interface Props {
 }
 
 export const VerticalOrSeriesTitle: React.SFC<Props> = props => {
-  const { article, color, prefix } = props
-  const { layout, hero_section, seriesArticle } = article
+  const { article, prefix } = props
+  const { seriesArticle } = article
   const vertical = props.vertical
     ? props.vertical
     : article.vertical && article.vertical.name
-  const hasSeries =
-    (layout === "feature" &&
-      hero_section &&
-      hero_section.type === "fullscreen") ||
-    layout === "video"
 
   const seriesLink =
     seriesArticle && getEditorialHref("series", seriesArticle.slug)
 
   return (
-    <Vertical size="3t" weight="medium" color={color}>
+    <Vertical size="3" weight="medium" color={props.color}>
       {prefix}
-      {seriesArticle && hasSeries ? (
+      {seriesArticle ? (
         <a href={seriesLink}>{seriesArticle.title}</a>
       ) : (
         <span>{vertical}</span>
@@ -40,7 +36,11 @@ export const VerticalOrSeriesTitle: React.SFC<Props> = props => {
 
 export const Vertical = styled(Sans)`
   a {
-    color: ${props => props.color || "black"};
+    color: ${props => props.color};
     text-decoration: none;
   }
 `
+
+VerticalOrSeriesTitle.defaultProps = {
+  color: color("black100"),
+}

@@ -8,6 +8,7 @@ export interface State {
   for_sale?: boolean
   page?: number
   sort?: string
+  offerable?: boolean
   acquireable?: boolean
   at_auction?: boolean
   inquireable_only?: boolean
@@ -26,6 +27,7 @@ export const initialState = {
   partner_id: null,
   sort: "-decayed_merch",
   acquireable: null,
+  offerable: null,
   at_auction: null,
   inquireable_only: null,
   price_range: "*-*",
@@ -60,6 +62,7 @@ export class FilterState extends Container<State> {
             break
           case "for_sale":
           case "acquireable":
+          case "offerable":
           case "at_auction":
           case "inquireable_only":
             this.state[filter] = value ? true : null
@@ -99,6 +102,7 @@ export class FilterState extends Container<State> {
       [
         "for_sale",
         "acquireable",
+        "offerable",
         "at_auction",
         "partner_id",
         "inquireable_only",
@@ -138,6 +142,7 @@ export class FilterState extends Container<State> {
         break
       case "for_sale":
       case "acquireable":
+      case "offerable":
       case "at_auction":
       case "inquireable_only":
         newPartialState[filter] = !!value

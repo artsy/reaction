@@ -1,10 +1,11 @@
-import { unica } from "Assets/Fonts"
+import { Box, color, Flex, Sans } from "@artsy/palette"
 import React, { Component } from "react"
-import { Col } from "react-styled-flexboxgrid"
 import styled from "styled-components"
-import { pMedia } from "../../Helpers"
-import { ShareDate } from "../Byline/ShareDate"
-import { Text } from "../Sections/Text"
+
+import { ShareDate } from "Components/Publishing/Byline/ShareDate"
+import { StyledText } from "Components/Publishing/Sections/StyledText"
+import { Text } from "Components/Publishing/Sections/Text"
+import { Media } from "Utils/Responsive"
 
 export interface VideoAboutProps {
   article: any
@@ -15,89 +16,77 @@ export interface VideoAboutProps {
 
 export class VideoAbout extends Component<VideoAboutProps, null> {
   static defaultProps = {
-    color: "black",
+    color: color("black100"),
   }
 
   render() {
-    const { article, color, editCredits, editDescription } = this.props
+    const { article, editCredits, editDescription } = this.props
     const {
       media: { credits, description },
     } = article
 
     return (
-      <VideoAboutContainer>
-        <Credits xs={12} sm={4}>
-          <Col xs={12}>
-            <Title color={color}>Credits</Title>
+      <VideoAboutContainer
+        maxWidth={1200}
+        mx="auto"
+        flexDirection={["column-reverse", "column-reverse", "row", "row"]}
+      >
+        <Credits
+          width={[1, 1, 1 / 3, 1 / 3]}
+          flexDirection="column"
+          pt={["80px", "80px", 0, 0]}
+        >
+          <Sans size="8" color={this.props.color} pb={10}>
+            Credits
+          </Sans>
 
-            {editCredits ? (
-              <Text layout="standard">{editCredits}</Text>
-            ) : (
-              <Text layout="standard" html={credits} />
-            )}
-          </Col>
-          <Col sm={12} xs={false}>
-            <ShareDate color={color} article={article} />
-          </Col>
+          {editCredits ? (
+            <Text layout="standard">{editCredits}</Text>
+          ) : (
+            <Text layout="standard" html={credits} />
+          )}
+
+          <Media greaterThanOrEqual="md">
+            <Box mt={40}>
+              <ShareDate color={this.props.color} article={article} />
+            </Box>
+          </Media>
         </Credits>
 
-        <About xs={12} sm={8}>
-          <Col xs={12}>
-            <Title color={color}>About the Film</Title>
+        <Box width={[1, 1, 2 / 3, 2 / 3]}>
+          <Sans size="8" color={this.props.color} pb={10}>
+            About the Film
+          </Sans>
 
-            {editDescription ? (
-              <Text color={color} layout="standard">
-                {editDescription}
-              </Text>
-            ) : (
-              <Text color={color} layout="standard" html={description} />
-            )}
-          </Col>
+          {editDescription ? (
+            <Text color={this.props.color} layout="standard">
+              {editDescription}
+            </Text>
+          ) : (
+            <Text
+              color={this.props.color}
+              layout="standard"
+              html={description}
+            />
+          )}
 
-          <Col sm={false} xs={12}>
-            <ShareDate color={color} article={article} />
-          </Col>
-        </About>
+          <Media lessThan="md">
+            <Box mt={40}>
+              <ShareDate color={this.props.color} article={article} />
+            </Box>
+          </Media>
+        </Box>
       </VideoAboutContainer>
     )
   }
 }
 
-const Title = styled.div.attrs<{ color: string }>({})`
-  color: ${props => props.color};
-  margin-bottom: 15px;
-  ${unica("s34")};
-  ${pMedia.sm`
-    ${unica("s32")}
-  `};
-`
-
-export const Credits = styled(Col)`
-  flex: 1;
-
-  p {
-    padding: 0;
+export const Credits = styled(Flex)`
+  ${StyledText} {
+    p {
+      padding: 0;
+    }
   }
-
-  ${pMedia.sm`
-    margin-top: 80px;
-    display: flex;
-    flex-direction: column;
-  `};
 `
 
-const About = styled(Col)`
-  flex: 1;
-`
-
-export const VideoAboutContainer = styled.div`
-  display: flex;
-
-  ${ShareDate} {
-    margin-top: 40px;
-  }
-
-  ${pMedia.sm`
-    flex-direction: column-reverse;
-  `};
-`
+export const VideoAboutContainer = styled(Flex)``

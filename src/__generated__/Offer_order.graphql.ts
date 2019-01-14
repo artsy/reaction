@@ -1,7 +1,8 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-import { TransactionSummary_order$ref } from "./TransactionSummary_order.graphql";
+import { ArtworkSummaryItem_order$ref } from "./ArtworkSummaryItem_order.graphql";
+import { TransactionDetailsSummaryItem_order$ref } from "./TransactionDetailsSummaryItem_order.graphql";
 export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
 declare const _Offer_order$ref: unique symbol;
 export type Offer_order$ref = typeof _Offer_order$ref;
@@ -9,8 +10,8 @@ export type Offer_order = {
     readonly id: string | null;
     readonly mode: OrderModeEnum | null;
     readonly state: string | null;
-    readonly itemsTotal: string | null;
-    readonly offerTotal: string | null;
+    readonly totalListPrice: string | null;
+    readonly totalListPriceCents: number | null;
     readonly lineItems: ({
         readonly edges: ReadonlyArray<({
             readonly node: ({
@@ -20,7 +21,7 @@ export type Offer_order = {
             }) | null;
         }) | null> | null;
     }) | null;
-    readonly " $fragmentRefs": TransactionSummary_order$ref;
+    readonly " $fragmentRefs": ArtworkSummaryItem_order$ref & TransactionDetailsSummaryItem_order$ref;
     readonly " $refType": Offer_order$ref;
 };
 
@@ -34,15 +35,7 @@ var v0 = {
   "args": null,
   "storageKey": null
 },
-v1 = [
-  {
-    "kind": "Literal",
-    "name": "precision",
-    "value": 2,
-    "type": "Int"
-  }
-],
-v2 = {
+v1 = {
   "kind": "ScalarField",
   "alias": "__id",
   "name": "id",
@@ -74,16 +67,23 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "itemsTotal",
-      "args": v1,
-      "storageKey": "itemsTotal(precision:2)"
+      "name": "totalListPrice",
+      "args": [
+        {
+          "kind": "Literal",
+          "name": "precision",
+          "value": 2,
+          "type": "Int"
+        }
+      ],
+      "storageKey": "totalListPrice(precision:2)"
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "offerTotal",
-      "args": v1,
-      "storageKey": "offerTotal(precision:2)"
+      "name": "totalListPriceCents",
+      "args": null,
+      "storageKey": null
     },
     {
       "kind": "LinkedField",
@@ -131,7 +131,7 @@ return {
                     }
                   ]
                 },
-                v2
+                v1
               ]
             }
           ]
@@ -140,12 +140,17 @@ return {
     },
     {
       "kind": "FragmentSpread",
-      "name": "TransactionSummary_order",
+      "name": "ArtworkSummaryItem_order",
       "args": null
     },
-    v2
+    {
+      "kind": "FragmentSpread",
+      "name": "TransactionDetailsSummaryItem_order",
+      "args": null
+    },
+    v1
   ]
 };
 })();
-(node as any).hash = '190b02e805b86f727af66bf35152661a';
+(node as any).hash = '6ee0e0c309dc3f09604fa6cf229cfbac';
 export default node;

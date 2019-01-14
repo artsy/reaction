@@ -1,9 +1,8 @@
 import { space } from "@artsy/palette"
+import { ClosedEyeIcon, OpenEyeIcon } from "@artsy/palette"
 import { fadeIn, fadeOut, growAndFadeIn } from "Assets/Animations"
 import Colors from "Assets/Colors"
 import { garamond, unica } from "Assets/Fonts"
-import { ClosedEye } from "Assets/Icons/ClosedEye"
-import { OpenEye } from "Assets/Icons/OpenEye"
 import React from "react"
 import styled from "styled-components"
 import { block } from "./Helpers"
@@ -21,6 +20,7 @@ export interface InputProps extends React.HTMLProps<HTMLInputElement> {
   title?: string
   quick?: boolean
   touchedOnChange?: boolean
+  innerRef?: React.RefObject<HTMLInputElement>
 }
 
 export interface InputState {
@@ -109,9 +109,9 @@ export class Input extends React.Component<InputProps, InputState> {
 
   getRightViewForPassword() {
     const icon = this.state.showPassword ? (
-      <ClosedEye onClick={this.toggleShowPassword} />
+      <ClosedEyeIcon onClick={this.toggleShowPassword} />
     ) : (
-      <OpenEye onClick={this.toggleShowPassword} />
+      <OpenEyeIcon onClick={this.toggleShowPassword} />
     )
 
     return <Eye onClick={this.toggleShowPassword}>{icon}</Eye>
@@ -161,6 +161,7 @@ export class Input extends React.Component<InputProps, InputState> {
             <Label out={!showLabel}>{label}</Label>
             {!!leftView && leftView}
             <InputComponent
+              innerRef={this.props.innerRef}
               {...newProps}
               onFocus={this.onFocus}
               onBlur={this.onBlur}
@@ -201,7 +202,7 @@ const Container = styled.div`
   padding-bottom: 5px;
 `
 
-const StyledInput = styled.input`
+export const StyledInput = styled.input`
   ${borderedInput};
   ${block(24)};
 `
@@ -250,7 +251,7 @@ const Label = styled.label.attrs<{ out: boolean }>({})`
   z-index: 1;
 `
 
-const Title = styled.div`
+export const Title = styled.div`
   ${garamond("s17")};
 `
 

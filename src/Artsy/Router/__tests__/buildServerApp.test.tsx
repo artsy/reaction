@@ -3,10 +3,14 @@
  */
 
 import { ContextConsumer } from "Artsy"
-import { buildServerApp } from "Artsy/Router/buildServerApp"
+import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
+import { buildServerApp, ServerRouterConfig } from "Artsy/Router/buildServerApp"
+import { createMockNetworkLayer } from "DevTools"
 import { render } from "enzyme"
 import React from "react"
 import { Title } from "react-head"
+import { graphql } from "react-relay"
+import { Media } from "Utils/Responsive"
 
 jest.mock("loadable-components/server", () => ({
   getLoadableState: () =>
@@ -21,23 +25,36 @@ describe("buildServerApp", () => {
   const getWrapper = async ({
     url = "/",
     Component = defaultComponent,
-    options = {},
-  } = {}) => {
-    const { ServerApp, status, headTags } = await buildServerApp({
+    ...options
+  }: { Component?: React.ComponentType } & Pick<
+    ServerRouterConfig,
+    Exclude<keyof ServerRouterConfig, "routes">
+  > = {}) => {
+    const { ServerApp, ...rest } = await buildServerApp({
       routes: [
         {
           path: "/",
           Component,
         },
+        {
+          path: "/relay",
+          Component,
+          query: graphql`
+            query buildServerAppTestQuery {
+              me {
+                __id
+              }
+            }
+          `,
+        },
       ],
       url,
+      userAgent: "A random user-agent",
       ...options,
     })
-
     return {
+      ...rest,
       wrapper: render(<ServerApp />),
-      status,
-      headTags,
     }
   }
 
@@ -47,9 +64,9 @@ describe("buildServerApp", () => {
   })
 
   it("bootstraps relay and loadable-components SSR data", async () => {
-    const { wrapper } = await getWrapper()
-    expect(wrapper.html()).toContain("__RELAY_BOOTSTRAP__")
-    expect(wrapper.html()).toContain("__LOADABLE_STATE__")
+    const { scripts } = await getWrapper()
+    expect(scripts).toContain("__RELAY_BOOTSTRAP__")
+    expect(scripts).toContain("__LOADABLE_STATE__")
   })
 
   it("resolves with a 200 status if url matches request", async () => {
@@ -68,8 +85,8 @@ describe("buildServerApp", () => {
     })
     // Enzyme won't render the right results for the title for whatever reason
     // It renders fine with renderToString though. ¯\_(ツ)_/¯
-    expect(headTags[0].type).toBe("title")
-    expect(headTags[0].props.children).toBe("test")
+    expect(headTags[headTags.length - 1].type).toBe("title")
+    expect(headTags[headTags.length - 1].props.children).toBe("test")
   })
 
   it("passes items along in context option", async done => {
@@ -79,8 +96,8 @@ describe("buildServerApp", () => {
           {context => {
             expect(Object.keys(context).sort()).toEqual([
               "foo",
-              "initialMatchingMediaQueries",
               "mediator",
+              "onlyMatchMediaQueries",
               "relayEnvironment",
               "resolver",
               "routes",
@@ -95,14 +112,101 @@ describe("buildServerApp", () => {
 
     await getWrapper({
       Component: HomeApp,
-      options: {
-        context: {
-          foo: "bar",
-          mediator: {
-            trigger: jest.fn(),
-          },
+      context: {
+        foo: "bar",
+        mediator: {
+          trigger: jest.fn(),
         },
       },
+    })
+  })
+
+  describe("concerning device detection", () => {
+    const MediaComponent = () => (
+      <div>
+        <Media at="xs">
+          <span>xs</span>
+        </Media>
+        <Media at="lg">
+          <span>lg</span>
+        </Media>
+        <Media interaction="hover">
+          <span>hover</span>
+        </Media>
+        <Media interaction="notHover">
+          <span>notHover</span>
+        </Media>
+      </div>
+    )
+
+    it("renders all media queries when no user-agent exists", async () => {
+      const { wrapper } = await getWrapper({
+        Component: MediaComponent,
+        userAgent: undefined,
+      })
+      expect(
+        wrapper
+          .find("span")
+          .map((_, el) => el.firstChild.data)
+          .get()
+      ).toEqual(["xs", "lg", "hover", "notHover"])
+    })
+
+    it("renders all media queries for unknown devices", async () => {
+      const { wrapper } = await getWrapper({
+        Component: MediaComponent,
+        userAgent: "Unknown device",
+      })
+      expect(
+        wrapper
+          .find("span")
+          .map((_, el) => el.firstChild.data)
+          .get()
+      ).toEqual(["xs", "lg", "hover", "notHover"])
+    })
+
+    it("renders some media queries for known devices", async () => {
+      const { wrapper } = await getWrapper({
+        Component: MediaComponent,
+        userAgent: "Something iPhone; something",
+      })
+      expect(
+        wrapper
+          .find("span")
+          .map((_, el) => el.firstChild.data)
+          .get()
+      ).toEqual(["xs", "notHover"])
+    })
+  })
+
+  describe("concerning GraphQL errors", () => {
+    const consoleError = console.error
+
+    beforeAll(() => {
+      console.error = jest.fn()
+    })
+
+    afterAll(() => {
+      console.error = consoleError
+    })
+
+    it("rejects with a GraphQL error", async () => {
+      const relayNetwork = createMockNetworkLayer({
+        Query: () => ({
+          me: () => {
+            throw new Error("Oh noes")
+          },
+        }),
+      })
+      const relayEnvironment = createRelaySSREnvironment({ relayNetwork })
+      try {
+        await getWrapper({
+          url: "/relay",
+          context: { relayEnvironment },
+        })
+      } catch (error) {
+        expect(error.message).toMatch(/Oh noes/)
+      }
     })
   })
 })

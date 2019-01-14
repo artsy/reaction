@@ -1,10 +1,9 @@
 import * as React from "react"
 import styled from "styled-components"
 
+import { CircleWhiteCheckIcon, PlusIcon } from "@artsy/palette"
 import Colors from "Assets/Colors"
 import { avantgarde } from "Assets/Fonts"
-import { CircleWhiteCheckIcon } from "Assets/Icons/CircleWhiteCheckIcon"
-import { PlusIcon } from "Assets/Icons/PlusIcon"
 import { media } from "../Helpers"
 
 const Link = styled.a`

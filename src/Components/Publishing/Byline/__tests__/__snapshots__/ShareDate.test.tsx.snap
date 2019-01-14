@@ -43,14 +43,14 @@ exports[`renders ShareDate properly 1`] = `
 }
 
 .c5 {
-  margin: 5px 10px 5px 0px;
+  margin: 5px 10px 5px 0;
 }
 
 .c0 {
   color: black;
 }
 
-@media (max-width:48em) {
+@media (max-width:768px) {
   .c0 .c3 {
     margin-top: 0px;
   }
@@ -70,7 +70,7 @@ exports[`renders ShareDate properly 1`] = `
           "fontWeight": 500,
         }
       }
-      fontSize={14}
+      fontSize="14px"
     >
       May 19, 2017 9:09 am
     </div>
@@ -86,7 +86,7 @@ exports[`renders ShareDate properly 1`] = `
           "fontWeight": 500,
         }
       }
-      fontSize={14}
+      fontSize="14px"
     >
       Share
     </div>

@@ -1,15 +1,13 @@
-import { Box, Flex } from "@artsy/palette"
+import { Box, Col, Flex, Row } from "@artsy/palette"
 import { RelatedArtistsList_artist } from "__generated__/RelatedArtistsList_artist.graphql"
 import { ContextConsumer } from "Artsy/Router"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
-import { Col, Row } from "Styleguide/Elements/Grid"
-import { Responsive } from "Utils/Responsive"
 
 import {
   ArtistCardFragmentContainer as ArtistCard,
   PaginationFragmentContainer as Pagination,
-} from "Styleguide/Components"
+} from "Components/v2"
 
 import {
   LoadingArea,
@@ -93,70 +91,54 @@ class RelatedArtistsList extends Component<ShowProps, LoadingAreaState> {
       <ContextConsumer>
         {({ user, mediator }) => {
           return (
-            <Responsive>
-              {({ xs, sm, md }) => {
-                let width
-                if (xs) {
-                  width = "100%"
-                } else if (sm || md) {
-                  width = "33%"
-                } else {
-                  width = "25%"
-                }
+            <>
+              <Row>
+                <Col>
+                  <LoadingArea isLoading={this.state.isLoading}>
+                    <Flex flexWrap="wrap" mr={-2} width="100%">
+                      {this.props.artist.related.artists.edges.map(
+                        ({ node }, index) => {
+                          return (
+                            <Box
+                              pr={2}
+                              mb={[1, 4]}
+                              width={["100%", "33%", "33%", "25%"]}
+                              key={index}
+                            >
+                              <ArtistCard
+                                artist={node}
+                                mediator={mediator}
+                                user={user}
+                              />
+                            </Box>
+                          )
+                        }
+                      )}
+                    </Flex>
+                  </LoadingArea>
+                </Col>
+              </Row>
 
-                return (
-                  <>
-                    <Row>
-                      <Col>
-                        <LoadingArea isLoading={this.state.isLoading}>
-                          <Flex flexWrap="wrap" mr={-2} width="100%">
-                            {this.props.artist.related.artists.edges.map(
-                              ({ node }, index) => {
-                                return (
-                                  <Box
-                                    pr={2}
-                                    mb={xs ? 1 : 4}
-                                    width={width}
-                                    key={index}
-                                  >
-                                    <ArtistCard
-                                      artist={node}
-                                      mediator={mediator}
-                                      user={user}
-                                    />
-                                  </Box>
-                                )
-                              }
-                            )}
-                          </Flex>
-                        </LoadingArea>
-                      </Col>
-                    </Row>
+              <Box py={2} />
 
-                    <Box py={2} />
-
-                    <Row>
-                      <Col>
-                        <Box>
-                          <Pagination
-                            hasNextPage={
-                              this.props.artist.related.artists.pageInfo
-                                .hasNextPage
-                            }
-                            pageCursors={
-                              this.props.artist.related.artists.pageCursors
-                            }
-                            onClick={this.loadAfter}
-                            onNext={this.loadNext}
-                            scrollTo={this.props.scrollTo}
-                          />
-                        </Box>
-                      </Col>
-                    </Row>
-                  </>
-                )
-              }}
-            </Responsive>
+              <Row>
+                <Col>
+                  <Box>
+                    <Pagination
+                      hasNextPage={
+                        this.props.artist.related.artists.pageInfo.hasNextPage
+                      }
+                      pageCursors={
+                        this.props.artist.related.artists.pageCursors
+                      }
+                      onClick={this.loadAfter}
+                      onNext={this.loadNext}
+                      scrollTo={this.props.scrollTo}
+                    />
+                  </Box>
+                </Col>
+              </Row>
+            </>
           )
         }}
       </ContextConsumer>

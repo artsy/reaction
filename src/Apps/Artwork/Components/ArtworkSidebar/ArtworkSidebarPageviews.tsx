@@ -1,11 +1,10 @@
-import { Box, Flex, Sans } from "@artsy/palette"
+import { Box, Flex, PageviewsIcon, Sans } from "@artsy/palette"
 import { ArtworkSidebarPageviews_artwork } from "__generated__/ArtworkSidebarPageviews_artwork.graphql"
 import { ArtworkSidebarPageviewsQuery } from "__generated__/ArtworkSidebarPageviewsQuery.graphql"
 import { ContextConsumer } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import React, { SFC } from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
-import { PageviewsIcon } from "Styleguide/Elements/icons/Pageviews"
 
 interface Props {
   artwork: ArtworkSidebarPageviews_artwork
@@ -14,6 +13,10 @@ interface Props {
 export const ArtworkSidebarPageviews: SFC<Props> = props => {
   const { artwork } = props
   const { pageviews } = artwork
+
+  if (!pageviews) {
+    return null
+  }
 
   // TODO: Figure out why `jest` tests don't play nicely with this icon.
   return (
@@ -25,19 +28,11 @@ export const ArtworkSidebarPageviews: SFC<Props> = props => {
       )}
       <Box ml={2}>
         <Sans weight="medium" size="2">
-          {pageviews
-            ? "This work is getting noticed!"
-            : "You're one of the first to view this work"}
+          This work is getting noticed!
         </Sans>
         <Sans color="black60" size="2" weight="regular">
-          {pageviews ? (
-            <>
-              It has been viewed <strong>{pageviews.toLocaleString()}</strong>{" "}
-              times
-            </>
-          ) : (
-            "Explore artwork details or ask a specialist to learn more"
-          )}
+          It has been viewed <strong>{pageviews.toLocaleString()} times</strong>{" "}
+          this week
         </Sans>
       </Box>
     </Flex>

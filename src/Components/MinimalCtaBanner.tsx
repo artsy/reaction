@@ -97,6 +97,7 @@ const Banner = styled.div.attrs<{ textColor: string }>({})`
   height: 100%;
   width: 100%;
   padding: 10px 10px;
+
   a {
     color: ${props => props.textColor || "black"};
     text-decoration: none;

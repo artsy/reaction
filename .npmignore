@@ -1,13 +1,6 @@
-.awcache
-.vscode
-.env*
-.storybook
-.fusebox
-.babelrc
-
-externals
-src
-__mocks__
-reaction-force.js
-reaction-force.js.map
-gulpfile.js
+# Ignore everything except what's explicitly whitelisted
+*
+!dist/**
+dist/**/__mocks__/*
+dist/**/__tests__/*
+dist/**/__stories__/*

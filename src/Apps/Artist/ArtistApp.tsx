@@ -1,4 +1,4 @@
-import { Separator, Spacer } from "@artsy/palette"
+import { Col, Row, Separator, Spacer } from "@artsy/palette"
 import { ArtistApp_artist } from "__generated__/ArtistApp_artist.graphql"
 import { NavigationTabsFragmentContainer as NavigationTabs } from "Apps/Artist/Components/NavigationTabs"
 import { track } from "Artsy/Analytics"
@@ -7,16 +7,15 @@ import { PreloadLinkState } from "Artsy/Router/Components/PreloadLink"
 import React from "react"
 import { LazyLoadComponent } from "react-lazy-load-image-component"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Col, Row } from "Styleguide/Elements/Grid"
-import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { Subscribe } from "unstated"
+import { HorizontalPadding } from "Utils/HorizontalPadding"
 import { ArtistHeaderFragmentContainer as ArtistHeader } from "./Components/ArtistHeader"
 import { LoadingArea } from "./Components/LoadingArea"
 
 import {
   Footer,
   RecentlyViewedQueryRenderer as RecentlyViewed,
-} from "Styleguide/Components"
+} from "Components/v2"
 
 export interface ArtistAppProps {
   artist: ArtistApp_artist

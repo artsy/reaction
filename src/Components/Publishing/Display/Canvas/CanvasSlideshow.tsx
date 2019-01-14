@@ -2,7 +2,7 @@ import Colors from "Assets/Colors"
 import { garamond } from "Assets/Fonts"
 import { compact, map } from "lodash"
 import React from "react"
-import Slider from "react-slick"
+import Slider, { Settings } from "react-slick"
 import track from "react-tracking"
 import styled, { StyledFunction } from "styled-components"
 import { crop } from "../../../../Utils/resizer"
@@ -112,9 +112,8 @@ export class CanvasSlideshow extends React.Component<
   render() {
     const { containerWidth } = this.props
 
-    const sliderSettings = {
+    const sliderSettings: Settings = {
       dots: false,
-      lazyLoad: false,
       infinite: false,
       variableWidth: true,
       centerMode: true,
@@ -140,6 +139,8 @@ export class CanvasSlideshow extends React.Component<
           breakpoint: 900,
           settings: {
             infinite: true,
+            // FIXME: Follow up on whether this controls anything
+            // @ts-ignore
             controls: false,
           },
         },
@@ -284,6 +285,7 @@ const Image = responsiveImage`
   `}
 `
 const Caption = styled.div`
-  ${garamond("s11")} color: ${Colors.grayMedium};
+  ${garamond("s11")};
+  color: ${Colors.grayMedium};
   margin-top: 10px;
 `

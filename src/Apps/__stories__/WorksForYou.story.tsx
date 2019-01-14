@@ -5,11 +5,11 @@ import { ContextProvider } from "Artsy"
 import React from "react"
 import { MarketingHeader } from "../WorksForYou/MarketingHeader"
 
-storiesOf("Apps/WorksForYou", module).add("Marketing Header", () => {
+storiesOf("Apps/WorksForYou Page", module).add("Marketing Header", () => {
   return <MarketingHeader />
 })
 
-storiesOf("Apps/WorksForYou/Feed", module).add(
+storiesOf("Apps/WorksForYou Page/Feed", module).add(
   "Including for sale works",
   () => {
     return (
@@ -22,7 +22,7 @@ storiesOf("Apps/WorksForYou/Feed", module).add(
   }
 )
 
-storiesOf("Apps/WorksForYou/Feed", module).add("All", () => {
+storiesOf("Apps/WorksForYou Page/Feed", module).add("All", () => {
   return (
     <Box p={6} pt={2}>
       <ContextProvider>
@@ -32,7 +32,7 @@ storiesOf("Apps/WorksForYou/Feed", module).add("All", () => {
   )
 })
 
-storiesOf("Apps/WorksForYou/Selected Artist Feed", module).add(
+storiesOf("Apps/WorksForYou Page/Selected Artist Feed", module).add(
   "Including for sale works",
   () => {
     return (
@@ -45,12 +45,15 @@ storiesOf("Apps/WorksForYou/Selected Artist Feed", module).add(
   }
 )
 
-storiesOf("Apps/WorksForYou/Selected Artist Feed", module).add("All", () => {
-  return (
-    <Box p={6} pt={2}>
-      <ContextProvider>
-        <WorksForYou forSale={false} artistID={"pablo-picasso"} />
-      </ContextProvider>
-    </Box>
-  )
-})
+storiesOf("Apps/WorksForYou Page/Selected Artist Feed", module).add(
+  "All",
+  () => {
+    return (
+      <Box p={6} pt={2}>
+        <ContextProvider>
+          <WorksForYou forSale={false} artistID={"pablo-picasso"} />
+        </ContextProvider>
+      </Box>
+    )
+  }
+)

@@ -24,7 +24,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
   margin: 10px 20px 0 0;
 }
 
-.c11:before {
+.c11::before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -186,7 +186,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
   <div
     className="c1 c2"
     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-    fontSize={28}
+    fontSize="28px"
   >
     Further Reading in 
     <span
@@ -221,7 +221,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
         <div
           className="c8"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
-          fontSize={16}
+          fontSize="16px"
         >
           The 15 Top Art Schools in the United States
         </div>
@@ -238,7 +238,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
               "fontWeight": 500,
             }
           }
-          fontSize={12}
+          fontSize="12px"
         >
           <div
             className="c11"
@@ -258,7 +258,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
                 "fontWeight": 500,
               }
             }
-            fontSize={12}
+            fontSize="12px"
           >
             May 19, 2017
           </div>
@@ -281,7 +281,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
         <div
           className="c8"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
-          fontSize={16}
+          fontSize="16px"
         >
           Four Years after Walter De Maria’s Death, His Final Work Is Complete
         </div>
@@ -298,7 +298,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
               "fontWeight": 500,
             }
           }
-          fontSize={12}
+          fontSize="12px"
         >
           <div
             className="c11"
@@ -318,7 +318,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
                 "fontWeight": 500,
               }
             }
-            fontSize={12}
+            fontSize="12px"
           >
             May 19, 2017
           </div>
@@ -341,7 +341,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
         <div
           className="c8"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
-          fontSize={16}
+          fontSize="16px"
         >
           French Art History in a Nutshell
         </div>
@@ -358,7 +358,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
               "fontWeight": 500,
             }
           }
-          fontSize={12}
+          fontSize="12px"
         >
           <div
             className="c11"
@@ -378,7 +378,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
                 "fontWeight": 500,
               }
             }
-            fontSize={12}
+            fontSize="12px"
           >
             May 19, 2017
           </div>
@@ -401,7 +401,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
         <div
           className="c8"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
-          fontSize={16}
+          fontSize="16px"
         >
           Miami Artists and Museums Brace for Hurricane Irma
         </div>
@@ -418,7 +418,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
               "fontWeight": 500,
             }
           }
-          fontSize={12}
+          fontSize="12px"
         >
           <div
             className="c11"
@@ -438,7 +438,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
                 "fontWeight": 500,
               }
             }
-            fontSize={12}
+            fontSize="12px"
           >
             May 19, 2017
           </div>

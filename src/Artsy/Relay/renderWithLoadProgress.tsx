@@ -1,9 +1,15 @@
-import Spinner from "Components/Spinner"
+import { Spinner } from "@artsy/palette"
 import React from "react"
 import { ReadyState, RelayContainer } from "react-relay"
 import styled from "styled-components"
 
-const SpinnerContainer = styled.div`
+/**
+ * WARNING: Do _not_ change this element to something common like a div. If the
+ * element of this container is the same as the element used in the RelayContainer
+ * then rehydration can fail and cause the RelayContainer to receive styles
+ * from the SpinnerContainer and Spinner.
+ */
+const SpinnerContainer = styled.figure`
   width: 100%;
   height: 100px;
   position: relative;
@@ -27,13 +33,18 @@ export function renderWithLoadProgress<P>(
       }
 
       const networkError = error as any
+      if (error.message) {
+        console.error(error.message)
+      }
       if (networkError.response && networkError.response._bodyInit) {
-        let data = networkError.response._bodyInit || "{}"
-        try {
-          data = JSON.parse(data)
-          // tslint:disable-next-line:no-empty
-        } catch (e) {}
-        console.error(`Metaphysics Error: ${error.message}\n`, data)
+        let data = networkError.response._bodyInit
+        if (data) {
+          try {
+            data = JSON.parse(data)
+            console.error(`Metaphysics Error data:`, data)
+            // tslint:disable-next-line:no-empty
+          } catch (e) {}
+        }
       }
 
       // if (retrying) {

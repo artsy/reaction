@@ -69,6 +69,7 @@ mutation ShippingOrderAddressUpdateMutation(
       ... on OrderWithMutationSuccess {
         __typename
         order {
+          __typename
           id
           state
           requestedFulfillment {
@@ -162,124 +163,106 @@ v3 = {
   "storageKey": null
 },
 v4 = {
-  "kind": "InlineFragment",
-  "type": "OrderWithMutationSuccess",
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v5 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "state",
+  "args": null,
+  "storageKey": null
+},
+v6 = {
+  "kind": "LinkedField",
+  "alias": null,
+  "name": "requestedFulfillment",
+  "storageKey": null,
+  "args": null,
+  "concreteType": null,
+  "plural": false,
   "selections": [
     v3,
     {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "order",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "Order",
-      "plural": false,
+      "kind": "InlineFragment",
+      "type": "Ship",
       "selections": [
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "id",
+          "name": "name",
           "args": null,
           "storageKey": null
         },
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "state",
+          "name": "addressLine1",
           "args": null,
           "storageKey": null
         },
         {
-          "kind": "LinkedField",
+          "kind": "ScalarField",
           "alias": null,
-          "name": "requestedFulfillment",
-          "storageKey": null,
+          "name": "addressLine2",
           "args": null,
-          "concreteType": null,
-          "plural": false,
-          "selections": [
-            v3,
-            {
-              "kind": "InlineFragment",
-              "type": "Ship",
-              "selections": [
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "name",
-                  "args": null,
-                  "storageKey": null
-                },
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "addressLine1",
-                  "args": null,
-                  "storageKey": null
-                },
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "addressLine2",
-                  "args": null,
-                  "storageKey": null
-                },
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "city",
-                  "args": null,
-                  "storageKey": null
-                },
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "region",
-                  "args": null,
-                  "storageKey": null
-                },
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "country",
-                  "args": null,
-                  "storageKey": null
-                },
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "postalCode",
-                  "args": null,
-                  "storageKey": null
-                },
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "phoneNumber",
-                  "args": null,
-                  "storageKey": null
-                }
-              ]
-            }
-          ]
+          "storageKey": null
         },
         {
           "kind": "ScalarField",
-          "alias": "__id",
-          "name": "id",
+          "alias": null,
+          "name": "city",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "region",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "country",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "postalCode",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "phoneNumber",
           "args": null,
           "storageKey": null
         }
       ]
     }
   ]
+},
+v7 = {
+  "kind": "ScalarField",
+  "alias": "__id",
+  "name": "id",
+  "args": null,
+  "storageKey": null
 };
 return {
   "kind": "Request",
   "operationKind": "mutation",
   "name": "ShippingOrderAddressUpdateMutation",
   "id": null,
-  "text": "mutation ShippingOrderAddressUpdateMutation(\n  $input: SetOrderShippingInput!\n) {\n  ecommerceSetOrderShipping(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        __typename\n        order {\n          id\n          state\n          requestedFulfillment {\n            __typename\n            ... on Ship {\n              name\n              addressLine1\n              addressLine2\n              city\n              region\n              country\n              postalCode\n              phoneNumber\n            }\n          }\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation ShippingOrderAddressUpdateMutation(\n  $input: SetOrderShippingInput!\n) {\n  ecommerceSetOrderShipping(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          id\n          state\n          requestedFulfillment {\n            __typename\n            ... on Ship {\n              name\n              addressLine1\n              addressLine2\n              city\n              region\n              country\n              postalCode\n              phoneNumber\n            }\n          }\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -307,7 +290,28 @@ return {
             "plural": false,
             "selections": [
               v2,
-              v4
+              {
+                "kind": "InlineFragment",
+                "type": "OrderWithMutationSuccess",
+                "selections": [
+                  v3,
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "order",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": null,
+                    "plural": false,
+                    "selections": [
+                      v4,
+                      v5,
+                      v6,
+                      v7
+                    ]
+                  }
+                ]
+              }
             ]
           }
         ]
@@ -339,7 +343,29 @@ return {
             "selections": [
               v3,
               v2,
-              v4
+              {
+                "kind": "InlineFragment",
+                "type": "OrderWithMutationSuccess",
+                "selections": [
+                  v3,
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "order",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": null,
+                    "plural": false,
+                    "selections": [
+                      v3,
+                      v4,
+                      v5,
+                      v6,
+                      v7
+                    ]
+                  }
+                ]
+              }
             ]
           }
         ]

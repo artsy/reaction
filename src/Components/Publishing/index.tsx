@@ -10,7 +10,9 @@ export { InstantArticleEmailSignup } from "./Email/InstantArticleEmailSignup"
 export { Image } from "./Sections/Image"
 export { ImageCollection } from "./Sections/ImageCollection"
 export { ImageSetPreview } from "./Sections/ImageSetPreview"
-export { ImageSetPreviewClassic } from "./Sections/ImageSetPreviewClassic"
+export {
+  ImageSetPreviewClassic,
+} from "./Sections/ImageSetPreview/ImageSetPreviewClassic"
 export { Nav } from "./Nav/Nav"
 export { SeriesLayout } from "./Layouts/SeriesLayout"
 export { Text } from "./Sections/Text"

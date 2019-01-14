@@ -15,6 +15,7 @@ import React, { Component } from "react"
 import { commitMutation, graphql, RelayProp } from "react-relay"
 import { injectStripe, ReactStripeElements } from "react-stripe-elements"
 import { ConnectionHandler } from "relay-runtime"
+import { ErrorWithMetadata } from "Utils/errors"
 import createLogger from "Utils/logger"
 import { Responsive } from "Utils/Responsive"
 
@@ -103,7 +104,12 @@ class PaymentForm extends Component<PaymentFormProps, PaymentFormState> {
                 <Box width="100%" maxWidth={542}>
                   <Join separator={<Spacer mb={3} />}>
                     <Flex flexDirection="column">
-                      <Serif mb={1} size="3t" color="black100" lineHeight={18}>
+                      <Serif
+                        mb={1}
+                        size="3t"
+                        color="black100"
+                        lineHeight="1.1em"
+                      >
                         Credit Card
                       </Serif>
                       <CreditCardInput
@@ -215,11 +221,15 @@ class PaymentForm extends Component<PaymentFormProps, PaymentFormState> {
             this.cardElement && this.cardElement.cardInputElement.clear()
             window.scrollTo(0, 0)
           } else {
-            this.onMutationError(
-              errors || creditCardOrError.mutationError,
-              creditCardOrError.mutationError &&
-                creditCardOrError.mutationError.detail
-            )
+            if (errors) {
+              errors.forEach(this.onMutationError.bind(this))
+            } else {
+              const mutationError = creditCardOrError.mutationError
+              this.onMutationError(
+                new ErrorWithMetadata(mutationError.message, mutationError),
+                mutationError.detail
+              )
+            }
           }
         },
         onError: this.onMutationError.bind(this),
@@ -255,8 +265,8 @@ class PaymentForm extends Component<PaymentFormProps, PaymentFormState> {
     )
   }
 
-  private onMutationError(errors, errorModalMessage?) {
-    logger.error(errors)
+  private onMutationError(error, errorModalMessage?) {
+    logger.error(error)
     this.setState({
       isCommittingMutation: false,
       isErrorModalOpen: true,

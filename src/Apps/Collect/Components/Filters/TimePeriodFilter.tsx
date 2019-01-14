@@ -10,27 +10,33 @@ export const TimePeriodFilter: React.SFC<{
 }> = ({ filters, timePeriods }) => (
   <ContextConsumer>
     {({ mediator }) =>
-      (timePeriods || allowedPeriods).map((timePeriod, index) => {
-        const isSelected = filters.state.major_periods[0] === timePeriod
+      (timePeriods || allowedPeriods)
+        .filter(timePeriod => allowedPeriods.includes(timePeriod))
+        .map((timePeriod, index) => {
+          const isSelected = filters.state.major_periods[0] === timePeriod
 
-        return (
-          <Radio
-            my={0.3}
-            selected={isSelected}
-            value={timePeriod}
-            onSelect={({ selected }) => {
-              if (selected) {
-                return filters.setFilter("major_periods", timePeriod, mediator)
-              } else {
-                return filters.unsetFilter("major_periods", mediator)
-              }
-            }}
-            key={index}
-          >
-            {timePeriod}
-          </Radio>
-        )
-      })
+          return (
+            <Radio
+              my={0.3}
+              selected={isSelected}
+              value={timePeriod}
+              onSelect={({ selected }) => {
+                if (selected) {
+                  return filters.setFilter(
+                    "major_periods",
+                    timePeriod,
+                    mediator
+                  )
+                } else {
+                  return filters.unsetFilter("major_periods", mediator)
+                }
+              }}
+              key={index}
+            >
+              {timePeriod}
+            </Radio>
+          )
+        })
     }
   </ContextConsumer>
 )

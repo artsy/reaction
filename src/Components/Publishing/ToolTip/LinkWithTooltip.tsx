@@ -1,4 +1,4 @@
-import Colors from "Assets/Colors"
+import { color as Color } from "@artsy/palette"
 import { defer } from "lodash"
 import PropTypes from "prop-types"
 import React, { Component } from "react"
@@ -10,6 +10,7 @@ import FadeTransition from "../../Animation/FadeTransition"
 import { ToolTip } from "./ToolTip"
 
 interface Props {
+  color?: string
   url: string
   tracking?: TrackingProp
 }
@@ -27,6 +28,10 @@ export class LinkWithTooltip extends Component<Props, State> {
     onTriggerToolTip: PropTypes.func,
     activeToolTip: PropTypes.any,
     waitForFade: PropTypes.string,
+  }
+
+  static defaultProps = {
+    color: "black",
   }
 
   public link: any
@@ -179,7 +184,7 @@ export class LinkWithTooltip extends Component<Props, State> {
   }
 
   render() {
-    const { url } = this.props
+    const { color, url } = this.props
     const { activeToolTip, waitForFade } = this.context
     const { orientation } = this.state
 
@@ -200,6 +205,7 @@ export class LinkWithTooltip extends Component<Props, State> {
         show={showWithFade}
       >
         <PrimaryLink
+          color={color}
           href={url}
           target="_blank"
           show={showWithFade}
@@ -242,27 +248,36 @@ export class LinkWithTooltip extends Component<Props, State> {
   }
 }
 
-export const PrimaryLink = styled.a.attrs<{ show: boolean }>({})`
+export const PrimaryLink = styled.a<{ color?: string; show: boolean }>`
   z-index: auto;
-  color: black;
   transition: color 0.25s;
   background-image: linear-gradient(
     to right,
-    ${Colors.graySemibold} 50%,
+    ${props => (props.color === "black" ? Color("black60") : props.color)} 50%,
     transparent 50%
   ) !important;
   background-size: 3px 1.75px !important;
   background-position: 0 1.07em !important;
+
   ${props =>
     props.show &&
+    props.color === "black" &&
     `
-    color: ${Colors.grayDark} !important;
+    color: ${Color("black30")} !important;
+
     background-image: linear-gradient(
       to right,
-      ${Colors.grayDark} 50%,
+      ${Color("black30")} 50%,
       transparent 50%
     ) !important;
   `};
+
+  ${props =>
+    props.show &&
+    props.color !== "black" &&
+    `
+      opacity: .65;
+    `};
 `
 
 const FadeContainer = styled.div`
@@ -274,11 +289,13 @@ const FadeContainer = styled.div`
   z-index: 0;
 `
 
-export const Link = styled.div.attrs<{ onMouseEnter: any; show: boolean }>({})`
+export const Link = styled.div<{ onMouseEnter: any; show: boolean }>`
   display: inline-block;
   position: relative;
   cursor: pointer;
+  text-indent: initial;
   z-index: ${props => (props.show ? 10 : 0)};
+
   ${FadeContainer} {
     ${props => props.show && `z-index: 10`};
   }

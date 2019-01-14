@@ -74,7 +74,7 @@ describe("ArticleCard", () => {
     expect(component.find(IconVideoPlay).length).toBe(0)
     expect(component.text()).not.toMatch("03:12")
     expect(component.text()).toMatch("Coming Soon")
-    expect(component.text()).toMatch("Available ")
+    expect(component.text()).toMatch("Available")
   })
 
   it("Renders publish date if layout does not have media", () => {

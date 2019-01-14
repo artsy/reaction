@@ -1,142 +1,289 @@
-import { Flex, Join, Message, Sans, Serif, Spacer } from "@artsy/palette"
+import {
+  Button,
+  Flex,
+  Join,
+  Message,
+  Sans,
+  Serif,
+  Spacer,
+} from "@artsy/palette"
 import { Status_order } from "__generated__/Status_order.graphql"
+import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
-import { ContextConsumer, Mediator } from "Artsy/SystemContext"
+import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
+import { Router } from "found"
 import React, { Component } from "react"
 import { Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
-import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { get } from "Utils/get"
+import { HorizontalPadding } from "Utils/HorizontalPadding"
+import createLogger from "Utils/logger"
+import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "../../Components/ArtworkSummaryItem"
+import { CreditCardSummaryItemFragmentContainer as CreditCardSummaryItem } from "../../Components/CreditCardSummaryItem"
 import { Helper } from "../../Components/Helper"
-import { ShippingAndPaymentSummaryFragmentContainer as ShippingAndPaymentSummary } from "../../Components/ShippingAndPaymentSummary"
-import { TransactionSummaryFragmentContainer as TransactionSummary } from "../../Components/TransactionSummary"
+import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "../../Components/ShippingSummaryItem"
+
+const logger = createLogger("Order/Routes/Status/index.tsx")
+
+interface StatusPageConfig {
+  title: React.ReactNode
+  description: React.ReactNode
+  // default showTransactionSummary is true
+  showTransactionSummary?: boolean
+}
 
 export interface StatusProps {
   order: Status_order
-  mediator: Mediator
+  router: Router
 }
 
 export class StatusRoute extends Component<StatusProps> {
-  stateCopy = () => {
-    const { state, requestedFulfillment } = this.props.order
-    switch (state) {
-      case "SUBMITTED":
-        return "Your order has been submitted."
-      case "APPROVED":
-        return "Your order is confirmed."
-      case "FULFILLED":
-        return requestedFulfillment.__typename === "Ship"
-          ? "Your order has shipped."
-          : "Your order has been picked up."
-      case "CANCELED":
-        return "Your order was canceled and refunded."
-    }
-  }
+  getStatusCopy(): StatusPageConfig {
+    const { state, requestedFulfillment, mode, stateReason } = this.props.order
+    const isOfferFlow = mode === "OFFER"
+    const isShip = requestedFulfillment.__typename === "Ship"
 
-  messageCopy = () => {
-    const { order } = this.props
-    const { state, requestedFulfillment } = order
     switch (state) {
       case "SUBMITTED":
-        return (
-          <>
-            Thank you for your purchase. You will receive a confirmation email
-            within 2 days.
-          </>
-        )
+        return isOfferFlow
+          ? {
+              title: "Your offer has been submitted",
+              description: (
+                <>
+                  The seller has 48 hours to respond to your offer. Keep in mind
+                  making an offer doesn’t guarantee you the work.
+                </>
+              ),
+            }
+          : {
+              title: "Your order has been submitted",
+              description: (
+                <>
+                  Thank you for your purchase. You will receive a confirmation
+                  email within 2 days.
+                </>
+              ),
+            }
       case "APPROVED":
-        return requestedFulfillment.__typename === "Ship" ? (
-          <>
-            Thank you for your purchase. You will be notified when the work has
-            shipped, typically within 5–7 business days.
-          </>
-        ) : (
-          <>
-            Thank you for your purchase. A specialist will contact you within 2
-            business days to coordinate pickup.
-          </>
-        )
-      case "FULFILLED":
-        const fulfillment = get(
-          order,
-          o => o.lineItems.edges[0].node.fulfillments.edges[0].node
-        )
-        if (!fulfillment) {
-          return false
+        return {
+          title: isOfferFlow ? "Offer accepted" : "Your order is confirmed",
+          description: isShip ? (
+            <>
+              Thank you for your purchase. You will be notified when the work
+              has shipped, typically within 5–7 business days.
+            </>
+          ) : (
+            <>
+              Thank you for your purchase. A specialist will contact you within
+              2 business days to coordinate pickup.
+            </>
+          ),
         }
-        return requestedFulfillment.__typename === "Ship" ? (
-          <>
-            <>Your work is on its way.</>
-            <br />
-            <br />
-            {fulfillment.courier && (
-              <>
-                Shipper: {fulfillment.courier} <br />
-              </>
-            )}
-            {fulfillment.trackingId && (
-              <>
-                <>Tracking Info: {fulfillment.trackingId}</>
-                <br />
-              </>
-            )}
-            {fulfillment.estimatedDelivery && (
-              <>Estimated delivery: {fulfillment.estimatedDelivery}</>
-            )}
-          </>
-        ) : (
-          false
-        )
+      case "FULFILLED": {
+        return isShip
+          ? {
+              title: "Your order has shipped",
+              description: this.getFulfilmentDescription(),
+            }
+          : {
+              title: "Your order has been picked up",
+              description: null,
+            }
+      }
       case "CANCELED":
-        return (
-          <>
-            Please allow 5–7 business days for the refund to appear on your bank
-            statement. Contact{" "}
-            <a href="mailto:orders@artsy.net">orders@artsy.net</a> with any
-            questions.
-          </>
-        )
+      case "REFUNDED":
+        if (!isOfferFlow || state === "REFUNDED" || stateReason === null) {
+          // stateReason === null for offer orders only if the order was rejected
+          // after the offer was accepted.
+          return {
+            title: "Your order was canceled and refunded",
+            description: (
+              <>
+                Please allow 5–7 business days for the refund to appear on your
+                bank statement. Contact{" "}
+                <a href="mailto:orders@artsy.net">orders@artsy.net</a> with any
+                questions.
+              </>
+            ),
+          }
+        }
+        // otherwise this was an offer order that was rejected before being
+        // accepted
+        return this.getCanceledOfferOrderCopy()
+      default:
+        // This should not happen. Check the order states are all accounted for:
+        // https://github.com/artsy/exchange/blob/master/app/models/order.rb
+        // (Aside from PENDING and ABANDONED)
+        logger.error(`Unhandled order state: ${state}`)
+        return {
+          title: "Your order",
+          description: null,
+        }
     }
   }
 
-  componentDidMount() {
-    this.props.mediator.trigger("order:status")
+  getCanceledOfferOrderCopy(): StatusPageConfig {
+    const { stateReason } = this.props.order
+    switch (stateReason) {
+      case "buyer_rejected":
+        return {
+          title: "Offer declined",
+          description: (
+            <>
+              Thank you for your response. The seller will be informed of your
+              decision to end the negotiation process.
+              <br />
+              <br />
+              We’d love to get your feedback. Contact{" "}
+              <a href="mailto:orders@artsy.net">orders@artsy.net</a> with any
+              comments you have.
+            </>
+          ),
+          showTransactionSummary: false,
+        }
+      case "seller_rejected_offer_too_low":
+      case "seller_rejected_shipping_unavailable":
+      case "seller_rejected":
+      case "seller_rejected_artwork_unavailable":
+      case "seller_rejected_other":
+        return {
+          title: "Offer declined",
+          description: (
+            <>
+              Sorry, the seller declined your offer and has ended the
+              negotiation process.
+            </>
+          ),
+          showTransactionSummary: false,
+        }
+      case "buyer_lapsed":
+        return {
+          title: "Offer expired",
+          description: (
+            <>The seller’s offer expired because you didn’t respond in time.</>
+          ),
+          showTransactionSummary: false,
+        }
+      case "seller_lapsed":
+        return {
+          title: "Offer expired",
+          description: (
+            <>
+              Your offer expired because the seller didn’t respond to your offer
+              in time.
+            </>
+          ),
+          showTransactionSummary: false,
+        }
+      default:
+        // This should not happen. Check the cancel reasons are all accounted for:
+        // https://github.com/artsy/exchange/blob/master/app/models/order.rb
+        logger.error(`Unhandled cancellation reason: ${stateReason}`)
+        return {
+          title: "Offer declined",
+          description: null,
+          showTransactionSummary: false,
+        }
+    }
+  }
+
+  getFulfilmentDescription(): React.ReactNode {
+    const fulfillment = get(
+      this.props.order,
+      o => o.lineItems.edges[0].node.fulfillments.edges[0].node
+    )
+
+    if (!fulfillment) {
+      return null
+    }
+
+    return (
+      <>
+        Your work is on its way.
+        <br />
+        <br />
+        {fulfillment.courier && (
+          <>
+            Shipper: {fulfillment.courier}
+            <br />
+          </>
+        )}
+        {fulfillment.trackingId && (
+          <>
+            <>Tracking info: {fulfillment.trackingId}</>
+            <br />
+          </>
+        )}
+        {fulfillment.estimatedDelivery && (
+          <>Estimated delivery: {fulfillment.estimatedDelivery}</>
+        )}
+      </>
+    )
   }
 
   render() {
     const { order } = this.props
 
-    const message = this.messageCopy()
+    const flowName = order.mode === "OFFER" ? "Offer" : "Order"
+    const {
+      title,
+      description,
+      showTransactionSummary = true,
+    } = this.getStatusCopy()
 
     return (
       <HorizontalPadding>
         <Serif size="6" weight="regular" color="black100">
-          {this.stateCopy()}
+          {title}
         </Serif>
         <Sans size="2" weight="regular" color="black60" mb={[2, 3]}>
-          Order #{order.code}
+          {flowName} #{order.code}
         </Sans>
         <TwoColumnLayout
           Content={
             <>
-              <Title>Order status | Artsy</Title>
+              <Title>{flowName} status | Artsy</Title>
               <Join separator={<Spacer mb={[2, 3]} />}>
-                {message && <Message>{message}</Message>}
-                <TransactionSummary order={order} />
+                {description && <Message p={[2, 3]}>{description}</Message>}
+                {showTransactionSummary ? (
+                  <Flex flexDirection="column">
+                    <ArtworkSummaryItem order={order} />
+                    <TransactionDetailsSummaryItem
+                      order={order}
+                      useLastSubmittedOffer
+                    />
+                  </Flex>
+                ) : (
+                  <Button
+                    onClick={() => {
+                      window.location.href = "/"
+                    }}
+                    size="large"
+                    width="100%"
+                  >
+                    Back to Artsy
+                  </Button>
+                )}
               </Join>
               <Spacer mb={[2, 3]} />
             </>
           }
           Sidebar={
-            <Flex flexDirection="column">
-              <ShippingAndPaymentSummary order={order} mb={[2, 3]} />
-              <Helper
-                artworkId={get(
-                  order,
-                  o => o.lineItems.edges[0].node.artwork.id
-                )}
-              />
-            </Flex>
+            showTransactionSummary && (
+              <Flex flexDirection="column">
+                <Flex flexDirection="column">
+                  <ShippingSummaryItem order={order} />
+                  <CreditCardSummaryItem order={order} />
+                </Flex>
+                <Spacer mb={[2, 3]} />
+                <Helper
+                  artworkId={get(
+                    order,
+                    o => o.lineItems.edges[0].node.artwork.id
+                  )}
+                />
+              </Flex>
+            )
           }
         />
       </HorizontalPadding>
@@ -144,21 +291,16 @@ export class StatusRoute extends Component<StatusProps> {
   }
 }
 
-const StatusRouteWrapper = props => (
-  <ContextConsumer>
-    {({ mediator }) => {
-      return <StatusRoute {...props} mediator={mediator} />
-    }}
-  </ContextConsumer>
-)
-
 export const StatusFragmentContainer = createFragmentContainer(
-  StatusRouteWrapper,
+  trackPageViewWrapper(StatusRoute),
   graphql`
     fragment Status_order on Order {
+      __typename
       id
       code
       state
+      mode
+      stateReason
       requestedFulfillment {
         ... on Ship {
           __typename
@@ -167,8 +309,10 @@ export const StatusFragmentContainer = createFragmentContainer(
           __typename
         }
       }
-      ...TransactionSummary_order
-      ...ShippingAndPaymentSummary_order
+      ...ArtworkSummaryItem_order
+      ...TransactionDetailsSummaryItem_order
+      ...ShippingSummaryItem_order
+      ...CreditCardSummaryItem_order
       lineItems {
         edges {
           node {
@@ -183,9 +327,21 @@ export const StatusFragmentContainer = createFragmentContainer(
             }
             artwork {
               id
+              is_acquireable
               ...ItemReview_artwork
             }
           }
+        }
+      }
+      ... on OfferOrder {
+        myLastOffer {
+          id
+          amount(precision: 2)
+          amountCents
+          shippingTotal(precision: 2)
+          shippingTotalCents
+          taxTotal(precision: 2)
+          taxTotalCents
         }
       }
     }

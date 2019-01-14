@@ -2,7 +2,6 @@ import { CollectFilterContainer_viewer } from "__generated__/CollectFilterContai
 import { ContextConsumer } from "Artsy"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Responsive } from "Utils/Responsive"
 import { CollectRefetchContainer } from "./CollectRefetch"
 
 import { FilterState } from "Apps/Collect/FilterState"
@@ -23,25 +22,18 @@ export class CollectFilterContainer extends Component<
       <ContextConsumer>
         {({ user, mediator }) => {
           return (
-            <Responsive>
-              {({ xs }) => {
-                return (
-                  <FilterContainer
-                    isMobile={xs}
-                    user={user}
-                    mediator={mediator}
-                    mediums={mediumAggregation.counts as any}
-                  >
-                    {(filters: FilterState) => (
-                      <CollectRefetchContainer
-                        viewer={this.props.viewer}
-                        filtersState={filters.state}
-                      />
-                    )}
-                  </FilterContainer>
-                )
-              }}
-            </Responsive>
+            <FilterContainer
+              user={user}
+              mediator={mediator}
+              mediums={mediumAggregation.counts as any}
+            >
+              {(filters: FilterState) => (
+                <CollectRefetchContainer
+                  viewer={this.props.viewer}
+                  filtersState={filters.state}
+                />
+              )}
+            </FilterContainer>
           )
         }}
       </ContextConsumer>
@@ -60,6 +52,7 @@ export const CollectFilterFragmentContainer = createFragmentContainer(
         for_sale: { type: "Boolean" }
         at_auction: { type: "Boolean" }
         acquireable: { type: "Boolean" }
+        offerable: { type: "Boolean" }
         inquireable_only: { type: "Boolean" }
         aggregations: {
           type: "[ArtworkAggregation]"
@@ -93,6 +86,7 @@ export const CollectFilterFragmentContainer = createFragmentContainer(
           price_range: $price_range
           artist_id: $artist_id
           attribution_class: $attribution_class
+          offerable: $offerable
         )
     }
   `

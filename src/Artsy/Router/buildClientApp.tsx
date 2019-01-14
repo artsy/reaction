@@ -1,6 +1,5 @@
-import { createEnvironment } from "Artsy/Relay/createEnvironment"
+import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
 import { Boot } from "Artsy/Router/Components/Boot"
-import { Hydrator } from "Artsy/Router/Components/Hydrator"
 import BrowserProtocol from "farce/lib/BrowserProtocol"
 import HashProtocol from "farce/lib/HashProtocol"
 import MemoryProtocol from "farce/lib/MemoryProtocol"
@@ -13,6 +12,7 @@ import { loadComponents } from "loadable-components"
 import React, { ComponentType } from "react"
 import { getUser } from "Utils/getUser"
 import { RouterConfig } from "./"
+import { createRouteConfig } from "./Utils/createRouteConfig"
 
 interface Resolve {
   ClientApp: ComponentType<any>
@@ -31,11 +31,13 @@ export function buildClientApp(config: RouterConfig): Promise<Resolve> {
       const { relayNetwork, user } = context
       const relayBootstrap = JSON.parse(window.__RELAY_BOOTSTRAP__ || "{}")
       const _user = getUser(user)
-      const relayEnvironment = createEnvironment({
-        cache: relayBootstrap,
-        user: _user,
-        relayNetwork,
-      })
+      const relayEnvironment =
+        context.relayEnvironment ||
+        createRelaySSREnvironment({
+          cache: relayBootstrap,
+          user: _user,
+          relayNetwork,
+        })
 
       const getHistoryProtocol = () => {
         switch (history.protocol) {
@@ -57,7 +59,7 @@ export function buildClientApp(config: RouterConfig): Promise<Resolve> {
         historyProtocol: getHistoryProtocol(),
         historyMiddlewares,
         historyOptions: history.options,
-        routeConfig: routes,
+        routeConfig: createRouteConfig(routes),
         resolver,
         render: renderArgs => (
           <ScrollManager renderArgs={renderArgs}>
@@ -81,9 +83,7 @@ export function buildClientApp(config: RouterConfig): Promise<Resolve> {
             resolver={resolver}
             routes={routes}
           >
-            <Hydrator>
-              <Router resolver={resolver} />
-            </Hydrator>
+            <Router resolver={resolver} />
           </Boot>
         )
       }
@@ -93,6 +93,7 @@ export function buildClientApp(config: RouterConfig): Promise<Resolve> {
       })
     } catch (error) {
       console.error("[Artsy/Router/buildClientApp]", error)
+      reject(error)
     }
   })
 }

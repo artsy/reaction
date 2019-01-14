@@ -1,9 +1,17 @@
-import { Box, Flex, LargeSelect, Sans, Separator, Spacer } from "@artsy/palette"
 import React from "react"
-import { Col, Row } from "Styleguide/Elements/Grid"
 import { Subscribe } from "unstated"
 import { Media } from "Utils/Responsive"
 import { AuctionResultsState } from "./state"
+
+import {
+  Col,
+  Flex,
+  LargeSelect,
+  Row,
+  Sans,
+  Separator,
+  Spacer,
+} from "@artsy/palette"
 
 const SORTS = [
   {
@@ -26,69 +34,30 @@ interface Props {
 
 export const TableSidebar = (props: Props) => {
   return (
-    <>
-      <Media at="xs">
-        <SmallTableSidebar {...props} />
-      </Media>
-      <Media greaterThan="xs">
-        <LargeTableSidebar {...props} />
-      </Media>
-    </>
-  )
-}
-
-const LargeTableSidebar = (props: Props) => {
-  return (
     <Subscribe to={[AuctionResultsState]}>
       {(filters: AuctionResultsState) => {
         return (
-          <>
-            <Col sm={2} pr={2}>
-              <Row>
-                <Col>{renderCount(props.count)}</Col>
-              </Row>
+          <Flex flexDirection="column">
+            <Row>
+              <Col>{renderCount(props.count)}</Col>
+            </Row>
 
-              <Box pt={0.5}>
+            <Media greaterThan="xs">
+              <Row pt={0.5}>
                 <Separator />
-              </Box>
-
-              <Spacer mt={3} />
-
-              <Row>
-                <Col>
-                  <LargeSelect
-                    options={SORTS}
-                    selected={filters.state.sort}
-                    onSelect={filters.setSort}
-                  />
-                </Col>
               </Row>
-            </Col>
-          </>
-        )
-      }}
-    </Subscribe>
-  )
-}
+            </Media>
 
-const SmallTableSidebar = (props: Props) => {
-  return (
-    <Subscribe to={[AuctionResultsState]}>
-      {(filters: AuctionResultsState) => {
-        return (
-          <Col>
-            <Flex flexDirection="column" alignItems="center">
-              <Box mb={2}>{renderCount(props.count)}</Box>
+            <Spacer mt={[2, 3]} />
 
-              <LargeSelect
-                options={SORTS}
-                selected={filters.state.sort}
-                onSelect={filters.setSort}
-              />
+            <LargeSelect
+              options={SORTS}
+              selected={filters.state.sort}
+              onSelect={filters.setSort}
+            />
 
-              <Spacer mb={2} />
-            </Flex>
-          </Col>
+            <Spacer mb={2} />
+          </Flex>
         )
       }}
     </Subscribe>

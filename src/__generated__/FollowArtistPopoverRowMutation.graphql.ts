@@ -8,6 +8,7 @@ export type FollowArtistInput = {
 };
 export type FollowArtistPopoverRowMutationVariables = {
     readonly input: FollowArtistInput;
+    readonly excludeArtistIds: ReadonlyArray<string | null>;
 };
 export type FollowArtistPopoverRowMutationResponse = {
     readonly followArtist: ({
@@ -18,8 +19,8 @@ export type FollowArtistPopoverRowMutationResponse = {
                     readonly edges: ReadonlyArray<({
                         readonly node: ({
                             readonly __id: string;
-                            readonly id: string;
                             readonly _id: string;
+                            readonly id: string;
                             readonly name: string | null;
                             readonly image: ({
                                 readonly cropped: ({
@@ -43,20 +44,21 @@ export type FollowArtistPopoverRowMutation = {
 /*
 mutation FollowArtistPopoverRowMutation(
   $input: FollowArtistInput!
+  $excludeArtistIds: [String]!
 ) {
   followArtist(input: $input) {
     artist {
       __id
       related {
-        suggested(first: 1, exclude_followed_artists: true) {
+        suggested(first: 1, exclude_followed_artists: true, exclude_artist_ids: $excludeArtistIds) {
           edges {
             node {
               __id
-              id
               _id
+              id
               name
               image {
-                cropped(width: 100, height: 100) {
+                cropped(width: 45, height: 45) {
                   url
                 }
               }
@@ -75,6 +77,12 @@ var v0 = [
     "kind": "LocalArgument",
     "name": "input",
     "type": "FollowArtistInput!",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "excludeArtistIds",
+    "type": "[String]!",
     "defaultValue": null
   }
 ],
@@ -125,8 +133,14 @@ v2 = [
                 "kind": "LinkedField",
                 "alias": null,
                 "name": "suggested",
-                "storageKey": "suggested(exclude_followed_artists:true,first:1)",
+                "storageKey": null,
                 "args": [
+                  {
+                    "kind": "Variable",
+                    "name": "exclude_artist_ids",
+                    "variableName": "excludeArtistIds",
+                    "type": "[String]"
+                  },
                   {
                     "kind": "Literal",
                     "name": "exclude_followed_artists",
@@ -165,14 +179,14 @@ v2 = [
                           {
                             "kind": "ScalarField",
                             "alias": null,
-                            "name": "id",
+                            "name": "_id",
                             "args": null,
                             "storageKey": null
                           },
                           {
                             "kind": "ScalarField",
                             "alias": null,
-                            "name": "_id",
+                            "name": "id",
                             "args": null,
                             "storageKey": null
                           },
@@ -196,18 +210,18 @@ v2 = [
                                 "kind": "LinkedField",
                                 "alias": null,
                                 "name": "cropped",
-                                "storageKey": "cropped(height:100,width:100)",
+                                "storageKey": "cropped(height:45,width:45)",
                                 "args": [
                                   {
                                     "kind": "Literal",
                                     "name": "height",
-                                    "value": 100,
+                                    "value": 45,
                                     "type": "Int!"
                                   },
                                   {
                                     "kind": "Literal",
                                     "name": "width",
-                                    "value": 100,
+                                    "value": 45,
                                     "type": "Int!"
                                   }
                                 ],
@@ -243,7 +257,7 @@ return {
   "operationKind": "mutation",
   "name": "FollowArtistPopoverRowMutation",
   "id": null,
-  "text": "mutation FollowArtistPopoverRowMutation(\n  $input: FollowArtistInput!\n) {\n  followArtist(input: $input) {\n    artist {\n      __id\n      related {\n        suggested(first: 1, exclude_followed_artists: true) {\n          edges {\n            node {\n              __id\n              id\n              _id\n              name\n              image {\n                cropped(width: 100, height: 100) {\n                  url\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation FollowArtistPopoverRowMutation(\n  $input: FollowArtistInput!\n  $excludeArtistIds: [String]!\n) {\n  followArtist(input: $input) {\n    artist {\n      __id\n      related {\n        suggested(first: 1, exclude_followed_artists: true, exclude_artist_ids: $excludeArtistIds) {\n          edges {\n            node {\n              __id\n              _id\n              id\n              name\n              image {\n                cropped(width: 45, height: 45) {\n                  url\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -261,5 +275,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'd19415be63809708fc929740457bf12a';
+(node as any).hash = '00f75e29203f26f7db1cb195fcda5978';
 export default node;

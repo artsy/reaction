@@ -1,7 +1,7 @@
 import React from "react"
 import sizeMe from "react-sizeme"
 import track, { TrackingProp } from "react-tracking"
-import styled, { StyledFunction } from "styled-components"
+import styled from "styled-components"
 import urlParser from "url"
 import Events from "../../../Utils/Events"
 import { resize } from "../../../Utils/resizer"
@@ -17,6 +17,7 @@ const QUERYSTRING =
 export const VIDEO_RATIO = 0.5625
 
 interface VideoProps {
+  color?: string
   section: {
     url: string
     caption?: string
@@ -94,17 +95,20 @@ class VideoComponent extends React.Component<VideoProps, VideoState> {
   }
 
   render() {
-    const { caption, cover_image_url } = this.props.section
-    const { width } = this.props.size
-    const src = resize(cover_image_url, { width: 1200 })
-    const showCaption = this.props.layout !== "feature"
+    const {
+      color,
+      layout,
+      section: { caption, cover_image_url },
+      size: { width },
+    } = this.props
+    const showCaption = layout !== "feature"
 
     return (
-      <VideoContainer layout={this.props.layout} className="VideoContainer">
+      <VideoContainer layout={layout} className="VideoContainer">
         {cover_image_url && (
           <CoverImage
             className="VideoCover"
-            src={src}
+            src={resize(cover_image_url, { width: 1200 })}
             height={width && width * VIDEO_RATIO}
             onClick={this.playVideo}
             hidden={this.state.hidden}
@@ -121,7 +125,7 @@ class VideoComponent extends React.Component<VideoProps, VideoState> {
         />
 
         {showCaption && (
-          <Caption caption={caption} layout={this.props.layout}>
+          <Caption caption={caption} layout={layout} color={color}>
             {this.props.children}
           </Caption>
         )}
@@ -167,9 +171,7 @@ function getId(url) {
 
 // Styles
 
-const iframe: StyledFunction<React.HTMLProps<HTMLIFrameElement>> = styled.iframe
-
-export const IFrame = iframe`
+export const IFrame = styled.iframe`
   width: 100%;
   height: ${props => (props.height ? `${props.height}px` : "100%")};
 `
@@ -180,10 +182,7 @@ interface CoverImageProps {
   layout?: ArticleLayout
 }
 
-const Div: StyledFunction<CoverImageProps & React.HTMLProps<HTMLDivElement>> =
-  styled.div
-
-const VideoContainer = Div`
+const VideoContainer = styled.div<CoverImageProps>`
   width: 100%;
   position: relative;
 
@@ -204,10 +203,10 @@ const VideoContainer = Div`
         `}
       `
     }
-  }}
+  }};
 `
 
-export const CoverImage = Div`
+export const CoverImage = styled.div<CoverImageProps>`
   display: ${props => (props.hidden || !props.src ? "none" : "flex")};
   justify-content: center;
   align-items: center;

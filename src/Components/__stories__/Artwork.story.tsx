@@ -3,7 +3,7 @@ import React from "react"
 import { graphql } from "react-relay"
 
 import { RootQueryRenderer } from "Artsy/Relay/RootQueryRenderer"
-import RelayArtwork, { Artwork } from "../Artwork"
+import Artwork from "../Artwork"
 
 function ArtworkExample(props: { artworkID: string }) {
   return (
@@ -17,7 +17,7 @@ function ArtworkExample(props: { artworkID: string }) {
       `}
       variables={{ artworkID: props.artworkID }}
       render={readyState =>
-        readyState.props && <RelayArtwork {...readyState.props as any} />
+        readyState.props && <Artwork {...readyState.props as any} />
       }
     />
   )
@@ -39,30 +39,3 @@ storiesOf("Components/Artwork/Singular", module)
   .add("A portrait artwork (extra tall)", () => (
     <ArtworkExample artworkID="snik-untitled-vertical" />
   ))
-  .add("Without Relay", () => {
-    const artwork = {
-      id: "mikael-olson-some-kind-of-dinosaur",
-      title: "Some Kind of Dinosaur",
-      date: "2015",
-      sale_message: "$875",
-      is_in_auction: false,
-      image: {
-        url:
-          "https://d32dm0rphc51dk.cloudfront.net/WhROiQBIHoXNIBr2zW3RUw/larger.jpg",
-        aspect_ratio: 0.74,
-        placeholder: "134.6445824706694%",
-      },
-      artists: [
-        {
-          __id: "mikael-olson",
-          name: "Mikael Olson",
-        },
-      ],
-      partner: {
-        name: "Gallery 1261",
-      },
-      href: "/artwork/mikael-olson-some-kind-of-dinosaur",
-    }
-
-    return <Artwork artwork={artwork as any} useRelay={false} />
-  })

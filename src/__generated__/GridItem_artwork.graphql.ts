@@ -6,13 +6,18 @@ import { Save_artwork$ref } from "./Save_artwork.graphql";
 declare const _GridItem_artwork$ref: unique symbol;
 export type GridItem_artwork$ref = typeof _GridItem_artwork$ref;
 export type GridItem_artwork = {
+    readonly _id: string;
     readonly image: ({
         readonly placeholder: string | null;
         readonly url: string | null;
         readonly aspect_ratio: number;
     }) | null;
     readonly is_biddable: boolean | null;
+    readonly sale: ({
+        readonly is_preview: boolean | null;
+    }) | null;
     readonly is_acquireable: boolean | null;
+    readonly is_offerable: boolean | null;
     readonly href: string | null;
     readonly " $fragmentRefs": Metadata_artwork$ref & Save_artwork$ref;
     readonly " $refType": GridItem_artwork$ref;
@@ -20,13 +25,28 @@ export type GridItem_artwork = {
 
 
 
-const node: ConcreteFragment = {
+const node: ConcreteFragment = (function(){
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
+};
+return {
   "kind": "Fragment",
   "name": "GridItem_artwork",
   "type": "Artwork",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "_id",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -74,9 +94,35 @@ const node: ConcreteFragment = {
       "storageKey": null
     },
     {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "sale",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Sale",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "is_preview",
+          "args": null,
+          "storageKey": null
+        },
+        v0
+      ]
+    },
+    {
       "kind": "ScalarField",
       "alias": null,
       "name": "is_acquireable",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "is_offerable",
       "args": null,
       "storageKey": null
     },
@@ -97,14 +143,9 @@ const node: ConcreteFragment = {
       "name": "Save_artwork",
       "args": null
     },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
-    }
+    v0
   ]
 };
-(node as any).hash = '7d787e18a67dccb515e738babcc841fc';
+})();
+(node as any).hash = 'e36a0aaa7b13fcdcaf4d835a4fa80bfd';
 export default node;

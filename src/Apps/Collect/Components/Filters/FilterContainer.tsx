@@ -11,14 +11,14 @@ import { TimePeriodFilter } from "./TimePeriodFilter"
 import { WaysToBuyFilter } from "./WaysToBuyFilter"
 
 import { Box, Flex, Separator, Spacer } from "@artsy/palette"
-import { Toggle } from "Styleguide/Components"
+import { Toggle } from "Components/v2"
+import { Media } from "Utils/Responsive"
 
 export interface FilterContainerProps {
   user?: any
   mediator: Mediator
   mediums: Array<{ id: string; name: string }>
   timePeriods?: Array<{ name: string }>
-  isMobile?: boolean
 }
 
 export interface FilterContainerState {
@@ -28,10 +28,6 @@ export class FilterContainer extends React.Component<
   FilterContainerProps,
   FilterContainerState
 > {
-  static defaultProps = {
-    isMobile: false,
-  }
-
   state = {
     showMobileActionSheet: false,
   }
@@ -43,11 +39,13 @@ export class FilterContainer extends React.Component<
   }
 
   renderFilters(filters: FilterState) {
-    const { mediums, timePeriods, isMobile } = this.props
+    const { mediums, timePeriods } = this.props
 
     return (
       <>
-        {!isMobile && <Separator mb={2} mt={-1} />}
+        <Media greaterThan="xs">
+          <Separator mb={2} mt={-1} />
+        </Media>
 
         <Flex flexDirection="column" alignItems="left" mt={-1} mb={1}>
           <WaysToBuyFilter filters={filters} />
@@ -72,7 +70,6 @@ export class FilterContainer extends React.Component<
   }
 
   render() {
-    const { isMobile } = this.props
     const Filters = ({ filters }) => this.renderFilters(filters)
 
     // tslint:disable-next-line:ban-types
@@ -88,9 +85,9 @@ export class FilterContainer extends React.Component<
       )
 
     const Desktop = props => (
-      <Sidebar width="25%" mr={2}>
+      <Box width="25%" mr={2}>
         <Filters {...props} />
-      </Sidebar>
+      </Box>
     )
 
     return (
@@ -98,20 +95,25 @@ export class FilterContainer extends React.Component<
         {(filters: FilterState) => {
           return (
             <Flex>
-              {isMobile ? (
+              <Media at="xs">
                 <Mobile filters={filters} />
-              ) : (
-                <Desktop filters={filters} />
-              )}
-
+              </Media>
+              <Media greaterThan="xs">
+                {(className, renderChildren) =>
+                  renderChildren && (
+                    <Desktop filters={filters} className={className} />
+                  )
+                }
+              </Media>
               <span id="jump--collectArtworkGrid" />
 
-              <Box width={isMobile ? "100%" : "75%"}>
-                {!isMobile && <Separator mb={2} mt={-1} />}
+              <Box width={["100%", "75%"]}>
+                <Media greaterThan="xs">
+                  <Separator mb={2} mt={-1} />
+                </Media>
 
                 <SortFilter
                   filters={filters}
-                  xs={isMobile}
                   onShow={() => this.setState({ showMobileActionSheet: true })}
                 />
 
@@ -126,5 +128,3 @@ export class FilterContainer extends React.Component<
     )
   }
 }
-
-const Sidebar = Box

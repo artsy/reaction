@@ -2,7 +2,11 @@ import React from "react"
 import track, { TrackingProp } from "react-tracking"
 import Events from "../../Utils/Events"
 
+import { Theme, themeProps } from "@artsy/palette"
+import { GridThemeProvider } from "styled-bootstrap-grid"
+import { MediaContextProvider } from "Utils/Responsive"
 import { BannerWrapper } from "./Banner/Banner"
+import { PixelTracker } from "./Display/ExternalTrackers"
 import ArticleWithFullScreen from "./Layouts/ArticleWithFullScreen"
 import { ClassicLayout } from "./Layouts/ClassicLayout"
 import { NewsLayout } from "./Layouts/NewsLayout"
@@ -13,6 +17,9 @@ import { ArticleData, DisplayData } from "./Typings"
 
 export interface ArticleProps {
   article: ArticleData
+  backgroundColor?: string
+  color?: string
+  customEditorial?: string
   relatedArticles?: any
   relatedArticlesForPanel?: any
   relatedArticlesForCanvas?: any
@@ -21,6 +28,7 @@ export interface ArticleProps {
   isHovered?: boolean
   isLoggedIn?: boolean
   isMobile?: boolean
+  isTablet?: boolean
   infiniteScrollEntrySlug?: string
   isSuper?: boolean
   isTruncated?: boolean
@@ -80,14 +88,41 @@ export class Article extends React.Component<ArticleProps> {
     )
   }
 
+  sponsorPixelTrackingCode = article => {
+    if (article.sponsor && article.sponsor.pixel_tracking_code) {
+      return article.sponsor
+    } else if (
+      article.seriesArticle &&
+      article.seriesArticle.sponsor &&
+      article.seriesArticle.sponsor.pixel_tracking_code
+    ) {
+      return article.seriesArticle.sponsor
+    }
+  }
+
   render() {
+    const { article } = this.props
+    const trackingCode = this.sponsorPixelTrackingCode(article)
+
     return (
-      <FullScreenProvider>
-        {this.getArticleLayout()}
-        {this.shouldRenderSignUpCta() && (
-          <BannerWrapper article={this.props.article} />
-        )}
-      </FullScreenProvider>
+      <MediaContextProvider>
+        <Theme>
+          <GridThemeProvider gridTheme={themeProps.grid}>
+            <FullScreenProvider>
+              {this.getArticleLayout()}
+              {trackingCode && (
+                <PixelTracker
+                  unit={trackingCode}
+                  date={this.props.renderTime}
+                />
+              )}
+              {this.shouldRenderSignUpCta() && (
+                <BannerWrapper article={article} />
+              )}
+            </FullScreenProvider>
+          </GridThemeProvider>
+        </Theme>
+      </MediaContextProvider>
     )
   }
 }

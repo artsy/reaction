@@ -21,7 +21,7 @@ interface State {
 export class Text extends Component<Props, State> {
   static defaultProps = {
     color: "black",
-    showToolTip: false,
+    showTooltips: false,
   }
 
   state = {
@@ -72,6 +72,7 @@ export class Text extends Component<Props, State> {
   }
 
   transformNode = (node, index) => {
+    const { color } = this.props
     // Dont include relay components unless necessary
     // To avoid 'regeneratorRuntime' error
     const LinkWithTooltip = require("../ToolTip/LinkWithTooltip").default
@@ -88,7 +89,7 @@ export class Text extends Component<Props, State> {
 
       if (text) {
         return (
-          <LinkWithTooltip key={href + index} url={href}>
+          <LinkWithTooltip key={href + index} url={href} color={color}>
             {text}
           </LinkWithTooltip>
         )

@@ -5,11 +5,15 @@ declare const _ArtworkSidebarBidAction_artwork$ref: unique symbol;
 export type ArtworkSidebarBidAction_artwork$ref = typeof _ArtworkSidebarBidAction_artwork$ref;
 export type ArtworkSidebarBidAction_artwork = {
     readonly myLotStanding: ReadonlyArray<{
-        readonly active_bid: ({
-            readonly __id: string;
+        readonly most_recent_bid: ({
+            readonly max_bid: ({
+                readonly cents: number | null;
+            }) | null;
         }) | null;
     }> | null;
+    readonly id: string;
     readonly sale: ({
+        readonly id: string;
         readonly registrationStatus: ({
             readonly qualified_for_bidding: boolean | null;
         }) | null;
@@ -21,6 +25,7 @@ export type ArtworkSidebarBidAction_artwork = {
     }) | null;
     readonly sale_artwork: ({
         readonly increments: ReadonlyArray<({
+            readonly cents: number | null;
             readonly display: string | null;
         }) | null> | null;
     }) | null;
@@ -33,7 +38,21 @@ const node: ConcreteFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
+  "name": "cents",
+  "args": null,
+  "storageKey": null
+},
+v1 = {
+  "kind": "ScalarField",
+  "alias": null,
   "name": "__id",
+  "args": null,
+  "storageKey": null
+},
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
   "args": null,
   "storageKey": null
 };
@@ -63,17 +82,30 @@ return {
         {
           "kind": "LinkedField",
           "alias": null,
-          "name": "active_bid",
+          "name": "most_recent_bid",
           "storageKey": null,
           "args": null,
           "concreteType": "BidderPosition",
           "plural": false,
           "selections": [
-            v0
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "max_bid",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "BidderPositionMaxBid",
+              "plural": false,
+              "selections": [
+                v0
+              ]
+            },
+            v1
           ]
         }
       ]
     },
+    v2,
     {
       "kind": "LinkedField",
       "alias": null,
@@ -83,6 +115,7 @@ return {
       "concreteType": "Sale",
       "plural": false,
       "selections": [
+        v2,
         {
           "kind": "LinkedField",
           "alias": null,
@@ -99,7 +132,7 @@ return {
               "args": null,
               "storageKey": null
             },
-            v0
+            v1
           ]
         },
         {
@@ -137,7 +170,7 @@ return {
           "args": null,
           "storageKey": null
         },
-        v0
+        v1
       ]
     },
     {
@@ -158,6 +191,7 @@ return {
           "concreteType": "BidIncrementsFormatted",
           "plural": true,
           "selections": [
+            v0,
             {
               "kind": "ScalarField",
               "alias": null,
@@ -167,12 +201,12 @@ return {
             }
           ]
         },
-        v0
+        v1
       ]
     },
-    v0
+    v1
   ]
 };
 })();
-(node as any).hash = '0c13eb232a51adf1298a9db92aedd3fb';
+(node as any).hash = '0159e1eb4d2fdee5ed62f71337414743';
 export default node;

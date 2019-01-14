@@ -1,6 +1,5 @@
-import { Box, Flex, Serif } from "@artsy/palette"
+import { Box, Flex, LocationIcon, Serif, Spacer } from "@artsy/palette"
 import { filterLocations } from "Apps/Artwork/Utils/filterLocations"
-import { Location } from "Assets/Icons/Location"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 
@@ -29,13 +28,6 @@ export class ArtworkSidebarPartnerInfo extends React.Component<
       </Serif>
     )
   }
-  renderCollectingInstitution() {
-    return (
-      <Serif size="3" pt={1}>
-        {this.props.artwork.collecting_institution}
-      </Serif>
-    )
-  }
   renderLocations(locationNames) {
     return (
       <Serif size="2" display="inline-block" pl={1} pt={0.3}>
@@ -53,27 +45,23 @@ export class ArtworkSidebarPartnerInfo extends React.Component<
       artwork.partner.locations.length > 0 &&
       filterLocations(artwork.partner.locations)
     return (
-      <Box pb={3}>
-        {artwork && artwork.collecting_institution ? (
-          this.renderCollectingInstitution()
-        ) : (
-          <React.Fragment>
-            {this.renderPartnerName()}
-            {locationNames &&
-              locationNames.length > 0 && (
-                <Box>
-                  <Flex width="100%" pt={1}>
-                    <Flex flexDirection="column">
-                      <Location />
-                    </Flex>
-                    <Flex flexDirection="column">
-                      {this.renderLocations(locationNames)}
-                    </Flex>
-                  </Flex>
-                </Box>
-              )}
-          </React.Fragment>
-        )}
+      <Box>
+        <Spacer mb={3} />
+        {this.renderPartnerName()}
+        {locationNames &&
+          locationNames.length > 0 && (
+            <Box>
+              <Flex width="100%" pt={1}>
+                <Flex flexDirection="column">
+                  <LocationIcon />
+                </Flex>
+                <Flex flexDirection="column">
+                  {this.renderLocations(locationNames)}
+                </Flex>
+              </Flex>
+            </Box>
+          )}
+        <Spacer mb={3} />
       </Box>
     )
   }
@@ -83,7 +71,6 @@ export const ArtworkSidebarPartnerInfoFragmentContainer = createFragmentContaine
   ArtworkSidebarPartnerInfo,
   graphql`
     fragment ArtworkSidebarPartnerInfo_artwork on Artwork {
-      collecting_institution
       partner {
         __id
         name

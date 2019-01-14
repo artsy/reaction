@@ -5,6 +5,7 @@ import { ReactWrapper } from "enzyme"
 import React from "react"
 import { graphql } from "react-relay"
 import { Breakpoint } from "Utils/Responsive"
+import { CVItem } from "../CVItem"
 
 jest.unmock("react-relay")
 
@@ -85,7 +86,7 @@ describe("CV Route", () => {
         wrapper
           .find("CVItem")
           .at(0)
-          .instance(),
+          .instance() as CVItem,
         "loadMore"
       )
       const button = wrapper.find("Button").at(0)

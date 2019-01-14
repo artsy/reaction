@@ -8,9 +8,9 @@ import { SIZE_ME_REFRESH_RATE } from "../Constants"
 import { ArticleLayout, SectionLayout } from "../Typings"
 import { Artwork } from "./Artwork"
 import { Image } from "./Image"
-import { ImageCollectionItem } from "./ImageCollectionItem"
 
 interface ImageCollectionProps {
+  color?: string
   images: any
   targetHeight?: number
   gutter?: number
@@ -34,6 +34,7 @@ class ImageCollectionComponent extends React.PureComponent<
   renderImages(dimensions) {
     const {
       articleLayout,
+      color,
       gutter,
       images,
       sectionLayout,
@@ -55,6 +56,7 @@ class ImageCollectionComponent extends React.PureComponent<
         renderedImage = (
           <Image
             image={image}
+            color={color}
             sectionLayout={sectionLayout}
             layout={articleLayout}
             width={imageSize.width}
@@ -65,6 +67,7 @@ class ImageCollectionComponent extends React.PureComponent<
         renderedImage = (
           <Artwork
             artwork={image}
+            color={color}
             sectionLayout={sectionLayout}
             layout={articleLayout}
             width={imageSize.width}
@@ -107,6 +110,18 @@ const ImageCollectionContainer = styled.div`
 
   ${pMedia.xs`
     flex-direction: column;
+  `};
+`
+
+export const ImageCollectionItem = styled.div<{
+  margin?: number
+  width?: number
+}>`
+  margin-right: ${props => (props.margin ? props.margin + "px" : "0px")};
+  width: ${props => (props.width ? props.width + "px" : "100%")};
+
+  ${pMedia.xs`
+    margin-bottom: 10px;
   `};
 `
 

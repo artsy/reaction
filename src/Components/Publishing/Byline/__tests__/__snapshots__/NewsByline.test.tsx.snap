@@ -12,7 +12,7 @@ exports[`News Byline renders on mobile 1`] = `
   margin: 10px 20px 0 0;
 }
 
-.c4:before {
+.c4::before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -129,7 +129,7 @@ exports[`News Byline renders on mobile 1`] = `
           "fontWeight": 500,
         }
       }
-      fontSize={14}
+      fontSize="14px"
     >
       <div
         className="c3 c4"
@@ -315,7 +315,7 @@ exports[`News Byline renders properly 1`] = `
   margin: 10px 20px 0 0;
 }
 
-.c4:before {
+.c4::before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -426,7 +426,7 @@ exports[`News Byline renders properly 1`] = `
           "fontWeight": 500,
         }
       }
-      fontSize={14}
+      fontSize="14px"
     >
       <div
         className="c3 c4"
@@ -621,7 +621,7 @@ exports[`News Byline renders without a news source 1`] = `
   margin: 10px 20px 0 0;
 }
 
-.c4:before {
+.c4::before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -732,7 +732,7 @@ exports[`News Byline renders without a news source 1`] = `
           "fontWeight": 500,
         }
       }
-      fontSize={14}
+      fontSize="14px"
     >
       <div
         className="c3 c4"

@@ -316,7 +316,7 @@ export const RegularArtworkWithOneEdition = {
   is_for_sale: false,
 }
 
-export const RegularArtwork2Editions = {
+export const RegularArtworkWithTwoEditions = {
   __id: "QXJ0d29yazpib2ItY2FybG9zLWNsYXJrZS1mYWlyeS1idW0=",
   artists: [
     {
@@ -426,12 +426,15 @@ export const OpenAuctionArtwork = {
     is_with_reserve: true,
     reserve_message: "Reserve met",
     reserve_status: "reserve_met",
-    current_bid: {
-      display: "$450",
-    },
-    counts: {
-      bidder_positions: 3,
-    },
+    current_bid: { display: "$450" },
+    counts: { bidder_positions: 3 },
+    increments: [
+      { cents: 425000, display: "£4,250" },
+      { cents: 450000, display: "£4,500" },
+      { cents: 475000, display: "£4,750" },
+      { cents: 500000, display: "£5,000" },
+      { cents: 550000, display: "£5,500" },
+    ],
   },
   is_in_auction: true,
   is_biddable: true,
@@ -478,6 +481,7 @@ export const LiveAuctionArtwork = {
     is_live_open: true,
     is_with_buyers_premium: true,
     is_registration_closed: true,
+    registrationStatus: null,
   },
   sale_artwork: {
     lot_label: "14002",
@@ -534,6 +538,7 @@ export const ClosedAuctionArtwork = {
     locations: [],
   },
   sale: {
+    registrationStatus: null,
     is_preview: false,
     is_open: false,
     is_closed: true,
@@ -549,6 +554,13 @@ export const ClosedAuctionArtwork = {
     reserve_status: "no_reserve",
     current_bid: { display: "£12,000" },
     counts: { bidder_positions: 0 },
+    increments: [
+      { cents: 425000, display: "£4,250" },
+      { cents: 450000, display: "£4,500" },
+      { cents: 475000, display: "£4,750" },
+      { cents: 500000, display: "£5,000" },
+      { cents: 550000, display: "£5,500" },
+    ],
   },
   is_in_auction: true,
   is_biddable: false,
@@ -565,12 +577,14 @@ export const ClosedAuctionArtwork = {
   is_inquireable: true,
   is_price_range: false,
   is_for_sale: false,
+  myLotStanding: null,
 }
 
 export const MoctionArtwork = {
   __id: "QXJ0d29yazphbGlzdGFpci1tY2NseW1vbnQtc3VycmVhbGlzbQ==",
   sale: {
     id: "oksana-moction",
+    registrationStatus: null,
     is_preview: true,
     is_registration_closed: false,
     is_open: false,
@@ -587,6 +601,13 @@ export const MoctionArtwork = {
     reserve_status: "reserve_met",
     current_bid: { display: "CHF 11,000" },
     counts: { bidder_positions: 3 },
+    increments: [
+      { cents: 425000, display: "£4,250" },
+      { cents: 450000, display: "£4,500" },
+      { cents: 475000, display: "£4,750" },
+      { cents: 500000, display: "£5,000" },
+      { cents: 550000, display: "£5,500" },
+    ],
   },
   artists: [
     {
@@ -620,6 +641,7 @@ export const MoctionArtwork = {
   is_inquireable: true,
   is_price_range: false,
   is_for_sale: false,
+  myLotStanding: null,
 }
 
 export const AllAdditionalDetailsPresent = {

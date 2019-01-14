@@ -1,9 +1,9 @@
-import { media } from "Components/Helpers"
-import { ArticleData } from "Components/Publishing/Typings"
+import { Box } from "@artsy/palette"
 import React from "react"
-import { Col } from "react-styled-flexboxgrid"
 import styled from "styled-components"
-import { ArticleCard, ArticleCardContainer } from "./ArticleCard"
+
+import { ArticleData } from "Components/Publishing/Typings"
+import { ArticleCard } from "./ArticleCard"
 
 interface Props {
   series?: ArticleData
@@ -15,34 +15,21 @@ export const ArticleCards: React.SFC<Props> = props => {
   const { color, relatedArticles, series } = props
 
   return (
-    <ArticleCardsContainer color={color}>
+    <Box color={color}>
       {relatedArticles.map((relatedArticle, i) => {
         return (
-          <Col xs={12} key={i}>
+          <ArticlesWrapper mb={[40, 60]} key={i}>
             <ArticleCard
               article={relatedArticle}
               color={color}
               series={series}
             />
-          </Col>
+          </ArticlesWrapper>
         )
       })}
-    </ArticleCardsContainer>
+    </Box>
   )
 }
 
-ArticleCards.defaultProps = {
-  color: "black",
-}
-
-const ArticleCardsContainer = styled.div`
-  color: ${props => props.color};
-  ${ArticleCardContainer} {
-    margin-bottom: 60px;
-  }
-  ${media.md`
-    ${ArticleCardContainer} {
-      margin-bottom: 40px;
-    }
-  `};
-`
+// Used to target wrapper in other components
+export const ArticlesWrapper = styled(Box)``

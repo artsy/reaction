@@ -1,37 +1,33 @@
+import { Step, Stepper } from "Components/v2"
 import React from "react"
-import { Step, Stepper } from "Styleguide/Components"
 
-const offerFlow = ["Offer", "Shipping", "Payment", "Review"]
-const buyNowFlow = ["Shipping", "Payment", "Review"]
-
-// TODO: This currently fails as TS is unable to coerce a boolean type into
-// "true" or "false" as this conditional expects.
-// type OrderStepperProps =
-//   | {
-//       currentStep: "Offer" | "Shipping" | "Payment" | "Review"
-//       offerFlow: true
-//     }
-//   | {
-//       currentStep: "Shipping" | "Payment" | "Review"
-//       offerFlow: false
-//     }
-
-interface OrderStepperProps {
-  currentStep: "Offer" | "Shipping" | "Payment" | "Review"
-  offerFlow: boolean
+function typedArray<T extends string>(...elems: T[]): T[] {
+  return elems
 }
 
-export const OrderStepper: React.SFC<OrderStepperProps> = ({
+export const offerFlowSteps = typedArray(
+  "Offer",
+  "Shipping",
+  "Payment",
+  "Review"
+)
+export const buyNowFlowSteps = typedArray("Shipping", "Payment", "Review")
+export const counterofferFlowSteps = typedArray("Respond", "Review")
+
+export function OrderStepper<Steps extends string[]>({
   currentStep,
-  ...more
-}) => {
-  const steps = more.offerFlow ? offerFlow : buyNowFlow
+  steps,
+}: {
+  steps: Steps
+  currentStep: Steps extends Array<infer K> ? K : never
+}) {
   const stepIndex = steps.indexOf(currentStep)
   return (
     <Stepper
       initialTabIndex={stepIndex}
       currentStepIndex={stepIndex}
       disableNavigation
+      autoScroll
     >
       {steps.map(step => <Step name={step} key={step} />)}
     </Stepper>

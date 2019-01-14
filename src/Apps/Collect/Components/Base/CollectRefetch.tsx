@@ -3,7 +3,6 @@ import { FilterState } from "Apps/Collect/FilterState"
 import { isEqual } from "lodash"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
-import { Responsive } from "Utils/Responsive"
 import { CollectArtworkGridRefreshContainer as CollectArtworkGrid } from "./CollectArtworkGrid"
 interface CollectRefetchProps {
   filtersState: FilterState["state"]
@@ -59,16 +58,12 @@ export class CollectRefetch extends Component<CollectRefetchProps> {
     const { filtersState } = this.props
     const { filtered_artworks } = this.props.viewer
     return (
-      <Responsive>
-        {({ xs, sm, md }) => (
-          <CollectArtworkGrid
-            filtered_artworks={filtered_artworks as any}
-            isLoading={this.isLoading}
-            columnCount={xs || sm || md ? 2 : 3}
-            filters={filtersState}
-          />
-        )}
-      </Responsive>
+      <CollectArtworkGrid
+        filtered_artworks={filtered_artworks as any}
+        isLoading={this.isLoading}
+        columnCount={[2, 2, 2, 3]}
+        filters={filtersState}
+      />
     )
   }
 }
@@ -85,6 +80,7 @@ export const CollectRefetchContainer = createRefetchContainer(
           for_sale: { type: "Boolean" }
           at_auction: { type: "Boolean" }
           acquireable: { type: "Boolean" }
+          offerable: { type: "Boolean" }
           inquireable_only: { type: "Boolean" }
           sort: { type: "String", defaultValue: "-partner_updated_at" }
           price_range: { type: "String" }
@@ -99,6 +95,7 @@ export const CollectRefetchContainer = createRefetchContainer(
           for_sale: $for_sale
           at_auction: $at_auction
           acquireable: $acquireable
+          offerable: $offerable
           inquireable_only: $inquireable_only
           size: 0
           sort: $sort
@@ -117,6 +114,7 @@ export const CollectRefetchContainer = createRefetchContainer(
       $major_periods: [String]
       $partner_id: ID
       $acquireable: Boolean
+      $offerable: Boolean
       $at_auction: Boolean
       $inquireable_only: Boolean
       $for_sale: Boolean
@@ -135,6 +133,7 @@ export const CollectRefetchContainer = createRefetchContainer(
             sort: $sort
             at_auction: $at_auction
             acquireable: $acquireable
+            offerable: $offerable
             inquireable_only: $inquireable_only
             price_range: $price_range
             artist_id: $artist_id

@@ -15,5 +15,6 @@ const TextArea: React.SFC<TextAreaProps> = props => {
 }
 
 export default styled(TextArea)`
+  /* stylelint-disable-next-line */
   ${borderedInput} ${block(24)};
 `

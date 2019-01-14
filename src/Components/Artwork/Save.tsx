@@ -1,9 +1,8 @@
 import { Save_artwork } from "__generated__/Save_artwork.graphql"
 import { SaveArtworkMutation } from "__generated__/SaveArtworkMutation.graphql"
 import { track } from "Artsy/Analytics"
-import * as Schema from "Artsy/Analytics/Schema"
 import * as Artsy from "Artsy/SystemContext"
-import { isNull } from "lodash"
+import { extend, isNull } from "lodash"
 import React from "react"
 import {
   commitMutation,
@@ -11,6 +10,7 @@ import {
   graphql,
   RelayProp,
 } from "react-relay"
+import { TrackingProp } from "react-tracking"
 import * as RelayRuntimeTypes from "relay-runtime"
 import styled from "styled-components"
 import colors from "../../Assets/Colors"
@@ -18,30 +18,32 @@ import Icon from "../Icon"
 
 const SIZE = 40
 
-export interface Props
+export interface SaveTrackingProps {
+  context_page?: string
+}
+
+export interface SaveProps
   extends Artsy.ContextProps,
     React.HTMLProps<React.ComponentType> {
   artwork: Save_artwork
   style?: any
   relay?: RelayProp
   relayEnvironment?: RelayRuntimeTypes.Environment
-  useRelay?: boolean
   mediator?: Artsy.Mediator
+  render?: (props, state) => JSX.Element
+  trackingData?: SaveTrackingProps
+  tracking?: TrackingProp
 }
 
 // TODO: This will be refactored out once Artworks / Grids are full Relay in Force
 // and intermediate local state becomes unnecessary
-interface State {
+export interface SaveState {
   is_saved: boolean
   isHovered: boolean
 }
 
 @track()
-class SaveButtonContainer extends React.Component<Props, State> {
-  static defaultProps = {
-    useRelay: true,
-  }
-
+export class SaveButton extends React.Component<SaveProps, SaveState> {
   state = {
     is_saved: null,
     isHovered: false,
@@ -55,38 +57,28 @@ class SaveButtonContainer extends React.Component<Props, State> {
     return isSaved
   }
 
-  @track<Props>(
-    props =>
-      ({
-        action_type: props.artwork.is_saved
-          ? "Removed Artwork"
-          : "Saved Artwork",
-        entity_slug: props.artwork.id,
-      } as Schema.Old)
-  )
+  trackSave = () => {
+    const {
+      tracking,
+      artwork: { is_saved, id, _id },
+    } = this.props
+    const trackingData: SaveTrackingProps = this.props.trackingData || {}
+    const action = is_saved ? "Removed Artwork" : "Saved Artwork"
+    const entityInfo = {
+      entity_slug: id,
+      entity_id: _id,
+    }
+
+    if (tracking) {
+      tracking.trackEvent(extend({ action }, entityInfo, trackingData))
+    }
+  }
+
   handleSave() {
-    const { user, artwork, relay, relayEnvironment, useRelay } = this.props
+    const { user, artwork, relay, relayEnvironment } = this.props
     const environment = (relay && relay.environment) || relayEnvironment
 
     if (environment && user && user.id) {
-      // Optimistic update for environments that don't have typical access to
-      // Relay, e.g., where new ArtworkGrids are used in old code via Stitch. Note
-      // that the prop `useRelay` refers to outer HOC wrappers. In cases where
-      // Save UI components are used it is possible to piggyback on ContextProvider
-      // environment for mutations, but since the component exists outside of a
-      // Relay HOC props are not updated when successful mutations occur -- hence
-      // the need for setState.
-      //
-      // TODO:
-      // Refactor out `useRelay` prop when Force artwork Grids have been moved
-      // completely over to Relay
-
-      if (!useRelay) {
-        this.setState({
-          is_saved: !this.isSaved,
-        })
-      }
-
       commitMutation<SaveArtworkMutation>(environment, {
         mutation: graphql`
           mutation SaveArtworkMutation($input: SaveArtworkInput!) {
@@ -116,7 +108,7 @@ class SaveButtonContainer extends React.Component<Props, State> {
         },
         onError: error => {
           // Revert optimistic update
-          if (!useRelay) {
+          if (this.props.render) {
             this.setState({
               is_saved: this.isSaved,
             })
@@ -125,13 +117,14 @@ class SaveButtonContainer extends React.Component<Props, State> {
           console.error("Artwork/Save Error saving artwork: ", error)
         },
         onCompleted: ({ saveArtwork }) => {
-          if (!useRelay) {
+          if (this.props.render) {
             this.setState({
               is_saved: saveArtwork.artwork.is_saved,
             })
           }
         },
       })
+      this.trackSave()
     } else {
       if (this.props.mediator) {
         this.props.mediator.trigger("open:auth", {
@@ -151,7 +144,23 @@ class SaveButtonContainer extends React.Component<Props, State> {
     }
   }
 
-  render() {
+  mixinButtonActions() {
+    return {
+      onClick: () => this.handleSave(),
+      onMouseEnter: () => {
+        this.setState({
+          isHovered: true,
+        })
+      },
+      onMouseLeave: () => {
+        this.setState({
+          isHovered: false,
+        })
+      },
+    }
+  }
+
+  renderDefaultButton() {
     const { style } = this.props
     const saveStyle = this.isSaved ? { opacity: 1.0 } : {}
     const fullStyle = { ...style, ...saveStyle }
@@ -163,28 +172,37 @@ class SaveButtonContainer extends React.Component<Props, State> {
       <div
         className={this.props.className}
         style={fullStyle}
-        onClick={() => this.handleSave()}
-        data-saved={this.isSaved}
-        onMouseEnter={() => {
-          this.setState({ isHovered: true })
-        }}
-        onMouseLeave={() => {
-          this.setState({ isHovered: false })
-        }}
+        {...this.mixinButtonActions()}
       >
-        <Icon
-          name={iconName}
-          height={SIZE}
-          color="white"
-          fontSize={iconFontSize}
-          style={{ verticalAlign: "middle" }}
-        />
+        <Container data-saved={this.isSaved}>
+          <Icon
+            name={iconName}
+            height={SIZE}
+            color="white"
+            fontSize={iconFontSize}
+            style={{ verticalAlign: "middle" }}
+          />
+        </Container>
       </div>
     )
   }
+
+  renderCustomButton() {
+    return (
+      <div {...this.mixinButtonActions()}>
+        {this.props.render(this.props, this.state)}
+      </div>
+    )
+  }
+
+  render() {
+    return this.props.render
+      ? this.renderCustomButton()
+      : this.renderDefaultButton()
+  }
 }
 
-export const SaveButton = styled(SaveButtonContainer)`
+export const Container = styled.div`
   display: block;
   width: ${SIZE}px;
   height: ${SIZE}px;
@@ -196,11 +214,14 @@ export const SaveButton = styled(SaveButtonContainer)`
   border-radius: 50%;
   font-size: 16px;
   line-height: ${SIZE}px;
+
   &:hover {
     background-color: black;
   }
+
   &[data-saved="true"] {
     background-color: ${colors.purpleRegular};
+
     &:hover {
       background-color: ${colors.redMedium};
     }
@@ -212,6 +233,7 @@ export default createFragmentContainer(
   graphql`
     fragment Save_artwork on Artwork {
       __id
+      _id
       id
       is_saved
     }

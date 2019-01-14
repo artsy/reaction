@@ -15,6 +15,7 @@ export type ArtworkFilter_artist = {
         readonly ecommerce_artworks: any | null;
         readonly auction_artworks: any | null;
         readonly artworks: any | null;
+        readonly has_make_offer_artworks: boolean | null;
     }) | null;
     readonly filtered_artworks: ({
         readonly aggregations: ReadonlyArray<({
@@ -97,6 +98,12 @@ return {
     },
     {
       "kind": "LocalArgument",
+      "name": "offerable",
+      "type": "Boolean",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
       "name": "inquireable_only",
       "type": "Boolean",
       "defaultValue": null
@@ -164,6 +171,13 @@ return {
           "kind": "ScalarField",
           "alias": null,
           "name": "artworks",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "has_make_offer_artworks",
           "args": null,
           "storageKey": null
         }
@@ -268,6 +282,12 @@ return {
         },
         {
           "kind": "Variable",
+          "name": "offerable",
+          "variableName": "offerable",
+          "type": null
+        },
+        {
+          "kind": "Variable",
           "name": "partner_id",
           "variableName": "partner_id",
           "type": null
@@ -289,5 +309,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'ac42933895d3c7e10145e7a2dbc6935a';
+(node as any).hash = '5f9c312bd6b9c7197d1b491d7c52ef83';
 export default node;

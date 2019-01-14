@@ -73,6 +73,12 @@ return {
     },
     {
       "kind": "LocalArgument",
+      "name": "offerable",
+      "type": "Boolean",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
       "name": "inquireable_only",
       "type": "Boolean",
       "defaultValue": null
@@ -235,6 +241,12 @@ return {
         },
         {
           "kind": "Variable",
+          "name": "offerable",
+          "variableName": "offerable",
+          "type": null
+        },
+        {
+          "kind": "Variable",
           "name": "partner_id",
           "variableName": "partner_id",
           "type": null
@@ -256,5 +268,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '8790c9b9f4e32b60d51d7602788a75a5';
+(node as any).hash = '42e420d9a5a0ca545db744733db7be7a';
 export default node;

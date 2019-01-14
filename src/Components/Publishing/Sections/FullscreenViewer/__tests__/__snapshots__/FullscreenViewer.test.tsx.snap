@@ -1,6 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders properly 1`] = `
+.c9 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+}
+
 .c17 {
   font-family: artsy-icons;
   color: gray;
@@ -15,57 +22,30 @@ exports[`renders properly 1`] = `
   color: gray;
 }
 
-.c12 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 15px;
-  line-height: 1.25em;
-  -webkit-font-smoothing: antialiased;
-  color: #999;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c10 {
+.c11 {
   margin-right: 30px;
 }
 
-.c11 {
+.c12 {
   white-space: nowrap;
 }
 
 .c8 {
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  color: black;
-}
-
-.c8 .title {
-  font-family: Unica77LLWebMediumItalic,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-.c8 .title,
-.c8 .title a {
-  font-family: Unica77LLWebMediumItalic,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
 }
 
 .c8 a {
   color: black;
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c8 .title,
+.c8 .title a {
+  font-style: italic;
 }
 
 .c6 {
@@ -106,7 +86,7 @@ exports[`renders properly 1`] = `
 }
 
 .c4 p {
-  margin: 0px;
+  margin: 0;
 }
 
 .c5 {
@@ -190,28 +170,28 @@ exports[`renders properly 1`] = `
   cursor: pointer;
 }
 
-@media (max-width:720px) {
-  .c8 {
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
+@media screen and (min-width:40em) {
+  .c9 {
+    font-size: 16px;
   }
+}
 
-  .c8 .title,
-  .c8 .title a {
-    font-family: Unica77LLWebMediumItalic,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
+@media screen and (min-width:40em) {
+  .c9 {
+    line-height: 26px;
   }
 }
 
 @media (max-width:720px) {
-  .c9.artist-name {
+  .c8 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media (max-width:720px) {
+  .c10.artist-name {
     margin-bottom: 5px;
   }
 }
@@ -328,21 +308,31 @@ exports[`renders properly 1`] = `
               >
                 <div>
                   <div
-                    className="c8"
+                    className="c8 c9"
+                    fontFamily={
+                      Object {
+                        "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                        "fontWeight": 500,
+                      }
+                    }
+                    fontSize={
+                      Array [
+                        "14px",
+                        "16px",
+                      ]
+                    }
                   >
                     <div
-                      className="c9"
+                      className="c10"
                     >
                       <span
-                        className="c10"
+                        className="c11"
                       >
                         <span
-                          className="c11"
+                          className="c12"
                         >
                           <a
-                            className="c12"
                             href="/artist/fernando-botero"
-                            target="_self"
                           >
                             Fernando Botero
                           </a>
@@ -351,15 +341,13 @@ exports[`renders properly 1`] = `
                     </div>
                     <div>
                       <div
-                        className="c9"
+                        className="c10"
                       >
                         <span
                           className="title"
                         >
                           <a
-                            className="c12"
                             href="/artwork/fernando-botero-nude-on-the-beach"
-                            target="_self"
                           >
                             Nude on the Beach
                           </a>
@@ -374,12 +362,10 @@ exports[`renders properly 1`] = `
                         </span>
                       </div>
                       <div
-                        className="c9"
+                        className="c10"
                       >
                         <a
-                          className="c12"
                           href="/gary-nader"
-                          target="_self"
                         >
                           Gary Nader
                         </a>

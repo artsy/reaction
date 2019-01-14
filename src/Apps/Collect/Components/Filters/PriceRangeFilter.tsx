@@ -1,6 +1,6 @@
 import { ContextConsumer } from "Artsy/SystemContext"
+import { PriceRange } from "Components/v2/PriceRange"
 import React from "react"
-import { PriceRange } from "Styleguide/Components/PriceRange"
 import { FilterState } from "../../FilterState"
 
 export const PriceRangeFilter: React.SFC<{

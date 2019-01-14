@@ -6,15 +6,27 @@ import {
   FeatureArticle,
   NewsArticle,
   SeriesArticle,
+  SponsoredArticle,
   StandardArticle,
   VideoArticle,
 } from "../Fixtures/Articles"
 
 import { BannerWrapper } from "../Banner/Banner"
+import { PixelTracker } from "../Display/ExternalTrackers"
 import { ArticleWithFullScreen } from "../Layouts/ArticleWithFullScreen"
 import { NewsLayout } from "../Layouts/NewsLayout"
 import { SeriesLayout } from "../Layouts/SeriesLayout"
 import { VideoLayout } from "../Layouts/VideoLayout"
+
+jest.mock("isomorphic-fetch")
+
+declare const global: any
+global.fetch = jest.fn(() =>
+  Promise.resolve({
+    status: 200,
+    json: () => Promise.resolve({}),
+  })
+)
 
 jest.mock("../ToolTip/TooltipsDataLoader", () => ({
   TooltipsData: props => props.children,
@@ -75,4 +87,16 @@ it("does not render separate BannerWrapper for articles after the initial articl
     />
   )
   expect(article.find(BannerWrapper).length).toBe(0)
+})
+
+it("renders PixelTracker when there is a sponsor pixel tracking code", () => {
+  const article = mount(<Article article={SponsoredArticle} />)
+
+  expect(article.find(PixelTracker).length).toBe(1)
+})
+
+it("does not render PixelTracker when there is no sponsor pixel tracking code", () => {
+  const article = mount(<Article article={SeriesArticle} />)
+
+  expect(article.find(PixelTracker).length).toBe(0)
 })

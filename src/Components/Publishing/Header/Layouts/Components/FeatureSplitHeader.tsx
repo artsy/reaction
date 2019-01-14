@@ -1,10 +1,9 @@
-import { space } from "@artsy/palette"
+import { Box, Flex, media, space } from "@artsy/palette"
 import { BylineContainer } from "Components/Publishing/Byline/Byline"
 import React from "react"
-import { Col, Row } from "react-styled-flexboxgrid"
 import styled from "styled-components"
-import { resize } from "../../../../../Utils/resizer"
-import { pMedia } from "../../../../Helpers"
+import { resize } from "Utils/resizer"
+import { Media } from "Utils/Responsive"
 import { EditImage, FeatureHeaderProps } from "../FeatureHeader"
 import {
   FeatureInnerContent,
@@ -25,12 +24,19 @@ export const FeatureSplitHeader: React.SFC<FeatureHeaderProps> = props => {
   const src = !isVideo && url.length && resize(url, { width: 1600 })
 
   return (
-    <FeatureSplitHeaderContainer hasNav={(seriesArticle || editImage) && true}>
-      <HeaderTextContainer xs={12} sm={5}>
+    <FeatureSplitHeaderContainer
+      hasNav={(seriesArticle || editImage) && true}
+      justifyContent="space-between"
+      flexDirection={["column", "column", "row", "row"]}
+    >
+      <HeaderTextContainer width={["100%", "100%", "50%", "50%"]} p={20}>
         <FeatureInnerContent {...props} />
       </HeaderTextContainer>
 
-      <FeatureAssetContainer xs={12} sm={6}>
+      <FeatureAssetContainer
+        width={["100%", "100%", "50%", "50%"]}
+        p={[0, 0, 20, 20]}
+      >
         {editImage && <EditImage>{editImage}</EditImage>}
         {isVideo ? (
           <FeatureVideo
@@ -50,30 +56,30 @@ export const FeatureSplitHeader: React.SFC<FeatureHeaderProps> = props => {
         )}
       </FeatureAssetContainer>
 
-      <HeaderTextContainer xs={12} sm={false}>
-        <FeatureInnerSubContent {...props} />
-      </HeaderTextContainer>
+      <Media lessThan="md">
+        <HeaderTextContainer width="100%" px={20}>
+          <FeatureInnerSubContent {...props} />
+        </HeaderTextContainer>
+      </Media>
     </FeatureSplitHeaderContainer>
   )
 }
 
-const HeaderTextContainer = styled(Col)`
-  padding-left: ${space(2)}px;
-  padding-right: ${space(2)}px;
-  padding-top: ${space(2)}px;
-  padding-bottom: ${space(2)}px;
+const HeaderTextContainer = styled(Box)`
   ${TextContainer} {
     height: 100%;
     justify-content: space-between;
   }
+
   ${SubContentContainer} {
     display: block;
   }
+
   ${BylineContainer} {
     margin-top: ${space(3)}px;
   }
 
-  ${pMedia.sm`
+  ${media.md`
     ${Title} {
       margin-bottom: 20px;
     }
@@ -89,38 +95,43 @@ const FeatureVideo = styled.video`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  ${pMedia.sm`
+
+  ${media.md`
     height: auto;
   `};
 `
 
-export const FeatureAssetContainer = styled(Col)`
+export const FeatureAssetContainer = styled(Box)`
   flex: 1;
   overflow: hidden;
-  margin: ${space(2)}px;
-  padding-left: 0;
-  padding-right: 0;
   position: relative;
 
   img {
     display: none;
   }
 
-  ${pMedia.sm`
+  ${media.md`
     height: fit-content;
+    overflow: inherit;
+
     img {
       display: block;
     }
   `};
 `
 
-const ImageContainer = styled.div.attrs<{ src?: string }>({})`
-  background-image: url(${props => props.src});
+const ImageContainer = styled.div<{ src?: string }>`
+  ${props =>
+    props.src &&
+    `
+  background-image: url(${props.src});
+  `};
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   height: 100%;
-  ${pMedia.sm`
+
+  ${media.md`
     height: fit-content;
     ${props =>
       props.src &&
@@ -135,14 +146,11 @@ const Img = styled.img`
   width: 100%;
 `
 
-export const FeatureSplitHeaderContainer = styled(Row).attrs<{
+export const FeatureSplitHeaderContainer = styled(Flex)<{
   hasNav?: boolean
-}>({})`
-  margin-left: 0;
-  margin-right: 0;
+}>`
   height: ${props => (props.hasNav ? "100vh" : "calc(100vh - 61px)")};
   min-height: fit-content;
-  justify-content: space-between;
 
   ${props =>
     !props.hasNav &&

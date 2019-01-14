@@ -1,7 +1,7 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
 
-import { Help } from "../../Assets/Icons/Help"
+import { HelpIcon } from "@artsy/palette"
 import { Tooltip } from "../Tooltip"
 
 function RenderTooltip(
@@ -18,7 +18,7 @@ function RenderTooltip(
         verticalAlign={verticalAlign}
         hoverWidth={hoverWidth}
       >
-        <Help />
+        <HelpIcon />
       </Tooltip>
     </div>
   )

@@ -1,10 +1,10 @@
 import { Box } from "@artsy/palette"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { ContextConsumer } from "Artsy/Router"
+import { Tab, Tabs } from "Components/v2"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 import styled from "styled-components"
-import { Tab, Tabs } from "Styleguide/Components"
 import { ArtworkDetailsAboutTheWorkFromArtsyFragmentContainer as AboutTheWorkFromArtsy } from "./ArtworkDetailsAboutTheWorkFromArtsy"
 import { ArtworkDetailsAboutTheWorkFromPartnerFragmentContainer as AboutTheWorkFromPartner } from "./ArtworkDetailsAboutTheWorkFromPartner"
 import { ArtworkDetailsAdditionalInfoFragmentContainer as AdditionalInfo } from "./ArtworkDetailsAdditionalInfo"
@@ -16,20 +16,27 @@ import { ArtworkDetailsQuery } from "__generated__/ArtworkDetailsQuery.graphql"
 
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
+import Events from "Utils/Events"
 
 export interface ArtworkDetailsProps {
   artwork: ArtworkDetails_artwork
 }
 
-@track({
-  context_module: Schema.ContextModule.ArtworkTabs,
-})
+@track(
+  {
+    context_module: Schema.ContextModule.ArtworkTabs,
+  },
+  {
+    dispatch: data => Events.postEvent(data),
+  }
+)
 export class ArtworkDetails extends Component<ArtworkDetailsProps> {
   @track((_props, _state, [{ data }]) => {
     return {
       flow: Schema.Flow.ArtworkAboutTheArtist,
       type: Schema.Type.Tab,
       label: data.trackingLabel,
+      action_type: Schema.ActionType.Click,
     }
   })
   trackTabChange() {
@@ -39,7 +46,7 @@ export class ArtworkDetails extends Component<ArtworkDetailsProps> {
   render() {
     const { artwork } = this.props
     return (
-      <ArtworkDetailsContainer pb={4}>
+      <ArtworkDetailsContainer mt={[4, 0]} pb={4}>
         <Tabs onChange={this.trackTabChange.bind(this)}>
           <Tab name="About the work" data={{ trackingLabel: "about_the_work" }}>
             <AboutTheWorkFromArtsy artwork={artwork} />

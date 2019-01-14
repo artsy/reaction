@@ -1,14 +1,19 @@
-import { confirmRouteExit, shouldRedirect } from "Apps/Order/redirects"
-import { Redirect, RouteConfig } from "found"
+import { getRedirect } from "Apps/Order/getRedirect"
+import { confirmRouteExit, redirects } from "Apps/Order/redirects"
+import { Redirect, RedirectException, RouteConfig } from "found"
 import * as React from "react"
 import { graphql } from "react-relay"
 import { OrderApp } from "./OrderApp"
 
+import { AcceptFragmentContainer as AcceptRoute } from "Apps/Order/Routes/Accept"
 import { OfferFragmentContainer as OfferRoute } from "Apps/Order/Routes/Offer"
 import { PaymentFragmentContainer as PaymentRoute } from "Apps/Order/Routes/Payment"
+import { RejectFragmentContainer as RejectRoute } from "Apps/Order/Routes/Reject"
+import { RespondFragmentContainer as RespondRoute } from "Apps/Order/Routes/Respond"
 import { ReviewFragmentContainer as ReviewRoute } from "Apps/Order/Routes/Review"
 import { ShippingFragmentContainer as ShippingRoute } from "Apps/Order/Routes/Shipping"
 import { StatusFragmentContainer as StatusRoute } from "Apps/Order/Routes/Status"
+import { CounterFragmentContainer as CounterRoute } from "./Routes/Counter"
 
 // @ts-ignore
 import { ComponentClass, StatelessComponent } from "react"
@@ -37,33 +42,51 @@ export const routes: RouteConfig[] = [
           name
         }
         order: ecommerceOrder(id: $orderID) {
-          state
-          requestedFulfillment {
-            __typename
-          }
-          lineItems {
-            edges {
-              node {
-                artwork {
-                  id
-                }
-              }
-            }
-          }
-          creditCard {
-            id
-          }
+          ...redirects_order @relay(mask: false)
         }
       }
     `,
     render: ({ Component, props }) => {
       if (Component && props) {
-        if (!shouldRedirect(props)) {
-          return <Component {...props} />
+        const { location, order } = props as any
+
+        if (order) {
+          const redirect = getRedirect(
+            redirects,
+            location.pathname.replace(/order(2|s)\/[^\/]+/, ""),
+            { order }
+          )
+          if (redirect !== null) {
+            if (process.env.NODE_ENV === "development") {
+              console.error(
+                `Redirecting from ${location.pathname} to ${
+                  redirect.path
+                } because '${redirect.reason}'`
+              )
+            }
+            throw new RedirectException(redirect.path)
+          }
         }
+
+        return <Component {...props} />
       }
     },
     children: [
+      {
+        path: "respond",
+        Component: RespondRoute,
+        onTransition: confirmRouteExit,
+        query: graphql`
+          query routes_RespondQuery($orderID: String!) {
+            order: ecommerceOrder(id: $orderID) {
+              ...Respond_order
+            }
+          }
+        `,
+        cacheConfig: {
+          force: true,
+        },
+      },
       {
         path: "offer",
         Component: OfferRoute,
@@ -110,6 +133,21 @@ export const routes: RouteConfig[] = [
         },
       },
       {
+        path: "review/counter",
+        Component: CounterRoute,
+        onTransition: confirmRouteExit,
+        query: graphql`
+          query routes_CounterQuery($orderID: String!) {
+            order: ecommerceOrder(id: $orderID) {
+              ...Counter_order
+            }
+          }
+        `,
+        cacheConfig: {
+          force: true,
+        },
+      },
+      {
         path: "review",
         Component: ReviewRoute,
         onTransition: confirmRouteExit,
@@ -123,6 +161,31 @@ export const routes: RouteConfig[] = [
         cacheConfig: {
           force: true,
         },
+      },
+      {
+        path: "review/accept",
+        Component: AcceptRoute,
+        query: graphql`
+          query routes_AcceptQuery($orderID: String!) {
+            order: ecommerceOrder(id: $orderID) {
+              ...Accept_order
+            }
+          }
+        `,
+        cacheConfig: {
+          force: true,
+        },
+      },
+      {
+        path: "review/decline",
+        Component: RejectRoute,
+        query: graphql`
+          query routes_RejectQuery($orderID: String!) {
+            order: ecommerceOrder(id: $orderID) {
+              ...Reject_order
+            }
+          }
+        `,
       },
       {
         path: "status",

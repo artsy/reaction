@@ -1,6 +1,5 @@
-import { Sans } from "@artsy/palette"
+import { Col, Row, Sans } from "@artsy/palette"
 import React from "react"
-import { Col } from "Styleguide/Elements/Grid"
 import { Media } from "Utils/Responsive"
 
 export const TableColumns = () => {
@@ -18,7 +17,7 @@ export const TableColumns = () => {
 
 const LargeTableColumns = () => {
   return (
-    <>
+    <Row>
       <Col sm={5}>
         <Sans size="2" weight="medium">
           Work
@@ -34,13 +33,13 @@ const LargeTableColumns = () => {
           Price
         </Sans>
       </Col>
-    </>
+    </Row>
   )
 }
 
 const SmallTableColumns = () => {
   return (
-    <>
+    <Row>
       <Col col={6}>
         <Sans size="2" weight="medium">
           Work
@@ -51,6 +50,6 @@ const SmallTableColumns = () => {
           Price
         </Sans>
       </Col>
-    </>
+    </Row>
   )
 }

@@ -1,9 +1,12 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+import { ArtworkSummaryItem_order$ref } from "./ArtworkSummaryItem_order.graphql";
+import { CreditCardSummaryItem_order$ref } from "./CreditCardSummaryItem_order.graphql";
 import { ItemReview_artwork$ref } from "./ItemReview_artwork.graphql";
-import { ShippingAndPaymentReview_order$ref } from "./ShippingAndPaymentReview_order.graphql";
-import { TransactionSummary_order$ref } from "./TransactionSummary_order.graphql";
+import { OfferSummaryItem_order$ref } from "./OfferSummaryItem_order.graphql";
+import { ShippingSummaryItem_order$ref } from "./ShippingSummaryItem_order.graphql";
+import { TransactionDetailsSummaryItem_order$ref } from "./TransactionDetailsSummaryItem_order.graphql";
 export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
 declare const _Review_order$ref: unique symbol;
 export type Review_order$ref = typeof _Review_order$ref;
@@ -23,7 +26,10 @@ export type Review_order = {
             }) | null;
         }) | null> | null;
     }) | null;
-    readonly " $fragmentRefs": TransactionSummary_order$ref & ShippingAndPaymentReview_order$ref;
+    readonly myLastOffer?: ({
+        readonly id: string | null;
+    }) | null;
+    readonly " $fragmentRefs": ArtworkSummaryItem_order$ref & TransactionDetailsSummaryItem_order$ref & ShippingSummaryItem_order$ref & CreditCardSummaryItem_order$ref & OfferSummaryItem_order$ref;
     readonly " $refType": Review_order$ref;
 };
 
@@ -133,17 +139,51 @@ return {
     },
     {
       "kind": "FragmentSpread",
-      "name": "TransactionSummary_order",
+      "name": "ArtworkSummaryItem_order",
       "args": null
     },
     {
       "kind": "FragmentSpread",
-      "name": "ShippingAndPaymentReview_order",
+      "name": "TransactionDetailsSummaryItem_order",
       "args": null
     },
-    v2
+    {
+      "kind": "FragmentSpread",
+      "name": "ShippingSummaryItem_order",
+      "args": null
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "CreditCardSummaryItem_order",
+      "args": null
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "OfferSummaryItem_order",
+      "args": null
+    },
+    v2,
+    {
+      "kind": "InlineFragment",
+      "type": "OfferOrder",
+      "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "myLastOffer",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "Offer",
+          "plural": false,
+          "selections": [
+            v0,
+            v2
+          ]
+        }
+      ]
+    }
   ]
 };
 })();
-(node as any).hash = '8ed0c48e8b5169b670c63a98e1f83479';
+(node as any).hash = '2e2ebc23046f1f864bbe9e35e1a97a11';
 export default node;

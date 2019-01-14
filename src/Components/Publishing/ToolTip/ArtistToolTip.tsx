@@ -10,7 +10,6 @@ import styled from "styled-components"
 import fillwidthDimensions from "../../../Utils/fillwidth"
 import { FollowTrackingData } from "../../FollowButton/Typings"
 import { ToolTipDescription } from "./Components/Description"
-import { NewFeature } from "./Components/NewFeature"
 
 export interface ArtistToolTipProps {
   artist: ArtistToolTip_artist
@@ -101,8 +100,6 @@ export class ArtistToolTip extends React.Component<ArtistToolTipProps> {
             {description && <ToolTipDescription text={description} />}
           </a>
         </ArtistContainer>
-
-        <NewFeature />
       </Wrapper>
     )
   }
@@ -114,9 +111,11 @@ const Wrapper = styled.div`
 
 export const ArtistContainer = styled.div`
   position: relative;
+
   a {
     text-decoration: none;
     color: black;
+
     &:hover {
       color: black;
     }
@@ -149,9 +148,11 @@ const Images = styled.a`
   margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
+
   div:first-child {
     margin-right: 15px;
   }
+
   img {
     width: 100%;
     height: auto;

@@ -1,8 +1,7 @@
-import { Box } from "@artsy/palette"
+import { Box, Col, Row } from "@artsy/palette"
 import { ArticleItem } from "Apps/Artist/Routes/Articles/ArtistArticle"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Col, Row } from "Styleguide/Elements/Grid"
 import { get } from "Utils/get"
 
 import { ArtworkDetailsArticles_artwork } from "__generated__/ArtworkDetailsArticles_artwork.graphql"

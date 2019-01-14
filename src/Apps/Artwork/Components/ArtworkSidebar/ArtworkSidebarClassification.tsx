@@ -1,10 +1,12 @@
-import { Box, Sans, Serif } from "@artsy/palette"
+import { Box, Sans, Serif, Spacer } from "@artsy/palette"
 import Modal from "Components/Modal/Modal"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 
 import { ArtworkSidebarClassification_artwork } from "__generated__/ArtworkSidebarClassification_artwork.graphql"
+import * as Schema from "Artsy/Analytics/Schema"
+import track from "react-tracking"
 
 export interface ArtworkSidebarClassificationProps {
   artwork: ArtworkSidebarClassification_artwork
@@ -14,6 +16,7 @@ interface State {
   isModalOpen: boolean
 }
 
+@track()
 export class ArtworkSidebarClassification extends React.Component<
   ArtworkSidebarClassificationProps,
   State
@@ -22,7 +25,13 @@ export class ArtworkSidebarClassification extends React.Component<
     isModalOpen: false,
   }
 
-  openModal = () => {
+  @track({
+    subject: Schema.Subject.Classification,
+    type: Schema.Type.Link,
+    context_module: Schema.ContextModule.Sidebar,
+    action_type: Schema.ActionType.Click,
+  })
+  openModal() {
     this.setState({ isModalOpen: true })
   }
 
@@ -45,9 +54,10 @@ export class ArtworkSidebarClassification extends React.Component<
         >
           <ClassificationDetails />
         </Modal>
-        <Box pt={2} color="black60" textAlign="left">
+        <Box color="black60" textAlign="left">
+          <Spacer mt={2} />
           <Serif size="2">
-            <ClassificationLink onClick={this.openModal}>
+            <ClassificationLink onClick={this.openModal.bind(this)}>
               {artwork.attribution_class.short_description}
             </ClassificationLink>.
           </Serif>

@@ -4,10 +4,10 @@ import { Box } from "@artsy/palette"
 // import { exhibitions } from "Apps/__tests__/Fixtures/SelectedExhibitions"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Section } from "Styleguide/Utils/Section"
+import { Section } from "Utils/Section"
 import { ArtistInfoQueryRenderer } from "../ArtistInfo"
 
-storiesOf("Styleguide/Artwork", module).add("ArtistInfo", () => {
+storiesOf("Apps/Artwork Page/Components", module).add("ArtistInfo", () => {
   return (
     <React.Fragment>
       <Section title="ArtistInfoQueryRenderer">

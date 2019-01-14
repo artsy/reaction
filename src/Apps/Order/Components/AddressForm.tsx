@@ -1,7 +1,7 @@
 import { Flex, Join, Sans, Serif, Spacer } from "@artsy/palette"
 import Input from "Components/Input"
+import { CountrySelect } from "Components/v2"
 import React from "react"
-import { CountrySelect } from "Styleguide/Components"
 import { TwoColumnSplit } from "./TwoColumnLayout"
 
 export interface Address {
@@ -102,7 +102,7 @@ export class AddressForm extends React.Component<
 
         <TwoColumnSplit>
           <Flex flexDirection="column" pb={1}>
-            <Serif mb={1} size="3t" color="black100" lineHeight={18}>
+            <Serif mb={1} size="3t" color="black100" lineHeight="1.1em">
               Country
             </Serif>
             <CountrySelect

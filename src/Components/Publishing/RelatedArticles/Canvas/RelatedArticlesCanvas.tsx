@@ -95,11 +95,14 @@ const ArticlesWrapper = styled.div.attrs<ScrollingContainerProps>({})`
   display: flex;
   justify-content: space-between;
   overflow-x: scroll;
+
   ::-webkit-scrollbar {
     display: none;
   }
+
   a {
     margin-right: 30px;
+
     &:last-child {
       margin-right: 0;
     }
@@ -111,7 +114,8 @@ const ArticlesWrapper = styled.div.attrs<ScrollingContainerProps>({})`
       &:last-child {
         border-right: 20px solid white;
       }
-    `} ${pMedia.sm`
+    `};
+    ${pMedia.sm`
       &:first-child {
         margin-left: 20px;
       }

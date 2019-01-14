@@ -1,11 +1,26 @@
-import { Box, color, Flex, Sans, Serif, Spacer } from "@artsy/palette"
 import { unica } from "Assets/Fonts"
+import { ReadMore } from "Components/v2/ReadMore"
 import React, { Component } from "react"
 import styled from "styled-components"
-import { ReadMore } from "Styleguide/Components/ReadMore"
-import { Col, Grid, Row } from "Styleguide/Elements/Grid"
+import { slugify } from "underscore.string"
 import { resize } from "Utils/resizer"
 import { Responsive } from "Utils/Responsive"
+
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
+
+import {
+  Box,
+  Col,
+  color,
+  Flex,
+  Grid,
+  media,
+  Row,
+  Sans,
+  Serif,
+  Spacer,
+} from "@artsy/palette"
 
 interface Props {
   collection: {
@@ -50,7 +65,19 @@ const imageWidthSizes = {
   xl: 1112,
 }
 
+@track({
+  context_module: Schema.ContextModule.CollectionDescription,
+})
 export class CollectionHeader extends Component<Props> {
+  @track({
+    subject: Schema.Subject.ReadMore,
+    type: Schema.Type.Button,
+    action_type: Schema.ActionType.Click,
+  })
+  trackReadMoreClick() {
+    // noop
+  }
+
   render() {
     const { collection } = this.props
     return (
@@ -60,40 +87,35 @@ export class CollectionHeader extends Component<Props> {
           const imageWidth = imageWidthSizes[size]
           const imageHeight = xs ? 160 : 240
           const chars = maxChars[size]
-          const subtitleFontSize = xs ? "2" : "3"
+          const categoryTarget = `/collections#${slugify(collection.category)}`
 
           return (
-            <>
+            <header>
               <Flex flexDirection="column">
                 <Box>
                   <Background
                     p={2}
-                    mt={xs ? 0 : 3}
+                    mt={[0, 3]}
                     mb={3}
                     headerImageUrl={resize(collection.headerImage, {
                       width: imageWidth * (xs ? 2 : 1),
                       height: imageHeight * (xs ? 2 : 1),
                       quality: 80,
                     })}
-                    isMobile={xs ? true : false}
                     height={imageHeight}
                   >
                     <Overlay />
                     <MetaContainer>
                       <SubtitlesContainer>
-                        <Sans size={subtitleFontSize} color="white100">
-                          {collection.category}
+                        <Sans size={["2", "3"]} color="white100">
+                          <a href={categoryTarget}>{collection.category}</a>
                         </Sans>
-                        <Sans
-                          size={subtitleFontSize}
-                          color="white100"
-                          ml="auto"
-                        >
+                        <Sans size={["2", "3"]} color="white100" ml="auto">
                           <a href="/collect">View all artworks</a>
                         </Sans>
                       </SubtitlesContainer>
                       <Spacer mt={1} />
-                      <Title size={xs ? "6" : "10"} color="white100">
+                      <Title size={["6", "10"]} color="white100">
                         <h1>{collection.title}</h1>
                       </Title>
                     </MetaContainer>
@@ -102,9 +124,11 @@ export class CollectionHeader extends Component<Props> {
                     <Grid>
                       <Row>
                         <Col xl="8" lg="8" md="10" sm="12" xs="12">
-                          <ExtendedSerif size="5" px={xs ? 0 : 1}>
+                          <ExtendedSerif size="5" px={[0, 1]}>
                             <ReadMore
-                              onReadMoreClicked={() => false}
+                              onReadMoreClicked={this.trackReadMoreClick.bind(
+                                this
+                              )}
                               maxChars={chars}
                               content={getReadMoreContent(
                                 collection.description,
@@ -120,7 +144,7 @@ export class CollectionHeader extends Component<Props> {
                 </Box>
               </Flex>
               <Spacer mb={2} />
-            </>
+            </header>
           )
         }}
       </Responsive>
@@ -130,7 +154,6 @@ export class CollectionHeader extends Component<Props> {
 
 const Background = styled(Box)<{
   headerImageUrl: string
-  isMobile: boolean
   height: number
 }>`
   position: relative;
@@ -139,11 +162,10 @@ const Background = styled(Box)<{
   background-image: url(${props => props.headerImageUrl});
   background-size: cover;
   background-position: center;
-  ${props =>
-    props.isMobile &&
-    `
-      margin-left: -20px;
-      margin-right: -20px;
+
+  ${media.xs`
+    margin-left: -20px;
+    margin-right: -20px;
   `};
 `
 export const Overlay = styled.div`
@@ -171,13 +193,13 @@ const SubtitlesContainer = styled(Box)`
   display: flex;
 
   ${Sans} {
-    text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    text-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   }
 `
 
 const Title = styled(Serif)`
   text-transform: capitalize;
-  text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 `
 
 const ImageCaption = styled(Box)`
@@ -185,7 +207,14 @@ const ImageCaption = styled(Box)`
 `
 
 const ExtendedSerif = styled(Serif)`
-  div span span p {
-    display: inline;
+  div span {
+    span p {
+      display: inline;
+    }
+
+    div p {
+      display: inline;
+      ${unica("s12")};
+    }
   }
 `
