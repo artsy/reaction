@@ -1,3 +1,11 @@
+# 10.0.8 (Mon Jan 14 2019)
+
+#### 🐛  Bug Fix
+
+- Add gutter space between artist insight components [#1880](https://github.com/artsy/reaction/pull/1880) ([@dblandin](https://github.com/dblandin))
+
+---
+
 # 10.0.7 (Mon Jan 14 2019)
 
 #### 🐛  Bug Fix
