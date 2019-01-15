@@ -1,3 +1,14 @@
+# 10.0.15 (Tue Jan 15 2019)
+
+#### 🏠  Internal
+
+- Make trivial considered an internal change [#1892](https://github.com/artsy/reaction/pull/1892) ([@zephraph](https://github.com/zephraph))
+- Remove auto-release-cli as a direct dependency [#1891](https://github.com/artsy/reaction/pull/1891) ([@zephraph](https://github.com/zephraph))
+- Update yarn orb to v0.1.0 [#1890](https://github.com/artsy/reaction/pull/1890) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/palette to v2.25.11 [#1885](https://github.com/artsy/reaction/pull/1885) ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # 10.0.14 (Tue Jan 15 2019)
 
 #### 🐛  Bug Fix
