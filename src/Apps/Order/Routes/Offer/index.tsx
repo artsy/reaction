@@ -166,12 +166,29 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
             } = data
 
             if (orderOrError.error) {
-              this.onMutationError(
-                new ErrorWithMetadata(
-                  orderOrError.error.code,
-                  orderOrError.error
-                )
-              )
+              switch (orderOrError.error.code) {
+                case "invalid_amount_cents": {
+                  this.onMutationError(
+                    new ErrorWithMetadata(
+                      orderOrError.error.code,
+                      orderOrError.error
+                    ),
+                    "Invalid offer",
+                    "The offer amount is either missing or invalid. Please try again."
+                  )
+                  break
+                }
+
+                default: {
+                  this.onMutationError(
+                    new ErrorWithMetadata(
+                      orderOrError.error.code,
+                      orderOrError.error
+                    )
+                  )
+                  break
+                }
+              }
             } else {
               this.props.router.push(`/orders/${this.props.order.id}/shipping`)
             }

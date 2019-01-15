@@ -26,3 +26,15 @@ export const initialOfferFailedCannotOffer = {
     },
   },
 }
+
+export const initialOfferFailedAmountIsInvalid = {
+  ecommerceAddInitialOfferToOrder: {
+    orderOrError: {
+      error: {
+        type: "validation",
+        code: "invalid_amount_cents",
+        data: null,
+      },
+    },
+  },
+}
