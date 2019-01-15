@@ -21,12 +21,12 @@ export const artistResponse = {
     {
       type: "GROUP_SHOW",
       label: "Group show at a major institution",
-      entities: ["Tate"],
+      entities: ["MoMA PS1"],
     },
     {
       type: "REVIEWED",
       label: "Reviewed by a major art publication",
-      entities: ["Tate"],
+      entities: ["Art Forum"],
     },
     {
       type: "BIENNIAL",
