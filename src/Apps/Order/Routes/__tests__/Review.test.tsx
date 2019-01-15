@@ -143,7 +143,7 @@ describe("Review", () => {
       expect(window.location.assign).toBeCalledWith("/artwork/artworkId")
     })
 
-    it("shows a modal with an error if a user has not entered shipping and payment information", () => {
+    it("shows a modal with a helpful error message if a user has not entered shipping and payment information", () => {
       window.location.assign = jest.fn()
 
       const component = getWrapper(defaultProps)
@@ -161,10 +161,6 @@ describe("Review", () => {
       expect(errorComponent.text()).toContain(
         "Please review and update your shipping and/or payment details and try again."
       )
-
-      component.find(ModalButton).simulate("click")
-
-      // expect(window.location.assign).toBeCalledWith("/artwork/artworkId")
     })
 
     it("shows a modal that redirects to the artist page if there is an insufficient inventory", () => {
