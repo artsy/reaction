@@ -1,6 +1,7 @@
 import { Button, Col, Flex, Row, Spacer } from "@artsy/palette"
 import { Counter_order } from "__generated__/Counter_order.graphql"
 import { CounterSubmitMutation } from "__generated__/CounterSubmitMutation.graphql"
+import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
 import { ConditionsOfSaleDisclaimer } from "Apps/Order/Components/ConditionsOfSaleDisclaimer"
 import { CreditCardSummaryItemFragmentContainer as CreditCardSummaryItem } from "Apps/Order/Components/CreditCardSummaryItem"
@@ -27,7 +28,6 @@ import {
 } from "react-relay"
 import { ErrorWithMetadata } from "Utils/errors"
 import { get } from "Utils/get"
-import { HorizontalPadding } from "Utils/HorizontalPadding"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
 

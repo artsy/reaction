@@ -1,11 +1,11 @@
 import { Button, Col, Flex, Row, Spacer } from "@artsy/palette"
 import { Accept_order } from "__generated__/Accept_order.graphql"
+import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { Helper } from "Apps/Order/Components/Helper"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { track } from "Artsy/Analytics"
 import { Router } from "found"
 import React, { Component } from "react"
-import { HorizontalPadding } from "Utils/HorizontalPadding"
 import { Media } from "Utils/Responsive"
 import {
   counterofferFlowSteps,

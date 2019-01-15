@@ -10,6 +10,7 @@ import {
   emptyAddress,
 } from "Apps/Order/Components/AddressForm"
 
+import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
 import { CreditCardInput } from "Apps/Order/Components/CreditCardInput"
 import { Helper } from "Apps/Order/Components/Helper"
@@ -34,7 +35,6 @@ import {
 } from "react-relay"
 import { injectStripe, ReactStripeElements } from "react-stripe-elements"
 import { ErrorWithMetadata } from "Utils/errors"
-import { HorizontalPadding } from "Utils/HorizontalPadding"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
 

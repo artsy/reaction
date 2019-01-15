@@ -1,8 +1,8 @@
 import { Separator } from "@artsy/palette"
 import { Box, Flex } from "@artsy/palette"
+import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import React from "react"
 import { LazyLoadComponent } from "react-lazy-load-image-component"
-import { HorizontalPadding } from "Utils/HorizontalPadding"
 
 import {
   Footer,
