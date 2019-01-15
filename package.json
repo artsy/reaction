@@ -1,6 +1,6 @@
 {
   "name": "@artsy/reaction",
-  "version": "10.0.12",
+  "version": "10.0.13",
   "description": "Force’s React Components",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction.git",
@@ -87,7 +87,7 @@
     "@types/storybook__react": "^3.0.5",
     "@types/styled-system": "^3.0.9",
     "@types/underscore.string": "^0.0.32",
-    "auto-release-cli": "2.4.0",
+    "auto-release-cli": "2.4.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.4",

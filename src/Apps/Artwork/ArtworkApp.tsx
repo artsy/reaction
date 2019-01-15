@@ -1,9 +1,11 @@
 import { Box, Col, Row, Separator, Spacer } from "@artsy/palette"
-import { ArtworkApp_artwork } from "__generated__/ArtworkApp_artwork.graphql"
 import React from "react"
 import { LazyLoadComponent } from "react-lazy-load-image-component"
 import { createFragmentContainer, graphql } from "react-relay"
-import { HorizontalPadding } from "Utils/HorizontalPadding"
+
+import { ArtworkApp_artwork } from "__generated__/ArtworkApp_artwork.graphql"
+import { AppContainer } from "Apps/Components/AppContainer"
+import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 
 import { ArtistInfoQueryRenderer as ArtistInfo } from "./Components/ArtistInfo"
 import { ArtworkBannerFragmentContainer as ArtworkBanner } from "./Components/ArtworkBanner"
@@ -118,83 +120,85 @@ export class ArtworkApp extends React.Component<Props> {
     const { artwork } = this.props
 
     return (
-      <HorizontalPadding>
-        {/* NOTE: react-head automatically moves these tags to the <head> element */}
-        <ArtworkMeta artwork={artwork} />
+      <AppContainer>
+        <HorizontalPadding>
+          {/* NOTE: react-head automatically moves these tags to the <head> element */}
+          <ArtworkMeta artwork={artwork} />
 
-        <Row>
-          <Col sm={8}>
-            <ArtworkBanner artwork={artwork} />
-            <Spacer mb={2} />
-          </Col>
-        </Row>
-
-        {/* Mobile */}
-        <Media at="xs">
-          <Row>
-            <Col>
-              <ArtworkImageBrowser artwork={artwork} />
-              <ArtworkSidebar artwork={artwork} />
-              <ArtworkDetails artwork={artwork} />
-              {this.renderArtists()}
-            </Col>
-          </Row>
-        </Media>
-
-        {/* Desktop */}
-        <Media greaterThan="xs">
           <Row>
             <Col sm={8}>
-              <Box pr={4}>
-                <ArtworkImageBrowser artwork={artwork} />
-                <ArtworkDetails artwork={artwork} />
-                {this.renderArtists()}
-              </Box>
-            </Col>
-            <Col sm={4}>
-              <ArtworkSidebar artwork={artwork} />
+              <ArtworkBanner artwork={artwork} />
+              <Spacer mb={2} />
             </Col>
           </Row>
-        </Media>
 
-        <Row>
-          <Col>
-            <Box mt={6}>
-              <OtherWorks artwork={artwork} />
-            </Box>
-          </Col>
-        </Row>
-
-        {artwork.artist && (
-          <Row>
-            <Col>
-              <RelatedArtists artwork={artwork} />
-            </Col>
-          </Row>
-        )}
-
-        {typeof window !== "undefined" && (
-          <LazyLoadComponent threshold={1000}>
+          {/* Mobile */}
+          <Media at="xs">
             <Row>
               <Col>
-                <RecentlyViewed />
+                <ArtworkImageBrowser artwork={artwork} />
+                <ArtworkSidebar artwork={artwork} />
+                <ArtworkDetails artwork={artwork} />
+                {this.renderArtists()}
               </Col>
             </Row>
-          </LazyLoadComponent>
-        )}
+          </Media>
 
-        <Row>
-          <Col>
-            <Separator mt={6} mb={3} />
-            <Footer />
-          </Col>
-        </Row>
+          {/* Desktop */}
+          <Media greaterThan="xs">
+            <Row>
+              <Col sm={8}>
+                <Box pr={4}>
+                  <ArtworkImageBrowser artwork={artwork} />
+                  <ArtworkDetails artwork={artwork} />
+                  {this.renderArtists()}
+                </Box>
+              </Col>
+              <Col sm={4}>
+                <ArtworkSidebar artwork={artwork} />
+              </Col>
+            </Row>
+          </Media>
 
-        <div id="lightbox-container" />
-        <ContextConsumer>
-          {({ mediator }) => <>{this.enableIntercomForBuyers(mediator)}</>}
-        </ContextConsumer>
-      </HorizontalPadding>
+          <Row>
+            <Col>
+              <Box mt={6}>
+                <OtherWorks artwork={artwork} />
+              </Box>
+            </Col>
+          </Row>
+
+          {artwork.artist && (
+            <Row>
+              <Col>
+                <RelatedArtists artwork={artwork} />
+              </Col>
+            </Row>
+          )}
+
+          {typeof window !== "undefined" && (
+            <LazyLoadComponent threshold={1000}>
+              <Row>
+                <Col>
+                  <RecentlyViewed />
+                </Col>
+              </Row>
+            </LazyLoadComponent>
+          )}
+
+          <Row>
+            <Col>
+              <Separator mt={6} mb={3} />
+              <Footer />
+            </Col>
+          </Row>
+
+          <div id="lightbox-container" />
+          <ContextConsumer>
+            {({ mediator }) => <>{this.enableIntercomForBuyers(mediator)}</>}
+          </ContextConsumer>
+        </HorizontalPadding>
+      </AppContainer>
     )
   }
 }
