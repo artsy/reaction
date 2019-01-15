@@ -157,6 +157,7 @@ describe("Review", () => {
 
       const errorComponent = component.find(ErrorModal)
       expect(errorComponent.props().show).toBe(true)
+      expect(errorComponent.text()).toContain("Missing information")
       expect(errorComponent.text()).toContain(
         "Please review and update your shipping and/or payment details and try again."
       )
