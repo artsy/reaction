@@ -16,6 +16,7 @@ import { OtherWorksFragmentContainer as OtherWorks } from "./Components/OtherWor
 
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
+import { ContextConsumer } from "Artsy/Router"
 import {
   Footer,
   RecentlyViewedQueryRenderer as RecentlyViewed,
@@ -56,6 +57,12 @@ export class ArtworkApp extends React.Component<Props> {
       }
       if (tracking) tracking.trackEvent(trackingData)
     }
+  }
+
+  enableIntercomForBuyers(mediator) {
+    mediator &&
+      mediator.trigger &&
+      mediator.trigger("enableIntercomForBuyers", {})
   }
 
   trackPageview() {
@@ -178,6 +185,9 @@ export class ArtworkApp extends React.Component<Props> {
         </Row>
 
         <div id="lightbox-container" />
+        <ContextConsumer>
+          {({ mediator }) => <>{this.enableIntercomForBuyers(mediator)}</>}
+        </ContextConsumer>
       </HorizontalPadding>
     )
   }
