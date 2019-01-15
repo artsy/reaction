@@ -1,5 +1,6 @@
 import { Flex, Sans, Serif } from "@artsy/palette"
 import { CollectionsApp_categories } from "__generated__/CollectionsApp_categories.graphql"
+import { AppContainer } from "Apps/Components/AppContainer"
 import { FrameWithRecentlyViewed } from "Components/FrameWithRecentlyViewed"
 import React, { Component } from "react"
 import { Meta, Title } from "react-head"
@@ -31,30 +32,32 @@ export class CollectionsApp extends Component<CollectionsAppProps> {
           items={[{ path: "/collections", name: "Collections" }]}
         />
 
-        <FrameWithRecentlyViewed>
-          <Flex
-            mt={3}
-            mb={4}
-            justifyContent="space-between"
-            alignItems="flex-end"
-          >
-            <Serif size="8">
-              <h1>Collections</h1>
-            </Serif>
+        <AppContainer>
+          <FrameWithRecentlyViewed>
+            <Flex
+              mt={3}
+              mb={4}
+              justifyContent="space-between"
+              alignItems="flex-end"
+            >
+              <Serif size="8">
+                <h1>Collections</h1>
+              </Serif>
 
-            <Sans size="3" weight="medium">
-              <a href="/collect">View works</a>
-            </Sans>
-          </Flex>
-          {categories &&
-            categories.map((category, index) => (
-              <CollectionsGrid
-                key={index}
-                name={category.name}
-                collections={category.collections as CollectionEntity[]}
-              />
-            ))}
-        </FrameWithRecentlyViewed>
+              <Sans size="3" weight="medium">
+                <a href="/collect">View works</a>
+              </Sans>
+            </Flex>
+            {categories &&
+              categories.map((category, index) => (
+                <CollectionsGrid
+                  key={index}
+                  name={category.name}
+                  collections={category.collections as CollectionEntity[]}
+                />
+              ))}
+          </FrameWithRecentlyViewed>
+        </AppContainer>
       </>
     )
   }

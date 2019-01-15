@@ -14,6 +14,7 @@ import {
   OrderFulfillmentType,
   ShippingOrderAddressUpdateMutation,
 } from "__generated__/ShippingOrderAddressUpdateMutation.graphql"
+import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import {
   Address,
   AddressChangeHandler,
@@ -47,7 +48,6 @@ import {
 } from "react-relay"
 import { ErrorWithMetadata } from "Utils/errors"
 import { get } from "Utils/get"
-import { HorizontalPadding } from "Utils/HorizontalPadding"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
 

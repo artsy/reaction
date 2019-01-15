@@ -1,5 +1,6 @@
 import { Box, Flex, Sans, Serif } from "@artsy/palette"
 import { CollectApp_viewer } from "__generated__/CollectApp_viewer.graphql"
+import { AppContainer } from "Apps/Components/AppContainer"
 import { FrameWithRecentlyViewed } from "Components/FrameWithRecentlyViewed"
 import React, { Component } from "react"
 import { Link, Meta, Title } from "react-head"
@@ -30,46 +31,48 @@ export class CollectApp extends Component<CollectAppProps> {
       : `${sd.APP_URL}/collect`
 
     return (
-      <FrameWithRecentlyViewed>
-        <Title>{title}</Title>
-        <Meta property="og:url" content={`${sd.APP_URL}/collect`} />
-        <Meta
-          property="og:image"
-          content={`${sd.APP_URL}/images/og_image.jpg`}
-        />
-        <Meta name="description" content={description} />
-        <Meta property="og:description" content={description} />
-        <Meta property="twitter:description" content={description} />
-        <Link rel="canonical" href={canonicalHref} />
-        <BreadCrumbList
-          items={[
-            { path: "/collect", name: "Collect" },
-            medium && {
-              path: `/collect/${medium}`,
-              name: breadcrumbTitle,
-            },
-          ].filter(Boolean)}
-        />
-        <SeoProductsForArtworks artworks={filter_artworks} />
+      <AppContainer>
+        <FrameWithRecentlyViewed>
+          <Title>{title}</Title>
+          <Meta property="og:url" content={`${sd.APP_URL}/collect`} />
+          <Meta
+            property="og:image"
+            content={`${sd.APP_URL}/images/og_image.jpg`}
+          />
+          <Meta name="description" content={description} />
+          <Meta property="og:description" content={description} />
+          <Meta property="twitter:description" content={description} />
+          <Link rel="canonical" href={canonicalHref} />
+          <BreadCrumbList
+            items={[
+              { path: "/collect", name: "Collect" },
+              medium && {
+                path: `/collect/${medium}`,
+                name: breadcrumbTitle,
+              },
+            ].filter(Boolean)}
+          />
+          <SeoProductsForArtworks artworks={filter_artworks} />
 
-        <Flex
-          mt={3}
-          mb={4}
-          justifyContent="space-between"
-          alignItems="flex-end"
-        >
-          <Serif size="8">
-            <h1 className="title">Collect art and design online</h1>
-          </Serif>
+          <Flex
+            mt={3}
+            mb={4}
+            justifyContent="space-between"
+            alignItems="flex-end"
+          >
+            <Serif size="8">
+              <h1 className="title">Collect art and design online</h1>
+            </Serif>
 
-          <Sans size="3" weight="medium">
-            <a href="/collections">View collections</a>
-          </Sans>
-        </Flex>
-        <Box>
-          <ArtworkGrid viewer={this.props.viewer} />
-        </Box>
-      </FrameWithRecentlyViewed>
+            <Sans size="3" weight="medium">
+              <a href="/collections">View collections</a>
+            </Sans>
+          </Flex>
+          <Box>
+            <ArtworkGrid viewer={this.props.viewer} />
+          </Box>
+        </FrameWithRecentlyViewed>
+      </AppContainer>
     )
   }
 }
