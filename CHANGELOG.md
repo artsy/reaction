@@ -1,3 +1,11 @@
+# 10.0.11 (Tue Jan 15 2019)
+
+#### 🐛  Bug Fix
+
+- Intercom [#1883](https://github.com/artsy/reaction/pull/1883) ([@oxaudo](https://github.com/oxaudo))
+
+---
+
 # 10.0.10 (Tue Jan 15 2019)
 
 
