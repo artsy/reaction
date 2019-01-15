@@ -1,3 +1,12 @@
+# 10.0.9 (Tue Jan 15 2019)
+
+#### 🐛  Bug Fix
+
+- Add specs to exercise components for Artist Insights V2 [#1881](https://github.com/artsy/reaction/pull/1881) ([@dblandin](https://github.com/dblandin))
+- Add spacing below button on offer/respond page [#1879](https://github.com/artsy/reaction/pull/1879) ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # 10.0.8 (Mon Jan 14 2019)
 
 #### 🐛  Bug Fix
