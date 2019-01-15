@@ -1,3 +1,11 @@
+# 10.0.14 (Tue Jan 15 2019)
+
+#### 🐛  Bug Fix
+
+- clean up the mediator call for launching intercom and pass artwork to it [#1889](https://github.com/artsy/reaction/pull/1889) ([@oxaudo](https://github.com/oxaudo))
+
+---
+
 # 10.0.13 (Tue Jan 15 2019)
 
 
