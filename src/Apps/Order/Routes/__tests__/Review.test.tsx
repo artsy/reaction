@@ -20,6 +20,7 @@ import {
   submitOfferOrderWithNoInventoryFailure,
   submitOfferOrderWithVersionMismatchFailure,
   submitOrderWithFailure,
+  submitOrderWithMissingInfo,
   submitOrderWithNoInventoryFailure,
   submitOrderWithVersionMismatchFailure,
 } from "../__fixtures__/MutationResults"
@@ -140,6 +141,29 @@ describe("Review", () => {
       component.find(ModalButton).simulate("click")
 
       expect(window.location.assign).toBeCalledWith("/artwork/artworkId")
+    })
+
+    it("shows a modal with an error if a user has not entered shipping and payment information", () => {
+      window.location.assign = jest.fn()
+
+      const component = getWrapper(defaultProps)
+
+      expect(component.find(ErrorModal).props().show).toBe(false)
+      mutationMock.mockImplementationOnce((_, { onCompleted }) =>
+        onCompleted(submitOrderWithMissingInfo)
+      )
+
+      component.find(Button).simulate("click")
+
+      const errorComponent = component.find(ErrorModal)
+      expect(errorComponent.props().show).toBe(true)
+      expect(errorComponent.text()).toContain(
+        "Please review and update your shipping and/or payment details and try again."
+      )
+
+      component.find(ModalButton).simulate("click")
+
+      // expect(window.location.assign).toBeCalledWith("/artwork/artworkId")
     })
 
     it("shows a modal that redirects to the artist page if there is an insufficient inventory", () => {
