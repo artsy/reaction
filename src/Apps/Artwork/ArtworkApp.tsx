@@ -62,9 +62,15 @@ export class ArtworkApp extends React.Component<Props> {
   }
 
   enableIntercomForBuyers(mediator) {
+    const {
+      artwork: { is_offerable, is_acquireable },
+    } = this.props
     mediator &&
       mediator.trigger &&
-      mediator.trigger("enableIntercomForBuyers", {})
+      mediator.trigger("enableIntercomForBuyers", {
+        is_offerable,
+        is_acquireable,
+      })
   }
 
   trackPageview() {
