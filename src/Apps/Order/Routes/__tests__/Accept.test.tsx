@@ -10,9 +10,9 @@ import { CreditCardSummaryItemFragmentContainer } from "Apps/Order/Components/Cr
 import { OrderStepper } from "Apps/Order/Components/OrderStepper"
 import { ShippingSummaryItemFragmentContainer } from "Apps/Order/Components/ShippingSummaryItem"
 import { TransactionDetailsSummaryItemFragmentContainer } from "Apps/Order/Components/TransactionDetailsSummaryItem"
+import { ConnectedModalDialog } from "Apps/Order/Dialogs"
 import { trackPageView } from "Apps/Order/Utils/trackPageView"
-import { ErrorModal } from "Components/Modal/ErrorModal"
-import { ModalButton } from "Components/Modal/ModalDialog"
+import { ModalButton, ModalDialog } from "Components/Modal/ModalDialog"
 import { Stepper } from "Components/v2"
 import { CountdownTimer } from "Components/v2/CountdownTimer"
 import { MockBoot } from "DevTools"
@@ -20,6 +20,7 @@ import { mount } from "enzyme"
 import moment from "moment"
 import React from "react"
 import { commitMutation as _commitMutation } from "react-relay"
+import { flushPromiseQueue } from "Utils/flushPromiseQueue"
 import {
   acceptOfferFailed,
   AcceptOfferPaymentFailed,
@@ -68,6 +69,7 @@ describe("Accept seller offer", () => {
     return mount(
       <MockBoot>
         <AcceptRoute {...props as any} />
+        <ConnectedModalDialog />
       </MockBoot>
     )
   }
@@ -195,7 +197,7 @@ describe("Accept seller offer", () => {
       expect(buttonProps.loading).toBeFalsy()
     })
 
-    it("shows an error modal when there is an error from the server", () => {
+    it("shows an error modal when there is an error from the server", async () => {
       const component = getWrapper()
       const mockCommitMutation = commitMutation as jest.Mock<any>
       mockCommitMutation.mockImplementationOnce(
@@ -207,7 +209,10 @@ describe("Accept seller offer", () => {
       const submitButton = component.find(Button).last()
       submitButton.simulate("click")
 
-      const errorComponent = component.find(ErrorModal)
+      await flushPromiseQueue()
+      component.update()
+
+      const errorComponent = component.find(ModalDialog)
       expect(errorComponent.props().show).toBe(true)
       expect(errorComponent.text()).toContain("An error occurred")
       expect(errorComponent.text()).toContain(
@@ -215,10 +220,14 @@ describe("Accept seller offer", () => {
       )
 
       component.find(ModalButton).simulate("click")
-      expect(component.find(ErrorModal).props().show).toBe(false)
+
+      await flushPromiseQueue()
+      component.update()
+
+      expect(component.find(ModalDialog).props().show).toBe(false)
     })
 
-    it("shows an error modal if there is a capture_failed error", () => {
+    it("shows an error modal if there is a capture_failed error", async () => {
       const component = getWrapper()
       const mockCommitMutation = commitMutation as jest.Mock<any>
       mockCommitMutation.mockImplementationOnce(
@@ -230,7 +239,10 @@ describe("Accept seller offer", () => {
       const submitButton = component.find(Button).last()
       submitButton.simulate("click")
 
-      const errorComponent = component.find(ErrorModal)
+      await flushPromiseQueue()
+      component.update()
+
+      const errorComponent = component.find(ModalDialog)
       expect(errorComponent.props().show).toBe(true)
       expect(errorComponent.text()).toContain("An error occurred")
       expect(errorComponent.text()).toContain(
@@ -238,7 +250,11 @@ describe("Accept seller offer", () => {
       )
 
       component.find(ModalButton).simulate("click")
-      expect(component.find(ErrorModal).props().show).toBe(false)
+
+      await flushPromiseQueue()
+      component.update()
+
+      expect(component.find(ModalDialog).props().show).toBe(false)
     })
   })
 

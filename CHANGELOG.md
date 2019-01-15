@@ -1,3 +1,42 @@
+# 10.0.10 (Tue Jan 15 2019)
+
+
+
+---
+
+# 10.0.9 (Tue Jan 15 2019)
+
+#### 🐛  Bug Fix
+
+- Add specs to exercise components for Artist Insights V2 [#1881](https://github.com/artsy/reaction/pull/1881) ([@dblandin](https://github.com/dblandin))
+- Add spacing below button on offer/respond page [#1879](https://github.com/artsy/reaction/pull/1879) ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# 10.0.8 (Mon Jan 14 2019)
+
+#### 🐛  Bug Fix
+
+- Add gutter space between artist insight components [#1880](https://github.com/artsy/reaction/pull/1880) ([@dblandin](https://github.com/dblandin))
+
+---
+
+# 10.0.7 (Mon Jan 14 2019)
+
+#### 🐛  Bug Fix
+
+- add information about closed registration for live auctions if the user is not registered [#1878](https://github.com/artsy/reaction/pull/1878) ([@oxaudo](https://github.com/oxaudo))
+
+---
+
+# 10.0.6 (Mon Jan 14 2019)
+
+#### 🐛  Bug Fix
+
+- Refactor error modals [#1875](https://github.com/artsy/reaction/pull/1875) ([@ds300](https://github.com/ds300))
+
+---
+
 # 10.0.5 (Mon Jan 14 2019)
 
 #### 🐛  Bug Fix

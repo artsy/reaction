@@ -92,7 +92,7 @@ export class ArtistInsight extends React.Component<ArtistInsightProps> {
 
     if (value || (entities && entities.length > 0)) {
       return (
-        <Flex mt={1} width={["100%", "50%"]}>
+        <Flex mt={1} width={["100%", "48%"]}>
           <Flex pr={1}>{this.renderIcon(type)}</Flex>
           <Flex flexDirection="column">
             <Box>
