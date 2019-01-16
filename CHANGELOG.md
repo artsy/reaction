@@ -1,3 +1,12 @@
+# 10.0.16 (Wed Jan 16 2019)
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v2.25.12 [#1894](https://github.com/artsy/reaction/pull/1894) ([@renovate-bot](https://github.com/renovate-bot))
+- Don't deploy trivial changes [#1895](https://github.com/artsy/reaction/pull/1895) ([@zephraph](https://github.com/zephraph))
+
+---
+
 # 10.0.15 (Tue Jan 15 2019)
 
 #### 🏠  Internal
