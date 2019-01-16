@@ -1,3 +1,11 @@
+# 11.0.2 (Wed Jan 16 2019)
+
+#### 🐛  Bug Fix
+
+- ArtworkBanner for auctions should show sale cover image instead of partner profile image [#1902](https://github.com/artsy/reaction/pull/1902) ([@oxaudo](https://github.com/oxaudo))
+
+---
+
 # 11.0.1 (Wed Jan 16 2019)
 
 
