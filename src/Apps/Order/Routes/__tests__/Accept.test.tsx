@@ -151,18 +151,8 @@ describe("Accept seller offer", () => {
       resolveMutation.mockReturnValueOnce(
         acceptOfferFailed.ecommerceBuyerAcceptOffer
       )
-
       await page.clickSubmit()
-
-      expect(page.modalDialog.props().show).toBe(true)
-      expect(page.modalDialog.text()).toContain("An error occurred")
-      expect(page.modalDialog.text()).toContain(
-        "Something went wrong. Please try again or contact orders@artsy.net."
-      )
-
-      await page.dismissModal()
-
-      expect(page.modalDialog.props().show).toBe(false)
+      await page.expectDefaultErrorDialog()
     })
 
     it("shows an error modal if there is a capture_failed error", async () => {
@@ -171,16 +161,10 @@ describe("Accept seller offer", () => {
       )
 
       await page.clickSubmit()
-
-      expect(page.modalDialog.props().show).toBe(true)
-      expect(page.modalDialog.text()).toContain("An error occurred")
-      expect(page.modalDialog.text()).toContain(
+      await page.expectErrorDialogMatching(
+        "An error occurred",
         "There was an error processing your payment. Please try again or contact orders@artsy.net."
       )
-
-      await page.dismissModal()
-
-      expect(page.modalDialog.props().show).toBe(false)
     })
   })
 
