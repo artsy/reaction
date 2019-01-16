@@ -15,6 +15,12 @@ export type ArtworkBanner_artwork = {
             readonly href: string | null;
         }) | null;
     }) | null;
+    readonly sale: ({
+        readonly is_auction: boolean | null;
+        readonly cover_image: ({
+            readonly url: string | null;
+        }) | null;
+    }) | null;
     readonly artworkContextAuction: ({
         readonly __typename: "ArtworkContextAuction";
         readonly name: string | null;
@@ -109,11 +115,24 @@ v4 = {
 v5 = {
   "kind": "ScalarField",
   "alias": null,
+  "name": "is_auction",
+  "args": null,
+  "storageKey": null
+},
+v6 = {
+  "kind": "Literal",
+  "name": "version",
+  "value": "square",
+  "type": "[String]"
+},
+v7 = {
+  "kind": "ScalarField",
+  "alias": null,
   "name": "__typename",
   "args": null,
   "storageKey": null
 },
-v6 = [
+v8 = [
   {
     "kind": "LinkedField",
     "alias": "img",
@@ -126,12 +145,7 @@ v6 = [
         "value": 70,
         "type": "Int"
       },
-      {
-        "kind": "Literal",
-        "name": "version",
-        "value": "square",
-        "type": "[String]"
-      },
+      v6,
       {
         "kind": "Literal",
         "name": "width",
@@ -214,6 +228,39 @@ return {
     },
     {
       "kind": "LinkedField",
+      "alias": null,
+      "name": "sale",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Sale",
+      "plural": false,
+      "selections": [
+        v5,
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "cover_image",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "Image",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "url",
+              "args": [
+                v6
+              ],
+              "storageKey": "url(version:\"square\")"
+            }
+          ]
+        },
+        v4
+      ]
+    },
+    {
+      "kind": "LinkedField",
       "alias": "artworkContextAuction",
       "name": "context",
       "storageKey": null,
@@ -221,7 +268,7 @@ return {
       "concreteType": null,
       "plural": false,
       "selections": [
-        v5,
+        v7,
         v4,
         {
           "kind": "InlineFragment",
@@ -229,13 +276,7 @@ return {
           "selections": [
             v1,
             v3,
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "is_auction",
-              "args": null,
-              "storageKey": null
-            },
+            v5,
             {
               "kind": "ScalarField",
               "alias": null,
@@ -277,7 +318,7 @@ return {
       "concreteType": null,
       "plural": false,
       "selections": [
-        v5,
+        v7,
         v4,
         {
           "kind": "InlineFragment",
@@ -324,7 +365,7 @@ return {
                   "args": null,
                   "concreteType": "Image",
                   "plural": false,
-                  "selections": v6
+                  "selections": v8
                 },
                 v4
               ]
@@ -342,7 +383,7 @@ return {
       "concreteType": null,
       "plural": false,
       "selections": [
-        v5,
+        v7,
         v4,
         {
           "kind": "InlineFragment",
@@ -366,7 +407,7 @@ return {
               "args": null,
               "concreteType": "Image",
               "plural": false,
-              "selections": v6
+              "selections": v8
             }
           ]
         }
@@ -376,5 +417,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'b531b77ce0ce6685452abe05f1e40192';
+(node as any).hash = '342fe946015d9601deab03cd20f4a95a';
 export default node;
