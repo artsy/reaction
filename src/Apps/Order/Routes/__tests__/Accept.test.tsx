@@ -59,12 +59,9 @@ class AcceptTestPage extends TestPage({
 describe("Accept seller offer", () => {
   const page = new AcceptTestPage()
 
-  beforeEach(() => {
-    page.reset()
-  })
-
   describe("with default data", () => {
-    beforeEach(async () => {
+    beforeAll(async () => {
+      page.reset()
       await page.init()
     })
 
@@ -121,6 +118,8 @@ describe("Accept seller offer", () => {
     )
 
     beforeEach(async () => {
+      page.reset()
+      resolveMutation.mockClear()
       await page.init({
         mockMutationResults: {
           ecommerceBuyerAcceptOffer: resolveMutation,
@@ -187,7 +186,6 @@ describe("Accept seller offer", () => {
 
   it("tracks a pageview", async () => {
     await page.init()
-
     expect(trackPageView).toHaveBeenCalledTimes(1)
   })
 })
