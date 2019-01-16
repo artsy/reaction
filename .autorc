@@ -8,5 +8,5 @@
     "patch": "Version: Patch",
     "internal": "Version: Trivial"
   },
-  "skipReleaseLabels": ["Version: Trivial, "Skip Release"]
+  "skipReleaseLabels": ["Version: Trivial", "Skip Release"]
 }
