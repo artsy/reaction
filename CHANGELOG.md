@@ -1,3 +1,11 @@
+# 11.0.3 (Wed Jan 16 2019)
+
+#### 🐛  Bug Fix
+
+- [Refactor] Remove <Tabs> and <Toggle> and move to Palette [#1897](https://github.com/artsy/reaction/pull/1897) ([@damassi](https://github.com/damassi))
+
+---
+
 # 11.0.2 (Wed Jan 16 2019)
 
 #### 🐛  Bug Fix
