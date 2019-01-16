@@ -1,3 +1,15 @@
+# 11.0.0 (Wed Jan 16 2019)
+
+#### 💥  Breaking Change
+
+- Deprecate Grid [#1900](https://github.com/artsy/reaction/pull/1900) ([@eessex](https://github.com/eessex))
+
+#### 🐛  Bug Fix
+
+- Add docs for relay data mocking [#1898](https://github.com/artsy/reaction/pull/1898) ([@ds300](https://github.com/ds300))
+
+---
+
 # 10.0.17 (Wed Jan 16 2019)
 
 #### 🐛  Bug Fix
