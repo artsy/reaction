@@ -1,8 +1,8 @@
+import { Col, Row } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
 
 import Button from "../../Buttons/Default"
-import { Col, Row } from "../../Grid"
 import { OverlayTrigger } from "../../OverlayTrigger"
 import { Popover } from "../../Popover"
 
