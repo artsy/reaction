@@ -10,6 +10,7 @@ import {
   OperationBase,
   OperationDefaults,
   RecordSource,
+  RelayNetwork,
   Store,
 } from "relay-runtime"
 import {
@@ -43,6 +44,7 @@ export interface MockRelayRendererProps<
    * }}
    */
   mockMutationResults?: object
+  mockNetworkFailureForMutations?: RelayNetwork["execute"]
 }
 
 export interface MockRelayRendererState {
@@ -168,6 +170,7 @@ export class MockRelayRenderer<
       mockResolvers,
       mockData,
       mockMutationResults,
+      mockNetworkFailureForMutations,
     } = this.props
 
     if ((mockData || mockMutationResults) && mockResolvers) {
@@ -180,7 +183,11 @@ export class MockRelayRenderer<
     }
 
     const network = mockData
-      ? createMockNetworkLayer2(mockData, mockMutationResults)
+      ? createMockNetworkLayer2({
+          mockData,
+          mockMutationResults,
+          mockNetworkFailureForMutations,
+        })
       : createMockNetworkLayer({
           Query: () => ({}),
           ...mockResolvers,

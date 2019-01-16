@@ -1,51 +1,37 @@
-import { Button } from "@artsy/palette"
 import {
   Buyer,
   OfferOrderWithShippingDetails,
   Offers,
   OfferWithTotals,
 } from "Apps/__tests__/Fixtures/Order"
-import { ArtworkSummaryItemFragmentContainer } from "Apps/Order/Components/ArtworkSummaryItem"
-import { CreditCardSummaryItemFragmentContainer } from "Apps/Order/Components/CreditCardSummaryItem"
-import { OrderStepper } from "Apps/Order/Components/OrderStepper"
-import { ShippingSummaryItemFragmentContainer } from "Apps/Order/Components/ShippingSummaryItem"
-import { TransactionDetailsSummaryItemFragmentContainer } from "Apps/Order/Components/TransactionDetailsSummaryItem"
-import { ConnectedModalDialog } from "Apps/Order/Dialogs"
 import { trackPageView } from "Apps/Order/Utils/trackPageView"
-import { ModalButton, ModalDialog } from "Components/Modal/ModalDialog"
-import { Stepper } from "Components/v2"
-import { CountdownTimer } from "Components/v2/CountdownTimer"
-import { MockBoot } from "DevTools"
-import { mount } from "enzyme"
 import moment from "moment"
-import React from "react"
-import { commitMutation as _commitMutation } from "react-relay"
-import { flushPromiseQueue } from "Utils/flushPromiseQueue"
+import { commitMutation as _commitMutation, graphql } from "react-relay"
 import {
   insufficientInventoryResponse,
   submitPendingOfferFailed,
   submitPendingOfferSuccess,
 } from "../__fixtures__/MutationResults/submitPendingOffer"
-import { CounterFragmentContainer as CounterRoute } from "../Counter"
+import { CounterFragmentContainer } from "../Counter"
+import { TestPage } from "./Utils/TestPage"
 
 jest.mock("Apps/Order/Utils/trackPageView")
-
 jest.mock("Utils/getCurrentTimeAsIsoString")
-
 const NOW = "2018-12-05T13:47:16.446Z"
-
 require("Utils/getCurrentTimeAsIsoString").__setCurrentTime(NOW)
-
-jest.mock("react-relay")
-const commitMutation = _commitMutation as jest.Mock<any>
+jest.unmock("react-relay")
 
 const testOrder = {
   ...OfferOrderWithShippingDetails,
   stateExpiresAt: moment(NOW)
     .add(1, "day")
+    .add(4, "hours")
+    .add(22, "minutes")
+    .add(59, "seconds")
     .toISOString(),
   lastOffer: {
     ...OfferWithTotals,
+    id: "lastOffer",
     createdAt: moment(NOW)
       .subtract(1, "day")
       .toISOString(),
@@ -53,6 +39,7 @@ const testOrder = {
   },
   myLastOffer: {
     ...OfferWithTotals,
+    id: "myLastOffer",
     createdAt: moment(NOW)
       .subtract(1, "seconds")
       .toISOString(),
@@ -63,228 +50,141 @@ const testOrder = {
   buyer: Buyer,
 }
 
-let mockPushRoute: jest.Mock<string>
+class CounterTestPage extends TestPage({
+  Component: CounterFragmentContainer,
+  query: graphql`
+    query CounterTestQuery {
+      order(id: "") {
+        ...Counter_order
+      }
+    }
+  `,
+  defaultData: {
+    order: testOrder,
+  },
+}) {}
 
 describe("Submit Pending Counter Offer", () => {
-  const getWrapper = (extraOrderProps?) => {
-    const props = {
-      relay: { environment: {} },
-      router: { push: mockPushRoute },
-      order: {
-        ...testOrder,
-        ...extraOrderProps,
-      },
-    }
-    return mount(
-      <MockBoot>
-        <CounterRoute {...props as any} />
-        <ConnectedModalDialog />
-      </MockBoot>
-    )
-  }
+  const page = new CounterTestPage()
 
-  beforeEach(() => {
-    mockPushRoute = jest.fn()
-  })
-
-  it("Shows the stepper", () => {
-    const component = getWrapper()
-    const stepper = component.find(OrderStepper)
-    expect(stepper.text()).toMatchInlineSnapshot(`"Respond Review"`)
-
-    const index = component.find(Stepper).props().currentStepIndex
-    expect(index).toBe(1)
-  })
-
-  it("shows the countdown timer", () => {
-    const component = getWrapper({
-      stateExpiresAt: moment(NOW)
-        .add(1, "day")
-        .add(4, "hours")
-        .add(22, "minutes")
-        .add(59, "seconds"),
+  describe("with default data", () => {
+    beforeAll(async () => {
+      page.reset()
+      await page.init()
     })
-    const timer = component.find(CountdownTimer)
-    expect(timer.text()).toContain("01d 04h 22m 59s left")
-  })
 
-  it("shows the transaction summary", () => {
-    const component = getWrapper()
-    const transactionSummary = component.find(
-      TransactionDetailsSummaryItemFragmentContainer
-    )
-    expect(transactionSummary).toHaveLength(1)
+    it("Shows the stepper", () => {
+      expect(page.orderStepper.text()).toMatchInlineSnapshot(`"Respond Review"`)
+      expect(page.orderStepperCurrentStep).toBe("Review")
+    })
 
-    expect(transactionSummary.text()).toMatch("Your counterofferChange")
-    expect(transactionSummary.text()).toMatch("Your offer$your.offer")
-    expect(transactionSummary.text()).toMatch("Seller's offer$sellers.offer")
-  })
+    it("shows the countdown timer", () => {
+      expect(page.countdownTimer.text()).toContain("01d 04h 22m 59s left")
+    })
 
-  it("shows the artwork summary", () => {
-    const component = getWrapper()
-    const artworkSummary = component.find(ArtworkSummaryItemFragmentContainer)
-    expect(artworkSummary).toHaveLength(1)
+    it("shows the transaction summary", () => {
+      expect(page.transactionSummary.text()).toMatch("Your counterofferChange")
+      expect(page.transactionSummary.text()).toMatch("Your offer$your.offer")
+      expect(page.transactionSummary.text()).toMatch(
+        "Seller's offer$sellers.offer"
+      )
+    })
 
-    expect(artworkSummary.text()).toMatch("Lisa BreslowGramercy Park South")
-  })
+    it("shows the artwork summary", () => {
+      expect(page.artworkSummary.text()).toMatch(
+        "Lisa BreslowGramercy Park South"
+      )
+    })
 
-  it("shows the shipping details", () => {
-    const component = getWrapper()
-    const shippingSummary = component.find(ShippingSummaryItemFragmentContainer)
-    expect(shippingSummary).toHaveLength(1)
+    it("shows the shipping details", () => {
+      expect(page.shippingSummary.text()).toMatch(
+        "Ship toJoelle Van Dyne401 Broadway"
+      )
+    })
 
-    expect(shippingSummary.text()).toMatch("Ship toJoelle Van Dyne401 Broadway")
-  })
+    it("shows the payment details", () => {
+      expect(page.paymentSummary.text()).toMatchInlineSnapshot(
+        `"•••• 4444  Exp 3/21"`
+      )
+    })
 
-  it("shows the payment details", () => {
-    const component = getWrapper()
-    const paymentSummary = component.find(
-      CreditCardSummaryItemFragmentContainer
-    )
-    expect(paymentSummary).toHaveLength(1)
+    it("shows the submit button", () => {
+      expect(page.submitButton.text()).toBe("Submit")
+    })
 
-    expect(paymentSummary.text()).toMatchInlineSnapshot(`"•••• 4444  Exp 3/21"`)
-  })
-
-  it("shows the submit button", () => {
-    const component = getWrapper()
-    const continueButton = component.find(Button).last()
-    expect(continueButton.text()).toBe("Submit")
-  })
-
-  it("Shows the conditions of sale disclaimer.", () => {
-    const component = getWrapper()
-    expect(component.text()).toMatch(
-      "By clicking Submit, I agree to Artsy’s Conditions of Sale."
-    )
+    it("Shows the conditions of sale disclaimer.", () => {
+      expect(page.conditionsOfSaleDisclaimer.text()).toMatch(
+        "By clicking Submit, I agree to Artsy’s Conditions of Sale."
+      )
+    })
   })
 
   describe("mutation", () => {
-    beforeEach(() => {
-      commitMutation.mockReset()
+    const resolveMutation = jest.fn(
+      () => submitPendingOfferSuccess.ecommerceSubmitPendingOffer
+    )
+    beforeEach(async () => {
+      page.reset()
+      resolveMutation.mockClear()
+      await page.init({
+        mockMutationResults: {
+          ecommerceSubmitPendingOffer: resolveMutation,
+        },
+      })
     })
 
-    it("routes to status page after mutation completes", () => {
-      const component = getWrapper()
-      const mockCommitMutation = commitMutation as jest.Mock<any>
-      mockCommitMutation.mockImplementationOnce(
-        (_environment, { onCompleted }) => {
-          onCompleted(submitPendingOfferSuccess)
-        }
-      )
-      const submitButton = component.find(Button).last()
-      submitButton.simulate("click")
+    it("routes to status page after mutation completes", async () => {
+      await page.clickSubmit()
 
-      expect(mockPushRoute).toHaveBeenCalledWith(
+      expect(page.mockPushRoute).toHaveBeenCalledWith(
         `/orders/${testOrder.id}/status`
       )
     })
 
-    it("shows the button spinner while loading the mutation", () => {
-      const component = getWrapper()
-      const mockCommitMutation = commitMutation as jest.Mock<any>
-      mockCommitMutation.mockImplementationOnce(() => {
-        const buttonProps = component
-          .update()
-          .find("Button")
-          .props() as any
-        expect(buttonProps.loading).toBeTruthy()
+    it("shows the button spinner while loading the mutation", async () => {
+      resolveMutation.mockImplementationOnce(() => {
+        expect(page.submitButton.props().loading).toBeTruthy()
       })
 
-      const submitButton = component.find(Button).last()
-      submitButton.simulate("click")
+      expect(page.submitButton.props().loading).toBeFalsy()
+      await page.clickSubmit()
+      expect(page.submitButton.props().loading).toBeFalsy()
+      expect.assertions(3)
     })
 
-    it("hides the button spinner when the mutation completes", () => {
-      const component = getWrapper()
-      const mockCommitMutation = commitMutation as jest.Mock<any>
-      mockCommitMutation.mockImplementationOnce(
-        (_environment, { onCompleted }) => {
-          onCompleted(submitPendingOfferSuccess)
-        }
+    it("shows an error modal with proper error when there is insufficient inventory", async () => {
+      resolveMutation.mockReturnValueOnce(
+        insufficientInventoryResponse.ecommerceSubmitPendingOffer
       )
-      const submitButton = component.find(Button).last()
-      submitButton.simulate("click")
+      await page.clickSubmit()
+      await page.expectErrorDialogMatching(
+        "This work has already been sold.",
+        "Please contact orders@artsy.net with any questions."
+      )
+    })
 
-      const buttonProps = component
-        .update()
-        .find("Button")
-        .props() as any
-      expect(buttonProps.loading).toBeFalsy()
+    it("shows generic error modal when there is an error from the server", async () => {
+      resolveMutation.mockReturnValueOnce(
+        submitPendingOfferFailed.ecommerceSubmitPendingOffer
+      )
+      await page.clickSubmit()
+      await page.expectDefaultErrorDialog()
+    })
+    it("shows an error modal when there is a network error", async () => {
+      page.reset()
+      await page.init({ mockNetworkFailureForMutations: true })
+      await page.clickSubmit()
+      await page.expectDefaultErrorDialog()
     })
   })
 
-  it("shows an error modal with proper error when there is insufficient inventory", async () => {
-    const component = getWrapper()
-    const mockCommitMutation = commitMutation as jest.Mock<any>
-    mockCommitMutation.mockImplementationOnce(
-      (_environment, { onCompleted }) => {
-        onCompleted(insufficientInventoryResponse)
-      }
-    )
-
-    const submitButton = component.find(Button).last()
-    submitButton.simulate("click")
-
-    await flushPromiseQueue()
-    component.update()
-
-    const errorComponent = component.find(ModalDialog)
-    expect(errorComponent.props().show).toBe(true)
-    expect(errorComponent.text()).toContain("This work has already been sold.")
-    expect(errorComponent.text()).toContain(
-      "Please contact orders@artsy.net with any questions."
-    )
-  })
-
-  it("shows generic error modal when there is an error from the server", async () => {
-    const component = getWrapper()
-    const mockCommitMutation = commitMutation as jest.Mock<any>
-    mockCommitMutation.mockImplementationOnce(
-      (_environment, { onCompleted }) => {
-        onCompleted(submitPendingOfferFailed)
-      }
-    )
-
-    const submitButton = component.find(Button).last()
-    submitButton.simulate("click")
-
-    await flushPromiseQueue()
-    component.update()
-
-    const errorComponent = component.find(ModalDialog)
-    expect(errorComponent.props().show).toBe(true)
-    expect(errorComponent.text()).toContain("An error occurred")
-    expect(errorComponent.text()).toContain(
-      "Something went wrong. Please try again or contact orders@artsy.net."
-    )
-
-    component.find(ModalButton).simulate("click")
-
-    await flushPromiseQueue()
-    component.update()
-
-    expect(component.find(ModalDialog).props().show).toBe(false)
-  })
-
-  it("shows an error modal when there is a network error", async () => {
-    const component = getWrapper()
-    const mockCommitMutation = commitMutation as jest.Mock<any>
-    mockCommitMutation.mockImplementationOnce((_, { onError }) =>
-      onError(new TypeError("Network request failed"))
-    )
-
-    component.find(Button).simulate("click")
-
-    await flushPromiseQueue()
-    component.update()
-
-    expect(component.find(ModalDialog).props().show).toBe(true)
-  })
-
-  it("tracks a pageview", () => {
-    getWrapper()
-
-    expect(trackPageView).toHaveBeenCalledTimes(1)
+  describe("analytics", () => {
+    beforeEach(async () => {
+      page.reset()
+      await page.init()
+    })
+    it("tracks a pageview", () => {
+      expect(trackPageView).toHaveBeenCalledTimes(1)
+    })
   })
 })

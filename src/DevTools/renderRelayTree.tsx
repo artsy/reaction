@@ -108,6 +108,7 @@ export function renderRelayTree<
     renderUntil: renderUntilPredicate,
     variables,
     wrapper,
+    mockNetworkFailureForMutations,
   } = params
   const renderer = (
     <MockRelayRenderer
@@ -117,6 +118,7 @@ export function renderRelayTree<
       variables={variables}
       mockData={mockData}
       mockMutationResults={mockMutationResults}
+      mockNetworkFailureForMutations={mockNetworkFailureForMutations}
     />
   )
   return mount<C, P, S>(wrapper ? wrapper(renderer) : renderer).renderUntil(

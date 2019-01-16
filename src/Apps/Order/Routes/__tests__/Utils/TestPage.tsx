@@ -53,10 +53,12 @@ export function TestPage({
       mockData,
       mockMutationResults,
       breakpoint,
+      mockNetworkFailureForMutations,
     }: {
       mockData?: object
       mockMutationResults?: object
       breakpoint?: Breakpoint
+      mockNetworkFailureForMutations?: boolean
     } = {}) {
       this._root = await renderRelayTree({
         Component: (props: any) => (
@@ -71,6 +73,9 @@ export function TestPage({
           ...defaultMutationResults,
           ...mockMutationResults,
         },
+        mockNetworkFailureForMutations: mockNetworkFailureForMutations
+          ? () => Promise.reject(new Error("Network failure!"))
+          : null,
       })
     }
 
@@ -148,6 +153,23 @@ export function TestPage({
         .last()
         .simulate("click")
       await this.update()
+    }
+
+    async expectDefaultErrorDialog() {
+      await this.expectErrorDialogMatching(
+        "An error occurred",
+        "Something went wrong. Please try again or contact orders@artsy.net."
+      )
+    }
+
+    async expectErrorDialogMatching(title: string, message: string) {
+      expect(this.modalDialog.props().show).toBe(true)
+      expect(this.modalDialog.text()).toContain(title)
+      expect(this.modalDialog.text()).toContain(message)
+
+      await this.dismissModal()
+
+      expect(this.modalDialog.props().show).toBe(false)
     }
 
     // @ts-ignore

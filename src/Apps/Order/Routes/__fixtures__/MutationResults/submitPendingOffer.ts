@@ -1,14 +1,12 @@
+import { OfferOrderWithOffers } from "Apps/__tests__/Fixtures/Order"
+
 export const submitPendingOfferSuccess = {
   ecommerceSubmitPendingOffer: {
     orderOrError: {
+      __typename: "OrderWithMutationSuccess",
       order: {
-        id: "1234",
-        myLastOffer: {
-          id: "off-1",
-        },
-        lastOffer: {
-          id: "off-1",
-        },
+        __typename: "OfferOrder",
+        ...OfferOrderWithOffers,
       },
     },
   },
@@ -16,6 +14,7 @@ export const submitPendingOfferSuccess = {
 export const submitPendingOfferFailed = {
   ecommerceSubmitPendingOffer: {
     orderOrError: {
+      __typename: "OrderWithMutationFailure",
       error: {
         type: "validation",
         code: "cannot_accept_offer",
@@ -28,6 +27,7 @@ export const submitPendingOfferFailed = {
 export const insufficientInventoryResponse = {
   ecommerceSubmitPendingOffer: {
     orderOrError: {
+      __typename: "OrderWithMutationFailure",
       error: {
         type: "validation",
         code: "insufficient_inventory",
