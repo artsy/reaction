@@ -9,6 +9,7 @@ export const ArtwrorkNoBannerFixture = {
     initials: "D",
     profile: null,
   },
+  sale: null,
 }
 export const ArtworkAuctionBannerFixture = {
   id: "richard-anuszkiewicz-lino-yellow-318",
@@ -29,6 +30,14 @@ export const ArtworkAuctionBannerFixture = {
     name: "Doyle",
     initials: "D",
     profile: null,
+  },
+  sale: {
+    name: "Doyle: Post-War & Contemporary Art",
+    is_auction: true,
+    cover_image: {
+      url:
+        "https://d32dm0rphc51dk.cloudfront.net/teoB9Znrq-78iSh6_Vh6Og/square.jpg",
+    },
   },
 }
 export const ArtworkFairBannerFixture = {
@@ -61,8 +70,10 @@ export const ArtworkFairBannerFixture = {
         url:
           "https://d32dm0rphc51dk.cloudfront.net/wayPSO-tWo5yvs0Lu864GA/square140.png",
       },
+      href: "/white-cube",
     },
   },
+  sale: null,
 }
 export const ArtworkUpcomingShowBannerFixture = {
   id: "claudia-giraudo-affinita-verde-amarillo",
@@ -90,8 +101,10 @@ export const ArtworkUpcomingShowBannerFixture = {
         url:
           "https://d32dm0rphc51dk.cloudfront.net/5M6lXKjC3NIG5KM-x1SplA/square140.png",
       },
+      href: "/galleria-punto-sullarte",
     },
   },
+  sale: null,
 }
 export const ArtworkCurrentShowBannerFixture = {
   id: "marcel-barbeau-diamants-larmes",
@@ -119,8 +132,10 @@ export const ArtworkCurrentShowBannerFixture = {
         url:
           "https://d32dm0rphc51dk.cloudfront.net/9KdRZamUZCROfC6j_xpk_A/square140.png",
       },
+      href: "/galerie-deste",
     },
   },
+  sale: null,
 }
 export const ArtworkPastShowBannerFixture = {
   id:
@@ -149,6 +164,8 @@ export const ArtworkPastShowBannerFixture = {
         url:
           "https://d32dm0rphc51dk.cloudfront.net/h4j--cdqWuEdmbJ96B0lPw/square140.png",
       },
+      href: "/pamm",
     },
   },
+  sale: null,
 }
