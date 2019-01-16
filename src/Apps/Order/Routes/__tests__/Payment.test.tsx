@@ -1,4 +1,9 @@
-import { Button, Checkbox, CheckboxProps } from "@artsy/palette"
+import {
+  ActiveTabContainer,
+  Button,
+  Checkbox,
+  CheckboxProps,
+} from "@artsy/palette"
 import { mount } from "enzyme"
 import React from "react"
 
@@ -13,7 +18,7 @@ import {
   fillIn,
   validAddress,
 } from "Apps/Order/Routes/__tests__/Utils/addressForm"
-import { ActiveTabContainer, CheckMarkWrapper, Stepper } from "Components/v2"
+import { CheckMarkWrapper, Stepper } from "Components/v2"
 import { Input } from "../../../../Components/Input"
 import {
   creatingCreditCardFailed,

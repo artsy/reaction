@@ -1,7 +1,6 @@
-import { Tab, Tabs, TabsProps } from "Components/v2"
+import { sharedTabsStyles, Tab, Tabs, TabsProps } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
-import { styles } from "./Tabs"
 
 import {
   CheckIcon,
@@ -101,7 +100,7 @@ export const CheckMarkWrapper = styled.span`
 `
 
 const DisabledStepContainer = styled.div`
-  ${styles.tabContainer};
+  ${sharedTabsStyles.tabContainer};
   cursor: default;
 `
 

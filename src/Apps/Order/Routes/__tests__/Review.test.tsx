@@ -1,7 +1,7 @@
 import { mount } from "enzyme"
 import React from "react"
 
-import { Button } from "@artsy/palette"
+import { ActiveTabContainer, Button } from "@artsy/palette"
 import {
   BuyOrderWithShippingDetails,
   OfferOrderWithShippingDetails,
@@ -11,7 +11,7 @@ import { ShippingSummaryItemFragmentContainer } from "Apps/Order/Components/Ship
 import { ConnectedModalDialog } from "Apps/Order/Dialogs"
 import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { ModalButton, ModalDialog } from "Components/Modal/ModalDialog"
-import { ActiveTabContainer, CheckMarkWrapper, Stepper } from "Components/v2"
+import { CheckMarkWrapper, Stepper } from "Components/v2"
 import { StepSummaryItem } from "Components/v2/StepSummaryItem"
 import { MockBoot } from "DevTools"
 import { commitMutation } from "react-relay"

@@ -7,10 +7,10 @@
   resolved "https://registry.yarnpkg.com/@artsy/detect-responsive-traits/-/detect-responsive-traits-0.0.1.tgz#3d83384bf3323fbd4679a2d73155ab85dc73e850"
   integrity sha512-jqrC40t1P6w9zIvsJJhWe8pxLWdEC/kJQmDc4/b3vAnGy1EsJpcIJGUys37kwut7tDYPiypUF06SImtZVLGQnQ==
 
-"@artsy/palette@2.25.12":
-  version "2.25.12"
-  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-2.25.12.tgz#de1778a4a19dd0d0578cd16e8bfa781e27f18fd9"
-  integrity sha512-XSnOknHTVqlrQZGUY51ZY1U7SVLAh2uZyMrO2sHHP6AYWdDd+uc+rXliJ3VMru68BZylRX2akLSPaY0zZbgkSg==
+"@artsy/palette@2.27.0":
+  version "2.27.0"
+  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-2.27.0.tgz#63e96ca444fd7c6e709d6f65b802c0ac234a11a4"
+  integrity sha512-ohlZ/s4xALLUpgxOrcx5hsaFSnwWj6wLEMvDL3IPSXEkVD6Gm2yH++WbgSdNRnzmsaE+yFHppjCqfn5ECbCALw==
   dependencies:
     rc-slider "^8.6.2"
     react "^16.5.0"
