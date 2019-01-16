@@ -1,3 +1,11 @@
+# 10.0.17 (Wed Jan 16 2019)
+
+#### 🐛  Bug Fix
+
+- added error message modal for invalid amount [#1887](https://github.com/artsy/reaction/pull/1887) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # 10.0.16 (Wed Jan 16 2019)
 
 #### 🏠  Internal
