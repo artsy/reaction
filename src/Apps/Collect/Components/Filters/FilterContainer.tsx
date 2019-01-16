@@ -10,8 +10,7 @@ import { SortFilter } from "./SortFilter"
 import { TimePeriodFilter } from "./TimePeriodFilter"
 import { WaysToBuyFilter } from "./WaysToBuyFilter"
 
-import { Box, Flex, Separator, Spacer } from "@artsy/palette"
-import { Toggle } from "Components/v2"
+import { Box, Flex, Separator, Spacer, Toggle } from "@artsy/palette"
 import { Media } from "Utils/Responsive"
 
 export interface FilterContainerProps {

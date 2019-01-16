@@ -1,7 +1,6 @@
-import { Box } from "@artsy/palette"
+import { Box, Tab, Tabs } from "@artsy/palette"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { ContextConsumer } from "Artsy/Router"
-import { Tab, Tabs } from "Components/v2"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 import styled from "styled-components"

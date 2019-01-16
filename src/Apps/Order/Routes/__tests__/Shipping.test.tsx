@@ -2,7 +2,7 @@ import { mount } from "enzyme"
 import { cloneDeep } from "lodash"
 import React from "react"
 
-import { Button, RadioGroup } from "@artsy/palette"
+import { ActiveTabContainer, Button, RadioGroup } from "@artsy/palette"
 import {
   UntouchedBuyOrder,
   UntouchedOfferOrder,
@@ -17,12 +17,7 @@ import {
 import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import Input, { InputProps } from "Components/Input"
 import { ModalButton, ModalDialog } from "Components/Modal/ModalDialog"
-import {
-  ActiveTabContainer,
-  CheckMarkWrapper,
-  CountrySelect,
-  Stepper,
-} from "Components/v2"
+import { CheckMarkWrapper, CountrySelect, Stepper } from "Components/v2"
 import { MockBoot } from "DevTools"
 import { commitMutation as _commitMutation, RelayProp } from "react-relay"
 import { flushPromiseQueue } from "Utils/flushPromiseQueue"
