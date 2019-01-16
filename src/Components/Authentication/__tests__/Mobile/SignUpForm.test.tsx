@@ -8,6 +8,7 @@ describe("MobileSignUpForm", () => {
   const getWrapper = props =>
     mount(
       <MobileSignUpForm
+        {...props}
         values={props.values || {}}
         handleSubmit={handleSubmit}
         handleTypeChange={jest.fn()}
@@ -19,6 +20,7 @@ describe("MobileSignUpForm", () => {
     const input = wrapper.find(Input)
     expect(input.length).toBe(1)
     expect(input.props().type).toEqual("email")
+    expect(wrapper.text()).toContain("Sign up for Artsy")
   })
 
   it("renders errors", done => {
@@ -38,6 +40,12 @@ describe("MobileSignUpForm", () => {
     formik.setStatus({ error: "some password error" })
     wrapper.update()
     expect(wrapper.html()).toMatch("some password error")
+  })
+
+  it("renders the specified title", () => {
+    const wrapper = getWrapper({ title: "Sign up to follow Andy Warhol" })
+
+    expect(wrapper.text()).toContain("Sign up to follow Andy Warhol")
   })
 
   it("renders global errors", () => {

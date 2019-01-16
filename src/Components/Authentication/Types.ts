@@ -32,6 +32,7 @@ export interface FormProps {
   onFacebookLogin?: (e: Event) => void
   onTwitterLogin?: (e: Event) => void
   onBackButtonClicked?: (e: Event) => void
+  title?: string
 }
 
 interface AfterSignUpAction {
@@ -89,6 +90,10 @@ export interface ModalOptions {
    * the number of seconds before a modal was triggered
    */
   triggerSeconds?: number
+  /**
+   * The form or modal title in case it needs to be customized
+   */
+  title?: string
 }
 
 export type FormComponentType =
