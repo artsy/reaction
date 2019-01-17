@@ -49,13 +49,15 @@ export class CollectionsApp extends Component<CollectionsAppProps> {
               </Sans>
             </Flex>
             {categories &&
-              categories.map((category, index) => (
-                <CollectionsGrid
-                  key={index}
-                  name={category.name}
-                  collections={category.collections as CollectionEntity[]}
-                />
-              ))}
+              [...categories] // creates a new array since the sort function modifies the array.
+                .sort((a, b) => a.name.localeCompare(b.name))
+                .map((category, index) => (
+                  <CollectionsGrid
+                    key={index}
+                    name={category.name}
+                    collections={category.collections as CollectionEntity[]}
+                  />
+                ))}
           </FrameWithRecentlyViewed>
         </AppContainer>
       </>
