@@ -1,6 +1,5 @@
 import { Box, color, Flex } from "@artsy/palette"
 import { unica } from "Assets/Fonts"
-import { media } from "Components/Helpers"
 import { flatten, map } from "lodash"
 import React from "react"
 import styled from "styled-components"
