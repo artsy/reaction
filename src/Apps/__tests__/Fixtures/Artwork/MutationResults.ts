@@ -22,18 +22,6 @@ export const OrderWithFailure = {
   },
 }
 
-export const OrderWithMissingInfo = {
-  ecommerceCreateOrderWithArtwork: {
-    orderOrError: {
-      __typename: "OrderWithMutationFailure",
-      error: {
-        type: "processing",
-        code: "missing_required_info",
-      },
-    },
-  },
-}
-
 export const OfferOrderWithSuccess = {
   ecommerceCreateOfferOrderWithArtwork: {
     orderOrError: {
