@@ -1,3 +1,20 @@
+# 11.2.0 (Thu Jan 17 2019)
+
+#### 🚀  Enhancement
+
+- Fix the auto-release by releasing a new minor version [#1908](https://github.com/artsy/reaction/pull/1908) ([@yuki24](https://github.com/yuki24))
+
+#### 🐛  Bug Fix
+
+- Styling changes to Collections blurb font sizes [#1906](https://github.com/artsy/reaction/pull/1906) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### 🏠  Internal
+
+- Manually update version [#1909](https://github.com/artsy/reaction/pull/1909) ([@yuki24](https://github.com/yuki24))
+- Update dependency @artsy/palette to v2.27.2 [#1904](https://github.com/artsy/reaction/pull/1904) ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # 11.1.0 (Thu Jan 17 2019)
 
 #### 🚀  Enhancement
