@@ -1,3 +1,12 @@
+# 11.1.0 (Thu Jan 17 2019)
+
+#### 🚀  Enhancement
+
+- Sort Collections alphabetically by title in Index page [#1848](https://github.com/artsy/reaction/pull/1848) ([@yuki24](https://github.com/yuki24))
+- User should see the mobile sign up modal in the artist page [#1861](https://github.com/artsy/reaction/pull/1861) ([@yuki24](https://github.com/yuki24))
+
+---
+
 # 11.0.3 (Wed Jan 16 2019)
 
 #### 🐛  Bug Fix
