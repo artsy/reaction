@@ -1,5 +1,4 @@
-import { Button, Checkbox, CheckboxProps } from "@artsy/palette"
-import { mount } from "enzyme"
+import { Checkbox } from "@artsy/palette"
 import React from "react"
 
 import { Collapse } from "@artsy/palette"
@@ -13,7 +12,6 @@ import {
   fillIn,
   validAddress,
 } from "Apps/Order/Routes/__tests__/Utils/addressForm"
-import { ActiveTabContainer, CheckMarkWrapper, Stepper } from "Components/v2"
 import { Input } from "../../../../Components/Input"
 import {
   creatingCreditCardFailed,
@@ -21,39 +19,37 @@ import {
   settingOrderPaymentFailed,
   settingOrderPaymentSuccess,
 } from "../__fixtures__/MutationResults"
-import {
-  ContinueButton,
-  PaymentFragmentContainer as PaymentRoute,
-  PaymentProps,
-} from "../Payment"
-jest.mock("react-relay", () => ({
-  commitMutation: jest.fn(),
-  createFragmentContainer: component => component,
-}))
+import { PaymentFragmentContainer } from "../Payment"
 
-jest.mock("react-stripe-elements", () => ({
-  CardElement: ({ onReady, hidePostalCode, ...props }) => <div {...props} />,
-  injectStripe: args => args,
-}))
+jest.mock("react-stripe-elements", () => {
+  // tslint:disable-next-line:no-shadowed-variable
+  const stripeMock = {
+    createToken: jest.fn(),
+  }
+  return {
+    CardElement: ({ onReady, hidePostalCode, ...props }) => <div {...props} />,
+    __stripeMock: stripeMock,
+    injectStripe: Component => props => (
+      <Component stripe={stripeMock} {...props} />
+    ),
+  }
+})
 
 jest.unmock("react-tracking")
+jest.unmock("react-relay")
 jest.mock("Utils/Events", () => ({
   postEvent: jest.fn(),
 }))
 const mockPostEvent = require("Utils/Events").postEvent as jest.Mock
+const createTokenMock = require("react-stripe-elements").__stripeMock
+  .createToken as jest.Mock
 
 jest.mock("Apps/Order/Utils/trackPageView")
 
-import { ConnectedModalDialog } from "Apps/Order/Dialogs"
 import { trackPageView } from "Apps/Order/Utils/trackPageView"
-import { ModalButton, ModalDialog } from "Components/Modal/ModalDialog"
-import { MockBoot } from "DevTools"
-import { commitMutation, RelayProp } from "react-relay"
-import { flushPromiseQueue } from "Utils/flushPromiseQueue"
-import { Breakpoint } from "Utils/Responsive"
+import { graphql } from "react-relay"
 import { Address, AddressForm } from "../../Components/AddressForm"
-
-const mutationMock = commitMutation as jest.Mock<any>
+import { TestPage } from "./Utils/TestPage"
 
 const fillAddressForm = (component: any, address: Address) => {
   fillIn(component, { title: "Full name", value: address.name })
@@ -71,87 +67,114 @@ const fillAddressForm = (component: any, address: Address) => {
   fillCountrySelect(component, address.country)
 }
 
-describe("Payment", () => {
-  let stripeMock
-  let testProps: PaymentProps
+const testOrder = { ...BuyOrderWithShippingDetails, id: "1234" }
 
-  const getWrapper = (props, breakpoint: Breakpoint = "xs") => {
-    return mount(
-      <MockBoot breakpoint={breakpoint}>
-        <PaymentRoute {...props} />
-        <ConnectedModalDialog />
-      </MockBoot>
-    )
+const resolveCreateCreditCardMutation = jest.fn(
+  () => creatingCreditCardSuccess.createCreditCard
+)
+
+const resolveSetOrderPaymentMutation = jest.fn(
+  () => settingOrderPaymentSuccess.ecommerceSetOrderPayment
+)
+
+class PaymentTestPage extends TestPage({
+  Component: PaymentFragmentContainer,
+  defaultData: {
+    order: testOrder,
+  },
+  defaultMutationResults: {
+    createCreditCard: resolveCreateCreditCardMutation,
+    ecommerceSetOrderPayment: resolveSetOrderPaymentMutation,
+  },
+  query: graphql`
+    query PaymentTestQuery {
+      order: ecommerceOrder(id: "unused") {
+        ...Payment_order
+      }
+    }
+  `,
+}) {
+  get nameInput() {
+    return this.find("input[placeholder='Add full name']")
   }
+
+  get sameAddressCheckbox() {
+    return this.find(Checkbox)
+  }
+
+  get addressForm() {
+    return this.find(AddressForm)
+  }
+
+  async toggleSameAddressCheckbox() {
+    this.sameAddressCheckbox.simulate("click")
+    await this.update()
+  }
+
+  setName(name: string) {
+    ;(this.nameInput.instance() as any).value = name
+    this.nameInput.simulate("change")
+  }
+}
+
+describe("Payment", () => {
+  const page = new PaymentTestPage()
 
   beforeEach(() => {
     mockPostEvent.mockReset()
-    mutationMock.mockReset()
-
-    stripeMock = {
-      createToken: jest.fn(() => Promise.resolve()),
-    }
-
-    testProps = {
-      order: { ...BuyOrderWithShippingDetails, id: "1234" },
-      relay: { environment: {} } as RelayProp,
-      router: { push: jest.fn() },
-      stripe: stripeMock,
-    } as any
+    createTokenMock.mockReset()
+    createTokenMock.mockImplementation(() => Promise.resolve())
   })
 
-  it("always shows the billing address form without checkbox when the user selected 'pick' shipping option", () => {
-    const paymentRoute = getWrapper({
-      ...testProps,
-      order: {
-        ...BuyOrderPickup,
-        id: "1234",
+  it("always shows the billing address form without checkbox when the user selected 'pick' shipping option", async () => {
+    await page.init({
+      mockData: {
+        order: BuyOrderPickup,
       },
     })
-
-    expect(paymentRoute.find(Checkbox).length).toBe(0)
-    expect(paymentRoute.find(Collapse).props().open).toBe(true)
+    expect(page.find(Checkbox).length).toBe(0)
+    expect(page.find(Collapse).props().open).toBe(true)
   })
 
-  it("removes all data when the billing address form is hidden", () => {
-    const paymentRoute = getWrapper(testProps)
-    const nameInput = () =>
-      paymentRoute.find("input[placeholder='Add full name']")
+  it("removes all data when the billing address form is hidden", async () => {
+    await page.init()
     // expand address form
-    paymentRoute.find(Checkbox).simulate("click")
-    ;(nameInput().instance() as any).value = "Dr Collector"
-    nameInput().simulate("change")
-    expect((nameInput().instance() as any).value).toEqual("Dr Collector")
+    expect(page.sameAddressCheckbox.props().selected).toBe(true)
+    await page.toggleSameAddressCheckbox()
+    page.setName("Dr Collector")
+
+    expect((page.nameInput.instance() as any).value).toEqual("Dr Collector")
 
     // hide address form
-    paymentRoute.find(Checkbox).simulate("click")
+    page.toggleSameAddressCheckbox()
 
     // expand address form again
-    paymentRoute.find(Checkbox).simulate("click")
+    page.toggleSameAddressCheckbox()
 
     // expect name to be empty
-    expect((nameInput().instance() as any).value).toEqual("")
+    expect((page.nameInput.instance() as any).value).toEqual("")
   })
 
-  it("does not pre-populate with available details when returning to the payment route", () => {
-    const paymentRoute = getWrapper({
-      ...testProps,
-      order: {
-        ...BuyOrderPickup,
-        id: "1234",
-        creditCard: {
-          name: "Artsy UK Ltd",
-          street1: "14 Gower's Walk",
-          street2: "Suite 2.5, The Loom",
-          city: "London",
-          state: "Whitechapel",
-          country: "UK",
-          postal_code: "E1 8PY",
+  it("does not pre-populate with available details when returning to the payment route", async () => {
+    await page.init({
+      mockData: {
+        order: {
+          ...BuyOrderPickup,
+          id: "1234",
+          creditCard: {
+            name: "Artsy UK Ltd",
+            street1: "14 Gower's Walk",
+            street2: "Suite 2.5, The Loom",
+            city: "London",
+            state: "Whitechapel",
+            country: "UK",
+            postal_code: "E1 8PY",
+          },
         },
       },
     })
 
-    expect(paymentRoute.find(AddressForm).props().value).toEqual({
+    expect(page.addressForm.props().value).toEqual({
       name: "",
       addressLine1: "",
       addressLine2: "",
@@ -163,19 +186,21 @@ describe("Payment", () => {
     })
   })
 
-  it("always uses the billing address for stripe tokenization when the user selected 'pick' shipping option", () => {
-    const paymentRoute = getWrapper({
-      ...testProps,
-      order: {
-        ...BuyOrderPickup,
-        id: "1234",
+  it("always uses the billing address for stripe tokenization when the user selected 'pick' shipping option", async () => {
+    await page.init({
+      mockData: {
+        order: {
+          ...BuyOrderPickup,
+          id: "1234",
+        },
       },
     })
 
-    fillAddressForm(paymentRoute, validAddress)
-    paymentRoute.find(ContinueButton).simulate("click")
+    fillAddressForm(page.root, validAddress)
 
-    expect(stripeMock.createToken).toHaveBeenCalledWith({
+    await page.clickSubmit()
+
+    expect(createTokenMock).toHaveBeenCalledWith({
       name: "Artsy UK Ltd",
       address_line1: "14 Gower's Walk",
       address_line2: "Suite 2.5, The Loom",
@@ -186,11 +211,12 @@ describe("Payment", () => {
     })
   })
 
-  it("tokenizes credit card information using shipping address as billing address", () => {
-    const paymentRoute = getWrapper(testProps)
-    paymentRoute.find(ContinueButton).simulate("click")
+  it("tokenizes credit card information using shipping address as billing address", async () => {
+    await page.init()
 
-    expect(stripeMock.createToken).toHaveBeenCalledWith({
+    await page.clickSubmit()
+
+    expect(createTokenMock).toHaveBeenCalledWith({
       name: "Joelle Van Dyne",
       address_line1: "401 Broadway",
       address_line2: "Suite 25",
@@ -201,14 +227,13 @@ describe("Payment", () => {
     })
   })
 
-  it("tokenizes credit card information with a different billing address", () => {
-    const paymentRoute = getWrapper(testProps)
-    ;(paymentRoute.find(Checkbox).props() as CheckboxProps).onSelect(false)
+  it("tokenizes credit card information with a different billing address", async () => {
+    await page.init()
+    await page.toggleSameAddressCheckbox()
+    fillAddressForm(page.root, validAddress)
+    await page.clickSubmit()
 
-    fillAddressForm(paymentRoute, validAddress)
-    paymentRoute.find(ContinueButton).simulate("click")
-
-    expect(stripeMock.createToken).toHaveBeenCalledWith({
+    expect(createTokenMock).toHaveBeenCalledWith({
       name: "Artsy UK Ltd",
       address_line1: "14 Gower's Walk",
       address_line2: "Suite 2.5, The Loom",
@@ -232,42 +257,31 @@ describe("Payment", () => {
       },
     }
 
-    stripeMock.createToken.mockReturnValue(Promise.resolve(stripeToken))
+    createTokenMock.mockReturnValue(Promise.resolve(stripeToken))
 
-    const paymentRoute = getWrapper(testProps)
-    fillAddressForm(paymentRoute, validAddress)
-    paymentRoute
-      .find(ContinueButton)
-      .props()
-      .onClick()
+    await page.init()
+    await page.clickSubmit()
 
-    await flushPromiseQueue()
-
-    expect(mutationMock.mock.calls[0][1]).toMatchObject({
-      variables: {
-        input: {
-          token: "tokenId",
-        },
+    expect(page.mockFetchMutation.mock.calls[0][1]).toMatchObject({
+      input: {
+        token: "tokenId",
       },
     })
   })
 
   it("shows the button spinner while loading the mutation", async () => {
-    const paymentRoute = getWrapper(testProps)
+    await page.update()
 
-    fillAddressForm(paymentRoute, validAddress)
+    fillAddressForm(page.root, validAddress)
 
-    const isButtonLoading = () =>
-      paymentRoute
-        .update()
-        .find(Button)
-        .props().loading
+    expect(page.submitButton.props().loading).toBeFalsy()
 
-    expect(isButtonLoading()).toBeFalsy()
+    page.clickSubmit()
 
-    paymentRoute.find(ContinueButton).simulate("click")
-
-    expect(isButtonLoading()).toBeTruthy()
+    page.root.update()
+    expect(page.submitButton.props().loading).toBeTruthy()
+    await page.update()
+    expect(page.submitButton.props().loading).toBeFalsy()
   })
 
   it("shows an error message when CreateToken passes in an error", async () => {
@@ -282,165 +296,97 @@ describe("Payment", () => {
       },
     }
 
-    stripeMock.createToken.mockReturnValue(Promise.resolve(stripeError))
+    createTokenMock.mockReturnValue(Promise.resolve(stripeError))
 
-    const paymentRoute = getWrapper(testProps)
-    fillAddressForm(paymentRoute, validAddress)
+    await page.init()
 
-    expect(paymentRoute.text()).not.toContain("Your card number is invalid.")
+    expect(page.root.text()).not.toContain("Your card number is invalid.")
 
-    paymentRoute.find(ContinueButton).simulate("click")
+    await page.clickSubmit()
 
-    await flushPromiseQueue()
-
-    expect(paymentRoute.text()).toContain("Your card number is invalid.")
+    expect(page.root.text()).toContain("Your card number is invalid.")
   })
 
   it("shows an error modal when CreateToken raises an error", async () => {
-    stripeMock.createToken.mockReturnValue(
+    createTokenMock.mockImplementation(() =>
       Promise.reject(new Error("something failed"))
     )
-    const paymentRoute = getWrapper(testProps)
-    fillAddressForm(paymentRoute, validAddress)
-    paymentRoute.find(ContinueButton).simulate("click")
-
-    await flushPromiseQueue()
-
-    expect(
-      paymentRoute
-        .update()
-        .find(ModalDialog)
-        .props().show
-    ).toBe(true)
+    await page.init()
+    await page.clickSubmit()
+    await page.expectDefaultErrorDialog()
   })
 
   it("commits setOrderPayment mutation with Gravity credit card id", async () => {
-    stripeMock.createToken.mockReturnValue(
+    createTokenMock.mockReturnValue(
       Promise.resolve({ token: { id: "tokenId" } })
     )
 
-    mutationMock.mockImplementationOnce((_, { onCompleted }) =>
-      onCompleted(creatingCreditCardSuccess)
-    )
+    await page.init()
+    await page.clickSubmit()
 
-    const paymentRoute = getWrapper(testProps)
-    fillAddressForm(paymentRoute, validAddress)
-    paymentRoute.find(ContinueButton).simulate("click")
-
-    await flushPromiseQueue()
-
-    expect(mutationMock.mock.calls[1][1]).toMatchObject({
-      variables: {
-        input: {
-          creditCardId: "gravityCreditCardId",
-          orderId: "1234",
-        },
+    expect(page.mockFetchMutation.mock.calls[1][1]).toMatchObject({
+      input: {
+        creditCardId: "gravityCreditCardId",
+        orderId: "1234",
       },
     })
   })
 
   it("takes the user to the review step", async () => {
-    stripeMock.createToken.mockReturnValue(
+    createTokenMock.mockReturnValue(
       Promise.resolve({ token: { id: "tokenId" } })
     )
-
-    mutationMock
-      .mockImplementationOnce((_, { onCompleted }) =>
-        onCompleted(creatingCreditCardSuccess)
-      )
-      .mockImplementationOnce((_, { onCompleted }) =>
-        onCompleted(settingOrderPaymentSuccess)
-      )
-    const paymentRoute = getWrapper(testProps)
-    fillAddressForm(paymentRoute, validAddress)
-    paymentRoute.find(ContinueButton).simulate("click")
-
-    await flushPromiseQueue()
-
-    expect(testProps.router.push).toHaveBeenCalledWith("/orders/1234/review")
+    await page.init()
+    await page.clickSubmit()
+    expect(page.mockPushRoute).toHaveBeenCalledWith("/orders/1234/review")
   })
 
   it("shows an error modal when there is an error in CreateCreditCardPayload", async () => {
-    stripeMock.createToken.mockReturnValue(
+    createTokenMock.mockReturnValue(
       Promise.resolve({ token: { id: "tokenId" } })
     )
 
-    mutationMock.mockImplementationOnce((_, { onCompleted }) =>
-      onCompleted(creatingCreditCardFailed)
+    resolveCreateCreditCardMutation.mockReturnValueOnce(
+      creatingCreditCardFailed.createCreditCard
     )
 
-    const component = getWrapper(testProps)
-
-    expect(component.find(ModalDialog).props().show).toBe(false)
-
-    component.find(ContinueButton).simulate("click")
-
-    await flushPromiseQueue()
-    component.update()
-
-    expect(component.find(ModalDialog).props().show).toBe(true)
-    expect(component.find(ModalDialog).text()).toContain(
+    await page.init()
+    await page.clickSubmit()
+    await page.expectErrorDialogMatching(
+      "An error occurre",
       "No such token: fake-token"
     )
-
-    component.find(ModalButton).simulate("click")
-
-    await flushPromiseQueue()
-    component.update()
-
-    expect(component.find(ModalDialog).props().show).toBe(false)
   })
 
   it("shows an error modal when there is an error in SetOrderPaymentPayload", async () => {
-    stripeMock.createToken.mockReturnValue(
+    createTokenMock.mockReturnValue(
       Promise.resolve({ token: { id: "tokenId" } })
     )
+    resolveSetOrderPaymentMutation.mockReturnValueOnce(
+      settingOrderPaymentFailed.ecommerceSetOrderPayment
+    )
 
-    const component = getWrapper(testProps)
-
-    mutationMock
-      .mockImplementationOnce((_, { onCompleted }) =>
-        onCompleted(creatingCreditCardSuccess)
-      )
-      .mockImplementationOnce((_, { onCompleted }) =>
-        onCompleted(settingOrderPaymentFailed)
-      )
-
-    component.find(ContinueButton).simulate("click")
-
-    await flushPromiseQueue()
-    component.update()
-
-    expect(component.find(ModalDialog).props().show).toBe(true)
+    await page.init()
+    await page.clickSubmit()
+    await page.expectDefaultErrorDialog()
   })
 
   it("shows an error modal when there is a network error", async () => {
-    stripeMock.createToken.mockReturnValue(
+    createTokenMock.mockReturnValue(
       Promise.resolve({ token: { id: "tokenId" } })
     )
+    await page.init()
+    page.mockMutationNetworkFailureOnce()
 
-    const component = getWrapper(testProps)
-
-    mutationMock.mockImplementationOnce((_, { onError }) =>
-      onError(new TypeError("Network request failed"))
-    )
-
-    component.find(ContinueButton).simulate("click")
-
-    await flushPromiseQueue()
-    component.update()
-
-    expect(component.find(ModalDialog).props().show).toBe(true)
+    await page.clickSubmit()
+    await page.expectDefaultErrorDialog()
   })
 
   describe("Analytics", () => {
-    it("tracks click when use shipping address checkbox transitions from checked to unchecked but not from unchecked to checked", () => {
-      const component = getWrapper(testProps)
+    it("tracks click when use shipping address checkbox transitions from checked to unchecked but not from unchecked to checked", async () => {
+      await page.init()
       // Initial state is checked
-      component
-        .find(Checkbox)
-        .at(0)
-        .simulate("click")
+      await page.toggleSameAddressCheckbox()
       expect(mockPostEvent).toBeCalledWith({
         action_type: "Click",
         subject: "use shipping address",
@@ -452,77 +398,76 @@ describe("Payment", () => {
       mockPostEvent.mockClear()
 
       // State is now unchecked
-      component
-        .find(Checkbox)
-        .at(0)
-        .simulate("click")
+      await page.toggleSameAddressCheckbox()
+
       expect(mockPostEvent).not.toBeCalled()
     })
   })
 
   describe("Validations", () => {
-    it("says a required field is required with billing address exposed", () => {
-      const paymentRoute = getWrapper(testProps)
-      ;(paymentRoute.find(Checkbox).props() as CheckboxProps).onSelect(false)
+    it("says a required field is required with billing address exposed", async () => {
+      await page.init()
+      await page.toggleSameAddressCheckbox()
+      await page.clickSubmit()
 
-      paymentRoute.find(ContinueButton).simulate("click")
-      const input = paymentRoute
+      const input = page
         .find(Input)
         .filterWhere(wrapper => wrapper.props().title === "Full name")
       expect(input.props().error).toEqual("This field is required")
     })
 
-    it("before submit, only shows a validation error on inputs that have been touched", () => {
-      const component = getWrapper(testProps)
-      ;(component.find(Checkbox).props() as CheckboxProps).onSelect(false)
+    it("before submit, only shows a validation error on inputs that have been touched", async () => {
+      await page.init()
+      await page.toggleSameAddressCheckbox()
 
-      fillIn(component, { title: "Full name", value: "Erik David" })
-      fillIn(component, { title: "Address line 1", value: "" })
-      component.update()
+      fillIn(page.root, { title: "Full name", value: "Erik David" })
+      fillIn(page.root, { title: "Address line 1", value: "" })
+      page.root.update()
 
       const [addressInput, cityInput] = ["Address line 1", "City"].map(label =>
-        component
-          .find(Input)
-          .filterWhere(wrapper => wrapper.props().title === label)
+        page.find(Input).filterWhere(wrapper => wrapper.props().title === label)
       )
 
       expect(addressInput.props().error).toBeTruthy()
       expect(cityInput.props().error).toBeFalsy()
     })
 
-    it("after submit, shows all validation errors on inputs that have been touched", () => {
-      const component = getWrapper(testProps)
-      ;(component.find(Checkbox).props() as CheckboxProps).onSelect(false)
+    it("after submit, shows all validation errors on inputs that have been touched", async () => {
+      await page.init()
+      await page.toggleSameAddressCheckbox()
 
-      fillIn(component, { title: "Full name", value: "Erik David" })
+      fillIn(page.root, { title: "Full name", value: "Erik David" })
 
-      component.find("Button").simulate("click")
+      await page.clickSubmit()
 
-      const cityInput = component
+      const cityInput = page
         .find(Input)
         .filterWhere(wrapper => wrapper.props().title === "City")
 
       expect(cityInput.props().error).toBeTruthy()
     })
 
-    it("does not submit an empty form with billing address exposed", () => {
-      const paymentRoute = getWrapper(testProps)
-      ;(paymentRoute.find(Checkbox).props() as CheckboxProps).onSelect(false)
+    it("does not submit an empty form with billing address exposed", async () => {
+      await page.init()
+      await page.toggleSameAddressCheckbox()
+      await page.clickSubmit()
 
-      paymentRoute.find(ContinueButton).simulate("click")
-      expect(commitMutation).not.toBeCalled()
+      expect(page.mockFetchMutation).not.toBeCalled()
     })
 
-    it("does not submit the mutation with an incomplete form with billing address exposed", () => {
-      const paymentRoute = getWrapper(testProps)
-      ;(paymentRoute.find(Checkbox).props() as CheckboxProps).onSelect(false)
-      fillIn(paymentRoute, { title: "Full name", value: "Air Bud" })
-      paymentRoute.find(ContinueButton).simulate("click")
-      expect(commitMutation).not.toBeCalled()
+    it("does not submit the mutation with an incomplete form with billing address exposed", async () => {
+      await page.init()
+      await page.toggleSameAddressCheckbox()
+      await page.clickSubmit()
+      expect(page.mockFetchMutation).not.toBeCalled()
     })
 
-    it("allows a missing postal code if the selected country is not US or Canada", () => {
-      const paymentRoute = getWrapper(testProps)
+    it("allows a missing postal code if the selected country is not US or Canada", async () => {
+      createTokenMock.mockReturnValue(
+        Promise.resolve({ token: { id: "tokenId" } })
+      )
+      await page.init()
+      await page.toggleSameAddressCheckbox()
 
       const address = {
         name: "Erik David",
@@ -534,13 +479,20 @@ describe("Payment", () => {
         phoneNumber: "5555937743",
         country: "AQ",
       }
-      fillAddressForm(paymentRoute, address)
-      paymentRoute.find("Button").simulate("click")
-      expect(stripeMock.createToken).toBeCalled()
+
+      fillAddressForm(page.root, address)
+      await page.clickSubmit()
+      expect(createTokenMock).toBeCalled()
+      expect(page.mockFetchMutation).toBeCalledTimes(2)
     })
 
-    it("allows a missing state/province if the selected country is not US or Canada", () => {
-      const paymentRoute = getWrapper(testProps)
+    it("allows a missing state/province if the selected country is not US or Canada", async () => {
+      createTokenMock.mockReturnValue(
+        Promise.resolve({ token: { id: "tokenId" } })
+      )
+      await page.init()
+      await page.toggleSameAddressCheckbox()
+
       const address = {
         name: "Erik David",
         addressLine1: "401 Broadway",
@@ -551,27 +503,33 @@ describe("Payment", () => {
         phoneNumber: "5555937743",
         country: "AQ",
       }
-      fillAddressForm(paymentRoute, address)
+      fillAddressForm(page.root, address)
 
-      paymentRoute.find("Button").simulate("click")
-      expect(stripeMock.createToken).toBeCalled()
+      await page.clickSubmit()
+
+      expect(createTokenMock).toBeCalled()
+      expect(page.mockFetchMutation).toBeCalledTimes(2)
     })
   })
 
   describe("Offer-mode orders", () => {
-    it("shows an active offer stepper if the order is an Offer Order", () => {
-      const offerOrder = {
-        ...OfferOrderWithShippingDetails,
-      }
-      const component = getWrapper({ ...testProps, order: offerOrder })
-      expect(component.find(ActiveTabContainer).text()).toEqual("Payment")
-      expect(component.find(Stepper).props().currentStepIndex).toEqual(2)
-      expect(component.find(CheckMarkWrapper).length).toEqual(2)
+    it("shows an active offer stepper if the order is an Offer Order", async () => {
+      await page.init({
+        mockData: {
+          order: {
+            ...OfferOrderWithShippingDetails,
+          },
+        },
+      })
+      expect(page.orderStepper.text()).toMatchInlineSnapshot(
+        `"Offer Shipping PaymentReview"`
+      )
+      expect(page.orderStepperCurrentStep).toBe("Payment")
     })
   })
 
-  it("tracks a pageview", () => {
-    getWrapper(testProps)
+  it("tracks a pageview", async () => {
+    await page.init()
 
     expect(trackPageView).toHaveBeenCalledTimes(1)
   })
