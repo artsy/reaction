@@ -13,12 +13,12 @@ import {
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
 import { CreditCardInput } from "Apps/Order/Components/CreditCardInput"
-import { Helper } from "Apps/Order/Components/Helper"
 import {
   buyNowFlowSteps,
   offerFlowSteps,
   OrderStepper,
 } from "Apps/Order/Components/OrderStepper"
+import { StickyFooter } from "Apps/Order/Components/StickyFooter"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { validateAddress } from "Apps/Order/Utils/formValidators"
@@ -35,6 +35,7 @@ import {
 } from "react-relay"
 import { injectStripe, ReactStripeElements } from "react-stripe-elements"
 import { ErrorWithMetadata } from "Utils/errors"
+import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
 
@@ -189,6 +190,11 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
       addressTouched,
     } = this.state
 
+    const artwork = get(
+      this.props,
+      props => order.lineItems.edges[0].node.artwork
+    )
+
     return (
       <>
         <HorizontalPadding px={[0, 4]}>
@@ -258,7 +264,6 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
                   <TransactionDetailsSummaryItem order={order} />
                 </Flex>
                 <Spacer mb={[2, 3]} />
-                <Helper artworkId={order.lineItems.edges[0].node.artwork.id} />
                 <Media at="xs">
                   <>
                     <Spacer mb={3} />
@@ -273,6 +278,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
             }
           />
         </HorizontalPadding>
+        <StickyFooter artworkId={artwork.id} />
       </>
     )
   }

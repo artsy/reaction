@@ -5,12 +5,12 @@ import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
 import { ConditionsOfSaleDisclaimer } from "Apps/Order/Components/ConditionsOfSaleDisclaimer"
 import { CreditCardSummaryItemFragmentContainer as CreditCardSummaryItem } from "Apps/Order/Components/CreditCardSummaryItem"
-import { Helper } from "Apps/Order/Components/Helper"
 import {
   counterofferFlowSteps,
   OrderStepper,
 } from "Apps/Order/Components/OrderStepper"
 import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "Apps/Order/Components/ShippingSummaryItem"
+import { StickyFooter } from "Apps/Order/Components/StickyFooter"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { Dialog, injectDialog } from "Apps/Order/Dialogs"
@@ -206,7 +206,6 @@ export class CounterRoute extends Component<CounterProps, CounterState> {
                 </Flex>
                 <Media greaterThan="xs">
                   <Spacer mb={2} />
-                  <Helper artworkId={artwork.id} />
                 </Media>
                 <Spacer mb={[2, 3]} />
                 <Media at="xs">
@@ -222,13 +221,13 @@ export class CounterRoute extends Component<CounterProps, CounterState> {
                     <Spacer mb={2} />
                     <ConditionsOfSaleDisclaimer />
                     <Spacer mb={2} />
-                    <Helper artworkId={artwork.id} />
                   </>
                 </Media>
               </Flex>
             }
           />
         </HorizontalPadding>
+        <StickyFooter artworkId={artwork.id} />
       </>
     )
   }

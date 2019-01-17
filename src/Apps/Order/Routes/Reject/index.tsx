@@ -3,8 +3,6 @@ import { Reject_order } from "__generated__/Reject_order.graphql"
 import { RejectOfferMutation } from "__generated__/RejectOfferMutation.graphql"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
 import { ConditionsOfSaleDisclaimer } from "Apps/Order/Components/ConditionsOfSaleDisclaimer"
-import { Helper } from "Apps/Order/Components/Helper"
-
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { Router } from "found"
@@ -23,6 +21,7 @@ import {
   OrderStepper,
 } from "Apps/Order/Components/OrderStepper"
 
+import { StickyFooter } from "Apps/Order/Components/StickyFooter"
 import { Dialog, injectDialog } from "Apps/Order/Dialogs"
 import {
   commitMutation,
@@ -189,7 +188,6 @@ export class Reject extends Component<RejectProps, RejectState> {
                     <ArtworkSummaryItem order={order} />
                   </Flex>
                   <Spacer mb={2} />
-                  <Helper artworkId={artwork.id} />
                 </Media>
                 <Media at="xs">
                   <>
@@ -204,13 +202,13 @@ export class Reject extends Component<RejectProps, RejectState> {
                     <Spacer mb={2} />
                     <ConditionsOfSaleDisclaimer />
                     <Spacer mb={2} />
-                    <Helper artworkId={artwork.id} />
                   </>
                 </Media>
               </Flex>
             }
           />
         </HorizontalPadding>
+        <StickyFooter artworkId={artwork.id} />
       </>
     )
   }

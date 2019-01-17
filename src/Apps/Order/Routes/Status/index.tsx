@@ -9,6 +9,7 @@ import {
 } from "@artsy/palette"
 import { Status_order } from "__generated__/Status_order.graphql"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
+import { StickyFooter } from "Apps/Order/Components/StickyFooter"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
@@ -20,7 +21,6 @@ import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "../../Components/ArtworkSummaryItem"
 import { CreditCardSummaryItemFragmentContainer as CreditCardSummaryItem } from "../../Components/CreditCardSummaryItem"
-import { Helper } from "../../Components/Helper"
 import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "../../Components/ShippingSummaryItem"
 
 const logger = createLogger("Order/Routes/Status/index.tsx")
@@ -231,62 +231,64 @@ export class StatusRoute extends Component<StatusProps> {
       showTransactionSummary = true,
     } = this.getStatusCopy()
 
+    const artwork = get(
+      this.props,
+      props => order.lineItems.edges[0].node.artwork
+    )
+
     return (
-      <HorizontalPadding>
-        <Serif size="6" weight="regular" color="black100">
-          {title}
-        </Serif>
-        <Sans size="2" weight="regular" color="black60" mb={[2, 3]}>
-          {flowName} #{order.code}
-        </Sans>
-        <TwoColumnLayout
-          Content={
-            <>
-              <Title>{flowName} status | Artsy</Title>
-              <Join separator={<Spacer mb={[2, 3]} />}>
-                {description && <Message p={[2, 3]}>{description}</Message>}
-                {showTransactionSummary ? (
-                  <Flex flexDirection="column">
-                    <ArtworkSummaryItem order={order} />
-                    <TransactionDetailsSummaryItem
-                      order={order}
-                      useLastSubmittedOffer
-                    />
-                  </Flex>
-                ) : (
-                  <Button
-                    onClick={() => {
-                      window.location.href = "/"
-                    }}
-                    size="large"
-                    width="100%"
-                  >
-                    Back to Artsy
-                  </Button>
-                )}
-              </Join>
-              <Spacer mb={[2, 3]} />
-            </>
-          }
-          Sidebar={
-            showTransactionSummary && (
-              <Flex flexDirection="column">
-                <Flex flexDirection="column">
-                  <ShippingSummaryItem order={order} />
-                  <CreditCardSummaryItem order={order} />
-                </Flex>
-                <Spacer mb={[2, 3]} />
-                <Helper
-                  artworkId={get(
-                    order,
-                    o => o.lineItems.edges[0].node.artwork.id
+      <>
+        <HorizontalPadding>
+          <Serif size="6" weight="regular" color="black100">
+            {title}
+          </Serif>
+          <Sans size="2" weight="regular" color="black60" mb={[2, 3]}>
+            {flowName} #{order.code}
+          </Sans>
+          <TwoColumnLayout
+            Content={
+              <>
+                <Title>{flowName} status | Artsy</Title>
+                <Join separator={<Spacer mb={[2, 3]} />}>
+                  {description && <Message p={[2, 3]}>{description}</Message>}
+                  {showTransactionSummary ? (
+                    <Flex flexDirection="column">
+                      <ArtworkSummaryItem order={order} />
+                      <TransactionDetailsSummaryItem
+                        order={order}
+                        useLastSubmittedOffer
+                      />
+                    </Flex>
+                  ) : (
+                    <Button
+                      onClick={() => {
+                        window.location.href = "/"
+                      }}
+                      size="large"
+                      width="100%"
+                    >
+                      Back to Artsy
+                    </Button>
                   )}
-                />
-              </Flex>
-            )
-          }
-        />
-      </HorizontalPadding>
+                </Join>
+                <Spacer mb={[2, 3]} />
+              </>
+            }
+            Sidebar={
+              showTransactionSummary && (
+                <Flex flexDirection="column">
+                  <Flex flexDirection="column">
+                    <ShippingSummaryItem order={order} />
+                    <CreditCardSummaryItem order={order} />
+                  </Flex>
+                  <Spacer mb={[2, 3]} />
+                </Flex>
+              )
+            }
+          />
+        </HorizontalPadding>
+        <StickyFooter artworkId={artwork.id} />
+      </>
     )
   }
 }

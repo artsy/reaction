@@ -3,14 +3,14 @@ import { Offer_order } from "__generated__/Offer_order.graphql"
 import { OfferMutation } from "__generated__/OfferMutation.graphql"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
-import { Helper } from "Apps/Order/Components/Helper"
 import { OfferInput } from "Apps/Order/Components/OfferInput"
+import { StickyFooter } from "Apps/Order/Components/StickyFooter"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { Dialog, injectDialog } from "Apps/Order/Dialogs"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
-import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics"
+import { track } from "Artsy/Analytics"
 import { Router } from "found"
 import React, { Component } from "react"
 import {
@@ -282,7 +282,6 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
                   />
                 </Flex>
                 <Spacer mb={[2, 3]} />
-                <Helper artworkId={artwork.id} />
                 <Media at="xs">
                   <>
                     <Spacer mb={3} />
@@ -301,6 +300,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
             }
           />
         </HorizontalPadding>
+        <StickyFooter artworkId={artwork.id} />
       </>
     )
   }
