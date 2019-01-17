@@ -61,7 +61,6 @@ describe("Accept seller offer", () => {
 
   describe("with default data", () => {
     beforeAll(async () => {
-      page.reset()
       await page.init()
     })
 
@@ -118,7 +117,6 @@ describe("Accept seller offer", () => {
     )
 
     beforeEach(async () => {
-      page.reset()
       resolveMutation.mockClear()
       await page.init({
         mockMutationResults: {
@@ -136,6 +134,7 @@ describe("Accept seller offer", () => {
 
     it("shows the button spinner while loading the mutation", async () => {
       resolveMutation.mockImplementationOnce(() => {
+        page.root.update()
         expect(page.submitButton.props().loading).toBeTruthy()
         return acceptOfferSuccess.ecommerceBuyerAcceptOffer
       })

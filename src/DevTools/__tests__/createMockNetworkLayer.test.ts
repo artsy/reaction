@@ -1,9 +1,11 @@
 import { createMockNetworkLayerTestMutationResultsMutation } from "__generated__/createMockNetworkLayerTestMutationResultsMutation.graphql"
+import { createMockFetchQuery } from "DevTools/createMockNetworkLayer"
 import { commitMutation, graphql } from "react-relay"
 import {
   Environment,
   fetchQuery,
   GraphQLTaggedNode,
+  Network,
   OperationBase,
   RecordSource,
   Store,
@@ -37,16 +39,27 @@ describe("createMockNetworkLayer", () => {
     )
   }
 
-  function fetchMutationResults<Input extends OperationBase>(
-    options: Parameters<typeof createMockNetworkLayer2>[0],
-    query: GraphQLTaggedNode,
+  function fetchMutationResults<Input extends OperationBase>({
+    mockMutationResults,
+    query,
+    variables,
+    mockNetworkFailure,
+  }: {
+    mockMutationResults: object
+    query: GraphQLTaggedNode
     variables: Input["variables"]
-  ): Promise<any> {
-    const network = createMockNetworkLayer2(options)
+    mockNetworkFailure?: boolean
+  }): Promise<any> {
+    const mockFetchQuery = mockNetworkFailure
+      ? () => Promise.reject(new Error("failed to fetch"))
+      : createMockFetchQuery({ mockMutationResults })
 
     const source = new RecordSource()
     const store = new Store(source)
-    const environment = new Environment({ network, store })
+    const environment = new Environment({
+      network: Network.create(mockFetchQuery),
+      store,
+    })
 
     return new Promise((resolve, reject) => {
       commitMutation(environment, {
@@ -160,8 +173,37 @@ describe("createMockNetworkLayer", () => {
     it("allows mocking successful mutation results", async () => {
       const data = await fetchMutationResults<
         createMockNetworkLayerTestMutationResultsMutation
-      >(
-        {
+      >({
+        mockMutationResults: {
+          ecommerceBuyerAcceptOffer: {
+            orderOrError: {
+              __typename: "OrderWithMutationSuccess",
+              order: {
+                __typename: "OfferOrder",
+                id: "my-order",
+                state: "MOCKED",
+              },
+            },
+          },
+        },
+        query,
+        variables: {
+          input: {
+            offerId: "offer-id",
+          },
+        },
+      })
+
+      expect(data.ecommerceBuyerAcceptOffer.orderOrError.order.state).toBe(
+        "MOCKED"
+      )
+    })
+
+    it("allows mocking network failures", async () => {
+      try {
+        await fetchMutationResults<
+          createMockNetworkLayerTestMutationResultsMutation
+        >({
           mockMutationResults: {
             ecommerceBuyerAcceptOffer: {
               orderOrError: {
@@ -174,47 +216,14 @@ describe("createMockNetworkLayer", () => {
               },
             },
           },
-        },
-        query,
-        {
-          input: {
-            offerId: "offer-id",
-          },
-        }
-      )
-
-      expect(data.ecommerceBuyerAcceptOffer.orderOrError.order.state).toBe(
-        "MOCKED"
-      )
-    })
-
-    it("allows mocking network failures", async () => {
-      try {
-        await fetchMutationResults<
-          createMockNetworkLayerTestMutationResultsMutation
-        >(
-          {
-            mockNetworkFailureForMutations: true,
-            mockMutationResults: {
-              ecommerceBuyerAcceptOffer: {
-                orderOrError: {
-                  __typename: "OrderWithMutationSuccess",
-                  order: {
-                    __typename: "OfferOrder",
-                    id: "my-order",
-                    state: "MOCKED",
-                  },
-                },
-              },
-            },
-          },
           query,
-          {
+          variables: {
             input: {
               offerId: "offer-id",
             },
-          }
-        )
+          },
+          mockNetworkFailure: true,
+        })
       } catch (e) {
         expect(e.message).toMatchInlineSnapshot(`"failed to fetch"`)
       }

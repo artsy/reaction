@@ -2,6 +2,7 @@ import { Button } from "@artsy/palette"
 import { ArtworkSummaryItemFragmentContainer } from "Apps/Order/Components/ArtworkSummaryItem"
 import { ConditionsOfSaleDisclaimer } from "Apps/Order/Components/ConditionsOfSaleDisclaimer"
 import { CreditCardSummaryItemFragmentContainer } from "Apps/Order/Components/CreditCardSummaryItem"
+import { OfferInput } from "Apps/Order/Components/OfferInput"
 import { OrderStepper } from "Apps/Order/Components/OrderStepper"
 import { ShippingSummaryItemFragmentContainer } from "Apps/Order/Components/ShippingSummaryItem"
 import { TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
@@ -9,10 +10,11 @@ import { ConnectedModalDialog } from "Apps/Order/Dialogs"
 import { ModalButton, ModalDialog } from "Components/Modal/ModalDialog"
 import { Stepper } from "Components/v2"
 import { CountdownTimer } from "Components/v2/CountdownTimer"
-import { MockBoot, renderRelayTree } from "DevTools"
+import { createMockFetchQuery, MockBoot, renderRelayTree } from "DevTools"
 import { ReactWrapper } from "enzyme"
 import React from "react"
 import { GraphQLTaggedNode } from "react-relay"
+import { Network } from "relay-runtime"
 import { flushPromiseQueue } from "Utils/flushPromiseQueue"
 import { Breakpoint } from "Utils/Responsive"
 
@@ -38,28 +40,57 @@ export function TestPage({
   defaultBreakpoint?: Breakpoint
 }) {
   return class {
+    constructor() {
+      afterEach(() => {
+        // surface resolver errors that otherwise get swallowed by
+        // onError in the pages' calls to commitMutation
+        if (this.errors.length !== 0) {
+          throw new Error(this.errors as any)
+        }
+      })
+    }
+
     readonly mockPushRoute = jest.fn<string>()
+    readonly mockFetchQuery = jest.fn<string>()
+    readonly mockFetchMutation = jest.fn<string>()
 
     // shame, this can't be private for some reason
     _root: ReactWrapper | null = null
-
-    reset() {
-      this._root = null
-      this.mockPushRoute.mockReset()
-      return this
-    }
+    errors: any[]
 
     async init({
       mockData,
       mockMutationResults,
       breakpoint,
-      mockNetworkFailureForMutations,
     }: {
       mockData?: object
       mockMutationResults?: object
       breakpoint?: Breakpoint
-      mockNetworkFailureForMutations?: boolean
     } = {}) {
+      this.errors = []
+      this.mockPushRoute.mockReset()
+      this.mockFetchQuery.mockReset()
+      this.mockFetchMutation.mockReset()
+
+      const fetchQuery = createMockFetchQuery({
+        mockData: { ...defaultData, ...mockData },
+        mockMutationResults: {
+          ...defaultMutationResults,
+          ...mockMutationResults,
+        },
+      })
+
+      // surface resolver errors that otherwise get swallowed by
+      // onError in the pages' calls to commitMutation
+      const wrappedFetchQuery = (operation, variables) =>
+        fetchQuery(operation, variables).catch(e => {
+          this.errors.push(e)
+          throw e
+        })
+
+      this.mockFetchQuery.mockImplementation(wrappedFetchQuery)
+      this.mockFetchMutation.mockImplementation(wrappedFetchQuery)
+
       this._root = await renderRelayTree({
         Component: (props: any) => (
           <MockBoot breakpoint={breakpoint || defaultBreakpoint}>
@@ -68,20 +99,12 @@ export function TestPage({
           </MockBoot>
         ),
         query,
-        mockData: { ...defaultData, ...mockData },
-        mockMutationResults: {
-          ...defaultMutationResults,
-          ...mockMutationResults,
-        },
-        mockNetworkFailureForMutations: mockNetworkFailureForMutations
-          ? () => Promise.reject(new Error("Network failure!"))
-          : null,
+        mockNetwork: Network.create((operation, variableValues) => {
+          return operation.operationKind === "mutation"
+            ? this.mockFetchMutation(operation, variableValues)
+            : this.mockFetchQuery(operation, variableValues)
+        }),
       })
-    }
-
-    async initOrder(orderProps: object) {
-      const order = (defaultData as any).order || {}
-      await this.init({ mockData: { order: { ...order, ...orderProps } } })
     }
 
     get root() {
@@ -98,6 +121,15 @@ export function TestPage({
       await flushPromiseQueue()
       this.root.update()
     }
+
+    mockMutationNetworkFailureOnce() {
+      this.mockFetchMutation.mockImplementationOnce(() =>
+        Promise.reject(new Error("failed to fetch"))
+      )
+    }
+
+    // @ts-ignore
+    find: ReactWrapper["find"] = (...args) => this.root.find(...args)
 
     /** Component selectors **/
 
@@ -142,6 +174,10 @@ export function TestPage({
       return expectOne(this.find(Button).last())
     }
 
+    get offerInput() {
+      return expectOne(this.find(OfferInput))
+    }
+
     async clickSubmit() {
       this.submitButton.simulate("click")
       await this.update()
@@ -162,17 +198,28 @@ export function TestPage({
       )
     }
 
-    async expectErrorDialogMatching(title: string, message: string) {
+    async expectErrorDialogMatching(
+      title: string,
+      message: string,
+      buttonText?: string
+    ) {
       expect(this.modalDialog.props().show).toBe(true)
       expect(this.modalDialog.text()).toContain(title)
       expect(this.modalDialog.text()).toContain(message)
+      if (buttonText) {
+        const button = this.modalDialog.find(ModalButton)
+        expect(button.length).toBe(1)
+        expect(button.text()).toMatch(buttonText)
+      }
 
       await this.dismissModal()
 
       expect(this.modalDialog.props().show).toBe(false)
     }
 
-    // @ts-ignore
-    find: ReactWrapper<Props>["find"] = (...args) => this.root.find(...args)
+    async setOfferAmount(amount: number) {
+      this.offerInput.props().onChange(amount)
+      await this.update()
+    }
   }
 }

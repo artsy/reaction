@@ -25,17 +25,15 @@ const complain = (info, type) => {
   throw new Error(message)
 }
 
-export const createMockNetworkLayer2 = ({
+export const createMockFetchQuery = ({
   mockData = {},
   mockMutationResults = {},
-  mockNetworkFailureForMutations,
 }: {
   mockData?: object
   mockMutationResults?: object
-  mockNetworkFailureForMutations?
-}): RelayNetwork => {
+}) => {
   const idMap = new WeakMap()
-  const fetchQuery = getNetworkLayer({
+  return getNetworkLayer({
     fieldResolver: ((source, _args, _context, info) => {
       // source is null for aliased root fields
       source = source || mockData
@@ -83,13 +81,14 @@ export const createMockNetworkLayer2 = ({
       ),
     },
   })
-  if (mockNetworkFailureForMutations) {
-    return Network.create((operation, variableValues) => {
-      if (operation.operationKind === "mutation") {
-        return Promise.reject(new Error("failed to fetch"))
-      }
-      return fetchQuery(operation, variableValues)
-    })
-  }
-  return Network.create(fetchQuery)
+}
+
+export const createMockNetworkLayer2 = ({
+  mockData = {},
+  mockMutationResults = {},
+}: {
+  mockData?: object
+  mockMutationResults?: object
+}): RelayNetwork => {
+  return Network.create(createMockFetchQuery({ mockData, mockMutationResults }))
 }

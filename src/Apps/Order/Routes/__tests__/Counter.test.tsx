@@ -69,7 +69,6 @@ describe("Submit Pending Counter Offer", () => {
 
   describe("with default data", () => {
     beforeAll(async () => {
-      page.reset()
       await page.init()
     })
 
@@ -124,7 +123,6 @@ describe("Submit Pending Counter Offer", () => {
       () => submitPendingOfferSuccess.ecommerceSubmitPendingOffer
     )
     beforeEach(async () => {
-      page.reset()
       resolveMutation.mockClear()
       await page.init({
         mockMutationResults: {
@@ -143,7 +141,9 @@ describe("Submit Pending Counter Offer", () => {
 
     it("shows the button spinner while loading the mutation", async () => {
       resolveMutation.mockImplementationOnce(() => {
+        page.root.update()
         expect(page.submitButton.props().loading).toBeTruthy()
+        return submitPendingOfferSuccess.ecommerceSubmitPendingOffer
       })
 
       expect(page.submitButton.props().loading).toBeFalsy()
@@ -171,8 +171,7 @@ describe("Submit Pending Counter Offer", () => {
       await page.expectDefaultErrorDialog()
     })
     it("shows an error modal when there is a network error", async () => {
-      page.reset()
-      await page.init({ mockNetworkFailureForMutations: true })
+      page.mockMutationNetworkFailureOnce()
       await page.clickSubmit()
       await page.expectDefaultErrorDialog()
     })
@@ -180,7 +179,6 @@ describe("Submit Pending Counter Offer", () => {
 
   describe("analytics", () => {
     beforeEach(async () => {
-      page.reset()
       await page.init()
     })
     it("tracks a pageview", () => {

@@ -100,27 +100,12 @@ export function renderRelayTree<
   }
 ) {
   const {
-    Component,
-    query,
-    mockResolvers,
-    mockData,
-    mockMutationResults,
     renderUntil: renderUntilPredicate,
     variables,
     wrapper,
-    mockNetworkFailureForMutations,
+    ...rendererProps
   } = params
-  const renderer = (
-    <MockRelayRenderer
-      Component={Component}
-      mockResolvers={mockResolvers}
-      query={query}
-      variables={variables}
-      mockData={mockData}
-      mockMutationResults={mockMutationResults}
-      mockNetworkFailureForMutations={mockNetworkFailureForMutations}
-    />
-  )
+  const renderer = <MockRelayRenderer {...rendererProps} />
   return mount<C, P, S>(wrapper ? wrapper(renderer) : renderer).renderUntil(
     renderUntilPredicate || RelayFinishedLoading
   )
