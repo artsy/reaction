@@ -80,12 +80,12 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         className="ArticleHeader__Title-pbffir-4 irnpTg"
       >
         <span
-          className="ArticleHeader__TitleBlock-pbffir-5 bgPwQp"
+          className="ArticleHeader__TitleBlock-pbffir-5 kLDWRh"
         >
           The Most 
         </span>
         <span
-          className="ArticleHeader__TitleBlock-pbffir-5 cwwBZf"
+          className="ArticleHeader__TitleBlock-pbffir-5 eHZvFf"
         >
           Influential 
         </span>
@@ -93,7 +93,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           className="rrm-container rrm-lessThan-md"
         >
           <span
-            className="ArticleHeader__TitleBlock-pbffir-5 bgPwQp"
+            className="ArticleHeader__TitleBlock-pbffir-5 kLDWRh"
           >
             Artists
           </span>
@@ -102,7 +102,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           className="rrm-container rrm-lessThan-md"
         >
           <span
-            className="ArticleHeader__TitleBlock-pbffir-5 cwwBZf"
+            className="ArticleHeader__TitleBlock-pbffir-5 eHZvFf"
           >
              of 2018
           </span>
@@ -111,7 +111,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           className="rrm-container rrm-greaterThan-sm"
         >
           <span
-            className="ArticleHeader__TitleBlock-pbffir-5 bgPwQp"
+            className="ArticleHeader__TitleBlock-pbffir-5 kLDWRh"
           >
             Artists of 2018
           </span>
