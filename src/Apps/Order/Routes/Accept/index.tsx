@@ -232,7 +232,7 @@ export class Accept extends Component<AcceptProps, AcceptState> {
             }
           />
         </HorizontalPadding>
-        <StickyFooter artworkId={artwork.id} />
+        <StickyFooter orderType="OFFER" artworkId={artwork.id} />
       </>
     )
   }

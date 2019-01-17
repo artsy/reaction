@@ -7,6 +7,7 @@ import styled from "styled-components"
 
 interface StickyFooterProps {
   artworkId: string | null
+  orderType: string | null
 }
 
 @track()
@@ -15,7 +16,7 @@ export class StickyFooter extends Component<StickyFooterProps> {
     action_type: Schema.ActionType.Click,
     subject: Schema.Subject.BNMOReadFAQ,
     type: "button",
-    flow: "buy now",
+    flow: this.props.orderType === "OFFER" ? "make offer" : "buy now",
   }))
   onClickReadFAQ() {
     window.open("https://www.artsy.net/buy-now-feature-faq", "_blank")
@@ -25,7 +26,7 @@ export class StickyFooter extends Component<StickyFooterProps> {
     action_type: Schema.ActionType.Click,
     subject: Schema.Subject.BNMOAskSpecialist,
     type: "button",
-    flow: "buy now",
+    flow: this.props.orderType === "OFFER" ? "make offer" : "buy now",
   }))
   onClickAskSpecialist(mediator) {
     mediator.trigger("openOrdersContactArtsyModal", {
@@ -35,7 +36,7 @@ export class StickyFooter extends Component<StickyFooterProps> {
 
   render() {
     return (
-      <FooterContainer height={50}>
+      <FooterContainer height={46}>
         <ContextConsumer>
           {({ mediator }) => (
             <>
@@ -59,6 +60,7 @@ export class StickyFooter extends Component<StickyFooterProps> {
 }
 
 const FooterContainer = styled(Flex)`
+  background-color: ${color("white100")};
   bottom: 0;
   position: fixed;
   width: 100%;

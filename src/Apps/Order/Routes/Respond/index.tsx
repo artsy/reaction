@@ -348,7 +348,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
             }
           />
         </HorizontalPadding>
-        <StickyFooter artworkId={artwork.id} />
+        <StickyFooter orderType={order.mode} artworkId={artwork.id} />
       </>
     )
   }

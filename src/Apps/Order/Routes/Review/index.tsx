@@ -345,7 +345,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
             }
           />
         </HorizontalPadding>
-        <StickyFooter artworkId={artwork.id} />
+        <StickyFooter orderType={order.mode} artworkId={artwork.id} />
       </>
     )
   }

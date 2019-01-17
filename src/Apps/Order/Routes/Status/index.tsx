@@ -287,7 +287,7 @@ export class StatusRoute extends Component<StatusProps> {
             }
           />
         </HorizontalPadding>
-        <StickyFooter artworkId={artwork.id} />
+        <StickyFooter orderType={order.mode} artworkId={artwork.id} />
       </>
     )
   }

@@ -278,7 +278,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
             }
           />
         </HorizontalPadding>
-        <StickyFooter artworkId={artwork.id} />
+        <StickyFooter orderType={order.mode} artworkId={artwork.id} />
       </>
     )
   }

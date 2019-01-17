@@ -208,7 +208,7 @@ export class Reject extends Component<RejectProps, RejectState> {
             }
           />
         </HorizontalPadding>
-        <StickyFooter artworkId={artwork.id} />
+        <StickyFooter orderType="OFFER" artworkId={artwork.id} />
       </>
     )
   }

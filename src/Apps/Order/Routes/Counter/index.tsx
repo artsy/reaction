@@ -227,7 +227,7 @@ export class CounterRoute extends Component<CounterProps, CounterState> {
             }
           />
         </HorizontalPadding>
-        <StickyFooter artworkId={artwork.id} />
+        <StickyFooter orderType={order.mode} artworkId={artwork.id} />
       </>
     )
   }

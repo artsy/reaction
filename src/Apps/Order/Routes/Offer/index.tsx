@@ -300,7 +300,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
             }
           />
         </HorizontalPadding>
-        <StickyFooter artworkId={artwork.id} />
+        <StickyFooter orderType={order.mode} artworkId={artwork.id} />
       </>
     )
   }
