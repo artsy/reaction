@@ -155,6 +155,8 @@ const Title = styled.h1`
   font-weight: inherit;
 `
 
+// Font size is responsive to pagewidth with max/min sizes
+// font-size: calc([minimum size] + ([maximum size] - [minimum size]) * ((100vw - [minimum viewport width]) / ([maximum viewport width] - [minimum viewport width])))
 const TitleBlock = styled.span<{ textAlign?: string }>`
   display: block;
   font-size: calc(80px + (200 - 80) * ((100vw - 300px) / (1600 - 300)));
