@@ -1,3 +1,11 @@
+# 11.2.5 (Fri Jan 18 2019)
+
+#### 🐛  Bug Fix
+
+- Move Pagination display components to Palette [#1915](https://github.com/artsy/reaction/pull/1915) ([@iskounen](https://github.com/iskounen) [@damassi](https://github.com/damassi))
+
+---
+
 # 11.2.4 (Thu Jan 17 2019)
 
 
