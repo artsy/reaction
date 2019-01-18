@@ -7,14 +7,10 @@ import { CurrentEvent_artist$ref } from "./CurrentEvent_artist.graphql";
 import { Genes_artist$ref } from "./Genes_artist.graphql";
 import { MarketInsightsArtistPage_artist$ref } from "./MarketInsightsArtistPage_artist.graphql";
 import { SelectedCareerAchievementsArtistPage_artist$ref } from "./SelectedCareerAchievementsArtistPage_artist.graphql";
-import { SelectedExhibitions_exhibitions$ref } from "./SelectedExhibitions_exhibitions.graphql";
 declare const _Overview_artist$ref: unique symbol;
 export type Overview_artist$ref = typeof _Overview_artist$ref;
 export type Overview_artist = {
     readonly id: string;
-    readonly exhibition_highlights: ReadonlyArray<({
-        readonly " $fragmentRefs": SelectedExhibitions_exhibitions$ref;
-    }) | null> | null;
     readonly counts: ({
         readonly partner_shows: any | null;
     }) | null;
@@ -49,6 +45,9 @@ export type Overview_artist = {
             }) | null> | null;
         }) | null;
     }) | null;
+    readonly insights: ReadonlyArray<({
+        readonly type: string | null;
+    }) | null> | null;
     readonly " $fragmentRefs": ArtistBio_bio$ref & CurrentEvent_artist$ref & MarketInsightsArtistPage_artist$ref & SelectedCareerAchievementsArtistPage_artist$ref & Genes_artist$ref & ArtworkFilter_artist$ref;
     readonly " $refType": Overview_artist$ref;
 };
@@ -145,7 +144,7 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "href",
+      "name": "is_consignable",
       "args": null,
       "storageKey": null
     },
@@ -233,30 +232,6 @@ return {
     {
       "kind": "LinkedField",
       "alias": null,
-      "name": "exhibition_highlights",
-      "storageKey": "exhibition_highlights(size:3)",
-      "args": [
-        {
-          "kind": "Literal",
-          "name": "size",
-          "value": 3,
-          "type": "Int"
-        }
-      ],
-      "concreteType": "Show",
-      "plural": true,
-      "selections": [
-        {
-          "kind": "FragmentSpread",
-          "name": "SelectedExhibitions_exhibitions",
-          "args": null
-        },
-        v1
-      ]
-    },
-    {
-      "kind": "LinkedField",
-      "alias": null,
       "name": "counts",
       "storageKey": null,
       "args": null,
@@ -273,16 +248,16 @@ return {
       ]
     },
     {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "href",
+      "args": null,
+      "storageKey": null
+    },
+    {
       "kind": "FragmentSpread",
       "name": "CurrentEvent_artist",
       "args": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "is_consignable",
-      "args": null,
-      "storageKey": null
     },
     {
       "kind": "LinkedField",
@@ -483,9 +458,27 @@ return {
         }
       ]
     },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "insights",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "ArtistInsight",
+      "plural": true,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "type",
+          "args": null,
+          "storageKey": null
+        }
+      ]
+    },
     v1
   ]
 };
 })();
-(node as any).hash = '62ec95a95b945d36d707c9ac22964e9a';
+(node as any).hash = '49bbaacc4883ab3cebebe746ea9bb1a6';
 export default node;
