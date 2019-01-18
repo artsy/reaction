@@ -7,12 +7,13 @@
   resolved "https://registry.yarnpkg.com/@artsy/detect-responsive-traits/-/detect-responsive-traits-0.0.1.tgz#3d83384bf3323fbd4679a2d73155ab85dc73e850"
   integrity sha512-jqrC40t1P6w9zIvsJJhWe8pxLWdEC/kJQmDc4/b3vAnGy1EsJpcIJGUys37kwut7tDYPiypUF06SImtZVLGQnQ==
 
-"@artsy/palette@2.31.0":
-  version "2.31.0"
-  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-2.31.0.tgz#9d87f9d5ef9e519d0ba61076ea08b4e2aab70145"
-  integrity sha512-u1PSaSUGC83M4PJFe4f2i2Y0MbNeMAL3Xt1lJnpQDgrxhcr9h8063pjr2XWiZVZExAhrbSV+vxdJ2TK1WXrwsA==
+"@artsy/palette@2.32.2":
+  version "2.32.2"
+  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-2.32.2.tgz#208ce360ac57a6d13d53df48645d52e383349404"
+  integrity sha512-pOeLdgGaOMy1Fp7gI3MHkB9n8RslhzI180IfdHhadONuCHkMilvv25UeMWHveqOdcw6lV4TeAQ7K60byyjG3mA==
   dependencies:
     moment "^2.23.0"
+    moment-timezone "^0.5.23"
     rc-slider "^8.6.2"
     react "^16.5.0"
     react-live "^1.12.0"
@@ -9525,6 +9526,13 @@ moment-timezone@^0.5.13:
   version "0.5.17"
   resolved "https://registry.yarnpkg.com/moment-timezone/-/moment-timezone-0.5.17.tgz#3c8fef32051d84c3af174d91dc52977dcb0ad7e5"
   integrity sha512-Y/JpVEWIOA9Gho4vO15MTnW1FCmHi3ypprrkUaxsZ1TKg3uqC8q/qMBjTddkHoiwwZN3qvZSr4zJP7x9V3LpXA==
+  dependencies:
+    moment ">= 2.9.0"
+
+moment-timezone@^0.5.23:
+  version "0.5.23"
+  resolved "https://registry.yarnpkg.com/moment-timezone/-/moment-timezone-0.5.23.tgz#7cbb00db2c14c71b19303cb47b0fb0a6d8651463"
+  integrity sha512-WHFH85DkCfiNMDX5D3X7hpNH3/PUhjTGcD0U1SgfBGZxJ3qUmJh5FdvaFjcClxOvB3rzdfj4oRffbI38jEnC1w==
   dependencies:
     moment ">= 2.9.0"
 
