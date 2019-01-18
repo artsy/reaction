@@ -1,3 +1,5 @@
+import { BuyOrderWithShippingDetails } from "Apps/__tests__/Fixtures/Order"
+
 export const submitOrderWithFailure = {
   ecommerceSubmitOrder: {
     orderOrError: {
@@ -15,7 +17,11 @@ export const submitOrderWithVersionMismatchFailure = {
   ecommerceSubmitOrder: {
     orderOrError: {
       __typename: "OrderWithMutationFailure",
-      error: { type: "processing", code: "artwork_version_mismatch" },
+      error: {
+        type: "processing",
+        code: "artwork_version_mismatch",
+        data: null,
+      },
     },
   },
 }
@@ -23,9 +29,23 @@ export const submitOrderWithVersionMismatchFailure = {
 export const submitOrderWithNoInventoryFailure = {
   ecommerceSubmitOrder: {
     orderOrError: {
+      __typename: "OrderWithMutationFailure",
       error: {
         type: "processing",
         code: "insufficient_inventory",
+        data: null,
+      },
+    },
+  },
+}
+
+export const submitOrderSuccess = {
+  ecommerceSubmitOrder: {
+    orderOrError: {
+      __typename: "OrderWithMutationSuccess",
+      order: {
+        ...BuyOrderWithShippingDetails,
+        state: "SUBMITTED",
       },
     },
   },

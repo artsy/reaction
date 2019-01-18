@@ -94,7 +94,11 @@ export function TestPage({
       this._root = await renderRelayTree({
         Component: (props: any) => (
           <MockBoot breakpoint={breakpoint || defaultBreakpoint}>
-            <Component {...props} router={{ push: this.mockPushRoute }} />
+            <Component
+              {...props}
+              router={{ push: this.mockPushRoute }}
+              route={{ onTransition: jest.fn() }}
+            />
             <ConnectedModalDialog />
           </MockBoot>
         ),
