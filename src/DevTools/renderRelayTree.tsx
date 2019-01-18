@@ -2,7 +2,6 @@ import { LoadingClassName } from "Artsy/Relay/renderWithLoadProgress"
 import "DevTools/renderUntil"
 import { mount, RenderUntilPredicate } from "enzyme"
 import React from "react"
-import { Variables } from "relay-runtime"
 import { MockRelayRenderer, MockRelayRendererProps } from "./MockRelayRenderer"
 
 /**
@@ -95,13 +94,11 @@ export function renderRelayTree<
 >(
   params: MockRelayRendererProps & {
     renderUntil?: RenderUntilPredicate<P, S, C>
-    variables?: Variables
     wrapper?: (renderer: JSX.Element) => JSX.Element
   }
 ) {
   const {
     renderUntil: renderUntilPredicate,
-    variables,
     wrapper,
     ...rendererProps
   } = params
