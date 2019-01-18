@@ -177,7 +177,7 @@ export function buildServerApp(config: ServerRouterConfig): Promise<Resolve> {
             )
           )
         } else {
-          console.error("[Artsy/Router/buildServerApp] Error:", error)
+          // console.error("[Artsy/Router/buildServerApp] Error:", error)
           reject(error)
         }
       }
