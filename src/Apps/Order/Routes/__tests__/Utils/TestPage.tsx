@@ -18,7 +18,7 @@ import { Network } from "relay-runtime"
 import { flushPromiseQueue } from "Utils/flushPromiseQueue"
 import { Breakpoint } from "Utils/Responsive"
 
-function expectOne<T>(component: ReactWrapper<T>): ReactWrapper<T> {
+export function expectOne<T>(component: ReactWrapper<T>): ReactWrapper<T> {
   if (component.length !== 1) {
     // put this behind an if statement to prevent messing up assertion numbers
     expect(component.length).toBe(1)
@@ -178,6 +178,8 @@ export function TestPage({
       return expectOne(this.find(OfferInput))
     }
 
+    /** PAGE ACTIONS **/
+
     async clickSubmit() {
       this.submitButton.simulate("click")
       await this.update()
@@ -190,6 +192,8 @@ export function TestPage({
         .simulate("click")
       await this.update()
     }
+
+    /*** COMMON ASSERTIONS ***/
 
     async expectDefaultErrorDialog() {
       await this.expectErrorDialogMatching(
