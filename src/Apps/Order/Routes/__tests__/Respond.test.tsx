@@ -100,7 +100,7 @@ describe("Offer InitialMutation", () => {
     expect(input.text()).toContain("Your offer")
   })
 
-  it("Shows the stepper", () => {
+  it("shows the stepper", () => {
     const component = getWrapper()
     const stepper = component.find(OrderStepper)
     expect(stepper.text()).toMatch("RespondReview")
@@ -186,6 +186,13 @@ describe("Offer InitialMutation", () => {
     expect(radios.first().text()).toMatch("Accept seller's offer")
     expect(radios.at(1).text()).toMatch("Send counteroffer")
     expect(radios.at(2).text()).toMatch("Decline seller's offer")
+  })
+
+  it("shows the sticky 'need help?' footer", () => {
+    const component = getWrapper()
+    expect(component.text()).toMatch(
+      "Need help? Read our FAQ or ask a question."
+    )
   })
 
   describe("taking action", () => {

@@ -269,6 +269,13 @@ describe("Shipping", () => {
 
       expect(component.find(ModalDialog).props().show).toBe(false)
     })
+
+    it("shows the sticky 'need help?' footer", () => {
+      const component = getWrapper(testProps)
+      expect(component.text()).toMatch(
+        "Need help? Read our FAQ or ask a question."
+      )
+    })
   })
 
   describe("with previously filled-in data", () => {

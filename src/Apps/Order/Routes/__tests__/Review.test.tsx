@@ -187,6 +187,13 @@ describe("Review", () => {
 
       expect(window.location.assign).toBeCalledWith("/artist/artistId")
     })
+
+    it("shows the sticky 'need help?' footer", () => {
+      const component = getWrapper(defaultProps)
+      expect(component.text()).toMatch(
+        "Need help? Read our FAQ or ask a question."
+      )
+    })
   })
 
   describe("Offer-mode orders", () => {

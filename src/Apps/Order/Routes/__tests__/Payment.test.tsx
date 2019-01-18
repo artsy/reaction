@@ -117,6 +117,12 @@ describe("Payment", () => {
     expect(paymentRoute.find(Checkbox).length).toBe(0)
     expect(paymentRoute.find(Collapse).props().open).toBe(true)
   })
+  it("shows the sticky 'need help?' footer", () => {
+    const component = getWrapper(testProps)
+    expect(component.text()).toMatch(
+      "Need help? Read our FAQ or ask a question."
+    )
+  })
 
   it("removes all data when the billing address form is hidden", () => {
     const paymentRoute = getWrapper(testProps)

@@ -152,10 +152,17 @@ describe("Submit Pending Counter Offer", () => {
     expect(continueButton.text()).toBe("Submit")
   })
 
-  it("Shows the conditions of sale disclaimer.", () => {
+  it("shows the conditions of sale disclaimer.", () => {
     const component = getWrapper()
     expect(component.text()).toMatch(
       "By clicking Submit, I agree to Artsy’s Conditions of Sale."
+    )
+  })
+
+  it("shows the sticky 'need help?' footer", () => {
+    const component = getWrapper()
+    expect(component.text()).toMatch(
+      "Need help? Read our FAQ or ask a question."
     )
   })
 
