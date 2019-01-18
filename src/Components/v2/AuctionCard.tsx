@@ -78,7 +78,7 @@ export const LargeAuctionCard = props => (
     </Serif>
     {props.src && (
       <Box height="200px">
-        <ResponsiveImage src={props.src} my={2} />
+        <ResponsiveImage src={props.src} my={2} pb="160px" />
       </Box>
     )}
     <Sans size="2" weight="medium">
