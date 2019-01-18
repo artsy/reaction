@@ -1,3 +1,15 @@
+# 11.2.7 (Fri Jan 18 2019)
+
+#### 🐛  Bug Fix
+
+- Roll out Artist Insights V2 to 100% [#1919](https://github.com/artsy/reaction/pull/1919) ([@dblandin](https://github.com/dblandin))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v2.33.1 [#1917](https://github.com/artsy/reaction/pull/1917) ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # 11.2.6 (Fri Jan 18 2019)
 
 
