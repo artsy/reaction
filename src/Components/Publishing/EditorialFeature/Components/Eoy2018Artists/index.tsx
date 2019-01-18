@@ -1,10 +1,9 @@
-import { Box, color, Flex, Sans, Serif, space } from "@artsy/palette"
+import { Box, color, Flex, media, Sans, Serif, space } from "@artsy/palette"
 import { compact, find, map } from "lodash"
 import React from "react"
 import styled from "styled-components"
 
 import { unica } from "Assets/Fonts"
-import { media } from "Components/Helpers"
 import { Byline, BylineContainer } from "Components/Publishing/Byline/Byline"
 import { EditorialFeaturesProps } from "Components/Publishing/EditorialFeature/EditorialFeature"
 import { Nav, NavContainer } from "Components/Publishing/Nav/Nav"
