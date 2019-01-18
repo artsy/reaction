@@ -58,7 +58,7 @@ describe("Sticky footer", () => {
     )
   })
 
-  it("displays 'need help?' message", () => {
+  it("displays the 'Need help?' message", () => {
     const component = mount(
       <StickyFooter orderType="OFFER" artworkId="whatever" />
     )

@@ -1,4 +1,4 @@
-import { Button, Col, Flex, Row, Sans, Spacer } from "@artsy/palette"
+import { Box, Button, Col, Flex, Row, Sans, Spacer } from "@artsy/palette"
 import { Reject_order } from "__generated__/Reject_order.graphql"
 import { RejectOfferMutation } from "__generated__/RejectOfferMutation.graphql"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
@@ -125,72 +125,50 @@ export class Reject extends Component<RejectProps, RejectState> {
 
     return (
       <>
-        <HorizontalPadding px={[0, 4]}>
-          <Row>
-            <Col>
-              <OrderStepper
-                currentStep="Review"
-                steps={counterofferFlowSteps}
-              />
-            </Col>
-          </Row>
-        </HorizontalPadding>
-        <HorizontalPadding>
-          <TwoColumnLayout
-            Content={
-              <Flex
-                flexDirection="column"
-                style={isCommittingMutation ? { pointerEvents: "none" } : {}}
-              >
-                <Media at="xs">
+        <Box pb={55}>
+          <HorizontalPadding px={[0, 4]}>
+            <Row>
+              <Col>
+                <OrderStepper
+                  currentStep="Review"
+                  steps={counterofferFlowSteps}
+                />
+              </Col>
+            </Row>
+          </HorizontalPadding>
+          <HorizontalPadding>
+            <TwoColumnLayout
+              Content={
+                <Flex
+                  flexDirection="column"
+                  style={isCommittingMutation ? { pointerEvents: "none" } : {}}
+                >
+                  <Media at="xs">
+                    <Flex flexDirection="column">
+                      <ArtworkSummaryItem order={order} />
+                    </Flex>
+                    <Spacer mb={2} />
+                  </Media>
                   <Flex flexDirection="column">
-                    <ArtworkSummaryItem order={order} />
+                    <CountdownTimer
+                      action="Respond"
+                      note="Expired offers end the negotiation process permanently."
+                      countdownStart={order.lastOffer.createdAt}
+                      countdownEnd={order.stateExpiresAt}
+                    />
+                    <StepSummaryItem
+                      title="Decline seller's offer"
+                      onChange={this.onChangeResponse}
+                    >
+                      <Sans size="2" color="black60">
+                        Declining an offer permanently ends the negotiation
+                        process. The seller will not be able to make a
+                        counteroffer.
+                      </Sans>
+                    </StepSummaryItem>
                   </Flex>
-                  <Spacer mb={2} />
-                </Media>
-                <Flex flexDirection="column">
-                  <CountdownTimer
-                    action="Respond"
-                    note="Expired offers end the negotiation process permanently."
-                    countdownStart={order.lastOffer.createdAt}
-                    countdownEnd={order.stateExpiresAt}
-                  />
-                  <StepSummaryItem
-                    title="Decline seller's offer"
-                    onChange={this.onChangeResponse}
-                  >
-                    <Sans size="2" color="black60">
-                      Declining an offer permanently ends the negotiation
-                      process. The seller will not be able to make a
-                      counteroffer.
-                    </Sans>
-                  </StepSummaryItem>
-                </Flex>
-                <Spacer mb={[2, 3]} />
-                <Media greaterThan="xs">
-                  <Button
-                    onClick={this.onSubmit}
-                    loading={isCommittingMutation}
-                    size="large"
-                    width="100%"
-                  >
-                    Submit
-                  </Button>
-                  <Spacer mb={2} />
-                  <ConditionsOfSaleDisclaimer textAlign="center" />
-                </Media>
-              </Flex>
-            }
-            Sidebar={
-              <Flex flexDirection="column">
-                <Media greaterThan="xs">
-                  <Flex flexDirection="column">
-                    <ArtworkSummaryItem order={order} />
-                  </Flex>
-                  <Spacer mb={2} />
-                </Media>
-                <Media at="xs">
-                  <>
+                  <Spacer mb={[2, 3]} />
+                  <Media greaterThan="xs">
                     <Button
                       onClick={this.onSubmit}
                       loading={isCommittingMutation}
@@ -200,14 +178,38 @@ export class Reject extends Component<RejectProps, RejectState> {
                       Submit
                     </Button>
                     <Spacer mb={2} />
-                    <ConditionsOfSaleDisclaimer />
+                    <ConditionsOfSaleDisclaimer textAlign="center" />
+                  </Media>
+                </Flex>
+              }
+              Sidebar={
+                <Flex flexDirection="column">
+                  <Media greaterThan="xs">
+                    <Flex flexDirection="column">
+                      <ArtworkSummaryItem order={order} />
+                    </Flex>
                     <Spacer mb={2} />
-                  </>
-                </Media>
-              </Flex>
-            }
-          />
-        </HorizontalPadding>
+                  </Media>
+                  <Media at="xs">
+                    <>
+                      <Button
+                        onClick={this.onSubmit}
+                        loading={isCommittingMutation}
+                        size="large"
+                        width="100%"
+                      >
+                        Submit
+                      </Button>
+                      <Spacer mb={2} />
+                      <ConditionsOfSaleDisclaimer />
+                      <Spacer mb={2} />
+                    </>
+                  </Media>
+                </Flex>
+              }
+            />
+          </HorizontalPadding>
+        </Box>
         <StickyFooter orderType="OFFER" artworkId={artwork.id} />
       </>
     )

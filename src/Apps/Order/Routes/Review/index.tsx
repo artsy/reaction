@@ -1,4 +1,4 @@
-import { Button, Col, Flex, Join, Row, Spacer } from "@artsy/palette"
+import { Box, Button, Col, Flex, Join, Row, Spacer } from "@artsy/palette"
 import { Review_order } from "__generated__/Review_order.graphql"
 import { ReviewSubmitOfferOrderMutation } from "__generated__/ReviewSubmitOfferOrderMutation.graphql"
 import { ReviewSubmitOrderMutation } from "__generated__/ReviewSubmitOrderMutation.graphql"
@@ -266,46 +266,70 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
 
     return (
       <>
-        <HorizontalPadding px={[0, 4]}>
-          <Row>
-            <Col>
-              <OrderStepper
-                currentStep="Review"
-                steps={
-                  order.mode === "OFFER" ? offerFlowSteps : buyNowFlowSteps
-                }
-              />
-            </Col>
-          </Row>
-        </HorizontalPadding>
+        <Box pb={55}>
+          <HorizontalPadding px={[0, 4]}>
+            <Row>
+              <Col>
+                <OrderStepper
+                  currentStep="Review"
+                  steps={
+                    order.mode === "OFFER" ? offerFlowSteps : buyNowFlowSteps
+                  }
+                />
+              </Col>
+            </Row>
+          </HorizontalPadding>
 
-        <HorizontalPadding>
-          <TwoColumnLayout
-            Content={
-              <>
-                <Join separator={<Spacer mb={3} />}>
-                  <Flex flexDirection="column" mb={[2, 3]}>
-                    {order.mode === "OFFER" && (
-                      <OfferSummaryItem
+          <HorizontalPadding>
+            <TwoColumnLayout
+              Content={
+                <>
+                  <Join separator={<Spacer mb={3} />}>
+                    <Flex flexDirection="column" mb={[2, 3]}>
+                      {order.mode === "OFFER" && (
+                        <OfferSummaryItem
+                          order={order}
+                          onChange={this.onChangeOffer}
+                        />
+                      )}
+                      <ShippingSummaryItem
                         order={order}
-                        onChange={this.onChangeOffer}
+                        onChange={this.onChangeShipping}
                       />
-                    )}
-                    <ShippingSummaryItem
-                      order={order}
-                      onChange={this.onChangeShipping}
-                    />
-                    <CreditCardSummaryItem
-                      order={order}
-                      onChange={this.onChangePayment}
-                      title="Payment method"
-                    />
+                      <CreditCardSummaryItem
+                        order={order}
+                        onChange={this.onChangePayment}
+                        title="Payment method"
+                      />
+                    </Flex>
+                    <Media greaterThan="xs">
+                      <ItemReview
+                        artwork={order.lineItems.edges[0].node.artwork}
+                      />
+                      <Spacer mb={3} />
+                      <Button
+                        size="large"
+                        width="100%"
+                        loading={isSubmitting}
+                        onClick={() => this.onSubmit()}
+                      >
+                        Submit
+                      </Button>
+                      <Spacer mb={2} />
+                      <ConditionsOfSaleDisclaimer textAlign="center" />
+                    </Media>
+                  </Join>
+                  <Spacer mb={3} />
+                </>
+              }
+              Sidebar={
+                <Flex flexDirection="column">
+                  <Flex flexDirection="column">
+                    <ArtworkSummaryItem order={order} />
+                    <TransactionDetailsSummaryItem order={order} />
                   </Flex>
-                  <Media greaterThan="xs">
-                    <ItemReview
-                      artwork={order.lineItems.edges[0].node.artwork}
-                    />
-                    <Spacer mb={3} />
+                  <Spacer mb={[2, 3]} />
+                  <Media at="xs">
                     <Button
                       size="large"
                       width="100%"
@@ -315,36 +339,14 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                       Submit
                     </Button>
                     <Spacer mb={2} />
-                    <ConditionsOfSaleDisclaimer textAlign="center" />
+                    <ConditionsOfSaleDisclaimer />
+                    <Spacer mb={2} />
                   </Media>
-                </Join>
-                <Spacer mb={3} />
-              </>
-            }
-            Sidebar={
-              <Flex flexDirection="column">
-                <Flex flexDirection="column">
-                  <ArtworkSummaryItem order={order} />
-                  <TransactionDetailsSummaryItem order={order} />
                 </Flex>
-                <Spacer mb={[2, 3]} />
-                <Media at="xs">
-                  <Button
-                    size="large"
-                    width="100%"
-                    loading={isSubmitting}
-                    onClick={() => this.onSubmit()}
-                  >
-                    Submit
-                  </Button>
-                  <Spacer mb={2} />
-                  <ConditionsOfSaleDisclaimer />
-                  <Spacer mb={2} />
-                </Media>
-              </Flex>
-            }
-          />
-        </HorizontalPadding>
+              }
+            />
+          </HorizontalPadding>
+        </Box>
         <StickyFooter orderType={order.mode} artworkId={artwork.id} />
       </>
     )

@@ -1,4 +1,13 @@
-import { Button, Col, Flex, Message, Row, Sans, Spacer } from "@artsy/palette"
+import {
+  Box,
+  Button,
+  Col,
+  Flex,
+  Message,
+  Row,
+  Sans,
+  Spacer,
+} from "@artsy/palette"
 import { Offer_order } from "__generated__/Offer_order.graphql"
 import { OfferMutation } from "__generated__/OfferMutation.graphql"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
@@ -215,76 +224,47 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
 
     return (
       <>
-        <HorizontalPadding px={[0, 4]}>
-          <Row>
-            <Col>
-              <OrderStepper currentStep="Offer" steps={offerFlowSteps} />
-            </Col>
-          </Row>
-        </HorizontalPadding>
+        <Box pb={55}>
+          <HorizontalPadding px={[0, 4]}>
+            <Row>
+              <Col>
+                <OrderStepper currentStep="Offer" steps={offerFlowSteps} />
+              </Col>
+            </Row>
+          </HorizontalPadding>
 
-        <HorizontalPadding>
-          <TwoColumnLayout
-            Content={
-              <Flex
-                flexDirection="column"
-                style={isCommittingMutation ? { pointerEvents: "none" } : {}}
-                id="offer-page-left-column"
-              >
-                <Flex flexDirection="column">
-                  <OfferInput
-                    id="OfferForm_offerValue"
-                    showError={
-                      this.state.formIsDirty && this.state.offerValue <= 0
-                    }
-                    onChange={offerValue => this.setState({ offerValue })}
-                    onFocus={this.onOfferInputFocus.bind(this)}
-                  />
-                </Flex>
-                {Boolean(order.totalListPrice) && (
-                  <Sans size="2" color="black60">
-                    List price: {order.totalListPrice}
-                  </Sans>
-                )}
-                <Spacer mb={[2, 3]} />
-                <Message p={[2, 3]}>
-                  If your offer is accepted, your payment will be processed
-                  immediately. Keep in mind making an offer doesn’t guarantee
-                  you the work, as the seller might be receiving higher offers.
-                </Message>
-                <Spacer mb={[2, 3]} />
-                <Media greaterThan="xs">
-                  <Button
-                    onClick={this.onContinueButtonPressed}
-                    loading={isCommittingMutation}
-                    size="large"
-                    width="100%"
-                  >
-                    Continue
-                  </Button>
-                </Media>
-              </Flex>
-            }
-            Sidebar={
-              <Flex flexDirection="column">
-                <Flex flexDirection="column">
-                  <ArtworkSummaryItem order={order} />
-                  <TransactionDetailsSummaryItem
-                    order={order}
-                    offerOverride={
-                      this.state.offerValue &&
-                      this.state.offerValue.toLocaleString("en-US", {
-                        style: "currency",
-                        currency: "USD",
-                        minimumFractionDigits: 2,
-                      })
-                    }
-                  />
-                </Flex>
-                <Spacer mb={[2, 3]} />
-                <Media at="xs">
-                  <>
-                    <Spacer mb={3} />
+          <HorizontalPadding>
+            <TwoColumnLayout
+              Content={
+                <Flex
+                  flexDirection="column"
+                  style={isCommittingMutation ? { pointerEvents: "none" } : {}}
+                  id="offer-page-left-column"
+                >
+                  <Flex flexDirection="column">
+                    <OfferInput
+                      id="OfferForm_offerValue"
+                      showError={
+                        this.state.formIsDirty && this.state.offerValue <= 0
+                      }
+                      onChange={offerValue => this.setState({ offerValue })}
+                      onFocus={this.onOfferInputFocus.bind(this)}
+                    />
+                  </Flex>
+                  {Boolean(order.totalListPrice) && (
+                    <Sans size="2" color="black60">
+                      List price: {order.totalListPrice}
+                    </Sans>
+                  )}
+                  <Spacer mb={[2, 3]} />
+                  <Message p={[2, 3]}>
+                    If your offer is accepted, your payment will be processed
+                    immediately. Keep in mind making an offer doesn’t guarantee
+                    you the work, as the seller might be receiving higher
+                    offers.
+                  </Message>
+                  <Spacer mb={[2, 3]} />
+                  <Media greaterThan="xs">
                     <Button
                       onClick={this.onContinueButtonPressed}
                       loading={isCommittingMutation}
@@ -293,13 +273,45 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
                     >
                       Continue
                     </Button>
-                    <Spacer mb={2} />
-                  </>
-                </Media>
-              </Flex>
-            }
-          />
-        </HorizontalPadding>
+                  </Media>
+                </Flex>
+              }
+              Sidebar={
+                <Flex flexDirection="column">
+                  <Flex flexDirection="column">
+                    <ArtworkSummaryItem order={order} />
+                    <TransactionDetailsSummaryItem
+                      order={order}
+                      offerOverride={
+                        this.state.offerValue &&
+                        this.state.offerValue.toLocaleString("en-US", {
+                          style: "currency",
+                          currency: "USD",
+                          minimumFractionDigits: 2,
+                        })
+                      }
+                    />
+                  </Flex>
+                  <Spacer mb={[2, 3]} />
+                  <Media at="xs">
+                    <>
+                      <Spacer mb={3} />
+                      <Button
+                        onClick={this.onContinueButtonPressed}
+                        loading={isCommittingMutation}
+                        size="large"
+                        width="100%"
+                      >
+                        Continue
+                      </Button>
+                      <Spacer mb={2} />
+                    </>
+                  </Media>
+                </Flex>
+              }
+            />
+          </HorizontalPadding>
+        </Box>
         <StickyFooter orderType={order.mode} artworkId={artwork.id} />
       </>
     )
