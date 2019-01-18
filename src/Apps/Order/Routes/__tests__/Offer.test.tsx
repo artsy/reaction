@@ -107,18 +107,8 @@ describe("Offer InitialMutation", () => {
     })
 
     it("shows the button spinner while committing the mutation", async () => {
-      resolveMutation.mockImplementationOnce(() => {
-        page.root.update()
-        expect(page.submitButton.props().loading).toBeTruthy()
-        return initialOfferSuccess.ecommerceAddInitialOfferToOrder
-      })
-
       await page.setOfferAmount(15000)
-      expect(page.submitButton.props().loading).toBeFalsy()
-      await page.clickSubmit()
-      expect(page.submitButton.props().loading).toBeFalsy()
-
-      expect.assertions(3)
+      await page.expectButtonSpinnerWhenSubmitting()
     })
 
     it("shows an error modal when there is an error from the server", async () => {

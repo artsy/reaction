@@ -133,17 +133,7 @@ describe("Accept seller offer", () => {
     })
 
     it("shows the button spinner while loading the mutation", async () => {
-      resolveMutation.mockImplementationOnce(() => {
-        page.root.update()
-        expect(page.submitButton.props().loading).toBeTruthy()
-        return acceptOfferSuccess.ecommerceBuyerAcceptOffer
-      })
-
-      expect(page.submitButton.props().loading).toBeFalsy()
-      await page.clickSubmit()
-      expect(page.submitButton.props().loading).toBeFalsy()
-
-      expect.assertions(3)
+      await page.expectButtonSpinnerWhenSubmitting()
     })
 
     it("shows an error modal when there is an error from the server", async () => {

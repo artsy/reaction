@@ -101,12 +101,7 @@ describe("Buyer rejects seller offer", () => {
     })
 
     it("shows the button spinner while loading the mutation", async () => {
-      expect(page.submitButton.props().loading).toBeFalsy()
-      page.clickSubmit()
-      page.root.update()
-      expect(page.submitButton.props().loading).toBeTruthy()
-      await page.update()
-      expect(page.submitButton.props().loading).toBeFalsy()
+      await page.expectButtonSpinnerWhenSubmitting()
     })
 
     it("shows an error modal when there is an error from the server", async () => {

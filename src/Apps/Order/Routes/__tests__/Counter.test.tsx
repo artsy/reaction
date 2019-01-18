@@ -140,16 +140,7 @@ describe("Submit Pending Counter Offer", () => {
     })
 
     it("shows the button spinner while loading the mutation", async () => {
-      resolveMutation.mockImplementationOnce(() => {
-        page.root.update()
-        expect(page.submitButton.props().loading).toBeTruthy()
-        return submitPendingOfferSuccess.ecommerceSubmitPendingOffer
-      })
-
-      expect(page.submitButton.props().loading).toBeFalsy()
-      await page.clickSubmit()
-      expect(page.submitButton.props().loading).toBeFalsy()
-      expect.assertions(3)
+      await page.expectButtonSpinnerWhenSubmitting()
     })
 
     it("shows an error modal with proper error when there is insufficient inventory", async () => {

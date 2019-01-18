@@ -270,18 +270,9 @@ describe("Payment", () => {
   })
 
   it("shows the button spinner while loading the mutation", async () => {
-    await page.update()
-
+    await page.init()
     fillAddressForm(page.root, validAddress)
-
-    expect(page.submitButton.props().loading).toBeFalsy()
-
-    page.clickSubmit()
-
-    page.root.update()
-    expect(page.submitButton.props().loading).toBeTruthy()
-    await page.update()
-    expect(page.submitButton.props().loading).toBeFalsy()
+    await page.expectButtonSpinnerWhenSubmitting()
   })
 
   it("shows an error message when CreateToken passes in an error", async () => {
