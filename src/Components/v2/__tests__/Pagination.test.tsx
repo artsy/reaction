@@ -3,29 +3,13 @@ import { MockBoot } from "DevTools/MockBoot"
 import { mount } from "enzyme"
 import { set } from "lodash/fp"
 import React from "react"
-import { LargePagination, Pagination, SmallPagination } from "../Pagination"
+import { Pagination } from "../Pagination"
 
 describe("Pagination", () => {
   const { cursor, callbacks } = paginationProps
 
   beforeAll(() => {
     window.matchMedia = undefined // Immediately set matching media query inMockBoot
-  })
-
-  it("is responsive", () => {
-    const small = mount(
-      <MockBoot breakpoint="xs">
-        <Pagination hasNextPage pageCursors={cursor} {...callbacks} />
-      </MockBoot>
-    )
-    expect(small.find(SmallPagination).length).toEqual(1)
-
-    const large = mount(
-      <MockBoot breakpoint="lg">
-        <Pagination hasNextPage pageCursors={cursor} {...callbacks} />
-      </MockBoot>
-    )
-    expect(large.find(LargePagination).length).toEqual(1)
   })
 
   it("disables next button if hasNextPage=false", () => {
