@@ -7,10 +7,10 @@
   resolved "https://registry.yarnpkg.com/@artsy/detect-responsive-traits/-/detect-responsive-traits-0.0.1.tgz#3d83384bf3323fbd4679a2d73155ab85dc73e850"
   integrity sha512-jqrC40t1P6w9zIvsJJhWe8pxLWdEC/kJQmDc4/b3vAnGy1EsJpcIJGUys37kwut7tDYPiypUF06SImtZVLGQnQ==
 
-"@artsy/palette@2.33.2":
-  version "2.33.2"
-  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-2.33.2.tgz#de61eecd4a9d03b48582ffc7effb1ceefd9d3313"
-  integrity sha512-+9NQQUDfTz3AVM+UqF5gqdzD2t6X/8PzSTGhDxdMZwsWnhRdI1LF4RtcdeI36PfNaTBaVxlLOatjcvPSJmyTWg==
+"@artsy/palette@2.34.0":
+  version "2.34.0"
+  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-2.34.0.tgz#7de7d8796314408561b2ae8c6f2ff0025ae44f0f"
+  integrity sha512-E6gDdTsVIdXPSRJE2Km59AUvq+H4KwVfwXk0fWN4eiPfs7OYPT31Wd0esuphH51iCTParZ3vHLnWv+UNRKh9+w==
   dependencies:
     gatsby-plugin-catch-links "^2.0.9"
     moment "^2.23.0"
