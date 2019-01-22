@@ -13,6 +13,7 @@ import { flushPromiseQueue } from "Utils/flushPromiseQueue"
 import { UntouchedOfferOrder } from "../../../__tests__/Fixtures/Order"
 import { TransactionDetailsSummaryItem } from "../../Components/TransactionDetailsSummaryItem"
 import {
+  initialOfferFailedAmountIsInvalid,
   initialOfferFailedCannotOffer,
   initialOfferSuccess,
 } from "../__fixtures__/MutationResults"
@@ -207,6 +208,33 @@ describe("Offer InitialMutation", () => {
       component.update()
 
       expect(component.find(ModalDialog).props().show).toBe(false)
+    })
+
+    it("shows a helpful error message in a modal when there is an error from the server because the amount is invalid", async () => {
+      const component = getWrapper(testProps)
+      const mockCommitMutation = commitMutation as jest.Mock<any>
+      mockCommitMutation.mockImplementationOnce(
+        (_environment, { onCompleted }) => {
+          onCompleted(initialOfferFailedAmountIsInvalid)
+        }
+      )
+
+      component
+        .find(OfferInput)
+        .props()
+        .onChange(16000)
+
+      component.find(Button).simulate("click")
+
+      await flushPromiseQueue()
+      component.update()
+
+      const errorComponent = component.find(ModalDialog)
+      expect(errorComponent.props().show).toBe(true)
+      expect(errorComponent.text()).toContain("Invalid offer")
+      expect(errorComponent.text()).toContain(
+        "The offer amount is either missing or invalid. Please try again."
+      )
     })
 
     describe("The 'amount too small' speed bump", () => {

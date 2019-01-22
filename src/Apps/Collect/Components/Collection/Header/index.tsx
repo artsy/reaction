@@ -50,11 +50,11 @@ const getReadMoreContent = (description, credit) => {
 }
 
 const maxChars = {
-  xs: 200,
-  sm: 430,
-  md: 450,
-  lg: 460,
-  xl: 510,
+  xs: 350,
+  sm: 730,
+  md: 670,
+  lg: 660,
+  xl: 820,
 }
 
 const imageWidthSizes = {
@@ -124,7 +124,7 @@ export class CollectionHeader extends Component<Props> {
                     <Grid>
                       <Row>
                         <Col xl="8" lg="8" md="10" sm="12" xs="12">
-                          <ExtendedSerif size="5" px={[0, 1]}>
+                          <ExtendedSerif size="3" px={[0, 1]}>
                             <ReadMore
                               onReadMoreClicked={this.trackReadMoreClick.bind(
                                 this

@@ -28,29 +28,35 @@ export class CollectionsGrid extends Component<CollectionsGridProps> {
         </Sans>
 
         <Flex flexWrap="wrap" justifyContent="space-between">
-          {collections.map((collection, index) => {
-            const imageUrl =
-              collection.headerImage &&
-              crop(collection.headerImage, {
-                width: 50,
-                height: 50,
-              })
+          {[...collections] // needs to create a new array since the sort function modifies the array.
+            .sort((a, b) => a.title.localeCompare(b.title))
+            .map((collection, index) => {
+              const imageUrl =
+                collection.headerImage &&
+                crop(collection.headerImage, {
+                  width: 50,
+                  height: 50,
+                })
 
-            return (
-              <Flex width={["100%", "30%"]} flexDirection="column" key={index}>
-                <Media at="xs">{index === 0 && <Separator />}</Media>
-                <Media greaterThan="xs">{index < 3 && <Separator />}</Media>
+              return (
+                <Flex
+                  width={["100%", "30%"]}
+                  flexDirection="column"
+                  key={index}
+                >
+                  <Media at="xs">{index === 0 && <Separator />}</Media>
+                  <Media greaterThan="xs">{index < 3 && <Separator />}</Media>
 
-                <EntityHeader
-                  py={2}
-                  href={`/collection/${collection.slug}`}
-                  imageUrl={imageUrl}
-                  name={collection.title}
-                />
-                <Separator />
-              </Flex>
-            )
-          })}
+                  <EntityHeader
+                    py={2}
+                    href={`/collection/${collection.slug}`}
+                    imageUrl={imageUrl}
+                    name={collection.title}
+                  />
+                  <Separator />
+                </Flex>
+              )
+            })}
 
           {hasShortRow && (
             <Media greaterThan="xs">

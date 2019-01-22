@@ -2,12 +2,13 @@ import { mount } from "enzyme"
 import { cloneDeep } from "lodash"
 import React from "react"
 
-import { Button, RadioGroup } from "@artsy/palette"
+import { ActiveTabContainer, Button, RadioGroup } from "@artsy/palette"
 import {
   UntouchedBuyOrder,
   UntouchedOfferOrder,
 } from "Apps/__tests__/Fixtures/Order"
 import { Address } from "Apps/Order/Components/AddressForm"
+import { ConnectedModalDialog } from "Apps/Order/Dialogs"
 import {
   fillCountrySelect,
   fillIn,
@@ -15,16 +16,11 @@ import {
 } from "Apps/Order/Routes/__tests__/Utils/addressForm"
 import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import Input, { InputProps } from "Components/Input"
-import { ErrorModal } from "Components/Modal/ErrorModal"
-import { ModalButton } from "Components/Modal/ModalDialog"
-import {
-  ActiveTabContainer,
-  CheckMarkWrapper,
-  CountrySelect,
-  Stepper,
-} from "Components/v2"
+import { ModalButton, ModalDialog } from "Components/Modal/ModalDialog"
+import { CheckMarkWrapper, CountrySelect, Stepper } from "Components/v2"
 import { MockBoot } from "DevTools"
 import { commitMutation as _commitMutation, RelayProp } from "react-relay"
+import { flushPromiseQueue } from "Utils/flushPromiseQueue"
 import {
   settingOrderShipmentFailure,
   settingOrderShipmentMissingCountryFailure,
@@ -63,6 +59,7 @@ describe("Shipping", () => {
     return mount(
       <MockBoot breakpoint="xs">
         <ShippingRoute {...someProps} />
+        <ConnectedModalDialog />
       </MockBoot>
     )
   }
@@ -171,46 +168,66 @@ describe("Shipping", () => {
       component.find("Button").simulate("click")
     })
 
-    it("shows an error modal when there is an error from the server", () => {
+    it("shows an error modal when there is an error from the server", async () => {
       const component = getWrapper(testProps)
-      expect(component.find(ErrorModal).props().show).toBe(false)
+      expect(component.find(ModalDialog).props().show).toBe(false)
       const mockCommitMutation = commitMutation as jest.Mock<any>
       mockCommitMutation.mockImplementationOnce((_, { onCompleted }) =>
         onCompleted(settingOrderShipmentFailure)
       )
       fillAddressForm(component, validAddress)
       component.find("Button").simulate("click")
-      expect(component.find(ErrorModal).props().show).toBe(true)
+
+      await flushPromiseQueue()
+      component.update()
+
+      expect(component.find(ModalDialog).props().show).toBe(true)
 
       component.find(ModalButton).simulate("click")
-      expect(component.find(ErrorModal).props().show).toBe(false)
+
+      await flushPromiseQueue()
+      component.update()
+
+      expect(component.find(ModalDialog).props().show).toBe(false)
     })
 
-    it("shows an error modal when there is a network error", () => {
+    it("shows an error modal when there is a network error", async () => {
       const component = getWrapper(testProps)
-      expect(component.find(ErrorModal).props().show).toBe(false)
+      expect(component.find(ModalDialog).props().show).toBe(false)
       const mockCommitMutation = commitMutation as jest.Mock<any>
       mockCommitMutation.mockImplementationOnce((_, { onError }) =>
         onError(new TypeError("Network request failed"))
       )
       fillAddressForm(component, validAddress)
       component.find("Button").simulate("click")
-      expect(component.find(ErrorModal).props().show).toBe(true)
+
+      await flushPromiseQueue()
+      component.update()
+
+      expect(component.find(ModalDialog).props().show).toBe(true)
 
       component.find(ModalButton).simulate("click")
-      expect(component.find(ErrorModal).props().show).toBe(false)
+
+      await flushPromiseQueue()
+      component.update()
+
+      expect(component.find(ModalDialog).props().show).toBe(false)
     })
 
-    it("shows a validation error modal when there is a missing_country error from the server", () => {
+    it("shows a validation error modal when there is a missing_country error from the server", async () => {
       const component = getWrapper(testProps)
-      expect(component.find(ErrorModal).props().show).toBe(false)
+      expect(component.find(ModalDialog).props().show).toBe(false)
       const mockCommitMutation = commitMutation as jest.Mock<any>
       mockCommitMutation.mockImplementationOnce((_, { onCompleted }) =>
         onCompleted(settingOrderShipmentMissingCountryFailure)
       )
       fillAddressForm(component, validAddress)
       component.find("Button").simulate("click")
-      const errorComponent = component.find(ErrorModal)
+
+      await flushPromiseQueue()
+      component.update()
+
+      const errorComponent = component.find(ModalDialog)
       expect(errorComponent.props().show).toBe(true)
       expect(errorComponent.text()).toContain("Invalid address")
       expect(errorComponent.text()).toContain(
@@ -218,19 +235,27 @@ describe("Shipping", () => {
       )
 
       component.find(ModalButton).simulate("click")
-      expect(component.find(ErrorModal).props().show).toBe(false)
+
+      await flushPromiseQueue()
+      component.update()
+
+      expect(component.find(ModalDialog).props().show).toBe(false)
     })
 
-    it("shows a validation error modal when there is a missing_region error from the server", () => {
+    it("shows a validation error modal when there is a missing_region error from the server", async () => {
       const component = getWrapper(testProps) as any
-      expect(component.find(ErrorModal).props().show).toBe(false)
+      expect(component.find(ModalDialog).props().show).toBe(false)
       const mockCommitMutation = commitMutation as jest.Mock<any>
       mockCommitMutation.mockImplementationOnce((_, { onCompleted }) =>
         onCompleted(settingOrderShipmentMissingRegionFailure)
       )
       fillAddressForm(component, validAddress)
       component.find("Button").simulate("click")
-      const errorComponent = component.find(ErrorModal)
+
+      await flushPromiseQueue()
+      component.update()
+
+      const errorComponent = component.find(ModalDialog)
       expect(errorComponent.props().show).toBe(true)
       expect(errorComponent.text()).toContain("Invalid address")
       expect(errorComponent.text()).toContain(
@@ -238,7 +263,11 @@ describe("Shipping", () => {
       )
 
       component.find(ModalButton).simulate("click")
-      expect(component.find(ErrorModal).props().show).toBe(false)
+
+      await flushPromiseQueue()
+      component.update()
+
+      expect(component.find(ModalDialog).props().show).toBe(false)
     })
   })
 

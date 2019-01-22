@@ -10,9 +10,9 @@ import { CreditCardSummaryItemFragmentContainer } from "Apps/Order/Components/Cr
 import { OrderStepper } from "Apps/Order/Components/OrderStepper"
 import { ShippingSummaryItemFragmentContainer } from "Apps/Order/Components/ShippingSummaryItem"
 import { TransactionDetailsSummaryItemFragmentContainer } from "Apps/Order/Components/TransactionDetailsSummaryItem"
+import { ConnectedModalDialog } from "Apps/Order/Dialogs"
 import { trackPageView } from "Apps/Order/Utils/trackPageView"
-import { ErrorModal } from "Components/Modal/ErrorModal"
-import { ModalButton } from "Components/Modal/ModalDialog"
+import { ModalButton, ModalDialog } from "Components/Modal/ModalDialog"
 import { Stepper } from "Components/v2"
 import { CountdownTimer } from "Components/v2/CountdownTimer"
 import { MockBoot } from "DevTools"
@@ -20,6 +20,7 @@ import { mount } from "enzyme"
 import moment from "moment"
 import React from "react"
 import { commitMutation as _commitMutation } from "react-relay"
+import { flushPromiseQueue } from "Utils/flushPromiseQueue"
 import {
   insufficientInventoryResponse,
   submitPendingOfferFailed,
@@ -77,6 +78,7 @@ describe("Submit Pending Counter Offer", () => {
     return mount(
       <MockBoot>
         <CounterRoute {...props as any} />
+        <ConnectedModalDialog />
       </MockBoot>
     )
   }
@@ -212,7 +214,7 @@ describe("Submit Pending Counter Offer", () => {
     })
   })
 
-  it("shows an error modal with proper error when there is insufficient inventory", () => {
+  it("shows an error modal with proper error when there is insufficient inventory", async () => {
     const component = getWrapper()
     const mockCommitMutation = commitMutation as jest.Mock<any>
     mockCommitMutation.mockImplementationOnce(
@@ -224,7 +226,10 @@ describe("Submit Pending Counter Offer", () => {
     const submitButton = component.find(Button).last()
     submitButton.simulate("click")
 
-    const errorComponent = component.find(ErrorModal)
+    await flushPromiseQueue()
+    component.update()
+
+    const errorComponent = component.find(ModalDialog)
     expect(errorComponent.props().show).toBe(true)
     expect(errorComponent.text()).toContain("This work has already been sold.")
     expect(errorComponent.text()).toContain(
@@ -232,7 +237,7 @@ describe("Submit Pending Counter Offer", () => {
     )
   })
 
-  it("shows generic error modal when there is an error from the server", () => {
+  it("shows generic error modal when there is an error from the server", async () => {
     const component = getWrapper()
     const mockCommitMutation = commitMutation as jest.Mock<any>
     mockCommitMutation.mockImplementationOnce(
@@ -244,7 +249,10 @@ describe("Submit Pending Counter Offer", () => {
     const submitButton = component.find(Button).last()
     submitButton.simulate("click")
 
-    const errorComponent = component.find(ErrorModal)
+    await flushPromiseQueue()
+    component.update()
+
+    const errorComponent = component.find(ModalDialog)
     expect(errorComponent.props().show).toBe(true)
     expect(errorComponent.text()).toContain("An error occurred")
     expect(errorComponent.text()).toContain(
@@ -252,10 +260,14 @@ describe("Submit Pending Counter Offer", () => {
     )
 
     component.find(ModalButton).simulate("click")
-    expect(component.find(ErrorModal).props().show).toBe(false)
+
+    await flushPromiseQueue()
+    component.update()
+
+    expect(component.find(ModalDialog).props().show).toBe(false)
   })
 
-  it("shows an error modal when there is a network error", () => {
+  it("shows an error modal when there is a network error", async () => {
     const component = getWrapper()
     const mockCommitMutation = commitMutation as jest.Mock<any>
     mockCommitMutation.mockImplementationOnce((_, { onError }) =>
@@ -264,7 +276,10 @@ describe("Submit Pending Counter Offer", () => {
 
     component.find(Button).simulate("click")
 
-    expect(component.find(ErrorModal).props().show).toBe(true)
+    await flushPromiseQueue()
+    component.update()
+
+    expect(component.find(ModalDialog).props().show).toBe(true)
   })
 
   it("tracks a pageview", () => {

@@ -2,6 +2,7 @@ import { Button, Col, Flex, Join, Row, Spacer } from "@artsy/palette"
 import { Review_order } from "__generated__/Review_order.graphql"
 import { ReviewSubmitOfferOrderMutation } from "__generated__/ReviewSubmitOfferOrderMutation.graphql"
 import { ReviewSubmitOrderMutation } from "__generated__/ReviewSubmitOrderMutation.graphql"
+import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
 import { ConditionsOfSaleDisclaimer } from "Apps/Order/Components/ConditionsOfSaleDisclaimer"
 import { ItemReviewFragmentContainer as ItemReview } from "Apps/Order/Components/ItemReview"
@@ -12,10 +13,10 @@ import {
 } from "Apps/Order/Components/OrderStepper"
 import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "Apps/Order/Components/ShippingSummaryItem"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
+import { Dialog, injectDialog } from "Apps/Order/Dialogs"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ErrorModal } from "Components/Modal/ErrorModal"
 import { RouteConfig, Router } from "found"
 import React, { Component } from "react"
 import {
@@ -26,7 +27,6 @@ import {
 } from "react-relay"
 import { ErrorWithMetadata } from "Utils/errors"
 import { get } from "Utils/get"
-import { HorizontalPadding } from "Utils/HorizontalPadding"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
 import { CreditCardSummaryItemFragmentContainer as CreditCardSummaryItem } from "../../Components/CreditCardSummaryItem"
@@ -39,26 +39,19 @@ export interface ReviewProps {
   relay?: RelayProp
   router: Router
   route: RouteConfig
+  dialog: Dialog
 }
 
 interface ReviewState {
   isSubmitting: boolean
-  isErrorModalOpen: boolean
-  errorModalMessage: string
-  errorModalTitle: string
-  errorModalCtaAction: () => null
 }
 
 const logger = createLogger("Order/Routes/Review/index.tsx")
 
 @track()
 export class ReviewRoute extends Component<ReviewProps, ReviewState> {
-  state = {
+  state: ReviewState = {
     isSubmitting: false,
-    isErrorModalOpen: false,
-    errorModalMessage: null,
-    errorModalTitle: null,
-    errorModalCtaAction: null,
   }
 
   constructor(props) {
@@ -248,19 +241,14 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
     window.location.assign(`/artist/${artistId}`)
   }
 
-  onMutationError(
-    error,
-    errorModalTitle?,
-    errorModalMessage?,
-    errorModalCtaAction?
-  ) {
+  onMutationError(error, title?, message?, onContinue?) {
     logger.error(error)
+    this.props.dialog
+      .showErrorDialog({ message, title })
+      // tslint:disable-next-line:no-empty
+      .then(onContinue || (() => {}))
     this.setState({
       isSubmitting: false,
-      isErrorModalOpen: true,
-      errorModalTitle,
-      errorModalMessage,
-      errorModalCtaAction,
     })
   }
 
@@ -274,10 +262,6 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
 
   onChangeShipping = () => {
     this.props.router.push(`/orders/${this.props.order.id}/shipping`)
-  }
-
-  onCloseModal = () => {
-    this.setState({ isErrorModalOpen: false })
   }
 
   render() {
@@ -373,22 +357,13 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
             }
           />
         </HorizontalPadding>
-
-        <ErrorModal
-          onClose={this.onCloseModal}
-          show={this.state.isErrorModalOpen}
-          detailText={this.state.errorModalMessage}
-          contactEmail="orders@artsy.net"
-          headerText={this.state.errorModalTitle}
-          ctaAction={this.state.errorModalCtaAction}
-        />
       </>
     )
   }
 }
 
 export const ReviewFragmentContainer = createFragmentContainer(
-  trackPageViewWrapper(ReviewRoute),
+  trackPageViewWrapper(injectDialog(ReviewRoute)),
   graphql`
     fragment Review_order on Order {
       id
