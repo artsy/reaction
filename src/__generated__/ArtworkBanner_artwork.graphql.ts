@@ -17,6 +17,7 @@ export type ArtworkBanner_artwork = {
     }) | null;
     readonly sale: ({
         readonly is_auction: boolean | null;
+        readonly is_benefit: boolean | null;
         readonly cover_image: ({
             readonly url: string | null;
         }) | null;
@@ -237,6 +238,13 @@ return {
       "selections": [
         v5,
         {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "is_benefit",
+          "args": null,
+          "storageKey": null
+        },
+        {
           "kind": "LinkedField",
           "alias": null,
           "name": "cover_image",
@@ -417,5 +425,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '342fe946015d9601deab03cd20f4a95a';
+(node as any).hash = '1088a23ad9988055e5834161ce07a18f';
 export default node;
