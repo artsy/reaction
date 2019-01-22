@@ -1,3 +1,11 @@
+# 11.2.9 (Tue Jan 22 2019)
+
+#### 🐛  Bug Fix
+
+- Fixes "related auction" image overlapping with text on RAP [#1923](https://github.com/artsy/reaction/pull/1923) ([@mdole](https://github.com/mdole))
+
+---
+
 # 11.2.8 (Tue Jan 22 2019)
 
 #### 🐛  Bug Fix
