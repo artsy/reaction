@@ -1,3 +1,11 @@
+# 11.2.12 (Tue Jan 22 2019)
+
+#### 🐛  Bug Fix
+
+- Missing info error message [#1888](https://github.com/artsy/reaction/pull/1888) ([@lilyfromseattle](https://github.com/lilyfromseattle) [@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # 11.2.11 (Tue Jan 22 2019)
 
 #### 🐛  Bug Fix
