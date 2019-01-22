@@ -19,9 +19,7 @@ describe("ArtworkDetails", () => {
         }
       `,
       wrapper: n => <MockBoot breakpoint="xs">{n}</MockBoot>,
-      mockResolvers: {
-        Artwork: () => response,
-      },
+      mockData: { artwork: response },
     })
   }
   let wrapper
@@ -61,6 +59,14 @@ describe("ArtworkDetails", () => {
       wrapper = await getWrapper(noIconProfile)
       expect(wrapper.find("img").length).toBe(0)
       expect(wrapper.html()).toContain("S9")
+    })
+
+    it("does not display partner Icon if artwork is from benefit auction", async () => {
+      const benefitArtwork = cloneDeep(ArtworkDetailsFixture)
+      benefitArtwork.sale = { is_benefit: true }
+      wrapper = await getWrapper(benefitArtwork)
+      expect(wrapper.find("img").length).toBe(0)
+      expect(wrapper.html()).not.toContain("S9")
     })
 
     it("displays partner additional_information for artwork", async () => {
