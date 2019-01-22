@@ -40,7 +40,7 @@ storiesOf("Apps/Artwork Page", module)
     return (
       <MockRouter
         routes={artworkRoutes}
-        initialRoute="/artwork/rembrandt-van-rijn-man-crying-out-bust-directed-three-quarter-to-the-left"
+        initialRoute="/artwork/charles-arnoldi-brig-1"
       />
     )
   })
