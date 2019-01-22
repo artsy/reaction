@@ -160,19 +160,22 @@ describe("Review", () => {
       expect(window.location.assign).toBeCalledWith("/artwork/artworkId")
     })
 
-    it("shows a modal with a helpful error message if a user has not entered shipping and payment information", () => {
+    it("shows a modal with a helpful error message if a user has not entered shipping and payment information", async () => {
       window.location.assign = jest.fn()
 
       const component = getWrapper(defaultProps)
 
-      expect(component.find(ErrorModal).props().show).toBe(false)
+      expect(component.find(ModalDialog).props().show).toBe(false)
       mutationMock.mockImplementationOnce((_, { onCompleted }) =>
         onCompleted(submitOrderWithMissingInfo)
       )
 
       component.find(Button).simulate("click")
 
-      const errorComponent = component.find(ErrorModal)
+      await flushPromiseQueue()
+      component.update()
+
+      const errorComponent = component.find(ModalDialog)
       expect(errorComponent.props().show).toBe(true)
       expect(errorComponent.text()).toContain("Missing information")
       expect(errorComponent.text()).toContain(
