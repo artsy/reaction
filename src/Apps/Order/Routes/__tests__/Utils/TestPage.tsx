@@ -135,6 +135,12 @@ export function TestPage({
     // @ts-ignore
     find: ReactWrapper["find"] = (...args) => this.root.find(...args)
 
+    get lastMutationVariables() {
+      return this.mockFetchMutation.mock.calls[
+        this.mockFetchMutation.mock.calls.length - 1
+      ][1].input
+    }
+
     /** Component selectors **/
 
     get orderStepper() {

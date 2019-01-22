@@ -1,46 +1,31 @@
-import { mount } from "enzyme"
 import { cloneDeep } from "lodash"
-import React from "react"
 
-import { Button, RadioGroup } from "@artsy/palette"
+import { RadioGroup } from "@artsy/palette"
 import {
   UntouchedBuyOrder,
   UntouchedOfferOrder,
 } from "Apps/__tests__/Fixtures/Order"
 import { Address } from "Apps/Order/Components/AddressForm"
-import { ConnectedModalDialog } from "Apps/Order/Dialogs"
 import {
   fillCountrySelect,
   fillIn,
   validAddress,
 } from "Apps/Order/Routes/__tests__/Utils/addressForm"
 import { trackPageView } from "Apps/Order/Utils/trackPageView"
-import Input, { InputProps } from "Components/Input"
-import { ModalButton, ModalDialog } from "Components/Modal/ModalDialog"
-import {
-  ActiveTabContainer,
-  CheckMarkWrapper,
-  CountrySelect,
-  Stepper,
-} from "Components/v2"
-import { MockBoot } from "DevTools"
-import { commitMutation as _commitMutation, RelayProp } from "react-relay"
-import { flushPromiseQueue } from "Utils/flushPromiseQueue"
+import Input from "Components/Input"
+import { CountrySelect } from "Components/v2"
+import { commitMutation as _commitMutation, graphql } from "react-relay"
 import {
   settingOrderShipmentFailure,
   settingOrderShipmentMissingCountryFailure,
   settingOrderShipmentMissingRegionFailure,
   settingOrderShipmentSuccess,
 } from "../__fixtures__/MutationResults"
-import { ShippingFragmentContainer as ShippingRoute } from "../Shipping"
-
-const commitMutation = _commitMutation as any
+import { ShippingFragmentContainer } from "../Shipping"
+import { TestPage } from "./Utils/TestPage"
 
 jest.mock("Apps/Order/Utils/trackPageView")
-jest.mock("react-relay", () => ({
-  commitMutation: jest.fn(),
-  createFragmentContainer: component => component,
-}))
+jest.unmock("react-relay")
 
 const fillAddressForm = (component: any, address: Address) => {
   fillIn(component, { title: "Full name", value: address.name })
@@ -59,402 +44,314 @@ const fillAddressForm = (component: any, address: Address) => {
   fillCountrySelect(component, address.country)
 }
 
-describe("Shipping", () => {
-  const getWrapper = someProps => {
-    return mount(
-      <MockBoot breakpoint="xs">
-        <ShippingRoute {...someProps} />
-        <ConnectedModalDialog />
-      </MockBoot>
-    )
+const testOrder = { ...UntouchedBuyOrder, id: "1234" }
+
+const resolveSetShippingMutation = jest.fn(
+  () => settingOrderShipmentSuccess.ecommerceSetOrderShipping
+)
+
+class ShippingTestPage extends TestPage({
+  Component: ShippingFragmentContainer,
+  defaultData: { order: testOrder },
+  defaultMutationResults: {
+    ecommerceSetOrderShipping: resolveSetShippingMutation,
+  },
+  query: graphql`
+    query ShippingTestQuery {
+      order: ecommerceOrder(id: "unused") {
+        ...Shipping_order
+      }
+    }
+  `,
+}) {
+  async selectPickupOption() {
+    this.find("Radio")
+      .last()
+      .simulate("click")
+    await this.update()
   }
+}
 
-  let testProps: any
-  beforeEach(() => {
-    testProps = {
-      order: { ...UntouchedBuyOrder, id: "1234" },
-      relay: { environment: {} } as RelayProp,
-      router: { push: jest.fn() },
-      mediator: { trigger: jest.fn() },
-    } as any
+describe("Shipping", () => {
+  const page = new ShippingTestPage()
+
+  it("removes radio group if pickup_available flag is false", async () => {
+    const pickupAvailableOrder = cloneDeep(testOrder) as any
+    pickupAvailableOrder.lineItems.edges[0].node.artwork.pickup_available = false
+    await page.init({ mockData: { order: pickupAvailableOrder } })
+    expect(page.find(RadioGroup).length).toEqual(0)
   })
 
-  it("removes radio group if pickup_available flag is false", () => {
-    const testPropWithShipOnlyOrder = cloneDeep(testProps) as any
-    testPropWithShipOnlyOrder.order.lineItems.edges[0].node.artwork.pickup_available = false
-    const component = getWrapper(testPropWithShipOnlyOrder)
-    expect(component.find(RadioGroup).length).toEqual(0)
+  it("disables country select when shipsToContinentalUSOnly is true", async () => {
+    const continentalUSOnlyOrder = cloneDeep(testOrder) as any
+    continentalUSOnlyOrder.lineItems.edges[0].node.artwork.shipsToContinentalUSOnly = true
+    await page.init({ mockData: { order: continentalUSOnlyOrder } })
+    expect(page.find(CountrySelect).props().disabled).toBe(true)
   })
 
-  it("disables country select when shipsToContinentalUSOnly is true", () => {
-    const testPropWithContinentalUSOnlyOrder = cloneDeep(testProps) as any
-    testPropWithContinentalUSOnlyOrder.order.lineItems.edges[0].node.artwork.shipsToContinentalUSOnly = true
-    const component = getWrapper(testPropWithContinentalUSOnlyOrder)
-    expect(component.find(CountrySelect).props().disabled).toBe(true)
+  it("commits the mutation with the orderId", async () => {
+    await page.init()
+
+    fillAddressForm(page.root, validAddress)
+
+    expect(page.mockFetchMutation).not.toHaveBeenCalled()
+    await page.clickSubmit()
+
+    expect(page.mockFetchMutation).toHaveBeenCalledTimes(1)
+    expect(page.lastMutationVariables).toMatchInlineSnapshot(`
+Object {
+  "fulfillmentType": "SHIP",
+  "orderId": "1234",
+  "shipping": Object {
+    "addressLine1": "14 Gower's Walk",
+    "addressLine2": "Suite 2.5, The Loom",
+    "city": "Whitechapel",
+    "country": "UK",
+    "name": "Artsy UK Ltd",
+    "phoneNumber": "8475937743",
+    "postalCode": "E1 8PY",
+    "region": "London",
+  },
+}
+`)
   })
 
-  it("commits the mutation with the orderId", () => {
-    const component = getWrapper(testProps)
-    const mockCommitMutation = commitMutation as jest.Mock<any>
-    mockCommitMutation.mockImplementationOnce((_environment, config) => {
-      expect(config.variables.input.orderId).toBe("1234")
-    })
+  it("commits the mutation with shipping option", async () => {
+    await page.init()
 
-    fillAddressForm(component, validAddress)
-
-    component.find("Button").simulate("click")
-  })
-
-  it("commits the mutation with shipping option", () => {
-    const component = getWrapper(testProps)
-
-    const mockCommitMutation = commitMutation as jest.Mock<any>
-    mockCommitMutation.mockImplementationOnce((_environment, config) => {
-      expect(config.variables.input.shipping.region).toBe("New Brunswick")
-      expect(config.variables.input.shipping.country).toBe("US") // It defaults to "US" when not selected
-    })
-
-    fillAddressForm(component, {
+    fillAddressForm(page.root, {
       ...validAddress,
       region: "New Brunswick",
       country: "US",
     })
 
-    component.find("Button").simulate("click")
+    await page.clickSubmit()
+    expect(page.lastMutationVariables.shipping.region).toBe("New Brunswick")
+    expect(page.lastMutationVariables.shipping.country).toBe("US")
   })
 
-  it("commits the mutation with pickup option", () => {
-    const component = getWrapper(testProps)
-    component
-      .find("Radio")
-      .last()
-      .simulate("click")
-    const mockCommitMutation = commitMutation as jest.Mock<any>
-    mockCommitMutation.mockImplementationOnce((_environment, config) => {
-      expect(config.variables.input.fulfillmentType).toBe("PICKUP")
-    })
-
-    component.find("Button").simulate("click")
+  it("commits the mutation with pickup option", async () => {
+    await page.init()
+    await page.selectPickupOption()
+    expect(page.mockFetchMutation).not.toHaveBeenCalled()
+    await page.clickSubmit()
+    expect(page.mockFetchMutation).toHaveBeenCalledTimes(1)
+    expect(page.lastMutationVariables.fulfillmentType).toBe("PICKUP")
   })
 
   describe("mutation", () => {
-    beforeEach(() => {
-      commitMutation.mockReset()
+    beforeEach(async () => {
+      await page.init()
     })
 
-    it("routes to payment screen after mutation completes", () => {
-      const component = getWrapper(testProps)
-      const mockCommitMutation = commitMutation as jest.Mock<any>
-      mockCommitMutation.mockImplementationOnce(
-        (_environment, { onCompleted }) => {
-          onCompleted(settingOrderShipmentSuccess)
-        }
-      )
-
-      fillAddressForm(component, validAddress)
-
-      component.find("Button").simulate("click")
-
-      expect(testProps.router.push).toHaveBeenCalledWith("/orders/1234/payment")
+    it("routes to payment screen after mutation completes", async () => {
+      fillAddressForm(page.root, validAddress)
+      await page.clickSubmit()
+      expect(page.mockPushRoute).toHaveBeenCalledWith("/orders/1234/payment")
     })
 
-    it("shows the button spinner while loading the mutation", () => {
-      const component = getWrapper(testProps)
-      const mockCommitMutation = commitMutation as jest.Mock<any>
-      mockCommitMutation.mockImplementationOnce(() => {
-        const buttonProps = component
-          .update() // We need to wait for the component to re-render
-          .find("Button")
-          .props() as any
-        expect(buttonProps.loading).toBeTruthy()
-      })
-      fillAddressForm(component, validAddress)
-
-      component.find("Button").simulate("click")
+    it("shows the button spinner while loading the mutation", async () => {
+      fillAddressForm(page.root, validAddress)
+      await page.expectButtonSpinnerWhenSubmitting()
     })
 
     it("shows an error modal when there is an error from the server", async () => {
-      const component = getWrapper(testProps)
-      expect(component.find(ModalDialog).props().show).toBe(false)
-      const mockCommitMutation = commitMutation as jest.Mock<any>
-      mockCommitMutation.mockImplementationOnce((_, { onCompleted }) =>
-        onCompleted(settingOrderShipmentFailure)
+      resolveSetShippingMutation.mockReturnValueOnce(
+        settingOrderShipmentFailure.ecommerceSetOrderShipping
       )
-      fillAddressForm(component, validAddress)
-      component.find("Button").simulate("click")
-
-      await flushPromiseQueue()
-      component.update()
-
-      expect(component.find(ModalDialog).props().show).toBe(true)
-
-      component.find(ModalButton).simulate("click")
-
-      await flushPromiseQueue()
-      component.update()
-
-      expect(component.find(ModalDialog).props().show).toBe(false)
+      fillAddressForm(page.root, validAddress)
+      await page.clickSubmit()
+      await page.expectDefaultErrorDialog()
     })
 
     it("shows an error modal when there is a network error", async () => {
-      const component = getWrapper(testProps)
-      expect(component.find(ModalDialog).props().show).toBe(false)
-      const mockCommitMutation = commitMutation as jest.Mock<any>
-      mockCommitMutation.mockImplementationOnce((_, { onError }) =>
-        onError(new TypeError("Network request failed"))
-      )
-      fillAddressForm(component, validAddress)
-      component.find("Button").simulate("click")
-
-      await flushPromiseQueue()
-      component.update()
-
-      expect(component.find(ModalDialog).props().show).toBe(true)
-
-      component.find(ModalButton).simulate("click")
-
-      await flushPromiseQueue()
-      component.update()
-
-      expect(component.find(ModalDialog).props().show).toBe(false)
+      fillAddressForm(page.root, validAddress)
+      page.mockMutationNetworkFailureOnce()
+      await page.clickSubmit()
+      await page.expectDefaultErrorDialog()
     })
 
     it("shows a validation error modal when there is a missing_country error from the server", async () => {
-      const component = getWrapper(testProps)
-      expect(component.find(ModalDialog).props().show).toBe(false)
-      const mockCommitMutation = commitMutation as jest.Mock<any>
-      mockCommitMutation.mockImplementationOnce((_, { onCompleted }) =>
-        onCompleted(settingOrderShipmentMissingCountryFailure)
+      resolveSetShippingMutation.mockReturnValueOnce(
+        settingOrderShipmentMissingCountryFailure.ecommerceSetOrderShipping
       )
-      fillAddressForm(component, validAddress)
-      component.find("Button").simulate("click")
-
-      await flushPromiseQueue()
-      component.update()
-
-      const errorComponent = component.find(ModalDialog)
-      expect(errorComponent.props().show).toBe(true)
-      expect(errorComponent.text()).toContain("Invalid address")
-      expect(errorComponent.text()).toContain(
+      fillAddressForm(page.root, validAddress)
+      await page.clickSubmit()
+      await page.expectErrorDialogMatching(
+        "Invalid address",
         "There was an error processing your address. Please review and try again."
       )
-
-      component.find(ModalButton).simulate("click")
-
-      await flushPromiseQueue()
-      component.update()
-
-      expect(component.find(ModalDialog).props().show).toBe(false)
     })
 
     it("shows a validation error modal when there is a missing_region error from the server", async () => {
-      const component = getWrapper(testProps) as any
-      expect(component.find(ModalDialog).props().show).toBe(false)
-      const mockCommitMutation = commitMutation as jest.Mock<any>
-      mockCommitMutation.mockImplementationOnce((_, { onCompleted }) =>
-        onCompleted(settingOrderShipmentMissingRegionFailure)
+      resolveSetShippingMutation.mockReturnValueOnce(
+        settingOrderShipmentMissingRegionFailure.ecommerceSetOrderShipping
       )
-      fillAddressForm(component, validAddress)
-      component.find("Button").simulate("click")
-
-      await flushPromiseQueue()
-      component.update()
-
-      const errorComponent = component.find(ModalDialog)
-      expect(errorComponent.props().show).toBe(true)
-      expect(errorComponent.text()).toContain("Invalid address")
-      expect(errorComponent.text()).toContain(
+      fillAddressForm(page.root, validAddress)
+      await page.clickSubmit()
+      await page.expectErrorDialogMatching(
+        "Invalid address",
         "There was an error processing your address. Please review and try again."
       )
-
-      component.find(ModalButton).simulate("click")
-
-      await flushPromiseQueue()
-      component.update()
-
-      expect(component.find(ModalDialog).props().show).toBe(false)
     })
   })
 
   describe("with previously filled-in data", () => {
-    beforeEach(() => {
-      ;(testProps.order as any).requestedFulfillment = {
-        ...validAddress,
-        __typename: "Ship",
-        name: "Dr Collector",
-      }
-      commitMutation.mockReset()
-    })
-    it("includes already-filled-in data if available", () => {
-      const component = getWrapper(testProps)
-
-      const input = component
-        .find(Input)
-        .filterWhere(
-          wrapper => (wrapper.props() as InputProps).title === "Full name"
-        )
-
-      expect((input.props() as InputProps).value).toBe(
-        testProps.order.requestedFulfillment.name
-      )
-    })
-
-    it("includes already-filled-in data in mutation if re-sent", () => {
-      const component = getWrapper(testProps)
-      const mockCommitMutation = commitMutation as jest.Mock<any>
-      fillAddressForm(component, testProps.order.requestedFulfillment)
-      component.find(Button).simulate("click")
-      expect(mockCommitMutation.mock.calls[0][1]).toMatchObject({
-        variables: {
-          input: {
-            shipping: {
+    beforeEach(async () => {
+      await page.init({
+        mockData: {
+          order: {
+            ...testOrder,
+            requestedFulfillment: {
+              ...validAddress,
+              __typename: "Ship",
               name: "Dr Collector",
             },
           },
         },
       })
     })
+
+    it("includes already-filled-in data if available", () => {
+      const input = page
+        .find(Input)
+        .filterWhere(wrapper => wrapper.props().title === "Full name")
+
+      expect(input.props().value).toBe("Dr Collector")
+    })
+
+    it("includes already-filled-in data in mutation if re-sent", async () => {
+      await page.clickSubmit()
+      expect(page.lastMutationVariables).toMatchObject({
+        shipping: {
+          name: "Dr Collector",
+        },
+      })
+    })
   })
 
   describe("Validations", () => {
-    let shipOrderProps
-    let pickupOrderProps
-    beforeEach(() => {
-      commitMutation.mockReset()
-      const shipOrder = {
-        ...UntouchedBuyOrder,
-        requestedFulfillment: {
-          __typename: "Ship",
-        },
-      }
-      const pickupOrder = {
-        ...UntouchedBuyOrder,
-        requestedFulfillment: {
-          __typename: "Pickup",
-        },
-      }
-      shipOrderProps = { ...testProps, order: shipOrder }
-      pickupOrderProps = { ...testProps, order: pickupOrder }
+    beforeEach(async () => {
+      await page.init()
     })
 
-    it("does not submit an empty form for a SHIP order", () => {
-      const component = getWrapper(shipOrderProps)
-      component.find(Button).simulate("click")
-      expect(commitMutation).not.toBeCalled()
-    })
+    describe("for Ship orders", () => {
+      it("does not submit an empty form for a SHIP order", async () => {
+        await page.clickSubmit()
+        expect(page.mockFetchMutation).not.toBeCalled()
+      })
 
-    it("does not submit the mutation with an incomplete form for a SHIP order", () => {
-      const component = getWrapper(shipOrderProps)
-      fillIn(component, { title: "Full name", value: "Air Bud" })
-      component.update()
-      component.find(Button).simulate("click")
-      expect(commitMutation).not.toBeCalled()
-    })
+      it("does not submit the mutation with an incomplete form for a SHIP order", async () => {
+        fillIn(page.root, { title: "Full name", value: "Air Bud" })
+        await page.clickSubmit()
+        expect(page.mockFetchMutation).not.toBeCalled()
+      })
 
-    it("does submit the mutation with a complete form for a SHIP order", () => {
-      const component = getWrapper(shipOrderProps)
-      fillAddressForm(component, validAddress)
-      component.find(Button).simulate("click")
-      expect(commitMutation).toBeCalled()
-    })
+      it("does submit the mutation with a complete form for a SHIP order", async () => {
+        fillAddressForm(page.root, validAddress)
+        await page.clickSubmit()
+        expect(page.mockFetchMutation).toBeCalled()
+      })
 
-    it("does submit the mutation with a non-ship order", () => {
-      const component = getWrapper(pickupOrderProps)
-      component.update()
-      component.find(Button).simulate("click")
-      expect(commitMutation).toBeCalled()
-    })
-
-    it("says a required field is required for a SHIP order", () => {
-      const component = getWrapper(shipOrderProps)
-
-      component.find("Button").simulate("click")
-      const input = component
-        .find(Input)
-        .filterWhere(wrapper => wrapper.props().title === "Full name")
-      expect(input.props().error).toEqual("This field is required")
-    })
-
-    it("allows a missing postal code if the selected country is not US or Canada", () => {
-      const component = getWrapper(shipOrderProps)
-      const address = {
-        name: "Erik David",
-        addressLine1: "401 Broadway",
-        addressLine2: "",
-        city: "New York",
-        region: "NY",
-        postalCode: "",
-        phoneNumber: "5555937743",
-        country: "AQ",
-      }
-      fillAddressForm(component, address)
-      component.find("Button").simulate("click")
-
-      const input = component
-        .find(Input)
-        .filterWhere(wrapper => wrapper.props().title === "Postal code")
-      expect(input.props().error).toBeFalsy()
-
-      expect(commitMutation).toBeCalled()
-    })
-    it("before submit, only shows a validation error on inputs that have been touched", () => {
-      const component = getWrapper(shipOrderProps)
-      fillIn(component, { title: "Full name", value: "Erik David" })
-      fillIn(component, { title: "Address line 1", value: "" })
-      component.update()
-
-      const [addressInput, cityInput] = ["Address line 1", "City"].map(label =>
-        component
+      it("says a required field is required for a SHIP order", async () => {
+        await page.clickSubmit()
+        const input = page
           .find(Input)
-          .filterWhere(wrapper => wrapper.props().title === label)
-      )
+          .filterWhere(wrapper => wrapper.props().title === "Full name")
+        expect(input.props().error).toEqual("This field is required")
+      })
 
-      expect(addressInput.props().error).toBeTruthy()
-      expect(cityInput.props().error).toBeFalsy()
+      it("allows a missing postal code if the selected country is not US or Canada", async () => {
+        const address = {
+          name: "Erik David",
+          addressLine1: "401 Broadway",
+          addressLine2: "",
+          city: "New York",
+          region: "NY",
+          postalCode: "",
+          phoneNumber: "5555937743",
+          country: "AQ",
+        }
+        fillAddressForm(page.root, address)
+        await page.clickSubmit()
+
+        const input = page
+          .find(Input)
+          .filterWhere(wrapper => wrapper.props().title === "Postal code")
+        expect(input.props().error).toBeFalsy()
+
+        expect(page.mockFetchMutation).toBeCalled()
+      })
+
+      it("before submit, only shows a validation error on inputs that have been touched", async () => {
+        fillIn(page.root, { title: "Full name", value: "Erik David" })
+        fillIn(page.root, { title: "Address line 1", value: "" })
+
+        await page.update()
+
+        const [addressInput, cityInput] = ["Address line 1", "City"].map(
+          label =>
+            page
+              .find(Input)
+              .filterWhere(wrapper => wrapper.props().title === label)
+        )
+
+        expect(addressInput.props().error).toBeTruthy()
+        expect(cityInput.props().error).toBeFalsy()
+      })
+
+      it("after submit, shows all validation errors on inputs that have been touched", async () => {
+        fillIn(page.root, { title: "Full name", value: "Erik David" })
+
+        await page.clickSubmit()
+
+        const cityInput = page.root
+          .find(Input)
+          .filterWhere(wrapper => wrapper.props().title === "City")
+
+        expect(cityInput.props().error).toBeTruthy()
+      })
+
+      it("allows a missing state/province if the selected country is not US or Canada", async () => {
+        const address = {
+          name: "Erik David",
+          addressLine1: "401 Broadway",
+          addressLine2: "",
+          city: "New York",
+          region: "",
+          postalCode: "7Z",
+          phoneNumber: "5555937743",
+          country: "AQ",
+        }
+        fillAddressForm(page.root, address)
+        await page.clickSubmit()
+        expect(page.mockFetchMutation).toBeCalled()
+      })
     })
-    it("after submit, shows all validation errors on inputs that have been touched", () => {
-      const component = getWrapper(shipOrderProps)
-      fillIn(component, { title: "Full name", value: "Erik David" })
 
-      component.find("Button").simulate("click")
-
-      const cityInput = component
-        .find(Input)
-        .filterWhere(wrapper => wrapper.props().title === "City")
-
-      expect(cityInput.props().error).toBeTruthy()
-    })
-    it("allows a missing state/province if the selected country is not US or Canada", () => {
-      const component = getWrapper(shipOrderProps)
-      const address = {
-        name: "Erik David",
-        addressLine1: "401 Broadway",
-        addressLine2: "",
-        city: "New York",
-        region: "",
-        postalCode: "7Z",
-        phoneNumber: "5555937743",
-        country: "AQ",
-      }
-      fillAddressForm(component, address)
-      component.find("Button").simulate("click")
-      expect(commitMutation).toBeCalled()
+    it("does submit the mutation with a non-ship order", async () => {
+      await page.selectPickupOption()
+      await page.clickSubmit()
+      expect(page.mockFetchMutation).toBeCalled()
     })
   })
 
   describe("Offer-mode orders", () => {
-    it("shows an active offer stepper if the order is an Offer Order", () => {
-      const offerOrder = UntouchedOfferOrder
-      const component = getWrapper({ ...testProps, order: offerOrder })
-      expect(component.find(ActiveTabContainer).text()).toEqual("Shipping")
-      expect(component.find(Stepper).props().currentStepIndex).toEqual(1)
-      expect(component.find(CheckMarkWrapper).length).toEqual(1)
+    it("shows an active offer stepper if the order is an Offer Order", async () => {
+      await page.init({
+        mockData: {
+          order: UntouchedOfferOrder,
+        },
+      })
+      expect(page.orderStepper.text()).toMatchInlineSnapshot(
+        `"Offer ShippingPaymentReview"`
+      )
+      expect(page.orderStepperCurrentStep).toBe("Shipping")
     })
   })
 
-  it("tracks a pageview", () => {
-    getWrapper(testProps)
-
+  it("tracks a pageview", async () => {
+    await page.init()
     expect(trackPageView).toHaveBeenCalledTimes(1)
   })
 })
