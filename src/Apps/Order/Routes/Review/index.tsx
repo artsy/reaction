@@ -170,6 +170,14 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
     const error = orderOrError.error
     if (error) {
       switch (error.code) {
+        case "missing_required_info": {
+          this.onMutationError(
+            new ErrorWithMetadata(error.code, error),
+            "Missing information",
+            "Please review and update your shipping and/or payment details and try again."
+          )
+          break
+        }
         case "insufficient_inventory": {
           const artistId = this.artistId()
           this.onMutationError(
