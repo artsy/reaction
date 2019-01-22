@@ -315,11 +315,9 @@ describe("Payment", () => {
     await page.init()
     await page.clickSubmit()
 
-    expect(page.mockFetchMutation.mock.calls[1][1]).toMatchObject({
-      input: {
-        creditCardId: "gravityCreditCardId",
-        orderId: "1234",
-      },
+    expect(page.lastMutationVariables).toMatchObject({
+      creditCardId: "gravityCreditCardId",
+      orderId: "1234",
     })
   })
 

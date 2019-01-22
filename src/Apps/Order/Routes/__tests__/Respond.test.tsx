@@ -230,17 +230,13 @@ describe("The respond page", () => {
         expect(page.mockFetchMutation).toHaveBeenCalledTimes(0)
         await page.clickSubmit()
         expect(page.mockFetchMutation).toHaveBeenCalledTimes(1)
-        expect(page.mockFetchMutation.mock.calls[0][1]).toMatchInlineSnapshot(`
-Object {
-  "input": Object {
-    "offerId": "myoffer-id",
-    "offerPrice": Object {
-      "amount": 9000,
-      "currencyCode": "USD",
-    },
-  },
-}
-`)
+        expect(page.lastMutationVariables).toMatchObject({
+          offerId: "myoffer-id",
+          offerPrice: {
+            amount: 9000,
+            currencyCode: "USD",
+          },
+        })
         expect(page.mockPushRoute).toHaveBeenCalledWith(
           "/orders/2939023/review/counter"
         )
