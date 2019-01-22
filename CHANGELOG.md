@@ -1,3 +1,11 @@
+# 11.2.11 (Tue Jan 22 2019)
+
+#### 🐛  Bug Fix
+
+- Do not display partner name in banner for benefit auction artworks [#1925](https://github.com/artsy/reaction/pull/1925) ([@oxaudo](https://github.com/oxaudo))
+
+---
+
 # 11.2.10 (Tue Jan 22 2019)
 
 #### 🐛  Bug Fix
