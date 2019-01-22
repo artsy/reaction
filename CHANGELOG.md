@@ -1,3 +1,13 @@
+# 11.2.10 (Tue Jan 22 2019)
+
+#### 🐛  Bug Fix
+
+- Merge pull request #1924 by Peril
+
+remove partner icon for artwork details if artwork is from benefit auction [#1924](https://github.com/artsy/reaction/pull/1924) ([@oxaudo](https://github.com/oxaudo))
+
+---
+
 # 11.2.9 (Tue Jan 22 2019)
 
 #### 🐛  Bug Fix
