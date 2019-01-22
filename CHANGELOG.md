@@ -1,3 +1,18 @@
+# 11.2.8 (Tue Jan 22 2019)
+
+#### 🐛  Bug Fix
+
+- Disallow whitespace for address form [#1922](https://github.com/artsy/reaction/pull/1922) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### 🏠  Internal
+
+- Merge pull request #1921 by Peril
+
+Update dependency @artsy/palette to v2.34.0 [#1921](https://github.com/artsy/reaction/pull/1921) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/palette to v2.33.2 [#1920](https://github.com/artsy/reaction/pull/1920) ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # 11.2.7 (Fri Jan 18 2019)
 
 #### 🐛  Bug Fix
