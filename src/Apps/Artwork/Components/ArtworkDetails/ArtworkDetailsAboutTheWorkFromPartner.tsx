@@ -65,7 +65,10 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
       []
     ).join(", ")
 
-    const imageUrl = get(partner, p => p.profile.icon.url)
+    // Partner avatar is not shown for artworks from auctions
+    const showPartnerLogo = !(artwork.sale && artwork.sale.is_benefit)
+    const imageUrl = showPartnerLogo && get(partner, p => p.profile.icon.url)
+    const partnerInitials = showPartnerLogo && partner.initials
 
     return (
       <ContextConsumer>
@@ -81,7 +84,7 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
                   }
                   meta={locationNames}
                   imageUrl={imageUrl}
-                  initials={partner.initials}
+                  initials={partnerInitials}
                   FollowButton={
                     partner.type !== "Auction House" &&
                     partner.profile && (
@@ -153,6 +156,9 @@ export const ArtworkDetailsAboutTheWorkFromPartnerFragmentContainer = createFrag
   graphql`
     fragment ArtworkDetailsAboutTheWorkFromPartner_artwork on Artwork {
       additional_information(format: HTML)
+      sale {
+        is_benefit
+      }
       partner {
         _id
         id

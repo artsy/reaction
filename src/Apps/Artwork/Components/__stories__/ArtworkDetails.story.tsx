@@ -38,6 +38,9 @@ storiesOf("Apps/Artwork Page/Components", module)
         <Section title="Articles tab only with news article">
           <ArtworkDetailsQueryRenderer artworkID="kevin-beasley-untitled-stub" />
         </Section>
+        <Section title="Artwork from benefit auction">
+          <ArtworkDetailsQueryRenderer artworkID="nicolas-saint-gregoire-wesselmann-visage" />
+        </Section>
       </React.Fragment>
     )
   })
