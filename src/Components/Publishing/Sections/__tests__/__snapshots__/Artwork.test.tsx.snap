@@ -2,17 +2,10 @@
 
 exports[`Artwork snapshots renders properly 1`] = `
 .c8 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 14px;
-  line-height: 24px;
-  color: #C2C2C2;
-}
-
-.c9 {
   margin-right: 30px;
 }
 
-.c10 {
+.c9 {
   white-space: nowrap;
 }
 
@@ -183,16 +176,16 @@ exports[`Artwork snapshots renders properly 1`] = `
   </a>
   <div>
     <div
-      className="c7 c8"
+      className="c7 sc-bZQynM bOrPFB sc-EHOje eiIllQ"
       color="#C2C2C2"
       fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
       fontSize="14px"
     >
       <span
-        className="c9"
+        className="c8"
       >
         <span
-          className="c10"
+          className="c9"
         >
           <a
             href="/artist/fernando-botero"

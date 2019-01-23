@@ -1,169 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a series properly 1`] = `
-.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c19 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column-reverse;
-  -ms-flex-direction: column-reverse;
-  flex-direction: column-reverse;
-  padding: 20px;
-}
-
-.c20 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  margin-bottom: 0px;
-  width: 100%;
-}
-
-.c31 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
-
-.c37 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-  max-width: 1200px;
-}
-
-.c38 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.c40 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  width: 100%;
-}
-
-.c7 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-weight: 600;
-  font-size: 22px;
-  line-height: 32px;
-  color: white;
-  text-align: center;
-}
-
-.c21 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-  margin-bottom: 4px;
-}
-
-.c22 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 28px;
-  line-height: 36px;
-  margin-bottom: 20px;
-}
-
-.c23 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 18px;
-  line-height: 26px;
-  margin-bottom: 20px;
-}
-
-.c25 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-.c33 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 1em;
-}
-
-.c39 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 28px;
-  line-height: 36px;
-  margin-bottom: 20px;
-}
-
-.c16 {
-  color: white;
-}
-
-.c17 {
-  margin-bottom: 40px;
-}
-
-.c27 {
-  margin-bottom: 10px;
-  margin-left: 0px;
-  width: 100%;
-}
-
-.c36 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 40px;
-}
-
-.c5 {
+.c4 {
   font-family: artsy-icons;
   color: white;
   font-size: 32px;
@@ -177,7 +15,7 @@ exports[`renders a series properly 1`] = `
   color: white;
 }
 
-.c3 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -189,17 +27,17 @@ exports[`renders a series properly 1`] = `
   margin: 0 10px;
 }
 
-.c3 img {
+.c2 img {
   max-height: 34px;
   vertical-align: middle;
   -ms-interpolation-mode: bicubic;
 }
 
-.c3 .IconPlus-s1uyfpws-0 {
+.c2 .IconPlus-s1uyfpws-0 {
   margin: 0 20px;
 }
 
-.c3 .c4 {
+.c2 .c3 {
   margin: 0;
   vertical-align: middle;
 }
@@ -215,7 +53,7 @@ exports[`renders a series properly 1`] = `
   top: 0;
 }
 
-.c6 {
+.c5 {
   position: absolute;
   width: 100%;
   left: 0;
@@ -237,18 +75,18 @@ exports[`renders a series properly 1`] = `
   color: white;
 }
 
-.c6 a {
+.c5 a {
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
   z-index: 10;
 }
 
-.c35 {
+.c22 {
   margin: 10px 20px 0 0;
 }
 
-.c35::before {
+.c22::before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -258,12 +96,12 @@ exports[`renders a series properly 1`] = `
   background-color: white;
 }
 
-.c24 {
+.c15 {
   margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
-.c34 {
+.c21 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -278,12 +116,12 @@ exports[`renders a series properly 1`] = `
   color: white;
 }
 
-.c32 {
+.c20 {
   width: 32px;
   height: 32px;
 }
 
-.c29 {
+.c18 {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -293,13 +131,13 @@ exports[`renders a series properly 1`] = `
   display: block;
 }
 
-.c26 {
+.c16 {
   position: relative;
   height: inherit;
   background: white;
 }
 
-.c18 {
+.c14 {
   border: 1px solid;
   border-radius: 2px;
   color: white;
@@ -309,26 +147,26 @@ exports[`renders a series properly 1`] = `
   display: block;
 }
 
-.c18 .c28 {
+.c14 .c17 {
   opacity: 1;
 }
 
-.c18:hover .c28 {
+.c14:hover .c17 {
   opacity: 0.7;
 }
 
-.c30 {
+.c19 {
   position: absolute;
   left: 20px;
   right: 20px;
   bottom: 20px;
 }
 
-.c30 svg {
+.c19 svg {
   height: 40px;
 }
 
-.c8 {
+.c6 {
   background-color: #000;
   position: fixed;
   top: 0;
@@ -338,7 +176,7 @@ exports[`renders a series properly 1`] = `
   z-index: -1;
 }
 
-.c9 {
+.c7 {
   background-image: url(https://artsy-media-uploads.s3.amazonaws.com/GXvnaBYBdP2z6LKIBQF7XA%2FArtboard.jpg);
   background-size: cover;
   background-position: 50%;
@@ -350,7 +188,7 @@ exports[`renders a series properly 1`] = `
   z-index: -2;
 }
 
-.c10 {
+.c8 {
   background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.6));
   position: fixed;
   top: 0;
@@ -360,13 +198,13 @@ exports[`renders a series properly 1`] = `
   z-index: -1;
 }
 
-.c41 {
+.c23 {
   position: relative;
   width: 100%;
   color: white;
 }
 
-.c41 a {
+.c23 a {
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -376,22 +214,22 @@ exports[`renders a series properly 1`] = `
   background-position: bottom;
 }
 
-.c41 a:hover {
+.c23 a:hover {
   color: white;
   opacity: .65;
 }
 
-.c41 div[class*='ToolTip'] a {
+.c23 div[class*='ToolTip'] a {
   background-image: none;
   opacity: 1;
   color: inherit;
 }
 
-.c41 p,
-.c41 ul,
-.c41 ol,
-.c41 .paragraph,
-.c41 div[data-block=true] .public-DraftStyleDefault-block {
+.c23 p,
+.c23 ul,
+.c23 ol,
+.c23 .paragraph,
+.c23 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -402,32 +240,32 @@ exports[`renders a series properly 1`] = `
   font-style: inherit;
 }
 
-.c41 p:first-child,
-.c41 .paragraph:first-child,
-.c41 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c23 p:first-child,
+.c23 .paragraph:first-child,
+.c23 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c41 p:last-child,
-.c41 .paragraph:last-child,
-.c41 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c23 p:last-child,
+.c23 .paragraph:last-child,
+.c23 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c41 ul,
-.c41 ol {
+.c23 ul,
+.c23 ol {
   padding-left: 1em;
 }
 
-.c41 ul {
+.c23 ul {
   list-style: disc;
 }
 
-.c41 ol {
+.c23 ol {
   list-style: decimal;
 }
 
-.c41 li {
+.c23 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -436,7 +274,7 @@ exports[`renders a series properly 1`] = `
   padding-bottom: .5em;
 }
 
-.c41 h1 {
+.c23 h1 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -449,7 +287,7 @@ exports[`renders a series properly 1`] = `
   text-align: center;
 }
 
-.c41 h1::before {
+.c23 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -460,7 +298,7 @@ exports[`renders a series properly 1`] = `
   right: calc(50% - 4px);
 }
 
-.c41 h2 {
+.c23 h2 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -469,15 +307,15 @@ exports[`renders a series properly 1`] = `
   margin: 0;
 }
 
-.c41 h2 a {
+.c23 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c41 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
+.c23 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
   background-position: bottom !important;
 }
 
-.c41 h3 {
+.c23 h3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -487,7 +325,7 @@ exports[`renders a series properly 1`] = `
   margin: 0;
 }
 
-.c41 h3 strong {
+.c23 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -495,11 +333,11 @@ exports[`renders a series properly 1`] = `
   line-height: 1.5em;
 }
 
-.c41 h3 a {
+.c23 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c41 blockquote {
+.c23 blockquote {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 40px;
   line-height: 1.1em;
@@ -512,7 +350,7 @@ exports[`renders a series properly 1`] = `
   word-break: break-word;
 }
 
-.c41 .content-end {
+.c23 .content-end {
   display: inline-block;
   content: "";
   width: 8px;
@@ -523,14 +361,14 @@ exports[`renders a series properly 1`] = `
   margin-bottom: 1px;
 }
 
-.c41 .artist-follow {
+.c23 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c41 .artist-follow::before {
+.c23 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -538,7 +376,7 @@ exports[`renders a series properly 1`] = `
   font-size: 32px;
 }
 
-.c41 .artist-follow::after {
+.c23 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -547,22 +385,22 @@ exports[`renders a series properly 1`] = `
   text-transform: none;
 }
 
-.c14 {
+.c12 {
   color: white;
   text-align: center;
 }
 
-.c14 .PartnerBlock__ImageContainer-ydgi2-1 {
+.c12 .PartnerBlock__ImageContainer-ydgi2-1 {
   padding-top: 5px;
   padding-bottom: 40px;
 }
 
-.c14 .PartnerBlock__ImageContainer-ydgi2-1 img {
+.c12 .PartnerBlock__ImageContainer-ydgi2-1 img {
   margin-left: auto;
   margin-right: auto;
 }
 
-.c15 {
+.c13 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 120px;
@@ -570,13 +408,13 @@ exports[`renders a series properly 1`] = `
   margin-bottom: 30px;
 }
 
-.c12 {
+.c10 {
   max-width: 1200px;
   min-height: 100vh;
   margin: 0 auto;
 }
 
-.c12 .c13 {
+.c10 .c11 {
   margin-bottom: 90px;
 }
 
@@ -584,348 +422,63 @@ exports[`renders a series properly 1`] = `
   color: white;
 }
 
-.c0 .c11 {
+.c0 .c9 {
   padding: 90px 20px 150px;
 }
 
-@media screen and (min-width:40em) {
-  .c19 {
-    -webkit-flex-direction: column-reverse;
-    -ms-flex-direction: column-reverse;
-    flex-direction: column-reverse;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c19 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c19 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c19 {
-    padding: 20px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c19 {
-    padding: 30px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c19 {
-    padding: 30px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c20 {
-    margin-bottom: 0px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c20 {
-    margin-bottom: 5px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c20 {
-    margin-bottom: 5px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c20 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c20 {
-    width: 50%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c20 {
-    width: 50%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c37 {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c37 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c37 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c38 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c38 {
-    width: 33.33333333333333%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c38 {
-    width: 33.33333333333333%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c40 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c40 {
-    width: 66.66666666666666%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c40 {
-    width: 66.66666666666666%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c22 {
-    font-size: 28px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c22 {
-    font-size: 42px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c22 {
-    font-size: 42px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c22 {
-    line-height: 36px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c22 {
-    line-height: 50px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c22 {
-    line-height: 50px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c23 {
-    font-size: 18px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c23 {
-    font-size: 22px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c23 {
-    font-size: 22px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c23 {
-    line-height: 26px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c23 {
-    line-height: 32px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c23 {
-    line-height: 32px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c39 {
-    margin-bottom: 20px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c39 {
-    margin-bottom: 0px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c39 {
-    margin-bottom: 0px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c17 {
-    margin-bottom: 60px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c27 {
-    margin-bottom: 10px;
-    margin-left: 0px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c27 {
-    margin-bottom: 0px;
-    margin-left: 30px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c27 {
-    margin-bottom: 0px;
-    margin-left: 30px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c27 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c27 {
-    width: 50%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c27 {
-    width: 50%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c36 {
-    padding-top: 40px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c36 {
-    padding-top: 60px;
-  }
-}
-
 @media (max-width:720px) {
-  .c3 img {
+  .c2 img {
     max-height: 24px;
   }
 
-  .c3 .c4 {
+  .c2 .c3 {
     font-size: 24px;
   }
 
-  .c3 .IconPlus-s1uyfpws-0 {
+  .c2 .IconPlus-s1uyfpws-0 {
     margin: 0 10px;
   }
 }
 
 @media (max-width:900px) {
-  .c30 svg {
+  .c19 svg {
     height: 30px;
   }
 }
 
 @media (max-width:600px) {
-  .c41 p,
-  .c41 ul,
-  .c41 ol,
-  .c41 div[data-block=true] .public-DraftStyleDefault-block {
+  .c23 p,
+  .c23 ul,
+  .c23 ol,
+  .c23 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c41 li {
+  .c23 li {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c41 h1 {
+  .c23 h1 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c41 h2 {
+  .c23 h2 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c41 h3 {
+  .c23 h3 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -933,14 +486,14 @@ exports[`renders a series properly 1`] = `
     line-height: 1.5em;
   }
 
-  .c41 h3 strong {
+  .c23 h3 strong {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c41 blockquote {
+  .c23 blockquote {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
@@ -948,19 +501,19 @@ exports[`renders a series properly 1`] = `
     margin: 0;
   }
 
-  .c41 .content-start {
+  .c23 .content-start {
     font-size: 55px;
   }
 }
 
 @media (max-width:900px) {
-  .c14 .PartnerBlock__ImageContainer-ydgi2-1 {
+  .c12 .PartnerBlock__ImageContainer-ydgi2-1 {
     padding-bottom: 0;
   }
 }
 
 @media (max-width:900px) {
-  .c15 {
+  .c13 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 65px;
@@ -975,17 +528,17 @@ exports[`renders a series properly 1`] = `
 >
   <div>
     <div
-      className="c1 c2"
+      className="c1 sc-ifAKCX htzdbN"
       color="white"
     >
       <div
-        className="PartnerInline c3"
+        className="PartnerInline c2"
       >
         <a
           href="/"
         >
           <div
-            className="c4 c5"
+            className="c3 c4"
           >
             
           </div>
@@ -996,7 +549,7 @@ exports[`renders a series properly 1`] = `
         className="rrm-container rrm-greaterThan-xs"
       >
         <div
-          className="c6 c7"
+          className="c5 sc-gzVnrw ibZhkv sc-EHOje iUzFQL"
           color="white"
           fontFamily={
             Object {
@@ -1023,46 +576,46 @@ exports[`renders a series properly 1`] = `
     />
   </div>
   <div
-    className="c8"
+    className="c6"
   >
     <div
-      className="c9"
+      className="c7"
     />
     <div
-      className="c10"
+      className="c8"
     />
   </div>
   <div
-    className="c11 c12"
+    className="c9 c10"
   >
     <div
-      className="SeriesTitle c13 c14"
+      className="SeriesTitle c11 c12"
       color="white"
     >
       <div
-        className="c15"
+        className="c13"
       >
         The Future of Art
       </div>
     </div>
     <div
-      className="c16"
+      className="sc-kAzzGY cPeMMC"
       color="white"
     >
       <div
-        className="c17"
+        className="sc-kAzzGY iBAmpz"
       >
         <a
-          className="ArticleCard c18"
+          className="ArticleCard c14"
           color="white"
           href="joanne-artman-gallery-poetry-naturerefinement-form"
           onClick={[Function]}
         >
           <div
-            className="c19"
+            className="sc-ifAKCX kXtlsF"
           >
             <div
-              className="c20"
+              className="sc-ifAKCX jiYvGF"
               width={
                 Array [
                   "100%",
@@ -1074,7 +627,7 @@ exports[`renders a series properly 1`] = `
             >
               <div>
                 <div
-                  className="c21"
+                  className="sc-bZQynM bOrPFB sc-EHOje cpSHOt"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1086,7 +639,7 @@ exports[`renders a series properly 1`] = `
                   The Future of Art
                 </div>
                 <div
-                  className="c22"
+                  className="sc-bZQynM bOrPFB sc-EHOje dmUTBA"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -1100,7 +653,7 @@ exports[`renders a series properly 1`] = `
                   New Study Shows the Gender Pay Gap for Artists Is Not So Simple
                 </div>
                 <div
-                  className="c23"
+                  className="sc-gzVnrw ibZhkv sc-EHOje lhPpoe"
                   fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                   fontSize={
                     Array [
@@ -1115,10 +668,10 @@ exports[`renders a series properly 1`] = `
                 </div>
               </div>
               <div
-                className="c24"
+                className="c15"
               >
                 <div
-                  className="c25"
+                  className="sc-bZQynM bOrPFB sc-EHOje fXsUty"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1132,7 +685,7 @@ exports[`renders a series properly 1`] = `
               </div>
             </div>
             <div
-              className="c26 c27"
+              className="c16 sc-kAzzGY iqiPK"
               width={
                 Array [
                   "100%",
@@ -1143,14 +696,14 @@ exports[`renders a series properly 1`] = `
               }
             >
               <img
-                className="c28 c29"
+                className="c17 c18"
                 src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
               />
               <div
-                className="c30 c31"
+                className="c19 sc-ifAKCX ifRBhy"
               >
                 <svg
-                  className="c32"
+                  className="c20"
                   version="1.1"
                   viewBox="0 0 40 56"
                   x="0px"
@@ -1170,7 +723,7 @@ exports[`renders a series properly 1`] = `
                   </g>
                 </svg>
                 <div
-                  className="c33"
+                  className="sc-bZQynM bOrPFB sc-EHOje bZsSMq"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1187,19 +740,19 @@ exports[`renders a series properly 1`] = `
         </a>
       </div>
       <div
-        className="c17"
+        className="sc-kAzzGY iBAmpz"
       >
         <a
-          className="ArticleCard c18"
+          className="ArticleCard c14"
           color="white"
           href="new-yorks-next-art-district"
           onClick={[Function]}
         >
           <div
-            className="c19"
+            className="sc-ifAKCX kXtlsF"
           >
             <div
-              className="c20"
+              className="sc-ifAKCX jiYvGF"
               width={
                 Array [
                   "100%",
@@ -1211,7 +764,7 @@ exports[`renders a series properly 1`] = `
             >
               <div>
                 <div
-                  className="c21"
+                  className="sc-bZQynM bOrPFB sc-EHOje cpSHOt"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1223,7 +776,7 @@ exports[`renders a series properly 1`] = `
                   The Future of Art
                 </div>
                 <div
-                  className="c22"
+                  className="sc-bZQynM bOrPFB sc-EHOje dmUTBA"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -1237,7 +790,7 @@ exports[`renders a series properly 1`] = `
                   New York's Next Art District
                 </div>
                 <div
-                  className="c23"
+                  className="sc-gzVnrw ibZhkv sc-EHOje lhPpoe"
                   fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                   fontSize={
                     Array [
@@ -1252,11 +805,11 @@ exports[`renders a series properly 1`] = `
                 </div>
               </div>
               <div
-                className="Byline c34"
+                className="Byline c21"
                 color="white"
               >
                 <div
-                  className="c25"
+                  className="sc-bZQynM bOrPFB sc-EHOje fXsUty"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1266,17 +819,17 @@ exports[`renders a series properly 1`] = `
                   fontSize="14px"
                 >
                   <div
-                    className="c35"
+                    className="c22"
                     color="white"
                   >
                     Casey Lesser
                   </div>
                 </div>
                 <div
-                  className="c24"
+                  className="c15"
                 >
                   <div
-                    className="c25"
+                    className="sc-bZQynM bOrPFB sc-EHOje fXsUty"
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1291,7 +844,7 @@ exports[`renders a series properly 1`] = `
               </div>
             </div>
             <div
-              className="c26 c27"
+              className="c16 sc-kAzzGY iqiPK"
               width={
                 Array [
                   "100%",
@@ -1302,7 +855,7 @@ exports[`renders a series properly 1`] = `
               }
             >
               <img
-                className="c28 c29"
+                className="c17 c18"
                 src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=95"
               />
             </div>
@@ -1311,15 +864,15 @@ exports[`renders a series properly 1`] = `
       </div>
     </div>
     <div
-      className="c36"
+      className="sc-kAzzGY bCdiKa"
     >
       <div
-        className="c37"
+        className="sc-ifAKCX dYrUUk"
         color="white"
         width="100%"
       >
         <div
-          className="c38"
+          className="sc-ifAKCX kwmuuS"
           width={
             Array [
               1,
@@ -1330,7 +883,7 @@ exports[`renders a series properly 1`] = `
           }
         >
           <div
-            className="c39"
+            className="sc-bZQynM bOrPFB sc-EHOje bJkZDO"
             fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="28px"
           >
@@ -1341,7 +894,7 @@ exports[`renders a series properly 1`] = `
           />
         </div>
         <div
-          className="c40"
+          className="sc-ifAKCX gkTgYS"
           width={
             Array [
               1,
@@ -1355,7 +908,7 @@ exports[`renders a series properly 1`] = `
             className="SeriesAbout__description"
           >
             <div
-              className="article__text-section c41"
+              className="article__text-section c23"
               color="white"
             >
               <div
@@ -1378,177 +931,7 @@ exports[`renders a series properly 1`] = `
 `;
 
 exports[`renders a sponsored series properly 1`] = `
-.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c25 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column-reverse;
-  -ms-flex-direction: column-reverse;
-  flex-direction: column-reverse;
-  padding: 20px;
-}
-
-.c26 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  margin-bottom: 0px;
-  width: 100%;
-}
-
-.c37 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
-
-.c43 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-  max-width: 1200px;
-}
-
-.c44 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.c47 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  width: 100%;
-}
-
-.c9 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-weight: 600;
-  font-size: 22px;
-  line-height: 32px;
-  color: white;
-  text-align: center;
-}
-
-.c27 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-  margin-bottom: 4px;
-}
-
-.c28 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 28px;
-  line-height: 36px;
-  margin-bottom: 20px;
-}
-
-.c29 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 18px;
-  line-height: 26px;
-  margin-bottom: 20px;
-}
-
-.c31 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-.c39 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 1em;
-}
-
-.c45 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 28px;
-  line-height: 36px;
-  margin-bottom: 20px;
-}
-
-.c22 {
-  color: white;
-}
-
-.c23 {
-  margin-bottom: 40px;
-}
-
-.c33 {
-  margin-bottom: 10px;
-  margin-left: 0px;
-  width: 100%;
-}
-
-.c42 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 40px;
-}
-
-.c46 {
-  margin-bottom: 4px;
-}
-
-.c49 {
-  margin-top: 60px;
-}
-
-.c5 {
+.c4 {
   font-family: artsy-icons;
   color: white;
   font-size: 32px;
@@ -1562,12 +945,12 @@ exports[`renders a sponsored series properly 1`] = `
   color: white;
 }
 
-.c7 {
+.c6 {
   width: 15px;
   height: 15px;
 }
 
-.c3 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1579,17 +962,17 @@ exports[`renders a sponsored series properly 1`] = `
   margin: 0 10px;
 }
 
-.c3 img {
+.c2 img {
   max-height: 34px;
   vertical-align: middle;
   -ms-interpolation-mode: bicubic;
 }
 
-.c3 .c6 {
+.c2 .c5 {
   margin: 0 20px;
 }
 
-.c3 .c4 {
+.c2 .c3 {
   margin: 0;
   vertical-align: middle;
 }
@@ -1605,7 +988,7 @@ exports[`renders a sponsored series properly 1`] = `
   top: 0;
 }
 
-.c8 {
+.c7 {
   position: absolute;
   width: 100%;
   left: 0;
@@ -1627,18 +1010,18 @@ exports[`renders a sponsored series properly 1`] = `
   color: white;
 }
 
-.c8 a {
+.c7 a {
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
   z-index: 10;
 }
 
-.c41 {
+.c28 {
   margin: 10px 20px 0 0;
 }
 
-.c41::before {
+.c28::before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -1648,12 +1031,12 @@ exports[`renders a sponsored series properly 1`] = `
   background-color: white;
 }
 
-.c30 {
+.c21 {
   margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
-.c40 {
+.c27 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1668,12 +1051,12 @@ exports[`renders a sponsored series properly 1`] = `
   color: white;
 }
 
-.c38 {
+.c26 {
   width: 32px;
   height: 32px;
 }
 
-.c35 {
+.c24 {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1683,13 +1066,13 @@ exports[`renders a sponsored series properly 1`] = `
   display: block;
 }
 
-.c32 {
+.c22 {
   position: relative;
   height: inherit;
   background: white;
 }
 
-.c24 {
+.c20 {
   border: 1px solid;
   border-radius: 2px;
   color: white;
@@ -1699,26 +1082,26 @@ exports[`renders a sponsored series properly 1`] = `
   display: block;
 }
 
-.c24 .c34 {
+.c20 .c23 {
   opacity: 1;
 }
 
-.c24:hover .c34 {
+.c20:hover .c23 {
   opacity: 0.7;
 }
 
-.c36 {
+.c25 {
   position: absolute;
   left: 20px;
   right: 20px;
   bottom: 20px;
 }
 
-.c36 svg {
+.c25 svg {
   height: 40px;
 }
 
-.c10 {
+.c8 {
   background-color: #000;
   position: fixed;
   top: 0;
@@ -1728,7 +1111,7 @@ exports[`renders a sponsored series properly 1`] = `
   z-index: -1;
 }
 
-.c11 {
+.c9 {
   background-image: url(https://artsy-media-uploads.s3.amazonaws.com/GXvnaBYBdP2z6LKIBQF7XA%2FArtboard.jpg);
   background-size: cover;
   background-position: 50%;
@@ -1740,7 +1123,7 @@ exports[`renders a sponsored series properly 1`] = `
   z-index: -2;
 }
 
-.c12 {
+.c10 {
   background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.6));
   position: fixed;
   top: 0;
@@ -1750,18 +1133,18 @@ exports[`renders a sponsored series properly 1`] = `
   z-index: -1;
 }
 
-.c18 {
+.c16 {
   display: block;
 }
 
-.c21 img {
+.c19 img {
   max-width: 240px;
   max-height: 40px;
   object-fit: contain;
   object-position: left;
 }
 
-.c19 {
+.c17 {
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
@@ -1769,13 +1152,13 @@ exports[`renders a sponsored series properly 1`] = `
   margin-bottom: 20px;
 }
 
-.c48 {
+.c29 {
   position: relative;
   width: 100%;
   color: white;
 }
 
-.c48 a {
+.c29 a {
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -1785,22 +1168,22 @@ exports[`renders a sponsored series properly 1`] = `
   background-position: bottom;
 }
 
-.c48 a:hover {
+.c29 a:hover {
   color: white;
   opacity: .65;
 }
 
-.c48 div[class*='ToolTip'] a {
+.c29 div[class*='ToolTip'] a {
   background-image: none;
   opacity: 1;
   color: inherit;
 }
 
-.c48 p,
-.c48 ul,
-.c48 ol,
-.c48 .paragraph,
-.c48 div[data-block=true] .public-DraftStyleDefault-block {
+.c29 p,
+.c29 ul,
+.c29 ol,
+.c29 .paragraph,
+.c29 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -1811,32 +1194,32 @@ exports[`renders a sponsored series properly 1`] = `
   font-style: inherit;
 }
 
-.c48 p:first-child,
-.c48 .paragraph:first-child,
-.c48 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c29 p:first-child,
+.c29 .paragraph:first-child,
+.c29 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c48 p:last-child,
-.c48 .paragraph:last-child,
-.c48 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c29 p:last-child,
+.c29 .paragraph:last-child,
+.c29 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c48 ul,
-.c48 ol {
+.c29 ul,
+.c29 ol {
   padding-left: 1em;
 }
 
-.c48 ul {
+.c29 ul {
   list-style: disc;
 }
 
-.c48 ol {
+.c29 ol {
   list-style: decimal;
 }
 
-.c48 li {
+.c29 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -1845,7 +1228,7 @@ exports[`renders a sponsored series properly 1`] = `
   padding-bottom: .5em;
 }
 
-.c48 h1 {
+.c29 h1 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -1858,7 +1241,7 @@ exports[`renders a sponsored series properly 1`] = `
   text-align: center;
 }
 
-.c48 h1::before {
+.c29 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -1869,7 +1252,7 @@ exports[`renders a sponsored series properly 1`] = `
   right: calc(50% - 4px);
 }
 
-.c48 h2 {
+.c29 h2 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -1878,15 +1261,15 @@ exports[`renders a sponsored series properly 1`] = `
   margin: 0;
 }
 
-.c48 h2 a {
+.c29 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c48 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
+.c29 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
   background-position: bottom !important;
 }
 
-.c48 h3 {
+.c29 h3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -1896,7 +1279,7 @@ exports[`renders a sponsored series properly 1`] = `
   margin: 0;
 }
 
-.c48 h3 strong {
+.c29 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -1904,11 +1287,11 @@ exports[`renders a sponsored series properly 1`] = `
   line-height: 1.5em;
 }
 
-.c48 h3 a {
+.c29 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c48 blockquote {
+.c29 blockquote {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 40px;
   line-height: 1.1em;
@@ -1921,7 +1304,7 @@ exports[`renders a sponsored series properly 1`] = `
   word-break: break-word;
 }
 
-.c48 .content-end {
+.c29 .content-end {
   display: inline-block;
   content: "";
   width: 8px;
@@ -1932,14 +1315,14 @@ exports[`renders a sponsored series properly 1`] = `
   margin-bottom: 1px;
 }
 
-.c48 .artist-follow {
+.c29 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c48 .artist-follow::before {
+.c29 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -1947,7 +1330,7 @@ exports[`renders a sponsored series properly 1`] = `
   font-size: 32px;
 }
 
-.c48 .artist-follow::after {
+.c29 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -1956,22 +1339,22 @@ exports[`renders a sponsored series properly 1`] = `
   text-transform: none;
 }
 
-.c16 {
+.c14 {
   color: white;
   text-align: center;
 }
 
-.c16 .c20 {
+.c14 .c18 {
   padding-top: 5px;
   padding-bottom: 40px;
 }
 
-.c16 .c20 img {
+.c14 .c18 img {
   margin-left: auto;
   margin-right: auto;
 }
 
-.c17 {
+.c15 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 120px;
@@ -1979,17 +1362,17 @@ exports[`renders a sponsored series properly 1`] = `
   margin-bottom: 30px;
 }
 
-.bhMdnS .c15 {
+.bhMdnS .c13 {
   margin-bottom: 90px;
 }
 
-.c14 {
+.c12 {
   max-width: 1200px;
   min-height: 100vh;
   margin: 0 auto;
 }
 
-.c14 .c15 {
+.c12 .c13 {
   margin-bottom: 60px;
 }
 
@@ -1997,324 +1380,39 @@ exports[`renders a sponsored series properly 1`] = `
   color: white;
 }
 
-.c0 .c13 {
+.c0 .c11 {
   padding: 90px 20px 150px;
 }
 
-@media screen and (min-width:40em) {
-  .c25 {
-    -webkit-flex-direction: column-reverse;
-    -ms-flex-direction: column-reverse;
-    flex-direction: column-reverse;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c25 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c25 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c25 {
-    padding: 20px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c25 {
-    padding: 30px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c25 {
-    padding: 30px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c26 {
-    margin-bottom: 0px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c26 {
-    margin-bottom: 5px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c26 {
-    margin-bottom: 5px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c26 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c26 {
-    width: 50%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c26 {
-    width: 50%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c43 {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c43 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c43 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c44 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c44 {
-    width: 33.33333333333333%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c44 {
-    width: 33.33333333333333%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c47 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c47 {
-    width: 66.66666666666666%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c47 {
-    width: 66.66666666666666%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c28 {
-    font-size: 28px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c28 {
-    font-size: 42px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c28 {
-    font-size: 42px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c28 {
-    line-height: 36px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c28 {
-    line-height: 50px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c28 {
-    line-height: 50px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c29 {
-    font-size: 18px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c29 {
-    font-size: 22px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c29 {
-    font-size: 22px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c29 {
-    line-height: 26px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c29 {
-    line-height: 32px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c29 {
-    line-height: 32px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c45 {
-    margin-bottom: 20px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c45 {
-    margin-bottom: 0px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c45 {
-    margin-bottom: 0px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c23 {
-    margin-bottom: 60px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c33 {
-    margin-bottom: 10px;
-    margin-left: 0px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c33 {
-    margin-bottom: 0px;
-    margin-left: 30px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c33 {
-    margin-bottom: 0px;
-    margin-left: 30px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c33 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c33 {
-    width: 50%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c33 {
-    width: 50%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c42 {
-    padding-top: 40px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c42 {
-    padding-top: 60px;
-  }
-}
-
 @media (max-width:900px) {
-  .c7 {
+  .c6 {
     width: 13px;
     height: 13px;
   }
 }
 
 @media (max-width:720px) {
-  .c3 img {
+  .c2 img {
     max-height: 24px;
   }
 
-  .c3 .c4 {
+  .c2 .c3 {
     font-size: 24px;
   }
 
-  .c3 .c6 {
+  .c2 .c5 {
     margin: 0 10px;
   }
 }
 
 @media (max-width:900px) {
-  .c36 svg {
+  .c25 svg {
     height: 30px;
   }
 }
 
 @media (max-width:720px) {
-  .c19 {
+  .c17 {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
@@ -2323,38 +1421,38 @@ exports[`renders a sponsored series properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c48 p,
-  .c48 ul,
-  .c48 ol,
-  .c48 div[data-block=true] .public-DraftStyleDefault-block {
+  .c29 p,
+  .c29 ul,
+  .c29 ol,
+  .c29 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c48 li {
+  .c29 li {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c48 h1 {
+  .c29 h1 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c48 h2 {
+  .c29 h2 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c48 h3 {
+  .c29 h3 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -2362,14 +1460,14 @@ exports[`renders a sponsored series properly 1`] = `
     line-height: 1.5em;
   }
 
-  .c48 h3 strong {
+  .c29 h3 strong {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c48 blockquote {
+  .c29 blockquote {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
@@ -2377,19 +1475,19 @@ exports[`renders a sponsored series properly 1`] = `
     margin: 0;
   }
 
-  .c48 .content-start {
+  .c29 .content-start {
     font-size: 55px;
   }
 }
 
 @media (max-width:900px) {
-  .c16 .c20 {
+  .c14 .c18 {
     padding-bottom: 0;
   }
 }
 
 @media (max-width:900px) {
-  .c17 {
+  .c15 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 65px;
@@ -2404,23 +1502,23 @@ exports[`renders a sponsored series properly 1`] = `
 >
   <div>
     <div
-      className="c1 c2"
+      className="c1 sc-ifAKCX htzdbN"
       color="white"
     >
       <div
-        className="PartnerInline c3"
+        className="PartnerInline c2"
       >
         <a
           href="/"
         >
           <div
-            className="c4 c5"
+            className="c3 c4"
           >
             
           </div>
         </a>
         <svg
-          className="c6 c7"
+          className="c5 c6"
           version="1.1"
           viewBox="0 0 15 15"
           xmlns="http://www.w3.org/2000/svg"
@@ -2469,7 +1567,7 @@ exports[`renders a sponsored series properly 1`] = `
         className="rrm-container rrm-greaterThan-xs"
       >
         <div
-          className="c8 c9"
+          className="c7 sc-gzVnrw ibZhkv sc-EHOje iUzFQL"
           color="white"
           fontFamily={
             Object {
@@ -2496,37 +1594,37 @@ exports[`renders a sponsored series properly 1`] = `
     />
   </div>
   <div
-    className="c10"
+    className="c8"
   >
     <div
-      className="c11"
+      className="c9"
     />
     <div
-      className="c12"
+      className="c10"
     />
   </div>
   <div
-    className="c13 c14"
+    className="c11 c12"
   >
     <div
-      className="SeriesTitle c15 c16"
+      className="SeriesTitle c13 c14"
       color="white"
     >
       <div
-        className="c17"
+        className="c15"
       >
         The Future of Art
       </div>
       <div
-        className="PartnerBlock c18"
+        className="PartnerBlock c16"
       >
         <div
-          className="c19"
+          className="c17"
         >
           Presented in Partnership with
         </div>
         <div
-          className="c20 c21"
+          className="c18 c19"
         >
           <a
             href="http://artsy.net"
@@ -2541,23 +1639,23 @@ exports[`renders a sponsored series properly 1`] = `
       </div>
     </div>
     <div
-      className="c22"
+      className="sc-kAzzGY cPeMMC"
       color="white"
     >
       <div
-        className="c23"
+        className="sc-kAzzGY iBAmpz"
       >
         <a
-          className="ArticleCard c24"
+          className="ArticleCard c20"
           color="white"
           href="joanne-artman-gallery-poetry-naturerefinement-form"
           onClick={[Function]}
         >
           <div
-            className="c25"
+            className="sc-ifAKCX kXtlsF"
           >
             <div
-              className="c26"
+              className="sc-ifAKCX jiYvGF"
               width={
                 Array [
                   "100%",
@@ -2569,7 +1667,7 @@ exports[`renders a sponsored series properly 1`] = `
             >
               <div>
                 <div
-                  className="c27"
+                  className="sc-bZQynM bOrPFB sc-EHOje cpSHOt"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2581,7 +1679,7 @@ exports[`renders a sponsored series properly 1`] = `
                   The Future of Art
                 </div>
                 <div
-                  className="c28"
+                  className="sc-bZQynM bOrPFB sc-EHOje dmUTBA"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -2595,7 +1693,7 @@ exports[`renders a sponsored series properly 1`] = `
                   New Study Shows the Gender Pay Gap for Artists Is Not So Simple
                 </div>
                 <div
-                  className="c29"
+                  className="sc-gzVnrw ibZhkv sc-EHOje lhPpoe"
                   fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                   fontSize={
                     Array [
@@ -2610,10 +1708,10 @@ exports[`renders a sponsored series properly 1`] = `
                 </div>
               </div>
               <div
-                className="c30"
+                className="c21"
               >
                 <div
-                  className="c31"
+                  className="sc-bZQynM bOrPFB sc-EHOje fXsUty"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2627,7 +1725,7 @@ exports[`renders a sponsored series properly 1`] = `
               </div>
             </div>
             <div
-              className="c32 c33"
+              className="c22 sc-kAzzGY iqiPK"
               width={
                 Array [
                   "100%",
@@ -2638,14 +1736,14 @@ exports[`renders a sponsored series properly 1`] = `
               }
             >
               <img
-                className="c34 c35"
+                className="c23 c24"
                 src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
               />
               <div
-                className="c36 c37"
+                className="c25 sc-ifAKCX ifRBhy"
               >
                 <svg
-                  className="c38"
+                  className="c26"
                   version="1.1"
                   viewBox="0 0 40 56"
                   x="0px"
@@ -2665,7 +1763,7 @@ exports[`renders a sponsored series properly 1`] = `
                   </g>
                 </svg>
                 <div
-                  className="c39"
+                  className="sc-bZQynM bOrPFB sc-EHOje bZsSMq"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2682,19 +1780,19 @@ exports[`renders a sponsored series properly 1`] = `
         </a>
       </div>
       <div
-        className="c23"
+        className="sc-kAzzGY iBAmpz"
       >
         <a
-          className="ArticleCard c24"
+          className="ArticleCard c20"
           color="white"
           href="new-yorks-next-art-district"
           onClick={[Function]}
         >
           <div
-            className="c25"
+            className="sc-ifAKCX kXtlsF"
           >
             <div
-              className="c26"
+              className="sc-ifAKCX jiYvGF"
               width={
                 Array [
                   "100%",
@@ -2706,7 +1804,7 @@ exports[`renders a sponsored series properly 1`] = `
             >
               <div>
                 <div
-                  className="c27"
+                  className="sc-bZQynM bOrPFB sc-EHOje cpSHOt"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2718,7 +1816,7 @@ exports[`renders a sponsored series properly 1`] = `
                   The Future of Art
                 </div>
                 <div
-                  className="c28"
+                  className="sc-bZQynM bOrPFB sc-EHOje dmUTBA"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -2732,7 +1830,7 @@ exports[`renders a sponsored series properly 1`] = `
                   New York's Next Art District
                 </div>
                 <div
-                  className="c29"
+                  className="sc-gzVnrw ibZhkv sc-EHOje lhPpoe"
                   fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                   fontSize={
                     Array [
@@ -2747,11 +1845,11 @@ exports[`renders a sponsored series properly 1`] = `
                 </div>
               </div>
               <div
-                className="Byline c40"
+                className="Byline c27"
                 color="white"
               >
                 <div
-                  className="c31"
+                  className="sc-bZQynM bOrPFB sc-EHOje fXsUty"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2761,17 +1859,17 @@ exports[`renders a sponsored series properly 1`] = `
                   fontSize="14px"
                 >
                   <div
-                    className="c41"
+                    className="c28"
                     color="white"
                   >
                     Casey Lesser
                   </div>
                 </div>
                 <div
-                  className="c30"
+                  className="c21"
                 >
                   <div
-                    className="c31"
+                    className="sc-bZQynM bOrPFB sc-EHOje fXsUty"
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2786,7 +1884,7 @@ exports[`renders a sponsored series properly 1`] = `
               </div>
             </div>
             <div
-              className="c32 c33"
+              className="c22 sc-kAzzGY iqiPK"
               width={
                 Array [
                   "100%",
@@ -2797,7 +1895,7 @@ exports[`renders a sponsored series properly 1`] = `
               }
             >
               <img
-                className="c34 c35"
+                className="c23 c24"
                 src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=95"
               />
             </div>
@@ -2806,15 +1904,15 @@ exports[`renders a sponsored series properly 1`] = `
       </div>
     </div>
     <div
-      className="c42"
+      className="sc-kAzzGY bCdiKa"
     >
       <div
-        className="c43"
+        className="sc-ifAKCX dYrUUk"
         color="white"
         width="100%"
       >
         <div
-          className="c44"
+          className="sc-ifAKCX kwmuuS"
           width={
             Array [
               1,
@@ -2825,7 +1923,7 @@ exports[`renders a sponsored series properly 1`] = `
           }
         >
           <div
-            className="c45"
+            className="sc-bZQynM bOrPFB sc-EHOje bJkZDO"
             fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="28px"
           >
@@ -2835,18 +1933,18 @@ exports[`renders a sponsored series properly 1`] = `
             className="rrm-container rrm-greaterThanOrEqual-md"
           >
             <div
-              className="c46"
+              className="sc-kAzzGY fBsJru"
             >
               <div
-                className="PartnerBlock c18"
+                className="PartnerBlock c16"
               >
                 <div
-                  className="c19"
+                  className="c17"
                 >
                   Presented in Partnership with
                 </div>
                 <div
-                  className="c20 c21"
+                  className="c18 c19"
                 >
                   <a
                     href="http://artsy.net"
@@ -2863,7 +1961,7 @@ exports[`renders a sponsored series properly 1`] = `
           </div>
         </div>
         <div
-          className="c47"
+          className="sc-ifAKCX gkTgYS"
           width={
             Array [
               1,
@@ -2877,7 +1975,7 @@ exports[`renders a sponsored series properly 1`] = `
             className="SeriesAbout__description"
           >
             <div
-              className="article__text-section c48"
+              className="article__text-section c29"
               color="white"
             >
               <div
@@ -2893,18 +1991,18 @@ exports[`renders a sponsored series properly 1`] = `
             className="rrm-container rrm-lessThan-md"
           >
             <div
-              className="c49"
+              className="sc-kAzzGY duZrZH"
             >
               <div
-                className="PartnerBlock c18"
+                className="PartnerBlock c16"
               >
                 <div
-                  className="c19"
+                  className="c17"
                 >
                   Presented in Partnership with
                 </div>
                 <div
-                  className="c20 c21"
+                  className="c18 c19"
                 >
                   <a
                     href="http://artsy.net"

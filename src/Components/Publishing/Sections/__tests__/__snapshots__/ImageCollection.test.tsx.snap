@@ -2,17 +2,10 @@
 
 exports[`renders a single image properly 1`] = `
 .c10 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 14px;
-  line-height: 24px;
-  color: #C2C2C2;
-}
-
-.c11 {
   margin-right: 30px;
 }
 
-.c12 {
+.c11 {
   white-space: nowrap;
 }
 
@@ -220,16 +213,16 @@ exports[`renders a single image properly 1`] = `
       </a>
       <div>
         <div
-          className="c9 c10"
+          className="c9 sc-bZQynM bOrPFB sc-EHOje eiIllQ"
           color="#C2C2C2"
           fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
           fontSize="14px"
         >
           <span
-            className="c11"
+            className="c10"
           >
             <span
-              className="c12"
+              className="c11"
             >
               <a
                 href="/artist/fernando-botero"
@@ -295,17 +288,10 @@ exports[`renders a single image properly 1`] = `
 
 exports[`renders properly 1`] = `
 .c10 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 14px;
-  line-height: 24px;
-  color: #C2C2C2;
-}
-
-.c11 {
   margin-right: 30px;
 }
 
-.c12 {
+.c11 {
   white-space: nowrap;
 }
 
@@ -389,7 +375,7 @@ exports[`renders properly 1`] = `
   flex-direction: column;
 }
 
-.c14 {
+.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -401,16 +387,16 @@ exports[`renders properly 1`] = `
   margin: 10px 0 10px 0;
 }
 
-.c15 {
+.c14 {
   padding: 0;
   width: 100%;
   word-break: break-word;
 }
 
-.c15 > p,
-.c15 p,
-.c15 .public-DraftEditorPlaceholder-root,
-.c15 .public-DraftStyleDefault-block {
+.c14 > p,
+.c14 p,
+.c14 .public-DraftEditorPlaceholder-root,
+.c14 .public-DraftStyleDefault-block {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -419,13 +405,13 @@ exports[`renders properly 1`] = `
   margin: 0;
 }
 
-.c15 > a,
-.c15 a {
+.c14 > a,
+.c14 a {
   color: #999;
 }
 
-.c15 > a:hover,
-.c15 a:hover {
+.c14 > a:hover,
+.c14 a:hover {
   color: black;
 }
 
@@ -446,12 +432,12 @@ exports[`renders properly 1`] = `
   width: 312px;
 }
 
-.c13 {
+.c12 {
   margin-right: 10px;
   width: 168px;
 }
 
-.c16 {
+.c15 {
   margin-right: 0px;
   width: 178px;
 }
@@ -469,13 +455,13 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c14 {
+  .c13 {
     padding: 0px 10px;
   }
 }
 
 @media (max-width:600px) {
-  .c15 {
+  .c14 {
     padding: 0px;
   }
 }
@@ -495,13 +481,13 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c13 {
+  .c12 {
     margin-bottom: 10px;
   }
 }
 
 @media (max-width:600px) {
-  .c16 {
+  .c15 {
     margin-bottom: 10px;
   }
 }
@@ -588,16 +574,16 @@ exports[`renders properly 1`] = `
       </a>
       <div>
         <div
-          className="c9 c10"
+          className="c9 sc-bZQynM bOrPFB sc-EHOje eiIllQ"
           color="#C2C2C2"
           fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
           fontSize="14px"
         >
           <span
-            className="c11"
+            className="c10"
           >
             <span
-              className="c12"
+              className="c11"
             >
               <a
                 href="/artist/fernando-botero"
@@ -659,7 +645,7 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c13"
+    className="c12"
     width={168}
   >
     <div
@@ -731,10 +717,10 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c14"
+        className="c13"
       >
         <div
-          className="c15"
+          className="c14"
         >
           <div
             dangerouslySetInnerHTML={
@@ -748,7 +734,7 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c16"
+    className="c15"
     width={178}
   >
     <div
@@ -820,10 +806,10 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c14"
+        className="c13"
       >
         <div
-          className="c15"
+          className="c14"
         >
           <div
             dangerouslySetInnerHTML={

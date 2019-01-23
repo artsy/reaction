@@ -1,19 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders ShareDate properly 1`] = `
-.c2 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-}
-
 .c1 {
   margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
-.c4 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -27,22 +20,22 @@ exports[`renders ShareDate properly 1`] = `
   margin-top: 5px;
 }
 
-.c6 {
+.c5 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c6:hover {
+.c5:hover {
   opacity: 0.6;
 }
 
-.c6:first-child {
+.c5:first-child {
   padding-left: 0;
 }
 
-.c5 {
+.c4 {
   margin: 5px 10px 5px 0;
 }
 
@@ -51,7 +44,7 @@ exports[`renders ShareDate properly 1`] = `
 }
 
 @media (max-width:768px) {
-  .c0 .c3 {
+  .c0 .c2 {
     margin-top: 0px;
   }
 }
@@ -63,7 +56,7 @@ exports[`renders ShareDate properly 1`] = `
     className="c1"
   >
     <div
-      className="c2"
+      className="sc-bZQynM bOrPFB sc-EHOje fXsUty"
       fontFamily={
         Object {
           "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -76,10 +69,10 @@ exports[`renders ShareDate properly 1`] = `
     </div>
   </div>
   <div
-    className="c3 c4"
+    className="c2 c3"
   >
     <div
-      className="c5 c2"
+      className="c4 sc-bZQynM bOrPFB sc-EHOje fXsUty"
       fontFamily={
         Object {
           "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -91,7 +84,7 @@ exports[`renders ShareDate properly 1`] = `
       Share
     </div>
     <a
-      className="c6"
+      className="c5"
       href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district"
       onClick={[Function]}
       target="_blank"
@@ -117,7 +110,7 @@ exports[`renders ShareDate properly 1`] = `
       </svg>
     </a>
     <a
-      className="c6"
+      className="c5"
       href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district&text=New York's Next Art District&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnew-yorks-next-art-district&via=artsy"
       onClick={[Function]}
       target="_blank"
@@ -143,7 +136,7 @@ exports[`renders ShareDate properly 1`] = `
       </svg>
     </a>
     <a
-      className="c6"
+      className="c5"
       href="mailto:?subject=New York's Next Art District&body=Check out New York's Next Art District on Artsy: https://www.artsy.net/article/new-yorks-next-art-district"
       onClick={[Function]}
       target="_blank"

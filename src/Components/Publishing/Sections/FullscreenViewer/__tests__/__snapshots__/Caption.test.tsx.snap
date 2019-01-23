@@ -1,18 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders an artwork caption properly 1`] = `
-.c5 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;
-}
-
-.c7 {
+.c6 {
   margin-right: 30px;
 }
 
-.c8 {
+.c7 {
   white-space: nowrap;
 }
 
@@ -49,7 +42,7 @@ exports[`renders an artwork caption properly 1`] = `
   color: black;
 }
 
-.c9 {
+.c8 {
   margin-left: 20px;
   white-space: nowrap;
   font-family: Unica77LLWebRegular,Arial,serif;
@@ -85,18 +78,6 @@ exports[`renders an artwork caption properly 1`] = `
   flex-direction: column;
 }
 
-@media screen and (min-width:40em) {
-  .c5 {
-    font-size: 16px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c5 {
-    line-height: 26px;
-  }
-}
-
 @media (max-width:720px) {
   .c4 {
     -webkit-flex-direction: column;
@@ -106,7 +87,7 @@ exports[`renders an artwork caption properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c6.artist-name {
+  .c5.artist-name {
     margin-bottom: 5px;
   }
 }
@@ -138,7 +119,7 @@ exports[`renders an artwork caption properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c9 {
+  .c8 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
@@ -175,7 +156,7 @@ exports[`renders an artwork caption properly 1`] = `
     >
       <div>
         <div
-          className="c4 c5"
+          className="c4 sc-bZQynM bOrPFB sc-EHOje iJMdQR"
           fontFamily={
             Object {
               "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -190,13 +171,13 @@ exports[`renders an artwork caption properly 1`] = `
           }
         >
           <div
-            className="c6"
+            className="c5"
           >
             <span
-              className="c7"
+              className="c6"
             >
               <span
-                className="c8"
+                className="c7"
               >
                 <a
                   href="/artist/fernando-botero"
@@ -208,7 +189,7 @@ exports[`renders an artwork caption properly 1`] = `
           </div>
           <div>
             <div
-              className="c6"
+              className="c5"
             >
               <span
                 className="title"
@@ -229,7 +210,7 @@ exports[`renders an artwork caption properly 1`] = `
               </span>
             </div>
             <div
-              className="c6"
+              className="c5"
             >
               <a
                 href="/gary-nader"
@@ -251,7 +232,7 @@ exports[`renders an artwork caption properly 1`] = `
     </div>
   </div>
   <div
-    className="c9"
+    className="c8"
   >
     2 of 10
   </div>

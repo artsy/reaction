@@ -2,59 +2,12 @@
 
 exports[`SeriesAbout snapshots Renders properly 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-  max-width: 1200px;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  width: 100%;
-}
-
-.c2 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 28px;
-  line-height: 36px;
-  margin-bottom: 20px;
-}
-
-.c4 {
   position: relative;
   width: 100%;
   color: black;
 }
 
-.c4 a {
+.c0 a {
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -64,22 +17,22 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   background-position: bottom;
 }
 
-.c4 a:hover {
+.c0 a:hover {
   color: #C2C2C2;
   opacity: 1;
 }
 
-.c4 div[class*='ToolTip'] a {
+.c0 div[class*='ToolTip'] a {
   background-image: none;
   opacity: 1;
   color: inherit;
 }
 
-.c4 p,
-.c4 ul,
-.c4 ol,
-.c4 .paragraph,
-.c4 div[data-block=true] .public-DraftStyleDefault-block {
+.c0 p,
+.c0 ul,
+.c0 ol,
+.c0 .paragraph,
+.c0 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -90,32 +43,32 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   font-style: inherit;
 }
 
-.c4 p:first-child,
-.c4 .paragraph:first-child,
-.c4 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c0 p:first-child,
+.c0 .paragraph:first-child,
+.c0 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c4 p:last-child,
-.c4 .paragraph:last-child,
-.c4 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c0 p:last-child,
+.c0 .paragraph:last-child,
+.c0 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c4 ul,
-.c4 ol {
+.c0 ul,
+.c0 ol {
   padding-left: 1em;
 }
 
-.c4 ul {
+.c0 ul {
   list-style: disc;
 }
 
-.c4 ol {
+.c0 ol {
   list-style: decimal;
 }
 
-.c4 li {
+.c0 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -124,7 +77,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   padding-bottom: .5em;
 }
 
-.c4 h1 {
+.c0 h1 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -137,7 +90,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   text-align: center;
 }
 
-.c4 h1::before {
+.c0 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -148,7 +101,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   right: calc(50% - 4px);
 }
 
-.c4 h2 {
+.c0 h2 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -157,15 +110,15 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   margin: 0;
 }
 
-.c4 h2 a {
+.c0 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c4 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
+.c0 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
   background-position: bottom !important;
 }
 
-.c4 h3 {
+.c0 h3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -175,7 +128,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   margin: 0;
 }
 
-.c4 h3 strong {
+.c0 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -183,11 +136,11 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   line-height: 1.5em;
 }
 
-.c4 h3 a {
+.c0 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c4 blockquote {
+.c0 blockquote {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 40px;
   line-height: 1.1em;
@@ -200,7 +153,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   word-break: break-word;
 }
 
-.c4 .content-end {
+.c0 .content-end {
   display: inline-block;
   content: "";
   width: 8px;
@@ -211,14 +164,14 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   margin-bottom: 1px;
 }
 
-.c4 .artist-follow {
+.c0 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c4 .artist-follow::before {
+.c0 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -226,7 +179,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   font-size: 32px;
 }
 
-.c4 .artist-follow::after {
+.c0 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -235,117 +188,39 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   text-transform: none;
 }
 
-@media screen and (min-width:40em) {
-  .c0 {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c0 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c0 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c1 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c1 {
-    width: 33.33333333333333%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c1 {
-    width: 33.33333333333333%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c3 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c3 {
-    width: 66.66666666666666%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c3 {
-    width: 66.66666666666666%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c2 {
-    margin-bottom: 20px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c2 {
-    margin-bottom: 0px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c2 {
-    margin-bottom: 0px;
-  }
-}
-
 @media (max-width:600px) {
-  .c4 p,
-  .c4 ul,
-  .c4 ol,
-  .c4 div[data-block=true] .public-DraftStyleDefault-block {
+  .c0 p,
+  .c0 ul,
+  .c0 ol,
+  .c0 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c4 li {
+  .c0 li {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c4 h1 {
+  .c0 h1 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c4 h2 {
+  .c0 h2 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c4 h3 {
+  .c0 h3 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -353,14 +228,14 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
     line-height: 1.5em;
   }
 
-  .c4 h3 strong {
+  .c0 h3 strong {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c4 blockquote {
+  .c0 blockquote {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
@@ -368,18 +243,18 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
     margin: 0;
   }
 
-  .c4 .content-start {
+  .c0 .content-start {
     font-size: 55px;
   }
 }
 
 <div
-  className="c0"
+  className="sc-ifAKCX dYrUUk"
   color="black"
   width="100%"
 >
   <div
-    className="c1"
+    className="sc-ifAKCX kwmuuS"
     width={
       Array [
         1,
@@ -390,7 +265,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
     }
   >
     <div
-      className="c2"
+      className="sc-bZQynM bOrPFB sc-EHOje bJkZDO"
       fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
       fontSize="28px"
     >
@@ -401,7 +276,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
     />
   </div>
   <div
-    className="c3"
+    className="sc-ifAKCX gkTgYS"
     width={
       Array [
         1,
@@ -415,7 +290,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
       className="SeriesAbout__description"
     >
       <div
-        className="article__text-section c4"
+        className="article__text-section c0"
         color="black"
       >
         <div
@@ -436,59 +311,12 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
 
 exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-  max-width: 1200px;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  width: 100%;
-}
-
-.c2 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 28px;
-  line-height: 36px;
-  margin-bottom: 20px;
-}
-
-.c4 {
   position: relative;
   width: 100%;
   color: black;
 }
 
-.c4 a {
+.c0 a {
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -498,22 +326,22 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   background-position: bottom;
 }
 
-.c4 a:hover {
+.c0 a:hover {
   color: #C2C2C2;
   opacity: 1;
 }
 
-.c4 div[class*='ToolTip'] a {
+.c0 div[class*='ToolTip'] a {
   background-image: none;
   opacity: 1;
   color: inherit;
 }
 
-.c4 p,
-.c4 ul,
-.c4 ol,
-.c4 .paragraph,
-.c4 div[data-block=true] .public-DraftStyleDefault-block {
+.c0 p,
+.c0 ul,
+.c0 ol,
+.c0 .paragraph,
+.c0 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -524,32 +352,32 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   font-style: inherit;
 }
 
-.c4 p:first-child,
-.c4 .paragraph:first-child,
-.c4 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c0 p:first-child,
+.c0 .paragraph:first-child,
+.c0 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c4 p:last-child,
-.c4 .paragraph:last-child,
-.c4 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c0 p:last-child,
+.c0 .paragraph:last-child,
+.c0 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c4 ul,
-.c4 ol {
+.c0 ul,
+.c0 ol {
   padding-left: 1em;
 }
 
-.c4 ul {
+.c0 ul {
   list-style: disc;
 }
 
-.c4 ol {
+.c0 ol {
   list-style: decimal;
 }
 
-.c4 li {
+.c0 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -558,7 +386,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   padding-bottom: .5em;
 }
 
-.c4 h1 {
+.c0 h1 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -571,7 +399,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   text-align: center;
 }
 
-.c4 h1::before {
+.c0 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -582,7 +410,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   right: calc(50% - 4px);
 }
 
-.c4 h2 {
+.c0 h2 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -591,15 +419,15 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   margin: 0;
 }
 
-.c4 h2 a {
+.c0 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c4 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
+.c0 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
   background-position: bottom !important;
 }
 
-.c4 h3 {
+.c0 h3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -609,7 +437,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   margin: 0;
 }
 
-.c4 h3 strong {
+.c0 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -617,11 +445,11 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   line-height: 1.5em;
 }
 
-.c4 h3 a {
+.c0 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c4 blockquote {
+.c0 blockquote {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 40px;
   line-height: 1.1em;
@@ -634,7 +462,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   word-break: break-word;
 }
 
-.c4 .content-end {
+.c0 .content-end {
   display: inline-block;
   content: "";
   width: 8px;
@@ -645,14 +473,14 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   margin-bottom: 1px;
 }
 
-.c4 .artist-follow {
+.c0 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c4 .artist-follow::before {
+.c0 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -660,7 +488,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   font-size: 32px;
 }
 
-.c4 .artist-follow::after {
+.c0 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -669,117 +497,39 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   text-transform: none;
 }
 
-@media screen and (min-width:40em) {
-  .c0 {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c0 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c0 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c1 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c1 {
-    width: 33.33333333333333%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c1 {
-    width: 33.33333333333333%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c3 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c3 {
-    width: 66.66666666666666%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c3 {
-    width: 66.66666666666666%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c2 {
-    margin-bottom: 20px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c2 {
-    margin-bottom: 0px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c2 {
-    margin-bottom: 0px;
-  }
-}
-
 @media (max-width:600px) {
-  .c4 p,
-  .c4 ul,
-  .c4 ol,
-  .c4 div[data-block=true] .public-DraftStyleDefault-block {
+  .c0 p,
+  .c0 ul,
+  .c0 ol,
+  .c0 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c4 li {
+  .c0 li {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c4 h1 {
+  .c0 h1 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c4 h2 {
+  .c0 h2 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c4 h3 {
+  .c0 h3 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -787,14 +537,14 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
     line-height: 1.5em;
   }
 
-  .c4 h3 strong {
+  .c0 h3 strong {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c4 blockquote {
+  .c0 blockquote {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
@@ -802,18 +552,18 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
     margin: 0;
   }
 
-  .c4 .content-start {
+  .c0 .content-start {
     font-size: 55px;
   }
 }
 
 <div
-  className="c0"
+  className="sc-ifAKCX dYrUUk"
   color="black"
   width="100%"
 >
   <div
-    className="c1"
+    className="sc-ifAKCX kwmuuS"
     width={
       Array [
         1,
@@ -824,7 +574,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
     }
   >
     <div
-      className="c2"
+      className="sc-bZQynM bOrPFB sc-EHOje bJkZDO"
       fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
       fontSize="28px"
     >
@@ -835,7 +585,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
     />
   </div>
   <div
-    className="c3"
+    className="sc-ifAKCX gkTgYS"
     width={
       Array [
         1,
@@ -846,7 +596,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
     }
   >
     <div
-      className="article__text-section c4"
+      className="article__text-section c0"
       color="black"
     >
       <div>
@@ -863,59 +613,12 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
 
 exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-  max-width: 1200px;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  width: 100%;
-}
-
-.c2 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 28px;
-  line-height: 36px;
-  margin-bottom: 20px;
-}
-
-.c4 {
   position: relative;
   width: 100%;
   color: black;
 }
 
-.c4 a {
+.c0 a {
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -925,22 +628,22 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   background-position: bottom;
 }
 
-.c4 a:hover {
+.c0 a:hover {
   color: #C2C2C2;
   opacity: 1;
 }
 
-.c4 div[class*='ToolTip'] a {
+.c0 div[class*='ToolTip'] a {
   background-image: none;
   opacity: 1;
   color: inherit;
 }
 
-.c4 p,
-.c4 ul,
-.c4 ol,
-.c4 .paragraph,
-.c4 div[data-block=true] .public-DraftStyleDefault-block {
+.c0 p,
+.c0 ul,
+.c0 ol,
+.c0 .paragraph,
+.c0 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -951,32 +654,32 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   font-style: inherit;
 }
 
-.c4 p:first-child,
-.c4 .paragraph:first-child,
-.c4 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c0 p:first-child,
+.c0 .paragraph:first-child,
+.c0 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c4 p:last-child,
-.c4 .paragraph:last-child,
-.c4 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c0 p:last-child,
+.c0 .paragraph:last-child,
+.c0 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c4 ul,
-.c4 ol {
+.c0 ul,
+.c0 ol {
   padding-left: 1em;
 }
 
-.c4 ul {
+.c0 ul {
   list-style: disc;
 }
 
-.c4 ol {
+.c0 ol {
   list-style: decimal;
 }
 
-.c4 li {
+.c0 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -985,7 +688,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   padding-bottom: .5em;
 }
 
-.c4 h1 {
+.c0 h1 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -998,7 +701,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   text-align: center;
 }
 
-.c4 h1::before {
+.c0 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -1009,7 +712,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   right: calc(50% - 4px);
 }
 
-.c4 h2 {
+.c0 h2 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -1018,15 +721,15 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   margin: 0;
 }
 
-.c4 h2 a {
+.c0 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c4 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
+.c0 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
   background-position: bottom !important;
 }
 
-.c4 h3 {
+.c0 h3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -1036,7 +739,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   margin: 0;
 }
 
-.c4 h3 strong {
+.c0 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -1044,11 +747,11 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   line-height: 1.5em;
 }
 
-.c4 h3 a {
+.c0 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c4 blockquote {
+.c0 blockquote {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 40px;
   line-height: 1.1em;
@@ -1061,7 +764,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   word-break: break-word;
 }
 
-.c4 .content-end {
+.c0 .content-end {
   display: inline-block;
   content: "";
   width: 8px;
@@ -1072,14 +775,14 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   margin-bottom: 1px;
 }
 
-.c4 .artist-follow {
+.c0 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c4 .artist-follow::before {
+.c0 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -1087,7 +790,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   font-size: 32px;
 }
 
-.c4 .artist-follow::after {
+.c0 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -1096,117 +799,39 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   text-transform: none;
 }
 
-@media screen and (min-width:40em) {
-  .c0 {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c0 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c0 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c1 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c1 {
-    width: 33.33333333333333%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c1 {
-    width: 33.33333333333333%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c3 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c3 {
-    width: 66.66666666666666%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c3 {
-    width: 66.66666666666666%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c2 {
-    margin-bottom: 20px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c2 {
-    margin-bottom: 0px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c2 {
-    margin-bottom: 0px;
-  }
-}
-
 @media (max-width:600px) {
-  .c4 p,
-  .c4 ul,
-  .c4 ol,
-  .c4 div[data-block=true] .public-DraftStyleDefault-block {
+  .c0 p,
+  .c0 ul,
+  .c0 ol,
+  .c0 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c4 li {
+  .c0 li {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c4 h1 {
+  .c0 h1 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c4 h2 {
+  .c0 h2 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c4 h3 {
+  .c0 h3 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -1214,14 +839,14 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
     line-height: 1.5em;
   }
 
-  .c4 h3 strong {
+  .c0 h3 strong {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c4 blockquote {
+  .c0 blockquote {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
@@ -1229,18 +854,18 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
     margin: 0;
   }
 
-  .c4 .content-start {
+  .c0 .content-start {
     font-size: 55px;
   }
 }
 
 <div
-  className="c0"
+  className="sc-ifAKCX dYrUUk"
   color="black"
   width="100%"
 >
   <div
-    className="c1"
+    className="sc-ifAKCX kwmuuS"
     width={
       Array [
         1,
@@ -1251,7 +876,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
     }
   >
     <div
-      className="c2"
+      className="sc-bZQynM bOrPFB sc-EHOje bJkZDO"
       fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
       fontSize="28px"
     >
@@ -1265,7 +890,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
     />
   </div>
   <div
-    className="c3"
+    className="sc-ifAKCX gkTgYS"
     width={
       Array [
         1,
@@ -1279,7 +904,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
       className="SeriesAbout__description"
     >
       <div
-        className="article__text-section c4"
+        className="article__text-section c0"
         color="black"
       >
         <div
@@ -1300,72 +925,17 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
 
 exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-  max-width: 1200px;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.c7 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  width: 100%;
-}
-
-.c2 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 28px;
-  line-height: 36px;
-  margin-bottom: 20px;
-}
-
-.c3 {
-  margin-bottom: 4px;
-}
-
-.c9 {
-  margin-top: 60px;
-}
-
-.c4 {
   display: block;
 }
 
-.c6 img {
+.c2 img {
   max-width: 240px;
   max-height: 40px;
   object-fit: contain;
   object-position: left;
 }
 
-.c5 {
+.c1 {
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
@@ -1373,13 +943,13 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   margin-bottom: 20px;
 }
 
-.c8 {
+.c3 {
   position: relative;
   width: 100%;
   color: black;
 }
 
-.c8 a {
+.c3 a {
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -1389,22 +959,22 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   background-position: bottom;
 }
 
-.c8 a:hover {
+.c3 a:hover {
   color: #C2C2C2;
   opacity: 1;
 }
 
-.c8 div[class*='ToolTip'] a {
+.c3 div[class*='ToolTip'] a {
   background-image: none;
   opacity: 1;
   color: inherit;
 }
 
-.c8 p,
-.c8 ul,
-.c8 ol,
-.c8 .paragraph,
-.c8 div[data-block=true] .public-DraftStyleDefault-block {
+.c3 p,
+.c3 ul,
+.c3 ol,
+.c3 .paragraph,
+.c3 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -1415,32 +985,32 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   font-style: inherit;
 }
 
-.c8 p:first-child,
-.c8 .paragraph:first-child,
-.c8 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c3 p:first-child,
+.c3 .paragraph:first-child,
+.c3 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c8 p:last-child,
-.c8 .paragraph:last-child,
-.c8 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c3 p:last-child,
+.c3 .paragraph:last-child,
+.c3 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c8 ul,
-.c8 ol {
+.c3 ul,
+.c3 ol {
   padding-left: 1em;
 }
 
-.c8 ul {
+.c3 ul {
   list-style: disc;
 }
 
-.c8 ol {
+.c3 ol {
   list-style: decimal;
 }
 
-.c8 li {
+.c3 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -1449,7 +1019,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   padding-bottom: .5em;
 }
 
-.c8 h1 {
+.c3 h1 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -1462,7 +1032,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   text-align: center;
 }
 
-.c8 h1::before {
+.c3 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -1473,7 +1043,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   right: calc(50% - 4px);
 }
 
-.c8 h2 {
+.c3 h2 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -1482,15 +1052,15 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   margin: 0;
 }
 
-.c8 h2 a {
+.c3 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c8 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
+.c3 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
   background-position: bottom !important;
 }
 
-.c8 h3 {
+.c3 h3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -1500,7 +1070,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   margin: 0;
 }
 
-.c8 h3 strong {
+.c3 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -1508,11 +1078,11 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   line-height: 1.5em;
 }
 
-.c8 h3 a {
+.c3 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c8 blockquote {
+.c3 blockquote {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 40px;
   line-height: 1.1em;
@@ -1525,7 +1095,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   word-break: break-word;
 }
 
-.c8 .content-end {
+.c3 .content-end {
   display: inline-block;
   content: "";
   width: 8px;
@@ -1536,14 +1106,14 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   margin-bottom: 1px;
 }
 
-.c8 .artist-follow {
+.c3 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c8 .artist-follow::before {
+.c3 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -1551,7 +1121,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   font-size: 32px;
 }
 
-.c8 .artist-follow::after {
+.c3 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -1560,86 +1130,8 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   text-transform: none;
 }
 
-@media screen and (min-width:40em) {
-  .c0 {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c0 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c0 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c1 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c1 {
-    width: 33.33333333333333%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c1 {
-    width: 33.33333333333333%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c7 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c7 {
-    width: 66.66666666666666%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c7 {
-    width: 66.66666666666666%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c2 {
-    margin-bottom: 20px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c2 {
-    margin-bottom: 0px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c2 {
-    margin-bottom: 0px;
-  }
-}
-
 @media (max-width:720px) {
-  .c5 {
+  .c1 {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
@@ -1648,38 +1140,38 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
 }
 
 @media (max-width:600px) {
-  .c8 p,
-  .c8 ul,
-  .c8 ol,
-  .c8 div[data-block=true] .public-DraftStyleDefault-block {
+  .c3 p,
+  .c3 ul,
+  .c3 ol,
+  .c3 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c8 li {
+  .c3 li {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c8 h1 {
+  .c3 h1 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c8 h2 {
+  .c3 h2 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c8 h3 {
+  .c3 h3 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -1687,14 +1179,14 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
     line-height: 1.5em;
   }
 
-  .c8 h3 strong {
+  .c3 h3 strong {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c8 blockquote {
+  .c3 blockquote {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
@@ -1702,18 +1194,18 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
     margin: 0;
   }
 
-  .c8 .content-start {
+  .c3 .content-start {
     font-size: 55px;
   }
 }
 
 <div
-  className="c0"
+  className="sc-ifAKCX dYrUUk"
   color="black"
   width="100%"
 >
   <div
-    className="c1"
+    className="sc-ifAKCX kwmuuS"
     width={
       Array [
         1,
@@ -1724,7 +1216,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
     }
   >
     <div
-      className="c2"
+      className="sc-bZQynM bOrPFB sc-EHOje bJkZDO"
       fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
       fontSize="28px"
     >
@@ -1734,18 +1226,18 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
       className="rrm-container rrm-greaterThanOrEqual-md"
     >
       <div
-        className="c3"
+        className="sc-kAzzGY fBsJru"
       >
         <div
-          className="PartnerBlock c4"
+          className="PartnerBlock c0"
         >
           <div
-            className="c5"
+            className="c1"
           >
             Presented in Partnership with
           </div>
           <div
-            className="c6"
+            className="c2"
           >
             <a
               href="http://artsy.net"
@@ -1762,7 +1254,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
     </div>
   </div>
   <div
-    className="c7"
+    className="sc-ifAKCX gkTgYS"
     width={
       Array [
         1,
@@ -1776,7 +1268,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
       className="SeriesAbout__description"
     >
       <div
-        className="article__text-section c8"
+        className="article__text-section c3"
         color="black"
       >
         <div
@@ -1792,18 +1284,18 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
       className="rrm-container rrm-lessThan-md"
     >
       <div
-        className="c9"
+        className="sc-kAzzGY duZrZH"
       >
         <div
-          className="PartnerBlock c4"
+          className="PartnerBlock c0"
         >
           <div
-            className="c5"
+            className="c1"
           >
             Presented in Partnership with
           </div>
           <div
-            className="c6"
+            className="c2"
           >
             <a
               href="http://artsy.net"

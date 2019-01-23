@@ -1,25 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Artwork renders correctly 1`] = `
-.c5 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
-  color: #000;
-}
-
-.c6 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 12px;
-  line-height: 16px;
-  color: #666;
-}
-
-.c7 {
-  margin-bottom: 0.3px;
-}
-
 .c3 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 15px;
@@ -30,7 +11,7 @@ exports[`Artwork renders correctly 1`] = `
   text-decoration: none;
 }
 
-.c8 {
+.c5 {
   display: block;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -121,7 +102,7 @@ exports[`Artwork renders correctly 1`] = `
     >
       <div>
         <div
-          className="c5"
+          className="sc-bZQynM bOrPFB sc-EHOje cXnnxv"
           color="#000"
           fontFamily={
             Object {
@@ -140,7 +121,7 @@ exports[`Artwork renders correctly 1`] = `
            
         </div>
         <div
-          className="c6"
+          className="sc-bZQynM bOrPFB sc-EHOje bLqyBc"
           color="#666"
           fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
           fontSize="12px"
@@ -151,17 +132,17 @@ exports[`Artwork renders correctly 1`] = `
           }
         />
         <div
-          className="c7"
+          className="sc-kAzzGY XcfES"
         />
         <div
-          className="c8"
+          className="c5"
         >
           <strong>
             Mikael Olson
           </strong>
         </div>
         <div
-          className="c8"
+          className="c5"
         >
           <em>
             Some Kind of Dinosaur
@@ -169,7 +150,7 @@ exports[`Artwork renders correctly 1`] = `
           , 2015
         </div>
         <div
-          className="c8"
+          className="c5"
         >
           Gallery 1261
         </div>

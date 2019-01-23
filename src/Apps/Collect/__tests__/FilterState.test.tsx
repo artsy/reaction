@@ -71,4 +71,5 @@ const initialState = {
   price_range: "*-*",
   attribution_class: [],
   artist_id: null,
+  color: null,
 }

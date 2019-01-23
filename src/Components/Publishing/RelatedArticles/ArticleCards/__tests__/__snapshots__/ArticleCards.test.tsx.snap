@@ -2,90 +2,10 @@
 
 exports[`ArticleCard renders properly 1`] = `
 .c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column-reverse;
-  -ms-flex-direction: column-reverse;
-  flex-direction: column-reverse;
-  padding: 20px;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  margin-bottom: 0px;
-  width: 100%;
-}
-
-.c15 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
-
-.c4 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 28px;
-  line-height: 36px;
-  margin-bottom: 20px;
-}
-
-.c5 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 18px;
-  line-height: 26px;
-  margin-bottom: 20px;
-}
-
-.c7 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-.c17 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 1em;
-}
-
-.c0 {
-  margin-bottom: 40px;
-}
-
-.c11 {
-  margin-bottom: 10px;
-  margin-left: 0px;
-  width: 100%;
-}
-
-.c8 {
   margin: 10px 20px 0 0;
 }
 
-.c8::before {
+.c2::before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -95,12 +15,12 @@ exports[`ArticleCard renders properly 1`] = `
   background-color: #000;
 }
 
-.c9 {
+.c3 {
   margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
-.c6 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -115,12 +35,12 @@ exports[`ArticleCard renders properly 1`] = `
   color: #000;
 }
 
-.c16 {
+.c8 {
   width: 32px;
   height: 32px;
 }
 
-.c13 {
+.c6 {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -130,13 +50,13 @@ exports[`ArticleCard renders properly 1`] = `
   display: block;
 }
 
-.c10 {
+.c4 {
   position: relative;
   height: inherit;
   background: white;
 }
 
-.c1 {
+.c0 {
   border: 1px solid;
   border-radius: 2px;
   color: #000;
@@ -146,243 +66,48 @@ exports[`ArticleCard renders properly 1`] = `
   display: block;
 }
 
-.c1 .c12 {
+.c0 .c5 {
   opacity: 1;
 }
 
-.c1:hover .c12 {
+.c0:hover .c5 {
   opacity: 0.7;
 }
 
-.c14 {
+.c7 {
   position: absolute;
   left: 20px;
   right: 20px;
   bottom: 20px;
 }
 
-.c14 svg {
+.c7 svg {
   height: 40px;
 }
 
-@media screen and (min-width:40em) {
-  .c2 {
-    -webkit-flex-direction: column-reverse;
-    -ms-flex-direction: column-reverse;
-    flex-direction: column-reverse;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c2 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c2 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c2 {
-    padding: 20px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c2 {
-    padding: 30px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c2 {
-    padding: 30px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c3 {
-    margin-bottom: 0px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c3 {
-    margin-bottom: 5px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c3 {
-    margin-bottom: 5px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c3 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c3 {
-    width: 50%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c3 {
-    width: 50%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c4 {
-    font-size: 28px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c4 {
-    font-size: 42px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c4 {
-    font-size: 42px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c4 {
-    line-height: 36px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c4 {
-    line-height: 50px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c4 {
-    line-height: 50px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c5 {
-    font-size: 18px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c5 {
-    font-size: 22px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c5 {
-    font-size: 22px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c5 {
-    line-height: 26px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c5 {
-    line-height: 32px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c5 {
-    line-height: 32px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c0 {
-    margin-bottom: 60px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c11 {
-    margin-bottom: 10px;
-    margin-left: 0px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c11 {
-    margin-bottom: 0px;
-    margin-left: 30px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c11 {
-    margin-bottom: 0px;
-    margin-left: 30px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c11 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c11 {
-    width: 50%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c11 {
-    width: 50%;
-  }
-}
-
 @media (max-width:900px) {
-  .c14 svg {
+  .c7 svg {
     height: 30px;
   }
 }
 
 <div
-  className=""
+  className="sc-kAzzGY eEGgS"
 >
   <div
-    className="c0"
+    className="sc-kAzzGY iBAmpz"
   >
     <a
-      className="ArticleCard c1"
+      className="ArticleCard c0"
       color="#000"
       href="new-yorks-next-art-district"
       onClick={[Function]}
     >
       <div
-        className="c2"
+        className="sc-ifAKCX kXtlsF"
       >
         <div
-          className="c3"
+          className="sc-ifAKCX jiYvGF"
           width={
             Array [
               "100%",
@@ -394,7 +119,7 @@ exports[`ArticleCard renders properly 1`] = `
         >
           <div>
             <div
-              className="c4"
+              className="sc-bZQynM bOrPFB sc-EHOje dmUTBA"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize={
                 Array [
@@ -408,7 +133,7 @@ exports[`ArticleCard renders properly 1`] = `
               New York's Next Art District
             </div>
             <div
-              className="c5"
+              className="sc-gzVnrw ibZhkv sc-EHOje lhPpoe"
               fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
               fontSize={
                 Array [
@@ -423,11 +148,11 @@ exports[`ArticleCard renders properly 1`] = `
             </div>
           </div>
           <div
-            className="Byline c6"
+            className="Byline c1"
             color="#000"
           >
             <div
-              className="c7"
+              className="sc-bZQynM bOrPFB sc-EHOje fXsUty"
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -437,17 +162,17 @@ exports[`ArticleCard renders properly 1`] = `
               fontSize="14px"
             >
               <div
-                className="c8"
+                className="c2"
                 color="#000"
               >
                 Casey Lesser
               </div>
             </div>
             <div
-              className="c9"
+              className="c3"
             >
               <div
-                className="c7"
+                className="sc-bZQynM bOrPFB sc-EHOje fXsUty"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -462,7 +187,7 @@ exports[`ArticleCard renders properly 1`] = `
           </div>
         </div>
         <div
-          className="c10 c11"
+          className="c4 sc-kAzzGY iqiPK"
           width={
             Array [
               "100%",
@@ -473,7 +198,7 @@ exports[`ArticleCard renders properly 1`] = `
           }
         >
           <img
-            className="c12 c13"
+            className="c5 c6"
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=95"
           />
         </div>
@@ -481,19 +206,19 @@ exports[`ArticleCard renders properly 1`] = `
     </a>
   </div>
   <div
-    className="c0"
+    className="sc-kAzzGY iBAmpz"
   >
     <a
-      className="ArticleCard c1"
+      className="ArticleCard c0"
       color="#000"
       href="joanne-artman-gallery-poetry-naturerefinement-form"
       onClick={[Function]}
     >
       <div
-        className="c2"
+        className="sc-ifAKCX kXtlsF"
       >
         <div
-          className="c3"
+          className="sc-ifAKCX jiYvGF"
           width={
             Array [
               "100%",
@@ -505,7 +230,7 @@ exports[`ArticleCard renders properly 1`] = `
         >
           <div>
             <div
-              className="c4"
+              className="sc-bZQynM bOrPFB sc-EHOje dmUTBA"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize={
                 Array [
@@ -519,7 +244,7 @@ exports[`ArticleCard renders properly 1`] = `
               New Study Shows the Gender Pay Gap for Artists Is Not So Simple
             </div>
             <div
-              className="c5"
+              className="sc-gzVnrw ibZhkv sc-EHOje lhPpoe"
               fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
               fontSize={
                 Array [
@@ -534,10 +259,10 @@ exports[`ArticleCard renders properly 1`] = `
             </div>
           </div>
           <div
-            className="c9"
+            className="c3"
           >
             <div
-              className="c7"
+              className="sc-bZQynM bOrPFB sc-EHOje fXsUty"
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -551,7 +276,7 @@ exports[`ArticleCard renders properly 1`] = `
           </div>
         </div>
         <div
-          className="c10 c11"
+          className="c4 sc-kAzzGY iqiPK"
           width={
             Array [
               "100%",
@@ -562,14 +287,14 @@ exports[`ArticleCard renders properly 1`] = `
           }
         >
           <img
-            className="c12 c13"
+            className="c5 c6"
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
           />
           <div
-            className="c14 c15"
+            className="c7 sc-ifAKCX ifRBhy"
           >
             <svg
-              className="c16"
+              className="c8"
               version="1.1"
               viewBox="0 0 40 56"
               x="0px"
@@ -589,7 +314,7 @@ exports[`ArticleCard renders properly 1`] = `
               </g>
             </svg>
             <div
-              className="c17"
+              className="sc-bZQynM bOrPFB sc-EHOje bZsSMq"
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",

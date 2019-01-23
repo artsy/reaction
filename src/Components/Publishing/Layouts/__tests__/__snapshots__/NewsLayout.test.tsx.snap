@@ -1,18 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`News Layout renders the news layout on mobile 1`] = `
-.c17 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-.c19 {
+.c18 {
   margin: 10px 20px 0 0;
 }
 
-.c19::before {
+.c18::before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -22,7 +15,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   background-color: black;
 }
 
-.c20 {
+.c19 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -34,11 +27,11 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   color: #999999;
 }
 
-.c20 a {
+.c19 a {
   color: #999999;
 }
 
-.c21 {
+.c20 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -52,18 +45,18 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   margin-top: 5px;
 }
 
-.c22 {
+.c21 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c22:hover {
+.c21:hover {
   opacity: 0.6;
 }
 
-.c22:first-child {
+.c21:first-child {
   padding-left: 0;
 }
 
@@ -85,7 +78,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   align-items: flex-start;
 }
 
-.c15 .c18 {
+.c15 .c17 {
   margin-top: 0;
   margin-bottom: 5px;
 }
@@ -419,7 +412,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   border-bottom: 1px solid #E5E5E5;
 }
 
-.c23 {
+.c22 {
   width: 80px;
   height: 30px;
   background-color: black;
@@ -442,11 +435,11 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   line-height: 1em;
 }
 
-.c23:focus {
+.c22:focus {
   outline: 0;
 }
 
-.c23:hover {
+.c22:hover {
   color: #E5E5E5;
 }
 
@@ -461,7 +454,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 }
 
 @media (max-width:720px) {
-  .c20 {
+  .c19 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
@@ -470,7 +463,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 }
 
 @media (max-width:600px) {
-  .c21 {
+  .c20 {
     margin-top: 15px;
   }
 }
@@ -599,7 +592,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 }
 
 @media (max-width:720px) {
-  .c23 {
+  .c22 {
     bottom: 15px;
     right: 15px;
   }
@@ -798,7 +791,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
             className="c16"
           >
             <div
-              className="c17"
+              className="bOrPFB fXsUty"
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -808,14 +801,14 @@ exports[`News Layout renders the news layout on mobile 1`] = `
               fontSize="14px"
             >
               <div
-                className="c18 c19"
+                className="c17 c18"
                 color="black"
               >
                 Casey Lesser
               </div>
             </div>
             <div
-              className="c20"
+              className="c19"
             >
               Jul 19, 2018 at 1:19 pm
               , via
@@ -830,10 +823,10 @@ exports[`News Layout renders the news layout on mobile 1`] = `
             </div>
           </div>
           <div
-            className="c21"
+            className="c20"
           >
             <a
-              className="c22"
+              className="c21"
               href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article"
               onClick={[Function]}
               target="_blank"
@@ -859,7 +852,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
               </svg>
             </a>
             <a
-              className="c22"
+              className="c21"
               href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article&text=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article&via=artsy"
               onClick={[Function]}
               target="_blank"
@@ -885,7 +878,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
               </svg>
             </a>
             <a
-              className="c22"
+              className="c21"
               href="mailto:?subject=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&body=Check out The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe. on Artsy: https://www.artsy.net/article/news-article"
               onClick={[Function]}
               target="_blank"
@@ -915,7 +908,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
       </div>
     </div>
     <button
-      className="c23"
+      className="c22"
       onClick={[Function]}
     >
       Expand
@@ -925,18 +918,11 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 `;
 
 exports[`News Layout renders the news layout properly 1`] = `
-.c17 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-.c19 {
+.c18 {
   margin: 10px 20px 0 0;
 }
 
-.c19::before {
+.c18::before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -946,7 +932,7 @@ exports[`News Layout renders the news layout properly 1`] = `
   background-color: black;
 }
 
-.c20 {
+.c19 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -958,11 +944,11 @@ exports[`News Layout renders the news layout properly 1`] = `
   color: #999999;
 }
 
-.c20 a {
+.c19 a {
   color: #999999;
 }
 
-.c21 {
+.c20 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -976,18 +962,18 @@ exports[`News Layout renders the news layout properly 1`] = `
   margin-top: 5px;
 }
 
-.c22 {
+.c21 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c22:hover {
+.c21:hover {
   opacity: 0.6;
 }
 
-.c22:first-child {
+.c21:first-child {
   padding-left: 0;
 }
 
@@ -1009,7 +995,7 @@ exports[`News Layout renders the news layout properly 1`] = `
   align-items: flex-start;
 }
 
-.c15 .c18 {
+.c15 .c17 {
   margin-top: 0;
   margin-bottom: 5px;
 }
@@ -1343,7 +1329,7 @@ exports[`News Layout renders the news layout properly 1`] = `
   border-bottom: 1px solid #E5E5E5;
 }
 
-.c23 {
+.c22 {
   width: 80px;
   height: 30px;
   background-color: black;
@@ -1366,11 +1352,11 @@ exports[`News Layout renders the news layout properly 1`] = `
   line-height: 1em;
 }
 
-.c23:focus {
+.c22:focus {
   outline: 0;
 }
 
-.c23:hover {
+.c22:hover {
   color: #E5E5E5;
 }
 
@@ -1385,7 +1371,7 @@ exports[`News Layout renders the news layout properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c20 {
+  .c19 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
@@ -1517,7 +1503,7 @@ exports[`News Layout renders the news layout properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c23 {
+  .c22 {
     bottom: 15px;
     right: 15px;
   }
@@ -1716,7 +1702,7 @@ exports[`News Layout renders the news layout properly 1`] = `
             className="c16"
           >
             <div
-              className="c17"
+              className="bOrPFB fXsUty"
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1726,14 +1712,14 @@ exports[`News Layout renders the news layout properly 1`] = `
               fontSize="14px"
             >
               <div
-                className="c18 c19"
+                className="c17 c18"
                 color="black"
               >
                 Casey Lesser
               </div>
             </div>
             <div
-              className="c20"
+              className="c19"
             >
               Jul 19, 2018 at 1:19 pm
               , via
@@ -1748,10 +1734,10 @@ exports[`News Layout renders the news layout properly 1`] = `
             </div>
           </div>
           <div
-            className="c21"
+            className="c20"
           >
             <a
-              className="c22"
+              className="c21"
               href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article"
               onClick={[Function]}
               target="_blank"
@@ -1777,7 +1763,7 @@ exports[`News Layout renders the news layout properly 1`] = `
               </svg>
             </a>
             <a
-              className="c22"
+              className="c21"
               href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article&text=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article&via=artsy"
               onClick={[Function]}
               target="_blank"
@@ -1803,7 +1789,7 @@ exports[`News Layout renders the news layout properly 1`] = `
               </svg>
             </a>
             <a
-              className="c22"
+              className="c21"
               href="mailto:?subject=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&body=Check out The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe. on Artsy: https://www.artsy.net/article/news-article"
               onClick={[Function]}
               target="_blank"
@@ -1833,7 +1819,7 @@ exports[`News Layout renders the news layout properly 1`] = `
       </div>
     </div>
     <button
-      className="c23"
+      className="c22"
       onClick={[Function]}
     >
       Expand
