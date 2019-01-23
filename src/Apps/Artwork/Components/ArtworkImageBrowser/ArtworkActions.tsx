@@ -22,6 +22,7 @@ import {
   HeartIcon,
   Join,
   Link,
+  OpenEyeIcon,
   ShareIcon,
   Spacer,
 } from "@artsy/palette"
@@ -77,6 +78,23 @@ export class ArtworkActions extends React.Component<
     }
   }
 
+  openViewInRoom(mediator) {
+    const {
+      artwork: { dimensions, image },
+    } = this.props
+    mediator &&
+      mediator.trigger &&
+      mediator.trigger("openViewInRoom", {
+        dimensions,
+        image,
+      })
+
+    // Still to do:
+    // - Use correct eye button (being updated in palette; we might not even have to change the code if we're lucky)
+    // - Define mediator behavior in Force
+    // - Fix unhappy onClick (line 121)
+  }
+
   render() {
     const { artwork } = this.props
     const downloadableImageUrl = this.getDownloadableImageUrl()
@@ -91,11 +109,22 @@ export class ArtworkActions extends React.Component<
               artwork={this.props.artwork}
               render={Save(this.props)}
             />
+            // Remove the admin flag for production
+            {artwork.is_hangable &&
+              this.isAdmin && (
+                <ContextConsumer>
+                  {({ mediator }) => (
+                    <UtilButton
+                      name="viewInRoom"
+                      onClick={this.openViewInRoom(mediator)}
+                    />
+                  )}
+                </ContextConsumer>
+              )}
             <UtilButton
               name="share"
               onClick={this.toggleSharePanel.bind(this)}
             />
-
             {downloadableImageUrl && (
               <UtilButton name="download" href={downloadableImageUrl} />
             )}
@@ -132,12 +161,16 @@ export const ArtworkActionsFragmentContainer = createFragmentContainer(
         name
       }
       date
+      dimensions {
+        cm
+      }
       href
       id
       image {
         id
       }
       is_downloadable
+      is_hangable
       partner {
         id
       }
@@ -151,7 +184,14 @@ export const ArtworkActionsFragmentContainer = createFragmentContainer(
 )
 
 interface UtilButtonProps {
-  name: "bell" | "edit" | "download" | "genome" | "heart" | "share"
+  name:
+    | "bell"
+    | "edit"
+    | "download"
+    | "genome"
+    | "heart"
+    | "share"
+    | "viewInRoom"
   href?: string
   onClick?: () => void
   selected?: boolean
@@ -182,6 +222,8 @@ class UtilButton extends React.Component<
           return HeartIcon
         case "share":
           return ShareIcon
+        case "viewInRoom":
+          return OpenEyeIcon
       }
     }
 
