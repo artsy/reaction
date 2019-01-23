@@ -13,7 +13,7 @@ import {
   submitPendingOfferSuccess,
 } from "../__fixtures__/MutationResults/submitPendingOffer"
 import { CounterFragmentContainer } from "../Counter"
-import { TestPage } from "./Utils/TestPage"
+import { TestPage } from "./Utils/OrderAppTestPage"
 
 jest.mock("Apps/Order/Utils/trackPageView")
 jest.mock("Utils/getCurrentTimeAsIsoString")

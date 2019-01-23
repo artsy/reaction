@@ -16,7 +16,7 @@ import {
   submitOrderWithVersionMismatchFailure,
 } from "../__fixtures__/MutationResults"
 import { ReviewFragmentContainer } from "../Review"
-import { expectOne, TestPage } from "./Utils/TestPage"
+import { expectOne, TestPage } from "./Utils/OrderAppTestPage"
 
 jest.mock("Apps/Order/Utils/trackPageView")
 jest.unmock("react-relay")

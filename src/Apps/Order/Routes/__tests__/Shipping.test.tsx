@@ -22,7 +22,7 @@ import {
   settingOrderShipmentSuccess,
 } from "../__fixtures__/MutationResults"
 import { ShippingFragmentContainer } from "../Shipping"
-import { TestPage } from "./Utils/TestPage"
+import { TestPage } from "./Utils/OrderAppTestPage"
 
 jest.mock("Apps/Order/Utils/trackPageView")
 jest.unmock("react-relay")
@@ -98,22 +98,7 @@ describe("Shipping", () => {
     await page.clickSubmit()
 
     expect(page.mockFetchMutation).toHaveBeenCalledTimes(1)
-    expect(page.lastMutationVariables).toMatchInlineSnapshot(`
-Object {
-  "fulfillmentType": "SHIP",
-  "orderId": "1234",
-  "shipping": Object {
-    "addressLine1": "14 Gower's Walk",
-    "addressLine2": "Suite 2.5, The Loom",
-    "city": "Whitechapel",
-    "country": "UK",
-    "name": "Artsy UK Ltd",
-    "phoneNumber": "8475937743",
-    "postalCode": "E1 8PY",
-    "region": "London",
-  },
-}
-`)
+    expect(page.lastMutationVariables).toMatchInlineSnapshot()
   })
 
   it("commits the mutation with shipping option", async () => {
@@ -126,8 +111,10 @@ Object {
     })
 
     await page.clickSubmit()
-    expect(page.lastMutationVariables.shipping.region).toBe("New Brunswick")
-    expect(page.lastMutationVariables.shipping.country).toBe("US")
+    expect(page.lastMutationVariables.input.shipping.region).toBe(
+      "New Brunswick"
+    )
+    expect(page.lastMutationVariables.input.shipping.country).toBe("US")
   })
 
   it("commits the mutation with pickup option", async () => {
@@ -136,7 +123,7 @@ Object {
     expect(page.mockFetchMutation).not.toHaveBeenCalled()
     await page.clickSubmit()
     expect(page.mockFetchMutation).toHaveBeenCalledTimes(1)
-    expect(page.lastMutationVariables.fulfillmentType).toBe("PICKUP")
+    expect(page.lastMutationVariables.input.fulfillmentType).toBe("PICKUP")
   })
 
   describe("mutation", () => {
@@ -222,7 +209,7 @@ Object {
 
     it("includes already-filled-in data in mutation if re-sent", async () => {
       await page.clickSubmit()
-      expect(page.lastMutationVariables).toMatchObject({
+      expect(page.lastMutationVariables.input).toMatchObject({
         shipping: {
           name: "Dr Collector",
         },

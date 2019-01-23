@@ -49,7 +49,7 @@ jest.mock("Apps/Order/Utils/trackPageView")
 import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { graphql } from "react-relay"
 import { Address, AddressForm } from "../../Components/AddressForm"
-import { TestPage } from "./Utils/TestPage"
+import { TestPage } from "./Utils/OrderAppTestPage"
 
 const fillAddressForm = (component: any, address: Address) => {
   fillIn(component, { title: "Full name", value: address.name })
@@ -316,8 +316,10 @@ describe("Payment", () => {
     await page.clickSubmit()
 
     expect(page.lastMutationVariables).toMatchObject({
-      creditCardId: "gravityCreditCardId",
-      orderId: "1234",
+      input: {
+        creditCardId: "gravityCreditCardId",
+        orderId: "1234",
+      },
     })
   })
 

@@ -13,7 +13,7 @@ import {
   acceptOfferSuccess,
 } from "../__fixtures__/MutationResults"
 import { AcceptFragmentContainer } from "../Accept"
-import { TestPage } from "./Utils/TestPage"
+import { createTestEnv, OrderAppTestPage } from "./Utils/OrderAppTestPage"
 
 jest.mock("Apps/Order/Utils/trackPageView")
 jest.unmock("react-relay")
@@ -42,26 +42,29 @@ const testOrder = {
   buyer: Buyer,
 }
 
-class AcceptTestPage extends TestPage({
-  Component: AcceptFragmentContainer,
-  query: graphql`
-    query AcceptTestQuery {
-      order(id: "") {
-        ...Accept_order
-      }
-    }
-  `,
-  defaultData: {
-    order: testOrder,
-  },
-}) {}
-
 describe("Accept seller offer", () => {
-  const page = new AcceptTestPage()
+  const env = createTestEnv({
+    Component: AcceptFragmentContainer,
+    query: graphql`
+      query AcceptTestQuery {
+        order(id: "") {
+          ...Accept_order
+        }
+      }
+    `,
+    defaultData: {
+      order: testOrder,
+    },
+    defaultMutationResults: {
+      ...acceptOfferSuccess,
+    },
+    TestPage: OrderAppTestPage,
+  })
 
   describe("with default data", () => {
+    let page: OrderAppTestPage
     beforeAll(async () => {
-      await page.init()
+      page = await env.buildPage()
     })
 
     it("Shows the stepper", async () => {
@@ -112,17 +115,9 @@ describe("Accept seller offer", () => {
   })
 
   describe("mutation", () => {
-    const resolveMutation = jest.fn(
-      () => acceptOfferSuccess.ecommerceBuyerAcceptOffer
-    )
-
+    let page: OrderAppTestPage
     beforeEach(async () => {
-      resolveMutation.mockClear()
-      await page.init({
-        mockMutationResults: {
-          ecommerceBuyerAcceptOffer: resolveMutation,
-        },
-      })
+      page = await env.buildPage()
     })
 
     it("routes to status page after mutation completes", async () => {
@@ -137,18 +132,13 @@ describe("Accept seller offer", () => {
     })
 
     it("shows an error modal when there is an error from the server", async () => {
-      resolveMutation.mockReturnValueOnce(
-        acceptOfferFailed.ecommerceBuyerAcceptOffer
-      )
+      env.mutations.useResults(acceptOfferFailed)
       await page.clickSubmit()
       await page.expectDefaultErrorDialog()
     })
 
     it("shows an error modal if there is a capture_failed error", async () => {
-      resolveMutation.mockReturnValueOnce(
-        AcceptOfferPaymentFailed.ecommerceBuyerAcceptOffer
-      )
-
+      env.mutations.useResults(AcceptOfferPaymentFailed)
       await page.clickSubmit()
       await page.expectErrorDialogMatching(
         "An error occurred",
@@ -158,7 +148,7 @@ describe("Accept seller offer", () => {
   })
 
   it("tracks a pageview", async () => {
-    await page.init()
+    await env.buildPage()
     expect(trackPageView).toHaveBeenCalledTimes(1)
   })
 })

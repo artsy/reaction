@@ -8,7 +8,7 @@ import {
   rejectOfferSuccess,
 } from "../__fixtures__/MutationResults/rejectOffer"
 import { RejectFragmentContainer } from "../Reject"
-import { TestPage } from "./Utils/TestPage"
+import { TestPage } from "./Utils/OrderAppTestPage"
 
 jest.mock("Apps/Order/Utils/trackPageView")
 

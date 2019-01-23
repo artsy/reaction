@@ -35,7 +35,7 @@ import {
   buyerCounterOfferFailed,
   buyerCounterOfferSuccess,
 } from "../__fixtures__/MutationResults/buyerCounterOffer"
-import { expectOne, TestPage } from "./Utils/TestPage"
+import { expectOne, TestPage } from "./Utils/OrderAppTestPage"
 
 const testOrder = {
   ...OfferOrderWithShippingDetails,
@@ -231,10 +231,12 @@ describe("The respond page", () => {
         await page.clickSubmit()
         expect(page.mockFetchMutation).toHaveBeenCalledTimes(1)
         expect(page.lastMutationVariables).toMatchObject({
-          offerId: "myoffer-id",
-          offerPrice: {
-            amount: 9000,
-            currencyCode: "USD",
+          input: {
+            offerId: "myoffer-id",
+            offerPrice: {
+              amount: 9000,
+              currencyCode: "USD",
+            },
           },
         })
         expect(page.mockPushRoute).toHaveBeenCalledWith(

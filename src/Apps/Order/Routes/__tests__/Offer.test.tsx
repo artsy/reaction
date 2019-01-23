@@ -7,7 +7,7 @@ import {
   initialOfferSuccess,
 } from "../__fixtures__/MutationResults"
 import { OfferFragmentContainer } from "../Offer"
-import { TestPage } from "./Utils/TestPage"
+import { TestPage } from "./Utils/OrderAppTestPage"
 
 // Need to mock Utils/Events instead of using mockTracking because
 // Boot's `dispatch` tracking prop overrides the one injected by
