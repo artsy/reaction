@@ -12,21 +12,21 @@ interface StickyFooterProps {
 
 @track()
 export class StickyFooter extends Component<StickyFooterProps> {
-  @track(() => ({
+  @track<StickyFooterProps>(props => ({
     action_type: Schema.ActionType.Click,
     subject: Schema.Subject.BNMOReadFAQ,
     type: "button",
-    flow: this.props.orderType === "OFFER" ? "make offer" : "buy now",
+    flow: props.orderType === "OFFER" ? "make offer" : "buy now",
   }))
   onClickReadFAQ() {
     window.open("https://www.artsy.net/buy-now-feature-faq", "_blank")
   }
 
-  @track(() => ({
+  @track<StickyFooterProps>(props => ({
     action_type: Schema.ActionType.Click,
     subject: Schema.Subject.BNMOAskSpecialist,
     type: "button",
-    flow: this.props.orderType === "OFFER" ? "make offer" : "buy now",
+    flow: props.orderType === "OFFER" ? "make offer" : "buy now",
   }))
   onClickAskSpecialist(mediator) {
     mediator.trigger("openOrdersContactArtsyModal", {
