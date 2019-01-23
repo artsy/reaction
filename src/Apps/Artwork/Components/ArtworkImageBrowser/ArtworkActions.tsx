@@ -88,11 +88,6 @@ export class ArtworkActions extends React.Component<
         dimensions,
         image,
       })
-
-    // Still to do:
-    // - Use correct eye button (being updated in palette; we might not even have to change the code if we're lucky)
-    // - Define mediator behavior in Force
-    // - Fix unhappy onClick (line 121)
   }
 
   render() {
@@ -109,14 +104,13 @@ export class ArtworkActions extends React.Component<
               artwork={this.props.artwork}
               render={Save(this.props)}
             />
-            // Remove the admin flag for production
             {artwork.is_hangable &&
               this.isAdmin && (
                 <ContextConsumer>
                   {({ mediator }) => (
                     <UtilButton
                       name="viewInRoom"
-                      onClick={this.openViewInRoom(mediator)}
+                      onClick={() => this.openViewInRoom(mediator)}
                     />
                   )}
                 </ContextConsumer>
