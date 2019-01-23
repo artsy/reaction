@@ -121,6 +121,11 @@ describe("buildServerApp", () => {
     })
   })
 
+  it("passes along rendered css", async () => {
+    const { styleTags } = await getWrapper()
+    expect(styleTags).toContain("style data-styled-components")
+  })
+
   describe("concerning device detection", () => {
     const MediaComponent = () => (
       <div>

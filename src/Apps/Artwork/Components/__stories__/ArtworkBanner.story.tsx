@@ -6,6 +6,7 @@ import { ArtworkBanner, ArtworkBannerQueryRenderer } from "../ArtworkBanner"
 
 import {
   ArtworkAuctionBannerFixture,
+  ArtworkBenefitAuctionBannerFixture,
   ArtworkCurrentShowBannerFixture,
   ArtworkFairBannerFixture,
   ArtworkPastShowBannerFixture,
@@ -23,6 +24,9 @@ storiesOf("Apps/Artwork Page/Components", module).add("ArtworkBanner", () => {
       </Section>
       <Section title="Fixture artwork with auction banner">
         <ArtworkBanner artwork={ArtworkAuctionBannerFixture as any} />
+      </Section>
+      <Section title="Fixture artwork with benefit auction banner">
+        <ArtworkBanner artwork={ArtworkBenefitAuctionBannerFixture as any} />
       </Section>
       <Section title="Fixture artwork with fair banner">
         <ArtworkBanner artwork={ArtworkFairBannerFixture as any} />

@@ -4,6 +4,7 @@ import { graphql } from "react-relay"
 import { commitMutation as _commitMutation } from "react-relay"
 import { UntouchedOfferOrder } from "../../../__tests__/Fixtures/Order"
 import {
+  initialOfferFailedAmountIsInvalid,
   initialOfferFailedCannotOffer,
   initialOfferSuccess,
 } from "../__fixtures__/MutationResults"
@@ -114,6 +115,17 @@ describe("Offer InitialMutation", () => {
       await page.clickSubmit()
       await page.expectDefaultErrorDialog()
       expect(page.mockMutationFetch).toHaveBeenCalled()
+    })
+
+    it("shows a helpful error message in a modal when there is an error from the server because the amount is invalid", async () => {
+      mutations.useResultsOnce(initialOfferFailedAmountIsInvalid)
+
+      await page.setOfferAmount(16000)
+      await page.clickSubmit()
+      await page.expectErrorDialogMatching(
+        "Invalid offer",
+        "The offer amount is either missing or invalid. Please try again."
+      )
     })
 
     describe("The 'amount too small' speed bump", () => {

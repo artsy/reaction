@@ -2,6 +2,7 @@ import { Button, Col, Flex, Join, Row, Spacer } from "@artsy/palette"
 import { Review_order } from "__generated__/Review_order.graphql"
 import { ReviewSubmitOfferOrderMutation } from "__generated__/ReviewSubmitOfferOrderMutation.graphql"
 import { ReviewSubmitOrderMutation } from "__generated__/ReviewSubmitOrderMutation.graphql"
+import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
 import { ConditionsOfSaleDisclaimer } from "Apps/Order/Components/ConditionsOfSaleDisclaimer"
 import { ItemReviewFragmentContainer as ItemReview } from "Apps/Order/Components/ItemReview"
@@ -26,7 +27,6 @@ import {
 } from "react-relay"
 import { ErrorWithMetadata } from "Utils/errors"
 import { get } from "Utils/get"
-import { HorizontalPadding } from "Utils/HorizontalPadding"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
 import { CreditCardSummaryItemFragmentContainer as CreditCardSummaryItem } from "../../Components/CreditCardSummaryItem"
@@ -170,6 +170,14 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
     const error = orderOrError.error
     if (error) {
       switch (error.code) {
+        case "missing_required_info": {
+          this.onMutationError(
+            new ErrorWithMetadata(error.code, error),
+            "Missing information",
+            "Please review and update your shipping and/or payment details and try again."
+          )
+          break
+        }
         case "insufficient_inventory": {
           const artistId = this.artistId()
           this.onMutationError(

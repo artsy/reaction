@@ -1,4 +1,5 @@
 import { routes_OrderQueryResponse } from "__generated__/routes_OrderQuery.graphql"
+import { AppContainer } from "Apps/Components/AppContainer"
 import { ContextConsumer } from "Artsy/SystemContext"
 import { ErrorPage } from "Components/ErrorPage"
 import { Location, RouteConfig, Router } from "found"
@@ -90,7 +91,7 @@ export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
     return (
       <ContextConsumer>
         {({ isEigen }) => (
-          <>
+          <AppContainer>
             <Title>Checkout | Artsy</Title>
             {isEigen ? (
               <Meta
@@ -104,7 +105,7 @@ export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
               </Elements>
             </StripeProvider>
             <ConnectedModalDialog />
-          </>
+          </AppContainer>
         )}
       </ContextConsumer>
     )

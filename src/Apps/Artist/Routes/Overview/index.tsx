@@ -8,34 +8,25 @@ import { withContext } from "Artsy/SystemContext"
 import { hasSections as showMarketInsights } from "Components/Artist/MarketInsights/MarketInsights"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { TrackingProp } from "react-tracking"
-import { data as sd } from "sharify"
 import { Media } from "Utils/Responsive"
 import { CurrentEventFragmentContainer as CurrentEvent } from "./Components/CurrentEvent"
 
 import {
   ArtistBioFragmentContainer as ArtistBio,
-  MarketInsightsFragmentContainer as MarketInsights,
   MAX_CHARS,
   SelectedCareerAchievementsFragmentContainer as SelectedCareerAchievements,
-  SelectedExhibitionFragmentContainer as SelectedExhibitions,
 } from "Components/v2"
 
 export interface OverviewRouteProps {
-  ARTIST_INSIGHTS?: string
   artist: Overview_artist & {
     __fragments: object[]
   }
-  tracking?: TrackingProp
 }
 
 interface State {
   isReadMoreExpanded: boolean
 }
 
-@track({
-  context_module: Schema.ContextModule.ArtistOverview,
-})
 class OverviewRoute extends React.Component<OverviewRouteProps, State> {
   state = {
     isReadMoreExpanded: false,
@@ -61,54 +52,16 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
     return showGenes
   }
 
-  trackingData() {
-    const experiment = "artist_insights"
-    const variation = this.props.ARTIST_INSIGHTS || sd.ARTIST_INSIGHTS
-
-    return {
-      action_type: Schema.ActionType.ExperimentViewed,
-      experiment_id: experiment,
-      experiment_name: experiment,
-      variation_id: variation,
-      variation_name: variation,
-      nonInteraction: 1,
-    }
-  }
-
-  renderArtistInsightsV1() {
-    const { artist, tracking } = this.props
-
-    if (tracking) tracking.trackEvent(this.trackingData())
-
-    return <MarketInsights artist={artist} />
-  }
-
-  renderArtistInsightsV2() {
-    const { artist, tracking } = this.props
-
-    if (tracking) tracking.trackEvent(this.trackingData())
-
-    return <SelectedCareerAchievements artist={artist} />
-  }
-
   render() {
     const { artist } = this.props
-    const artistInsightsVariation =
-      this.props.ARTIST_INSIGHTS || sd.ARTIST_INSIGHTS
-    const showArtistInsightsV1 =
-      artistInsightsVariation === "v1" && showMarketInsights(this.props.artist)
-    const showArtistInsightsV2 =
-      artistInsightsVariation === "v2" && showMarketInsights(this.props.artist)
-    const showArtistInsights = showArtistInsightsV1 || showArtistInsightsV2
-    const showSelectedExhibitions =
-      Boolean(artist.exhibition_highlights.length) && !showArtistInsightsV2
+    const showArtistInsights =
+      showMarketInsights(this.props.artist) || artist.insights.length > 0
     const showArtistBio = Boolean(artist.biography_blurb.text)
     const showCurrentEvent = Boolean(artist.currentEvent)
     const showConsignable = Boolean(artist.is_consignable)
     const bioLen = artist.biography_blurb.text.length
     const hideMainOverviewSection =
       !showArtistInsights &&
-      !showSelectedExhibitions &&
       !showArtistBio &&
       !showCurrentEvent &&
       !showConsignable
@@ -122,22 +75,6 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
         <Row>
           <Col sm={colNum}>
             <>
-              {showArtistInsightsV1 && (
-                <>
-                  {this.renderArtistInsightsV1()}
-                  <Spacer mb={1} />
-                </>
-              )}
-              {showSelectedExhibitions && (
-                <>
-                  <SelectedExhibitions
-                    artistID={artist.id}
-                    totalExhibitions={this.props.artist.counts.partner_shows}
-                    exhibitions={this.props.artist.exhibition_highlights}
-                  />
-                  <Spacer mb={1} />
-                </>
-              )}
               {showArtistBio && (
                 <>
                   <ArtistBio
@@ -146,11 +83,11 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
                     }}
                     bio={artist}
                   />
-                  <Spacer mb={1} />
                 </>
               )}
               {showGenes && (
                 <>
+                  <Spacer mb={1} />
                   <Media at="xs">
                     {bioLen < MAX_CHARS.xs ? (
                       <>
@@ -174,6 +111,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
               )}
               {showConsignable && (
                 <>
+                  <Spacer mb={1} />
                   <Sans size="2" color="black60">
                     Want to sell a work by this artist?{" "}
                     <a
@@ -183,10 +121,14 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
                       Learn more
                     </a>.
                   </Sans>
-                  {showArtistInsightsV2 && <Spacer mb={2} />}
                 </>
               )}
-              {showArtistInsightsV2 && this.renderArtistInsightsV2()}
+              {showArtistInsights && (
+                <>
+                  <Spacer mb={2} />
+                  <SelectedCareerAchievements artist={artist} />
+                </>
+              )}
             </>
           </Col>
 
@@ -253,9 +195,6 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
           offerable: $offerable
         )
       id
-      exhibition_highlights(size: 3) {
-        ...SelectedExhibitions_exhibitions
-      }
       counts {
         partner_shows
       }
@@ -296,6 +235,9 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
             }
           }
         }
+      }
+      insights {
+        type
       }
     }
   `

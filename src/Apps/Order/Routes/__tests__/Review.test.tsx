@@ -14,6 +14,7 @@ import {
   submitOfferOrderWithVersionMismatchFailure,
   submitOrderSuccess,
   submitOrderWithFailure,
+  submitOrderWithMissingInfo,
   submitOrderWithNoInventoryFailure,
   submitOrderWithVersionMismatchFailure,
 } from "../__fixtures__/MutationResults"
@@ -95,6 +96,18 @@ describe("Review", () => {
         "Something about the work changed since you started checkout. Please review the work before submitting your order."
       )
       expect(window.location.assign).toBeCalledWith("/artwork/artworkId")
+    })
+
+    it("shows a modal with a helpful error message if a user has not entered shipping and payment information", async () => {
+      window.location.assign = jest.fn()
+
+      mutations.useResultsOnce(submitOrderWithMissingInfo)
+
+      await page.clickSubmit()
+      await page.expectErrorDialogMatching(
+        "Missing information",
+        "Please review and update your shipping and/or payment details and try again."
+      )
     })
 
     it("shows a modal that redirects to the artist page if there is an insufficient inventory", async () => {

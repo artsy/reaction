@@ -10,11 +10,11 @@ import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { Router } from "found"
 import React, { Component } from "react"
 
+import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { StepSummaryItem } from "Components/v2"
 import { CountdownTimer } from "Components/v2/CountdownTimer"
 import { ErrorWithMetadata } from "Utils/errors"
 import { get } from "Utils/get"
-import { HorizontalPadding } from "Utils/HorizontalPadding"
 import { Media } from "Utils/Responsive"
 import { logger } from "../Respond"
 
@@ -222,10 +222,6 @@ export const RejectFragmentContainer = createFragmentContainer(
     fragment Reject_order on Order {
       id
       stateExpiresAt
-      lastOffer {
-        id
-        createdAt
-      }
       lineItems {
         edges {
           node {
@@ -233,6 +229,12 @@ export const RejectFragmentContainer = createFragmentContainer(
               id
             }
           }
+        }
+      }
+      ... on OfferOrder {
+        lastOffer {
+          id
+          createdAt
         }
       }
       ...ArtworkSummaryItem_order
