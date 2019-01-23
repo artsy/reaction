@@ -1,3 +1,16 @@
+# 11.2.13 (Wed Jan 23 2019)
+
+#### 🐛  Bug Fix
+
+- [WIP] Start on adding view in room to artwork page v2 [#1928](https://github.com/artsy/reaction/pull/1928) ([@mdole](https://github.com/mdole))
+
+#### 🏠  Internal
+
+- Update yarn orb to v0.1.4 [#1927](https://github.com/artsy/reaction/pull/1927) ([@renovate-bot](https://github.com/renovate-bot))
+- Update yarn orb to v0.1.1 [#1926](https://github.com/artsy/reaction/pull/1926) ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # 11.2.12 (Tue Jan 22 2019)
 
 #### 🐛  Bug Fix
