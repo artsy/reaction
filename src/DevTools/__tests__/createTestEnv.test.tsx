@@ -157,7 +157,7 @@ describe("test envs", () => {
     onCompleted.mockReset()
     onError.mockReset()
   })
-  const env = createTestEnv({
+  const { buildPage, mutations } = createTestEnv({
     Component,
     TestPage: class MyTestPage extends RootTestPage {
       get heading() {
@@ -198,7 +198,7 @@ describe("test envs", () => {
   })
 
   it("lets you make a page", async () => {
-    const page = await env.buildPage()
+    const page = await buildPage()
 
     expect(page.heading.text()).toMatchInlineSnapshot(
       `"This is the main heading"`
@@ -211,7 +211,7 @@ describe("test envs", () => {
   })
 
   it("lets you override the default data", async () => {
-    const page = await env.buildPage({
+    const page = await buildPage({
       mockData: {
         artwork: {
           title: "New Artwork",
@@ -227,10 +227,10 @@ describe("test envs", () => {
   })
 
   it("lets you commit mutations", async () => {
-    const page = await env.buildPage()
+    const page = await buildPage()
     page.creditCardSubmitButton.simulate("click")
     await page.update()
-    expect(env.mutations.resolvers.createCreditCard).toHaveBeenCalled()
+    expect(mutations.resolvers.createCreditCard).toHaveBeenCalled()
     expect(page.lastMutationVariables).toMatchObject({
       input: {
         oneTimeUse: true,
@@ -246,7 +246,7 @@ describe("test envs", () => {
   })
 
   it("lets you change the mutations results at any time", async () => {
-    const page = await env.buildPage()
+    const page = await buildPage()
     page.creditCardSubmitButton.simulate("click")
     await page.update()
     expect(onCompleted).toHaveBeenCalledTimes(1)
@@ -257,7 +257,7 @@ describe("test envs", () => {
       creditCardSuccess.createCreditCard.creditCardOrError.creditCard
     )
 
-    env.mutations.useResultsOnce(creditCardFailure)
+    mutations.useResultsOnce(creditCardFailure)
 
     page.creditCardSubmitButton.simulate("click")
     await page.update()
@@ -272,7 +272,7 @@ describe("test envs", () => {
   })
 
   it("lets you simulate a network error", async () => {
-    const page = await env.buildPage()
+    const page = await buildPage()
     page.mockMutationNetworkFailureOnce()
 
     page.creditCardSubmitButton.simulate("click")
@@ -282,7 +282,7 @@ describe("test envs", () => {
   })
 
   it("lets you do more than one mutation type", async () => {
-    const page = await env.buildPage()
+    const page = await buildPage()
 
     page.orderSubmitButton.simulate("click")
     page.creditCardSubmitButton.simulate("click")
@@ -299,7 +299,7 @@ describe("test envs", () => {
 
     onCompleted.mockReset()
 
-    env.mutations.useResultsOnce({
+    mutations.useResultsOnce({
       ...creditCardFailure,
       ...orderFailure,
     })
@@ -317,14 +317,12 @@ describe("test envs", () => {
   })
 
   it("resets the mutation mocks after every test", () => {
-    expect(env.mutations.resolvers.createCreditCard).not.toHaveBeenCalled()
-    expect(
-      env.mutations.resolvers.createOrderWithArtwork
-    ).not.toHaveBeenCalled()
+    expect(mutations.resolvers.createCreditCard).not.toHaveBeenCalled()
+    expect(mutations.resolvers.createOrderWithArtwork).not.toHaveBeenCalled()
   })
 
   it("lets you inspect mutation variables", async () => {
-    const page = await env.buildPage()
+    const page = await buildPage()
 
     page.orderSubmitButton.simulate("click")
 
@@ -344,5 +342,38 @@ describe("test envs", () => {
         token: "card-token",
       },
     })
+  })
+
+  it("doesn't matter if you call mutations.useResultsOnce before or after buildPage", async () => {
+    mutations.useResultsOnce(orderFailure)
+    const page = await buildPage()
+    page.orderSubmitButton.simulate("click")
+    await page.update()
+    expect(
+      onCompleted.mock.calls[0][0].createOrderWithArtwork.orderOrError
+    ).toMatchObject({ error: {} })
+  })
+
+  it("stacks .useResultsOnce calls", async () => {
+    mutations.useResultsOnce(orderFailure)
+    mutations.useResultsOnce(orderFailure)
+    const page = await buildPage()
+    page.orderSubmitButton.simulate("click")
+    await page.update()
+    expect(
+      onCompleted.mock.calls[0][0].createOrderWithArtwork.orderOrError
+    ).toMatchObject({ error: {} })
+    page.orderSubmitButton.simulate("click")
+    await page.update()
+    expect(
+      onCompleted.mock.calls[1][0].createOrderWithArtwork.orderOrError
+    ).toMatchObject({ error: {} })
+    page.orderSubmitButton.simulate("click")
+    await page.update()
+    expect(mutations.resolvers.createOrderWithArtwork).toHaveBeenCalledTimes(3)
+    expect(onCompleted).toHaveBeenCalledTimes(3)
+    expect(
+      onCompleted.mock.calls[2][0].createOrderWithArtwork.orderOrError
+    ).toMatchObject({ order: {} })
   })
 })

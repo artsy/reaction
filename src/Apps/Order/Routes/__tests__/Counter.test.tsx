@@ -5,6 +5,7 @@ import {
   OfferWithTotals,
 } from "Apps/__tests__/Fixtures/Order"
 import { trackPageView } from "Apps/Order/Utils/trackPageView"
+import { createTestEnv } from "DevTools/createTestEnv"
 import moment from "moment"
 import { commitMutation as _commitMutation, graphql } from "react-relay"
 import {
@@ -13,7 +14,7 @@ import {
   submitPendingOfferSuccess,
 } from "../__fixtures__/MutationResults/submitPendingOffer"
 import { CounterFragmentContainer } from "../Counter"
-import { TestPage } from "./Utils/OrderAppTestPage"
+import { OrderAppTestPage } from "./Utils/OrderAppTestPage"
 
 jest.mock("Apps/Order/Utils/trackPageView")
 jest.mock("Utils/getCurrentTimeAsIsoString")
@@ -50,26 +51,29 @@ const testOrder = {
   buyer: Buyer,
 }
 
-class CounterTestPage extends TestPage({
-  Component: CounterFragmentContainer,
-  query: graphql`
-    query CounterTestQuery {
-      order(id: "") {
-        ...Counter_order
-      }
-    }
-  `,
-  defaultData: {
-    order: testOrder,
-  },
-}) {}
-
 describe("Submit Pending Counter Offer", () => {
-  const page = new CounterTestPage()
+  const { buildPage, mutations } = createTestEnv({
+    Component: CounterFragmentContainer,
+    query: graphql`
+      query CounterTestQuery {
+        order(id: "") {
+          ...Counter_order
+        }
+      }
+    `,
+    defaultMutationResults: {
+      ...submitPendingOfferSuccess,
+    },
+    defaultData: {
+      order: testOrder,
+    },
+    TestPage: OrderAppTestPage,
+  })
 
   describe("with default data", () => {
+    let page: OrderAppTestPage
     beforeAll(async () => {
-      await page.init()
+      page = await buildPage()
     })
 
     it("Shows the stepper", () => {
@@ -119,21 +123,13 @@ describe("Submit Pending Counter Offer", () => {
   })
 
   describe("mutation", () => {
-    const resolveMutation = jest.fn(
-      () => submitPendingOfferSuccess.ecommerceSubmitPendingOffer
-    )
+    let page: OrderAppTestPage
     beforeEach(async () => {
-      resolveMutation.mockClear()
-      await page.init({
-        mockMutationResults: {
-          ecommerceSubmitPendingOffer: resolveMutation,
-        },
-      })
+      page = await buildPage()
     })
 
     it("routes to status page after mutation completes", async () => {
       await page.clickSubmit()
-
       expect(page.mockPushRoute).toHaveBeenCalledWith(
         `/orders/${testOrder.id}/status`
       )
@@ -144,9 +140,7 @@ describe("Submit Pending Counter Offer", () => {
     })
 
     it("shows an error modal with proper error when there is insufficient inventory", async () => {
-      resolveMutation.mockReturnValueOnce(
-        insufficientInventoryResponse.ecommerceSubmitPendingOffer
-      )
+      mutations.useResultsOnce(insufficientInventoryResponse)
       await page.clickSubmit()
       await page.expectErrorDialogMatching(
         "This work has already been sold.",
@@ -155,12 +149,11 @@ describe("Submit Pending Counter Offer", () => {
     })
 
     it("shows generic error modal when there is an error from the server", async () => {
-      resolveMutation.mockReturnValueOnce(
-        submitPendingOfferFailed.ecommerceSubmitPendingOffer
-      )
+      mutations.useResultsOnce(submitPendingOfferFailed)
       await page.clickSubmit()
       await page.expectDefaultErrorDialog()
     })
+
     it("shows an error modal when there is a network error", async () => {
       page.mockMutationNetworkFailureOnce()
       await page.clickSubmit()
@@ -169,10 +162,8 @@ describe("Submit Pending Counter Offer", () => {
   })
 
   describe("analytics", () => {
-    beforeEach(async () => {
-      await page.init()
-    })
-    it("tracks a pageview", () => {
+    it("tracks a pageview", async () => {
+      await buildPage()
       expect(trackPageView).toHaveBeenCalledTimes(1)
     })
   })

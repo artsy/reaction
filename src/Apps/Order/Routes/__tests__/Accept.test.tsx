@@ -5,6 +5,7 @@ import {
   OfferWithTotals,
 } from "Apps/__tests__/Fixtures/Order"
 import { trackPageView } from "Apps/Order/Utils/trackPageView"
+import { createTestEnv } from "DevTools/createTestEnv"
 import moment from "moment"
 import { graphql } from "react-relay"
 import {
@@ -13,7 +14,7 @@ import {
   acceptOfferSuccess,
 } from "../__fixtures__/MutationResults"
 import { AcceptFragmentContainer } from "../Accept"
-import { createTestEnv, OrderAppTestPage } from "./Utils/OrderAppTestPage"
+import { OrderAppTestPage } from "./Utils/OrderAppTestPage"
 
 jest.mock("Apps/Order/Utils/trackPageView")
 jest.unmock("react-relay")
@@ -43,7 +44,7 @@ const testOrder = {
 }
 
 describe("Accept seller offer", () => {
-  const env = createTestEnv({
+  const { mutations, buildPage } = createTestEnv({
     Component: AcceptFragmentContainer,
     query: graphql`
       query AcceptTestQuery {
@@ -64,7 +65,7 @@ describe("Accept seller offer", () => {
   describe("with default data", () => {
     let page: OrderAppTestPage
     beforeAll(async () => {
-      page = await env.buildPage()
+      page = await buildPage()
     })
 
     it("Shows the stepper", async () => {
@@ -117,7 +118,7 @@ describe("Accept seller offer", () => {
   describe("mutation", () => {
     let page: OrderAppTestPage
     beforeEach(async () => {
-      page = await env.buildPage()
+      page = await buildPage()
     })
 
     it("routes to status page after mutation completes", async () => {
@@ -132,13 +133,13 @@ describe("Accept seller offer", () => {
     })
 
     it("shows an error modal when there is an error from the server", async () => {
-      env.mutations.useResults(acceptOfferFailed)
+      mutations.useResultsOnce(acceptOfferFailed)
       await page.clickSubmit()
       await page.expectDefaultErrorDialog()
     })
 
     it("shows an error modal if there is a capture_failed error", async () => {
-      env.mutations.useResults(AcceptOfferPaymentFailed)
+      mutations.useResultsOnce(AcceptOfferPaymentFailed)
       await page.clickSubmit()
       await page.expectErrorDialogMatching(
         "An error occurred",
@@ -148,7 +149,7 @@ describe("Accept seller offer", () => {
   })
 
   it("tracks a pageview", async () => {
-    await env.buildPage()
+    await buildPage()
     expect(trackPageView).toHaveBeenCalledTimes(1)
   })
 })

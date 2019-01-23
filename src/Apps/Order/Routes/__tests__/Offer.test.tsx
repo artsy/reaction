@@ -1,4 +1,5 @@
 import { trackPageView } from "Apps/Order/Utils/trackPageView"
+import { createTestEnv } from "DevTools/createTestEnv"
 import { graphql } from "react-relay"
 import { commitMutation as _commitMutation } from "react-relay"
 import { UntouchedOfferOrder } from "../../../__tests__/Fixtures/Order"
@@ -7,7 +8,7 @@ import {
   initialOfferSuccess,
 } from "../__fixtures__/MutationResults"
 import { OfferFragmentContainer } from "../Offer"
-import { TestPage } from "./Utils/OrderAppTestPage"
+import { OrderAppTestPage } from "./Utils/OrderAppTestPage"
 
 // Need to mock Utils/Events instead of using mockTracking because
 // Boot's `dispatch` tracking prop overrides the one injected by
@@ -25,26 +26,29 @@ jest.mock("Apps/Order/Utils/trackPageView")
 
 const testOrder = { ...UntouchedOfferOrder, id: "1234" }
 
-class OfferTestPage extends TestPage({
-  Component: OfferFragmentContainer,
-  defaultData: {
-    order: testOrder,
-  },
-  query: graphql`
-    query OfferTestQuery {
-      order: ecommerceOrder(id: "unused") {
-        ...Offer_order
-      }
-    }
-  `,
-}) {}
-
 describe("Offer InitialMutation", () => {
-  const page = new OfferTestPage()
+  const { buildPage, mutations } = createTestEnv({
+    Component: OfferFragmentContainer,
+    defaultData: {
+      order: testOrder,
+    },
+    defaultMutationResults: {
+      ...initialOfferSuccess,
+    },
+    TestPage: OrderAppTestPage,
+    query: graphql`
+      query OfferTestQuery {
+        order: ecommerceOrder(id: "unused") {
+          ...Offer_order
+        }
+      }
+    `,
+  })
 
   describe("the page layout", () => {
+    let page: OrderAppTestPage
     beforeAll(async () => {
-      await page.init()
+      page = await buildPage()
     })
 
     it("has an offer input", () => {
@@ -68,16 +72,9 @@ describe("Offer InitialMutation", () => {
   })
 
   describe("mutation", () => {
-    const resolveMutation = jest.fn(
-      () => initialOfferSuccess.ecommerceAddInitialOfferToOrder
-    )
+    let page: OrderAppTestPage
     beforeEach(async () => {
-      resolveMutation.mockClear()
-      await page.init({
-        mockMutationResults: {
-          ecommerceAddInitialOfferToOrder: resolveMutation,
-        },
-      })
+      page = await buildPage()
     })
 
     it("doesn't let the user continue if they haven't typed anything in", async () => {
@@ -85,7 +82,7 @@ describe("Offer InitialMutation", () => {
         "Offer amount missing or invalid."
       )
       await page.clickSubmit()
-      expect(page.mockFetchMutation).not.toHaveBeenCalled()
+      expect(page.mockMutationFetch).not.toHaveBeenCalled()
       expect(page.offerInput.text()).toMatch("Offer amount missing or invalid.")
     })
 
@@ -95,14 +92,14 @@ describe("Offer InitialMutation", () => {
         "Offer amount missing or invalid."
       )
       await page.clickSubmit()
-      expect(page.mockFetchMutation).not.toHaveBeenCalled()
+      expect(page.mockMutationFetch).not.toHaveBeenCalled()
       expect(page.offerInput.text()).toMatch("Offer amount missing or invalid.")
     })
 
     it("routes to shipping screen after mutation completes", async () => {
       await page.setOfferAmount(16000)
       await page.clickSubmit()
-      expect(page.mockFetchMutation).toHaveBeenCalled()
+      expect(page.mockMutationFetch).toHaveBeenCalled()
       expect(page.mockPushRoute).toHaveBeenCalledWith("/orders/1234/shipping")
     })
 
@@ -112,13 +109,11 @@ describe("Offer InitialMutation", () => {
     })
 
     it("shows an error modal when there is an error from the server", async () => {
-      resolveMutation.mockReturnValueOnce(
-        initialOfferFailedCannotOffer.ecommerceAddInitialOfferToOrder
-      )
+      mutations.useResultsOnce(initialOfferFailedCannotOffer)
       await page.setOfferAmount(16000)
       await page.clickSubmit()
       await page.expectDefaultErrorDialog()
-      expect(page.mockFetchMutation).toHaveBeenCalled()
+      expect(page.mockMutationFetch).toHaveBeenCalled()
     })
 
     describe("The 'amount too small' speed bump", () => {
@@ -126,7 +121,7 @@ describe("Offer InitialMutation", () => {
         await page.setOfferAmount(1000)
         await page.clickSubmit()
 
-        expect(page.mockFetchMutation).not.toHaveBeenCalled()
+        expect(page.mockMutationFetch).not.toHaveBeenCalled()
 
         await page.expectErrorDialogMatching(
           "Offer may be too low",
@@ -134,12 +129,12 @@ describe("Offer InitialMutation", () => {
           "OK"
         )
 
-        expect(page.mockFetchMutation).not.toHaveBeenCalled()
+        expect(page.mockMutationFetch).not.toHaveBeenCalled()
 
         await page.clickSubmit()
         expect(page.modalDialog.props().show).toBeFalsy()
 
-        expect(page.mockFetchMutation).toHaveBeenCalledTimes(1)
+        expect(page.mockMutationFetch).toHaveBeenCalledTimes(1)
       })
     })
 
@@ -148,7 +143,7 @@ describe("Offer InitialMutation", () => {
         await page.setOfferAmount(17000)
         await page.clickSubmit()
 
-        expect(page.mockFetchMutation).not.toHaveBeenCalled()
+        expect(page.mockMutationFetch).not.toHaveBeenCalled()
 
         await page.expectErrorDialogMatching(
           "Offer higher than list price",
@@ -156,18 +151,19 @@ describe("Offer InitialMutation", () => {
           "OK"
         )
 
-        expect(page.mockFetchMutation).not.toHaveBeenCalled()
+        expect(page.mockMutationFetch).not.toHaveBeenCalled()
 
         await page.clickSubmit()
 
-        expect(page.mockFetchMutation).toHaveBeenCalledTimes(1)
+        expect(page.mockMutationFetch).toHaveBeenCalledTimes(1)
       })
     })
   })
 
   describe("Analaytics", () => {
+    let page: OrderAppTestPage
     beforeEach(async () => {
-      await page.init()
+      page = await buildPage()
       mockPostEvent.mockReset()
     })
 

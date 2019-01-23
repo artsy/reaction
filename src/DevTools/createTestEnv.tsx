@@ -6,43 +6,43 @@ import { Network } from "relay-runtime"
 import { Breakpoint } from "Utils/Responsive"
 import { RootTestPage } from "./RootTestPage"
 
-interface MutationMocks<Types extends string> {
-  resolvers: { [k in Types]: jest.Mock }
-  useResultsOnce(args: Partial<{ [k in Types]: any }>): void
+interface MutationMocks<MutationNames extends string> {
+  resolvers: { [k in MutationNames]: jest.Mock }
+  useResultsOnce(args: Partial<{ [k in MutationNames]: any }>): void
 }
 
 interface TestEnvOptions<
-  Mutations extends string,
+  MutationNames extends string,
   TestPage extends RootTestPage
 > {
   Component: React.ComponentType<any>
   query: GraphQLTaggedNode
   defaultData: object
   TestPage: { new (): TestPage }
-  defaultMutationResults?: Record<Mutations, any>
+  defaultMutationResults?: Record<MutationNames, any>
   defaultBreakpoint?: Breakpoint
 }
 
-class TestEnv<Mutations extends string, TestPage extends RootTestPage> {
+class TestEnv<MutationNames extends string, TestPage extends RootTestPage> {
   constructor(
-    private opts: TestEnvOptions<Mutations, TestPage>,
-    public readonly mutations: MutationMocks<Mutations>
+    private opts: TestEnvOptions<MutationNames, TestPage>,
+    public readonly mutations: MutationMocks<MutationNames>
   ) {
     this.opts = opts
     this.mutations = mutations
   }
 
-  readonly errors = []
+  private readonly errors = []
 
-  async buildPage({
+  buildPage = async ({
     mockData,
     mockMutationResults,
     breakpoint,
   }: {
     mockData?: object
-    mockMutationResults?: Record<Mutations, any>
+    mockMutationResults?: Record<MutationNames, any>
     breakpoint?: Breakpoint
-  } = {}): Promise<TestPage> {
+  } = {}): Promise<TestPage> => {
     const {
       Component,
       // tslint:disable-next-line:no-shadowed-variable
@@ -102,19 +102,19 @@ class TestEnv<Mutations extends string, TestPage extends RootTestPage> {
 }
 
 export function createTestEnv<
-  Mutations extends string,
+  MutationNames extends string,
   TestPage extends RootTestPage
 >({
-  defaultMutationResults = {} as Record<Mutations, any>,
+  defaultMutationResults = {} as Record<MutationNames, any>,
   ...opts
-}: TestEnvOptions<Mutations, TestPage>): TestEnv<Mutations, TestPage> {
+}: TestEnvOptions<MutationNames, TestPage>): TestEnv<MutationNames, TestPage> {
   // surface resolver errors that otherwise get swallowed by
   // onError in the pages' calls to commitMutation
   let errors = []
 
-  const mutationResolvers: Record<Mutations, jest.Mock> = Object.entries({
-    ...defaultMutationResults,
-  }).reduce(
+  const mutationResolvers: Record<MutationNames, jest.Mock> = Object.entries(
+    defaultMutationResults
+  ).reduce(
     (acc, [k, v]) => ({
       ...acc,
       [k]: jest.fn((...args) => (typeof v === "function" ? v(...args) : v)),
@@ -133,7 +133,7 @@ export function createTestEnv<
     }
   })
 
-  const mutations: MutationMocks<Mutations> = {
+  const mutations: MutationMocks<MutationNames> = {
     resolvers: mutationResolvers as any,
     useResultsOnce: mutationResults => {
       Object.entries(mutationResults).forEach(([k, v]) => {

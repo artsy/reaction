@@ -30,12 +30,14 @@ require("Utils/getCurrentTimeAsIsoString").__setCurrentTime(NOW)
 jest.unmock("react-relay")
 
 import { trackPageView } from "Apps/Order/Utils/trackPageView"
+import { createTestEnv } from "DevTools/createTestEnv"
+import { expectOne } from "DevTools/RootTestPage"
 import { graphql } from "react-relay"
 import {
   buyerCounterOfferFailed,
   buyerCounterOfferSuccess,
 } from "../__fixtures__/MutationResults/buyerCounterOffer"
-import { expectOne, TestPage } from "./Utils/OrderAppTestPage"
+import { OrderAppTestPage } from "./Utils/OrderAppTestPage"
 
 const testOrder = {
   ...OfferOrderWithShippingDetails,
@@ -56,26 +58,7 @@ const testOrder = {
   itemsTotalCents: 1000000,
 }
 
-const resolveCounterMutation = jest.fn(
-  () => buyerCounterOfferSuccess.ecommerceBuyerCounterOffer
-)
-
-class RespondTestPage extends TestPage({
-  Component: RespondFragmentContainer,
-  defaultData: {
-    order: testOrder,
-  },
-  defaultMutationResults: {
-    ecommerceBuyerCounterOffer: resolveCounterMutation,
-  },
-  query: graphql`
-    query RespondTestQuery {
-      order: ecommerceOrder(id: "unused") {
-        ...Respond_order
-      }
-    }
-  `,
-}) {
+class RespondTestPage extends OrderAppTestPage {
   get offerHistory() {
     return expectOne(this.find(OfferHistoryItemFragmentContainer))
   }
@@ -110,15 +93,32 @@ class RespondTestPage extends TestPage({
 }
 
 describe("The respond page", () => {
-  const page = new RespondTestPage()
+  const { buildPage, mutations } = createTestEnv({
+    Component: RespondFragmentContainer,
+    defaultData: {
+      order: testOrder,
+    },
+    defaultMutationResults: {
+      ...buyerCounterOfferSuccess,
+    },
+    query: graphql`
+      query RespondTestQuery {
+        order: ecommerceOrder(id: "unused") {
+          ...Respond_order
+        }
+      }
+    `,
+    TestPage: RespondTestPage,
+  })
 
   beforeEach(() => {
     mockPostEvent.mockReset()
   })
 
   describe("the page layout", () => {
+    let page: RespondTestPage
     beforeAll(async () => {
-      await page.init()
+      page = await buildPage()
     })
 
     it("renders", () => {
@@ -181,9 +181,9 @@ describe("The respond page", () => {
   })
 
   describe("taking action", () => {
+    let page: RespondTestPage
     beforeEach(async () => {
-      await page.init()
-      resolveCounterMutation.mockClear()
+      page = await buildPage()
     })
 
     it("Accepting the seller's offer works", async () => {
@@ -210,7 +210,7 @@ describe("The respond page", () => {
         expect(page.offerInput.props().showError).toBe(false)
         await page.clickSubmit()
         expect(page.offerInput.props().showError).toBe(true)
-        expect(page.mockFetchMutation).not.toHaveBeenCalled()
+        expect(page.mockMutationFetch).not.toHaveBeenCalled()
       })
 
       it("doesn't let the user continue if the offer value is not positive", async () => {
@@ -220,16 +220,16 @@ describe("The respond page", () => {
         expect(page.offerInput.props().showError).toBe(false)
         await page.clickSubmit()
         expect(page.offerInput.props().showError).toBe(true)
-        expect(page.mockFetchMutation).not.toHaveBeenCalled()
+        expect(page.mockMutationFetch).not.toHaveBeenCalled()
       })
 
       it("works when a valid number is inputted", async () => {
         await page.selectCounterRadio()
         await page.setOfferAmount(9000)
 
-        expect(page.mockFetchMutation).toHaveBeenCalledTimes(0)
+        expect(page.mockMutationFetch).toHaveBeenCalledTimes(0)
         await page.clickSubmit()
-        expect(page.mockFetchMutation).toHaveBeenCalledTimes(1)
+        expect(page.mockMutationFetch).toHaveBeenCalledTimes(1)
         expect(page.lastMutationVariables).toMatchObject({
           input: {
             offerId: "myoffer-id",
@@ -250,24 +250,22 @@ describe("The respond page", () => {
       await page.setOfferAmount(9000)
       page.mockMutationNetworkFailureOnce()
 
-      expect(page.mockFetchMutation).toHaveBeenCalledTimes(0)
+      expect(page.mockMutationFetch).toHaveBeenCalledTimes(0)
       await page.clickSubmit()
-      expect(page.mockFetchMutation).toHaveBeenCalledTimes(1)
+      expect(page.mockMutationFetch).toHaveBeenCalledTimes(1)
 
       expect(page.mockPushRoute).not.toHaveBeenCalled()
       await page.expectDefaultErrorDialog()
     })
 
     it("shows the error modal if submitting a counter offer fails for business reasons", async () => {
-      resolveCounterMutation.mockReturnValueOnce(
-        buyerCounterOfferFailed.ecommerceBuyerCounterOffer
-      )
+      mutations.useResultsOnce(buyerCounterOfferFailed)
       await page.selectCounterRadio()
       await page.setOfferAmount(9000)
 
-      expect(page.mockFetchMutation).toHaveBeenCalledTimes(0)
+      expect(page.mockMutationFetch).toHaveBeenCalledTimes(0)
       await page.clickSubmit()
-      expect(page.mockFetchMutation).toHaveBeenCalledTimes(1)
+      expect(page.mockMutationFetch).toHaveBeenCalledTimes(1)
 
       expect(page.mockPushRoute).not.toHaveBeenCalled()
       await page.expectDefaultErrorDialog()
@@ -286,13 +284,13 @@ describe("The respond page", () => {
           "OK"
         )
 
-        expect(page.mockFetchMutation).not.toHaveBeenCalled()
+        expect(page.mockMutationFetch).not.toHaveBeenCalled()
         expect(page.mockPushRoute).not.toHaveBeenCalled()
 
         // should work after clicking submit again
         await page.clickSubmit()
 
-        expect(page.mockFetchMutation).toHaveBeenCalledTimes(1)
+        expect(page.mockMutationFetch).toHaveBeenCalledTimes(1)
         expect(page.mockPushRoute).toHaveBeenCalledTimes(1)
       })
     })
@@ -310,21 +308,22 @@ describe("The respond page", () => {
           "OK"
         )
 
-        expect(page.mockFetchMutation).not.toHaveBeenCalled()
+        expect(page.mockMutationFetch).not.toHaveBeenCalled()
         expect(page.mockPushRoute).not.toHaveBeenCalled()
 
         // should work after clicking submit again
         await page.clickSubmit()
 
-        expect(page.mockFetchMutation).toHaveBeenCalledTimes(1)
+        expect(page.mockMutationFetch).toHaveBeenCalledTimes(1)
         expect(page.mockPushRoute).toHaveBeenCalledTimes(1)
       })
     })
   })
 
   describe("Analaytics", () => {
+    let page: RespondTestPage
     beforeEach(async () => {
-      await page.init()
+      page = await buildPage()
     })
 
     it("tracks a pageview", () => {

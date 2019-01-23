@@ -1,6 +1,7 @@
 import { OfferOrderWithShippingDetails } from "Apps/__tests__/Fixtures/Order"
 import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { StepSummaryItem } from "Components/v2"
+import { createTestEnv } from "DevTools/createTestEnv"
 import moment from "moment"
 import { commitMutation as _commitMutation, graphql } from "react-relay"
 import {
@@ -8,7 +9,7 @@ import {
   rejectOfferSuccess,
 } from "../__fixtures__/MutationResults/rejectOffer"
 import { RejectFragmentContainer } from "../Reject"
-import { TestPage } from "./Utils/OrderAppTestPage"
+import { OrderAppTestPage } from "./Utils/OrderAppTestPage"
 
 jest.mock("Apps/Order/Utils/trackPageView")
 
@@ -33,36 +34,29 @@ const testOrder = {
   },
 }
 
-const resolveRejectMutation = jest.fn(
-  () => rejectOfferSuccess.ecommerceBuyerRejectOffer
-)
-
-class RejectTestPage extends TestPage({
-  Component: RejectFragmentContainer,
-  query: graphql`
-    query RejectTestQuery {
-      order: ecommerceOrder(id: "unused") {
-        ...Reject_order
-      }
-    }
-  `,
-  defaultData: {
-    order: testOrder,
-  },
-  defaultMutationResults: {
-    ecommerceBuyerRejectOffer: resolveRejectMutation,
-  },
-}) {}
-
 describe("Buyer rejects seller offer", () => {
-  beforeEach(() => {
-    resolveRejectMutation.mockClear()
+  const { mutations, buildPage } = createTestEnv({
+    Component: RejectFragmentContainer,
+    query: graphql`
+      query RejectTestQuery {
+        order: ecommerceOrder(id: "unused") {
+          ...Reject_order
+        }
+      }
+    `,
+    defaultData: {
+      order: testOrder,
+    },
+    defaultMutationResults: {
+      ...rejectOfferSuccess,
+    },
+    TestPage: OrderAppTestPage,
   })
-  const page = new RejectTestPage()
 
   describe("the page layout", () => {
-    beforeEach(async () => {
-      await page.init()
+    let page: OrderAppTestPage
+    beforeAll(async () => {
+      page = await buildPage()
     })
 
     it("Shows the stepper", () => {
@@ -89,8 +83,9 @@ describe("Buyer rejects seller offer", () => {
   })
 
   describe("taking action", () => {
+    let page: OrderAppTestPage
     beforeEach(async () => {
-      await page.init()
+      page = await buildPage()
     })
 
     it("routes to status page after mutation completes", async () => {
@@ -105,9 +100,7 @@ describe("Buyer rejects seller offer", () => {
     })
 
     it("shows an error modal when there is an error from the server", async () => {
-      resolveRejectMutation.mockReturnValueOnce(
-        rejectOfferFailed.ecommerceBuyerRejectOffer
-      )
+      mutations.useResultsOnce(rejectOfferFailed)
       await page.clickSubmit()
       await page.expectDefaultErrorDialog()
     })
@@ -120,7 +113,7 @@ describe("Buyer rejects seller offer", () => {
   })
 
   it("tracks a pageview", async () => {
-    await page.init()
+    await buildPage()
     expect(trackPageView).toHaveBeenCalledTimes(1)
   })
 })

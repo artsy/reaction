@@ -14,6 +14,7 @@ import {
 import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import Input from "Components/Input"
 import { CountrySelect } from "Components/v2"
+import { createTestEnv } from "DevTools/createTestEnv"
 import { commitMutation as _commitMutation, graphql } from "react-relay"
 import {
   settingOrderShipmentFailure,
@@ -22,7 +23,7 @@ import {
   settingOrderShipmentSuccess,
 } from "../__fixtures__/MutationResults"
 import { ShippingFragmentContainer } from "../Shipping"
-import { TestPage } from "./Utils/OrderAppTestPage"
+import { OrderAppTestPage } from "./Utils/OrderAppTestPage"
 
 jest.mock("Apps/Order/Utils/trackPageView")
 jest.unmock("react-relay")
@@ -46,24 +47,7 @@ const fillAddressForm = (component: any, address: Address) => {
 
 const testOrder = { ...UntouchedBuyOrder, id: "1234" }
 
-const resolveSetShippingMutation = jest.fn(
-  () => settingOrderShipmentSuccess.ecommerceSetOrderShipping
-)
-
-class ShippingTestPage extends TestPage({
-  Component: ShippingFragmentContainer,
-  defaultData: { order: testOrder },
-  defaultMutationResults: {
-    ecommerceSetOrderShipping: resolveSetShippingMutation,
-  },
-  query: graphql`
-    query ShippingTestQuery {
-      order: ecommerceOrder(id: "unused") {
-        ...Shipping_order
-      }
-    }
-  `,
-}) {
+class ShippingTestPage extends OrderAppTestPage {
   async selectPickupOption() {
     this.find("Radio")
       .last()
@@ -73,36 +57,69 @@ class ShippingTestPage extends TestPage({
 }
 
 describe("Shipping", () => {
-  const page = new ShippingTestPage()
+  const { mutations, buildPage } = createTestEnv({
+    Component: ShippingFragmentContainer,
+    defaultData: { order: testOrder },
+    defaultMutationResults: {
+      ...settingOrderShipmentSuccess,
+    },
+    query: graphql`
+      query ShippingTestQuery {
+        order: ecommerceOrder(id: "unused") {
+          ...Shipping_order
+        }
+      }
+    `,
+    TestPage: ShippingTestPage,
+  })
 
   it("removes radio group if pickup_available flag is false", async () => {
     const pickupAvailableOrder = cloneDeep(testOrder) as any
     pickupAvailableOrder.lineItems.edges[0].node.artwork.pickup_available = false
-    await page.init({ mockData: { order: pickupAvailableOrder } })
+    const page = await buildPage({ mockData: { order: pickupAvailableOrder } })
     expect(page.find(RadioGroup).length).toEqual(0)
   })
 
   it("disables country select when shipsToContinentalUSOnly is true", async () => {
     const continentalUSOnlyOrder = cloneDeep(testOrder) as any
     continentalUSOnlyOrder.lineItems.edges[0].node.artwork.shipsToContinentalUSOnly = true
-    await page.init({ mockData: { order: continentalUSOnlyOrder } })
+    const page = await buildPage({
+      mockData: { order: continentalUSOnlyOrder },
+    })
     expect(page.find(CountrySelect).props().disabled).toBe(true)
   })
 
   it("commits the mutation with the orderId", async () => {
-    await page.init()
+    const page = await buildPage()
 
     fillAddressForm(page.root, validAddress)
 
-    expect(page.mockFetchMutation).not.toHaveBeenCalled()
+    expect(page.mockMutationFetch).not.toHaveBeenCalled()
     await page.clickSubmit()
 
-    expect(page.mockFetchMutation).toHaveBeenCalledTimes(1)
-    expect(page.lastMutationVariables).toMatchInlineSnapshot()
+    expect(page.mockMutationFetch).toHaveBeenCalledTimes(1)
+    expect(page.lastMutationVariables).toMatchInlineSnapshot(`
+Object {
+  "input": Object {
+    "fulfillmentType": "SHIP",
+    "orderId": "1234",
+    "shipping": Object {
+      "addressLine1": "14 Gower's Walk",
+      "addressLine2": "Suite 2.5, The Loom",
+      "city": "Whitechapel",
+      "country": "UK",
+      "name": "Artsy UK Ltd",
+      "phoneNumber": "8475937743",
+      "postalCode": "E1 8PY",
+      "region": "London",
+    },
+  },
+}
+`)
   })
 
   it("commits the mutation with shipping option", async () => {
-    await page.init()
+    const page = await buildPage()
 
     fillAddressForm(page.root, {
       ...validAddress,
@@ -118,17 +135,18 @@ describe("Shipping", () => {
   })
 
   it("commits the mutation with pickup option", async () => {
-    await page.init()
+    const page = await buildPage()
     await page.selectPickupOption()
-    expect(page.mockFetchMutation).not.toHaveBeenCalled()
+    expect(page.mockMutationFetch).not.toHaveBeenCalled()
     await page.clickSubmit()
-    expect(page.mockFetchMutation).toHaveBeenCalledTimes(1)
+    expect(page.mockMutationFetch).toHaveBeenCalledTimes(1)
     expect(page.lastMutationVariables.input.fulfillmentType).toBe("PICKUP")
   })
 
   describe("mutation", () => {
+    let page: ShippingTestPage
     beforeEach(async () => {
-      await page.init()
+      page = await buildPage()
     })
 
     it("routes to payment screen after mutation completes", async () => {
@@ -143,9 +161,7 @@ describe("Shipping", () => {
     })
 
     it("shows an error modal when there is an error from the server", async () => {
-      resolveSetShippingMutation.mockReturnValueOnce(
-        settingOrderShipmentFailure.ecommerceSetOrderShipping
-      )
+      mutations.useResultsOnce(settingOrderShipmentFailure)
       fillAddressForm(page.root, validAddress)
       await page.clickSubmit()
       await page.expectDefaultErrorDialog()
@@ -159,9 +175,7 @@ describe("Shipping", () => {
     })
 
     it("shows a validation error modal when there is a missing_country error from the server", async () => {
-      resolveSetShippingMutation.mockReturnValueOnce(
-        settingOrderShipmentMissingCountryFailure.ecommerceSetOrderShipping
-      )
+      mutations.useResultsOnce(settingOrderShipmentMissingCountryFailure)
       fillAddressForm(page.root, validAddress)
       await page.clickSubmit()
       await page.expectErrorDialogMatching(
@@ -171,9 +185,7 @@ describe("Shipping", () => {
     })
 
     it("shows a validation error modal when there is a missing_region error from the server", async () => {
-      resolveSetShippingMutation.mockReturnValueOnce(
-        settingOrderShipmentMissingRegionFailure.ecommerceSetOrderShipping
-      )
+      mutations.useResultsOnce(settingOrderShipmentMissingRegionFailure)
       fillAddressForm(page.root, validAddress)
       await page.clickSubmit()
       await page.expectErrorDialogMatching(
@@ -184,8 +196,9 @@ describe("Shipping", () => {
   })
 
   describe("with previously filled-in data", () => {
+    let page: ShippingTestPage
     beforeEach(async () => {
-      await page.init({
+      page = await buildPage({
         mockData: {
           order: {
             ...testOrder,
@@ -218,26 +231,27 @@ describe("Shipping", () => {
   })
 
   describe("Validations", () => {
+    let page: ShippingTestPage
     beforeEach(async () => {
-      await page.init()
+      page = await buildPage()
     })
 
     describe("for Ship orders", () => {
       it("does not submit an empty form for a SHIP order", async () => {
         await page.clickSubmit()
-        expect(page.mockFetchMutation).not.toBeCalled()
+        expect(page.mockMutationFetch).not.toBeCalled()
       })
 
       it("does not submit the mutation with an incomplete form for a SHIP order", async () => {
         fillIn(page.root, { title: "Full name", value: "Air Bud" })
         await page.clickSubmit()
-        expect(page.mockFetchMutation).not.toBeCalled()
+        expect(page.mockMutationFetch).not.toBeCalled()
       })
 
       it("does submit the mutation with a complete form for a SHIP order", async () => {
         fillAddressForm(page.root, validAddress)
         await page.clickSubmit()
-        expect(page.mockFetchMutation).toBeCalled()
+        expect(page.mockMutationFetch).toBeCalled()
       })
 
       it("says a required field is required for a SHIP order", async () => {
@@ -267,7 +281,7 @@ describe("Shipping", () => {
           .filterWhere(wrapper => wrapper.props().title === "Postal code")
         expect(input.props().error).toBeFalsy()
 
-        expect(page.mockFetchMutation).toBeCalled()
+        expect(page.mockMutationFetch).toBeCalled()
       })
 
       it("before submit, only shows a validation error on inputs that have been touched", async () => {
@@ -312,20 +326,20 @@ describe("Shipping", () => {
         }
         fillAddressForm(page.root, address)
         await page.clickSubmit()
-        expect(page.mockFetchMutation).toBeCalled()
+        expect(page.mockMutationFetch).toBeCalled()
       })
     })
 
     it("does submit the mutation with a non-ship order", async () => {
       await page.selectPickupOption()
       await page.clickSubmit()
-      expect(page.mockFetchMutation).toBeCalled()
+      expect(page.mockMutationFetch).toBeCalled()
     })
   })
 
   describe("Offer-mode orders", () => {
     it("shows an active offer stepper if the order is an Offer Order", async () => {
-      await page.init({
+      const page = await buildPage({
         mockData: {
           order: UntouchedOfferOrder,
         },
@@ -338,7 +352,7 @@ describe("Shipping", () => {
   })
 
   it("tracks a pageview", async () => {
-    await page.init()
+    await buildPage()
     expect(trackPageView).toHaveBeenCalledTimes(1)
   })
 })
