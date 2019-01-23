@@ -10,10 +10,6 @@ export type Accept_order$ref = typeof _Accept_order$ref;
 export type Accept_order = {
     readonly id: string | null;
     readonly stateExpiresAt: string | null;
-    readonly lastOffer: ({
-        readonly id: string | null;
-        readonly createdAt: string | null;
-    }) | null;
     readonly lineItems: ({
         readonly edges: ReadonlyArray<({
             readonly node: ({
@@ -22,6 +18,10 @@ export type Accept_order = {
                 }) | null;
             }) | null;
         }) | null> | null;
+    }) | null;
+    readonly lastOffer?: ({
+        readonly id: string | null;
+        readonly createdAt: string | null;
     }) | null;
     readonly " $fragmentRefs": TransactionDetailsSummaryItem_order$ref & ArtworkSummaryItem_order$ref & ShippingSummaryItem_order$ref & CreditCardSummaryItem_order$ref;
     readonly " $refType": Accept_order$ref;
@@ -58,26 +58,6 @@ return {
       "name": "stateExpiresAt",
       "args": null,
       "storageKey": null
-    },
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "lastOffer",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "Offer",
-      "plural": false,
-      "selections": [
-        v0,
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "createdAt",
-          "args": null,
-          "storageKey": null
-        },
-        v1
-      ]
     },
     {
       "kind": "LinkedField",
@@ -152,9 +132,35 @@ return {
       "name": "CreditCardSummaryItem_order",
       "args": null
     },
-    v1
+    v1,
+    {
+      "kind": "InlineFragment",
+      "type": "OfferOrder",
+      "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "lastOffer",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "Offer",
+          "plural": false,
+          "selections": [
+            v0,
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "createdAt",
+              "args": null,
+              "storageKey": null
+            },
+            v1
+          ]
+        }
+      ]
+    }
   ]
 };
 })();
-(node as any).hash = '4da70a63c78fb1819efe4c8ab0cc35e5';
+(node as any).hash = '1594b97f14c43f23bc0141ee9ce8bf2b';
 export default node;
