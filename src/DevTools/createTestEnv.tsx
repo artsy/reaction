@@ -6,63 +6,63 @@ import { Network } from "relay-runtime"
 import { Breakpoint } from "Utils/Responsive"
 import { RootTestPage } from "./RootTestPage"
 
-export function createTestEnv<
-  MutationNames extends string,
-  TestPage extends RootTestPage
->({
-  Component,
-  query,
-  defaultData,
-  defaultMutationResults = {} as Record<MutationNames, any>,
-  defaultBreakpoint,
-  TestPage,
-}: {
-  Component: React.ComponentType<any>
-  query: GraphQLTaggedNode
-  defaultData: object
-  defaultMutationResults?: Record<MutationNames, any>
-  defaultBreakpoint?: Breakpoint
-  TestPage: { new (): TestPage }
-}) {
-  // surface resolver errors that otherwise get swallowed by
-  // onError in the pages' calls to commitMutation
-  let errors = []
+class Mutations<MutationNames extends string> {
+  constructor(public resolvers: Record<MutationNames, jest.Mock>) {
+    this.resolvers = resolvers
+  }
+  useResultsOnce = (mutationResults: Partial<Record<MutationNames, any>>) => {
+    Object.entries(mutationResults).forEach(([k, v]) => {
+      if (typeof v === "function") {
+        this.resolvers[k].mockImplementationOnce(v)
+      } else {
+        this.resolvers[k].mockReturnValueOnce(v)
+      }
+    })
+  }
+}
 
-  const mutationResolvers: Record<MutationNames, jest.Mock> = Object.entries(
-    defaultMutationResults
-  ).reduce(
-    (acc, [k, v]) => ({
-      ...acc,
-      [k]: jest.fn((...args) => (typeof v === "function" ? v(...args) : v)),
-    }),
-    {}
-  ) as any
-
-  afterEach(() => {
-    const _errors = errors
-    errors = []
-    Object.keys(mutationResolvers).forEach(key =>
-      mutationResolvers[key].mockClear()
-    )
-    if (_errors.length !== 0) {
-      throw new Error(_errors as any)
+class TestEnv<MutationNames extends string, TestPage extends RootTestPage> {
+  constructor(
+    private opts: {
+      Component: React.ComponentType<any>
+      query: GraphQLTaggedNode
+      defaultData: object
+      defaultMutationResults?: Record<MutationNames, any>
+      defaultBreakpoint?: Breakpoint
+      TestPage: { new (): TestPage }
     }
-  })
+  ) {
+    this.opts = opts
 
-  const mutations = {
-    resolvers: mutationResolvers,
-    useResultsOnce: (mutationResults: Partial<Record<MutationNames, any>>) => {
-      Object.entries(mutationResults).forEach(([k, v]) => {
-        if (typeof v === "function") {
-          mutationResolvers[k].mockImplementationOnce(v)
-        } else {
-          mutationResolvers[k].mockReturnValueOnce(v)
-        }
-      })
-    },
+    const mutationResolvers: Record<MutationNames, jest.Mock> = Object.entries(
+      opts.defaultMutationResults
+    ).reduce(
+      (acc, [k, v]) => ({
+        ...acc,
+        [k]: jest.fn((...args) => (typeof v === "function" ? v(...args) : v)),
+      }),
+      {} as any
+    )
+
+    afterEach(() => {
+      const _errors = this.errors
+      this.errors = []
+      Object.keys(mutationResolvers).forEach(key =>
+        mutationResolvers[key].mockClear()
+      )
+      if (_errors.length !== 0) {
+        throw new Error(_errors as any)
+      }
+    })
+
+    this.mutations = new Mutations(mutationResolvers)
   }
 
-  const buildPage = async ({
+  mutations: Mutations<MutationNames>
+
+  private errors: any[] = []
+
+  buildPage = async ({
     mockData,
     mockMutationResults,
     breakpoint,
@@ -71,22 +71,30 @@ export function createTestEnv<
     mockMutationResults?: Record<MutationNames, any>
     breakpoint?: Breakpoint
   } = {}): Promise<TestPage> => {
+    const {
+      Component,
+      // tslint:disable-next-line:no-shadowed-variable
+      TestPage,
+      query,
+      defaultData,
+      defaultBreakpoint,
+    } = this.opts
     const page = new TestPage() as TestPage
 
     if (mockMutationResults) {
-      mutations.useResultsOnce(mockMutationResults)
+      this.mutations.useResultsOnce(mockMutationResults)
     }
 
     const fetchQuery = createMockFetchQuery({
       mockData: { ...defaultData, ...mockData },
-      mockMutationResults: mutations.resolvers,
+      mockMutationResults: this.mutations.resolvers,
     })
 
     // surface resolver errors from fetchQuery that otherwise get swallowed by
     // error handling in the pages themselves
     const wrappedFetchQuery = (operation, variables) =>
       fetchQuery(operation, variables).catch(e => {
-        errors.push(e)
+        this.errors.push(e)
         throw e
       })
 
@@ -119,6 +127,11 @@ export function createTestEnv<
 
     return page as any
   }
+}
 
-  return { buildPage, mutations }
+export function createTestEnv<
+  MutationNames extends string,
+  TestPage extends RootTestPage
+>(opts: TestEnv<MutationNames, TestPage>["opts"]) {
+  return new TestEnv(opts)
 }
