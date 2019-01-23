@@ -1,6 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ArtworkCaption snapshot renders a classic caption properly 1`] = `
+.c1 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 14px;
+  line-height: 18px;
+  color: #666;
+}
+
 .c0 {
   margin-top: 10px;
   display: block;
@@ -27,7 +34,7 @@ exports[`ArtworkCaption snapshot renders a classic caption properly 1`] = `
 
 <div>
   <div
-    className="display-artwork__caption c0 sc-gzVnrw ibZhkv sc-EHOje iZJeQH"
+    className="display-artwork__caption c0 c1"
     color="#666"
     fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
     fontSize="14px"
@@ -44,7 +51,14 @@ exports[`ArtworkCaption snapshot renders a classic caption properly 1`] = `
 `;
 
 exports[`ArtworkCaption snapshot renders a fullscreen caption properly 1`] = `
-.c2 {
+.c1 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.c3 {
   margin-right: 30px;
 }
 
@@ -66,6 +80,18 @@ exports[`ArtworkCaption snapshot renders a fullscreen caption properly 1`] = `
   font-style: italic;
 }
 
+@media screen and (min-width:40em) {
+  .c1 {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c1 {
+    line-height: 26px;
+  }
+}
+
 @media (max-width:720px) {
   .c0 {
     -webkit-flex-direction: column;
@@ -75,14 +101,14 @@ exports[`ArtworkCaption snapshot renders a fullscreen caption properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c1.artist-name {
+  .c2.artist-name {
     margin-bottom: 5px;
   }
 }
 
 <div>
   <div
-    className="c0 sc-bZQynM bOrPFB sc-EHOje iJMdQR"
+    className="c0 c1"
     fontFamily={
       Object {
         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -97,10 +123,10 @@ exports[`ArtworkCaption snapshot renders a fullscreen caption properly 1`] = `
     }
   >
     <div
-      className="c1"
+      className="c2"
     >
       <span
-        className="c2"
+        className="c3"
       >
         <span
           className="name"
@@ -111,7 +137,7 @@ exports[`ArtworkCaption snapshot renders a fullscreen caption properly 1`] = `
     </div>
     <div>
       <div
-        className="c1"
+        className="c2"
       >
         <span
           className="title"
@@ -128,7 +154,7 @@ exports[`ArtworkCaption snapshot renders a fullscreen caption properly 1`] = `
         </span>
       </div>
       <div
-        className="c1"
+        className="c2"
       >
         Gary Nader
         <span>
@@ -146,7 +172,14 @@ exports[`ArtworkCaption snapshot renders a fullscreen caption properly 1`] = `
 `;
 
 exports[`ArtworkCaption snapshot renders a standard caption properly 1`] = `
-.c2 {
+.c1 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  color: #C2C2C2;
+}
+
+.c3 {
   margin-right: 30px;
 }
 
@@ -170,12 +203,12 @@ exports[`ArtworkCaption snapshot renders a standard caption properly 1`] = `
   font-style: italic;
 }
 
-.eKMyBw .c1 {
+.eKMyBw .c2 {
   margin-right: 0;
   font-weight: bold;
 }
 
-.eKMyBw .c1::after {
+.eKMyBw .c2::after {
   content: ", ";
 }
 
@@ -187,13 +220,13 @@ exports[`ArtworkCaption snapshot renders a standard caption properly 1`] = `
 
 <div>
   <div
-    className="c0 sc-bZQynM bOrPFB sc-EHOje eiIllQ"
+    className="c0 c1"
     color="#C2C2C2"
     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
     fontSize="14px"
   >
     <span
-      className="c1 c2"
+      className="c2 c3"
     >
       <span
         className="name"

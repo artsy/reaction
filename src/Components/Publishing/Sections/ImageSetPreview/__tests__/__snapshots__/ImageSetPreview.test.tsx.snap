@@ -2,13 +2,71 @@
 
 exports[`renders a full image set properly 1`] = `
 .c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c5 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 26px;
+  padding-bottom: 8px;
+}
+
+.c7 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.c8 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  padding-left: 20px;
+}
+
+.c9 {
   height: 45px;
   position: relative;
   margin-left: 40px;
   text-align: right;
 }
 
-.c3 > svg {
+.c9 > svg {
   height: 98%;
 }
 
@@ -45,9 +103,45 @@ exports[`renders a full image set properly 1`] = `
   fill: white;
 }
 
-.c4 {
+.c10 {
   height: auto;
   width: 100%;
+}
+
+@media screen and (min-width:40em) {
+  .c5 {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c5 {
+    line-height: 30px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c7 {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c7 {
+    line-height: 24px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c8 {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c8 {
+    line-height: 24px;
+  }
 }
 
 <div
@@ -58,13 +152,13 @@ exports[`renders a full image set properly 1`] = `
     onClick={[Function]}
   >
     <div
-      className="c2 sc-ifAKCX dkHxIs"
+      className="c2 c3"
     >
       <div
-        className="sc-ifAKCX hUUMqO"
+        className="c4"
       >
         <div
-          className="sc-bZQynM bOrPFB sc-EHOje hUyOIs"
+          className="c5"
           fontFamily={
             Object {
               "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -81,10 +175,10 @@ exports[`renders a full image set properly 1`] = `
           The Work of Bruce M. Sherman
         </div>
         <div
-          className="sc-ifAKCX htzdbN"
+          className="c6"
         >
           <div
-            className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+            className="c7"
             fontFamily={
               Object {
                 "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -101,7 +195,7 @@ exports[`renders a full image set properly 1`] = `
             View Slideshow
           </div>
           <div
-            className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+            className="c8"
             fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize={
               Array [
@@ -118,7 +212,7 @@ exports[`renders a full image set properly 1`] = `
         className="rrm-container rrm-greaterThanOrEqual-sm"
       >
         <div
-          className="c3"
+          className="c9"
         >
           <svg
             className="image-set"
@@ -148,7 +242,7 @@ exports[`renders a full image set properly 1`] = `
   >
     <img
       alt="The Work of Bruce M. Sherman"
-      className="c4"
+      className="c10"
       src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=800&quality=80"
     />
   </div>
@@ -156,18 +250,87 @@ exports[`renders a full image set properly 1`] = `
 `;
 
 exports[`renders a mini image set properly 1`] = `
-.c5 {
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c8 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 26px;
+  padding-bottom: 8px;
+}
+
+.c10 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.c11 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  padding-left: 20px;
+}
+
+.c12 {
   height: 45px;
   position: relative;
   margin-left: 40px;
   text-align: right;
 }
 
-.c5 > svg {
+.c12 > svg {
   height: 98%;
 }
 
-.c4 {
+.c5 {
   padding: 20px;
   width: 100%;
 }
@@ -177,7 +340,7 @@ exports[`renders a mini image set properly 1`] = `
   width: 100%;
 }
 
-.c3 {
+.c4 {
   height: auto;
   width: 100%;
 }
@@ -189,31 +352,67 @@ exports[`renders a mini image set properly 1`] = `
   cursor: pointer;
 }
 
-.c1 .c2 {
+.c1 .c3 {
   height: 100%;
   width: auto;
+}
+
+@media screen and (min-width:40em) {
+  .c8 {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c8 {
+    line-height: 30px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c10 {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c10 {
+    line-height: 24px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c11 {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c11 {
+    line-height: 24px;
+  }
 }
 
 <div
   className="c0"
 >
   <div
-    className="c1 sc-ifAKCX byxejl"
+    className="c1 c2"
     onClick={[Function]}
   >
     <img
       alt="The Work of Bruce M. Sherman"
-      className="c2 c3"
+      className="c3 c4"
       src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=200&quality=80"
     />
     <div
-      className="c4 sc-ifAKCX dkHxIs"
+      className="c5 c6"
     >
       <div
-        className="sc-ifAKCX hUUMqO"
+        className="c7"
       >
         <div
-          className="sc-bZQynM bOrPFB sc-EHOje hUyOIs"
+          className="c8"
           fontFamily={
             Object {
               "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -230,10 +429,10 @@ exports[`renders a mini image set properly 1`] = `
           The Work of Bruce M. Sherman
         </div>
         <div
-          className="sc-ifAKCX htzdbN"
+          className="c9"
         >
           <div
-            className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+            className="c10"
             fontFamily={
               Object {
                 "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -250,7 +449,7 @@ exports[`renders a mini image set properly 1`] = `
             View Slideshow
           </div>
           <div
-            className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+            className="c11"
             fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize={
               Array [
@@ -267,7 +466,7 @@ exports[`renders a mini image set properly 1`] = `
         className="rrm-container rrm-greaterThanOrEqual-sm"
       >
         <div
-          className="c5"
+          className="c12"
         >
           <svg
             className="image-set"

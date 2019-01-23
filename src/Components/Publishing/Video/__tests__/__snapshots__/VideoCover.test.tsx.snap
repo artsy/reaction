@@ -1,12 +1,75 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Video Cover matches the snapshot 1`] = `
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+  padding-bottom: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c14 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  margin-right: 20px;
+}
+
+.c15 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.c16 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 42px;
+  line-height: 50px;
+}
+
+.c18 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 18px;
+  line-height: 26px;
+  padding-top: 30px;
+}
+
 .c8 {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 12px;
+}
+
+.c10 {
+  padding-right: 20px;
+  width: 60px;
+}
+
+.c17 {
+  max-width: 100%;
+}
+
+.c12 {
   width: 32px;
   height: 32px;
 }
 
-.c9 a {
+.c13 a {
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -27,7 +90,7 @@ exports[`Video Cover matches the snapshot 1`] = `
   z-index: 1;
 }
 
-.c6 .c7 {
+.c6 .c11 {
   height: 60px;
   width: 44px;
   cursor: pointer;
@@ -54,6 +117,54 @@ exports[`Video Cover matches the snapshot 1`] = `
   height: 100%;
 }
 
+@media screen and (min-width:40em) {
+  .c7 {
+    padding-bottom: 60px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c18 {
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c18 {
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c18 {
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c18 {
+    line-height: 32px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c18 {
+    line-height: 32px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c18 {
+    line-height: 32px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c17 {
+    max-width: 60%;
+  }
+}
+
 <div
   className="c0"
 >
@@ -65,21 +176,21 @@ exports[`Video Cover matches the snapshot 1`] = `
     className="c3 c4"
   />
   <div
-    className="c5 c6 sc-ifAKCX heICHz"
+    className="c5 c6 c7"
   >
     <div
-      className="sc-kAzzGY jWPSYA"
+      className="c8"
     >
       <div
-        className="sc-ifAKCX htzdbN"
+        className="c9"
       >
         <div
-          className="sc-kAzzGY iQaGQD"
+          className="c10"
           onClick={[Function]}
           width="60px"
         >
           <svg
-            className="c7 c8"
+            className="c11 c12"
             version="1.1"
             viewBox="0 0 40 56"
             x="0px"
@@ -100,21 +211,21 @@ exports[`Video Cover matches the snapshot 1`] = `
           </svg>
         </div>
         <div
-          className="sc-kAzzGY eEGgS"
+          className=""
         >
           <div>
             <div
-              className="sc-ifAKCX htzdbN"
+              className="c9"
             >
               <div
-                className="c9 sc-bZQynM bOrPFB sc-EHOje girjXe"
+                className="c13 c14"
                 fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                 fontSize="14px"
               >
                 Future of Art
               </div>
               <div
-                className="sc-bZQynM bOrPFB sc-EHOje CMaEi"
+                className="c15"
                 fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                 fontSize="14px"
               >
@@ -122,7 +233,7 @@ exports[`Video Cover matches the snapshot 1`] = `
               </div>
             </div>
             <div
-              className="sc-bZQynM bOrPFB sc-EHOje BRZmD"
+              className="c16"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize="42px"
             >
@@ -132,10 +243,10 @@ exports[`Video Cover matches the snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-kAzzGY kccIrc"
+        className="c17"
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje evsrro"
+          className="c18"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize={
             Array [
@@ -155,12 +266,75 @@ exports[`Video Cover matches the snapshot 1`] = `
 `;
 
 exports[`Video Cover matches the snapshot with edit props 1`] = `
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+  padding-bottom: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c14 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  margin-right: 20px;
+}
+
+.c15 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.c16 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 42px;
+  line-height: 50px;
+}
+
+.c18 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 18px;
+  line-height: 26px;
+  padding-top: 30px;
+}
+
 .c8 {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 12px;
+}
+
+.c10 {
+  padding-right: 20px;
+  width: 60px;
+}
+
+.c17 {
+  max-width: 100%;
+}
+
+.c12 {
   width: 32px;
   height: 32px;
 }
 
-.c9 a {
+.c13 a {
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -181,7 +355,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
   z-index: 1;
 }
 
-.c6 .c7 {
+.c6 .c11 {
   height: 60px;
   width: 44px;
   cursor: pointer;
@@ -208,6 +382,54 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
   height: 100%;
 }
 
+@media screen and (min-width:40em) {
+  .c7 {
+    padding-bottom: 60px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c18 {
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c18 {
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c18 {
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c18 {
+    line-height: 32px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c18 {
+    line-height: 32px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c18 {
+    line-height: 32px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c17 {
+    max-width: 60%;
+  }
+}
+
 <div
   className="c0"
 >
@@ -219,21 +441,21 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
     className="c3 c4"
   />
   <div
-    className="c5 c6 sc-ifAKCX heICHz"
+    className="c5 c6 c7"
   >
     <div
-      className="sc-kAzzGY jWPSYA"
+      className="c8"
     >
       <div
-        className="sc-ifAKCX htzdbN"
+        className="c9"
       >
         <div
-          className="sc-kAzzGY iQaGQD"
+          className="c10"
           onClick={[Function]}
           width="60px"
         >
           <svg
-            className="c7 c8"
+            className="c11 c12"
             version="1.1"
             viewBox="0 0 40 56"
             x="0px"
@@ -254,21 +476,21 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
           </svg>
         </div>
         <div
-          className="sc-kAzzGY eEGgS"
+          className=""
         >
           <div>
             <div
-              className="sc-ifAKCX htzdbN"
+              className="c9"
             >
               <div
-                className="c9 sc-bZQynM bOrPFB sc-EHOje girjXe"
+                className="c13 c14"
                 fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                 fontSize="14px"
               >
                 Future of Art
               </div>
               <div
-                className="sc-bZQynM bOrPFB sc-EHOje CMaEi"
+                className="c15"
                 fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                 fontSize="14px"
               >
@@ -276,7 +498,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
               </div>
             </div>
             <div
-              className="sc-bZQynM bOrPFB sc-EHOje BRZmD"
+              className="c16"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize="42px"
             >
@@ -289,10 +511,10 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
         </div>
       </div>
       <div
-        className="sc-kAzzGY kccIrc"
+        className="c17"
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje evsrro"
+          className="c18"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize={
             Array [

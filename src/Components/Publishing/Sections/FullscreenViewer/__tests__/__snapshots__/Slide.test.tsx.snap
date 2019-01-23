@@ -1,11 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders properly 1`] = `
-.c9 {
-  margin-right: 30px;
+.c8 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
 }
 
 .c10 {
+  margin-right: 30px;
+}
+
+.c11 {
   white-space: nowrap;
 }
 
@@ -42,7 +49,7 @@ exports[`renders properly 1`] = `
   color: black;
 }
 
-.c11 {
+.c12 {
   margin-left: 20px;
   white-space: nowrap;
   font-family: Unica77LLWebRegular,Arial,serif;
@@ -110,6 +117,18 @@ exports[`renders properly 1`] = `
   line-height: 1.1em;
 }
 
+@media screen and (min-width:40em) {
+  .c8 {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c8 {
+    line-height: 26px;
+  }
+}
+
 @media (max-width:720px) {
   .c7 {
     -webkit-flex-direction: column;
@@ -119,7 +138,7 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c8.artist-name {
+  .c9.artist-name {
     margin-bottom: 5px;
   }
 }
@@ -151,7 +170,7 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c11 {
+  .c12 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
@@ -219,7 +238,7 @@ exports[`renders properly 1`] = `
         >
           <div>
             <div
-              className="c7 sc-bZQynM bOrPFB sc-EHOje iJMdQR"
+              className="c7 c8"
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -234,13 +253,13 @@ exports[`renders properly 1`] = `
               }
             >
               <div
-                className="c8"
+                className="c9"
               >
                 <span
-                  className="c9"
+                  className="c10"
                 >
                   <span
-                    className="c10"
+                    className="c11"
                   >
                     <a
                       href="/artist/fernando-botero"
@@ -252,7 +271,7 @@ exports[`renders properly 1`] = `
               </div>
               <div>
                 <div
-                  className="c8"
+                  className="c9"
                 >
                   <span
                     className="title"
@@ -273,7 +292,7 @@ exports[`renders properly 1`] = `
                   </span>
                 </div>
                 <div
-                  className="c8"
+                  className="c9"
                 >
                   <a
                     href="/gary-nader"
@@ -295,7 +314,7 @@ exports[`renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c11"
+        className="c12"
       >
         undefined of undefined
       </div>

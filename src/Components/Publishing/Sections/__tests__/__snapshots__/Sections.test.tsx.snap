@@ -1,7 +1,91 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Sections snapshots tests renders properly 1`] = `
-.c38 {
+.c31 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c32 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c34 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c42 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.c18 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  color: #C2C2C2;
+}
+
+.c33 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 26px;
+  padding-bottom: 8px;
+}
+
+.c35 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.c36 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  padding-left: 20px;
+}
+
+.c43 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.c47 {
   font-family: artsy-icons;
   color: black;
   font-size: 24px;
@@ -15,30 +99,30 @@ exports[`Sections snapshots tests renders properly 1`] = `
   color: black;
 }
 
-.c34 {
+.c41 {
   color: black;
 }
 
-.c34 a {
+.c41 a {
   color: black;
 }
 
-.c35 {
+.c44 {
   margin-right: 20px;
 }
 
-.c36 {
+.c45 {
   -webkit-text-decoration: none;
   text-decoration: none;
   white-space: nowrap;
 }
 
-.c36 .c37 {
+.c45 .c46 {
   vertical-align: middle;
   margin: 0;
 }
 
-.c33 {
+.c40 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -48,16 +132,16 @@ exports[`Sections snapshots tests renders properly 1`] = `
   flex-direction: column;
 }
 
-.c23 {
+.c24 {
   width: 100%;
   height: 1000px;
 }
 
-.c18 {
+.c19 {
   margin-right: 30px;
 }
 
-.c19 {
+.c20 {
   white-space: nowrap;
 }
 
@@ -203,53 +287,53 @@ exports[`Sections snapshots tests renders properly 1`] = `
   width: 264px;
 }
 
-.c20 {
-  margin-right: 10px;
-  width: 219px;
-}
-
 .c21 {
-  margin-right: 0px;
+  margin-right: 10px;
   width: 219px;
 }
 
 .c22 {
   margin-right: 0px;
+  width: 219px;
+}
+
+.c23 {
+  margin-right: 0px;
   width: 100%;
 }
 
-.c24 {
+.c25 {
   margin-right: 10px;
   width: 216px;
 }
 
-.c25 {
+.c26 {
   margin-right: 0px;
   width: 222px;
 }
 
-.c30 {
+.c37 {
   height: 45px;
   position: relative;
   margin-left: 40px;
   text-align: right;
 }
 
-.c30 > svg {
+.c37 > svg {
   height: 98%;
 }
 
-.c29 {
+.c30 {
   padding: 20px;
   width: 100%;
 }
 
-.c27 {
+.c28 {
   position: relative;
   width: 100%;
 }
 
-.c28 {
+.c29 {
   position: absolute;
   bottom: 20px;
   left: 20px;
@@ -262,17 +346,17 @@ exports[`Sections snapshots tests renders properly 1`] = `
   cursor: pointer;
 }
 
-.c28:hover {
+.c29:hover {
   background: rgba(0,0,0,0.6);
   color: white;
 }
 
-.c28:hover path,
-.c28:hover polygon {
+.c29:hover path,
+.c29:hover polygon {
   fill: white;
 }
 
-.c31 {
+.c38 {
   height: auto;
   width: 100%;
 }
@@ -301,7 +385,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
   max-width: 100%;
 }
 
-.c26 {
+.c27 {
   box-sizing: border-box;
   margin: auto;
   margin-bottom: 40px;
@@ -309,7 +393,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
   max-width: 100%;
 }
 
-.c32 {
+.c39 {
   box-sizing: border-box;
   margin: auto;
   margin-bottom: 40px;
@@ -521,8 +605,44 @@ exports[`Sections snapshots tests renders properly 1`] = `
   max-width: 780px;
 }
 
+@media screen and (min-width:40em) {
+  .c33 {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c33 {
+    line-height: 30px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c35 {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c35 {
+    line-height: 24px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c36 {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c36 {
+    line-height: 24px;
+  }
+}
+
 @media (max-width:720px) {
-  .c23 {
+  .c24 {
     height: 1300px;
     width: 100vw;
   }
@@ -573,12 +693,6 @@ exports[`Sections snapshots tests renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c20 {
-    margin-bottom: 10px;
-  }
-}
-
-@media (max-width:600px) {
   .c21 {
     margin-bottom: 10px;
   }
@@ -591,7 +705,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c24 {
+  .c23 {
     margin-bottom: 10px;
   }
 }
@@ -602,6 +716,12 @@ exports[`Sections snapshots tests renders properly 1`] = `
   }
 }
 
+@media (max-width:600px) {
+  .c26 {
+    margin-bottom: 10px;
+  }
+}
+
 @media (max-width:1280px) {
   .c1 {
     width: 680px;
@@ -639,19 +759,19 @@ exports[`Sections snapshots tests renders properly 1`] = `
 }
 
 @media (max-width:1280px) {
-  .c26 {
+  .c27 {
     width: 680px;
   }
 }
 
 @media (max-width:900px) {
-  .c26 {
+  .c27 {
     padding: 0;
   }
 }
 
 @media (max-width:900px) {
-  .c32 {
+  .c39 {
     padding: 0 20px;
   }
 }
@@ -1064,16 +1184,16 @@ exports[`Sections snapshots tests renders properly 1`] = `
           </a>
           <div>
             <div
-              className="c17 sc-bZQynM bOrPFB sc-EHOje eiIllQ"
+              className="c17 c18"
               color="#C2C2C2"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize="14px"
             >
               <span
-                className="c18"
+                className="c19"
               >
                 <span
-                  className="c19"
+                  className="c20"
                 >
                   <a
                     href="/artist/matt-devine"
@@ -1159,7 +1279,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
       className="c5"
     >
       <div
-        className="c20"
+        className="c21"
         width={219}
       >
         <div
@@ -1248,7 +1368,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c20"
+        className="c21"
         width={219}
       >
         <div
@@ -1337,7 +1457,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c21"
+        className="c22"
         width={219}
       >
         <div
@@ -1450,7 +1570,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
       className="c5"
     >
       <div
-        className="c22"
+        className="c23"
       >
         <div
           className="article-image"
@@ -1559,7 +1679,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
     className="c3"
   >
     <iframe
-      className="c23"
+      className="c24"
       frameBorder="0"
       height={1000}
       scrolling="no"
@@ -1589,7 +1709,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
       className="c5"
     >
       <div
-        className="c24"
+        className="c25"
         width={216}
       >
         <div
@@ -1678,7 +1798,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c20"
+        className="c21"
         width={219}
       >
         <div
@@ -1767,7 +1887,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c25"
+        className="c26"
         width={222}
       >
         <div
@@ -1874,23 +1994,23 @@ exports[`Sections snapshots tests renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c26"
+    className="c27"
   >
     <div
-      className="c27"
+      className="c28"
     >
       <div
-        className="c28"
+        className="c29"
         onClick={[Function]}
       >
         <div
-          className="c29 dkHxIs"
+          className="c30 c31"
         >
           <div
-            className="hUUMqO"
+            className="c32"
           >
             <div
-              className="sc-bZQynM bOrPFB sc-EHOje hUyOIs"
+              className="c33"
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1907,10 +2027,10 @@ exports[`Sections snapshots tests renders properly 1`] = `
               The Work of Bruce M. Sherman
             </div>
             <div
-              className="htzdbN"
+              className="c34"
             >
               <div
-                className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                className="c35"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1927,7 +2047,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
                 View Slideshow
               </div>
               <div
-                className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                className="c36"
                 fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                 fontSize={
                   Array [
@@ -1944,7 +2064,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
             className="rrm-container rrm-greaterThanOrEqual-sm"
           >
             <div
-              className="c30"
+              className="c37"
             >
               <svg
                 className="image-set"
@@ -1974,7 +2094,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
       >
         <img
           alt="The Work of Bruce M. Sherman"
-          className="c31"
+          className="c38"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FCzofaZln2q-XhtXFqIio5A%252F07272017133815-0001%2B%2528dragged%2529%2Bcopy.jpg&width=800&quality=80"
         />
       </div>
@@ -1997,13 +2117,13 @@ exports[`Sections snapshots tests renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c26"
+    className="c27"
   >
     <div
       className="c5"
     >
       <div
-        className="c22"
+        className="c23"
       >
         <div
           className="article-image"
@@ -2109,17 +2229,17 @@ exports[`Sections snapshots tests renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c32"
+    className="c39"
   >
     <div
-      className="c33"
+      className="c40"
     >
       <div
-        className="c34 bCIwom"
+        className="c41 c42"
         color="black"
       >
         <div
-          className="sc-bZQynM bOrPFB sc-EHOje kfPPDU"
+          className="c43"
           fontFamily={
             Object {
               "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2129,7 +2249,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
           fontSize="16px"
         >
           <span
-            className="c35"
+            className="c44"
           >
             <span>
               <a
@@ -2142,11 +2262,11 @@ exports[`Sections snapshots tests renders properly 1`] = `
           </span>
           <span>
             <a
-              className="c36"
+              className="c45"
               href="http://twitter.com/caseylesser"
             >
               <div
-                className="c37 c38"
+                className="c46 c47"
               >
                 
               </div>

@@ -1,7 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders properly 1`] = `
-.c16 {
+.c9 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.c17 {
   font-family: artsy-icons;
   color: gray;
   font-size: 24px;
@@ -15,11 +22,11 @@ exports[`renders properly 1`] = `
   color: gray;
 }
 
-.c10 {
+.c11 {
   margin-right: 30px;
 }
 
-.c11 {
+.c12 {
   white-space: nowrap;
 }
 
@@ -56,7 +63,7 @@ exports[`renders properly 1`] = `
   color: black;
 }
 
-.c12 {
+.c13 {
   margin-left: 20px;
   white-space: nowrap;
   font-family: Unica77LLWebRegular,Arial,serif;
@@ -115,7 +122,7 @@ exports[`renders properly 1`] = `
   margin: 50px 60px;
 }
 
-.c13 {
+.c14 {
   display: block;
   background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fco8j2xq40ROMyBrJQm_4eQ%252FDafenOilPaintingVillage_AK03.jpg&width=1200&quality=80) no-repeat center;
   background-size: contain;
@@ -125,7 +132,7 @@ exports[`renders properly 1`] = `
   margin: 50px 60px;
 }
 
-.c14 {
+.c15 {
   display: block;
   background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FCpHY-DRr7KW0HGXLslCXHw%2Flarger.jpg&width=1200&quality=80) no-repeat center;
   background-size: contain;
@@ -155,12 +162,24 @@ exports[`renders properly 1`] = `
   background-color: white;
 }
 
-.c15 {
+.c16 {
   position: absolute;
   right: 0;
   top: 0;
   margin: 20px;
   cursor: pointer;
+}
+
+@media screen and (min-width:40em) {
+  .c9 {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c9 {
+    line-height: 26px;
+  }
 }
 
 @media (max-width:720px) {
@@ -172,7 +191,7 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c9.artist-name {
+  .c10.artist-name {
     margin-bottom: 5px;
   }
 }
@@ -204,7 +223,7 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c12 {
+  .c13 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
@@ -229,13 +248,13 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c13 {
+  .c14 {
     margin: 20px 0 80px 0;
   }
 }
 
 @media (max-width:720px) {
-  .c14 {
+  .c15 {
     margin: 20px 0 80px 0;
   }
 }
@@ -289,7 +308,7 @@ exports[`renders properly 1`] = `
               >
                 <div>
                   <div
-                    className="c8 sc-bZQynM bOrPFB sc-EHOje iJMdQR"
+                    className="c8 c9"
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -304,13 +323,13 @@ exports[`renders properly 1`] = `
                     }
                   >
                     <div
-                      className="c9"
+                      className="c10"
                     >
                       <span
-                        className="c10"
+                        className="c11"
                       >
                         <span
-                          className="c11"
+                          className="c12"
                         >
                           <a
                             href="/artist/fernando-botero"
@@ -322,7 +341,7 @@ exports[`renders properly 1`] = `
                     </div>
                     <div>
                       <div
-                        className="c9"
+                        className="c10"
                       >
                         <span
                           className="title"
@@ -343,7 +362,7 @@ exports[`renders properly 1`] = `
                         </span>
                       </div>
                       <div
-                        className="c9"
+                        className="c10"
                       >
                         <a
                           href="/gary-nader"
@@ -365,7 +384,7 @@ exports[`renders properly 1`] = `
               </div>
             </div>
             <div
-              className="c12"
+              className="c13"
             >
               1 of 3
             </div>
@@ -382,7 +401,7 @@ exports[`renders properly 1`] = `
             New York City
           </div>
           <div
-            className="c13"
+            className="c14"
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fco8j2xq40ROMyBrJQm_4eQ%252FDafenOilPaintingVillage_AK03.jpg&width=1200&quality=80"
           />
           <div
@@ -413,7 +432,7 @@ exports[`renders properly 1`] = `
               </div>
             </div>
             <div
-              className="c12"
+              className="c13"
             >
               2 of 3
             </div>
@@ -430,7 +449,7 @@ exports[`renders properly 1`] = `
             New York City
           </div>
           <div
-            className="c14"
+            className="c15"
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FCpHY-DRr7KW0HGXLslCXHw%2Flarger.jpg&width=1200&quality=80"
           />
           <div
@@ -461,7 +480,7 @@ exports[`renders properly 1`] = `
               </div>
             </div>
             <div
-              className="c12"
+              className="c13"
             >
               3 of 3
             </div>
@@ -470,11 +489,11 @@ exports[`renders properly 1`] = `
       </div>
     </div>
     <div
-      className="c15"
+      className="c16"
       onClick={[Function]}
     >
       <div
-        className="c16"
+        className="c17"
       >
         
       </div>

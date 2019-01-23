@@ -1,17 +1,115 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ArticleCard renders properly 1`] = `
-.c2 a {
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column-reverse;
+  -ms-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+  padding: 20px;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 0px;
+  width: 100%;
+}
+
+.c21 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c4 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  color: #000;
+}
+
+.c10 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 28px;
+  line-height: 36px;
+  margin-bottom: 20px;
+}
+
+.c11 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 18px;
+  line-height: 26px;
+  margin-bottom: 20px;
+}
+
+.c13 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.c23 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1em;
+}
+
+.c1 {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.c5 {
+  color: #000;
+}
+
+.c6 {
+  margin-bottom: 40px;
+}
+
+.c17 {
+  margin-bottom: 10px;
+  margin-left: 0px;
+  width: 100%;
+}
+
+.c3 a {
   color: #000;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c5 {
+.c14 {
   margin: 10px 20px 0 0;
 }
 
-.c5::before {
+.c14::before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -21,12 +119,12 @@ exports[`ArticleCard renders properly 1`] = `
   background-color: #000;
 }
 
-.c6 {
+.c15 {
   margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
-.c4 {
+.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -41,12 +139,12 @@ exports[`ArticleCard renders properly 1`] = `
   color: #000;
 }
 
-.c11 {
+.c22 {
   width: 32px;
   height: 32px;
 }
 
-.c9 {
+.c19 {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -56,13 +154,13 @@ exports[`ArticleCard renders properly 1`] = `
   display: block;
 }
 
-.c7 {
+.c16 {
   position: relative;
   height: inherit;
   background: white;
 }
 
-.c3 {
+.c7 {
   border: 1px solid;
   border-radius: 2px;
   color: #000;
@@ -72,22 +170,22 @@ exports[`ArticleCard renders properly 1`] = `
   display: block;
 }
 
-.c3 .c8 {
+.c7 .c18 {
   opacity: 1;
 }
 
-.c3:hover .c8 {
+.c7:hover .c18 {
   opacity: 0.7;
 }
 
-.c10 {
+.c20 {
   position: absolute;
   left: 20px;
   right: 20px;
   bottom: 20px;
 }
 
-.c10 svg {
+.c20 svg {
   height: 40px;
 }
 
@@ -95,7 +193,7 @@ exports[`ArticleCard renders properly 1`] = `
   color: #000;
 }
 
-.c0 .c1 {
+.c0 .c2 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -104,12 +202,207 @@ exports[`ArticleCard renders properly 1`] = `
   margin-bottom: 40px;
 }
 
-.c0 .c1 a {
+.c0 .c2 a {
   border-bottom: 2px solid;
 }
 
+@media screen and (min-width:40em) {
+  .c8 {
+    -webkit-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c8 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c8 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c8 {
+    padding: 20px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c8 {
+    padding: 30px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c8 {
+    padding: 30px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c9 {
+    margin-bottom: 0px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c9 {
+    margin-bottom: 5px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c9 {
+    margin-bottom: 5px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c9 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c9 {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c9 {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c10 {
+    font-size: 28px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c10 {
+    font-size: 42px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c10 {
+    font-size: 42px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c10 {
+    line-height: 36px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c10 {
+    line-height: 50px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c10 {
+    line-height: 50px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c11 {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c11 {
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c11 {
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c11 {
+    line-height: 26px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c11 {
+    line-height: 32px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c11 {
+    line-height: 32px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c6 {
+    margin-bottom: 60px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c17 {
+    margin-bottom: 10px;
+    margin-left: 0px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c17 {
+    margin-bottom: 0px;
+    margin-left: 30px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c17 {
+    margin-bottom: 0px;
+    margin-left: 30px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c17 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c17 {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c17 {
+    width: 50%;
+  }
+}
+
 @media (max-width:900px) {
-  .c10 svg {
+  .c20 svg {
     height: 30px;
   }
 }
@@ -119,10 +412,10 @@ exports[`ArticleCard renders properly 1`] = `
   color="#000"
 >
   <div
-    className="kkolQJ"
+    className="c1"
   >
     <div
-      className="c1 c2 bOrPFB fqTdyi"
+      className="c2 c3 c4"
       color="#000"
       fontFamily={
         Object {
@@ -138,23 +431,23 @@ exports[`ArticleCard renders properly 1`] = `
       </span>
     </div>
     <div
-      className="hwlYcc"
+      className="c5"
       color="#000"
     >
       <div
-        className="iBAmpz"
+        className="c6"
       >
         <a
-          className="ArticleCard c3"
+          className="ArticleCard c7"
           color="#000"
           href="new-yorks-next-art-district"
           onClick={[Function]}
         >
           <div
-            className="kXtlsF"
+            className="c8"
           >
             <div
-              className="jiYvGF"
+              className="c9"
               width={
                 Array [
                   "100%",
@@ -166,7 +459,7 @@ exports[`ArticleCard renders properly 1`] = `
             >
               <div>
                 <div
-                  className="bOrPFB dmUTBA"
+                  className="c10"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -180,7 +473,7 @@ exports[`ArticleCard renders properly 1`] = `
                   New York's Next Art District
                 </div>
                 <div
-                  className="ibZhkv lhPpoe"
+                  className="c11"
                   fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                   fontSize={
                     Array [
@@ -195,11 +488,11 @@ exports[`ArticleCard renders properly 1`] = `
                 </div>
               </div>
               <div
-                className="Byline c4"
+                className="Byline c12"
                 color="#000"
               >
                 <div
-                  className="bOrPFB fXsUty"
+                  className="c13"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -209,17 +502,17 @@ exports[`ArticleCard renders properly 1`] = `
                   fontSize="14px"
                 >
                   <div
-                    className="c5"
+                    className="c14"
                     color="#000"
                   >
                     Casey Lesser
                   </div>
                 </div>
                 <div
-                  className="c6"
+                  className="c15"
                 >
                   <div
-                    className="bOrPFB fXsUty"
+                    className="c13"
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -234,7 +527,7 @@ exports[`ArticleCard renders properly 1`] = `
               </div>
             </div>
             <div
-              className="c7 iqiPK"
+              className="c16 c17"
               width={
                 Array [
                   "100%",
@@ -245,7 +538,7 @@ exports[`ArticleCard renders properly 1`] = `
               }
             >
               <img
-                className="c8 c9"
+                className="c18 c19"
                 src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=95"
               />
             </div>
@@ -253,19 +546,19 @@ exports[`ArticleCard renders properly 1`] = `
         </a>
       </div>
       <div
-        className="iBAmpz"
+        className="c6"
       >
         <a
-          className="ArticleCard c3"
+          className="ArticleCard c7"
           color="#000"
           href="joanne-artman-gallery-poetry-naturerefinement-form"
           onClick={[Function]}
         >
           <div
-            className="kXtlsF"
+            className="c8"
           >
             <div
-              className="jiYvGF"
+              className="c9"
               width={
                 Array [
                   "100%",
@@ -277,7 +570,7 @@ exports[`ArticleCard renders properly 1`] = `
             >
               <div>
                 <div
-                  className="bOrPFB dmUTBA"
+                  className="c10"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -291,7 +584,7 @@ exports[`ArticleCard renders properly 1`] = `
                   New Study Shows the Gender Pay Gap for Artists Is Not So Simple
                 </div>
                 <div
-                  className="ibZhkv lhPpoe"
+                  className="c11"
                   fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                   fontSize={
                     Array [
@@ -306,10 +599,10 @@ exports[`ArticleCard renders properly 1`] = `
                 </div>
               </div>
               <div
-                className="c6"
+                className="c15"
               >
                 <div
-                  className="bOrPFB fXsUty"
+                  className="c13"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -323,7 +616,7 @@ exports[`ArticleCard renders properly 1`] = `
               </div>
             </div>
             <div
-              className="c7 iqiPK"
+              className="c16 c17"
               width={
                 Array [
                   "100%",
@@ -334,14 +627,14 @@ exports[`ArticleCard renders properly 1`] = `
               }
             >
               <img
-                className="c8 c9"
+                className="c18 c19"
                 src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
               />
               <div
-                className="c10 ifRBhy"
+                className="c20 c21"
               >
                 <svg
-                  className="c11"
+                  className="c22"
                   version="1.1"
                   viewBox="0 0 40 56"
                   x="0px"
@@ -361,7 +654,7 @@ exports[`ArticleCard renders properly 1`] = `
                   </g>
                 </svg>
                 <div
-                  className="bOrPFB bZsSMq"
+                  className="c23"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
