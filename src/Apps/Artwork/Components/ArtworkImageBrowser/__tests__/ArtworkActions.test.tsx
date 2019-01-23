@@ -47,6 +47,25 @@ describe("ArtworkActions", () => {
     })
   })
 
+  describe("view in a room", () => {
+    // TODO: uncomment once palette with icon name is in.
+    xit("available for artworks that are hangable", () => {
+      const data = cloneDeep(ArtworkActionsFixture)
+      data.user.type = "Admin"
+      data.artwork.is_hangable = true
+      const wrapper = getWrapper(data)
+      expect(wrapper.find("OpenEye").length).toBe(1)
+    })
+
+    it("is not available for non hangable artworks", () => {
+      const data = cloneDeep(ArtworkActionsFixture)
+      data.user.type = "Admin"
+      data.artwork.is_hangable = false
+      const wrapper = getWrapper(data)
+      expect(wrapper.find("OpenEye").length).toBe(0)
+    })
+  })
+
   describe("concerning other utility actions", () => {
     describe("download link", () => {
       it("renders link if is_downloadable", () => {
