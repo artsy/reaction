@@ -1,4 +1,4 @@
-import { Box, Button, Col, Flex, Row, Spacer } from "@artsy/palette"
+import { Button, Col, Flex, Row, Spacer } from "@artsy/palette"
 import { Counter_order } from "__generated__/Counter_order.graphql"
 import { CounterSubmitMutation } from "__generated__/CounterSubmitMutation.graphql"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
@@ -10,7 +10,6 @@ import {
   OrderStepper,
 } from "Apps/Order/Components/OrderStepper"
 import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "Apps/Order/Components/ShippingSummaryItem"
-import { StickyFooter } from "Apps/Order/Components/StickyFooter"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { Dialog, injectDialog } from "Apps/Order/Dialogs"
@@ -27,7 +26,6 @@ import {
   RelayProp,
 } from "react-relay"
 import { ErrorWithMetadata } from "Utils/errors"
-import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
 
@@ -142,49 +140,69 @@ export class CounterRoute extends Component<CounterProps, CounterState> {
     const { order } = this.props
     const { isCommittingMutation } = this.state
 
-    const artwork = get(
-      this.props,
-      props => order.lineItems.edges[0].node.artwork
-    )
-
     return (
       <>
-        <Box pb={55}>
-          <HorizontalPadding px={[0, 4]}>
-            <Row>
-              <Col>
-                <OrderStepper
-                  currentStep="Review"
-                  steps={counterofferFlowSteps}
-                />
-              </Col>
-            </Row>
-          </HorizontalPadding>
+        <HorizontalPadding px={[0, 4]}>
+          <Row>
+            <Col>
+              <OrderStepper
+                currentStep="Review"
+                steps={counterofferFlowSteps}
+              />
+            </Col>
+          </Row>
+        </HorizontalPadding>
 
-          <HorizontalPadding>
-            <TwoColumnLayout
-              Content={
-                <Flex
-                  flexDirection="column"
-                  style={isCommittingMutation ? { pointerEvents: "none" } : {}}
-                >
-                  <Flex flexDirection="column">
-                    <CountdownTimer
-                      action="Respond"
-                      note="Expired offers end the negotiation process permanently."
-                      countdownStart={order.lastOffer.createdAt}
-                      countdownEnd={order.stateExpiresAt}
-                    />
-                    <TransactionDetailsSummaryItem
-                      order={order}
-                      title="Your counteroffer"
-                      onChange={this.onChangeResponse}
-                      offerContextPrice="LAST_OFFER"
-                    />
-                  </Flex>
-                  <Spacer mb={[2, 3]} />
-                  <Flex flexDirection="column" />
-                  <Media greaterThan="xs">
+        <HorizontalPadding>
+          <TwoColumnLayout
+            Content={
+              <Flex
+                flexDirection="column"
+                style={isCommittingMutation ? { pointerEvents: "none" } : {}}
+              >
+                <Flex flexDirection="column">
+                  <CountdownTimer
+                    action="Respond"
+                    note="Expired offers end the negotiation process permanently."
+                    countdownStart={order.lastOffer.createdAt}
+                    countdownEnd={order.stateExpiresAt}
+                  />
+                  <TransactionDetailsSummaryItem
+                    order={order}
+                    title="Your counteroffer"
+                    onChange={this.onChangeResponse}
+                    offerContextPrice="LAST_OFFER"
+                  />
+                </Flex>
+                <Spacer mb={[2, 3]} />
+                <Flex flexDirection="column" />
+                <Media greaterThan="xs">
+                  <Button
+                    onClick={this.onSubmitButtonPressed}
+                    loading={isCommittingMutation}
+                    size="large"
+                    width="100%"
+                  >
+                    Submit
+                  </Button>
+                  <Spacer mb={2} />
+                  <ConditionsOfSaleDisclaimer textAlign="center" />
+                </Media>
+              </Flex>
+            }
+            Sidebar={
+              <Flex flexDirection="column">
+                <Flex flexDirection="column">
+                  <ArtworkSummaryItem order={order} />
+                  <ShippingSummaryItem order={order} locked />
+                  <CreditCardSummaryItem order={order} locked />
+                </Flex>
+                <Media greaterThan="xs">
+                  <Spacer mb={2} />
+                </Media>
+                <Spacer mb={[2, 3]} />
+                <Media at="xs">
+                  <>
                     <Button
                       onClick={this.onSubmitButtonPressed}
                       loading={isCommittingMutation}
@@ -194,42 +212,14 @@ export class CounterRoute extends Component<CounterProps, CounterState> {
                       Submit
                     </Button>
                     <Spacer mb={2} />
-                    <ConditionsOfSaleDisclaimer textAlign="center" />
-                  </Media>
-                </Flex>
-              }
-              Sidebar={
-                <Flex flexDirection="column">
-                  <Flex flexDirection="column">
-                    <ArtworkSummaryItem order={order} />
-                    <ShippingSummaryItem order={order} locked />
-                    <CreditCardSummaryItem order={order} locked />
-                  </Flex>
-                  <Media greaterThan="xs">
+                    <ConditionsOfSaleDisclaimer />
                     <Spacer mb={2} />
-                  </Media>
-                  <Spacer mb={[2, 3]} />
-                  <Media at="xs">
-                    <>
-                      <Button
-                        onClick={this.onSubmitButtonPressed}
-                        loading={isCommittingMutation}
-                        size="large"
-                        width="100%"
-                      >
-                        Submit
-                      </Button>
-                      <Spacer mb={2} />
-                      <ConditionsOfSaleDisclaimer />
-                      <Spacer mb={2} />
-                    </>
-                  </Media>
-                </Flex>
-              }
-            />
-          </HorizontalPadding>
-        </Box>
-        <StickyFooter orderType={order.mode} artworkId={artwork.id} />
+                  </>
+                </Media>
+              </Flex>
+            }
+          />
+        </HorizontalPadding>
       </>
     )
   }

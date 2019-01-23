@@ -136,13 +136,6 @@ describe("Accept seller offer", () => {
     )
   })
 
-  it("shows the sticky 'need help?' footer", () => {
-    const component = getWrapper()
-    expect(component.text()).toMatch(
-      "Need help? Read our FAQ or ask a question."
-    )
-  })
-
   describe("mutation", () => {
     const errorLogger = console.error
 

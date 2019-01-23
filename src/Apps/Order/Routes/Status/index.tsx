@@ -1,5 +1,4 @@
 import {
-  Box,
   Button,
   Flex,
   Join,
@@ -10,7 +9,6 @@ import {
 } from "@artsy/palette"
 import { Status_order } from "__generated__/Status_order.graphql"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
-import { StickyFooter } from "Apps/Order/Components/StickyFooter"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
@@ -232,65 +230,57 @@ export class StatusRoute extends Component<StatusProps> {
       showTransactionSummary = true,
     } = this.getStatusCopy()
 
-    const artwork = get(
-      this.props,
-      props => order.lineItems.edges[0].node.artwork
-    )
-
     return (
       <>
-        <Box pb={55}>
-          <HorizontalPadding>
-            <Serif size="6" weight="regular" color="black100">
-              {title}
-            </Serif>
-            <Sans size="2" weight="regular" color="black60" mb={[2, 3]}>
-              {flowName} #{order.code}
-            </Sans>
-            <TwoColumnLayout
-              Content={
-                <>
-                  <Title>{flowName} status | Artsy</Title>
-                  <Join separator={<Spacer mb={[2, 3]} />}>
-                    {description && <Message p={[2, 3]}>{description}</Message>}
-                    {showTransactionSummary ? (
-                      <Flex flexDirection="column">
-                        <ArtworkSummaryItem order={order} />
-                        <TransactionDetailsSummaryItem
-                          order={order}
-                          useLastSubmittedOffer
-                        />
-                      </Flex>
-                    ) : (
-                      <Button
-                        onClick={() => {
-                          window.location.href = "/"
-                        }}
-                        size="large"
-                        width="100%"
-                      >
-                        Back to Artsy
-                      </Button>
-                    )}
-                  </Join>
-                  <Spacer mb={[2, 3]} />
-                </>
-              }
-              Sidebar={
-                showTransactionSummary && (
-                  <Flex flexDirection="column">
+        <HorizontalPadding>
+          <Serif size="6" weight="regular" color="black100">
+            {title}
+          </Serif>
+          <Sans size="2" weight="regular" color="black60" mb={[2, 3]}>
+            {flowName} #{order.code}
+          </Sans>
+          <TwoColumnLayout
+            Content={
+              <>
+                <Title>{flowName} status | Artsy</Title>
+                <Join separator={<Spacer mb={[2, 3]} />}>
+                  {description && <Message p={[2, 3]}>{description}</Message>}
+                  {showTransactionSummary ? (
                     <Flex flexDirection="column">
-                      <ShippingSummaryItem order={order} />
-                      <CreditCardSummaryItem order={order} />
+                      <ArtworkSummaryItem order={order} />
+                      <TransactionDetailsSummaryItem
+                        order={order}
+                        useLastSubmittedOffer
+                      />
                     </Flex>
-                    <Spacer mb={[2, 3]} />
+                  ) : (
+                    <Button
+                      onClick={() => {
+                        window.location.href = "/"
+                      }}
+                      size="large"
+                      width="100%"
+                    >
+                      Back to Artsy
+                    </Button>
+                  )}
+                </Join>
+                <Spacer mb={[2, 3]} />
+              </>
+            }
+            Sidebar={
+              showTransactionSummary && (
+                <Flex flexDirection="column">
+                  <Flex flexDirection="column">
+                    <ShippingSummaryItem order={order} />
+                    <CreditCardSummaryItem order={order} />
                   </Flex>
-                )
-              }
-            />
-          </HorizontalPadding>
-        </Box>
-        <StickyFooter orderType={order.mode} artworkId={artwork.id} />
+                  <Spacer mb={[2, 3]} />
+                </Flex>
+              )
+            }
+          />
+        </HorizontalPadding>
       </>
     )
   }

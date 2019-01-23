@@ -70,13 +70,6 @@ describe("Offer InitialMutation", () => {
     expect(container.text()).toContain("List price: $16,000")
   })
 
-  it("shows the sticky 'need help?' footer", () => {
-    const component = getWrapper(testProps)
-    expect(component.text()).toMatch(
-      "Need help? Read our FAQ or ask a question."
-    )
-  })
-
   it("can receive input, which updates the transaction summary", () => {
     const component = getWrapper(testProps)
     const input = component.find(OfferInput)

@@ -188,13 +188,6 @@ describe("Offer InitialMutation", () => {
     expect(radios.at(2).text()).toMatch("Decline seller's offer")
   })
 
-  it("shows the sticky 'need help?' footer", () => {
-    const component = getWrapper()
-    expect(component.text()).toMatch(
-      "Need help? Read our FAQ or ask a question."
-    )
-  })
-
   describe("taking action", () => {
     // TODO: get rid of window.alert
     const _alert = window.alert

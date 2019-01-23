@@ -1,6 +1,5 @@
 import {
   BorderedRadio,
-  Box,
   Button,
   Col,
   Flex,
@@ -13,7 +12,6 @@ import { Respond_order } from "__generated__/Respond_order.graphql"
 import { RespondCounterOfferMutation } from "__generated__/RespondCounterOfferMutation.graphql"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { OfferInput } from "Apps/Order/Components/OfferInput"
-import { StickyFooter } from "Apps/Order/Components/StickyFooter"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { Dialog, injectDialog } from "Apps/Order/Dialogs"
@@ -31,7 +29,6 @@ import {
   RelayProp,
 } from "react-relay"
 import { ErrorWithMetadata } from "Utils/errors"
-import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "../../Components/ArtworkSummaryItem"
@@ -231,88 +228,105 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
   render() {
     const { order } = this.props
     const { isCommittingMutation } = this.state
-    const artwork = get(
-      this.props,
-      props => order.lineItems.edges[0].node.artwork
-    )
 
     return (
       <>
-        <Box pb={55}>
-          <HorizontalPadding px={[0, 4]}>
-            <Row>
-              <Col>
-                <OrderStepper
-                  currentStep="Respond"
-                  steps={counterofferFlowSteps}
-                />
-              </Col>
-            </Row>
-          </HorizontalPadding>
+        <HorizontalPadding px={[0, 4]}>
+          <Row>
+            <Col>
+              <OrderStepper
+                currentStep="Respond"
+                steps={counterofferFlowSteps}
+              />
+            </Col>
+          </Row>
+        </HorizontalPadding>
 
-          <HorizontalPadding>
-            <TwoColumnLayout
-              Content={
-                <Flex
-                  flexDirection="column"
-                  style={isCommittingMutation ? { pointerEvents: "none" } : {}}
+        <HorizontalPadding>
+          <TwoColumnLayout
+            Content={
+              <Flex
+                flexDirection="column"
+                style={isCommittingMutation ? { pointerEvents: "none" } : {}}
+              >
+                <Flex flexDirection="column">
+                  <CountdownTimer
+                    action="Respond"
+                    note="Expiration will end negotiations on this offer. Keep in mind the work can be sold to another buyer in the meantime."
+                    countdownStart={order.lastOffer.createdAt}
+                    countdownEnd={order.stateExpiresAt}
+                  />
+                  <OfferHistoryItem order={order} />
+                  <TransactionDetailsSummaryItem
+                    order={order}
+                    useLastSubmittedOffer
+                  />
+                </Flex>
+                <Spacer mb={[2, 3]} />
+                <RadioGroup
+                  onSelect={(responseOption: any) =>
+                    this.setState({ responseOption })
+                  }
+                  defaultValue={this.state.responseOption}
                 >
-                  <Flex flexDirection="column">
-                    <CountdownTimer
-                      action="Respond"
-                      note="Expiration will end negotiations on this offer. Keep in mind the work can be sold to another buyer in the meantime."
-                      countdownStart={order.lastOffer.createdAt}
-                      countdownEnd={order.stateExpiresAt}
-                    />
-                    <OfferHistoryItem order={order} />
-                    <TransactionDetailsSummaryItem
-                      order={order}
-                      useLastSubmittedOffer
-                    />
-                  </Flex>
-                  <Spacer mb={[2, 3]} />
-                  <RadioGroup
-                    onSelect={(responseOption: any) =>
-                      this.setState({ responseOption })
-                    }
-                    defaultValue={this.state.responseOption}
-                  >
-                    <BorderedRadio value="ACCEPT">
-                      Accept seller's offer
-                    </BorderedRadio>
+                  <BorderedRadio value="ACCEPT">
+                    Accept seller's offer
+                  </BorderedRadio>
 
-                    <BorderedRadio value="COUNTER">
-                      Send counteroffer
-                      <StaticCollapse
-                        open={this.state.responseOption === "COUNTER"}
-                      >
-                        <Spacer mb={2} />
-                        <OfferInput
-                          id="RespondForm_RespondValue"
-                          showError={
-                            this.state.formIsDirty && this.state.offerValue <= 0
-                          }
-                          onChange={offerValue => this.setState({ offerValue })}
-                          onFocus={this.onOfferInputFocus.bind(this)}
-                        />
-                      </StaticCollapse>
-                    </BorderedRadio>
-                    <BorderedRadio value="DECLINE">
-                      Decline seller's offer
-                      <StaticCollapse
-                        open={this.state.responseOption === "DECLINE"}
-                      >
-                        <Spacer mb={1} />
-                        <Sans size="2" color="black60">
-                          Declining an offer will end the negotiation process on
-                          this offer.
-                        </Sans>
-                      </StaticCollapse>
-                    </BorderedRadio>
-                  </RadioGroup>
-                  <Spacer mb={[2, 3]} />
-                  <Flex flexDirection="column" />
-                  <Media greaterThan="xs">
+                  <BorderedRadio value="COUNTER">
+                    Send counteroffer
+                    <StaticCollapse
+                      open={this.state.responseOption === "COUNTER"}
+                    >
+                      <Spacer mb={2} />
+                      <OfferInput
+                        id="RespondForm_RespondValue"
+                        showError={
+                          this.state.formIsDirty && this.state.offerValue <= 0
+                        }
+                        onChange={offerValue => this.setState({ offerValue })}
+                        onFocus={this.onOfferInputFocus.bind(this)}
+                      />
+                    </StaticCollapse>
+                  </BorderedRadio>
+                  <BorderedRadio value="DECLINE">
+                    Decline seller's offer
+                    <StaticCollapse
+                      open={this.state.responseOption === "DECLINE"}
+                    >
+                      <Spacer mb={1} />
+                      <Sans size="2" color="black60">
+                        Declining an offer will end the negotiation process on
+                        this offer.
+                      </Sans>
+                    </StaticCollapse>
+                  </BorderedRadio>
+                </RadioGroup>
+                <Spacer mb={[2, 3]} />
+                <Flex flexDirection="column" />
+                <Media greaterThan="xs">
+                  <Button
+                    onClick={this.onContinueButtonPressed}
+                    loading={isCommittingMutation}
+                    size="large"
+                    width="100%"
+                  >
+                    Continue
+                  </Button>
+                  <Spacer mb={2} />
+                </Media>
+              </Flex>
+            }
+            Sidebar={
+              <Flex flexDirection="column">
+                <Flex flexDirection="column">
+                  <ArtworkSummaryItem order={order} />
+                  <ShippingSummaryItem order={order} locked />
+                  <CreditCardSummaryItem order={order} locked />
+                </Flex>
+                <Spacer mb={2} />
+                <Media at="xs">
+                  <>
                     <Button
                       onClick={this.onContinueButtonPressed}
                       loading={isCommittingMutation}
@@ -322,36 +336,12 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                       Continue
                     </Button>
                     <Spacer mb={2} />
-                  </Media>
-                </Flex>
-              }
-              Sidebar={
-                <Flex flexDirection="column">
-                  <Flex flexDirection="column">
-                    <ArtworkSummaryItem order={order} />
-                    <ShippingSummaryItem order={order} locked />
-                    <CreditCardSummaryItem order={order} locked />
-                  </Flex>
-                  <Spacer mb={2} />
-                  <Media at="xs">
-                    <>
-                      <Button
-                        onClick={this.onContinueButtonPressed}
-                        loading={isCommittingMutation}
-                        size="large"
-                        width="100%"
-                      >
-                        Continue
-                      </Button>
-                      <Spacer mb={2} />
-                    </>
-                  </Media>
-                </Flex>
-              }
-            />
-          </HorizontalPadding>
-        </Box>
-        <StickyFooter orderType={order.mode} artworkId={artwork.id} />
+                  </>
+                </Media>
+              </Flex>
+            }
+          />
+        </HorizontalPadding>
       </>
     )
   }

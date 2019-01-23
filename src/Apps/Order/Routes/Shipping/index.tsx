@@ -1,6 +1,5 @@
 import {
   BorderedRadio,
-  Box,
   Button,
   Col,
   Collapse,
@@ -30,7 +29,6 @@ import {
   offerFlowSteps,
   OrderStepper,
 } from "Apps/Order/Components/OrderStepper"
-import { StickyFooter } from "Apps/Order/Components/StickyFooter"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { Dialog, injectDialog } from "Apps/Order/Dialogs"
@@ -305,109 +303,104 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
 
     return (
       <>
-        <Box pb={55}>
-          <HorizontalPadding px={[0, 4]}>
-            <Row>
-              <Col>
-                <OrderStepper
-                  currentStep="Shipping"
-                  steps={
-                    order.mode === "OFFER" ? offerFlowSteps : buyNowFlowSteps
-                  }
-                />
-              </Col>
-            </Row>
-          </HorizontalPadding>
+        <HorizontalPadding px={[0, 4]}>
+          <Row>
+            <Col>
+              <OrderStepper
+                currentStep="Shipping"
+                steps={
+                  order.mode === "OFFER" ? offerFlowSteps : buyNowFlowSteps
+                }
+              />
+            </Col>
+          </Row>
+        </HorizontalPadding>
 
-          <HorizontalPadding>
-            <TwoColumnLayout
-              Content={
-                <Flex
-                  flexDirection="column"
-                  style={isCommittingMutation ? { pointerEvents: "none" } : {}}
-                >
-                  {/* TODO: Make RadioGroup generic for the allowed values,
-                    which could also ensure the children only use
-                    allowed values. */}
-                  {artwork.pickup_available && (
-                    <>
-                      <RadioGroup
-                        onSelect={this.onSelectShippingOption.bind(this)}
-                        defaultValue={this.state.shippingOption}
-                      >
-                        <BorderedRadio value="SHIP">
-                          Add shipping address
-                        </BorderedRadio>
-
-                        <BorderedRadio value="PICKUP">
-                          Arrange for pickup (free)
-                          <Collapse
-                            open={this.state.shippingOption === "PICKUP"}
-                          >
-                            <Sans size="2" color="black60">
-                              After your order is confirmed, a specialist will
-                              contact you within 2 business days to coordinate
-                              pickup.
-                            </Sans>
-                          </Collapse>
-                        </BorderedRadio>
-                      </RadioGroup>
-                      <Spacer mb={3} />
-                    </>
-                  )}
-
-                  <Collapse
-                    open={
-                      !artwork.pickup_available ||
-                      this.state.shippingOption === "SHIP"
-                    }
-                  >
-                    <AddressForm
-                      value={address}
-                      errors={addressErrors}
-                      touched={addressTouched}
-                      onChange={this.onAddressChange}
-                      continentalUsOnly={artwork.shipsToContinentalUSOnly}
-                    />
-                  </Collapse>
-
-                  <Media greaterThan="xs">
-                    <Button
-                      onClick={this.onContinueButtonPressed}
-                      loading={isCommittingMutation}
-                      size="large"
-                      width="100%"
+        <HorizontalPadding>
+          <TwoColumnLayout
+            Content={
+              <Flex
+                flexDirection="column"
+                style={isCommittingMutation ? { pointerEvents: "none" } : {}}
+              >
+                {/* TODO: Make RadioGroup generic for the allowed values,
+                  which could also ensure the children only use
+                  allowed values. */}
+                {artwork.pickup_available && (
+                  <>
+                    <RadioGroup
+                      onSelect={this.onSelectShippingOption.bind(this)}
+                      defaultValue={this.state.shippingOption}
                     >
-                      Continue
-                    </Button>
-                  </Media>
-                </Flex>
-              }
-              Sidebar={
-                <Flex flexDirection="column">
-                  <Flex flexDirection="column">
-                    <ArtworkSummaryItem order={order} />
-                    <TransactionDetailsSummaryItem order={order} />
-                  </Flex>
-                  <Spacer mb={[2, 3]} />
-                  <Media at="xs">
+                      <BorderedRadio value="SHIP">
+                        Add shipping address
+                      </BorderedRadio>
+
+                      <BorderedRadio value="PICKUP">
+                        Arrange for pickup (free)
+                        <Collapse open={this.state.shippingOption === "PICKUP"}>
+                          <Sans size="2" color="black60">
+                            After your order is confirmed, a specialist will
+                            contact you within 2 business days to coordinate
+                            pickup.
+                          </Sans>
+                        </Collapse>
+                      </BorderedRadio>
+                    </RadioGroup>
                     <Spacer mb={3} />
-                    <Button
-                      onClick={this.onContinueButtonPressed}
-                      loading={isCommittingMutation}
-                      size="large"
-                      width="100%"
-                    >
-                      Continue
-                    </Button>
-                    <Spacer mb={2} />
-                  </Media>
+                  </>
+                )}
+
+                <Collapse
+                  open={
+                    !artwork.pickup_available ||
+                    this.state.shippingOption === "SHIP"
+                  }
+                >
+                  <AddressForm
+                    value={address}
+                    errors={addressErrors}
+                    touched={addressTouched}
+                    onChange={this.onAddressChange}
+                    continentalUsOnly={artwork.shipsToContinentalUSOnly}
+                  />
+                </Collapse>
+
+                <Media greaterThan="xs">
+                  <Button
+                    onClick={this.onContinueButtonPressed}
+                    loading={isCommittingMutation}
+                    size="large"
+                    width="100%"
+                  >
+                    Continue
+                  </Button>
+                </Media>
+              </Flex>
+            }
+            Sidebar={
+              <Flex flexDirection="column">
+                <Flex flexDirection="column">
+                  <ArtworkSummaryItem order={order} />
+                  <TransactionDetailsSummaryItem order={order} />
                 </Flex>
-              }
-            />
-          </HorizontalPadding>
-        </Box>
-        <StickyFooter orderType={order.mode} artworkId={artwork.id} />
+                <Spacer mb={[2, 3]} />
+                <Media at="xs">
+                  <Spacer mb={3} />
+                  <Button
+                    onClick={this.onContinueButtonPressed}
+                    loading={isCommittingMutation}
+                    size="large"
+                    width="100%"
+                  >
+                    Continue
+                  </Button>
+                  <Spacer mb={2} />
+                </Media>
+              </Flex>
+            }
+          />
+        </HorizontalPadding>
       </>
     )
   }

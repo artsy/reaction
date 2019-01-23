@@ -18,7 +18,6 @@ import {
   offerFlowSteps,
   OrderStepper,
 } from "Apps/Order/Components/OrderStepper"
-import { StickyFooter } from "Apps/Order/Components/StickyFooter"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { validateAddress } from "Apps/Order/Utils/formValidators"
@@ -35,12 +34,10 @@ import {
 } from "react-relay"
 import { injectStripe, ReactStripeElements } from "react-stripe-elements"
 import { ErrorWithMetadata } from "Utils/errors"
-import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
 
 import {
-  Box,
   Button,
   Checkbox,
   Col,
@@ -191,104 +188,89 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
       addressTouched,
     } = this.state
 
-    const artwork = get(
-      this.props,
-      props => order.lineItems.edges[0].node.artwork
-    )
-
     return (
       <>
-        <Box pb={55}>
-          <HorizontalPadding px={[0, 4]}>
-            <Row>
-              <Col>
-                <OrderStepper
-                  currentStep="Payment"
-                  steps={
-                    order.mode === "OFFER" ? offerFlowSteps : buyNowFlowSteps
-                  }
-                />
-              </Col>
-            </Row>
-          </HorizontalPadding>
+        <HorizontalPadding px={[0, 4]}>
+          <Row>
+            <Col>
+              <OrderStepper
+                currentStep="Payment"
+                steps={
+                  order.mode === "OFFER" ? offerFlowSteps : buyNowFlowSteps
+                }
+              />
+            </Col>
+          </Row>
+        </HorizontalPadding>
 
-          <HorizontalPadding>
-            <TwoColumnLayout
-              Content={
-                <Flex
-                  flexDirection="column"
-                  style={isCommittingMutation ? { pointerEvents: "none" } : {}}
-                >
-                  <Join separator={<Spacer mb={3} />}>
-                    <Flex flexDirection="column">
-                      <Serif
-                        mb={1}
-                        size="3t"
-                        color="black100"
-                        lineHeight="1.1em"
-                      >
-                        Credit card
-                      </Serif>
-                      <CreditCardInput
-                        error={stripeError}
-                        onChange={response => {
-                          this.setState({ stripeError: response.error })
-                        }}
-                      />
-                    </Flex>
-
-                    {!this.isPickup() && (
-                      <Checkbox
-                        selected={this.state.hideBillingAddress}
-                        onSelect={this.handleChangeHideBillingAddress.bind(
-                          this
-                        )}
-                      >
-                        Billing and shipping addresses are the same
-                      </Checkbox>
-                    )}
-                    <Collapse open={this.needsAddress()}>
-                      <AddressForm
-                        value={address}
-                        errors={addressErrors}
-                        touched={addressTouched}
-                        onChange={this.onAddressChange}
-                        billing
-                      />
-                    </Collapse>
-
-                    <Media greaterThan="xs">
-                      <ContinueButton
-                        onClick={this.onContinue}
-                        loading={isCommittingMutation}
-                      />
-                    </Media>
-                  </Join>
-                </Flex>
-              }
-              Sidebar={
-                <Flex flexDirection="column">
+        <HorizontalPadding>
+          <TwoColumnLayout
+            Content={
+              <Flex
+                flexDirection="column"
+                style={isCommittingMutation ? { pointerEvents: "none" } : {}}
+              >
+                <Join separator={<Spacer mb={3} />}>
                   <Flex flexDirection="column">
-                    <ArtworkSummaryItem order={order} />
-                    <TransactionDetailsSummaryItem order={order} />
+                    <Serif mb={1} size="3t" color="black100" lineHeight="1.1em">
+                      Credit card
+                    </Serif>
+                    <CreditCardInput
+                      error={stripeError}
+                      onChange={response => {
+                        this.setState({ stripeError: response.error })
+                      }}
+                    />
                   </Flex>
-                  <Spacer mb={[2, 3]} />
-                  <Media at="xs">
-                    <>
-                      <Spacer mb={3} />
-                      <ContinueButton
-                        onClick={this.onContinue}
-                        loading={isCommittingMutation}
-                      />
-                      <Spacer mb={2} />
-                    </>
+
+                  {!this.isPickup() && (
+                    <Checkbox
+                      selected={this.state.hideBillingAddress}
+                      onSelect={this.handleChangeHideBillingAddress.bind(this)}
+                    >
+                      Billing and shipping addresses are the same
+                    </Checkbox>
+                  )}
+                  <Collapse open={this.needsAddress()}>
+                    <AddressForm
+                      value={address}
+                      errors={addressErrors}
+                      touched={addressTouched}
+                      onChange={this.onAddressChange}
+                      billing
+                    />
+                  </Collapse>
+
+                  <Media greaterThan="xs">
+                    <ContinueButton
+                      onClick={this.onContinue}
+                      loading={isCommittingMutation}
+                    />
                   </Media>
+                </Join>
+              </Flex>
+            }
+            Sidebar={
+              <Flex flexDirection="column">
+                <Flex flexDirection="column">
+                  <ArtworkSummaryItem order={order} />
+                  <TransactionDetailsSummaryItem order={order} />
                 </Flex>
-              }
-            />
-          </HorizontalPadding>
-        </Box>
-        <StickyFooter orderType={order.mode} artworkId={artwork.id} />
+                <Spacer mb={[2, 3]} />
+                <Media at="xs">
+                  <>
+                    <Spacer mb={3} />
+                    <ContinueButton
+                      onClick={this.onContinue}
+                      loading={isCommittingMutation}
+                    />
+                    <Spacer mb={2} />
+                  </>
+                </Media>
+              </Flex>
+            }
+          />
+        </HorizontalPadding>
       </>
     )
   }

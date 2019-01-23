@@ -100,13 +100,6 @@ describe("Buyer rejects seller offer", () => {
     )
   })
 
-  it("shows the sticky 'need help?' footer", () => {
-    const component = getWrapper()
-    expect(component.text()).toMatch(
-      "Need help? Read our FAQ or ask a question."
-    )
-  })
-
   describe("mutation", () => {
     beforeEach(() => {
       commitMutation.mockReset()

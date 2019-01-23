@@ -1,4 +1,4 @@
-import { Box, Button, Col, Flex, Row, Spacer } from "@artsy/palette"
+import { Button, Col, Flex, Row, Spacer } from "@artsy/palette"
 import { Accept_order } from "__generated__/Accept_order.graphql"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
@@ -21,13 +21,11 @@ import {
 import { AcceptOfferMutation } from "__generated__/AcceptOfferMutation.graphql"
 import { ConditionsOfSaleDisclaimer } from "Apps/Order/Components/ConditionsOfSaleDisclaimer"
 import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "Apps/Order/Components/ShippingSummaryItem"
-import { StickyFooter } from "Apps/Order/Components/StickyFooter"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { Dialog, injectDialog } from "Apps/Order/Dialogs"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { CountdownTimer } from "Components/v2/CountdownTimer"
 import { ErrorWithMetadata } from "Utils/errors"
-import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "../../Components/ArtworkSummaryItem"
 import { CreditCardSummaryItemFragmentContainer as CreditCardSummaryItem } from "../../Components/CreditCardSummaryItem"
@@ -139,53 +137,78 @@ export class Accept extends Component<AcceptProps, AcceptState> {
   render() {
     const { order } = this.props
     const { isCommittingMutation } = this.state
-    const artwork = get(
-      this.props,
-      props => order.lineItems.edges[0].node.artwork
-    )
 
     return (
       <>
-        <Box pb={55}>
-          <HorizontalPadding px={[0, 4]}>
-            <Row>
-              <Col>
-                <OrderStepper
-                  currentStep="Review"
-                  steps={counterofferFlowSteps}
-                />
-              </Col>
-            </Row>
-          </HorizontalPadding>
-          <HorizontalPadding>
-            <TwoColumnLayout
-              Content={
-                <Flex
-                  flexDirection="column"
-                  style={isCommittingMutation ? { pointerEvents: "none" } : {}}
-                >
-                  <Media at="xs">
-                    <Flex flexDirection="column">
-                      <ArtworkSummaryItem order={order} />
-                    </Flex>
-                    <Spacer mb={2} />
-                  </Media>
+        <HorizontalPadding px={[0, 4]}>
+          <Row>
+            <Col>
+              <OrderStepper
+                currentStep="Review"
+                steps={counterofferFlowSteps}
+              />
+            </Col>
+          </Row>
+        </HorizontalPadding>
+        <HorizontalPadding>
+          <TwoColumnLayout
+            Content={
+              <Flex
+                flexDirection="column"
+                style={isCommittingMutation ? { pointerEvents: "none" } : {}}
+              >
+                <Media at="xs">
                   <Flex flexDirection="column">
-                    <CountdownTimer
-                      action="Respond"
-                      note="Expired offers end the negotiation process permanently."
-                      countdownStart={order.lastOffer.createdAt}
-                      countdownEnd={order.stateExpiresAt}
-                    />
-                    <TransactionDetailsSummaryItem
-                      order={order}
-                      title="Accept seller's offer"
-                      useLastSubmittedOffer={true}
-                      onChange={this.onChangeResponse}
-                    />
+                    <ArtworkSummaryItem order={order} />
                   </Flex>
-                  <Spacer mb={[2, 3]} />
+                  <Spacer mb={2} />
+                </Media>
+                <Flex flexDirection="column">
+                  <CountdownTimer
+                    action="Respond"
+                    note="Expired offers end the negotiation process permanently."
+                    countdownStart={order.lastOffer.createdAt}
+                    countdownEnd={order.stateExpiresAt}
+                  />
+                  <TransactionDetailsSummaryItem
+                    order={order}
+                    title="Accept seller's offer"
+                    useLastSubmittedOffer={true}
+                    onChange={this.onChangeResponse}
+                  />
+                </Flex>
+                <Spacer mb={[2, 3]} />
+                <Media greaterThan="xs">
+                  <Button
+                    onClick={this.onSubmit}
+                    loading={isCommittingMutation}
+                    size="large"
+                    width="100%"
+                  >
+                    Submit
+                  </Button>
+                  <Spacer mb={2} />
+                  <ConditionsOfSaleDisclaimer textAlign="center" />
+                </Media>
+              </Flex>
+            }
+            Sidebar={
+              <Flex flexDirection="column">
+                <Flex flexDirection="column">
                   <Media greaterThan="xs">
+                    {className => (
+                      <ArtworkSummaryItem className={className} order={order} />
+                    )}
+                  </Media>
+                  <ShippingSummaryItem order={order} locked />
+                  <CreditCardSummaryItem order={order} locked />
+                </Flex>
+                <Media greaterThan="xs">
+                  <Spacer mb={2} />
+                </Media>
+                <Media at="xs">
+                  <>
+                    <Spacer mb={2} />
                     <Button
                       onClick={this.onSubmit}
                       loading={isCommittingMutation}
@@ -195,49 +218,14 @@ export class Accept extends Component<AcceptProps, AcceptState> {
                       Submit
                     </Button>
                     <Spacer mb={2} />
-                    <ConditionsOfSaleDisclaimer textAlign="center" />
-                  </Media>
-                </Flex>
-              }
-              Sidebar={
-                <Flex flexDirection="column">
-                  <Flex flexDirection="column">
-                    <Media greaterThan="xs">
-                      {className => (
-                        <ArtworkSummaryItem
-                          className={className}
-                          order={order}
-                        />
-                      )}
-                    </Media>
-                    <ShippingSummaryItem order={order} locked />
-                    <CreditCardSummaryItem order={order} locked />
-                  </Flex>
-                  <Media greaterThan="xs">
+                    <ConditionsOfSaleDisclaimer />
                     <Spacer mb={2} />
-                  </Media>
-                  <Media at="xs">
-                    <>
-                      <Spacer mb={2} />
-                      <Button
-                        onClick={this.onSubmit}
-                        loading={isCommittingMutation}
-                        size="large"
-                        width="100%"
-                      >
-                        Submit
-                      </Button>
-                      <Spacer mb={2} />
-                      <ConditionsOfSaleDisclaimer />
-                      <Spacer mb={2} />
-                    </>
-                  </Media>
-                </Flex>
-              }
-            />
-          </HorizontalPadding>
-        </Box>
-        <StickyFooter orderType="OFFER" artworkId={artwork.id} />
+                  </>
+                </Media>
+              </Flex>
+            }
+          />
+        </HorizontalPadding>
       </>
     )
   }
